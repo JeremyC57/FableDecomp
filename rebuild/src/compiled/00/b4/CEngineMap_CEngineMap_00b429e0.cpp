@@ -1,5 +1,6 @@
 // CEngineMap::CEngineMap(const CIDrawMap*, long, long, long, long, long, CCharString, bool) -- constructor: empty name, file entry and file-block manager (whose block map allocates its header node), then the game map, world position (as floats and as 16-bit grid coordinates), map size, UID and static-map name; not yet in the visible-map list
 // Leaf: ??0CEngineMap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B429E0, 172 bytes (+ int3 padding), `ret 20h`. Mangled
 //   ??0CEngineMap@@QAE@PBVCIDrawMap@@JJJJJVCCharString@@_N@Z (the trailing bool is not read here); built by `new` 0x68 bytes at
@@ -27,11 +28,7 @@ class CCharString { public:
 #include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector Min, Max; };
 
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 struct SFileBlockNode {                                // _Rb_tree_node<pair<const long, CFileBlock>> (0x24 bytes)
     unsigned char   _M_color;

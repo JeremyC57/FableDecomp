@@ -1,5 +1,6 @@
 // CTCAssassinRush::GetValidTeleportPos(const CThing* rusher) -- a free spot behind the collided thing for the rush to land on: straight behind it first, then swinging round in 1/36 turns and stepping further out each full turn, giving up after ten tries (back to where the rusher stands), dropped to the ground
 // Leaf: GetValidTeleportPos
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x007AA9E0, 624 bytes, `ret 8` (hidden result + one argument). Callees: CIntelligentPointer::GetPItem
 // 0x00A01B50, CTCBase::GetWorld 0x00686A70 (virtual +0x34), CThing::GetPos 0x004C73D0, the placement object's
 // virtual +0x118 (facing, by out pointer), CTCAssassinRush::FindValidTeleportPos 0x007AA880, C3DVector::RotateXY
@@ -103,11 +104,8 @@ class CThing { public:
     float GetHeightZBelowAt(const C3DVector& pos, bool a, bool b);   // 0x00666D40
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CWorldMapRef;
 class CWorld { public:
     virtual void w00();

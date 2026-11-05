@@ -1,4 +1,5 @@
 // CTCDivineWrath::SetPTarget() -- clear the spell's target, then take the thing the caster is targeting (interface 8) when it is alive, of a targetable type and the caster is of the right type; Z-targeting follows the caster's player
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078E820, 220 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10
@@ -49,14 +50,8 @@ struct CTCTargetSource {                                // the interface-8 compo
 };
 #pragma pack(push, 1)
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                    // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                        // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item);  // 0x00668B60

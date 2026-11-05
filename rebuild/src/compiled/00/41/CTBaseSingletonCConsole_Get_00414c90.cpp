@@ -1,5 +1,6 @@
 // CTBaseSingleton<CConsole>::Get() -- create the console singleton on first use, return it
 // Leaf: ?Get@?$CTBaseSingleton@VCConsole@@@@SIAAVCConsole@@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00414C90, 69 bytes, `ret` (static __fastcall, no arguments); many callers (0x00414C49, 0x00414C78,
 // 0x004176B0, ...); Ego_r.pdb ?Get@?$CTBaseSingleton@VCConsole@@@@SIAAVCConsole@@XZ.
 // Catalog label CTBaseSingleton<CCodeSectionManager>::Get is wrong: the object built is 0x9c bytes by the constructor
@@ -8,13 +9,7 @@
 // 0x00413520 on the static at 0x013CAA40); return *Instance.Data (both paths duplicated by the compiler).
 // Shape: /O2 (16-aligned entry).
 #include <new>
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Reset(T* data);                                 // 0x00413520 for CConsole
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingleton {
 public:
     virtual ~CTBaseSingleton() {}

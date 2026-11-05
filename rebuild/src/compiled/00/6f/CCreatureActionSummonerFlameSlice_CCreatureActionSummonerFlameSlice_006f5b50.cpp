@@ -1,4 +1,5 @@
 // CCreatureAction_SummonerFlameSlice::CCreatureAction_SummonerFlameSlice() -- base CCombatActionBase(150), own vtable (0x01264214), default-constructed CIntelligentPointer member at +0x114
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F5B50, length 48 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(long) @ 0x00857E40, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10
 // (the inline CIntelligentPointer default constructor: base call then its vtable 0x01238C6C, rtti-vtables.tsv)
@@ -8,25 +9,10 @@
 class CBaseObject;
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThing;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {         // vtable 0x01238C6C
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-    CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
 
 class CCombatActionBase { public:                  // retail sizeof 0x114 (the PDB build is 0x12c: three containers are 4 bytes wider there)
     virtual void v00();

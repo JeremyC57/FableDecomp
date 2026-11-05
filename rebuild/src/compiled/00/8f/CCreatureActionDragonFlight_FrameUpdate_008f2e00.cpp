@@ -1,4 +1,5 @@
 // CCreatureAction_DragonFlight::FrameUpdate() -- turn current facing and rebuild right-handed orientation before base update.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Native008F2E00 length246. Actual physics header retained, field-free native ABI adapters;
 // slot70 by-value GetFacingVector lowered to explicit result buffer (ECXthis,EAXbuffer,ret4),
 // physics-standard723C00 verified; slot75 SetRHSet7239C0 copies24bytes,ret4.
@@ -39,11 +40,8 @@ class CThing { public:
  __forceinline CPhysicsMethods* GetPhysics() const {return PPhysics;}
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
- virtual ~CBaseIntelligentPointer(); //00A01C10
- void* PData;
- CBaseObject* GetPItem() const; //00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CCreatureActionBase { public:
     long GetTotalTimeWorldFrames() const;   // 0x006925B0 (Ego_r.pdb ?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ)
 };

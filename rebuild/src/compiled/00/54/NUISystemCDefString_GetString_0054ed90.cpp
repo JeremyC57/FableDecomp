@@ -1,5 +1,6 @@
 // NUISystem::CText::GetDataFromDef() -- read the text component's UI def: the font bank named by the def's font string, the text window, the scale-text flag, the def's text value (with its line-break flag), and the alignment bit
 // Leaf: GetDataFromDef@CText
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets). Spellings unified: 009e2c80: ?GetFont@CFontBankSource@NUISystem@@QAE?AU?$CCountedPointer@UCFontBank@NUISystem@@@2@ABVCCharString@@@Z -> ?GetFont@CFontBankSource@NUISystem@@QAE?AV?$CCountedPointer@UCFontBank@NUISystem@@@2@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054ED90, length 365 bytes (plain `ret`, no frame pointer; Ego_r.pdb
 //   `?GetDataFromDef@CText@NUISystem@@QAEXXZ`). Called by the CText constructor 0x0054F5C0 (landed).
 // Callees: CComponent::LoadAndReturnDef() const (vtable slot 108, +0x1B0; CDefPointer<const CUIDef> by hidden pointer, as
@@ -39,39 +40,7 @@ struct CDefString {
     CCharString GetString() const { return GDefStringTable.GetString(Index); }
 };
 
-struct CCPPointerInfo {                                 // CCountedPointer count block
-    long References;                                    // +0
-    void (__fastcall* Destroy)(void* object);           // +4
-    void* Object;                                       // +8
-};
-template <class T> struct CCountedPointer {
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    void Release()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-    }
-    ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->References;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 struct CFontBank;
 struct CFontBankSource {                                // the system manager's font bank (+0x84)
     CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80

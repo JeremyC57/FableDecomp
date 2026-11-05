@@ -1,5 +1,6 @@
 // CParticleEmitterDatabase::CParticleEmitterDatabase() -- constructs the symbol map, the empty emitter map and bank pointer, the two file names, and starts the handle counter at 1
 // Leaf: ??0CParticleEmitterDatabase
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE8BF0, 55 bytes.
 // Callees: CSymbolMap::CSymbolMap @ 0x009E5200 (labelled "CParticleUpdateParameters<unsigned long,unsigned long>",
 // propagated), CCharString::CCharString() @ 0x0099E4B0 (twice).
@@ -21,11 +22,7 @@ class CCharString { public:
 namespace NParticleEngine { class CParticleEmitter; class CParticleDataBank; }
 
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T*           Object;
-    SCountBlock* Block;
-    CCountedPointer() : Object(0), Block(0) {}
-};
+#include "engine/CCountedPointer.h"
 
 struct SEmitterEntry {                               // pair<long, CCountedPointer<CParticleEmitter>>
     long                                              first;

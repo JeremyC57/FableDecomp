@@ -1,5 +1,6 @@
 // std::__final_insertion_sort(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- STLport introsort finish for target points: a guarded insertion sort of the first 16 then an unguarded one of the rest (or one guarded pass when 16 or fewer)
 // Leaf: ??$__final_insertion_sort@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080B5A0, 115 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x34-byte comparator by value, `ret 34h`.
@@ -16,19 +17,9 @@
 class CThing;
 class CBaseObject;
 
-struct CBaseIntelligentPointer {
-    void* PData;                                 // +0x04
-    CBaseIntelligentPointer();                   // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();          // 0x00A01C10
-    CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CBaseObject* item);            // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
-};
 
 #include "engine/C3DVector.h"
 

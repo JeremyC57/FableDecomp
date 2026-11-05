@@ -1,5 +1,6 @@
 // CNewFrontendGameComponent::InitialiseSounds() -- create and load the front-end sample bank, set the front-end sound group's volume and switch the sound manager on
 // Leaf: ?InitialiseSounds@CNewFrontendGameComponent@@AAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042E17C, length 136 bytes, plain `ret` (__fastcall, no arguments).
 // Name: FableWin.pdb / Ego_r.pdb `?InitialiseSounds@CNewFrontendGameComponent@@AAEXXZ` (private); single caller 0x0042E9C6 in the
 // same TU (CNewFrontendGameComponent::Init); member +0x50 is the PDB's `CCountedPointer<CASoundBank> PSampleBank` (donor +0x50).
@@ -37,13 +38,7 @@ public:
     unsigned char _body[0x20 - 4];
 };
 
-template <class T> class CCountedPointer {
-public:
-    void Reset(T* data);                                 // 0x0042FD6F for CASoundBank
-    T* operator->() const { return Data; }
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 class CSoundManagerLH {                                  // the object at 0x013B8394
 public:

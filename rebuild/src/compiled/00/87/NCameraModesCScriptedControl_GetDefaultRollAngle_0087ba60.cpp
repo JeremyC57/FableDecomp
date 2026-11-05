@@ -1,18 +1,14 @@
 // NCameraModes::CScriptedControl::GetDefaultRollAngle() const -- the script module's roll angle when it supplies one, else no roll
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087BA60, 33 bytes, plain `ret` (float in st0).
 // Leaf: ?GetDefaultRollAngle@CScriptedControl@NCameraModes@@UBEMXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x0125C58C slot 19; FableWin.pdb ?GetDefaultRollAngle@CScriptedControl@NCameraModes@@UBEMXZ.
 // Callees: the module's virtual GetModuleRollAngle(float&) (slot 6, +0x18).
 // Layout: retail CScriptedControl as the landed ctor 0x0069DFE0: PScriptModule (CCountedPointer, Data first) +0xa4,
 //         InitCamera (CCamera) +0xb0.
 // Shape: the out-float is the `push ecx` frame slot; the fallback 0.0f is the literal-pool zero (0x0122DEDC).
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; };
 class CCamera { public:                                             // 0x38 bytes

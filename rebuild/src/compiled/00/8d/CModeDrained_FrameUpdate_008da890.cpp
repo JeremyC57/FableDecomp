@@ -1,5 +1,6 @@
 // CModeDrained::FrameUpdate -- release drainer and remove this mode when the living drainer changes mode.
 // Leaf: FrameUpdate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Native008DA890 length256. Genuine unsigned long GetType() const virtual slot1; CBaseIntelligentPointer ctor/get/set/dtor A01B10/A01B50/A01B90/A01C10.
 #ifndef _MSC_VER
 #define __int64 long long
@@ -49,12 +50,8 @@ FABLE_STATIC_ASSERT(sizeof(ModeStandNative)==sizeof(CModeStandBase));
 
 struct IntelligentInfo {ThingNative*Object;unsigned long RefCount;}; //CBaseObjectPointer native object0/count4; differs from counted-block ABI
 class CBaseObject;
-class CBaseIntelligentPointer {
-public:
-    void SetPItem(CBaseObject*a0);   // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
-private: public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct BaseIntelligentPointer {
  IntelligentInfo*PData;
  BaseIntelligentPointer(); //A01B10, native baseVT129C95C

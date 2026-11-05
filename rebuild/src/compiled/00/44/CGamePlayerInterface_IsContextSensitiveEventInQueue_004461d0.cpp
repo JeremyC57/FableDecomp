@@ -1,5 +1,6 @@
 // CGamePlayerInterface::IsContextSensitiveEventInQueue(long index, EInputButtonEventType button_event_type, long player) -- is the indexed ContextSensitiveItemButtons input waiting in the queue
 // Leaf: ?IsContextSensitiveEventInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x004461D0, 72 bytes, `ret 0Ch`; Ego_r.pdb ?IsContextSensitiveEventInQueue@CGamePlayerInterface@@QBE_NJW4EInputButtonEventType@@J@Z;
 // catalog label IsAssignableSpecialMoveButtonInQueue is wrong (it reads ContextSensitiveItemButtons).
 // Body: index in range (`jl` on the sign, then unsigned `jae` against size()) -> a zeroed float local (stored in the dead
@@ -15,12 +16,7 @@ public:
     virtual void _slot01() const; virtual void _slot02() const; virtual void _slot03() const; virtual void _slot04() const;
     virtual bool IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const;   // +0x14
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class T> class vector {
 public:

@@ -1,5 +1,7 @@
 // CWorldMap::CWorldMap(const CMainGameComponent& component, CWorld& world, const C2DBoxI& area, unsigned long granularityShift) -- build an empty world map over the area: one default map info and region, four empty player-position slots, the map-placement grid sized from the granularity, and a fresh thing map manager; sound themes start disabled
 // Leaf: ??0CWorldMap@@QAE@ABVCMainGameComponent@@AAVCWorld@@ABVC2DBoxI@@K@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005066E0, 601 bytes, `ret 10h`. Ego_r.pdb / FableWin.pdb
 //   ??0CWorldMap@@QAE@ABVCMainGameComponent@@AAVCWorld@@ABVC2DBoxI@@K@Z.
@@ -46,25 +48,10 @@ public:
     virtual ~CIDrawWorldMap() { }
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                         // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer() { }
-    virtual ~CIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T> class scoped_ptr {
 public:
     T* ptr;

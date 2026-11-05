@@ -1,5 +1,6 @@
 // std::find_if(list<CIntelligentPointer<CThing> >::const_iterator first, const_iterator last, CIsCookingPot pred) -- the first element the predicate accepts, else last
 // Leaf: ??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@VCIsCookingPot@?A0x
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00945fd0, 65 bytes, /Gr `__fastcall` (the hidden result pointer in ecx; first, last and the
 //   predicate on the stack), `ret 0Ch`.
 // Identity (proven): Ego_r.pdb names std::find_if<list<CIntelligentPointer<CThing> >::const_iterator, (anonymous)::CIsCookingPot> (Dinkumware iterator spelling; STLport's is _List_iterator<CIntelligentPointer<CThing>, _Const_traits<...> >); the predicate's operator() 0x00945DE0 takes a const CIntelligentPointer<CThing>& (Ego_r.pdb); caller CAIStateGroup_SitForMeal::GetPCookingPot 0x00945A90 (landed); the predicate is in an anonymous namespace (Ego_r.pdb ?A0xaf7c6789).
@@ -8,13 +9,8 @@
 //   for the inner by-value call (`mov [esp+18h],eax`), then `while (first != last && !pred(*first)) ++first; return first;`.
 class CThing;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                            // Ego_r: vptr + PData, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();
-private:
-    CBaseObjectPointer* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
 template <class _Tp> struct _List_node : public _List_node_base { _Tp _M_data; };

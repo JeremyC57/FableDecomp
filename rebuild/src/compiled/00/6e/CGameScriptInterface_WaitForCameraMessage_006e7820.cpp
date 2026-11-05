@@ -1,5 +1,6 @@
 // CGameScriptInterface::WaitForCameraMessage(const CCharString& message) const -- block the calling script, a frame at a time, until a camera message event (type 0x2B) targets a live thing whose scripted camera spline (TC 0x3F) carries this message; the matching event is consumed
 // Leaf: ?WaitForCameraMessage@CGameScriptInterface@@UBEXABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E7820, length 243 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?WaitForCameraMessage@CGameScriptInterface@@UBEXABVCCharString@@@Z.
 // Callees: CMessageEventFilter_IsOfType::operator() @ 0x006AF1C0 (the FindMostRecentMessage template inlined),
@@ -89,11 +90,7 @@ class CMessageEventManager { public:
     }
     void RemoveMessage(const CMessageEvent* message);   // 0x00493B5B
 };
-template<class T> class CCountedPointer { public:
-    T* Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CWorld { public:
     virtual void w000();
     unsigned char _pad04[0x5c];

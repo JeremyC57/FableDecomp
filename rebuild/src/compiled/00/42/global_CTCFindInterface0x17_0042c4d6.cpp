@@ -1,18 +1,11 @@
 // Naming wave 18: the interface-presence stand-in CTCBitsRemaining is std::bitset<274> (STLport 4.6); its Test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members begin/end are the header CArray base's begin() / end() (STLport vector start +0 / finish +4); the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
 #pragma optimize("s",on)
 
-namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
-template <unsigned int _Nb> class bitset { public:
-    unsigned long _M_w[(_Nb + 31) / 32];
-    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
-};
-}
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public: typedef std::pair<ETCInterfaceType, CTCBase*> SEntry; SEntry* begin; SEntry* end; SEntry* LowerBound(const ETCInterfaceType& key); };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMapRemaining;
 
 #define CTC_LAYOUT(METHOD) \
@@ -25,7 +18,7 @@ bool CLASS::METHOD(int* output) { \
     unsigned long tested = bits.test(KEY); bool result; \
     if ((unsigned char)tested != 0) { \
         ETCInterfaceType key = (ETCInterfaceType)(KEY); CTCMapRemaining* current_map = &(map); \
-        CTCMapRemaining::SEntry* entry = current_map->LowerBound(key); CTCMapRemaining::SEntry* end = current_map->end; \
+        CTCMapRemaining::value_type* entry = current_map->LowerBound(key); CTCMapRemaining::value_type* end = current_map->end(); \
         if (entry == end || entry->first > KEY) entry = end; \
         *output = (int)entry->second; result = true; \
     } else result = false; \
@@ -38,7 +31,7 @@ bool CLASS::METHOD(int* output) { \
     register int key = KEY; unsigned long tested = bits.test(key); bool result; \
     if ((unsigned char)tested != 0) { \
         CTCMapRemaining* current_map = &(map); ETCInterfaceType local_key = (ETCInterfaceType)(key); \
-        CTCMapRemaining::SEntry* entry = current_map->LowerBound(local_key); CTCMapRemaining::SEntry* end = current_map->end; \
+        CTCMapRemaining::value_type* entry = current_map->LowerBound(local_key); CTCMapRemaining::value_type* end = current_map->end(); \
         if (entry == end || entry->first > key) entry = end; \
         *output = (int)entry->second; result = true; \
     } else result = false; \

@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetFaceHeroForAction(CScriptThing thing) -- script query: false when the script thing resolves no thing, else the thing's CTCAIScratchpad::FaceHeroForAction flag (read through CThing::GetTC<CTCAIScratchpad>); the by-value CScriptThing is destroyed inline
 // Leaf: ?GetFaceHeroForAction@CGameScriptInterface@@UAE_NVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A4560, 240 bytes, thiscall, `ret 0Ch` (the 12-byte CScriptThing by value).
@@ -87,29 +88,7 @@ public:
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CCPPointerInfo {                                       // 12 bytes (Ego_r.pdb)
-public:
-    unsigned long RefCount;                                  // +0x00
-    void (__fastcall* DeleteFunc)(void* data);               // +0x04 (retail passes the pointee in ecx)
-    void* Data;                                              // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

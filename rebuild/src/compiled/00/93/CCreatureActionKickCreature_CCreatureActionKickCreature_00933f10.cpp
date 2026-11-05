@@ -1,5 +1,6 @@
 // CCreatureAction_KickCreature::CCreatureAction_KickCreature(CThingCreatureBase& owner, CThingCreatureBase* target) -- base CCreatureActionBase(owner, -1.0f, 0.8f, the owner's "KICK" animation, a zeroed CSoundPair, 0, 0), then the PTarget intelligent pointer at +0xa8 set to target
 // Leaf: ??0CCreatureAction_KickCreature@@QAE@AAVCThingCreatureBase@@PAV1@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00933F10, 130 bytes (+ int3 padding), thiscall, `ret 8`. Vtable 0x0129215C (RTTI
 //   .?AVCCreatureAction_KickCreature@@).
 // Identity (proven): CCreatureAction_KickCreature::CCreatureAction_KickCreature; evidence: the stored vtable 0x0129215C's RTTI names the class; the member pointer's vtable
@@ -46,19 +47,9 @@ public:
                         const CSoundPair& sound, long c, long d);                             // 0x00693B30
 };
 
-class CBaseIntelligentPointer {
-public:
-    virtual void v00();
-    CBaseObject* PItem;                                     // +4
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    void SetPItem(CBaseObject* item);                       // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x0123E7D8 for CThingCreatureBase
-public:
-    virtual void v00();
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-};
 
 class CCreatureAction_KickCreature : public CCreatureActionBase {  // vtable 0x0129215C
 public:

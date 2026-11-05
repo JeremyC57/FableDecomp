@@ -1,5 +1,6 @@
 // NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::IsFeelingThreatened() -- the assassin feels threatened when the player threatens it and the hero stands within ThreatDistSq (squared); false once the script thread is terminating
 // Leaf: ?IsFeelingThreatened@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAE_NXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB4710, 76 bytes, thiscall, plain `ret`.
 // Identity (proven): Ego_r.pdb names ?IsFeelingThreatened@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@AAE_NXZ
 //   (private, bool); its members ThreatDistSq +0x34 is the only float compared, and the callees are the script helpers
@@ -12,11 +13,9 @@
 //   PreemptiveAttackInProgress +0x39.
 // Shape: each return is guarded by the script-thread terminating check (both paths call it, the false path discards it);
 //   a single `bool threatened = ...; if (terminating) return false; return threatened;` merges into not/and (82v76).
-class CScriptThing {                                    // vtable 0x01238C8C, 12 bytes
-public:
-    virtual ~CScriptThing();
-    void* PImp[2];                                      // +0x04 CCountedPointer<CScriptThingImpl>
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT

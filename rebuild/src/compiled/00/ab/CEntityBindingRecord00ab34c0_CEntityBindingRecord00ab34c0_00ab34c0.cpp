@@ -1,5 +1,6 @@
 // CEntityBindingRecord_00ab34c0::~CEntityBindingRecord_00ab34c0() -- destroy an entity-binding record: release its counted pointer at +0x18, destroy its vector of counted pointers at +0xc (elements, then storage), then its name string
 // Leaf: ??1CEntityBindingRecord_00ab34c0
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB34C0, length 95 bytes (+ int3 padding), plain `ret`. Callers: the
 // non-virtual ??_G 0x00AB3620 and the CCountedPointer per-type deleter 0x00AB3640 (`if (p) { ~T; operator delete }`), whose
 // address the record-building helpers 0x00AB1990 / 0x00AB1CC0 / 0x00AB1F30 (manifest "BuildEntityScriptBindings_*") store
@@ -20,26 +21,7 @@ public:
     ~CCharString();                                          // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:                                    // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);               // called with Data in ecx, nothing on the stack
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 

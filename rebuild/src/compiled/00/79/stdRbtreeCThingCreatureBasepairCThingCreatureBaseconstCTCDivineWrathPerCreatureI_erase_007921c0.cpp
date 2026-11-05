@@ -1,5 +1,6 @@
 // std::_Rb_tree<CThingCreatureBase*, pair<CThingCreatureBase* const, CTCDivineWrath::PerCreatureInfo>, _Select1st, less, allocator>::erase(iterator position) -- STLport erase of one node: unlink and rebalance, destroy the (key, CTCDivineWrath::PerCreatureInfo) value, free the node, --count
 // Leaf: ?erase@?$_Rb_tree@PAVCThingCreatureBase@@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007921C0, 78 bytes, thiscall, `ret 4` (the iterator by value).
 // Identity (probable): no xrefs; the byte twin of the TU's called map erase 0x00792640 (CTCDivineWrath::LastFrameCreaturesHit, Ego_r.pdb map<CThingCreatureBase*, CTCDivineWrath::PerCreatureInfo>): value destructors Effect (+0xC) then ActualCreature (+0) of the 24-byte PerCreatureInfo at node+0x14; which twin is the tree's own erase is not pinned by any caller.
 // Callees: _Rb_global<bool>::_Rebalance_for_erase 0x0042A34E (cdecl), CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 (Effect, then ActualCreature), free 0x00BFEA14.
@@ -10,19 +11,8 @@
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // Ego_r: vptr + PData, 8 bytes
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
 class CThingCreatureBase;
 class CEnginePrimitiveThemeChannelDesc {                 // Ego_r.pdb, 4 bytes

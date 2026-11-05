@@ -1,6 +1,7 @@
 // std::find_if<_List_iterator<CCountedPointer<CVillageTaskTorch> >,CIsThingInvolvedWithTask>(first, last, pred) -- STLport
 // find_if: dispatch to __find_if with the input_iterator_tag
 // Leaf: ??$find_if@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065F943, 42 bytes, `__fastcall` (the /Gr algorithm TU: hidden result pointer in
 //   ecx, both iterators and the 4-byte predicate on the stack, `ret 0Ch`); the empty tag is homed in the high byte of the
 //   predicate's slot (`lea edx,[ebp+13h]`) and passed by reference in edx (bidirectional -> const input_iterator_tag&); each 4-byte iterator (user copy constructor)
@@ -22,11 +23,7 @@ class CThing;
 class CVillageTaskBase;
 class CVillageTaskTorch;
 
-template <class T> class CCountedPointer {
-public:
-    T*    m_pObject;                                  // +0x00
-    void* m_pInfo;                                    // +0x04 the shared count block
-};
+#include "engine/CCountedPointer.h"
 
 class CIsThingInvolvedWithTask {                      // Ego_r.pdb, 4 bytes
 public:

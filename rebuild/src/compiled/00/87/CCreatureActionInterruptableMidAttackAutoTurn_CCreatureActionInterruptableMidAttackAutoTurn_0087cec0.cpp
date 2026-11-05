@@ -1,5 +1,6 @@
 // CCreatureAction_InterruptableMidAttackAutoTurn::CCreatureAction_InterruptableMidAttackAutoTurn(CThingCreatureBase& creature, const CThing* weapon, const C3DVector& requiredFacing, const CDefPointer<const CMeleeCombatAbilityDef>& meleeAbility) -- combat action (priority 0x96, no sounds) that remembers the facing to turn to and the weapon, and takes the melee ability def
 // Leaf: ??0CCreatureAction_InterruptableMidAttackAutoTurn@@QAE@AAVCThingCreatureBase@@PBVCThing@@ABVC3DVector@@ABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z
+// Plan phase 5 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local same-TU LowerBound bodies removed (the header defines the same-TU noinline bodies).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087CEC0, 196 bytes, thiscall, `ret 0x10`.
@@ -18,14 +19,7 @@ class CBaseObjectPointer;
 class CTCBase;
 class CTCPhysicsBase;
 #pragma pack(push, 1)   // C3DVector has alignment 1: Ego_r puts CCreatureAction_ProjectileCrouch::FacePos at +301, size 316
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 

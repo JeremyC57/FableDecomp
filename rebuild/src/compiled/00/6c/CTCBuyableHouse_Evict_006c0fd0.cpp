@@ -1,5 +1,6 @@
 // CTCBuyableHouse::Evict() -- pay the money bags to the hero, then for every villager whose home or work is this house: clear that link (no longer game-state persisted), detach it from its shop and from the village
 // Leaf: Evict
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x006C0FD0, 384 bytes, `ret`.
 // Callees: CTCBuyableHouse::DestroyMoneyBags(bool) 0x006C0580, CVectorMap::LowerBound 0x0040F020 (interfaces 0x23, 0x90),
 // the 0x23 component's village accessor 0x007EE540, malloc 0x00BFEA0E / free 0x00BFEA14 (the list sentinel),
@@ -29,11 +30,8 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CBaseIntelligentPointer {
-    void*        __vftable;
-    CBaseObject* PData;
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing { public:
     unsigned char m_pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20

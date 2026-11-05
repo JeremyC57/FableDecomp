@@ -1,5 +1,6 @@
 // CTCObjectAugmentations::~CTCObjectAugmentations() -- kill the running particle effects, then tear down the members: trail pointer, running-effect pointers, both particle tables, both sound maps, the slot defs and the def pointer, then the CTCBase part
 // Leaf: ??1CTCObjectAugmentations@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007676A0, length 320 bytes (thiscall, plain `ret`; 0x135 bytes + int3 pad).
 // Identity: Ego_r.pdb ??1CTCObjectAugmentations@@UAE@XZ (the vptr store of vtable 0x0126A3A4 first); its only caller is
 //   the landed scalar deleting destructor 0x0076C790. The catalog label "CTCObjectAugmentations_Destructor" is right.
@@ -278,14 +279,9 @@ public:
 };
 
 #pragma pack(push, 1)                                       // ProjectileTrailEffect sits at the odd offset +0x65
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* PItem;                                          // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C for CThing
-};
 #pragma pack(pop)
 
 struct ParticleAndEndPoints {                               // Ego_r.pdb, 20 bytes

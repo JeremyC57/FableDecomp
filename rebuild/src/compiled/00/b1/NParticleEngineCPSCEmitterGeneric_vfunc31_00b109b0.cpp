@@ -1,4 +1,5 @@
 // 00B109B0 NParticleEngine::CPSCEmitterGeneric::GetApproximateSplineLength.
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local SquaredLength respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // PDB: ?GetApproximateSplineLength@CPSCEmitterGeneric@NParticleEngine@@UAEMXZ
 // (Ego_r row 30272, debug address 00AD17F0). Local layout follows the
@@ -18,7 +19,7 @@ struct CPointVector {
 };
 class CCardinalSpline { public: CPointVector ControlPoints; };
 struct SCountedInfo;
-template<class T> class CCountedPointer { public: T* Data; SCountedInfo* Info; };
+#include "engine/CCountedPointer.h"
 namespace NParticleEngine {
 class CPSCEmitterGeneric { public:
     unsigned char _pad00[0x18];

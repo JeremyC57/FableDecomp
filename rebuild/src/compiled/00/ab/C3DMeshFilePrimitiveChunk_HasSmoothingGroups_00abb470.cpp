@@ -1,5 +1,6 @@
 // C3DMeshFilePrimitiveChunk::HasSmoothingGroups() const -- whether the chunk has a "SMTH" sub chunk
 // Leaf: ?HasSmoothingGroups@C3DMeshFilePrimitiveChunk@@QBE_NXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00abb470, 118 bytes, thiscall, plain `ret`.
 // Identity (probable): unbound (manifest label propagated); it tests for the "SMTH" sub chunk; Ego_r.pdb has ?HasSmoothingGroups@C3DMeshFilePrimitiveChunk@@QBE_NXZ (Ego_r 0x00C0FFE0) just before ?HasUniqueVertices@ (0x00C10190), the same order and spacing class as retail 0x00ABB470 / 0x00ABB610; no direct callers found.
 // Callees: CChunkedFileSuperChunk::FindFirstSubChunkOfType(const char*) const 0x00AA7F40 (returns a const CCountedPointer by
@@ -7,46 +8,7 @@
 // Shape (family L113): a default-constructed local assigned from the returned temporary (inline operator= over a known-null
 //   block: the pointer is taken only when the block is non-null), the temporary released (block re-read after the
 //   decrement), the test, then the local released from registers.
-struct SCountBlock {
-    long m_references;                      // +0
-    void (__fastcall* m_pfnDestroy)(void*); // +4
-    void* m_pObject;                        // +8
-};
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                           // +0
-    SCountBlock* m_pCount;                  // +4
-    CCountedPointer() : m_pObject(0), m_pCount(0) { }
-    void Release()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;            // operator delete @ 0x00BFE9BC
-            }
-        }
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SCountBlock* count = other.m_pCount;
-        T* object = other.m_pObject;
-        if (m_pCount != count) {
-            Release();
-            m_pObject = object;
-            m_pCount = count;
-            if (m_pCount)
-                ++m_pCount->m_references;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class CChunkedFileChunk { public:
     virtual ~CChunkedFileChunk();
@@ -63,5 +25,5 @@ bool C3DMeshFilePrimitiveChunk::HasSmoothingGroups() const
 {
     CCountedPointer<CChunkedFileChunk> chunk;
     chunk = FindFirstSubChunkOfType("SMTH");
-    return chunk.m_pObject != 0;
+    return chunk.Data != 0;
 }

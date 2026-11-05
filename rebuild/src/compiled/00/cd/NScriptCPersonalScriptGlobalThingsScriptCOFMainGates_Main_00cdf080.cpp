@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::COF_MainGates::Main() -- Orchard Farm main-gates script: watch that the gates are alive, let a frame pass, and unless the script is done open the gates when the Orchard Farm raid quest is not active
 // Leaf: ?Main@COF_MainGates@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCount (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDF080, 157 bytes (+ int3 padding).
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90 (the filter's member; the CIsThingAlive vtable 0x012C32F0
 //   stored first), the filter registration @ 0x00F35B10 (on `this`), ~CScriptThing @ 0x004AA840, IsDone @ 0x00F35B30, the game
@@ -13,11 +14,7 @@
 //   Was `?Main@COF_MainGates@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 namespace NScript { class CPredicateBase; }
 class CThing;
-struct SCount { long m_references; };
-template <class T> class CCountedPointer { public:
-    CThing* m_pObject;
-    SCount* m_pCount;
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

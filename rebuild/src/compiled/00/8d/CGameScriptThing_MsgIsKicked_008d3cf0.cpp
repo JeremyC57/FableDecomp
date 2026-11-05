@@ -1,5 +1,6 @@
 // CGameScriptThing::MsgIsKicked -- query entity events within current script frame interval
 // Leaf: MsgIsKicked
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCEntityEvents.h"
 #include "engine/CQuestManager.h"
@@ -13,9 +14,8 @@ struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(con
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x45];unsigned char LifeFlags;};
 struct IntelligentInfo{CThingNative* Object;long References;};
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct PointerView{void*VTable;IntelligentInfo* Info;}; //00A01B50
 // Retail CQuestManager+88 PQuestCurrentlyRunning and CScriptBase+2c PActiveThread differ from donor STL container sizes.
 typedef CSpawnedFuncBase SpawnedFunc;

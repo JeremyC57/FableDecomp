@@ -1,5 +1,6 @@
 // CGraphicFrame::UnInitialise() -- drop this frame's reference to its frame data, destroying the data at the last reference
 // Leaf: ?UnInitialise@CGraphicFrame@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x0041C700, 94 bytes, plain `ret`; Ego_r.pdb ?UnInitialise@CGraphicFrame@@QAEXXZ.
 // Body: data = FrameData; if (data) { if (--data->ReferenceCount == 0) destroy and free data; FrameData = 0; } -- retail
 // inlines ~CGraphicFrameData (Uninitialise 0x009FCBA0 when IsInitialised, then the PTexture counted-pointer release)
@@ -8,30 +9,7 @@
 // Shape: /O2 (16-aligned entry). `delete data` compiles to a call of the out-of-line ??_G (28 bytes; retail's ??_G
 // 0x0041BDF0 has 12 other callers), so the destructor call and ::operator delete are spelled out; the pointer is bound to
 // a local once (re-reading FrameData gives 101 bytes).
-class CCPPointerInfo { public:
-    long  RefCount;
-    void  (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info)
-        {
-            --Info->RefCount;
-            if (Info->RefCount == 0)
-            {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CTexture;
 class CGraphicFrameData {
 public:

@@ -1,5 +1,6 @@
 // CCombatSequence_TrollDoubleSwipe::OnCreate() -- queue two CCreatureAction_TrollSwipe actions for the sequence's creature and target, then the base OnCreate
 // Leaf: ?OnCreate@CCombatSequence_TrollDoubleSwipe@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00907750, 237 bytes, thiscall, plain `ret`.
 // Identity (proven): vtable 0x0127971C (RTTI .?AVCCombatSequence_TrollDoubleSwipe@@) slot 1 (OnCreate; CCombatSequenceBase::OnCreate 0x008B0650 is the base call); Ego_r.pdb ?OnCreate@CCombatSequence_TrollDoubleSwipe@@UAEXXZ; both actions store vtable 0x0128E654 (RTTI .?AVCCreatureAction_TrollSwipe@@, Ego_r.pdb ??0CCreatureAction_TrollSwipe@@QAE@AAVCThingCreatureBase@@0@Z, inline here), code 150, 0x114 bytes.
 // Callees: operator new 0x00BFEA1A (0x114 bytes), CCombatActionBase::CCombatActionBase(CThingCreatureBase&, CThing&, long,
@@ -26,31 +27,7 @@ public:
     CCreatureAction_TrollSwipe(CThingCreatureBase& owner, CThingCreatureBase& target) : CCombatActionBase(owner, target, 150, CSoundPair()) { }
     virtual ~CCreatureAction_TrollSwipe();
 };
-class CCPPointerInfo {                                   // Ego_r.pdb, 12 bytes
-public:
-    long RefCount;                                       // +0x00
-    void (__fastcall* DeleteFunc)(void* data);           // +0x04
-    void* Data;                                          // +0x08
-};
-template <class T> class CCountedPointer {               // Ego_r.pdb: Data, Info
-public:
-    T* Data;                                             // +0x00
-    CCPPointerInfo* Info;                                // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    void Reset(T* data);                                 // 0x00905FD0 for CCombatActionBase
-};
+#include "engine/CCountedPointer.h"
 class CCombatAction {                                    // Ego_r.pdb, 8 bytes
 public:
     CCountedPointer<CCombatActionBase> CreatureAction;   // +0x00

@@ -1,5 +1,6 @@
 // NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::Init() -- reset the bully (4 health, no hits, intro not done, speech loop 10), clear the quest's bully flag, make him an unkillable non-informant ally of the hero who cannot be pushed
 // Leaf: ?Init@CNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DAED30, 172 bytes (+ int3 padding). __fastcall, `ret`.
 // Callees (CGameScriptInterface virtuals, ghidra_out/cgsi_slots_aligned.tsv): EntitySetAsDamageable 516 (+0x810) 0x0088EAD0,
 //   EntitySetAsKillable 517 (+0x814) 0x0088EB30, EntitySetAsToAddToComboMultiplierWhenHit 526 (+0x838) 0x0088EBC0,
@@ -12,12 +13,7 @@
 // Shape: one `xor ebx,ebx` feeds every false argument and store; the nested GetHero call keeps the interface vtable in ebp.
 // Naming wave 35: identity reg 00dabc9b "NOVI_Bully" in 00dabac0; Alloc 00daec60; vtable 012d879c slot 2; PDB ?Init@CNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CNOVI_Bully::Init (wave3/labels_alloc.tsv); PDB ?Init@CNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CNOVI_Bully@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_NewOakValeIntroScript moved into NScript); same bytes.
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CScriptThingImp;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

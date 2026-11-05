@@ -1,5 +1,6 @@
 // std::__partial_sort(pair<unsigned long, CCountedPointer<CFaction> >* first, pair<..>* middle, pair<..>* last, pair<..>*, CKeyPairCompareLess comp) -- STLport partial sort of the faction vector map: heap the prefix, sift in every smaller key from the tail, sort the heap
 // Leaf: ??$__partial_sort@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BADB0, 102 bytes (+ int3 padding), `ret 0Ch`.
 // Callers: 0x006BAF9C and 0x006BB12E (the introsort depth-limit fallback `partial_sort(first, last, last, comp)`).
 // Callees: __make_heap @ 0x006BA230 (catalog "Heap_BuildHeap"), __pop_heap @ 0x006BA180 (`ret 18h`), sort_heap
@@ -12,20 +13,10 @@
 //   last; ++i) if (comp(*i, *first)) __pop_heap(first, middle, i, _Tp(*i), comp, (int*)0);` -- the value copy built in
 //   the argument area with the counted pointer's add-ref -- then `sort_heap(first, middle, comp)`.
 // Label correction: the catalog `Heap_SiftDown` is descriptive.
-class CCPPointerInfo { public:                                 // 12 bytes (Ego_r.pdb)
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void*);               // +0x04
-    void*         Data;                                 // +0x08
-};
+#include "engine/CCountedPointer.h"
 
 class CFaction;
 
-template <class T>
-class CCountedPointer { public:                                // 8 bytes
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-};
 
 namespace std {
 template <class T1, class T2>

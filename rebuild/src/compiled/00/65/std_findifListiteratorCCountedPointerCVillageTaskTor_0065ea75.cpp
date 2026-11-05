@@ -1,5 +1,6 @@
 // std::__find_if<_List_iterator<CCountedPointer<CVillageTaskTorch> >,CIsThingInvolvedWithTask>(first, last, pred, const input_iterator_tag&) -- first torch task the thing is involved with, or last
 // Leaf: __find_if
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065EA75, 97 bytes, `__fastcall` (hidden result in ecx, the empty tag reference in
 // edx, both iterators and the 4-byte predicate on the stack, `ret 0Ch`). Only caller: std::find_if @ 0x0065F943 (landed as
 // "ConstructCRangeString"), itself called by CTCVillage::IsThingInTaskList<CVillageTaskTorch> 0x0065FF5E on TorchTasks.
@@ -24,14 +25,7 @@ public:
 class CVillageTaskTorch : public CVillageTaskBase {
 };
 
-template <class T> class CCountedPointer {
-public:
-    T*    m_pObject;                                  // +0x00
-    void* m_pInfo;                                    // +0x04 the shared count block
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);   // 0x0065DA52 (out of line, the up-cast copy)
-    ~CCountedPointer();                               // 0x0065DA6B (out of line)
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 class CIsThingInvolvedWithTask {                      // Ego_r.pdb, 4 bytes
 public:

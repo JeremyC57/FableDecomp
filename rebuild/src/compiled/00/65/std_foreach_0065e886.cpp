@@ -1,5 +1,6 @@
 // std::for_each(first, last, f) -- (list<CCountedPointer<CVillageTaskCarryCrate > > iterators, CGetBestTaskForThing<CVillageTaskCarryCrate >) apply the best-task functor to every task in the list and return it
 // Leaf: ??$for_each@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@std@@V?$CGetBestTaskForThing@VCVillageTaskCarryCrate@@@@@std@@YI?AV?$CGetBestTaskForThing@VCVillageTaskCarryCrate@@@@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@0@0V1@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065E886, 50 bytes (unaligned, frame pointer: a size-optimised TU), __fastcall `ret 10h`
 //   (the functor is returned through memory: the hidden result pointer in ecx; both iterators and the functor on the stack).
 // Identity (proven): std::for_each<_List_iterator<CCountedPointer<CVillageTaskCarryCrate > >, CGetBestTaskForThing<CVillageTaskCarryCrate > >; evidence: its only callee is 0x0065DC06, CGetBestTaskForThing<CVillageTaskCarryCrate>::operator() (H091: the functor's only caller is this function, reached only from 0x0065F884, which only CTCVillage::GetBest...TaskForThing 0x00658EA0 reaches with this+0x60, the Ego_r.pdb list<CCountedPointer<CVillageTaskCarryCrate> >); the iterated node value at +8 is passed by reference and the 8-byte functor {Thing, PBestTask} is returned.
@@ -12,12 +13,7 @@
 #pragma optimize("s", on)
 class CThing;
 class CVillageTaskCarryCrate;
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CGetBestTaskForThing {
 public:
     CThing* Thing;                                           // +0x00

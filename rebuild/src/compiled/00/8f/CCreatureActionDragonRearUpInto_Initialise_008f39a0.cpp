@@ -1,4 +1,5 @@
 // CCreatureAction_DragonRearUpInto::Initialise() -- animation "REAR_UP_INTO", base Initialise, then (mode manager present) push a new CModeDragonRearUp(owner, Timer) onto the owner's mode manager
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F39A0, length 176 bytes, plain `ret` (virtual, no arguments).
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("REAR_UP_INTO" @ 0x01288464), SetCombatAnimation 0x008574D0,
@@ -53,12 +54,7 @@ class CCharString { public:
 };
 
 struct CModeBase { };
-template <class T> class CCountedPointer { public:
-    T*    m_pObject;                            // +0
-    void* m_pCount;                             // +4
-    CCountedPointer(T* object);                 // 0x00718A00
-    CCountedPointer(const CCountedPointer& other);
-};
+#include "engine/CCountedPointer.h"
 struct CModeDragonRearUp : CModeBase {
     unsigned char _pad[0x78];
     CModeDragonRearUp(CThing* owner, float timer);   // 0x008D84F0

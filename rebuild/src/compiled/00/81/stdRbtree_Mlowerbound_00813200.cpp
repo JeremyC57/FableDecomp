@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_lower_bound(const key_type& k) const -- (map<unsigned __int64, CGroupMemberData >) STLport lower-bound walk: from the root keep the last node whose 64-bit key is not below k (going left), else go right; the header when none
 // Leaf: ?_M_lower_bound@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@AB_K@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00813200, 55 bytes (+ int3 padding), thiscall, `ret 4`; returns the node pointer.
 // Identity (proven): std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CGroupMemberData >, _Select1st<...>, less<unsigned __int64>,
 //   allocator<...> >::_M_lower_bound; evidence: its callers are lower_bound 0x008133D0 and equal_range 0x00813530, whose caller is erase(const key_type&) 0x00813640, run by CTCCreatureGroup::RemoveMember 0x00813100; Ego_r.pdb CTCCreatureGroup::Members is map<unsigned __int64, CGroupMemberData>, the only map of that value.
@@ -9,12 +10,8 @@
 // Shape: STLport 4.6 _tree.c `_M_lower_bound` (agent950 F012's _M_find walk without the final test); node: color +0, parent
 //   +4, left +8, right +0xC, the 8-aligned value (key first) at +0x10; tree: header node pointer +0 (root = header->parent).
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                            // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    void* PData;                                           // +0x04 (CBaseObjectPointer*)
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CThingAICreature;
 class CGroupMemberData {                                   // 20 bytes (Ego_r.pdb)

@@ -1,5 +1,6 @@
 // std::find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingFilter_IsInFOV pred) -- STLport find_if over target points: forward to the random-access __find_if with a copy of the field-of-view filter
 // Leaf: ??$find_if@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00806640, 86 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx,
 //   last in edx), the 0x24-byte predicate by value, `ret 24h`.
@@ -16,12 +17,8 @@
 class CThing;
 #include "engine/C3DVector.h"
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();
-    void* PData;                               // +0x4
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint {                           // 0x1c bytes

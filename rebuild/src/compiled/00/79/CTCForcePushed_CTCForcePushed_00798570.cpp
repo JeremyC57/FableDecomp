@@ -1,5 +1,6 @@
 // CTCForcePushed::CTCForcePushed(CThing& parent) -- constructor: CTCBase, empty pusher/particle pointers, not initialised, no def, no emitters; a live AI-creature owner has its animation suspended; then load SPECIAL_ABILITIES_FORCE_PUSH_DEF
 // Leaf: ??0CTCForcePushed
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00798570, length 170 bytes (+ int3 padding). `ret 4`; vtable 0x0126C09C.
 //         Ego_r.pdb: `??0CTCForcePushed@@QAE@AAVCThing@@@Z`.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800; CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x2,
@@ -58,15 +59,8 @@ public:
     static CGameDefinitionManager& __fastcall Get();                                     // 0x0044C6B0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-};
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer() {}
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThing {
 public:

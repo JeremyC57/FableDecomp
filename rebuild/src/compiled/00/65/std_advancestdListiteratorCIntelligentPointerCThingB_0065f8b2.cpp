@@ -1,6 +1,7 @@
 // std::advance<_List_iterator<CIntelligentPointer<CThingBuilding> >,int>(_List_iterator& i, int n) -- STLport advance:
 // dispatch to __advance with the iterator's (bidirectional) category tag
 // Leaf: ??$advance@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065F8B2, 24 bytes, `__cdecl` (caller-cleaned): `lea eax,[ebp-1]` is the empty
 //   bidirectional_iterator_tag temporary, then __advance(i, n, tag) (0x0065E8B8, landed) and `add esp,0Ch`.
 // Identity (FINDINGS chunk 383; was filed as CEngineSceneGrid::GetCellBoundingBox, a free __cdecl char(ulong,ulong)
@@ -15,13 +16,8 @@
 
 class CThing;
 class CThingBuilding;
-class CBaseIntelligentPointer {                   // 8 bytes: vptr + item
-public:
-    virtual void v00();
-    CThing* m_pItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 struct bidirectional_iterator_tag { bidirectional_iterator_tag() { } };   // empty tag (repo idiom: the user-declared

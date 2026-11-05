@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointer<CThingCreatureBase> speaker, CIntelligentPointer<const CThing> target, unsigned long speech, bool interrupt, long priority) -- forwards to the seven-argument AIAction_SpeakAISpeechToTarget with a trailing `true`
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00981EA0, length 130 bytes, `ret 20h`.
 // Callees: CAIStateGroupBase::AIAction_SpeakAISpeechToTarget(...) @ 0x00981350 (thiscall, seven arguments),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, ::GetPItem @ 0x00A01B50, ::SetPItem @ 0x00A01B90,
@@ -12,14 +13,8 @@
 // (0x009812C0 -> 0x00980BD0 AIAction_SpeakToTarget, 0x00981EA0 -> 0x00981350 AIAction_SpeakAISpeechToTarget). Parameter types from the manifest prototype; the 4-byte speech argument is modelled as an id.
 class CBaseObject;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                      // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();

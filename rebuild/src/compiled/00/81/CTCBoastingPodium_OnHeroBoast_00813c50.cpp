@@ -1,4 +1,5 @@
 // CTCBoastingPodium::OnHeroBoast(long boastId, CThing* hero) -- a live hero made a boast: pay its cost out of the hero's money, mark the boast as made and count one boasting position fewer
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -46,12 +47,7 @@ struct CBoast {
     long Cost;                                  // +0x04
     long Reward;                                // +0x08
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
     static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
 public:

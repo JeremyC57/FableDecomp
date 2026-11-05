@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleThingLookAtFace::Update() -- while the thing exists, put the owning camera in front of its face (camera focal position plus 0.75 x its facing) looking at that focal position
 // Leaf: ?Update@CScriptModuleThingLookAtFace
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852B70, length 199 bytes (`ret`).
 // PDB: ?Update@CScriptModuleThingLookAtFace@NCameraModes@@UAEXXZ. The catalog labels this row and 0x00852C40 both CScriptModuleThingLookAtFace;
@@ -45,12 +46,8 @@ public:
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
     CTCGraphicAppearance* GetPTCGraphicAppearance() const { return PTCGraphicAppearance; }
 };
-class CBaseIntelligentPointer { public:                    // CIntelligentPointer<CBaseObject>
-    void* __vftable;
-    void* m_pItem;
-public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CCameraState {
     unsigned char _pad00[0x10];
     C3DVector     LookAt;                            // +0x10

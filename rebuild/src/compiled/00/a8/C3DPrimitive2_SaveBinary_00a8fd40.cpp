@@ -1,4 +1,5 @@
 // C3DPrimitive2::SaveBinary(CDataOutputStream&) const -- write the primitive header, static/animated blocks, the vertex buffer (format block + raw data), the index buffer and every cloth primitive
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A8FD40, 528 bytes (ret 4).
@@ -47,7 +48,7 @@ class CIndexBuffer { public:
 class C3DClothPrimitive { public:
     void SaveBinary(CDataOutputStream& out) const;      // 0x00AC3B00
 };
-template<class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 #include "engine/CArray.h"
 
 struct CStaticBlock {                                   // 0x20 bytes

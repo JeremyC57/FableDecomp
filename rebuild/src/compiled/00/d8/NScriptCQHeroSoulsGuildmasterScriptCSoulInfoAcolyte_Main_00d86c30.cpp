@@ -1,5 +1,6 @@
 // NScript::CQ_HeroSoulsGuildmasterScript::CSoulInfoAcolyte::Main() -- Hero Souls guild acolyte: once the parent quest flags Me ready (+0x4a), take Me under scripted control; then each frame, if the hero talks to Me speak the acolyte line inside a paused movie sequence, and if the hero hits Me (plainly, or with a special ability other than ability 14) speak the on-hit line and make Me and the hero allies
 // Leaf: ?Main@CSoulInfoAcolyte@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: MsgIsHitBySpecialAbilityFrom takes EHeroAbility (slot 41, 0x004AAD20: ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z in Ego_r.pdb and FableWin.pdb); the literal 14 is HERO_ABILITY_HEAL_LIFE_SPELL (engine/EHeroAbility.h, Ego_r enum); engine/EHeroAbility.h included (Ego_r enum EHeroAbility).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D86C30, 1296 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "SCRIPT_NAME_HERO" 0x0125D1C8, "" 0x0122D70E, "TEXT_QST_B04_GUILD_ACOLYTE" 0x012D4C5C, "TEXT_QST_B04_GUILD_ACOLYTE_HIT" 0x012D4C3C.
 // Callees: the landed CEndScythe::Main 0x00D79D50 model: CIsThingAlive (inline dtor) over CScriptThing copy 0x004ABE90 / dtor 0x004AA840,
@@ -33,18 +34,9 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    VPAD16(ma) VPAD4(mb)                                // slots 1..20
-    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
-    VPAD4(mc) VPAD1(mg)                                 // slots 22..26
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    VPAD8(md) VPAD4(me) VPAD1(mf)                       // slots 28..40
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/EHeroAbility.h"
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {
@@ -152,7 +144,7 @@ void NScript::CQ_HeroSoulsGuildmasterScript::CSoulInfoAcolyte::Main()
             }
             game->PauseAllNonScriptedEntities(false);
         }
-        if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
+        if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO"))) {
             if (IsActiveThreadTerminating())
                 return;
             CScriptGameResourceObjectMovieBase movie;

@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (the static map tree of pair<const long, CEngineStaticMapFileBlockManager::CFileBlock>) link a new file-block node under parent y (left when y is the header, or w is null and x is set or the key is smaller; else right), fix the header's root/leftmost/rightmost, rebalance and count it; returns the iterator through the hidden pointer
 // Leaf: ?_M_insert@?$_Rb_tree@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members DeleteFunction->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE0B20, 194 bytes (+ int3 padding), `__fastcall`, hidden iterator result + 4
 // arguments (`ret 14h`). The manifest label "predicate_tree_insert_node" is descriptive. Callers: the landed insert_unique
 // 0x00BE0BF0 (two sites).
@@ -16,30 +17,8 @@ extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 void __cdecl operator delete(void* p);                     // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo { public:                                    // the counted pointer's shared block
-    long  RefCount;                                        // +0
-    void (__fastcall* DeleteFunction)(void* data);         // +4
-    void* Data;                                            // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0
-    CCPPointerInfo* Info;                                  // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    void DeleteData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunction(Info->Data);
-                operator delete(Info);
-            }
-        }
-    }
-    void Reset() { DeleteData(); Info = 0; Data = 0; }
-    ~CCountedPointer() { DeleteData(); Data = 0; Info = 0; }
-};
 
 class CBankFileAsyncEntry;
 class CBankFileAsyncData;

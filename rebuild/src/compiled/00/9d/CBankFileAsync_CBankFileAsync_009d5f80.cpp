@@ -1,5 +1,6 @@
 // CBankFileAsync::CBankFileAsync() -- the asynchronous bank file: CBankFile base, null threaded file / memory pool / failure handler, empty async-data sets and disposal list, flags clear, critical section initialised
 // Leaf: ??0CBankFileAsync@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D5F80, length 224 bytes, no arguments, returns `this`.
 // Label correction: catalogued as "CBankFile::CBankFile::ConstructorInitialize"; the vtable stored is 0x0129B8D4 and the members
 // are Ego_r.pdb CBankFileAsync's (Ego_r ??0CBankFileAsync@@QAE@XZ).
@@ -15,11 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 struct RTL_CRITICAL_SECTION_ { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(RTL_CRITICAL_SECTION_* section);   // import 0x0143FEE4
 
-template <class T> class CCountedPointer { public:
-    T* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-};
+#include "engine/CCountedPointer.h"
 struct SRbTreeNode {                               // 0x14 bytes
     unsigned char m_color;                         // +0x00 (0 = red)
     SRbTreeNode*  m_pParent;                       // +0x04

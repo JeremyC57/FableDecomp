@@ -1,5 +1,6 @@
 // CVillageTaskSecuritySweep::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CVillageTaskSecuritySweep inlined (the member's destructor, then the base chain down to the first user-written destructor), and operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCVillageTaskSecuritySweep@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065DD4A, 44 bytes, thiscall, `ret 4`; reached only through vtable slot 0.
 // Identity (proven): CVillageTaskSecuritySweep::`scalar deleting destructor'; evidence: vtable 0x0125A868 slot 0 (RTTI .?AVCVillageTaskSecuritySweep@@ : CVillageTaskBase : CBaseObject : CBaseClass)
@@ -14,13 +15,8 @@
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CThing;
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;                                         // CBaseObjectPointer*
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

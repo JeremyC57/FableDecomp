@@ -1,5 +1,6 @@
 // NUISystem::CMorphingSprite::~CMorphingSprite() -- morphing sprite dtor: delete every engine primitive handle in Handles and empty the list, then the member dtors (GraphicIndices map, Handles list) and ~CSprite
 // Leaf: ??1CMorphingSprite@NUISystem@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005541E0, 260 bytes, tail jump to the base destructor.
 // Identity: the vtable stores 0x0124A49C / 0x0124A474 / 0x0124A46C carry RTTI `.?AVCMorphingSprite@NUISystem@@`; rtti_bases:
 //   CMorphingSprite : CSprite : CChangingStateComponent; Ego_r.pdb has `??1CMorphingSprite@NUISystem@@UAE@XZ`. Label right.
@@ -114,26 +115,7 @@ class map { public:
 };
 } // namespace std
 
-class CCPPointerInfo { public:                              // CCountedPointer count block
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void*         Data;                                     // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    __forceinline void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    __forceinline ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveHandle;

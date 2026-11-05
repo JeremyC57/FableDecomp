@@ -1,6 +1,7 @@
 // C3DMeshObject::operator=(const C3DMeshObject&) -- memberwise copy: mesh info, the counted mesh-stats pointer (same-block test, release, copy, add-ref), the position matrix, the inverse-matrix flag and matrix, the scale
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C3380, length 120 bytes.
 // Leaf: ??4C3DMeshObject
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: the counted block's destroy thunk (`call [info+4]` with the data in ecx, __fastcall) and 0x00BFE9BC
 // operator delete for the block when the count reaches zero.
@@ -10,36 +11,9 @@
 // Shape: the counted-pointer assignment is the landed CCountedPointer::operator= (0x00754F10) inlined: the
 // source block read before the `this->Info != other.Info` compare, the source object between the compare and
 // its branch, the count decremented in place and re-read through the member, the block re-read for delete.
-class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 void __cdecl operator delete(void* p);                   // 0x00BFE9BC
 
-template<class T> class CCountedPointer { public:
-    T*              Data;                                // +0
-    CCPPointerInfo* Info;                                // +4
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            if (Info != 0) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info != 0)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 
 #include "engine/C3DVector.h"
 class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };   // 48-byte POD

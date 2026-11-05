@@ -1,5 +1,6 @@
 // std::__copy_backward(pair* first, pair* last, pair* result, const random_access_iterator_tag&, int*) -- (pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >) assign last-first elements back to front into the range ending at result; returns the new result
 // Leaf: ??$__copy_backward@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE9C00, 149 bytes, `__fastcall` (first in ecx, last in edx; result, the tag reference and the null distance pointer on the stack, `ret 0Ch`).
 // Identity (proven): std::__copy_backward<pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >*, pair<...>*, int> (STLport 4.6 _algobase.h; the PDB builds are Dinkumware); evidence: its caller __linear_insert 0x00AEA270 also calls J050's __unguarded_linear_insert 0x00AE9A40 (<long, NParticleEngine::CParticleEmitter>) -- STLport's `if (comp(val, *first)) { copy_backward(first, last, last + 1); *first = val; } else __unguarded_linear_insert(last, val, comp)` -- and is called by the landed __insertion_sort 0x00AEA530 (pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >) (CParticleEmitterDatabase::Emitters)
 // Label: the manifest's "_Move_backward<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBas" is propagated and wrong (a 16-byte element; family J051: five byte-identical bodies, one per 12-byte element type).
@@ -9,39 +10,7 @@
 // Layout: pair<K, CCountedPointer<V> > is 12 bytes {first +0, second.Data +4, second.Info +8}; CCPPointerInfo {RefCount +0, DeleteFunc +4, Data +8}.
 // Model: the landed 0x00A802A0 body (CNavConnectorNode's instance) on the real STLport signature and agent950's landed CCountedPointer.
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0
-    void (__fastcall* DeleteFunc)(void* data);              // +4, Data in ecx
-    void* Data;                                             // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0
-    CCPPointerInfo* Info;                                   // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 namespace NParticleEngine { class CParticleEmitter; }
 namespace std {
 template <class _T1, class _T2> struct pair {

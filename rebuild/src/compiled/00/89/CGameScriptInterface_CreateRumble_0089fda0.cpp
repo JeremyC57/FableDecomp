@@ -4,6 +4,7 @@
 //          CThing::GetScriptThing @ 0x004C7E50, CBaseClass::CBaseClass @ 0x0099A2D0, CCharString::~CCharString @ 0x0099EAE0 (the by-value name).
 // Shape: CScriptThing returned by hidden pointer; the null script thing is built inline.
 // Leaf: CreateRumble
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 class CCharString { public:                               // fable_string.h layout: one data-block pointer
     void* m_pData;
@@ -15,11 +16,7 @@ class CCharString { public:                               // fable_string.h layo
 struct SCountBlock;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
-template <class T> class CCountedPointer { public:                          // the counted pointer member: an inline constructor zeroes both words after the vtable store
-    CScriptThingImp* Data;                         // +4
-    SCountBlock*     Info;                         // +8
-    CCountedPointer() : Data(0), Info(0) {}
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // NUISystem::CText::FitInWindow(CWideString& text, const C2DBoxF& window) -- word-wrap the text to the window width line by line, rebuilding it with explicit newlines, and return the wrapped height in font lines (one font height when the window is empty)
 // Leaf: ?FitInWindow@CText@NUISystem
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054F8E0, length 560 bytes, `ret 8`.
 //   FableWin.pdb: ?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z.
 // Callees: CWideString ctor() 0x0099AED0 (catalog "CCharString" is a byte twin), GetAsCharArray()
@@ -40,15 +41,10 @@ void __fastcall WordWrap_SetCallback(TWordWrapCharWidthCallback charWidth, TWord
 const unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, unsigned int width, const unsigned short** lineEnd);   // 0x00A10390
 
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CFontBank { public:
     void* _vf;
     long Height;                                            // +0x04
-};
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
 };
 
 namespace NUISystem {

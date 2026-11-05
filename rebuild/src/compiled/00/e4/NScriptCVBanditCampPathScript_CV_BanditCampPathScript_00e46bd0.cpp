@@ -1,5 +1,6 @@
 // NScript::CV_BanditCampPathScript::CV_BanditCampPathScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: script base, owner/interface pair, vtable 0x012E4A9C, empty Bandits vector, two empty CScriptThing members
 // Leaf: ??0CV_BanditCampPathScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00E46BD0, 93 bytes (+ int3 padding), `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110 (manifest label "CHeroMorphDef" is propagated, see GOTCHAS),
 // CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing root, twice); CScriptThing vtable 0x01238C8C.
@@ -33,13 +34,8 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:                // CScriptThing::PImp
-    CScriptThing* Data;                              // +0
-    CCPPointerInfo* Info;                            // +4
-    CCountedPointer() : Data(0), Info(0) { }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #include "engine/CScriptThing.h"

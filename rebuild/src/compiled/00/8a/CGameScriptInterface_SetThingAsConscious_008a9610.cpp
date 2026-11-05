@@ -1,5 +1,6 @@
 // CGameScriptInterface::SetThingAsConscious(const CScriptThing&, bool, const CCharString&) const -- knock a live creature out (fall-stunned, with an animation) or bring it round (recover from stunned)
 // Leaf: ?SetThingAsConscious@CGameScriptInterface@@UBEXABVCScriptThing@@_NABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x008A9610, 162 bytes, `ret 0Ch`; Ego_r.pdb same symbol.
 // Body: if thing.IsAlive() (CScriptThing slot 75, +0x12c) and its thing (slot 11, +0x2c) is non-null, not dead
 // (+0x91 bit 0), a creature (ThingTypeFlags +0x6c bit 3) holding interface 0x31 (UsingComponents[1] bit 17, +0x24):
@@ -30,8 +31,7 @@ public:
         return false;
     }
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // CGameScriptInterface::GiveHeroYesNoQuestion(const CCharString& question, const CCharString& yesText, const CCharString& noText, const CCharString& extraText, bool pauseGame) const -- close the hero's boast UI, optionally pause, show the yes/no question as a subtitle (the four-answer form only when the extra text is non-empty), then let the boast UI open again
 // Leaf: GiveHeroYesNoQuestion
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0089E540, 458 bytes, `ret 0x14`.
@@ -42,12 +43,7 @@ class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CCharString& a, const CCharString& b, const CCharString& c, const CCharString& d,
                  unsigned long colour, float time, bool f, bool g);                         // 0x00492FB4
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:

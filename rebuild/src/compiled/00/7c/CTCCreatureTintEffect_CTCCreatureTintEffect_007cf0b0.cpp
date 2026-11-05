@@ -1,5 +1,6 @@
 // CTCCreatureTintEffect::~CTCCreatureTintEffect() -- the creature tint-effect component's destructor: its vtable, the TintList intelligent pointers destroyed in place and the vector block freed, the tint def pointer released, then ~CTCBase
 // Leaf: ??1CTCCreatureTintEffect@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CF0B0, 86 bytes, thiscall, tail `jmp ~CTCBase` 0x00686830.
 // Identity (proven, two sources): it stores vtable 0x0126F13C first (rtti-vtables.tsv: RTTI .?AVCTCCreatureTintEffect@@ : CTCBase :
 //   CBaseClassNonCopyable : CBaseClass); its only caller is the scalar deleting dtor 0x007CF390, slot 0 of 0x0126F13C; the ctor
@@ -56,18 +57,8 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                             // vtable 0x0129C95C (vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10 ??1CBaseIntelligentPointer@@UAE@XZ
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CSpecialAbilitiesCreatureTintDef;
 

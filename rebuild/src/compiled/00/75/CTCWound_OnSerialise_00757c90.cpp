@@ -1,5 +1,6 @@
 // CTCWound::OnSerialise(CPersistContext&, bool) -- save or load the wound list: the count, then each wound's duration and morph index under numbered names; a loaded wound is rebuilt from the creature def's wound morph table and appended, then the list is trimmed to 15
 // Leaf: ?OnSerialise@CTCWound
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00757C90, 765 bytes (+ int3 padding), `ret 8`.
 // Callees: CPersistContext::Transfer(const char*, long&, const long&) 0x00410BE0 / Transfer(const char*, unsigned long&,
 //   const unsigned long&) 0x004106F0; GFIntToCharString 0x0099F830 / operator+(const char*, const CCharString&) 0x0099F690
@@ -31,11 +32,7 @@ class CWoundMorphs { public:
     const CEntry* GetPRandomWoundForLocation(EBodyLocation location, unsigned long& seed, long& index) const;   // 0x00757870
     const CEntry* GetPWoundWithIndex(long index) const;     // 0x00757930
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;                                              // +0x00
-    void* Count;                                             // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 class CCreatureDef { public:

@@ -3,6 +3,8 @@
 //   a bool accessor over the +0x91 bit) closes the "final-bool tail folding" gap: the bit-field read in the && chain folded
 //   into `mov al,1 ; test al,dl`, the bool accessor keeps retail's `test byte ptr [eax+91h],1 ; jne`.
 // Leaf: ?IsStillRunnable@CAIStateGroup_PrepareMeal@@MAE_NXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00946330, 76 bytes (+ int3 padding), thiscall virtual (slot 14), `ret`.
 // Identity (proven): Ego_r.pdb donor order IsTimeToPrepareMeal (0x0096A0B0) / IsStillRunnable (0x0096A160) = retail 0x009462A0 /
 //   this row (vtable slot 14); the label agrees.
@@ -27,21 +29,9 @@ public:
     virtual ~CBaseClass();
 };
 class CBaseObject : public CBaseClass { };
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-private:
-    void* PData;                                        // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-};
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                            // +0x00
-    T* operator->() const { return Data; }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
 class CClass : public CBaseObject { };
 class CThing : public CClass {
 public:

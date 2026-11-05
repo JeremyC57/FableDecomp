@@ -1,4 +1,5 @@
 // NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Init() -- set Briar Rose up for the ship-summoning quest: brain state 1, no follow/wait expressions, persistent, may follow the hero, no information, weapons sheathed, an ally of the hero, damageable but not killable, and not counted for the combo multiplier
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF1760, length 159 bytes (+1 int3 padding) (vtable entry at 0x012DE1B0, the Init slot).
 // PDB: ?Init@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@EAEXXZ; layout (32 bytes) = CEntityScriptBase {vptr,
@@ -11,11 +12,9 @@
 // before the nested GetHero call (ebx keeps it).
 #include "engine/C3DVector.h"
 
-class CScriptThing { public:                            // vtable 0x01238C8C
-    virtual const C3DVector& GetPos() const;
-    void* PImp_Data;                             // +0x04
-    void* PImp_Info;                             // +0x08
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();

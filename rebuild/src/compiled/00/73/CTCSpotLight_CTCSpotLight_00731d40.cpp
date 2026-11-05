@@ -1,5 +1,6 @@
 // CTCSpotLight::CTCSpotLight(CThing* thing) -- CTCBase(thing) + the graphic-appearance component base, light info/def/primitive cleared, flicker factors 1.0, then register with the owner's graphic appearance
 // Leaf: ??0CTCSpotLight
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00731D40, length 108 bytes (`ret 4`). Vtables (rtti-vtables.tsv): CTCSpotLight primary
 // 0x01266FBC, CTCSpotLight's NGraphicAppearance::CAGraphicAppearanceComponent side 0x01266FA4 at +0xC; the component base's own
 // vtable 0x0125A170 is stored first by its inline ctor (same as the landed CTCLight ctor 0x00640F00).
@@ -14,7 +15,7 @@
 // +0x28 first), then `PLightDef = CDefPointer()` -- the inline operator= releases the old def through a pointer local (null test, `dec [ecx+4] ; jne`, slot 1; the member form re-reads),
 // zeroes it inside the test and stores the new (null) object again.
 class CThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 namespace NGraphicAppearance {
 class CPrimitive;
 class CAGraphicAppearanceComponent;
@@ -51,11 +52,6 @@ template<class T> class CDefPointer { public:
 };
 class CSpotLightDef : public CDefPointeeBase { public: };
 struct CSpotLightInfo;
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
 class CTCBase { public:
     virtual ~CTCBase();
     CThing* ParentThing;                            // +0x04

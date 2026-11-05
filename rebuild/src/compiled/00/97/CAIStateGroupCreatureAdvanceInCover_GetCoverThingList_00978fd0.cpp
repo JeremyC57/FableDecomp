@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList(CThingVector&) -- collect unoccupied cover closer to the enemy than the present cover (or creature).
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00978FD0, 287 bytes excluding padding. Shared AdvanceInCover/UseCoverBase/Base/Brain headers audited.
 // UseCoverBase exposes PCoverThing at the retail unaligned +0x1f; inherited intelligent enemy handle at +0x14 is opaque in its generated header.
@@ -13,9 +14,8 @@ class C2DVector { public: float X,Y; C2DVector(const C3DVector& p):X(p.X),Y(p.Y)
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingRetail : public CThing { public:  }; // 0x004C73D0
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerRetail {  }; // 0x00A01B50 (opaque handle methods)
 struct CThingVector { CThingRetail** first; CThingRetail** last; CThingRetail** limit; unsigned char allocators[4]; };
 class CThingFilter_CanBeUsedAsCover { public: CThingFilter_CanBeUsedAsCover() {} bool operator()(CThingRetail*) const; }; // 0x006A7AB0

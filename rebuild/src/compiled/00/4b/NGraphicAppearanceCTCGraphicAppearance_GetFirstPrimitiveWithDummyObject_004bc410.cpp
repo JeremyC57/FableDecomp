@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::GetFirstPrimitiveWithDummyObject(const CCharString& name) const -- the first mesh primitive whose mesh carries the named dummy object, or 0
 // Leaf: GetFirstPrimitiveWithDummyObject
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BC410, length 224 bytes (+ int3 padding). __fastcall, `ret 4`.
 //         Ego_r.pdb `?GetFirstPrimitiveWithDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBEPBVCPrimitive@2@ABVCCharString@@@Z`.
 // Callees: Calc @ 0x004014A0 (`__fastcall(0, chars, length)` CRC of the name; the empty literal 0x0129AAF4 for a
@@ -26,28 +27,7 @@ public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
 };   // 0x004014A0: CRC
 
-class CCPPointerInfo { public:                                     // PDB: RefCount +0, DeleteFunc +4, Data +8
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                                   // +0
-    CCPPointerInfo* Info;                                   // +4
-    T* operator->() const { return Data; }
-    ~CCountedPointer()
-    {
-        if (Info != 0) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class C3DMeshStats { public:
     bool HasDummyObject(unsigned long key) const;           // 0x00A2EA60

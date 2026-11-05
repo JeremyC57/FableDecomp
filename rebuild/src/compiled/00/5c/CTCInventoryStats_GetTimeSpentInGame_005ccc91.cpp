@@ -1,5 +1,6 @@
 // CTCInventoryStats::GetTimeSpentInGame(unsigned long frames, const NGameText::CDataBank* bank) -- formats the play time (frames at 15 per second) as "<Time spent>: <h> <hour(s)> <m> <mins>" from the game text bank
 // Leaf: ?GetTimeSpentInGame@CTCInventoryStats@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members PInfo->Info are the header CCountedPointer's (same offsets).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CCC91, 538 bytes (0x21A, no padding), static __fastcall `ret 4` (hidden return
@@ -50,12 +51,7 @@ public:
 };
 }
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                                                        // +0x00
-    void* PInfo;                                                                       // +0x04
-    T* Get() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CMainGameComponent {
 protected:

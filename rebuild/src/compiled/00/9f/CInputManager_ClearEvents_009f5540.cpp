@@ -1,5 +1,6 @@
 // CInputManager::ClearEvents() -- empty the processed and stored event vectors, zero the stored-event count, and clear every joystick (its virtual reset plus Clear), the mouse and the keyboard
 // Leaf: ClearEvents
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F5540, length 123 bytes.
 // Callees: vector<CInputEvent>::erase(first, last) @ 0x009F67E0 (x2), the joystick's virtual slot 15 (+0x3c) and Clear
 // @ 0x009E42C0, CMouse::Clear @ 0x00A66C00, CKeyboard::Clear @ 0x00A66860 (tail jump; the three Clear labels read
@@ -38,10 +39,7 @@ public:
     virtual void ResetState();                     // slot 15 (+0x3c)
     void Clear();                                  // 0x009E42C0
 };
-template <class T> class CCountedPointer { public:        // {object, count block}
-    T*    Data;
-    void* m_block;
-};
+#include "engine/CCountedPointer.h"
 class CMouse {
 public:
     void Clear();                                  // 0x00A66C00

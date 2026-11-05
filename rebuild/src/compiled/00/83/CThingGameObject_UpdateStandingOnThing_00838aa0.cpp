@@ -1,5 +1,6 @@
 // CThingGameObject::UpdateStandingOnThing() -- wakes the object's physics (SetAsMoving(true)) when it is resting on nothing, or on a thing whose own physics is moving
 // Leaf: UpdateStandingOnThing
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00838AA0, length 128 bytes.
 // Callees: CTCPhysicsBase vtable 0x0125D2C4 slots 52/55/56 (+0xd0 0x006B1180, +0xdc 0x006B11B0, +0xe0 0x006B11C0; unnamed state
 // queries), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCPhysicsBase::SetAsMoving(bool) @ 0x006B0130.
@@ -24,12 +25,8 @@ class CBaseObject { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };
-struct CBaseIntelligentPointer {
-    void* m_vfptr;
-    void* m_pItem;
-public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingGameObject : public CBaseObject { public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91

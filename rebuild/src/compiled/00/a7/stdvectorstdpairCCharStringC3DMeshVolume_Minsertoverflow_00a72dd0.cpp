@@ -1,5 +1,6 @@
 // std::vector<std::pair<CCharString, C3DMeshVolume>>::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- STLport growth insert for the 16-byte named mesh-volume entries: allocate size + max(size, fill_len), copy the head, x once or fill_len times, the tail unless atend, destroy + free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@V?$allocator@U?$pair@VCCharString@@VC3DMeshVolume@@@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@VC3DMeshVolume@@@2@ABU32@ABU__false_type@2@I_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A72DD0, 262 bytes, thiscall `ret 14h` (five arguments).
 // Identity (probable): the element is pair<CCharString, C3DMeshVolume> -- CPhysicsMesh::ContainmentVolumes' CVectorMap entry
 //   (Ego_r.pdb), the type the landed callees 0x00A6FED0 (__uninitialized_copy) and 0x00A70EE0 (the destroy loop) model, and
@@ -21,22 +22,8 @@ public:
     CCharString(const CCharString& other);                 // 0x0099EC30
 };
 
-struct SCountBlock {
-    long m_references;                                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);                // +4
-    void* m_pObject;                                       // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer {
-public:
-    T* m_pObject;                                          // +0
-    SCountBlock* m_pCount;                                 // +4
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-};
 
 class CContainmentVolume;
 

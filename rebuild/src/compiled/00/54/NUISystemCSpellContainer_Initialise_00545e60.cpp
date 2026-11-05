@@ -1,5 +1,6 @@
 // NUISystem::CSpellContainer::Initialise() -- the state-component initialisation, then copy every child into the base-spell list and clear the pending spell
 // Leaf: Initialise
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Item->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00545E60, 147 bytes (plain `ret`).
 // Callees: NUISystem::NUISystem::CChangingStateComponent::Initialise @ 0x0052C730 (landed), vector<CCountedPointer<CComponent>>::
 // _M_insert_overflow(pointer, const T&, const __false_type&, size_type, bool) @ 0x005359D0 (manifest "std::vector::_Reallocate").
@@ -14,21 +15,7 @@
 #include <stddef.h>
 inline void* operator new(size_t, void* where) { return where; }
 
-class CCPPointerInfo { public:
-    long  Count;                                   // +0x00
-    void (__fastcall* Destroy)(void* item);        // +0x04
-    void* Item;                                    // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info)
-    {
-        if (Info)
-            ++Info->Count;
-    }
-};
+#include "engine/CCountedPointer.h"
 struct __false_type {
     __false_type() {}
 };

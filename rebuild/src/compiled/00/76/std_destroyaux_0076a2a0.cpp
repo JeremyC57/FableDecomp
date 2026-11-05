@@ -1,5 +1,6 @@
 // std::__destroy_aux(AttackParticleAndEndPoints* first, AttackParticleAndEndPoints* last, const __false_type&) -- destroy every record of [first, last)
 // Leaf: ??$__destroy_aux@PAUAttackParticleAndEndPoints@@@std@@YIXPAUAttackParticleAndEndPoints@@0ABU__false_type@0@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0076A2A0, 51 bytes, `__fastcall` (first ecx, last edx, the tag by reference), `ret 4`.
 // Identity (probable): 24-byte records destroyed in CTCObjectAugmentations' code (callers AttachAugmentationParticles 0x007677E0 and the vector helpers 0x0076A990..0x0076B320) with an intelligent pointer at +0x10 and CCharStrings at +4 / +0; Ego_r.pdb CTCObjectAugmentations holds vector<vector<AttackParticleAndEndPoints> > and AttackParticleAndEndPoints is 24 bytes with ParticleEffect, a CIntelligentPointer<CThing>, at +0x10.
 // Callees: the member destructors (CCharString::~CCharString 0x0099EAE0, CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10).
@@ -11,13 +12,9 @@ public:
     void* PStringData;
 };
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                           // vtable 0x0129C95C
-public:
-    virtual ~CBaseIntelligentPointer();                   // 0x00A01C10
-    CBaseObjectPointer* PData;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 struct AttackParticleAndEndPoints {                       // Ego_r.pdb, 24 bytes (the first 16 bytes unnamed there)
     CCharString _unnamed_0x0;                             // +0x0
     CCharString _unnamed_0x4;                             // +0x4

@@ -1,5 +1,6 @@
 // CTCRandomAppearanceMorph::CTCRandomAppearanceMorph(CThing& thing) -- thing-component and appearance-component bases, an empty mesh-morph set, the appearance seed taken from (and advancing) the world seed, then registration with the owner's graphic appearance
 // Leaf: ??0CTCRandomAppearanceMorph
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00728000, 188 bytes (`ret 4`; PDB ??0CTCRandomAppearanceMorph@@QAE@AAVCThing@@@Z).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, operator new @ 0x00BFEA1A (0x18), CCountedPointer<CMeshMorphSet>::Reset(T*)
 //   @ 0x007222F0 (manifest type argument propagated), CThing::PeekComponent() const @ 0x004C7A70 (PDB
@@ -59,12 +60,7 @@ class CTCAppearanceMorphBase { public:
         vector<long> TextureMorphs;
     };
 };
-template <class T> class CCountedPointer { public:             // {object, count block}
-    T*    Object;
-    void* Info;
-    CCountedPointer() : Object(0), Info(0) { }
-    void Reset(T* object);                              // 0x007222F0
-};
+#include "engine/CCountedPointer.h"
 class CTCRandomAppearanceMorph : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:
     CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet> PMeshMorphSet;   // +0x10
     unsigned long     Seed;                             // +0x18

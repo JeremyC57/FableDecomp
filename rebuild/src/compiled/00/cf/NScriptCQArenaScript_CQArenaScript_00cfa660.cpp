@@ -1,5 +1,6 @@
 // NScript::CQ_ArenaScript::CQ_ArenaScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: script base, interface/owner pair, vtable 0x012C7798, twenty empty crowd-loop tags, an empty Rounds vector, two empty CScriptThing members and a registered crowd timer
 // Leaf: ??0CQ_ArenaScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Naming wave 16 (c673): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (void* owner, CGameScriptInterface*);
@@ -46,13 +47,8 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:                // CScriptThing::PImp
-    CScriptThing* Data;                              // +0
-    CCPPointerInfo* Info;                            // +4
-    CCountedPointer() : Data(0), Info(0) { }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #include "engine/CScriptThing.h"

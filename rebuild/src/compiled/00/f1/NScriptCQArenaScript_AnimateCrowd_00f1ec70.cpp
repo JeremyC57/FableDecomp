@@ -1,4 +1,5 @@
 // CQ_ArenaScript::AnimateCrowd() -- collect every "AudienceMember" thing and start a random looping crowd animation on each, then put each into cutscene behaviour 2
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F1EC70, length 582 bytes + a 5-entry jump table (padded to 608).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; rand 0x00BFEB16; operator delete 0x00BFE9BC
 // (CCountedPointer info block); free 0x00BFEA14 (vector storage); CBaseClass::~CBaseClass 0x0099A2E0; CScriptThing
@@ -21,33 +22,8 @@ extern "C" int rand();                                 // 0x00BFEB16
 extern "C" void free(void* p);                         // 0x00BFEA14
 void operator delete(void* p);                         // 0x00BFE9BC
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CCPPointerInfo { public:                                // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImpl;
-template <class T> class CCountedPointer { public:
-    CScriptThingImpl* Data;
-    CCPPointerInfo*   Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

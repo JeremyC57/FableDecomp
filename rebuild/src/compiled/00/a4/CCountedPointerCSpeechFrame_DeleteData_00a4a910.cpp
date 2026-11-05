@@ -1,5 +1,6 @@
 // CCountedPointer<CSpeechFrame>::DeleteData(void* data) -- the counted pointer's per-type deleter: destroy the speech frame (free its frequency array storage) and free the object
 // Leaf: ?DeleteData@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4A910, length 33 bytes, `ret` (static `__fastcall`, data in ecx).
 // Referenced (absolute) at 0x00A4ABB0 by CCountedPointer<CSpeechFrame>::Reset 0x00A4AB60 (landed), which stores it as the
@@ -33,13 +34,6 @@ public:
     float FrequencyVariance;                         // +0x18
 };
 
-class CCPPointerInfo;
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;                            // +0x00
-    CCPPointerInfo* Info;                            // +0x04
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<CSpeechFrame>;

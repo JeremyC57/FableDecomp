@@ -1,6 +1,7 @@
 // CTCDExplosiveTrail::CTCDExplosiveTrail(CThing* owner) -- construct the explosive-trail driver: CTCDriverBase(owner), the PTarget intelligent pointer, Timer -1, Terminated false, an empty ComponentTraps list, an empty ThingsToIgnore vector and a null PDef
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3401, length 80 bytes.
 // Leaf: ??0CTCDExplosiveTrail
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Callees: CTCDriverBase::CTCDriverBase(CThing*) @ 0x00771200, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 // the list<pair<CIntelligentPointer<CThing>, long>> constructor @ 0x004DB72D (out of line: head = malloc(0x14) linked to
 // itself; takes the allocator by const reference). Vtables: CTCDExplosiveTrail @ 0x01242B4C (RTTI),
@@ -27,17 +28,9 @@ class CTCDriverBase { public:
     long    m_baseWord;                            // +0x08
 };
 
-struct CBaseIntelligentPointer {
-    CBaseIntelligentPointer();                     // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    virtual void v00();
-    void* m_pItem;                                 // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer() { }
-    virtual void v00();
-};
 
 struct STrapAllocator {                            // std::allocator<pair<CIntelligentPointer<CThing>, long>>
     STrapAllocator() { }

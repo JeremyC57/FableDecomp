@@ -1,4 +1,5 @@
 // CAIStateGroup_StayNearSchool::Update() -- during school hours, keep walking back to within 15 units of the (alive)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // school while the kid's village school is open; terminate when any of that stops holding.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00916910, length 300 bytes (+ int3 padding).
@@ -128,14 +129,8 @@ class CThing { public:
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     virtual void v00();

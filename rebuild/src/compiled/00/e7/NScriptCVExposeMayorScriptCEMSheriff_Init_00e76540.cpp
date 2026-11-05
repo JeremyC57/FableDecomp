@@ -1,5 +1,6 @@
 // NScript::CV_ExposeMayorScript::CEM_Sheriff::Init() -- set Rhodri up for the Expose-the-Mayor quest: clear the four conversation flags, then six game-interface calls on Me (thing flags 1, a by-value hand-over and four zero-argument setters)
 // Leaf: ?Init@CEM_Sheriff@CV_ExposeMayorScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E76540, length 142 bytes (+ int3 padding).
 // Callees: the game interface (Game, +4) virtual slots 360 (+0x5a0, (Me, 1, 0, 0)), 844 (+0xd30, Me by value, 0), 745 (+0xba4), 517 (+0x814),
 // 526 (+0x838) and 516 (+0x810) -- slot numbers as in the landed CBriarRose::Init 0x00D9E9E0 / CNOVI_TeddyGirl::Init 0x00DAF000, names
@@ -13,15 +14,7 @@
 // Naming wave 35: identity reg 00e75c4c "EM_Sheriff" in 00e75ba0; Alloc 00e76470; vtable 012e98b4 slot 2; PDB ?Init@CEM_Sheriff@CV_ExposeMayorScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); replaces CEM_Rhodri::Init: CEM_Rhodri::Init is at 00e766a0 (its own vtable slot) (wave3/labels_alloc.tsv); PDB ?Init@CEM_Sheriff@CV_ExposeMayorScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CEM_Rhodri@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own); class CEM_Rhodri renamed CEM_Sheriff); same bytes.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-template <class T> class CCountedPointer { public:                 // CCountedPointer<CScriptThing>: {Data, Info}, the count word at Info+0
-    void* Data;                               // +0x00
-    long* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++*Info;
-    }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

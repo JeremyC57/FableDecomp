@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntityTeleportToThing(const CScriptThing& entity, const CScriptThing& target, bool b) const -- script call: teleports a valid entity to a valid target's position and facing angle (through EntityTeleportToPosition)
 // Leaf: ?EntityTeleportToThing@CGameScriptInterface@@UBEXABVCScriptThing@@0_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0088E540, 86 bytes, thiscall `ret 0Ch`.
 // Identity (proven): retail CGameScriptInterface vtable 0x01260F0C slot 472 holds this body; slot 472 is
@@ -11,8 +12,7 @@
 //   are the Ego_r.pdb CScriptThing virtuals with these signatures (UBEABVC3DVector@@XZ, UBEMXZ); their slot numbers are
 //   not proven (virtual calls bind no symbol). The last bool's name is not in the name sets (descriptive).
 #include "engine/C3DVector.h"
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

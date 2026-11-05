@@ -1,5 +1,6 @@
 // std::list::erase(iterator position) -- (list<CMessageEvent >) STLport 4.6 single-node erase: unlink the node, destroy its element through the element's virtual destructor, free the node and return the iterator to the following node
 // Leaf: ?erase@?$list@VCMessageEvent@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004937CB, 43 bytes (+ int3 padding), thiscall, `ret 8` (hidden iterator result + the
 //   iterator by value), returns the result pointer.
 // Identity: list<CMessageEvent > -- proven; evidence: its only caller is the landed CMessageEventManager::RemoveMessage 0x00493B5B, erasing from the list at +4 = Ego_r.pdb CMessageEventManager::Messages (list<CMessageEvent>, after World +0); the element destroyed through vtable slot 0 is CMessageEvent (RTTI vtable 0x0125BE8C, 0x58 bytes); the PDB name sets hold list<CMessageEvent>::erase
@@ -17,15 +18,8 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 class CThing;
 class CFaction;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // 8 bytes (Ego_r.pdb): vptr, PData
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual ~CIntelligentPointer();
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CMessageEvent {                                    // 0x58 bytes, vtable 0x0125BE8C (Ego_r.pdb layout)
 public:
     virtual ~CMessageEvent();                            // slot 0 (0x006872B0)

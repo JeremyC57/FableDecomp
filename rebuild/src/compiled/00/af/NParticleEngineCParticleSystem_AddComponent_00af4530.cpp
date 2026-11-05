@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::AddComponent(const CCharString& typeName, const unsigned long& instanceName, bool enabled, bool unused) -- create a component of the named type through the component factory, attach it to this system, wrap it in a component instance and insert it into the component map at the upper bound of its type
 // Leaf: AddComponent
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members Count->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF4530, 298 bytes, `ret 10h`. PDB: ?AddComponent@CParticleSystem@NParticleEngine@@QAEAAVCPSCBase@2@ABVCCharString@@ABK_N2@Z
 //   (returns the component by reference; the fourth argument is not read by the retail body).
 // Callees: the component factory getter 0x00AEAB00 (returns the global 0x013D2E24; catalogued "GFGetPreMainMemoryUsed") and
@@ -31,35 +32,8 @@ public:
     CPSCBase* CreateComponent(const CCharString& typeName);   // 0x00AF28C0
 };
 
-struct SCountBlock {
-    long  Count;                                   // +0x00
-    void (__fastcall* Destroy)(void* object);      // +0x04
-    void* Object;                                  // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> struct CCountedPointer {
-    T*           Object;
-    SCountBlock* Info;
-    CCountedPointer() : Object(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& other) : Object(other.Object), Info(other.Info)
-    {
-        if (Info)
-            ++Info->Count;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->Count;
-            if (Info->Count == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-        Object = 0;
-        Info = 0;
-    }
-    void Reset(T* object);                         // 0x00AF6010 for T = CPSCBase
-};
 
 }   // the retail root is file scope
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

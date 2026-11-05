@@ -1,5 +1,6 @@
 // std::vector::resize(unsigned int n, const T& value) -- Resize a counted-pointer vector with explicit destruction on shrink.
 // Leaf: ?resize@?$vector@V?$CDefPointer@$$CBVCThingBaseDef@@@@V?$allocator@V?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@@std@@QAEXIABV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity: Own copy0071fa60 and destroy005b26e9 prove CDefPointer<const CThingBaseDef>; creature-generator callers00767200/007673c0.
 // Layout: original pointer wrapper is4bytes; STLport vector is12bytes.
 #ifndef _MSC_VER
@@ -8,7 +9,7 @@
 #endif
 class CThingBaseDef;class CParticleSimulation;class CEngineSceneGrid;class CCPPointerInfo;
 template<class T>class CDefPointer{public:T* Object;~CDefPointer();};
-template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;~CCountedPointer();};
+#include "engine/CCountedPointer.h"
 namespace std {
 struct __false_type{__false_type(){}};
 struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{random_access_iterator_tag(){}};

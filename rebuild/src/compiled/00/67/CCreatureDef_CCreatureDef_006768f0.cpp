@@ -1,5 +1,6 @@
 // CCreatureDef::~CCreatureDef() -- the creature definition's destructor: free the radius-weight map, the DialogueVoices vector, the PhonemeAnim map and the two action/modifier vectors, release the PStats / PExpressions / PRandomAppearanceMorph / PWoundMorphs counted pointers, then run the CDefPointeeBase / CResource base destructors
 // Leaf: ??1CCreatureDef@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006768F0, 352 bytes (349 without padding), thiscall, ends in `jmp` to the base dtor.
 //   Vtables: CCreatureDef 0x0125B43C (rtti-vtables.tsv; slot 0 is the landed scalar deleting dtor 0x006768D0, which
 //   calls this), CDefPointeeBase 0x01230BA0 (the inline base dtor's store; CDefClassBase's store is dead and dropped).
@@ -46,29 +47,8 @@ public:
     unsigned char       Flag2 : 1;
 };
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                            // +0x00
-    void (__fastcall* DeleteFunc)(void* data);         // +0x04
-    void*         Data;                                // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                              // +0x00
-    CCPPointerInfo* Info;                              // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CCharString {
 public:

@@ -1,5 +1,6 @@
 // C3DMeshFileTrianglesChunk::~C3DMeshFileTrianglesChunk() -- store the own vtable, free TriangleList's element block (the STLport vector destructor inline: trivial elements, then `if (_M_start) free(_M_start)`), then the CChunkedFileSuperChunk destructor as a tail jump
 // Leaf: ??1C3DMeshFileTrianglesChunk@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABC890, 33 bytes (+ int3 padding to 48), thiscall, tail `jmp` to the base destructor.
 // Identity (proven): C3DMeshFileTrianglesChunk::~C3DMeshFileTrianglesChunk() (Ego_r.pdb / FableWin.pdb ??1C3DMeshFileTrianglesChunk@@UAE@XZ); evidence: it stores the C3DMeshFileTrianglesChunk vtable 0x0129ED34 first (RTTI .?AVC3DMeshFileTrianglesChunk@@; bases CChunkedFileSuperChunk <- CChunkedFileChunk <- CBaseClassNonCopyable <- CBaseClass) and tail-jumps to the parent's destructor
@@ -27,8 +28,7 @@ public:
     char                    ChunkType[5];                       // +0x04
     CChunkedFileSuperChunk* Parent;                             // +0x0C
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // 8 bytes
+#include "engine/CCountedPointer.h"
 class CChunkedFileSuperChunk : public CChunkedFileChunk {   // retail 0x2C bytes (Ego_r.pdb 0x34)
 public:
     virtual ~CChunkedFileSuperChunk();                          // 0x00AA8490

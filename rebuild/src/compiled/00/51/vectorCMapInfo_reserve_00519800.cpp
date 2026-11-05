@@ -1,5 +1,6 @@
 // vector<CMapInfo>::reserve(unsigned int n) -- STLport reserve for CWorldMap's 72-byte map records: when the capacity is short, move the records into a fresh n-slot block (allocate-and-copy, destroy, free) or just allocate one
 // Leaf: ?reserve@?$vector@VCMapInfo@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets).
 //
 // Retail 0x00519800, 164 bytes (+ int3 padding to 176), thiscall `ret 4`.  Callees: 0x00515020 vector<CMapInfo>::_M_allocate_and_copy(n, first,
 //   last) (thiscall), 0x00515250 __destroy_aux<CMapInfo*> (landed as `_Destroy_range_CMapInfo`; /Gr __fastcall, the
@@ -25,12 +26,7 @@ public:
     long X0, Y0, X1, Y1;
 };
 class CMap;
-template <class T> class CCountedPointer {
-public:
-    T*    Object;                              // +0x0
-    void* Block;                               // +0x4 (count block)
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CMapInfo {                               // Ego_r.pdb, 72 bytes
 public:
     C2DBoxI               Area;                // +0x00

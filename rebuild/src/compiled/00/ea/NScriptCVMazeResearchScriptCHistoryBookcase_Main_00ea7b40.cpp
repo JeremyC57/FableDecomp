@@ -1,5 +1,7 @@
 // NScript::CV_MazeResearchScript::CHistoryBookcase::Main() -- Maze research history bookcase: unless the book was already read, make it usable with a quest-vignette minimap marker, wait for the hero to use it, set the quest-card objective, move the marker to EmptyGrave, flag BookRead and show journal entries 10..40 one after another (each until clicked past); then idle until terminated
 // Leaf: Main
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first); the local's flattened PImp_Data / PImp_Info reads are the header's by-value PImp (CCountedPointer<CScriptThing>) .Data / .Info (+0x04 / +0x08).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EA7B40, 938 bytes (+ int3 padding).
 // Callees: IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0, CScriptThing dtor 0x004AA840; GameCalls slots
 //   7 NewScriptFrame, 40 MsgIsGameInfoClickedPast, 72 GetThingWithScriptName, 115 DisplayGameInfo, 296 SetQuestCardObjective,
@@ -14,19 +16,9 @@
 //   before the name's destructor.
 class CCharString;
 struct CScriptThingImpl;
-class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
- virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
- virtual bool IsAwareOfHero() const;              // slot 16 (+0x40) 0x004AAAC0
- virtual void v17(); virtual void v18(); virtual void v19();
- virtual bool MsgIsUsedBy(const CCharString& name) const;  // slot 20 (+0x50)
- virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
- CScriptThingImpl* PImp_Data;
- void* PImp_Info;
- CScriptThing(const CScriptThing& other);   // 0x004ABE90
- virtual ~CScriptThing();                           // 0x004AA840
- bool IsAlive() const;                      // slot 75, inlined below
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CScriptThingImpl {
  virtual void s00();
  virtual void s01();
@@ -105,7 +97,7 @@ struct CScriptThingImpl {
  virtual void s74();
  virtual bool IsAlive() const;                     // slot 75 (+0x12c)
 };
-inline bool CScriptThing::IsAlive() const { return PImp_Data && PImp_Data->IsAlive(); }
+inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
@@ -986,7 +978,6 @@ class CCharString { public:
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
  ~CCharString();                                    // 0x0099EAE0
 };
-template <class T> class CCountedPointer { public: void* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"

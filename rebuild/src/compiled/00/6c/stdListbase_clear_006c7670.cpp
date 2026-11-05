@@ -1,5 +1,6 @@
 // std::_List_base::clear() -- (list<<CWitnessesSearchingDeed>>) STLport 4.6 list clear: walk the nodes from the sentinel's next, destroy each element and free its node, then relink the sentinel to itself
 // Leaf: ?clear@?$_List_base@VCWitnessesSearchingDeed@@V?$allocator@VCWitnessesSearchingDeed@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C7670, 56 bytes (+ int3 padding to 64), thiscall, plain `ret`.
 // Identity (probable): list<<CWitnessesSearchingDeed>>; evidence: the element's only non-trivial member is an intelligent pointer at element +8; its two callers 0x006C7DC0 / 0x006C82E0 (unreferenced ~_List_base wrappers: clear, then free the sentinel) sit in the CTCHeroOpinionDeedLog TU (IsDeedWitnessed 0x006C5E90), and Ego_r.pdb CTCHeroOpinionDeedLog::OpinionDeedsSearchingForWitnesses is list<CWitnessesSearchingDeed> with Recipient (CIntelligentPointer<CThingAICreature>) at +8 -- the only list in that class
 // Label: the manifest's "SortTreeRecursively" is propagated (family H066: six clear() bodies that differ only in the element
@@ -9,12 +10,8 @@
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 class CThingAICreature;
 class CFaction;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void* PData;                                        // +4
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 enum EOpinionDeedType { };
 enum EOpinionPostDeedType { };
 class CWitnessesSearchingDeed {                      // 0x1C bytes (Ego_r.pdb)

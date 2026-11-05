@@ -1,5 +1,6 @@
 // 005cbc36 CTCInventoryWeapons::OnItemAdded
 // Leaf: ?OnItemAdded@CTCInventoryWeapons@@MAEXJ_N0@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Flags: /O1 /Oy-
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefPointer.h"
@@ -38,8 +39,8 @@ namespace NInventory{
 class CTCInventoryBase:public CTCBase{unsigned char _pad_0xc[0x130-0xc];protected:virtual void OnItemAdded(long,bool,bool);};
 }
 class CBaseObject;class CBaseObjectPointer;
-class CBaseIntelligentPointer{private:CBaseObjectPointer*PData;public:virtual ~CBaseIntelligentPointer();};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template<class T>bool __fastcall IS_THING_ALIVE(const T&);
 // Layout: original second base occupies130..133; packed intelligent-pointer members at134 and141.
 // Byte storage preserves original field offsets without adding a packing directive.

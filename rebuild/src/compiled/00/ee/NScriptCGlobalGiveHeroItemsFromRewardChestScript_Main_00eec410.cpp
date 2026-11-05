@@ -1,5 +1,6 @@
 // NScript::CGlobal_GiveHeroItemsFromRewardChestScript::Main() -- global script run when the hero uses a reward chest: keeps the quest persistent, hands the hero the items of the most recently used target and removes it, waits for player control, then (for the reward-on-death chest, an adult hero) shows tutorial 10 and waits for it to be clicked past; finally deactivates the quest
 // Leaf: ?Main@CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EEC410, length 629 bytes (+ int3 padding).
 // Callees: CScriptBase::SetPredicate 0x00CB7920 / IsActiveThreadTerminating 0x00CB7940, the CIsThingConscious filter
@@ -17,13 +18,7 @@
 class CCharString;
 class C3DVector;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCountBlock { long References; };
-template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>: {Data, Info}
- void* Data;
- CCountBlock* Info;
- CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
- CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (folded with CCountedPointer<CDiskFileWin32>::operator=)
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"

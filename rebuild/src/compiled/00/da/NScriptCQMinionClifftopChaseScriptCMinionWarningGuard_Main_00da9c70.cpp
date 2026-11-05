@@ -1,5 +1,7 @@
 // NScript::CQ_MinionClifftopChaseScript::CMinionWarningGuard::Main() -- the minion-chase warning guard: alive filter on Me, take scripted control of Me (priority 4),
 // Leaf: ?Main@CMinionWarningGuard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 //   wait for BowerstoneJail to load; the first time play the "CS_MINIONCHASE_INTRO" cut-scene with the hero and Me cast; set
 //   the quest card objective, kick off the quest start screen once, release Me, have Me follow the hero (region following
 //   too), show Me's health bar, spawn the parent's GuardChatter on Me, wait for the mission to end and remove Me
@@ -34,12 +36,13 @@ class CRGBColour { public:
     unsigned char B, G, R, A;
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-class CCPPointerInfo { public: long References; };
-class CScriptThing;
+#include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct CCPPointerImp {                                 // CCountedPointer<CScriptThingImp>: Data, Info
     CScriptThing*   Data;
     CCPPointerInfo* Info;
-    __forceinline CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
+    __forceinline CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
@@ -50,26 +53,6 @@ struct CCPPointerImp {                                 // CCountedPointer<CScrip
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    VPAD16(ta) VPAD4(tb) VPAD1(tc)                     // slots 0..20
-    virtual bool MsgIsHitBy(const CCharString& name) const   // slot 21 (+0x54), 0x004AAB30
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsHitBy(name);
-    }
-    VPAD32(td) VPAD16(te) VPAD4(tf) VPAD1(tg)          // slots 22..74
-    virtual bool IsAlive() const                       // slot 75 (+0x12c), 0x004AB130
-    {
-        if (PImp.Data && PImp.Data->IsAlive())
-            return true;
-        return false;
-    }
-    CCPPointerImp PImp;                                // +0x04
-    CScriptThing();                                    // 0x006E7B40
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
@@ -107,11 +90,6 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
-template <class T> class CCountedPointer {             // CSpawnedFuncBase::PPredicate (header contract; this row keeps its own
-public:                                                //   CCPPointerInfo, so not engine/CCountedPointer.h); the dtor is out of line
-    T* Data; CCPPointerInfo* Info;                     //   in retail (CCountedPointer<const NScript::CPredicateBase> 0x00CDD4F0)
-    ~CCountedPointer();
-};
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc1.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

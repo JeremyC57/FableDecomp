@@ -1,4 +1,5 @@
 // CCreatureAction_DragonTakeOffIntoFlying::CCreatureAction_DragonTakeOffIntoFlying(CThingCreatureBase*, const vector<C3DVector>&) -- combat action with the SWORD_SWING sound pair (action code 250), copies the movement points, UsePreviousPoint = true, empty end-action pointer
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009533E0, length 119 bytes, `ret 8`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair (__fastcall) @ 0x008561A0,
@@ -14,7 +15,7 @@
 //   PEndAction counted pointer at +0x148 here (the Dest/StartPos/PreviousPoint vectors at +0x114..+0x137 are untouched).
 class CThingCreatureBase;
 class CCreatureActionBase;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
 class CCharString { public:                        // one pointer; the defaulted length makes a literal convert implicitly
     void* m_pData;
@@ -40,12 +41,6 @@ struct CRetailVector {                      // VC6-era Dinkumware vector: first 
     CRetailVector(const CRetailVector& other);          // 0x006F0810 (out of line)
 };
 
-template <class T>
-class CCountedPointer { public:                    // Data + Info, both cleared by the inline default constructor
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();

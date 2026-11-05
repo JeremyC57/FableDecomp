@@ -1,5 +1,6 @@
 // CAtmosProcess::CAtmosProcess() -- construct the atmosphere process (day/night state, the atmos block map, rain flags, the rain player pointer, building/reverb state) and, when the sound system exists, hand it the atmos map with the MAIN_SOUND_SETUP listener damping, then load the atmos themes
 // Leaf: ??0CAtmosProcess
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B1960, length 185 bytes, `ret`, returns `this`.
 // Label correction: the catalog/manifest name "CThingCreatureBase::GetCombatAnimationSet" is propagated; the body is a
 //   constructor (`mov eax,esi`) storing vtable 0x0125D47C = CAtmosProcess::CMyAtmosMap at +4 (rtti-vtables.tsv; its
@@ -67,15 +68,8 @@ extern CASoundManager* PSoundManager;            // 0x013B8394
 
 class CBaseObject;
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A860
-    virtual void v00();
-    CIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 class CThingMarker;

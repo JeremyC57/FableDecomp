@@ -1,4 +1,5 @@
 // CAIStateGroup_TavernServer::IsRunnable() -- runnable while carrying a jug; otherwise, for a village member with a live pub (adopted from the creature's workplace when unset), a live bar (or one found), a serving point (or one found) and a jug: free the old points and drop the jug pointer
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 0078b2a0: ?IS_THING_ALIVE_Pointer_0078b2a0@@YI_NABUCBaseIntelligentPointer@@@Z -> ?IS_THING_ALIVE_Pointer_0078b2a0@@YI_NABVCBaseIntelligentPointer@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00967650, length 336 bytes (+ int3 padding).
 // Callees: IsCarryingJug @ 0x00966CF0, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x23 =
@@ -18,7 +19,8 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CBaseIntelligentPointer;
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
@@ -43,14 +45,6 @@ class CTCVillageMember { public:                       // interface 0x23
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
     virtual void v00();
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }

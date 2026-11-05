@@ -1,5 +1,6 @@
 // NUISystem::CManager::~CManager() -- destructor of the front-end UI manager: own vtable; clear a showing error message; hand the front-end manager singleton empty font and graphics banks; then the members (+0x88 down to +0x10) and the base are destroyed
 // Leaf: ??1CManager@NUISystem
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041E641, length 146 bytes. Size-optimised TU: `#pragma optimize("s", on)`.
 // Callees: CManager::ClearErrorMessage @ 0x0041CE6A, CFrontEndManager::GetInstance @ 0x0041E5F2 (`__fastcall`, lazily creates the
 //   singleton), the bank setters @ 0x0041D198 (counted pointer at +0x18) and @ 0x0042A9B7 (landed SetGraphicsBank, +0x10), the member
@@ -13,14 +14,7 @@
 #pragma optimize("s", on)
 class CGraphicDataBank;
 class CFontBank;
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              m_pObject;
-    CCPPointerInfo* m_pInfo;
-    CCountedPointer() : m_pObject(0), m_pInfo(0) { }
-    CCountedPointer(const CCountedPointer& other);
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 struct SMember10 { void* a; void* b; ~SMember10(); };            // 0x00419108
 struct SMember18 { void* a; void* b; ~SMember18(); };            // 0x0042918C
 struct SMember24 { unsigned char _d[0x38]; ~SMember24(); };       // 0x0042B796

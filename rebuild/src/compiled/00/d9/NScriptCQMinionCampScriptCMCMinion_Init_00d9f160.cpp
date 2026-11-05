@@ -1,5 +1,6 @@
 // NScript::CQ_MinionCampScript::CMC_Minion::Init() -- a minion spawns: count it in the camp's NumberOfMinions and top Me up to full health (100 minus its current health)
 // Leaf: ?Init@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D9F160, 56 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 of the vtable 0x012D6DAC that the landed CMC_Minion::Alloc 0x00D9F0B0 stores (slot 0
 //   ??_G 0x00D9F250, slot 1 the landed Main 0x00D9F270); Ego_r.pdb ?Init@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ.
@@ -9,11 +10,9 @@
 // Layout: Ego_r.pdb CMC_Minion (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18;
 //   CQ_MinionCampScript.NumberOfMinions is Ego_r +0x64, retail +0x50 (level/quest script members sit 0x14 lower).
 // Shape: right-to-left arguments: ModifyThingHealth's `false` is pushed before GetHealth runs; `fsubr [100.0]`.
-class CScriptThing {                                    // vtable 0x01238C8C, 12 bytes
-public:
-    virtual ~CScriptThing();
-    void* PImp[2];                                      // +0x04 CCountedPointer<CScriptThingImpl>
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT

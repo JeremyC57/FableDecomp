@@ -1,4 +1,5 @@
 // CGameCameraManager::UpdatePrepareFlags() -- per-frame camera bookkeeping: when the current mode reports itself done, fall back to automatic (or re-push the manual) mode; update the melee and building camera modes; and with no script module pending, count down ScriptedCameraRemoveTimer while the current script module is finished and no subtitle waits for a click, releasing scripted control when it runs out
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069B6F0, length 158 bytes.
 // Callees: the current mode's virtual slot 13 (+0x34, a bool), PushCurrentManualMode @ 0x006988B0, UpdateObservedThingInMelee
 // @ 0x0069AC30 (landed), UpdateObservedThingInBuilding @ 0x0069B650, CSubtitleRenderer::IsWaitingForClickPast @ 0x0048DB46 (the player
@@ -31,11 +32,7 @@ class CScriptModuleBase { public:
 };
 }
 struct SCountBlock;
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                           // +0
-    SCountBlock* m_pCount;                  // +4
-};
+#include "engine/CCountedPointer.h"
 
 class CGameCameraManager { public:
     void*         __vftable;                                            // +0x00
@@ -58,7 +55,7 @@ class CGameCameraManager { public:
 
 void CGameCameraManager::UpdatePrepareFlags()
 {
-    if (CurrentMode.m_pObject && CurrentMode.m_pObject->IsFinished()) {
+    if (CurrentMode.Data && CurrentMode.Data->IsFinished()) {
         if (!UsingCameraManually)
             NewAutoMode = true;
         else
@@ -66,9 +63,9 @@ void CGameCameraManager::UpdatePrepareFlags()
     }
     UpdateObservedThingInMelee();
     UpdateObservedThingInBuilding();
-    if (!PPendingScriptModule.m_pObject) {
+    if (!PPendingScriptModule.Data) {
         bool waitingForSubtitle = g_pPlayerGui->SubtitleRenderer.IsWaitingForClickPast();
-        if (PCurrentScriptModule.m_pObject && PCurrentScriptModule.m_pObject->IsFinished() && !waitingForSubtitle) {
+        if (PCurrentScriptModule.Data && PCurrentScriptModule.Data->IsFinished() && !waitingForSubtitle) {
             if (ScriptedCameraRemoveTimer < 0)
                 ScriptedCameraRemoveTimer = 1;
             if (ScriptedCameraRemoveTimer == 0)

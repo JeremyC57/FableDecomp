@@ -1,5 +1,6 @@
 // NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint::Main() -- trader-conflict guard spawner: once the quest start screen is done, while guards remain to be spawned, whenever few enough are alive (or too few exist) and the spawn point is off screen, spawn up to two guards (the type thinning out as the count falls, a rare sheriff), set them on the monsters faction with a red mini-map orb and the hero as target, then re-arm the spawn threshold
 // Leaf: ?Main@CTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF7BF0, 917 bytes (+ int3 padding), plain `ret`.
@@ -18,12 +19,7 @@
 class CCharString;
 #include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCountBlock { long References; };
-template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>: {Data, Info}
- void* Data;
- CCountBlock* Info;
- CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"

@@ -1,5 +1,6 @@
 // CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, const CCharString& defName) const -- replace a live creature by a new one built from the named def: an unchanged def returns the thing itself; an AI creature (type 1) is re-created with its script name and game-state persistence; the player creature (type 2) is re-created persisted, takes copies of its component interfaces, and becomes the main player's character and controlled creature; the old thing is killed either way and the new script thing returned
 // Leaf: ?TurnCreatureInto@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0089F4A0, 1134 bytes (+ int3 padding), `ret 0Ch` (hidden result + 2).
@@ -28,29 +29,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CCPPointerInfo { public:
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void*);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    void* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CThing;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

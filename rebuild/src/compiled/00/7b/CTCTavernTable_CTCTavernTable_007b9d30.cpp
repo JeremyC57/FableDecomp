@@ -1,5 +1,6 @@
 // CTCTavernTable::~CTCTavernTable() -- compiler-generated tavern-table thing-component destructor: release the seat bit-vector, the food and tankard intelligent-pointer vectors and the occupant vector, then the CTCBase base
 // Leaf: ??1CTCTavernTable@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B9D30, 137 bytes, `jmp` to the base destructor.
 // Identity (proven): the sole caller is the scalar deleting destructor 0x007B9D10, slot 0 of vtable 0x0126DBB4 (RTTI
 //   CTCTavernTable : CTCBase); the tail jump is ~CTCBase 0x00686830 (direct base, RTTI). Ego_r.pdb ??1CTCTavernTable@@UAE@XZ
@@ -175,14 +176,8 @@ public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                         // vtable 0x0129C95C (vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                          // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThingAICreature;
 class CThingObject;

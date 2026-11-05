@@ -1,5 +1,6 @@
 // NScript::CQ_WizardBattleScript::CChasingScreamer::Main() -- the chased-man screamer entity: hold an alive filter over Me, take Me under scripted control (priority 4, retried each frame), make Me fight the chased man "HKC_ChasedMan" and follow him, wait until the hero is within 4.0f, then switch Me's best enemy target to the hero and drop the scripting handle
 // Leaf: ?Main@CChasingScreamer@CQ_WizardBattleScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1AF30, 452 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor @ 0x004ABE90 / ~CScriptThing @ 0x004AA840, CEntityScriptBase::SetPredicate @ 0x00F35B10,
 //          CEntityScriptBase::IsActiveThreadTerminating @ 0x00F35B30, CBaseObject::CBaseObject @ 0x0099A380,
@@ -24,19 +25,14 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void v00();
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"

@@ -1,4 +1,5 @@
 // NGameText::CTextEntry::Sizeof() const -- bytes used by a text entry: the object plus its strings, tag storage and file data
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009C7D90, 99 bytes (+13 int3). __fastcall virtual (vtable 0x0129B4A4, RTTI
 //         .?AVCTextEntry@NGameText@@), returns unsigned long. Called directly by the ctor 0x009C8250.
 // Callees: CCharString::Sizeof() 0x0099E500 (x3); CWideString::Sizeof() 0x0099B2A0; CBankFileAsyncData::Sizeof() 0x009D5620
@@ -18,14 +19,9 @@ class CWideString { public:
     CWideString();                               // 0x0099AED0
     unsigned long Sizeof() const;                // 0x0099B2A0
 };
-class CCPPointerInfo { public: long Count; };
+#include "engine/CCountedPointer.h"
 class CBankFileAsyncData { public:
     unsigned long Sizeof() const;                // 0x009D5620 (catalog "CVertexBufferWin32::DoSizeof" is a byte twin)
-};
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
 };
 template <class T> struct CRetailVector {        // STLport vector (12 bytes; PDB CArray is 16)
     T* _M_start;

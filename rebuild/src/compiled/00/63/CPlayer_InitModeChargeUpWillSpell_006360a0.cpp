@@ -1,5 +1,6 @@
 // CPlayer::InitModeChargeUpWillSpell(EPlayerMode mode, CProcessedInput* input) -- entering the will-charge-up mode: attach nine creature-control input processes (control creature, Z-target, look-around, right stick, jump/roll, block, movement, the third-person termination watcher, special abilities) to the player's interface, then put the live controlled creature into creature mode 0x19 unless it is already current
 // Leaf: ?InitModeChargeUpWillSpell@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006360A0, 245 bytes, thiscall, `ret 8`.
 // Identity (proven): its only reference is the CPlayer mode-table initialiser 0x0121AF20 (store at 0x0121B65C): the Init of
@@ -75,16 +76,8 @@ class CThingPlayerCreature : public CThingCreatureBase { };
 
 class CBaseObject;
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                             // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-    void* PData;                                            // CBaseObjectPointer*
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* operator->() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 class CInputProcessManager : public CBaseClassNonCopyable { };   // RTTI CGamePlayerInterface <- CInputProcessManager

@@ -1,5 +1,6 @@
 // NScript::CQ_HeroSoulsBriarScript::CHSB_MagicBarrier::Main() -- Briar Rose's magic barrier in Hero Souls: register a thing-alive filter, raise the two forcefield idle effects facing the shrine centre, re-raise them whenever both have gone until Briar is killed, then remove them, play the two "off" effects facing the centre and remove Me
 // Leaf: ?Main@CHSB_MagicBarrier@CQ_HeroSoulsBriarScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D81C50, 1464 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
@@ -59,11 +60,8 @@ class CScriptThing : public CBaseClass { public:                           // vt
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // out-of-line copy 0x008AB980
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }

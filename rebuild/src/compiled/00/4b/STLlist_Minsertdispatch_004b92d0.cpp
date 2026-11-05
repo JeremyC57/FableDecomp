@@ -1,6 +1,7 @@
 // std::list::_M_insert_dispatch(list<CCountedPointer<CQuestManager::CActiveQuest> >::iterator pos, const_iterator first, const_iterator last, const __false_type&) -- STLport range insert of the active-quest list: for every counted quest pointer in [first, last) allocate a node, copy the pointer (adding a reference) and link it in before `pos`
 // Instantiation: std::list<CCountedPointer<CQuestManager::CActiveQuest> >::_M_insert_dispatch
 // Leaf: ??$_M_insert_dispatch@U?$_List_iterator@V?$CCountedPointer@VCActiveQuest@CQuestManager@@@@U?$_Const_traits@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B92D0, 78 bytes (+ int3 padding), thiscall (`this` unused: the allocator
 //   is stateless), `ret 10h` (pos, first, last, the tag reference).
 // Identity: the active-quest list's range insert, reached three ways: list::insert(pos, first, last) @ 0x004B9EB0, the
@@ -16,22 +17,8 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-class CCPPointerInfo { public:                                     // Ego_r.pdb
-    unsigned long RefCount;                                 // +0x0
-    void (__fastcall* DeleteFunc)(void* data);              // +0x4
-    void* Data;                                             // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x0
-    CCPPointerInfo* Info;                                   // +0x4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 class CQuestManager {
 public:

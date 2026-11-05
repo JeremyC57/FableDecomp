@@ -1,4 +1,5 @@
 // CMainGameComponent::InitParticleEngine() -- start the particle engine: initialise it, give it the game's environment-interaction object (a new counted object holding the world), and open the "PARTICLE_MAIN" bank of its emitter database
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Naming wave 35c (caller respell): calls 0x00AEAAE0 as NParticleEngine::GetParticleEmitterDatabase() (?GetParticleEmitterDatabase@NParticleEngine@@YIAAVCParticleEmitterDatabase@1@XZ, FableWin.pdb + Ego_r.pdb); the database class is NParticleEngine::CParticleEmitterDatabase, so its OpenBank is FableWin.pdb ?OpenBank@CParticleEmitterDatabase@NParticleEngine@@QAEXABVCCharString@@@Z (was GetEmitterDatabase() returning a global struct).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004174F1, length 119 bytes. Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)`.
 // Callees: NParticleEngine::Initialise @ 0x00AEBE20 (`__fastcall`), operator new @ 0x00BFEA1A (0x24 bytes; the inline constructor stores
@@ -30,14 +31,7 @@ struct CGameEnvironmentInteraction : NParticleEngine::CAEnvironmentInteraction {
     CGameEnvironmentInteraction(CWorld* world) : m_pWorld(world) { }
     virtual void v00();
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              m_pObject;
-    CCPPointerInfo* m_pInfo;
-    CCountedPointer(T* object);                    // 0x0041956C
-    CCountedPointer(const CCountedPointer& other); // 0x00418FBC
-    ~CCountedPointer();                            // 0x004191C1
-};
+#include "engine/CCountedPointer.h"
 namespace NParticleEngine {
 class CParticleEmitterDatabase { public:
     void OpenBank(const CCharString& name);        // 0x00AE8980

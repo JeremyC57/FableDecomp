@@ -1,4 +1,5 @@
 // CTCInventoryWeapons::CheckForSoldWieldedWeapons() -- while a melee (then a ranged) weapon is wielded, re-arm from the first carried item (count > 0) whose weapon sub-def has a melee (non-melee) weapon class
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CB780, 500 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) +
 //   ("s",on). Ego_r.pdb: ?CheckForSoldWieldedWeapons@CTCInventoryWeapons@@QAEXXZ (name per the catalog).
 // Callees: IS_THING_ALIVE @ 0x005CC1B0 (`__fastcall`, const ref), CTCInventoryBase::GetAllItems(vector&) @ 0x005BF482,
@@ -87,11 +88,8 @@ struct CItemVector {                            // STLport vector<pair<long,long
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CThing;
 class CComponent;

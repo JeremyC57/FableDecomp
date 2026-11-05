@@ -1,5 +1,6 @@
 // std::vector::vector(const vector& __x) -- (vector<std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > >) STLport copy constructor: allocate size() elements, uninitialized-copy the source into them
 // Leaf: ??0?$vector@U?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@V?$allocator@U?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@@2@@std@@QAE@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBB020, 87 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: std::vector<std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > >::vector(const vector&) -- proven; evidence: its callers are the landed CScriptBase::RunEntityThreads 0x00CB8170 (the EntityScripts CVectorMap<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > snapshot, same-TU body there under this name) and the landed vector push_back 0x00CBC7B0 / partial sort 0x00CBD0F0 users; FableWin.pdb name set holds the copy
 //   constructor of this vector (Dinkumware spelling there). Family G052 (vector copy constructors of 16-byte class elements;
@@ -10,11 +11,7 @@
 //   allocation; the __false_type tag (_IsPODType of a class element) is homed in the dead __x argument slot.
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 class CActiveEntityScriptBase;
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> class allocator {

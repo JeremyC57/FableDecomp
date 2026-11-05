@@ -1,4 +1,5 @@
 // CPlayerGui::SetCrimeAsDisplaying() -- reopen the crime stat bar: clear its fully-opened frame and put a bar that is not closed back into the opening mode
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00437770, length 36 bytes.
 // Callees: none.
 // Layout: the five stat-bar counted pointers PMoney/PRenown/PMorality/PExperience/PCrime sit at retail
@@ -25,13 +26,8 @@ struct CStatBase {
     EPlayerGuiMode GuiMode;                                 // +0x28
 };
 struct CCrimeStatBar : CStatBase { };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
 
 class CPlayerGui { public:
     unsigned char                  _pad[0x2ec];

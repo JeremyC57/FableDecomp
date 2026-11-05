@@ -1,5 +1,6 @@
 // std::_Rb_tree<NUISystem::ETableSprites, std::pair<const NUISystem::ETableSprites, CCountedPointer<NUISystem::CComponent> >, ...>::_M_insert(x, y, v, w) -- link a new node holding v (counted copy) under parent y, left or right by the hint and key order, keep the header's root / leftmost / rightmost current, rebalance, count it
 // Leaf: ?_M_insert@?$_Rb_tree@W4ETableSprites@NUISystem@@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@U?$less@W4ETableSprites@NUISystem@@@4@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@2@0@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00553a00, 211 bytes, thiscall, `ret 14h` (hidden iterator pointer + x, y, &v, w).
 // Identity (proven): bound ?_M_insert@?$_Rb_tree@W4ETableSprites@NUISystem@@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@... (public QAE spelling; STLport 4.6 _M_insert is private, AAE here); callers the tree's insert_unique 0x00553AE0 / hinted insert_unique 0x00553C50; node 0x1C.
 // Callees: malloc 0x00BFEA0E (the 0x1C-byte node, twice), std::_Rb_global<bool>::_Rebalance 0x0042971D (cdecl).
@@ -8,23 +9,8 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                             // +0x00
-    void (__cdecl* DeleteFunc)(void*);                  // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {              // 8 bytes
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 namespace std {
 template <class _T1, class _T2> struct pair {

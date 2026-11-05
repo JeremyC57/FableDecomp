@@ -1,5 +1,6 @@
 // std::find_if<_List_iterator<CIntelligentPointer<CThing>, _Const_traits<...> >, CIsCandleNeedingChanging>(first, last, pred) -- the first thing in [first, last) the predicate accepts (last if none)
 // Leaf: ??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@VCIsCandleNeedingChanging@@@std@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00946D40, 50 bytes, /Gr `__fastcall` (the iterator result through the hidden pointer in
 //   ecx; first, last and the 4-byte predicate on the stack), `ret 0Ch`.
 // Identity (proven): predicate the landed CIsCandleNeedingChanging::operator() 0x00946C60 (Ego_r.pdb: one member HomeCandle, so the predicate is read from its own argument slot); no direct callers (an out-of-line COMDAT).
@@ -9,13 +10,8 @@
 //   input-iterator __find_if folded into find_if).
 class CThing;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // Ego_r: vptr + PData, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CAIStateGroup_LightHomeCandle;
 class CIsCandleNeedingChanging {
 public:

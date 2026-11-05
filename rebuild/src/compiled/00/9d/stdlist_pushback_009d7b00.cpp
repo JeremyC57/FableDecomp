@@ -1,5 +1,6 @@
 // std::list::push_back(const value_type& x) -- (list<CCountedPointer<CBankFileAsyncData > >) STLport push_back: malloc a node, copy the counted pointer into it (taking a reference) and link it before the sentinel
 // Leaf: ?push_back@?$list@V?$CCountedPointer@VCBankFileAsyncData@@@@V?$allocator@V?$CCountedPointer@VCBankFileAsyncData@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCBankFileAsyncData@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D7B00, 59 bytes (+ int3 padding to 64), thiscall `ret 4`.
 // Identity (proven): list<CCountedPointer<CBankFileAsyncData > >; evidence: its only caller is the landed CBankFileAsync::DiscardAsyncData 0x009D67E0 (declared there as list<CCountedPointer<CBankFileAsyncData>>::push_back 0x009D7B00), the Ego_r.pdb CBankFileAsync::DisposalList, list<CCountedPointer<CBankFileAsyncData> >.
 // Label: the manifest's "_Buynode<CCountedPointer<CSpawnedFuncBase>_>" is a propagated Dinkumware spelling (family H010: seven rows that differ only in the
@@ -12,20 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 class CBankFileAsyncData;
-class CCPPointerInfo {                                  // the shared reference count block
-public:
-    long Count;                                         // +0x00
-};
-template <class T> class CCountedPointer {             // 8 bytes: object + shared reference-count block
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->Count;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator {

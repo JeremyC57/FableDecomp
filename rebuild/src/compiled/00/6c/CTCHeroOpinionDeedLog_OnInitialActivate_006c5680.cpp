@@ -1,5 +1,6 @@
 // CTCHeroOpinionDeedLog::OnInitialActivate() -- after loading, remap every intelligent thing pointer the deed log holds: the crime village, each logged deed's thing pointer and each witness-search entry's pointer
 // Leaf: OnInitialActivate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C5680, length 133 bytes (+11 int3 padding). Vtable slot 6 of CTCHeroOpinionDeedLog
 // (catalog "vfunc_6"; slot 6 is the CTCBase OnInitialActivate slot).
 // Callees: the `__fastcall` GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>*) @ 0x0088AFF0.
@@ -11,12 +12,8 @@
 // data at node +8 with its CIntelligentPointer at +8), NextHandle +0x1c, VillageForCrimes +0x20; COpinionDeed keeps its
 // thing pointer at +0x18.
 class CThing;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 void __fastcall GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>* pointer);   // 0x0088AFF0
 
 class COpinionDeed { public:

@@ -1,5 +1,6 @@
 // NScript::CQ_HeroSoulsArenaScript::CSummonerToKill::Main() -- the arena summoner entity script: register an alive filter over Me, update once; unless the arena cut-scene has played, take Me under scripted control (priority 4) and wait frame by frame for the first wave to attack; then keep running frames until the script is done
 // Leaf: Main
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D7DD80, 253 bytes (+3 int3 padding), `ret`. The PDB has three CSummonerToKill
 //   classes (Mother 0x00D83DC0 and Nostro 0x00D88540 are landed); this one's parent flags at retail +0x4C / +0x51 are
 //   CQ_HeroSoulsArenaScript::PlayedArenaCS / FirstWaveAttack (Ego_r.pdb +0x60 / +0x65, the landed -0x14 shift), and the
@@ -14,11 +15,9 @@
 // Shape: the landed CSummonerToKill / CFishermanWasp prelude (block-scoped filter); the scripted-thing handle is
 //   block-local in the `if` (it shares the filter's frame words) and its out-of-line destructor runs on the normal path
 //   and on the merged early returns of the wait loop.
-class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    virtual ~CScriptThing();                               // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CScriptGameResourceObjectScriptedThingBase;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -36,7 +35,6 @@ class CIsThingAlive { public:                             // vtable 0x012C32F0: 
 using NScript::CIsThingAlive;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"

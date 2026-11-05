@@ -1,5 +1,6 @@
 // CThingObject::CThingObject() -- CThing constructed with type 5, the CThingGameObject layer (vtable 0x01244F7C, intelligent pointer at +0xc0), then CThingObject's vtable and its PDef / DieOffTimer / DiesOff cleared
 // Leaf: ??0CThingObject
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007031C0, length 67 bytes.
 // Callees: CThing::CThing(long type) @ 0x005296B0 (manifest "CTCDPhysicalObstruction" is propagated),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (then the CIntelligentPointer vtable 0x01238C6C).
@@ -12,22 +13,8 @@
 // every zero store).
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing { public:                                    // 0xc0 bytes
     virtual void v00();
     unsigned char _body[0xbc];

@@ -1,6 +1,7 @@
 // Grade: RELOCATION_MATCH -- the PostDeed target through the PDB inline accessor CTCBase::GetParentThing() (retail loads ParentThing into eax after the deed-log pointer); was register allocation only
 // CTCActionUseChest::OnActionUse(CThingCreatureBase* user) -- a creature uses a chest: start the open-chest action when the chest is shut and not busy, and when it is theft post a theft deed and apply the theft morality to the user
 // Leaf: OnActionUse
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x007EE8F0, 352 bytes, `ret 4` (vtable slot 10, +0x28; catalogued as vfunc_28). The landed callee
 // CTCChest::GetOpenAnimationForCreature 0x00750240 names this caller as CTCActionUseChest::OnActionUse.
@@ -63,10 +64,8 @@ class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00693EF0
     unsigned char _body[0xa8 - 4];
 };
-struct CBaseIntelligentPointer {
-    void*   PData;
-    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CCreatureAction_OpenChest : public CCreatureActionBase { public:
     CBaseIntelligentPointer PChest;                        // +0xa8
     CCreatureAction_OpenChest(CThingCreatureBase* owner, CThing* chest, const CCharString& animation);   // 0x007EE7E0

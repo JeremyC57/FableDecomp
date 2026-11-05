@@ -1,4 +1,5 @@
 // NUISystem::CSlider::Initialise() -- the CSprite initialisation, then hand the right and left arrow components to the slider's parent: add each as a child (through a temporary counted pointer), re-parent it and initialise it
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054A5D0, length 274 bytes (vtable 0x01248D04 slot 43).
 // Callees: CSprite::Initialise @ 0x0041A8D0 (base call), CCountedPointer<CComponent>::CCountedPointer(CComponent*) @ 0x00429C15,
 // operator delete (MSVCR71 import thunk 0x00BFE9BC); component virtual slots 43 Initialise (+0xAC), 51 (+0xCC, re-parent,
@@ -11,27 +12,8 @@
 // inner call (plain nested call).
 void __fastcall Destroy_00428b10(void* object);   // the per-type deleter stored in the block (never called directly here)
 
-struct SCountBlock {
-    long m_references;                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);// +4
-    void* m_pObject;                       // +8
-};
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer { public:
-    T*           m_pObject;                // +0
-    SCountBlock* m_pCount;                 // +4
-    CCountedPointer(T* object);            // 0x00429C15 (T = NUISystem::CComponent)
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                operator delete(m_pCount);
-            }
-        }
-    }
-};
 
 namespace NUISystem {
 class CComponent { public:

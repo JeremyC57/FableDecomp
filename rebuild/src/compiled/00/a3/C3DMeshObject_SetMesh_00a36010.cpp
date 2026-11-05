@@ -1,6 +1,7 @@
 // C3DMeshObject::SetMesh(C3DMeshInfo*) -- stores the mesh info and takes its counted mesh-stats pointer (assigned from the by-value result, which is then released)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36010, length 128 bytes.
 // Leaf: SetMesh
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Callees: 0x00A25530 C3DMeshInfo::GetMeshStats() (CCountedPointer<const C3DMeshStats> by hidden pointer into
 // an 8-byte frame temporary), the counted block's destroy thunk (`call [info+4]`, data in ecx) and 0x00BFE9BC
 // operator delete for the block when its count reaches zero.
@@ -8,46 +9,9 @@
 // Shape: `Mesh = MeshInfo->GetMeshStats()`-style assignment through the landed CCountedPointer::operator=
 // (0x00754F10 shape, inlined: both source fields read before the block compare) followed by the temporary's
 // inline destructor (count decremented in place and re-read from the frame slot, block re-read for delete).
-class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 void __cdecl operator delete(void* p);                   // 0x00BFE9BC
 
-template<class T> class CCountedPointer { public:
-    T*              Data;                                // +0
-    CCPPointerInfo* Info;                                // +4
-    ~CCountedPointer()
-    {
-        if (Info != 0) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            if (Info != 0) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info != 0)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 
 class C3DMeshStats;
 class C3DMeshInfo { public:

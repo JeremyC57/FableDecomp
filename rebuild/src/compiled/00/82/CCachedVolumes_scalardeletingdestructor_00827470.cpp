@@ -1,5 +1,6 @@
 // CCachedVolumes::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the inline destructor destroys the pair<long, CCountedPointer<CContainmentVolume> > range of its vector through the out-of-line __destroy_aux and frees the storage, then the object is freed when bit 0 of the flags is set
 // Leaf: ??_GCCachedVolumes@@QAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00827470, 55 bytes (+ int3 padding to 64), thiscall `ret 4`, returns this.
 // Identity (proven): CCachedVolumes::`scalar deleting destructor'; evidence: its callee 0x00825AE0 is the __destroy_aux CMap::InitCachedVolumes 0x00821850 runs on the old object when it resets the member at +0x08 with a `new` 0x10-byte object (three zeroed words, Dirty +0xD cleared) and deletes the old one through the same inline body; Ego_r.pdb CMap::CachedVolumes (+8) is scoped_ptr<CCachedVolumes> and CCachedVolumes is one CVectorMap<long, CCountedPointer<CContainmentVolume> > NavigationContainmentVolumes
@@ -17,12 +18,7 @@ void operator delete(void* block);                      // 0x00BFE9BC
 #include "engine/CVectorMap.h"
 
 class CContainmentVolume;
-template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
-public:
-    T*    Data;
-    void* Info;
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CCachedVolumes {                                // 16 bytes in retail (Ego_r.pdb: one member)
 public:
     CVectorMap<long, CCountedPointer<CContainmentVolume>, CKeyPairCompareLess<long, CCountedPointer<CContainmentVolume> > > NavigationContainmentVolumes;   // +0x0

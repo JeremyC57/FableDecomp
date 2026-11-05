@@ -9,6 +9,7 @@
 // constructor builds it in the argument area: `sub esp,8 ; mov eax,esp`, `inc dword ptr [esi]`) and returns. The
 // quest object is a named local (inline member reads keep it in ecx and shift the compare registers).
 // Leaf: ?DeactivateQuest@CQuestManager@@QAEXABVCCharString@@K@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members m_count->RefCount are the header CCPPointerInfo's (same offsets).
 class CCharStringData { public: const char* m_pData; unsigned long m_length; };
 long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 
@@ -25,15 +26,8 @@ __forceinline bool SameText(const CCharStringData* a, const CCharStringData* b)
     return false;
 }
 
-class CCPPointerInfo { public:
-    long m_count;                                  // +0x00
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*              Data;                          // +0x00
-    CCPPointerInfo* Info;                          // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->m_count; }
-};
 
 struct CActiveQuest {
     unsigned char _pad_0x00[0x30];

@@ -1,5 +1,6 @@
 // CTCExplodingObject::CTCExplodingObject(CThing& parent) -- constructor: CTCBase, default blast (10 damage, radius 10, 10 fire damage), no countdown, proximity trigger radius 5; then read the exploding-object def and, through its explosion thing def, the explosion's damage, radius and fire damage
 // Leaf: ??0CTCExplodingObject
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00750BE0, length 232 bytes (+ int3 padding). `ret 4`; vtable 0x01269674.
 //         Ego_r.pdb: `??0CTCExplodingObject@@QAE@AAVCThing@@@Z`.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800; CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10
@@ -18,15 +19,8 @@
 class CThing;
 class CBaseObject;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-};
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer() {}
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CDefClassBase {
 public:

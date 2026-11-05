@@ -1,5 +1,6 @@
 // CVolumeTexture::Initialise(const C3DExtentsI& extents, long no_levels, const CPixelFormat& format, unsigned long usage, EVolumePool pool, bool flag) -- create the D3D volume texture: uninitialise, round each extent up to a power of two, force one mip level, D3DXCreateVolumeTexture, then count its size
 // Leaf: ?Initialise@CVolumeTexture@@QAE_NABVC3DExtentsI@@JABVCPixelFormat@@KW4EVolumePool@@_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A68370, 613 bytes, thiscall `ret 18h`.
 // Identity: Ego_r.pdb / FableWin.pdb `?Initialise@CVolumeTexture@@QAE_NABVC3DExtentsI@@JABVCPixelFormat@@KW4EVolumePool@@_N@Z`
 //   (the manifest row carries the same signature); Ego_r donor order CalcByteLength, Uninitialise, ..., CreateTexture,
@@ -18,14 +19,8 @@
 //   InitialiseFromPreallocatedVolumeTexture's inline size body.
 struct IDirect3DDevice9;
 struct IDirect3DVolumeTexture9;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                   // +0x00
-    CCPPointerInfo* Info;                   // +0x04
-    T* operator->() const { return Data; }
-};
 class CDisplayManager {
 public:
     unsigned char     _pad00[0x58];

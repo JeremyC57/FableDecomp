@@ -1,5 +1,6 @@
 // CGamePlayerInterface::IsOtherQuickAccessItemButtonHeld(long index, long player) const -- held-in-queue answer of the first quick-access button other than index
 // Leaf: ?IsOtherQuickAccessItemButtonHeld@CGamePlayerInterface@@QBE_NJJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00446060, 94 bytes, `ret 8`; Ego_r.pdb ?IsOtherQuickAccessItemButtonHeld@CGamePlayerInterface@@QBE_NJJ@Z.
 // Body: for i over QuickAccessItemButtons (+0x7c4, size hoisted after the empty test): the first i != index returns
 // QuickAccessItemButtons[i]->IsEventOfThisTypeInQueue(2, player, value) (virtual slot 5, +0x14; `value` a 0.0f float
@@ -22,12 +23,7 @@ public:
     virtual bool IsInputTypeWithButton(EXboxControllerButton button) const;            // slot 6 (+0x18)
     virtual bool IsInputTypeWithMouseButton(EMouseButtonControl button) const;         // slot 7 (+0x1c)
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class T> class vector {
 public:

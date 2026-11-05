@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::CEndGameBarrier::CEndGameBarrier(CPersonalScript_GlobalThingsScript& parent, CScriptDataBase* data, const CScriptThing& me) -- entity script: entity-script base over the parent's interface and Me, the parent pointer, two empty script things (ForceField1, ForceField2), the master data last
 // Leaf: ??0CEndGameBarrier@CPersonalScript_GlobalThingsScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00cdfeb0, length 102 bytes (ret 0Ch; vtable 0x012C3434). Catalog label
 // "CTCLightningOrb::CTCLightningOrb" is propagated: the vtable store is an entity script's (base CEntityScriptBase 0x012C3224, no RTTI
 // locator), and it sits right before CEndGameBarrier::OnPredicateFail @ 0x00CDFF50; its only caller is the 0x34-byte factory @ 0x00CDFE30.
@@ -14,11 +15,7 @@
 //   parameter types (the parent by reference, as the PDB spells it; same pointer ABI); same bytes.
 class CScriptDataBase;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-template <class T> class CCountedPointer { public:
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

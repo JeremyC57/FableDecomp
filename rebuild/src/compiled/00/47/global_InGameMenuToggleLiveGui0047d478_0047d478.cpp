@@ -1,5 +1,6 @@
 // InGameMenu_ToggleLiveGui_0047d478() -- descriptive: forwards to CPlayerGui::ToggleLiveGui on the global player GUI
 // Leaf: ?InGameMenu_ToggleLiveGui_0047d478@@YAXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0047D478, 11 bytes: `mov ecx,[0x013B8790] ; jmp 0x00438310` (no frame, tail jump).
@@ -9,12 +10,7 @@
 // members with this signature (OpenInGameMenu, ActivateBackOption, ...), but nothing ties one of them to this address.
 // The same `mov ecx,[0x013B8790] ; call 0x00438310` tail ends SavedConfirmed 0x0047DB73.
 // Callee: CPlayerGui::ToggleLiveGui() @ 0x00438310 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790.
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:

@@ -1,5 +1,6 @@
 // std::__destroy_aux(CIntelligentPointer<NParticleEngine::CParticleEmitter>* first, CIntelligentPointer<...>* last, const __false_type&) -- destroy each intelligent pointer in [first, last) through its virtual destructor
 // Leaf: ??$__destroy_aux@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0043F850, 36 bytes (+ int3 padding), /Gr `__fastcall` (first in ecx -> esi, last
 //   in edx -> edi), `ret 4` (the tag reference).
 // Identity: STLport `__destroy_aux(first, last, __false_type)` at the 8-byte CIntelligentPointer stride, the pointer's
@@ -11,17 +12,9 @@
 class CBaseObject;
 namespace NParticleEngine { class CParticleEmitter; }
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10 (via the vtable here)
-    CBaseObject* PItem;                                 // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual void v01();
-};
 
 namespace std {
 struct __false_type { __false_type() { } };

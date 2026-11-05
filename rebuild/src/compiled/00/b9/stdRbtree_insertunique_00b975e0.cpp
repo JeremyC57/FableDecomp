@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_unique(iterator position, const value_type& v) -- (_Rb_tree<long, pair<long const, CCountedPointer<CEngineSceneMap> >, ...>) STLport 4.6 hinted unique insert: the begin / end / interior hint cases, falling back on the unhinted insert_unique when the hint does not bracket v
 // Leaf: ?insert_unique@?$_Rb_tree@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B975E0, 518 bytes (+ int3 padding), thiscall `ret 0Ch` (hidden iterator result,
 //   position, v).
 // Identity: _Rb_tree<long, pair<long const, CCountedPointer<CEngineSceneMap> >, ...> -- proven; evidence: its callers are the map's insert(iterator, const value_type&) 0x00B978F0 and operator[] 0x00B97C10 ({0, 0} default), which CEngineScene::GetMapAt 0x00B94BF0 applies to the inner map it gets from the outer operator[] 0x00B988E0 = Ego_r CEngineScene +4 map<long, map<long, CCountedPointer<CEngineSceneMap> > > (inner type); _M_insert 0x00B96F00 mallocs 0x1C-byte nodes.
@@ -15,11 +16,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
-template <class T> class CCountedPointer {         // 8 bytes: the object + its CCPPointerInfo count block
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 class CEngineSceneMap;
 
 namespace std {

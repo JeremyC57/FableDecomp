@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CBalverineFightingGuard::Main() -- the guard fighting the balverines: register the alive filter, find the nearest MinionAttackingGuard, set the two fighting each other, then (once) wait for the quest start screen, show the guard's health bar, wait for the hero to come close, speak, wait for the attacker to die, reward morality, thank the hero and follow him; finally spawn the parent's GuardChatter on Me, wait for the mission to end and remove Me
 // Leaf: ?Main@CBalverineFightingGuard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: a declaration-only CCountedPointer<T> declared before it (the row keeps its own CCPPointerInfo).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA6D50, length 1168 bytes, plain `ret`.
@@ -34,11 +35,11 @@ class CRGBColour { public:
     unsigned char B, G, R, A;
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-class CCPPointerInfo { public: long References; };
+#include "engine/CCountedPointer.h"
 struct CCPPointerImp {                                 // CCountedPointer<CScriptThingImp>: Data, Info
     void*           Data;
     CCPPointerInfo* Info;
-    __forceinline CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
+    __forceinline CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
@@ -99,11 +100,6 @@ extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
-template <class T> class CCountedPointer {             // CSpawnedFuncBase::PPredicate (header contract; this row keeps its own
-public:                                                //   CCPPointerInfo, so not engine/CCountedPointer.h); the dtor is out of line
-    T* Data; CCPPointerInfo* Info;                     //   in retail (CCountedPointer<const NScript::CPredicateBase> 0x00CDD4F0)
-    ~CCountedPointer();
-};
 #include "engine/CSpawnedFuncBase.h"
 template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {   // 0x48 bytes
     void (T::*Func)(P1);                               // +0x34

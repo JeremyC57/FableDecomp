@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<std::pair<CIntelligentPointer<CThing>, long> >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, destroy each vacated element, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@@2@@std@@QAEPAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@2@PAU32@0@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080E4E0, 74 bytes (+ int3 padding to 80), thiscall, `ret 8`, returns first.
 // Identity (proven): vector<std::pair<CIntelligentPointer<CThing>, long> >; evidence: its only caller is CTCDExplosion::FrameUpdate 0x0080D750, which erases this+0x40 = Ego_r.pdb CTCDExplosion::Emitters, vector<pair<CIntelligentPointer<CThing>, long> > (+64, the members before it have retail sizes); the 12-byte stride and the direct CBaseIntelligentPointer destructor 0x00A01C10 on each element's first member agree; __copy 0x00788F76.
 // Label: the manifest's "std_vector_CopyAssign" is propagated across byte-identical bodies (family H009: seven rows that differ only in
@@ -14,13 +15,8 @@
 //   (agent951 G021's model with a non-virtual destructor).
 #include <stddef.h>
 class CThing;
-class CBaseIntelligentPointer {                     // 8 bytes: vptr + PData
-public:
-    CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other);
-    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;

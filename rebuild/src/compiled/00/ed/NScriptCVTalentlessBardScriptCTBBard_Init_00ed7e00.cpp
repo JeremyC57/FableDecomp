@@ -1,5 +1,6 @@
 // NScript::CV_TalentlessBardScript::CTB_Bard::Init() -- the talentless bard's entity setup: give him information, set his wander centre (his own position) and the script-def wander distances, script his state group, mute his AI voice, enable only the wander / sit-outside / seek-enemy / seek-target / melee state groups (sit-outside off) and clear the three last-random-speech strings
 // Leaf: ?Init@CTB_Bard@CV_TalentlessBardScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED7E00, 584 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Init) of the RTTI-less entity-script vtable 0x012F3494 that the landed
@@ -30,18 +31,7 @@ public:
     const CCharString& operator=(const char* text);     // 0x0099EFE0
 };
 #include "engine/C3DVector.h"
-class CCPPointerInfo {
-public:
-    long References;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    __forceinline CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 __forceinline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }

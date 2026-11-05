@@ -1,6 +1,7 @@
 // CPersistContext::Transfer<CPhysicalPrimitiveInit>(CPhysicalPrimitiveInit& value) -- binary persist of one hit-location primitive: CRC-check the empty key, then load (mode 2) or save (mode 3) it through a CPersistTraits<CPhysicalPrimitiveInit> local
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the switch arms return instead of break (landed 0x004E9550 shape): the traits this is formed once above the first je and the default arm falls into the destructor call
 // Leaf: ??$Transfer@VCPhysicalPrimitiveInit@@@CPersistContext@@QAEXAAVCPhysicalPrimitiveInit@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00458833, 76 bytes, `ret 4`; y-off + size TU (frame pointer, `and [ebp-N],0` zeroing,
 //         `leave`), the def module of the landed caller CHitLocationDef::Transfer 0x004585FE (its only call site, 0x0045860E).
 // Callees: CPersistContext::CheckCRC @ 0x00404500 (key "" @ 0x0122D70E), CPersistTraits<CPhysicalPrimitiveInit>::TransferBinaryOut
@@ -26,12 +27,7 @@ class CMemoryDataInputStream;
 namespace NHitLocations { class CPhysicalPrimitiveBase; }
 struct SCountBlock;
 
-template <class T> class CCountedPointer { public:
-    T*           Data;                  // +0
-    SCountBlock* Count;                 // +4
-    CCountedPointer() : Data(0), Count(0) {}
-    ~CCountedPointer();                 // 0x0044F3B2 for T = NHitLocations::CPhysicalPrimitiveBase
-};
+#include "engine/CCountedPointer.h"
 
 class CPhysicalPrimitiveInit {
 public:

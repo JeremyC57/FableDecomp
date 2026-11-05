@@ -1,5 +1,6 @@
 // CTCEntityEvents::HasEventOfTypeCreatedAfterFrame(NEntityEvents::EEventType type, long frame) const -- whether the entity's event list holds an event of the type created after the frame
 // Leaf: ?HasEventOfTypeCreatedAfterFrame@CTCEntityEvents@@QBE_NW4EEventType@NEntityEvents@@J@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe @ 0x00811380, 53 bytes, thiscall `ret 8`.
 // Identity (proven): FableWin.pdb ?HasEventOfTypeCreatedAfterFrame@CTCEntityEvents@@QBE_NW4EEventType@NEntityEvents@@J@Z is
 //   the only CTCEntityEvents bool(EEventType, long) const, and the PDB's only find_if over the CCountedPointer<CEventBase>
@@ -31,12 +32,7 @@ public:
     bool operator!=(const CListIterator& o) const { return m_node != o.m_node; }
 };
 template <class T> inline std::bidirectional_iterator_tag iterator_category(const CListIterator<T>&) { return std::bidirectional_iterator_tag(); }
-template <class T> class CCountedPointer {
-public:
-    T* m_pObject;
-    void* m_pInfo;
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CEventList {
 public:
     SListNode<T>* m_node;

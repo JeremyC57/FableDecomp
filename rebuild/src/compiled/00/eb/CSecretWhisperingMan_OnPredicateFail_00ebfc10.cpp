@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EBFC10, 210 bytes (+ int3 padding), `ret`; entity-script vtable slot 3
 //   (vtable entry 0x012F1024; the factory 0x00EBFB00 "SecretWhisperingMan" allocates 0x28 = Ego_r.pdb sizeof 40).
 // Leaf: OnPredicateFail
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literals "" @ 0x0122D70E, "OakBay" @ 0x012D31E4,
 //   "TEXT_QUEST_MAYORS_INVITATION_OBJECTIVE_05" @ 0x012F102C, "V_MayorsInvitation" @ 0x012C5008), ~CCharString @ 0x0099EAE0,
@@ -31,12 +32,9 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     SCRIPT_SLOT(290); SCRIPT_SLOT(291); SCRIPT_SLOT(292); SCRIPT_SLOT(293); SCRIPT_SLOT(294); SCRIPT_SLOT(295);
     virtual void SetQuestCardObjective(const CCharString& quest, const CCharString& text, const CCharString& region, const CCharString& regionAlt) const;   // slot 296 (+0x4a0)
 };
-class CScriptThing { public:                                  // vtable 0x01238C8C (only the slot used is typed)
-    SCRIPT_SLOTS10(0); SCRIPT_SLOT(10); SCRIPT_SLOT(11); SCRIPT_SLOT(12); SCRIPT_SLOT(13); SCRIPT_SLOT(14);
-    SCRIPT_SLOT(15); SCRIPT_SLOT(16); SCRIPT_SLOT(17);
-    virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48, 0x004AAAF0)
-    long m_data[2];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CV_ParanoidWhispersScript {
     unsigned char _pad[0x48];
     long          ParanoidState;                       // +0x48 (PDB +0x5c)

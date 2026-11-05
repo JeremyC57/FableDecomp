@@ -1,5 +1,6 @@
 // CAIStateGroup_MeleeCombatNearby2::IsCombatSequenceActionPending() -- true while the creature is performing any action, else whether the combat manager says it is in a non-interruptable combat sequence
 // Leaf: ?IsCombatSequenceActionPending@CAIStateGroup_MeleeCombatNearby2@@ABE_NXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093DAE0, length 48 bytes (+ int3 padding), private const.
 // Callees: CThingCreatureBase::IsPerformingAnyAction() const @ 0x006622A0, CAIStateGroupBase::GetWorld() const
 // @ 0x008FCFC0 (protected, returns CWorld&), CCombatManager::IsCreaturePerformingNonInterruptableSequence(const
@@ -69,13 +70,8 @@ protected:
     CThingAICreature& GetCreature() const { return PBrain->GetCreature(); }   // Ego_d.pdb ?GetCreature@CAIStateGroupBase@@IBEAAVCThingAICreature@@XZ
 };
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();
-private:
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CAIStateGroup_MeleeCombatNearbyBase : public CAIStateGroupBase {
 protected:

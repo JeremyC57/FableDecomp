@@ -1,5 +1,6 @@
 // CTCInventory::AddCloseInventoryEvent() -- an active, not yet closing interface-0xF6 menu is asked to close itself; otherwise the base queues the close-inventory game event; then the live GUI is toggled back if it was hidden
 // Leaf: ?AddCloseInventoryEvent@CTCInventory@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 27 (family c695): NInventory::CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 is the virtual
 //   ?AddCloseInventoryEvent@CTCInventoryBase@NInventory@@UAEXXZ (Ego_r.pdb + FableWin.pdb; chunk 695), called qualified, and the
@@ -64,12 +65,7 @@ class CTCQuickAccessMenu { public:                            // interface type 
     void RequestClose();                             // 0x00625920
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:

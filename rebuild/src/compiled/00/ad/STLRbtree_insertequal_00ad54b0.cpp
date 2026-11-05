@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_equal(const value_type& v) -- multimap insert for the optimiser's contraction multimap (multimap<float, CCountedPointer<CVertexPairContraction>>): descend on the float key, link below the last node visited
 // Leaf: ?insert_equal@?$_Rb_tree@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD54B0, 0x40 bytes, thiscall, `ret 8` (hidden iterator result + the value
 // reference), returns the result pointer.
 // Identity: `fld [v] ; fcomp [x+10h] ; test ah,5 ; jp right` is `less<float>(v.first, key(x)) ? left : right` over
@@ -10,11 +11,7 @@
 // Shape: STLport 4.x insert_equal: y = header, x = root; `while (x) { y = x; x = comp(v, key(x)) ? left : right; }`
 // then `return _M_insert(x, y, v)` (w defaults to 0) forwarding the caller's hidden result pointer.
 struct SCountInfo;
-template <class T> class CCountedPointer {
-public:
-    T*          Data;                                            // +0x0
-    SCountInfo* Info;                                            // +0x4
-};
+#include "engine/CCountedPointer.h"
 namespace QuadricOptimiserInternals { class CVertexPairContraction; }
 
 namespace std {

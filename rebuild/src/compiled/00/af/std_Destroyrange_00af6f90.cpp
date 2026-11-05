@@ -1,5 +1,6 @@
 // std::_Destroy_range(pair<EPSCType, CComponentInstance>* first, pair<EPSCType, CComponentInstance>* last, const allocator&) -- run the element destructor on [first, last) of a particle system's component map
 // Leaf: _Destroy_range
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe @ 0x00AF6F90, 85 bytes, `ret 4`: __fastcall (first ecx, last edx, the empty allocator by const
 // reference on the stack, never read). Eleven call sites 0x00AF451D .. 0x00AF79B7; the landed
 // NParticleEngine::CParticleSystem destructor 0x00AF5900 calls it for its Components CVectorMap.
@@ -10,29 +11,8 @@
 // Shape: CComponentInstance is polymorphic with a compiler-generated destructor, so VC7.1 drops its own vtable reset:
 // the Component release (count-block induction register `lea esi,[edi+0Ch]`, both words zeroed) is followed directly by
 // the base destructor call on the vptr word (`lea ecx,[esi-8]`).
-struct SCountBlock {
-    long m_references;                          // +0x00
-    void (__fastcall* m_pfnDestroy)(void*);     // +0x04
-    void* m_pObject;                            // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* Data;                                    // +0x00
-    SCountBlock* Info;                          // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace NParticleEngine {

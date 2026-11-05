@@ -1,6 +1,7 @@
 // CVillageTaskCarryCrate::CVillageTaskCarryCrate(CThing* crateStack, bool pickup, long priority) -- village task base, empty creature pointer, crate-stack pointer set from the argument, pickup flag and priority
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065EF94, length 64 bytes. Pragma: optimize("s") (pass-through `push dword ptr [esp+0Ch]`).
 // Leaf: ??0CVillageTaskCarryCrate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Callees: CVillageTask::CVillageTask @ 0x0099A380 (base; the manifest's CBaseIntelligentPointer label is a folded body),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CIntelligentPointer<CThing>::CIntelligentPointer(CThing*) @ 0x004A96F0.
 // Vtables: CVillageTaskCarryCrate 0x0125A950, CIntelligentPointer 0x01237F1C (CreatureAssignedToTask).
@@ -12,14 +13,8 @@ class CBaseObject;
 class CThing;
 class CThingTrackNode;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                   // +0x04
-    CBaseIntelligentPointer();              // 0x00A01B10
-    CBaseObject* GetPItem() const;          // 0x00A01B50
-    void SetPItem(CBaseObject* item);       // 0x00A01B90
-    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // vtable 0x01237F1C
     virtual void v00();
     CIntelligentPointerConstThing() {}

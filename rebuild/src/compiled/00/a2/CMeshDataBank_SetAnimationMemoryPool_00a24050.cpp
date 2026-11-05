@@ -1,4 +1,5 @@
 // CMeshDataBank::SetAnimationMemoryPool(CCountedPointer<CMovableResourceMemoryPool>, bool) -- adopt a movable-resource memory pool for the AnimationResourceBank and optionally point the pool back at that bank
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A24050, 144 bytes (padding included).
 // Shape: the counted pointer arrives BY VALUE (object, block in the argument slots). The member
 // AnimationMemoryPool (+0x360) is assigned with CCountedPointer::operator=: when the blocks differ the old block
@@ -10,44 +11,8 @@
 // 0x74 (AnimationMemoryPool PDB 0x3d4, AnimationResourceBank PDB 0x2dc).
 class CMovableResourceMemoryPool;
 
-struct SCountBlock {
-    long m_references;                              // +0
-    void (__fastcall* m_pfnDestroy)(void*);         // +4
-    void* m_pObject;                                // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*           Data;                              // +0
-    SCountBlock* m_pCount;                          // +4
-    ~CCountedPointer()
-    {
-        SCountBlock* count = m_pCount;
-        if (count) {
-            if (--count->m_references == 0) {
-                count->m_pfnDestroy(count->m_pObject);
-                delete count;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        if (m_pCount != other.m_pCount) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    delete m_pCount;
-                }
-            }
-            Data = other.Data;
-            m_pCount = other.m_pCount;
-            if (m_pCount)
-                ++m_pCount->m_references;
-        }
-        return *this;
-    }
-    T* operator->() const { return Data; }
-};
 
 struct CResourceBankOwner { void* m_pFirst; };    // the pool-facing interface at bank +4
 

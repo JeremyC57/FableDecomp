@@ -1,4 +1,5 @@
 // NInventory::CTCInventoryStats::ConstructScreen(NUISystem::CComponent* topLevel) -- creates the UI_STATS_LIST screen, touches its three entries, and wires the experience entry's select / back actions (type 3: go to the top-level menu screen in state 0 / 1); returns the screen
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CD074, 562 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CManager::GetInstance @ 0x0041E5F2 (called once with the result dropped, then again for CreateComponent
 // @ 0x0041DB1D), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, the component's slot 3 (+0x0C, child by name; CCharString by value
@@ -47,13 +48,7 @@ __declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CAct
     InsertParamNode(_M_node, value);
 }
 #pragma auto_inline(on)
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer(T* object);                         // 0x0042AA29
-    ~CCountedPointer();                                 // 0x00429160
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 struct CComponentBase {
     virtual void v00(); virtual void v01(); virtual void v02();

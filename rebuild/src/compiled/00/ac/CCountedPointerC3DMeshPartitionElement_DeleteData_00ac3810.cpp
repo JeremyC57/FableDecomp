@@ -1,5 +1,6 @@
 // CCountedPointer<C3DMeshPartitionElement>::DeleteData(void* data) -- the counted pointer's per-type deleter: delete the partition element (its destructor deletes both sub-elements and clears the triangle range)
 // Leaf: ?DeleteData@?$CCountedPointer@VC3DMeshPartitionElement@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC3810, length 60 bytes (+4 int3), static __fastcall (data in ecx),
 //   plain `ret`.
@@ -34,14 +35,6 @@ public:
     }
 };
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                    // +0x00
-    void* Info;                                    // +0x04 (CCPPointerInfo)
-    static void __fastcall DeleteData(void* data)
-    {
-        delete (T*)data;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 template void __fastcall CCountedPointer<C3DMeshPartitionElement>::DeleteData(void* data);

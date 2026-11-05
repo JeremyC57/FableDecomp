@@ -1,5 +1,6 @@
 // CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const -- look the tag up in the game text bank (by CRC): a text entry's string is shown as a screen message; for a group entry only the random pick is drawn; an unknown tag shows "(" + tag
 // Leaf: AddScreenMessage
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -89,12 +90,7 @@ protected:
 public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
 private: public: unsigned char _pad[0x14]; CDataBank* TextBank; };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:

@@ -1,5 +1,6 @@
 // CPlayerGui::SetMoralityAsDisplaying() -- reopen the morality stat bar: clear its fully-opened frame and put a bar that is not closed back into the opening mode
 // Leaf: ?SetMoralityAsDisplaying@CPlayerGui@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00437710, 36 bytes, __fastcall, plain `ret`.
 // Identity (proven by layout + PDB name set): one of five byte-identical-but-for-the-offset bodies 0x004376B0 / 0x004376E0
 // / 0x00437710 / 0x00437740 / 0x00437770, one per CPlayerGui stat-bar counted pointer. Ego_r.pdb CPlayerGui holds PMoney
@@ -30,13 +31,8 @@ public:
 };
 class CStatBar : public CStatBase { };
 }
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
 
 class CPlayerGui { public:
     unsigned char                         Body[0x2dc];      // +0x00 .. (not modelled)

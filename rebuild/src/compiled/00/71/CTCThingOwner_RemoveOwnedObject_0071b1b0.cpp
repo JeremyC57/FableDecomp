@@ -1,5 +1,6 @@
 // CTCThingOwner::RemoveOwnedObject(CThing&) -- removes the thing from the owned-object list
 // Leaf: ?RemoveOwnedObject@CTCThingOwner@@AAEXAAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071B1B0, 66 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: CTCThingOwner::RemoveOwnedObject(CThing&) -- proven; evidence: it sits in the CTCThingOwner module (before CTCThingOwner::OnKill 0x0071B200 / ClearDeadEntries 0x0071B240);
 //   Ego_r.pdb CTCThingOwner::ObjectList is the list<CIntelligentPointer<CThing> > at +0xC; its one caller is
@@ -18,17 +19,8 @@
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                               // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
-    void SetPItem(CBaseObject* item);                        // 0x00A01B90
-    CBaseObjectPointer* PData;                               // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class _Tp> class allocator {
 public:

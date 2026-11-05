@@ -1,5 +1,6 @@
 // CTCShapeManager::GetBestTrack(const NShape::CTrack** out) const -- find the first persistent shape that is a track; write it through out and return whether one exists
 // Leaf: ?GetBestTrack@CTCShapeManager@@QBE_NPAPBVCTrack@NShape@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00761B50, 56 bytes, `ret 4`.
 // Identity: Ego_r.pdb ?GetBestTrack@CTCShapeManager@@QBE_NPAPBVCTrack@NShape@@@Z (the manifest's "Map_FindByKey" is a
 //   forge autoname). Callers: CTCCameraPointTrack::Validate 0x0075DC48, CTCCameraPointTrack::GetActiveCameraPosition
@@ -13,7 +14,7 @@
 // Layout: retail CTCShapeManager (as the landed 0x00760910): PersistantShapes (vector<CCountedPointer<NShape::CShape> >,
 //   8-byte elements {Data, Info}) +0x0C/+0x10/+0x14, SelectedShape +0x18.
 class CThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
 namespace NShape {
 class CShape {
@@ -24,12 +25,6 @@ class CTrack : public CShape {
 };
 }
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                      // +0x00
-    CCPPointerInfo* Info;                         // +0x04
-    T* operator->() const { return Data; }
-};
 
 namespace NShape {
 class CIsShapeTrack { public:

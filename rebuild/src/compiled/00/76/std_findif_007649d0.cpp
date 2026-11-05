@@ -1,5 +1,6 @@
 // std::__find_if(const CCountedPointer<NShape::CShape>* first, const CCountedPointer<NShape::CShape>* last, NShape::CIsShapeTrack pred, const random_access_iterator_tag&) -- STLport unrolled-by-four search for the first shape the track predicate accepts (shape type 1); returns last when none does
 // Leaf: ??$__find_if@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007649D0, length 496 bytes (__fastcall: first ecx, last edx, the empty
 //   predicate dword and the tag reference on the stack, `ret 8`; 0x1EA bytes + int3 pad).
 // Identity: Ego_r.pdb has the predicate `??RCIsShapeTrack@NShape@@QBE_NV?$CCountedPointer@VCShape@NShape@@@@@Z` (by-value
@@ -15,30 +16,8 @@
 //   CCountedPointer (inline add-ref), calls GetType() == 1 and releases the copy inline.
 void __cdecl operator delete(void* block);                                         // 0x00BFE9BC
 
-template <class T> struct SCountBlock {
-    long m_references;                                      // +0x00
-    void (T::*m_pfnDestroy)();                              // +0x04
-    T*   m_pItem;                                           // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x00
-    SCountBlock<T>* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->m_references == 0) {
-            (Info->m_pItem->*Info->m_pfnDestroy)();
-            operator delete(Info);
-        }
-    }
-    T* operator->() const { return Data; }
-};
 
 namespace NShape {
 

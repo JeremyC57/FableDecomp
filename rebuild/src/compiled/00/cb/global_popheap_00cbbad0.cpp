@@ -1,5 +1,6 @@
 // _global::__pop_heap(SBindingPair* first, SBindingPair* last, SBindingPair* result, SBindingPair value, CCompareString comp, long*) -- SGI pop_heap core for a heap of (name, CCountedPointer<CEntityScriptBindingBase>) pairs: *result = *first, then sift `value` down from the root
 // Leaf: __pop_heap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBBAD0, length 153 bytes (`ret 18h`: result, the 0x0c-byte value, the comparator and
 // the distance pointer on the stack; first/last in ecx/edx -- the SGI algorithm TUs are /Gr).
 // Label correction: the manifest's "CGameCameraManager::PushCameraMode" is propagated and wrong; the callee 0x00CBB4D0 carries the manifest name
@@ -18,33 +19,8 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct SCountBlock {
-    long m_references;                                  // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4 per-type deleter, object in ecx
-    void* m_pObject;                                    // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                                       // +0
-    SCountBlock* m_pCount;                              // +4
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;                        // operator delete @ 0x00BFE9BC
-            }
-        }
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-};
 
 class CEntityScriptBindingBase;
 

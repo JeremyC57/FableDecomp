@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawMeleeActionButtonEffects::~CDrawMeleeActionButtonEffects() -- compiler-generated: release the melee ability def, destroy the particle-emitter vector, then the base's primitive-handle vector
 // Leaf: ??1CDrawMeleeActionButtonEffects
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004420D0, length 115 bytes, plain `ret`. Callers: the CCountedPointer
 // per-type deleter 0x00443AA0 (`if (p) { ~T; operator delete }`; manifest "CTCMapwho::OnDie", propagated), stored by
 // CCountedPointer<NPlayerGui::CDrawMeleeActionButtonEffects>::Reset 0x00444B40, which CPlayerGui's setup calls at 0x0043C25A
@@ -53,11 +54,8 @@ class CEnginePrimitiveHandle { public:                              // 8 bytes, 
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;  // +0x04
 };
 
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();                      // 0x00A01C10 (slot 0 = ??_G)
-    void* PItem;                                             // +0x04
-};
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace NParticleEngine { class CParticleEmitter; }
 

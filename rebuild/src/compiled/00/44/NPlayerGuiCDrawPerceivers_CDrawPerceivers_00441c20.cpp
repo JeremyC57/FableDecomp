@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawPerceivers::~CDrawPerceivers() -- implicit destructor: clear and free the perceived-things list, then CDrawBase's primitive-handle vector (virtual element destructors, then free the storage)
 // Leaf: ??1CDrawPerceivers
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00441C20, length 75 bytes, plain `ret` (thiscall).
 // Callees: list<CIntelligentPointer<const CThing> >::clear() @ 0x0043F230 (out of line), free @ 0x00BFEA14; the handle
 // destructors run through vtable slot 0 (`push 0 ; call [vptr]`).
@@ -38,10 +39,8 @@ class CEnginePrimitiveHandle { public:                    // vptr + counted prim
     virtual ~CEnginePrimitiveHandle();
     void* Data;
 };
-template <class T> class CIntelligentPointer { public:    // vptr + item
-    virtual ~CIntelligentPointer();
-    void* m_pItem;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 template <class T> struct _List_node {

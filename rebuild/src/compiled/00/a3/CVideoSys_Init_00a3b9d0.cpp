@@ -1,6 +1,7 @@
 #pragma optimize("t",on)
 // CVideoSys::Init(const CWideString& filename, CTexture* texture, bool render_source_pin) -- build the DirectShow graph for a movie: filter graph, the texture renderer filter, then RenderFile (.wmv/.asf) or source filter + pin connection, the control interfaces, the critical section and the render event
 // Leaf: ?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3B9D0, 592 bytes, thiscall `ret 0Ch`, returns the HRESULT.
 // Identity: Ego_r.pdb / FableWin.pdb `?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z` (the manifest row agrees);
@@ -110,12 +111,7 @@ public:
     virtual void Update();                      // slot 2 (+0x08)
     void ClearEvents();                         // 0x009F5540
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                       // +0x00
-    CCPPointerInfo* Info;                       // +0x04
-};
+#include "engine/CCountedPointer.h"
 class CSystemManager {
 public:
     unsigned char                  _pad00[0x58];

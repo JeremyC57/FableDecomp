@@ -1,5 +1,6 @@
 // CNewFrontendGameComponent::Init2() -- second-stage front-end start-up: create the front-end manager, graphics/sounds/input, load the localised text bank, initialise the UI and set the 1024x768 display mode
 // Leaf: ?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Naming wave 35c (caller respell): calls 0x00AEAA80 under its PDB name NParticleEngine::SetGraphicBank(const CGraphicDataBank&) (?SetGraphicBank@NParticleEngine@@YIXABVCGraphicDataBank@@@Z; was SetCurrentGraphicBank(CGraphicDataBank*)).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe @ 0x0042E98F, 256 bytes, plain `ret` after `leave`.
@@ -35,15 +36,7 @@ public:
 namespace NLocalisation {
 CCharString __fastcall GetTextBankName();                // 0x00415260
 }
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Object;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other);       // 0x0041BA30 (CGraphicDataBank) / 0x00428905 (CMeshDataBank)
-    void Reset(T* object);                               // 0x00403E40 for NGameText::CDataBank
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class CGraphicDataBank;
 class CMeshDataBank;
 class CInputManager;
@@ -116,7 +109,7 @@ void CNewFrontendGameComponent::Init2()
     InitialiseGraphics();
     InitialiseSounds();
     InitialiseInput();
-    NParticleEngine::SetGraphicBank(*m_pFrontEndGraphicBank.Object);
+    NParticleEngine::SetGraphicBank(*m_pFrontEndGraphicBank.Data);
     m_pTextBank.Reset(new NGameText::CDataBank);
     m_pTextBank->OpenReadOnly(NLocalisation::GetTextBankName(), 0x100);
     NUISystem::CManager::Clear();

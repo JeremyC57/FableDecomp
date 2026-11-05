@@ -1,4 +1,5 @@
 // CWorldMap::LoadRegionGraph(const CWideString&) -- load the region connection graph: open "Data\Misc\<name>" if it exists, create the graph object on first use and initialise it from the file's text
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00506D40, 237 bytes, `ret 4`. PDB ?LoadRegionGraph@CWorldMap@@QAEXABVCWideString@@@Z
 // Callees: __fastcall NResourceDirectoryNames::GetMiscDir() 0x0041A0A0 (L"Data\\Misc\\" 0x0122F3E8; manifest
 // "CUserProfileManager::GetAutoSaveFileName" is a byte twin), __fastcall operator+(const CWideString&, const CWideString&)
@@ -67,13 +68,7 @@ class CRegionConnectionGraph { public:
     void InitialiseGraph(const CCharString& text, const CWorldMap& worldMap);   // 0x00828710
 };
 
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-    void Reset(T* data);                                     // 0x0051CEA0 (CCountedPointer<CRegionConnectionGraph>)
-};
+#include "engine/CCountedPointer.h"
 
 class CWorldMap { public:
     unsigned char                           _pad00[0x44];

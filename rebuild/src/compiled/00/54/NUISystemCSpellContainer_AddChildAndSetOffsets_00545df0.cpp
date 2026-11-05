@@ -1,5 +1,6 @@
 // NUISystem::CSpellContainer::AddChildAndSetOffsets(CCountedPointer<CComponent>& child) -- place the new child one offset step per existing child along X (in its state 0), then add it
 // Leaf: AddChildAndSetOffsets
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00545DF0, 106 bytes (`ret 4`).
 // Callees: the child's virtual slot 82 (+0x148, GetStates(), the state map by reference), map<unsigned long, CUIState>::
 // operator[](const unsigned long&) @ 0x0042D5B1 (manifest "CPersistTraits::Transfer" is propagated: lower_bound, insert a
@@ -22,13 +23,7 @@ class C2DVector { public:
 namespace NUISystem {
 class CComponent;
 }
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CCountedVector {         // STLport vector<CCountedPointer<T>> (12 bytes)
 public:
     CCountedPointer<T>* _M_start;

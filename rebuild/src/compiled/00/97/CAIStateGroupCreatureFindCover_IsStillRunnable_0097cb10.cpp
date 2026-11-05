@@ -1,4 +1,5 @@
 // `operator*=(const float&)` (chunk 278 / 00880510 lever) spills the Newton-step reciprocal and multiplies from memory as
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // retail; (2) the facing call's object through an inline accessor (`GetPItem()->GetPhysicsBody()->GetFacing()`, chunk 271
@@ -13,24 +14,9 @@ extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 class CThing;
 
 class CBaseObject;
-struct CBaseIntelligentPointer
-{
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{ public:
-    virtual void v00();
-    CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
-    T* Get() const { return (T*)GetPItem(); }
-};
 
 class CTCBase;
 

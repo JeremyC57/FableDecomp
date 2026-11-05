@@ -1,5 +1,6 @@
 // NCreatureMode::CModeBriarRoseConcentrate::CModeBriarRoseConcentrate(CThing*, CThingCreatureBase*, bool) -- mode ctor: "POWER_UP" filter, PTarget = target, Imposter = flag, Timer left unset
 // Leaf: ??0CModeBriarRoseConcentrate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E78C0, 216 bytes (`ret 0Ch`). Vtable 0x01268548 (NCreatureMode::CModeBriarRoseConcentrate).
 // Callees: CModeStandBase::CModeStandBase(CThing*) 0x00861E00; CCharString(const char*, long) 0x0099EBF0,
 // CCharString() 0x0099E4B0, operator= 0x0099EFB0, ~CCharString 0x0099EAE0; CRC 0x004014A0;
@@ -48,12 +49,8 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
     }
 };
 
-struct CBaseIntelligentPointer {           // vptr + item
-    virtual void v00();
-    CBaseObject* PItem;                    // +4
-    CBaseIntelligentPointer();             // 0x00A01B10
-    void SetPItem(CBaseObject*a0);             // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();

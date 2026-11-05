@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<pair<unsigned long, C3DMeshVolume> >) STLport 4.6 growth insert: allocate size + max(size, fill_len) elements, copy the head, x (once, or fill_len times) and the tail unless atend, destroy and free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@KVC3DMeshVolume@@@std@@V?$allocator@U?$pair@KVC3DMeshVolume@@@std@@@2@@std@@IAEXPAU?$pair@KVC3DMeshVolume@@@2@ABU32@ABU__false_type@2@I_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A34F00, 258 bytes, thiscall `ret 14h`.
 // Identity (proven): STLport 4.6 vector<_Tp>::_M_insert_overflow(.., const __false_type&, ..), protected (IAE); callers
 //   are this vector's _M_fill_insert 0x00A35010 and the landed push_back 0x00A35360 (which already binds 0x00A34F00
@@ -26,20 +27,8 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class CCPPointerInfo { public:                          // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer();
-    CCountedPointer& operator=(const CCountedPointer& other);
-};
 
 class CContainmentVolume;
 

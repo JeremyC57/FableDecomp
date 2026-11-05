@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntityGetOpinionAttitudeToPlayer(const CScriptThing& entity) const -- script call: the opinion reaction manager's attitude of the entity's thing to the player, 0 without a thing
 // Leaf: ?EntityGetOpinionAttitudeToPlayer@CGameScriptInterface@@UBE?AW4EOpinionAttitudeType@@ABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00890990, 38 bytes, thiscall `ret 4` (the found path tail-jumps with the thing in the argument slot).
 // Identity (proven): retail CGameScriptInterface vtable 0x01260F0C slot 608 holds this body; slot 608 is
 //   ?EntityGetOpinionAttitudeToPlayer@CGameScriptInterface@@UBE?AW4EOpinionAttitudeType@@ABVCScriptThing@@@Z.
@@ -20,8 +21,7 @@ public:
     COpinionReactionManager* POpinionReactionManager;    // +0x74 (member name descriptive)
     COpinionReactionManager& GetOpinionReactionManager() { return *POpinionReactionManager; }
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

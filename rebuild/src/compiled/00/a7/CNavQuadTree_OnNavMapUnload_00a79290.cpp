@@ -1,5 +1,6 @@
 // CNavQuadTree::OnNavMapUnload(long mapIndex) -- a neighbouring navigation map was unloaded: erase every connector node registered under its map index (the equal range of the ConnectorNodes map)
 // Leaf: ?OnNavMapUnload@CNavQuadTree@@QAEXJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A79290, 74 bytes (+ int3 padding to 80), thiscall `ret 4`.
 // Identity: Ego_r.pdb `?OnNavMapUnload@CNavQuadTree@@QAEXJ@Z`; the only caller is CNavigatorManager::RemoveNavigationMap
 //   (0x00A155F0: every other map's quad tree gets the unloaded index). ConnectorNodes (CVectorMap<long,
@@ -15,45 +16,8 @@
 // Fix (sweep 3): pair is a struct, so the __copy / __destroy_aux 0x00A80E40 bindings spell U?$pair (was V?$pair).
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-struct SCountBlock {
-    long  m_references;                                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);                 // +4
-    void* m_pObject;                                        // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                      // +0
-    SCountBlock* Info;                                      // +4
-    void Release()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                operator delete(Info);
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        if (Info != other.Info) {
-            Release();
-            Data = other.Data;
-            Info = other.Info;
-            if (Info) ++Info->m_references;
-        }
-        else
-            Data = other.Data;
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CNavConnectorNode;
 

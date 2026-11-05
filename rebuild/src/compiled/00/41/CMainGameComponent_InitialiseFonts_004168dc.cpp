@@ -1,4 +1,5 @@
 // CMainGameComponent::InitialiseFonts() -- show the "Init Fonts" progress text, then fetch the ENG_ARIAL_18 font from the font bank into the component's font pointer (+0x1614c)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004168DC, length 119 bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, DisplayProgress @ 0x009E9F40 (`__fastcall`:
 //          string in ecx, the first bool in dl, the float and the second bool on the stack), CCharString::~CCharString
@@ -19,13 +20,7 @@ private:
 };
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
 struct CFont;
-template <class T> class CCountedPointer {
-public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer<T>& operator=(const CCountedPointer<T>& other);   // 0x00419463
-    ~CCountedPointer();                            // 0x004057A0
-};
+#include "engine/CCountedPointer.h"
 class CFontBank { public:
     CCountedPointer<CFont> GetFont(const CCharString& name);   // 0x009E2C80
 };

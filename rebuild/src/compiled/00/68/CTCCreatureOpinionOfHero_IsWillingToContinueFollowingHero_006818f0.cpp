@@ -1,4 +1,5 @@
 // CTCCreatureOpinionOfHero::IsWillingToContinueFollowingHero() const -- decided by the creature's attitude to the player
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006818F0, length 46 bytes + embedded jump table (2 targets) and byte index
 // table (17 entries) through 0x00681938. Callers 0x006D4FA3, 0x006D5499.
 // Callees: the world accessor @ 0x00686A80, COpinionReactionManager::GetThingAttitudeToPlayer(const CThing*) @ 0x00701840.
@@ -25,10 +26,8 @@ class CWorld { public:
 // SetHeroOpinionEnemy 0x006815D0 also shows), hence a local model.
 class CThing;
 
-struct CBaseIntelligentPointer {
-    void* __vftable;                        // +0x00
-    void* PData;                            // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct SLongNode {                          // STLport _List_node<long>
     SLongNode* Next;                        // +0x00

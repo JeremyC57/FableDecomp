@@ -7,12 +7,8 @@
 //         with the async-streaming flag at +0x38 (named descriptively).
 // Shape: the asynchronous call passes the size twice and a priority of 4; the null result is CCountedPointer's inline ctor.
 // Leaf: StreamGlyph
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+#include "engine/CCountedPointer.h"
 class CBankFileAsyncData;
 class CBankFile { public:
     CCountedPointer<CBankFileAsyncData> ReadAsync(unsigned long offset, void* buffer, unsigned long size,

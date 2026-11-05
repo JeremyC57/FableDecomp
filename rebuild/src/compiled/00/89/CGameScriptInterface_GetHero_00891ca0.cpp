@@ -1,6 +1,7 @@
 // CGameScriptInterface::GetHero() -- refresh the cached hero script thing (+0x30) from the main player's hero thing,
 // or reset it to the null script thing, and return it
 // Leaf: ?GetHero@CGameScriptInterface@@UAEAAVCScriptThing@@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891CA0, length 176 bytes, `ret`.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetScriptThing()
 // @ 0x004C7E50 (by hidden pointer), CGameScriptThing::CreateNullThing() @ 0x008CFF40, CScriptThing::operator= @ 0x008AB980,
@@ -15,28 +16,8 @@ class CThing;
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void*);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    void* Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

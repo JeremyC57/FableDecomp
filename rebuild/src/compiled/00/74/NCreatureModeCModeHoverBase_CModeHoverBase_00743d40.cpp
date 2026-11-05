@@ -1,5 +1,7 @@
 // NCreatureMode::CModeHoverBase::~CModeHoverBase() -- release the particle effect, empty and free the anim queue, destroy the current name and the hover-state table, then the inlined CModeBase destructor
 // Leaf: ??1CModeHoverBase
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00743D40, 111 bytes, `ret`.
 // Callees: ~CBaseIntelligentPointer @ 0x00A01C10 (PParticleEffect), the AnimQueue list's clear() @ 0x00742290 (landed;
 //   the CCountedPointer list clear shared by identical-COMDAT folding), free @ 0x00BFEA14 (the list sentinel, the
@@ -18,14 +20,9 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CThing;
 
-class CBaseIntelligentPointer {                             // 8 bytes: vptr + the pointee link
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    void* PData;                                            // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
 
 class CCharString {
 public:
@@ -33,11 +30,7 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                             // +0x00
-    void* Info;                                             // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 class CAnimFilterBase {                                     // vtable 0x0122FFCC
 public:

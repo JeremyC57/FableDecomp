@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionBehaviourCrowdBase::CAIStateGroup_MinionBehaviourCrowdBase() -- default constructor
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009009EA, length 68 bytes.
 // Callees: CAIStateGroupBase::CAIStateGroupBase() @ 0x008FD255, CBaseIntelligentPointer::
 // CBaseIntelligentPointer() @ 0x00A01B10 three times (members +0x14, +0x1c, +0x24), each
@@ -12,11 +13,8 @@ class CAIStateGroupBase { public:
     unsigned char _pad[0x10];               // +0x4..+0x13
 };
 
-struct CBaseIntelligentPointer {         // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                          // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerOfThing : CBaseIntelligentPointer {          // vtable 0x01237F1C
     CIntelligentPointerOfThing() { }

@@ -1,4 +1,5 @@
 // CCreatureAction_SummonerSummonInto::FinishAction() -- base FinishAction, then when the summoner has a mode manager and the target is present and alive, add a new summoning mode (owner, target)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB060, length 186 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 =
@@ -43,12 +44,7 @@ struct CBaseIntelligentPointer {
 };
 
 struct CModeBase { };
-template <class T> class CCountedPointer { public:
-    T*    m_pObject;                            // +0
-    void* m_pCount;                             // +4
-    CCountedPointer(T* object);                 // 0x00718A00
-    CCountedPointer(const CCountedPointer& other);
-};
+#include "engine/CCountedPointer.h"
 struct CModeSummonerSummon : CModeBase {
     unsigned char _pad[0x90];
     CModeSummonerSummon(CThing* owner, CThing* target);         // 0x008CC0B0

@@ -1,5 +1,6 @@
 // CAtmosProcess::~CAtmosProcess() -- atmos-sound process destructor: when the sound manager exists, clear its atmos sounds and its atmos map, then the members are destroyed (the rain-player intelligent pointer)
 // Leaf: ??1CAtmosProcess@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006B1550, 44 bytes, thiscall, tail jump to ~CBaseIntelligentPointer.
 // Identity (proven): (1) the only callers are 0x004A8380 (a scalar deleting destructor: dtor, `test [esp+8],1`, delete) and
 //   0x004A9B50, the counted-pointer DeleteData (null test, dtor, delete) that CWorld::PostInit 0x004A6550 stores in the count block
@@ -45,16 +46,8 @@ public:
 extern CASoundManager* PSoundManager;                                     // 0x013B8394 ?PSoundManager@@3PAVCASoundManager@@A
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                                            // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                                   // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                                            // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 class CAtmosProcess {

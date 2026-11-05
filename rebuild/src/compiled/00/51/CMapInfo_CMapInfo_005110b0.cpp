@@ -1,4 +1,5 @@
 // CMapInfo::CMapInfo(const CMapInfo& other) -- copy constructor of a world-map entry: the area box, the counted map pointer (reference count bumped), the level / script / serialise-script names, the UID, the five state flags, the two 64-bit file stamps and the sea flag
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005110B0, length 157 bytes.
 // Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30 (x3).
 // Layout (PDB CMapInfo, 0x48): Area (C2DBoxI) +0, PMap (CCountedPointer<CMap>) +0x10, LevelName +0x18, LevelScriptName +0x1c, MapUID +0x20,
@@ -16,27 +17,7 @@ class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(const C2DBoxI& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) { }
 };
-class CCPPointerInfo { public:                            // the shared block of a CCountedPointer: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);     // called with Data in ecx
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void Reset() { ReleaseInfo(); Info = 0; Data = 0; }
-};
+#include "engine/CCountedPointer.h"
 class CMap;
 class CDataOutputStream { public:
     void WritePresizedString(const CCharString& s);   // 0x00995A80

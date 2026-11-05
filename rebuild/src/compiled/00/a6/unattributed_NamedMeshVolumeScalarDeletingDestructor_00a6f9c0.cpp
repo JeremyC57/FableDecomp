@@ -1,6 +1,7 @@
 // _unattributed::NamedMeshVolumeScalarDeletingDestructor(unsigned int) -- `scalar deleting destructor' of a 16-byte {CCharString key; C3DMeshVolume value} record: release the volume's counted pointer, destroy the volume name, then the key, free when bit 0 is set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6F9C0, length 93 bytes.
 // Leaf: ??_G
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pData->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Callees: CCharString::~CCharString @ 0x0099EAE0 (x2), operator delete @ 0x00BFE9BC (block and record),
 // the counted block's delete function through `call [eax+4]` with its Data in ecx.
 // Identity: the manifest label "CPSCEmitterGeneric::`vector_deleting_destructor'" is propagated and rejected
@@ -20,27 +21,8 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:                                 // PDB: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);          // called with Data in ecx and nothing on the stack
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer { public:
-    T*              m_pData;                            // PDB: Data
-    CCPPointerInfo* m_pInfo;                            // PDB: Info
-    void ReleaseInfo()
-    {
-        if (m_pInfo) {
-            --m_pInfo->RefCount;
-            if (m_pInfo->RefCount == 0) {
-                m_pInfo->DeleteFunc(m_pInfo->Data);
-                delete m_pInfo;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); m_pData = 0; m_pInfo = 0; }
-};
 
 class CContainmentVolume;
 

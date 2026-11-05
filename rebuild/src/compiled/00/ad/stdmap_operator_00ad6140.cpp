@@ -1,8 +1,8 @@
 // std::map::operator=(const Container& other) -- replace the destination tree with a deep copy.
 // Leaf: ??4?$map@KVCContractionReference@QuadricOptimiserInternals@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@4@@std@@QAEAAV01@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity: proven; COptimisedVertex PairContractions; current map assignment binding from real PDB operator=0xAD7050; _M_erase0xAD5240 and _M_copy0xAD43A0 match that map.
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };
+#include "engine/CCountedPointer.h"
 namespace QuadricOptimiserInternals { class CVertexPairContraction; class CContractionReference { public: CCountedPointer<CVertexPairContraction> Contraction; unsigned long SubIndex; }; }
 namespace std {
 template<class T> class allocator {};

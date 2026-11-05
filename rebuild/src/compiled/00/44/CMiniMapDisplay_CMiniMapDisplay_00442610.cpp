@@ -1,5 +1,6 @@
 // CMiniMapDisplay::~CMiniMapDisplay() -- forget the region minimap texture and region, then destroy the RegionMinimap, the MinimapList entries, the Markers list and the two primitive-handle vectors, then the CBaseClassNonCopyable base
 // Leaf: ??1CMiniMapDisplay
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00442610, 201 bytes. Callers: the ??_G 0x004426E0 (slot 0 of the CMiniMapDisplay vtable
 //   0x01231768) and 0x00443D2A (the owner's destructor, CMiniMapDisplay embedded at its +0x28; Ego_r.pdb has
 //   ?GetMiniMap@CPlayerGui@@QAEAAVCMiniMapDisplay@@XZ).
@@ -93,15 +94,8 @@ class CRegion;
 class CBaseObject;
 #pragma pack(push, 1)
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                          // vtable 0x0129C95C, 8 bytes
-public:
-    CBaseIntelligentPointer();                                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                                  // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CEnginePersistentPrimitiveBase;
 class CEnginePrimitiveHandle {                                           // Ego_r.pdb 8 bytes: vptr + Data

@@ -1,5 +1,6 @@
 // CGamePlayerInterface::GetAssignableSpecialMoveIndexForButton(EXboxControllerButton button) const -- index of the first assignable special-move button input for which IsInputTypeWithButton holds, else -1
 // Leaf: ?GetAssignableSpecialMoveIndexForButton@CGamePlayerInterface@@QBEJW4EXboxControllerButton@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00445EE0, 88 bytes, `ret 4`; caller 0x00643FDC; Ego_r.pdb
 // ?GetAssignableSpecialMoveIndexForButton@CGamePlayerInterface@@QBEJW4EXboxControllerButton@@@Z; label correct.
 // Body: for (unsigned i = 0; i < AssignableSpecialMoveButtons.size(); ++i) if (AssignableSpecialMoveButtons[i]->IsInputTypeWithButton(button))
@@ -23,12 +24,7 @@ public:
     virtual bool IsInputTypeWithButton(EXboxControllerButton button) const;            // slot 6 (+0x18)
     virtual bool IsInputTypeWithMouseButton(EMouseButtonControl button) const;         // slot 7 (+0x1c)
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class T> class vector {
 public:

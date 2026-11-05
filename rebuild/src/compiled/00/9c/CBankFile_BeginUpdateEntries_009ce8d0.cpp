@@ -1,4 +1,5 @@
 // CBankFile::BeginUpdateEntries() -- start an update pass: a retail-mode bank reopens its file for writing at the end, pads it to the bank alignment and marks it solid; otherwise open the side-by-side ".cks" checksum cache (once) and write the file information block
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009CE8D0, 407 bytes, no arguments.
 // Callees: operator new @ 0x00BFEA1A, CBaseClassNonCopyable ctor @ 0x0099A2F0, CWideString::CWideString() @ 0x0099AED0,
@@ -55,12 +56,7 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:    // vtable 0x012
     virtual long GetLength();                      // slot 9 (+0x24)
 };
 
-template <class T> class CCountedPointer { public:
-    T* Data;
-    void* Info;
-    void Reset(T* p);                              // 0x009D1EE0
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 struct CChecksumCacheFile {
     CWideString Filename;                          // +0x00

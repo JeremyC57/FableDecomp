@@ -1,5 +1,6 @@
 // CCreatureAction_DragonFireBlastBase::~CCreatureAction_DragonFireBlastBase() -- the dragon fire-blast action's implicit (compiler-generated) dtor: the member dtors in reverse order (the Line1 primitive handle: notify the primitive of its last handle and drop it; the PShot intelligent pointer) and the tail jump to ~CCombatActionBase
 // Leaf: ??1CCreatureAction_DragonFireBlastBase@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009536D0, 119 bytes, tail jump to the base destructor.
 // Identity: no vptr store of its own (the only store is the member handle's CEnginePrimitiveHandle vtable 0x0122F598), so the
 //   dtor is implicit; the members are CCreatureAction_DragonFireBlastBase's (Ego_r.pdb PShot +0x12C, Line1 +0x134 = retail +0x114
@@ -69,13 +70,8 @@ class CEnginePrimitiveHandle : public CBaseClass { public:  // vtable 0x0122F598
 
 class CBaseObjectPointer;
 class CThing;
-class CBaseIntelligentPointer { public:                     // 8 bytes
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CCreatureActionBase { public:
     virtual ~CCreatureActionBase();                         // 0x00693EF0

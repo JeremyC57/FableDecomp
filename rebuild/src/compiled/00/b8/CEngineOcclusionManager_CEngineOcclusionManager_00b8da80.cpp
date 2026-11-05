@@ -1,5 +1,6 @@
 // CEngineOcclusionManager::~CEngineOcclusionManager() -- release the flare-test vertex shader's data, then destroy the members in reverse: the occlusion-box pixel/vertex shaders, the unit-box index and vertex buffers, the flare-test shader, the flare vertex-buffer map (range destroy + free), the four handle/flare arrays (free only), then the CEngineComponent base
 // Leaf: ??1CEngineOcclusionManager
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B8DA80, length 352 bytes (with int3 padding; body 0x158).
 // Label correction: catalogued "~CEnginePrimitiveManagerParticleLineGroup" (propagated); the vtable store 0x012A3CD0 is
@@ -112,7 +113,7 @@ template <class T> class CArray { public:                 // vector<T> of a non-
     }
 };
 
-template <class T> class CCountedPointer { public: T* Object; void* Info; };
+#include "engine/CCountedPointer.h"
 template <class A, class B> struct pair { A first; B second; };
 
 class CEngineComponent { public:

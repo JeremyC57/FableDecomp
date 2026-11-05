@@ -3,6 +3,7 @@
 // Callees: the script thing validated through its virtual slot 75 (+0x12c), the thing fetched through slot 11 (+0x2c); the component map (+0x44) LowerBound @ 0x0040F020 with the kind 109 by address (a stack temporary), the inlined `find` tail (`cmp end ; cmp key ; jle`), CTCFlammable::ExtinguishFire @ 0x00780C80.
 // Shape: the map address in esi, the entry's value word at +4; the component-kind mask test folded onto the +0x2c word (bit 13).
 // Leaf: ?ExtinguishFiresOnThing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 struct CTCBase_Retail;
 struct CTCBase_Retail;
 class CTCBase;
@@ -54,8 +55,7 @@ class CTCFlammable { public:                           // the component (no vtab
 public:
     void ExtinguishFire();   // 0x00780C80
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

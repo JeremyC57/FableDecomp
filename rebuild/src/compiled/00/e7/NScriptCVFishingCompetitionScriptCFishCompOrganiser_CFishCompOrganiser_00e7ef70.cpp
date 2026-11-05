@@ -1,5 +1,6 @@
 // NScript::CV_FishingCompetitionScript::CFishCompOrganiser::CFishCompOrganiser(CV_FishingCompetitionScript& parent, CScriptDataBase* masterData, const CScriptThing& me) -- the fishing-competition organiser's entity script: entity-script base over the quest's interface and Me, the hero and organiser handles, the empty cut-scene argument map, the competition-entry string and the two empty def-name vectors, the master data last
 // Leaf: ??0CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: landed unnested as CFishCompOrganiser(CScriptOwner*, void*, const CScriptThing&); respelled on the PDB constructor of the
 //   nested class (Ego_r / FableWin ??0CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z:
 //   the owning CV_FishingCompetitionScript by reference, the master data a CScriptDataBase*) -- name-only (the bytes are unchanged).
@@ -19,11 +20,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-template <class T> class CCountedPointer { public:                 // {Data, Info}
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

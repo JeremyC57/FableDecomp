@@ -1,4 +1,5 @@
 // Global CWorld::~CWorld, retail 0x004A6AB0 (886 bytes).
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Original identity: egor 3759 / debug 0x004B0430. The manifest's
 // HeroInformationScreens::CBase label is disproved by the two CWorld RTTI
 // stores and constructor evidence. Import the shared PDB donor under an alias;
@@ -165,8 +166,8 @@ struct CAtmosCopyList {
     }
 };
 class CThing;
-struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer(); void* PData; };
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: virtual ~CIntelligentPointer() { } };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CEnginePrimitiveHandle { public: virtual ~CEnginePrimitiveHandle(); void* PData; };
 
 class CWorldMap : public CBaseClass { public: virtual ~CWorldMap(); };

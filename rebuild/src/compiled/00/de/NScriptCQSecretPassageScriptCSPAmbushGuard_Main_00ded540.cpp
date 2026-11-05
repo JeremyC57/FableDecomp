@@ -1,5 +1,6 @@
 // NScript::CQ_SecretPassageScript::CSP_AmbushGuard::Main() -- the secret-passage ambush guard: alive filter on Me, take scripting control, wait until the hero sees or hears the guard, then have the guard shout and set the hero as his enemy
 // Leaf: ?Main@CSP_AmbushGuard@CQ_SecretPassageScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DED540, length 470 bytes (padded to 480). Entity-script slot 1 (Main).
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 / ~CScriptThing @ 0x004AA840 (the CIsThingAlive filter, vtable
 //   0x012C32F0), the filter registration @ 0x00F35B10, IsDone @ 0x00F35B30 (on `this`), CBaseObject ctor @ 0x0099A380,
@@ -19,11 +20,9 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-class CScriptThing { public:                                    // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    virtual ~CScriptThing();                                     // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {
@@ -39,7 +38,6 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 };
 }
 using NScript::CIsThingAlive;
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

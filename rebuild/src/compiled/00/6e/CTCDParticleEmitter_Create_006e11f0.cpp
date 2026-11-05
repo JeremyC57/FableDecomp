@@ -1,6 +1,7 @@
 // 006e11f0 CTCDParticleEmitter::Create
 // Flags: /O2 /Oy /W3
 // Leaf: Create
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members data->Data, info->Info are the header CCountedPointer's (same offsets).
 #include <stdlib.h>
 #include <string.h>
 #include "engine/CTCPhysicsBase.h"
@@ -27,9 +28,8 @@ template<class K,class V>struct CParticleUpdateParamDesc:CBaseClassNonCopyable{v
 template<class K,class V>struct CVectorMap {struct Entry{K Key;V Value;};Entry*first,*last,*end;unsigned char flags[4];CVectorMap():first(0),last(0),end(0){flags[1]=0;}~CVectorMap(){for(Entry*p=first;p!=last;++p)p->~Entry();if(first)free(first);}};
 template<class K,class V>struct CParticleUpdateParameters:CBaseClassNonCopyable {CVectorMap<K,C3DVector>VectorParams;CVectorMap<K,CParticleUpdateParamDesc<K,V> >UpdateParams;};
 struct CParticleCreationParameters {unsigned char flags[4];int start,end;float fraction;CRightHandedSet axes;CParticleUpdateParameters<unsigned,unsigned> update;__declspec(noinline) CParticleCreationParameters(int a,int b,float f,const CRightHandedSet& X):start(a),end(b),fraction(f),axes(X){flags[0]=1;flags[1]=flags[2]=flags[3]=0;}};
-struct CCPPointerInfo {int RefCount;void (__fastcall*DeleteFunc)(void*);void*Data;};
+#include "engine/CCountedPointer.h"
 void __fastcall DeleteRequest(void*data){delete (CParticleCreationParameters*)data;}
-template<class T>struct CCountedPointer {T*data;CCPPointerInfo*info;__declspec(noinline) void Reset(T*p){if(info){if(!--info->RefCount){info->DeleteFunc(info->Data);delete info;}}info=0;data=p;if(p){info=new CCPPointerInfo;if(info){info->RefCount=1;info->DeleteFunc=DeleteRequest;info->Data=p;}}}};
 struct CTCDParticleEmitter {char pad[16];int zero;char gap[36];int frame;CCountedPointer<CParticleCreationParameters> pointer;unsigned char flags;void SetPEmitter(::CParticleEmitter*);};
 struct CThing {char pad[40];unsigned flags;char gap[48];CTCDParticleEmitter* extra;::CTCPhysicsBase* physics;bool DoActivationSequence();void Kill(bool);};
 struct CWorldMapVirtualSlots {

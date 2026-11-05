@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonLanded::FrameUpdate() -- while the target lives and the dragon has a look component (0x43): unless the target is within 12.5 units on the ground plane and almost straight down -Y from it (normalised direction . (0,-1,0) > 0.96), turn the head at the target when head turning is on; otherwise look 50 units ahead of the body
 // Leaf: ?FrameUpdate@CModeDragonLanded
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DB240, 543 bytes (`ret`).
@@ -73,11 +74,8 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* _vptr;
-    void* PItem;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace NCreatureMode {
 class CModeBase {
 public:

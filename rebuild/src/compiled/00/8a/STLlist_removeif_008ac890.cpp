@@ -1,6 +1,7 @@
 // std::list::remove_if(NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType> pred) -- drop every entity event whose GetType() equals the wrapped filter's type
 // Instantiation: std::list<CCountedPointer<NEntityEvents::CEventBase> >::remove_if
 // Leaf: ??$remove_if@V?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@?$list@V?$CCountedPointer@VCEventBase@NEntityEvents@@@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC890, 106 bytes, thiscall, `ret 4` (the one-word predicate by value).
 // Identity: FableWin.pdb `??$remove_if@V?$CConvFilterToCP@VCIsEventOfType@NEntityEvents@@@NEntityEvents@@@?$list@V?$CCountedPointer
 //   @VCEventBase@NEntityEvents@@@@...`; CTCEntityEvents::RemoveEvents<CIsEventOfType>(const CIsEventOfType&) wraps the filter's
@@ -12,30 +13,8 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                     // Ego_r.pdb
-    unsigned long RefCount;                                 // +0x0
-    void (__fastcall* DeleteFunc)(void* data);              // +0x4
-    void* Data;                                             // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x0
-    CCPPointerInfo* Info;                                   // +0x4
-    T* operator->() const { return Data; }
-    bool operator==(const CCountedPointer& other) const { return Data == other.Data; }
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
 
 class CTCEntityEvents;
 namespace NEntityEvents {

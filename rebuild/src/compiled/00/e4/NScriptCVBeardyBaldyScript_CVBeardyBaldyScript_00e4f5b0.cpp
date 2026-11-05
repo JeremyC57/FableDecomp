@@ -1,5 +1,6 @@
 // CV_BeardyBaldyScript::CV_BeardyBaldyScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, vtable 0x012E5790, the three required-hair strings, the registered random-speech timer and ten empty speech strings
 // Leaf: ??0CV_BeardyBaldyScript
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4F5B0, length 101 bytes (padded to 112), `ret 8`.
@@ -30,11 +31,7 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                    // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-template <class T> class CCountedPointer { public:                     // {Data, Info}
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"

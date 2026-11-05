@@ -1,5 +1,6 @@
 // CThingSoundEmitter::CThingSoundEmitter() -- CThing(type 6) base, zeroed sound object / attach flags, the attached-thing intelligent pointer; kill-on-level-unload cleared when the engine's slot-9 query says false
 // Leaf: ??0CThingSoundEmitter
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -34,16 +35,9 @@ private: public:
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v000();
-    void* m_pItem;                                       // +0x04
-    CBaseIntelligentPointer();                           // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer() {}
-    virtual void v000();
-};
 
 struct CSoundPlayer;
 #include "engine/C3DVector.h"

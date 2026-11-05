@@ -1,4 +1,5 @@
 // CAIFilter_ShouldStillBeWorkingInWarehouse::CAIFilter_ShouldStillBeWorkingInWarehouse(CIntelligentPointer<CThing> crate, CIntelligentPointer<CThing> warehouse, CTCVillage* village) -- builds the warehouse-work filter from two by-value intelligent pointers and the village
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00944470, length 108 bytes (+ int3 padding), `ret 14h`.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, ::GetPItem @ 0x00A01B50,
 // ::SetPItem @ 0x00A01B90, ::~CBaseIntelligentPointer @ 0x00A01C10 (the by-value arguments, callee-destroyed).
@@ -11,14 +12,8 @@
 class CBaseObject;
 class CTCVillage;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                      // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerCrate : CBaseIntelligentPointer {      // vtable 0x0128B0B0
     virtual void v00();

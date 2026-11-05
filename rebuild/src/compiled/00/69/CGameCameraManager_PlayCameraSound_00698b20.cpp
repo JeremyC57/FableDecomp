@@ -1,6 +1,7 @@
 // CGameCameraManager::PlayCameraSound(const CCharString& sound) -- play `sound` through the observed thing (PObservedThing at +0x100) with the camera-manager def (PDef at +0x134) (0x00698A30)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00698B20, length 36 bytes (48 with padding).
 // Leaf: PlayCameraSound
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // The chunk label (CSpellContainerList::AddChild) is propagated garbage. The offsets fit the PDB
 // CGameCameraManager (PObservedThing +0x110, PDef +0x14c) shifted to the retail container sizes (the
 // AvailableCamPoints list and the EarthQuakes / CameraList / SpecialCameraList vectors are narrower).
@@ -14,11 +15,8 @@ class CThing;
 class CBaseObject;
 class CCameraManagerDef;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                       // +0x04
-    CBaseObject* GetPItem() const;              // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 template <class T>
 class CDefPointer { public:

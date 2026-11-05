@@ -1,5 +1,6 @@
 // CInputManager::SetEventsFromEventPackage(const CInputEventPackage& package) -- replay a recorded event package: clear the processed events, take the package's events as the event store (and their count), and hand the recorded mouse and joystick positions to the mouse and the first joystick
 // Leaf: SetEventsFromEventPackage
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F54D0, length 103 bytes.
 // Callees: vector<CInputEvent>::erase(first, last) @ 0x009F67E0, vector<CInputEvent>::operator= @ 0x009F6890 (manifest
 // "CCombatWheel::operator=" propagated), CMouse virtual slot 4 (+0x10) and CJoystick virtual slot 7 (+0x1c), each taking
@@ -39,10 +40,7 @@ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void SetRecordedPosition(const C2DVector& position);   // slot 7 (+0x1c)
 };
-template <class T> class CCountedPointer { public:        // {object, count block}
-    T*    Data;
-    void* m_block;
-};
+#include "engine/CCountedPointer.h"
 class CMouse {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

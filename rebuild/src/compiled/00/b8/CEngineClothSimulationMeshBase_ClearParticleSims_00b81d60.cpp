@@ -1,4 +1,5 @@
 // CEngineClothSimulationMeshBase::ClearParticleSims() -- before dropping the cloth's particle simulations, park every simulation whose render data is still busy in the global pending-release vector, then clear ParticleSims
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B81D60, length 148 bytes (+ int3 padding).
 // Callees: CParticleSimulationRenderData virtual slot 1 (+0x04, IsBusy -- cf. the landed CEngineParticleSimulationRenderData::IsBusy 0x00BB6420),
 // the global vector's _M_insert_overflow(pos, x, __false_type, n, atEnd) @ 0x00B83970 (thiscall on the vector @ 0x014378B8), ParticleSims.clear()
@@ -12,21 +13,8 @@
 // else _M_insert_overflow with the empty __false_type tag homed in the frame word's high byte (`lea edx,[esp+17h]`), n = 1, atEnd = true.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct SCountBlock {
-    long m_references;
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T*           Object;
-    SCountBlock* Count;
-    CCountedPointer(const CCountedPointer& other) : Object(other.Object), Count(other.Count)
-    {
-        if (Count)
-            ++Count->m_references;
-    }
-    T* operator->() const { return Object; }
-};
 
 class CParticleSimulationRenderData { public:
     virtual void v00();
@@ -74,7 +62,7 @@ void CEngineClothSimulationMeshBase::ClearParticleSims()
 {
     for (unsigned long i = 0; i < ParticleSims.size(); ++i) {
         CCountedPointer<CParticleSimulation>& sim = ParticleSims[i];
-        if (sim.Object && sim->RenderData.Object && sim->RenderData->IsBusy())
+        if (sim.Data && sim->RenderData.Data && sim->RenderData->IsBusy())
             g_PendingReleaseParticleSims.push_back(sim);
     }
     ParticleSims.clear();

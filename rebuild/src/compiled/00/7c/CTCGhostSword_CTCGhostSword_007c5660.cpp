@@ -1,5 +1,6 @@
 // CTCGhostSword::~CTCGhostSword() -- ghost-sword spell component destructor (empty user body): destroy PItemRemoved, the CurFadeInTimer / MinionEffects / Minions vectors and the def pointer, then ~CTCBase
 // Leaf: ??1CTCGhostSword@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C5660, 161 bytes, tail jump to ~CTCBase 0x00686830.
 // Identity (proven): sole caller 0x007C66B0, slot 0 (scalar deleting dtor) of vtable 0x0126E494, RTTI `.?AVCTCGhostSword@@`
 //   (CTCGhostSword : CTCBase); the body's first store is that vtable, i.e. a user-written dtor (an implicit one drops the store).
@@ -55,18 +56,8 @@ public:
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                          // vtable 0x0129C95C, 8 bytes
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();                                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                                       // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* Get() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CTCBase : public CBaseClassNonCopyable {                           // Ego_r.pdb CTCBase, 0xc
 public:

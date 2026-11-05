@@ -1,5 +1,6 @@
 // std::__find<CIntelligentPointer<CThing>*, CThing*>(first, last, CThing* const& value, const random_access_iterator_tag&) -- STLport random-access find: four-way unrolled scan of a vector of thing pointers for the one holding `value`, then the 0..3 leftovers
 // Leaf: ??$__find@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E66E0, 192 bytes, /Gr `__fastcall` (first ecx, last edx),
 //   `ret 8` (the value reference + the tag reference).
 // Identity: the landed CScriptConversation::AddPersonToConversation 0x006E5790 calls this address as its
@@ -14,13 +15,8 @@
 class CBaseObject;
 class CThing;
 
-class CBaseIntelligentPointer {
-public:
-    CBaseObject* PItem;                                     // +0x00
-    void*        PNext;                                     // +0x04
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 template <class T> inline bool operator==(const CIntelligentPointer<T>& pointer, T* object)
 {

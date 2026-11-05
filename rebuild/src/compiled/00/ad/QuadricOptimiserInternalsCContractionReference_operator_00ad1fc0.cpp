@@ -1,5 +1,6 @@
 // QuadricOptimiserInternals::CContractionReference::operator=(const CContractionReference& other) -- assign a contraction reference: re-point the counted CVertexPairContraction pointer (release the old block, add a reference to the new one) when the blocks differ, then copy the sub-index
 // Leaf: ??4CContractionReference
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD1FC0, length 80 bytes, `ret 4`. Callers: the quadric optimiser's tree
 // deep copy (0x00ACA510) and its vertex-pair contraction (0x00ACCE49). The catalog's CCountedPointer<CDiskFileWin32>::operator=
 // label is propagated: the 12-byte {Data, Info, SubIndex} layout is the CContractionReference of the landed quadric
@@ -11,39 +12,8 @@
 // Layout: Ego_r.pdb CCPPointerInfo {RefCount +0, DeleteFunc +4, Data +8}.
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                                  // +0x00
-    void (__fastcall* DeleteFunc)(void* data);               // +0x04
-    void*         Data;                                      // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer { public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 
 namespace QuadricOptimiserInternals {
 

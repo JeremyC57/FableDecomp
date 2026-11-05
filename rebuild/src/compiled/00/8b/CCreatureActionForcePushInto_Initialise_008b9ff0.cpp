@@ -1,5 +1,6 @@
 // CCreatureAction_ForcePushInto::Initialise() -- use the FORCE_PUSH_INTO animation, initialise as a combat action, then give the creature a charge-force-push mode (carrying the action's OnlyHitEnemies flag)
 // Leaf: ?Initialise@CCreatureAction_ForcePushInto@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local same-TU LowerBound bodies removed (the header defines the same-TU noinline bodies).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B9FF0, 178 bytes, thiscall virtual, plain `ret`.
@@ -273,15 +274,7 @@ public:
     unsigned char _padBC[0x114 - 0xBC];
 };
 void* __cdecl operator new(unsigned int size);                   // 0x00BFEA1A
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    CCountedPointer(T* data);                                    // out of line
-    CCountedPointer(const CCountedPointer& other);
-    ~CCountedPointer();
-    T*              Data;                                        // +0x00
-    CCPPointerInfo* Info;                                        // +0x04
-};
+#include "engine/CCountedPointer.h"
 class CTCCreatureModeManager {
 public:
     class CModeBase {

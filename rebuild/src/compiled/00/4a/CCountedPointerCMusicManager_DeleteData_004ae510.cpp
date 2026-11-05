@@ -1,5 +1,6 @@
 // CCountedPointer<CMusicManager>::DeleteData(void* data) -- the counted-pointer deleter for the world's music manager: destroy it (registered-music vector freed, sound-def pointer released) and free it
 // Leaf: ?DeleteData@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AE510, 50 bytes (64 with padding), plain `ret` (static __fastcall: data
 //   in ecx).
 // Identity: Ego_r.pdb `?DeleteData@?$CCountedPointer@VCMusicManager@@@@SIXPAX@Z` (the family's mangling); its address
@@ -76,11 +77,6 @@ public:
     bool                         Paused;             // +0x3C
 };
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Count;
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template void __fastcall CCountedPointer<CMusicManager>::DeleteData(void*);

@@ -1,6 +1,7 @@
 // NCreatureMode::CModeDazed::CModeDazed(CThing*) -- out-of-action mode ctor: CModeOutOfActionBase (counter 0, flag set, empty attacker pointer) then the DAZED CAnimFilterOfGroup at +0x78
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00740250, 160 bytes (padding included).
 // Leaf: CModeDazed
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Shape: base mode ctor @ 0x00861E00, then the inline CModeOutOfActionBase ctor (vtable 0x0126743C):
 // +0x68 = 0, +0x6c = true and the CIntelligentPointer<CThing> at the unaligned +0x6d (out-of-line
 // CBaseIntelligentPointer ctor 0x00A01B10, then its vtable 0x01238C6C), then this class's vtable
@@ -51,23 +52,9 @@ struct CModeBase_00861e00 {
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {      // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 
 namespace NCreatureMode {
 

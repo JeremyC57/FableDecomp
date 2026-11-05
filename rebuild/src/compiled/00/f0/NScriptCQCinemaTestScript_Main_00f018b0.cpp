@@ -1,4 +1,5 @@
 // CQ_CinemaTestScript::Main() -- the cinema test quest's main: reset the mission flags, bind the "Dummy" entity script, finish adding scripted entities (locally and in the game), then spawn the WatchForTermination and DoMission threads
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: the row's own CCountedPointer<T> moved above it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F018B0, length 389 bytes (+ int3 padding), plain `ret`.
@@ -29,7 +30,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

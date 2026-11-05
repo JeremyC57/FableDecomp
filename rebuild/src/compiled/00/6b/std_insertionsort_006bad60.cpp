@@ -1,5 +1,6 @@
 // std::__insertion_sort(_RandomAccessIter first, _RandomAccessIter last, _Compare comp) -- (pair<unsigned long, CCountedPointer<CFaction> > under CKeyPairCompareLess) insert each entry after the first into the sorted run before it
 // Leaf: ??$__insertion_sort@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BAD60, 74 bytes, /Gr `__fastcall` (first in ecx, last in edx, the empty
 //   comparator on the stack), `ret 4`.
 // Identity (proven): std::__insertion_sort<pair<unsigned long, CCountedPointer<CFaction> >*, CKeyPairCompareLess<unsigned long, CCountedPointer<CFaction> > >; evidence: reached from the sort 0x006BB140 whose element H047 proves (CFactionManager::Factions (+0, CFactionManager::CFactionManager(const CWorld&) 0x006B97E0); swap 0x006B8E70) by direct calls 0x006BB140 -> 0x006BAF40 -> 0x006BAD60 (sort -> __final_insertion_sort -> this); its callers 0x006BAF69, 0x006BAF87 are the __final_insertion_sort (and inlined sorts) over the same element.
@@ -9,45 +10,7 @@
 //   copy-constructed in its argument slot (`inc [Info]`) and the comparator).
 // Shape: STLport 4.6 _algo.c __insertion_sort (landed 0x00ADBE70 model) with __linear_insert left out of line:
 //   `if (first == last) return; for (i = first + 1; i != last; ++i) __linear_insert(first, i, *i, comp);`.
-class CCPPointerInfo { public:                                    // CCountedPointer's shared block
-    long  RefCount;                                        // +0x0
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x4
-    void* Data;                                            // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* const              data = o.Data;
-        CCPPointerInfo* const info = o.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CFaction;
 
 namespace std {

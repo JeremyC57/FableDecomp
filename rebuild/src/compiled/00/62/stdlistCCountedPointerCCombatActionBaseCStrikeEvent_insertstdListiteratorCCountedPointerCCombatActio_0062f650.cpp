@@ -1,6 +1,7 @@
 // std::list<CCountedPointer<CCombatActionBase::CStrikeEvent> >::insert<const_iterator>(iterator pos, const_iterator first, const_iterator last)
 // -- STLport range insert: insert a copy of each element of [first, last) before pos
 // Leaf: ??$insert@U?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@U?$_Const_traits@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062F650, 54 bytes, thiscall `ret 0Ch` (pos, first, last).
 // Renamed from std::list<CCountedPointer<C3DSkeletalMorphParameter> >::insert (FINDINGS chunk 382: the element is
 //   CCountedPointer<CStrikeEvent>). Identity: the only caller is the landed list copy constructor 0x0062F610
@@ -14,12 +15,7 @@
 //   `_List_iterator(const iterator&)` is its user copy constructor, so each call builds the copy in its argument slot
 //   (`push ecx ; mov eax,esp ; mov [eax],ebp`); first/last are const_iterators (trivial copies). The returned iterator
 //   temporary is homed on the dead `first` argument slot.
-class CCPPointerInfo;
-template <class T> class CCountedPointer {       // 8 bytes: object + shared reference-count block
-public:
-    T*              Data;                        // +0x00
-    CCPPointerInfo* Info;                        // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 class CCombatActionBase {
 public:

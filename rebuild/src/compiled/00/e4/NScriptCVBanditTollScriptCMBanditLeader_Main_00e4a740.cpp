@@ -1,5 +1,6 @@
 // NScript::CV_BanditTollScript::CM_BanditLeader::Main() -- bandit-leader spawner: when the "BanditLeader" thing is dead (or gone), spawn a new one here (creature def from this marker's data string, scripted "BanditLeader") and attach it to the "BanditTollVillage"
 // Leaf: ?Main@CM_BanditLeader@CV_BanditTollScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Identity (naming wave 11): ?Main@CM_BanditLeader@CV_BanditTollScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E4F94 slot 1 is stored by the factory 0x00E4A660 registered as "M_BanditLeader"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4A740, length 335 bytes.
@@ -23,27 +24,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 #include "engine/C3DVector.h"
-struct SCountBlock {
-    long  m_references;                            // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
-template <class T> class CCountedPointer { public:
-    void*        m_pObject;                        // +0
-    SCountBlock* m_pCount;                         // +4
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;
-            }
-        }
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

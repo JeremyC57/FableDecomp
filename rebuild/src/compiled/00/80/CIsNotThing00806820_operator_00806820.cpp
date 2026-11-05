@@ -1,5 +1,6 @@
 // CIsNotThing_00806820::operator()(const CIntelligentPointer<CThing>& p) const -- predicate: the pointer's item is not the remembered thing
 // Leaf: ??RCIsNotThing_00806820@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00806820, 25 bytes, thiscall `ret 4`.
 // Identity (descriptive): an unreferenced COMDAT of the player targeting TU (beside std::find<CBaseIntelligentPointer*>
 //   0x008066A0): `this` holds one pointer at +0, the argument is an intelligent pointer whose item comes from
@@ -7,12 +8,8 @@
 //   (`xor ecx,ecx ; setne cl ; mov al,cl`). Ego_r.pdb (a Dinkumware build) has no matching functor, so the class name is ours.
 class CBaseObject;
 class CThing;
-class CBaseIntelligentPointer {
-public:
-    CBaseObject* GetPItem() const;                  // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CIsNotThing_00806820 {
 public:

@@ -1,5 +1,6 @@
 // NUISystem::CSlider::~CSlider() -- if the value moved, push the starting value back into every action's target and re-run the actions; delete the back/select action lists; destroy the action vector and the sprite base
 // Leaf: ??1CSlider@NUISystem
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail 0x0054B360, 328 bytes, ret. Callees: CManager::GetInstance 0x0041E5F2 and its ExecuteAction (slot 14,
 // +0x38), list<CCountedPointer<CAction> >::clear 0x005356A0, free 0x00BFEA14, operator delete 0x00BFE9BC, the action
@@ -13,12 +14,7 @@
 #include <math.h>
 extern "C" void __cdecl free(void* block);       // 0x00BFEA14
 void operator delete(void* p);                   // 0x00BFE9BC
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 struct CActionAllocator {                        // std::allocator<CCountedPointer<CAction> > (empty)
     CActionAllocator() { }
 };

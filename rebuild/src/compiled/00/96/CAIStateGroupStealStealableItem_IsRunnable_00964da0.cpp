@@ -1,4 +1,5 @@
 // CAIStateGroup_StealStealableItem::IsRunnable() -- unless a cleanup is pending, for a creature whose follow-state component allows stealing: reset the action state, latch the stealable item and an escape point; runnable when both are alive
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00964DA0, length 336 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface 0xAA, bit 10 of +0x34), FindPStealableItem
 //          @ 0x00964360, FindPEscapePoint(bool) @ 0x00964CA0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor
@@ -65,14 +66,8 @@ struct CTCFollowerState {                       // interface 0xAA
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }

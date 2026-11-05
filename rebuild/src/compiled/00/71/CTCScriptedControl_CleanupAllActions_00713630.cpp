@@ -1,5 +1,6 @@
 // CTCScriptedControl::CleanupAllActions() -- let the running front action clean up (virtual OnCleanup) when it has been activated, then drop every queued action
 // Leaf: ?CleanupAllActions@CTCScriptedControl@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00713630, 40 bytes, thiscall, tail `jmp` to the list clear.
 // Identity (proven): Ego_r.pdb + FableWin.pdb ?CleanupAllActions@CTCScriptedControl@@QAEXXZ; landed callers already bind this spelling
 //   (CScriptGameResourceObjectScriptedThing::ClearCommands 0x00904310 and 8 more call sites); OnKill 0x00713700 (vtable 0x012658E4
@@ -41,12 +42,8 @@ public:
     bool ToBeRemoved;                                      // +0x08
     bool IsInGlobalUpdateTCs;                              // +0x09
 };
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectScriptedThing;
 class CTCScriptedControl : public CTCBase {
 public:

@@ -1,5 +1,6 @@
 // CAIStateGroup_JackOfBladesBase::GetIsEnemyInJacksWay(const C3DVector& from, const C3DVector& to) -- true when the live target thing is nearer (in XY) to the destination than the start is, and lies within 15 degrees of the start-to-destination direction as seen from the destination
 // Leaf: ?GetIsEnemyInJacksWay@CAIStateGroup_JackOfBladesBase@@IAE_NABVC3DVector@@0@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009718F0, length 510 bytes (+ int3 padding), `ret 8`.
 // Prototype: FableWin.pdb ?GetIsEnemyInJacksWay@CAIStateGroup_JackOfBladesBase@@IAE_NABVC3DVector@@0@Z (protected).
@@ -61,18 +62,8 @@ public:
     const C3DVector& GetPos() const;            // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { };
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObject* GetPItem() const;              // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                  // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* Get() const { return (T*)GetPItem(); }
-    T* operator->() const { return Get(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 #define CAIStateGroup_JackOfBladesBase CAIStateGroup_JackOfBladesBaseLayout
 #include "engine/CAIStateGroup_JackOfBladesBase.h"

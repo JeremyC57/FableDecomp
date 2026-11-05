@@ -1,5 +1,6 @@
 // std::__linear_insert(pair<long, CCountedPointer<CNavConnectorNode> >* first, pair<long, CCountedPointer<CNavConnectorNode> >* last, pair<long, CCountedPointer<CNavConnectorNode> > val, CKeyPairCompareLess<long, CCountedPointer<CNavConnectorNode> > comp) -- SGI insertion-sort step over the connector map's (long id, counted node) pairs: a value below the front shifts the run up one slot and lands at the front, otherwise the unguarded backward scan places it
 // Leaf: ??$__linear_insert@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A834B0, 113 bytes, `ret 10h`: /Gr `__fastcall` (first in ecx -> esi, last
 //   in edx; the 12-byte value and the empty comparator on the stack).
 // Identity: the only caller 0x00A83D57 is the __insertion_sort of CVectorMap<long, CCountedPointer<CNavConnectorNode> >
@@ -19,44 +20,8 @@
 //   around every call.
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    long  RefCount;                                     // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
-    CCountedPointer& operator=(const CCountedPointer& p)
-    {
-        T* data = p.Data;
-        CCPPointerInfo* info = p.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            operator delete(Info);
-        }
-    }
-};
 
 class CNavConnectorNode;
 

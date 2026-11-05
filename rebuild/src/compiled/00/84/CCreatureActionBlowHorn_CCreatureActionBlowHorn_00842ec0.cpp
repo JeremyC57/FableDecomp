@@ -1,4 +1,5 @@
 // CCreatureAction_BlowHorn::CCreatureAction_BlowHorn(CThingCreatureBase*, CThing*) -- base CCreatureActionBase(owner, -1.0, 1.0, the owner's "BLOW_KNOTHOLE_HORN" animation, the owner's "HORN_BLOW" sound pair, 0, 0), PObjectToUse = the horn thing
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00842EC0, length 163 bytes (+ int3 padding), `ret 8`. Vtable 0x0127428C;
 // PObjectToUse is a CIntelligentPointer<CThing> (vtable 0x01238C6C) at retail +0xa8 (PDB +0xb4).
 // Callees: CCharString(const char*, long) 0x0099EBF0 ("HORN_BLOW" 0x012743B8, "BLOW_KNOTHOLE_HORN" 0x012743A4), the owner's
@@ -49,12 +50,8 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8
     CCreatureActionBase(CThingCreatureBase* owner, float a, float b, CAnimationEntry* animation, const CSoundPair& sound, long c, long d);   // 0x00693B30
 };
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    virtual void v00();
-    CBaseObject* PItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    void SetPItem(CBaseObject* item);           // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }

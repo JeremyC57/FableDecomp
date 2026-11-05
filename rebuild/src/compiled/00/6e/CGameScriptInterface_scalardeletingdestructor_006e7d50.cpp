@@ -1,5 +1,6 @@
 // CGameScriptInterface::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CGameScriptInterface inlined (destroying ScriptTimers, HeroSThing, then ~CBaseClassNonCopyable), and operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCGameScriptInterface@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E7D50, 48 bytes, thiscall, `ret 4`; reached only through vtable slot 0.
 // Identity: CGameScriptInterface -- proven; evidence: vtable 0x01260F0C slot 0 (RTTI .?AVCGameScriptInterface@@ : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass); the destroyed members are Ego_r.pdb ScriptTimers (map<long, long>, +0x3C; 0x004DF885 is ~map, a tail jump into the tree's destructor) and HeroSThing (CScriptThing, +0x30; 0x004AA840 stores the CScriptThing vtable 0x01238C8C); every base destructor down to CBaseClassNonCopyable is implicit and CBaseClassNonCopyable::~CBaseClassNonCopyable is out of line (0x0099A300, FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ: the CBaseClass-derived classes' destructors call 0x0099A2E0 instead, e.g. CBaseClass's own deleting destructor 0x004371F0).
 // Label: the manifest's "`vector_deleting_destructor'" is propagated across byte-identical bodies.
@@ -29,8 +30,7 @@ protected:
 };
 class CWorld; class CMainGameComponent; class CDisplayEngine; class CGameDefinitionManager; class CPlayerManager;
 class CThingSearchTools;
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

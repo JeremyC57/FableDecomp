@@ -1,5 +1,6 @@
 // NScript::CV_BanditTollScript::CBlockingBandit::Main() -- bandit-toll blocking bandit: register the alive filter, take Me under scripted control, look up M_BanditEscapePoint, then every frame: once the bandits flee, walk Me back to the escape point and fade it out; when the bandits are angered and Me is alive and aware of the hero, join FACTION_BANDITS and follow the hero; once the toll is paid, walk Me (once) back to M_BanditCampCentrePos and release it
 // Leaf: ?Main@CBlockingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E49980, length 1424 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, out-of-line dtor 0x00E241B0), the scripted-thing handle (vtable
@@ -24,29 +25,8 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC
-class CCPPointerInfo { public:
-    long RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);         // +4
-    void* Data;                                        // +8
-};
+#include "engine/CCountedPointer.h"
 class CScriptThing;
-template <class T> class CCountedPointer { public:                               // {Data, Info}
-    CScriptThing*   Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 enum EHeroAbility { HERO_ABILITY_14 = 14 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };

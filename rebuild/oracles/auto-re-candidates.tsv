@@ -9642,7 +9642,7 @@ address	name	length	bytes
 0099a330	CInitBaseClass::IsValid	4	8a4104c3
 009b9870	CParsedItem::GetSymbol	4	8d4108c3
 009be210	CVertexShader::CountReferences	7	8b41048b4010c3
-009f16c0	_global::SetMemberConst_009f16c0	8	c7410400000000c3
+009f16c0	CGameEventPackage::Clear	8	c7410400000000c3
 00a0cb80	NCreatureMode::CModeBlock::GetAnimFilter	4	8d4108c3
 00a9d730	_global::SetMember_dword0x4_00a9d730	10	8b442404894104c20400
 00a9d740	_global::SetMemberConst_00a9d740	8	c7410400000000c3
@@ -13684,7 +13684,7 @@ address	name	length	bytes
 008ef190	CTCTavernGameCoinBase::EndRound	5	e90ba9cfff
 00906fe0	CCombatSequence_KingScorpionTailPlunge::OnCreate	5	e96b96faff
 009e4d90	CDriveManager::~CDriveManager	7	c701ecaf2901c3
-009f1720	_global::SetMemberConst_009f1720	7	c70100000000c3
+009f1720	CGameEventPackageSet::Clear	7	c70100000000c3
 009f5de9	Catch@009f5de9	6	b8ef5d9f00c3
 009f8b10	CBaseIntelligentPointer::CBaseIntelligentPointer	16	8bc1c70000000000c7400400000000c3
 00a44610	_global::TailJmp_CBase_00a44610	5	e9eb5cf5ff
@@ -22722,7 +22722,7 @@ address	name	length	bytes
 01221b90	_static_init::g_scaled_013bb6fc	16	a1505537018d0480d1e0a3fcb63b01c3
 01221bf0	_static_init::g_scaled_013bb70c	16	a1505537018d0480d1e0a30cb73b01c3
 0066e734	NHeroInformationScreens::CBase::CBase	9	8bc1c700e0a32301c3
-007e37c0	CVtable_ffffffff::CVtable_ffffffff	9	8bc1c700ffffffffc3
+007e37c0	CDefString::CDefString	9	8bc1c700ffffffffc3
 004d65a4	CTCFireRangedWeaponOnLeavingStateGroup::vfunc_28	5	c6410c01c3
 00c54c00	_unattributed::StoreConstant_00c54c00	13	c781d400000001000000c20800
 00c5a6b0	_unattributed::StoreConstant_00c5a6b0	13	c781d400000000000000c20800

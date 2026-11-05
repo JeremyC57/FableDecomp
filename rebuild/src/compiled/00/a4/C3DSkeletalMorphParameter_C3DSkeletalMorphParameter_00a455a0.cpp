@@ -1,6 +1,7 @@
 // C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget& target) -- CBase(), vtable, a new shared block whose positive target is a copy of `target` (unsigned), value 0, no owning morph
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A455A0, length 141 bytes.
 // Leaf: ??0C3DSkeletalMorphParameter
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Callees: 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable, 0x00BFEA1A operator new(0x24), 0x0099E4B0 CCharString() (x2, the two target
 // names), 0x00A47060 CCountedPointer<CShared>::Reset(CShared*), 0x0099EFB0 CCharString::operator=, 0x00A46790
 // CArray<C3DSkeletalBoneMorph>::operator= (propagated label CCombatWheel::operator_assign).
@@ -45,13 +46,7 @@ class C3DSkeletalMorphTarget { public:                          // 16 bytes (ret
         return *this;
     }
 };
-template<class T> class CCountedPointer { public:
-    T*    Data;                                          // +0
-    void* Info;                                          // +4
-    CCountedPointer() : Data(0), Info(0) { }
-    void Reset(T* object);                               // 0x00A47060
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CBaseClassNonCopyable {
 protected:

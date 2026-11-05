@@ -1,5 +1,6 @@
 // CTCScriptedControl::CTCScriptedControl(CThing* thing) -- CTCBase(thing), own vtable, an empty script-handle intelligent pointer, an empty action list, unlocked, priority 0, an empty attitude-tag list
 // Leaf: ??0CTCScriptedControl
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007156B0, length 92 bytes.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, malloc
 // @ 0x00BFEA0E (twice, the two lists' sentinel nodes). Vtables 0x012658E4 = CTCScriptedControl, 0x0126552C = CIntelligentPointer
@@ -26,23 +27,9 @@ struct CTCBase_Calls {                                      // engine/CTCBase.h 
 #pragma pack(push, 1)
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectScriptedThing;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {      // vtable 0x0126552C
-public:
-    CIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 #pragma pack(pop)
 
 template<class T>

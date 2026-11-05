@@ -1,5 +1,6 @@
 // CCreatureAction_SpiritAttack::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CCreatureAction_SpiritAttack inlined (destroying PParticleEmitter, PTarget, then ~CCreatureActionBase), and operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCCreatureAction_SpiritAttack@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00855100, 48 bytes, thiscall, `ret 4`; reached only through vtable slot 0.
 // Identity: CCreatureAction_SpiritAttack -- proven; evidence: vtable 0x01275D74 slot 0 (RTTI .?AVCCreatureAction_SpiritAttack@@ : CCreatureActionBase); the two intelligent pointers are Ego_r.pdb PParticleEmitter (+0xB0) and PTarget (+0xA8) (PDB +188/+180 less the base's 12 container bytes), and 0x00693EF0 stores the CCreatureActionBase vtable.
 // Label: the manifest's "`vector_deleting_destructor'" is propagated across byte-identical bodies.
@@ -17,13 +18,8 @@ protected:
     virtual ~CBaseClassNonCopyable();             // 0x0099A300 (FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ)
 };
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                   // 8 bytes, 1-aligned in retail (Coin::Thing +0x25, ShowTrophy::PEmitter +0xB5)
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();           // 0x00A01C10
-    void* PItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CBaseObject : public CBaseClass { };
 class CCreatureActionBase : public CBaseObject {  // retail 0xA8 bytes (Ego_r.pdb 180: two vectors and a map 4 bytes larger each)

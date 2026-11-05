@@ -1,5 +1,6 @@
 // CTCHeroReceiveItems::OnKill() -- kill every still-alive item thing the hero was about to receive, then the base component's OnKill
 // Leaf: ?OnKill@CTCHeroReceiveItems@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CA630, 62 bytes (int3 padding 0x007CA66E..F), thiscall, tail `jmp CTCBase::OnKill` 0x006868F0.
 // Identity (proven, two sources): (1) the only reference is slot 14 (CTCBase OnKill, engine/CTCBase.h) of vtable 0x0126EBFC, RTTI
@@ -111,22 +112,9 @@ class CThingGameObject : public CThingPhysical { };
 class CThingObject : public CThingGameObject { };
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                         // vtable 0x0129C95C (vptr + PData, 8 bytes; 1-aligned in retail)
-public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                          // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {    // FableWin member set: Get / Set / -> / *
-public:
-    T* Get() const { return static_cast<T*>(GetPItem()); }
-    T* operator->() const { return Get(); }
-    T& operator*() const { return *Get(); }
-};
 #pragma pack(pop)
 
 class C2DBoxF {                                         // Ego_r 0x10

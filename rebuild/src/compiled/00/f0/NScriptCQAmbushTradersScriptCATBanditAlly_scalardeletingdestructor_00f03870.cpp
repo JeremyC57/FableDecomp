@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_BanditAlly::`scalar deleting destructor'(unsigned int flags) -- the implicit ~CAT_BanditAlly (its members' destructors, then ~CEntityScriptBase), then free the entity when bit 0 is set
 // Leaf: ??_GCAT_BanditAlly@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F03870, 40 bytes, thiscall, `ret 4`; calls 00cd4470=CTimer::~CTimer ; 00f35b40=CEntityScriptBase::~CEntityScriptBase ; 00bfe9bc=MSVCR71.DLL::operator_delete.
 // Naming wave 33 (family esb): slot 0 of vtable 0x012F7D88 (no RTTI: NScript TU), the vtable the landed Alloc 0x00F037A0 stores
 //   (?Alloc@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z, Ego_r.pdb / FableWin.pdb); FableWin.pdb ??_GCAT_BanditAlly@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z; Ego_r.pdb ??_ECAT_BanditAlly@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z; FableWin.pdb ??1CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@UAE@XZ.
@@ -12,26 +13,8 @@ class CScriptDataBase;
 
 void __fastcall Destroy_00cdee00(void* object);        // 0x00CDEE00 (catalog name; the CEntityScriptBase deleter)
 
-class CCPPointerInfo {                                  // 12 bytes
-public:
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void*);
-    void* Data;
-    CCPPointerInfo(void* data, void (__fastcall* deleteFunc)(void*)) : RefCount(1), DeleteFunc(deleteFunc), Data(data) { }
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(T* data) : Data(data)
-    {
-        if (data)
-            Info = new CCPPointerInfo(Data, Destroy_00cdee00);
-        else
-            Info = 0;
-    }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

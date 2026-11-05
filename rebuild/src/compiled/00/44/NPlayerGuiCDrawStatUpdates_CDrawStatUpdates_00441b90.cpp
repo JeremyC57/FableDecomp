@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawStatUpdates::~CDrawStatUpdates() -- the compiler-generated destructor: free PreviousStats, then the CDrawBase part (destroy every primitive handle through its virtual destructor, free the handle vector)
 // Leaf: ??1CDrawStatUpdates@NPlayerGui@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00441B90, 67 bytes, __fastcall, plain `ret`; no vtable store (implicit destructor).
 // Identity (proven): CPlayerGui's constructor (0x0043B570) creates `new CDrawStatUpdates` (constructor 0x0064E0A1 stores
 // vtable 0x0125A5F4, RTTI .?AVCDrawStatUpdates@NPlayerGui@@) and hands it to CCountedPointer<..>::Reset 0x00444590 on
@@ -114,10 +115,7 @@ public:
 };
 }
 
-template <class T> class CCountedPointer {
-public:
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<NPlayerGui::CDrawStatUpdates>;
 template void __fastcall CCountedPointer<NPlayerGui::CDrawStatUpdates>::DeleteData(void*);

@@ -1,4 +1,5 @@
 // CPlayer::Update() -- per-frame player tick: set up the initial player mode once loading has finished, count the respawn delay down, and keep the world map's record of this player's position in step with the controlled creature
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00488AB0, length 111 bytes.
 // Callees: the component loader's IsLoading @ 0x004349E0, CPlayer::SetupInitialPlayerMode @ 0x004887C0,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), CThing::PeekPos @ 0x006A4D00, the world's GetWorldMap
@@ -28,15 +29,8 @@ struct CThingCalls : public CThingPhysical {
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 typedef long ELoadType;
 struct CWorldMapCalls {

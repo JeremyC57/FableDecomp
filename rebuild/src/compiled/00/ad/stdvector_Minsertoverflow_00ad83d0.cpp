@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(COptimisedSubMesh* position, const COptimisedSubMesh& x, const __false_type&, unsigned int fill_len, bool atend) -- grow the optimised mesh's sub-mesh vector into a size + max(size, n) block with x inserted fill_len times at position
 // Leaf: ?_M_insert_overflow@?$vector@VCOptimisedSubMesh@QuadricOptimiserInternals@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD83D0, 243 bytes, thiscall `ret 14h`.
 // Identity: the 0x18-byte element (`imul 2AAAAAABh ; sar edx,2`) is QuadricOptimiserInternals::COptimisedSubMesh
 //   { vector<CCountedPointer<COptimisedPrimitive> > Primitives; vector<COptimisedBone> Bones; } -- the fill_len == 1
@@ -23,13 +24,8 @@ public:
     void* PStringData;
 };
 
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-};
 
 namespace std {
 

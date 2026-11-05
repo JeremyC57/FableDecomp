@@ -1,5 +1,6 @@
 // NUISystem::CMesh::~CMesh() -- 3D mesh component dtor: clear the engine primitive handle, then the handle's own destructor and ~CChangingStateComponent
 // Leaf: ??1CMesh@NUISystem@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00550230, 163 bytes, tail jump to the base destructor.
 // Identity: the vtable stores 0x01249F9C / 0x01249F74 / 0x01249F6C carry RTTI `.?AVCMesh@NUISystem@@` (CUIInterface @0, CObserver @4,
@@ -14,26 +15,7 @@
 //   0x0122F598, Clear() again, the CIVCountedPointer destructor, ~CBaseClass) and the out-of-line base destructor.
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:                              // CCountedPointer count block
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void*         Data;                                     // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    __forceinline void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    __forceinline ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveHandle;

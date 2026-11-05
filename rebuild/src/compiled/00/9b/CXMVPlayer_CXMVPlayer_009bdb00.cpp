@@ -1,5 +1,6 @@
 // CXMVPlayer::CXMVPlayer(bool, unsigned long) -- construct the XMV movie player: a null threaded-file pointer and an empty subtitle list (STLport list sentinel allocated and self-linked); the two arguments are not used here
 // Leaf: ??0CXMVPlayer
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BDB00, length 49 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (landed), malloc @ 0x00BFEA0E.
 // Vtable 0x0129B3BC = CXMVPlayer (RTTI); Ego_r.pdb ??0CXMVPlayer@@QAE@_NK@Z gives the (bool, unsigned long)
@@ -17,12 +18,7 @@ struct CBaseClassNonCopyable {                              // vtable 0x0129A7C4
 };
 
 class CThreadedFile;
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 struct SSubTitleNode {                                      // list node: links + the 28-byte CSubTitle
     SSubTitleNode* Next;

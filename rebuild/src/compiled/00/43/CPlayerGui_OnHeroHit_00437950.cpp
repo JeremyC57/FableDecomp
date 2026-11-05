@@ -1,5 +1,6 @@
 // CPlayerGui::OnHeroHit(float damage) -- forwards a non-trivial hit to the quick-access icon drawer
 // Leaf: OnHeroHit@CPlayerGui
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00437950, 33 bytes, `ret 4`; Ego_r.pdb ?OnHeroHit@CPlayerGui@@QAEXM@Z. Body: unless damage equals
 // 0.0001f (float pool 0x0129BA3C; `fucompp ; test ah,44h ; jnp` skips on equality), call
 // NPlayerGui::CDrawQuickAccessIcons::OnHeroHit (0x0064DA5C) through PDrawQuickAccessIcons. Only caller 0x006AB2E0
@@ -12,12 +13,7 @@ public:
     void OnHeroHit();                                    // 0x0064DA5C
 };
 }
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CPlayerGui {
 public:
     unsigned char                                  _pad00[0x1d8];

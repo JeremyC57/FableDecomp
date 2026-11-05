@@ -1,5 +1,6 @@
 // NInventory::CCategory::GetNumberOfItemsOfTypeInCategory(long def_index) const -- the NumberOfItems of the first item in the category whose type matches the definition index, or 0
 // Leaf: ?GetNumberOfItemsOfTypeInCategory@CCategory@NInventory@@QBEJJ@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDE96, 43 bytes, thiscall `ret 4`; size-optimised TU (unaligned entry).
 // Identity (proven): the only caller of the landed find_if<const CItem*, binder2nd<const_mem_fun1_ref_t<bool, CItem, long> > >
 //   0x005C13CD, its predicate bind2nd(mem_fun_ref(&CItem::IsSameItemTypeAsDefIndex), def_index) (pushes 0x005BC450);
@@ -64,10 +65,8 @@ class vector : protected _Vector_base<_Tp, _Alloc> { public:
 };
 }
 class CThing;
-template <class T> class CIntelligentPointer { public:
-    T* Object;
-    void* Info;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace NInventory {
 class CCategory {
 public:

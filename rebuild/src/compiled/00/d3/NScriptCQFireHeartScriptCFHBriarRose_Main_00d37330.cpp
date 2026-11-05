@@ -1,5 +1,6 @@
 // NScript::CQ_FireHeartScript::CFH_BriarRose::Main() -- once the scythe cutscene has played, remove Briar Rose (unless the script is ending); otherwise release any old scripting handle and keep trying, a script frame at a time, to start scripting her through the quest's handle
 // Leaf: ?Main@CFH_BriarRose@CQ_FireHeartScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D37330, 156 bytes (+ int3 padding).
 // Callees: IsDone @ 0x00F35B30 (on `this`: the script thread's IsActiveThreadTerminating; manifest
 //   "CCreatureAction_TrollWhackGroundBase::Initialise" is propagated, as in the landed CHTE_Prisoner::Main 0x00D69F50), the game
@@ -18,7 +19,9 @@
 //   Was `?Main@CFH_BriarRose@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_FireHeartScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
 class CThing;
-class CScriptThing { public: unsigned char _body[12]; };
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 

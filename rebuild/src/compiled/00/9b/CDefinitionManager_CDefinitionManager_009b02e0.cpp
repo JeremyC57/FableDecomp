@@ -1,4 +1,5 @@
 // CDefinitionManager::~CDefinitionManager() -- the definition manager destructor: set the vtable, ClearInstantiatedDefs, then destroy the members in reverse order (the recompiled-defs tree, the two strings, the three arrays / POD vector maps, the CDefClassInfo vector map, the two counted symbol maps, the two CWideString path vectors) and run the CResourceList base destructor
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B02E0, length 387 bytes (+ int3 padding), `ret`. Vtable 0x0129B28C (CDefinitionManager).
 // Label: the manifest calls this `CDefinitionManager::Cleanup`; the body stores the vtable first, destroys every member in reverse
 // declaration order and chains to the CResourceList destructor @ 0x009FC5C0, i.e. it is the (non-deleting) destructor.
@@ -102,27 +103,7 @@ template <class Node> struct CRetailMap {                     // STLport _Rb_tre
     }
 };
 class CSymbolMap;
-struct SCountBlock {
-    long m_references;                                        // +0
-    void (__fastcall* m_pfnDestroy)(void*);                   // +4
-    void* m_pObject;                                          // +8
-};
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;
-    SCountBlock* m_pCount;
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;
-            }
-        }
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CResourceList { public:                                        // the manager's base (0x40 bytes with the vptr)
     virtual void v00();
     unsigned char _body[0x40 - 4];

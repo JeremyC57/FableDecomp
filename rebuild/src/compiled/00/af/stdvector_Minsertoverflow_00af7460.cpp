@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pair<EPSCType,CComponentInstance>* __position, const pair<EPSCType,CComponentInstance>& __x, const __false_type&, unsigned int __fill_len, bool __atend) -- (vector<pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance> >) STLport 4.6 growth insert: allocate old + max(old, n) elements, copy the prefix, one or n copies of x and (unless at the end) the suffix, destroy and free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@V?$allocator@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@@2@@std@@IAEXPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@2@ABU32@ABU__false_type@2@I_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF7460, length 260 bytes, thiscall, `ret 14h`.
 // Identity: callers 0x00AF76AC (in 0x00AF7570, the _M_fill_insert of the same vector) and 0x00AF7872 (in 0x00AF7730, its
 //   single-element insert); every callee is a landed member of the same instantiation: __uninitialized_copy 0x00AF6920,
@@ -22,21 +23,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 #include "engine/CBaseClass.h"
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                       // +0
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                         // +0
-    CCPPointerInfo* Info;                         // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 namespace NParticleEngine {
 enum EPSCType { PSC_TYPE_FIRST = 0 };

@@ -1,6 +1,7 @@
 // CScriptGameResourceObjectScriptedThing::MoveToPosition(const C3DVector& position, float proximity, EScriptEntityMoveType moveType, bool waitUntilDone, bool flag) -- queue a move-to-position action for the live scripted thing and optionally wait for its tasks
 // Grade: RELOCATION_MATCH -- the presence bit is stored to a never-reloaded frame byte (`shr ecx,1Fh ; and cl,1 ; mov [esp+0Fh],cl`) because, as in the landed sibling MoveToThing 0x00903E20, the inline GetInterface binds the byte HasTC result to a const reference (a temporary with a frame home); a plain bool local folds into `test cl,1`
 // Leaf: MoveToPosition
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00903BC0, length 220 bytes (`ret 14h`), vtable 0x0128D86C slot 4.
@@ -79,8 +80,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -67725,10 +67725,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f16c0'
-        Module = '_global'
-        Source = '00/9f/Clear_Clear_009f16c0.cpp'
-        TestSource = '00/9f/Clear_Clear_009f16c0_test.cpp'
-        PassPattern = 'OK_009f16c0'
+        Module = 'CGameEventPackage'
+        Source = '00/9f/CGameEventPackage_Clear_009f16c0.cpp'
+        TestSource = '00/9f/CGameEventPackage_Clear_009f16c0_test.cpp'
+        PassPattern = '009f16c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a0cb80'
@@ -120886,10 +120886,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f1720'
-        Module = '_global'
-        Source = '00/9f/CBase_CBase_009f1720.cpp'
-        TestSource = '00/9f/CBase_CBase_009f1720_test.cpp'
-        PassPattern = 'PASS_009f1720'
+        Module = 'CGameEventPackageSet'
+        Source = '00/9f/CGameEventPackageSet_Clear_009f1720.cpp'
+        TestSource = '00/9f/CGameEventPackageSet_Clear_009f1720_test.cpp'
+        PassPattern = '009f1720_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009f5de9'
@@ -159095,9 +159095,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007e37c0'
-        Module = 'CVtable_ffffffff'
-        Source = '00/7e/CVtableffffffff_CVtableffffffff_007e37c0.cpp'
-        TestSource = '00/7e/CVtableffffffff_CVtableffffffff_007e37c0_test.cpp'
+        Module = 'CDefString'
+        Source = '00/7e/CDefString_CDefString_007e37c0.cpp'
+        TestSource = '00/7e/CDefString_CDefString_007e37c0_test.cpp'
         PassPattern = '007e37c0_TEST PASS'
     }
     [pscustomobject]@{

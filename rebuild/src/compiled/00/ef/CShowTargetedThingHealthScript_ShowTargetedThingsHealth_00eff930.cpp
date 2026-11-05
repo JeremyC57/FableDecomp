@@ -3,6 +3,7 @@
 //   living thing, replace the quest-info health bar with one for the new target; when the old target dies and nothing
 //   living is targeted, remove the bar. Runs until the thread terminates.
 // Leaf: ShowTargetedThingsHealth
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EFF930, 893 bytes (+ int3 padding), plain `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CBaseClass() 0x0099A2D0 / ~CBaseClass 0x0099A2E0; ~CScriptThing
 //   0x004AA840 (out-of-line copy); operator delete 0x00BFE9BC; CCharString(const char*, long) 0x0099EBF0 / ~CCharString
@@ -28,45 +29,7 @@ class CRGBColour { public:
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 void operator delete(void* p);                          // 0x00BFE9BC
-class CCPPointerInfo { public:
-    long RefCount;                                      // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4
-    void* Data;                                         // +8
-};
-template <class T> class CCountedPointer { public:
-    void*           Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;              // the source's fields are read first
-        void* data = other.Data;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImp {
     virtual void i000() const; virtual void i001() const; virtual void i002() const; virtual void i003() const; virtual void i004() const; virtual void i005() const;
     virtual void i006() const; virtual void i007() const; virtual void i008() const; virtual void i009() const; virtual void i010() const; virtual void i011() const;

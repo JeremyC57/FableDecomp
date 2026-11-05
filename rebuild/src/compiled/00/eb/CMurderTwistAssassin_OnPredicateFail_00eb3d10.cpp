@@ -1,5 +1,6 @@
 // CMurderTwistAssassin::OnPredicateFail() -- when the assassin is killed (by anyone): set the parent quest's state to 4, give the hero the def's morality and renown, give the hero the def's reward object, and set the active quest card's objective to "TEXT_QUEST_MURDER_TWIST_OBJECTIVE_RETURN" in "OakBay"
 // Leaf: ?OnPredicateFail@CMurderTwistAssassin@@
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB3D10, 300 bytes, plain `ret` (virtual).
 // Callees: CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48) on the entity's own thing (+8); CCharString(const
 //   char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; CDefString::operator CCharString() 0x00415D70; CGameScriptInterface
@@ -54,10 +55,9 @@ struct CScriptThingMethods {
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptThing : public CScriptThingMethods { public:        // 12 bytes, vtable 0x01238C8C
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CMurderTwistScript {
     unsigned char _pad[0x4c];
     long          State;                           // +0x4c

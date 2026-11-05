@@ -1,5 +1,6 @@
 // NUISystem::CTextContainer::AddChild(CCountedPointer<CComponent>& child) -- accept only text children: hand each the container's text window, then add it as a normal child
 // Leaf: ?AddChild@CTextContainer
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Spellings unified: own ?AddChild@CTextContainer@NUISystem@@UAEXAAU?$CCountedPointer@VCComponent@NUISystem@@@2@@Z -> ?AddChild@CTextContainer@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@2@@Z; 00533b50: ?AddChild@CComponent@NUISystem@@UAEXAAU?$CCountedPointer@VCComponent@NUISystem@@@2@@Z -> ?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00546C90, 53 bytes (64 with padding), virtual, `ret 4`.
 // Vtable 0x01248064 (NUISystem::CTextContainer) slot 59 = AddChild (Ego_r.pdb
 // `virtual void CComponent::AddChild(CCountedPointer<NUISystem::CComponent>&)`, overridden here).
@@ -17,11 +18,7 @@ namespace NUISystem {
 enum EType { TYPE_TEXT = 6 };
 class CComponent;
 
-template <class T> struct CCountedPointer {
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CComponent {
 public:

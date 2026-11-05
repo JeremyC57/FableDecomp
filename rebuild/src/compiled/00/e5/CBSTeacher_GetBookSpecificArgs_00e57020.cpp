@@ -1,4 +1,5 @@
 // CBS_Teacher::GetBookSpecificArgs(long, map<CCharString, CCharString>&) -- fill the text arguments of the teacher's comment on a returned book: books 15/17/19/21/22/23 pick their line by the game-flow position, the hero's attractiveness or scariness, the Twinblade outcome or the teddy solution ($ARG1..$ARG3)
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E57020, length 1296 bytes, `ret 8`.
 // Callees: IsActiveThreadTerminating 0x00F35B30, CCharString(const char*, long) 0x0099EBF0 / (const CCharString&)
 //   0x0099EC30 / ~ 0x0099EAE0 / operator=(const char*) 0x0099EFE0 / operator=(const CCharString&) 0x0099EFB0,
@@ -69,7 +70,9 @@ struct CQ_SunnyvaleMasterData {
     unsigned char _pad3b[0x54 - 0x3b];
     CCharString TeddySolution;                         // +0x54
 };
-class CScriptThing { public: void* vptr; void* PImp[2]; };
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CV_BookCollectingScript;
 class CEntityScriptBase
 {

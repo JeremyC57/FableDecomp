@@ -1,5 +1,6 @@
 // NScript::CV_SwordInTheStoneScript::Init() -- reset the sword-in-the-stone quest state: attempt count and every progress flag cleared, the crowd sword timer set to 5 and the "current puller" handle reset to the empty one
 // Leaf: ?Init@CV_SwordInTheStoneScript@NScript@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED4B10, length 122 bytes (padded to 128).
 // Callees: g_pGameScriptInterface (0x0143E8F8) slot 89 (+0x164, SetTimer(long timer, long time)), the inline
 // CScriptThing::operator= (CCountedPointer assignment as the landed 0x008AB980: the count block's destroy function at
@@ -29,35 +30,8 @@ struct CQuestScriptObject : CScriptBase {
     CGameScriptInterface* Game;                    // +0x40
     void*                 Data;                    // +0x44
 };
-class CCPPointerInfo { public:
-    long m_references;                             // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImp;
-template <class T> class CCountedPointer { public:
-    CScriptThingImp* Data;
-    CCPPointerInfo*  Info;
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CScriptThingImp* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->m_references;
-                if (Info->m_references == 0) {
-                    Info->m_pfnDestroy(Info->m_pObject);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->m_references;
-        }
-        return *this;
-    }
-};
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #include "engine/CScriptThing.h"

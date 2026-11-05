@@ -1,15 +1,13 @@
 // NScript::CV_SickChildScript::CMansLover::Init() -- register the lover thing with the quest (slot 477 with (&Thing, true)) and clear the flag at +0x1c
 // Leaf: ?Init@CMansLover@CV_SickChildScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EC9CB0, length 26 bytes.
 // Callees: the quest interface's virtual slot 477 (+0x774, (CScriptThing*, bool)). Shape: the byte store after the call, `ret`.
 // Naming wave 35: identity reg 00ec571d "MansLover" in 00ec54e0; Alloc 00ec9c00; vtable 012f1d74 slot 2; PDB ?Init@CMansLover@CV_SickChildScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMansLover::Init (wave3/labels_alloc.tsv); PDB ?Init@CMansLover@CV_SickChildScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CMansLover@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
-class CScriptThing { public:
-    virtual void v000();
-    virtual void* GetInfo(long which);              // slot 1 (+0x04)
-    void* PImp_Data;                               // +0x04 (CCountedPointer<CThing>::Data)
-    void* PImp_Info;                               // +0x08
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CQuestCalls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

@@ -1,5 +1,6 @@
 // std::for_each(CCountedPointer<NCreatureAction::CActionEventBase>* first, CCountedPointer<NCreatureAction::CActionEventBase>* last, NCreatureAction::CDispatchActionEventIfActivationFrame f) -- dispatches every action event whose activation frame has passed and marks it dispatched
 // Leaf: for_each
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pRefCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00695B20, 69 bytes, `ret 0Ch`. Caller: CCreatureActionBase::FrameUpdate 0x00694077.
 // Callees: the event's virtual slot 1 (+0x04, `Dispatch(creature)`).
 // SGI/STLport `for_each` (`for (; first != last; ++first) f(*first); return f;`), compiled /Gr in retail so it is `__fastcall` here: the functor is returned through the hidden pointer (ecx), a pointer `first` rides in edx, the rest on the stack.
@@ -15,12 +16,7 @@ Function __fastcall for_each(InputIter first, InputIter last, Function f)
 }
 }
 class CThing;
-template <class T> class CCountedPointer {
-public:
-    T* m_pObject;
-    long* m_pRefCount;
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace NCreatureAction {
 class CActionEventBase {
 public:

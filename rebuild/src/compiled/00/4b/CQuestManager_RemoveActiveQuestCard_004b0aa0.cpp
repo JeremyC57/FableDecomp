@@ -1,4 +1,6 @@
 // CQuestManager::RemoveActiveQuestCard(const CCharString&) -- find the active quest card of the named quest script, kill its thing unless it is also a completed card, drop it from the active list and refresh the player GUI
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B0AA0, length 236 bytes, `ret 4`
@@ -77,11 +79,8 @@ __forceinline CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup
 }
 
 class CBaseObject;
-struct CBaseIntelligentPointer {                         // 8 bytes: vptr, item block
-    void* PItem;
-    virtual ~CBaseIntelligentPointer();
-    CBaseObject* GetPItem() const;                            // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CCardNode {                                       // STLport list<CIntelligentPointer<CThing>> node
     CCardNode*              _M_next;
@@ -98,12 +97,7 @@ inline void EraseNode(CCardNode* node)                   // STLport list::erase(
     free(node);
 }
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:

@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::DoQuest() -- the quest body: wait for the bandit contact intro, point the quest card at Bowerstone Jail, wait until the hero enters Bowerstone Jail by the entrance from Bowerstone Posh, activate phase 1, spawn the WatchForRegionLeaving / WatchForBanditsDeath / IntroPart2Checker threads, collect the bandit allies, play the intro, set the next objective, show the quest start screen, run phases one and two and, when the quest finished without the contact being killed, wait for Bowerstone Posh to load
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0B130, length 1606 bytes.
 // Callees: CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, Compare 0x00411570
@@ -62,28 +63,7 @@ class CCharString { public:
 };
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:                                 // CCountedPointer's shared block
-    long RefCount;                                      // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4
-    void* Data;                                         // +8
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImpl;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C

@@ -1,5 +1,6 @@
 // CNavigatorManager::ActivateNavigationMap(long) -- activate the quad-tree map of the map index (first time only: mark it active and link it to the neighbouring maps) and, with the debug focus flag on, point the debug view at the map's first node centre
 // Leaf: ActivateNavigationMap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A16050, 165 bytes (`ret 4`).
 // Callees: CNavQuadTree::Activate 0x00A762E0 (`mov byte ptr [ecx+5],1`: Activated = true; manifest label "CXMVPlaybackInfo" is
 //   propagated), CNavQuadTree::LinkToNeighbouringMaps(const CNavigatorManager&) 0x00A7A650, the static half-cell size
@@ -36,11 +37,7 @@ public:
     void LinkToNeighbouringMaps(const CNavigatorManager& manager);   // 0x00A7A650
     static float GetHalfCellSize_00a76320();       // 0x00A76320 (0.5f)
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CNavQuadTreeMap { public:                           // 32 bytes
     CCountedPointer<CNavQuadTree> PQuadTree;       // +0x00
     long                          Index;           // +0x08

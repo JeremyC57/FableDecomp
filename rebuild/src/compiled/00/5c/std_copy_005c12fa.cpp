@@ -1,6 +1,7 @@
 // std::__copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, const random_access_iterator_tag&, _Distance*) -- (NInventory::CItem*, NInventory::CItem*, int) STLport random-access copy: n = last - first assignments through the element's out-of-line operator=, return the result's end
 // Flags: /Gr
 // Leaf: ??$__copy@PAVCItem@NInventory@@PAV12@H@std@@YIPAVCItem@NInventory@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C12FA, 50 bytes (size-optimised TU), __fastcall (/Gr: first ecx, last edx;
 //   result, the tag reference and the null distance pointer on the stack), `ret 0Ch`.
 // Identity (proven): std::__copy<NInventory::CItem*, NInventory::CItem*, int>; evidence: its operator= callee 0x005C0C24 assigns that layout (dwords +0 / +4, the counted pointer's assignment 0x005C077F at +8, the dword +0x10) every 0x14 bytes; its callers are agent951's landed vector<NInventory::CItem>::erase 0x005C1ECC (CTCInventoryBase's vector +0xAC) and the __copy_ptrs forwarder 0x005C13F9 -- the mutable-source instance (its const-source twin is 0x005C132C)
@@ -10,11 +11,7 @@
 //   divisor by push/pop under /Os) and the result pointer is advanced in its own stack slot.
 // Element: NInventory::CItem (Ego_r.pdb 0x14 bytes: ItemType, NumberOfItems, CCountedPointer<CPerItemData> PPerItemData, AverageBoughtPrice)
 #pragma optimize("s", on)
-template <class T> class CCountedPointer {               // 8 bytes: the object and its shared CCPPointerInfo count block
-public:
-    T*    Data;                                          // +0x0
-    void* Info;                                          // +0x4 CCPPointerInfo*
-};
+#include "engine/CCountedPointer.h"
 namespace NInventory {
 class CPerItemData;
 class CItem {                                            // Ego_r.pdb 0x14 bytes

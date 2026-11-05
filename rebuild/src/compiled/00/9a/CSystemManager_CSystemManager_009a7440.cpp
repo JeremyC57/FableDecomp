@@ -1,4 +1,5 @@
 // CSystemManager::CSystemManager() -- CInitBaseClass base, own vtable, then the member constructors: seven empty counted pointers, the two wide strings, the profile-manager counted pointer and the application-name string
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A7440, length 118 bytes.
 // Callees: CInitBaseClass::CInitBaseClass @ 0x0099A310, CWideString::CWideString() @ 0x0099AED0 (twice; catalog label says
 // CCharString), CCharString::CCharString() @ 0x0099E4B0. Vtable 0x0129AFFC.
@@ -19,11 +20,7 @@ class CCharString { public:
     void* PString;
     CCharString();                              // 0x0099E4B0
 };
-template <class T> class CCountedPointer { public:
-    T* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-};
+#include "engine/CCountedPointer.h"
 class CDebugManager; class CInputManager; class CDisplayManager; class CGraphicBankManager;
 class CMeshBankManager; class CFontManager; class CProfileManager; struct CRetailManager;
 struct GUID { unsigned long Data1; unsigned short Data2, Data3; unsigned char Data4[8]; };

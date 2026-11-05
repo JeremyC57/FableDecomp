@@ -1,5 +1,6 @@
 // NScript::CV_FishingCompetitionScript::CFishCompOrganiser::OnPredicateFail() -- when the organiser was killed by the hero, fail the competition and spawn the parent script's EndCompetition thread
 // Leaf: OnPredicateFail
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E7F030, length 266 bytes, plain `ret`.
@@ -26,19 +27,14 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 
-class CScriptThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
-    virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
-    virtual void v016(); virtual void v017();
-    virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
-    void* PImp[2];                                      // +0x04
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
-#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {   // vtable 0x012EA48C for CV_FishingCompetitionScript
     void (T::*Func)();                                  // +0x34

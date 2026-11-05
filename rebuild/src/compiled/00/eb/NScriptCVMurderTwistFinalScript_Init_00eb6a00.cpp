@@ -1,5 +1,6 @@
 // NScript::CV_MurderTwistFinalScript::Init() -- clear the sword/crowd state and give the two per-slot vectors two empty entries each (CScriptThing at +0x60, scripted-thing handles at +0x7c)
 // Leaf: ?Init@CV_MurderTwistFinalScript@NScript@@UAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EB6A00, length 83 bytes.
 // Callees: CScriptThing::CScriptThing() @ 0x006E7B40 and ~CScriptThing @ 0x004AA840, the thing vector's
 // resize(unsigned, const CScriptThing&) @ 0x00D34AC0; CScriptGameResourceObjectScriptedThingBase::
@@ -14,12 +15,9 @@
 // its resize, and the four scalar clears (two words, two bytes from the zero register) come first.
 // Naming wave 35: identity outer script vtable 012ef978 slot 3 (slot 1 RegisterMain pushes "Main" 0x012C2F94); enclosing 00eaea20 (slot 2) registers 4 entity scripts whose PDB Alloc outer is CV_MurderTwistFinalScript; PDB ?Init@CV_MurderTwistFinalScript@NScript@@; refs=1; replaces CV_SwordInTheStoneScript::Init: current name also held by 00ed4b10; CV_SwordInTheStoneScript::Init is at 00ed4b10 (its own vtable slot) (wave3/labels_alloc.tsv); PDB ?Init@CV_MurderTwistFinalScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CV_SwordInTheStoneScript@@QAEXXZ`; this source now defines the PDB member (class CV_SwordInTheStoneScript renamed CV_MurderTwistFinalScript); same bytes.
-class CScriptThing { public:                       // 12 bytes, vtable 0x01238C8C (RTTI CScriptThing : CBaseClass)
-    void* PImp_Data;                               // +0x04
-    void* PImp_Info;                               // +0x08
-    CScriptThing();                                // 0x006E7B40
-    virtual ~CScriptThing();                       // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CScriptGameResourceObjectScriptedThingBase { public:   // 16 bytes
     unsigned char _body[0x10 - 4];

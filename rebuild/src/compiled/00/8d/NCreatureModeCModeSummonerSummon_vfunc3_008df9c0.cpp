@@ -1,4 +1,6 @@
 // NCreatureMode::CModeSummonerSummon::FrameUpdate, retail 0x008DF9C0.
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // PDB identity: egor 20132 / debug 0x00822180, vtable slot 3.
 // Shared CModeStandBase header is imported under its generated name; retail
@@ -16,21 +18,8 @@
 struct CTCInterface { virtual void v0() {} };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> CTCMapEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    CTCMapEntry* First;
-    CTCMapEntry* Last;
-    CTCMapEntry* LowerBound(const ETCInterfaceType& type); // 0x0040F020
-    CTCMapEntry* Find(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CTCMapEntry* it = LowerBound(type);
-        return (it == Last || interfaceType < it->first ? Last : it);
-    }
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 class CThing : public CBaseObject { public:
     unsigned char BeforeComponents[0x20-sizeof(CBaseObject)];
@@ -42,7 +31,7 @@ class CThing : public CBaseObject { public:
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CTCMap* map = &Interfaces;
         CTCMapEntry* it = map->LowerBound(type);
-        return (T*)((CTCInterface*)(it == map->Last || interfaceType < it->first ? map->Last : it)->second);
+        return (T*)((CTCInterface*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second);
     }
     const C3DVector& GetPos() const; // 0x004C73D0
 };
@@ -55,17 +44,8 @@ class CTCAISummon : public CTCInterface { public:
 };
 // Original 8-byte wrapper/control-block ABI; GetPItem performs lazy dead-object cleanup.
 struct CBaseObjectPointer { CBaseObject* object; unsigned long refcount; };
-struct CBaseIntelligentPointer {
-    CBaseObjectPointer* PData;
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();
-    CBaseObject* GetPItem() const; // 0x00a01b50
-    void SetPItem(CBaseObject*);
-};
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer() : CBaseIntelligentPointer() {}
-    T* Get() const { return static_cast<T*>(GetPItem()); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CAnimateThing;
 class CTCCreatureModeManager { public:
     class CModeBase { public:

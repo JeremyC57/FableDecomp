@@ -1,4 +1,5 @@
 // CGameScriptInterface::SetIgnoringPhrase(CScriptThing, long) -- GetThing through the counted pointer, TC 0xaa from the thing's TC map (+0x44, inlined find), store the argument at +0x10; CScriptThing destroyed inline
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pData->Data, m_pInfo->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A2100, oracle length 218 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -17,29 +18,9 @@ class CTCBase;
 
 enum ETCInterfaceType { TC_FIRST = 0 };
 
-struct SCountBlock {
-    long m_references;                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);// +4
-    void* m_pObject;                       // +8
-};
+#include "engine/CCountedPointer.h"
 
 
-template <class T> class CCountedPointer { public:
-    T*  m_pData;                // +0
-    SCountBlock* m_pInfo;                  // +4
-    ~CCountedPointer()
-    {
-        if (m_pInfo) {
-            --m_pInfo->m_references;
-            if (m_pInfo->m_references == 0) {
-                m_pInfo->m_pfnDestroy(m_pInfo->m_pObject);
-                delete m_pInfo;
-            }
-        }
-        m_pData = 0;
-        m_pInfo = 0;
-    }
-};
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
@@ -48,7 +29,7 @@ template <class T> class CCountedPointer { public:
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::~CScriptThing() { }
-inline CThing* CScriptThing::GetPThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetPThing(); }
+inline CThing* CScriptThing::GetPThing() const { return PImp.Data == 0 ? 0 : PImp.Data->GetPThing(); }
 
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;

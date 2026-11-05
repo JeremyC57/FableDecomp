@@ -1,5 +1,6 @@
 // std::__partial_sort(pair* first, pair* middle, pair* last, pair*, CKeyPairCompareLess comp) -- (pair<long, CCountedPointer<CRegionConnectionNode> >) heap-select the smallest keys into [first, middle), then sort that heap
 // Leaf: ??$__partial_sort@PAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@U12@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCRegionConnectionNode@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@0@000V?$CKeyPairCompareLess@JV?$CCountedPointer@VCRegionConnectionNode@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00829630, 104 bytes, `__fastcall` (first in ecx, middle in edx; last, the null value-type pointer and the empty comparator on the stack, `ret 0Ch`).
 // Identity (proven): std::__partial_sort<pair<long, CCountedPointer<CRegionConnectionNode> >*, pair<...>, CKeyPairCompareLess<...> > (STLport 4.6 _algo.c; the PDB builds are Dinkumware); evidence: its callers (sites 0x0082974C, 0x008298DE) are its type's introsort loop 0x008297F0 (J055: the depth-limit fallback `partial_sort(first, last, last)`) and an unreferenced out-of-line partial_sort(first, middle, last, comp) forwarder (`push 0` for the value type, then the call); the loop is called by sort 0x008298F0, the sort of CRegionConnectionGraph::GraphNodes (via CWorldMap::LoadRegionGraph 0x00506D40): CVectorMap<long, CCountedPointer<CRegionConnectionNode> > (J050 proves the element type from that sort's owner)
 // Label: the manifest's "std_make_partial_heap_EntityScriptBinding_v2" is invented (family J053: five byte-identical bodies, one per element type).
@@ -9,39 +10,7 @@
 // Layout: pair<K, CCountedPointer<V> > is 12 bytes {first +0, second.Data +4, second.Info +8}; CCPPointerInfo {RefCount +0, DeleteFunc +4, Data +8}.
 // Model: J050 (agent950's landed CCountedPointer, key-only CKeyPairCompareLess).
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0
-    void (__fastcall* DeleteFunc)(void* data);              // +4, Data in ecx
-    void* Data;                                             // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0
-    CCPPointerInfo* Info;                                   // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class CRegionConnectionNode;
 namespace std {
 template <class _T1, class _T2> struct pair {

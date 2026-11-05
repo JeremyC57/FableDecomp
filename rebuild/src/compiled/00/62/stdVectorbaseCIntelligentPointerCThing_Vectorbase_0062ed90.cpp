@@ -1,5 +1,6 @@
 // std::_Vector_base<CIntelligentPointer<CThing>>::_Vector_base(size_t n, const allocator_type& a) -- STLport vector base sized constructor: null the three pointers, malloc n elements (none for zero), finish = start, end of storage = start + n
 // Leaf: ??0?$_Vector_base@V?$CIntelligentPointer@VCThing@@@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062ED90, 56 bytes, thiscall, `ret 8` (n and the allocator reference; returns this).
 // Identity (proven): its only caller is the landed vector<CIntelligentPointer<CThing> >::vector(const vector&) 0x0062ED40 (stand-in ??0CRetailVectorBase_CIntelligentPointer@@ on this address).
 // Callee: malloc 0x00BFEA0E (`n ? malloc(n * size) : 0`, the zero register doubling as the null result).
@@ -7,7 +8,8 @@
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);              // 0x00BFEA0E
 class CThing;
-template <class T> class CIntelligentPointer { public: void* _vfptr; void* PData; };   // 8 bytes (layout only)
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;

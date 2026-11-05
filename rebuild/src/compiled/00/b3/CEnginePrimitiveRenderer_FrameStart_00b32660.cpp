@@ -1,5 +1,6 @@
 // CEnginePrimitiveRenderer::FrameStart(const CEngineComponentParams& params) -- per-frame renderer setup: pick the colour- or depth-buffer shadow pixel shaders, publish the frame's interpolation info and bump the engine frame number, FrameStart every primitive manager and the cloth renderer, refresh the LOD tolerances from the texture pool, then derive the mipmap size multiplier and the FOV-adjusted LOD screen size
 // Leaf: ?FrameStart@CEnginePrimitiveRenderer@@UAEXABVCEngineComponentParams@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members PItem->Data, PRefCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B32660, length 448 bytes (body 0x1b2 + int3 padding), `ret 4`.
 // Callees: CTextureManager::GetPoolTextureSize @ 0x00B244F0 (on the global @ 0x01436EA4; its result is read as a record:
 //   +0x40/+0x44 are the LOD tolerances), CDisplayManager::GetRenderTargetDimensions() @ 0x009BEDC0 (C2DExtentsI by value, on the
@@ -55,7 +56,7 @@ class CEngineClothRenderer { public:
     virtual void v00();
     virtual void FrameStart();                     // slot 1 (+4)
 };
-template <class T> class CCountedPointer { public: T* PItem; long* PRefCount; };
+#include "engine/CCountedPointer.h"
 struct CManagerArray {                             // retail CArray<CCountedPointer<CEnginePrimitiveManager> >
     CCountedPointer<CEnginePrimitiveManager>* m_pFirst;
     CCountedPointer<CEnginePrimitiveManager>* m_pLast;
@@ -137,8 +138,8 @@ void CEnginePrimitiveRenderer::FrameStart(const CEngineComponentParams& params)
     g_EngineInterpolationInfo = params.InterpolationInfo;
     ++g_engineFrameNumber;
     for (unsigned long i = 0; i < PrimitiveManagers.GetCount(); ++i)
-        PrimitiveManagers.m_pFirst[i].PItem->FrameStart();
-    ClothRenderer.PItem->FrameStart();
+        PrimitiveManagers.m_pFirst[i].Data->FrameStart();
+    ClothRenderer.Data->FrameStart();
     if (g_pTexturePoolOwner_01436eb0) {
         LODErrorTolerance = g_pTextureManager_01436ea4->GetPoolTextureSize(g_pTexturePoolOwner_01436eb0->PoolID)->LODErrorTolerance;
         CharacterLODErrorTolerance = g_pTextureManager_01436ea4->GetPoolTextureSize(g_pTexturePoolOwner_01436eb0->PoolID)->CharacterLODErrorTolerance;

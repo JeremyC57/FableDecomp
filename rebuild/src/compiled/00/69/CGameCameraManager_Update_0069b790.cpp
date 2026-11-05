@@ -1,4 +1,5 @@
 // CGameCameraManager::Update() -- update camera state for a live observed thing, retaining current view on a single cut
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0069B790 184bytes. Actual donor manager header retained; native CTools shrinks4, lists shrink4 each.
 #define CGameCameraManager CGameCameraManagerDonor
@@ -9,9 +10,8 @@
 #undef CThing
 class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CObservedThingPointer {void* VTable;void* PointerInfo;}; //00A01B50
 #include "engine/C3DVector.h"
 class CRightHandedSet { public:C3DVector Up,Forward;};

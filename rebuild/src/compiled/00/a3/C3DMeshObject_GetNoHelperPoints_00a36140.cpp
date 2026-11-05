@@ -1,5 +1,6 @@
 // C3DMeshObject::GetNoHelperPoints(const CCharString& name) const -- how many helper points the mesh statistics hold under the name's CRC (FindHelperPointsEnd - FindHelperPointsBegin over 20-byte pairs)
 // Leaf: GetNoHelperPoints
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36140, 88 bytes (+ int3 padding), `ret 4`.
 // Identity: Ego_r.pdb `?GetNoHelperPoints@C3DMeshObject@@QBEJABVCCharString@@@Z`; callers 0x004BDF2A / 0x004C0794. The catalog's
@@ -42,11 +43,7 @@ class C3DMeshStats { public:
     const THelperPointEntry* FindHelperPointsEnd(unsigned long nameHash) const;     // 0x00A2E910
 };
 
-template <class T> class CCountedPointer { public:
-    T*    Data;                                    // +0
-    void* Info;                                    // +4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class C3DMeshInfo;
 

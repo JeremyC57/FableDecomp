@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::SetParticleCreationDisabled(bool disabled) -- when the flag changes: record it, and push it to the live emitter (disabling also sends the emitter to sleep, enabling wakes it) or to the pending creation parameters
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, PCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0690, length 145 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3).
 // Layout: CTCDParticleEmitter as in the landed SetAlwaysUpdate 0x006E0590 (ParticleCreationDisabled = bit 3 of +0x44, Waiting... bit 0,
@@ -47,11 +48,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-template<class T> class CCountedPointer { public:
-    T*    Object;
-    long* PCount;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class CTCDParticleEmitter { public:
     virtual void v00();
     unsigned char           _base[0x8];         // CTCBase: ParentThing +4, flags +8/+9

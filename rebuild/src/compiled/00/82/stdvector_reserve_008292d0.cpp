@@ -1,5 +1,6 @@
 // std::vector::reserve(n) -- Grow capacity without changing the number of elements.
 // Leaf: ?reserve@?$vector@U?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@V?$allocator@U?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@@2@@std@@QAEXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 #include <stddef.h>
 #include <stdlib.h>
 inline void* operator new(size_t,void* p){return p;}
@@ -9,13 +10,8 @@ public:
     T* Start; int Size;
     CSmallVector(); CSmallVector(const CSmallVector&); ~CSmallVector();
 };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CRegionConnectionNode;
-template<class T> class CCountedPointer {
-public:
-    T* Data; CCPPointerInfo* Info;
-    CCountedPointer(); CCountedPointer(const CCountedPointer&); ~CCountedPointer();
-};
 class CNavQuadTree {
 public:
     // Layout: retail reserve00a85a60 divides pointer differences by40; owned CNavigationLayer is40bytes.

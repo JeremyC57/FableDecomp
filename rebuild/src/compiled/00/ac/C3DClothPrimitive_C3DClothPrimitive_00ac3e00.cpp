@@ -1,5 +1,6 @@
 // C3DClothPrimitive::C3DClothPrimitive(const C3DMeshFileClothChunk* chunk) -- build the cloth's particle program from the chunk: read the program from the chunk's data, take the material index, then add one C3DGroup2 per VGRP sub-chunk
 // Leaf: ??0C3DClothPrimitive
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members references->RefCount, destroy->DeleteFunc, object->Data are the header CCPPointerInfo's (same offsets).
 // Retail @ 0x00AC3E00, 441 bytes (`ret 4`; 8-byte aligned frame, no EH frame under the lane's /O2 flags). Callees: CBase
 //   0x0099A2F0, operator new 0x00BFEA1A, CParticleProgram ctor 0x00AE3550 / ReadFromFile 0x00AE3C30 / AddGroup 0x00AE37D0,
 //   the group reserve 0x00AE3330 (manifest "CSpellContainerList::AddChild" is propagated), CCountedPointer::Reset 0x00AC3FF0,
@@ -12,23 +13,7 @@
 //   (landed 0x00AC4150); retail CMemoryDataInputStream 0x1c.
 extern "C" void __cdecl free(void* block);        // 0x00BFEA14
 
-struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
-template<class T> class CCountedPointer { public:
-    T* Object; SCountBlock* Count;
-    CCountedPointer() : Object(0), Count(0) {}
-    ~CCountedPointer() { if (Count) { --Count->references; if (!Count->references) { Count->destroy(Count->object); delete Count; } } Object = 0; Count = 0; }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        SCountBlock* c = o.Count; T* p = o.Object;
-        if (Count != c) {
-            if (Count) { --Count->references; if (!Count->references) { Count->destroy(Count->object); delete Count; } }
-            Object = p; Count = c; if (c) ++c->references;
-        }
-        return *this;
-    }
-    void Reset(T* object);                         // 0x00AC3FF0
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 template <class T> class CArray { public:                 // retail STLport vector layout
     T* _M_start;
@@ -100,8 +85,8 @@ C3DClothPrimitive::C3DClothPrimitive(const C3DMeshFileClothChunk* chunk)
     unsigned long groupCount = chunk->CountSubChunksOfType("VGRP");
     ParticleProgram->ReserveGroups(groupCount);
     CCountedPointer<const C3DMeshFileGroupChunk> group = chunk->FindFirstGroup();
-    while (group.Object) {
-        C3DGroup2 vertexGroup(*group.Object);
+    while (group.Data) {
+        C3DGroup2 vertexGroup(*group.Data);
         ParticleProgram->AddGroup(vertexGroup);
         group = chunk->FindNextGroup(group);
     }

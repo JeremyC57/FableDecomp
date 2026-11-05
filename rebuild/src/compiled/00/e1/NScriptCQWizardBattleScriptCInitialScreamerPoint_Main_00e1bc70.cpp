@@ -3,6 +3,7 @@
 //   CREATURE_SCREAMER_01 "SpawnedScreamer" at the point, sets the hero as its best enemy target and counts it alive until it
 //   dies; then waits for the hero to move more than 20 units away
 // Leaf: Main
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1BC70, 751 bytes (+ int3 padding).
 // Callees: GameCalls (g_pGameScriptInterface 0x0143E8F8) slots 7 NewScriptFrame, 70 GetHero, 91 CreateCreature, 451
 //   GiveThingBestEnemyTarget; CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840),
@@ -19,27 +20,7 @@
 class CCharString;
 struct CScriptThingImpl;
 void operator delete(void* p);                      // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:                             // CCountedPointer's shared block
- long RefCount;
- void (__fastcall* DeleteFunc)(void* data);
- void* Data;
-};
-template <class T> class CCountedPointer { public:
- T*              Data;
- CCPPointerInfo* Info;
- CCountedPointer() : Data(0), Info(0) { }
- void Release()
- {
-  if (Info) {
-   --Info->RefCount;
-   if (Info->RefCount == 0) {
-    Info->DeleteFunc(Info->Data);
-    delete Info;
-   }
-  }
- }
- ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DVector;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

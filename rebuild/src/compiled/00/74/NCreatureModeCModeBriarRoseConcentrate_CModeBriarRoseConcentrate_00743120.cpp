@@ -1,5 +1,7 @@
 // NCreatureMode::CModeBriarRoseConcentrate::~CModeBriarRoseConcentrate() -- Briar Rose concentrate creature-mode dtor (compiler-generated): the member dtors in reverse order (the sword and body effect pointers, the Briar Rose def pointer, the imposter pointer vector, the target pointer, the group anim filter) and ~CModeStandBase
 // Leaf: ??1CModeBriarRoseConcentrate@NCreatureMode@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00743120, 147 bytes, tail jump to the base destructor.
 // Identity: the only call is from 0x00743100, slot 0 (the scalar deleting destructor) of vtable 0x01268548, RTTI
 //   `.?AVCModeBriarRoseConcentrate@NCreatureMode@@` (rtti_bases: CModeBriarRoseConcentrate : CModeStandBase :
@@ -59,18 +61,8 @@ class CThing { public:                                      // retail flag byte 
 };
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer { public:                     // vtable 0x0129C95C, 8 bytes
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* Get() const { return GetPointer(); }
-    T* operator->() const { return GetPointer(); }
-private:
-    T* GetPointer() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 template <class T> inline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)
@@ -131,11 +123,7 @@ class CTCCreatureModeManager { public:
         virtual ~CModeBase();
     };
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-};
+#include "engine/CCountedPointer.h"
 namespace NAnimationEntryBodge { class CAnimEntryLite; }
 class CModeStandBase : public CTCCreatureModeManager::CModeBase { public:   // 0x68 bytes
     long                                                    IdleCounter;                    // +0x1C

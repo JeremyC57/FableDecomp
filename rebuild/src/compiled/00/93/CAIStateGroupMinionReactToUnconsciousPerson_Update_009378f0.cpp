@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToUnconsciousPerson::Update() -- walk up to the (living) unconscious person, mark it discovered by this creature, then either (creature in life state 3) look at it and play the alert-to-player action, or post the STANDARD_MESSAGE_EVENT_FOUND_UNCONSCIOUS_PERSON message to a guard at the person's position; always Terminate()
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009378F0, length 535 bytes (+ int3 padding), plain `ret` (virtual).
@@ -56,15 +57,8 @@ class CTCDiscovery { public:                           // interface 0x40
     void SetDiscovered(bool discovered, CThing* by);    // 0x007509D0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);          // 0x00A01B90
-};
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
     __forceinline CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }

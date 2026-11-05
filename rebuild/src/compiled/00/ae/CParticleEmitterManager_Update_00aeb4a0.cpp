@@ -1,4 +1,5 @@
 // CParticleEmitterManager::Update(bool) -- walk the active emitters: drop (and release) the dead ones, initialise any not yet initialised, and update those that always update (or all when asked) and are visible or update offscreen
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets); the local CCPPointerInfo members m_count->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEB4A0, length 176 bytes (`ret 4`).
 // Callees: CParticleEmitter::Initialise(CIEngine*) @ 0x00AEE240 (with null), IsVisible @ 0x00AED010, Update @ 0x00AEE9F0;
 //          free @ 0x00BFEA14 (list node), operator delete @ 0x00BFE9BC (count block).
@@ -63,28 +64,7 @@ public:
 };
 
 struct CCountedItem { };
-struct CCPPointerInfo {                              // the shared count block
-    long m_count;                                    // +0x00
-    void (CCountedItem::*m_pfnDestroy)();            // +0x04 (called with the item as `this`)
-    CCountedItem* m_pItem;                           // +0x08
-};
-template <class T> struct CCountedPointer {
-    T*              Object;
-    CCPPointerInfo* Info;
-    void Release()
-    {
-        if (Info) {
-            if (--Info->m_count == 0) {
-                (Info->m_pItem->*Info->m_pfnDestroy)();
-                operator delete(Info);
-            }
-        }
-        Object = 0;
-        Info = 0;
-    }
-    ~CCountedPointer() { Release(); }
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 }
 
 template <class T> struct SListNode {
@@ -133,7 +113,7 @@ void CParticleEmitterManager::Update(bool updateAll)
 {
     CRetailList<CEmitterPointer>::iterator it = ActiveEmitters.Active.begin();
     while (it != ActiveEmitters.Active.end()) {
-        NParticleEngine::CParticleEmitter* emitter = it->Object;
+        NParticleEngine::CParticleEmitter* emitter = it->Data;
         if (emitter->IsDead()) {
             it = ActiveEmitters.Active.erase(it);
             continue;

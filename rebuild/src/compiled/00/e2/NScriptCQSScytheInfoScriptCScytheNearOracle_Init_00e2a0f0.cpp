@@ -1,5 +1,6 @@
 // NScript::CQS_ScytheInfoScript::CScytheNearOracle::Init() -- make the scythe-near-oracle entity untouchable: not force-pushable, not pushable by the hero, not killable, no combo multiplier, no information marker
 // Leaf: ?Init@CScytheNearOracle@CQS_ScytheInfoScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members m_count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E2A0F0, length 128 bytes (120 + int3 padding).
 // Identity: vtable 0x012E23B8 slot 2 (Init); the factory at 0x00E2A020 allocates 0x1c bytes (PDB
 // CScytheNearOracle is 28 bytes: ParentClass +0x14, PMasterData +0x18) and stores this vtable.
@@ -16,18 +17,9 @@
 //   Was `?Init@CScytheNearOracle@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-class CCPPointerInfo { public: long m_count; };
+#include "engine/CCountedPointer.h"
 
 class CGameScriptThing;
-template <class T> class CCountedPointer { public:             // CCountedPointer<CGameScriptThing>
-    CGameScriptThing* Data;
-    CCPPointerInfo*   Info;
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info)
-    {
-        if (Info)
-            ++Info->m_count;
-    }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

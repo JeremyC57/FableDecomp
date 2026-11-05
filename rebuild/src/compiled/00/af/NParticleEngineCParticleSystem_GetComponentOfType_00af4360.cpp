@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::GetComponentOfType(EPSCType type, unsigned long index) -- the index'th component of the given type: walk the component map's equal range [LowerBound(type), UpperBound(type)) index steps and return that instance's component pointer, or 0 when the range runs out
 // Leaf: ?GetComponentOfType@CParticleSystem@NParticleEngine@@QAEPAVCPSCBase@2@W4EPSCType@2@K@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF4360, 79 bytes (+1 int3 padding), __fastcall `ret 8`.
 // Identity: FableWin.pdb name set `?GetComponentOfType@CParticleSystem@NParticleEngine@@QAEPAVCPSCBase@2@W4EPSCType@2@K@Z`;
 //   it sits between CParticleSystem::ClearAllPrimitives 0x00AF4320 and ::GetParticleStats 0x00AF43B0 (both landed) and
@@ -20,11 +21,7 @@ enum EPSCType { PSC_TYPE_NONE = 0 };
 class CPSCBase;
 struct CCountBlock;
 
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                      // +0x0
-    CCountBlock* Block;                                     // +0x4
-};
+#include "engine/CCountedPointer.h"
 
 class CComponentInstance {
 public:

@@ -1,5 +1,6 @@
 // 00939180 CAIStateGroup_MinionSitAtHome::IsRunnable -- consult idle scheduler then set sitting deadline
 // Leaf: ?IsRunnable@CAIStateGroup_MinionSitAtHome@@MAE_NXZ
+// Plan phase 5 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
@@ -25,15 +26,7 @@
 #undef CThingAICreature
 
 #pragma pack(push,1)
-class C3DVector {
-public:float X,Y,Z;
-    void Rotate(float,float);
-    C3DVector(){}
-    C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
-    C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}
-    const C3DVector operator+(const C3DVector&v)const{return C3DVector(X+v.X,Y+v.Y,Z+v.Z);}
-    const C3DVector operator-(const C3DVector&v)const{return C3DVector(X-v.X,Y-v.Y,Z-v.Z);}
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 #include "engine/CArray.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

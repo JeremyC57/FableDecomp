@@ -1,5 +1,6 @@
 // CScriptGameResourceObjectScriptedThing::GetScriptThing() const -- the CScriptThing handle of the scripted thing when it exists and is not dead; else a null CScriptThing
 // Leaf: ?GetScriptThing@CScriptGameResourceObjectScriptedThing@@UBE?AVCScriptThing@@XZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009038D0, length 75 bytes; vtable 0x0128D86C slot 12.
 // PDB: ?GetScriptThing@CScriptGameResourceObjectScriptedThing@@UBE?AVCScriptThing@@XZ.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 three times (on PThing at +0x14, a CIntelligentPointer<CThing>),
@@ -12,13 +13,9 @@
 // virtual member; the class is modelled locally with the header's offsets (ScriptInterface +0x10, PThing +0x14,
 // ScriptID +0x1c, NullResource +0x20, ActionPriority +0x24; 0x28 bytes). The returned CScriptThing needs its out-of-line
 // constructors, so it is a local model with engine/CScriptThing.h's {vftable, PImp_Data, PImp_Info} layout.
-class CScriptThing {
-public:
-    void* __vftable;
-    void* PImp_Data;
-    void* PImp_Info;
-    CScriptThing(const CScriptThing& other);
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThing derives from CScriptThing
 public:
     static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)

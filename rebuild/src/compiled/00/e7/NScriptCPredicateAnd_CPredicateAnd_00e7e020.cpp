@@ -1,5 +1,6 @@
 // NScript::CPredicate_And::CPredicate_And(const NScript::CIsThingAlive& predicate1, const NScript::CIsVariableFalse& predicate2) -- CPredicate_And<CIsThingAlive, CIsVariableFalse>: build a quest-script "thing is alive and variable is false" predicate by copying both halves
 // Leaf: ??0?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@QAE@ABVCIsThingAlive@1@ABVCIsVariableFalse@1@@Z
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E7E020, 55 bytes (+9 int3), `__fastcall`, `ret 8`, returns `this`.
 // Identity: FableWin.pdb ??0?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@QAE@ABVCIsThingAlive@1@
 //   ABVCIsVariableFalse@1@@Z. The class's vtable 0x012EA430 (no RTTI) holds operator() 0x00E7DE30 (Predicate1() &&
@@ -15,13 +16,9 @@
 //   counted pointer at +8).
 // Shape: both member copies are the implicit (inline) copy constructors: each stores its vptr; CIsThingAlive's
 //   calls the CScriptThing copy, CIsVariableFalse's copies the pointer.
-class CScriptThing {
-public:
-    long  m_id;                                          // +0x04
-    void* m_pCounted;                                    // +0x08 (counted pointer info, add-ref'd on copy)
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    virtual ~CScriptThing();
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 namespace NScript {
 

@@ -1,5 +1,6 @@
 // std::list::erase(iterator position) -- (list<CCountedPointer<CVillageTaskCarryCrate> >) STLport 4.6 single-node erase: unlink the node, release its counted pointer, free the node and return the iterator to the following node
 // Leaf: ?erase@?$list@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@@std@@@2@U32@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members PObject->Data, PCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006601E9, 42 bytes, thiscall, `ret 8` (hidden iterator result + the iterator by
 //   value), returns the result pointer.
 // Identity (proven): list<CCountedPointer<CVillageTaskCarryCrate> >::erase(iterator); evidence: its callers are CTCVillage::RemoveThingFromTaskList<CVillageTaskCarryCrate> 0x00660A6C (called from CTCVillage::RemoveThingFromAllTasks 0x00659EA9 on this+0x60 = Ego_r.pdb CTCVillage::CrateTasks, list<CCountedPointer<CVillageTaskCarryCrate> >, retail 4-byte lists after the nine Village* lists from +0x28) and the RemoveThingFromTask instance 0x00660D49; FableWin.pdb names ?erase@?$list@V?$CCountedPointer@VCVillageTaskCarryCrate@@@@...; the element destructor it calls is this list's own.
@@ -14,12 +15,7 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CVillageTaskCarryCrate;
-template <class T> class CCountedPointer {               // 8 bytes: the object, the shared count block
-public:
-    ~CCountedPointer();                                  // out of line
-    T* PObject;                                          // +0x0
-    void* PCount;                                        // +0x4
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 

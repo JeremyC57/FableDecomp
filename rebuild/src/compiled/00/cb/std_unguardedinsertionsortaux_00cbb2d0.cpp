@@ -1,5 +1,6 @@
 // std::__unguarded_insertion_sort_aux(std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >* first, std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >* last, std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >*, CCompareString<CCountedPointer<CEntityScriptBindingBase> > comp) -- unguarded insertion sort of the (name, binding) pairs
 // Leaf: ??$__unguarded_insertion_sort_aux@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@U12@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@00V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBB2D0, length 69 bytes.
 // Identity (naming wave 20, chunk 686): STLport 4.6 __unguarded_insertion_sort_aux (stl/_algo.c) of the sort<> 0x00CBDF70 over the 12-byte
 //   pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > with CCompareString: called by the landed __final_insertion_sort 0x00CBD420
@@ -18,33 +19,7 @@ public:
     ~CCharString();                                        // 0x0099EAE0
     bool operator<(const CCharString& other) const;        // 0x009E6530 ??MCCharString@@QBE_NABV0@@Z (FableWin.pdb)
 };
-class CCPPointerInfo { public:
-    long  RefCount;
-    void  (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CEntityScriptBindingBase;
 namespace std {
 template <class _T1, class _T2> struct pair {

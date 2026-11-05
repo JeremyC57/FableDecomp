@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetNearestWithScriptName(const CScriptThing& from, const CCharString& scriptName) const -- of all things with the script name, return the one nearest (2D) to `from` other than `from` itself, the first one when none qualifies, or an empty handle when there is none
 // Leaf: GetNearestWithScriptName
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0089A510, 460 bytes, `ret 0xc` (hidden CScriptThing result); Ego_r.pdb
 // ?GetNearestWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z.
@@ -18,29 +19,7 @@ class CCharString { public: void* PStringData; };
 #include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info

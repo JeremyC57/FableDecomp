@@ -1,5 +1,6 @@
 // std::__find_if(std::pair<CIntelligentPointer<CThing>,long>* first, std::pair<CIntelligentPointer<CThing>,long>* last, CIsFirstElementEqualTo pred, const random_access_iterator_tag&) -- STLport random-access find_if over the explosion's (thing, emitter id) pairs: the first entry whose thing is pred's thing
 // Leaf: ??$__find_if@PAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@VCIsFirstElementEqualTo@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x0080E060, 291 bytes, /Gr `__fastcall` (first in ecx, last in edx), `ret 0Ch`: the 8-byte
 //   predicate by value on the stack (destroyed by the callee: `call 0x00A01C10` on its slot before each return) plus the
 //   empty iterator-tag reference.
@@ -16,20 +17,8 @@
 //   run the implicit predicate destructor (= the base dtor) on the argument slot.
 class CBaseObject;
 class CThing;
-class CBaseIntelligentPointer {
-public:
-    virtual void v00();
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                          // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-    CBaseObject* PData;                                  // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual void v00();                                  // this instantiation's vtable 0x01238C6C
-    CIntelligentPointer(const CIntelligentPointer<T>& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class T1, class T2> struct pair {
     T1 first;                                            // +0x00

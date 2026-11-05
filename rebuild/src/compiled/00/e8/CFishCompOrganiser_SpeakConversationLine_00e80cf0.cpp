@@ -1,4 +1,5 @@
 // CFishCompOrganiser::SpeakConversationLine(CCharString line) -- start the organiser's conversation (Me speaking, kept in Conversation +0x4c), aim it at the hero and add the given line; the by-value line is destroyed on the way out
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E80CF0, length 100 bytes (+ int3 padding). `ret 4`.
 // Callees: the game interface (Game, +4) virtual slots 364 (+0x5b0, StartSpeech(Me, 0, 0)), 70 (+0x118, GetHero, twice),
 // 365 (+0x5b4, SetSpeechListener), 366 (+0x5b8, AddSpeechLine) -- slot model of the landed CBriarRose::DoSpeech 0x00DA2610;
@@ -12,9 +13,9 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                           // 0x0099EAE0
 };
-class CScriptThing { public:
-    unsigned char _body[0x0c];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

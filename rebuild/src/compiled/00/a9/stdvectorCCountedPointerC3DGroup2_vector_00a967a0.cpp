@@ -1,5 +1,6 @@
 // std::vector<CCountedPointer<C3DGroup2>>::vector(unsigned int n) -- n default (zero) elements in freshly allocated storage
 // Leaf: ??0?$vector@V?$CCountedPointer@VC3DGroup2@@@@V?$allocator@V?$CCountedPointer@VC3DGroup2@@@@@std@@@std@@QAE@I@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members object->Data, control->Info are the header CCountedPointer's (same offsets); the local CCPPointerInfo members refs->RefCount, destroy->DeleteFunc, object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A967A0, 90 bytes, thiscall, `ret 4` (speed-optimised: the `lea ebx,[ebx]` loop alignment).
 // Identity (probable): called by N3DPrimitive::CDeviceIndependent::RemapBoneIndices 0x00A90D60 (bound) and through the out-of-line CArray constructor 0x00A97A00; FableWin.pdb's N3DPrimitive device-independent translation unit (RemapBoneIndices) holds ??0?$CArray@V?$CCountedPointer@VC3DGroup2@@@@@@QAE@I@Z and vector<CCountedPointer<C3DGroup2> >::vector(unsigned int), the only 8-byte sized constructors there.
 // Callees: malloc 0x00BFEA0E (the STLport allocator's allocate for n != 0).
@@ -11,32 +12,7 @@ extern "C" void* __cdecl malloc(unsigned int size);      // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 class C3DGroup2;
 void __cdecl operator delete(void* block);                // 0x00BFE9BC
-class CCPPointerInfo { public:
-    unsigned long refs;                                // +0x0
-    void (__fastcall* destroy)(void*);                 // +0x4
-    void* object;                                      // +0x8
-};
-template <class T> class CCountedPointer {             // the landed 0x00514790 model
-public:
-    CCountedPointer() : object(0), control(0) { }
-    CCountedPointer(const CCountedPointer& x) : object(x.object), control(x.control)
-    {
-        if (control)
-            ++control->refs;
-    }
-    ~CCountedPointer()
-    {
-        if (control) {
-            --control->refs;
-            if (control->refs == 0) {
-                control->destroy(control->object);
-                operator delete(control);
-            }
-        }
-    }
-    T*              object;                            // +0x0
-    CCPPointerInfo* control;                           // +0x4
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     pair() : first(_T1()), second(_T2()) { }

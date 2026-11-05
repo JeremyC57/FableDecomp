@@ -1,5 +1,6 @@
 // std::vector<CCountedPointer<C3DClothPrimitive> >::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@V?$CCountedPointer@VC3DClothPrimitive@@@@V?$allocator@V?$CCountedPointer@VC3DClothPrimitive@@@@@std@@@std@@QAEXPAV?$CCountedPointer@VC3DClothPrimitive@@@@IABV3@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00a97e40, 300 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): bound ?_M_fill_insert@?$vector@V?$CCountedPointer@VC3DClothPrimitive@@@@...@Z in reloc_bindings; its copies go through the bound __uninitialized_copy<CCountedPointer<C3DClothPrimitive>*> 0x00A95750; callers C3DPrimitive2::LoadBinary 0x00A92900 and the landed resize 0x00A98540.
 // Callees: __uninitialized_copy 0x00A95750, __copy_backward 0x00A95D10, uninitialized_fill_n 0x00A959E0, fill 0x00A96350 (all __fastcall),
@@ -108,49 +109,6 @@ void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, cons
 }
 }
 class C3DClothPrimitive;
-class CCPPointerInfo {                                     // 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer<T>& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 template void std::vector<CCountedPointer<C3DClothPrimitive> >::_M_fill_insert(CCountedPointer<C3DClothPrimitive>*, unsigned int, const CCountedPointer<C3DClothPrimitive>&);

@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_BanditContactEnd::Main() -- script action: hands the quest's contact thing to the game interface, then pumps the interface until the action's wait condition reports done
 // Leaf: ?Main@CAT_BanditContactEnd@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F05780, length 53 bytes.
 // Callees: game-interface virtual slot 482 (`call [eax+0x788]`, two arguments) and slot 7
 // (`call [eax+0x1c]`) through the interface pointer at +4; CEntityScriptBase::IsActiveThreadTerminating
@@ -11,11 +12,9 @@
 // Naming wave 35: identity reg 00f025dd "AT_BanditContactEnd" in 00f024c0; Alloc 00f056a0; vtable 012f7e84 slot 1; PDB ?Main@CAT_BanditContactEnd@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_BanditContactEnd::Main (wave3/labels_alloc.tsv); PDB ?Main@CAT_BanditContactEnd@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAT_BanditContactEnd@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:
-    void* __vftable;
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CGameScriptInterface { public:
     virtual void v000();

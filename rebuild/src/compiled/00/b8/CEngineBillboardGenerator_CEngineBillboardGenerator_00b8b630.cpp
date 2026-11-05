@@ -1,5 +1,6 @@
 // CEngineBillboardGenerator::CEngineBillboardGenerator() -- construct the billboard generator engine component: the render-util and engine-component bases, then the VSHADER_STATIC_DIRLIGHT_FOG vertex shader (vertex shader bank 1) and the PSHADER_TEXTURE_DIFFUSE pixel shader from the engine resource manager
 // Leaf: ??0CEngineBillboardGenerator@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B8B630, length 333 bytes, `ret`, returns `this`.
 // Name: FableWin.pdb `??0CEngineBillboardGenerator@@QAE@XZ`; the final vtables 0x012A3BF4 (+0) / 0x012A3BFC (+4, the CEngineComponent
 //   subobject) are its two. Label correction: the catalog spelling is right here, but the same label was propagated to the
@@ -29,13 +30,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-    T* Get() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CVertexShader;
 class CPixelShader;
 class CVertexShaderData {

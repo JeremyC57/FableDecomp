@@ -1,5 +1,6 @@
 // std::__find_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CFilter_Bind2 pred, const random_access_iterator_tag&) -- STLport random-access find_if: the first target point inside the field of view whose thing is stealable shop stock, or last
 // Leaf: ??$__find_if@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00809F80, 382 bytes, /Gr `__fastcall` (first ecx, last edx -- spilled to a frame
 //   word; the 8-byte CFilter_Bind2 by value and the tag reference on the stack, `ret 0Ch`).
@@ -52,12 +53,8 @@ class CTCStockItem { public:
     CTCShop* GetShopTC() const;                           // 0x007F4FC0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                      // +0x04
-    CBaseObject* GetPItem() const;                             // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #include "engine/C3DVector.h"
 namespace NPlayerTargeting {
 class CTargetPoint { public:                                     // 0x1c bytes

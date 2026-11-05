@@ -1,13 +1,9 @@
 // CVectorMap::LowerBound(const long& key) -- find the first entry whose key is at least key.
 // Leaf: ?LowerBound@?$CVectorMap@JVCRegisteredMusicEntry@CMusicManager@@V?$CKeyPairCompareLess@JVCRegisteredMusicEntry@CMusicManager@@@@@@QAEPAU?$pair@JVCRegisteredMusicEntry@CMusicManager@@@std@@ABJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven; CMusicManager::RegisteredMusic at+28 (Ego_r); UpdateCurrentMusicOffset0x6BD8A0 and start-music0x6BD900 callers modify entries; stride24 matching nested20-byte record.
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                   // 8 bytes: object, shared count block
-public:
-    T* Data;                                                  // +0x0
-    CCPPointerInfo* Info;                                     // +0x4
-};
+#include "engine/CCountedPointer.h"
 class CRegionConnectionNode;
 #include "engine/CArray.h"
 

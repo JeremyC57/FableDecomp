@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_unique(const value_type& v) -- (map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> >) STLport unique insert over CCharString keys: walk from the root to the insertion parent, step the candidate back once when the last turn was left (unless it is the leftmost), insert unless the candidate's key equals v's; pair<iterator, bool> through the hidden pointer
 // Leaf: ?insert_unique@?$_Rb_tree@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C3410, 256 bytes, thiscall, `ret 8` (hidden pair<iterator, bool>
 //   result pointer and &v).
 // Identity: map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> > -- proven; evidence: its callers are CSkeletalMorphResourceManager::GetMorphTarget 0x006C3620 / PreloadBoneConfigs 0x006C37D0 (landed) and the hinted insert 0x006C3510, and its _M_insert 0x006C32B0 allocates 0x1C-byte nodes (key + an 8-byte value) -- CSkeletalMorphResourceManager::CachedMorphs, map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> > in struct_layouts_egor (the same tree's _M_find 0x006C31B0 landed in family pass 1).
@@ -56,7 +57,7 @@ public:
     }
 };
 class C3DSkeletalMorphTarget;
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class _Tp> class allocator { };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

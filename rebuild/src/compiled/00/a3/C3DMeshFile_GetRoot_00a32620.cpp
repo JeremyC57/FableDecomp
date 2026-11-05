@@ -1,5 +1,6 @@
 // C3DMeshFile::GetRoot() const -- the mesh file's root chunk as a const counted pointer: the chunked file's super-chunk pointer converted to const, static-cast into a fresh pointer, returned by value
 // Leaf: ?GetRoot@C3DMeshFile
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A32620, 101 bytes (+ int3 padding), thiscall `ret 4` (hidden result).
 // Identity: FableWin.pdb `?GetRoot@C3DMeshFile@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileRootChunk@@@@XZ` with the
 //   instantiations it needs (`CCountedPointer<const CChunkedFileSuperChunk>` converting ctor from the non-const pointer,
@@ -16,52 +17,8 @@
 //   copy into the hidden result (no NRVO in VC7.1) and the local's release -- every block test folds onto the one Info.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    long  RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
-    void* Data;                                         // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    template <class U> CCountedPointer(const CCountedPointer<U>& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer() { ReleaseData(); }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-    template <class U> void SetStaticCast(const CCountedPointer<U>& other)
-    {
-        ShareData(static_cast<T*>(other.Data), other.Info);
-    }
-};
 
 class CChunkedFileSuperChunk { };
 class C3DMeshFileRootChunk : public CChunkedFileSuperChunk { };

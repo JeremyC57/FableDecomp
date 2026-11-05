@@ -1,5 +1,6 @@
 // std::count_if(list<CIntelligentPointer<CThingAICreature> >::const_iterator first, last, HasBuildingAsHomeOrWork pred) -- count the village people whose home or workplace is the predicate's building
 // Leaf: count_if
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006600EC, length 43 bytes, `ret 0Ch`. Callers: CTCVillage::UpdateCurfew
 // (0x0065AE13), CTCBuyableHouse::IsHouseBeingUsed (0x006BFB6A, landed: it declares this `long __stdcall` taking first, last
 // and the 4-byte predicate by value), 0x006C144B. The manifest label names the instantiation (Dinkumware-style spelling).
@@ -11,16 +12,8 @@
 // through a `jmp` to the bottom test (`#pragma optimize("s", on)`).
 #pragma optimize("s", on)
 class CBaseObject;
-class CBaseIntelligentPointer {
-public:
-    virtual void v000();
-    CBaseObject* PItem;                                      // +0x04
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 struct _List_node_base {

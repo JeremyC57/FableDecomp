@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<pair<unsigned long, CCountedPointer<CFaction> > >) STLport growth insert for a 12-byte key/counted-pointer pair: allocate size + max(size, fill_len) elements, copy the head, x (once, or fill_len times) and the tail unless atend, destroy and free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BAA90, 240 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
 // Identity: std::vector<std::pair<unsigned long, CCountedPointer<CFaction> > >::_M_insert_overflow -- proven; evidence: the callers are the faction-map builder 0x006B97E0 (reads the FACTION definitions) and the vector-map users 0x006BADB0 (landed std::__partial_sort over pair<unsigned long, CCountedPointer<CFaction> >) / 0x006BAFB0; Ego_r.pdb CFactionManager::Factions is CVectorMap<unsigned long, CCountedPointer<CFaction> >; the destroy callee 0x004AD9E0 is bound as the faction-range destroy. Family G055 (seven byte-identical
 //   bodies, each its own COMDAT: retail has no ICF, so each address is one element type); the catalogue label "_global::Vector_ResizeAndFillCounted"
@@ -14,22 +15,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
-class CCPPointerInfo {                                     // 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T* Data;                                               // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer<T>& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CFaction;
 namespace std {
 struct __false_type { __false_type() { } };

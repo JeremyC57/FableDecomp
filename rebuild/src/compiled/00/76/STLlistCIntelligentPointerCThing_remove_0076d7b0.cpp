@@ -1,5 +1,6 @@
 // std::list<CIntelligentPointer<CThing> >::remove(const CIntelligentPointer<CThing>& value) -- erase every intelligent thing pointer that refers to the same thing as `value` (each erased element's virtual destructor runs, then its node is freed)
 // Leaf: ?remove@?$list@V?$CIntelligentPointer@VCThing@@@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076D7B0, 87 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: FableWin.pdb `?remove@?$list@V?$CIntelligentPointer@VCThing@@@@...@std@@QAEXABV?$CIntelligentPointer@VCThing@@@@@Z`;
 //   callers CCreatureActionBase::AddDependentThing (call 0x0076C87D) and CTCEnemy::RemoveEnemyThing (call 0x0076CCBC). The
@@ -17,17 +18,9 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 class CThing : public CBaseObject { };
 class CBaseObjectPointer;
 
-class CBaseIntelligentPointer {                             // Ego_r.pdb: vptr +0, PData +4 (vtable 0x0129C95C)
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10 (slot 0: the scalar deleting destructor)
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-    CBaseObjectPointer* PData;                              // +0x4
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // no declared destructor in retail
-public:
-    T* Get() const { return (T*)GetPItem(); }
-};
 
 template <class T>
 bool __fastcall operator==(const CIntelligentPointer<T>& a, const CIntelligentPointer<T>& b)

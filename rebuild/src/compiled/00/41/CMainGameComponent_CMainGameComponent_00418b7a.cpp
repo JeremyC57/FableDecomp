@@ -1,4 +1,5 @@
 // CMainGameComponent::~CMainGameComponent() -- conditionally shut down, then destroy owned game resources.
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Native00418b7a length193. RTTI: CGameComponent->CBaseClassNonCopyable->CBaseClass, secondary CDeviceResetCallback at4.
 // Actual fable_game.h included as donor; full native vtable signatures below, no fabricated slots.
 #pragma optimize("s", on)
@@ -59,7 +60,7 @@ template<class T>struct scoped_ptr {
  scoped_ptr():ptr(0){}
  ~scoped_ptr(){delete ptr;}
 };
-template<class T>class CCountedPointer { public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}~CCountedPointer();};
+#include "engine/CCountedPointer.h"
 class CInitBaseClass : public CBaseClass { public:bool Valid;CInitBaseClass();virtual void Validate()const;};
 struct CNetworkClient : CInitBaseClass {unsigned char NetworkState[0x2678];CNetworkClient();virtual ~CNetworkClient();}; //00419352
 enum FileAccessType {FileRead=0};class CASuspendableProcess;

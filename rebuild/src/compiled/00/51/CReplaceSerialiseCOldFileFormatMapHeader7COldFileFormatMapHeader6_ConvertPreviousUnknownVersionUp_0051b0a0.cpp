@@ -1,5 +1,6 @@
 // CReplaceSerialise<COldFileFormatMapHeader7,COldFileFormatMapHeader6>::ConvertPreviousUnknownVersionUp(void* data) -- build a fresh version-7 map header from an older record: convert the record up to version 6 first when it is older still, copy its fields forward (no sound theme entries yet) and hand back the new header in a counted pointer
 // Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatMapHeader7@@VCOldFileFormatMapHeader6@@@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader7@@@@PAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members object->Data, control->Info are the header CCountedPointer's (same offsets); the local CCPPointerInfo members refs->RefCount, destroy->DeleteFunc, object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051B0A0, 320 bytes (0x133 + int3 padding), static __fastcall: the hidden
 //   CCountedPointer return slot in ecx, data in edx, plain `ret`; 0x14-byte frame (the return slot, the version-6
 //   temporary and held's count block).
@@ -29,51 +30,7 @@ public:
     CFileLargeThemePalette();                          // 0x0050EE40
 };
 
-class CCPPointerInfo { public:
-    unsigned long refs;                                // +0x0
-    void (__fastcall* destroy)(void*);                 // +0x4
-    void* object;                                      // +0x8
-    CCPPointerInfo(void* p, void (__fastcall* d)(void*)) : refs(1), destroy(d), object(p) {}
-};
-template <class T> class CCountedPointer {
-public:
-    T*              object;                            // +0x0
-    CCPPointerInfo* control;                           // +0x4
-    static void __fastcall DeleteData(void* data);     // <COldFileFormatMapHeader7>: 0x0050CF90
-    CCountedPointer() : object(0), control(0) {}
-    CCountedPointer(T* p) : object(p), control(p ? new CCPPointerInfo(p, DeleteData) : 0) {}
-    CCountedPointer(const CCountedPointer& x) : object(x.object), control(x.control)
-    {
-        if (control)
-            ++control->refs;
-    }
-    CCountedPointer& operator=(const CCountedPointer& x)
-    {
-        CCPPointerInfo* c = x.control;
-        T* o = x.object;
-        if (control != c) {
-            if (control && --control->refs == 0) {
-                control->destroy(control->object);
-                operator delete(control);
-            }
-            object = o;
-            control = c;
-            if (control)
-                ++control->refs;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        if (control) {
-            --control->refs;
-            if (control->refs == 0) {
-                control->destroy(control->object);
-                operator delete(control);
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 
 #pragma pack(push, 1)
 template <class T, class TOld> class CReplaceSerialise {
@@ -129,9 +86,9 @@ CCountedPointer<T> __fastcall CReplaceSerialise<T, TOld>::ConvertPreviousUnknown
     TOld* old = (TOld*)data;
     if (((TOld*)data)->SerialiseVersionNumber != TOld::GetClassVersionNumber()) {
         held = TOld::ConvertPreviousUnknownVersionUp(data);
-        old = held.object;
+        old = held.Data;
     }
-    result.object->ConvertFromOld(old);
+    result.Data->ConvertFromOld(old);
     return result;
 }
 

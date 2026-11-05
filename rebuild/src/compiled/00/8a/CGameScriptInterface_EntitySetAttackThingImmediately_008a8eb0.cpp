@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntitySetAttackThingImmediately(const CScriptThing& attacker, const CScriptThing& target, bool, bool) const -- when both things are alive and the attacker carries flag bit 3 of +0x6c, make an attack-thing action its current action
 // Leaf: ?EntitySetAttackThingImmediately@CGameScriptInterface@@UBEXABVCScriptThing@@0_N1@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x008A8EB0, 102 bytes, `ret 0x10`; Ego_r.pdb same symbol. The two bool arguments are not read.
 // Body: a = attacker.GetPThing(), t = target.GetPThing() (CScriptThing slot 11, both fetched first); if a alive (non-null,
 // bit 0 of +0x91 clear), t alive, and a's +0x6c bit 3: a->SetCurrentAction(<action>(a, t)) (0x006644F0) on a 0x118-byte
@@ -30,8 +31,7 @@ struct CCreatureAction_AttackThing : CCombatActionBase {      // retail sizeof 0
     unsigned char _body[4];
     CCreatureAction_AttackThing(CThingCreatureBase* owner, CThing* target);   // 0x008AE160
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

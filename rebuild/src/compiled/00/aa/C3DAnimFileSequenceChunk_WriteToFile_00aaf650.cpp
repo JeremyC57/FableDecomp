@@ -1,4 +1,5 @@
 // C3DAnimFileSequenceChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- bone indices, name, frame rate, the matrices, the bone type, then the sub-chunks
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AAF650, 148 bytes. Callees: CDataOutputStream::WriteSLONG 0x00993EB0,
 // WriteNullTerminatedString 0x00995AE0, WriteFLOAT 0x00993EE0, WriteMatrix3x4 0x00994070, WriteUBYTE 0x00993E50,
 // CChunkedFileSuperChunk::WriteToFile 0x00AA78C0.
@@ -43,27 +44,8 @@ class CArray { public:                             // retail CArray is 12 bytes 
     const T& operator[](unsigned long i) const { return m_pBegin[i]; }
 };
 
-struct SCountBlock {
-    long m_references;                      // +0
-    void (__fastcall* m_pfnDestroy)(void*); // +4: per-type deleter, object in ecx
-    void* m_pObject;                        // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                           // +0
-    SCountBlock* m_pCount;                  // +4
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;            // operator delete @ 0x00BFE9BC
-            }
-        }
-    }
-};
 
 class CChunkedFileSuperChunk;
 

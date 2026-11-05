@@ -1,5 +1,6 @@
 // NScript::CV_AmbushScamScript::CAS_Buddy::Init() -- ambush scam buddy setup: ally with the hero both ways, allow following the hero, clear the three approach/speech flags, mark the buddy as having information, remember its start position and make it wander around it (min 0, max from the script def) in scripting state group 4
 // Leaf: ?Init@CAS_Buddy@CV_AmbushScamScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E2BFA0, length 345 bytes (plain `ret`; vtable slot 2 = Init of the entity
 //          script contract).
@@ -19,17 +20,8 @@
 //   Was `?Init@CAS_Buddy@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
 #include "engine/C3DVector.h"
 
-class CCPPointerInfo { public:                                  // CCountedPointer's shared block
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 class CScriptThing;
-template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>
-    CScriptThing*   Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

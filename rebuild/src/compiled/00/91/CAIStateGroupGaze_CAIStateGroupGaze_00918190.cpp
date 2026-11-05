@@ -1,5 +1,6 @@
 // CAIStateGroup_Gaze::CAIStateGroup_Gaze() -- default constructor: base chain, the gaze-marker pointer, the running parameters and the two marker definition indices
 // Leaf: ??0CAIStateGroup_Gaze
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00918190, length 156 bytes (+ int3 padding).
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (the root, out of line), CCharString::CCharString() @ 0x0099E4B0 (Name at +0xc),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CCharString::CCharString(const char*, long) @ 0x0099EBF0
@@ -34,24 +35,10 @@ class CGameDefinitionManager : public CDefinitionManager { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThingGameObject;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {    // CIntelligentPointer<CThingGameObject>, vtable 0x0127B4D8
-public:
-    CIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 
 class CAIStateGroupBase : public CBaseClass { public:                          // vtable 0x01288C60
     CAIBrain* PBrain;                                       // +0x04

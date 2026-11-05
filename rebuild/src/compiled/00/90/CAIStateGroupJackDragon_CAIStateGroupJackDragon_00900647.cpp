@@ -1,5 +1,6 @@
 // CAIStateGroup_JackDragon::CAIStateGroup_JackDragon() -- base CAIStateGroupBase(), this vtable, then the seven intelligent-pointer members
 // Leaf: ??0CAIStateGroup_JackDragon
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Pragma: optimize("s", on) -- the size TU caches the vtable shared by the five CThing pointers in edi
 // (the 0x009001xx..0x009006xx state-group constructors are one size-optimised module; see 0x00900173).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00900647, length 119 bytes.
@@ -19,16 +20,9 @@ class CThing;
 class CThingCreatureBase;
 class CThingAICreature;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual void v00();                         // one vtable per instantiation
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-};
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();

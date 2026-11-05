@@ -1,4 +1,5 @@
 // CGameScriptInterface::GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const -- point a valid thing's AI targeting (TC 8, when it is a CTCTargetingAI) at the target creature, add the target to its enemy list (TC 0x49), and when the target changed for the player creature notify it
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A0260, length 397 bytes (`ret 8`).
 // Callees: the script things' slots 75 (+0x12C IsValid) and 11 (+0x2C GetThing), the component-map LowerBound @ 0x0040F020,
 //   the targeting component's slots 22 (+0x58 GetClassTypeName, CCharString by value) and 29 (+0x74, current target),
@@ -91,8 +92,7 @@ struct CThing_Retail {
         return it->component;
     }
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

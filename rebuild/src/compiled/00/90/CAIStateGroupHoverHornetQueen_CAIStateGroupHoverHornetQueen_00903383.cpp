@@ -1,5 +1,6 @@
 // CAIStateGroup_HoverHornetQueen::~CAIStateGroup_HoverHornetQueen() -- the compiler-generated destructor of CAIStateGroup_HoverHornetQueen: CircleMarkers (+0x50) then Things (+0x40) (reverse declaration order), then the inline CAIStateGroup_HoverMovementBase::~CAIStateGroup_HoverMovementBase() (its vptr store) and a tail jump to CAIStateGroup_EnemyCreatureBase::~CAIStateGroup_EnemyCreatureBase()
 // Leaf: ??1CAIStateGroup_HoverHornetQueen@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00903383, 33 bytes, thiscall, tail `jmp`.
 // Identity: CAIStateGroup_HoverHornetQueen -- proven; evidence: its only caller is the scalar deleting destructor 0x00903367 in slot 0 of vtable 0x0128D484
@@ -37,13 +38,8 @@ public:
 }
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CAIBrain;
 class CThingCreatureBase;

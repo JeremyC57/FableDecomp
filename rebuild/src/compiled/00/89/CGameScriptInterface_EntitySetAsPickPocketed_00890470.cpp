@@ -4,6 +4,7 @@
 // CMessageEventManager::AddMessage @ 0x00687540 (CWorld+0x60; the result is dropped).
 // Shape: the manager is read into a local before the zero position (its three zero stores precede the pushes).
 // Leaf: EntitySetAsPickPocketed
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <string.h>
 struct CThing_Retail;
@@ -137,13 +138,7 @@ struct CRegionDef_Retail {                          // a counted def object (cou
     unsigned char _pad08[0x6c];
     long          m_wanderingPopulationScriptDef;   // +0x74
 };
-template<class T> class CCountedPointer { public:
-    T* Data;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data) { if (Data) ++Data->m_refCount; }
-    ~CCountedPointer() { if (Data && --Data->m_refCount == 0) Data->DeleteThis(); }
-    T* operator->() const { return Data; }
-    bool IsNull() const { return Data == 0; }
-};
+#include "engine/CCountedPointer.h"
 struct CRegion_Retail {                             // 0x58-byte world-map region record
     unsigned char _pad00[0x18];
     CCharString   m_name;                           // +0x18

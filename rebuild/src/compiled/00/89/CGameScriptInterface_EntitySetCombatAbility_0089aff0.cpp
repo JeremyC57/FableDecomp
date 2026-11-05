@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntitySetCombatAbility(const CScriptThing& thing, float ability) const -- for a live thing with interface 0x30, forward the ability to that component
 // Leaf: ?EntitySetCombatAbility@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe @ 0x0089AFF0, 90 bytes, `ret 8`; Ego_r.pdb ?EntitySetCombatAbility@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z.
 // Body: t = thing.GetPThing() (slot 11, +0x2c); if t, not dead (bit 0 of +0x91) and holding interface 0x30 (bit 16 of
@@ -58,8 +59,7 @@ public:
     enum { INTERFACE_TYPE = 0x30 };
     void SetCombatAbility(float ability, bool flag);     // 0x00734210 (name not confirmed)
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // CV_KnotholeGladeGatesScript::WatchForGates() -- script thread: every frame, a close request in the shared quest data closes TheGate and an open request opens it (each request cleared after use); ends when the script thread terminates
 // Leaf: WatchForGates
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EA12E0, length 118 bytes (padded to 128), `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (x4), through Game at +0x40 (vtable 0x01260F0C):
 // CloseDoor (slot 426, +0x6a8), OpenDoor (slot 425, +0x6a4), NewScriptFrame (slot 7, +0x1c).
@@ -9,10 +10,9 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CScriptThing { public:                              // 12 bytes (vtable 0x01238C8C)
-    void* __vftable;
-    long  m_data[2];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

@@ -1,5 +1,6 @@
 // CGamePlayerInterface::GetAssignableSpecialMoveIndexForMouseButton(EMouseButtonControl button) const -- index of the first assignable special-move button input for which IsInputTypeWithMouseButton holds, else -1
 // Leaf: ?GetAssignableSpecialMoveIndexForMouseButton@CGamePlayerInterface@@QBEJW4EMouseButtonControl@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00445F40, 88 bytes, `ret 4`; reached by a tail jmp from 0x00657215; Ego_r.pdb
 // ?GetAssignableSpecialMoveIndexForMouseButton@CGamePlayerInterface@@QBEJW4EMouseButtonControl@@@Z; catalog label (…ForButton) is wrong: the slot-7 test is IsInputTypeWithMouseButton (CInputTypeMouseButtonEvent vtable 0x012318C8: slot 6 0x00447A80 is the shared `return false`, slot 7 0x00447A90 its mouse-button test).
 // Body: for (unsigned i = 0; i < AssignableSpecialMoveButtons.size(); ++i) if (AssignableSpecialMoveButtons[i]->IsInputTypeWithMouseButton(button))
@@ -23,12 +24,7 @@ public:
     virtual bool IsInputTypeWithButton(EXboxControllerButton button) const;            // slot 6 (+0x18)
     virtual bool IsInputTypeWithMouseButton(EMouseButtonControl button) const;         // slot 7 (+0x1c)
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class T> class vector {
 public:

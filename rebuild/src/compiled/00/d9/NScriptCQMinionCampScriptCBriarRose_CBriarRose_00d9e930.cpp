@@ -1,5 +1,6 @@
 // NScript::CQ_MinionCampScript::CBriarRose::CBriarRose(CQ_MinionCampScript& parent, CScriptDataBase* data, const CScriptThing& me) -- Briar Rose's entity script in the minion-camp quest: entity-script base over the quest's interface and Me, then the scripted-thing handle, two empty script things, the speech timer, and the master data last
 // Leaf: ??0CBriarRose@CQ_MinionCampScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9E930, length 143 bytes (ret 0Ch; factory 0x00D9E8B0 registered as
@@ -20,11 +21,7 @@
 //   parameter types (the parent by reference, as the PDB spells it; same pointer ABI); same bytes.
 class CScriptDataBase;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-template <class T> class CCountedPointer { public:                 // {Data, Info}: a member object so its zero stores follow the owner's vtable store
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

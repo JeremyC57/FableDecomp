@@ -1,5 +1,6 @@
 // CTCHealLife::~CTCHealLife() -- heal-life spell component dtor (empty user body): the member dtors in reverse order (the healing-target pointer, the health-accumulator float vector, the healing-effect pointer vector, the things-to-heal list, the removed-item pointer, the heal-life def pointer) and ~CTCBase
 // Leaf: ??1CTCHealLife@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C3F10, 146 bytes, tail jump to the base destructor.
 // Identity: the first store is vtable 0x0126E36C, RTTI `.?AVCTCHealLife@@` (rtti_bases: CTCHealLife : CTCBase); its slot 0 is
 //   the scalar deleting dtor 0x007C53D0. Ego_r.pdb has `??1CTCHealLife@@UAE@XZ`. The catalog label
@@ -79,18 +80,8 @@ class CThing { public:                                      // retail flag byte 
 };
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer { public:                     // vtable 0x0129C95C, 8 bytes
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* Get() const { return GetPointer(); }
-    T* operator->() const { return GetPointer(); }
-private:
-    T* GetPointer() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 template <class T> inline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)

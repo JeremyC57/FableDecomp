@@ -1,5 +1,6 @@
 // CFishCompOrganiser::Initialize() -- reset the conversation state, read the competition's rod/fish/prize counts from the script def and copy its rod and fish def names (stopping when the script is done), then set the organiser up (information marker, persistent, not pushable, no movement in actions) and attach it to the active quest
 // Leaf: ?Initialize@CFishCompOrganiser@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E81D10, 412 bytes, plain `ret`.
 // Callees: CCharString() 0x0099E4B0 / ~CCharString 0x0099EAE0 / operator= 0x0099EFB0, vector<CCharString>::resize 0x0043332C
 //   (manifest label push_back), IsDone 0x00F35B30 (on `this`); game-interface slots 360 SetThingHasInformation,
@@ -17,12 +18,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
-template <class T> class CCountedPointer { public:
-    void* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

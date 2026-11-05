@@ -1,5 +1,6 @@
 // CPhysicalPrimitiveInit::StatRegisterClass() -- register the three hit-location primitive prototypes (sphere, cylinder, mesh): each new primitive is wrapped in a counted pointer and pushed onto CPhysicalPrimitiveInit::RegisteredPrimitives
 // Leaf: ?StatRegisterClass@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0067F9B0, 520 bytes (520 with no padding), static `__fastcall` with no arguments,
 //   plain `ret`. Ego_r.pdb `?StatRegisterClass@CPhysicalPrimitiveInit@@SIXXZ`; called once from 0x0044E911.
 // Callees: operator new 0x00BFEA1A (the 0x0c / 0x10 / 0x04 primitives and each 0x0c CCPPointerInfo), the deleter
@@ -50,35 +51,8 @@ public:
 };
 }
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                            // +0x00
-    void (__fastcall* DeleteFunc)(void* data);         // +0x04
-    void*         Data;                                // +0x08
-    CCPPointerInfo(void* data, void (__fastcall* deleteFunc)(void*)) : RefCount(1), DeleteFunc(deleteFunc), Data(data) { }
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                              // +0x00
-    CCPPointerInfo* Info;                              // +0x04
-    static void __fastcall DeleteData(void* data);     // 0x0067F650 for CPhysicalPrimitiveBase
-    CCountedPointer(T* data) : Data(data)
-    {
-        Info = data ? new CCPPointerInfo(data, DeleteData) : 0;
-    }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            delete Info;
-        }
-    }
-};
 
 namespace std {
 struct __false_type { __false_type() { } };

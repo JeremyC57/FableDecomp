@@ -1,5 +1,6 @@
 // CThingCreatureBase::CThingCreatureBase(long type) -- construct the physical thing with the given type, the game-object layer and the creature base's own members (null def / action / interaction pointers, empty containers and queued-action list, handedness 2, default flag bits)
 // Leaf: ??0CThingCreatureBase
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00666090, 273 bytes, `ret 4`. Label correction: the catalog calls this row
 //   "CTCDParticleEmitter::CTCDParticleEmitter"; the vtable it stores last, 0x0125AC0C, is CThingCreatureBase
@@ -19,11 +20,8 @@
 // Shape: CThingGameObject's ctor inline (vtable store after the base call, its member pointer), the derived vtable store,
 //   then the init list in declaration order through one zero register (edi); the list head is zeroed then given its
 //   16-byte self-linked header node; the flag bits are body assignments merged into whole-byte stores.
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CThingPointer : CBaseIntelligentPointer {            // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CThingPointer() { }

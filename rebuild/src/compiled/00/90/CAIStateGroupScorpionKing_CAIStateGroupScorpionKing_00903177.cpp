@@ -1,5 +1,6 @@
 // CAIStateGroup_ScorpionKing::CAIStateGroup_ScorpionKing() -- the CAIStateGroupBase constructor, the vtable, then the arena-centre pointer, the empty trap-thing vector and the enemy pointer
 // Leaf: ??0CAIStateGroup_ScorpionKing@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00903177, 63 bytes (packed state-group factory TU), thiscall, `ret`.
 // Identity (proven): it stores vtable 0x0128D5B0 (rtti-vtables.tsv: CAIStateGroup_ScorpionKing) after the CAIStateGroupBase
 //   constructor 0x008FD255, and its one reference is the factory Alloc at 0x00903424 (`push 40h ; call new ; jmp 0x00903177`);
@@ -15,17 +16,8 @@
 //   three zero stores from one xor'ed register between the two pointer members.
 // Header debt: engine/CAIStateGroupBase.h is a flat layout without methods; modelled locally.
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                            // Ego_r: vptr + PData, 8 bytes
-public:
-    CBaseIntelligentPointer();                             // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                             // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class _Tp> class allocator {
 public:

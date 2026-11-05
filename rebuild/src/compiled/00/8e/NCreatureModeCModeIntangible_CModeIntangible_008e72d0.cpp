@@ -1,5 +1,7 @@
 // 008e72d0 NCreatureMode::CModeIntangible::CModeIntangible -- initialize a timed intangible mode
 // Leaf: ??0CModeIntangible@NCreatureMode@@QAE@AAVCThing@@MPAVCCreatureActionBase@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags:
 #define CCharString CCharStringLayout
 #define CCharStringData CCharStringDataLayout
@@ -35,17 +37,10 @@ public:
     }
 };
 #pragma pack(push,1)
-class CBaseIntelligentPointer {
-public:
-    // Layout: the original PData pointer is never read by this constructor.
-    private:unsigned char unobservedPointerState[4];public:CBaseIntelligentPointer();virtual ~CBaseIntelligentPointer();
-};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {public:CIntelligentPointer() {}};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
-template<class T>class CCountedPointer {
-public:T*Data;CCPPointerInfo*Info;
-    CCountedPointer():Data(0),Info(0){}~CCountedPointer();void Reset(T*);
-};
+#include "engine/CCountedPointer.h"
 class CTCCreatureModeManager {
 public:class CModeBase {
 public:virtual ~CModeBase();

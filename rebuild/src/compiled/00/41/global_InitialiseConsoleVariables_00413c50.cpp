@@ -1,5 +1,6 @@
 // InitialiseConsoleVariables() -- register the start-up console commands and variables, then run the user settings files
 // Leaf: ?InitialiseConsoleVariables@@YIXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00413C50, 4158 bytes, `ret`; called once from 0x004025A1. Landed name kept (fable_gfmain.h:
 // `void FABLE_FASTCALL InitialiseConsoleVariables()`). Body: CConsole::Initialise('a', key 0x1E, no font bank), then 25
 // CConsole::AddInput(new ...) registrations, each through the inlined CTBaseSingleton<CConsole>::Get() (create the
@@ -47,7 +48,7 @@ namespace std
 }
 class CGenericVar;
 class CFontBank;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 enum EGenericVarType { };
 enum EInputKey { };
 
@@ -114,14 +115,6 @@ public:
     unsigned char _body[0x9c];
 };
 
-template <class T> class CCountedPointer
-{
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    bool IsNull() const { return Data == 0; }
-    void Reset(T* data);                                                            // 0x00413520 (CConsole)
-};
 
 template <class T> class CTBaseSingleton
 {

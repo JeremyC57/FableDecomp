@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CIntelligentPointer<CThing> >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, run each vacated element's virtual destructor, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AC0F0, 77 bytes, thiscall, `ret 8`, returns first.
 // Identity: vector<CIntelligentPointer<CThing> > -- proven; evidence: Ego_r.pdb CTCHeroCentre::GetQuestCards(vector<CIntelligentPointer<CThing> >&) const clears its out-parameter with it (0x0077DBD2); its other callers erase CWorld::RegionLoadFollowers (CWorld::UpdateRegionLoad) and CTCInventoryQuests::DisplayQuests (OpenInventory / OpenInventoryPC), both vector<CIntelligentPointer<CThing> > in struct_layouts_egor; its __copy 0x004AA610 assigns through CBaseIntelligentPointer GetPItem/SetPItem 0x00A01B50/0x00A01B90.
 // Label: the manifest's "std::vector::clear" is propagated across byte-identical bodies; this is STLport 4.6
@@ -12,12 +13,8 @@
 //   random_access_iterator_tag(), (ptrdiff_t*)0)` and _Destroy = the __destroy_aux(__false_type) loop of `p->~T()`.
 #include <stddef.h>
 class CThing;
-template <class T> class CIntelligentPointer {   // 8 bytes; CIntelligentPointer<CThing> vtable 0x01238C6C
-public:                                           // (RTTI .?AV?$CIntelligentPointer@VCThing@@@@)
-    virtual ~CIntelligentPointer();               // slot 0
-    CIntelligentPointer<T>& operator=(const CIntelligentPointer<T>& other);   // CBaseIntelligentPointer Get/SetPItem
-    T* Data;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

@@ -1,4 +1,5 @@
 // CCreatureAction_UnsheatheItemFromInventory::FinishAction() -- make sure the action was performed, run the base FinishAction, hand the creature the queued follow-up action (telling the follow-up when the creature refuses it), then notify the creature's mode manager (interface type 0x31)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069FC40, length 136 bytes.
 // Callees: CCreatureActionBase::GetPerformedAction @ 0x006925A0 (`mov al,[ecx+62h] ; ret`, manifest "GetCanItemBeQuickAssigned"
@@ -38,11 +39,8 @@ class CTCCreatureModeManager { public:
     void OnUnsheatheFinished();             // 0x0073A840
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +4
-    CBaseObject* GetPItem() const;               // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CCountedPointer {                    // CCountedPointer<CCreatureActionBase>
     CCreatureActionBase* Object;            // +0
     long* RefCount;                         // +4

@@ -1,5 +1,6 @@
 // CTCInventoryTrade::RefreshBuyDescriptionsPC(NUISystem::CComponent* parent) -- replaces the description child of every buyable item entry with a freshly built trade description and adds it to the PC description viewport
 // Leaf: ?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members PInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005AE9DE, 272 bytes (0x110, no padding: /Os TU), thiscall `ret 4`. One caller
 //   (0x005B0F63). Twin of RefreshSellDescriptionsPC 0x005AEAEE (ItemsToSell, the sell description name, buying=false).
 // Identity: Ego_r.pdb ?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z (one CComponent*
@@ -33,15 +34,7 @@ public:
     ~CCharString();                                                                    // 0x0099EAE0
 };
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                                                        // +0x00
-    void* PInfo;                                                                       // +0x04 (CCPPointerInfo*)
-    CCountedPointer(T* data);                                                          // 0x00429C15
-    ~CCountedPointer();                                                                // 0x004291DE
-    T* operator->() const { return Data; }
-    T* Get() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem { class CComponent; }
 

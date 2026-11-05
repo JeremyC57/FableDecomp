@@ -1,6 +1,7 @@
 // NUISystem::CSlider::RevertValue() -- restore the value the slider had before editing, push it into every action's target and re-run the actions
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054ABE0, 167 bytes (+ int3 padding), `ret`.
 // Leaf: RevertValue
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Callees: CManager::GetInstance() @ 0x0041E5F2 (static `__fastcall`); the front-end manager's virtual slot 14
 //   (+0x38), called with each action (descriptive name ExecuteAction, as in the landed twin).
 // Shape: the C2DVector twin of the landed NUISystem::CTextSlider::RevertValue 0x005491A0:
@@ -12,12 +13,7 @@
 //   Move +0x1AC, OldValue +0x1AD, StartValue +0x1B5 (unaligned in the PDB too, hence pack(1)), Actions +0x1C0 (12-byte
 //   STLport vector), PreviousValue +0x1E0.
 class C2DVector { public: float X, Y; };
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct CRetailVector {        // STLport vector (12 bytes; PDB 16)
     T* _M_start;
     T* _M_finish;

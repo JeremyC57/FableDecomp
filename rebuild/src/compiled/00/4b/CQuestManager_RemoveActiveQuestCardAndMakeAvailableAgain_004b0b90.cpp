@@ -1,5 +1,6 @@
 // 004b0b90 CQuestManager::RemoveActiveQuestCardAndMakeAvailableAgain
 // Leaf: ?RemoveActiveQuestCardAndMakeAvailableAgain@CQuestManager@@QAEXABVCCharString@@_N@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Flags:
 #define FABLE_RETAIL_BASE_CLASS
 #define FABLE_RETAIL_BASE_OBJECT
@@ -23,8 +24,8 @@ template<class T>class CBasicString {protected:T*PData;unsigned long StringLengt
 class CCharStringData {public:CBasicString<char>Data;};
 class CCharString {protected:CCharStringData*PStringData;public:bool operator==(const CCharString&x)const{if(PStringData==x.PStringData)return true;if(PStringData&&x.PStringData)return PStringData->Data==x.PStringData->Data;return false;}};
 // Layout: original PDB CBaseIntelligentPointer is polymorphic, PData +4, total8.
-class CBaseIntelligentPointer {private:CBaseObjectPointer*PData;public:CBaseIntelligentPointer();virtual ~CBaseIntelligentPointer();CBaseObject*GetPItem()const;};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 extern "C" void __cdecl free(void*);
 #ifdef _MSC_VER
 #define FABLE_STLP_CDECL __cdecl

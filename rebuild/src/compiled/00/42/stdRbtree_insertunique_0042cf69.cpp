@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_unique(iterator position, const value_type& v) -- (map<CCharString, CCountedPointer<NUISystem::CComponent> >) STLport 4.6 hinted unique insert: begin / end / interior hint cases, falling back on the unhinted insert_unique when the hint does not bracket v
 // Leaf: ?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@2@U32@ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042CF69, 456 bytes, thiscall `ret 0Ch` (hidden iterator result, position, v), ebp frame (a size-optimised /Os module: unaligned entry).
 // Identity (proven): std::_Rb_tree<CCharString, pair<const CCharString, CCountedPointer<NUISystem::CComponent>>, _Select1st<...>, less<CCharString>, allocator<...> >::insert_unique(iterator, const value_type&); evidence: the tree is map<CCharString, CCountedPointer<NUISystem::CComponent> > (NUISystem::CManager): _M_insert 0x0042CC03 / node factory 0x0042BE2F -> pair copy 0x0042A961 (families J044 / J041); the hinted insert 0x0042CF69 serves the landed operator[] 0x0042D45D (through 0x0042D2A9); this body calls that tree's _M_insert 0x0042CC03 and its insert_unique(v) 0x0042CC98; its call sites: 0x0042D2BA
 // Label: the manifest's "CMemoryAllocatorVariableSize_InsertStringNode" is a descriptive placeholder (family J046: five byte-similar hinted inserts over CCharString keys, each its own
@@ -48,13 +49,8 @@ public:
         return *PData < *other.PData;
     }
 };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CComponent; }
-template <class T> class CCountedPointer {                 // Ego_r.pdb, 8 bytes
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-};
 namespace std {
 template <class _Tp> struct less {
     __declspec(noinline) bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }   // 0x0042AAB3 for CCharString (body visible: it writes no memory)

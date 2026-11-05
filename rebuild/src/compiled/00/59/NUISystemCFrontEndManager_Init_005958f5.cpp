@@ -1,5 +1,6 @@
 // NUISystem::CFrontEndManager::Init(CCountedPointer<CGraphicDataBank>, CCountedPointer<CMeshDataBank>, CInputManager*, CDefinitionManager*) -- boot the front end: clear signatures, hand the UI manager its mesh bank, input and definitions, reset screen transitions and register the existing profiles
 // Leaf: ?Init@CFrontEndManager@NUISystem@@QAEXV?$CCountedPointer@VCGraphicDataBank@@@@V?$CCountedPointer@VCMeshDataBank@@@@PAVCInputManager@@PAVCDefinitionManager@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe @ 0x005958F5, 182 bytes, `ret 18h`; Ego_r.pdb same symbol.
 // Body: Signatures.clear() (map<CWideString,bool> clear 0x00485AEF); CManager::GetInstance() (0x0041E5F2)
 // ->SetMeshBank(meshes) (0x0041D198, by-value CCountedPointer built in the argument area by the copy ctor 0x00428905);
@@ -26,13 +27,7 @@ class CGraphicDataBank;
 class CMeshDataBank;
 class CInputManager;
 class CDefinitionManager;
-template <class T> class CCountedPointer {
-public:
-    T*    Object;
-    void* Info;
-    CCountedPointer(const CCountedPointer& other);       // 0x00428905 for CMeshDataBank
-    ~CCountedPointer();                                  // 0x00419108 (CGraphicDataBank) / 0x0042918C (CMeshDataBank)
-};
+#include "engine/CCountedPointer.h"
 class CUserProfileManager {
 public:
     void SetDefaultValues_00409b70();                             // 0x00409B70

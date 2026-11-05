@@ -1,6 +1,7 @@
 // CStreamingFontDataBank::CStreamingFontDataBank() -- builds the CBankFile base, the font state block, the empty font array, an empty file name and a null streaming entry
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- CArray modelled as the STLport _Vector_base shape (start, finish, alloc-proxy end with its own constructor): the member-object boundary lets `mov ecx,edi` (Filename's this) schedule between the second and third zero store as in retail
 // Leaf: ??0CStreamingFontDataBank
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5F290, 89 bytes (+7 int3 padding). Callees: CBankFile::CBankFile @
 // 0x009D5F80, CCharString::CCharString() @ 0x0099E4B0, CCharString::operator=(const char*) @ 0x0099EFE0 (with the
@@ -46,12 +47,7 @@ public:
     void* m_pStringData;
 };
 
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-};
+#include "engine/CCountedPointer.h"
 
 class CStreamingFontDataBankEntry;
 class CBankFileAsyncEntry;

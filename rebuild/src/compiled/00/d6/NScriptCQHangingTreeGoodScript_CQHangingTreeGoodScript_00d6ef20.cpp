@@ -1,5 +1,6 @@
 // NScript::CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: script base, data/interface pair, vtable 0x012D260C, four empty CScriptThing handles, two empty strings and five empty vectors
 // Leaf: ??0CQ_HangingTreeGoodScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 17 (c677): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (void*,
 //   CGameScriptInterface*); name-only (both are one pushed pointer: the bytes are unchanged). Only caller Alloc 0x00D78290.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D6EF20, length 246 bytes, `ret 8`.
@@ -32,13 +33,8 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:                // CScriptThing::PImp
-    CScriptThing* Data;                              // +0
-    CCPPointerInfo* Info;                            // +4
-    CCountedPointer() : Data(0), Info(0) { }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #include "engine/CScriptThing.h"

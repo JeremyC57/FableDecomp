@@ -1,5 +1,6 @@
 // CBankFile::AddEntry(const CCharString& symbol, unsigned long type, const CCharString& filename, CCountedPointer<CBankStateBlock> state) -- add a single-file bank entry: wrap the filename in a one-element CArray<CCharString> and forward to the virtual AddEntryMultipleFiles
 // Leaf: ?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CD620, 239 bytes, thiscall `ret 14h` (two references, the type word and the
 // by-value 8-byte counted pointer). FableWin/Ego donor (0x00B1BF50):
 // ?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z; the virtual callee (vtable slot 6,
@@ -31,33 +32,8 @@ public:
     const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
-class CCPPointerInfo                                  // the shared count block
-{ public:
-    long m_references;                                 // +0
-    void (__fastcall* m_pfnDestroy)(void*);            // +4
-    void* m_pObject;                                   // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer
-{ public:
-    T* Data;                                           // +0
-    CCPPointerInfo* Info;                              // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                operator delete(Info);
-            }
-        }
-    }
-};
 
 namespace std
 {

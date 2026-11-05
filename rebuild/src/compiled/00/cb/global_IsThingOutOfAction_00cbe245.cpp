@@ -2,6 +2,7 @@
 #pragma optimize("s", on)
 // IsThingOutOfAction(const CScriptThing& thing) -- true when the script thing is not alive, has been killed or knocked out (by anything) or is unconscious (the complement of IsThingActive 0x00CBE1AA)
 // Leaf: IsThingOutOfAction
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBE245, length 155 bytes, `ret`; `__fastcall` (thing in ecx);
 // frame-pointer size TU: `optimize("y",off)` + `("s",on)`.
 // Catalog label "CV_FisticuffsClubScript::IsKnotholeGladeNotAPunchClub" is a wrong propagation (byte twin of 0x00CBE1AA
@@ -18,27 +19,9 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-class CScriptThing { public:                              // vtable 0x01238C8C
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual bool MsgIsKilledBy(const CCharString& killer) const;       // slot 18 (+0x48, 0x004AAAF0)
-    virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
-    virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30();
-    virtual void v31();
-    virtual bool MsgIsKnockedOutBy(const CCharString& attacker) const; // slot 32 (+0x80)
-    virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38();
-    virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44();
-    virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49(); virtual void v50();
-    virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56();
-    virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60();
-    virtual bool IsUnconscious() const;            // slot 61 (+0xf4)
-    virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66(); virtual void v67();
-    virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71(); virtual void v72(); virtual void v73();
-    virtual void v74();
-    virtual bool IsAlive() const;                  // slot 75 (+0x12c)
-    long m_data[2];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 bool __fastcall IsThingOutOfAction(const CScriptThing& thing)
 {
     char result = !thing.IsAlive() || thing.MsgIsKilledBy("") || thing.MsgIsKnockedOutBy("") || thing.IsUnconscious();

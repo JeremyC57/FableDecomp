@@ -1,5 +1,6 @@
 // CTCGhostSword::MakeSwordsAppear() -- summon the ghost swords round the caster: take the facing vector, turn a copy a quarter turn about the up axis and scale it by the creation distance, then add one sword per spell level slot (level 0: ahead; 1: both sides; 2: ahead and both sides; 3: ahead, behind and both sides)
 // Leaf: ?MakeSwordsAppear@CTCGhostSword@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C5DB0, 735 bytes of code + `nop` + a 4-entry jump table (row 752), `ret`.
 // Identity: Ego_r.pdb has `?MakeSwordsAppear@CTCGhostSword@@QAEXXZ` (donor 0x007C4A50) and the private
@@ -98,10 +99,8 @@ template <class T> class CDefPointer { public:
     T* Object;                                              // +0x00
     T* operator->() const { return Object; }
 };
-template <class T> class CIntelligentPointer { public:
-    void* __vftable;
-    void* PData;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class _Tp> class vector { public:
     _Tp* _M_start;

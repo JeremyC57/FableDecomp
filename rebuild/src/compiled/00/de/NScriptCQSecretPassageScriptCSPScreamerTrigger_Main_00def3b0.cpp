@@ -1,5 +1,6 @@
 // NScript::CQ_SecretPassageScript::CSP_ScreamerTrigger::Main() -- the secret-passage screamer trigger: wait until the hero is within 10 units of Me, then spawn as many undead sword soldiers as Me's data string says (each near a random "SP_ScreamerSpawnPoint", named "EnemySeekingHero" and set on the hero), and wait until every "EnemySeekingHero" is dead
 // Leaf: ?Main@CSP_ScreamerTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the non-template local CCountedPointer holds a CScriptThingImp* (its first member): it is CCountedPointer<CScriptThingImp>.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DEF3B0, length 616 bytes, plain `ret`.
 // Callees: IsDistanceBetweenThingsUnder 0x00CBE2FF and AreAllThingsInVectorDead 0x00CBED00 (both __fastcall),
@@ -29,38 +30,10 @@ struct CScriptThingImp {
     virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();
     virtual const C3DVector& GetPosition() const;   // slot 6 (+0x18)
 };
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-struct CCountedPointer {
-    CScriptThingImp* Data;
-    CCPPointerInfo*  Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        CScriptThingImp* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass { public:                  // vtable 0x01238C8C
-    CCountedPointer PImp;
+    CCountedPointer<CScriptThingImp> PImp;
     CScriptThing() { }
     ~CScriptThing();                                // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }

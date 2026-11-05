@@ -1,5 +1,6 @@
 // std::vector::~vector() -- (vector<CCountedPointer<CScopedMemoryHandle> >) STLport destructor: destroy every element (out of line), then free the block
 // Leaf: ??1?$vector@V?$CCountedPointer@VCScopedMemoryHandle@@@@V?$allocator@V?$CCountedPointer@VCScopedMemoryHandle@@@@@std@@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8DD10, 37 bytes (+ int3 padding to 48), thiscall, plain `ret`.
 // Identity (proven): vector<CCountedPointer<CScopedMemoryHandle> >::~vector; evidence: its only caller is the C3DMesh2 file loader 0x00A8BFF0 (no direct callers), on its local at esp+0x40; each 8-byte element of that vector is Reset with an operator new(8) object stored as {0, -1} -- Ego_r.pdb's CScopedMemoryHandle {Pool +0, Handle +4}, 8 bytes -- whose Data is then passed by reference as the last of the five arguments of 0x00A91640 (`ret 0x14`; Ego_r.pdb C3DPrimitive2::InitialiseFromMeshFileData(..., CScopedMemoryHandle&)); its __destroy_aux 0x00A8DAE0 releases 8-byte CCountedPointers through the CCPPointerInfo at +4; Ego_r.pdb names ??1?$vector@V?$CCountedPointer@VCScopedMemoryHandle@@@@...
 // Label: the manifest's "sub_00a8dd10" is propagated (family H086: six destroy-and-free bodies with an out-of-line __destroy_aux --
@@ -10,13 +11,7 @@
 // Body: STLport 4.6 -- `_Destroy(_M_start, _M_finish)` then the block freed when non-null. __destroy_aux is a same-TU noinline
 //   stand-in under auto_inline(off) (retail calls it out of line); the empty tag temporary lives in the `push ecx` slot.
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
-class CCPPointerInfo;
-template <class T> class CCountedPointer {             // 8 bytes
-public:
-    T*              Data;                             // +0x00
-    CCPPointerInfo* Info;                             // +0x04
-    ~CCountedPointer();                               // inline in retail (in __destroy_aux)
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct __true_type { };

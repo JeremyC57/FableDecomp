@@ -1,5 +1,6 @@
 // std::map::operator[](const pair<long,long>& k) -- STLport subscript of the quadric optimiser's edge map (vertex pair -> counted contraction pointer): lower_bound, insert (k, null pointer) when absent, return the mapped pointer
 // Leaf: ??A?$map@U?$pair@JJ@std@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD6740, 137 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: map<pair<long,long>, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > (Ego_r.pdb; the
 //   landed _M_lower_bound 0x00AD24F0 documents the family); single caller 0x00ACB913 indexes it with the (min, max)
@@ -15,31 +16,8 @@
 //   temporary's release re-reads Info after the call (insert_unique is out of line); &(*i).second is node + 0x18.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    long  RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
-    void* Data;                                         // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        CCPPointerInfo* info = Info;
-        if (info && --info->RefCount == 0) {
-            info->DeleteFunc(info->Data);
-            delete info;
-        }
-    }
-};
 
 namespace QuadricOptimiserInternals {
 class CVertexPairContraction;

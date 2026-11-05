@@ -1,5 +1,6 @@
 // CMeshDataBank::~CMeshDataBank() -- close the meshes and detach the animation manager, then the members die in reverse (state block, counted pointers released, arrays destroyed and freed, the lip-sync map cleared and its header freed, the four resource banks, the loaders deleted) and the CBankFileAsync base runs
 // Leaf: ??1CMeshDataBank@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A27350, 886 bytes, plain `ret`. Stores vtable 0x0129CE94 = CMeshDataBank (rtti-vtables).
 // Identity: Ego_r.pdb `??1CMeshDataBank@@UAE@XZ` (virtual: the PDB carries ??_G/??_E for the class). Catalog label
 //   "CGameWorld_Destructor" is wrong (the vtable store and every member offset are CMeshDataBank's, landed ctor 0x00A27030).
@@ -14,28 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 void __cdecl operator delete(void* __p);                 // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    long  RefCount;                                      // +0
-    void (__fastcall* DeleteFunc)(void* data);           // +4
-    void* Data;                                          // +8
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                                // +0
-    CCPPointerInfo* Info;                                // +4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 template <class T> class scoped_ptr { public:
     T* ptr;

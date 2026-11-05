@@ -1,5 +1,6 @@
 // CCombatAction_GenericStrikeResponseBase::CCombatAction_GenericStrikeResponseBase(CThingCreatureBase*, const CThing*, const C3DVector&, const C3DVector&) -- constructor
 // Leaf: ??0CCombatAction_GenericStrikeResponseBase
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008678B0, 160 bytes. The manifest labels this body
 // CCombatAction_GenericResponseToExplosion, but the vtable it stores (0x01264734) is
@@ -23,12 +24,8 @@ class CSoundPair { public:
     CSoundPair() : FirstSound(0), LastSound(0) { }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();

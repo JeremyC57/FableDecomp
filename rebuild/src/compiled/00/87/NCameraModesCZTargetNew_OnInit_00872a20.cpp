@@ -1,5 +1,6 @@
 // NCameraModes::CZTargetNew::OnInit() -- start the Z-targeting camera: inherit the current mode's observed-position Z offset, reset the right-stick look-around, build the X axis from the observed thing's reversed, flattened, normalised facing and the Y axis perpendicular to it, then initialise the transition and the coordinate system
 // Leaf: OnInit
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00872A20, 206 bytes, `ret`. PDB ?OnInit@CZTargetNew@NCameraModes@@UAEXXZ (vtable 0x0127754C slot 21).
 // Callees: CGameCameraManager::ResetRightStickLookAroundVector() 0x006976B0 (manifest "CQ_GuildTrainingSkillScript::Init"),
 // NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, the thing physics' virtual slot 70 (+0x118, GetFacingVector,
@@ -41,11 +42,7 @@ class CThing { public:
 class CThingGameObject : public CThing { public: };
 
 namespace NCameraModes { class CBase; }
-template<class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CGameCameraManager {
 public:
     unsigned char                         _pad00[0x98];

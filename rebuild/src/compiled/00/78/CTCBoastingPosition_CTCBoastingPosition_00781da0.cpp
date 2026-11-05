@@ -1,5 +1,6 @@
 // CTCBoastingPosition::CTCBoastingPosition(CThing* owner) -- CTCBase(owner), this class's vtable, the podium pointer at +0xc, three cleared flags, the particle-effect pointer at +0x2e
 // Leaf: ??0CTCBoastingPosition
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00781DA0, 70 bytes (`ret 4`). Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (the chunk
@@ -19,20 +20,9 @@
 
 class CThing;
 
-struct CBaseIntelligentPointer
-{
-    virtual void v00();
-    void* m_pItem;                                  // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer   // vtable 0x01238C6C for <CThing>
-{ public:
-    virtual void v00();
-    CIntelligentPointer() {}
-};
 
 #include "engine/C3DVector.h"
 

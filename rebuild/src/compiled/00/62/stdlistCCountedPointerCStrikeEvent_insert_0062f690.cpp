@@ -1,5 +1,6 @@
 // std::list<CCountedPointer<CStrikeEvent> >::insert(iterator position, const CCountedPointer<CStrikeEvent>& x) -- STLport single-element list insert for the combat action's strike-event list: allocate a node, copy x into it and link it in before position
 // Leaf: ?insert@?$list@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0062F690, 52 bytes (+ int3 padding), `ret 0Ch` (hidden iterator result,
 // position, &x).
 // Identity: the only caller is the range insert 0x0062F650 (call at 0x0062F676), itself called only by the list copy
@@ -14,11 +15,7 @@
 // arguments in ecx/edx; the iterator (user copy constructor) returns through the hidden pointer. `this` is never read.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:      // 8 bytes: object + shared reference-count block
-    T*              Data;                        // +0x00
-    CCPPointerInfo* Info;                        // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 class CCombatActionBase {
 public:

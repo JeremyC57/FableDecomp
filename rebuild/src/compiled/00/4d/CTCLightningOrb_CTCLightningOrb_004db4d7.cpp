@@ -1,6 +1,7 @@
 // CTCLightningOrb::CTCLightningOrb(CThing* owner) -- construct the lightning orb component: CTCBase(owner), the PParent and PTarget intelligent pointers, a null PDef, Timer and LifeTime -1, NumFramesForSplineTraversal 1 and a null PSpline
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DB4D7, length 83 bytes.
 // Leaf: ??0CTCLightningOrb
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x2).
 // Vtables: CTCLightningOrb @ 0x01240A2C, CIntelligentPointer<CThing> @ 0x01238C6C (cached in ebx for both members).
 // Layout: PDB CTCLightningOrb (0x34): PParent +0x0c, PTarget +0x14 (8-byte intelligent pointers), PDef +0x1c, Timer +0x20,
@@ -20,17 +21,9 @@ class CTCBase { public:
     long    m_baseWord;                            // +0x08
 };
 
-struct CBaseIntelligentPointer {
-    CBaseIntelligentPointer();                     // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    virtual void v00();
-    void* m_pItem;                                 // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer() { }
-    virtual void v00();
-};
 
 struct CLightningOrbDefPointer {                   // CDefPointer<CLightningOrbDef const>
     const CLightningOrbDef* m_pDef;

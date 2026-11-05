@@ -1,5 +1,6 @@
 // NScript::CQ_BanditCampBossBattleScript::CCampHostage2::Main() -- bandit-camp boss battle, the second hostage: hold an alive filter over Me, take Me under scripted
 // Leaf: ?Main@CCampHostage2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //   control (priority 4, retried each frame); until the hostages are rescued or one is killed, whenever the cry timer has run
 //   out and the hero is within 8 units, turn to the hero, play CS_DISAPPOINTED and cry out (alternating the FIRST/SECOND
@@ -27,19 +28,14 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
-    virtual void t000();
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"

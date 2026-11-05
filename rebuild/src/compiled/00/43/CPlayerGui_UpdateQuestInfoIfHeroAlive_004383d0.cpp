@@ -1,5 +1,6 @@
 // CPlayerGui::UpdateQuestInfoIfHeroAlive() -- update the quest-info display while the main player's character exists and is not dead
 // Leaf: ?UpdateQuestInfoIfHeroAlive@CPlayerGui@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x004383D0, 46 bytes, unreferenced. Catalog label CGameScriptInterface::GiveHeroExpression is
 // wrong: `this` is the CPlayerGui (PlayerManager +0x08 -> CPlayerManager::GetMainPlayer 0x00449970, PDrawQuestInfo
 // +0x1c8 as modelled by the landed CPlayerGui sources), it sits among the CPlayerGui methods
@@ -11,11 +12,8 @@
 // Layout: retail CPlayerGui (engine/CPlayerGui.h carries the Ego_r.pdb offsets, PDrawQuestInfo +0x1d0 there, 8 higher).
 // Shape: /O2.
 class CBaseObject;
-class CBaseIntelligentPointer {
-public:
-    void* PInfo;
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing {
 public:
     unsigned char _pad00[0x91];

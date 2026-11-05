@@ -1,5 +1,6 @@
 // GetRotationInAnimationBetweenTimes(long bankIndex, float& rotation, float startTime, float endTime) -- the signed turn (in revolutions) of a bank animation's root movement between two times: the angle between the end movement's forward axis and +X, signed by the half-way movement's forward axis
 // Leaf: ?GetRotationInAnimationBetweenTimes@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -41,29 +42,7 @@ inline C3DVector operator*(const C3DVector& v, const CMatrix3x4& m)
                      v.Z * m.E33 + v.Y * m.E23 + v.X * m.E13);
 }
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void*         Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class C3DAnimationStats {
 public:

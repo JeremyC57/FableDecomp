@@ -1,4 +1,5 @@
 // _unattributed::GetAttachedItem() -- the thing held in the current slot: slot index -> item index -> intelligent pointer -> item
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E55D0, length 37 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem() @ 0x00A01B50 (tail-called on the 8-byte pointer element).
 // Layout (from the bytes; the manifest's doubled "CAnimateThing::CAnimateThing::GetAttachedItem" label does not
@@ -7,11 +8,8 @@
 // (`cmp eax,-1 ; jle`), giving the shared `xor eax,eax` tail.
 class CBaseObject;
 
-struct CBaseIntelligentPointer {               // 8 bytes: vptr + item
-    virtual void v0();
-    void* m_pItem;                              // +0x04
-    CBaseObject* GetPItem() const;              // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct SAttachmentSlot {                        // 16 bytes
     long m_type;                                // +0x00

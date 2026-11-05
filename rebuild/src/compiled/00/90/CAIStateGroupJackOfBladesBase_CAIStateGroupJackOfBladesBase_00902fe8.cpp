@@ -1,3 +1,4 @@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #pragma optimize("s", on)      // size TU: the shared CIntelligentPointer<CThing> vtable address is hoisted into ebx
 // CAIStateGroup_JackOfBladesBase::CAIStateGroup_JackOfBladesBase() -- default constructor.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00902FE8, length 87 bytes.
@@ -21,16 +22,9 @@ class CAIStateGroupBase { public:
     CAIStateGroupBase();                        // 0x008FD255
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04 the tracked object (set by the base ctor)
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual void v00();
-    CIntelligentPointer() : CBaseIntelligentPointer() { }      // inlined: base ctor + vtable
-};
 
 template<class T> struct CRetailVector {        // retail std::vector<T>: first/last/end, 12 bytes
     T* first;

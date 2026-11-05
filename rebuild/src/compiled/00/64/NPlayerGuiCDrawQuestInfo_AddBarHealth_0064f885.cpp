@@ -2,6 +2,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuestInfo::AddBarHealth(const CThingPhysical* thing, const CRGBColour& colour, const CCharString& symbol, float scale) -- return the ID of the health bar already tracking this thing, else create one with the symbol's sprite, append it through AddElement and return its new ID
 // Leaf: AddBarHealth
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets). Spellings unified: 00654b36: ??$?0UCQuestInfoElementBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementBar@NPlayerGui@@@1@@Z -> ??$?0UCQuestInfoElementBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementBar@NPlayerGui@@@1@@Z; 0064a3ed: ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXU?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z -> ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXV?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064F885, length 184 bytes (+ padding), `ret 10h`.
 // Callees: the element's virtual slot 3 (+0xc, the element type; 1 = bar), IS_THING_ALIVE<CIntelligentPointer<const
 // CThingPhysical>>(const&) @ 0x00655D04 (`__fastcall`), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
@@ -40,14 +41,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x00655D04
 
 namespace NPlayerGui {
-template <class T> struct CCountedPointer {
-    T*    m_pObject;
-    void* m_pBlock;
-    explicit CCountedPointer(T* object);
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);
-    ~CCountedPointer();
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 struct CQuestInfoElement {                         // retail 0x1c bytes
     virtual void v00();
     virtual void v01();
@@ -89,7 +83,7 @@ class CDrawQuestInfo { public:
 long CDrawQuestInfo::AddBarHealth(const CThingPhysical* thing, const CRGBColour& colour, const CCharString& symbol, float scale)
 {
     for (SElementNode* node = Elements->Next; node != Elements; node = node->Next) {
-        CQuestInfoElement* element = node->Data.m_pObject;
+        CQuestInfoElement* element = node->Data.Data;
         if (element->GetType() == 1) {
             CQuestInfoElementBar* bar = static_cast<CQuestInfoElementBar*>(element);
             if (IS_THING_ALIVE(bar->PThing) && bar->PThing.GetPItem()->UID == thing->UID)

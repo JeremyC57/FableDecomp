@@ -1,4 +1,5 @@
 // CBS_Teacher::LookForBook() -- the book-collecting teacher checks the hero's pack: find the first book the hero carries that was not the last one requested and is not yet donated (marking each newly found one as owned), stopping early at a wanted/accepted/comment index once one is found; then say "none found", a comment line, a request line (and ask for the book), or "not found"
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E57530, length 1200 bytes, plain `ret`.
 // Callees: IsActiveThreadTerminating 0x00F35B30, AskForBook 0x00E55CE0, GFIntToCharString 0x0099F830 and
 //   operator+(const char*, const CCharString&) 0x0099F690 (`__fastcall`, hidden result), CCharString 0x0099EBF0 /
@@ -21,10 +22,9 @@ class CCharString { public:
 };
 CCharString __fastcall GFIntToCharString(long value);                          // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-class CScriptThing { public:
-    void* PImp[2];
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_0 };
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)

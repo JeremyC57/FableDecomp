@@ -1,5 +1,6 @@
 // CCombatSequenceBase::`scalar deleting destructor'(unsigned int flags) -- reset the vtable, destroy the CombatActions vector (release every action's counted pointer, free the block), then free the sequence for flag bit 0
 // Leaf: ??_GCCombatSequenceBase@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B3430, length 63 bytes, thiscall, `ret 4`.
 // Identity: slot 0 of vtable 0x01278FEC, whose RTTI descriptor is `.?AVCCombatSequenceBase@@` (slots 1 and 2 are
 //   _purecall 0x00BFEA08). The catalog label "PairContainer_Destructor" is descriptive.
@@ -17,30 +18,8 @@
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // Ego_r.pdb, 12 bytes
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void*);               // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer {                                 // Ego_r.pdb, 8 bytes
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CCombatActionBase;
 class CThingCreatureBase;

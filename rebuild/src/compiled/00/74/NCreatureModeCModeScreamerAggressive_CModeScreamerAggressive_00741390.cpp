@@ -1,5 +1,6 @@
 // NCreatureMode::CModeScreamerAggressive::~CModeScreamerAggressive() -- implicit destructor: PTarget, PEffect, then the Filter (its Group string and the CAnimFilterBase vtable reset), then ~CModeStandBase
 // Leaf: ??1CModeScreamerAggressive@NCreatureMode@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00741390, 42 bytes, thiscall; tail `jmp ~CModeStandBase` 0x0073D860.
 // Identity (proven, two sources): the only caller is the scalar deleting destructor 0x00741370, slot 0 of vtable 0x012681EC
 //   (RTTI .?AVCModeScreamerAggressive@NCreatureMode@@ : CModeStandBase : CTCCreatureModeManager::CModeBase; the vtable is stored by the
@@ -27,18 +28,8 @@ class CAnimationEntry;
 class C3DVector;
 enum EMovementType;                                         // MS forward enum (no enumerator used here)
 
-class CBaseIntelligentPointer {                             // vtable 0x0129C95C (vptr + PData, 8 bytes; 4-aligned members here, no pack needed)
-public:
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10 ??1CBaseIntelligentPointer@@UAE@XZ
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CAnimFilterBase {                                     // vtable 0x0122FFCC (RTTI, no base)
 public:

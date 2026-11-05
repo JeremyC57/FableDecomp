@@ -1,4 +1,5 @@
 // 0078954d CThingSearchTools::GetAllThingsInRoughArea, 354 retail bytes.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Layout: shared CThingSearchTools donor has a 16-byte debug vector at +0xc;
 // retail uses the first three words (12-byte STLport vector). No trailing
 // donor member is accessed. CThing's retail type flags are +0x6c (PDB +0x7c).
@@ -47,18 +48,8 @@ extern "C" void __cdecl free(void*);
 // CBaseIntelligentPointer/CBaseObjectPointer names and members recovered from PDB;
 // a genuine virtual destructor supplies the vptr. No hand-written vtable slots.
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
-struct CBaseIntelligentPointer {
- CBaseObjectPointer* PData;
- CBaseIntelligentPointer(); // 0x00a01b10
- virtual ~CBaseIntelligentPointer(); // 0x00a01c10
- CBaseObject* GetPItem()const; // 0x00a01b50
- void SetPItem(CBaseObject*); // 0x00a01b90
-};
-template<class T> class CIntelligentPointer:public CBaseIntelligentPointer { public:
- CIntelligentPointer(T*); // Out-of-line CThing converting ctor:0x004a96f0.
- CIntelligentPointer(const CIntelligentPointer& p):CBaseIntelligentPointer(){SetPItem(p.GetPItem());}
- T* Get()const{return static_cast<T*>(GetPItem());}
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct ThingVector:RetailVector<CIntelligentPointer<CThing> > {
  void push_back(const CIntelligentPointer<CThing>&); // 0x004ad520
  void clear(){while(Finish!=Start){--Finish;Finish->~CIntelligentPointer<CThing>();}}

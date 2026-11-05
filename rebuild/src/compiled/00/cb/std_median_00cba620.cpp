@@ -1,5 +1,6 @@
 // std::__median(const pair<CCharString, CCountedPointer<CEntityScriptBindingBase>>& a, const pair<...>& b, const pair<...>& c, CCompareString<CCountedPointer<CEntityScriptBindingBase>> comp) -- the median of three pairs by their CCharString key
 // Leaf: ??$__median@U?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIABU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@ABU10@00V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00cba620, 94 bytes, /Gr `__fastcall` (a in ecx, b in edx, c and the comparator on the stack), `ret 8`.
 // Identity (proven): called (four times) by the introsort loop 0x00CBDAD0 over 12-byte {CCharString, CCountedPointer<CEntityScriptBindingBase>} pairs (its TU's swap 0x00CBA8E0 and operator= 0x00CBA700 are bound to pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >); Ego_r.pdb sorts that pair with CCompareString<CCountedPointer<CEntityScriptBindingBase> >.
 // Callee: CCharString::operator<(const CCharString&) const 0x009E6530 (Ego_r.pdb ??MCCharString@@QBE_NABV0@@Z; the comparator inline).
@@ -10,7 +11,7 @@ public:
     bool operator<(const CCharString& other) const;        // 0x009E6530
 };
 class CEntityScriptBindingBase;
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                             // +0x00

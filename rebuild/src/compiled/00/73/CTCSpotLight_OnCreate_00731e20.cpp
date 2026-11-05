@@ -1,5 +1,6 @@
 // CTCSpotLight::OnCreate() -- fetch the spotlight sub-def; unless overridden, create the light info on demand and copy colour, radii, flicker, angle and width from the def
 // Leaf: OnCreate
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00731E20, length 121 bytes (padded row 128); CTCSpotLight vtable 0x01266FBC slot 4
 // ("vfunc_4" on CTC classes is OnCreate).
 // Callees: CDefClassBase::GetSubDef<CSpotLightDef>(CDefPointer<const CSpotLightDef>*) @ 0x007325D0 (manifest label
@@ -11,7 +12,7 @@
 // offsets from these stores and the landed SetAngle 0x00731BE0): Angle +0, Width +4, InnerRadius +8, OuterRadius +0xC, Flicker +0x10,
 // Colour +0x14.
 // Shape: every copy re-reads both pointers (the stores may alias); `PLightInfo` address kept in esi, `&PLightDef` in edi.
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CRGBColour { public:
     unsigned char B, G, R, A;
 };
@@ -42,11 +43,6 @@ struct CSpotLightInfo {                             // CTCSpotLight::CSpotLightI
     float OuterRadius;                              // +0x0c
     float Flicker;                                  // +0x10
     CRGBColour Colour;                              // +0x14
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Reset(T* p);                               // 0x007323D0
 };
 void* operator new(unsigned int size);              // 0x00BFEA1A
 class CTCSpotLight { public:

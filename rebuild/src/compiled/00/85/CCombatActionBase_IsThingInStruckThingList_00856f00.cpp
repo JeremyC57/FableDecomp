@@ -1,5 +1,6 @@
 // CCombatActionBase::IsThingInStruckThingList(const CThingGameObject& thing) const -- find the active strike event that finishes first and report whether the thing is in its struck-thing list
 // Leaf: IsThingInStruckThingList
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00856F00, length 121 bytes (+7 int3 padding), `ret 4`.
 // Label correction: the catalog row says "CTCHeroExperience::GetRoughExperienceLevel" (a `long ()` member); this body is a
 // CCombatActionBase member (FramesRunning +0x1c, StrikeEvents +0xbc) taking one reference and returning bool:
@@ -33,7 +34,7 @@ struct CStrikeEvent {
     void* PWeapon[2];                           // +0x14 CIntelligentPointer<const CThing>
     CRetailVector<CThingGameObject*> StruckThingList;   // +0x1c
 };
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 struct SStrikeNode {
     SStrikeNode* _M_next;
     SStrikeNode* _M_prev;

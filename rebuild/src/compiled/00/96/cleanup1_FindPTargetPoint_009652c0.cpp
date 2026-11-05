@@ -1,5 +1,7 @@
 // CAIStateGroup_RecoverStealableItem::FindPTargetPoint() const -- the marker carrying interface 0xB2 nearest this group's creature
 // Leaf: ?FindPTargetPoint@CAIStateGroup_RecoverStealableItem@@ABEPBVCThing@@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009652C0, 83 bytes (+ int3 padding), thiscall, `ret`.
 // Identity (proven): Ego_r.pdb donor order FindPStealableItemOutsideTargetPointRange (0x00989A80) / FindPTargetPoint
@@ -24,21 +26,9 @@ public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-private:
-    void* PData;                                        // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-};
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                            // +0x00
-    T* operator->() const { return Data; }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
 class CClass : public CBaseObject { };
 class CThing : public CClass {

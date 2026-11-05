@@ -1,5 +1,6 @@
 // CCombatActionBase::SetCombatAnimation(const CCharString& name) -- empties CombatAnimations and asks the creature for every combat animation possible under that name
 // Leaf: SetCombatAnimation
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008574D0, length 76 bytes (+ int3 padding).
 // Callees: memmove 0x00BFEAE6 (__cdecl), CBaseIntelligentPointer::GetPItem() 0x00A01B50 (on PCreature +8),
 //          CThingCreatureBase::GetPossibleCombatAnimations(const CCharString&, vector<const CAnimationEntry*>&) const
@@ -26,9 +27,8 @@ class CThingCreatureBase { public:
 };
 
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CCreaturePointer {                       // CIntelligentPointer<CThingCreatureBase>
     void*               __vftable;
     void*               m_pItem;

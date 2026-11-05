@@ -1,5 +1,6 @@
 // std::_List_base::clear() -- (_List_base<CFileInstaller::CActiveFile>) STLport 4.6 list clear for CFileInstaller::ActiveFiles: walk the nodes, run each active file's implicit destructor (both pending lists, the zlib decompressor, the file-info counted pointer) and free the node, then link the sentinel to itself
 // Leaf: ?clear@?$_List_base@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C71A0, 264 bytes, thiscall. Callers: 0x009C5296, 0x009C7583, 0x009C7763 (the
 //   unreferenced list destructors beside it). The chunk label "DataItemList_DestroyAll" is descriptive.
 // Element: CFileInstaller::CActiveFile, retail 0xB0 bytes (copy constructor 0x009C72B0): PFileInfo CCountedPointer at +0x1C
@@ -73,29 +74,8 @@ public:
 
 }
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                         // +0x00
-    void (__fastcall* DeleteFunc)(void* data);      // +0x04
-    void* Data;                                     // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                        // +0x00
-    CCPPointerInfo* Info;                           // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CCompressorZlib {                             // retail 0x58 bytes
 public:

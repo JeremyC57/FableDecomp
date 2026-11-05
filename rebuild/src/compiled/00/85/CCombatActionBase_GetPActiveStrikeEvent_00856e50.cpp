@@ -1,5 +1,6 @@
 // CCombatActionBase::GetPActiveStrikeEvent() -- the action's active strike event that finishes first: runs the anonymous-namespace CGetActiveStrikeEventThatIsFirstToFinish functor over the strike-event list and returns the event it kept (null when none is active)
 // Leaf: ?GetPActiveStrikeEvent@CCombatActionBase@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00856E50, 70 bytes, __fastcall, plain `ret`.
 // Identity: Ego_r.pdb ?GetPActiveStrikeEvent@CCombatActionBase@@IAEPAVCStrikeEvent@1@XZ (the non-const overload: the
 //   callers 0x00858276 / 0x008584C1 push_back into the returned event's vector at +0x1c); Ego_r's for_each over the same
@@ -10,11 +11,7 @@
 // Layout: CCreatureActionBase FramesRunning +0x1c (rebuild/include/engine/CCreatureActionBase.h); the STLport strike-event
 //   list (one sentinel pointer) at +0xbc. Functor {frame, kept event = 0, earliest finish = 1000000}.
 class CCountedPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*                   Data;
-    CCountedPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct _List_node_base {

@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawQuestInfo::AddTick(const CCharString& sprite, bool ticked, float scale) -- add a CQuestInfoElementTick for the script sprite to the quest-info panel and return its element ID
 // Leaf: ?AddTick@CDrawQuestInfo@NPlayerGui@@QAEJABVCCharString@@_NM@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0064FADF, 104 bytes, thiscall, `ret 0Ch`, ebp frame.
 // Identity (proven): Ego_r.pdb ?AddTick@CDrawQuestInfo@NPlayerGui@@QAEJABVCCharString@@_NM@Z; it news a 0x28-byte CQuestInfoElementTick
 //   (ctor 0x00656C3C, Ego_r.pdb ??0CQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@QAE@J_NM@Z) and holds it in CCountedPointer<CQuestInfoElementTick>
@@ -14,15 +15,7 @@
 #pragma optimize("s", on)
 class CCharString;
 void* __cdecl operator new(unsigned int size);            // 0x00BFEA1A
-template <class T> class CCountedPointer {
-public:
-    CCountedPointer(T* p);                                // out of line (one per T)
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);   // converting copy, out of line
-    ~CCountedPointer();
-    T* operator->() const { return Data; }
-    T* Data;                                              // +0x00
-    void* Info;                                           // +0x04
-};
+#include "engine/CCountedPointer.h"
 namespace NPlayerGui {
 class CDrawQuestInfo {
 public:

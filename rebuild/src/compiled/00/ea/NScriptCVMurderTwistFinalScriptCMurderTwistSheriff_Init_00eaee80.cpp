@@ -1,5 +1,6 @@
 // NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::Init() -- the sheriff stands his ground: not pushable, no movement in actions, unkillable and undamageable, looking at the hero, no information marker; his dialogue flags reset and NextLine 1
 // Leaf: ?Init@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EAEE80, 173 bytes (`ret`).
 // Callees (CGameScriptInterface virtuals, slot / address): SetIsThingForcePushable 745 0x0088F9F0, SetIsPushableByHero 844
 // 0x008A6DD0 (CScriptThing BY VALUE: inline CBaseClass vtable 0x01231710 then CScriptThing vtable 0x01238C8C stored into the
@@ -13,12 +14,7 @@
 // fetched once for the GetHero / EntityForceToLookAtThing pair (callee first, then its argument).
 // Naming wave 35: identity reg 00eaea6a "MurderTwistSheriff" in 00eaea20; Alloc 00eaed10; vtable 012efa0c slot 2; PDB ?Init@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMurderTwistSheriff::Init (wave3/labels_alloc.tsv); PDB ?Init@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CMurderTwistSheriff@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CScriptThingImp;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

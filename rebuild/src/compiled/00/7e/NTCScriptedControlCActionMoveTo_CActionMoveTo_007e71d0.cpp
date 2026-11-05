@@ -1,6 +1,7 @@
 // NTCScriptedControl::CActionMoveTo::CActionMoveTo(const C3DVector& pos, EMovementType movementType, float proximity, bool faceMovement, bool avoidDynamicObstacles) -- constructor: the common action members zeroed, own vtable, the move parameters, two empty CScriptThings (target / route), the flags cleared and no action point (-1).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- CScriptThing::PImp modelled as the PDB's CCountedPointer<CScriptThing> record (one inline ctor), not two raw words: the second CScriptThing's vtable store stays above its PImp zeros
 // Leaf: ??0CActionMoveTo
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E71D0, length 154 bytes (+ int3 padding), `ret 14h`.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (the action root) and the CScriptThing root constructor @ 0x0099A2D0 (each
@@ -24,11 +25,7 @@ protected:                                   // the action root
 typedef long EMovementType;
 class CTCBase;
 
-template <class T> class CCountedPointer { public:      // the counted pointer record with its own inline constructor
-    T*    Object;
-    void* Count;
-    CCountedPointer() : Object(0), Count(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

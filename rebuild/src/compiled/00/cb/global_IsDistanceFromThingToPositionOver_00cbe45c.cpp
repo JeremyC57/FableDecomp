@@ -1,5 +1,6 @@
 // IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& position, float distance) -- true when the thing is alive and further than distance from the position
 // Leaf: ?IsDistanceFromThingToPositionOver@@YI_NABVCScriptThing@@ABVC3DVector@@M@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBE45C, 91 bytes (`ret 4`).
 // TU: the global quest-script helper functions (__fastcall, size-optimised: `#pragma optimize("s", on)`).
@@ -14,8 +15,7 @@ public:
     void* m_pStringData;
 };
 #include "engine/C3DVector.h"
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // NScript::CHitSwitchTestScript::CHitSwitch::Main() -- register an alive filter over Me, then until the script ends: wait a script frame at a time until the hero hits the switch, then (unless the script is ending) set its activation trigger, pause ten seconds, clear it again and wait a frame
 // Leaf: Main
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
 //   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
 //   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CHitSwitchTestScript::CHitSwitch::IsDone (non-const; the label DB's IsDone).
@@ -18,25 +19,9 @@ class CCharString { public:
     void* PStringData;
 };
 
-class CScriptThing { public:
-    virtual void v000();
-    virtual const CCharString& GetName() const;   // slot 1 (+0x04)
-    virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
-    virtual void v018(); virtual void v019(); virtual void v020();
-    virtual bool MsgIsHitBy(const CCharString& hitter) const;   // slot 21 (+0x54)
-    virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037();
-    virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045();
-    virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053();
-    virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059(); virtual void v060(); virtual void v061();
-    virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068();
-    virtual void SetActivationTriggerStatus(bool status);   // slot 69 (+0x114)
-    virtual void v070();
-    void* PImp[2];                               // +0x04 counted implementation pointer
-    CScriptThing(const CScriptThing& other);     // 0x004ABE90
-    virtual ~CScriptThing();
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 struct CGameScriptInterface_Calls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();

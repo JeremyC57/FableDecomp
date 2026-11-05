@@ -1,5 +1,6 @@
 // std::vector<CLipSyncPhonemeSample>::push_back(const CLipSyncPhonemeSample& x) -- append a lip-sync phoneme sample: placement copy at the finish pointer when there is room (add-ref the sample frame), else _M_insert_overflow(finish, x, __false_type(), 1, true)
 // Leaf: ?push_back@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4AE00, length 97 bytes, `ret 4`.
 // Caller: the `jmp` at 0x00A495E0 (an out-of-line forwarder). Callees: CCharString copy ctor 0x0099EC30, 0x00A4AC60
 //   vector<CLipSyncPhonemeSample>::_M_insert_overflow.
@@ -17,22 +18,7 @@ public:
     CCharString(const CCharString& other);           // 0x0099EC30
 };
 
-class CCPPointerInfo { public:                              // count block: RefCount +0, DeleteFunc +4, Data +8
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;                            // +0x00
-    CCPPointerInfo* Info;                            // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class CSpeechFrame;
 class CLipSyncPhonemeSample {                        // 16 bytes

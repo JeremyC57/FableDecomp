@@ -1,6 +1,7 @@
 // std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::_M_clear() -- STLport: destroy [start, finish),
 // then release the block
 // Leaf: ?_M_clear@?$vector@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065605F, 35 bytes, thiscall `ret`: `__destroy_aux(start, finish, __false_type())`
 //   (0x0043F850, `__fastcall` -- ecx = first, edx = last, the empty tag by reference in the high byte of the `push ecx`
 //   slot, `lea eax,[esp+7]`), then `if (start) free(start)` (0x00BFEA14).
@@ -20,14 +21,9 @@ extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 class CBaseObject;
 namespace NParticleEngine { class CParticleEmitter; }
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();               // 0x00A01C10
-    CBaseObject* PItem;                               // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
 
 namespace std {
 struct __false_type { __false_type() { } };

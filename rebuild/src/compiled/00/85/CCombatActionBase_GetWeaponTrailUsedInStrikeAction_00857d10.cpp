@@ -1,5 +1,6 @@
 // CCombatActionBase::GetWeaponTrailUsedInStrikeAction(long* strikeIndex) -- the active strike event at the current frame (for_each over the strike-event list), then for a live weapon thing: store the event's index and return its interface-type-0x4c component (else 0)
 // Leaf: GetWeaponTrailUsedInStrikeAction
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00857D10, 176 bytes incl. padding (ret 4).
 // Callees: std::for_each<list<CCountedPointer<CStrikeEvent>>::const_iterator, CGetActiveStrikeEventThatContainsFrame>
@@ -36,11 +37,8 @@ class CThing { public:
     }
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                            // +0x04
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CStrikeEvent {
     unsigned char           _pad0[8];

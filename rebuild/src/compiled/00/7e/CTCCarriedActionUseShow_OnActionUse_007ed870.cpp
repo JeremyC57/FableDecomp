@@ -1,5 +1,6 @@
 // CTCCarriedActionUseShow::OnActionUse(CThingAICreature* user) -- a creature shows its carried item to a targeted creature (type 2), applying the item's bonus-item def to the user's hero stats; otherwise report the failed use to the item's interface-0x1A component
 // Leaf: vfunc_28
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail 0x007ED870, 384 bytes, `ret 4` (vtable slot 10, +0x28; catalogued as vfunc_28).
 // Callees: the base use hook 0x007EAB90, CThing::SetAsGameStatePersisted(bool) 0x004C7880, CVectorMap::LowerBound const
@@ -62,15 +63,8 @@ class CCreatureActionBase { public:                                // retail siz
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingCreatureBase;
 class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public:   // 0xb8 bytes
     CBaseIntelligentPointer PItem;                          // +0xa8

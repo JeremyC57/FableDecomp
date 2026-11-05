@@ -1,5 +1,6 @@
 // std::vector::vector(const vector& x) -- (vector<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> >) STLport copy constructor: allocate x.size() elements (none for an empty source), set start/finish/end of storage, copy-construct the elements through the out-of-line __uninitialized_copy
 // Leaf: ??0?$vector@V?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@V?$allocator@V?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@@std@@@std@@QAE@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD26D0, 87 bytes (+ int3 padding to 96), thiscall, `ret 4` (&x), returns this.
 // Identity (proven): std::vector<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> >::vector(const vector&); evidence: 0x00AD6A90 is the COptimisedSubMesh copy constructor: Ego_r.pdb QuadricOptimiserInternals::COptimisedSubMesh is Primitives (CArray<CCountedPointer<COptimisedPrimitive> >) +0 and Bones (CArray<COptimisedBone>, 16-byte elements) +0xC, and it copies +0 through this constructor and +0xC through 0x00AD2730 (`sar esi, 4`); the element copy 0x00AD1AE0 copies {Data, Info} and bumps Info->RefCount; the _Construct 0x00AD75D0 and the sub-mesh array copies 0x00AD83D0 / 0x00AD8720 (COptimisedMesh::SubMeshes) reach it too; modelled as the STLport vector constructor (the CArray one has no body of its own); Ego_r.pdb names ??0?$vector@V?$CCountedPointer@VCOptimisedPrimitive@QuadricOptimiserInternals@@@@...@QAE@ABV01@@Z.
 // Label: the manifest's "Vector_Construct_CArray" is propagated (family J011: six copy constructors over 8-byte non-POD elements;
@@ -15,12 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                       // 0x0
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
 namespace QuadricOptimiserInternals { class COptimisedPrimitive; }
-class CCPPointerInfo;                                               // Ego_r.pdb: RefCount, DeleteFunc, Data
-template <class T> class CCountedPointer {                        // 8 bytes (Ego_r.pdb)
-public:
-    T*              Data;                                         // +0x0
-    CCPPointerInfo* Info;                                         // +0x4 (RefCount at +0)
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct __false_type { __false_type() { } };

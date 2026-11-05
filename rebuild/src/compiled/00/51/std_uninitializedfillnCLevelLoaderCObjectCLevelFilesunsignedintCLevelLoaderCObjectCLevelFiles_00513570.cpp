@@ -1,5 +1,6 @@
 // std::__uninitialized_fill_n(CLevelFiles* first, unsigned int n, const CLevelFiles& x, const __false_type&) -- (CLevelLoader::CObject::CLevelFiles) STLport 4.6 fill of n copies of a 28-byte level-file record (each copy bumps the three counted file pointers' blocks)
 // Leaf: ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YIPAVCLevelFiles@CObject@CLevelLoader@@PAV123@IABV123@ABU__false_type@0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00513570, length 92 bytes (+4 int3 pad), `ret 8`.
 // Callers: 0x0050121F (0x00501150), 0x00514D5A (0x00514C10), 0x00515911 (0x005158B0, the landed vector<CLevelFiles>(n) -- it binds this
 //   spelling) and 0x0051A4FC (0x0051A430, the landed _M_insert_overflow of the same vector).
@@ -14,18 +15,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CAFile;
 
-class CCPPointerInfo { public:                               // 12 bytes
-    unsigned long RefCount;                           // +0x00
-    void (__cdecl *DeleteFunc)(void*);                // +0x04
-    void* Data;                                       // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {            // 8 bytes
-public:
-    T* Data;                                          // +0x00
-    CCPPointerInfo* Info;                             // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
 
 class CLevelLoader {
 public:

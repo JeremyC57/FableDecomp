@@ -12,13 +12,8 @@
 // Shape: init-list zeroes in member order (one zero register), FrameCount / SamplesPerSecond / the base word +8
 // assigned in the body, then `Allocator.Reset(new CSimpleMemoryPool(256, 4096))`.
 // Leaf: ??0C3DAnimation2
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Reset(T* object);                          // 0x00A52BE0
-};
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
+#include "engine/CCountedPointer.h"
 
 class CSimpleMemoryPool { public:
     CSimpleMemoryPool(unsigned long count, unsigned long size);   // 0x00A5C570

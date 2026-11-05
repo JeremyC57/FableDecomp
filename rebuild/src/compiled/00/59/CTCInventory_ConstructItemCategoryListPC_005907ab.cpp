@@ -1,5 +1,6 @@
 // CTCInventory::ConstructItemCategoryListPC(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long,long> >& items, NUISystem::CComponent* owner, const CCharString& templateName, const CCharString& descriptionSymbol, bool checkUsable) -- PC inventory category: a branch entry captioned "title x <total count>" with a subtitle, the category description (shown in the owner's viewport) and an optional template component, all registered with the owner's frame; an empty category clears the entry, otherwise the items are merged per def into a map, a sub-list titled "<title>: <name>" gets the merged count, and an items-actions list (the "can't use" variant, with its not-usable entry cleared and the icon action reset, when the hero's carried thing is not alive) gets the same title before ContructItemListsPC fills them
 // Leaf: ConstructItemCategoryListPC@CTCInventory
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005907AB, 1415 bytes, `ret 1Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 //   FableWin.pdb ?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@...@ABVCCharString@@4_N@Z
@@ -45,15 +46,7 @@ struct CGameSubsystem {
     CDataBank*    TextBank;                             // +0x14
 };
 namespace { extern CCharString TITLE_NAME; }                  // 0x013B8B4C ("ITEMS TITLE")
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) {}
-    CCountedPointer(T* object);                         // 0x00429C15
-    void Reset(T* object);                              // 0x00429C6F
-    ~CCountedPointer();                                 // 0x004291DE
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 struct CActionParamList {                               // STLport list<CActionParam*> (one node pointer)
     void* _M_node;
@@ -267,18 +260,18 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, 
                                                                    0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     entry->AddChildAtEnd(subtitle);
     if (frame)
-        frame->AddFrameMember(subtitle.m_pObject);
+        frame->AddFrameMember(subtitle.Data);
     list->AddEntry(entry);
     CCountedPointer<CComponent> description = CreateMenuDescPC(descriptionSymbol);
     entry->AddChildAtEnd(description);
     if (frame)
-        frame->AddFrameMember(description.m_pObject);
-    viewport->SetContent(description.m_pObject);
+        frame->AddFrameMember(description.Data);
+    viewport->SetContent(description.Data);
     if (templateName != "") {
         CCountedPointer<CComponent> extra(fe->CreateComponent(templateName, false));
         entry->AddChildAtEnd(extra);
         if (frame)
-            frame->AddFrameMember(extra.m_pObject);
+            frame->AddFrameMember(extra.Data);
     }
     if (items.empty()) {
         entry->Clear();
@@ -294,11 +287,11 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, 
                 found->second += item->second;
         }
         CCountedPointer<CComponent> subList(fe->CreateComponent("PC_SUB_LIST", false));
-        CComponent* sub = subList.m_pObject;
+        CComponent* sub = subList.Data;
         entry->AddChildAtEnd(subList);
         sub->SetItemCount(merged.size());
         CCountedPointer<CComponent> titleComp(fe->CreateComponent("PC_ITEM_TITLE", false));
-        CComponent* titleObject = titleComp.m_pObject;
+        CComponent* titleObject = titleComp.Data;
         CWideString titleText(titleObject->GetText());
         titleText += L":";
         titleText += title;
@@ -306,14 +299,14 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, 
         titleComp->SetName(TITLE_NAME);
         sub->SetHeader(titleComp);
         if (frame)
-            frame->AddFrameMember(titleComp.m_pObject);
+            frame->AddFrameMember(titleComp.Data);
         bool usable = true;
         CTCCarryingSlot* carrying;
         if (checkUsable && ParentThing->GetInterface(&carrying, 8) && !IS_THING_ALIVE(carrying->GetHeldThing()))
             usable = false;
         CCharString actionsListName(usable ? "PC_UI_LIST_ITEMS_ACTIONS" : "PC_UI_LIST_ITEMS_ACTIONS_CANT_USE");
         CCountedPointer<CComponent> actions(CManager::GetInstance()->CreateComponent(actionsListName, false));
-        CComponent* actionsList = actions.m_pObject;
+        CComponent* actionsList = actions.Data;
         actionsList->SetSelectedIndex(0);
         if (!usable) {
             CComponent* notUsable = actionsList->FindChild("PC_UI_MENU_ENTRY_ITEM_ACTION_NOT_USE");
@@ -330,7 +323,7 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, 
         actionsTitle->SetName(TITLE_NAME);
         actionsList->SetHeader(actionsTitle);
         if (frame)
-            frame->AddFrameMember(actionsTitle.m_pObject);
+            frame->AddFrameMember(actionsTitle.Data);
         ContructItemListsPC(merged, (CList*)sub, owner, actions);
     }
 }

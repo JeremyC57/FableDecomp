@@ -1,5 +1,6 @@
 // std::vector<std::pair<unsigned long, C3DMeshVolume> >::resize(unsigned int newSize) -- STLport one-argument resize: resize(newSize, value_type()) with the default (key 0, empty name, null volume) entry built and destroyed in the frame
 // Leaf: resize
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A35580, 107 bytes (`ret 4`).
 // Identity: the manifest label "CThingCreatureBase::GetAnimsWithNameStartingWith" is propagated. The only caller
 //   (0x00A2F629, in C3DMeshStats::LoadBinary) passes the vector at C3DMeshStats+0x58 = MeshVolumes (Ego_r.pdb
@@ -18,25 +19,7 @@ class CCharString { public:
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
 };
-struct SCountBlock {
-    long m_references;                          // +0
-    void (__fastcall* m_pfnDestroy)(void*);     // +4 per-type deleter, object in ecx
-    void* m_pObject;                            // +8
-};
-template <class T> class CCountedPointer { public:
-    T* Data;
-    SCountBlock* m_pCount;
-    CCountedPointer() : Data(0), m_pCount(0) { }
-    ~CCountedPointer()
-    {
-        if (m_pCount && --m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            operator delete(m_pCount);
-        }
-        Data = 0;
-        m_pCount = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CContainmentVolume;
 class C3DMeshVolume { public:                          // 12 bytes
     CCharString Name;                           // +0x00

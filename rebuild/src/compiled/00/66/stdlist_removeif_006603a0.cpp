@@ -1,5 +1,6 @@
 // std::list::remove_if(_Predicate pred) -- (list<CCountedPointer<CVillageTaskTorch> >, CIsNotValid<CVillageTaskTorch>) STLport list::remove_if: erase every task whose IsValid() is false
 // Leaf: ??$remove_if@V?$CIsNotValid@VCVillageTaskTorch@@@@@?$list@V?$CCountedPointer@VCVillageTaskTorch@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskTorch@@@@@std@@@std@@QAEXV?$CIsNotValid@VCVillageTaskTorch@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006603A0, 61 bytes (size-optimised TU, no padding), thiscall, `ret 4` (the empty
 //   predicate by value).
 // Identity (proven): std::list<CCountedPointer<CVillageTaskTorch> >::remove_if<CIsNotValid<CVillageTaskTorch> >(CIsNotValid<CVillageTaskTorch>); evidence:
@@ -33,14 +34,7 @@ public:
     virtual EVillageTaskType GetTaskType() const;
     virtual bool IsValid() const;
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {               // 8 bytes: the object, the shared count block
-public:
-    ~CCountedPointer();                                  // out of line
-    T* operator->() const { return Data; }
-    T*              Data;                                // +0x0
-    CCPPointerInfo* Info;                                // +0x4
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CIsNotValid {
 public:
     bool operator()(const CCountedPointer<T>& task) const { return !task->IsValid(); }

@@ -1,5 +1,6 @@
 // CTCShotDefinitionMultiArrow::GetShotDamage() const -- the base shot damage scaled by the shooter's divine-wrath damage multiplier (interface 0x88) when the shooter is alive and has one
 // Leaf: GetShotDamage
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad1[0x23] removed; map pointer made const (the row grades the const LowerBound).
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe 0x007BDCFC, 123 bytes (plain `ret`; size TU with frame: optimize("y", off) + ("s", on)).
@@ -35,11 +36,8 @@ class CThing { public:
 };
 template <class T> bool __fastcall IS_THING_ALIVE_0040dce0(const T& thing);   // 0x0040DCE0 (CThing*)
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                                // +4
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCDivineWrath { public:
     float GetDamageMultiplier() const;              // 0x007CBF50
 };

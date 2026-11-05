@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonStrafeBurninate::CModeDragonStrafeBurninate(CThing*, const vector<C3DVector>&, const C3DVector&, float, float, const C3DVector&, const C3DVector&) -- fly the given path, then burn from FlameStartPos to FlameEndPos between the two path percentages
 // Leaf: ??0CModeDragonStrafeBurninate
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E1580, 234 bytes (`ret 1Ch`). Vtable 0x01268718 = NCreatureMode::CModeDragonStrafeBurninate.
 // Callees: CModeDragonFlying::CModeDragonFlying(CThing*, const vector<C3DVector>&, const C3DVector&, float,
 // CCountedPointer<CCreatureActionBase>) 0x008E1150 (speed 30.0f, an empty end action passed by value);
@@ -92,13 +93,7 @@ class C3DVector { public:
     C3DVector& operator=(const C3DVector& other) { X = other.X; Y = other.Y; Z = other.Z; return *this; }
 };
 
-template <class T> class CCountedPointer { public:   // 8 bytes: object + shared count block
-    T*    Object;
-    void* Count;
-    CCountedPointer() : Object(0), Count(0) { }
-    CCountedPointer(const CCountedPointer& other);   // user copy: a by-value argument is built in its stack slot
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 
 template <class T> struct vector;          // STLport vector (only passed by reference)
 class CCreatureActionBase;

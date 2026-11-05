@@ -1,5 +1,6 @@
 // NUISystem::CManager::CManager() -- constructor of the front-end UI manager: base, empty counted banks, key/layer maps and action lists, cleared component pointers and flags; selects keyboard input, picks the best texture formats into the bank parameters and loads the graphics bank (GBANK_FRONT_END while the new front-end component is active, else GBANK_MAIN), then resets the meta layer
 // Leaf: ??0CManager@NUISystem
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041E3F6, length 508 bytes. Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)`.
 // Callees: base ctor 0x0042BE7B; key map ctor 0x0042BF67; list ctors 0x0042AB58 / 0x0042AB01; layer map ctor 0x0042BF85; children map
@@ -18,15 +19,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CGraphicDataBank;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CPixelFormat { public: long Format; };
-template <class T> class CCountedPointer { public:
-    T*              m_pObject;
-    CCPPointerInfo* m_pInfo;
-    CCountedPointer() : m_pObject(0), m_pInfo(0) { }
-    CCountedPointer(const CCountedPointer& other);
-    ~CCountedPointer();
-};
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

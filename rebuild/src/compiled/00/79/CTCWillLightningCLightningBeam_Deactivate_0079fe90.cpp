@@ -1,5 +1,6 @@
 // CTCWillLightning::CLightningBeam::Deactivate(CIntelligentPointer<CThingCreatureBase>) -- stop an active beam (states 1/2/3): freeze its destination at the current end point and deactivate every child beam; a beam with children (unless already in state 2) waits for them (state 6 from 1, else 4); otherwise it starts deactivating (state 5) and plays the def's hit sound criteria on a live target, or at the end point through the live caster when the beam is not temporary
 // Leaf: Deactivate
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079FE90, 580 bytes (+ int3 padding), `ret 8` (by-value intelligent pointer, callee destroys).
@@ -48,27 +49,8 @@ class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(const CCharString& name, bool a, bool b, bool c, long d);   // 0x0066BD00
     unsigned long PlayUnattachedCriteria(const CCharString& name, const C3DVector& pos, bool a, bool b);   // 0x0066BDF0
 };
-class CCPPointerInfo { public:                          // counted-pointer info block
-    long Count;                                  // +0
-    void (__fastcall* Destroy)(void*);           // +4 per-type deleter, object in ecx
-    void* Object;                                // +8
-};
+#include "engine/CCountedPointer.h"
 void operator delete(void* p);                   // 0x00BFE9BC
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->Count == 0) {
-                Info->Destroy(Info->Object);
-                delete Info;
-            }
-        }
-    }
-    T* operator->() const { return Data; }
-};
 template <class T> struct CRetailList {          // STLport list: the sentinel node pointer only (4 bytes; PDB 12)
     struct Node { Node* Next; Node* Prev; T Value; };
     Node* Head;

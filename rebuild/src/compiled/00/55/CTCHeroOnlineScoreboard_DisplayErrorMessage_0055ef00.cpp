@@ -1,5 +1,6 @@
 // CTCHeroOnlineScoreboard::DisplayErrorMessage(const CWideString& message) -- hides the second connecting message, puts the message in the connecting panel's UI_CONNECTING_TEXT, gives its OK button action 0x112 and moves input focus from the mouse pointer to that button
 // Leaf: OnOkClicked
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055EF00, 385 bytes (`ret 4`). Manifest label OnOkClicked is wrong: the
 // real OnOkClicked is 0x0055EE20 (landed); this one takes one by-reference wide-string message.
@@ -32,26 +33,7 @@ class CAction { public:                                     // retail 0x10 bytes
 };
 }
 
-struct SCountBlock {
-    long m_references;                               // +0
-    void (__fastcall* m_pfnDestroy)(void*);          // +4
-    void* m_pObject;                                 // +8
-};
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;                          // +0
-    SCountBlock* m_pCount;                           // +4
-    CCountedPointer(T* object);                      // 0x0042AA29
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            if (--m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;                     // operator delete @ 0x00BFE9BC
-            }
-        }
-    }
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem {
 class CObserver { public:

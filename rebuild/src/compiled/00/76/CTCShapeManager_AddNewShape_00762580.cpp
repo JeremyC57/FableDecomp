@@ -1,5 +1,6 @@
 // CTCShapeManager::AddNewShape(CCountedPointer<NShape::CShape> shape) -- notify the shape (slot 5), then insert a type-1 shape at the front of PersistantShapes (selecting the first) or append any other (selecting the last); the by-value pointer is released on exit
 // Leaf: AddNewShape
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe 0x00762580, 148 bytes (`ret 8`).
 // Callees: NShape::CShape virtual slot 5 (+0x14, no arguments) and slot 1 (+0x04, shape type as a long),
 // vector<CCountedPointer<NShape::CShape>>::insert(iterator, const T&) @ 0x007658B0 (manifest
@@ -22,27 +23,7 @@ class CShape { public:
     void DeleteData();
 };
 }
-template <class T> struct SCountBlock {
-    long m_references;                              // +0x00
-    void (T::*m_pfnDestroy)();                      // +0x04
-    T*   m_pItem;                                   // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T* Data;                                        // +0x00
-    SCountBlock<T>* Info;                           // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info) ++Info->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->m_references == 0) {
-            (Info->m_pItem->*Info->m_pfnDestroy)();
-            operator delete(Info);
-        }
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 typedef CCountedPointer<NShape::CShape> CShapePointer;
 struct CShapeVector {                               // STLport vector<CCountedPointer<NShape::CShape>>
     CShapePointer* _M_start;

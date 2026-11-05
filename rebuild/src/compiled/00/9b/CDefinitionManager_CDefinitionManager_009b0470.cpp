@@ -1,4 +1,5 @@
 // CDefinitionManager::CDefinitionManager(const CWideString& compiledFileName, void (*errorCallback)(CCharString*)) -- the definition manager: CResourceList root, empty path lists / symbol-map pointers / vector maps / arrays, the error callback, an empty current filename, the compiled file name = the compiled-defs directory + the argument, the empty recompiled-defs map, two fresh CSymbolMaps (the symbol map seeded with the "NULL" symbol and finalised), and the +0x34 word cleared
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Naming wave 27 (family sym, chunk 695): CSymbolMap::UpdateDirty() const 0x009E5C30 (Ego_r.pdb + FableWin.pdb
 //   ?UpdateDirty@CSymbolMap@@QBEXXZ); was an invented ?Finalise@CSymbolMap (no Finalise in either PDB).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B0470, length 368 bytes (+ int3 padding), `ret 8`. Vtable 0x0129B28C (CDefinitionManager).
@@ -83,13 +84,7 @@ class CSymbolMap { public:                                    // 0x24 bytes
     void UpdateDirty() const;                          // 0x009E5C30 (Ego_r.pdb / FableWin.pdb)
 };
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;
-    SCountBlock* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) {}
-    void Reset(T* object);                             // 0x009B1F50
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 class CResourceList { public:                                 // the manager's base (0x40 bytes with the vptr)
     virtual void v00();
     unsigned char _body[0x34 - 4];

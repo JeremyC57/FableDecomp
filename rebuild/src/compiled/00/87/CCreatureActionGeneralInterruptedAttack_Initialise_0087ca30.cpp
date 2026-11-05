@@ -1,5 +1,7 @@
 // CCreatureAction_GeneralInterruptedAttack::Initialise() -- rumble the player's joystick (type 3), run the combat-action Initialise, then kick up a dust effect behind the creature (opposite its facing)
 // Leaf: ?Initialise@CCreatureAction_GeneralInterruptedAttack@@UAEXXZ
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local same-TU LowerBound bodies removed (the header defines the same-TU noinline bodies).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087CA30, 210 bytes, thiscall virtual (slot 12), plain `ret`.
 // Identity (proven): RTTI vtable of .?AVCCreatureAction_GeneralInterruptedAttack@@ slot 12 = Initialise; Ego_r.pdb / FableWin.pdb
@@ -33,49 +35,10 @@ enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 
 #include "engine/CArray.h"
 
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                                     // +0x00
-    TCompare           Compare;                                  // +0x0C
-    bool               Dirty;                                    // +0x0D
-    value_type* LowerBound(const K& key);                        // 0x0040F020
-    const value_type* LowerBound(const K& key) const;            // 0x004365B0
-};
+#include "engine/CVectorMap.h"
 // Same-TU bodies of the two retail LowerBound instances (STLport lower_bound over the sorted pairs), kept out of line:
 // VC7.1 then knows the key's address does not escape and shares its frame word with the component out-pointer.
 #pragma auto_inline(off)
-template <class K, class V, class TCompare>
-__declspec(noinline) const typename CVectorMap<K, V, TCompare>::value_type* CVectorMap<K, V, TCompare>::LowerBound(const K& key) const
-{
-    const value_type* it = Data._M_start;
-    long count = Data._M_finish - Data._M_start;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].first < key) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-template <class K, class V, class TCompare>
-__declspec(noinline) typename CVectorMap<K, V, TCompare>::value_type* CVectorMap<K, V, TCompare>::LowerBound(const K& key)
-{
-    value_type* it = Data._M_start;
-    long count = Data._M_finish - Data._M_start;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].first < key) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
 #pragma auto_inline(on)
 
 // Definition objects: CIVCountedPointeeBase (vptr, IVRefCount +0x04; slot 1 Delete) -> CResource (0x1C) -> CDefClassBase
@@ -211,8 +174,8 @@ public:
         ETCInterfaceType key = T::StatGetInterfaceType();
         TCMap* map = &Components;
         TCMap::value_type* it = map->LowerBound(key);
-        if (it == map->Data.end() || T::StatGetInterfaceType() < it->first)
-            it = map->Data.end();
+        if (it == map->end() || T::StatGetInterfaceType() < it->first)
+            it = map->end();
         *out = (T*)it->second;
         return true;
     }
@@ -223,8 +186,8 @@ public:
         ETCInterfaceType key = T::StatGetInterfaceType();
         const TCMap* map = &Components;
         const TCMap::value_type* it = map->LowerBound(key);
-        if (it == map->Data.end() || T::StatGetInterfaceType() < it->first)
-            it = map->Data.end();
+        if (it == map->end() || T::StatGetInterfaceType() < it->first)
+            it = map->end();
         *out = (const T*)it->second;
         return true;
     }
@@ -390,12 +353,7 @@ public:
     CDefPointer<const CMeleeCombatAbilityDef> PMeleeAbilityDef;  // +0xB8
     unsigned char _padBC[0x114 - 0xBC];
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                                  // +0x00
-    void* Info;                                                  // +0x04 CCPPointerInfo*
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CJoystick {
 public:
     class CInitRumble {

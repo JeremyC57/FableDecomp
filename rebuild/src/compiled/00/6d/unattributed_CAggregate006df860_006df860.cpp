@@ -1,4 +1,5 @@
 // CAggregate_006df860::~CAggregate_006df860() -- implicit destructor: members at +0xbc, +0xb8 destroyed out of line, the +0 member by tail call
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming (naming wave 22, ccs): the string type is the PDB CCharString (was CMember_0099eae0); name-only.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DF860, oracle length 33 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
@@ -20,9 +21,8 @@ class CCharString { public:
     ~CCharString();                            // 0x0099EAE0
 };
 
-class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
-    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CAggregate_006df860 {
     CMember_005cc091 m_first;            // +0 (its destructor is the tail call)

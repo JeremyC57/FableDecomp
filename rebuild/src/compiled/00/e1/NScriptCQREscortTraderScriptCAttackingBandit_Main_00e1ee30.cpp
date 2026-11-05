@@ -1,5 +1,6 @@
 // NScript::CQR_EscortTraderScript::CAttackingBandit::Main() -- an escort-quest ambush bandit: alive filter on Me, take scripted control (priority 3, retried each frame), find the trader to escort; while it lives make Me hostile to the hero and the trader and follow the trader; the first time, wait for the hero within 10 units and laugh (SND_MAN_05_NONSPEECH_AMBUSHLAUGH_0<n>) then stop following the hero; keep running script frames while the trader is alive
 // Leaf: ?Main@CAttackingBandit@CQR_EscortTraderScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first); the local's flattened PImp_Data / PImp_Info reads are the header's by-value PImp (CCountedPointer<CScriptThing>) .Data / .Info (+0x04 / +0x08).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E1EE30, length 656 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy @ 0x004ABE90 / dtor @ 0x004AA840, SetPredicate @ 0x00F35B10, IsDone @ 0x00F35B30,
 //          CBaseObject ctor @ 0x0099A380, the scripted-thing handle's IsValid @ 0x00CD23B9 / Release @ 0x00CD2770 /
@@ -23,14 +24,9 @@ class CCharString { public:
 CCharString __fastcall GFIntToCharString(long value);  // 0x0099F830
 
 struct CScriptThingImpl;
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void v00();
-    CScriptThingImpl* PImp_Data;                       // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-    bool IsAlive() const;                              // slot 75, inlined below
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CScriptThingImpl {
     virtual void s00();
     virtual void s01();
@@ -109,13 +105,12 @@ struct CScriptThingImpl {
     virtual void s74();
     virtual bool IsAlive() const;                      // slot 75 (+0x12c)
 };
-inline bool CScriptThing::IsAlive() const { return PImp_Data && PImp_Data->IsAlive(); }
+inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"

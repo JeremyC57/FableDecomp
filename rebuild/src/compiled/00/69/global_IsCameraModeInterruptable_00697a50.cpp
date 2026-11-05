@@ -1,5 +1,6 @@
 // IsCameraModeInterruptable(CCountedPointer<const NCameraModes::CBase> mode) -- false for camera modes of type 0x0A, 0x0B or 0x0F; true otherwise (also for no mode)
 // Leaf: ?IsCameraModeInterruptable@?A0x
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members m_count->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // (Leaf is a prefix: the anonymous-namespace hash varies with the file path; it excludes the Call... wrapper.)
 //
 // Retail 0x00697A50, 95 bytes (+ int3 padding to 96), `ret 8` (__fastcall TU: the 8-byte counted pointer is a class
@@ -23,34 +24,8 @@ public:
 }
 
 class CCountedItem { };
-class CCPPointerInfo {
-public:
-    long          m_count;                                  // +0x00
-    void (CCountedItem::*m_pfnDestroy)();                   // +0x04
-    CCountedItem* m_pItem;                                  // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->m_count;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->m_count == 0) {
-                (Info->m_pItem->*Info->m_pfnDestroy)();
-                operator delete(Info);
-            }
-        }
-    }
-    T* Get() const { return Data; }
-    T* operator->() const { return Data; }
-};
 
 namespace {
 bool __fastcall IsCameraModeInterruptable(CCountedPointer<const NCameraModes::CBase> mode)

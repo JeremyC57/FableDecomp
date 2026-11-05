@@ -1,5 +1,6 @@
 // CRegionConnectionGraph::SetRegionsAsConnected(long region1, long region2, bool connected) -- mark two regions as (dis)connected in both directions: each one's graph node adds or drops the other
 // Leaf: ?SetRegionsAsConnected@CRegionConnectionGraph@@QAEXJJ_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, PBlock->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008286A0, 101 bytes (+11 int3), thiscall `ret 0Ch`.
 // Identity: Ego_r.pdb name set ?SetRegionsAsConnected@CRegionConnectionGraph@@QAEXJJ_N@Z; it calls
 //   CRegionConnectionNode::SetAsConnectedToRegion (QAEXJ_N) @ 0x008285D0 twice. The catalog label
@@ -15,11 +16,7 @@ class CRegionConnectionNode { public:
     void SetAsConnectedToRegion(long region, bool connected);   // 0x008285D0
 };
 
-template<class T> class CCountedPointer { public:
-    T*    Object;                                       // +0x00
-    void* PBlock;                                       // +0x04
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 struct SRegionNodeEntry {                               // pair<long, CCountedPointer<CRegionConnectionNode> >
     long                                    first;      // +0x00

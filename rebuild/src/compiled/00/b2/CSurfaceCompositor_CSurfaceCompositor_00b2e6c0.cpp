@@ -1,5 +1,6 @@
 // CSurfaceCompositor::~CSurfaceCompositor() -- release the compositor's counted render target, close a still-open render-state capture block, then the CBase root
 // Leaf: ??1CSurfaceCompositor
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B2E6C0, length 82 bytes, `jmp` tail. Caller: the scalar deleting destructor
 // 0x00F39D10 (vtable 0x01301CF0 slot 0 = CSurfaceCompositor, rtti-vtables.tsv). The manifest label
 // (_Dest_val<allocator<pair<CCharString const,CCountedPointer<C3DSkeletalMorphTarget>>>>) is propagated and wrong.
@@ -12,26 +13,7 @@
 // capture block's inline destructor (`if (Open) { Open = false; restore; }`) -- and the out-of-line root dtor is the tail.
 void __cdecl operator delete(void* p);                       // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                    // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);               // called with Data in ecx, nothing on the stack
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 class CRenderStateManager { public:
     void RestoreCaptureBlock();                              // 0x00A05840

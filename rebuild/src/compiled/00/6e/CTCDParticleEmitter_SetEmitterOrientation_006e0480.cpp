@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::SetEmitterOrientation(const CRightHandedSet& rhs) -- orient the live emitter (start and end orientation both rhs), or store the set in the pending creation parameters
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, PCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0480, length 120 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), C3DOrientationInterpolator(const CRightHandedSet&, const CRightHandedSet&)
@@ -44,11 +45,7 @@ struct CParticleCreationParameters {
     float Interpolate;                          // +0x0c
     CRightHandedSet RHSet;                      // +0x10
 };
-template<class T> class CCountedPointer { public:
-    T*    Object;
-    long* PCount;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

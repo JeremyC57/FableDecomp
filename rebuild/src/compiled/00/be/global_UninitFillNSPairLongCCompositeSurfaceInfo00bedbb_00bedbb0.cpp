@@ -1,5 +1,6 @@
 // _global::UninitFillN_SPairLongCCompositeSurfaceInfo_00bedbb0(SPairLongCCompositeSurfaceInfo* first, unsigned long count, const SPairLongCCompositeSurfaceInfo& value, CRetailAllocator) -- placement-copy `count` {key, CCompositeSurfaceInfo} pairs, return the advanced pointer
 // Leaf: UninitFillN_SPairLongCCompositeSurfaceInfo_00bedbb0
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the non-template local CCountedPointer holds a CCompositeSurfaceCache* (its first member): it is CCountedPointer<CCompositeSurfaceCache>.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEDBB0, 63 bytes (+1 int3 pad). No callees.
 //
 // Retail bytes:  test edx,edx ; mov eax,ecx ; jbe E ; mov ecx,[value] ; push esi ; push edi ;
@@ -18,23 +19,12 @@
 
 class CCompositeSurfaceCache;
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                       // +0
-};
+#include "engine/CCountedPointer.h"
 
-struct CCountedPointer {
-    CCompositeSurfaceCache* Data;                 // +0
-    CCPPointerInfo* Info;                         // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 class CCompositeSurfaceInfo { public:                    // vtable 0x012A8154
     virtual void v00();
-    CCountedPointer Cache;                        // +4
+    CCountedPointer<CCompositeSurfaceCache> Cache;                        // +4
 };
 
 struct SPairLongCCompositeSurfaceInfo {

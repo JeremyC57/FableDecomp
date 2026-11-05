@@ -1,4 +1,5 @@
 // CHitParameters_00789358::~CHitParameters_00789358() -- destroy the intelligent pointers at +0x58 and +0x50 (0x00A01C10), release the counted pointer at +0x4c, free the buffer at +0x3c when set (free @ 0x00BFEA14), then the 12-byte member at +0x30 (0x00451AC6, a tail jump)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00789358, length 63 bytes.
 // The chunk label "CHitParameters::~CHitParameters" is propagated (a different layout); the member label "CActiveFile::OnReadFinished" too. Shape: the size-optimised module (`and dword ptr [esi+4Ch],0`, `pop ecx` after free).
 #pragma optimize("s", on)
@@ -23,15 +24,8 @@ struct CIVCountedPointer {
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CMember12_00451ac6 {
     unsigned char _body[0xc];
     ~CMember12_00451ac6();                         // 0x00451AC6

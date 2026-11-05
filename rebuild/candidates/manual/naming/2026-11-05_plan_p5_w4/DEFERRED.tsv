@@ -1,0 +1,1610 @@
+address	stage	reason
+0042d4f7	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00430430	bytes_differ	BYTES_DIFFER length 57 != 60
+00431be0	bytes_differ	BYTES_DIFFER length 48 != 51
+00431df0	bytes_differ	BYTES_DIFFER length 57 != 60
+00431ed0	bytes_differ	BYTES_DIFFER length 55 != 49
+00432180	bytes_differ	BYTES_DIFFER length 79 != 82
+00432c70	bytes_differ	BYTES_DIFFER length 395 != 389
+00432e60	bytes_differ	BYTES_DIFFER length 141 != 137
+00433f90	bytes_differ	BYTES_DIFFER length 48 != 51
+004340d0	bytes_differ	BYTES_DIFFER length 48 != 51
+00434240	bytes_differ	BYTES_DIFFER length 48 != 51
+004343f0	bytes_differ	BYTES_DIFFER length 73 != 76
+00434450	bytes_differ	BYTES_DIFFER length 239 != 233
+00434540	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'std::pair<_T1,_T2>::second' uses undefined class 'CDefClassBase::CSubDefInfo'
+004345a0	bytes_differ	BYTES_DIFFER length 195 != 191
+00434660	bytes_differ	BYTES_DIFFER length 70 != 73
+00438ff0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00439ab0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+0043ce90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void C3DVector::Initialise(float,float,float)' already has a body
+00447c80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00449440	local_std	LOCAL_STD LOCAL_STD other content
+0044a2a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+0045647d	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'std::pair<_T1,_T2>::second' uses undefined class 'CSoundPair'
+004564b5	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'std::pair<_T1,_T2>::second' uses undefined class 'CSoundPair'
+00463bff	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00464be9	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+0046a130	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+0046a178	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+0046a260	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+0046cdfc	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+0046f020	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+0046f43e	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+0046fc51	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00470cd8	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sort' : is not a member of 'CVectorMap<K,V,CompareType>'
+0047119a	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sort' : is not a member of 'CVectorMap<K,V,CompareType>'
+0047204b	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+00472415	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00473504	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SortAndTrim' : is not a member of 'CVectorMap<K,V,CompareType>'
+0047616e	bytes_differ	BYTES_DIFFER length 55 != 60
+00478533	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+00478a1e	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+00478a6d	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: '_M_allocate_and_copy' : is not a member of 'std::vector<_Tp>'
+00486f60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'AdjustTrajectoryVector' : is not a member of 'C3DVector'
+00487180	bytes_differ	BYTES_DIFFER masked sha1 differs
+004887c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00488b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'MagSquared' : is not a member of 'C3DVector'
+0048a070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00492bab	local_std	LOCAL_STD LOCAL_STD _Deque_base,_Deque_iterator,_Deque_iterator_base,deque,mem_fun_ref_t,queue
+0049be10	bytes_differ	BYTES_DIFFER length 119 != 123
+004a08d0	bytes_differ	BYTES_DIFFER length 129 != 112
+004b0aa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b0b90	local_std	LOCAL_STD LOCAL_STD A,_Identity,_Nonconst_traits,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,set
+004b0c80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b0d30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+004b0f10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b0fc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b1080	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b1110	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b11a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b1270	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b1340	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b1450	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b1590	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+004b2b70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+004b4590	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CVectorMap' : use of class template requires template argument list
+004b4770	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CVectorMap' : use of class template requires template argument list
+004b4a10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+004b4aa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+004b4c50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+004b9750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+004b97d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+004b9850	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+004bb6b0	local_std	LOCAL_STD LOCAL_STD other content
+004bbbc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::sort' : redefinition; different type modifiers
+004bbbe0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::sort' : redefinition; different type modifiers
+004c22c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Interpolate' : is not a member of 'C3DVector'
+004c7da0	local_std	LOCAL_STD LOCAL_STD A,_Identity,_Nonconst_traits,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,set
+004c8310	local_std	LOCAL_STD LOCAL_STD other content
+004c8ba0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2229: class 'CThing' has an illegal zero-sized array
+004c8fb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2381: 'abort' : redefinition; __declspec(noreturn) differs
+004cb6e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'OffsetBy2D' : is not a member of 'C3DVector'
+004cd400	local_std	LOCAL_STD LOCAL_STD other content
+004cea60	local_std	LOCAL_STD LOCAL_STD _Alloc_traits,_Is_integer,_Nonconst_traits
+004d1d50	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,set
+004d1e20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Insert' : is not a member of 'CVectorMap<K,V>'
+004d1fe0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'CVectorMap' : too few template arguments
+004d2060	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Insert' : is not a member of 'CVectorMap<K,V>'
+004d8b3c	bytes_differ	BYTES_DIFFER length 50 != 42
+004e6f0b	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'CVectorMap' : too few template arguments
+004e7578	stray_change	STRAY_CHANGE 004e34ec: ??1?$CVectorMap@JV?$CIntelligentPointer@VCThing@@@@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@@QAE@XZ -> ??1?$vector@U?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@V?$allocator@U?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@@2@@std@@QAE@XZ
+004ea26b	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'data' : is not a member of 'CArray<T>'
+004ea2c9	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'data' : is not a member of 'CArray<T>'
+004ec85a	local_std	LOCAL_STD LOCAL_STD _Rb_global,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,map
+004ec8c2	local_std	LOCAL_STD LOCAL_STD _Alloc,_Nonconst_traits,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,ma
+004ec9b5	local_std	LOCAL_STD LOCAL_STD other content
+004ed459	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SortAndTrim' : is not a member of 'CVectorMap<K,V,CompareType>'
+004eda6c	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::resize' : unable to match function definition to an existing declaration
+004f9d7b	bytes_differ	BYTES_DIFFER length 55 != 60
+004fa1f0	bytes_differ	BYTES_DIFFER length 55 != 60
+004fcb30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'const C3DVector' to 'C2DCoordI'
+004fe550	local_std	LOCAL_STD LOCAL_STD Alloc,_Rb_global,_Rb_tree,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+004fe5b0	local_std	LOCAL_STD LOCAL_STD Alloc,_Rb_global,_Rb_tree,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+004ff080	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+004ff440	bytes_differ	BYTES_DIFFER masked sha1 differs
+005064c0	local_std	LOCAL_STD LOCAL_STD other content
+005066e0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00506d40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CVectorMap' : use of class template requires template argument list
+00506f30	bytes_differ	BYTES_DIFFER length 419 != 314
+005157a0	local_std	LOCAL_STD LOCAL_STD other content
+00518c00	bytes_differ	BYTES_DIFFER length 147 != 142
+00518c90	bytes_differ	BYTES_DIFFER length 148 != 140
+005191e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'NThingMap::CThingMapManager::CThingMapInfo *' : unknown size
+00519eb0	bytes_differ	BYTES_DIFFER length 49 != 51
+0051a0a0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+0051a350	local_std	LOCAL_STD LOCAL_STD other content
+0051b560	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+0051c110	local_std	LOCAL_STD LOCAL_STD other content
+0051c800	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+0051ccd0	bytes_differ	BYTES_DIFFER length 55 != 50
+0051cdf0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+0051e800	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+0051fa00	local_std	LOCAL_STD LOCAL_STD other content
+00520390	local_std	LOCAL_STD LOCAL_STD _Alloc_traits,_Is_integer,_Nonconst_traits,__type_traits_aux
+00522880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2064: term does not evaluate to a function taking 0 arguments
+00523440	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00523540	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,map
+00523860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'first' : is not a member of 'CEntityScriptArray'
+00523910	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'data' : is not a member of 'CArray<T>'
+0052b510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+0052b5e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'O std::__copy(I,I,O,const std::random_access_iterator_tag &,D *)' : template function has already been defined
+0052bb40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+0052bbe0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+0052bca0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+0052bd10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'O std::__copy(I,I,O,const std::random_access_iterator_tag &,D *)' : template function has already been defined
+0052bd70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::_Destroy(T *)' : template function has already been defined
+0052bff0	local_std	LOCAL_STD LOCAL_STD other content
+0052c580	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+0052c630	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+0052c6a0	local_std	LOCAL_STD LOCAL_STD other content
+00563130	stray_change	STRAY_CHANGE 00485dbc: ?_M_insert_overflow@?$vector@PAUCComponent@@@std@@QAEXPAPAUCComponent@@ABQAU3@ABU__true_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@PAUCComponent@@V?$allocator@PAUCComponent@@@std@@@std@@IAEXPAPAUCComponent@@ABQAU3@ABU__true_type@2@I_N@Z
+0056fdc3	bytes_differ	BYTES_DIFFER length 184 != 185
+0056fe7c	bytes_differ	BYTES_DIFFER masked sha1 differs
+0059de76	local_std	LOCAL_STD LOCAL_STD _Rb_global,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,map
+005be3b1	bytes_differ	BYTES_DIFFER masked sha1 differs
+005be62c	bytes_differ	BYTES_DIFFER masked sha1 differs
+005d64dd	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+005dc2e0	stray_change	STRAY_CHANGE 005dc020: ?FindFirstAnimWithName@CAnimationSet@@QBEPBU?$pair@KVCAnimationEntry@@@@ABVCCharString@@@Z -> ?FindFirstAnimWithName@CAnimationSet@@QBEPBU?$pair@KVCAnimationEntry@@@std@@ABVCCharString@@@Z
+005dd2e0	bytes_differ	BYTES_DIFFER length 29 != 32
+005dedc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+005df960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+005e0280	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+005e0300	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+005e0380	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+005e3170	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+005e38c0	local_std	LOCAL_STD LOCAL_STD other content
+005e3920	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+005ed190	method_map	METHOD_MAP METHOD_MAP Normalise body is not the header Normalise computation: float scale = 1.0f / Magnitude(); X *= scale; Y *= scale; Z *= scale;
+005ee31d	bytes_differ	BYTES_DIFFER length 51 != 72
+005ee365	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'CVectorMap<K,V,CompareType>::const_iterator' to 'const pair<T1,T2> *'
+005ee99d	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'end' : is not a member of 'CLongVector'
+005eed4c	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'CVectorMap<K,V,CompareType>::iterator' to 'pair<T1,T2> *'
+005f6423	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::iterator' to 'pair<T1,T2> *'
+005f66d9	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::iterator' to 'pair<T1,T2> *'
+005f7f4c	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+005f7f89	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+005f7fdf	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+005fa47d	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sort' : is not a member of 'CVectorMap<K,V,CompareType>'
+005fa496	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sort' : is not a member of 'CVectorMap<K,V,CompareType>'
+005fc2d0	no_block	NO_BLOCK NO_BLOCK
+005fc8a0	no_block	NO_BLOCK NO_BLOCK
+005fd410	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Nonconst_traits,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node_base,set
+006223c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+006276f0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Nonconst_traits,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+0062ce60	bytes_differ	BYTES_DIFFER length 250 != 290
+00632ff0	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+006349b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'std::_List_iterator' : too few template arguments
+006359c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+00636400	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'std::_List_iterator' : too few template arguments
+006366b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0063a540	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2738: 'operator C2DCoordI' : is ambiguous or is not a member of 'C3DVector'
+0063d960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0063db30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0064a060	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CVectorMap<K,V,CompareType>'
+0064a568	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+0064fc23	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00657d90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'end' : is not a member of 'LongVector'
+00658020	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'begin' : is not a member of 'ButtonVector'
+0065a075	local_std	LOCAL_STD LOCAL_STD A,_Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_R
+0065ac83	bytes_differ	BYTES_DIFFER masked sha1 differs
+0065e412	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+0065f056	bytes_differ	BYTES_DIFFER masked sha1 differs
+0065fba4	bytes_differ	BYTES_DIFFER length 45 != 61
+00661b40	bytes_differ	BYTES_DIFFER masked sha1 differs
+006627a0	method_map	METHOD_MAP METHOD_MAP Length body is not the header GetMagnitude computation: return Magnitude(X, Y, Z);
+00663510	method_map	METHOD_MAP METHOD_MAP Length body is not the header GetMagnitude computation: return Magnitude(X, Y, Z);
+006637d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DotProduct' : is not a member of 'C3DVector'
+00664370	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+006644f0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00664cb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+00664d00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+00664e50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+00666b50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+00669cb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+0066fb80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+0066fc90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+006700f0	bytes_differ	BYTES_DIFFER length 180 != 162
+006701a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+006702e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+00674a40	bytes_differ	BYTES_DIFFER length 57 != 59
+00674d80	bytes_differ	BYTES_DIFFER length 92 != 87
+006753f0	local_std	LOCAL_STD LOCAL_STD other content
+00675500	bytes_differ	BYTES_DIFFER length 45 != 44
+006755e0	local_std	LOCAL_STD LOCAL_STD other content
+006758b0	local_std	LOCAL_STD LOCAL_STD other content
+00675980	local_std	LOCAL_STD LOCAL_STD other content
+00675b60	bytes_differ	BYTES_DIFFER length 117 != 83
+006772d0	bytes_differ	BYTES_DIFFER length 112 != 115
+00678460	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00679560	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+0067c4d0	bytes_differ	BYTES_DIFFER length 57 != 60
+0067c720	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+0067c7e0	compile_fail	COMPILE_FAIL NO_FUNC
+0067c8b0	local_std	LOCAL_STD LOCAL_STD other content
+0067cc50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'std::pair<_T1,_T2>::second' uses undefined struct 'CSubDefInfo'
+0067ce50	bytes_differ	BYTES_DIFFER length 246 != 238
+006804c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00680500	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00680840	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00680950	stray_change	STRAY_CHANGE 00681340: ?resize@?$CArray@UCVoiceEntry@@@@QAEXK@Z -> ?resize@?$vector@UCVoiceEntry@@V?$allocator@UCVoiceEntry@@@std@@@std@@QAEXI@Z
+00680a40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+006811c0	local_std	LOCAL_STD LOCAL_STD other content
+006870c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00687fd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00689050	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+0068ae30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0068b2e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0068b7c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0068f180	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+0068f2a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+0068f320	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0068ff50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+00690830	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00690b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00690fd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00691130	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00691470	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+00691560	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00691680	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00692b30	bytes_differ	BYTES_DIFFER masked sha1 differs
+00693140	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+00694020	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'FindInline' : is not a member of 'CVectorMap<K,V,CompareType>'
+00698d10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2661: 'CVectorMap<K,V,CompareType>::Find' : no overloaded function takes 0 arguments
+0069a1a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__false_type &,std::vector<_Tp
+0069c740	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'CVectorMap<K,V,CompareType>::LowerBound' : unable to match function definition to an existing declaration
+0069d090	stray_change	STRAY_CHANGE 0069c740: ?LowerBound@?$CVectorMap@KVCDefString@@V?$CKeyPairCompareLess@KVCDefString@@@@@@QBEPBU?$pair@KVCDefString@@@@ABK@Z -> ?LowerBound@?$CVectorMap@KVCDefString@@V?$CKeyPairCompareLess@KVCDefString@@@@@@QBEPBU?$pair@KVCDefString@@@std@@ABK@Z
+0069fce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+006a2220	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InsertGrow' : is not a member of 'CArray<T>'
+006a29b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+006a2a10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+006a5460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+006a7150	method_map	METHOD_MAP METHOD_MAP Normalise body is not the header Normalise computation: float lengthSquared = GetLengthSquared(); if (lengthSquared > 1e-4f) { float r = 1.0f / sqrtf(length
+006a7270	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator *=' is ambiguous
+006a7990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+006a8a30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+006a8a80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+006a8d30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+006a9ef0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'C3DVector'
+006aa100	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+006ab770	method_map	METHOD_MAP METHOD_MAP Length body is not the header GetMagnitude computation: return Magnitude(X, Y, Z);
+006ac910	stray_change	STRAY_CHANGE own ?Create@CThingPlayerCreature@NFactory006ac910@@SIPAU12@HABUC3DVector@2@HH@Z -> ?Create@CThingPlayerCreature@NFactory006ac910@@SIPAU12@HABVC3DVector@2@HH@Z ; 006a9dd0: ?ConstructFromParams@CThingPlayerCreature@NFactory006ac910@@QAE_NHABUC3DVector@2@HH@Z -> ?ConstructFromParams@CThingPlayerCreature@NFactory006ac910@@QAE_NHABVC3DVector@2@HH@Z ; 006a06e0: ??0CTCParamsPhysicsBase@NFactory006ac910@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z -> ??0CTCParamsPhysicsBase@NFactory006ac910@@QAE@ABVC3DVector@1@ABUCRightHandedSet@1@@Z
+006ad220	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetAccurateMagnitude' : is not a member of 'C3DVector'
+006ad260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetAccurateMagnitude' : is not a member of 'C3DVector'
+006afa40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+006afcb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'OffsetBy2D' : is not a member of 'C3DVector'
+006b0020	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetAngleYZ' : is not a member of 'C3DVector'
+006b0250	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Interpolate' : is not a member of 'C3DVector'
+006b0610	bytes_differ	BYTES_DIFFER masked sha1 differs
+006b0780	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+006b0c10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'OffsetBy2D' : is not a member of 'C3DVector'
+006b3030	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float GFFastOneOverSqrt(float)' already has a body
+006b5df0	bytes_differ	BYTES_DIFFER length 20 != 222
+006b6010	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+006b6180	bytes_differ	BYTES_DIFFER length 20 != 205
+006b6610	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::_Destroy(T *)' : template function has already been defined
+006b67a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::_Destroy(T *)' : template function has already been defined
+006b6990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::__uninitialized_copy' : redefinition; different type modifiers
+006b6b30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+006b7380	bytes_differ	BYTES_DIFFER length 223 != 263
+006b84e0	bytes_differ	BYTES_DIFFER length 53 != 101
+006b8a80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+006b8ae0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+006ba8b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+006bafb0	local_std	LOCAL_STD LOCAL_STD other content
+006be5e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+006bf410	local_std	LOCAL_STD LOCAL_STD other content
+006c0fd0	bytes_differ	BYTES_DIFFER masked sha1 differs
+006c3ca0	local_std	LOCAL_STD LOCAL_STD other content
+006c7960	bytes_differ	BYTES_DIFFER length 380 != 404
+006c8780	stray_change	STRAY_CHANGE 00835a20: ?Create@CTCDNone@X_006c8780@@SIPAUCThing@2@IABUC3DVector@2@_N@Z -> ?Create@CTCDNone@X_006c8780@@SIPAUCThing@2@IABVC3DVector@2@_N@Z
+006c88d0	bytes_differ	BYTES_DIFFER length 673 != 697
+006ca850	local_std	LOCAL_STD LOCAL_STD other content
+006ca950	bytes_differ	BYTES_DIFFER length 201 != 145
+006ccf70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsEqual' : is not a member of 'C3DVector'
+006cd7b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+006cd890	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+006cda50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+006cdbd0	stray_change	STRAY_CHANGE 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+006cdc70	stray_change	STRAY_CHANGE 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+006cdd00	stray_change	STRAY_CHANGE 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+006cdd50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+006ce670	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+006cf3b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V>::iterator CVectorMap<K,V>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const ETCInterfaceType &'
+006d4970	stray_change	STRAY_CHANGE 006d4750: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z
+006d5b50	bytes_differ	BYTES_DIFFER masked sha1 differs
+006e11f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'exception' : is not a member of 'operator``global namespace'''
+006e1620	bytes_differ	BYTES_DIFFER masked sha1 differs
+006e1d80	stray_change	STRAY_CHANGE own ?__uninitialized_copy@std@@YIPAU?$pair@KUC3DVector@FableCopy_006e1d80@@@FableCopy_006e1d80@@PBU23@0PAU23@ABU__false_type@@@Z -> ?__uninitialized_copy@std@@YIPAU?$pair@KVC3DVector@FableCopy_006e1d80@@@FableCopy_006e1d80@@PBU23@0PAU23@ABU__false_type@@@Z
+006e2000	stray_change	STRAY_CHANGE own ??4?$vector@U?$pair@IUC3DVector@FableAssign_006e2000@@@FableAssign_006e2000@@@FableAssign_006e2000@@QAEAAU01@ABU01@@Z -> ??4?$vector@U?$pair@IVC3DVector@FableAssign_006e2000@@@FableAssign_006e2000@@@FableAssign_006e2000@@QAEAAU01@ABU01@@Z ; 006e1d80: ?__uninitialized_copy@FableAssign_006e2000@@YIPAU?$pair@IUC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z -> ?__uninitialized_copy@FableAssign_006e2000@@YIPAU?$pair@IVC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z ; 006e1c10: ?__copy@FableAssign_006e2000@@YIPAU?$pair@IUC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z -> ?__copy@FableAssign_006e2000@@YIPAU?$pair@IVC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z
+006e24d0	bytes_differ	BYTES_DIFFER length 38 != 44
+006e2e60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+006e3440	stray_change	STRAY_CHANGE own ?UpdateDialogueElement@NSpeechGainManager@@YI_NAAVCActiveDialogueInfo@1@JABV?$vector@VCDialogueLayerDef@NSpeechGainManager@@@std@@@Z -> ?UpdateDialogueElement@NSpeechGainManager@@YI_NAAVCActiveDialogueInfo@1@JABV?$vector@VCDialogueLayerDef@NSpeechGainManager@@V?$allocator@VCDialogueLayerDef@NSpeechGainManager@@@std@@@std@@@Z ; 006e2b70: ?GetTargetGain@NSpeechGainManager@@YIMABVCActiveDialogueInfo@1@ABV?$vector@VCDialogueLayerDef@NSpeechGainManager@@@std@@@Z -> ?GetTargetGain@NSpeechGainManager@@YIMABVCActiveDialogueInfo@1@ABV?$vector@VCDialogueLayerDef@NSpeechGainManager@@V?$allocator@VCDialogueLayerDef@NSpeechGainManager@@@std@@@std@@@Z ; 013baba4: ?g_ResponseTimes@NSpeechGainManager@@3V?$vector@VCResponseTimes@NSpeechGainManager@@@std@@A -> ?g_ResponseTimes@NSpeechGainManager@@3V?$vector@VCResponseTimes@NSpeechGainManager@@V?$allocator@VCResponseTimes@NSpeechGainManager@@@std@@@std@@A
+006ea770	bytes_differ	BYTES_DIFFER masked sha1 differs
+006eac50	stray_change	STRAY_CHANGE 006f0810: ??0?$vector@UC3DVector@CombatDebug@@@std@CombatDebug@@QAE@ABU012@@Z -> ??0?$vector@VC3DVector@CombatDebug@@@std@CombatDebug@@QAE@ABU012@@Z
+006eba60	stray_change	STRAY_CHANGE own ?CCombatManager_RebuildCombatLists@CombatLists@@YIXPAU_Rb_tree@1@ABUC3DVector@1@PAUlist@1@2@Z -> ?CCombatManager_RebuildCombatLists@CombatLists@@YIXPAU_Rb_tree@1@ABVC3DVector@1@PAUlist@1@2@Z
+006ed480	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+006efec0	stray_change	STRAY_CHANGE own ?__uninitialized_copy@std@@YIPAU?$pair@UC3DVector@FableCopy_006efec0@@_N@FableCopy_006efec0@@PBU23@0PAU23@ABU__false_type@@@Z -> ?__uninitialized_copy@std@@YIPAU?$pair@VC3DVector@FableCopy_006efec0@@_N@FableCopy_006efec0@@PBU23@0PAU23@ABU__false_type@@@Z
+006f95a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+006f9640	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'End' : is not a member of 'CVectorMap<K,V>'
+006f96c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+006f9ac0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'End' : is not a member of 'CVectorMap<K,V>'
+006f9b50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'End' : is not a member of 'CVectorMap<K,V>'
+006faf20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+006faf80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+006fc520	stray_change	STRAY_CHANGE 006fc130: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@M@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@M@2@ABU32@ABU__false_type@2@I_N@Z
+006fc620	local_std	LOCAL_STD LOCAL_STD other content
+006fd0b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+006fd330	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2668: 'std::_Destroy' : ambiguous call to overloaded function
+006fd400	bytes_differ	BYTES_DIFFER length 71 != 60
+007003a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+007020d0	stray_change	STRAY_CHANGE 00442770: ?resize@?$CArray@M@@QAEXKABM@Z -> ?resize@?$vector@MV?$allocator@M@std@@@std@@QAEXIABM@Z
+00705d40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2953: 'CVectorMap' : template class has already been defined
+00707b10	local_std	LOCAL_STD LOCAL_STD other content
+0070c770	bytes_differ	BYTES_DIFFER length 130 != 131
+00712340	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00713010	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2552: 'cameraPosition' : non-aggregates cannot be initialized with initializer list
+00714900	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'front' : is not a member of 'std::list<_Tp>'
+00715560	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V,CompareType>'
+00717950	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CSubtitledMessage *' : unknown size
+00719e80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'CVectorMap' : too few template arguments
+0071a2f0	local_std	LOCAL_STD LOCAL_STD _Alloc_traits,_Is_integer,_Nonconst_traits
+0071ab20	bytes_differ	BYTES_DIFFER masked sha1 differs
+00721a50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2065: 'pointer' : undeclared identifier
+00722270	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::__destroy_aux' : redefinition; different type modifiers
+007222b0	bytes_differ	BYTES_DIFFER length 75 != 58
+00723c80	bytes_differ	BYTES_DIFFER masked sha1 differs
+00724010	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'C3DVector'
+00724f80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00724fc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00726340	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetXYLengthSquared' : is not a member of 'C3DVector'
+007268d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00728bb0	local_std	LOCAL_STD LOCAL_STD other content
+00728c10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+00728c40	local_std	LOCAL_STD LOCAL_STD other content
+00728d10	local_std	LOCAL_STD LOCAL_STD other content
+00728df0	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+0072abd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+0072b3b0	bytes_differ	BYTES_DIFFER masked sha1 differs
+007327f0	no_block	NO_BLOCK NO_BLOCK
+00736760	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00738980	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+00738a00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+00739140	no_block	NO_BLOCK NO_BLOCK
+00739250	no_block	NO_BLOCK NO_BLOCK
+0073d0e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'CVectorMap<K,V,CompareType>::LowerBound' : unable to match function definition to an existing declaration
+0073d250	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+0073da50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Count' : is not a member of 'CVectorMap<K,V,CompareType>'
+00743e60	local_std	LOCAL_STD LOCAL_STD other content
+00746860	no_block	NO_BLOCK NO_BLOCK
+0074a260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+0074ee90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00751e80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '!=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00752300	bytes_differ	BYTES_DIFFER masked sha1 differs
+00752930	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: '!=' : is not a member of 'C3DVector'
+007577f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'CVectorMap<K,V,CompareType>::Dirty' : cannot access private member declared in class 'CVectorMap<K,V,CompareType>'
+00757870	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'CVectorMap<K,V,CompareType>::Dirty' : cannot access private member declared in class 'CVectorMap<K,V,CompareType>'
+00757930	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'CVectorMap<K,V,CompareType>::Dirty' : cannot access private member declared in class 'CVectorMap<K,V,CompareType>'
+00758470	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00758570	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00759570	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+00759b40	bytes_differ	BYTES_DIFFER masked sha1 differs
+00759d30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+0075a530	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+0075cd30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0075cd90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0075f980	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2668: 'std::_Construct' : ambiguous call to overloaded function
+0075fe30	bytes_differ	BYTES_DIFFER length 193 != 189
+00760910	bytes_differ	BYTES_DIFFER length 104 != 123
+00760c40	bytes_differ	BYTES_DIFFER masked sha1 differs
+00762440	stray_change	STRAY_CHANGE own ??0CBasicShape@NShape@@QAE@JABU?$CRetailVector@UC3DVector@NShape@@@@@Z -> ??0CBasicShape@NShape@@QAE@JABU?$CRetailVector@VC3DVector@NShape@@@@@Z ; 006f0810: ??0?$CRetailVector@UC3DVector@NShape@@@@QAE@ABU0@@Z -> ??0?$CRetailVector@VC3DVector@NShape@@@@QAE@ABU0@@Z
+00767da0	local_std	LOCAL_STD LOCAL_STD other content
+00768210	local_std	LOCAL_STD LOCAL_STD back_insert_iterator,output_iterator_tag
+00768fc0	stray_change	STRAY_CHANGE own ?__uninitialized_copy@std@@YIPAU?$pair@KUC3DVector@FableCopy_00768fc0@@@FableCopy_00768fc0@@PBU23@0PAU23@ABU__false_type@@@Z -> ?__uninitialized_copy@std@@YIPAU?$pair@KVC3DVector@FableCopy_00768fc0@@@FableCopy_00768fc0@@PBU23@0PAU23@ABU__false_type@@@Z
+00769470	stray_change	STRAY_CHANGE own ??$_Push_heap@PAU?$pair@KUC3DVector@N00769470@@@N00769470@@HU12@U?$CKeyPairCompareLess@KUC3DVector@N00769470@@@2@@N00769470@@YIXPAU?$pair@KUC3DVector@N00769470@@@0@HHU10@U?$CKeyPairCompareLess@KUC3DVector@N00769470@@@0@@Z -> ??$_Push_heap@PAU?$pair@KVC3DVector@N00769470@@@N00769470@@HU12@U?$CKeyPairCompareLess@KVC3DVector@N00769470@@@2@@N00769470@@YIXPAU?$pair@KVC3DVector@N00769470@@@0@HHU10@U?$CKeyPairCompareLess@KVC3DVector@N00769470@@@0@@Z
+0076b320	local_std	LOCAL_STD LOCAL_STD other content
+0076b700	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+0076c750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sort' : is not a member of 'CVectorMap<K,V,CompareType>'
+0076e2f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00771bd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPerpendicularXY' : is not a member of 'C3DVector'
+00772510	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00772590	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+007783f0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+0077a180	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Sele
+007865e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CTCSkeletalMorph::CSkeletalMorph *' : unknown size
+00786650	bytes_differ	BYTES_DIFFER length 33 != 23
+00786670	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'std::vector<_Tp>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00787500	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'std::vector<_Tp>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00788617	local_std	LOCAL_STD LOCAL_STD back_insert_iterator,unary_negate
+00789d90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00789e60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00793d20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00798770	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00799e30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0079a6e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+0079c290	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+007a43a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+007a54a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+007a6e20	bytes_differ	BYTES_DIFFER masked sha1 differs
+007a7000	bytes_differ	BYTES_DIFFER masked sha1 differs
+007a71b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+007a9870	bytes_differ	BYTES_DIFFER masked sha1 differs
+007a9960	bytes_differ	BYTES_DIFFER masked sha1 differs
+007a9e40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+007aa9e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+007af0f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float GFFastOneOverSqrt(float)' already has a body
+007b0880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+007b2ab0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007b2e20	local_std	LOCAL_STD LOCAL_STD _Deque_base,_Deque_iterator,_Deque_iterator_base,_Nonconst_traits,deque
+007b5ca0	bytes_differ	BYTES_DIFFER masked sha1 differs
+007b9d30	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+007ba550	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'first' : is not a member of 'CVectorMap<K,V,CompareType>'
+007be0f9	method_map	METHOD_MAP METHOD_MAP Normalise defined 2 times (1 inside the local C3DVector)
+007c04a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'end' : is not a member of 'CSoundGroup'
+007c9180	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+007ca350	local_std	LOCAL_STD LOCAL_STD other content
+007ccb00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+007cd930	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'std::_List_iterator' : too few template arguments
+007cf040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'std::_List_iterator' : too few template arguments
+007d3560	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007d79c0	bytes_differ	BYTES_DIFFER length 67 != 63
+007dccb0	method_map	METHOD_MAP METHOD_MAP Normalise is declared only (out of line); the header Normalise is inline
+007dd270	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007e59b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+007edb80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+007f11d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007f1b70	no_block	NO_BLOCK NO_BLOCK
+007f2120	method_map	METHOD_MAP METHOD_MAP GetLength defined 3 times (1 inside the local C3DVector)
+007f59f0	bytes_differ	BYTES_DIFFER masked sha1 differs
+007f9480	bytes_differ	BYTES_DIFFER length 119 != 109
+007f9660	bytes_differ	BYTES_DIFFER masked sha1 differs
+007fb500	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+007fbb00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+007fdb10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'RetailVector<T>::iterator' to 'char *'
+00805920	bytes_differ	BYTES_DIFFER masked sha1 differs
+008091a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+0080c140	bytes_differ	BYTES_DIFFER length 62 != 58
+0080d0b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator *' is ambiguous
+0080da50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetXYLength' : is not a member of 'C3DVector'
+008128f0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00812a10	bytes_differ	BYTES_DIFFER masked sha1 differs
+00815070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00815ce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'C3DVector' (or there is no acceptable conversion)
+00815f00	bytes_differ	BYTES_DIFFER masked sha1 differs
+00816390	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00819d50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00819e60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00819f70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00819fd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+0081b0a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V>'
+0081b220	local_std	LOCAL_STD LOCAL_STD other content
+0081b490	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'CVectorMap<K,V,CompareType>::Dirty' : cannot access private member declared in class 'CVectorMap<K,V,CompareType>'
+0081b510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2059: syntax error : 'string'
+0081d820	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+0081d8a0	local_std	LOCAL_STD LOCAL_STD other content
+0081e190	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sort' : is not a member of 'CVectorMap<K,V,CompareType>'
+0081e1f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sort' : is not a member of 'CVectorMap<K,V,CompareType>'
+00827b00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00827b60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00829760	local_std	LOCAL_STD LOCAL_STD other content
+00829ce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0082acd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+0082d9c0	bytes_differ	BYTES_DIFFER masked sha1 differs
+0082e780	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+0082e860	no_block	NO_BLOCK NO_BLOCK
+0082fd90	bytes_differ	BYTES_DIFFER masked sha1 differs
+008326a0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00832e60	bytes_differ	BYTES_DIFFER masked sha1 differs
+00833230	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'const _Tp &std::min(const _Tp &,const _Tp &)' : template function has already been defined
+008332e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'const _Tp &std::min(const _Tp &,const _Tp &)' : template function has already been defined
+00833390	bytes_differ	BYTES_DIFFER masked sha1 differs
+00835c80	stray_change	STRAY_CHANGE own ?Create@ExternalRetry_00835c80@@YIPAUCThingDeadCreature@1@HABUC3DVector@1@HABUCCharString@1@ABUCAnimFilterBase@1@@Z -> ?Create@ExternalRetry_00835c80@@YIPAUCThingDeadCreature@1@HABVC3DVector@1@HABUCCharString@1@ABUCAnimFilterBase@1@@Z ; 008388d0: ?ConstructFromParams@CThingDeadCreature@ExternalRetry_00835c80@@QAE_NHABUC3DVector@2@HIABUCCharString@2@PAU12@2_N@Z -> ?ConstructFromParams@CThingDeadCreature@ExternalRetry_00835c80@@QAE_NHABVC3DVector@2@HIABUCCharString@2@PAU12@2_N@Z ; 006a06e0: ??0CTCParamsPhysicsBase@ExternalRetry_00835c80@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z -> ??0CTCParamsPhysicsBase@ExternalRetry_00835c80@@QAE@ABVC3DVector@1@ABUCRightHandedSet@1@@Z
+00835fd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2953: 'CVectorMap' : template class has already been defined
+00838ec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00842b60	bytes_differ	BYTES_DIFFER length 61 != 85
+00842bc0	bytes_differ	BYTES_DIFFER length 39 != 62
+008444a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00845040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'const T &std::min(const T &,const T &)' : template function has already been defined
+00846100	free_op	FREE_OP FREE_OP operator+ body differs: returnC3DVector(B.X+A.X,B.Y+A.Y,A.Z);
+00846410	free_op	FREE_OP FREE_OP operator+ body differs: returnC3DVector(B.X+A.X,B.Y+A.Y,A.Z);
+0084a290	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCCreatureModeManager *'
+0084a2f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCCreatureModeManager *'
+0084cdf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPerpendicularXY' : is not a member of 'C3DVector'
+0084cf40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0084d0e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '^' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+0084d790	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2953: 'CVectorMap' : template class has already been defined
+00853830	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'z' : is not a member of 'NCameraModes::C3DVector'
+00853ba0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'z' : is not a member of 'NCameraModes::C3DVector'
+00854b90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__false_type &,std::vector<_Tp
+00855500	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00855880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCCombat *'
+008558d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCCombat *'
+00855af0	bytes_differ	BYTES_DIFFER length 68 != 88
+00856040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'C3DVector' (or there is no acceptable conversion)
+008569c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00856b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float fabs(float)' already has a body
+00857b70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+00857cb0	stray_change	STRAY_CHANGE 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+0085ad30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+0085bd70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+0085ef00	bytes_differ	BYTES_DIFFER masked sha1 differs
+0085ef70	bytes_differ	BYTES_DIFFER masked sha1 differs
+0085f200	bytes_differ	BYTES_DIFFER masked sha1 differs
+0085f470	bytes_differ	BYTES_DIFFER masked sha1 differs
+0085f880	bytes_differ	BYTES_DIFFER masked sha1 differs
+0085f8d0	method_map	METHOD_MAP METHOD_MAP GetLengthSquared body is not the header GetSquaredMagnitude computation: return *this * *this;
+0085faa0	bytes_differ	BYTES_DIFFER masked sha1 differs
+0085fd70	bytes_differ	BYTES_DIFFER masked sha1 differs
+0085fe60	bytes_differ	BYTES_DIFFER masked sha1 differs
+00861e60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00863030	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00864170	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get2D' : is not a member of 'C3DVector'
+008644e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00864620	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00864840	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00865c20	method_map	METHOD_MAP METHOD_MAP GetLength defined 2 times (1 inside the local C3DVector)
+00865d40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+008663d0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00866d80	bytes_differ	BYTES_DIFFER masked sha1 differs
+00867010	bytes_differ	BYTES_DIFFER masked sha1 differs
+00867f60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+00867fe0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+0086a8d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+0086a930	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+0086a980	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+0086a9d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Count' : is not a member of 'CVectorMap<K,V,CompareType>'
+0086b210	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CVectorMap<K,V,CompareType>'
+0086b810	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InsertGrow' : is not a member of 'CArray<T>'
+0086b900	stray_change	STRAY_CHANGE 0086d370: ?_M_insert_overflow@?$vector@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@@std@@QAEXPAVCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@ABV345@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@V?$allocator@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@@std@@@std@@IAEXPAVCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@ABV345@ABU__false_type@2@I_N@Z
+0086bb60	local_std	LOCAL_STD LOCAL_STD other content
+0086bc10	local_std	LOCAL_STD LOCAL_STD other content
+0086bcc0	stray_change	STRAY_CHANGE 0086bc10: ?AddTextureMorph@CRandomAppearanceMorph@@QAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@@@KABVCTextureMorph@1@@Z -> ?AddTextureMorph@CRandomAppearanceMorph@@QAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@KABVCTextureMorph@1@@Z
+0086bd20	stray_change	STRAY_CHANGE 0086bc10: ?AddTextureMorph@CRandomAppearanceMorph@@QAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@@@KABVCTextureMorph@1@@Z -> ?AddTextureMorph@CRandomAppearanceMorph@@QAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@KABVCTextureMorph@1@@Z
+0086bf70	stray_change	STRAY_CHANGE 0086b810: ?GetRandomTextureMorphs@CRandomAppearanceMorph@@QAEXAAKKAAV?$CVectorMap@KUCTextureMorph@@@@AAV?$CArray@UCMorphSetTextureMorph@CMorphSet@@@@@Z -> ?GetRandomTextureMorphs@CRandomAppearanceMorph@@QAEXAAKKAAV?$CVectorMap@KUCTextureMorph@@V?$CKeyPairCompareLess@KUCTextureMorph@@@@@@AAV?$CArray@UCMorphSetTextureMorph@CMorphSet@@@@@Z
+0086c4d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CRandomAppearanceMorph::CSkeletalMorph *' : unknown size
+0086d240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetKeyList' : is not a member of 'CVectorMap<K,V,CompareType>'
+0086d570	local_std	LOCAL_STD LOCAL_STD other content
+0086d6c0	local_std	LOCAL_STD LOCAL_STD other content
+0086d740	local_std	LOCAL_STD LOCAL_STD other content
+0086d7d0	stray_change	STRAY_CHANGE 0086d370: ?_M_insert_overflow@?$vector@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@V?$allocator@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@@std@@@std@@QAEXPAVCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@ABV345@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@V?$allocator@VCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@@std@@@std@@IAEXPAVCMorphSetSkeletalMorph@CMorphSet@CRandomAppearanceMorph@@ABV345@ABU__false_type@2@I_N@Z
+0086d8c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::_Construct(T *,const U &)' : template function has already been defined
+0086d980	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+0086d9d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+0086dc10	bytes_differ	BYTES_DIFFER length 57 != 59
+0086dc50	bytes_differ	BYTES_DIFFER length 92 != 87
+0086deb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Entries' : is not a member of 'CVectorMap<K,V,CompareType>'
+0086e0b0	local_std	LOCAL_STD LOCAL_STD other content
+0086e150	local_std	LOCAL_STD LOCAL_STD other content
+0086e1c0	local_std	LOCAL_STD LOCAL_STD other content
+0086e7c0	local_std	LOCAL_STD LOCAL_STD other content
+0086e880	local_std	LOCAL_STD LOCAL_STD other content
+0086ea80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'std::vector<_Tp,_Alloc>::iterator std::vector<_Tp,_Alloc>::erase(std::vector<_Tp,_Alloc>::iterator,std::vector<_Tp,_Alloc>::iterator)' :
+0086eb70	local_std	LOCAL_STD LOCAL_STD other content
+0086eca0	local_std	LOCAL_STD LOCAL_STD other content
+0086ede0	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+0086f180	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+0086f600	local_std	LOCAL_STD LOCAL_STD other content
+0086ffc0	local_std	LOCAL_STD LOCAL_STD other content
+00872480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2953: 'CVectorMap' : template class has already been defined
+00872a20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPerpendicularXY' : is not a member of 'C3DVector'
+00872ec0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00873030	bytes_differ	BYTES_DIFFER masked sha1 differs
+00875040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Normalised' : is not a member of 'C3DVector'
+00875990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00878ce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00878db0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+0087ba90	bytes_differ	BYTES_DIFFER masked sha1 differs
+0087bf40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '-' : no operator found which takes a right-hand operand of type 'C2DVector' (or there is no acceptable conversion)
+0087e150	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+0087e1d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+0087e860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+0087ebd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+0087ed70	bytes_differ	BYTES_DIFFER masked sha1 differs
+008803e0	bytes_differ	BYTES_DIFFER length 278 != 301
+00886160	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+008865c0	local_std	LOCAL_STD LOCAL_STD other content
+00887830	stray_change	STRAY_CHANGE 004428f0: ?resize@?$CArray@J@@QAEXKABJ@Z -> ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z ; 00442770: ?resize@?$CArray@M@@QAEXKABM@Z -> ?resize@?$vector@MV?$allocator@M@std@@@std@@QAEXIABM@Z
+00888260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+008883c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::CThemeWeight *' : unknown size
+008889c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+008895f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00889ab0	local_std	LOCAL_STD LOCAL_STD other content
+00889b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'const T &std::max(const T &,const T &)' : template function has already been defined
+0088a9c0	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+0088b910	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+0088cf20	local_std	LOCAL_STD LOCAL_STD other content
+00895650	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+008957c0	no_block	NO_BLOCK NO_BLOCK
+00895b60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+00896660	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+00896730	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+008968c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+00896a30	no_block	NO_BLOCK NO_BLOCK
+00896d20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2118: negative subscript
+00896df0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pEnd' : is not a member of 'CVectorMap<K,V,CompareType>'
+00897190	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00897480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008976f0	no_block	NO_BLOCK NO_BLOCK
+008977f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00897940	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008985a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00898600	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'begin' : is not a member of 'ItemVector'
+008987e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'endp' : is not a member of 'CVectorMap<K,V,CompareType>'
+00898ac0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00898db0	no_block	NO_BLOCK NO_BLOCK
+00898ec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+00899c10	stray_change	STRAY_CHANGE 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+00899c90	bytes_differ	BYTES_DIFFER masked sha1 differs
+00899cf0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00899d50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CVectorMap' : use of class template requires template argument list
+00899db0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CVectorMap' : use of class template requires template argument list
+0089a070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CVectorMap' : use of class template requires template argument list
+0089a0e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CVectorMap' : use of class template requires template argument list
+0089a210	bytes_differ	BYTES_DIFFER masked sha1 differs
+0089a2d0	stray_change	STRAY_CHANGE 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+0089b110	no_block	NO_BLOCK NO_BLOCK
+0089b210	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089b2b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089b330	stray_change	STRAY_CHANGE 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+0089b450	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089b530	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089bbc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089bc50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089bcd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089bd30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089bd90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089bf80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089c000	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089c080	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089c100	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089c330	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089c380	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089c3d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089c560	no_block	NO_BLOCK NO_BLOCK
+0089c670	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089c710	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089c7b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089c8a0	bytes_differ	BYTES_DIFFER masked sha1 differs
+0089cd70	no_block	NO_BLOCK NO_BLOCK
+0089d0e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089d340	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089d3a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089d420	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089d4c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089d560	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089d600	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089d690	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089d6f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089d750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089d830	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089d970	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089d9d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089dc70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089dd30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089ddf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089df10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089e080	bytes_differ	BYTES_DIFFER masked sha1 differs
+0089e540	bytes_differ	BYTES_DIFFER masked sha1 differs
+0089e780	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089e810	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089e8e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089e950	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089e9c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089ea30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089eaa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089eb10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089eb80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089ebf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0089ed80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+0089f300	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2065: 'first' : undeclared identifier
+0089f910	no_block	NO_BLOCK NO_BLOCK
+0089faa0	no_block	NO_BLOCK NO_BLOCK
+0089fbb0	no_block	NO_BLOCK NO_BLOCK
+0089fe20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008a03f0	no_block	NO_BLOCK NO_BLOCK
+008a04c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008a05a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+008a0660	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+008a0720	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008a0820	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008a08a0	no_block	NO_BLOCK NO_BLOCK
+008a09b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008a0a20	no_block	NO_BLOCK NO_BLOCK
+008a0b10	no_block	NO_BLOCK NO_BLOCK
+008a0c60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008a0cb0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a1300	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a1890	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008a19b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008a1a10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008a1b10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+008a1e50	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a1f30	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2020	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2100	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a21e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a22d0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a23b0	no_block	NO_BLOCK NO_BLOCK
+008a24c0	no_block	NO_BLOCK NO_BLOCK
+008a2590	no_block	NO_BLOCK NO_BLOCK
+008a2690	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2770	no_block	NO_BLOCK NO_BLOCK
+008a2870	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2950	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2a30	no_block	NO_BLOCK NO_BLOCK
+008a2b30	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2c10	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2cf0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2de0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2ec0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a2fa0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3090	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3170	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3250	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3340	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3420	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3500	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a35f0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a36d0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a37b0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a38a0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3980	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3a60	no_block	NO_BLOCK NO_BLOCK
+008a3b60	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3c40	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3d20	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3e10	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3ef0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a3fd0	no_block	NO_BLOCK NO_BLOCK
+008a40d0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a41b0	no_block	NO_BLOCK NO_BLOCK
+008a4390	no_block	NO_BLOCK NO_BLOCK
+008a4480	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a4650	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a4730	no_block	NO_BLOCK NO_BLOCK
+008a4910	no_block	NO_BLOCK NO_BLOCK
+008a4a00	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a4ae0	no_block	NO_BLOCK NO_BLOCK
+008a4be0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a4cc0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a4e90	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a4f70	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5050	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5140	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5220	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5300	no_block	NO_BLOCK NO_BLOCK
+008a5400	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a54e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a55c0	no_block	NO_BLOCK NO_BLOCK
+008a56c0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a57b0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5980	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5a70	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5c40	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5d30	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5f00	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a5ff0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a61c0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a62b0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a6480	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a6570	no_block	NO_BLOCK NO_BLOCK
+008a6750	no_block	NO_BLOCK NO_BLOCK
+008a6840	no_block	NO_BLOCK NO_BLOCK
+008a6a20	no_block	NO_BLOCK NO_BLOCK
+008a6b10	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a6ce0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a6dd0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a6fa0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a7090	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a7260	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a7350	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a7520	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a7610	bytes_differ	BYTES_DIFFER masked sha1 differs
+008a76f0	no_block	NO_BLOCK NO_BLOCK
+008a77f0	no_block	NO_BLOCK NO_BLOCK
+008a7ee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+008a7f60	no_block	NO_BLOCK NO_BLOCK
+008a8440	no_block	NO_BLOCK NO_BLOCK
+008a9020	no_block	NO_BLOCK NO_BLOCK
+008a99f0	no_block	NO_BLOCK NO_BLOCK
+008aa480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'std::input_iterator_tag' : 'struct' type redefinition
+008aa4d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CArray' : use of class template requires template argument list
+008ad950	local_std	LOCAL_STD LOCAL_STD other content
+008af850	no_block	NO_BLOCK NO_BLOCK
+008b6ee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+008b75e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCCreatureModeManager *'
+008b8bc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeSquared2D' : is not a member of 'C3DVector'
+008bc1a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'reserve' : is not a member of 'std::vector<_Tp>'
+008beee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'C3DVector::C3DVector(const C2DVector &)' : overloaded member function not found in 'C3DVector'
+008c1900	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCCreatureModeManager *'
+008c1a10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCCreatureModeManager *'
+008c1b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCCreatureModeManager *'
+008c2550	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator *' is ambiguous
+008c2810	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get2DLength' : is not a member of 'C3DVector'
+008c2ed0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float sqrtf(float)' already has a body
+008c2f70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float sqrtf(float)' already has a body
+008c34a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float sqrtf(float)' already has a body
+008c6db0	bytes_differ	BYTES_DIFFER length 1094 != 1090
+008c7b30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+008c7e50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float fabsf(float)' already has a body
+008c9a40	bytes_differ	BYTES_DIFFER masked sha1 differs
+008ca860	bytes_differ	BYTES_DIFFER length 100 != 96
+008cb250	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2953: 'CVectorMap' : template class has already been defined
+008cb8f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCCreatureModeManager *'
+008cfe30	bytes_differ	BYTES_DIFFER length 25 != 31
+008d0730	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+008d0960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008d0a40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008d0c50	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d0e00	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d0fb0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d1130	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d1330	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d1440	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d15b0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d1890	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d19a0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d1b80	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d1ca0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d1dd0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d1fd0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d21b0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d23c0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d29c0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d2bb0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d2d90	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d2f80	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d3250	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d3350	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d3450	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d3550	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d3650	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d3750	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d3af0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d3bf0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d3dd0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d8b00	bytes_differ	BYTES_DIFFER masked sha1 differs
+008d9530	bytes_differ	BYTES_DIFFER masked sha1 differs
+008da690	bytes_differ	BYTES_DIFFER masked sha1 differs
+008da890	bytes_differ	BYTES_DIFFER masked sha1 differs
+008db240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetLength2D' : is not a member of 'C3DVector'
+008db460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetLength2D' : is not a member of 'C3DVector'
+008e0d20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetLength2D' : is not a member of 'C3DVector'
+008e1580	bytes_differ	BYTES_DIFFER length 233 != 234
+008e3aa0	no_block	NO_BLOCK NO_BLOCK
+008e3eb0	local_std	LOCAL_STD LOCAL_STD other content
+008e5480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float fabsf(float)' already has a body
+008e6940	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'begin' : is not a member of 'IntelligentThingVector'
+008e7cf0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008e9460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetLength2' : is not a member of 'C3DVector'
+008ec1a0	bytes_differ	BYTES_DIFFER length 103 != 100
+008ed6e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+008ed7a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+008eddd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+008f2e00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+008f3630	bytes_differ	BYTES_DIFFER masked sha1 differs
+008f3ad0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2118: negative subscript
+008f4990	local_std	LOCAL_STD LOCAL_STD other content
+008f5b50	bytes_differ	BYTES_DIFFER length 64 != 74
+008f5ba0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008f5c50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'long' to 'const E
+008f69b0	bytes_differ	BYTES_DIFFER length 115 != 116
+008f7950	bytes_differ	BYTES_DIFFER masked sha1 differs
+008f7bd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'NFoot008f7bd0::C3DVector'
+008faf70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'float [3]' to 'C3DVector'
+0090bed0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+0090f320	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0090fdb0	method_map	METHOD_MAP METHOD_MAP GetMagnitude defined 2 times (1 inside the local C3DVector)
+009109b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+00911c20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00911d90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00911f80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get2DLengthSquared' : is not a member of 'C3DVector'
+00915080	bytes_differ	BYTES_DIFFER length 263 != 266
+009167f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00916910	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00916e30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'unsigned long' to 'std::bitset<_Nb>'
+00916e90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'unsigned long' to 'std::bitset<_Nb>'
+00917380	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+009175e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+00917bb0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00919780	local_std	LOCAL_STD LOCAL_STD other content
+0091b190	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '[' : 'const std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+0091bd10	bytes_differ	BYTES_DIFFER masked sha1 differs
+0091c3d0	bytes_differ	BYTES_DIFFER length 620 != 616
+0091d510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0091e750	bytes_differ	BYTES_DIFFER masked sha1 differs
+0091eb60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00923070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00923aa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+00923b00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+009240c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCKraken *'
+00924200	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCKraken *'
+00924350	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCKraken *'
+00924520	bytes_differ	BYTES_DIFFER masked sha1 differs
+0092b800	stray_change	STRAY_CHANGE 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+0092ed40	bytes_differ	BYTES_DIFFER masked sha1 differs
+0092f240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2819: type 'std::_STLP_alloc_proxy<_Value,_Tp,_MaybeReboundAlloc>' does not have an overloaded member 'operator ->'
+00935160	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'NCondition00935160::C3DVector'
+00938db0	local_std	LOCAL_STD LOCAL_STD other content
+00939a50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+0093b5e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'unsigned long' to 'std::bitset<_Nb>'
+0093c2f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+0093c4e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+0093d180	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0093dc10	bytes_differ	BYTES_DIFFER masked sha1 differs
+00941210	bytes_differ	BYTES_DIFFER length 425 != 417
+00941be0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::Find(const K &)' : cannot convert parameter 1 from 'int' to 'const ET
+00942270	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+009438f0	local_std	LOCAL_STD LOCAL_STD other content
+00945e70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2663: 'CVectorMap<K,V,CompareType>::Find' : 2 overloads have no legal conversion for 'this' pointer
+00946f90	local_std	LOCAL_STD LOCAL_STD _List_const_iterator
+0094d680	bytes_differ	BYTES_DIFFER length 249 != 251
+0094dac0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0094fa00	bytes_differ	BYTES_DIFFER masked sha1 differs
+0094fff0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00950b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+00951b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateAboutZ' : is not a member of 'C3DVector'
+00956ce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00956fe0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+009580e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+0095a490	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetXYMagnitude' : is not a member of 'C3DVector'
+0095b3e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+0095c0b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'first' : is not a member of 'CVectorMap<K,V,CompareType>'
+0095c1f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetXYMagnitude' : is not a member of 'C3DVector'
+0095d070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'const C3DVector' to 'const C2DVector &'
+0095e260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+0095e900	bytes_differ	BYTES_DIFFER length 747 != 752
+00961880	bytes_differ	BYTES_DIFFER length 310 != 313
+009627c0	bytes_differ	BYTES_DIFFER masked sha1 differs
+009633e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+009670a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCTavernTable *'
+00967110	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCTavernBar *'
+00968950	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'std::pair<_T1,_T2>' to 'CTCTavernBar *'
+0096bcb0	local_std	LOCAL_STD LOCAL_STD other content
+0096c250	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0096d200	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0096d2d0	stray_change	STRAY_CHANGE 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+00970ab0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00970cd0	bytes_differ	BYTES_DIFFER masked sha1 differs
+009718f0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00978e60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00978f10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00979d80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+00979e90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+0097b3f0	bytes_differ	BYTES_DIFFER length 132 != 117
+0097baa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get' : is not a member of 'CVectorMap<K,V>'
+0097cb10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'std::vector<_Tp>::const_iterator' to 'CVectorMap<K,V,CompareType>::value_type *'
+0097e890	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0097ec00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+00984b40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+009852c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_finish' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00989700	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00989a60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+0098a540	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+0098a8e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+0098a9a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+0098abf0	bytes_differ	BYTES_DIFFER length 251 != 246
+0098db20	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree_iterator,_Rb_tree_node_base,map
+00991840	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V>'
+00992290	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+009937d0	bytes_differ	BYTES_DIFFER length 83 != 132
+00994b40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00995340	bytes_differ	BYTES_DIFFER length 1038 != 1064
+00996b60	local_std	LOCAL_STD LOCAL_STD other content
+00996bc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'reserve' : is not a member of 'CArray<T>'
+009972e0	local_std	LOCAL_STD LOCAL_STD other content
+009a76d0	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+009ad580	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'CVectorMap<K,V,CompareType>::iterator' to 'pair<A,B> *'
+009ae5f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+009b02e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CInstantiatedDefInfo *' : unknown size
+009b0470	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CInstantiatedDefInfo *' : unknown size
+009b1ff0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+009b20d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+009b2130	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+009b2190	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+009b2230	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+009b2290	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+009b4a90	local_std	LOCAL_STD LOCAL_STD other content
+009b4ae0	local_std	LOCAL_STD LOCAL_STD other content
+009b4b80	local_std	LOCAL_STD LOCAL_STD other content
+009b5db0	local_std	LOCAL_STD LOCAL_STD other content
+009b5f30	local_std	LOCAL_STD LOCAL_STD other content
+009b5fb0	local_std	LOCAL_STD LOCAL_STD other content
+009b6e00	local_std	LOCAL_STD LOCAL_STD other content
+009b6eb0	local_std	LOCAL_STD LOCAL_STD other content
+009b7320	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'O std::__uninitialized_copy(I,I,O,const std::__false_type &)' : template function has already been defined
+009b73e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'I std::__uninitialized_fill_n(I,N,const T &,const std::__false_type &)' : template function has already been defined
+009b7650	bytes_differ	BYTES_DIFFER length 169 != 153
+009b76f0	bytes_differ	BYTES_DIFFER length 156 != 139
+009b77b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+009b7870	bytes_differ	BYTES_DIFFER length 127 != 115
+009b7930	local_std	LOCAL_STD LOCAL_STD other content
+009b79b0	local_std	LOCAL_STD LOCAL_STD other content
+009b7a50	local_std	LOCAL_STD LOCAL_STD other content
+009b7ab0	local_std	LOCAL_STD LOCAL_STD other content
+009b7b10	local_std	LOCAL_STD LOCAL_STD other content
+009b8070	local_std	LOCAL_STD LOCAL_STD other content
+009b8220	bytes_differ	BYTES_DIFFER length 292 != 272
+009b83b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Insert' : is not a member of 'CVectorMap<K,V,CompareType>'
+009b8770	bytes_differ	BYTES_DIFFER length 172 != 161
+009b8c00	local_std	LOCAL_STD LOCAL_STD other content
+009b8dd0	local_std	LOCAL_STD LOCAL_STD other content
+009b9170	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::push_back(const _Tp &)' : template function has already been defined
+009b9290	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Insert' : is not a member of 'CVectorMap<K,V,CompareType>'
+009c01c0	local_std	LOCAL_STD LOCAL_STD other content
+009c02d0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,set
+009c05c0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,set
+009c76d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+009c82c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+009c85a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'NGameText::CDataBankTextEntry *' : unknown size
+009c8660	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Last' : is not a member of 'CArray<T>'
+009c87c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'std::__true_type' : 'struct' type redefinition
+009c8990	local_std	LOCAL_STD LOCAL_STD A,_Alloc_traits,_Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_R
+009cb730	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'std::__true_type' : 'struct' type redefinition
+009cc1d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsEmpty' : is not a member of 'CArray<T>'
+009cc300	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetCount' : is not a member of 'CArray<T>'
+009cc8b0	bytes_differ	BYTES_DIFFER length 263 != 307
+009cd140	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2665: 'CArray<T>::__ctor' : none of the 4 overloads can convert parameter 1 from type 'unsigned long *'
+009cd620	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'std::__true_type' : 'struct' type redefinition
+009cd740	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'capacity' : is not a member of 'CArray<T>'
+009cd850	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+009cda70	bytes_differ	BYTES_DIFFER masked sha1 differs
+009ce050	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_iterator,_Rb_tree_node_base,_Select1st,map,multimap
+009ce180	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,multimap
+009ceae0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'exception' : is not a member of 'operator``global namespace'''
+009d3160	local_std	LOCAL_STD LOCAL_STD other content
+009d3750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+009d3d90	local_std	LOCAL_STD LOCAL_STD other content
+009d3fb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'std::vector<_Tp,_Alloc>::~vector(void)' : template function has already been defined
+009d5a30	local_std	LOCAL_STD LOCAL_STD other content
+009d6420	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+009e2e30	stray_change	STRAY_CHANGE 009e3580: ?resize@?$CArray@PAVCVertexBufferWin32@@@@QAEXJABQAVCVertexBufferWin32@@@Z -> ?resize@?$vector@PAVCVertexBufferWin32@@V?$allocator@PAVCVertexBufferWin32@@@std@@@std@@QAEXIABQAVCVertexBufferWin32@@@Z
+009e5200	local_std	LOCAL_STD LOCAL_STD Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,set
+009e5250	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,set
+009e5290	stray_change	STRAY_CHANGE 009e76f0: ?_M_insert_overflow@?$vector@VCSymbolInfo@CSymbolMap@@@std@@QAEXPAVCSymbolInfo@CSymbolMap@@ABV34@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@VCSymbolInfo@CSymbolMap@@V?$allocator@VCSymbolInfo@CSymbolMap@@@std@@@std@@IAEXPAVCSymbolInfo@CSymbolMap@@ABV34@ABU__false_type@2@I_N@Z
+009e5360	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Nonconst_traits,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,set
+009e5420	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+009e54e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+009e5c30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+009e5c60	bytes_differ	BYTES_DIFFER length 38 != 33
+009e6910	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+009e7680	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+009e79e0	local_std	LOCAL_STD LOCAL_STD other content
+009e7c00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+009e7c70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateUnusedMemory' : is not a member of 'CArray<T>'
+009e9330	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+009e9390	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+009e95f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SetSize' : is not a member of 'CArray<T>'
+009e9760	local_std	LOCAL_STD LOCAL_STD _BothPtrType,output_iterator_tag
+009e97b0	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+009ec890	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'std::_List_node<_Tp>::_M_data' uses undefined class 'CStringParserCommentBoundaries'
+009feb80	bytes_differ	BYTES_DIFFER length 66 != 61
+009fece0	bytes_differ	BYTES_DIFFER length 73 != 68
+00a02ad0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetCount' : is not a member of 'CArray<T>'
+00a03af0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00a03c80	no_block	NO_BLOCK NO_BLOCK
+00a03d10	no_block	NO_BLOCK NO_BLOCK
+00a03d60	no_block	NO_BLOCK NO_BLOCK
+00a03d90	no_block	NO_BLOCK NO_BLOCK
+00a03dc0	no_block	NO_BLOCK NO_BLOCK
+00a03e10	no_block	NO_BLOCK NO_BLOCK
+00a03e40	no_block	NO_BLOCK NO_BLOCK
+00a03e70	no_block	NO_BLOCK NO_BLOCK
+00a03ec0	no_block	NO_BLOCK NO_BLOCK
+00a04160	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2621: member 'UInputEventData::__unnamed::HeldMouseMovement' of union 'UInputEventData::__unnamed' has copy constructor
+00a0c2b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator *' is ambiguous
+00a0c450	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+00a13af0	local_std	LOCAL_STD LOCAL_STD other content
+00a13da0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ToString' : is not a member of 'C3DVector'
+00a14040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+00a14260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'void C3DVector::Rotate(float,float)' : overloaded member function not found in 'C3DVector'
+00a14480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00a145c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetRandomUnitVector' : is not a member of 'C3DVector'
+00a146c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetRandomPointWithinUnitSphere' : is not a member of 'C3DVector'
+00a14fd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'const C3DVector' to 'C2DCoordI'
+00a1ab40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SetXY' : is not a member of 'C3DVector'
+00a26530	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00a26660	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'reserve' : is not a member of 'CArray<T>'
+00a26d40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '!=' : no operator found which takes a right-hand operand of type 'std::_STLP_alloc_proxy<_Value,_Tp,_MaybeReboundAlloc>' (or ther
+00a27030	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DMeshInfo *' : unknown size
+00a27350	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00a2b240	local_std	LOCAL_STD LOCAL_STD _Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st
+00a2d8b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00a2dc20	local_std	LOCAL_STD LOCAL_STD _Rb_tree,_Rb_tree_node,_Rb_tree_node_base
+00a2dc90	local_std	LOCAL_STD LOCAL_STD _Rb_global,_Rb_tree,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st
+00a2def0	local_std	LOCAL_STD LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00a2e9a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a2eef0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_global,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,set
+00a2f210	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DGeneratorObject *' : unknown size
+00a2f270	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DGeneratorObject *' : unknown size
+00a31880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00a318d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00a34950	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Insert' : is not a member of 'CVectorMap<K,V,CompareType>'
+00a349b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Insert' : is not a member of 'CVectorMap<K,V,CompareType>'
+00a382e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CVectorMap' : use of class template requires template argument list
+00a38420	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree_iterator,_Rb_tree_node_base,set
+00a38500	local_std	LOCAL_STD LOCAL_STD Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,set
+00a38550	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,set
+00a385a0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree_iterator,_Rb_tree_node_base,set
+00a38fe0	bytes_differ	BYTES_DIFFER length 38 != 33
+00a39010	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,set
+00a39900	local_std	LOCAL_STD LOCAL_STD other content
+00a39950	local_std	LOCAL_STD LOCAL_STD other content
+00a39a00	local_std	LOCAL_STD LOCAL_STD other content
+00a3add0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a3c0c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00a3c1a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DAnimationStateAlpha *' : unknown size
+00a3d330	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DAnimationStateAlpha *const ' : unknown size
+00a3ed30	local_std	LOCAL_STD LOCAL_STD other content
+00a3ede0	local_std	LOCAL_STD LOCAL_STD other content
+00a3ee50	local_std	LOCAL_STD LOCAL_STD other content
+00a3ef00	bytes_differ	BYTES_DIFFER masked sha1 differs
+00a3f140	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V>'
+00a3f250	local_std	LOCAL_STD LOCAL_STD other content
+00a404d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00a40af0	local_std	LOCAL_STD LOCAL_STD other content
+00a41ad0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Insert' : is not a member of 'CVectorMap<K,V>'
+00a42b80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CLipSyncDataBankEntry *' : unknown size
+00a42df0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a43960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sizeof' : is not a member of 'CArray<T>'
+00a44130	bytes_differ	BYTES_DIFFER length 55 != 50
+00a442e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'C3DVector' (or there is no acceptable conversion)
+00a44e60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DSkeletalBoneMorph *' : unknown size
+00a44e80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CArray' : use of class template requires template argument list
+00a45150	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CArray' : use of class template requires template argument list
+00a455a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DSkeletalBoneMorph *' : unknown size
+00a471d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'C3DVector C3DVector::operator +(const C2DVector &) const' : overloaded member function not found in 'C3DVector'
+00a48ac0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00a49240	stray_change	STRAY_CHANGE 00a49f20: ?erase@?$CArray@VCComplexNumber@@@@QAEPAVCComplexNumber@@PAV2@0@Z -> ?erase@?$vector@VCComplexNumber@@V?$allocator@VCComplexNumber@@@std@@@std@@QAEPAVCComplexNumber@@PAV3@0@Z ; 00a4a3d0: ?_M_fill_insert@?$CArray@VCComplexNumber@@@@QAEXPAVCComplexNumber@@KABV2@@Z -> ?_M_fill_insert@?$vector@VCComplexNumber@@V?$allocator@VCComplexNumber@@@std@@@std@@QAEXPAVCComplexNumber@@IABV3@@Z
+00a4af00	local_std	LOCAL_STD LOCAL_STD other content
+00a4b020	local_std	LOCAL_STD LOCAL_STD other content
+00a4b160	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+00a4b1d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::resize(std::vector<_Tp,_Alloc>::size_type,const _Tp &)' : template function has already been defined
+00a4df10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a4e150	bytes_differ	BYTES_DIFFER masked sha1 differs
+00a4eb00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'C3DVector'
+00a56180	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00a57ef0	method_map	METHOD_MAP METHOD_MAP GetLength defined 3 times (1 inside the local C3DVector)
+00a57f70	method_map	METHOD_MAP METHOD_MAP GetLength defined 2 times (1 inside the local C3DVector)
+00a58720	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00a5ae00	local_std	LOCAL_STD LOCAL_STD other content
+00a5d750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00a5d7c0	stray_change	STRAY_CHANGE 00a5e6a0: ?resize@?$CArray@PAVCShaderBase@@@@QAEXKABQAVCShaderBase@@@Z -> ?resize@?$vector@PAVCShaderBase@@V?$allocator@PAVCShaderBase@@@std@@@std@@QAEXIABQAVCShaderBase@@@Z
+00a5d8b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00a5e7f0	stray_change	STRAY_CHANGE 00a5e0a0: ??0?$CArray@VCDataElement@CVertexStreamFormat@@@@QAE@ABV0@@Z -> ??0?$vector@VCDataElement@CVertexStreamFormat@@V?$allocator@VCDataElement@CVertexStreamFormat@@@std@@@std@@QAE@ABV01@@Z
+00a5e900	local_std	LOCAL_STD LOCAL_STD other content
+00a5e9c0	local_std	LOCAL_STD LOCAL_STD other content
+00a5f430	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00a62120	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00a623d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00a6a330	bytes_differ	BYTES_DIFFER length 42 != 45
+00a6a540	stray_change	STRAY_CHANGE 00a6c020: ?resize@?$CArray@V?$CIVCountedPointer@VCManagedTextureData@@@@@@QAEXIABV?$CIVCountedPointer@VCManagedTextureData@@@@@Z -> ?resize@?$vector@V?$CIVCountedPointer@VCManagedTextureData@@@@V?$allocator@V?$CIVCountedPointer@VCManagedTextureData@@@@@std@@@std@@QAEXIABV?$CIVCountedPointer@VCManagedTextureData@@@@@Z
+00a6be40	local_std	LOCAL_STD LOCAL_STD other content
+00a6c5a0	no_block	NO_BLOCK NO_BLOCK
+00a6c5f0	no_block	NO_BLOCK NO_BLOCK
+00a6c900	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'capacity' : is not a member of 'CArray<T>'
+00a6c9c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '<' : 'const CCharString' does not define this operator or a conversion to a type acceptable to the predefined operator
+00a6ca00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '<' : 'const CCharString' does not define this operator or a conversion to a type acceptable to the predefined operator
+00a6ca20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00a6ca80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00a6cb20	bytes_differ	BYTES_DIFFER length 131 != 129
+00a6cbc0	bytes_differ	BYTES_DIFFER length 74 != 75
+00a6d550	local_std	LOCAL_STD LOCAL_STD other content
+00a6da40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C2DLineF *' : unknown size
+00a6f290	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00a6f2f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00a6fc40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00a6fcb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00a71f40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+00a725d0	local_std	LOCAL_STD LOCAL_STD other content
+00a747b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00a74c60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DeallocateMemory' : is not a member of 'CArray<T>'
+00a74ea0	local_std	LOCAL_STD LOCAL_STD other content
+00a74fb0	local_std	LOCAL_STD LOCAL_STD other content
+00a75010	local_std	LOCAL_STD LOCAL_STD other content
+00a750e0	local_std	LOCAL_STD LOCAL_STD other content
+00a75230	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C2DLineF *' : unknown size
+00a752a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::resize(std::vector<_Tp,_Alloc>::size_type,const _Tp &)' : template function has already been defined
+00a75340	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetX' : is not a member of 'C3DVector'
+00a77c30	local_std	LOCAL_STD LOCAL_STD A,map
+00a79240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00a79290	local_std	LOCAL_STD LOCAL_STD other content
+00a792e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ClearAndFree' : is not a member of 'CArray<T>'
+00a7a760	bytes_differ	BYTES_DIFFER length 127 != 136
+00a7a7f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'CVectorMap' : too few template arguments
+00a7dcc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00a7dd40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00a7df60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00a812f0	local_std	LOCAL_STD LOCAL_STD other content
+00a83770	local_std	LOCAL_STD LOCAL_STD other content
+00a837e0	local_std	LOCAL_STD LOCAL_STD other content
+00a83fd0	local_std	LOCAL_STD LOCAL_STD other content
+00a84500	local_std	LOCAL_STD LOCAL_STD other content
+00a85560	local_std	LOCAL_STD LOCAL_STD other content
+00a85700	bytes_differ	BYTES_DIFFER length 22 != 55
+00a85810	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+00a85930	local_std	LOCAL_STD LOCAL_STD other content
+00a85b90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::__uninitialized_copy' : redefinition; different type modifiers
+00a85cc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::__uninitialized_copy' : redefinition; different type modifiers
+00a85e40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'std::_List_node<_Tp>::_M_data' uses undefined class 'C2DLineF'
+00a85ec0	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+00a86b30	stray_change	STRAY_CHANGE 00a87090: ??0?$CArray@G@@QAE@ABV0@@Z -> ??0?$vector@GV?$allocator@G@std@@@std@@QAE@ABV01@@Z
+00a87260	no_block	NO_BLOCK NO_BLOCK
+00a8b6c0	local_std	LOCAL_STD LOCAL_STD other content
+00a90450	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Capacity' : is not a member of 'CArray<T>'
+00a90790	bytes_differ	BYTES_DIFFER length 202 != 197
+00a90860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00a90fc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00a91390	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00a92740	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'first' : is not a member of 'CArray<T>'
+00a972a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Capacity' : is not a member of 'CArray<T>'
+00a98100	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DVertex2 *' : unknown size
+00a98470	bytes_differ	BYTES_DIFFER length 115 != 126
+00a99840	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'exception' : is not a member of 'operator``global namespace'''
+00a9ba70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'exception' : is not a member of 'operator``global namespace'''
+00a9dfa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00aa4650	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00aa48d0	stray_change	STRAY_CHANGE 00486189: ?resize@?$CArray@E@@QAEXKABE@Z -> ?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXIABE@Z
+00aa5720	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CVector<T>'
+00aa57f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CRawArray<T>'
+00aa58c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CRawArray<T>'
+00aa5930	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArrayWithList<T>'
+00aa65a0	local_std	LOCAL_STD LOCAL_STD _Is_POD
+00aa66b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00aa6960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00aa6a60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00aa7480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DIndexedBoneWeight *' : unknown size
+00aa8400	local_std	LOCAL_STD LOCAL_STD output_iterator_tag
+00aa9b20	bytes_differ	BYTES_DIFFER length 40 != 51
+00aa9da0	bytes_differ	BYTES_DIFFER length 79 != 100
+00aa9e10	bytes_differ	BYTES_DIFFER length 53 != 74
+00aaa9a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00aad150	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00aad5d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'CArray<T>::__ctor' : unable to match function definition to an existing declaration
+00aaf5b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00aaf650	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00aaf730	bytes_differ	BYTES_DIFFER length 81 != 52
+00ab0020	bytes_differ	BYTES_DIFFER length 81 != 31
+00ab00c0	bytes_differ	BYTES_DIFFER length 81 != 70
+00ab06b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00ab0790	stray_change	STRAY_CHANGE 00467686: ?resize@?$CArray@_N@@QAEXKAB_N@Z -> ?resize@?$vector@_NV?$allocator@_N@std@@@std@@QAEXIAB_N@Z
+00ab1f30	local_std	LOCAL_STD LOCAL_STD other content
+00ab3810	local_std	LOCAL_STD LOCAL_STD other content
+00ab3b40	stray_change	STRAY_CHANGE 00a5e0a0: ??0?$CArray@VCDataElement@CVertexStreamFormat@@@@QAE@ABV0@@Z -> ??0?$vector@VCDataElement@CVertexStreamFormat@@V?$allocator@VCDataElement@CVertexStreamFormat@@@std@@@std@@QAE@ABV01@@Z
+00ab4450	stray_change	STRAY_CHANGE 00a5e0a0: ??0?$CArray@VCDataElement@CVertexStreamFormat@@@@QAE@ABV0@@Z -> ??0?$vector@VCDataElement@CVertexStreamFormat@@V?$allocator@VCDataElement@CVertexStreamFormat@@@std@@@std@@QAE@ABV01@@Z
+00ab4490	local_std	LOCAL_STD LOCAL_STD other content
+00ab4540	stray_change	STRAY_CHANGE 00a5e0a0: ??0?$CArray@VCDataElement@CVertexStreamFormat@@@@QAE@ABV0@@Z -> ??0?$vector@VCDataElement@CVertexStreamFormat@@V?$allocator@VCDataElement@CVertexStreamFormat@@@std@@@std@@QAE@ABV01@@Z
+00ab4640	local_std	LOCAL_STD LOCAL_STD other content
+00ab9bb0	bytes_differ	BYTES_DIFFER length 100 != 43
+00abae50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abaee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abbdf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abbe90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abbf30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abbfc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abc040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00abc780	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DVertex2 *' : unknown size
+00abc800	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DVertex2 *' : unknown size
+00abc860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DTriangle2 *' : unknown size
+00abc8e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DTriangle2 *' : unknown size
+00abc980	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00abcaf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'std::vector<_Tp,_Alloc>::_M_insert_overflow' : unable to match function definition to an existing declaration
+00abcc20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void *operator new(unsigned int,void *)' already has a body
+00abcf10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00abcf40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00abd080	bytes_differ	BYTES_DIFFER length 81 != 66
+00abd0d0	stray_change	STRAY_CHANGE 004428f0: ?resize@?$CArray@J@@QAEXKABJ@Z -> ?resize@?$vector@JV?$allocator@J@std@@@std@@QAEXIABJ@Z
+00abd150	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00abd280	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00ac39c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DTriangle2 *' : unknown size
+00ac3e00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00ac4150	stray_change	STRAY_CHANGE 00abeb40: ?InsertGrow@?$CArray@VC3DVertexBlend2@@@@QAEXPAVC3DVertexBlend2@@ABV2@ABUSScalarTag@@K_N@Z -> ?_M_insert_overflow@?$vector@VC3DVertexBlend2@@V?$allocator@VC3DVertexBlend2@@@std@@@std@@IAEXPAVC3DVertexBlend2@@ABV3@ABU__false_type@2@I_N@Z
+00ac5080	stray_change	STRAY_CHANGE 00464931: ?resize@?$CArray@K@@QAEXKABK@Z -> ?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z
+00ac6600	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00ac6750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Resize' : is not a member of 'CArray<T>'
+00ac7050	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DotProduct' : is not a member of 'C3DVector'
+00ac7a90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00ac8170	local_std	LOCAL_STD LOCAL_STD _Nonconst_traits
+00ac8840	local_std	LOCAL_STD LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_
+00ac8a60	local_std	LOCAL_STD LOCAL_STD A,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_nod
+00ac96e0	local_std	LOCAL_STD LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00ac9d50	local_std	LOCAL_STD LOCAL_STD other content
+00aca0c0	local_std	LOCAL_STD LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_
+00acd900	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00ad8720	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00ad8dd0	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00ad8ed0	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00ad94f0	local_std	LOCAL_STD LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_
+00ad9720	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00adca30	local_std	LOCAL_STD LOCAL_STD map
+00adcfd0	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00ae1260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: 'value' : illegal use of type 'void'
+00ae1600	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: 'value' : illegal use of type 'void'
+00ae1730	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetByteSize' : is not a member of 'CArray<T>'
+00ae18c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetByteSize' : is not a member of 'CArray<T>'
+00ae2230	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00ae2d90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+00ae3550	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DTriangle2 *' : unknown size
+00ae37d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00ae3a30	local_std	LOCAL_STD LOCAL_STD map
+00ae60d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00ae7530	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DVertexBlend2 *const ' : unknown size
+00ae7660	bytes_differ	BYTES_DIFFER length 57 != 61
+00ae76a0	local_std	LOCAL_STD LOCAL_STD other content
+00ae79f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+00ae7a20	local_std	LOCAL_STD LOCAL_STD other content
+00ae7ec0	bytes_differ	BYTES_DIFFER length 45 != 44
+00ae7f30	local_std	LOCAL_STD LOCAL_STD other content
+00ae7fe0	local_std	LOCAL_STD LOCAL_STD other content
+00ae80f0	local_std	LOCAL_STD LOCAL_STD other content
+00ae81f0	local_std	LOCAL_STD LOCAL_STD other content
+00ae82c0	local_std	LOCAL_STD LOCAL_STD other content
+00ae83d0	local_std	LOCAL_STD LOCAL_STD other content
+00ae8490	bytes_differ	BYTES_DIFFER length 95 != 45
+00ae8540	stray_change	STRAY_CHANGE 00ae82c0: ?insert@?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@QAEXPAVC3DGroup2@@IABV3@@Z -> ?_M_fill_insert@?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@QAEXPAVC3DGroup2@@IABV3@@Z
+00ae8b50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Erase' : is not a member of 'CVectorMap<K,V,CompareType>'
+00ae8c30	local_std	LOCAL_STD LOCAL_STD other content
+00ae9520	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00ae9580	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00aea6f0	local_std	LOCAL_STD LOCAL_STD other content
+00aebaf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+00aee8c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00af0380	bytes_differ	BYTES_DIFFER length 650 != 656
+00af0880	bytes_differ	BYTES_DIFFER length 136 != 79
+00af15b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00af1600	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'NParticleEngine::CParticleEmitterInfo *' : unknown size
+00af1670	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00af2160	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'NParticleEngine::CParticleEmitterInfo *' : unknown size
+00af2250	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2953: 'CVectorMap' : template class has already been defined
+00af22c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2953: 'CVectorMap' : template class has already been defined
+00af28c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Last' : is not a member of 'CVectorMap<K,V,CompareType>'
+00af2c50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'CVectorMap<K,V,CompareType>::LowerBound' : unable to match function definition to an existing declaration
+00af3000	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00af3080	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'find' : is not a member of 'CVectorMap<K,V,CompareType>'
+00af4530	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00af5380	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CEnginePrimitiveHandle *' : unknown size
+00af59a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00af60c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00af6120	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00af7910	local_std	LOCAL_STD LOCAL_STD other content
+00afe4b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'I std::__uninitialized_fill_n(I,N,const T &,const std::__false_type &)' : template function has already been defined
+00afe5c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'O std::__uninitialized_copy(I,I,O,const std::__false_type &)' : template function has already been defined
+00afe660	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+00afe6f0	local_std	LOCAL_STD LOCAL_STD other content
+00afe7c0	local_std	LOCAL_STD LOCAL_STD other content
+00afe980	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::resize(std::vector<_Tp,_Alloc>::size_type,const _Tp &)' : template function has already been defined
+00afead0	bytes_differ	BYTES_DIFFER length 121 != 64
+00b05890	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'CVectorMap<K,V,CompareType>::LowerBound' : unable to match function definition to an existing declaration
+00b05b10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2953: 'CVectorMap' : template class has already been defined
+00b07570	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b0a160	local_std	LOCAL_STD LOCAL_STD other content
+00b0f210	stray_change	STRAY_CHANGE 00b0f9f0: ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z
+00b0fb40	stray_change	STRAY_CHANGE 00b0f9f0: ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z
+00b158a0	stray_change	STRAY_CHANGE 00b0f9f0: ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z
+00b161a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+00b179a0	bytes_differ	BYTES_DIFFER length 538 != 554
+00b17f70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00b1b380	stray_change	STRAY_CHANGE 00b0f9f0: ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$vector@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$allocator@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@2@@std@@IAEXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@2@ABU32@ABU__false_type@2@I_N@Z
+00b20b10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b20fd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b21090	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b21160	bytes_differ	BYTES_DIFFER length 98 != 79
+00b21450	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b214c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b215a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b21630	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b217d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b21850	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b218b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b21940	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b219a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ptrdiff_t' : is not a member of 'operator``global namespace'''
+00b21a00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b21c90	stray_change	STRAY_CHANGE 00464931: ?resize@?$CArray@K@@QAEXKABK@Z -> ?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z
+00b21dd0	bytes_differ	BYTES_DIFFER length 171 != 181
+00b21e90	bytes_differ	BYTES_DIFFER length 573 != 619
+00b22100	bytes_differ	BYTES_DIFFER masked sha1 differs
+00b22310	bytes_differ	BYTES_DIFFER length 563 != 539
+00b22530	bytes_differ	BYTES_DIFFER length 354 != 308
+00b22b40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b24150	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00b25d50	bytes_differ	BYTES_DIFFER length 44 != 46
+00b25d80	bytes_differ	BYTES_DIFFER masked sha1 differs
+00b262c0	local_std	LOCAL_STD LOCAL_STD other content
+00b2ac80	local_std	LOCAL_STD LOCAL_STD other content
+00b30480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00b33ae0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void operator delete(void *,void *)' already has a body
+00b3a110	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InsertGrow' : is not a member of 'CArray<T>'
+00b3c4b0	stray_change	STRAY_CHANGE 00464931: ?resize@?$CArray@K@@QAEXKABK@Z -> ?resize@?$vector@KV?$allocator@K@std@@@std@@QAEXIABK@Z
+00b40000	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b40070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b423f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C2DBoxI *' : unknown size
+00b42b10	bytes_differ	BYTES_DIFFER length 334 != 342
+00b42c70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00b42d10	stray_change	STRAY_CHANGE 00b44170: ?resize@?$CArray@PAVCEngineMap@@@@QAEXKABQAVCEngineMap@@@Z -> ?resize@?$vector@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAEXIABQAVCEngineMap@@@Z
+00b42e70	local_std	LOCAL_STD LOCAL_STD other content
+00b42ed0	stray_change	STRAY_CHANGE 00b44170: ?resize@?$CArray@PAVCEngineMap@@@@QAEXKABQAVCEngineMap@@@Z -> ?resize@?$vector@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAEXIABQAVCEngineMap@@@Z
+00b47b50	local_std	LOCAL_STD LOCAL_STD _Alloc,_Identity,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map,set
+00b49fe0	bytes_differ	BYTES_DIFFER length 91 != 121
+00b4a060	bytes_differ	BYTES_DIFFER length 91 != 121
+00b4abb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void operator delete(void *,void *)' already has a body
+00b52b30	bytes_differ	BYTES_DIFFER length 647 != 665
+00b54100	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b54210	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b54310	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b5e700	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b61690	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b63010	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b63260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b63530	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b6e010	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b6e3e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b75ca0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b76bc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b77e20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7c510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7ec40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetCount' : is not a member of 'CArray<T>'
+00b7ec60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7ecf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetCount' : is not a member of 'CArray<T>'
+00b7ed10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7eec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7f0f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7f3b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7f600	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7fa20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b7fce0	stray_change	STRAY_CHANGE 00b7fd00: ?resize@?$CArray@VCTVertexWaterBackground@@@@QAEXIABVCTVertexWaterBackground@@@Z -> ?resize@?$vector@VCTVertexWaterBackground@@V?$allocator@VCTVertexWaterBackground@@@std@@@std@@QAEXIABVCTVertexWaterBackground@@@Z
+00b80100	stray_change	STRAY_CHANGE 00b80120: ?resize@?$CArray@VCTVertexSeaBackground@@@@QAEXIABVCTVertexSeaBackground@@@Z -> ?resize@?$vector@VCTVertexSeaBackground@@V?$allocator@VCTVertexSeaBackground@@@std@@@std@@QAEXIABVCTVertexSeaBackground@@@Z
+00b80940	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00b80fe0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ScaleInto' : is not a member of 'C3DVector'
+00b81450	bytes_differ	BYTES_DIFFER length 182 != 85
+00b83d30	local_std	LOCAL_STD LOCAL_STD other content
+00b84120	local_std	LOCAL_STD LOCAL_STD other content
+00b84990	local_std	LOCAL_STD LOCAL_STD other content
+00b88bc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00b8d420	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'PeekAsCArray' : is not a member of 'CArray<T>'
+00b8da80	bytes_differ	BYTES_DIFFER length 349 != 344
+00b91d20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b91dc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b91f00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b92250	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b92c20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CArray<T>'
+00b937a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pData' : is not a member of 'CArray<T>'
+00b94180	local_std	LOCAL_STD LOCAL_STD _Alloc,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tre
+00b94d30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Length2D' : is not a member of 'C3DVector'
+00ba6dc0	local_std	LOCAL_STD LOCAL_STD A,set
+00baa250	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'CVectorMap' : too few template arguments
+00badb40	local_std	LOCAL_STD LOCAL_STD map
+00bb8090	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bb8690	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator *' : unknown size
+00bbd600	local_std	LOCAL_STD LOCAL_STD _Nonconst_traits
+00bbd630	local_std	LOCAL_STD LOCAL_STD _Nonconst_traits
+00bc1420	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator *' : unknown size
+00bc4cd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator *' : unknown size
+00bc56a0	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00bc56d0	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00bc5700	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00bc5730	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00bc5760	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00bc5790	local_std	LOCAL_STD LOCAL_STD _Alloc,map
+00bcbc00	bytes_differ	BYTES_DIFFER masked sha1 differs
+00bcdb10	local_std	LOCAL_STD LOCAL_STD other content
+00bcdb70	local_std	LOCAL_STD LOCAL_STD other content
+00bcdca0	local_std	LOCAL_STD LOCAL_STD other content
+00bcde70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'C3DVector *' : unknown size
+00bcdee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::resize(std::vector<_Tp,_Alloc>::size_type,const _Tp &)' : template function has already been defined
+00bd2920	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00bd2bc0	local_std	LOCAL_STD LOCAL_STD _Alloc,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00bd8480	local_std	LOCAL_STD LOCAL_STD other content
+00bd8800	local_std	LOCAL_STD LOCAL_STD other content
+00bd8a60	local_std	LOCAL_STD LOCAL_STD _Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,_Select1s
+00bd8b30	local_std	LOCAL_STD LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00bd8c00	local_std	LOCAL_STD LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00bd8dc0	local_std	LOCAL_STD LOCAL_STD _Identity,_Nonconst_traits,_Rb_global,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base
+00bd9110	local_std	LOCAL_STD LOCAL_STD _Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,map
+00bdbb70	local_std	LOCAL_STD LOCAL_STD other content
+00bdda80	method_map	METHOD_MAP METHOD_MAP GetLength defined 2 times (1 inside the local C3DVector)
+00be25f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2036: 'CEnginePrimitiveHandle *' : unknown size
+00be3660	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00be4f90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00be5950	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2509: 'push_back' : member function not declared in 'CArray<T>'
+00be8b00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2509: 'size' : member function not declared in 'CArray<T>'
+00beaca0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bec8d0	local_std	LOCAL_STD LOCAL_STD _Identity,_Rb_tree,_Rb_tree_base_iterator,_Rb_tree_iterator,_Rb_tree_node,_Rb_tree_node_base,set
+00bed2a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2244: 'CVectorMap<K,V,CompareType>::LowerBound' : unable to match function definition to an existing declaration
+00bef440	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+00bfc880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfca20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfcbc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfcd60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfcf00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfcf90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfd020	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfd0b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00bfd670	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00c1bff0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Copy' : is not a member of 'C3DVector'
+00c1c070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SwapYZ' : is not a member of 'C3DVector'
+00c1c280	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SwapYZ' : is not a member of 'C3DVector'
+00c1c3f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'x' : is not a member of 'C3DVector'
+00c1cc10	bytes_differ	BYTES_DIFFER length 198 != 133
+00c20340	method_map	METHOD_MAP METHOD_MAP GetMagnitude is declared only (out of line); the header GetMagnitude is inline
+00c256a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DotProduct' : is not a member of 'C3DVector'
+00c256f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2556: 'int C3DVector::operator ==(const C3DVector &) const' : overloaded function differs only by return type from 'bool C3DVector::operator ==
+00c25730	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: '!=' : is not a member of 'C3DVector'
+00c25860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'const C3DVector C3DVector::Cross(const C3DVector &) const' already has a body
+00c258d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00c25970	method_map	METHOD_MAP METHOD_MAP GetMagnitude defined 2 times (1 inside the local C3DVector)
+00c27550	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SwapYZ' : is not a member of 'C3DVector'
+00c40370	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SetCrossProduct' : is not a member of 'C3DVector'
+00c40410	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00c40450	bytes_differ	BYTES_DIFFER length 79 != 75
+00c404a0	bytes_differ	BYTES_DIFFER length 79 != 75
+00c404f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '!=' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00c40650	bytes_differ	BYTES_DIFFER length 255 != 249
+00c45810	method_map	METHOD_MAP METHOD_MAP GetMagnitude is declared only (out of line); the header GetMagnitude is inline
+00c458d0	method_map	METHOD_MAP METHOD_MAP GetMagnitude is declared only (out of line); the header GetMagnitude is inline
+00c53d50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '!=' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00c53e40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '!=' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00c62530	method_map	METHOD_MAP METHOD_MAP GetMagnitude is declared only (out of line); the header GetMagnitude is inline
+00cb5ad0	bytes_differ	BYTES_DIFFER length 81 != 82
+00cb5c90	local_std	LOCAL_STD LOCAL_STD other content
+00cb65d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00cb6650	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K &) const' : template function has already be
+00cb7ee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2059: syntax error : 'string'
+00cb7f60	local_std	LOCAL_STD LOCAL_STD other content
+00cb8110	bytes_differ	BYTES_DIFFER length 73 != 82
+00cb8170	local_std	LOCAL_STD LOCAL_STD other content
+00cb82f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Add' : is not a member of 'CVectorMap<K,V,CompareType>'
+00cb8930	bytes_differ	BYTES_DIFFER length 38 != 33
+00cb9740	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00cb97b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00cb98a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'UpperBound' : is not a member of 'CVectorMap<K,V,CompareType>'
+00cba190	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00cba1f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K &)' : template function has already been defined
+00cbc660	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CVectorMap<K,V,CompareType>'
+00cbd510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'CVectorMap' : too few template arguments
+00cbd5b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sort' : is not a member of 'CVectorMap<K,V,CompareType>'
+00cbe693	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InitialiseFromAngles' : is not a member of 'C3DVector'
+00cdff50	no_block	NO_BLOCK NO_BLOCK
+00d408b0	no_block	NO_BLOCK NO_BLOCK
+00d701c0	bytes_differ	BYTES_DIFFER length 834 != 850
+00d83300	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00d9c2b0	no_block	NO_BLOCK NO_BLOCK
+00e0de90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'MagSquared' : is not a member of 'C3DVector'
+00e629a0	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00e64d10	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00eadb60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae550	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae620	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae670	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae700	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00eae790	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void *operator new(PlacementSize,void *)' already has a body
+00edec50	local_std	LOCAL_STD LOCAL_STD A,_Rb_tree,_Rb_tree_base,_Rb_tree_node,_Rb_tree_node_base,_Select1st,map
+00f29c10	bytes_differ	BYTES_DIFFER length 48 != 51
+00f29fa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'std::pair<_T1,_T2>::second' uses undefined class 'CDefClassBase::CSubDefInfo'
+00f372b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+00f3a270	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00f3a2e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00f3a5d0	stray_change	STRAY_CHANGE 004649a3: ?InsertN@?$CArray@K@@QAEXPAKKABK@Z -> ?_M_fill_insert@?$vector@KV?$allocator@K@std@@@std@@QAEXPAKIABK@Z
+00f3a710	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Size' : is not a member of 'CArray<T>'
+00f3ae50	local_std	LOCAL_STD LOCAL_STD other content
+00f3afc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetData' : is not a member of 'CArray<T>'
+00f3b640	local_std	LOCAL_STD LOCAL_STD other content
+00f3b760	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::__uninitialized_copy' : redefinition; different type modifiers
+00f3b7d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::__uninitialized_fill_n' : redefinition; different type modifiers
+00f3b850	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2373: 'std::fill' : redefinition; different type modifiers
+00f3b8a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'O std::__copy(I,I,O,const std::random_access_iterator_tag &,D *)' : template function has already been defined
+00f3b8f0	bytes_differ	BYTES_DIFFER length 76 != 66
+00f3b970	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InsertGrow' : is not a member of 'CArray<T>'
+00f3d830	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2248: 'std::_Vector_base<_Tp,_Alloc>::_M_start' : cannot access protected member declared in class 'std::_Vector_base<_Tp,_Alloc>'
+00f3f5a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void std::vector<_Tp,_Alloc>::_M_insert_overflow(std::vector<_Tp,_Alloc>::iterator,const _Tp &,const std::__true_type &,std::vector<_Tp,
+00f3f7c0	local_std	LOCAL_STD LOCAL_STD other content
+00f3f890	local_std	LOCAL_STD LOCAL_STD other content
+00f3f960	local_std	LOCAL_STD LOCAL_STD other content
+0121aec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+01229090	bytes_differ	BYTES_DIFFER length 55 != 43
+01229120	bytes_differ	BYTES_DIFFER length 55 != 43
+0122ad80	bytes_differ	BYTES_DIFFER length 48 != 43
+004feec0	consistency	CONSISTENCY its callee respell (struct -> class key) would add a 13th spelling for 0x00687540 CMessageEventManager::AddMessage (MULTINAME; step-6 consistency rule): deferred until that target gets one decided spelling
+007338a0	grade	vland: RELOCATION_MATCH LINK_FAIL (the landed source grades RELOCATION_MATCH PASS)
+0075dc00	grade	vland: RELOCATION_MATCH LINK_FAIL (the landed source grades RELOCATION_MATCH PASS)
+007a0400	grade	vland: RELOCATION_MATCH LINK_FAIL (the landed source grades RELOCATION_MATCH PASS)
+007c6a40	grade	vland: RELOCATION_MATCH LINK_FAIL (the landed source grades RELOCATION_MATCH PASS)

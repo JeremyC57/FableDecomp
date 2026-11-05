@@ -1,4 +1,5 @@
 // CWorld::CWorld(const CWorldInit& init) -- construct the game world: take the component, player manager and definition manager from the init block, null every manager pointer, set the debug/feature flags to their defaults, build the empty strings, vectors and atmos-copy list and stamp the start time
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004A67D0, length 736 bytes (`ret 4`, returns this).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0, CCharString::CCharString 0x0099E4B0,
@@ -36,16 +37,11 @@ class CBulletTimeManager;
 class CMusicManager;
 class COpinionReactionManager;
 class CScriptConversationManager;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
 template <class T> struct scoped_ptr {
     T* ptr;
     scoped_ptr() : ptr(0) {}
-};
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
 };
 
 class CWorldInit { public:

@@ -1,6 +1,7 @@
 // std::sort_heap(pair<long, CCountedPointer<CContainmentVolume> >* first, pair* last, CKeyPairCompareLess comp) -- STLport sort_heap: pop the root to the back until one element remains
 // Flags: /Gr
 // Leaf: ??$sort_heap@PAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00826E50, 122 bytes, /Gr __fastcall (first ecx, last edx, the empty comparator on the
 //   stack), `ret 4`.
 // Identity (proven): reloc_bindings names this ??$sort_heap@PAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@std@@V?$CKeyPairCompareLess@...;
@@ -11,28 +12,7 @@
 //   with pop_heap / __pop_heap_aux inline and __pop_heap out of line (the landed 0x007590C0 text); the /12 distance is the
 //   0x2AAAAAAB reciprocal.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class CCPPointerInfo {                                   // CCountedPointer's shared block
-public:
-    unsigned long RefCount;                             // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
-    void* Data;                                         // +8
-};
-template <class T> class CCountedPointer {              // agent950's landed model (0x00A99110: ReleaseData / ShareData)
-public:
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class CContainmentVolume;
 namespace std {
 template <class _T1, class _T2> struct pair {

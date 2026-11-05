@@ -1,6 +1,7 @@
 // CFactionManager::GetPFaction(const CCharString& name) -- CRC the faction name and look it up in the hash-keyed faction map; null when absent
 // Grade: RELOCATION_MATCH (lane re-grade 2026-10-24; an earlier draft differed only by an esi/edi swap, notes below kept for history)
 // Leaf: ?GetPFaction@CFactionManager@@QAEPAVCFaction@@ABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x006B93D0, 92 bytes, `__fastcall`, `ret 4`. Label correction: the manifest's "Faction::FindFactionByHash"
 // is Ego_r.pdb ?GetPFaction@CFactionManager@@QBEPAVCFaction@@ABVCCharString@@@Z (11 callers); CFactionManager::Factions is
 // a CVectorMap<unsigned long, CCountedPointer<CFaction> > at +0 (Ego_r.pdb).
@@ -23,10 +24,7 @@ public:
 };   // 0x004014A0
 
 class CFaction;
-template <class T> class CCountedPointer { public:
-    T* Data;
-    T* Get() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class A, class B> struct pair { A first; B second; };
 struct CFactionMap {                        // CVectorMap<unsigned long, CCountedPointer<CFaction>, CKeyPairCompareLess<...> >
     typedef pair<unsigned long, CCountedPointer<CFaction> > value_type;

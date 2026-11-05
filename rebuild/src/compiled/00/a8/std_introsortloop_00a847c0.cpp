@@ -1,5 +1,6 @@
 // std::__introsort_loop(pair* first, pair* last, pair*, int depth_limit, CKeyPairCompareLess comp) -- (pair<long, CCountedPointer<CNavConnectorNode> >) quicksort with median-of-three pivots down to runs of 16, falling back to partial_sort at the depth limit
 // Leaf: ??$__introsort_loop@PAU?$pair@JV?$CCountedPointer@VCNavConnectorNode@@@@@std@@U12@HV?$CKeyPairCompareLess@JV?$CCountedPointer@VCNavConnectorNode@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCNavConnectorNode@@@@@0@00HV?$CKeyPairCompareLess@JV?$CCountedPointer@VCNavConnectorNode@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A847C0, 250 bytes (+ int3 padding), `__fastcall` (first in ecx, last in edx; the null value-type pointer, the depth limit and the empty comparator on the stack, `ret 0Ch`).
 // Identity (proven): std::__introsort_loop<pair<long, CCountedPointer<CNavConnectorNode> >*, pair<...>, int, CKeyPairCompareLess<...> > (STLport 4.6 _algo.c; the PDB builds are Dinkumware); evidence: its call sites (0x00A84879, 0x00A84D2D) are sort 0x00A84CF0 and its own recursion; that sort is the sort of CNavQuadTree::ConnectorNodes (sorted at this+0x78 by CNavQuadTree::LinkToNeighbouringMaps 0x00A7A650): CVectorMap<long, CCountedPointer<CNavConnectorNode> > (J050 proves the element type from that sort's owner); its callees are that type's J052 __unguarded_partition 0x00A81BC0 and J053 __partial_sort 0x00A83E80
 // Label: the manifest's "HeapSort_BuildHeap_12ByteElements" is invented (family J055: five byte-identical bodies, one per element type).
@@ -10,39 +11,7 @@
 // Layout: pair<K, CCountedPointer<V> > is 12 bytes {first +0, second.Data +4, second.Info +8}; CCPPointerInfo {RefCount +0, DeleteFunc +4, Data +8}.
 // Model: J050 (agent950's landed CCountedPointer, key-only CKeyPairCompareLess).
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0
-    void (__fastcall* DeleteFunc)(void* data);              // +4, Data in ecx
-    void* Data;                                             // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0
-    CCPPointerInfo* Info;                                   // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class CNavConnectorNode;
 namespace std {
 template <class _T1, class _T2> struct pair {

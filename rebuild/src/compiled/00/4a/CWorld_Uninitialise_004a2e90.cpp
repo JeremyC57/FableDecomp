@@ -1,5 +1,6 @@
 // CWorld::Uninitialise() -- tear down the world: world map prepared for reload, thing manager made current then deleted, camera manager deleted, skeletal-morph resources released
 // Leaf: ?Uninitialise@CWorld@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x004A2E90, 128 bytes (ends in a tail jump). PDB ?Uninitialise@CWorld@@UAEXXZ (virtual slot 10).
 // Callees: CWorldMap::PrepareForLoad 0x004FF560, __fastcall SetCurrentThingManager 0x004C74F0 (stores 0x013B8A1C),
 // CQuestManager::OnWorldDestruction 0x004B49E0 on the singleton 0x013B89FC, the thing manager's deleting destructor
@@ -33,12 +34,7 @@ template <class T> struct scoped_ptr {
     T* operator->() const { return ptr; }
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;                             // +0
-    CCPPointerInfo* Info;                             // +4
-    void Reset(T* object);                            // 0x004A9A80
-};
+#include "engine/CCountedPointer.h"
 
 class CSkeletalMorphResourceManager {                 // 16 bytes, vtable 0x01238F84
 public:

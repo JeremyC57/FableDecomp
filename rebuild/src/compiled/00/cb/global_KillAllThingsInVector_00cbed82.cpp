@@ -1,6 +1,7 @@
 // KillAllThingsInVector(CGameScriptInterfaceBase& game, const vector<CScriptThing>& things, bool fade) -- remove every living script thing in the vector through the game script interface
 #pragma optimize("s", on)
 // Leaf: ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBED82, 56 bytes, `__fastcall` global (interface in ecx, vector in
 //   edx, the bool on the stack: `ret 4`) (PDB ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@
 //   VCScriptThing@@...@@_N@Z). No frame although the bool sits on the stack: this body is built without the module's
@@ -9,8 +10,7 @@
 //   (+0x1b0, 0x008910D0, ?RemoveThing@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z).
 // Shape: begin read once into esi, end re-read every pass; the interface is kept in ebx, the bool argument re-read
 //   from its stack slot for every call (`push [esp+14h]`), the second RemoveThing flag is the constant true.
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

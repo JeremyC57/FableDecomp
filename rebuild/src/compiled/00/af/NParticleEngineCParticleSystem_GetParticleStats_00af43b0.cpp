@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::GetParticleStats(CParticleStats& stats) -- add this system's component, particle and decal counts to the stats (active/allocated always, sleeping when the parent emitter sleeps, visible when the system is visible) and count its light components
 // Leaf: GetParticleStats
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF43B0, 270 bytes, `ret 4`. PDB: ?GetParticleStats@CParticleSystem@NParticleEngine@@QAEXAAVCParticleStats@2@@Z.
 // Callees: CPSCBase virtual slot 5 (+0x14, the component type; 5 = light component, descriptive).
 // Layout: CParticleStats (Ego_r.pdb, 15 longs): ComponentsVisible +0x18, ComponentsActive +0x1C, ComponentsSleeping +0x20,
@@ -18,11 +19,7 @@ public:
     virtual long GetType() const;                  // slot 5
 };
 
-template <class T> struct CCountedPointer {
-    T*    Object;
-    void* Info;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 class CComponentInstance {                         // 0x14 bytes, vtable 0x0129F478
 public:

@@ -1,5 +1,6 @@
 // std::__lower_bound(first, last, const unsigned long& val, MapperPred comp, int*) -- STLport binary search over the occlusion manager's sorted flare vertex-buffer map (pair<unsigned long, CCountedPointer<CVertexBufferWin32> >), comparing each entry's key with val
 // Leaf: ??$__lower_bound@PAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B8F1C0, 75 bytes, __fastcall (first ecx, last edx; val, comp, distance-type
 //   pointer on the stack), `ret 0xc`.
 // Identity: Ego_r.pdb (Dinkumware spelling) ??$_Lower_bound@PAU?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@std@@KHUMapperPred@?A0x...@@@std@@YI...
@@ -12,11 +13,7 @@
 //   compare of the entry's first dword.
 class CVertexBufferWin32;
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                    // +0x00
-    void* Info;                                    // +0x04 shared count block
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 

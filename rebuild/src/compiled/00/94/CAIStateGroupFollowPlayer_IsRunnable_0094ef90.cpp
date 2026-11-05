@@ -1,4 +1,5 @@
 // CAIStateGroup_FollowPlayer::IsRunnable() -- runnable while the main player's creature exists and is alive; remembers it as the thing to follow
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094EF90, length 111 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90 (PBrain->+0x20; the manifest's
 // CPixelShader::CountReferences label is propagated), CPlayerManager::GetMainPlayer @ 0x00449970 (landed name),
@@ -24,14 +25,8 @@ class CPlayer { public:
 #include "engine/CPlayerManager.h"
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                  // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligentPointer<..>, vtable 0x01231C4C
     virtual void v00();

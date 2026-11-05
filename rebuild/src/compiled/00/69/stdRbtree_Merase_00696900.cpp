@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (std::map<CCharString, CCountedPointer<NCreatureAction::CActionEventBase> >) STLport 4.6 recursive subtree release: erase the right subtree, release the value (counted pointer, then key), free the node, continue left
 // Leaf: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00696900, 108 bytes, thiscall `ret 4`; recursive; speed-optimised TU.
 // Identity (proven): the atexit destructor 0x01229280 of the static tree at 0x013BA8BC calls it; that static is read by RegisterActionEventTypes 0x006932B0 and CCreatureActionBase::InitialiseActionEvents 0x006946C0 -- Ego_r.pdb CCreatureActionBase::RegisteredActionEvents (static, dynamic initializer + atexit destructor), map<CCharString, CCountedPointer<NCreatureAction::CActionEventBase> >.
 // Callees: itself (right subtree), the count block's deleter (`call [info+4]`) and operator delete 0x00BFE9BC (the inline
@@ -14,28 +15,7 @@ public:
     bool operator<(const CCharString& other) const;
     void* PStringData;
 };
-class CCPPointerInfo { public:                          // the shared count block
-    long RefCount;                                      // +0x0
-    void (__fastcall *DeleteFunc)(void*);               // +0x4
-    void* Data;                                         // +0x8
-};
-template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
-public:
-    T* Data;                                            // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 namespace NCreatureAction { class CActionEventBase; }
 namespace std {
 

@@ -1,5 +1,6 @@
 // CTCVillage::IsThingInTaskList<CVillageTaskTorch>(const CThing& thing, list<CCountedPointer<CVillageTaskTorch> >& tasks) -- true when some task in the list involves the thing
 // Leaf: ??$IsThingInTaskList@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065FF5E, 48 bytes, thiscall `ret 8` (`this` unused). Name: Ego_r.pdb
 // `??$IsThingInTaskList@VCVillageTaskTorch@@@CTCVillage@@ABE_NABVCThing@@AAV?$list@...` (name set; private const member
 // template). Callers: CTCVillage::UpdateTorchTasks at 0x00659717 / 0x0065978E / 0x006597A5 with `this` in ecx and
@@ -24,11 +25,7 @@ public:
 class CVillageTaskTorch : public CVillageTaskBase {
 };
 
-template <class T> class CCountedPointer {
-public:
-    T*    m_pObject;                                  // +0x00
-    void* m_pInfo;                                    // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 class CIsThingInvolvedWithTask {                      // Ego_r.pdb, 4 bytes
 public:

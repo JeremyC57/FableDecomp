@@ -1,4 +1,5 @@
 // CParticleSystem::GetApproximateTotalSplineLength() -- sums GetApproximateSplineLength over every enabled component of the component map
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF3EE0, 76 bytes.
 // Callees: the component's virtual slot 31 (`call [eax+7Ch]`, returns float).
 // Shape: the float accumulator lives in the `push ecx` frame slot (zeroed with an immediate store), each call
@@ -36,11 +37,7 @@ class CPSCBase { public:                                    // particle-system c
 };
 
 struct SCountBlock;
-template <class T> struct CCountedPointer {
-    T*           Object;
-    SCountBlock* Block;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 }
 
 // Tail of NParticleEngine::CComponentInstance after its vptr (PDB: vptr +0, Component +4, Enabled +0xc,

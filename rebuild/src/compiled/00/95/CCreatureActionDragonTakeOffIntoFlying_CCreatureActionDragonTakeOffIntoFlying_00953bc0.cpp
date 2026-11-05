@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test uses a copy_model stand-in)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // CCreatureAction_DragonTakeOffIntoFlying::CCreatureAction_DragonTakeOffIntoFlying(const CCreatureAction_DragonTakeOffIntoFlying&)
 //   -- member-wise copy: combat-action base, the three points, the movement-point vector, the flag and the counted end action
@@ -20,12 +21,7 @@ template<class T> struct CRetailVector {                // STLport vector: begin
     T* m_first; T* m_last; T* m_end;
     CRetailVector(const CRetailVector& other);          // C3DVector: 0x006F0810
 };
-class CCPPointerInfo { public: unsigned long RefCount; void (__cdecl* DeleteFunc)(void*); void* Data; };
-template<class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { public:
     C3DVector Dest;                                     // +0x114
     C3DVector StartPos;                                 // +0x120

@@ -1,5 +1,6 @@
 // CTCSpecialAbilities::ReclaimUndeadFollower(CThingGameObject& thing) -- take a raised undead back into the follower list: store its rounded health and (when it has a random-appearance morph) its appearance seed in the follower record, mark the record inactive and kill the thing
 // Leaf: ReclaimUndeadFollower
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072B3B0, 99 bytes (112 with padding), `ret 4`.
 // Label correction: catalog "CCreatureAction_KillReclaimedUndead" -- `this` goes straight on to
 //   CTCSpecialAbilities::GetUndeadFollower(WithThing) (landed 0x0072A910), and Ego_r.pdb names
@@ -51,10 +52,8 @@ class CTCRandomAppearanceMorph { public:
     unsigned char _pad00[0x18];
     unsigned long Seed;                         // +0x18
 };
-struct CBaseIntelligentPointer {
-    void* m_pItem;
-    long  m_handle;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CUndeadFollower {                        // CTCSpecialAbilities::CUndeadFollower, 20 bytes
     long                    Health;             // +0x00
     CBaseIntelligentPointer PThing;             // +0x04

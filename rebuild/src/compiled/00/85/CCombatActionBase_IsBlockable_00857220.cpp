@@ -1,4 +1,5 @@
 // CCombatActionBase::IsBlockable() const -- false when the creature's flag 0x10 (+0x30) is set, else true only when the action has no melee ability
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00857220, length 34 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8).
 // PMeleeAbilityDef (+0xb8, Ego_r.pdb name) is tested as the raw pointer (`sete al`), no counted-pointer copy
@@ -12,12 +13,8 @@ class CBaseObject { public:              // engine/CThingCreatureBase.h exists b
     unsigned long Flags30;                      // +0x30 (bit 0x10: cannot be blocked)
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CCombatActionBase { public:
     virtual void v00();

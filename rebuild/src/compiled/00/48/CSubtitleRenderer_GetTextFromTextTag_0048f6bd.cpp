@@ -2,6 +2,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: GetTextFromTextTag
+// Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members m_pFirst/m_pLast are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048F6BD, 259 bytes, `ret 8`. Ego_r.pdb
@@ -36,13 +37,7 @@ public:
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
-template <class T> class CArray { public:
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    unsigned long size() const { return m_pLast - m_pFirst; }
-    T& operator[](unsigned long i) const { return m_pFirst[i]; }
-};
+#include "engine/CArray.h"
 class CIVCountedPointeeBase { public:
     virtual void v00();
     virtual void Destroy() const;                       // slot 1
@@ -114,7 +109,7 @@ bool CSubtitleRenderer::GetTextFromTextTag(const CWideString& tag, CWideString& 
                 goto fail;
             if (TextGroupIndex < (long)entries->size() - 1)
                 TextGroupHasEntriesRemaining = true;
-            const long* items = entries->m_pFirst;
+            const long* items = entries->begin();
             text = bank->GetPTextEntry(items[TextGroupIndex], true)->GetText();
         } else
             text = bank->GetPTextEntry(id, true)->GetText();

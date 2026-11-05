@@ -1,5 +1,6 @@
 // std::_Destroy_range(pair<CCharString, C3DMeshVolume>* first, pair<CCharString, C3DMeshVolume>* last, const allocator&) -- run the element destructor on [first, last) of a vector of named mesh volumes
 // Leaf: _Destroy_range
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe @ 0x00A70EE0, 96 bytes, `ret 4`: __fastcall (first ecx, last edx, the empty allocator by const
 // reference on the stack, never read). Eight call sites 0x00A6D5A5 .. 0x00A7348E.
 // Types (Ego_r.pdb): pair<CCharString, C3DMeshVolume> (16 bytes) = first CCharString +0, second C3DMeshVolume +4
@@ -7,29 +8,8 @@
 // Callees: ~CCharString @ 0x0099EAE0 (twice), operator delete @ 0x00BFE9BC (the count block).
 // Shape: the implicit pair destructor: second (ConvexVolume's inlined release, then ~Name through `lea ecx,[esi-8]`)
 // before first (`mov ecx,edi`). The count-block address is the second induction register (`lea esi,[edi+0Ch]`).
-struct SCountBlock {
-    long m_references;                          // +0x00
-    void (__fastcall* m_pfnDestroy)(void*);     // +0x04
-    void* m_pObject;                            // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* Data;                                    // +0x00
-    SCountBlock* Info;                          // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CCharString { public:
     void* m_pStringData;                        // +0x00

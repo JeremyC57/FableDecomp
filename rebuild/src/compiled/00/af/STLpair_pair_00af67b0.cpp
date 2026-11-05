@@ -1,5 +1,6 @@
 // std::pair::pair() -- default constructor of pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance>: type 0, then an empty enabled component instance
 // Leaf: ??0?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF67B0, 49 bytes, __fastcall `ret`, returns `this`.
 // Identity: the element of CParticleSystem's Components map (CVectorMap<EPSCType, CComponentInstance>); the same
 //   default pair is built inline by the landed one-argument resize 0x00AF7A10 (`resize(n, value_type())`). No direct
@@ -11,11 +12,7 @@
 //   counted pointer zeroed, Enabled = true) runs on `esi = &second`, and the enabled byte is stored after `mov eax,edi`.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-template <class T> class CCountedPointer { public:
-    T*    Data;                                         // +0x00
-    void* m_pCount;                                     // +0x04
-    CCountedPointer() : Data(0), m_pCount(0) {}
-};
+#include "engine/CCountedPointer.h"
 
 namespace NParticleEngine {
 enum EPSCType { PSC_NONE = 0 };

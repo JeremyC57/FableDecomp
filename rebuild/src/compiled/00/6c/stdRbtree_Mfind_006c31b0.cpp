@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> >) STLport exact-key lookup over CCharString keys: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
 // Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VC3DSkeletalMorphTarget@@@@@std@@@2@ABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C31B0, 112 bytes (+ int3 padding), thiscall, `ret 4`; returns the node pointer.
 // Identity: `map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> >`; evidence: the landed CSkeletalMorphResourceManager::GetMorphTarget 0x006C3620 and PreloadBoneConfigs 0x006C37D0 call it on CachedMorphs (Ego_r CSkeletalMorphResourceManager +4: map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> >).
 //   Family F012 (17 byte-identical bodies, one COMDAT per tree type): the manifest label "BinaryTree_FindNodeByString" is behavioural.
@@ -78,12 +79,7 @@ template <class _T1, class _T2> struct pair {
 };
 
 } // namespace std
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                   // Ego_r: 8 bytes
-public:
-    T* Data;                                                 // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-};
+#include "engine/CCountedPointer.h"
 class C3DSkeletalMorphTarget;
 
 namespace std {

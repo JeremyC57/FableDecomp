@@ -1,5 +1,6 @@
 // std::__insertion_sort(CSoundBankEntry* first, CSoundBankEntry* last, CSoundBankEntryLess comp) -- insertion sort: linear insert of each entry after the first
 // Leaf: ??$__insertion_sort@PAU?$pair@JVCSoundBankRecord@@@std@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00993420, length 159 bytes, `ret 4`.
 // Callees: CCharString copy ctor @ 0x0099EC30 (x4), __linear_insert @ 0x009930C0. Caller: __final_insertion_sort @
@@ -25,17 +26,8 @@ public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-class CCPPointerInfo {
-public:
-    long RefCount;                              // +0x00
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                       // +0x00
-    CCPPointerInfo* Info;                       // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
 
 class CSoundBank;
 class CSoundBankData;

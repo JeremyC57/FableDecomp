@@ -1,5 +1,6 @@
 // CParticleEmitterList::ClearLowestPriorityNonVisibleEmitterDecals(CIEngine*) -- walking the active list from the back (lowest priority first), clears the decals of the first initialised, non-visible emitter that has any allocated
 // Leaf: ClearLowestPriorityNonVisibleEmitterDecals
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEAF80, 87 bytes (`ret 4`). 0x00AEAF20 is the particle twin.
 // Callees: NParticleEngine::CParticleEmitter::IsVisible @ 0x00AED010, CParticleEmitter::HasAllocatedDecals @ 0x00AED220,
 // CParticleEmitter::ClearAllDecals @ 0x00AED1E0.
@@ -41,11 +42,7 @@ public:
 };
 
 struct SCountBlock;
-template <class T> struct CCountedPointer {
-    T*           Object;
-    SCountBlock* Block;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 }
 
 template <class T> struct SListNode {

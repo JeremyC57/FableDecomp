@@ -1,4 +1,5 @@
 // C3DMeshFilePartitionChunkFactory::CreateNewInstance() -- registers `new C3DMeshFilePartitionChunk` (inline ctor: CChunkedFileChunk("MPRT") + null counted pointer, 0x18 bytes) through factory slot 10
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pData->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC29C0, length 76 bytes.
 // Callees: 0x00BFEA1A operator new, 0x00AA7590 CChunkedFileChunk ctor, vslot +0x28
 //
@@ -11,12 +12,7 @@ class CChunkedFileChunk { public:
     unsigned char _base_body[0x0c];                     // ChunkType[5] + pad + Parent  (sizeof == 0x10)
 };
 class C3DMeshPartitionElement;
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public:
-    T* m_pData; CCPPointerInfo* m_pInfo;
-    CCountedPointer() : m_pData(0), m_pInfo(0) {}
-    void Reset(T* p);                                   // 0x00AC38A0
-};
+#include "engine/CCountedPointer.h"
 struct C3DMeshFilePartitionChunkRetail : CChunkedFileChunk {
     virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7();
     CCountedPointer<C3DMeshPartitionElement> PartitionTree;   // +0x10 / +0x14

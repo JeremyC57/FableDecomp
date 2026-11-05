@@ -2,6 +2,7 @@
 //   pair<long, CCountedPointer<CNavConnectorNode> > into raw storage (placement new, so a null destination is skipped; the counted
 //   pointer bumps Info->RefCount), return the end of the copy
 // Leaf: ??$__uninitialized_copy@PAU?$pair@JV?$CCountedPointer@VCNavConnectorNode@@@@@std@@PAU12@@std@@YIPAU?$pair@JV?$CCountedPointer@VCNavConnectorNode@@@@@0@PAU10@00ABU__false_type@0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7F920, 56 bytes, __fastcall (first ecx, last edx), `ret 8`.
 // Identity: the row was catalogued "std::_Uninit_copy<... pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> > ...>"
 //   (Dinkumware spelling, wrong element). Its callers are the landed vector<pair<long, CCountedPointer<CNavConnectorNode> > >::_M_insert_overflow
@@ -11,22 +12,7 @@
 //   by placement new, `__uninitialized_copy` as a __fastcall template.
 extern "C" void* __cdecl malloc(unsigned int size);
 inline void* operator new(unsigned int, void* p) { return p; }
-class CCPPointerInfo {                                     // 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T* Data;                                               // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer<T>& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CNavConnectorNode;
 namespace std {
 struct __false_type { __false_type() { } };

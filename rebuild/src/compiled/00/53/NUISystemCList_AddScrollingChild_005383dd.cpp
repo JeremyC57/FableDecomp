@@ -1,5 +1,6 @@
 // NUISystem::CList::AddScrollingChild(CCountedPointer<NUISystem::CComponent>& child) -- add the child as a component child, then record it as a scrolling child: its pointer, a visible flag, and its index in Children appended to ShapeChildren
 // Leaf: ?AddScrollingChild@CList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005383DD, 94 bytes, virtual thiscall `ret 4`; size-optimised frame-pointer TU.
 // Identity (proven): slot 144 of CList's vtable 0x012462E4; the neighbours AddNonScrollingChild 0x0053843B (CComponent::AddChild,
 //   then push_back onto +0x170 NonScrollingChildren) and AddNonScrollingChildDynamically 0x00538465 pair with it; Ego_r.pdb
@@ -14,12 +15,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator { public:

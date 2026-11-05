@@ -1,6 +1,9 @@
 // CGameScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& name) const -- as MsgIsHitByAnySpecialAbilityFrom, but only aggressive abilities (event byte +0x14 set)
 // Levers: `EventNode* n = 0;` defined before `last`/`current` (loop written `for (n = ...)`), so the join after the conditionally destroyed CScriptThing temporary reloads esi (node) before edi (events): VC7.1 reload order follows variable definition order (as 0x008D19A0)
 // Leaf: MsgIsHitByAnyAggressiveSpecialAbilityFrom
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first); the local's flattened PImp_Data / PImp_Info reads are the header's by-value PImp (CCountedPointer<CScriptThing>) .Data / .Info (+0x04 / +0x08).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in QuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D2D90, 496 bytes (sibling of the matched MsgIsTriggeredBy 0x008D0C50), `ret 4` (`?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CGameScriptThing@@UBE_NABVCCharString@@@Z`).
@@ -77,18 +80,9 @@ struct CScriptThingImp {                                // vtable view of the pi
     virtual void v0();
     virtual const CCharString& GetName() const;         // slot 1
 };
-class CScriptThing { public:                                   // vtable 0x01238C8C
-    virtual ~CScriptThing();                            // 0x004AA840
-    virtual const CCharString& GetName() const
-    {
-        const CScriptThingImp* imp = (const CScriptThingImp*)PImp_Data;
-        if (imp == 0)
-            return g_EmptyString;
-        return imp->GetName();
-    }
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -115,21 +109,13 @@ struct CThingNative {
     }
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* VTable; void* Info;
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct PointerView : CBaseIntelligentPointer {
     CThingNative* Get() const { return reinterpret_cast<CThingNative*>(GetPItem()); }
 };
 struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncBase* PActiveThread; };
 struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
     static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
 public:

@@ -1,6 +1,7 @@
 // 008bf1c0 CCreatureAction_UnblockableMidAttack::Initialise
 // Flags:
 // Leaf: ?Initialise@CCreatureAction_UnblockableMidAttack@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define CClass CClassLayout
 #include "engine/CClass.h"
@@ -129,13 +130,8 @@ class CThingAICreature:public CThingCreatureBase {
 public:void SuspendAI(bool,void*);
 };
 #pragma pack(pop)
-class CBaseIntelligentPointer {
- CBaseObjectPointer*PData;
-public:virtual~CBaseIntelligentPointer();CBaseObject*GetPItem()const;
-};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {
-public:T*Get()const{return static_cast<T*>(GetPItem());}T*operator->()const{return Get();}
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 // Layout: CBaseObject8 then protected intelligent pointer8; native total168.
 class CCreatureActionBase:public CBaseObject {
 protected:CIntelligentPointer<CThingCreatureBase>PCreature;

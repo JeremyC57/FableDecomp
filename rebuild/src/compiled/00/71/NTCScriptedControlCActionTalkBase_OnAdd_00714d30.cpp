@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionTalkBase::OnAdd() -- when the talk should make its target listen and the target is another thing under scripted control, open a new conversation and queue a matching talked-to action on the target
 // Leaf: ?OnAdd@CActionTalkBase@NTCScriptedControl@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00714D30, 205 bytes (+3 int3 padding); vtable 0x012659A8 slot 3.
 // FableWin.pdb: ?OnAdd@CActionTalkBase@NTCScriptedControl@@UAEXXZ (slot 3 = OnAdd, as the landed
@@ -46,19 +47,13 @@ class CThing { public:
         return false;
     }
 };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;              // slot 11 (+0x2c)
     CScriptThing*   PImp_Data;                     // +0x04
     CCPPointerInfo* PImp_Info;                     // +0x08
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                          // +0x00
-    CCPPointerInfo* Info;                          // +0x04
-    void Reset(T* object);                         // 0x00718940
-    T* Get() const { return Data; }
 };
 
 namespace NTCScriptedControl {

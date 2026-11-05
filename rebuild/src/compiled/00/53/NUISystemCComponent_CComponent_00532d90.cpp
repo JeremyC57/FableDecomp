@@ -1,5 +1,6 @@
 // NUISystem::CComponent::~CComponent() -- detach the component: drop it from every action that holds it as a parameter, unregister the observer, leave the parent viewport and position parent, orphan the position children, hand the destruction actions to the front-end manager and delete them, orphan the children, then destroy the members and the CActionParam / CObserver / CUIInterface bases
 // Leaf: ??1CComponent@NUISystem@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail 0x00532D90, 1040 bytes, plain `ret`, one dword of frame (the destroy-range tag).
 // Callees: CManager::GetInstance 0x0041E5F2 (`__fastcall`) slots 5 (+0x14, RemoveObserver) and 14 (+0x38, take a
 //   destruction action); free 0x00BFEA14, operator delete 0x00BFE9BC; list<CCountedPointer<CAction> >::clear 0x005356A0;
@@ -71,11 +72,7 @@ template <class T> struct CPodList {             // STLport list<T>, T trivially
             free(_M_node);
     }
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct CRetailList {          // STLport list<CCountedPointer<T> >
     _List_node<CCountedPointer<T> >* _M_node;
     _List_iterator<CCountedPointer<T> > begin() const { return _List_iterator<CCountedPointer<T> >(_M_node->_M_next); }

@@ -1,5 +1,6 @@
 // 009fd9b0 CGraphicDataBank::LoadVolumeGraphic
 // Leaf: ?LoadVolumeGraphic@CGraphicDataBank@@AAE_NAAVCManagedTexture@@AAVCBankFileAsyncData@@ABVCGraphicHeader@1@_NK3@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags:
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -34,8 +35,7 @@ private:friend class CGraphicInfoFrame;
  bool LoadVolumeGraphic(CManagedTexture&,CBankFileAsyncData&,const CGraphicHeader&,bool,unsigned long,bool);
 };
 #include <string.h>
-class CCPPointerInfo{public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void*Data;};
-template<class T>class CCountedPointer{public:T*Data;CCPPointerInfo*Info;CCountedPointer():Data(0),Info(0){}CCountedPointer(const CCountedPointer&o):Data(o.Data),Info(o.Info){if(Info)++Info->RefCount;}~CCountedPointer(){if(Info){if(--Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}T*operator->()const{return Data;}};
+#include "engine/CCountedPointer.h"
 #define CIVCountedPointeeBase CIVCountedPointeeBaseFields
 #include "engine/CIVCountedPointeeBase.h"
 #undef CIVCountedPointeeBase

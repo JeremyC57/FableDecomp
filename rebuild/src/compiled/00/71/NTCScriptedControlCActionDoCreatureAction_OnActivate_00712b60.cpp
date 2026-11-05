@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionDoCreatureAction::OnActivate() -- if the scripted creature already has a current action, remember that action's id (not ours); otherwise make our stored action its current action and remember the id it now runs
 // Leaf: ?OnActivate@CActionDoCreatureAction@NTCScriptedControl@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00712B60, 70 bytes, thiscall, `ret`.
 // Identity (proven): vtable 0x01265838 (RTTI NTCScriptedControl::CActionDoCreatureAction) slot 2, the OnActivate slot of
 //   the sibling actions (landed CActionFollowCreature::OnActivate 0x00715710 is slot 2 of 0x0128D838); Ego_r.pdb
@@ -15,12 +16,7 @@ class CCreatureActionBase {
 public:
     long GetActionID() const;                                   // 0x00692620
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CThingCreatureBase {
 public:
     unsigned char _pad00[0x100];

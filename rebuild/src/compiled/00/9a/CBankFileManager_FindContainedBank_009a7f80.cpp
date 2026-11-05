@@ -1,5 +1,6 @@
 // CBankFileManager::FindContainedBank(const CCharString& name, NBankFileManager::CContainedBank& contained_bank, CCountedPointer<NBankFileManager::CRetailBank>& retail_bank) -- resolve the name through the alias map, then search every open retail bank's ContainedBanks index for it; on a hit copy the CContainedBank and the bank pointer out and return true
 // Leaf: ?FindContainedBank@CBankFileManager@@QAE_NABVCCharString@@AAVCContainedBank@NBankFileManager@@AAV?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A7F80, length 270 bytes (`ret 0Ch`).
 // Identity: Ego_r.pdb name set ?FindContainedBank@CBankFileManager@@QAE_NABVCCharString@@AAVCContainedBank@NBankFileManager@@
 //   AAV?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@Z (both outputs by reference). The alias step is the inline
@@ -33,44 +34,9 @@ public:
     void* PStringData;                                     // +0x00 (CWideStringData*)
 };
 
-struct SCountBlock {                                       // CCPPointerInfo: count, per-type deleter, object
-    long  m_references;                                    // +0
-    void (__fastcall* m_pfnDestroy)(void*);                // +4
-    void* m_pObject;                                       // +8
-};
+#include "engine/CCountedPointer.h"
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 
-template <class T> class CCountedPointer {                 // {object, count block}
-public:
-    T*           Data;                                     // +0
-    SCountBlock* Info;                                     // +4
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->m_references; }
-    ~CCountedPointer()
-    {
-        if (Info && DecRefToZero(Info->m_references)) {
-            Info->m_pfnDestroy(Info->m_pObject);
-            delete Info;
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        if (Info != o.Info) {
-            if (Info) {
-                --Info->m_references;
-                if (Info->m_references == 0) {
-                    Info->m_pfnDestroy(Info->m_pObject);
-                    delete Info;
-                }
-            }
-            Data = o.Data;
-            Info = o.Info;
-            if (Info)
-                ++Info->m_references;
-        }
-        return *this;
-    }
-    T* operator->() const { return Data; }
-};
 
 namespace std {
 

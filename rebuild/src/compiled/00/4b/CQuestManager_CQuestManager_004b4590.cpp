@@ -1,5 +1,7 @@
 // CQuestManager::CQuestManager(CWorld* world, CScriptInfoManager* scriptInfoManager, CGameScriptInterface* gameInterface) -- construct the quest manager: empty persistence maps, quest/card/boast/objective lists and the loaded-resources set, then create its CGameScriptThingManager
 // Leaf: ??0CQuestManager
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail 0x004B4590, 477 bytes, __fastcall ret 0xC (no EH frame). Callees: malloc 0x00BFEA0E (ten list sentinels and the
 // set header), operator new 0x00BFEA1A, CBaseIntelligentPointer() 0x00A01B10, CCharString(const char*, long = -1)
 // 0x0099EBF0 on "" 0x0122D70E, CGameScriptThingManager() 0x00704A80, CCountedPointer::Reset(T*) 0x004BB9D0 (manifest
@@ -62,21 +64,9 @@ class CGameScriptThingManager { public:
     unsigned char _pad[0x10];
     CGameScriptThingManager();                       // 0x00704A80
 };
-template <class T> class CCountedPointer { public:
-    T* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Reset(T* p);                                // 0x004BB9D0
-};
-struct CBaseIntelligentPointer {
-    virtual void v000();
-    void* m_pItem;                                   // +0x04
-    CBaseIntelligentPointer();                       // 0x00A01B10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer() {}
-    virtual void v000();
-};
+#include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
 class CCharString { public:
     void* PStringData;

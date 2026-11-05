@@ -1,5 +1,6 @@
 // CGameScriptThing::IsSummonedCreature -- check summon TC or ghostly-sword definition fallback
 // Leaf: IsSummonedCreature
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail008D08A0 length191. PointerA01B50; component lowerbound4365B0; definition manager accessor4C7990; index9AD410; narrowstring ctor99EBF0,dtor99EAE0. Literal125D2A4 GHOSTLY_SWORD.
 // CGameScriptThing::MsgPerformedFlourish -- query entity events within current script frame interval
 // Leaf: MsgPerformedFlourish
@@ -18,9 +19,8 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 #include "fable_string.h"
 struct IntelligentInfo{CThingNative* Object;long References;};
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct PointerView{void*VTable;IntelligentInfo* Info;}; //00A01B50
 struct DefinitionManagerMethods:CDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&);}; //009AD410
 struct ThingMethods:CThingNative{DefinitionManagerMethods* GetDefinitionManager()const;__forceinline long GetDefinitionID()const{return (unsigned short)DefinitionID;}}; //004C7990

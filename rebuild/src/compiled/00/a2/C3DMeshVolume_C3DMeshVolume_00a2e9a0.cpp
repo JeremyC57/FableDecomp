@@ -1,6 +1,7 @@
 // C3DMeshVolume::C3DMeshVolume(const C3DMeshFileVolumeChunk&, CMovableResourceMemoryPool*) -- copies the chunk's volume name and builds a new containment volume from the chunk's planes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2E9A0, length 126 bytes.
 // Leaf: ??0C3DMeshVolume
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Callees: 0x0099E4B0 CCharString(), 0x0099EFB0 CCharString::operator=, 0x00BFEA1A operator new(0x10),
 // 0x00A752D0 CContainmentVolume() (propagated label C3DGroup2), 0x00A31640 CCountedPointer<T>::Reset(T*),
 // 0x00A755C0 CContainmentVolume::Initialise(const CPlane*, unsigned long, CMovableResourceMemoryPool*).
@@ -24,13 +25,7 @@ class CContainmentVolume { public:
     unsigned char _body[0x10];
 };
 
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) { }
-    void Reset(T* object);                               // 0x00A31640
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 template<class T> class CArray { public:                        // retail CArray<T>: begin/end/capacity
     T* m_begin; T* m_end; T* m_capacity;

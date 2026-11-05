@@ -1,5 +1,6 @@
 // CNavRegion::CNavRegion(const CNavRegion& other) -- copy a navigation region: its id, a deep copy of its connection list (fresh sentinel, every counted connection pointer copied) and its most-recent search id
 // Leaf: ??0CNavRegion@@QAE@ABV0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A83110, 81 bytes (+ int3 padding), thiscall `ret 4`, returns this.
 // Identity: callers 0x00A7A0F8 / 0x00A7A200 (CNavQuadTree 0x00A7A0A0), 0x00A7B09F (CNavQuadTree::LoadFromFile), 0x00A839F5,
 //   0x00A840F9, 0x00A84619, 0x00A84BBC -- the CNavQuadTree TU's list<CNavRegion> (Regions) node construction and region
@@ -17,11 +18,7 @@ extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
 class CNavRegionConnection;
-template <class T> class CCountedPointer {             // 8 bytes: object + shared count block
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct __false_type { __false_type() { } };

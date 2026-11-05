@@ -1,5 +1,6 @@
 // std::list::list(const list& x) -- (list<CIntelligentPointer<CThingAICreature> >) STLport list copy constructor: allocate and self-link the sentinel, then range-insert x's elements at begin()
 // Leaf: ??0?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAE@ABV01@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00519420, 63 bytes (+ int3 padding), thiscall `ret 4`; node size 0x10.
 // Identity (proven): list<CIntelligentPointer<CThingAICreature> >; evidence: its _M_insert_dispatch 0x00517130 is the landed list<CIntelligentPointer<CThingAICreature> > range insert (node 0x10: the 8-byte smart pointer, vtable 0x0123E7E0 = CIntelligentPointer<CThingAICreature>); callers CWorldMap::PopulateRegionWithVillagers 0x00502E90 and CTCVillage::SetVillageLimbo 0x0065C36E copy a village's creature list.
 // Label: the manifest's "DoublyLinkedList_CreateAndInit" is descriptive (family H007: seven rows that differ only in the node size and the call
@@ -12,13 +13,8 @@
 //   (the iterator's user `_List_iterator(const iterator&)`), the const_iterators are pushed directly (the landed
 //   0x0062F610 skeleton).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-class CBaseIntelligentPointer {                     // 8 bytes: vptr + PData
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingAICreature;
 namespace std {
 

@@ -1,5 +1,6 @@
 // CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, bool arg) -- open the quest-completion screen: set the wait flags and completion type; with a card copy its script name, def, rewards and boasts (dropping boasts for other scripts), pick the rendered object (an augmentation reward on a type-1 completion of a reward card), fetch the summary / success / name texts; without one clear them; then create the screen-filter component, close the player GUI and stamp the render time
 // Leaf: Activate
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E4430, 778 bytes, `ret 0Ch`.
@@ -86,12 +87,7 @@ struct CBoastList {
     CBoastList& operator=(const CBoastList& o);            // 0x005E9630
     void clear();                                          // 0x004B8C00
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
     static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
 public:

@@ -1,4 +1,5 @@
 // C3DAnimationInfo::GetAnimationStats() -- make sure the animation data is decoded (loading it synchronously if needed), touch it in its resource list and return its counted stats pointer
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A269C0, 144 bytes. Callees: C3DAnimationInfo::BeginLoading 0x00A26730 (bool),
 // CResource::AddToResourceList 0x009FC440 (`if (ResourceList) ResourceList->...(this)`),
 // CAnimationData::BuildSharedAnimation 0x00A24D70, CResource::ListRemove 0x009FBFB0, CResource::ListInsert 0x009FBF90.
@@ -32,17 +33,8 @@ class CResourceList { public:
     unsigned long CurrentFrame;            // +0x2c
 };
 
-struct SCountBlock { long m_references; };
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                          // +0
-    SCountBlock* m_pCount;                 // +4
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-};
 
 class C3DAnimationStats;
 struct CAsyncLoadTask;
@@ -67,7 +59,7 @@ class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h o
     void* Bank;                            // +4
     unsigned long Index;                   // +8
     CAnimationData* Data;                  // +0xc
-    bool HasStats() const { return Data && Data->Stats.m_pObject; }
+    bool HasStats() const { return Data && Data->Stats.Data; }
     bool IsLoading() const { return Data && Data->LoadTask; }
     CCountedPointer<const C3DAnimationStats> GetAnimationStats();
 public:

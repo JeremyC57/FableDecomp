@@ -1,5 +1,6 @@
 // CBankFileManager::BankExists(const CCharString& bank) -- resolve the bank alias, then report whether the bank is known: in retail-bank mode whether any open retail bank's entry index holds it, otherwise whether it is a registered bank
 // Leaf: ?BankExists@CBankFileManager@@QBE_NABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009A80B0, 145 bytes, thiscall `ret 4`. PDB (Ego_r): `public: bool __fastcall
 // CBankFileManager::BankExists(class CCharString const &) const`. Catalog name "GetLanguageData" is wrong (the callee-canon
 // label file already says BankExists). Callers: eight sites 0x00415099..0x00415236 and 0x009D9B5A.
@@ -111,11 +112,7 @@ public:
 };
 }
 
-template <class T> class CCountedPointer { public:                 // {object, count block}
-    T*    Data;                                             // +0x00
-    void* Info;                                             // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 template <class T> struct CRetailList {                     // STLport list<T>: the header node pointer
     struct SNode {

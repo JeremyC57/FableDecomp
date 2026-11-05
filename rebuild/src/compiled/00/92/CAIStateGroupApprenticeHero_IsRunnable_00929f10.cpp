@@ -1,5 +1,6 @@
 // CAIStateGroup_ApprenticeHero::IsRunnable() -- runnable when the creature is a village member (interface 0x23) whose village says it is cook time
 // Leaf: ?IsRunnable@CAIStateGroup_ApprenticeHero@@MAE_NXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH (was DIFFER 82v87 nd=9) -- levers: counted-pointer model moved onto engine/CCountedPointer.h;
@@ -30,16 +31,8 @@ public:
     virtual ~CBaseClass();
 };
 class CBaseObject : public CBaseClass { };
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-private:
-    void* PData;                                        // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #include "engine/C3DVector.h"
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;

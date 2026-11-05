@@ -1,5 +1,6 @@
 // std::vector<CDefendingCombatantInfo::CProng>::operator=(const vector&) -- STLport vector assignment for the 28-byte combat-ring prong (CCombatRing::Prongs): reallocate and copy-construct when the source is larger than the capacity, else assign over the live elements and destroy the surplus, or assign the overlap and copy-construct the rest
 // Leaf: ??4
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F3C20, 325 bytes. `ret 4`.
 // Label correction: catalogued as "CCombatWheel::CopyCombatWheel"; the body is the STLport vector<T>::operator=
 //   instantiation for a 0x1c-byte element (byte, packed C3DVector at +1, long +0x10, CIntelligentPointer<
@@ -25,10 +26,8 @@ struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                          // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CDefendingCombatantInfo { public:
     class CProng;
 };

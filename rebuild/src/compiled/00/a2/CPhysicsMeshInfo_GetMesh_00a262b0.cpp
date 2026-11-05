@@ -1,5 +1,6 @@
 // CPhysicsMeshInfo::GetMesh() -- make sure the physics mesh is loaded and built (blocking with an "Asset Wait" progress line when the file is still streaming), touch its data in the resource list and return a counted pointer to the mesh
 // Leaf: GetMesh
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A262B0, 191 bytes (+ int3 padding), `ret 4` (hidden result).
 // Callees: CPhysicsMeshInfo::BeginLoading 0x00A25BD0, CBankFileAsyncData::IsFinished 0x009D54E0 / WaitUntilFinished
 //   0x009D5B60, CCharString::CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, DisplayProgress 0x009E9F40
@@ -58,12 +59,7 @@ class CBankFileAsyncData { public:
     bool IsFinished();                     // 0x009D54E0
     bool WaitUntilFinished();              // 0x009D5B60
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 struct CIVCountedObject {                  // intrusive reference count at +4
     virtual void v00();

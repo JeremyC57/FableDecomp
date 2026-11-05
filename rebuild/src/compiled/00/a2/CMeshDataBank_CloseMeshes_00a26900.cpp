@@ -1,5 +1,6 @@
 // CMeshDataBank::CloseMeshes() -- empty the entry table and the four mesh / physics / animation / dynamic info buffers, and forget the bank file name
 // Leaf: ?CloseMeshes@CMeshDataBank@@AAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A26900, 185 bytes, plain `ret`. Callers: CMeshDataBank::Close 0x00A26C50 (its
 //   first call) and 0x00A2735B. The catalog label "CMeshDataBank_Close" names the caller.
 // Identity: Ego_r.pdb `?CloseMeshes@CMeshDataBank@@AAEXXZ` (private). Retail layout from the PDB order with 12-byte
@@ -25,13 +26,7 @@ class CMeshDataBankEntry;
 class C3DMeshInfo { public: unsigned char _body[0x60]; };
 class CPhysicsMeshInfo { public: unsigned char _body[0x10]; };
 class C3DAnimationInfo { public: unsigned char _body[0x28]; };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct __true_type { __true_type() {} };

@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetSleepingPositionAndOrientationFromBed(const CScriptThing& sleeper, const CScriptThing& bed, C3DVector& position, C3DVector& orientation) -- for a valid sleeper and a valid bed thing that has a user-action-point component (kind 0x2d), take a free action point: its position into `position`, the forward axis of its orientation into `orientation`, and mark the point used; false otherwise
 // Leaf: ?GetSleepingPositionAndOrientationFromBed@CGameScriptInterface@@UAE_NABVCScriptThing@@0AAVC3DVector@@1@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008A1B10, 218 bytes, `ret 10h` (vtable 0x01260F0C slot 756).
 // Callees: CScriptThing slots 75 (+0x12c, IsValid) and 11 (+0x2c, GetThing), this interface's slot 682 (+0xaa8,
@@ -55,8 +56,7 @@ public:
 public:
     bool GetFreeActionPoint(CThing_Retail* user, C3DVector* position, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

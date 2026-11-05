@@ -1,5 +1,6 @@
 // CASoundManager::CASoundManager(const CSoundManagerInit& init, bool flag) -- sound manager base: copy the init block's settings (and the inverse of its float scale), default the flags, empty the bank vector, then create the resource bank and give its resource list the init block's memory budget with no unload delay
 // Leaf: ??0CASoundManager@@QAE@ABUCSoundManagerInit@@_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00991910, length 176 bytes (173 + int3 padding), `ret 8`.
 // Vtable 0x0129A574 (RTTI "CASoundManager"); only caller the derived manager's constructor @ 0x00A3EF00 (call
 // 0x00A3EF14, base-constructing with its own two arguments).
@@ -49,15 +50,7 @@ public:
     CResourceBank();                            // 0x009FC5F0
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                       // +0x00
-    CCPPointerInfo* Info;                       // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-    void Reset(T* item);                        // 0x00992170
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 template <class T> class CSTLportVector {      // STLport vector<T>: _Vector_base layout, 12 bytes
 public:

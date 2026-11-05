@@ -1,5 +1,6 @@
 // NUISystem::CComponent::CComponent(const CComponent& other) -- copy constructor: builds a fresh UI component exactly as CComponent(long) does (CUIInterface/CObserver/CActionParam(1) bases, empty name, state map, child vectors, deletion and action lists, position-children set, zeroed geometry, colours and timers, null parents), takes only the def index from the other component, reads the def (GetDataFromDef) and then clears the three transition times
 // Leaf: ??0CComponent@NUISystem@@QAE@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00533720, 641 bytes (656 with padding), `ret 4`, no EH frame. Caller: the
 //   CDraggableInto copy-style constructor 0x0052CCA0 (Ego_r.pdb names `??0CComponent@NUISystem@@QAE@ABV01@@Z`).
 // Callees: NUISystem::CObserver::CObserver 0x0052D9E0, CCharString::CCharString() 0x0099E4B0, malloc 0x00BFEA0E (the
@@ -123,7 +124,7 @@ class CUIState { public:                           // PDB 0x24 bytes
 };
 class CComponent;
 class CAction;
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 
 class CUIInterface {                        // vtable 0x01246044
 public:

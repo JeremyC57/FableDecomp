@@ -1,5 +1,6 @@
 // std::fill(CCountedPointer<C3DGroup2>* first, CCountedPointer<C3DGroup2>* last, const CCountedPointer<C3DGroup2>& value) -- assign one counted pointer to every slot of [first, last), releasing each slot's old reference
 // Leaf: ??$fill@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A96350, 94 bytes, `__fastcall` (first ecx, last edx, value on the stack),
 //   `ret 4`.
 // Identity: the only call site 0x00A97F21 is the overlap arm of vector<CCountedPointer<..> >::_M_fill_insert 0x00A97E40
@@ -14,35 +15,8 @@
 //   destroy + delete at zero), store both words and bump the new count.
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void*         Data;                                 // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (Info) ++Info->RefCount;
-        }
-        return *this;
-    }
-};
 
 class C3DGroup2;
 

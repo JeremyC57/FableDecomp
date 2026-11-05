@@ -1,5 +1,6 @@
 // CTCOpinionSource::OnCreate() -- give the source a fresh opinion set (five zero opinion values), turn on every reaction flag from 18 up, keep the thing frame-updating unless its def always updates, and add the thing to the world opinion manager's source list
 // Leaf: ?OnCreate@CTCOpinionSource@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771660, 265 bytes, plain `ret`.
 // Callees: operator new 0x00BFEA1A (the 12-byte COpinionSet), malloc 0x00BFEA0E (the five-float opinion buffer and the
@@ -47,11 +48,7 @@ class COpinionSet { public:                                // retail 12 bytes
     CArray<float> OpinionValues;
     __forceinline COpinionSet() : OpinionValues(5) { }
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;                                     // +0x00
-    void* Info;                                     // +0x04
-    void Reset(T* object);                          // 0x00771B60
-};
+#include "engine/CCountedPointer.h"
 
 class CBaseIntelligentPointer {
 public:

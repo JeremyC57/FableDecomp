@@ -1,5 +1,6 @@
 // _$E2() -- `dynamic atexit destructor for 'CPhysicalPrimitiveInit::RegisteredPrimitives'': the inlined STLport ~vector of the static (out-of-line __destroy_aux over the elements, then free the storage)
 // Leaf: _$E2
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x01229210, 43 bytes, in `.text$yd`; registered by the initializer 0x0121DFB0 (`push 0x01229210 ; call _atexit`).
 // Identity (proven): the vector at 0x013BA888, catalog-bound as ?RegisteredPrimitives@CPhysicalPrimitiveInit@@2V?$vector@V?$CCountedPointer@VCPhysicalPrimitiveBase@NHitLocations@@@@...; its initializer 0x0121DFB0 registers this thunk (Ego_r.pdb/FableWin.pdb `dynamic initializer/atexit destructor for 'CPhysicalPrimitiveInit::RegisteredPrimitives'`); the element destructor 0x0067FE60 is the bound __destroy_aux<CCountedPointer<NHitLocations::CPhysicalPrimitiveBase>*>.
 // Callees: std::__destroy_aux<CCountedPointer<NHitLocations::CPhysicalPrimitiveBase>*> 0x0067FE60 (`__fastcall`: first in ecx, last in edx, the __false_type tag by address,
@@ -52,12 +53,7 @@ public:
 };
 }
 namespace NHitLocations { class CPhysicalPrimitiveBase; }
-template <class T> class CCountedPointer {               // Data, Info (8 bytes)
-public:
-    ~CCountedPointer();
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 class CPhysicalPrimitiveInit {
 public:
     static std::vector<CCountedPointer<NHitLocations::CPhysicalPrimitiveBase> > RegisteredPrimitives;   // 0x013BA888

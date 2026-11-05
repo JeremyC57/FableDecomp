@@ -1,5 +1,7 @@
 // NScript::CV_BordelloScript::CBordelloEntrance::Main() -- Bowerstone bordello door: lock the door (Me); until Q_TraderEscort is completed, tell the hero it is closed whenever he uses it (game info, wait for click-past); then set the "BordelloSign" readable text (refuge once it became a nunnery, otherwise open), unlock the door and idle
 // Leaf: ?Main@CBordelloEntrance@CV_BordelloScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E3B4A0, 671 bytes (672 with padding); entity-script vtable slot 1 (Main).
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, CCharString(const char*, long) 0x0099EBF0 /
@@ -19,26 +21,14 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
-    virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
-    virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
-    virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019();
-    virtual bool MsgIsUsedBy(const CCharString& name) const;   // slot 20 (+0x50)
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-template <class T> class CCountedPointer { public:
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

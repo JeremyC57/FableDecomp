@@ -1,0 +1,31 @@
+Plan phase 5, wave "w3" (2026-11-05): CIntelligentPointer. Local CBaseIntelligentPointer / CIntelligentPointer stand-ins moved
+onto the shared engine/CIntelligentPointer.h (used as it is: no header change, no new sub-macro, no includer regrade).
+
+ROWS: 1488 PASS under vland --recheck-landed (RELOCATION_MATCH 1469, MATCH 19); gate.py 1490 of
+  1490; parity equal to the landed source on every row. Candidates: 3684 rows that define CIntelligentPointer (2634) or
+  CBaseIntelligentPointer (3619) locally. 74 rows are also in w1 / w2: their w3 source starts from that version.
+BRANCH (owner: per row, both branches gated, never mixed in one TU): every passing row defines FABLE_RETAIL_CINTELLIGENTPOINTER
+  (the byte-packed retail branch: ctor 0x00A01B10, virtual dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90, PData +4)
+  before its only include of the header (the row had a local model, so no other header in the TU brings the header in first).
+  - The packed branch was gated on all 3684; the default branch on the 2194 that failed it: it passes none of them.
+  - Trial (33 rows over the top variants, both branches on every row): packed 22, default 15, and the 15 are a subset of the 22
+    (the default branch lacks the ctor / SetPItem the other 7 call, or its 4-byte alignment moves an owner member). Where both
+    pass, the bytes are equal; the retail branch is taken.
+RESPELLS (CALLERS.tsv, 14 rows; BINDINGS.tsv): gate-verified, same targets.
+  - to the Ego_r + FableWin spelling: ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ (0x00A01B50, from QBEPAXXZ),
+    ??1CBaseIntelligentPointer@@UAE@XZ (0x00A01C10, from QAE and from the derived ??1?$CIntelligentPointer@VCThing@@@@UAE@XZ:
+    retail calls the base dtor). NAME_FIXES_QUEUE: 49 lines narrowed (QUEUE_LINES.tsv), none closed (143 / 106 binders left).
+  - struct -> class key of CBaseIntelligentPointer in stand-in callee / own spellings (IS_THING_ALIVE*, FadeOrKillEffect,
+    GFSerialisePointer, TransformHitThings, CIntelligentPointerVector::erase, CIsSeatWithSpaceOwnedBy::operator() ...): no
+    landed binder is left on the old spelling (scripts/conscheck.py).
+DEFERRED.tsv (2196):
+  - compile_fail 1908: the local GetPItem() returning T* / SetPItem(T*) (the header's typed accessors are Get() / Set(T*),
+    whose static_cast needs T and CBaseObject complete -- 658 C2027 + 435 C2440 + 132 C2664); non-template stand-ins 284;
+    out-of-class definitions of local members 96; others. These need the owner's class (CThing : CBaseObject) from a shared
+    header, i.e. the CThing wave (step 5), before they can move.
+  - bytes_differ 283; stray_change 3;
+  - consistency 2: 0x0065C781 / 0x007888B4 would split the stand-in ?IS_THING_ALIVE_004cc340 (0x004CC340) across two spellings
+    (0x00788229 keeps the old one);
+  - 0x00945E70 CIsSeatWithSpaceOwnedBy::operator(): its own symbol changes class key (UCBaseIntelligentPointer ->
+    VCBaseIntelligentPointer) and its `// Leaf:` line named the old full spelling, so the first grade fell back to the largest
+    function; the Leaf line now carries the new spelling and the row re-grades RELOCATION_MATCH PASS (logs/vland_w3x*.log; its superseded lines were removed from logs/vland_w3A04.log).

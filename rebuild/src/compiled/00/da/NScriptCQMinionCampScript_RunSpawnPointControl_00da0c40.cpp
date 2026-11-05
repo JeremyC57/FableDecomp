@@ -1,4 +1,5 @@
 // CQ_MinionCampScript::RunSpawnPointControl() -- script thread for mission stage 3: each frame, while there are fewer minions than the maximum and the spawn timer has run out, pick the spawn point (a random one on the side holding the furthest spawn point), restart the spawn timer with a random period between the minimum and maximum (unless this is the last minion) and flag a spawn
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA0C40, length 322 bytes (+ int3 padding), plain `ret`.
@@ -19,7 +20,9 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-class CScriptThing { public: void* _body[3]; };                // 12 bytes, 4-aligned
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 template <class T> struct list { void* _M_node; };      // STLport list (retail 4 bytes)
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 

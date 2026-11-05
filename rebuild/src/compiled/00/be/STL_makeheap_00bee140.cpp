@@ -1,5 +1,6 @@
 // std::__make_heap(CSurfaceEntry* first, CSurfaceEntry* last, CSurfaceEntryLess comp, CSurfaceEntry*, int*) -- heapify the (key, CCompositeSurfaceInfo) entries: sift every parent down from the last one to the root
 // Leaf: ??$__make_heap@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members DeleteFunction->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEE140, 103 bytes, `ret 0Ch` (comparator, value-type and distance pointers).
 // Callees: __adjust_heap @ 0x00BEDD70 (landed).
@@ -13,43 +14,8 @@
 // CBaseClass: the polymorphic engine root (out-of-line virtual destructor 0x0099A2E0, vtable 0x01231710).
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CCPPointerInfo {                              // the shared count block of a CCountedPointer
-public:
-    long  RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunction)(void* data);  // +0x04
-    void* Data;                                     // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                           // +0x00
-    CCPPointerInfo* Info;                           // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { DeleteData(); Data = 0; Info = 0; }
-    void DeleteData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunction(Info->Data);
-                operator delete(Info);
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            DeleteData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 
 class CCompositeSurfaceCache;
 // Ego_r.pdb CCompositeSurfaceInfo (vtable 0x012A8154, 12 bytes): implicit copy, assignment and (virtual) destructor.

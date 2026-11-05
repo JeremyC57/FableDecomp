@@ -1,5 +1,6 @@
 // std::__adjust_heap(pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase> >* first, int holeIndex, int len, pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase> > val, CKeyPairCompareLess comp) -- STLport heap sift-down of the active-entity script table keyed by a 64-bit id, then __push_heap val back up
 // Leaf: ??$__adjust_heap@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBB3B0, 288 bytes (incl. int3 padding), `ret 18h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 16-byte value and the empty comparator on the stack: 4 + 0x10 + 4 = 0x18).
 // Element (16 bytes, `shl eax,4`): unsigned __int64 key +0 (high dword compared first: `ja` / `jb`, then the low
@@ -12,51 +13,8 @@
 //   count block stays in esi across __push_heap (no out-of-line call sees val, so its destructor's null stores die).
 extern void __cdecl operator delete(void* block);                                    // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // Ego_r.pdb, 12 bytes
-    unsigned long RefCount;                             // +0x0
-    void (__fastcall* DeleteFunc)(void* data);          // +0x4
-    void* Data;                                         // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    CCountedPointer(const CCountedPointer<T>& other) : Data(other.Data), Info(other.Info)
-    {
-        if (other.Info)
-            ++other.Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-    CCountedPointer<T>& operator=(const CCountedPointer<T>& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    T* Data;                                            // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-};
 
 class CActiveEntityScriptBase;
 

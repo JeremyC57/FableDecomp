@@ -1,17 +1,13 @@
 // std::sort(std::pair<long, CCountedPointer<CContainmentVolume> >* first, std::pair<long, CCountedPointer<CContainmentVolume> >* last, CKeyPairCompareLess<long, CCountedPointer<CContainmentVolume> > comp) -- STLport sort: when the range is not empty, introsort it with depth limit 2 * floor(log2(n)), then finish with the final insertion sort
 // Leaf: ??$sort@PAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@std@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@0@0V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00827710, 82 bytes, /Gr __fastcall (first in ecx, last in edx, comp on the stack), `ret 4`.
 // Identity (proven): its __introsort_loop 0x008274B0 is bound ??$__introsort_loop@PAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@std@@U12@HV?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@std@@...; 12-byte stride; caller the CVectorMap Sort 0x00827830; bound only as the stand-in ?GuiTarget_Set@@YIXPAUGuiTarget@@H_N@Z.
 // Callees: __introsort_loop<T*, T, int, Compare>(first, last, (T*)0, depth, comp) 0x008274B0 and
 //   __final_insertion_sort<T*, Compare>(first, last, comp) 0x00827350 (both __fastcall, out of line).
 // Shape (family L050): n by the 12-byte magic divide, the inline __lg loop (`sar eax,1 ; inc ecx` until 1), depth
 //   `lea eax,[ecx+ecx]`; the 4-byte comparator copy re-pushed for both calls.
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                 // 8 bytes: Data, Info
-public:
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-};
+#include "engine/CCountedPointer.h"
 class CContainmentVolume;
 namespace std {
 template <class _T1, class _T2> struct pair {

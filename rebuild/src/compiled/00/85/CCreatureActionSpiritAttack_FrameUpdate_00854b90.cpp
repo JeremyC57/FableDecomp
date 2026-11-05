@@ -1,5 +1,6 @@
 // CCreatureAction_SpiritAttack::FrameUpdate() -- per-frame update of the co-op spirit attack: while the target and the particle emitter are alive, feed the emitter LIGHTNING_START (spirit focal point +0.8 Z) and LIGHTNING_END (target focal point) vector parameters
 // Leaf: ?FrameUpdate@CCreatureAction_SpiritAttack@@EAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH against the TRUE extent (own oracle: Fable.exe 0x00854B90..0x00854DC5, 566 bytes, `ret` at
 //   0x00854DC5, int3 to 0x00854DD0 where ?PerformAction@CCreatureAction_SpiritAttack starts); the catalog/oracle row is a
@@ -107,8 +108,8 @@ private:unsigned char _pad_members[sizeof(CThingFields)-sizeof(CClass)];
 #define CCreatureAction_SpiritAttack CCreatureAction_SpiritAttackFields
 #include "engine/CCreatureAction_SpiritAttack.h"
 #undef CCreatureAction_SpiritAttack
-class CBaseIntelligentPointer{private:CBaseObjectPointer*PData;public:CBaseIntelligentPointer();virtual~CBaseIntelligentPointer();CBaseObject*GetPItem()const;void SetPItem(CBaseObject*);};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:T*Get()const{return static_cast<T*>(GetPItem());}T*operator->()const{return Get();}};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 // Layout: original base prefix grounded in shared native CCreatureActionBase header; PCreature is protected at8.
 class CTCWeaponTrail;
 class CCreatureActionBase:public CBaseObject{protected:CIntelligentPointer<CThingCreatureBase>PCreature;unsigned char _pad_action[sizeof(CCreatureActionBaseFields)-16];public:virtual void EditUpdate(float);

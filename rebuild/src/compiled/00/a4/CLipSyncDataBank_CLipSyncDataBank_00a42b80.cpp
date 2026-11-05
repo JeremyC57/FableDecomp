@@ -1,5 +1,6 @@
 // CLipSyncDataBank::CLipSyncDataBank() -- CBankFile base, empty Entries, null resource bank / phoneme bank, SkipUpdate false, clear the static-map flag, then ResourceBank takes a new CResourceBank
 // Leaf: ??0CLipSyncDataBank
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe 0x00A42B80, 118 bytes (plain `ret`). Vtable 0x0129D3D4 = CLipSyncDataBank (rtti-vtables); only
 // caller 0x00991B17.
 // Label correction: the catalog "CTCSkeletalMorph::CTCSkeletalMorph" is propagated; the vtable store names the class
@@ -35,13 +36,7 @@ template <class T> class CArray { public:                  // retail 12 bytes: S
     _STLP_alloc_proxy<T> _M_end_of_storage;
     CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T* Data;                                        // +0x00
-    CCPPointerInfo* Info;                           // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-    void Reset(T* item);                            // 0x00992170
-};
+#include "engine/CCountedPointer.h"
 class CLipSyncDataBankEntry;
 class CPhonemeDataBank;
 class CLipSyncDataBank : public CBankFile { public:               // vtable 0x0129D3D4

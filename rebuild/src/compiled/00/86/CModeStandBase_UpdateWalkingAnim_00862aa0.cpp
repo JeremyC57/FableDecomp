@@ -1,5 +1,6 @@
 // CModeStandBase::UpdateWalkingAnim(CAnimateThing& anim) -- choose and blend the movement animation pair for the creature's planar speed: keep the movement-update counter (2 while moving, else count down), then blend run->sprint when the hero special-movement component is sprinting past running speed, else jog->run / walk->jog / stand->walk (walk->run / stand->walk without a jog animation) by the speed band, with the existing-anim status picked from the main anim's type
 // Leaf: ?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00862AA0, 1056 bytes incl. the two 4-entry status jump tables at 0x00862EA0 / 0x00862EB0,
@@ -83,14 +84,7 @@ public:
 };
 
 namespace NAnimationEntryBodge { class CAnimEntryLite; }
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                       // +0x0
-    CCPPointerInfo* Info;                       // +0x4
-    T& operator*() const { return *Data; }
-    bool IsNull() const { return Data == 0; }
-};
+#include "engine/CCountedPointer.h"
 
 class CAnimateThing {
 public:

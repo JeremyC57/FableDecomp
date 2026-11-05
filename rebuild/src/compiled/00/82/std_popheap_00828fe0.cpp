@@ -1,5 +1,6 @@
 // std::__pop_heap(_RandomAccessIterator first, _RandomAccessIterator last, _RandomAccessIterator result, _Tp val, _Compare comp, _Distance*) -- (pair<long, CCountedPointer<CRegionConnectionNode> > under CKeyPairCompareLess) move the heap top to result, then sift the saved value into the hole
 // Leaf: ??$__pop_heap@PAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@U12@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCRegionConnectionNode@@@@@@H@std@@YIXPAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@0@00U10@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCRegionConnectionNode@@@@@@PAH@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00828FE0, 175 bytes, /Gr `__fastcall` (first in ecx, last in edx; result, the
 //   12-byte value, the empty comparator and the dead distance tag on the stack), `ret 18h`.
 // Identity (proven): std::__pop_heap<pair<long, CCountedPointer<CRegionConnectionNode> >*, pair<...>, CKeyPairCompareLess<long, CCountedPointer<CRegionConnectionNode> >, int>; evidence: reached from the sort 0x008298F0 whose element H047 proves (CRegionConnectionGraph::GraphNodes (InitialiseGraph 0x00828710); swap 0x00827FD0) by direct calls 0x008298F0 -> 0x008297F0 -> 0x00829630 -> 0x00828FE0 (sort -> introsort_loop -> partial_sort -> this); its four callers 0x00829148, 0x008291F8, 0x00829483, 0x00829677 are that TU's heap code.
@@ -10,45 +11,7 @@
 // Shape: STLport 4.6 _heap.h __pop_heap verbatim: `*result = *first; __adjust_heap(first, 0, last - first, val, comp);`
 //   (len by the 0x2AAAAAAB reciprocal, 12-byte stride); the pair's implicit assignment inlines CCountedPointer::operator=
 //   (landed 0x00448380 body), and the callee-destroyed `val` is released after the call.
-class CCPPointerInfo { public:                                    // CCountedPointer's shared block
-    long  RefCount;                                        // +0x0
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x4
-    void* Data;                                            // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* const              data = o.Data;
-        CCPPointerInfo* const info = o.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CRegionConnectionNode;
 
 namespace std {

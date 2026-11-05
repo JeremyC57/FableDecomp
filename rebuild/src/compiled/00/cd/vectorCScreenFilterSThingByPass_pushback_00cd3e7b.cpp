@@ -2,6 +2,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?push_back@
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD3E7B, 69 bytes, `__fastcall` (vector in ecx, the element on the
 //   stack: `ret 4`). Callers: the cutscene screen-filter macro code @ 0x00CD1008 / 0x00CD10FA (each pushes a stack
 //   CScreenFilterSThingByPass built by its constructor 0x00CD2757).
@@ -14,14 +15,9 @@
 // Shape: frame-pointer size TU; `_Construct(finish, x)` is the placement new with VC's null test on the pointer;
 //   finish is re-read and advanced by 16; the overflow call gets (finish, x, a __false_type tag temporary homed in the
 //   dead argument slot [ebp+0Bh], 1, true).
-class CScriptThing {                                    // 12 bytes, vtable 0x01238C8C
-public:
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
-    void* m_vtable;
-    void* m_pImpData;
-    void* m_pImpInfo;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CScreenFilterSThingByPass {                      // 16 bytes
     CScriptThing Thing;                                 // +0x00
     bool         BypassSet;                             // +0x0c

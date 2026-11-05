@@ -1,5 +1,6 @@
 // std::__pop_heap(_RandomAccessIterator first, _RandomAccessIterator last, _RandomAccessIterator result, _Tp val, _Compare comp, _Distance*) -- (pair<unsigned long, CCountedPointer<CFaction> > under CKeyPairCompareLess) move the heap top to result, then sift the saved value into the hole
 // Leaf: ??$__pop_heap@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@U12@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@H@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@00U10@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@PAH@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BA180, 175 bytes, /Gr `__fastcall` (first in ecx, last in edx; result, the
 //   12-byte value, the empty comparator and the dead distance tag on the stack), `ret 18h`.
 // Identity (proven): std::__pop_heap<pair<unsigned long, CCountedPointer<CFaction> >*, pair<...>, CKeyPairCompareLess<unsigned long, CCountedPointer<CFaction> >, int>; evidence: reached from the sort 0x006BB140 whose element H047 proves (CFactionManager::Factions (+0, CFactionManager::CFactionManager(const CWorld&) 0x006B97E0); swap 0x006B8E70) by direct calls 0x006BB140 -> 0x006BB040 -> 0x006BADB0 -> 0x006BA180 (sort -> introsort_loop -> partial_sort -> this); its four callers 0x006BA2E8, 0x006BA398, 0x006BA883, 0x006BADF7 are that TU's heap code.
@@ -10,45 +11,7 @@
 // Shape: STLport 4.6 _heap.h __pop_heap verbatim: `*result = *first; __adjust_heap(first, 0, last - first, val, comp);`
 //   (len by the 0x2AAAAAAB reciprocal, 12-byte stride); the pair's implicit assignment inlines CCountedPointer::operator=
 //   (landed 0x00448380 body), and the callee-destroyed `val` is released after the call.
-class CCPPointerInfo { public:                                    // CCountedPointer's shared block
-    long  RefCount;                                        // +0x0
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x4
-    void* Data;                                            // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* const              data = o.Data;
-        CCPPointerInfo* const info = o.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CFaction;
 
 namespace std {

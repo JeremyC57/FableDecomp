@@ -1,5 +1,6 @@
 // NUISystem::CScrollableList::Update(float) -- after the arrow delay runs out, re-arm the visible rows and the shown arrows as event observers
 // Leaf: Update
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail 0x00555220, 368 bytes, ret 4. Callees: CChangingStateComponent::Update 0x0052C7E0, CFrontEndManager::GetInstance
 // 0x0041E5F2 and its AddObserver (slot 2, +0x08); the components' CObserver virtuals (base at +4): ProcessEvent slot 1,
 // ObserveEvent slot 3, StopObservingEvent slot 4 (names as in the landed CClickable/CMouseCursor models).
@@ -33,12 +34,7 @@ namespace NUISystem { class CManager { public:
 }; }
 struct CComponent : IComponentPrimary, CObserver, IComponentSecondaryB {
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long size() const { return _M_finish - _M_start; }

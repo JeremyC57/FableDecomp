@@ -1,4 +1,5 @@
 // CGameCameraManager::PushDownManualCameraList() -- select next manual camera and play success/error cue
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail00698c30 218bytes. Real manager/string headers retained; native manager after STL shrink: observed100,list108,index114,using12c,def134.
 // Callees GetPItem A01B50, script slot2 (5ED0E0 default false), PreparePendingMode698840, string99EBF0/99EAE0, sound fastcall698A30.
 #define CGameCameraManager CGameCameraManagerDonor
@@ -14,9 +15,8 @@
 #undef CCameraModeDef
 class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;}; // native bit0 means unavailable; all GetPItem guards use this mask
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CObservedThingPointer {void* VTable;void* PointerInfo;}; // A01B50 reads info+0 and may release stale info
 struct CCameraModeDefNative;
 struct CCameraModeVTable {void* Destructor;void (__fastcall* Destroy)(CCameraModeDefNative*);};

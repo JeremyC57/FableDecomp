@@ -1,5 +1,6 @@
 // std::_Construct(CUnprovenRecord_00cba3b0* __p, const CUnprovenRecord_00cba3b0& __val) -- placement copy of a {CCharString, CCountedPointer} record (nothing for a null __p)
 // Leaf: ??$_Construct@VCUnprovenRecord_00cba3b0@@V1@@std@@YIXPAVCUnprovenRecord_00cba3b0@@ABV1@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBA3B0, 37 bytes, `__fastcall` (p ecx, value edx), plain `ret`.
 // Identity (descriptive): no call, jump or data reference reaches it (an unreferenced COMDAT kept without /OPT:REF); its
 //   bytes copy-construct a 12-byte non-polymorphic record {CCharString +0 (copy constructor out of line), CCountedPointer +4
@@ -9,22 +10,7 @@
 // Shape (family M196, representative 0x006964A0): STLport `_Construct(p, val) { new (p) T1(val); }` -- placement new's null
 //   test, then the record's implicit copy constructor. /Gr TU written as explicit __fastcall.
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
-class CCPPointerInfo {
-public:
-    long RefCount;                                        // +0x00
-    void (__fastcall* DeleteFunc)(void* data);            // +0x04
-    void* Data;                                           // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes: Data, Info
-public:
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-};
+#include "engine/CCountedPointer.h"
 class CCharString {
 public:
     CCharString(const CCharString& other);                // 0x0099EC30

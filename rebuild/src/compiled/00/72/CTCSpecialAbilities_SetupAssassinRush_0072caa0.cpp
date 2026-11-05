@@ -1,5 +1,6 @@
 // CTCSpecialAbilities::SetupAssassinRush() -- start the assassin-rush cast action on the hero (not while interfaces 0xA8/0xA9 are present): aimed at a live creature target when the targeting component has one (with the player's Z-targeting flag for a player-controlled hero), otherwise untargeted; returns whether the action was set
 // Leaf: SetupAssassinRush
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072CAA0, 252 bytes (plain `ret`).
 // Callees: the const interface LowerBound @ 0x004365B0 (interface 8), the targeting component's slot 33 (+0x84, target thing),
@@ -56,14 +57,7 @@ public:
     }
 };
 class CCreatureActionBase;
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& other);
-};
+#include "engine/CCountedPointer.h"
 class CThingCreatureBase : public CThing {
 public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0

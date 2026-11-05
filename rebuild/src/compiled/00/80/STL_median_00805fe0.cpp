@@ -1,5 +1,6 @@
 // std::__median(const CIntelligentPointer<CThing>& a, const CIntelligentPointer<CThing>& b, const CIntelligentPointer<CThing>& c, CDoNotUseBinaryPredicate comp) -- SGI median-of-three for the introsort pivot of a thing-pointer array under the coin-flip predicate: each comparison advances the world's random seed and answers "low bit clear", so the pick is random
 // Leaf: __median
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in g_pWorld (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00805FE0, 220 bytes, `ret 8` (__fastcall: a in ecx, b in edx, c and the
@@ -40,14 +41,8 @@ private: public:
 
 
 struct PointerLink { CBaseObject* item; int refs; };
-class CBaseIntelligentPointer {
-public:
-    PointerLink* link;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();         // 0x00A01C10
-};
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 typedef CIntelligentPointer<CThing> ThingPointer;
 
 namespace {

@@ -1,4 +1,5 @@
 // CCreatureAction_CastWillDrainLifeSpell::CCreatureAction_CastWillDrainLifeSpell(CThingCreatureBase*, CThing*, long, long) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), Level and DrainDefIndex from the arguments, own vtable, then the target stored into the inherited PTarget
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BBBA0, length 96 bytes.
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030,
 // CBaseIntelligentPointer::SetPItem @ 0x00A01B90 (on PTarget at +0xa8).
@@ -10,11 +11,8 @@ class CThing;
 
 class CBaseObject;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                   // +0x04
-    void SetPItem(CBaseObject* item);       // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (the register-zeroed
     long FirstSound;                        //   stack stores before the base call: an embedded object's inline ctor)

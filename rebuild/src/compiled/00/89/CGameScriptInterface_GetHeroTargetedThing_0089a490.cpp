@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetHeroTargetedThing() const -- the hero creature's current target as a script thing, or a null script thing
 // Leaf: ?GetHeroTargetedThing@CGameScriptInterface@@UBE?AVCScriptThing@@XZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe @ 0x0089A490, 124 bytes, `ret 4` (hidden result); Ego_r.pdb same symbol.
 // Body: hero = PlayerManager (+0x14)->GetMainPlayer() (0x00449970)->GetPControlledCreature() (0x00487DC0, `add ecx,2Ch; jmp` = CPlayer::ControlledCreature +0x2c); if hero: PeekTC of
@@ -13,7 +14,9 @@
 // Shape: /O2 (16-aligned entry); the PeekTC out-pointer form, with the end-or-mismatch choice written as one ternary
 // whose ->component is stored (`*out = ((it == last || 8 < it->type) ? last : it)->component`), which loads the component
 // straight into ecx as retail does (the if/assign form carries it in eax, 126 bytes). Same fix as 0x00899B10.
-class CScriptThing;
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -57,12 +60,6 @@ public:
         *out = (const T*)((it == map->end() || T::INTERFACE_TYPE < it->first) ? map->end() : it)->second;
         return true;
     }
-};
-class CScriptThing {
-public:
-    CScriptThing(const CScriptThing& other);
-    virtual ~CScriptThing();
-    void* Data;
 };
 class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThing derives from CScriptThing
 public:

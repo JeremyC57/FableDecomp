@@ -4,6 +4,7 @@
 //   3 bones per vertex, DP3 bump off, a new animation manager observed by this bank, zero unload delays on the animation /
 //   physics / mesh-stats banks, unloadable memory 0, unload delay 5 frames, 64 particle faces, and the static-map flag set
 // Leaf: ??0CMeshDataBank
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A27030, 800 bytes (plain `ret`). Vtable 0x0129CE94 = CMeshDataBank (rtti-vtables).
 // Callees: CBankFile::CBankFile 0x009D5F80, CCharString() 0x0099E4B0, CResourceBank() 0x009FC5F0, malloc 0x00BFEA0E (the
 //   STLport map header, 0x20 bytes), CMeshBankStateBlock() 0x00A2D650 (manifest "CMeshDataBank_Initialize"), operator new
@@ -78,13 +79,7 @@ struct CULongArray : CArray<unsigned long> {
     }
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CMeshDataBank;
 

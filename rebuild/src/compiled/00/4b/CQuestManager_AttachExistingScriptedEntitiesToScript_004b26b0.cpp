@@ -1,4 +1,5 @@
 // CQuestManager::AttachExistingScriptedEntitiesToScript(CScriptBase&) -- collect every thing that has a script name and hand each one the script binds to it as an activated entity (UID, CScriptThing)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B26B0, length 232 bytes, `ret 4`
 // (PDB ?AttachExistingScriptedEntitiesToScript@CQuestManager@@QAEXAAVCScriptBase@@@Z).
@@ -26,27 +27,7 @@ void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
 class CCharString { public: void* PStringData; };
 
-class CCPPointerInfo { public:                                  // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);           // destroys the pointee
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

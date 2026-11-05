@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::WatchForArcherSpawnConditions() -- once the spy has made contact and the hero is in DesertedFarm, create a crossbow guard "AT_Phase3Archer" on every live M_AT_ArcherSpawn point, attach it to the quest and, if M_AT_ArcherSpawnFaceMe lives, turn the archer to face it
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0F910, length 599 bytes. Spawned as "WatchForArcherSpawnConditions"
 //   (0x012F8450) by CQ_AmbushTradersScript::ProcessInitialSpyExtraction 0x00F0F680; the manifest label
 //   "CQ_GuildTrainingScript::WatchForSparrowKilled" is propagated.
@@ -16,8 +17,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

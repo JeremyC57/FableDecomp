@@ -1,5 +1,6 @@
 // CEngineStaticMapFileBlockManager::SetBlockToHighPriority(long index) -- if the block's asynchronous load is still at low priority, raise it to the high loading priority
 // Leaf: ?SetBlockToHighPriority@CEngineStaticMapFileBlockManager@@QAEXJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE0420, 54 bytes, thiscall, `ret 4`.
 // Identity (proven): Ego_r.pdb ?SetBlockToHighPriority@CEngineStaticMapFileBlockManager@@QAEXJ@Z (the bound
 //   "PrioritiseBlock" is an invented spelling); Blocks +0x08 is map<long, CEngineStaticMapFileBlockManager::CFileBlock>
@@ -10,13 +11,7 @@
 //   _M_find + iterator, the const twin is 0x00BE0930; the bound "CRetailBlockSet::FindInsertionPoint" is invented).
 // Shape: the found iterator's block used without an end() test; the flag cleared after the priority change.
 class CBankFileAsyncData;
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 enum EThreadedFilePriority { THREADED_FILE_PRIORITY_FORCE_DWORD = 0x7fffffff };
 class CBankFileAsyncData {
 public:

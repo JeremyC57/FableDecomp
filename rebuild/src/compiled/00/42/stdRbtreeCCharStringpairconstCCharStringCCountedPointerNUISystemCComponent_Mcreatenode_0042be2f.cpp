@@ -1,5 +1,6 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, CCountedPointer<NUISystem::CComponent> >, ...>::_M_create_node(const value_type&) -- mallocs a 0x1c-byte node and copy-constructs the pair into it
 // Leaf: ?_M_create_node@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@IAEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x0042BE2F, 33 bytes, `ret 4`. Catalog label NScript::CDanyalTestScriptsData::Alloc is wrong. STLport
 // _M_create_node: malloc import 0x00BFEA0E (`push 1Ch`), placement new (null test) with the pair copy ctor 0x0042A961
 // (CCharString copy 0x0099EC30 then CCountedPointer copy 0x00428928) on node +0x10. Callers: the map's _M_insert 0x0042CC03,
@@ -14,13 +15,7 @@ public:
     void* PData;
     CCharString(const CCharString& s);                   // 0x0099EC30
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& p);           // 0x00428928 (out of line, folded across T)
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CComponent; }
 namespace std {
 template <class T1, class T2> struct pair {

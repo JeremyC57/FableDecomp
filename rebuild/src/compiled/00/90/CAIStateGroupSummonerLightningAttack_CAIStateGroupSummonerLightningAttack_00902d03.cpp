@@ -1,4 +1,5 @@
 // CAIStateGroup_SummonerLightningAttack::CAIStateGroup_SummonerLightningAttack() -- default constructor: base, target pointer, null def
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00902D03, length 40 bytes.
 // Callees: CAIStateGroupBase::CAIStateGroupBase() @ 0x008FD255, CBaseIntelligentPointer::
 // CBaseIntelligentPointer() @ 0x00A01B10 (the PTarget member at +0x14, engine header
@@ -10,17 +11,9 @@
 #pragma optimize("s", on)
 class CThing;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual void v01();                         // own vtable 0x01238C6C
-    CIntelligentPointer() : CBaseIntelligentPointer() {}
-};
 
 template <class T>
 class CDefPointer { public:

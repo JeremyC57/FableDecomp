@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionTalkToThing::Update() -- skip to the end of the current line once the player has clicked it away (subtitles on: the renderer stopped displaying it; subtitles off: a type-0x11 message event arrived), then run the base talk update
 // Leaf: ?Update@CActionTalkToThing@NTCScriptedControl@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007173D0, 126 bytes (+2 int3 padding); vtable 0x012659C8 slot 1.
@@ -30,11 +31,7 @@ class CMessageEventFilter_IsOfType { public:
 class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CMessageEventFilter_IsOfType& filter);   // 0x004AB8B0
 };
-template<class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CWorld { public:
     void*         __vftable;
     unsigned char _pad04[0x60 - 0x04];

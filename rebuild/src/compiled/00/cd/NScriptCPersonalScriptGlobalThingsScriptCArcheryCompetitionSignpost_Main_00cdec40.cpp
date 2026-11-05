@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::CArcheryCompetitionSignpost::Main() -- archery competition signpost: show "come back later", then each frame mirror the master data's competition state onto the sign text (open / come back later / closed) until the script is done
 // Leaf: ?Main@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CDEC40, length 325 bytes (plain `ret`; vtable slot 1 = Main of the entity
 //          script contract).
@@ -21,11 +22,7 @@ class CCharString { public:                                     // 4 bytes: the 
 };
 #include "engine/C3DVector.h"
 
-class CCPPointerInfo;                                   // CCountedPointer's shared block
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

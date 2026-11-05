@@ -1,5 +1,6 @@
 // C3DAnimationStats::InitialiseStats(const C3DAnimFile&, EAnimationType) -- type, loop flag and duration from the root chunk, the movement vector and every timing event from its helpers chunk
 // Leaf: InitialiseStats
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4EBB0, 604 bytes (`ret 8`, ebp frame aligned to 8).
 // Callees: C3DAnimFile::GetRoot @ 0x00A537F0 (Ego_r.pdb / FableWin.pdb ?GetRoot@C3DAnimFile@@; no C3DAnimFile symbol is named GetRootChunk), C3DAnimFileRootChunk::HasHelpers @ 0x00A99280 / GetHelpers @ 0x00A99390,
@@ -14,49 +15,7 @@
 //          MovementFlag reset is written through a `T* const& self = this` view so VC7.1 keeps the HasHelpers `this`
 //          copy (`mov ecx,edi`) after that store. Two CCharString copies: the parameter and the pair handed to insert.
 void operator delete(void* p);
-struct SCountBlock {
-    long m_references;
-    void (__fastcall* m_pfnDestroy)(void*);
-    void* m_pObject;
-};
-template <class T> class CCountedPointer {
-public:
-    T* Object;
-    SCountBlock* Info;
-    CCountedPointer() : Object(0), Info(0) {}
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                delete Info;
-            }
-        }
-        Object = 0;
-        Info = 0;
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SCountBlock* c = other.Info;
-        T* p = other.Object;
-        if (Info != c) {
-            if (Info) {
-                --Info->m_references;
-                if (Info->m_references == 0) {
-                    Info->m_pfnDestroy(Info->m_pObject);
-                    delete Info;
-                }
-            }
-            Object = p;
-            Info = c;
-            if (c)
-                ++c->m_references;
-        }
-        return *this;
-    }
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class CCharString {
 public:
     void* Data;
@@ -132,7 +91,7 @@ public:
 
 void C3DAnimationStats::InitialiseStats(const C3DAnimFile& file, EAnimationType type)
 {
-    C3DAnimFileRootChunk* root = file.GetRoot().Object;
+    C3DAnimFileRootChunk* root = file.GetRoot().Data;
     C3DAnimationStats* const& self = this;
     AnimType = type;
     LoopFlag = root->LoopFlag;
@@ -149,7 +108,7 @@ void C3DAnimationStats::InitialiseStats(const C3DAnimFile& file, EAnimationType 
             MovementVector = C3DVector(movement->Vector);
         }
         CCountedPointer<C3DAnimFileTimingEventChunk> event = helpers->FindFirstEvent();
-        while (event.Object) {
+        while (event.Data) {
             float time = event->Time;
             AddTimingEvent(event->Name, time);
             CCharString name = event->Name;

@@ -1,5 +1,6 @@
 // CFrontendGameComponent::CFrontendGameComponent(CMainGameComponentParent* parent, long unused) -- construct the debug front end: game-component base, empty counted pointers / name lists / strings, the movement timer, then (with the default-profile flag) load the default profile and enter mode 1, else enter the profile list mode 12; reset the create flags, load the graphics and rebuild the key-to-number table
 // Leaf: ??0CFrontendGameComponent
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00496070, length 592 bytes, `ret 8` (the second argument is unused).
 // Callees: CGameComponent::CGameComponent(CMainGameComponentParent*) @ 0x0051D8E0, CWideString::CWideString() @ 0x0099AED0
 //   (manifest "CCharString" -- byte-identical body), GFGetTime @ 0x009E1BC0, CTBaseSingleton<CUserProfileManager>::Get
@@ -31,12 +32,7 @@ class CGameComponent : public CBase, public CGameComponentInterface { public:   
     bool m_bShutDown;                                      // +0x08
     CGameComponent(CMainGameComponentParent* parent);      // 0x0051D8E0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 class CWideString { public:
     void* PStringData;
     CWideString();                                         // 0x0099AED0

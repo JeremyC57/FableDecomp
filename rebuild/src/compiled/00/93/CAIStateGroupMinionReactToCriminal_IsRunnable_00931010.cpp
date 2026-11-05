@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToCriminal::IsRunnable() -- refresh the hero and home pointers (an open, non-stall shopkeeper's home is its work building), stay out while the home holds a living thing with interface 0xAB, then defer to IsValid when the creature is aware of the hero or left the group less than ten seconds ago
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -45,14 +46,8 @@ class CThing { public:
 class CThingPlayerCreature : public CThing { };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CBaseObject*a0);          // 0x00A01B90
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerPlayer : CBaseIntelligentPointer {    // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
     CIntelligentPointerPlayer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }

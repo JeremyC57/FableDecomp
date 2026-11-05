@@ -1,5 +1,6 @@
 // std::__unguarded_insertion_sort_aux(pair<long, CCountedPointer<CRegionConnectionNode> >* first, pair<long, CCountedPointer<CRegionConnectionNode> >* last, pair<long, CCountedPointer<CRegionConnectionNode> >*, CKeyPairCompareLess comp) -- STLport final-insertion-sort pass over the vector-map entries: insert each element (a counted copy) into the already ordered prefix with the out-of-line __unguarded_linear_insert
 // Leaf: ??$__unguarded_insertion_sort_aux@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00828D80, 64 bytes, /Gr __fastcall (first ecx, last edx; the _Tp* tag and the 4-byte
 //   comparator on the stack), `ret 8`.
 // Identity: its only callee is the landed std::__unguarded_linear_insert<pair<long, CCountedPointer<CRegionConnectionNode> >*, ..> 0x008280A0 (agent953 J050: CRegionConnectionGraph::GraphNodes).
@@ -9,19 +10,7 @@
 //   `for (_RandomAccessIter __i = __first; __i != __last; ++__i) __unguarded_linear_insert(__i, _Tp(*__i), __comp);`
 //   with the comparator's operator() declaration-only (GOTCHAS 1474) and the pair's implicit copy constructor calling the
 //   counted pointer's inline add-ref copy.
-class CCPPointerInfo {                                       // Ego_r.pdb, 12 bytes
-public:
-    unsigned long RefCount;                                  // +0
-    void (__fastcall* DeleteFunc)(void* data);               // +4, Data in ecx
-    void* Data;                                              // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                    // +0
-    CCPPointerInfo* Info;                                    // +4
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 class CRegionConnectionNode;
 namespace std {
 template <class _T1, class _T2> struct pair {

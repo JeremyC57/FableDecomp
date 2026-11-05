@@ -1,5 +1,6 @@
 // NScript::CQ_BanditCampBossBattleScript::CAssassin3::Init() -- the thing has no information, joins FACTION_HERO and is not pushable by the hero
 // Leaf: ?Init@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00d060b0, 120 bytes, thiscall, plain `ret` (virtual, entity vtable slot 2).
 // Identity (proven): the Alloc 0x00D05FE0 that stores the entity vtable 0x012C8D84 is registered by CQ_BanditCampBossBattleScript's Main under the binding name "Assassin3" (0x00D03AFD..0x00D03B24) -- Ego_r.pdb's ?Alloc@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@; entity vtable slot 2 is Init (Ego_r.pdb `?Init@<entity>@<quest>@NScript@@EAEXXZ`, private virtual).
 // Callees: CGameScriptInterface (ghidra_out/cgsi_slots_aligned.tsv) slots 360 SetThingHasInformation(const CScriptThing&,
@@ -15,12 +16,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCountBlock { long References; };
-template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>: {Data, Info}
-    void* Data;
-    CCountBlock* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

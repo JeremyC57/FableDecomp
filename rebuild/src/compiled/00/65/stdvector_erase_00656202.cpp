@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, destroy the vacated tail through the out-of-line __destroy_aux, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00656202, 55 bytes (size-optimised TU, frame pointer, odd entry), thiscall, `ret 8`, returns first.
 // Identity: std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::erase(iterator, iterator) -- proven; evidence: its callers are 0x0064CCB3, reached from CPlayerGui::DrawPreparePrimitivesForEngine through [CPlayerGui+0x148] = PDrawStamina.Data (Ego_r.pdb +0x150), which erases [begin, end) of the vector at +0x34 after testing PreviousMaxStamina +0x44, the clear() 0x006567CF (the EH cleanup 0x00657037 of the CDrawHealth / CDrawStamina / CDrawAbilityButtons / CDrawQuickAccessIcons / CDrawMeleeActionButtonEffects / CStatBase constructors, whose Ego_r.pdb Effects members all are this vector) and the resize 0x00656F6D; Ego_r.pdb CDrawStamina::IncreaseEffects (+0x3C) is vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >; the 8-byte element's operator= 0x0065533C is GetPItem 0x00A01B50 + SetPItem 0x00A01B90 and its destructor is virtual; the PDB name sets hold vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::erase
 //   Family G072 (seven byte-identical bodies, one COMDAT per T: retail has no ICF). Catalogue label "std::vector_assign_bodypartmesh" is propagated/behavioural.
@@ -14,16 +15,8 @@
 #include <stddef.h>
 namespace NParticleEngine { class CParticleEmitter; }
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                              // 8 bytes (Ego_r.pdb): vptr, PData
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                               // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual ~CIntelligentPointer();
-    CIntelligentPointer<T>& operator=(const CIntelligentPointer<T>& other);   // GetPItem 0x00A01B50 + SetPItem 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 

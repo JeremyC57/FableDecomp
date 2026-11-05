@@ -1,5 +1,6 @@
 // NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan::Init() -- reset the affair man's encounter flags and badger index, then make him undamageable, unkillable, not combo-scoring, not pushable, not using movement in actions and without information
 // Leaf: ?Init@CNOVI_AffairMan@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCount (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DB0950, 144 bytes. Vtable 0x012D89EC slot 2; factory 0x00DB0880 allocates 0x24 bytes (= Ego_r.pdb CNOVI_AffairMan).
 // Callees: game script interface (+4) slots 516, 517, 526, 844 SetIsPushableByHero (by value), 529, 360 SetThingHasInformation.
 // Shape: the landed CFH_GuildMaster::Init (0x00D36860) model: the address of Me is formed once (`lea edi,[esi+8]`), the
@@ -9,15 +10,10 @@
 // Naming wave 35: identity reg 00dabdca "NOVI_AffairMan" in 00dabac0; Alloc 00db0880; vtable 012d89ec slot 2; PDB ?Init@CNOVI_AffairMan@CQ_NewOakValeIntroScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CNOVI_AffairMan::Init (wave3/labels_alloc.tsv); PDB ?Init@CNOVI_AffairMan@CQ_NewOakValeIntroScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CNOVI_AffairMan@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
 class CThing;
-struct SCount { long m_references; };
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-template <class T> class CCountedPointer { public:                  // CCountedPointer<CScriptThing::CImp>: object, count block
-    CThing* m_pObject;
-    SCount* m_pCount;
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

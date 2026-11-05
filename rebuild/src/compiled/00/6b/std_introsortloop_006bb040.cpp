@@ -1,5 +1,6 @@
 // std::__introsort_loop(pair<unsigned long, CCountedPointer<CFaction> >* first, pair* last, pair*, int depth_limit, CKeyPairCompareLess comp) -- STLport introsort loop of the faction vector map: median-of-three partition and recurse on the right part while more than 16 entries remain, falling back to partial_sort when the depth limit runs out
 // Leaf: ??$__introsort_loop@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BB040, 248 bytes (+ int3 padding to 256), `ret 0Ch`.
 // Identity: the catalog's "Heap_PopRecursive" is a descriptive auto label. The landed sort 0x006BB140 calls this body as
 //   `__introsort_loop(first, last, (T*)0, __lg(n) * 2, comp)` and it recurses into itself (0x006BB0F9). Element
@@ -16,27 +17,8 @@ void operator delete(void* p);                              // 0x00BFE9BC (the r
 
 class CFaction;
 
-class CCPPointerInfo {                                      // 12 bytes (Ego_r.pdb)
-public:
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void*);                   // +0x04
-    void*         Data;                                     // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer {                                     // 8 bytes
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            delete Info;
-        }
-    }
-};
 
 namespace std {
 template <class _T1, class _T2> struct pair {

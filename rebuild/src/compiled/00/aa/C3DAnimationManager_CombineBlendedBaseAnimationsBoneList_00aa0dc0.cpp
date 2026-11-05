@@ -1,5 +1,6 @@
 // C3DAnimationManager::CombineBlendedBaseAnimationsBoneList(const C3DAnimationStateBase& stateA, const C3DAnimationStateBase& stateB, float blend, C3DKeyframe* out, unsigned long count, unsigned long depth, const C3DMesh2& mesh, const CArray<unsigned long>& bones) -- evaluate two parallel animation state trees blended by a factor for a list of bones
 // Leaf: CombineBlendedBaseAnimationsBoneList
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail @ 0x00AA0DC0, 413 bytes (`ret 20h`). Merge of the landed siblings CombineBlendedBaseAnimations 0x00A9F2F0 (state
 //   pair + InterpolateFloat time/progress) and CombineBaseAnimationsBoneList 0x00AA0C50 (per-bone loops through
@@ -7,26 +8,7 @@
 //   (GetAnimationInfo 0x00A242C0 -- manifest "CTCInventoryAbilities::GetAbilityLevel" is propagated -- GetAnimation
 //   0x00A26C60, BlendAnimations 0x00A9EB90). Matched first try with the siblings' shapes verbatim.
 // Layout: as the siblings (C3DAnimationState / C3DAnimationTransitionState modelled locally for the polymorphic base).
-struct SCountBlock {
-    long m_references;
-    void (__fastcall* m_pfnDestroy)(void*);
-    void* m_pObject;
-};
-template <class T> class CCountedPointer { public:
-    T* m_pObject;
-    SCountBlock* m_pCount;
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;            // operator delete @ 0x00BFE9BC
-            }
-        }
-    }
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CArray.h"
 
 class C3DKeyframe { public: float Rotation[4]; float Position[4]; float Scaling[4]; };   // 0x30

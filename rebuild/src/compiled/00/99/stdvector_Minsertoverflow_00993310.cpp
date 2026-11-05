@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pair<long,CSoundBankRecord>* position, const pair<long,CSoundBankRecord>& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport growth path of the sound manager's bank vector: allocate old_size + max(old_size, fill_len) entries, copy the head, construct the fill_len copies of x, copy the tail unless appending, destroy and free the old block
 // Leaf: ?_M_insert_overflow@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00993310, 272 bytes (+ int3 padding), thiscall `ret 14h`.
 // Identity: the catalog's "Vector_InsertRange_Filter" is descriptive. The element is std::pair<long, CSoundBankRecord>
 //   (0x24 bytes; the landed sibling helpers 0x00992750 / 0x009927F0 / 0x00992510 name it): the entries of the
@@ -22,16 +23,8 @@ public:
     CCharStringData* PStringData;
 };
 
-class CCPPointerInfo {
-public:
-    long RefCount;                              // +0x00
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                       // +0x00
-    CCPPointerInfo* Info;                       // +0x04
-};
 
 class CSoundBank;
 class CSoundBankData;

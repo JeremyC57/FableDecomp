@@ -1,5 +1,6 @@
 // std::pair<const unsigned __int64, CCombatantInfo>::`scalar deleting destructor'(unsigned int flags) -- destroy the defender info and the attacker's combat-sequence vector, then free when flags & 1
 // Leaf: ??_G?$pair@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F4AF0, 65 bytes, `ret 4`.
 // Label correction: catalog "std_pair_EAnimComponent_CIVCountedPointer_dtor" is propagated; this is the scalar
 //   deleting destructor of pair<const unsigned __int64, CCombatantInfo> (the combatant map's value), emitted for the
@@ -15,14 +16,8 @@ void __cdecl operator delete(void* block);                // MSVCR71 import thun
 
 class CThingCreatureBase;
 class CCombatSequenceBase;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer {                 // Ego_r.pdb: 8 bytes
-public:
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-    ~CCountedPointer();
-};
 
 class C2DVector {
 public:

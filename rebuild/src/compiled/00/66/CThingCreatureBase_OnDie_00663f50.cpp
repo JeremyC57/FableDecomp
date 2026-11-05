@@ -1,5 +1,6 @@
 // CThingCreatureBase::OnDie() -- base physical death; spawn the EXPLODE_ON_KILLING_BLOW effect when the def names one; leave a dead-creature body (copying orientation, the carried components and the lighting channel) when the creature and its def allow it; post the death message, tell the killer it killed and the creature's own entity events it died, and drop experience orbs for the hero
 // Leaf: ?OnDie@CThingCreatureBase
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -189,11 +190,8 @@ class CTCDParticleEmitter { public:
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThingCreatureDef { public:
     unsigned char _pad00[0x148];

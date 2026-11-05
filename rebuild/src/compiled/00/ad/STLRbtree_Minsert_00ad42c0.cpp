@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport node insert for map<unsigned long,CContractionReference> (COptimisedVertex::PairContractions): allocate a node, copy the pair in (add-ref of the contraction pointer), link it left or right of y keeping leftmost/rightmost, rebalance and count
 // Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD42C0, 223 bytes (+1 int3), thiscall `ret 14h` (hidden iterator
 //   result + x, y, v, w).
 // Identity: nine callers 0x00AD44D3 .. 0x00AD5431 (the tree's insert_unique / hinted insert_unique, e.g. the landed
@@ -16,34 +17,8 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo { public:
-    long  RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
-    void* Data;                                         // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 namespace QuadricOptimiserInternals {
 class CVertexPairContraction;

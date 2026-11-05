@@ -1,5 +1,6 @@
 // std::pair<CCharString,C3DMeshVolume>::~pair() -- destroy a named mesh volume entry: release the volume's counted convex volume, destroy its name, then the key string
 // Leaf: ??1?$pair@VCCharString
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A70130, length 72 bytes, `jmp` tail. 0x00A6F390 is called from the
 // introsort partition 0x00A71910 (a sort temporary of a vector<pair<CCharString,C3DMeshVolume>>); 0x00A70130 is the same
 // destructor emitted in another TU (no references). The manifest label names the right element type.
@@ -17,26 +18,7 @@ public:
     ~CCharString();                                          // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:                                    // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);               // called with Data in ecx, nothing on the stack
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 class CContainmentVolume;
 class C3DMeshVolume { public:                                       // 0xc bytes

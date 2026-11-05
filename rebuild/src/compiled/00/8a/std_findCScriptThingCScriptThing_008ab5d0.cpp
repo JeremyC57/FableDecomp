@@ -1,5 +1,6 @@
 // std::__find<CScriptThing*, CScriptThing>(CScriptThing* first, CScriptThing* last, const CScriptThing& val, const random_access_iterator_tag&) -- STLport's four-way unrolled random-access find: the first script thing equal to val (CScriptThing::operator==, the implementations' IsEqualTo), or `last`
 // Leaf: ??$__find@PAVCScriptThing@@V1@@std@@YIPAVCScriptThing@@PAV1@0ABV1@ABUrandom_access_iterator_tag@0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008AB5D0, 265 bytes, `__fastcall` (first in ecx, last in edx), `ret 8` (the value and
 //   the tag references).
 // Identity: the only callers are CGameScriptInterface::GetFollowingEntityList 0x008A80F0 (landed; it already names this
@@ -13,14 +14,7 @@
 // Layout: Ego_r.pdb CScriptThing (12 bytes): vptr, PImp CCountedPointer<CScriptThing> (+0x04 Data, +0x08 Info).
 // Shape: /Gr TU (STLport templates are __fastcall here, as the landed __find_if 0x008C2F70); same template text as that row
 //   with `*__first == __val` for the predicate.
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                        // +0x00
-    CCPPointerInfo* Info;                                        // +0x04
-    T* operator->() const { return Data; }
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass {
 public:

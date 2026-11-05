@@ -1,5 +1,6 @@
 // NUISystem::CMovie::~CMovie() -- movie component dtor: clear the primitive handle, let the parent viewport drop its handle, and if this is the playing movie stop it, free the movie texture and delete the shared video system; then the member and base destructors
 // Leaf: ??1CMovie@NUISystem@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005483C0, 289 bytes, tail jump to the base destructor.
 // Identity: the vtable stores 0x0124881C / 0x012487F4 / 0x012487EC carry RTTI `.?AVCMovie@NUISystem@@`; rtti_bases: CMovie :
 //   CChangingStateComponent : CComponent; Ego_r.pdb has `??1CMovie@NUISystem@@UAE@XZ`. The catalog label is right.
@@ -20,26 +21,7 @@
 //   dtors in reverse order (CXMVPlaybackInfo has none, ~CWideString, the inline ~CEnginePrimitiveHandle) and the base dtor.
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:                              // CCountedPointer count block
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void*         Data;                                     // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    __forceinline void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    __forceinline ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveHandle;

@@ -1,5 +1,6 @@
 // std::find_if(std::list<CCountedPointer<NEntityEvents::CEventBase> >::const_iterator first, std::list<CCountedPointer<NEntityEvents::CEventBase> >::const_iterator last, NEntityEvents::CIsEventOfTypeAfterFrame pred) -- finds the first event of a type that happened after a frame
 // Leaf: __find_if
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00811E20, 73 bytes, `ret 10h`. Callers: CCombatActionBase::GetPActiveStrikeEvent 0x0081139D,
 // 0x0081201D. Callee: the event's virtual slot 1 (GetType).
 // SGI find_if (`while (first != last && !pred(*first)) ++first; return first;`), `__fastcall` with the hidden iterator result in ecx
@@ -34,12 +35,7 @@ template <class _Tp, class _Traits> struct _List_iterator : public _List_iterato
 };
 inline bool operator!=(const _List_iterator_base& __x, const _List_iterator_base& __y) { return __x._M_node != __y._M_node; }
 }
-template <class T> class CCountedPointer {
-public:
-    T* m_pObject;                                 // +0x00
-    void* m_pInfo;                                // +0x04
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class _InputIter, class _Predicate>
 _InputIter __fastcall __find_if(_InputIter __first, _InputIter __last, _Predicate __pred, const input_iterator_tag&)   // STLport 4.6 _algobase.c

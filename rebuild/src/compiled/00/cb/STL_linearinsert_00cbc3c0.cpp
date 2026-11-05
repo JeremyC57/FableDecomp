@@ -1,5 +1,6 @@
 // std::__linear_insert(CBindingPair* first, CBindingPair* last, CBindingPair val, CBindingLess comp) -- insert val at last into the sorted (name, entity script binding) run [first, last): to the front (after shifting the run up) when its name sorts first, else by the unguarded backward walk
 // Leaf: ??$__linear_insert@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBC3C0, 175 bytes (`ret 10h`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
@@ -17,52 +18,7 @@ public:
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
     bool operator<(const CCharString& other) const;      // 0x009E6530 ??MCCharString@@QBE_NABV0@@Z (FableWin.pdb; was the descriptive FastCompare -- naming wave 20)
 };
-class CCPPointerInfo { public:                                    // CCountedPointer count block
-    long  RefCount;                                        // +0x00
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CEntityScriptBindingBase;
 namespace std {
 template <class _T1, class _T2> struct pair {

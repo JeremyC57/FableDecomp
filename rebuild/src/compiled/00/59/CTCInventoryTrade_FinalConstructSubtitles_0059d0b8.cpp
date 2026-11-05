@@ -1,5 +1,6 @@
 // CTCInventoryTrade::FinalConstructSubtitles(NUISystem::CComponent* component, CSubtitleMap& subtitles) -- build a UI_ONE_OFF_SUBTITLE text component for `component` (its own type-6 child text when it has no entry in `subtitles`, otherwise the entry's text plus " x N" for a positive count) and add it as a child
 // Leaf: FinalConstructSubtitles
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059D0B8, length 249 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) +
 // ("s",on). FableWin.pdb ?FinalConstructSubtitles@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@...@std@@@Z.
 // Callees: NUISystem::CManager::GetInstance() @ 0x0041E5F2 (first), map<CComponent*, pair<CWideString,long> >::find
@@ -27,13 +28,7 @@ class CWideString { public:
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
 CWideString __fastcall GFIntToWideString(long value);     // 0x00405F00
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer(T* object);                         // 0x00429C15
-    ~CCountedPointer();                                 // 0x004291DE
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 struct CTextSource {                                    // the typed child: only its text slot is used here
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

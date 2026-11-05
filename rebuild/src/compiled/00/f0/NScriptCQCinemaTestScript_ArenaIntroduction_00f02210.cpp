@@ -1,4 +1,5 @@
 // CQ_CinemaTestScript::ArenaIntroduction() -- take the hero under scripted control (priority 4), cast him as "Hero" and play the ARENA_HOH_INTRO cut-scene in a movie sequence
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Layout: only Game (+0x40, right after the 0x40-byte retail CScriptBase) is touched; no rebuild/include/engine header exists for the class.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F02210, length 586 bytes; called from 0x00F021F9 (CQ_CinemaTestScript::PhaseOne).
 // Callees: CBaseObject ctor 0x0099A380 / dtor 0x0099A430 / operator= 0x0099A3B0, malloc 0x00BFEA0E / free 0x00BFEA14 (the
@@ -20,45 +21,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CScriptThing;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

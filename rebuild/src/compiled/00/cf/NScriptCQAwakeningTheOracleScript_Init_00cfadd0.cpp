@@ -1,5 +1,6 @@
 // NScript::CQ_AwakeningTheOracleScript::Init() -- reset the oracle quest's flags and counters and register its two quest regions, NorthernWastes2 and DemonDoor_Necropolis
 // Leaf: ?Init@CQ_AwakeningTheOracleScript@NScript@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CFADD0, 209 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 3 (Init) of the level-script vtable 0x012C78B0 (0 dtor, 1 RegisterMain, 2 Main, 3 Init, 4 OnPersist), stored by the quest ctor 0x00CFAD30; ?Init@CQ_AwakeningTheOracleScript@NScript@@ is in Ego_r.pdb and FableWin.pdb.
 // Label: the manifest's "sub_00cfadd0" is a gap-scan placeholder.
@@ -14,20 +15,7 @@ public:
     const CCharString& operator=(const char* text);       // 0x0099EFE0
 };
 class C3DVector;                                         // 1-aligned 12-byte vector (only referenced here)
-class CCPPointerInfo {                                   // CCountedPointer's shared block
-public:
-    long  RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (CScriptThing instance)
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

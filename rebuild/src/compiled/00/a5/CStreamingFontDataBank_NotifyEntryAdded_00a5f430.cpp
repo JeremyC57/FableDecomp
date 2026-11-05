@@ -5,6 +5,7 @@
 // Shape: the CShaderDataBank::NotifyEntryAdded twin (0x00A623D0) with the 0x18-byte entry constructor inlined (base ctor,
 //   vtable 0x0129D5B4, zeroed CCountedPointer<CFontBank>, then bank/index/type). Retail Fonts +0x178 (base 0x164 + StateBlock).
 // Leaf: ?NotifyEntryAdded@CStreamingFontDataBank@@MAEXKKABV?$CArray@D@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 template <class T> class CArray;
 class CStreamingFontDataBank;
@@ -16,12 +17,8 @@ struct CBaseClassNonCopyable : CBaseClass {
     virtual ~CBaseClassNonCopyable();                        // 0x0099A300
     public:
 };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CFontBank;
-template <class T> class CCountedPointer { public:
-    T* Data; CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
 class CStreamingFontDataBankEntry : public CBaseClassNonCopyable {   // vtable 0x0129D5B4, 0x18 bytes
 public:
     CCountedPointer<CFontBank> Font;                        // +0x04

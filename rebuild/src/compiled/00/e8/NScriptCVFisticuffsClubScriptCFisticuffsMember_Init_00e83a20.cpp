@@ -1,5 +1,6 @@
 // NScript::CV_FisticuffsClubScript::CFisticuffsMember::Init() -- a fisticuffs-club spectator: clear the status and cheer flag, reset the shout timer, make Me unpushable with only the seek-enemy / seek-target / nearby-melee state groups and opinion and deed reactions on, in the neutral faction, then pick one of three cheer/boo line pairs at random
 // Leaf: ?Init@CFisticuffsMember@CV_FisticuffsClubScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E83A20, 411 bytes, thiscall, three plain `ret` exits (one per switch arm).
@@ -28,12 +29,7 @@ class CCharString { public:
     const CCharString& operator=(const char* text);    // 0x0099EFE0
 };
 extern "C" int __cdecl rand();                         // 0x00BFEB16 (MSVCR71)
-class CCPPointerInfo { public: long References; void (__fastcall* DeleteFunc)(void* data); void* Data; };
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    __forceinline CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-};
+#include "engine/CCountedPointer.h"
 class CBaseClass { public:                                    // vtable 0x01231710
     virtual ~CBaseClass();                             // 0x0099A2E0
     __forceinline CBaseClass() { }

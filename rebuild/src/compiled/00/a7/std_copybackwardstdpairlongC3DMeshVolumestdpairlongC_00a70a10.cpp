@@ -15,42 +15,15 @@
 //   release the old block -- destroy function at +4 with the object, then operator delete @ 0x00BFE9BC -- adopt both words
 //   and add a reference), modelled as the landed 0x0084F130.
 // Leaf: ??$__copy_backward@PAU?$pair@JVC3DMeshVolume@@@std@@PAU12@H@std@@YIPAU?$pair@JVC3DMeshVolume@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 class CCharString {
 public:
     void* m_pData;                           // +0x00
     const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
-struct SCountBlock {
-    long m_references;                       // +0
-    void (__fastcall* m_pfnDestroy)(void*);  // +4
-    void* m_pObject;                         // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {  // CCountedPointer<CContainmentVolume>, 8 bytes
-public:
-    void*        m_pObject;                  // +0
-    SCountBlock* m_pCount;                   // +4
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SCountBlock* count = other.m_pCount;
-        void* object = other.m_pObject;
-        if (m_pCount != count) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    delete m_pCount;
-                }
-            }
-            m_pObject = object;
-            m_pCount = count;
-            if (count)
-                ++count->m_references;
-        }
-        return *this;
-    }
-};
 
 class CContainmentVolume;
 

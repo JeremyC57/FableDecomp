@@ -1,4 +1,5 @@
 // CTCCreatureGroup::GetNearestMember(const C3DVector& pos) -- walk the member map and return the member thing nearest to the position (the running best is compared as distance-squared against the SQUARE of the stored distance-squared, as in retail)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008128F0, 275 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x006A4D00 (the out-of-line const
 //   accessor).
@@ -24,11 +25,8 @@ class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; m
 class CThing : public CThingPhysical { public:
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* __vftable;                            // +0x00
-    void* PData;                                // +0x04
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CGroupMemberData { public:
     CBaseIntelligentPointer PMember;            // +0x00
     bool IsActive;                              // +0x08

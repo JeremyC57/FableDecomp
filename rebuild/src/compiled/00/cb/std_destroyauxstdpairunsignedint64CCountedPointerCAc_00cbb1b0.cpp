@@ -1,5 +1,6 @@
 // std::__destroy_aux(pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> >* first, last, const __false_type&) -- run the pair destructor (the counted-pointer release) on [first, last)
 // Leaf: ??$__destroy_aux@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@0ABU__false_type@0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBB1B0, 80 bytes, `__fastcall` (first ecx, last edx, the tag by reference on the stack,
 //   never read; `ret 4`); the inlined CCountedPointer release runs on the count-block induction register (`lea esi,[edi+0Ch]`),
 //   operator delete 0x00BFE9BC for the block.
@@ -11,28 +12,7 @@
 //   0x00CBD56A in the script-base TU. Dinkumware's `_Destroy_range(first, last, allocator&)` (the landed name) has the
 //   same calling shape. Namespace std (owner decision 2026-10-25).
 // Model: the landed row's CCountedPointer release and the 0x00CB8170 row's STLport pieces.
-class CCPPointerInfo { public:                             // CCountedPointer count block
-    long  RefCount;                                 // +0x00
-    void  (__fastcall* DeleteFunc)(void* data);     // +0x04
-    void* Data;                                     // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                           // +0x00
-    CCPPointerInfo* Info;                           // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CActiveEntityScriptBase;
 namespace std {
 template <class _T1, class _T2> struct pair {

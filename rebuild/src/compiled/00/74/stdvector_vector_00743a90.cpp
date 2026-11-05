@@ -1,5 +1,6 @@
 // std::vector::~vector() -- (vector<NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData>) STLport 4.6 `~vector()` with the inline `~_Vector_base()`: destroy every element (its implicit destructor runs two out-of-line member destructors, the later member first), then free the block
 // Leaf: ??1?$vector@VCIcicleData@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@V?$allocator@VCIcicleData@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@@std@@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00743A90, 57 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity (proven): std::vector<NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::CIcicleData>::~vector(); evidence: its only caller is ~CModeIceTrollGroundSmashIcicleAssault 0x00743FE0 (run by the deleting destructor 0x00743FC0, slot 0 of vtable 0x01268774, RTTI .?AVCModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@) on this+0x84 = Ego_r.pdb Icicles (vector<CIcicleData>, 36-byte elements: PEffect +0, PTrap +8), between ViablePoints' free (+0x90) and PDef (+0x80).
@@ -12,12 +13,8 @@
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 class CThing;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                // Ego_r.pdb 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
-    CBaseObjectPointer* PData;                                 // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };   // implicit destructor
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #include "engine/C3DVector.h"
 namespace NCreatureMode {
 class CModeIceTrollGroundSmashIcicleAssault {

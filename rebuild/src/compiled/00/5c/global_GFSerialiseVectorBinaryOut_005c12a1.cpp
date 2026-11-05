@@ -1,5 +1,6 @@
 // GFSerialiseVectorBinaryOut(CDataOutputStream& stream, const vector<NInventory::CItem>& value) -- write the count, then every item through its traits
 // Leaf: GFSerialiseVectorBinaryOut
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C12A1, length 89 bytes (__fastcall stream, value).
 // Callees: CDataOutputStream::WriteLong 0x00993EB0, CItem traits TransferBinaryOut 0x005C0A98.
 // Model: engine/CDataOutputStream.h with a methods-only writer adapter; NInventory::CItem is a local model (see 005C2AD8:
@@ -19,12 +20,7 @@ public:
 struct CDataOutputStreamWriter : CDataOutputStream {
 };
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T* m_pObject;
-    SCountBlock* m_pBlock;
-    CCountedPointer() : m_pObject(0), m_pBlock(0) { }
-    ~CCountedPointer();                                     // 0x005C04BF
-};
+#include "engine/CCountedPointer.h"
 namespace NInventory {
 class CPerItemData;
 class CItem { public:

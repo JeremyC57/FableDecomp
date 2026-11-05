@@ -1,5 +1,6 @@
 // CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>::DeleteData(void* data) -- the counted pointer's per-type deleter: destroy the mesh morph set (original texture morphs, mesh parts) and free it
 // Leaf: ?DeleteData@?$CCountedPointer@VCMeshMorphSet@CTCAppearanceMorphBase@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x007222B0, 58 bytes, static __fastcall (data in ecx), `ret`.
 // Identity (probable): Ego_r.pdb names `?DeleteData@?$CCountedPointer@VCMeshMorphSet@CTCAppearanceMorphBase@@@@SIXPAX@Z`
 //   (with its Reset); the body is the `delete (T*)data` deleter shape (landed CCountedPointer<CCardinalSpline>::DeleteData
@@ -67,13 +68,6 @@ class CTCAppearanceMorphBase { public:
     };
 };
 
-class CCPPointerInfo;
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet>;

@@ -1,5 +1,6 @@
 // std::for_each(std::list<CIntelligentPointer<CThingBuilding> >::iterator first, std::list<CIntelligentPointer<CThingBuilding> >::iterator last, CNearestBuildingWithProperty f) -- feeds every building of a list to the nearest-building functor and returns a copy of it
 // Leaf: for_each
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065F5D2, 50 bytes, `ret 20h`. Caller: 0x00658E66 (AI find-nearest-building). Callees:
 // CNearestBuildingWithProperty::operator()(CIntelligentPointer<CThingBuilding>*) @ 0x0065F056 and its copy ctor @ 0x0065D750 (manifest).
 // SGI/STLport `for_each` over a VC6-era Dinkumware list (node {next, prev, value}); the iterator is a one-pointer class with a user copy ctor, so `__fastcall` passes it on the stack and only the hidden functor pointer is in ecx.
@@ -8,13 +9,8 @@
 #pragma optimize("s", on)
 class CThing;
 class CThingBuilding;
-class CBaseIntelligentPointer {                   // 8 bytes: vptr + item
-public:
-    virtual void v00();
-    CThing* m_pItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T> struct SListNode {             // VC6-era Dinkumware list node
     SListNode* next;                              // +0x00
     SListNode* prev;                              // +0x04

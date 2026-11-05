@@ -1,4 +1,5 @@
 // NUISystem::CIMEFont::SetPosition(int, int) -- store the IME text position as floats
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail 0x00404950, 17 bytes (vtable 0x0122DCBC slot 2, `ret 8`). Name: Ego_r.pdb ?SetPosition@CIMEFont@NUISystem@@UAEXHH@Z.
 // Layout after the landed CIMEFont rows 0x00404970 / 0x00405020: CIMEFont derives CImeUiFont_Base (vtable 0x0122DCBC):
 // Colour +4, Position +8, Height +0x10; composition alpha 0x013750B0; wchar_t is `unsigned short` (no /Zc:wchar_t).
@@ -8,26 +9,7 @@ public:
  CCharString();                                      // 0x0099E4B0
  ~CCharString();                                     // 0x0099EAE0
 };
-class CCPPointerInfo { public:
- long References;
- void (__fastcall* Destroy)(void* object);
- void* Object;
-};
-template <class T> class CCountedPointer { public:
- T* Data;
- CCPPointerInfo* Info;
- void Release()
- {
-  if (Info) {
-   --Info->References;
-   if (Info->References == 0) {
-    Info->Destroy(Info->Object);
-    operator delete(Info);                         // 0x00BFE9BC
-   }
-  }
- }
- ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 class C2DVector { public:
  float X, Y;
  C2DVector(float x, float y) : X(x), Y(y) {}

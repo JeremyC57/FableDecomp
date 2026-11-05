@@ -1,5 +1,6 @@
 // CSpawnedFunc1<NScript::CHeroBoastsScript,CCharString>::SuspendableProcess() -- run the spawned call: invoke the bound member callback with a copy of the stored string argument, then flag the process to stop
 // Leaf: SuspendableProcess
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CE3D70, 27 bytes, `__fastcall`, `ret`; vtable slot at 0x012C3B98. FableWin.pdb
 //   ?SuspendableProcess@?$CSpawnedFunc1@VCHeroBoastsScript@NScript@@VCCharString@@@@UAEXXZ.
 // Callees: CCharString(const CCharString&) 0x0099EC30 (the by-value argument built in its stack slot: `push ecx ; mov ecx,esp`),
@@ -15,13 +16,7 @@ public:
     ~CCharString();                                       // 0x0099EAE0
 };
 namespace NScript { class CPredicateBase; }
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 // The 0x14-byte process base: CASuspendableProcess (vptr, Running +4, StopRunning +5, TerminateUsingExceptions +6,
 // TimeProcessSliceStarted +8, TimesliceLength +0xC) plus the dword at +0x10 its (bool, long, float) ctor 0x00A44740 zeroes.
 class CScriptProcessBase {

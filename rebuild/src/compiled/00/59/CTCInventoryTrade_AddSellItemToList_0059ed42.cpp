@@ -1,5 +1,6 @@
 // CTCInventoryTrade::AddSellItemToList(long defIndex, long count, NUISystem::CList* list, NUISystem::CViewport* viewport, bool addToTop) -- build the sell-menu entry for one item (a branch entry when the shop holds a default stock item for the def, else a plain entry that is cleared), record it in ItemsToSell, wire its seven actions and add it to the list; returns whether it is a branch entry
 // Leaf: AddSellItemToList@CTCInventoryTrade
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059ED42, 1474 bytes, `ret 14h`, bool in al. Frame-pointer size TU: optimize("y",off) + ("s",on).
@@ -80,15 +81,7 @@ __declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CAct
     InsertParamNode(_M_node, value);
 }
 #pragma auto_inline(on)
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) {}
-    CCountedPointer(T* object);
-    ~CCountedPointer();
-    void Reset(T* object);
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 class CAction { public:
     long             ActionType;
@@ -228,45 +221,45 @@ bool CTCInventoryTrade::AddSellItemToList(long defIndex, long count, CList* list
                                                  0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         entry->Clear();
     }
-    ItemsToSell.insert(SSellRecord(entry.m_pObject, SItemAmount(defIndex, count)));
-    CComponent* comp = entry.m_pObject;
+    ItemsToSell.insert(SSellRecord(entry.Data, SItemAmount(defIndex, count)));
+    CComponent* comp = entry.Data;
     CCountedPointer<CAction> select(new CAction);
     select->ActionType = 0x7d0;
     select->UIActionParams.push_back(new CActionParamLong(defIndex));
-    select->AddParam(entry.m_pObject, select);
+    select->AddParam(entry.Data, select);
     CWideString model(L"UI_ITEM_MODEL_TEMPLATE_NEW");
     select->UIActionParams.push_back(new CActionParamString(model));
     entry->AddSelectedAction(select);
     CCountedPointer<CAction> focus(new CAction);
     focus->ActionType = 0x7df;
-    focus->AddParam(entry.m_pObject, focus);
+    focus->AddParam(entry.Data, focus);
     comp->AddFocusAction(focus);
     CCountedPointer<CAction> view(new CAction);
     view->ActionType = 0x7d7;
     view->UIActionParams.push_back(new CActionParamLong(defIndex));
     view->AddParam(viewport, view);
-    view->AddParam(entry.m_pObject, view);
+    view->AddParam(entry.Data, view);
     entry->AddSelectedAction(view);
     CCountedPointer<CAction> focusView(new CAction);
     focusView->ActionType = 0x7e3;
-    focusView->AddParam(entry.m_pObject, focusView);
+    focusView->AddParam(entry.Data, focusView);
     comp->AddFocusAction(focusView);
     CCountedPointer<CAction> sell(new CAction);
     sell->ActionType = 0x7d8;
     sell->UIActionParams.push_back(new CActionParamLong(defIndex));
-    sell->AddParam(entry.m_pObject, sell);
+    sell->AddParam(entry.Data, sell);
     entry->AddSecondaryAction(sell);
     CCountedPointer<CAction> focusSell(new CAction);
     focusSell->ActionType = 0x7e4;
-    focusSell->AddParam(entry.m_pObject, focusSell);
+    focusSell->AddParam(entry.Data, focusSell);
     comp->AddFocusAction(focusSell);
     CCountedPointer<CAction> unfocus(new CAction);
     unfocus->ActionType = 0x7d6;
     unfocus->UIActionParams.push_back(new CActionParamLong(defIndex));
-    unfocus->AddParam(entry.m_pObject, unfocus);
+    unfocus->AddParam(entry.Data, unfocus);
     unfocus->UIActionParams.push_back(new CActionParamLong(count));
     comp->AddUnfocusAction(unfocus);
-    comp->SetUserParam(entry.m_pObject);
+    comp->SetUserParam(entry.Data);
     if (addToTop)
         list->AddEntryAtTop(entry);
     else

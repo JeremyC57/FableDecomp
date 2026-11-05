@@ -1,5 +1,6 @@
 // std::vector<std::pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus>>::erase(iterator first, iterator last) -- STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, destroy each vacated element, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00749280, 76 bytes, thiscall, `ret 8`, returns first.
 // Identity (proven): only caller CTCStealth::UpdateDangerInfo 0x00747C70 erases [remove_if result, end) of the vector at this+0x38 = Ego_r.pdb CTCStealth::DangerThings (vector<pair<CIntelligentPointer<const CThing>, NStealth::CDangerStatus> >, PDB +56); FableWin.pdb names the same element in ?_Move / _Remove_if<CDeadDangerThing> COMDATs; stride 0x10 and the pair's implicit destructor = the intelligent pointer's base destructor.
 // Callees: std::__copy 0x00748AF0 (landed as the 16-byte {intelligent thing pointer, 8-byte record} __copy), CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 (the pair's implicit destructor).
@@ -10,21 +11,8 @@
 #include <stddef.h>
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // Ego_r: vptr + PData, 8 bytes
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
 namespace std {
 template <class _T1, class _T2> struct pair {

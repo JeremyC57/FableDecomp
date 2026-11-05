@@ -1,5 +1,6 @@
 // CModeBriarRoseConcentrate::OnDeactivate -- resume AI, hit surviving creature imposters, kill effect objects and deactivate.
 // Leaf: OnDeactivate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native008E7E70 length269. Genuine CHitParameters ctor7A3BC0/dtor789358; Creature OnHit slot65 nativeVT125AC0C->667D30.
 #ifndef _MSC_VER
@@ -65,9 +66,8 @@ FABLE_STATIC_ASSERT(sizeof(ModeStandNative)==sizeof(CModeStandBase));
 
 struct IntelligentInfo {ThingNative*Object;unsigned long RefCount;}; //CBaseObjectPointer native object0/count4; differs from counted-block ABI
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct BaseIntelligentPointer {
  IntelligentInfo*PData;
  BaseIntelligentPointer(); //A01B10, native baseVT129C95C

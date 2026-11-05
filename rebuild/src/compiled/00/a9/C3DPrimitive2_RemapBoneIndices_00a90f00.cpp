@@ -10,6 +10,7 @@
 // Shape: STLport `*(begin() + i)` over the cloth array (size re-read each pass); each group byte widened into the
 // operator[] key temporary and replaced by the low byte of the mapped value.
 // Leaf: RemapBoneIndices@C3DPrimitive2
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 struct CBoneMap {                                   // map<unsigned long, unsigned long>
     unsigned long& operator[](const unsigned long& key);   // 0x00553E60
@@ -22,10 +23,7 @@ class CDeviceIndependent { public:
     void RemapBoneIndices(CBoneMap& remap);         // 0x00A90D60
 };
 }
-template<class T> class CCountedPointer { public:
-    T* Object; void* Count;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CArray.h"
 struct CAnimatedBlock {                             // 0x30
     unsigned char _00[0x0c];

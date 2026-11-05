@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_PerformActionTargetFace(CCreatureActionBase* action, CIntelligentPointer<const CThing> target) -- post the action together with a face-the-target look (flags 0x23) for one brain tick; 1 when stopping, else 2
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097DF60, length 470 bytes (`ret 0Ch`).
 // Callees: IsStopping @ 0x008FD010, CBaseIntelligentPointer GetPItem @ 0x00A01B50 / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 /
@@ -18,14 +19,8 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
     CIntelligentPointerConstThing() : CBaseIntelligentPointer() { }

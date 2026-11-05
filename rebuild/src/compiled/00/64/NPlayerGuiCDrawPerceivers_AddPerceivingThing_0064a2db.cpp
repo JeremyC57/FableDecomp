@@ -1,6 +1,7 @@
 // 0064a2db NPlayerGui::CDrawPerceivers::AddPerceivingThing
 // Flags: /O1 /Oy-
 // Leaf: ?AddPerceivingThing@CDrawPerceivers@NPlayerGui@@QAEXAAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #include <stddef.h>
 #ifndef _MSC_VER
 #define __fastcall
@@ -12,8 +13,8 @@
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CClass:public CBaseObject{unsigned char pass9_unread_class[12];};
 class CThing:public CClass{};
-class CBaseIntelligentPointer{public:virtual~CBaseIntelligentPointer();unsigned char PData[4];CBaseObject*GetPItem()const;};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:CIntelligentPointer(T*);};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template<class T>__forceinline bool __fastcall operator==(const CIntelligentPointer<T>&a,const CBaseObject*b){return a.GetPItem()==b;}
 namespace std{
 template<class T>class allocator{};

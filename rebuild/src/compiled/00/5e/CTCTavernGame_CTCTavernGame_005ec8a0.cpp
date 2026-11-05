@@ -1,5 +1,7 @@
 // CTCTavernGame::CTCTavernGame(CThing* thing) -- the tavern-game component: CTCBase(thing), empty UI-component and primitive-handle vectors, null fonts and game master, cleared target and bet timers, five-slot bet / money / winnings handle vectors
 // Leaf: ??0CTCTavernGame
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC8A0, 217 bytes (`ret 4`); stores vtable 0x012560BC (CTCTavernGame,
 // rtti-vtables.tsv). Ego_r.pdb `??0CTCTavernGame@@QAE@AAVCThing@@@Z` takes a CThing&; the landed derived constructors
 // (CTCTavernGameCardBase 0x008F1CD0 and the coin/blackjack ones) bind this address as `CTCTavernGame(CThing*)`, which
@@ -19,7 +21,7 @@
 class CThing;
 class CThingAICreature;
 class CFontBank;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CEnginePrimitiveHandle;
 namespace NUISystem { class CComponent; }
 
@@ -43,30 +45,11 @@ struct CHandleVector : CVector<CEnginePrimitiveHandle> {   // vector<CEnginePrim
     void Resize(long count);                    // 0x00443F90
 };
 
-template <class T> class CCountedPointer { public:         // Data + Info (8 bytes)
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThingAICreature>, vtable 0x0123E7E0
-public:
-    CIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CTCBase { public:
     virtual void v00();

@@ -1,5 +1,6 @@
 // std::list<CCountedPointer<CVillageTaskHorn> >::remove_if<CIsTask>(CIsTask pred) -- STLport remove_if: erase every task the predicate matches (the task whose CVillageTaskBase is pred.Task)
 // Leaf: ??$remove_if@VCIsTask@@@?$list@V?$CCountedPointer@VCVillageTaskHorn@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@std@@QAEXVCIsTask@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00660298, 88 bytes, thiscall, `ret 4`; size-optimised TU with an ebp frame.
 // Identity (proven): bound under this name in reloc_bindings (Ego_r.pdb holds the same instantiations); callers the landed
 //   CTCVillage::SetHornTaskAsCompleted 0x0065A00F (CTCVillage's task list) and the tail jump in RemoveThingFromTask 0x00660D49.
@@ -14,14 +15,7 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CVillageTaskBase : public CBaseObject { };            // partial view
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);   // converting copy (out of line)
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CIsTask {                                             // Ego_r.pdb 4 bytes
 public:
     bool operator()(const CCountedPointer<CVillageTaskBase>& task) const { return task.Data == Task; }

@@ -1,5 +1,6 @@
 // CGameScriptInterface::MsgIsActionModeButtonPressed() const -- true when a message of type 0x4B was sent between the script's current and maximum message frames
 // Leaf: ?MsgIsActionModeButtonPressed@CGameScriptInterface@@UBE_NXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00894440, 80 bytes, thiscall, plain `ret`.
 // Identity (proven): CGameScriptInterface vtable 0x01260F0C slot 42; Ego_r.pdb ?MsgIsActionModeButtonPressed@CGameScriptInterface@@UBE_NXZ (donor
 //   0x008D1390) and the manifest label agree.
@@ -34,13 +35,7 @@ public:
     template <class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter) const;
         // <CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_OccuredBetween> > 0x008ABED0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {               // Ego_r.pdb: Data, Info
-public:
-    T* Data;                                             // +0x00
-    CCPPointerInfo* Info;                                // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CWorld {
 public:
     unsigned char _pad_0x00[0x60];                       // vptr .. PScriptInfoManager (not touched here)

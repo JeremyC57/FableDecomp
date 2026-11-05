@@ -1,5 +1,6 @@
 // NScript::CV_ExposeMayorScript::CEM_FlashLightPoint::Main() -- Expose-the-Mayor lamp point entity: waits for stage 2, spawns the parent's CheckLampSlot thread, then until the hero has flashed the lights correctly waits for the hero to come within MaxFlashDistFromStables, waits for the hand lamp to go off and on again, spawns HeroFlashesLamp(5) and waits for a result or a lamp reset
 // Leaf: ?Main@CEM_FlashLightPoint@CV_ExposeMayorScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
@@ -23,7 +24,9 @@
 // masks (7, then 0x38) in ebx.
 // Naming wave 35: identity reg 00e75cb4 "EM_FlashLightPoint" in 00e75ba0; Alloc 00e76730; vtable 012e98ec slot 1; PDB ?Main@CEM_FlashLightPoint@CV_ExposeMayorScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CEM_FlashLightPoint::Main (wave3/labels_alloc.tsv); PDB ?Main@CEM_FlashLightPoint@CV_ExposeMayorScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CEM_FlashLightPoint@CV_ExposeMayorScript@NScript@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); method declaration made private virtual in place); same bytes.
-class CScriptThing;
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -36,18 +39,12 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 
-class CScriptThing { public:                                   // 12 bytes {vptr, PImp_Data, PImp_Info}
-    void* __vftable;
-    void* PImp_Data;
-    void* PImp_Info;
-};
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
-#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
     void (T::*Func)();                                  // +0x34

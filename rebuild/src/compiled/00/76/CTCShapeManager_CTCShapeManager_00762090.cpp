@@ -1,5 +1,6 @@
 // CTCShapeManager::CTCShapeManager(CThing& thing) -- the shape-manager component: empty shape list, flags cleared, registered in the global shape-manager vector, selection at end()
 // Leaf: ??0CTCShapeManager
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00762090, 124 bytes (+int3 pad to 128), `ret 4`, returns this.
 // Identity: the vtable it stores, 0x0126A2A4, is .?AVCTCShapeManager@@ (RTTI locator; rtti-vtables.tsv); Ego_r.pdb
 //   ??0CTCShapeManager@@QAE@AAVCThing@@@Z. The catalog's "CEngineSubPrimitive2DClockSprite_Vector_PushBack" is an
@@ -24,7 +25,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);
 inline void* operator new(unsigned int, void* p) { return p; }
 
 class CThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
 class CTCBase {
 public:
@@ -39,11 +40,6 @@ namespace NShape {
 class CShape;
 }
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                                 // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-};
 
 class C2DBoxF { public:
     float MinX, MinY, MaxX, MaxY;

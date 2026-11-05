@@ -1,5 +1,6 @@
 // operator!=(const CBaseObject* object, const CIntelligentPointer<CThingAICreature>& pointer) -- true when the object is not the pointer's current item
 // Leaf: ??$?9VCThingAICreature@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThingAICreature@@@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00981FD0, 21 bytes, `__fastcall` (object ecx, pointer edx), plain `ret`.
 // Identity (probable): FableWin.pdb ??$?9VCThingAICreature@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThingAICreature@@@@@Z; the third of retail's three bodies of this shape (no callers); FableWin.pdb's third != instantiation by address is <CThingAICreature> (0x02899F80).
 //   The manifest's "SetLungedThisFrame" label is propagated.
@@ -9,13 +10,8 @@
 #pragma optimize("s", on)
 class CBaseObject;
 class CThingAICreature;
-class CBaseIntelligentPointer {
-public:
-    CBaseObject* PItem;                                   // +0x00
-    void*        PNext;                                   // +0x04
-    CBaseObject* GetPItem() const;                        // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T> bool __fastcall operator!=(const CBaseObject* object, const CIntelligentPointer<T>& pointer)
 {
     return object != pointer.GetPItem();

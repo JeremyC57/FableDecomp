@@ -1,5 +1,6 @@
 // CAIStateGroup_SummonerLightningAttack::~CAIStateGroup_SummonerLightningAttack() -- the compiler-generated (implicit) destructor, kept out of line: release the def pointer PDef (+0x1C), destroy PTarget (+0x14), then the base destructor CAIStateGroupBase::~CAIStateGroupBase
 // Leaf: ??1CAIStateGroup_SummonerLightningAttack@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00902EEF, 40 bytes (+ int3 padding), thiscall, no return value; size-optimised TU (odd entry,
 //   `and dword ptr [esi+1Ch],0`); reached only from its scalar deleting destructor 0x00902ED3.
 // Identity (proven): CAIStateGroup_SummonerLightningAttack::~CAIStateGroup_SummonerLightningAttack(); evidence: its only caller is the scalar deleting destructor 0x00902ED3 in slot 0 of vtable 0x0128D2A0, whose RTTI is .?AVCAIStateGroup_SummonerLightningAttack@@ : CAIStateGroupBase : CBaseClass; the PDB name sets hold ??1CAIStateGroup_SummonerLightningAttack@@UAE@XZ; the released and destroyed offsets +0x1C / +0x14 are Ego_r.pdb CAIStateGroup_SummonerLightningAttack::PDef / PTarget, and the tail jump is the base's destructor.
@@ -16,12 +17,8 @@
 #pragma optimize("s", on)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;                                         // CBaseObjectPointer*
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CIVCountedPointeeBase {                            // Ego_r.pdb 8 bytes: vptr, IVRefCount
 public:

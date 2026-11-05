@@ -1,5 +1,6 @@
 // CWorldMap::~CWorldMap() -- close and drop the level WAD bank, remove every map but the first from the engine, then destroy the members (intelligent pointers, counted pointers, vectors, regions, map infos, the scripted-brush map, the thing map manager)
 // Leaf: ??1CWorldMap@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00506940, 615 bytes (624 with int3 padding).
 // Shape: the bank release nulls Info then Data unconditionally inside the Data test; CRegion range destruction goes
 //   through an inline (first, last) helper so the end pointer is cached (retail pushes ebx around that loop only); the
@@ -64,15 +65,8 @@ template <class T> struct CRetailVector {
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CRegion { public:
     unsigned char _body[0x58];
     ~CRegion();                                        // 0x0051A110

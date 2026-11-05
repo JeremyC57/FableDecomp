@@ -1,5 +1,7 @@
 // CWorldMap::`vector deleting destructor'`adjustor{4}' -- CIDrawWorldMap slot 11 of CWorldMap: rebase `this` from the +4 interface and tail-jump to the deleting destructor
 // Leaf: ??_ECWorldMap@@W3AEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051CDF0, 8 bytes: `sub ecx,4 ; jmp 0x0051D1E0`.
 // Identity: slot 11 (the last) of CWorldMap's CIDrawWorldMap vtable 0x01244AB4 = the virtual destructor CIDrawWorldMap declares
@@ -56,25 +58,10 @@ public:
     virtual ~CIDrawWorldMap() { }
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                         // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer() { }
-    virtual ~CIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T> class scoped_ptr {
 public:
     T* ptr;

@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: DELTA_NOTIONAL_ZERO bound to two different float pools (0.3 at 0x1238170, 1e-4 at 0x129ba3c); PreferredMargin/DELTA_NOTIONAL_ZERO swapped)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition() -- true when the creature already stands within reach
@@ -40,7 +41,8 @@ class CThingCreatureBase : public CThing { public:
 public:
     bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
-struct CBaseIntelligentPointer { void* __vftable; void* PData; CBaseObject* GetPItem() const; };   // 0x00A01B50
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CCombatManager { public:
     C3DVector GetPreferredPos(CThingCreatureBase* creature);                // 0x006EA770
     bool IsPositionOccupied(CThingCreatureBase* creature);                  // 0x006E9700

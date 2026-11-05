@@ -1,5 +1,6 @@
 // _global::UninitCopy_PairCharStringLongCountedPointer_00a49bc0(const SNamedSurfaceEntry* first, const SNamedSurfaceEntry* last, SNamedSurfaceEntry* result, const __false_type&) -- STLport __uninitialized_copy over 16-byte {CCharString, long, CCountedPointer<T>} entries: placement-copy each entry (string copy out of line, counted pointer add-ref'd), return the advanced result
 // Leaf: UninitCopy_PairCharStringLongCountedPointer_00a49bc0
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members unchanged are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A49BC0, length 70 bytes (+ int3 padding), `ret 8`.
 // Callers: the vector regrowth @ 0x00A4AC60 (catalog "Vector_Reallocate_CCharString_CountedPointer", calls 0x00A4ACB5 /
 //   0x00A4AD19).
@@ -19,17 +20,8 @@ public:
     void* PData;                               // +0x0
 };
 
-struct CCountBlock { unsigned long RefCount; };
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T* Data;                                   // +0x0
-    CCountBlock* Info;                         // +0x4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 struct CCountedObject;
 

@@ -1,4 +1,5 @@
 // CBriarRose::DoSpeech(const CCharString& line) -- once the speech timer has run out (and the script is not done), start a speech on Briar Rose (Me), point it at the hero, add the line, and restart the speech timer at 3
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA2610, length 147 bytes (ret 4). Callers: 0x00DA1BF7, 0x00DA1DCA,
 // 0x00DA21A1, 0x00DA2793, 0x00DA2846 (all inside the CBriarRose minion-camp script).
 // Callees: the timer service (global 0x0143E8F8) virtual slots 90 (+0x168, GetTimer) and 89 (+0x164, SetTimer);
@@ -11,9 +12,9 @@
 // call's vtable is fetched into ebp BEFORE the inner call (`mov edx,ecx ; mov ebp,[edx]`).
 namespace NScript { class CPredicateBase; }
 class CCharString;
-class CScriptThing { public:
-    unsigned char _body[0x0c];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

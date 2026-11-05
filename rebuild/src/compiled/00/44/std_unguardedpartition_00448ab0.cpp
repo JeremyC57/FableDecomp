@@ -1,5 +1,6 @@
 // std::__unguarded_partition(pair* first, pair* last, pair pivot, CKeyPairCompareLess comp) -- (pair<EGameAction, CCountedPointer<const CInputTypeBase> >) Hoare partition around the pivot's key: swap out-of-place pairs inward and return the split point
 // Leaf: ??$__unguarded_partition@PAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@U12@V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@@std@@YIPAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@0@PAU10@0U10@V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00448AB0, 103 bytes, `__fastcall` (first in ecx, last in edx; the 12-byte pivot and the empty comparator on the stack, `ret 10h`), returns first in eax.
 // Identity (proven): std::__unguarded_partition<pair<EGameAction, CCountedPointer<const CInputTypeBase> >*, pair<...>, CKeyPairCompareLess<...> > (STLport 4.6 _algo.c; the PDB builds are Dinkumware); evidence: its only caller is the introsort loop 0x004494D0 (J055), called by sort 0x004495D0, the sort of CGamePlayerInterface::Controls (sorted at this+0x7A8 by CGamePlayerInterface::SetControlScheme 0x00446EF0): CVectorMap<EGameAction, CCountedPointer<const CInputTypeBase> > (J050 proves the element type from that sort's owner); it swaps through iter_swap 0x00448450 and drops its by-value pivot's counted pointer at the end
 // Label: the manifest's "Heap_SiftDown_ContainmentVolume" is invented (family J052: five byte-identical bodies, one per element type; retail has no identical-code folding).
@@ -9,39 +10,7 @@
 // Layout: pair<K, CCountedPointer<V> > is 12 bytes {first +0, second.Data +4, second.Info +8}; CCPPointerInfo {RefCount +0, DeleteFunc +4, Data +8}.
 // Model: J050 (agent950's landed CCountedPointer, key-only CKeyPairCompareLess).
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0
-    void (__fastcall* DeleteFunc)(void* data);              // +4, Data in ecx
-    void* Data;                                             // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0
-    CCPPointerInfo* Info;                                   // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 enum EGameAction { };                                      // Ego_r.pdb (enumerators not needed)
 class CInputTypeBase;
 namespace std {

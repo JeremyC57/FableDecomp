@@ -1,5 +1,6 @@
 // CTCSoundPlayer::IsAttachedSoundLoadedAndPlaying(unsigned long sampleID) const -- ask whether an attached sample is loaded and playing: while the sound system exists and the attached emitter (PAttachedEmitter, +0xc) is set and not dead, forward to the emitter's IsSampleLoadedAndPlaying; else false
 // Leaf: ?IsAttachedSoundLoadedAndPlaying@CTCSoundPlayer@@QBE_NK@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066AE60, 69 bytes, thiscall `ret 4`.
 // Identity (sweep3; was CGameScriptThing::IsSampleLoadedAndPlaying (no PDB CGameScriptThing member of that name)): Ego_r.pdb / FableWin.pdb `?IsAttachedSoundLoadedAndPlaying@CTCSoundPlayer@@QBE_NK@Z`.
 // Order: Ego_r.pdb CTCSoundPlayer ... PlayUnattachedSample, (InternalPlaySoundEventAtPos, InternalPlaySoundEvent inlined in
@@ -16,12 +17,8 @@ class CASoundManager;
 extern CASoundManager* PSoundManager;                        // 0x013B8394 (descriptive name, as 0x0066AE10)
 
 class CBaseObject;
-class CBaseIntelligentPointer {                     // 8 bytes: vptr + the pointee link
-public:
-    virtual ~CBaseIntelligentPointer();
-    void* PItem;
-    CBaseObject* GetPItem() const;                  // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThingSoundEmitter {
 public:

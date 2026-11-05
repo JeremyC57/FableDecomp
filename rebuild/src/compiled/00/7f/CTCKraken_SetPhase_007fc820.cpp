@@ -1,5 +1,6 @@
 // CTCKraken::SetPhase(EKrakenBossPhase phase) -- record the phase and pass it to the boss component; phases 0/3 take the kraken out of combat, phases 1/2 put it in combat against a live target and (re)start the tentacles and head
 // Leaf: SetPhase
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FC820, 180 bytes incl. the four-entry jump table 0x007FC8C4 (`ret 4`).
 // Callees: CTCBase::GetWorld @ 0x00686A70, CTCBoss::SetNextBossPhase(long, bool) @ 0x007AEDA0, CCombatManager::IsCreatureAttacking
 // @ 0x006E92C0, DeregisterCombatant @ 0x006ED9C0, RegisterCombatant @ 0x006EDC50, IS_THING_ALIVE @ 0x004CC340 (`__fastcall`),
@@ -26,11 +27,8 @@ class CWorld { public:
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vfptr;
-    CThing* m_pItem;
-    CBaseObject* GetPItem() const;                            // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer { };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer_CThing& thing);   // 0x004CC340
 

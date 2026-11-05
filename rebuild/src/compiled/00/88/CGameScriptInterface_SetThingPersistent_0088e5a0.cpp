@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088E5A0, length 80 bytes.
 // Callees: the script thing validated through its virtual slot 75 (+0x12c), the thing fetched through slot 11 (+0x2c), CThing::SetAsGameStatePersisted @ 0x004C7880. Shape: the thing kept in esi (null-tested), the flag in ebx shifted into the bit-field store, `ret 8`.
 // Leaf: ?SetThingPersistent@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 class CWorld;
@@ -62,8 +63,7 @@ class CThing { public:
 public:
     void SetAsGameStatePersisted(bool);   // 0x004C7880
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // NScript::CV_SickChildScript::CMansLover::OnPredicateFail() -- the entity's predicate failed: when its thing was killed (by anyone), set the parent script's MansLoverState to 3
 // Leaf: ?OnPredicateFail@CMansLover@CV_SickChildScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EC9CD0, 64 bytes (64 with int3 padding), thiscall, plain `ret`.
 // Identity (proven): CV_SickChildScript::CMansLover::OnPredicateFail; evidence: the body is slot 5 (OnPredicateFail, the CSpawnedFuncBase
 //   slot the landed entity scripts use) of the RTTI-less vtable 0x012F1D74, which the entity Alloc 0x00EC9C00 stores; that
@@ -18,14 +19,9 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class CScriptThing {                                    // vtable 0x01238C8C; slots 0..17 are not used here
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
-    long Data[2];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CGameScriptInterfaceBase;
 

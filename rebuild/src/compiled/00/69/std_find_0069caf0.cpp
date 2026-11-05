@@ -1,5 +1,6 @@
 // std::__find(first, last, const CIntelligentPointer<const CThing>& val, const input_iterator_tag&) -- STLport linear search of a list of intelligent thing pointers for the node holding the same thing as val
 // Leaf: __find
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x0069CAF0, 60 bytes, `ret 0Ch`: __fastcall with the hidden iterator result in ecx, val BY REFERENCE
 // in edx (kept in ebx) and first / last / the unused category tag on the stack. Call sites 0x006984E5, 0x0069923C,
 // 0x0069CF6C (each copy-constructs both iterators into their argument slots).
@@ -10,13 +11,8 @@
 // stack slot inside the loop (no register left: ebx val, edi result, esi node, ebp left object).
 class CBaseObject;
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                       // +0x04
-    CBaseObject* GetPItem() const;              // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T>
 inline bool operator==(const CIntelligentPointer<T>& a, const CIntelligentPointer<T>& b) { return a.GetPItem() == b.GetPItem(); }
 

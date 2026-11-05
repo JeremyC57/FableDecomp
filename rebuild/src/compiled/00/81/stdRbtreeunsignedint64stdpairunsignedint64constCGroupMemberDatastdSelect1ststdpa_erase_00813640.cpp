@@ -1,6 +1,7 @@
 // 00813640 std::_Rb_tree::erase
 // Original tree erase: CTCCreatureGroup::Members, uint64 key and full true CGroupMemberData.
 // Leaf: ?erase@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAEIAB_K@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Flags:
 // Grade: pending first original type/name sourcegrade.
 #ifdef _MSC_VER
@@ -11,8 +12,8 @@ typedef unsigned int FableUnsigned64 __attribute__((mode(DI)));
 // Layout: original CBaseObjectPointer is classV; private PData is one pointer after vptr. Native erase works on full original typed tree nodes; donor4byte container shrink applied only where original retail offsets prove it.
 class CBaseObjectPointer;
 class CThingAICreature;
-class CBaseIntelligentPointer{public:virtual~CBaseIntelligentPointer();private:CBaseObjectPointer*PData;};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CGroupMemberData{public:CIntelligentPointer<const CThingAICreature>PMember;bool IsActive;unsigned long JoinedFrame,DeactivatedFrame;};
 #include <stddef.h>
 namespace std {

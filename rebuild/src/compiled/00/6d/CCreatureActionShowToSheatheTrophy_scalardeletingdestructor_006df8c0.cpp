@@ -1,5 +1,6 @@
 // CCreatureAction_ShowToSheatheTrophy::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CCreatureAction_ShowToSheatheTrophy inlined (destroying the inherited CCreatureAction_ShowTrophy::PEmitter and PTrophyBeingShown, then ~CCreatureActionBase), and operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCCreatureAction_ShowToSheatheTrophy@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DF8C0, 48 bytes, thiscall, `ret 4`; reached only through vtable slot 0.
 // Identity: CCreatureAction_ShowToSheatheTrophy -- proven; evidence: vtable 0x0125F9F4 slot 0 (RTTI .?AVCCreatureAction_ShowToSheatheTrophy@@ : CCreatureAction_ShowTrophy : CCreatureActionBase); Ego_r.pdb gives ShowToSheatheTrophy no members of its own, so the two intelligent pointers destroyed are CCreatureAction_ShowTrophy::PEmitter (+0xB5, packed after the PostedDeed bool) and PTrophyBeingShown (+0xA8) through its inlined implicit destructor; 0x00693EF0 stores the CCreatureActionBase vtable 0x01259D24.
 // Label: the manifest's "`vector_deleting_destructor'" is propagated across byte-identical bodies.
@@ -15,13 +16,8 @@ class CThing;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { };
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                   // 8 bytes, 1-aligned in retail (Coin::Thing +0x25, ShowTrophy::PEmitter +0xB5)
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();           // 0x00A01C10
-    void* PItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CBaseObject : public CBaseClass { };
 class CCreatureActionBase : public CBaseObject {  // retail 0xA8 bytes (Ego_r.pdb 180: two vectors and a map 4 bytes larger each)

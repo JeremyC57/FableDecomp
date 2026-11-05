@@ -1,5 +1,6 @@
 // CBankFileManager::CBankFileManager() -- construct the bank manager: empty bank map, retail bank list, alias map, base path and created-bank set; not using retail banks, file version 100
 // Leaf: ??0CBankFileManager@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009A7AC0, 172 bytes, thiscall `ret`. PDB (Ego_r): `??0CBankFileManager@@QAE@XZ`. Catalog
 // name "NHeroInformationScreens_CAbilityScreen_ctor" is propagated and wrong (the body stores CBankFileManager's vtable
 // 0x0129B018; the callee-canon label file already says CBankFileManager::CBankFileManager). Caller: static init 0x01224015.
@@ -23,11 +24,7 @@ public:
     void* PStringData;                                      // +0x00
 };
 class CBankFile;
-template <class T> class CCountedPointer {
-public:
-    T*    Object;                                           // +0x00
-    void* Count;                                            // +0x04
-};
+#include "engine/CCountedPointer.h"
 namespace NBankFileManager { class CRetailBank; }
 
 namespace std {

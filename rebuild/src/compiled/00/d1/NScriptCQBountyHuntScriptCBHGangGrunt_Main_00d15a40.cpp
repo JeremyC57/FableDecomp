@@ -1,5 +1,6 @@
 // NScript::CQ_BountyHuntScript::CBH_GangGrunt::Main() -- bounty-hunt bandit grunt: removed at once unless the bounty-hunt intro is complete; else register the alive filter, wait for the bandit cutscene, walk to the thing named by Me's data string, wander around it facing the hero until the hero comes within 20 units or hits Me, then face the hero, say the next TEXT_QST_017_BANDIT<n> line, attack the hero and idle until terminated
 // Leaf: ?Main@CBH_GangGrunt@CQ_BountyHuntScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D15A40, length 1408 bytes, plain `ret`.
 // Callees: as CBH_GangGruntSpawn::Main 0x00D15510 plus GFIntToCharString 0x0099F830 and operator+(const char*, const
@@ -25,29 +26,8 @@ class CCharString { public:
 CCharString __fastcall GFIntToCharString(long value);            // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 void operator delete(void* p);                         // 0x00BFE9BC
-class CCPPointerInfo { public:
-    long RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);         // +4
-    void* Data;                                        // +8
-};
+#include "engine/CCountedPointer.h"
 class CScriptThing;
-template <class T> class CCountedPointer { public:                               // {Data, Info}
-    CScriptThing*   Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 enum EHeroAbility { HERO_ABILITY_14 = 14 };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };

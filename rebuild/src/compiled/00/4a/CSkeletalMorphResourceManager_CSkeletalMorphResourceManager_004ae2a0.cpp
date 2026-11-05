@@ -1,5 +1,6 @@
 // CSkeletalMorphResourceManager::CSkeletalMorphResourceManager() -- construct the skeletal-morph resource manager singleton: CTBaseSingleton base, then an empty CachedMorphs map (STLport header node allocated and self-linked)
 // Leaf: ??0CSkeletalMorphResourceManager@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members RefCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AE2A0, 65 bytes (80 with padding), plain `ret` (__fastcall, returns this).
 // Identity: the stored vtable 0x01238F84 is `.?AVCSkeletalMorphResourceManager@@` by its RTTI locator (slot 0 is the
 //   scalar deleting destructor 0x004AE3B0, landed); Ego_r.pdb `??0CSkeletalMorphResourceManager@@QAE@XZ`; callers
@@ -21,11 +22,7 @@ class CCharString { public:
 };
 
 class C3DSkeletalMorphTarget;
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    long* RefCount;
-};
+#include "engine/CCountedPointer.h"
 
 typedef bool _Rb_tree_Color_type;
 const _Rb_tree_Color_type _S_rb_tree_red = false;

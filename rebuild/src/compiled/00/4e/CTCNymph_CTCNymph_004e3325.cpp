@@ -1,5 +1,6 @@
 // CTCNymph::CTCNymph(CThing* thing) -- CTCBase(thing), own vtable, null def, an empty flight spline (tension 0.5), null effect/old-effect/target pointers
 // Leaf: ??0CTCNymph
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3325, length 97 bytes (`ret 4`; size TU, odd start). Vtable 0x01242AD4 (CTCNymph).
@@ -20,11 +21,8 @@
 class CThing;
 class CThingCreatureBase;
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CBaseIntelligentPointer();                      // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing() { }

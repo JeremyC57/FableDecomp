@@ -1,6 +1,7 @@
 // std::map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[](const unsigned long& k) -- the animation instance slot for a key: lower_bound it, insert an empty counted pointer when absent, return the mapped pointer
 // Grade: RELOCATION_MATCH (agent902, 4th grade) -- chunk-422 same-TU noinline insert_unique stand-in that reads v AND may write its counted pointer: a read-only stand-in lets VC7.1 fold the pair's release away (123), none keeps the escaped-pair scheduling (155).
 // Leaf: ??A?$map@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members unchanged are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2D810, 150 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: C3DAnimationInfo::CAnimationData::Animations (Ego_r.pdb `map<unsigned long, CCountedPointer<C3DAnimation2> >`
 //   at +0x1c of the 64-byte CAnimationData); the only caller is C3DAnimationInfo::BuildAnimationInstance (0x00A26BDE:
@@ -17,31 +18,8 @@
 //   (155-161v150); the residue was the opaque insert_unique, which made the pair temporary escape.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-struct SCountBlock {
-    long  RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
-    void* Data;                                         // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                  // +0
-    SCountBlock* Info;                                  // +4
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        SCountBlock* info = Info;
-        if (info && --info->RefCount == 0) {
-            info->DeleteFunc(info->Data);
-            delete info;
-        }
-    }
-};
 
 class C3DAnimation2;
 

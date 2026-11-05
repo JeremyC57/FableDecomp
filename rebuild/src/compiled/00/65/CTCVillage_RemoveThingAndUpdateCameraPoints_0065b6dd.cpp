@@ -1,4 +1,5 @@
 // CTCVillage::RemoveThingAndUpdateCameraPoints(const CThing& thing) -- drop the thing from every village task, then erase it from the first village list that holds it (people, torches, buildings, crops, patrols, markers)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065B6DD, length 375 bytes (`leave`, `ret 4`): frame-pointer size TU,
 //   `#pragma optimize("y", off)` + `#pragma optimize("s", on)` as the landed CTCVillage siblings.
 // Callees: CTCVillage::RemoveThingFromAllTasks(CThing*) 0x00659EA9 (landed); the STLport std::find instantiations
@@ -26,10 +27,8 @@ class CThingObject;
 class CThingTrackNode;
 class CThingMarker;
 
-template <class T> class CIntelligentPointer { public:
-    void* _vfptr;
-    T*    m_pItem;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 template <class T> struct SListNode {           // STLport _List_node
     SListNode* _M_next;

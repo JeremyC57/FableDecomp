@@ -1,6 +1,7 @@
 // CNewFrontendGameComponent::CNewFrontendGameComponent(CGame* game, CNewFrontendGameComponentInit* init) -- construct the front-end game component: game-component base, empty counted pointers / vectors / strings, cursor timing from the clock, inputs allowed, three stop watches, a 1/3 s repeat delay and the media-player flag; the main-game init strings are cleared in the body
 #pragma optimize("s", on)
 // Leaf: ??0CNewFrontendGameComponent
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042EA8F, 295 bytes, `ret 8` (the init argument is unused here).
 // Pragma: size TU (`fldz ; fstp` zero floats), as the landed destructor 0x0042F50B.
 // Callees: CGameComponent::CGameComponent(CGame*) 0x0051D8E0 (out of line), GFGetTime 0x009E1BC0 (`__fastcall`, double),
@@ -30,11 +31,7 @@ class CGameComponent : public CBase, public CGameComponentInterface { public:   
     CGame* m_pGame;                                        // +0x0c
     CGameComponent(CGame* game);                           // 0x0051D8E0
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 class CFontBank; class CGraphicDataBank; class CMeshDataBank; class CASoundBank; class CIEngine; class CInputManager;
 struct CFrontEndManager; class CTexture;
 namespace NGameText { class CDataBank; }

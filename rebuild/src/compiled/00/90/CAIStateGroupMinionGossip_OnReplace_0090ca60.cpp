@@ -1,6 +1,7 @@
 // CAIStateGroup_MinionGossip::OnReplace() -- drop the pending gossip message from this creature, clear the CTCGossip target, remove the gossip mode (0x1B) and remember the frame of the last gossip
 // Grade: RELOCATION_MATCH -- two levers together: the B-17 same-TU noinline FindMostRecentMessage stand-in (reads the const-reference filter, nothing escapes) puts the bound filter's first-pointer store before the UID-filter ctor call, and the creature read into a named local ahead of the call chain (`CThing* creature = PBrain->PCreature;`) gives retail's this=esi / message=edi and the late type-word store
 // Leaf: OnReplace
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090CA60, length 287 bytes (+ int3 padding).
 // Callees: CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF2B0, CAIStateGroupBase::GetWorld @ 0x008FCFC0 (x2),
@@ -79,14 +80,8 @@ class CThing { public:
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     virtual void v00();

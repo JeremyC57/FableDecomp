@@ -1,5 +1,6 @@
 // CEngineSkyRenderer::BuildBaseBandMesh(CArray<SSkyVertex>&, CArray<unsigned short>&, long, long) -- build the sky's base band: a centre vertex 10000 below the camera, a ring of 36 vertices of radius 6500 at depth 500 (the last one closing the ring at angle 0), and the 36-triangle fan joining them
 // Leaf: BuildBaseBandMesh
+// Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members Data are the header CArray's (public STLport vector<T>) begin() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B61CD0, 209 bytes (+ int3 padding), `ret 10h` (`this` unused).
 // Callees: none (intrinsic fcos/fsin). Float pool: 0x0122DEDC = 0.0f, 0x012A2930 = 6500.0f, 0x012A2928 = 2*pi/35
 //   (0.17951958f); -10000.0f and -500.0f are immediates.
@@ -17,9 +18,7 @@ struct SSkyVertex {                                    // 24 bytes
     unsigned long Colour;                              // +0x0c
     float         U, V;                                // +0x10
 };
-template <class T> class CArray { public:
-    T* Data;
-};
+#include "engine/CArray.h"
 
 class CEngineSkyRenderer { public:
     void BuildBaseBandMesh(CArray<SSkyVertex>& vertices, CArray<unsigned short>& indices, long firstIndex, long firstVertex);
@@ -28,7 +27,7 @@ class CEngineSkyRenderer { public:
 void CEngineSkyRenderer::BuildBaseBandMesh(CArray<SSkyVertex>& vertices, CArray<unsigned short>& indices, long firstIndex, long firstVertex)
 {
     float angle = 0.0f;
-    SSkyVertex* centre = &vertices.Data[firstVertex];
+    SSkyVertex* centre = &vertices.begin()[firstVertex];
     centre->X = 0.0f;
     centre->Y = 0.0f;
     centre->Z = -10000.0f;
@@ -48,7 +47,7 @@ void CEngineSkyRenderer::BuildBaseBandMesh(CArray<SSkyVertex>& vertices, CArray<
         ring->Y = (float)(sin(angle) * 6500.0f);
         angle += 0.17951958f;
     }
-    unsigned short* index = &indices.Data[firstIndex];
+    unsigned short* index = &indices.begin()[firstIndex];
     long n = 0;
     unsigned long j = 1;
     for (long triangle = 0; triangle < 35; ++triangle, ++j) {

@@ -1,5 +1,6 @@
 // NUISystem::CEditBox::AddActionOnEscape(CCountedPointer<CAction>& action) -- append an action to the list run when the edit box gets Escape
 // Leaf: ?AddActionOnEscape@CEditBox@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00540DA0, 35 bytes (`ret 4`, +13 int3 padding); vtable 0x01246B8C slot 149.
 // Identity: FableWin.pdb ?AddActionOnEscape@CEditBox@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z.
 // Callees: STLport list<CCountedPointer<CAction>>::insert(iterator, const value_type&) @ 0x005355C0 (the inline
@@ -10,7 +11,7 @@
 //          base shift and 8 bytes per 12-byte debug list; no engine/ header exists for NUISystem::CEditBox.
 // Shape: the sentinel word (+0x160) is read before the list address is formed in ecx; the iterator needs
 //          STLport's user copy constructor to be built in its push slot (`push ecx ; mov eax,esp ; mov [eax],edx`).
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CWideString {
 public:
     void* PStringData;
@@ -18,10 +19,6 @@ public:
     long GetLength() const;                        // 0x0099B220
 };
 namespace NUISystem { class CAction; }
-template<class T> class CCountedPointer { public:
-    T*              Data;                          // +0x00
-    CCPPointerInfo* Info;                          // +0x04
-};
 struct SActionNode {
     SActionNode*                           _M_next;   // +0x00
     SActionNode*                           _M_prev;   // +0x04

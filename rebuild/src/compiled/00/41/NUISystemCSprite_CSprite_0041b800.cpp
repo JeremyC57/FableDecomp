@@ -10,6 +10,7 @@
 // Shape: three vtable stores, then the members in declaration order sharing one zero register; Angle/Width/Height are
 //        left alone; GetDataFromDef is the body.
 // Leaf: ??0CSprite@NUISystem@@QAE@J@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePersistentPrimitiveBase;
 class CIVCountedPointer {
@@ -24,12 +25,7 @@ public:
     CEnginePrimitiveHandle() { }
 };
 class CTexture;
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 enum EEngineSprite2DFlag { SPRITE_2D_DEFAULT = 2 };
 namespace NUISystem {
 struct CComponentInterface {

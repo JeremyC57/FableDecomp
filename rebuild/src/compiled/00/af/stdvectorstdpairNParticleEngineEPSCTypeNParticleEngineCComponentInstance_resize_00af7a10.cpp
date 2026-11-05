@@ -1,5 +1,6 @@
 // std::vector<std::pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance> >::resize(unsigned int newSize) -- STLport one-argument resize: resize(newSize, value_type()) with a default (type 0, no component, enabled) instance built and destroyed in the frame
 // Leaf: resize
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF7A10, 120 bytes (`ret 4`).
 // Identity: the manifest label "CThingCreatureBase::GetAnimsWithNameStartingWith" is propagated. The only caller
 //   (0x00AF4F19, in CParticleSystem::DatabaseCopy) resizes the Components CVectorMap<EPSCType, CComponentInstance>
@@ -14,25 +15,7 @@
 //   out-of-line base ctor; the counted-pointer dtor clears both words; the base dtor is out of line.
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-struct SCountBlock {
-    long m_references;                          // +0
-    void (__fastcall* m_pfnDestroy)(void*);     // +4 per-type deleter, object in ecx
-    void* m_pObject;                            // +8
-};
-template <class T> class CCountedPointer { public:
-    T* Data;
-    SCountBlock* m_pCount;
-    CCountedPointer() : Data(0), m_pCount(0) { }
-    ~CCountedPointer()
-    {
-        if (m_pCount && --m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            operator delete(m_pCount);
-        }
-        Data = 0;
-        m_pCount = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 namespace NParticleEngine {
 enum EPSCType { PSC_NONE = 0 };

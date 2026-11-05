@@ -1,4 +1,5 @@
 // C3DSkeletalMorph::PeekCombinedMorph() -- build the combined morph target on first use (every parameter's positive or negative shared target, weighted by its current value) and return a counted reference to it
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets); the local CCountBlock (= CCPPointerInfo) members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A45260, length 200 bytes (`ret 4`, CCountedPointer by hidden pointer).
 // Class: C3DSkeletalMorph (animation/mesh layer; Ego_r.pdb names). No vtable store here; the class's own vptr is at +0.
 // Callees: operator new @ 0x00BFEA1A (0x10 bytes = retail C3DSkeletalMorphTarget), CCharString::CCharString() @ 0x0099E4B0
@@ -28,17 +29,8 @@ class C3DSkeletalMorphTarget                       // retail 0x10 bytes
     void CombineMorph(const C3DSkeletalMorphTarget& target, float weight);   // 0x00A44F40
 };
 
-struct CCountBlock { long Count; };
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer
-{ public:
-    T* Object;                                      // +0x00
-    CCountBlock* Block;                             // +0x04
-    CCountedPointer(const CCountedPointer& other) : Object(other.Object), Block(other.Block) { if (Block) ++Block->Count; }
-    void Reset(T* object);                          // 0x006C3AC0
-    T* operator->() const { return Object; }
-};
 
 class C3DSkeletalMorphParameter
 { public:
@@ -73,12 +65,12 @@ class C3DSkeletalMorph
 
 CCountedPointer<C3DSkeletalMorphTarget> C3DSkeletalMorph::PeekCombinedMorph()
 {
-    if (!CombinedMorph.Object)
+    if (!CombinedMorph.Data)
     {
         CombinedMorph.Reset(new C3DSkeletalMorphTarget);
         for (unsigned long i = 0; i < MorphParameters.size(); ++i)
         {
-            C3DSkeletalMorphParameter* parameter = MorphParameters[i].Object;
+            C3DSkeletalMorphParameter* parameter = MorphParameters[i].Data;
             float value = parameter->CurrentValue;
             if (value >= 0.0f)
                 CombinedMorph->CombineMorph(parameter->SharedData->PositiveTarget, value);

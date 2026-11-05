@@ -1,5 +1,6 @@
 // CRegionConnectionGraph::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the inline destructor destroys the pair<long, CCountedPointer<CRegionConnectionNode> > range of its vector through the out-of-line __destroy_aux and frees the storage, then the object is freed when bit 0 of the flags is set
 // Leaf: ??_GCRegionConnectionGraph@@QAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051C8E0, 55 bytes (+ int3 padding to 64), thiscall `ret 4`, returns this.
 // Identity (proven): CRegionConnectionGraph::`scalar deleting destructor'; evidence: its callee 0x00519050 is the __destroy_aux the CCountedPointer deleter 0x0051CCD0 runs on the deleted object's vector before `operator delete` (the same inline body, null-tested); that deleter is stored only by CCountedPointer::Reset 0x0051CEA0, whose only caller is CWorldMap::LoadRegionGraph 0x00506D40, resetting the member at +0x44 with a `new` 0x10-byte object whose ctor zeroes three words and the +0xD Dirty byte (a CVectorMap); Ego_r.pdb CWorldMap::PRegionGraph is CCountedPointer<CRegionConnectionGraph> and CRegionConnectionGraph is one CVectorMap<long, CCountedPointer<CRegionConnectionNode> > GraphNodes
@@ -17,12 +18,7 @@ void operator delete(void* block);                      // 0x00BFE9BC
 #include "engine/CVectorMap.h"
 
 class CRegionConnectionNode;
-template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
-public:
-    T*    Data;
-    void* Info;
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CRegionConnectionGraph {                        // 16 bytes in retail (Ego_r.pdb: one member)
 public:
     CVectorMap<long, CCountedPointer<CRegionConnectionNode>, CKeyPairCompareLess<long, CCountedPointer<CRegionConnectionNode> > > GraphNodes;   // +0x0

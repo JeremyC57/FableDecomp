@@ -1,6 +1,7 @@
 // std::__copy(CLipSyncPhonemeSample* first, CLipSyncPhonemeSample* last, CLipSyncPhonemeSample* result, const random_access_iterator_tag&, int*) -- STLport random-access copy: last - first element assignments `*result = *first` (string, id, counted frame pointer), return the advanced result
 // Flags: /Gr
 // Leaf: ??$__copy@PAVCLipSyncPhonemeSample@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A49E00, 146 bytes, /Gr `__fastcall` (first ecx, last edx; result, the tag and the
 //   distance pointer on the stack, `ret 0Ch`).
 // Identity (probable): the 16-byte element is CLipSyncPhonemeSample (Ego_r.pdb { CCharString Symbol; unsigned long ID;
@@ -15,33 +16,8 @@
 //   keeps them in ebx and a frame slot across the release; reading the members after it re-loads them, DIFFER 138v146).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                            // +0x00
-    void (__fastcall* DeleteFunc)(void* data);         // +0x04
-    void*         Data;                                // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                              // +0x00
-    CCPPointerInfo* Info;                              // +0x04
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info && --Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 
 class CCharString {
 public:

@@ -1,5 +1,6 @@
 // CRegionConnectionNode::GetNextNodeOnWayToRegion(long toRegion, const CRegionConnectionGraph& graph) const -- breadth-first search over the region connection graph from this node: returns the first region to step into on the way to toRegion (toRegion itself when it is a direct neighbour, -1 when this is the target or it cannot be reached)
 // Leaf: ?GetNextNodeOnWayToRegion@CRegionConnectionNode@@QBEJJABVCRegionConnectionGraph@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, PBlock->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00828360, 555 bytes, thiscall `ret 8`.
 // Identity: Ego_r.pdb ?GetNextNodeOnWayToRegion@CRegionConnectionNode@@QBEJJABVCRegionConnectionGraph@@@Z (the debug
 //   build's 0x00731060); the only caller is CRegionConnectionGraph::GetNextRegionOnWayToRegion 0x00828590 (landed). The
@@ -142,10 +143,7 @@ public:
 
 class CRegionConnectionNode;
 
-template <class T> class CCountedPointer { public:
-    T*    Object;                                       // +0x00
-    void* PBlock;                                       // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 struct SRegionNodeEntry {                               // pair<long, CCountedPointer<CRegionConnectionNode> >
     long                                    first;      // +0x00
@@ -191,7 +189,7 @@ public:
         SRegionNodeEntry* it = GraphNodes.Find(region);
         if (it == GraphNodes.m_last)
             return 0;
-        return it->second.Object;
+        return it->second.Data;
     }
 };
 

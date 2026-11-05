@@ -1,5 +1,6 @@
 // std::vector<CLevelLoader::CObject::CLevelFiles,std::allocator<CLevelLoader::CObject::CLevelFiles> >::vector(unsigned int n) -- STLport vector(n) of the level loader's 28-byte level-file records: allocate n records, copy-construct each from a default record, destroy the default record
 // Leaf: ??0?$vector@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005158B0, 125 bytes, `ret 4` (thiscall: n). No direct caller (an inlined use
 //   elsewhere); the catalog's "StdVector_AllocateConstructPairScriptBase" is descriptive and the element is not a
 //   script pair.
@@ -17,12 +18,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 class CAFile;
 
-template <class T> class CCountedPointer {
-public:
-    T*    Object;                                   // +0
-    void* Info;                                     // +4 (count block)
-    CCountedPointer() : Object(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 class CLevelLoader {
 public:

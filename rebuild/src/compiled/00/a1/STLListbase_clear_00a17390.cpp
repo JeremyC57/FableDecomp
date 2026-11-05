@@ -1,6 +1,7 @@
 // std::_List_base::clear() -- free every quad-tree map entry of the navigator manager's list (section name destroyed, counted quad tree released) and relink the sentinel to itself
 // Instantiation: std::_List_base<CNavQuadTreeMap,std::allocator<CNavQuadTreeMap> >::clear
 // Leaf: ?clear@?$_List_base@VCNavQuadTreeMap@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A17390, 97 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: called by the two STLport `~list` bodies 0x00A17510 / 0x00A17570 (landed as std::list_T_00a17510 / _00a17570);
 //   0x00A17570 is CNavigatorManager's QuadTrees list (its deleting destructor 0x00A175A0, vtable 0x0129CA84, destroys
@@ -14,30 +15,8 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                     // Ego_r.pdb
-    unsigned long RefCount;                                 // +0x0
-    void (__fastcall* DeleteFunc)(void* data);              // +0x4
-    void* Data;                                             // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x0
-    CCPPointerInfo* Info;                                   // +0x4
-    T* operator->() const { return Data; }
-    bool operator==(const CCountedPointer& other) const { return Data == other.Data; }
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
 
 class CCharString {
 public:

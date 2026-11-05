@@ -1,0 +1,16 @@
+Plan phase 5, wave "w4" (2026-11-05): value-class leftovers (C3DVector, CVectorMap, CArray), rerun on the sources as w1-w3
+leave them (hdrmig5 `base`; 9 rows are also in w1-w3). Headers used as they are (no header change, no new sub-macro).
+
+ROWS: 54 PASS under vland --recheck-landed (RELOCATION_MATCH 52, RELOCATION_MATCH[/EHsc] 1 -- 0x0065A5BB, the row's own /EHsc
+  build flag, same grade as the landed source --, MATCH 1); gate.py 58 of 58; parity equal to the landed source.
+  - C3DVector 9 (of 324 local rows): phase 4's knobs (method_map, strip_free_ops, C2DCoordI) on rows whose other local class
+    went in w1-w3.
+  - CVectorMap 35 (of 851): phase 4's config (ptr_triple begin() / end(), Data.end(), bitset index ...).
+  - CArray 10 (of 616): new `ptr_triple` for CArray (the local pointer-triple CArray's First / Last ... members are the header
+    CArray's public STLport vector begin() / end(), start +0 / finish +4).
+  - No callee or own-symbol respell (CALLERS.tsv / BINDINGS.tsv empty).
+DEFERRED.tsv (1609): compile_fail 874, bytes_differ 317, local_std 267, no_block 63 (the local class is already gone or nested),
+  stray_change 62, method_map 19, grade 4 (0x007338A0, 0x0075DC00, 0x007A0400, 0x007C6A40: RELOCATION_MATCH but the behaviour
+  test no longer links: it calls a member the header declares out of line), free_op 2, consistency 1 (0x004FEEC0: the
+  AddMessage 0x00687540 respell phase 4 deferred, same reason).
+TOOLS: scripts/wave.py now reads a grade with a flag suffix (RELOCATION_MATCH[/EHsc]) as that grade.

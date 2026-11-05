@@ -1,16 +1,11 @@
 // 006c2d40 std::vector<CLevelLoader::CObject::CLevelFiles>::operator=
 // Flags: /O2 /Oy /W3
 // Leaf: ??4?$vector@VCLevelFiles@CObject@CLevelLoader@@V?$allocator@VCLevelFiles@CObject@CLevelLoader@@@std@@@std@@QAEAAV01@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 #include <stdlib.h>
 #include <new>
-class CCPPointerInfo{ public:unsigned RefCount;void(__cdecl*DeleteFunc)(void*);void*Data;};
+#include "engine/CCountedPointer.h"
 class CAFile;
-template<class T>class CCountedPointer{ public:T*Data;CCPPointerInfo*Info;
- CCountedPointer():Data(0),Info(0){}
- CCountedPointer(const CCountedPointer&x):Data(x.Data),Info(x.Info){if(Info)++Info->RefCount;}
- ~CCountedPointer(){if(Info&&!--Info->RefCount){Info->DeleteFunc(Info->Data);delete Info;}}
- CCountedPointer&operator=(const CCountedPointer&x){if(this!=&x){CCountedPointer tmp(x);T*p=Data;CCPPointerInfo*i=Info;Data=tmp.Data;Info=tmp.Info;tmp.Data=p;tmp.Info=i;}return*this;}
-};
 // CLevelFiles is CLevelLoader::CObject::CLevelFiles in the PDB (0x1c bytes: LevelID + three counted file pointers), nested here
 // (naming wave 20, chunk 688: ??1CLevelFiles@CObject@CLevelLoader@@QAE@XZ); the vector carries its allocator parameter (the FableWin spelling).
 // Shape: the STLport 4.x operator= -- the grow arm sets _M_start then _M_end_of_storage = _M_start + n and all

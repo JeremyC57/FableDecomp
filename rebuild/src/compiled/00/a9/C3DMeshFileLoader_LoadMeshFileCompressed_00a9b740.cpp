@@ -1,5 +1,6 @@
 // C3DMeshFileLoader::LoadMeshFileCompressed(const void* data, unsigned long size, CHandleBasedMemoryPool& pool) -- load a 3D mesh file from a (possibly LZO-compressed) memory image
 // Leaf: LoadMeshFileCompressed
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A9B740, 250 bytes (manifest label "C3DMeshFileLoader::LoadMeshFileCompressed" is propagated from the byte twin 0x00A99510) (`ret 10h`: hidden result + 3 args).
 // Ego_r.pdb: ?LoadMeshFileCompressed@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@PBXKAAVCHandleBasedMemoryPool@@@Z.
 // Callees: CMemoryDataInputStream(void*, long) 0x00994930 / ~CMemoryDataInputStream 0x00993B10,
@@ -16,31 +17,8 @@
 // and keeps the count block in a register for the copy-out, as retail does.
 #include <string.h>
 
-struct SCountBlock {
-    long m_references;                              // +0
-    void (__fastcall* m_pfnDestroy)(void*);         // +4
-    void* m_pObject;                                // +8
-    SCountBlock(void (__fastcall* destroy)(void*), void* object) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) {}
-};
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer { public:
-    T* Object;                                      // +0
-    SCountBlock* Count;                             // +4
-    static void __fastcall DeleteData(void* object);   // 0x00A9CB20 (root chunk) / 0x00A9CB50 (file)
-    CCountedPointer(T* object) : Object(object), Count(object ? new SCountBlock(DeleteData, object) : 0) {}
-    CCountedPointer(const CCountedPointer& other) : Object(other.Object), Count(other.Count) { if (Count) ++Count->m_references; }
-    ~CCountedPointer()
-    {
-        if (Count) {
-            if (--Count->m_references == 0) {
-                Count->m_pfnDestroy(Count->m_pObject);
-                delete Count;
-            }
-        }
-    }
-    template<class U> CCountedPointer(const CCountedPointer<U>& other) : Object((T*)other.Object), Count(other.Count) { if (Count) ++Count->m_references; }
-    T& operator*() const { return *Object; }
-};
 
 class CDataInputStream { public:
     virtual void Reserved0();

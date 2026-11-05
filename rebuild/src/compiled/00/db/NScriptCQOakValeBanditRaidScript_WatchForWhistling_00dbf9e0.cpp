@@ -1,6 +1,7 @@
 // CQ_OakValeBanditRaidScript::WatchForWhistling() -- thread: plays a bandit whistle on the nearest raid bandit, then each frame (while the camp path region is loaded and whistling is not stopped) plays one of three random whistles whenever the last one has finished and a bandit is alive
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: WatchForWhistling
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
@@ -10,32 +11,11 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:                                 // counted-pointer block (Ego_r.pdb)
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing;
-template <class T> class CCountedPointer { public:                     // CCountedPointer<CScriptThing>
-    CScriptThing*   Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer() : Data(0), Info(0) {}
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

@@ -1,5 +1,6 @@
 // CAIStateGroup_MinionGuardReactToPlayerWithWeapon::RemoveMessageEventsAdded() -- drain the world message queue of every "guard warning" event (type 27) this guard's own creature originated: find the most recent one, remove it from the manager's list, repeat until none is left
 // Leaf: ?RemoveMessageEventsAdded@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00939DD0, 150 bytes. Ego_r/FableWin: private ?RemoveMessageEventsAdded@...@@AAEXXZ. Callees:
 //   CMessageEventFilter_IsOriginatedByThing ctor 0x006AF2B0, CAIStateGroupBase::PeekWorld 0x008FCFA0 (catalog label
@@ -24,8 +25,8 @@ extern "C" void __cdecl free(void*);
 #include "engine/CWorld.h"
 #undef CWorld
 class CThing;class CFaction;class CBaseObjectPointer;
-class CBaseIntelligentPointer{private:CBaseObjectPointer*PData;public:virtual~CBaseIntelligentPointer();};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #include "engine/C3DVector.h"
 enum EMessageEventType{};enum EReactionSpeechType{};
 // Layout: original TPI CMessageEvent is88 bytes; base8, Type8, Pos12, UIDs32/40, pointers72/80.

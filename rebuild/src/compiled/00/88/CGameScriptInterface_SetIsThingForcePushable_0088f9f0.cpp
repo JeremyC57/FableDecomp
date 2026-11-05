@@ -1,5 +1,6 @@
 // CGameScriptInterface::SetIsThingForcePushable(const CScriptThing& thing, Value value) -- Forward the script request after the retail lifetime and type checks.
 // Leaf: ?SetIsThingForcePushable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity: PDB exact virtual const API; script slot11 GetPThing and75 IsAlive are independently named retail004aaa60/004ab130; own callee007e3d50 is CTCWillResponse::SetThingIsForcePushable.
 #ifndef _MSC_VER
 #define __fastcall
@@ -8,7 +9,7 @@ class CCharString;class CCPPointerInfo;
 // Layout: CThing active header is quarantined; ThingTypeFlags low byte+0x6c is read. All other fields are outside this call boundary.
 class CThing {public:unsigned char Prefix[0x6c];unsigned int ThingTypeFlags;};
 // Layout: shared CScriptThing header is flattened. A genuine polymorphic interface is required for GetPThing slot11 and IsAlive slot75; uninvoked slots have descriptive placeholders only. PImp data/info follow at+4/+8.
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

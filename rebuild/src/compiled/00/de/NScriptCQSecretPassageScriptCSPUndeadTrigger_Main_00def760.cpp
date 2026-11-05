@@ -1,5 +1,6 @@
 // NScript::CQ_SecretPassageScript::CSP_UndeadTrigger::Main() -- the secret-passage undead trigger: spawn the parent quest's SwitchDoorsOnAndOff once, wait until the hero is within 2.5 units of Me, then turn every "SP_UndeadSpawnPoint<data>" marker into an undead soldier that hunts the hero (a "BlockADoor" marker also blocks the doors), wait until all of them are dead, unblock the doors and remove Me
 // Leaf: ?Main@CSP_UndeadTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DEF760, length 944 bytes, plain `ret`.
@@ -55,34 +56,7 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
 #include "engine/C3DVector.h"
 void operator delete(void* p);                         // 0x00BFE9BC
-struct CCountBlock {
-    long References;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:                               // CCountedPointer<CScriptThing>: {Data, Info}
-    void*        Data;
-    CCountBlock* Info;
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        void* data = other.Data;
-        CCountBlock* info = other.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->References;
-                if (Info->References == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->References;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::Init() -- script action: links the spy thing and the hero thing (slot 599) in both directions, then clears two more interface settings for the thing
 // Leaf: ?Init@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F04410, length 96 bytes.
 // Callees: game-interface virtual slots 70 (`call [edx+0x118]`, no arguments, a thing reference in
 // eax), 599 (`call [ebx+0x95c]`, two thing references), 594 (`call [eax+0x948]`, two arguments) and
@@ -13,11 +14,9 @@
 // local), which is the retail `mov ebx,[eax]` / `mov ecx,[esi+4]` pairing.
 // Naming wave 35: identity reg 00f0283d "AT_ConvoySpy" in 00f024c0; Alloc 00f04360; vtable 012f7e14 slot 2; PDB ?Init@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_ConvoySpy::Init (wave3/labels_alloc.tsv); PDB ?Init@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CAT_ConvoySpy@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
-class CScriptThing { public:
-    void* __vftable;
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CGameScriptInterface { public:
     virtual void v000();

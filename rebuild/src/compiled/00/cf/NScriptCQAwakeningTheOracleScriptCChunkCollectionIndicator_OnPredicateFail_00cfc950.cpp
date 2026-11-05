@@ -1,5 +1,6 @@
 // NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail() -- the chunk-collection indicator's predicate failed: remove its quest-info bar
 // Leaf: ?OnPredicateFail@CChunkCollectionIndicator@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CFC950, 18 bytes, thiscall, plain `ret` (private virtual, entity vtable slot 5).
 // Identity (proven): slot 5 (OnPredicateFail) of the RTTI-less entity vtable 0x012C7C78, which the landed
 //   NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::Alloc 0x00CFC8A0 stores (site 0x00CFC8D6); Ego_r.pdb has
@@ -17,16 +18,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

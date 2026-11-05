@@ -1,6 +1,7 @@
 // CMessageEventManager::FindMostRecentMessage<CFilter_Bind3<CMessageEventFilter_IsOfType,CMessageEventFilter_IsOriginatedByThing,CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange> > >(const CFilter_Bind3<...>&) -- first message that is of the type, originated by the thing and whose originator passes the 2D range filter
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090E090, 144 bytes (padding included).
 // Leaf: FindMostRecentMessage
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Shape: the landed FindMostRecentMessage template (0x00746260) with a three-filter bind: the first two
 // filters are out-of-line operator() calls (0x006AF1C0 IsOfType, 0x006AF200 IsOriginatedByThing),
 // the third (ThingSearchFilter<In2DRange>) is inlined: the event's POriginator intelligent pointer
@@ -15,11 +16,8 @@ class CBaseObject { public:
     unsigned long m_flags6c;                       // +0x6c
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* PItem;                            // +4
-    CBaseObject* GetPItem() const;                 // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct SMessageNode {                              // list node: next, prev, then the event at +8
     SMessageNode*  m_pNext;

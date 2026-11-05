@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (std::map<unsigned long, QuadricOptimiserInternals::CContractionReference >) STLport 4.6 recursive subtree release without rebalancing: for each node erase its right subtree, release the value's counted pointer (Contraction, node +0x14), free the node and continue with its left child
 // Leaf: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@U?$_Select1st@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKVCContractionReference@QuadricOptimiserInternals@@@std@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD5240, 92 bytes (+ int3 padding to 96), thiscall `ret 4`; recursive; speed-optimised TU.
 // Identity (proven): std::map<unsigned long, QuadricOptimiserInternals::CContractionReference >; evidence: QuadricOptimiserInternals::COptimisedVertex::Remove 0x00AD71B0 (landed) clears this+0xA8 = PairContractions through it and COptimisedVertex::UpdatePairContractions 0x00ACA450 calls it (0x00ACA5B2) on its local copy of that map: Ego_r.pdb map<unsigned long, QuadricOptimiserInternals::CContractionReference> (CContractionReference {CCountedPointer<CVertexPairContraction> Contraction +0, ulong SubIndex +8}, so the release is at node +0x18 and the node 0x20 bytes).
 // Label: the manifest's "TreeNode_DestructWithRefcount" is propagated (family J005: six _M_erase bodies whose only non-trivial value member is a
@@ -11,29 +12,8 @@
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // the shared count block
-    long RefCount;                                      // +0x0
-    void (__fastcall *DeleteFunc)(void*);               // +0x4
-    void* Data;                                         // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
-public:
-    T* Data;                                            // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 namespace QuadricOptimiserInternals {
 class CVertexPairContraction;
 class CContractionReference {                         // Ego_r.pdb, 12 bytes (class key V from the PDB name sets)

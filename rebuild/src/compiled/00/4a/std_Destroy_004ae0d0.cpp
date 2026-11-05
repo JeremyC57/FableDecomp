@@ -1,5 +1,6 @@
 // std::_Destroy(pair<unsigned long, CCountedPointer<CFaction> >* first, pair<unsigned long, CCountedPointer<CFaction> >* last) -- STLport: destroy the range through the out-of-line __destroy_aux with the __false_type tag
 // Leaf: ??$_Destroy@PAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@@std@@YIXPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@0@0@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AE0D0, 13 bytes, __fastcall (first ecx, last edx passed straight on), plain
 //   `ret`: push ecx ; lea eax,[esp+3] ; push eax ; call 0x004AD9E0 ; pop ecx ; ret.
 // Identity: the callee 0x004AD9E0 is bound as std::__destroy_aux<pair<unsigned long, CCountedPointer<CFaction> >*>
@@ -39,13 +40,7 @@ void __fastcall _Destroy(_ForwardIterator __first, _ForwardIterator __last)
 }
 } // namespace std
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {      // 8 bytes: Data, Info
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 
 class CFaction;
 

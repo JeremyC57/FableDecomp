@@ -1,5 +1,6 @@
 // CChunkedFileSuperChunk::RemoveAllSubChunks() -- unparent every sub-chunk, then clear the SubChunks array
 // Leaf: ?RemoveAllSubChunks@CChunkedFileSuperChunk@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AA8400, 89 bytes, thiscall, plain `ret`; /Gr TU (the STLport helpers are __fastcall).
 // Flags: /Gr
 // Identity (proven): Ego_r.pdb ?RemoveAllSubChunks@CChunkedFileSuperChunk@@QAEXXZ (the ghidra_out PDB symbol table names
@@ -12,13 +13,7 @@
 //   temporaries share the high byte of the `push ecx` slot.
 #include "engine/CChunkedFileChunk.h"
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                              // +0x00
-    CCPPointerInfo* Info;                              // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct __false_type { __false_type() { } };

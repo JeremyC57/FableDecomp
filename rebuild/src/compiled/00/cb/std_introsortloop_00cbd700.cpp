@@ -1,5 +1,6 @@
 // std::__introsort_loop(CActiveScriptPair* first, CActiveScriptPair* last, CActiveScriptPair*, int depth_limit, CActiveScriptLess comp) -- STLport 4.6 introsort loop over CScriptBase::EntityScripts' (UID, active entity script) pairs: median-of-three quicksort partitions until the range is at most 16 elements, falling back to partial_sort (heap sort) when the depth limit runs out
 // Leaf: ??$__introsort_loop@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBD700, 969 bytes, __fastcall (first ecx, last edx; the value-type tag, depth
 //   limit and the empty 4-byte comparator on the stack, `ret 0Ch`).
 // Identity: STLport 4.6 _algo.c `__introsort_loop` (the pair element is 16 bytes: unsigned __int64 key compared ja/jb
@@ -15,33 +16,7 @@
 //   pivot copy; the nested levels call them (the inline budget), exactly as retail.
 #pragma inline_recursion(on)
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
-class CCPPointerInfo { public:
-    long  RefCount;
-    void  (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CActiveEntityScriptBase;
 namespace std {
 template <class _T1, class _T2> struct pair {

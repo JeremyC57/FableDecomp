@@ -1,5 +1,6 @@
 // CScriptBase::CScriptBase() -- the script base: CBaseClassNonCopyable, its vtable, an empty Threads list, empty EntityScripts / EntityScriptBindings / persist maps, no active thread
 // Leaf: ??0CScriptBase@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB8110, 82 bytes, thiscall: base ctor 0x0099A2F0, vtable 0x012C1648, ebx = 0,
 //   Threads (+4) cleared, then its 16-byte sentinel from malloc 0x00BFEA0E linked to itself, the three CVectorMaps'
 //   vectors and Dirty bytes (+8/+0x15, +0x18/+0x25, +0x30/+0x3d), PActiveThread (+0x2c) = 0; LastWorldUpdateFrame (+0x28)
@@ -19,7 +20,7 @@ protected:
     virtual ~CBaseClassNonCopyable();
 };
 class CCharString { public: void* m_pStringData; };
-template <class T> class CCountedPointer { public: T* Data; void* Info; };   // 8 bytes
+#include "engine/CCountedPointer.h"
 class CSpawnedFuncBase;
 class CActiveEntityScriptBase;
 class CEntityScriptBindingBase;

@@ -1,5 +1,6 @@
 // CBankFileAsync::RestartReads() -- under the bank lock, re-queue every read in ReadsToRestart with the threaded file and empty the set
 // Leaf: RestartReads
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D5A90, 200 bytes (+ int3 padding). __fastcall, no arguments, `ret`.
 // Label correction: catalogued as "CMusicManager::UpdateRegistrations" (a forge auto-name). The lock is taken on the
 //   critical section at +0x14c and the set walked is at +0x134: the retail CBankFileAsync layout of the landed ctor
@@ -22,11 +23,7 @@ class CThreadedFileObjectDesc { public: unsigned char _body[0x18]; };
 class CThreadedFile { public:
     unsigned long AddObject(CThreadedFileObjectDesc* desc);              // 0x0098F350
 };
-template <class T> class CCountedPointer { public:
-    T* Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 struct SRbTreeNode {                               // STLport _Rb_tree_node<CBankFileAsyncData*>, 0x14 bytes
     unsigned char m_color;                         // +0x00
     SRbTreeNode*  m_pParent;                       // +0x04

@@ -1,5 +1,6 @@
 // CScriptConversation::AddLineToConversation(const CThing& speaker, const CThing* listener, const CCharString& line, bool showSubtitle) -- append a line (speaker index, listener index or -1, text, subtitle flag) when the speaker is in the conversation
 // Leaf: ?AddLineToConversation@CScriptConversation@@QAEXABVCThing@@PBV2@ABVCCharString@@_N@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E58A0, 163 bytes (176 with int3 padding), thiscall, `ret 10h`.
 // Identity: Ego_r.pdb name set `?AddLineToConversation@CScriptConversation@@QAEXABVCThing@@PBV2@ABVCCharString@@_N@Z`;
 //   the landed CScriptConversationManager::AddLineToConversation 0x006E5950 forwards to this address on &it->second.
@@ -27,12 +28,8 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-class CBaseIntelligentPointer {
-public:
-    void* PItem;
-    void* PNext;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 struct random_access_iterator_tag {

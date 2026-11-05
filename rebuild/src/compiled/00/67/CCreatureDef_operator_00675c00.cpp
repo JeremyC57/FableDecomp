@@ -1,5 +1,6 @@
 // CCreatureDef::operator=(const CCreatureDef&) -- self-checked def assignment: deep-copies the four counted-pointer payloads (wound morphs, random appearance morph, expression set, creature stats), then the action/appearance vectors, phoneme map, dialogue voices, the inventory/screen defs, respawn timings, flags, radius weight/spread; returns *this
 // Leaf: ??4CCreatureDef
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00675C00, length 544 bytes.
 // Callees: vector<CWoundMorphs::CEntry>::operator= @ 0x00674520, CRandomAppearanceMorph::operator=
 //          @ 0x00675B60, vector<CExpressionSet::CEntry>::operator= @ 0x00674400, CDefClassBase::operator=
@@ -60,11 +61,7 @@ class CCreatureStatsDef : public CDefClassBase { public:
     float StrengthDamageMultiplier;         // +0x44
 };
 
-template <class T> class CCountedPointer { public:  // object pointer + shared count (8 bytes)
-    T* m_pObject;
-    long* m_pCount;
-    T& operator*() const { return *m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 struct CLongVector {                        // retail std::vector<long> (12 bytes)
     long* m_first; long* m_last; long* m_end;

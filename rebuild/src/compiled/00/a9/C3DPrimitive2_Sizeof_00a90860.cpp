@@ -11,6 +11,7 @@
 // pointer walk against the end held in ecx); the partition tree's size is added in the return (a single
 // sum expression evaluates every term before adding and spills them).
 // Leaf: ?Sizeof@C3DPrimitive2@@QBEKXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 class CVertexBufferWin32 { public: unsigned long Sizeof() const; };        // 0x00AC20D0
 class CIndexBuffer       { public: unsigned long Sizeof() const; };        // 0x00AC1F30
 class C3DMeshPartitionElement { public: unsigned long Sizeof() const; };   // 0x00AC2930
@@ -21,7 +22,7 @@ template<class T> class CArray { public:                    // retail CArray<T>:
     unsigned long Size() const { return (unsigned long)(m_end - m_begin); }
 };
 template<class T> struct scoped_ptr { T* m_p; };
-template<class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 
 inline unsigned long GetSizeof(const unsigned short&) { return sizeof(unsigned short); }
 template<class T> inline unsigned long GetSizeof(const scoped_ptr<T>& p)

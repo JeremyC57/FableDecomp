@@ -1,5 +1,7 @@
 // CAIStateGroup_SellToBuyer::IsRunnable() -- runnable while the creature is in a two-party interaction of type 8 (trade) and a buy order message is waiting
 // Leaf: ?IsRunnable@CAIStateGroup_SellToBuyer@@UAE_NXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094C010, 63 bytes (+ int3 padding), thiscall virtual (slot 11), `ret`.
 // Identity (proven): Ego_r.pdb donor order GetBuyersOrder (0x00970380) / IsRunnable (0x009703D0) = retail 0x0094BFC0 / this row
 //   (vtable slot 11); the label agrees.
@@ -22,23 +24,9 @@ public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObject : public CBaseClass { };
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-private:
-    void* PData;                                        // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-};
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                            // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    T* operator->() const { return Data; }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
 class CClass : public CBaseObject { };
 class CThing : public CClass {
 public:

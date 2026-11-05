@@ -1,5 +1,6 @@
 // CMapInfo::`scalar deleting destructor'(unsigned int flags) -- destroy a world map record (serialise script, level script name, level name, release the counted CMap) and free it when bit 0 of the flags is set
 // Leaf: ??_GCMapInfo
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00512050, length 98 bytes (+ int3 padding), `ret 4`, returns this; no
 // references (an unreferenced COMDAT). The manifest label _Dest_val<allocator<CMapInfo>,CMapInfo> names the class.
 // Layout: Ego_r.pdb CMapInfo (0x48) = C2DBoxI Area +0, CCountedPointer<CMap> PMap +0x10, CCharString LevelName +0x18,
@@ -18,26 +19,7 @@ public:
     ~CCharString();                                          // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:                                    // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);               // called with Data in ecx, nothing on the stack
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 class CMap;

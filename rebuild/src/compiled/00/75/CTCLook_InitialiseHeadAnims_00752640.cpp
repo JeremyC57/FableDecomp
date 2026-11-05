@@ -1,5 +1,6 @@
 // CTCLook::InitialiseHeadAnims() -- build the vertical and horizontal head-turn animation entries: from the live parent creature's animations when it has them, otherwise from the appearance def's animation set (no-group filter)
 // Leaf: InitialiseHeadAnims
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00752640, 607 bytes, plain `ret`.
 // Callees: CThingCreatureBase::HasAnimation (virtual slot 73, +0x124), CThingCreatureBase::GetAnimFromName @ 0x00662A00,
 //   operator new @ 0x00BFEA1A / operator delete @ 0x00BFE9BC, NAnimationEntryBodge::CAnimEntryLite(const CAnimationEntry*)
@@ -62,27 +63,7 @@ struct CAnimEntryLite {
     unsigned char _data[0x10];
     CAnimEntryLite(const CAnimationEntry* entry);          // 0x0073A9B0
 };
-struct SCountBlock {
-    long  m_references;                                    // +0
-    void (__fastcall* m_pfnDestroy)(void*);                // +4
-    void* m_pObject;                                       // +8
-};
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;                                // +0
-    SCountBlock* m_pCount;                                 // +4
-    CCountedPointer(T* object);                            // 0x0073D180
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                operator delete(m_pCount);
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x00754F10
-};
+#include "engine/CCountedPointer.h"
 
 template <class T> class CDefPointer { public:
     T* Object;

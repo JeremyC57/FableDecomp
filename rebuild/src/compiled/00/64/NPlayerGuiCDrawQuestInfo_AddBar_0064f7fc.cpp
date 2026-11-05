@@ -1,3 +1,4 @@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets). Spellings unified: 00654b36: ??$?0UCQuestInfoElementBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementBar@NPlayerGui@@@1@@Z -> ??$?0UCQuestInfoElementBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementBar@NPlayerGui@@@1@@Z; 0064a3ed: ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXU?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z -> ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXV?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuestInfo::AddBar(float, float, const CRGBColour&, const CRGBColour&, const CCharString&, const CCharString&, float) -- create a bar element with the two symbols' sprites, append it through AddElement and return its new ID
@@ -18,14 +19,7 @@ extern void* __cdecl operator_new_shim(unsigned int);   // (unused; operator new
 
 namespace NPlayerGui {
 
-template <class T> struct CCountedPointer {        // object + count block (8 bytes); bodies out of line in other TUs
-    T*    m_pObject;
-    void* m_pBlock;
-    explicit CCountedPointer(T* object);
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);
-    ~CCountedPointer();
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 struct CQuestInfoElement {                         // NPlayerGui::CDrawQuestInfo::CQuestInfoElement (retail 0x1c bytes)
     virtual void v00();

@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::GetPointAtPos(const CParticleUpdateParameters<unsigned long, unsigned long>& params, C3DVector& out, float pos, float time) -- point on the spline at a parametric position (through the random-offset data when present), then transformed by the position parameters if any are bound
 // Leaf: ?GetPointAtPos@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@2@AAVC3DVector@@MM@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B21940, length 82 bytes.
 // Name (naming wave 20, chunk 686): Ego_r / FableWin.pdb spellings throughout -- the nested CPSCSplineBase::CSplineRandomOffsetData /
@@ -30,13 +31,8 @@ template <class TKey, class TParam> class CParticleUpdateParameters { public:   
     bool GetVectorParam(C3DVector& vector, const unsigned long& key) const;   // 0x00B059F0 ?GetVectorParam@?$CParticleUpdateParameters@KK@NParticleEngine@@QBE_NAAVC3DVector@@ABK@Z (Ego_r.pdb, the landed leaf)
 };
 typedef CParticleUpdateParameters<unsigned long, unsigned long> CUpdateParams;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 }
-template <class T> class CCountedPointer { public:              // global (Ego_r.pdb class V template)
-    T*                              Data;
-    NParticleEngine::CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
 class CCardinalSpline { public:                                 // 0x14 bytes in retail
     NParticleEngine::CArray<C3DVector> ControlPoints;           // +0x00
     float             Tension;                                  // +0x0c

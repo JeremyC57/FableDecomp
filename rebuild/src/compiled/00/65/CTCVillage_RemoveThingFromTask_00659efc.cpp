@@ -1,5 +1,6 @@
 // CTCVillage::RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing) -- dispatches on the task's type to the typed RemoveThingFromTask<T> over the matching task list (torch, patrol, crops, security sweep, horn, crate)
 // Leaf: ?RemoveThingFromTask@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00659EFC, 241 bytes (`ret 0Ch`, the task pointer by value and destroyed
 // here; Ego_r.pdb `?RemoveThingFromTask@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@@Z`).
 // Callees: CBaseIntelligentPointer::GetPItem() 0x00A01B50; the task's GetTaskType (virtual slot 2, +0x08);
@@ -46,7 +47,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-template<class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 template<class T> struct CTaskList {            // retail std::list<CCountedPointer<T> >, sentinel pointer only
     void* _M_node;
 };

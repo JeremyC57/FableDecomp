@@ -1,5 +1,6 @@
 // CHTG_Audience::CHTG_Audience(CQ_HangingTreeGoodScript*, CQ_SunnyvaleMasterData*, const CScriptThing&) -- construct the hanging-tree audience entity script: quest interface, thing, parent, master data and three empty script things
 // Leaf: ??0CHTG_Audience
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D72160, length 126 bytes (+ int3 padding).
 // Identity: the catalog label "CAIStateGroup_JackOfBladesBase::CAIStateGroup_JackOfBladesBase" is propagated
 // and wrong (that constructor is the landed 0x00902FE8). The only caller is the factory at 0x00D720E0, which
@@ -19,11 +20,7 @@
 
 struct SCountBlock;
 
-template <class T> class CCountedPointer { public:
-    void* m_pObject;                            // +0
-    SCountBlock* m_pCount;                      // +4
-    CCountedPointer() : m_pObject(0), m_pCount(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

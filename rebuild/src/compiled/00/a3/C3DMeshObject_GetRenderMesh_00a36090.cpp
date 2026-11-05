@@ -1,5 +1,6 @@
 // C3DMeshObject::GetRenderMesh(unsigned long lod, unsigned long flags) const -- fetch the render mesh of a LOD from the mesh info (always with flag 1 set) into a local counted pointer and return a copy of it
 // Leaf: GetRenderMesh
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members unchanged are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36090, 112 bytes, `ret 0Ch` (hidden result + two arguments).
 // Identity: Ego_r.pdb `?GetRenderMesh@C3DMeshObject@@QBE?AV?$CCountedPointer@$$CBVC3DMesh2@@@@KK@Z`. The catalog's
 //   "C3DMeshInfo_GetMesh" names the callee. No direct callers (reached through the graphic appearance code).
@@ -13,34 +14,8 @@
 //   block re-read from the address-taken local at every use); the destructor's trailing zero stores are dead.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-struct SCountBlock {
-    long  RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
-    void* Data;                                         // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*           Data;                                  // +0
-    SCountBlock* Info;                                  // +4
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class C3DMesh2;
 

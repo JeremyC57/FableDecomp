@@ -1,5 +1,6 @@
 // CTCWallMount::CTCWallMount(CThing* owner) -- wall-mount component constructor: CTCBase(owner), bought for 0, no trophy pointer, trophy id 0
 // Leaf: ??0CTCWallMount
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DE4A0, length 64 bytes (ret 4). Vtable 0x0126FB7C = CTCWallMount
 // (rtti-vtables.tsv); created by the factory @ 0x004D5BE3 (operator new(0x20)). The catalog label
 // "CTCTavernBar::CTCTavernBar" is propagated over this constructor and rejected.
@@ -19,16 +20,9 @@ class CTCBase { public:
     CTCBase(CThing* owner);                  // 0x00686800
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                    // +0x04
-    CBaseIntelligentPointer();               // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
-    virtual void v00();
-    CIntelligentPointer() { }
-};
 
 class CTCWallMount : public CTCBase { public:              // vtable 0x0126FB7C
     long                        BoughtForAmount;   // +0x0c

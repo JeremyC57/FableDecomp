@@ -1,6 +1,7 @@
 // CPhysicsMesh::GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) -- swept-sphere query: a tiny radius degenerates to the point query; otherwise, when the swept box touches the mesh bounds, use the segmentation tree (if enabled and built) or the full collision test
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A187C0, length 143 bytes.
 // Leaf: GetSphereIntersectionFromTo
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CPhysicsMesh::GetPointIntersectionFromTo @ 0x00A18760, HasBoundingBoxIntersectedFromTo @ 0x00A17690,
 // GetSphereIntersectionFromToUsingSegmentation @ 0x00A17AF0, GetSphereIntersectionFromToUsingFullCollision @ 0x00A182C0.
@@ -20,10 +21,7 @@ extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(fabs)
 class CMeshIntersectionData;
 class CIPhysicsFacesSegmentBase;
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Count;
-};
+#include "engine/CCountedPointer.h"
 
 extern bool g_PhysicsUseSegmentation;              // 0x013984D0
 

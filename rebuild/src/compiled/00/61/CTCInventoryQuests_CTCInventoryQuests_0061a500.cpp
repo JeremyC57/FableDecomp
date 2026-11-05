@@ -1,5 +1,6 @@
 // CTCInventoryQuests::~CTCInventoryQuests() -- deletes every UI component and clears the list, then destroys the members (quest-card primitives and items, the available-quest map, the displayed quests) and both bases
 // Leaf: ??1CTCInventoryQuests@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0061A500, 344 bytes, thiscall, no frame; ends `jmp 0x005C00A0`. Speed TU (`add esp, 4`).
 // Identity (proven): the two vtable stores are CTCInventoryQuests's RTTI vtables (0x012585B4 primary, 0x012585A0 for the
 //   NHeroInformationScreens::CBase subobject at +0x130 -- the stores of the landed-label ctor 0x0061A420), the base store
@@ -25,12 +26,8 @@ public:
     virtual ~CEnginePrimitiveHandle();
     void* PPrimitive;
 };
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CQuestCardItem { public:
     long        ItemIndex;                                    // +0
     CWideString ItemText;                                     // +4

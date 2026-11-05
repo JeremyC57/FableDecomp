@@ -1,5 +1,7 @@
 // CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction() -- base FinishAction; make the balverine willable again, flying flag on, full alpha; when the jump ran its full time: put it down at EndPos facing a living target, enter an intangible mode (the battle def's time, else 5s) that ends in a lunge at the target (or a drop-in from the sky), and detach its attached particles
 // Leaf: ?FinishAction@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CCD70, 685 bytes (+ int3 padding), virtual FinishAction, plain `ret`.
@@ -128,11 +130,8 @@ class CThingCreatureBase : public CThing { public: };
 void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                                    // +0x04
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CCreaturePointer : CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }   // inline over 0x00A01B50
     operator CThingCreatureBase*() const { return GetPItem(); }
@@ -147,12 +146,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 struct CModeBase { };
-template <class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer(T* object);                         // 0x00718A00
-    CCountedPointer(const CCountedPointer& other);
-};
+#include "engine/CCountedPointer.h"
 class CCreatureActionBase;
 struct CModeIntangible : CModeBase {
     unsigned char _pad[0x44];

@@ -1,5 +1,6 @@
 // CTCCarriedActionUseGiveBeer::OnActionUse(CThingAICreature* user) -- an idle creature uses carried beer: give it to a targeted drinker (type 2 target with the drinker interface 0xC3, which also gets 1.0 drunkenness), else drink it itself
 // Leaf: vfunc_28
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail 0x007ED2C0, 352 bytes, `ret 4` (vtable slot 10, +0x28; catalogued as vfunc_28).
 // Callees: CThingCreatureBase::IsPerformingAnyAction 0x006622A0, the base use hook 0x007EAB90, CVectorMap::LowerBound const
@@ -44,15 +45,8 @@ class CCreatureActionBase { public:                                // retail siz
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingCreatureBase;
 class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public:   // 0xb8 bytes
     CBaseIntelligentPointer PItem;                          // +0xa8

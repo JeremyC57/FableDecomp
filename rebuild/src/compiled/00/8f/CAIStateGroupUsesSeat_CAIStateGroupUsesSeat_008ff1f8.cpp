@@ -1,5 +1,6 @@
 // CAIStateGroup_UsesSeat::CAIStateGroup_UsesSeat() -- base, own vtable, the seat pointer, no seat position yet.
 // Leaf: ??0CAIStateGroup_UsesSeat@@IAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 32 (family aisg): the ctor is protected (IAE, both PDBs) and the local CAIStateGroupBase (a declared virtual dtor neither PDB has) is engine/CAIStateGroupBase.h's retail branch
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FF1F8, length 51 bytes.
 // Callees: CAIStateGroupBase::CAIStateGroupBase() @ 0x008FD255, CBaseIntelligentPointer::CBaseIntelligentPointer()
@@ -16,24 +17,10 @@ class CThing;
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThingObject;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x0125A858
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 
 #define FABLE_RETAIL_CAISTATEGROUPBASE
 #include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255

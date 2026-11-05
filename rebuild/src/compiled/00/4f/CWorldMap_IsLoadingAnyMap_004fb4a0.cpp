@@ -1,5 +1,6 @@
 // CWorldMap::IsLoadingAnyMap() const -- whether the level loader still has objects queued: PLevelLoader->IsBusy()
 // Leaf: ?IsLoadingAnyMap@CWorldMap@@QBE_NXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FB4A0, 11 bytes: mov ecx,[ecx+0BCh] ; jmp CLevelLoader::IsBusy (0x006C20A0)
 // Identity (FINDINGS chunk 388 callee; was the stand-in `T::Run` forwarder catalogued as
 //   _global::Forward_IsActionPointFree_via0xbc_004fb4a0 with a propagated _Cons_val manifest label): Ego_r.pdb / FableWin.pdb
@@ -14,12 +15,7 @@ public:
     bool IsBusy() const;                                                // 0x006C20A0
 };
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                                         // +0x00
-    void* Info;                                                         // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CWorldMap {
 public:

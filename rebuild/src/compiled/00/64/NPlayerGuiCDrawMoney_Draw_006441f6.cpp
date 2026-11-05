@@ -1,3 +1,4 @@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 #pragma optimize("s", on)
 // NPlayerGui::CDrawMoney::Draw(CEnginePrimitivePrepareInfo*) -- mark the drawer as drawing, give the money stat bar its gold graphic and gain effect from the GUI def and draw it at the money position with the GUI alpha
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006441F6, length 109 bytes (catalog label "CDrawCrime::Draw" is propagated: the
@@ -28,11 +29,7 @@ class CStatBar { public:                                  // NPlayerGui::CStatBa
     long          EffectIndex;                     // +0x58
 };
 
-template <class T> struct CCountedPointer {        // object + count block
-    T*    m_pObject;
-    void* m_pInfo;
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 }
 

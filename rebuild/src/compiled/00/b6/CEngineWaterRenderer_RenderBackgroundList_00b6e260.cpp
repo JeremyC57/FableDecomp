@@ -1,5 +1,6 @@
 // CEngineWaterRenderer::RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time) -- render a list of background water patches; with occlusion enabled, a patch whose last occlusion query says it is hidden only re-issues an occlusion box test, every other patch is rendered inside a fresh occlusion query
 // Leaf: RenderBackgroundList
+// Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members First/Last are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6E260, length 384 bytes (with int3 padding; body 0x17b), `ret 8`.
 // PDB: ?RenderBackgroundList@CEngineWaterRenderer@@AAEXAAV?$CArray@PAVCEngineWaterBackgroundSubPatch@@@@M@Z.
 // Callees: on the occlusion manager @ 0x01436E5C: the query result test @ 0x00B8D0B0 (id, wait; manifest label propagated),
@@ -51,11 +52,7 @@ public:
     float          MaxZ;                           // +0x5c
 };
 
-template <class T> class CArray { public:
-    T* First;
-    T* Last;
-    T* End;
-};
+#include "engine/CArray.h"
 
 class CEngineWaterRenderer {
 public:
@@ -67,7 +64,7 @@ public:
 
 void CEngineWaterRenderer::RenderBackgroundList(CArray<CEngineWaterBackgroundSubPatch*>& list, float time)
 {
-    for (CEngineWaterBackgroundSubPatch** it = list.First; it != list.Last; ++it) {
+    for (CEngineWaterBackgroundSubPatch** it = list.begin(); it != list.end(); ++it) {
         if (OcclusionEnabled) {
             long id;
             if ((*it)->OcclusionID > 0 && !g_pEngineOcclusionManager->IsQueryVisible((*it)->OcclusionID, true)) {

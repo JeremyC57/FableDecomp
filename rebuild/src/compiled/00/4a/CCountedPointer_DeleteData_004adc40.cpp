@@ -1,5 +1,6 @@
 // CCountedPointer::DeleteData(void* data) -- (CCountedPointer<CMessageEventManager>) the counted pointer's per-type deleter: destroy the manager (clear its Messages list, free the list's sentinel) and free the object
 // Leaf: ?DeleteData@?$CCountedPointer@VCMessageEventManager@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004ADC40, 45 bytes, `ret` (static `__fastcall`, data in ecx).
 // Identity (proven): stored as the count block's deleter by the landed CCountedPointer<...>::Reset 0x004ADF80 (0x004ADFCD).
 //   Its list<CMessageEvent> at +4 is the one the landed std::_List_base<CMessageEvent>::clear 0x004A9CF0 clears (that row's
@@ -56,13 +57,6 @@ public:
     std::list<CMessageEvent>  Messages;                    // +0x04
 };
 
-class CCPPointerInfo;
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<CMessageEventManager>;

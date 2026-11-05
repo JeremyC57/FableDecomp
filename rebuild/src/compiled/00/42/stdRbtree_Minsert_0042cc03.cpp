@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (map<CCharString, CCountedPointer<NUISystem::CComponent> >) STLport node insert: create the node, link it left or right of y (fixing the header's root/leftmost/rightmost), rebalance, count it
 // Leaf: ?_M_insert@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@2@0@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042CC03, 149 bytes, thiscall `ret 14h` (hidden iterator result + x, y, v, w), ebp frame (a size-optimised /Os module: unaligned entry).
 // Identity (proven): std::_Rb_tree<CCharString, pair<const CCharString, CCountedPointer<NUISystem::CComponent>>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_insert(_Rb_tree_node_base*, _Rb_tree_node_base*, const value_type&, _Rb_tree_node_base*); evidence: its _M_create_node 0x0042BE2F mallocs a 0x1C-byte node and copy-constructs the value through pair<const CCharString, CCountedPointer<NUISystem::CComponent> >::pair(const pair&) 0x0042A961 (family J041); callers: insert_unique 0x0042CC98 (0x0042CD1B) and insert(hint) 0x0042CF69 (0x0042CFAA) <- 0x0042D2A9 <- the landed map operator[] 0x0042D45D (NUISystem::CManager)
 // Label: the manifest's "BinaryTree_InsertCString" is a descriptive placeholder (family J044: five byte-similar _M_insert bodies over CCharString keys, each its own
@@ -15,13 +16,8 @@ class CCharString {                                        // 4 bytes (Ego_r)
 public:
     void* PStringData;                                     // +0x0
 };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CComponent; }
-template <class T> class CCountedPointer {                 // Ego_r.pdb, 8 bytes
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-};
 namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const;   // out of line: 0x0042AAB3 for CCharString

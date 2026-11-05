@@ -1,5 +1,6 @@
 // CCombatActionBase::ProcessPossibleCreatureStrikeEvent(float, const std::pair<C3DVector,C3DVector>&, const std::pair<C3DVector,C3DVector>&, CThingGameObject&) -- a creature not yet struck this event is tested against the two triangles of the swept blade quad; on a hit it joins the strike event's struck list, may trigger the action-on-strike, gets melee hit parameters along the normalised sweep of the blade's second end and takes the hit, then the hit pause and on-hit frames run and both hit flags are set
 // Leaf: ?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00858130, 718 bytes (720 with padding); `ret 10h`.
@@ -127,11 +128,8 @@ class CTCHitLocations { public:                        // interface type 0x7F
         C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008169B0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                            // +4
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (0.0001f, the engine's vector epsilon)
 extern long g_StrikeHitPauseFrames;             // 0x013B86D0
 namespace {

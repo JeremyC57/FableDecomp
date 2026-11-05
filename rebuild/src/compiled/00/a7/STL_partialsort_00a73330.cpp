@@ -1,5 +1,6 @@
 // std::__partial_sort(SKeyedChunk* first, SKeyedChunk* middle, SKeyedChunk* last, SKeyedChunk*, CKeyedChunkLess comp) -- STLport partial sort of the 16-byte (long key, {name, counted chunk}) records: heap [first, middle), pop every later record with a smaller key into it, then sort the heap
 // Leaf: ??$__partial_sort@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A73330, 123 bytes (+ int3 padding to 128), `ret 0Ch`. /Gr algorithm TU: first in
 //   ecx, middle in edx; last, the null value-type pointer and the empty comparator's 4-byte slot on the stack.
 // Callees: __make_heap 0x00A71CA0 (behind the inline make_heap: comp, (T*)0, (Distance*)0 pushed), __pop_heap 0x00A71B40
@@ -22,22 +23,8 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct SCountBlock {
-    long m_references;                                  // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4
-    void* m_pObject;                                    // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer {
-public:
-    T* m_pObject;                                       // +0
-    SCountBlock* m_pCount;                              // +4
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-};
 
 class C3DAnimFileRootChunk;
 

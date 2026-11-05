@@ -1,4 +1,5 @@
 // CTCGamePlayer::GetGame() -- the tavern game this player is in, or null when the game table is gone or dead
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EDC90, length 45 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice, on GameTable).
 // Layout from Ego_r.pdb (CTCGamePlayer, 24 bytes): Game (CTCTavernGame*) +0x0c, GameTable (CIntelligentPointer<CBaseObject>) +0x10;
@@ -13,12 +14,8 @@ class CBaseObject { public:
     unsigned char _flags_0x91 : 7;
 };
 
-class CBaseIntelligentPointer { public:                     // 8 bytes: vptr + the pointee link
-    void*   m_vtable;
-    void*   m_pItem;
-public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CTCGamePlayer { public:
     unsigned char              _pad_0x00[0x0c];         // CTCBase: vptr, ParentThing, flags

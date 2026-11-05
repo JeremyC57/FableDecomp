@@ -1,5 +1,6 @@
 // NScript::CQ_PrisonWardenGameScript::Init() -- (label propagated) virtual reset of a script-side object: clears two flags and a counter and empties the CScriptThing member by assigning a default-constructed one
 // Leaf: ?Init@CQ_PrisonWardenGameScript@NScript@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DDDCE0, 153 bytes of code. Not a CChunkedFile function (that class is 20 bytes; this
 // body writes +0x48..+0x58): it is slot 3 of the no-RTTI vtable around 0x012DCB40 (the only reference to the address),
 // so the class is named by that vtable and the method descriptively.
@@ -15,48 +16,8 @@
 // CScriptThing deleting destructor @ 0x004AB170.
 // Naming wave 35: identity Anniversary wave 2026-11-04 (high): vtable 0x012DCB40 slot 3; Anniversary RTTI NScript::CQ_PrisonWardenGameScript (string-literal match, validated 257/258); PDB name set has the Init member of NScript::CQ_PrisonWardenGameScript; slot layout from named TLC siblings; function referenced by this vtable only (2026-11-04_anniversary/labels_high.tsv); PDB ?Init@CQ_PrisonWardenGameScript@NScript@@UAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Reset@CVtable_012DCB40@@UAEXXZ`; this source now defines the PDB member (class CVtable_012DCB40 renamed CQ_PrisonWardenGameScript); same bytes.
-struct SCountBlock {
-    long m_references;                      // +0
-    void (__fastcall* m_pfnDestroy)(void*); // +4
-    void* m_pObject;                        // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    void* m_pObject;                        // +0
-    SCountBlock* m_pCount;                  // +4
-    CCountedPointer() : m_pObject(0), m_pCount(0) { }
-    __forceinline ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;
-            }
-        }
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        void* object = other.m_pObject;     // both source words read before the release
-        SCountBlock* count = other.m_pCount;
-        if (m_pCount != count) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    delete m_pCount;
-                }
-            }
-            m_pObject = object;
-            m_pCount = count;
-            if (count)
-                ++count->m_references;
-        }
-        return *this;
-    }
-};
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 

@@ -1,5 +1,6 @@
 // CAIStateGroup_CarryCrateAndFollow::CAIStateGroup_CarryCrateAndFollow() -- base ctor, own vtable, three CIntelligentPointer<CThing> members
 // Leaf: ??0CAIStateGroup_CarryCrateAndFollow
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x00901658, 0x3F bytes. Manifest label "CAIStateGroup_IceTrollSmash_Constructor" (_global) is wrong: the vtable
 // stored at +0 is 0x0128CCD8, RTTI `.?AVCAIStateGroup_CarryCrateAndFollow@@`.
 // Callees: CAIStateGroupBase::CAIStateGroupBase @ 0x008FD255, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10.
@@ -18,16 +19,9 @@ class CAIStateGroupBase { public:
     CAIStateGroupBase();                        // 0x008FD255
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual void v00();
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-};
 
 struct CAIStateGroup_CarryCrateAndFollow : CAIStateGroupBase {
     CIntelligentPointer<CThing> PCrate;                         // +0x14

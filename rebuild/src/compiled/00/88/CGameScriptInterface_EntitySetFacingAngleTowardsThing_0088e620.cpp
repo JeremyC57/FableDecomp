@@ -2,6 +2,7 @@
 // immediate) const -- turn the entity to face the target: the XY bearing between their positions as a fraction of a
 // full turn, wrapped into [0, 1), handed to EntitySetFacingAngle
 // Leaf: ?EntitySetFacingAngleTowardsThing@CGameScriptInterface@@UBEXABVCScriptThing@@0_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088E620, length 208 bytes, `ret 0Ch`.
 // Callees: CScriptThing virtual slot 75 IsValid (+0x12C) and slot 6 GetPos (+0x18, const C3DVector&), the CRT
@@ -15,8 +16,7 @@
 
 #include "engine/C3DVector.h"
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

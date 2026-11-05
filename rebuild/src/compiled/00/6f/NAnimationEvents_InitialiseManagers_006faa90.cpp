@@ -1,5 +1,6 @@
 // NAnimationEvents::InitialiseManagers(const CMeshDataBank& bank) -- create the game and sound animation-event managers over the mesh bank, each loading its event symbols from Data\Defs\game_animation_events.h / sound_animation_events.h
 // Leaf: ?InitialiseManagers@NAnimationEvents@@YIXABVCMeshDataBank@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FAA90, 346 bytes, __fastcall (bank in ecx), plain `ret`.
 // PDB: ?InitialiseManagers@NAnimationEvents@@YIXABVCMeshDataBank@@@Z.
 // Callees: operator new 0x00BFEA1A (0x40 bytes), NResourceDirectoryNames::GetDefDir() 0x0041A080 (hidden result in ecx),
@@ -35,13 +36,7 @@ public:
     unsigned char _body[0x24];
 };
 
-class CCPPointerInfo;
-template<class T> class CCountedPointer {                 // Ego_r.pdb: 8 bytes
-public:
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-    void Reset(T* data);                                  // 0x006FD460
-};
+#include "engine/CCountedPointer.h"
 
 namespace NAnimationEvents {
 struct SExtraEventEntry;

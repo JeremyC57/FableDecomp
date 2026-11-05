@@ -1,5 +1,6 @@
 // C3DMeshObject::GetHelperPointPositionAnimated(const CCharString& name, long index, const C3DAnimationBlendState& state, const C3DAnimationBlendState& other, float blend, C3DAnimationManager& manager) const -- animate the named helper point through the mesh and transform it by the object's position matrix
 // Leaf: GetHelperPointPositionAnimated
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36350, 219 bytes (+ int3 padding), `ret 1Ch` (hidden result + six arguments).
 // Identity: Ego_r.pdb `?GetHelperPointPositionAnimated@C3DMeshObject@@QBE?AVC3DVector@@ABVCCharString@@JABVC3DAnimationBlendState@@1MAAVC3DAnimationManager@@@Z`
@@ -48,11 +49,7 @@ class C3DMeshStats { public:
     const C3DHelperPoint* GetHelperPoint(unsigned long nameHash, unsigned long index) const;     // 0x00A2E8C0
 };
 
-template <class T> class CCountedPointer { public:
-    T*    Data;                                    // +0
-    void* Info;                                    // +4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class C3DMeshInfo;
 

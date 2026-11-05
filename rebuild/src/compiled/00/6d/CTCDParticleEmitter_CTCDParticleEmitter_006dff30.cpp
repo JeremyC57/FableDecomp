@@ -1,5 +1,7 @@
 // CTCDParticleEmitter::CTCDParticleEmitter(CThing* parent) -- particle-emitter driver component: CTCDriverBase(parent), empty names, null emitter / attached-thing pointers, zeroed attachment data, no die-off timer, no creation parameters; only the reset-position/orientation flags set
 // Leaf: ??0CTCDParticleEmitter
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DFF30, length 114 bytes (+ int3 padding). Vtable 0x0125FEEC (CTCDParticleEmitter).
 // Callees: CTCDriverBase::CTCDriverBase(CThing*) @ 0x00771200, CCharString::CCharString() @ 0x0099E4B0 (x2),
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (x2: then the CIntelligentPointer<NParticleEngine::CParticleEmitter>
@@ -22,11 +24,8 @@ class CCharString { public:
     void* PStringData;
     CCharString();                              // 0x0099E4B0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerEmitter : CBaseIntelligentPointer {   // vtable 0x0125A26C
     virtual void v01();
     CIntelligentPointerEmitter() {}
@@ -35,11 +34,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {     // vtable 0x0123
     virtual void v01();
     CIntelligentPointerThing() {}
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-};
+#include "engine/CCountedPointer.h"
 struct CParticleCreationParameters;
 class CTCDParticleEmitter : public CTCDriverBase { public:
     CCharString EmitterName;                    // +0x0c

@@ -1,5 +1,6 @@
 // std::__copy(CCountedPointer<CParticleSimulation>* first, CCountedPointer<CParticleSimulation>* last, CCountedPointer<CParticleSimulation>* result, const random_access_iterator_tag&, int*) -- STLport random-access copy: assign [first, last) onto result through the inline counted-pointer assignment and return the advanced result
 // Leaf: ??$__copy@PAV?$CCountedPointer@VCParticleSimulation@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCParticleSimulation@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B83330, length 115 bytes, `__fastcall` (first ecx, last edx; result, the
 //   tag reference and the null distance pointer on the stack), `ret 0Ch`.
 // Identity: the landed CArray<CCountedPointer<CParticleSimulation> >::DeallocateMemory 0x00B83D30 (FableWin.pdb name) binds
@@ -13,37 +14,8 @@
 //   CCountedPointer::operator=: read the source's info/data first (kept in edi/ebp), and when the info blocks differ release
 //   the destination's (RefCount at +0, the delete function at +4 called with Data (+8) in ecx, then operator delete
 //   @ 0x00BFE9BC), adopt the source's pair and bump its RefCount.
-class CCPPointerInfo {                                  // retail 12 bytes (Ego_r CCPPointerInfo)
-public:
-    long  RefCount;                                     // +0x00
-    void (__fastcall* DeleteFunc)(void*);               // +0x04 (retail passes Data in ecx)
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {             // retail 8 bytes
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;              // the source's fields are read first
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 class CParticleSimulation;
 typedef CCountedPointer<CParticleSimulation> CParticleSimulationPtr;
 

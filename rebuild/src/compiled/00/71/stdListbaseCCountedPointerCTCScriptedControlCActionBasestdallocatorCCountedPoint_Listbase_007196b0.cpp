@@ -1,6 +1,7 @@
 // std::_List_base<CCountedPointer<CTCScriptedControl::CActionBase> >::~_List_base() -- STLport 4.6: clear() the action list,
 //   then free the sentinel node (the out-of-line COMDAT of the pair ~CTCScriptedControl 0x00719C70 expands at +0x14)
 // Leaf: ??1?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@@std@@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 27 (family c695, chunk 695 queue): body = _List_base::clear 0x00719280 (the c695 spelling
 //   ?clear@?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@..@std@@@std@@QAEXXZ) then free(_M_node) =
 //   STLport's ~_List_base; no caller (an unreferenced COMDAT). The spelling is the compiler's for this text (the queue's hand-mangled
@@ -9,11 +10,7 @@
 //   call free 0x00BFEA14; add esp,4; pop esi; ret.
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:   // engine/CCountedPointer.h shape: Data +0, Info +4
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 class CTCScriptedControl { public:
     class CActionBase;                               // nested (Ego_r.pdb CTCScriptedControl::CActionBase)
 };

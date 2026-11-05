@@ -1,5 +1,6 @@
 // CGameScriptInterface::CameraUseCameraPoint(const CCharString&, const CScriptThing&, float, long, long) const -- look the camera point up by script name and forward to the CScriptThing overload
 // Leaf: ?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCCharString@@ABVCScriptThing@@MJJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x008922F0, 132 bytes, `ret 14h`; Ego_r.pdb same symbol.
 // Body: CScriptThing point = GetThingWithScriptName(name) (vtable slot 72, +0x120, 0x008A7D60, hidden result);
 // CameraUseCameraPoint(point, target, time, mode1, mode2) (slot 413, +0x674, 0x00891070, the CScriptThing overload);
@@ -11,30 +12,7 @@
 // this overload (slot 414) is declared before the CScriptThing one (slot 413).
 // Shape: /O2 (16-aligned entry, no frame).
 class CCharString;
-class CCPPointerInfo { public:
-    long  RefCount;
-    void  (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info)
-        {
-            --Info->RefCount;
-            if (Info->RefCount == 0)
-            {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

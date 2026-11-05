@@ -1,5 +1,6 @@
 // CTCSummonableCreature::OnDie() -- when the dying creature was killed by a summoned creature of no higher summon level and of a different def, hand the dead creature's def to the killer's summoner's summon spell, at the dead creature's position pushed along its velocity and facing back against it
 // Leaf: OnDie
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0079C290, 336 bytes (`ret`); CTCSummonableCreature vtable 0x0126C41C slot 13.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2); CVectorMap::LowerBound 0x0040F020 (non-const copy:
@@ -22,9 +23,8 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    CBaseObject* GetPItem() const;                  // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CPhysicsComponent {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();

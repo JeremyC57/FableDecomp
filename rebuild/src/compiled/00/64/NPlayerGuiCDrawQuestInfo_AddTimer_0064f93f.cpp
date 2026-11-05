@@ -2,6 +2,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuestInfo::AddTimer(const CTimer&, const CCharString&, float) -- create a timer element with the symbol's sprite, append it through AddElement and return its new ID
 // Leaf: AddTimer
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets).
 // Identity (naming wave 11): ?AddTimer@CDrawQuestInfo@NPlayerGui@@QAEJABVCTimer@@ABVCCharString@@M@Z (Ego_r.pdb 0x006977CC,
 //   FableWin.pdb 0x020EA61D); callees as both PDBs spell them: GetScriptSpriteBySymbol QBE, AddElement private (AAE) taking
 //   the global CCountedPointer<CDrawQuestInfo::CQuestInfoElement>, the nested element classes and FableWin's
@@ -25,15 +26,7 @@ namespace NPlayerGui {
 
 }
 // The global counted pointer (Ego_r.pdb / FableWin.pdb ?$CCountedPointer@V..@@ instantiations); bodies out of line in other TUs.
-template <class T> class CCountedPointer {         // object + count block (8 bytes)
-public:
-    T*    m_pObject;
-    void* m_pBlock;
-    explicit CCountedPointer(T* object);           // 0x006570BC (Timer)
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);   // 0x00654B7B (Timer -> element)
-    ~CCountedPointer();                            // 0x00654B4F (Timer)
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 class CTimer;
 namespace NPlayerGui {
 

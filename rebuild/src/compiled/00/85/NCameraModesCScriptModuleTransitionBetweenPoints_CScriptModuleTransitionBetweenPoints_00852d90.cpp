@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleTransitionBetweenPoints::CScriptModuleTransitionBetweenPoints(const CThing* thing, const C3DVector& startLookAt, const C3DVector& endLookAt, long frames, float fov) -- constructor: track the thing and set up a transition that stays at the thing's camera focal point
 // Leaf: ??0CScriptModuleTransitionBetweenPoints
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852D90, length 128 bytes (116 + int3 padding).
 // Callees: NCameraModes::CScriptModuleBase::CScriptModuleBase() @ 0x005ED070,
@@ -30,13 +31,8 @@ struct CScriptModuleBase {
     CScriptModuleBase();                             // 0x005ED070
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CBaseIntelligentPointer();                       // 0x00A01B10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);          // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0x01237F1C
     virtual void v00();

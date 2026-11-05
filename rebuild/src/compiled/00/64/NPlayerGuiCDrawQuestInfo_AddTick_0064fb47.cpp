@@ -2,6 +2,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuestInfo::AddTick(EGameAction action, bool ticked, float scale) -- look up the input assigned to the game action (primary, else secondary binding) and its display name, create a tick element for it, append it through AddElement and return its new ID (-1 when unbound or unnamed)
 // Leaf: AddTick
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets). Spellings unified: 00654c4a: ??$?0UCQuestInfoElementTick@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementTick@NPlayerGui@@@1@@Z -> ??$?0UCQuestInfoElementTick@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementTick@NPlayerGui@@@1@@Z; 0064a3ed: ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXU?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z -> ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXV?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064FB47, length 218 bytes (+ padding), `ret 0Ch`.
 // Callees: CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0, CUserProfileManager::GetAssignedInputForAction(
 // EGameAction, bool, CActionInputControl*) @ 0x00408C90, CWideString::CWideString() @ 0x0099AED0 / ~CWideString
@@ -48,14 +49,7 @@ template <class T> struct CTBaseSingleton {
 bool __fastcall GetActionName(const CActionInputControl& control, CWideString& name, bool shortName);   // 0x00446720
 
 namespace NPlayerGui {
-template <class T> struct CCountedPointer {
-    T*    m_pObject;
-    void* m_pBlock;
-    explicit CCountedPointer(T* object);
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);
-    ~CCountedPointer();
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 struct CQuestInfoElement {                         // retail 0x1c bytes
     virtual void v00();
     long  ID;                                      // +0x04

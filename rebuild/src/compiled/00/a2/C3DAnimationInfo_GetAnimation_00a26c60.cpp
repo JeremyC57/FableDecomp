@@ -13,6 +13,7 @@
 // slot) for find() on a map reference local (esi); `it.Node != Header` compared directly; both returns convert CCountedPointer<C3DAnimation2> to the
 // const pointer (copy + add-ref), the built instance through a temporary released after the copy.
 // Leaf: GetAnimation@C3DAnimationInfo
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 class CResourceList;
 class CResource { public:
     virtual void v00();
@@ -33,34 +34,7 @@ class CResourceList { public:
     long MaximumMemory;                    // +0x28
     unsigned long CurrentFrame;            // +0x2c
 };
-struct SCountBlock {
-    long m_references;
-    void (__fastcall* m_pfnDestroy)(void*);
-    void* m_pObject;
-};
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                          // +0
-    SCountBlock* m_pCount;                 // +4
-    template<class U> CCountedPointer(const CCountedPointer<U>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class C3DAnimation2;
 struct CAnimationNode {                    // STLport _Rb_tree_node<pair<const unsigned long, CCountedPointer<C3DAnimation2> > >
     long            _M_color;              // +0x00

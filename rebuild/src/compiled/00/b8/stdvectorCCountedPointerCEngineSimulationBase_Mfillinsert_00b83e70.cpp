@@ -1,5 +1,6 @@
 // std::vector<CCountedPointer<CEngineSimulationBase> >::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@V?$CCountedPointer@VCEngineSimulationBase@@@@V?$allocator@V?$CCountedPointer@VCEngineSimulationBase@@@@@std@@@std@@QAEXPAV?$CCountedPointer@VCEngineSimulationBase@@@@IABV3@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00b83e70, 300 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): bound ?_M_fill_insert@?$vector@V?$CCountedPointer@VCEngineSimulationBase@@@@...@Z in reloc_bindings (Ego_r.pdb CEnginePrimitiveSimulationInfo::Simulations, CArray<CCountedPointer<CEngineSimulationBase> >); callers the landed resize 0x00B840C0 and a tail jump at 0x00B84020; its __uninitialized_copy 0x00B82DF0 is bound only with the descriptive pointee CUnprovenPointee_00b83c30.
 // Callees: __uninitialized_copy 0x00B82DF0, __copy_backward 0x00B83020, uninitialized_fill_n 0x00B82E90, fill 0x00B82E30 (all __fastcall),
@@ -108,49 +109,6 @@ void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, cons
 }
 }
 class CEngineSimulationBase;
-class CCPPointerInfo {                                     // 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer<T>& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 template void std::vector<CCountedPointer<CEngineSimulationBase> >::_M_fill_insert(CCountedPointer<CEngineSimulationBase>*, unsigned int, const CCountedPointer<CEngineSimulationBase>&);

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonLanded::CModeDragonLanded(CThing* thing) -- CModeStandBase(thing), own vtable, the "LANDED" filter, a null target pointer, UseHeadTurning = true
 // Leaf: ??0CModeDragonLanded
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007418D0 (`ret 4`). Vtable 0x012683A8 = NCreatureMode::CModeDragonLanded (rtti-vtables.tsv); manifest label CModeDragonHover is propagated; vtable 0x012683A8 = NCreatureMode::CModeDragonLanded.
 // Callees: CModeStandBase::CModeStandBase(CThing*) @ 0x00861E00 (manifest label "CTCCreatureNavigation" is propagated;
 // 0x008621A0 CModeStandBase::OnActivate sits beside it), CCharString @ 0x0099EBF0 / 0x0099E4B0 / operator= 0x0099EFB0 /
@@ -43,23 +44,9 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
 };
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
 
 struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
     virtual void v00();

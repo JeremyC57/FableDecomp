@@ -1,5 +1,6 @@
 // CQuestThingEntry_00768bc0::CQuestThingEntry_00768bc0() -- default-construct a quest/thing record: two CCharStrings (name, tag) and an empty intelligent thing pointer at +0x10
 // Leaf: ??0CQuestThingEntry_00768bc0
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00768BC0, length 38 bytes (+ int3 padding), returns this; no call or address
 // references (an unreferenced COMDAT). Its destructor is the next function, 0x00768BF0 (~CBaseIntelligentPointer +0x10,
 // ~CCharString +4, ~CCharString +0 tail); the one before, 0x00768B80, is QuestData's constructor (Ego_r.pdb QuestData =
@@ -15,15 +16,8 @@ public:
     CCharString();                                           // 0x0099E4B0
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v000();
-    void* PItem;                                             // +0x04
-    CBaseIntelligentPointer();                               // 0x00A01B10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
-    CIntelligentPointer() {}
-    virtual void v000();
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThing;
 

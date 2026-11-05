@@ -1,5 +1,6 @@
 // std::_List_base<CIntelligentPointer<CThingAICreature>, std::allocator<CIntelligentPointer<CThingAICreature> > >::clear() -- destroy every node's value (its virtual destructor), free the node, re-link the sentinel to itself
 // Leaf: ?clear@?$_List_base@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00510D40, 58 bytes, thiscall.
 // Identity (proven, chunk c669): STLport 4.6 _List_base::clear; every caller clears a list<CIntelligentPointer<CThingAICreature> >: ~CTCTrophy 0x006DDB80 and CTCTrophy::OnCreate 0x006DDA20 (Ego_r CTCTrophy witness lists), CTCFollowed::RemoveAllFollowers 0x006D4D40 (Ego_r AIFollowers), CTCBuyableHouse::Evict 0x006C0FD0.
 // Callees: the element's virtual destructor (CBaseIntelligentPointer slot 0, the scalar deleting destructor with flag 0 -- an
@@ -51,15 +52,8 @@ void _List_base<_Tp, _Alloc>::clear()
 } // namespace std
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                          // vtable 0x0129C95C, 8 bytes
-public:
-    CBaseIntelligentPointer();                                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                                  // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingAICreature;
 
 template void std::_List_base<CIntelligentPointer<CThingAICreature>, std::allocator<CIntelligentPointer<CThingAICreature> > >::clear();

@@ -1,5 +1,6 @@
 // CNavigatorManager::GetQuadTreeMemoryUsage(unsigned long& a, unsigned long& b, unsigned long& c, unsigned long& d) -- total memory of every loaded navigation quad tree, each tree also adding to the four per-kind counters
 // Leaf: ?GetQuadTreeMemoryUsage@CNavigatorManager@@QBEKAAK000@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A15100, 63 bytes, `ret 10h`. Name: Ego_r/FableWin PDB
 //   ?GetQuadTreeMemoryUsage@CNavigatorManager@@QBEKAAK000@Z (the catalog row agrees).
 // Callee: CNavQuadTree::GetMemoryUsage(ulong&, ulong&, ulong&, ulong&) const @ 0x00A77E80, on each map's PQuadTree.
@@ -63,13 +64,7 @@ class CNavQuadTree {
 public:
     unsigned long GetMemoryUsage(unsigned long& a, unsigned long& b, unsigned long& c, unsigned long& d) const;   // 0x00A77E80
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CNavQuadTreeMap {
 public:
     CCountedPointer<CNavQuadTree> PQuadTree;   // +0x00

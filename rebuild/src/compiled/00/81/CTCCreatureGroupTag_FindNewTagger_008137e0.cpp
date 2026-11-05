@@ -1,5 +1,6 @@
 // CTCCreatureGroupTag::FindNewTagger() -- pick the first active group member (in UID order) as the new tagger; no active member clears the tagger
 // Leaf: ?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x008137E0, 118 bytes (+ int3 padding), __fastcall, plain `ret`, bool in al.
 // Name: FableWin.pdb `?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ` (private). Callers: CTCCreatureGroupTag::RemoveMember
 //   0x00813884 and DeactivateMember 0x008138C4 (landed, which call it `ChooseNewTagger`).
@@ -14,13 +15,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CBaseObject;
 class CThingAICreature;
-class CBaseIntelligentPointer {
-public:
-    virtual void v00();
-    CBaseObject* PData;                                      // +0x04
-    virtual ~CBaseIntelligentPointer();                              // 0x00A01C10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CGroupMemberData {                                     // 0x14 bytes (Ego_r.pdb)
 public:
     CIntelligentPointer<const CThingAICreature> PMember;     // +0x00

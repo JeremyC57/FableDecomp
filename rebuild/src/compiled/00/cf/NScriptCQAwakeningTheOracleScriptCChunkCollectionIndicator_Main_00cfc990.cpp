@@ -1,5 +1,6 @@
 // NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::Main() -- Oracle-chunk collection HUD script: register an alive filter over Me, update once, then (unless done) show the HUD, add the "HUD_EXPR_TABLET_Y" progress bar and keep it showing the parent script's collected count until done
 // Leaf: ?Main@CChunkCollectionIndicator@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CFC990, 208 bytes incl. padding (plain `ret`).
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90 / ~CScriptThing @ 0x004AA840 (the filter's
 //          member; filter vtable 0x012C32F0), the filter registration @ 0x00F35B10 and IsDone @ 0x00F35B30 (on `this`;
@@ -11,8 +12,7 @@
 // Naming wave 35: identity reg 00cfb2bf "ChunkCollectionIndicator" in 00cfb080; Alloc 00cfc8a0; vtable 012c7c78 slot 1; PDB ?Main@CChunkCollectionIndicator@CQ_AwakeningTheOracleScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CChunkCollectionIndicator::Main (wave3/labels_alloc.tsv); PDB ?Main@CChunkCollectionIndicator@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CChunkCollectionIndicator@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_AwakeningTheOracleScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

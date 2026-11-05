@@ -1,5 +1,6 @@
 // NCreatureMode::CModeStrafe::~CModeStrafe() -- release the four projectile-anim counted pointers, destroy the filter and the strafe anim name, then the inlined CModeBase destructor
 // Leaf: ??1CModeStrafe
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007420E0, 210 bytes (`ret`).
 // Callees: operator delete 0x00BFE9BC (the count block), ~CCharString 0x0099EAE0 (filter group, StrafeAnimName,
 // the base's WeaponBasedFilter group).
@@ -18,30 +19,8 @@ class CCharString { public:
 };
 
 struct CCountedItem { };
-struct SCountBlock {
-    long m_references;                               // +0x00
-    void (CCountedItem::*m_pfnDestroy)();            // +0x04 (called with the item as `this`)
-    CCountedItem* m_pItem;                           // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                                    // +0x00
-    SCountBlock* m_pBlock;                           // +0x04
-    CCountedPointer() : m_pObject(0), m_pBlock(0) { }
-    ~CCountedPointer()
-    {
-        if (m_pBlock) {
-            --m_pBlock->m_references;
-            if (m_pBlock->m_references == 0) {
-                (m_pBlock->m_pItem->*m_pBlock->m_pfnDestroy)();
-                operator delete(m_pBlock);
-            }
-        }
-        m_pObject = 0;
-        m_pBlock = 0;
-    }
-};
 
 class CAnimFilterBase { public:                             // vtable 0x0122FFCC
     virtual void v00();

@@ -1,5 +1,6 @@
 // std::list<CCountedPointer<CStrikeEvent> >::list(const list& x) -- STLport list copy constructor for the combat action's strike-event list: allocate and self-link the sentinel, then range-insert x's elements at begin()
 // Leaf: ??0?$list@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0062F610, 55 bytes (+ int3 padding), `ret 4`.
 // Identity: the element type is CCountedPointer<CCombatActionBase::CStrikeEvent>: the only caller is the landed
 // CCombatActionBase copy constructor 0x0062F3B0 (call at 0x0062F431, copying PDB CCombatActionBase::StrikeEvents,
@@ -15,11 +16,7 @@
 // landed list copy ctor 0x00463871 (which calls its _List_base out of line). Node: next +0, prev +4, value +8 (16 bytes).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:      // 8 bytes: object + shared reference-count block
-    T*              Data;                        // +0x00
-    CCPPointerInfo* Info;                        // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 class CCombatActionBase {
 public:

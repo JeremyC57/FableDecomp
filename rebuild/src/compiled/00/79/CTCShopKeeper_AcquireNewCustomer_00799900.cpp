@@ -1,5 +1,6 @@
 // CTCShopKeeper::AcquireNewCustomer() -- look for the nearest potential customer in the 30m square around the keeper (nearest to the shop); latch it as the current customer and remember it, else when nobody (not even an existing shopper) is around, empty the customer list
 // Leaf: ?AcquireNewCustomer@CTCShopKeeper@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799900, 351 bytes (plain `ret`).
 // Callees: CTCShopKeeper::GetShopTC 0x00798F50; CThing::GetPos 0x004C73D0 (x2); __ftol2 0x00BFEA70 (x2);
@@ -24,14 +25,8 @@ class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;
     C2DBoxI(long minX, long minY, long maxX, long maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) { }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                          // +4
-    CBaseIntelligentPointer();                     // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    CBaseObject* GetPItem() const;                 // 0x00A01B50
-    void SetPItem(CBaseObject* item);              // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();
     CIntelligentPointerCreature(CThingCreatureBase* const& item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }

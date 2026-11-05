@@ -1,6 +1,7 @@
 // CGameCameraManager::PushLookAround() -- with a live observed thing, switch to manual control and push the free
 // look-around (orbit) camera mode, playing ROTATE_START
 // Leaf: PushLookAround
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00699A50, length 176 bytes, `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CCharString::CCharString(const char*, long) @ 0x0099EBF0,
 // the `__fastcall` PlayCameraSoundThroughObservedThing(CThing*, const CCameraManagerDef*, const CCharString&)
@@ -71,12 +72,7 @@ struct COrbitGame : CBase {                         // vtable 0x0125C6DC
 };
 }
 
-template<class T> class CCountedPointer { public:
-    T* Data;
-    void* Info;
-    CCountedPointer(T* data);                       // 0x0056C880
-    CCountedPointer(const CCountedPointer& other);
-};
+#include "engine/CCountedPointer.h"
 
 class CGameCameraManager {
 public:

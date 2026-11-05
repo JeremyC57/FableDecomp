@@ -1,5 +1,6 @@
 // std::vector<CLevelFiles>::push_back() -- (CLevelLoader::CObject::CLevelFiles) append a default-constructed 28-byte level-file record
 // Leaf: PushBackEmpty
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051B620, length 50 bytes (+ int3 padding).
 // Callees: vector<CLevelLoader::CObject::CLevelFiles>::push_back(const CLevelFiles&) @ 0x0051AE60 (landed; it copies
 // the record into `_M_finish` when there is room: LevelID, then the three counted pointers with their add-refs),
@@ -18,12 +19,7 @@
 // register; it is passed by reference and destroyed through the out-of-line destructor.
 class CAFile;
 
-template<class T>
-class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pBlock;
-    CCountedPointer() : m_pObject(0), m_pBlock(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 class CLevelLoader { public: class CObject { public:
 class CLevelFiles { public:

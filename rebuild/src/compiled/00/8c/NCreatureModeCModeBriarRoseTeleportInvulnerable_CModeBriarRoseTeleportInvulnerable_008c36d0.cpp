@@ -1,5 +1,6 @@
 // NCreatureMode::CModeBriarRoseTeleportInvulnerable::~CModeBriarRoseTeleportInvulnerable() -- the compiler-generated destructor: PEffect, PTarget, then the Filter (its Group string and the CAnimFilterBase vtable reset), then ~CModeStandBase
 // Leaf: ??1CModeBriarRoseTeleportInvulnerable@NCreatureMode@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C36D0, 45 bytes, thiscall, tail `jmp ~CModeStandBase`.
 // Identity (proven): the sole caller is the slot-0 `??_G` 0x008C36B0 of vtable 0x01280228 (RTTI
 //   .?AVCModeBriarRoseTeleportInvulnerable@NCreatureMode@@ : CModeStandBase); the destroyed members are Ego_r.pdb's PEffect
@@ -26,13 +27,8 @@ public:
 };
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                   // 8 bytes, 1-aligned in retail (as in the landed sibling 0x008C37C0)
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();           // 0x00A01C10
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 class CAnimFilterBase {                           // vtable 0x0122FFCC

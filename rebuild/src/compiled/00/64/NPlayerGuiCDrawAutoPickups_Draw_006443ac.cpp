@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawAutoPickups::Draw(const CEnginePrimitivePrepareInfo&) -- mark the drawer as drawing, clear the bar's graphic and draw the player GUI's PAutoPickups bar at its def position with the GUI alpha
 // Leaf: ?Draw@CDrawAutoPickups@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006443ac, 95 bytes, thiscall, `ret 4`, /O1 TU.
 // Identity (proven): retail address order CDrawCrime::Draw 0x006442AE -> CDrawCrime::ClearPrimitivesIfNecessary 0x0064431B ->
 //   CDrawStatUpdates::Draw 0x00644334 -> CDrawStatUpdates::ClearPrimitivesIfNecessary 0x00644393 -> CDrawAutoPickups::Draw
@@ -27,11 +28,7 @@ public:
 };
 class CAutoPickupBar : public CStatBar { };
 
-template <class T> struct CCountedPointer {
-    T*    m_pObject;
-    void* m_pInfo;
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 }
 

@@ -1,5 +1,6 @@
 // std::__partial_sort(pair* first, pair* middle, pair* last, pair*, CKeyPairCompareLess comp) -- (pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >) heap-select the smallest keys into [first, middle), then sort that heap
 // Leaf: ??$__partial_sort@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@U12@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@000V?$CKeyPairCompareLess@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEA580, 104 bytes, `__fastcall` (first in ecx, middle in edx; last, the null value-type pointer and the empty comparator on the stack, `ret 0Ch`).
 // Identity (proven): std::__partial_sort<pair<long, CCountedPointer<NParticleEngine::CParticleEmitter> >*, pair<...>, CKeyPairCompareLess<...> > (STLport 4.6 _algo.c; the PDB builds are Dinkumware); evidence: its callers (sites 0x00AEA6DC, 0x00AEA86E) are its type's introsort loop 0x00AEA780 (J055: the depth-limit fallback `partial_sort(first, last, last)`) and an unreferenced out-of-line partial_sort(first, middle, last, comp) forwarder (`push 0` for the value type, then the call); the loop is called by sort 0x00AEA880, the sort of CParticleEmitterDatabase::Emitters (sorted by 0x00AE8C30): CVectorMap<long, CCountedPointer<NParticleEngine::CParticleEmitter> > (J050 proves the element type from that sort's owner)
 // Label: the manifest's "Std_PartialSort_Pair12ByteMin" is invented (family J053: five byte-identical bodies, one per element type).
@@ -9,39 +10,7 @@
 // Layout: pair<K, CCountedPointer<V> > is 12 bytes {first +0, second.Data +4, second.Info +8}; CCPPointerInfo {RefCount +0, DeleteFunc +4, Data +8}.
 // Model: J050 (agent950's landed CCountedPointer, key-only CKeyPairCompareLess).
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0
-    void (__fastcall* DeleteFunc)(void* data);              // +4, Data in ecx
-    void* Data;                                             // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0
-    CCPPointerInfo* Info;                                   // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 namespace NParticleEngine { class CParticleEmitter; }
 namespace std {
 template <class _T1, class _T2> struct pair {

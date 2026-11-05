@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(NFire::CFirePoint* pos, const NFire::CFirePoint& x, const __false_type&, size_type fill_len, bool atend) -- STLport growth of CTCFlammable's fire-point list: move into a size + max(size, n) block with x inserted fill_len times at pos
 // Leaf: ?_M_insert_overflow@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00781A80, length 272 bytes (thiscall, `ret 14h`).
 // Identity: the catalog label "Vector_InsertRange_Copy" is descriptive. The element is Ego_r.pdb NFire::CFirePoint (44
 //   bytes, `imul 2E8BA2E9h ; sar edx,3`): the copy constructor is the landed 0x007813D0 and the destroy loop the landed
@@ -24,13 +25,9 @@ public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    void* PData;                                            // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 
 class CThing;
 

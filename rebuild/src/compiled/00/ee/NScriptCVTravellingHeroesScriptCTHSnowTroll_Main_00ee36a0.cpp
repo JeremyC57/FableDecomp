@@ -1,5 +1,6 @@
 // NScript::CV_TravellingHeroesScript::CTH_SnowTroll::Main() -- snow-troll rock pile: shut the nearest region entrance/exit; unless the troll intro already ran, take the rock pile under scripted control, loop its idle animation and wait until the hero comes within 15 units, hits it, or hits it with a special ability other than ability 14; then play CS_SNOWTROLL_INTRO, unhide Me on the minimap, flag the intro done and release the pile; finally show the ice-troll health bar and idle
 // Leaf: ?Main@CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Identity (naming wave 11): ?Main@CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F42B0 slot 1 is stored by the factory 0x00EE0240 (through its ctor 0x00EE02C0) registered as "TH_SnowTroll"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE36A0, 1151 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "REGION_ENTRANCE_POINT" 0x012CA3DC, "REGION_EXIT_POINT" 0x012CA510, "SCRIPT_ROCK_PILE" 0x012F461C,
@@ -44,11 +45,8 @@ namespace NScript {
 namespace NScript {
 }
 using NScript::CIsThingAlive;
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectScriptedThingBase : public CBaseIntelligentPointer { public:   // vtable 0x0127094C, 0x10 bytes
     virtual void h001() const; virtual void h002() const; virtual void h003() const; virtual void h004() const; virtual void h005() const; virtual void h006() const; virtual void h007() const; virtual void h008() const;
     virtual void h009() const; virtual void h010() const; virtual void h011() const; virtual void h012() const; virtual void h013() const; virtual void h014() const; virtual void h015() const; virtual void h016() const;

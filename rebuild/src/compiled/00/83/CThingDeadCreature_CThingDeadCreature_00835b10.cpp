@@ -1,5 +1,7 @@
 // CThingDeadCreature::~CThingDeadCreature() -- dead-creature thing dtor: empty user body, then the member dtors in reverse order (delete the body reorienter, release the killer intelligent pointer, release the anim-filter counted pointer) and the tail jump to ~CThingGameObject
 // Leaf: ??1CThingDeadCreature@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00835B10, 120 bytes, tail jump to the base destructor.
 // Identity: the one vptr store 0x01272B04 carries RTTI `.?AVCThingDeadCreature@@`; Ego_r.pdb has
 //   `??1CThingDeadCreature@@UAE@XZ` (virtual). The catalog label is right.
@@ -33,34 +35,10 @@ private:
 } // namespace boost
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer { public:                     // 8 bytes
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-class CCPPointerInfo { public:                              // CCountedPointer count block
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void*         Data;                                     // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    __forceinline void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    __forceinline ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 class CThingBodyReorienter { public:
     unsigned char _pad_0x00[0x04];

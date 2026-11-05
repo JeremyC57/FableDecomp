@@ -1,5 +1,6 @@
 // std::find_if(first, last, CIsHeldThing pred) -- STLport linear search of a list of intelligent thing pointers for the node whose resolved object is the predicate's thing
 // Leaf: find_if
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x0076D810, 64 bytes, `ret 0Ch`: __fastcall with the hidden iterator result in ecx, first / last /
 // a 4-byte predicate on the stack; edx is neither read here nor set by the only call site 0x0076CD0D in
 // CTCEnemy::IsEnemyOf(CThing*) (0x0076CCE0), which pushes the thing pointer as the third stack word.
@@ -13,13 +14,8 @@
 // List node: _M_next +0, _M_prev +4, data (the intelligent pointer) +8.
 class CBaseObject;
 class CThing;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                       // +0x04
-    CBaseObject* GetPItem() const;              // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 typedef CIntelligentPointer<const CThing> CThingPointer;
 
 // "does this intelligent pointer currently resolve to my thing?"

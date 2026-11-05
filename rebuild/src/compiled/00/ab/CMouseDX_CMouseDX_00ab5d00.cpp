@@ -1,5 +1,6 @@
 // CMouseDX::CMouseDX(CInputManagerDX&, bool) -- DirectInput mouse: CMouse base, no device yet, unit mouse step, input enabled and cursor drawn, event buffers cleared, Windows cursor shown unless exclusive, engine cursor enabled, then SetExclusiveMode
 // Leaf: ??0CMouseDX
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AB5D00, 188 bytes (`ret 8`). Vtable 0x0129EA14 (CMouseDX).
 // Callees: CMouse::CMouse(CInputManagerDX*, bool) 0x00A66F20; CMouse::ClearStoredEvents 0x00A66B10 (zeroes NoStoredEvents;
@@ -33,11 +34,7 @@ struct DIDEVICEOBJECTDATA {                // dinput.h, DIRECTINPUT_VERSION 0x08
 
 struct IDirectInputDevice8W;
 
-template <class T> class CCountedPointer { public:   // 8 bytes: object + shared count block
-    T*    Object;
-    void* Count;
-    CCountedPointer() : Object(0), Count(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 struct CEngineCursorPrimitive {            // COM-style engine interface
     virtual void __stdcall v00();

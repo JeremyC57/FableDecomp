@@ -1,5 +1,6 @@
 // CTraderToRescue::OnPredicateFail() -- a trader to rescue died: when the script thing reports it was killed (by anything), the active quest is failed with the "TEXT_QST_B11_QUEST_FAILED_TRADERS_DIED" message
 // Leaf: OnPredicateFail
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DFB100, length 131 bytes (padded to 144), `ret`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (the empty literal @ 0x0122D70E), CScriptThing
 // slot 18 MsgIsKilledBy(const CCharString&) (+0x48, 0x004AAAF0), ~CCharString @ 0x0099EAE0,
@@ -26,13 +27,9 @@ extern const unsigned short g_TextQuestFailedTradersDied[];   // 0x012DEC88 L"TE
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptThing { public:                              // vtable 0x01238C8C
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48, 0x004AAAF0)
-    long m_data[2];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CQ_TraderConflictGoodScript;
 struct CQ_SunnyvaleMasterData;
 class CTraderToRescue {

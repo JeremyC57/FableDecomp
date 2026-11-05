@@ -1,4 +1,5 @@
 // CMainGameComponent::InitialiseText() -- report progress, allocate and open the text bank.
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail00416832 length170. Actual string and game-text headers included below.
 // Native data-bank sizeof214 agrees hand header; virtual prefix restored (OpenReadOnly slot1).
 // Actual generated CMainGameComponent header absent; native PTextBank+14 matches PDB.
@@ -15,8 +16,7 @@ class CCharString { public: CCharStringData* Data; CCharString(const char*,long)
 #define CDataBank CDataBankDonor
 #include "fable_game_text_bank.h"
 #undef CDataBank
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public: T* Data;CCPPointerInfo* Info; void Reset(T*); }; //00403e40
+#include "engine/CCountedPointer.h"
 namespace NGameText {
 class CDataBank {
 public:

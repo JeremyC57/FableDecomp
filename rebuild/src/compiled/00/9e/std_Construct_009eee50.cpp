@@ -2,18 +2,14 @@
 // Retail: Fable.exe @ 0x009EEE50, 37 bytes; __fastcall-shaped STLport helper (ecx = element slot, edx = source element).
 // Callees: CCharString copy ctor @ 0x0099EC30.
 // Leaf: _Construct
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N009eee50 {
 struct CCharString {
     void* m_pData;                               // ref-counted string body
     CCharString(const CCharString& other);       // 0x0099EC30
 };
-struct CCPPointerInfo { long RefCount; };
-template <class T> struct CCountedPointer {      // shared pointer: object + shared count block
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 struct CMeshDataBank;
 struct CMeshDataBankInfo {                       // CMeshBankManager::CMeshDataBankInfo (PDB, sizeof 0xC)
     CCharString                     BankHandle;      // +0x00

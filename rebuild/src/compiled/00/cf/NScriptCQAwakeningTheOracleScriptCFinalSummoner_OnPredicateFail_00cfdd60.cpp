@@ -1,5 +1,6 @@
 // NScript::CQ_AwakeningTheOracleScript::CFinalSummoner::OnPredicateFail() -- when the entity was killed (by anyone), decrement the parent quest's FinalSummonersAlive
 // Leaf: ?OnPredicateFail@CFinalSummoner@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00cfdd60, 60 bytes, thiscall, plain `ret` (virtual).
 // Identity (proven): slot 5 (OnPredicateFail, as the landed CV_SickChildScript::CWomanToAttract::OnPredicateFail 0x00ECD390) of the entity vtable 0x012C7D84 that NScript::CQ_AwakeningTheOracleScript::CFinalSummoner::Alloc 0x00CFDCA0 (landed) stores; it decrements ParentClass+0x60: Ego_r.pdb CQ_AwakeningTheOracleScript::FinalSummonersAlive (PDB +0x74, retail +0x60 with the entity-script base 0x14 smaller).
 // Callees: CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48, 0x004AAAF0) on the entity's own thing (+8);
@@ -33,10 +34,9 @@ struct CScriptThingMethods {
     virtual void v017();
     virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
 };
-class CScriptThing : public CScriptThingMethods { public:        // 12 bytes, vtable 0x01238C8C
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CGameScriptInterface;
 namespace NScript {
 class CQ_AwakeningTheOracleScript { public:

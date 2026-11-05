@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER::Main() -- unless the teleporter is already active: wait a script frame at a time until the LookoutPoint region is loaded and the hero carries the OBJECT_GUILD_SEAL_1, then (unless the script is ending) activate the teleporter
 // Leaf: Main
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
 //   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
 //   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER::IsDone (non-const; the label DB's IsDone).
@@ -18,8 +19,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

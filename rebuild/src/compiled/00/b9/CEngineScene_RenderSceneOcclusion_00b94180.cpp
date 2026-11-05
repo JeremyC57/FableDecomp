@@ -1,5 +1,6 @@
 // CEngineScene::RenderSceneOcclusion(EEngineRenderLayer layer, const CEngineCamera& camera, EEngineOcclusionLayer occlusion_layer) -- render one layer into the occlusion pass: set the current occlusion mask from the occlusion layer, let every scene map's top grid level render its cells clipped to the camera (when the layer has grid-held primitives), then render the moving and non-persistent primitive lists, all into the layer's render stats
 // Leaf: ?RenderSceneOcclusion@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCEngineCamera@@W4EEngineOcclusionLayer@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B94180, 283 bytes, thiscall `ret 0Ch`. No code or data reference reaches it in the
 //   retail image (dead in TLC; it survives in the CEngineScene TU between its siblings).
 // Identity: Ego_r.pdb names CEngineScene::RenderSceneOcclusion(EEngineRenderLayer, const CEngineCamera&, EEngineOcclusionLayer)
@@ -171,12 +172,7 @@ public:
 };
 }
 
-template <class T> class CCountedPointer {                          // Ego_r.pdb: Data +0, Info +4
-public:
-    T* Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class _Tp, class _Alloc> class _Vector_base {
 public:

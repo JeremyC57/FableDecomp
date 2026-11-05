@@ -1,5 +1,6 @@
 // CChunkedFileSuperChunk::RegisterSubChunkType(const CCountedPointer<CChunkedFileChunk>& chunk) -- append a prototype chunk (a type the super chunk can instantiate while reading) to RegisteredSubChunkTypes
 // Leaf: ?RegisterSubChunkType@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA87E0, 80 bytes, thiscall `ret 4`.
 // Identity: Ego_r.pdb `?RegisterSubChunkType@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z`
@@ -14,19 +15,8 @@
 // Shape: STLport `RegisteredSubChunkTypes.push_back(chunk)` inline: `this` advanced to the member, the placement copy
 //   under its null test and `add [ecx+4],8`, or the overflow call with the empty tag homed in the dead `chunk` slot.
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void*         Data;                                 // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    T* operator->() const { return Data; }
-};
 
 #include "engine/CArray.h"
 

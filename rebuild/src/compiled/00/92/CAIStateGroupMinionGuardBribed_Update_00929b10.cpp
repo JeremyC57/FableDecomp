@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionGuardBribed::Update() -- hold the main player's character; while the state stays valid and the hero lives, look away from the hero (at the point mirrored through the creature) and idle, whistling (WHISTLE_GUARD_BRIBED) at random intervals; afterwards stop the whistle, clear the village's bribe frame and Terminate()
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH (retry A 11a) -- the mirrored look point is a named C3DVector local (materialised, Z-first), the player character goes through an inline GetPCharacter() accessor (lea ecx,[eax+34h]), the first delay is an unsigned long added last (frame + min + delay) and the repeat target is `next = frame + delay; next += min;`
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00929B10, length 785 bytes (+ int3 padding), plain `ret` (virtual), `and esp,-8` frame.
@@ -85,14 +86,8 @@ class CTCVillageMember { public:                       // interface 0x23
     CTCVillage* GetPVillage() const;                    // 0x007EE540
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);          // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerPlayerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
     __forceinline CIntelligentPointerPlayerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }

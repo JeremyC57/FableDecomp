@@ -1,5 +1,6 @@
 // CAIStateGroup_TavernServer::~CAIStateGroup_TavernServer() -- the compiler-generated (implicit) destructor, kept out of line: ~CIntelligentPointer +0x34, ~CIntelligentPointer +0x2C, ~CIntelligentPointer +0x24, ~CIntelligentPointer +0x1C, ~CIntelligentPointer +0x14, then the base destructor out of line
 // Leaf: ??1CAIStateGroup_TavernServer@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00901750, 51 bytes (+ int3 padding), thiscall, no return value; reached from the scalar deleting destructors listed below.
 // Identity (proven): CAIStateGroup_TavernServer::~CAIStateGroup_TavernServer(); evidence: its callers are the scalar deleting destructors of CAIStateGroup_TavernServer 0x00901734 (slot 0 of vtable 0x0128CD14, RTTI .?AVCAIStateGroup_TavernServer@@ : ?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@ : CAIStateGroupBase : CBaseClass); the destroyed offsets +0x14/+0x1C/+0x24/+0x2C/+0x34 are Ego_r.pdb CAIStateGroup_TavernServer's class-typed members, and the tail jump is ~CAIStateGroupBase 0x008FD288.
@@ -12,13 +13,8 @@
 //   device: it makes VC7.1 emit the implicit destructor, which it keeps out of line.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;                                         // CBaseObjectPointer*
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CCharString {                                      // 4 bytes: the shared string data pointer
 public:

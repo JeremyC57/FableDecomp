@@ -1,5 +1,6 @@
 // CCombatActionBase::ProcessPossibleProneThingsStrikeEvent(float, const std::pair<C3DVector,C3DVector>&, const std::pair<C3DVector,C3DVector>&, CThingGameObject&) -- a prone thing not yet struck this event is tested against the swept weapon triangle; on a hit it joins the strike event's struck list, may trigger the action-on-strike, starts the hit pause and runs the on-hit frames
 // Leaf: ?ProcessPossibleProneThingsStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (CRT import thunk)
@@ -99,11 +100,8 @@ class CTCHitLocations { public:                        // interface type 0x7F
         C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008169B0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                            // +4
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 extern long g_StrikeHitPauseFrames;             // 0x013B86D0
 namespace {
 void __fastcall ProcessFramesRunningForOnHitWithParams(float& runningTime, float lastRunningTime,

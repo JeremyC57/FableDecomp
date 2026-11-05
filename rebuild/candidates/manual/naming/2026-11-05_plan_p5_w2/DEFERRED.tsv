@@ -1,0 +1,219 @@
+address	stage	reason
+004aaa10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'CCharString CScriptThing::GetHomeMapName(void)' : overloaded member function not found in 'CScriptThing'
+004aaa60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'f4' : is not a member of 'CScriptThing'
+004aacc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_target' : is not a member of 'CScriptThing'
+004aace0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'sub' : is not a member of 'CScriptThing'
+004aad00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'inner' : is not a member of 'CScriptThing'
+004aada0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_inner' : is not a member of 'CScriptThing'
+004aaf80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'inner' : is not a member of 'CScriptThing'
+004ab000	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'char CScriptThing::IsOpenDoor(void)' : overloaded member function not found in 'CScriptThing'
+004ab040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'inner' : is not a member of 'CScriptThing'
+004ab0c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'void CScriptThing::SetToKillOnLevelUnload(int)' : overloaded member function not found in 'CScriptThing'
+004abe60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'CScriptThing *CScriptThing::MsgWhoKilledMe(CScriptThing *)' : overloaded member function not found in 'CScriptThing'
+004abe90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_references' : is not a member of 'CCPPointerInfo'
+004abec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_references' : is not a member of 'CCPPointerInfo'
+004abf00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_references' : is not a member of 'CCPPointerInfo'
+004abf40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_references' : is not a member of 'CCPPointerInfo'
+004abf80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_references' : is not a member of 'CCPPointerInfo'
+004bb600	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'CBaseClass' : 'class' type redefinition
+00704730	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_references' : is not a member of 'CCPPointerInfo'
+00704a80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00713240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsResolved' : is not a member of 'CScriptThing'
+00713ee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+00714730	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+00714900	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+00714d30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+00715110	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00715710	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+00717710	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+00719120	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'Memberc'
+007e7e40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'Member24'
+0088e6f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'vftable' : is not a member of 'CScriptThing'
+0088eb30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+00890470	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+008904e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+00890750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pVTable' : is not a member of 'CScriptThing'
+00890ba0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+00890c10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+00891610	bytes_differ	BYTES_DIFFER length 83 != 97
+00891d50	bytes_differ	BYTES_DIFFER length 61 != 81
+00891db0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'GetScriptThing'
+00891e30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'GetScriptThing'
+00892b50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+00892cf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'GetScriptThing'
+00892d80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'GetScriptThing'
+00894dd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+00895010	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+008954a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008955c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+00896120	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008966c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+0089a2d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pVTable' : is not a member of 'CScriptThing'
+0089a390	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+0089a510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsSameThing' : is not a member of 'CScriptThing'
+0089a6e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+0089a880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsSameThing' : is not a member of 'CScriptThing'
+0089b780	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CScriptThing'
+008a1a10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a37b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a5ff0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a8f20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008ab5d0	bytes_differ	BYTES_DIFFER length 208 != 265
+008ac180	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_references' : is not a member of 'CCPPointerInfo'
+008adf90	bytes_differ	BYTES_DIFFER length 59 != 72
+008d0c50	bytes_differ	BYTES_DIFFER length 416 != 431
+008d0e00	bytes_differ	BYTES_DIFFER length 416 != 431
+008d46a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_thing' : is not a member of 'CScriptThing'
+00904540	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00905130	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'MakeScriptThing' : is not a member of 'CScriptThing'
+00af69d0	bytes_differ	BYTES_DIFFER length 33 != 86
+00cbd310	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00cbe2e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'vtbl' : is not a member of 'CScriptThing'
+00cdeb40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2226: syntax error : unexpected type 'CGameScriptInterfaceBase'
+00cdf430	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::CScriptThing(const CScriptThing &)' : cannot convert parameter 1 from 'void *' to 'const CScriptThing &'
+00ce0ec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'Member1c'
+00ce1110	bytes_differ	BYTES_DIFFER length 137 != 153
+00ce15e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SetClickText' : is not a member of 'CScriptThing'
+00cfd6c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00cffb60	bytes_differ	BYTES_DIFFER length 1140 != 1252
+00d032f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'ThingIDVector' to 'std::vector<T,A> &'
+00d15510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+00d15a40	bytes_differ	BYTES_DIFFER length 1379 != 1395
+00d16920	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2027: use of undefined type 'CScriptThing'
+00d16d00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2027: use of undefined type 'CScriptThing'
+00d1fa00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InlineCopy' : is not a member of 'CScriptThing'
+00d22880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'PosOrZero' : is not a member of 'CScriptThing'
+00d246c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+00d25d20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThingId' : is not a member of 'CScriptThing'
+00d25ef0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThingId' : is not a member of 'CScriptThing'
+00d292e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00d34470	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d37530	bytes_differ	BYTES_DIFFER length 1675 != 1783
+00d3a1a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPosition' : is not a member of 'CScriptThing'
+00d49d50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2059: syntax error : '.'
+00d50c60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'EScriptAIPriority' : redefinition; different basic types
+00d643a0	bytes_differ	BYTES_DIFFER length 972 != 1090
+00d67270	bytes_differ	BYTES_DIFFER length 1100 != 1224
+00d6aea0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d6b240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d71b30	bytes_differ	BYTES_DIFFER length 1457 != 1453
+00d72200	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d72590	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d73970	bytes_differ	BYTES_DIFFER length 339 != 354
+00d73c70	bytes_differ	BYTES_DIFFER length 465 != 707
+00d7df30	bytes_differ	BYTES_DIFFER masked sha1 differs
+00d7f460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d7f880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d85b40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InlineCopy' : is not a member of 'CScriptThing'
+00d86680	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPosition' : is not a member of 'CScriptThing'
+00d8f6d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'ECameraOp' : redefinition; different basic types
+00d91320	bytes_differ	BYTES_DIFFER length 324 != 335
+00d9d030	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00d9ec50	bytes_differ	BYTES_DIFFER length 130 != 147
+00d9f070	bytes_differ	BYTES_DIFFER length 56 != 62
+00da0b30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Assign' : is not a member of 'CScriptThing'
+00da0d90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'std::list' : too few template arguments
+00da6240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CEntityScriptBase::Me' uses undefined class 'CScriptThing'
+00da63f0	bytes_differ	BYTES_DIFFER length 345 != 353
+00da6740	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CEntityScriptBase::Me' uses undefined class 'CScriptThing'
+00da6d50	bytes_differ	BYTES_DIFFER length 1141 != 1159
+00da7830	bytes_differ	BYTES_DIFFER length 1237 != 1269
+00da8970	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+00dac4f0	bytes_differ	BYTES_DIFFER length 123 != 142
+00dac650	bytes_differ	BYTES_DIFFER length 190 != 272
+00db2a70	bytes_differ	BYTES_DIFFER length 141 != 160
+00db7db0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPosition' : is not a member of 'CScriptThing'
+00db8300	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00dbe4e0	bytes_differ	BYTES_DIFFER length 758 != 944
+00dc0830	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'std::vector' : too few template arguments
+00dc3ea0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2504: 'CBaseClass' : base class undefined
+00dc4d00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CEntityScriptBase::Me' uses undefined class 'CScriptThing'
+00dc5f10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CEntityScriptBase::Me' uses undefined class 'CScriptThing'
+00dc7420	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CEntityScriptBase::Me' uses undefined class 'CScriptThing'
+00dc8030	bytes_differ	BYTES_DIFFER length 875 != 938
+00dc8890	bytes_differ	BYTES_DIFFER length 988 != 998
+00dcc000	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2504: 'CBaseClass' : base class undefined
+00dcc140	bytes_differ	BYTES_DIFFER length 1079 != 1298
+00dced10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetThing' : is not a member of 'CScriptThing'
+00dcf920	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsThing' : is not a member of 'CScriptThing'
+00dd84b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00ddd030	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+00dde940	bytes_differ	BYTES_DIFFER length 699 != 748
+00de3f90	bytes_differ	BYTES_DIFFER length 1239 != 1263
+00dedb80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPosition' : is not a member of 'CScriptThing'
+00def1b0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00def3b0	bytes_differ	BYTES_DIFFER length 535 != 616
+00def6a0	bytes_differ	BYTES_DIFFER length 75 != 91
+00df0200	bytes_differ	BYTES_DIFFER length 1142 != 1174
+00df20f0	bytes_differ	BYTES_DIFFER length 249 != 256
+00dfba60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00dfc290	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'CRetailVector<T>' to 'std::vector<T,A> &'
+00e02470	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'ECameraOp' : redefinition; different basic types
+00e02950	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'ECameraOp' : redefinition; different basic types
+00e04bd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InlineCopy' : is not a member of 'CScriptThing'
+00e0d6a0	bytes_differ	BYTES_DIFFER length 117 != 179
+00e0f4e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2065: 'PImp' : undeclared identifier
+00e11dc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'ECameraOp' : redefinition; different basic types
+00e1c580	bytes_differ	BYTES_DIFFER length 1221 != 1330
+00e1cfd0	bytes_differ	BYTES_DIFFER length 1431 != 1638
+00e241b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'CBaseClass' : 'class' type redefinition
+00e2e520	bytes_differ	BYTES_DIFFER length 620 != 726
+00e33720	bytes_differ	BYTES_DIFFER length 127 != 148
+00e33b00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CEntityScriptBase::Me' uses undefined class 'CScriptThing'
+00e399d0	bytes_differ	BYTES_DIFFER length 93 != 195
+00e3b320	bytes_differ	BYTES_DIFFER masked sha1 differs
+00e49980	bytes_differ	BYTES_DIFFER length 1390 != 1413
+00e4e0e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetHeading' : is not a member of 'CScriptThing'
+00e503d0	bytes_differ	BYTES_DIFFER length 204 != 232
+00e566f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'EScriptAIPriority' : redefinition; different basic types
+00e5e0c0	bytes_differ	BYTES_DIFFER length 400 != 376
+00e5f2b0	bytes_differ	BYTES_DIFFER length 765 != 783
+00e5f6b0	bytes_differ	BYTES_DIFFER length 309 != 335
+00e5f8f0	bytes_differ	BYTES_DIFFER length 558 != 649
+00e5fb80	bytes_differ	BYTES_DIFFER length 224 != 232
+00e64d10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2504: 'CBaseClass' : base class undefined
+00e6a340	bytes_differ	BYTES_DIFFER length 378 != 447
+00e6f040	bytes_differ	BYTES_DIFFER length 115 != 169
+00e768b0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00e7b970	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CEntityScriptBase::Me' uses undefined class 'CScriptThing'
+00e7e640	bytes_differ	BYTES_DIFFER length 1541 != 1604
+00e7f7f0	bytes_differ	BYTES_DIFFER length 600 != 908
+00e82010	bytes_differ	BYTES_DIFFER length 74 != 190
+00e83680	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SetAvailable' : is not a member of 'CScriptThing'
+00e83a20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InlineCopy' : is not a member of 'CScriptThing'
+00e93020	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetInfo' : is not a member of 'CScriptThing'
+00e95d80	bytes_differ	BYTES_DIFFER masked sha1 differs
+00e96660	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'PosOrZero' : is not a member of 'CScriptThing'
+00e998f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2065: 'PImp' : undeclared identifier
+00e9a5c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'EScriptAIPriority' : redefinition; different basic types
+00e9d800	bytes_differ	BYTES_DIFFER length 141 != 211
+00ea0b10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'ECameraOp' : redefinition; different basic types
+00ea76e0	bytes_differ	BYTES_DIFFER length 94 != 101
+00ea8130	bytes_differ	BYTES_DIFFER length 1063 != 1191
+00eae5a0	bytes_differ	BYTES_DIFFER length 120 != 122
+00eae910	bytes_differ	BYTES_DIFFER length 94 != 108
+00eb07d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsEnflamedBy' : is not a member of 'CScriptThing'
+00eb75f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPosition' : is not a member of 'CScriptThing'
+00ec09e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00ec1ef0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00ec42f0	bytes_differ	BYTES_DIFFER length 414 != 412
+00ed41d0	bytes_differ	BYTES_DIFFER length 371 != 505
+00ed45a0	bytes_differ	BYTES_DIFFER length 411 != 459
+00ed4830	bytes_differ	BYTES_DIFFER masked sha1 differs
+00ed54d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+00edc010	bytes_differ	BYTES_DIFFER length 378 != 447
+00edf3a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'EScriptAIPriority' : redefinition; different basic types
+00edfa00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'EScriptAIPriority' : redefinition; different basic types
+00ee1be0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'Member1c'
+00ee1e40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'EScriptAIPriority' : redefinition; different basic types
+00ee8870	bytes_differ	BYTES_DIFFER length 791 != 866
+00eec890	bytes_differ	BYTES_DIFFER length 1540 != 1544
+00ef2150	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::CScriptThing(const CScriptThing &)' : cannot convert parameter 1 from 'void *' to 'const CScriptThing &'
+00ef45b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00ef5200	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2977: 'std::vector' : too many template arguments
+00ef6e40	stray_change	STRAY_CHANGE 012c2ff4: ??_7?$CPredicate@UCScriptThing@NScript@@@NScript@@6B@ -> ??_7?$CPredicate@VCScriptThing@NScript@@@NScript@@6B@
+00ef7ab0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'CBaseClass' : 'class' type redefinition
+00f05f30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InlineCopy' : is not a member of 'CScriptThing'
+00f08e90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'EScriptingStateGroups' : redefinition; different basic types
+00f09cd0	bytes_differ	BYTES_DIFFER length 1702 != 1942
+00f0b960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'std::vector' : too few template arguments

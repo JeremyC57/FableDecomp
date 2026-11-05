@@ -1,4 +1,5 @@
 // CNavigatorManager::RemoveNavigationMap(long) -- unload one navigation map: every other loaded quad tree drops its links to it, its own entry is erased from the map list, and every registered navigator is notified
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A155D0, 147 bytes (+ int3 padding; `ret 4`).
 // Callees: CNavQuadTree::OnNavMapUnload(long) @ 0x00A79290 (label "CVectorMap_EraseRange_Keys" is propagated; the PDB names the
 //   only (long) member of CNavQuadTree that fits), ~CCharString @ 0x0099EAE0, operator delete @ 0x00BFE9BC (counted block),
@@ -11,27 +12,7 @@
 //   release with its DeleteFunc block and the two zero stores) and frees the node.
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class CCPPointerInfo { public:                                  // RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0

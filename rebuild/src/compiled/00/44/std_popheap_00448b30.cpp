@@ -1,5 +1,6 @@
 // std::__pop_heap(_RandomAccessIterator first, _RandomAccessIterator last, _RandomAccessIterator result, _Tp val, _Compare comp, _Distance*) -- (pair<EGameAction, CCountedPointer<const CInputTypeBase> > under CKeyPairCompareLess) move the heap top to result, then sift the saved value into the hole
 // Leaf: ??$__pop_heap@PAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@U12@V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@H@std@@YIXPAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@0@00U10@V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@PAH@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00448B30, 175 bytes, /Gr `__fastcall` (first in ecx, last in edx; result, the
 //   12-byte value, the empty comparator and the dead distance tag on the stack), `ret 18h`.
 // Identity (proven): std::__pop_heap<pair<EGameAction, CCountedPointer<const CInputTypeBase> >*, pair<...>, CKeyPairCompareLess<EGameAction, CCountedPointer<const CInputTypeBase> >, int>; evidence: reached from the sort 0x004495D0 whose element H047 proves (CGamePlayerInterface::Controls (+0x7A8, SetControlScheme); swap 0x00448450) by direct calls 0x004495D0 -> 0x004494D0 -> 0x00449270 -> 0x00448B30 (sort -> introsort_loop -> partial_sort -> this); its four callers 0x00448C98, 0x00448D38, 0x00448F63, 0x004492B7 are that TU's heap code.
@@ -10,45 +11,7 @@
 // Shape: STLport 4.6 _heap.h __pop_heap verbatim: `*result = *first; __adjust_heap(first, 0, last - first, val, comp);`
 //   (len by the 0x2AAAAAAB reciprocal, 12-byte stride); the pair's implicit assignment inlines CCountedPointer::operator=
 //   (landed 0x00448380 body), and the callee-destroyed `val` is released after the call.
-class CCPPointerInfo { public:                                    // CCountedPointer's shared block
-    long  RefCount;                                        // +0x0
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x4
-    void* Data;                                            // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* const              data = o.Data;
-        CCPPointerInfo* const info = o.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 enum EGameAction { EGameAction_Force32 = 0x7fffffff };   // enumerators not needed
 class CInputTypeBase;
 

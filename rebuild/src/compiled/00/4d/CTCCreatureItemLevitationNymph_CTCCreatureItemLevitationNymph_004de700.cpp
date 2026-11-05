@@ -1,5 +1,6 @@
 // CTCCreatureItemLevitationNymph::CTCCreatureItemLevitationNymph(CThing& thing) -- CTCCreatureItemLevitationBase(thing), then this class's vtable and an empty PTarget (CIntelligentPointer<const CThing>)
 // Leaf: ??0CTCCreatureItemLevitationNymph@@QAE@AAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004DE700, 42 bytes (size-optimised TU, odd entry), thiscall, `ret 4`. Vtable 0x012415F4.
 // Identity (proven): CTCCreatureItemLevitationNymph::CTCCreatureItemLevitationNymph(CThing&); evidence: it stores vtable 0x012415F4 whose RTTI is .?AVCTCCreatureItemLevitationNymph@@ (: CTCCreatureItemLevitationBase : CTCBase : CBaseClassNonCopyable : CBaseClass); Ego_r.pdb holds
 //   ??0CTCCreatureItemLevitationNymph@@QAE@AAVCThing@@@Z; its only caller is the type factory 0x004E0984.
@@ -12,16 +13,8 @@
 #pragma optimize("s", on)
 class CThing;
 class C2DVector { public: float X, Y; };                  // 8 bytes, trivial
-class CBaseIntelligentPointer {                         // 8 bytes: vptr + PData
-public:
-    CBaseIntelligentPointer();                             // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    void* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCBase {                                            // retail 0x0C bytes
 public:
     CTCBase(CThing& thing);                                // 0x00686800

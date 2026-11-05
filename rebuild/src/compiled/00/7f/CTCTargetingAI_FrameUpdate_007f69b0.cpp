@@ -1,5 +1,6 @@
 // CTCTargetingAI::FrameUpdate() -- prune the things-not-to-attack list (dead or vanished things, and stealthed things that have come within 5 units), then refresh the best enemy creature for attack and the nearest interesting thing
 // Leaf: FrameUpdate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F69B0, 306 bytes (plain `ret`). CTCTargetingAI vtable 0x012411FC slot 9 (the
@@ -50,11 +51,8 @@ class CTCStealth { public:
     bool IsAvailableForAttack();                        // 0x00747B00
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();                 // slot 0
-    CThing* m_pItem;                                    // +0x04
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct SThingListNode {
     SThingListNode* _M_next;
     SThingListNode* _M_prev;

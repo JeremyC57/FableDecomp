@@ -1,5 +1,6 @@
 // CTCLight::SetOuterRadius(float value) -- set the light's OuterRadius when it is overridden, then mark the parent thing's graphic appearance changed and put it back on the render list
 // Leaf: ?SetOuterRadius@CTCLight@@QAEXM@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00640c70, 42 bytes, thiscall, `ret 4`.
@@ -17,13 +18,7 @@ public:
     void SetAsRenderedThisFrame(unsigned long reasons);         // 0x004C7590
     void AddToRenderList();                               // 0x004C7AC0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CDefPointer {
 public:
     const T* Object;                                      // +0x00

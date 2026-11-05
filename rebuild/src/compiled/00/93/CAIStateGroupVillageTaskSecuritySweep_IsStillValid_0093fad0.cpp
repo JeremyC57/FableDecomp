@@ -1,4 +1,5 @@
 // CAIStateGroup_VillageTaskSecuritySweep::IsStillValid() const -- the task thing is live and either active or valid for this creature
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093FAD0, length 89 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (five times on the task pointer at
 // +0x18), the task's virtual slots 3 (+0xc), 4 (+0x10) and 7 (+0x1c, takes PBrain->Creature).
@@ -16,12 +17,8 @@ class CBaseObject { public:
     virtual bool IsValidFor(CThing* creature);  // slot 7 (+0x1c)
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CAIBrain { public:
     unsigned char _pad[0x18];

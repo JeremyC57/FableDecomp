@@ -1,5 +1,6 @@
 // std::list<CCountedPointer<CSpawnedFuncBase> >::insert(iterator pos, const CCountedPointer<CSpawnedFuncBase>& x) -- STLport list insert: malloc a 16-byte node, placement copy-construct the counted pointer into it (bumping the shared reference count), link it in front of `pos` and return an iterator to it
 // Leaf: insert
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEC6F0, 67 bytes, `ret 0Ch` (__fastcall with `this` unused: the hidden
 // iterator result, the by-value iterator and the element reference on the stack). Callee: malloc @ 0x00BFEA0E.
 // A byte-identical twin sits at 0x005355C0 (another TU). Caller: 0x00AEB176 (a by-value iterator built in the argument
@@ -17,22 +18,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CSpawnedFuncBase;
 
-class CCPPointerInfo { public:                          // 12 bytes
-    unsigned long RefCount;                      // +0x00
-    void (__cdecl* DeleteFunc)(void*);           // +0x04
-    void*         Data;                          // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:                         // 8 bytes
-    T*              Data;                        // +0x00
-    CCPPointerInfo* Info;                        // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 struct _List_node_base {
     _List_node_base* _M_next;                    // +0x00

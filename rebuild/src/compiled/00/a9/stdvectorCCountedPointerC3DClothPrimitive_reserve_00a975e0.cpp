@@ -1,5 +1,6 @@
 // std::vector<CCountedPointer<C3DClothPrimitive>>::reserve(size_type n) -- STLport reserve: when capacity() < n, allocate n elements, copy the live ones over and destroy/free the old block (or just allocate for an empty vector); keep the size
 // Leaf: ?reserve@?$vector@V?$CCountedPointer@VC3DClothPrimitive@@@@V?$allocator@V?$CCountedPointer@VC3DClothPrimitive@@@@@std@@@std@@QAEXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00a975e0, 164 bytes, thiscall, `ret 4`.
 // Identity (proven): Ego_r.pdb ?reserve@?$vector@V?$CCountedPointer@VC3DClothPrimitive@@@@...@QAEXI@Z; its __uninitialized_copy 0x00A95750 and __destroy_aux 0x00A96940 are bound to CCountedPointer<C3DClothPrimitive>; caller 0x00A91640.
 // Callees: malloc 0x00BFEA0E, free 0x00BFEA14, __uninitialized_copy<T*, T*>(first, last, result, const __false_type&)
@@ -94,13 +95,6 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
     }
 }
 }
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                 // 8 bytes: Data, Info (count at Info+0)
-public:
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-    CCountedPointer(const CCountedPointer& other);
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class C3DClothPrimitive;
 template void std::vector<CCountedPointer<C3DClothPrimitive> >::reserve(unsigned int);

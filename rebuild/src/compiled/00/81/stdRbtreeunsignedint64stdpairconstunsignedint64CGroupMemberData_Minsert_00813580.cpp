@@ -1,5 +1,6 @@
 // std::_Rb_tree<unsigned __int64,std::pair<const unsigned __int64,CGroupMemberData>,...>::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport red-black tree node insertion under parent y for the creature group's member map
 // Leaf: ?_M_insert@?$_Rb_tree@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x00813580, 192 bytes, `ret 14h`: __fastcall (the tree -> ebx), the hidden iterator result, x, y,
 //   the value reference and the hint w on the stack.
 // Callers: 0x008136FB and 0x0081373D (insert_unique 0x008136A0). Callees: malloc 0x00BFEA0E (0x30-byte node), the
@@ -16,13 +17,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CBaseObject;
 class CThingAICreature;
-class CBaseIntelligentPointer {
-public:
-    virtual void v00();
-    CBaseObject* PData;                                      // +0x04
-    virtual ~CBaseIntelligentPointer();                              // 0x00A01C10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CGroupMemberData {                                     // 0x14 bytes (Ego_r.pdb)
 public:
     CIntelligentPointer<const CThingAICreature> PMember;     // +0x00

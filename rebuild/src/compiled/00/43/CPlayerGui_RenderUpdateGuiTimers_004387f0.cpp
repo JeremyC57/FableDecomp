@@ -1,5 +1,6 @@
 // CPlayerGui::RenderUpdateGuiTimers(float dt) -- advance the open/close fade timers of the GUI itself, of the seven stat bars (money, renown, morality, experience, crime, stat updates, auto pickups) and of the quest-info illustrator (plus its secondary fade, forced open while it is showing)
 // Leaf: ?RenderUpdateGuiTimers@CPlayerGui@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Ptr->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004387F0, 406 bytes + padding (`ret 4`). Callees: CPlayerGui::UpdateGuiTimer @ 0x00437500,
 // CCharString(const char*, long) @ 0x0099EBF0 / dtor @ 0x0099EAE0, CGameDefinitionManager::Get @ 0x0044C6B0, GetDef<T> @ 0x0043FF30.
 // Data: the GUI def pointer @ 0x013B878C, "PLAYER_GUI_PC" @ 0x0123173C. The def's three fade times (+0x4e4/+0x4f0/+0x584) and the
@@ -54,11 +55,7 @@ class CDrawQuestInfo { public:
     bool           ShowingSecondary;                        // +0x34 (descriptive)
 };
 }
-template<class T> class CCountedPointer { public:
-    T*    Ptr;
-    void* Count;
-    T* operator->() const { return Ptr; }
-};
+#include "engine/CCountedPointer.h"
 class CPlayerGui { public:                                         // retail-offset view (PDB - 8 / - 0x14)
     unsigned char _pad000[0x1c8];
     CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo;   // +0x1c8 (PDB +0x1d0)

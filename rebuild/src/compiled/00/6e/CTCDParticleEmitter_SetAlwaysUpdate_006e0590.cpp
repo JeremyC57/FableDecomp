@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::SetAlwaysUpdate(bool alwaysUpdate) -- push the flag to the live emitter (or to the pending creation parameters) and keep the component's own copy
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, PCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0590, length 85 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2).
 // PDB CTCDParticleEmitter (0x48 bytes): PEmitter (CIntelligentPointer<NParticleEngine::CParticleEmitter>) +0x14,
@@ -49,11 +50,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-template<class T> class CCountedPointer { public:
-    T*    Object;
-    long* PCount;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 class CTCDParticleEmitter { public:
     virtual void v00();

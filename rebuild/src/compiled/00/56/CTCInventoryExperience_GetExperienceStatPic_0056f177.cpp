@@ -1,4 +1,5 @@
 // CTCInventoryExperience::GetExperienceStatPic(EHeroTrainableStatType stat) -- creates the ring picture component for a trainable stat
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail 0x0056F177, 248 bytes, ret 4 (`this` unused). The picture name is a default CCharString local
 // (0x0099E4B0) reassigned by an if-chain (operator=(const char*) 0x0099EFE0) for the stat ids 0..5 and 9
 // (PHYSIQUE, HEALTH, TOUGHNESS, SPEED, ACCURACY, GUILE, MAGIC_POWER). The front-end manager
@@ -35,13 +36,7 @@ public:
 class CGraphicDataBank : public CBankFileAsync { public:
 };
 
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer(const CCountedPointer& other);                // 0x0041BA30
-    ~CCountedPointer();                                           // 0x00419108
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem {
 class CComponent { public:

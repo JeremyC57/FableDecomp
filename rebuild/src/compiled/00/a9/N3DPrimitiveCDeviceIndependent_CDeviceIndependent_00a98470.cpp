@@ -1,5 +1,6 @@
 // N3DPrimitive::CDeviceIndependent::~CDeviceIndependent() -- free the two tangent arrays, destroy and free the group and triangle-list pointer arrays, free the vertex array, then the CBase destructor
 // Leaf: ??1CDeviceIndependent
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A98470, length 126 bytes.
 // Label correction: catalogued as CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip (propagated); the only caller is
@@ -26,7 +27,7 @@ class C3DBoundingSphere { public: C3DVector Centre; float Radius; };
 namespace N3DPrimitive { class CTriangleList; }
 class C3DGroup2;
 template <class T> class CIVCountedPointer { public: T* Object; };
-template <class T> class CCountedPointer { public: T* Data; void* Count; };
+#include "engine/CCountedPointer.h"
 
 void __fastcall DestroyRange(CIVCountedPointer<N3DPrimitive::CTriangleList>* first,
                              CIVCountedPointer<N3DPrimitive::CTriangleList>* last, const SNonscalarPtrIteratorTag& tag);   // 0x00A96990

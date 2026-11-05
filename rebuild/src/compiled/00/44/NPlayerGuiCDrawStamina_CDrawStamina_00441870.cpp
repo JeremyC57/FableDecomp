@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawStamina::~CDrawStamina() -- implicit destructor: destroy the IncreaseEffects and Effects emitter-pointer vectors, then CDrawBase's primitive-handle vector (virtual element destructors, then free the storage)
 // Leaf: ??1CDrawStamina
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00441870, length 147 bytes, plain `ret` (thiscall).
 // Callees: free @ 0x00BFEA14 (STLport allocator deallocate); the element destructors run through vtable slot 0 (`push 0 ;
 // call [vptr]`, the virtual ~CIntelligentPointer / ~CEnginePrimitiveHandle).
@@ -40,10 +41,8 @@ class CEnginePrimitiveHandle { public:                    // vptr + counted prim
     void* Data;
 };
 struct CParticleEmitter;
-template <class T> class CIntelligentPointer { public:    // vptr + item
-    virtual ~CIntelligentPointer();
-    void* m_pItem;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace NPlayerGui {
 struct CFadeInFadeOutBase {

@@ -1,4 +1,5 @@
 // CAIStateGroup_StealthSeekEnemy::IsStillRunnable(CTCPerceiveThing*) -- require perceived live attackable enemy and willingness to attack
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail0x0093C4E0,275bytes. GetPItemA01B50;IsStopping8FD010;GetPerceivedThing7446A0;
 // LowerBound4365B0;IsThingAttackable7F6170;AreThingsEnemies76D2F0;IsWillingToAttackTarget8648A0.
 #include "engine/CAIStateGroup_StealthSeekEnemy.h"
@@ -25,7 +26,8 @@ class CThing { public:
 
 
 class CBaseObject;
-struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer(); void* Handle; CBaseObject* GetPItem() const; };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CTCPerceiveThingMethods : CTCPerceiveThing { CThing* GetPerceivedThing() const; };
 class CTCTargetingAI { public: bool IsThingAttackable(const CThing*) const; };
 bool __fastcall AreThingsEnemies(CThing*,CThing*);

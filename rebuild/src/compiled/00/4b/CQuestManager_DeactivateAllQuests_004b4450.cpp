@@ -1,5 +1,6 @@
 // CQuestManager::DeactivateAllQuests() -- deactivate the front active quest until none are left
 // Leaf: ?DeactivateAllQuests@CQuestManager@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x004B4450, 61 bytes, `ret`; callers 0x004A228E, 0x004B4787, 0x004B49E3; Ego_r.pdb
 // ?DeactivateAllQuests@CQuestManager@@QAEXXZ.
 // Body: while ActiveQuests (STLport list, node pointer at +0x38) is not empty, DeactivateQuest(ActiveQuests.front(), 0)
@@ -9,16 +10,7 @@
 // vector/list sizes), so the class is modelled locally. List node: next +0, prev +4, value +8.
 // Shape: /O2 (16-aligned entry, `lea ebx,[ebx]` loop-head pad); front() as *begin() through the node-base iterator cast
 // (a direct node-to-data reference adds an `add eax,8`).
-class CCPPointerInfo { public:
-    long RefCount;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;

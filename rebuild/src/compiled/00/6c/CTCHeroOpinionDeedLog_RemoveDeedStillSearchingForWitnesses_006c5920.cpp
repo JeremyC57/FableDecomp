@@ -1,5 +1,6 @@
 // CTCHeroOpinionDeedLog::RemoveDeedStillSearchingForWitnesses(long handle) -- stamp the logged deed with the current world frame and mark it no longer searching, then drop its entry from the witness-search list
 // Leaf: RemoveDeedStillSearchingForWitnesses
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C5920, length 115 bytes (+13 int3 padding), `ret 4`.
 // Callees: STLport map<long, COpinionDeed*>::find(const long&) @ 0x006C77E0 (iterator by hidden pointer; manifest
 // "BinaryTree_FindInsertPos"), GetWorldFrame @ 0x0049D870 (`__fastcall`, no arguments; manifest "GFGetPreMainMemoryUsed"),
@@ -17,20 +18,8 @@ public:
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-private:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class COpinionDeed { public:
     unsigned char _pad00[0x14];
     long          FrameWitnessSearchEnded;      // +0x14

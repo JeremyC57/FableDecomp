@@ -1,5 +1,6 @@
 // CTCInventory::ConstructStyleEntryPC(CComponent& list, const vector<pair<long, long> >& styles, CComponent* owner, const CCharString& headerDefinition, CComponent* viewport) -- PC twin of ConstructStyleEntry 0x00582ACE: the owner (when given) is told the header and is added as a parameter to the select and view actions; no per-entry user value. Fill the style-cards list: an empty style list just clears it; otherwise a sub-list with the header component and one menu entry per style (description text, select/focus/view/unfocus actions carrying the style index and count), then the list takes the sub-list, its name and a type-0x15 action pointing back at itself
 // Leaf: ?ConstructStyleEntryPC@CTCInventory
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0058315B, 1399 bytes, `ret 14h` (`this` unused). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
 //   CCountedPointer<CComponent>(T*) 0x00429C15 / Reset 0x00429C6F / dtor 0x004291DE, GetDescription(long) 0x005D95C0 (__fastcall),
@@ -47,15 +48,7 @@ __declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CAct
     InsertParamNode(_M_node, value);
 }
 #pragma auto_inline(on)
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) {}
-    CCountedPointer(T* object);
-    ~CCountedPointer();
-    void Reset(T* object);
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 class CAction { public:
     long             ActionType;
@@ -198,11 +191,11 @@ void CTCInventory::ConstructStyleEntryPC(CComponent& list, const CStyleVector& s
         return;
     }
     CCountedPointer<CComponent> subList(fe->CreateComponent("PC_SUB_LIST", false));
-    CList* sub = (CList*)subList.m_pObject;
+    CList* sub = (CList*)subList.Data;
     CCountedPointer<CComponent> header(fe->CreateComponent(headerDefinition, false));
     ((CComponentBase*)sub)->SetHeader(*(CCountedPointer<CComponentBase>*)&header);
     if (owner)
-        owner->SetHeaderComponent(header.m_pObject);
+        owner->SetHeaderComponent(header.Data);
     ((CComponentBase*)sub)->SetItemCount(styles.size());
     for (SStyleEntry* it = styles.begin(), *last = styles.end(); it != last; ++it) {
         long style = it->first;
@@ -210,35 +203,35 @@ void CTCInventory::ConstructStyleEntryPC(CComponent& list, const CStyleVector& s
         CCountedPointer<CComponent> entry;
         entry.Reset(fe->CreateMenuEntryComponent(GetDescription(style), 0.0f, 1.0f, "PC_MENU_ENTRY_TEMPLATE",
                                                  0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
-        CComponent* comp = entry.m_pObject;
+        CComponent* comp = entry.Data;
         CCountedPointer<CAction> select(new CAction);
         select->ActionType = 0x7d0;
         select->UIActionParams.push_back(new CActionParamLong(style));
-        select->AddParam(entry.m_pObject, select);
+        select->AddParam(entry.Data, select);
         CWideString model(L"PC_MODEL");
         select->UIActionParams.push_back(new CActionParamString(model));
         select->AddParam(owner, select);
         entry->AddSelectedAction(select);
         CCountedPointer<CAction> focus(new CAction);
         focus->ActionType = 0x7df;
-        focus->AddParam(entry.m_pObject, focus);
+        focus->AddParam(entry.Data, focus);
         comp->AddFocusAction(focus);
         CCountedPointer<CAction> view(new CAction);
         view->ActionType = 0x7d3;
         view->UIActionParams.push_back(new CActionParamLong(style));
         view->AddParam((CComponent*)viewport->GetChild("PC_DESCRIPTION_VIEWPORT"), view);
-        view->AddParam(entry.m_pObject, view);
+        view->AddParam(entry.Data, view);
         view->UIActionParams.push_back(new CActionParamLong(count));
         view->AddParam(owner, view);
         entry->AddSelectedAction(view);
         CCountedPointer<CAction> focus2(new CAction);
         focus2->ActionType = 0x7e2;
-        focus2->AddParam(entry.m_pObject, focus2);
+        focus2->AddParam(entry.Data, focus2);
         comp->AddFocusAction(focus2);
         CCountedPointer<CAction> unfocus(new CAction);
         unfocus->ActionType = 0x7d6;
         unfocus->UIActionParams.push_back(new CActionParamLong(style));
-        unfocus->AddParam(entry.m_pObject, unfocus);
+        unfocus->AddParam(entry.Data, unfocus);
         unfocus->UIActionParams.push_back(new CActionParamLong(count));
         comp->AddUnfocusAction(unfocus);
         sub->AddEntry(entry);

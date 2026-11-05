@@ -1,5 +1,6 @@
 // NUISystem::CFrontEndButton::AddActionOnDelete(CCountedPointer<NUISystem::CAction>& action) -- append the action's counted pointer to ActionsOnDelete
 // Leaf: ?AddActionOnDelete@CFrontEndButton@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054E230, 78 bytes (+ int3 padding), virtual thiscall, `ret 4`.
 // Identity (proven): slot 150 of CFrontEndButton's vtable 0x01249554, the first slot past CClickable's 150 (CFrontEndButton's own new virtual; of its PDB virtuals AddAction / AddActionOnDelete / Initialise / ProcessEvent only AddActionOnDelete is not inherited); the vector is Ego_r.pdb CFrontEndButton::ActionsOnDelete +0x1D8 rebased -0x34 (after the 12-byte retail Actions); FableWin.pdb holds ?AddActionOnDelete@CFrontEndButton@NUISystem@@ right after AddAction, as retail.
 // Label: the manifest's "NUISystem::CFrontEndButton::vfunc_150" is propagated / behavioural (family J093: inline STLport push_back adders; retail has no
@@ -11,23 +12,7 @@
 //   argument slot. Layout: ActionsOnDelete is a retail 12-byte STLport vector at +0x1A4 (Ego_r.pdb +0x1D8, Dinkumware 16-byte vectors).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo {                                     // 12 bytes (Ego_r.pdb)
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes (Ego_r.pdb)
-public:
-    T* Data;                                               // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CAction; }
 
 namespace std {

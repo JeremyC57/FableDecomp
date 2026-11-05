@@ -1,4 +1,5 @@
 // CCreatureAction_DowseFire::CCreatureAction_DowseFire(CThingAICreature*, CThingBuilding*, unsigned long) -- base CCreatureActionBase(owner, -1.0, 1.0, the owner's "STANDARD_SCARED" animation, zeroed sound, 0, 0), then PAICreature = owner, PBuilding = the building, FireNumber
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00843790, length 169 bytes (+ int3 padding), `ret 0Ch`. Vtable 0x01274D0C.
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("STANDARD_SCARED" @ 0x01273564), the owner's animation lookup 0x006924B0
 // (`__fastcall`), CCreatureActionBase::CCreatureActionBase 0x00693B30, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90.
@@ -29,12 +30,8 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8
 };
 CAnimationEntry* __fastcall GetAnimationEntry(CThingCreatureBase* owner, const CCharString& name);   // 0x006924B0
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    virtual void v00();
-    CBaseObject* PItem;
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    void SetPItem(CBaseObject* item);           // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerAICreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingAICreature>, vtable 0x0123E7E0
     virtual void v00();
     CIntelligentPointerAICreature(CThingAICreature* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }

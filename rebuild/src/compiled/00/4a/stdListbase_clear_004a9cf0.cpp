@@ -1,5 +1,6 @@
 // std::_List_base::clear() -- (_List_base<CMessageEvent, allocator<CMessageEvent> >) STLport 4.6 list clear: walk from the first node to the sentinel, destroy each node's element through its virtual destructor and free the node, then link the sentinel to itself
 // Leaf: ?clear@?$_List_base@VCMessageEvent@@V?$allocator@VCMessageEvent@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004A9CF0, 58 bytes (+ int3 padding), thiscall, `ret`.
 // Identity: std::_List_base<CMessageEvent >::clear() -- proven; evidence: CWorld::PrepareForLoad 0x004A0220 calls it on [CWorld+0x60]+4 = PMessageEventManager.Data (Ego_r.pdb CWorld +0x60) -> CMessageEventManager::Messages (+4, list<CMessageEvent>; G071's erase 0x004937CB works on the same list), as do the CMessageEventManager scalar deleting destructor 0x004AD650 (list at +4, then the sentinel and the object freed), the +4 forwarder 0x004AB240, 0x004ADC40 and the unreferenced list destructors 0x004AB610 / 0x004AC250; the element is polymorphic (CMessageEvent RTTI vtable 0x0125BE8C); the PDB name sets hold list<CMessageEvent>::clear
 //   Family G073 (seven byte-identical bodies, one COMDAT per T: retail has no ICF); the manifest label "SortTreeRecursively" is
@@ -14,15 +15,8 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 class CThing;
 class CFaction;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // 8 bytes (Ego_r.pdb): vptr, PData
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual ~CIntelligentPointer();
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CMessageEvent {                                    // 0x58 bytes, vtable 0x0125BE8C (Ego_r.pdb layout)
 public:
     virtual ~CMessageEvent();                            // slot 0 (0x006872B0)

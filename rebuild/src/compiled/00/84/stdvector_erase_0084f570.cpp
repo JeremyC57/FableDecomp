@@ -1,5 +1,6 @@
 // std::vector::erase(iterator position) [vector<CCountedPointer<T> >] -- erase one counted pointer: shift the tail down one slot, release and clear the vacated last slot, return the position
 // Leaf: erase
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084F570, length 97 bytes (+15 int3 padding).
 // NOT CScriptBase::RemovePredicate (propagated label): an STLport vector<CCountedPointer<T> >::erase(iterator) on
 // 8-byte elements (callers 0x0084E37B, 0x0084E85F). Callees: the STLport `__copy` for random-access ranges @ 0x0084F330
@@ -15,30 +16,8 @@ struct random_access_iterator_tag {
     random_access_iterator_tag() {}
 };
 
-struct SCountBlock {
-    long References;                                 // +0
-    void (__fastcall* Destroy)(void*);               // +4
-    void* Object;                                    // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T* Data;
-    SCountBlock* Info;
-    ~CCountedPointer()
-    {
-        if (Info)
-        {
-            --Info->References;
-            if (Info->References == 0)
-            {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 typedef CCountedPointer<CPredicateHolderElement> CElement;
 

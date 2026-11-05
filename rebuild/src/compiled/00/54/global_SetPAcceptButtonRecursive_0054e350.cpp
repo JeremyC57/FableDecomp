@@ -1,5 +1,6 @@
 // SetPAcceptButtonRecursive(NUISystem::CComponent* component, NUISystem::CComponent* acceptButton) -- give every descendant of a component (depth first, the accept button itself skipped) the front-end screen's accept button
 // Leaf: ?SetPAcceptButtonRecursive@@YIXPAVCComponent@NUISystem@@0@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054E350, 119 bytes (128 with padding), plain `ret` (Ego_r.pdb
 //   `?SetPAcceptButtonRecursive@@YIXPAVCComponent@NUISystem@@0@Z`: a free __fastcall, component in ecx, button in edx).
 // Callees: CComponent virtual slots 53 GetChildren() (+0xd4, vector<CCountedPointer<CComponent> >&, re-called for every
@@ -13,14 +14,7 @@
 namespace NUISystem {
 class CComponent;
 }
-class CCPPointerInfo;
-template <class T> class CCountedPointer {      // 8 bytes: the object, then its shared count record
-public:
-    T*              Data;                       // +0x00
-    CCPPointerInfo* Info;                       // +0x04
-    T* operator->() const { return Data; }
-    T* Get() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 typedef CCountedPointer<NUISystem::CComponent> CComponentPointer;
 struct CComponentPointerVector {                // STLport vector<CCountedPointer<CComponent> > (12 bytes)
     CComponentPointer* _M_start;

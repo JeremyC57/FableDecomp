@@ -1,5 +1,6 @@
 // CGamePlayerInterface::IsEventQuickAccessItemButton(const CInputEvent& event, long& index) const -- is the event one of the quick-access item buttons? index = which
 // Leaf: ?IsEventQuickAccessItemButton@CGamePlayerInterface@@QBE_NABVCInputEvent@@AAJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00446000, 93 bytes, `ret 8`; Ego_r.pdb ?IsEventQuickAccessItemButton@CGamePlayerInterface@@QBE_NABVCInputEvent@@AAJ@Z.
 // Catalog label IsEventContextSensitiveItemButton is wrong: this body walks the vector at +0x7c4 (QuickAccessItemButtons,
 // the one after AssignableSpecialMoveButtons +0x7b8); the +0x7d0 twin (ContextSensitiveItemButtons) is 0x00446110, and the
@@ -23,12 +24,7 @@ public:
     virtual bool IsInputTypeWithButton(EXboxControllerButton button) const;            // slot 6 (+0x18)
     virtual bool IsInputTypeWithMouseButton(EMouseButtonControl button) const;         // slot 7 (+0x1c)
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class T> class vector {
 public:

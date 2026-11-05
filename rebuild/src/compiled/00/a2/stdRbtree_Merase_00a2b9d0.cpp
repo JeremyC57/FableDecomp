@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (map<unsigned long, CCountedPointer<C3DAnimation2> >) STLport 4.6 recursive subtree release without rebalancing: for each node erase its right subtree, release the value's counted pointer, free the node and continue with its left child
 // Leaf: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2B9D0, 92 bytes (+ int3 padding to 96), thiscall `ret 4`; recursive
 //   (calls itself at 0x00A2B9E6); speed-optimised TU.
 // Identity (proven): map<unsigned long, CCountedPointer<C3DAnimation2> >; evidence: its first caller is the C3DAnimationInfo::CAnimationData destructor 0x00A26860 (stores vtable 0x0129CE50, RTTI .?AVCAnimationData@C3DAnimationInfo@@; it releases FileData +0x34 and SharedAnimation +0x2C first), clearing the tree at this+0x1C -- Ego_r.pdb's CAnimationData::Animations (+0x1C), map<unsigned long, CCountedPointer<C3DAnimation2> >
@@ -12,29 +13,8 @@
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // the shared count block
-    long RefCount;                                      // +0x0
-    void (__fastcall *DeleteFunc)(void*);               // +0x4
-    void* Data;                                         // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
-public:
-    T* Data;                                            // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 class C3DAnimation2;
 
 namespace std {

@@ -1,6 +1,7 @@
 // CAIStateGroup_Clean::OnReplace() -- stop kneeling / stop the cleaning action (posting the ST_WASH_FLOOR_OUTOF get-up animation when the creature is free), reset the clean timer to 100 seconds, pick a new idle and destroy the right-hand item
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00917BB0, length 432 bytes. Vtable slot (OnReplace).
 // Leaf: OnReplace@CAIStateGroup_Clean
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Callees: CThingCreatureBase::FinishCurrentAction @ 0x00662650 / IsPerformingAnyAction @ 0x006622A0 / IsFreeToPerformAction
@@ -62,15 +63,8 @@ class CThingCreatureBase : public CThing { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CCountBlock {
     long Count;
     void (__fastcall* Destroy)(void* object);

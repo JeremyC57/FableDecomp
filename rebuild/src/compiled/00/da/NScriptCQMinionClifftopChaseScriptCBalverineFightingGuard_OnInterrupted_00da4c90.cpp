@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CBalverineFightingGuard::OnInterrupted() -- the fighting guard was interrupted: start a speech on the guard and add the TEXT_QST_045_GUARD_ATTACK line (no listener)
 // Leaf: ?OnInterrupted@CBalverineFightingGuard
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA4C90, length 174 bytes (+2 int3). Ego_r.pdb
 // ?OnInterrupted@CBalverineFightingGuard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ.
 // Callees: the game interface (Game, +4) virtual slots 364 (+0x5b0, StartSpeech) and 366 (+0x5b8, AddSpeechLine; slot names
@@ -18,29 +19,8 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct SCountBlock {
-    long  m_references;                            // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImp;
-template <class T> class CCountedPointer { public:                          // CCountedPointer<CScriptThingImp>
-    CScriptThingImp* Data;
-    SCountBlock*     Info;
-    __forceinline CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

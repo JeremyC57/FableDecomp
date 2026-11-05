@@ -1,0 +1,41 @@
+Plan phase 5, wave "w1" (2026-11-05): CCountedPointer. Local CCountedPointer / count-block stand-ins moved onto the shared
+engine/CCountedPointer.h (used as it is: no header change, no new sub-macro, no includer regrade, hdrcheck2 not needed).
+
+ROWS: 2436 PASS under vland --recheck-landed (RELOCATION_MATCH 2313, MATCH 123); gate.py 2436 of 2436; parity equal to the
+  landed source (--before logs) on every row. Candidates: 3086 rows that define CCountedPointer locally (scripts/variants.py
+  survey: 693 variants; the pure-data `T* Data; CCPPointerInfo* Info;` model is 1768 of them).
+HOW (scripts/hdrmig5.py, cfg.json / cfg_nt.json):
+  - every local definition / forward declaration of CCountedPointer and CCPPointerInfo removed, `#include
+    "engine/CCountedPointer.h"` where the first one stood;
+  - field_map (new in hdrmig5): the local members are respelled to the header's by offset when every member is a 4-byte
+    word: CCountedPointer slots Data +0x0 / Info +0x4 (m_pData, m_pObject, Object, m_pCount, m_pInfo, Block, control ...),
+    CCPPointerInfo slots RefCount +0x0 / DeleteFunc +0x4 / Data +0x8 (m_references, m_pfnDestroy, Count ...). Count-block
+    stand-in classes SCountBlock / CCountBlock / SCount / SCountInfo / CCountedPointerInfo are the header's CCPPointerInfo
+    (Ego_r.pdb, 12 bytes) and are renamed to it (254 rows); 405 rows respell member accesses.
+  - nontemplate_typed (cfg_nt.json): a non-template local `struct CCountedPointer { X* ...; ... }` is CCountedPointer<X>
+    (5 rows pass; the void* stand-ins stay: T unknown).
+  - The header's dtor / ReleaseData split (dtor Data-first, ReleaseData Info-first) is retail's; rows whose local modelled
+    the dtor as ReleaseData or __forceinline are kept only when gate shows identical bytes.
+RESPELLS (CALLERS.tsv, 73 rows; BINDINGS.tsv): all target-preserving, gate-verified.
+  - 61 callers of 0x00CDEE00: ?Destroy_00cdee00@@YIXPAX@Z (60) -> ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z,
+    the FableWin.pdb spelling that 533 landed rows already bind (hdrmig5 accept_pdb_majority). NAME_FIXES_QUEUE line 1445
+    narrowed (1 binder left: ?CountedDestroy_00cdee00, a row that still has its local model -- DEFERRED).
+  - 0x00AF0710 ?DestroyGuiVarTransfer@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCGuiVarTransferBase@@@@SIXPAX@Z (1).
+  - struct -> class key of the header class (U?$CCountedPointer -> V?$CCountedPointer) in callee spellings (AddElement,
+    AddChild, GetFont, the converting ctors ??$?0 of NPlayerGui::CQuestInfoElement*, pair::operator=) and in 11 rows' own
+    symbols (_Push_heap / _Adjust_heap / pair::operator= instantiations, CTextContainer::AddChild ...): every other binder of
+    the old spelling was checked against the index (none left); 5 `// Leaf:` lines carrying the old full spelling were
+    respelled with it (vland grades the same function).
+  - Introduced warnings: only RELOC_NAME lines whose text changed with the class key (the same label mismatch the landed
+    source already had); no STANDIN_LEAF introduced.
+DEFERRED.tsv (650):
+  - compile_fail 385: non-template void* stand-ins 208 (T unknown; s6 NEXT lists them), local members the header lacks 76
+    (Release / IsValid / AddRef ...), CCountedPointer<void> 30 (the header's `T& operator*` needs a real T), out-of-class
+    member templates the header also defines 24 (DeleteData / ShareData definers), others;
+  - bytes_differ 214 (the header's inline ctor / dtor / copy expanded where the local declared it, or the reverse);
+  - stray_change 29: deleter stand-ins (Destroy_<addr>, DeleteCreatureAction, DeleteSitMode ...) whose header spelling is
+    one-source or not yet the majority binding; several targets have 3-4 spellings today (consistency wave needed);
+  - field_map 22: local layouts that are not word members / a name mapped to two slots.
+FAMILY STAND-INS (step 6): s6 w1/w6/w7 already respelled the provable CCountedPointer members; what is left (12 converting
+  ctors, 17 ?ShareData@CCPtr pragma-s rows, 4 ?AssignFrom@CCPtr operator= definers whose T conflicts between the row comment,
+  the catalog and the caller, 31 ?Uninit_copy@@ ... Elem) needs evidence or STL models; listed in $P/NEXT.md.

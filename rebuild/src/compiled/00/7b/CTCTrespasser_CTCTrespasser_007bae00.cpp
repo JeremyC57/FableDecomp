@@ -1,5 +1,6 @@
 // CTCTrespasser::CTCTrespasser(CThing* thing) -- construct the trespasser component: CTCBase, the trespassing-thing intelligent pointer, the occupant list head, and the deed handles reset to -1 / counters to 0
 // Leaf: ??0CTCTrespasser
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BAE00, length 98 bytes (+14 int3 padding), `ret 4`.
 // Label correction: the catalog row says "CTCHeroCentre::CTCHeroCentre", but the vtable store is CTCTrespasser's (0x0126DE14,
 // rtti-vtables.tsv) and the members match Ego_r.pdb CTCTrespasser (0x44 bytes; 0x3C in retail with a 4-byte STLport list).
@@ -14,16 +15,8 @@ extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
 class CThing;
 class CThingAICreature;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
-public:
-    CIntelligentPointer() {}
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T> struct SListNode {
     SListNode* _M_next;
     SListNode* _M_prev;

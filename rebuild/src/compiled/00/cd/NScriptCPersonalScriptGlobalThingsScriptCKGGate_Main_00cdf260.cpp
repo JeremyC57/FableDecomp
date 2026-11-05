@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::CKG_Gate::Main() -- gate entity script: register the alive-filter over Me, run a script frame and, unless done, open the gate once either hero-souls quest ("Q_HeroSoulsThunder" / "Q_HeroSoulsArena") is completed
 // Leaf: ?Main@CKG_Gate@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity (naming wave 11): ?Main@CKG_Gate@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012C32FC slot 1 is stored by the factory 0x00CDF190 registered as "KG_Gate"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDF260, 250 bytes (+ int3 padding). Entity-script slot 1 (Main) per docs/engine/QUEST_SCRIPTS.md.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (the CIsThingAlive filter, vtable 0x012C32F0), the filter
@@ -13,8 +14,7 @@
 // Naming wave 35: identity reg 00cde65d "KG_Gate" in 00cde420; Alloc 00cdf190; vtable 012c32fc slot 1; PDB ?Main@CKG_Gate@CPersonalScript_GlobalThingsScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CKG_Gate::Main (wave3/labels_alloc.tsv); PDB ?Main@CKG_Gate@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

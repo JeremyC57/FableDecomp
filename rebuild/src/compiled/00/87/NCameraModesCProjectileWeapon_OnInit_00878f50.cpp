@@ -1,5 +1,6 @@
 // NCameraModes::CProjectileWeapon::OnInit() -- projectile-weapon camera start: make the switch a single cut; if the camera already in use is a projectile-weapon camera, carry its orbit (phi, height, deltas, zoom FOV, axes) over, else set the params up from the def with the zoom FOV at the camera FOV; then run one Update
 // Leaf: ?OnInit@CProjectileWeapon@NCameraModes@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00878F50, 276 bytes, tail `jmp [vtbl+4]` (Update).
 // Identity: vtable 0x01277804 (RTTI `.?AVCProjectileWeapon@NCameraModes@@`) slot 21; slot 22 is the landed OnDie 0x00878B40
@@ -29,11 +30,7 @@ class CCamera { public:                                     // 0x38 bytes
     float           HorizontalFOV, VerticalFOV, Zoom;
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 namespace NCameraModes {
 enum EMode { EMode_ProjectileWeapon = 15 };                 // descriptive enumerator (value from slot 2)

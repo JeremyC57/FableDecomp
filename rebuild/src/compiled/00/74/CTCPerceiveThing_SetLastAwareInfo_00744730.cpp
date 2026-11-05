@@ -1,3 +1,4 @@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 struct Vec3 { float x, y, z; };
 
 struct CObj34 { char pad[0x44]; float f44; };
@@ -20,9 +21,8 @@ struct GObj {
 };
 
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 extern "C" Vec3* __fastcall Getter_d82ca0(void* self);   // 0xffd82ca0
 extern float g_const_122dedc;                            // ds:0x122dedc
 extern GObj* g_obj_13b8790;                              // ds:0x13b8790

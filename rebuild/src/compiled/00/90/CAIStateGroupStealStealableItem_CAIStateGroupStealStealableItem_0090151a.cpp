@@ -1,4 +1,5 @@
 // CAIStateGroup_StealStealableItem::CAIStateGroup_StealStealableItem() -- base, own vtable, three intelligent pointers, no cleanup pending.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090151A, length 71 bytes.
 // Callees: CAIStateGroupBase::CAIStateGroupBase() @ 0x008FD255, CBaseIntelligentPointer::CBaseIntelligentPointer()
 // @ 0x00A01B10 three times (PStealableItem +0x14 and PPreviouslyCarriedItem +0x24: vtable 0x01238C6C =
@@ -10,11 +11,8 @@
 #pragma optimize("s", on)
 class CThing;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {        // vtable 0x01238C6C
     CIntelligentPointerThing() : CBaseIntelligentPointer() { }

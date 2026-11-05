@@ -1,10 +1,11 @@
 // std::for_each(TYPE* first, TYPE* last, Function function) -- apply the member function to every element and return the functor.
 // Leaf: ??$for_each@PAVCFirePoint@NFire@@V?$mem_fun_ref_t@XVCFirePoint@NFire@@@std@@@std@@YI?AV?$mem_fun_ref_t@XVCFirePoint@NFire@@@0@PAVCFirePoint@NFire@@0V10@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Identity: proven; CTCFlammable::ExtinguishFire0x780C80 calls at0x780C95 with CFirePoint::ExtinguishFire0x780700; FirePoints+16; stride44; matching PDB mem_fun_ref_t instantiation. STLport name replaces Dinkumware _For_each.
 class CThing;
 class CCharString { public: void* PStringData; };
-class CBaseIntelligentPointer { public: virtual ~CBaseIntelligentPointer() {} void* PData; };
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace NFire { class CFirePoint { public: CCharString HelperName; long HelperIndex,EffectIndex,Resistance; bool Burning; long FireDamageAfterFrame; CThing* PParentThing; CIntelligentPointer<CThing> PEffect,PSingeEffect; void Reset(); }; }
 namespace std {
 template<class R,class T> class mem_fun_ref_t {

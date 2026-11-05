@@ -1,4 +1,5 @@
 // CQuestManager::OnDeactivateEntity(CThing&, bool) -- a thing with a real script name (not "NULL"/"") is reported as deactivated to every active quest's script that binds that name, as (UID, CScriptThing, flag); the thing's ActivatedScript flag is then cleared
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AFB00, length 165 bytes, `ret 8`.
 // PDB ?OnDeactivateEntity@CQuestManager@@QAEXAAVCThing@@_N@Z. The twin of the landed OnActivateEntity (0x004AFA60, modelled
 // there with a CThing*): same guard chain without the thing-type test, the script's
@@ -15,8 +16,7 @@ class CCharString { public:
     void* PStringData;
     bool operator!=(const char* text) const;       // 0x0099E960
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

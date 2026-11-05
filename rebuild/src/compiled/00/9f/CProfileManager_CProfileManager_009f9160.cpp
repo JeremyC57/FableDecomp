@@ -1,5 +1,6 @@
 // CProfileManager::CProfileManager() -- construct the profile manager: clear the key latches and cursor, build the empty STLport ProfileList, IDToProfileName / ProfileNameToID maps and ProfileTree, register as the global manager, cache the display manager's render manager, push the root tree entry and reset the timing state
 // Leaf: ??0CProfileManager@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F9160, 242 bytes, thiscall, returns this. Caller: CSystemManager::Initialise
 //   (`new` 0x78 bytes at 0x009A6993). The chunk label "CEnginePrimitive_Initialize" is wrong.
 // Layout (retail 0x78 bytes; member names/order from Ego_r.pdb CProfileManager, offsets re-derived for STLport's 4-byte
@@ -176,10 +177,7 @@ public:
     scoped_ptr<CRenderManager> PRenderManager;      // +0x08
 };
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-};
+#include "engine/CCountedPointer.h"
 
 class CSystemManager {
 public:

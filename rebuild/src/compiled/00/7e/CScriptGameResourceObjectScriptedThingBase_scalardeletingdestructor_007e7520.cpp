@@ -1,6 +1,7 @@
 // CScriptGameResourceObjectScriptedThingBase::`scalar deleting destructor'(unsigned int flags) -- the inlined destructor (release PImp, the base vtable, the root destructor) then operator delete when bit 0 is set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E7520, length 87 bytes.
 // Leaf: ??_GCScriptGameResourceObjectScriptedThingBase
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail bytes: push esi ; mov esi,ecx ; mov eax,[esi+0Ch] ; test eax,eax ; je Z ; dec dword ptr [eax] ; mov eax,[esi+0Ch] ; cmp dword ptr [eax],0 ; jne Z ;
 //               mov ecx,[eax+8] ; call [eax+4] ; mov eax,[esi+0Ch] ; push eax ; call operator delete ; add esp,4 ; Z: mov dword ptr [esi+8],0 ;
 //               mov dword ptr [esi+0Ch],0 ; mov ecx,esi ; mov dword ptr [esi],offset CScriptGameResourceObjectBase::`vftable' ; call ~root ;
@@ -20,28 +21,8 @@
 
 void __cdecl operator delete(void* block);     // 0x00BFE9BC
 
-struct SCountBlock {                           // the shared count block of a CCountedPointer
-    long  m_references;                        // +0x00
-    void (__fastcall* m_pfnDestroy)(void*);    // +0x04 destroys the object (in ecx)
-    void* m_pObject;                           // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer { public:     // {object, count block}
-    T*           m_pObject;                    // +0x00
-    SCountBlock* m_pCount;                     // +0x04
-    __forceinline ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;
-            }
-        }
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-};
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

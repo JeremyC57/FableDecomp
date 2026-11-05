@@ -1,4 +1,5 @@
 // CQ_GuildTrainingWoodsDepartureScript::Main() -- the woods departure quest's main: reset the mission flags, wait for GuildWoods, bind the ArtifactThief / FinalMaze / ScorpionHome entity scripts, finish adding scripted entities, spawn the WatchForTermination and DoMission threads, set the quest-card objective and create the maze tutorial rival hero at the maze creation marker
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
@@ -23,18 +24,13 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
-class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
-    virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980
-    void* PImpData;
-    void* PImpInfo;
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
-#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptDataBase;

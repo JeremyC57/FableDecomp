@@ -1,5 +1,6 @@
 // CActiveEntityScript<NScript::CQ_AmbushTradersScript>::SuspendableProcess() -- runs the entity script's Main, or calls the bound member function with a CScriptThing copy, then stops the process
 // Leaf: ?SuspendableProcess@?$CActiveEntityScript@VCQ_AmbushTradersScript@NScript@@@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: fable_string.h (CCharString) included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F09C20, oracle length 68 bytes.
@@ -21,12 +22,7 @@
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CCountedPointer<T>: the Ego_r.pdb members (Data, Info; CCPPointerInfo RefCount +0); the copy is the inline addref retail
 // expands inside the CScriptThing copy below.
-class CCPPointerInfo { public: unsigned long RefCount; };
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing / CEntityScriptBase / CActiveEntityScript<T>: the retail models from the shared headers.
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS

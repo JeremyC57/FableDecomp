@@ -1,4 +1,5 @@
 // NParticleEngine::CParticleEmitterInfo::GetEmitterTemplate(CCountedPointer<CParticleEmitter>&, bool) -- create and start loading the emitter data on first use; hand out its emitter template (building it first if needed) once the data has finished loading, or after forcing the load to complete when asked to; false when the template is not available yet
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF1480, length 204 bytes (manifest label correct).
 // Callees: operator new @ 0x00BFEA1A (0x30 bytes), CResource::CResource @ 0x009FBEC0 (the inlined CEmitterData
 //          constructor stores vtable 0x0129F354 = NParticleEngine::CParticleEmitterInfo::CEmitterData),
@@ -29,14 +30,7 @@ public:
     bool IsFinished() const;   // 0x009D54E0
 };
 
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x00AE96E0 (T = CParticleEmitter)
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 template<class T> class CIVCountedPointer { public:       // intrusive: the object carries its own count
     T* Object;

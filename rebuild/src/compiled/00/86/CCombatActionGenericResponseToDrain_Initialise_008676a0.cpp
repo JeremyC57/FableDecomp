@@ -1,5 +1,6 @@
 // CCombatAction_GenericResponseToDrain::Initialise() -- GENERIC_RESPONSE_DRAIN animation; with a live drainer the creature is turned to face away from it (flat direction, up = Z) and given a CModeDrained(creature, drainer) through its mode manager; then the base Initialise
 // Leaf: ?Initialise@CCombatAction_GenericResponseToDrain@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008676A0, 379 bytes (384 with padding), virtual Initialise.
@@ -98,12 +99,7 @@ struct CModeDrained : CModeBase {               // 0x80 bytes
     CModeDrained(CThing* thing, CThing* drainer);   // 0x00868220
 };
 }
-template <class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer(T* object);                 // 0x00718A00
-    CCountedPointer(const CCountedPointer& other);
-};
+#include "engine/CCountedPointer.h"
 class CTCCreatureModeManager { public:                 // interface type 0x31
     bool AddMode(CCountedPointer<NCreatureMode::CModeBase> mode);   // 0x0073ACC0
 };

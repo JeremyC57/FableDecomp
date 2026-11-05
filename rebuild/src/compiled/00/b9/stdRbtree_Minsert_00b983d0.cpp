@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (map<long, map<long, CCountedPointer<CEngineSceneMap> > >) STLport 4.6 node insert: create a node for v, link it left or right of y, fix root / leftmost / rightmost, rebalance, count, return the iterator
 // Leaf: ?_M_insert@?$_Rb_tree@JU?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@U?$_Select1st@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@2@0@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B983D0, 202 bytes (+ int3 padding to 208), thiscall `ret 14h` (the hidden
 //   iterator result pointer first, then x, y, &v, w).
 // Identity (proven): map<long, map<long, CCountedPointer<CEngineSceneMap> > >; evidence: Ego_r.pdb CEngineScene::Maps is map<long, map<long, CCountedPointer<CEngineSceneMap> > >; this body mallocs 0x20-byte nodes (long key, the 12-byte inner map) and copies the value through 0x00B97DE0, the landed map<long, CCountedPointer<CEngineSceneMap> >::map(const map&); its callers 0x00B984A0 / 0x00B985D0 are the outer map's insert_unique overloads (agent951 G069 proved 0x00B985D0).
@@ -12,11 +13,7 @@
 //   constructor inlines into _M_create_node as the null-checked placement copy (key word, then the out-of-line value copy).
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
-template <class T> class CCountedPointer {          // 8 bytes: data, shared count block
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 class CEngineSceneMap;
 
 namespace std {

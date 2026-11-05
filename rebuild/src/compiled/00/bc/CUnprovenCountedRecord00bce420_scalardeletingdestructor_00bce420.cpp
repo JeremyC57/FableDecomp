@@ -1,5 +1,6 @@
 // CUnprovenCountedRecord_00bce420::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor of a record whose only non-trivial member is the CCountedPointer at +4: release it (destroy the pointee and free the count block when the count reaches zero), clear both words, and free the record when bit 0 of the flags is set
 // Leaf: ??_GCUnprovenCountedRecord_00bce420@@QAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCE420, 74 bytes (+ int3 padding to 80), thiscall `ret 4`, returns this.
 // Identity (descriptive): the deleting destructor of a non-polymorphic 12-byte record {4 trivially destructible bytes,
 //   CCountedPointer<T> +4}; no call, jump or data reference reaches this address (VC7.1 emits ??_G for every explicit
@@ -13,29 +14,8 @@
 //   block, then the record).
 void operator delete(void* block);                      // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // the shared count block
-    long RefCount;                                      // +0x0
-    void (__fastcall *DeleteFunc)(void*);               // +0x4
-    void* Data;                                         // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
-public:
-    T* Data;                                            // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CUnprovenPointee_00bce420;                                   // descriptive: the counted pointee
 class CUnprovenCountedRecord_00bce420 {                             // descriptive: 12 bytes

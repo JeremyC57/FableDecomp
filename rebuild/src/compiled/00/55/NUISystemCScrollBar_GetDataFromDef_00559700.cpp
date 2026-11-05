@@ -1,5 +1,6 @@
 // NUISystem::CScrollBar::GetDataFromDef() -- add the def's two configured actions (AddActionOnDraggedUp / AddActionOnDraggedDown)
 // Leaf: ?GetDataFromDef@CScrollBar@NUISystem@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members refs->RefCount, destroy->DeleteFunc, object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00559700, 292 bytes, thiscall, plain `ret`.
 // Identity (proven): Ego_r.pdb ?GetDataFromDef@CScrollBar@NUISystem@@QAEXXZ; called twice by NUISystem::CScrollBar's constructors 0x00559830; the virtual calls are slots 76 / 77, Ego_r.pdb CScrollBar's AddActionOnDraggedUp / AddActionOnDraggedDown pair.
 // Callees: CComponent::GetDef() (slot 108, +0x1B0), operator new 0x00BFEA1A, NUISystem::CAction::CAction() 0x0042BE50,
@@ -31,28 +32,7 @@ public:
     T* operator->() const { return Object; }
     T* Object;
 };
-class CCPPointerInfo { public:
-    unsigned long refs;                                     // +0x0
-    void (__fastcall* destroy)(void*);                      // +0x4
-    void* object;                                           // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    CCountedPointer(T* data);                               // <NUISystem::CAction>: 0x0042AA29
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->refs;
-            if (Info->refs == 0) {
-                Info->destroy(Info->object);
-                operator delete(Info);
-            }
-        }
-    }
-    T* operator->() const { return Data; }
-    T* Data;                                                // +0x0
-    CCPPointerInfo* Info;                                   // +0x4
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 enum EActionType { ACTION_TYPE_NONE = 0 };
 class CAction {                                             // 0x10 bytes in retail

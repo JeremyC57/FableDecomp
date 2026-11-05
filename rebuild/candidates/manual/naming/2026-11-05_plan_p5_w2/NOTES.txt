@@ -1,0 +1,24 @@
+Plan phase 5, wave "w2" (2026-11-05): CScriptThing remainder. Local CScriptThing stand-ins moved onto engine/CScriptThing.h
+(FABLE_RETAIL_NSCRIPT; used as it is: no header change, no new sub-macro, no includer regrade).
+
+ROWS: 150 PASS under vland --recheck-landed (RELOCATION_MATCH 138, MATCH 12); gate.py 150 of 150; parity equal to the landed
+  source on every row; no callee or own-symbol respell (CALLERS.tsv / BINDINGS.tsv empty).
+SCOPE (owner, 2026-11-05): every local CScriptThing row without a `// Revisit: inline-depth` / `two-view` marker (368 of the 399
+  at HEAD; scripts/stsurvey.py), whatever it calls out of line; the gate decides. 23 of the rows are also in w1: their w2
+  source starts from the w1 one (hdrmig5 `base`), so applying w1 then w2 leaves the w2 text.
+  - phase 4's 35 `scope` rows: 34 pass (0x00DEF3B0 now differs: 535 v 616, the local CCountedPointer model it kept);
+  - phase 4's 46 "PImp uses undefined class CCountedPointer" rows: 34 pass now that w1 put engine/CCountedPointer.h in (46 rows
+    move that include up to the header include: CScriptThing.h needs it first);
+  - MsgIsHitBySpecialAbilityFrom: the header takes EHeroAbility (slot 41 0x004AAD20,
+    ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z in Ego_r.pdb and FableWin.pdb; a
+    virtual call, so no relocation). The literal 14 is HERO_ABILITY_HEAL_LIFE_SPELL (engine/EHeroAbility.h, the Ego_r enum, as
+    32 landed rows already spell it); 8 rows respelled, 5 of phase 4's 6 pass; the sixth and four others keep a local
+    `typedef long ECameraOp` / EScriptAIPriority that clashes with engine/fable_nscript_forward.h (deferred);
+  - raw PImp_Data / PImpData reads -> PImp.Data / PImp.Info: rewritten in 12 rows; the 6 phase-4 rows still fail on other
+    grounds (non-template CCountedPointer stand-in, a second class's PImpData, the enum typedefs).
+  - the 11 rows with a non-template CCountedPointer stand-in (C2989) stay: T is void* there.
+DEFERRED.tsv (218): compile_fail 144 (CScriptThing methods the header lacks: GetThing 13, IsValid 12, InlineCopy 9,
+  GetPosition 5 ...; local enum typedefs vs fable_nscript_forward.h; non-template CCountedPointer 15; CEntityScriptBase::Me
+  of an undefined CScriptThing 7), bytes_differ 73 (local inline dtor / copy bodies expanded where the header declares them,
+  i.e. the inline-depth question), stray_change 1 (0x00EF6E40 ??_7 CPredicate<struct CScriptThing> vtable spelling).
+  A second pass (cfg_b.json: field_map + removal of the enum typedefs) gained no row.

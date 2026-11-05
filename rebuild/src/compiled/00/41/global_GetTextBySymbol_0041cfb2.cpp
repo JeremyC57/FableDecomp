@@ -6,6 +6,7 @@
 //   0x0099B0F0 / copy ctor 0x0099B720 / dtor 0x0099B510, CWideString::CreateFromCharString 0x0099B6A0. Globals: CMainGameComponent::Get()
 //   0x013B86A0 (Ego_r CMainGameComponent::PTextBank +0x14), g_pFrontEndGame 0x013B871C (+0x60), g_emptyWideString 0x013BCA24.
 // Leaf: GetTextBySymbol
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Lane gap: retail calls GetTextBySymbol 0x0041CFB2 with a link-time-generated convention (the CWideString result pointer in
@@ -32,7 +33,7 @@ public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
-template <class T> class CCountedPointer { public: T* Object; T* operator->() const { return Object; } };
+#include "engine/CCountedPointer.h"
 class CMainGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)

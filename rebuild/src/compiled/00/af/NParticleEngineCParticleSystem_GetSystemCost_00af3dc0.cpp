@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::GetSystemCost(CParticleSystemCost& cost) -- sum two cost weights over the enabled component instances, turn them into per-component shares (only when the first total is positive; the second share is dropped when its total is not), then let every enabled component add its cost
 // Leaf: GetSystemCost
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF3DC0, 273 bytes, `ret 4`. PDB: ?GetSystemCost@CParticleSystem@NParticleEngine@@QAEXAAVCParticleSystemCost@2@@Z.
 // Callees: virtual CPSCBase slots on each component: 20 (+0x50) GetComponentCost(CParticleSystemCost&, const CParticleSystem&,
 //   float, float) (PDB name/signature from the CPSCRender* overrides), 21/23 (+0x54/+0x5C) and 22/24 (+0x58/+0x60) take a
@@ -30,11 +31,7 @@ public:
     virtual void AddCostShareB(float& share, float totalB);       // slot 24
 };
 
-template <class T> struct CCountedPointer {
-    T*    Object;
-    void* Info;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 class CComponentInstance {                         // 0x14 bytes, vtable 0x0129F478
 public:

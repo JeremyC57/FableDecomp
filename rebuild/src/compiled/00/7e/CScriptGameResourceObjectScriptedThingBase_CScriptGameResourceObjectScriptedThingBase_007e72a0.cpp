@@ -1,5 +1,6 @@
 // CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase() -- default constructor: the CBaseObject base, the CScriptGameResourceObjectScriptedThingBase vtable, and a null PImp counted pointer
 // Leaf: ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E72A0, 26 bytes, thiscall, plain `ret`, returns this.
 // Identity: stores vtable 0x0127094C (RTTI .?AVCScriptGameResourceObjectScriptedThingBase@@, bases CScriptGameResourceObjectBase -> CBaseObject (ctor 0x0099A380) -> CBaseClass); Ego_r.pdb ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ and member PImp (+8); agent950 F014 identified it.
 // Shape (family K014, representative 0x006E7B40): out-of-line base ctor, then the vtable store, then the embedded
@@ -14,13 +15,7 @@ class __declspec(novtable) CScriptGameResourceObjectBase : public CBaseObject { 
 protected:
     CScriptGameResourceObjectBase() { }
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {               // Ego_r.pdb: Data, Info
-public:
-    T*              Data;                                // +0x00
-    CCPPointerInfo* Info;                                // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject {
 public:

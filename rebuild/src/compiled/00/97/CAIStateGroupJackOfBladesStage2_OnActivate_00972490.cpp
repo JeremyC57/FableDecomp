@@ -1,4 +1,5 @@
 // CAIStateGroup_JackOfBladesStage2::OnActivate() -- register the target and switch the three hit-location enabled states.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail00972490 length254. Shared headers retain opaque group fields24(target) and30(state).
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_JackOfBladesStage2.h"
@@ -20,9 +21,8 @@ class CWorld{ public:char prefix[0x4c];CCombatManager* PThingCombatManager_ptr;}
 struct JackThing;
 class CCombatManager{ public:void RegisterCombatant(JackThing*,JackThing*,bool);}; //006edc50
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct JackPointer{}; //00a01b50
 struct HitLocation{void SetEnabled(bool);}; //00816390
 struct HitLocations{HitLocation* GetHitLocation(const CCharString&);}; //00815820

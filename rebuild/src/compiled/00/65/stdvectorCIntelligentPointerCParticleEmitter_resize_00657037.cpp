@@ -1,5 +1,6 @@
 // std::vector<CIntelligentPointer<CParticleEmitter> >::resize(unsigned int newSize) -- one-argument resize: resize(newSize, value_type()) with an empty intelligent pointer built and destroyed in the frame
 // Leaf: resize
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00657037, length 50 bytes, `leave ; ret 4`. Callers: the NPlayerGui CDraw*
 // constructors (0x0064E239 in the landed CDrawHealth ctor 0x0064E1E4, which names it "vector<CIntelligentPointer
 // <CParticleEmitter>>::Resize @ 0x00657037" on its Effects member; 0x0064E29A, 0x00651AF7, 0x00652F89, 0x0065428F,
@@ -13,16 +14,8 @@
 // the argument pushes) and its compiler-generated dtor (no vtable store, out-of-line base dtor).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-struct CBaseIntelligentPointer {
-    virtual void v000();
-    void* PItem;                                             // +0x04
-    CBaseIntelligentPointer();                               // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                              // 0x00A01C10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125A26C
-    CIntelligentPointer() {}
-    virtual void v000();
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CParticleEmitter;
 

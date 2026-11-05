@@ -1,4 +1,5 @@
 // CV_HeroDuelScript::SecondFleeCutscene() -- hide the health bar, drop Thunder's minimap marker, take Thunder and then the hero under scripted control, play CS_GIBBETHILL_HERODUEL_FLEE with both cast inside a paused movie sequence, then restore Thunder's cutscene behaviour and flag that he entered the cave first
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9AEB0, 0x387 bytes, plain `ret`.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CBaseObject 0x0099A380 / ~ 0x0099A430, the handle's IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / operator= 0x008ABD10 / out-of-line dtor 0x007E74D0, the cast map's ctor 0x00CDBF70 / operator[]
@@ -22,46 +23,8 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-class CCPPointerInfo { public:                                 // counted-pointer block (Ego_r.pdb)
-    long RefCount;                                      // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-};
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

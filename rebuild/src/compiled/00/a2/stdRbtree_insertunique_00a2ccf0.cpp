@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_unique(iterator position, const value_type& v) -- (_Rb_tree<unsigned long, pair<unsigned long const, CCountedPointer<C3DAnimation2> >, ...>) STLport 4.6 hinted unique insert: the begin / end / interior hint cases, falling back on the unhinted insert_unique when the hint does not bracket v
 // Leaf: ?insert_unique@?$_Rb_tree@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2CCF0, 518 bytes (+ int3 padding), thiscall `ret 0Ch` (hidden iterator result,
 //   position, v).
 // Identity: _Rb_tree<unsigned long, pair<unsigned long const, CCountedPointer<C3DAnimation2> >, ...> -- proven; evidence: the landed map<unsigned long, CCountedPointer<C3DAnimation2> >::operator[] 0x00A2D810 calls it; its _M_insert 0x00A2C4E0 mallocs 0x1C-byte nodes (key + the 8-byte counted pointer); also called by the tree erase 0x00A2D290.
@@ -16,11 +17,7 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 class C3DAnimation2;
-template <class T> class CCountedPointer {         // 8 bytes: the object + its CCPPointerInfo count block
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 

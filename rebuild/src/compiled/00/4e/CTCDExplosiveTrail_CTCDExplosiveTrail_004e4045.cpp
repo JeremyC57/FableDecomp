@@ -1,6 +1,7 @@
 // CTCDExplosiveTrail::~CTCDExplosiveTrail() -- releases the explosive-trail def, destroys the ignore vector, the component-trap list and the target pointer, then ~CTCBase (tail jump)
 #pragma optimize("s", on)
 // Leaf: ??1CTCDExplosiveTrail
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E4045, length 56 bytes. Its only caller is the deleting destructor
 // 0x004E4029 = slot 0 of vtable 0x01242B4C (CTCDExplosiveTrail, rtti-vtables.tsv), so the catalog label
 // "CTCTargetingBase::~CTCTargetingBase" is propagated and rejected.
@@ -43,22 +44,9 @@ struct CDefPointer {                         // CDefPointer<const CExplosiveTrai
 };
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
-public:
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 
 struct CComponentTrapList {                  // retail list<pair<CIntelligentPointer<CThing>,long> >: sentinel pointer
     void* head;

@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_unique(iterator position, const value_type& v) -- (_Rb_tree<NUISystem::ETableSprites, pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent> >, ...>) STLport 4.6 hinted unique insert: the begin / end / interior hint cases, falling back on the unhinted insert_unique when the hint does not bracket v
 // Leaf: ?insert_unique@?$_Rb_tree@W4ETableSprites@NUISystem@@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@U?$less@W4ETableSprites@NUISystem@@@4@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@2@@2@U32@ABU?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00553C50, 518 bytes (+ int3 padding), thiscall `ret 0Ch` (hidden iterator result,
 //   position, v).
 // Identity (proven): _Rb_tree<NUISystem::ETableSprites, pair<NUISystem::ETableSprites const, CCountedPointer<NUISystem::CComponent> >, ...>; evidence: its callers are the map's insert(iterator, const value_type&) 0x00553FB0 and operator[] 0x00554030, which CTable::GetDataFromDef 0x00551340 calls four times -- CTable's only tree is Ego_r.pdb's CTable::Sprites, map<NUISystem::ETableSprites, CCountedPointer<NUISystem::CComponent> > (H079's 0x00553690 is its _M_erase); _M_insert 0x00553A00 mallocs 0x1C-byte nodes (enum key + 8-byte counted pointer)
@@ -16,11 +17,7 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 namespace NUISystem { enum ETableSprites { TABLE_SPRITE_0 }; class CComponent; }
-template <class T> class CCountedPointer {         // 8 bytes: the object + its CCPPointerInfo count block
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 

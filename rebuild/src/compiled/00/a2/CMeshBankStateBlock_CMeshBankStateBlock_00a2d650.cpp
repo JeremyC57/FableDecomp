@@ -1,5 +1,6 @@
 // CMeshBankStateBlock::CMeshBankStateBlock() -- empty bone-LOD map, null bounding-box range and empty excluded-bone set
 // Leaf: ??0CMeshBankStateBlock@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2D650, 98 bytes, plain `ret`.
 // Identity: Ego_r.pdb `??0CMeshBankStateBlock@@QAE@XZ`; the vtable stored is CMeshBankStateBlock's 0x0129CE7C
 //   (rtti-vtables.tsv; slot 0 is its scalar deleting destructor 0x00A2D770). Callers 0x00A271AB (CMeshDataBank) and
@@ -13,7 +14,7 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 
 class CCharString { public: void* PStringData; };
 class C3DBoundingBox;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
 template <class _Value> class CRetailRbTree {           // STLport _Rb_tree: header, node count, empty compare (12 bytes)
 public:
@@ -41,12 +42,6 @@ public:
 
 struct SBoneLOD { CCharString first; long second; };   // pair<const CCharString, long>
 
-template <class T> class CCountedPointer {              // 8 bytes
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-};
 
 class CMeshStateBlock {                                 // CMeshBankStateBlock::CStateBlock, 16 bytes of plain data
 public:

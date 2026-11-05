@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawHighlightingTargetingCursor::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated non-virtual deleting destructor: the implicit destructor (PTargetedThing, then the CDrawBase primitive handles) and operator delete when bit 0 is set; returns this
 // Leaf: ??_GCDrawHighlightingTargetingCursor@NPlayerGui@@QAEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x00442E60, 78 bytes, __fastcall `ret 4`; unreferenced (like its siblings 0x00442CC0 / 0x00443080).
 // Identity (probable): the PDB name sets hold the non-virtual ??_GCDrawHighlightingTargetingCursor@NPlayerGui@@QAEPAXI@Z;
 // among the CDraw* classes (Ego_r.pdb) it is the one whose only destructible member after CDrawBase is a
@@ -101,13 +102,9 @@ public:
 };
 }
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                             // vtable 0x0129C95C, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10 (slot 0 = ??_G 0x00A01C50)
-    CBaseObjectPointer* PData;                              // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };   // implicit (inline) destructor
 
 namespace NPlayerGui {
 class CDrawHighlightingTargetingCursor : public CDrawBase {

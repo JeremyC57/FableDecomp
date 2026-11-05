@@ -1,4 +1,5 @@
 // CTCCarriedActionUseGive::vfunc_28(CThingAICreature* user) -- run the base use hook; when the user is targeting a creature (targeting type 2) it may give to, start a give-item action towards it; otherwise tell the carried thing's interface-0x1a component that the use failed
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007ED170, 250 bytes (+ int3 padding), `ret 4`. Vtable 0x0123FAB4
 //   (CTCCarriedActionUseGive) slot 28.
@@ -48,15 +49,8 @@ class CCreatureActionBase { public:                                // retail siz
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingCreatureBase;
 class CCreatureAction_GiveItemToThing : public CCreatureActionBase { public:   // 0xb8 bytes
     CBaseIntelligentPointer PItem;                          // +0xa8

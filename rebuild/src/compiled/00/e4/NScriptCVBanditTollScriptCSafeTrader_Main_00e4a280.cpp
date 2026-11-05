@@ -1,5 +1,6 @@
 // NScript::CV_BanditTollScript::CSafeTrader::Main() -- the bandit-toll quest's safe trader: register an alive-filter over Me, take Me under scripted control, then until Me reaches the "SafeTraderEscape" marker keep walking there, warn the hero once when he comes near (a hostile line if he already attacked), and when the hero hits Me turn scared and run the precalculated route; finally fade out and kill Me
 // Leaf: ?Main@CSafeTrader@CV_BanditTollScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4A280, length 992 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, out-of-line dtor 0x00E241B0) over the CScriptThing copy ctor
 // 0x004ABE90 / ~CScriptThing 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30;
@@ -24,22 +25,9 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 enum EHeroAbility { HERO_ABILITY_14 = 14 };
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void t00(); virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05();
-    virtual void t06(); virtual void t07(); virtual void t08(); virtual void t09();
-    virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14(); virtual void t15();
-    virtual void t16(); virtual void t17(); virtual void t18(); virtual void t19(); virtual void t20();
-    virtual bool MsgIsHitBy(const CCharString& name) const;                                   // slot 21 (+0x54)
-    virtual void t22(); virtual void t23(); virtual void t24(); virtual void t25(); virtual void t26(); virtual void t27();
-    virtual void t28(); virtual void t29(); virtual void t30(); virtual void t31(); virtual void t32(); virtual void t33();
-    virtual void t34(); virtual void t35(); virtual void t36(); virtual void t37(); virtual void t38(); virtual void t39();
-    virtual void t40();
-    virtual bool MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;                     // slot 42 (+0xa8)
-    void* PImp[2];
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {
@@ -57,7 +45,6 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 using NScript::CIsThingAlive;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_0 };
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

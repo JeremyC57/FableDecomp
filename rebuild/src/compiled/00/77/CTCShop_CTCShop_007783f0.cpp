@@ -1,5 +1,6 @@
 // CTCShop::~CTCShop() -- compiler-generated shop thing-component destructor: release the stock map, the goods places, the shoppers' intelligent pointers and the shopkeeper pointer, then the CTCBase base
 // Leaf: ??1CTCShop@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007783F0, 145 bytes, `jmp` to the base destructor.
 // Identity (proven): the sole caller is the scalar deleting destructor 0x007783D0, slot 0 of vtable 0x0126A94C (RTTI
@@ -155,14 +156,8 @@ public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                         // vtable 0x0129C95C (vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                          // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };

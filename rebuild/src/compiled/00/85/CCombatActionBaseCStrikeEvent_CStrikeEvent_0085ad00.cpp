@@ -1,5 +1,6 @@
 // CCombatActionBase::CStrikeEvent::~CStrikeEvent() -- the compiler-generated destructor: free the StruckThingList block, destroy PWeapon, then HelperPointName
 // Leaf: ??1CStrikeEvent@CCombatActionBase@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085AD00, 36 bytes, thiscall, tail `jmp ~CCharString`.
 // Identity (proven): unreferenced in retail (the class's `??_G` 0x0085AE90, landed, expands the same three member
 //   destructions inline; the linker kept this COMDAT). FableWin.pdb has the non-virtual pair
@@ -67,18 +68,8 @@ public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                             // vtable 0x0129C95C, 8 bytes
-public:
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-    void SetPItem(CBaseObject* item);                       // 0x00A01B90
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
 class CThingGameObject;
 

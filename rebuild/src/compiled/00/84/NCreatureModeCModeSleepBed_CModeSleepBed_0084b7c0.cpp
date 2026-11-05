@@ -1,5 +1,6 @@
 // NCreatureMode::CModeSleepBed::CModeSleepBed(CThing* thing, const CCharString& sleepAnimName, const CCharString& group) -- CModeBase(thing), own vtable, the animation-group filter, the sleep animation name, a null remove-action pointer
 // Leaf: ??0CModeSleepBed
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084B7C0, length 59 bytes.
 // Callees: CModeBase::CModeBase(CThing*) @ 0x0073EAC0, CAnimFilterOfGroup::CAnimFilterOfGroup(const CCharString&)
 // @ 0x0073E8F0, CCharString::CCharString(const CCharString&) @ 0x0099EC30 (all as in landed sources).
@@ -27,11 +28,7 @@ class CAnimFilterOfGroup { public:                         // vtable 0x01267568
     CAnimFilterOfGroup(const CCharString& group);   // 0x0073E8F0
 };
 
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;
-    SCountBlock* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 struct CModeBase {
     virtual void v00();

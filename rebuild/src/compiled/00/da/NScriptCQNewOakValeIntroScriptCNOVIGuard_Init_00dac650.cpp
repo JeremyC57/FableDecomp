@@ -1,5 +1,6 @@
 // NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::Init() -- make the Oakvale guard undamageable, unkillable and not counted for combos, centre his wander on his home position (0..6 m), put him in scripting state group 4 and keep his weapons out
 // Leaf: ?Init@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DAC650, 272 bytes, plain `ret` (virtual, slot 2).
 // Callees (CGameScriptInterface virtuals, retail slot / address; ghidra_out/cgsi_vtable_slots.tsv is 4 rows high here):
@@ -12,12 +13,7 @@
 // Naming wave 35: identity reg 00dabbd3 "NOVI_Guard" in 00dabac0; Alloc 00dac580; vtable 012d83c0 slot 2; PDB ?Init@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CNOVI_Guard::Init (wave3/labels_alloc.tsv); PDB ?Init@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CNOVI_Guard@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 #include "engine/C3DVector.h"
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
-};
+#include "engine/CCountedPointer.h"
 struct CBase {                                   // vtable 0x01231710
     CBase() {}
     virtual ~CBase();

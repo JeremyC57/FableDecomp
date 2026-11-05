@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitterDatabase::DeleteEmitterTemplate(long handle) -- drop the emitter template(s) registered under a handle: erase the handle's [lower_bound, upper_bound) range from the Emitters vector map (releasing their counted emitter pointers)
 // Leaf: ?DeleteEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@QAEXJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE8B50, 82 bytes, __fastcall `ret 4`. No direct caller (an editor-side entry kept in the
 //   image).
 // Identity: Ego_r.pdb `?DeleteEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@QAEXJ@Z`; Emitters is
@@ -17,11 +18,7 @@
 namespace NParticleEngine { class CParticleEmitter; }
 struct SCountBlock;
 
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                      // +0x0
-    SCountBlock* Block;                                     // +0x4
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct __false_type { __false_type() { } };

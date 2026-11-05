@@ -1,5 +1,6 @@
 // InstallationComplete() -- nonzero when no file installer was ever created or the installer has finished copying
 // Leaf: ?InstallationComplete@@YIHXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042E3CE, length 32 bytes, plain `ret` (__fastcall, no arguments).
 // Name: FableWin.pdb / Ego_r.pdb `?InstallationComplete@@YI_NXZ` (the only installer-completion free function); its address is
 // taken (`mov eax,0x0042E3CE`) by CNewFrontendGameComponent::Run @ 0x0042EC7C, which stores it as a loading-screen callback.
@@ -19,11 +20,7 @@ class CFileInstaller {
 public:
     bool IsComplete() const;                             // 0x009C32B0
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingleton {
 public:
     static T& __fastcall Get();                          // 0x00404440 for CFileInstaller (Ego_r / FableWin ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ)

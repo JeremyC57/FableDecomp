@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::WatchForHeroAttackOnBandit(CScriptThing bandit) -- watch thread: frame by frame, whenever the hero hits the hired bandit (by weapon or an aggressive special ability) and the bandit still has health, flag the attack and count it
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Levers: plain-inline ~CScriptThing; CCountedPointer dtor zero order `Data = 0; Info = 0;`; for(;;) with every terminating return written `do { if (...) return; } while (0);`; by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) the third (after the health test) is the one exit retail calls 0x004AA840 at
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F061E0, length 395 bytes (+ int3 padding), `ret 0Ch` (the 12-byte
 // CScriptThing is passed by value and destroyed here).
@@ -24,31 +25,11 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:                                 // counted-pointer block (Ego_r.pdb)
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing;
-template <class T> class CCountedPointer { public:                     // CCountedPointer<CScriptThing>
-    CScriptThing*   Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

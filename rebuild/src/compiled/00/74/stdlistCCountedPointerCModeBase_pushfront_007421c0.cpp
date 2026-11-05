@@ -1,5 +1,6 @@
 // std::list<CCountedPointer<CModeBase> >::push_front(const CCountedPointer<CTCCreatureModeManager::CModeBase>& x) -- malloc a 0x10-byte node, copy the counted pointer into it (bumping the shared count) and link it in front of the first mode
 // Leaf: ?push_front@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007421C0, 61 bytes, __fastcall `ret 4`.
 // Callees: malloc @ 0x00BFEA0E (the STLport node allocator; MSVCR71 import thunk).
 // List: CTCCreatureModeManager::PModes (Ego_r.pdb `list<CCountedPointer<CTCCreatureModeManager::CModeBase> >`; the
@@ -13,22 +14,8 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                             // +0x00
-    void (__cdecl* DeleteFunc)(void*);                  // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 class CTCCreatureModeManager {
 public:

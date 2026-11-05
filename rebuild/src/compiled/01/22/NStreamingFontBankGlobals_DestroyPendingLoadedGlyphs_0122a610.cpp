@@ -8,31 +8,9 @@
 // back 16 bytes, `ebx` = 512); the counted pointer's inline destructor re-reads Info after the decrement (`--Info->Count;
 // if (Info->Count == 0)`), calls the deleter on the object, frees the block, then clears Data and Info.
 // Leaf: _$E2
-struct SCountInfo {
-    long  Count;                                   // +0x00
-    void (__fastcall* DeleteData)(void* object);   // +0x04
-    void* Object;                                  // +0x08
-};
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountInfo (= CCPPointerInfo) members Count->RefCount, DeleteData->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*          Data;                              // +0x00
-    SCountInfo* Info;                              // +0x04
-    CCountedPointer() : Data(0), Info(0) {}
-    ~CCountedPointer() { ReleaseData(); }
-    void ReleaseData()
-    {
-        if (Info) {
-            --Info->Count;
-            if (Info->Count == 0) {
-                Info->DeleteData(Info->Object);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CGlyphBlock;
 

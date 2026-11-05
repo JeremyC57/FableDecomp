@@ -1,5 +1,7 @@
 // NScript::CV_MazeResearchScript::OnPersist(CPersistContext& context) -- saves/loads SwordTaken and BookRead by name (default false)
 // Leaf: ?OnPersist@CV_MazeResearchScript@NScript@@UAEXAAVCPersistContext@@@Z
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EA80A0, 67 bytes, thiscall, `ret 4`; calls CPersistContext::Transfer<bool> 0x004045C0 (??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z, already bound).
 // Identity (naming wave 35, family op): outer script vtable 012ee444 slot 4 (slot 1 RegisterMain pushes "Main" 0x012C2F94); enclosing 00ea7800 (slot 2) registers 2 entity scripts whose PDB Alloc outer is CV_MazeResearchScript; PDB ?OnPersist@CV_MazeResearchScript@NScript@@; refs=1; was _unattributed::PersistTransfer2_00ea80a0.
 //   ?OnPersist@CV_MazeResearchScript@NScript@@UAEXAAVCPersistContext@@@Z in Ego_r.pdb / FableWin.pdb (rebuild/candidates/manual/naming/2026-11-04_anniversary/wave3/labels_alloc.tsv). The persisted keys are the PDB member names.
@@ -24,11 +26,7 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                    // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-template <class T> class CCountedPointer { public:                     // {Data, Info}
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
@@ -71,17 +69,13 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
-class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {              // CScriptThing::PImp
     CScriptThingImp* Data;                         // +0
     CCPPointerInfo*  Info;                         // +4
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
-class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
-    CCountedPointer_CScriptThing PImp;             // +0x04
-    CScriptThing() { }
-    virtual ~CScriptThing();
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CV_MazeResearchScript : public CQuestScriptObject {
 public:   // vtable 0x012EE444

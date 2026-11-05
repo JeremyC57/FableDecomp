@@ -1,5 +1,6 @@
 // CCreatureAction_PerformExpressionExtended::~CCreatureAction_PerformExpressionExtended() -- implicit destructor: PPerformToThing, then the PExpressionDef counted def handle, then ~CCreatureActionBase by tail jump
 // Leaf: ??1CCreatureAction_PerformExpressionExtended@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084ADC0, 52 bytes, thiscall, tail `jmp ~CCreatureActionBase`.
 // Identity (proven): callers 0x00846EF0 / 0x00847722 destroy by-value actions built by CCreatureAction_PerformExpressionExtended's
 //   constructor 0x00843310 (stores vtable 0x012744FC, RTTI .?AVCCreatureAction_PerformExpressionExtended@@; PExpressionDef +0xA8,
@@ -25,18 +26,8 @@ class CThing;
 class CThingCreatureBase;
 class CExpressionDef;
 
-class CBaseIntelligentPointer {                             // vtable 0x0129C95C (vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    void SetPItem(CBaseObject* item);                       // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
-public:
-    CIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CCreatureActionBase {                                 // retail sizeof 0xA8
 public:

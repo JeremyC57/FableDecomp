@@ -3,6 +3,7 @@
 //   delete the critical section, and destroy the members (disposal list, the two pointer sets, the three counted
 //   pointers) before the CBankFile base
 // Leaf: ??1CBankFileAsync@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D6490, 524 bytes (528 with padding).
 // Label correction: catalogued as "CBankFile::CBankFile::Destructor"; it stores the CBankFileAsync vtable 0x0129B8D4
 //   and destroys the async members (+0x110..+0x14c) of the landed CBankFileAsync ctor 0x009D5F80.
@@ -28,27 +29,7 @@ public:                      // 8 bytes on the stack
     void Lock();                                   // 0x00A62980
     ~CCriticalSectionLock();                       // 0x00A629A0
 };
-struct SCountBlock {
-    long  m_references;                            // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
-template <class T> class CCountedPointer { public:
-    T*           Data;                             // +0
-    SCountBlock* Info;                             // +4
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 struct SRbTreeNode {                               // 0x14 bytes
     unsigned char m_color;                         // +0x00
     SRbTreeNode*  m_pParent;                       // +0x04

@@ -1,5 +1,6 @@
 // std::vector<CCountedPointer<CParticleSimulation> >::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@V?$CCountedPointer@VCParticleSimulation@@@@V?$allocator@V?$CCountedPointer@VCParticleSimulation@@@@@std@@@std@@QAEXPAV?$CCountedPointer@VCParticleSimulation@@@@IABV3@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00b83b00, 300 bytes, thiscall, `ret 0Ch`.
 // Identity (probable): unbound; its copies go through __uninitialized_copy<CCountedPointer<CParticleSimulation>*> 0x00B82CC0 (bound) and its grow callee 0x00B83970 is bound (under the stand-in CRetailVector) to the CCountedPointer<CParticleSimulation> insert overflow; callers the resize 0x00B83FC0 and a tail jump at 0x00B83E60.
 // Callees: __uninitialized_copy 0x00B82CC0, __copy_backward 0x00B82FA0, uninitialized_fill_n 0x00B82DC0, fill 0x00B832B0 (all __fastcall),
@@ -108,49 +109,6 @@ void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, cons
 }
 }
 class CParticleSimulation;
-class CCPPointerInfo {                                     // 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer<T>& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 template void std::vector<CCountedPointer<CParticleSimulation> >::_M_fill_insert(CCountedPointer<CParticleSimulation>*, unsigned int, const CCountedPointer<CParticleSimulation>&);

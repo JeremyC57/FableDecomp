@@ -1,6 +1,7 @@
 // 0065dce8 CVillageTaskSecuritySweep::CVillageTaskSecuritySweep
 // Flags: /Os
 // Leaf: ??0CVillageTaskSecuritySweep@@QAE@ABVC3DVector@@M0M@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define CVillageTaskSecuritySweep Pass9SecurityTaskStorage
 #include "engine/CVillageTaskSecuritySweep.h"
@@ -26,8 +27,8 @@ class CVillageTaskBase:public CBaseObject{public:
  virtual bool IsCreatureAssignedToTask(const CThing&)const=0;
  virtual void AssignCreatureToTask(const CThing&)=0;
 };
-class CBaseIntelligentPointer{public:virtual~CBaseIntelligentPointer();unsigned char PData[4];CBaseIntelligentPointer();};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:__forceinline CIntelligentPointer(){}};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 // Layout: header and donor agree on52bytes; genuine task/object ancestry8,
 // intelligentpointer8 at8, packedvectors16/32, floats28/44, flag48.
 class CVillageTaskSecuritySweep:public CVillageTaskBase{public:

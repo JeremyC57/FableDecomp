@@ -1,5 +1,6 @@
 // NScript::CQ_UndeadRisingScript::ActivateNextLamp() -- light the next graveyard lamp
 // Leaf: ?ActivateNextLamp@CQ_UndeadRisingScript@NScript@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E0E040, 668 bytes, thiscall, plain `ret`, no EH frame.
 // Identity (proven): the landed CUndeadRisingZombieAttacker::OnPredicateFail 0x00E0DE90 spawns this member function (member
@@ -22,54 +23,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo {
-public:
-    long References;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    __forceinline CCountedPointer() : Data(0), Info(0) { }
-    __forceinline CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->References;
-    }
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->References;
-                if (Info->References == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->References;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

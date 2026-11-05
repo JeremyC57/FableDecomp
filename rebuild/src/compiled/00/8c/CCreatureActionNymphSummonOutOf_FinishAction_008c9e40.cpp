@@ -1,5 +1,6 @@
 // Byte-exact reconstruction of
 // Leaf: ?CCreatureAction_NymphSummonOutOf_FinishAction@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // ?FinishAction@CCreatureAction_NymphSummonOutOf@@UAEXXZ  @ 0x008c9e40
 
 // The invoked object at [Inner+0x60]. Its used method is the 37th virtual (byte
@@ -8,15 +9,8 @@
 #include "engine/CCreatureAction_NymphSummonOutOf.h"  // retyped onto the PDB layout; byte parity re-verified
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct Target {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();

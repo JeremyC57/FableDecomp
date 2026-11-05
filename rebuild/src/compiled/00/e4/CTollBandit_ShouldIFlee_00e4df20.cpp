@@ -1,5 +1,6 @@
 // CTollBandit::Should_I_Flee(CScriptGameResourceObjectScriptedThingBase&) -- once the bandits flee, take scripting control of the bandit, run him to the escape marker until he is close to it, then fade him out and kill him
 // Leaf: ?Should_I_Flee@CTollBandit@
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E4DF20, 433 bytes (448 with padding), `ret 4`.
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, the handle's IsValid 0x00CD23B9 / Release
@@ -11,13 +12,9 @@
 //   BanditsFlee +0x4f (PDB - 0x14); CScriptDef TollBanditCloseToExit +0x43c, TollBanditTimeToFade +0x440 (retail; PDB +0x470/+0x474).
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
-class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes
-    virtual ~CScriptThing();                                // 0x004AA840
-    virtual void t01() const; virtual void t02() const; virtual void t03() const; virtual void t04() const; virtual void t05() const;
-    virtual const C3DVector& GetPos() const;                // slot 6 (+0x18)
-    void* PImpData;
-    void* PImpInfo;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 enum EScriptEntityMoveType { MOVE_TYPE_WALK = 0, MOVE_TYPE_RUN = 1 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
 class CScriptGameResourceObjectScriptedThingBase { public:         // vtable 0x0127094C, 0x10 bytes

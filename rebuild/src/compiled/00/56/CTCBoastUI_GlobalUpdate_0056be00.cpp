@@ -1,4 +1,5 @@
 // CTCBoastUI::GlobalUpdate(long) -- per-frame update of the boast UI: a quitting UI deletes its menu components,
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountInfo (= CCPPointerInfo) members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // closes the front end, clears the global boast list and drops the player's boast mode; a requested activation
@@ -63,21 +64,7 @@ public:
 };
 
 class CGameCameraManager;
-struct SCountInfo { long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;
-    SCountInfo* Info;
-    CCountedPointer(T* data);                          // 0x0056C880
-    CCountedPointer(const CCountedPointer& other)
-    {
-        SCountInfo* info = other.Info;
-        Data = other.Data;
-        Info = info;
-        if (info)
-            ++info->Count;
-    }
-    ~CCountedPointer();                                // 0x0056C8D0
-};
+#include "engine/CCountedPointer.h"
 namespace NCameraModes {
     class CBase { public:
         virtual ~CBase();
@@ -190,7 +177,7 @@ template <> bool CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, C
 template <> CCountedPointer<NCameraModes::CBase>::CCountedPointer(NCameraModes::CBase* data)
 {
     Data = data;
-    Info = (SCountInfo*)StandInSink((int)data, 0);
+    Info = (CCPPointerInfo*)StandInSink((int)data, 0);
 }
 template <> CCountedPointer<NCameraModes::CBase>::~CCountedPointer()
 {

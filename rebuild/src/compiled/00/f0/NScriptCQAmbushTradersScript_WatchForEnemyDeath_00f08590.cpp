@@ -1,6 +1,7 @@
 // NScript::CQ_AmbushTradersScript::WatchForEnemyDeath(CScriptThing enemy) -- the per-enemy "WatchForEnemyDeath" spawned thread of the Ambush Traders quest: remember the enemy's def name, then every script frame ask the enemy who killed it; once someone has and the killer is the hero, decrease the quest's count for that def (EntityCountDecrease); stop when the thread is terminated
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F08590, 839 bytes (`ret 0Ch`: the by-value CScriptThing, destroyed by the callee).
 // Identity: Ego_r.pdb / FableWin.pdb ?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z; the landed
 //   CAT_Sentry::Init 0x00F08E90 (and five more spawners: 0x00F08509, 0x00F08BB3, 0x00F091D9, 0x00F094AE, 0x00F095BE) store
@@ -45,48 +46,7 @@ class CCharString { public:
     }
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:                          // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);          // destroys the pointee
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // polymorphic root: CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01238C8C
     struct InlineCopy { };                              // tag: the copy retail expands inline

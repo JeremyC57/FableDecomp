@@ -1,5 +1,6 @@
 // CGameScriptInterface::CameraMoveBetweenLookingAt(const C3DVector& from, const C3DVector& to, const CScriptThing& thing, float time, float f) const -- hand the camera manager a scripted move-between camera mode looking at a valid thing
 // Leaf: ?CameraMoveBetweenLookingAt@CGameScriptInterface@@UBEXABVC3DVector@@0ABVCScriptThing@@MM@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Naming wave 18: the global stand-in g_WorldFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x008926D0, 167 bytes, `ret 0x14`; Ego_r.pdb same symbol.
@@ -28,14 +29,7 @@ public:
     CScriptModuleTransitionBetweenPoints(const CThing& lookAt, const C3DVector& from, const C3DVector& to, long frames, float f);   // 0x00852D90
 };
 }
-template <class T> class CCountedPointer {
-public:
-    T*    Object;
-    long* Count;
-    CCountedPointer(T* object);                          // 0x005ED270 (instance shared by folding)
-    CCountedPointer(const CCountedPointer& other);
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CGameCameraManager {
 public:
     void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60

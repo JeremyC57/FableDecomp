@@ -1,5 +1,6 @@
 // CDisplayEngine::Init() -- report progress, enable game drawing from frame 0, run the virtual engine initialisation, reset the refresh clock and create the view manager
 // Leaf: ?Init@CDisplayEngine@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004350D0, length 192 bytes (180 + int3 padding), plain `ret` (__fastcall, void).
 // Name: FableWin.pdb `?Init@CDisplayEngine@@QAEXXZ`; the progress strings are "Init Display Engine: Init Graphics" (0x012315AC) and
 // "Init Display Engine: Init Engine" (0x01231588); single caller 0x004174E9 (the main game component's start-up, result unused --
@@ -34,12 +35,7 @@ public:
     long m_first;
     long m_second;
 };
-template <class T> class CCountedPointer {
-public:
-    void Reset(T* data);                                 // 0x00436CC0 for CDisplayViewManager
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CDisplayEngine : public CBaseClass {               // vtable 0x01231574
 protected:

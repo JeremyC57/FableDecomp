@@ -1,6 +1,7 @@
 // std::_List_base::clear() -- free every mesh data-bank entry of the bank manager's list (counted bank released, bank handle string destroyed) and relink the sentinel to itself
 // Instantiation: std::_List_base<CMeshBankManager::CMeshDataBankInfo,std::allocator<CMeshBankManager::CMeshDataBankInfo> >::clear
 // Leaf: ?clear@?$_List_base@VCMeshDataBankInfo@CMeshBankManager@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0A720, 105 bytes, thiscall, plain `ret`.
 // Identity: called by ~CMeshBankManager 0x00A0A150 (call 0x00A0A1A1, MeshDataBanks +0x08) and the STLport `~list` bodies
 //   0x00A0A840 / 0x00A0A880 (catalogued as the propagated CActiveFile::OnReadFinished). Element = Ego_r.pdb
@@ -15,30 +16,8 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                     // Ego_r.pdb
-    unsigned long RefCount;                                 // +0x0
-    void (__fastcall* DeleteFunc)(void* data);              // +0x4
-    void* Data;                                             // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x0
-    CCPPointerInfo* Info;                                   // +0x4
-    T* operator->() const { return Data; }
-    bool operator==(const CCountedPointer& other) const { return Data == other.Data; }
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
 
 class CCharString {
 public:

@@ -1,5 +1,6 @@
 // std::vector::vector(const vector& x) -- (vector<CIntelligentPointer<CThingAICreature> >) STLport copy constructor: allocate x.size() elements (none for an empty source), set start/finish/end of storage, copy-construct the elements through the out-of-line __uninitialized_copy
 // Leaf: ??0?$vector@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAE@ABV01@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC540, 87 bytes (+ int3 padding to 96), thiscall, `ret 4` (&x), returns this.
 // Identity (proven): std::vector<CIntelligentPointer<CThingAICreature> >::vector(const vector&); evidence: 0x008AD510 returns a copy of this+0x10 -- Ego_r.pdb ?GetSummonedCreatures@CTCGhostSword@@QBE?AV?$vector@V?$CIntelligentPointer@VCThingAICreature@@@@...@XZ on CTCGhostSword::Minions (+0x10 after CTCBase and PDef) -- and CGameScriptInterface::GetHeroSummonedCreaturesList 0x008A8260 copies the same member of the hero's interface-type-0x9A component (CTCGhostSword::GetInterfaceType 0x007C6670 returns 0x9A) before walking it with CBaseIntelligentPointer::GetPItem; TeleportAllFollowersToHero 0x008A7A70 likewise; Ego_r.pdb names ??0?$vector@V?$CIntelligentPointer@VCThingAICreature@@@@...@QAE@ABV01@@Z.
 // Label: the manifest's "std::vector::Copy_constructor" is propagated (family J011: six copy constructors over 8-byte non-POD elements;
@@ -15,13 +16,9 @@ extern "C" void* __cdecl malloc(unsigned int size);                       // 0x0
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                   // 8 bytes (Ego_r.pdb: vfptr, PData)
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                                    // +0x4
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingAICreature;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 
 namespace std {
 struct __false_type { __false_type() { } };

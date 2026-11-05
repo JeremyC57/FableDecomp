@@ -1,5 +1,6 @@
 // NScript::CQ_FireHeartScript::CFH_GuildMaster::Init() -- make the Guild Master unkillable, not pushable by the hero or by force push, and not using movement in actions; start his dialogue at line 1
 // Leaf: ?Init@CFH_GuildMaster@CQ_FireHeartScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCount (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D36860, 109 bytes (+ int3 padding).
 // Callees: the game script interface (+4) slots 517 EntitySetAsKillable(const CScriptThing&, bool, bool), 844
 //   SetIsPushableByHero(CScriptThing, bool) -- the thing BY VALUE --, 745 SetIsThingForcePushable(const CScriptThing&, bool), 529
@@ -14,15 +15,10 @@
 // Naming wave 35: identity reg 00d35333 "FH_GuildMaster" in 00d35090; Alloc 00d36790; vtable 012ccf48 slot 2; PDB ?Init@CFH_GuildMaster@CQ_FireHeartScript@NScript@@; refs=1; was under-qualified CFH_GuildMaster::Init (wave3/labels_alloc.tsv); PDB ?Init@CFH_GuildMaster@CQ_FireHeartScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CFH_GuildMaster@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
 class CThing;
-struct SCount { long m_references; };
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-template <class T> class CCountedPointer { public:                  // CCountedPointer<CScriptThing::CImp>: object, count block
-    CThing* m_pObject;
-    SCount* m_pCount;
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

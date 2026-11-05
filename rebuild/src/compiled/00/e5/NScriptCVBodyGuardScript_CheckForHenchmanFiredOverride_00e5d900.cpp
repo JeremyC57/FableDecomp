@@ -1,5 +1,6 @@
 // CV_BodyGuardScript::CheckForHenchmanFiredOverride() -- script thread: every frame, when the quest data reports the fire-override state (2) it waits frame by frame until the henchman list is empty, then clears the state; ends when the script thread terminates
 // Leaf: CheckForHenchmanFiredOverride
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E5D900, length 155 bytes (padded to 160), `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (x5), CGameScriptInterface::NewScriptFrame (slot 7,
 // +0x1c, through Game at +0x40, x2).
@@ -14,10 +15,9 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptThing { public:                              // 12 bytes (vtable 0x01238C8C)
-    void* __vftable;
-    long  m_data[2];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CScriptThingVector {                        // STLport vector<CScriptThing> (12 bytes in retail)
     CScriptThing* _M_start;
     CScriptThing* _M_finish;

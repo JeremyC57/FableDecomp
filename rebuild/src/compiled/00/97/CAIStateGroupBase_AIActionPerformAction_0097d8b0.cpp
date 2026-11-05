@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_PerformAction(CCreatureActionBase* action) -- wait until the creature is free to perform the action (or the group stops), post it in a brain output (flag 8), yield once, and report 1 (stopping) or 2 (performed)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097D8B0, length 203 bytes (`ret 4`).
 // Callees: CAIStateGroupBase::IsStopping @ 0x008FD010, CThingCreatureBase::IsFreeToPerformAction(const CCreatureActionBase*)
 // @ 0x00662210, PBrain virtual slot 2 (+0x08, yield), CBrainOutput::CBrainOutput @ 0x00835620, the action's virtual slot 11
@@ -10,12 +11,8 @@
 //   (class CAIBrain / CBrainOutput) instead of the invented SetBrainOutput. Same bytes.
 class CThing;
 
-struct CBaseIntelligentPointer
-{
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CCountBlock                                  // CCountedPointer's shared block
 {

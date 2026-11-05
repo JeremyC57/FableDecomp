@@ -1,4 +1,5 @@
 // CTCNoise::CTCNoise(CThing*) -- CTCBase(owner), vtable, an inline-constructed Definition (CTCNoiseDef), zero timer and range, an empty Creator pointer
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Shape: the inline CDefClassBase ctor is the landed out-of-line 0x0042D9E0 form (PDefManager in the init list, the three
 // status bits cleared in the body, byte-packed def base): inlined here VC7.1 clears the bits with retail's split
 // read-modify-write (`mov cl,[edi+24h] ; xor eax,eax ; and cl,0F8h ; mov [edi+24h],cl`) and stores PDefManager from eax.
@@ -44,16 +45,9 @@ class CTCNoiseDef : public CDefClassBase { public:                // 0x34 bytes
     virtual void v00();
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    const CThing* m_pItem;                          // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer() {}
-    virtual void v00();
-};
 
 struct CTCBase_00749810 {
     virtual void v00();

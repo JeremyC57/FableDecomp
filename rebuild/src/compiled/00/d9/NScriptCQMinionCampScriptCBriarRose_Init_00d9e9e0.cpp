@@ -1,5 +1,6 @@
 // NScript::CQ_MinionCampScript::CBriarRose::Init() -- set Briar Rose up for the minion-camp fight: four game-interface calls on Me (a 10000 value, a flag set, a by-value hand-over, a 0 flag), cache the force-push hit count from the quest globals, clear the parent quest's counter and start the speech timer at 0
 // Leaf: ?Init@CBriarRose@CQ_MinionCampScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9E9E0, length 157 bytes (vtable 0x012D6D0C slot 2 = Init per the
 // entity-script contract [dtor, Main, Init, GetParentScript, OnPersist, ...] of docs/engine/QUEST_SCRIPTS.md E9).
 // Callees: the game interface (Game, +4) virtual slots 265 (+0x424), 360 (+0x5a0), 844 (+0xd30, the CScriptThing by
@@ -15,15 +16,7 @@
 // Naming wave 35: identity reg 00d9e656 "BriarRose" in 00d9e5e0; Alloc 00d9e8b0; vtable 012d6d0c slot 2; PDB ?Init@CBriarRose@CQ_MinionCampScript@NScript@@; refs=1; was under-qualified CBriarRose::Init (wave3/labels_alloc.tsv); PDB ?Init@CBriarRose@CQ_MinionCampScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CBriarRose@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own); outer stand-in CQ_MinionCampScript moved into NScript); same bytes.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-template <class T> class CCountedPointer { public:                 // CCountedPointer<CScriptThing>: {Data, Info}, the count word at Info+0
-    void* Data;                               // +0x00
-    long* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++*Info;
-    }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

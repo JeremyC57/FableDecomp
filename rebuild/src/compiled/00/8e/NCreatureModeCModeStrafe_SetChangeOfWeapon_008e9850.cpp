@@ -1,5 +1,6 @@
 // NCreatureMode::CModeStrafe::SetChangeOfWeapon(CThing* weapon) -- take the new weapon's id and animation group into the strafe filter ("STAND" and -1 with no weapon thing), rebuild the combination anims, recompute the aiming frame count / centre from the projectile-aim animation's length, then clear the strafing combination anims
 // Leaf: SetChangeOfWeapon
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -98,10 +99,7 @@ class CAnimEntryLite { public:
     long AnimIndex;                            // +0
 };
 }
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 class CMainGameComponent {
 protected:

@@ -1,5 +1,6 @@
 // CCountedPointer::DeleteData(void* data) -- (CCountedPointer<CRegionConnectionGraph>) the counted pointer's per-type deleter: destroy the graph (its node map's counted pointers, then the vector block) and free the object
 // Leaf: ?DeleteData@?$CCountedPointer@VCRegionConnectionGraph@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051CCD0, 50 bytes, `ret` (static `__fastcall`, data in ecx; `push ecx` frame
 //   for the __false_type tag).
 // Identity (proven): stored as the count block's deleter by the landed CCountedPointer<...>::Reset 0x0051CEA0 (0x0051CEED),
@@ -66,15 +67,7 @@ template <class _T1, class _T2> struct pair {
 
 template <class T> class CArray : public std::vector<T> { };
 
-class CCPPointerInfo;
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    ~CCountedPointer();                                    // the release (inline in __destroy_aux)
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template <class K, class V> class CKeyPairCompareLess { public: };
 

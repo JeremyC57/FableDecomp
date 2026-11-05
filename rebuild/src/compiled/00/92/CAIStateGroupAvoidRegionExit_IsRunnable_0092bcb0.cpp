@@ -1,4 +1,5 @@
 // CAIStateGroup_AvoidRegionExit::IsRunnable() -- recover the live entrance position unless walk-to-marker disallows it.
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +8.
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- compiler-generated vector assignment preserves the retail shared destination-address adjustment (207 bytes).
 #include "engine/CAIStateGroupBase.h"
@@ -8,36 +9,28 @@
 struct CTCVillager;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
-    Entry* First;
-    Entry* Last;
-    Entry* LowerBound(const ETCInterfaceType& key); // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CRetailInterfaceMap;
 // Retail CThing prefix: PDB UsingComponents name, compact component map; Dead is +0x91 vs donor +0xa1.
 struct CRetailThingView {
     unsigned char _prefix[0x20];
     unsigned long UsingComponents[9];
     CRetailInterfaceMap Components;
-    unsigned char _beforeDead[0x91-0x4c];
+    unsigned char _beforeDead[0x3d];
     unsigned char Dead:1;
     bool HasTC(long type) const { if (UsingComponents[type>>5] & (1UL<<(type&31))) return true; return false; }
     void* GetTC(long type) {
       ETCInterfaceType key = (ETCInterfaceType)(type); CRetailInterfaceMap* map=&Components;
-      CRetailInterfaceMap::Entry* it=map->LowerBound(key);
-      if(it==map->Last || type<it->first) it=map->Last;
+      CRetailInterfaceMap::value_type* it=map->LowerBound(key);
+      if(it==map->end() || type<it->first) it=map->end();
       return ((void*)it->second);
     }
     template<class T> __forceinline bool GetInterface(T** out, long type) {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CRetailInterfaceMap* map = &Components;
-            CRetailInterfaceMap::Entry* it = map->LowerBound(key);
-            if (it == map->Last || type < it->first) it = map->Last;
+            CRetailInterfaceMap::value_type* it = map->LowerBound(key);
+            if (it == map->end() || type < it->first) it = map->end();
             *out = (T*)((void*)it->second);
             return true;
         }

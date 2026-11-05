@@ -1,5 +1,6 @@
 // std::_List_base::clear() -- (_List_base<CIntelligentPointer<NParticleEngine::CParticleEmitter>, allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>> >) STLport 4.6 list clear: walk from the first node to the sentinel, destroy each node's element through its virtual destructor and free the node, then link the sentinel to itself
 // Leaf: ?clear@?$_List_base@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0F630, 58 bytes (+ int3 padding), thiscall, `ret`.
 // Identity: std::_List_base<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::clear() -- proven; evidence: 0x00B0CA90 and 0x00B0F990 (the NParticleEngine::CPSCUpdateNormal destructor and its deleting form: they store the RTTI vtable 0x0129FC1C) call it on +0x9C = Ego_r.pdb CPSCUpdateNormal::DecalEmitterList (+0x9C, list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >), as do the unreferenced list destructors 0x00B0F790 / 0x00B0F810; catalogue "CExclusiveAssert::~CExclusiveAssert" (0x00B0CA90) is propagated; the PDB name sets hold list<CIntelligentPointer<NParticleEngine::CParticleEmitter> >::clear
 //   Family G073 (seven byte-identical bodies, one COMDAT per T: retail has no ICF); the manifest label "SortTreeRecursively" is
@@ -13,15 +14,8 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 namespace NParticleEngine { class CParticleEmitter; }
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // 8 bytes (Ego_r.pdb): vptr, PData
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual ~CIntelligentPointer();
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 

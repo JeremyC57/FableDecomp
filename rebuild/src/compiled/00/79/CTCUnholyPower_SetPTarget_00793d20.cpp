@@ -1,4 +1,5 @@
 // CTCUnholyPower::SetPTarget() -- clear the spell target, then take the owner's z-target (targeting component slot 33) when it is a live creature and the owner is the player creature
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00793D20, length 220 bytes (+ int3 padding). __fastcall, `ret`.
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10,
 //          CIntelligentPointer<const CThing>::CIntelligentPointer(const CThing*) @ 0x00668B60 (vtable 0x0123E7D8),
@@ -17,14 +18,8 @@ class CThing;
 class CBaseObject;
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);               // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x0123E7D8
     virtual void v00();

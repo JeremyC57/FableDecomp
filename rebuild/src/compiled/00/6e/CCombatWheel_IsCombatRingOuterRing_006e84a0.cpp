@@ -1,4 +1,5 @@
 // CCombatWheel::IsCombatRingOuterRing(const CCombatTypeDef*, unsigned long) -- is the indexed ring at or beyond the def's outer-ring start index
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E84A0, length 60 bytes (+ int3 padding). No callees.
 // The ring vector holds 28-byte rings (size() is the signed /28 reciprocal multiply); an index past the
 // end is false, otherwise `ring.Index >= def->DefenderWheelOuterRingStartIndex` (PDB +0x50, read at
@@ -13,11 +14,8 @@ template<class T> struct CRetailVector {
 };
 class CThing;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                           // +4
-    CThing* GetPItem() const;                  // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CProng {                                // CDefendingCombatantInfo::CProng, 28 bytes (PDB)
     bool  Blocked;                             // +0x00

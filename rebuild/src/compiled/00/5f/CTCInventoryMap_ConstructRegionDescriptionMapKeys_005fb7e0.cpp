@@ -1,4 +1,5 @@
 // CTCInventoryMap::ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion* region, bool pc) -- creates the map-keys container component (PC or console layout) and adds it under the parent
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail 0x005FB7E0, 272 bytes (+ int3), `ret 0Ch`, esp frame (speed TU); `this` and `region` are unused (the
 // retail body keeps only the container part: an unused CWideString local and the UI misc-things def fetch survive).
 // Callees: CManager::GetInstance 0x0041E5F2 (__fastcall), CWideString() 0x0099AED0 / ~CWideString
@@ -83,28 +84,7 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 
-struct SCountBlock {
-    long  m_references;                                // +0
-    void (__fastcall* m_pfnDestroy)(void*);            // +4: per-type deleter, object in ecx
-    void* m_pObject;                                   // +8
-};
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;                            // +0
-    SCountBlock* m_pCount;                             // +4
-    CCountedPointer() : m_pObject(0), m_pCount(0) {}
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            if (--m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;
-            }
-        }
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-    void Reset(T* object);                             // 0x00429C6F
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem {
 class CComponent { public:

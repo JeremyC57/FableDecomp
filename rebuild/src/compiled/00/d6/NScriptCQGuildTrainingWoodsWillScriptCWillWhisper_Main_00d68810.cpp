@@ -1,5 +1,6 @@
 // NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::Main() -- Whisper during Will training in the guild woods: conscious filter on Me, scripted control (priority 4, retried each frame), make her unkillable, combo-neutral, hero faction and boss-phase locked; then while the bandits are alive, re-join the hero faction and befriend everything when the hero hits her, and play the level-1 force-spell cast whenever the quest raises the whisper-animate flag
 // Leaf: ?Main@CWillWhisper@CQ_GuildTrainingWoodsWillScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first); MsgIsHitBySpecialAbilityFrom takes EHeroAbility (slot 41, 0x004AAD20: ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z in Ego_r.pdb and FableWin.pdb); the literal 14 is HERO_ABILITY_HEAL_LIFE_SPELL (engine/EHeroAbility.h, Ego_r enum); engine/EHeroAbility.h included (Ego_r enum EHeroAbility).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D68810, 719 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
@@ -23,31 +24,14 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 #include "engine/C3DVector.h"
-class CScriptThing;
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/EHeroAbility.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CScriptGameResourceObjectScriptedThingBase;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
-    virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
-    virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
-    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
-    virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025(); virtual void s026(); virtual void s027(); virtual void s028(); virtual void s029();
-    virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034(); virtual void s035(); virtual void s036(); virtual void s037();
-    virtual void s038(); virtual void s039(); virtual void s040();
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
-    virtual void s043(); virtual void s044(); virtual void s045(); virtual void s046(); virtual void s047(); virtual void s048(); virtual void s049(); virtual void s050();
-    virtual void s051(); virtual void s052(); virtual void s053(); virtual void s054(); virtual void s055(); virtual void s056(); virtual void s057(); virtual void s058();
-    virtual void s059(); virtual void s060(); virtual void s061(); virtual void s062(); virtual void s063(); virtual void s064(); virtual void s065(); virtual void s066();
-    virtual void SetFriendsWithEverythingFlag(bool on);   // slot 67 (+0x10c)
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
@@ -125,7 +109,7 @@ void NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::Main()
         if (IsActiveThreadTerminating()) return;
         if (Me.MsgIsHitBy("SCRIPT_NAME_HERO")
             || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
-                && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
+                && !Me.MsgIsHitBySpecialAbilityFrom(HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO"))) {
             if (IsActiveThreadTerminating()) return;
             Game->EntitySetInFaction(Me, "FACTION_HERO");
             Me.SetFriendsWithEverythingFlag(true);

@@ -1,5 +1,6 @@
 // std::list::push_back(const value_type& x) -- (list<CCountedPointer<CSoundEmitterLH::CActiveSound > >) STLport push_back: malloc a node, copy the counted pointer into it (taking a reference) and link it before the sentinel
 // Leaf: ?push_back@?$list@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@V?$allocator@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AACCC0, 59 bytes (+ int3 padding to 64), thiscall `ret 4`.
 // Identity (descriptive): list<CCountedPointer<CSoundEmitterLH::CActiveSound > >; evidence: DESCRIPTIVE -- its callers are CSoundEmitterLH vtable 0x0129E6EC slots 3 / 5 (0x00AABF60, the landed 0x00AAC1D0) and 0x00AABD50, each pushing a freshly started active sound (the landed CSoundEmitterLH::CActiveSound constructor 0x00AAB910, CCountedPointer(T*) 0x00AAC820) onto the emitter's list at +0x14; the audio layer is not in Ego_r.pdb, so the class names are the landed descriptive ones.
 // Label: the manifest's "_Buynode<CCountedPointer<CSpawnedFuncBase>_>" is a propagated Dinkumware spelling (family H010: seven rows that differ only in the
@@ -15,20 +16,7 @@ class CSoundEmitterLH {
 public:
     class CActiveSound;
 };
-class CCPPointerInfo {                                  // the shared reference count block
-public:
-    long Count;                                         // +0x00
-};
-template <class T> class CCountedPointer {             // 8 bytes: object + shared reference-count block
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->Count;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator {

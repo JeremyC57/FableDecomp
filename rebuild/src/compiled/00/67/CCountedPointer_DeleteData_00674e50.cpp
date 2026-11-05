@@ -1,5 +1,6 @@
 // CCountedPointer::DeleteData(void* data) -- (CCountedPointer<CWoundMorphs>) the counted pointer's per-type deleter: destroy the wound morph table (free its vector storage) and free the object
 // Leaf: ?DeleteData@?$CCountedPointer@VCWoundMorphs@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00674E50, 33 bytes (+ int3 padding), `ret` (static `__fastcall`, data in ecx).
 // Identity (proven): CCountedPointer<CWoundMorphs>::DeleteData(void*); evidence: its only reference is the count-block store in CCountedPointer<CWoundMorphs>::Reset 0x00675060 (0x006750B0), called by CCreatureDef::CCreatureDef 0x006765A0 at 0x00676687 on this+0x28 = Ego_r.pdb CCreatureDef::PWoundMorphs (CCountedPointer<CWoundMorphs>) with a fresh 0x10-byte object (zeroed vector, Dirty +0x0D cleared = CWoundMorphs::Morphs, a CVectorMap); Ego_r.pdb names ?DeleteData@?$CCountedPointer@VCWoundMorphs@@@@SIXPAX@Z.
@@ -32,13 +33,6 @@ public:
     CVectorMap<EBodyLocation, CEntry, CKeyPairCompareLess<EBodyLocation, CEntry> > Morphs;   // +0x00
 };
 
-class CCPPointerInfo;
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<CWoundMorphs>;

@@ -3,6 +3,7 @@
 //   call) closes with a same-TU non-template body for the map's insert_unique (explicit specialisation, auto_inline off): VC7.1
 //   then sees the value reference does not escape, so the pair stores no longer have to precede the hint's arg-slot copy.
 // Leaf: ?GetDataFromDef@CComponent@NUISystem@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) NUISystem::CComponent::GetDataFromDef @ 0x005331A0, 756 bytes, plain ret.
 // Callees: vtable 0x0124608C slots 108 LoadAndReturnDef 0x00530EC0, 130 AddActionOnDestruction 0x00532D00, 59 AddChild 0x00533B50;
 //   CAction() 0x0042BE50, CCountedPointer<CAction>(CAction*) 0x0042AA29, CUIState(const CUIStateDef&) 0x0052F440,
@@ -60,38 +61,7 @@ public:
 };
 }
 
-class CCPPointerInfo { public:                                     // counted-pointer block
-    long RefCount;                                          // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void* Data;                                             // +0x08
-    CCPPointerInfo(void* data, void (__fastcall* deleteFunc)(void*)) : RefCount(1), DeleteFunc(deleteFunc), Data(data) { }
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    static void __fastcall DeleteData(void* data);
-    CCountedPointer(T* data)
-        : Data(data)
-    {
-        if (data)
-            Info = new CCPPointerInfo(Data, DeleteData);
-        else
-            Info = 0;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 struct CRefCounted {                                        // the count sits at +4 behind the vptr
     long m_count;

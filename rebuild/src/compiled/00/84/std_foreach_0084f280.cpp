@@ -1,5 +1,6 @@
 // std::for_each(const CCountedPointer<NShape::CShape>* first, const CCountedPointer<NShape::CShape>* last, NShape::CCallShapeSlot1 f) -- calls virtual slot 1 on every shape through a by-value counted-pointer copy and returns the empty functor
 // Leaf: for_each
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084F280, 72 bytes, `ret 4`. Caller: CFirstPerson::OnDie 0x0084E097. Callees: the shape's
 // virtual slot 1 (+0x04), the counted pointer's release function (info +0x04, called with info +0x08) and operator delete @ 0x00BFE9BC.
 // The catalog calls the functor CIsShapeTrack; the shape is a for_each that drops the slot-1 result (a predicate used with for_each).
@@ -12,24 +13,7 @@ struct SCountedPointerInfo {
     void (__fastcall *m_pfnRelease)(void* owner); // +0x04
     void* m_pOwner;                               // +0x08
 };
-template <class T> class CCountedPointer {
-public:
-    T* m_pObject;                                 // +0x00
-    SCountedPointerInfo* m_pInfo;                 // +0x04
-    CCountedPointer(const CCountedPointer& o) : m_pObject(o.m_pObject), m_pInfo(o.m_pInfo)
-    {
-        if (m_pInfo)
-            ++m_pInfo->m_count;
-    }
-    ~CCountedPointer()
-    {
-        if (m_pInfo && --m_pInfo->m_count == 0) {
-            m_pInfo->m_pfnRelease(m_pInfo->m_pOwner);
-            operator delete(m_pInfo);
-        }
-    }
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class InputIter, class Function>
 Function __fastcall for_each(InputIter first, InputIter last, Function f)

@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleBase::CScriptModuleBase() -- constructor: two empty intelligent pointers (PCamPoint, PThingOrigin), zero origin, the default axis set (Up = Z, Forward = X), no owner/manager, flags clear, no cut-out or FOV override (-1)
 // Leaf: ??0CScriptModuleBase
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005ED070, length 112 bytes (107 + int3 padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (twice).
@@ -16,11 +17,8 @@ class CThing;
 struct CBase;
 class CGameCameraManager;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CBaseIntelligentPointer();                       // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {        // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer_CThing() {}

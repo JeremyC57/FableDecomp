@@ -1,5 +1,6 @@
 // CTCInventoryExperience::AddSoundAction(NUISystem::CComponent* element, CCharString soundName) -- gives a UI element a "play sound" action (type 3003) carrying the sound name as a wide-string parameter
 // Leaf: ?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056F615, length 138 bytes (`ret 8`; `this` unused). Identity: Ego_r.pdb / FableWin.pdb
 //   ?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z (private; landing 2026-11-03f respelled the
 //   public CGUIElement stand-in and the AddUIActionParam(CActionParamString*) callee spelling).
@@ -43,13 +44,7 @@ class CAction { public:                                                  // reta
 };
 }
 
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer(T* object);                                   // 0x0042AA29
-    ~CCountedPointer();                                           // 0x00429160
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem {
 class CComponent { public:

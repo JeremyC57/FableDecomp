@@ -1,5 +1,6 @@
 // std::__insertion_sort(pair<CCharString,C3DMeshVolume>* first, pair<CCharString,C3DMeshVolume>* last, CKeyPairCompareLess<CCharString,C3DMeshVolume> comp) -- insertion-sort the named containment volumes by name, inserting each entry after the first through __linear_insert
 // Leaf: ??$__insertion_sort@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A732B0, 113 bytes (+15 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the empty comparator on the stack, `ret 4`).
 // Callees: CCharString::CCharString(const CCharString&) 0x0099EC30 (x2, the by-value element copy's key and volume
@@ -34,49 +35,8 @@ public:
     }
 };
 
-class CCPPointerInfo {                                  // Ego_r.pdb, 12 bytes
-public:
-    long  RefCount;                                     // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04, Data in ecx
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            operator delete(Info);
-        }
-        Data = 0;
-        Info = 0;
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (Info)
-                ++Info->RefCount;
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-};
 
 class CContainmentVolume;
 

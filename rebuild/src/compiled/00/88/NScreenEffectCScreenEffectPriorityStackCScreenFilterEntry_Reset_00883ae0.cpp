@@ -1,5 +1,6 @@
 // NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::Reset() -- give every live thing in the entry's bypass map its saved colour-filter bypass state back
 // Leaf: ?Reset@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00883AE0, length 142 bytes (`ret`).
 // Identity: Ego_r.pdb `?Reset@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEXXZ`; the entry's `reset`
 //   map<CThing*, CThingGraphicByPassFlagState> sits at +0x30 (PDB +0x30: nothing STL before it); called from
@@ -34,22 +35,9 @@ template <class _Key, class _Tp, class _Compare> class map;
 }
 
 #pragma pack(push, 1)                                   // retail packs CIntelligentPointer (CThingGraphicArgPasser is 9 bytes)
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-private:
-    void* PData;                                        // +4
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
-public:
-    CIntelligentPointer() { SetPItem(0); }
-    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-};
 
 #pragma pack(pop)
 

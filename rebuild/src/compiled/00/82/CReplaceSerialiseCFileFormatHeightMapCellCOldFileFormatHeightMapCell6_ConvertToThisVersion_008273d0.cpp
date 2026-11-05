@@ -1,5 +1,6 @@
 // CReplaceSerialise<CFileFormatHeightMapCell,COldFileFormatHeightMapCell6>::ConvertToThisVersion(void* data) -- upgrade a height-map cell record in place: anything older than version 7 is converted up through the chain and the version-7 result copied over the buffer
 // Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members object->Data, control->Info are the header CCountedPointer's (same offsets); the local CCPPointerInfo members refs->RefCount, destroy->DeleteFunc, object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008273D0, 102 bytes, static __fastcall (data in ecx), plain `ret`. FableWin.pdb
 //   ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@@@SIXPAX@Z.
 // Callees: CReplaceSerialise<CFileFormatHeightMapCell,COldFileFormatHeightMapCell6>::ConvertPreviousUnknownVersionUp
@@ -15,27 +16,7 @@
 //   (below the `rep movsd` threshold), the temporary's destructor runs the deleter and frees the block on zero.
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    unsigned long refs;                        // +0x0
-    void (__fastcall* destroy)(void*);         // +0x4
-    void* object;                              // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              object;                    // +0x0
-    CCPPointerInfo* control;                   // +0x4
-    ~CCountedPointer()
-    {
-        if (control) {
-            --control->refs;
-            if (control->refs == 0) {
-                control->destroy(control->object);
-                operator delete(control);
-            }
-        }
-    }
-    T& operator*() const { return *object; }
-};
+#include "engine/CCountedPointer.h"
 
 #pragma pack(push, 1)
 template <class T, class TOld> class CReplaceSerialise {

@@ -1,5 +1,6 @@
 // NProgressDisplay::StartProgress(bool a, bool b, bool c, bool d, bool e, bool f) -- forward the six start flags to the installed progress display (virtual slot 1) when one is set
 // Leaf: ?StartProgress@NProgressDisplay@@YIX_N00000@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E9EF0, length 45 bytes. PDB: ?StartProgress@NProgressDisplay@@YIX_N00000@Z
 //   (`__fastcall`: a/b in ecx/edx, the other four on the stack, `ret 10h`).
 // Callees: CAProgressDisplay::StartProgress through vtable slot 1 (`call [esi+4]`; CProgressDisplay is the implementation).
@@ -19,14 +20,7 @@ public:
 };
 
 class CCountedPointerInfo;
-template <class T>
-class CCountedPointer
-{
-public:
-    T*                   Data;                     // +0x00
-    CCountedPointerInfo* Info;                     // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 extern CCountedPointer<CAProgressDisplay> g_ProgressDisplay;   // 0x013CAA38
 

@@ -1,5 +1,6 @@
 // CEngineClothSimulationMeshBase::`scalar deleting destructor'(unsigned int) -- drop the particle simulations, destroy and free the ParticleSims array, chain to ~CBaseClassNonCopyable, free the object on flag bit 0
 // Leaf: ??_GCEngineClothSimulationMeshBase@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B84120, 75 bytes, thiscall, `ret 4`.
 // Identity (proven): slot 0 of vtable 0x012A3924 (RTTI .?AVCEngineClothSimulationMeshBase@@ : CEngineSimulationBase :
 //   CParticleContext : CBaseClassNonCopyable : CBaseClass), and it stores that vtable first. Ego_r.pdb has the user
@@ -21,13 +22,7 @@ protected:
 };
 class CParticleContext : public CBaseClassNonCopyable { };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {             // 8 bytes
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer();                                // inline in retail (in __destroy_aux)
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct __true_type { __true_type() { } };

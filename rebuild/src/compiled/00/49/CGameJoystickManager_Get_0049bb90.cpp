@@ -1,5 +1,6 @@
 // CGameJoystickManager::Get() -- lazily created singleton: when the static counted pointer PClass is empty, new a CGameJoystickManager (CBase root, device number 0, "set" flag false) and Reset PClass to it; return the managed object
 // Leaf: ?Get@CGameJoystickManager@@SIAAV1@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049BB90, 88 bytes, plain `ret` (static __fastcall with no arguments:
 //   FableWin.pdb `?Get@CGameJoystickManager@@SIAAV1@XZ`, `static CGameJoystickManager& Get()`).
 // Callees: 0x00BFEA1A operator new (0x0C bytes, null-tested), 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable, 0x0049BCE0
@@ -18,14 +19,7 @@ protected:
     CBaseClassNonCopyable();                                        // 0x0099A2F0
 };
 
-template <class T>
-class CCountedPointer { public:
-    T*    m_pObject;                                // +0x00
-    void* m_pCount;                                 // +0x04 count block {references, destroy, object}
-    T* Get() const { return m_pObject; }
-    T& operator*() const { return *m_pObject; }
-    void Reset(T* object);                          // 0x0049BCE0
-};
+#include "engine/CCountedPointer.h"
 
 class CGameJoystickManager : public CBaseClassNonCopyable { public:
     long m_MainPlayerJoystickDeviceNumber;          // +0x04

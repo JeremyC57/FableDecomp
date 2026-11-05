@@ -1,5 +1,6 @@
 // _global::UninitCopy_CScriptThing_008ac140(const CScriptThing* first, const CScriptThing* last, CScriptThing* result, const __false_type&) -- STLport __uninitialized_copy over 12-byte CScriptThing handles: placement-copy each handle (vtable, then the counted PImp with its add-ref), return the advanced result
 // Leaf: UninitCopy_CScriptThing_008ac140
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC140, length 58 bytes (+ int3 padding), `ret 8`.
 // Callers: the vector<CScriptThing> helpers of the same TU: the fill/regrowth helper @ 0x008AC180 (call 0x008AC1EC), the
 //   reserve @ 0x008ACD30 (call 0x008ACDA8) and the range insert @ 0x008AD5F0 (calls 0x008AD65B / 0x008AD6B4).
@@ -12,21 +13,8 @@
 //   of the implicit copy constructor -- the vtable store, then PImp's copy (Data, Info, `if (Info) ++Info->RefCount`).
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class CCPPointerInfo { public:                        // Ego_r.pdb, 12 bytes
-    unsigned long RefCount;                    // +0x0
-    void (__cdecl* DeleteFunc)(void*);         // +0x4
-    void* Data;                                // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T* Data;                                   // +0x0
-    CCPPointerInfo* Info;                      // +0x4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

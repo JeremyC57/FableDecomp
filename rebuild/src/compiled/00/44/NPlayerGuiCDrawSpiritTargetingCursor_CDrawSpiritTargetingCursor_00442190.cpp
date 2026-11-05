@@ -1,5 +1,7 @@
 // NPlayerGui::CDrawSpiritTargetingCursor::~CDrawSpiritTargetingCursor() -- the compiler-generated destructor: destroy every targeted-thing intelligent pointer and free PTargetedThings, then the CDrawBase part (primitive handles)
 // Leaf: ??1CDrawSpiritTargetingCursor@NPlayerGui@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00442190, 99 bytes, __fastcall, plain `ret`; no vtable store (implicit destructor).
 // Identity (proven): CPlayerGui's constructor (0x0043B570) creates `new CDrawSpiritTargetingCursor` (0x34 bytes, constructor
 // 0x0064DD4D stores vtable 0x0125A5E8, RTTI .?AVCDrawSpiritTargetingCursor@NPlayerGui@@) and passes it to Reset 0x00444C20
@@ -101,13 +103,9 @@ public:
 };
 }
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                             // vtable 0x0129C95C, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10 (slot 0 = ??_G 0x00A01C50)
-    CBaseObjectPointer* PData;                              // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };   // implicit (inline) destructor
 
 namespace NPlayerGui {
 class CDrawSpiritTargetingCursor : public CDrawBase {
@@ -116,10 +114,7 @@ public:
 };
 }
 
-template <class T> class CCountedPointer {
-public:
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<NPlayerGui::CDrawSpiritTargetingCursor>;
 template void __fastcall CCountedPointer<NPlayerGui::CDrawSpiritTargetingCursor>::DeleteData(void*);

@@ -1,4 +1,5 @@
 // CGameScriptInterface::EntitySetInLimbo(const CScriptThing& thing, bool inLimbo, bool keepScript) const -- the script thing's thing (slot 11; no validity check), when it exists and is not dead (+0x91 bit 0): CThing::SetInLimbo (0x004C8CF0) with the flag, then the "limbo keeps script" bit (+0x92 bit 6) = inLimbo && keepScript
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088FD00, length 96 bytes.
 // Callees: the script thing's virtual slot 11 (+0x2c), CThing::SetInLimbo @ 0x004C8CF0. Shape: the thing in esi, the first flag in ebx, the `&&` as a full-register 0/1 (`mov al,1` / `xor al,al`) shifted into the bit-field store, `ret 0Ch`.
 struct CDisplayEngine_Retail;
@@ -61,8 +62,7 @@ class CThing { public:
 public:
     void SetInLimbo(bool);   // 0x004C8CF0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

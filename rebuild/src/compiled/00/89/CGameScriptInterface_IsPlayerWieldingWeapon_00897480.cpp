@@ -4,6 +4,7 @@
 //          LowerBound @ 0x004365B0 (kind 0x46, carrying), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440.
 // Shape: the outer `return false` is the byte `xor al,al`; the inner `w && w->HasTC(0x48)` materialises a full-register 0/1.
 // Leaf: ?IsPlayerWieldingWeapon@CGameScriptInterface@@UBE_NXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -48,8 +49,7 @@ class CThing { public:
 class CThingPlayerCreature : public CThing { };
 __forceinline CTCBase_Retail* GetTC(CThing* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing* thing, long kind) { return thing->m_tcs.Find(kind); }
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -3,6 +3,7 @@
 //   front-end slider sound.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054A6F0, 672 bytes (+ int3 padding), plain `ret`.
 // Leaf: AdjustValueToProfile
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Callees: CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0 and the profile getters (each `UseNewProfileValues ?
 //   <x>NewProfile : <x>`; manifest labels them all GetCameraSensitivity): Gamma 0x00437470, HUDAlpha 0x00437490,
 //   SoundVolume 0x0047CFC2, DialogueVolume 0x0047CFD3, MusicVolume 0x0054A4F0, CameraSensitivity 0x0054A510,
@@ -26,12 +27,7 @@ class CRGBColour { public:
     CRGBColour() {}
     CRGBColour(const CRGBColour& c) : B(c.B), G(c.G), R(c.R), A(c.A) {}
 };
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct CRetailVector {        // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;

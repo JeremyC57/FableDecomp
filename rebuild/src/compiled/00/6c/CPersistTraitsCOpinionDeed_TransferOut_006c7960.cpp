@@ -1,5 +1,6 @@
 // CPersistTraits<COpinionDeed*>::TransferOut(CPersistContext* context, CCharString* out, COpinionDeed* const* value) -- text persist write of an opinion deed as "(type,handle,position,frame,FALSE,target,reported,crime,extra)", the frame being the current one while the deed is still happening
 // Leaf: ?TransferOut@?$CPersistTraits@PAVCOpinionDeed@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C7960, 416 bytes, `ret 0Ch` (traits `this` unused).
 // Ego_r.pdb COpinionDeed (0x28 bytes) = { EOpinionDeedType DeedType +0, long DeedHandle +4, C3DVector Position +8,
 //   long FrameHappened +0x14, CIntelligentPointer<const CThing> PTarget +0x18, bool WasSearchingForWitnesses +0x20,
@@ -37,16 +38,8 @@ public:
     C3DVector() : X(0.0f), Y(0.0f), Z(0.0f) {}
 };
 
-class CBaseIntelligentPointer {
-public:
-    void* PItem;                                       // +0x04
-    CBaseIntelligentPointer();                         // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                // 0x00A01C10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // <CThing> 0x01238C6C, <const CThing> 0x01237F1C
-public:
-    CIntelligentPointer() {}
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 enum EOpinionDeedType { OPINION_DEED_TYPE_NONE = 0, OPINION_DEED_TYPE_FORCE_DWORD = 0x7fffffff };
 

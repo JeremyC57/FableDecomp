@@ -1,5 +1,6 @@
 // NCreatureMode::CModeStrafe::CModeStrafe(CThing*, bool) -- CModeBase(thing), empty strafe anim name, an empty-group filter, no active weapon, one aiming frame, four empty projectile-anim pointers
 // Leaf: ??0CModeStrafe
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00741FE0, 185 bytes (`ret 8`). Vtable 0x01268588 (NCreatureMode::CModeStrafe).
 // Callees: CModeBase::CModeBase(CThing*) 0x0073EAC0; CCharString(const char*, long) 0x0099EBF0 (twice, literal ""),
 // CCharString() 0x0099E4B0, operator= 0x0099EFB0, ~CCharString 0x0099EAE0; CRC 0x004014A0.
@@ -50,11 +51,7 @@ struct CModeBase {                         // retail 0x1c: vptr, ParentThing, We
     CModeBase(CThing* thing);              // 0x0073EAC0
 };
 
-template <class T> class CCountedPointer { public:   // 8 bytes: object + shared count block
-    T*    Object;
-    void* Count;
-    CCountedPointer() : Object(0), Count(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NAnimationEntryBodge { class CAnimEntryLite; }
 

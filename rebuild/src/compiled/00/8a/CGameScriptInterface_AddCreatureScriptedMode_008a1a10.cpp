@@ -10,6 +10,7 @@
 // allocation; the mode is an inline `new CModeScripted(thing.GetThing(), scriptName)` (base, vtable store, member);
 // the counted pointer is a by-value argument built in the argument area (`sub esp,8 ; mov ecx,esp`).
 // Leaf: ?AddCreatureScriptedMode@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -134,12 +135,7 @@ struct CModeScripted : CModeBase {                 // 0x74 bytes
 };
 }
 void* operator new(unsigned int size);             // 0x00BFEA1A
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    CCountedPointer(T* p);                         // 0x00718A00
-    CCountedPointer(const CCountedPointer& other);  // (declared: a by-value argument is then built in its stack slot)
-};
+#include "engine/CCountedPointer.h"
 struct CTCCreatureModeManager_Retail {
     bool AddMode(CCountedPointer<NCreatureMode::CModeBase> mode);   // 0x0073ACC0
 };

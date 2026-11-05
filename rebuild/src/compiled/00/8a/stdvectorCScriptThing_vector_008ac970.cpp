@@ -1,16 +1,15 @@
 // std::vector<CScriptThing>::~vector() -- destroy every element (virtual destructor), then free the block
 // Leaf: ??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008AC970, 50 bytes, thiscall, plain `ret`.
 // Identity (proven): bound ??1?$vector@VCScriptThing@@...@QAE@XZ (from 0x00DA2A20; other callers' stand-ins CScriptThingVector / CVector_008ac970); 12-byte stride = Ego_r.pdb CScriptThing; called by the cutscene macro runner 0x00CBFB7D on its locals. The manifest's "~vector<CConversation>" is propagated.
 // Callees: the element's virtual destructor (vtable slot 0, flags 0), free 0x00BFEA14.
 // Shape (family M172, representative 0x00630E00): the landed _M_clear 0x006F3450 (family K104) with a polymorphic element:
 //   `_Destroy(_M_start, _M_finish)` (inline __destroy_aux loop, `p->~T()` through the vtable) then the null-tested free. Speed TU.
 extern "C" void __cdecl free(void* block);               // 0x00BFEA14
-class CScriptThing {                                     // Ego_r.pdb, 12 bytes (vptr + two words)
-public:
-    virtual ~CScriptThing();
-    unsigned long Members[2];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 namespace std {
 struct __true_type { };
 struct __false_type { };

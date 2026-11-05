@@ -13,6 +13,9 @@ class CGameEventPackageSet {
 public:
     unsigned long NoPackages;                                // +0x00
     unsigned char Packages[0x13a10];                         // +0x04 CGameEventPackage[50]
+#ifdef FABLE_RETAIL_CGAMEEVENTPACKAGESET_CLEAR
+    void Clear();                                            // 0x009F1720 (Ego_r.pdb + FableWin.pdb ?Clear@CGameEventPackageSet@@QAEXXZ)
+#endif
 };
 #pragma pack(pop)
 

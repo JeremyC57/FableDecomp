@@ -1,4 +1,5 @@
 // CBankFile::FindIndexByFilename(const CCharString&, long) -- find a normalized basename, optionally restricting its entry type.
+// Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members First/Last are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Retail: 0x009CCDF0, 242 bytes. Leaf: FindIndexByFilename
 // CBankFile.h donor arrays/maps are 16 bytes versus retail12. RuntimeData+20,
 // PackedDataType+58 and FilenameIndices+c4 therefore require this retail model.
@@ -26,7 +27,7 @@ inline CFilenameNode* NextFilenameNode(CFilenameNode* p) {
     return p;
 }
 struct CRuntimeData { unsigned long DataOffset,DataSize; unsigned char DataType; bool Valid; };
-template<class T> class CArray { public: T* First;T* Last;T* Limit; };
+#include "engine/CArray.h"
 struct CPackedUIntArray {
     unsigned long* PackedInts;unsigned long Size;unsigned char Bits;unsigned long Bias;
     unsigned long operator[](unsigned long) const; //00A629F0
@@ -39,7 +40,7 @@ class CBankFile { public:
     unsigned char _otherBankState[0x4c];
     CFilenameMap FilenameIndices;
     CCharString ConvertPathToFilename(const CCharString&) const; //009CBE10
-    unsigned long GetDataType(unsigned long i) const { if(PackedDataType.Size) return PackedDataType[i-1];return RuntimeData.First[i].DataType; }
+    unsigned long GetDataType(unsigned long i) const { if(PackedDataType.Size) return PackedDataType[i-1];return RuntimeData.begin()[i].DataType; }
     unsigned long FindIndexByFilename(const CCharString&,long);
 };
 unsigned long CBankFile::FindIndexByFilename(const CCharString& path,long type)

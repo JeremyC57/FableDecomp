@@ -11,6 +11,7 @@
 //   0x00CBB120 gets a same-TU stand-in body that never reads its tag, so VC7.1 homes the random_access_iterator_tag
 //   temporary on the shared tag byte [esp+17h] with the two __false_type tags (declared only, it took [esp+16h]).
 // Leaf: ?RunEntityThreads@CScriptBase@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
@@ -18,17 +19,7 @@ class CCharString {
 public:
     void* m_pStringData;
 };
-class CCPPointerInfo { public:                                    // CCountedPointer count block
-    long  RefCount;                                        // +0x00
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CASuspendableProcess {
 public:
     virtual ~CASuspendableProcess();

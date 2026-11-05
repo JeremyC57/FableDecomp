@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::Intro() -- the Gibbet Hill ambush intro: take the four bandit allies and the hero under scripted control, cast them as BAN1..BAN4 and HERO and play CS_GIBBETHILL_AMBUSH_INTRO (with the quest's cut-scene flag map) in a paused movie sequence with the camera fixed, release all five and set BanditIntroDone
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0BB10, length 1579 bytes.
 // Callees: CBaseObject ctor/dtor/operator= 0x0099A380 / 0x0099A430 / 0x0099A3B0, CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, CRT malloc 0x00BFEA0E / free 0x00BFEA14 (cast-map header), operator delete 0x00BFE9BC, cast map
@@ -25,46 +26,8 @@ class CCharString { public:
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-};
 
 struct CScriptThingImp;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

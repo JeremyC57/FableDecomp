@@ -1,5 +1,6 @@
 // CParticleSimulation::CParticleSimulation() -- construct an empty cloth/particle simulation: no render data, no movable-resource memory (handle -1), then Clear() the simulation parameters
 // Leaf: ??0CParticleSimulation@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE0600, 0x24 bytes (+ int3 padding), thiscall, returns this.
 // Identity: stores vtable 0x0129F0C4 (RTTI .?AVCParticleSimulation@@ over CMovableResource; slot 1 the landed
@@ -11,13 +12,7 @@
 // TimestepMultiplier 1, GlobalDamping 0.25, and the MemoryHandle release through MemoryPool).
 // Shape: the derived vtable store (the empty inline CMovableResource constructor's store is dead), the counted pointer's
 // two zero words, `MemoryHandle(-1), MemoryPool(0)` from one zero register, then `Clear();` in the body.
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x0
-    CCPPointerInfo* Info;                                   // +0x4
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 class CMovableResourceMemoryPool;
 

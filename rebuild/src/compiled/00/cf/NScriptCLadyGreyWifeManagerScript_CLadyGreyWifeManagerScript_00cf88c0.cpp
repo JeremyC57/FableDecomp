@@ -1,5 +1,6 @@
 // NScript::CLadyGreyWifeManagerScript::CLadyGreyWifeManagerScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, vtable 0x012C6C10, five CScriptThing handles and the two region names
 // Leaf: ??0CLadyGreyWifeManagerScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: landed with the (void*, CGameScriptInterface*) parameter pair (unnested); respelled on the PDB constructor
 //   (CScriptDataBase*, CGameScriptInterfaceBase&) -- name-only (one pushed pointer each, Game = Ego_r CLevelScriptBase<T>::Game).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CF88C0, length 172 bytes (`ret 8`).
@@ -23,7 +24,7 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
 };
 class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.

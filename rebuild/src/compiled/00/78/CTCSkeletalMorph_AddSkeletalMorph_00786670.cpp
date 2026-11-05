@@ -1,5 +1,6 @@
 // CTCSkeletalMorph::AddSkeletalMorph(long type, const CCharString& name, float value) -- append a skeletal-morph entry built from the arguments to the component's morph array and mark the morph as changed
 // Leaf: AddSkeletalMorph
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00786670, 131 bytes (+ int3 padding to 144), __fastcall `ret 0Ch`.
 // Identity: Ego_r.pdb `?AddSkeletalMorph@CTCSkeletalMorph@@QAEXJABVCCharString@@M@Z`; callers 0x0071E0D3, 0x00728331,
 //   0x00786907 (CTCSkeletalMorph::OnCreate).
@@ -48,10 +49,7 @@ public:
 };
 
 class C3DSkeletalMorph;
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 class CTCSkeletalMorph : public CTCBase {
 public:

@@ -26,6 +26,7 @@
 // CWideString::operator== is the forced-inline PData test + Compare_Unsigned16Array (0x0040F0A0, bool); the game
 // component of 0x0F is a local; the 0xD7 parameter is a CActionParamString* (its &Value is a spilled CSE, as retail).
 // Leaf: ?Action@CFrontEndManager@NUISystem
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -163,13 +164,7 @@ public:
     long                      ActionType;                 // +0x00
     std::list<CActionParam*>  UIActionParams;             // +0x04
 };
-template <class T> class CCountedPointer
-{
-public:
-    T* Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CComponent
 {

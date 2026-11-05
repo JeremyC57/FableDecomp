@@ -16,26 +16,8 @@
 // Layout: Ego_r.pdb C3DAnimationState (AnimationIndex +8, AnimationTime +0xc), C3DAnimationTransitionState (StartState +8,
 // EndState +0xc, Progress +0x10), C3DAnimationStats AnimType +8; C3DKeyframe 0x30 bytes; the bank at manager +4.
 // Leaf: CombineBaseAnimations@C3DAnimationManager
-struct SCountBlock {
-    long m_references;                             // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
-template <class T> class CCountedPointer { public:
-    T* Object;                                     // +0
-    SCountBlock* Info;                             // +4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                delete Info;
-            }
-        }
-    }
-    T* operator->() const { return Object; }
-};
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
+#include "engine/CCountedPointer.h"
 
 class C3DKeyframe { public:
     float Rotation[4];

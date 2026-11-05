@@ -1,5 +1,6 @@
 // C3DMeshInfo::GetMeshStats() -- the mesh's stats: from the stats LOD or any loaded LOD that already has a mesh, else load the stats synchronously (with an "Asset Wait" progress line) and build them
 // Leaf: GetMeshStats
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail @ 0x00A25530, 439 bytes (`ret 4`, hidden result). Callees: BeginLoadingStats(bool) 0x00A24A80, DisplayProgress
 //   0x009E9F40, CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CBankFileAsyncData::WaitUntilFinished 0x009D5B60,
 //   CResource::AddToResourceList 0x009FC440 (manifest "CTCActivationTrigger::OnKill" is propagated), SetAsUnloadable
@@ -46,15 +47,7 @@ class CResourceList { public:
     unsigned long CurrentFrame;            // +0x2c
 };
 
-struct SCountBlock { long m_references; };
-template <class T> class CCountedPointer { public:
-    T* m_pObject;
-    SCountBlock* m_pCount;
-    template <class U> CCountedPointer(const CCountedPointer<U>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class CBankFileAsyncData { public: bool WaitUntilFinished(); };   // 0x009D5B60
 class C3DMeshStats { public:};
@@ -110,7 +103,7 @@ CCountedPointer<const C3DMeshStats> C3DMeshInfo::GetMeshStats()
     if (MeshData) {
         C3DMeshLODInfo* stats = MeshData->MeshStats;
         if (stats) {
-            if (stats->Mesh.m_pObject) {
+            if (stats->Mesh.Data) {
                 stats->Touch();
                 return stats->Mesh;
             }
@@ -119,7 +112,7 @@ CCountedPointer<const C3DMeshStats> C3DMeshInfo::GetMeshStats()
         for (unsigned long i = 0; IsLODPresent(i); ++i) {
             C3DMeshLODInfo* lod = MeshData->LODMeshes[i];
             if (lod) {
-                if (lod->Mesh.m_pObject) {
+                if (lod->Mesh.Data) {
                     lod->Touch();
                     lod->UsedMeshStats = true;
                     return lod->Mesh;

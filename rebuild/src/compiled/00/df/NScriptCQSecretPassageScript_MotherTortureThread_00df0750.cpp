@@ -1,5 +1,6 @@
 // CQ_SecretPassageScript::MotherTortureThread() -- waits for the torture chamber level and for the hero to reach the cut-scene kick-off marker, then casts the hero and the tortured mother and plays CS_MOTHER_RESCUE_TORTURE in a movie sequence
 // Leaf: MotherTortureThread
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members); the local's flattened PImpData / PImpInfo reads are the header's by-value PImp (CCountedPointer<CScriptThing>) .Data / .Info (+0x04 / +0x08).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
@@ -86,29 +87,9 @@ struct CScriptThingImp {                                // the implementation ob
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    CScriptThingImp* PImpData;                          // +0x04 CCountedPointer Data
-    void*            PImpInfo;                          // +0x08 CCountedPointer Info
-    virtual ~CScriptThing();                            // 0x004AA840
-    const C3DVector& GetPos() const                     // 0x004AA980
-    {
-        if (!PImpData)
-            return g_ZeroVector;
-        return PImpData->GetPos();
-    }
-    float GetAngleXY() const                            // 0x004AAA40
-    {
-        if (!PImpData)
-            return 0.0f;
-        return PImpData->GetAngleXY();
-    }
-    bool IsAlive() const                                // 0x004AB130
-    {
-        if (!PImpData)
-            return false;
-        return PImpData->IsAlive();
-    }
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

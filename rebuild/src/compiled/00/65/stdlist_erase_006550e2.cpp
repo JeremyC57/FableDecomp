@@ -1,5 +1,6 @@
 // std::list::erase(iterator position) -- (list<CIntelligentPointer<const CThing> >) STLport 4.6 single-node erase: unlink the node, destroy its element through the element's virtual destructor, free the node and return the iterator to the following node
 // Leaf: ?erase@?$list@V?$CIntelligentPointer@$$CBVCThing@@@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006550E2, 43 bytes (+ int3 padding), thiscall, `ret 8` (hidden iterator result + the
 //   iterator by value), returns the result pointer.
 // Identity: list<CIntelligentPointer<const CThing> > -- proven; evidence: its callers are the landed NPlayerGui::CDrawPerceivers::Update 0x0064A1AE (Things list +0x3c; State +0x28, Allegiance +0x2c, ThingCount +0x38 = Ego_r.pdb +0x2c/+0x30/+0x3c/+0x40 shifted by 4) and 0x0064639C, reached only through the forwarder 0x00437900 (`mov ecx,[ecx+1B8h] ; jmp`) = CPlayerGui::PDrawPerceivers.Data (Ego_r.pdb +0x1C0, CCountedPointer<NPlayerGui::CDrawPerceivers>) from CTCPerceiveThing; Ego_r.pdb CDrawPerceivers::Things is list<CIntelligentPointer<const CThing> >, and the PDB name sets hold list<CIntelligentPointer<const CThing> >::erase
@@ -16,15 +17,8 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CThing;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // 8 bytes (Ego_r.pdb): vptr, PData
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual ~CIntelligentPointer();
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 

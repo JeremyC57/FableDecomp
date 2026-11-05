@@ -1,5 +1,6 @@
 // std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CCombatantInfo>, ...>::erase(iterator position) -- unlink and rebalance, destroy the combatant info, free the node
 // Leaf: ?erase@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F4BC0, 94 bytes, `ret 4`.
 // Label correction: catalog "CMemoryAllocatorVariableSize_EraseAndDestroy" -> STLport _Rb_tree::erase(iterator) of the
 //   UID -> CCombatantInfo map.
@@ -12,14 +13,8 @@ void __cdecl operator delete(void* block);                // MSVCR71 import thun
 
 class CThingCreatureBase;
 class CCombatSequenceBase;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer {                 // Ego_r.pdb: 8 bytes
-public:
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-    ~CCountedPointer();
-};
 
 class C2DVector {
 public:

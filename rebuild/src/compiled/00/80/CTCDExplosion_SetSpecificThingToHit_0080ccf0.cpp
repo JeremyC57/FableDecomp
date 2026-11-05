@@ -1,5 +1,6 @@
 // CTCDExplosion::SetSpecificThingToHit(CThing&) -- appends the thing to the explosion's specified-things-to-hit list
 // Leaf: ?SetSpecificThingToHit@CTCDExplosion@@QAEXAAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080CCF0, 66 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: CTCDExplosion::SetSpecificThingToHit(CThing&) -- proven; evidence: it sits in the CTCDExplosion module (after SetSpecificThingsToHit 0x0080CC40, before UpdateHitThings
@@ -19,17 +20,8 @@
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                               // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
-    void SetPItem(CBaseObject* item);                        // 0x00A01B90
-    CBaseObjectPointer* PData;                               // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class _Tp> class allocator {
 public:

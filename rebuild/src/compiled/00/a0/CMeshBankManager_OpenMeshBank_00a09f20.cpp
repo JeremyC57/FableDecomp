@@ -1,5 +1,6 @@
 // 00a09f20 CMeshBankManager::OpenMeshBank
 // Leaf: ?OpenMeshBank@CMeshBankManager@@QAE?AV?$CCountedPointer@VCMeshDataBank@@@@ABVCCharString@@_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags:
 #include <stddef.h>
 #include <new>
@@ -33,15 +34,7 @@ FABLE_STATIC_ASSERT(sizeof(CCharStringData)==sizeof(CCharStringDataFields));
 class CCharString{public:CCharStringData*PStringData;CCharString();CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);
  bool operator==(const CCharString&o)const{if(PStringData==o.PStringData)return true;if(PStringData&&o.PStringData)return PStringData->Data==o.PStringData->Data;return false;}
 };
-class CCPPointerInfo{public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void*Data;CCPPointerInfo(unsigned long n,void(__fastcall*f)(void*),void*p):RefCount(n),DeleteFunc(f),Data(p){}};
-template<class T>class CCountedPointer{public:T*Data;CCPPointerInfo*Info;
- CCountedPointer():Data(0),Info(0){}CCountedPointer(T*p):Data(p),Info(p?new CCPPointerInfo(1,DeleteData,p):0){}
- CCountedPointer(const CCountedPointer&o):Data(o.Data),Info(o.Info){if(Info)++Info->RefCount;}
- void ReleaseData(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}
- ~CCountedPointer(){ReleaseData();}
- CCountedPointer&operator=(const CCountedPointer&o){T*data=o.Data;CCPPointerInfo*info=o.Info;if(Info!=info){ReleaseData();Data=data;Info=info;if(info)++info->RefCount;}return *this;}
- T*operator->()const{return Data;}static void __fastcall DeleteData(void*);
-};
+#include "engine/CCountedPointer.h"
 namespace std{
  template<class T>class allocator{};
  template<class P,class T,class A>class _STLP_alloc_proxy:public A{public:P _M_data;};

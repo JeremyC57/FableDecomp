@@ -1,5 +1,6 @@
 // CTCCreatedEntity::CTCCreatedEntity(CThing& thing) -- CTCBase(thing), then this class's vtable and an empty PCreator (CIntelligentPointer<const CThing>)
 // Leaf: ??0CTCCreatedEntity@@QAE@AAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D7DE2, 42 bytes (size-optimised TU, odd entry), thiscall, `ret 4`. Vtable 0x0123EAD4.
 // Identity (proven): CTCCreatedEntity::CTCCreatedEntity(CThing&); evidence: it stores vtable 0x0123EAD4 whose RTTI is .?AVCTCCreatedEntity@@ (: CTCBase : CBaseClassNonCopyable : CBaseClass); Ego_r.pdb holds
 //   ??0CTCCreatedEntity@@QAE@AAVCThing@@@Z; its only caller is the type factory 0x004DAF4B.
@@ -11,16 +12,8 @@
 //   intelligent pointers are modelled locally as the landed TC constructors do (engine/CTCBase.h has no constructor), Review at landing.
 #pragma optimize("s", on)
 class CThing;
-class CBaseIntelligentPointer {                         // 8 bytes: vptr + PData
-public:
-    CBaseIntelligentPointer();                             // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    void* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCBase {                                            // retail 0x0C bytes
 public:
     CTCBase(CThing& thing);                                // 0x00686800

@@ -1,5 +1,6 @@
 // CTCWillLightning::CLightningBeam::~CLightningBeam() -- lightning-spell beam dtor: kill a live beam particle, then the member dtors in reverse order (the lightning def pointer, the child-beam list, the target, home and particle thing pointers)
 // Leaf: ??1CLightningBeam@CTCWillLightning@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A0770, 126 bytes, tail jump to the last member destructor.
 // Identity: called by 0x007A40B0 (the `??_G` helper) and 0x007A4120, the delete function of CCountedPointer<CLightningBeam>
@@ -132,10 +133,7 @@ class CTCWillLightning { public:
     enum ELightningState { };                               // values not needed here
     class CLightningBeam;
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;                                             // +0x00
-    void* Info;                                             // +0x04 (CCPPointerInfo*)
-};
+#include "engine/CCountedPointer.h"
 class CTCWillLightning::CLightningBeam { public:          // no vtable
     ELightningState                                         m_lsState;              // +0x00
     CIntelligentPointer<CThing>                             m_tpParticleHandle;     // +0x04

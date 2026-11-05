@@ -1,5 +1,6 @@
 // CEngineLandscapePatch::CEngineLandscapePatch() -- default constructor: vtable, empty LoadingPatch counted pointer, the foreground flag bits (only ForegroundNeeded set), and null layer meshes / water patch / file span / fast-access texture ids
 // Leaf: ??0CEngineLandscapePatch@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF3A10, 48 bytes. Ego_r.pdb: ??0CEngineLandscapePatch@@QAE@XZ (the manifest label
 // "NHeroInformationScreens_Initialize" is propagated). Vtables: 0x012A8200 = CEngineLandscapePatch (rtti-vtables.tsv; its slots
 // 0x00BDD3E0 / 0x00BF3980 RelocateData / 0x00BF3840 CanRelocateData), the CMovableResource base store is dead and dropped.
@@ -21,12 +22,7 @@ struct SCountBlock_00bf3a10 {
     void* m_pObject;
 };
 
-template <class T> class CCountedPointer { public:
-    T*                    m_pObject;               // +0
-    SCountBlock_00bf3a10* m_pCount;                // +4
-    CCountedPointer() : m_pObject(0), m_pCount(0) { }
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 
 class C3DBoundingBox { public:
     float m_min[3];

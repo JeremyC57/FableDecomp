@@ -1,5 +1,6 @@
 // CMainGameComponent::CMainGameComponent(CMainGameComponentParent*, const CMainGameComponentInit&) -- main game component ctor: game-component base, empty banks/scoped pointers, force-update tuning (3.0x at 30 fps), the event/network/file/frame-rate members, a copy of the init structure, then registration in the component list
 // Leaf: ??0CMainGameComponent
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00418DCA, 294 bytes (`ret 8`). Vtables 0x0122F180 (+0) / 0x0122F174 (+4).
 // Callees: CGameComponent::CGameComponent 0x0051D8E0 (labelled CAIStateGroup_GazeAtHome), CInterpolationInfo 0x00415A60,
@@ -19,11 +20,7 @@ class CGamePlayerInterface;
 class CWorld;
 class CDisplayEngine;
 struct CMainGameComponentParent;
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct scoped_ptr {
     T* ptr;
     scoped_ptr() : ptr(0) { }

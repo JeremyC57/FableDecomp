@@ -1,5 +1,6 @@
 // CScriptBase::OnScriptedEntityInterrupted(unsigned __int64 entityID) -- flag the active entity script bound to the entity UID as interrupted (it restarts on its next update)
 // Leaf: ?OnScriptedEntityInterrupted@CScriptBase@@QAEX_K@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB7BC0, 64 bytes (`ret 8`, thiscall).
 // Identity: Ego_r.pdb `?OnScriptedEntityInterrupted@CScriptBase@@...`; the only caller 0x004AFBE5 passes an entity UID.
@@ -12,17 +13,7 @@ class CCharString {
 public:
     void* m_pStringData;
 };
-class CCPPointerInfo { public:                                    // CCountedPointer count block
-    long  RefCount;                                        // +0x00
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CASuspendableProcess {
 public:
     virtual ~CASuspendableProcess();

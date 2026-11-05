@@ -1,5 +1,6 @@
 // CTCEntityEvents::HasEvent(const TFilter& filter) const [TFilter = NEntityEvents::CIsEventOfTypeCreatedAfter] -- true when any event of the filter type created after the filter frame is in the event list
 // Leaf: HasEvent
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00956650, 70 bytes (`ret 4`, bool in al).
 // Callees: GetType (vtable slot 1) only; every filter is inline.
 // Model: `this` is engine/CTCEntityEvents.h (Events +0x0c, opaque there: read through the local STLport list model);
@@ -11,28 +12,7 @@
 void __cdecl operator delete(void* block);            // 0x00BFE9BC
 
 // CCountedPointer<T>: the object and its shared count block {RefCount, __fastcall DeleteFunc(Data), Data}.
-class CCPPointerInfo { public:
-    long  RefCount;                                   // +0x00
-    void (__fastcall* DeleteFunc)(void* data);        // +0x04
-    void* Data;                                       // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                             // +0x00
-    CCPPointerInfo* Info;                             // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            delete Info;
-        }
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NEntityEvents {
 // NEntityEvents::CEventBase (Ego_r.pdb: vptr +0, WorldFrame +4); GetType is vtable slot 1.

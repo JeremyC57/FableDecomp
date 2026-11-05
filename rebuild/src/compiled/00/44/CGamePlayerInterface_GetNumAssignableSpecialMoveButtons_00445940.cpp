@@ -1,4 +1,5 @@
 // CGamePlayerInterface::GetNumAssignableSpecialMoveButtons() const -- number of entries in the AssignableSpecialMoveButtons button list (8-byte CCountedPointer<CInputTypeBase const> elements)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00445940, 16 bytes. Catalog label CShaderPreParser::GetConstantCount is wrong (shared by 0x00445940 and
 // 0x00445950). Evidence: called by CTCInventoryAbilities::SetAbilityAsAvailable 0x005F6D03/0x005F71FF; Ego_r.pdb CGamePlayerInterface: PControlsDef +0x7a0, ControlsDefIndex +0x7a4, Controls
 // (CVectorMap, retail 16 bytes) +0x7a8, then the three STLport (12-byte) vectors AssignableSpecialMoveButtons +0x7b8,
@@ -6,11 +7,7 @@
 // Shape: a signed pointer difference (`sar eax,3`), not the unsigned size().
 
 class CInputTypeBase;
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct CRetailVector {               // STLport vector, 12 bytes
     T* _M_start;
     T* _M_finish;

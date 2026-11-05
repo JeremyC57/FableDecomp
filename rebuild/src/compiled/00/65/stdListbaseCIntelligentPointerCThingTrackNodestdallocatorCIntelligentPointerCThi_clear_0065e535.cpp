@@ -1,5 +1,6 @@
 // std::_List_base<CIntelligentPointer<CThingTrackNode>, std::allocator<CIntelligentPointer<CThingTrackNode> > >::clear() -- STLport list clear: destroy every node's intelligent pointer (virtual destructor), free the node, leave the sentinel self-linked
 // Leaf: ?clear@?$_List_base@V?$CIntelligentPointer@VCThingTrackNode@@@@V?$allocator@V?$CIntelligentPointer@VCThingTrackNode@@@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065e535, 50 bytes, thiscall, plain `ret`; size-optimised TU (unaligned address).
 // Identity (proven): its only caller, the list destructor stub 0x0065F22C (`clear(); if (node) free(node)`), is called by
 //   ~CTCVillage 0x0065B598 on this+0x48 = Ego_r.pdb CTCVillage::VillagePatrols (list<CIntelligentPointer<CThingTrackNode> >; retail lists are
@@ -12,15 +13,8 @@ class CThingTrackNode;
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // 8 bytes (Ego_r.pdb): vptr, PData
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual ~CIntelligentPointer();
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 

@@ -1,5 +1,7 @@
 // CCreatureAction_ProjectileCrouch::CCreatureAction_ProjectileCrouch(CThingCreatureBase& creature, CThingCreatureBase& target, bool turnToFaceTarget) -- crouch combat action (priority 0x96, SWORD_SWING sounds, CROUCH animation); when turning, remembers the target's position to face
 // Leaf: ??0CCreatureAction_ProjectileCrouch@@QAE@AAVCThingCreatureBase@@0_N@Z
+// Plan phase 5 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local same-TU LowerBound bodies removed (the header defines the same-TU noinline bodies).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B8260, 171 bytes, thiscall, `ret 0xc`.
@@ -17,14 +19,7 @@ class CBaseObjectPointer;
 class CTCBase;
 class CTCPhysicsBase;
 #pragma pack(push, 1)   // C3DVector has alignment 1: Ego_r puts CCreatureAction_ProjectileCrouch::FacePos at +301, size 316
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-() const { return C3DVector(-X, -Y, -Z); }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 
@@ -198,22 +193,8 @@ public:
     virtual bool IsPlayerCharacter() const = 0;                  // slot 77 (+0x134): CThingPlayerCreature 0x0052ABE0 true, CThingAICreature 0x00835940 false
 };
 
-class CBaseIntelligentPointer {                                  // vptr + PData (8 bytes)
-public:
-    CBaseIntelligentPointer();                                   // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                          // 0x00A01C10
-    CBaseObject* GetPItem() const;                               // 0x00A01B50
-    void SetPItem(CBaseObject* item);                            // 0x00A01B90
-    CBaseObjectPointer* PData;                                   // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer() { }
-    explicit CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-    T* Get() const { return (T*)GetPItem(); }
-    T* operator->() const { return (T*)GetPItem(); }
-    T& operator*() const { return *(T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CCreatureActionBase {                                      // retail sizeof 0xA8 (Ego_r 0xB4: three STL containers)
 public:

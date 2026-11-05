@@ -13,6 +13,7 @@
 // and the turn tolerance 1/72 (0x3C638E39) as an immediate. The position must be three SCALAR members copied
 // in the init list (a C3DVector member copies through `lea ecx,[edi+0Ch]`). Members carry the PDB names.
 // Leaf: ??0CActionSummonerLightningAttackTarget
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 
 class CBaseClassNonCopyable {
@@ -25,12 +26,9 @@ class CBaseObject { public:
     virtual void v00();
 };
 
-class CScriptThing : public CBaseObject { public:             // vtable 0x01238C8C, 12 bytes
-    virtual void v00();
-    void* PImp_Data;                            // +0x04
-    void* PImp_Info;                            // +0x08
-    CScriptThing(const CScriptThing& other);    // non-POD: returned through a hidden pointer
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 #include "engine/C3DVector.h"
 

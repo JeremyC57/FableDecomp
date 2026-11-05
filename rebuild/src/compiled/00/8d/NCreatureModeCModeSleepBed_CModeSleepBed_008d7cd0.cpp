@@ -1,5 +1,6 @@
 // NCreatureMode::CModeSleepBed::CModeSleepBed(CThing*) -- CModeBase(thing), own vtable, the "SLEEP_BED" filter, SleepAnimName copied from the default sleep-animation global, a null remove-action pointer
 // Leaf: ??0CModeSleepBed
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7CD0 (`ret 4`). Vtable 0x01275760 = NCreatureMode::CModeSleepBed.
 // Callees: CModeBase::CModeBase(CThing*) @ 0x0073EAC0, CCharString(const char*, long) @ 0x0099EBF0, CCharString() @ 0x0099E4B0,
 // operator= @ 0x0099EFB0, ~CCharString @ 0x0099EAE0, CRC @ 0x004014A0, CCharString(const CCharString&) @ 0x0099EC30.
@@ -49,11 +50,7 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase,
 
 class CCreatureActionBase;
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;
-    SCountBlock* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 extern CCharString g_defaultSleepAnimName;   // 0x013BAFD4
 

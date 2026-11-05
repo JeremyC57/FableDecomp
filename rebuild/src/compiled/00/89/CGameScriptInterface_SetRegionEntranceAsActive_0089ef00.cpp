@@ -1,4 +1,5 @@
 // CGameScriptInterface::SetRegionEntranceAsActive(const CScriptThing& thing, bool active) const -- when the valid script thing holds a region-entrance component (kind 99: +0x2c bit 3), set the active byte (+0xc) of the object at the thing's +0x5c
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089EF00, length 48 bytes.
 // Callees: the script thing's slots 75 (+0x12c) and 11 (+0x2c).
 // Shape: no map lookup (the object pointer sits at +0x5c), the kind mask test folded to `test byte ptr [eax+2Ch],8`, `ret 8`.
@@ -50,8 +51,7 @@ struct CRegionExit_Retail {
     unsigned char _pad[0xc];
     bool m_active;                                 // +0x0c
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

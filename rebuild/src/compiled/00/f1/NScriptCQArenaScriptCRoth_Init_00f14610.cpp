@@ -1,12 +1,12 @@
 // NScript::CQ_ArenaScript::CRoth::Init() -- clear the talk flags and the hint number, switch off the entity's opinion and deed reactions
 // Leaf: ?Init@CRoth@CQ_ArenaScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00f14610, 53 bytes, thiscall, plain `ret` (virtual, entity vtable slot 2).
 // Identity (proven): slot 2 (Init) of the entity vtable 0x012F8F98 that the landed NScript::CQ_ArenaScript::CRoth::Alloc 0x00F14560 stores; Ego_r.pdb ?Init@CRoth@CQ_ArenaScript@NScript@@EAEXXZ; the cleared members are Ego_r.pdb CRoth::EarlyTalk +0x1C, ChamTalk +0x1D, HintNumber +0x20.
 // Callees: CGameScriptInterface (ghidra_out/cgsi_slots_aligned.tsv) slots 594 EntitySetOpinionReactionsEnabled(const CScriptThing&,
 //   bool) (+0x948) and 595 EntitySetDeedReactionsEnabled(const CScriptThing&, bool) (+0x94c).
 // Shape (family L146): the member clears are scheduled between the first call's argument pushes.
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // std::vector::_M_clear() -- (vector<NPlayerTargeting::CTargetPoint >) STLport 4.6 `_M_clear()`: destroy every element, then free the block (the reallocating branch of vector::operator= / reserve)
 // Leaf: ?_M_clear@?$vector@VCTargetPoint@NPlayerTargeting@@V?$allocator@VCTargetPoint@NPlayerTargeting@@@std@@@std@@IAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808580, 50 bytes (+ int3 padding to 64), thiscall, plain `ret`.
 // Identity (proven): vector<NPlayerTargeting::CTargetPoint >::_M_clear; evidence: its only caller is the vector operator= 0x008085C0, which the player-targeting update 0x00804020 (CTCTargetingPlayer::FrameUpdate's helper) applies to this+0x68 and to locals -- Ego_r.pdb's CTCTargetingPlayer::Targets (+0x68), vector<NPlayerTargeting::CTargetPoint>, whose 0x1C-byte element starts with CIntelligentPointer<CThing> PThing
@@ -11,12 +12,8 @@
 //   stride 28) then the block freed when non-null.
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 class CThing;
-class CBaseIntelligentPointer {                               // 8 bytes: vptr + PData
-public:
-    virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
-    void* PData;                                               // +4
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 struct __true_type { };

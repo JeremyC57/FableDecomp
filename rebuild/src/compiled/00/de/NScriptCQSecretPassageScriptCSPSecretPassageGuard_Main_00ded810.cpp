@@ -1,5 +1,6 @@
 // NScript::CQ_SecretPassageScript::CSP_SecretPassageGuard::Main() -- the secret-passage guard (first variant): register an alive-filter over Me, take Me under scripted control, and until the hero is seen or heard now and then mutter a line while the hero is within 30 units; then shout the spotted line and set the hero as its best enemy target
 // Leaf: ?Main@CSP_SecretPassageGuard@CQ_SecretPassageScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DED810, length 639 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0) over CScriptThing copy ctor 0x004ABE90 / ~CScriptThing 0x004AA840,
@@ -23,13 +24,9 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 #include "engine/C3DVector.h"
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void t00(); virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05();
-    virtual const C3DVector& GetPosition() const;      // slot 6 (+0x18)
-    void* PImp[2];
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {
@@ -46,7 +43,6 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 }
 using NScript::CIsThingAlive;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

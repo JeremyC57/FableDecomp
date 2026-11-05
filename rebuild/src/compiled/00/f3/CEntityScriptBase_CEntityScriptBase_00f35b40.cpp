@@ -1,5 +1,6 @@
 // CEntityScriptBase::~CEntityScriptBase() -- base destructor of the entity (personal) scripts: release the Me script-thing handle
 // Leaf: ??1CEntityScriptBase@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00F35B40, 73 bytes, tail `jmp` to CBaseClass::~CBaseClass (0x0099A2E0); 30+ callers, each a
 // script class's ??_G (e.g. 0x00CDEBF0, slot 0 of the vtable 0x012C3224 stored here). Catalog label
 // NUISystem::CFrontEndScreen::~CFrontEndScreen is wrong: the members are Ego_r.pdb CEntityScriptBase's.
@@ -10,30 +11,7 @@
 // vptr, PImp CCountedPointer<CScriptThing> +4/+8 -- engine/CScriptThing.h flattens the vptr into a data member, so the
 // polymorphic classes are declared here).
 // Shape: /O2.
-class CCPPointerInfo { public:
-    long  RefCount;
-    void  (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info)
-        {
-            --Info->RefCount;
-            if (Info->RefCount == 0)
-            {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

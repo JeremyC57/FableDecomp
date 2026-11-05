@@ -8,6 +8,7 @@
 //   copy or member references give other spills); the vector operators are __forceinline (left to the compiler they are
 //   emitted out of line here).
 // Leaf: GetViewPosInFocalPlane
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 #include <math.h>
@@ -32,11 +33,8 @@ class CThing { public:
     unsigned char m_dead : 1;                        // +0x91 bit 0
     unsigned char m_91_1 : 7;
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     virtual void v00();
 };

@@ -1,4 +1,5 @@
 // NShape::CBasicShape::IsPosInShape(const C3DVector& pos) -- true when any subdivision triangle contains the position
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007611C0, length 55 bytes (+ int3 padding).
 // Callees: NShape::CSubdivisionTriangle::IsPosInShape (virtual slot 4, +0x10) on each element.
@@ -19,11 +20,7 @@ class CSubdivisionTriangle { public:
     virtual unsigned char IsPosInShape(const C3DVector& pos);   // slot 4
 };
 
-template <class T>
-struct CCountedPointer {                        // 8 bytes: pointee + shared count block
-    T*    m_pObject;
-    void* m_pCount;
-};
+#include "engine/CCountedPointer.h"
 
 template <class T>
 struct CRetailVector {                          // VC6-era Dinkumware vector: first / last / end
@@ -45,7 +42,7 @@ struct CBasicShape {
 unsigned char CBasicShape::IsPosInShape(const C3DVector& pos)
 {
     for (CCountedPointer<CSubdivisionTriangle>* p = Subdivisions.first; p != Subdivisions.last; ++p) {
-        if (p->m_pObject->IsPosInShape(pos))
+        if (p->Data->IsPosInShape(pos))
             return true;
     }
     return false;

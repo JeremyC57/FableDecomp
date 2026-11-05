@@ -1,5 +1,6 @@
 // std::__find(_List_iterator first, _List_iterator last, const const CThing*& val, const input_iterator_tag&) -- (list<CIntelligentPointer<CThing> >) STLport linear search of a list of intelligent pointers for the node whose pointee is val
 // Leaf: ??$__find@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@PBVCThing@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@0@U10@0ABQBVCThing@@ABUinput_iterator_tag@0@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065E6ED, 51 bytes (+ int3 padding to 53), `__fastcall`: the hidden iterator
 //   result in ecx (spilled to [ebp-4]), &val in edx; first, last and the unused category tag on the stack (`ret 0Ch`).
 // Identity (proven): __find over list<CIntelligentPointer<CThing> >::iterator with a const CThing* key; evidence: its only caller is the find forwarder 0x0065F50A, called once from CTCVillage::RemoveThingAndUpdateCameraPoints 0x0065B6DD (landed) on this+0x30 = Ego_r.pdb CTCVillage::VillageTorches (list<CIntelligentPointer<CThing> >; retail 4-byte lists from +0x28, the 12-byte PlayersCrimes set before VillageMarkers) with the key &thing of its const CThing& parameter, re-stored in the dead argument slot before each find; the six village finds are six instantiations because the six lists have six element types; FableWin.pdb names the matching Dinkumware _Find<list<CIntelligentPointer<CThing> >::iterator, const CThing*>.
@@ -15,14 +16,8 @@
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObject* GetPItem() const;                  // 0x00A01B50
-    void* PRecord;                                  // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 // FableWin.pdb ??$?8V<T>@@@@YI_NABV?$CIntelligentPointer@V<T>@@@@PBVCBaseObject@@@Z: the engine's free __fastcall (/Gr)
 // comparison of an intelligent pointer with an object pointer (the key converts to const CBaseObject* at the call, so it
 // is read first); declared plain `inline` the size TU keeps it out of line, as __fastcall it inlines like retail.

@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::InterpolateTo(const CParticleSystem& other, float t) -- interpolate towards another system: every component pair of the same type interpolates, the Enabled and ScaleParticles flags switch to the other system's past the halfway point, and Scale is blended linearly
 // Leaf: InterpolateTo
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF4100, 312 bytes, `ret 8`. PDB: ?InterpolateTo@CParticleSystem@NParticleEngine@@QAEXABV12@M@Z.
 // Callees: CPSCBase virtual slot 5 (+0x14, the component type; descriptive name) and slot 14 (+0x38)
@@ -23,12 +24,7 @@ public:
     virtual void InterpolateTo(const CPSCBase& other, float t);          // slot 14
 };
 
-template <class T> struct CCountedPointer {
-    T*    Object;
-    void* Info;
-    T* operator->() const { return Object; }
-    T& operator*() const { return *Object; }
-};
+#include "engine/CCountedPointer.h"
 
 class CComponentInstance {                         // 0x14 bytes, vtable 0x0129F478
 public:

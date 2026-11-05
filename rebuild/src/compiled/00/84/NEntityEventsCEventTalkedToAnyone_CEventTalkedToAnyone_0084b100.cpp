@@ -1,5 +1,6 @@
 // NEntityEvents::CEventTalkedToAnyone::CEventTalkedToAnyone(CThing&) -- the event starts at world frame 0 and its PThingTalkedTo intelligent pointer is pointed at the argument
 // Leaf: ??0CEventTalkedToAnyone@NEntityEvents@@QAE@AAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084B100, 52 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: NEntityEvents::CEventTalkedToAnyone::CEventTalkedToAnyone(CThing&) -- proven; evidence: it stores vtable 0x01274270 whose RTTI is
 //   .?AVCEventTalkedToAnyone@NEntityEvents@@ : CEventBase@NEntityEvents; FableWin.pdb name set holds ??0CEventTalkedToAnyone@NEntityEvents@@QAE@AAVCThing@@@Z;
@@ -15,19 +16,8 @@
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                               // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();
-    void SetPItem(CBaseObject* item);                        // 0x00A01B90
-    CBaseObjectPointer* PData;                               // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-    virtual ~CIntelligentPointer() {}
-    virtual T* GetPItem() const;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace NEntityEvents {
 class CEventBase {
 public:

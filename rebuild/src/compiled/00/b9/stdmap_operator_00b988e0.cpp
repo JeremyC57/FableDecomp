@@ -1,5 +1,6 @@
 // std::map::operator[](const long& __k) -- (map<long, map<long, CCountedPointer<CEngineSceneMap> > >, CEngineScene::MapList) STLport subscript: lower_bound the key, insert {key, empty inner map} at that hint when absent, return the inner map
 // Leaf: ??A?$map@JV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@@std@@QAEAAV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@1@ABJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B988E0, 302 bytes, thiscall, `ret 4`.
 // Identity (two sources): (1) its only caller is CEngineScene::GetMapAt 0x00B94BF0 on CEngineScene +4 (Ego_r.pdb
 //   CEngineScene::MapList, map<long, map<long, CCountedPointer<CEngineSceneMap> > >), and the PDB name set holds exactly
@@ -17,11 +18,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-template <class T> class CCountedPointer {             // 8 bytes: the object + its CCPPointerInfo count block
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 class CEngineSceneMap;
 
 namespace std {

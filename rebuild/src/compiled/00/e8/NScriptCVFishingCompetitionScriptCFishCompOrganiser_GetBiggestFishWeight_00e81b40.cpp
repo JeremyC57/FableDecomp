@@ -1,6 +1,7 @@
 // NScript::CV_FishingCompetitionScript::CFishCompOrganiser::GetBiggestFishWeight() -- the heaviest best weight among the competition fish types the hero carries (-1 when none; the heaviest becomes CompetitionEntry), shown to two decimals in TEXT_QST_B15_FISHSIZE through the CS_FISHCOMP_CHECKFISH_OUTPUTSIZE cut-scene
 // Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
 // Leaf: ?GetBiggestFishWeight@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEMXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail-asm: 0x00E81C05 `fld dword ptr [esp+1Ch]` + 0x00E81C09 `fistp dword ptr [esp+20h]` -- the engine's inline-assembly float-to-long helper inside the two-decimal rounding (the scaled weight stored to the helper's by-value slot and reloaded for a bare dword fistp, then fild / fdiv by the power-of-ten); VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword`; same helper as the landed NParticleEngine::CPSCEmitterGeneric::GetRandomRadius 0x00B102C0.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E81B40, 459 bytes, thiscall, plain `ret`, float on the x87 stack.
@@ -34,8 +35,7 @@ public:
 };
 CWideString __fastcall GFFloatToWideString(double value);   // 0x00486C40
 extern CWideString g_UnprovenWideString_0143E908;       // 0x0143E908 (landed descriptive spelling)
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

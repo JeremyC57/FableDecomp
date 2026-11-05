@@ -1,5 +1,6 @@
 // CReplaceSerialise<CFileFormatLevel,COldFileFormatLevel3>::ConvertToThisVersion(void* data) -- upgrade a level-file header record in place: anything older than version 4 is converted up through the chain and the version-4 result copied over the buffer
 // Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members object->Data, control->Info are the header CCountedPointer's (same offsets); the local CCPPointerInfo members refs->RefCount, destroy->DeleteFunc, object->Data are the header CCPPointerInfo's (same offsets).
 //
 // Retail 0x00519510, 80 bytes, static __fastcall (data in ecx), plain `ret`.  FableWin.pdb
 //   ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@@@SIXPAX@Z.
@@ -18,27 +19,7 @@
 // Label: catalog "CEngineWorldMap_CopyFields_Type3" (propagated).
 void __cdecl operator delete(void* block);
 
-class CCPPointerInfo { public:
-    unsigned long refs;                        // +0x0
-    void (__fastcall* destroy)(void*);         // +0x4
-    void* object;                              // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              object;                    // +0x0
-    CCPPointerInfo* control;                   // +0x4
-    ~CCountedPointer()
-    {
-        if (control) {
-            --control->refs;
-            if (control->refs == 0) {
-                control->destroy(control->object);
-                operator delete(control);
-            }
-        }
-    }
-    T& operator*() const { return *object; }
-};
+#include "engine/CCountedPointer.h"
 
 #pragma pack(push, 1)
 template <class T, class TOld> class CReplaceSerialise {

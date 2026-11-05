@@ -1,5 +1,6 @@
 // std::vector<CIntelligentPointer<CThingObject> >::resize(unsigned int new_size) -- STLport one-argument resize of a tavern table's tankard/food pointer vector: resize(n, CIntelligentPointer<CThingObject>()) with the empty pointer destroyed on both exits
 // Leaf: ?resize@?$vector@V?$CIntelligentPointer@VCThingObject@@@@@std@@QAEXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007B9EC0, 116 bytes (+ int3 padding), `__fastcall` (this -> esi), `ret 4`.
 // Identity: Ego_r.pdb `?resize@?$vector@V?$CIntelligentPointer@VCThingObject@@@@...@@QAEXI@Z` (CTCTavernTable::Tankards
 //   and ::Food); both callers (0x007B91F1, 0x007B91FA) are CTCTavernTable::OnInitialActivate 0x007B90F0. The temporary's
@@ -13,19 +14,9 @@
 //   to the fill-insert, and its destructor on both exits.
 class CBaseObject;
 
-class CBaseIntelligentPointer {                         // 8 bytes: vptr, item
-public:
-    CBaseObject* PItem;                                 // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x0125A858 for CThingObject
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-    virtual void v01();                                 // gives the derived class its own vtable
-};
 
 class CThingObject;
 

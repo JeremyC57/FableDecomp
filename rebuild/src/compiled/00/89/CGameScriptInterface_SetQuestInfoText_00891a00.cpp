@@ -1,6 +1,7 @@
 // CGameScriptInterface::SetQuestInfoText(const char* symbol) const -- look the game-text symbol up in the text bank
 // and show its text as the body text of the player GUI's quest-info panel
 // Leaf: ?SetQuestInfoText@CGameScriptInterface@@UBEXPBD@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891A00, length 192 bytes, `ret 4`.
@@ -90,10 +91,7 @@ class CDrawQuestInfo { public:
     CWideString Text;                               // +0x54
 };
 }
-template <class T> class CCountedPointer { public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 class CPlayerGui { public:
     unsigned char _pad000[0x1c8];
     CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo;   // +0x1C8

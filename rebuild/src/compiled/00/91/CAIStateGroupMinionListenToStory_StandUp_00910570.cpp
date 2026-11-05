@@ -1,5 +1,7 @@
 // CAIStateGroup_MinionListenToStory::StandUp() -- when the minion's current creature mode is 10 (sitting on the floor), try a CCreatureAction_GetUpFromSitting with the ST_STAND_UP_FROM_FLOOR animation: hand a clone to the brain's output if the creature is free to perform it, then remove mode 10 either way
 // Leaf: ?StandUp@CAIStateGroup_MinionListenToStory@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets); the local CCountBlock (= CCPPointerInfo) members Count->RefCount, Deleter->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00910570, 320 bytes (incl. int3 padding), thiscall, plain `ret`. FableWin.pdb
 //   `?StandUp@CAIStateGroup_MinionListenToStory@@IAEXXZ`; OnReplace (vtable 0x01289180 slot 10, 0x009106B0, landed) is
@@ -100,37 +102,12 @@ public:
     void RemoveMode(unsigned long mode);                    // 0x0073ABA0
 };
 
-struct CCountBlock { long Count; void (__fastcall* Deleter)(void*); void* Object; };
-template <class T> class CCountedPointer {
-public:
-    T* Object;
-    CCountBlock* Block;
-    void Reset(T* object);                                  // 0x00668D90
-    ~CCountedPointer()
-    {
-        if (Block) {
-            --Block->Count;
-            if (Block->Count == 0) {
-                Block->Deleter(Block->Object);
-                operator delete(Block);
-            }
-        }
-        Object = 0;
-        Block = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CBrainOutput {                                        // 0x48 bytes
 public:

@@ -1,5 +1,6 @@
 // NSpeechGainManager::GetTargetGain(const CActiveDialogueInfo& info, const vector<CDialogueLayerDef>& layerDefs) -- the gain a speaking line should fade to: 1 when speech-gain management is off, otherwise the layer def's high/mid/low level picked from the line's layer, whether it heads its layer and how many lines speak on the layers above it
 // Leaf: ?GetTargetGain@NSpeechGainManager@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E2B70, 137 bytes (+ int3 padding), `__fastcall` (ecx = info, edx = layerDefs),
 //   float in st(0), plain `ret`.
 // Identity: Ego_r.pdb name set `?GetTargetGain@NSpeechGainManager@@YIMABVCActiveDialogueInfo@1@ABV?$vector@VCDialogueLayerDef@
@@ -25,11 +26,8 @@ public:
 };
 }
 
-class CBaseIntelligentPointer {
-public:
-    virtual void v00();
-    void* PItem;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace NSpeechGainManager {
 

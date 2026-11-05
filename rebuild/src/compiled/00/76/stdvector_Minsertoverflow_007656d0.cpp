@@ -1,6 +1,7 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<CCountedPointer<NShape::CShape> >) STLport growth insert for counted pointers: allocate size + max(size, fill_len) elements, copy the head, x (once, or fill_len times) and the tail unless atend through the out-of-line uninitialized helpers, destroy and free the old block, adopt the new one
 // Flags: /Gr
 // Leaf: ?_M_insert_overflow@?$vector@V?$CCountedPointer@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007656D0, 218 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
 // Identity: element CCountedPointer<NShape::CShape> -- proven; evidence: the landed CTCShapeManager::AddNewShape 0x00762580 / vector::insert 0x007658B0 grow PersistantShapes (Ego_r vector<CCountedPointer<NShape::CShape> >) through it.
 //   Family G007 (11 byte-identical bodies, each its own COMDAT: retail has no ICF, so each address is one element type).
@@ -16,31 +17,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 namespace NShape { class CShape; }
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                            // +0x00
-    void (__fastcall* DeleteFunc)(void* data);         // +0x04
-    void*         Data;                                // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                              // +0x00
-    CCPPointerInfo* Info;                              // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            delete Info;
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 namespace std {
 

@@ -1,5 +1,6 @@
 // CPhysicsMesh::PeekRoughProportionOfSphereContained(const CCharString& name, const C3DVector& position, float radius) const -- sum the rough contained proportion of the sphere over every containment volume registered under the name, clamped to [0, 1]
 // Leaf: ?PeekRoughProportionOfSphereContained@CPhysicsMesh@@QBEMABVCCharString@@ABVC3DVector@@M@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6CA80, 149 bytes (+11 int3), thiscall `ret 0Ch`. Ego_r.pdb
 //   `?PeekRoughProportionOfSphereContained@CPhysicsMesh@@QBEMABVCCharString@@ABVC3DVector@@M@Z`.
@@ -23,11 +24,7 @@ public:
 
 class CContainmentVolume;
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                         // +0x00
-    void* Info;                                         // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 class C3DMeshVolume {                                   // 12 bytes
 public:

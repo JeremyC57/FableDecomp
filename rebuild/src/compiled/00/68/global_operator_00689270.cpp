@@ -1,5 +1,6 @@
 // operator!=(const CIntelligentPointer<const CThing>& pointer, const CBaseObject* object) -- true when the intelligent pointer does not currently point at object
 // Leaf: ??$?9$$CBVCThing@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@PBVCBaseObject@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 //
 // Retail 0x00689270, 19 bytes (+ int3 padding to 32), `ret` (__fastcall: the pointer in ecx, the object in edx).
 // Callee: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (thiscall on the pointer, which is its own base at +0).
@@ -12,13 +13,9 @@
 class CBaseObject;
 class CThing;
 
-class CBaseIntelligentPointer {
-public:
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
 
 template <class T>
 bool __fastcall operator!=(const CIntelligentPointer<T>& pointer, const CBaseObject* object)

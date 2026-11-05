@@ -1,5 +1,6 @@
 // std::vector::vector(const vector& x) -- STLport vector<NPlayerTargeting::CTargetPoint> copy constructor: allocate x.size() target points and copy-construct x's elements into them
 // Leaf: ??0?$vector@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00808470, 104 bytes, __fastcall, `ret 4`, returns this.
 // Name: Ego_r.pdb `std::vector<NPlayerTargeting::CTargetPoint>::vector(const vector&)` (donor 0x008039F0, Dinkumware);
@@ -18,12 +19,8 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 class CThing;
 #include "engine/C3DVector.h"
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();
-    void* PData;                               // +0x4
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace NPlayerTargeting {
 class CTargetPoint {                           // 0x1c bytes

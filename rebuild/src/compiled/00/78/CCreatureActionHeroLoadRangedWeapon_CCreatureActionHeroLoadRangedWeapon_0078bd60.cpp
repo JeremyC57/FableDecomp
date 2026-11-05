@@ -1,6 +1,7 @@
 // CCreatureAction_HeroLoadRangedWeapon::CCreatureAction_HeroLoadRangedWeapon(const CCreatureAction_HeroLoadRangedWeapon&) -- copy constructor: base CCreatureActionBase(other), own vtable (0x0126B9D4), the two CIntelligentPointer members at +0xa8 / +0xb0 copied through GetPItem/SetPItem
 // Label: the manifest row says CCreatureAction_BattleChargeImpact (propagated); the stored vtable 0x0126B9D4 is CCreatureAction_HeroLoadRangedWeapon (rtti-vtables.tsv).
 // Leaf: ??0CCreatureAction_HeroLoadRangedWeapon
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078BD60, length 105 bytes.
 // Callees: CCreatureActionBase::CCreatureActionBase(const CCreatureActionBase&) @ 0x0062EBC0, CBaseIntelligentPointer::CBaseIntelligentPointer
 // @ 0x00A01B10 (twice), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), CBaseIntelligentPointer::SetPItem @ 0x00A01B90 (twice).
@@ -12,13 +13,8 @@
 // (the member names describe the weapon being loaded and its ammunition).
 class CBaseObject;
 
-struct CBaseIntelligentPointer {            // 8 bytes: vptr + the pointed-to item
-    virtual void v00();
-    CBaseObject* m_pItem;                   // +4
-    CBaseIntelligentPointer();              // 0x00A01B10
-    CBaseObject* GetPItem() const;          // 0x00A01B50
-    void SetPItem(CBaseObject* item);       // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();

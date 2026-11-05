@@ -1,5 +1,6 @@
 // CCombatManager::IsCreaturePerformingNonInterruptableSequence(const CThingCreatureBase& creature) const -- whether the creature's current combat sequence is running and cannot be interrupted
 // Leaf: ?IsCreaturePerformingNonInterruptableSequence@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E97A0, 80 bytes, thiscall, `ret 4`.
 // Identity: Ego_r.pdb name set `?IsCreaturePerformingNonInterruptableSequence@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z`;
 //   the virtual is CCombatSequenceBase slot 5 = IsInterruptable (PDB order IsInterruptable, IsInterruptableDueToZoneChange,
@@ -28,11 +29,7 @@ public:
     bool Running;                                           // +0x04
 };
 
-template <class T> class CCountedPointer { public:
-    T*    Data;                                             // +0x00
-    void* Info;                                             // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 template <class T> struct CRetailVector {                   // retail std::vector: {first, last, end_of_storage}
     T* first;

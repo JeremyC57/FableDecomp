@@ -1,5 +1,6 @@
 // std::map::map(const map& x) -- (map<unsigned long, QuadricOptimiserInternals::CContractionReference>) STLport copy constructor with the _Rb_tree copy inline: zero the header proxy, malloc the 0x20-byte header node, then either the empty initialisation (root 0, leftmost = rightmost = header) or the out-of-line _M_copy of x's root with leftmost / rightmost found by walking it; copy the node count
 // Leaf: ??0?$map@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD5920, 161 bytes (+ int3 padding), thiscall, `ret 4`, returns this.
 // Identity: map<unsigned long, QuadricOptimiserInternals::CContractionReference> -- proven; evidence: the COptimisedVertex copy constructor 0x00AD77F0 copies +0xA8 with it: Ego_r.pdb COptimisedVertex::Pairs (map<unsigned long, CContractionReference>); 0x20-byte nodes; its _M_copy 0x00AD43A0 bumps the counted pointer's count; the landed binding names it as this map's copy constructor (struct spelling) and FableWin.pdb names ??0?$map@KVCContractionReference@QuadricOptimiserInternals@@...@QAE@ABV01@@Z.
 // Label: the manifest's "COptimisedVertex::COptimisedVertex_Large" is propagated across byte-identical bodies (the eight rows differ only in the header
@@ -15,11 +16,7 @@
 //   plain `inline` (a 19-byte forwarder, graded), so it is `__forceinline` here.
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);           // 0x00BFEA0E
-template <class T> class CCountedPointer {          // 8 bytes: data, shared count block
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 namespace QuadricOptimiserInternals {
 class CVertexPairContraction;
 class CContractionReference {          // 12 bytes

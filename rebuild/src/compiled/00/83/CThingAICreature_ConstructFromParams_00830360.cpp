@@ -1,5 +1,6 @@
 // CThingAICreature::ConstructFromParams(long defIndex, const C3DVector& position, long creationType, const CThingAICreatureInit& init) -- creature-base construction, then the owner (for creation type 5), full health from the def, drawable flag, overriding brain name, home and work buildings and auto-placing flag from the init block
 // Leaf: ?ConstructFromParams@CThingAICreature
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00830360, 305 bytes (+15 int3), `ret 10h`, bool in al.
 // Callees: CThingCreatureBase::ConstructFromParams(long, const C3DVector&, long, CThingPhysical*, CThingPhysical*,
 //   const CCharString&, bool) @ 0x00662880 (landed), CCharString::operator=(const CCharString&) @ 0x0099EFB0,
@@ -22,14 +23,8 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
     CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((CThing*)item)); }

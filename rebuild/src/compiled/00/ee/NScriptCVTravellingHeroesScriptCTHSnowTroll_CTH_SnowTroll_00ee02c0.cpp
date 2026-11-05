@@ -1,5 +1,6 @@
 // NScript::CV_TravellingHeroesScript::CTH_SnowTroll::CTH_SnowTroll(CV_TravellingHeroesScript& parent, CScriptDataBase* data, const CScriptThing& me) -- entity script: entity-script base over the parent's interface and Me, the parent pointer, two empty script things (Entrance, Exit), the master data last
 // Leaf: ??0CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ee02c0, length 102 bytes (ret 0Ch; vtable 0x012F42B0). Catalog label
 // "CTCLightningOrb::CTCLightningOrb" is propagated: the vtable store is an entity script's (base CEntityScriptBase 0x012C3224, no RTTI
 // locator), and it sits among the CTH_ (Travelling Heroes) scripts; the only PDB entity scripts of 52 bytes with CScriptThings at +0x1C/+0x28 are CEndGameBarrier and CTH_SnowTroll (0x00CDFEB0 is the former); only caller the factory @ 0x00EE0240.
@@ -14,11 +15,7 @@
 //   parameter types (the parent by reference, as the PDB spells it; same pointer ABI); same bytes.
 class CScriptDataBase;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-template <class T> class CCountedPointer { public:
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

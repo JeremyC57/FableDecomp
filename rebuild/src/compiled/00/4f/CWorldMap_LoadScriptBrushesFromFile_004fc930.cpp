@@ -1,5 +1,6 @@
 // CWorldMap::LoadScriptBrushesFromFile(long, CCountedPointer<CAFile>) -- load one map's scripted map brushes from a level file
 // Leaf: ?LoadScriptBrushesFromFile@CWorldMap@@MAEXJV?$CCountedPointer@VCAFile@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, DeleteData->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FC930, 56 bytes, `ret 0Ch`. PDB ?LoadScriptBrushesFromFile@CWorldMap@@MAEXJV?$CCountedPointer@VCAFile@@@@@Z
 // (protected virtual, primary vtable 0x01244AEC slot 29).
@@ -19,30 +20,8 @@ public:
     void LoadBrushesFromFile(CAFile& file);     // 0x00821010
 };
 
-class CCPPointerInfo {
-public:
-    long  Count;                                // +0x00
-    void (__fastcall* DeleteData)(void* data);  // +0x04
-    void* Data;                                 // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                       // +0x00
-    CCPPointerInfo* Info;                       // +0x04
-    ~CCountedPointer()
-    {
-        if (Info)
-        {
-            if (--Info->Count == 0)
-            {
-                Info->DeleteData(Info->Data);
-                operator delete(Info);
-            }
-        }
-    }
-    T& operator*() const { return *Data; }
-};
 
 class CMapInfo {
 public:

@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::WatchForQuestSuccess() -- wait for Deserted Farm, for the spy contact and for Bowerstone Jail; then, while the quest is not finished and Bowerstone Posh is loaded, finish the quest once the convoy spy (AT_ConvoySpy) follows the hero; when the quest is finished and the success speech is done, mark the quest succeeded
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0A470, length 1127 bytes.
 // Callees: CBaseClass ctor/dtor 0x0099A2D0 / 0x0099A2E0, CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 /
@@ -53,28 +54,7 @@ class CCharString { public:
         return PStringData->Data == text;
     }
 };
-class CCPPointerInfo { public:                                 // CCountedPointer's shared block
-    long RefCount;                                      // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4
-    void* Data;                                         // +8
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImpl;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

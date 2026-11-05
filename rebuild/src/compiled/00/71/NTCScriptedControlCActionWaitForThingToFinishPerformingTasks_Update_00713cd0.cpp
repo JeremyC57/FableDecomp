@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionWaitForThingToFinishPerformingTasks::Update() -- finish once the target is dead or its own scripted control is neither locked nor holding queued actions
 // Leaf: ?Update@CActionWaitForThingToFinishPerformingTasks@NTCScriptedControl@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00713CD0, 123 bytes (+5 int3 padding); vtable 0x0128D7F0 slot 1.
 // FableWin.pdb: ?Update@CActionWaitForThingToFinishPerformingTasks@NTCScriptedControl@@UAEXXZ.
@@ -14,7 +15,7 @@
 // Shape: dead target, or no scripted control, branch to the single Terminated store; Locked or a non-empty queue returns.
 class CTCBase;
 class CThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 struct SActionNode { SActionNode* _M_next; SActionNode* _M_prev; void* Data; CCPPointerInfo* Info; };
 struct CActionList {                               // STLport list<CCountedPointer<CActionBase>>
     SActionNode* _M_node;
@@ -51,7 +52,6 @@ class CThing { public:
         return false;
     }
 };
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // CTCElectrocutedEffect::~CTCElectrocutedEffect() -- electrocuted-effect component dtor: fade or kill the effect thing, then the members in reverse order (the tint pointer vector, the effect pointer, the def pointer) and ~CTCBase
 // Leaf: ??1CTCElectrocutedEffect@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CE730, 105 bytes, tail jump to the base destructor.
 // Identity (proven): first store = vtable 0x0126F044, RTTI `.?AVCTCElectrocutedEffect@@` (CTCElectrocutedEffect : CTCBase); the
 //   sole caller 0x007CED43 is the scalar deleting dtor 0x007CED40, slot 0 of that vtable. Ego_r.pdb
@@ -52,15 +53,8 @@ public:
 class CThing;
 class CSpecialAbilitiesElectrocutedEffectDef;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                          // vtable 0x0129C95C, 8 bytes
-public:
-    CBaseIntelligentPointer();                                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                                  // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CTCBase : public CBaseClassNonCopyable {              // retail 0x0C bytes
 public:

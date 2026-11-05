@@ -3,6 +3,7 @@
 //   position, remember it, and (when the creature can carry) put it in the CARRY_SLOT_TROLL_THROW_ROCK(_LEFT) slot;
 //   then roll 0..99 against the creature's willpower-indicator def chance and copy its value into the TC 0x30
 // Leaf: ?Initialise@CCreatureAction_TrollThrowProjectile@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C64F0, length 688 bytes, plain `ret` (virtual).
@@ -144,13 +145,8 @@ class CThingObject : public CThing { public:
                                            const CCharString& name);   // 0x00703210
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    CThing* m_pItem;
-    CBaseIntelligentPointer();                               // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
-    CBaseObject* GetPItem() const;                                // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                             // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other)

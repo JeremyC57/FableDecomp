@@ -14,11 +14,9 @@
 // scoped_ptr (a member object with an inline constructor: its zero store lands before `pop edi`, where a plain pointer
 // initialiser sinks below it) and the bool; BodyDieTimer is left uninitialised.
 // Leaf: ??0CThingDeadCreature
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CThingPointer : CBaseIntelligentPointer {            // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();

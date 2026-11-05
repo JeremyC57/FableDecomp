@@ -1,6 +1,7 @@
 // 007cbf60 CTCMultiArrow::~CTCMultiArrow
 // Flags:
 // Leaf: ??1CTCMultiArrow@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 namespace std {
@@ -61,18 +62,8 @@ public:bool IsDead()const{return Dead;}void Kill(bool);
 };
 #pragma pack(pop)
 #pragma pack(push, 1)
-class CBaseIntelligentPointer { public:                     // vtable 0x0129C95C, 8 bytes
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* Get() const { return GetPointer(); }
-    T* operator->() const { return GetPointer(); }
-private:
-    T* GetPointer() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 template <class T> inline bool __fastcall IS_THING_ALIVE(const T& p)

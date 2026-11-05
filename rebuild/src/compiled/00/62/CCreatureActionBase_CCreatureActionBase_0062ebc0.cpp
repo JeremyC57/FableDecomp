@@ -1,5 +1,6 @@
 // CCreatureActionBase::CCreatureActionBase(const CCreatureActionBase&) -- the member-wise copy constructor: CBaseObject copy (detached), own vtable, the two intelligent pointers re-attached to the source's items, the plain fields copied, the two counted animation-entry pointers add-ref'd, and the three containers copy-constructed
 // Leaf: ??0CCreatureActionBase
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062EBC0, 345 bytes (352 with padding). `ret 4`; vtable 0x01259D24.
 // Callees: CBaseObject::CBaseObject(const CBaseObject&) 0x0099A390; CBaseIntelligentPointer ctor 0x00A01B10,
@@ -21,13 +22,8 @@ class CAnimationEntry;
 struct CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                          // +0x04
-    CBaseIntelligentPointer();              // 0x00A01B10
-    CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CBaseObject*a0);            // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CCreaturePointer : CBaseIntelligentPointer {     // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();
     CCreaturePointer(const CCreaturePointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }

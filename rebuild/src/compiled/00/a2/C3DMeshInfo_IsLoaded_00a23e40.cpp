@@ -1,5 +1,6 @@
 // C3DMeshInfo::IsLoaded() -- true when any present LOD of the mesh data already holds its mesh
 // Leaf: ?IsLoaded@C3DMeshInfo@@QBE_NXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A23E40, 59 bytes. Name: Ego_r/FableWin PDB ?IsLoaded@C3DMeshInfo@@QBE_NXZ (catalog
 //   row agrees); its body is the tail of IsLoadedStats 0x00A23E80 (the next row), which adds the stats-slot test first.
 // Layout: engine/C3DMeshInfo.h offsets (MeshData +0xC, LODDataSizes[4] +0x50); CMeshData LODMeshes[4] +8, MeshStats +0x18;
@@ -19,12 +20,7 @@ public:
     unsigned long  ResourceSize;                   // +0x14
     unsigned long  LastUsedFrame;                  // +0x18
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CIVCountedPointer {
 public:
     T* Object;

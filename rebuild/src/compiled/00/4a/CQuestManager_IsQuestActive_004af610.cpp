@@ -1,5 +1,6 @@
 // CQuestManager::IsQuestActive(const CCharString& quest_name) const -- walk the active-quest list and report whether one of the active quests carries the given quest name
 // Leaf: ?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AF610, 85 bytes (96 with padding), `ret 4` (__fastcall).
 // Identity: Ego_r.pdb `?IsQuestActive@CQuestManager@@QBE_NABVCCharString@@@Z`; the landed callers CQuestManager::Update
 //   0x004B4490 and DeactivateQuest 0x004B3A20 declare 0x004AF610 as IsQuestActive (labels chunk 322).
@@ -51,12 +52,7 @@ public:
     }
 };
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Count;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 template <class T> struct _List_node {
     _List_node* _M_next;

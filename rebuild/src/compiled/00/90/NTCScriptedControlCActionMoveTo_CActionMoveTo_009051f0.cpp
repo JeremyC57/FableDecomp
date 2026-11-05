@@ -12,6 +12,7 @@
 // then the remaining flags in member order with ActionPointIndex = -1; Pos is left uninitialised. Members
 // carry the PDB names and offsets; the 4-argument twin is 0x00905290.
 // Leaf: ??0CActionMoveTo
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 
 class CThing;
@@ -26,11 +27,7 @@ protected:                                   // root of the scripted actions (vt
 
 struct SCountBlock;
 
-template <class T> class CCountedPointer { public:
-    void* m_pObject;                            // +0
-    SCountBlock* m_pCount;                      // +4
-    CCountedPointer() : m_pObject(0), m_pCount(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

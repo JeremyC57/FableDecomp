@@ -1,5 +1,6 @@
 // CCountedPointer<NBBBMaths::CLinearSpline>::DeleteData(void* data) -- the counted pointer's per-type deleter: delete the linear spline (its processed-point and control-point vectors' storage, then the object)
 // Leaf: ?DeleteData@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F3FB0, 49 bytes, static `__fastcall` (data in ecx). FableWin.pdb
 //   `?DeleteData@?$CCountedPointer@VCLinearSpline@NBBBMaths@@@@SIXPAX@Z`; stored as the destroy function of the count block
@@ -34,11 +35,6 @@ public:
 };
 }
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Count;
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<NBBBMaths::CLinearSpline>;

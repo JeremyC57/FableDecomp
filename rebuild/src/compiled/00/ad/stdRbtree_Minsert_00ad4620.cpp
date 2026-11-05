@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (map<pair<long,long>, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> >) STLport 4.6 node insert: create a node holding a copy of v (the counted pointer's reference count is bumped), link it left or right of y, fix root / leftmost / rightmost, rebalance, count, return the iterator
 // Leaf: ?_M_insert@?$_Rb_tree@U?$pair@JJ@std@@U?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@2@U?$_Select1st@U?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@@2@U?$less@U?$pair@JJ@std@@@2@V?$allocator@U?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@2@0@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD4620, 241 bytes, thiscall `ret 14h` (hidden iterator result, x, y, &v, w).
 // Identity (proven): STLport 4.6 _tree.c `_Rb_tree::_M_insert` (private in _tree.h, hence AAE): the 0x20-byte node
 //   (base 0x10 + value 0x10), left/right/root/leftmost/rightmost fix-ups and the cdecl _Rb_global<bool>::_Rebalance 0x0042971D
@@ -13,18 +14,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                // +0
-    void (__fastcall* DeleteFunc)(void* data);             // +4
-    void* Data;                                            // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0
-    CCPPointerInfo* Info;                                  // +4
-    CCountedPointer(const CCountedPointer<T>& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 namespace QuadricOptimiserInternals { class CVertexPairContraction; }
 
 namespace std {

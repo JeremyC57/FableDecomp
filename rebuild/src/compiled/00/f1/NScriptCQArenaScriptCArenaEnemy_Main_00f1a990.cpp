@@ -1,5 +1,6 @@
 // NScript::CQ_ArenaScript::CArenaEnemy::Main() -- an Arena enemy: conscious filter on Me; find its index in the current round/wave enemy list; join the monster faction and give the trolls / scorpion king a health bar; then each frame score the hero's flourishes (+5) and decapitations (+7) with a crowd sound (10-tick cooldown), turn on the hero when he hits it (+1), or on Whisper when she does
 // Leaf: ?Main@CArenaEnemy@CQ_ArenaScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the local CBaseClass removed too (engine/CScriptThing.h includes engine/CBaseClass.h: ctor 0x0099A2D0, virtual dtor 0x0099A2E0); engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members); MsgIsHitBySpecialAbilityFrom takes EHeroAbility (slot 41, 0x004AAD20: ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z in Ego_r.pdb and FableWin.pdb); the literal 14 is HERO_ABILITY_HEAL_LIFE_SPELL (engine/EHeroAbility.h, Ego_r enum); engine/EHeroAbility.h included (Ego_r enum EHeroAbility).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F1A990, 1888 bytes; entity-script vtable slot 1 (Main).
@@ -55,27 +56,10 @@ class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-class CBaseClass { public:
-};
-class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
-    virtual void t000(); virtual void t001();
-    virtual CCharString GetDefName() const;   // slot 2 (+0x8)
-    virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010();
-    virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017(); virtual void t018();
-    virtual void t019(); virtual void t020();
-    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
-    virtual bool MsgIsHitByWithFlourish(const CCharString& name) const;   // slot 22 (+0x58)
-    virtual bool MsgIsHitByWithDecapitate(const CCharString& name) const;   // slot 23 (+0x5c)
-    virtual void t024(); virtual void t025(); virtual void t026(); virtual void t027(); virtual void t028(); virtual void t029(); virtual void t030(); virtual void t031();
-    virtual void t032(); virtual void t033(); virtual void t034(); virtual void t035(); virtual void t036(); virtual void t037(); virtual void t038(); virtual void t039();
-    virtual void t040();
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/EHeroAbility.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; virtual ~CPredicateBase() { } };
 class CIsThingConscious : public CPredicateBase { public:            // vtable 0x012C2FE8
@@ -298,7 +282,7 @@ void NScript::CQ_ArenaScript::CArenaEnemy::Main()
             }
         } else {
             bool hitByHero = Me.MsgIsHitBy("SCRIPT_NAME_HERO")
-                || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"));
+                || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO"));
             if (hitByHero) {
                 if (IsActiveThreadTerminating()) return;
                 ++ParentClass->Score;

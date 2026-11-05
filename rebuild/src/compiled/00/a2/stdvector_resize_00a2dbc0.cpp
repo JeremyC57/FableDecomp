@@ -1,5 +1,6 @@
 // std::vector::resize(size_type new_size, const value_type& x) -- (vector<CCountedPointer<CMeshDataBankEntry> >) STLport two-argument resize with the range erase inline: shrink by copying the (empty) tail through the out-of-line __copy and destroying [new end, finish) through the out-of-line __destroy_aux, or grow through _M_fill_insert at the end
 // Leaf: ?resize@?$vector@V?$CCountedPointer@VCMeshDataBankEntry@@@@V?$allocator@V?$CCountedPointer@VCMeshDataBankEntry@@@@@std@@@std@@QAEXIABV?$CCountedPointer@VCMeshDataBankEntry@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2DBC0, 88 bytes (+ int3 padding to 96), thiscall, `ret 8`.
 // Identity (proven): std::vector<CCountedPointer<CMeshDataBankEntry> >::resize(size_type, const value_type&); evidence: its callees are catalog-bound as ??$__copy@PAV?$CCountedPointer@VCMeshDataBankEntry@@@@... (0x00A2B340) and ??$__destroy_aux@PAV?$CCountedPointer@VCMeshDataBankEntry@@@@... (0x00A2BD20); its caller CMeshDataBank::NotifyEntryAdded 0x00A26D40 resizes CMeshDataBank::DynamicInfoBuffer (Ego_r.pdb: the class's one CArray<CCountedPointer<CMeshDataBankEntry> >); Ego_r.pdb / FableWin.pdb name the one-argument ?resize@?$vector@V?$CCountedPointer@VCMeshDataBankEntry@@@@... (the two-argument resize is this out-of-line COMDAT)
 // Label: the manifest's "resize" is propagated (family J022: six resize bodies over 4/8-byte non-trivial elements;
@@ -12,12 +13,7 @@
 //   _M_finish = __i;` and insert(pos, n, x) = _M_fill_insert(pos, n, x); the empty tags are homed in the dead size slot.
 // Element: CCountedPointer<CMeshDataBankEntry> (Data, Info), Ego_r.pdb CMeshDataBank::DynamicInfoBuffer's element.
 #include <stddef.h>
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                   // 8 bytes (Ego_r.pdb)
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 class CMeshDataBankEntry;
 namespace std {
 struct __false_type { __false_type() { } };

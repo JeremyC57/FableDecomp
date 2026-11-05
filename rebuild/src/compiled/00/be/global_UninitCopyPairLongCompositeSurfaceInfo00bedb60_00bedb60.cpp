@@ -1,5 +1,6 @@
 // _global::UninitCopy_PairLongCompositeSurfaceInfo_00bedb60(const PairLongCompositeSurfaceInfo* first, const PairLongCompositeSurfaceInfo* last, PairLongCompositeSurfaceInfo* result, const __false_type&) -- STLport __uninitialized_copy over pair<long, CCompositeSurfaceInfo>: placement-copy each 16-byte entry (key, vtable, counted cache with its add-ref), return the advanced result
 // Leaf: UninitCopy_PairLongCompositeSurfaceInfo_00bedb60
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members unchanged are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BEDB60, length 66 bytes (+ int3 padding), `ret 8`.
 // Callers: the vector helpers of the composite-surface map @ 0x00BEDBF0 (call 0x00BEDCF9), 0x00BEEB80 (call 0x00BEEBDF) and
 //   0x00BEEF90 (calls 0x00BEEFDB / 0x00BEF03D; catalog "CCompositeSurfaceMap_Reallocate").
@@ -15,17 +16,8 @@
 //   propagated.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct CCountBlock { unsigned long RefCount; };
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T* Data;                                   // +0x0
-    CCountBlock* Info;                         // +0x4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 class CBase {
 public:

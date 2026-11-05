@@ -1,5 +1,6 @@
 // std::vector::push_back(const CCountedPointer<NUISystem::CAction>& x) -- (vector<CCountedPointer<NUISystem::CAction> >) copy-construct x at the end when there is room (adding a reference), else grow through _M_insert_overflow
 // Leaf: ?push_back@?$vector@V?$CCountedPointer@VCAction@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCAction@NUISystem@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054A3B0, 64 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity (proven): std::vector<CCountedPointer<NUISystem::CAction> >::push_back(const CCountedPointer<NUISystem::CAction>&); evidence: its only callee is agent950's landed _M_insert_overflow 0x0054A2A0 of vector<CCountedPointer<NUISystem::CAction> > (NUISystem::CTextSlider::Initialize 0x00549B20's vector); it has no direct caller (xr's one absolute reference, 0x0049FB8C, is the rel32 of a call)
 // Label: the manifest's "sub_0054a3b0" is propagated/invented (family J054: five byte-identical push_backs, one per element type).
@@ -8,23 +9,7 @@
 //   _M_insert_overflow(_M_finish, __x, __false_type(), 1UL, true);` -- the placement new's null test and the counted pointer's add-ref inline.
 // Model: agent950's landed vector<CCountedPointer<T> > / CCountedPointer model (0x00449050 etc.).
 inline void* operator new(unsigned int, void* p) { return p; }
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void* Data;                                             // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                                // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CAction; }
 namespace std {
 struct __false_type { __false_type() { } };

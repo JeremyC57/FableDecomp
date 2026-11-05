@@ -1,5 +1,6 @@
 // std::vector::~vector() -- (vector<NScreenEffect::CScreenEffectPriorityStack::CThingGraphicArgPasser >) out-of-line destructor: destroy every element, then free the vector's own block
 // Leaf: ??1?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@V?$allocator@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A3770, 49 bytes (+ int3 padding to 64), thiscall, plain `ret`.
 // Identity (proven): vector<NScreenEffect::CScreenEffectPriorityStack::CThingGraphicArgPasser >::~vector; evidence: its only caller is CTCBulletTime's 0x0079D7E0 (0x0079DAAF), destroying its local vector at [esp+0x34] at the end: the local is filled by the push_back 0x006A3C70 (0x0079D9D4) with {intelligent pointer, true} entries and handed by const reference to CEnvironmentSpellEffectInterpolator::ScreenFilterFadeTo 0x006B85D0 (0x0079DA68) -- Ego_r.pdb ?ScreenFilterFadeTo@CEnvironmentSpellEffectInterpolator@@QAEPAXMW4ScreenEffectPriority@NScreenEffect@@MMMMABVCRGBFloatColour@@ABV?$vector@UCThingGraphicArgPasser@CScreenEffectPriorityStack@NScreenEffect@@...; Ego_r.pdb's CThingGraphicArgPasser is 9 bytes {CIntelligentPointer<CThing> thing, bool bypassSet}, the retail stride.
 // Label: the manifest's "ResetRings" is propagated (family J007: six destroy-and-free bodies whose element destructor runs on the element itself -- STLport ~vector (with the inline
@@ -11,12 +12,8 @@
 // Model: agent952 H071/H072 (the 0x004D2720 shape).
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 class CThing;
-class CBaseIntelligentPointer {                               // 8 bytes: vptr + PData
-public:
-    virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
-    void* PData;                                               // +4
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 struct __true_type { };

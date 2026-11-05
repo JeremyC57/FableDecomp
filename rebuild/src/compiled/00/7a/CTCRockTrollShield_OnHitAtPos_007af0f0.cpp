@@ -1,5 +1,6 @@
 // 007af0f0 CTCRockTrollShield::OnHitAtPos
 // Leaf: ?OnHitAtPos@CTCRockTrollShield@@QAEXPAVCThing@@ABVC3DVector@@1JAA_N@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Flags:
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_BASE_OBJECT
@@ -57,8 +58,8 @@ class CCharString{protected:CCharStringData*PStringData;public:CCharString(const
 
 class CDefString{private:long TablePos;public:bool operator==(const char*)const;};
 class CBaseObjectPointer;
-class CBaseIntelligentPointer{private:CBaseObjectPointer*PData;public:virtual~CBaseIntelligentPointer();CBaseObject*GetPItem()const;};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:T*Get()const{return reinterpret_cast<T*>(GetPItem());}T*operator->()const{return Get();}};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 enum ETCInterfaceType{};class C2DVector;class CTCParamsBase;class CEnginePrimitivePrepareInfo;class CPersistContext;namespace NTCMessages{class CMessageBase;}
 // Layout: shared CTCBase prefix; native table omits donor editor-only property transfer pair.
 class CTCBase:public CBaseClassNonCopyable{protected:CThing&ParentThing;private:bool ToBeRemoved,IsInGlobalUpdateTCs;

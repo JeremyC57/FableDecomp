@@ -1,4 +1,6 @@
 // CCreatureAction_FireMissileWeapon::ReleaseMissile -- return held weapon, detach its loaded missile, play firing animation, select shot definition.
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members Start/Finish are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +4.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008D5790,316bytes; parameters CThing** missile,CThing** weapon,long* shot preserve incoming outputs on skipped branches.
 #define CCreatureAction_FireMissileWeapon CCreatureAction_FireMissileWeaponPdb
@@ -27,41 +29,20 @@ class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponT
 #include "engine/C3DVector.h"
 class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
-struct CBaseIntelligentPointer {
- virtual ~CBaseIntelligentPointer();
- CBaseObjectPointer* PData;
- CBaseIntelligentPointer();
- CBaseObject* GetPItem()const;
- void SetPItem(CBaseObject*);
-};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { public:
- virtual ~CIntelligentPointer();
- CIntelligentPointer():CBaseIntelligentPointer(){}
- explicit CIntelligentPointer(T* p):CBaseIntelligentPointer(){SetPItem(p);}
- T* operator->()const{return static_cast<T*>(GetPItem());}
- T& operator*()const{return *static_cast<T*>(GetPItem());}
- operator T*()const{return static_cast<T*>(GetPItem());}
- bool IsValid()const{return GetPItem()&&!(static_cast<T*>(GetPItem())->DeadFlags&1);}
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 // Retail DeadFlags91 vs donor ThingStateA1: actual PDB containers add16 bytes before this flag.
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
 class CTCPhysicsBase;struct CDefLookup;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
-    Entry *Start,*Finish,*End;
-    Entry* LowerBound(const ETCInterfaceType& key); //40F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing:public CBaseObject { public:
     unsigned char BaseState[0x18];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
-    unsigned char UpdateComponentsList[8];
+    unsigned char UpdateComponentsList[0x4];
     void* SerialisationSectionName;
     void* PTCDriver;
     CTCPhysicsBase* PhysicsTC;
@@ -77,8 +58,8 @@ class CThing:public CBaseObject { public:
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             ETCInterfaceType type = (ETCInterfaceType)(key);
             CInterfaceMap* map=&Components;
-            CInterfaceMap::Entry* it=map->LowerBound(type);
-            if(it==map->Finish || key<it->first) it=map->Finish;
+            CInterfaceMap::value_type* it=map->LowerBound(type);
+            if(it==map->end() || key<it->first) it=map->end();
             *out=(T*)((void*)it->second);return true;
         }
         return false;

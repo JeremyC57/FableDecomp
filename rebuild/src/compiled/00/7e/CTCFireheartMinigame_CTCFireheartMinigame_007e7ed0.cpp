@@ -1,5 +1,6 @@
 // CTCFireheartMinigame::~CTCFireheartMinigame() -- release the minigame def, destroy and free the primitive-handle vector, release the scripted-thing handle, then the CTCBase destructor
 // Leaf: ??1CTCFireheartMinigame
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members Count->RefCount, Object->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E7ED0, length 163 bytes (tail `jmp` to the base destructor).
 // Label correction: the catalog "CMeshData::~CMeshData" is propagated; the only caller is the deleting destructor 0x007E7EB0 in slot 0 of
 // vtable 0x012709CC (CTCFireheartMinigame, rtti-vtables.tsv).
@@ -36,27 +37,7 @@ template<class T> class CDefPointer { public:
 struct CScriptThingImp {                        // complete before the member pointer: single-inheritance 4-byte form
     void DestroySelf();
 };
-struct SCountBlock {                            // the counted pointer's shared block
-    long Count;                                 // +0x00
-    void (CScriptThingImp::*Destroy)();         // +0x04
-    CScriptThingImp* Object;                    // +0x08
-};
-template <class T> class CCountedPointer { public:
-    CScriptThingImp* Data;                      // +0x00
-    SCountBlock*     Info;                      // +0x04
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->Count;
-            if (Info->Count == 0) {
-                (Info->Object->*Info->Destroy)();
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 class CEnginePrimitiveHandle { public:                 // 8 bytes, virtual destructor

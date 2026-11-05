@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleConversationOverShoulderOfSpokenTo::Update() -- with two distinct conversation things, put the camera over the spoken-to's shoulder (2 units back along the speaker-to-spoken-to XY direction, sideways by 2 x RandomDirection, 4 up) looking at the speaker's focal point
 // Leaf: ?Update@CScriptModuleConversationOverShoulderOfSpokenTo
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
@@ -21,9 +22,8 @@ public:
         return C3DVector(here.X - pos.X, here.Y - pos.Y, 0.0f);
     }
 };
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointer_CThingConst {
     virtual void v00();
     void* m_pItem;

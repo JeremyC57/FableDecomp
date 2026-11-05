@@ -1,5 +1,6 @@
 // CScriptConversation::CScriptConversation(const CScriptConversation& other) -- copy constructor of a scripted conversation: manager, index, the two vectors (people, lines), the line counters and the three flags
 // Leaf: ??0CScriptConversation@@QAE@ABV0@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E6B60, 79 bytes, __fastcall `ret 4`, returns `this`.
 // Identity (label correction): the catalog's "pair<long,CMusicManager::CRegisteredMusicEntry>" is propagated. Ego_r.pdb
 //   CScriptConversation: Manager +0, ConversationIndex +4, PeopleInConversation (vector<CIntelligentPointer<CThing> >) +8,
@@ -15,11 +16,8 @@
 class CThing;
 class CScriptConversationManager;
 
-template <class T> class CIntelligentPointer {
-public:
-    void* VTable;                                       // +0x00 (vptr, 0x01238C6C for CThing)
-    void* PData;                                        // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 template <class _Tp> class allocator {

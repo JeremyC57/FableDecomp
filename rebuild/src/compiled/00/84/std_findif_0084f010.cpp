@@ -1,5 +1,6 @@
 // std::__find_if(CCountedPointer<CSubComponentBase>* first, CCountedPointer<CSubComponentBase>* last, CIsOfType pred, const random_access_iterator_tag&) -- STLport random-access find_if over a camera mode's sub-components: the first whose GetType() equals the wanted type, else last
 // Leaf: ??$__find_if@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084F010, 162 bytes, __fastcall under /Gr (ecx = first, edx = last; the 4-byte
 //   predicate by value and the tag reference on the stack), `ret 8`.
 // Identity: FableWin.pdb ??$find_if@...CCountedPointer@VCSubComponentBase@NCameraModes@@...VCIsOfType@NCameraModes@@@std@@
@@ -21,12 +22,7 @@ public:
 }
 
 class CCountedPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T* operator->() const { return Data; }
-    T*                   Data;
-    CCountedPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace NCameraModes {
 class CIsOfType {

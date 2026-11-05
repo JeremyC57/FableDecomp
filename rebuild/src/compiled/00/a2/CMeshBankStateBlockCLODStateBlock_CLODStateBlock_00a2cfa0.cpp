@@ -1,5 +1,6 @@
 // CMeshBankStateBlock::CLODStateBlock::CLODStateBlock() -- empty bone-LOD map and null bounding-box range pointer
 // Leaf: ??0CLODStateBlock@CMeshBankStateBlock@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2CFA0, 51 bytes, plain `ret`.
 // Identity: FableWin.pdb `??0CLODStateBlock@CMeshBankStateBlock@@QAE@XZ`. Ego_r.pdb CLODStateBlock = map<CCharString,
 //   long> BoneLODs + CCountedPointer<C3DBoundingBox> MinXYZRange; retail is 0x14 bytes (12-byte STLport map, node 0x18 =
@@ -12,7 +13,7 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 
 class CCharString { public: void* PStringData; };
 class C3DBoundingBox;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
 template <class _Value> class CRetailRbTree {           // STLport _Rb_tree: header, node count, empty compare (12 bytes)
 public:
@@ -40,12 +41,6 @@ public:
 
 struct SBoneLOD { CCharString first; long second; };   // pair<const CCharString, long>
 
-template <class T> class CCountedPointer {              // 8 bytes
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-};
 
 class CMeshBankStateBlock {
 public:

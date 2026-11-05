@@ -1,5 +1,6 @@
 // NUISystem::CText::CText(long id) -- construct a UI text component: draggable base, empty value, no font, fresh primitive handles, then read the def
 // Leaf: ??0CText@NUISystem@@QAE@J@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054F5C0, 131 bytes. __fastcall, `ret 4`.
 // Callees: NUISystem::CChangingStateComponent::CChangingStateComponent(long) 0x0052CC50; CWideString::CWideString() 0x0099AED0 (catalog
 //          "CCharString" is a byte twin); CBaseClass::CBaseClass() 0x0099A2D0 (x2); NUISystem::CText::GetDataFromDef()
@@ -28,13 +29,8 @@ class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
 };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CFontBank;
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 
 namespace NUISystem {

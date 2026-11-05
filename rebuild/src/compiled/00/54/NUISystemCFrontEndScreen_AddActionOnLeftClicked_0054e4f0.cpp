@@ -1,4 +1,5 @@
 // NUISystem::CFrontEndScreen::AddActionOnLeftClicked(CCountedPointer<CAction>&) -- store the screen's left-click action (counted-pointer assignment)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Item->Data are the header CCPPointerInfo's (same offsets).
 // Retail 0x0054E4F0, 86 bytes (primary vtable 0x012497E4 slot 71, `ret 4`). Inline CCountedPointer::operator=: the source
 // Data/Info bound to locals first, the old block released (destroy thunk +4 on the item +8, operator delete 0x00BFE9BC).
 // Same shape as the landed 0x00992470 (member at +0x170 there). Name: Ego_r.pdb
@@ -9,34 +10,7 @@
 namespace NUISystem {
 enum EEvent { EVENT_DUMMY = 0 };
 class CAction;
-struct CCPPointerInfo {
- long Count;                                  // +0x00
- void (__fastcall *Destroy)(void* item);      // +0x04
- void* Item;                                  // +0x08
-};
-template <class T> class CCountedPointer {
-public:
- T* Data;
- CCPPointerInfo* Info;
- CCountedPointer& operator=(const CCountedPointer& o)
- {
-  T* data = o.Data;
-  CCPPointerInfo* info = o.Info;
-  if (Info != info) {
-   if (Info) {
-    if (--Info->Count == 0) {
-     Info->Destroy(Info->Item);
-     ::operator delete(Info);                 // 0x00BFE9BC
-    }
-   }
-   Data = data;
-   Info = info;
-   if (info)
-    ++info->Count;
-  }
-  return *this;
- }
-};
+#include "engine/CCountedPointer.h"
 class CUIInterface { public: virtual ~CUIInterface(); };
 class CObserver {
 public:

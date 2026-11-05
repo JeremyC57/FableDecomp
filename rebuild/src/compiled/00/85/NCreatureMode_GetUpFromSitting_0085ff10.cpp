@@ -1,5 +1,6 @@
 // NCreatureMode::GetUpFromSitting(CThingCreatureBase& creature, long sit_mode_type, const CCharString& anim, CAIBrain* brain) -- get the creature up: when its current mode is the sitting mode, end that mode with a CCreatureAction_GetUpFromSitting (true); otherwise, when the creature is free to perform a plain get-up action, hand a clone of it to the brain's output (or set it directly without a brain) and return false
 // Leaf: ?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085FF10, 336 bytes incl. int3 padding, /Gr `__fastcall` (creature in ecx,
 //   the mode type in edx, anim and brain on the stack), `ret 8`.
@@ -114,12 +115,7 @@ public:
     CModeBase* GetCurrentMode() const;                      // 0x0073A6E0
 };
 
-template <class T> class CCountedPointer {
-public:
-    T* Object;
-    void* Block;
-    void Reset(T* object);                                  // 0x00668D90
-};
+#include "engine/CCountedPointer.h"
 
 class CBrainOutput {                                        // 0x48 bytes
 public:

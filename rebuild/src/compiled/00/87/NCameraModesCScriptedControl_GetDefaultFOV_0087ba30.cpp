@@ -1,6 +1,7 @@
 // NCameraModes::CScriptedControl::GetDefaultFOV() const -- the script module's FOV when it supplies one, else the FOV of the camera captured when the mode started
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087BA30, 45 bytes, plain `ret` (float in st0).
 // Leaf: ?GetDefaultFOV@CScriptedControl@NCameraModes@@UBEMXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: vtable 0x0125C58C slot 18; FableWin.pdb ?GetDefaultFOV@CScriptedControl@NCameraModes@@UBEMXZ (its float neighbour slot 19
 //       0x0087BA60 is GetDefaultRollAngle, the pair GetModuleFOV/GetModuleRollAngle of the module, slots 5/6).
@@ -9,12 +10,7 @@
 //         InitCamera (CCamera) +0xb0.
 // Shape: the out-float is a frame local (`push ecx` slot), returned with `fld` on success; the fallback is a member call
 //        whose st0 result is returned as is.
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; };
 class CCamera { public:                                             // 0x38 bytes

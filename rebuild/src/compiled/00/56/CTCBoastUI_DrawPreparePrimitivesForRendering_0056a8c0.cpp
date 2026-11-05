@@ -1,5 +1,6 @@
 // CTCBoastUI::DrawPreparePrimitivesForRendering -- actual UI update/draw using interpolation time andengine.
 // Leaf: ?DrawPreparePrimitivesForRendering@CTCBoastUI@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags: /O2 /Oy /W3
 #ifndef _MSC_VER
 #define __cdecl
@@ -66,7 +67,7 @@ class CCharString{public:CCharStringData*PStringData;CCharString(const char*,lon
 class CWideString{public:CWideStringData*PStringData;CWideString();CWideString(const CWideString&);~CWideString();};
 class C2DVector;class C2DBoxF;class CRGBColour;class CIEngine;class CEnginePrimitiveHandle;class CFontBank;
 template<class T>class CDefPointer;class CCPPointerInfo;
-template<class T>class CCountedPointer{public:T*Data;CCPPointerInfo*Info;CCountedPointer(T*);CCountedPointer(const CCountedPointer&);~CCountedPointer();T*operator->()const{return Data;}};
+#include "engine/CCountedPointer.h"
 namespace std{template<class T,class A=allocator<T> >class vector;template<class T,class A=allocator<T> >class list;}
 #ifndef PASS9_UI_BASE_INTERFACES_HPP
 #define PASS9_UI_BASE_INTERFACES_HPP

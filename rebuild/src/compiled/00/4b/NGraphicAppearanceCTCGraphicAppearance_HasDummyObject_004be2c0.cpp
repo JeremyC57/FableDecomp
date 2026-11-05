@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::HasDummyObject(const CCharString& name) const -- true when any of the appearance's meshes carries the named dummy object
 // Leaf: HasDummyObject
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 //
 // Retail 0x004BE2C0, 288 bytes incl. padding (`ret 4`). Ego_r.pdb `?HasDummyObject@CTCGraphicAppearance@NGraphicAppearance@@
 // QBE_NABVCCharString@@@Z`.
@@ -30,29 +31,8 @@ public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
 };   // 0x004014A0: CRC
 
-struct SCountBlock {
-    long m_references;                                      // +0
-    void (__fastcall* m_pfnDestroy)(void*);                 // +4
-    void* m_pObject;                                        // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T* m_pObject;                                           // +0
-    SCountBlock* m_pCount;                                  // +4
-    T* operator->() const { return m_pObject; }
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;
-            }
-        }
-        m_pObject = 0;
-        m_pCount = 0;
-    }
-};
 
 class C3DMeshStats { public:
     bool HasDummyObject(unsigned long key) const;           // 0x00A2EA60

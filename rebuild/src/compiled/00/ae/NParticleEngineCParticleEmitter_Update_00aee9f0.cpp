@@ -3,6 +3,7 @@
 // while waiting to sleep or when a 3D emitter is out of spawn range of the engine camera, update every active,
 // unfinished particle system, and kill the emitter once none is left running
 // Leaf: ?Update@CParticleEmitter@NParticleEngine@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 35c (caller respell): calls 0x00AEAB10 as NParticleEngine::GetEnvironmentInteraction() (?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ, FableWin.pdb; was CIEngine* GetParticleEngine()); CIEngine stays the Initialise argument type.
 // Naming wave 31 (family pek): the class is NParticleEngine::CParticleEmitter (Ego_r.pdb / FableWin.pdb): own row ?Update@CParticleEmitter@NParticleEngine@@
@@ -41,7 +42,7 @@ class CParticleSystem { public:
     void Update(CParticleUpdateParameters* parameters);             // 0x00AF59A0
 };
 }
-template<class T> class CCountedPointer { public: T* Data; void* Info; T* operator->() const { return Data; } };
+#include "engine/CCountedPointer.h"
 class CIEngine;
 namespace NParticleEngine {
 class CAEnvironmentInteraction {

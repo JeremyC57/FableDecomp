@@ -1,4 +1,5 @@
 // CGameScriptInterface::IsRegionLoadedAndPreloaded(const CCharString& name) const -- true when the named region (world map slot 13, 0x004FC210) is the current region (0x004FB150) and the engine renderer (global 0x013B86A0 -> +0x28 -> +0x2c, virtual slot 59) reports its preload done
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00890550, length 96 bytes.
 // Callees: CWorld virtual slot 13 (+0x34) twice, CWorldMap::GetRegionNumberFromName @ 0x004FC210, CWorldMap::GetCurrentRegionNumber @ 0x004FB150, virtual slot 59 (+0xec) of the renderer. Shape: the region number in edi, the registers popped before the compare's branch, `mov al,1` / `xor al,al`, `ret 4`.
 struct CDisplayEngine_Retail;
@@ -60,8 +61,7 @@ struct CThing_Retail {
     void PreloadBasicAnimations();                 // 0x00663610 (CThingCreatureBase)
     void SetInLimbo(bool inLimbo);                 // 0x004C8CF0 (CThing)
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

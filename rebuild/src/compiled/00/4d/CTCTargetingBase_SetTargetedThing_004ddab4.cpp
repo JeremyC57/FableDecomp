@@ -1,3 +1,4 @@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 00a01c10: ??1CBaseIntelligentPointer@@QAE@XZ -> ??1CBaseIntelligentPointer@@UAE@XZ
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // CTCTargetingBase::SetTargetedThing(CThing*) -- wraps the thing in a temporary CIntelligentPointer<const CThing>,
@@ -13,13 +14,8 @@
 class CThing;
 class CBaseObject;
 
-struct CBaseIntelligentPointer {
-    void* m_pItem;                               // +0x00
-    void* m_pInfo;                               // +0x04
-    CBaseObject* GetPItem() const;                     // 0x00A01B50
-    void SetPItem(CBaseObject* item);            // 0x00A01B90
-    ~CBaseIntelligentPointer();                  // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     CIntelligentPointer_CThing(CThing* thing);   // 0x004A96F0

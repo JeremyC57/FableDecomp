@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionTalkedTo::CActionTalkedTo(CThing* talker, CBaseObject* target) -- constructor: CBase(), the common action members zeroed, own vtable, CIntelligentPointer at +0xc set to target, CScriptThing at +0x14 from talker->GetScriptThing()
 // Leaf: ??0CActionTalkedTo@
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00712DF0, length 80 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 // CBaseIntelligentPointer::SetPItem @ 0x00A01B90, CThing::GetScriptThing @ 0x004C7E50 (by-value
@@ -12,12 +13,9 @@
 class CThing;
 class CBaseObject;
 
-class CScriptThing { public:                       // engine/CScriptThing.h layout (12 bytes)
-    void* __vftable;
-    CThing* PImp_Data;
-    void* PImp_Info;
-    CScriptThing(const CScriptThing& other);
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CThing { public:
     CScriptThing GetScriptThing() const;          // 0x004C7E50

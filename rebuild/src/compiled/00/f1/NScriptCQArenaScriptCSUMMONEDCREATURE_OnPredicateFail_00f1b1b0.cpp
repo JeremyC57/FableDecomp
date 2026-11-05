@@ -1,5 +1,6 @@
 // NScript::CQ_ArenaScript::CSUMMONED_CREATURE::OnPredicateFail() -- one summoned creature fewer in the arena; if the hero killed it, 8 more crowd points
 // Leaf: ?OnPredicateFail@CSUMMONED_CREATURE@CQ_ArenaScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F1B1B0, 80 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 5 (OnPredicateFail) of the RTTI-less entity vtable 0x012F9CC8, stored by the entity Alloc 0x00F1B0F0 (`NScript::CQ_ArenaScript::CSUMMONED_CREATURE::Alloc`); ?OnPredicateFail@CSUMMONED_CREATURE@CQ_ArenaScript@NScript@@EAEXXZ is in Ego_r.pdb and FableWin.pdb.
 // Label: the manifest's "sub_00f1b1b0" is a gap-scan placeholder.
@@ -13,18 +14,7 @@ public:
     CCharString(const CCharString& other);                // 0x0099EC30
     ~CCharString();                                       // 0x0099EAE0
 };
-class CCPPointerInfo {                                   // CCountedPointer's shared block
-public:
-    long  RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

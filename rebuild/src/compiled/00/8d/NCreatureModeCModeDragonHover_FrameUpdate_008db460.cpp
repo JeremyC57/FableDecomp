@@ -2,6 +2,7 @@
 // head turning is on, else 50 units ahead of the body) and, when not busy with an action and within 14 units of the
 // target on the ground plane, drift back by 0.04 of the forward vector
 // Leaf: FrameUpdate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DB460, 0x1BB bytes (padded to 448), plain `ret`.
 // Callees: CModeBase::FrameUpdate 0x0073AC50, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound
@@ -72,11 +73,8 @@ class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* _vptr;
-    void* PItem;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace NCreatureMode {
 class CModeBase {
 public:

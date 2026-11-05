@@ -1,5 +1,6 @@
 // std::vector::push_back(const CCountedPointer<CTCLightningNode::CLightningBranch>& x) -- (vector<CCountedPointer<CTCLightningNode::CLightningBranch> >) copy-construct x at the end when there is room (adding a reference), else grow through _M_insert_overflow
 // Leaf: ?push_back@?$vector@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@V?$allocator@V?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCLightningBranch@CTCLightningNode@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F48D0, 64 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity (proven): std::vector<CCountedPointer<CTCLightningNode::CLightningBranch> >::push_back(const CCountedPointer<CTCLightningNode::CLightningBranch>&); evidence: its only callee is agent950's landed _M_insert_overflow 0x007F47F0 of vector<CCountedPointer<CTCLightningNode::CLightningBranch> >, and its caller CTCLightningNode::FrameUpdate 0x007F2DC0 pushes onto this+0x2C, Ego_r.pdb CTCLightningNode::LightningBranches
 // Label: the manifest's "vector_PushBack_CCountedPtr_ScriptEntity" is propagated/invented (family J054: five byte-identical push_backs, one per element type).
@@ -8,23 +9,7 @@
 //   _M_insert_overflow(_M_finish, __x, __false_type(), 1UL, true);` -- the placement new's null test and the counted pointer's add-ref inline.
 // Model: agent950's landed vector<CCountedPointer<T> > / CCountedPointer model (0x00449050 etc.).
 inline void* operator new(unsigned int, void* p) { return p; }
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void* Data;                                             // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                                // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CTCLightningNode {                                    // only the nested element class is needed here
 public:
     class CLightningBranch;

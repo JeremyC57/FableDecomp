@@ -1,5 +1,6 @@
 // CEngineMap::OpenRetailStaticMap(CStaticMapBankFile& bankFile, CDataInputStream& stream, std::map<CCharString, long>& mapOffsets) -- open this map's static data from the retail level file: seek to the map's header offset (looked up by the static map name), read the info block, take the camera bounds, bind the bank entry to the file-block manager, open the landscape map and (when present) the local-detail cache map at their offsets, seek past the header and mark the map open
 // Leaf: ?OpenRetailStaticMap@CEngineMap@@QAEXAAVCStaticMapBankFile@@AAVCDataInputStream@@AAV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B41E50, length 325 bytes, `ret 0Ch`.
 // Name: FableWin.pdb (above; catalog label OpenRetailStaticMap agrees). Parameter names are descriptive.
@@ -68,49 +69,7 @@ public:
 
 }
 class CCharString { public: void* PStringData; };
-class CCPPointerInfo { public:
-    long  References;                                  // +0x00
-    void (__fastcall* Destroy)(void* object);          // +0x04
-    void* Object;                                      // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->References;
-    }
-    void Release()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->References;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector MinCoord, MaxCoord; };
 class CDataInputStream { public:

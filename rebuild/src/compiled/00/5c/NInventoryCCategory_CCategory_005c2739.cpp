@@ -1,5 +1,6 @@
 // NInventory::CCategory::~CCategory() -- the compiler-generated (implicit) destructor, kept out of line: release the def pointer PDef (+0x14), destroy ItemsInCategory (+0x8), then the first member PAssociatedThing (+0x00) as a tail jump
 // Leaf: ??1CCategory@NInventory@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C2739, 40 bytes (+ int3 padding), thiscall, no return value; size-optimised TU (odd entry,
 //   `and dword ptr [esi+14h],0`); callers 0x005C0121, 0x005C024A, 0x005C297A, 0x005C29CE, 0x005C2A8E.
 // Identity (proven): NInventory::CCategory::~CCategory(); evidence: non-polymorphic, so identified by its users: the landed CTCInventoryBase::AddCategory 0x005C024A destroys its temporary NInventory::CCategory with it (that file names 0x005C2739 ~CCategory); its scalar deleting destructor 0x005C297A (this body, then operator delete 0x00BFE9BC on flags & 1) and the __destroy_aux 0x005C2A8E (a 0x2C-stride loop = retail sizeof(CCategory), Ego_r 0x30 minus one 4-byte container) call it, as do the inventory OnCreate 0x005C0121 and 0x005C29CE; FableWin.pdb holds ??1CCategory@NInventory@@QAE@XZ (non-virtual, as here); the released / destroyed offsets +0x14 / +0x08 / +0x00 are Ego_r.pdb CCategory::PDef (rebased) / ItemsInCategory / PAssociatedThing.
@@ -15,12 +16,8 @@
 //   destructor call is a modelling device that makes VC7.1 emit the implicit destructor out of line.
 #pragma optimize("s", on)
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;                                         // CBaseObjectPointer*
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CIVCountedPointeeBase {                            // Ego_r.pdb 8 bytes: vptr, IVRefCount
 public:

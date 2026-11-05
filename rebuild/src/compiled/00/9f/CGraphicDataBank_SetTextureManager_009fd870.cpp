@@ -1,5 +1,6 @@
 // CGraphicDataBank::SetTextureManager(const CCountedPointer<CTextureManager>& manager) -- share the texture manager with this graphic bank (counted-pointer assignment into TextureManager at retail +0x280)
 // Leaf: ?SetTextureManager@CGraphicDataBank@@QAEXABV?$CCountedPointer@VCTextureManager@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Item->Data are the header CCPPointerInfo's (same offsets).
 // Flags: /O2 /Oy /W3
 // Retail: Fable.exe @ 0x009FD870, 86 bytes, `ret 4`; callers 0x00B2C88C (CEngineSurfaceCompositionManager::
 // AddCustomMorphTexture) and 0x00B2CAE7 (CopyIntermediateBank, landed 0x00B2C8E0, which already names this callee
@@ -14,37 +15,7 @@
 // block), copy Data / Info, `++count` on the new block.
 // Layout: CCountedPointer {T* Data; CCPPointerInfo* Info}; CCPPointerInfo {long Count; destroy thunk +4; item +8}.
 // Shape: /O2; the source Data / Info bound to locals first (ebx / edi loaded before the compare).
-class CCPPointerInfo { public:
-    long  Count;                                         // +0x00
-    void (__fastcall *Destroy)(void* item);              // +0x04
-    void* Item;                                          // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* data = o.Data;
-        CCPPointerInfo* info = o.Info;
-        if (Info != info)
-        {
-            if (Info)
-            {
-                if (--Info->Count == 0)
-                {
-                    Info->Destroy(Info->Item);
-                    ::operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->Count;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CTextureManager;
 class CGraphicDataBank {
 public:

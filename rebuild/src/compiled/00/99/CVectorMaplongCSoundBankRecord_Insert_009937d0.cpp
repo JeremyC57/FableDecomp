@@ -1,5 +1,6 @@
 // CVectorMap<long, CSoundBankRecord>::Insert(const long& key, const CSoundBankRecord& value) -- append a {key, record} entry to the map's vector (unsorted) and mark the map dirty
 // Leaf: ?Insert@?$CVectorMap@JVCSoundBankRecord@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009937D0, length 132 bytes (+ int3 padding), `ret 8`.
 // PDB: CVectorMap<K,V,CKeyPairCompareLess<K,V> >::Insert(const K&, const V&) (FableWin, e.g.
 // ?Insert@?$CVectorMap@KVCSoundPair@@...@@QAEXABKABVCSoundPair@@@Z); layout vector +0x00 (STLport, 12 bytes), empty
@@ -26,17 +27,8 @@ public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-class CCPPointerInfo {
-public:
-    long RefCount;                              // +0x00
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                       // +0x00
-    CCPPointerInfo* Info;                       // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
 
 class CSoundBank;
 class CSoundBankData;

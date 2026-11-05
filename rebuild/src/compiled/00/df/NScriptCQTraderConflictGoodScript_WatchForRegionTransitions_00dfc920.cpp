@@ -1,4 +1,5 @@
 // CQ_TraderConflictGoodScript::WatchForRegionTransitions() -- each region load: prepare the region creatures and set their combat range, sleep and Bandits faction
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCount (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
@@ -9,13 +10,8 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 class CThing;
-struct SCount { long m_references; };
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-template <class T> class CCountedPointer { public:                             // CCPPointer<CScriptThingImp>: Data, Info (memberwise copy adds a reference)
-    CThing* Data;
-    SCount* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->m_references; }
-};
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

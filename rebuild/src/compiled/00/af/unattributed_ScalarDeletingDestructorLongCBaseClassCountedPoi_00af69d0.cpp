@@ -1,4 +1,5 @@
 // `scalar deleting destructor'(unsigned int) of a 0x10-byte record { long; CBaseClass; CCountedPointer } -- release the counted pointer, run ~CBaseClass on the member at +4, free when bit 0 of the flag is set
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pData->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF69D0, length 86 bytes.
 // Callees: 0x00BFE9BC operator delete x2, 0x0099A2E0 CBaseClass::~CBaseClass (stores the CBaseClass vtable 0x01231710), CCPPointerInfo::DeleteFunc through the block
 // The manifest label (C3DMeshFilePartitionChunk::vector_deleting_destructor) is propagated. The PDB shapes that fit
@@ -10,31 +11,7 @@
 #include "rebuild_abi.h"
 
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC (retail CRT)
-class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);           // called with Data in ecx and nothing on the stack
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*             m_pData;                              // PDB: Data
-    CCPPointerInfo* m_pInfo;                             // PDB: Info
-    CCountedPointer() : m_pData(0), m_pInfo(0) {}
-    // The shared block is released through a re-read of m_pInfo after the decrement (the store through
-    // the block pointer may alias the member), the block's delete function is called on its Data and
-    // the block itself is freed with a plain (untested) operator delete.
-    void ReleaseInfo()
-    {
-        if (m_pInfo) {
-            --m_pInfo->RefCount;
-            if (m_pInfo->RefCount == 0) {
-                m_pInfo->DeleteFunc(m_pInfo->Data);
-                delete m_pInfo;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); m_pData = 0; m_pInfo = 0; }
-    void Reset()       { ReleaseInfo(); m_pInfo = 0; m_pData = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass { public:                       // PDB: CBaseClass + CCountedPointer<CScriptThing> PImp (sizeof 0x0c)

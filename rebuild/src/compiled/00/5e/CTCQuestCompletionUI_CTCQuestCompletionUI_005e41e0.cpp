@@ -1,5 +1,6 @@
 // CTCQuestCompletionUI::~CTCQuestCompletionUI() -- quest completion screen TC dtor: leave the global TC list, delete the black overlay, re-enable 3D rendering and mark the world as starting 3D rendering, delete the screen's UI components, reset the UI manager (observers, action params, previous-selection list, bastard child), cancel the cutscene preload and reopen the player GUI; then the member and base destructors
 // Leaf: ??1CTCQuestCompletionUI@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -319,12 +320,7 @@ private: public:                          // Ego_r.pdb offsets up to +0x28 hold 
     scoped_ptr<CDisplayEngine> PDisplayEngine;              // +0x28
     CDisplayEngine& GetDisplayEngine() { return *PDisplayEngine; }
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:

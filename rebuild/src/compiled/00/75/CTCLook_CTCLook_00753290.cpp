@@ -1,5 +1,7 @@
 // CTCLook::~CTCLook() -- creature look (head/eye turning) component dtor: unless the parent thing is dead, unregister this appearance component from the parent's graphic appearance TC; then the member dtors in reverse order (the two head-turn anim counted pointers, the turning-anim vector, the appearance and look def pointers), the CAGraphicAppearanceComponent base and ~CTCBase
 // Leaf: ??1CTCLook@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00753290, 228 bytes, tail jump to the base destructor.
 // Identity: the vtable stores 0x01269744 / 0x012697B8 both carry RTTI `.?AVCTCLook@@` (rtti_bases: CTCLook : CTCBase (+0),
@@ -81,18 +83,8 @@ class CThing { public:                                      // retail offsets (E
 };
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer { public:                     // vtable 0x0129C95C, 8 bytes
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* Get() const { return GetPointer(); }
-    T* operator->() const { return GetPointer(); }
-private:
-    T* GetPointer() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 template <class T> inline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)
@@ -138,26 +130,7 @@ class CTCBase : public CBaseClassNonCopyable { public:
     virtual ~CTCBase();                                     // 0x00686830
 };
 
-class CCPPointerInfo { public:                              // CCountedPointer count block
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void*         Data;                                     // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    __forceinline void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    __forceinline ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 class CThingCreatureBase;
 class CLookDef;

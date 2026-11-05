@@ -1,5 +1,6 @@
 // CTCTrophy::~CTCTrophy() -- trophy component dtor: leave the global TC update list, then the members in reverse order (the WitnessesAchieved and AvailableWitnesses lists, the trophy def pointer) and ~CTCBase
 // Leaf: ??1CTCTrophy@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006DDB80, 98 bytes, tail jump to the base destructor.
 // Identity (proven): the first store is vtable 0x0125FC54, RTTI `.?AVCTCTrophy@@` (rtti_bases: CTCTrophy : CTCBase :
 //   CBaseClassNonCopyable : CBaseClass); the sole caller 0x006DFB43 is the scalar deleting dtor 0x006DFB40 = slot 0 of that
@@ -72,15 +73,8 @@ class CThing;
 class CThingAICreature;
 class CTrophyDef;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                          // vtable 0x0129C95C, 8 bytes
-public:
-    CBaseIntelligentPointer();                                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                                  // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CTCBase : public CBaseClassNonCopyable {              // retail 0x0C bytes
 public:

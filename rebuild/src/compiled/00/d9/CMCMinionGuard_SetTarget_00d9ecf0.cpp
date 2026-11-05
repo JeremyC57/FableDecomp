@@ -1,36 +1,10 @@
 // CMC_MinionGuard::SetTarget(const CScriptThing& target) -- tell the quest to make the guard's thing (+0x8) target the given thing (slot 451 with (&Thing, &target)), then keep the target: the CScriptThing at +0x1c takes the argument's counted thing pointer (the implicit CScriptThing assignment: release the old count block when it differs, destroy and free it at zero, take the new object and block and count it)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9ECF0, length 86 bytes.
 // Callees: the quest interface's virtual slot 451 (+0x70c, (CScriptThing*, const CScriptThing*)), the count block's destroy (+4, the object at +8 in ecx), operator delete @ 0x00BFE9BC. Shape: the argument in edi, its block in ebx and its object in edi read before the compare, the object stored before the block, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class CThing;
-struct SCountBlock {                               // the shared count block of a CCountedPointer
-    long m_references;                             // +0x00
-    void (__fastcall* m_pfnDestroy)(CThing*);      // +0x04
-    CThing* m_pObject;                             // +0x08
-};
-template <class T> class CCountedPointer { public:                    // {object, count block}
-    CThing*      m_pObject;                        // +0x00
-    SCountBlock* m_pCount;                         // +0x04
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SCountBlock* count = other.m_pCount;
-        CThing* object = other.m_pObject;
-        if (m_pCount != count) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    delete m_pCount;
-                }
-            }
-            m_pObject = object;
-            m_pCount = count;
-            if (count)
-                ++count->m_references;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

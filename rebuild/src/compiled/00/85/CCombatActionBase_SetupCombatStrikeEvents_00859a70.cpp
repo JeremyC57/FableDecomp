@@ -1,5 +1,7 @@
 // CCombatActionBase::SetupCombatStrikeEvents() -- build one CStrikeEvent per strike-start event of the action's animation (weapon doing the damage, its weapon-trail strike index, the first helper point name, the start frame), then give each strike event the nearest matching end frame (dropping the events without one), shift both frames by the anim delay and record the last end frame
 // Leaf: SetupCombatStrikeEvents
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -125,26 +127,12 @@ CThing* __fastcall GetThingDoingDamageFromCreatureAndEventName(CThing* creature,
 void __fastcall GetHelperPointNamesFromStrikeEventName(const CCharString& eventName, CCharStringVector& names,
                                                        bool isWeapon, bool legacy, bool primaryLegacy);   // 0x00858E00
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(T* data);                          // 0x0085B250
-    ~CCountedPointer();                                // 0x0062D9A0
-};
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pData;
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CAnimationEntry { public:
     unsigned long AnimID;                              // +0x00
 };

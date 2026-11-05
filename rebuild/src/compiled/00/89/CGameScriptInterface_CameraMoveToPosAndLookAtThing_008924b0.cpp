@@ -1,5 +1,6 @@
 // CGameScriptInterface::CameraMoveToPosAndLookAtThing(const C3DVector& pos, const CScriptThing& thing, float) const -- hand the camera manager a scripted go-to-and-look-at camera mode for a valid thing
 // Leaf: ?CameraMoveToPosAndLookAtThing@CGameScriptInterface@@UBEXABVC3DVector@@ABVCScriptThing@@M@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe @ 0x008924B0, 116 bytes, `ret 0xc`; Ego_r.pdb same symbol. The float argument is unused.
 // Body: if thing.IsAlive() (slot 75) and bit 2 of the thing's ThingTypeFlags (+0x6c): t = thing.GetPThing() (slot 11, called
 // again); World (+0x04)->PCurrentGameCamera (+0x34)->GetCameraManager(&manager) (slot 9, +0x24, Ego_r.pdb
@@ -28,14 +29,7 @@ public:
     CScriptModuleGoToLookAt(const C3DVector& camPos, const CThing& target);   // 0x00852D10
 };
 }
-template <class T> class CCountedPointer {
-public:
-    T*    Object;
-    long* Count;
-    CCountedPointer(T* object);                          // 0x005ED270 (instance shared by folding)
-    CCountedPointer(const CCountedPointer& other);
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CGameCameraManager {
 public:
     void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60

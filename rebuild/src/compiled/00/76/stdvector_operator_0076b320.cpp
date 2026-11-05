@@ -1,5 +1,7 @@
 // std::vector::operator=(const vector& x) -- Copy or reconstruct the element range, growing when needed.
 // Leaf: ??4?$vector@UAttackParticleAndEndPoints@@V?$allocator@UAttackParticleAndEndPoints@@@std@@@std@@QAEAAV01@ABV01@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity: CTCObjectAugmentations AttackParticleEffects vector assignment; own copy007698c0, assign00769c00,destroy0076a2a0.
 // Layout: original STLport vector12bytes and24/12/20-byte element layouts. Same-TU real helper loops expose input reads and destruction without modifying empty tags.
 #include <stdlib.h>
@@ -11,10 +13,10 @@
 inline void* operator new(size_t,void* p){return p;}
 class CThing;class CBaseObject;class CBaseObjectPointer;class CCPPointerInfo;class CContainmentVolume;
 class CCharString {public:void* PStringData;CCharString();CCharString(const CCharString&);const CCharString& operator=(const CCharString&);~CCharString();};
-class CBaseIntelligentPointer {public:virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {public:CIntelligentPointer();CIntelligentPointer(const CIntelligentPointer&);CIntelligentPointer& operator=(const CIntelligentPointer&);};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct AttackParticleAndEndPoints {CCharString StartDummy,EndDummy;long ParticleType,PeriodicFrames;CIntelligentPointer<CThing> ParticleEffect;};
-template<class T>class CCountedPointer {public:T* Data;CCPPointerInfo* Info;CCountedPointer();CCountedPointer(const CCountedPointer&);CCountedPointer& operator=(const CCountedPointer&);~CCountedPointer();};
+#include "engine/CCountedPointer.h"
 template<class T>class CArray {public:T* Start;T* Finish;T* End;};
 // Layout: genuine polymorphic CVertexStreamFormat is16bytes: vptr+0 and12-byte DataElements+4. No active shared header.
 class CVertexStreamFormat {public:class CDataElement;virtual ~CVertexStreamFormat();CArray<CDataElement> DataElements;CVertexStreamFormat();CVertexStreamFormat(const CVertexStreamFormat&);CVertexStreamFormat& operator=(const CVertexStreamFormat&);};

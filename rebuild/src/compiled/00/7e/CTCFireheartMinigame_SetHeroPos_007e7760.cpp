@@ -1,6 +1,7 @@
 // CTCFireheartMinigame::SetHeroPos(long x, long y, bool instantly) -- move the hero to grid marker [x][y]: teleport through the physics component, or (after putting the hero under scripted control) queue a CActionMoveTo to the marker
 // Retry 10b (accessor sweep, FIXES B-4/B-5): the parent thing is read through an inline accessor; the plain member read gives the parked register difference.
 // Leaf: SetHeroPos
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x007E7760, 288 bytes incl. padding (`ret 0Ch`). Ego_r.pdb `?SetHeroPos@CTCFireheartMinigame@@...`.
@@ -25,10 +26,9 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCScriptedControl;
-class CScriptThing { public:
-    unsigned char _body[12 - 4];
-    virtual ~CScriptThing();                            // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CTCPhysicsBase {
 public:

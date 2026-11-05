@@ -1,5 +1,6 @@
 // CVectorMap::Insert(const K& key, const V& value) -- (CVectorMap<long, CCountedPointer<CContainmentVolume>, CKeyPairCompareLess<...> >) append a {key, counted pointer} entry to the map's vector (unsorted) and mark the map dirty
 // Leaf: ?Insert@?$CVectorMap@JV?$CCountedPointer@VCContainmentVolume@@@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@@QAEXABJABV?$CCountedPointer@VCContainmentVolume@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A13AF0, 133 bytes, thiscall `ret 8`; no direct callers (an emitted COMDAT).
 // Identity (proven): CVectorMap<long, CCountedPointer<CContainmentVolume>, CKeyPairCompareLess<long, CCountedPointer<CContainmentVolume> > >::Insert(const long&, const CCountedPointer<CContainmentVolume>&); evidence: its _M_insert_overflow 0x00A139B0 is also called at 0x00A1323A by 0x00A12EE0 (called from the CPhysicsMeshObject code at 0x00821974), which appends to its CVectorMap& argument ([esp+78h]: push_back, Dirty +0xD) and then sorts that same map through the CContainmentVolume introsort_loop 0x008274B0 (0x00A13307; H047 proves its element) and insertion sort 0x008270E0; this TU (0x00A13xxx) keeps its own Insert COMDAT; Ego_r.pdb / FableWin.pdb name ?Insert@?$CVectorMap@ for exactly the six H047 pair types (plus CCharString / CEntityScriptBindingBase and unsigned __int64 / CActiveEntityScriptBase, other shapes).
 // Label: the manifest's "Vector_PushRefcountedItem" is propagated (family H051: six byte-identical bodies, each its own COMDAT; retail has
@@ -16,45 +17,7 @@
 #include <new>
 #include <stddef.h>
 #include <stdlib.h>
-class CCPPointerInfo { public:                                    // CCountedPointer's shared block
-    long  RefCount;                                        // +0x0
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x4
-    void* Data;                                            // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* const              data = o.Data;
-        CCPPointerInfo* const info = o.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CContainmentVolume;
 
 namespace std {

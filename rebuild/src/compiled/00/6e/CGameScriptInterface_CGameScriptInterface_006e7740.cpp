@@ -2,6 +2,7 @@
 // CPlayerManager&, CDisplayEngine&) -- the script API object: store the engine services, reset the script state, build
 // the empty hero script thing and timer map, and publish itself
 // Leaf: ??0CGameScriptInterface
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E7740, length 176 bytes, `ret 14h`.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CBaseClass::CBaseClass @ 0x0099A2D0 (the hero
 // CScriptThing's base; CScriptThing vtable 0x01238C8C), malloc @ 0x00BFEA0E (the timer map's 0x18-byte header node),
@@ -36,11 +37,7 @@ struct CBaseClassNonCopyable : CBaseClass {
     virtual ~CBaseClassNonCopyable();     // 0x0099A300
 };
 
-template <class T> class CCountedPointer { public:
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

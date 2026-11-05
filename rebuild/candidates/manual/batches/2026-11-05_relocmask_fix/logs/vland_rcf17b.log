@@ -1,0 +1,14 @@
+addr       parity           behav  name
+009f1720   MATCH            PASS   Clear
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CGameEventPackageSet
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CNetworkClient
+004aeaa0   RELOCATION_MATCH PASS   GetLocalGameEventPackageSet
+009f16c0   MATCH            PASS   Clear
+
+WINS: 3
+  009f1720 MATCH CGameEventPackageSet::?Clear@CGameEventPackageSet@@QAEXXZ
+  004aeaa0 RELOCATION_MATCH CNetworkClient::GetLocalGameEventPackageSet
+  009f16c0 MATCH CGameEventPackage::?Clear@CGameEventPackage@@QAEXXZ
+elapsed 5s rc=0

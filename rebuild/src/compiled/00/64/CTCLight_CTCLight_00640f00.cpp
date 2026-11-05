@@ -1,5 +1,6 @@
 // CTCLight::CTCLight(CThing* thing) -- CTCBase(thing) + the graphic-appearance component base, everything cleared (flicker factors 1.0), then register with the owner's graphic appearance and fetch the light sub-def
 // Leaf: ??0CTCLight
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00640F00, length 120 bytes (`ret 4`). Vtables: CTCLight primary 0x0125A194, the
 // NGraphicAppearance::CAGraphicAppearanceComponent base 0x0125A170 (stored first by its inline ctor) and CTCLight's side 0x0125A208 at +0xC
 // (as the landed ~CTCLight 0x00640F80).
@@ -12,7 +13,7 @@
 // Shape: init-list in declaration order; the vectors as the STLport _Vector_base + _STLP_alloc_proxy model (places `lea edi`); the zeroes share eax, the 1.0f pair edx; the body registers then calls GetSubDef(&PLightDef).
 class CThing;
 struct CLightInfo;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CDefClassBase;
 class CLightDef;
 namespace NGraphicAppearance {
@@ -39,11 +40,6 @@ template<class T> class CDefPointer { public:
 };
 class CDefClassBase { public:
     bool GetSubDef(CDefPointer<const CLightDef>* out) const;   // 0x0059346A (GetSubDef<CLightDef>)
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
 };
 template <class T> struct CAllocator {              // STLport allocator<T>: empty
     CAllocator() { }

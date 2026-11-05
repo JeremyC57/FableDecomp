@@ -1,5 +1,6 @@
 // CTCShapeManager::~CTCShapeManager() -- unregister from the global shape-manager vector (remove + erase), reset the selection, destroy the shape list
 // Leaf: ??1CTCShapeManager
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00762110, 174 bytes (+int3 pad to 176), plain `ret`.
 // Identity: stores CTCShapeManager's vtable 0x0126A2A4; only caller is its scalar deleting destructor 0x00765810
 //   (vtable slot 0). Ego_r.pdb ??1CTCShapeManager@@UAE@XZ. The catalog's "CEngineSubPrimitive2DClockSprite_Destructor"
@@ -19,7 +20,7 @@ extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size);   // 0x00BFEAE6
 
 class CThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
 class CTCBase {
 public:
@@ -34,12 +35,6 @@ namespace NShape {
 class CShape;
 }
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                                 // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    ~CCountedPointer();                                      // inlined into 0x00764C40
-};
 
 class C2DBoxF { public:
     float MinX, MinY, MaxX, MaxY;

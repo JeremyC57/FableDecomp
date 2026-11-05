@@ -1,5 +1,6 @@
 // CScriptGameResourceObjectScriptedThing::MoveToThing(const CScriptThing& target, float proximity, EScriptEntityMoveType moveType, bool wait, bool avoidDynamicObstacles, bool ignorePathPreferability, bool faceMovement) -- queue a move-to action towards a live target for the live scripted thing, then optionally wait while it performs its tasks
 // Leaf: MoveToThing
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00903E20, length 258 bytes (`ret 1Ch`), vtable 0x0128D86C slot 5.
 // PDB: ?MoveToThing@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z.
@@ -51,8 +52,7 @@ struct CIntelligentPointer_Retail {                // CIntelligentPointer<CThing
     CThing_Retail* GetPItem();                     // 0x00A01B50 CBaseIntelligentPointer::GetPItem
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // NUISystem::CComponent::`vector deleting destructor'(unsigned int) [thunk: this-=0x18] -- adjustor thunk: delete a UI component through its CActionParam base subobject
 // Leaf: ??_ECComponent@NUISystem@@WBI@AEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00535ac0, 8 bytes: `sub ecx,0x18 ; jmp 0x00535C10` (??_ECComponent@NUISystem@@UAEPAXI@Z).
 // Identity (two sources): slot 0 of the CComponent vtable for the CActionParam base at +0x18 (vtable 0x0124605C) is this thunk, and its jump target 0x00535C10 is
@@ -111,7 +112,7 @@ class CUIState { public:                           // PDB 0x24 bytes
 };
 class CComponent;
 class CAction;
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 
 class CUIInterface {                        // vtable 0x01246044
 public:

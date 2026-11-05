@@ -1,5 +1,6 @@
 // CTCWound::AddWound(EBodyLocation location) -- pick a random wound morph for the body location from the creature def; an identical wound already on the thing just has its duration reset, otherwise a fresh wound goes on the front of the list and the list is trimmed to 15 from the back
 // Leaf: AddWound
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00757B30, length 352 bytes (`ret 4`, no frame pointer; Ego_r.pdb
 //   `?AddWound@CTCWound@@QAEXW4EBodyLocation@@@Z`).
 // Callees: CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*) 0x00485815 (manifest
@@ -40,11 +41,7 @@ class CWoundMorphs { public:
     };
     const CEntry* GetPRandomWoundForLocation(EBodyLocation location, unsigned long& seed, long& index) const;   // 0x00757870
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;                                              // +0x00
-    void* Count;                                             // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 class CCreatureDef { public:

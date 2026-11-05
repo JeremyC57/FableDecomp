@@ -1,5 +1,6 @@
 // NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature::Init() -- a randomly populated creature's entity-script Init: not yet attached to a village, pick the furthest RandomPopulationExit from Me as its exit, classify Me by script name (villager 0, guard 1, bandit 2; a villager also gets gold scaled down by the current region's population scale), and count it alive in the parent's per-type tally
 // Leaf: ?Init@CRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC1CD0, 540 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Init) of the entity-script vtable 0x012F1390 [slot 0 scalar deleting dtor 0x00EC2830, slot 1
 //   Main 0x00EC1EF0 (landed), slot 2 this row, slot 5 the landed OnPredicateFail 0x00EC1C20] that the landed
@@ -61,48 +62,7 @@ public:
     }
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo {
-public:
-    long References;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;              // the source's fields are read first
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->References;
-                if (Info->References == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->References;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CEntityScriptBase.h"

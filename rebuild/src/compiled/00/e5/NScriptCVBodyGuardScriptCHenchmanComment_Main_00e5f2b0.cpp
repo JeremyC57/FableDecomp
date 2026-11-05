@@ -1,5 +1,6 @@
 // NScript::CV_BodyGuardScript::CHenchmanComment::Main() -- body-guard henchman chatter: collects the "BodyGuard" things and notes which one is the CREATURE_BODY_GUARD itself; then every frame, while any other henchman is within 10 units and more than 6 seconds have passed, asks the body-guard script for a comment (stopping once one is made); the timer restarts whenever no henchman is near
 // Leaf: ?Main@CHenchmanComment@CV_BodyGuardScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E5F2B0, length 783 bytes (+ int3 padding).
 // Callees: IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString(const
 //   char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CBaseClass() 0x0099A2D0 / ~CBaseClass 0x0099A2E0, ~CScriptThing 0x004AA840,
@@ -18,14 +19,7 @@
 class CCharString;
 class C3DVector;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCountBlock { long References; };
-template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>: {Data, Info}
- void* Data;
- CCountBlock* Info;
- CCountedPointer() : Data(0), Info(0) { }
- CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
- CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (folded with CCountedPointer<CDiskFileWin32>::operator=)
-};
+#include "engine/CCountedPointer.h"
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
  virtual void v01();
  virtual CCharString GetDefName() const;                 // slot 2 (+0x08) 0x004AA8D0

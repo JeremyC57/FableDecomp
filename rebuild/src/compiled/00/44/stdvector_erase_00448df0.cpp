@@ -1,5 +1,6 @@
 // std::vector::erase(iterator __first, iterator __last) -- (vector<CCountedPointer<const CInputTypeBase> >) STLport range erase: assign the tail down over the gap, destroy the vacated tail, shrink _M_finish, return first
 // Leaf: ?erase@?$vector@V?$CCountedPointer@$$CBVCInputTypeBase@@@@V?$allocator@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@@std@@QAEPAV?$CCountedPointer@$$CBVCInputTypeBase@@@@PAV3@0@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00448DF0, 57 bytes, __fastcall `ret 8`, returns __first in eax.
 // Identity: the element type is proven by the callees: 0x00448860 is bound as
 // ??$__destroy_aux@PAV?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@YIXPAV?$CCountedPointer@$$CBVCInputTypeBase@@@@0ABU__false_type@0@@Z,
@@ -12,16 +13,8 @@
 // out-of-line __destroy_aux(.., __false_type()); both empty tags are homed in __first's dead argument slot (`lea eax,
 // [esp+14h]` / `lea ecx,[esp+10h]`), the callees are __fastcall (first in ecx, last in edx).
 class CInputTypeBase;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer<T>& other);
-    ~CCountedPointer();
-    CCountedPointer<T>& operator=(const CCountedPointer<T>& other);
-};
 
 namespace std {
 struct __false_type { __false_type() { } };

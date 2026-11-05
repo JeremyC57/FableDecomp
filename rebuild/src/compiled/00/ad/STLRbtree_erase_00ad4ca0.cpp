@@ -1,5 +1,6 @@
 // std::_Rb_tree::erase(iterator position) -- unlink one node of the optimiser's contraction multimap (multimap<float, CCountedPointer<CVertexPairContraction>>), release its counted pointer, free the node, drop the count
 // Leaf: ?erase@?$_Rb_tree@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountInfo (= CCPPointerInfo) members unchanged are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD4CA0, 0x67 bytes (+ int3 padding), thiscall, `ret 4` (the iterator by value).
 // Identity: the 0x1C-byte node is { colour, parent, left, right } + pair<const float, CCountedPointer<
 // QuadricOptimiserInternals::CVertexPairContraction>> (float key +0x10, object +0x14, count block +0x18): the
@@ -17,29 +18,8 @@
 extern "C" void __cdecl free(void* block);                       // 0x00BFEA14
 void __cdecl operator delete(void* block);                       // 0x00BFE9BC
 
-struct SCountInfo {
-    long  RefCount;                                              // +0x0
-    void (__fastcall* DeleteFunc)(void*);                        // +0x4
-    void* Data;                                                  // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*          Data;                                            // +0x0
-    SCountInfo* Info;                                            // +0x4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 namespace QuadricOptimiserInternals { class CVertexPairContraction; }
 

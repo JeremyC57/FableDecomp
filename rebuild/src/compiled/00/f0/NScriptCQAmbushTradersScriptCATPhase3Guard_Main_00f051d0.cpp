@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_Phase3Guard::Main() -- Arena phase-3 guard: alive filter on Me, wander round its own position (min 0, max from the script def), state group 4; find "AT_ConvoySpy" and ally it with every live guard of the parent, make it and the hero enemies of Me, mark Me on the minimap, wait for the phase to end, then take scripted control, walk to the nearest REGION_EXIT_POINT and fade out
 // Leaf: ?Main@CAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the non-template local CCountedPointer holds a CScriptThingImp* (its first member): it is CCountedPointer<CScriptThingImp>; the local CCountBlock (= CCPPointerInfo) members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F051D0, 1232 bytes; entity-script vtable slot 1 (Main).
@@ -35,18 +36,13 @@ struct CScriptThingImp {
     virtual void i071(); virtual void i072(); virtual void i073(); virtual void i074();
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-struct CCountBlock { long References; };
-struct CCountedPointer {
-    CScriptThingImp* Data;
-    CCountBlock*     Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-};
+#include "engine/CCountedPointer.h"
 class CBaseClass { public:                                   // vtable 0x01231710
     CBaseClass() { }
     virtual void b0();
 };
 class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
-    CCountedPointer PImp;                              // +0x04
+    CCountedPointer<CScriptThingImp> PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     struct InlineCopy { };                             // tag: the inline copy retail expands at by-value call sites
     CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }

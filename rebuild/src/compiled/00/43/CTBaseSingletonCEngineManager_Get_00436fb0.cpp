@@ -1,5 +1,6 @@
 // CTBaseSingleton<CEngineManager>::Get() -- create the engine manager singleton (empty engine list, empty changed-area vector) on first use, return it
 // Leaf: ?Get@?$CTBaseSingleton@VCEngineManager@@@@SIAAVCEngineManager@@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00436FB0, length 112 bytes (105 + int3 padding), `ret` (static __fastcall, no arguments).
 // Name: the CTBaseSingleton<T>::Get template of the landed CTBaseSingleton<CConsole>::Get 0x00414C90; the object built (0x14 bytes)
 // stores vtable 0x01231584 = CEngineManager (rtti-vtables.tsv); many callers (0x004353A0, 0x004354AF, ... 0x0050233F). The
@@ -19,13 +20,7 @@
 // enough.
 #include <stdlib.h>
 #include <new>
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Reset(T* data);                                 // 0x004366B0 for CEngineManager
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingleton {
 public:
     virtual ~CTBaseSingleton() {}

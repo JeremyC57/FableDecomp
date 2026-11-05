@@ -1,11 +1,13 @@
 // CAIStateGroup_MinionReactToTrespassing::IsStillRunnable(bool) -- periodically check ongoing trespass deeds targeting the creature home
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail0x009580e0,295 bytes. Home retail+168 differs from donor+190, hence local creature overlay.
 #include "engine/CAIStateGroup_MinionReactToTrespassing.h"
 #include "engine/CAIBrain.h"
 #include "engine/CTCCreatureOpinionOfHero.h"
 class CThing;
 class CBaseObject;
-struct CBaseIntelligentPointer { virtual void PointerType(); void* Handle; CBaseObject* GetPItem() const; }; // 0xA01B50
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

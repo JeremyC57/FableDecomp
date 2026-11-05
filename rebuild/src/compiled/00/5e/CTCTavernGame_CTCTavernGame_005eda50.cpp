@@ -1,5 +1,7 @@
 // CTCTavernGame::~CTCTavernGame() -- tavern mini-game TC dtor (compiler-generated): the member dtors in reverse order (the game master pointer, three font-bank counted pointers, five engine primitive handle vectors, the UI component vector) and ~CTCBase
 // Leaf: ??1CTCTavernGame@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005EDA50, 417 bytes, tail jump to the base destructor.
 // Identity: the only call is from 0x005EDA30, slot 0 (the scalar deleting destructor) of vtable 0x012560BC, RTTI
 //   `.?AVCTCTavernGame@@` (rtti_bases: CTCTavernGame : CTCBase); the derived tavern-game dtors (0x007D1ADC, 0x007D5EE2,
@@ -47,26 +49,7 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 };
 } // namespace std
 
-class CCPPointerInfo { public:                              // CCountedPointer count block
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void*         Data;                                     // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    __forceinline void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    __forceinline ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveHandle;
@@ -129,12 +112,8 @@ class CTCBase : public CBaseClassNonCopyable { public:
     virtual ~CTCBase();                                     // 0x00686830
 };
 class CBaseObjectPointer;
-class CBaseIntelligentPointer { public:
-    CBaseObjectPointer* PData;                              // +0x04
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingAICreature;
 class CFontBank;
 namespace NUISystem { class CComponent; }

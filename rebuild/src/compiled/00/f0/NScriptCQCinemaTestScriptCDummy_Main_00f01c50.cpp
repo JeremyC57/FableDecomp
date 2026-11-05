@@ -1,5 +1,6 @@
 // NScript::CQ_CinemaTestScript::CDummy::Main() -- entity-script Main (vtable 0x012F7338 slot 1): register an is-alive functor over Me, run one script frame, then (unless done) keep trying, a frame at a time, to start scripting Me through a fresh local handle
 // Leaf: ?Main@CDummy@CQ_CinemaTestScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity (naming wave 11): ?Main@CDummy@CQ_CinemaTestScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F7338 slot 1 is stored by the factory 0x00F01B60 registered as "Dummy"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F01C50, 205 bytes (+ int3 padding).
 // Identity: the catalog/BSim label "NScript::CQ_EndGameFocalSitesScript::CEndGameScarletRobe::Main" is a 0.58-similarity guess;
@@ -17,8 +18,7 @@
 // Naming wave 35: identity reg 00f01902 "Dummy" in 00f018b0; Alloc 00f01b60; vtable 012f7338 slot 1; PDB ?Main@CDummy@CQ_CinemaTestScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); replaces CEndGameScarletRobe::Main: current name also held by 00efe700,00eff4d0; CEndGameScarletRobe::Main is at 00d2d060 (its own vtable slot) (wave3/labels_alloc.tsv); PDB ?Main@CDummy@CQ_CinemaTestScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was already this symbol, with a bare `// Leaf:` line and the old file name; this source now defines the PDB member (class model unchanged); same bytes.
 namespace NScript { class CPredicateBase; }
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

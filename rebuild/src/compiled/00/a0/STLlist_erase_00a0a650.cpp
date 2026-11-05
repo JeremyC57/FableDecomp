@@ -1,5 +1,6 @@
 // std::list::erase(std::list<CMeshBankManager::CMeshDataBankInfo>::iterator position) -- list<CMeshDataBankInfo>: unlink one mesh-bank record, release its bank pointer and handle string, free the node and return the next position
 // Leaf: ?erase@?$list@VCMeshDataBankInfo@CMeshBankManager@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0A650, 97 bytes, `__fastcall` (the list in ecx, unused), hidden
 //   iterator result + position on the stack, `ret 8`.
 // Identity: the node's data (+8) is a 12-byte {CCharString +0; CCountedPointer +4} = Ego_r.pdb
@@ -18,28 +19,7 @@ public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
-class CCPPointerInfo { public:                                  // CCountedPointer count block
-    long  RefCount;                                      // +0x00
-    void  (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void* Data;                                          // +0x08
-};
-template <class T> class CCountedPointer {               // the landed model (STL_partialsort_00cbd0f0)
-public:
-    T*              Data;                                // +0x00
-    CCPPointerInfo* Info;                                // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class CMeshDataBank;
 class CMeshBankManager {

@@ -3,6 +3,7 @@
 // Callees: the script thing's slots 75 (+0x12c) and 11 (+0x2c), the component map LowerBound @ 0x0040F020 (kind 0xb8 by address).
 // Shape: the inlined `find` tail, the component null-tested in eax before the byte store, `ret 8`.
 // Leaf: ?SetTavernTableAvailableForUse@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 struct CTCBase_Retail;
 struct CTCBase_Retail;
 class CTCBase;
@@ -52,8 +53,7 @@ struct CTCTavernTable_Retail {
     unsigned char _pad[0x5c];
     bool m_availableForUse;                        // +0x5c
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

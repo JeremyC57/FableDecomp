@@ -1,17 +1,14 @@
 // std::vector<CDefendingCombatantInfo::CProng>::_M_clear() -- STLport 4.6 `_M_clear()`: destroy every element, then free the block
 // Leaf: ?_M_clear@?$vector@VCProng@CDefendingCombatantInfo@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F3450, 50 bytes, thiscall, plain `ret`.
 // Identity (probable): its only caller is the landed vector<CDefendingCombatantInfo::CProng>::operator= 0x006F3C20; Ego_r.pdb CProng (28 bytes) has POccupier at +0x14.
 // Callees: the element destructor's one call -- POccupier (CIntelligentPointer<CThingCreatureBase>) at +0x14, ~CBaseIntelligentPointer 0x00A01C10; free 0x00BFEA14.
 // Shape (family K104, representative 0x0047BD70): the landed vector<pair<CCharString, float> >::_M_clear 0x006FBE60 (family J007)
 //   with the destroyed member at another offset: `_Destroy(_M_start, _M_finish)` (inline __destroy_aux loop) then deallocate.
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
-class CBaseIntelligentPointer {                        // 8 bytes: vptr, PData
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;                                         // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingCreatureBase;
 class CDefendingCombatantInfo {
 public:

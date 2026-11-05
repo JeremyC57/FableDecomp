@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetNearestEnabledDiggingSpot(const CScriptThing& from) const -- of all MARKER_DIGGING_SPOT things that IsDiggingSpotEnabled accepts, return the one nearest (2D) to `from`; an empty handle when there are none or none is enabled
 // Leaf: GetNearestEnabledDiggingSpot
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089EF90, length 585 bytes (virtual slot 575, `ret 8`: hidden CScriptThing result + from).
 // Callees: own slot 80 GetAllThingsWithDefName and slot 576 IsDiggingSpotEnabled (cgsi_slots_aligned.tsv), CCharString ctor/dtor
@@ -20,29 +21,7 @@ class CCharString { public:
 #include "engine/C3DVector.h"
 extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

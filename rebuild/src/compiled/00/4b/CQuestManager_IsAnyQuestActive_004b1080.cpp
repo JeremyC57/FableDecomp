@@ -1,4 +1,5 @@
 // CQuestManager::IsAnyQuestActive() -- true when an active quest card's quest component holds a non-vignette quest definition and no quest number has been assigned yet (field +0x14 negative)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B1080, length 143 bytes (padded to 144).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the card thing), CVectorMap<ETCInterfaceType, CTCBase*>::
 // LowerBound const @ 0x004365B0 (component kind 0x6c, the quest card), the definition's release (virtual slot 1, +4).
@@ -61,12 +62,8 @@ class CTCQuestCard { public:
     unsigned char    _pad10[4];
     long             QuestNumber;                  // +0x14
 };
-class CBaseIntelligentPointer { public:
-    void* __vftable;
-    void* m_pItem;
-public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CCardNode {                                 // STLport list node
     CCardNode*                 next;
     CCardNode*                 prev;

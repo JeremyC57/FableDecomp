@@ -9,6 +9,7 @@
 // Name CCharString +0, ConvexVolume CCountedPointer<CContainmentVolume> +4). The vector is the CVectorMap's CArray
 // data (STLport vector<pair<..> >).
 // Leaf: ?push_back@?$vector@U?$pair@KVC3DMeshVolume@@@std@@V?$allocator@U?$pair@KVC3DMeshVolume@@@std@@@2@@std@@QAEXABU?$pair@KVC3DMeshVolume@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 inline void* operator new(unsigned int, void* p) { return p; }
 
 class CCharString {
@@ -17,14 +18,8 @@ public:
     void* PStringData;
 };
 
-class CCPPointerInfo { public: long RefCount; };
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-};
 
 class CContainmentVolume;
 

@@ -1,5 +1,6 @@
 // NUISystem::CHoverable::OnHovered() -- remember the requested state as the state before hovering, change to the definition's hovered state, then run the on-hovered actions
 // Leaf: ?OnHovered@CHoverable@NUISystem@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055BAE0, 96 bytes, virtual thiscall, plain `ret`.
 // Identity (proven): slot 143 (+0x23C) of CHoverable's vtable 0x0124BFB4, inherited by CDraggableInto 0x0124B2D4;
 //   it sits between CHoverable::IsHovered (slot 142, 0x0055B8F0) and CHoverable::OnUnhovered (slot 144, 0x0055B9A0), and
@@ -11,11 +12,7 @@
 namespace std {
 template <class T> class list;
 }
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 class CAction;
 class CUIDef { public:

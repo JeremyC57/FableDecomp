@@ -1,5 +1,6 @@
 // CCreatureAction_GoUnderground::FinishAction() -- perform the action if it never ran, resume an AI creature's AI, then the combat action's FinishAction
 // Leaf: ?FinishAction@CCreatureAction_GoUnderground@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B6A20, 63 bytes (one int3 at 0x008B6A5F, then the next function 0x008B6A60
 //   CCreatureAction_RiseUp::Initialise), thiscall, tail `jmp CCombatActionBase::FinishAction` 0x00859A20.
 // Identity (proven, two sources): (1) the only reference is slot 4 (the FinishAction slot: CCreatureActionBase 0x01259D24 slot 4
@@ -40,22 +41,9 @@ public:
 };
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                         // vtable 0x0129C95C (vptr + PData, 8 bytes; 1-aligned in retail)
-public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                          // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {    // FableWin member set: Get / Set / -> / *
-public:
-    T* Get() const { return static_cast<T*>(GetPItem()); }
-    T* operator->() const { return Get(); }
-    T& operator*() const { return *Get(); }
-};
 #pragma pack(pop)
 
 class CCreatureActionBase : public CBaseObject {        // vtable 0x01259D24, retail 0xA8 bytes

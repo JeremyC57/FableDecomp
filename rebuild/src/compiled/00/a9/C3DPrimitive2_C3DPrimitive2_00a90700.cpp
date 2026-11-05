@@ -1,6 +1,7 @@
 // C3DPrimitive2::C3DPrimitive2() -- vtable, then every pointer, count and status cleared, the recorded texture stages set to "none" (-1, -1, no blank textures), no recorded constants, recorded frame -1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A90700, length 137 bytes.
 // Leaf: ??0C3DPrimitive2
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Shape: a root polymorphic class: the vtable store comes first, then the member initialisers in address
 // order from one zero register (ecx; `this` moves to eax) and `or edx,-1` for the -1 words; MaterialIndex,
@@ -27,11 +28,7 @@ template<class T> struct scoped_ptr {
     T* m_p;
     scoped_ptr() : m_p(0) { }
 };
-template<class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 class C3DTextureStages { public:                            // 12 bytes (PDB)
     long DiffuseTextureStage;                        // +0
     long BumpTextureStage;                           // +4

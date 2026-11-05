@@ -2,6 +2,7 @@
 // Grade: RELOCATION_MATCH -- the two early exits are `break`s out of a `do { ... } while (0)` block: VC7.1 then cross-jumps them into the one epilogue after the inner `pop esi` like retail (the early-return and nested-if forms both emitted a second pop edi / mov eax,ebp / ret 4 tail)
 // parameters and, for a damage-attribute-4 hit by a live thing carrying TC 0x77 with a live weapon, record that weapon
 // Leaf: ??0CEventHitBase
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00811760, length 199 bytes (padded to 208), `ret 4`.
 // Callees: operator new @ 0x00BFEA1A, CHitParameters::CHitParameters(const CHitParameters&) @ 0x00812170 (0x60 bytes),
 // CCountedPointer<CHitParameters>::Reset(CHitParameters*) @ 0x00812280 (labelled for another instantiation),
@@ -64,13 +65,7 @@ public:
     void SetWeapon(CThing* weapon);                 // 0x00868CE0
 };
 
-template<class T> class CCountedPointer { public:
-    T* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Reset(T* data);                            // 0x00812280
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NEntityEvents {
 class __declspec(novtable) CEventBase {

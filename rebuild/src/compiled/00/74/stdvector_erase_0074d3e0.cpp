@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CIntelligentPointer<CThingCreatureBase> >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, run each vacated element's virtual destructor, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074D3E0, 77 bytes, thiscall, `ret 8`, returns first.
 // Identity: vector<CIntelligentPointer<CThingCreatureBase> > -- proven; evidence: both callers are CTCCreatureGenerator code (FrameUpdate 0x0074C1C0 and the RemoveTriggerer 0x0074A1E0 that CGameScriptInterface::CreatureGeneratorRemoveTriggerer calls) erasing the vector at this+0x1C = Ego_r.pdb CTCCreatureGenerator::CreatureTriggerers, vector<CIntelligentPointer<CThingCreatureBase> > (PDB +40 less 4 for the 12-byte retail CArray<CDefIndex> and 8 for the 4-byte retail list); RemoveTriggerer's key temporary carries vtable 0x0123E7D8 .?AV?$CIntelligentPointer@VCThingCreatureBase@@@@; its __copy 0x0074CFE0 assigns through CBaseIntelligentPointer GetPItem/SetPItem 0x00A01B50/0x00A01B90.
 // Label: the manifest's "CVectorDeleter_DeleteRange" is propagated across byte-identical bodies; this is STLport 4.6
@@ -12,12 +13,8 @@
 //   random_access_iterator_tag(), (ptrdiff_t*)0)` and _Destroy = the __destroy_aux(__false_type) loop of `p->~T()`.
 #include <stddef.h>
 class CThingCreatureBase;
-template <class T> class CIntelligentPointer {   // 8 bytes; CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8
-public:                                           // (RTTI .?AV?$CIntelligentPointer@VCThingCreatureBase@@@@)
-    virtual ~CIntelligentPointer();               // slot 0
-    CIntelligentPointer<T>& operator=(const CIntelligentPointer<T>& other);   // CBaseIntelligentPointer Get/SetPItem
-    T* Data;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

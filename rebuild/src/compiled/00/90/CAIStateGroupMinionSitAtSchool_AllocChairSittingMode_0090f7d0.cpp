@@ -1,5 +1,7 @@
 // CAIStateGroup_MinionSitAtSchool::AllocChairSittingMode() const -- picks the chair sitting mode at random: half the time a studious sit (CModeSitChairStudious on the creature), otherwise the CAIStateGroup_UsesSeat default
 // Leaf: ?AllocChairSittingMode@CAIStateGroup_MinionSitAtSchool@@MBEPAVCModeSitBase@NCreatureMode@@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F7D0, 96 bytes (+ int3 padding), thiscall virtual (slot 15), `ret`.
 // Identity (proven): Ego_r.pdb ?AllocChairSittingMode@CAIStateGroup_MinionSitAtSchool@@MBEPAVCModeSitBase@NCreatureMode@@XZ
 //   (0x009345D0); the label agrees. RTTI: CAIStateGroup_MinionSitAtSchool : CAIStateGroup_MinionSitOnSeatBase : CAIStateGroup_UsesSeat.
@@ -24,21 +26,9 @@ public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-private:
-    void* PData;                                        // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-};
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                            // +0x00
-    T* operator->() const { return Data; }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
 class CClass : public CBaseObject { };
 class CThing : public CClass {
 public:

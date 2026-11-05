@@ -1,5 +1,6 @@
 // CReplaceSerialise<COldFileFormatHeightMapCell4,COldFileFormatHeightMapCell3>::ConvertPreviousUnknownVersionUp(void* data) -- build a version-4 cell (17 bytes): copies Height, TextureBlendAlpha, EngineTheme and EngineBlend and clears Passable / CameraPassable; an older record is first converted up to version 3 through the previous link; the new cell is handed back in a counted pointer
 // Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell4@@VCOldFileFormatHeightMapCell3@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell4@@@@PAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008265C0, 276 bytes, static __fastcall (the hidden CCountedPointer return slot in ecx,
 //   data in edx), plain `ret`.
 // Identity (proven): Ego_r.pdb and FableWin.pdb hold ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell4@@VCOldFileFormatHeightMapCell3@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell4@@@@PAX@Z
@@ -20,50 +21,7 @@ void __cdecl operator delete(void* block);             // 0x00BFE9BC
 #include <string.h>
 #pragma intrinsic(memcpy, memset)
 
-class CCPPointerInfo { public:                         // Ego_r.pdb, 12 bytes
-    unsigned long RefCount;                            // +0x0
-    void (__fastcall* DeleteFunc)(void*);              // +0x4 (the object reaches it in ecx in retail)
-    void* Data;                                        // +0x8
-    CCPPointerInfo(void* p, void (__fastcall* d)(void*)) : RefCount(1), DeleteFunc(d), Data(p) {}
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                              // +0x0
-    CCPPointerInfo* Info;                              // +0x4
-    static void __fastcall DeleteData(void* data);
-    CCountedPointer(T* p) : Data(p), Info(p ? new CCPPointerInfo(p, DeleteData) : 0) {}
-    CCountedPointer(const CCountedPointer& x) : Data(x.Data), Info(x.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    CCountedPointer& operator=(const CCountedPointer& x)
-    {
-        CCPPointerInfo* c = x.Info;
-        T* o = x.Data;
-        if (Info != c) {
-            if (Info && --Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-            Data = o;
-            Info = c;
-            if (Info)
-                ++Info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 
 #pragma pack(push, 1)
 template <class T, class TOld> class CReplaceSerialise {

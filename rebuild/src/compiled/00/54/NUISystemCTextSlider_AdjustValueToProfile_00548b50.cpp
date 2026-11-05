@@ -1,4 +1,5 @@
 // Leaf: AdjustValueToProfile
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Grade: RELOCATION_MATCH 996/996 on the corrected span 0x00548B50+996 (code + embedded jump table; bounds audit) -- catalog row 1616 B held a second function at 0x00548F40; really NUISystem::CTextSlider::AdjustValueToProfile (catalog: CSlider)
 // NUISystem::CTextSlider::AdjustValueToProfile() -- read the text slider's selected child from the user-profile setting its default action names; when it changed, flag a move, stamp the input time, light the accept button (observe the accept event, full alpha) and play the front-end text-slider sound
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00548B50, 682 bytes, plain `ret`; two jump tables (0x2B..0x2F; 0x54..0x143 via a byte index table).
@@ -14,12 +15,7 @@ class CRGBColour { public:
     CRGBColour() {}
     CRGBColour(const CRGBColour& c) : B(c.B), G(c.G), R(c.R), A(c.A) {}
 };
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct CRetailVector {        // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;

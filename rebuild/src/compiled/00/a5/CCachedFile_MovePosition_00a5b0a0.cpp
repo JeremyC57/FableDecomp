@@ -1,5 +1,6 @@
 // CCachedFile::MovePosition(long offset) -- moves the read position by `offset`, throwing CBBBFileException(11) with a message before the start or past the disk file's length
 // Leaf: MovePosition
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A5B0A0, 240 bytes incl. padding (ret 4).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, operator+(const CCharString&, const char*) @ 0x0099F600
 //          (__fastcall, result in ecx), ~CCharString @ 0x0099EAE0, CCharString(const CCharString&) @ 0x0099EC30,
@@ -36,11 +37,7 @@ class CAFile { public:
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual long GetLength();                   // slot 9 (+0x24)
 };
-template <class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 class CCachedFile { public:
     void*                   _vptr;              // +0x00
     long                    Position;           // +0x04

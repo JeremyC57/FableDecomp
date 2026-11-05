@@ -1,6 +1,7 @@
 // CGameCameraManager::PushZTargetMode() -- block mode changes and mark the camera as manually driven; when the observed thing is alive and no camera script is pending or running, play the Z_TARGET_START sound, fetch the manager def's Z-target camera mode def and prepare it, switching to the pending mode when one was built
 // Retry 10b (getsw sweep, FIXES B-15): the deleted flag is read through an inline getter `GetDeleted()`; the plain member read gives the parked register/scheduling difference.
 // Leaf: PushZTargetMode
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00698E40, length 269 bytes (+ int3 padding), plain `ret`.
 // Signature from Ego_r.pdb: ?PushZTargetMode@CGameCameraManager@@QAEXXZ.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the script's IsFinished (virtual slot 2), CCharString(const char*,
@@ -96,9 +97,8 @@ class CThing { public:
     unsigned char GetDeleted() const { return Deleted; }
 };
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CCameraObservedPointer {
     void* Vtable;
     void* Item;

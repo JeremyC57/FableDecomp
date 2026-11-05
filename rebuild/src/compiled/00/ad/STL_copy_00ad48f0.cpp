@@ -1,5 +1,6 @@
 // std::__copy(_InputIter first, _InputIter last, _OutputIter result, const input_iterator_tag&, _Distance*) -- STLport input-iterator copy of a set<unsigned long> range through an insert_iterator into another set: assign each element to the inserter, step the source iterator, return the inserter
 // Leaf: ??$__copy@U?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD48F0, 111 bytes (+int3), /Gr __fastcall `ret 14h`: the
 //   insert_iterator result through the hidden pointer in ecx (it has a user constructor), the tag reference in edx,
 //   then first, last, the 8-byte inserter by value and the distance pointer on the stack.
@@ -15,34 +16,8 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo { public:
-    long  RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
-    void* Data;                                         // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 namespace QuadricOptimiserInternals {
 class CVertexPairContraction;

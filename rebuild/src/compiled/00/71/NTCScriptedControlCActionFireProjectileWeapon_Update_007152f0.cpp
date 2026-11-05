@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionFireProjectileWeapon::Update() -- finish once the target is dead or the queue has run dry and the creature is no longer on the last action handed over; otherwise feed the next queued creature action (reload / aim / fire) to the creature whenever it is idle or its current action has finished
 // Leaf: ?Update@CActionFireProjectileWeapon@NTCScriptedControl@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007152F0, 181 bytes (+11 int3 padding); vtable 0x01265960 slot 1.
 // FableWin.pdb: ?Update@CActionFireProjectileWeapon@NTCScriptedControl@@UAEXXZ.
 // Callees: CScriptThing virtual slots 77 IsValid (+0x134), 71 Refresh (+0x11c), 75 IsAlive (+0x12c);
@@ -14,7 +15,7 @@
 //          creature is modelled locally); CCreatureActionBase ActionID +0x28, Finished +0x61.
 // Shape: the creature is read once into ebx right after the refresh; `!IsAlive() || empty()` guards the finish test; the
 //          front action is handed over through the counted pointer's inline Get(); erase(begin()) discards the result.
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CCreatureActionBase {
 public:
     unsigned char _pad00[0x28];
@@ -22,11 +23,6 @@ public:
     unsigned char _pad2c[0x61 - 0x2c];
     bool          Finished;                        // +0x61
     long GetActionID() const;                      // 0x00692620
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                          // +0x00
-    CCPPointerInfo* Info;                          // +0x04
-    T* Get() const { return Data; }
 };
 struct SCreatureActionNode {
     SCreatureActionNode*                  _M_next; // +0x00

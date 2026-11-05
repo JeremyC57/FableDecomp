@@ -1,5 +1,6 @@
 // CHitParameters::CHitParameters() -- default hit parameters: undirected, blockable, plays the hit response, moves the target back and spawns both hit effects; empty damage map and augmentation list, no hit location, material, attacker or weapon
 // Leaf: ??0CHitParameters@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A3BC0, 154 bytes (+ int3 padding to 160), __fastcall, plain `ret`.
 // Identity: Ego_r.pdb `??0CHitParameters@@QAE@XZ` sits straight after CTCWillLightning's ??_G, as this code follows the
@@ -60,14 +61,8 @@ struct CAugmentationVector {                             // STLport vector<EObje
     CAugmentationVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
 };
 
-struct CBaseIntelligentPointer {
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();
-    void* m_pItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 template <class T> class CDefPointer { public:
     const T* Object;

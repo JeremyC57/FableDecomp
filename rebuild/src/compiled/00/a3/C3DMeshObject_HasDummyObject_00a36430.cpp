@@ -1,5 +1,6 @@
 // C3DMeshObject::HasDummyObject(const CCharString& name) const -- false without mesh statistics, else ask them for the name's CRC (C3DMeshStats::HasDummyObject @ 0x00A2EA60)
 // Leaf: HasDummyObject
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36430, 66 bytes (+ int3 padding), `ret 4`.
 // Identity: Ego_r.pdb `?HasDummyObject@C3DMeshObject@@QBE_NABVCCharString@@@Z`; callers 0x004C0A53 / 0x004C0E1C (the graphic
 //   appearance). The catalog's "HasDummyObject_Wrapper" is descriptive. Sibling of the landed HasHelperPoint 0x00A36100
@@ -28,10 +29,7 @@ class C3DMeshStats { public:
     bool HasDummyObject(unsigned long nameHash) const;   // 0x00A2EA60
 };
 
-template <class T> class CCountedPointer { public:
-    T*    Data;                                    // +0
-    void* Info;                                    // +4
-};
+#include "engine/CCountedPointer.h"
 
 class C3DMeshInfo;
 

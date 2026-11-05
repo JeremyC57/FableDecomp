@@ -1,4 +1,5 @@
 // CCreatureAction_DragonLand::Initialise() -- initialise landing, lower position, target dragon and suspend animation.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008F3AD0 length300. Physics slot31 ResetPosition006B01D0 const-vector reference; slot70
 // GetFacingVector723C00 native hidden-buffer ABI ECXthis/EAXbuffer/ret4. Real header + field-free adapter.
@@ -45,7 +46,8 @@ class CThing : public CClass { public:
  const C3DVector& GetPos() const; //004C73D0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CBaseObject* GetPItem() const;}; //00A01C10/00A01B50
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CCombatActionBase { public:void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  void SetCombatAnimation(const CCharString&); //008574D0
  virtual void Initialise(); //00857520

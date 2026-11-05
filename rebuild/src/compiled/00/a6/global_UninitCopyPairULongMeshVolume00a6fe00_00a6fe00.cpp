@@ -1,5 +1,6 @@
 // _global::UninitCopy_PairULongMeshVolume_00a6fe00(const PairULongMeshVolume* first, const PairULongMeshVolume* last, PairULongMeshVolume* result, const __false_type&) -- STLport __uninitialized_copy over 16-byte pair<unsigned long, C3DMeshVolume> entries: placement-copy each entry (key word, volume name out of line, the counted convex volume add-ref'd), return the advanced result
 // Leaf: UninitCopy_PairULongMeshVolume_00a6fe00
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6FE00, length 99 bytes (+ int3 padding), `ret 8`.
 // Callers: the vector regrowth of the same TU @ 0x00A72CC0 (calls 0x00A72D19 / 0x00A72D84).
 // Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30 (the volume name).
@@ -21,17 +22,8 @@ public:
     void* PData;                               // +0x0
 };
 
-class CCPPointerInfo { public: unsigned long RefCount; };
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T* Data;                                   // +0x0
-    CCPPointerInfo* Info;                      // +0x4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 class CContainmentVolume;
 

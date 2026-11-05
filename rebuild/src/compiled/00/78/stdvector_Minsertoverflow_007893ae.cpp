@@ -1,6 +1,7 @@
 // std::vector::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len, bool __atend) -- (vector<std::pair<CIntelligentPointer<CThing>, long> >) STLport growth insert: allocate size + max(size, fill_len), copy the head, construct fill_len copies of x, copy the tail unless atend, release the old block, adopt the new one
 // Flags: /Gr
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@@2@@std@@IAEXPAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@2@ABU32@ABU__false_type@2@I_N@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007893AE, 176 bytes (size-optimised TU with a frame pointer), thiscall, `ret 14h`.
 // Identity (proven): std::vector<std::pair<CIntelligentPointer<CThing>, long> >::_M_insert_overflow (the non-POD overload); evidence: its fill_len == 1 constructor 0x00788D88 is agent952's landed std::pair<CIntelligentPointer<CThing>, long>::pair(const pair&); its callers are that vector's push_back 0x00789515 (CTCTrapBase::HitThings), insert 0x0080EF50 (agent480, CTCDExplosion::Emitters) and CTCDExplosion::UpdateDynamicExplosion 0x0080D300
 // Label: the manifest's "Vector_InsertRange_Fill" is a propagated / behavioural label (family J071: five 176-byte growth inserts, each its own element).
@@ -88,12 +89,8 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
 }
 }   // namespace std
 class CThing;
-class CBaseIntelligentPointer {                          // 8 bytes: vptr + PData
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template pair<CIntelligentPointer<CThing>, long>* __uninitialized_copy<pair<CIntelligentPointer<CThing>, long>*, pair<CIntelligentPointer<CThing>, long>*>(pair<CIntelligentPointer<CThing>, long>*, pair<CIntelligentPointer<CThing>, long>*, pair<CIntelligentPointer<CThing>, long>*, const __false_type&);
 template pair<CIntelligentPointer<CThing>, long>* __uninitialized_fill_n<pair<CIntelligentPointer<CThing>, long>*, unsigned int, pair<CIntelligentPointer<CThing>, long> >(pair<CIntelligentPointer<CThing>, long>*, unsigned int, const pair<CIntelligentPointer<CThing>, long>&, const __false_type&);

@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::CBowerstoneTeleportPointMarker::Main() -- Bowerstone teleport point marker: wait (one script frame at a time) until the hero comes within the script def's TeleporterActivationDist of the marker, show the teleporting tutorial and wait until it is clicked past, then deactivate the "Hook_BowerstoneTeleportTutorial" quest
 // Leaf: ?Main@CBowerstoneTeleportPointMarker@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDF800, 268 bytes; entity-script vtable slot 1 (Main) of 0x012C33A4, the vtable the
 //   landed Alloc 0x00CDF750 (CBowerstoneTeleportPointMarker::Alloc) stores. The row is referenced only from that slot.
 // Identity: Ego_r.pdb / FableWin.pdb ?Main@CBowerstoneTeleportPointMarker@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
@@ -20,17 +21,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CCPPointerInfo {
-public:
-    long References;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 enum ETutorialCategory { TUTORIAL_CATEGORY_TELEPORTING = 31 };   // misc_def_types.h
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

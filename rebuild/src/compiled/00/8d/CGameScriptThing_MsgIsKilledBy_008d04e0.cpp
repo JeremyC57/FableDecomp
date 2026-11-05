@@ -1,5 +1,6 @@
 // CGameScriptThing::MsgIsKilledBy(const CCharString& killer) const -- whether a "killed" message (type 9) aimed at this thing exists and the killer matches: any killer for an empty name, else the live originator whose script name equals the given one
 // Leaf: MsgIsKilledBy
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D04E0, length 299 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?MsgIsKilledBy@CGameScriptThing@@UBE_NABVCCharString@@@Z (vtable slot 18).
 // Callees: CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, IsTargettedAtThing>> @ 0x008D46D0 (the landed
@@ -60,8 +61,7 @@ class CCharString { public:
     }
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

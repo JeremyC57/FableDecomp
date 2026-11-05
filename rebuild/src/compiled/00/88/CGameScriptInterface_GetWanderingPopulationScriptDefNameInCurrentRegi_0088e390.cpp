@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088E390, length 64 bytes.
 // Callees: CWorld virtual slot 13 (+0x34) twice (the world kept in edi), CWorldMap::GetLoadedRegion @ 0x004FB150 (labelled "CWorld::DrawGetEnvironment", propagated), CWorldMap::GetRegion @ 0x004FC180, this interface's virtual slot 61 (+0xf4). Shape: the region name address formed with `add eax,18h`, `ret 4`.
 // Leaf: ?GetWanderingPopulationScriptDefNameInCurrentRegion@CGameScriptInterface@@UBEXAAVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 class CWorld;
@@ -61,8 +62,7 @@ struct CThing_Retail {
     void PreloadBasicAnimations();                 // 0x00663610 (CThingCreatureBase)
     void SetInLimbo(bool inLimbo);                 // 0x004C8CF0 (CThing)
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

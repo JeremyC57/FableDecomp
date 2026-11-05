@@ -1,5 +1,6 @@
 // CTCVillage::HomeUsersAreAsleep(CThingBuilding* home) -- true when the building has at least one living villager calling it home and every such villager is in creature mode 13 (asleep)
 // Leaf: HomeUsersAreAsleep
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 004ab8f0: ?IS_THING_ALIVE@@YI_NABUCBaseIntelligentPointer@@@Z -> ?IS_THING_ALIVE@@YI_NABVCBaseIntelligentPointer@@@Z
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065AC83, 180 bytes (`ret 4`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)`. Ego_r.pdb `?HomeUsersAreAsleep@CTCVillage@@AAE_NPAVCThingBuilding@@@Z`.
@@ -63,11 +64,8 @@ class CThing { public:
 };
 class CThingBuilding : public CThing { public: };
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    void* __vftable;
-    CBaseObject* PData;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
 
 class CThingAICreature : public CThing { public:

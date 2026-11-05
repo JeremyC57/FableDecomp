@@ -1,5 +1,6 @@
 // CTCInventoryWeapons::CTCInventoryWeapons(CThing* thing) -- construct the weapons inventory: the inventory base, the screen base at +0x130, both active-weapon pointers, the primitive handle vector, the menu item map and the entries list
 // Leaf: ??0CTCInventoryWeapons
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3947, 169 bytes, `ret 4`; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed dtor @ 0x005C39F0).
 // Label correction: the catalog calls this row "CTCWallMountEffects::CTCWallMountEffects"; the vtables it stores,
@@ -17,10 +18,8 @@
 class CThing;
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                 // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     CIntelligentPointer_CThing(CThing* thing);       // 0x004A96F0
 };

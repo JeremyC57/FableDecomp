@@ -1,4 +1,5 @@
 // NScript::CQ_CinemaTestScript::WatchForLeaving() -- watch thread: frame by frame while the arena level stays loaded and the hero alive, and the mission is neither failed nor succeeded; then mark the mission failed unless it succeeded
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F02030, length 193 bytes, plain `ret`.
 // Identity: catalog CQ_CinemaTestScript::WatchForLeaving, consistent with its landed neighbours EndMission 0x00F02100 and
 // PhaseOne 0x00F02170 (same 0x48-byte quest base, same "ArenaHallOfHeroes" level name).
@@ -16,8 +17,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

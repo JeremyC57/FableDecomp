@@ -1,5 +1,6 @@
 // multimap<ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> >::lower_bound(const ECombatAbilityDataType& k) -- STLport tree lower_bound on CTCCombat::CombatAbilities: the first node whose key is not less than k (end() when none), returned through the hidden iterator pointer
 // Leaf: ?lower_bound@CCombatAbilityMap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00738D10, 43 bytes (48 with padding), thiscall `ret 8`.
 // Label correction: catalog "BinaryTree_FindLowerBound" -- callers are the four CTCCombat::ResetBlockPercentageChance<T>
 //   instantiations (0x007390B6 / 0x007391C6 / 0x007392D6 / 0x007393E6, `ecx` = CTCCombat+0x70 = CombatAbilities).
@@ -16,11 +17,7 @@ class CCombatAbilityData { public:                     // Ego_r.pdb, 0x18 bytes
     void*  Anim;                                // +0x10 CDefString
     long   InterfaceType;                       // +0x14 ECombatAbilityInterfaceType
 };
-template <class T> class CCountedPointer { public:     // 8 bytes: object + count block
-    T*    Object;
-    long* Count;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;                           // +0x00
     long ActiveTimer;                           // +0x04

@@ -1,4 +1,5 @@
 // CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip() -- destroys the intelligent pointer at +0x2c, frees the blocks of the two array records at +0x18/+0x0c, then tail-jumps to the base destructor
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004DDF6F, 47 bytes. Pragma: optimize("s") (`pop ecx` cleanup after each free).
 // Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10, free @ 0x00BFEA14 (CRT),
 // base destructor @ 0x00686830 (labelled "~CChunkedFileChunk"; the 0x0c-byte base whose destructor is out of line).
@@ -12,15 +13,8 @@ extern "C" void __cdecl free(void* memory);         // 0x00BFEA14
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CHeapArray {                                 // 12-byte array record: data, size, capacity
     void* m_pData;

@@ -1,5 +1,6 @@
 // CRegionConnectionRecord_00aecb80::~CRegionConnectionRecord_00aecb80() -- destroy a region-connection record: its two strings, its counted pointer at +0x38, its vector of {id, counted node} pairs at +0x28, then the string-keyed table at +0
 // Leaf: ??1CRegionConnectionRecord_00aecb80
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AECB80, length 111 bytes (+ int3), plain `ret`. Callers: the non-virtual
 // ??_G 0x00AECC10 and the CCountedPointer per-type deleter 0x00AECCA0, stored by Reset 0x00AECCC0 -- a non-polymorphic
 // record created through CCountedPointer<T>(new T). The landed ~CStringKeyedTable 0x006FD040 names this function as the
@@ -20,26 +21,7 @@ public:
     ~CCharString();                                          // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:                                    // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);               // called with Data in ecx, nothing on the stack
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 

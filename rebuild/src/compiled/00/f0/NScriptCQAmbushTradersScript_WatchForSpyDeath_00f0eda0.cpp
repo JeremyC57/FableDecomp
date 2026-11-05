@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::WatchForSpyDeath(CScriptThing spy) -- the spawned "WatchForSpyDeath" thread of the Ambush Traders quest: every script frame ask the spy whether it was killed; once it is, flag SpyDead on the quest and AmbushTradersSpyDead in the Sunnyvale master data; stop when the thread is terminated
 // Leaf: ?WatchForSpyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F0EDA0, 230 bytes, thiscall, `ret 0Ch` (the by-value CScriptThing, destroyed by the callee).
 // Identity (proven): the row's one reference is the CSpawnedFunc1<CQ_AmbushTradersScript, CScriptThing> member-pointer store
 //   `mov [esi+34h], 0F0EDA0h` at 0x00F0D7B9 (spawn vtable 0x012F7EBC, 0x48-byte object, the CScriptThing argument copied to
@@ -24,27 +25,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:                          // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);          // destroys the pointee
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"                       // vtable 0x01238C8C (79 slots)
 __forceinline CScriptThing::~CScriptThing() { }         // 0x004AA840 where it stays out of line

@@ -1,5 +1,6 @@
 // NUISystem::CComponent::AddChild(CCountedPointer<CComponent>& child) -- append the child's counted pointer to Children, make this component its parent, then initialise it
 // Leaf: ?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00533CC0, 98 bytes (112 with padding), `ret 4` (thiscall; Ego_r.pdb
 //   `?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z`, CComponent vtable 0x0124608C
 //   slot 60, rtti-vtables.tsv).
@@ -16,20 +17,7 @@
 //   virtual calls through child->Data.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class CCPPointerInfo { public:
-    long Count;                                 // +0x00
-};
-template <class T> class CCountedPointer {      // 8 bytes: the object, then its shared count record
-public:
-    T*              Data;                       // +0x00
-    CCPPointerInfo* Info;                       // +0x04
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info)
-    {
-        if (Info)
-            ++Info->Count;
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 struct __false_type {
     __false_type() {}
 };

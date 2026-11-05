@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerParticleSpriteTrailGroup::CEnginePrimitiveManagerParticleSpriteTrailGroup(CEngineSceneArray* scenes, const CCountedPointer<CEnginePrimitiveManagerSpriteTrails>& trailManager) -- constructs the sprite-trail group manager: keeps a counted reference to the trail manager, sizes the point-light vertex shader table to five and looks up its vertex and pixel shaders by name
 // Leaf: ??0CEnginePrimitiveManagerParticleSpriteTrailGroup
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members RefCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBEAF0, length 1299 bytes (`ret 8`, no EH frame). Vtable 0x012A5D94.
 // Callees: CEnginePrimitiveManager ctor @ 0x00BACDB0, CVertexShader() @ 0x00A62FB0, CPixelShader() @ 0x00A5EC00,
 //   vector<CVertexShader>::resize @ 0x00B6CBD0, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, GetVertexShader @ 0x00A5D5F0 /
@@ -97,11 +98,7 @@ class CEnginePrimitiveManager { public:                   // 0x0c bytes
     CEnginePrimitiveManager(CEngineSceneArray* scenes);   // 0x00BACDB0
 };
 class CEnginePrimitiveManagerSpriteTrails;
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    long* RefCount;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), RefCount(other.RefCount) { if (RefCount) ++*RefCount; }
-};
+#include "engine/CCountedPointer.h"
 
 class CEnginePrimitiveManagerParticleSpriteTrailGroup : public CEnginePrimitiveManager { public:   // vtable 0x012A5D94
     CVertexShaderArray VertexShadersSpriteTrailPointLights;   // +0x0c

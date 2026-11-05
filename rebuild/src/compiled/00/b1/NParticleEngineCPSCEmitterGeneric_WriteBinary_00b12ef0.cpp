@@ -1,4 +1,5 @@
 // NParticleEngine::CPSCEmitterGeneric::WriteBinary(CDataOutputStream*) -- serialize the generic emitter: its params, the packed bit-field integers/flags, then the optional cardinal spline (tension, point count, points)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B12EF0, 742 bytes (vtable slot 16 of CPSCEmitterGeneric, 0x012A002C).
 // Callees (lane names, as in the landed CPSCAttractor/CPSCLight WriteBinary): WriteULong 0x00993EA0 (propagated
@@ -28,10 +29,7 @@ class CCardinalSpline { public:
     bool EndPointsConnected;                            // +0x10
 };
 struct CCountedPointerInfo;
-template<class T> class CCountedPointer { public:
-    T* Data; CCountedPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 #pragma auto_inline(off)
 CPointVector::CPointVector(const CPointVector& other)   // same-TU stand-in for 0x006F0810: reads the source, writes only *this
 {

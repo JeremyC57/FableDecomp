@@ -1,5 +1,6 @@
 // CAIStateGroup_MazeRangedCombat::Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name) -- the CAIStateGroup_MazeBase initialisation with the same arguments, then LastCompletedPhase = -1
 // Leaf: ?Initialise@CAIStateGroup_MazeRangedCombat@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00953F70, 46 bytes (+ int3 padding to 48), thiscall, `ret 14h` (virtual, slot 1).
 // Identity (proven): CAIStateGroup_MazeRangedCombat::Initialise (Ego_r.pdb holds the leaf); evidence: slot 1 of the CAIStateGroup_MazeRangedCombat vtable 0x0128C1E8 (RTTI: CAIStateGroup_MazeBase <- CAIStateGroupBase <- CBaseClass); the store hits Ego_r.pdb CAIStateGroup_MazeRangedCombat::LastCompletedPhase (+0x20)
 // Label: the manifest's "CAIStateGroup_MazeRangedCombat::Initialise" (doubled class) names this row's own class; family J021: six AI state groups whose
@@ -16,12 +17,8 @@ class CCharStringData;
 class CCharString { public: CCharStringData* PStringData; };
 enum EScriptAIPriority { EScriptAIPriority_Force32 = 0x7fffffff };
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                              // 8 bytes (Ego_r.pdb)
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                               // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CAIStateGroupBase : public CBaseClass {               // 0x14 bytes
 public:

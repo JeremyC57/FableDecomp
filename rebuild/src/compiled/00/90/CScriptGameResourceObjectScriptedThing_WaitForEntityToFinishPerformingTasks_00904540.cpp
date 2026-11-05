@@ -1,5 +1,6 @@
 // CScriptGameResourceObjectScriptedThing::WaitForEntityToFinishPerformingTasks(const CScriptGameResourceObjectScriptedThingBase&) -- queue a wait-for-thing-to-finish-tasks action on the scripted thing for a live entity
 // Leaf: ?WaitForEntityToFinishPerformingTasks@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail 0x00904540, 346 bytes, ret 4. Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PThing +0x14), the entity's
 // CScriptGameResourceObjectScriptedThingBase::GetScriptThing (slot 12, +0x30, by value), CScriptThing::IsAlive (slot 75) /
@@ -67,28 +68,8 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class CCPPointerInfo { public:                             // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 void operator delete(void* p);                     // 0x00BFE9BC
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 struct CBase {
     CBase();                                       // 0x0099A2F0
     virtual ~CBase();                              // 0x0099A2E0

@@ -1,5 +1,6 @@
 // std::_Destroy_range(SNamedSurfaceEntry* first, SNamedSurfaceEntry* last, const allocator&) -- run the element destructor on [first, last) of a vector of 16-byte {CCharString, word, CCountedPointer} records
 // Leaf: _Destroy_range
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe @ 0x00A4A2A0, 84 bytes, `ret 4`: __fastcall (first ecx, last edx, the empty allocator by const
 // reference on the stack, never read). Seven call sites 0x00A495C5 .. 0x00A4AD2A in the same module.
 // Element (from the body): a CCharString at +0 (~CCharString @ 0x0099EAE0), a plain word at +4 and a CCountedPointer
@@ -10,29 +11,8 @@
 // decrement, re-read, destroy hook [block+4] with the object in ecx, delete the block, both words zeroed) then the
 // out-of-line ~CCharString. VC7.1 keeps the count-block address as a second induction register (`lea esi,[edi+0Ch]`)
 // and hoists `mov ecx,edi` above the two zero stores; `mov edi,edi` is the /O2 loop-head alignment pad.
-struct SCountBlock {
-    long m_references;                          // +0x00
-    void (__fastcall* m_pfnDestroy)(void*);     // +0x04
-    void* m_pObject;                            // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* Data;                                    // +0x00
-    SCountBlock* Info;                          // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CCharString { public:
     void* m_pStringData;                        // +0x00

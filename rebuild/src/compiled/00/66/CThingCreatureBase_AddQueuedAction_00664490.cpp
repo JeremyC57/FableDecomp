@@ -1,5 +1,6 @@
 // CThingCreatureBase::AddQueuedAction(const CCreatureActionBase& action) -- append an empty counted pointer to the queued-action list, then point it at a clone of the action
 // Leaf: ?AddQueuedAction@CThingCreatureBase@@QAEXABVCCreatureActionBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointerInfo (= CCPPointerInfo) members Count->RefCount, Release->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00664490, 85 bytes + 11 int3, thiscall `ret 4`. Name: Ego_r.pdb
 // `?AddQueuedAction@CThingCreatureBase@@QAEXABVCCreatureActionBase@@@Z` (name set; it sits between the landed
 // CThingCreatureBase::UpdateAction 0x006643C0 and SetCurrentAction 0x006644F0). Callers: 0x00712A18 / 0x00712B11
@@ -27,27 +28,8 @@ public:
     virtual CCreatureActionBase* Clone() const;     // slot 11 (+0x2C)
 };
 
-struct CCountedPointerInfo {
-    long  Count;                                    // +0x00
-    void (__fastcall* Release)(void* object);       // +0x04 (called with the object in ecx)
-    void* Object;                                   // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*                   Data;                      // +0x00
-    CCountedPointerInfo* Info;                      // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->Count == 0) {
-            Info->Release(Info->Object);
-            operator delete(Info);
-        }
-    }
-    void Reset(T* data);                            // 0x00668D90
-};
 
 namespace std {
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

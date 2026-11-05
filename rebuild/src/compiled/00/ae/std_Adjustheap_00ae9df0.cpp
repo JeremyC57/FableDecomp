@@ -1,21 +1,10 @@
 // 00ae9df0 std::_Adjust_heap
 // Flags: /Gr
-// Leaf: ??$_Adjust_heap@U?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@UCKeyPairCompareLess@2@@FableHeap_00ae9df0@@YIXPAU?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@0@HHU10@UCKeyPairCompareLess@0@@Z
+// Leaf: ??$_Adjust_heap@U?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@UCKeyPairCompareLess@2@@FableHeap_00ae9df0@@YIXPAU?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@0@HHU10@UCKeyPairCompareLess@0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Spellings unified: own ??$_Adjust_heap@U?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@UCKeyPairCompareLess@2@@FableHeap_00ae9df0@@YIXPAU?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@0@HHU10@UCKeyPairCompareLess@0@@Z -> ??$_Adjust_heap@U?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@UCKeyPairCompareLess@2@@FableHeap_00ae9df0@@YIXPAU?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@0@HHU10@UCKeyPairCompareLess@0@@Z; 00ae98e0: ??4?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@QAEAAU01@ABU01@@Z -> ??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@QAEAAU01@ABU01@@Z; 00ae9b00: ??$_Push_heap@U?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@UCKeyPairCompareLess@2@@FableHeap_00ae9df0@@YIXPAU?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@0@HHU10@UCKeyPairCompareLess@0@@Z -> ??$_Push_heap@U?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@UCKeyPairCompareLess@2@@FableHeap_00ae9df0@@YIXPAU?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@0@HHU10@UCKeyPairCompareLess@0@@Z
 // Layout: 12-byte keyed counted pointer; count+0, callback+4, Data+8; oracle signed key comparison.
 namespace FableHeap_00ae9df0 {
-struct CCPPointerInfo { int RefCount; void (__fastcall *DeleteFunc)(void*); void* Data; };
-template<class T> struct CCountedPointer {
- T* Data; CCPPointerInfo* Info;
- CCountedPointer():Data(0),Info(0){}
- CCountedPointer(const CCountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;}
- __forceinline CCPPointerInfo* GetBlock()const{return Info;}
- CCountedPointer& Assign(T* nextObject,CCPPointerInfo* nextBlock) {
-  if(Info!=nextBlock){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(GetBlock());}}Data=nextObject;Info=nextBlock;if(Info)++Info->RefCount;}return *this;
- }
- CCountedPointer& operator=(const CCountedPointer& p){return Assign(p.Data,p.Info);}
-
- ~CCountedPointer(){if(Info && --Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(GetBlock());}}
-};
+#include "engine/CCountedPointer.h"
 struct CNavConnectorNode;
 template<class K,class V> struct pair { K first;V second;pair(){}pair(const pair& p):first(p.first),second(p.second){} };
 typedef pair<int,CCountedPointer<CNavConnectorNode> > CKeyedCountedPointer;

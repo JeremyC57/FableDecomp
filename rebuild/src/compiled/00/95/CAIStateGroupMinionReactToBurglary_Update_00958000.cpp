@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToBurglary::Update() -- turn to face the burglar; once facing, play the ST_SURPRISED
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // animation (sound pair 0x2B); then hand control back (0x008FCF40).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00958000, length 189 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::AIAction_LookAtThing @ 0x0097D6F0 (repeat 1, the by-value CIntelligentPointer
@@ -14,13 +15,8 @@ class CThing;
 class CThingCreatureBase;
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x01237F1C
     CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }

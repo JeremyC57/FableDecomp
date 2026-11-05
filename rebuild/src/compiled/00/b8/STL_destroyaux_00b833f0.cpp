@@ -1,5 +1,6 @@
 // std::__destroy_aux(CCountedPointer<CParticleSimulation>* first, CCountedPointer<CParticleSimulation>* last, const __false_type&) -- STLport non-trivial destroy loop: run the inline counted-pointer destructor on every element of [first, last)
 // Leaf: ??$__destroy_aux@PAV?$CCountedPointer@VCParticleSimulation@@@@@std@@YIXPAV?$CCountedPointer@VCParticleSimulation@@@@0ABU__false_type@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B833F0, length 76 bytes, `__fastcall` (first ecx, last edx, the
 //   __false_type reference on the stack), `ret 4`.
 // Identity: the landed CArray<CCountedPointer<CParticleSimulation> >::DeallocateMemory 0x00B83D30 (FableWin.pdb name) binds
@@ -11,30 +12,8 @@
 // Shape: STLport 4.6 `for (; __first != __last; ++__first) _Destroy(&*__first);` with the CCountedPointer destructor
 //   inline: release the info block (RefCount at +0; at zero the delete function at +4 with Data (+8) in ecx, then operator
 //   delete @ 0x00BFE9BC) and null both fields.
-class CCPPointerInfo {                                  // retail 12 bytes (Ego_r CCPPointerInfo)
-public:
-    long  RefCount;                                     // +0x00
-    void (__fastcall* DeleteFunc)(void*);               // +0x04 (retail passes Data in ecx)
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {             // retail 8 bytes
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 class CParticleSimulation;
 typedef CCountedPointer<CParticleSimulation> CParticleSimulationPtr;
 

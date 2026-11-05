@@ -1,5 +1,6 @@
 // NUISystem::CComponent::AddChild(CCountedPointer<NUISystem::CComponent>& child) -- append the child's counted pointer to Children (no parent / initialise step: that is AddChildDynamically)
 // Leaf: ?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00533B50, 78 bytes (+ int3 padding), virtual thiscall, `ret 4`.
 // Identity (proven): slot 59 of CComponent's vtable 0x0124608C, inherited unchanged by all 40 NUISystem component vtables; CChangingStateComponent / CList / CSpellContainer override slot 60 (0x00533CC0: push_back + SetParent + Initialise), which Ego_r.pdb names AddChildDynamically (overridden by CChangingStateComponent and CList there too), while Ego_r.pdb's CComponent::AddChild is the 11-byte, 2-instruction `add ecx ; jmp push_back` forwarder; slot 53 (GetChildren) returns this+0xB0 = Children, and slot 61 (0x00533BA0, AddChildFront) inserts at its begin.
 // Label: the manifest's "Container_PushElement" is propagated / behavioural (family J093: inline STLport push_back adders; retail has no
@@ -11,23 +12,7 @@
 //   argument slot. Layout: Children is a retail 12-byte STLport vector at +0xB0 (Ego_r.pdb +0xB8, Dinkumware 16-byte vectors).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo {                                     // 12 bytes (Ego_r.pdb)
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes (Ego_r.pdb)
-public:
-    T* Data;                                               // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CComponent; }
 
 namespace std {

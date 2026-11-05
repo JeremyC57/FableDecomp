@@ -1,5 +1,6 @@
 // CTCDParticleEmitter::~CTCDParticleEmitter() -- release the pending creation parameters, then the member strings and intelligent pointers, then CTCBase
 // Leaf: ??1CTCDParticleEmitter
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, PBlock->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E1E60, length 92 bytes.
 // Callees: the counted block's static deleter through its function pointer (`mov ecx,[eax+8] ; call [eax+4]`:
 // CCountedPointer<CParticleCreationParameters>::DeleteData, a static __fastcall `SIXPAX` in the egor names);
@@ -41,22 +42,7 @@ struct SCountedBlock {
     void* Data;                                             // +0x08
 };
 
-template<class T> class CCountedPointer { public:
-    T*             Object;
-    SCountedBlock* PBlock;
-    ~CCountedPointer()
-    {
-        if (PBlock != 0) {
-            --PBlock->Count;
-            if (PBlock->Count == 0) {
-                PBlock->DeleteData(PBlock->Data);
-                delete PBlock;
-            }
-        }
-        Object = 0;
-        PBlock = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class CTCDParticleEmitter : public CTCBase_Calls { public:
     CCharString         EmitterName;                        // +0x0c

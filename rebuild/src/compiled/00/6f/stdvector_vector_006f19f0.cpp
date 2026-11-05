@@ -1,5 +1,6 @@
 // std::vector::vector(const vector& x) -- (vector<CCountedPointer<CCombatSequenceBase> >) STLport copy constructor: allocate x.size() elements (none for an empty source), set start/finish/end of storage, copy-construct the elements through the out-of-line __uninitialized_copy
 // Leaf: ??0?$vector@V?$CCountedPointer@VCCombatSequenceBase@@@@V?$allocator@V?$CCountedPointer@VCCombatSequenceBase@@@@@std@@@std@@QAE@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F19F0, 87 bytes (+ int3 padding to 96), thiscall, `ret 4` (&x), returns this.
 // Identity (proven): std::vector<CCountedPointer<CCombatSequenceBase> >::vector(const vector&); evidence: 0x006F3E50 is the CAttackingCombatantInfo copy constructor (it copies Ego_r.pdb's Attacked, AttackerNumber, CombatWheelRingIndex, PreferredAttackDollySet, PreferredAttackDollyTimer, PreferredAttackDollyVector, UsingCombatWheel and CurrentSequence word by word at +0..+0x20, then hands +0x24 -- CombatSequences, vector<CCountedPointer<CCombatSequenceBase> > -- to this constructor), and the CCombatantInfo copy constructor 0x006F4990 does the same for its embedded AttackerInfo (+4, so +0x28); the element copy 0x006EFE80 copies {Data, Info} and bumps Info->RefCount; both PDBs name ??0?$vector@V?$CCountedPointer@VCCombatSequenceBase@@@@...@QAE@ABV01@@Z.
 // Label: the manifest's "CCombatantInfo::InitActiveScripts" is propagated (family J011: six copy constructors over 8-byte non-POD elements;
@@ -15,12 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                       // 0x0
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
 class CCombatSequenceBase;
-class CCPPointerInfo;                                               // Ego_r.pdb: RefCount, DeleteFunc, Data
-template <class T> class CCountedPointer {                        // 8 bytes (Ego_r.pdb)
-public:
-    T*              Data;                                         // +0x0
-    CCPPointerInfo* Info;                                         // +0x4 (RefCount at +0)
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct __false_type { __false_type() { } };

@@ -1,4 +1,5 @@
 // CCreatureAction_NymphSummonInto::Initialise() -- names the animation "SUMMON_CREATURES_INTO", tells the creature's body object (+0x60, virtual slot 36) to start with flag 1, then runs the base Initialise
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C9DF0, length 72 bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), the body's virtual slot 36 (`call [edx+90h]`, one argument), CCombatActionBase::Initialise @ 0x00857520 (non-virtual call).
 // Shape: the 63-body "scoped name + base Initialise" family (landed 0x008CC760) with one virtual call in between; the body pointer is read through an inline accessor so that it is fetched into ecx before the argument push (a bare member read lands in eax and is moved).
@@ -16,12 +17,8 @@ class CBaseObject { public:
     CCreatureBody* m_pBody;                 // +0x60
     __forceinline CCreatureBody* GetBody() { return m_pBody; }
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                // +4
-public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CCombatActionBase { public:
     virtual void v00();

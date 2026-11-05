@@ -1,5 +1,6 @@
 // std::vector::resize(size_type new_size, const value_type& x) -- (vector<CCountedPointer<C3DGroup2> >) STLport two-argument resize with the range erase inline: shrink by copying the (empty) tail through the out-of-line __copy and destroying [new end, finish) through the out-of-line __destroy_aux, or grow through _M_fill_insert at the end
 // Leaf: ?resize@?$vector@V?$CCountedPointer@VC3DGroup2@@@@V?$allocator@V?$CCountedPointer@VC3DGroup2@@@@@std@@@std@@QAEXIABV?$CCountedPointer@VC3DGroup2@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A985A0, 88 bytes (+ int3 padding to 96), thiscall, `ret 8`.
 // Identity (proven): std::vector<CCountedPointer<C3DGroup2> >::resize(size_type, const value_type&); evidence: its __destroy_aux callee 0x00A969D0 is catalog-bound as ??$__destroy_aux@PAV?$CCountedPointer@VC3DGroup2@@@@...; Ego_r.pdb / FableWin.pdb name the one-argument ?resize@?$vector@V?$CCountedPointer@VC3DGroup2@@@@... (the two-argument resize is this out-of-line COMDAT)
 // Label: the manifest's "resize" is propagated (family J022: six resize bodies over 4/8-byte non-trivial elements;
@@ -12,12 +13,7 @@
 //   _M_finish = __i;` and insert(pos, n, x) = _M_fill_insert(pos, n, x); the empty tags are homed in the dead size slot.
 // Element: CCountedPointer<C3DGroup2>, CDeviceIndependent::Groups' element (Ego_r.pdb).
 #include <stddef.h>
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                   // 8 bytes (Ego_r.pdb)
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 class C3DGroup2;
 namespace std {
 struct __false_type { __false_type() { } };

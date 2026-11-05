@@ -1,5 +1,6 @@
 // CTCCreatureGroupTag::DeactivateMember(const CThing* member) -- base deactivation, then re-pick the tagger if it was the tagger
 // Leaf: DeactivateMember
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008138A0, length 55 bytes (+9 int3). CTCCreatureGroupTag vtable 0x012432F4
 // slot 30 (CTCCreatureGroup slot 30 = DeactivateMember 0x00812E20, called here non-virtually).
 // Callees: CTCCreatureGroup::DeactivateMember @ 0x00812E20, CTCCreatureGroupTag::FindNewTagger @ 0x008137E0 (private, Ego_r.pdb `?FindNewTagger@CTCCreatureGroupTag@@AAE_NXZ`; FINDINGS chunk 399, was "ChooseNewTagger").
@@ -12,11 +13,8 @@ class CThing { public:
     unsigned __int64 GetUID() const { return UniqueID; }
 };
 
-struct CBaseIntelligentPointer {
-    void* __vftable;                        // +0x00
-    void* PData;                            // +0x04
-    CThing* GetPItem() const;               // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CGroupMemberData { public:
     CBaseIntelligentPointer PMember;        // +0x00

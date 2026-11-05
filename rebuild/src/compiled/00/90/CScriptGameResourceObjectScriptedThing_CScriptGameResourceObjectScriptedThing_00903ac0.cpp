@@ -14,6 +14,7 @@
 // CScriptGameResourceObjectScriptedThingBase has a compiler-generated destructor (no vtable store), its PImp counted pointer
 // member is released inline and both words cleared; CScriptGameResourceObjectBase's user `virtual ~() {}` keeps its store.
 // Leaf: ??1CScriptGameResourceObjectScriptedThing
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 void* __cdecl operator new(unsigned int size);       // 0x00BFEA1A
 
@@ -72,27 +73,7 @@ class CTCScriptedControl { public:                          // interface 0x1f co
     void CleanupAllActions();                        // 0x00713630
 };
 
-struct SCountBlock {
-    long m_references;                               // +0
-    void (__fastcall* m_pfnDestroy)(void*);          // +4
-    void* m_pObject;                                 // +8
-};
-template<class T> class CCountedPointer { public:
-    T*           Data;                               // +0
-    SCountBlock* Info;                               // +4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

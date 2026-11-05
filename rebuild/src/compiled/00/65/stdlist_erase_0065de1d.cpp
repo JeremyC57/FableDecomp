@@ -1,5 +1,6 @@
 // std::list::erase(iterator position) -- (list<CIntelligentPointer<CThingAICreature> >) STLport 4.6 single-node erase: unlink the node, destroy its element through the element's virtual destructor, free the node and return the iterator to the following node
 // Leaf: ?erase@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065DE1D, 43 bytes (+ int3 padding), thiscall, `ret 8` (hidden iterator result + the
 //   iterator by value), returns the result pointer.
 // Identity: list<CIntelligentPointer<CThingAICreature> > -- proven; evidence: its callers are CTCVillage::RemoveThingAndUpdateCameraPoints 0x0065B6DD (landed; PDB name RemoveVillageMember), which erases with it from the list at CTCVillage+0x2c after find 0x0065F4E2, and list::remove_if 0x0065DE48 (the next function, called by the landed CTCVillage::ClearOutNullMembers 0x0065890B); retail CTCVillage lists are 4-byte STLport head pointers in Ego_r.pdb order, so +0x2c is VillagePeople (list<CIntelligentPointer<CThingAICreature> >); the CThing-typed VillageTorches erase is the separate 0x004B7CA0 (no ICF); the PDB name sets hold list<CIntelligentPointer<CThingAICreature> >::erase
@@ -16,15 +17,8 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CThingAICreature;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // 8 bytes (Ego_r.pdb): vptr, PData
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual ~CIntelligentPointer();
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 

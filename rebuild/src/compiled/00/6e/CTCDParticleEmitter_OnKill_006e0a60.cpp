@@ -1,5 +1,6 @@
 // CTCDParticleEmitter::OnKill() -- kill the live emitter, and register this emitter's thing as a dependent of the (living) attached thing's interface-0xD8 component
 // Leaf: OnKill
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 00a01b50: ?GetPItem@CBaseIntelligentPointer@@QBEPAXXZ -> ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0A60, length 137 bytes (+ int3 padding). Vtable 0x0125FEEC slot 14 (catalog
 // "vfunc_14"; slot 14 of the CTCBase vtables is OnKill).
@@ -43,11 +44,8 @@ class CParticleEmitter { public:
     void Kill();                                // 0x00AEE8C0
 };
 }
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* PData;                                // +0x04
-    void* GetPItem() const;                     // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CEmitterPointer : CBaseIntelligentPointer {
     NParticleEngine::CParticleEmitter* GetPItem() const { return (NParticleEngine::CParticleEmitter*)CBaseIntelligentPointer::GetPItem(); }
 };

@@ -1,5 +1,6 @@
 // std::list::list(const list& x) -- (list<CCountedPointer<CNavRegionConnection> >) STLport copy constructor: zero the node proxy, malloc the 0x10-byte sentinel and link it to itself, then insert(begin(), x.begin(), x.end()) through the out-of-line _M_insert_dispatch
 // Leaf: ??0?$list@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A82590, 63 bytes (+ int3 padding to 64), thiscall, `ret 4`, returns this.
 // Identity: list<CCountedPointer<CNavRegionConnection> > -- proven; evidence: its _M_insert_dispatch 0x00A80E90 is the list<CCountedPointer<CNavRegionConnection> >::_M_insert_dispatch of the landed CNavRegion::CNavRegion(const CNavRegion&) 0x00A83110 (Ego_r.pdb CNavRegion::Connections); 16-byte nodes = links + the 8-byte CCountedPointer; Ego_r.pdb name set holds ??0?$list@V?$CCountedPointer@VCNavRegionConnection@@@@...@QAE@ABV01@@Z; no direct caller.
 // Label: the manifest's "List_Construct_From_Range" is propagated across byte-identical bodies; this is the STLport 4.6 list copy
@@ -15,11 +16,7 @@
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);           // 0x00BFEA0E
 class CNavRegionConnection;
-template <class T> class CCountedPointer {         // 8 bytes: the object + its shared CCPPointerInfo count block
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> class allocator {

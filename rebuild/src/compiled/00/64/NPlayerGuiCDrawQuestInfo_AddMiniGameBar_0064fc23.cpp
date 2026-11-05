@@ -13,6 +13,7 @@
 // with a pushed literal and the GetTC lookup. IS_THING_ALIVE has a same-TU read-only stand-in body, so the conversion
 // temporary's slot (the dead `type` argument) does not escape and VC7.1 reuses it for the lookup key, as retail.
 // Leaf: AddMiniGameBar
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets). Spellings unified: 00654c8f: ??$?0UCQuestInfoElementMiniGameBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementMiniGameBar@NPlayerGui@@@1@@Z -> ??$?0UCQuestInfoElementMiniGameBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementMiniGameBar@NPlayerGui@@@1@@Z; 0064a3ed: ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXU?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z -> ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXV?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z; 00654bc0: ??$?0UCQuestInfoElementCounter@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@1@@Z -> ??$?0UCQuestInfoElementCounter@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@1@@Z
 // Naming wave 18: the interface-presence stand-in CTCBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -102,14 +103,7 @@ template <> class vector<long, allocator<long> > { public:   // STLport vector<l
 }
 
 namespace NPlayerGui {
-template <class T> struct CCountedPointer {
-    T*    m_pObject;
-    void* m_pBlock;
-    explicit CCountedPointer(T* object);
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);
-    ~CCountedPointer();
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 struct CQuestInfoElement {
     virtual void v00();
     long  ID;                                      // +0x04
@@ -141,7 +135,7 @@ long CDrawQuestInfo::AddMiniGameBar(EMiniGameType type, CThingPhysical* thing)
 {
     CCountedPointer<CQuestInfoElementMiniGameBar> element(new CQuestInfoElementMiniGameBar(type));
     AddElement(element);
-    CQuestInfoElementMiniGameBar* bar = element.m_pObject;
+    CQuestInfoElementMiniGameBar* bar = element.Data;
     bar->Colour = CRGBColour(0, 255, 0, 255);
     const CPlayerGuiDef* def = PeekGuiDef();
     switch (type) {

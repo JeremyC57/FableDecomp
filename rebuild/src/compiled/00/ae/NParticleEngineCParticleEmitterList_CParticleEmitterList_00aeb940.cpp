@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitterList::CParticleEmitterList(long maxActiveEmitters) -- empty active-emitter list (STLport list of counted emitter pointers: a self-linked sentinel) with its emitter cap
 // Leaf: ??0CParticleEmitterList@NParticleEngine@@QAE@J@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEB940, 39 bytes, __fastcall `ret 4`, returns this. No direct caller (the manager
 //   constructor 0x00AEBA90 inlines it with 0x80; this is the out-of-line copy).
 // Identity: Ego_r.pdb `??0CParticleEmitterList@NParticleEngine@@QAE@J@Z`; members Active (list<CCountedPointer<CParticleEmitter> >)
@@ -12,11 +13,7 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 namespace NParticleEngine { class CParticleEmitter; }
 struct CCountBlock;
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                      // +0x0
-    CCountBlock* Block;                                     // +0x4
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator {

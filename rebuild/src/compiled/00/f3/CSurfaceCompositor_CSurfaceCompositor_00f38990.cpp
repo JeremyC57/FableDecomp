@@ -1,4 +1,5 @@
 // CSurfaceCompositor::CSurfaceCompositor(CSurface* destSurface) -- CBase ctor, clear the capture block, take the destination surface, create the compositor's own CRenderTarget into its counted pointer, zero the blend type and layer count
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F38990, length 117 bytes (+11 int3 padding). `ret 4`.
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (twice: own base, then the new CRenderTarget's base), operator new @ 0x00BFEA1A (0x24 bytes),
 // CCountedPointer<CRenderTarget>::Reset(CRenderTarget*) @ 0x00F39CA0 (catalog label is a byte-twin instantiation for
@@ -25,12 +26,7 @@ class CRenderTarget : public CBaseClass { public:                  // vtable 0x0
     CRenderTarget() {}
     virtual ~CRenderTarget();
 };
-template <class T> class CCountedPointer { public:
-    T* Data;                                    // +0x00
-    void* Info;                                 // +0x04
-    CCountedPointer() : Data(0), Info(0) {}
-    void Reset(T* p);                           // 0x00F39CA0
-};
+#include "engine/CCountedPointer.h"
 struct CRenderStateCaptureBlock {
     bool Captured;
     CRenderStateCaptureBlock() : Captured(false) {}

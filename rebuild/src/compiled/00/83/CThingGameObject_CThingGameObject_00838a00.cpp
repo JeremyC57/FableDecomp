@@ -1,5 +1,6 @@
 // CThingGameObject::~CThingGameObject() -- take the object off the thing manager's game-object list, destroy PThingStandingOn, then run ~CThingPhysical
 // Leaf: ??1CThingGameObject@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00838A00, 40 bytes, thiscall, tail `jmp` to the base destructor.
 // Identity (proven): the body stores vtable 0x01244F7C = .?AVCThingGameObject@@ (RTTI COL base array CThingGameObject -> CThingPhysical
 //   -> CThing -> CClass -> CBaseObject -> CBaseClass) and chains to 0x006A5D50, which stores the CThingPhysical vtable 0x01244E84 (so it is
@@ -46,14 +47,8 @@ private:
     unsigned char _pad_members[sizeof(CThingPhysicalFields) - sizeof(CClass)];
 };
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                                   // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                          // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingGameObject : public CThingPhysical {
 public:
     virtual ~CThingGameObject();

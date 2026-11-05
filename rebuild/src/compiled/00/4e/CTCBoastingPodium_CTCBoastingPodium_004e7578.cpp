@@ -1,5 +1,6 @@
 // CTCBoastingPodium::~CTCBoastingPodium() -- the compiler-generated (implicit) destructor, kept out of line: release the def pointer PDef (+0x28), destroy BoastingPositions (+0xC), then the base destructor CTCBase::~CTCBase
 // Leaf: ??1CTCBoastingPodium@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E7578, 40 bytes (+ int3 padding), thiscall, no return value; size-optimised TU (odd entry,
 //   `and dword ptr [esi+28h],0`); reached only from its scalar deleting destructor 0x004E755C.
@@ -16,12 +17,8 @@
 //   destructor call is a modelling device that makes VC7.1 emit the implicit destructor out of line.
 #pragma optimize("s", on)
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;                                         // CBaseObjectPointer*
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CIVCountedPointeeBase {                            // Ego_r.pdb 8 bytes: vptr, IVRefCount
 public:

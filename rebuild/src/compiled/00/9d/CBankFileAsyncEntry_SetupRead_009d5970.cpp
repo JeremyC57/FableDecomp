@@ -1,6 +1,7 @@
 // CBankFileAsyncEntry::SetupRead(unsigned long start, CBankFileAsyncData* data, unsigned long size, unsigned long, unsigned long, EThreadedFilePriority priority) -- start reading `size` bytes of the entry from `start` into the data's buffer: synchronously when async is disabled (marks it finished), else by queueing a load descriptor on the bank's threaded file (aligned size for non-cached banks)
 // Retry 10b (getsw sweep, FIXES B-15): the buffer is read through an inline getter `GetBuffer()`; the plain member read gives the parked register/scheduling difference.
 // Leaf: SetupRead
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D5970, length 191 bytes (+1 int3), ret 0x18 (arguments 4 and 5 unused).
 // Callees: CBankFileAsyncData::SetupBuffer(bool) @ 0x009D52D0, CBankFile::GetEntryDataOffset(unsigned long) @ 0x009CC270,
 // CBankFile::ReadData(unsigned long offset, void* buffer, unsigned long size) @ 0x009CBF60 (catalog
@@ -29,7 +30,7 @@ class CThreadedFile { public:
 public:
     unsigned long AddObject(const CThreadedFileObjectDesc&);   // 0x0098F350
 };
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 class CBankFileAsync {
 public:
     unsigned char _pad[0x110];

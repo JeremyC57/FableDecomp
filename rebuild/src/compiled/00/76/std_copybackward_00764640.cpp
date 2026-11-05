@@ -1,5 +1,6 @@
 // std::__copy_backward(CCountedPointer<T>* first, CCountedPointer<T>* last, CCountedPointer<T>* result, const random_access_iterator_tag&, int*) -- (CCountedPointer<NShape::CShape>) assign last-first counted pointers back to front into the range ending at result; returns the new result
 // Leaf: ??$__copy_backward@PAV?$CCountedPointer@VCShape@NShape@@@@PAV1@H@std@@YIPAV?$CCountedPointer@VCShape@NShape@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00764640, 119 bytes (+ int3 padding), `__fastcall` (first in ecx, last in edx; result,
 //   the tag reference and the null distance pointer on the stack, `ret 0Ch`).
 // Identity (proven): std::__copy_backward<CCountedPointer<NShape::CShape>*, CCountedPointer<NShape::CShape>*, int> (STLport 4.6 _algobase.h);
@@ -12,39 +13,7 @@
 // Layout: CCountedPointer<T> is 8 bytes {Data +0, Info +4}; CCPPointerInfo {RefCount +0, DeleteFunc +4, Data +8} (Ego_r.pdb).
 // Model: J051's counted-pointer assignment (agent953) on the real STLport signature.
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0
-    void (__fastcall* DeleteFunc)(void* data);              // +4, Data in ecx
-    void* Data;                                             // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0
-    CCPPointerInfo* Info;                                   // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 namespace NShape { class CShape; }
 namespace std {
 struct random_access_iterator_tag { };

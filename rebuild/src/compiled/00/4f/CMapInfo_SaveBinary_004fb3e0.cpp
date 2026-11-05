@@ -1,4 +1,5 @@
 // CMapInfo::SaveBinary(CDataOutputStream* stream) -- serialise a world-map entry: level and script names, the Used / LoadedOnPlayerProximity / IsSea flags, the area box (TLX, BRX, TLY, BRY), the Placed flag and the UID as a 64-bit value
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004FB3E0, length 143 bytes.
 // Callees: CDataOutputStream::WritePresizedString @ 0x00995A80, WriteBool @ 0x00993E30, WriteLong @ 0x00993EB0, and the 8-byte writer
 //   @ 0x00993EC0 (the manifest's "WriteCBYTE" label is wrong: it writes 8 bytes from its argument slot, so the UID goes out as `push 0 ; push uid`).
@@ -15,27 +16,7 @@ class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(const C2DBoxI& o) : TLX(o.TLX), TLY(o.TLY), BRX(o.BRX), BRY(o.BRY) { }
 };
-class CCPPointerInfo { public:                            // the shared block of a CCountedPointer: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);     // called with Data in ecx
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void Reset() { ReleaseInfo(); Info = 0; Data = 0; }
-};
+#include "engine/CCountedPointer.h"
 class CMap;
 class CDataOutputStream { public:
     void WritePresizedString(const CCharString& s);   // 0x00995A80

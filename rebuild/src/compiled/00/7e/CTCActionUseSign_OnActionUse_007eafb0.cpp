@@ -1,5 +1,6 @@
 // CTCActionUseSign::OnActionUse(CThing& user) -- the base use handling, then, if the user is a live creature, set it doing a CCreatureAction_Talk on this component's thing
 // Leaf: ?OnActionUse@CTCActionUseSign@@UAEXAAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007eafb0, 90 bytes, thiscall, `ret 4`.
 // Identity (proven): vtable 0x0123F1AC (RTTI .?AVCTCActionUseSign@@) slot 28 = Ego_r.pdb ?OnActionUse@CTCActionUseSign@@UAEXAAVCThing@@@Z; it builds a CCreatureAction_Talk (constructor 0x0062E020 storing vtable 0x012599E4, Ego_r.pdb ??0CCreatureAction_Talk@@QAE@AAVCThingCreatureBase@@AAVCThing@@Z, PTalkToThing at +0xA8) for the user.
 // Callees: CTCActionUseBase::OnActionUse 0x007EAB90, CCreatureAction_Talk::CCreatureAction_Talk 0x0062E020, CThingCreatureBase::SetCurrentAction(const
@@ -8,12 +9,8 @@
 //   base's out-of-line destructors after the call; the creature test is the null and Dead (+0x91 bit 0) check. The
 //   parent thing read through an inline accessor reuses edi (this); the direct member read (CTCActionUseSign) uses eax.
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                            // Ego_r.pdb: vptr + PData, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();                   // 0x00A01C10
-    CBaseObjectPointer* PData;                            // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing {
 public:
     unsigned char _pad00[0x91];                           // (members not touched here)

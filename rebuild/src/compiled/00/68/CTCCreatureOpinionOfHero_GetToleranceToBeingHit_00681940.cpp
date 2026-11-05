@@ -1,6 +1,7 @@
 // CTCCreatureOpinionOfHero::GetToleranceToBeingHit() const -- the override when set (>= 0), else the reaction manager's
 // tolerance for this thing plus the personality's ToleranceToBeingHit
 // Leaf: ?GetToleranceToBeingHit@CTCCreatureOpinionOfHero@@QBEMXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 25: Ego_r.pdb / FableWin.pdb order GetToleranceToBeingHit before GetToleranceToBeingHitRemaining (the latter subtracts
 //   NumberOfTimesHit: retail 0x00681980) and OnHit (0x006819D0); this body is the former (was GetToleranceToBeingHitRemaining).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00681940, length 59 bytes (+5 int3).
@@ -28,10 +29,8 @@ class CWorld { public:
 // SetHeroOpinionEnemy 0x006815D0 also shows), hence a local model.
 class CThing;
 
-struct CBaseIntelligentPointer {
-    void* __vftable;                        // +0x00
-    void* PData;                            // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct SLongNode {                          // STLport _List_node<long>
     SLongNode* Next;                        // +0x00

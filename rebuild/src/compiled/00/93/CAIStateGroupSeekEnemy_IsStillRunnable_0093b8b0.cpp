@@ -1,4 +1,5 @@
 // CAIStateGroup_SeekEnemy::IsStillRunnable() -- validate the remembered enemy against target selection and perception; retail 0x0093b8b0, 319 bytes. Callees: CVectorMap::LowerBound 0x004365b0, CBaseIntelligentPointer::GetPItem 0x00a01b50, CTCTargetingAI slot 29 thunk 0x004ddae5, IsWillingToAttackTarget 0x008648a0, CTCPerceiveThing::GetPerceivedThing 0x007446a0, CTCPerceiveThing::IsAwareOfThing 0x00643b3b, CanCreatureSeeCreature 0x008645e0. Frame globals 0x01375550 and 0x012925b8.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 #include "engine/CAIStateGroup_SeekEnemy.h"
@@ -52,12 +53,8 @@ typedef char NativeTargetPMFSize[sizeof(TargetMethod)==4 ? 1:-1];
 #endif
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();
-    struct PointerInfo { CThing* PItem; fable_u32 References; };
-    mutable PointerInfo* PPointerInfo; // native +4 record, never a raw item
-    CBaseObject* GetPItem() const;                                  // 0x00a01b50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CTCPerceiveThingAccess : CTCPerceiveThing {
     CThing* GetPerceivedThing();                               // direct 0x007446a0 -> 0x00a01b50

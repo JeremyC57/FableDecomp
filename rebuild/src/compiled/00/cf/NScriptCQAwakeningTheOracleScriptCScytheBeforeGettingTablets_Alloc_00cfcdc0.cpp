@@ -1,5 +1,6 @@
 // NScript::CQ_AwakeningTheOracleScript::CScytheBeforeGettingTablets::Alloc(CQ_AwakeningTheOracleScript& parent, CScriptDataBase* data, const CScriptThing& me) -- entity-script factory of the "ScytheBeforeGettingTablets" binding: new CScytheBeforeGettingTablets(parent, data, me) (CEntityScriptBase(*parent.Game, me), ParentClass = &parent, PMasterData = data) handed to a fresh CCountedPointer<CEntityScriptBase>
 // Leaf: ?Alloc@CScytheBeforeGettingTablets@CQ_AwakeningTheOracleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Spellings unified: 00cdee00: ?Destroy_00cdee00@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCEntityScriptBase@@@@SIXPAX@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CFCDC0, 145 bytes (+ int3 padding), static `__fastcall` (hidden result
 //   pointer ecx, parent edx, data and me on the stack), `ret 8`, returns the result pointer.
 // Identity: Ego_r.pdb ?Alloc@CScytheBeforeGettingTablets@CQ_AwakeningTheOracleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z is exactly the symbol this source emits.
@@ -19,26 +20,8 @@ class CScriptDataBase;
 
 void __fastcall Destroy_00cdee00(void* object);        // 0x00CDEE00 (catalog name; the CEntityScriptBase deleter)
 
-class CCPPointerInfo {                                  // 12 bytes
-public:
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void*);
-    void* Data;
-    CCPPointerInfo(void* data, void (__fastcall* deleteFunc)(void*)) : RefCount(1), DeleteFunc(deleteFunc), Data(data) { }
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(T* data) : Data(data)
-    {
-        if (data)
-            Info = new CCPPointerInfo(Data, Destroy_00cdee00);
-        else
-            Info = 0;
-    }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

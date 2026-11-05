@@ -1,6 +1,7 @@
 // std::sort_heap(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- order a heap of target points by repeatedly popping the best to the back
 // Flags: /Gr
 // Leaf: sort_heap
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0080B9F0, 191 bytes of code (/O2). Callee: STLport __pop_heap_aux<CTargetPoint*,
 // CTargetPoint,CThingCompare_BestForTargeting2> 0x0080B430 (`__fastcall`: first ecx, last edx, the null
@@ -18,11 +19,8 @@
 namespace N0080b9f0 {
 struct CThing;
 #include "engine/C3DVector.h"
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                      // +0x04
-};
-template <class T> struct CIntelligentPointer : CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace NPlayerTargeting {
 struct CTargetPoint {                                     // 0x1c bytes
     CIntelligentPointer<CThing> PThing;                   // +0x00

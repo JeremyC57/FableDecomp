@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CIntelligentPointer<CThingObject> >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, run each vacated element's virtual destructor, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B9870, 77 bytes, thiscall, `ret 8`, returns first.
 // Identity: vector<CIntelligentPointer<CThingObject> > -- proven; evidence: its callers are CTCTavernTable::OnInitialActivate 0x007B90F0 and the landed vector<CIntelligentPointer<CThingObject> >::resize 0x007B9EC0 (Ego_r.pdb name set; CTCTavernTable::Tankards / Food, temporary vtable 0x0125A858 .?AV?$CIntelligentPointer@VCThingObject@@@@).
 // Label: the manifest's "StdVector_Clear" is propagated across byte-identical bodies; this is STLport 4.6
@@ -12,12 +13,8 @@
 //   random_access_iterator_tag(), (ptrdiff_t*)0)` and _Destroy = the __destroy_aux(__false_type) loop of `p->~T()`.
 #include <stddef.h>
 class CThingObject;
-template <class T> class CIntelligentPointer {   // 8 bytes; CIntelligentPointer<CThingObject> vtable 0x0125A858
-public:                                           // (RTTI .?AV?$CIntelligentPointer@VCThingObject@@@@)
-    virtual ~CIntelligentPointer();               // slot 0
-    CIntelligentPointer<T>& operator=(const CIntelligentPointer<T>& other);   // CBaseIntelligentPointer Get/SetPItem
-    T* Data;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

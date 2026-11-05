@@ -1,5 +1,6 @@
 // std::map::map(const map& x) -- (map<long, CCountedPointer<CEngineSceneMap> >) STLport copy constructor with the _Rb_tree copy inline: zero the header proxy, malloc the 0x1C-byte header node, then either the empty initialisation (root 0, leftmost = rightmost = header) or the out-of-line _M_copy of x's root with leftmost / rightmost found by walking it; copy the node count
 // Leaf: ??0?$map@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B97DE0, 161 bytes (+ int3 padding), thiscall, `ret 4`, returns this.
 // Identity: map<long, CCountedPointer<CEngineSceneMap> > -- proven; evidence: the inner map of Ego_r.pdb CEngineScene::Maps (map<long, map<long, CCountedPointer<CEngineSceneMap> > >): the CEngineScene TU indexes the outer map (operator[] 0x00B97B60 from 0x00B93F53..0x00B94404) and its pair copies (0x00B98100, 0x00B981D0, 0x00B98290, 0x00B98320) copy the long key and call this constructor on +4; 0x1C-byte nodes; its _M_copy 0x00B97980 copies the key and the counted pointer (inc of its count).
 // Label: the manifest's "std_set_init_RedBlackTree" is propagated across byte-identical bodies (the eight rows differ only in the header
@@ -15,11 +16,7 @@
 //   plain `inline` (a 19-byte forwarder, graded), so it is `__forceinline` here.
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);           // 0x00BFEA0E
-template <class T> class CCountedPointer {          // 8 bytes: data, shared count block
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 class CEngineSceneMap;
 namespace std {
 template <class _Tp> class allocator {

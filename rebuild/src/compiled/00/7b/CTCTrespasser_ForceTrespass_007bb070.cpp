@@ -1,5 +1,6 @@
 // CTCTrespasser::ForceTrespass() -- when the trespassed thing is alive and trespassable, posts the trespass deed to the owner's opinion deed log, keeping the handle when no trespass deed is open yet
 // Leaf: ForceTrespass
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BB070, 219 bytes (plain `ret`). Ego_r.pdb
@@ -62,11 +63,8 @@ class CTCHeroOpinionDeedLog { public:                  // interface 0x51
 };
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    void* __vftable;
-    CBaseObject* PData;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)

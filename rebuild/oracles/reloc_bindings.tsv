@@ -3160,12 +3160,9 @@ _g_FloatZero	0122dedc	006448a4
 ?GlobalPlayerGui@@3PAUPlayerGuiAlphaView@@A	013b8790	0064f6dc
 ?PeekGuiDef@@YIPAUGuiOracleDefView@@XZ	00438570	0064f6dc
 ?Resize@HandleArray@@QAEXK@Z	00443f90	0064f6dc
-??$?0UCQuestInfoElementBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementBar@NPlayerGui@@@1@@Z	00654b36	0064f7fc
 ??0?$CCountedPointer@UCQuestInfoElementBar@NPlayerGui@@@NPlayerGui@@QAE@PAUCQuestInfoElementBar@1@@Z	0065707e	0064f7fc
 ??0CQuestInfoElementBar@NPlayerGui@@QAE@MMABUCRGBColour@1@0JJM@Z	00656b1b	0064f7fc
 ??1?$CCountedPointer@UCQuestInfoElementBar@NPlayerGui@@@NPlayerGui@@QAE@XZ	00654b0a	0064f7fc
-?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXU?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z	0064a3ed	0064f7fc
-??$?0UCQuestInfoElementCounter@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@1@@Z	00654bc0	0064f9a7
 ??0?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@NPlayerGui@@QAE@PAUCQuestInfoElementCounter@1@@Z	006570fa	0064f9a7
 ??0CQuestInfoElementCounter@NPlayerGui@@QAE@PAUCCounter@1@JM@Z	00656ba2	0064f9a7
 ??1?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@NPlayerGui@@QAE@XZ	00654b94	0064f9a7
@@ -10521,7 +10518,6 @@ __imp__CoTaskMemFree@4	01440630	00cb1cc0
 ??_7CVtable_012c2ff4@@6B@	012c2ff4	00cddb40
 ??_7CVtable_012c2fb8@@6B@	012c2fb8	00cddb60
 ??_7CVtable_012c3000@@6B@	012c3000	00cde2f0
-?Destroy_00cdee00@@YIXPAX@Z	00cdee00	00cdee10
 ??0CScriptThing@@QAE@PAX@Z	004abe90	00cdf430
 ??_7CEndGameBarrier@@6B@	012c3434	00cdfeb0
 ??_7CEntityScriptBase@@6B@	012c3224	00cdfeb0
@@ -11317,7 +11313,6 @@ _helper_9f9020	009f9020	009a73b0
 ?HasTargetBeenHitByKraken@CTCKraken@@QAE_NXZ	007fb500	008cf460
 ?RemoveObstruction@CTCKrakenTentacle@@QAEXXZ	007f0810	008cf540
 ?QueueStrikeDamage@CTCKrakenTentacle@@QAEXXZ	007f1170	008cf700
-??$?0UCQuestInfoElementTick@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementTick@NPlayerGui@@@1@@Z	00654c4a	0064fb47
 ??0?$CCountedPointer@UCQuestInfoElementTick@NPlayerGui@@@NPlayerGui@@QAE@PAUCQuestInfoElementTick@1@@Z	00657176	0064fb47
 ??1?$CCountedPointer@UCQuestInfoElementTick@NPlayerGui@@@NPlayerGui@@QAE@XZ	00654c1e	0064fb47
 ?Initialise@CDateAndTime@@QAEXPBU_FILETIME@@@Z	009e9cb0	0099a5a0
@@ -12366,7 +12361,6 @@ _wcscmp	00bfe94c	004fdab0
 ?SetUpdateParameters@CParticleEmitter@NParticleEngine@@QAEXABUCParticleUpdateParameters@@@Z	00af0610	006e14e0
 ??0CAnimInit@@QAE@JJJJ_NKJ@Z	005b33f4	00728ff0
 ?RemoveCombinationAnim@CAnimateThing@@QAEXPAUCCombinationAnim@@@Z	0070d8e0	00728ff0
-?FadeOrKillEffect@@YIXAAUCBaseIntelligentPointer@@@Z	0072abd0	0078f6e0
 ?TransitionToDefaultThemeAllChannels@CEnvironment@@QAEXJM@Z	006b3950	0078f6e0
 ??_7CTCPhysicalShieldSpell@@6B@	0126c53c	0079e990
 ?Erase@CThingPointerSet@@QAEXPAUnode@1@@Z	0079eec0	0079e990
@@ -12567,7 +12561,6 @@ _wcsrchr	00bfedb2	009a5340
 ?_M_insert_overflow@?$CArray@PAVCShaderBankEntry@@@@QAEXPAPAVCShaderBankEntry@@ABQAV2@ABU__true_type@@K_N@Z	00a62740	00a623d0
 ?NotifyEntryAdded@CBankFile@@MAEXKKABV?$CArray@D@@@Z	009cbc20	00a636c0
 ?_M_insert_overflow@?$CRetailPtrVector@PAVCFontDataBankEntry@@@@QAEXPAPAVCFontDataBankEntry@@ABQAV2@ABU__true_type@@K_N@Z	00a639e0	00a636c0
-?DestroyGuiVarTransfer@@YIXPAX@Z	00af0710	00aeef40
 ?push_back@CBoxedWaterPatchVector@@QAEXABUSBoxedWaterPatch@@@Z	00bf5fe0	00bf44a0
 ?LowerBound@CEntityScriptMap@@QAEPAUCEntityScriptEntry@@AB_K@Z	00cb9840	00cb88b0
 ?SetKillRequested@CActiveEntityScriptBase@@QAEX_N@Z	00f359f0	00cb88b0
@@ -12722,7 +12715,6 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ?IsStillRunnable@CAIStateGroupCreatureAdvanceInCoverMethods@@QAE_NXZ	00978f10	009790f0
 ?RefreshCoverList@CAIStateGroupCreatureAdvanceInCoverMethods@@QAEXXZ	009710d0	009790f0
 ?SetFailedToFindCover@CAIStateGroupCreatureAdvanceInCoverMethods@@QAEXXZ	00970590	009790f0
-?erase@CIntelligentPointerVector@@QAEXPAUCBaseIntelligentPointer@@0@Z	004ac0f0	009790f0
 ?DuckBehindCover@CAIStateGroupCreatureFindCoverMethods@@QAE_N_N@Z	009713e0	0097ccd0
 ?IsStillRunnable@CAIStateGroupCreatureFindCoverMethods@@QAE_NXZ	0097cb10	0097ccd0
 ?SetFailedToFindCover@CAIStateGroupCreatureFindCoverMethods@@QAEXXZ	00970590	0097ccd0
@@ -12736,7 +12728,6 @@ _D3DXCreateTextureFromFileExW@56	00bfefd4	009fa340
 ?AIAction_MinionIdle@CAIStateGroupBase@@QAEJXZ	0097fa00	0090bed0
 ?GetPWorldSeed@CAIStateGroupKidHurtSelfRunToMotherMethods@@QAEPAKXZ	008fcfd0	00914f00
 ??_7CIntelligentPointerHero@@6B@	01231c4c	00933310
-?IS_THING_ALIVE_Pointer@@YI_NABUCBaseIntelligentPointer@@@Z	0048c740	00933310
 ?AddCombatMessage@CAIStateGroup_MeleeCombatNearby2@@QAEXXZ	0093dfc0	0093e5e0
 ?AddStrafeMode@CAIStateGroup_MeleeCombatNearbyBase@@QAEXXZ	0093d7a0	0093e5e0
 ?AttackEnemy@CAIStateGroup_MeleeCombatNearby2@@QAEXXZ	0093dde0	0093e5e0
@@ -13702,7 +13693,6 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAUCHeroInfoScreensManager@@XZ	00437cd0	00490927
 ?IsInSpecialMode@CWorld@@QAE_NXZ	0048db13	00490927
 ??_7COrbitGame@NCameraModes@@6B@	0125c6dc	00699a50
-??$IS_THING_ALIVE@UCBaseIntelligentPointer@@@@YI_NABUCBaseIntelligentPointer@@@Z	004cc340	007bdac7
 ?UpdateCollision@CTCShotDefinitionBase@@QAEXPA_N@Z	007bfe30	007bdac7
 __imp__DispatchMessageW@4	01440368	009a4f20
 __imp__PeekMessageW@20	01440370	009a4f20
@@ -14527,7 +14517,6 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?ClearEffects@CEffectVector@@QAEXXZ	006445ba	0064be45
 ?IsMeleeFlourishValid@CTCCombat@@QAE_NXZ	00733ee0	0064be45
 ?IsShowingBaseAbility@CTCCombat@@QAE_NXZ	00733290	0064be45
-??$?0UCQuestInfoElementMiniGameBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementMiniGameBar@NPlayerGui@@@1@@Z	00654c8f	0064fc23
 ??0?$CCountedPointer@UCQuestInfoElementMiniGameBar@NPlayerGui@@@NPlayerGui@@QAE@PAUCQuestInfoElementMiniGameBar@1@@Z	00656f2f	0064fc23
 ??0CQuestInfoElementCounter@NPlayerGui@@QAE@JJM@Z	00656bd8	0064fc23
 ??0CQuestInfoElementMiniGameBar@NPlayerGui@@QAE@W4EMiniGameType@1@@Z	00656caa	0064fc23
@@ -15845,7 +15834,6 @@ __TI1?AUCGenericException@@	013692f8	00a37060
 ?CopyRange@@YIPAUSPair@@PAU1@00ABUSTag@@@Z	004719ce	00471865
 ?DestroyRange@@YIXPAUSPair@@0ABUSAlloc@@@Z	00454404	00471865
 ?_Tidy@CAnimationVector@@QAEXXZ	00471a4f	00471865
-?TransformHitThings@@YI?AUCBackInserter@@PAUCBaseIntelligentPointer@@0U1@UCGetPItem@@@Z	0080ebe0	0080c590
 ?Refresh@CPlayerObject@@QAEXXZ	00447390	00407370
 ?SetGamma@CDisplayManager@@QAEXM_N@Z	009beaa0	00407370
 ?g_bVibrationEnabled@@3_NA	013966f0	00407370
@@ -16686,8 +16674,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ??1CBaseClassNonCopyable@@MAE@XZ	0099a300	00561980
 ?resize@CActivityVector@@QAEXI@Z	0056a230	00562710
 ?CopyCustomTattooToUserDir@CTattooDef@@QBE_NXZ	0071b840	0071c360
-??$_Push_heap@U?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00448950@@@FableHeap_00448950@@@FableHeap_00448950@@UCKeyPairCompareLess@2@@FableHeap_00448950@@YIXPAU?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00448950@@@FableHeap_00448950@@@0@HHU10@UCKeyPairCompareLess@0@@Z	004485e0	00448950
-??4?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00448950@@@FableHeap_00448950@@@FableHeap_00448950@@QAEAAU01@ABU01@@Z	00448380	00448950
 ??$destroy@U__false_type@X_004eaad0@@@X_004eaad0@@YIXPAUCPrizeScoreDef@0@0ABU__false_type@0@@Z	004da5e2	004eaad0
 ?_M_allocate_and_copy@?$vector@UCPrizeScoreDef@X_004eaad0@@@X_004eaad0@@QAEPAUCPrizeScoreDef@2@IPAU32@0@Z	004eacbb	004eaad0
 ?_M_clear@?$vector@UCPrizeScoreDef@X_004eaad0@@@X_004eaad0@@QAEXXZ	004eabc2	004eaad0
@@ -16764,10 +16750,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?_M_erase@map@X_007565e0@@QAEXPAU_Rb_tree_node_base@2@@Z	00755e80	007565e0
 ??M?$CBasicString@D@FableTree_007ad060@@QBE_NABU01@@Z	00429950	007ad060
 ?_M_decrement@_Rb_tree_iterator@FableTree_007ad060@@QAEXXZ	007ac920	007ad060
-??$_Push_heap@U?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00825b80@@@FableHeap_00825b80@@@FableHeap_00825b80@@UCKeyPairCompareLess@2@@FableHeap_00825b80@@YIXPAU?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00825b80@@@FableHeap_00825b80@@@0@HHU10@UCKeyPairCompareLess@0@@Z	00825270	00825b80
-??4?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00825b80@@@FableHeap_00825b80@@@FableHeap_00825b80@@QAEAAU01@ABU01@@Z	00825090	00825b80
-??$_Push_heap@U?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00828dc0@@@FableHeap_00828dc0@@@FableHeap_00828dc0@@UCKeyPairCompareLess@2@@FableHeap_00828dc0@@YIXPAU?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00828dc0@@@FableHeap_00828dc0@@@0@HHU10@UCKeyPairCompareLess@0@@Z	00828160	00828dc0
-??4?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00828dc0@@@FableHeap_00828dc0@@@FableHeap_00828dc0@@QAEAAU01@ABU01@@Z	00827f80	00828dc0
 ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z	0099ebf0	00835c80
 ??0CTCParamsPhysicsBase@ExternalRetry_00835c80@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z	006a06e0	00835c80
 ??0CThingDeadCreature@ExternalRetry_00835c80@@QAE@XZ	00835c20	00835c80
@@ -16837,8 +16819,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?erase@CStringSectionMap@CodeSections@@QAEXU_Rb_tree_iterator@2@@Z	009f0e30	009f03b0
 ?find@CSectionIndexMap@CodeSections@@QAE?AU_Rb_tree_iterator@2@ABI@Z	009f0d90	009f03b0
 ?OnLeft@C2DLineF@X_00a577b0@@QBE_NABUC2DVector@2@@Z	00a56ff0	00a577b0
-??$_Push_heap@U?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00a81170@@@FableHeap_00a81170@@@FableHeap_00a81170@@UCKeyPairCompareLess@2@@FableHeap_00a81170@@YIXPAU?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00a81170@@@FableHeap_00a81170@@@0@HHU10@UCKeyPairCompareLess@0@@Z	00a801a0	00a81170
-??4?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00a81170@@@FableHeap_00a81170@@@FableHeap_00a81170@@QAEAAU01@ABU01@@Z	00a7faf0	00a81170
 ??$FUN_00a5e900@U__true_type@ExternalRetry_00a90fc0@@@ExternalRetry_00a90fc0@@YIXPAUCStreamInfo@CVertexShaderInput@0@0ABU__true_type@0@@Z	00a5e900	00a90fc0
 ??0CVertexShaderInput@ExternalRetry_00a90fc0@@QAE@XZ	00ab3b10	00a90fc0
 ??0CVertexStreamConverter@ExternalRetry_00a90fc0@@QAE@XZ	00ac44c0	00a90fc0
@@ -16859,8 +16839,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ??4CContractionReference@QuadricOptimiserInternals@X_00aca450@@QAEAAU012@ABU012@@Z	00ad1fc0	00aca450
 ??A?$map@IUCContractionReference@QuadricOptimiserInternals@X_00aca450@@@std@X_00aca450@@QAEAAUCContractionReference@QuadricOptimiserInternals@2@ABI@Z	00ad64c0	00aca450
 ?_M_erase@?$map@IUCContractionReference@QuadricOptimiserInternals@X_00aca450@@@std@X_00aca450@@QAEXPAU_Rb_tree_node@23@@Z	00ad5240	00aca450
-??$_Push_heap@U?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@UCKeyPairCompareLess@2@@FableHeap_00ae9df0@@YIXPAU?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@0@HHU10@UCKeyPairCompareLess@0@@Z	00ae9b00	00ae9df0
-??4?$pair@HU?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@QAEAAU01@ABU01@@Z	00ae98e0	00ae9df0
 ?TransferFloat@CArchive@X_00c3b970@@QAE_NAAM@Z	00c31b80	00c3b970
 ?TransferInt@CArchive@X_00c3b970@@QAE_NAAJ@Z	00c31b60	00c3b970
 ?TransferShort@CArchive@X_00c3b970@@QAE_NAAG@Z	00c31b70	00c3b970
@@ -17394,7 +17372,6 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ??1CComponentList@NUISystem@@QAE@XZ	0042abca	00531e90
 ??4CComponentList@NUISystem@@QAEAAU01@ABU01@@Z	00535800	00531e90
 ?insert@?$CRetailVector@U?$CCountedPointer@VCComponent@NUISystem@@@NUISystem@@@NUISystem@@QAEPAU?$CCountedPointer@VCComponent@NUISystem@@@2@PAU32@ABU32@@Z	00535b10	00533ba0
-?AddChild@CComponent@NUISystem@@UAEXAAU?$CCountedPointer@VCComponent@NUISystem@@@2@@Z	00533b50	00546c90
 ?GetStatExperience@CTCHeroExperience_Calls@@QBEJW4EHeroExperienceStatCategory@@@Z	006d6510	0056e93d
 ?ForceTrainableStatExperienceTo@CTCHeroExperience_Calls@@QAEXW4EHeroExperienceStatCategory@@J@Z	006d6830	0056f4ba
 ?pop_back@CLongList@@QAEXXZ	005791b5	0056f4ba
@@ -24574,7 +24551,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?CountIfWork@@YGJUSPeopleIter@@0VHasBuildingAsWork@@@Z	006c1c70	006bfb10
 ?GetMountedThing@CTCWallMount@@QBEPAVCThing@@XZ	007de4f0	006bffd0
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCTrophyDef@@@@@Z	0059350c	006bffd0
-?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAUCBaseIntelligentPointer@@K@Z	0088ae40	006c0810
 ?Create@CThingObject@@SIPAV1@JPBVC3DVector@@JPAXKABVCCharString@@@Z	00703210	006c0c90
 ?GetRentMoneyPos@CTCBuyableHouse@@QAE_NPAVC3DVector@@JJ@Z	006c06d0	006c0c90
 ?g_DressingSignPostDefName@@3VCCharString@@B	013baafc	006c0f70
@@ -25747,7 +25723,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetPlayer@CCreatureActionBase@@QBEPAVCPlayer@@XZ	00692930	00846100
 ?SetVelocity@CThingObject@@QAEXABVC3DVector@@@Z	006a4dc0	00846410
 ??0CEventTalkedTo@@QAE@PAVCThing@@@Z	0084af90	00846660
-??1?$CIntelligentPointer@VCThing@@@@UAE@XZ	00a01c10	00847ac0
 ?GetCarryable@CDefLookup@@QBE_NPAU?$DefPointer@VCCarryableDef@@@@@Z	005cc10e	00847ac0
 ?CreateObject@@YIPAVCThingObject@@JPBVC3DVector@@JPAMKABVCCharString@@@Z	00703210	00848500
 ??0CModeCarryingGoodsStand@@QAE@PAVCThing@@@Z	0073fce0	00848730
@@ -28390,7 +28365,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AddEvent@CGameEventPackage@@QAEXPAVCGameEvent@@@Z	009f1650	004aeaa0
 ?AddPackage@CGameEventPackageSet@@QAEXPAVCGameEventPackage@@@Z	009f16f0	004aeaa0
 ?Clear@CGameEventPackage@@QAEXXZ	009f16c0	004aeaa0
-?Initialise@CGameEventPackageSet@@QAEXXZ	009f1720	004aeaa0
+?Clear@CGameEventPackageSet@@QAEXXZ	009f1720	004aeaa0
 ?IsTimeForServerUpdate@CMainGameComponent@@QAE_NJ@Z	0041674a	004aeaa0
 ?Transfer_009bab50@CPersistContext@@QAEXAAVCCharString@@@Z	009bab50	004b64e0
 ??_7?$CPersistContext_TransferableComponent@W4ENumAcceptedBoasts@@@@6B@	01239378	004b8d70
@@ -34507,7 +34482,6 @@ __imp__RegisterWindowMessageW@4	014403c0	00cb09a0
 ?_M_fill_insert@?$vector@MV?$allocator@M@std@@@std@@QAEXPAMIABM@Z	00441020	00ac9d50
 _send_tree	00c04340	00c04850
 __aulldvrm	00f3fd50	00cb0370
-?GetFont@CFontBankSource@NUISystem@@QAE?AU?$CCountedPointer@UCFontBank@NUISystem@@@2@ABVCCharString@@@Z	009e2c80	0054ed90
 ??1CTCInventoryMap@@UAE@XZ	00606f80	00619f50
 ?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z	009d49f0	009ae6b0
 ?OnActivate@CSoundSystem@@QAEXXZ	00c091a0	00c091f0
@@ -36847,3 +36821,29 @@ _New_c35b10@8	00c35b10	00c275e0
 ?ComputeSubContractionCost@COptimisedPrimitive@QuadricOptimiserInternals@@AAEMABVCSubContraction@2@ABVC3DVector@@@Z	00ac82a0	00ac92c0
 ?ContainsAllVertices@CVertexPairContraction@QuadricOptimiserInternals@@QAE_NABVCIndexList@2@@Z	00ac7a90	00ac92c0
 ?GetRemainingVertices@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVCIndexList@2@ABV32@@Z	00ac8840	00ac92c0
+??$?0UCQuestInfoElementBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementBar@NPlayerGui@@@1@@Z	00654b36	0064f885
+??$?0UCQuestInfoElementCounter@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@1@@Z	00654bc0	0064fc23
+??$?0UCQuestInfoElementMiniGameBar@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementMiniGameBar@NPlayerGui@@@1@@Z	00654c8f	0064fc23
+??$?0UCQuestInfoElementTick@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementTick@NPlayerGui@@@1@@Z	00654c4a	0064fb47
+??$_Push_heap@U?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00448950@@@FableHeap_00448950@@@FableHeap_00448950@@UCKeyPairCompareLess@2@@FableHeap_00448950@@YIXPAU?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00448950@@@FableHeap_00448950@@@0@HHU10@UCKeyPairCompareLess@0@@Z	004485e0	00448950
+??$_Push_heap@U?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00825b80@@@FableHeap_00825b80@@@FableHeap_00825b80@@UCKeyPairCompareLess@2@@FableHeap_00825b80@@YIXPAU?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00825b80@@@FableHeap_00825b80@@@0@HHU10@UCKeyPairCompareLess@0@@Z	00825270	00825b80
+??$_Push_heap@U?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00828dc0@@@FableHeap_00828dc0@@@FableHeap_00828dc0@@UCKeyPairCompareLess@2@@FableHeap_00828dc0@@YIXPAU?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00828dc0@@@FableHeap_00828dc0@@@0@HHU10@UCKeyPairCompareLess@0@@Z	00828160	00828dc0
+??$_Push_heap@U?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00a81170@@@FableHeap_00a81170@@@FableHeap_00a81170@@UCKeyPairCompareLess@2@@FableHeap_00a81170@@YIXPAU?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00a81170@@@FableHeap_00a81170@@@0@HHU10@UCKeyPairCompareLess@0@@Z	00a801a0	00a81170
+??$_Push_heap@U?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@UCKeyPairCompareLess@2@@FableHeap_00ae9df0@@YIXPAU?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@0@HHU10@UCKeyPairCompareLess@0@@Z	00ae9b00	00ae9df0
+??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00448950@@@FableHeap_00448950@@@FableHeap_00448950@@QAEAAU01@ABU01@@Z	00448380	00448950
+??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00825b80@@@FableHeap_00825b80@@@FableHeap_00825b80@@QAEAAU01@ABU01@@Z	00825090	00825b80
+??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00828dc0@@@FableHeap_00828dc0@@@FableHeap_00828dc0@@QAEAAU01@ABU01@@Z	00827f80	00828dc0
+??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00a81170@@@FableHeap_00a81170@@@FableHeap_00a81170@@QAEAAU01@ABU01@@Z	00a7faf0	00a81170
+??4?$pair@HV?$CCountedPointer@UCNavConnectorNode@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@@FableHeap_00ae9df0@@QAEAAU01@ABU01@@Z	00ae98e0	00ae9df0
+?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@2@@Z	00533b50	00546c90
+?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXV?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z	0064a3ed	0064fc23
+?DeleteData@?$CCountedPointer@VCGuiVarTransferBase@@@@SIXPAX@Z	00af0710	00aeef40
+?GetFont@CFontBankSource@NUISystem@@QAE?AV?$CCountedPointer@UCFontBank@NUISystem@@@2@ABVCCharString@@@Z	009e2c80	0054ed90
+??$IS_THING_ALIVE@VCBaseIntelligentPointer@@@@YI_NABVCBaseIntelligentPointer@@@Z	004cc340	007bdac7
+?FadeOrKillEffect@@YIXAAVCBaseIntelligentPointer@@@Z	0072abd0	00794c10
+?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAVCBaseIntelligentPointer@@K@Z	0088ae40	006c0810
+?IS_THING_ALIVE@@YI_NABVCBaseIntelligentPointer@@@Z	004ab8f0	0065c36e
+?IS_THING_ALIVE_Pointer@@YI_NABVCBaseIntelligentPointer@@@Z	0048c740	00933310
+?IS_THING_ALIVE_Pointer_0078b2a0@@YI_NABVCBaseIntelligentPointer@@@Z	0078b2a0	00967650
+?TransformHitThings@@YI?AUCBackInserter@@PAVCBaseIntelligentPointer@@0U1@UCGetPItem@@@Z	0080ebe0	0080c590
+?erase@CIntelligentPointerVector@@QAEXPAVCBaseIntelligentPointer@@0@Z	004ac0f0	009790f0

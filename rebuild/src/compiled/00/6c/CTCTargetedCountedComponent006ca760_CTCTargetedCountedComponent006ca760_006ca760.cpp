@@ -1,4 +1,5 @@
 // CTCTargetedCountedComponent_006ca760::~CTCTargetedCountedComponent_006ca760() -- release the two intelligent pointers (+0x30, +0x1d) and the counted pointer (+0x18), then ~CTCBase
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CA760, length 51 bytes.
 // Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 (twice: +0x30 then the unaligned one at +0x1d), the counted object's virtual slot 1
 // (`call [eax+4]`, Delete) when the release at +0x18 drops the count to zero, CTCBase::~CTCBase @ 0x00686830 (tail jump).
@@ -24,15 +25,8 @@ struct CCountedPointer {
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCBase { public:
     virtual void v00();
     unsigned char _pad[8];                      // +4..+0xb

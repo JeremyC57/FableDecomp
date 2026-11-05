@@ -9,6 +9,7 @@
 // GraphicDataBank +0x30). STLport 4.6 list::_M_create_node = allocate(1) + _Construct(&__p->_M_data, __x) (no
 // try/unwind: the TU builds without EH). Access spelled public like the four bound list _M_create_node rows.
 // Leaf: ?_M_create_node@?$list@VCGraphicDataBankInfo@CGraphicBankManager@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
@@ -18,14 +19,8 @@ public:
     void* PStringData;
 };
 
-class CCPPointerInfo { public: long RefCount; };
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-};
 
 class CGraphicDataBank;
 class CGraphicDataBankInit { public: unsigned long Words[11]; };   // 0x2C bytes, trivially copied

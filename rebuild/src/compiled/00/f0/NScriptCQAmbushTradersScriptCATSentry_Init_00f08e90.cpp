@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_Sentry::Init() -- the ambush-traders sentry: wander about where it stands (minimum 0, maximum the def's AmbushTradersSentryWanderDistance) in scripting state group 4, make it and the hero enemies of each other, then each living bandit of the parent's AllBandits (stopping if the thread is done), spawn the parent's WatchForHeroAttackOnSentry and WatchForEnemyDeath threads on it, and clear SentrySeenSpy
 // Leaf: ?Init@CAT_Sentry@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F08E90, 961 bytes, plain `ret`; entity-script vtable 0x012F7E30 slot 2 (Init), stored
 //   by the landed CAT_Sentry::Alloc 0x00F04510 (Main 0x00F045E0 is slot 1); PDB
@@ -31,24 +32,7 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 void* __cdecl operator new(unsigned int bytes);        // 0x00BFEA1A (MSVCR71)
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/C3DVector.h"
-class CCPPointerInfo { public: long References; void (__fastcall* DeleteFunc)(void* data); void* Data; };
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    __forceinline CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CBaseClass { public:                                    // vtable 0x01231710
     virtual ~CBaseClass();                             // 0x0099A2E0
     __forceinline CBaseClass() { }

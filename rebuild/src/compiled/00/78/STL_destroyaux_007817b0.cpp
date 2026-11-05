@@ -1,5 +1,6 @@
 // std::__destroy_aux(NFire::CFirePoint* first, NFire::CFirePoint* last, const __false_type&) -- destroy a run of 44-byte fire points: each point's singe-effect and effect intelligent pointers, then its helper name
 // Leaf: ??$__destroy_aux@PAVCFirePoint@NFire@@@std@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007817B0, 50 bytes (+14 int3), `ret 4` (link-time __fastcall: first in ecx, last in
 //   edx, the __false_type tag reference on the stack, never read).
@@ -20,13 +21,9 @@ public:
     ~CCharString();                                  // 0x0099EAE0
 };
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();              // 0x00A01C10
-    void* PData;                                     // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 
 class CThing;
 

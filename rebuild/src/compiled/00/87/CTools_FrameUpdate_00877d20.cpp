@@ -1,5 +1,6 @@
 // CTools::FrameUpdate() -- rescans the things around the camera: clears ScanThings and refills it with every game object in the 20x20 world-square box centred on the camera's (integer) world position
 // Leaf: FrameUpdate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00877D20, length 106 bytes, `ret`. Called from
 // CGameCameraManager::Update (0x0069B7E9) on CamTools at +0x78, so the catalog class is right.
@@ -23,7 +24,8 @@ class C2DBoxI { public:
 class CThing;
 class CThingGameObject;
 class CThingFilter_None { public: };
-template <class T> class CIntelligentPointer { public: void* m_vtable; T* m_pItem; };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CThingConstPtrVector {                      // STLport vector<CIntelligentPointer<CThing const> >
     CIntelligentPointer<const CThing>* _M_start;
     CIntelligentPointer<const CThing>* _M_finish;

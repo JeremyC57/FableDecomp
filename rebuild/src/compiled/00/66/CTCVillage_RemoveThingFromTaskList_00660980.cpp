@@ -1,5 +1,6 @@
 // CTCVillage::RemoveThingFromTaskList(const CThing& thing, std::list<CCountedPointer<CVillageTaskPickCrops> >& tasks) const -- drop the thing from every task of the list that involves it, erasing each task that asks to be removed
 // Leaf: ??$RemoveThingFromTaskList@VCVillageTaskPickCrops@@@CTCVillage@@ABEXABVCThing@@AAV?$list@V?$CCountedPointer@VCVillageTaskPickCrops@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskPickCrops@@@@@std@@@std@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00660980, 118 bytes (unaligned, frame pointer: a size-optimised TU with
 //   optimize("y", off)), private const __fastcall member template, `ret 8`; `this` is never read.
 // Identity (proven): CTCVillage::RemoveThingFromTaskList<CVillageTaskPickCrops> (Ego_r.pdb name set); evidence: (1) the list::erase it calls,
@@ -21,7 +22,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CVillageTaskBase : public CBaseObject {
@@ -33,14 +34,6 @@ public:
     virtual void RemoveThingFromTask(const CThing& thing, bool& remove_task);
 };
 class CVillageTaskPickCrops : public CVillageTaskBase { };
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);   // converting copy, out of line (0x0065DB5C for U = CVillageTaskPickCrops)
-    ~CCountedPointer();                                      // out of line (0x0065DA6B for CVillageTaskBase)
-    T* operator->() const { return Data; }
-};
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>

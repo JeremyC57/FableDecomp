@@ -1,5 +1,6 @@
 // CTCActionUseBed::~CTCActionUseBed() -- leave the global update list, drop both thing pointers, release the action-use def, then ~CTCBase
 // Leaf: ??1CTCActionUseBed
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EBDD0, length 62 bytes.
 // Callees: CTCBase::RemoveFromGlobalTCs @ 0x00686DF0 (landed; `this` in ecx), CBaseIntelligentPointer::
 // ~CBaseIntelligentPointer @ 0x00A01C10 (PThingUser +0x2b, then PBuilding +0x23), the def's virtual slot 1
@@ -52,15 +53,8 @@ class CTCActionUseBase : public CTCBase { public:                   // 0x14 byte
 #pragma pack(push, 1)
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CTCActionUseBed : public CTCActionUseBase { public:                 // vtable 0x0123F784
     bool                    WaitingForFadeOut;              // +0x14

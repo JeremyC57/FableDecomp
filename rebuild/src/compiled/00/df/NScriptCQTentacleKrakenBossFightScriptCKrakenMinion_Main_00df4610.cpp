@@ -1,5 +1,6 @@
 // NScript::CQ_TentacleKrakenBossFightScript::CKrakenMinion::Main() -- kraken minion entity script: register the alive-filter, run a frame, then (unless done) keep trying to start scripting Me at priority 3, add the "HUD_ORB_QUEST_CORE" minimap marker and give Me the hero as its best enemy target
 // Leaf: ?Main@CKrakenMinion@CQ_TentacleKrakenBossFightScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF4610, 281 bytes (+ int3 padding). Entity-script slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (NScript::CIsThingConscious filter, vtable 0x012C2FE8), filter registration
 //   0x00F35B10 / IsDone 0x00F35B30 on `this` (propagated manifest labels), CBaseObject ctor 0x0099A380 (labelled
@@ -13,11 +14,9 @@
 // Naming wave 35: identity reg 00df4289 "KrakenMinion" in 00df4240; Alloc 00df4520; vtable 012de590 slot 1; PDB ?Main@CKrakenMinion@CQ_TentacleKrakenBossFightScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CKrakenMinion::Main (wave3/labels_alloc.tsv); PDB ?Main@CKrakenMinion@CQ_TentacleKrakenBossFightScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CKrakenMinion@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    virtual ~CScriptThing();                          // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -26,7 +25,6 @@ class CCharString { public:
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGH = 3 };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"

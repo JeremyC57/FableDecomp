@@ -8,10 +8,10 @@
 // ... ABK@Z (const; retail's STLport const_iterator is a const pair pointer, the spelling the landed CVectorMap
 // LowerBound rows use). CVectorMap retail layout: Data (CArray = STLport vector) +0, Compare +0xC, Dirty +0xD.
 // Leaf: ?UpperBound@?$CVectorMap@KVC3DMeshVolume@@V?$CKeyPairCompareLess@KVC3DMeshVolume@@@@@@QBEPBU?$pair@KVC3DMeshVolume@@@std@@ABK@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 class CCharString { public: void* PStringData; };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };
+#include "engine/CCountedPointer.h"
 class CContainmentVolume;
 
 class C3DMeshVolume {

@@ -1,5 +1,6 @@
 // std::vector<CMapInfo,std::allocator<CMapInfo> >::vector(unsigned int n) -- STLport vector(n) of the world map's 0x48-byte map records: allocate n records, copy-construct each from a default (cleared) record, destroy the default record
 // Leaf: ??0?$vector@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members Count->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00515AD0, 213 bytes, `ret 4` (thiscall: n).
 // Callers: 0x00506740 and 0x0051A1B8 (CWorldMap's Maps vector sized from the map count). The catalog's
 //   "CWorldMap_Constructor" is descriptive: `this` is the vector, not the world map.
@@ -26,30 +27,8 @@ public:
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct SCountBlock {
-    long  Count;                                    // +0
-    void (__fastcall* Destroy)(void* object);       // +4
-    void* Object;                                   // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*           Object;                            // +0
-    SCountBlock* Info;                              // +4
-    CCountedPointer() : Object(0), Info(0) { }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->Count;
-            if (Info->Count == 0) {
-                Info->Destroy(Info->Object);
-                delete Info;
-            }
-        }
-        Object = 0;
-        Info = 0;
-    }
-};
 
 class C2DBoxI {
 public:

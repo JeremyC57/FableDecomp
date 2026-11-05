@@ -1,5 +1,7 @@
 // CAIStateGroup_BanditSitRoundCampfire::Update() -- claim a free seat at the campfire, walk to it, face the fire, sheathe any weapon and sit on the floor
 // Leaf: ?Update@CAIStateGroup_BanditSitRoundCampfire@@UAEXXZ
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000); the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 //
 // Retail 0x0093B1D0, 1011 bytes (ends `ret` at 0x0093B5C2), `sub esp,0x168`, no EH frame. Virtual Update of the
 // bandit "sit round campfire" AI state group (Ego_r.pdb names CAIStateGroup_BanditSitRoundCampfire::Update; it is
@@ -42,52 +44,10 @@
 #include "engine/CWorld.h"
 #include <stddef.h>
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class vector {
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-    iterator end() { return this->_M_finish; }
-    const_iterator end() const { return this->_M_finish; }
-};
-template <size_t _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static size_t _S_whichword(size_t __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(size_t __pos) { return 1UL << (__pos % 32); }
-    _WordT _M_getword(size_t __pos) const { return _M_w[_S_whichword(__pos)]; }
-};
-template <size_t _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    bool operator[](size_t __pos) const { return _Unchecked_test(__pos); }
-    bool _Unchecked_test(size_t __pos) const { return (this->_M_getword(__pos) & this->_S_maskbit(__pos)) != 0; }
-};
-}   // namespace std
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {
-public:
-    typedef std::pair<K, V> value_type;
-    typedef typename CArray<value_type>::iterator iterator;
-    typedef typename CArray<value_type>::const_iterator const_iterator;
-    CArray<value_type> Data;
-    TCompare           Compare;
-    bool               Dirty;
-    iterator LowerBound(const K& key);                  // 0x0040F020
-    const_iterator LowerBound(const K& key) const;      // 0x004365B0
-};
 
 
 class CCharStringData;
@@ -189,7 +149,7 @@ public:
             ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::iterator it = map->LowerBound(type);
-            *out = (T*)((it == map->Data.end() || T::INTERFACE_TYPE < it->first) ? map->Data.end() : it)->second;
+            *out = (T*)((it == map->end() || T::INTERFACE_TYPE < it->first) ? map->end() : it)->second;
         }
         return has;
     }
@@ -200,7 +160,7 @@ public:
             ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
             const CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::const_iterator it = map->LowerBound(type);
-            *out = (T*)((it == map->Data.end() || T::INTERFACE_TYPE < it->first) ? map->Data.end() : it)->second;
+            *out = (T*)((it == map->end() || T::INTERFACE_TYPE < it->first) ? map->end() : it)->second;
         }
         return has;
     }
@@ -243,18 +203,8 @@ public:
     static bool __fastcall IsThingCarryingWeapon(const CThing& thing);   // 0x006A1540
 };
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-private:
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    T* operator->() const { return GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CCPPointerInfo {
 public:

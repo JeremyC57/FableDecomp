@@ -1,5 +1,6 @@
 // CTCTurncoatSpell::OnKill() -- CTCBase virtual (vtable 0x0126E5C4 slot 14): the private FinalCleanup, inlined: fade out the out-of-range turncoating effect thing if it is still alive, then stop the remaining turncoating effects
 // Leaf: ?OnKill@CTCTurncoatSpell@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C75A0, 60 bytes; referenced only by vtable 0x0126E5C4 slot 14 (0x0126E5FC).
 // Identity (proven): CTCTurncoatSpell's TU holds three byte-identical bodies in a row: 0x007C7560 (unreferenced),
 //   0x007C75A0 (vtable 0x0126E5C4 slot 14 = CTCBase::OnKill) and 0x007C75E0 (slot 2 = CTCBase::OnRemove; landed under the
@@ -25,11 +26,8 @@ class CThing { public:
 };
 
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    void* __vftable;                        // +0x00
-    void* PData;                            // +0x04
-    CBaseObject* GetPItem() const;          // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {

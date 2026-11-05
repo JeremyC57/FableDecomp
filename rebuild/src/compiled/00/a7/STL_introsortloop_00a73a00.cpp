@@ -1,5 +1,6 @@
 // std::__introsort_loop(SStringKeyedChunk* first, SStringKeyedChunk* last, SStringKeyedChunk*, int depth_limit, CStringKeyedChunkLess comp) -- STLport introsort recursion over the 16-byte (CCharString key, {name, counted chunk}) records: partition around the median of three, recurse on the right part, loop on the left; partial-sort fallback when the depth runs out
 // Leaf: ??$__introsort_loop@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A73A00, 216 bytes (+ int3 padding to 224), `ret 0Ch` (first in ecx, last in edx;
 //   the value-type pointer, the depth limit and the empty comparator's slot on the stack).
 // Callers: sort 0x00A73BA0 (landed) and itself. Callees: __median 0x00A70020 (landed, out of line here: `ret 8`),
@@ -17,22 +18,8 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct SCountBlock {
-    long m_references;                                  // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4
-    void* m_pObject;                                    // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer {
-public:
-    T* m_pObject;                                       // +0
-    SCountBlock* m_pCount;                              // +4
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-};
 
 class C3DAnimFileRootChunk;
 

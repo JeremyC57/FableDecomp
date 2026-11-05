@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::WatchForRegionClear() -- collect the bandit allies, convoy members and phase 1 / phase 3 guards and archers, then wait until the convoy spy is dead and every one of them is dead, setting RegionClear
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F09CD0, length 1947 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CBaseClass 0x0099A2E0, operator delete
 //   0x00BFE9BC, free 0x00BFEA14, AreAllThingsInVectorDead 0x00CBED00 (__fastcall), CScriptBase::IsActiveThreadTerminating
@@ -21,28 +22,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:                                 // CCountedPointer's shared block
-    long RefCount;                                      // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4
-    void* Data;                                         // +8
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #define SLOTS_2_74 \
     virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); \
     virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); \

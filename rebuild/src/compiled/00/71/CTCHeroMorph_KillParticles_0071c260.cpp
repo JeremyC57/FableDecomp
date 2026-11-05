@@ -1,5 +1,6 @@
 // CTCHeroMorph::KillParticles() -- kill and drop every morph particle emitter (back to front), then the idle particle emitters
 // Leaf: ?KillParticles@CTCHeroMorph@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0071C260, 110 bytes, thiscall, tail `jmp` to KillIdleParticles.
 // Identity (proven): FableWin.pdb ?KillParticles@CTCHeroMorph@@QAEXXZ, whose donor neighbours (SetTan, KillIdleParticles,
 //   KillParticles, HasAPermanentTattooCoveringArea, InitialiseCustomTattoos, OnInitialActivate, AddParticles) sit in the same
@@ -74,15 +75,8 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_b
 class CThing : public CBaseObject { public:
     void Kill(bool);                                     // 0x004C9B80
 };
-class CBaseIntelligentPointer { public:
-    virtual ~CBaseIntelligentPointer();                  // slot 0 (scalar deleting)
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    CBaseObject* PItem;                                  // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* Get() const { return (T*)GetPItem(); }
-    T* operator->() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCAppearanceMorphBase { public: class CMeshMorphSet; };   // Ego_r nested type (opaque here)
 class CTCHeroMorph : public CTCBase {
 public:

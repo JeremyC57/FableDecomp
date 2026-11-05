@@ -1,6 +1,7 @@
 // CSkeletalMorphResourceManager::`scalar deleting destructor'(unsigned int flags) -- destroy the CachedMorphs map
 // (out of line), fall back to the CTBaseSingleton<CSkeletalMorphResourceManager> vtable, free when bit 0 is set
 // Leaf: ??_GCSkeletalMorphResourceManager@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004AE3B0, 39 bytes, `ret 4`.
 // Identity: slot 0 of vtable 0x01238F84, whose RTTI locator is `.?AVCSkeletalMorphResourceManager@@`
 // (rtti-vtables.tsv); the vtable stored by the inlined base destructor, 0x01238C50, is
@@ -13,11 +14,7 @@
 // the vtable. The class destructor is implicit, so the map destructor call and the base vtable store inline.
 class CCharString;
 class C3DSkeletalMorphTarget;
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> struct less { };

@@ -2,6 +2,7 @@
 // states being done / done, no parent update time (-1.0f), all state indices 0, update time 0, and the
 // previous update is flagged as changed (PreviousUpdateChanged = true).
 // Leaf: ?Initialise@CChangingStateComponent@NUISystem@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052C730, length 71 bytes.
 // Callees: CComponent::Initialise @ 0x005339B0. 26 derived Initialise bodies call this one (0x41A8D5 ..
 // 0x555EB9), which is why the propagated label is trusted here.
@@ -15,11 +16,7 @@
 // Identity: the class is NUISystem::CChangingStateComponent (RTTI type descriptor of its vtable; Ego_r/FableWin.pdb
 //   ?Initialise@CChangingStateComponent@NUISystem@@UAEXXZ); the catalog name lacked the namespace. The members are now declared inside NUISystem
 //   and the graded member is virtual as in the PDB (its body is unchanged).
-template <class T> class CCountedPointer {      // CCountedPointer<T> (global template)
-public:
-    T*    Object;                                 // +0
-    void* Info;                                   // +4
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem {
 

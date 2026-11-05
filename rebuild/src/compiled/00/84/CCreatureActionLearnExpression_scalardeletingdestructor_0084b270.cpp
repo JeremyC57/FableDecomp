@@ -1,4 +1,5 @@
 // CPhysicsMeshInfo_Derived_0084b270::`scalar deleting destructor'(unsigned int) -- non-virtual: 2 members destroyed out of line, CPhysicsMeshInfo::~CPhysicsMeshInfo, flag-tested delete
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084B270, oracle length 54 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -11,10 +12,8 @@
 // argument selects the flag-tested operator delete @ 0x00BFE9BC. The manifest label (`vector
 // deleting destructor`) is propagated; names come from the destructor labels when unique.
 // One of 15 bodies of this shape.
-class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
-    unsigned char _body[0x4];   // +0x04 (vptr at +0x00)
-    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CPhysicsMeshInfo { public:
     unsigned char _body[0xa8];

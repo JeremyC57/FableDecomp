@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CScriptGameResourceObjectScriptedThingBase >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, destroy the vacated tail through the out-of-line __destroy_aux, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@VCScriptGameResourceObjectScriptedThingBase@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD3228, 55 bytes (size-optimised TU, frame pointer, odd entry), thiscall, `ret 8`, returns first.
 // Identity: std::vector<CScriptGameResourceObjectScriptedThingBase >::erase(iterator, iterator) -- proven; evidence: its only caller is vector::resize(n, x) 0x00CD3CCB (n < size(): erase(begin + n, end)), reached from resize(n) 0x00CD3DA4, which builds its default element with the constructor 0x007E72A0 (CBaseObject base 0x0099A380, then vtable 0x0127094C = RTTI CScriptGameResourceObjectScriptedThingBase, PImp {0, 0} at +8) and destroys it with 0x007E74D0; the 0x10-byte element's operator= 0x008ABD10 assigns the CBaseObject part (0x0099A3B0, copies nothing) then the CCountedPointer PImp at +8 / +0xC, and its destructor is virtual; the PDB name sets hold vector<CScriptGameResourceObjectScriptedThingBase>::erase; the catalogue labels of 0x00CD3DA4 ("CPersistContext::Transfer<CAnimationSet>") and 0x00CD3CCB ("CArray<std::pair<long..>>::push_back") are propagated
 //   Family G072 (seven byte-identical bodies, one COMDAT per T: retail has no ICF). Catalogue label "std_vector_CopyElement" is propagated/behavioural.
@@ -12,13 +13,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
-template <class T> class CCountedPointer {                   // 8 bytes: the object + its shared CCPPointerInfo count block
-public:
-    T*    Data;                                              // +0x0
-    void* Info;                                              // +0x4 CCPPointerInfo*
-    CCountedPointer<T>& operator=(const CCountedPointer<T>& other);
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

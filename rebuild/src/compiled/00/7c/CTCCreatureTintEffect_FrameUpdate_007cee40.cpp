@@ -1,5 +1,6 @@
 // CTCCreatureTintEffect::FrameUpdate() -- fade the tint in from white over FadeInTime, or (once fade-out started) back to white over FadeOutTime, tinting the parent and every live thing in TintList; remove the component when the fade-out ends
 // Leaf: FrameUpdate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x007CEE40, 508 bytes (plain `ret`); catalog "vfunc_9" = Ego_r.pdb ?FrameUpdate@CTCCreatureTintEffect@@UAEXXZ.
 // Callees: __ftol2 @ 0x00BFEA70, NGraphicAppearance::CTCGraphicAppearance::SetTintColour(const CRGBColour&, void*)
 // @ 0x004C00B0 (the thing's cached appearance at +0x64), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
@@ -26,11 +27,8 @@ class CThing { public:
     void RemoveTC(ETCInterfaceType interfaceType);                  // 0x004C9840
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T> struct vector {                      // STLport vector, 12 bytes
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     T* begin() const { return _M_start; }

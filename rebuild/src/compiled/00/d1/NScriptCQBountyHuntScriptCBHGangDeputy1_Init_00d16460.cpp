@@ -1,6 +1,7 @@
 // NScript::CQ_BountyHuntScript::CBH_GangDeputy1::Init() -- spawn the parent script's WatchForDeputy1Killed thread on the entity's own thing
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Init@CBH_GangDeputy1@CQ_BountyHuntScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00d16460, 258 bytes, thiscall, plain `ret` (virtual, entity vtable slot 2), no EH frame.
 // Identity (proven): slot 2 (Init) of the entity vtable 0x012CA554 that the landed NScript::CQ_BountyHuntScript::CBH_GangDeputy1::Alloc 0x00D15FC0 stores; Ego_r.pdb / FableWin.pdb name ?Init@CBH_GangDeputy1@CQ_BountyHuntScript@NScript@@EAEXXZ in the PDB sets; it spawns ?WatchForDeputy1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z 0x00D16570 (the member pointer stored at +0x34; landed) under the name "ParentClass." + "WatchForDeputy1Killed".
 // Callees: operator new 0x00BFEA1A (0x48), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
@@ -21,12 +22,7 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& lhs, const CCharString& rhs);   // 0x0099F570
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CCountBlock { long References; };
-template <class T> class CCountedPointer { public:
-    void* Data;
-    CCountBlock* Info;
-    __forceinline CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

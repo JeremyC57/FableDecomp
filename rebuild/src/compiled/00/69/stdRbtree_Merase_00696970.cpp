@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (std::map<EActionRegisteredType, CCountedPointer<CCreatureActionBase> >) STLport 4.6 recursive subtree release without rebalancing: for each node erase its right subtree, release the value's counted pointer (the node's prototype pointer, node +0x14), free the node and continue with its left child
 // Leaf: ?_M_erase@?$_Rb_tree@W4EActionRegisteredType@@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@U?$_Select1st@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@3@U?$less@W4EActionRegisteredType@@@3@V?$allocator@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EActionRegisteredType@@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00696970, 92 bytes (+ int3 padding to 96), thiscall `ret 4`; recursive; speed-optimised TU.
 // Identity (proven): std::map<EActionRegisteredType, CCountedPointer<CCreatureActionBase> >; evidence: the registry's atexit destructor 0x012292E0 calls it (0x012292F7) with ecx = 0x013BA8C8, the action registry the landed CCreatureActionBase::GetPActionFromEnum 0x00692E50 (Ego_r.pdb ?GetPActionFromEnum@CCreatureActionBase@@SI?AV?$CCountedPointer@VCCreatureActionBase@@@@W4EActionRegisteredType@@AAVCThingCreatureBase@@@Z) and CCombatActionBase::GetPCombatActionFromEnum 0x00857430 search by EActionRegisteredType through find 0x00696680 (signed key compare at node +0x10) and clone from the prototype CCountedPointer<CCreatureActionBase> at node +0x14; StatRegisterClass 0x006F5C10 fills it through insert_unique 0x006F5400. The registry's own name is not in the PDB name sets.
 // Label: the manifest's "CSoundPair_DeleteTree" is propagated (family J005: six _M_erase bodies whose only non-trivial value member is a
@@ -11,29 +12,8 @@
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // the shared count block
-    long RefCount;                                      // +0x0
-    void (__fastcall *DeleteFunc)(void*);               // +0x4
-    void* Data;                                         // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
-public:
-    T* Data;                                            // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 enum EActionRegisteredType { EActionRegisteredType_Force32 = 0x7fffffff };   // enumerators not needed
 class CCreatureActionBase;
 

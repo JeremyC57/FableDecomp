@@ -1,5 +1,6 @@
 // CGameScriptInterface::SetThingAndCarriedItemsNotAffectedByScreenFilter -- set filter bypass on the thing and its carried items
 // Leaf: SetThingAndCarriedItemsNotAffectedByScreenFilter
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008A99F0 length232; genuine native packed intelligent pointer9bytes, base destructorA01C10, VT1238C6C slot0=4A9710.
@@ -126,9 +127,8 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 #include "engine/CTCBase.h"
 struct IntelligentInfo{CThingNative* Object;long References;};
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    void SetPItem(CBaseObject*a0);   // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct BaseIntelligentPointer{IntelligentInfo* Info;BaseIntelligentPointer();virtual ~BaseIntelligentPointer();CThingNative* GetPItem();}; //A01B10,A01C10,A01B50,A01B90
 // Native PDB CIntelligentPointer holds base8 plus bool1; retail vector stride9 confirms packed layout.
 #pragma pack(push,1)

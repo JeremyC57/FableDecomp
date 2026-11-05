@@ -1,5 +1,6 @@
 // CThing::AddTC(const CCharString& name, bool replace, const CTCParamsBase* params) -- create the named thing component and attach it: refused unless TCs may be added; an interface already present is kept (the new TC deleted) unless replacing; the physics / appearance / driver shortcuts are updated; a replaced TC is dropped from the update list and the pending-removal list and deleted, otherwise the TC is added to the sorted interface map; then the presence bit is set, the params applied, the TC initialised and queued for updates when it wants them
 // Leaf: AddTC
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Callees: CreateTC @ 0x00686F10 (__fastcall name, thing), puts @ 0x00BFEAF2 / abort @ 0x00BFEAEC (bitset range check),
 //          CVectorMap::LowerBound @ 0x0040F020, list<CTCBase*>::remove @ 0x004CC150, ~CBaseIntelligentPointer @ 0x00A01C10,
 //          free @ 0x00BFEA14, vector<pair>::_M_insert_overflow @ 0x004CCCE0, sort @ 0x004CD5D0, bitset::set @ 0x004CC090,
@@ -32,15 +33,8 @@ CTCBase* __fastcall CreateTC(const CCharString& name, CThing* thing);   // 0x006
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct STCRemoval {
     CBaseIntelligentPointer PThing;                     // +0x00
     CTCBase*                PTC;                        // +0x08

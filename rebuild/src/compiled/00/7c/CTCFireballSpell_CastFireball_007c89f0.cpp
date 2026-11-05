@@ -1,5 +1,6 @@
 // CTCFireballSpell::CastFireball(CThing* target) -- release the charged fireball: clamp the accumulated will level to what the stamina allows, take the level's stamina cost from a hero, kill the build-up effect, stop the looping charge sound and play the level's cast criteria, read the fireball attachment dummy for the start position and frame, pick the FIREBALL_<level+1> shot definition, tilt the caster's frame about its side axis by the def's inclination, create the shot at the target and make it undrawable, immune to bullet time and undeflectable
 // Leaf: ?CastFireball@CTCFireballSpell@@QAEXPAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C89F0, 966 bytes of code + `mov edi,edi` + two 4-entry jump tables (row 1000), `ret 4`.
 // Identity: Ego_r.pdb has `?CastFireball@CTCFireballSpell@@QAEXPAVCThing@@@Z` (donor 0x007C7730); the literals are the four
@@ -28,49 +29,8 @@
 //   read; the frame is reused (dummy frame, then overwritten by GetLastRHSet); the side axis is passed as an explicit
 //   C3DVector copy (retail copies it into the dead up-axis temporary); the default CDefPointer temporary releases through
 //   CIVCountedPointeeBase::Release() (count returned) then nulls; the 0x77 lookup key lands in the dead `target` slot.
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    typedef const _Tp* const_iterator;
-    iterator end() { return this->_M_finish; }
-    const_iterator begin() const { return this->_M_start; }
-    const _Tp& operator[](unsigned int __n) const { return *(begin() + __n); }
-};
-template <unsigned int _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static unsigned int _S_whichword(unsigned int __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(unsigned int __pos) { return 1UL << (__pos % 32); }
-};
-template <unsigned int _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    struct reference {
-        typedef _Base_bitset<(_Nb + 31) / 32> _Bitset_base;
-        unsigned long* _M_wp;
-        unsigned int _M_bpos;
-        reference(bitset<_Nb>& __b, unsigned int __pos)
-        {
-            _M_wp = &__b._M_w[_Bitset_base::_S_whichword(__pos)];
-            _M_bpos = __pos % 32;
-        }
-        ~reference() { }
-        operator bool() const { return (*(_M_wp) & _Bitset_base::_S_maskbit(_M_bpos)) != 0; }
-    };
-    reference operator[](unsigned int __pos) { return reference(*this, __pos); }
-};
-}   // namespace std
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#include "engine/CVectorMap.h"
 
 enum ETCInterfaceType { };
 class CTCBase;
@@ -85,16 +45,6 @@ class CRightHandedSet { public:
     C3DVector Forward;                                      // +0x0C
     CRightHandedSet() { }
     void Rotate(const C3DVector& axis, float angle);       // 0x00A22F80
-};
-template <class T> class CArray : public std::vector<T> { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                                  // +0x00
-    TCompare           Compare;                               // +0x0C
-    bool               Dirty;                                 // +0x0D
-    value_type* LowerBound(const K& key);                     // 0x0040F020 for the TC map
 };
 
 class CDefinitionManager { public:
@@ -155,8 +105,8 @@ class CThing { public:                                      // partial view, ret
         if (UsingComponents[T::INTERFACE_TYPE]) {
             TCMap* map = &Components;
             TCMap::value_type* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
-            if (it == map->Data.end() || T::INTERFACE_TYPE < it->first)
-                it = map->Data.end();
+            if (it == map->end() || T::INTERFACE_TYPE < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

@@ -1,5 +1,6 @@
 // std::__unguarded_insertion_sort_aux<pair<long, CCountedPointer<CRegionConnectionNode> >*, pair<long, CCountedPointer<CRegionConnectionNode> >, CKeyPairCompareLess<long, CCountedPointer<CRegionConnectionNode> > >(...) -- unguarded linear insert of each element of [first, last)
 // Leaf: ??$__unguarded_insertion_sort_aux
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00448910, 62 bytes, __fastcall (first ecx, last edx; the unused T* and the 4-byte comparator on the
 // stack, `ret 8`); callers 0x00448B27, 0x004493E5 (the final-insertion-sort code). For each i: copy *i by value (key, then
 // the counted pointer Data/Info with ++Info->RefCount) and call __unguarded_linear_insert(i, copy, comp) (0x00448520,
@@ -9,16 +10,7 @@
 // _Destroy_range<pair<long, CCountedPointer<CRegionConnectionNode> > > instance at 0x004488B0 (same element shape); the
 // key-only comparator is modelled as the engine's CKeyPairCompareLess.
 // Shape: /O2 (16-aligned entry, `nop` loop-head pad).
-class CCPPointerInfo { public:
-    long RefCount;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CRegionConnectionNode;
 namespace std {
 template <class T1, class T2> struct pair {

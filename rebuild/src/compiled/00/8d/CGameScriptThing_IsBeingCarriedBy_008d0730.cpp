@@ -1,5 +1,6 @@
 // CGameScriptThing::IsBeingCarriedBy(const CCharString& name) const -- true when this live thing is being carried (its carryable component, kind 0x47, has a carrying component) and either no name is given or the carrier's script name equals `name`
 // Leaf: IsBeingCarriedBy
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D0730, 233 bytes, `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3 on PThing), the const component-map LowerBound @
 //   0x004365B0, CBasicString<char>::operator==(const char*) @ 0x004115A0 (inside CCharString == ""), CTCCarryable::
@@ -102,11 +103,8 @@ class CTCCarryable { public:                              // component kind 0x47
     CTCCarrying*  PCarryingTC;                     // +0x10
     CThingRetail* GetCarrier() const;              // 0x00705170
 };
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    void* PData;
-    CBaseObject* GetPItem() const;                 // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CGameScriptThingMethods : CGameScriptThing {
     CThingRetail* GetThing() const { return (CThingRetail*)((const CBaseIntelligentPointer*)PThing)->GetPItem(); }

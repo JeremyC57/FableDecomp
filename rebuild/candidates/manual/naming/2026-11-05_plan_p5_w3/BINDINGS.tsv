@@ -1,0 +1,18 @@
+action	symbol	target	by_row	note
+ADD	??$IS_THING_ALIVE@VCBaseIntelligentPointer@@@@YI_NABVCBaseIntelligentPointer@@@Z	004cc340	007bdac7	cintelligentpointer_p5 wave: the decided spelling the respelled rows emit
+ADD	?FadeOrKillEffect@@YIXAAVCBaseIntelligentPointer@@@Z	0072abd0	00794c10	cintelligentpointer_p5 wave: the decided spelling the respelled rows emit
+ADD	?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAVCBaseIntelligentPointer@@K@Z	0088ae40	006c0810	cintelligentpointer_p5 wave: the decided spelling the respelled rows emit
+ADD	?IS_THING_ALIVE@@YI_NABVCBaseIntelligentPointer@@@Z	004ab8f0	0065c36e	cintelligentpointer_p5 wave: the decided spelling the respelled rows emit
+ADD	?IS_THING_ALIVE_Pointer@@YI_NABVCBaseIntelligentPointer@@@Z	0048c740	00933310	cintelligentpointer_p5 wave: the decided spelling the respelled rows emit
+ADD	?IS_THING_ALIVE_Pointer_0078b2a0@@YI_NABVCBaseIntelligentPointer@@@Z	0078b2a0	00967650	cintelligentpointer_p5 wave: the decided spelling the respelled rows emit
+ADD	?TransformHitThings@@YI?AUCBackInserter@@PAVCBaseIntelligentPointer@@0U1@UCGetPItem@@@Z	0080ebe0	0080c590	cintelligentpointer_p5 wave: the decided spelling the respelled rows emit
+ADD	?erase@CIntelligentPointerVector@@QAEXPAVCBaseIntelligentPointer@@0@Z	004ac0f0	009790f0	cintelligentpointer_p5 wave: the decided spelling the respelled rows emit
+RETIRE	??$IS_THING_ALIVE@UCBaseIntelligentPointer@@@@YI_NABUCBaseIntelligentPointer@@@Z	004cc340	007bdac7	cintelligentpointer_p5 wave: no landed row binds this stand-in spelling after the wave
+RETIRE	??1?$CIntelligentPointer@VCThing@@@@UAE@XZ	00a01c10	00443930,008efd50	cintelligentpointer_p5 wave: no landed row binds this stand-in spelling after the wave
+RETIRE	?FadeOrKillEffect@@YIXAAUCBaseIntelligentPointer@@@Z	0072abd0	0078f6e0,00794c10	cintelligentpointer_p5 wave: no landed row binds this stand-in spelling after the wave
+RETIRE	?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAUCBaseIntelligentPointer@@K@Z	0088ae40	006c0810	cintelligentpointer_p5 wave: no landed row binds this stand-in spelling after the wave
+RETIRE	?IS_THING_ALIVE@@YI_NABUCBaseIntelligentPointer@@@Z	004ab8f0	0065ac83,0065c36e	cintelligentpointer_p5 wave: no landed row binds this stand-in spelling after the wave
+RETIRE	?IS_THING_ALIVE_Pointer@@YI_NABUCBaseIntelligentPointer@@@Z	0048c740	00933310	cintelligentpointer_p5 wave: no landed row binds this stand-in spelling after the wave
+RETIRE	?IS_THING_ALIVE_Pointer_0078b2a0@@YI_NABUCBaseIntelligentPointer@@@Z	0078b2a0	00967650	cintelligentpointer_p5 wave: no landed row binds this stand-in spelling after the wave
+RETIRE	?TransformHitThings@@YI?AUCBackInserter@@PAUCBaseIntelligentPointer@@0U1@UCGetPItem@@@Z	0080ebe0	0080c590	cintelligentpointer_p5 wave: no landed row binds this stand-in spelling after the wave
+RETIRE	?erase@CIntelligentPointerVector@@QAEXPAUCBaseIntelligentPointer@@0@Z	004ac0f0	009790f0	cintelligentpointer_p5 wave: no landed row binds this stand-in spelling after the wave

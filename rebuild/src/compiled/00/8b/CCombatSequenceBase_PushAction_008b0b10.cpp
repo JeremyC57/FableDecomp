@@ -1,5 +1,6 @@
 // CCombatSequenceBase::PushAction(CCombatAction& action) -- append the action (an 8-byte counted pointer) to CombatActions and count it in NoAvailableActions
 // Leaf: ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B0B10, 78 bytes, thiscall, `ret 4`.
 // Identity: the manifest's "std::vector::push_back" is the inlined body. Ego_r.pdb names
 //   ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z; the callers are the CCombatSequence_* OnCreate bodies
@@ -17,22 +18,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 class CThingCreatureBase;
 class CCombatActionBase;
 
-class CCPPointerInfo { public:
-    long  RefCount;                                         // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void* Data;                                             // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 class CCombatAction {
 public:

@@ -1,4 +1,5 @@
 // CTCHero::OnSerialise(CPersistContext*, long) -- persists the last equipped weapon's remapped UID and the hero title def by name
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CA120, 608 bytes, `ret 8`.
 // Callees: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50, CThing::IsLevelLess() const @ 0x004C7930,
 //          CTCBase::GetThingManager() const @ 0x00686AE0, CThingManager::RemapUIDForSerialisation @ 0x0051E210,
@@ -100,11 +101,8 @@ public:
 };
 // CIntelligentPointer<CThing> sits unaligned at +0x1D in retail; modelled as an opaque byte block.
 class CBaseObject;
-class CBaseIntelligentPointer {
-public:
-    unsigned char Storage[8];
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CPersistContext {
 public:

@@ -1,5 +1,6 @@
 // std::_List_base::clear() -- (_List_base<CScriptThing, allocator<CScriptThing> >) STLport 4.6 list clear: walk from the first node to the sentinel, destroy each node's element through its virtual destructor and free the node, then link the sentinel to itself
 // Leaf: ?clear@?$_List_base@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD4DF0, 58 bytes (+ int3 padding), thiscall, `ret`.
 // Identity: std::_List_base<CScriptThing >::clear() -- proven; evidence: the CQ_MinionCampScript destructor 0x00DA2F90 (called by its deleting form 0x00DA2F70, slot 0 of vtable 0x012D6C60 that the landed CQ_MinionCampScript constructor 0x00D9E210 stores) calls it on +0x94 and +0x90 = RightSpawnPoints / LeftSpawnPoints (Ego_r.pdb list<CScriptThing>, 0x14-byte sentinel nodes) between the CScriptThing members +0x9C and +0x84; the unreferenced list destructors 0x00CDB530 / 0x00CDB730 call it too; catalogue "~CV_FisticuffsClubScript" is propagated; the PDB name sets hold list<CScriptThing>::clear
 //   Family G073 (seven byte-identical bodies, one COMDAT per T: retail has no ICF); the manifest label "SortTreeRecursively" is
@@ -11,11 +12,7 @@
 //   sentinel is re-read from `this` after every free.
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
-template <class T> class CCountedPointer {                   // 8 bytes: the object + its shared CCPPointerInfo count block
-public:
-    T*    Data;                                              // +0x0
-    void* Info;                                              // +0x4 CCPPointerInfo*
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

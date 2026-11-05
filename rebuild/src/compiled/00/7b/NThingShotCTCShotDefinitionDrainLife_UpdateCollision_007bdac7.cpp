@@ -1,5 +1,6 @@
 // NThingShot::CTCShotDefinitionDrainLife::UpdateCollision(bool* finished) -- base collision update; a drain-life shot that hit its (alive) target heals it by AmountToHeal and ends; a hit on anything else clears the collision type and keeps going; a dead target ends the shot. Ending kills the soul effect.
 // Leaf: UpdateCollision
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 004cc340: ??$IS_THING_ALIVE@UCBaseIntelligentPointer@@@@YI_NABUCBaseIntelligentPointer@@@Z -> ??$IS_THING_ALIVE@VCBaseIntelligentPointer@@@@YI_NABVCBaseIntelligentPointer@@@Z
 // Retail: Fable.exe 0x007BDAC7, 157 bytes (`ret 4`; size TU with frame: optimize("y", off) + ("s", on)).
 // Callees: CTCShotDefinitionBase::UpdateCollision(bool*) @ 0x007BFE30, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 // IS_THING_ALIVE<CThing*> @ 0x00436380 (target) and IS_THING_ALIVE<const CThing*> @ 0x0040DCE0 (hit; out-of-line `__fastcall`
@@ -33,11 +34,8 @@ class CThing { public:
     void Kill(bool immediately);                        // 0x004C9B80
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void*   __vftable;
-    CThing* m_pItem;                                    // +4
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);
 template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing);   // the 0x00436380 copy (CThing*)
 struct CTCShotDefinitionBase {

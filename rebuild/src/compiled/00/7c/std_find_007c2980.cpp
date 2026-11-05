@@ -1,5 +1,6 @@
 // std::__find(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, const CIntelligentPointer<const CThing>& val, const random_access_iterator_tag&) -- STLport random-access find: four-way unrolled scan of a shot's hit-things list for the entry naming the same thing as val
 // Leaf: ??$__find@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C2980, 249 bytes, /Gr `__fastcall` (first ecx, last edx), `ret 8`
 //   (the value reference + the tag reference).
 // Identity: the callers are CTCShotDefinitionBase code (0x007BF55F OnCollision, 0x007C021D) and the
@@ -14,13 +15,8 @@
 class CBaseObject;
 class CThing;
 
-class CBaseIntelligentPointer {
-public:
-    virtual void Reset();                                   // vtable slot 0 (the caller stores 0x01238C6C)
-    CBaseObject* PItem;                                     // +0x04
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 template <class T>
 inline bool operator==(const CIntelligentPointer<T>& a, const CIntelligentPointer<T>& b)

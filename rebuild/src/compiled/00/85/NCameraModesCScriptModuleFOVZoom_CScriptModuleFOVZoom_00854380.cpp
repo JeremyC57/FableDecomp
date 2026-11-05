@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleFOVZoom::~CScriptModuleFOVZoom() -- compiler-generated destructor: runs the inline base ~CScriptModuleBase (no vtable store of its own)
 // Leaf: ??1CScriptModuleFOVZoom@NCameraModes@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00854380, 34 bytes, thiscall, tail `jmp` to the second member dtor; byte-identical (bar the call
 //   displacements) to ~CScriptModuleBase 0x005ED120 and ~CScriptModuleGoToLookInDirection 0x005ED210.
@@ -15,13 +16,8 @@
 //   Increment, StartPos, ShortenOnOcclusion, ResetCamera (no dtor members); the FOVZoomStayRelative member at +0x84 (= 132) confirms the size.
 // Shape: an implicit destructor (no user ~ in the class); the qualified explicit call emits it out of line (the chunk 694 recipe).
 class CBaseObject;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();                   // 0x00A01C10
-    CBaseObject* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };

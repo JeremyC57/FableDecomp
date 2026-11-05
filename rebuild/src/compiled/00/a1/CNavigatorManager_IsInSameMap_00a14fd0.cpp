@@ -1,5 +1,6 @@
 // CNavigatorManager::IsInSameMap(const C3DVector&, const C3DVector&) -- find the first quad-tree map whose area holds either point: true only when it is the first point's map and that map also holds the second point
 // Leaf: IsInSameMap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A14FD0, 200 bytes (+ int3 padding; `ret 8`).
 // Callees: __ftol2 0x00BFEA70 (each float coordinate truncated to a map cell; the first point's pair is hoisted out of the loop
 //   by the compiler, the second point's is redone in each test).
@@ -18,7 +19,7 @@ class C2DBoxI { public:
     bool Contains(const C2DCoordI& p) const { return p.X >= TLX && p.X < BRX && p.Y >= TLY && p.Y < BRY; }
 };
 class CCharString { public: void* m_pData; };
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 class CNavQuadTree;
 class CNavQuadTreeMap { public:                           // 32 bytes
     CCountedPointer<CNavQuadTree> PQuadTree;       // +0x00

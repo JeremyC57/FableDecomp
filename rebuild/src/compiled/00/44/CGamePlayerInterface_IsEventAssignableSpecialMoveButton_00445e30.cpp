@@ -1,5 +1,6 @@
 // CGamePlayerInterface::IsEventAssignableSpecialMoveButton(const CInputEvent& event) const -- does any assignable special-move button input recognise the event
 // Leaf: ?IsEventAssignableSpecialMoveButton@CGamePlayerInterface@@QBE_NABVCInputEvent@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00445E30, 87 bytes, `ret 4`; reached by a tail jmp from 0x00687C73 (the CInputProcessGameBase
 // forwarder); Ego_r.pdb ?IsEventAssignableSpecialMoveButton@CGamePlayerInterface@@QBE_NABVCInputEvent@@@Z.
 // Body: for (unsigned i = 0; i < AssignableSpecialMoveButtons.size(); ++i) if (AssignableSpecialMoveButtons[i]->
@@ -15,12 +16,7 @@ public:
     virtual void _slot02() const;
     virtual bool IsEventOfThisType(const CInputEvent& event) const;   // slot 3 (+0xc)
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class T> class vector {
 public:

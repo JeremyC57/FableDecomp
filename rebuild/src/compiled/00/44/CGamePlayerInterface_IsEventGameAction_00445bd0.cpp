@@ -1,5 +1,6 @@
 // CGamePlayerInterface::IsEventGameAction(EGameAction action, const CInputEvent& event) const -- does any input bound to the action recognise the event
 // Leaf: ?IsEventGameAction@CGamePlayerInterface_Methods@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00445BD0, 84 bytes, `ret 8`; reached by a tail jmp from 0x00687CF3; Ego_r.pdb
 // ?IsEventGameAction@CGamePlayerInterface@@QBE_NW4EGameAction@@ABVCInputEvent@@@Z.
 // Body: over the Controls multimap range for the action -- end = Controls.UpperBound(action) (0x00447CE0), then from
@@ -18,12 +19,7 @@ public:
     virtual void _slot02() const;
     virtual bool IsEventOfThisType(const CInputEvent& event) const;   // slot 3 (+0xc)
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                          // +0x00
-    void* Info;                                          // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 struct CControlsEntry {                                  // std::pair<EGameAction, CCountedPointer<const CInputTypeBase> >
     EGameAction                             first;
     CCountedPointer<const CInputTypeBase>   second;

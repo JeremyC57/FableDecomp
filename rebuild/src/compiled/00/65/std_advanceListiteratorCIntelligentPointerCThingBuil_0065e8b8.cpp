@@ -1,5 +1,6 @@
 // std::__advance<_List_iterator<CIntelligentPointer<CThingBuilding> >,int>(_List_iterator& i, int n, const bidirectional_iterator_tag&) -- step a list iterator n nodes forward (n > 0) or -n nodes back
 // Leaf: ??$__advance@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065E8B8, 41 bytes, `__cdecl` (iterator reference, distance, the tag reference
 // unused; caller-cleaned). Only caller: std::advance(iterator&, int) @ 0x0065F8B2 (builds the empty
 // bidirectional_iterator_tag at [ebp-1] and passes three arguments, `add esp,0Ch`), itself called once from
@@ -14,13 +15,8 @@
 
 class CThing;
 class CThingBuilding;
-class CBaseIntelligentPointer {                   // 8 bytes: vptr + item
-public:
-    virtual void v00();
-    CThing* m_pItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 struct bidirectional_iterator_tag { };

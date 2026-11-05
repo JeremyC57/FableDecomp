@@ -1,5 +1,6 @@
 // CScriptGameResourceObjectScriptedThing::CreateNullHandle(CGameScriptInterface&) -- builds a scripted-thing handle that owns a new, unbound scripted-thing implementation
 // Leaf: ?CreateNullHandle@CScriptGameResourceObjectScriptedThing@@SI?AVCScriptGameResourceObjectScriptedThingBase@@AAVCGameScriptInterface@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail 0x00903810, 0xB2 bytes, static __fastcall (ecx = hidden result, edx = scriptInterface), plain `ret`.
 //   Manifest label "CGameScriptInterface_CreateScriptedEntity" (_global); PDB (FableWin) name set has
 //   `?CreateNullHandle@CScriptGameResourceObjectScriptedThing@@SI?AVCScriptGameResourceObjectScriptedThingBase@@AAVCGameScriptInterface@@@Z`.
@@ -14,34 +15,7 @@
 // Shape: no NRVO in VC7.1, so local + copy ctor + local dtor. CCountedPointer has a user copy ctor (null-tested AddRef)
 //   and an inline dtor whose release is null-tested, then zeroes Data and Info; the intermediate
 //   CScriptGameResourceObjectBase vptr store of the constructors is dead and dropped, the one in its user dtor stays.
-class CCPPointerInfo { public:
-    unsigned long RefCount;                              // +0x00
-    void (__fastcall* DeleteFunc)(void* data);           // +0x04
-    void*         Data;                                  // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                // +0x00
-    CCPPointerInfo* Info;                                // +0x04
-    CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject {

@@ -1,5 +1,6 @@
 // std::_Rb_tree<unsigned __int64,std::pair<const unsigned __int64,CGroupMemberData>,...>::equal_range(const unsigned __int64& k) -- STLport equal_range on the creature group's member map: (lower_bound(k), upper_bound(k))
 // Leaf: ?equal_range@?$_Rb_tree@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x00813530, 70 bytes (+ int3 padding), `ret 8`: __fastcall (the tree in ecx, passed through to
 //   lower_bound), the hidden pair result and the key reference on the stack.
 // Caller: 0x00813653 (map::erase(const key&) 0x00813640). Callee: _M_lower_bound(const key&) 0x00813200 (catalogued
@@ -15,13 +16,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CBaseObject;
 class CThingAICreature;
-class CBaseIntelligentPointer {
-public:
-    virtual void v00();
-    CBaseObject* PData;                                      // +0x04
-    virtual ~CBaseIntelligentPointer();                              // 0x00A01C10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CGroupMemberData {                                     // 0x14 bytes (Ego_r.pdb)
 public:
     CIntelligentPointer<const CThingAICreature> PMember;     // +0x00

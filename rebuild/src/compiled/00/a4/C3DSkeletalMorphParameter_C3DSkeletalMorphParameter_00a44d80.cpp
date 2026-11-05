@@ -1,6 +1,7 @@
 // C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphParameter&) -- CBase(), vtable, an empty shared-data pointer assigned from the source's, the source's current value, no owning morph
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A44D80, length 104 bytes.
 // Leaf: ??0C3DSkeletalMorphParameter
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Callees: 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable, the counted block's destroy thunk (`call [info+4]`) and 0x00BFE9BC
 // operator delete (the assignment's release path, unreachable after the zeroing but still emitted).
 // Vtable 0x0129D490 = C3DSkeletalMorphParameter (rtti-vtables.tsv).
@@ -11,35 +12,7 @@
 // keeps the release test on the known-null block); CurrentValue and SkeletalMorph are body assignments after it.
 void __cdecl operator delete(void* p);                   // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                  // PDB: RefCount +0, DeleteFunc +4, Data +8
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                                // +0
-    CCPPointerInfo* Info;                                // +4
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            if (Info != 0) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info != 0)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class CBaseClassNonCopyable {
 protected:

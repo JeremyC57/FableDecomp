@@ -1,5 +1,6 @@
 // std::vector::_M_fill_insert(pointer position, size_type n, const value_type& x) -- (vector<pair<unsigned long, C3DMeshVolume> >) STLport 4.6 insert of n copies of a mesh-volume map entry: shift the tail inside the spare capacity, else grow through the __false_type _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@U?$pair@KVC3DMeshVolume@@@std@@V?$allocator@U?$pair@KVC3DMeshVolume@@@std@@@2@@std@@QAEXPAU?$pair@KVC3DMeshVolume@@@2@IABU32@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A35010, 309 bytes, thiscall `ret 0Ch`.
 // Identity (proven): STLport 4.6 vector<_Tp>::_M_fill_insert (public QAE); its only caller is the landed
 //   vector<pair<unsigned long, C3DMeshVolume> >::resize(n, x) 0x00A35430 (0x00A35480); overflow callee 0x00A34F00.
@@ -29,30 +30,8 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class CCPPointerInfo { public:                          // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other);
-};
 
 class CContainmentVolume;
 

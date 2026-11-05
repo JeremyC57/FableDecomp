@@ -1,5 +1,6 @@
 // CTCCombat::GetBlockAbilityIterator(iterator& it, EWeaponClass weaponClass) -- walk the block-type combat abilities (key 1) with the caller's iterator and stop at the first whose blocking data is for the given weapon class: true with `it` on it, else false
 // Leaf: ?GetBlockAbilityIterator@CTCCombat
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00734340, 201 bytes (208 with padding), `ret 8`.
 // Label correction: catalog "CTCCombat_FindBlockAbilityPrioritized" -- Ego_r.pdb has the non-const
 //   ?GetBlockAbilityIterator@CTCCombat@@AAE_NAAV?$_Tree_iterator...@W4EWeaponClass@@@Z (bool, iterator&, enum);
@@ -30,11 +31,7 @@ public:
     void*         ValidBlockWeaponTypes[3];     // +0x20 STLport set<EWeaponClass>
     long          WeaponClass;                  // +0x2c EWeaponClass
 };
-template <class T> class CCountedPointer { public:     // 8 bytes: object + count block
-    T*    Object;
-    long* Count;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;                           // +0x00
     long ActiveTimer;                           // +0x04
@@ -178,7 +175,7 @@ bool CTCCombat::GetBlockAbilityIterator(CCombatAbilityMap::iterator& it, long we
 {
     CCombatAbilityMap::iterator last = CombatAbilities.upper_bound(1);
     for (it = CombatAbilities.lower_bound(1); it != last; ++it) {
-        CCombatAbilityData* data = it->second.first.Object;
+        CCombatAbilityData* data = it->second.first.Data;
         if (data->GetDataType() == 1 && ((CCombatAbilityBlockingData*)data)->WeaponClass == weaponClass)
             return true;
     }

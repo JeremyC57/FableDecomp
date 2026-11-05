@@ -1,4 +1,5 @@
 // C3DClothPrimitive::SaveBinary(CDataOutputStream& out) const -- primitive and material index, then the particle program serialised into a memory stream and written as size + bytes
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC3B00, 128 bytes. Callees: CDataOutputStream::WriteULONG 0x00993EA0,
 // CMemoryDataOutputStream::CMemoryDataOutputStream 0x00996AF0 / ~CMemoryDataOutputStream 0x00996B30,
 // CParticleProgram::WriteToFile 0x00AE2230, CMemoryDataOutputStream::GetLength 0x00994B40,
@@ -28,12 +29,7 @@ class CParticleProgram { public:
 };
 
 struct SCountBlock;
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                           // +0
-    SCountBlock* m_pCount;                  // +4
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 class C3DClothPrimitive { public:
     virtual void v00();

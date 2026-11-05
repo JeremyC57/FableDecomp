@@ -1,5 +1,6 @@
 // std::vector::operator=(const vector& other) -- Assign counted-pointer ownership with reuse or reallocation.
 // Leaf: ??4?$vector@V?$CCountedPointer@VC3DAnimFileSequenceChunk@@@@V?$allocator@V?$CCountedPointer@VC3DAnimFileSequenceChunk@@@@@std@@@std@@QAEAAV01@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity: Own C3DAnimationBuilder::GetIntersection00ab2160 calls twice at00ab2423/2434; both PDB name sets give its two CArray<CCountedPointer<C3DAnimFileSequenceChunk>>& arguments.
 // Layout: original vector/base/allocator-proxy12, CCountedPointer8. Real visible copy/assign/destroy helpers read their inputs without modifying tags.
 class C3DAnimFileSequenceChunk;
@@ -10,8 +11,7 @@ class C3DAnimFileSequenceChunk;
 #define __declspec(x)
 #endif
 inline void* operator new(size_t,void* p){return p;}
-class CCPPointerInfo{public:unsigned long RefCount;void (__fastcall* DeleteFunc)(void*);void* Data;};
-template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}CCountedPointer(const CCountedPointer& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}void Release(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);::operator delete(Info);}}}~CCountedPointer(){Release();Data=0;Info=0;}CCountedPointer& operator=(const CCountedPointer& other){T* data=other.Data;CCPPointerInfo* info=other.Info;if(Info!=info){Release();Data=data;Info=info;if(info)++info->RefCount;}return *this;}};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template<class F,class S>struct pair {F first;S second;};

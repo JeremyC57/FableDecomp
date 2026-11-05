@@ -1,5 +1,6 @@
 // CCreatureActionBase::FrameUpdate() -- per-frame action tick: report progress, dispatch due action events and drop the finished ones, run the movement update at the animation end, finish at TotalTime, advance FramesRunning from the running time, release / start the haste pause, perform the action at ActionTime (with its sound), fire due cut-scene events, and clamp the frame count
 // Leaf: FrameUpdate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x00694020, 1040 bytes, plain `ret` (virtual).
@@ -108,11 +109,8 @@ class CThing { public:
     }
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* Data;
-    void* Info;
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CActionEventPointer { void* Data; void* Info; };
 struct CDispatchActionEventIfActivationFrame {
     long                 Frame;

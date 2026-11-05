@@ -1,5 +1,6 @@
 // NUISystem::CSpellContainer::AcceptAssignments() -- forget the pending spell and make the current children the new base spells
 // Leaf: AcceptAssignments
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Item->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00545670, 163 bytes (plain `ret`).
 // Callees: each released count block's `__fastcall` destroy thunk (+0x04, on the item at +0x08), operator delete @ 0x00BFE9BC.
 // Label: CSpellContainer vtable 0x0124786C slot 146 (rtti-vtables.tsv); Ego_r.pdb names
@@ -12,35 +13,7 @@
 // BEFORE its Data, the old count decremented and re-read through the member (`dec [eax] ; mov eax,[esi+4] ; cmp [eax],0`).
 void operator delete(void* block);               // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    long  Count;                                   // +0x00
-    void (__fastcall* Destroy)(void* item);        // +0x04
-    void* Item;                                    // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        CCPPointerInfo* info = o.Info;
-        T* data = o.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->Count;
-                if (Info->Count == 0) {
-                    Info->Destroy(Info->Item);
-                    ::operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->Count;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CCountedVector {         // STLport vector<CCountedPointer<T>> (12 bytes)
 public:
     CCountedPointer<T>* _M_start;

@@ -1,5 +1,6 @@
 // CFontManager::CFontManager(const CCharString& fontBankName, const CCharString& streamingFontBankName) -- create the font and streaming-font data banks and their symbol maps, open each named bank and build its symbol map, then allocate the eight font vertex buffers
 // Leaf: ??0CFontManager
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E2E30, 449 bytes, `ret 8`, vtable 0x0129BA38.
 // Callees: CBaseObject::CBaseObject 0x0099A2F0 (the catalog's NHeroInformationScreens::CBase label is a shared body),
 //   operator new 0x00BFEA1A, CFontDataBank() 0x00A63630, CSymbolMap() 0x009E5200, CStreamingFontDataBank() 0x00A5F290,
@@ -26,15 +27,7 @@ namespace N_0099a2f0 { struct CBaseObject {
     CBaseObject();                                       // 0x0099A2F0
     virtual ~CBaseObject();
 }; } using N_0099a2f0::CBaseObject;
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    void Reset(T* p);                                    // 0x009E3090 / 0x009B1F50 / 0x009E3100
-    T* operator->() const { return Data; }
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 class CSymbolMap { public:
     unsigned char Data[0x24];
     CSymbolMap();                                        // 0x009E5200

@@ -1,5 +1,6 @@
 // _global::__pop_heap(SScriptPair* first, SScriptPair* last, SScriptPair* result, SScriptPair value, CKeyPairCompareLess comp, long*) -- SGI pop_heap core for a heap of (UID, CCountedPointer<CActiveEntityScriptBase>) pairs: *result = *first, then sift `value` down from the root
 // Leaf: __pop_heap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBBA60, length 104 bytes (`ret 1Ch`: result, the 0x10-byte value, the comparator
 // and the distance pointer on the stack; first/last in ecx/edx -- the SGI algorithm TUs are /Gr).
 // Label correction: the catalog's "CTCCreatureModeManager::AddMode" is propagated and wrong. The callee 0x00CBB3B0 carries the
@@ -12,27 +13,7 @@
 // (`--count == 0` test, no zero stores).
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-struct SCountBlock {
-    long m_references;                                  // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4 per-type deleter, object in ecx
-    void* m_pObject;                                    // +8
-};
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                                       // +0
-    SCountBlock* m_pCount;                              // +4
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (m_pCount && --m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            operator delete(m_pCount);
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class CActiveEntityScriptBase;
 struct SScriptPair {                                    // std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> >, 16 bytes
     unsigned __int64                         first;     // +0x00

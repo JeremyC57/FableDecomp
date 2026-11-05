@@ -1,5 +1,6 @@
 // CWorld::PostInit(CDisplayEngine& displayEngine) -- second-stage world set-up with loading-screen progress: create the atmos processor, the game script interface, the script info manager (and initialise it), the global quest manager, hand the world to the 3D engine, create the music manager, then refresh the sound manager's ambient/music/voice categories
 // Leaf: ?PostInit@CWorld@@UAEXAAVCDisplayEngine@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A6550, 623 bytes (+ int3 padding), `ret 4` (virtual; FableWin.pdb / Ego_r.pdb
 //   ?PostInit@CWorld@@UAEXAAVCDisplayEngine@@@Z).
 // Callees: CCharString 0x0099EBF0 / 0x0099EAE0, NProfileTimer::StartProfile 0x009D8240 and NProgressDisplay::DisplayProgress
@@ -26,7 +27,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 class CMainGameComponent;
 class CPlayerManager;
 class CGameDefinitionManager;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CWorld;
 class CDisplayEngine;
 
@@ -56,14 +57,6 @@ public:
     CQuestManager(CWorld& world, CScriptInfoManager& scriptInfo, CGameScriptInterface& gameScript);   // 0x004B4590
 };
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    CCPPointerInfo* Info;
-    void Reset(T* data);                               // out of line per T
-    T* operator->() const { return Data; }
-    T& operator*() const { return *Data; }
-};
 template <class T> class scoped_ptr {
 public:
     T* ptr;

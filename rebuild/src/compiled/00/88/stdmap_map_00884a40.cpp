@@ -1,5 +1,6 @@
 // std::map::map(const map& x) -- (map<CThing*, NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CThingGraphicByPassFlagState>) STLport copy constructor with the _Rb_tree copy inline: zero the header proxy, malloc the 0x20-byte header node, then either the empty initialisation (root 0, leftmost = rightmost = header) or the out-of-line _M_copy of x's root with leftmost / rightmost found by walking it; copy the node count
 // Leaf: ??0?$map@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00884A40, 161 bytes (+ int3 padding), thiscall, `ret 4`, returns this.
 // Identity: map<CThing*, NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CThingGraphicByPassFlagState> -- proven; evidence: its _M_copy 0x00884490 is the landed map<CThing*, CThingGraphicByPassFlagState>::_M_copy (NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::reset, Ego_r.pdb; 0x20-byte nodes, CIntelligentPointer<CThing> copies); callers: CScreenEffectPriorityStack code 0x00881C90 / 0x00884BE0 / 0x00884D40; FableWin.pdb names ??0?$map@PAVCThing@@VCThingGraphicByPassFlagState@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@...@QAE@ABV01@@Z.
 // Label: the manifest's "LTextTreeWalkThrough_Copy_Init" is propagated across byte-identical bodies (the eight rows differ only in the header
@@ -17,12 +18,8 @@
 extern "C" void* __cdecl malloc(size_t size);           // 0x00BFEA0E
 class CThing;
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                 // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();
-    void* PItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 namespace NScreenEffect {
 class CScreenEffectPriorityStack {

@@ -1,5 +1,6 @@
 // CTCNoise::~CTCNoise() -- implicit destructor: Creator, then the embedded Definition (CTCNoiseDef: the inline def-chain destructors down to ~CDefPointeeBase's vtable reset and ~CResource), then ~CTCBase
 // Leaf: ??1CTCNoise@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749A70, 33 bytes, thiscall; `call ~CResource` 0x009FC550 on +0x0C, tail `jmp ~CTCBase`
 //   0x00686830.
 // Identity (proven, two sources): the only caller is the scalar deleting destructor 0x00749A50, slot 0 of vtable 0x01268A74 (RTTI
@@ -26,18 +27,8 @@ class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
 
-class CBaseIntelligentPointer {                             // vtable 0x0129C95C (vptr + PData, 8 bytes; 4-aligned members here, no pack needed)
-public:
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10 ??1CBaseIntelligentPointer@@UAE@XZ
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 enum ENoiseType;                                            // MS forward enum (Ego_r CTCNoiseDef::Type)
 

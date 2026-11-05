@@ -1,4 +1,5 @@
 // CFirePoint::CFirePoint(CThing* parentThing, const CCharString& helperName, long helperIndex, long effectIndex, long resistance) -- copy the helper name, store the indices, resistance and parent, clear Burning and FireDamageAfterFrame, construct the two effect pointers
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00781200, length 89 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30 (out of line: fable_string.h
 // would inline it, so the string is modelled locally), CBaseIntelligentPointer::CBaseIntelligentPointer()
@@ -20,23 +21,9 @@ class CCharString { public:
 };
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {      // vtable 0x01238C6C
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 
 struct CFirePoint {
     CCharString         HelperName;                         // +0x00

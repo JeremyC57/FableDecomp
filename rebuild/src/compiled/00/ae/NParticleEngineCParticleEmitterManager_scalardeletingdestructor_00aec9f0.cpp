@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitterManager::`scalar deleting destructor'(unsigned int flags) -- destroy the emitter manager (clear the active-emitter list, free its sentinel) and free it when bit 0 of the flags is set; returns this
 // Leaf: ??_GCParticleEmitterManager@NParticleEngine@@QAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEC9F0, 45 bytes, __fastcall `ret 4`.
 // Identity: FableWin.pdb `??_GCParticleEmitterManager@NParticleEngine@@QAEPAXI@Z` (non-virtual QAE: the class has no vtable,
 //   so this is the helper VC7.1 emits for a `delete` of the class; no live direct callers are needed for the COMDAT).
@@ -17,12 +18,7 @@ extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
 namespace NParticleEngine { class CParticleEmitter; }
 struct CCountBlock;
 
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                      // +0x0
-    CCountBlock* Block;                                     // +0x4
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator {

@@ -1,5 +1,6 @@
 // NThingShot::CTCShotDefinitionDrainLife::~CTCShotDefinitionDrainLife() -- kills the soul effect (+0xac) if it is still alive, then the member pointer and the CTCShotDefinitionBase base are destroyed
 // Leaf: ??1CTCShotDefinitionDrainLife
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BD80A, length 59 bytes; called from the scalar deleting destructor at
 // 0x004DB1A9.
 // Callees: IS_THING_ALIVE<CIntelligentPointer<...>>(const CIntelligentPointer&) @ 0x004CC340 (__fastcall: non-null item
@@ -16,12 +17,8 @@ class CThing { public:
     void Kill(bool immediately);             // 0x004C9B80
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                    // +4
-    virtual ~CBaseIntelligentPointer();              // 0x00A01C10
-    CBaseObject* GetPItem() const;           // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     virtual void v00();

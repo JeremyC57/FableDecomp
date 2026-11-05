@@ -1,5 +1,6 @@
 // NUISystem::CFrontEndManager::RefreshAvailableProfilesForDelete() -- rebuild the delete-profile screen's list: one button per saved profile, each carrying a "delete this profile" action; returns the profile count
 // Leaf: ?RefreshAvailableProfilesForDelete@CFrontEndManager@NUISystem@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00597006, 546 bytes, `ret`; frame-pointer size TU (`#pragma optimize("y", off)` + `("s", on)`).
 // Body: GetProfileNames(names) (0x005955AB, landed); the delete screen (m_mapScreens[21], map operator[] 0x0059B5D7)
 // drops its old "UI_FRONTEND_LIST_FOR_PROFILES_FOR_DELETE" child (FindChild, slot 3, CCharString by value; the child gets a
@@ -30,11 +31,7 @@ class CWideString {
 public:
     void* PStringData;
 };
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 namespace NUISystem {
 class CComponent;
@@ -71,20 +68,6 @@ public:
     CActionParamString(const CWideString& value);           // 0x0054DAE0
 };
 }
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(T* data);
-    ~CCountedPointer();
-    template <class U> __forceinline CCountedPointer(const CCountedPointer<U>& other) : Data(0), Info(0)
-    {
-        ShareData((T*)other.Data, other.Info);
-    }
-    void ShareData(T* data, CCPPointerInfo* info);
-    void Release();
-    T* operator->() const { return Data; }
-};
 namespace NUISystem { class CList; }
 // CCountedPointer<NUISystem::CList> (the instance the linker kept at 0x0059AA86 ShareData / 0x0059A994 Release): its
 // members are defined in this TU (out of line), so VC7.1 knows the list pointer never escapes and keeps Data in ebx.

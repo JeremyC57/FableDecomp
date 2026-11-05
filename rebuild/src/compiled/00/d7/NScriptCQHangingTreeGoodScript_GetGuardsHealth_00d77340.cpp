@@ -1,5 +1,6 @@
 // CQ_HangingTreeGoodScript::GetGuardsHealth() -- record the current health of every guard in GuardsHealthVector (stopping early if the script thread is terminating)
 // Leaf: ?GetGuardsHealth@CQ_HangingTreeGoodScript@NScript@@QAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb); the catalog carries the name; body unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D77340, 149 bytes (+ int3 padding).
 // Label correction: the manifest's "CEngineWorldMap::BuildAndSaveSea" is propagated. The body sits between the
@@ -18,11 +19,9 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CScriptThing { public:                                       // 12 bytes
-    void* _vptr;
-    void* m_pObject;
-    void* m_pCount;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 struct CGameScriptInterface_Calls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();

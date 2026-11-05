@@ -1,5 +1,6 @@
 // NInventory::CItem::RemoveItem(long count) -- take count items off the slot (never below zero); an emptied slot drops its per-item data and clears its type and average bought price
 // Leaf: ?RemoveItem@CItem@NInventory@@QAEXJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF00B, 49 bytes, thiscall `ret 4`; size-optimised TU (unaligned entry).
 // Identity (proven): FableWin.pdb ?RemoveItem@CItem@NInventory@@QAEXJ@Z; Ego_r.pdb CItem {ItemType, NumberOfItems,
 //   PPerItemData CCountedPointer<CPerItemData>, AverageBoughtPrice} (0x14 bytes) matches the +0 / +4 / +8 / +0x10 stores.
@@ -14,21 +15,8 @@ class CThing { public:
     unsigned short DefGlobalIndex;                      // +0x8C (Ego_r.pdb +0x9C, minus 0x10 for the retail containers)
     long GetDefGlobalIndex() const { return DefGlobalIndex; }
 };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 namespace NInventory { class CPerItemData; }
-template <class T> class CCountedPointer { public:
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    void ReleaseData();                                 // releases the count block and clears Data / Info
-    void Reset(T* data)
-    {
-        ReleaseData();
-        Data = data;
-        if (data)
-            Info = MakeInfo(data);
-    }
-    static CCPPointerInfo* MakeInfo(T* data);
-};
 namespace NInventory {
 class CItem {
 public:

@@ -1,5 +1,6 @@
 // CAIStateGroup_RecoverStealableItem::CAIStateGroup_RecoverStealableItem() -- base ctor, own vtable, three intelligent pointers, NeedsCleanup = false
 // Leaf: ??0CAIStateGroup_RecoverStealableItem
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x009015B9, 0x47 bytes. Manifest label "CAIStateGroup_TrollLarge_Constructor" (_global) is wrong: the vtable
 // stored at +0 is 0x0128CC9C, whose RTTI type descriptor reads `.?AVCAIStateGroup_RecoverStealableItem@@`.
 // Callees: CAIStateGroupBase::CAIStateGroupBase @ 0x008FD255 (out of line), CBaseIntelligentPointer::
@@ -23,16 +24,9 @@ class CAIStateGroupBase { public:
     CAIStateGroupBase();                        // 0x008FD255
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual void v00();
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-};
 
 struct CAIStateGroup_RecoverStealableItem : CAIStateGroupBase {
     CIntelligentPointer<CThing>       PStealableItem;           // +0x14

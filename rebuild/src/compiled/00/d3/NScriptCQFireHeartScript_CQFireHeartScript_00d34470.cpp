@@ -1,5 +1,6 @@
 // CQ_FireHeartScript::CQ_FireHeartScript(void* data, CGameScriptInterface* game) -- quest-script constructor: script base, data/interface pair, vtable 0x012CCB90, the two empty cutscene maps, empty effect handle and FX strings, the empty bool/thing/handle/pattern vectors, three empty scripted-thing handles, an empty comment string and escape marker
 // Leaf: ??0CQ_FireHeartScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 22 (c689 deferral): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (void*,
 //   CGameScriptInterface*), as the landed CQ_HangingTreeGoodScript ctor 0x00D6EF20 has it; name-only (one pushed pointer each).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D34470, 489 bytes (496 with padding), `ret 8`; the 0x1A4-byte object is built by
@@ -31,7 +32,7 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CScriptThing* Data;                              // +0
     CCPPointerInfo* Info;                            // +4
@@ -48,11 +49,6 @@ class CCharString { public:
 };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-template <class T> class CCountedPointer { public:
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 template <class P> struct CAllocProxy {                 // STLport _STLP_alloc_proxy<P, ...> over an empty allocator

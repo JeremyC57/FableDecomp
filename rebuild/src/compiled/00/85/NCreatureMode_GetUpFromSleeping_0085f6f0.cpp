@@ -1,5 +1,6 @@
 // NCreatureMode::GetUpFromSleeping(CThingCreatureBase& creature, CThing& bed, const CCharString& animation, CAIBrain* brain) -- get a creature out of bed: while it is in the sleep-in-bed mode, leave that mode with a get-out-of-bed action (true); otherwise, when the creature is free to act, post the action through its brain (or set it directly without one) and return false
 // Leaf: ?GetUpFromSleeping@NCreatureMode@@YI_NAAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@PAVCAIBrain@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085F6F0, 320 bytes (+ int3 padding), /Gr __fastcall (creature in ecx, bed in edx;
 //   animation and brain on the stack), `ret 8`.
@@ -38,21 +39,8 @@ class CCreatureActionBase { public:                            // retail 0xa8 by
 };
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThingCreatureBase;
 class CCreatureAction_GetOutOfBed : public CCreatureActionBase { public:

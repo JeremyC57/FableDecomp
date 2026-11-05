@@ -1,5 +1,6 @@
 // CGraphicFrameData::~CGraphicFrameData() -- uninitialise if still initialised, then release the texture counted pointer
 // Leaf: ??1CGraphicFrameData@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x0041BDB0, 60 bytes, `ret`, no direct reference (reached from the ??_G / array helpers).
 // Catalog label CGraphicFrameData::`scalar_deleting_destructor' names the wrong special member: nothing is freed and
 // there is no flags argument; this is the plain destructor (the Ego_r.pdb ??_GCGraphicFrameData@@QAEPAXI@Z wraps it).
@@ -10,30 +11,7 @@
 // TLX/TLY/Width/Height/Pitch +0x10..+0x18, bitfield byte +0x1a (Alpha, BooleanAlpha, UsesSurface, SectionOfTPage,
 // IsInitialised, ScreenGraphic); no engine/ header.
 class CTexture;
-class CCPPointerInfo { public:
-    long  RefCount;
-    void  (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info)
-        {
-            --Info->RefCount;
-            if (Info->RefCount == 0)
-            {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CGraphicFrameData {
 public:
     unsigned long             ReferenceCount;            // +0x00

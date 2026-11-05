@@ -1,5 +1,6 @@
 // CTCInventoryStats::AddHeroAbility(NUISystem::CComponent* parent, EHeroAbility ability, float& yPos) -- add one hero ability row to the stats screen: a tick slider named after the ability, showing its current level, its possible level-up and its maximum, coloured by the ability; a slider for an ability the hero lacks is dimmed; the next row goes 30 pixels lower
 // Leaf: ?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@NUISystem@@W4EHeroAbility@@AAM@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005D64DD, 477 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on)
 //   (packed odd address, `push imm ; pop edi`, `leave`), as the landed CTCInventoryStats::InitialiseMannequin 0x005CD767.
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@NUISystem@@W4EHeroAbility@@AAM@Z;
@@ -75,15 +76,7 @@ public:
     float R, G, B, A;
     CRGBFloatColour(float r, float g, float b, float a) : R(r), G(g), B(b), A(a) { }
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    ~CCountedPointer();                                       // 0x004291DE
-    void Reset(T* data);                                      // 0x00429C6F
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 #define CManager CManagerLayout
 #include "engine/CManager.h"

@@ -1,5 +1,7 @@
 // NScript::CQ_TraderConflictEvilScript::CIsAGuard::Main() -- trader-conflict guard: until the player is engaged, each frame either hurts itself (ModifyThingHealth 40) when hit by something other than the hero (a hero special ability other than 14 counts as the hero), or flags PlayerEngaged when the hero hits it or comes within 15 units; then idles until terminated
 // Leaf: Main
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first); the local's flattened PImp_Data / PImp_Info reads are the header's by-value PImp (CCountedPointer<CScriptThing>) .Data / .Info (+0x04 / +0x08); MsgIsHitBySpecialAbilityFrom takes EHeroAbility (slot 41, 0x004AAD20: ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z in Ego_r.pdb and FableWin.pdb); the literal 14 is HERO_ABILITY_HEAL_LIFE_SPELL (engine/EHeroAbility.h, Ego_r enum); engine/EHeroAbility.h included (Ego_r enum EHeroAbility).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF9710, 736 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0, IsDistanceBetweenThingsUnder 0x00CBE2FF
@@ -13,23 +15,10 @@
 //   stores the result byte and destroys the temporaries before the branch.
 class CCharString;
 struct CScriptThingImpl;
-class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
- virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
- virtual bool IsAwareOfHero() const;              // slot 16 (+0x40) 0x004AAAC0
- virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
- virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
- virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
- virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37();
- virtual void v38(); virtual void v39(); virtual void v40();
- virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& name) const;   // slot 41 (+0xa4)
- virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;           // slot 42 (+0xa8)
- CScriptThingImpl* PImp_Data;
- void* PImp_Info;
- CScriptThing(const CScriptThing& other);   // 0x004ABE90
- virtual ~CScriptThing();                           // 0x004AA840
- bool IsAlive() const;                      // slot 75, inlined below
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/EHeroAbility.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CScriptThingImpl {
  virtual void s00();
  virtual void s01();
@@ -108,7 +97,7 @@ struct CScriptThingImpl {
  virtual void s74();
  virtual bool IsAlive() const;                     // slot 75 (+0x12c)
 };
-inline bool CScriptThing::IsAlive() const { return PImp_Data && PImp_Data->IsAlive(); }
+inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
@@ -989,7 +978,6 @@ class CCharString { public:
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
  ~CCharString();                                    // 0x0099EAE0
 };
-template <class T> class CCountedPointer { public: void* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
@@ -1022,10 +1010,10 @@ void CIsAGuard::Main()
   while (!ParentClass->PlayerEngaged) {
    Game->NewScriptFrame();
    if (IsActiveThreadTerminating()) return;
-   if (Me.MsgIsHitBy("") && !Me.MsgIsHitBy("SCRIPT_NAME_HERO") && (!Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") || Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
+   if (Me.MsgIsHitBy("") && !Me.MsgIsHitBy("SCRIPT_NAME_HERO") && (!Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") || Me.MsgIsHitBySpecialAbilityFrom(HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO"))) {
     if (IsActiveThreadTerminating()) return;
     Game->ModifyThingHealth(Me, 40.0f, false);
-   } else if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
+   } else if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO"))) {
     if (IsActiveThreadTerminating()) return;
     ParentClass->PlayerEngaged = true;
    }

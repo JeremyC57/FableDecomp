@@ -1,5 +1,6 @@
 // CAIStateGroup_MinionReactToCrime::CAIStateGroup_MinionReactToCrime() -- construct the state group: base CAIStateGroupBase, own vtable, the ForceOpenBuilding tracked pointer
 // Leaf: ??0CAIStateGroup_MinionReactToCrime@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00900B41, 36 bytes, thiscall, `ret`; a size-optimised TU packed without padding (the
 //   previous function, the MinionReactToNoise ??_G, ends with `ret 4` at 0x00900B3E), so the unaligned start is a real one.
 // Identity (proven): stores the CAIStateGroup_MinionReactToCrime vtable 0x0128C558 (RTTI .?AVCAIStateGroup_MinionReactToCrime@@;
@@ -39,17 +40,8 @@ public:
 class CBaseObjectPointer;
 class CThingBuilding;
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                          // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-    virtual ~CIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 class CAIStateGroup_MinionReactToCrime : public CAIStateGroupBase {   // vtable 0x0128C558

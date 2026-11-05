@@ -1,5 +1,6 @@
 // CSprite::DrawWithRenderManager() -- draw the sprite's graphic scaled into its render box (optionally centred) through the 2D render manager
 // Leaf: DrawWithRenderManager
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail 0x0041A980, 377 bytes. Callees: the sprite's virtual IsCentred (slot 106, +0x1A8), GFAXToVX 0x009E1DA0 /
 // GFAYToVY 0x009E1DD0 (Ego_r __fastcall float), NUISystem::CManager::GetInstance 0x0041E5F2 (graphic bank counted pointer at +0x10),
 // GFGetSystemManager 0x009A4EC0 (render manager +0x60, 2D manager +8), CRenderManager2D::Draw2DScaledGraphic 0x009DD210,
@@ -31,23 +32,7 @@ class C2DBoxF { public:
         TLY = tl.Y;
     }
 };
-struct SCountBlock {
-    long  m_references;                            // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
-template <class T> class CCountedPointer { public:
-    T*           Data;
-    SCountBlock* Info;
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->m_references; }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->m_references == 0) {
-            Info->m_pfnDestroy(Info->m_pObject);
-            operator delete(Info);
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class CGraphicDataBank;
 float __fastcall GFAXToVX(float);                 // 0x009E1DA0
 float __fastcall GFAYToVY(float y);                 // 0x009E1DD0

@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_unique(const value_type& v) -- (map<unsigned __int64, CIntelligentPointer<CThing> >) STLport 4.6 unique insert: descend comparing the 64-bit keys, step back once through the out-of-line operator-- unless at begin(), insert through _M_insert when the key is new; {iterator, inserted} through the hidden pointer
 // Leaf: ?insert_unique@?$_Rb_tree@_KU?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@U?$_Select1st@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@@2@@std@@_N@2@ABU?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@2@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00784040, 198 bytes (+ int3 padding), thiscall, `ret 8` (hidden pair result + value
 //   reference).
 // Identity (proven): std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CIntelligentPointer<CThing> >, _Select1st<...>, less<unsigned __int64>,
@@ -10,12 +11,8 @@
 //   auto_inline(off) as in agent951 G006), _M_insert(x, y, v, w) 0x00783F00 (thiscall, `ret 14h` with the hidden result).
 // Model: agent951 G006 (0x00514C10, set<unsigned long>) with the 64-bit key: less<unsigned __int64> inline (high halves, then low).
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                            // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    void* PData;                                           // +0x04 (CBaseObjectPointer*)
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CThing;
 namespace std {

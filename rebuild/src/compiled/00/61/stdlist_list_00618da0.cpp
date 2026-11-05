@@ -1,5 +1,6 @@
 // std::list::list(const list& x) -- (list<CIntelligentPointer<CThing> >) STLport copy constructor: zero the node proxy, malloc the 0x10-byte sentinel and link it to itself, then insert(begin(), x.begin(), x.end()) through the out-of-line _M_insert_dispatch
 // Leaf: ??0?$list@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00618DA0, 63 bytes (+ int3 padding to 64), thiscall, `ret 4`, returns this.
 // Identity: list<CIntelligentPointer<CThing> > -- proven; evidence: its _M_insert_dispatch 0x00618100 constructs each node's element through CBaseIntelligentPointer 0x00A01B10, stores vtable 0x01238C6C (.?AV?$CIntelligentPointer@VCThing@@@@) and copies through GetPItem/SetPItem 0x00A01B50/0x00A01B90; callers CAIStateGroup_BanditSitRoundCampfire 0x0093AA40 and the WorkSawingWood / WorkHammerAnvil IsRunnable 0x00944730 / 0x00944E80; Ego_r.pdb name set holds ??0?$list@V?$CIntelligentPointer@VCThing@@@@...@QAE@ABV01@@Z.
 // Label: the manifest's "Linked_List_Initialize" is propagated across byte-identical bodies; this is the STLport 4.6 list copy
@@ -15,11 +16,8 @@
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);           // 0x00BFEA0E
 class CThing;
-template <class T> class CIntelligentPointer {   // 8 bytes; vtable 0x01238C6C .?AV?$CIntelligentPointer@VCThing@@@@
-public:
-    virtual ~CIntelligentPointer();
-    T* Data;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> class allocator {

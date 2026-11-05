@@ -1,4 +1,5 @@
 // CGameScriptInterface::SetRegionExitAsActive(const CScriptThing& thing, bool active) const -- when the valid script thing holds a region-exit component (kind 100: +0x2c bit 4), set the active byte (+0xc) of the object at the thing's +0x5c and refresh the player GUI (global 0x013B8790, 0x004378C0 with 0)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089EEC0, length 64 bytes.
 // Callees: the script thing's slots 75 (+0x12c) and 11 (+0x2c), the player-GUI refresh @ 0x004378C0 (on the global object; the label "_Cons_val<...>" is propagated).
 // Shape: no map lookup (the object pointer sits at +0x5c), the kind mask test folded to `test byte ptr [eax+2Ch],10h`, `ret 8`.
@@ -54,8 +55,7 @@ class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);          // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

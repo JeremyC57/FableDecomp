@@ -1,28 +1,14 @@
 // CAIStateGroup_CreatureTakeCover::IsRunnableLeaf() -- gate on the projectile-carrying module, then require a live target outside melee, a projectile weapon, and the cover-base leaf check.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1), @0x00979D80, 258 bytes.
 // Callees: CAIStateGroupBase::GetWorld @0x008FCFC0; NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable @0x00982890 (temporary vtable 0x0128FFD4); CBaseIntelligentPointer::GetPItem @0x00A01B50; IsInMeleeWithCombatWheelAttackers @0x00979910; CVectorMap::LowerBound @0x004365B0; CTCCarrying::GetThingInPrimarySlot @0x006A1440; CTCWeapon::IsProjectileWeapon @0x005DAA40; qualified base IsRunnableLeaf @0x00970F30.
 // The PDB header only exposes a flattened 0x50-byte base area. The fields at +0x14/+0x1f and inherited call behavior follow the landed CreatureTakeCover/CreatureUseCoverBase relatives. GetInterface inlines the presence-bit test at +0x28, then searches the sorted component map.
 class CThing;
 
 class CBaseObject;
-struct CBaseIntelligentPointer
-{
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{ public:
-    virtual void v00();
-    CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
-    T* Get() const { return (T*)GetPItem(); }
-};
 
 class CTCBase;
 

@@ -1,5 +1,6 @@
 // std::_Rb_tree::erase(iterator position) -- (_Rb_tree<EUnprovenKey_00883b70, pair<const EUnprovenKey_00883b70, CIntelligentPointer<CUnprovenThing_00883b70> > >) STLport 4.6 single-node erase: unlink the node through _Rebalance_for_erase (root / leftmost / rightmost kept), destroy its value, free it and decrement the count
 // Leaf: ?erase@?$_Rb_tree@W4EUnprovenKey_00883b70@@U?$pair@$$CBW4EUnprovenKey_00883b70@@V?$CIntelligentPointer@VCUnprovenThing_00883b70@@@@@std@@U?$_Select1st@U?$pair@$$CBW4EUnprovenKey_00883b70@@V?$CIntelligentPointer@VCUnprovenThing_00883b70@@@@@std@@@3@U?$less@W4EUnprovenKey_00883b70@@@3@V?$allocator@U?$pair@$$CBW4EUnprovenKey_00883b70@@V?$CIntelligentPointer@VCUnprovenThing_00883b70@@@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBW4EUnprovenKey_00883b70@@V?$CIntelligentPointer@VCUnprovenThing_00883b70@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EUnprovenKey_00883b70@@V?$CIntelligentPointer@VCUnprovenThing_00883b70@@@@@std@@@2@@2@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00883B70, 66 bytes (+ int3 padding to 80), thiscall `ret 4` (the iterator by value).
 // Identity (descriptive): _Rb_tree<EUnprovenKey_00883b70, pair<const EUnprovenKey_00883b70, CIntelligentPointer<CUnprovenThing_00883b70> > >; evidence: it destroys an intelligent pointer at +0x14 (a 4-byte key before it); no call, jump or data reference reaches this address and neither PDB has a map from a 4-byte key to CIntelligentPointer<T>, so key and pointee are named descriptively
 // Label: the manifest's "CMemoryPoolAllocator_Deallocate_WithDtor" is propagated (family H065: six erase(iterator) bodies that differ only in the value
@@ -11,12 +12,8 @@
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 enum EUnprovenKey_00883b70 { };                       // descriptive: a 4-byte key
 class CUnprovenThing_00883b70;                       // descriptive: the pointee
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void* PData;                                        // +4
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 

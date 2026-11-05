@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> > node insert: create a node for v, link it left or right of y, fix root/leftmost/rightmost, rebalance, count, return the iterator
 // Leaf: ?_M_insert@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C32B0, 259 bytes, thiscall `ret 14h` (the hidden iterator result pointer
 //   first, then x, y, &v, w).
 // Identity: the catalog's "TreeSet_InsertStringKey2" is a descriptive auto label. The tree is
@@ -39,16 +40,8 @@ public:
     }
 };
 
-class CCPPointerInfo { public:                                     // the shared count block
-    long RefCount;                                          // +0x00
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
 
 class C3DSkeletalMorphTarget;
 

@@ -1,5 +1,6 @@
 // NScript::CQ_HeroSoulsGuildmasterScript::CMuteGuardOutsideWoods::Main() -- a mute guard outside the Guildmaster's woods: alive filter on Me, scripted control (priority 4, retried each frame), then idle until the hero hits him (directly, or with any special ability but number 14) or the outside-wood guards are already attacking; then raise the attack flag, target the hero and drop scripted control
 // Leaf: ?Main@CMuteGuardOutsideWoods@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first); MsgIsHitBySpecialAbilityFrom takes EHeroAbility (slot 41, 0x004AAD20: ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z in Ego_r.pdb and FableWin.pdb); the literal 14 is HERO_ABILITY_HEAL_LIFE_SPELL (engine/EHeroAbility.h, Ego_r enum); engine/EHeroAbility.h included (Ego_r enum EHeroAbility).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D86150, 563 bytes (+ int3 padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
 //   CBaseObject ctor 0x0099A380, the scripted-thing handle's IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0,
@@ -19,25 +20,12 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void s000();   // slot 0 (+0x0)
-    virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007(); virtual void s008();
-    virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016();
-    virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
-    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
-    virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025(); virtual void s026(); virtual void s027(); virtual void s028(); virtual void s029();
-    virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034(); virtual void s035(); virtual void s036(); virtual void s037();
-    virtual void s038(); virtual void s039(); virtual void s040();
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/EHeroAbility.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
@@ -110,7 +98,7 @@ void NScript::CQ_HeroSoulsGuildmasterScript::CMuteGuardOutsideWoods::Main()
     if (IsActiveThreadTerminating()) return;
     while (!(Me.MsgIsHitBy("SCRIPT_NAME_HERO")
              || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
-                 && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))
+                 && !Me.MsgIsHitBySpecialAbilityFrom(HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO"))
              || ParentClass->OutsideWoodGuardsAttack)) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating()) return;

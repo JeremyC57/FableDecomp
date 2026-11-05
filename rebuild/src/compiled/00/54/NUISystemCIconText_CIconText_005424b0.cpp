@@ -1,5 +1,6 @@
 // NUISystem::CIconText::~CIconText() -- clear the text and drop-shadow primitive handles and every icon handle, drop the font, release the def's font from the font manager, then the members and the changing-state component base
 // Leaf: ??1CIconText@NUISystem@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005424B0, 627 bytes, `ret`. FableWin.pdb ??1CIconText@NUISystem@@UAE@XZ; vtables
 //   0x012470CC / 0x012470A8 / 0x012470A0 (RTTI NUISystem::CIconText at +0 / +4 / +0x18: CUIInterface, CObserver, CActionParam).
 // Callees: CEnginePersistentPrimitiveBase::NotifyReleased (virtual slot 3) and CIVCountedPointeeBase::Delete (slot 1) through
@@ -127,40 +128,7 @@ public:
     }
 };
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-    CCPPointerInfo(unsigned long refCount, void (__fastcall* deleteFunc)(void*), void* data)
-        : RefCount(refCount), DeleteFunc(deleteFunc), Data(data) { }
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer() { ReleaseData(); }
-    void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    void Reset(T* data)
-    {
-        ReleaseData();
-        Data = data;
-        if (data)
-            Info = new CCPPointerInfo(1, DeleteData, Data);
-    }
-    static void __fastcall DeleteData(void* data);
-};
+#include "engine/CCountedPointer.h"
 class CFontBank;
 
 class CDefPointeeBase : public CIVCountedPointeeBase { };

@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_insert(_Base_ptr x, _Base_ptr y, const value_type& v, _Base_ptr w) -- link a new node of the screen-filter bypass map under y (left when y is the header, w is null and x is set or v sorts first), fix the header links, rebalance, count
 // Leaf: ?_M_insert@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008843F0, length 153 bytes (`ret 14h`: the hidden iterator + four arguments).
 // Identity: `map<CThing*, CThingGraphicByPassFlagState>` = NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry
 //   ::reset (Ego_r.pdb); nine callers in the insert_unique / hinted insert bodies 0x00884560.. (landed 0x00884560 calls
@@ -16,22 +17,9 @@ class CBaseObject;
 class CThing;
 
 #pragma pack(push, 1)                                   // retail packs CIntelligentPointer (CThingGraphicArgPasser is 9 bytes)
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-private:
-    void* PData;                                        // +4
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>: vtable 0x01238C6C
-public:
-    CIntelligentPointer() { SetPItem(0); }
-    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-};
 
 namespace NScreenEffect {
 class CScreenEffectPriorityStack {

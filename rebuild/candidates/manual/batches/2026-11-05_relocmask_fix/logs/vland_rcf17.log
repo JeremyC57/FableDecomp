@@ -1,0 +1,13 @@
+addr       parity           behav  name
+009f1720   MATCH            PASS   Clear
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CGameEventPackageSet
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004aeaa0   WARN SHARED_HEADER_AVAILABLE CNetworkClient
+004aeaa0   WARN RELOC_NAME: ?Clear@CGameEventPackage@@QAEXXZ -> 009f16c0 labelled '_global::SetMemberConst_009f16c0'
+004aeaa0   RELOCATION_MATCH PASS   GetLocalGameEventPackageSet
+
+WINS: 2
+  009f1720 MATCH CGameEventPackageSet::?Clear@CGameEventPackageSet@@QAEXXZ
+  004aeaa0 RELOCATION_MATCH CNetworkClient::GetLocalGameEventPackageSet
+elapsed 3s rc=0

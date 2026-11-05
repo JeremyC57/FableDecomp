@@ -1,5 +1,6 @@
 // std::find(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CThing* const& val) -- STLport find: forward to __find with the random-access iterator tag
 // Leaf: ??$find@PAV?$CIntelligentPointer@VCThing@@@@PAVCThing@@@std@@YIPAV?$CIntelligentPointer@VCThing@@@@PAV1@0ABQAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x006E6950, 18 bytes, /Gr `__fastcall` (first ecx, last edx, the value reference on the stack):
 // `lea eax,[esp+4] ; push eax ; mov eax,[esp+8] ; push eax ; call 0x006E66E0 ; ret 4`.
 // Identity (probable): STLport 4.6 `find(__first, __last, __val)` = `__find(__first, __last, __val,
@@ -11,11 +12,8 @@
 // (`lea eax,[esp+4]`), as retail does; it needs a user constructor or VC7.1 zero-stores it.
 class CBaseObject;
 class CThing;
-class CBaseIntelligentPointer { public:
-    CBaseObject* PItem;                             // +0x00
-    void*        PNext;                             // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 

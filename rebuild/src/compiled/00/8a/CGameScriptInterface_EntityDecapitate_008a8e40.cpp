@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntityDecapitate(const CScriptThing& thing) const -- for a valid thing holding interface 0xd1 and the right flags, make a decapitation action its current action
 // Leaf: ?EntityDecapitate@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x008A8E40, 98 bytes, `ret 4`; Ego_r.pdb same symbol.
 // Body: if thing.IsAlive() (slot 75, +0x12c): t = thing.GetPThing() (slot 11); if t holds interface 0xd1 (bit 17 of
 // UsingComponents word 6, +0x38), any of bits 0..3 of the +0x6c flag byte, and bit 1 of the +0xbc flag byte:
@@ -36,8 +37,7 @@ class CThingCreatureBase : public CThing { public:
 struct CCreatureAction_Decapitate : CCombatActionBase {       // retail sizeof 0x114 (name not recovered)
     CCreatureAction_Decapitate(CThing* victim);          // 0x0066A560
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

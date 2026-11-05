@@ -1,10 +1,10 @@
 // 00aca450 QuadricOptimiserInternals::COptimisedVertex::UpdatePairContractions
 // Flags: /O2 /Oy /W3
 // Leaf: UpdatePairContractions
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 #include <stdlib.h>
 namespace X_00aca450 {
-struct CCPPointerInfo {unsigned RefCount;void(__fastcall*DeleteFunc)(void*);void*Data;};
-template<class T>struct CCountedPointer{T*Data;CCPPointerInfo*Info;__forceinline CCountedPointer():Data(0),Info(0){}__forceinline CCountedPointer(const CCountedPointer&o):Data(o.Data),Info(o.Info){if(Info)++Info->RefCount;}__forceinline ~CCountedPointer(){if(Info&&--Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}Data=0;Info=0;}};
+#include "engine/CCountedPointer.h"
 namespace QuadricOptimiserInternals {
 struct CSubContraction {unsigned Index1,Index2;};
 // Layout: contraction Exists0,Unsplit1,SubContractions first4/finish8/end12; only first is read.

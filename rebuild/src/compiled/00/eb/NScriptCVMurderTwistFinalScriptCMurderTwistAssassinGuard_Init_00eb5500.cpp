@@ -1,5 +1,6 @@
 // NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard::Init() -- once the final murder-twist quest is under way, an assassin guard is fixed in place (not pushable, no movement in actions, unkillable, undamageable), looks at the hero, is friends with everything and persists; otherwise he is removed
 // Leaf: ?Init@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB5500, 207 bytes (`ret`).
 // Callees (CGameScriptInterface virtuals, slot / address): RemoveThing 108 0x008910D0, SetIsThingForcePushable 745 0x0088F9F0,
 // SetIsPushableByHero 844 0x008A6DD0 (CScriptThing by value, built in the argument area with add-ref),
@@ -13,12 +14,7 @@
 // Shape: early-out `return` arm laid out first; the zero arguments are immediates here (ebx holds the cached vtable).
 // Naming wave 35: identity reg 00eaeb95 "MurderTwistAssassinGuard" in 00eaea20; Alloc 00eb5450; vtable 012f036c slot 2; PDB ?Init@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CMurderTwistAssassinGuard::Init (wave3/labels_alloc.tsv); PDB ?Init@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CMurderTwistAssassinGuard@@QAEXXZ`; this source now defines the PDB member (outer stand-in CV_MurderTwistFinalScript moved into NScript); same bytes.
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CScriptThingImp;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

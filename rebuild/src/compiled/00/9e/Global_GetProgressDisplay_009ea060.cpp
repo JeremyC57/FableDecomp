@@ -11,6 +11,7 @@
 // result from the two words through a separate two-argument constructor hoists the Info load
 // above the Data store (26 v 28), so the global must be the counted-pointer object itself.
 // Leaf: ?GetProgressDisplay@NProgressDisplay@@YI?AV?$CCountedPointer@VCAProgressDisplay@@@@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 
 class CAProgressDisplay;
 
@@ -23,21 +24,7 @@ struct FableReferenceCount              // CCountedPointer count block
     void* object;                       // +0x08
 };
 
-template <class T>
-class CCountedPointer
-{
-public:
-    T* Data;                            // +0x00
-    FableReferenceCount* Info;          // +0x04
-
-    CCountedPointer(const CCountedPointer& other)
-        : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->owners;
-    }
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 
 namespace NProgressDisplay
 {

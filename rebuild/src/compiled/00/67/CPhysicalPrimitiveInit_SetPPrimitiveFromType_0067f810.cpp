@@ -1,5 +1,6 @@
 // CPhysicalPrimitiveInit::SetPPrimitiveFromType(long) -- finds the registered prototype primitive whose type matches, stores a clone of it in PPrimitive and returns true (false when none matches)
 // Leaf: SetPPrimitiveFromType
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0067F810, 90 bytes (+6 int3 padding).
 // Callees: prototype vtable slot 3 (`call [eax+0Ch]`, the type) and slot 1 (`call [edx+4]`, a
 // clone), 0x0067FC10 CCountedPointer<CPhysicalPrimitiveBase>::Reset(CPhysicalPrimitiveBase*).
@@ -17,12 +18,7 @@ struct CPhysicalPrimitiveBase {
     virtual long GetType() const;                     // slot 3
 };
 
-template <class T> class CCountedPointer { public:
-    T*    m_pObject;                       // +0
-    void* m_pCount;                        // +4
-    T* operator->() const { return m_pObject; }
-    void Reset(T* object);                 // 0x0067FC10 for CPhysicalPrimitiveBase
-};
+#include "engine/CCountedPointer.h"
 
 struct CPrototypeVector {
     CCountedPointer<CPhysicalPrimitiveBase>* m_pFirst;
@@ -41,7 +37,7 @@ bool CPhysicalPrimitiveInit::SetPPrimitiveFromType(long type)
 {
     for (CCountedPointer<CPhysicalPrimitiveBase>* it = g_PrimitivePrototypes.m_pFirst;
          it != g_PrimitivePrototypes.m_pLast; ++it) {
-        CPhysicalPrimitiveBase* prototype = it->m_pObject;
+        CPhysicalPrimitiveBase* prototype = it->Data;
         if (prototype->GetType() == type) {
             PPrimitive.Reset(prototype->Clone());
             return true;

@@ -1,5 +1,6 @@
 // CTCEntityEvents::GetEvent(TEvent** out, const TFilter& filter) const [TEvent = NEntityEvents::CEventHitBy, TFilter = NEntityEvents::CIsHitEventHitBy] -- the newest CEventHitBy event (type 0x1) whose hitting thing is the held one
 // Leaf: GetEvent
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FCE10, 141 bytes (`ret 8`, bool in al).
 // Callees: GetType (vtable slot 1), the filter callees named below, the count block DeleteFunc, operator delete 0x00BFE9BC.
 // Model: `this` is engine/CTCEntityEvents.h (Events +0x0c, opaque there: read through the local STLport list model);
@@ -12,28 +13,7 @@
 void __cdecl operator delete(void* block);            // 0x00BFE9BC
 
 // CCountedPointer<T>: the object and its shared count block {RefCount, __fastcall DeleteFunc(Data), Data}.
-class CCPPointerInfo { public:
-    long  RefCount;                                   // +0x00
-    void (__fastcall* DeleteFunc)(void* data);        // +0x04
-    void* Data;                                       // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                             // +0x00
-    CCPPointerInfo* Info;                             // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            delete Info;
-        }
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 // Retail CThing (local model: retail sits 0x10 below Ego_r.pdb from ThingTypeFlags on):
 // DefGlobalIndex +0x8c [PDB +0x9c], the state bit byte +0x91 [PDB +0xa1] (Dead = 0x01).

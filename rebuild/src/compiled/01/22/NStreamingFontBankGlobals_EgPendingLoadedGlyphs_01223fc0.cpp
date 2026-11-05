@@ -1,5 +1,6 @@
 // NStreamingFontBankGlobals::$E_g_PendingLoadedGlyphs() -- dynamic initializer of the 512 pending-glyph records: clear each record's counted glyph pointer, then register the array destructor with atexit
 // Leaf: _$E1
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountInfo (= CCPPointerInfo) members Count->RefCount, DeleteData->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01223FC0, 39 bytes, in `.text$yc`, reached from the .CRT$XCU table, plain `ret`.
 // Identity (proven): Ego_r.pdb / FableWin.pdb `NStreamingFontBankGlobals::dynamic initializer for 'g_PendingLoadedGlyphs'`;
 //   it registers the landed atexit destructor 0x0122A610 (NStreamingFontBankGlobals::DestroyPendingLoadedGlyphs, the
@@ -11,31 +12,8 @@
 //   storing only the counted pointer's two words; the plain members stay uninitialised.
 class CGlyphBlock;
 
-struct SCountInfo {
-    long  Count;                                   // +0x00
-    void (__fastcall* DeleteData)(void* object);   // +0x04
-    void* Object;                                  // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*          Data;                              // +0x00
-    SCountInfo* Info;                              // +0x04
-    CCountedPointer() : Data(0), Info(0) {}
-    ~CCountedPointer() { ReleaseData(); }
-    void ReleaseData()
-    {
-        if (Info) {
-            --Info->Count;
-            if (Info->Count == 0) {
-                Info->DeleteData(Info->Object);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 namespace NStreamingFontBankGlobals {
 struct SPendingLoadedGlyph {                       // 16 bytes

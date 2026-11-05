@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureRangedCombat2::IsRunnable() -- the creature carries a projectile weapon and its attack component names a best target: remember it and require IsAbleToFire
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091EB60, length 198 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetWorld @ 0x008FCFC0, NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable
 // (slot 0 of vtable 0x0128FFD4 = 0x00982890, called through the vtable of the local), CVectorMap<ETCInterfaceType,
@@ -12,24 +13,9 @@
 class CThing;
 
 class CBaseObject;
-struct CBaseIntelligentPointer
-{
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{ public:
-    virtual void v00();
-    CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
-    T* Get() const { return (T*)GetPItem(); }
-};
 
 class CTCBase;
 

@@ -1,4 +1,5 @@
 // CAT_BanditAlly::SwitchBanditAllegience() -- script action: the bandit ally turns on the hero: clear its
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // "has information" flag, unset it and the hero as allies of each other, set them as enemies of each other (both
 // directions), remove the stored quest-info element, stop it following and disallow following the hero.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F079D0, length 162 bytes (+ int3 padding).
@@ -10,11 +11,9 @@
 // nested calls VC fetches the outer vtable (ebx) before evaluating the inner GetHeroThing and re-reads the
 // interface member afterwards; the (thing, hero) / (hero, thing) argument swaps follow right-to-left evaluation.
 // Layout: +4 interface, +8 CScriptThing (12 bytes), +0x24 the quest-info element id. Local model.
-class CScriptThing { public:
-    void* __vftable;
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

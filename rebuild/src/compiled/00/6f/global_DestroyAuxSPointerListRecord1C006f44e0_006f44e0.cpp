@@ -1,5 +1,6 @@
 // _global::DestroyAux_SPointerListRecord1C_006f44e0(SPointerListRecord1C*, SPointerListRecord1C*, const SFalseType&) -- STLport __destroy_aux: destroy every 28-byte record of [first, last)
 // Leaf: DestroyAux_SPointerListRecord1C_006f44e0
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F44E0, length 77 bytes.
 // Callees: ~CBaseIntelligentPointer @ 0x00A01C10, free @ 0x00BFEA14.
 // STLport `__destroy_aux(first, last, const __false_type&)` from a /Gr TU (__fastcall: first in ecx, last in
@@ -16,15 +17,8 @@ class CThing;
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct SPointerRecord1C {                                  // 28-byte inner record
     long                    m_data[5];                     // +0x00

@@ -1,5 +1,6 @@
 // CLHFile::Read(unsigned long block, unsigned long blockCount, unsigned long reserved, void* buffer, void* userData, LHA::CFileReadCallback* callback) -- queue an asynchronous block read of the open threaded file, completing through a one-shot CLHFileCompletionCallback
 // Leaf: ?Read@CLHFile@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADD240, 0xED bytes (+ int3 padding), thiscall, `ret 18h`, returns true when
 // the read was queued.
 // Identity: CLHFile vtable 0x0129F094 slot 1 (RTTI .?AVCLHFile@@ over LHA::CFile; slots 0 / 2 / 3 / 4 are the landed
@@ -45,13 +46,7 @@ public:
     unsigned long AddObject(const CThreadedFileObjectDesc& desc);   // 0x0098F350
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x0
-    CCPPointerInfo* Info;                                   // +0x4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace LHA {
 class CFileReadCallback {                                   // the LHA client's completion interface (name descriptive)

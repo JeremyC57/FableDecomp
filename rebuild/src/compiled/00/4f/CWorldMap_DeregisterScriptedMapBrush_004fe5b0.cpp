@@ -1,5 +1,6 @@
 // CWorldMap::DeregisterScriptedMapBrush(const CScriptedMapBrush& brush) -- forget a brush: find its name in the loaded-brush map and erase that node (rebalance, destroy the name, free the node, count down)
 // Leaf: ?DeregisterScriptedMapBrush@CWorldMap@@QAEXABVCScriptedMapBrush@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FE5B0, 82 bytes, `ret 4` (thiscall: brush). PDB name
 //   ?DeregisterScriptedMapBrush@CWorldMap@@QAEXABVCScriptedMapBrush@@@Z (Ego_r.pdb name set). Caller 0x00820E56, a CMap
 //   loop over its list<CScriptedMapBrush> (node data at +8) passing the world map. Catalog label
@@ -33,12 +34,7 @@ public:
     const CCharString& GetName() const;            // 0x0082E250 (`lea eax,[ecx+48h]`; manifest "CModeBlock::GetAnimFilter" is folded)
 };
 
-template <class T> class CCountedPointer {
-public:
-    T* Object;                                     // +0x00
-    void* Info;                                    // +0x04
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 class CMapInfo {                                    // Ego_r.pdb, 0x48 bytes
 public:

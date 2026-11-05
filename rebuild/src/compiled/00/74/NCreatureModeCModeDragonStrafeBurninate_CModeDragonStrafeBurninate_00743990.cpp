@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonStrafeBurninate::CModeDragonStrafeBurninate(CThing*) -- CModeDragonFlying(thing), own vtable, Timer = 0, a null beam-effect pointer, then the inherited filter re-pointed at "STRAFE_BURNINATE"
 // Leaf: ??0CModeDragonStrafeBurninate
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00743990 (`ret 4`). Vtable 0x01268718 = NCreatureMode::CModeDragonStrafeBurninate.
 // Callees: CModeDragonFlying::CModeDragonFlying(CThing*) @ 0x007437C0, CBaseIntelligentPointer::CBaseIntelligentPointer
 // @ 0x00A01B10, CCharString(const char*, long) @ 0x0099EBF0, operator= @ 0x0099EFB0, ~CCharString @ 0x0099EAE0,
@@ -47,23 +48,9 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
 };
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
 
 
 namespace NCreatureMode {

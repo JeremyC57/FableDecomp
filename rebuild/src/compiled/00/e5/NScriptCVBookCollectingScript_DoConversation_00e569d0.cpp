@@ -1,4 +1,5 @@
 // CV_BookCollectingScript::DoConversation(long book, long line) -- play one line of a book's reaction conversation: the speaker says it to the hero, the boy or girl speaking plays the line's animation (and its loop), then wait for the line to finish
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E569D0, length 823 bytes, `ret 8`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CCharString(const CCharString&) 0x0099EC30 / ~CCharString
 //   0x0099EAE0 / operator!=(const char*) 0x0099E960; Compare 0x00411570 (the inline operator==(const char*)); ~CScriptThing
@@ -60,12 +61,9 @@ class CCharString { public:
     }
 };
 class CScriptGameResourceObjectScriptedThingBase;
-class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
-    virtual void v00();
-    void* PImp_Data;
-    void* PImp_Info;
-    virtual ~CScriptThing();                                     // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
  virtual void NewScriptFrame(void) const; //slot7 0x006e7410

@@ -1,6 +1,8 @@
 // NCreatureMode::CModeDragonFlying::CModeDragonFlying(CThing*) -- CModeDragonFlyingBase(thing) (spline zeroed, tension 0.5), own vtable, the "FLYING" filter, a null end-action pointer
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the spline's CArray modelled with the STLport alloc-proxy end-of-storage member: the `push -1` of the filter name lands after the three zero stores as in retail
 // Leaf: ??0CModeDragonFlying
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007437C0 (`ret 4`). Vtable 0x0126868C = NCreatureMode::CModeDragonFlying (rtti-vtables.tsv).
@@ -44,18 +46,9 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
     }
 };
 
-struct CBaseIntelligentPointer {           // 8 bytes: vptr + the pointed-to item
-    virtual void v00();
-    CBaseObject* m_pItem;                  // +4
-    CBaseIntelligentPointer();             // 0x00A01B10
-    void SetPItem(CBaseObject* item);      // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer() { }
-    CIntelligentPointer(CThing* item) { SetPItem((CBaseObject*)item); }
-};
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, sizeof 0x1c (vtable 0x012673CC)
     virtual void v00();
@@ -80,11 +73,7 @@ class CCardinalSpline { public:                   // retail 0x14 (PDB 0x18 with 
 
 class CCreatureActionBase;
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;
-    SCountBlock* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NCreatureMode {
 

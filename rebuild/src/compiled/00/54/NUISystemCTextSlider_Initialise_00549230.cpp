@@ -1,5 +1,6 @@
 // NUISystem::CTextSlider::Initialise() -- the draggable-base initialisation; hand the right and left arrows to the parent (add as child, re-parent, initialise); put the selected child into state 3; append a ULONG action parameter holding the selection to every action; reset the input timer
 // Leaf: ?Initialise@CTextSlider@NUISystem@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00549230, length 528 bytes, `ret`.
 // Callees: CDraggableInto::Initialise @ 0x0052C730 (manifest "CChangingStateComponent::Initialise" is propagated),
 //          CCountedPointer<CComponent>::CCountedPointer(CComponent*) @ 0x00429C15, operator delete @ 0x00BFE9BC,
@@ -17,28 +18,8 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 void operator delete(void* p);                         // 0x00BFE9BC
 
-struct SCountBlock {
-    long m_references;                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);// +4
-    void* m_pObject;                       // +8
-};
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer { public:
-    T*           m_pObject;                // +0
-    SCountBlock* m_pCount;                 // +4
-    CCountedPointer(T* object);            // 0x00429C15 (T = NUISystem::CComponent)
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                operator delete(m_pCount);
-            }
-        }
-    }
-    T* operator->() const { return m_pObject; }
-};
 
 template <class T> struct CRetailVector {        // STLport vector (12 bytes; PDB 16)
     T* _M_start;

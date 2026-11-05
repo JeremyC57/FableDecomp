@@ -1,5 +1,6 @@
 // CCountedPointer<CEntityScriptBindingBase>::DeleteData(void* data) -- the counted-pointer deleter for script entity bindings: free the binding with the scalar operator delete
 // Leaf: ?DeleteData@?$CCountedPointer@VCEntityScriptBindingBase@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB8D30, 8 bytes (+ int3 padding): `push ecx ; call 0x00BFE9BC ; pop ecx ; ret` -- a static
 //   __fastcall member (data in ecx) in a size-optimised TU (`pop ecx` cleans the cdecl argument).
 // Fix (sweep1, 2026-10-25; FINDINGS chunk 451 "0xCB8D30 models a call to helper_bfeb1c as operator_new but retail calls 0xBFE9BC
@@ -17,9 +18,6 @@ void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class CEntityScriptBindingBase {
 };
 
-template <class T> class CCountedPointer {
-public:
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<CEntityScriptBindingBase>;

@@ -1,5 +1,6 @@
 // NScript::CV_AssassinAttacksScript::CAttackingAssassin::Init() -- assassin-attack setup: clear Screamed, attach the thing to the V_AssassinAttacks script, make it a scripted-assassin opinion source, persistent, cutscene behaviour 1, then spawn the parent's WatchForAssassinDead watcher on it
 // Leaf: ?Init@CAttackingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
@@ -25,14 +26,14 @@ class CCharString { public:                                 // 4 bytes: the shar
     ~CCharString();                                      // 0x0099EAE0
 };
 
-class CCPPointerInfo { public: long References; };
+#include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
 
 struct CCPPointerImp {                               // CCPPointer<CScriptThingImp>: Data, Info (memberwise copy adds a reference)
     void* Data;
     CCPPointerInfo* Info;
     CCPPointerImp() : Data(0), Info(0) {}
-    CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
+    CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
 struct CScriptThingRuntime {
     virtual ~CScriptThingRuntime(); // CScriptThing RTTI slot 0, 0x004AB170
@@ -63,13 +64,8 @@ struct CScriptThingStored {
     CScriptThingStored(const CScriptThingRuntime& other); // retail 0x004ABE90
 };
 inline CScriptThingRuntime::CScriptThingRuntime(const CScriptThingStored& other)
-{ PImp.Data = other.PImp_Data; PImp.Info = other.PImp_Info; if (PImp.Info) ++PImp.Info->References; }
+{ PImp.Data = other.PImp_Data; PImp.Info = other.PImp_Info; if (PImp.Info) ++PImp.Info->RefCount; }
 
-template <class T> class CCountedPointer {             // CSpawnedFuncBase::PPredicate (header contract; this row keeps its own
-public:                                                //   CCPPointerInfo, so not engine/CCountedPointer.h); the dtor is out of line
-    T* Data; CCPPointerInfo* Info;                     //   in retail (CCountedPointer<const NScript::CPredicateBase> 0x00CDD4F0)
-    ~CCountedPointer();
-};
 // CSpawnedFuncBase: the retail model of engine/CSpawnedFuncBase.h (FABLE_RETAIL_SUSPENDABLE_PROCESS: : CSuspendableProcessMicrothread
 //   : CASuspendableProcess : CBaseClassNonCopyable : CBaseClass, 0x34, vtable 0x012C2F9C; ctor 0x00CDD450, implicit dtor 0x00CDD4C0).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS

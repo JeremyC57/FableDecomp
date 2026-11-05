@@ -1,5 +1,6 @@
 // CLipSyncDataBank::SetResourceBank(const CCountedPointer<CResourceBank>& bank) -- share the lip-sync bank's resource bank (counted-pointer assignment into ResourceBank at retail +0x170)
 // Leaf: ?SetResourceBank@CLipSyncDataBank@@QAEXABV?$CCountedPointer@VCResourceBank@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Item->Data are the header CCPPointerInfo's (same offsets).
 // Flags: /O2 /Oy /W3
 // Retail: Fable.exe @ 0x00992470, 86 bytes, `ret 4`; one caller 0x00991B32 (the "Register Sound Bank 1/2" routine at
 // 0x009919C0). Byte family: 0x00669280 / 0x00992470 / 0x009FD870 (counted-pointer setters of three different classes) and
@@ -19,37 +20,7 @@
 // Layout: CCountedPointer {T* Data; CCPPointerInfo* Info}; CCPPointerInfo {long Count; destroy thunk +4; item +8}
 // (the landed 0x00695350 ShareData model).
 // Shape: /O2; the source Data / Info bound to locals first (ebx / edi loaded before the compare).
-class CCPPointerInfo { public:
-    long  Count;                                         // +0x00
-    void (__fastcall *Destroy)(void* item);              // +0x04
-    void* Item;                                          // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* data = o.Data;
-        CCPPointerInfo* info = o.Info;
-        if (Info != info)
-        {
-            if (Info)
-            {
-                if (--Info->Count == 0)
-                {
-                    Info->Destroy(Info->Item);
-                    ::operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->Count;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CResourceBank;
 class CLipSyncDataBank {
 public:

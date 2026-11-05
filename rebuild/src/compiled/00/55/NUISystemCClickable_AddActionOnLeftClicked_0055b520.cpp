@@ -1,5 +1,6 @@
 // NUISystem::CClickable::AddActionOnLeftClicked(CCountedPointer<NUISystem::CAction>& action) -- append a counted action to the component's on-left-clicked list, creating the (lazily allocated) STLport list on first use
 // Leaf: ?AddActionOnLeftClicked@CClickable@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055B520, 136 bytes (+ int3 padding), thiscall virtual, `ret 4`.
 // Identity: no direct callers; it is slot 71 (+0x11C) of the CClickable vtable 0x0124BD2C (also inherited by 7 derived NUISystem vtables).
 //   CComponent (vtable 0x0124608C) fills slots 66-80 with 15 empty `ret 4` stubs (0x0052EFF0..0x0052F0D0) defined in
@@ -28,23 +29,8 @@ extern "C" void __cdecl free(void* block);                                      
 void* __cdecl operator new(unsigned int size);                                   // 0x00BFEA1A
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                 // +0x00
-    void (__cdecl* DeleteFunc)(void*);      // +0x04
-    void* Data;                             // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                // +0x00
-    CCPPointerInfo* Info;                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 namespace std {
 

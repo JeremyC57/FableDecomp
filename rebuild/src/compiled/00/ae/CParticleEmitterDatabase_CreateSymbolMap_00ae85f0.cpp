@@ -1,6 +1,7 @@
 // CParticleEmitterDatabase::CreateSymbolMap() -- rebuild the symbol map from the emitter map: clear it, add each emitter's upper-cased name with its handle, then finalise the map
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE85F0, length 134 bytes (padded to 144).
 // Leaf: CreateSymbolMap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets).
 // Naming wave 27 (family sym, chunk 695): CSymbolMap::UpdateDirty() const 0x009E5C30 (Ego_r.pdb + FableWin.pdb
 //   ?UpdateDirty@CSymbolMap@@QBEXXZ); was an invented ?Finalise@CSymbolMap (no Finalise in either PDB).
 // Callees: CSymbolMap::Clear @ 0x009E5250 (manifest label "allocator::construct" is propagated), CCharString copy ctor
@@ -32,11 +33,7 @@ class CParticleEmitter { public:
 };
 }
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T*           Object;
-    SCountBlock* Block;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 struct SEmitterEntry {                               // pair<long, CCountedPointer<CParticleEmitter>>
     long                                               first;
     CCountedPointer<NParticleEngine::CParticleEmitter> second;

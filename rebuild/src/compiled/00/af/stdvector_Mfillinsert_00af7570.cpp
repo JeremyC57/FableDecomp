@@ -1,5 +1,6 @@
 // std::vector::_M_fill_insert(std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>* position, unsigned int n, const std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>& x) -- (vector<pair<EPSCType, CComponentInstance> >) STLport insert of n copies of a particle-system component slot: slide the tail inside the spare capacity and fill the hole from a copy of x, or grow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@V?$allocator@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@@2@@std@@QAEXPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@2@IABU32@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF7570, 328 bytes, thiscall `ret 0Ch`, no EH frame (STLport built without exceptions).
 // Identity: the landed vector<pair<EPSCType, CComponentInstance> >::resize 0x00AF7890 path (NParticleEngine::CParticleSystem's
 //   Components CVectorMap) binds this exact `_M_fill_insert` spelling; the landed _M_insert_overflow 0x00AF7460 (chunk 585)
@@ -20,22 +21,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 #include "engine/CBaseClass.h"
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                       // +0
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                         // +0
-    CCPPointerInfo* Info;                         // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    CCountedPointer& operator=(const CCountedPointer& other);
-};
 
 namespace NParticleEngine {
 enum EPSCType { PSC_TYPE_FIRST = 0 };

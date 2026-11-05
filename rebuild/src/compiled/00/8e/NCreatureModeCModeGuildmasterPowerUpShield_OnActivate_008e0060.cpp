@@ -1,5 +1,6 @@
 // NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate() -- guildmaster shield power-up: find nearby bodyguards, give each a physical-shield spell and a POWER_UP_BEAM effect
 // Leaf: ?OnActivate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -106,14 +107,8 @@ private: public:
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                  // +4
-    CBaseIntelligentPointer();                        // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CBaseObject* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                      // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }

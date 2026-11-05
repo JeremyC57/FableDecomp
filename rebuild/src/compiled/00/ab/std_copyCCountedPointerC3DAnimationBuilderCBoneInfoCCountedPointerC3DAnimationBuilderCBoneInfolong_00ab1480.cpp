@@ -1,6 +1,7 @@
 // std::__copy<CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, long>(first, last, result, const random_access_iterator_tag&, long*)
 // -- STLport 4.6 _algobase.h random-access copy back end: copy-assign [first, last) onto result (count-block release/adopt inlined), return the advanced result
 // Leaf: ??$__copy@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@J@std@@YIPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Name: chunk 685 NAME_FIXES (the STLport 4.6 instantiation; in neither PDB -- its hand-mangled spelling ...PAV1@0ABU... drops one parameter, VC7.1 emits ...PAV1@00ABU... for the five-parameter text);
 //   the row was landed as the descriptive Move_CountedPointer_00ab1480 (naming wave 19: the same body under the template spelling).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB1480, oracle length 115 bytes.
@@ -15,36 +16,9 @@
 // with the object in ecx, flag-tested operator delete @ 0x00BFE9BC at zero), adopt the source's
 // object and block, and bump its counter. Returns the advanced destination (the untouched dest
 // for an empty range). One of 12 bodies of this shape.
-struct SCountBlock {
-    long m_references;                     // +0
-    void (__fastcall* m_pfnDestroy)(void*);// +4
-    void* m_pObject;                       // +8
-};
+#include "engine/CCountedPointer.h"
 
 class C3DAnimationBuilder { public: class CBoneInfo; };
-template <class T> class CCountedPointer { public:
-    T* m_pObject;                          // +0
-    SCountBlock* m_pCount;                 // +4
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SCountBlock* count = other.m_pCount;   // the source's fields are read first (retail keeps them in edi/ebp across the release)
-        T* object = other.m_pObject;
-        if (m_pCount != count) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    delete m_pCount;
-                }
-            }
-            m_pObject = object;
-            m_pCount = count;
-            if (count)
-                ++count->m_references;
-        }
-        return *this;
-    }
-};
 
 namespace std {
 struct random_access_iterator_tag { };

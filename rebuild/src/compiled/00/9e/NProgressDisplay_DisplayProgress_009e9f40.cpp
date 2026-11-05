@@ -1,5 +1,6 @@
 // NProgressDisplay::DisplayProgress(const CCharString& text, float progress, bool a, bool b) -- forward a progress update to the installed progress display (virtual slot 3) when one is set
 // Leaf: ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E9F40, length 35 bytes. PDB: ?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z
 //   (`__fastcall`: text in ecx, the float on the stack, a in edx, b on the stack, `ret 8`) -- the declaration every landed
 //   caller uses (CWorldMap::SaveGameState 0x004FDE80, CAFile::CopyFileW 0x00998E70, ...).
@@ -19,14 +20,7 @@ public:
 };
 
 class CCountedPointerInfo;
-template <class T>
-class CCountedPointer
-{
-public:
-    T*                   Data;                     // +0x00
-    CCountedPointerInfo* Info;                     // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 extern CCountedPointer<CAProgressDisplay> g_ProgressDisplay;   // 0x013CAA38
 

@@ -1,4 +1,5 @@
 // instance modelled WITH its vptr (pair.second at entry +4, as Ego_r.pdb): VC then biases the strength-reduced pointer to InstanceName (+0x14) like retail
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Block->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // NParticleEngine::CParticleSystem::WriteBinary(CDataOutputStream&) -- save the system's name, its Enabled and ScaleParticles flags, its scale, then the component count and, per component, its name, instance name, enabled flag and body followed by a '{' marker byte
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF4240, length 224 bytes (`ret 4`; manifest label correct).
@@ -42,11 +43,7 @@ class CPSCBase { public:                                  // particle-system com
 };
 
 struct SCountBlock;
-template <class T> struct CCountedPointer {
-    T*           Object;
-    SCountBlock* Block;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 }
 
 // NParticleEngine::CComponentInstance (Ego_r.pdb, 20 bytes): vptr +0, Component +4, Enabled +0xc, InstanceName +0x10.
@@ -101,7 +98,7 @@ void CParticleSystem::WriteBinary(CDataOutputStream& stream)
     stream.WriteULONG(m_componentsLast - m_componentsFirst);
     for (SComponentEntry* it = m_componentsFirst; it != m_componentsLast; ++it) {
         CComponentInstance& instance = it->second;
-        NParticleEngine::CPSCBase* component = instance.Component.Object;
+        NParticleEngine::CPSCBase* component = instance.Component.Data;
         stream.WriteNullTerminatedString(component->GetName());
         stream.WriteULONG(instance.InstanceName);
         stream.WriteEBOOL(instance.Enabled);

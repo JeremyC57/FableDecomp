@@ -1,5 +1,6 @@
 // std::_Vector_base<CCountedPointer<NCreatureAction::CActionEventBase>>::_Vector_base(size_t n, const allocator_type& a) -- STLport vector base sized constructor: null the three pointers, malloc n elements (none for zero), finish = start, end of storage = start + n
 // Leaf: ??0?$_Vector_base@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062EE20, 56 bytes, thiscall, `ret 8` (n and the allocator reference; returns this).
 // Identity (probable): its only caller is the landed 8-byte CCountedPointer vector copy constructor 0x0062EDD0, itself called only by CCreatureActionBase::CCreatureActionBase 0x0062EBC0 -- Ego_r.pdb CCreatureActionBase::ActionEvents is vector<CCountedPointer<NCreatureAction::CActionEventBase> >.
 // Callee: malloc 0x00BFEA0E (`n ? malloc(n * size) : 0`, the zero register doubling as the null result).
@@ -7,7 +8,7 @@
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);              // 0x00BFEA0E
 namespace NCreatureAction { class CActionEventBase; }
-template <class T> class CCountedPointer { public: T* Data; void* Info; };   // 8 bytes
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;

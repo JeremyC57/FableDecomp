@@ -10,17 +10,14 @@
 // `if (it != end) return ...; return -1;` so the found path comes first; the node is reached through the counted pointer's
 // inline `operator->` (`mov eax,[eax+4] ; ... mov ecx,eax`; reading `.Object` directly loads straight into ecx).
 // Leaf: GetNextRegionOnWayToRegion
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, PBlock->Info are the header CCountedPointer's (same offsets).
 class CRegionConnectionGraph;
 
 class CRegionConnectionNode { public:
     long GetNextRegionOnWayToRegion(long toRegion, CRegionConnectionGraph* graph);   // 0x00828360
 };
 
-template<class T> class CCountedPointer { public:
-    T*    Object;                                       // +0x00
-    void* PBlock;                                       // +0x04
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 struct SRegionNodeEntry {                               // pair<long, CCountedPointer<CRegionConnectionNode> >
     long                                    first;      // +0x00

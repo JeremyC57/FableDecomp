@@ -1,5 +1,6 @@
 // CTCVillage::SetVillageLimbo(bool limbo) -- records the village limbo state; entering limbo also puts every living villager that is not a scripted quest thing into limbo (kept on level unload) and hands every living building's door locking to the limbo flag, then refreshes the mirrored crime data
 // Leaf: SetVillageLimbo
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 004ab8f0: ?IS_THING_ALIVE@@YI_NABUCBaseIntelligentPointer@@@Z -> ?IS_THING_ALIVE@@YI_NABVCBaseIntelligentPointer@@@Z
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065C36E, 236 bytes (`ret 4`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)` (`or byte ptr [eax+92h],40h`). Ego_r.pdb
@@ -52,11 +53,8 @@ class CThingBuilding : public CThing { public:
     void LockAllDoors(bool lock, bool silent);  // 0x0082DB00
 };
 
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    void* __vftable;
-    CBaseObject* PData;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerBuilding : CBaseIntelligentPointer { };   // CIntelligentPointer<CThingBuilding>
 bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);     // 0x0065F8CA (T = CIntelligentPointer<CThingBuilding>)

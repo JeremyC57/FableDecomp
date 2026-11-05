@@ -1,5 +1,6 @@
 // CVectorMap::Insert(const K& key, const V& value) -- (CVectorMap<unsigned long, CCountedPointer<CFaction>, CKeyPairCompareLess<...> >) append a {key, counted pointer} entry to the map's vector (unsorted) and mark the map dirty
 // Leaf: ?Insert@?$CVectorMap@KV?$CCountedPointer@VCFaction@@@@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@@@QAEXABKABV?$CCountedPointer@VCFaction@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BAFB0, 133 bytes, thiscall `ret 8`; no direct callers (an emitted COMDAT).
 // Identity (proven): CVectorMap<unsigned long, CCountedPointer<CFaction>, CKeyPairCompareLess<unsigned long, CCountedPointer<CFaction> > >::Insert(const unsigned long&, const CCountedPointer<CFaction>&); evidence: its _M_insert_overflow 0x006BAA90 is also called at 0x006B995B by CFactionManager::CFactionManager(const CWorld&) 0x006B97E0, which fills Factions and sorts it through 0x006BB140 (H047); Ego_r.pdb / FableWin.pdb name ?Insert@?$CVectorMap@ for exactly the six H047 pair types (plus CCharString / CEntityScriptBindingBase and unsigned __int64 / CActiveEntityScriptBase, other shapes).
 // Label: the manifest's "std::vector<CCountedPtr>::emplace_back" is propagated (family H051: six byte-identical bodies, each its own COMDAT; retail has
@@ -16,45 +17,7 @@
 #include <new>
 #include <stddef.h>
 #include <stdlib.h>
-class CCPPointerInfo { public:                                    // CCountedPointer's shared block
-    long  RefCount;                                        // +0x0
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x4
-    void* Data;                                            // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* const              data = o.Data;
-        CCPPointerInfo* const info = o.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CFaction;
 
 namespace std {

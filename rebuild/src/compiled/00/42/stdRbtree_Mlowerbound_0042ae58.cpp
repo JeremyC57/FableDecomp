@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_lower_bound(const CCharString& k) const -- (map<CCharString, CCountedPointer<NUISystem::CComponent> >) STLport lower bound: the first node whose key does not sort before k, the header when none; the key compare is the out-of-line less<CCharString>
 // Leaf: ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042AE58, 56 bytes, thiscall `ret 4`, the node pointer in eax (a size-optimised /Os module: unaligned entry).
 // Identity (proven): std::_Rb_tree<CCharString, pair<const CCharString, CCountedPointer<NUISystem::CComponent>>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_lower_bound(const CCharString&) const; evidence: its callers are the landed map<CCharString, CCountedPointer<NUISystem::CComponent> >::operator[] 0x0042D45D (0x0042D46A; NUISystem::CManager::CreateMenuEntryComponent, Ego_r.pdb CManager::BastardChildren), the tree's range erase 0x0042B854 and NUISystem::CManager's map set-up 0x0042BF85
 // Label: the manifest's "BinarySearchTree_FindByComparator" is a descriptive placeholder (family J042: five byte-identical lower bounds over CCharString keys, each its
@@ -13,13 +14,8 @@ class CCharString {                                        // 4 bytes (Ego_r)
 public:
     void* PStringData;                                     // +0x0
 };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CComponent; }
-template <class T> class CCountedPointer {                 // Ego_r.pdb, 8 bytes
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-};
 namespace std {
 template <class _Tp> class allocator {
 public:

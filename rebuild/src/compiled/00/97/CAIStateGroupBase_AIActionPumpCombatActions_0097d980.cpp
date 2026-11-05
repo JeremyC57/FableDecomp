@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_PumpCombatActions() -- unless stopping, post a brain output with the pump-combat-actions flag (0x20), yield once, and report 1 (stopping) or 4 (pumped)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097D980, length 177 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::IsStopping @ 0x008FD010 (twice), CBrainOutput::CBrainOutput @ 0x00835620,
 // CAIBrain::SetBrainOutput(const CBrainOutput&) @ 0x0088B8F0, PBrain virtual slot 2 (+0x08, yield),
@@ -10,15 +11,8 @@ class CThing;
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CCountBlock                                  // CCountedPointer's shared block
 {

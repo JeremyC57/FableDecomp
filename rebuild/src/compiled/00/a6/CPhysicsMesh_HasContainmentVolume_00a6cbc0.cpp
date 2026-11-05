@@ -1,5 +1,6 @@
 // CPhysicsMesh::HasContainmentVolume(const CCharString& name) const -- true when the containment-volume map holds an entry keyed by the name
 // Leaf: ?HasContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6CBC0, 75 bytes (+5 int3), thiscall `ret 4`. Ego_r.pdb
 //   `?HasContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@@Z`.
 // Callees: CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<..> >::LowerBound 0x00A6FC40 (landed, entry
@@ -34,11 +35,7 @@ public:
 
 class CContainmentVolume;
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                         // +0x00
-    void* Info;                                         // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 class C3DMeshVolume {                                   // 12 bytes
 public:

@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_EmptyScript::CWalker::Main() -- Cham's walk between the two map markers: hold an alive filter over Me, look up "InMap1" / "InMap2", make Me scared, take Me under scripted control (priority 4, retried each frame), move to InMap1, then keep following the precalculated routes to InMap1 and InMap2 every frame
 // Leaf: ?Main@CWalker@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EF3AA0, 444 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor @ 0x004ABE90 / ~CScriptThing @ 0x004AA840, CEntityScriptBase::SetPredicate @ 0x00F35B10,
 //          ~CIsThingAlive @ 0x00E241B0 (out of line in this module), CEntityScriptBase::IsActiveThreadTerminating @ 0x00F35B30,
@@ -23,19 +24,14 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void v00();
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"

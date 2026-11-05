@@ -1,5 +1,6 @@
 // std::__uninitialized_copy(const CCountedPointer<NCameraModes::CSubComponentBase>* first, last, CCountedPointer<..>* result, const __false_type&) -- copy-construct a counted-pointer range into raw storage
 // Leaf: ??$__uninitialized_copy@PBV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@PAV1@@std@@YIPAV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@PBV1@0PAV1@ABU__false_type@0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags: /Gr
 // Retail: Fable.exe @ 0x0084ECD0, 50 bytes, __fastcall (first ecx, last edx; result and the tag on the stack), `ret 8`,
 // the end of the constructed range in eax.
@@ -21,22 +22,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 namespace NCameraModes { class CSubComponentBase; }
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                            // +0x00
-    void (__fastcall* DeleteFunc)(void* data);         // +0x04
-    void*         Data;                                // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                              // +0x00
-    CCPPointerInfo* Info;                              // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 namespace std {
 struct __false_type { __false_type() { } };

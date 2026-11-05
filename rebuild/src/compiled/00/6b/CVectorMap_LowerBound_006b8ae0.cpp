@@ -1,5 +1,6 @@
 // CVectorMap::LowerBound(const unsigned long& key) const -- (CVectorMap<unsigned long, CCountedPointer<CFaction>>) binary search of the sorted 12-byte entries for the first entry whose key is not below `key`
 // Leaf: ?LowerBound@?$CVectorMap@KV?$CCountedPointer@VCFaction@@@@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@@@QBEPBU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@ABK@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006B8AE0, 82 bytes, thiscall, `ret 4`; the STLport const_iterator is a plain pointer.
 // Identity (proven): its callers are CFactionManager::GetPFaction(unsigned long) const 0x006B93A0 and GetPFaction(const CCharString&) 0x006B93D0 (Ego_r.pdb: both QBE) on CFactionManager::Factions (Ego_r.pdb CVectorMap<unsigned long, CCountedPointer<CFaction>, ...>); its non-const byte twin 0x006B8A80 serves CFaction loading / CWorld_InitFactions.
@@ -14,11 +15,7 @@ public:
     bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
 };
 class CFaction;
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 template <class K, class V, class TCompare> class CVectorMap {   // sorted-on-demand vector map, retail 0x10 bytes
 public:
     typedef std::pair<K, V> value_type;

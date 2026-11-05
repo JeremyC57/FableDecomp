@@ -1,6 +1,7 @@
 // C3DSkeletalMorph::~C3DSkeletalMorph() -- detaches every morph parameter from this morph, then releases the combined morph, destroys and frees the parameter array and runs the base destructor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A44EB0, length 138 bytes.
 // Leaf: ??1C3DSkeletalMorph
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Callees: the counted block's destroy thunk (`call [info+4]`, data in ecx) and 0x00BFE9BC operator delete,
 // 0x00A464E0 _Destroy_range(first, last, tag&) (`__fastcall`, releases each counted pointer; the by-reference
 // tag is a 1-byte temporary in the high byte of the `push ecx` slot, `lea ecx,[esp+0Bh]`), 0x00BFEA14 free
@@ -14,28 +15,7 @@
 extern "C" void __cdecl free(void* block);                      // 0x00BFEA14
 void __cdecl operator delete(void* p);                           // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                          // PDB: RefCount +0, DeleteFunc +4, Data +8
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                                        // +0
-    CCPPointerInfo* Info;                                        // +4
-    ~CCountedPointer()
-    {
-        if (Info != 0) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 class C3DSkeletalMorph;

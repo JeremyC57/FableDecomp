@@ -1,5 +1,6 @@
 // CBankFileEntryUpdateData::Equals(const CArray<CCharString>& filenames, CCountedPointer<CBankStateBlock> stateBlock) const -- the update record still matches when the state block's CRC and every source filename are unchanged
 // Leaf: ?Equals@CBankFileEntryUpdateData@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CC750, length 235 bytes (+5 int3), ret 0xc. Ego_r.pdb
 // ?Equals@CBankFileEntryUpdateData@@ABE_NABV?$CArray@VCCharString@@@@V?$CCountedPointer@VCBankStateBlock@@@@@Z (private
@@ -29,24 +30,7 @@ template <class T, int N> class CSmallVector { public:
     long size() const { return Size; }
     const T& operator[](unsigned long index) const { return Start[index]; }
 };
-struct SCountBlock {
-    long m_references;                             // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
-template <class T> class CCountedPointer { public:
-    T* Data;                                       // +0
-    SCountBlock* Info;                             // +4
-    ~CCountedPointer()
-    {
-        SCountBlock* info = Info;
-        if (info && --info->m_references == 0) {
-            info->m_pfnDestroy(info->m_pObject);
-            operator delete(info);
-        }
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CBankStateBlock {
 public:
     virtual void v00(); virtual void v01();

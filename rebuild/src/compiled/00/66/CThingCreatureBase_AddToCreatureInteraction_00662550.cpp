@@ -1,4 +1,5 @@
 // CThingCreatureBase::AddToCreatureInteraction(const CCountedPointer<CCreatureInteraction>& interaction) -- take the interaction and register this creature with it
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00662550, 96 bytes (`ret 4`).
 // Callees: the count block's destroy function (+4, object at +8 in ecx), operator delete @ 0x00BFE9BC,
 //   CCreatureInteraction::AddCreature(CThingCreatureBase*) @ 0x008631D0 (manifest "CreatureInteraction_InsertAfter":
@@ -9,35 +10,7 @@
 //   re-reading the member block, object then block stores, count up), then the member call through the object.
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-struct SCountBlock {
-    long m_references;                                  // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4 per-type deleter, object in ecx
-    void* m_pObject;                                    // +8
-};
-template <class T>
-class CCountedPointer { public:
-    T* Data;                                            // +0
-    SCountBlock* m_pCount;                              // +4
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        SCountBlock* count = other.m_pCount;
-        if (m_pCount != count) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    operator delete(m_pCount);
-                }
-            }
-            Data = data;
-            m_pCount = count;
-            if (count) ++count->m_references;
-        }
-        return *this;
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CThingCreatureBase;
 class CCreatureInteraction { public:

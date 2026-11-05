@@ -1,5 +1,6 @@
 // CAIStateGroup_SummonerLightningAttack::Update() -- with a live target and the summoner free to act: mark the target's stealth as in danger, sheathe any live weapon in the primary slot, turn to face the target, play the lightning-orb-into action, wait out any running action, play the ground-smash out-of action and schedule the next preemptive use from the def's delay; always terminates
 // Leaf: ?Update@CAIStateGroup_SummonerLightningAttack@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -61,11 +62,8 @@ class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;               // 0x006622A0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer { };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
     CIntelligentPointerConstThing(const CIntelligentPointerThing& other);   // 0x007C2930

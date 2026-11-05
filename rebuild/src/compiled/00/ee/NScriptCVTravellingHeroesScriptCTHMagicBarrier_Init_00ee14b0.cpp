@@ -1,5 +1,6 @@
 // NScript::CV_TravellingHeroesScript::CTH_MagicBarrier::Init() -- script object initialiser: enables setting 477 on the thing and clears setting 511.
 // Leaf: ?Init@CTH_MagicBarrier@CV_TravellingHeroesScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EE14B0, length 38 bytes.
 // Callees: game-interface virtual slots 477 (`call [eax+774h]`, thing + 1) and 511 (`call [edx+7FCh]`, thing + 0) through the interface pointer at +4.
 // Layout (as the landed CAT_ConvoySpy::Init @ 0x00F04410): +0x04 the game script interface pointer (a vtable of
@@ -8,11 +9,9 @@
 // this class (the scalar deleting destructor follows the body); the manifest label "CCham::Init" is propagated.
 // Naming wave 35: identity reg 00edf1bf "TH_MagicBarrier" in 00eded10; Alloc 00ee1400; vtable 012f440c slot 2; PDB ?Init@CTH_MagicBarrier@CV_TravellingHeroesScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); replaces CScriptObject_00ee14b0::Init: PDB has no such member (wave3/labels_alloc.tsv); PDB ?Init@CTH_MagicBarrier@CV_TravellingHeroesScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CScriptObject_00ee14b0@@QAEXXZ`; this source now defines the PDB member (class CScriptObject_00ee14b0 renamed CTH_MagicBarrier); same bytes.
-class CScriptThing { public:
-    void* __vftable;
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CGameScriptInterface { public:
     virtual void v000();

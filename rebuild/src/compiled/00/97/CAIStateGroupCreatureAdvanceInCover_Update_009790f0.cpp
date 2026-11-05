@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureAdvanceInCover::Update() -- advance to the next hidden cover position, crouch there when the enemy is alive, then refresh the cover list
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 004ac0f0: ?erase@CIntelligentPointerVector@@QAEXPAUCBaseIntelligentPointer@@0@Z -> ?erase@CIntelligentPointerVector@@QAEXPAVCBaseIntelligentPointer@@0@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009790F0, length 361 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing
@@ -48,11 +49,8 @@ class CThing { public:
     const C3DVector& GetPos() const;             // 0x004C73D0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {

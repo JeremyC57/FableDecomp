@@ -1,5 +1,6 @@
 // NScript::CQ_ArenaScript::OnPersist(CPersistContext& context) -- persist the arena state, round, gold multiplier and total, new crowd points (default 0) and the ChamLeaving / PlayerLeaving flags (default false)
 // Leaf: ?OnPersist@CQ_ArenaScript@NScript@@UAEXAAVCPersistContext@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CFAB10, 215 bytes, thiscall, `ret 4`.
 // Identity (proven): slot 4 (OnPersist) of the level-script vtable 0x012C7798 (0 dtor, 1 RegisterMain, 2 Main, 3 Init, 4 OnPersist), stored by the quest ctor 0x00CFA660; ?OnPersist@CQ_ArenaScript@NScript@@ is in Ego_r.pdb and FableWin.pdb.
 // Label: the manifest's "sub_00cfab10" is a gap-scan placeholder.
@@ -17,20 +18,7 @@ public:
     const CCharString& operator=(const char* text);       // 0x0099EFE0
 };
 class C3DVector;                                         // 1-aligned 12-byte vector (only referenced here)
-class CCPPointerInfo {                                   // CCountedPointer's shared block
-public:
-    long  RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (CScriptThing instance)
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

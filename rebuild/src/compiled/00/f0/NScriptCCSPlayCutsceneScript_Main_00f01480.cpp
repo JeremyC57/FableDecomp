@@ -1,5 +1,6 @@
 // NScript::CCS_PlayCutsceneScript::Main() -- console cut-scene player: each script frame, wait for the console's play-cut-scene request; then take the hero under scripted control (priority 4), cast him as "Hero" and "HERO", run the cut-scene named by the console inside a paused movie sequence, release the hero and clear the request
 // Leaf: Main
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F01480, 734 bytes (736 with padding); PDB ?Main@CCS_PlayCutsceneScript@NScript@@UAEXXZ.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, malloc 0x00BFEA0E / free 0x00BFEA14 (the cast map's head node, inline
 //   STLport ctor/dtor as the landed CRetailTree 0x00CDBF70 / 0x00CDBFB0 bodies), the map's recursive erase 0x00CD344A and
@@ -23,45 +24,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CScriptThing;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

@@ -1,5 +1,6 @@
 // NScript::CQ_WizardBattleScript::CQ_WizardBattleScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, own vtable and three empty CScriptThing members (Maze, TopOfLighthouse, MiddleOfLighthouse)
 // Leaf: ??0CQ_WizardBattleScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E1A800, length 106 bytes (padded to 112), `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110 (catalog label "CHeroMorphDef" is propagated), CBase::CBase @ 0x0099A2D0
 // (each CScriptThing's base, x3).
@@ -54,11 +55,7 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
         this->_M_header->_M_right = this->_M_header;
     }
 };
-template <class T> class CCountedPointer { public:                     // {Data, Info}: a member object so its zero stores follow the owner's vtable store
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #include "engine/CScriptThing.h"

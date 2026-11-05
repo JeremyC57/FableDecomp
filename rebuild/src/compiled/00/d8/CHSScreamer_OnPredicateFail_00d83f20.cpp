@@ -1,5 +1,6 @@
 // CHS_Screamer::OnPredicateFail() -- Hero Souls screamer died: one screamer fewer for the mother script and its bar grows by the script-def amount; a super screamer also clears the parent's super-screamer flag, restarts the parent's super-screamer timer, removes its effect thing and ends the super attack on itself
 // Leaf: ?OnPredicateFail@CHS_Screamer@@
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D83F20, length 114 bytes.
@@ -11,10 +12,9 @@
 // NewSuperScreamerTimer +0x68 -- the PDB offsets sit 0x18 higher), PMasterData +0x18, SuperScreamer +0x1c,
 // SuperScreamerEffect +0x20.
 // Shape: `BarToFill += def` loads the def first (`fld def ; fadd member`); the parent is re-read for every access.
-class CScriptThing { public:                              // 12 bytes (vtable 0x01238C8C, word aligned)
-    void* __vftable;
-    long  m_data[2];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

@@ -1,5 +1,6 @@
 // NCameraModes::CScriptedControl::CScriptedControl(CGameCameraManager& manager, const CDefPointer<const CCameraModeDef>& def, CCountedPointer<CScriptModuleBase>& module) -- scripted camera mode: base camera mode, take a reference on the script module, mesh-height-on-init 1.0, an unlocked initial camera
 // Leaf: ??0CScriptedControl
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069DFE0, length 83 bytes, `ret 0Ch`. FableWin.pdb
 // ??0CScriptedControl@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@AAV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z.
@@ -14,20 +15,7 @@ class CGameCameraManager;
 class CCameraModeDef;
 template<class T> class CDefPointer { public: T* Object; };
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                                  // +0x00
-    void (__fastcall* DeleteFunc)(void* data);               // +0x04
-    void*         Data;                                      // +0x08
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward, Up; CRightHandedSet() { } };

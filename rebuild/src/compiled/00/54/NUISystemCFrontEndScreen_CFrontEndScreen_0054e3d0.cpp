@@ -1,5 +1,6 @@
 // NUISystem::CFrontEndScreen::CFrontEndScreen(long id) -- base CChangingStateComponent(id), empty left-click action, no accept button
 // Leaf: ??0CFrontEndScreen@NUISystem@@QAE@J@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x0054E3D0, 59 bytes, `ret 4`; one caller (0x0041D512); Ego_r.pdb ??0CFrontEndScreen@NUISystem@@QAE@J@Z.
 // Body: CChangingStateComponent::CChangingStateComponent(id) (0x0052CC50); the three vtables of
 // .?AVCFrontEndScreen@NUISystem@@ (0x012497E4 at +0, 0x012497BC at +4 CObserver, 0x012497B4 at +0x18 CActionParam);
@@ -10,13 +11,7 @@
 // +0x168, so the class is modelled locally (engine/CFrontEndScreen.h has the PDB offsets).
 namespace NUISystem {
 class CAction;
-struct CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-};
+#include "engine/CCountedPointer.h"
 class CUIInterface {
 public:
     virtual ~CUIInterface();

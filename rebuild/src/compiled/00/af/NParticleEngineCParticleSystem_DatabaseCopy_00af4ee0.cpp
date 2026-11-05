@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::DatabaseCopy(const CParticleSystem& other) -- copy a database system into this one: the name, then the component list entry by entry (a component of the same type copies in place, otherwise it is replaced by a clone owned by this system), then the Enabled flag, Scale and the ScaleParticles flag
 // Leaf: DatabaseCopy
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF4EE0, 299 bytes, `ret 4`. PDB: ?DatabaseCopy@CParticleSystem@NParticleEngine@@QAEXABV12@@Z.
 // Callees: CCharString::operator= 0x0099EFB0, vector<pair<EPSCType, CComponentInstance> >::resize(n) 0x00AF7A10 (catalogued
@@ -40,13 +41,7 @@ public:
     bool IsSameType(const CPSCBase& other) const { return GetType() == other.GetType(); }
 };
 
-template <class T> struct CCountedPointer {
-    T*    Object;
-    void* Info;
-    T* operator->() const { return Object; }
-    T& operator*() const { return *Object; }
-    void Reset(T* object);                         // 0x00AF6010 for T = CPSCBase
-};
+#include "engine/CCountedPointer.h"
 
 class CComponentInstance {                         // 0x14 bytes, vtable 0x0129F478
 public:
@@ -110,7 +105,7 @@ void CParticleSystem::DatabaseCopy(const CParticleSystem& other)
         Components[i].first = other.Components[i].first;
         CComponentInstance& mine = Components[i].second;
         const CComponentInstance& theirs = other.Components[i].second;
-        if (mine.Component.Object != 0 && mine.Component->IsSameType(*theirs.Component))
+        if (mine.Component.Data != 0 && mine.Component->IsSameType(*theirs.Component))
             mine.Component->DatabaseCopy(*theirs.Component);
         else {
             mine.Component.Reset(theirs.Component->DatabaseClone());

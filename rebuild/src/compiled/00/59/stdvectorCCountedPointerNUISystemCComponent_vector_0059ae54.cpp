@@ -1,5 +1,6 @@
 // std::vector<CCountedPointer<NUISystem::CComponent>>::vector(const vector& x) -- STLport copy constructor: _Vector_base(x.size(), x.get_allocator()) then __uninitialized_copy of x's elements, finish = the returned end
 // Leaf: ??0?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAE@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059AE54, 55 bytes, thiscall, `ret 4`, ebp frame.
 // Identity (proven): its only caller NUISystem::CFrontEndManager::RefreshAvailableSavedGamesForProfile 0x00598463 copies the vector returned by a component's virtual slot 53 (+0xD4) = CComponent::GetChildren (landed siblings; Ego_r.pdb ?GetChildren@CComponent@NUISystem@@UAEAAV?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@...), then copies element 0 through the same copy constructor 0x00428928 the range copy 0x0059ADA2 uses; Ego_r.pdb has ??0?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@...@QAE@ABV01@@Z.
 // Callees: _Vector_base<CCountedPointer<NUISystem::CComponent>>::_Vector_base(size_t, const allocator&) 0x0059AB7C, std::__uninitialized_copy 0x0059ADA2 (`__fastcall`).
@@ -8,12 +9,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 namespace NUISystem { class CComponent; }
-template <class T> class CCountedPointer {                // 8 bytes: object, pointer info
-public:
-    CCountedPointer(const CCountedPointer& other);        // 0x00428928
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> class allocator {

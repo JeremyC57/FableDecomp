@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_copy(_Rb_tree_node* x, _Rb_tree_node* p) -- STLport structural tree copy for set<unsigned long> (CIndexList::Indices): clone x under parent p, recurse into every right subtree and walk down the left spine
 // Leaf: ?_M_copy@?$_Rb_tree@KKU?$_Identity@K@std@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD3230, 169 bytes, thiscall `ret 8` (x, p; returns the cloned top).
 // Identity: recursive (0x00AD3276, 0x00AD32BE); the other callers are the set's tree operator= 0x00AD3720 (landed as the
 //   generic CRetailTree_00ad3230::operator=) and 0x00AD3A6B (the tree copy constructor). Node 0x14 bytes = 0x10 links +
@@ -15,34 +16,8 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo { public:
-    long  RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
-    void* Data;                                         // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 namespace QuadricOptimiserInternals {
 class CVertexPairContraction;

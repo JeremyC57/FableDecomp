@@ -1,5 +1,7 @@
 // CTCScriptedControl::IsActionListEmpty() const -- true when no scripted action is queued
 // Leaf: ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x007122C0, 15 bytes: `mov eax,[ecx+14h] ; mov edx,[eax] ; xor ecx,ecx ; cmp edx,eax ; sete cl ;
 // mov al,cl ; ret`.
 // Identity (proven): Ego_r.pdb names ?IsActionListEmpty@CTCScriptedControl@@QBE_NXZ and lays PActionList
@@ -16,14 +18,9 @@ template<class _Tp, class _Alloc = allocator<_Tp> > class list { public:      //
     bool empty() const { return _M_node->_M_next == _M_node; }
 };
 }
-template<class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-};
-template<class T> class CIntelligentPointer { public:   // 8 bytes: vptr + item
-    void* __vftable;
-    T*    Item;
-};
+#include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
 class CScriptGameResourceObjectScriptedThing;
 class CTCBase { public:                             // engine/CTCBase.h layout, modelled polymorphic

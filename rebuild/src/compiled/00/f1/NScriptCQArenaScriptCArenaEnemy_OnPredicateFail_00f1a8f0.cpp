@@ -1,5 +1,6 @@
 // NScript::CQ_ArenaScript::CArenaEnemy::OnPredicateFail() -- an arena enemy left the fight: one fewer of its creature type alive; if the hero killed it, add the current round/wave creature def's DeathScore to the crowd points; drop its quest-info health bar if it had one
 // Leaf: ?OnPredicateFail@CArenaEnemy@CQ_ArenaScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F1A8F0, 147 bytes, thiscall, plain `ret` (private virtual, entity vtable slot 5).
 // Identity (proven): the row is referenced once, from slot 5 (OnPredicateFail) of the RTTI-less entity vtable 0x012F9C50
 //   (0x012F9C64), which the landed NScript::CQ_ArenaScript::CArenaEnemy::Alloc 0x00F1A810 stores (slot 1 = the landed
@@ -77,12 +78,7 @@ public:
 };
 
 #include "engine/CBaseClass.h"                         // vtable 0x01231710, ~CBaseClass 0x0099A2E0
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"                       // vtable 0x01238C8C (79 slots), ~CScriptThing 0x004AA840
 #include "engine/CGameScriptInterfaceBase.h"           // vtable slots: CGameScriptInterface 0x01260F0C

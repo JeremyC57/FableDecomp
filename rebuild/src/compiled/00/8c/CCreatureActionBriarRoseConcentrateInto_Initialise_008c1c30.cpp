@@ -2,6 +2,7 @@
 // base Initialise; with a creature-mode manager and a live enemy add a CModeBriarRoseConcentrate(creature, enemy,
 // Imposter); then spawn the def's TELEPORT_INTO special effect at her position
 // Leaf: ?Initialise@CCreatureAction_BriarRoseConcentrateInto@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Layout: retail CCombatActionBase is 0x114 (Ego_r.pdb +0x18): Imposter +0x114 and PEnemy +0x115 (the PDB has the same
@@ -116,11 +117,8 @@ class CTCCreatureModeManager { public:                       // interface 0x31
     bool AddMode(CCountedModePointer mode);           // 0x0073ACC0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    CThing* m_pItem;
-    CBaseObject* GetPItem() const;                         // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
     CThing* GetCreature() const { return ((CThing*)GetPItem()); }
 };

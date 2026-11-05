@@ -1,4 +1,5 @@
 // CCreatureAction_DragonHoverOutOf::Initialise() -- animate descent, disable lifting/targeting, and stop solidity against the player.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail008F40B0 length277. Targeted interface9, SolidToThing77, native component vector+44.
 #define CCreatureAction_DragonHoverOutOf CCreatureAction_DragonHoverOutOf_PDB
@@ -40,11 +41,8 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 class CBaseObject;
-struct CBaseIntelligentPointer {
- virtual ~CBaseIntelligentPointer(); //00A01C10
- void* PData;
- CBaseObject* GetPItem() const; //00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CCombatActionBase { public:
  void* IntelligentPointer;
  CBaseIntelligentPointer PCreature;

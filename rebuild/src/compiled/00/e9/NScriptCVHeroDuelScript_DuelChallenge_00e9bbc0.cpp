@@ -1,5 +1,6 @@
 // NScript::CV_HeroDuelScript::DuelChallenge() -- the hero duel challenge cut-scene
 // Leaf: ?DuelChallenge@CV_HeroDuelScript@NScript@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9BBC0, 670 bytes, thiscall, plain `ret`, no EH frame.
 // Identity (proven): the strings CS_GIBBETHILL_HERODUEL_CHALLENGE(_W) and Ego_r.pdb ?DuelChallenge@CV_HeroDuelScript@NScript@@QAEXXZ
 //   (Ego_r member order places it here); called from 0x00E9B690. Catalog label DoMission_HeroDuelChallenge is wrong.
@@ -23,47 +24,7 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CCPPointerInfo {
-public:
-    long RefCount;                                      // +0x0
-    void (__fastcall* DeleteFunc)(void* data);          // +0x4
-    void* Data;                                         // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    CCountedPointer() : Data(0), Info(0) { }
-    void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        ReleaseData();
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CLevelScriptBase.h"

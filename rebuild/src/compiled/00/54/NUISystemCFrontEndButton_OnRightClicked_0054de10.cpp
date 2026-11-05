@@ -1,5 +1,6 @@
 // NUISystem::CFrontEndButton::OnRightClicked() -- when the button's def asks for it, run the PActionsOnRightClicked action list
 // Leaf: ?OnRightClicked@CFrontEndButton@NUISystem@@MAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054DE10, 81 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 148 of vtable 0x01249554 (RTTI .?AVCFrontEndButton@NUISystem@@; CNavButton's vtable has its
 //   own handlers there), Ego_r.pdb ?OnRightClicked@CFrontEndButton@NUISystem@@MAEXXZ; the list read is +0x188 = Ego_r.pdb
@@ -34,7 +35,7 @@ public:
     T* operator->() const { return Object; }
     T* Object;
 };
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class _Tp> class allocator { };
 template <class _Tp, class _Alloc = allocator<_Tp> > class list { public: void* _M_node; };

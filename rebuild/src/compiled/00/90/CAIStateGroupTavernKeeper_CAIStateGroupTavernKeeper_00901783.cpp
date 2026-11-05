@@ -1,5 +1,6 @@
 // CAIStateGroup_TavernKeeper::CAIStateGroup_TavernKeeper() -- base ctor, own vtable, jug/bar/pub/payee intelligent pointers
 // Leaf: ??0CAIStateGroup_TavernKeeper
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x00901783, 0x53 bytes. Manifest label "CAIStateGroup_WerewolfAttacker_Constructor" (_global) is wrong: the
 // vtable stored at +0 is 0x0128CD50, RTTI `.?AVCAIStateGroup_TavernKeeper@@`.
 // Callees: CAIStateGroupBase::CAIStateGroupBase @ 0x008FD255, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10.
@@ -21,16 +22,9 @@ class CAIStateGroupBase { public:
     CAIStateGroupBase();                        // 0x008FD255
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual void v00();
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-};
 
 struct CAIStateGroup_TavernKeeper : CAIStateGroupBase {
     CIntelligentPointer<CThingObject>     PJug;                 // +0x14

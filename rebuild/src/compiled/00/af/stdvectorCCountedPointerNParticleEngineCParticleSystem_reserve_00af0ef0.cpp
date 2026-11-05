@@ -1,5 +1,6 @@
 // std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >::reserve(size_type n) -- STLport reserve: when capacity() < n, allocate n elements, copy the live ones over and destroy/free the old block (or just allocate for an empty vector); keep the size
 // Leaf: ?reserve@?$vector@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@@std@@QAEXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 35c: Ego_r.pdb + FableWin.pdb ?reserve@?$vector@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@@std@@@std@@QAEXI@Z -- the element is CCountedPointer<NParticleEngine::CParticleSystem>: the
 //   landed CParticleEmitter::ReadBinary 0x00AEFAA0 reserves CParticleEmitter::ParticleSystems (vector<CCountedPointer<CParticleSystem> >, 8-byte
 //   elements) through it and binds this spelling; the CGuiVarTransferBase element was a byte-identical-body propagation (and so are its
@@ -98,13 +99,6 @@ void vector<_Tp, _Alloc>::reserve(size_type __n)
     }
 }
 }
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                 // 8 bytes: Data, Info (count at Info+0)
-public:
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-    CCountedPointer(const CCountedPointer& other);
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 namespace NParticleEngine { class CParticleSystem; }
 template void std::vector<CCountedPointer<NParticleEngine::CParticleSystem> >::reserve(unsigned int);

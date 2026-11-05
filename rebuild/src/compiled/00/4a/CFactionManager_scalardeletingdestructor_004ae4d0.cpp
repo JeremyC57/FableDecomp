@@ -1,5 +1,6 @@
 // CFactionManager::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the inline destructor destroys the pair<unsigned long, CCountedPointer<CFaction> > range of its vector through the out-of-line __destroy_aux and frees the storage, then the object is freed when bit 0 of the flags is set
 // Leaf: ??_GCFactionManager@@QAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AE4D0, 55 bytes (+ int3 padding to 64), thiscall `ret 4`, returns this.
 // Identity (proven): CFactionManager::`scalar deleting destructor'; evidence: its callee 0x004AD9E0 is __destroy_aux<pair<unsigned long, CCountedPointer<CFaction> >*> (the landed vector<pair<unsigned long, CCountedPointer<CFaction> > >::_M_insert_overflow 0x006BAA90 calls it), the element type of Ego_r.pdb CFactionManager::Factions (CVectorMap<unsigned long, CCountedPointer<CFaction> >, the class's only member); the landed CWorld::~CWorld 0x004A6AB0 deletes the CWorld::PFactionManager scoped_ptr<CFactionManager> through the same inline body (0x004A6D13 calls 0x004AD9E0 then operator delete)
@@ -17,12 +18,7 @@ void operator delete(void* block);                      // 0x00BFE9BC
 #include "engine/CVectorMap.h"
 
 class CFaction;
-template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
-public:
-    T*    Data;
-    void* Info;
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 class CFactionManager {                               // 16 bytes in retail (Ego_r.pdb: one member)
 public:
     CVectorMap<unsigned long, CCountedPointer<CFaction>, CKeyPairCompareLess<unsigned long, CCountedPointer<CFaction> > > Factions;   // +0x0

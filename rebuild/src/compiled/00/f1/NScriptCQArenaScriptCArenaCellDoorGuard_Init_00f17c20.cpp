@@ -1,5 +1,6 @@
 // NScript::CQ_ArenaScript::CArenaCellDoorGuard::Init() -- script object initialiser: clears two state bools and settings 591 / 592 on the thing.
 // Leaf: ?Init@CArenaCellDoorGuard@CQ_ArenaScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F17C20, length 46 bytes.
 // Callees: game-interface virtual slots 591 (`call [eax+93Ch]`, thing + 0) and 592 (`call [edx+940h]`, thing + 0) through the interface pointer at +4. The two byte stores are scheduled between the first call's pushes. The object is larger than the 0x1C-byte PDB CCham (bytes at +0x1C/+0x1D), so the "CCham" label is rejected.
 // Layout (as the landed CAT_ConvoySpy::Init @ 0x00F04410): +0x04 the game script interface pointer (a vtable of
@@ -8,11 +9,9 @@
 // this class (the scalar deleting destructor follows the body); the manifest label "CCham::Init" is propagated.
 // Naming wave 35: identity reg 00f0feb1 "ArenaCellDoorGuard" in 00f0fb70; Alloc 00f17b70; vtable 012f95a8 slot 2; PDB ?Init@CArenaCellDoorGuard@CQ_ArenaScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); replaces CScriptObject_00f17c20::Init: PDB has no such member (wave3/labels_alloc.tsv); PDB ?Init@CArenaCellDoorGuard@CQ_ArenaScript@NScript@@EAEXXZ in FableWin.pdb.
 //   Was `?Init@CScriptObject_00f17c20@@QAEXXZ`; this source now defines the PDB member (class CScriptObject_00f17c20 renamed CArenaCellDoorGuard); same bytes.
-class CScriptThing { public:
-    void* __vftable;
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CGameScriptInterface { public:
     virtual void v000();

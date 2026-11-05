@@ -1,5 +1,6 @@
 // CScriptBase::SaveGameState(CCharString& out) -- save every active entity script, then append the script's own data and the persisted entity scripts to the game-state text between START_/END_ markers
 // Leaf: SaveGameState
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB8820, length 135 bytes (+9 int3 padding).
 // PDB: ?SaveGameState@CScriptBase@@QAEXAAVCCharString@@@Z; EntityScripts is a CVectorMap<unsigned __int64,
 // CCountedPointer<CActiveEntityScriptBase> > (16-byte pairs; retail element vector begin +0x08, end +0x0C).
@@ -21,10 +22,7 @@ class CPersistContext { public:
 
 class CActiveEntityScriptBase;
 
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace NScript {
 struct CRuntimeScriptedEntityPersist {

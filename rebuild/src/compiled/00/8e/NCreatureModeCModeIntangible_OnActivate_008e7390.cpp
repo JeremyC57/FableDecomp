@@ -1,5 +1,6 @@
 // NCreatureMode::CModeIntangible::OnActivate() -- the creature turns intangible: suspend physics, hide it from mapwho, drop its physics flags, make it un-willable and untargetable; a player creature also suspends its animation and remembers its Damageable bit; record the boss phase and clear the weapon trails
 // Leaf: ?OnActivate@CModeIntangible
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E7390, 344 bytes (padded to 352), `ret`; vtable 0x01268514 slot 5.
 // Name: FableWin.pdb `?OnActivate@CModeIntangible@NCreatureMode@@UAEXXZ` (slot 5; the mirror of OnDeactivate 0x008E74F0).
@@ -32,10 +33,7 @@ class CTCPhysicsBase { public:
 };
 struct CModeBase;
 class CCreatureActionBase;
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };

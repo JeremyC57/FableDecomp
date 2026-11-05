@@ -1,5 +1,6 @@
 // NParticleEngine::Initialise() -- create the particle engine's singletons: the emitter database, the emitter manager and the particle-system-component manager, each adopted by its global counted pointer
 // Leaf: ?Initialise@NParticleEngine@@YIXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Block->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEBE20, 122 bytes, __fastcall, no arguments. Caller 0x004174FA (engine start-up).
 // Identity: FableWin.pdb `?Initialise@NParticleEngine@@YIXXZ` (the sibling Uninitialise 0x00AEBEA0); globals PEmitterDatabase
 //   0x013D2E14, PEmitterManager 0x013D2E1C, PPSCManager 0x013D2E24 (FableWin.pdb dynamic initializers, in address order).
@@ -28,12 +29,7 @@ public:
 
 struct CCountBlock;
 
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                      // +0x0
-    CCountBlock* Block;                                     // +0x4
-    void Reset(T* data);                                    // out of line per instantiation
-};
+#include "engine/CCountedPointer.h"
 
 namespace NParticleEngine {
 extern CCountedPointer<CParticleEmitterDatabase> PEmitterDatabase;   // 0x013D2E14 (Reset 0x00AECCC0)

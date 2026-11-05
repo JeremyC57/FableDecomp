@@ -1,5 +1,6 @@
 // std::__uninitialized_copy(pair<EPSCType, CComponentInstance>* first, pair<EPSCType, CComponentInstance>* last, pair<EPSCType, CComponentInstance>* result, const __false_type&) -- copy-construct the particle-system component map entries of [first, last) into raw storage at result and return the end of the copies
 // Leaf: ??$__uninitialized_copy@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Block->Info are the header CCountedPointer's (same offsets); the local CCountBlock (= CCPPointerInfo) members unchanged are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF6920, 94 bytes, __fastcall (first ecx, last edx; result and the empty tag on the
 //   stack, `ret 8`).
 // Callers: the vector<pair<EPSCType, CComponentInstance> > grow/insert paths at 0x00AF74BA, 0x00AF7528, 0x00AF7611 and
@@ -13,20 +14,8 @@
 //   user copy constructor (`if (Block) ++Block->RefCount`).
 inline void* operator new(unsigned int, void* p) { return p; }
 
-struct CCountBlock {
-    unsigned long RefCount;                                 // +0x0
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                      // +0x0
-    CCountBlock* Block;                                     // +0x4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Block(other.Block)
-    {
-        if (Block)
-            ++Block->RefCount;
-    }
-};
 
 namespace NParticleEngine {
 enum EPSCType { PSC_TYPE_NONE = 0 };

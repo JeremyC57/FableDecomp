@@ -1,5 +1,6 @@
 // CThingTrackNode::CThingTrackNode() -- CThing constructed with type 10, the CThingGameObject layer (vtable 0x01244F7C, intelligent pointer at +0xc0), then CThingTrackNode's vtable, an empty TrackName, and cleared links / UIDs / start-end flags
 // Leaf: ??0CThingTrackNode
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00837C70, 108 bytes, plain `ret`.
 // Identity: ??0CThingTrackNode@@QAE@XZ (Ego_r.pdb); the own vtable stored last is 0x01272CE4 = CThingTrackNode (RTTI).
 //   The manifest label "CTCDPhysicalObstruction_Constructor" is propagated and wrong.
@@ -12,22 +13,8 @@
 //   TrackName constructor call), all from one `xor eax,eax`.
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0

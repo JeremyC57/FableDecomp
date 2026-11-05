@@ -1,5 +1,6 @@
 // NScript::CGlobal_OpenChestScript::Main() -- the global "open chest" quest script: if the hero is under player control and the last used target is an alive chest, either play the CHEST_OPEN_FAIL sound and show the locked message (not enough keys), or take scripted control of the hero, open the chest in a paused cutscene until it is open or cancelled (cancel/hit), wait for the reward when the chest had items, and re-draw the weapon the hero was wielding; then deactivate the quest
 // Leaf: ?Main@CGlobal_OpenChestScript@NScript@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EEC890, 1544 bytes, plain `ret`; quest-script Main.
 // Callees: SetPredicate 0x00CB7920, IsActiveThreadTerminating 0x00CB7940, CScriptThing copy 0x004ABE90 / dtor 0x004AA840,
@@ -57,11 +58,8 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
     virtual ~CScriptThing();                                    // 0x004AA840
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }

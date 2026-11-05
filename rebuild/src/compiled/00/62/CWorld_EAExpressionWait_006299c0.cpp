@@ -1,5 +1,6 @@
 // CWorld::EAExpressionWait(const CGameEvent*) -- game-event action: the event player's live controlled creature starts a CCreatureAction_ActivateQuest on the "Expression_Wait" script (no object, resources not loaded)
 // Leaf: ?EAExpressionWait@CWorld@@QAEXPBVCGameEvent@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006299C0, 138 bytes, thiscall, `ret 4`.
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?EAExpressionWait@CWorld@@QAEXPBVCGameEvent@@@Z; the row is referenced only
 //   from the CWorld event-action table initialiser 0x0121B9B0 (store at 0x0121CE80), sits among the landed CWorld::EA*
@@ -28,13 +29,8 @@ public:
 
 class CBaseObject;
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                         // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void* PData;                                        // CBaseObjectPointer*
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 class CThing {

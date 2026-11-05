@@ -21,7 +21,7 @@ class CGameEventPackageSet
 { public:
     unsigned long packageCount;
     CGameEventPackage packages[50];
-    void Initialise();
+    void Clear();   // 0x009F1720
     void AddPackage(CGameEventPackage* package);
 };
 class CMainGameComponent
@@ -67,7 +67,7 @@ bool CNetworkClient::GetLocalGameEventPackageSet(CGameEventPackageSet* packageSe
         ++localFrame;
         localEventPackage.AddEvent(&event);
         localEventPackage.sequence = static_cast<unsigned long>(localFrame);
-        packageSet->Initialise();
+        packageSet->Clear();
         packageSet->AddPackage(&localEventPackage);
         localEventPackage.Clear();
         return true;

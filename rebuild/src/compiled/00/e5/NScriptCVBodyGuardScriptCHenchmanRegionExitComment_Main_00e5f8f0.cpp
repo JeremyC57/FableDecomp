@@ -1,5 +1,6 @@
 // NScript::CV_BodyGuardScript::CHenchmanRegionExitComment::Main() -- body-guard henchman comment on leaving a region: collects the "BodyGuard" things; waits until none is within 30 units, then every frame asks the body-guard script for a region-exit comment from the first henchman within 10 units, stopping once one is made
 // Leaf: ?Main@CHenchmanRegionExitComment@CV_BodyGuardScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E5F8F0, length 649 bytes (+ int3 padding).
 // Callees: IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString(const
 //   char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CBaseClass() 0x0099A2D0 / ~CBaseClass 0x0099A2E0, operator delete
@@ -16,26 +17,7 @@ class CCharString;
 class C3DVector;
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CCountBlock { long References; void (__fastcall* DeleteFunc)(void* data); void* Data; };
-template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>: {Data, Info}
- void* Data;
- CCountBlock* Info;
- CCountedPointer() : Data(0), Info(0) { }
- CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
- CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (folded with CCountedPointer<CDiskFileWin32>::operator=)
- ~CCountedPointer()
- {
-  if (Info) {
-   --Info->References;
-   if (Info->References == 0) {
-    Info->DeleteFunc(Info->Data);
-    delete Info;
-   }
-  }
-  Data = 0;
-  Info = 0;
- }
-};
+#include "engine/CCountedPointer.h"
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
  virtual void v01();
  virtual CCharString GetDefName() const;                 // slot 2 (+0x08) 0x004AA8D0

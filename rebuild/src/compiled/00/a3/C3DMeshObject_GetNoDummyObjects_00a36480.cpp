@@ -1,5 +1,6 @@
 // C3DMeshObject::GetNoDummyObjects(const CCharString& name) const -- how many dummy objects the mesh statistics hold under the name's CRC (FindDummyObjectsEnd - FindDummyObjectsBegin over 56-byte pairs)
 // Leaf: GetNoDummyObjects
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36480, 90 bytes (+ int3 padding), `ret 4`.
 // Identity: Ego_r.pdb `?GetNoDummyObjects@C3DMeshObject@@QBEJABVCCharString@@@Z`; callers 0x004BE09A / 0x004C0AD5. The catalog's
 //   "CTCInventoryAbilities_Helper_GetCount" is propagated/descriptive (the callees carry the propagated
@@ -41,11 +42,7 @@ class C3DMeshStats { public:
     const TDummyObjectEntry* FindDummyObjectsEnd(unsigned long nameHash) const;     // 0x00A2E910
 };
 
-template <class T> class CCountedPointer { public:
-    T*    Data;                                    // +0
-    void* Info;                                    // +4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class C3DMeshInfo;
 

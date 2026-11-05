@@ -1,5 +1,6 @@
 // NScript::CQ_EndGameFocalSitesScript::CEndGameThunder::Main() -- end-game Thunder: make Me undamageable, unkillable, a villager and off the combo count; unless the fight is already over, walk Me up to the hero, open a conversation (married / not married to Lady Grey line, then two more lines); then until the fight is over, ally Me with the hero whenever the hero hits Me, and whenever the hero strays beyond 8 units walk Me back to within 4
 // Leaf: ?Main@CEndGameThunder@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: MsgIsHitBySpecialAbilityFrom takes EHeroAbility (slot 41, 0x004AAD20: ?MsgIsHitBySpecialAbilityFrom@CScriptThing@@UBE_NW4EHeroAbility@@ABVCCharString@@@Z in Ego_r.pdb and FableWin.pdb); the literal 14 is HERO_ABILITY_HEAL_LIFE_SPELL (engine/EHeroAbility.h, Ego_r enum); engine/EHeroAbility.h included (Ego_r enum EHeroAbility).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2C810, 1901 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release
@@ -58,20 +59,9 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    VPAD4(ma) VPAD1(mb)                                 // slots 1..5
-    virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)
-    VPAD8(mh) VPAD4(mi) VPAD2(mj)                       // slots 7..20
-    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
-    VPAD4(mc) VPAD1(mg)                                 // slots 22..26
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    VPAD8(md) VPAD4(me) VPAD1(mf)                       // slots 28..40
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/EHeroAbility.h"
+#include "engine/CScriptThing.h"
 struct CIsThingAlive {                                  // vtable 0x012C32F0
     virtual void v00();
     CScriptThing m_thing;                               // +0x04
@@ -219,7 +209,7 @@ void NScript::CQ_EndGameFocalSitesScript::CEndGameThunder::Main()
             {
                 return;
             }
-        if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
+        if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO"))) {
             if (IsActiveThreadTerminating())
                 {
                     return;
@@ -250,7 +240,7 @@ void NScript::CQ_EndGameFocalSitesScript::CEndGameThunder::Main()
                     {
                         return;
                     }
-                if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
+                if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(HERO_ABILITY_HEAL_LIFE_SPELL, "SCRIPT_NAME_HERO"))) {
                     if (IsActiveThreadTerminating())
                         {
                             return;

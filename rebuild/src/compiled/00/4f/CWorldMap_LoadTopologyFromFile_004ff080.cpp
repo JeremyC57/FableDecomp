@@ -1,6 +1,7 @@
 // CWorldMap::LoadTopologyFromFile(long, CCountedPointer<CAFile>, CASuspendableProcess&) -- build the map object from its topology file, record the map as loaded, step the suspendable process and rebuild the map edges
 // before the pushes and reads file.Data after the first push; ours loads process/file.Data first (eax/edx) and Maps.Start late
 // Leaf: ?LoadTopologyFromFile@CWorldMap@@UAEXJV?$CCountedPointer@VCAFile@@@@AAVCASuspendableProcess@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Naming wave 27 (family virt, DECISIONS_W26 D5): LoadTopologyFromFile is virtual in both PDBs (UAE; slot 6 of vtable 0x01244AEC), so
 //   the vptr is the compiler's. Was a non-virtual (QAE) over a `void* _vptr` member.
 // Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
@@ -23,27 +24,7 @@
 // Shape: the vector's operator[] is STLport's `*(begin() + n)` through an inline begin() accessor (`_SweepBegin1()`): the element
 //   address is formed from the accessor's returned pointer plus the scaled index as retail; `first[n]` folds the index into the
 //   load and recolours the registers (the GOTCHAS wave-25 rule, confirmed on the RTM compiler).
-class CCPPointerInfo { public:
-    long  Count;                                             // +0
-    void (__fastcall* Destroy)(void* data);                  // +4
-    void* Data;                                              // +8
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->Count == 0)
-        {
-            Info->Destroy(Info->Data);
-            delete Info;
-        }
-    }
-    T* operator->() const { return Data; }
-    T& operator*() const { return *Data; }
-    void Reset(T* data);                                     // 0x0050FAA0 (CCountedPointer<CMap>)
-};
+#include "engine/CCountedPointer.h"
 
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14

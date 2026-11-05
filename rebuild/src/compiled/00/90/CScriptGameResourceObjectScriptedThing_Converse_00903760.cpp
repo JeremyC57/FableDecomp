@@ -1,5 +1,6 @@
 // CScriptGameResourceObjectScriptedThing::Converse(const CScriptGameResourceObjectScriptedThingBase& other, const char* text) -- speak the text group at the other scripted thing
 // Leaf: ?Converse@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@PBD@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00903760, length 120 bytes (+8 int3 padding).
 // PDB: ?Converse@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@PBD@Z.
 // Callees: other's virtual GetScriptThing() const (slot 12, +0x30; CScriptThing by value through a hidden pointer),
@@ -9,30 +10,8 @@
 // pushed first, this's vtable is read before the nested call; the CScriptThing temporary (vtable 0x01238C8C,
 // CCountedPointer PImp at +4) dies inline: vptr store, counted release, both PImp words zeroed, base dtor call.
 // Model: local polymorphic model (engine/CScriptGameResourceObjectScriptedThing.h holds the vptr as a plain word).
-struct SCountBlock {
-    long References;                                 // +0
-    void (__fastcall* Destroy)(void*);               // +4
-    void* Object;                                    // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T* Data;
-    SCountBlock* Info;
-    ~CCountedPointer()
-    {
-        if (Info)
-        {
-            --Info->References;
-            if (Info->References == 0)
-            {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 

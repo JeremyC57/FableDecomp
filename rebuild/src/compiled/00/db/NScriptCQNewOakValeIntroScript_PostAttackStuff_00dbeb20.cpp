@@ -1,5 +1,6 @@
 // CQ_NewOakValeIntroScript::PostAttackStuff() -- wait for the post-attack start marker to appear, then teleport the hero to it, put Oakvale in limbo, take the teddy bear, log the story, reset the camera and music, fade in, wait for the hero to reach his dad's trigger and play the "he's dead, Jim" cut-scene, then lift the limbo, restart the clock and close the post-attack quest
 // Leaf: PostAttackStuff
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBEB20, 1095 bytes.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, ~CScriptThing 0x004AA840 (and its inline body: counted-pimpl release,
 //   operator delete 0x00BFE9BC, ~CBaseClass 0x0099A2E0), IsActiveThreadTerminating 0x00CB7940, AddLogbookStoryEntry
@@ -25,28 +26,8 @@ class CWideString { public:
 };
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct SCountBlock {
-    long  m_references;                                 // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4
-    void* m_pObject;                                    // +8
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImp;
-template <class T> class CCountedPointer { public:                               // CCountedPointer<CScriptThingImp>
-    CScriptThingImp* Data;
-    SCountBlock*     Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

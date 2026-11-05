@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_BanditAlly::OnPredicateFail() -- count the kill in the master data and remove the bandit's health bar if it has one
 // Leaf: ?OnPredicateFail@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F03850, 29 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 5 (OnPredicateFail) of the RTTI-less entity vtable 0x012F7D88, stored by the entity Alloc 0x00F037A0 (`NScript::CQ_AmbushTradersScript::CAT_BanditAlly::Alloc`); ?OnPredicateFail@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXXZ is in Ego_r.pdb and FableWin.pdb.
 // Label: the manifest's "sub_00f03850" is a gap-scan placeholder.
@@ -13,18 +14,7 @@ public:
     CCharString(const CCharString& other);                // 0x0099EC30
     ~CCharString();                                       // 0x0099EAE0
 };
-class CCPPointerInfo {                                   // CCountedPointer's shared block
-public:
-    long  RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

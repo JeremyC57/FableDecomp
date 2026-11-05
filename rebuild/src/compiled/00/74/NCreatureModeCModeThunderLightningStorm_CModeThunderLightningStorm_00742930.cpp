@@ -1,5 +1,6 @@
 // NCreatureMode::CModeThunderLightningStorm::~CModeThunderLightningStorm() -- release the hit-thing list, the storm def, the three effect pointers and both lightning-beam emitter lists, destroy the filter, then the stand base
 // Leaf: ??1CModeThunderLightningStorm
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00742930, 234 bytes, `ret` by tail jump to ~CModeStandBase @ 0x0073D860.
 // Callees: the element destructors through vtable slot 0 (`push 0 ; call [eax]`: the virtual destructor of each
 //   CIntelligentPointer<CThing>), free @ 0x00BFEA14 (each vector's storage), the def's vtable slot 1 (DeleteSelf when the
@@ -22,14 +23,9 @@ extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CThing;
 
-class CBaseIntelligentPointer {                             // 8 bytes: vptr + the pointee link
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10 (slot 0: the scalar deleting dtor)
-    void* PData;                                            // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
 
 class CCharString {
 public:

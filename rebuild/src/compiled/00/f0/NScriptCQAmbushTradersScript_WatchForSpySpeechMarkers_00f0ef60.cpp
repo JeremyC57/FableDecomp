@@ -1,6 +1,7 @@
 // CQ_AmbushTradersScript::WatchForSpySpeechMarkers(CScriptThing spy) -- while the spy lives, each time EnableSpeechSpy is raised pick the spy's next line (sentry-seen, hero-proximity or, near the M_AT_EntitySpeech marker, the normal lines; the first five in order, then random ones without repeating the last) and play it as a conversation with the hero, restarting SpeechSpyTimer
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForSpySpeechMarkers@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0EF60, length 1824 bytes (ret 0xc: the CScriptThing argument by value).
@@ -30,28 +31,7 @@ class CCharString { public:
 };
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:                                 // CCountedPointer's shared block
-    long RefCount;                                      // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4
-    void* Data;                                         // +8
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #define SLOTS_2_74 \
     virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); \
     virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); \

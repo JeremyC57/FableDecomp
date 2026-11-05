@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>::GetVectorParam(C3DVector& vector, const unsigned long& key) const -- looks up the vector parameter registered for a (non-zero) key and copies it out; false when absent
 // Leaf: ?GetVectorParam@
+// Plan phase 5 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local same-TU LowerBound body removed (the header defines the same-TU noinline body).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B059F0, length 82 bytes, `ret 8`.
@@ -15,10 +16,7 @@
 // Label: the catalog's `CVectorMap_LookupAndCopyVolume` is descriptive.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 #include "engine/CArray.h"
 

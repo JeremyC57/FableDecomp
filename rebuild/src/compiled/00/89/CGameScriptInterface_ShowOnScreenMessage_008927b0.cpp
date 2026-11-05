@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008927B0, length 89 bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CSubtitleRenderer::SetText (the nine-argument overload) @ 0x00492FB4, CCharString::~CCharString @ 0x0099EAE0. Shape: a `push ecx` frame for the empty string (a named local built before the call), the interface in esi, the font bank loaded between the pushes, `ret 10h`.
 // Leaf: ShowOnScreenMessage
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pGameUI_013b8790 (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 struct CDisplayEngine_Retail;
@@ -44,12 +45,7 @@ struct CMiniMapDisplay_Retail {
 struct CDrawQuestInfo_Retail {
     long AddBarHealth(CThing_Retail* thing, const CRGBColour& colour, const CCharString& name, float value);   // 0x0064F885 (CDrawQuestInfo::AddBarHealth)
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:

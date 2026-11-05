@@ -1,5 +1,6 @@
 // CWorld::DeleteCheckPointSave() -- delete the check-point auto-save: when the profile's check-point save path exists, delete it through the drive manager, then delete its ".hs" companion file when that exists too (static)
 // Leaf: DeleteCheckPointSave
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049E740, 114 bytes, plain `ret` (static __fastcall, no arguments).
 //   PDB name ?DeleteCheckPointSave@CWorld@@SIXXZ.
 // Callees: 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get (static, returns the manager reference), 0x00408040
@@ -41,12 +42,7 @@ class CDriveManager { public:
     EDriveReturn DeleteFileW(const CWideString& path);                                  // 0x009E4BC0
 };
 
-template <class T>
-class CCountedPointer { public:
-    T*    Data;                                    // +0
-    void* Info;                                    // +4 count block
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 extern CCountedPointer<CDriveManager> g_DriveManager;   // 0x013CAA28
 

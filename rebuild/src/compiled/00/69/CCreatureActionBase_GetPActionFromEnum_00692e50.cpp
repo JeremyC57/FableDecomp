@@ -1,5 +1,6 @@
 // CCreatureActionBase::GetPActionFromEnum(EActionRegisteredType type, CThingCreatureBase& creature) -- clone the registered prototype action for the type, give it the creature and return it counted; a null counted pointer when the type is not registered
 // Leaf: ?GetPActionFromEnum@CCreatureActionBase@@SI?AV?$CCountedPointer@VCCreatureActionBase@@@@W4EActionRegisteredType@@AAVCThingCreatureBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 //
 // Retail 0x00692E50, 105 bytes (+ int3 padding to 112), static __fastcall `ret 4` (the hidden CCountedPointer result
 //   in ecx, the type in edx, the creature on the stack).
@@ -20,16 +21,8 @@
 //   the PDB name sets (descriptive "Registry").
 enum EActionRegisteredType { ACTION_REGISTERED_TYPE_0 = 0 };
 class CThingCreatureBase;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(T* item);                               // 0x00695880
-    T* operator->() const { return Data; }
-};
 
 namespace std {
 template <class _T1, class _T2> class pair {

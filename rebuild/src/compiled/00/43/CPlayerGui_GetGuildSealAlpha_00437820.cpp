@@ -1,4 +1,5 @@
 // CPlayerGui::GetGuildSealAlpha() const -- returns the guild seal drawer's NPlayerGui::CDrawGuildSeal::GetAlpha
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00437820, 12 bytes: `mov ecx,[ecx+1D0h] ; call 0x00643F9E ; ret` (catalog label "_Cons_val<...>" is wrong).
 // Evidence: called three times from NPlayerGui::CDrawQuickAccessIcons::Draw (0x00652FA4) on its CPlayerGui
 // (+0x04) with the float result multiplied into icon alphas; callee 0x00643F9E is CDrawGuildSeal::GetAlpha.
@@ -11,12 +12,7 @@ class CDrawGuildSeal { public:
     float GetAlpha() const;                              // 0x00643F9E
 };
 }
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CPlayerGui { public:
     unsigned char _pad00[0x1d0];
     CCountedPointer<NPlayerGui::CDrawGuildSeal> PDrawGuildSeal;   // +0x1d0

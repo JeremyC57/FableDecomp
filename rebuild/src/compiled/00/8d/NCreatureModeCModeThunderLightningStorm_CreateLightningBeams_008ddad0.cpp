@@ -2,6 +2,7 @@
 //   caster (main beams, flagged MainBeamsCreated) and NumberOfBeams LIGHTNING_BEAM_END_EFFECT things, keeping intelligent pointers
 //   to the live ones in the two emitter vectors; the special-effects sub-def reference is released at the end
 // Leaf: CreateLightningBeams
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DDAD0, 661 bytes (`ret`).
 // Matching: the first GetEffectFromString (0x00669D30) and the first push_back (0x004AD520) stay out of line; at the second site
@@ -119,14 +120,8 @@ class CTCDParticleEmitter { public:
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                  // +4
-    CBaseIntelligentPointer();                        // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CBaseObject* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                      // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }

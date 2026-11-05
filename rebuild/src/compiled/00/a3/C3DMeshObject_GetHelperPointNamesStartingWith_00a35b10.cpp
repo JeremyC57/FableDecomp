@@ -6,6 +6,7 @@
 // it on a stack C3DMeshObject whose vtable 0x01239860 is .?AVC3DMeshObject@@. PDB layout: MeshInfo +4,
 // Mesh (CCountedPointer<const C3DMeshStats>: Data, Info) +8, PositionMatrix +0x10.
 // Leaf: ?GetHelperPointNamesStartingWith@C3DMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@ABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 class CCharString {
 public:
     void* PStringData;
@@ -16,15 +17,9 @@ namespace std {
     template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
 }
 
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class C3DMeshInfo;
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;     // +0x00
-    CCPPointerInfo* Info;     // +0x04
-    T* operator->() const { return Data; }
-};
 
 class C3DMeshStats {
 public:

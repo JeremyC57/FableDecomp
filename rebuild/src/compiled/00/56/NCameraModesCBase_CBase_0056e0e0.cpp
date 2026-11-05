@@ -1,5 +1,6 @@
 // NCameraModes::CBase::~CBase() -- camera-mode root destructor: own vtable, then the members in reverse: GoTo's two attractor lists, the SubComponents vector of counted pointers, the camera-mode def pointer release, LookAt's two attractor lists
 // Leaf: ??1CBase@NCameraModes@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056E0E0, length 101 bytes (+11 int3 padding).
 // Label correction: catalogued as CTCActionUseBed::~CTCActionUseBed (propagated); the only caller is the deleting destructor
@@ -45,7 +46,7 @@ template <class T> class CDefPointer { public:
         }
     }
 };
-template <class T> class CCountedPointer { public: T* Data; void* Count; };
+#include "engine/CCountedPointer.h"
 
 namespace NCameraModes { class CSubComponentBase; }
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };

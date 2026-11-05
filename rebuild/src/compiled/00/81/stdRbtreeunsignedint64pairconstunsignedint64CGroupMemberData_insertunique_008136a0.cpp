@@ -1,17 +1,14 @@
 // std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CGroupMemberData>, ...>::insert_unique(const value_type& v) -- STLport 4.6 unique insert: descend comparing the 64-bit keys, step back once through the out-of-line operator-- unless at begin(), insert through _M_insert when the key is new; {iterator, inserted} through the hidden pointer
 // Leaf: ?insert_unique@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@_N@2@ABU?$pair@$$CB_KVCGroupMemberData@@@2@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008136a0, 198 bytes, thiscall, `ret 8` (hidden pair result + value reference).
 // Identity (proven): its _M_insert 0x00813580 is landed as std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CGroupMemberData>, ...>::_M_insert; caller CTCCreatureGroup::AddNewMember 0x00813010 (Ego_r.pdb CTCCreatureGroup::Members).
 // Callees: _Rb_tree_iterator::operator-- 0x008126F0 (this instantiation's own out-of-line copy, defined here under
 //   auto_inline(off)), _M_insert(x, y, v, w) 0x00813580 (thiscall, `ret 14h` with the hidden result); node 0x28 bytes.
 // Shape (family L009, landed twin 0x0052A130): STLport 4.6 _tree.c insert_unique verbatim, less<unsigned __int64> inline.
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                            // Ego_r.pdb: vptr + PData, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();                   // 0x00A01C10
-    CBaseObjectPointer* PData;                            // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingAICreature;
 class CGroupMemberData {                                   // Ego_r.pdb, 20 bytes
 public:

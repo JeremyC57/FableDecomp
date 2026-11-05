@@ -1,5 +1,6 @@
 // CThreadedFileManager::OnFileReadCompletion(unsigned long errorCode, unsigned long bytesTransferred, _OVERLAPPED* overlapped) -- ReadFileEx completion routine: on a read error flag a dirty disc (DVD device) or report through the hard-disk error callback; then mark the object finished, signal the manager's event and resume a paused file installer
 // Leaf: ?OnFileReadCompletion@CThreadedFileManager@@CGXKKPAU_OVERLAPPED@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0098E320, length 112 bytes (102 + int3 padding), `ret 0Ch` (__stdcall).
 // PDB (FableWin/Ego_r): ?OnFileReadCompletion@CThreadedFileManager@@CGXKKPAU_OVERLAPPED@@@Z (private static); its address
 // is passed to ReadFileEx at 0x0098EE9D / 0x0098EFBD (ProcessObjects / SetObjectPriority).
@@ -28,11 +29,7 @@ public:
     void Unpause();                             // 0x009C3250
 };
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                 // +0x00
-    void* Info;                                 // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 template <class T> class CTBaseSingleton {
 public:

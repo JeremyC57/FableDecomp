@@ -1,5 +1,6 @@
 // NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton::Init() -- reset the entity script: no skeleton part returned yet, the four ceremonial-skeleton object names (sword, shield, armour, helmet) assigned, collected_all cleared
 // Leaf: ?Init@CSecretPassageSkeleton@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DC3E50, 68 bytes (vtable entry at 0x012DA49C of the script's table).
 // Callees: CCharString::operator=(const char*) @ 0x0099EFE0 (landed), four times with the literals
 // "OBJECT_CEREMONIAL_SKELETON_SWORD" @ 0x012DA51C, "..._SHIELD" @ 0x012DA4F8, "..._ARMOUR" @ 0x012DA4D4,
@@ -23,11 +24,9 @@ class CGameScriptInterfaceBase;
 namespace NScript { class CQ_OpeningGraveyardSecretPassageScript; } using NScript::CQ_OpeningGraveyardSecretPassageScript;
 struct CQ_SunnyvaleMasterData;
 
-class CScriptThing { public:                            // 12 bytes: vptr + CCountedPointer PImp
-    void* __vftable;
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CEntityScriptBase { public:
     virtual void v00();                          // entity-script vtable

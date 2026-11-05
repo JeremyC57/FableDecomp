@@ -3,6 +3,7 @@
 //   front-end "forward" sound unless a child menu, pre-actions or actions exist, then run the actions; otherwise just play
 //   the sound. Record the input time, and restart the global menu timer unless the parent menu's def suppresses it.
 // Leaf: ?GoForward@CMenuEntry@NUISystem
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe @ 0x0053D720, 592 bytes, plain `ret`.
 // Callees: CManager::GetInstance 0x0041E5F2 (__fastcall) and its slots 24 (+0x60), 27 (+0x6c), 40 (+0xa0 play a
 //   sound by def member) and 42 (+0xa8 GetDef by value); own slot 131 (+0x20c, run an action list); child component slots
@@ -110,11 +111,7 @@ class CComponent { public:
     virtual void v102(); virtual void v103(); virtual void v104(); virtual void v105(); virtual void v106(); virtual void v107();
     virtual CDefPointer<CMenuDef> GetDef();   // slot 108 (+0x1b0)
 };
-template <class T> struct CCountedPointer {
-    T*    m_pObject;
-    void* m_pCount;
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 struct CComponentVector {                        // STLport vector<CCountedPointer<CComponent> > (12 bytes)
     CCountedPointer<CComponent>* _M_start;
     CCountedPointer<CComponent>* _M_finish;

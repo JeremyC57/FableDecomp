@@ -1,4 +1,5 @@
 // CHitParameters::~CHitParameters() -- destroy the intelligent pointer at +0x38 (0x00A01C10), release the counted pointer at +0x30, destroy the intelligent pointer at +0x28, then the base destructor (0x00A0D3D0, a tail jump)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0048CEC0, length 51 bytes.
 // The base label "~CAInputProcess" is propagated. Shape: no vtable store (the class is not polymorphic here), members last-to-first.
 class CIVCountedPointeeBase { public:
@@ -21,15 +22,8 @@ struct CIVCountedPointer {
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CHitParametersBase_00a0d3d0 {               // 0x28 bytes
     unsigned char _body[0x28];
     ~CHitParametersBase_00a0d3d0();                // 0x00A0D3D0

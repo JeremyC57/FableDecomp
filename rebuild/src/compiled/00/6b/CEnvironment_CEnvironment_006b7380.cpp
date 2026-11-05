@@ -1,5 +1,6 @@
 // CEnvironment::~CEnvironment() -- destroy the environment's members in reverse order (rain-splash particle pointer, spell-effect interpolator and interface, theme resource pallette, interpolated draw params, both game-tick states, priority-stack channels), then the CBase part
 // Leaf: ??1CEnvironment@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B7380, 263 bytes, thiscall, plain `ret`, no EH frame.
 // Identity: the catalog's "CGameWorld_Destructor" is a descriptive auto label. The only caller is CEnvironment's scalar
@@ -27,12 +28,8 @@ protected:
 };
 
 class CThing;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    void* PData;                                            // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 struct __false_type { __false_type() { } };

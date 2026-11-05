@@ -1,19 +1,13 @@
 // CGameScriptInterface::ResetWhetherToFailQuestOnDeathToDefault
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members root/header are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // __fastcall, void, 1 param (this)
 
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> MapNode;
 
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    void* root;      // +0x00
-    MapNode* header; // +0x04  (end sentinel)
-    MapNode* LowerBound(const ETCInterfaceType& keyPtr); // thiscall: this in ecx, keyPtr on stack
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Map;
 
 class CThingPlayerCreature;
@@ -37,7 +31,7 @@ void __fastcall CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault(CGa
     Map* map = (Map*)((char*)eax + 0x44);
     ETCInterfaceType key = (ETCInterfaceType)(4);
     MapNode* node = map->LowerBound(key);
-    MapNode* endNode = map->header;
+    MapNode* endNode = map->end();
     MapNode* sel;
     if (node == endNode) sel = endNode;
     else if (node->first <= 4) sel = node;

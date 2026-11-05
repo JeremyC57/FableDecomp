@@ -1,5 +1,6 @@
 // CPhysicsMesh::CPhysicsMesh(const C3DMeshFile& file, CMovableResourceMemoryPool* pool) -- build a physics mesh from a mesh file: empty helper/dummy maps, face/point/navigation arrays and containment maps, cleared bounding sphere and segment tree, one reference; then read the mesh, helper and containment data and derive the navigation, bounding, segmentation and centre-of-gravity information
 // Leaf: ??0CPhysicsMesh
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A6DA40, 255 bytes, `ret 8`. PDB: ??0CPhysicsMesh@@QAE@ABVC3DMeshFile@@PAVCMovableResourceMemoryPool@@@Z.
 //   Called from 0x00A25D90. Vtable 0x0129DC68 (CPhysicsMesh).
@@ -56,12 +57,7 @@ class CIPhysicsFacesSegmentBase {
 public:
     static CIPhysicsFacesSegmentBase* __fastcall Create(const CArray<C3DTriangle2>& faces, const CArray<C3DVector>& points);   // 0x00A86CD0
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Reset(T* data);                                // 0x00A6E9A0 for T = const CIPhysicsFacesSegmentBase
-};
+#include "engine/CCountedPointer.h"
 
 class CIVCountedBase {                                  // intrusive counted base: vptr + the +4 word
 public:

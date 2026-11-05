@@ -1,5 +1,6 @@
 // CEngineClothSimulationMeshBase::IsRunning() const -- the cloth runs while it holds particle simulations: its ParticleSims vector is not empty
 // Leaf: ?IsRunning@CEngineClothSimulationMeshBase@@UBE_NXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B80930, 10 bytes, thiscall, `ret`: mov eax,[ecx+0Ch] ; cmp eax,[ecx+10h] ; setne al ; ret
 // Identity (proven): slot 7 of vtable 0x012A3924 (RTTI CEngineClothSimulationMeshBase) and of the derived cloth vtables
@@ -9,11 +10,7 @@
 // Shape: `empty() ? false : true` gives the bare `setne al` (`return !empty();` widens through a full register).
 class CParticleSimulation;
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CArray.h"
 

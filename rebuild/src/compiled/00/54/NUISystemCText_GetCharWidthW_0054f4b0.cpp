@@ -1,5 +1,6 @@
 // NUISystem::CText::GetCharWidthW(unsigned short c) -- the pixel width of one character in the ENG_ARIAL_16 font bank: format it as a one-character wide string, fetch the bank from the system manager's font manager and truncate the measured extent's X
 // Leaf: ?GetCharWidthW@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054F4B0, 200 bytes, plain `ret` (Ego_r.pdb `?GetCharWidthW@CText@NUISystem@@SII_W@Z`:
 //   static __fastcall, the character in cx, unsigned result; wchar_t is modelled as `unsigned short`, no /Zc:wchar_t).
 // Callees: CWideString() 0x0099AED0, CWideString::Sprintf(const wchar_t*, ...) 0x0099BA70 (__cdecl, L"%c"
@@ -38,27 +39,7 @@ public:
     void __cdecl Sprintf(const unsigned short* format, ...);   // 0x0099BA70
 };
 
-class CCPPointerInfo { public:
-    long  References;                                       // +0x00
-    void (__fastcall* Destroy)(void* object);               // +0x04
-    void* Object;                                           // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Release()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-    }
-    ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class C2DVector {
 public:

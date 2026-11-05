@@ -1,5 +1,6 @@
 // CGameScriptInterface::CreateCreature(const CCharString& defName, const C3DVector& position, const CCharString& scriptName, bool appear) const -- create an AI creature from the named def at the position (the def's player, a CThingAICreatureInit carrying the script name), return its script thing; optionally start the creature's appear action, then wait CreateCreatureDelayFrames script frames
 // Leaf: CreateCreature
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A9100, length 532 bytes (virtual, `ret 14h`: hidden result + 4 args).
 // Callees: CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, CDefinitionManager::GetDef<CThingCreatureDef>
@@ -25,29 +26,7 @@ class CCharString { public:
 #include "engine/C3DVector.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CCPPointerInfo { public:
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void*);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:                              // CCountedPointer<CScriptThingImp>
-    void* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

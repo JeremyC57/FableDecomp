@@ -1,5 +1,6 @@
 // CV_BeardyBaldyScript::SetWanderPointAndDistance(const CScriptThing&, const C3DVector&) -- make a villager wander around a point: centre point, min/max wander distance from the script def, then scripting state group 4 (wander)
 // Leaf: ?SetWanderPointAndDistance@CV_BeardyBaldyScript@NScript@@QAEXABVCScriptThing@@ABVC3DVector@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E53F60, 249 bytes (256 with padding), `ret 8`.
 // Callees (all through the game script interface at this+0x40): slot 763 SetWanderCentrePoint(CScriptThing, C3DVector),
@@ -15,21 +16,8 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 #include "engine/C3DVector.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CCPPointerInfo { public:                                 // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImpl;
-template <class T> class CCountedPointer { public:
-    CScriptThingImpl* Data;
-    CCPPointerInfo*   Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

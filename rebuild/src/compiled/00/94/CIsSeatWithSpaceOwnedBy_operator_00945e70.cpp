@@ -1,5 +1,6 @@
 // CIsSeatWithSpaceOwnedBy::operator()(const CIntelligentPointer<CThing>& item) const -- the item-pointer twin (0x00945E70): the item's thing must be of object kind 5 (byte +0x10) instead of out of limbo; then a seat (type-flag bit 16 or 17), owned by POwner (its owned-entity component, kind 0x33, names POwner; with no POwner the seat must be unowned), whose user-action-point component (kind 0x2d) still has a free point
-// Leaf: ??RCIsSeatWithSpaceOwnedBy@@QBE_NABUCBaseIntelligentPointer@@@Z
+// Leaf: ??RCIsSeatWithSpaceOwnedBy@@QBE_NABVCBaseIntelligentPointer@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: own ??RCIsSeatWithSpaceOwnedBy@@QBE_NABUCBaseIntelligentPointer@@@Z -> ??RCIsSeatWithSpaceOwnedBy@@QBE_NABVCBaseIntelligentPointer@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00945E70, 223 bytes, `ret 4` (the byte twin of 0x009109B0 after its first test).
 // Callees: the thing's virtual type-flags getter (slot 48, +0xc0, called twice), the const component-map LowerBound @
 //   0x004365B0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the owned-entity component's POwner),
@@ -14,11 +15,8 @@
 //   already tested as ownedBit; the out-parameter GetInterface form pops edi early and compares from memory); the
 //   free-point test returns through its own `mov al,1` exit.
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    void* PData;
-    CBaseObject* GetPItem() const;                 // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

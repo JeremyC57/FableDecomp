@@ -1,5 +1,6 @@
 // CCountedPointer<NAnimationEvents::CManager>::DeleteData(void* data) -- the counted pointer's per-type deleter: destroy the animation-event manager (extra-events map, symbol map) and free it
 // Leaf: ?DeleteData@?$CCountedPointer@VCManager@NAnimationEvents@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x006FD400, 60 bytes, static __fastcall (data in ecx), `ret`.
 // Identity (probable): the CCountedPointer<T>::DeleteData shape (landed CCountedPointer<CCardinalSpline>::DeleteData
 //   0x0075F830: `delete (T*)data`); it is stored as the count block's deleter by the landed CCountedPointer Reset
@@ -81,13 +82,6 @@ class CManager { public:                                   // retail 0x40 (Ego_r
 };
 }
 
-class CCPPointerInfo;
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<NAnimationEvents::CManager>;

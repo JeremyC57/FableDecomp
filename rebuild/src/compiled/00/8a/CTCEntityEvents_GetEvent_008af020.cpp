@@ -1,5 +1,6 @@
 // CTCEntityEvents::GetEvent(Event** out,const Filter& filter) const -- Find the newest event of the requested type.
 // Leaf: ??$GetEvent@VCEventHitThing@NEntityEvents@@VCEventFilter_None@2@@CTCEntityEvents@@QBE_NPAPAVCEventHitThing@NEntityEvents@@ABVCEventFilter_None@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity: original mutable event template instance in PDB; full retail RTTI01272390 GetType slot1=00811d00 returns29, proving CEventHitThing rather than propagated CEventHitBy.
 #define CTCEntityEvents CTCEntityEvents_HeaderLayout
 #include "engine/CTCEntityEvents.h"
@@ -11,8 +12,7 @@
 #endif
 void __cdecl operator delete(void*);
 // Layout: original counted block RefCount+0, DeleteFunc+4, Data+8; wrapper Data+0,Info+4. No active shared headers exist.
-class CCPPointerInfo {public:long RefCount;void (__fastcall* DeleteFunc)(void*);void* Data;};
-template<class T>class CCountedPointer {public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){} __forceinline CCountedPointer(const CCountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;} __forceinline ~CCountedPointer(){if(Info && --Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}} T* operator->()const{return Data;}};
+#include "engine/CCountedPointer.h"
 namespace NEntityEvents {
 enum EEventType {EVENT_EXPRESSION_PERFORMED_TO=3,EVENT_APOLOGY_RECEIVED=4,EVENT_HIT_THING=29};
 // Layout: original CEventBase virtual destructor slot0/GetType slot1,WorldFrame+4. Unused event-specific data does not enter this lookup.

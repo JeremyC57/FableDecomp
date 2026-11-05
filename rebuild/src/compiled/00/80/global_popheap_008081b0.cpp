@@ -1,5 +1,6 @@
 // _global::__pop_heap(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CIntelligentPointer<CThing>* result, CIntelligentPointer<CThing> value, CDoNotUseBinaryPredicate comp, int*) -- SGI pop_heap core: *result = *first, then sift `value` down from the root
 // Leaf: __pop_heap
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008081B0, length 92 bytes. The catalog label "CTCInventoryBase::GetItemDescription"
 // is propagated over a byte-identical skeleton and wrong: this is the SGI
 //   __pop_heap(first, last, result, T value, Compare comp, Distance*) { *result = *first;
@@ -14,14 +15,8 @@
 // constructor (base constructor, vtable store, SetPItem(other.GetPItem())); the assignment and the copy constructor must be
 // __forceinline. The by-value `value` parameter is destroyed by this callee at the end (`lea ecx,[esp+14h] ; call ~`).
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                        // +4
-    CBaseIntelligentPointer();                   // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CBaseObject* item);            // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }

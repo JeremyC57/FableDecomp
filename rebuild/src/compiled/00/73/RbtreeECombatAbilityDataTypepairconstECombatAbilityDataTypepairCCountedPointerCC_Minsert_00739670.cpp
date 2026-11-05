@@ -1,5 +1,6 @@
 // _Rb_tree<ECombatAbilityDataType, pair<const ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> > >::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport tree node insertion under parent y (left when y is the header, w is null and x is set or v's key sorts before y's), maintaining leftmost/rightmost, then rebalance and count
 // Leaf: ?_M_insert@CCombatAbilityTree
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00739670, 235 bytes (240 with padding), thiscall `ret 14h`.
 // Label correction: catalog "CMemoryAllocatorVariableSize_InsertNode" -- the STLport tree _M_insert of
 //   CTCCombat::CombatAbilities (multimap<ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>,
@@ -13,15 +14,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) throw() { return p; }
 
-template <class T> class CCountedPointer { public:     // 8 bytes: object + shared count
-    T*    Object;
-    long* Count;
-    CCountedPointer(const CCountedPointer& o) : Object(o.Object), Count(o.Count)
-    {
-        if (Count)
-            ++*Count;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CCombatAbilityData;
 class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;

@@ -1,4 +1,5 @@
 // 008E8830 NCreatureMode::CModeBriarRoseTeleportInvulnerable::FrameUpdate.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in g_FrameTicks_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Original nested mode owner, retail action sizes, and weak control blocks.
@@ -36,17 +37,8 @@ class CThingCreatureBase : public CThing { public:
 };
 // Original 8-byte wrapper/control-block ABI; GetPItem performs lazy dead-object cleanup.
 struct CBaseObjectPointer { CBaseObject* object; unsigned long refcount; };
-struct CBaseIntelligentPointer {
-    CBaseObjectPointer* PData;
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();
-    CBaseObject* GetPItem() const; // 0x00a01b50
-    void SetPItem(CBaseObject*);
-};
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer() : CBaseIntelligentPointer() {}
-    T* Get() const { return static_cast<T*>(GetPItem()); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CAnimateThing;
 class CTCCreatureModeManager { public:
     class CModeBase { public:

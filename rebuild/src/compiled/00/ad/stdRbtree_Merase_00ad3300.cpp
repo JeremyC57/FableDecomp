@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (map<pair<long, long>, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> >) STLport 4.6 recursive subtree release without rebalancing: for each node erase its right subtree, release the value's counted pointer, free the node and continue with its left child
 // Leaf: ?_M_erase@?$_Rb_tree@U?$pair@JJ@std@@U?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@2@U?$_Select1st@U?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@@2@U?$less@U?$pair@JJ@std@@@2@V?$allocator@U?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBU?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@QuadricOptimiserInternals@@@@@std@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD3300, 92 bytes (+ int3 padding to 96), thiscall `ret 4`; recursive
 //   (calls itself at 0x00AD3316); speed-optimised TU.
 // Identity (proven): map<pair<long, long>, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> >; evidence: its first caller is COptimisedPrimitive::Initialise 0x00ACA830, clearing a local tree whose insert 0x00AD6740 looks keys up with 0x00AD24F0 (two signed dword compares, first then second: std::pair<long, long>'s operator<) and releases a counted pointer; FableWin.pdb names the quadric optimiser's map<std::pair<long, long>, CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> > (`?_Key@?$_Tree_val@V?$_Tmap_traits@U?$pair@JJ@std@@V?$CCountedPointer@VCVertexPairContraction@...`), the only 8-byte-keyed counted-pointer map of the optimiser; the counted pointer sits at node +0x18
@@ -12,29 +13,8 @@
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // the shared count block
-    long RefCount;                                      // +0x0
-    void (__fastcall *DeleteFunc)(void*);               // +0x4
-    void* Data;                                         // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
-public:
-    T* Data;                                            // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 namespace QuadricOptimiserInternals { class CVertexPairContraction; }
 
 namespace std {

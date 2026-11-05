@@ -3,6 +3,7 @@
 // the emitter is gone or the die-off timer expires, follow an independent object's physics, die with a vanished attached
 // thing, then refresh the attachment (hidden state, thing or camera) and re-arm the position/orientation resets
 // Leaf: FrameUpdate
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, PCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 //
 // Retail 0x006E1620, 608 bytes (plain `ret`). Model as differ/006dffb0.cpp (CTCDParticleEmitter, retail offsets).
@@ -49,11 +50,7 @@ struct CParticleCreationParameters {
     unsigned char   _pad00[0x10];
     CRightHandedSet RHSet;                                   // +0x10
 };
-template<class T> class CCountedPointer { public:
-    T*    Object;
-    long* PCount;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class C3DOrientationInterpolator;
 class CTCPhysicsBase { public:
 #define V(n) virtual void v##n();

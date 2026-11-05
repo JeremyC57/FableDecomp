@@ -1,5 +1,6 @@
 // 00a48b50 CLipSyncPhonemeSample::WriteToFile
 // Leaf: ?WriteToFile@CLipSyncPhonemeSample@@QBEXAAVCDataOutputStream@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags:
 #include <stddef.h>
 #include "fable_string.h"
@@ -12,9 +13,8 @@ class CDataStream:public CBaseClassNonCopyable{public:virtual void SetPosition(u
 class CDataOutputStream:public CDataStream{public:CCharString NewLine;virtual void Write(const void*,long)=0;void WriteULONG(unsigned long);};
 // Layout: the callee's original state is unread here; its native 12-byte frequency array plus four floats occupy28 bytes.
 class CSpeechFrame{unsigned char unread[28];public:void WriteToFile(CDataOutputStream&)const;};
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 // Layout: only the original pointer fields and proven const dereference API are exposed. No lifetime operation is performed by this row.
-template<class T>class CCountedPointer{public:T*Data;CCPPointerInfo*Info;T*operator->()const{return Data;}};
 class CLipSyncPhonemeSample{public:CCharString Symbol;unsigned long ID;CCountedPointer<CSpeechFrame>SampleFrame;void WriteToFile(CDataOutputStream&)const;};
 void CLipSyncPhonemeSample::WriteToFile(CDataOutputStream&stream)const{stream.WriteULONG(ID);SampleFrame->WriteToFile(stream);}
 FABLE_STATIC_ASSERT(sizeof(CDataOutputStream)==sizeof(CDataOutputStreamFields));

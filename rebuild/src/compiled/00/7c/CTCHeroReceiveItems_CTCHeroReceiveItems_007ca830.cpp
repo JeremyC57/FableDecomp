@@ -1,5 +1,6 @@
 // CTCHeroReceiveItems::CTCHeroReceiveItems(CThing* thing) -- CTCBase(thing), an empty item list and picked-up vector, cleared pointers and flags, a full-size timer of 1, null primitive handles; then joins the global update list
 // Leaf: ??0CTCHeroReceiveItems
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CA830, 167 bytes (`ret 4`); vtable 0x0126EBFC CTCHeroReceiveItems.
 // Label: the catalog says CTCShotDefinitionBase::CTCShotDefinitionBase (propagated); the vtable store is CTCHeroReceiveItems'
 // (rtti-vtables.tsv) and the members are its Ego_r.pdb members.
@@ -28,15 +29,8 @@ public:
     void AddToGlobalTCs();   // 0x00686ED0
 };
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                                    // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtables 0x0125A858 / 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 template <class T> struct CAllocator {                  // STLport allocator<T> (empty)
     CAllocator() { }

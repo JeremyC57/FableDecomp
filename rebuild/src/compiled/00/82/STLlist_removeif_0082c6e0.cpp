@@ -1,6 +1,7 @@
 // std::list::remove_if(CMiniMapDisplay::CIsMarkerAutoMarker pred) -- erase every mini-map marker that was placed automatically (each erased marker's thing pointer destroyed, then its node freed)
 // Instantiation: std::list<CMiniMapDisplay::CMarkerInfo>::remove_if
 // Leaf: ??$remove_if@VCIsMarkerAutoMarker@CMiniMapDisplay@@@?$list@VCMarkerInfo@CMiniMapDisplay@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0082C6E0, 62 bytes (+ int3 padding), thiscall, `ret 4` (the empty predicate's word).
 // Identity: FableWin.pdb `??$remove_if@VCIsMarkerAutoMarker@CMiniMapDisplay@@@?$list@VCMarkerInfo@CMiniMapDisplay@@...@Z`;
 //   callers CMiniMapDisplay::Initialise (call 0x0082A338), 0x0082B766 and the jmp 0x0082C850. The catalog label
@@ -17,17 +18,9 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 class CThing : public CBaseObject { };
 class CBaseObjectPointer;
 
-class CBaseIntelligentPointer {                             // Ego_r.pdb: vptr +0, PData +4 (vtable 0x0129C95C)
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10 (slot 0: the scalar deleting destructor)
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-    CBaseObjectPointer* PData;                              // +0x4
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // no declared destructor in retail
-public:
-    T* Get() const { return (T*)GetPItem(); }
-};
 
 template <class T>
 bool __fastcall operator==(const CIntelligentPointer<T>& a, const CIntelligentPointer<T>& b)

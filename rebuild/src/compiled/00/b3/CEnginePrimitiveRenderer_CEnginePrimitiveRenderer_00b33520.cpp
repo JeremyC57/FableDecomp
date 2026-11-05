@@ -1,5 +1,6 @@
 // CEnginePrimitiveRenderer::~CEnginePrimitiveRenderer() -- delete every scene in SceneList, clear it and the global renderer pointer, then destroy the members (scene array, 23 counted manager pointers, the manager array) and the CEngineComponent / CEnginePrimitiveRendererSharedData bases
 // Leaf: ??1CEnginePrimitiveRenderer
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B33520, length 1472 bytes (body 0x5bd), plain `ret`.
 // Callees: CEngineScene virtual deleting dtor (slot 0, flag 1), memmove @ 0x00BFEAE6 (STLport __copy_trivial in clear()),
 //   free @ 0x00BFEA14 (vector storage), CCPPointerInfo::DeleteFunc (slot +4, object in ecx) + operator delete @ 0x00BFE9BC,
@@ -12,33 +13,12 @@
 //   CEnginePrimitiveRenderer2D dtor 0x00B4AAA0 (whose CCountedPointer / manager-array models are reused here).
 #include <stddef.h>
 
-class CCPPointerInfo { public:
-    unsigned int RefCount;
-    void (__fastcall *DeleteFunc)(void*);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 extern "C" void __cdecl free(void* pointer);                                         // 0x00BFEA14
 void __cdecl operator delete(void* pointer);                                         // 0x00BFE9BC
 
-template<class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-
-    ~CCountedPointer()
-    {
-        if (Info != 0) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CEnginePrimitiveManager;
 class CEnginePrimitiveManagerStaticMeshes;

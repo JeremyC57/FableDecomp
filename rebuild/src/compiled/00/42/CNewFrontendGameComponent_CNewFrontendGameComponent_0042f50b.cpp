@@ -1,5 +1,6 @@
 // CNewFrontendGameComponent::~CNewFrontendGameComponent() -- shut the front end down if that has not happened yet, then destroy the members (save name, file lists, banks, engine, def, init data, menu font) and the game-component base
 // Leaf: ??1CNewFrontendGameComponent
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042F50B, 158 bytes. Size TU (`#pragma optimize("s", on)`: `and dword ptr [esi+3Ch],0`).
 // Callees: CNewFrontendGameComponent::Shutdown @ 0x0042EBB6, ~CWideString @ 0x0099B510, vector<CWideString>::~vector @ 0x00412130,
 //   free @ 0x00BFEA14 (the POD vector's storage), the CCountedPointer destructors @ 0x00403750 / 0x0042F974 / 0x0042F9A0 /
@@ -26,11 +27,7 @@ class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterf
     bool m_bShutDown;                                      // +0x08
     virtual __forceinline ~CGameComponent() { }
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    ~CCountedPointer();                                    // out of line per instantiation
-};
+#include "engine/CCountedPointer.h"
 class CFontBank; class CGraphicDataBank; class CMeshDataBank; class CASoundBank; class CIEngine; class CInputManager;
 namespace NGameText { class CDataBank; }
 class CFrontEndDef { public:

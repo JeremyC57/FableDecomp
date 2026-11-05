@@ -1,5 +1,6 @@
 // NUISystem::CEditBox::SetText(const CWideString& text) -- replace the edit text, scroll back to its first character and put the cursor after the last one
 // Leaf: ?SetText@CEditBox@NUISystem@@UAEXABVCWideString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00540180, 48 bytes (`ret 4`, incl. int3 padding); vtable 0x01246B8C slot 143.
 // Identity: FableWin.pdb ?SetText@CEditBox@NUISystem@@UAEXABVCWideString@@@Z.
 // Callees: CWideString::operator= @ 0x0099B7D0, CWideString::GetLength @ 0x0099B220 (on the argument).
@@ -7,7 +8,7 @@
 //          +0x164, CursorPos +0x168, LeftMostCharacter +0x16C -- Ego_r.pdb +0x18C/+0x198/+0x1A4/+0x1A8/+0x1AC less a 0x30
 //          base shift and 8 bytes per 12-byte debug list; no engine/ header exists for NUISystem::CEditBox.
 // Shape: the zero store precedes the assignment call; the length is read from the argument, not the member.
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CWideString {
 public:
     void* PStringData;
@@ -15,10 +16,6 @@ public:
     long GetLength() const;                        // 0x0099B220
 };
 namespace NUISystem { class CAction; }
-template<class T> class CCountedPointer { public:
-    T*              Data;                          // +0x00
-    CCPPointerInfo* Info;                          // +0x04
-};
 struct SActionNode {
     SActionNode*                           _M_next;   // +0x00
     SActionNode*                           _M_prev;   // +0x04

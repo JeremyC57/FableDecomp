@@ -1,5 +1,6 @@
 // std::_List_base::clear() -- (_List_base<CCountedPointer<NBankFileManager::CRetailBank> >) STLport list clear: walk from the first node to the sentinel, release each node's counted pointer (deleter and count block freed at zero), free the node, then link the sentinel to itself
 // Leaf: ?clear@?$_List_base@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@V?$allocator@V?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009AAE50, 89 bytes (+ int3 padding), thiscall, `ret`.
 // Identity (proven): std::_List_base<CCountedPointer<NBankFileManager::CRetailBank>, std::allocator<CCountedPointer<NBankFileManager::CRetailBank> > >::clear();
 //   evidence: the CBankFileManager destructor 0x009A7B70 (stores vtable 0x0129B018, RTTI .?AVCBankFileManager@@) clears this+0x10 = Ego_r.pdb CBankFileManager::RetailBanks (list<CCountedPointer<NBankFileManager::CRetailBank> >; retail offset after the vptr and the 0xC map at +4); the list wrappers 0x009AB750 / 0x009AC2B0 are its other callers.
@@ -15,29 +16,7 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 namespace NBankFileManager { class CRetailBank; }
-class CCPPointerInfo {                                     // Ego_r.pdb 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {               // 8 bytes: the object, the shared count block
-public:
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 

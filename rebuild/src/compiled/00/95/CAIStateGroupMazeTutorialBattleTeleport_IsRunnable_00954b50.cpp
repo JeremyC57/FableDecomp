@@ -1,4 +1,5 @@
 // CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable() -- allow teleport after configured cooldown with a living target.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail00954b50 length268. Native CMazeBattleDef TutorialTeleportTime5c differs donor60; definition getter008c3510 names CMazeBattleDef at01243bb8.
@@ -21,12 +22,8 @@ struct CAIStateGroup_MazeTutorialBattleTeleport:CAIStateGroupBase{void* _pad_0x1
 #endif
 struct MazeThing;
 class CBaseObject;
-class CBaseIntelligentPointer {
-public:
-    void SetPItem(CBaseObject*a0);   // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
-private: public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct MazePointerBase{virtual ~MazePointerBase();MazeThing* item;MazePointerBase();}; //00a01c10,00a01b10,00a01b50,00a01b90
 struct MazePointer:MazePointerBase{__forceinline MazePointer(MazeThing* p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)p);}__forceinline MazePointer& operator=(const MazePointer& p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)(((MazeThing*)((CBaseIntelligentPointer*)&p)->GetPItem())));return *this;}}; //derived scalar destructor004a9710,vtable01238c6c
 struct MazeBoss{long GetPhase();}; //007aed10

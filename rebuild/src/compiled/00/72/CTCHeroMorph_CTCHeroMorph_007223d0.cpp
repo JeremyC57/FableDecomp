@@ -1,5 +1,6 @@
 // CTCHeroMorph::~CTCHeroMorph() -- destroy the custom-tattoo map, the tattoo def pointers, both particle-emitter lists and the mesh morph set in reverse order, then ~CTCBase
 // Leaf: ??1CTCHeroMorph
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members m_count->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007223D0, length 204 bytes. Called only by the deleting destructor 0x007223B0
 // (slot 0 of CTCHeroMorph's vtable 0x01265CF4); the catalog label "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip"
 // is propagated.
@@ -24,26 +25,7 @@ class CTCBase { public:
 };
 
 struct CCountedItem { };
-class CCPPointerInfo { public:                                     // the shared count block
-    long m_count;                                           // +0x00
-    void (CCountedItem::*m_pfnDestroy)();                   // +0x04 (called with the item as `this`)
-    CCountedItem* m_pItem;                                  // +0x08
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->m_count == 0) {
-                (Info->m_pItem->*Info->m_pfnDestroy)();
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 struct CNodeValue_004b8050 { void* m_data[2]; };            // CIntelligentPointer<CThing>
 struct CRetailList_004b8050 {                               // STLport list<CIntelligentPointer<CThing>> (one word)

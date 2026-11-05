@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node* x) -- STLport erase-without-rebalancing for CEngineScene::MapList (map<long, map<long, CCountedPointer<CEngineSceneMap> > >): recurse right, destroy the row's inner map (clear + free its header), free the node, continue left
 // Leaf: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJV?$map@J
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B98350, 114 bytes, thiscall, `ret 4`.
 // Identity: recursive (0x00B9836B) and called by the outer tree's destructor / clear (0x00B94BBF, 0x00B985A2, 0x00B98812,
 //   0x00B988A2; the landed CRetailTree_erase00b98350 destructors). The 0x20-byte node holds a long key and an STLport
@@ -15,11 +16,7 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 class CEngineSceneMap;
 
-template <class T> class CCountedPointer {                  // {Data, Info}
-public:
-    T*    Data;
-    long* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 

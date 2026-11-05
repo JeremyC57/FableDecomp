@@ -1,4 +1,5 @@
 // CTCLight::SetColour(const CRGBColour& colour) -- while overridden, change the shared light info's colour: a light that was black (0,0,0,255) becomes active, one set to black inactive, then refresh the owner's appearance
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?ForwardToGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00640BB0, length 136 bytes (`ret 4`).
@@ -27,12 +28,7 @@ struct CLightInfo {                                 // CTCLight::CLightInfo
     unsigned long LightingChannelsEffected;         // +0x10
     bool          Inverted;                         // +0x14
 };
-class CCPPointerInfo;
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CLightDef;
 class CTCLight { public:
     virtual void v00();

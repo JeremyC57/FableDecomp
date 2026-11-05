@@ -1,5 +1,6 @@
 // std::find_if(std::list<CCountedPointer<CVillageTaskHorn> >::iterator first, iterator last, CIsHornTaskWithThisHorn pred) -- the first village horn task the predicate accepts (the task using a given horn), or last
 // Leaf: ??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@std@@VCIsHornTaskWithThisHorn@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@0@U10@0VCIsHornTaskWithThisHorn@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065FFCA, 64 bytes, __fastcall (hidden result in ecx), ebp frame, `ret 10h`, /O1 TU.
 // Identity (proven): the catalog label "CGuiControlTree::SelectNextEntryByName" is propagated. Its only caller is
 //   CTCVillage::UpdateHornTasks (landed 0x0065BE6C) at 0x0065BF25, which builds a CIsHornTaskWithThisHorn (Ego_r.pdb: PHorn,
@@ -25,13 +26,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     CIntelligentPointer(const CIntelligentPointer& other);   // 0x004A9730 for <CThing>
 };
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Info;
-    CCountedPointer(const CCountedPointer& other); // 0x0065D89B for <CVillageTaskHorn>
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 
 class CIsHornTaskWithThisHorn {
 public:

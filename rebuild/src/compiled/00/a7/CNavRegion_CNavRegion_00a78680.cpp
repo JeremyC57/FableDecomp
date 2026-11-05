@@ -1,5 +1,6 @@
 // CNavRegion::CNavRegion(long mapIndex, long internalIndex) -- build a navigation region: an empty connection list (one malloc'd sentinel node), RegionID = mapIndex << 16 ^ (internalIndex & 0xFFFF), MostRecentSearchID = 0
 // Leaf: ??0CNavRegion@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A78680, 62 bytes (+ int3 padding to 64), thiscall `ret 8`, returns this.
 // Identity: Ego_r.pdb `??0CNavRegion@@QAE@JJ@Z` (CNavRegion(long, long)) and the CNavRegion layout (RegionID +0,
 //   Connections +4 -- an STLport list<CCountedPointer<CNavRegionConnection> >, 4 bytes in retail -- MostRecentSearchID
@@ -18,11 +19,7 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 struct SCountBlock;
 class CNavRegionConnection;
 
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                      // +0
-    SCountBlock* Info;                                      // +4
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator {

@@ -1,20 +1,10 @@
 // 00825270 std::_Push_heap
 // Flags: /Gr
 // Leaf: _Push_heap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Spellings unified: own ??$_Push_heap@U?$pair@HU?$CCountedPointer@UCFaction@FableHeap_00825270@@@FableHeap_00825270@@@FableHeap_00825270@@UCKeyPairCompareLess@2@@FableHeap_00825270@@YIXPAU?$pair@HU?$CCountedPointer@UCFaction@FableHeap_00825270@@@FableHeap_00825270@@@0@HHU10@UCKeyPairCompareLess@0@@Z -> ??$_Push_heap@U?$pair@HV?$CCountedPointer@UCFaction@FableHeap_00825270@@@FableHeap_00825270@@@FableHeap_00825270@@UCKeyPairCompareLess@2@@FableHeap_00825270@@YIXPAU?$pair@HV?$CCountedPointer@UCFaction@FableHeap_00825270@@@FableHeap_00825270@@@0@HHU10@UCKeyPairCompareLess@0@@Z
 // Layout: 12-byte keyed counted pointer; count+0, callback+4, Data+8; oracle signed key comparison.
 namespace FableHeap_00825270 {
-struct CCPPointerInfo { int RefCount; void (__fastcall *DeleteFunc)(void*); void* Data; };
-template<class T> struct CCountedPointer {
- T* Data; CCPPointerInfo* Info;
- CCountedPointer():Data(0),Info(0){}
- CCountedPointer(const CCountedPointer& p):Data(p.Data),Info(p.Info){if(Info)++Info->RefCount;}
- CCountedPointer& Assign(T* nextObject,CCPPointerInfo* nextBlock) {
-  if(Info!=nextBlock){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}}Data=nextObject;Info=nextBlock;if(Info)++Info->RefCount;}return *this;
- }
- CCountedPointer& operator=(const CCountedPointer& p){return Assign(p.Data,p.Info);}
-
- ~CCountedPointer(){if(Info && --Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}}
-};
+#include "engine/CCountedPointer.h"
 struct CFaction;
 template<class K,class V> struct pair { K first;V second;pair(){}pair(const pair& p):first(p.first),second(p.second){} };
 typedef pair<int,CCountedPointer<CFaction> > CKeyedCountedPointer;

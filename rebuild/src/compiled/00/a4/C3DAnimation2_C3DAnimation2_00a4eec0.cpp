@@ -1,5 +1,6 @@
 // C3DAnimation2::~C3DAnimation2() -- free the animation's movable-resource block back to its memory pool, then destroy InstanceList, MovementTrackData, MovementTrack and Allocator, the inline ~CMovableResource and ~C3DAnimationStats
 // Leaf: ??1C3DAnimation2@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A4EEC0, 203 bytes, tail jump to ~C3DAnimationStats 0x00A4EB50; sole caller the scalar
 //   deleting dtor 0x00A555C0 (slot 0 of C3DAnimation2's primary vtable 0x0129D548; the CMovableResource-in-C3DAnimation2
@@ -113,12 +114,8 @@ class CCharString { public:
 class CMatrix3x4;
 class CQuaternion;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                          // vtable 0x0129C95C, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 enum EAnimationType { };
 class C3DAnimationStats : public CBaseObject {
 public:

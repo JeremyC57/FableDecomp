@@ -1,4 +1,5 @@
 // CAIStateGroup_KidHurtSelfRunToMother::Cleanup() -- remove added sad mode and the mother's matching child event.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail00915190 length245. Shared group/brain headers; native thing mask24/28, table44, dead91,parent180.
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_KidHurtSelfRunToMother.h"
@@ -11,9 +12,8 @@ class CAIStateGroupBase{ public:void* vtable;CAIBrain* PBrain;char state[12];};
 struct CAIStateGroup_KidHurtSelfRunToMother:CAIStateGroupBase{bool AddedSadMode;};
 #endif
 class CBaseObject;
-class CBaseIntelligentPointer{ public:public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-}; //00a01b50
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct KidEvent{char base[8];CBaseIntelligentPointer child;};
 struct KidEventType{unsigned long type;KidEventType(unsigned long t):type(t){}};
 struct KidEvents{bool GetEvent(KidEvent**,const KidEventType&);void RemoveEvent(KidEvent*); __forceinline KidEvent* FindChild(){KidEvent* event=0;GetEvent(&event,KidEventType(24));return event;}}; //00915760,008112d0

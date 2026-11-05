@@ -1,5 +1,6 @@
 // CTCInventoryTrade::FinalConstructSubtitlesPC(NUISystem::CComponent* component, CSubtitleMap& subtitles, NUISystem::CComponent* list) -- PC layout: build a PC_SUBTITLE text component for `component` (its own type-6 child text when it has no entry in `subtitles`, otherwise the entry's text plus " x N" for a positive count), add it under `component` and register it with `list`
 // Leaf: FinalConstructSubtitlesPC
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059D65A, length 263 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) +
 // ("s",on). FableWin.pdb ?FinalConstructSubtitlesPC@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@...@std@@0@Z.
 // Callees: as the console twin FinalConstructSubtitles 0x0059D0B8 ("PC_SUBTITLE" @ 0x01230428 instead of
@@ -23,13 +24,7 @@ class CWideString { public:
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
 CWideString __fastcall GFIntToWideString(long value);     // 0x00405F00
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer(T* object);                         // 0x00429C15
-    ~CCountedPointer();                                 // 0x004291DE
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 struct CTextSource {                                    // the typed child: only its text slot is used here
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -146,6 +141,6 @@ void CTCInventoryTrade::FinalConstructSubtitlesPC(NUISystem::CComponent* compone
     CCountedPointer<NUISystem::CComponent> subtitle(manager->CreateComponent("PC_SUBTITLE", false));
     subtitle->SetText(text, true, true);
     owner->AddChildAfterFocus(subtitle);
-    list->RegisterSubtitle(subtitle.m_pObject);
+    list->RegisterSubtitle(subtitle.Data);
 }
 }

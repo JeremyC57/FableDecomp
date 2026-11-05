@@ -1,5 +1,7 @@
 // CQuestManager::~CQuestManager() -- unless the world was already destructed, deactivate every quest, clear the boast lists and stamp the boast frame; then destroy the members in reverse order
 // Leaf: ??1CQuestManager
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail 0x004B4770, 624 bytes, __fastcall (no EH frame; `push ecx` frame word holds the __false_type tag byte).
 // Callees: CQuestManager::DeactivateAllQuests 0x004B4450, CWorld::GetWorldFrame 0x0049D870 (manifest
 // "GFGetPreMainMemoryUsed" is propagated; landed CThingSwitch::WorldUpdate names it GFGetCurrentFrame),
@@ -91,33 +93,9 @@ struct CStringSet {                                  // STLport set<CCharString>
             free(Head);
     }
 };
-struct SCountBlock {
-    long m_references;
-    void (__fastcall* m_pfnDestroy)(void*);
-    void* m_pObject;
-};
-template <class T> class CCountedPointer { public:
-    T* Data;
-    SCountBlock* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();              // 0x00A01C10
-    void* m_pItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-};
+#include "engine/CCountedPointer.h"
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T> struct CTBaseSingletonNoDefaultAlloc {
     virtual ~CTBaseSingletonNoDefaultAlloc() {}
 };

@@ -1,5 +1,6 @@
 // NAnimationEvents::SaveAnimationEvents() -- save the game and sound animation-event managers to Data\Misc\game_animation_events.txt / sound_animation_events.txt
 // Leaf: ?SaveAnimationEvents@NAnimationEvents@@YIXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F9EE0, 161 bytes, plain `ret` (__fastcall, no arguments).
 // Callees: CWideString(const wchar_t*) 0x0099B6B0, NResourceDirectoryNames::GetMiscDir() 0x0041A0A0 (__fastcall,
 //   hidden result in ecx), operator+(const CWideString&, const CWideString&) 0x0099BE70 (__fastcall), CManager::Save
@@ -22,13 +23,7 @@ namespace NResourceDirectoryNames {
 CWideString __fastcall GetMiscDir();                      // 0x0041A0A0 (L"Data\\Misc\\")
 }
 
-class CCPPointerInfo;
-template<class T> class CCountedPointer {                 // Ego_r.pdb: 8 bytes
-public:
-    T* Data;                                              // +0x00
-    CCPPointerInfo* Info;                                 // +0x04
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NAnimationEvents {
 class CManager {

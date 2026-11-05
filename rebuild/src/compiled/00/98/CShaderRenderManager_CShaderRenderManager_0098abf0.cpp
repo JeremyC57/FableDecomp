@@ -1,5 +1,6 @@
 // CShaderRenderManager::~CShaderRenderManager() -- uninitialise, then destroy the members in reverse: bone matrices, pixel-shader constant table and names, the shader resource managers, the current pixel shader (releasing its data), the light attenuation / global arrays, the light pool, the null constant layout and the constant-layout list, then the CBaseClassNonCopyable base
 // Leaf: ??1CShaderRenderManager
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0098ABF0, 246 bytes, `ret`. Called from the deleting destructor 0x0098DE90 (CShaderRenderManager
 //   vtable 0x0129A080 slot 0, rtti-vtables.tsv).
@@ -50,7 +51,7 @@ template <class T> class CArray { public:                      // CArray<T> of a
 };
 
 class CShaderResource;
-template <class T> class CCountedPointer { public: T* Object; void* Info; };
+#include "engine/CCountedPointer.h"
 
 class CVertexShaderConstantLayout {                     // 0x14C bytes in retail
 public:

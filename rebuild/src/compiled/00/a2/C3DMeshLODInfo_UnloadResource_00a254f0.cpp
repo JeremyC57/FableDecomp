@@ -1,5 +1,6 @@
 // C3DMeshLODInfo::UnloadResource() -- when this LOD holds the only reference to its mesh, remove the LOD from its mesh info (keeping it as the stats when it can) and report success
 // Leaf: ?UnloadResource@C3DMeshLODInfo@@UAE_NXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A254F0, 51 bytes. Name: Ego_r/FableWin PDB ?UnloadResource@C3DMeshLODInfo@@UAE_NXZ
 //   (public virtual; catalog row agrees). Callee: C3DMeshInfo::RemoveLOD(ulong, bool) const @ 0x00A249A0 (PDB
 //   ?RemoveLOD@C3DMeshInfo@@ABEXK_N@Z, private: C3DMeshLODInfo is its friend here).
@@ -8,19 +9,7 @@
 // Shape: the inline private CanUnload() as two returns (`if (Mesh.IsNull()) return false; return refs == 1;` -- the
 //   second result is materialised and re-tested, `sete al ; test al,al`; an `&&` folds it into a jne), GetReferenceCount
 //   = `Info ? Info->RefCount : 0`; the LOD index widened with movzx.
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;            // +0x00
-    void (__cdecl* DeleteFunc)(void*); // +0x04
-    void*         Data;                // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    bool IsNull() const { return Data == 0; }
-    unsigned long GetReferenceCount() const { return Info ? Info->RefCount : 0; }
-};
+#include "engine/CCountedPointer.h"
 class CResourceList;
 class CResource {
 public:

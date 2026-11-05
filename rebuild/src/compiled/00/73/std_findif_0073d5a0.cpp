@@ -1,5 +1,6 @@
 // std::__find_if(_List_iterator<CCountedPointer<CModeBase> >, _List_iterator<...>, CModeBase::CIsType, const input_iterator_tag&) -- first creature mode in the list whose GetType() equals the predicate's type
 // Leaf: ??$__find_if@U?$_List_iterator@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@std@@@std@@VCIsType@CModeBase@CTCCreatureModeManager@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@std@@@0@U10@0VCIsType@CModeBase@CTCCreatureModeManager@@ABUinput_iterator_tag@0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x0073D5A0, 51 bytes, `ret 0Ch` (link-time __fastcall: ecx = the hidden iterator result,
 //   edx = the iterator-tag reference; first, last and the 4-byte predicate on the stack).
 // Identity (probable): the STLport 4.6 `__find_if(first, last, pred, const input_iterator_tag&)` loop
@@ -11,12 +12,7 @@
 //   CTCCreatureModeManager@@QAE@J@Z`, FableWin find_if<..., CIsType> over the same list). The iterator traits
 //   (const vs non-const) are not provable from the bytes; _Nonconst_traits is used.
 class CThing;
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;                       // +0x00
-    CCPPointerInfo* Info;                       // +0x04
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CTCCreatureModeManager { public:
     class CModeBase { public:
         virtual ~CModeBase();

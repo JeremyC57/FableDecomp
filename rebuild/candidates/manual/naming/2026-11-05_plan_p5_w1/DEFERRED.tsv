@@ -1,0 +1,651 @@
+address	stage	reason
+00404440	bytes_differ	BYTES_DIFFER length 158 != 69
+00419428	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+0041947a	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+004194d1	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+004195af	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+0041bb30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00429c6f	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+0042fc13	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+0042fc86	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+00433d3a	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+00436740	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00438aa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CPlayerGuiDefPointer'
+00441140	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00443840	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::DeleteData(void *)' : template function has already been defined
+00443930	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::DeleteData(void *)' : template function has already been defined
+00443b60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::DeleteData(void *)' : template function has already been defined
+00444b40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+004480d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00448300	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004854df	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0048c950	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00495780	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+004a0220	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+004a6ab0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+004ab060	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CCountedPointer<T>'
+004ab0a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CCountedPointer<T>'
+004ab0e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CCountedPointer<T>'
+004ab0f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CCountedPointer<T>'
+004ab100	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CCountedPointer<T>'
+004abd40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004ac700	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004ac780	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004ad2a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004adae0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+004ae8a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+004b0310	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2977: 'CCountedPointer' : too many template arguments
+004b3a20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CCodeSectionManagerPointer'
+004b9da0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004ba390	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '==' : 'const CCountedPointer<T>' does not define this operator or a conversion to a type acceptable to the predefined operator
+004bc4f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004bc750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004bd160	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004bda30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004bdb40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004bdd70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004bde90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004be000	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004c3250	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+004fbf60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+004fdab0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+004fdde0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+004fede0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+004feec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+00506940	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Release' : is not a member of 'CCountedPointer<T>'
+00506c40	stray_change	STRAY_CHANGE 0050be40: ?Destroy_0050be40@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCAFile@@@@SIXPAX@Z
+00506e30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+00512c70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2661: 'CCountedPointer<T>::__ctor' : no overloaded function takes 2 arguments
+00513bf0	field_map	FIELD_MAP FIELD_MAP Data maps to Data and DeleteFunc
+00521ae0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CCharString::LoadFromFile' : cannot convert parameter 1 from 'CCPPointerInfo *' to 'CAFile *'
+00531e50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Construct' : is not a member of 'NUISystem::CCountedPointer<T>'
+00533ba0	stray_change	STRAY_CHANGE 00535b10: ?insert@?$CRetailVector@U?$CCountedPointer@VCComponent@NUISystem@@@NUISystem@@@NUISystem@@QAEPAU?$CCountedPointer@VCComponent@NUISystem@@@2@PAU32@ABU32@@Z -> ?insert@?$CRetailVector@V?$CCountedPointer@VCComponent@NUISystem@@@NUISystem@@@NUISystem@@QAEPAV?$CCountedPointer@VCComponent@NUISystem@@@2@PAV32@ABV32@@Z
+00533bc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '==' : 'CCountedPointer<T>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00535000	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00535420	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+005356a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00535b10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CCountedPointer<T> &CCountedPointer<T>::operator =(const CCountedPointer<T> &)' : template function has already been defined
+0053ad07	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPtr' : is not a member of 'NUISystem::CCountedPointer<T>'
+0053b321	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPtr' : is not a member of 'CCountedPointer<T>'
+0053beac	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPtr' : is not a member of 'CCountedPointer<T>'
+0053bf20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPtr' : is not a member of 'NUISystem::CCountedPointer<T>'
+0053f810	stray_change	STRAY_CHANGE 005359d0: ?_M_insert_overflow@?$CRetailVector@U?$CCountedPointer@VCComponent@NUISystem@@@NUISystem@@@NUISystem@@QAEXPAU?$CCountedPointer@VCComponent@NUISystem@@@2@ABU32@ABU__false_type@2@I_N@Z -> ?_M_insert_overflow@?$CRetailVector@V?$CCountedPointer@VCComponent@NUISystem@@@NUISystem@@@NUISystem@@QAEXPAV?$CCountedPointer@VCComponent@NUISystem@@@2@ABV32@ABU__false_type@2@I_N@Z
+00544c10	stray_change	STRAY_CHANGE 00429f43: ?DestroyAction@NUISystem@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@NUISystem@@SIXPAX@Z
+00545b10	bytes_differ	BYTES_DIFFER masked sha1 differs
+00549b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'NUISystem::CCPPointerInfo::CCPPointerInfo(const NUISystem::CCPPointerInfo &)' : cannot convert parameter 1 from 'NUISystem::CAction *' t
+0054a1c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0054f6e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+005533d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00555eb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pfnDestroy' : is not a member of 'NUISystem::CCPPointerInfo'
+005667e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0056dbf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+005791e5	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+005952d8	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'NUISystem::CFrontEndManager::DeactivateAllEditBoxes' : cannot convert parameter 1 from 'CCountedPointer<T>' to 'NUISystem::CComponent *'
+00596a68	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'NUISystem::CComponent *const ' to 'NUISystem::CText *'
+00596cce	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'NUISystem::CComponent *const ' to 'NUISystem::CList *'
+005b70b8	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CCountedPointer<T>::ShareData' : cannot convert parameter 1 from 'NUISystem::CComponent *const ' to 'NUISystem::CText *'
+005bff07	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+0062e2b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0062edd0	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00636e90	stray_change	STRAY_CHANGE 0056c0f0: ?Destroy_0056c0f0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCBase@NCameraModes@@@@SIXPAX@Z
+00640df0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Release' : is not a member of 'CCountedPointer<T>'
+00640e60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Release' : is not a member of 'CCountedPointer<T>'
+0064431b	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2677: binary '&&' : no global operator found which takes type 'CCountedPointer<T>' (or there is no acceptable conversion)
+00644393	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2677: binary '&&' : no global operator found which takes type 'CCountedPointer<T>' (or there is no acceptable conversion)
+0064440b	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2677: binary '&&' : no global operator found which takes type 'CCountedPointer<T>' (or there is no acceptable conversion)
+0065ead6	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'CVillageTaskTorch *const ' to 'CVillageTaskBase *'
+0065eb30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'CVillageTaskHorn *const ' to 'CVillageTaskBase *'
+0065eb8a	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'CVillageTaskPatrol *const ' to 'CVillageTaskBase *'
+0065ebe4	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'CVillageTaskPickCrops *const ' to 'CVillageTaskBase *'
+0065ec3e	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'CVillageTaskSecuritySweep *const ' to 'CVillageTaskBase *'
+0065ec98	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'CVillageTaskCarryCrate *const ' to 'CVillageTaskBase *'
+0065f116	bytes_differ	BYTES_DIFFER length 44 != 42
+006644f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Reset_00668d90' : is not a member of 'CCountedPointer<T>'
+00669390	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetRefCount' : is not a member of 'CCountedPointer<T>'
+0067fd30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0067fe60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00695a00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pfnDestroy' : is not a member of 'CCPPointerInfo'
+00695f80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006962c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00696790	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00698430	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer'
+006987a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer'
+00698950	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+0069a850	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer'
+0069a990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+0069ac30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer'
+0069b610	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer'
+0069cef0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer'
+0069d000	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0069d2b0	bytes_differ	BYTES_DIFFER length 76 != 50
+0069e3d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+0069e460	stray_change	STRAY_CHANGE 0056c0f0: ?Destroy_0056c0f0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCBase@NCameraModes@@@@SIXPAX@Z
+0069e5d0	stray_change	STRAY_CHANGE 0056c0f0: ?Destroy_0056c0f0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCBase@NCameraModes@@@@SIXPAX@Z
+0069ef80	stray_change	STRAY_CHANGE 00668610: ?DeleteCreatureAction@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z
+0069fc40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0069ffd0	stray_change	STRAY_CHANGE 00668610: ?DeleteCreatureAction@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z
+006a0150	stray_change	STRAY_CHANGE 00668610: ?DeleteCreatureAction@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCCreatureActionBase@@@@SIXPAX@Z
+006a08f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006a0e80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006b9100	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006ba830	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006bfb90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer<T>'
+006c2c00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006ca760	bytes_differ	BYTES_DIFFER length 76 != 51
+006d6210	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pfnDestroy' : is not a member of 'CCPPointerInfo'
+006d7960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer<T>'
+006df9b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006efe50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006f1410	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006f2300	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+006f90d0	field_map	FIELD_MAP FIELD_MAP Data maps to Data and DeleteFunc
+006f9130	field_map	FIELD_MAP FIELD_MAP Data maps to Data and DeleteFunc
+007047d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetRefCount' : is not a member of 'CCountedPointer<T>'
+00704a80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00708a30	bytes_differ	BYTES_DIFFER length 92 != 58
+0070d8c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0070d8e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00710c50	bytes_differ	BYTES_DIFFER length 76 != 50
+00711c50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C3203: 'CCountedPointer' : class template invalid as template argument for template parameter 'T', expected a real type
+007137d0	stray_change	STRAY_CHANGE 007180c0: ?DeleteData@CActionBase@@QAEXXZ -> ?DeleteData@?$CCountedPointer@UCActionBase@@@@SIXPAX@Z
+00715110	stray_change	STRAY_CHANGE 00695880: ??0CCountedPointer@@QAE@PAUCCreatureAction@@@Z -> ??0?$CCountedPointer@UCCreatureAction@@@@QAE@PAUCCreatureAction@@@Z ; 00719360: ?Add@CCreatureActionQueue@@QAEXABUCCountedPointer@@@Z -> ?Add@CCreatureActionQueue@@QAEXABV?$CCountedPointer@UCCreatureAction@@@@@Z ; 0048c5c0: ??1CCountedPointer@@QAE@XZ -> ??1?$CCountedPointer@UCCreatureAction@@@@QAE@XZ
+00719280	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0072d990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00738780	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00738c20	bytes_differ	BYTES_DIFFER length 76 != 50
+0073a8e0	stray_change	STRAY_CHANGE 007180b0: ?Destroy_007180b0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@UCModeBase@@@@SIXPAX@Z
+0073e6a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00741db0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'CCPPointerInfo::CCPPointerInfo(void *)' : overloaded member function not found in 'CCPPointerInfo'
+00742290	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00764590	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+007646c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00764bc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00764c40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00764ee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+007658b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'CCountedPointer<T> &CCountedPointer<T>::operator =(const CCountedPointer<T> &)' : template function has already been defined
+007713c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefSlot<T>'
+00771770	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Release' : is not a member of 'CCountedPointer<T>'
+007864c0	stray_change	STRAY_CHANGE 00786a30: ?Destroy_00786a30@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VC3DSkeletalMorphParameter@@@@SIXPAX@Z
+00786700	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2614: 'CCountedPointer<T>' : illegal member initialization: 'object' is not a base or member
+007a1870	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer'
+007a3910	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+007b2720	bytes_differ	BYTES_DIFFER length 76 != 51
+007b5130	bytes_differ	BYTES_DIFFER length 68 != 43
+007ca090	bytes_differ	BYTES_DIFFER length 76 != 50
+007f3ce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+008113c0	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+008249f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00828cd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00829160	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::DeleteData(void *)' : template function has already been defined
+00835330	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+00835c80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'ExternalRetry_00835c80::CCharString'
+00835e30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer<T>'
+00838bc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CDefPointer<T>'
+00848db0	stray_change	STRAY_CHANGE 007180b0: ?Destroy_007180b0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@UCModeBase@@@@SIXPAX@Z
+0084f130	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0084f330	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0085a960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPtr' : is not a member of 'CCountedPointer<T>'
+0085a9c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPtr' : is not a member of 'CCountedPointer<T>'
+00861e60	bytes_differ	BYTES_DIFFER length 868 != 818
+00891db0	bytes_differ	BYTES_DIFFER length 156 != 117
+00891e30	bytes_differ	BYTES_DIFFER length 143 != 111
+00892410	stray_change	STRAY_CHANGE 005ecf50: ?DeleteObject@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z
+00892530	stray_change	STRAY_CHANGE 005ecf50: ?DeleteObject@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z
+00892610	stray_change	STRAY_CHANGE 005ecf50: ?DeleteObject@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z
+00892b50	stray_change	STRAY_CHANGE 005ecf50: ?DeleteObject@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z
+00892c20	stray_change	STRAY_CHANGE 005ecf50: ?DeleteObject@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@SIXPAX@Z
+00892cf0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00892d80	bytes_differ	BYTES_DIFFER masked sha1 differs
+00898340	bytes_differ	BYTES_DIFFER length 209 != 193
+00898410	bytes_differ	BYTES_DIFFER length 219 != 205
+008abaa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+008ac330	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+008ae2a0	bytes_differ	BYTES_DIFFER length 77 != 65
+008b2140	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+008b25c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+008b3010	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+008c0c00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2614: 'CCountedPointer<T>' : illegal member initialization: 'object' is not a base or member
+008c0d10	stray_change	STRAY_CHANGE 008c2d60: ?Destroy_008c2d60@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@UCModeJackOfBladesScream@@@@SIXPAX@Z
+008c48a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2614: 'CCountedPointer<T>' : illegal member initialization: 'm_pObject' is not a base or member
+008c4990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2614: 'CCountedPointer<T>' : illegal member initialization: 'm_pObject' is not a base or member
+008e9190	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+008ea9f0	bytes_differ	BYTES_DIFFER length 599 != 570
+008ed950	stray_change	STRAY_CHANGE 007180b0: ?Destroy_007180b0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@UCModeBase@@@@SIXPAX@Z
+00906050	bytes_differ	BYTES_DIFFER length 577 != 246
+00906150	bytes_differ	BYTES_DIFFER length 243 != 130
+009061e0	bytes_differ	BYTES_DIFFER length 410 != 188
+009062a0	bytes_differ	BYTES_DIFFER length 243 != 130
+00906380	bytes_differ	BYTES_DIFFER length 607 != 289
+009064b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00906630	bytes_differ	BYTES_DIFFER length 243 != 130
+009067b0	bytes_differ	BYTES_DIFFER length 444 != 234
+00906c60	bytes_differ	BYTES_DIFFER length 283 != 177
+00906d20	bytes_differ	BYTES_DIFFER length 245 != 140
+00906db0	bytes_differ	BYTES_DIFFER length 245 != 140
+00906e40	bytes_differ	BYTES_DIFFER length 283 != 177
+00907010	bytes_differ	BYTES_DIFFER length 316 != 200
+009070e0	bytes_differ	BYTES_DIFFER length 243 != 130
+00907170	bytes_differ	BYTES_DIFFER length 243 != 130
+00907200	bytes_differ	BYTES_DIFFER length 243 != 130
+00907290	bytes_differ	BYTES_DIFFER length 243 != 130
+009076c0	bytes_differ	BYTES_DIFFER length 243 != 130
+00907930	bytes_differ	BYTES_DIFFER length 250 != 137
+009079c0	bytes_differ	BYTES_DIFFER length 491 != 275
+00907ae0	bytes_differ	BYTES_DIFFER length 239 != 126
+00907b60	bytes_differ	BYTES_DIFFER length 239 != 126
+00907be0	bytes_differ	BYTES_DIFFER length 243 != 130
+00907c70	bytes_differ	BYTES_DIFFER length 243 != 130
+00907d00	bytes_differ	BYTES_DIFFER length 577 != 246
+00907e00	bytes_differ	BYTES_DIFFER length 410 != 188
+00907ec0	bytes_differ	BYTES_DIFFER length 243 != 130
+00908780	bytes_differ	BYTES_DIFFER length 243 != 130
+00908810	bytes_differ	BYTES_DIFFER length 410 != 188
+009088d0	bytes_differ	BYTES_DIFFER length 243 != 130
+00908960	bytes_differ	BYTES_DIFFER length 410 != 188
+00908a20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00908b50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00908c80	bytes_differ	BYTES_DIFFER length 425 != 211
+00908e00	bytes_differ	BYTES_DIFFER length 243 != 130
+00908e90	bytes_differ	BYTES_DIFFER length 243 != 130
+00908f20	bytes_differ	BYTES_DIFFER length 410 != 188
+00908fe0	bytes_differ	BYTES_DIFFER length 243 != 130
+00909070	bytes_differ	BYTES_DIFFER length 312 != 206
+00909140	bytes_differ	BYTES_DIFFER length 246 != 133
+009091d0	bytes_differ	BYTES_DIFFER length 447 != 231
+009092c0	field_map	FIELD_MAP FIELD_MAP object maps to Data and DeleteFunc
+009093f0	field_map	FIELD_MAP FIELD_MAP object maps to Data and DeleteFunc
+00909520	bytes_differ	BYTES_DIFFER length 492 != 276
+00909ba0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00909da0	bytes_differ	BYTES_DIFFER length 243 != 130
+00909e30	bytes_differ	BYTES_DIFFER length 823 != 405
+00909fd0	bytes_differ	BYTES_DIFFER length 425 != 211
+0090a1f0	bytes_differ	BYTES_DIFFER length 635 != 321
+0090a340	bytes_differ	BYTES_DIFFER length 410 != 188
+0090a400	bytes_differ	BYTES_DIFFER length 410 != 188
+0090a4c0	bytes_differ	BYTES_DIFFER length 243 != 130
+0090a550	bytes_differ	BYTES_DIFFER length 262 != 156
+0090f830	stray_change	STRAY_CHANGE 008aa810: ?DeleteSitMode@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@UCModeSitBase@@@@SIXPAX@Z
+00917bb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0091a630	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPObject' : is not a member of 'CCountedPointer<T>'
+0091c130	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0091d510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00928e20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009387f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0093b1d0	bytes_differ	BYTES_DIFFER length 1025 != 1011
+0094dc40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009621f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009624d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00969ae0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00969cb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0096ddb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00977440	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0097d8b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0097d980	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0097da40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0097db70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0097e890	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0097ec00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+0098cee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00992630	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009a60d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Release' : is not a member of 'CCountedPointer<T>'
+009a6370	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2451: conditional expression of type 'CCountedPointer<T>' is illegal
+009a6610	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+009ae6b0	bytes_differ	BYTES_DIFFER length 308 != 268
+009c6cc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009c6e50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '==' : 'const CCountedPointer<T>' does not define this operator or a conversion to a type acceptable to the predefined operator
+009c8060	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Sizeof' : is not a member of 'CCountedPointer<T>'
+009c8700	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+009c8fb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+009c9070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CIVCountedPointer<T>'
+009cac00	bytes_differ	BYTES_DIFFER length 76 != 50
+009d58d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2661: 'CCountedPointer<T>::__ctor' : no overloaded function takes 2 arguments
+009d6060	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPtr' : is not a member of 'CCountedPointer<T>'
+009d6100	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPtr' : is not a member of 'CCountedPointer<T>'
+009d8c10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009ecf30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+009eea90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009eedc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009ef260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009f6750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+009f8290	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+009f86c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+00a09dc0	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00a0a150	bytes_differ	BYTES_DIFFER masked sha1 differs
+00a0a3d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a0a3f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a0a4d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a156d0	bytes_differ	BYTES_DIFFER length 322 != 237
+00a157c0	bytes_differ	BYTES_DIFFER length 279 != 196
+00a17480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a24330	bytes_differ	BYTES_DIFFER length 141 != 122
+00a24430	bytes_differ	BYTES_DIFFER length 53 != 51
+00a24a80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CIVCountedPointer<T>'
+00a254a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+00a256f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CIVCountedPointer<T>'
+00a259f0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00a25a70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsShared' : is not a member of 'CCountedPointer<T>'
+00a25b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: '?' : cannot convert from 'const CCountedPointer<T>' to 'bool'
+00a25bd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CIVCountedPointer<T>'
+00a25d20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+00a25e70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CMeshPointer'
+00a26730	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RefCount' : is not a member of 'C3DAnimationInfo::CAnimationData'
+00a2a760	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a2b340	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a2bd20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a2e860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a32fb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a33050	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a36e70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a3c350	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a3d330	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CIVCountedPointer<T>'
+00a42a80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CCountedPointer<T>'
+00a42ea0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+00a44e80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a45370	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+00a45410	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+00a45470	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+00a46460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a464e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a489c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a49c10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a49d40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a49ea0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a4df10	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00a5acc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a5b590	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a5b710	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a5b760	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a5f0f0	bytes_differ	BYTES_DIFFER length 53 != 32
+00a5fda0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a6a540	bytes_differ	BYTES_DIFFER length 376 != 292
+00a6b700	bytes_differ	BYTES_DIFFER length 76 != 50
+00a6c850	bytes_differ	BYTES_DIFFER length 103 != 55
+00a6c900	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsValid' : is not a member of 'CCountedPointer<T>'
+00a6fe70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a6ff40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a70ab0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a786c0	stray_change	STRAY_CHANGE 00a7c0a0: ?DeleteNavRegionConnection@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCNavRegionConnection@@@@SIXPAX@Z
+00a802a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a80a20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a83600	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a8d580	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'CCPPointerInfo' : 'class' type redefinition
+00a8d7c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::DeleteData(void *)' : template function has already been defined
+00a8d8c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a8dae0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a8db30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a95790	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a95860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a95c00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a95d90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a96430	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a96940	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a969d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00a982d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::DeleteData(void *)' : template function has already been defined
+00a98be0	stray_change	STRAY_CHANGE 00a99ff0: ?Destroy_00a99ff0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z
+00a98c80	stray_change	STRAY_CHANGE 00a99ff0: ?Destroy_00a99ff0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z
+00a98d20	stray_change	STRAY_CHANGE 00a99ff0: ?Destroy_00a99ff0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z
+00a98dc0	stray_change	STRAY_CHANGE 00a99ff0: ?Destroy_00a99ff0@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z
+00a99610	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00a9b460	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00a9b550	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00aa4210	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::Reset(T *)' : template function has already been defined
+00aa8e80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00aa8f40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00aa8fc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00aa9140	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ab1000	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ab2a80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ab2bd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ab2c20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ab3640	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2995: 'void CCountedPointer<T>::DeleteData(void *)' : template function has already been defined
+00ab36b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'm_pfnDestroy' : is not a member of 'CCPPointerInfo'
+00abc080	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00abc1b0	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00ac1020	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00ac1160	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00ac2970	bytes_differ	BYTES_DIFFER length 103 != 76
+00ac3bd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Release' : is not a member of 'CCountedPointer<T>'
+00ac52f0	field_map	FIELD_MAP FIELD_MAP object maps to Data and DeleteFunc
+00ad1650	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'CCPPointerInfo' : 'class' type redefinition
+00ad1690	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ad1740	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'CCPPointerInfo' : 'class' type redefinition
+00ad1b60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ad2640	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ad33e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ad37e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ad3830	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ae8980	bytes_differ	BYTES_DIFFER length 103 != 72
+00ae9770	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00aeb990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Release' : is not a member of 'NParticleEngine::CCountedPointer<T>'
+00af0aa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00af0d00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00af0d80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00af6550	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00af6690	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Data' : is not a member of 'CCountedRecord_00af6690'
+00af6e10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00af6ed0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b215e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2451: conditional expression of type 'NParticleEngine::CCountedPointer<T>' is illegal
+00b22310	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+00b22530	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+00b22b40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'CCountedPointer<T>'
+00b2c460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '!' : 'CCountedPointer<T>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00b38930	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b3ff70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2661: 'CCountedPointer<T>::__ctor' : no overloaded function takes 2 arguments
+00b440a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b443b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00b4aaa0	field_map	FIELD_MAP FIELD_MAP Data maps to Data and DeleteFunc
+00b82330	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b82ec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b83580	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b8f220	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b949a0	bytes_differ	BYTES_DIFFER length 173 != 135
+00b95fa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b967c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b96860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00b96920	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ba7f40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00bdc3c0	field_map	FIELD_MAP FIELD_MAP local SCountBlock layout is not 3 word members
+00bdc450	field_map	FIELD_MAP FIELD_MAP local SCountBlock layout is not 3 word members
+00bdd2f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00be04f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00be05d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2660: 'CCountedPointer<T>::Reset' : function does not take 0 arguments
+00becba0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00bed440	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00bee990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00cb7c40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPtr' : is not a member of 'CCountedPointer<T>'
+00cb7e50	field_map	FIELD_MAP FIELD_MAP local CCountedPointer layout is not 2 word members
+00cb8230	stray_change	STRAY_CHANGE 00cb8d30: ?DeleteData@CEntityScriptBindingBase@@QAEXXZ -> ?DeleteData@?$CCountedPointer@VCEntityScriptBindingBase@@@@SIXPAX@Z
+00cb9ef0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00cba420	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00cba4e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00cbada0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00cbae30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00cbb090	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00cbb120	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00cbd310	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00cdd4c0	bytes_differ	BYTES_DIFFER length 76 != 35
+00cdeb40	bytes_differ	BYTES_DIFFER length 145 != 98
+00ce0600	bytes_differ	BYTES_DIFFER length 777 != 795
+00ce0ef0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2011: 'ExternalRetry_00ce0ef0::CCPPointerInfo' : 'struct' type redefinition
+00cf66e0	bytes_differ	BYTES_DIFFER length 347 != 272
+00cf8850	bytes_differ	BYTES_DIFFER length 49 != 11
+00cf8970	bytes_differ	BYTES_DIFFER length 296 != 248
+00cf8a70	bytes_differ	BYTES_DIFFER length 1997 != 1679
+00cfd6c0	bytes_differ	BYTES_DIFFER length 1487 != 1499
+00cfde40	bytes_differ	BYTES_DIFFER length 347 != 272
+00d02b80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d03160	bytes_differ	BYTES_DIFFER length 347 != 272
+00d0ec50	bytes_differ	BYTES_DIFFER length 347 != 272
+00d15510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d17180	bytes_differ	BYTES_DIFFER length 347 != 272
+00d1e3e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d20600	bytes_differ	BYTES_DIFFER length 347 != 272
+00d244b0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d26000	bytes_differ	BYTES_DIFFER length 347 != 272
+00d29680	bytes_differ	BYTES_DIFFER length 347 != 272
+00d2c810	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d2d570	bytes_differ	BYTES_DIFFER length 347 != 272
+00d2fea0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d36620	bytes_differ	BYTES_DIFFER length 139 != 88
+00d374a0	bytes_differ	BYTES_DIFFER length 186 != 135
+00d37530	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d38b90	bytes_differ	BYTES_DIFFER length 347 != 272
+00d444c0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d50ab0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d52310	bytes_differ	BYTES_DIFFER length 347 != 272
+00d55e90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d58080	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d58300	bytes_differ	BYTES_DIFFER length 347 != 272
+00d5acc0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d5dec0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d64210	bytes_differ	BYTES_DIFFER length 347 != 272
+00d643a0	bytes_differ	BYTES_DIFFER length 1087 != 1090
+00d670e0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d67270	bytes_differ	BYTES_DIFFER length 1272 != 1224
+00d68d10	bytes_differ	BYTES_DIFFER length 347 != 272
+00d6aea0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d6b240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d6b590	bytes_differ	BYTES_DIFFER length 347 != 272
+00d701c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d72200	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d72590	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d729e0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d73c70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPosition' : is not a member of 'CScriptThing'
+00d79d50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d7a360	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d7a8a0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d7c2e0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d7f460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d7f880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d7fab0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d82210	bytes_differ	BYTES_DIFFER length 347 != 272
+00d83fa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d844a0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d85b40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00d87140	bytes_differ	BYTES_DIFFER length 347 != 272
+00d89580	bytes_differ	BYTES_DIFFER length 347 != 272
+00d8a960	bytes_differ	BYTES_DIFFER length 347 != 272
+00d915b0	bytes_differ	BYTES_DIFFER length 347 != 272
+00d97360	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d9d8f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d9d930	bytes_differ	BYTES_DIFFER length 347 != 272
+00d9ffd0	bytes_differ	BYTES_DIFFER length 347 != 272
+00da29b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00da8320	bytes_differ	BYTES_DIFFER length 347 != 272
+00daa260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00db8300	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00db8520	bytes_differ	BYTES_DIFFER length 347 != 272
+00dc0170	bytes_differ	BYTES_DIFFER length 347 != 272
+00dc3fc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00dc8700	bytes_differ	BYTES_DIFFER length 347 != 272
+00dca660	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00dcf790	bytes_differ	BYTES_DIFFER length 347 != 272
+00dd6440	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00dd84b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00dd9300	bytes_differ	BYTES_DIFFER length 347 != 272
+00ddc7d0	bytes_differ	BYTES_DIFFER length 347 != 272
+00ddeee0	bytes_differ	BYTES_DIFFER length 347 != 272
+00de4480	bytes_differ	BYTES_DIFFER length 347 != 272
+00de8300	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00dec5b0	bytes_differ	BYTES_DIFFER length 347 != 272
+00def220	bytes_differ	BYTES_DIFFER length 347 != 272
+00df3550	bytes_differ	BYTES_DIFFER length 347 != 272
+00df4a50	bytes_differ	BYTES_DIFFER length 347 != 272
+00df99f0	bytes_differ	BYTES_DIFFER length 347 != 272
+00dfba60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00dfc100	bytes_differ	BYTES_DIFFER length 347 != 272
+00e05170	bytes_differ	BYTES_DIFFER length 347 != 272
+00e0e5a0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e12170	bytes_differ	BYTES_DIFFER length 347 != 272
+00e12330	bytes_differ	BYTES_DIFFER length 569 != 586
+00e18220	bytes_differ	BYTES_DIFFER length 347 != 272
+00e193d0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e1b1f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e1bf60	bytes_differ	BYTES_DIFFER length 347 != 272
+00e1c580	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e1f620	bytes_differ	BYTES_DIFFER length 347 != 272
+00e25d90	bytes_differ	BYTES_DIFFER length 347 != 272
+00e26c50	bytes_differ	BYTES_DIFFER length 347 != 272
+00e27cb0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e29110	bytes_differ	BYTES_DIFFER length 347 != 272
+00e2a170	bytes_differ	BYTES_DIFFER length 347 != 272
+00e2e900	bytes_differ	BYTES_DIFFER length 347 != 272
+00e37340	bytes_differ	BYTES_DIFFER length 347 != 272
+00e38bd0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e39100	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00e3b740	bytes_differ	BYTES_DIFFER length 347 != 272
+00e47610	bytes_differ	BYTES_DIFFER length 347 != 272
+00e4b1d0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e540a0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e546d0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e5cf20	bytes_differ	BYTES_DIFFER length 347 != 272
+00e5f000	bytes_differ	BYTES_DIFFER length 347 != 272
+00e64020	bytes_differ	BYTES_DIFFER length 347 != 272
+00e6b240	bytes_differ	BYTES_DIFFER length 347 != 272
+00e6ea30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e6f1c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e6f710	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e71450	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e71980	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e73410	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e73930	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e74bc0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e774e0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e7c6b0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e7e640	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00e7ed60	bytes_differ	BYTES_DIFFER length 347 != 272
+00e83bc0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e8d0e0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e90a30	bytes_differ	BYTES_DIFFER length 347 != 272
+00e93a60	bytes_differ	BYTES_DIFFER length 347 != 272
+00e95f80	bytes_differ	BYTES_DIFFER length 347 != 272
+00e98460	bytes_differ	BYTES_DIFFER length 347 != 272
+00e9a0e0	bytes_differ	BYTES_DIFFER length 347 != 272
+00e9df30	bytes_differ	BYTES_DIFFER length 347 != 272
+00ea0f00	bytes_differ	BYTES_DIFFER length 347 != 272
+00ea5780	bytes_differ	BYTES_DIFFER length 347 != 272
+00ea7610	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ea7ef0	bytes_differ	BYTES_DIFFER length 347 != 272
+00ead860	bytes_differ	BYTES_DIFFER length 347 != 272
+00eb6370	bytes_differ	BYTES_DIFFER length 347 != 272
+00eb9710	bytes_differ	BYTES_DIFFER length 347 != 272
+00ebebf0	bytes_differ	BYTES_DIFFER length 347 != 272
+00ec1000	bytes_differ	BYTES_DIFFER length 347 != 272
+00ec15d0	bytes_differ	BYTES_DIFFER length 347 != 272
+00ec1ef0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ec2860	bytes_differ	BYTES_DIFFER length 347 != 272
+00ec47c0	bytes_differ	BYTES_DIFFER length 347 != 272
+00ec52f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ecd600	bytes_differ	BYTES_DIFFER length 347 != 272
+00ed28c0	bytes_differ	BYTES_DIFFER length 347 != 272
+00ed4890	bytes_differ	BYTES_DIFFER length 347 != 272
+00ed5340	bytes_differ	BYTES_DIFFER length 347 != 272
+00ed7580	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ed8210	bytes_differ	BYTES_DIFFER length 347 != 272
+00ed9960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00edcea0	bytes_differ	BYTES_DIFFER length 347 != 272
+00ee1c10	bytes_differ	BYTES_DIFFER length 347 != 272
+00ee5570	bytes_differ	BYTES_DIFFER length 347 != 272
+00ee7540	bytes_differ	BYTES_DIFFER length 347 != 272
+00ee7a20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00ee8870	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00eeda40	bytes_differ	BYTES_DIFFER length 347 != 272
+00ef45b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ef5070	bytes_differ	BYTES_DIFFER length 347 != 272
+00ef8cc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00efa210	bytes_differ	BYTES_DIFFER length 347 != 272
+00efad80	bytes_differ	BYTES_DIFFER length 347 != 272
+00efb460	bytes_differ	BYTES_DIFFER length 347 != 272
+00efb9c0	bytes_differ	BYTES_DIFFER length 347 != 272
+00efbf80	bytes_differ	BYTES_DIFFER length 347 != 272
+00efda90	bytes_differ	BYTES_DIFFER length 347 != 272
+00efeb60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ReleaseInline' : is not a member of 'CCountedPointer<T>'
+00efee50	bytes_differ	BYTES_DIFFER length 347 != 272
+00eff5c0	bytes_differ	BYTES_DIFFER length 347 != 272
+00f01150	bytes_differ	BYTES_DIFFER length 347 != 272
+00f01d20	bytes_differ	BYTES_DIFFER length 347 != 272
+00f045e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2182: '*' : illegal use of type 'void'
+00f06370	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2955: 'CCountedPointer' : use of class template requires template argument list
+00f09b10	bytes_differ	BYTES_DIFFER length 347 != 272
+00f14770	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ReleaseInline' : is not a member of 'CCountedPointer<T>'
+00f1cb50	bytes_differ	BYTES_DIFFER length 347 != 272

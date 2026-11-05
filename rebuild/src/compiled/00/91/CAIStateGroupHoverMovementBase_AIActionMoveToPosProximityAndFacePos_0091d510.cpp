@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverMovementBase::AIAction_MoveToPosProximityAndFacePos(EAIActionRepeat, const C3DVector&, float, const C3DVector&, bool&, EMovementType) -- steer the hovering creature along its navigation route to within `proximity` of a position while looking at a face position, one brain output per tick, until arrived (2), failed (3) or stopped (1)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091D510, 724 bytes (ret 18h). Sibling of CAIStateGroupBase::AIAction_MoveToPosProximity 0x0097E890.
 // Callees: IsStopping 0x008FD010, CTCCreatureNavigation::GetNextNavPosOnRoute 0x006CBAC0 (CCreatureNavOutput by hidden
@@ -123,15 +124,8 @@ CThing* __fastcall GetPBestTargetToFaceForCreature(CThingCreatureBase* creature)
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CCountBlock {
     long Count;
     void (__fastcall* Destroy)(void* object);

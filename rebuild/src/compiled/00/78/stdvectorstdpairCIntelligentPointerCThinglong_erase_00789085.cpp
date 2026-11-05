@@ -1,5 +1,6 @@
 // std::vector<std::pair<CIntelligentPointer<CThing>, long>>::erase(std::pair<CIntelligentPointer<CThing>, long>* __position) -- remove one element: shift the tail down, destroy the old last slot
 // Leaf: ?erase@?$vector@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@@2@@std@@QAEPAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@2@PAU32@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00789085, 52 bytes, thiscall, `ret 4` (frame-pointer module).
 // Identity (proven): its __copy 0x00788F76 is bound ??$__copy@PAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@... (12-byte stride); the destructor is the pair's intelligent pointer's base ~CBaseIntelligentPointer 0x00A01C10; caller CTCTrapBase::FrameUpdate 0x007888B4.
 // Callees: std::__copy<T*, T*, int> 0x00788F76 (`__fastcall`), the element destructor 0x00A01C10.
@@ -16,13 +17,9 @@ struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 }
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                           // vtable 0x0129C95C
-public:
-    virtual ~CBaseIntelligentPointer();                   // 0x00A01C10
-    CBaseObjectPointer* PData;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 namespace std {
 template <class _RandomAccessIter, class _OutputIter, class _Distance>
 _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,

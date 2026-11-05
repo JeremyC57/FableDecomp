@@ -1,4 +1,5 @@
 // CManagedTextureData::CreateVolumeTexture(ulong,ulong,ulong,long,const CPixelFormat&) -- round dimensions, replace volume object, initialise it and record allocation result.
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Native00A699D0 length169;9FA620 valid dimensions;99A2D0 base ctor;A6AE60 counted reset;A68370 volume initialise;BFEA1A scalar new16.
 #define CManagedTextureData CManagedTextureDataDonor
 #include "engine/CManagedTextureData.h"
@@ -18,7 +19,7 @@ class CVolumeTexture:public CBaseClass { public:
  virtual ~CVolumeTexture(); //nativeVT0129DC18 scalar deleting slot0 A69590
  bool Initialise(const C3DExtentsI&,long,const CPixelFormat&,unsigned long,EVolumePool,bool); //00A68370
 };
-template<class T>class CCountedPointer { public:T* Data;CCPPointerInfo* Info;void Reset(T*);}; //00A6AE60 forVolume
+#include "engine/CCountedPointer.h"
 class CManagedTextureData:public CManagedTextureDataDonor { public:
  CCountedPointer<CVolumeTexture>& Volume(){return *reinterpret_cast<CCountedPointer<CVolumeTexture>*>(&VolumeTexture_Data);}
  bool CreateVolumeTexture(unsigned long,unsigned long,unsigned long,long,const CPixelFormat&);

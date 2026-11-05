@@ -1,5 +1,6 @@
 // CEngineOcclusionManager::CEngineOcclusionManager() -- constructs the occlusion manager: every occluder slot marked free (-1), both entry buffers zeroed and the frame's entry pointers aimed at them, then the flare-test vertex shader looked up, the occlusion buffers initialised and the occlusion-box vertex / pixel shaders looked up
 // Leaf: ??0CEngineOcclusionManager
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B8D780, length 767 bytes (plain `ret`, no EH frame).
 // Callees: CEngineComponent::CEngineComponent @ 0x00B59710 (manifest "CNavigationLayer", propagated), CVertexShader::CVertexShader
 //   @ 0x00A62FB0, CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (unit-box vertex buffer root), CIndexBuffer::CIndexBuffer @ 0x00AC1EC0,
@@ -133,7 +134,7 @@ template <class T> struct vector : _Vector_base<T> {   // retail 12-byte STLport
     vector(const allocator<T>& a = allocator<T>()) : _Vector_base<T>(a) { }
 };
 template <class A, class B> struct pair { A first; B second; };
-template <class T> class CCountedPointer { public: T* Object; void* Info; };
+#include "engine/CCountedPointer.h"
 
 class CEngineComponent { public:                          // 0x0C bytes
     virtual ~CEngineComponent();

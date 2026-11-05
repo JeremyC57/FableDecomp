@@ -1,5 +1,7 @@
 // NScript::CQ_AwakeningTheOracleScript::CFinalTabletSarcophagus::Main() -- the Necropolis sarcophagus holding the final Oracle tablet: unless tablet A is already taken, put up the magic-barrier forcefield, wait for three tablets, mark the sarcophagus, wait for the hero within 6 units of the barrier point, play the summoners cutscene once (re-raising the forcefield), wait for the final summoners to die, open the sarcophagus, give the hero expression A, take the tablet, have the hero comment twice and re-enable the Northern Wastes 2 creature generators
 // Leaf: ?Main@CFinalTabletSarcophagus@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CFFB60, 1252 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing dtor 0x004AA840 (inline copies at the first forcefield), CBaseClass dtor 0x0099A2E0, operator delete 0x00BFE9BC,
@@ -19,29 +21,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImpl;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 #include "engine/C3DVector.h"
@@ -52,11 +32,8 @@ class CScriptThing : public CBaseClass { public:                           // vt
     CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     ~CScriptGameResourceObjectBase() { }

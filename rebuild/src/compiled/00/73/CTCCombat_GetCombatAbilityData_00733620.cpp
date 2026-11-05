@@ -1,5 +1,6 @@
 // CTCCombat::GetCombatAbilityData(iterator& it, ECombatAbilityInterfaceType interfaceType) -- walk the combat-ability multimap with the caller's iterator and stop at the first ability whose data has the wanted interface type: true with `it` on it, else false with `it` at end()
 // Leaf: ?GetCombatAbilityData@CTCCombat
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00733620, 105 bytes (112 with padding), `ret 8`.
 // Label correction: catalog "CTCCombat_FindBlockAbility" -- Ego_r.pdb has the non-const
 //   ?GetCombatAbilityData@CTCCombat@@AAE_NAAV?$_Tree_iterator...@W4ECombatAbilityInterfaceType@@@Z (bool, iterator&,
@@ -20,11 +21,7 @@ class CCombatAbilityData { public:                     // Ego_r.pdb, 0x18 bytes
     void*  Anim;                                // +0x10 CDefString
     long   InterfaceType;                       // +0x14 ECombatAbilityInterfaceType
 };
-template <class T> class CCountedPointer { public:     // 8 bytes: object + count block
-    T*    Object;
-    long* Count;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;                           // +0x00
     long ActiveTimer;                           // +0x04

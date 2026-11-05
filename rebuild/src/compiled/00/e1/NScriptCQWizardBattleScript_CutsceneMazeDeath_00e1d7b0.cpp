@@ -1,5 +1,6 @@
 // NScript::CQ_WizardBattleScript::CutsceneMazeDeath() -- the Wizard Battle maze-death cut-scene: take the hero under scripted control, cast him as Hero, run CS_WIZARD_BATTLE_MAZE_DEATH inside a paused movie sequence and mark the active quest completed
 // Leaf: ?CutsceneMazeDeath@CQ_WizardBattleScript@NScript@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1D7B0, 573 bytes, thiscall, plain `ret`.
 // Identity (proven): the only caller is the landed NScript::CQ_WizardBattleScript::EndMission 0x00E1D640 (site 0x00E1D664; it
 //   declares the row as `FinishMazeStage`, an invented name: NAME_FIXES.tsv); the row plays "CS_WIZARD_BATTLE_MAZE_DEATH"
@@ -28,47 +29,7 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CCPPointerInfo {
-public:
-    long RefCount;                                      // +0x0
-    void (__fastcall* DeleteFunc)(void* data);          // +0x4
-    void* Data;                                         // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    CCountedPointer() : Data(0), Info(0) { }
-    void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        ReleaseData();
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CLevelScriptBase.h"

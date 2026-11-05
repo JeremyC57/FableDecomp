@@ -1,5 +1,7 @@
 // std::__find_if(std::list<CCountedPointer<CVillageTaskHorn> >::iterator first, std::list<CCountedPointer<CVillageTaskHorn> >::iterator last, CIsHornTaskWithThisHorn pred, const std::input_iterator_tag&) -- finds the first horn task bound to a given horn thing (out-of-line by-value predicate)
 // Leaf: __find_if
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pInfo->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065F96D, 62 bytes, `ret 10h`. Caller: the STLport find_if front end 0x0065FFCA
 // (by-value predicate copied with 0x004A9730, destroyed with 0x00A01C10; called from CTCVillage::UpdateHornTasks). Callees: CCountedPointer
 // copy ctor @ 0x0065D89B (argument built in its slot), CIsHornTaskWithThisHorn::operator()(CCountedPointer<CVillageTaskHorn>) @
@@ -16,28 +18,9 @@ struct input_iterator_tag {};
 }
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-private:
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-template <class T> class CCountedPointer {
-public:
-    T* m_pObject;
-    void* m_pInfo;
-    CCountedPointer(const CCountedPointer& other);   // 0x0065D89B (out of line)
-    ~CCountedPointer();                           // 0x0065D5A0 (out of line, run by the callee)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
 namespace std {
 struct _List_node_base {                          // STLport 4.x list node (retail STL is STLport, not Dinkumware)
     _List_node_base* _M_next;                     // +0x00

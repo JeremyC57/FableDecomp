@@ -1,4 +1,5 @@
 // CPlayerGui::Update(bool paused) -- per-frame GUI tick: react to a DrawGui toggle (open/close the GUI mode, clearing the GUI on close), update the hero-information screens and subtitles, and when not paused the stat bars and per-frame illustrators; then drop expired script screen texts and age the screen messages, discarding finished ones and stopping once the def's line budget is filled
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0043A080, length 544 bytes, `ret 4`.
 // Callees: CPlayerGui::ClearGui 0x00438230, NHeroInformationScreens::CManager::Update 0x0066E8EE, CSubtitleRenderer::Update
 // 0x004930D7, CPlayerGui::UpdateMoney 0x00439BB0 / UpdateRenown 0x00439E00 / UpdateMorality 0x00439F20 / UpdateCrime
@@ -122,11 +123,7 @@ template <class T> struct CList {                           // STLport list (sen
         return next;
     }
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CPlayerGui { public:
     void*                                                   __vftable;

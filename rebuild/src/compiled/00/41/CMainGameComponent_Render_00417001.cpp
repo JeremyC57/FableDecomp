@@ -2,6 +2,7 @@
 //   hand it to the world and, when the network client allows it, render a frame and time it; a pending forced-render
 //   count renders catch-up frames instead
 // Leaf: ?Render@CMainGameComponent@@MAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00417001, 620 bytes, frame pointer, no EH.
@@ -21,11 +22,7 @@ class CASoundBank;
 class CPlayerManager;
 class CGamePlayerInterface;
 struct CMainGameComponentParent;
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct scoped_ptr {
     T* ptr;
     scoped_ptr() : ptr(0) { }

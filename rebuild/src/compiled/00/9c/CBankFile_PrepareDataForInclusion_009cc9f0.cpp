@@ -1,5 +1,6 @@
 // CBankFile::PrepareDataForInclusion(long, const CCountedPointer<CCharString>& source, long, CCountedPointer<CBankEntryInfo> entry, CDataWriter* writer, long) -- open the source file named by `source` read-only on a local CDiskFileWin32, read its whole length into a zeroed byte array, hand the bytes to the writer, close the file (the by-value entry pointer is released on exit)
 // Leaf: ?PrepareDataForInclusion@CBankFile
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountInfo (= CCPPointerInfo) members Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CC9F0, length 302 bytes (`ret 1Ch`: seven argument words).
 // Callees: CBaseClassNonCopyable ctor 0x0099A2F0 / virtual dtor 0x0099A300, CWideString() 0x0099AED0 / ~ 0x0099B510, CCharString::
 //          ToWideString 0x0099E480 (result homed in the dead `source` argument slot), CDiskFileWin32::Open 0x0099A6A0 /
@@ -77,26 +78,15 @@ struct CByteArray : _Vector_base<unsigned char> {      // CArray<unsigned char> 
     unsigned char* GetData() { return (_M_finish - _M_start) ? _M_start : (unsigned char*)this; }
 };
 
-struct SCountInfo { long RefCount; void (__fastcall* Destroy)(void*); void* Object; };
+#include "engine/CCountedPointer.h"
 __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-template <class T> class CCountedPointer { public:
-    T*          Data;
-    SCountInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info && DecRefToZero(Info->RefCount)) {
-            Info->Destroy(Info->Object);
-            delete Info;
-        }
-    }
-};
 struct CDataWriter {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void Write(const void* data, unsigned long size);   // slot 4 (+0x10)
 };
 template <class T> struct CSourcePointer {           // a counted pointer to the source name, passed by reference
     T*          Data;
-    SCountInfo* Info;
+    CCPPointerInfo* Info;
     T* operator->() const { return Data; }
 };
 struct CBankEntryInfo;

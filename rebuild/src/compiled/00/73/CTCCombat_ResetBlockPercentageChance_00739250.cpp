@@ -1,5 +1,6 @@
 // CTCCombat::ResetBlockPercentageChance() -- Reset matching block-ability probabilities from the selected sub-definition.
 // Leaf: ??$ResetBlockPercentageChance@VCCombatAbilityBlockHeavyWeaponAttackDef@@@CTCCombat@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity: own GetSubDef007382b0 contains exact class-name literal; PDB confirms member template. Retail lower_bound00738d10 and virtual data type slot3.
 #define CTCCombat CTCCombat_HeaderLayout
 #include "engine/CTCCombat.h"
@@ -49,7 +50,7 @@ class CDefClassBase:public CDefPointeeBase{public:class CSubDefInfo;CDefinitionM
 class CCombatTypeDef:public CParentDefClassBase{};
 class CCombatAbilityData{public:virtual ~CCombatAbilityData();virtual void TransferBinaryIn(CMemoryDataInputStream&,CCombatAbilityData&);virtual void TransferBinaryOut(CDataOutputStream&,const CCombatAbilityData&)const;virtual ECombatAbilityDataType GetCombatAbilityDataType()const;long PercentageChance;float SecondsDuration,SecondsToWaitBeforeRepeat;CDefString Anim;ECombatAbilityInterfaceType InterfaceType;};
 class CCombatAbilityBlockingData:public CCombatAbilityData{public:float BlockAngle;bool BlockCanBeBroken,ForceRecoilWhenBlocking;std::set<EWeaponClass> ValidBlockWeaponTypes;EWeaponClass WeaponClass;};class CCombatAbilityBlockDefBase:public CSubDefClassBase{public:CCombatAbilityBlockingData CombatAbility;};class CCombatAbilityBlockHeavyWeaponAttackDef:public CCombatAbilityBlockDefBase{};
-template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;T* operator->()const{return Data;}};
+#include "engine/CCountedPointer.h"
 typedef std::multimap<ECombatAbilityDataType,std::pair<CCountedPointer<CCombatAbilityData>,CCombatAbility> > AbilityMap;
 template<class T>const T* QuerySubDefBoundary(const CDefClassBase*);
 template<class T>__declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<const T>* out)const{const T* p=QuerySubDefBoundary<T>(this);if(!p)return false;out->Object=(CDefPointeeBase*)p;p->AddRef();return true;}

@@ -1,5 +1,7 @@
 // CScriptBase::OnScriptedEntityDeactivated(unsigned __int64 entityID, CScriptThing& entity, bool removing) -- an entity with an active entity script was deactivated: either flag the script to be killed (removal of a kill-on-removal script) or mark it deactivated and save it, then drop the entity's script count
 // Leaf: OnScriptedEntityDeactivated
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB88B0, length 128 bytes.
 // PDB: ?OnScriptedEntityDeactivated@CScriptBase@@QAEX_KAAVCScriptThing@@_N@Z. EntityScripts: CVectorMap<unsigned
 // __int64, CCountedPointer<CActiveEntityScriptBase> > (retail element vector at +0x08); CActiveEntityScriptBase
@@ -11,22 +13,9 @@
 // Shape: the inline find takes the key by reference (LowerBound gets the argument slot itself; the key is re-read
 // after the call) and keeps a hit only for `key >= it->first`; one `mov eax,1` serves the flag test, the pushed
 // true and the byte store; VC duplicates the DecrementScriptCounter tail into both arms.
-class CScriptThing { public:                                // vtable 0x01238C8C
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
-    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
-    virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53();
-    virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59();
-    virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65();
-    virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71();
-    virtual void v72();
-    virtual void DecrementScriptCounter();           // slot 73 (+0x124)
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 class CActiveEntityScriptBase {
 public:
@@ -37,10 +26,6 @@ public:
     unsigned long Flags;                             // +0x3C
 };
 
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-};
 
 struct CEntityScriptEntry {                          // pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> >
     unsigned __int64                          first;

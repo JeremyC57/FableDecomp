@@ -1,5 +1,6 @@
 // (anonymous namespace)::CIsUsableIciclePoint::operator()(const C3DVector& point) const -- a point is usable for a new icicle when no existing icicle lies within IciclesLimit of it in the ground (X/Y) plane
 // Leaf: ??RCIsUsableIciclePoint@?A0x
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E2E40, 89 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity (proven): Ego_r.pdb ??RCIsUsableIciclePoint@?A0xcee9a82c@@QBE_NABVC3DVector@@@Z (0x00825710), the predicate of the
@@ -24,13 +25,8 @@ public:
 };
 }
 class CThing;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-private:
-    void* PData;                                        // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #include "engine/C3DVector.h"
 namespace NCreatureMode {
 class CModeIceTrollGroundSmashIcicleAssault {

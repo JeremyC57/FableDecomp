@@ -1,5 +1,6 @@
 // std::vector::insert(iterator position, const value_type& x) -- (vector<pair<unsigned long, CCountedPointer<CVertexBufferWin32> > >) STLport single-element insert: construct at the end when position is end(), else copy the last element up one, shift [position, finish - 2) back by one and assign a copy of x at position; with no spare capacity grow through _M_insert_overflow; returns begin() + the original index
 // Leaf: ?insert@?$vector@U?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@std@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B8F950, 293 bytes (+ int3 padding), thiscall, `ret 8`.
 // Identity (proven): the landed _M_insert_overflow 0x00B8F840 and __copy_backward 0x00B8EF60 are this vector's
 //   (vector<pair<unsigned long, CCountedPointer<CVertexBufferWin32> > >, CEngineOcclusionManager::FlareVertexBuffers;
@@ -17,39 +18,7 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo {                                      // 12 bytes
-public:
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04, Data in ecx
-    void* Data;                                             // +0x08
-};
-template <class T> class CCountedPointer {                  // 8 bytes
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class CVertexBufferWin32;
 
 namespace std {

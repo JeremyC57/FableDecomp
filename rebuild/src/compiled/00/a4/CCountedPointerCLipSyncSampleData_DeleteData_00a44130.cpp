@@ -8,6 +8,7 @@
 // destroys 12-byte CLipSyncFrameData elements (Phonemes CArray<CLipSyncPhoneme>, each 12 bytes with the CCharString
 // Symbol first). Ego_r.pdb: ?DeleteData@?$CCountedPointer@VCLipSyncSampleData@@@@SIXPAX@Z.
 // Leaf: ?DeleteData@?$CCountedPointer@VCLipSyncSampleData@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 
 class CCharString {
@@ -71,9 +72,6 @@ public:
     float                     FramesPerSecond;          // +0x0C
 };
 
-template <class T> class CCountedPointer {
-public:
-    static void __fastcall DeleteData(void* p) { delete (T*)p; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<CLipSyncSampleData>;

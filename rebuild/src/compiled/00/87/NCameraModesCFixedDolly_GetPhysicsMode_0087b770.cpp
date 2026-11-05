@@ -1,6 +1,7 @@
 // NCameraModes::CFixedDolly::GetPhysicsMode() -- the fixed dolly's physics: a rigid go-to physics leaf owned through a new counted pointer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087B770, 106 bytes, `ret 4` (CCountedPointer returned through the hidden pointer).
 // Leaf: ?GetPhysicsMode@CFixedDolly@NCameraModes@@UAE?AV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Name: vtable 0x0125C48C slot 26; FableWin.pdb ?GetPhysicsMode@CFixedDolly@NCameraModes@@UAE?AV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@XZ
 //       (CCameraPointModeBase::GetPhysicsMode is the same slot).
 // Callees: operator new @ 0x00BFEA1A (0x14-byte leaf, 0xc-byte pointer info), CPhysicsLeaf<CPhysicsTargetModelGoTo,
@@ -18,27 +19,7 @@ class CPhysicsTargetModelGoTo;
 class CPhysicsForceModelRigid;
 class CPhysicsCoordRigid;
 }
-class CCPPointerInfo { public:
-    long  RefCount;                                  // +0x00
-    void (__fastcall* DeleteFunc)(void* data);       // +0x04
-    void* Data;                                      // +0x08
-    CCPPointerInfo(void (__fastcall* deleteFunc)(void*), void* data) : RefCount(1), DeleteFunc(deleteFunc), Data(data) { }
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    static void __fastcall DeleteData(void* data);   // 0x00850000 for T = NCameraModes::CSubComponentBase
-    CCountedPointer(T* data) : Data(data)
-    {
-        if (Data)
-            Info = new CCPPointerInfo(DeleteData, Data);
-        else
-            Info = 0;
-    }
-    CCountedPointer(const CCountedPointer& other);
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 namespace NCameraModes {
 class CSubComponentBase {
 public:

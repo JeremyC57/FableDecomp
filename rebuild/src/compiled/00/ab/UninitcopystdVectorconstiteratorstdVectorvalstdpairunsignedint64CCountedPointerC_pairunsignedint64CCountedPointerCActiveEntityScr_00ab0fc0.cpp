@@ -1,5 +1,6 @@
 // std::__uninitialized_copy<CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, CCountedPointer<C3DAnimationBuilder::CBoneInfo>*>(first, last, result, const __false_type&) -- STLport 4.6 copy-construct [first, last) into raw storage at result (Data and Info copied, Info->RefCount bumped when set), return the end
 // Leaf: ??$__uninitialized_copy@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@@std@@YIPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@00ABU__false_type@0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AB0FC0, 50 bytes, `__fastcall` (first in ecx, last in edx, result and the tag on the stack, `ret 8`).
 // Identity (naming wave 21, chunk 689 NAME_FIXES): the out-of-line head / tail copy of vector<CCountedPointer<C3DAnimationBuilder::CBoneInfo> >::
 //   _M_insert_overflow 0x00AB3300 (landed; binds exactly this spelling). Text: that row's STLport model (the element's own __fastcall COMDAT),
@@ -8,24 +9,8 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void* Data;                                             // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                                // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer();
-};
 
 class C3DAnimationBuilder { public: class CBoneInfo; };
 

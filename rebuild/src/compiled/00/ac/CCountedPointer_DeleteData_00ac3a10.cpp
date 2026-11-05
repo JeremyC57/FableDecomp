@@ -1,5 +1,6 @@
 // CCountedPointer::DeleteData(void* data) -- (CCountedPointer<CArray<C3DTriangle2> >) the counted pointer's per-type deleter: destroy the triangle array (free its vector storage) and free the object
 // Leaf: ?DeleteData@?$CCountedPointer@V?$CArray@VC3DTriangle2@@@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC3A10, 33 bytes (+ int3 padding), `ret` (static `__fastcall`, data in ecx).
 // Identity (proven): CCountedPointer<CArray<C3DTriangle2>>::DeleteData(void*); evidence: its only reference is the count-block store in CCountedPointer<CArray<C3DTriangle2> >::Reset 0x00AC3A40 (0x00AC3A90), called by C3DMeshPartitionBuilderElement::Build 0x00AC36D0 (both PDB name sets: ?Build@C3DMeshPartitionBuilderElement@@QAEX... PAV?$CCountedPointer@V?$CArray@VC3DTriangle2@@@@@@@Z) on its out pointer with the fresh 12-byte CArray<C3DTriangle2> it filled through BuildOutput 0x00AC2A80; both PDB name sets name ?DeleteData@?$CCountedPointer@V?$CArray@VC3DTriangle2@@@@@@SIXPAX@Z.
@@ -18,13 +19,6 @@ public:
     unsigned short VertexIndex[3];                         // +0x00
 };
 
-class CCPPointerInfo;
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<CArray<C3DTriangle2> >;

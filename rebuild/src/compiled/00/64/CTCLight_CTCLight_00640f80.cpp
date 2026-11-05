@@ -1,5 +1,6 @@
 // CTCLight::~CTCLight() -- unregister the light from the owner's graphic appearance (unless the owner is dead), free the two primitive vectors, release the light def and the shared light info, then ~CTCBase
 // Leaf: ??1CTCLight
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00640F80, length 160 bytes (tail `jmp` into ~CTCBase).
 // Label correction: the catalog row says "~CTCGraphicAppearanceMultipleStaticMeshes", but the two vtable stores are CTCLight's
 // (primary 0x0125A194, appearance-component side 0x0125A208 at +0xc; rtti-vtables.tsv), and the secondary base's own vtable
@@ -44,27 +45,7 @@ class CTCBase { public:
     virtual ~CTCBase();                                     // 0x00686830
 };
 
-class CCPPointerInfo { public:                                     // PDB: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CDefPointeeBase { public:
     virtual void Destroy();
     virtual void Delete();                                  // slot 1

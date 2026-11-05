@@ -1,4 +1,5 @@
 // CBase_005cc091_Derived_006df970::`scalar deleting destructor'(unsigned int) -- non-virtual: 2 members destroyed out of line, CBase_005cc091::~CBase_005cc091, flag-tested delete
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming (naming wave 22, ccs): the string type is the PDB CCharString (was CMember_0099eae0); name-only.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DF970, oracle length 54 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
@@ -17,9 +18,8 @@ class CCharString { public:
     ~CCharString();                            // 0x0099EAE0
 };
 
-class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
-    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CBase_005cc091 {
     unsigned char _body[0xb8];

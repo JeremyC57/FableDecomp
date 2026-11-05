@@ -1,5 +1,6 @@
 // CHitParameters::CHitParameters(const CHitParameters&) -- actual copy constructor, PDB00807C70
 // Leaf: CHitParameters
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CBaseObject.h"
 #include "engine/CIVCountedPointeeBase.h"
@@ -11,7 +12,8 @@
 struct DamageMap {DamageMap();DamageMap(const DamageMap&);~DamageMap();void*Head;unsigned long Size;unsigned long Allocator;}; //004F97B3 copies native tree,12 bytes
 struct AugmentationVector {AugmentationVector();AugmentationVector(const AugmentationVector&);~AugmentationVector();long*First,*Last,*End;}; //00811D40, enum vector copy12 bytes
 struct CHitLocation;
-struct CBaseIntelligentPointer {CBaseIntelligentPointer();virtual ~CBaseIntelligentPointer();CBaseObject* GetPItem()const;void SetPItem(CBaseObject*);CBaseObjectPointer*PData;}; //A01B10/A01C10/A01B50/A01B90
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct ThingPointer:CBaseIntelligentPointer {ThingPointer();ThingPointer(const ThingPointer&o):CBaseIntelligentPointer(){SetPItem(o.GetPItem());}virtual ~ThingPointer(){}}; // native1238C6C sole slot deleting dtor004A9710 -> A01C10
 // CDefPointer<CMaterialDef const> copy PDB01D83F90; unsigned inherited refcount+4.
 enum ENullDef {NullDef=0};

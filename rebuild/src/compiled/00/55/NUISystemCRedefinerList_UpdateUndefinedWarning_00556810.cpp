@@ -1,4 +1,5 @@
 // NUISystem::CRedefinerList::UpdateUndefinedWarning(float time) -- scan the child redefiners for an undefined control; show the undefined-controls warning and hide the accept button if one is found, else the reverse
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00556810, length 279 bytes (`ret 4`).
 // Callees: CKeyRedefiner::IsUndefined @ 0x00557940 (descriptive: SubType == 2 && Definition == 0; manifest label
 // "CTCKraken::HaveAllTentaclesBeenHit" is propagated), CScrollableList::UnhideComponent(CComponent*, float, float, C2DVector)
@@ -19,12 +20,7 @@ struct C2DVector {
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
 
-struct CCPPointerInfo;
-template <class T> struct CCountedPointer {
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct CRetailVector {               // STLport vector (12 bytes; PDB 16)
     T* _M_start;
     T* _M_finish;

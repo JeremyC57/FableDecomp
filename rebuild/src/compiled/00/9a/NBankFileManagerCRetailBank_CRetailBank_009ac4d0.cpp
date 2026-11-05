@@ -1,6 +1,7 @@
 // NBankFileManager::CRetailBank::CRetailBank() -- an unopened retail bank: no disk or threaded file, DMA off, an empty contained-bank map and an empty file path
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AC4D0, 84 bytes, plain `ret`.
 // Leaf: ??0CRetailBank
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Callees: the root base constructor @ 0x0099A2F0 (stores the CBaseClassNonCopyable vtable 0x0129A7C4; declared ??0CBase@@QAE@XZ as
 //          the landed rows do), malloc @ 0x00BFEA0E (the 0x28-byte map header node), CCharString::CCharString() @ 0x0099E4B0.
 //          Vtable 0x0129B010 (NBankFileManager::CRetailBank; its deleting dtor 0x009AC7A0 is landed).
@@ -23,12 +24,7 @@ public:
     void* m_pStringData;
     CCharString();                                   // 0x0099E4B0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 class CDiskFileWin32;
 class CThreadedFile;
 namespace NBankFileManager {

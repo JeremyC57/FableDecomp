@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CRockTroll::Main() -- minion clifftop chase rock-troll script: attach the troll to the active quest, wait until the hero is within 20 units, then show a green quest-info health bar for it
 // Leaf: ?Main@CRockTroll@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Retail 0x00DA5F40, 337 bytes. Callees: CScriptThing(const CScriptThing&) 0x004ABE90 / ~CScriptThing 0x004AA840 (the
 // CIsThingAlive filter, vtable 0x012C32F0, inline user dtor), RegisterFilter 0x00F35B10, IsDone 0x00F35B30,
 // CBaseObject() 0x0099A380 + ~CScriptGameResourceObjectScriptedThingBase 0x007E74D0 (an unused handle, vtable
@@ -24,11 +25,9 @@ class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    virtual ~CScriptThing();                               // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -51,7 +50,6 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 using NScript::CIsThingAlive;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"

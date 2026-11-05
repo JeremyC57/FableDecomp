@@ -1,5 +1,6 @@
 // C3DAnimationBuilder::BuildBoneInfoTree(const CArray<CCountedPointer<C3DAnimFileSequenceChunk>>& sequences, CArray<CCountedPointer<CBoneInfo>>& bones) -- rebuild the bone list from the animation file's sequence chunks (one CBoneInfo per chunk, named and indexed, parented through the chunk's parent index with the parent's child count bumped, parentless ones collected as roots) and return the first root
 // Leaf: ?BuildBoneInfoTree@C3DAnimationBuilder@@AAE?AV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@ABV?$CArray@V?$CCountedPointer@VC3DAnimFileSequenceChunk@@@@@@AAV?$CArray@V?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB1F30, 556 bytes, thiscall (`this` unused), hidden CCountedPointer result,
 //   `ret 0Ch`.
 // Identity: Ego_r.pdb `?BuildBoneInfoTree@C3DAnimationBuilder@@AAE?AV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@ABV?$CArray@V?$CCountedPointer@VC3DAnimFileSequenceChunk@@@@@@AAV?$CArray@V?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@@@@Z`
@@ -31,48 +32,8 @@
 //   constructor) and keeps the new CBoneInfo in ecx instead of retail's `mov esi,eax` (566v556).
 // CCountedPointer modelled locally: engine/CCountedPointer.h builds the count block from `(void*)Data` (re-read after the
 // operator new call, which reloads the local); retail passes the constructor argument (`mov [eax+8],esi`) -- header debt.
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0x0
-    void (__fastcall* DeleteFunc)(void*);                   // +0x4
-    void* Data;                                             // +0x8
-    CCPPointerInfo(unsigned long refCount, void (__fastcall* deleteFunc)(void*), void* data)
-        : RefCount(refCount), DeleteFunc(deleteFunc), Data(data) { }
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                                // +0x0
-    CCPPointerInfo* Info;                                   // +0x4
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(T* data) : Data(data)
-    {
-        if (data)
-            Info = new CCPPointerInfo(1, DeleteData, data);
-        else
-            Info = 0;
-    }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T* operator->() const { return Data; }
-    T* Get() const { return Data; }
-    static void __fastcall DeleteData(void* data) { delete static_cast<T*>(data); }
-};
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 void __cdecl operator delete(void* p);                     // 0x00BFE9BC
 inline void* operator new(unsigned int, void* p) { return p; }

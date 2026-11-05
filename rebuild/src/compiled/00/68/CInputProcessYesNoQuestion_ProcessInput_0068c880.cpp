@@ -1,5 +1,6 @@
 // CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- answer the on-screen yes/no question: on PC keyboard input keys 4 (yes) / 10 (no), otherwise the yes / no / cancel game actions 0x16 / 0x17 / 0x18 (cancel only while the gui allows it) queue game event 0x1D carrying (answer, previous player mode) and mark the input handled
 // Leaf: ProcessInput
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS
@@ -32,12 +33,7 @@ public:
 struct CPlayerGuiQuestion {
     bool CanCancel();                              // 0x0048DB98
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:

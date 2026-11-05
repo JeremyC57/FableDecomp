@@ -1,5 +1,6 @@
 // CAIStateGroup_CreatureUseCoverBase::CAIStateGroup_CreatureUseCoverBase() -- initialize the base, tracked cover and empty cover list.
 // Leaf: ??0CAIStateGroup_CreatureUseCoverBase@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Identity: proven; own RTTI vtable0x128D31C, PDB default constructor; EnemyCreatureBase0x8FF720; packed PCoverThing+31 and CoverList+40 (own destructor0x902F71 corroborates).
 // Layout: engine/CAIStateGroupBase.h flattens the vptr and Name/priority types. Local real polymorphic CAIStateGroupBase20 is needed by the actual inherited constructor/virtual table; PBrain+4, priority+8, Name+12 and flags+16 agree with header/PDB.
 // Layout: engine/CAIStateGroup_EnemyCreatureBase.h uses the wrong struct key and flattens both inheritance and PTargetThing. Actual class-key V, base20 and typed eight-byte tracked member give real base28; this permits the packed CoverBase PCoverThing+31 and CoverList+40 proved by its own destructor.
@@ -8,8 +9,8 @@
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 #undef CAIStateGroup_CreatureUseCoverBase
 class CThing; class CThingCreatureBase;
-class CBaseIntelligentPointer { public: virtual ~CBaseIntelligentPointer(); CBaseIntelligentPointer(); void* PData; };
-template<class T> class CIntelligentPointer:public CBaseIntelligentPointer { public: CIntelligentPointer():CBaseIntelligentPointer() {} };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CEnginePrimitiveThemeChannelDesc { public: unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad; CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0) {} };
 namespace std {
 template<class T> class allocator {};

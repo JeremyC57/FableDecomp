@@ -1,5 +1,6 @@
 // C3DMeshFileTrianglesChunk::GetList() const -- the triangle list (+0x2C, 6-byte C3DTriangle2 records) viewed as a C array: its first element when it holds any, else the container object itself
 // Leaf: GetList
+// Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members m_first/m_last are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe @ 0x00ABC440, 35 bytes (+13 int3), `__fastcall`, plain `ret`, no callees.
 // Label correction: the manifest's propagated "CWaterPatchTesselatorBase<CTVertexSeaBackground>::GetBridgeVertexBufferAsCArray"
 // cannot be right -- the size divide is by 6 (0x2AAAAAAB multiply, NO extra shift), the sea vertex is 12 bytes. The row
@@ -15,12 +16,7 @@ class C3DTriangle2 { public:
     unsigned short VertexIndex[3];
 };
 
-template <class T> class CArray { public:                 // retail STLport-shaped vector: first / last / end of storage
-    T* m_first;
-    T* m_last;
-    T* m_end;
-    long size() const { return m_last - m_first; }
-};
+#include "engine/CArray.h"
 
 class C3DMeshFileTrianglesChunk { public:
     void*                 __vftable;               // +0x00
@@ -32,5 +28,5 @@ class C3DMeshFileTrianglesChunk { public:
 const C3DTriangle2* C3DMeshFileTrianglesChunk::GetList() const
 {
     const CArray<C3DTriangle2>* list = &TriangleList;
-    return list->size() != 0 ? list->m_first : (const C3DTriangle2*)list;
+    return list->size() != 0 ? list->begin() : (const C3DTriangle2*)list;
 }

@@ -1,6 +1,7 @@
 // std::__copy_backward(_RandomAccessIter __first, _RandomAccessIter __last, _BidirectionalIter __result, const random_access_iterator_tag&, _Distance*) -- (CScriptGameResourceObjectScriptedThingBase*, CScriptGameResourceObjectScriptedThingBase*, int) STLport random-access backward copy: n = last - first assignments `*--result = *--last` through the element's out-of-line operator=, return the new result
 // Flags: /Gr
 // Leaf: ??$__copy_backward@PAVCScriptGameResourceObjectScriptedThingBase@@PAV1@H@std@@YIPAVCScriptGameResourceObjectScriptedThingBase@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD2C7C, 47 bytes (size-optimised TU: unaligned entry), __fastcall (/Gr: first ecx,
 //   last edx; result, the tag reference and the null distance pointer on the stack), `ret 0Ch`.
 // Identity (proven): std::__copy_backward<CScriptGameResourceObjectScriptedThingBase*, CScriptGameResourceObjectScriptedThingBase*, int>; evidence: the landed vector<CScriptGameResourceObjectScriptedThingBase>::_M_fill_insert 0x00CD378D declares and calls this __copy_backward (16-byte elements, vtable 0x0127094C RTTI .?AVCScriptGameResourceObjectScriptedThingBase@@); the other caller is the forwarder 0x00CD3119.
@@ -15,12 +16,7 @@ struct CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { };   // Ego_r.pdb 8 bytes
-class CCPPointerInfo;
-template <class T> class CCountedPointer {               // 8 bytes
-public:
-    T*              Data;                                // +0x0
-    CCPPointerInfo* Info;                                // +0x4
-};
+#include "engine/CCountedPointer.h"
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase {   // Ego_r.pdb 0x10, vtable 0x0127094C
 public:
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10

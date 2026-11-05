@@ -1,3 +1,4 @@
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members Begin/End are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 
 class CTCTrapBase {
@@ -6,15 +7,8 @@ public:
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> CTrapInterfaceEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    CTrapInterfaceEntry* Begin;
-    CTrapInterfaceEntry* End;
-    CTrapInterfaceEntry* LowerBound(const ETCInterfaceType& key);
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTrapInterfaceMap;
 struct CTrapTargetView {
     unsigned char _pad_0x00[0x2c];
@@ -35,7 +29,7 @@ bool __stdcall CGameScriptInterface_ManuallyTriggerTrap(CGameScriptInterface* se
         CTrapInterfaceMap* map = &target->Interfaces;
         ETCInterfaceType key = (ETCInterfaceType)(0x7d);
         CTrapInterfaceEntry* entry = map->LowerBound(key);
-        CTrapInterfaceEntry* end = map->End;
+        CTrapInterfaceEntry* end = map->end();
         if (entry == end || entry->first > 0x7d)
             entry = end;
         ((CTCTrapBase*)(((void*)entry->second)))->ManualTrigger();

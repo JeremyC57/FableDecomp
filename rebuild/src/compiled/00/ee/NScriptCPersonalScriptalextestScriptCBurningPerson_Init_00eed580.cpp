@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_alextestScript::CBurningPerson::Init() -- set the person's thing on fire through the game interface and reset the speech counter
 // Leaf: ?Init@CBurningPerson@CPersonalScript_alextestScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EED580, length 29 bytes (+ int3 padding).
 // Callees: the game interface at +0x04, virtual slot 477 (+0x774) with (&m_me, 1).
 // Layout from Ego_r.pdb (CBurningPerson, 32 bytes): SpeakCounter +0x1c; the interface pointer at
@@ -9,7 +10,9 @@
 #define SCRIPT_SLOT(n) virtual void slot##n()
 #define SCRIPT_SLOTS10(d) SCRIPT_SLOT(d##0); SCRIPT_SLOT(d##1); SCRIPT_SLOT(d##2); SCRIPT_SLOT(d##3); SCRIPT_SLOT(d##4); SCRIPT_SLOT(d##5); SCRIPT_SLOT(d##6); SCRIPT_SLOT(d##7); SCRIPT_SLOT(d##8); SCRIPT_SLOT(d##9)
 
-class CScriptThing { public: long m_id; long m_uid; long m_type; };   // 12 bytes
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 struct CGameInterface {                         // only the slot used is typed
     SCRIPT_SLOTS10(0); SCRIPT_SLOTS10(1); SCRIPT_SLOTS10(2); SCRIPT_SLOTS10(3); SCRIPT_SLOTS10(4);

@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<CCountedPointer<NShape::CSubdivisionTriangle>>) STLport growth insert for an 8-byte counted-pointer element: allocate size + max(size, fill_len) elements, copy-construct the head, x (once, or fill_len times) and the tail unless atend, destroy and free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@V?$CCountedPointer@VCSubdivisionTriangle@NShape@@@@V?$allocator@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007659F0, 218 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
 // Identity: element `CCountedPointer<NShape::CSubdivisionTriangle>`; evidence: the caller 0x007634E0 (NShape::CBasicShape vtable slot 5) news an object with vtable 0x0126A240 (RTTI .?AVCSubdivisionTriangle@NShape@@), wraps it in a counted pointer and pushes it here.
 //   Family F011 (17 byte-identical bodies, one COMDAT per element type): the manifest label "Vector_Insert_Pair64_MoveAndRealloc" is
@@ -17,24 +18,8 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void* Data;                                             // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                                // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer();
-};
 
 namespace NShape { class CSubdivisionTriangle; }
 

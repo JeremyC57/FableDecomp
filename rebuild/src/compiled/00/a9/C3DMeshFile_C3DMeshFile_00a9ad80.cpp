@@ -10,29 +10,9 @@
 // FileComment assigned from a named CCharString local in its own {} block (retail's `lea ; push`, sharing the dead temporary's frame word) and Version = 100.
 // Layout: CChunkedFile (PDB 0x14): vptr, RootChunk +4, Version +0xc, FileComment +0x10.
 // Leaf: ??0C3DMeshFile
-struct SCountBlock {
-    long m_references;                              // +0
-    void (__fastcall* m_pfnDestroy)(void*);         // +4
-    void* m_pObject;                                // +8
-    SCountBlock(void (__fastcall* destroy)(void*), void* object) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) {}
-};
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer { public:
-    T* Object;                                      // +0
-    SCountBlock* Count;                             // +4
-    static void __fastcall DeleteData(void* object);   // 0x00A99FD0
-    CCountedPointer(T* object) : Object(object) { Count = Object ? new SCountBlock(DeleteData, Object) : 0; }
-    ~CCountedPointer()
-    {
-        if (Count) {
-            --Count->m_references;
-            if (Count->m_references == 0) {
-                Count->m_pfnDestroy(Count->m_pObject);
-                delete Count;
-            }
-        }
-    }
-};
 
 class CCharString { public:
     CCharString(const char* text, long length);     // 0x0099EBF0 (-1 = strlen)

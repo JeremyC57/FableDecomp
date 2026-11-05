@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonRearUp::CModeDragonRearUp(CThing* thing, float seconds) -- CModeStandBase(thing), own vtable, the "REAR_UP" filter, Timer = seconds converted to frames
 // Leaf: ??0CModeDragonRearUp
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D84F0 (`ret 8`). Vtable 0x01268420 = NCreatureMode::CModeDragonRearUp (rtti-vtables.tsv).
@@ -44,18 +45,9 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
     }
 };
 
-struct CBaseIntelligentPointer {           // 8 bytes: vptr + the pointed-to item
-    virtual void v00();
-    CBaseObject* m_pItem;                  // +4
-    CBaseIntelligentPointer();             // 0x00A01B10
-    void SetPItem(CBaseObject* item);      // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    virtual void v00();
-    CIntelligentPointer() { }
-    CIntelligentPointer(CThing* item) { SetPItem((CBaseObject*)item); }
-};
 
 struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c + the stand-mode members)
     virtual void v00();

@@ -1,5 +1,6 @@
 // NScript::CV_ChickenKickingScript::CSpectator::Init() -- the chicken-kicking spectator script picks its number from whichever "Spectator1"/"Spectator2" marker it stands on (else 3)
 // Leaf: ?Init@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Identity (naming wave 11): ?Init@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E74B4 slot 2 is stored by the factory 0x00E63660 registered as "Spectator"
 // Retail 0x00E63730, 352 bytes. Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, the script
 // interface's GetThingWithScriptName (slot 72, +0x120, CScriptThing by hidden pointer), IsDistanceBetweenThingsUnder
@@ -21,28 +22,8 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct SCountBlock {
-    long  m_references;                            // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImp;
-template <class T> class CCountedPointer { public:                          // CCountedPointer<CScriptThingImp>
-    CScriptThingImp* Data;
-    SCountBlock*     Info;
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

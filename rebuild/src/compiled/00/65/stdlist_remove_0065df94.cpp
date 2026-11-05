@@ -1,5 +1,6 @@
 // std::list::remove(const value_type& val) -- (list<CIntelligentPointer<CThingTrackNode > >) STLport: erase every node whose pointer equals val (here the null pointer CTCVillage::ClearOutNullMembers passes)
 // Leaf: ?remove@?$list@V?$CIntelligentPointer@VCThingTrackNode@@@@V?$allocator@V?$CIntelligentPointer@VCThingTrackNode@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThingTrackNode@@@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065DF94, 66 bytes (unaligned, frame pointer: a size-optimised TU), thiscall `ret 4`.
 // Identity (proven): std::list<CIntelligentPointer<CThingTrackNode > >::remove; evidence: CTCVillage::ClearOutNullMembers 0x0065890B calls it at 0x00658960 on VillagePatrols +0x48 (Ego_r.pdb CTCVillage list<CIntelligentPointer<CThingTrackNode> > member; the retail 4-byte lists run from +0x28 in PDB order, the 12-byte PlayersCrimes set before VillageMarkers +0x70) with a null CIntelligentPointer<CThingTrackNode> temporary; its equality callee 0x0065D6DB is that element's own operator== instantiation.
 // Label: the manifest's "SetScriptBrushThingsToMove" is propagated (family H092: six list<CIntelligentPointer<T> >::remove COMDATs, one per T).
@@ -11,14 +12,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CThingTrackNode;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    void* PItemInfo;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 template <class T> bool __fastcall operator==(const CIntelligentPointer<T>& a, const CIntelligentPointer<T>& b);
 namespace std {
 template <class _Tp> class allocator { };

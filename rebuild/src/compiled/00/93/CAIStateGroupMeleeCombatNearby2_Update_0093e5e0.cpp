@@ -1,6 +1,7 @@
 // CAIStateGroup_MeleeCombatNearby2::Update() -- melee combat loop: finish the current action, register with the combat manager against a live enemy, refresh perception, queue the combat message, then while the enemy lives and the group runs: move to the combat position, attack and mark the creature ready to attack again; terminate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E5E0, length 384 bytes (+ int3 padding).
 // Leaf: ?Update@CAIStateGroup_MeleeCombatNearby2@@MAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Callees: CAIStateGroup_MeleeCombatNearbyBase::UpdateCurrentAction @ 0x0093D140 / ShouldGoStraightIntoStrafe @ 0x0093D180
 //          / AddStrafeMode @ 0x0093D7A0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy +0x14), CAIStateGroupBase::
@@ -44,19 +45,8 @@ bool __fastcall IsAbleToMove(CThing* thing);                  // 0x0085F3E0
 void __fastcall RemoveMovementBlockingModes(CThing* thing);   // 0x0085F600
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-};
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual void v00();
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {

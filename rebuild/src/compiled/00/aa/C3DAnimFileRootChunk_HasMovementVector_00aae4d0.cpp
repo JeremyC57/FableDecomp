@@ -1,4 +1,5 @@
 // C3DAnimFileRootChunk::HasMovementVector() const -- is there an "MVEC" sub-chunk?
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAE4D0, length 80 bytes.
 // Callees: CChunkedFileSuperChunk::FindFirstSubChunkOfType @ 0x00AA7F40, operator delete @ 0x00BFE9BC.
@@ -31,27 +32,8 @@ class CDataOutputStream { public:
 
 #include "engine/CArray.h"
 
-struct SCountBlock {
-    long m_references;                      // +0
-    void (__fastcall* m_pfnDestroy)(void*); // +4: per-type deleter, object in ecx
-    void* m_pObject;                        // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                           // +0
-    SCountBlock* m_pCount;                  // +4
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;            // operator delete @ 0x00BFE9BC
-            }
-        }
-    }
-};
 
 class CChunkedFileSuperChunk;
 
@@ -93,5 +75,5 @@ class C3DAnimFileRootChunk : public CChunkedFileSuperChunk { public:   // retail
 
 bool C3DAnimFileRootChunk::HasMovementVector() const
 {
-    return FindFirstSubChunkOfType("MVEC").m_pObject != 0;
+    return FindFirstSubChunkOfType("MVEC").Data != 0;
 }

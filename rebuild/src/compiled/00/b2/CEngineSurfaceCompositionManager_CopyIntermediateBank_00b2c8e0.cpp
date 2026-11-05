@@ -1,5 +1,6 @@
 // CEngineSurfaceCompositionManager::CopyIntermediateBank() -- close the completed bank, copy the intermediate disk-cache file over the completed one through a pool (or heap) staging buffer, reopen the completed bank read-only on the new file with the engine graphic bank's texture manager, and clear every cached surface's completed-bank index
 // Leaf: CopyIntermediateBank
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Item->Data are the header CCPPointerInfo's (same offsets).
 // Layout: local model; retail offsets: CachedSurfaces list +0x88 (STLport list = one node pointer), CompletedBankFile +0x398, disk-cache
 //         file names +0x9b0 (intermediate) / +0x9b4 (completed); engine 0x01436E98: memory pool CCountedPointer +0x8e0, graphic bank +0x954
 //         (its CCountedPointer<CTextureManager> TextureManager at +0x280); CBankFile virtual slots 3 OpenFileReadOnly, 4 OpenFileReadWrite,
@@ -14,25 +15,7 @@
 extern "C" double __fastcall GFGetTime();               // 0x009E1BC0
 void __cdecl operator delete(void* p);                 // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    long  Count;
-    void (__fastcall *Destroy)(void* item);
-    void* Item;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->Count; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->Count == 0) {
-                Info->Destroy(Info->Item);
-                operator delete(Info);
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class CWideString { public:
     void* PStringData;

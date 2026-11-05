@@ -1,5 +1,6 @@
 // std::list::list(const list& x) -- (list<CCountedPointer<CQuestManager::CActiveQuest> >) STLport copy constructor: zero the node proxy, malloc the 0x10-byte sentinel and link it to itself, then insert(begin(), x.begin(), x.end()) through the out-of-line _M_insert_dispatch
 // Leaf: ??0?$list@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BADC0, 63 bytes (+ int3 padding to 64), thiscall, `ret 4`, returns this.
 // Identity: list<CCountedPointer<CQuestManager::CActiveQuest> > -- proven; evidence: its _M_insert_dispatch 0x004B92D0 (copies an 8-byte {Data, Info} element and bumps Info's count) is also called by CQuestManager::DeactivateEventQuest 0x004B2AD0, which copies the list at CQuestManager+0x38 = Ego_r.pdb ActiveQuests (list<CCountedPointer<CQuestManager::CActiveQuest> >; retail offset after the 12-byte STLport containers) and walks it testing CActiveQuest::PScript.Data (+8) and passing &QuestName (+0x30 with retail's 12-byte Regions vector); Ego_r.pdb names list<CCountedPointer<CQuestManager::CActiveQuest> >::remove (same list type); no direct caller (unreferenced COMDAT).
 // Label: the manifest's "StdList_InitializeFromRange" is propagated across byte-identical bodies; this is the STLport 4.6 list copy
@@ -18,11 +19,7 @@ class CQuestManager {
 public:
     class CActiveQuest;
 };
-template <class T> class CCountedPointer {         // 8 bytes: the object + its shared CCPPointerInfo count block
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _Tp> class allocator {

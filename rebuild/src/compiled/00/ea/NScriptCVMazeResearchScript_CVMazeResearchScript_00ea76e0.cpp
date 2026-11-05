@@ -1,5 +1,6 @@
 // CV_MazeResearchScript::CV_MazeResearchScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, vtable 0x012EE444, the empty Sword script thing and the empty cut-scene flag map
 // Leaf: ??0CV_MazeResearchScript
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EA76E0, length 101 bytes (padded to 112), `ret 8`.
 // Catalog label "CV_MurderTwistFinalScript" is wrong: the factory 0x00EA8690 (this ctor) is registered at 0x00CD8F62
 // under "S_VMR" / "V_MazeResearch", and the PDB CV_MazeResearchScript layout fits the stores.
@@ -27,11 +28,7 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                    // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-template <class T> class CCountedPointer { public:                     // {Data, Info}
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
@@ -74,7 +71,6 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
-class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {              // CScriptThing::PImp
     CScriptThingImp* Data;                         // +0
     CCPPointerInfo*  Info;                         // +4

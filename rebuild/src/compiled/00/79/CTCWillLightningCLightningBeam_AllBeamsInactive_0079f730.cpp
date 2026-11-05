@@ -1,4 +1,5 @@
 // CTCWillLightning::CLightningBeam::AllBeamsInactive() const -- true when every child beam is inactive (state 0) or finished (state 6)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079F730, 104 bytes (+8 int3). __fastcall, returns bool in al.
 //         Caller 0x007A22AF; twin body CTCWillLightning::AllBeamsInactive 0x0079F7A0 walks the component's m_lbBeams.
 // Callees: operator delete 0x00BFE9BC (the counted pointer's info block) and the info block's deleter (+4, object in ecx).
@@ -6,27 +7,8 @@
 //        copied into a local counted pointer (add-ref null-tested, release + delete on zero on both exits); end() is
 //        re-read from the member every iteration.
 // Layout: CLightningBeam (PDB, 0x84): m_lsState +0x00, m_lChildren +0x4C (retail STLport list = one sentinel pointer).
-class CCPPointerInfo { public:                          // counted-pointer info block
-    long Count;                                  // +0
-    void (__fastcall* Destroy)(void*);           // +4 per-type deleter, object in ecx
-    void* Object;                                // +8
-};
+#include "engine/CCountedPointer.h"
 void operator delete(void* p);                   // 0x00BFE9BC
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->Count == 0) {
-                Info->Destroy(Info->Object);
-                delete Info;
-            }
-        }
-    }
-    T* operator->() const { return Data; }
-};
 template <class T> struct CRetailList {          // STLport list: the sentinel node pointer only (4 bytes; PDB 12)
     struct Node { Node* Next; Node* Prev; T Value; };
     Node* Head;

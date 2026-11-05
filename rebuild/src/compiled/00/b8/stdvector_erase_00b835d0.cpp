@@ -1,5 +1,6 @@
 // std::vector::erase(iterator position) -- (vector<CCountedPointer<CParticleSimulation> >) STLport single erase: shift the tail down one slot over position, drop the last slot (release its count block, clear both words), return position
 // Leaf: ?erase@?$vector@V?$CCountedPointer@VCParticleSimulation@@@@V?$allocator@V?$CCountedPointer@VCParticleSimulation@@@@@std@@@std@@QAEPAV?$CCountedPointer@VCParticleSimulation@@@@PAV3@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B835D0, 97 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity (proven): std::vector<CCountedPointer<CParticleSimulation> >::erase(iterator); evidence: CEngineClothSimulationMeshBase::ClearStaticParticleSims 0x00B81450 (Ego_r.pdb ?ClearStaticParticleSims@CEngineClothSimulationMeshBase@@SIXXZ) erases the expired entries of the static StaticParticleSims (0x014378B8) through it; its __copy 0x00B83330 is the one of resize(n, x) 0x00B83FC0 under the ParticleSims resize 0x00B840A0 (CArray<CCountedPointer<CParticleSimulation> >, J094's 0x00B82FA0 chain).
 // Label: the manifest's "RemovePredicate" is propagated / wrong in kind (family J095: five byte-identical bodies, one per
@@ -10,39 +11,7 @@
 // Shape: STLport 4.6 _vector.h `if (pos + 1 != end()) __copy_ptrs(pos + 1, _M_finish, pos, _TrivialAss()); --_M_finish;
 //   _Destroy(_M_finish); return pos;` (the landed 0x0084F570 shape) with J094's CCountedPointer.
 void __cdecl operator delete(void* p);                      // 0x00BFE9BC
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                 // +0
-    void (__fastcall* DeleteFunc)(void* data);              // +4, Data in ecx
-    void* Data;                                             // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0
-    CCPPointerInfo* Info;                                   // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class CParticleSimulation;
 namespace std {
 struct __false_type { __false_type() { } };

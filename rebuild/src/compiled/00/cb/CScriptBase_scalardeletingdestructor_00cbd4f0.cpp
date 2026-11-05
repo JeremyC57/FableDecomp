@@ -1,5 +1,6 @@
 // CScriptBase::`scalar deleting destructor'(unsigned int flags) -- the destructor (expanded), then free the object when bit 0 is set
 // Leaf: ??_GCScriptBase@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBD4F0, 30 bytes, thiscall, `ret 4`; calls 00cbd510=CScriptBase::~CScriptBase ; 00bfe9bc=MSVCR71.DLL::operator_delete.
 // Naming wave 33 (family ctorB): slot 0 of vtable 0x012C1648 (no RTTI), the vtable the landed constructor 0x00CB8110 stores last
@@ -14,7 +15,7 @@ protected:
     virtual ~CBaseClassNonCopyable();
 };
 class CCharString { public: void* m_pStringData; };
-template <class T> class CCountedPointer { public: T* Data; void* Info; };   // 8 bytes
+#include "engine/CCountedPointer.h"
 class CSpawnedFuncBase;
 class CActiveEntityScriptBase;
 class CEntityScriptBindingBase;

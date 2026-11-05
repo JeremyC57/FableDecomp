@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(CLevelFiles* pos, const CLevelFiles& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth: move into a size + max(size, fill_len) block with x inserted fill_len times at pos
 // Leaf: ?_M_insert_overflow@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051A430, 304 bytes, thiscall `ret 14h`. Callers: vector<CLevelFiles>::push_back
 //   0x0051AE60 (landed: `_M_insert_overflow(_M_finish, x, __false_type(), 1, true)`, call at 0x0051AEC2) and 0x00500B3A.
 //   The catalog label "VectorReallocateAndMove" is descriptive.
@@ -18,18 +19,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 class CAFile;
 
-class CCPPointerInfo { public:                               // 12 bytes
-    unsigned long RefCount;                           // +0x00
-    void (__cdecl *DeleteFunc)(void*);                // +0x04
-    void* Data;                                       // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {            // 8 bytes
-public:
-    T* Data;                                          // +0x00
-    CCPPointerInfo* Info;                             // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
 
 class CLevelLoader {
 public:

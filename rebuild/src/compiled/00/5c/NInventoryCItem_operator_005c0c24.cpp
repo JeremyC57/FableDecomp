@@ -1,5 +1,6 @@
 // NInventory::CItem::operator=(const CItem& other) -- assign an inventory slot: type, count, the shared per-item data (counted assignment) and the average bought price
 // Leaf: ??4CItem@NInventory@@QAEAAV01@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C0C24, 43 bytes, thiscall `ret 4`, returns *this; size-optimised TU.
 // Identity (probable): the memberwise assignment of a 0x14-byte Ego_r.pdb NInventory::CItem whose +8 member goes through
 //   CCountedPointer<CPerItemData>::operator= 0x005C077F; callers are the vector<CItem> copy / erase helpers
@@ -7,14 +8,8 @@
 // Callees: CCountedPointer<NInventory::CPerItemData>::operator=(const CCountedPointer&) 0x005C077F.
 // Shape: written out as the implicit memberwise assignment, member order.
 #pragma optimize("s", on)
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 namespace NInventory { class CPerItemData; }
-template <class T> class CCountedPointer { public:
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    CCountedPointer(const CCountedPointer& other);      // 0x005C05D5
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x005C077F
-};
 namespace NInventory {
 class CItem {
 public:

@@ -1,5 +1,6 @@
 // NUISystem::CHoverable::OnUnhovered() -- return to the pre-hover state and run the on-unhovered actions
 // Leaf: ?OnUnhovered@CHoverable@NUISystem@@MAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x0055B9A0, 39 bytes; vtable slot 144 (+0x240) of NUISystem::CHoverable (0x0124BFB4, abs ref
 // 0x0124C1F4) and CDraggableInto (0x0124B514); Ego_r.pdb ?OnUnhovered@CHoverable@NUISystem@@MAEXXZ. Calls slot 48
 // (+0xc0, CChangingStateComponent::ChangeState(unsigned long), 0x0052CF40) with StateBeforeHovered, then slot 131
@@ -8,7 +9,7 @@
 // lower: STLport containers in the CComponent bases). The vtable is modelled with placeholder slots.
 namespace NUISystem {
 class CAction;
-template <class T> class CCountedPointer { T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 }
 namespace std { template <class T> class list; }
 namespace NUISystem {

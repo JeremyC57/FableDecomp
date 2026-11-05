@@ -1,5 +1,6 @@
 // std::__copy(CScriptThing* first, CScriptThing* last, CScriptThing* result, const random_access_iterator_tag&, int*) -- assign the script things of [first, last) forward over result (counted-pointer share), return the advanced result
 // Leaf: ??$__copy@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC2A0, length 132 bytes (+ int3 padding), `ret 0Ch`.
 // Identity: callers 0x008AC87C and 0x008AC9E9 (the vector<CScriptThing> insert/erase/assign paths of the script-interface
 //   TU) and 0x00CD316D. The catalog label `_Move<CScriptThing*,CScriptThing*>` is propagated (Dinkumware spelling).
@@ -12,40 +13,8 @@
 //   CCountedPointer<CScriptThing> PImp } with a local model (the generated engine/CScriptThing.h is flattened data only).
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // Ego_r.pdb, 12 bytes
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void*);               // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer {                                 // Ego_r.pdb, 8 bytes
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        ShareData(other.Data, other.Info);
-        return *this;
-    }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-};
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 

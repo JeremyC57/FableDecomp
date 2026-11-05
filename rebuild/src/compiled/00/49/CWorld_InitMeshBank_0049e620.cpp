@@ -1,4 +1,5 @@
 // CWorld::InitMeshBank() -- open the main mesh bank (MBANK_ALLMESHES) through the system's mesh bank manager, take its animation manager, and make it the graphic appearances' global bank, with two loading-progress ticks
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049E620, 285 bytes (288 with padding), plain `ret`. PDB ?InitMeshBank@CWorld@@IAE_NXZ.
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, __fastcall DisplayProgress(const
 //   CCharString&, float, bool, bool) 0x009E9F40, __fastcall GFGetSystemManager() 0x009A4EC0, CMeshBankManager::
@@ -23,46 +24,7 @@ class CCharString { public:
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 
-class CCPPointerInfo { public:                                // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    T* operator->() const { return Data; }
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 class C3DAnimationManager;
 class CMeshDataBank { public:
     unsigned char        _pad[0x3c0];

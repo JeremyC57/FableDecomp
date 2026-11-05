@@ -1,5 +1,6 @@
 // CPhysicsMesh::~CPhysicsMesh() -- destroys the mesh's members in reverse order (root segment counted pointer, the two containment-volume maps, the navigation lines, the point / face arrays, the dummy-object and helper-point maps), then the CIVCountedPointeeBase part
 // Leaf: ??1CPhysicsMesh@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6D550, 273 bytes, thiscall, `ret`.
 // Identity (proven): RTTI vtable 0x0129DC68 (.?AVCPhysicsMesh@@) slot 0 is the deleting destructor 0x00A73CC0, whose first
@@ -39,27 +40,7 @@ class C3DBoundingSphere { public: C3DVector Centre; float Radius; };           /
 class C3DBoundingBox { public: C3DVector Min; C3DVector Max; };                // 0x18
 class CCircle { public: float X, Y, Radius; };                                 // 0x0C
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                // +0
-    void (__fastcall* DeleteFunc)(void* data);             // +4
-    void* Data;                                            // +8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0
-    CCPPointerInfo* Info;                                  // +4
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class C3DMeshVolume {                                      // 0x0C, non-trivial destructor (out of line in retail)
 public:
     CCharString Name;                                      // +0

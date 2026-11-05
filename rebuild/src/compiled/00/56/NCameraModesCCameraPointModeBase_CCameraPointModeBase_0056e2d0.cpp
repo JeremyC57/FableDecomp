@@ -2,6 +2,7 @@
 // NCameraModes::CCameraPointModeBase::~CCameraPointModeBase() -- stores the class vtable, destroys the camera-point
 // pointer at +0xa4, then chains to the NCameraModes::CBase destructor (tail jump)
 // Leaf: ??1CCameraPointModeBase@NCameraModes@@MAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x0056E2D0, 32 bytes: push esi ; mov esi,ecx ; lea ecx,[esi+0A4h] ; mov [esi],0x0124DDDC ;
 //   call 0x00A01C10 ; mov ecx,esi ; pop esi ; jmp 0x0056E0E0.
 // Identity: vtable 0x0124DDDC has RTTI .?AVCCameraPointModeBase@NCameraModes@@ (base .?AVCBase@NCameraModes@@), and
@@ -11,13 +12,8 @@
 // retail +0xa4); its destructor is the base ~CBaseIntelligentPointer (0x00A01C10), modelled as that base type.
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace NCameraModes {
 

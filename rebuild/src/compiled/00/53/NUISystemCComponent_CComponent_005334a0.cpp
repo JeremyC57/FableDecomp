@@ -1,5 +1,6 @@
 // NUISystem::CComponent::CComponent(long defIndex) -- builds the UI component: CUIInterface/CObserver/CActionParam(1) bases, empty name, state map, child vectors, deletion and action lists and position-children set, zeroed geometry, colours and timers, null parents, stores the def index, reads the def (GetDataFromDef) and then clears the three transition times
 // Leaf: ??0CComponent@NUISystem
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005334A0, 629 bytes (640 with padding), `ret 4`, no EH frame.
 // Callees: NUISystem::CObserver::CObserver 0x0052D9E0 (catalog "CFrontEndManager::Initialize" is wrong),
 //   CCharString::CCharString() 0x0099E4B0, malloc 0x00BFEA0E (the STLport node allocator: map header 0x38, list nodes
@@ -121,7 +122,7 @@ class CUIState { public:                           // PDB 0x24 bytes
 };
 class CComponent;
 class CAction;
-template <class T> struct CCountedPointer { T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 
 class CUIInterface {                        // vtable 0x01246044
 public:

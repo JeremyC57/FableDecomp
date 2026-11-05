@@ -1,5 +1,6 @@
 // NScript::CV_SickChildScript::CWomanToAttract::OnPredicateFail() -- if the woman was killed (by anyone) before she handed over her object, gives the hero the ingredient object and the KilledSomeoneForMushroom morality and records LaughingWomanKilled on the quest
 // Leaf: ?OnPredicateFail@CWomanToAttract@CV_SickChildScript@NScript@@
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ECD390, 177 bytes (padded to 192), plain `ret`.
 //   PDB name ?OnPredicateFail@CWomanToAttract@CV_SickChildScript@NScript@@EAEXXZ.
 // Callees: CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48, 0x004AAAF0) on the entity's own thing (+8);
@@ -38,10 +39,9 @@ struct CScriptThingMethods {
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptThing : public CScriptThingMethods { public:        // 12 bytes, vtable 0x01238C8C
-    void* PImp_Data;
-    void* PImp_Info;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CV_SickChildScript { public:
     unsigned char _pad[0x71];

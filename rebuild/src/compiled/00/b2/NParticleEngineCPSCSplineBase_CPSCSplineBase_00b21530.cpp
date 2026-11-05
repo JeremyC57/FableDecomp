@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CPSCSplineBase() -- particle spline component base: CPSCBase part, a cardinal spline seeded with two zero control points (tension 0.5, ends not connected), and empty random-offset / position-parameter data pointers
 // Leaf: ??0CPSCSplineBase
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B21530, length 112 bytes.
 // Callees: NParticleEngine::CPSCBase::CPSCBase @ 0x00AF2620, CCardinalSpline::CCardinalSpline(const C3DVector&, const C3DVector&,
@@ -30,11 +31,7 @@ class CCardinalSpline { public:                    // retail 0x14 bytes
     bool       EndPointsConnected;          // +0x10
     CCardinalSpline(const C3DVector& p0, const C3DVector& p1, float tension, bool endPointsConnected);   // 0x00A56AA0
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-};
+#include "engine/CCountedPointer.h"
 
 namespace NParticleEngine {
 class CPSCSplineBase : public CPSCBase { public:          // vtable 0x012A0B14

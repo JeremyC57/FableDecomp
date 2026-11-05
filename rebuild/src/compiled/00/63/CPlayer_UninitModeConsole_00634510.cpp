@@ -1,5 +1,7 @@
 // CPlayer::UninitModeConsole(EPlayerMode mode, CProcessedInput* input) -- leaving console mode: make the console singleton on first use, deactivate it, and detach the console input process
 // Leaf: ?UninitModeConsole@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe @ 0x00634510, 75 bytes, thiscall `ret 8` (a CPlayer::PlayerModeInfo handler).
 // Identity (probable, body + sibling): FableWin.pdb (the PC build) orders InitModeConsole, CConsole::SetActive(bool), UninitModeConsole;
@@ -61,16 +63,8 @@ class CThingPlayerCreature : public CThingCreatureBase { };
 
 class CBaseObject;
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                             // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-    void* PData;                                            // CBaseObjectPointer*
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* operator->() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 class CInputProcessManager : public CBaseClassNonCopyable { };   // RTTI CGamePlayerInterface <- CInputProcessManager
@@ -103,12 +97,7 @@ public:
 
 enum EPlayerMode { EPlayerMode_Force32 = 0x7fffffff };     // enumerators not needed
 class CProcessedInput;
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Info;                                             // CCPPointerInfo*
-    void Reset(T* data);                                    // 0x00413520 for CConsole
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingleton {
 public:
     virtual ~CTBaseSingleton() { }

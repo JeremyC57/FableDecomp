@@ -1,5 +1,6 @@
 // CWorld::`vector deleting destructor'(unsigned int) [thunk: this-=4] -- adjustor thunk: delete the world through its CIDrawWorld base subobject
 // Leaf: ??_ECWorld@@W3AEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004AE8A0, 8 bytes: `sub ecx,4 ; jmp 0x004AE8D0` (??_ECWorld@@UAEPAXI@Z).
 // Identity (two sources): slot 3 of the CWorld-in-CIDrawWorld vtable 0x012390DC (CIDrawWorld declares its virtual dtor last, after
@@ -171,8 +172,8 @@ struct CAtmosCopyList {
     }
 };
 class CThing;
-struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer(); void* PData; };
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: virtual ~CIntelligentPointer() { } };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CEnginePrimitiveHandle { public: virtual ~CEnginePrimitiveHandle(); void* PData; };
 
 class CWorldMap : public CBaseClass { public: virtual ~CWorldMap(); };

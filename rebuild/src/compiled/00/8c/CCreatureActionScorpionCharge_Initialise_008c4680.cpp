@@ -1,4 +1,5 @@
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members Start/Finish are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +4.
 #define CScorpionKingBattleDef CScorpionKingBattleDefPdb
 #include "engine/_quarantine/CScorpionKingBattleDef.h"
 #undef CScorpionKingBattleDef
@@ -53,20 +54,13 @@ template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { publ
 class CTCPhysicsBase;class CTCHitOnCollision;struct CDefLookup;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
-    Entry *Start,*Finish,*End;
-    Entry* LowerBound(const ETCInterfaceType& key); //40F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing:public CBaseObject { public:
     unsigned char BaseState[0x18];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
-    unsigned char UpdateComponentsList[8];
+    unsigned char UpdateComponentsList[0x4];
     void* SerialisationSectionName;
     void* PTCDriver;
     CTCPhysicsBase* PhysicsTC;
@@ -82,8 +76,8 @@ class CThing:public CBaseObject { public:
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
             ETCInterfaceType type = (ETCInterfaceType)(key);
             CInterfaceMap* map=&Components;
-            CInterfaceMap::Entry* it=map->LowerBound(type);
-            if(it==map->Finish || key<it->first) it=map->Finish;
+            CInterfaceMap::value_type* it=map->LowerBound(type);
+            if(it==map->end() || key<it->first) it=map->end();
             *out=(T*)((void*)it->second);return true;
         }
         return false;

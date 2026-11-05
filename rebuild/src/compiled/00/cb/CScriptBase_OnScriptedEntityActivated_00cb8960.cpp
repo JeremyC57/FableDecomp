@@ -1,5 +1,7 @@
 // CScriptBase::OnScriptedEntityActivated(unsigned __int64 entityID, CScriptThing& entity) -- an entity with a script binding was activated: revive its existing active entity script, or create one through the binding filed under the entity's name, file it in EntityScripts and load it; then bump the entity's script count
 // Leaf: OnScriptedEntityActivated
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB8960, length 465 bytes (`ret 0Ch`, no EH frame).
 // PDB: ?OnScriptedEntityActivated@CScriptBase@@QAEX_KAAVCScriptThing@@@Z (sibling of the landed
 // OnScriptedEntityDeactivated 0x00CB88B0). The catalog label "CScriptBase::AttachNavigator" is a forge autoname.
@@ -20,25 +22,9 @@ class CCharString { public:
     char* m_pData;
     bool operator<(const CCharString& other) const;   // 0x009E6530
 };
-class CScriptThing { public:                                // vtable 0x01238C8C
-    virtual void v00();
-    virtual const CCharString& GetName() const;      // slot 1 (0x004AA8B0)
-    virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
-    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29();
-    virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
-    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
-    virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
-    virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53();
-    virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59();
-    virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65();
-    virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
-    virtual void SetToKillOnLevelUnload(bool kill);  // slot 70 (0x004AB0C0)
-    virtual void v71();
-    virtual void IncrementScriptCounter();           // slot 72 (0x004AB0F0)
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CEntityScriptBase { public:
     virtual void v00(); virtual void v01();
     virtual void Restart();                          // slot 2
@@ -53,32 +39,6 @@ public:
     void DeleteData();
 };
 void __cdecl operator delete(void* block);           // 0x00BFE9BC
-template <class T> struct SCountBlock {
-    long m_references;
-    void (T::*m_pfnDestroy)();
-    T*   m_pItem;
-};
-template <class T> class CCountedPointer { public:
-    T* Data;
-    SCountBlock<T>* Info;
-    CCountedPointer() {}
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info) ++Info->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                (Info->m_pItem->*Info->m_pfnDestroy)();
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 struct __false_type { __false_type() {} };
 inline void* operator new(unsigned int, void* p) { return p; }
 struct CEntityScriptEntry {                          // pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase> >

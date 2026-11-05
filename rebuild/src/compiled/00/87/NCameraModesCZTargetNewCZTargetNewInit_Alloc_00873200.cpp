@@ -1,6 +1,7 @@
 // NCameraModes::CZTargetNew::CZTargetNewInit::Alloc(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&) const -- allocate and construct a Z-targeting camera mode
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00873200, 74 bytes, `ret 8`.
 // Leaf: ?Alloc@CZTargetNewInit@CZTargetNew@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Name: vtable 0x0125C264 slot 0; FableWin.pdb ?Alloc@CZTargetNewInit@CZTargetNew@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z.
 // Callees: operator new @ 0x00BFEA1A (0xf0 bytes, the retail CZTargetNew size), NCameraModes::CBase::CBase @ 0x0084E420,
 //          CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.
@@ -11,23 +12,9 @@ class CCameraModeDef;
 class CBaseObject;
 template <class T> class CDefPointer;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01237F1C
-public:
-    CIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 namespace NCameraModes {
 class CBase { public:
     virtual void v00();

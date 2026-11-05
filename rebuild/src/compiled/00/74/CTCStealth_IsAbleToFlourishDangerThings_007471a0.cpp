@@ -1,5 +1,6 @@
 // CTCStealth::IsAbleToFlourishDangerThings() const -- true when flourishing is off, or some danger thing is alive, not knocked down and not in status 4
 // Leaf: IsAbleToFlourishDangerThings
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007471A0, length 80 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, IsKnockedDown(CThing*) @ 0x0085F010 (`__fastcall`, manifest).
 // Data: 0x0137574D is a global bool (the flourish switch).
@@ -13,9 +14,8 @@ class CThing;
 bool __fastcall IsKnockedDown(CThing* thing);               // 0x0085F010
 
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CDangerThing {                                       // pair<CIntelligentPointer<CThing const>, NStealth::CDangerStatus>, 16 bytes
     struct CPointer {
         void*   m_vtable;

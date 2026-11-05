@@ -1,5 +1,6 @@
 // NScript::CV_TalentlessBardScript::CTB_Bard::CTB_Bard(CV_TalentlessBardScript& parent, CScriptDataBase* data, const CScriptThing& me) -- the talentless bard's entity script: entity-script base over the quest's interface and Me, the parent, the three lastRandomSpeech strings, and the master data last
 // Leaf: ??0CTB_Bard@CV_TalentlessBardScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED7D50, 80 bytes, `ret 0Ch`; its only caller is the factory 0x00ED7CD0
 //   (`push 2Ch`, CTB_Bard::Alloc), bound as "TB_Bard" at 0x00ED78E0.
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, CCharString::CCharString() @ 0x0099E4B0 (x3).
@@ -11,11 +12,7 @@
 class CGameScriptInterface;
 class CScriptDataBase;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-template <class T> class CCountedPointer { public:
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,4 +1,5 @@
 // CTCCreatureOpinionOfHero::KnowsOfDeed(long deedId, long deedType, bool includePending) const -- is the deed id in the pending
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // list (when asked) or in the known-deeds list of its type
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00681AE0, length 72 bytes (+8 int3). Nine callers (0x006836BC .. 0x008A00BF).
 // Shape: two inlined STLport list finds with the header cached (edx / ecx) and an early `return true` sharing the
@@ -10,10 +11,8 @@
 // SetHeroOpinionEnemy 0x006815D0 also shows), hence a local model.
 class CThing;
 
-struct CBaseIntelligentPointer {
-    void* __vftable;                        // +0x00
-    void* PData;                            // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct SLongNode {                          // STLport _List_node<long>
     SLongNode* Next;                        // +0x00

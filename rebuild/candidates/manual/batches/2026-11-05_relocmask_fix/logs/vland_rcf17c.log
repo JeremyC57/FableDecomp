@@ -1,0 +1,6 @@
+addr       parity           behav  name
+009f16c0   MATCH            PASS   Clear
+
+WINS: 1
+  009f16c0 MATCH CGameEventPackage::?Clear@CGameEventPackage@@QAEXXZ
+elapsed 2s rc=0

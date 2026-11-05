@@ -13,38 +13,12 @@
 // deleting destructor 0x004AB170). The engine header flattens the vptr and the counted pointer into plain
 // words, so the class is modelled locally with its member names.
 // Leaf: ??4CScriptThing
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 
 class CScriptThing;
 
-class CCPPointerInfo { public:
-    long m_references;                       // +0
-    void (__fastcall* m_pfnDestroy)(void*);  // +4
-    void* m_pObject;                         // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    CScriptThing* Data;                      // +0
-    CCPPointerInfo* Info;                    // +4
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CScriptThing* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->m_references;
-                if (Info->m_references == 0) {
-                    Info->m_pfnDestroy(Info->m_pObject);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->m_references;
-        }
-        return *this;
-    }
-};
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (the row's local CBase)
 

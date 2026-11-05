@@ -1,5 +1,6 @@
 // CFactionManager::GetPFaction(unsigned long hash) const -- look a faction up by its name hash in the faction vector map; null when absent
 // Leaf: ?GetPFaction@CFactionManager@@QBEPAVCFaction@@K@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B93A0, 45 bytes (+ int3 padding), `ret 4` (thiscall).
 // Callers: one site, 0x006DF156.
 // Callees: CVectorMap<unsigned long, CCountedPointer<CFaction> >::LowerBound(const unsigned long&) const @ 0x006B8AE0.
@@ -11,11 +12,7 @@
 // Label correction: the catalog `CVectorMap_Lookup` is descriptive.
 class CFaction;
 
-template <class T> class CCountedPointer { public:
-    T*    Data;                                         // +0x00
-    void* Info;                                         // +0x04
-    T* Get() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 template <class A, class B> struct pair { A first; B second; };
 

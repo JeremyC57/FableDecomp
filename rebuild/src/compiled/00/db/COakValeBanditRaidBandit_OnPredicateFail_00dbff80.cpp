@@ -1,5 +1,6 @@
 // COakValeBanditRaidBandit::OnPredicateFail() -- when the bandit is killed: flag the raid's bandit-killed byte, and unless the raid is over, re-target the raid's bandit thing to the one nearest the hero and flag it when that bandit is within 8 m of this one
 // Leaf: OnPredicateFail
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBFF80, 259 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CScriptThing slot 18 MsgIsKilledBy(const CCharString&) (+0x48) and slot 6 GetPos() (+0x18, const C3DVector&)
@@ -19,35 +20,8 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct SCountBlock {
-    long  m_references;                            // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImp;
-template <class T> class CCountedPointer { public:                          // CCountedPointer<CScriptThingImp>
-    CScriptThingImp* Data;
-    SCountBlock*     Info;
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SCountBlock* info = other.Info;
-        CScriptThingImp* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->m_references;
-                if (Info->m_references == 0) {
-                    Info->m_pfnDestroy(Info->m_pObject);
-                    operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->m_references;
-        }
-        return *this;
-    }
-};
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // CTCCarrying::RemoveAllThingsInPrimarySlot(vector<CThing*>& removed, bool flag) -- take the thing out of every primary carry slot, appending each to the caller's list
 // Leaf: ?RemoveAllThingsInPrimarySlot@CTCCarrying@@QAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@_N@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A22D0, length 155 bytes (+ int3 padding), thiscall `ret 8`.
 // Callees: CGameDefinitionManager::Get @ 0x0044C6B0, CDefinitionManager::GetDef<T>(long, CDefPointer<T>*)
 //   @ 0x006A3060, CTCCarrying::RemoveThingInCarrySlot(long, bool) @ 0x006A16A0, the 4-byte vector's
@@ -19,11 +20,8 @@
 #include <new>
 class CThing;
 
-struct CBaseIntelligentPointer {                    // 8 bytes: vptr, item block
-    void* m_vtable;
-    void* m_pBlock;
-    CThing* GetPItem() const;                       // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct SCarrySlotEntry {                            // pair<long, CIntelligentPointer<CThing>>, 12 bytes
     long                    first;

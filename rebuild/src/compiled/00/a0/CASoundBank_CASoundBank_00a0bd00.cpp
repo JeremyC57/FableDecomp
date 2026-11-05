@@ -1,5 +1,6 @@
 // CASoundBank::CASoundBank() -- default constructor: the CBaseClassNonCopyable base, the CASoundBank vtable, and a null PSymbolMap counted pointer
 // Leaf: ??0CASoundBank@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A0BD00, 26 bytes, thiscall, plain `ret`, returns this.
 // Identity: stores vtable 0x0129C9AC (RTTI .?AVCASoundBank@@, bases CBaseClassNonCopyable (ctor 0x0099A2F0) -> CBaseClass); Ego_r.pdb member PSymbolMap (CCountedPointer<CCRCSymbolMap>, +4), the class's only member; no xrefs (out-of-line COMDAT of the inline default ctor).
 // Shape (family K014, representative 0x006E7B40): out-of-line base ctor, then the vtable store, then the embedded
@@ -12,13 +13,7 @@ protected:
     CBaseClassNonCopyable();                             // 0x0099A2F0 (PDB ??0CBaseClassNonCopyable@@IAE@XZ)
     virtual ~CBaseClassNonCopyable();                    // 0x0099A300
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer {               // Ego_r.pdb: Data, Info
-public:
-    T*              Data;                                // +0x00
-    CCPPointerInfo* Info;                                // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 class CCRCSymbolMap;
 
 class CASoundBank : public CBaseClassNonCopyable {

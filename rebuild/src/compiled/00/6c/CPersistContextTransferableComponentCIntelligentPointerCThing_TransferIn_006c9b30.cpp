@@ -1,6 +1,7 @@
 // CPersistContext_TransferableComponent<CIntelligentPointer<CThing> >::TransferIn(CPersistContext& context, CStringParser& parser) -- read the referenced thing (by unique ID) through a default CPersistTraits<CIntelligentPointer<CThing> >
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C9B30, length 62 bytes (64 with int3 padding).
 // Leaf: ?TransferIn@?$CPersistContext_TransferableComponent
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (the traits' DefaultVal),
 // CPersistTraits<CIntelligentPointer<CThing> >::TransferIn(CPersistContext&, CStringParser&, CIntelligentPointer<CThing>&)
 // @ 0x006C9900 (thiscall on the traits, `ret 0xc`; manifest-named), ~CBaseIntelligentPointer @ 0x00A01C10.
@@ -18,21 +19,8 @@ class CCharString;
 class CThing;
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for CThing
-    CIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 template <class T> struct CPersistTraits {
     T DefaultVal;

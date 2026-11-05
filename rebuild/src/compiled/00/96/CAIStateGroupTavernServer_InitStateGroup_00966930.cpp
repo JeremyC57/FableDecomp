@@ -9,6 +9,7 @@
 // Layout: engine/CAIStateGroup_TavernServer.h (PJug +0x14, PBar +0x1c, PTable +0x24, PTankard +0x2c, PPub +0x34,
 //          ServingActionPointIndex +0x40, BarActionPointIndex +0x68, ActionPointIndex +0x90, AverageWalkSpeed +0x98).
 // Leaf: InitStateGroup
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CAIStateGroup_TavernServer.h"
 
@@ -29,14 +30,8 @@ struct CThingCreatureSpeed {                    // the brain's creature
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerObject : CBaseIntelligentPointer {   // CIntelligentPointer<CThingObject>, vtable 0x0125A858
     virtual void v00();
     __forceinline CIntelligentPointerObject(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }

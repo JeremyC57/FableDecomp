@@ -1,4 +1,5 @@
 // CGameCameraManager::PushCurrentManualMode() -- switch to manual camera use (UsingCameraManually set, BlockModeChange cleared); while an observed thing is alive, no script module is pending and the current script module (if any) allows it, prepare the camera-list mode under CameraListIndex as the pending mode and rewind SpecialCameraListIndex
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006988B0, length 147 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice, on PObservedThing), the current script module's virtual slot 2
 // (+8, a bool), CGameCameraManager::PreparePendingMode(CDefPointer<const CCameraModeDef>) @ 0x00698840 (by-value copy built in its
@@ -61,11 +62,7 @@ class CScriptModuleBase { public:
 };
 }
 struct SCountBlock;
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                           // +0
-    SCountBlock* m_pCount;                  // +4
-};
+#include "engine/CCountedPointer.h"
 
 class CGameCameraManager { public:
     void*         __vftable;                                            // +0x00
@@ -91,8 +88,8 @@ void CGameCameraManager::PushCurrentManualMode()
     BlockModeChange = false;
     UsingCameraManually = true;
     if (PObservedThing.GetPItem() && !(PObservedThing.GetPItem()->m_statusFlags & 1)) {
-        if (!PPendingScriptModule.m_pObject) {
-            if (!PCurrentScriptModule.m_pObject || PCurrentScriptModule.m_pObject->AllowsManualControl()) {
+        if (!PPendingScriptModule.Data) {
+            if (!PCurrentScriptModule.Data || PCurrentScriptModule.Data->AllowsManualControl()) {
                 CDefPointer_CCameraModeDef def = *CameraListIndex;
                 PreparePendingMode(def);
                 SpecialCameraListIndex = SpecialCameraList_first;

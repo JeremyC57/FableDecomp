@@ -1,5 +1,6 @@
 // std::_List_base::clear() -- (_List_base<CCountedPointer<CCreatureActionBase> >) STLport list clear: walk from the first node to the sentinel, release each node's counted pointer (deleter and count block freed at zero), free the node, then link the sentinel to itself
 // Leaf: ?clear@?$_List_base@V?$CCountedPointer@VCCreatureActionBase@@@@V?$allocator@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00669B50, 89 bytes (+ int3 padding), thiscall, `ret`.
 // Identity (proven): std::_List_base<CCountedPointer<CCreatureActionBase>, std::allocator<CCountedPointer<CCreatureActionBase> > >::clear();
 //   evidence: the forwarder 0x00663600 (`add ecx, 0x108; jmp`) clears CThingCreatureBase::PQueuedActions (+0x108 in the landed engine/CThingCreatureBase.h; Ego_r.pdb list<CCountedPointer<CCreatureActionBase> >); the other callers 0x006661B0, 0x00667D30 and the list wrappers 0x00669DF0 / 0x0066A1C0 sit beside J110's erase 0x00669AF0 and pop_front 0x00669DD0 of the same list type.
@@ -15,29 +16,7 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CCreatureActionBase;
-class CCPPointerInfo {                                     // Ego_r.pdb 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {               // 8 bytes: the object, the shared count block
-public:
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 

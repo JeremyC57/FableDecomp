@@ -1,5 +1,6 @@
 // CShaderResource::GetPixelShader(unsigned long index) -- the pixel shader of the bank entry: the cached one when present, else create it from the bank's shader data and entry name, cache a heap copy and return it
 // Leaf: GetPixelShader
+// Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members m_pFirst/m_pLast are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Naming wave 27 (family pxs, DECISIONS_W26 D4): CShaderRenderManager::CreatePixelShader 0x0098A9A0 is private (Ego_r.pdb /
 //   FableWin.pdb AAE); CShaderResource, which calls it, is its friend. Was public (QAE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5D620, length 251 bytes (`ret 8`: CPixelShader by hidden pointer + index).
@@ -21,7 +22,7 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                                  // 0x0099EAE0
 };
-template<class T> class CArray { public: T* m_pFirst; T* m_pLast; T* m_pEnd; };
+#include "engine/CArray.h"
 
 struct CRefCount {
     long m_count;
@@ -89,11 +90,11 @@ class CShaderResource { public:
 
 CPixelShader CShaderResource::GetPixelShader(unsigned long index)
 {
-    if (Shaders.m_pFirst[index])
-        return *static_cast<CPixelShader*>(Shaders.m_pFirst[index]);
+    if (Shaders.begin()[index])
+        return *static_cast<CPixelShader*>(Shaders.begin()[index]);
     CPixelShaderData* data = ShaderBank->GetShaderData(index);
     CCharString name = ShaderBank->GetEntrySymbol(index);
     CPixelShader shader = ShaderRenderManager->CreatePixelShader(data->Code, data->Constants, name);
-    Shaders.m_pFirst[index] = new CPixelShader(shader);
+    Shaders.begin()[index] = new CPixelShader(shader);
     return shader;
 }

@@ -1,5 +1,6 @@
 // CVectorMap<long,CIntelligentPointer<CThing>,CKeyPairCompareLess<long,CIntelligentPointer<CThing> > >::LowerBound(const long& key) -- binary search of the sorted 12-byte entries for the first key not below `key`
 // Leaf: ?LowerBound@?$CVectorMap@JV?$CIntelligentPointer@VCThing@@@@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@@QAEPAU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@ABJ@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x00447C80, 82 bytes, `ret 4`; callers 0x00445BEE, 0x00445C52, 0x00445CD6, 0x00446B51, 0x00446BA1,
 // 0x00446D61, 0x00448169 -- these include CGamePlayerInterface's Controls map (+0x7a8, EGameAction -> CCountedPointer, also
 // 12-byte entries), so this is one folded body for several 12-byte-entry CVectorMap instances. 0x00447CE0 next to it is
@@ -12,11 +13,8 @@
 // +0, the 8-byte intelligent pointer +4).
 // Shape: the key read once before the loop (`mov edi,[eax]`); `count -= half + 1` as `count += -1 - half`.
 class CThing;
-template <class T> class CIntelligentPointer {
-public:
-    T*   Data;
-    long Handle;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class A, class B> struct pair {
     A first;

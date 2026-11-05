@@ -1,5 +1,6 @@
 // CXMVPlayer::GlobalRegisterPlayer() -- register the XMV movie-player code section ("XMV" / "Xbox Movie Player Code") with the code-section manager and remember its handle
 // Leaf: ?GlobalRegisterPlayer@CXMVPlayer@@SIXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BD020, 107 bytes (+ int3 padding), plain `ret`.
 // Label: catalogued as `GlobalRegisterPlayer` (module _global); FableWin.pdb `?GlobalRegisterPlayer@CXMVPlayer@@SIXXZ`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("XMV" @ 0x0129B394, "Xbox Movie Player Code"
@@ -28,16 +29,8 @@ private:
     void* PStringData;
 };
 
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {             // intrusive counted pointer: object + count block
-public:
-    bool IsNull() const { return Data == 0; }
-    T& operator*() const { return *Data; }
-    void Reset(T* data);                                // 0x00413590 (folded COMDAT)
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-};
 
 class CCodeSectionManager {                             // retail 0x2C bytes (vtable + three STLport maps + flag)
 public:

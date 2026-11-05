@@ -1,4 +1,5 @@
 // CTCCreatureFlyOnSpline::SetSpline(CCountedPointer<CCardinalSpline> spline) -- take the new flight spline and snap the creature's physics to the spline position at the current progress
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c (queue land0411j 0x00A567A0): calls 0x00A567A0 as CCardinalSpline::GetSplinePosition(C3DVector&, float) const (Ego_r.pdb ?GetSplinePosition@CCardinalSpline@@QBEXAAVC3DVector@@M@Z; the out vector by reference).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DCFD0, length 130 bytes (`ret 8`: the 8-byte counted pointer by value).
@@ -12,44 +13,7 @@
 // (`dec ; jne`, block kept in edi).
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-struct SCountBlock {
-    long m_references;                                  // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4 per-type deleter, object in ecx
-    void* m_pObject;                                    // +8
-};
-template <class T>
-class CCountedPointer { public:
-    T* Data;                                            // +0
-    SCountBlock* m_pCount;                              // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (m_pCount && --m_pCount->m_references == 0) {
-            m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-            operator delete(m_pCount);
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        if (m_pCount != other.m_pCount) {
-            if (m_pCount) {
-                --m_pCount->m_references;
-                if (m_pCount->m_references == 0) {
-                    m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                    operator delete(m_pCount);
-                }
-            }
-            Data = other.Data;
-            m_pCount = other.m_pCount;
-            if (m_pCount) ++m_pCount->m_references;
-        }
-        return *this;
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
 class CCardinalSpline { public:
     void GetSplinePosition(C3DVector& position, float progress) const;   // 0x00A567A0

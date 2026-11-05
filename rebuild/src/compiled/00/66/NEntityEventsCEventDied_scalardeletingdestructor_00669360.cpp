@@ -1,5 +1,6 @@
 // NEntityEvents::CEventDied::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CEventDied inlined (PDeadBody then PKilledBy, then CEventBase's inline destructor) and operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCEventDied@NEntityEvents@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00669360, 47 bytes (+ int3 padding), thiscall, `ret 4`; reached only through vtable slot 0.
 // Identity (proven): NEntityEvents::CEventDied::`scalar deleting destructor'; evidence: slot 0 of vtable 0x0125AAF4 (RTTI
 //   .?AVCEventDied@NEntityEvents@@ : CEventBase@NEntityEvents), the vtable the J108 constructor 0x00669300 stores.
@@ -17,17 +18,8 @@ class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };                      // partial view
-class CBaseIntelligentPointer {                             // 8 bytes
-public:
-    CBaseIntelligentPointer();                              // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    void SetPItem(CBaseObject* item);                       // 0x00A01B90
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-};                                                          // implicit destructor (its vtable's one slot)
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace NEntityEvents {
 class CEventBase {                                          // Ego_r.pdb 8 bytes, vtable 0x0124F2C4
 public:

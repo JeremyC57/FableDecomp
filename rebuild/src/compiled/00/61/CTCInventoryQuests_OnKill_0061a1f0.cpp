@@ -1,5 +1,6 @@
 // CTCInventoryQuests::OnKill() -- deregister the inventory's hero-information screen (its NHeroInformationScreens::CBase subobject) from the player GUI's screen manager, then run the base NInventory::CTCInventoryBase::OnKill
 // Leaf: ?OnKill@CTCInventoryQuests@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0061A1F0, 44 bytes, thiscall, tail `jmp` to the base OnKill.
 // Identity (proven): the only reference is slot 14 (CTCBase OnKill) of the CTCInventoryQuests vtable 0x012585B4 (0x012585EC; RTTI
 //   .?AVCTCInventoryQuests@@); Ego_r.pdb and FableWin.pdb name sets ?OnKill@CTCInventoryQuests@@UAEXXZ (Ego_r donor 0x00597C40, FableWin 0x01F75010).
@@ -23,12 +24,7 @@ public:
     void DeregisterScreen(const CBase& screen);     // 0x0066EB78
 };
 }
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
     static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
 public:

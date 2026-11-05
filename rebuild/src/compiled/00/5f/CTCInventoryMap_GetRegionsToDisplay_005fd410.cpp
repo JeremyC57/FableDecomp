@@ -1,5 +1,6 @@
 // CTCInventoryMap::GetRegionsToDisplay(std::set<long>& regions) -- collect the regions the map screen shows: the region of the hero's current map, every visited region, and the region named by each active quest card that names one
 // Leaf: ?GetRegionsToDisplay@CTCInventoryMap@@QAEXAAV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005FD410, 451 bytes, thiscall, `ret 4`. Speed TU (no pragma).
 // Identity (proven): Ego_r.pdb ?GetRegionsToDisplay@CTCInventoryMap@@QAEXAAV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z
 //   (00651990) and FableWin.pdb (0209C2B0); its six callers 0x0060C9CA .. 0x0062140F are CTCInventoryMap map-screen code, and
@@ -296,12 +297,7 @@ public:
     unsigned char _pad00[0x5c];
     std::list<CIntelligentPointer<CThing> > ActiveQuestCards;   // +0x5C
 };
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {
 public:
     static CCountedPointer<T> PClass;                    // 0x013B89FC for T = CQuestManager

@@ -1,5 +1,6 @@
 // CTCHeroMorph::Copy(const CTCBase& other) -- copy another hero-morph component: the shared mesh-morph set, the tattoo defs, the tattoo frame and the morph weights / teenager flag, then mark the morph changed
 // Leaf: ?Copy@CTCHeroMorph@@UAEXABVCTCBase@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071CD90, length 150 bytes, `ret 4`.
 // Ego_r.pdb: ?Copy@CTCHeroMorph@@UAEXABVCTCBase@@@Z (virtual)
 // Callees: operator delete @ 0x00BFE9BC (the counted pointer's info block), the block's __fastcall DeleteFunc, the out-of-line
@@ -12,38 +13,7 @@
 // Strength +0x40, Berserk +0x44, Will +0x48, Skill +0x4c, Age +0x50, Morality +0x54, Fatness +0x58, Tan +0x5c, Teenager +0x60.
 void __cdecl operator delete(void* block);      // 0x00BFE9BC
 
-class CCPPointerInfo { public:                         // PDB: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* data = o.Data;
-        CCPPointerInfo* info = o.Info;
-        if (Info != info) {
-            ReleaseInfo();
-            Data = data;
-            Info = info;
-            if (Info)
-                ++Info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CDefPointeeBase;
 template <class T> class CDefPointer { public: CDefPointeeBase* Object; };
 class CThingBaseDef;

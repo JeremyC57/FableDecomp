@@ -1,5 +1,6 @@
 // CTCTurncoatSpell::CTCTurncoatSpell(CThing* owner) -- build the turncoat-spell component: its will-button helper timer for ability 5, def pointer, intelligent pointers and timers; mark the owner's ability-cast component as busy with ability 5, load SPECIAL_ABILITIES_TURNCOAT_SPELL_DEF, read the owner's turncoat ability level and turn the def's per-level duration tables into whole frames plus fractions
 // Leaf: ??0CTCTurncoatSpell
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -72,12 +73,8 @@ struct CWillButtonHelperTimer {
     CWillButtonHelperTimer(EHeroAbility ability, CThing& owner);   // 0x008EDFF0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CThingIntelligentPointer : CBaseIntelligentPointer {         // vtable 0x0123E7D8
     CThingIntelligentPointer() { }
 };

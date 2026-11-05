@@ -1,5 +1,7 @@
 // NPlayerGui::CDrawQuestInfo::~CDrawQuestInfo() -- implicit destructor: the quest-element list, the Text and Name strings, the oracle primitive handles, the oracle-symbol list, then CDrawBase's primitive-handle vector
 // Leaf: ??1CDrawQuestInfo
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00443D70, length 147 bytes, plain `ret` (thiscall).
 // Callees: list<CCountedPointer<CQuestInfoElement> >::clear() @ 0x00441140 (landed), free @ 0x00BFEA14, CWideString::
 // ~CWideString @ 0x0099B510, ~_List_base<long> @ 0x0042AB73 (out of line: list<long>'s clear is inlined into it in its own
@@ -42,10 +44,8 @@ class CEnginePrimitiveHandle { public:                    // vptr + counted prim
     virtual ~CEnginePrimitiveHandle();
     void* Data;
 };
-template <class T> class CIntelligentPointer { public:    // vptr + item
-    virtual ~CIntelligentPointer();
-    void* m_pItem;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 template <class T> struct _List_node {
@@ -67,10 +67,7 @@ template <> _List_base<long>::~_List_base();        // 0x0042AB73
 template <class T> struct list : _List_base<T> { };
 }
 struct CQuestInfoElement;
-template <class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pBlock;
-};
+#include "engine/CCountedPointer.h"
 class CWideString { public:
     void* m_pData;
     ~CWideString();                                 // 0x0099B510

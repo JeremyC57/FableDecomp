@@ -1,4 +1,5 @@
 // CAIStateGroup_IceTrollIcicleAssault::Update() -- mark the target in danger, wait for current actions and perform the icicle assault before terminating.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail009627c0 length260. Shared group/Base/Brain layout. CThing component map44 differs donor48.
 // Action retail114 uses real combat-base virtual destructor; generated Into donor size12c differs native114.
 #ifdef _MSC_VER
@@ -26,9 +27,8 @@ bool IsPerformingAnyAction(); //006622a0
 __forceinline bool GetStealth(CStealth** out){if(components[1]&0x400000){ETCInterfaceType key = (ETCInterfaceType)(54);CIceMap* m=&map;CIceMap::Entry* it=m->LowerBound(key);if(it==m->last||54<it->first)it=m->last;*out=(CStealth*)((void*)it->second);return true;}return false;}
 };
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIcePointer {}; //00a01b50, methods view over opaque shared PTarget
 struct CIceCombatAction {virtual ~CIceCombatAction();char state[0x110];}; //0062e900
 struct CIceTrollIcicleAssaultIntoNative:CIceCombatAction{CIceTrollIcicleAssaultIntoNative(CIceThing*,CIceThing*);}; //00962990

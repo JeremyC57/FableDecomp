@@ -1,5 +1,6 @@
 // CCameraModeMap::_M_insert(SRbNodeBase* x, SRbNodeBase* y, const SCameraModeValue& v, SRbNodeBase* w) -- STLport _Rb_tree<NCameraModes::EMode, pair<const EMode, CCountedPointer<CBaseInit>>>::_M_insert: allocate a node, copy the value in (bumping the counted pointer), link it left/right of y, rebalance and count
 // Leaf: _M_insert
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069D520, 211 bytes, `ret 14h` (hidden iterator result + 4 arguments).
 // Callees: malloc 0x00BFEA0E (the 0x1c-byte node: 0x10 links + the 12-byte pair),
 //   _Rb_global<bool>::_Rebalance(node, root&) 0x0042971D (__cdecl; the extern "C" spelling the landed tree inserts use;
@@ -18,18 +19,8 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 namespace NCameraModes { class CBaseInit; enum EMode { MODE_NONE }; }
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                                 // +0x00
-    void (__cdecl* DeleteFunc)(void*);                      // +0x04
-    void* Data;                                             // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
 
 struct SCameraModeValue {                                   // pair<const NCameraModes::EMode, CCountedPointer<CBaseInit>>
     const NCameraModes::EMode first;                        // +0x00

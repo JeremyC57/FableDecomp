@@ -1,5 +1,6 @@
 // _global::__pop_heap(CIntelligentPointer<const CThing>* first, CIntelligentPointer<const CThing>* last, CIntelligentPointer<const CThing>* result, CIntelligentPointer<const CThing> value, bool (__fastcall* comp)(CIntelligentPointer<const CThing>, CIntelligentPointer<const CThing>), int*) -- SGI pop_heap core: *result = *first, then sift `value` down from the root
 // Leaf: __pop_heap
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00927450, length 92 bytes (+4 int3 padding). The catalog label
 // "CTCInventoryBase::GetItemDescription" is propagated and wrong: the SGI __pop_heap of 0x008081B0 instantiated for
 // CIntelligentPointer<const CThing> (vtable 0x01237F1C) with a `__fastcall` function-pointer comparator taking both pointers by value
@@ -8,14 +9,8 @@
 // ::~CBaseIntelligentPointer @ 0x00A01C10, __adjust_heap @ 0x00926850. Callers 0x00927577 / 0x00927727.
 // Shape: identical to 0x008081B0 (speed TU, /Gr __fastcall, __forceinline copy constructor and assignment).
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;                        // +4
-    CBaseIntelligentPointer();                   // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CBaseObject* item);            // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
     __forceinline CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }

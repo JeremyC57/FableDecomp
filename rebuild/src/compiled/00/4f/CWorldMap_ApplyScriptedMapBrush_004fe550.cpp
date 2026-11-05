@@ -1,5 +1,6 @@
 // CWorldMap::ApplyScriptedMapBrush(const CScriptedMapBrush& brush, bool apply) -- look the brush's name up in the loaded-brush map and, when it is registered, forward the apply to the map it lives in
 // Leaf: ?ApplyScriptedMapBrush@CWorldMap@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FE550, 61 bytes, `ret 8` (thiscall: brush, apply). PDB name
 //   ?ApplyScriptedMapBrush@CWorldMap@@QAEXABVCScriptedMapBrush@@_N@Z (Ego_r.pdb name set; the CCharString overload is
 //   inlined into it). No direct caller in retail (reached through the script layer). Catalog label
@@ -30,12 +31,7 @@ public:
     const CCharString& GetName() const;            // 0x0082E250 (`lea eax,[ecx+48h]`; manifest "CModeBlock::GetAnimFilter" is folded)
 };
 
-template <class T> class CCountedPointer {
-public:
-    T* Object;                                     // +0x00
-    void* Info;                                    // +0x04
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 class CMapInfo {                                    // Ego_r.pdb, 0x48 bytes
 public:

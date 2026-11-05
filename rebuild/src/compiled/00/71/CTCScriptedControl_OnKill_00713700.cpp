@@ -1,5 +1,6 @@
 // CTCScriptedControl::OnKill() -- clean up every scripted action (the inlined CleanupAllActions), then the empty CTCBase::OnKill
 // Leaf: ?OnKill@CTCScriptedControl@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00713700, 51 bytes, thiscall, tail `jmp` to CTCBase::OnKill.
 // Identity (proven): the only reference is vtable 0x012658E4 (RTTI .?AVCTCScriptedControl@@) slot 14, which is OnKill in the CTCBase
 //   virtual order (dtor, OnSerialise, OnRemove, ConstructFromParams, OnCreate, InitialActivate, OnInitialActivate, RenderUpdate,
@@ -59,12 +60,8 @@ public:
     bool ToBeRemoved;                                      // +0x08
     bool IsInGlobalUpdateTCs;                              // +0x09
 };
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectScriptedThing;
 class CTCScriptedControl : public CTCBase {
 public:

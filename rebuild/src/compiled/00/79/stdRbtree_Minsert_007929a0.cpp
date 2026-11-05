@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- (map<CThingCreatureBase*, CTCDivineWrath::PerCreatureInfo>) STLport 4.6 node insert: create a node for v, link it left or right of y, fix root / leftmost / rightmost, rebalance, count, return the iterator
 // Leaf: ?_M_insert@?$_Rb_tree@PAVCThingCreatureBase@@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@U?$_Select1st@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@3@U?$less@PAVCThingCreatureBase@@@3@V?$allocator@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCDivineWrath@@@2@0@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007929A0, 202 bytes (+ int3 padding to 208), thiscall `ret 14h` (the hidden
 //   iterator result pointer first, then x, y, &v, w).
 // Identity (proven): map<CThingCreatureBase*, CTCDivineWrath::PerCreatureInfo>; evidence: CTCDivineWrath::FrameUpdate 0x0078FD60 (CTCDivineWrath's vtable 0x0126BE84 slot 9) inserts into LastFrameCreaturesHit (Ego_r.pdb map<CThingCreatureBase*, CTCDivineWrath::PerCreatureInfo>) through 0x007934F0 -> 0x00792C40 -> 0x00792A70 -> this; 0x2C-byte nodes (pointer key, the 24-byte PerCreatureInfo copied by 0x0078E4A0); J090's _M_erase 0x00792300 is the same tree's
@@ -13,12 +14,8 @@
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                            // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    void* PData;                                           // +0x04 (CBaseObjectPointer*)
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CThing;
 class CThingCreatureBase;

@@ -1,5 +1,6 @@
 // NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::CMurderTwistSheriffGuard(CV_MurderTwistFinalScript& parent, CScriptDataBase* data, const CScriptThing& me) -- script helper-object constructor: the owner's interface at +4, the base vtable, a copy of the thing at +8, the owner at +0x14, own vtable, an empty scripted-thing handle at +0x1c and an empty name at +0x34, then the index at +0x18
 // Leaf: ??0CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EB2000, length 88 bytes.
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, CBaseIntelligentPointer::CBaseIntelligentPointer
 // @ 0x0099A380 (the handle's base), CCharString::CCharString() @ 0x0099E4B0.
@@ -19,10 +20,9 @@
 //   Was `??0CVtable_012efee8@@QAE@PAUCScriptOwner@@JABVCScriptThing@@@Z`: the parent stand-in CScriptOwner is the PDB outer NScript::CV_MurderTwistFinalScript and the class is nested in it with the PDB
 //   parameter types (the parent by reference, as the PDB spells it; same pointer ABI); same bytes.
 class CScriptDataBase;
-class CScriptThing { public:                              // 12 bytes: vptr, PImp_Data, PImp_Info
-    unsigned char _body[0xc];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 namespace NScript {
 class CV_MurderTwistFinalScript {
@@ -45,7 +45,6 @@ struct CVtable_012c3224 {                          // vtable 0x012C3224
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 
 #include "engine/CScriptGameResourceObjectBase.h"

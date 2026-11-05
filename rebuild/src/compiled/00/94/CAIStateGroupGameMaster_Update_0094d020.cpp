@@ -1,4 +1,5 @@
 // CAIStateGroup_GameMaster::Update() -- adopt the work building as the tavern; when not yet seated walk to a seat, attach to the table's game; then, while the hero is not following, keep the TABLE_GAME mode in step with the game state and either offer the hero a game or run the base behaviour; terminate when anything fails
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Grade: RELOCATION_MATCH -- levers: out-parameter GetInterface for the village member (merges the HasTC test), named
 //   interaction target, shared ChooseAction() tail via continue, named item in CIntelligentPointer operator=
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0094D020, 1040 bytes, plain ret.
@@ -58,13 +59,8 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 }
 #pragma auto_inline(on)
 
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00A01C10
-    CThing* PItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CBaseObject* GetPItem() const;              // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-    void SetPItem(CBaseObject* item);           // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
     __forceinline CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
@@ -72,7 +68,6 @@ struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPoin
     __forceinline CThingBuilding* GetPItem() const { return (CThingBuilding*)CBaseIntelligentPointer::GetPItem(); }
 };
 class CThingObject;
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& p);   // 0x0078B2A0 = ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingObject@@@@@@ (FableWin.pdb; PTable is CIntelligentPointer<CThingObject>, Ego_r.pdb)
 
 class CThing : public CBaseObject {

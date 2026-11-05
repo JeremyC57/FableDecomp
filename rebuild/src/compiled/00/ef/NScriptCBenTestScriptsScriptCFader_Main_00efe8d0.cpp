@@ -1,5 +1,6 @@
 // NScript::CBenTestScriptsScript::CFader::Main() -- register an alive filter over Me, give it hero information, wait a script frame at a time until the hero talks to or uses it, then (unless the script is ending) fade it out through the parent test script
 // Leaf: Main
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
 //   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
 //   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CBenTestScriptsScript::CFader::IsDone (non-const; the label DB's IsDone).
@@ -23,17 +24,9 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class CScriptThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
-    virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
-    virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual bool MsgIsUsedBy(const CCharString& user) const;   // slot 20 (+0x50)
-    virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026();
-    virtual bool MsgIsTalkedToBy(const CCharString& talker) const;   // slot 27 (+0x6c)
-    void* PImp[2];                               // +0x04 counted implementation pointer
-    CScriptThing(const CScriptThing& other);     // 0x004ABE90
-    virtual ~CScriptThing();
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 struct CGameScriptInterface_Calls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();

@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::Update(const CParticleUpdateParameters<unsigned long, unsigned long>& params) -- per-frame update: reset the global alpha, take the emitter's update parameters, let every component contribute its parameters, sort both parameter maps, then update the enabled components; when none reports live content the system is marked dead and its particles and decals are destroyed
 // Leaf: Update
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF59A0, 280 bytes, `ret 4`. PDB: ?Update@CParticleSystem@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@2@@Z.
 // Callees: vector<pair<unsigned long, C3DVector> >::operator= 0x006E2000 and vector<pair<unsigned long,
 //   CParticleUpdateParamDesc> >::operator= 0x006E22F0 (both catalogued as propagated std/CCombatWheel names), SGI
@@ -71,11 +72,7 @@ public:
     bool             Initialised : 1;
 };
 
-template <class T> struct CCountedPointer {
-    T*    Object;
-    void* Info;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 class CComponentInstance {                         // 0x14 bytes, vtable 0x0129F478
 public:

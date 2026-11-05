@@ -1,6 +1,7 @@
 // CTCNymph::~CTCNymph() -- destroy the nymph component: the PTarget, POldEffect and PEffect intelligent pointers, the FlightSpline's point storage (freed), the PDef def pointer (released and cleared), then ~CTCBase
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E33BB, length 70 bytes (the plain `??1`).
 // Leaf: ??1CTCNymph
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 (x3), free @ 0x00BFEA14, the def's virtual slot 1
 // (Destroy, when its count drops to zero), CTCBase::~CTCBase @ 0x00686830 (tail jump).
@@ -27,22 +28,9 @@ class CTCBase { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 
 struct CDefBase {                                  // counted def: vptr, count at +4
     virtual void v00();

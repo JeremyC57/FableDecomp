@@ -1,5 +1,6 @@
 // CCountedPointer::DeleteData(void* data) -- (CCountedPointer<std::vector<unsigned __int64> >) the counted pointer's per-type deleter: destroy the vector of 64-bit UIDs (free its vector storage) and free the object
 // Leaf: ?DeleteData@?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@SIXPAX@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006174F0, 33 bytes (+ int3 padding), `ret` (static `__fastcall`, data in ecx).
 // Identity (proven): CCountedPointer<std::vector<unsigned __int64>>::DeleteData(void*); evidence: its only reference is the count-block store in CCountedPointer<vector<unsigned __int64> >::Reset 0x00618660 (0x006186B0), called by CTCInventoryMap code 0x00606420 at 0x006068A7 with a fresh zeroed 12-byte vector for this+0x200 = Ego_r.pdb CTCInventoryMap::SerialisedTeleporterUIDs, CCountedPointer<vector<unsigned __int64> > (Ego_r +0x254); Ego_r.pdb names ?DeleteData@?$CCountedPointer@V?$vector@_KV?$allocator@_K@std@@@std@@@@SIXPAX@Z.
@@ -15,13 +16,6 @@ void __cdecl operator delete(void* p);                     // 0x00BFE9BC
 #include "engine/CArray.h"
 
 
-class CCPPointerInfo;
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    static void __fastcall DeleteData(void* data) { delete (T*)data; }
-};
+#include "engine/CCountedPointer.h"
 
 template class CCountedPointer<std::vector<unsigned __int64> >;

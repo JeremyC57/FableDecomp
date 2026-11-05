@@ -1,5 +1,6 @@
 // std::__unguarded_partition(CActiveScriptPair* first, CActiveScriptPair* last, CActiveScriptPair pivot, CActiveScriptLess comp) -- STLport Hoare partition of the (UID, active entity script) pairs around the pivot key, swapping out-of-place pairs in place; returns the split point
 // Leaf: ??$__unguarded_partition@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBB710, 315 bytes, __fastcall (first ecx, last edx; the 16-byte pivot by value
 //   and the empty 4-byte comparator on the stack, `ret 14h`).
 // Identity (two sources): (1) reloc_bindings.tsv binds 0x00CBB710 as
@@ -14,52 +15,7 @@
 // Shape: STLport text; `iter_swap` and `swap` inline, the pair's implicit operator= inlined twice (the key's two words,
 //   then CCountedPointer::operator= with data/info read first); the pivot's destructor at the single return.
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
-class CCPPointerInfo { public:                             // CCountedPointer count block
-    long  RefCount;                                        // +0x00
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    operator delete(Info);
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CActiveEntityScriptBase;
 namespace std {
 template <class _T1, class _T2> struct pair {

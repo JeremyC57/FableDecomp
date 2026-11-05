@@ -1,6 +1,7 @@
 // std::__linear_insert(pair<EGameAction, CCountedPointer<const CInputTypeBase> >* first, pair* last, pair val, CKeyPairCompareLess comp) -- STLport insertion-sort step: a value with a smaller key than the first shifts the run up and goes first, otherwise it sinks unguarded
 // Flags: /Gr
 // Leaf: ??$__linear_insert@PAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00448E90, 113 bytes, /Gr __fastcall (first ecx, last edx; the 12-byte value and the empty
 //   comparator on the stack), `ret 10h`.
 // Identity (proven): reloc_bindings names this ??$__linear_insert@PAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@U12@V?$CKeyPairCompareLess@...;
@@ -11,39 +12,7 @@
 // Shape (family K087, representative 0x00448E90): STLport 4.x `if (comp(val, *first)) { copy_backward(first, last, last + 1);
 //   *first = val; } else __unguarded_linear_insert(last, val, comp);` -- the landed 0x00ADBC50 model.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class CCPPointerInfo {                                   // CCountedPointer's shared block
-public:
-    unsigned long RefCount;                             // +0
-    void (__fastcall* DeleteFunc)(void* data);          // +4, Data in ecx
-    void* Data;                                         // +8
-};
-template <class T> class CCountedPointer {              // agent950's landed model (0x00A99110: ReleaseData / ShareData)
-public:
-    T*              Data;                               // +0
-    CCPPointerInfo* Info;                               // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
-    CCountedPointer& operator=(const CCountedPointer& other) { ShareData(other.Data, other.Info); return *this; }
-    void ShareData(T* data, CCPPointerInfo* info)
-    {
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-    }
-    void ReleaseData()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 enum EGameAction { EGameAction_Force32 = 0x7fffffff };   // enumerators not needed
 class CInputTypeBase;
 namespace std {

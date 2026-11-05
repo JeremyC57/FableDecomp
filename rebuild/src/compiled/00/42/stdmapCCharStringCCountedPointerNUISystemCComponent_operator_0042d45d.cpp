@@ -1,5 +1,6 @@
 // std::map<CCharString, CCountedPointer<NUISystem::CComponent> >::operator[](const CCharString& k) -- STLport subscript: lower_bound, insert (k, null counted pointer) when absent, return the value
 // Leaf: ??A?$map
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042D45D, length 118 bytes, `ret 4` after `leave`. The catalog's
 // "CPersistTraits_Transfer_And_Construct" is a propagated label. Callers: NUISystem::CManager::CreateMenuEntryComponent
 // (0x004284D4, 0x004284F3, 0x00428511, 0x00428671), which store `CCountedPointer<CComponent>(CreateComponent(...))` under a
@@ -89,13 +90,5 @@ public:
 };
 }
 namespace NUISystem { class CComponent; }
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                // +0x00
-    CCPPointerInfo* Info;                                // +0x04
-    CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& other);       // 0x00428928
-    ~CCountedPointer();                                  // 0x004291DE
-};
+#include "engine/CCountedPointer.h"
 template CCountedPointer<NUISystem::CComponent>& std::map<CCharString, CCountedPointer<NUISystem::CComponent> >::operator[](const CCharString&);

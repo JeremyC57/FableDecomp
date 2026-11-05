@@ -1,5 +1,6 @@
 // std::list<std::pair<CIntelligentPointer<CThing>,long> >::push_back(const std::pair<CIntelligentPointer<CThing>,long>& x) -- STLport list append: insert x before the sentinel
 // Leaf: ?push_back@?$list@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x00810D40, 25 bytes, `ret 4`: __fastcall (this passed through in ecx), the value reference on the
 //   stack.
 // Caller: 0x00810855. Callee: list::insert(iterator pos, const T& x) 0x00810C20 (thiscall, hidden iterator result;
@@ -11,12 +12,8 @@
 //   the dead x argument slot (`lea eax,[esp+0Ch]`).
 class CBaseObject;
 class CThing;
-class CBaseIntelligentPointer {
-public:
-    virtual void v00();
-    CBaseObject* PData;                                      // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class T1, class T2> struct pair {
     T1 first;                                                // +0x00

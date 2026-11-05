@@ -1,5 +1,6 @@
 // NUISystem::CFrontEndScreen::Initialise() -- base initialise, stamp the last-input time, find the UI_ACCEPT button and hand it to the child walk
 // Leaf: ?Initialise@CFrontEndScreen@NUISystem@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x0054E4B0, 64 bytes, `ret`; referenced only from the CFrontEndScreen vtable (0x01249890); Ego_r.pdb
 // ?Initialise@CFrontEndScreen@NUISystem@@UAEXXZ.
 // Body: CChangingStateComponent::Initialise() (0x0052C730); m_fLastInputTime (+0x15c) = Time (+0x30); PAcceptButton (+0x168)
@@ -10,7 +11,7 @@
 // STLport); CFrontEndScreen members as at 0x0054E3D0 (PDB less 0x30).
 namespace NUISystem {
 class CAction;
-struct CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 }
 class CCharStringData;
 class CCharString {
@@ -21,11 +22,6 @@ public:
     ~CCharString();
 };
 namespace NUISystem {
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-};
 class CComponent;
 class CUIInterface {
 public:

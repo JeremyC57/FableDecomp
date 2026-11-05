@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A5EF50, 178 bytes (+ int3 padding), `ret 4` (PDB
 //   `?InitStreamingEntry@CStreamingFontDataBank@@QAEXAAVCSymbolMap@@@Z`; the symbol map is unused in the release build).
 // Leaf: InitStreamingEntry
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("GlyphData" @ 0x0129D5A4), ~CCharString @ 0x0099EAE0,
 //   CBankFile::FindIndexBySymbol(const CCharString&) const @ 0x009CCDC0 (landed), CBankFileAsync::GetAsyncEntry(unsigned long)
 //   @ 0x009D58D0 (PDB name; CCountedPointer<CBankFileAsyncEntry> by hidden pointer; landed as "CreateEntry"),
@@ -21,40 +22,8 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:                                // CCountedPointer's shared block
-    long RefCount;                                     // +0
-    void (__fastcall* DeleteFunc)(void* data);         // +4
-    void* Data;                                        // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { Release(); }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 
 class CSymbolMap;
 class CBankFileAsyncEntry;

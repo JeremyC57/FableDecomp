@@ -1,5 +1,6 @@
 // CTCBuyableHouse::OnSerialise(CPersistContext* context, bool full) -- persist the house state (wife, ownership flags, rent day, dress level, money bags); on load/save of money bags fold the real bags into VirtualMoneyBags first
 // Leaf: OnSerialise
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90). Spellings unified: 0088ae40: ?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAUCBaseIntelligentPointer@@K@Z -> ?GFSerialisePointer@@YIXPAVCPersistContext@@PBDPAVCBaseIntelligentPointer@@K@Z
 // Retail 0x006C0810, 352 bytes, `ret 8`.
 // Callees: GFSerialisePointer(CPersistContext*, const char*, CIntelligentPointer<CThing>*, ulong) 0x0088AE40 (`__fastcall`),
 // CPersistContext::Transfer<signed char> 0x004045C0 (the bool members) and Transfer<long> 0x00410BE0,
@@ -18,10 +19,8 @@ class CThing { public:
     unsigned char _pad00[0x8e];
     short         ThingType;                            // +0x8e
 };
-struct CBaseIntelligentPointer {
-    void*        __vftable;
-    CBaseObject* PData;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                 // +0x18

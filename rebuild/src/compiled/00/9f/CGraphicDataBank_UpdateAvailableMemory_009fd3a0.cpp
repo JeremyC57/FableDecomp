@@ -1,6 +1,7 @@
 // CGraphicDataBank::UpdateAvailableMemory() -- AvailableMemory = max(free memory, 0) + the resource list's unloadable memory after ReduceSizeFrameDelay frames
 // Grade: RELOCATION_MATCH (chunk 626 extra; chunk 624 retry1 probe) -- private as the PDB has it.
 // Leaf: ?UpdateAvailableMemory@CGraphicDataBank@@AAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009FD3A0, 59 bytes (+5 int3). Name: Ego_r.pdb ?UpdateAvailableMemory@CGraphicDataBank@@AAEXXZ
 //   (donor 0x00B56B40; private -> AAE); no code xrefs (inlined into CGraphicDataBank::FrameEnd 0x009FD660, out-of-line copy kept).
 // Callee: CResourceList::GetUnloadableMemory(unsigned long) const @ 0x009FC070 (PDB ?GetUnloadableMemory@CResourceList@@QBEKK@Z).
@@ -35,11 +36,7 @@ public:
     void FrameEnd();                                         // 0x00A698B0
 };
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CBankFileAsync {                                       // RTTI primary base (CBankFile), 0x164 bytes in retail
 public:

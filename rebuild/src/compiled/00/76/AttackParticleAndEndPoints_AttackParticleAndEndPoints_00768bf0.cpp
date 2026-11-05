@@ -1,5 +1,6 @@
 // AttackParticleAndEndPoints::~AttackParticleAndEndPoints() -- implicit destructor of an augmentation attack particle record: the particle effect pointer, then the inlined base BasicParticleAndEndPoints (end point name, start point name)
 // Leaf: ??1AttackParticleAndEndPoints@@QAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00768BF0, 27 bytes, thiscall, `jmp` tail; no call or address reference (an
 //   unreferenced COMDAT: VC7.1 emits an implicit destructor's `??1` when the TU destroys the object by name).
 // Identity (proven): (1) layout: Ego_r.pdb AttackParticleAndEndPoints (24 bytes, struct) = BasicParticleAndEndPoints
@@ -18,15 +19,8 @@
 
 class CThing;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // Ego_r.pdb, 8 bytes (vptr +0, PData +4)
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10 ??1CBaseIntelligentPointer@@UAE@XZ
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer {   // no destructor of its own: members call ~CBaseIntelligentPointer
-public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct BasicParticleAndEndPoints {                       // Ego_r.pdb, 16 bytes
     CCharString StartPoint;                              // +0x00

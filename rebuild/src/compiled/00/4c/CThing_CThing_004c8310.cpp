@@ -1,5 +1,6 @@
 // CThing::~CThing() -- thing destructor: drop the thing count, purge this thing's pending component removals, delete every component (clearing its presence bit), empty the component map, unregister from the thing manager's class factory, then the member and base destructors
 // Leaf: ??1CThing@@MAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8310, 412 bytes (the bitset range-error block at 0x004C849A ends it); Ego_r.pdb
@@ -176,12 +177,8 @@ public:
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer { public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObjectPointer* PData;                              // +0x04
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CTCBase { public:
     virtual ~CTCBase();                                     // slot 0 (scalar deleting destructor)

@@ -1,5 +1,6 @@
 // _Rb_tree<ECombatAbilityDataType, pair<const ECombatAbilityDataType, pair<CCountedPointer<CCombatAbilityData>, CCombatAbility> > >::insert_equal(const value_type& v) -- STLport multimap insertion: descend to the leaf where v belongs (equal keys go right) and hand the slot to _M_insert
 // Leaf: ?insert_equal@CCombatAbilityTree
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00739B00, 58 bytes (64 with padding), thiscall `ret 8`.
 // Label correction: catalog "RBTree_Find" -- it is the CTCCombat::CombatAbilities tree's insert_equal (multimap::insert):
 //   nine callers in the CTCCombat ability set-up (0x0073574E .. 0x00735F56), callee its _M_insert 0x00739670 (this
@@ -11,15 +12,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) throw() { return p; }
 
-template <class T> class CCountedPointer { public:     // 8 bytes: object + shared count
-    T*    Object;
-    long* Count;
-    CCountedPointer(const CCountedPointer& o) : Object(o.Object), Count(o.Count)
-    {
-        if (Count)
-            ++*Count;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CCombatAbilityData;
 class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;

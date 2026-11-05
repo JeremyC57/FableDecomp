@@ -1,5 +1,6 @@
 // CVillageTaskPickCrops::~CVillageTaskPickCrops() -- the compiler-generated destructor of CVillageTaskPickCrops: the member at +0x10 then the member at +0x08 (reverse declaration order), then the inline CVillageTaskBase::~CVillageTaskBase() (its vptr store) and a tail jump to CBaseObject::~CBaseObject()
 // Leaf: ??1CVillageTaskPickCrops@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065EF51, 33 bytes, thiscall, tail `jmp`.
 // Identity: CVillageTaskPickCrops -- proven; evidence: its only caller is the scalar deleting destructor 0x0065EF35 in slot 0 of vtable 0x0125A928
 //   (RTTI .?AVCVillageTaskPickCrops@@ : CVillageTaskBase, CBaseObject, CBaseClass); FableWin.pdb names ??1CVillageTaskPickCrops@@UAE@XZ; members per Ego_r.pdb CVillageTaskPickCrops (Crop +0x08, CreatureAssignedToTask +0x10).
@@ -14,13 +15,8 @@
 #pragma optimize("s", on)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

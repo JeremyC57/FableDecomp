@@ -1,5 +1,6 @@
 // CTCUnholyPower::PerEffectInfo::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~PerEffectInfo runs Effect's destructor (CIntelligentPointer<CThing> at +0xC), then operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GPerEffectInfo@CTCUnholyPower@@QAEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007939A0, 33 bytes (+ int3 padding), thiscall, `ret 4`; unreferenced (no call or pointer to it in Fable.exe).
 // Identity: CTCUnholyPower::PerEffectInfo::`scalar deleting destructor' -- proven; evidence: FableWin.pdb name set holds ??_GPerEffectInfo@CTCUnholyPower@@QAEPAXI@Z; Ego_r.pdb PerEffectInfo is {C3DVector Position, CIntelligentPointer<CThing> Effect +0xC}; the body sits in the CTCUnholyPower module (next to a PerEffectInfo constructor 0x007939D0, before the CTCUnholyPower methods 0x007949F0.. of vtable 0x0126BFDC); its byte twin 0x0078E370 is the CTCDivineWrath one.
@@ -11,13 +12,8 @@ void __cdecl operator delete(void* p);                         // 0x00BFE9BC
 #include "engine/C3DVector.h"
 class CBaseObject;
 class CThing;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                               // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCUnholyPower {
 public:
     struct PerEffectInfo {

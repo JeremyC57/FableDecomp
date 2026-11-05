@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonFlying::~CModeDragonFlying() -- release PEndAction, destroy the filter, free the flight spline's control points (CModeDragonFlyingBase), then the inlined CModeBase destructor
 // Leaf: ??1CModeDragonFlying
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pItem->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00743000, 121 bytes (`ret`).
@@ -19,30 +20,8 @@ class CCharString { public:
 };
 
 struct CCountedItem { };
-struct SCountBlock {
-    long m_references;                               // +0x00
-    void (CCountedItem::*m_pfnDestroy)();            // +0x04 (called with the item as `this`)
-    CCountedItem* m_pItem;                           // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                                    // +0x00
-    SCountBlock* m_pBlock;                           // +0x04
-    CCountedPointer() : m_pObject(0), m_pBlock(0) { }
-    ~CCountedPointer()
-    {
-        if (m_pBlock) {
-            --m_pBlock->m_references;
-            if (m_pBlock->m_references == 0) {
-                (m_pBlock->m_pItem->*m_pBlock->m_pfnDestroy)();
-                operator delete(m_pBlock);
-            }
-        }
-        m_pObject = 0;
-        m_pBlock = 0;
-    }
-};
 
 class CAnimFilterBase { public:                             // vtable 0x0122FFCC
     virtual void v00();

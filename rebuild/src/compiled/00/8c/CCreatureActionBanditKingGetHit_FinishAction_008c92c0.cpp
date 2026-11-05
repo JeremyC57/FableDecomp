@@ -1,5 +1,6 @@
 // CCreatureAction_BanditKingGetHit::FinishAction() -- base FinishAction; when the attacker is alive and flagged (+0x6c bit 3), answer with a CCreatureAction_BanditKingAttack: "REAR_ATTACK" (0, 1) when hit from behind, else "STRIKE_MEDIUM_FRONT" (1, 0)
 // Leaf: FinishAction
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C92C0, 235 bytes (240 with padding), virtual FinishAction.
 // Callees: CCombatAction_GenericStrikeResponseBase::FinishAction 0x008663D0, CBaseIntelligentPointer::GetPItem 0x00A01B50, the __fastcall hit-from-behind
 //   test 0x008C7E50 (manifest "CompareActorRotations") (creature in ecx, attacker in edx), CCharString::CCharString(const char*, long = -1) 0x0099EBF0
@@ -30,11 +31,8 @@ class CCharString { public:
 };
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                            // +4
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CCreaturePointer : CBaseIntelligentPointer {                       // CIntelligentPointer<CThingCreatureBase>
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }   // inline over 0x00A01B50

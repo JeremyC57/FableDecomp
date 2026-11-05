@@ -1,5 +1,6 @@
 // CBankFileAsync::OpenReadOnly(const CCharString& bankHandle, unsigned long flags) -- open the bank read-only through CBankFile, report progress, then take the asynchronous reader: the retail bank set's threaded file (and its DMA setting) when attached to one, else a new threaded file opened on the bank's own path; async reads enabled
 // Leaf: ?OpenReadOnly@CBankFileAsync@@UAE_NABVCCharString@@K@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D56C0, length 352 bytes (+ int3 padding), virtual, ret 8.
 // Callees: CBankFile::OpenReadOnly @ 0x009D06F0 (qualified base call), CCharString ctor @ 0x0099EBF0 ("..." @ 0x0129B884) /
 //          dtor @ 0x0099EAE0, NProgressDisplay::DisplayProgress(const CCharString&, float, bool, bool) @ 0x009E9F40
@@ -29,21 +30,7 @@ class CWideString { public:
 void* operator new(unsigned int size);             // 0x00BFEA1A
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 
-struct SCountBlock {
-    long  m_references;
-    void (__fastcall* m_pfnDestroy)(void*);
-    void* m_pObject;
-};
-template <class T> class CCountedPointer { public:        // {object, count block}
-    T*           Data;
-    SCountBlock* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->m_references; }
-    ~CCountedPointer();                            // 0x009A9C40 (CThreadedFile), 0x009A9D60 (CRetailBank)
-    CCountedPointer& operator=(const CCountedPointer& o);   // 0x009D6FD0 (CThreadedFile)
-    void Reset(T* object);                         // 0x009A9C80 (CThreadedFile)
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CDiskFileWin32;
 class CThreadedFile { public:
     unsigned char _body[0x1c];

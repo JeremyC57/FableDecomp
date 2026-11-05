@@ -1,4 +1,5 @@
 // CCreatureAction_WaspQueenDeath::Initialise() -- names the "FALL_TO_DEATH" animation, runs the base Initialise, then when the creature definition's special-effects sub-def maps "DEATH" to an effect, spawns it at the creature, keeps it as PDeathEffect and attaches its particle emitter to the creature's "TARGET_CURSOR_POINT" helper
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4CB0, length 364 bytes (+ int3 padding).
 // Callees: CCharString ctor/dtor @ 0x0099EBF0 / 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0 and Initialise @ 0x00857520,
@@ -108,14 +109,8 @@ class CThing { public:
     }
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* PItem;                              // +4
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentThingPointer() : CBaseIntelligentPointer() { }

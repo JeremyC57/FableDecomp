@@ -1,5 +1,6 @@
 // NScript::CV_BeardyBaldyScript::`scalar deleting destructor'(unsigned int flags) -- the destructor (expanded), then free the object when bit 0 is set
 // Leaf: ??_GCV_BeardyBaldyScript@NScript@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E54290, 30 bytes, thiscall, `ret 4`; calls 00e542b0=NScript::CV_BeardyBaldyScript::~CV_BeardyBaldyScript ; 00bfe9bc=MSVCR71.DLL::operator_delete.
 // Naming wave 33 (family ctorB): slot 0 of vtable 0x012E5790 (no RTTI), the vtable the landed constructor 0x00E4F5B0 stores last
 //   (??0CV_BeardyBaldyScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z, Ego_r.pdb / FableWin.pdb); Ego_r.pdb ??_ECV_BeardyBaldyScript@NScript@@UAEPAXI@Z; FableWin.pdb ??_ECV_BeardyBaldyScript@NScript@@UAEPAXI@Z; Ego_r.pdb ??1CV_BeardyBaldyScript@NScript@@UAE@XZ; FableWin.pdb ??1CV_BeardyBaldyScript@NScript@@UAE@XZ.
@@ -24,11 +25,7 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                    // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-template <class T> class CCountedPointer { public:                     // {Data, Info}
-    void* Data;
-    void* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"

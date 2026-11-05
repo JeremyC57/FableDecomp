@@ -1,5 +1,6 @@
 // std::_Rb_tree::erase(iterator position) -- (map<unsigned __int64, CIntelligentPointer<CThing> >) STLport 4.6 single-node erase: unlink the node through _Rebalance_for_erase (root / leftmost / rightmost kept), destroy its value, free it and decrement the count
 // Leaf: ?erase@?$_Rb_tree@_KU?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@U?$_Select1st@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@@2@@2@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00783CC0, 66 bytes (+ int3 padding to 80), thiscall `ret 4` (the iterator by value).
 // Identity (proven): map<unsigned __int64, CIntelligentPointer<CThing> >; evidence: the value destroyed at +0x18 is an intelligent pointer after an 8-byte key; its only caller is CTCBoastingCrowdControl::GetCrowd 0x00783A30, and Ego_r.pdb CTCBoastingCrowdControl::HeroCrowdThings is map<unsigned __int64, CIntelligentPointer<CThing> > (FableWin.pdb names map<unsigned __int64, CIntelligentPointer<CThing> >), the only map with intelligent-pointer values in either PDB
 // Label: the manifest's "CTCCreatureGroupBoastingCrowd_RemoveBoastAtPosition" is propagated (family H065: six erase(iterator) bodies that differ only in the value
@@ -10,12 +11,8 @@
 //   free 0x00BFEA14 (allocator<_Node>::deallocate, null-tested: the node pointer only fed a `lea`).
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 class CThing;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void* PData;                                        // +4
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 

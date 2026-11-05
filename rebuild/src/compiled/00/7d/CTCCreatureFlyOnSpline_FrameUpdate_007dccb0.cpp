@@ -1,5 +1,6 @@
 // CTCCreatureFlyOnSpline::FrameUpdate() -- advance along the flight spline: step the progress (wrapping to its fractional part when looping, then clamping to [0, 1]), move the creature to the new spline position and, when it moved noticeably, orient it along the normalised travel direction (up = (dir.Y, -dir.X, 0) x dir)
 // Leaf: FrameUpdate
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the CrossProduct is the landed 0x007A1870 shape ((float)(double) per component through component pointers), which puts retail's Up.X fstp before the Forward.Y copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DCCB0, 400 bytes (`ret`).
@@ -52,11 +53,7 @@ class CCardinalSpline { public:
     void GetSplinePosition(C3DVector* position, float progress);    // 0x00A567A0
 };
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T* Data;                                            // +0
-    SCountBlock* m_pCount;                              // +4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CTCCreatureFlyOnSpline { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)

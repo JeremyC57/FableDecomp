@@ -1,4 +1,5 @@
 // CGameScriptInterface::ApplyScriptBrush(const CCharString& name) const -- apply the named script brush through the world map (CWorld slot 12, 0x004FE510 with the name and 1)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088F480, length 32 bytes.
 // Callees: CWorld virtual slot 12 (+0x30), the world map's brush application @ 0x004FE510 (labelled "CDrawQuestInfo::OracleSymbolPushBack", propagated). Shape: the arguments pushed before the virtual call, `ret 4`.
 struct CDisplayEngine_Retail;
@@ -60,8 +61,7 @@ struct CThing_Retail {
     void PreloadBasicAnimations();                 // 0x00663610 (CThingCreatureBase)
     void SetInLimbo(bool inLimbo);                 // 0x004C8CF0 (CThing)
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -4,6 +4,7 @@
 //   empty is made unselectable.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054A990, 592 bytes, `ret 4`.
 // Leaf: ChangeState
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Callees: CManager::GetInstance 0x0041E5F2 (__fastcall); manager AddObserver (+0x08), RemoveObserver (+0x14),
 //   ExecuteAction (+0x38), GetLastInputResult (+0x84, descriptive); CObserver::ObserveEvent (+0x0C) and
 //   IsObservingEvent (+0x08, descriptive); the slider's virtual slot 150 (+0x258, descriptive UpdateValue); the accept
@@ -20,12 +21,7 @@ class CRGBColour { public:
     CRGBColour() {}
     CRGBColour(const CRGBColour& c) : B(c.B), G(c.G), R(c.R), A(c.A) {}
 };
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct CRetailVector {        // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;

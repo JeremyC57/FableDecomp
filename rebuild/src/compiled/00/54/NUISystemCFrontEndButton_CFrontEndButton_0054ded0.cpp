@@ -1,5 +1,6 @@
 // NUISystem::CFrontEndButton::~CFrontEndButton() -- store the button's three subobject vtables, destroy the action-param list, destroy and free the two CCountedPointer<CAction> vectors, then the base control destructor
 // Leaf: ??1CFrontEndButton
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054DED0, length 127 bytes (+ int3 padding).
 // Label correction: catalogued as CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip (propagated); the only caller
 // is the scalar deleting destructor @ 0x0054E1C0, slot 0 of NUISystem::CFrontEndButton's vtable 0x01249554 (stored at
@@ -17,7 +18,7 @@ namespace NUISystem {
 class CAction;
 class CActionParam;
 }
-template <class T> class CCountedPointer { public: T* Data; void* Count; };
+#include "engine/CCountedPointer.h"
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 void __fastcall DestroyRange(CCountedPointer<NUISystem::CAction>* first, CCountedPointer<NUISystem::CAction>* last,

@@ -1,5 +1,6 @@
 // CUserProfileManager::ClampAntialiasing(unsigned long* level, long max_level) -- validates an antialiasing setting against the display manager's supported list: an out-of-range index resets to 0, and with a cap (not -1) the index steps down until the supported level no longer exceeds the cap
 // Leaf: ClampAntialiasing
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00409140, length 126 bytes (padded to 128), `ret 8` (`this` unused).
 // Callees: GFGetSystemManager @ 0x009A4EC0 (__fastcall), the display manager's supported-levels query
 // (vector<long>& out) @ 0x009C05C0 (catalog label "CGuiControlTreePane_RebuildTreeFromArray" is propagated; the
@@ -24,11 +25,7 @@ struct CLongVector {                               // STLport vector<long> (12 b
 class CDisplayManager { public:
     void GetSupportedAntialiasingLevels(CLongVector& levels);   // 0x009C05C0
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CSystemManager { public:
     unsigned char    _pad00[0x60];
     CCountedPointer<CDisplayManager> PDisplayManager;   // +0x60

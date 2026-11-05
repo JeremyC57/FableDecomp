@@ -9,31 +9,9 @@
 // file, then `return file;` (no NRVO: merged inc/dec copy-out) and the root pointer's register-form release.
 // Layout: the root chunk prototype pointer at +0x10 of the loader (CChunkedFileLoader base).
 // Leaf: LoadAnimFile@C3DAnimFileLoader
-struct SCountBlock {
-    long m_references;                              // +0
-    void (__fastcall* m_pfnDestroy)(void*);         // +4
-    void* m_pObject;                                // +8
-    SCountBlock(void (__fastcall* destroy)(void*), void* object) : m_references(1), m_pfnDestroy(destroy), m_pObject(object) {}
-};
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer { public:
-    T* Object;                                      // +0
-    SCountBlock* Count;                             // +4
-    static void __fastcall DeleteData(void* object);   // 0x00A99FE0 (root chunk) / 0x00A9A000 (file)
-    CCountedPointer(T* object) : Object(object), Count(object ? new SCountBlock(DeleteData, object) : 0) {}
-    CCountedPointer(const CCountedPointer& other) : Object(other.Object), Count(other.Count) { if (Count) ++Count->m_references; }
-    ~CCountedPointer()
-    {
-        if (Count) {
-            if (--Count->m_references == 0) {
-                Count->m_pfnDestroy(Count->m_pObject);
-                delete Count;
-            }
-        }
-    }
-    template<class U> CCountedPointer(const CCountedPointer<U>& other) : Object(other.Object), Count(other.Count) { if (Count) ++Count->m_references; }
-    T& operator*() const { return *Object; }
-};
 
 class CDataInputStream;
 class CChunkedFileChunk { public:

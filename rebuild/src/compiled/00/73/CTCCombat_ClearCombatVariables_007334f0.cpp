@@ -1,5 +1,6 @@
 // CTCCombat::ClearCombatVariables() -- reset the combat component's transient state: block/action flags off, combo chain position/id to their -777/-999 sentinels, grace and idle countdowns zeroed, every combat ability's repeat/active timers to -1, block timers to -1 and the component ready for melee
 // Leaf: ?ClearCombatVariables@CTCCombat
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007334F0, 140 bytes (144 with padding), `ret`.
 // Label correction: catalog "CTCCombat_ResetState" -- Ego_r.pdb names ?ClearCombatVariables@CTCCombat@@AAEXXZ (private,
 //   void); callers CTCCombat::RemoveFromCombat (landed 0x00733580, calls it "ResetCombatState") and 0x007355DE.
@@ -20,11 +21,7 @@ class CCombatAbilityData { public:                     // Ego_r.pdb, 0x18 bytes
     void*  Anim;                                // +0x10 CDefString
     long   InterfaceType;                       // +0x14 ECombatAbilityInterfaceType
 };
-template <class T> class CCountedPointer { public:     // 8 bytes: object + count block
-    T*    Object;
-    long* Count;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class CCombatAbility { public:                         // Ego_r.pdb, 8 bytes
     long RepeatTimer;                           // +0x00
     long ActiveTimer;                           // +0x04

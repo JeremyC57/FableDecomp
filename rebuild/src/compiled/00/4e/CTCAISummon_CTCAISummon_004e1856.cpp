@@ -1,5 +1,6 @@
 // CTCAISummon::~CTCAISummon() -- destroy the component's members (list<CIntelligentPointer<CThing> >::~list 0x004B8940 (MySummonedCreatures +0x10), the PSummonDef (+0x0C) release inline), then the CTCBase part
 // Leaf: ??1CTCAISummon@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004E1856, 40 bytes, thiscall, tail-jumps to ~CTCBase 0x00686830.
 // Identity (proven): its only caller is the class's scalar deleting destructor 0x004E183A (landed, with the stand-in callee name
 //   ?CTCAISummon_Destruct@@YIXPAX@Z); RTTI .?AVCTCAISummon@@ : CTCBase; the destroyed members are Ego_r.pdb CTCAISummon's at their retail offsets.
@@ -31,12 +32,8 @@ public:
     }
 };
 class CSummonDef;
-class CBaseIntelligentPointer {                        // 8 bytes: vptr, PData
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;                                         // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class _Tp> class allocator { };
 template <class _Tp, class _Alloc = allocator<_Tp> > class list {   // STLport, 4 bytes

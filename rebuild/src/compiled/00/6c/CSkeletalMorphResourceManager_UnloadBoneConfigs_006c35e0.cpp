@@ -1,5 +1,6 @@
 // CSkeletalMorphResourceManager::UnloadBoneConfigs() -- empty the member tree (+0x4)
 // Leaf: ?UnloadBoneConfigs@CSkeletalMorphResourceManager@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C35E0, 52 bytes, thiscall, plain `ret`.
 // Identity (proven): its only caller is CWorld::Uninitialise 0x004A2E90 (tail jump with the singleton 0x013BAB10, built by the constructor 0x004AE2A0 that stores vtable 0x01238F84, RTTI .?AVCSkeletalMorphResourceManager@@, and allocates the 0x1C-byte map header); Ego_r.pdb CSkeletalMorphResourceManager has one member, CachedMorphs map<CCharString, CCountedPointer<C3DSkeletalMorphTarget> > (+4), and ?UnloadBoneConfigs@CSkeletalMorphResourceManager@@QAEXXZ is its emptying method (PreloadBoneConfigs / GetMorphTarget fill it).
 // Callees: the member tree's _Rb_tree::_M_erase(_Rb_tree_node*) 0x004AD690.
@@ -56,7 +57,7 @@ public:
 }
 class CCharString { public: void* PStringData; };
 class C3DSkeletalMorphTarget;
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 class CSkeletalMorphResourceManager {                     // Ego_r.pdb; vtable 0x01238F84 (the CTBaseSingleton base)
 public:
     virtual ~CSkeletalMorphResourceManager();

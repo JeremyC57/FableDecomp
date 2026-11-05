@@ -1,5 +1,6 @@
 // NScript::CQ_HeroSoulsArenaScript::PlayCutscene(CCharString name) -- play a cut-scene with the hero: take the hero under scripted control, cast him as HERO, then run the named cut-scene inside a paused movie sequence with the movie camera fixed
 // Leaf: ?PlayCutscene@CQ_HeroSoulsArenaScript@NScript@@QAEXVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D7FC70, 541 bytes (+ int3 padding), thiscall `ret 4` (the by-value name is destroyed by the callee).
 // Identity (proven): NScript::CQ_HeroSoulsArenaScript::PlayCutscene(CCharString); evidence: called from 0x00D7C890 / 0x00D7FE90, which resolve to Ego_r.pdb NScript::CQ_HeroSoulsArenaScript: 0x00D7C890 is Main (slot 2) of the quest-script vtable 0x012D3994 (OnPersist 0x00D7C800 transfers CreatureCount / PlayedArenaCS / PlayedHoHCS / JackTauntNearHOH / ArenaLevelReached); 0x00D7FE90 is spawned (address taken at 0x00D7D5E9) by 0x00D7C890 is Main (slot 2) of the quest-script vtable 0x012D3994 (OnPersist 0x00D7C800 transfers CreatureCount / PlayedArenaCS / PlayedHoHCS / JackTauntNearHOH / ArenaLevelReached); `this` holds the script interface at +0x40 (CLevelScriptBase::Game); the Ego_r/FableWin.pdb name sets hold ?PlayCutscene@CQ_HeroSoulsArenaScript@NScript@@QAEXVCCharString@@@Z
 // Label: the manifest's "WatchForRoundsInArena_Setup" is propagated / a placeholder (family J035: six PlayCutscene bodies of quest scripts that cast only the hero).
@@ -24,47 +25,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 enum EScriptAIPriority { };
-class CCPPointerInfo {
-public:
-    long RefCount;                                      // +0x0
-    void (__fastcall* DeleteFunc)(void* data);          // +0x4
-    void* Data;                                         // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    CCountedPointer() : Data(0), Info(0) { }
-    void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        ReleaseData();
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing;
 class CBaseObjectPointer;

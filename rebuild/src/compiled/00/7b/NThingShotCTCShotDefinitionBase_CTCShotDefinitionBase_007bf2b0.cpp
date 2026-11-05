@@ -1,5 +1,6 @@
 // NThingShot::CTCShotDefinitionBase::~CTCShotDefinitionBase() -- shot-definition component base dtor (empty user body): the member dtors in reverse order (best-collision thing pointer, ability and shot def pointers, weapon / shooter / target thing pointers, the hit-things pointer vector, the effect pointer) and ~CTCBase
 // Leaf: ??1CTCShotDefinitionBase@NThingShot@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BF2B0, 153 bytes, tail jump to the base destructor.
 // Identity: the first store is vtable 0x0126E1A4, RTTI `.?AVCTCShotDefinitionBase@NThingShot@@` (rtti_bases:
@@ -61,18 +62,8 @@ class CThing { public:                                      // retail flag byte 
 };
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer { public:                     // vtable 0x0129C95C, 8 bytes
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* Get() const { return GetPointer(); }
-    T* operator->() const { return GetPointer(); }
-private:
-    T* GetPointer() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 template <class T> inline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)

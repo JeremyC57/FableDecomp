@@ -1,4 +1,5 @@
 // CCreatureDef::CCreatureDef() -- the creature definition's default constructor: the def-class root (CResource, no manager, flag bits cleared), four empty counted pointers, two empty long vectors, the empty PhonemeAnim map, the empty DialogueVoices vector, BattleCrySound = -1, the radius-weight map and range zeroed, then PWoundMorphs / PRandomAppearanceMorph / PExpressions / PStats each reset to a freshly built default object
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006765A0, length 381 bytes (+ int3 padding), plain `ret`. Vtable 0x0125B43C (CCreatureDef,
 // rtti-vtables.tsv); the stats object's vtable 0x012321AC is CCreatureStatsDef.
 // Callees: CResource::CResource @ 0x009FBEC0 (the def root's base, twice), malloc @ 0x00BFEA0E (the two STLport map header nodes,
@@ -96,12 +97,7 @@ class CCreatureStatsDef : public CDefClassBase { public:             // 0x48 byt
     CCreatureStatsDef() : CDefClassBase() {}
 };
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T*           m_pObject;
-    SCountBlock* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) {}
-    void Reset(T* object);
-};
+#include "engine/CCountedPointer.h"
 class CCreatureDef : public CDefClassBase { public:                  // vtable 0x0125B43C
     CCountedPointer<CWoundMorphs>           PWoundMorphs;             // +0x28
     CCountedPointer<CRandomAppearanceMorph> PRandomAppearanceMorph;   // +0x30

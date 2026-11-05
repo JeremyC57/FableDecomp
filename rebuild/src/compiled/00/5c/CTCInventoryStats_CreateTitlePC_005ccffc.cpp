@@ -12,6 +12,7 @@
 // Shape: the definition name is a CCharString local reassigned when `statTitle` is false; the created component goes straight
 // into a counted-pointer local whose inline operator-> reads the object word ([ebp-0Ch]).
 // Leaf: CreateTitlePC
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CWideString { public:
@@ -23,13 +24,7 @@ class CCharString { public:
     ~CCharString();                                               // 0x0099EAE0
     const CCharString& operator=(const char* text);                     // 0x0099EFE0
 };
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer(T* object);                                   // 0x00429C15
-    ~CCountedPointer();                                           // 0x004291DE
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 class CComponent { public:
     virtual void v00();

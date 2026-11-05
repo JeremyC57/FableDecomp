@@ -1,5 +1,6 @@
 // std::vector<NInventory::CItem>::_M_fill_insert(iterator position, size_type n, const NInventory::CItem& x) -- STLport fill-insert of n copies of x at position: in place when the spare capacity suffices (shift the tail up, then fill), else through _M_insert_overflow
 // Leaf: ?_M_fill_insert@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x005C2831, 237 bytes, `ret 0Ch` (thiscall). Callers: vector::insert(pos, n, x) @ 0x005C2A09 (a tail
 // `jmp`) and vector::resize(n, x) @ 0x005C2A13 (call 0x005C2A51). Catalog label "STL_VectorInsertRange" is descriptive.
 // Callees (all the CItem instantiations of this TU): CItem copy ctor @ 0x005C08E6 (x_copy), __uninitialized_copy(first,
@@ -19,11 +20,7 @@ struct __false_type { __false_type() {} };
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
 namespace NInventory { class CPerItemData; }
-template <class T> class CCountedPointer { public:
-    T*    Data;                                            // +0x00
-    void* Info;                                            // +0x04 CCPPointerInfo*
-    ~CCountedPointer();                                    // 0x005C04BF
-};
+#include "engine/CCountedPointer.h"
 namespace NInventory {
 class CItem {                                              // 0x14 bytes
 public:

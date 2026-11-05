@@ -1,6 +1,7 @@
 // std::vector::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len, bool __atend) -- (vector<NInventory::CItem >) STLport growth insert: allocate size + max(size, fill_len), copy the head, construct fill_len copies of x, copy the tail unless atend, release the old block, adopt the new one
 // Flags: /Gr
 // Leaf: ?_M_insert_overflow@?$vector@VCItem@NInventory@@V?$allocator@VCItem@NInventory@@@std@@@std@@IAEXPAVCItem@NInventory@@ABV34@ABU__false_type@2@I_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C276C, 176 bytes (size-optimised TU with a frame pointer), thiscall, `ret 14h`.
 // Identity (proven): std::vector<NInventory::CItem >::_M_insert_overflow (the non-POD overload); evidence: its fill_len == 1 constructor 0x005C08E6 is the CItem copy constructor (the bindings' ??0CItem@NInventory@@QAE@ABV01@@Z); its callers are vector<NInventory::CItem>::_M_fill_insert 0x005C2831 (agent379, landed) and the push_back 0x005C2996, the vector whose erase agent951 landed as vector<NInventory::CItem>::erase 0x005C1ECC
 // Label: the manifest's "CActiveFile_ReserveAndInitialize" is a propagated / behavioural label (family J071: five 176-byte growth inserts, each its own element).
@@ -86,11 +87,7 @@ void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x,
     _M_set(__new_start, __new_finish, __new_start + __len);
 }
 }   // namespace std
-template <class T> class CCountedPointer {               // 8 bytes: the object and its shared CCPPointerInfo count block
-public:
-    T*    Data;                                          // +0x0
-    void* Info;                                          // +0x4 CCPPointerInfo*
-};
+#include "engine/CCountedPointer.h"
 namespace NInventory {
 class CPerItemData;
 class CItem {                                            // Ego_r.pdb 0x14 bytes

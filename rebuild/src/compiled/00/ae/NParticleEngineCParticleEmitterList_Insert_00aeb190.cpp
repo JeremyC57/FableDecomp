@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitterList::Insert(std::list<CCountedPointer<NParticleEngine::CParticleEmitter> >& visible, const CCountedPointer<NParticleEngine::CParticleEmitter>& emitter, long maxCount) -- insert a visible emitter into the caller's list kept sorted by priority (high first) then distance to the camera (near first); append at the end only while the list is below maxCount
 // Leaf: ?Insert@CParticleEmitterList@NParticleEngine@@AAE_NAAV?$list@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@ABV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@J@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEB190, 318 bytes, thiscall (this unused), `ret 0Ch`, returns bool.
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?Insert@CParticleEmitterList@NParticleEngine@@AAE_NAAV?$list@...@std@@ABV?$
 //   CCountedPointer@VCParticleEmitter@NParticleEngine@@@@J@Z (private) is the only CParticleEmitterList member taking (list&,
@@ -18,22 +19,8 @@ extern "C" void* __cdecl malloc(unsigned int size);                     // 0x00B
 extern "C" void __cdecl free(void* p);                                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo {                              // Ego_r.pdb: RefCount +0
-public:
-    unsigned long RefCount;
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                           // +0x00
-    CCPPointerInfo* Info;                           // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    T* operator->() const { return Data; }
-};
 
 namespace NParticleEngine {
 #pragma pack(push, 1)

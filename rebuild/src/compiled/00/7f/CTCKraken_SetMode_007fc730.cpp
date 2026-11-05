@@ -1,5 +1,6 @@
 // CTCKraken::SetMode(EKrakenMode mode) -- store the kraken's mode and run its entry action: (re)create and raise the tentacles and end the head effects, kill the beam and the tentacles, or start the beam effect
 // Leaf: ?SetMode@CTCKraken@@AAEXW4EKrakenMode@1@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FC730, 104 bytes, thiscall, `ret 4`, 5-entry jump table at 0x007FC784.
 // Identity (proven): Ego_r.pdb ?SetMode@CTCKraken@@AAEXW4EKrakenMode@1@@Z, whose donor neighbours (CreateTentacles,
 //   InitTentaclesOnly, InitTentaclesAndHead, SetMode, StartLowAttackBeam, StartHighAttackBeam, EndAttackBeam, SetPhase,
@@ -39,11 +40,8 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_b
 class CThing;
 class CKrakenDef;
 class CTCBoss;
-class CBaseIntelligentPointer { public:
-    virtual ~CBaseIntelligentPointer();
-    void* PItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCKraken : public CTCBase {
 public:
     enum EKrakenMode { };

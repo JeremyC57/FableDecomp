@@ -1,5 +1,6 @@
 // std::map::operator[](const unsigned long& k) -- map<unsigned long, QuadricOptimiserInternals::CContractionReference>::operator[]: find a vertex's pair contraction by partner index, inserting an empty reference when absent (COptimisedVertex::PairContractions)
 // Leaf: ??A?$map@KVCContractionReference
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD64C0, 0x9E bytes (+ int3 padding), thiscall, `ret 4`, returns &(*i).second.
 // Identity: the callee 0x00AD52A0 is the landed _Rb_tree::insert_unique(iterator, const value_type&) of
 //   pair<unsigned, QuadricOptimiserInternals::CContractionReference> (node: key +0x10, Data +0x14, Info +0x18, SubIndex
@@ -12,27 +13,8 @@
 //   but never keeps its address gives retail's late Data store and the folded `dec [esi] ; jne` release.
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                                  // +0x00
-    void (__fastcall* DeleteFunc)(void* data);               // +0x04
-    void*         Data;                                      // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template<class T> class CCountedPointer { public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& x) : Data(x.Data), Info(x.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer() { Release(); }
-    void Release()
-    {
-        CCPPointerInfo* info = Info;
-        if (info && --info->RefCount == 0) {
-            info->DeleteFunc(info->Data);
-            delete info;
-        }
-    }
-};
 
 namespace QuadricOptimiserInternals {
 class CVertexPairContraction;

@@ -1,5 +1,6 @@
 // NScript::CQ_ArenaScript::WatchForTermination() -- wait until the arena mission fails or succeeds, restart time; on success pay the gold total (plus the spare-Whisper morality if Whisper lives), teleport the hero to ArenaExtEntrance, wait for ArenaExterior to load, complete the quest, fade in and mark the arena finished; finally re-enable teleporting and deactivate the quest
 // Leaf: ?WatchForTermination@CQ_ArenaScript@NScript@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F14300, 594 bytes, thiscall, plain `ret`.
 // Identity (proven): spawned as "WatchForTermination" (0x012C84B0) by CQ_ArenaScript::Main 0x00F0FB70 (slot 2 of the level-script
 //   vtable 0x012C7798 whose slot 1 is the landed NScript::CQ_ArenaScript::RegisterMain 0x00CFAA50): the CSpawnedFunc Func store
@@ -24,11 +25,7 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CTimer.h"

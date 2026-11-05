@@ -1,5 +1,6 @@
 // CTCSinglePersonOccupiable::CTCSinglePersonOccupiable(CThing& thing) -- CTCBase(thing), then this class's vtable and an empty POccupier (CIntelligentPointer<CThingCreatureBase>)
 // Leaf: ??0CTCSinglePersonOccupiable@@QAE@AAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D8896, 42 bytes (size-optimised TU, odd entry), thiscall, `ret 4`. Vtable 0x0123ED54.
 // Identity (proven): CTCSinglePersonOccupiable::CTCSinglePersonOccupiable(CThing&); evidence: it stores vtable 0x0123ED54 whose RTTI is .?AVCTCSinglePersonOccupiable@@ (: CTCBase : CBaseClassNonCopyable : CBaseClass); Ego_r.pdb holds
 //   ??0CTCSinglePersonOccupiable@@QAE@AAVCThing@@@Z; its only caller is the type factory 0x004DB0AD.
@@ -12,16 +13,8 @@
 #pragma optimize("s", on)
 class CThing;
 class CThingCreatureBase;
-class CBaseIntelligentPointer {                         // 8 bytes: vptr + PData
-public:
-    CBaseIntelligentPointer();                             // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    void* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer() { }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCBase {                                            // retail 0x0C bytes
 public:
     CTCBase(CThing& thing);                                // 0x00686800

@@ -1,5 +1,6 @@
 // CCombatActionBase::CStrikeEvent::`scalar deleting destructor'(unsigned int) -- free the struck-thing list's buffer, destroy the weapon intelligent pointer and the helper-point name, and free the event itself on bit 0
 // Leaf: ??_GCStrikeEvent@CCombatActionBase@@QAEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085AE90, length 57 bytes (+7 int3), thiscall `ret 4`. No call or address
 //   reference reaches it in retail (an unreferenced COMDAT copy).
 // Identity: the members it destroys match Ego_r.pdb CCombatActionBase::CStrikeEvent exactly -- HelperPointName (CCharString)
@@ -21,21 +22,8 @@ public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
 class CThingGameObject;
 namespace std {

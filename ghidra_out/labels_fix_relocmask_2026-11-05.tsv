@@ -1,0 +1,4 @@
+address	name	evidence
+009f1720	CGameEventPackageSet::Clear	Ego_r.pdb + FableWin.pdb ?Clear@CGameEventPackageSet@@QAEXXZ; body NoPackages(+0)=0; caller 0x004AEAA0 clears before AddPackage; replaces a reloc-masked false match
+009f16c0	CGameEventPackage::Clear	Ego_r.pdb + FableWin.pdb ?Clear@CGameEventPackage@@QAEXXZ; body NoEvents(+4)=0; bound by caller 0x004AEAA0
+007e37c0	CDefString::CDefString	Ego_r.pdb + FableWin.pdb ??0CDefString@@QAE@XZ; body TablePos(+0)=-1, returns this; 35 NScript callers build Transfer<CDefString> defaults; replaces a reloc-masked false match

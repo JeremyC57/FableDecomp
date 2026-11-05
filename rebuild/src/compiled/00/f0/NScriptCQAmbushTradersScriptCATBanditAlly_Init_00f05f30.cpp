@@ -1,5 +1,6 @@
 // NScript::CQ_AmbushTradersScript::CAT_BanditAlly::Init() -- the ambush-traders bandit ally: make Me an ally of the hero, allowed to follow him and carrying information, apply the parent's bandit allegiances, reset the invalid-region timer and the hire/follow/teleport flags, disable the SG_MINION_SIT_OUTSIDE state group and spawn the parent's WatchForHeroAttackOnBandit thread on Me
 // Leaf: ?Init@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F05F30, 409 bytes, thiscall, plain `ret`.
@@ -31,12 +32,7 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 void* __cdecl operator new(unsigned int bytes);        // 0x00BFEA1A (MSVCR71)
-class CCPPointerInfo { public: long References; void (__fastcall* DeleteFunc)(void* data); void* Data; };
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    __forceinline CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // vtable 0x01231710, ~CBaseClass 0x0099A2E0
 // CScriptThing stays local in this row (wave 1 residue): retail expands the copy 0x004ABE90 inline at the by-value argument
 // but calls it for the CSpawnedFunc1 member copy; the shared engine/CScriptThing.h model with an inline copy expands both.

@@ -23048,7 +23048,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007e3770	GetClassTypeName	CTCAtmosPlayer	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 007e3790	vfunc_23	CTCAtmosPlayer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007e37a0	`scalar_deleting_destructor'	CTCAtmosPlayer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\CLandscapeBackgroundPatch_vectordeletingdestructor_007e37a0.cpp
-007e37c0	CVtable_ffffffff	CVtable_ffffffff	__thiscall	undefined	1	CBase *	0	yes	accepted									
+007e37c0	CDefString	CDefString	__thiscall	undefined	1	CBase *	0	yes	accepted									
 007e37f0	TransferIn	CPersistContext_TransferableComponent<CDefString>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007e3820	TransferIn	CPersistTraits<CDefString>	__thiscall	void	4	CPersistTraits<CCharString> *,CPersistContext *,CStringParser *,CCharString *	1	yes	accepted									
 007e3900	TransferOut	CPersistContext_TransferableComponent<CDefString>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -35130,11 +35130,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009f1540	ScalarDeletingDestructor	CCodeSectionManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CLandscapeBackgroundPatch_vectordeletingdestructor_009f1540.cpp
 009f1560	~CCodeSectionManager	CCodeSectionManager	__thiscall	void	2	CWound *,CTCTextureDecal *	1	yes	accepted									
 009f1650	AddEvent	CGameEventPackage	__thiscall	void	2	CGameEventPackage *,CGameEvent *	1	yes	accepted									
-009f16c0	SetMemberConst_009f16c0	_global	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\Clear_Clear_009f16c0.cpp
+009f16c0	Clear	CGameEventPackage	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\Clear_Clear_009f16c0.cpp
 009f16d0	GetBlankTexture	CGraphicDataBank	__thiscall	CTexture *	2	CGraphicDataBank *,ETextureType	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CGraphicDataBank_GetBlankTexture_009f16d0.cpp
 009f16e0	GetMember_dword0x4_009f16e0	_global	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\global_DrawGetEnvironment_009f16e0.cpp
 009f16f0	AddPackage	CGameEventPackageSet	__thiscall	void	2	CGameEventPackageSet *,CGameEventPackage *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\9f\0x009F16F0_CGameEventPackageSet_AddPackage.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\global_AddPackage_009f16f0.cpp
-009f1720	SetMemberConst_009f1720	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CBase_CBase_009f1720.cpp
+009f1720	Clear	CGameEventPackageSet	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CBase_CBase_009f1720.cpp
 009f1730	GetEventFromStore	CMouse	__thiscall	CInputEvent *	2	CMouse *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CMouse_GetEventFromStore_009f1730.cpp
 009f1750	GetMember_dword0x0_009f1750	_global	__thiscall	EInputKey	1	CInputEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CInputEvent_GetKey_009f1750.cpp
 009f1760	AddData	CGameEvent	unknown	undefined	0		0	yes	accepted									

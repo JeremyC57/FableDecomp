@@ -1,5 +1,6 @@
 // CBankFile::FindEmptyBlockOffset(unsigned long size) -- first aligned file offset after the header where `size` bytes fit between the blocks (walking the entries in offset order), else the aligned end of the last block
 // Leaf: FindEmptyBlockOffset
+// Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members m_pFirst/m_pLast are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D0EF0, length 203 bytes (+5 int3), ret 4.
 // Callees: CBankFile::UpdateBlockOrder @ 0x009D0630 (sorts BlockOrder), CPackedUIntArray::operator[] @ 0x00A629F0 (inline
 // GetEntryDataOffset / GetEntryDataSize, as the landed 0x009CC270 / 0x009CC240).
@@ -26,13 +27,7 @@ struct CPackedUIntArray {               // 16 bytes; m_pData == 0 means "not pac
     bool IsPacked() const { return m_pData != 0; }
 };
 
-template <class T> class CArray { public:      // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    long GetCount() const { return m_pLast - m_pFirst; }
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 struct CBankFile_Retail {        // the retail layout; engine/CBankFile.h (PDB) disagrees with the bytes
     void*                     __vftable;            // +0x00
@@ -85,7 +80,7 @@ unsigned long CBankFile_Retail::FindEmptyBlockOffset(unsigned long size)
 {
     UpdateBlockOrder();
     unsigned long offset = AlignOffset(HeaderSize);
-    for (unsigned long* it = BlockOrder.m_pFirst; it != BlockOrder.m_pLast; ++it) {
+    for (unsigned long* it = BlockOrder.begin(); it != BlockOrder.end(); ++it) {
         unsigned long entry = *it;
         unsigned long blockOffset = GetEntryDataOffset(entry);
         unsigned long blockSize = GetEntryDataSize(entry);

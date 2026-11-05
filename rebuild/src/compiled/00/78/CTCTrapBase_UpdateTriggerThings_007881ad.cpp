@@ -1,5 +1,6 @@
 // CTCTrapBase::UpdateTriggerThings() -- refresh the trap's trigger list: every creature able to be engaged in combat inside the box of the trap def's trigger radius around the trap
 // Leaf: ?UpdateTriggerThings@CTCTrapBase@@IAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007881AD, 124 bytes, __fastcall, `leave ; ret` (frame-pointer size TU:
 //   `optimize("y", off)` + `optimize("s", on)`, as the landed UpdateTriggerOnProximity 0x007887BE of the same class).
@@ -37,12 +38,8 @@ public:
 };
 
 class CBaseObject;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 namespace std {
 template <class _Tp> class allocator { };

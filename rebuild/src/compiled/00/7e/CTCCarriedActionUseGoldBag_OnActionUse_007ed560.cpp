@@ -1,5 +1,6 @@
 // CTCCarriedActionUseGoldBag::OnActionUse(CThingAICreature* user) -- a creature with gold uses a carried gold bag on a targeted creature (type 2): give it the default gift (50) or the receiver's own asking amount; then report the use to the bag's interface-0x1A component
 // Leaf: vfunc_28
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail 0x007ED560, 368 bytes, `ret 4` (vtable slot 10, +0x28; catalogued as vfunc_28).
 // Callees: the base use hook 0x007EAB90, CVectorMap::LowerBound const 0x004365B0 (interfaces 8, 4, 0x80) and 0x0040F020
 // (0x1A), CTCTargetingBase::IsTargetedThingOfType 0x007F5A70 and slots 38 (+0x98) / 33 (+0x84), the default gold gift
@@ -94,11 +95,8 @@ class CCreatureActionBase { public:                                // retail siz
     unsigned char _pad04[0xa8 - 0x04];
     ~CCreatureActionBase();                                 // 0x00693EF0
 };
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                          // +0x04
-    virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThingCreatureBase;
 class CCreatureAction_GiveMoneyToThing : public CCreatureActionBase { public:
     unsigned char _body[0xb4 - 0xa8];

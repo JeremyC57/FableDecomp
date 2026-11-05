@@ -3,6 +3,7 @@
 //   passes HC_BanditTimeBeforeComment seconds, then has James say the marker's data string (MakeBanditComment) and removes
 //   the marker; the counter restarts when James is away and is pulled back one second when a comment is refused
 // Leaf: ?Main@CJamesCommentMarker@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D907B0, 659 bytes (+ int3 padding).
 // Callees: GameCalls (g_pGameScriptInterface 0x0143E8F8) slots 7 NewScriptFrame, 72 GetThingWithScriptName, 108 RemoveThing,
 //   653 GetWorldFrame (the inline CCounter ctor); CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 /
@@ -22,27 +23,7 @@
 class CCharString;
 struct CScriptThingImpl;
 void operator delete(void* p);                      // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:                             // CCountedPointer's shared block
- long RefCount;
- void (__fastcall* DeleteFunc)(void* data);
- void* Data;
-};
-template <class T> class CCountedPointer { public:
- T*              Data;
- CCPPointerInfo* Info;
- CCountedPointer() : Data(0), Info(0) { }
- void Release()
- {
-  if (Info) {
-   --Info->RefCount;
-   if (Info->RefCount == 0) {
-    Info->DeleteFunc(Info->Data);
-    delete Info;
-   }
-  }
- }
- ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

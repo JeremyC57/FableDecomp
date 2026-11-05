@@ -1,5 +1,6 @@
 // CVectorMap::LowerBound(const unsigned long& key) -- (CVectorMap<unsigned long, CCountedPointer<CFaction> >) binary search of the sorted 12-byte entries for the first entry whose key is not below `key`
 // Leaf: ?LowerBound@?$CVectorMap@KV?$CCountedPointer@VCFaction@@@@V?$CKeyPairCompareLess@KV?$CCountedPointer@VCFaction@@@@@@@@QAEPAU?$pair@KV?$CCountedPointer@VCFaction@@@@@std@@ABK@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B8A80, 82 bytes (+ int3 padding to 96), thiscall `ret 4`; the STLport
 //   iterator is a plain pointer returned in eax.
@@ -13,12 +14,7 @@
 // Layout (retail CVectorMap 0x10): CArray<pair<K, V> > Data +0 (STLport vector: _M_start, _M_finish, _M_end_of_storage),
 //   the empty comparator +0xC, Dirty +0xD.
 // Model: the landed 0x00447C80 body (J006) with an unsigned key.
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                   // 8 bytes: object, shared count block
-public:
-    T* Data;                                                  // +0x0
-    CCPPointerInfo* Info;                                     // +0x4
-};
+#include "engine/CCountedPointer.h"
 class CFaction;
 #include "engine/CArray.h"
 

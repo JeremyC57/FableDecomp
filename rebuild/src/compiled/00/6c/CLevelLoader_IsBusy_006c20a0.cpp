@@ -1,5 +1,6 @@
 // CLevelLoader::IsBusy() const -- whether level objects are still queued for loading: !ObjectList.empty()
 // Leaf: ?IsBusy@CLevelLoader@@QBE_NXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C20A0, 15 bytes: mov eax,[ecx+14h] ; mov edx,[eax] ; xor ecx,ecx ; cmp edx,eax ;
 //   setne cl ; mov al,cl ; ret
 // Identity (found through FINDINGS chunk 388's callee 0x4FB4A0 CWorldMap::IsLoadingAnyMap, which is `mov ecx,
@@ -13,11 +14,7 @@
 // Layout: CLevelLoader's +0x00..+0x13 is its suspendable-process base (vptr first; SuspendableProcess is a protected
 //   virtual); the shared engine/CLevelLoader.h keeps the PDB's 12-byte Dinkumware list, so the members after it do not
 //   agree with retail and a local model is used.
-template <class T> class CCountedPointer {
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator { };

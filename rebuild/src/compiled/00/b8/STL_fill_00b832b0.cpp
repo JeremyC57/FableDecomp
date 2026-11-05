@@ -1,5 +1,6 @@
 // std::fill(CCountedPointer<CParticleSimulation>* first, CCountedPointer<CParticleSimulation>* last, const CCountedPointer<CParticleSimulation>& val) -- assign val to every counted pointer of [first, last)
 // Leaf: ??$fill@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B832B0, 94 bytes. __fastcall (first ecx, last edx), `ret 4` (&val on
 //   the stack); last is spilled to the `push ecx` slot across the deleter call.
 // Callees: the count block's DeleteFunc (CCPPointerInfo +4, data in ecx), operator delete @ 0x00BFE9BC.
@@ -14,40 +15,8 @@
 //   Info), then the pair is stored and the new block's count bumped.
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    void ReleaseData()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        T* data = other.Data;
-        CCPPointerInfo* info = other.Info;
-        if (Info != info) {
-            ReleaseData();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 
 class CParticleSimulation;
 

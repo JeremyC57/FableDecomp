@@ -1,5 +1,6 @@
 // std::list::erase(iterator position) -- (list<CCountedPointer<CTCWillLightning::CLightningBeam> >) STLport single-node erase: unlink the node, release its counted pointer (deleter and count block freed at zero), free the node and return the iterator to the following node
 // Leaf: ?erase@?$list@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@V?$allocator@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@@std@@@2@U32@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A38B0, 85 bytes (+ int3 padding), thiscall, `ret 8` (hidden iterator result +
 //   the iterator by value), returns the result pointer.
 // Identity (proven): std::list<CCountedPointer<CTCWillLightning::CLightningBeam> >::erase(iterator); evidence: its only caller is CTCWillLightning::CLightningBeam::FrameUpdate 0x007A1B20, which walks this+0x4C = Ego_r.pdb CLightningBeam::m_lChildren (list<CCountedPointer<CTCWillLightning::CLightningBeam> >), updates each child recursively and erases the ones whose state is 6.
@@ -14,29 +15,7 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CTCWillLightning { public: class CLightningBeam; };
-class CCPPointerInfo {                                     // Ego_r.pdb 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {               // 8 bytes: the object, the shared count block
-public:
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator {

@@ -1,5 +1,6 @@
 // CCombatRing::DebugGetAllProngVectors(vector<pair<C3DVector,bool> >& out, float scale) -- debug view of the ring: every prong direction rotated by the ring's angle about +Z, scaled, paired with its blocked flag and appended to `out`
 // Leaf: ?DebugGetAllProngVectors@CCombatRing
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006EB8A0, length 253 bytes (`ret 8`).
 // Callees: C3DVector::Rotate(const C3DVector& axis, float angle) 0x00A13C60 (axis = C3DVector(0, 0, 1), angle =
@@ -45,7 +46,8 @@ __declspec(noinline) void CProngVectorVector::_M_insert_overflow(SProngVector* p
     
 }
 #pragma auto_inline(on)
-struct CBaseIntelligentPointer { void* __vftable; void* m_pItem; };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CProng {                                 // CDefendingCombatantInfo::CProng, 0x1c bytes
     bool      Blocked;                          // +0x00
     C3DVector Prong;                            // +0x01

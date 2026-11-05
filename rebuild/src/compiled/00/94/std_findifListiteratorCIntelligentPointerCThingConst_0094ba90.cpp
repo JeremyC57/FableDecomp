@@ -1,5 +1,6 @@
 // std::find_if<_List_iterator<CIntelligentPointer<CThing>, _Const_traits<...> >, CIsBenchWithOnePerson>(first, last, pred) -- the first thing in [first, last) the predicate accepts (last if none)
 // Leaf: ??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@VCIsBenchWithOnePerson@@@std@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0094BA90, 50 bytes, /Gr `__fastcall` (the iterator result through the hidden pointer in
 //   ecx; first, last and the empty predicate on the stack), `ret 0Ch`.
 // Identity (proven): only caller CAIStateGroup_SitInPub::GetBenchWithOnePersonSittingThere 0x0094B840 (landed); predicate the landed CIsBenchWithOnePerson::operator() 0x0094B9B0; bound ??$find_if@U?$_List_iterator@V?$CIntelligentPointer@VCThing@@@@U?$_Const_traits@...@VCIsBenchWithOnePerson@@@std@@.
@@ -11,13 +12,8 @@
 //   the no-op copy constructor is a modelling device, not a PDB fact.
 class CThing;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // Ego_r: vptr + PData, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CAIStateGroup_LightHomeCandle;
 class CIsBenchWithOnePerson {
 public:

@@ -1,5 +1,6 @@
 // std::list::_M_insert_dispatch(iterator pos, const_iterator first, const_iterator last, const __false_type&) -- STLport range insert for a list of counted region-connection pointers: copy every pointer of [first, last) into a new node (count bumped) linked in before pos
 // Leaf: ??$_M_insert_dispatch@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A80E90, 78 bytes (+ int3 padding to 80), thiscall `ret 10h` (this never read: the
 //   node allocator is malloc). pos, first and last are one-word iterators by value, then the __false_type reference.
 // Callers: list<CCountedPointer<CNavRegionConnection> >::insert(pos, first, last) 0x00A81B80, the list copy ctor 0x00A82590,
@@ -14,21 +15,8 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }   // placement new (null test on the target)
 
-struct SCountBlock {
-    long m_references;                                      // +0
-    void (__fastcall* m_pfnDestroy)(void*);                 // +4
-    void* m_pObject;                                        // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*           m_pObject;                                 // +0
-    SCountBlock* m_pCount;                                  // +4
-    CCountedPointer(const CCountedPointer<T>& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-};
 
 class CNavRegionConnection;
 

@@ -1,5 +1,6 @@
 // CTCVillage::SetHornTaskAsCompleted(CIntelligentPointer<CVillageTaskHorn> task) -- drop the completed horn-blowing task from the village's HornTasks list (remove_if with a CIsTask predicate on it)
 // Leaf: ?SetHornTaskAsCompleted@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskHorn@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065A00F, 34 bytes (size-optimised TU, no padding), thiscall, `ret 8` (the
 //   8-byte CIntelligentPointer by value).
 // Identity (proven): CTCVillage::SetHornTaskAsCompleted(CIntelligentPointer<CVillageTaskHorn>); evidence: Ego_r.pdb holds the four
@@ -42,12 +43,7 @@ class CBaseObjectPointer;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CVillageTaskBase : public CBaseObject { };            // partial view
 class CVillageTaskHorn : public CVillageTaskBase { };   // partial view
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-};
+#include "engine/CCountedPointer.h"
 #pragma pack(push, 1)
 class CBaseIntelligentPointer {                             // 8 bytes, 1-aligned in retail
 public:

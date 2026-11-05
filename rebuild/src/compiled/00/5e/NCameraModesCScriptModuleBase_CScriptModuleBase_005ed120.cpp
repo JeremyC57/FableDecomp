@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleBase::~CScriptModuleBase() -- clear the owner and camera-manager pointers, destroy PThingOrigin and PCamPoint
 // Leaf: ??1CScriptModuleBase@NCameraModes@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005ED120, 34 bytes, thiscall, tail `jmp` to the second member dtor.
 // Identity (proven): the body stores the CScriptModuleBase vtable 0x01255F74 (RTTI .?AVCScriptModuleBase@NCameraModes@@, one base);
@@ -13,13 +14,8 @@
 //   PCameraManager +0x3C, SelfTerminate, ShortenOnCollision, CutOutOverride, FOVOverride (no engine header exists).
 // Shape: the user inline virtual dtor of the landed ??_G 0x005ED150 model; the qualified explicit call emits the out-of-line COMDAT.
 class CBaseObject;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();                   // 0x00A01C10
-    CBaseObject* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CThing;
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };

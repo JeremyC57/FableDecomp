@@ -1,5 +1,7 @@
 // CCreatureActionBase::~CCreatureActionBase() -- destroy the members in reverse: the dependent-thing pointers, the cut-scene event map, the action events, the two animation-entry counted pointers, the removed-item and creature intelligent pointers, then the CBaseObject base
 // Leaf: ??1CCreatureActionBase
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00693EF0, 289 bytes, `ret`. Vtable 0x01259D24 (CCreatureActionBase; slot 0 is the
 //   deleting destructor 0x0062ED20). ghidra_out/labels_identity_corrections_2026-10-19.tsv already names it.
 // Label correction: catalogued as CPhysicsMeshInfo::~CPhysicsMeshInfo (propagated, 434 callers are creature actions).
@@ -17,37 +19,13 @@
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 
-class CCPPointerInfo { public:                                 // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* PItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 template <class T> inline void _Destroy(T* first, T* last)   // STLport range destroy (bounds by value)
 {

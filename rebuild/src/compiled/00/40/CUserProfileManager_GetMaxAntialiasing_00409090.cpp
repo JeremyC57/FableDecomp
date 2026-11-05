@@ -1,5 +1,6 @@
 // CUserProfileManager::GetMaxAntialiasing() const -- highest selectable antialiasing index: the last supported level, or (under the config-detection cap) the index of the last level not above the cap, 0 when none qualifies
 // Leaf: ?GetMaxAntialiasing@CUserProfileManager@@QBEKXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00409090, 174 bytes (+2 int3 pad). Callees: GFGetSystemManager
 // 0x009A4EC0, the display manager's supported-levels query (vector<long>& out) 0x009C05C0, free
 // 0x00BFEA14 (the inline vector destructor, expanded on every return path); the cap global 0x01375080.
@@ -37,11 +38,7 @@ class CDisplayManager { public:
     void GetSupportedAntialiasingLevels(CLongVector& levels);   // 0x009C05C0
 };
 
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CSystemManager { public:
     unsigned char    _pad00[0x60];

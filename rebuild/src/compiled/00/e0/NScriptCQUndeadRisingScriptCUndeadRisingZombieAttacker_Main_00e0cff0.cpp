@@ -1,5 +1,6 @@
 // NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttacker::Main() -- conscious filter on Me, take scripting control of the zombie, aim it at the hero, wait for the parent quest to reach state 2, then remove it
 // Leaf: ?Main@CUndeadRisingZombieAttacker@CQ_UndeadRisingScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0CFF0, length 312 bytes (+ int3 padding). Entity-script slot 1 (Main).
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 / ~CScriptThing @ 0x004AA840 (the CIsThingConscious filter, vtable
 // 0x012C2FE8), the filter registration @ 0x00F35B10, IsActiveThreadTerminating @ 0x00F35B30, CBaseIntelligentPointer /
@@ -14,11 +15,9 @@
 // Naming wave 35: identity reg 00e0b21e "UndeadRisingZombieAttacker" in 00e0b160; Alloc 00e0cf20; vtable 012dff64 slot 1; PDB ?Main@CUndeadRisingZombieAttacker@CQ_UndeadRisingScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CUndeadRisingZombieAttacker::Main (wave3/labels_alloc.tsv); PDB ?Main@CUndeadRisingZombieAttacker@CQ_UndeadRisingScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CUndeadRisingZombieAttacker@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_UndeadRisingScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                                    // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    virtual ~CScriptThing();                                     // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {
@@ -31,7 +30,6 @@ struct CIsThingConscious : public NScript::CPredicateBase {                     
     CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingConscious() { }
 };
-#include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

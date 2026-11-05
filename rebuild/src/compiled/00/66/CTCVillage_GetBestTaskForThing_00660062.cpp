@@ -1,5 +1,6 @@
 // CTCVillage::GetBestTaskForThing(const CThing& thing, std::list<CCountedPointer<CVillageTaskHorn> >& tasks) const -- run the best-task functor over the task list and return the best task it found
 // Leaf: ??$GetBestTaskForThing@VCVillageTaskHorn@@@CTCVillage@@ABEPAVCVillageTaskHorn@@ABVCThing@@AAV?$list@V?$CCountedPointer@VCVillageTaskHorn@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@std@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00660062, 46 bytes (unaligned, frame pointer: a size-optimised TU with
 //   optimize("y", off)), private const __fastcall member template, `ret 8`; `this` is never read.
 // Identity (proven): CTCVillage::GetBestTaskForThing<CVillageTaskHorn> (Ego_r.pdb name set:
@@ -21,12 +22,7 @@
 #pragma optimize("s", on)
 class CThing;
 class CVillageTaskHorn;
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CGetBestTaskForThing {
 public:
     const CThing* Thing;                                     // +0x00

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeBriarRoseTeleportIntangible::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the implicit ~CModeBriarRoseTeleportIntangible inlined (destroying PTarget, Filter, then ~CModeStandBase), and operator delete when bit 0 of flags is set; returns this
 // Leaf: ??_GCModeBriarRoseTeleportIntangible@NCreatureMode@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C37C0, 48 bytes, thiscall, `ret 4`; reached only through vtable slot 0.
 // Identity: NCreatureMode::CModeBriarRoseTeleportIntangible -- proven; evidence: vtable 0x0128026C slot 0 (RTTI .?AVCModeBriarRoseTeleportIntangible@NCreatureMode@@ : CModeStandBase); the destroyed members are Ego_r.pdb PTarget (CIntelligentPointer<CThingCreatureBase>, +0x78) and Filter (CAnimFilterOfGroup, +0x68: 0x00739DB0 destroys its Group string and stores the CAnimFilterBase vtable 0x0122FFCC -- the implicit ~CAnimFilterOfGroup, kept out of line in retail, so it is declared here); 0x0073D860 is ~CModeStandBase (PDB name set ??1CModeStandBase@@UAE@XZ).
 // Label: the manifest's "`vector_deleting_destructor'" is propagated across byte-identical bodies.
@@ -11,13 +12,8 @@
 // Model: local -- no engine header for this class; the bases are sized to the retail layout.
 class CThingCreatureBase;
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                   // 8 bytes, 1-aligned in retail (Coin::Thing +0x25, ShowTrophy::PEmitter +0xB5)
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();           // 0x00A01C10
-    void* PItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CAnimFilterBase {                           // vtable 0x0122FFCC
 public:

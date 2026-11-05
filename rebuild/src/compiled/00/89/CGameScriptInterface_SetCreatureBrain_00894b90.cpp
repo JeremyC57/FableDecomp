@@ -1,5 +1,6 @@
 // CGameScriptInterface::SetCreatureBrain(const CScriptThing& creature, const CCharString& brainName) const -- script call: looks the brain def up by name and installs it on the creature (thing type 1) through CThingAICreature::SetNewBrain
 // Leaf: ?SetCreatureBrain@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x00894B90, 95 bytes, thiscall `ret 8`.
 // Identity (proven): retail CGameScriptInterface vtable 0x01260F0C slot 589 holds this body; slot 589 is
 //   ?SetCreatureBrain@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z (ghidra_out/cgsi_slots_aligned.tsv).
@@ -60,8 +61,7 @@ class CThingAICreature : public CThing {
 public:
     void SetNewBrain(CDefPointer<const CBrainDef> brain);   // 0x00833010
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,5 +1,6 @@
 // CTCCreatureGroup::GetNearestOtherActiveMember(const CThingAICreature* creature) const -- walks the group's member map and returns the active member (other than the creature itself, matched by unique id) nearest to the creature; null for a null creature
 // Leaf: GetNearestOtherActiveMember
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00812CA0, 384 bytes (`ret 4`).
 // Callees: CThing::GetPosition() @ 0x004C73D0 (the query creature) and its byte-identical copy @ 0x006A4D00 (the members),
@@ -20,9 +21,8 @@ class CThingPhysical : public CThing { public:
 class CThingAICreature : public CThingPhysical { public:
 };
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointer_AICreature {                     // CIntelligentPointer<CThingAICreature const>: 8 bytes
     void* Data[2];
 };

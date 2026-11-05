@@ -1,26 +1,12 @@
 // std::uninitialized_fill_n(CCountedPointer<CParticleSimulation>* first, unsigned int n, const CCountedPointer<CParticleSimulation>& x) -- copy-construct x into n raw slots, return the end
 // Leaf: ??$uninitialized_fill_n@PAV?$CCountedPointer@VCParticleSimulation@@@@IV1@@std@@YIPAV?$CCountedPointer@VCParticleSimulation@@@@PAV1@IABV1@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00b82dc0, 46 bytes, /Gr `__fastcall` (first ecx, n edx, x on the stack), `ret 4`.
 // Identity (probable): its caller, the fill insert 0x00B83B00 (unbound), copies through __uninitialized_copy<CCountedPointer<CParticleSimulation>*> 0x00B82CC0 (bound).
 // Body: STLport 4.6 `return __uninitialized_fill_n(first, n, x, __false_type());` with the inner loop inline -- placement new's null
 //   test, CCountedPointer's copy constructor (Data, Info, `if (Info) ++Info->RefCount`).
 class CParticleSimulation;
-class CCPPointerInfo {                                     // 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    CCountedPointer(const CCountedPointer<T>& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
+#include "engine/CCountedPointer.h"
 inline void* operator new(unsigned int, void* __p) { return __p; }
 namespace std {
 struct __false_type { };

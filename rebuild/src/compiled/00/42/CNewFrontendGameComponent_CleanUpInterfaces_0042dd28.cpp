@@ -1,4 +1,5 @@
 // Retry 10b: the mesh bank manager comes from an inline getter (`GFGetSystemManager()->GetMeshBankManager()`, B-4/B-5 accessor idiom): retail keeps the shared zero in ebp and the manager in ebx (a plain member read swaps them).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // CNewFrontendGameComponent::CleanUpInterfaces() -- tears down the front end's engine-side objects: deletes the front-end manager, drops the engine, closes and drops the front-end graphic bank and mesh bank, and drops the menu font
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042DD28, length 139 bytes.
 // Label correction: the catalog calls this CEngineResourceManager::ChangeScene (propagated; that method is the landed
@@ -23,14 +24,7 @@ class CFrontEndManager {
 public:
     virtual ~CFrontEndManager();                         // slot 0
 };
-class CCPPointerInfo;
-template<class T> class CCountedPointer {
-public:
-    T*              Data;                                // +0
-    CCPPointerInfo* Info;                                // +4
-    CCountedPointer(const CCountedPointer& other);       // out of line (0x0041BA30 / 0x00428905)
-    ~CCountedPointer();                                  // out of line (0x0042F974 / 0x00419108 / 0x0042918C / 0x0042F948)
-};
+#include "engine/CCountedPointer.h"
 class CIEngine;
 class CGraphicDataBank;
 class CMeshDataBank;

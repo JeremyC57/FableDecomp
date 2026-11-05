@@ -1,5 +1,6 @@
 // CEngineWorldMap::OpenStaticMaps(CEngineMap::STATIC_MAP_OPEN_STATE state) -- switch the world's static maps to a new open state: build the grid, then either open every map's development static map in place (state 2), or open the static-map bank file, hand it to the water renderer, and load the whole bank at once when it carries the global entry, else open every map from it
 // Leaf: OpenStaticMaps
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B42750, length 400 bytes (with int3 padding; body 0x17f), `ret 4`.
 // PDB: ?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z.
@@ -34,12 +35,7 @@ void __fastcall DisplayProgress(const CCharString& text, float progress, bool a,
 }
 
 class CMovableResourceMemoryPool;
-template <class T> class CCountedPointer { public:
-    T*    Object;
-    long* Count;
-    CCountedPointer(const CCountedPointer& other) : Object(other.Object), Count(other.Count) { if (Count) ++*Count; }
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 
 class CBankFile
 {

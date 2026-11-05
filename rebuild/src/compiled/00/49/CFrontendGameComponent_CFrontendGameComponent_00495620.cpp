@@ -1,5 +1,6 @@
 // CFrontendGameComponent::~CFrontendGameComponent() -- destroy the debug front end's members (splash texture, world/save/profile name lists and their selections, main font, temporary graphics) and the game-component base
 // Leaf: ??1CFrontendGameComponent (Ego_r.pdb ??1CFrontendGameComponent@@UAE@XZ)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe @ 0x00495620, 344 bytes, ends in a tail jump to CBaseClassNonCopyable::~CBaseClassNonCopyable 0x0099A300.
 // Body: vtables 0x01238768 / 0x0123875C (this class at +0 / +4); ~CTexture 0x009F9F70 (SplashScreen); ~CWideString
 // 0x0099B510 (WorldToLoad, SaveToLoad and every vector element); free 0x00BFEA14 (each vector's storage); the counted
@@ -27,26 +28,7 @@ class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterf
     bool m_bShutDown;                                      // +0x08
     virtual __forceinline ~CGameComponent() { }
 };
-class CCPPointerInfo { public:
-    long  References;
-    void  (__fastcall* Destroy)(void* object);
-    void* Object;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Release()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-    }
-    ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 class CWideString { public:
     void* PStringData;
     ~CWideString();                                        // 0x0099B510

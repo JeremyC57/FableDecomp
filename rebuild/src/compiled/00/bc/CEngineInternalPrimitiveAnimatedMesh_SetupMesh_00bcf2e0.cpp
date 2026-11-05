@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveAnimatedMesh::SetupMesh(float distance, float radius) -- once per render frame, pick the mesh LOD for this distance and radius (the forced renderer LOD when set) and fetch it from the mesh info into the render info, clearing the bone transforms and stamping the frame; false when the mesh info has no mesh for it
 // Leaf: ?SetupMesh@CEngineInternalPrimitiveAnimatedMesh@@QAE_NMM@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCF2E0, length 323 bytes, `ret 8`, bool in al.
 // Name: FableWin.pdb `?SetupMesh@CEngineInternalPrimitiveAnimatedMesh@@QAE_NMM@Z` (catalog label SetupMesh agrees; sibling SetupMesh2D
 //   0x00BCF430 landed). Parameter names are descriptive (the PDB name set carries none).
@@ -30,26 +31,7 @@ void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
 
 class C3DMesh2;
-class CCPPointerInfo { public:
-    long  References;                                  // +0x00
-    void (__fastcall* Destroy)(void* object);          // +0x04
-    void* Object;                                      // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 class C3DMeshInfo : public C3DMeshInfoDonor { public:
     bool GetMesh(CCountedPointer<const C3DMesh2>& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
     bool HasLOD(unsigned long lod) const { return lod < 4 && LODDataSizes[lod] != 0; }

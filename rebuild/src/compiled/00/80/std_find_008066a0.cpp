@@ -1,5 +1,6 @@
 // std::__find(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, const NPlayerTargeting::CTargetPoint& val, const random_access_iterator_tag&) -- STLport random-access find over the player-targeting points: four CTargetPoint::operator== tests per pass (same thing and same index), then the 3/2/1 remainder; returns the match or last
 // Leaf: ??$__find@PAVCTargetPoint@NPlayerTargeting@@V12@@std@@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008066A0, 352 bytes, /Gr `__fastcall` (first in ecx, last in edx; &val and the
 //   tag reference on the stack), `ret 8`.
@@ -17,14 +18,9 @@ class CBaseObject;
 #include "engine/C3DVector.h"
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                             // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-    void* PData;                                            // +0x04 CBaseObjectPointer*
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
 
 namespace NPlayerTargeting {
 class CTargetPoint {                                        // Ego_r.pdb, 0x1C bytes

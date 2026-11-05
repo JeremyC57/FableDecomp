@@ -1,5 +1,8 @@
 // CGameScriptThing::MsgWhoKilledMe() const -- the script thing of whoever originated the most recent "killed" message (type 9) aimed at this thing, when that originator is still a live thing; otherwise the null script thing
 // Leaf: MsgWhoKilledMe
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: the engine/CCountedPointer.h include moved up to the header include (the header needs it first).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D0610, 161 bytes, `ret 4` (the hidden CScriptThing result).
@@ -20,12 +23,9 @@
 #include "engine/CWorld.h"
 
 class CBaseObject;
-class CScriptThing { public:                              // 12 bytes (vptr + PImp {Data, Info}), returned by hidden pointer
-    void* __vftable;
-    void* PImp_Data;
-    void* PImp_Info;
-    CScriptThing(const CScriptThing& other);
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CThingRetail {                              // retail CThing (0x10 below Ego_r.pdb from ThingTypeFlags on)
     enum { ThingTypeMask = 0 };                    // every thing matches the CThing type mask
     unsigned char _pad00[0x6c];
@@ -40,11 +40,8 @@ template <class T> inline bool IsThingOfType(const CThingRetail* const& thing)
     unsigned long mask = T::ThingTypeMask;
     return (thing->ThingTypeFlags & mask) == mask;
 }
-struct CBaseIntelligentPointer {
-    void* __vftable;
-    void* Info;
-    CBaseObject* GetPItem() const;                 // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CMessageEvent { public:                             // 0x58 bytes
     unsigned char           _pad00[0x48];
     CBaseIntelligentPointer POriginator;           // +0x48 CIntelligentPointer<CThing>
@@ -71,12 +68,6 @@ class CMessageEventManager { public:
 
 class CGameScriptThingManager { public:
     CScriptThing GetNullScriptThing();             // 0x00704730
-};
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
-    T* Data;
-    CCPPointerInfo* Info;
-    T& operator*() const { return *Data; }
 };
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
     static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)

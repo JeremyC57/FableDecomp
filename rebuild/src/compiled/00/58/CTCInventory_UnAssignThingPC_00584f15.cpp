@@ -1,5 +1,6 @@
 // CTCInventory::UnAssignThingPC(unsigned long, NUISystem::CComponent*) -- empties a quick-access slot: hides the container's assignment icon and puts a fresh empty item component in the container
 // Leaf: UnAssignThingPC
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00584F15, 206 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 8`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (x2), the container's CComponent slot 3 (+0x0C, find
@@ -43,12 +44,7 @@ struct SActionParamPair {                            // pair<unsigned long, list
     SActionParamPair(const SActionParamPair& other); // 0x0042CD84
 };
 
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer(T* object);                      // 0x00429C15
-    ~CCountedPointer();                              // 0x004291DE
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem {
 class CComponent { public:

@@ -1,5 +1,6 @@
 // NScript::CV_AmbushScamScript::CAS_Trickster::Init() -- set up the ambush-scam trickster: make the hero and the trickster mutual allies, wander around its current position (min 0, max the script def's AmbushScamTricksterWanderMax), scripting state group 4, both random-speech indices 5, and flag it as having information
 // Leaf: ?Init@CAS_Trickster@CV_AmbushScamScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountInfo (= CCPPointerInfo) members unchanged are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E2BD80, length 313 bytes.
 // Callees (all virtual, through Game at +0x4 = CGameScriptInterface, slots from ghidra_out/cgsi_slots_aligned.tsv):
@@ -19,17 +20,8 @@
 //   Was `?Init@CAS_Trickster@@QAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
 #include "engine/C3DVector.h"
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_4 = 4 };
-struct SCountInfo { long RefCount; };
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-template <class T> class CCountedPointer { public:                       // CCountedPointer<CScriptThing>: {Data, Info}
-    void*       Data;                              // +0x00
-    SCountInfo* Info;                              // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

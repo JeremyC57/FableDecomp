@@ -1,5 +1,6 @@
 // NUISystem::CSprite::CSprite(const CSprite& other) -- copy constructor: copy the changing-state component base, then start a fresh sprite (empty primitive handle, default flags, no texture) and reload its data from the def
 // Leaf: ??0CSprite@NUISystem@@QAE@ABV01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x0041B870, 106 bytes, __fastcall `ret 4`.
 // Identity (proven): stores CSprite's three vtables 0x0122F5D4 / 0x0122F5AC / 0x0122F5A4 (RTTI NUISystem::CSprite) after
 // calling CChangingStateComponent's copy constructor 0x0052CCA0 (it stores the CChangingStateComponent vtables
@@ -18,7 +19,7 @@
 // engine/CSprite.h is an all-padding flattened header (no vptrs, no names), so the class is modelled locally as a
 // polymorphic partial view like the landed CListArrow constructor 0x0054C1D0 (NOTES.md "Header debt").
 class CTexture;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CEnginePersistentPrimitiveBase;
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -29,12 +30,6 @@ public:
     CIVCountedPointer() : Data(0) { }
 };
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                                // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-};
 
 class CEnginePrimitiveHandle : public CBaseClass {          // vtable 0x0122F598
 public:

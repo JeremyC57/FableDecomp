@@ -1,6 +1,7 @@
 // CAIFilter_ShouldStillBeWorkingInWarehouse::~CAIFilter_ShouldStillBeWorkingInWarehouse() -- destroy the creature and task intelligent pointers, then the filter base (its vtable restored)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009439D0, length 27 bytes.
 // Leaf: ??1CAIFilter_ShouldStillBeWorkingInWarehouse
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Label correction: the catalog "_Dest_val<..., std::pair<long, CMusicManager::CRegisteredMusicEntry>>" is propagated.
 // The body destroys two 8-byte intelligent pointers at +0x10 and +0x08 (~CBaseIntelligentPointer @ 0x00A01C10) and then
 // stores vtable 0x0128FD20 = CAIStateGroupBase::CAIFilterBase (rtti-vtables). Ego_r.pdb CAIFilter_ShouldStillBeWorking-
@@ -17,20 +18,8 @@ class CVillageTaskCarryCrate;
 class CThingAICreature;
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CAIStateGroupBase { public:
     class CAIFilterBase { public:                  // vtable 0x0128FD20
         virtual bool operator()(CThing* thing) const;   // 0x00916A50

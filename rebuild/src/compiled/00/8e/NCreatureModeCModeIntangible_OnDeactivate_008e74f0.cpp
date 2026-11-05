@@ -1,5 +1,6 @@
 // NCreatureMode::CModeIntangible::OnDeactivate() -- the creature becomes tangible again: re-enable physics, mapwho and targeting, make it bloody-willable, and for a player creature resume its animation, restore its Damageable bit and start the queued on-deactivate action
 // Leaf: ?OnDeactivate@CModeIntangible
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E74F0, 258 bytes (padded to 272), `ret`; vtable 0x01268514 slot 6.
 // Name: FableWin.pdb `?OnDeactivate@CModeIntangible@NCreatureMode@@UAEXXZ` (slot 6; slot 5 OnActivate 0x008E7390, slot 3
@@ -39,11 +40,7 @@ class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void OnRefused();                   // slot 4 (+0x10)
 };
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };

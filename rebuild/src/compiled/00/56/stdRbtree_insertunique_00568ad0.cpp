@@ -1,5 +1,6 @@
 // std::_Rb_tree::insert_unique(iterator position, const value_type& v) -- (_Rb_tree<long, pair<long const, CCountedPointer<CTexture> >, ...>) STLport 4.6 hinted unique insert: the begin / end / interior hint cases, falling back on the unhinted insert_unique when the hint does not bracket v
 // Leaf: ?insert_unique@?$_Rb_tree@JU?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@U?$_Select1st@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@std@@@2@@2@U32@ABU?$pair@$$CBJV?$CCountedPointer@VCTexture@@@@@2@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00568AD0, 518 bytes (+ int3 padding), thiscall `ret 0Ch` (hidden iterator result,
 //   position, v).
 // Identity (proven): _Rb_tree<long, pair<long const, CCountedPointer<CTexture> >, ...>; evidence: its callers are the map's insert(iterator, const value_type&) 0x00569390 and operator[] 0x005698A0, which CTCHeroOnlineScoreboard::GetCachedImage 0x0055FC90 indexes -- Ego_r.pdb's CTCHeroOnlineScoreboard::PictureCache (+0x10), map<long, CCountedPointer<CTexture> > (H079's 0x00567980 is its _M_erase); _M_insert 0x00568500 mallocs 0x1C-byte nodes
@@ -16,11 +17,7 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 class CTexture;
-template <class T> class CCountedPointer {         // 8 bytes: the object + its CCPPointerInfo count block
-public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 

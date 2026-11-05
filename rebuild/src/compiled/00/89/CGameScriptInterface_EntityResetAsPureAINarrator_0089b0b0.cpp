@@ -1,5 +1,6 @@
 // CGameScriptInterface::EntityResetAsPureAINarrator(const CScriptThing& thing) const -- for a valid creature thing, set the +0x34 flag of its interface-0xf component
 // Leaf: ?EntityResetAsPureAINarrator@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe @ 0x0089B0B0, 87 bytes, `ret 4`; virtual (vtable reference 0x012614B8); Ego_r.pdb
 // ?EntityResetAsPureAINarrator@CGameScriptInterface@@UBEXABVCScriptThing@@@Z.
@@ -60,8 +61,7 @@ public:
     unsigned char _pad00[0x34];
     bool          PureAINarrator;                        // +0x34 (name not confirmed)
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

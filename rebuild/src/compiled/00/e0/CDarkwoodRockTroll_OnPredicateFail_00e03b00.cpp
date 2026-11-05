@@ -1,5 +1,6 @@
 // CDarkwoodRockTroll::OnPredicateFail() -- when the rock troll reports it was killed and the parent escort script's attack flag is set, point the active quest card's objective at Barrowfields and clear the flag
 // Leaf: OnPredicateFail
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E03B00, length 226 bytes (+ int3 padding), `ret`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literals "" @ 0x0122D70E, "BarrowFields" @ 0x012C5D94,
 // "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03" @ 0x012DF66C), ~CCharString @ 0x0099EAE0, CScriptThing slot 18
@@ -21,13 +22,9 @@ class CCharString { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptThing { public:                              // vtable 0x01238C8C
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
-    virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48, 0x004AAAF0)
-    long m_data[2];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 struct CQ_TraderEscortScript {
     unsigned char _pad[0x55];
     bool TrollAttackPending;                       // +0x55 (unnamed in the PDB)

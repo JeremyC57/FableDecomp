@@ -1,5 +1,6 @@
 // std::_List_base<CIntelligentPointer<C3DAnimation2>, std::allocator<CIntelligentPointer<C3DAnimation2> > >::clear() -- destroy every node's value (its virtual destructor), free the node, re-link the sentinel to itself
 // Leaf: ?clear@?$_List_base@V?$CIntelligentPointer@VC3DAnimation2@@@@V?$allocator@V?$CIntelligentPointer@VC3DAnimation2@@@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A53300, 58 bytes, thiscall.
 // Identity (proven, chunk c672): called by ~C3DAnimation2 0x00A4EEC0 on InstanceList (Ego_r list<CIntelligentPointer<C3DAnimation2> > at +0x78); STLport _list.c clear body; its only other callers 0x00A54133 / 0x00A544C3 sit in unreferenced ~list bodies of the same TU.
 // Callees: the element's virtual destructor (CBaseIntelligentPointer slot 0, the scalar deleting destructor with flag 0 -- an
@@ -51,15 +52,8 @@ void _List_base<_Tp, _Alloc>::clear()
 } // namespace std
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                          // vtable 0x0129C95C, 8 bytes
-public:
-    CBaseIntelligentPointer();                                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                                  // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class C3DAnimation2;
 
 template void std::_List_base<CIntelligentPointer<C3DAnimation2>, std::allocator<CIntelligentPointer<C3DAnimation2> > >::clear();

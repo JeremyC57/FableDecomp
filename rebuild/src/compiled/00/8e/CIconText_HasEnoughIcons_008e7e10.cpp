@@ -1,11 +1,10 @@
 // CIconText::HasEnoughIcons() -- count the 8-byte icon entries (+0x80..+0x84) the matcher accepts (0x008E8A10 on an uninitialised 4-byte matcher local) and compare the count with the required number: the limit record's word at +0x34 when the record (+0x90) exists, else 2
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E7E10, length 96 bytes.
 // The chunk label "CIconText::ClearIcons" names a counting predicate; named by its effect. The matcher label "CAIStateGroup_VersusScorpionKing::FindChargeEvent" is propagated. Shape: a 4-byte frame for the matcher, the limit in ebp, the count in ebx, `setge al`.
 class CThing;
-template <class T> class CIntelligentPointer { public:   // 8 bytes (vptr + item)
-    void* m_vtable;
-    T* m_pItem;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace {
 class CIsImposterHit { public:                     // Ego_r.pdb empty functor in an anonymous namespace
     bool operator()(const CIntelligentPointer<CThing>& thing) const;   // 0x008E8A10

@@ -1,6 +1,7 @@
 // _global::_Cons_val(CLipSyncPhonemeSample*, const CLipSyncPhonemeSample&) -- STL construct helper: placement-copy-construct a lip-sync phoneme sample (symbol, id, shared speech frame) into raw vector storage
 // Flags: /Gr
 // Leaf: _Cons_val
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00a49b70, 43 bytes.
 // Callee: CCharString copy ctor 0x0099EC30.
 // Shape: link-time __fastcall (/Gr STL TU): destination in ecx (esi), source in edx (edi); the
@@ -19,17 +20,8 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
 };
 
-struct CCPPointerInfo {
-    long RefCount;                                      // +0x00
-    void (__fastcall* DeleteFunc)(void*);               // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template<class T> struct CCountedPointer {
-    T* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
-};
 
 class CSpeechFrame;
 

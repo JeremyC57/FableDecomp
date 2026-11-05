@@ -1,14 +1,13 @@
 // CAIStateGroup_CreatureUseCoverBase::RefreshCoverList() -- refill retained cover handles from a filtered temporary list.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail009710D0,250 bytes. Retail vector is12 bytes versus donor16: ValidPositionsFound lives at +0x48 (engine header, retail STLport 4.6 layout).
 #include <stddef.h>
 #include <stdlib.h>
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 inline void* operator new(size_t,void* p){return p;}
 class CBaseObject;
-class CBaseIntelligentPointer { public:virtual ~CBaseIntelligentPointer();void* Data; CBaseIntelligentPointer(); public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50
-    void SetPItem(CBaseObject*);   // 0x00A01B90
-}; //A01B10,A01B50,A01B90,A01C10
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerRetail:CBaseIntelligentPointer {
  __forceinline CIntelligentPointerRetail(CBaseObject* p){SetPItem(p);}
  __forceinline CIntelligentPointerRetail(const CIntelligentPointerRetail& p){SetPItem(p.GetPItem());}

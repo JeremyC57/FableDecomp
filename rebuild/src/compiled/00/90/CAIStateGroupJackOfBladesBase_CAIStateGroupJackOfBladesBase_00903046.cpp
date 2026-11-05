@@ -1,5 +1,6 @@
 // CAIStateGroup_JackOfBladesBase::~CAIStateGroup_JackOfBladesBase() -- the compiler-generated (implicit) destructor, kept out of line: ~vector +0x40, ~vector +0x34, ~CIntelligentPointer +0x24, ~CIntelligentPointer +0x1C, ~CIntelligentPointer +0x14, then the base destructor out of line
 // Leaf: ??1CAIStateGroup_JackOfBladesBase@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00903046, 51 bytes (+ int3 padding), thiscall, no return value; reached from the scalar deleting destructors listed below.
 // Identity (proven): CAIStateGroup_JackOfBladesBase::~CAIStateGroup_JackOfBladesBase(); evidence: its callers are the scalar deleting destructors of CAIStateGroup_JackOfBladesBase 0x00903079 (slot 0 of vtable 0x0128D384, RTTI .?AVCAIStateGroup_JackOfBladesBase@@ : CAIStateGroupBase : CBaseClass), CAIStateGroup_JackOfBladesStage2 0x00903296 (vtable 0x0128D3C4, derived from CAIStateGroup_JackOfBladesBase), CAIStateGroup_JackOfBladesStage3 0x009032E0 (vtable 0x0128D404, derived from CAIStateGroup_JackOfBladesBase), and 0x00903265 (a deleting-destructor-shaped body reached through no vtable); the destroyed offsets +0x14/+0x1C/+0x24/+0x34/+0x40 are Ego_r.pdb CAIStateGroup_JackOfBladesBase's class-typed members (rebased after the 12-byte vector), and the tail jump is ~CAIStateGroupBase 0x008FD288.
 // Label: the manifest's "_Dest_val<std::allocator<CEditLevelMerger::CConflict>,CEditLevelMerger::CConflict>" is propagated across byte-identical bodies (family J072: five implicit destructors of
@@ -31,13 +32,8 @@ public:
 }   // namespace std
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;                                         // CBaseObjectPointer*
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CCharString {                                      // 4 bytes: the shared string data pointer
 public:

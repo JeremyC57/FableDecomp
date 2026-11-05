@@ -1,4 +1,5 @@
 // C3DAnimationManager::CombineBlendedBaseAnimations(const C3DAnimationStateBase&, const C3DAnimationStateBase&, float, C3DKeyframe*, unsigned long, unsigned long, const C3DMesh2&) -- evaluate two parallel animation state trees blended by a factor
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A9F2F0, length 350 bytes (`ret 1Ch`). Ego_r.pdb
 //          ?CombineBlendedBaseAnimations@C3DAnimationManager@@AAEXABVC3DAnimationStateBase@@0MPAVC3DKeyframe@@KKABVC3DMesh2@@@Z.
 // Callees: state virtual slot 2 (+8) GetStateType, the mesh bank's GetAnimationInfo(long) @ 0x00A242C0 (manifest
@@ -15,26 +16,7 @@
 // Layout: C3DAnimationState AnimationIndex +8 / AnimationTime +0xC and C3DAnimationTransitionState StartState +8 /
 //          EndState +0xC / Progress +0x10 agree with engine/C3DAnimationState.h and C3DAnimationTransitionState.h; they
 //          are modelled locally because the call needs the polymorphic base. C3DAnimationManager MeshBank +4 (PDB).
-struct SCountBlock {
-    long m_references;
-    void (__fastcall* m_pfnDestroy)(void*);
-    void* m_pObject;
-};
-template <class T> class CCountedPointer { public:
-    T* m_pObject;
-    SCountBlock* m_pCount;
-    ~CCountedPointer()
-    {
-        if (m_pCount) {
-            --m_pCount->m_references;
-            if (m_pCount->m_references == 0) {
-                m_pCount->m_pfnDestroy(m_pCount->m_pObject);
-                delete m_pCount;            // operator delete @ 0x00BFE9BC
-            }
-        }
-    }
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 class C3DKeyframe { public: float Rotation[4]; float Position[4]; float Scaling[4]; };   // 0x30
 class C3DMesh2;

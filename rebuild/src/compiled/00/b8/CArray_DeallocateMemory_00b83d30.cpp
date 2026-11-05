@@ -1,5 +1,6 @@
 // CArray::DeallocateMemory() -- (CArray<CCountedPointer<CParticleSimulation> >) release the array's storage: when it holds any capacity, erase every element and swap the storage out into an empty array, whose destructor destroys the detached range and frees the block
 // Leaf: ?DeallocateMemory@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B83D30, 111 bytes. __fastcall, plain `ret`; a `push ecx` frame word that
 //   homes the one-byte iterator / __false_type tags.
 // Callees: std::__copy<CCountedPointer<CParticleSimulation>*, ...> @ 0x00B83330 (__fastcall, `ret 0Ch`: result, the
@@ -18,14 +19,7 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 struct __true_type { __true_type() {} };
 struct __false_type { __false_type() {} };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {             // retail 8 bytes, user copy / assignment / destructor
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    ~CCountedPointer();
-    CCountedPointer& operator=(const CCountedPointer& other);
-};
+#include "engine/CCountedPointer.h"
 class CParticleSimulation;
 typedef CCountedPointer<CParticleSimulation> CParticleSimulationPtr;
 

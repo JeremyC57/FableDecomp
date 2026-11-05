@@ -1,5 +1,6 @@
 // std::list<CIntelligentPointer<CThing> >::erase(iterator position) -- STLport list erase: unlink the node, destroy its intelligent pointer through the virtual destructor, free the node, return the iterator to the next node
 // Leaf: ?erase@
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B7CA0, 45 bytes (48 with padding), `ret 8` (__fastcall: the hidden
 //   iterator result and the position by value on the stack; `this` unused).
 // Identity: called from CTCVillage::RemoveThingAndUpdateCameraPoints 0x0065B6DD (landed; "the shared
@@ -15,12 +16,8 @@
 
 class CThing;
 
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();               // slot 0 (scalar deleting destructor)
-    CThing* m_pItem;                                  // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct _List_node_base {
     _List_node_base* _M_next;                         // +0x00

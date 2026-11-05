@@ -1,4 +1,5 @@
 // C3DAnimation2::RelocateData(long, void*, void*, long) -- rebase the animation's sequence/data pointers (and its shared instances') after the memory pool moved its block
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4E960, length 352 bytes (`ret 10h`; CMovableResource virtual).
 // Callees: C3DAnimationSequenceData::RelocateData(void*, void*) @ 0x00A4CD70 (landed as CAnimationData_00a4cd70; the
 //          manifest "CParticleSimulation::RelocateData" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50.
@@ -14,7 +15,7 @@
 //          RigidBoneMask +0x6c, RigidBonePositions +0x70, InstanceList +0x78). The generated engine header
 //          C3DAnimation2.h carries the PDB offsets (+0x30 shifted), so a local model is used.
 class C3DVector;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 class CSimpleMemoryPool;
 class CMovableResourceMemoryPool;
 
@@ -66,7 +67,6 @@ struct CInstanceNode {                         // STLport list<CIntelligentPoint
     CIntelligentPointer<C3DAnimation2> _M_data;
 };
 
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };
 
 class C3DAnimationStats { public:                     // 0x2c-byte primary base
     virtual ~C3DAnimationStats();

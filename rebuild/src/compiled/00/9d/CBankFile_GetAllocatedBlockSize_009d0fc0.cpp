@@ -1,5 +1,6 @@
 // CBankFile::GetAllocatedBlockSize(unsigned long index) -- the file space an entry owns: from its offset up to the next block in offset order, or its data size when it is the last block (0 for an entry without data)
 // Leaf: GetAllocatedBlockSize
+// Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members m_pFirst/m_pLast are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D0FC0, length 196 bytes (+12 int3), ret 4.
 // Callees: CBankFile::UpdateBlockOrder @ 0x009D0630, CPackedUIntArray::operator[] @ 0x00A629F0 (inline
 // GetEntryDataOffset / GetEntryDataSize, as the landed 0x009CC270 / 0x009CC240).
@@ -27,13 +28,7 @@ struct CPackedUIntArray {               // 16 bytes; m_pData == 0 means "not pac
     bool IsPacked() const { return m_pData != 0; }
 };
 
-template <class T> class CArray { public:      // retail CArray: 12 bytes
-    T* m_pFirst;
-    T* m_pLast;
-    T* m_pEnd;
-    long GetCount() const { return m_pLast - m_pFirst; }
-    T& operator[](unsigned long index) const { return m_pFirst[index]; }
-};
+#include "engine/CArray.h"
 
 struct CBankFile_Retail {        // the retail layout; engine/CBankFile.h (PDB) disagrees with the bytes
     void*                     __vftable;            // +0x00
@@ -90,7 +85,7 @@ unsigned long CBankFile_Retail::GetAllocatedBlockSize(unsigned long index)
     UpdateBlockOrder();
     int found = 0;
     unsigned long size = GetEntryDataSize(index);
-    for (unsigned long* it = BlockOrder.m_pFirst; it != BlockOrder.m_pLast; ++it) {
+    for (unsigned long* it = BlockOrder.begin(); it != BlockOrder.end(); ++it) {
         unsigned long entry = *it;
         if (found) {
             size = GetEntryDataOffset(entry) - offset;

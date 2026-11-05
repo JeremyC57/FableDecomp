@@ -1,5 +1,6 @@
 // CScriptGameResourceObjectScriptedThing::Speak(const CScriptThing& listener, const char* textGroup, ETextGroupSelectionMethod method, bool b1, bool b2, bool b3) -- queue a talk-to action speaking from the named text group at a live listener for the live scripted thing
 // Leaf: Speak
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00904780, length 213 bytes (`ret 18h`), vtable 0x0128D86C slot 13.
 // PDB: ?Speak@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z.
@@ -51,8 +52,7 @@ struct CIntelligentPointer_Retail {                // CIntelligentPointer<CThing
     CThing_Retail* GetPItem();                     // 0x00A01B50 CBaseIntelligentPointer::GetPItem
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

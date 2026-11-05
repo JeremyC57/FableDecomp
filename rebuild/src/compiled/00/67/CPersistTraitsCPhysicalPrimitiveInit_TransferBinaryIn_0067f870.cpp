@@ -1,4 +1,5 @@
 // CPersistTraits<CPhysicalPrimitiveInit>::TransferBinaryIn(CDataInputStream*, CPhysicalPrimitiveInit*) -- read the primitive type, create the matching primitive and let it read itself
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0067F870, 117 bytes, `ret 8` (__fastcall, the empty traits `this` is unused).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0 (inline Read's slow path),
 //   CPhysicalPrimitiveInit::SetPPrimitiveFromType(EPhysicalPrimitiveType) @ 0x0067F810 (walks the registered primitive
@@ -44,10 +45,7 @@ class CPhysicalPrimitiveBase { public:
 };
 }
 
-template<class T> class CCountedPointer { public:
-    T* Data;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CPhysicalPrimitiveInit { public:
     CCountedPointer<NHitLocations::CPhysicalPrimitiveBase> PPrimitive;   // +0x00

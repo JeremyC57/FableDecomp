@@ -1,6 +1,7 @@
 // CTCCarriedActionUseFishingRod::OnActionUse(CThing& user) -- base OnActionUse; a creature able to fish gets the "Expression_Fish" quest-activation action on the rod; then the rod's showable component is notified
 // Grade: RELOCATION_MATCH -- the parent thing argument through the PDB inline accessor CTCBase::GetParentThing() (retail loads ParentThing into eax before the action temporary's other arguments); was register allocation only
 // Leaf: ?OnActionUse@CTCCarriedActionUseFishingRod@@UAEXAAVCThing@@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F01F0, length 189 bytes. Vtable slot 28 ("vfunc_28"), `ret 4`.
 // Callees: CTCActionUseBase::OnActionUse @ 0x007EAB90 (qualified; manifest "$E2"), the static __fastcall
@@ -33,10 +34,8 @@ public:
 inline CThingCreatureBase* CastToCreature(CThing* thing) { return (CThingCreatureBase*)thing; }
 
 #pragma pack(push, 1)
-struct CBaseIntelligentPointer {                    // unaligned inside the action (+0xad)
-    void* m_pItem;
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CCreatureActionBase {                         // retail 0xA8 bytes
 public:

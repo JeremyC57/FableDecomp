@@ -1,33 +1,12 @@
 // CEngineResourceManager::~CEngineResourceManager() -- unregister the async-loading callback, uninitialise the shaders, close the pixel shader bank and (outside retail-bank mode) the engine mesh bank, unregister the VS constant layouts, then destroy every member in reverse order
 // Leaf: ??1CEngineResourceManager@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
 #include "engine/CBaseClassNonCopyable.h"              // ~CBaseClass 0x0099A2E0; ~CBaseClassNonCopyable 0x0099A300 (protected virtual, PDB MAE; naming wave 23)
-class CCPPointerInfo { public:
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void*         Data;                                 // +0x08
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CArray.h"
 class CTexture { public:                                // 8 bytes
     void*         Texture;

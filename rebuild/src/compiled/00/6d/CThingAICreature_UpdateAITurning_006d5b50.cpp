@@ -1,5 +1,6 @@
 // CThingAICreature::UpdateAITurning(const C3DVector& movement) -- pick the creature's look target from its AI turn state (a fixed position, a live target thing's head helper / helper point / position, or its own position plus the movement when that is long enough) and hand it to the look component (TC 0x43)
 // Leaf: UpdateAITurning
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Callees: GetPItem 0xA01B50, 0x661E80 (byte-identical to the landed CText::GetAlignment; here a CThingAICreature flag query), CTCGraphicAppearance 0x4C10E0 / 0x4C1060(1.0f) (by-value C3DVector),
 //   CThing::GetPos 0x4C73D0, LowerBound 0x40F020, CTCLook::LookAtPos 0x753E90.
@@ -12,10 +13,8 @@ class C3DVector { public:
 };
 __forceinline float GetLengthSquared(C3DVector v) { return v.Z * v.Z + v.Y * v.Y + v.X * v.X; }
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    unsigned char _pad00[0x08];
-    CBaseObject* GetPItem() const;                          // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CTCGraphicAppearance {
     C3DVector GetHeadPosition() const;                      // 0x004C10E0
     C3DVector GetHelperPointOrCentre(float fraction) const; // 0x004C1060

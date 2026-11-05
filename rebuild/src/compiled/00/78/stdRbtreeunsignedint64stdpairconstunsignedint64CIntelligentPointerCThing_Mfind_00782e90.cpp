@@ -1,5 +1,6 @@
 // std::_Rb_tree<unsigned __int64, std::pair<const unsigned __int64, CIntelligentPointer<CThing>>, ...>::_M_find(const unsigned __int64& k) const -- STLport tree lookup: walk to the first node whose key is not less than k, return it if k is not less than its key, else the header (end)
 // Leaf: ?_M_find@?$_Rb_tree@_KU?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@U?$_Select1st@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KV?$CIntelligentPointer@VCThing@@@@@std@@@2@AB_K@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00782e90, 84 bytes, thiscall, `ret 4`.
 // Identity (proven): the landed CTCBoastingCrowdControl::GetCrowdGroup 0x00783730 / OnKillCrowd 0x00783240 and the boast-removal erase 0x00783CC0 look UIDs up in Ego_r.pdb CTCBoastingCrowdControl::HeroCrowdThings (map<unsigned __int64, CIntelligentPointer<CThing> >); bound only as the stand-ins CHeroCrowdMap::find.
 // Callees: none.
@@ -7,12 +8,8 @@
 //   64-bit compare `cmp hi ; jb/ja ; cmp lo`), the key reloaded from its reference for the final test.
 class CThing;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                            // Ego_r.pdb: vptr + PData, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();                   // 0x00A01C10
-    CBaseObjectPointer* PData;                            // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 
 template <class _Tp> class allocator { };

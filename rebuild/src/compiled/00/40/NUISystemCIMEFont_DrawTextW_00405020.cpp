@@ -4,6 +4,7 @@
 //   render manager into a local before the call (retail evaluates it before the CWideString argument copy), and the main draw's
 //   C3DVector sits in its own block so it shares the shadow draw's slot (0x2c frame).
 // Leaf: DrawTextW
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00405020, length 410 bytes (`ret 4`).
 // Callees: CWideString(const unsigned short*) 0x0099B6B0 / CWideString(const CWideString&) 0x0099B720 / ~CWideString 0x0099B510,
@@ -28,26 +29,7 @@ public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
 };
-class CCPPointerInfo { public:
-    long References;
-    void (__fastcall* Destroy)(void* object);
-    void* Object;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Release()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-    }
-    ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 class CFontBank;
 struct CFontBankSource {
     CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80

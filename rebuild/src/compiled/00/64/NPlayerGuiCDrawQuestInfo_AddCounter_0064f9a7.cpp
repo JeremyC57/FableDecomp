@@ -2,6 +2,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuestInfo::AddCounter(CCounter*, const CCharString&, float) -- create a counter element with the symbol's sprite, append it through AddElement and return its new ID
 // Leaf: AddCounter
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets). Spellings unified: 00654bc0: ??$?0UCQuestInfoElementCounter@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABU?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@1@@Z -> ??$?0UCQuestInfoElementCounter@NPlayerGui@@@?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@NPlayerGui@@QAE@ABV?$CCountedPointer@UCQuestInfoElementCounter@NPlayerGui@@@1@@Z; 0064a3ed: ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXU?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z -> ?AddElement@CDrawQuestInfo@NPlayerGui@@QAEXV?$CCountedPointer@UCQuestInfoElement@NPlayerGui@@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064F9A7, length 104 bytes (twin of the timer adder 0x0064F93F).
 // Callees: CDrawQuestInfo::GetScriptSpriteBySymbol(const CCharString&) @ 0x0064A37B, operator new @ 0x00BFEA1A,
 // CQuestInfoElementCounter::CQuestInfoElementCounter(CCounter*, long, float) @ 0x00656BA2 (vtable 0x0125A4F0),
@@ -18,14 +19,7 @@ extern void* __cdecl operator_new_shim(unsigned int);   // (unused; operator new
 
 namespace NPlayerGui {
 
-template <class T> struct CCountedPointer {        // object + count block (8 bytes); bodies out of line in other TUs
-    T*    m_pObject;
-    void* m_pBlock;
-    explicit CCountedPointer(T* object);
-    template <class U> CCountedPointer(const CCountedPointer<U>& other);
-    ~CCountedPointer();
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 
 struct CQuestInfoElement {                         // NPlayerGui::CDrawQuestInfo::CQuestInfoElement (retail 0x1c bytes)
     virtual void v00();

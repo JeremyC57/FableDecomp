@@ -1,6 +1,7 @@
 // std::__copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, const random_access_iterator_tag&, _Distance*) -- (std::pair<CIntelligentPointer<CThing>, long>*, std::pair<CIntelligentPointer<CThing>, long>*, int) STLport random-access copy: n = last - first assignments through the element's out-of-line operator=, return the result's end
 // Flags: /Gr
 // Leaf: ??$__copy@PAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@PAU12@H@std@@YIPAU?$pair@V?$CIntelligentPointer@VCThing@@@@J@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00788F76, 50 bytes (size-optimised TU), __fastcall (/Gr: first ecx, last edx;
 //   result, the tag reference and the null distance pointer on the stack), `ret 0Ch`.
 // Identity (proven): std::__copy<std::pair<CIntelligentPointer<CThing>, long>*, std::pair<CIntelligentPointer<CThing>, long>*, int>; evidence: its operator= callee 0x00788DF0 is agent952's landed std::pair<CIntelligentPointer<CThing>, long>::operator= (??4?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@QAEAAU01@ABU01@@Z) every 12 bytes; its callers are agent952's landed vector<pair<CIntelligentPointer<CThing>, long> >::erase 0x0080E4E0 (CTCDExplosion::Emitters), the HitThings vector's erase 0x00789085 and the __copy_ptrs forwarder 0x00788FE6
@@ -11,12 +12,8 @@
 // Element: std::pair<CIntelligentPointer<CThing>, long> (12 bytes: the 8-byte intelligent pointer and the long)
 #pragma optimize("s", on)
 class CThing;
-class CBaseIntelligentPointer {                          // 8 bytes: vptr + PData
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    void* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;

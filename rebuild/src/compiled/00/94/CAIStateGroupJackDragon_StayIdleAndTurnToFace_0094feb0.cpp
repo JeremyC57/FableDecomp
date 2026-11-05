@@ -1,4 +1,5 @@
 // CAIStateGroup_JackDragon::StayIdleAndTurnToFace(float,const C3DVector&) -- interpolate facing while idling until the duration expires or the enemy becomes invalid.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0094feb0 length311. Shared JackDragon/Base/Brain headers; narrow thing view exposes retail physics60 and dead91.
 #ifdef _MSC_VER
@@ -93,9 +94,8 @@ virtual void slot73();virtual void slot74();virtual void SetFacingAnglesFromRHSe
 };
 struct CDragonThing{char prefix[0x60];CDragonPhysics* Physics;char beforeDead[0x2d];unsigned char dead;};
 class CBaseObject;
-class CBaseIntelligentPointer { public:
-    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CDragonPointer{}; //00a01b50
 extern long FramesPerSecond; //01375550
 class CWorld { public: static long __fastcall GetFrame(); }; //0049d870

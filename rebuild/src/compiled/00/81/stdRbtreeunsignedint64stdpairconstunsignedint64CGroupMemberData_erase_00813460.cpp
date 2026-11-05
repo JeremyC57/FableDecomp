@@ -1,5 +1,6 @@
 // std::_Rb_tree<unsigned __int64,std::pair<const unsigned __int64,CGroupMemberData>,...>::erase(iterator first, iterator last) -- STLport range erase on the creature group's member map: clear() for the whole range, else erase node by node
 // Leaf: ?erase@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@0@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe @ 0x00813460, 196 bytes (+ int3 padding), `ret 8`: __fastcall (the tree -> ebx), the two iterators by
 //   value on the stack.
 // Caller: 0x00813684 (map::erase(const key&) 0x00813640, an equal_range + range erase). Callees: _M_erase(root)
@@ -18,20 +19,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 class CBaseObject;
 class CThingAICreature;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-private: 
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CGroupMemberData {                                     // 0x14 bytes (Ego_r.pdb)
 public:
     CIntelligentPointer<const CThingAICreature> PMember;     // +0x00

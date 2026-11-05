@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<NInventory::CItem >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, destroy the vacated tail through the out-of-line __destroy_aux, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@VCItem@NInventory@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C1ECC, 55 bytes (size-optimised TU, frame pointer, odd entry), thiscall, `ret 8`, returns first.
 // Identity: std::vector<NInventory::CItem >::erase(iterator, iterator) -- proven; evidence: its callers are CTCInventoryBase::ReturnAllConfiscatedItems 0x005BF91A and OnSerialise 0x005BFD5E, which erase [begin, end) of the vector at +0xAC = Ego_r.pdb CTCInventoryBase::ConfiscatedItems (+0xBC less four 4-byte vector shrinks; vector<NInventory::CItem>), the clear() 0x005C2761 and resize 0x005C2A13; the 0x14-byte element's operator= 0x005C0C24 copies ItemType / NumberOfItems, assigns the CCountedPointer PPerItemData at +8 (0x005C077F) and copies AverageBoughtPrice (+0x10), and the destroy loop calls CItem's scalar deleting destructor 0x005C1390 (the PDB names a non-virtual ??_GCItem); the PDB name sets hold vector<NInventory::CItem>::erase
 //   Family G072 (seven byte-identical bodies, one COMDAT per T: retail has no ICF). Catalogue label "std::vector_assign_from_range" is propagated/behavioural.
@@ -12,13 +13,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <stddef.h>
-template <class T> class CCountedPointer {                   // 8 bytes: the object + its shared CCPPointerInfo count block
-public:
-    T*    Data;                                              // +0x0
-    void* Info;                                              // +0x4 CCPPointerInfo*
-    CCountedPointer<T>& operator=(const CCountedPointer<T>& other);
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 namespace NInventory {
 class CPerItemData;
 class CItem {                                                // 0x14 bytes (Ego_r.pdb)

@@ -1,4 +1,5 @@
 // CGameScriptInterface::MiniMapAllowRouteBetweenRegions(long a, long b, long c) const -- connect the two regions in the world map's graph (CWorld slot 12, CWorldMap::SetRegionsAsConnectedInGraph @ 0x004FC970)
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088E3D0, length 48 bytes.
 // Callees: CWorld virtual slot 12 (+0x30), CWorldMap::SetRegionsAsConnectedInGraph @ 0x004FC970. Shape: the three arguments pushed before the virtual call (arguments first, object last), `ret 0Ch`.
 struct CDisplayEngine_Retail;
@@ -60,8 +61,7 @@ struct CThing_Retail {
     void PreloadBasicAnimations();                 // 0x00663610 (CThingCreatureBase)
     void SetInLimbo(bool inLimbo);                 // 0x004C8CF0 (CThing)
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

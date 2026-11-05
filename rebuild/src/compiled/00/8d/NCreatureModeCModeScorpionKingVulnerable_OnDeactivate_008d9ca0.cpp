@@ -1,5 +1,6 @@
 // 008d9ca0 NCreatureMode::CModeScorpionKingVulnerable::OnDeactivate -- restore hit locations and release effect things
 // Leaf: ?OnDeactivate@CModeScorpionKingVulnerable@NCreatureMode@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags:
 #define CClass CClassLayout
@@ -109,11 +110,8 @@ public:void SetRadius(float radius){Radius=radius;}
     unsigned char unobservedPhysicsTail[8];
 };
 #pragma pack(push,1)
-class CBaseIntelligentPointer {private:CBaseObjectPointer*PData;public:virtual ~CBaseIntelligentPointer();CBaseObject*GetPItem()const;};
-template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {public:
-    T*Get()const{return (T*)CBaseIntelligentPointer::GetPItem();}
-    T*operator->()const{return Get();}
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 template<class T>__forceinline bool __fastcall IS_THING_ALIVE(const T&p){return p.Get()!=0&&!p.Get()->IsDead();}
 namespace NHitLocations {class CHitLocation {public:void SetEnabled(bool);};}

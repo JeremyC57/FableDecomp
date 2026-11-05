@@ -1,4 +1,5 @@
 // CPSCSplineBase::Initialise(void*, unsigned long, CParticleUpdateParameters*, float) -- once: re-offset the random spline, hand the particle system to the position-parameter data and update it from the spline; returns the Initialised bit
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B215A0, length 62 bytes.
 // Callees: CSplineRandomOffsetData::OffsetSplinePositions @ 0x00B206B0, CSplinePosParamData::Update @ 0x00B20BA0.
@@ -36,12 +37,7 @@ struct CCardinalSpline {                    // 0x14 bytes in retail
     void GetSplinePosition(C3DVector* out, float pos);  // 0x00A567A0
 };
 
-struct CCPPointerInfo;
-template<class T> struct CCountedPointer {
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 struct CSplineRandomOffsetData {
     void OffsetSplinePositions();                                       // 0x00B206B0

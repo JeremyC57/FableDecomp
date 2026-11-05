@@ -1,5 +1,6 @@
 // CV_ArcheryCompetitionScript::DoTimesUp(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&) -- time is up: stop the judge, show the times-up title, pause, then (each time the judge is still healthy) have him speak the two game-over lines to the hero and wait for him to finish
 // Leaf: ?DoTimesUp@CV_ArcheryCompetitionScript@NScript@@QAEXABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E36590, 446 bytes (448 with padding), `ret 8`.
 // Callees: CScriptThing::IsNull (slot 77, +0x134), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   ~CScriptThing 0x004AA840, CScriptBase::IsActiveThreadTerminating 0x00CB7940; the scripted-thing handle's
@@ -17,22 +18,9 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class CScriptThing { public:                                       // vtable 0x01238C8C, 12 bytes
-    virtual ~CScriptThing();                                // 0x004AA840 (out of line)
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008();
-    virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016();
-    virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020(); virtual void t021(); virtual void t022(); virtual void t023(); virtual void t024();
-    virtual void t025(); virtual void t026(); virtual void t027(); virtual void t028(); virtual void t029(); virtual void t030(); virtual void t031(); virtual void t032();
-    virtual void t033(); virtual void t034(); virtual void t035(); virtual void t036(); virtual void t037(); virtual void t038(); virtual void t039(); virtual void t040();
-    virtual void t041(); virtual void t042(); virtual void t043(); virtual void t044(); virtual void t045(); virtual void t046(); virtual void t047(); virtual void t048();
-    virtual void t049(); virtual void t050(); virtual void t051(); virtual void t052(); virtual void t053(); virtual void t054(); virtual void t055(); virtual void t056();
-    virtual void t057(); virtual void t058(); virtual void t059(); virtual void t060(); virtual void t061(); virtual void t062(); virtual void t063(); virtual void t064();
-    virtual void t065(); virtual void t066(); virtual void t067(); virtual void t068(); virtual void t069(); virtual void t070(); virtual void t071(); virtual void t072();
-    virtual void t073(); virtual void t074(); virtual void t075(); virtual void t076();
-    virtual bool IsNull() const;                            // slot 77 (+0x134) 0x004AB150
-    void* PImpData;
-    void* PImpInfo;
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 enum ETextGroupSelectionMethod { GROUP_SELECT_NONE = 0, GROUP_SELECT_RANDOM = 1 };
 class CScriptGameResourceObjectScriptedThingBase { public:         // vtable 0x0127094C, 0x10 bytes
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0

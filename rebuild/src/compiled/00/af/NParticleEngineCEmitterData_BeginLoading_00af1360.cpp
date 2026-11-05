@@ -1,5 +1,6 @@
 // NParticleEngine::CEmitterData::BeginLoading() -- if the emitter data is not loaded yet, make room in the bank's resource list for its entry, start an asynchronous read of the whole entry, keep the counted file data and record the resource size
 // Leaf: BeginLoading
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF1360, length 223 bytes (+ int3 padding), `ret`.
 // Callees: CBankFile::GetEntryDataSize(ulong) @ 0x009CC240, CResourceList::MakeFreeSpace(ulong) @ 0x009FC4F0,
 // CBankFileAsync::CreateEntry(ulong) @ 0x009D58D0 (CCountedPointer<CBankFileAsyncEntry> by hidden pointer; catalog
@@ -31,27 +32,7 @@ public:
 };
 
 void __fastcall DestroyCountedObject(void* object);
-struct SCountBlock {
-    long m_references;                             // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-};
-template <class T> class CCountedPointer { public:
-    T* Object;                                     // +0
-    SCountBlock* Info;                             // +4
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->m_references;
-            if (Info->m_references == 0) {
-                Info->m_pfnDestroy(Info->m_pObject);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x009A4440
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 
 enum EThreadedFilePriority { };
 extern EThreadedFilePriority g_ParticleReadPriority;   // 0x0139954C
@@ -86,13 +67,13 @@ struct CEmitterData : CResourceMethods {
 
 void CEmitterData::BeginLoading()
 {
-    if (FileData.Object)
+    if (FileData.Data)
         return;
     unsigned long size = ((CBankFile*)(Owner->Bank))->GetEntryDataSize(Owner->EntryIndex);
     Owner->Bank->ResourceList.MakeFreeSpace(size);
     CCountedPointer<CBankFileAsyncEntry> entry = Owner->Bank->CreateEntry(Owner->EntryIndex);
     FileData = entry->BeginReadDataAutoAlloc(0, size, g_ParticleReadPriority);
-    unsigned long dataSize = FileData.Object ? FileData->Sizeof() + 8 : 8;
+    unsigned long dataSize = FileData.Data ? FileData->Sizeof() + 8 : 8;
     SetResourceSize(dataSize + 12);
 }
 }

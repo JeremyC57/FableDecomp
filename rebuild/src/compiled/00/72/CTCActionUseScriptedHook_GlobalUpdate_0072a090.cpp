@@ -1,5 +1,7 @@
 // CTCActionUseScriptedHook::GlobalUpdate(bool) -- while a confirmation is pending consume the confirm message (setting PerformAction on a yes); otherwise perform the queued action: teleport the hero through the connected entrance (door-latch sound, or the locked-door sound), then start a spline scripted camera mode on the camera track when its camera point is a track point
 // Leaf: ?GlobalUpdate@CTCActionUseScriptedHook@@UAEX_N@Z
+// Plan phase 5 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base.
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags: /GS
@@ -29,7 +31,7 @@ public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 enum EMessageEventType { EMessageEventType_Force32 = 0x7fffffff };
 #include "engine/CArray.h"
@@ -110,17 +112,8 @@ public:
     }
 };
 class CThingPlayerCreature : public CThing { };
-class CBaseIntelligentPointer {
-public:
-    virtual void v00();
-    CBaseObject* PItem;                                          // +0x04
-    CBaseObject* GetPItem() const;                               // 0x00A01B50
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* Get() const { return (T*)GetPItem(); }
-    T* operator->() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 class CPlayerManager { public: CPlayer& GetMainPlayer(); };                        // 0x00449970
 class CGameEvent {

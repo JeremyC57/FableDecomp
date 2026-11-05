@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveAnimatedMesh::SetupMesh2D() -- once per render frame, fetch LOD 0 of the mesh (flag 0x10) from the mesh info into the render info, clearing the LOD and bone transforms and stamping the frame; false when the mesh info has none
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BCF430, 191 bytes (+ int3 padding), bool in al.
 // Callees: C3DMeshInfo::GetMesh(CCountedPointer<const C3DMesh2>*, unsigned long lod, unsigned long flags) 0x00A25E70 (bool),
 //   operator delete 0x00BFE9BC (the counted pointer's info block); the engine singleton 0x01436EA4 (CurrentRenderFrame at retail
@@ -16,26 +17,7 @@
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
 class C3DMesh2;
-class CCPPointerInfo { public:
-    long  References;                                  // +0x00
-    void (__fastcall* Destroy)(void* object);          // +0x04
-    void* Object;                                      // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 
 class C3DMeshInfo { public:
     bool GetMesh(CCountedPointer<const C3DMesh2>* mesh, unsigned long lod, unsigned long flags);   // 0x00A25E70

@@ -1,4 +1,5 @@
 // CCreatureAction_CastWillGhostSwordSpell::Initialise() -- base Initialise, add the owner's "CTCGhostSword" component (AI cast level for an AI-state owner) and hand it the action's target when that is alive
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B9970, length 235 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
 // Callees: CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50, CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("CTCGhostSword" @ 0x0123D1A8),
 // CThing::AddTC(const CCharString&, bool, CTCParamsBase*) 0x004C9D60, CTCGhostSword::SetAICast(long) 0x007C5440, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
@@ -17,14 +18,8 @@ class CCharString { public:
 };
 
 class CThing;
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
-    virtual void v00();
-    CThing* PItem;                              // +4
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }

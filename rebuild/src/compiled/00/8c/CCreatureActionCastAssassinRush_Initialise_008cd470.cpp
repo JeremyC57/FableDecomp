@@ -1,4 +1,5 @@
 // CCreatureAction_CastAssassinRush::Initialise() -- install rush component, target and configure it, then pass optional final action.
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008CD470 length298. Actual donor derived layout included; native tail -0x18.
 // Actual physics slot74=7238E0 SetFacingAnglesFromRHSet; slot75 is distinct SetRHSet.
@@ -46,7 +47,8 @@ class CThing:public CClass { public:
  CTCAssassinRush* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CBaseObject* GetPItem() const;}; //00A01C10/00A01B50
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CCombatActionBase { public:
  void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  unsigned char _beforeTarget[0x98];CBaseIntelligentPointer PTarget;unsigned char _remainingBase[0x64];

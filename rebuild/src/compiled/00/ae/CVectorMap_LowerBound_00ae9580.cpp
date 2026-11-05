@@ -1,5 +1,6 @@
 // CVectorMap::LowerBound(const long& key) const -- (CVectorMap<long, CCountedPointer<NParticleEngine::CParticleEmitter> >) binary search of the sorted 12-byte entries for the first entry whose key is not below `key`
 // Leaf: ?LowerBound@?$CVectorMap@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@@@@QBEPBU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@ABJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE9580, 82 bytes (+ int3 padding to 96), thiscall `ret 4`; the STLport
 //   iterator is a plain pointer returned in eax.
@@ -13,12 +14,7 @@
 // Layout (retail CVectorMap 0x10): CArray<pair<K, V> > Data +0 (STLport vector: _M_start, _M_finish, _M_end_of_storage),
 //   the empty comparator +0xC, Dirty +0xD.
 // Model: the landed 0x00447C80 (masked-identical body).
-class CCPPointerInfo;
-template <class T> class CCountedPointer {                   // 8 bytes: object, shared count block
-public:
-    T* Data;                                                  // +0x0
-    CCPPointerInfo* Info;                                     // +0x4
-};
+#include "engine/CCountedPointer.h"
 namespace NParticleEngine { class CParticleEmitter; }
 #include "engine/CArray.h"
 

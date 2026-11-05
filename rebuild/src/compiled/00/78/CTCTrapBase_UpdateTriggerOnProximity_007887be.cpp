@@ -1,5 +1,6 @@
 // CTCTrapBase::UpdateTriggerOnProximity() -- proximity trigger: is any trigger thing inside the trap def's trigger radius; a triggered opening trap with nobody near resets, an untriggered trap triggers when somebody newly comes near
 // Leaf: UpdateTriggerOnProximity
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007887BE, 204 bytes (plain `ret`, `leave`): frame-pointer size TU, so
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)` (the CTCTrapBase TU is `optimize("s")`, landed ManualReset
@@ -23,11 +24,8 @@ class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing>: vptr + item (8 bytes)
-    void* __vftable;
-    void* PData;
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CTriggerThingVector {                    // STLport vector<CIntelligentPointer<CThing> > (12 bytes)
     CBaseIntelligentPointer* _M_start;
     CBaseIntelligentPointer* _M_finish;

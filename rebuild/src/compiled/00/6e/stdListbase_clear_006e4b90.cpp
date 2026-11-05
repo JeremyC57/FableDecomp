@@ -1,5 +1,6 @@
 // std::_List_base::clear() -- (list<<CActiveDialogueInfo>>) STLport 4.6 list clear: walk the nodes from the sentinel's next, destroy each element and free its node, then relink the sentinel to itself
 // Leaf: ?clear@?$_List_base@VCActiveDialogueInfo@@V?$allocator@VCActiveDialogueInfo@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E4B90, 56 bytes (+ int3 padding to 64), thiscall, plain `ret`.
 // Identity (proven): list<<CActiveDialogueInfo>>; evidence: it is the clear of the static list at 0x013BABA0 -- the landed at-exit destructor 0x01229510 / initialiser 0x0121E3F0 and the landed NSpeechGainManager::Update 0x006E37D0, which walks it as list<CActiveDialogueInfo> (0x20-byte nodes, ThingSpeaking +0); CWorld_InitGuiTreePane 0x006E3EC0 clears it too
 // Label: the manifest's "SortTreeRecursively" is propagated (family H066: six clear() bodies that differ only in the element
@@ -8,12 +9,8 @@
 // Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer 0x00A01C10 on CActiveDialogueInfo::ThingSpeaking (node +8), free 0x00BFEA14 (allocator<_Node>::deallocate; no null test: the node was dereferenced).
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 class CThing;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void* PData;                                        // +4
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 enum EDialogueLayer { };
 class CActiveDialogueInfo {                          // 0x18 bytes (Ego_r.pdb)
 public:

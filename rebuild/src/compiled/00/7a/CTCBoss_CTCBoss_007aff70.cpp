@@ -1,5 +1,6 @@
 // CTCBoss::~CTCBoss() -- implicit destructor of the boss thing component: destroy the Effects and HelperCreatures intelligent-pointer vectors, release the boss def, then ~CTCBase
 // Leaf: ??1CTCBoss@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AFF70, 129 bytes, tail jump to ~CTCBase 0x00686830.
 // Identity (proven): sole caller 0x007AFF50, slot 0 (scalar deleting dtor) of vtable 0x0126D494, RTTI `.?AVCTCBoss@@`
@@ -59,18 +60,8 @@ public:
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                                          // vtable 0x0129C95C, 8 bytes
-public:
-    CBaseIntelligentPointer();
-    virtual ~CBaseIntelligentPointer();                                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                                       // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* Get() const { return (T*)GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CTCBase : public CBaseClassNonCopyable {                           // Ego_r.pdb CTCBase, 0xc
 public:

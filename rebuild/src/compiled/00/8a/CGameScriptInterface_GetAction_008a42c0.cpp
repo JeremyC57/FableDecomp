@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetAction(CScriptThing thing) -- the thing's CTCAIScratchpad::Action, or an empty string when the script thing has no thing
 // Leaf: ?GetAction@CGameScriptInterface@@UAE?AVCCharString@@VCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008a42c0, 201 bytes, thiscall, `ret 10h` (the hidden result pointer and the 12-byte CScriptThing).
 // Identity (proven): vtable 0x01260F0C (RTTI .?AVCGameScriptInterface@@) slot 797; ghidra_out/cgsi_slots_aligned.tsv (Ego_r.pdb vtable order) names it ?GetAction@CGameScriptInterface@@UAE?AVCCharString@@VCScriptThing@@@Z; it copies Ego_r.pdb CTCAIScratchpad::Action (+0x48) through interface 0xAA (CTCAIScratchpad::GetInterfaceType() is 170, landed).
@@ -42,29 +43,7 @@ public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
 };
-class CCPPointerInfo {                                     // 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {                 // 8 bytes
-public:
-    T*              Data;                                  // +0x00
-    CCPPointerInfo* Info;                                  // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

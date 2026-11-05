@@ -1,5 +1,6 @@
 // std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>::~pair() -- destroy a particle-system component slot: release the instance's counted component, then the CBaseClass root of the instance
 // Leaf: ??1?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF65B0, length 61 bytes, `jmp` tail. Callers: 0x00AF768D / 0x00AF784A in
 // the vector insert helpers 0x00AF7570 / 0x00AF7730 of the CParticleSystem Components vector (the landed resize(n)
 // 0x00AF7A10 names the element: pair<EPSCType, CComponentInstance>, vtable 0x0129F478, base CBaseClass). The manifest label
@@ -12,26 +13,7 @@
 // declares no destructor (no vtable store), its counted pointer re-reads Info, the out-of-line root dtor is the tail jmp.
 void __cdecl operator delete(void* p);                       // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                    // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);               // called with Data in ecx, nothing on the stack
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 

@@ -1,4 +1,5 @@
 // CCreatureAction_SummonerFlameSlice::FrameUpdate() -- base FrameUpdate, then while the flame-slice thing is alive and carries its obstruction (interface type 0xed), stretch the obstruction over the summoner (start, end, twice the summoner's radius)
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CAF10, length 130 bytes (+ int3 padding).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the slice thing at +0x114
@@ -33,11 +34,8 @@ struct CObstructionShape {
     }
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                        // +0x04
-    CBaseObject* GetPItem() const;               // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined, re-fetching GetPItem).
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)

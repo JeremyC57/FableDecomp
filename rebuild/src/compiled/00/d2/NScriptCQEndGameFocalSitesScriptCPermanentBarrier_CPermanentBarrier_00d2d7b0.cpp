@@ -1,5 +1,6 @@
 // NScript::CQ_EndGameFocalSitesScript::CPermanentBarrier::CPermanentBarrier(CQ_EndGameFocalSitesScript& parent, CScriptDataBase* data, const CScriptThing& me) -- construct the permanent-barrier entity script: the parent's quest interface, its thing, parent, master data and two empty thing vectors
 // Leaf: ??0CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D2D7B0, length 76 bytes.
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90. Vtables 0x012C3224 (the entity-script
 // base, as in the landed Create_CVtable_* factories) and 0x012CC48C (this class, no RTTI).
@@ -13,10 +14,9 @@
 // Naming wave 35: identity reg 00d2af3b "PermanentBarrier" in 00d2aa40; Alloc 00d2d730; vtable 012cc48c; called by the Alloc after operator new; PDB ??0CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@; refs(call)=Alloc; was under-qualified CPermanentBarrier::CPermanentBarrier (wave3/labels_alloc.tsv); PDB ??0CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z in Ego_r.pdb / FableWin.pdb.
 //   Was `??0CPermanentBarrier@@QAE@PAUCQ_EndGameFocalSitesScript@@PAUCQ_SunnyvaleMasterData@@ABUCScriptThing_Calls@@@Z`: the class is nested in NScript::CQ_EndGameFocalSitesScript with the PDB parameter types; the row's
 //   CScriptThing_Calls stand-in is spelled CScriptThing (its copy ctor 0x004ABE90 is ??0CScriptThing@@QAE@ABV0@@Z); same bytes.
-class CScriptThing { public:
-    unsigned char _body[12];
-    CScriptThing(const CScriptThing& other);                // 0x004ABE90
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 struct CGameScriptInterface_Calls;
 

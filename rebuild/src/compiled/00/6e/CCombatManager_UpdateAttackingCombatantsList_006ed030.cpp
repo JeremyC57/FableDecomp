@@ -1,5 +1,6 @@
 // CCombatManager::UpdateAttackingCombatantsList(CCombatantInfo& info, bool force) -- per-frame pass over a defender's attackers: update its attack pattern and instruction, rebuild its placement wheel, then for each attacker on the wheel age its preferred dolly, run the sequence resets, and when its melee sequence's next action is a strike against an attackable defender, finish the strike it is still interruptibly playing
 // Leaf: ?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006ED030, 449 bytes, thiscall `ret 8`. Callers 0x006ED218, 0x006ED756, 0x006EDD78 (the
 //   combat manager's register / update paths).
 // Identity (proven): Ego_r.pdb ?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z (donor 0x00716990) is,
@@ -206,14 +207,7 @@ public:
 };
 }   // namespace std
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    T* operator->() const { return Data; }
-    T* Get() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CCreatureActionBase {                             // vtable 0x01259D24
 public:

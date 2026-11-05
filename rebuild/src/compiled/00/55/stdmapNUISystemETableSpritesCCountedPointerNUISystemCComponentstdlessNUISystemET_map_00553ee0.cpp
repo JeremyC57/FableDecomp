@@ -4,18 +4,14 @@
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
 //   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was std::_Rb_tree<T_node0x1c_00553ee0>::_Rb_tree).
 // Leaf: ??0?$map@W4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@U?$less@W4ETableSprites@NUISystem@@@std@@V?$allocator@U?$pair@$$CBW4ETableSprites@NUISystem@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@5@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CComponent; }
 namespace NUISystem { enum ETableSprites { }; }
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    CCPPointerInfo* Info;
-};
 namespace std {
 template <class _Tp> class allocator {
 public:

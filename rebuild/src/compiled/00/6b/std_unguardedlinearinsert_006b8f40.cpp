@@ -1,5 +1,6 @@
 // std::__unguarded_linear_insert(pair<unsigned long, CCountedPointer<CFaction> >* last, pair<unsigned long, CCountedPointer<CFaction> > val, CKeyPairCompareLess comp) -- STLport insertion-sort step over the faction vector map: shift larger keys up one slot, drop val into the hole
 // Leaf: ??$__unguarded_linear_insert@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B8F40, 186 bytes (+ int3 padding), `ret 10h`.
 // Callers: 0x006B9EFE (__unguarded_insertion_sort_aux 0x006B9ED0) and 0x006BA801 (__linear_insert 0x006BA7B0).
 // Callees: operator delete @ 0x00BFE9BC; the count block's DeleteFunc through its slot +4 (object at +8 in ecx).
@@ -15,46 +16,10 @@
 // Label correction: the catalog `Vector_CopyWithRefCount` is descriptive.
 void operator delete(void* p);                          // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // 12 bytes (Ego_r.pdb)
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void*);               // +0x04
-    void*         Data;                                 // +0x08
-};
+#include "engine/CCountedPointer.h"
 
 class CFaction;
 
-template <class T>
-class CCountedPointer { public:                                // 8 bytes
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            delete Info;
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 
 namespace std {
 template <class T1, class T2>

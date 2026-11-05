@@ -1,5 +1,6 @@
 // Coin::`scalar deleting destructor'(unsigned int) -- tavern coin-game coin: release the Thing intelligent pointer, the inlined Mass destructor stores the Mass vtable, flag-tested delete
 // Leaf: ??_GCoin@@UAEPAXI@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008EFFD0, 39 bytes (+9 int3 padding), thiscall, `ret 4`.
 // Identity: slot 0 of the Coin vtable 0x01288238 (rtti-vtables.tsv); the stored 0x01288230 is the Mass vtable (Mass's own
 //   deleting destructor 0x008EE910 stores it too). The Coin copy constructor 0x008EFF40 (Mass words +0x04..+0x20, Coin
@@ -15,18 +16,9 @@
 class CThing;
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();             // 0x00A01C10
-    void* PItem;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer() {}
-};
 #pragma pack(pop)
 
 class C2DVector { public: float X, Y; };

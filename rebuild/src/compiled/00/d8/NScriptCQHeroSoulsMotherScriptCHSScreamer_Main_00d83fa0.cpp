@@ -1,5 +1,6 @@
 // NScript::CQ_HeroSoulsMotherScript::CHS_Screamer::Main() -- a Hero Souls (Abbey mother) screamer: target the hero; until the mother's soul is collected, whenever no super screamer exists, the new-super-screamer timer has run out and the hero is over 5 units away, become the super screamer (mini-map marker, wait for the hero within 15 units), take scripted control, cast the unholy-power effect and drain the hero's health every timer period while lowering the mother's bar, starting the super attack once; finally play the death effect and remove Me
 // Leaf: ?Main@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
@@ -65,11 +66,8 @@ class CScriptThing : public CBaseClass { public:                           // vt
     __forceinline ~CScriptThing() { }                   // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
 };
-struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-    CBaseIntelligentPointer();                          // 0x0099A380
-    virtual ~CBaseIntelligentPointer();                 // 0x0099A430
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }

@@ -1,5 +1,6 @@
 // CTCKraken::StartLowAttackBeam() -- arm the low beam attack: the delay before the beam is the def's DelayBeforeLowBeam seconds in frames, then enter mode 4 (SetMode starts the beam effect)
 // Leaf: ?StartLowAttackBeam@CTCKraken@@QAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FC7A0, 38 bytes, thiscall, tail jump to StartBeamEffect.
 // Identity (proven): Ego_r.pdb donor order SetMode, StartLowAttackBeam, StartHighAttackBeam, EndAttackBeam, SetPhase is the retail
 //   order 0x007FC730 (landed SetMode), 0x007FC7A0, 0x007FC7D0, 0x007FC800, 0x007FC820 (landed SetPhase); this body reads
@@ -54,11 +55,8 @@ public:
     float         DelayBeforeLowBeam;                            // +0x4C
     float         DelayBeforeHighBeam;                           // +0x50
 };
-class CBaseIntelligentPointer { public:
-    virtual ~CBaseIntelligentPointer();
-    void* PItem;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CTCKraken : public CTCBase {
 public:
     enum EKrakenMode { };

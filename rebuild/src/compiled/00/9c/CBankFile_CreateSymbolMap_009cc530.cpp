@@ -1,4 +1,5 @@
 // CBankFile::CreateSymbolMap(CSymbolMap&, bool) -- add valid, non-array entry names with their type prefix and index.
+// Plan phase 5 (2026-11-05), CArray wave: the local CArray stand-in replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>). Also: the local CArray's pointer members First/Last are the header CArray's (public STLport vector<T>) begin() / end() (STLport vector start +0 / finish +4).
 // Retail: 0x009CC530, 262 bytes. Leaf: CreateSymbolMap
 // Naming wave 27 (family dm, chunk 695): 0x009E5C30 is CSymbolMap::UpdateDirty() const (Ego_r.pdb + FableWin.pdb); was
 //   an invented ?Finalise@CSymbolMap (no Finalise in either PDB).
@@ -22,7 +23,7 @@ class CSymbolMap { public:
     void AddSymbolDirty(const CCharString&, const CCharString&, long); //009E54E0
     void UpdateDirty() const;   // 0x009E5C30 (Ego_r.pdb / FableWin.pdb ?UpdateDirty@CSymbolMap@@QBEXXZ)
 };
-template<class T> class CArray { public: T* First; T* Last; T* Limit; bool empty() const { return First==Last; } T& operator[](unsigned long i) { return First[i]; } };
+#include "engine/CArray.h"
 struct CRuntimeData { unsigned long DataOffset, DataSize; unsigned char DataType; bool Valid; };
 struct CPackedUIntArray {
     unsigned long* PackedInts; unsigned long Size; unsigned char Bits; unsigned long Bias;
@@ -44,7 +45,7 @@ class CBankFile { public:
     bool IsValid(unsigned long i) const {
         if (i==0 || i>=Size) return false;
         if (PackedValid.Size) return PackedValid[i-1]!=0;
-        return RuntimeData.First[i].Valid;
+        return RuntimeData.begin()[i].Valid;
     }
     CCharString GetSymbol(unsigned long i) {
         if (Symbols.empty()) return CCharString("(Unknown)",-1);
@@ -52,7 +53,7 @@ class CBankFile { public:
     }
     unsigned long GetDataType(unsigned long i) const {
         if (PackedDataType.Size) return PackedDataType[i-1];
-        return RuntimeData.First[i].DataType;
+        return RuntimeData.begin()[i].DataType;
     }
     void CreateSymbolMap(CSymbolMap&, bool);
 };

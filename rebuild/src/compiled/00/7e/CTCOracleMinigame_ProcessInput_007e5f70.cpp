@@ -1,5 +1,6 @@
 // CTCOracleMinigame::ProcessInput(EOracleMinigameInput input) -- while the game waits for input (stage 4) and fewer symbols are pending than the level allows, queue the input and push its symbol onto the quest-info HUD; true when taken
 // Leaf: ?ProcessInput@CTCOracleMinigame@@QAE_NW4EOracleMinigameInput@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Count->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E5F70, 120 bytes (`ret 4` + int3 padding). FableWin.pdb
 //   `?ProcessInput@CTCOracleMinigame@@QAE_NW4EOracleMinigameInput@@@Z` (public thiscall); the catalog label
 //   `CInputProcessOracleMinigame_PushSymbolToQueue` was an autoname guess (the neighbours are CTCOracleMinigame members).
@@ -61,11 +62,7 @@ public:
 };
 }
 
-template <class T> class CCountedPointer { public:
-    T*    Data;
-    void* Count;
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CPlayerGui {
 public:

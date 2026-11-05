@@ -1,5 +1,6 @@
 // CEngineLandscapeMap::~CEngineLandscapeMap() -- destructor: release a still-pending patch-tree file block, delete the patch array and the patch tree, then the texture palette, the loading-patches and map-file counted pointers and the CMovableResource base
 // Leaf: ??1CEngineLandscapeMap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDD210, 218 bytes (+ int3 padding).
 // Callees: CEngineStaticMapFileBlockManager::ReleaseRequest(long) 0x00BE0400 (on FileBlockManager, the PatchTreeFileBlockPos
 //   request), operator delete[] 0x00BFEB1C (an empty patch array's block), the patches' and the tree's virtual dtors (slot 0
@@ -22,27 +23,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:
-    long  References;                                  // +0x00
-    void (__fastcall* Destroy)(void* object);          // +0x04
-    void* Object;                                      // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->References;
-            if (Info->References == 0) {
-                Info->Destroy(Info->Object);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 struct CPaletteEntry {                                 // CEngineTexturePalette::CPaletteEntry
     unsigned long Index;                               // +0x00

@@ -1,5 +1,6 @@
 // CTCDrainLife::~CTCDrainLife() -- drain-life spell thing component destructor (empty user body): destroy Shots, PItemRemoved and PDef, then ~CTCBase
 // Leaf: ??1CTCDrainLife@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C31C0, int3 padding before and after, thiscall, tail `jmp ~CTCBase`.
 // Identity (proven, two sources): (1) it stores vtable 0x0126E284 (RTTI .?AVCTCDrainLife@@ : CTCBase) and its sole caller is the
 //   scalar deleting destructor 0x007C3E70, slot 0 of that vtable; (2) Ego_r.pdb 0x007C21C0 / FableWin.pdb 0x0270FBC0
@@ -51,21 +52,8 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : protected _V
 } // namespace std
 
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                         // vtable 0x0129C95C (vptr + PData, 8 bytes; 1-aligned in retail, chunk 706 model)
-public:
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10 ??1CBaseIntelligentPointer@@UAE@XZ
-    CBaseObject* GetPItem() const;                      // 0x00A01B50 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
-    void SetPItem(CBaseObject* item);                   // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                          // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {    // FableWin member set: Get / Set / -> / *
-public:
-    T* Get() const { return static_cast<T*>(GetPItem()); }
-    T* operator->() const { return Get(); }
-    T& operator*() const { return *Get(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 
 class CSpecialAbilitiesDrainLifeDef;

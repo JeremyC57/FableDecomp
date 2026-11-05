@@ -1,5 +1,6 @@
 // CNewFrontendGameComponent::InitialiseEngine() -- create the engine and initialise it for the front end
 // Leaf: ?InitialiseEngine@CNewFrontendGameComponent@@AAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe 0x0042E204, 458 bytes, size-optimised TU with the biased large frame (`lea ebp,[esp-78h]`).
 // Names (Ego_r.pdb / FableWin.pdb): ?InitialiseEngine@CNewFrontendGameComponent@@AAEXXZ (private); ?GFAllocEngine@@YIPAVCIEngine@@XZ
@@ -296,14 +297,7 @@ public:
 };
 CIEngine* __fastcall GFAllocEngine();                    // 0x00B26340
 
-template <class T> class CCountedPointer
-{
-public:
-    T*    Data;
-    void* Info;
-    void Reset(T* object);                               // 0x0042FD04 (T = CIEngine)
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 
 class CNewFrontendGameComponent                          // Ego_r.pdb offsets (no engine header)
 {

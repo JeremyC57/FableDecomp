@@ -1,4 +1,5 @@
 // CQuestManager::OnActivateEntity(CThing* thing) -- a thing with a real script name (not "NULL"/"", not of type 0x0d) is offered to every active quest's script that binds that name, as (UID, CScriptThing); the thing is then flagged ActivatedScript
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AFA60, length 160 bytes, `ret 4`.
 // Callees: CCharString::operator!=(const char*) @ 0x0099E960 (x2: "NULL" @ 0x012393E4, "" @ 0x0122D70E), the script's
 // name-binding test @ 0x00CB7D60 (manifest "CScriptManager::FindScriptBinding", on the CScriptBase), CThing::GetScriptThing
@@ -16,8 +17,7 @@ class CCharString { public:
     void* PStringData;
     bool operator!=(const char* text) const;       // 0x0099E960
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

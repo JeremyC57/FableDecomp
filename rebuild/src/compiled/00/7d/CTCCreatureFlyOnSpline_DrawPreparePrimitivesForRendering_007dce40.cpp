@@ -1,5 +1,6 @@
 // CTCCreatureFlyOnSpline::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- debug-draw the flight spline: one persistent yellow line primitive per engine handle, each joining consecutive spline points sampled at equal progress steps from 0 to 1
 // Leaf: DrawPreparePrimitivesForRendering
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pCount->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DCE40, 336 bytes (`ret 4`).
 // Callees: CCardinalSpline::GetSplinePosition(C3DVector*, float) @ 0x00A567A0, CEnginePrimitiveLine::CEnginePrimitiveLine(...)
@@ -46,11 +47,7 @@ class CCardinalSpline { public:
     void GetSplinePosition(C3DVector* position, float progress);    // 0x00A567A0
 };
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T* Data;                                            // +0
-    SCountBlock* m_pCount;                              // +4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 struct CEnginePrimitiveHandleVector {                   // STLport vector<CEnginePrimitiveHandle>
     CEnginePrimitiveHandle* _M_start;
     CEnginePrimitiveHandle* _M_finish;

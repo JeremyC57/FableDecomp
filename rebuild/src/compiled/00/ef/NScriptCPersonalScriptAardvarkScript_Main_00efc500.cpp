@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_AardvarkScript::Main() -- the DEMON test script: take the thing scripted "DEMON" under scripted control, start a paused movie sequence, wait a second, and if the demon is still alive have it speak "Smack my bitch up" to the hero and wait until it finishes; then wait two seconds, unpause, end the movie and release the demon
 // Leaf: Main
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EFC500, 721 bytes (+ int3 padding), plain `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 / dtor 0x0099EAE0,
 //   CBaseObject ctor 0x0099A380 / dtor 0x0099A430, the scripted-thing handle (Speak 0x007E7390, IsPerformingScriptTask
@@ -21,26 +22,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
-class CCPPointerInfo { public:                                // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImpl;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

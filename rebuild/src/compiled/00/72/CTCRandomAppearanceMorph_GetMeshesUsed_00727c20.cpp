@@ -1,5 +1,6 @@
 // CTCRandomAppearanceMorph::GetMeshesUsed(vector<NGraphicAppearance::CMeshInfo>& meshes) const -- report the meshes this appearance uses: the main graphic's mesh (primary) and the mesh of every part of the current morph set, all at the main graphic's render size
 // Leaf: GetMeshesUsed
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00727C20, 214 bytes (`ret 4`). CTCRandomAppearanceMorph's CAGraphicAppearanceComponent vtable
 //   0x01266520 slot 2 (catalog "CTCRandomAppearanceMorph::GetMeshesUsed"; PDB ?GetMeshesUsed@CTCRandomAppearanceMorph@@UBEXAAV?$vector@VCMeshInfo@NGraphicAppearance@@...@Z):
 //   `this` is the component subobject at +0x0c (ParentThing is [ecx-8], PMeshMorphSet [ecx+4]).
@@ -92,11 +93,7 @@ namespace NGraphicAppearance {
         virtual void GetMeshesUsed(vector<CMeshInfo>& meshes) const;   // slot 2
     };
 }
-template <class T> class CCountedPointer { public:             // {object, count block}
-    T*    Object;
-    void* Info;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 class CTCRandomAppearanceMorph : public CTCBase, public NGraphicAppearance::CAGraphicAppearanceComponent { public:
     CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet> PMeshMorphSet;   // +0x10
     unsigned long     Seed;                             // +0x18

@@ -1,5 +1,6 @@
 // std::vector<CScriptThing>::reserve(size_type n) -- STLport reserve of the 12-byte script-thing handles: when capacity() < n, allocate n slots, copy the elements over and clear the old block (or just allocate when empty), keep the size
 // Leaf: ?reserve@?$vector@VCScriptThing@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008ACD30, 201 bytes, thiscall, `ret 4`.
 // Identity: the manifest's "std::vector::_Reserve" is descriptive. The landed __uninitialized_copy 0x008AC140 (CScriptThing,
 //   12 bytes: vptr 0x01238C8C + CCountedPointer<CScriptThing> PImp) lists 0x008ACDA8 in this body as a caller; the five
@@ -19,18 +20,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void*);                   // +0x04
-    void* Data;                                             // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

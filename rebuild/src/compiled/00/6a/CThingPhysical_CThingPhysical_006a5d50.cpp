@@ -1,5 +1,6 @@
 // CThingPhysical::~CThingPhysical() -- store the physical-thing vtable, take the thing off the thing manager's physical list, destroy the two creator pointers and the health-over-time list, then ~CThing
 // Leaf: ??1CThingPhysical@@UAE@XZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A5D50, 62 bytes, thiscall, tail `jmp ~CThing` 0x004C8310.
 // Identity (proven): the first store is vtable 0x01244E84 (RTTI .?AVCThingPhysical@@ : CThing : CClass : CBaseObject : CBaseClass);
 //   Ego_r.pdb / FableWin.pdb ??1CThingPhysical@@UAE@XZ (a user dtor: the store and the RemoveFromPhysicalList body). Callers: the
@@ -76,18 +77,8 @@ public:
 }   // namespace std
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                            // vtable 0x0129C95C (vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                             // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10 ??1CBaseIntelligentPointer@@UAE@XZ
-    CBaseObject* GetPItem() const;                         // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                             // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CThingPhysical;
 class CThingManager {

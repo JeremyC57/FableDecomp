@@ -1,6 +1,7 @@
 // CTCSummonSpell::`scalar deleting destructor'(unsigned int) -- this class's vtable, ~PItemRemoved (+0x2c), ~Minion (+0x11), the PDef release (+0x0c), ~CTCBase as a call, then operator delete when bit 0 of the flag is set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0079BDF0, length 78 bytes.
 // Leaf: ??_GCTCSummonSpell
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Callees: CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 (twice), CTCBase::~CTCBase @ 0x00686830,
 // operator delete @ 0x00BFE9BC. Vtable 0x0126C2B4 = CTCSummonSpell (rtti-vtables.tsv, slot 0 is this body); the chunk label
 // "CTCActionUseBuyOrSteal::`vector_deleting_destructor'" is propagated and rejected.
@@ -45,23 +46,9 @@ struct CDefPointer {                           // CDefPointer<T const>
 
 #pragma pack(push, 1)
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
-public:
-    CIntelligentPointer() : CBaseIntelligentPointer() { }
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 #pragma pack(pop)
 
 class CTCSummonSpell : public CTCBase { public:   // vtable 0x0126C2B4

@@ -1,5 +1,6 @@
 // NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::Main() -- Orchard Farm raid, Whisper's sparring script: wait out her cutscene, make her unkillable and block-teaching, whisper the flourish tutorial, wait until the hero hits her with a flourish, whisper again, make her killable with a health bar, then flag the mission won once her health drops to 1
 // Leaf: ?Main@COrchardFarmWhisper@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountBlock (= CCPPointerInfo) members References->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCF0B0, 789 bytes (+ int3 padding); referenced from the
 //   COrchardFarmWhisper vtable 0x012DB3E4.
@@ -26,12 +27,7 @@ class CRGBColour { public:
 };
 class CCharString;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCountBlock { long References; };
-template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>: {Data, Info}
- void* Data;
- CCountBlock* Info;
- CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"

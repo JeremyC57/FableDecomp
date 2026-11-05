@@ -1,4 +1,5 @@
 // NUISystem::CTextSlider::RevertValue() -- restore the original selection, push it into every action's target and re-run the actions
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members Count->RefCount are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005491A0, 135 bytes (+9 int3). __fastcall, `ret`.
 // Callees: CManager::GetInstance() 0x0041E5F2 (static); the front-end manager's virtual slot 14 (+0x38), called with
 //          each action (descriptive name ExecuteAction).
@@ -8,12 +9,7 @@
 //        names) takes OriginalSelectedChild; Move is set after the loop.
 // Layout: retail NUISystem::CTextSlider = Ego_r.pdb minus 0x30 up to Actions (+0x16C, 12-byte STLport vector) and minus 0x34
 //         after it; OriginalSelectedChild +0x194.
-class CCPPointerInfo { public: long Count; };
-template <class T> class CCountedPointer { public:
-    T* Data;                                     // +0
-    CCPPointerInfo* Info;                        // +4
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 template <class T> struct CRetailVector {        // STLport vector (12 bytes; PDB 16)
     T* _M_start;
     T* _M_finish;

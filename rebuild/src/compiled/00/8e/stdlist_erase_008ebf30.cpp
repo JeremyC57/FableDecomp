@@ -1,5 +1,6 @@
 // std::list::erase(iterator position) -- (list<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim> >) STLport single-node erase: unlink the node, release its counted pointer (deleter and count block freed at zero), free the node and return the iterator to the following node
 // Leaf: ?erase@?$list@V?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@V?$allocator@V?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@@std@@@2@U32@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EBF30, 85 bytes (+ int3 padding), thiscall, `ret 8` (hidden iterator result +
 //   the iterator by value), returns the result pointer.
 // Identity (proven): std::list<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim> >::erase(iterator); evidence: its callers are NCreatureMode::CModeHoverBase::UpdateHoverAnim 0x008EA9F0 (erases the front of CModeHoverBase::AnimQueue, Ego_r.pdb list<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim> >; landed) and pop_front 0x008EBFD0 (FableWin.pdb ?pop_front@?$list@V?$CCountedPointer@VCHoverAnim@CModeHoverBase@NCreatureMode@@@@...).
@@ -14,29 +15,7 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 namespace NCreatureMode { class CModeHoverBase { public: class CHoverAnim; }; }
-class CCPPointerInfo {                                     // Ego_r.pdb 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {               // 8 bytes: the object, the shared count block
-public:
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator {

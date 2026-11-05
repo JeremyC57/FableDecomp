@@ -1,5 +1,6 @@
 // NUISystem::CTable::Initialise() -- re-initialise a table: base initialise, rebuild its sprites, drop the sprite map and both separation vectors, and re-parent every child
 // Leaf: ?Initialise@CTable@NUISystem@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe @ 0x00550C60, 238 bytes, plain `ret`.
 // Body: only when PHorizontalSeparations and PVerticalSeparations are both set: NUISystem::CChangingStateComponent::Initialise()
 // (0x0052C730, non-virtual base call); virtual slot 142 (+0x238, 0x00551EA0); Sprites.clear() (STLport _Rb_tree::clear:
@@ -48,12 +49,7 @@ public:
     T& operator[](unsigned int n) { return *(begin() + n); }
 };
 }
-template <class T> class CCountedPointer {
-public:
-    T*    Object;
-    void* Info;
-    T* operator->() const { return Object; }
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 enum ETableSprites { TABLE_SPRITE_0 };
 class CComponent {

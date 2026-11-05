@@ -1,5 +1,6 @@
 // CCombatActionBase::GetPCombatActionFromEnum(EActionRegisteredType type, CThingCreatureBase& creature, CThingCreatureBase& target) -- clone the registered prototype for the type as a combat action, give it its creature and target and return it counted; a null counted pointer when the type is not registered, its prototype is null or the clone fails
 // Leaf: ?GetPCombatActionFromEnum@CCombatActionBase@@SI?AV?$CCountedPointer@VCCombatActionBase@@@@W4EActionRegisteredType@@AAVCThingCreatureBase@@1@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00857430, length 148 bytes (+12 int3). Static `__fastcall`, `ret 8` (the hidden
 //   CCountedPointer result in ecx, the type in edx, creature and target on the stack).
 // Callees: the action registry's find(const EActionRegisteredType&) @ 0x00696680 (iterator through a hidden pointer),
@@ -17,16 +18,8 @@
 enum EActionRegisteredType { ACTION_REGISTERED_TYPE_0 = 0 };
 class CThing;
 class CThingCreatureBase;
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(T* item);                               // 0x0085A840 for CCombatActionBase
-    T* operator->() const { return Data; }
-};
 
 namespace std {
 template <class _T1, class _T2> class pair {

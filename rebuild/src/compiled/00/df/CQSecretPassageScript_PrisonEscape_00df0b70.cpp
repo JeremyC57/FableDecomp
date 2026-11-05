@@ -1,5 +1,6 @@
 // CQ_SecretPassageScript::PrisonEscape() -- once the secret passage is loaded and the hero reaches the cutscene marker: stop the mother following, play the "Jack captures" cutscene (hero + mother cast) and fade out, remove every live follower, make the tortured mother follow the hero by region, remove her and hand the hero the prison escape quest card
 // Leaf: PrisonEscape
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members PImp_Data->Data, PImp_Info->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF0B70, 1281 bytes (int3 padded to 1296).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, IsDistanceBetweenThingsUnder
 //   0x00CBE2FF, ~CScriptThing 0x004AA840, operator delete 0x00BFE9BC, CBaseObject 0x0099A380 / ~ 0x0099A430, scripted-thing
@@ -62,29 +63,7 @@ struct SScriptThingInfo {
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-template <class T> class CCountedPointer { public:                            // CCountedPointer<CScriptThingImp>
-    void* PImp_Data;
-    SScriptThingInfo* PImp_Info;
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        SScriptThingInfo* info = other.PImp_Info;
-        void* data = other.PImp_Data;
-        if (PImp_Info != info) {
-            if (PImp_Info) {
-                --PImp_Info->m_references;
-                if (PImp_Info->m_references == 0) {
-                    PImp_Info->m_pfnDestroy(PImp_Info->m_pObject);
-                    delete PImp_Info;
-                }
-            }
-            PImp_Data = data;
-            PImp_Info = info;
-            if (info)
-                ++info->m_references;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

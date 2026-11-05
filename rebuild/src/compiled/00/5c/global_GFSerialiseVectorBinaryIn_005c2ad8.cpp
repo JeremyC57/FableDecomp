@@ -1,5 +1,6 @@
 // GFSerialiseVectorBinaryIn(CMemoryDataInputStream& stream, vector<NInventory::CItem>& out) -- read the count, resize the vector, then read every item in place
 // Leaf: GFSerialiseVectorBinaryIn
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pBlock->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C2AD8, length 164 bytes (__fastcall stream, out).
 // Callees: vector<CItem>::resize 0x005C2AA9, CItem traits TransferBinaryIn 0x005C19A3, CCountedPointer dtor 0x005C04BF (the
 //   traits' DefaultVal), ReadWithSrcChunkOverflow 0x00993CA0.
@@ -34,12 +35,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
     }
 };
 struct SCountBlock;
-template <class T> class CCountedPointer { public:
-    T* m_pObject;
-    SCountBlock* m_pBlock;
-    CCountedPointer() : m_pObject(0), m_pBlock(0) { }
-    ~CCountedPointer();                                     // 0x005C04BF
-};
+#include "engine/CCountedPointer.h"
 namespace NInventory {
 class CPerItemData;
 class CItem { public:

@@ -1,4 +1,5 @@
 // CCombatWheel::Update() -- rotate every ring by its delta and tick down each prong's blockage timer, unblocking at zero
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E8560, length 71 bytes. No callees.
 // Layout from the Ego_r PDB (CDefendingCombatantInfo::CCombatRing / CProng, retail 12-byte vectors):
 // RotationAngle/DeltaRotation at +0/+4, Prongs at +0x10 (28-byte prongs with Blocked at +0 and
@@ -14,11 +15,8 @@ template<class T> struct CRetailVector {
 };
 class CThing;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CThing* m_pItem;                           // +4
-    CThing* GetPItem() const;                  // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CProng {                                // CDefendingCombatantInfo::CProng, 28 bytes (PDB)
     bool  Blocked;                             // +0x00

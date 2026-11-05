@@ -2,6 +2,7 @@
 // component's child array (CComponent::AddChild) and, unless the child's type is 8, push the current
 // TargetState into it through its virtual SetState (slot 48) -- a sibling jump that reuses the argument slot.
 // Leaf: ?AddChildDynamically@CChangingStateComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052CAB0, length 56 bytes.
 // Callees: CComponent::AddChild @ 0x00533CC0, child vtable slots 65 (+0x104) and 48 (+0xc0).
 // NUISystem::CChangingStateComponent (retail layout). The Ego_r PDB gives the class 0x18c bytes with
@@ -14,11 +15,7 @@
 // Identity: the class is NUISystem::CChangingStateComponent (RTTI type descriptor of its vtable; Ego_r/FableWin.pdb
 //   ?AddChildDynamically@CChangingStateComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z); the catalog name lacked the namespace. The members are now declared inside NUISystem
 //   and the graded member is virtual as in the PDB (its body is unchanged).
-template <class T> class CCountedPointer {      // CCountedPointer<T> (global template)
-public:
-    T*    Object;                                 // +0
-    void* Info;                                   // +4
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem {
 
@@ -196,8 +193,8 @@ public:
 void CChangingStateComponent::AddChildDynamically(CCountedComponentPointer& child)
 {
     AddChild(child);
-    if (child.Object->GetComponentType() != 8)
-        child.Object->SetState(TargetState);
+    if (child.Data->GetComponentType() != 8)
+        child.Data->SetState(TargetState);
 }
 
 }   // namespace NUISystem

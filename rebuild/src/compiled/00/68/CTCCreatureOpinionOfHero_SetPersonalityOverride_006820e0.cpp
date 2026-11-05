@@ -1,6 +1,7 @@
 // CTCCreatureOpinionOfHero::SetPersonalityOverride(const CCharString& defName, bool force) -- resolve the personality def by name
 // Retry 10: RELOCATION_MATCH -- hand-split `defName == ""` (null-data strcmp arm in its own block, data arm as else-if) with every true exit `goto set` and a bare `return` in between.
 // Leaf: SetPersonalityOverride
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006820E0, length 94 bytes (+2 int3). Callers include CGameScriptInterface::
 // EntitySetPersonalityOverride (0x0089C466) and 0x00682374/0x006823A6.
 // Callees: the world accessor @ 0x00686A70, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&)
@@ -56,10 +57,8 @@ class CWorld { public:
 // SetHeroOpinionEnemy 0x006815D0 also shows), hence a local model.
 class CThing;
 
-struct CBaseIntelligentPointer {
-    void* __vftable;                        // +0x00
-    void* PData;                            // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct SLongNode {                          // STLport _List_node<long>
     SLongNode* Next;                        // +0x00

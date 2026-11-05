@@ -1,5 +1,6 @@
 // std::vector::~vector() -- (vector<CCountedPointer<CEngineSimulationBase> >) STLport destructor: destroy every element (out of line), then free the block
 // Leaf: ??1?$vector@V?$CCountedPointer@VCEngineSimulationBase@@@@V?$allocator@V?$CCountedPointer@VCEngineSimulationBase@@@@@std@@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B83DF0, 37 bytes (+ int3 padding to 48), thiscall, plain `ret`.
 // Identity (proven): vector<CCountedPointer<CEngineSimulationBase> >::~vector; evidence: its only caller is the scalar deleting destructor 0x00B84070 (slot 0 of vtable 0x012A398C, RTTI .?AVCEnginePrimitiveSimulationInfo@@) on this+8 -- Ego_r.pdb's CEnginePrimitiveSimulationInfo::Simulations +8, CArray<CCountedPointer<CEngineSimulationBase> >; its __destroy_aux 0x00B83580 releases 8-byte CCountedPointers; Ego_r.pdb names ??1?$vector@V?$CCountedPointer@VCEngineSimulationBase@@@@... (a CArray<T> destructor would have the same body; Review at landing, as H077's 0x00AD83A0)
 // Label: the manifest's "OnReadFinished" is propagated (family H086: six destroy-and-free bodies with an out-of-line __destroy_aux --
@@ -10,13 +11,7 @@
 // Body: STLport 4.6 -- `_Destroy(_M_start, _M_finish)` then the block freed when non-null. __destroy_aux is a same-TU noinline
 //   stand-in under auto_inline(off) (retail calls it out of line); the empty tag temporary lives in the `push ecx` slot.
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
-class CCPPointerInfo;
-template <class T> class CCountedPointer {             // 8 bytes
-public:
-    T*              Data;                             // +0x00
-    CCPPointerInfo* Info;                             // +0x04
-    ~CCountedPointer();                               // inline in retail (in __destroy_aux)
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 struct __true_type { };

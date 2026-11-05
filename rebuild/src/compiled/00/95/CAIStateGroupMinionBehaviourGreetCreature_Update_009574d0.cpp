@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionBehaviourGreetCreature::Update() -- while the creature to greet is alive, turn to face it;
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // once facing, play the SG_CHICKEN_WANDER animation and wait for it; finish the update either way.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009574D0, length 239 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (IS_THING_ALIVE, twice), CAIStateGroupBase::AIAction_LookAtThing
@@ -13,14 +14,8 @@ class CThing;
 class CThingCreatureBase;
 
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    // (the dead bit lives at +0x91 of the thing)
-    virtual void v00();
-    CThing* m_pItem;                            // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-    CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x01237F1C
     CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }

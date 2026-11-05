@@ -1,5 +1,6 @@
 // std::pair<unsigned long,C3DMeshVolume>::pair() -- default-construct an indexed mesh-volume entry: zero key, empty volume name, null counted convex volume
 // Leaf: ??0?$pair@KVC3DMeshVolume@@@std@@QAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A327E0, 39 bytes, thiscall, plain `ret` (returns `this`).
 // Identity: Ego_r.pdb has `??0?$pair@KVC3DMeshVolume@@@std@@QAE@XZ`; the element of C3DMeshStats' sorted
 //   vector<pair<unsigned long, C3DMeshVolume> > (the landed neighbours 0x00A326D0 ~pair, 0x00A32F40 __uninitialized_copy
@@ -16,13 +17,7 @@ public:
     CCharString();                                           // 0x0099E4B0
 };
 
-class CCPPointerInfo;
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                    // +0x0
-    CCPPointerInfo* Info;                                    // +0x4
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 class CContainmentVolume;
 class C3DMeshVolume {                                        // Ego_r.pdb, 0xc bytes

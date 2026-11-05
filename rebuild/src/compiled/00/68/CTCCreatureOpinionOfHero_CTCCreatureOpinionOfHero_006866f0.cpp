@@ -1,5 +1,6 @@
 // CTCCreatureOpinionOfHero::~CTCCreatureOpinionOfHero() -- destructor: the unknown-threat intelligent pointer, the transient offsets, the 92 known-deed lists, the pending deeds, the relative-opinion and three mask vectors, the two def pointers, then CTCBase
 // Leaf: ??1CTCCreatureOpinionOfHero
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006866F0, 222 bytes; called only from the deleting destructor 0x006866D0 (vtable
 //   0x0125BC3C slot 0 = CTCCreatureOpinionOfHero, rtti-vtables.tsv).
 // Label correction: the catalog's "CEngineInternalPrimitiveMeshBase::~CEngineInternalPrimitiveMeshBase" is propagated; the
@@ -83,15 +84,8 @@ struct CDefPointer {
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class COpinionSet { public:                                   // retail 12 bytes: one POD vector
     SPodVector<float> Opinions;

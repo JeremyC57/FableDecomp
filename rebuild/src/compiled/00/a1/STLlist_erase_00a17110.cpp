@@ -1,5 +1,6 @@
 // std::list::erase(iterator position) -- STLport list<CNavQuadTreeMap>: unlink one node, destroy the map entry (section name, counted quad tree), free the node, return the next position
 // Leaf: ?erase@?$list@VCNavQuadTreeMap@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A17110, 93 bytes, __fastcall `ret 8` (hidden iterator result, position); `this` unused.
 // Identity: STLport 4.6 list::erase(iterator) out of line; the node payload at +8 is Ego_r.pdb CNavQuadTreeMap (32 bytes):
 //   PQuadTree +0 (CCountedPointer<CNavQuadTree>: Data, Info), Index +8, MapArea +0xC (C2DBoxI), SectionName +0x1C
@@ -18,29 +19,8 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void*         Data;                                 // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CNavQuadTree;
 

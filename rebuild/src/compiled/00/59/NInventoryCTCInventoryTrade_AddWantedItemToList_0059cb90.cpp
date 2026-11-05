@@ -1,5 +1,6 @@
 // NInventory::CTCInventoryTrade::AddWantedItemToList(long defIndex, NUISystem::CList* list, NUISystem::CViewport* viewport) -- builds a menu entry for a wanted item, wires its five actions and adds it to the list
 // Leaf: AddWantedItemToList@CTCInventoryTrade
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059CB90, 953 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
@@ -64,15 +65,7 @@ __declspec(noinline) void NUISystem::CActionParamList::push_back(NUISystem::CAct
     InsertParamNode(_M_node, value);
 }
 #pragma auto_inline(on)
-template<class T> class CCountedPointer { public:
-    T*    m_pObject;
-    void* m_pCount;
-    CCountedPointer() : m_pObject(0), m_pCount(0) {}
-    CCountedPointer(T* object);
-    ~CCountedPointer();
-    void Reset(T* object);
-    T* operator->() const { return m_pObject; }
-};
+#include "engine/CCountedPointer.h"
 namespace NUISystem {
 class CAction { public:
     long             ActionType;
@@ -174,32 +167,32 @@ void CTCInventoryTrade::AddWantedItemToList(long defIndex, CList* list, CViewpor
     CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     entry.Reset(fe->CreateMenuEntryComponent(L"INVALID NAME", 0.0f, 1.0f, "UI_WEAPON_MENU_ENTRY_TEMPLATE_NEW",
                                              0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
-    CComponent* comp = entry.m_pObject;
+    CComponent* comp = entry.Data;
     CCountedPointer<CAction> select(new CAction);
     select->ActionType = 0x7d0;
     select->UIActionParams.push_back(new CActionParamLong(defIndex));
-    select->AddParam(entry.m_pObject, select);
+    select->AddParam(entry.Data, select);
     CWideString model(L"UI_ITEM_MODEL_TEMPLATE_NEW");
     select->UIActionParams.push_back(new CActionParamString(model));
     entry->AddSelectedAction(select);
     CCountedPointer<CAction> focus(new CAction);
     focus->ActionType = 0x7df;
-    focus->AddParam(entry.m_pObject, focus);
+    focus->AddParam(entry.Data, focus);
     comp->AddFocusAction(focus);
     CCountedPointer<CAction> view(new CAction);
     view->ActionType = 0x7db;
     view->UIActionParams.push_back(new CActionParamLong(defIndex));
     view->AddParam(viewport, view);
-    view->AddParam(entry.m_pObject, view);
+    view->AddParam(entry.Data, view);
     entry->AddSelectedAction(view);
     CCountedPointer<CAction> focus2(new CAction);
     focus2->ActionType = 0x7e7;
-    focus2->AddParam(entry.m_pObject, focus2);
+    focus2->AddParam(entry.Data, focus2);
     comp->AddFocusAction(focus2);
     CCountedPointer<CAction> unfocus(new CAction);
     unfocus->ActionType = 0x7d6;
     unfocus->UIActionParams.push_back(new CActionParamLong(defIndex));
-    unfocus->AddParam(entry.m_pObject, unfocus);
+    unfocus->AddParam(entry.Data, unfocus);
     unfocus->UIActionParams.push_back(new CActionParamLong(1));
     comp->AddUnfocusAction(unfocus);
     list->AddEntry(entry);

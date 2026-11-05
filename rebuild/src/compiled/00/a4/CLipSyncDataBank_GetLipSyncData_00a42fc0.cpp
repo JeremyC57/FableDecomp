@@ -1,5 +1,6 @@
 // CLipSyncDataBank::GetLipSyncData(long index) -- make sure entry `index` is decoded (start loading it when the bank holds it, build it), touch it in its resource list and return its counted data pointer
 // Leaf: GetLipSyncData
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount are the header CCPPointerInfo's (same offsets).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A42FC0, 155 bytes. Callees: CBankFile::EntryExists 0x009CC190 (bool),
 // CLipSyncDataBankEntry::BeginLoading 0x00A42980 (index, bank), CLipSyncDataBankEntry::CData::BuildLipSync
@@ -37,17 +38,8 @@ class CResourceList { public:
     unsigned long CurrentFrame;            // +0x2c
 };
 
-struct SCountBlock { long m_references; };
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                          // +0
-    SCountBlock* m_pCount;                 // +4
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-};
 
 struct CLipSyncData;
 class CLipSyncDataBank;
@@ -89,7 +81,7 @@ CCountedPointer<const CLipSyncData> CLipSyncDataBank::GetLipSyncData(long index)
         if (slot.Data == 0)
             slot.BeginLoading(index, this);
     }
-    if (entry->Data->LipSync.m_pObject == 0)
+    if (entry->Data->LipSync.Data == 0)
         entry->Data->BuildLipSync();
     entry->Data->Touch();
     return entry->Data->LipSync;

@@ -1,5 +1,6 @@
 // NUISystem::CAction::AddParam(CActionParam* param, CCountedPointer<CAction>& self) -- append a UI parameter to the action; a component parameter is first told it is a parameter of this action (CComponent::AddActionIAmParamOf)
 // Leaf: ?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0053FDE0, 71 bytes (+ int3 padding), thiscall `ret 8`.
 // Identity: Ego_r.pdb `?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z`
 //   (and a one-argument overload); 287 call sites, the landed callers (CTextSlider::Initialize 0x00549B20,
@@ -77,11 +78,7 @@ public:
 };
 }
 
-template <class T> class CCountedPointer {
-public:
-    T*    Data;                                              // +0x00
-    void* Info;                                              // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem {
 class CAction;

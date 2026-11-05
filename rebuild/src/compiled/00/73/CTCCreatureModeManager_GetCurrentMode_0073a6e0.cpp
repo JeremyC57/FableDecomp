@@ -1,5 +1,6 @@
 // CTCCreatureModeManager::GetCurrentMode() const -- the mode at the front of the mode list
 // Leaf: ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe @ 0x0073A6E0, 9 bytes: `mov eax,[ecx+0Ch] ; mov ecx,[eax] ; mov eax,[ecx+8] ; ret`.
 // Identity (proven): Ego_r.pdb names ?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ and lays PModes
 // (std::list<CCountedPointer<CModeBase> >) at +0x0C; the ~30 callers reach this object as interface 0x31 through the thing's
@@ -16,11 +17,7 @@ template<class _Tp, class _Alloc = allocator<_Tp> > class list { public:      //
     _Tp& front() const { return ((_List_node<_Tp>*)_M_node->_M_next)->_M_data; }
 };
 }
-template<class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 class CThing;
 class CTCBase { public:                         // engine/CTCBase.h layout, modelled polymorphic
     virtual void v00();

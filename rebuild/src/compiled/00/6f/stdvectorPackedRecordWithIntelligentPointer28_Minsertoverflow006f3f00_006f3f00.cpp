@@ -1,6 +1,7 @@
 // 006f3f00 STL::Vector28_external28::InsertGrow_006f3f00
 // Flags: /O2 /Oy /Gr
 // Leaf: InsertGrow
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Layout: element stride28 derived from retail pointer division and allocation; concrete identity uncertain except cited caller.
 extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
@@ -9,7 +10,8 @@ struct Tag_006f3f00 {Tag_006f3f00(){}};
 // Layout:006eff60 copies packed byte+0, words+1/+5/+9, int+16 and intelligent pointer8 at+20; dtor calls00a01c10 on+20.
 // Layout:00a01c10 releases the separate control block (object+0, pointer references+4), rather than owning the observed object.
 struct IntelligentControl{void* object;int references;};
-struct CBaseIntelligentPointer{virtual ~CBaseIntelligentPointer();IntelligentControl* control;CBaseIntelligentPointer():control(0){}};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(push,1)
 struct Packed{char tag;int a,b,c;};
 #pragma pack(pop)

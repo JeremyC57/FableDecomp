@@ -1,5 +1,6 @@
 // CLevelLoader::Add(const CCountedPointer<CLevelLoader::CObject>& object) -- tell the object it was added to this loader, then append it to the loader's object list
 // Leaf: ?Add@CLevelLoader@@QAEXABV?$CCountedPointer@VCObject@CLevelLoader@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C2120, 70 bytes (+ int3 padding), thiscall `ret 4`.
 // Callers: four sites in the 0x00500xxx/0x00501xxx level-loading code (0x00500D8A, 0x005010BE, 0x00501329, 0x00501C48).
 // Callees: CLevelLoader::CObject::OnAdd(const CLevelLoader&) @ 0x006C20B0 (landed), malloc @ 0x00BFEA0E (the STLport node allocator).
@@ -13,18 +14,8 @@ extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CCPPointerInfo {
-public:
-    long RefCount;                                      // +0
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T* Data;                                            // +0
-    CCPPointerInfo* Info;                               // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    T* operator->() const { return Data; }
-};
 
 namespace std {
 

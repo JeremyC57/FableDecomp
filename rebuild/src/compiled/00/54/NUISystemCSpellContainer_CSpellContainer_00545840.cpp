@@ -1,5 +1,6 @@
 // NUISystem::CSpellContainer::~CSpellContainer() -- unregisters the container's observer from the front-end UI manager, destroys BaseSpells (the counted component pointers, then the block) and the CChangingStateComponent base
 // Leaf: ??1CSpellContainer@NUISystem@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00545840, 92 bytes, plain `ret`, `push ecx` frame (the __false_type tag slot).
 // Identity: the first stored vtable 0x0124786C is NUISystem::CSpellContainer's (RTTI; also 0x01247848 +4, 0x01247840
 //   +0x18), so this is Ego_r.pdb ??1CSpellContainer@NUISystem@@UAE@XZ; the catalog label "~CZoomingComponent" is wrong.
@@ -54,12 +55,7 @@ public:
 };
 } // namespace std
 
-template <class T> class CCountedPointer {      // 8 bytes: Data, count block
-public:
-    T*    Data;
-    void* Info;
-    ~CCountedPointer();
-};
+#include "engine/CCountedPointer.h"
 
 namespace NUISystem {
 

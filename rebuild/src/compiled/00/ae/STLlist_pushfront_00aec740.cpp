@@ -1,5 +1,6 @@
 // std::list::push_front(const T& x) -- (T = CCountedPointer<NParticleEngine::CParticleEmitter>) STLport list push_front: malloc a 16-byte node, placement copy-construct the counted emitter pointer into it (bumping the shared reference count) and link it in front of the first element
 // Leaf: ?push_front@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Block->Info are the header CCountedPointer's (same offsets); the local CCountBlock (= CCPPointerInfo) members DeleteData->DeleteFunc are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEC740, 61 bytes, __fastcall `ret 4`.
 // Callers: NParticleEngine::CParticleEmitterList::Insert 0x00AEB060 (catalog name; FableWin.pdb has Insert(CCountedPointer&)
 //   and a private Insert(list&, const CCountedPointer&, long)): the call at 0x00AEB159 pushes onto the emitter list.
@@ -16,22 +17,8 @@ inline void* operator new(unsigned int, void* p) { return p; }
 
 namespace NParticleEngine { class CParticleEmitter; }
 
-struct CCountBlock {
-    long RefCount;                                          // +0x0
-    void (__fastcall* DeleteData)(void* data);              // +0x4
-    void* Data;                                             // +0x8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*           Data;                                      // +0x0
-    CCountBlock* Block;                                     // +0x4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Block(other.Block)
-    {
-        if (Block)
-            ++Block->RefCount;
-    }
-};
 
 namespace std {
 template <class _Tp> class allocator {

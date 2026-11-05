@@ -1,6 +1,7 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<CLipSyncPhonemeSample>) STLport growth insert: allocate size + max(size, fill_len) samples, copy the head, x (once inline, or fill_len times) and the tail unless atend through the out-of-line uninitialized helpers, destroy and free the old block, adopt the new one
 // Flags: /Gr
 // Leaf: ?_M_insert_overflow@?$vector@VCLipSyncPhonemeSample@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4AC60, 247 bytes, thiscall, `ret 14h` (five arguments).
 // Identity (proven): std::vector<CLipSyncPhonemeSample>::_M_insert_overflow -- its only caller is the landed
 //   vector<CLipSyncPhonemeSample>::push_back 0x00A4AE00 (call at 0x00A4AE57), which binds this address as
@@ -20,31 +21,8 @@ extern "C" void __cdecl free(void* block);                                      
 inline void* operator new(unsigned int, void* p) { return p; }
 
 
-class CCPPointerInfo { public:
-    unsigned long RefCount;                            // +0x00
-    void (__fastcall* DeleteFunc)(void* data);         // +0x04
-    void*         Data;                                // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                              // +0x00
-    CCPPointerInfo* Info;                              // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            delete Info;
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
 
 class CCharString {
 public:

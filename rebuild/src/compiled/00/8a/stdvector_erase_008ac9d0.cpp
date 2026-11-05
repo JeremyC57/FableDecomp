@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CScriptThing >) STLport range erase: assign the tail [last, finish) down onto first through the out-of-line __copy, run each vacated element's virtual destructor, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AC9D0, 77 bytes, thiscall, `ret 8`, returns first.
 // Identity: vector<CScriptThing > -- proven; evidence: Ego_r.pdb CGameScriptInterface::GetPerceivingHeroEntityList(vector<CScriptThing>&) const calls it (0x008A8440) and the quest scripts' CScriptThing lists (CQ_HangingTreeGoodScript, CQ_OakValeBanditRaidScript, COracleTablet::RemoveCursedTablets ..) erase with it; 12-byte elements (`add esi,0Ch`) = Ego_r.pdb sizeof(CScriptThing); RTTI vtable 0x01238C8C .?AVCScriptThing@@.
 // Label: the manifest's "Std_Vector_Erase_Range" is propagated across byte-identical bodies; this is STLport 4.6
@@ -11,12 +12,9 @@
 //   _M_finish = __i; return __first;` with __copy_ptrs(__false_type) = `__copy(first, last, result,
 //   random_access_iterator_tag(), (ptrdiff_t*)0)` and _Destroy = the __destroy_aux(__false_type) loop of `p->~T()`.
 #include <stddef.h>
-class CScriptThing {                                  // 12 bytes, vtable 0x01238C8C (RTTI .?AVCScriptThing@@)
-public:
-    virtual ~CScriptThing();                       // slot 0
-    CScriptThing& operator=(const CScriptThing& other);
-    char _data[8];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

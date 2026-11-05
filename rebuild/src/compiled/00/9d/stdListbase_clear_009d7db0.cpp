@@ -1,5 +1,6 @@
 // std::_List_base::clear() -- (_List_base<CCountedPointer<CBankFileAsyncData> >) STLport list clear: walk from the first node to the sentinel, release each node's counted pointer (deleter and count block freed at zero), free the node, then link the sentinel to itself
 // Leaf: ?clear@?$_List_base@V?$CCountedPointer@VCBankFileAsyncData@@@@V?$allocator@V?$CCountedPointer@VCBankFileAsyncData@@@@@std@@@std@@QAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D7DB0, 89 bytes (+ int3 padding), thiscall, `ret`.
 // Identity (proven): std::_List_base<CCountedPointer<CBankFileAsyncData>, std::allocator<CCountedPointer<CBankFileAsyncData> > >::clear();
 //   evidence: ~CBankFileAsync 0x009D6490 (called by the deleting destructor 0x009D81A0, slot 0 of vtable 0x0129B8D4, RTTI .?AVCBankFileAsync@@) clears this+0x144 = Ego_r.pdb CBankFileAsync::DisposalList (list<CCountedPointer<CBankFileAsyncData> >, retail offset); the list wrappers 0x009D7FA0 / 0x009D80E0 are its other callers.
@@ -15,29 +16,7 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CBankFileAsyncData;
-class CCPPointerInfo {                                     // Ego_r.pdb 12 bytes
-public:
-    unsigned long RefCount;                                // +0x00
-    void (__fastcall* DeleteFunc)(void* data);             // +0x04
-    void* Data;                                            // +0x08
-};
-template <class T> class CCountedPointer {               // 8 bytes: the object, the shared count block
-public:
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 

@@ -1,5 +1,6 @@
 // _$E2() -- `dynamic atexit destructor for 'CEngineClothSimulationMeshBase::StaticParticleSims'': the inlined STLport ~vector of the static (out-of-line __destroy_aux over the elements, then free the storage)
 // Leaf: _$E2
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0122AD80, 43 bytes, in `.text$yd`; registered by the initializer 0x012248D0 (`push 0x0122AD80 ; call _atexit`).
 // Identity (proven): the CArray at 0x014378B8, catalog-bound as ?StaticParticleSims@CEngineClothSimulationMeshBase@@2V?$CArray@V?$CCountedPointer@VCParticleSimulation@@@@@@A (CEngineClothSimulationMeshBase::ClearStaticParticleSims, Ego_r.pdb); its initializer 0x012248D0 registers this thunk (PDB `dynamic initializer/atexit destructor for 'CEngineClothSimulationMeshBase::StaticParticleSims'`); element destructor 0x00B833F0 = the bound __destroy_aux<CCountedPointer<CParticleSimulation>*>.
 // Callees: std::__destroy_aux<CCountedPointer<CParticleSimulation>*> 0x00B833F0 (`__fastcall`: first in ecx, last in edx, the __false_type tag by address,
@@ -52,12 +53,7 @@ public:
 };
 }
 class CParticleSimulation;
-template <class T> class CCountedPointer {               // Data, Info (8 bytes)
-public:
-    ~CCountedPointer();
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 template <class T> class CArray : public std::vector<T> { };   // retail CArray<T>: the 12-byte STLport vector
 class CEngineClothSimulationMeshBase {
 public:

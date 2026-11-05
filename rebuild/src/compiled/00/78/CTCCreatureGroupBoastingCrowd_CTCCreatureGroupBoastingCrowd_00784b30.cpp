@@ -1,5 +1,6 @@
 // CTCCreatureGroupBoastingCrowd::CTCCreatureGroupBoastingCrowd(CThing* parent) -- boasting-crowd group component: the inline CTCCreatureGroup base (counts, shutdown flag, empty member map), a null hero pointer, crowd state 0 / encouragement state 2, no deed handle; forces a frame update and clears the base's shutdown-on-empty flag
 // Leaf: ??0CTCCreatureGroupBoastingCrowd
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00784B30, length 158 bytes (+ int3 padding).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (the 0x30-byte map header node),
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, CThing::SetForceFrameUpdate(bool) @ 0x004C7C60.
@@ -69,11 +70,8 @@ class CTCCreatureGroup : public CTCBase { public:
     }
 };
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    void* m_pItem;                                 // +0x04
-    CBaseIntelligentPointer();                     // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
     virtual void v01();
     CIntelligentPointerThing() {}

@@ -1,0 +1,6 @@
+addr       parity           behav  name
+007e37c0   MATCH            PASS   CDefString
+
+WINS: 1
+  007e37c0 MATCH CDefString::??0CDefString@@QAE@XZ
+elapsed 2s rc=0

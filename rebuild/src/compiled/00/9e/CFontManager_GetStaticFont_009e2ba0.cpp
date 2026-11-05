@@ -1,5 +1,6 @@
 // CFontManager::GetStaticFont(unsigned long index) -- fetch font `index` from the font manager's static font data bank as a counted CFontBank pointer and point the font back at this manager
 // Leaf: GetStaticFont
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E2BA0, length 104 bytes (twin of 0x009E2C10 GetStreamingFont).
 // Identity: the manifest label "CManager::GetEmbeddedEventNames" is wrong -- the PDB symbols (egor_signatures) list
 //   ?GetStaticFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@K@Z; CFontBank::PManager (+0xc) receives `this`.
@@ -8,27 +9,7 @@
 // Shape: `CCountedPointer<T> p = ...; return p;` -- VC7.1 has no NRVO, so the hidden-result copy (count +1) and the local's release
 //   (count -1, delete function + operator delete on zero) both appear; the local's hidden-return slot is pushed before GetFontInfo's argument.
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-class CCPPointerInfo { public:                            // the shared block of a CCountedPointer: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);     // called with Data in ecx
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                          // +0
-    CCPPointerInfo* Info;                          // +4
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 class CFontManager;
 class CFontBank { public:                                 // PDB, 0x10
     void*          _vptr;                          // +0x00

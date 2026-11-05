@@ -1,5 +1,6 @@
 // CombatDialogueManager::~CombatDialogueManager() -- release the current talker pointer and the dialogue def, then clear and free the speech-group map
 // Leaf: ??1CombatDialogueManager
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F2F60, length 98 bytes (+ int3 padding).
 // Label correction: the manifest row "CCreatureAction_PerformExpressionExtended::~CCreatureAction_PerformExpressionExtended" is propagated;
 // the only caller is CCombatManager's destructor (0x006ED480, vtable 0x01261EB4) destroying its member at +0x38, which is the PDB's
@@ -17,21 +18,8 @@
 class CThingCreatureBase;
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
-public:
-
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CCombatDialogueDef { public:                 // CDefPointee: vptr + count
     virtual void v00();

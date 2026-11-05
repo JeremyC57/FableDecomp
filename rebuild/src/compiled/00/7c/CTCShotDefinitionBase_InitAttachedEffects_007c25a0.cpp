@@ -1,4 +1,5 @@
 // CTCShotDefinitionBase::InitAttachedEffects() -- create the shot def's attached continuous effect at the shot, keep it as the shot's effect thing, attach its particle emitter to the shot (at the SHOT_CREATION_DUMMY dummy, else the weapon_pos_a helper, else the default attach type; end-timeline flag 0x10) and hand it the shot's direction as MOVE_DIRECTION
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x007C25A0, 452 bytes (plain `ret`).
 // Callees: CThing::GetPos 0x004C73D0, CreateEffectThing 0x006E0880 (__fastcall), CBaseIntelligentPointer ctor 0x00A01B10 /
@@ -170,14 +171,8 @@ public:
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {                        // Ego_r.pdb: 8 bytes (vtable, PData)
-    virtual void v00();
-    CThing* m_pItem;                                    // +0x04
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CBaseObject* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CBaseObject*a0);                        // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
 };

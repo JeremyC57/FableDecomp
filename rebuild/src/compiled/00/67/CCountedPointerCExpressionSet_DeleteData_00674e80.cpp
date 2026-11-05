@@ -1,5 +1,6 @@
 // CCountedPointer<CExpressionSet>::DeleteData(void* data) -- the counted pointer's per-type deleter: destroy the expression set (free its entry vector's block) and free the set
 // Leaf: ?DeleteData@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 //
 // Retail 0x00674E80, 33 bytes (+ int3 padding to 48), plain `ret` (static __fastcall: the object in ecx).
@@ -36,16 +37,7 @@ public:
     CVectorMap<EExpressionType, CEntry, CKeyPairCompareLess<EExpressionType, CEntry> > Expressions;   // +0x00
 };
 
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                    // +0x00
-    CCPPointerInfo* Info;                                    // +0x04
-    static void __fastcall DeleteData(void* data)
-    {
-        delete static_cast<T*>(data);
-    }
-};
 
 template class CCountedPointer<CExpressionSet>;

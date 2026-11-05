@@ -1,4 +1,5 @@
 // NUISystem::CIMEFont::GetTextExtent(const wchar_t*, unsigned long*, unsigned long*) -- measure IME text with the height-matched Arial bank, scaled to the requested height
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCPPointerInfo members References->RefCount, Destroy->DeleteFunc, Object->Data are the header CCPPointerInfo's (same offsets).
 // Retail 0x00404F60, 179 bytes (vtable 0x0122DCBC slot 3, `ret 0xc`). Callees: CCharString() 0x0099E4B0, GetFontNameAndScale
 // 0x00404970, GFGetSystemManager 0x009A4EC0 (font bank +0x84), GetFont 0x009E2C80 (counted pointer by hidden pointer), the
 // bank's slot 1 (+4, C2DVector extent by hidden pointer), __ftol2 0x00BFEA70, operator delete 0x00BFE9BC, ~CCharString 0x0099EAE0.
@@ -11,26 +12,7 @@ public:
  CCharString();                                      // 0x0099E4B0
  ~CCharString();                                     // 0x0099EAE0
 };
-class CCPPointerInfo { public:
- long References;
- void (__fastcall* Destroy)(void* object);
- void* Object;
-};
-template <class T> class CCountedPointer { public:
- T* Data;
- CCPPointerInfo* Info;
- void Release()
- {
-  if (Info) {
-   --Info->References;
-   if (Info->References == 0) {
-    Info->Destroy(Info->Object);
-    operator delete(Info);                         // 0x00BFE9BC
-   }
-  }
- }
- ~CCountedPointer() { Release(); Data = 0; Info = 0; }
-};
+#include "engine/CCountedPointer.h"
 class C2DVector { public:
  float X, Y;
  C2DVector(float x, float y) : X(x), Y(y) {}

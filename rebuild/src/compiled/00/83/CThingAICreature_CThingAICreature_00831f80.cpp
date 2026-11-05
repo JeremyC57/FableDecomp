@@ -1,5 +1,7 @@
 // CThingAICreature::CThingAICreature() -- construct the AI creature: creature base of thing type 1, null relationship/building/family pointers, empty brain name, debug list and suspender set, cleared speeds and flag bits
 // Leaf: ??0CThingAICreature
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00831F80, 319 bytes (+1 int3), `ret`.
 // Callees: CThingCreatureBase::CThingCreatureBase(long type) @ 0x00666090 (landed), CBaseIntelligentPointer ctor
 //   @ 0x00A01B10 (x5), CCharString::CCharString() @ 0x0099E4B0, malloc @ 0x00BFEA0E (list header node 0x10, set header
@@ -24,11 +26,8 @@ class CThingCreatureBase { public:
     unsigned char _body[0x15c];
     CThingCreatureBase(long type);               // 0x00666090
 };
-struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
-    virtual void v00();
-    void* m_pItem;                              // +0x04
-    CBaseIntelligentPointer();                  // 0x00A01B10
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
     CBuildingPointer() { }
@@ -37,12 +36,7 @@ struct CAICreaturePointer : CBaseIntelligentPointer {        // CIntelligentPoin
     virtual void v00();
     CAICreaturePointer() { }
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PData;

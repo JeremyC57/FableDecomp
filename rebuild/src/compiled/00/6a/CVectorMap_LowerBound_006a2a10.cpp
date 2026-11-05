@@ -1,15 +1,12 @@
 // CVectorMap::LowerBound(const long& key) -- find the first entry whose key is at least key.
 // Leaf: ?LowerBound@?$CVectorMap@JV?$CIntelligentPointer@VCThing@@@@V?$CKeyPairCompareLess@JV?$CIntelligentPointer@VCThing@@@@@@@@QBEPBU?$pair@JV?$CIntelligentPointer@VCThing@@@@@std@@ABJ@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven; CTCCarrying::CarrySlots; const HasCarrySlot/GetThingInCarrySlot/IsCarrySlotFree callers; J006 twin0x6A29B0; stride12.
 class CThing;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                               // Ego_r.pdb, 8 bytes (virtual destructor)
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObjectPointer* PData;                                // +0x4
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #include "engine/CArray.h"
 
 

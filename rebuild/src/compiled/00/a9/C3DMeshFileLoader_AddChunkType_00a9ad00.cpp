@@ -1,5 +1,6 @@
 // C3DMeshFileLoader::AddChunkType(const CChunkedFileChunk& chunkType, CChunkedFileSuperChunk* parent) -- make a fresh prototype instance of a chunk type, register it with the parent super chunk and return a counted pointer to it
 // Leaf: ?AddChunkType@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A9AD00, 119 bytes (+ int3 padding), thiscall `ret 0Ch` (hidden result,
 //   chunkType, parent; `this` unused), returns the hidden pointer.
 // Identity: Ego_r.pdb `?AddChunkType@C3DMeshFileLoader@@AAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@
@@ -17,31 +18,8 @@
 //   Reset and RegisterSubChunkType). No EH frame (the TU has no /EHsc).
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 
-class CCPPointerInfo { public:
-    long  RefCount;                                     // +0x00
-    void (__fastcall* DeleteFunc)(void* data);          // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer() : Data(0), Info(0) { }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    void Reset(T* data);                                // 0x00A9CF40 (CCountedPointer<CChunkedFileChunk>)
-    T* operator->() const { return Data; }
-};
 
 class CChunkedFileSuperChunk;
 class CChunkedFileLoader;

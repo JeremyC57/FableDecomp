@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::CLadyGreysBed::Main() -- Lady Grey's bed entity script: wait (a script frame at a time) until the hero uses the bed, then until the hero has slept in it, then give the hero "OBJECT_SILVER_KEY"
 // Leaf: ?Main@CLadyGreysBed@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity (naming wave 11): ?Main@CLadyGreysBed@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012C3490 slot 1 is stored by the factory 0x00CE0090 registered as "LadyGreysBed"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CE0150, 269 bytes (+ int3 padding). Entity-script slot 1 (Main).
 // Callees: CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, IsDone 0x00F35B30 (on `this`, propagated label), Me's
@@ -16,8 +17,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

@@ -1,13 +1,14 @@
 // 008e3aa0 std::vector<CIcicleData>::_M_insert_overflow
 // Flags: /O2 /Oy /W3 
 // Leaf: _M_insert_overflow
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 #include <stdlib.h>
 #include <new>
 namespace Icicles {
 // Layout: retail vector has start/finish/storage at +0,+4,+8; 36-byte objects use the landed copy constructor 008e2fc0.
 struct CBaseObjectPointer{void*object;unsigned refcount;};
-struct CBaseIntelligentPointer{virtual ~CBaseIntelligentPointer();CBaseObjectPointer*PData;CBaseIntelligentPointer();CBaseIntelligentPointer(const CBaseIntelligentPointer&);};
-template<class T>struct CIntelligentPointer:CBaseIntelligentPointer{CIntelligentPointer(){}CIntelligentPointer(const CIntelligentPointer&x):CBaseIntelligentPointer(x){}};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CThing;struct C3DVector{float X,Y,Z;};
 struct CIcicleData{CIntelligentPointer<CThing>PEffect,PTrap;int EffectTimer,TrapTimer;C3DVector Position;CIcicleData();CIcicleData(const CIcicleData&);};
 struct __false_type {__false_type(){}};

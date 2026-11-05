@@ -1,5 +1,6 @@
 // std::swap(std::pair<CCharString,C3DMeshVolume>& a, std::pair<CCharString,C3DMeshVolume>& b) -- exchange two (name, named mesh volume) pairs through a temporary, then destroy the temporary (release its counted convex volume, free both strings)
 // Leaf: swap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A70490, length 174 bytes (cut 176 with padding), plain `ret` (a in ecx, b in
 //   edx -- the SGI algorithm TUs are /Gr). Callers: the introsort/partition helpers at 0x00A710E0 (tail `jmp`) and 0x00A71963.
 // Identity: the row's `_Pop_heap_0<pair<CCharString,C3DMeshVolume>*,...>` label names the right element; the function is
@@ -23,32 +24,8 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class CCPPointerInfo { public:                                 // Ego_r.pdb: RefCount +0, DeleteFunc +4, Data +8
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);          // called with Data in ecx, nothing on the stack
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    void ReleaseInfo()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    ~CCountedPointer() { ReleaseInfo(); Data = 0; Info = 0; }
-};
 
 class CContainmentVolume;
 

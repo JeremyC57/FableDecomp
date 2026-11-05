@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitterDatabase::CreateEmitterTemplate(long& handle) -- news a default CParticleEmitter, files it in Emitters under the next template handle (insert then re-sort the vector map), hands the handle back and returns the emitter
 // Leaf: ?CreateEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@QAEPAVCParticleEmitter@2@AAJ@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE8C30, 275 bytes, thiscall `ret 4`, returns the new emitter.
 // Identity (proven): Ego_r.pdb ?CreateEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@QAEPAVCParticleEmitter@2@AAJ@Z
@@ -27,30 +28,7 @@ void* __cdecl operator new(unsigned int size);             // 0x00BFEA1A
 void __cdecl operator delete(void* p);                     // 0x00BFE9BC
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                                // +0
-    void (__fastcall* DeleteFunc)(void* data);             // +4
-    void* Data;                                            // +8
-    CCPPointerInfo(void (__fastcall* deleteFunc)(void*), void* data) : RefCount(1), DeleteFunc(deleteFunc), Data(data) { }
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0
-    CCPPointerInfo* Info;                                  // +4
-    static void __fastcall DeleteData(void* data);         // 0x00AE91D0 (CParticleEmitter)
-    CCountedPointer(T* data) : Data(data) { Info = data ? new CCPPointerInfo(DeleteData, data) : 0; }
-    CCountedPointer(const CCountedPointer<T>& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 
 namespace NParticleEngine {
 class CParticleEmitter {

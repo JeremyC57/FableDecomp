@@ -1,6 +1,7 @@
 // C3DPrimitive2::~C3DPrimitive2() -- free the primitive's data, then destroy its members in reverse order (mirrored-vertex list, partition tree, partition index buffer, the three owned buffers, the cloth primitives) and fall into the CMovableResource base
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A90790, length 191 bytes, plain `ret`.
 // Leaf: ??1C3DPrimitive2
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Label correction: the catalog calls this ~CQuadTreeElement; it stores vtable 0x0129DF94 (RTTI C3DPrimitive2) and
 // ends with the CMovableResource vtable 0x0129B860; its only caller is the deleting destructor 0x00A98430 in
 // C3DPrimitive2's vtable slot 0.
@@ -14,27 +15,7 @@
 extern "C" void __cdecl free(void* p);                   // 0x00BFEA14 (MSVCR71)
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-class CCPPointerInfo { public:                                  // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template<class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class C3DClothPrimitive;
 class C3DMeshPartitionElement;
 struct CRetailAllocator { CRetailAllocator() {} };

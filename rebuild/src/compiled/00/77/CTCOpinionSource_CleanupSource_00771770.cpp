@@ -1,4 +1,5 @@
 // CTCOpinionSource::CleanupSource() -- drop the produced opinion set and remove every entry naming this source's thing from the world opinion manager's source list
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retry 10b (getsw sweep, FIXES B-15): the opinion manager is read through an inline getter `GetOpinionManager()`; the plain member read gives the parked register/scheduling difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771770, length 151 bytes (reached through the `jmp` thunks 0x00771810/0x00771820).
 // Callees: operator delete @ 0x00BFE9BC (the counted pointer's info block after its __fastcall DeleteFunc), CTCBase::GetWorld
@@ -35,11 +36,8 @@ template<class T> class CCountedPointer { public:
     }
 };
 class CBaseObject;
-struct CBaseIntelligentPointer {
-    virtual ~CBaseIntelligentPointer();             // slot 0
-    CThing* m_pItem;
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct SSourceNode {
     SSourceNode* Next;
     SSourceNode* Prev;

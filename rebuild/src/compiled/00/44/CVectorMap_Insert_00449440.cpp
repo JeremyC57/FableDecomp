@@ -1,5 +1,6 @@
 // CVectorMap::Insert(const K& key, const V& value) -- (CVectorMap<EGameAction, CCountedPointer<const CInputTypeBase>, CKeyPairCompareLess<...> >) append a {key, counted pointer} entry to the map's vector (unsorted) and mark the map dirty
 // Leaf: ?Insert@?$CVectorMap@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@@@QAEXABW4EGameAction@@ABV?$CCountedPointer@$$CBVCInputTypeBase@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00449440, 133 bytes, thiscall `ret 8`; no direct callers (an emitted COMDAT).
 // Identity (proven): CVectorMap<EGameAction, CCountedPointer<const CInputTypeBase>, CKeyPairCompareLess<EGameAction, CCountedPointer<const CInputTypeBase> > >::Insert(const EGameAction&, const CCountedPointer<const CInputTypeBase>&); evidence: its _M_insert_overflow 0x00449130 is also called at 0x004472BA by the function that appends a 12-byte entry to CGamePlayerInterface::Controls (+0x7A8), sets Dirty and sorts it through 0x004495D0 (SetControlScheme, H047); Ego_r.pdb / FableWin.pdb name ?Insert@?$CVectorMap@ for exactly the six H047 pair types (plus CCharString / CEntityScriptBindingBase and unsigned __int64 / CActiveEntityScriptBase, other shapes).
 // Label: the manifest's "Vector_InsertElement" is propagated (family H051: six byte-identical bodies, each its own COMDAT; retail has
@@ -16,45 +17,7 @@
 #include <new>
 #include <stddef.h>
 #include <stdlib.h>
-class CCPPointerInfo { public:                                    // CCountedPointer's shared block
-    long  RefCount;                                        // +0x0
-    void  (__fastcall* DeleteFunc)(void* data);            // +0x4
-    void* Data;                                            // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            if (--Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& o)
-    {
-        T* const              data = o.Data;
-        CCPPointerInfo* const info = o.Info;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
+#include "engine/CCountedPointer.h"
 enum EGameAction { EGameAction_Force32 = 0x7fffffff };   // enumerators not needed
 class CInputTypeBase;
 

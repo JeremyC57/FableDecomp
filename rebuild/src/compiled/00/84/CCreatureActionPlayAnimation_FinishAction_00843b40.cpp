@@ -1,5 +1,6 @@
 // CCreatureAction_PlayAnimation::FinishAction() -- the base FinishAction; then, unless the creature is aborting its current action, a looping animation with loops left queues itself again: a new CCreatureAction_PlayAnimation on the same animation entry and settings with the loop count decremented (-1 = forever stays -1)
 // Leaf: ?FinishAction@CCreatureAction_PlayAnimation@@UAEXXZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00843B40, 208 bytes, thiscall, `ret`. Vtable 0x01273A0C slot 4.
 // Identity (proven): RTTI vtable 0x01273A0C (.?AVCCreatureAction_PlayAnimation@@) slot 4 = this body (slot 4 is
 //   FinishAction in every CCreatureActionBase vtable, e.g. the landed 0x00843C10 PlayIntoLoopOutOfAnimation); Ego_r.pdb /
@@ -52,12 +53,7 @@ public:
     T* operator->() const { return (T*)GetPItem(); }
     T& operator*() const { return *(T*)GetPItem(); }
 };
-template <class T> class CCountedPointer {
-public:
-    T& operator*() const { return *Data; }
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 class CCreatureActionBase {
 public:
     virtual ~CCreatureActionBase();                          // 0x00693EF0

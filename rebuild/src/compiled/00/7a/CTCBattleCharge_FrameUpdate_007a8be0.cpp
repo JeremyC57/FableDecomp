@@ -1,6 +1,7 @@
 // CTCBattleCharge::FrameUpdate() -- per frame: on release finish the current action, play the level's cast sound and create the start-up effect; while the pose delay runs count it down, otherwise rush on; once the pose delay is over leave the exit modes once (release the ability mutex, resume an AI creature, drop creature mode 0x23, unfreeze a hero's controls) and remove the component when an AI creature charges or the charge delay has run out
 // Grade: RELOCATION_MATCH over the true extent (576 bytes; BOUNDS_FIX: the catalog row 617 runs into 0x007A8E20) -- the parked source unchanged, graded over code + `mov edi,edi` + the 4-entry jump table
 // Leaf: ?FrameUpdate@CTCBattleCharge@@UAEXXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A8BE0, 558 bytes of code + `mov edi,edi` + a 4-entry jump table = 576 bytes, `ret`;
@@ -95,13 +96,8 @@ class CTCSpecialAbilities : public CTCBase { public:      // interface type 0xA7
 };
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer { public:
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-private:
-    CBaseObjectPointer* PData;                              // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 class CDefPointeeBase;
 template <class T> class CDefPointer { public:
     CDefPointeeBase* Object;                                // +0x00

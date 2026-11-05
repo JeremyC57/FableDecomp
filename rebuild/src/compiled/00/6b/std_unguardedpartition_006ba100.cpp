@@ -1,5 +1,6 @@
 // std::__unguarded_partition(pair<unsigned long, CCountedPointer<CFaction> >* first, pair<..>* last, pair<..> pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of the faction vector map by key; returns the split point
 // Leaf: ??$__unguarded_partition@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BA100, 103 bytes, `ret 10h`.
 // Callers: one site, 0x006BB0E6 (__introsort_loop of the CFactionManager map sort).
 // Callees: iter_swap<pair*, pair*> @ 0x006B8E70 (out of line, `__fastcall`; catalog "swap<CCountedPointer<..> >"),
@@ -14,27 +15,10 @@
 // Label correction: the catalog `Heap_PartitionByKey` is descriptive.
 void operator delete(void* p);                          // 0x00BFE9BC
 
-class CCPPointerInfo { public:                                 // 12 bytes (Ego_r.pdb)
-    unsigned long RefCount;                             // +0x00
-    void (__fastcall* DeleteFunc)(void*);               // +0x04
-    void*         Data;                                 // +0x08
-};
+#include "engine/CCountedPointer.h"
 
 class CFaction;
 
-template <class T>
-class CCountedPointer { public:                                // 8 bytes
-    T*              Data;                               // +0x00
-    CCPPointerInfo* Info;                               // +0x04
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->RefCount == 0) {
-            Info->DeleteFunc(Info->Data);
-            delete Info;
-        }
-    }
-};
 
 namespace std {
 template <class T1, class T2>

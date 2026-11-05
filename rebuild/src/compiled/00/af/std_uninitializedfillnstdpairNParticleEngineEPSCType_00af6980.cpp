@@ -1,5 +1,6 @@
 // std::__uninitialized_fill_n<std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>*,unsigned int,std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance> >(first, n, x, const __false_type&) -- copy-construct n copies of one (component type, component instance) pair into raw storage and return first + n
 // Leaf: ??$__uninitialized_fill_n@PAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@IU12@@std@@YIPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@0@PAU10@IABU10@ABU__false_type@0@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF6980, 75 bytes (+5 int3 pad), __fastcall (first ecx, n edx), `ret 8`
 //   (x and the empty __false_type tag by reference on the stack), returns the end of the constructed run. No callees.
 // Identity: STLport's `__uninitialized_fill_n(__first, __n, __x, __false_type)` -- it RETURNS the advanced pointer and
@@ -23,21 +24,8 @@ class CPSCBase;
 
 }
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                       // +0
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                         // +0
-    CCPPointerInfo* Info;                         // +4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 namespace NParticleEngine {
 

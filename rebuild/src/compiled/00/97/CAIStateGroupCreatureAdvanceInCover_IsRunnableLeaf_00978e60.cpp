@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureAdvanceInCover::IsRunnableLeaf() -- the target is not in melee, holds a projectile weapon, and the cover base's leaf test passes
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00978e60, length 172 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PTargetThing +0x14), CThingCreatureBase::IsInMelee @ 0x00661E80 (Ego_r.pdb), CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf @ 0x00970F30 (qualified base call),
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (twice: carrying 0x46 on the target, weapon 0x48 on the
@@ -8,24 +9,9 @@
 class CThing;
 
 class CBaseObject;
-struct CBaseIntelligentPointer
-{
-    virtual void v00();
-    CThing* m_pItem;                                // +0x04
-    CBaseIntelligentPointer();                      // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-template <class T>
-class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stores the template's vtable after the base ctor
-{ public:
-    virtual void v00();
-    CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
-    T* Get() const { return (T*)GetPItem(); }
-};
 
 class CTCBase;
 

@@ -1,4 +1,5 @@
 // CGamePlayerInterface::IsEventContextSensitiveItemButton(const CGameEvent& event, unsigned long* outIndex) -- finds the context-sensitive item button that matches the event (virtual slot 3 on each counted input type), returning its index
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00446110, length 93 bytes.
 // Callees: CInputTypeBase virtual slot 3 (+0xc), `bool (const CGameEvent&)`.
 // Layout: ContextSensitiveItemButtons is a retail 12-byte std::vector<CCountedPointer<const CInputTypeBase>> whose begin/end sit at
@@ -15,11 +16,7 @@ class CInputTypeBase { public:
     virtual bool IsButtonEvent(const CGameEvent& event);    // slot 3
 };
 
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                                   // +0
-    SCountBlock* m_pCount;                          // +4
-};
+#include "engine/CCountedPointer.h"
 
 template <class T>
 struct CRetailVector {                              // retail std::vector: begin / end / end-of-storage
@@ -39,7 +36,7 @@ class CGamePlayerInterface { public:
 bool CGamePlayerInterface::IsEventContextSensitiveItemButton(const CGameEvent& event, unsigned long* outIndex)
 {
     for (unsigned long i = 0; i < ContextSensitiveItemButtons.Size(); ++i) {
-        if (ContextSensitiveItemButtons[i].m_pObject->IsButtonEvent(event)) {
+        if (ContextSensitiveItemButtons[i].Data->IsButtonEvent(event)) {
             *outIndex = i;
             return true;
         }

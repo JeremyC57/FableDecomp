@@ -1,4 +1,5 @@
 // CTCSimpleAppearanceMorph::OnCreate() -- give the component a fresh mesh morph set and add one base-type (3) composite blend per texture replacement in the thing def's CTextureReplacementDef
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007275C0, 240 bytes (plain `ret`); CTCSimpleAppearanceMorph vtable 0x012664A4 slot 4.
 // Callees: operator new @ 0x00BFEA1A (the 0x18-byte morph set), CCountedPointer<CMeshMorphSet>::Reset(CMeshMorphSet*) @ 0x007222F0
 // (manifest label: a propagated Reset instantiation), CDefClassBase::GetSubDef_007086f0(CDefPointer&) @ 0x007086F0 (the
@@ -43,13 +44,7 @@ struct CMeshMorphSet {                                  // CTCAppearanceMorphBas
     } MeshParts;                                        // +0x00
     CEngineTextureMorphSet OriginalMeshTextureMorphs;           // +0x0c
 };
-class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T* Data;
-    CCPPointerInfo* Info;
-    void Reset(T* object);                              // 0x007222F0
-    T* operator->() const { return Data; }
-};
+#include "engine/CCountedPointer.h"
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();                             // slot 1

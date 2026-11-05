@@ -1,5 +1,6 @@
 // NUISystem::CScrollBar::~CScrollBar() -- scroll-bar thumb dtor: delete the two owned action lists (dragged down, then dragged up), then ~CDraggable
 // Leaf: ??1CScrollBar@NUISystem@@UAE@XZ
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00559A10, 115 bytes, tail jump to the base destructor.
 // Identity: the vtable stores 0x0124B7E4 / 0x0124B7BC / 0x0124B7B4 carry RTTI `.?AVCScrollBar@NUISystem@@` (CUIInterface @0,
 //   CObserver @4, CActionParam @0x18); rtti_bases: CScrollBar : CDraggable : CClickable : CHoverable : CChangingStateComponent;
@@ -16,15 +17,7 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void __cdecl operator delete(void* block);                  // 0x00BFE9BC
 
-class CCPPointerInfo { public:                              // CCountedPointer count block
-    unsigned long RefCount;                                 // +0x00
-    void (__fastcall* DeleteFunc)(void* data);              // +0x04
-    void*         Data;                                     // +0x08
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;                                   // +0x00
-    CCPPointerInfo* Info;                                   // +0x04
-};
+#include "engine/CCountedPointer.h"
 
 namespace std {
 template <class _Tp> class allocator { public:

@@ -2,6 +2,8 @@
 // Native 0x00692F30 size244; donor vectors/maps16 versus native12 account for tail difference.
 // Authentic polymorphic base and typed pointer destructors; no substitute vtable slots.
 // Leaf: GetPrecedingAction
+// Plan phase 5 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4); map pointer made const (the row grades the const LowerBound).
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define CCreatureActionBase CCreatureActionBase_PDB
 #include "engine/CCreatureActionBase.h"
@@ -18,23 +20,16 @@ class CThing;
 class CTCCarrying { public:CThing* GetThingInPrimarySlot()const;}; //0x006A1440
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
- typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
- Entry* First;Entry* Last;
- const Entry* LowerBound(const ETCInterfaceType& key) const; //0x004365B0
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingCreatureBase { public:
  unsigned char _nativeBeforeComponentFlags[0x20];
  unsigned long UsingComponents[9];
  CInterfaceMap Components;
  __forceinline bool GetCarrying(CTCCarrying** out){
-  if(UsingComponents[2]&0x40){CInterfaceMap* map=&Components;const ETCInterfaceType type = (ETCInterfaceType)(0x46);
-   const CInterfaceMap::Entry* p=map->LowerBound(type);
-   const CInterfaceMap::Entry* selected=(p!=map->Last && p->first<=type)?p:map->Last;
+  if(UsingComponents[2]&0x40){const CInterfaceMap* map=&Components;const ETCInterfaceType type = (ETCInterfaceType)(0x46);
+   const CInterfaceMap::value_type* p=map->LowerBound(type);
+   const CInterfaceMap::value_type* selected=(p!=map->end() && p->first<=type)?p:map->end();
    *out=((CTCCarrying*)selected->second);return true;
   }
   return false;
@@ -42,13 +37,8 @@ class CThingCreatureBase { public:
 };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-struct CBaseIntelligentPointer {
- virtual ~CBaseIntelligentPointer(); //0x00A01C10
- void* PData;
- CBaseIntelligentPointer(); //0x00A01B10
- void SetPItem(CBaseObject*a0); //0x00A01B90
- CBaseObject* GetPItem() const; //0x00A01B50
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
  CIntelligentPointer_CThing() {}
  CIntelligentPointer_CThing(CThing* p){SetPItem((CBaseObject*)p);}

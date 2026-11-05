@@ -1,5 +1,6 @@
 // _Rb_tree<unsigned long, pair<const unsigned long, CCountedPointer<C3DAnimation2>>>::_M_insert(x, y, v, w) -- link a new node holding v under parent y (left or right by the hint and key order), then rebalance
 // Leaf: ?_M_insert@?$_Rb_tree@KU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@U?$_Select1st@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@2@0@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2C4E0, 211 bytes, `ret 14h` (hidden iterator pointer + x, y, &v, w). Nine
 //   call sites in the tree's insert_unique(v) 0x00A2C5C0 and insert_unique(hint, v) 0x00A2CCF0, which serves
 //   map::operator[] 0x00A2D810 from CMeshDataBank's BuildAnimationInstance (0x00A26BDE, map at CAnimationData+0x1C).
@@ -15,23 +16,8 @@ inline void* operator new(unsigned int, void* where) { return where; }
 
 class C3DAnimation2;
 
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;                             // +0x00
-    void (__cdecl* DeleteFunc)(void*);                  // +0x04
-    void* Data;                                         // +0x08
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer {              // 8 bytes
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
 
 namespace std {
 template <class _T1, class _T2> struct pair {

@@ -8,15 +8,13 @@
 // manifest label when it is a plain class name, else the method is landed under a descriptive
 // placeholder); member names are descriptive. 
 // Leaf: ?GetNumShoppers@CTCShop@@QBEJXZ
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Identity (proven, chunk c675): Ego_r.pdb CTCShop::GetNumShoppers() const (long); FindASimplyDelightfulShop 0x00946F90 calls it
 //   on the CTCShop component (TC 0x53). Shoppers = Ego_r vector<CIntelligentPointer<CThingCreatureBase> > (STLport 12 bytes at +0x18).
 // Naming wave 17: landed as CShaderPreParser::GetConstantCount (shape label); respelled (name-only: the bytes are unchanged).
 class CThingCreatureBase;
-template <class T> class CIntelligentPointer {         // 8 bytes: vptr + PData
-public:
-    virtual ~CIntelligentPointer();
-    T* PData;
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
 class CTCShop { public:
     unsigned char _pad[0x18];

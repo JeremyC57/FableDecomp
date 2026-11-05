@@ -1,5 +1,6 @@
 // std::pair::pair(const pair& o) -- (pair<const CCharString, CCountedPointer<NUISystem::CComponent> >) STLport copy constructor: the first member through CCharString's copy constructor, then the second through CCountedPointer's copy constructor; returns this
 // Leaf: ??0?$pair@$$CBVCCharString@@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@QAE@ABU01@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042A961, 33 bytes, thiscall `ret 4` (a size-optimised /Os module: unaligned entry).
 // Identity (proven): std::pair<const CCharString, CCountedPointer<NUISystem::CComponent> >::pair(const pair&); evidence: its callers are the tree's node factory _M_create_node 0x0042BE2F (0x0042BE45, placement copy into the 0x1C-byte node at +0x10) and the `_Construct` COMDAT 0x0042B619; the node factory serves _M_insert 0x0042CC03 <- insert_unique 0x0042CC98 / insert(hint) 0x0042CF69 <- 0x0042D2A9 <- the landed map<CCharString, CCountedPointer<NUISystem::CComponent> >::operator[] 0x0042D45D (NUISystem::CManager::CreateMenuEntryComponent; Ego_r.pdb CManager::BastardChildren), so the node value is that map's value_type; the second member's copy 0x00428928 copies Data and Info and bumps *Info (Ego_r CCountedPointer<NUISystem::CComponent> {Data, Info})
 // Label: the manifest's "pair<CCharString,CCharString><CCharString,CCharString>" is propagated (family J041: five byte-similar pair bodies, each its own COMDAT; retail has
@@ -14,14 +15,8 @@ public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
 };
-class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
 namespace NUISystem { class CComponent; }
-template <class T> class CCountedPointer {                 // Ego_r.pdb, 8 bytes
-public:
-    T*              Data;                                  // +0x0
-    CCPPointerInfo* Info;                                  // +0x4 (its first dword is the count the copy bumps)
-    CCountedPointer(const CCountedPointer& other);         // 0x00428928 for NUISystem::CComponent
-};
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                             // +0x0

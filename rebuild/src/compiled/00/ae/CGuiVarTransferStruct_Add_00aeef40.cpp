@@ -9,34 +9,13 @@
 // temporary's destructor releases the block from the registers.
 // Model: local (the member vector at +8; the variable type is opaque).
 // Leaf: ?Add@CGuiVarTransferStruct@@
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets). Spellings unified: 00af0710: ?DestroyGuiVarTransfer@@YIXPAX@Z -> ?DeleteData@?$CCountedPointer@VCGuiVarTransferBase@@@@SIXPAX@Z
 #include <new>
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 class CGuiVarTransferBase;
 void __fastcall DestroyGuiVarTransfer(void* object);   // 0x00AF0710: the per-type deleter stored in the block
-struct SCountBlock {
-    long  m_references;                            // +0
-    void (__fastcall* m_pfnDestroy)(void*);        // +4
-    void* m_pObject;                               // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(DestroyGuiVarTransfer), m_pObject(object) {}
-};
-template <class T> class CCountedPointer { public:
-    T*           Data;
-    SCountBlock* Info;
-    CCountedPointer(T* p) : Data(p) { Info = p ? new SCountBlock(p) : 0; }
-    CCountedPointer(const CCountedPointer& o) : Data(o.Data), Info(o.Info)
-    {
-        if (Info)
-            ++Info->m_references;
-    }
-    ~CCountedPointer()
-    {
-        if (Info && --Info->m_references == 0) {
-            Info->m_pfnDestroy(Info->m_pObject);
-            delete Info;
-        }
-    }
-};
+#include "engine/CCountedPointer.h"
 struct SScalarTag { SScalarTag() {} };
 template <class T> struct CRetailVector {
     T* first;

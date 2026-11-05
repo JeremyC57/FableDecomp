@@ -1,5 +1,6 @@
 // std::_Rb_tree::_M_erase(_Rb_tree_node<value_type>* x) -- (map<CThingCreatureBase*, CTCUnholyPower::PerCreatureInfo >) STLport 4.6 recursive subtree release without rebalancing: for each node erase its right subtree, destroy the value, free the node and continue with its left child
 // Leaf: ?_M_erase@?$_Rb_tree@PAVCThingCreatureBase@@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCUnholyPower@@@std@@U?$_Select1st@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCUnholyPower@@@std@@@3@U?$less@PAVCThingCreatureBase@@@3@V?$allocator@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCUnholyPower@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@QAVCThingCreatureBase@@UPerCreatureInfo@CTCUnholyPower@@@std@@@2@@Z
+// Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00797840, 70 bytes (+ int3 padding), thiscall, `ret 4`; recursive.
 // Identity (proven): std::_Rb_tree<CThingCreatureBase*, pair<const CThingCreatureBase*, CTCUnholyPower::PerCreatureInfo >, _Select1st<...>, less<CThingCreatureBase* >, allocator<...> >::_M_erase;
 //   evidence: its caller ~CTCUnholyPower 0x00794AC0 (and the CTCUnholyPower TU's clear / erase helpers 0x00797B20, 0x00797C20, 0x00797E70) releases CTCUnholyPower::LastFrameCreaturesHit, Ego_r.pdb map<CThingCreatureBase*, CTCUnholyPower::PerCreatureInfo>; the node destroys two intelligent pointers at +0x14 / +0x20 after the 4-byte key, PerCreatureInfo's ActualCreature +0 and Effect +0xC.
@@ -10,12 +11,8 @@
 // Model: agent952 H079's STLport _tree.c `_M_erase` (private); the value's implicit destructor inline.
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 #pragma pack(push, 1)
-class CBaseIntelligentPointer {                            // 8 bytes, 1-aligned in retail
-public:
-    virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    void* PData;                                           // +0x04 (CBaseObjectPointer*)
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 #pragma pack(pop)
 class CThing;
 class CThingCreatureBase;

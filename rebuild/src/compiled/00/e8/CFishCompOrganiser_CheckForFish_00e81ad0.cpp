@@ -1,4 +1,5 @@
 // CFishCompOrganiser::CheckForFish() -- whether the hero carries any of the competition's fish types: walk FishDef (+0x6c) up to FishTypesInGame (+0x54), stopping at the first item the hero has
+// Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E81AD0, length 107 bytes (+ int3 padding).
 // Callees: the game interface (Game, +4) virtual slots 70 (+0x118, GetHero) and 184 (+0x2e0, the "is thing carrying item def" query;
 // descriptive slot name), IsDone @ 0x00F35B30 (on `this`; manifest label "CCreatureAction_TrollWhackGroundBase::Initialise" is propagated).
@@ -10,9 +11,9 @@ namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
 };
-class CScriptThing { public:
-    unsigned char _body[0x0c];
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

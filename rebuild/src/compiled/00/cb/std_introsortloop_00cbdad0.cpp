@@ -1,5 +1,6 @@
 // std::__introsort_loop(std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >* first, std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >* last, std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >*, int depth_limit, CCompareString<CCountedPointer<CEntityScriptBindingBase> > comp) -- STLport 4.6 introsort loop over the (name, binding) pairs of an entity script binding table: median-of-three partition while the run is longer than 16, recursing right and looping left, partial_sort when the depth budget runs out
 // Leaf: ??$__introsort_loop@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@U12@HV?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@00HV?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Identity (proven): STLport 4.6 __introsort_loop (stl/_algo.c) over the 12-byte pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >
 // (the / 12 is the 0x2AAAAAAB imul; 5 inline_recursion levels, threshold 16). Callees: the pair's CCharString::operator< 0x009E6530
 // (reloc_bindings `??MCCharString@@QBE_NABV0@@Z`) through CCompareString, CCharString copy ctor 0x0099EC30, the pair copy ctor 0x00CB9C50
@@ -17,33 +18,7 @@ public:
     ~CCharString();                                        // 0x0099EAE0
     bool operator<(const CCharString& other) const;        // 0x009E6530
 };
-class CCPPointerInfo { public:
-    long  RefCount;
-    void  (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                operator delete(Info);
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class CEntityScriptBindingBase;
 namespace std {
 template <class _T1, class _T2> struct pair {

@@ -1,5 +1,6 @@
 // std::sort_heap(SKeyedPair* first, SKeyedPair* last, CKeyPairCompareLess comp) -- SGI sort_heap over (unsigned long key, named counted pointer) pairs: pop the root to the back until one element remains
 // Leaf: sort_heap
+// Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members m_pObject->Data, m_pCount->Info are the header CCountedPointer's (same offsets); the local SCountBlock (= CCPPointerInfo) members m_references->RefCount, m_pfnDestroy->DeleteFunc, m_pObject->Data are the header CCPPointerInfo's (same offsets).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A72AA0, length 111 bytes (+ int3 padding), `ret 4`.
 // Identity: the catalog label `_Sort_heap<std::pair<long,unsigned long>*>` is propagated over the byte-identical
 // skeleton (twin of 0x00A34D80). The only non-string callee is the landed SGI `__pop_heap` @ 0x00A71B40 (twin of 0x00A34420) over 16-byte
@@ -17,21 +18,8 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-struct SCountBlock {
-    long m_references;                                  // +0
-    void (__fastcall* m_pfnDestroy)(void*);             // +4 per-type deleter, object in ecx
-    void* m_pObject;                                    // +8
-};
+#include "engine/CCountedPointer.h"
 
-template <class T>
-class CCountedPointer { public:
-    T* m_pObject;                                       // +0
-    SCountBlock* m_pCount;                              // +4
-    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount)
-    {
-        if (m_pCount) ++m_pCount->m_references;
-    }
-};
 
 class CFaction;
 
