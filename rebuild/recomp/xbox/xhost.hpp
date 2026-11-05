@@ -87,6 +87,9 @@ void hostDecommit(uint32_t guestAddr, uint32_t size);
 uint32_t memWindowEnd();        // guest addresses below this can be backed (New 3DS window probe)
 uint32_t memBackedBytes();      // New 3DS: guest pages with FCRAM now / at most
 uint32_t memBackedPeakBytes();
+#if defined(__3DS__)
+uint32_t hostBackedIn(uint32_t guestAddr, uint32_t size);  // bytes with FCRAM behind them
+#endif
 void coroStats(size_t& count, size_t& deepest, size_t& stackSize);  // coro.cpp
 uint32_t vaReservedBytes();
 // Virtual memory range (NtAllocateVirtualMemory), backed lazily by the host.

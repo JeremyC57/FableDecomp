@@ -83,6 +83,37 @@ std::mutex g_screenLock;
     for (;;) svcSleepThread(1000000000LL);  // other threads: the main loop exits on START
 }
 
+// Resumes the interrupted context (CpuRegisters: r0-r12, sp, lr, pc, cpsr): the registers go just
+// below its stack pointer and one ldm restores them; the flags come back through cpsr_f.
+extern "C" [[noreturn]] void platformResume(CpuRegisters* regs);
+asm(R"(
+    .text
+    .arm
+    .global platformResume
+    .type platformResume, %function
+platformResume:
+    ldr r2, [r0, #52]
+    sub r2, r2, #60
+    mov r3, #0
+1:  ldr r1, [r0, r3]
+    str r1, [r2, r3]
+    add r3, r3, #4
+    cmp r3, #52
+    blt 1b
+    ldr r1, [r0, #56]
+    str r1, [r2, #52]
+    ldr r1, [r0, #60]
+    ldr r3, [r0, #64]
+    tst r3, #0x20
+    orrne r1, r1, #1
+    str r1, [r2, #56]
+    msr cpsr_f, r3
+    mov sp, r2
+    ldmia sp!, {r0-r12, lr}
+    ldmia sp!, {pc}
+    .size platformResume, .-platformResume
+)");
+
 namespace {
 // One exception stack per thread that can fault (guest threads, the pusher, the main thread).
 constexpr size_t kExcStack = 0x2000;
@@ -92,7 +123,19 @@ struct ExcState {
 };
 thread_local ExcState* t_exc;
 
+std::atomic<uint32_t> g_lazyPages{0};  // guest pages backed on first touch
+
 [[noreturn]] void onException(ERRF_ExceptionInfo* info, CpuRegisters* regs) {
+    // A first touch of an unbacked guest page (reserved but not committed, or past the RAM the
+    // game was given): back it with a zero page and retry, as the desktop's lazy mappings do.
+    // The null page guard (below 0x10000) still stops.
+    if (info->type == ERRF_EXCEPTION_DATA_ABORT && info->far >= RECOMP_WINDOW_BASE && info->far - RECOMP_WINDOW_BASE < memWindowEnd()) {
+        const uint32_t page = (info->far - RECOMP_WINDOW_BASE) & ~0xFFFu;
+        if (page >= 0x10000 && !hostBackedIn(page, 0x1000) && hostCommit(page, 0x1000)) {
+            ++g_lazyPages;
+            platformResume(regs);
+        }
+    }
     char m[512];
     const uint32_t far = info->far, pc = regs->pc;
     const char* kind = info->type == ERRF_EXCEPTION_DATA_ABORT ? "data abort" : info->type == ERRF_EXCEPTION_PREFETCH_ABORT ? "prefetch abort"
@@ -328,7 +371,8 @@ void drawStatus(const std::string& disc, uint64_t startMs) {
                 fps > 0 ? 1000.0f / fps : 0.0f, worst);
     std::printf("guest memory %lu KB (peak %lu KB)\x1b[K\n", static_cast<unsigned long>(memBackedBytes() / 1024),
                 static_cast<unsigned long>(memBackedPeakBytes() / 1024));
-    std::printf("window to guest 0x%08lX\x1b[K\n", static_cast<unsigned long>(memWindowEnd()));
+    std::printf("window to guest 0x%08lX, %lu pages on demand\x1b[K\n", static_cast<unsigned long>(memWindowEnd()),
+                static_cast<unsigned long>(g_lazyPages.load()));
     std::printf("free linear %lu KB\x1b[K\n", static_cast<unsigned long>(linearSpaceFree() / 1024));
     std::printf("up %llu s\x1b[K\n\nSTART+SELECT: quit\x1b[K\n", static_cast<unsigned long long>((osGetTime() - startMs) / 1000));
     consoleSelect(&g_bottom);
@@ -383,7 +427,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 5 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 6 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
