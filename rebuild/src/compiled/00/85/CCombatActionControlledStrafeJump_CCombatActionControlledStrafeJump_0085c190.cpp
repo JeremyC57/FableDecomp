@@ -1,5 +1,6 @@
 // CCombatAction_ControlledStrafeJump::CCombatAction_ControlledStrafeJump(CThingCreatureBase*, CThing*, const C3DVector&, const C3DVector&) -- a strafe-jump combat action (code 150, no sounds) that keeps flattened copies of the required and the original facing: each is normalised, or replaced by the owner's current facing when it is (nearly) zero
 // Leaf: ??0CCombatAction_ControlledStrafeJump
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085C190, 337 bytes (352 with padding). `ret 10h`; vtable 0x01276974.
 // Callees: CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) 0x00857F30, C3DVector::Normalise
@@ -16,11 +17,7 @@
 class CThing;
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CSoundPair { public:                         // the zeroed two-dword sound argument of CCombatActionBase
     long m_first;
     long m_second;
@@ -59,11 +56,11 @@ CCombatAction_ControlledStrafeJump::CCombatAction_ControlledStrafeJump(CThingCre
     OriginalFacing = originalFacing;
     OriginalFacing.Z = 0.0f;
     RequiredFacing.Z = 0.0f;
-    if (RequiredFacing.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
+    if (RequiredFacing.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         RequiredFacing.AccurateNormalise();
     else
         RequiredFacing = owner->PhysicsBody->GetFacing();
-    if (OriginalFacing.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
+    if (OriginalFacing.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         OriginalFacing.AccurateNormalise();
     else
         OriginalFacing = owner->PhysicsBody->GetFacing();

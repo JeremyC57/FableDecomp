@@ -1,5 +1,6 @@
 // CEngineEnvironment::CEngineEnvironment() -- engine environment (wind) state: base ctor, own vtable, the three wind vectors (1,0,0), zero speeds/frame/flags, then both 64-entry wind-skew histories cleared
 // Leaf: ??0CEngineEnvironment
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B8CEE0, 224 bytes incl. padding (plain `ret`). The manifest label
 //          "CBlendedEnvironmentTheme::CBlendedEnvironmentTheme" is propagated and wrong: vtable 0x012A3C68 is
 //          CEngineEnvironment (rtti-vtables.tsv: slot 1 FrameStart 0x00B8C830, slot 7 WorldFrameUpdate 0x00B8CCF0).
@@ -10,12 +11,7 @@
 //          +0x640..+0x648 speeds, +0x64C CurrentRenderFrame, +0x650 EnvironmentalEffectsAlwaysUpdate, +0x651 ShowWindVector.
 // Shape: C3DVector has a user ctor and a user copy ctor but no operator=, so each history slot is written through a
 //          pointer register (`lea ebx,[eax-300h]`); the two zero temporaries are hoisted to the frame and re-read.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 struct CEnvironmentBase {                       // 12-byte base: vptr + two words
     virtual void v00();

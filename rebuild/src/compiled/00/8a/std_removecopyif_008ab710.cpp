@@ -1,5 +1,6 @@
 // std::remove_copy_if(C3DVector* first, C3DVector* last, C3DVector* result, std::unary_negate<CVectorFilter_FurtherFromPointThan> pred) -- copies every point further (in XY) than a distance from a centre point to result; the tail of STLport remove_if
 // Leaf: ??$remove_copy_if@PAVC3DVector@@PAV1@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@00V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Grade: MATCH (near-miss retry agent901) -- squared length summed in statement order (`lengthSq = dx * dx; lengthSq += dy * dy;`) so VC7.1 squares dx first as retail
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008AB710, 102 bytes, `ret 14h`. Caller: STLport remove_if 0x008AC060 (find_if 0x008AAC50, then
 // remove_copy_if(++next, last, first, pred)); 0x009742FC (CAIStateGroup_JackOfBladesBase::Summon). The catalog's `_Find_if<...>` is wrong.
@@ -29,12 +30,7 @@ OutputIter __fastcall remove_copy_if(InputIter first, InputIter last, OutputIter
     return result;
 }
 }
-class C3DVector {
-public:
-    float x, y, z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) : x(v.x), y(v.y), z(v.z) {}
-};
+#include "engine/C3DVector.h"
 class CVectorFilter_FurtherFromPointThan : public std::unary_function<C3DVector, bool> {
 public:
     float m_distance;                             // +0x00
@@ -42,8 +38,8 @@ public:
     CVectorFilter_FurtherFromPointThan(const C3DVector& point, float distance) : m_distance(distance), m_point(point) {}
     bool operator()(const C3DVector& v) const
     {
-        float dx = v.x - m_point.x;
-        float dy = v.y - m_point.y;
+        float dx = v.X - m_point.X;
+        float dy = v.Y - m_point.Y;
         float lengthSq = dx * dx;
         lengthSq += dy * dy;
         return lengthSq > m_distance * m_distance;

@@ -1,5 +1,6 @@
 // CWorldMap::`vector deleting destructor'`adjustor{4}' -- CIDrawWorldMap slot 11 of CWorldMap: rebase `this` from the +4 interface and tail-jump to the deleting destructor
 // Leaf: ??_ECWorldMap@@W3AEPAXI@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051CDF0, 8 bytes: `sub ecx,4 ; jmp 0x0051D1E0`.
 // Identity: slot 11 (the last) of CWorldMap's CIDrawWorldMap vtable 0x01244AB4 = the virtual destructor CIDrawWorldMap declares
 //   last (engine/CIDrawWorldMap.h, Ego_r TPI 0x27A42); 0x0051D1E0 is slot 0 of the primary vtable 0x01244AEC, the deleting
@@ -32,21 +33,12 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DBoxI {
 public:
     long TLX, TLY, BRX, BRY;
     long GetWidth() const { return BRX - TLX; }
     long GetHeight() const { return BRY - TLY; }
-};
-class C2DCoordI {
-public:
-    long X, Y;
 };
 class CCharString {
 public:

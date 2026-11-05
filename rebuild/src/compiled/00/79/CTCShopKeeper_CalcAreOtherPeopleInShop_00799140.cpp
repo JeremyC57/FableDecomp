@@ -1,4 +1,5 @@
 // CTCShopKeeper::CalcAreOtherPeopleInShop() -- true when some other living villager of the keeper's village is inside the shop building without living there (or outside while living there), or blocks its door, or when the hero is in the shop or blocks its door
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe @ 0x00799140, 480 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, LowerBound 0x0040F020 (x2), CTCVillageMember::GetPVillage 0x007EE540,
@@ -11,7 +12,7 @@
 //   the constant type), which lets the village pointer's spill share the key's frame word (sub esp,0xc); the building test
 //   is an inline IsThingAlive (keeps retail's second inline `return false` exit); the villager is a named local before
 //   its home-building read (`lea ecx,[eax+0x170]` instead of mov/add).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CBaseObject;
 class CThing;
 struct CBaseIntelligentPointer {

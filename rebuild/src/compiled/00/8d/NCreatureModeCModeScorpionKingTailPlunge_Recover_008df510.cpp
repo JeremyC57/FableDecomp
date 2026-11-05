@@ -1,5 +1,6 @@
 // NCreatureMode::CModeScorpionKingTailPlunge::Recover() -- end the tail plunge: kill the live tail emitter, spawn the def's TAIL_DUST_EFFECT special effect at the tail position, kill the creature's dependent things (interface 0xAD) and set a CCreatureAction_ScorpionTailWithdraw towards the target as the creature's current action
 // Leaf: ?Recover@CModeScorpionKingTailPlunge
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008DF510, 304 bytes incl. int3 padding, `ret` (private, thiscall).
 // Identity: catalog "CTCLightningOrb_OnUpdate" (_global) is wrong: the PDB name set's
@@ -20,7 +21,7 @@
 // Shape: the landed Spike 0x008DA0F0 model: same-TU out-only stand-ins for GetSubDef / GetEffectFromString (the effects
 //   def lives in ebp after the call, its slot reused by the TAIL_DUST_EFFECT temporary), a counted out pointer released at
 //   the function end, GetTCIfPresent (`xor ecx,ecx` default) and IS_THING_ALIVE.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

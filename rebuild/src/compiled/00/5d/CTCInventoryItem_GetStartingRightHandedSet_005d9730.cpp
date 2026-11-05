@@ -1,5 +1,6 @@
 // CTCInventoryItem::GetStartingRightHandedSet(long defIndex) -- static: cache the item def for defIndex and return the right-handed set for its Orientation, or the default (orientation-0) set when the def cannot be cached
 // Leaf: ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x005D9730, 88 bytes (+8 int3). Ego_r.pdb `?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z`
 // (static __fastcall: the hidden CRightHandedSet result in ecx, defIndex in edx; `ret`). Instance twin 0x005D92F0.
 // Callees: CTCInventoryItem::CacheDef(long) @ 0x005D94B0 (static `__fastcall` bool), the private static
@@ -14,11 +15,7 @@
 // inline CRightHandedSet copy constructor (91v88) hoist `mov ecx,esi` above the branch and copy through ecx.
 #include "engine/CInventoryItemDef.h"
 enum EInventoryObjectOrientation { };
-class C3DVector {                                       // 12 bytes
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {                                 // 24 bytes
 public:
     C3DVector Up;                                       // +0x00

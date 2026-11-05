@@ -1,6 +1,7 @@
 // 0065dce8 CVillageTaskSecuritySweep::CVillageTaskSecuritySweep
 // Flags: /Os
 // Leaf: ??0CVillageTaskSecuritySweep@@QAE@ABVC3DVector@@M0M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define CVillageTaskSecuritySweep Pass9SecurityTaskStorage
 #include "engine/CVillageTaskSecuritySweep.h"
 #undef CVillageTaskSecuritySweep
@@ -8,7 +9,7 @@
 #define __forceinline inline
 #endif
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;__forceinline C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CThing;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

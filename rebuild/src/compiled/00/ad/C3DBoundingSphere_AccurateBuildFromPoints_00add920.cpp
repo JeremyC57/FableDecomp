@@ -5,16 +5,8 @@
 //   centre step written out in BOTH arms of the best-radius test and `step *= 0.5` (double) only in the else arm; bestCenter is
 //   copied memberwise.
 // Leaf: AccurateBuildFromPoints
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
+#include "engine/C3DVector.h"
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class C3DBoundingSphere {
@@ -34,7 +26,7 @@ __declspec(noinline) void C3DBoundingSphere::FastBuildFromPoints(const C3DVector
     Center = sum * inv;
     float radiusSquared = 0.0f;
     for (long j = 0; j < count; ++j) {
-        float d = (points[j] - Center).GetLengthSquared();
+        float d = (points[j] - Center).GetSquaredMagnitude();
         if (d > radiusSquared)
             radiusSquared = d;
     }
@@ -58,19 +50,19 @@ void C3DBoundingSphere::AccurateBuildFromPoints(const C3DVector* points, long co
         unsigned long i = 0;
         if (count >= 4) {
             do {
-                d = (points[i] - Center).GetLengthSquared();
+                d = (points[i] - Center).GetSquaredMagnitude();
                 if (d > farthest) { farthest = d; farthestIndex = i; }
-                d = (points[i + 1] - Center).GetLengthSquared();
+                d = (points[i + 1] - Center).GetSquaredMagnitude();
                 if (d > farthest) { farthest = d; farthestIndex = i + 1; }
-                d = (points[i + 2] - Center).GetLengthSquared();
+                d = (points[i + 2] - Center).GetSquaredMagnitude();
                 if (d > farthest) { farthest = d; farthestIndex = i + 2; }
-                d = (points[i + 3] - Center).GetLengthSquared();
+                d = (points[i + 3] - Center).GetSquaredMagnitude();
                 if (d > farthest) { farthest = d; farthestIndex = i + 3; }
                 i += 4;
             } while (i < (unsigned long)(count - 3));
         }
         for (; i < (unsigned long)count; ++i) {
-            d = (points[i] - Center).GetLengthSquared();
+            d = (points[i] - Center).GetSquaredMagnitude();
             if (d > farthest) { farthest = d; farthestIndex = i; }
         }
         if (farthest < bestRadiusSquared) {

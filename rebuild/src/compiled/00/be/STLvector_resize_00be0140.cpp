@@ -1,5 +1,6 @@
 // std::vector::resize(unsigned int new_size) -- resize the C3DBoundingSphere vector: erase the surplus tail, or append default-constructed elements up to the new size
 // Leaf: ?resize@?$vector@VC3DBoundingSphere@@V?$allocator@VC3DBoundingSphere@@@std@@@std@@QAEXI@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE0140, 109 bytes, thiscall `ret 4`.
 // Callers: one, 0x00BDF14C in CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren 0x00BDF100.
 // Callees: vector::erase(first, last) 0x00BDFCF0 (thiscall, returns the iterator, dropped), vector::_M_fill_insert(pos, n, x)
@@ -10,13 +11,7 @@
 // Shape: STLport 4.6 `resize(n) { resize(n, _Tp()); }` with `resize(n, const _Tp& x) { if (n < size()) erase(begin() + n,
 //   end()); else insert(end(), n - size(), x); }` and `insert(pos, n, x)` forwarding to the out-of-line _M_fill_insert: the
 //   default temporary lives in the `sub esp,16` frame, size() is recomputed after the erase/insert test.
-class C3DVector {
-public:
-    float X;                                    // +0x0
-    float Y;                                    // +0x4
-    float Z;                                    // +0x8
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingSphere {                       // Ego_r.pdb, 16 bytes
 public:

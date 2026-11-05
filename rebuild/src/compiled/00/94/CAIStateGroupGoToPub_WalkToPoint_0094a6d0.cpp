@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::WalkToPoint(const C3DVector&, const CRightHandedSet&) -- walk to the pub point while the pub and the bar live, then turn to look along the point's forward direction; on any failure free the bar point
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Copy constructor: the C3DVector model DECLARES its memberwise copy constructor (retail's header class has one); with the
 // implicit copy VC7.1 schedules the copies differently (found by the retry-10 copy-constructor sweep).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094A6D0, length 368 bytes (`ret 8`).
@@ -11,13 +12,7 @@
 #include "engine/CAIStateGroupBase.h"
 
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c

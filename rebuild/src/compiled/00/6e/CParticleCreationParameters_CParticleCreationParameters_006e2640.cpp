@@ -1,14 +1,12 @@
 // CParticleCreationParameters::CParticleCreationParameters(long, long, float, const CRightHandedSet&) -- interpolated creation record: InterpolatingParticle set, the particle-ID range and interpolation factor stored, RHSet copied, empty update parameters
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E2640, length 127 bytes (padded to 128).
 // Leaf: ??0CParticleCreationParameters@@QAE@JJM
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CBaseClass::CBaseClass() @ 0x0099A2D0 (base of NParticleEngine::CParticleUpdateParameters, vtable 0x0125FFDC).
 // Layout: as 0x006E25C0 (retail UpdateParameters 0x24 bytes at +0x28).
 // Shape: initialiser list in declaration order (the compiler schedules the three argument stores first); the RHSet
 // is copied through ecx/edx by C3DVector's memberwise user copy constructor.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                           // +0x00
     C3DVector Forward;                      // +0x0c

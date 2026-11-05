@@ -1,4 +1,5 @@
 // CAIStateGroup_BalverineCornered::GetLandPos(CThing*) -- land beyond the target by 1.2 times the combined radii, at terrain height.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- corrected no-argument world-map getter and subsequent position-taking height-query signatures reproduce all 223 bytes.
 #include "engine/CAIStateGroup_BalverineCornered.h"
 #define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
@@ -11,15 +12,7 @@ protected:
 };
 #include "engine/CAIBrain.h"
 #include "engine/CTCPhysicsBase.h"
-class C3DVector { public:
- float X,Y,Z;
- C3DVector() {}
- C3DVector(float x,float y,float z):X(x),Y(y),Z(z) {}
- C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z) {}
- C3DVector operator+(const C3DVector& b) const { return C3DVector(X+b.X,Y+b.Y,Z+b.Z); }
- C3DVector operator*(float factor) const { return C3DVector(X*factor,Y*factor,Z*factor); }
- C3DVector& AccurateNormalise(); // 00A14440, called with no arguments; propagated GetScaled signature disagrees.
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const; // 004C73D0
 };

@@ -1,5 +1,6 @@
 // CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FinishAction() -- end of a knock-down recovery: take the creature's mode manager out of mode 0x1f, level its facing (Z = 0, normalised; +X when degenerate) and hand the body an upright orientation along it, then the base FinishAction
 // Leaf: ?FinishAction@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00866E80, length 294 bytes.
@@ -20,12 +21,7 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 struct CUpForward {                         // the up/forward pair handed to the physics body
     C3DVector Up;
     C3DVector Forward;

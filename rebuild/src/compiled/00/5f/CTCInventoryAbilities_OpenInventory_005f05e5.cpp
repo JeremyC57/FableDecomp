@@ -3,6 +3,7 @@
 // inventory with the stats-screen animation box and register the screen with the UI manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005F05E5, 410 bytes, plain `ret` (frame pointer, `leave`).
 // Leaf: OpenInventory@CTCInventoryAbilities
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad21[0x44 - 0x21] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Callees: AddAbilityToCorrectList @ 0x005EEFB7, CGameDefinitionManager::Get @ 0x0044C6B0, GetDefGlobalIndexFromName
@@ -23,7 +24,7 @@ class CTCBase;
 #include "engine/CVectorMap.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing {
 public:
     unsigned char _pad00[0x20];

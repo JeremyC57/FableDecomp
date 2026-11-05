@@ -1,4 +1,5 @@
 // CWorldMap::GetGroundSizeZAtBlock(const C2DCoordI&) -- block query: CMap::GetGroundSizeZAt of the loaded map holding the block, else 0.0f
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z. Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail 0x000063a660, 0x79 bytes (world-map theme/height TU, 0x0063Axxx). The block is first converted to a
 // C3DVector temporary (fild x / fild y / Z = 0, sharing the frame slot of the later local) for IsPosInMap(C3DVector) 0x004FC600; then slot 17 GetMapNumberAt(C2DCoordI)
 // [+0x44] (no zero test of the map number), slot 10 IsMapLoaded [+0x28], ConvertWorldMapCoordsToLocalCoords(long,
@@ -8,22 +9,8 @@
 // sits 4/8/12.. bytes lower in retail: Maps +0x20 (PDB +0x24), Granularity +0x50 (PDB +0x60),
 // MapPlacementPitch +0x58 (PDB +0x68), Area +0x5C..+0x68 (PDB +0x6C..+0x78), MapPlacement +0x6C
 // (PDB +0x7C), PlayerPositionInfo +0x78 (PDB +0x8C), LoadedMaps +0x90 (PDB +0xAC)).
-class C3DVector
-{ public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
-class C2DCoordI
-{ public:
-    long x;
-    long y;
-    C2DCoordI() {}
-    C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
-};
 
 class C2DBoxI
 { public:
@@ -140,7 +127,7 @@ public:
 
 float CWorldMap::GetGroundSizeZAtBlock(const C2DCoordI& pos) const
 {
-    if (IsPosInMap(C3DVector((float)pos.x, (float)pos.y, 0.0f)))
+    if (IsPosInMap(C3DVector((float)pos.X, (float)pos.Y, 0.0f)))
     {
         long map = GetMapNumberAt(pos);
         if (IsMapLoaded(map))

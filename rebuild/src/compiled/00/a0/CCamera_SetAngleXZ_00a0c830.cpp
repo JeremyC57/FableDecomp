@@ -1,5 +1,6 @@
 // CCamera::SetAngleXZ(float angle) -- (unfinished in retail) rotates a local world-up vector by angle about the camera's forward axis and discards it
 // Leaf: ?SetAngleXZ@CCamera@@QAEXM@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A0C830, 51 bytes, thiscall, `ret 4`.
 // Identity: the CCamera TU (0x00A0BE30 SetView .. 0x00A0C6F0 SetAngleYZ) follows Ego_r.pdb's CCamera member order
 //   (GetAngleXY/YZ/XZ, SetAngleXY/YZ/XZ, LimitPos); this is the SetAngleXZ slot, which is also only 0x30 bytes in the
@@ -12,13 +13,7 @@
 //   (axis = this + 0x18, the angle forwarded from its slot) and dropped; nothing is stored back into the camera.
 // Label correction: catalogued as `vector<EWeaponClass>::_Umove<EWeaponClass*>` (propagated); the body is
 //   CCamera::SetAngleXZ.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void Rotate(const C3DVector& axis, float angle);    // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet {                                 // 24 bytes
 public:

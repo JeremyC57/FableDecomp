@@ -1,5 +1,6 @@
 // DeleteSplineRandomOffsetData(CSplineRandomOffsetData* data) -- the counted-pointer deleter of CSplineRandomOffsetData: null test, the inlined destructor frees its four C3DVector arrays, then operator delete
 // Leaf: DeleteSplineRandomOffsetData
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B231E0, length 82 bytes (+ int3 padding).
 // Callees: free @ 0x00BFEA14 four times (the inline CArray destructors), operator delete @ 0x00BFE9BC.
@@ -16,7 +17,7 @@
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 #include "engine/CArray.h"
 

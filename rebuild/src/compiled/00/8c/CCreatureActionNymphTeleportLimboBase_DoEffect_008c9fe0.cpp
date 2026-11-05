@@ -1,5 +1,6 @@
 // CCreatureAction_NymphTeleportLimboBase::DoEffect() -- spawn the creature's TELEPORT_POS special effect at its position and attach its particle emitter to the creature's DUMMY_CENTRE
 // Leaf: DoEffect
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 //   miss path reuses retail's zero register), and the CDefPointer is declared before the zero-initialised effect index
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C9FE0, 296 bytes (304 with padding).
@@ -12,7 +13,7 @@
 // Shape: the JackDeathInto 0x008C0EA0 model: `found = GetSubDef(&def) && def->CalcAndLookup("TELEPORT_POS", &effect)` (the
 //   conditionally built string tracked by a flag in ebx, the bool kept in a frame byte); the emitter pointer is a
 //   zero-initialised local filled by an unchecked lookup; the GetSubDef same-TU stand-in carries retail's LTCG knowledge.
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;

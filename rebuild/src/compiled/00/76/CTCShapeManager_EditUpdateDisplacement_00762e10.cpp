@@ -1,5 +1,6 @@
 // CTCShapeManager::EditUpdateDisplacement(const C2DVector& delta) -- editor: move the selected shape's selected points by an XY delta (or, when none are selected, the whole shape) and rebuild the shape from the moved point list
 // Leaf: EditUpdateDisplacement
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00762E10, 311 bytes, `ret 4`.
 // Callees: NShape::CShape::UpdateDisplacePoints(const C3DVector&) @ 0x00761200 (bool), vector<C3DVector> copy ctor @ 0x006F0810,
 //   vector<C3DVector>::operator= @ 0x0075B8D0 (manifest "Std_Vector_Assign"), free @ 0x00BFEA14, NShape::CShape virtual slot 1
@@ -13,12 +14,7 @@
 //   first arm's temporary: VC7.1 escape analysis is flow-insensitive, so the vector copy ctor, operator=, CreateShape and
 //   UpdateDisplacePoints (all instantiated or defined in retail's TU) are same-TU stand-ins taking the bounds / delta by value.
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
 struct CPointVector {                               // STLport vector<C3DVector>
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;

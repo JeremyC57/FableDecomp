@@ -1,5 +1,6 @@
 // CCreatureAction_DragonRoar::PerformAction() -- finds the dragon's mouth dummy, drops it to ground height, and raises a short-lived physical barrier two units ahead along the facing; the dragon is registered with the barrier's driver
 // Leaf: ?PerformAction@CCreatureAction_DragonRoar@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008F5490, 321 bytes (336 with padding).
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/B50/B90/C10 (CIntelligentPointer<CThing>
 //   vtable 0x01238C6C), CThing::GetPos 0x004C73D0, CTCGraphicAppearance::GetDummyObject 0x004C08C0 (the
@@ -41,15 +42,7 @@ template <class T> struct CRetailVector {
     SRetailAllocProxy<T> _M_end_of_storage;
     void push_back(const T& value);             // 0x004AD520
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CTCDriverBase { public:
     unsigned char _pad00[0x2c];

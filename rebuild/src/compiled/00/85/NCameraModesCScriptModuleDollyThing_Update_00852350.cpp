@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleDollyThing::Update() -- put the owning camera at RotThing's position + DollyVector looking at RotThing, then turn DollyVector about Z by one frame's share of a full turn
 // Leaf: Update
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852350, length 172 bytes (`ret`).
@@ -18,20 +19,7 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator+(const C3DVector& other) const
-    {
-        C3DVector result;
-        result.X = X + other.X;
-        result.Y = Y + other.Y;
-        result.Z = Z + other.Z;
-        return result;
-    }
-    void Rotate(const C3DVector& axis, float angle); // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

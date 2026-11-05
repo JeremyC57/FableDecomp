@@ -1,5 +1,6 @@
 // CLandscapeBackgroundTreeNode::BuildDefaultSection(unsigned short mapX, unsigned short mapY, unsigned short width, unsigned short height) -- make this node a default section: store its map rectangle, mark LOD records 1..7 loaded, create its background patch (allocated from the landscape memory manager) and let it build its default section, then reset the node's bounding box to the rectangle in world map units
 // Leaf: BuildDefaultSection
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BF6F80, length 373 bytes, `ret 10h`.
 // Callees: CLandscapeBackgroundPatch::operator new(unsigned int, CLandscapeBackgroundTreeNode*) @ 0x00BE5BB0
 //   (`__fastcall`: size in ecx, owner in edx), CLandscapeBackgroundPatch::CLandscapeBackgroundPatch(CLandscapeBackgroundTreeNode*,
@@ -21,12 +22,7 @@ class CEngineLandscapeMap { public:
     unsigned char            _pad[0x14];
     CEngineLandscapeMapInfo* Info;                 // +0x14
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector Min;
     C3DVector Max;

@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsForceModelBase::DoCreatureEvasion() -- potential-field push away from the owner creature: the creature point (focal X/Y at the camera height) is sampled 1/distance around the camera position and the scaled gradient is returned
 // Leaf: ?DoCreatureEvasion@CPhysicsForceModelBase@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FAA80, 417 bytes, `ret 4` (C3DVector by hidden pointer).
 // Callees: 0x0084F1B0 (the owner's thing; manifest label "_Cons_val<...>" propagated), CTCGraphicAppearance::GetCameraFocalPos
 //   0x004C12D0 (thing +0x64), malloc 0x00BFEA0E (list header and node, 0x14 bytes), the list<C3DVector> destructor 0x0048CA60
@@ -14,16 +15,7 @@ extern "C" void* __cdecl malloc(unsigned int size); // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);              // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* place) { return place; }
 float __cdecl sqrtf_(float);
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    float MagSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 float Sqrt(float x);
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double);

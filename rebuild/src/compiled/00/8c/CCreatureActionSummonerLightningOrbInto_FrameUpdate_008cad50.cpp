@@ -1,5 +1,6 @@
 // CCreatureAction_SummonerLightningOrbInto::FrameUpdate() -- base combat FrameUpdate; while the target lives, turn the summoner's facing towards it in the ground plane by at most 1/36 of a revolution per frame (clamped dot, sign from the cross product) and set the summoner's orientation to (up, turned facing)
 // Leaf: ?FrameUpdate@CCreatureAction_SummonerLightningOrbInto@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CAD50, 441 bytes, plain `ret` (virtual; Ego_r.pdb UAEXXZ).
 // Callees: CCombatActionBase::FrameUpdate() 0x00859D80 (qualified call of the base virtual), CBaseIntelligentPointer::GetPItem
 //   0x00A01B50, CThing::GetPos() const 0x004C73D0, C3DVector::AccurateNormalise() 0x00A14440 (returns *this; sqrt
@@ -17,14 +18,7 @@
 //   the angle clamp as `angle = max; if (max > turn) angle = turn;`; the physics TC through the PDB's inline
 //   CThing::GetPhysicsTC() (the bare member load colours the TC pointer eax where retail has ecx).
 #include <math.h>
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector& AccurateNormalise();                   // 0x00A14440
-    void Rotate(const C3DVector& axis, float angle);  // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
     return C3DVector(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);

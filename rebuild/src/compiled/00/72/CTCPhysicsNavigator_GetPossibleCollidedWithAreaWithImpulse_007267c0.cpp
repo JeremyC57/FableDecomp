@@ -1,5 +1,6 @@
 // CTCPhysicsNavigator::GetPossibleCollidedWithAreaWithImpulse(const C3DVector& impulse) const -- the integer XY box the body can touch this frame: position +/- (radius + 1), stretched along velocity-plus-impulse, orientation-validated
 // Leaf: GetPossibleCollidedWithAreaWithImpulse
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007267C0, length 267 bytes (+ int3 padding), `ret 8` (hidden C2DBoxI result
 // + impulse). FableWin.pdb: ?GetPossibleCollidedWithAreaWithImpulse@CTCPhysicsNavigator@@ABE?AVC2DBoxI@@ABVC3DVector@@@Z
 // (private, const). Called twice from CTCPhysicsNavigator::UpdateAdditionalImpulse (0x00726C68, 0x00726FDE); the catalog's
@@ -12,8 +13,7 @@
 // four corners are converted in TL.X, TL.Y, BR.X, BR.Y order (TL = (minX, maxY), BR = (maxX, minY)), validated and copied out.
 // Layout (PDB): CTCBase ParentThing +0x04, Position +0x0c, Velocity +0x28, Radius +0x34 (CTCPhysicsBase);
 // engine/CTCPhysicsNavigator.h is a flattened POD with opaque base pads, so the class is modelled locally.
-class C3DVector { public: float X, Y, Z; };
-class C2DCoordI { public: long X, Y; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;

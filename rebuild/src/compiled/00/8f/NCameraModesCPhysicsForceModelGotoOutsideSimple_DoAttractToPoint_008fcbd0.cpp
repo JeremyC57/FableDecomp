@@ -1,4 +1,5 @@
 // NCameraModes::CPhysicsForceModelGotoOutsideSimple::DoAttractToPoint() -- the base force model's attraction (CPhysicsForceModelBase::DoAttractToPoint @ 0x008FA800) scaled by 3.0f
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FCBD0, length 56 bytes (+ int3 padding).
 // Identity: vtable 0x01275950 slot 6 (rtti-vtables.tsv); Ego_r.pdb has
 // `?DoAttractToPoint@CPhysicsForceModelGotoOutsideSimple@NCameraModes@@UAE?AVC3DVector@@XZ` 0x40 bytes
@@ -10,12 +11,7 @@
 // slot through the value constructor, whose arguments VC evaluates right to left (z, y, x loaded and
 // multiplied first, stored x, y, z). `v.z * 3.0f` loads the component then `fmul [pool]`. `ret 4` =
 // the hidden pointer only.
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { }
-    C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
-    C3DVector operator*(float s) const { return C3DVector(x * s, y * s, z * s); }
-};
+#include "engine/C3DVector.h"
 
 namespace NCameraModes {
 class CPhysicsForceModelBase { public:                    // vtable 0x0127592C

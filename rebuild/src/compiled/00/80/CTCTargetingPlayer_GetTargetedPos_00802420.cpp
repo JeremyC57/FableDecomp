@@ -1,5 +1,6 @@
 // CTCTargetingPlayer::GetTargetedPos(C3DVector& pos, float t) -- in first-person targeting the targeted position (plus its 3D offset) interpolated between the last and the current frame; otherwise the live target's fire point at t; false when there is neither
 // Leaf: GetTargetedPos
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00802420, 366 bytes (`ret 8`).
 // Callees: this's virtual GetTargetedThing (slot 33, +0x84); CThing::PeekPlayer 0x004C7A10; CPlayer::IsFirstPersonTargeting
 //          0x004874D0; CTCBase::PeekWorld() const 0x00686A80; GetTargetFirePoint(const CWorld*, const CThing*, float) 0x007EA2F0
@@ -8,15 +9,7 @@
 //          retail, as the landed PostProcessTargetedThing 0x00803B20 notes), so the positions sit 8 bytes lower: TargetedPos
 //          +0x84, OldTargetedPos +0x90, TargetedPosOffset3D +0x9c, OldTargetedPosOffset3D +0xa8; local model.
 // Shape: `(current - old) * t + old` through C3DVector's inline operators, the offset added with +=.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 class CPlayer { public:
 public:
     bool IsFirstPersonTargeting() const;   // 0x004874D0

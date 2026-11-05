@@ -1,6 +1,7 @@
 // NCameraModes::CSnapToPoint::OnInitLeaf() -- take the fixed camera point's settings: track the observed thing, or else look along the point's fixed look vector
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00850700, 128 bytes, plain `ret`.
 // Leaf: ?OnInitLeaf@CSnapToPoint@NCameraModes@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Name: vtable 0x0124DE5C slot 24; FableWin.pdb ?OnInitLeaf@CSnapToPoint@NCameraModes@@UAEXXZ (slot 25 0x0056E390 is the empty
 //       OnDieLeaf; slots 28/29 read back TrackThing +0xc0 and LookDirection +0xc1, so this is the leaf that fills them).
@@ -14,9 +15,7 @@
 //        CFixedDolly::OnInitLeaf 0x0087B6F0): both out pointers are uninitialised and share the lookup key's frame word, so the
 //        absent and wrong-type paths read it (`mov esi,[esp+8]` / `mov ecx,[esp+8]`); TrackThing is stored before its test.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;

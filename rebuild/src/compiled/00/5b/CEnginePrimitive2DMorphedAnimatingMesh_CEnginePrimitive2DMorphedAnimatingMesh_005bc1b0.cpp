@@ -1,5 +1,6 @@
 // Original morphing mesh descriptor: true primitive hierarchy and container types.
 // Leaf: ??0CEnginePrimitive2DMorphedAnimatingMesh@@QAE@_KKABV?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@ABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@2@ABVC3DAnimationBlendState@@ABVC2DBoxF@@ABVC3DBoundingSphere@@ABVC3DOrientationInterpolator@@W4EEngineInterpolationSet@@EVCRGBColour@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /Os /Oy-
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -10,7 +11,7 @@ typedef unsigned int PrimitiveIdentifier __attribute__((mode(DI)));
 #endif
 #pragma pack(push,1)
 class C2DVector {public:float X,Y;};
-class C3DVector {public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class C2DBoxF {public:float TLX,TLY,BRX,BRY;};
 class C3DBoundingSphere {public:C3DVector Center;float Radius;};

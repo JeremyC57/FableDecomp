@@ -1,5 +1,6 @@
 // CParticleSimulation::CopyFrom(const CParticleSimulation& source, CMovableResourceMemoryPool& pool) -- copy the timestep settings and particle count from a template simulation, allocate this simulation's arrays from the pool (false on failure), then copy the five particle arrays and the remaining tuning fields, time and bounding box
 // Leaf: ?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c: FableWin.pdb + Ego_d/Ego_r ?CopyFrom@CParticleSimulation@@QAE_NABV1@AAVCMovableResourceMemoryPool@@@Z (the pool by
 //   reference; caller CParticleProgram::SetupSimulation 0x00AE29D0); its callee is the private Ego_r.pdb
 //   ?AllocateArrays@CParticleSimulation@@AAE_NAAVCMovableResourceMemoryPool@@@Z. Was InitializeFromTemplate(const CParticleSimulation&,
@@ -20,11 +21,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 #pragma intrinsic(memcpy)
 
 class C4DVector { public: float X, Y, Z, W; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector Min;
     C3DVector Max;

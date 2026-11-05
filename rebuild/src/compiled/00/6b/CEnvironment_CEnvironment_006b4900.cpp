@@ -1,5 +1,6 @@
 // CEnvironment::CEnvironment(CGameDefinitionManager* defs) -- build the environment: priority channels, tick states, theme pallette, spell-effect interface / interpolator and rain-splash pointer; seed the lightning and sunlight values from the environment defs, build the themes, then give each of the six channels a five-entry stack and blend the day theme into both tick states
 // Leaf: ??0CEnvironment
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Layout: retail CEnvironment (not Ego_r.pdb): CBaseObject polymorphic root, PriorityStackChannels a 12-byte vector at +0x48, tick states
 //          (pack(1), 0xc20 bytes: 6 x 0x1f4 themes + wind state, override direction at +0xc0d) at +0x54 / +0xc74, theme pallette +0x1954,
 //          spell-effect scoped_ptrs +0x1960/+0x1964, rain-splash CIntelligentPointer +0x1968 (matches differ 006b3ff0 / 006b3030 views).
@@ -8,12 +9,7 @@
 #include <stdlib.h>
 inline void* operator new(size_t, void* where) { return where; }
 void __cdecl operator delete(void* block);                     // 0x00BFE9BC
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace N_0099a2f0 { struct CBaseObject { virtual void v000(); CBaseObject(); }; } using N_0099a2f0::CBaseObject;   // 0x0099A2F0
 struct CBaseIntelligentPointer {
     virtual void v000();

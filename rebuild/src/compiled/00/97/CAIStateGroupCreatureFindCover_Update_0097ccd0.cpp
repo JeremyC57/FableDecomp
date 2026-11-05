@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureFindCover::Update() -- take cover from a live enemy: re-aware the perception of it, pick a hidden cover position, move in and keep ducking while close to the cover
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097CCD0, length 351 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, Terminate @ 0x008FCF40, CVectorMap::LowerBound @ 0x0040F020 (inlined
@@ -31,7 +32,7 @@ class CAIStateGroup_CreatureUseCoverBase : public CAIStateGroup_EnemyCreatureBas
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float x, y;
     float GetLength() const { return (float)sqrt(x * x + y * y); }

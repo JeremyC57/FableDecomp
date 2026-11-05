@@ -1,5 +1,6 @@
 // 009395f0 CAIStateGroup_SitRoundCampfire::GetPNearCampfire
 // Leaf: ?GetPNearCampfire@CAIStateGroup_SitRoundCampfire@@ABEPAVCThingObject@@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #define CClass CClassLayout
 #include "engine/CClass.h"
@@ -23,14 +24,7 @@
 #undef CThingAICreature
 
 #pragma pack(push,1)
-class C3DVector {
-public:float X,Y,Z;
-    C3DVector(){}
-    C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
-    C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}
-    const C3DVector operator+(const C3DVector&v)const{return C3DVector(X+v.X,Y+v.Y,Z+v.Z);}
-    const C3DVector operator-(const C3DVector&v)const{return C3DVector(X-v.X,Y-v.Y,Z-v.Z);}
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace std {
 template<class A,class R>struct unary_function {typedef A argument_type;typedef R result_type;};

@@ -1,5 +1,6 @@
 // std::__destroy_aux(_Deque_iterator first, _Deque_iterator last, const __false_type&) -- STLport destroy loop over a deque<CBezierCurve> range: steps the cursor (wrapping to the next node buffer) until it reaches last; the element destructor is empty
 // Leaf: ??$__destroy_aux@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00913930, 45 bytes (48 with padding), __fastcall (/Gr: the tag reference in ecx, both
 //   16-byte iterators on the stack), `ret 20h`.
 // Identity: STLport 4.6 __destroy_aux<_Deque_iterator<CBezierCurve, _Nonconst_traits<CBezierCurve> > > (non-inline template,
@@ -22,14 +23,7 @@ extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 inline void* operator new(size_t, void* p) { return p; }
 
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CBezierCurve {                            // Ego_r.pdb, 48 bytes

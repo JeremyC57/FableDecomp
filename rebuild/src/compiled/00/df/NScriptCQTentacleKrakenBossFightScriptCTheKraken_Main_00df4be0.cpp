@@ -1,5 +1,6 @@
 // NScript::CQ_TentacleKrakenBossFightScript::CTheKraken::Main() -- the kraken boss entity script: register the alive-filter, run a frame, wait until the kraken's health reaches zero, then take the hero under scripted control and play CS_KRAKEN_OUTRO in a paused movie sequence, and idle until the script is done
 // Leaf: ?Main@CTheKraken@CQ_TentacleKrakenBossFightScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF4BE0, length 531 bytes. Entity-script slot 1 (Main) of the vtable
 //   0x012DE5AC built by the landed factory 0x00DF4730 (sizeof 0x1c = Ego_r.pdb CTheKraken); the manifest label
 //   "CQ_GuildTrainingScript::RunSaveXPCutscene2" is propagated.
@@ -15,11 +16,9 @@
 // Naming wave 35: identity reg 00df4358 "TheKraken" in 00df4240; Alloc 00df4730; vtable 012de5ac slot 1; PDB ?Main@CTheKraken@CQ_TentacleKrakenBossFightScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CTheKraken::Main (wave3/labels_alloc.tsv); PDB ?Main@CTheKraken@CQ_TentacleKrakenBossFightScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CTheKraken@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    virtual ~CScriptThing();                          // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

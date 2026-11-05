@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<C3DBoundingSphere >) STLport growth insert for a 16-byte element with a user (memberwise) copy constructor: allocate size + max(size, fill_len) elements, copy the head out of line, construct x once (or fill out of line fill_len times), copy the tail unless atend, free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@VC3DBoundingSphere@@V?$allocator@VC3DBoundingSphere@@@std@@@std@@IAEXPAVC3DBoundingSphere@@ABV3@ABU__false_type@2@I_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BDFE70, 209 bytes (+ int3 padding to 224), thiscall, `ret 14h` (five arguments).
 // Identity (proven): std::vector<C3DBoundingSphere >::_M_insert_overflow; evidence: CLocalDetailCacheMap::CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren 0x00BDF100 calls it (0x00BDF1C1) from an inline push_back on the function-local static 'sphere_list' at 0x0143B978 (Ego_r.pdb atexit destructor for it), the same vector it resizes through the landed vector<C3DBoundingSphere>::resize 0x00BE0140; the fill insert 0x00BDFF50 calls it too.
 // Label: the manifest's "std_vector_insert_fill_stride" is propagated / behavioural (family H043: six byte-identical bodies, each its own
@@ -14,13 +15,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
-class C3DVector {                                          // Ego_r.pdb, 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // PDB ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere {                                  // Ego_r.pdb, 16 bytes
 public:
     C3DVector Center;                                      // +0x0

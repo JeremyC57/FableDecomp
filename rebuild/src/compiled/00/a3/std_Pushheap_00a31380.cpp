@@ -1,6 +1,7 @@
 // std::_Push_heap(std::pair<unsigned long,C3DHelperPoint>* first, int hole, int top, std::pair<unsigned long,C3DHelperPoint> val, CKeyPairCompareLess<unsigned long,C3DHelperPoint> pred) -- percolate a CRC-keyed helper point up a max-heap ordered by the unsigned key
 // Flags: /Gr
 // Leaf: _Push_heap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00A31380, 144 bytes incl. int3 padding (/O2). Called from the landed
 // _Adjust_heap @ 0x00A32440 (same instantiation).
 // Shape: STLport `__push_heap` (catalog `_Push_heap`) (`hole > top` test, rotated loop) over a 20-byte element
@@ -9,10 +10,7 @@
 // five-dword copy (C3DVector has a memberwise user copy constructor but no user operator=); the key
 // test is UNSIGNED (`jae`). /Gr: first=ecx, hole=edx; `ret 1Ch` = top + 20-byte pair + comparator.
 namespace N00a31380 {
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 struct C3DHelperPoint {
     C3DVector Position;                                   // +0x0
     long BoneIndex;                                       // +0xC

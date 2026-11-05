@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::GetInverseSystemTransform(CMatrix3x4& out) const -- copy the emitter transform and scale its three basis rows.
 // Leaf: ?GetInverseSystemTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: probable helper name only; target owner/API proven; target exact original NParticleEngine::CParticleSystem PDB void(CMatrix3x4&)const API; own Scale+96/100/104 and matrix48 copy; helper00AF3DA0 own body returns PParentEmitter+4 then InverseTransform+0xE0; helper spelling reused existing binding, not present in PDB name sets.
 // Layout: no active particle-system header; quarantined shared header retained unchanged as layout evidence only; callable CParticleSystem and CParticleUpdateParameters restore actual RTTI CBaseClass inheritance. Original typed CVectorMap/CArray/STLport vector/list members, all eight original bool flags, C3DVector Scale, and CCharString Name replace flattened storage. UpdateParameters includes its own CBaseClass vptr; PC sizeof0x70 verified. EPSCType zero enumerator is descriptive and unused. Incomplete component/update-description value types occur only behind genuine vector storage pointers; no invented element layout. Named Scale agrees with original donor member and own retail offsets. CMatrix3x4/C3DVector have no shared headers; original four three-float rows. Final translation row remains copied and unscaled.
@@ -7,7 +8,8 @@
 #include "engine/_quarantine/CParticleSystem.h"
 #undef CParticleSystem
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector{public:float X,Y,Z;};class CMatrix3x4{public:C3DVector Rows[4];};class CIEngine;class CCharStringData;class CCharString{public:CCharStringData* PStringData;};
+#include "engine/C3DVector.h"
+class CMatrix3x4{public:C3DVector Rows[4];};class CIEngine;class CCharStringData;class CCharString{public:CCharStringData* PStringData;};
 #include "engine/CArray.h"
 template<class K,class V>class CKeyPairCompareLess{};template<class K,class V,class CompareType=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;CompareType Compare;bool Dirty;};
 namespace NParticleEngine{class CParticleEmitter;class CComponentInstance;class CParticle;class CDecal;enum EPSCType{PSC_UNNAMED=0};template<class K,class V>class CParticleUpdateParamDesc;template<class K,class V>class CParticleUpdateParameters:public CBaseClass{public:template<class T>class CParticleUpdateCCompareVector{};template<class T>class CParticleUpdateCCompareParamDesc{};CVectorMap<K,C3DVector,CParticleUpdateCCompareVector<K> > VectorParams;CVectorMap<K,CParticleUpdateParamDesc<K,V>,CParticleUpdateCCompareParamDesc<K> > UpdateParams;};

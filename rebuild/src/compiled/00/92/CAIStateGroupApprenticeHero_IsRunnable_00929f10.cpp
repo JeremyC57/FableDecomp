@@ -1,5 +1,6 @@
 // CAIStateGroup_ApprenticeHero::IsRunnable() -- runnable when the creature is a village member (interface 0x23) whose village says it is cook time
 // Leaf: ?IsRunnable@CAIStateGroup_ApprenticeHero@@MAE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH (was DIFFER 82v87 nd=9) -- levers: counted-pointer model moved onto engine/CCountedPointer.h;
 //   HasTC written as a byte test with named const unsigned char bits / mask locals and `mask & bits` (gives retail's mov
@@ -39,10 +40,7 @@ private:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;
 #include "engine/CVectorMap.h"

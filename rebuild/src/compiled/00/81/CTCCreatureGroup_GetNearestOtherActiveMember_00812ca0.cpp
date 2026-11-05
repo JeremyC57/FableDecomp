@@ -1,5 +1,6 @@
 // CTCCreatureGroup::GetNearestOtherActiveMember(const CThingAICreature* creature) const -- walks the group's member map and returns the active member (other than the creature itself, matched by unique id) nearest to the creature; null for a null creature
 // Leaf: GetNearestOtherActiveMember
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00812CA0, 384 bytes (`ret 4`).
 // Callees: CThing::GetPosition() @ 0x004C73D0 (the query creature) and its byte-identical copy @ 0x006A4D00 (the members),
 // CIntelligentPointer<CThingAICreature const>::GetPItem() @ 0x00A01B50.
@@ -7,14 +8,7 @@
 // node: key +0x10, CGroupMemberData {PMember +0x18, IsActive +0x20}; CThing::UniqueID +0x18 (as the landed DrawPrepare rows).
 // Shape: the map walk is the inlined STLport _M_increment; the best distance lives in the dead argument slot and starts as the
 // integer zero; retail compares a squared distance against the squared best (squared) distance, kept as written.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                              // +0x18
@@ -90,14 +84,14 @@ const CThingAICreature* CTCCreatureGroup::GetNearestOtherActiveMember(const CThi
             continue;
         const CThingAICreature* member = ((CThingAICreature const*)((CBaseIntelligentPointer*)&(it->Data.PMember))->GetPItem());
         if (nearest != 0) {
-            float distance = (member->PeekPos() - pos).GetLengthSquared();
+            float distance = (member->PeekPos() - pos).GetSquaredMagnitude();
             if (distance < bestDistance * bestDistance) {
                 nearest = ((CThingAICreature const*)((CBaseIntelligentPointer*)&(it->Data.PMember))->GetPItem());
                 bestDistance = distance;
             }
         } else {
             nearest = member;
-            bestDistance = (((CThingAICreature const*)((CBaseIntelligentPointer*)&(it->Data.PMember))->GetPItem())->PeekPos() - pos).GetLengthSquared();
+            bestDistance = (((CThingAICreature const*)((CBaseIntelligentPointer*)&(it->Data.PMember))->GetPItem())->PeekPos() - pos).GetSquaredMagnitude();
         }
     }
     return nearest;

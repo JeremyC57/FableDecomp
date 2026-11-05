@@ -1,5 +1,6 @@
 // CTCTrapBase::UpdateTriggerOnProximity() -- proximity trigger: is any trigger thing inside the trap def's trigger radius; a triggered opening trap with nobody near resets, an untriggered trap triggers when somebody newly comes near
 // Leaf: UpdateTriggerOnProximity
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007887BE, 204 bytes (plain `ret`, `leave`): frame-pointer size TU, so
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)` (the CTCTrapBase TU is `optimize("s")`, landed ManualReset
 // 0x00787C0C and UpdateTrigger 0x0078888A). Ego_r.pdb `?UpdateTriggerOnProximity@CTCTrapBase@@IAEXXZ`.
@@ -16,11 +17,7 @@
 //        store reuses the false bool register.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    __forceinline C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0

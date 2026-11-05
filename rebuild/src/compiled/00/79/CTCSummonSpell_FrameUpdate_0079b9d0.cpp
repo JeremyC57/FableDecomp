@@ -1,4 +1,5 @@
 // CTCSummonSpell::FrameUpdate() -- on the frame after the cast, create the summoned minion at the owner's position plus its summon offset; afterwards, while the minion lives, keep it on the hero's faction and fade it (and everything it carries) in over the fade frames; once the minion is gone remove this component (TC 0x91) from the owner
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local free operator+ removed (the header member operator+ is the same inline member-wise computation).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe @ 0x0079B9D0, 494 bytes (plain `ret`, no EH frame).
 // Shape: the carried-things loop reads First then Last into named locals before the loop (retail's ecx/eax order, end kept in ebp); the minion test is the nested `if (GetPItem()) { if (!Dead) {...; return;} }` form with the RemoveTC tail last; the faction name is passed as `const char*` (built before the push).
@@ -7,12 +8,7 @@
 //   CTCCarrying::CollectCarrySlots 0x006A2220, free 0x00BFEA14, CThing::RemoveTC 0x004C9840
 extern "C" void free(void* p);
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
-inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

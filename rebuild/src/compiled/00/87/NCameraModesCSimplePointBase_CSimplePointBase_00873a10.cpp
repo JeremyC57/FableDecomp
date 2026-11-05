@@ -1,6 +1,7 @@
 // NCameraModes::CSimplePointBase::CSimplePointBase(CGameCameraManager*, const CDefPointer<CCameraModeDef>&, const C3DVector& position, const C3DVector& lookAt, bool allowLookAround) -- the camera-mode root, this class's vtable, the camera position and look-at point copied and the look-around flag stored
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00873A10, length 112 bytes.
 // Leaf: ??0CSimplePointBase
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: NCameraModes::CBase::CBase(CGameCameraManager*, ...) @ 0x0084E420 (two arguments; manifest
 //          "CActionParam_Constructor" is garbage, see the landed CSnapToPoint 0x0056E330).
 // Label: the catalog's "CLookAtFront::CLookAtFront" is propagated -- the only vtable stored, 0x01277644, is
@@ -11,11 +12,7 @@
 // interleave with the stores); the flag byte last; `ret 14h`.
 class CGameCameraManager;
 class CCameraModeDef;
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) { }
-};
+#include "engine/C3DVector.h"
 template <class T> class CDefPointer;
 namespace NCameraModes {
 class CBase { public:

@@ -1,5 +1,6 @@
 // std::__partial_sort(SNamedPosition* first, SNamedPosition* middle, SNamedPosition* last, SNamedPosition*, CKeyPairCompareLess comp) -- STLport partial_sort core over 16-byte (CCharString, C3DVector) pairs ordered by name: heapify [first, middle), pop every smaller later entry into the heap, then sort the heap
 // Leaf: __partial_sort
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077F2C0, 135 bytes, `ret 0Ch` (__fastcall /Gr algorithm TU: first in
 //   ecx -> ebp, middle in edx -> ebx; last, the null value-type pointer and the empty comparator on the stack).
 // Callees: 0x0077EDA0 __make_heap(first, middle, comp, (T*)0, (int*)0), 0x00429950 CBasicString<char>::operator<
@@ -56,10 +57,7 @@ class CCharString { public:
     }
 };
 
-class C3DVector { public:                                         // floats, moved as dwords
-    unsigned long X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 template <class T1, class T2> struct pair {                // STLport pair
     T1 first;

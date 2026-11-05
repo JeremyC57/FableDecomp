@@ -1,5 +1,6 @@
 // CCreatureAction_BlockRespond::CCreatureAction_BlockRespond(CThingCreatureBase&, const C3DVector&, long) -- block response at a known hit position
 // Leaf: ??0CCreatureAction_BlockRespond@@QAE@AAVCThingCreatureBase@@ABVC3DVector@@J@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00855B90, 80 bytes, thiscall `ret 0Ch`, this in eax.
 // Identity (proven): the body stores vtable 0x01276084 = CCreatureAction_BlockRespond (RTTI, rtti-vtables.tsv) after calling
 // the CCreatureAction_BlockBase constructor 0x00855AF0; Ego_r.pdb has the two BlockRespond constructors
@@ -18,11 +19,7 @@
 class CThingCreatureBase;
 
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CCreatureAction_BlockBase {

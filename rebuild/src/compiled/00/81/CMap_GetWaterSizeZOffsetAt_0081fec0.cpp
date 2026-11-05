@@ -1,5 +1,6 @@
 // CMap::GetWaterSizeZOffsetAt(const C3DVector& pos) -- the average water surface height over the four map cells around a world position: for each of (x,y) (x+1,y) (x,y+1) (x+1,y+1) whose water size offset exceeds 0.05, add that offset plus the cell's ground height; the sum over the count, or 0 when no cell has water
 // Leaf: ?GetWaterSizeZOffsetAt@CMap@@QAEMABVC3DVector
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0081FEC0, length 448 bytes (`ret 4`).
 // Callees: _ftol @ 0x00BFEA70 (the two float -> long casts), CMap::GetWaterSizeZOffsetAt(const C2DCoordI&) @ 0x0081FCC0.
 //   Floats: 0x0125A15C 0.05f, 0x0122DEDC 0.0f.
@@ -7,14 +8,7 @@
 // Shape: four straight-line probes through C2DCoordI temporaries; x+1 and y+1 are NAMED locals (`long x1`, `long y1`: x1 spills to
 //   the dead first coordinate, y1 takes the pos/y register -- `y++` swaps esi/edi); the running sum is homed in the dead `pos`
 //   argument slot and the count is kept in ebp with a frame copy for the final `fild`.
-class C2DCoordI { public:
-    long X, Y;
-    C2DCoordI() { }
-    C2DCoordI(long x, long y) : X(x), Y(y) { }
-};
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CHeightMapCell { public:                            // PDB, 12 bytes
     float         Height;                          // +0x00
     unsigned char EngineThemePaletteIndex[3];      // +0x04

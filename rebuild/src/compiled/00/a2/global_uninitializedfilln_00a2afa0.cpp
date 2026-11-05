@@ -1,5 +1,6 @@
 // __uninitialized_fill_n(C3DAnimationInfo* first, unsigned int n, const C3DAnimationInfo& x, __false_type) -- copy-construct n animation infos from one prototype
 // Leaf: ??$__uninitialized_fill_n@PAVC3DAnimationInfo@@IV1@@std@@YIPAVC3DAnimationInfo@@PAV1@IABV1@ABU__false_type@0@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A2AFA0, 107 bytes, `ret 8`. Only caller 0x00A2CB5B (inside 0x00A2CAC0, the
 //   C3DAnimationInfo vector's grow path). The catalog label "fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha>" is
 //   a mis-propagated ICF name: the element is the 0x28-byte C3DAnimationInfo (vtables 0x0129CD28 -> 0x0129CD64).
@@ -38,11 +39,7 @@ public:
     }
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class C3DAnimationInfo : public CMeshDataBankEntry {    // vtable 0x0129CD64, 0x28 bytes
 public:

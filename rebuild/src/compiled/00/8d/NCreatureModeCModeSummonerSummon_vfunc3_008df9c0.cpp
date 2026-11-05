@@ -1,4 +1,5 @@
 // NCreatureMode::CModeSummonerSummon::FrameUpdate, retail 0x008DF9C0.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // PDB identity: egor 20132 / debug 0x00822180, vtable slot 3.
 // Shared CModeStandBase header is imported under its generated name; retail
 // CModeBase/StandBase state is consumed as opaque base storage here.
@@ -11,17 +12,7 @@
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector operator*(float scale) const
-    { return C3DVector(X * scale, Y * scale, Z * scale); }
-    __forceinline C3DVector operator+(const C3DVector& other) const
-    { return C3DVector(X + other.X, Y + other.Y, Z + other.Z); }
-    __forceinline C3DVector& operator+=(const C3DVector& other)
-    { X += other.X; Y += other.Y; Z += other.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 struct CTCInterface { virtual void v0() {} };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

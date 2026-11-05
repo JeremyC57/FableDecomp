@@ -1,14 +1,8 @@
 // CFilter_Bind2::operator()(thing) -- Require both the first predicate and sphere overlap.
 // Leaf: ??$?RVCUnprovenThing_00877f40@@@?$CFilter_Bind2@VCThingFilter_IsOfType@@VCThingFilter_OverlappingSphere@@@@QBE_NABVCUnprovenThing_00877f40@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 #pragma pack(push,1)
-class C3DVector {
-public:
-    float X,Y,Z;
-    C3DVector() {}
-    C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
-    C3DVector operator-(const C3DVector& rhs) const {return C3DVector(X-rhs.X,Y-rhs.Y,Z-rhs.Z);}
-    float GetLengthSquared()const{return X*X+(Y*Y+Z*Z);}
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CTCPhysicsBase {public:void GetBoundingInfo(C3DVector&,float&)const;};
 // Layout: retail CThing PhysicsTC is+0x60; the available donor CThing header is quarantined.
@@ -26,7 +20,7 @@ public:
         thing.PhysicsTC->GetBoundingInfo(center,radius);
         C3DVector delta=center-SpherePos;
         float sum=radius+Radius;
-        return delta.GetLengthSquared()<sum*sum;
+        return delta.GetSquaredMagnitude()<sum*sum;
     }
 };
 template<class A,class B> class CFilter_Bind2 {

@@ -1,5 +1,6 @@
 // _Rb_tree::_M_clone_node(_Rb_tree_node<pair<const unsigned __int64, CThingPosAndOrientation> >* x) -- STLport node clone for the ThingsToMove map: allocate a node, copy-construct the value, copy the colour and clear both children
 // Leaf: ?_M_clone_node@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00825A80, 93 bytes (+int3 pad), thiscall `ret 4` (`this` unused).
 // Callee: malloc @ 0x00BFEA0E (0x30-byte node).
 // Caller: _Rb_tree::_M_copy 0x008260C0 (its top clone, 0x008260D0).
@@ -9,10 +10,7 @@
 //   return tmp;` -- `_M_create_node` = `malloc(sizeof(node))` + the null-tested placement copy (`lea ecx,[eax+10h] ;
 //   cmp ecx,edx`): the key and Position move directly, FacingAngles through its own address; one zero register (edx)
 //   serves the null test and both child stores.
-class C3DVector { public:                                          // user memberwise copy constructor
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class C3DAngles { public:                                          // trivially copyable
     float X, Y, Z;
 };

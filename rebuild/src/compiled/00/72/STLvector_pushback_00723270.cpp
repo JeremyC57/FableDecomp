@@ -1,5 +1,6 @@
 // std::vector::push_back(const CGenerationPos& x) -- STLport push_back of vector<CTCSmokeGenerator::CGenerationPos>, a smoke generation position (point + emitter thing pointer): copy-construct it at the end when there is room, else grow through _M_insert_overflow
 // Leaf: ?push_back@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00723270, length 105 bytes (+ int3 padding), `ret 4` (thiscall, &x).
 // Callers: CTCSmokeGenerator::CreatePositions 0x00722590 (landed; 0x007226B2, one per focus_chimney helper point).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, GetPItem @ 0x00A01B50, SetPItem @ 0x00A01B90
@@ -31,11 +32,7 @@ public:
     CIntelligentPointer(const CIntelligentPointer<T>& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-class C3DVector {                                           // Ego_r.pdb, 12 bytes
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }   // user copy (as the landed 0x00722590 models it)
-};
+#include "engine/C3DVector.h"
 
 class CTCSmokeGenerator {
 public:

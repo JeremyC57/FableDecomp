@@ -1,4 +1,5 @@
 // CTCWeapon::GetUnsheatheAnim() const -- pick the unsheathe animation name: the "normal" one while the owner is moving, the "combat" one when it stands still
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DA540, length 96 bytes.
 // Callees: CThing::GetPos() const @ 0x004C73D0 (`&[this+0x60]->+0xc`; manifest "CVertexBufferWin32::DoSizeof" is
@@ -13,12 +14,7 @@
 
 class CCharString { public: void* m_pData; };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     unsigned char _pad_00[0x18];
@@ -53,7 +49,7 @@ const CCharString& CTCWeapon_Anims::GetUnsheatheAnim() const
 {
     CThing* thing = GetParentThing();
     const C3DVector& last = thing->m_pRHSet->m_lastPosition;
-    if ((thing->GetPos() - last).GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
+    if ((thing->GetPos() - last).GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         return GetDef()->UnsheatheToNormalAnim;
     return GetDef()->UnsheatheToCombatAnim;
 }

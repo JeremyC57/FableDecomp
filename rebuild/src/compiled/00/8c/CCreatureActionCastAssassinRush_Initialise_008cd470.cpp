@@ -1,4 +1,5 @@
 // CCreatureAction_CastAssassinRush::Initialise() -- install rush component, target and configure it, then pass optional final action.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008CD470 length298. Actual donor derived layout included; native tail -0x18.
 // Actual physics slot74=7238E0 SetFacingAnglesFromRHSet; slot75 is distinct SetRHSet.
 #define CCreatureAction_CastAssassinRush CCreatureAction_CastAssassinRush_PDB
@@ -14,7 +15,7 @@
 #include "engine/CClass.h"
 #include "fable_string.h"
 #include <string.h>
-class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){};};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:C3DVector Up,Forward;};
 struct CPhysicsMethods:CTCPhysicsBase {void SetFacingAnglesFromRHSet(const CRightHandedSet&);};
 union CPhysicsSlot {void* Address;void(CPhysicsMethods::*SetFacingAnglesFromRHSet)(const CRightHandedSet&);};

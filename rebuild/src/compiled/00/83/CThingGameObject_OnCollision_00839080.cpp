@@ -1,6 +1,7 @@
 // CThingGameObject::OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other) -- runs the CThing collision handler, forwards the collision to the kind-0x77 component, and removes the kind-0x2a component if present
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Leaf: OnCollision
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00839080, length 123 bytes (`ret 10h`, + int3 padding).
 // Callees: CThing::OnCollision @ 0x004C8DA0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetTC of
@@ -11,7 +12,7 @@
 // Shape: a qualified base call, then HasTC + GetTC with the component used directly as `this` (the lookup key homed in
 // the dead `other` argument slot, the arguments kept in ebx/ebp), then HasTC + RemoveTC.
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum ECollideType { ECT_DUMMY = 0 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

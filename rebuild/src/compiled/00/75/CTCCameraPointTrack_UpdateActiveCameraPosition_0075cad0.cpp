@@ -1,5 +1,6 @@
 // CTCCameraPointTrack::UpdateActiveCameraPosition() -- keep the drag camera between the cage radius and the string length from the hero in the XY plane, pulling it onto the nearer circle when it strays
 // Leaf: UpdateActiveCameraPosition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared2D respelled GetSquaredMagnitude2D (the header / FableWin.pdb method, same computation).
 // Retail 0x0075CAD0, 400 bytes, `ret`.
 // Callees: the TC's game accessor 0x00686A70, its player-manager accessor 0x0049D9D0, the main hero accessor 0x00487DD0,
 // CThing::GetPos 0x004C73D0. Pools: 0.0f 0x0122DEDC, 1.0f 0x0122DED8.
@@ -9,16 +10,7 @@
 // inline operators (`/` multiplies by the reciprocal).
 #include <math.h>
 #pragma intrinsic(sqrt)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-    float GetLengthSquared2D() const { return X * X + Y * Y; }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator/(float s) const { float inv = 1.0f / s; return C3DVector(X * inv, Y * inv, Z * inv); }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
 };
@@ -58,7 +50,7 @@ void CTCCameraPointTrack::UpdateActiveCameraPosition()
     C3DVector heroPos = GetWorld().GetPlayerManager()->PeekPControlledCreature()->GetPos();
     const C3DVector& cam = DragCamPos;
     C3DVector offset(heroPos.X - cam.X, heroPos.Y - cam.Y, 0.0f);
-    float lengthSq = offset.GetLengthSquared2D();
+    float lengthSq = offset.GetSquaredMagnitude2D();
     if (lengthSq > CameraStringLength * CameraStringLength)
         DragCamPos = heroPos - offset * CameraStringLength / (float)sqrt(lengthSq);
     else if (lengthSq < CameraCageRadius * CameraCageRadius)

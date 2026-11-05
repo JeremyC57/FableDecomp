@@ -1,5 +1,6 @@
 // COptimisedFace::COptimisedFace(const COptimisedFace&) -- the compiler-generated memberwise copy constructor of a 72-byte optimised mesh face (three index triples, two tangents, flags)
 // Leaf: ??0COptimisedFace
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD0100, 131 bytes (`ret 4`, `this` returned in eax).
 // Identity: the manifest label "CThingCompare_BestForTargeting2::CThingCompare_BestForTargeting2" is propagated (that
 //   class is 52 bytes). Every caller (0x00AD05F5 _Copy_impl, 0x00AD19A7 / 0x00AD1A17 _Uninit_copy, 0x00AD4177 /
@@ -11,12 +12,7 @@
 //   memberwise out of line: each array copied as one block through `lea` source/destination pointers, the vectors
 //   through their (inline) copy ctors, then the scalars. A placement-new copy in this TU makes VC7.1 emit it.
 inline void* operator new(unsigned int, void* p) { return p; }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 struct COptimisedFace {
     unsigned long VertexIndices[3];
     unsigned long UniqueVertexIndices[3];

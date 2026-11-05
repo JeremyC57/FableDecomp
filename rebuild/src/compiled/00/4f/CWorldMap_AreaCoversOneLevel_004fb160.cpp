@@ -1,12 +1,12 @@
 // CWorldMap::AreaCoversOneLevel(const C2DBoxI&) const -- true when all four corners of a world-map area fall in the same (non-zero) map
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe @ 0x004FB160, 231 bytes. PDB ?AreaCoversOneLevel@CWorldMap@@QBE_NABVC2DBoxI@@@Z
 // Callees: CWorldMap virtual slot 17 GetMapNumberAt(const C2DCoordI&) const (vtable 0x01244AEC -> 0x004FC080; slot 16
 // is the C3DVector overload 0x004FC0C0).
 // Shape: three chained corner comparisons (TL==TR, TR==BL, BL==BR) then BR != 0; each comparison builds two C2DCoordI
 // temporaries (VC7.1 calls the right-hand side first), all in two 8-byte frame slots; one shared `xor al,al` exit.
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
-class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

@@ -1,5 +1,6 @@
 // std::__partial_sort(pair<C3DVector,long>* first, pair<C3DVector,long>* middle, pair<C3DVector,long>* last, pair<C3DVector,long>*, CCompareTargetedPositionsForFirstPersonTargeting comp) -- STLport partial sort of the first-person targeting positions: heapify [first, middle), pop every later position the comparator prefers into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080AC10, 374 bytes, /Gr `__fastcall` (first ecx, middle edx; last, the
 //   value-type pointer and the 0x2c-byte comparator by value on the stack, `ret 34h`).
 // Identity: the landed partial_sort front end 0x0080B1A0 names this address as its __partial_sort; the catalog's
@@ -14,17 +15,7 @@
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // user copy ctor, implicit operator=
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { float s = Y * Y; s += X * X; s += Z * Z; return s; }
-    void operator*=(float f) { X *= f; Y *= f; Z *= f; }
-    float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
-};
+#include "engine/C3DVector.h"
 
 class CVectorCompare_BestForTargeting { public:                   // Ego_r.pdb, 0x2c bytes
     C3DVector AnchorPos;                                   // +0x00
@@ -55,7 +46,7 @@ __declspec(noinline) float CVectorCompare_BestForTargeting::GetCompareValueForPo
     C3DVector d = point - AnchorPos;
     if (CompareInXYPlane)
         d.Z = 0.0f;
-    float sqrDist = d.GetLengthSquared();
+    float sqrDist = d.GetSquaredMagnitude();
     if (sqrDist > 1e-4f)
         d *= 1.0f / (float)sqrt(sqrDist);
     return GetCompareValue(sqrDist, d.Dot(PreferredLine));

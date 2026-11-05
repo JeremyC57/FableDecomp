@@ -1,5 +1,6 @@
 // NScript::CV_SickChildScript::OnPersist(CPersistContext&) -- transfer six original progress fields in script order.
 // Leaf: ?OnPersist@CV_SickChildScript@NScript@@UAEXAAVCPersistContext@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven original field-name literals in own body reconcile original named PDB owner layout and public virtual OnPersist signature; actual script virtualslot4. PATH_ID/STAGE_IN_PATH are original nested enums of CV_ExposeMayorScript (PDB template Transfer qualifiers), zero enumerator names explicitly descriptive. Exact bool/long/enum reference Transfer<T>(constchar*,T&,constT&) APIs.
 // Model amendment: original protected CBaseClassNonCopyable ctor/dtor; genuine protected _List_base/rebound-node proxy and _Vector_base/end-storage proxy. Existing active vector APIs/bodies preserved verbatim; unused map/tree definitions removed.
@@ -18,9 +19,8 @@ class CCPPointerInfo;
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

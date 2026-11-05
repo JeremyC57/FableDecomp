@@ -1,4 +1,5 @@
 // CWorldMap::IsPosPassable(const C2DCoordI&) -- true when the world-map block is in a loaded map and passable there
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z. Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail 0x004FCBD0, 0x6A bytes (CWorldMap.cpp TU). Callees: vtable slot 17 GetMapNumberAt(C2DCoordI) [+0x44],
 // slot 10 IsMapLoaded [+0x28], slot 19 PeekMap [+0x4C], CMap::IsPassableAt 0x0081F3D0.
 // ConvertWorldMapCoordsToLocalCoords (0x004FC3C0) is defined in this TU and inlines here: the local coord is
@@ -8,20 +9,8 @@
 // sits 4/8/12.. bytes lower in retail: Maps +0x20 (PDB +0x24), Granularity +0x50 (PDB +0x60),
 // MapPlacementPitch +0x58 (PDB +0x68), Area +0x5C..+0x68 (PDB +0x6C..+0x78), MapPlacement +0x6C
 // (PDB +0x7C), PlayerPositionInfo +0x78 (PDB +0x8C), LoadedMaps +0x90 (PDB +0xAC)).
-class C3DVector
-{ public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
-class C2DCoordI
-{ public:
-    long x;
-    long y;
-    C2DCoordI() {}
-    C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
-};
 
 class C2DBoxI
 { public:
@@ -120,7 +109,7 @@ public:
 
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const
     {
-        return C2DCoordI(pos.x - Maps[map].Area.TLX, pos.y - Maps[map].Area.TLY);
+        return C2DCoordI(pos.X - Maps[map].Area.TLX, pos.Y - Maps[map].Area.TLY);
     }
     bool IsPosPassable(const C2DCoordI& pos) const;
 };

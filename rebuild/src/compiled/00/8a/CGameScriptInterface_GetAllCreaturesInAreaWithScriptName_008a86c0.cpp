@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(const CCharString& scriptName, const C3DVector& position, float radius, std::vector<CScriptThing>& things) const -- script: collect the AI creatures in the square of half-size radius around position (all of them when the script name is empty, else those with that script name) and append their script things; returns the output vector's size (0 without touching it when none match)
 // Leaf: ?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Respell (chunk 638 follow-up, 2026-10-31): PDB spellings shared with the landed 0x008A8890 -- std::vector<CScriptThing> /
 //   std::vector<T*> STLport specialisations (reserve 0x008ACD30, protected _M_insert_overflow 0x008AD5F0), the const
 //   CThingSearchTools template members, CThing::GetScriptThing() const 0x004C7E50, engine/CCountedPointer.h, engine/CWorld.h,
@@ -97,11 +98,7 @@ public:
         return PStringData->Data == text;
     }
 };
-class C3DVector { public: float X, Y, Z; };
-class C2DCoordI { public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) {}
-};
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI TopLeft, BottomRight;
     C2DBoxI(const C2DCoordI& tl, const C2DCoordI& br) : TopLeft(tl), BottomRight(br) {}

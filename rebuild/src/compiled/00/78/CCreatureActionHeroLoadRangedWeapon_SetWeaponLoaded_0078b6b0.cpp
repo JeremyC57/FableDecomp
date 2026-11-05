@@ -1,4 +1,5 @@
 // CCreatureAction_HeroLoadRangedWeapon::SetWeaponLoaded -- load ammunition, play LOAD then queue AIMING animation.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0078B6B0,268bytes. Actual header fields projected from donorB4 to nativeA8 base.
 #define CCreatureAction_HeroLoadRangedWeapon CCreatureAction_HeroLoadRangedWeaponPdb
 #include "engine/CCreatureAction_HeroLoadRangedWeapon.h"
@@ -20,7 +21,7 @@
 #include "engine/CBaseObject.h"
 #include "fable_string.h"
 class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
-class C3DVector { public:float x,y,z;};
+#include "engine/C3DVector.h"
 class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {

@@ -1,5 +1,6 @@
 // CThingPlayerCreature::WorldUpdate() -- creature update plus the player extras: per-frame movement vector from the last position, look tracking, player control, animation, collision record reset and weapon trails
 // Leaf: WorldUpdate
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AD9D0, length 284 bytes.
 // Callees: CThingCreatureBase::UpdateAction @ 0x006643C0, CThingCreatureBase::WorldUpdate @ 0x006666A0 (called
@@ -17,12 +18,7 @@
 // is what makes VC7.1 keep 0 (and the flag mask 2) in ebx; the look component comes through the out-parameter
 // GetInterface (component in eax, moved to ecx after the push), the weapon trail through the plain entry pick.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-};
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;

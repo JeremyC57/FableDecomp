@@ -16,18 +16,12 @@
 //          (Radius - length) into the impulse temporary; the two flag setters go through the out-parameter GetInterface(T**,
 //          type) template (the landed 0x007504E0 shape), which keeps each component in eax.
 // Leaf: ??RCKeepOutOffSmearedOutLine@@QBEXPAVCThing@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector& operator*=(float f) { X *= f; Y *= f; Z *= f; return *this; }
-};
+#include "engine/C3DVector.h"
 C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& start, const C3DVector& end, const C3DVector& point);   // 0x008F5B50
 
 class CTCBase;

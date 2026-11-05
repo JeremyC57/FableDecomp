@@ -1,4 +1,5 @@
 // CAIStateGroup_BalverineCornered::Update() -- choose a lunge or sky jump for a live target, then terminate.
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +8.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0094F640, 236 bytes. State/brain use shared headers; retail CThing map is +44 (donor +48).
 // Combat action base is 0x114 retail versus donor 0x12c; sky-jump EndPos is +114.
@@ -21,27 +22,20 @@ class CThing;
 class CThingCreatureBase;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
-    Entry *First,*Last;
-    Entry* LowerBound(const ETCInterfaceType& key); // 0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CRetailThing {
     unsigned char _prefix[0x20];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
-    unsigned char _beforeDead[0x91-0x4c];
+    unsigned char _beforeDead[0x3d];
     unsigned char Dead:1;
     template<class T> __forceinline bool GetInterface(T** out,long type) {
         if (UsingComponents[type>>5] & (1UL<<(type&31))) {
             ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map=&Components;
-            CInterfaceMap::Entry* it=map->LowerBound(key);
-            if(it==map->Last || type<it->first) it=map->Last;
+            CInterfaceMap::value_type* it=map->LowerBound(key);
+            if(it==map->end() || type<it->first) it=map->end();
             *out=(T*)((void*)it->second);
             return true;
         }

@@ -1,5 +1,6 @@
 // std::_Sort_heap(SNamedVector* first, SNamedVector* last, CCompareNamedVector pred) -- Dinkumware _Sort_heap over 16-byte (CCharString, C3DVector) pairs: pop the root to the back until one element remains
 // Leaf: _Sort_heap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077F190, length 209 bytes (+ int3 padding), `ret 4`.
 // Identity: catalog `_Sort_heap<pair<CCharString,C3DVector>*,CKeyPairCompareLess<CCharString,C3DVector>>`, consistent
 // with the bytes: the callee is the landed `_Adjust_heap` @ 0x0077EA60 over the same 16-byte (CCharString, 3-dword
@@ -20,10 +21,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-class C3DVector { public:                          // 12 bytes, copied as three dwords
-    int data[3];
-    C3DVector(const C3DVector& o) { data[0] = o.data[0]; data[1] = o.data[1]; data[2] = o.data[2]; }
-};
+#include "engine/C3DVector.h"
 struct SNamedVector {                       // std::pair<CCharString, C3DVector> (16 bytes)
     CCharString first;                      // +0x00
     C3DVector   second;                     // +0x04

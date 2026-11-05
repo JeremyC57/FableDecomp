@@ -1,5 +1,6 @@
 // CQuadTreeElement::Update(CEngineStaticMapFileBlockManager*, const CObjectTypeCollectionPalette&, double) -- stream this local-detail quadtree node in/out by camera distance, recurse into loaded children and its cache groups, and gather their render-update flags
 // Leaf: ?Update@CQuadTreeElement
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail 0x00BDEBF0, 355 bytes, ret 0x10 (ebp frame, `and esp,-8`: the double deadline). Callees:
 // CEngineLocalDetailGenerator::ModifyFadeDistanceForVideoOptions 0x00B597E0 (generator global 0x01436E88),
 // GFGetFastSubFrameTimer 0x009E1C70 (__fastcall double), LoadStaticContents 0x00BDE390, UnloadStaticContents 0x00BDE020,
@@ -14,13 +15,7 @@
 // puts the flag byte in cl instead of dl); the flag merges are bitfield `|=` (VC's or/xor/and/xor insert).
 #include <math.h>
 #pragma intrinsic(sqrt)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Centre;
     float     Radius;
@@ -73,7 +68,7 @@ bool CQuadTreeElement::Update(CEngineStaticMapFileBlockManager* blocks, const CO
     bool changed = false;
     if (!HasDynamicAreasFlag) {
         C3DVector centre(BoundingSphere.Centre.X, BoundingSphere.Centre.Y, BoundingSphere.Centre.Z);
-        float distance = (centre - g_pEngineCamera->Position).GetLength() - BoundingSphere.Radius;
+        float distance = (centre - g_pEngineCamera->Position).GetMagnitude() - BoundingSphere.Radius;
         if (g_pLocalDetailGenerator->ModifyFadeDistanceForVideoOptions(PrimitiveTypeMask, MaxFadeDistance) > distance) {
             if (GFGetFastSubFrameTimer() < deadline)
                 changed = LoadStaticContents(blocks, palette);

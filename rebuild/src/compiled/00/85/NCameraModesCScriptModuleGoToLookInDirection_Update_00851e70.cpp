@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleGoToLookInDirection::Update() -- put the owning camera at GoTo and aim it at GoTo + LookDirection
 // Leaf: Update
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00851E70, length 91 bytes. No callees.
 // Shape: the owner (POwner, +0x38) gets the plain C3DVector GoTo copied as a whole through re-based
 // pointers (`add edx,54h`, three dword moves via edi/esi); then the inline `operator+` builds its result
@@ -10,18 +11,7 @@
 // Layout: PDB NCameraModes::CScriptModuleGoToLookInDirection (0x64 bytes): GoTo +0x4c, LookDirection
 // +0x58 over the 0x4c-byte CScriptModuleBase (POwner +0x38, typed CBase* in the PDB; the object written
 // here holds the look-at at +0x10 and the position at +0x54 and is modelled locally as CCameraState).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector operator+(const C3DVector& other) const
-    {
-        C3DVector result;
-        result.X = X + other.X;
-        result.Y = Y + other.Y;
-        result.Z = Z + other.Z;
-        return result;
-    }
-};
+#include "engine/C3DVector.h"
 
 struct CCameraState {
     unsigned char _pad00[0x10];

@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonStrafe::FrameUpdate() -- base update; at the end of the strafe timer set the "strafe out of" action, otherwise move the dragon one frame's worth of Speed along its physics facing
 // Leaf: ?FrameUpdate@CModeDragonStrafe
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E07F0, 193 bytes (+ int3 padding), `ret`; vtable 0x012686C8 slot 3.
@@ -18,21 +19,7 @@
 //   a named facing local reads it from the frame instead of through eax.
 class CCreatureActionBase;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator*(float s) const
-    {
-        C3DVector r;
-        r.X = X * s;
-        r.Y = Y * s;
-        r.Z = Z * s;
-        return r;
-    }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-};
+#include "engine/C3DVector.h"
 
 struct CPhysicsBody {                      // the creature's physics body at +0x60
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();

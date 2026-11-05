@@ -1,15 +1,10 @@
 // 008ea8a0 NCreatureMode::CModeHoverBase::GetMovementSpeed -- choose the matching hover movement speed
 // Leaf: ?GetMovementSpeed@CModeHoverBase@NCreatureMode@@UBEMABVC3DVector@@0W4EMovementType@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #include "rebuild_abi.h"
 #pragma pack(push,1)
-class C3DVector {
-public:
-    float X,Y,Z;
-    C3DVector(float x,float y,float z):X(x),Y(y),Z(z) { }
-    C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z) { }
-    const float Dot(const C3DVector& v)const { return X*v.X+Y*v.Y+Z*v.Z; }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class C2DVector {
 public:

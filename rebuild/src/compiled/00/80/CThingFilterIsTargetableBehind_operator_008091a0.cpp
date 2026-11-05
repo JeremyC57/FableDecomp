@@ -1,5 +1,6 @@
 // 008091a0 CThingFilter_IsTargetableBehind::operator() -- determine whether a targeting point permits a rear target
 // Leaf: ??RCThingFilter_IsTargetableBehind@?A0x
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #define CTCTargeted CTCTargeted_Layout
 #include "engine/CTCTargeted.h"
@@ -85,9 +86,7 @@ template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {
 public:T* Get()const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 #pragma pack(push,1)
-class C3DVector {
-public:float X,Y,Z;C3DVector() { }C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 namespace NPlayerTargeting {
 class CTargetPoint {

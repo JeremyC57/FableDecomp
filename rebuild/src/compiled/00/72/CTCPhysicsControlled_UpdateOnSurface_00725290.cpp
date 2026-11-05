@@ -1,4 +1,5 @@
 // CTCPhysicsControlled::UpdateOnSurface(const vector<CThing*>& things, C3DVector& pos) -- snap the position onto the highest physics mesh under it among the nearby things (sweeping the body sphere down through each mesh) and onto the ground, then update OnMesh / OnGround, the thing stood on and the render Z offset
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00725290, length 481 bytes (+ int3 padding), esp frame, `ret 8`.
 // Callees: CTCPhysicsBase virtual slots 57 (+0xe4) / 58 (+0xe8) (two surface capability tests; names descriptive), 90 (+0x168,
@@ -18,13 +19,7 @@
 #include <math.h>
 #pragma intrinsic(fabs)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CPhysicsCollideResponse { public:
     C3DVector CollidePos;                               // +0x00
     C3DVector CollideNormal;                            // +0x0c

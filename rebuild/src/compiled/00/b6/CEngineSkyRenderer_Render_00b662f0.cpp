@@ -1,5 +1,6 @@
 // CEngineSkyRenderer::Render(const CEngineComponentRenderParams& params) -- render the sky inside a render-state capture block: clear state +0x2944 and set +0x2a0c; the sun-flare layer (0x400000) only renders the flare; otherwise swap the engine camera to a sky camera (origin, near 100, far 10000, its own z-buffer range), set +0x2868, draw the sky, restore the camera and issue the (empty in retail) debug sphere at the sun's far-plane position
 // Leaf: Render
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B662F0, length 752 bytes, `ret 4`.
 // Callees: RenderSunFlare 0x00B64550, CEngineCameraDesc copy constructor 0x00B4AF50 (out of line), CEngineCamera::SetCameraState
 //   (const CEngineCameraDesc*, bool, bool) 0x00B30B50 on the camera @ 0x01436EA0, RenderSky(float, const C3DVector*, bool) 0x00B66190,
@@ -8,14 +9,7 @@
 //   (struct_layouts_egor.tsv): CameraDesc at camera +0x14, SunVector at lighting manager +0x18.
 #include "engine/CEngineSkyRenderer.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public: float M[12]; };
 class C2DBoxF { public: float X0, Y0, X1, Y1; };
 struct CEngineCameraDesc {                               // 0x6c bytes (PDB)

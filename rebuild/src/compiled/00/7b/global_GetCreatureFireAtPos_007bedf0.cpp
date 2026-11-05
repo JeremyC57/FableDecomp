@@ -1,3 +1,4 @@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CThing;
 
 struct CGlob {
@@ -7,11 +8,7 @@ struct CGlob {
 
 extern CGlob* g_glob;
 
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
-};
+#include "engine/C3DVector.h"
 
 C3DVector __fastcall Inner(int a, CThing* t, float f);
 

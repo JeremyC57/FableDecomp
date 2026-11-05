@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_GlobalThingsScript::CBSGateGuard::Main() -- Bowerstone gate guard: hold an alive filter over Me, take Me under scripted control (priority 1); if the guard has wandered more than 1 unit from his home position, walk him back there (re-issuing MoveToPosition until within 2 units), then face the hero; afterwards idle one script frame at a time until the thread terminates
 // Leaf: ?Main@CBSGateGuard@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDFB00, 563 bytes (576 with padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter, vtable 0x012C32F0, inline dtor here),
@@ -16,15 +17,6 @@
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
 class CCharString { public: void* PStringData; };
-class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
-    virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
-    virtual C3DVector GetHomePos() const;   // slot 7 (+0x1c)
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define FABLE_RETAIL_BASE_OBJECT
@@ -52,6 +44,8 @@ template <class T> class CCountedPointer { public:     // retail CCountedPointer
         Info = 0;
     }
 };
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C

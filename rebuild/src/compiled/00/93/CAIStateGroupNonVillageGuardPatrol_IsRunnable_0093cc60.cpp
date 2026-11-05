@@ -1,4 +1,5 @@
 // CAIStateGroup_NonVillageGuardPatrol::IsRunnable() -- runnable when a "MoveTrack" track node lies in the 10m square around the creature: latch the nearest one as the patrol node
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093CC60, length 336 bytes (+ int3 padding).
 // Callees: CThing::GetPos @ 0x004C73D0 (five times), __ftol2 @ 0x00BFEA70, CCharString(const char*, long)
 //          @ 0x0099EBF0 ("MoveTrack" @ 0x012925BC) / copy ctor @ 0x0099EC30 / ~CCharString @ 0x0099EAE0,
@@ -11,10 +12,7 @@
 //          right to left (comparator copies the position, then the filter); the hit is latched through a temporary.
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04) with the
 //          patrol node intelligent pointer at +0x14.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;             // 0x004C73D0
 };

@@ -1,4 +1,5 @@
 // CTCWobble::FrameUpdate() -- while frames of wobble remain, rotate a copy of the parent's right-handed set (Up about Forward by -(direction * angle)), hand it to the physics component and flip the direction; when none remain restore the stored set and remove the component (interface 0xf7)
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E2F00, 199 bytes. __fastcall, `ret`. CTCWobble vtable 0x0123DF34.
 // Callees: C3DVector::Rotate(const C3DVector& axis, float angle) 0x00A13C60 (in place); CTCPhysicsBase virtual slot 75
 //          (+0x12c, SetFacingAnglesFromRHSet(const CRightHandedSet&) on the thing's physics component at +0x60);
@@ -10,13 +11,7 @@
 //        DirectionLastRotated negated last. C3DVector carries memberwise user copy/assignment (plain `mov` copies).
 // Layout: Ego_r.pdb CTCWobble (0x30): ParentThing +0x04, ParentRHSet +0x0c (Up +0x0c, Forward +0x18), FramesOfWobbleRemaining
 //         +0x24, DirectionLastRotated +0x28, AngleOfWobble +0x2c. CThing PhysicsTC +0x60.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector& operator=(const C3DVector& other) { X = other.X; Y = other.Y; Z = other.Z; return *this; }
-    void Rotate(const C3DVector& axis, float angle);   // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 void* FindRef_C3DVector_Rotate_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
 // VC7.1 knows the caller's address-taken local does not escape the call.

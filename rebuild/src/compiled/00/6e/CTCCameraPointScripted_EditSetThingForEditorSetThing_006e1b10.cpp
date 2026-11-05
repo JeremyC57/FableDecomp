@@ -1,5 +1,6 @@
 // CTCCameraPointScripted::EditSetThingForEditorSetThing() -- catalog label; the body returns a copy of the C3DVector member at +0xd4 by value
 // Leaf: GetPosition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x006E1B10, 33 bytes (`ret 4`: the hidden result pointer is the only stack argument and is
 // returned in eax). No callees. Called from CParticleEmitter::IsVisible (0x00AED2F0), so the
@@ -10,12 +11,7 @@
 // fld [ecx+0D8h]`), X is an integer move, then Y, X, Z are stored into the hidden result. A plain
 // `return Position;` through the memberwise copy constructor is three integer moves (33v33).
 
-class C3DVector
-{ public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 struct CPositionedObject_006e1b10
 {

@@ -1,5 +1,6 @@
 // std::vector::~vector() -- (vector<CRandomAppearanceMorph::CBodyPartMesh >) out-of-line destructor: destroy every 0x18-byte element (its implicit destructor frees the inner CVectorMap's vector at +0x8 when it has a block), then free the vector's own block
 // Leaf: ??1?$vector@VCBodyPartMesh@CRandomAppearanceMorph@@V?$allocator@
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006755A0, 58 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: vector<CRandomAppearanceMorph::CBodyPartMesh >::~vector -- proven; evidence: the landed CRandomAppearanceMorph constructor 0x0086C4D0 (and 0x0086EE50, 0x0086ECA0) destroys a local CArray<CRandomAppearanceMorph::CBodyPartMesh> through it (the CArray destructor inlined), and the unreferenced CArray<CBodyPartMesh> deleting destructor 0x00675770 calls it; 0x18-byte elements with the TextureMorphs vector map's block at +8 (Ego_r.pdb CBodyPartMesh: MeshIndex, Priority, CVectorMap<unsigned long, CTextureMorph>); the jmp thunks 0x00675720 / 0x006757F0 are the CArray-level destructors that tail-call it.
@@ -10,12 +11,7 @@
 //   __destroy_aux).
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 #include "engine/CArray.h"
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class C> class CVectorMap : public CArray<std::pair<K, V> > {   // 16 bytes in retail
-public:
-    C    Compare;                                             // +0x0c
-    bool Dirty;                                               // +0x0d
-};
+#include "engine/CVectorMap.h"
 class CRandomAppearanceMorph {
 public:
     class CTextureMorph {                                     // 8 bytes (Ego_r.pdb)

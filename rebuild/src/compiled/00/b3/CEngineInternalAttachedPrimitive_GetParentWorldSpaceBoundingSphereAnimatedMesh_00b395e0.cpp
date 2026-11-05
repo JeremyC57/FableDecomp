@@ -4,10 +4,11 @@
 // ParentHandle firstword opaque. Native slots12 GetChildPrimitive(groupVT12A66E4->BC61C0),
 // 33 CalcInterpolatedObjectTransform(animatedVT12A79B4->BCEF80,out,float,bool)const. Native uses true; const verified donorA836E0 PDB signature.
 // Leaf: GetParentWorldSpaceBoundingSphereAnimatedMesh
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CEngineInternalPrimitiveBase.h"
 #include "engine/_quarantine/CEngineInternalPrimitiveMeshBase.h"
 #include "engine/C3DMeshInfo.h"
-class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:C3DVector Center;float Radius;C3DVector GetPos()const{return C3DVector(Center.X,Center.Y,Center.Z);}void SetPos(const C3DVector& p){Center=p;}};
 struct MeshInfoMethods:C3DMeshInfo {C3DBoundingSphere GetBoundingSphere()const{return *reinterpret_cast<const C3DBoundingSphere*>(BoundingSphere);}};
 class CMatrix3x4 { public:C3DVector X,Y,Z,Pos;

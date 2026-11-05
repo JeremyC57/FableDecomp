@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCAttractor::~CPSCAttractor() -- the compiler-generated destructor: free the AttractorUserPointsArray block, then the inline CPSCBase / CParticleUpdateParamCallback destructors and ~CBaseClassNonCopyable
 // Leaf: ??1CPSCAttractor@NParticleEngine@@UAE@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B18780, 27 bytes, thiscall, tail `jmp ~CBaseClassNonCopyable`.
 // Identity (proven): the sole caller is the slot-0 `??_G` 0x00B18760 of vtable 0x012A04AC (RTTI
@@ -16,10 +17,7 @@ extern "C" void __cdecl free(void* block);                      // 0x00BFEA14
 #include "engine/CBaseClassNonCopyable.h"           // ~CBaseClassNonCopyable 0x0099A300 (protected virtual)
 
 #pragma pack(push, 1)
-class C3DVector {                                       // retail C3DVector is 1-aligned
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 namespace NParticleEngine {

@@ -1,5 +1,6 @@
 // CWorld::RenderUpdate(const CInterpolationInfo* info) -- per-render-frame world update: make the world's thing manager current, render-update its things and the environment, then point the sound listener along the current sound camera when both camera axes are non-degenerate
 // Leaf: ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049E080, 284 bytes, thiscall `ret 4`. Catalog "CWorld_RenderUpdate" (name only).
 // Callees: SetCurrentThingManager @ 0x004C74F0 (__fastcall), CThingManager::RenderUpdateThings @ 0x0051EBD0,
@@ -13,11 +14,7 @@
 //   declared before up) are taken before the tests, which read the camera itself (testing the copies loads them back
 //   from the copies' slots); GetLengthSquared = X*X + Y*Y + Z*Z (VC7.1 sums z, y, x); the shared Update call is
 //   duplicated into both arms.
-class C3DVector {
-public:
-    float X, Y, Z;
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {
 public:
     C3DVector Up;                                    // +0x00
@@ -91,8 +88,8 @@ void CWorld::RenderUpdate(const CInterpolationInfo* info)
         CCamera camera = GetCurrentSoundCamera(info);
         C3DVector forward = camera.RHSet.Forward;
         C3DVector up = camera.RHSet.Up;
-        if (camera.RHSet.Forward.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO &&
-            camera.RHSet.Up.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
+        if (camera.RHSet.Forward.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO &&
+            camera.RHSet.Up.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
             CSoundListener* listener = ((CSoundSystem*)PSoundManager)->GetListener();
             listener->SetPosition(camera.WorldPosition);
             listener->SetOrientation(forward, up);

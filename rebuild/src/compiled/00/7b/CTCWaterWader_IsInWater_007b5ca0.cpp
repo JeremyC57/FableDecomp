@@ -1,5 +1,6 @@
 // CTCWaterWader::IsInWater(bool& inWater, bool& deep, float& waterHeight) const -- clear the outputs; unless the world's mode object says always-check, skip things more than 20 units from the camera point or not rendered last frame; skip things whose slot-39 query is set, that lack the 0x31 component or whose 0x31 kind is 0x1A; then read the water height at the thing, and when it is above 0.05 report water deeper than 0.1 over the ground and more than 0.7 above the thing's feet
 // Leaf: IsInWater
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B5CA0, length 417 bytes (+ int3 padding; `ret 0Ch`).
 // Mangled (Ego_r.pdb): ?IsInWater@CTCWaterWader@@ABEXAA_N0AAM@Z.
 // Callees: CTCBase::GetWorld() 0x00686A70; the world's +0x38 object slot 395 (+0x62C); the world's slot 8 (+0x20, by-value
@@ -13,13 +14,7 @@
 //   value held in ebx, pushed and popped inside that branch; it loads between GetWorld and the virtual call); the squared length
 //   is `X*X + (Y*Y + Z*Z)` (retail's Z2,Y2,X2 order); the mode object goes through an inline getter (straight into ecx); the
 //   inlined component lookup takes `map = &m_tcs` first; the ground height is a named float local (`fld [ebp] ; fsub st(1)`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { return X * X + (Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -57,7 +52,7 @@ class CThing { public:
         return (it == map->m_pLast || kind < it->first ? map->m_pLast : it)->second;
     }
     const C3DVector& GetPos() const;                   // 0x004C73D0
-    float GetDistanceSquaredTo(const C3DVector& point) const { return (GetPos() - point).GetLengthSquared(); }
+    float GetDistanceSquaredTo(const C3DVector& point) const { return (GetPos() - point).GetSquaredMagnitude(); }
 };
 struct CKindObject {
     virtual void v00();
@@ -100,7 +95,7 @@ struct CTCWaterWader : CTCBase {
     {
         CWorld* world = (&GetWorld());
         const CThing* parent = ParentThing;
-        return (parent->GetPos() - world->GetReferencePoint()).GetLengthSquared();
+        return (parent->GetPos() - world->GetReferencePoint()).GetSquaredMagnitude();
     }
 };
 

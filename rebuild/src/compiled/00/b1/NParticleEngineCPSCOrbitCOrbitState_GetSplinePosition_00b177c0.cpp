@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCOrbit::COrbitState::GetSplinePosition(float t) const -- the orbit's cubic Hermite position at t: FromPosition*(2t^3-3t^2+1) + ToPosition*(3t^2-2t^3) + FromTangent*(t^3-2t^2+t) + ToTangent*(t^3-t^2)
 // Leaf: ?GetSplinePosition@COrbitState@CPSCOrbit@NParticleEngine@@QBE?AVC3DVector@@M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B177C0, length 265 bytes, thiscall, hidden C3DVector result pointer
 //   first (returned in eax), t second, `ret 8`. No direct callers (COrbitState::Update inlines it); it sits in the
 //   CPSCOrbit TU (0x00B161A0 COrbitState::Initialise .. 0x00B17950 CPSCOrbit::DatabaseClone), right after the
@@ -14,14 +15,7 @@
 //   The sum goes into a named `result` local that is then returned (VC7.1 has no NRVO): only that keeps all three
 //   components on the x87 stack and stores them x, y, z at the end; `return <expression>;` stores x early (267v265).
 //   Constants 3.0f @ 0x0122DED4, 1.0f @ 0x0122DED8.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
-    const C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    const C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 
 namespace NParticleEngine {
 

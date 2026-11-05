@@ -1,5 +1,6 @@
 // NScript::CV_LostTraderScript::CLostTraderTrader::OnPredicateFail() -- Record the matching entity death and clear its reason code.
 // Leaf: ?OnPredicateFail@CLostTraderTrader@CV_LostTraderScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: own entity allocation/binding00ea324a->00ea34f0 stores012edda8; selected slot5 is original PDB OnPredicateFail. Actual CScriptThing vtable01238c8c slot18 =004aaaf0 MsgIsKilledBy, const ref-string signature. Original typed fields checked against own writes.
 // Layout: real polymorphic CScriptThing and script/entity bases, original parent fields and named long ReasonForFailure. Unknown uncalled virtual names are descriptive. Shared handle headers aliased.
@@ -17,9 +18,8 @@ class CCPPointerInfo;
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

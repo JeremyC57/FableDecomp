@@ -1,4 +1,5 @@
 // CAIStateGroup_IceTrollPoundGroundAttack::IsRunnable() -- runnable when the troll's combat enemy is alive,
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // has its +0x6c bit 3 set and is in range of the ground pound; the enemy then becomes the pound target.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00961E80, length 177 bytes (+ int3 padding). Vtable slot 11.
@@ -171,10 +172,7 @@ class CWorld { public:
 struct CAIStateGroupBaseW : CAIStateGroupBase {
 };
 
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 struct CTCCombatTarget {                        // interface type 8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

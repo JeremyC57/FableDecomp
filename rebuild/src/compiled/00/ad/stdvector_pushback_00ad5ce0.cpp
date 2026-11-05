@@ -1,5 +1,6 @@
 // std::vector::push_back(const T& value) -- Construct in spare capacity or delegate growth.
 // Leaf: ?push_back@?$vector@VCOptimisedEdge@QuadricOptimiserInternals@@V?$allocator@VCOptimisedEdge@QuadricOptimiserInternals@@@std@@@std@@QAEXABVCOptimisedEdge@QuadricOptimiserInternals@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: Own overflow00ad4d10 and caller00ac8c48 in COptimisedPrimitive::JoinAdjacentFaces insert FaceA,FaceB,UniqueVertex1,UniqueVertex2 into Edges at retail+0x28; PDB proves class and namespace.
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -9,7 +10,7 @@ typedef unsigned int PlacementSize;
 #endif
 inline void* operator new(PlacementSize,void* p){return p;}
 // Layout: original C3DVector has X,Y,Z at0,4,8; no active shared header exists.
-class C3DVector {public:float X,Y,Z;C3DVector(){} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
+#include "engine/C3DVector.h"
 class CThingObject;
 // Layout: original KnickKnack is Pos+0, Thing+12,16bytes on x86.
 struct KnickKnack {C3DVector Pos;CThingObject* Thing;KnickKnack(){} KnickKnack(const KnickKnack& v):Pos(v.Pos),Thing(v.Thing){}};

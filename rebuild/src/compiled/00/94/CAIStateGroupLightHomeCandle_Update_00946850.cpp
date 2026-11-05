@@ -1,4 +1,5 @@
 // CAIStateGroup_LightHomeCandle::Update() -- reserve a free action point on the candle, walk to it and look at the candle while it still needs changing, then use the candle, release the point, clear the candle and terminate
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00946850, length 653 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10, CVectorMap::LowerBound @ 0x0040F020,
@@ -11,11 +12,7 @@
 // component is the uninitialised out-parameter GetTC (the absent branch reads the key slot); the candle position is a
 // frame C3DVector (user copy ctor); the pointer clear goes through a named null CIntelligentPointer.
 // Layout: Ego_r.pdb CAIStateGroup_LightHomeCandle (0x1c): PCandle +0x14; retail CCreatureAction_UseObject is 0xe0 bytes.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

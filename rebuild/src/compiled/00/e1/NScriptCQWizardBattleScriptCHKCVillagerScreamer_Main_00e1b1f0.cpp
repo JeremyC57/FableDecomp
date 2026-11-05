@@ -1,5 +1,6 @@
 // NScript::CQ_WizardBattleScript::CHKC_VillagerScreamer::Main() -- a Heroes' Killer Chapel (wizard battle) villager: take scripted control and offer information; until the villagers turn on the hero, each time the hero talks to it play a paused movie with its hint line; then, unless the maze is defeated, spawn a CREATURE_SCREAMER_01 at its position, set it on the hero and remove Me
 // Leaf: ?Main@CHKC_VillagerScreamer@CQ_WizardBattleScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1B1F0, 1131 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: as the matched CGraveyardDemon::Main 0x00DC3FC0 (handle, movie, filter, CCharString), plus GameCalls slots 91
@@ -46,19 +47,8 @@ struct CBase {                                          // vtable 0x01231710
     virtual ~CBase();                                   // 0x0099A2E0
 };
 #include "engine/C3DVector.h"
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
-    virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
-    virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const;
-    virtual void s015() const; virtual void s016() const; virtual void s017() const; virtual void s018() const; virtual void s019() const; virtual void s020() const; virtual void s021() const; virtual void s022() const;
-    virtual void s023() const; virtual void s024() const; virtual void s025() const; virtual void s026() const;
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
-    CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C

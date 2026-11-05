@@ -1,6 +1,7 @@
 // NParticleEngine::CParticleEmitterManager::CreateDecalEmitter(long, const C3DVector&, bool, const CRightHandedSet&) -- fetch the emitter template; if it may spawn here and is not a 2D emitter, return a placed clone that is not added to the active list; null otherwise
 // Grade: RELOCATION_MATCH -- a zero-initialised result local assigned the clone inside one `t && t->ShouldSpawn(p) && !t->Is2D()` test and returned once: the zero then stays in ebx and both failure exits keep their own `mov eax,ebx` tails in retail order (the early `return none` forms folded the constant)
 // Leaf: ?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c: FableWin.pdb + Ego_r.pdb ?CreateDecalEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z: the manager is in
 //   NParticleEngine, the third argument is the bool GetEmitterTemplate takes (FableWin.pdb
 //   ?GetEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@QAEPAVCParticleEmitter@2@J_N@Z), and ShouldSpawn / DatabaseClone are const
@@ -14,10 +15,7 @@
 // Shape: the caller owns the clone, so there is no counted pointer; the null template returns through its own
 // epilogue before edi is saved.
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c

@@ -1,4 +1,5 @@
 // CAIStateGroup_IceTrollIcicleAssault::IsRunnable() -- runnable against the targeting AI's living target when the boss is ready for a phase change, or when the target is beyond the snow troll def's ice-trail distance limit in XY; caches the target
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00961FB0, length 451 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined lookups: 8 = CTCTargetingAI, 0xAD = CTCBoss), CTCTargetingAI virtual
@@ -12,7 +13,7 @@
 // 0x0092C070 / 0x007E4B60) so the def stays in edi; operator= is a __forceinline SetPItem(other.GetPItem()).
 // Layout: Ego_r.pdb CAIStateGroup_IceTrollIcicleAssault (PTarget +0x14); CSnowTrollDef::IceTrailDistanceLimit +0x5c
 // (Ego_r.pdb); the creature's counted def class at +0x70. The engine header flattens the base, so the model is local.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

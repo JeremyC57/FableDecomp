@@ -1,5 +1,6 @@
 // NCreatureMode::CModeGuildmasterPowerUpHeal::OnActivate() -- stand-mode activation; suspend a player's animation; for every live guild bodyguard within 20 units of the guildmaster play the HEAL effect (attached through its particle emitter) and make sure the guildmaster has a CTCHealLife component
 // Leaf: ?OnActivate@CModeGuildmasterPowerUpHeal@NCreatureMode@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DDD70, 565 bytes (`ret`).
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CThingAICreature::SuspendAI @ 0x00833A10, CCharString(const char*, long)
 //   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CGameDefinitionManager::Get @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName
@@ -16,7 +17,7 @@
 //   0x008C0EA0 effect block (by-value CDefPointer copy, same-TU GetSubDef stand-in, zeroed sub-def and effect id per bodyguard) and a same-TU
 //   CalcAndLookup stand-in that places the effect-id zero store.
 //   The effect and the component go on the guildmaster (ParentThing), once per bodyguard, exactly as retail does.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CTCParamsBase;
 class CCharString { public:
@@ -148,10 +149,6 @@ extern "C" void __cdecl free(void* p);                // 0x00BFEA14
 class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
-};
-class C2DCoordI { public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) {}
 };
 class C2DBoxI { public:
     long MinX, MinY, MaxX, MaxY;

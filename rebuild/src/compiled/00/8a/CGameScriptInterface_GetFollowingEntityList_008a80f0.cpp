@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetFollowingEntityList(const CScriptThing& leader, std::vector<CScriptThing>& followers) const -- append the script things of the live leader's followers (TC 0xBC) that are not in the list yet; true when one was added
 // Leaf: ?GetFollowingEntityList@CGameScriptInterface@@UBE_NABVCScriptThing@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A80F0, length 355 bytes (`ret 8`, bool in al).
 // Callees: the script thing's slot 11 (+0x2C GetThing), the component-map LowerBound @ 0x0040F020, the TC 0xBC follower
 //   query @ 0x006D5850 (fills a vector<CThing*>; manifest label propagated), CThing::GetScriptThing @ 0x004C7E50, STLport
@@ -11,7 +12,6 @@
 //   temporary avoids a zero store; the first GetScriptThing temporary is destroyed inline, the push_back one out of line.
 // Layout: CThing dead flags +0x91 bit 0, UsingComponents +0x20, component map +0x44.
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCPPointerInfo { public:
@@ -94,21 +94,13 @@ inline CScriptThing* find(CScriptThing* first, CScriptThing* last, const CScript
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
-    SEntry* first;
-    SEntry* last;
-    SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 class CThing { public:
     unsigned char         _pad00[0x20];
     unsigned long         m_presentBits[9];         // +0x20
     CInterfaceMap_Retail  m_interfaces;             // +0x44
-    unsigned char         _pad4c[0x45];
+    unsigned char         _pad54[0x3d];
     unsigned char         m_dead : 1;               // +0x91 bit 0
     unsigned char         m_91_1 : 7;
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
@@ -116,8 +108,8 @@ class CThing { public:
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap_Retail* map = &m_interfaces;
-        CInterfaceMap_Retail::SEntry* it = map->LowerBound(type);
-        return ((CTCBase_Retail*)((it == map->last || interfaceType < it->first) ? map->last : it)->second);
+        CInterfaceMap_Retail::value_type* it = map->LowerBound(type);
+        return ((CTCBase_Retail*)((it == map->end() || interfaceType < it->first) ? map->end() : it)->second);
     }
     CScriptThing GetScriptThing() const;                      // 0x004C7E50
 };

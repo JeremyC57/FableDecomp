@@ -1,5 +1,6 @@
 // CSubtitledMessage::~CSubtitledMessage() -- implicit destructor: free the camera, animation (destroying each tag's CCharString) and attitude tag vector maps, then Narrator and Text
 // Leaf: ??1CSubtitledMessage@@QAE@XZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004D1DB0, 98 bytes, thiscall, `jmp` tail; 22 call sites + 1 jmp.
 // Identity (proven): the callers are CSubtitledMessage's: GetMessageFromTextIndex 0x004CEA60 and GetMessagesFromTextName
@@ -34,13 +35,7 @@ public:
     unsigned short* PData;
 };
 
-template <class K, class V> class CKeyPairCompareLess { };      // empty comparator
-template <class K, class V, class C> class CVectorMap {         // 0x10 in retail
-public:
-    CArray<std::pair<K, V> > Vector;                            // +0x00
-    C                        Compare;                           // +0x0c
-    bool                     Dirty;                             // +0x0d
-};
+#include "engine/CVectorMap.h"
 
 enum EConversationAttitude { };
 enum EConversationProtagonist { };

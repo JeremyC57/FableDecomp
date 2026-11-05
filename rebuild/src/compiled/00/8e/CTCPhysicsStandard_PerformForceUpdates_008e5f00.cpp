@@ -1,4 +1,5 @@
 // CTCPhysicsStandard::PerformForceUpdates() -- gravity-only twin: apply a -0.12 Z acceleration unless the thing rests still on near-flat ground (no air-resistance block)
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E5F00, 168 bytes (plain `ret`). No call or data reference to this body was found
 //   (xref.py); it is byte-identical to the gravity half of 0x008E5670, so the class is the catalog's (CTCPhysicsStandard) until
@@ -7,12 +8,7 @@
 //   CWorldMap::GetGroundFaceNormalAt(const C3DVector&) const @ 0x0063AB10, CTCPhysicsBase::ApplyAcceleration @ 0x006B0210.
 //   Floats: 0.98f @ 0x01287364, DELTA_NOTIONAL_ZERO @ 0x0129BA3C (1e-4f).
 // Shape: as 0x008E5670 (one `||` chain, inline GetLengthSquared() on the x87 stack).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C = 1e-4f
 class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector& pos) const;   // 0x0063AB10
@@ -51,7 +47,7 @@ void CTCPhysicsStandard::PerformForceUpdates()
 {
     if (GetFeelsGravity()) {
         if (!IsOnGround() || GetWorldMap()->GetGroundFaceNormalAt(Position).Z < 0.98f
-            || Velocity.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
+            || Velocity.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             ApplyAcceleration(C3DVector(0.0f, 0.0f, -0.12f));
     }
 }

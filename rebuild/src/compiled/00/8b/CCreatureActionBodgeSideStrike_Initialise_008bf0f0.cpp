@@ -1,4 +1,5 @@
 // CCreatureAction_BodgeSideStrike::Initialise() -- pick the strike handedness from which side of the owner's facing the target stands (2D cross product > 0), animation "STRIKE_MEDIUM_SIDE", then CCombatActionBase::Initialise
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BF0F0, length 200 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (target +0xa8, owner +8), CThing::GetPosition 0x004C73D0 (twice), the
 // owner physics body's (+0x60) virtual slot 70 (+0x118, GetFacing: C3DVector by hidden pointer),
@@ -12,12 +13,7 @@
 // `m_pBody->GetFacing()` loads the body into eax and the vptr into edx).
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-};
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* PStringData;

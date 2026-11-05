@@ -1,5 +1,6 @@
 // CThingCreatureBase::IsPosInFOV(const C3DVector& position, bool useLookOffset) const -- with the field-of-view TC (0x34): the wrapped XY angle to the position is within half the field of view of the creature's facing (plus the look TC's head offset when asked)
 // Leaf: ?IsPosInFOV@CThingCreatureBase@@QBE_NABVC3DVector@@_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665260, `ret 8`, bool in al. Catalogued as CVertexBufferWin32::ComputeAngleBetweenPositions
 //   (wrong: `this` is a creature -- interface bitset +0x20, interface map +0x44, PhysicsTC +0x60, CThingCreatureBase::PeekPos
@@ -13,12 +14,7 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod, fabs)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

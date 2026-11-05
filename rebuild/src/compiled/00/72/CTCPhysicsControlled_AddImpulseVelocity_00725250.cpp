@@ -5,12 +5,10 @@
 //   RenderZOffset +0xa4, LastRenderZOffset +0xa8 (PDB names; C3DVector modelled locally with its inline +=).
 // Shape: the inline C3DVector::operator+= (X member-first, Y/Z argument-first is the compiler's own operand choice).
 // Leaf: AddImpulseVelocity
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CTCPhysicsStandard.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 
 struct CTCPhysicsControlled : CTCPhysicsStandard {
     C3DVector ImpulseVelocity;              // +0x88

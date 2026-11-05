@@ -1,5 +1,6 @@
 // CTCHeroPodium::GetPositionForMember(long member) const -- the crowd slot for a member index: an angle of (member / 8 / 2 - 1/4) turns around the podium on the ellipse spanned by its E_X / E_Y axes, scaled by 4 and offset from the podium thing's position
 // Leaf: ?GetPositionForMember@CTCHeroPodium@@ABE?AVC3DVector@@J@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771C70, 187 bytes (+5 int3), `ret 8` (hidden C3DVector result + member).
 // Name: FableWin.pdb `?GetPositionForMember@CTCHeroPodium@@ABE?AVC3DVector@@J@Z` (private const); it sits between
 //   CTCHeroPodium::OnInitialActivate 0x00771BD0 and GetCrowdPos 0x00771D50 (both CTCHeroPodium) and has no direct call
@@ -19,14 +20,7 @@
 
 const float PI = 3.14159265f;
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

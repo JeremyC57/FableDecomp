@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionMoveTo::Update() -- move the scripted creature towards its position or target thing: refresh both handles, stop ignoring anything for navigation, fail when a claimed action point's thing is dead or carried, then (when the creature is idle) step along the nav route, facing or looking where it goes; on a blocked route fall back to the backup proximity or cancel the script, and on arrival or failure make the hero stop looking and finish
 // Leaf: ?Update@CActionMoveTo@NTCScriptedControl@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 28 (family d5): CActionBase is the nested CTCScriptedControl::CActionBase (Ego_r.pdb / FableWin.pdb;
 //   DECISIONS_W27 D5) and PActionList the STLport list<CCountedPointer<CTCScriptedControl::CActionBase> >, whose clear 0x00719280
 //   is ?clear@?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@..@std@@@std@@QAEXXZ (c695). Was NTCScriptedControl::CActionBase (an invented namespace)
@@ -28,12 +29,7 @@
 //   length is written X*X + Y*Y + Z*Z over the output member (emitted Z, Y, X); the step target is `offset + position`
 //   through an inline operator+.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

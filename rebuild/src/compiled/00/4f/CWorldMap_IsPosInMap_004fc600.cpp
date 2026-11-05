@@ -1,5 +1,6 @@
 // CWorldMap::IsPosInMap(const C3DVector&) const -- is the world position inside the world area and on a map that is loaded?
 // Leaf: ?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x004FC600, 128 bytes. PDB ?IsPosInMap@CWorldMap@@QBE_NABVC3DVector@@@Z
 // Callees: _ftol2 0x00BFEA70, virtual slot 17 GetMapNumberAt(const C2DCoordI&) 0x004FC080 (+0x44; rtti-vtables.tsv).
@@ -13,9 +14,8 @@
 // +0x20 MapUID, +0x24 Used ... +0x40 IsSea.
 // Shape: the same half-open area test as GetMapNumberAt(const C3DVector&) 0x004FC0C0; the truncated coordinate is a
 // frame C2DCoordI passed by reference; a map whose PMap.Data (+0x10) is set counts as present.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
-class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
 class CMap;
 
 class CMapInfo { public:

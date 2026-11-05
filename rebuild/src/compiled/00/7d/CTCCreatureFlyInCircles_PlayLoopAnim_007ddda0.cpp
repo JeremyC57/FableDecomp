@@ -1,5 +1,6 @@
 // CTCCreatureFlyInCircles::PlayLoopAnim() -- point the wind along the creature's flat heading (towards the living hero, else its facing) and start the dragon-flight loop animation for the current fly mode (strafe at half wind, fly loop, or fire-breathing at 1.5 wind early in a swoop), clearing the transition flag once the action is taken
 // Leaf: ?PlayLoopAnim@CTCCreatureFlyInCircles@@IAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation); local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DDDA0, 496 bytes, plain `ret`.
 // Callees: CCharString() 0x0099E4B0 / operator=(const char*) 0x0099EFE0 ("STRAFE_RIGHT" 0x0126FAC8, "FLY_LOOP" 0x0126FAD8,
@@ -15,29 +16,8 @@
 //   the OverrideWindDirection argument pushes.
 extern unsigned long GFastOneOverSqrtTable[128];       // 0x013CE558
 
-class C3DVector { public:
-    float X;    // +0x00
-    float Y;    // +0x04
-    float Z;    // +0x08
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline void Normalise()
-    {
-        float x = X;
-        float y = Y;
-        float z = Z;
-        float lengthSquared = x * x + y * y + z * z;
-        unsigned long bits = *(unsigned long*)&lengthSquared;
-        unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
-        float r = *(float*)&estimate;
-        r = (3.0f - r * r * lengthSquared) * r * 0.5f;
-        X *= r;
-        Y *= r;
-        Z *= r;
-    }
-};
-inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* PStringData;

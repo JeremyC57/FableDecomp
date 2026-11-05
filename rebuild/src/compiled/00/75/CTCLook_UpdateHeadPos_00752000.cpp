@@ -1,4 +1,5 @@
 // CTCLook::UpdateHeadPos() -- refresh the cached head position from the parent creature, except while the cache timer runs and the thing is more than 8 units from the camera; restart the timer when the head barely moved
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local MagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the global stand-in g_HeadPosCacheFrames (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752000, length 280 bytes (+ int3 padding), plain `ret`.
@@ -13,13 +14,7 @@
 // test); the early-out `--HeadCacheTimer; return;` has its own epilogue; AlwaysUpdateHeadPos skips the null test.
 // Layout (retail CTCLook, packed past +0xa0 as in the landed GetHeadPos 0x00751B30): ParentThing +0x04, PParentCreature
 // +0x10, PDef +0x14 (CLookDef AlwaysUpdateHeadPos +0x54), CachedHeadPos +0xa1, HeadCacheTimer +0xb0. No engine header.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float MagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -77,7 +72,7 @@ void CTCLook::UpdateHeadPos()
         CWorld* world = (&GetWorld());
         const C3DVector& thingPos = ParentThing->GetPos();
         C3DVector toCamera = world->GetCameraPosition() - thingPos;
-        if (HeadCacheTimer > 0 && toCamera.MagnitudeSquared() > 64.0f) {
+        if (HeadCacheTimer > 0 && toCamera.GetSquaredMagnitude() > 64.0f) {
             --HeadCacheTimer;
             return;
         }
@@ -85,7 +80,7 @@ void CTCLook::UpdateHeadPos()
             return;
     }
     C3DVector head = PParentCreature->GetHeadPos(ShouldGetExactHeadPos());
-    if ((CachedHeadPos - head).MagnitudeSquared() > g_HeadPosCacheTolerance)
+    if ((CachedHeadPos - head).GetSquaredMagnitude() > g_HeadPosCacheTolerance)
         HeadCacheTimer = 0;
     else
         HeadCacheTimer = CMainGameComponent::GetConstantFPS() / 2;

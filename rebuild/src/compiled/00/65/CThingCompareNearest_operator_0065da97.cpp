@@ -1,5 +1,6 @@
 // CThingCompare_Nearest::operator()<CThingAICreature>(CThingAICreature* a, CThingAICreature* b) const -- the nearer of two things to the comparator's position (a null side loses)
 // Leaf: ??R
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065DA97, 145 bytes (`ret 8`); size-optimised TU with an ebp frame (`leave`).
 // Callees: CThing::GetPos @ 0x004C73D0 (label "CVertexBufferWin32::DoSizeof" propagated).
 // Layout: CThingCompare_Nearest (Ego_r.pdb 12 bytes) = C3DVector Pos.
@@ -7,13 +8,7 @@
 //   GetPos), then `distA < distB ? a : b` (A summed first) (`fcompp ; test ah,41h ; je`).
 #pragma optimize("s", on)
 #pragma optimize("y", off)   // ebp frame
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
@@ -29,7 +24,7 @@ class CThingCompare_Nearest { public:
             return a;
         C3DVector offsetA = a->GetPos() - Pos;
         C3DVector offsetB = b->GetPos() - Pos;
-        if (offsetA.GetLengthSquared() < offsetB.GetLengthSquared())
+        if (offsetA.GetSquaredMagnitude() < offsetB.GetSquaredMagnitude())
             return a;
         return b;
     }

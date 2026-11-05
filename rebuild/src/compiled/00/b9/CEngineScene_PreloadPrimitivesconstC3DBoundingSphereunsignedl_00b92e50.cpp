@@ -1,5 +1,6 @@
 // CEngineScene::PreloadPrimitives -- native 00b92e50, C3DBoundingSphere overload.
 // Leaf: PreloadPrimitives
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #ifndef CHUNK236_SCENE_NATIVE_RESUME_H
 #define CHUNK236_SCENE_NATIVE_RESUME_H
 // Native interfaces audited against table 012A3D7C (28 entries), RTTI hierarchy,
@@ -19,7 +20,7 @@
 #ifndef _MSC_VER
 #define __declspec(x)
 #endif
-class C3DVector { public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:C3DVector Center;float Radius;};
 class C3DBoundingBox { public:C3DVector MinCoord,MaxCoord;bool IntersectsSolid(const C3DBoundingSphere&) const;}; //00ADECC0
 class CMatrix3x4 { public:float Values[12];};

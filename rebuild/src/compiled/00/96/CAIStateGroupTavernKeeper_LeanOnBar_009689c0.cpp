@@ -1,5 +1,6 @@
 // CAIStateGroup_TavernKeeper::LeanOnBar() -- pin the keeper, pick a random bar slot, walk to it (failure: free the point, unpin, terminate), then lean on the bar (into/loop/out-of animation, random 1..10 s loop) until a payment request or an empty jug slot needs attention; returns true for those, else whether the lean action completed
 // Leaf: LeanOnBar
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009689C0, 512 bytes.
 // Callees: SetPushableByHero @ 0x0097E330, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PBar +0x1c), CVectorMap::LowerBound
@@ -17,7 +18,7 @@
 //   "needs attention" exits written out in full (`FreeBarPoint(); SetPushableByHero(true); return true;`) -- a shared goto
 //   label gives `push 1 ; mov ecx,esi` in the merged tail where retail's cross-jumped copy has `mov ecx,esi ; push 1`.
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

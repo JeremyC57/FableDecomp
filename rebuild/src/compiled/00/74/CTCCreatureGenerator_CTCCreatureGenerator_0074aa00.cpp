@@ -1,5 +1,6 @@
 // CTCCreatureGenerator::CTCCreatureGenerator(CThing* thing) -- construct the creature-generator component: the CTCBase part, empty creature-family array / created-creature list / triggerer and position vectors, active and ready flags set, unlimited trigger count, no def, a null random-particle pointer, then the generation defaults (radii 1.0, no limits) and the nav-check flag
 // Leaf: ??0CTCCreatureGenerator
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0074AA00, 248 bytes (+ int3 padding), `ret 4`.
 // Label: the catalog's "CPSCOrbit::CPSCOrbit" is propagated; the body stores vtable 0x01268C24 = CTCCreatureGenerator
@@ -82,7 +83,7 @@ struct CCreatureList {                                  // STLport list (retail:
 };
 class CDefIndex { public: long Index; };
 #include "engine/CArray.h"
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CEnginePrimitiveHandle { public: void* __vftable; void* Data; };
 class CThingCreatureBase;
 struct TGenerationParameters {

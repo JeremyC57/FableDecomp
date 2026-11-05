@@ -1,0 +1,37 @@
+Plan phase 4, wave "w2" (2026-11-05): CVectorMap leftovers onto engine/CVectorMap.h, with the bitset operator[] sub-macro.
+
+HEADER (overlay/rebuild/include/stlport/fable_containers.h): new sub-macro FABLE_RETAIL_STLP_BITSET_INDEX.
+  - What it adds: STLport 4.6 _bitset.h bitset<_Nb>::reference (the proxy: _M_wp / _M_bpos, operator bool / = / ~ / flip,
+    ~reference) and the operator[] pair. The non-const one returns reference; the const one returns _Unchecked_test. It also
+    adds the non-const _Base_bitset::_M_getword the proxy ctor uses.
+  - hdrcheck2: default=same[350]; every other FABLE_RETAIL_* reads =same; only the new macro reads =DIFF.
+  - Retail evidence (coordinator question 2): the indexed bit test is an INLINE word test, with no call.
+    - 0x0062D032 `test dword ptr [ebx+0x24],0x10000`: CWorld::EACreatureBlock, CThing::UsingComponents at +0x20, bit 0x30.
+    - 0x0044BFA1 `mov al,byte ptr [ecx+0x38]; test al,al; jns`: CThing::GetTC<const CTCCoopSpirit>, bit 0xC7.
+    So it is a header model with default=same, not a declaration-only one like test (0x00410DE0).
+  - 56 rows define the macro (the rows whose local std::bitset model had operator[]). These are all 56 bitset_index rows that
+    were still local; the phase-3 CArray-side list overlaps them.
+  - Includers: gate.py --overlay on the 5,747 other landed includers of stlport/fable_containers.h. All 5,747 PASS
+    (logs/gate_includers.tsv), so none needs vland.
+ROWS: 263 PASS under vland --recheck-landed (RELOCATION_MATCH 256, MATCH 7); parity equal to the landed source on every row; 0
+  introduced warnings; gate.py 268 of 268.
+  - Sources: the 1,031 landed local-CVectorMap rows outside w1's candidates, through scripts/hdrmig4.py (cfg.json). It is
+    phase 3's cfg plus:
+    - std_provided_functions and the placement-new strip (phase-3 w3);
+    - strip_member_defs LowerBound: the same-TU LowerBound bodies the header defines (26 rows);
+    - rewrites_if_local: a local `CArray<value_type> Data` member reads through the header's CArray base, Data.end() -> end()
+      (79 rows);
+    - ptr_triple: local pointer-pair maps (Start/Finish, m_pFirst/m_pLast, First/Last) read as begin() / end(), and a nested
+      Entry typedef -> value_type (30 rows);
+    - defines_if_local FABLE_RETAIL_STLP_BITSET_INDEX (56 rows).
+QUEUE LINES / BINDINGS / CALLERS: none (no spelling changes).
+DEFERRED.tsv (768 rows):
+  - compile_fail 458:
+    - Find(long) local returning the value: 86 + 24;
+    - same-TU LowerBound definers: 51 (the row is a LowerBound instance);
+    - local Get / UpperBound / find / Sort / Add: about 80;
+    - const_iterator conversions: 24 + 19;
+    - protected _M_finish: 14.
+  - bytes_differ 175, local_std 109, stray_change 12, no_block 9.
+  - grade 5: four vland LINK_FAIL rows (the test links its own LowerBound / helper against the header COMDAT; move the test),
+    and 0x0065A5BB [/EHsc], pre-existing.

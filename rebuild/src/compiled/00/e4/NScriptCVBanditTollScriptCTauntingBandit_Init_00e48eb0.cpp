@@ -1,5 +1,6 @@
 // NScript::CV_BanditTollScript::CTauntingBandit::Init() -- reset the anger state, put Me in the friendly-bandit faction and make Me wander around the bandit camp centre marker between 0 and the script def's toll-bandit wander distance
 // Leaf: ?Init@CTauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E48EB0, length 356 bytes (plain `ret`; entity-script slot "Init").
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, ~CBaseClass @ 0x0099A2E0, operator
 //   delete @ 0x00BFE9BC (the counted-pointer info block), and the game interface slots (ghidra_out/cgsi_slots_aligned.tsv)
@@ -22,10 +23,7 @@ class CCharString { public:
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 #include "engine/CCountedPointer.h"
 

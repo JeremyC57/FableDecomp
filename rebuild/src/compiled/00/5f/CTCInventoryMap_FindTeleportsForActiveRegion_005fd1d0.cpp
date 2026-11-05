@@ -1,4 +1,5 @@
 // CTCInventoryMap::FindTeleportsForActiveRegion() -- rebuilds the teleport marker list for the active region: for every map linked to the region, every enabled teleporter (TC 0xDD) in that map contributes its position converted to the map's local coordinates
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local stand-in map class (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 004365b0: ?LowerBound@CInterfaceMap@@QBEPBUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005FD1D0, 564 bytes, plain `ret`. Speed TU (no pragmas; RTM `and esp,-8` frame for the
 //   8-byte filter/coordinate structs whose addresses are taken in the loop).
@@ -12,12 +13,7 @@
 //   linked-map vector<long> +0x00; teleporter component (0xDD) enabled flag +0x10.
 #include <new>
 struct __false_type { __false_type() { } };
-class C2DCoordI { public:
-    long X;
-    long Y;
-    C2DCoordI() {}
-    C2DCoordI(long x, long y) : X(x), Y(y) {}
-};
+#include "engine/C3DVector.h"
 struct CCoordVector {                              // std::vector<C2DCoordI> (12 bytes)
     C2DCoordI* _M_start;
     C2DCoordI* _M_finish;
@@ -108,7 +104,6 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     unsigned char _pad00[0x20];

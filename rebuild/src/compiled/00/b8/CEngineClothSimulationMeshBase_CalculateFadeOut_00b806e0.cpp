@@ -1,5 +1,6 @@
 // CEngineClothSimulationMeshBase::CalculateFadeOut(const C3DVector& position) const -- the cloth simulation fade-out factor: 0 inside SimFadeBegin of the zoomed simulation radius from the engine camera, rising linearly to 1 at the radius, clamped
 // Leaf: ?CalculateFadeOut@CEngineClothSimulationMeshBase@@IBEMABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitude replaced by the header GetMagnitude (same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B806E0, 151 bytes. __fastcall (this unused), `ret 4`, float in st0.
 // Identity: FableWin.pdb `?CalculateFadeOut@CEngineClothSimulationMeshBase@@IBEMABVC3DVector@@@Z` (protected const,
 //   float (const C3DVector&)); callers 0x00B813AB (the cloth mesh update) and the two Render overrides 0x00B8155C /
@@ -26,14 +27,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 
 extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
 

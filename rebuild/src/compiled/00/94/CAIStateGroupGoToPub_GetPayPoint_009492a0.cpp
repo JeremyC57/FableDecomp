@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::GetPayPoint() -- ask the pub bar's tavern-bar component for a pickup slot for this creature (fills BarPos/BarRHSet/BarActionPointIndex/BarIndex)
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasTC + the ternary GetTC model on a GetPItem() thing local: the bar loads straight into ecx before the GetPickupSlot pushes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009492A0, length 116 bytes (+ int3 padding).
@@ -13,7 +14,7 @@
 // exit before the shared `xor al,al` tail. The bar member addresses are formed from esi with the last one
 // as `add esi,78h`. Members are the PDB names (struct_layouts_egor.tsv); no engine header for the class.
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

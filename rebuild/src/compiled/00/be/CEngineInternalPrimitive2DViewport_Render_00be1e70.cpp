@@ -1,5 +1,6 @@
 // CEngineInternalPrimitive2DViewport::Render() -- render the viewport's child primitives through a 2D camera: switch the engine camera to an orthographic-style copy of its description (the viewport FOVs, near 0.1 / far 1, Z buffer 0..0.1, origin position, Y-flipped rotation); when the viewport box is non-empty open a render-state capture block, disable fog, set the display viewport, hand every child to its type's primitive manager on one sub-primitive chain, render the 2D sub-primitives, then restore the display viewport and the captured render states; finally restore the camera description
 // Leaf: Render
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE1E70, length 674 bytes (`ret`).
 // Callees: CEngineCameraDesc copy ctor 0x00B4AF50, CEngineCamera::SetCameraDesc 0x00B30B50 (camera @ 0x01436EA0), CDisplayManager
 //   GetRenderTargetDimensions 0x009BEDC0 (result unused) / SetViewport(const C2DBoxF&) 0x009BF490 / SetViewport(const C2DBoxI&) 0x009BEF80
@@ -26,11 +27,7 @@ class C2DExtentsI { public: long Width, Height; };
 class CMatrix3x4 { public:
     float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43;
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 struct CEngineCameraDesc {
     C2DBoxF    Window;               // +0x00
     CMatrix3x4 RotationMatrix;       // +0x10

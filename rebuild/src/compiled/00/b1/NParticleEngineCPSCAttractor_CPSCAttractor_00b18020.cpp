@@ -1,6 +1,7 @@
 // NParticleEngine::CPSCAttractor::CPSCAttractor() -- CPSCBase base, enabled / not param-positioned, linear fall-off 0, unit radius and force, empty user-point array
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B18020, length 53 bytes.
 // Leaf: ??0CPSCAttractor
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: NParticleEngine::CPSCBase::CPSCBase @ 0x00AF2620. Vtable 0x012A04AC = NParticleEngine::CPSCAttractor.
 // Layout (Ego_r.pdb): AttractorEnabled / AttractorUseParamPosition bits at +0xc, AttractorInfluenceFallOff
 // +0x10, AttractorPositionParam +0x14 and AttractorPositionParamName +0x18 (left unset),
@@ -24,7 +25,7 @@ class CPSCBase : public CBase { public:                   // vtable 0x0129F3F4
     CPSCBase();                             // 0x00AF2620
 };
 
-struct C3DVector { float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct C3DVectorArray {                     // retail CArray<C3DVector> (12 bytes)
     C3DVector* m_pData;

@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::Move() -- advance the rigid body one logic frame: simulate 1/fps seconds, take the facing set from the orientation rows, then place the thing so the body-space centre of mass lands on the simulated one
 // Leaf: ?Move@CTCPhysicsRigidBody@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075AEC0, 306 bytes, thiscall, no callers: CTCPhysicsRigidBody vtable 0x0126996C slot 87
 //   (rtti-vtables.tsv), the slot of CTCPhysicsBase::Move 0x006B1360 / CTCPhysicsLight::Move 0x00723360 (landed). Ego_r.pdb
 //   ?Move@CTCPhysicsRigidBody@@UAEXXZ (virtual, public, void()).
@@ -18,13 +19,7 @@
 //   default ctor (non-POD: the __fastcall hidden result pointer goes in ecx, the set in edx).
 extern long g_framesPerSecond;                              // 0x01375550
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                           // +0x00
     C3DVector Forward;                                      // +0x0C

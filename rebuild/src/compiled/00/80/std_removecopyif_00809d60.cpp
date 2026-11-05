@@ -1,6 +1,7 @@
 // std::remove_copy_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, CFilter_Bind2<CThingFilter_IsInFOV,CTargetPointFilter_IsStealableStockItem> pred) -- copy the target points that are not stealable shop stock inside the field of view to result; returns the new end
 // Flags: /Gr
 // Leaf: remove_copy_if
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00809D60, 213 bytes of code (/O2). Callees: CThingFilter_IsInFOV::operator()
 // (const CTargetPoint&) 0x006A7380 (a 16-byte forwarder: `&tp.TargetingPosition` -> 0x006A7270; catalog label
 // `_Cons_val<...EHeroMorphType...>` is a propagated name), CBaseIntelligentPointer::GetPItem 0x00A01B50,
@@ -71,10 +72,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
         return *this;
     }
 };
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 namespace NPlayerTargeting {
 struct CTargetPoint {                                     // 0x1c bytes
     CIntelligentPointer<CThing> PThing;                   // +0x00

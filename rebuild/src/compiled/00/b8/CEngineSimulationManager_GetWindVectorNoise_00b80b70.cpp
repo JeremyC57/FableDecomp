@@ -1,5 +1,6 @@
 // CEngineSimulationManager::GetWindVectorNoise(const C3DVector& position) const -- the cloth wind at a world position: the manager's wind vector scaled by the cloth wind factor, its strength modulated by a Perlin noise sample between the min and max wind multipliers, plus a perpendicular gust from a second noise sample, all scaled by the cloth wind factor again
 // Leaf: ?GetWindVectorNoise@CEngineSimulationManager@@QBE?AVC3DVector@@ABV2@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B80B70, length 364 bytes, `ret 8` (hidden return pointer + position).
 // Name: Ego_r.pdb + FableWin.pdb `?GetWindVectorNoise@CEngineSimulationManager@@QBE?AVC3DVector@@ABV2@@Z`; the catalog label
 //   `_global::ComputeWindVector_Impl` and the binding `?GetWindAt@CSimulationEnvironment@@QAE?AVC3DVector@@ABV2@@Z` are wrong
@@ -10,16 +11,7 @@
 // Constants: 1.0f @ 0x0122DED8, 0.5f @ 0x0122F59C, 10.0f @ 0x01237F0C, 0.0f @ 0x0122DEDC.
 // Shape: MinWindMultiplier is read once into a local (retail loads it first and reuses st(1)); the final scale is the
 //   in-place `*=` (retail copies ClothWindFactor through edx into the dead position slot and reloads it per component).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
-};
+#include "engine/C3DVector.h"
 namespace NFractal {
 class CPerlinNoise {
 public:

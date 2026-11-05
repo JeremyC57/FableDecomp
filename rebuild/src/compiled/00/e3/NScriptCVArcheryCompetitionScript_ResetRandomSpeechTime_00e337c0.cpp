@@ -1,5 +1,6 @@
 // NScript::CV_ArcheryCompetitionScript::ResetRandomSpeechTime() -- Set the speech timer to maximum minus a random variation.
 // Leaf: ?ResetRandomSpeechTime@CV_ArcheryCompetitionScript@NScript@@QAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: original PDB member names, own callers00e3372f/00e34332/00e34a77/00e34b70/00e34d3e and distinct script-def field pairs; CTimer GetIndex is original long const accessor. Actual global game interface SetTimer slot89 and MSVCR71 rand thunk00bfeb16.
 // Layout: original typed script prefix through timer+112, unused suffix omitted. True CScriptDef : CParentDefClassBase : CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase; own constructor00f28f90 base initialization confirms packed parent57, first own long60, original typed vectors12. Def Max/Var+912/916. Only read prefix modeled, no complete owner/definition size claimed. Shared headers aliased.
@@ -17,9 +18,8 @@ class CCPPointerInfo;
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

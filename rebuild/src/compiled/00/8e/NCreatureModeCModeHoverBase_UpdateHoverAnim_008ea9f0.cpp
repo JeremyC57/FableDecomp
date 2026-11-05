@@ -3,6 +3,7 @@
 //   forward/velocity and, when the state's animation differs from the current looping one or the current animation is empty or
 //   finished, queue it (unless it resolves to the DEFAULT entry) and make it current
 // Leaf: UpdateHoverAnim
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008EA9F0, 570 bytes (`ret`).
 // Callees: CVectorMap::LowerBound 0x0040F020 (inline GetTC 0x5a, unchecked miss path), CTCAnimationComplex::GetAnimation
@@ -15,11 +16,7 @@
 //   the SetMainAnim call (mode computed first, Looping re-read for the argument); if/else (not an early return) lets the mode
 //   share the name's frame slot; C3DVector needs a user copy ctor for retail's load/store order; the list iterator needs a
 //   user copy ctor so erase's by-value argument is built in place.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

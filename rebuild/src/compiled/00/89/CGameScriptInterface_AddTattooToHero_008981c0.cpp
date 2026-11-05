@@ -1,5 +1,6 @@
 // CGameScriptInterface::AddTattooToHero(const CCharString& tattooDefName) const -- create the named tattoo object just ahead of the live hero (position + 2 x physics vector), hand it to the hero morph (TC 3) and re-upload the hero's texture morphs, then kill the temporary object
 // Leaf: AddTattooToHero
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008981C0, length 382 bytes (`ret 4`).
 // Callees: CEngine::PeekDefinitionManager @ 0x00415FBC (a jmp thunk; manifest "GFGetPreMainMemoryUsed") on the engine
@@ -17,14 +18,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 class CIEngine;
 struct CEngineHolder_Retail {

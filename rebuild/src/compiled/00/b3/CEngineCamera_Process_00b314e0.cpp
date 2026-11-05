@@ -1,5 +1,6 @@
 // CEngineCamera::Process(bool flag) -- run the debug camera script when one is running, else build the engine camera description from the game camera (window or console override viewport, FOVs in radians, position, the orthonormal rotation from the camera's up/forward set) and apply it with SetCameraState
 // Leaf: Process
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B314E0, length 541 bytes (`ret 4`).
 // Callees: CEngineCamera::ProcessDebugScript 0x00B31160, GFVBoxToABox 0x009E1E70 (__fastcall), CCamera FOV/flag getters
 // 0x00A0BE90 (horizontal FOV), 0x00A0BE80 (FOV flags), 0x00A0BEA0 (vertical FOV) (catalog labels CMap/CWorld "DrawGet*" are
@@ -18,12 +19,7 @@
 #define CEngineCamera CEngineCameraDonor
 #include "engine/CEngineCamera.h"
 #undef CEngineCamera
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 __forceinline void CrossProduct(C3DVector& r, const C3DVector& a, const C3DVector& b)
 {
     r.X = a.Y * b.Z - a.Z * b.Y;

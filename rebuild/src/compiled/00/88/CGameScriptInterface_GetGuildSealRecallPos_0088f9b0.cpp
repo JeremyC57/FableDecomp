@@ -1,12 +1,5 @@
-class C3DVector
-{
-public:
-    float x;
-    float y;
-    float z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
-};
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

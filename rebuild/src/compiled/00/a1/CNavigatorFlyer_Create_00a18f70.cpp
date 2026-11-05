@@ -1,5 +1,6 @@
 // CNavigatorFlyer::Create(CNavigatorManager& manager, const CNavigatorExternalInterface& iface) -- allocate a flying navigator and register it with its manager's class factory
 // Leaf: ?Create@CNavigatorFlyer@@SIPAV1@AAVCNavigatorManager@@ABVCNavigatorExternalInterface@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A18F70, 70 bytes, plain `ret` (static __fastcall: manager in ecx, iface in edx).
 // Identity: Ego_r.pdb `?Create@CNavigatorFlyer@@SIPAV1@AAVCNavigatorManager@@ABVCNavigatorExternalInterface@@@Z`;
 //   the vtable stored is CNavigatorFlyer's 0x0129CB54 (rtti-vtables.tsv).
@@ -30,7 +31,7 @@ public:
     CNavigatorBase(CNavigatorManager& manager, unsigned long type, const CNavigatorExternalInterface& iface);   // 0x00A47110
 };
 
-class C3DVector { public: float X, Y, Z; C3DVector() {} };
+#include "engine/C3DVector.h"
 
 class CNavigatorFlyer : public CNavigatorBase {         // vtable 0x0129CB54, 0x30 bytes
 public:

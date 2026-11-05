@@ -1,5 +1,6 @@
 // std::__insertion_sort(iterator first, iterator last, comparator comp) -- STLport sort helper with the original comparator semantics.
 // Leaf: ??$__insertion_sort@PAPBVCThingObject@@VCThingCompare_Nearest@@@std@@YIXPAPBVCThingObject@@0VCThingCompare_Nearest@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Identity: probable; hand951G015/hand953J082: TestTestTest Update0x91F140 sort caller and search0x920200 mask0x807 identify vector<constCThingObject*>; comparator0x91F740 is distinct from CThing0x4A8D80; const element by PDB elimination, not direct RTTI.
 // Layout: no comparator/vector header. Real C3DVector user copy constructor preserves by-value comparator12bytes. Same-TU comparator and STL helpers contain genuine null checks, distance calculation and full algorithms. CThingCompare_Nearest intentionally returns the nearer pointer, so STL tests pointer truth as retail does.
 #include <string.h>
@@ -9,12 +10,12 @@
 #else
 #define NOINLINE __declspec(noinline)
 #endif
-class C3DVector { public: float X,Y,Z; C3DVector(float x=0,float y=0,float z=0):X(x),Y(y),Z(z) {} C3DVector(const C3DVector& p):X(p.X),Y(p.Y),Z(p.Z) {} C3DVector operator-(const C3DVector& p) const { return C3DVector(X-p.X,Y-p.Y,Z-p.Z); } float GetLengthSquared() const { return X*X+Y*Y+Z*Z; } };
+#include "engine/C3DVector.h"
 class CThing {
 public:
     C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
 private:  }; class CThingObject:public CThing {};
-class CThingCompare_Nearest { public: C3DVector Pos; template<class T> NOINLINE T* operator()(T* a,T* b) const { if(!a) return b; if(!b) return a; C3DVector da=((CThing*)a)->GetPos()-Pos; C3DVector db=((CThing*)b)->GetPos()-Pos; return da.GetLengthSquared()<db.GetLengthSquared()?a:b; } };
+class CThingCompare_Nearest { public: C3DVector Pos; template<class T> NOINLINE T* operator()(T* a,T* b) const { if(!a) return b; if(!b) return a; C3DVector da=((CThing*)a)->GetPos()-Pos; C3DVector db=((CThing*)b)->GetPos()-Pos; return da.GetSquaredMagnitude()<db.GetSquaredMagnitude()?a:b; } };
 typedef const CThingObject* Element;
 namespace std {
 template<class Iter,class Distance,class T,class Compare> NOINLINE void __fastcall __push_heap(Iter first,Distance hole,Distance top,T value,Compare comp) { Distance parent=(hole-1)/2; while(hole>top && comp(*(first+parent),value)) { *(first+hole)=*(first+parent); hole=parent; parent=(hole-1)/2; } *(first+hole)=value; }

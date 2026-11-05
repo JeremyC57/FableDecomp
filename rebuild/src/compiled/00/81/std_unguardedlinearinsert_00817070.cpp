@@ -1,5 +1,6 @@
 // std::__unguarded_linear_insert(Iter last, T value, Compare comp) -- Insert a complete record after the range sentinel.
 // Leaf: ??$__unguarded_linear_insert@PAUTHitLocationIntersectionElement@?A0x
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: Own linear-insert00818240/PDB anonymous record fields key,hit_location,intersection_pos,outward_normal;32-byte element.
 #ifndef _MSC_VER
 #define __fastcall
@@ -15,7 +16,7 @@ void __fastcall __unguarded_linear_insert(Iter last,T value,Compare comp) {
 }
 template<class K,class V> class CKeyPairCompareLess {public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 struct CHitLocation;
-class C3DVector {public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
+#include "engine/C3DVector.h"
 namespace {
 // Layout: original anonymous hit record is32bytes: key+0,hit_location+4,intersection_pos+8,outward_normal+20; own caller00818240 and PDB types confirm.
 struct THitLocationIntersectionElement {long key;CHitLocation* hit_location;C3DVector intersection_pos,outward_normal;};

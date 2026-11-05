@@ -1,4 +1,5 @@
 // CTCPhysicsStandard::PerformForceUpdates() -- apply air resistance (velocity scaled by 1 - the def's air resistance) and gravity (a -0.12 Z acceleration), except for a thing resting still on near-flat ground
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E5670, 217 bytes (plain `ret`). Callers 0x00725C47 / 0x00726FCD / 0x008E5D52.
 // Callees: virtual GetFeelsGravity slot 48 (+0xc0), GetFeelsAirResistance slot 49 (+0xc4), IsOnGround slot 56 (+0xe0) (GOTCHAS
@@ -11,12 +12,7 @@
 // Shape: `keep = 1.0f - GetAirResistance()` is `fsubr [1.0]` kept on the x87 stack for the three `*=`; the gravity guard is one
 //   `||` chain: not on ground, the ground normal's Z (read through the returned temporary) below 0.98, or a moving velocity --
 //   the inline GetLengthSquared() loads Z, Y, X onto the stack and squares from there (three `fstp st(0)` pops after fcompp).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C = 1e-4f
 class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector& pos) const;   // 0x0063AB10
@@ -62,7 +58,7 @@ void CTCPhysicsStandard::PerformForceUpdates()
     }
     if (GetFeelsGravity()) {
         if (!IsOnGround() || GetWorldMap()->GetGroundFaceNormalAt(Position).Z < 0.98f
-            || Velocity.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
+            || Velocity.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             ApplyAcceleration(C3DVector(0.0f, 0.0f, -0.12f));
     }
 }

@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleFullTransition::CScriptModuleFullTransition(const C3DVector& lookAt, const C3DVector& startPos, const C3DVector& endLookAt, const C3DVector& endPos, long frames) -- scripted camera move: remember the start position and look-at, the per-frame increments towards the end pair (over `frames`, 15 when 0) and the end frame
 // Leaf: ??0CScriptModuleFullTransition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008525F0, length 288 bytes (`ret 14h`).
 // Callees: CScriptModuleBase::CScriptModuleBase @ 0x005ED070, CWorld::GetWorldFrame @ 0x0049D870 (static). Vtable 0x01275A44.
 // Float pool: 0x0122DED8 = 1.0f.
@@ -9,14 +10,7 @@
 // lives in the dead `lookAt` slot for the `fild`, each increment is `(end - start) / (float)count` through C3DVector value
 // operators (operator/ multiplies by the reciprocal, which VC computes once for both) (frame temporaries, the result copied with integer moves by the implicit operator=),
 // Increment first; EndFrame adds the ORIGINAL frames argument to the world frame.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    C3DVector operator/(float d) const { float inverse = 1.0f / d; return C3DVector(X * inverse, Y * inverse, Z * inverse); }
-};
+#include "engine/C3DVector.h"
 
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870

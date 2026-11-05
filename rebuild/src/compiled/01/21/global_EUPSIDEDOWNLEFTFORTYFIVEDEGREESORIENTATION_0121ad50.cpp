@@ -1,5 +1,6 @@
 // _global::$E_InventoryOrientationRHSet7() -- dynamic initializer of the anonymous-namespace const CRightHandedSet UPSIDE_DOWN_LEFT_FORTY_FIVE_DEGREES_ORIENTATION @ 0x0137CFEC: Up = (sqrt(0.5), sqrt(0.5), 0), Forward = (0, 0, -1)
 // Leaf: _$E1
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0121AD50, 38 bytes (+ padding), plain `ret`, reached from the .CRT$XCU table; catalog "ResetButtonCounts" is a wrong label.
 // Identity: CTCInventoryItem::GetRHSetFromOrientation(EInventoryObjectOrientation) @ 0x005D8EF0 (Ego_r.pdb, private
 //   static __fastcall, returns CRightHandedSet by value) switches over 12 orientations and copies one of twelve 24-byte
@@ -14,12 +15,7 @@
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
-class C3DVector {                                  // Ego_r.pdb C3DVector {X, Y, Z}
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet {                            // Ego_r.pdb CRightHandedSet {Up +0, Forward +0xc}, 24 bytes
 public:

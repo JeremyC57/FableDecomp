@@ -1,5 +1,6 @@
 // NCameraModes::CZTargetNew::Update() -- refresh the coordinate system, place the camera, look at the observed thing's focal point and pull the look-at towards a live target's firing point
 // Leaf: ?Update@CZTargetNew
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00873030, 293 bytes (+ int3 padding), plain `ret`.
 // Callees: virtual slot 24 UpdateCoordSystem (+0x60, 0x00872EC0), CZTargetNew::GetCameraPosition() 0x00872AF0 (C3DVector
 //   by hidden pointer), NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CTCGraphicAppearance::GetCameraFocalPos(float)
@@ -15,15 +16,7 @@
 //   member chain moves the load to eax or below the pushes); HasTC is a forced-inline `unsigned long` mask test (`test ch,1`); the component is the one-ternary entry pick over a template constant key
 //   loaded straight into ecx; the blend is a named float read first, then `lookAt += (aim - lookAt) * blend` through inline C3DVector operators; the two
 //   positions are stored through the implicit operator= (`lea ecx,[esi+54h]` copy, then `add esi,10h`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 
 class CThing;
 class CWorld;

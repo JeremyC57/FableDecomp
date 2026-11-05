@@ -1,5 +1,6 @@
 // CThingSwitch::TriggerSetPlayerAreaName() -- once: when the living hero stands inside the switch's trigger square and has a region display, show the switch's script name as the current area name
 // Leaf: TriggerSetPlayerAreaName
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083C990, length 255 bytes (+ int3 padding).
 // Callees: CThing::PeekPos() const @ 0x006A4D00 (four times), the player-manager accessor @ 0x004C7A00,
@@ -10,7 +11,7 @@
 // bit +0x91; CThingSwitch TriggerRadius +0xd0, the area-name-shown flag +0xdc (Triggered in Ego_r.pdb at that offset).
 // Shape: the sibling TriggerSetEnvironment 0x0083BE90 with the box test out of line (the C2DVector conversion
 // temporary in the frame, passed by reference); the flag is set between the argument pushes and the call.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }

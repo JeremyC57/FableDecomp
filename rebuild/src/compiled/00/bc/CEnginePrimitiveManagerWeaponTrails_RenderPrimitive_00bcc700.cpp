@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerWeaponTrails::RenderPrimitive(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&) -- when the manager is enabled and the first trail strip has points, wrap the trail in a pool-allocated sub-primitive and queue it on the sub-primitive renderer at the camera distance of its head point; returns 2 (rendered) when enabled, else 0
 // Leaf: ?RenderPrimitive@CEnginePrimitiveManagerWeaponTrails@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitude replaced by the header GetMagnitude (same computation).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCC700, length 192 bytes (ret 0Ch, virtual).
 // Callees: CEngineSubPrimitiveBase::operator new 0x00BEB540 (`__fastcall`, size 0x18 in ecx: the sub-primitive pool),
@@ -18,14 +19,7 @@
 #define FABLE_RETAIL_CARRAY
 #include "engine/CArray.h"
 
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 
 class CBaseClassNonCopyable {
 public:

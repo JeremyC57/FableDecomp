@@ -1,5 +1,6 @@
 // CCreatureAction_SnapDragonFast::PerformAction() -- find the dragon's mouth dummy, drop it to the dragon's height and push it 1.5 units forward along the dragon's facing; create an obstruction (radius 1.5) there whose driver gets 1.5 and ignores the dragon; then create THING_EXPLOSION_JACK_DRAGON_BITE 2.5 units behind that point, looking at the dragon, and make the dragon its owner
 // Leaf: ?PerformAction@CCreatureAction_SnapDragonFast
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F5220, length 528 bytes, plain `ret` (virtual).
 // Model: the landed CCreatureAction_SnapDragon::PerformAction 0x008F5060 (same callees and layout); the fast variant adds
 //   `mouth += offset` before the obstruction, where `C3DVector offset = facing * 1.5f` is a NAMED local built by a
@@ -11,15 +12,7 @@
 //          create @ 0x007FD4B0 (__fastcall), driver SetValue @ 0x007FD3D0, intelligent pointer @ 0x00A01B10 / 0x00A01B90 /
 //          0x00A01C10, push_back @ 0x004AD520, CGameDefinitionManager::Get @ 0x0044C6B0, GetDefGlobalIndexFromName
 //          @ 0x009AD410, thing create @ 0x0080C500 (__fastcall), SetOwner @ 0x0080CBF0. Globals: 1.5f 0x0125AADC, 2.5f 0x01241D68.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public:
     void* PStringData;

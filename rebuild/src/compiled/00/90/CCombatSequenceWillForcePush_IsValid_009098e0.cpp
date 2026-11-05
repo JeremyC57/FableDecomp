@@ -1,5 +1,6 @@
 // CCombatSequence_WillForcePush::IsValid() -- valid unless the owner's will-power component (interface 0xCE) is inactive, or, for a non-enemy hero, the hero stands within 8 units
 // Leaf: IsValid
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -16,12 +17,7 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLength() const { return (float)sqrt(X * X + (Y * Y + Z * Z)); }
-};
+#include "engine/C3DVector.h"
 
 class CTCBase;
 
@@ -113,7 +109,7 @@ bool CCombatSequence_WillForcePush::IsValid()
         if (willPower->Active) {
             CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetCharacter().GetPItem();
             if (!AreThingsEnemies(hero, m_pOwner)) {
-                if ((hero->GetPos() - m_pOwner->GetPos()).GetLength() < 8.0f)
+                if ((hero->GetPos() - m_pOwner->GetPos()).GetMagnitude() < 8.0f)
                     return false;
             }
             return true;

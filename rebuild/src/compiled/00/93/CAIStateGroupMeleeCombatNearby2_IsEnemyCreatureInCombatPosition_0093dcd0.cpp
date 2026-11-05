@@ -1,4 +1,5 @@
 // CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition() -- require combat range and a valid or nearby preferred position.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared2D respelled GetSquaredMagnitude2D (the header / FableWin.pdb method, same computation).
 #define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
 #undef CAIStateGroupBase
@@ -9,15 +10,9 @@ protected:
 };
 #include "engine/CAIBrain.h"
 #include "engine/CWorld.h"
-class C3DVector { public:
- float X,Y,Z;
- C3DVector() {}
- C3DVector(float x,float y,float z):X(x),Y(y),Z(z) {}
- C3DVector operator-(const C3DVector& b) const { return C3DVector(X-b.X,Y-b.Y,Z-b.Z); }
- float GetLengthSquared2D() const { return X*X+Y*Y; }
-};
+#include "engine/C3DVector.h"
 inline float GroundDistanceSquared(const C3DVector& a,const C3DVector& b) {
- return (a-b).GetLengthSquared2D();
+ return (a-b).GetSquaredMagnitude2D();
 }
 class CThing { public:
     const C3DVector& GetPos() const; // 004C73D0

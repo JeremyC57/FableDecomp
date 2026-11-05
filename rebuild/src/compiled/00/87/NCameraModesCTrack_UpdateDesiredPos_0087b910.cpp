@@ -1,5 +1,6 @@
 // NCameraModes::CTrack::UpdateDesiredPos(C3DVector& desired) -- move a quarter of the way from the current track fraction towards the track point nearest the target's camera point, and output the track position there
 // Leaf: UpdateDesiredPos
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087B910, length 210 bytes (`ret 4`; 224 with padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0
@@ -12,9 +13,7 @@
 // garbage from a dead slot); the kind check REASSIGNS the component (`if (kind != 3) comp = fallback;` keeps it in esi --
 // the CFixedDolly ternary selects into a second register); the blended fraction is a named float kept across the member call.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 namespace NShape {
 class CTrack { public:
     void GetTrackPosNearest(const C3DVector* pos, C3DVector* nearest, float* fraction);   // 0x00760DA0

@@ -1,5 +1,6 @@
 // CParticleEmitter::GetCurrentOrientation() const -- returns the emitter's orientation as a CRightHandedSet: Up = row 2 and Forward = row 1 of the current Transform
 // Leaf: GetCurrentOrientation
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E1B40, length 78 bytes (`ret 4`: hidden result pointer).
 // Callees: none (everything inline).
 // Layout: Transform (CMatrix3x4: rows X, Y, Z, position) at +0xb0 in the retail emitter -- the PDB
@@ -14,13 +15,7 @@
 // row 2 is loaded straight onto the x87, and the memberwise C3DVector copy constructors store all
 // six floats into the result (`fxch st(2)` + `fstp` chain).
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;                                                         // +0x00

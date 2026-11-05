@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToPlayerInteraction::IsTooFarFromThePlayer(const CThing* player) -- is the player more
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local MagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // than 3 units (squared distance against a function-static 9.0) from the creature.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092ECD0, length 111 bytes (+ int3 padding), `ret 4`.
@@ -23,7 +24,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
@@ -96,12 +97,6 @@ class CAIStateGroupBase { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float MagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
-};
 
 struct CThingPos : public CThing {
 };
@@ -116,7 +111,7 @@ bool CAIStateGroup_MinionReactToPlayerInteraction::IsTooFarFromThePlayer(const C
 {
     static const float s_tooFarDistanceSquared = TOO_FAR_FROM_PLAYER_DISTANCE * TOO_FAR_FROM_PLAYER_DISTANCE;    // 0x013BB6B8
     const C3DVector& creaturePos = ((CThingPos*)PBrain->PCreature)->GetPos();
-    if ((((const CThingPos*)player)->GetPos() - creaturePos).MagnitudeSquared() > s_tooFarDistanceSquared)
+    if ((((const CThingPos*)player)->GetPos() - creaturePos).GetSquaredMagnitude() > s_tooFarDistanceSquared)
         return true;
     return false;
 }

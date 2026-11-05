@@ -1,5 +1,6 @@
 // CThingFilter_IsThrownByExplosion::operator()(const CThing&) const -- (anonymous-namespace filter) true when the thing has a creature mode manager whose current mode is ExplosiveForcePushed (0x42)
 // Leaf: ??RCThingFilter_IsThrownByExplosion@
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members m_pFirst/m_pLast are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080E400, 82 bytes, `ret 4`, ecx (the empty functor) unused.
 // Identity (probable): the CTCDExplosion TU (Ego_r.pdb anon namespace ?A0x41ace303 holds CThingFilter_IsAffectedByExplosions,
 //   CThingFilter_IsEvadeExplosion and CThingFilter_IsThrownByExplosion). Its only reference is the tail jump at 0x0080E475 from
@@ -13,16 +14,8 @@ public:
     virtual ~CTCBase();
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    const STCEntry* LowerBound(const ETCInterfaceType& kind) const;  // 0x004365B0 (const CVectorMap::LowerBound)
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 namespace NCreatureMode {
 class CModeBase {
@@ -46,7 +39,7 @@ class CThing { public:
     {
         const CTCMap* map = &m_tcs;
         const STCEntry* it = map->LowerBound((ETCInterfaceType)kind);
-        return (it == map->m_pLast || kind < it->first ? map->m_pLast : it)->second;
+        return (it == map->end() || kind < it->first ? map->end() : it)->second;
     }
 };
 

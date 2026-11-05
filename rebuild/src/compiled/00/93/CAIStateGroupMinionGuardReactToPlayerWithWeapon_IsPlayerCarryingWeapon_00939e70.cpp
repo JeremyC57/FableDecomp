@@ -1,5 +1,6 @@
 // CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsPlayerCarryingWeapon() const -- true when the creature's opinion of the hero (interface 0x4F) holds a still-happening deed of type 1
 // Leaf: ?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@ABE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00939E70, 90 bytes (+ int3 padding), thiscall, `ret`.
 // Identity (proven): Ego_r.pdb donor order CheckForOtherGuardsNewWarning (0x0095D100) / IsPlayerCarryingWeapon (0x0095D160) /
@@ -39,10 +40,7 @@ public:
     T* Data;                                            // +0x00
     T* operator->() const { return Data; }
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
 class CTCBase;
 #include "engine/CVectorMap.h"

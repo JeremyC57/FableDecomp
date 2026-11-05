@@ -1,5 +1,6 @@
 // CWorldMap::IsThemeDestroyableAt(const C3DVector& pos) const -- true when the map under the position is loaded and its strongest engine theme there has a destruction theme
 // Leaf: ?IsThemeDestroyableAt@CWorldMap@@QBE_NABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe @ 0x0063DD70, 119 bytes, thiscall `ret 4`.
 // Identity (proven): Ego_r.pdb ?IsThemeDestroyableAt@CWorldMap@@QBE_NABVC3DVector@@@Z (bool, const C3DVector&), the only
 // CWorldMap predicate on a position that reads the theme def's DestructionThemeDef (PDB +0x9C, retail +0x98: the field
@@ -12,8 +13,7 @@
 // Shape: the landed DestroyThemeAt model (same TU): the layer out-slot and the def pointer homed in the dead `pos` slot;
 // the def's release has no null test and the flag is read before it (`setne bl`).
 #include <new>
-class C3DVector { public: float X, Y, Z; };
-class C2DCoordI { public: long X, Y; };
+#include "engine/C3DVector.h"
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                        // slot 1

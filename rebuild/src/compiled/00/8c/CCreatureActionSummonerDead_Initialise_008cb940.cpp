@@ -1,5 +1,6 @@
 // CCreatureAction_SummonerDead::Initialise() -- play FALL_TO_KNEES_OUT_OF, base Initialise, stop mode 0x5c and kill the summoner; when its CSummonerDef names a death object, create it at the summoner and (when it lives and the world is not loading) make the hero its owner; then spawn the summoner's MESH_EXPLODE effect at its position
 // Leaf: ?Initialise@CCreatureAction_SummonerDead@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB940, length 580 bytes, plain `ret` (virtual).
 // Callees: CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0 / Initialise
@@ -15,7 +16,7 @@
 // Shape: the animation name is passed as const char* (its temporary shares the def pointer's frame word); same-TU
 //   noinline GetSubDef / GetEffectFromString stand-ins; the def references are counted temporaries inside the &&
 //   chains (the second chain's flags live in ebx: 2 = def temporary, 4 = name temporary).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0

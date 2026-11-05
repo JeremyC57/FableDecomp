@@ -1,5 +1,6 @@
 // NScript::CQ_EndGameBossBattleScript::Init() -- Reset the script progress flags.
 // Leaf: ?Init@CQ_EndGameBossBattleScript@NScript@@UAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: own script-info registration 00cd5f68->00d34410 stores factory for literal Q_EndGameBossBattle, whose own allocation/constructor stores vtable012cc60c; target is slot3 Init. Original field names from named PDB class layout, independently checked against own offsets and setter uses.
 // Layout: shared handle headers aliased to restore real CBaseObject/CBaseClass hierarchy and counted pointers. Original CScriptBase64 typed list/maps, CLevelScriptBase72 Game/MasterScriptData; own registry uses common master-data allocator00cdbd20. Flags at72; PC owner size108. No opaque base prefix.
@@ -17,9 +18,8 @@ class CCPPointerInfo;
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

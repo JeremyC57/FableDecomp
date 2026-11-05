@@ -1,6 +1,7 @@
 // CTCCameraPointDefinitionBase::GetActiveCameraPosition() const -- the base camera point's position: a copy of the
 // parent thing's position
 // Leaf: ?GetActiveCameraPosition@CTCCameraPointDefinitionBase@@MBE?AVC3DVector@@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C1E0, length 33 bytes, `ret 4` (hidden result pointer).
 // Identity (FINDINGS chunk 393: "landed with a wrong name: 0x75C1E0 CTCCameraPointDefinitionBase::
 //   GetActiveCameraPosition"; was CTCCameraPointShapeActivationBase::GetTrackPosition): vtable slot 35, shared by nine
@@ -16,14 +17,7 @@
 //   are modelled as long here (as the landed source).
 // Model: CTCBase is declared locally (engine/CTCBase.h is flattened with an explicit vptr word, which would add a
 //   second vptr under a virtual method).
-class C3DVector {                                   // X, Y, Z (floats in the engine; copied as dwords)
-public:
-    long X;
-    long Y;
-    long Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:

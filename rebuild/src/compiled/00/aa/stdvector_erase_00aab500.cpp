@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<CPlane >) STLport range erase of 16-byte records: copy the tail [last, finish) down onto first element by element, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@VCPlane@@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAB500, 81 bytes (+ int3 padding), thiscall, `ret 8`, returns first.
 // Identity: vector<CPlane >::erase(iterator, iterator) -- proven; evidence: the landed C3DMeshFileConvexVolumeChunk constructor 0x00AAAA10 / ReadFromFile 0x00AAAB10 / deleting destructor 0x00AAB6E0 erase their CArray<CPlane> (an STLport vector of 16-byte CPlane: Normal, Distance) with it.
 // Label: the manifest's "Mesh_CopyVertexBuffer_16ByteElements" is propagated across byte-identical bodies; family G040 (8 erase bodies of
@@ -8,11 +9,7 @@
 //   _M_finish = __i; return __first;` -- the default __type_traits give __false_type, so __copy_ptrs is the
 //   random-access __copy loop (both inlined: `__forceinline`), and __destroy_aux over the trivial destructor is empty.
 #include <stddef.h>
-class C3DVector {                                          // 12 bytes
-public:
-    C3DVector() { }
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CPlane {                                             // 16 bytes (Ego_r.pdb)
 public:
     C3DVector Normal;

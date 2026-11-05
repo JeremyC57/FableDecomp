@@ -1,6 +1,7 @@
 // CGameScriptInterface::EntitySetFacingAngle(const CScriptThing& entity, float angle, bool immediate) const -- turn a valid entity to the angle (a fraction of a full turn): reset TC 7, stop its looking (TC 0x43); unless immediate, make it look at a point one unit away along the new heading, else set the physics facing directly and reset its perception (TC 0x34)
 // Retry 10b: cos(pitch) held as a FLOAT local (a double local keeps it on the x87 stack past the Y product: `fmul st(1)` + a late `fstp st(0)`; the float is consumed by retail's `fld st(2) ; fmulp` / `fmulp st(1)`).
 // Leaf: ?EntitySetFacingAngle@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089BDF0, length 385 bytes (`ret 0Ch`).
 // Callees: the script thing's slots 75 (+0x12C IsValid), 11 (+0x2C GetThing) and 6 (+0x18, the position), the thing
@@ -12,12 +13,7 @@
 //   in memory (0x0122ED70, not folded), X = sin(yaw)*cos(pitch), Y = cos(yaw)*cos(pitch), Z = sin(pitch).
 #include <math.h>
 #pragma intrinsic(sin, cos)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 extern const double g_zeroPitch;                        // 0x0122ED70 (0.0)
 extern const double TWO_PI; // 0x0124F2B8 ((double)6.2831855f)
 struct CTCBase_Retail;

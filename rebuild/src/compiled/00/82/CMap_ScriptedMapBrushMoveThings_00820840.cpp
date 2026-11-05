@@ -1,5 +1,6 @@
 // CMap::ScriptedMapBrushMoveThings(const CScriptedMapBrush&) -- move every thing the scripted brush lists to its brush position and facing angles
 // Leaf: ?ScriptedMapBrushMoveThings@CMap@@MAEXABVCScriptedMapBrush@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Callees: CScriptedMapBrush::GetThingsToMove(std::list<unsigned __int64>&) const 0x0082E860, CScriptedMapBrush::GetThingsMovement(unsigned __int64) const 0x0082E4E0,
 //   CThingManager::GetPThingWithUID(unsigned __int64) 0x0051ED80, CWorldMap::ConvertLocalCoordsToWorldMapCoords(long, const C3DVector&) const 0x004FC4A0,
 //   virtual CWorld::GetThingManager() slot 3, CWorld::GetWorldMap() slot 13, CWorldMap::GetMapNumberAt(const C2DCoordI&) const slot 17,
@@ -10,17 +11,11 @@ extern "C" void* __cdecl malloc(unsigned int size);
 extern "C" void __cdecl free(void* p);
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DAngles {
 public:
     float AngleXY, AngleYZ, AngleXZ;
 };
-class C2DCoordI { public: long X, Y; };
 
 namespace std {
 template <class T> class allocator { };

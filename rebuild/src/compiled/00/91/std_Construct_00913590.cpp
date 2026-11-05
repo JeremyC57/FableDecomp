@@ -8,15 +8,10 @@
 //   deque<CBezierCurve>&); the neighbouring allocator 0x009135E0 allocates n * 0x30. FINDINGS chunk 406.
 // Callees: none (inline memberwise copy).
 // Leaf: ??$_Construct@VCBezierCurve@@V1@@std@@YIXPAVCBezierCurve@@ABV1@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CBezierCurve {                            // Ego_r.pdb, 48 bytes
 public:

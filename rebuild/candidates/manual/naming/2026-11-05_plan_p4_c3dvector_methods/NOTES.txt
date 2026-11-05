@@ -1,0 +1,24 @@
+Plan phase 4, wave "w1m" (2026-11-05): C3DVector rows whose local method name the header lacks, respelled to the header (PDB) method.
+Kept apart from w1 so the coordinator can apply or hold it on its own: it rests on the reading of the owner's names rule below.
+
+THE RULE (owner 2026-10-28, brief): map a local method onto a header method only when (1) the header method is the exact PDB
+  spelling and (2) the local body computes the same thing (same expression, same inline / out-of-line status).
+  (1) Names: GetSquaredMagnitude / GetMagnitude / GetSquaredMagnitude2D are FableWin.pdb ?GetSquaredMagnitude@C3DVector@@QBEMXZ
+      (debug copy 0x01907260), ?GetMagnitude@C3DVector@@QBEMXZ (0x01B52910), ?GetSquaredMagnitude2D@C3DVector@@QBEMXZ, and the
+      engine/C3DVector.h members (TPI 0x2783 layout). Ego_r.pdb has no out-of-line copy of any of them (ghidra_out/egor_pdb_names
+      lists only Rotate / RotateXY / AccurateNormalise / GetMagnitudeAndNormalise / ToString / GetRandom*), and its TPI method list
+      is not on this lane, so the second source is the header, not Ego_r itself. The local names (GetLengthSquared, GetLength,
+      Length, MagnitudeSquared ...) are in neither PDB.
+  (2) Bodies: scripts/hdrmig4.py `method_map` respells a name only when it is defined once in the file, inline, inside the local
+      C3DVector, with no arguments, and its body is the same sum (sq: X*X, Y*Y, Z*Z in any order / grouping / running-sum form;
+      sq2d: X*X, Y*Y; mag: (float)sqrt / sqrtf of an sq). The header's GetSquaredMagnitude sums X, Z, Y; the local bodies sum
+      in their own order (MAPPED.tsv lists every local body next to the header's). The bytes are identical on every row
+      (gate: masked sha1 + length + every relocation target; vland parity), so the order difference never reaches the code
+      here. If the owner reads "same expression" as token-identical, hold this wave: no local body is token-identical.
+ROWS: 177 PASS under vland --recheck-landed (RELOCATION_MATCH 164, MATCH 13), parity equal to the landed source on every row; 0
+  introduced warnings; gate.py 177 of 177.
+  Respells (MAPPED.tsv, 154 method lines; the other rows also map a same-named header method):
+    GetLengthSquared -> GetSquaredMagnitude 106, GetMagnitudeSquared 9, MagnitudeSquared 3, SquaredLength 1, LengthSquared 1;
+    GetLength -> GetMagnitude 24, Length 6, Magnitude 1; GetLengthSquared2D -> GetSquaredMagnitude2D 3.
+  Normalise: no row passed (the header's fast Normalise is FABLE_RETAIL_C3DVECTOR-only and returns C3DVector&; deferred in w1).
+QUEUE LINES / BINDINGS / CALLERS: none (inline methods emit no symbol).

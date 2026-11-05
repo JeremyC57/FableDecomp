@@ -1,4 +1,5 @@
 // CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool) -- still runnable while the enemy lives, the creature's 0x30 component is engaged, the enemy can be engaged and is the creature's combat target, a perceived enemy is still seen/smelt or directly sensed, (when asked) the creature is a registered combatant, and the enemy is within the 0xAA component's range; once the enemy is running away its stealth component is flagged and the state stops
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093D800, length 637 bytes (+ int3 padding), `ret 4` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound const @ 0x004365B0 (creature lookups 0x30,
@@ -12,14 +13,7 @@
 // `return false` tail (early returns duplicate the epilogue and shrink-wrap esi); the combat target is a named local compared as
 // `PEnemy == target`; one bool result kept in bl; vector subtract / squared length must be __forceinline.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    __forceinline C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    __forceinline float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
@@ -144,7 +138,7 @@ bool CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool checkCombatant)
                         const CTCCombatRange* range;
                         ((const CThing*)GetCreature())->GetInterface(&range, 0xaa);
                         float limit = range->Range;
-                        if (offset.GetMagnitudeSquared() > limit * limit)
+                        if (offset.GetSquaredMagnitude() > limit * limit)
                             result = false;
                         else if (IsEnemyRunningAway()) {
                             CTCStealth* stealth;

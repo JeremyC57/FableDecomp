@@ -1,5 +1,6 @@
 // NScript::CV_ArcheryCompetitionScript::CM_AC_DummyMoving::Main() -- create the moving straw dummy and copy entity data
 // Leaf: ?Main@CM_AC_DummyMoving@CV_ArcheryCompetitionScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native00E33B00 length190. String literals verified through NUL.
 // Naming wave 35: identity reg 00e32796 "M_AC_DummyMoving" in 00e32540; Alloc 00e33a20; vtable 012e3140 slot 1; PDB ?Main@CM_AC_DummyMoving@CV_ArcheryCompetitionScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_AC_DummyMoving::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_AC_DummyMoving@CV_ArcheryCompetitionScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CM_AC_DummyMoving@@UAEXXZ`; this source now defines the PDB member (class model unchanged); same bytes.
@@ -22,7 +23,7 @@ typedef unsigned __int64 ScriptUID;
 #else
 typedef unsigned long long ScriptUID;
 #endif
-class C3DVector { public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CScriptGameResourceObjectScriptedThingBase;
 class CCharString { public:char* Data; CCharString(const char*,long=-1); CCharString(const CCharString&); ~CCharString();}; // 0099EBF0/0099EAE0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

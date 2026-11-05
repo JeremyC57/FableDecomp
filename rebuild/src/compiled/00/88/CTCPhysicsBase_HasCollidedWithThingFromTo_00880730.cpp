@@ -1,5 +1,6 @@
 // CTCPhysicsBase::HasCollidedWithThingFromTo(const CTCPhysicsBase& other, const C3DVector& from, const C3DVector& to, CPhysicsCollideResponse& response) const -- dispatch a moving-sphere collision test on the other body's physics-mesh type: swept sphere v mesh (normal optionally flipped by a global switch), sphere v cylinder, or sphere v sphere at the end point (reporting the start point)
 // Leaf: HasCollidedWithThingFromTo
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00880730, 195 bytes (`ret 10h`). CTCPhysicsBase vtable 0x0125D2C4 slot 90 (catalog
 //   "vfunc_90"; PDB ?HasCollidedWithThingFromTo@CTCPhysicsBase@@UBE_NABV1@ABVC3DVector@@1AAVCPhysicsCollideResponse@@@Z).
 // Callees: IsPhysicsMeshTypeMesh() const @ 0x006AFD30 (manifest "CCombatSequenceBase::IsInterruptable" is propagated),
@@ -10,10 +11,7 @@
 // Shape: the scale is a named float from a ternary (one shared x87 value, `fld st(0) ; fmul` per component) applied through an
 //   inline `C3DVector::operator*=`; the cylinder test is a forwarded return; the sphere hit copies `from` with the implicit
 //   assignment (three dword moves); every `return false` shares the final `xor al,al` exit.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
-};
+#include "engine/C3DVector.h"
 class CPhysicsCollideResponse { public:
     C3DVector CollidePos;                               // +0x00
     C3DVector CollideNormal;                            // +0x0c

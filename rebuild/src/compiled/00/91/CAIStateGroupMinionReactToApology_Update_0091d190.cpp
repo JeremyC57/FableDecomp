@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToApology::Update() -- speak accepted or rejected apology response then terminate
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members first/last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail0x0091D190,270 bytes. GetApology91D0A0; player manager8FCF90,main player449970,CPlayer::GetPControlledCreature 487DC0;
 // RTTI pointers1237f1c/123e7d8 slot0 deleting dtors48a4f0/4d6915, genuine virtual base destructor.
 // intelligent pointer ctor/set A01B10/A01B90; speech981EA0; terminate8FCF40.
@@ -20,10 +21,7 @@ public:
 class CCharString;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public: typedef std::pair<ETCInterfaceType, CTCBase*> Entry; Entry *first,*last; Entry* LowerBound(const ETCInterfaceType& key); };
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
@@ -31,8 +29,8 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** out,long type) {
         bool present=(bits[type>>5]>>(type&31))&1;
         if(present) {
-            ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&interfaces; CInterfaceMap::Entry* it=map->LowerBound(key);
-            *out=(T*)((void*)((it==map->last || it->first>type)?map->last:it)->second);
+            ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&interfaces; CInterfaceMap::value_type* it=map->LowerBound(key);
+            *out=(T*)((void*)((it==map->end() || it->first>type)?map->end():it)->second);
         } return present;
     }
 };

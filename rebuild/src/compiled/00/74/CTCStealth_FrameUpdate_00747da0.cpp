@@ -4,6 +4,7 @@
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Name: CTCStealth::FrameUpdate is virtual (Ego_r.pdb ?FrameUpdate@CTCStealth@@UAEXXZ); 0x00747DA0 sits in the CTCStealth vtable at 0x01268A10 (RTTI COL 0x01343474 -> .?AVCTCStealth@@), next to HasFrameUpdate 0x00749410 (`mov al,1 ; ret`).
 // Leaf: FrameUpdate
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00747DA0, 1010 bytes, ebp frame, `ret`.
@@ -19,12 +20,7 @@
 // Layout: Ego_r.pdb CTCStealth (Sneaking +0x0f, SneakingToggleSet +0x10, FrameStartedWalking +0x20,
 //   FrameStartedSneakingAndMoving +0x24, SneakingAndMovingDeedHandle +0x28, ActionPermittedToSneakID +0x2c); the creature's
 //   velocity +0x10c/+0x110, current action +0x100, hero state +0x200; the player's no-sneak flag +0x20a, interface +0x0c.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

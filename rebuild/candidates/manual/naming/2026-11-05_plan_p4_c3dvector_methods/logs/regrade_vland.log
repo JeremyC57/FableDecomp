@@ -1,0 +1,177 @@
+0048b160   RELOCATION_MATCH PASS   operator()<CThingVillage>
+0048b220   RELOCATION_MATCH PASS   operator()<CThingVillage const>
+0049e080   RELOCATION_MATCH PASS   RenderUpdate
+004a8d80   RELOCATION_MATCH PASS   operator()<CThing>
+004fcbd0   RELOCATION_MATCH PASS   IsPosPassable
+004fcc40   RELOCATION_MATCH PASS   IsPosPassable
+004fcce0   RELOCATION_MATCH PASS   IsPosCameraPassable
+004fcd60   RELOCATION_MATCH PASS   IsPosCameraPassable
+005da540   RELOCATION_MATCH PASS   GetUnsheatheAnim
+005da5a0   RELOCATION_MATCH PASS   GetSheatheAnim
+0063a660   RELOCATION_MATCH PASS   GetGroundSizeZAtBlock
+0063a6e0   RELOCATION_MATCH PASS   GetSoundAtBlock
+0063a760   RELOCATION_MATCH PASS   IsPassableAtBlock
+0063a850   RELOCATION_MATCH PASS   GetWaterSizeZAtBlock
+0063b0f0   RELOCATION_MATCH PASS   GetHighestThemeSizeZInArea
+0063bf20   RELOCATION_MATCH PASS   GetHighestThemeMinCameraSizeZOffsetInArea
+0063c230   RELOCATION_MATCH PASS   GetAverageThemeMinCameraSizeZOffsetInArea
+0063ef50   RELOCATION_MATCH PASS   operator
+0065a8ee   RELOCATION_MATCH PASS   IsTimeToGoToSchool
+0065da97   RELOCATION_MATCH PASS   operator
+00661cd0   MATCH            PASS   GetCurrentSpeed
+00665190   RELOCATION_MATCH PASS   IsThingInFOV
+006a4df0   MATCH            PASS   IsInRange
+006a8240   RELOCATION_MATCH PASS   operator()
+006cb780   RELOCATION_MATCH PASS   GetNearbyDirectedPosition
+006cce00   RELOCATION_MATCH PASS   operator()<CThingGameObject>
+006e80f0   RELOCATION_MATCH PASS   ReassignAttacker
+006ea5f0   RELOCATION_MATCH PASS   IsTargetOverriddenByAttemptedFacingDirection
+006ef290   RELOCATION_MATCH PASS   operator()<CThingCreatureBase const>
+006fd4f0   RELOCATION_MATCH PASS   GetRotationAngle
+006fd6c0   RELOCATION_MATCH PASS   IsLandscapeCollision
+006fe5b0   RELOCATION_MATCH PASS   operator()<CThingGameObject>
+00705c30   RELOCATION_MATCH PASS   vfunc_6
+00725060   RELOCATION_MATCH PASS   ApplyControlledAcceleration
+00725c40   RELOCATION_MATCH PASS   Move
+00752000   RELOCATION_MATCH PASS   UpdateHeadPos
+0075cad0   RELOCATION_MATCH PASS   UpdateActiveCameraPosition
+00761f40   RELOCATION_MATCH PASS   CTrack
+00782560   RELOCATION_MATCH PASS   operator()<CThingCreatureBase>
+00785b40   RELOCATION_MATCH PASS   FrameUpdate
+007986a0   RELOCATION_MATCH PASS   SetUpForcePush
+007a2f90   RELOCATION_MATCH PASS   operator()<CThing>
+007a30b0   RELOCATION_MATCH PASS   less<float>_>
+007a3410   RELOCATION_MATCH PASS   __unguarded_insertion_sort_aux<CThing **, CThing *, CThingCompare_NearestToPos>
+007a34a0   RELOCATION_MATCH PASS   __adjust_heap<CThing **, int, CThing *, CThingCompare_NearestToPos>
+007a37b0   RELOCATION_MATCH PASS   __make_heap<CThing **, CThingCompare_NearestToPos, CThing *, int>
+007a3ac0   RELOCATION_MATCH PASS   __insertion_sort<CThing **, CThingCompare_NearestToPos>
+007a3f30   RELOCATION_MATCH PASS   __final_insertion_sort<CThing **, CThingCompare_NearestToPos>
+007a3fa0   RELOCATION_MATCH PASS   __partial_sort<CThing **, CThing *, CThingCompare_NearestToPos>
+007a4140   RELOCATION_MATCH PASS   __introsort_loop<CThing **, CThing *, int, CThingCompare_NearestToPos>
+007b5ca0   RELOCATION_MATCH PASS   IsInWater
+007f1840   RELOCATION_MATCH PASS   GetRumbleDistanceAttenuationAtPos
+007f24e0   RELOCATION_MATCH PASS   FrameUpdate
+007f5730   RELOCATION_MATCH PASS   operator()<CThingPhysical>
+007fa450   RELOCATION_MATCH PASS   __insertion_sort
+007faa20   RELOCATION_MATCH PASS   __partial_sort
+007fac80   RELOCATION_MATCH PASS   __introsort_loop
+008059f0   RELOCATION_MATCH PASS   CGetBestTargetInDirection
+008090e0   RELOCATION_MATCH PASS   operator()
+0080ac10   RELOCATION_MATCH PASS   __partial_sort
+00812ca0   RELOCATION_MATCH PASS   GetNearestOtherActiveMember
+00834760   RELOCATION_MATCH PASS   WorldUpdate
+00853320   RELOCATION_MATCH PASS   GetViewPosInFocalPlane
+0085c190   RELOCATION_MATCH PASS   CCombatAction_ControlledStrafeJump
+00860430   RELOCATION_MATCH PASS   IsBetterThan
+00860650   RELOCATION_MATCH PASS   IsCreatureMoreAppropriateForTask
+00860840   RELOCATION_MATCH PASS   IsCreatureMoreAppropriateForTask
+00860d00   RELOCATION_MATCH PASS   IsBetterThan
+00860ed0   RELOCATION_MATCH PASS   IsCreatureMoreAppropriateForTask
+008610d0   RELOCATION_MATCH PASS   IsBetterThan
+008611f0   RELOCATION_MATCH PASS   IsBetterThan
+00861310   RELOCATION_MATCH PASS   IsBetterThan
+00861530   RELOCATION_MATCH PASS   IsCreatureMoreAppropriateForTask
+00861670   RELOCATION_MATCH PASS   IsBetterThan
+00861950   RELOCATION_MATCH PASS   GetMovementSpeedFromAnimation
+00866d80   RELOCATION_MATCH PASS   FrameUpdate
+00875120   RELOCATION_MATCH PASS   IsPosInViewingFrustrum
+008751d0   RELOCATION_MATCH PASS   GetIntersectionWithWorldMap
+00876e10   RELOCATION_MATCH PASS   PotentialFieldBufferPoints
+00877eb0   RELOCATION_MATCH PASS   operator()<CUnprovenThing_00877eb0>
+00877f40   RELOCATION_MATCH PASS   operator()<CUnprovenThing_00877f40>
+0087bbf0   RELOCATION_MATCH PASS   OnDie
+008ab710   MATCH            PASS   unary_negate<CVectorFilter_FurtherFromPointThan>>
+008e2f10   RELOCATION_MATCH PASS   for_each
+008e5270   RELOCATION_MATCH PASS   UpdateIsMoving
+008e5670   RELOCATION_MATCH PASS   PerformForceUpdates
+008e5f00   RELOCATION_MATCH PASS   PerformForceUpdates
+008f58c0   RELOCATION_MATCH PASS   GetLineThingSearchArea
+008fadb0   RELOCATION_MATCH PASS   DoGroundEvasion
+008fbb90   RELOCATION_MATCH PASS   PotentialFieldBufferPoints
+009098e0   RELOCATION_MATCH PASS   IsValid
+0090c1a0   RELOCATION_MATCH PASS   IsRunnable
+00914130   RELOCATION_MATCH PASS   operator()<CThingDeadCreature>
+009141f0   RELOCATION_MATCH PASS   operator()<CThingMarker>
+00916b10   RELOCATION_MATCH PASS   operator()<CThingObject>
+00917050   RELOCATION_MATCH PASS   GetPNearestFreeLogPile
+009170b0   RELOCATION_MATCH PASS   GetPNearestBonfire
+0091f740   RELOCATION_MATCH PASS   operator()<CThingObject const>
+0091f870   RELOCATION_MATCH PASS   less<float>_>
+0091faa0   RELOCATION_MATCH PASS   __unguarded_insertion_sort_aux<CThingObject const **, CThingObject const *, CThingCompare_Nearest>
+0091fb30   RELOCATION_MATCH PASS   __adjust_heap
+0091fdb0   RELOCATION_MATCH PASS   __make_heap<CThingObject const **, CThingCompare_Nearest, CThingObject const *, int>
+009200c0   RELOCATION_MATCH PASS   __insertion_sort<CThingObject const **, CThingCompare_Nearest>
+00920480   RELOCATION_MATCH PASS   __final_insertion_sort<CThingObject const **, CThingCompare_Nearest>
+009204f0   RELOCATION_MATCH PASS   __partial_sort
+009205d0   RELOCATION_MATCH PASS   __introsort_loop<CThingObject const **, CThingObject const *, int, CThingCompare_Nearest>
+0092be70   RELOCATION_MATCH PASS   operator()<CThingBuilding>
+0092d7c0   RELOCATION_MATCH PASS   Update
+0092e950   RELOCATION_MATCH PASS   IsRunnable
+0092ecd0   RELOCATION_MATCH PASS   IsTooFarFromThePlayer
+009357f0   RELOCATION_MATCH PASS   Update
+00937c20   RELOCATION_MATCH PASS   FindUnconsciousPerson
+0093a080   RELOCATION_MATCH PASS   Update
+0093c6d0   RELOCATION_MATCH PASS   SetWhatsThatAnimation
+0093c9a0   RELOCATION_MATCH PASS   operator()<CThingTrackNode>
+0093d800   RELOCATION_MATCH PASS   IsStillRunnable
+0093dcd0   RELOCATION_MATCH PASS   IsEnemyCreatureInCombatPosition
+00942270   RELOCATION_MATCH PASS   operator
+009425f0   RELOCATION_MATCH PASS   MoveAndFace
+00942ee0   RELOCATION_MATCH PASS   Update
+00944730   RELOCATION_MATCH PASS   IsRunnable
+00944e80   RELOCATION_MATCH PASS   IsRunnable
+0095cdf0   RELOCATION_MATCH PASS   less<float>_>
+0095cf50   RELOCATION_MATCH PASS   __unguarded_insertion_sort_aux<CThing **, CThing *, CThingCompare_Nearest>
+0095cfe0   RELOCATION_MATCH PASS   __adjust_heap
+0095d880   RELOCATION_MATCH PASS   __make_heap<CThing **, CThingCompare_Nearest, CThing *, int>
+0095da90   RELOCATION_MATCH PASS   __insertion_sort<CThing **, CThingCompare_Nearest>
+0095db30   RELOCATION_MATCH PASS   sort_heap
+0095ddf0   RELOCATION_MATCH PASS   __final_insertion_sort<CThing **, CThingCompare_Nearest>
+0095de60   RELOCATION_MATCH PASS   __partial_sort
+0095df40   RELOCATION_MATCH PASS   __introsort_loop<CThing **, CThing *, int, CThingCompare_Nearest>
+0095e010   RELOCATION_MATCH PASS   sort
+0095e470   RELOCATION_MATCH PASS   Update
+0095fda0   RELOCATION_MATCH PASS   operator()<CThing const>
+009624d0   RELOCATION_MATCH PASS   Update
+00964160   RELOCATION_MATCH PASS   operator()<CThingMarker const>
+009652c0   RELOCATION_MATCH PASS   FindPTargetPoint
+0096c880   RELOCATION_MATCH PASS   WalkTo
+0096f770   RELOCATION_MATCH PASS   IsRunnable
+00970f30   RELOCATION_MATCH PASS   IsRunnableLeaf
+009852c0   RELOCATION_MATCH PASS   FollowUpdate
+00986c30   RELOCATION_MATCH PASS   operator()<CThingAICreature const>
+00a11610   RELOCATION_MATCH PASS   IsRigidBodyBoundingPointsValid
+00a18760   RELOCATION_MATCH PASS   GetPointIntersectionFromTo
+00a187c0   RELOCATION_MATCH PASS   GetSphereIntersectionFromTo
+00a4b7b0   MATCH            PASS   GFWorld3DDistanceSmallerThan
+00a560a0   RELOCATION_MATCH PASS   IsIdentity
+00a6c890   RELOCATION_MATCH PASS   CalculateCentreOfGravity
+00add920   RELOCATION_MATCH PASS   AccurateBuildFromPoints
+00addd80   RELOCATION_MATCH PASS   AddToBounds
+00aee9f0   RELOCATION_MATCH PASS   Update
+00af2780   RELOCATION_MATCH PASS   GetCurrentPositionLocal
+00b109b0   RELOCATION_MATCH PASS   vfunc_31
+00b216f0   RELOCATION_MATCH PASS   GetScaleFactor
+00b38ed0   MATCH            PASS   IsVisible
+00b49810   RELOCATION_MATCH PASS   CalcShortestDistanceToPointSquared
+00b4ced0   RELOCATION_MATCH PASS   ClipBoundingBox
+00b52090   RELOCATION_MATCH PASS   IsPointInPrecipitation
+00b670e0   RELOCATION_MATCH PASS   PatchWithinFadeStartSphere
+00b96350   MATCH            PASS   ClipSphere
+00b99bb0   RELOCATION_MATCH PASS   IsInsideFrustum
+00b9c2e0   RELOCATION_MATCH PASS   ClipBoundingBox
+00b9c500   RELOCATION_MATCH PASS   CalcShortestDistanceToPoint
+00b9dc60   RELOCATION_MATCH PASS   IsInsideFrustum
+00baa4e0   RELOCATION_MATCH PASS   IsInsideFrustum
+00bb6450   RELOCATION_MATCH PASS   CalcDistanceFromCamera
+00bcebe0   RELOCATION_MATCH PASS   GetBoundingBoxTransform
+00bdebf0   RELOCATION_MATCH PASS   Update
+00bf7df0   RELOCATION_MATCH PASS   GetDesiredLODBand
+00c257b0   MATCH            PASS   operator-
+00c41a70   RELOCATION_MATCH PASS   ComputeEffectiveRange
+00cbe2ff   MATCH            PASS   IsDistanceBetweenThingsUnder
+00cbe3ea   MATCH            PASS   IsDistanceBetweenThingsOver
+00cbe45c   MATCH            PASS   IsDistanceFromThingToPositionOver
+00cbe4b7   MATCH            PASS   IsDistanceFromThingToPositionUnder
+00cbe512   MATCH            PASS   GetDistanceBetweenThings
+00cbe551   MATCH            PASS   GetDistanceBetweenThingAndPosition

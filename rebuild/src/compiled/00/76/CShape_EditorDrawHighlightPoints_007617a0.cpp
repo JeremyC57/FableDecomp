@@ -1,5 +1,6 @@
 // CShape::EditorDrawHighlightPoints(CEnginePrimitivePrepareInfo* info, CWorldMap* worldMap, C3DVector* cursor, CRGBColour* colour) -- editor view of a shape: a ground-snapped post per point (a blue marker when the cursor is near it) and a cross on every selected point
 // Leaf: EditorDrawHighlightPoints
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007617A0, length 467 bytes (`ret 10h`, no EH frame).
 // Callees: CWorldMap::GetGroundSizeZAt 0x0063A300, two __fastcall editor draw helpers 0x00875FB0 (manifest
 // "EditorDrawHighlightPoints_Impl": info, position, float colour triple, radius) and 0x008764E0 (manifest
@@ -11,12 +12,7 @@
 // BankIndex, BlendMode, BlendOp, UseZBuffer +0x38) built inline from the out-of-line ctor's 0x004C3090 parameters.
 // Shape: C3DVector needs a user copy ctor (X and Z reach the second vector from the FPU, Y as an integer copy);
 // CRGBColour's copy ctor assigns R, G, B, A in that order (byte loads +2, +1, +3, +0); `dy*dy + dx*dx` order.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(const CRGBColour& c) { R = c.R; G = c.G; B = c.B; A = c.A; }

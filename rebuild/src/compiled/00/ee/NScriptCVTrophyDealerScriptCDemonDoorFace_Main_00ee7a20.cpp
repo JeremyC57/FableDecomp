@@ -1,5 +1,6 @@
 // NScript::CV_TrophyDealerScript::CDemonDoorFace::Main() -- the Witchwood demon door (trophy-dealer quest): take scripted control of Me, add a core-quest minimap marker; while the stones are not in sync, each time the hero talks to the door say it is locked and (once) set the quest-card objective; once the master data's SingingStonesInSync is set, script the hero, play CS_TROPHY_DEALER_DOOR_OPENS with HERO and DOOR cast, move the objective on, make the DemonDoorDoor persistent, clear the flag and remove Me
 // Leaf: ?Main@CDemonDoorFace@CV_TrophyDealerScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE7A20, 1659 bytes (+ int3 padding), plain `ret`. Literals "HUD_ORB_QUEST_CORE" 0x01258AB0,
 //   "TEXT_QST_071_DOOR_LOCKED1" 0x012F53A4, "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_03" 0x012F5378 / _04 0x012F5330, "Witchwood2" 0x012DCEF8,
 //   "WitchwoodCavern" 0x012DCEE8, "HERO" 0x01255174, "DOOR" 0x012DAC70, "CS_TROPHY_DEALER_DOOR_OPENS" 0x012F535C, "DemonDoorDoor" 0x012DDAAC.
@@ -60,13 +61,8 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    VPAD16(ma) VPAD8(mb) VPAD2(mc)                      // slots 1..26
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {

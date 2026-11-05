@@ -1,4 +1,5 @@
 // CAIStateGroup_KidHurtSelfRunToMother::IsRunnable() -- the kid runs to its mother when its recent XY movement is
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retry 10b (chain-split sweep, FIXES B-16): the `GetOffsetSource()` result is a named local `offsetSource` before it is dereferenced, which gives retail's register colouring/order (the chained call gives the parked difference).
 // large against the distance measure the creature reports (ratio > 0.8), and then only on a 1-in-100 roll.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00915080, length 266 bytes (+ int3 padding).
@@ -24,7 +25,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
@@ -124,12 +125,6 @@ class CAIStateGroupBase { public:
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { }
-    C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(x + o.x, y + o.y, z + o.z); }
-};
 struct CXYDelta {                               // a 12-byte delta whose z is never written (retail keeps the slot)
     float x, y, z;
     float GetLengthXY() const { return (float)sqrt(x * x + y * y); }

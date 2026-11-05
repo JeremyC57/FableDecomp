@@ -1,5 +1,6 @@
 // CTCNymph::OnInitialActivate() -- base hook, fetch the nymph sub-def from the owner's def, reset the attack/fade state and give the flight spline five control points
 // Leaf: OnInitialActivate
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080FD90, length 108 bytes.
 // Callees: CTCBase::OnInitialActivate @ 0x00686870 (non-virtual base call; catalog "$E2"), CDefClassBase::GetSubDef<CNymphDef>
 // @ 0x0080FE60 (catalog <CAICreatureWillPowerIndicatorDef> is a byte twin), the def's slot-1 release, vector<C3DVector>::resize
@@ -25,10 +26,7 @@ class CDefClassBase { public:
     long RefCount;                              // +0x04
     bool GetSubDef(CDefPointer<const CNymphDef>* out) const;   // 0x0080FE60
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 struct CVector3D {                              // STLport vector<C3DVector> (12 bytes)
     C3DVector* _M_start;
     C3DVector* _M_finish;

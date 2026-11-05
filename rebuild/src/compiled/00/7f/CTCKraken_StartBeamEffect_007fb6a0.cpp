@@ -1,4 +1,5 @@
 // CTCKraken::StartBeamEffect() -- spawn the BEAM_ATTACK effect at the head's MOUTH_DUMMY and attach its particle emitter to the kraken
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FB6A0, length 457 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CTCGraphicAppearance::GetDummyObject @
@@ -17,7 +18,7 @@
 // in a local (an inline `SetPItem(other.GetPItem())` schedules the `lea esi,[edi+34h]` before GetPItem); then IS_THING_ALIVE
 // (IsDead() member form) and the out-parameter GetInterface.
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

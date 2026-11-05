@@ -1,5 +1,6 @@
 // NScript::CQ_DragonBossFightScript::CDBSummoner::Main() -- the summoner entity script: register an alive filter over Me, update once, give Me the hero as best enemy target, wait frame by frame until the parent quest's state word (+0x48) reaches 4, then unless the script is done remove Me (RemoveThing(Me, true, true))
 // Leaf: ?Main@CDBSummoner@CQ_DragonBossFightScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D25F50, 176 bytes (entity-script vtable slot 1 = Main); a byte-identical second copy of 0x00D25D80 (no ICF in retail), compiled in another TU.
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 (the filter's member; filter vtable 0x012C32F0), the filter registration
 //          @ 0x00F35B10 (on `this`), ~CScriptThing @ 0x004AA840, IsDone @ 0x00F35B30, CGameScriptInterface slots 7 (+0x1c, frame
@@ -11,11 +12,9 @@
 // Naming wave 35: identity reg 00d256f8 "DBSummoner" in 00d255e0; Alloc 00d25e30; vtable 012cb7a8 slot 1; PDB ?Main@CDBSummoner@CQ_DragonBossFightScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CDBSummoner::Main (wave3/labels_alloc.tsv); PDB ?Main@CDBSummoner@CQ_DragonBossFightScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CDBSummoner@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    virtual ~CScriptThing();                               // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

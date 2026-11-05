@@ -1,5 +1,6 @@
 // CAIStateGroup_RecoverStealableItem::FindPTargetPoint() const -- the marker carrying interface 0xB2 nearest this group's creature
 // Leaf: ?FindPTargetPoint@CAIStateGroup_RecoverStealableItem@@ABEPBVCThing@@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009652C0, 83 bytes (+ int3 padding), thiscall, `ret`.
 // Identity (proven): Ego_r.pdb donor order FindPStealableItemOutsideTargetPointRange (0x00989A80) / FindPTargetPoint
 //   (0x00989B40) / IsRunnable (0x00989BA0) = the landed retail 0x00965210 / this row / the landed 0x00965320; the label agrees.
@@ -38,14 +39,7 @@ public:
     T* Data;                                            // +0x00
     T* operator->() const { return Data; }
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CClass : public CBaseObject { };
 class CThing : public CClass {
 public:
@@ -147,7 +141,7 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
         return a;
     C3DVector deltaA = a->GetPos() - Pos;
     C3DVector deltaB = b->GetPos() - Pos;
-    return (deltaA.GetLengthSquared() < deltaB.GetLengthSquared()) ? a : b;
+    return (deltaA.GetSquaredMagnitude() < deltaB.GetSquaredMagnitude()) ? a : b;
 }
 class CThingSearchTools {                                // Ego_r.pdb 28 bytes (only `this` is passed through here)
 public:

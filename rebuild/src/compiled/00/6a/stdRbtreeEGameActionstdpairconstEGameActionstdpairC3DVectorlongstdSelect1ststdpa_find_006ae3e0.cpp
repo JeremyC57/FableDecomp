@@ -1,5 +1,6 @@
 // std::_Rb_tree::find(const key_type& k) -- map<EGameAction, pair<C3DVector, long> > lookup (STLport 4.6, iterator, the non-const overload): lower-bound walk from the root, end() unless the found node's key equals k
 // Leaf: ?find@?$_Rb_tree@W4EGameAction@@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@U?$_Select1st@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@U?$less@W4EGameAction@@@3@V?$allocator@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@2@@2@ABW4EGameAction@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006AE3E0, 71 bytes, thiscall, `ret 8` (hidden iterator result + key reference); keys compare signed (`jl` / `jge`).
 // Identity (sweep2 1b, owner decision 1b): callers CThingPlayerCreature::ApplyRelativeMovementAccelerationComponents 0x6AD3C0 [QAE, non-const] (name-set constness in brackets); Ego_r.pdb CThingPlayerCreature::RelativeMovementAccelerationComponents is map<EGameAction,pair<C3DVector,long> >
 //   The catalog name CRetailTree_longkey::find was a generated stand-in shared by every byte-identical body of this shape; retail has no
@@ -7,7 +8,7 @@
 // Shape: STLport 4.6 `iterator find(const key_type& __x) { return iterator(_M_find(__x)); }` with _M_find inlined: walk keeping the last node not
 //   less than k, then the header when nothing was found or k < key(y). Mapped types are opaque (find never reads them).
 enum EGameAction { };
-class C3DVector { float _opaque[3]; };
+#include "engine/C3DVector.h"
 namespace std {
 template <class _Tp> struct less {
     bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }

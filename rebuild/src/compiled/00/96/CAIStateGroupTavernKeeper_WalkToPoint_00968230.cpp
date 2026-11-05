@@ -1,4 +1,5 @@
 // CAIStateGroup_TavernKeeper::WalkToPoint(const C3DVector&, const CRightHandedSet&) -- while the pub and bar live: walk to the point (retrying while in progress), then turn to look along the point's forward axis; true when both finished
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00968230, length 368 bytes (`ret 8`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PBar +0x1c, PPub +0x24),
 //          CAIStateGroupBase::AIAction_MoveToPos @ 0x0097EC00 / AIAction_LookAtPos @ 0x0097D580 (C3DVector by value),
@@ -9,13 +10,7 @@
 //          CRightHandedSet's forward axis at +0x0c (descriptive).
 #include "engine/CAIStateGroup_TavernKeeper.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
-    C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                               // +0x00 (descriptive)
     C3DVector Forward;                          // +0x0c (descriptive)

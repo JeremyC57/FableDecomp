@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveRepeatedStaticMesh::IsInsideFrustum(const CEngineCamera& camera, bool ignoreFrustum) -- distance cull (the box-to-camera distance against RepeatedMeshDrawDistanceFactor * the max draw distance; SSE or x87 path), then the 4-plane n-vertex frustum test
 // Leaf: IsInsideFrustum
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Grade: RELOCATION_MATCH (475 bytes; parked 461v475 'inline-asm SSE lane gap' disproved): the landed retail_asm SSE
 //   kernel of C3DBoundingBox::CalcShortestDistanceToPointSquared (0x00BF7DF0 form); the x87 fallback's difference vector
 //   is a frame C3DVector for X/Y with the Z difference a scalar consumed by its square (retail's fld st0 / fmulp and the
@@ -19,15 +20,7 @@ extern "C" double __cdecl sqrt(double x);
 #include "engine/CEngineCamera.h"
 extern bool g_SSEAvailable;                             // 0x013D2880
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLengthSquared() const { return Z * Z + Y * Y + X * X; }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00

@@ -1,5 +1,6 @@
 // CTCCarryable::CTCCarryable(CThing* thing) -- CTCBase(thing), own vtable, not fragile, no carrier, zero attach offset and offset amount
 // Leaf: ??0CTCCarryable
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004D3D0E, length 52 bytes. Size-optimised TU: `#pragma optimize("s", on)`.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (landed).
 // Identity: vtable 0x0123B35C = CTCCarryable (rtti-vtables.tsv). Layout: Ego_r.pdb CTCCarryable (0x24 bytes):
@@ -13,12 +14,7 @@
 class CThing;
 class CTCCarrying;
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 struct CTCBase_Calls {                              // engine/CTCBase.h layout (0xc bytes)
     virtual void v00();

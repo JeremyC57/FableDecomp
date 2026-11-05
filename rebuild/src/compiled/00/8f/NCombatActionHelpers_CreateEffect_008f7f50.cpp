@@ -1,5 +1,6 @@
 // NCombatActionHelpers::CreateEffect(const CThingCreatureBase&, long, const C3DVector&, const C3DVector&) -- spawn the effect thing at position and hand its particle emitter the DIRECTION vector
 // Leaf: ?CreateEffect@NCombatActionHelpers@@YIXABVCThingCreatureBase@@JABVC3DVector@@1@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x008F7F50, 0xB6 bytes, __fastcall (creature in ecx, unused; effect type in edx; direction and position by
 //   reference on the stack, `ret 8`). Manifest name matches the FableWin PDB name set
 //   (`?CreateEffect@NCombatActionHelpers@@YIXABVCThingCreatureBase@@JABVC3DVector@@1@Z`; the first vector is the
@@ -20,11 +21,7 @@ public:
     void* PStringData;                          // +0x00
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 
 class CCRC {
 public:

@@ -1,6 +1,7 @@
 // 00845b10 CCreatureAction_TavernGameMasterInteraction::Initialise
 // Flags:
 // Leaf: ?Initialise@CCreatureAction_TavernGameMasterInteraction@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
 #define CClass CClassLayout
 #include "engine/CClass.h"
@@ -35,7 +36,7 @@ class CCharStringData;
 class CCharString {CCharStringData*PStringData;public:CCharString(const char*,long=-1);~CCharString();};
 #include "engine/CBaseClassNonCopyable.h"
 class CThing;class CTCParamsBase;
-class C3DVector {public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class C2DVector;class CRightHandedSet;class CWorld;enum ETCInterfaceType{};
 class CPersistContext;class CEnginePrimitivePrepareInfo;namespace NTCMessages{class CMessageBase;}
 class CThingManager;

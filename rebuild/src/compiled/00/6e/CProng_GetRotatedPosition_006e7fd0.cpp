@@ -1,5 +1,6 @@
 // CProng::GetRotatedPosition(float angle) -- the prong offset rotated about the Z axis by angle, by value (CDefendingCombatantInfo::CProng)
 // Leaf: GetRotatedPosition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E7FD0, length 95 bytes; 5 callers in CCombatRing code (0x006E882D in the landed
 // CCombatRing::GetAttackerProngPosition 0x006E8810, which already names this callee). The chunk label
 // "CTCPhysicsRigidBody::GetFacingVector" is a propagated BSim name.
@@ -10,13 +11,7 @@
 // the user copy constructor the copy is a block copy (`inc ecx` base, 97 v 95).
 // Layout: Ego_r.pdb CDefendingCombatantInfo::CProng (0x1c, packed): Blocked +0, Prong (C3DVector) +1, ProngBlockageTimer +0x10,
 // POccupier +0x14. No engine header; modelled locally (the nested class is written at namespace scope).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    void Rotate(const C3DVector& axis, float angle);   // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 
 #pragma pack(push, 1)
 struct CProng {                                    // CDefendingCombatantInfo::CProng

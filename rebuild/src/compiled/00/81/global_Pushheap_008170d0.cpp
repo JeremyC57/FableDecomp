@@ -1,5 +1,6 @@
 // _global::_Push_heap(THitLocationIntersectionElement*, int, int, THitLocationIntersectionElement, THitLocationIntersectionElementPred) -- STLport heap sift-up: move the hole toward the top while the parent orders before the value, then drop the value in
 // Leaf: _Push_heap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008170D0, 95 bytes, `ret 0x28`.  No callees.
 // Element: anonymous-namespace THitLocationIntersectionElement (PDB, 32 bytes), sorted for GetPBestHitLocationFromList (0x00815F00, whose _Equal_range 0x00817E30 uses the same predicate).
 // Link-time __fastcall (the algorithm TUs are /Gr): first in ecx, hole in edx, then top, the
@@ -10,7 +11,7 @@
 // (the Dinkumware `_Top < _Hole` spelling flips the compare to `cmp ebp,edi ; jge`).
 namespace N008170d0 {
 struct CHitLocation;
-struct C3DVector { float X; float Y; float Z; };
+#include "engine/C3DVector.h"
 struct THitLocationIntersectionElement {
     long key;                     // +0x0
     CHitLocation* hit_location;   // +0x4

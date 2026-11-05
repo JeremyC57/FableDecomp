@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionWatchFires::IsRunnable() -- runnable when the idle scheduler (if any) prefers this group and a burning building lies within the creature's sight range.
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00936210, length 448 bytes (+ int3 padding). Vtable slot 11.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0xd3 idle scheduler = bit 19 of +0x38, 0x34
@@ -19,7 +20,7 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
@@ -101,7 +102,7 @@ long NearSink_936070(const void* self, float a, float b);
 __declspec(noinline) bool CThingSearchTools::GetPBestLeafThing(const CFilter_Bind2<CThingFilter_OnFire, CThingFilter_In2DRange>& filter,
     const CThingCompare_Nearest& compare, CThingBuilding** out) const
 {
-    long best = NearSink_936070(this, filter.m_pSecond->Range, compare.m_pos.x);
+    long best = NearSink_936070(this, filter.m_pSecond->Range, compare.m_pos.X);
     *out = (CThingBuilding*)best;
     return best != 0;
 }

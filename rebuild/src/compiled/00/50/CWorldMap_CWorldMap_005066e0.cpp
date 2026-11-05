@@ -1,5 +1,6 @@
 // CWorldMap::CWorldMap(const CMainGameComponent& component, CWorld& world, const C2DBoxI& area, unsigned long granularityShift) -- build an empty world map over the area: one default map info and region, four empty player-position slots, the map-placement grid sized from the granularity, and a fresh thing map manager; sound themes start disabled
 // Leaf: ??0CWorldMap@@QAE@ABVCMainGameComponent@@AAVCWorld@@ABVC2DBoxI@@K@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005066E0, 601 bytes, `ret 10h`. Ego_r.pdb / FableWin.pdb
 //   ??0CWorldMap@@QAE@ABVCMainGameComponent@@AAVCWorld@@ABVC2DBoxI@@K@Z.
 // Callees: CBaseClassNonCopyable() 0x0099A2F0, malloc 0x00BFEA0E (STLport tree header / vector storage),
@@ -22,21 +23,12 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DBoxI {
 public:
     long TLX, TLY, BRX, BRY;
     long GetWidth() const { return BRX - TLX; }
     long GetHeight() const { return BRY - TLY; }
-};
-class C2DCoordI {
-public:
-    long X, Y;
 };
 class CCharString {
 public:

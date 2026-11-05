@@ -1,5 +1,6 @@
 // C3DAnimationStats::InitialiseStats(const C3DAnimFile&, EAnimationType) -- type, loop flag and duration from the root chunk, the movement vector and every timing event from its helpers chunk
 // Leaf: InitialiseStats
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4EBB0, 604 bytes (`ret 8`, ebp frame aligned to 8).
 // Callees: C3DAnimFile::GetRoot @ 0x00A537F0 (Ego_r.pdb / FableWin.pdb ?GetRoot@C3DAnimFile@@; no C3DAnimFile symbol is named GetRootChunk), C3DAnimFileRootChunk::HasHelpers @ 0x00A99280 / GetHelpers @ 0x00A99390,
 //          C3DAnimFileHelpersChunk::HasMovementVector @ 0x00AAE4D0 / GetMovementVector @ 0x00AAE5B0 / FindFirstEvent
@@ -62,13 +63,7 @@ public:
     CCharString(const CCharString& other);   // 0x0099EC30
     ~CCharString();                          // 0x0099EAE0
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class C3DAnimFileTimingEventChunk {
 public:
     char _pad0[0x10];

@@ -1,5 +1,6 @@
 // std::__push_heap(const CThingObject** first, int holeIndex, int topIndex, const CThingObject* val, CThingCompare_Nearest comp) -- STLport heap sift-up: while the hole is below the top and comp(parent, val) holds, move the parent down; then store val in the hole
 // Leaf: ??$__push_heap@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091F870, 97 bytes, /Gr __fastcall (first ecx, holeIndex edx; topIndex, val and the
 //   comparator on the stack), `ret 14h`.
 // Identity (proven): only caller the landed std::__adjust_heap<const CThingObject**, int, const CThingObject*, CThingCompare_Nearest> 0x0091FB30 (it names this callee); comparator CThingCompare_Nearest::operator()<const CThingObject> 0x0091F740 (returns the nearer pointer: `test eax,eax`).
@@ -8,13 +9,7 @@
 //   *(first + hole) = val;` (SGI `hole > top`, signed divides by 2 through cdq/sub/sar).
 // C3DVector with the engine's constructors (Ego_r.pdb: X, Y, Z): the user copy constructor makes the 12-byte
 // comparator copy memberwise into the argument area; operator- / GetLengthSquared serve the stand-in below.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CThing {
 public:
     const C3DVector& GetPos() const;                 // 0x004C73D0
@@ -38,7 +33,7 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
         return a;
     C3DVector deltaA = a->GetPos() - Pos;
     C3DVector deltaB = b->GetPos() - Pos;
-    return deltaA.GetLengthSquared() < deltaB.GetLengthSquared() ? a : b;
+    return deltaA.GetSquaredMagnitude() < deltaB.GetSquaredMagnitude() ? a : b;
 }
 #pragma auto_inline(on)
 typedef CThingCompare_Nearest TComp;

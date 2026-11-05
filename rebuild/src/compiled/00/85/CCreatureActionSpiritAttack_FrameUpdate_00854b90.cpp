@@ -1,5 +1,6 @@
 // CCreatureAction_SpiritAttack::FrameUpdate() -- per-frame update of the co-op spirit attack: while the target and the particle emitter are alive, feed the emitter LIGHTNING_START (spirit focal point +0.8 Z) and LIGHTNING_END (target focal point) vector parameters
 // Leaf: ?FrameUpdate@CCreatureAction_SpiritAttack@@EAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH against the TRUE extent (own oracle: Fable.exe 0x00854B90..0x00854DC5, 566 bytes, `ret` at
 //   0x00854DC5, int3 to 0x00854DD0 where ?PerformAction@CCreatureAction_SpiritAttack starts); the catalog/oracle row is a
 //   defective 21-byte span (ends mid-instruction inside the body). Report for a manifest split/recut to 566 bytes.
@@ -29,7 +30,7 @@
 #undef CThingGameObject
 class CCharString;class C3DVector;class C2DVector;class CThing;class CThingPhysical;class CThingCreatureBase;class CThingAICreature;class CThingPlayerCreature;class CThingBuilding;class CTCBase;class CMaterialDef;class CEnvironment;class CEngineGraphic;class CInventoryItem;class CThingDef;class CThingProperties;class CInterpolationInfo;class CEnginePrimitivePrepareInfo;class CPhysicsObject;class CTCParamsBase;class CThingLevelScript;class CThingGameState;class CPhysicsObjectDamage;class CCollisionInfo;class CThingDrawInfo;class CThingDebugDrawInfo;class CThingPhysicalProperties;class CSoundPair;class CAnimationEntry;
 template<class T>class CDefPointer;template<class T>class CArray;namespace std{template<class T>class allocator;template<class T,class A>class vector;}
-class C3DVector;
+#include "engine/C3DVector.h"
 class CCharString;
 class CCreatureAbilityDef;
 class CEditEngineDrawInfo;
@@ -49,7 +50,6 @@ class CThingInfo;
 class CThingPhysical;
 class CThingPhysicalDebugInfo;
 enum ECollideType{};
-class C3DVector{public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}};
 // Layout: native CClass17-byte flattened header, rounded20 when used as a polymorphic base.
 class CClass:public CBaseObject{public:virtual void Save(CCharString&);private:unsigned char _pad_class[sizeof(CClassFields)-sizeof(CBaseObject)];};
 class CThing:public CClass{public:class CSerialiseInfo;

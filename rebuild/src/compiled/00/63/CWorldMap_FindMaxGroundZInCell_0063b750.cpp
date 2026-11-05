@@ -1,5 +1,6 @@
 // CWorldMap::FindMaxGroundZInCell(const C3DVector* cell) const -- highest ground height over the four in-map corner blocks of a cell (0 when none)
 // Leaf: ?FindMaxGroundZInCell@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0063B750, 154 bytes (+ int3 padding), `ret 4`.
 // Identity: Ego_r.pdb `?FindMaxGroundZInCell@CWorldMap@@IBEMPBVC3DVector@@@Z`; callers are the landed
 // FindLastUnblockedGroundPositionAndReportCollision 0x0063D960. Catalog label "CWorldMap_FindMaxGroundZ" is descriptive.
@@ -11,18 +12,8 @@
 // ---- local CWorldMap model (the landed 0x0063A660 GetGroundSizeZAtBlock model: retail offsets and vtable; the PDB
 // header rebuild/include/engine/CWorldMap.h uses 16-byte STL containers where retail STLport vectors are 12 bytes, so it
 // does not fit). Only the vtable up to slot 13 GetDimensions (+0x34) and the out-of-line block queries are needed.
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
-class C2DCoordI { public:
-    long x;
-    long y;
-    C2DCoordI() {}
-    C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
-};
 
 class C2DBoxI { public:
     long TLX;

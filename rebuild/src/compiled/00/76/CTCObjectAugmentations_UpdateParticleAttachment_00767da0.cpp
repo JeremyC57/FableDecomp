@@ -1,5 +1,6 @@
 // CTCObjectAugmentations::UpdateParticleAttachment(CIntelligentPointer<CThing> particle, const CCharString& startPoint, const CCharString& endPoint) -- aim an augmentation particle effect between two points of the owner: read the owner's frame, take each named point from the graphic appearance's helper points (else its dummy objects), put both into a CParticleUpdateParameters block as the START / END vector parameters and hand it to the effect's particle emitter
 // Leaf: ?UpdateParticleAttachment@CTCObjectAugmentations@@AAEXV?$CIntelligentPointer@VCThing@@@@ABVCCharString@@1@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00767DA0, 622 bytes, __fastcall `ret 10h` (the 8-byte by-value CIntelligentPointer<CThing>
 //   plus two CCharString references), frame 0x7C, no EH frame (the by-value pointer and the parameter block die at the end).
 // Identity: Ego_r.pdb / FableWin.pdb name set ?UpdateParticleAttachment@CTCObjectAugmentations@@AAEXV?$CIntelligentPointer@VCThing@@@@ABVCCharString@@1@Z
@@ -138,13 +139,7 @@ class CTCBase;
 class CCharString { public:
     void* PStringData;
 };
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                           // +0x00
     C3DVector Forward;                                      // +0x0C

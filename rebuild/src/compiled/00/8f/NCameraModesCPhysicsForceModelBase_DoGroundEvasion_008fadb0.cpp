@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsForceModelBase::DoGroundEvasion() -- rescans the ground points within 50 units of the camera, sums a 5/distance potential at four samples and returns the gradient, flipped to point down when it points up and with its height change clamped to [-1000, 0]
 // Leaf: ?DoGroundEvasion@CPhysicsForceModelBase@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Length respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FADB0, 446 bytes, `ret 4` (C3DVector by hidden pointer).
 // Callees: the camera manager's (+0xA8) world (+0x74) slot 13 (+0x34, the world map), UpdateScan<const CWorldMap> 0x008FC430,
 //   0x008FA9F0 on Ground (manifest "LinkedList_ClearAndReinit"). Constants: offsets 0x013893AC, 0.1f 0x0122EE58, 5.0f
@@ -12,16 +13,7 @@
 // Layout: retail Ground +0x50 (PDB +0x80), CameraManager +0xA8 (PDB +0xF0).
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double);
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    float Length() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 inline float Magnitude(const C3DVector& v) { return (float)sqrt(v.Z * v.Z + v.Y * v.Y + v.X * v.X); }
 struct SVectorNode { SVectorNode* _M_next; SVectorNode* _M_prev; C3DVector _M_data; };
 extern const C3DVector g_EvasionSampleOffsets[4];  // 0x013893AC: 0, X, Y, Z

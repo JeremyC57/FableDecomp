@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveAnimatedMesh::GetWorldPosition(C3DVector& position) -- the interpolated world position between this frame's start and end positions, using the engine interpolation factor of the primitive's interpolation set; always true
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCEB40, length 146 bytes (`ret 4`).
 // Globals: the engine CEngineInterpolationInfo @ 0x0143B8E0 (112 bytes, the landed StoreToGlobal_0143b8e0 copies into it);
 // InterpolationSetList[set].WFInterpolate is `[set*12 + 0x0143B934]` (list at +0x4C, field +8).
@@ -6,14 +7,7 @@
 // retail-only (no PDB layout for this class here), modelled locally.
 // Shape: the factor is a named float read first (`fld [eax*4+...]` before the differences); `(end - start) * t + start` through the
 // inline C3DVector operators (as the line midpoint 0x00BC7D40), the sum copied into the argument by integer moves.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-};
+#include "engine/C3DVector.h"
 
 struct CEngineInterpolationInfoSet {
     float GTPredictedRenderAt;

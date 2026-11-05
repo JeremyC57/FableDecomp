@@ -1,4 +1,5 @@
 // CAIStateGroup_StayNearFoodHall::Update() -- repeatedly walk to the food hall and wait while cooking
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: 0x00947a30, length 244. Uses the generated CAIStateGroupBase header for the +0x14 base end;
 // local derived members model Position (+0x14) and its intelligent pointer (+0x20), as retail accesses them there.
 // Callees: GetPItem @ 0x00A01B50, IsInWorkHours @ 0x00947840, MoveToPosProximity @ 0x0097E890,
@@ -7,7 +8,7 @@
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
 class CThing;
-class C3DVector { public: float X,Y,Z; C3DVector() : X(0),Y(0),Z(0) {} C3DVector(const C3DVector& v) : X(v.X),Y(v.Y),Z(v.Z) {} };
+#include "engine/C3DVector.h"
 struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*) const; };
 class CThing { public: unsigned char pad0[0x20]; unsigned long flags20; unsigned long flags24; unsigned char pad28[0x1c]; CInterfaceMap interfaces; unsigned char pad4c[0x45]; unsigned char dead; };
 struct CBaseIntelligentPointer { virtual void v00(); void* Handle; CThing* GetPItem(); };

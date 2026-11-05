@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::GetPossibleCollidedWithArea() -- the integer box the body can reach this frame: the position grown by radius + 1 and stretched along the XY velocity, orientation-validated
 // Leaf: GetPossibleCollidedWithArea
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E5370, 258 bytes. CTCPhysicsStandard vtable 0x01265F84 slot 98 (the manifest
 //   label "CTCPhysicsRigidBody" is propagated; the rigid body's own override is 0x00759870, slot 97).
 // Callees: _ftol @ 0x00BFEA70 (four times), C2DBoxI::ValidateOrientationAndFlip() @ 0x00A3A150. Pools: 1.0f 0x0122DED8,
@@ -9,8 +10,7 @@
 // Shape: the reach is radius + 1; each axis extends the low corner by the negative part of the velocity and the high corner by
 //   the positive part. C2DBoxI is TopLeft (minX, maxY) / BottomRight (maxX, minY); filled, validated and returned through the
 //   hidden pointer by the __forceinline memberwise copy (no NRVO).
-class C3DVector { public: float X, Y, Z; };
-class C2DCoordI { public: long X, Y; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;

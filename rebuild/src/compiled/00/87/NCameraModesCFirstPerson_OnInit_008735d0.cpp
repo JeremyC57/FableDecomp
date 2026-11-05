@@ -2,6 +2,7 @@
 // principal axis its flattened, normalised facing, angles zeroed, stick vector copied, fixed radius/height, and a
 // camera cut (old camera = current, SingleCut)
 // Leaf: OnInit
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008735D0, length 183 bytes (padded to 192), `ret`.
 // Callees: NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0 (CameraManager->PObservedThing.GetPItem();
 // labelled _Cons_val), CThing::GetPos() const @ 0x004C73D0 (labelled CVertexBufferWin32::DoSizeof), the thing
@@ -18,12 +19,7 @@
 // cut is an inline manager member (CCamera's implicit assignment, `rep movsd` x 0xE, then SingleCut), which lets
 // `this` live in esi.
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
 };

@@ -1,5 +1,6 @@
 // CPhysicsMesh::GetHelperPointPositionStatic(const CCharString& name, long index) const -- the static (mesh-space) position of the index-th helper point registered under the name
 // Leaf: ?GetHelperPointPositionStatic@CPhysicsMesh@@QBE?AVC3DVector@@ABVCCharString@@J@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6C9C0, 49 bytes (+15 int3), thiscall `ret 0Ch` (hidden C3DVector
 //   result, name, index). Ego_r.pdb `?GetHelperPointPositionStatic@CPhysicsMesh@@QBE?AVC3DVector@@ABVCCharString@@J@Z`.
 // Callee: CVectorMap<CCharString,C3DHelperPoint,CCompareString<C3DHelperPoint> >::LowerBound 0x00A6F290 (landed under the
@@ -19,13 +20,7 @@ public:
 };
 
 #pragma pack(push, 1)
-class C3DVector {                                       // 12 bytes, 1-aligned in retail (GOTCHAS: pack(1))
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class C3DHelperPoint {                                  // 16 bytes

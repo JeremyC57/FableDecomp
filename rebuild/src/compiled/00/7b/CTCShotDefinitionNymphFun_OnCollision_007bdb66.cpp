@@ -1,4 +1,5 @@
 // CTCShotDefinitionNymphFun::OnCollision(ECollideType type, const C3DVector& pos, const C3DVector& normal, CThing* other) -- on the first hit by a live shooter with the trap-spawner component (TC 0xF5), spawn its trap object at the hit point (on a live terrain-snapping thing: at that thing, raised one unit and dropped onto the ground below), make the shooter and its summons immune to the trap, trigger it, and mark the shot spent; then the base collision
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0) re-padded by-value maps +8.
 // Naming wave 18: the interface-presence stand-in CTCBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe @ 0x007BDB66, 406 bytes (frame-pointer, `leave ; ret 0x10`; unaligned entry = /Os TU).
@@ -9,10 +10,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 class CCharString { public:
     void* m_data;

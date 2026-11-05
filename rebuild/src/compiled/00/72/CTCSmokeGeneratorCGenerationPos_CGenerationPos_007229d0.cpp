@@ -1,5 +1,6 @@
 // CTCSmokeGenerator::CGenerationPos::CGenerationPos(const CGenerationPos& other) -- copy constructor of a smoke generator's emission position: the 3D Pos (three dwords), then the intelligent PEmitter thing pointer
 // Leaf: ??0CGenerationPos@CTCSmokeGenerator@@QAE@ABV01@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007229D0, 65 bytes, __fastcall `ret 4`, returns `this`.
 // Identity (label correction): the catalog's "pair<long,CIntelligentPointer<CThing> >" is propagated across byte-identical
 //   bodies (a pair<long, ...> would hold the pointer at +4). The body copies three dwords and then a
@@ -27,13 +28,7 @@ public:
     CIntelligentPointer(const CIntelligentPointer<T>& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
 };
 
-class C3DVector {
-public:
-    float X;                                            // +0x00
-    float Y;                                            // +0x04
-    float Z;                                            // +0x08
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CTCSmokeGenerator {
 public:

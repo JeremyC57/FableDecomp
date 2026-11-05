@@ -2,6 +2,7 @@
 // Native 0x00692F30 size244; donor vectors/maps16 versus native12 account for tail difference.
 // Authentic polymorphic base and typed pointer destructors; no substitute vtable slots.
 // Leaf: GetPrecedingAction
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define CCreatureActionBase CCreatureActionBase_PDB
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
@@ -12,7 +13,7 @@
 #include "engine/CThingCreatureBase.h"
 #undef CThingCreatureBase
 class CTCWeaponTrail;
-class C3DVector { public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CThing;
 class CTCCarrying { public:CThing* GetThingInPrimarySlot()const;}; //0x006A1440
 class CTCBase;

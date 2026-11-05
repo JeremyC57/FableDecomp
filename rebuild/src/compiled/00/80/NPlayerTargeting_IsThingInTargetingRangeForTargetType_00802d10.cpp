@@ -1,6 +1,7 @@
 // NPlayerTargeting::IsThingInTargetingRangeForTargetType(const CThing& thing, const CThing& target, unsigned long type) -- true when the target lies inside the thing's targeting range for that target type (2D distance, range from the thing's targeting sub-def and its primary-slot weapon)
 // Grade: RELOCATION_MATCH (via differ/00802d10.verify.cpp) -- CDefPointer(ENullDef) landed in engine/CDefPointer.h 2026-10-31. Levers: shared CDefPointer/CDefClassBase headers, CThing::GetPBaseDef() by value (FableWin), same-TU noinline GetSubDef<CTargetingDef> body (0x007EA960, the template body) so def's address does not escape and retail's register-cached def pointer follows
 // Leaf: ?IsThingInTargetingRangeForTargetType@NPlayerTargeting@@YI_NABVCThing@@0K@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00802D10, 231 bytes (+ int3 padding), __fastcall (thing in ecx, target in
 //   edx, type on the stack, `ret 4`), bool in al. Caller: 0x006AA996.
 // Name: Ego_r.pdb `?IsThingInTargetingRangeForTargetType@NPlayerTargeting@@YI_NABVCThing@@0K@Z` (the catalog label is the
@@ -22,11 +23,7 @@
 #include "engine/CDefClassBase.h"
 #include "engine/CDefPointer.h"                             // CDefPointer(ENullDef) landed in the header 2026-10-31
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
-inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+#include "engine/C3DVector.h"
 
 class CTargetingDef : public CDefClassBase {               // RTTI .?AVCTargetingDef@@
 public:

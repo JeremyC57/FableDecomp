@@ -1,4 +1,5 @@
 // CPhysicsMesh::GetPointIntersectionFromTo(const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) -- bounding-box pre-test, then the segmentation or the full-collision intersection
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A18760, length 95 bytes.
 // Identity: Ego_r.pdb `?GetPointIntersectionFromTo@CPhysicsMesh@@QBE_NABVC3DVector@@0AAVCMeshIntersectionData@@@Z`
 // (and the callees' mangled names: HasBoundingBoxIntersectedFromTo `QBE_NMABVC3DVector@@0@Z`, the
@@ -14,14 +15,7 @@
 // body is written out below and reproduces 0x00A17690 byte for byte (centre via an inline GetCentre()).
 // Layout: Ego_r.pdb CPhysicsMesh BoundingBox (C3DBoundingBox MinCoord/MaxCoord) sits at +0xA0 and RootSegment at +0xD0;
 // retail reads them at +0x84 / +0xB4 (0x1C smaller ahead of them), so the class is modelled locally.
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() {}
-    C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(x + v.x, y + v.y, z + v.z); }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(x - v.x, y - v.y, z - v.z); }
-    C3DVector operator*(float f) const { return C3DVector(x * f, y * f, z * f); }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector MinCoord, MaxCoord;
     C3DVector GetCentre() const { return (MinCoord + MaxCoord) * 0.5f; }
@@ -50,12 +44,12 @@ __declspec(noinline) bool CPhysicsMesh::HasBoundingBoxIntersectedFromTo(float to
     C3DVector centre = BoundingBox.GetCentre();
     C3DVector half = (BoundingBox.MaxCoord - BoundingBox.MinCoord) * 0.5f;
     C3DVector delta = to - from;
-    float dx = (float)fabs(delta.x) + 50.0f;
-    float dy = (float)fabs(delta.y) + 50.0f;
-    if (from.x - tolerance - dx < centre.x + half.x &&
-        from.y - tolerance - dy < centre.y + half.y &&
-        dx + from.x + tolerance > centre.x - half.x &&
-        dy + from.y + tolerance > centre.y - half.y)
+    float dx = (float)fabs(delta.X) + 50.0f;
+    float dy = (float)fabs(delta.Y) + 50.0f;
+    if (from.X - tolerance - dx < centre.X + half.X &&
+        from.Y - tolerance - dy < centre.Y + half.Y &&
+        dx + from.X + tolerance > centre.X - half.X &&
+        dy + from.Y + tolerance > centre.Y - half.Y)
         return true;
     return false;
 }

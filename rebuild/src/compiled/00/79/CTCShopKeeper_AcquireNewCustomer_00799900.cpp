@@ -1,5 +1,6 @@
 // CTCShopKeeper::AcquireNewCustomer() -- look for the nearest potential customer in the 30m square around the keeper (nearest to the shop); latch it as the current customer and remember it, else when nobody (not even an existing shopper) is around, empty the customer list
 // Leaf: ?AcquireNewCustomer@CTCShopKeeper@@QAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799900, 351 bytes (plain `ret`).
 // Callees: CTCShopKeeper::GetShopTC 0x00798F50; CThing::GetPos 0x004C73D0 (x2); __ftol2 0x00BFEA70 (x2);
 //          CThingFilter_IsPotentialCustomer(CTCShopKeeper*, bool) 0x00799D80 (x2); CTCBase::GetThingSearchTools 0x00686D90;
@@ -13,10 +14,7 @@
 // Shape: the shop position is a named copy taken before the keeper's own position; the box is a named C2DBoxI built from
 //          two truncated coordinates (+/-15); the best-thing result is ignored and the out pointer latched through a
 //          temporary; the by-value AddNewCustomer argument is copy-constructed in its stack slot.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
-};
+#include "engine/C3DVector.h"
 class CBaseObject;
 class CThing { public:
     const C3DVector& GetPos() const;          // 0x004C73D0

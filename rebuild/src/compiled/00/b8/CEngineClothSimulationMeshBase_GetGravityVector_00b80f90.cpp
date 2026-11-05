@@ -1,5 +1,6 @@
 // CEngineClothSimulationMeshBase::GetGravityVector() const -- the simulation manager's gravity scaled by the cloth gravity factor, rotated into the mesh's local space
 // Leaf: ?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B80F90, 69 bytes, thiscall, `ret 4` (C3DVector returned through the hidden pointer).
 // Identity (proven): slot 1 of vtable 0x012A3924 (RTTI .?AVCEngineClothSimulationMeshBase@@); Ego_r.pdb
 //   ?GetGravityVector@CEngineClothSimulationMeshBase@@UBE?AVC3DVector@@XZ (the catalog row already carries it).
@@ -12,13 +13,7 @@
 //   line with auto_inline(off) as in retail).
 #include "engine/CEngineSimulationManager.h"
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 {
 public:

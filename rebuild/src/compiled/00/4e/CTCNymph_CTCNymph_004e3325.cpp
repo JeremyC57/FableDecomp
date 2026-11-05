@@ -1,5 +1,6 @@
 // CTCNymph::CTCNymph(CThing* thing) -- CTCBase(thing), own vtable, null def, an empty flight spline (tension 0.5), null effect/old-effect/target pointers
 // Leaf: ??0CTCNymph
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E3325, length 97 bytes (`ret 4`; size TU, odd start). Vtable 0x01242AD4 (CTCNymph).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800 (catalog "CEngineSubPrimitive2DClockSprite" is propagated),
@@ -33,7 +34,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
     CIntelligentPointerCreature() { }
 };
 #pragma pack(pop)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 template <class T> struct CAllocator { CAllocator() { } };
 template <class T> struct CAllocProxy : CAllocator<T> {
     long m_capacity;

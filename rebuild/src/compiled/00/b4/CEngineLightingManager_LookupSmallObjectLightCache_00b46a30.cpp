@@ -1,6 +1,7 @@
 // CEngineLightingManager::LookupSmallObjectLightCache(float x, float y, long layerMask) -- the cached light array of the 4x4 world cell under a small object: floor the cell indices, reject cells outside the 64x64 grid, and fill an empty cell once with the lights in the cell's 6-unit-square column
 // Grade: RELOCATION_MATCH (350 bytes; parked 322v350): the box constructor ASSIGNS its members (`{ MinCoord = minCoord; MaxCoord = maxCoord; }` over a default C3DVector ctor) instead of member-initialising them, so VC7.1 keeps both C3DVector temporaries (frame 0x40, max at [ebp-28h] after min at [ebp-1Ch]) and copies them member-wise through edx/eax, exactly as retail
 // Leaf: ?LookupSmallObjectLightCache@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@MMJ@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail-asm: 0x00B46A56..0x00B46A70 and 0x00B46A93..0x00B46AAD `fld [ebp-0Ch] ; fsub [ebp-8] ; fistp dword ptr [ebp+8] ; fild [ebp+8] ; fadd [ebp-4] ; fstp [ebp-10h] ; mov eax,[ebp-0Ch] ; cmp eax,[ebp-10h] ; jne ; inc dword ptr [ebp+8]` -- two expansions of the engine's inline-assembly floor helper GFFloatToLongFloor (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; inc dword ptr` in one 10-instruction block; standalone copy landed at 0x0048D940). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si); the results are read back by C++ after each block.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongFloor.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B46A30, length 350 bytes, ebp frame, `ret 0Ch`.
@@ -18,12 +19,7 @@
 #include "engine/CEngineLightingManager.h"
 #undef CEngineLightingManager
 
-class C3DVector { public:
-    float X, Y, Z;
-    __forceinline C3DVector() { }
-    __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector MinCoord;
     C3DVector MaxCoord;

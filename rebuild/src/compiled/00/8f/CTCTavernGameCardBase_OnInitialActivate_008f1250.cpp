@@ -1,5 +1,6 @@
 // CTCTavernGameCardBase::OnInitialActivate() -- find the owner's free "DUMMY_OBJECT_GAME_POSITION" named action point (position, frame, index) through its named-action-points component, then the tavern-game activation
 // Leaf: ?OnInitialActivate@CTCTavernGameCardBase
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe @ 0x008F1250, 119 bytes; vtable slot 6 (the catalog's "vfunc_6" = CTCBase::OnInitialActivate) of both
 //         CTCTavernGameCardSorting (0x0126F5B4) and CTCTavernGameCardPairs (0x0126F6FC), body in the card-base TU, so the
@@ -14,7 +15,7 @@
 // Shape: `T* p = 0; GetInterface(&p, 46)` preloads the zero in edi; the CCharString argument has a declared copy ctor so
 //        it is constructed in place (`push ecx ; mov ecx,esp`).
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 
 class CCharString { public:

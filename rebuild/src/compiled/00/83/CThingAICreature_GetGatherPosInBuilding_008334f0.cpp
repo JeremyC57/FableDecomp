@@ -1,6 +1,7 @@
 // CThingAICreature::GetGatherPosInBuilding(CIntelligentPointer<const CThingBuilding> building) -- the building's GATHER_POSITION helper point, else (creature has navigation) the building position when navigable, the nearest navigable position within the building's physics radius, or the first navigable cell of an 11x11 half-unit grid around it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008334F0, length 543 bytes (`ret 0xC`: hidden return + the 8-byte by-value pointer).
 // Leaf: ?GetGatherPosInBuilding@CThingAICreature@@QBE?AVC3DVector@@V?$CIntelligentPointer@$$CBVCThingBuilding@@@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Name: Ego_r.pdb donor order IsMessageEventWithinSightRange / ...HearingRange / GetSleepTimes / GetGatherPosInBuilding
 //   matches retail 0x00833230 / 0x008332E0 / 0x00833390 (all landed) / 0x008334F0; the PDB signature (const, C3DVector by
@@ -23,14 +24,7 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 class CTCBase;
 

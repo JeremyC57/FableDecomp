@@ -1,4 +1,5 @@
 // CTCCarryable::vfunc_6() -- take the carry offset from the thing's carryable def and normalise it when it is not (nearly) zero
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 //
 // Retail 0x00705C30, 137 bytes (plain `ret`). Vtable 0x0123B35C (CTCCarryable) slot 6.
@@ -15,11 +16,7 @@
 // right after the call and released by hand at the end (null test, `dec [edi+4] ; jne`). The
 // vector is the implicit C3DVector assignment, then the landed GetLengthSquared > eps*eps test
 // (0x008059F0 form).
-class C3DVector { public:
-    float X, Y, Z;
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    C3DVector& AccurateNormalise();                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C (0.0001f)
 
 class CDefPointeeBase { public:
@@ -70,7 +67,7 @@ void CTCCarryable::vfunc_6()
     if (found)
     {
         OffsetCoordRelativeToAttachToDummy = def->OffsetCoordRelativeToAttachToDummy;
-        if (OffsetCoordRelativeToAttachToDummy.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
+        if (OffsetCoordRelativeToAttachToDummy.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             OffsetCoordRelativeToAttachToDummy.AccurateNormalise();
     }
     if (def && --def->m_refCount == 0)

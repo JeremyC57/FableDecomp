@@ -1,5 +1,6 @@
 // CEngineClothSimulationAnimatedMesh::Render(const C3DPrimitive2& primitive, const CEngineSubPrimitiveAnimatedMesh& subPrimitive, const C3DMesh2& mesh, const C3DAnimationBlendState& blendState1, const C3DAnimationBlendState& blendState2, float blend, const CMatrix3x4& transform, ERenderPassType passType) -- render every cloth simulation of an animated mesh: fade it out by the distance of the transformed mesh bounding-sphere centre, interpolate the particle program's animated render positions (both blend states, the owner's animation manager, bone scalings and bone transformations) into the cloth renderer's position buffer, then hand the simulation and its cloth primitive to the cloth renderer
 // Leaf: ?Render@CEngineClothSimulationAnimatedMesh@@UAEXABVC3DPrimitive2@@ABVCEngineSubPrimitiveAnimatedMesh@@ABVC3DMesh2@@ABVC3DAnimationBlendState@@3MABVCMatrix3x4@@W4ERenderPassType@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitude replaced by the header GetMagnitude (same computation).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B814B0, length 397 bytes, `ret 20h`; byte-identical to the 2D sibling 0x00B81640
 //   except the final cloth-renderer call (RenderClothPrimitive here, Render2DClothPrimitive there).
@@ -30,15 +31,7 @@
 #include "engine/CParticleProgram.h"
 #undef CParticleProgram
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetMagnitude() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 class C4DVector { public: float X, Y, Z, W; };
 class CMatrix4x4;
 class C3DMesh2;

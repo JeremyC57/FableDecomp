@@ -1,12 +1,13 @@
 // NUISystem::CMesh::GetDataFromDef() -- copy mesh rendering properties from its referenced UI definition
 // Leaf: GetDataFromDef
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail005500B0,210 bytes ending ret00550181;14 following int3 bytes excluded.
 // Propagated CScrollingViewport owner is wrong: callers00550190/005501E0 install CMesh
 // RTTI primary01249F9C, then call this. No CMesh/CUIDef/vector shared headers exist.
 // Donor CMesh fields+18c shift48 bytes to retail+15c; CUIDef vectors shrink from16 to12.
 // GetDef virtual108 returns one-pointer CDefPointer; final refcount+4 invokes Destroy slot1.
 namespace NUISystem {
-struct C3DVector { float X,Y,Z; C3DVector() {} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z) {} };
+#include "engine/C3DVector.h"
 struct CRightHandedSet { C3DVector Up,Forward; CRightHandedSet() {} void Set(const C3DVector& up,const C3DVector& forward) {Up=up;Forward=forward;} };
 struct CUIDefView {
     virtual ~CUIDefView() {}

@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveParticleMesh::GetWorldPosition(C3DVector& position) -- the translation row of the object transform; always true
 // Leaf: ?GetWorldPosition@CEngineInternalPrimitiveParticleMesh@@UAE_NAAVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BC25B0, 54 bytes, thiscall, `ret 4`.
 // Identity (proven): slot 15 of vtable 0x012A6184 (RTTI .?AVCEngineInternalPrimitiveParticleMesh@@); Ego_r.pdb
 //   ?GetWorldPosition@CEngineInternalPrimitiveParticleMesh@@UAE_NAAVC3DVector@@@Z (the catalog row already carries it);
@@ -9,13 +10,7 @@
 //   on it (Header debt).
 // Shape: `position = ObjectTransform.GetTranslation();` -- FableWin.pdb ?GetTranslation@CMatrix3x4@@QBE?AVC3DVector@@XZ,
 //   inline, returning a C3DVector by value: the 12-byte frame temporary is built and then copied into the reference.
-class C3DVector {
-public:
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 {
 public:

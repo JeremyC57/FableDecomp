@@ -1,5 +1,6 @@
 // CTCSpecialAbilities::CalculateWeaponState(CThingCreatureBase& creature) -- which weapon pose a spell cast uses: unarmed with nothing (alive) in the primary carrying slot, armed when the held thing is not the active ranged weapon, else the bow pose unless the ranged weapon's type is 4 (armed)
 // Leaf: ?CalculateWeaponState@CTCSpecialAbilities@@SI?AW4EWEAPON_STATE@1@AAVCThingCreatureBase@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000); the local same-TU LowerBound bodies removed (the header defines the same-TU noinline bodies); the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072B940, 247 bytes, static __fastcall (ecx = creature), plain `ret`.
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?CalculateWeaponState@CTCSpecialAbilities@@SI?AW4EWEAPON_STATE@1@AAVCThingCreatureBase@@@Z
 //   (Ego_r donor 0x00742E70, a static __fastcall member of CTCSpecialAbilities returning the nested EWEAPON_STATE); the landed
@@ -20,81 +21,13 @@ class CTCBase;
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 enum EWeaponType { EWeaponType_Force32 = 0x7fffffff };   // value 4 is the one ranged type posed as armed (descriptive)
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc> class vector {           // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    iterator end() { return this->_M_finish; }
-    const_iterator end() const { return this->_M_finish; }
-};
-template <unsigned int _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static unsigned int _S_whichword(unsigned int __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(unsigned int __pos) { return 1UL << (__pos % 32); }
-    _WordT _M_getword(unsigned int __pos) const { return _M_w[_S_whichword(__pos)]; }
-};
-template <unsigned int _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    typedef _Base_bitset<(_Nb + 31) / 32> _Base;
-    bool _Unchecked_test(unsigned int __pos) const { return (this->_M_getword(__pos) & _Base::_S_maskbit(__pos)) != 0; }
-    bool operator[](unsigned int __pos) const { return _Unchecked_test(__pos); }
-};
-}   // namespace std
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                            // +0x00
-    TCompare           Compare;                         // +0x0C
-    bool               Dirty;                           // +0x0D
-    value_type* LowerBound(const K& key);               // 0x0040F020
-    const value_type* LowerBound(const K& key) const;   // 0x004365B0
-};
 // Same-TU bodies of the two real retail LowerBound instances (binary search over the sorted pairs), not inlined: they let the
 // three inlined lookups share one key frame word with the uninitialised inventory local, as retail does.
 #pragma auto_inline(off)
-template <class K, class V, class TCompare>
-__declspec(noinline) const typename CVectorMap<K, V, TCompare>::value_type* CVectorMap<K, V, TCompare>::LowerBound(const K& key) const
-{
-    const value_type* it = Data._M_start;
-    long count = Data._M_finish - Data._M_start;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].first < key) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-template <class K, class V, class TCompare>
-__declspec(noinline) typename CVectorMap<K, V, TCompare>::value_type* CVectorMap<K, V, TCompare>::LowerBound(const K& key)
-{
-    value_type* it = Data._M_start;
-    long count = Data._M_finish - Data._M_start;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].first < key) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
 #pragma auto_inline(on)
 
 class CThing {                                          // partial view, retail offsets
@@ -111,14 +44,14 @@ public:
         ETCInterfaceType key = type;
         const TCMap* map = &Components;
         const TCMap::value_type* it = map->LowerBound(key);
-        return (const T*)((it == map->Data.end() || type < it->first) ? map->Data.end() : it)->second;
+        return (const T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     template <class T> __forceinline T* GetTC(ETCInterfaceType type)
     {
         ETCInterfaceType key = type;
         TCMap* map = &Components;
         TCMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->Data.end() || type < it->first) ? map->Data.end() : it)->second;
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
 };
 class CThingCreatureBase : public CThing { };

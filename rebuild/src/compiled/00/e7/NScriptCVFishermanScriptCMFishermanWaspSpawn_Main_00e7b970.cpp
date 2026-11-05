@@ -1,5 +1,6 @@
 // NScript::CV_FishermanScript::CM_FishermanWaspSpawn::Main() -- wait for intro and spawn wasp unless saved or thread terminating
 // Leaf: ?Main@CM_FishermanWaspSpawn@CV_FishermanScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native00E7B970 length198. String verified through NUL; script definition field598.
 // Naming wave 35: identity reg 00e7b58d "M_FishermanWaspSpawn" in 00e7b4e0; Alloc 00e7b890; vtable 012ea0d0 slot 1; PDB ?Main@CM_FishermanWaspSpawn@CV_FishermanScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_FishermanWaspSpawn::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_FishermanWaspSpawn@CV_FishermanScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CM_FishermanWaspSpawn@@UAEXXZ`; this source now defines the PDB member (outer stand-in CV_FishermanScript moved into NScript); same bytes.
@@ -22,7 +23,7 @@ typedef unsigned __int64 ScriptUID;
 #else
 typedef unsigned long long ScriptUID;
 #endif
-class C3DVector { public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CScriptGameResourceObjectScriptedThingBase;
 class CCharString { public:char* Data; CCharString(const char*,long=-1); CCharString(const CCharString&); ~CCharString();}; // 0099EBF0/0099EAE0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

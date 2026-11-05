@@ -1,8 +1,9 @@
 // CAIStateGroup_FlyingThingBase::GetRandomFlightPos(const C3DVector&,float,C3DVector*,bool) -- find a same-region wander position and raise it above local and ground heights.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00912700,309 bytes. Shared Base/Brain storage; FlyingThingBase absent from active headers. Final bool argument is unused by retail.
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-class C3DVector { public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 struct CNavigationMethods {unsigned long GetNavigatorType();void SetNavigatorToType(unsigned long);bool GetNearbyWanderPosition(const C3DVector&,float,C3DVector*,bool);}; //006CB6A0,006CBA80,006CB6E0
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

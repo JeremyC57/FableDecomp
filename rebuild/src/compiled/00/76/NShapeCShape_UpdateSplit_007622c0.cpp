@@ -1,5 +1,6 @@
 // NShape::CShape::UpdateSplit() -- when two points are selected insert their midpoint into the shape point list
 // Leaf: ?UpdateSplit@CShape@NShape@@QAE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 // Shape: the insertion position is a named iterator seeded with the last selected point and replaced by the first when it
 //   sits further along (`mov ebp,ecx` into the second point's register; FableWin locals list an insertion iterator), and the
@@ -8,15 +9,7 @@
 #include <stdlib.h>
 extern "C" void* __cdecl memmove(void*,const void*,unsigned int);
 // Layout: C3DVector original PDB0x2783, public X0 Y4 Z8; 12-byte retail stride.
-class C3DVector{public:float X,Y,Z;
- C3DVector(){}
- C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
- C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}
- const C3DVector&operator+=(const C3DVector&v){X+=v.X;Y+=v.Y;Z+=v.Z;return *this;}
- const C3DVector&operator*=(float f){X*=f;Y*=f;Z*=f;return *this;}
- const C3DVector operator+(const C3DVector&v)const{return C3DVector(X+v.X,Y+v.Y,Z+v.Z);}
- const C3DVector operator*(float f)const{return C3DVector(X*f,Y*f,Z*f);}
-};
+#include "engine/C3DVector.h"
 namespace std{
 template<class T>class allocator{};
 template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};

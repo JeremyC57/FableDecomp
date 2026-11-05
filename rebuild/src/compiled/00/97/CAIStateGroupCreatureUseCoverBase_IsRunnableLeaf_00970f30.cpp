@@ -1,5 +1,6 @@
 // CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf() -- after a failed cover search wait 8 seconds or 15 units of movement; then gather the cover things: none records the failure here, otherwise filter them into the retained cover handles
 // Leaf: ?IsRunnableLeaf@UseCoverMethods@@QAE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared2D respelled GetSquaredMagnitude2D (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Model: the landed sibling RefreshCoverList 0x009710D0 (same TU). Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (retail
@@ -9,13 +10,7 @@
 #include <stdlib.h>
 #include "engine/CAIStateGroup_CreatureUseCoverBase.h"
 inline void* operator new(size_t,void* p){return p;}
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared2D() const { return X * X + Y * Y; }
-};
+#include "engine/C3DVector.h"
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingRetail : public CThing { public:  };   // 0x004C73D0
 struct CAIBrainRetail { unsigned char _pad[0x18]; CThingRetail* Creature; };   // +0x18
@@ -65,7 +60,7 @@ bool UseCoverMethods::IsRunnableLeaf(){
   C3DVector offset=RetailFailedToFindCoverAt()-GetCreature()->GetPos();
   long framesPerSecond=GetWorld().GetFramesPerSecond();
   long seconds=(CWorld::GetFrame()-RetailFailedTime())/framesPerSecond;
-  if(offset.GetLengthSquared2D()<225.0f&&seconds<8)return false;
+  if(offset.GetSquaredMagnitude2D()<225.0f&&seconds<8)return false;
   RetailFailedToFindCover()=false;
  }
  CThingVector things;

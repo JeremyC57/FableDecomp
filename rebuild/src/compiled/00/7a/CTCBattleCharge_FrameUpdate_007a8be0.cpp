@@ -1,6 +1,7 @@
 // CTCBattleCharge::FrameUpdate() -- per frame: on release finish the current action, play the level's cast sound and create the start-up effect; while the pose delay runs count it down, otherwise rush on; once the pose delay is over leave the exit modes once (release the ability mutex, resume an AI creature, drop creature mode 0x23, unfreeze a hero's controls) and remove the component when an AI creature charges or the charge delay has run out
 // Grade: RELOCATION_MATCH over the true extent (576 bytes; BOUNDS_FIX: the catalog row 617 runs into 0x007A8E20) -- the parked source unchanged, graded over code + `mov edi,edi` + the 4-entry jump table
 // Leaf: ?FrameUpdate@CTCBattleCharge@@UAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A8BE0, 558 bytes of code + `mov edi,edi` + a 4-entry jump table = 576 bytes, `ret`;
 //   the catalog row (617) runs on into 0x007A8E20 (`mov eax,ecx ; mov ecx,[esp+4] ; mov [eax],ecx ; ret 4`), 0x007A8E30
@@ -17,57 +18,9 @@
 //   CTCBattleCharge 0xA8.
 // Layout: Ego_r.pdb CTCBattleCharge (PDB less 4 after the 12-byte PeopleHit vector, as the landed CTCBattleCharge rows);
 //   CThing Type +0x10, UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0. No engine header for CTCBattleCharge.
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    iterator end() { return this->_M_finish; }
-};
-template <unsigned int _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static unsigned int _S_whichword(unsigned int __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(unsigned int __pos) { return 1UL << (__pos % 32); }
-};
-template <unsigned int _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    struct reference {
-        typedef _Base_bitset<(_Nb + 31) / 32> _Bitset_base;
-        unsigned long* _M_wp;
-        unsigned int _M_bpos;
-        reference(bitset<_Nb>& __b, unsigned int __pos)
-        {
-            _M_wp = &__b._M_w[_Bitset_base::_S_whichword(__pos)];
-            _M_bpos = __pos % 32;
-        }
-        ~reference() { }
-        operator bool() const { return (*(_M_wp) & _Bitset_base::_S_maskbit(_M_bpos)) != 0; }
-    };
-    reference operator[](unsigned int __pos) { return reference(*this, __pos); }
-};
-}   // namespace std
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T> { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                                  // +0x00
-    TCompare           Compare;                               // +0x0C
-    bool               Dirty;                                 // +0x0D
-    value_type* LowerBound(const K& key);                     // 0x0040F020 for the TC map
-};
 
 enum ETCInterfaceType { };                                  // values used as casts (0x10, 0x31, 0xA7, 0xA8)
 enum EHeroAbility { };                                      // 12 = battle charge (UseSpecialAbility jump table)
@@ -98,8 +51,8 @@ class CThing { public:                                      // partial view, ret
         if (UsingComponents[T::INTERFACE_TYPE]) {
             TCMap* map = &Components;
             TCMap::value_type* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
-            if (it == map->Data.end() || T::INTERFACE_TYPE < it->first)
-                it = map->Data.end();
+            if (it == map->end() || T::INTERFACE_TYPE < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

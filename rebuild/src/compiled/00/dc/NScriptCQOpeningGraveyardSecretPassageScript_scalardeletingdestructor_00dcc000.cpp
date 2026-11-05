@@ -1,5 +1,6 @@
 // NScript::CQ_OpeningGraveyardSecretPassageScript::scalar deleting destructor(flags) -- destroy original string-array members and optionally free the object.
 // Leaf: ??_GCQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Grade: RELOCATION_MATCH -- built without /EHsc like the landed rows of this script TU (0x00DC3E50, 0x00DC3EE0,
 //   0x00DC4500 carry no Flags line): the implicit dtor then inlines (eh vector destructor iterator over the CCharString
@@ -25,9 +26,8 @@ class CCharStringData;class CCharString{public:CCharString();CCharString(const C
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
 
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};

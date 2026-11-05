@@ -1,5 +1,6 @@
 // CEngineInternalPrimitive2DAnimatedMesh::GetTransformFrameStart(CMatrix3x4& transform) const -- the object matrix at the start of the frame: the start orientation re-orthogonalised and normalised, CalcObjectMatrix at the start position with a scale of the mesh bounding radius / 100, then rotated -90 degrees about X (Y-up to Z-up); always true
 // Leaf: GetTransformFrameStart
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BCF760, 464 bytes, `ret 4`. Ego_r.pdb:
 //   ?GetTransformFrameStart@CEngineInternalPrimitive2DAnimatedMesh@@UBE_NAAVCMatrix3x4@@@Z (virtual, const).
 // Callees: CRightHandedSet::MakePerpendicular 0x00A22E10, C3DVector::AccurateNormalise @ 0x00A14440 (x2; the manifest's "GetScaled" is
@@ -16,12 +17,7 @@
 //   (CSE'd across a row, one spilled to the dead argument slot) and turns `+ y * -1.0f` into `- y * 1.0f`.
 #include "engine/CEngineInternalPrimitive2DAnimatedMesh.h"
 #include "engine/C3DMeshInfo.h"
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector& AccurateNormalise();                              // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c

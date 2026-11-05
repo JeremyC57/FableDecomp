@@ -1,14 +1,12 @@
 // CCreatureAction_SpiritHitResponse::CCreatureAction_SpiritHitResponse(CThingCreatureBase*, const C3DVector*) -- base CCreatureActionBase(owner, zeroed CSoundPair, 0, 0), own vtable (0x01275B34), the hit direction at +0xa8 copied from the pointer argument
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00854610, length 80 bytes.
 // Callees: CCreatureActionBase::CCreatureActionBase(CThingCreatureBase*, const CSoundPair&, long, long) @ 0x00693C70.
 // Shape: the sound pair is zeroed by its inline constructor (register-zeroed stack stores; the two zero arguments come from the
 // same register); the pointer argument is loaded after the base call, the three floats copied one register each after the vtable
 // store (init-list member after the base; the memberwise copy constructor gives one register per dword, a POD would go through a re-based pointer). Retail CCreatureActionBase is 0xa8 bytes (PDB 0xb4): `this` is modelled locally. `ret 8`.
 class CThingCreatureBase;
-class C3DVector { public:                          // memberwise user copy constructor: retail copies one register per dword
-    float x, y, z;
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
-};
+#include "engine/C3DVector.h"
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
     long FirstSound;
     long LastSound;

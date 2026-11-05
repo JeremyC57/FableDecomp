@@ -1,5 +1,6 @@
 // CThingCreatureBase::IsThingInFrontCone(const CThing* thing) const -- true when the direction to the other thing lies within 20 degrees of this thing's physics facing (normalised dot product against cos 20 degrees)
 // Leaf: ?IsThingInFrontCone@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation); local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00661D70, 256 bytes (248 without padding), thiscall `ret 4`, bool in al. No code or data
 //   reference to it was found in Fable.exe (an unreferenced member of the CThingCreatureBase TU 0x0066xxxx).
@@ -24,20 +25,8 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline void Normalise()
-    {
-        float inv = FastInvSqrt(X * X + Y * Y + Z * Z);
-        X *= inv;
-        Y *= inv;
-        Z *= inv;
-    }
-};
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/C3DVector.h"
 __forceinline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 
 class CTCPhysicsBase {

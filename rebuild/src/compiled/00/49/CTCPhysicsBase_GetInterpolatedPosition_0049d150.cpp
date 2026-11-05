@@ -1,5 +1,6 @@
 // CTCPhysicsBase::GetInterpolatedPosition(float t) -- OldPosition + (Position - OldPosition) * t, returned by value
 // Leaf: GetInterpolatedPosition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049D150, length 84 bytes; 7 callers (0x0049DB74, 0x00663E12, 0x006A1B50, ...).
 // The chunk label "CTCPhysicsStandard::GetFacingVector" is a propagated BSim name: the operands are CTCPhysicsBase::Position
 // (+0x0c) and OldPosition (+0x18) (Ego_r.pdb), the same interpolation GetFacingVector 0x00723C20 does on RHSet.Forward.
@@ -8,14 +9,7 @@
 // `fld b ; fsub a` x3 (the difference temporary, Z spilled), `fmul t` per component (the scaled temporary, X/Y spilled), then
 // `fld scaled ; fadd a` x3 straight into the hidden result (operator+ with the scaled vector on the LEFT: `(b - a) * t + a`).
 // engine/CTCPhysicsBase.h is a flattened POD without virtuals, so the class is modelled locally with the same offsets.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     virtual void v00();

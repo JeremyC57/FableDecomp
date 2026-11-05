@@ -1,5 +1,6 @@
 // std::vector<CSoundBankEntry>::push_back(const CSoundBankEntry& x) -- STLport push_back of a 36-byte (key, sound-bank record) entry: copy-construct at finish and advance, else grow through _M_insert_overflow
 // Leaf: ?push_back@?$vector@U?$pair@JVCSoundBankRecord@@@std@@
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009936E0, length 69 bytes (+ int3 padding), `ret 4`.
 // Callees: the implicit CSoundBankRecord copy constructor out of line @ 0x009922F0 (landed as SRecord::SRecord),
 // std::vector<CSoundBankEntry>::_M_insert_overflow(pos, x, __false_type, 1, true) @ 0x00993310.
@@ -50,20 +51,7 @@ public:
     ~CSoundBankRecord();                        // 0x00992510
 };
 
-namespace std {
-
-struct __false_type { __false_type() { } };
-struct random_access_iterator_tag { random_access_iterator_tag() { } };
-
-template <class T1, class T2> struct pair {
-    typedef T1 first_type;
-    typedef T2 second_type;
-    T1 first;                                   // +0x00
-    T2 second;                                  // +0x04
-    pair(const T1& a, const T2& b) : first(a), second(b) { }
-};
-
-}   // namespace std
+#include "engine/CVectorMap.h"
 
 typedef std::pair<long, CSoundBankRecord> CSoundBankEntry;     // 0x24 bytes
 
@@ -72,57 +60,7 @@ struct CSoundBankEntryLess {
     bool operator()(const CSoundBankEntry& a, const CSoundBankEntry& b) const { return a.first < b.first; }
 };
 
-namespace std {
 
-template <class T1, class T2> inline void _Construct(T1* p, const T2& value) { new (p) T1(value); }
 
-template <class T> class allocator { public: allocator() { } };
-
-template <class Value, class T, class Alloc> class _STLP_alloc_proxy : public Alloc {
-public:
-    Value _M_data;
-};
-
-template <class T, class Alloc> class _Vector_base {
-public:
-    T* _M_start;
-    T* _M_finish;
-    _STLP_alloc_proxy<T*, T, Alloc> _M_end_of_storage;
-};
-
-template <class T, class Alloc = allocator<T> > class vector : public _Vector_base<T, Alloc> {
-public:
-    protected:
-    void _M_insert_overflow(T* position, const T& x, const __false_type&, size_t fillLen, bool atEnd = false);   // 0x00993310
-    public:
-    void push_back(const T& x)
-    {
-        if (this->_M_finish != this->_M_end_of_storage._M_data) {
-            _Construct(this->_M_finish, x);
-            ++this->_M_finish;
-        }
-        else
-            _M_insert_overflow(this->_M_finish, x, __false_type(), 1UL, true);
-    }
-};
-
-}   // namespace std
-
-template <class K, class V> class CKeyPairCompareLess { public:
-    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
-};
-
-template <class K, class V, class C = CKeyPairCompareLess<K, V> > class CVectorMap {
-public:
-    typedef std::pair<K, V> value_type;
-    std::vector<value_type> Data;              // +0x00
-    C Compare;                                  // +0x0c (empty)
-    bool Dirty;                                 // +0x0d
-    void Insert(const K& key, const V& value)
-    {
-        Data.push_back(value_type(key, value));
-        Dirty = true;
-    }
-};
 
 template void std::vector<CSoundBankEntry>::push_back(const CSoundBankEntry&);

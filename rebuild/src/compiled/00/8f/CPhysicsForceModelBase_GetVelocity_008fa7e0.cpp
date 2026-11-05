@@ -1,5 +1,6 @@
 // CPhysicsForceModelBase::GetVelocity() const -- returns a copy of the linked physics state's Velocity (C3DVector by hidden pointer)
 // Leaf: GetVelocity
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FA7E0, 30 bytes (+2 int3 padding). No callees.
 //
 // The manifest names this `CPhysicsForceModelBase::DoVelocityDamping`; the bytes are the velocity
@@ -12,13 +13,7 @@
 // read at +0xC, then the member address is formed (`add ecx,0Ch`) for the other two dword copies.
 // With a POD vector (implicit copy, by accessor or direct member) VC copies through esi/edx with a
 // `mov ecx,eax` shuffle (35 bytes).
-class C3DVector { public:
-    float x;
-    float y;
-    float z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
-};
+#include "engine/C3DVector.h"
 
 struct CPhysicsState {
     C3DVector Position;                    // +0x00

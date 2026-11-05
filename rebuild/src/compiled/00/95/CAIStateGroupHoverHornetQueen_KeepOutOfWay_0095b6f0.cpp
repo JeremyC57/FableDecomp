@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::KeepOutOfWay() -- choose a safe circle point near the target, otherwise idle; clear timing-critical mode afterward.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0095b6f0 length297. Queen donor CurrentCirclePoint/CircleMarkers/TimingCritical are four/eight bytes too high.
 // PlayAnimation donor sizec0 differs retailb4; use native lifecycle view with a real virtual base destructor.
 #include <math.h>
@@ -11,7 +12,7 @@
 class CAIBrain { public:char prefix[24];void* Creature;};
 class CCharString { public:void* storage_;CCharString(const char*,long);~CCharString();};
 #endif
-class C3DVector { public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CThing { public: const C3DVector& GetPos() const; };
 struct CQueenThing : public CThing { public:  }; //004c73d0
 class CBaseObject;

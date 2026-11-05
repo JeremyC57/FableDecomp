@@ -1,5 +1,6 @@
 // CEngineInternalPrimitive2DAnimatedMesh::CalcInterpolatedObjectTransform(CMatrix3x4&, float, bool) const -- interpolate the world position and orientation at `t`, re-orthogonalise the orientation, pick the mesh scale (or 1) and build the object matrix about the object bounding-sphere centre
 // Leaf: CalcInterpolatedObjectTransform
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BCF670, 231 bytes (+ int3 padding), `ret 0Ch`. Mangled
 //   ?CalcInterpolatedObjectTransform@CEngineInternalPrimitive2DAnimatedMesh@@UBEXAAVCMatrix3x4@@M_N@Z.
 // Callees: CRightHandedSet::Interpolate(const CRightHandedSet&, float) const 0x00A23190 (returns the set by hidden pointer),
@@ -13,14 +14,7 @@
 // Shape: position = start + (end - start) * t through inline C3DVector operators (by-value results, no user copy ctor);
 //   the scale is a named float local (homed in the dead bool slot); the centre is a C3DVector local built member-wise after the
 //   scale (integer moves); the helpers take references to the frame locals. Twin of 0x00BCEF80.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;                                      // +0x00

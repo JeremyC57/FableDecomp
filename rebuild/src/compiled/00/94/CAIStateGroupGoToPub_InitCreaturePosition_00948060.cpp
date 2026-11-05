@@ -1,4 +1,5 @@
 // CAIStateGroup_GoToPub::InitCreaturePosition() -- a scripted creature (scratchpad seat and table names both set) takes its table marker, the table's owning pub, and is auto-placed near that pub; otherwise, once the next pub frame has passed and the group is runnable, it is placed near the current pub
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00948060, length 571 bytes (+ int3 padding), virtual slot 3.
 // Callees: CVectorMap::LowerBound @ 0x0040F020, CCharString copy ctor @ 0x0099EC30 / operator!=(const char*) @ 0x0099E960 /
@@ -78,7 +79,7 @@ class CAIBrain { public:
 class CWorld { public:
     static long __fastcall GetFrame();     // 0x0049D870
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 
 class CAIStateGroupBase { public:

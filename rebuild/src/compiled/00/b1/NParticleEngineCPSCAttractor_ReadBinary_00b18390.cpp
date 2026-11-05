@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCAttractor::ReadBinary(CDataInputStream& in) -- vtable slot 15: read the attractor settings and its user points back (the mirror of WriteBinary 0x00B17F70; the position-param name word is skipped)
 // Leaf: ?ReadBinary@CPSCAttractor@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Name: FableWin.pdb / Ego_r.pdb ?ReadBinary@CPSCAttractor@NParticleEngine@@UAEXAAVCDataInputStream@@@Z; slot 15 of the CPSCAttractor vtable
 //   0x012A04AC (rtti-vtables.tsv), the reference parameter of every CPSC ReadBinary.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B18390, 785 bytes (vtable slot 15 of CPSCAttractor, 0x012A04AC).
@@ -14,10 +15,7 @@
 //   are bool bit-field assignments from a one-byte read (`test ; setne ; xor ; and ; xor`).
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 class CDataInputStream { public:
     void* __vftable;
     unsigned long StreamPos;                            // +0x04

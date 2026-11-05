@@ -1,4 +1,5 @@
 // CTCCameraPointDefinitionBase::GetActiveCameraPosition(const CThing* thing) -- the camera position for a thing: its position raised by 1.6 units
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x00878A10, 52 bytes. Callee: CThing::GetPos() const @ 0x004C73D0 (returns a const
 // C3DVector&; manifest label "CVertexBufferWin32::DoSizeof" propagated). Constant 0x012777F0 = 1.6f.
@@ -7,12 +8,7 @@
 // hidden pointer in ecx, the thing in edx (`mov esi,ecx ; mov ecx,edx`); the vector is built in a
 // named 12-byte local from (X, Y, Z + 1.6f) and returned through the memberwise copy constructor.
 
-class C3DVector
-{ public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;           // 0x004C73D0

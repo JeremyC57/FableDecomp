@@ -1,5 +1,6 @@
 // CTCCameraPointDefinitionBase::TransformPosition(const C3DVector& position, const C3DVector* origin, const CRightHandedSet* axes) const -- for a camera point using relative coordinates: express the position relative to the point's base in the given axes and move it to the origin; otherwise return it unchanged
 // Leaf: TransformPosition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C420, length 205 bytes (+ int3 padding), `ret 10h` (hidden result + 3).
 // Callees: CTCCameraPointDefinitionBase::TransformVector(const C3DVector&, const CRightHandedSet*) const @ 0x0075C280 (the
 // orientation step; C3DVector by hidden pointer).
@@ -9,20 +10,7 @@
 // is a local that the rotated vector is assigned back into (dword copy from the call's hidden result); the sum is built member by member into the result.
 // Fix (retry 10): TransformVector (0x0075C280, same TU, C3DVector by hidden pointer) has a same-TU stand-in body; with only
 // the declaration VC7.1 scheduled the result's word copies differently around the first fadd.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator-(const C3DVector& b) const
-    {
-        return C3DVector(X - b.X, Y - b.Y, Z - b.Z);
-    }
-    C3DVector operator+(const C3DVector& b) const
-    {
-        return C3DVector(X + b.X, Y + b.Y, Z + b.Z);
-    }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 #pragma pack(push, 1)
 class CTCCameraPointDefinitionBase {

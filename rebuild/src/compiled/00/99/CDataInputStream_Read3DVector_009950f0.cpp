@@ -1,5 +1,6 @@
 // CDataInputStream::Read3DVector() -- read X, Y then Z and return the 3D vector by value
 // Leaf: Read3DVector
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009950F0, 288 bytes (+ int3 padding), `ret 4` (thiscall on the stream, hidden result pointer).
 // Identity: Ego_r.pdb name set ?Read3DVector@CDataInputStream@@QAE?AVC3DVector@@XZ. The manifest's
 //   "CPersistTraits<CBrainUpdateZone>::TransferBinaryIn" is propagated: the 23 callers (the landed particle readers
@@ -15,12 +16,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 struct CDataInputStreamReader : CDataInputStream {
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }

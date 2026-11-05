@@ -1,5 +1,6 @@
 // CCreatureAction_CastBattleCharge::Initialise() -- names the cast animation, runs the base Initialise, adds a CTCBattleCharge component to the owner and aims it at the action's target; an override sets the dash distance and turns the owner along the stored direction, an AI-state owner gets the cast level, and a live target thing is handed over
 // Leaf: ?Initialise@CCreatureAction_CastBattleCharge@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CD5A0, 400 bytes.
 // Callees: CCreatureActionBase::SetCombatAnimation 0x008574D0 ("..." literal 0x01283E30), CCombatActionBase::Initialise
 //          0x00857520, CThing::AddTC 0x004C9D60 (literal 0x0123C4C0), the component's SetPTarget(CThing*, bool) 0x007A7150,
@@ -33,7 +34,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
     __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
-class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up, Forward; };
 struct CPhysics {
     virtual void v00();

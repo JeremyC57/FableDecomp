@@ -1,4 +1,5 @@
 // CTCLook::GetHeadPos() -- the head position: when the global head-position override flag is set ask the parent creature (GetHeadPos(false)), otherwise return the cached CachedHeadPos
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751B30, length 64 bytes.
 // Callees: CThingCreatureBase::GetHeadPos(bool) @ 0x00661B40 (C3DVector by hidden pointer, our own result pointer passed on).
 // Global: the byte flag @ 0x013BAE1B (tested first; set = always query the creature).
@@ -7,11 +8,7 @@
 // so the record is packed here to keep it at +0xa1). Shape: a C3DVector with a user constructor comes back through the
 // hidden pointer (`ret 4`, eax = result); the cached copy is three dword moves through edx/ecx, which needs the
 // memberwise user copy constructor (the implicit copy of the packed member is a block copy through esi).
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThingCreatureBase { public:
 public:

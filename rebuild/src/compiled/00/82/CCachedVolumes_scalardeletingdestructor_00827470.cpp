@@ -1,5 +1,6 @@
 // CCachedVolumes::`scalar deleting destructor'(unsigned int flags) -- the compiler-generated deleting destructor: the inline destructor destroys the pair<long, CCountedPointer<CContainmentVolume> > range of its vector through the out-of-line __destroy_aux and frees the storage, then the object is freed when bit 0 of the flags is set
 // Leaf: ??_GCCachedVolumes@@QAEPAXI@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00827470, 55 bytes (+ int3 padding to 64), thiscall `ret 4`, returns this.
 // Identity (proven): CCachedVolumes::`scalar deleting destructor'; evidence: its callee 0x00825AE0 is the __destroy_aux CMap::InitCachedVolumes 0x00821850 runs on the old object when it resets the member at +0x08 with a `new` 0x10-byte object (three zeroed words, Dirty +0xD cleared) and deletes the old one through the same inline body; Ego_r.pdb CMap::CachedVolumes (+8) is scoped_ptr<CCachedVolumes> and CCachedVolumes is one CVectorMap<long, CCountedPointer<CContainmentVolume> > NavigationContainmentVolumes
 // Label: the manifest's "`scalar_deleting_destructor'" is propagated (family H064: six deleting destructors that differ only in the
@@ -13,58 +14,14 @@
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 void operator delete(void* block);                      // 0x00BFE9BC
 
-namespace std {
-struct __false_type { __false_type() { } };
-template <class _Tp> class allocator {
-public:
-    void deallocate(_Tp* __p, unsigned int) { free(__p); }
-};
-template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
-public:
-    _Tp _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIter>
-void __fastcall __destroy_aux(_ForwardIter __first, _ForwardIter __last, const __false_type&);   // out of line
-template <class _ForwardIter> inline void _Destroy(_ForwardIter __first, _ForwardIter __last)
-{
-    __destroy_aux(__first, __last, __false_type());
-}
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;                                      // +0x0
-    _Tp* _M_finish;                                     // +0x4
-    _STLP_alloc_proxy<_Tp*, _Alloc> _M_end_of_storage;  // +0x8
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-}   // namespace std
+#include "engine/CVectorMap.h"
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-}
 class CContainmentVolume;
 template <class T> class CCountedPointer {             // 8 bytes: object, shared count block
 public:
     T*    Data;
     void* Info;
     ~CCountedPointer();
-};
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {   // 16 bytes in retail
-public:
-    C    Compare;                                       // +0xC
-    bool Dirty;                                         // +0xD
 };
 class CCachedVolumes {                                // 16 bytes in retail (Ego_r.pdb: one member)
 public:

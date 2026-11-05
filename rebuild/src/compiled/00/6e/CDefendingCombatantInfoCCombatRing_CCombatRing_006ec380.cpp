@@ -1,5 +1,6 @@
 // CDefendingCombatantInfo::CCombatRing::CCombatRing(long, const CCombatTypeDef&) -- ring `index` of a combat wheel: the def's prong count spread evenly round the Z axis, odd rings rotated by half a step
 // Leaf: ??0CCombatRing
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EC380, 295 bytes, `ret 8`; called by CCombatWheel::AddRing 0x006EC7D0 (landed).
 // Callees: C3DVector::Rotate(const C3DVector& axis, float angle) 0x00A13C60, CBaseIntelligentPointer ctor 0x00A01B10 / dtor
 //   0x00A01C10 (CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8), CProng copy ctor 0x006EFF60, STLport
@@ -14,11 +15,7 @@
 //   _M_insert_overflow with the __false_type tag in the argument slot, n = 1, at end); the temporary's destructor is
 //   POccupier's out-of-line base destructor. RotationAngle = (index % 2) * step * 0.5f.
 #include <new>
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void Rotate(const C3DVector& axis, float angle);  // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

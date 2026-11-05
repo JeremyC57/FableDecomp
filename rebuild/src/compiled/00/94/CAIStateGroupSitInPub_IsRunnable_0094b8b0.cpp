@@ -1,4 +1,5 @@
 // CAIStateGroup_SitInPub::IsRunnable() -- for a villager: find the nearest pub building of its village (property
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // 0x20) from the creature's position, join it as a customer, remember it and pick a seat (a validated task seat,
 // else a random free one); runnable while the seat is valid.
@@ -26,7 +27,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
@@ -202,7 +203,6 @@ class CAIStateGroupBase { public:
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-class C3DVector { public: float x, y, z; };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
     virtual void v00();
     CIntelligentPointerConstThing(CThing* item);                        // 0x004A96F0 (out of line)

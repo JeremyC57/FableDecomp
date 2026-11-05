@@ -1,5 +1,6 @@
 // std::__uninitialized_fill_n(CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry* first, unsigned int n, const CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry& x, const __false_type&) -- copy-construct x into n raw slots, return the end
 // Leaf: ??$__uninitialized_fill_n@PAVCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@IV12@@std@@YIPAVCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@PAV12@IABV12@ABU__false_type@0@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BC9EB0, 52 bytes, `__fastcall` (first ecx, n edx, x and the tag on the stack), `ret 8`.
 // Identity (proven): the catalog binding of 0x00BC9EB0 is this symbol (recorded by its caller 0x00BCBF80 (vector<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry>::_M_insert_overflow, landed) and the fill insert 0x00BCA3DA site); the element's 16-byte
 //   memberwise copy matches the PDB copy constructor. The manifest label is propagated/behavioural.
@@ -8,13 +9,7 @@
 //   first, `_Construct(&*cur, x)` (placement new's null test, then four dword moves through esi), `--n, ++cur`; VC7.1 turns the
 //   `n > 0` count into the `test edx,edx ; jbe` guard plus a `dec edx ; jne` loop with an aligned head.
 inline void* operator new(unsigned int, void* p) { return p; }
-class C3DVector {                                         // Ego_r.pdb, 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // PDB ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 class CEngineInternalPrimitiveSpriteTrail {
 public:
     class CSpriteTrailEntry {                             // Ego_r.pdb, 16 bytes

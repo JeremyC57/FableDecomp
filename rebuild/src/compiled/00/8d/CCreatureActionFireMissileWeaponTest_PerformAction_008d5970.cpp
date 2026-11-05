@@ -1,4 +1,5 @@
 // CCreatureAction_FireMissileTest::PerformAction -- emit simple noise and optionally fire a configured shot at target.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008D5970,291bytes; leaf donor header unavailable; nativebaseA8,targetA8,shotB0.
 #define CMeleeCombatAbilityDef CMeleeCombatAbilityDefPdb
 #include "engine/_quarantine/CMeleeCombatAbilityDef.h"
@@ -17,7 +18,7 @@
 #include "engine/CBaseObject.h"
 #include "fable_string.h"
 class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
-class C3DVector { public:float x,y,z;};
+#include "engine/C3DVector.h"
 class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {

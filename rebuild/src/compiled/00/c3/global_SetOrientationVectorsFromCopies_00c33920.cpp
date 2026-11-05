@@ -1,6 +1,7 @@
 // SetOrientationVectorsFromCopies(CRightHandedSet* set, const C3DVector* forward, const C3DVector* up) -- copy both vectors into stack temporaries and hand them to CRightHandedSet::SetOrientationVectors
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C33920, length 74 bytes.
 // Leaf: SetOrientationVectorsFromCopies
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CRightHandedSet::SetOrientationVectors(const C3DVector&, const C3DVector&) @ 0x00C404F0 (__fastcall; it compares
 // the incoming vectors with the set's +0x24.. axes before rebuilding).
 // The chunk label "CTCLook::IsTurningBody" is propagated: the body is a free three-argument `__stdcall` function (`ret 0Ch`,
@@ -8,10 +9,7 @@
 // arguments right to left, so the THIRD argument is copied first (into [esp]) and the second into [esp+0Ch]; each copy goes
 // through three registers. The copies need C3DVector's memberwise user copy constructor: with it the z word is stored
 // first and eax is reused for the second source pointer (a POD C3DVector, or named locals, allocate ecx/edx/eax differently).
-class C3DVector { public:
-    float x, y, z;
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     void SetOrientationVectors(const C3DVector& forward, const C3DVector& up);   // 0x00C404F0

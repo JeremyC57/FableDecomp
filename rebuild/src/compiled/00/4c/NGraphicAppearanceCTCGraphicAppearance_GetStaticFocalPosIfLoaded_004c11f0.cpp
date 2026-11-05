@@ -1,5 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::GetStaticFocalPosIfLoaded(C3DVector& position) const -- the owner's static focal point ("focus_eye_01" helper): from the cached offset when known, else looked up once (caching the offset from the render position); false when the helper is unavailable
 // Leaf: GetStaticFocalPosIfLoaded
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C11F0, length 219 bytes (+ int3 padding). __fastcall, `ret 4`.
 //         Ego_r.pdb: `?GetStaticFocalPosIfLoaded@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DVector@@@Z`.
 // Callees: the file-static `__fastcall` GetRenderPositionForThing(const CThing&, float) @ 0x004BBF00 (twice),
@@ -13,27 +14,7 @@
 class CThing;
 class CCharString;
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector operator+(const C3DVector& o) const
-    {
-        C3DVector result;
-        result.X = X + o.X;
-        result.Y = Y + o.Y;
-        result.Z = Z + o.Z;
-        return result;
-    }
-    C3DVector operator-(const C3DVector& o) const
-    {
-        C3DVector result;
-        result.X = X - o.X;
-        result.Y = Y - o.Y;
-        result.Z = Z - o.Z;
-        return result;
-    }
-};
+#include "engine/C3DVector.h"
 
 C3DVector __fastcall GetRenderPositionForThing(const CThing& thing, float interpolation);   // 0x004BBF00 (file-static)
 

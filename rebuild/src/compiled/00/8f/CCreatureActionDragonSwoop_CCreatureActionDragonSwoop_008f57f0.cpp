@@ -1,5 +1,6 @@
 // CCreatureAction_DragonSwoop::CCreatureAction_DragonSwoop(const CCreatureAction_DragonSwoop&) -- implicit copy constructor: base copy, own vtable, the three swoop points
 // Leaf: ??0CCreatureAction_DragonSwoop@@QAE@ABV0@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x008F57F0, 0x51 bytes, thiscall `ret 4`. Manifest label "CCombatActionBase_CopyConstructor" (_global) is
 //   propagated: the vtable stored is 0x012887D4 (RTTI .?AVCCreatureAction_DragonSwoop@@) and the only caller is the
 //   landed CCreatureAction_DragonSwoop::Clone 0x008F57C0 (`new` of 0x138 bytes). PDB: `??0CCreatureAction_DragonSwoop@@QAE@ABV0@@Z`.
@@ -10,12 +11,7 @@
 //   (the class's implicit copy is then non-trivial) and Clone's `new T(*this)` references it: base copy call, vtable
 //   store, then the array copied by a 3-iteration loop of element copy ctors (VC's strength-reduced `[eax-8]`/`[edx+eax]`
 //   addressing).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}   // ??0C3DVector@@QAE@ABV0@@Z (Ego_r.pdb)
-};
+#include "engine/C3DVector.h"
 
 class CCreatureActionBase;
 

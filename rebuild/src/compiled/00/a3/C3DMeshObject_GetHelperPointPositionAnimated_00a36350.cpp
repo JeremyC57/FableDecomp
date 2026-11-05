@@ -1,5 +1,6 @@
 // C3DMeshObject::GetHelperPointPositionAnimated(const CCharString& name, long index, const C3DAnimationBlendState& state, const C3DAnimationBlendState& other, float blend, C3DAnimationManager& manager) const -- animate the named helper point through the mesh and transform it by the object's position matrix
 // Leaf: GetHelperPointPositionAnimated
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A36350, 219 bytes (+ int3 padding), `ret 1Ch` (hidden result + six arguments).
 // Identity: Ego_r.pdb `?GetHelperPointPositionAnimated@C3DMeshObject@@QBE?AVC3DVector@@ABVCCharString@@JABVC3DAnimationBlendState@@1MAAVC3DAnimationManager@@@Z`
 //   (the two-blend-state overload); callers 0x004BF27B / 0x004C0835. The catalog's "C3DMesh_TransformPoint" is descriptive.
@@ -28,11 +29,7 @@ public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
 };   // 0x004014A0: CRC
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& p) : X(p.X), Y(p.Y), Z(p.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DHelperPoint { public:                            // 16 bytes
     C3DVector Position;                            // +0x00
     long      BoneIndex;                           // +0x0c

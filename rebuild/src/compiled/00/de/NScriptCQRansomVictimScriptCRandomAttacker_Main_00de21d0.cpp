@@ -1,5 +1,6 @@
 // NScript::CQ_RansomVictimScript::CRandomAttacker::Main() -- the ransom-victim quest's random attacker: register an alive-filter over Me, wait until the hero is within a random 8..19 units, then (when "Victim" is alive, at even odds, and Me's data string is not "HeroOnly") turn on the victim, else on the hero; wait until Me is hit by the hero (plainly, or by any of his special abilities other than ability 14), then clear the target and turn on the hero
 // Leaf: ?Main@CRandomAttacker@CQ_RansomVictimScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Label correction: the catalog calls this CRansomRevenge::Main; the factory 0x00DE2100 that stores vtable 0x012DD238
 // is registered as "RandomAttacker" (0x00DE0AF4), PDB ?Main@CRandomAttacker@CQ_RansomVictimScript@NScript@@EAEXXZ.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DE21D0, length 809 bytes, plain `ret`.
@@ -24,30 +25,9 @@ class CCharString { public:
     bool operator!=(const char* text) const;           // 0x0099E960
 };
 enum EHeroAbility { HERO_ABILITY_14 = 14 };
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void t00(); virtual void t01(); virtual void t02();
-    virtual CCharString GetDataString() const;         // slot 3 (+0x0c)
-    virtual void t04(); virtual void t05(); virtual void t06(); virtual void t07(); virtual void t08(); virtual void t09();
-    virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14(); virtual void t15();
-    virtual void t16(); virtual void t17(); virtual void t18(); virtual void t19(); virtual void t20();
-    virtual bool MsgIsHitBy(const CCharString& name) const;                                   // slot 21 (+0x54)
-    virtual void t22(); virtual void t23(); virtual void t24(); virtual void t25(); virtual void t26(); virtual void t27();
-    virtual void t28(); virtual void t29(); virtual void t30(); virtual void t31(); virtual void t32(); virtual void t33();
-    virtual void t34(); virtual void t35(); virtual void t36(); virtual void t37(); virtual void t38(); virtual void t39();
-    virtual void t40();
-    virtual bool MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;                     // slot 42 (+0xa8)
-    virtual void t43(); virtual void t44(); virtual void t45(); virtual void t46(); virtual void t47(); virtual void t48();
-    virtual void t49(); virtual void t50(); virtual void t51(); virtual void t52(); virtual void t53(); virtual void t54();
-    virtual void t55(); virtual void t56(); virtual void t57(); virtual void t58(); virtual void t59(); virtual void t60();
-    virtual void t61(); virtual void t62(); virtual void t63(); virtual void t64(); virtual void t65(); virtual void t66();
-    virtual void t67(); virtual void t68(); virtual void t69(); virtual void t70(); virtual void t71(); virtual void t72();
-    virtual void t73(); virtual void t74();
-    virtual bool IsAlive() const;                      // slot 75 (+0x12c)
-    void* PImp[2];
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {

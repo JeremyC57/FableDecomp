@@ -1,5 +1,6 @@
 // NShape::CSubdivisionTriangle::`scalar deleting destructor'(unsigned int) -- an empty derived destructor (UpDirection is a trivial C3DVector): its own and the CClosedShapeBase vtable stores are dead and dropped, so only the inlined CShape destructor's vtable store (0x0126A208) and the two vector frees remain, then the flag-tested operator delete
 // Leaf: ??_GCSubdivisionTriangle@NShape@@UAEPAXI@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00765370, length 63 bytes (+ int3 padding).
 // Callees: free @ 0x00BFEA14 twice, operator delete @ 0x00BFE9BC. Evidence: slot 0 of NShape::CSubdivisionTriangle's vtable 0x0126A240 (rtti-vtables.tsv); PDB size 52 = CShape + 12-byte UpDirection. The catalog label
 // "CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip" is propagated.
@@ -33,7 +34,7 @@ struct CClosedShapeBase : CShape {                    // vtable 0x0126A224
     __forceinline virtual ~CClosedShapeBase() { }
 };
 
-struct C3DVector { float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CSubdivisionTriangle : public CClosedShapeBase { public:     // vtable 0x0126A240
     C3DVector UpDirection;                            // +0x20

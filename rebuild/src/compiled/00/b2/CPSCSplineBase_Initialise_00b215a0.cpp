@@ -1,4 +1,5 @@
 // CPSCSplineBase::Initialise(void*, unsigned long, CParticleUpdateParameters*, float) -- once: re-offset the random spline, hand the particle system to the position-parameter data and update it from the spline; returns the Initialised bit
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B215A0, length 62 bytes.
 // Callees: CSplineRandomOffsetData::OffsetSplinePositions @ 0x00B206B0, CSplinePosParamData::Update @ 0x00B20BA0.
 // Identity: slot 28 of NParticleEngine::CPSCSpline's vtable 0x012A0934 (and of the sibling vtable at
@@ -19,9 +20,7 @@ namespace NParticleEngine {
 class CParticleSystem;
 struct CParticleUpdateParameters;           // CParticleUpdateParameters<unsigned long, unsigned long>
 
-struct C3DVector {
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 template<class T> struct CArray {           // retail CArray<T>: three pointers
     T* m_pData;

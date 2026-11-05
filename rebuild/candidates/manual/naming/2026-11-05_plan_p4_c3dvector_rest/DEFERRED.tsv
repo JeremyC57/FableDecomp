@@ -1,0 +1,235 @@
+address	stage	reason
+0043ce90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'void C3DVector::Initialise(float,float,float)' already has a body
+00486f60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'AdjustTrajectoryVector' : is not a member of 'C3DVector'
+00487180	bytes_differ	BYTES_DIFFER masked sha1 differs
+00488b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'MagSquared' : is not a member of 'C3DVector'
+004c22c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Interpolate' : is not a member of 'C3DVector'
+004cb6e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'OffsetBy2D' : is not a member of 'C3DVector'
+004fcb30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'const C3DVector' to 'C2DCoordI'
+005ed190	method_map	METHOD_MAP METHOD_MAP Normalise body is not the header Normalise computation: float scale = 1.0f / Magnitude(); X *= scale; Y *= scale; Z *= scale;
+0063a540	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2738: 'operator C2DCoordI' : is ambiguous or is not a member of 'C3DVector'
+0063d960	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0063db30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0065f056	bytes_differ	BYTES_DIFFER masked sha1 differs
+00661b40	bytes_differ	BYTES_DIFFER masked sha1 differs
+006627a0	method_map	METHOD_MAP METHOD_MAP Length body is not the header GetMagnitude computation: return Magnitude(X, Y, Z);
+00663510	method_map	METHOD_MAP METHOD_MAP Length body is not the header GetMagnitude computation: return Magnitude(X, Y, Z);
+006637d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DotProduct' : is not a member of 'C3DVector'
+00664e50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+0066fb80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+0066fc90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+006701a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+006702e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+00692b30	bytes_differ	BYTES_DIFFER masked sha1 differs
+0069fce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+006a5460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+006a7150	method_map	METHOD_MAP METHOD_MAP Normalise body is not the header Normalise computation: float lengthSquared = GetLengthSquared(); if (lengthSquared > 1e-4f) { float r = 1.0f / sqrtf(length
+006a7270	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator *=' is ambiguous
+006a7990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+006a9ef0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'C3DVector'
+006aa100	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+006ab770	method_map	METHOD_MAP METHOD_MAP Length body is not the header GetMagnitude computation: return Magnitude(X, Y, Z);
+006ad220	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetAccurateMagnitude' : is not a member of 'C3DVector'
+006ad260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetAccurateMagnitude' : is not a member of 'C3DVector'
+006afa40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+006afcb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'OffsetBy2D' : is not a member of 'C3DVector'
+006b0020	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetAngleYZ' : is not a member of 'C3DVector'
+006b0250	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Interpolate' : is not a member of 'C3DVector'
+006b0610	bytes_differ	BYTES_DIFFER masked sha1 differs
+006b0780	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+006b0c10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'OffsetBy2D' : is not a member of 'C3DVector'
+006b3030	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float GFFastOneOverSqrt(float)' already has a body
+006ccf70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'IsEqual' : is not a member of 'C3DVector'
+006cda50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+006ea770	bytes_differ	BYTES_DIFFER masked sha1 differs
+00712340	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00713010	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2552: 'cameraPosition' : non-aggregates cannot be initialized with initializer list
+0071ab20	bytes_differ	BYTES_DIFFER masked sha1 differs
+00723c80	bytes_differ	BYTES_DIFFER masked sha1 differs
+00724010	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'C3DVector'
+00724f80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00724fc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00726340	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetXYLengthSquared' : is not a member of 'C3DVector'
+007268d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+0074a260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+00751e80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '!=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00752300	bytes_differ	BYTES_DIFFER masked sha1 differs
+00752930	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: '!=' : is not a member of 'C3DVector'
+00759b40	bytes_differ	BYTES_DIFFER masked sha1 differs
+00759d30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+0075cd30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0075cd90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+00760c40	bytes_differ	BYTES_DIFFER masked sha1 differs
+00771bd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPerpendicularXY' : is not a member of 'C3DVector'
+00798770	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00799e30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+0079c290	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+007a6e20	bytes_differ	BYTES_DIFFER masked sha1 differs
+007a7000	bytes_differ	BYTES_DIFFER masked sha1 differs
+007a9870	bytes_differ	BYTES_DIFFER masked sha1 differs
+007a9960	bytes_differ	BYTES_DIFFER masked sha1 differs
+007aa9e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+007af0f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float GFFastOneOverSqrt(float)' already has a body
+007b2ab0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007be0f9	method_map	METHOD_MAP METHOD_MAP Normalise defined 2 times (1 inside the local C3DVector)
+007d3560	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007dccb0	method_map	METHOD_MAP METHOD_MAP Normalise is declared only (out of line); the header Normalise is inline
+007dd270	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007f11d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+007f2120	method_map	METHOD_MAP METHOD_MAP GetLength defined 3 times (1 inside the local C3DVector)
+007f9660	bytes_differ	BYTES_DIFFER masked sha1 differs
+00805920	bytes_differ	BYTES_DIFFER masked sha1 differs
+0080d0b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator *' is ambiguous
+0080da50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetXYLength' : is not a member of 'C3DVector'
+008128f0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00812a10	bytes_differ	BYTES_DIFFER masked sha1 differs
+00815070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00815ce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'C3DVector' (or there is no acceptable conversion)
+00815f00	bytes_differ	BYTES_DIFFER masked sha1 differs
+00829ce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+0082d9c0	bytes_differ	BYTES_DIFFER masked sha1 differs
+0082fd90	bytes_differ	BYTES_DIFFER masked sha1 differs
+00833230	bytes_differ	BYTES_DIFFER masked sha1 differs
+008332e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00838ec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+008444a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00846100	free_op	FREE_OP FREE_OP operator+ body differs: returnC3DVector(B.X+A.X,B.Y+A.Y,A.Z);
+00846410	free_op	FREE_OP FREE_OP operator+ body differs: returnC3DVector(B.X+A.X,B.Y+A.Y,A.Z);
+0084cdf0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPerpendicularXY' : is not a member of 'C3DVector'
+0084cf40	bytes_differ	BYTES_DIFFER length 40 != 24
+0084d0e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '^' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00853830	bytes_differ	BYTES_DIFFER length 363 != 385
+00853ba0	bytes_differ	BYTES_DIFFER length 363 != 385
+00855500	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00856040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'C3DVector' (or there is no acceptable conversion)
+008569c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00856b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float fabs(float)' already has a body
+00857b70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+0085bd70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+0085f8d0	method_map	METHOD_MAP METHOD_MAP GetLengthSquared body is not the header GetSquaredMagnitude computation: return *this * *this;
+00864170	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get2D' : is not a member of 'C3DVector'
+00865c20	method_map	METHOD_MAP METHOD_MAP GetLength defined 2 times (1 inside the local C3DVector)
+00865d40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00872a20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPerpendicularXY' : is not a member of 'C3DVector'
+00872ec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetLengthSquaredXY' : is not a member of 'C3DVector'
+00875040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Normalised' : is not a member of 'C3DVector'
+00875990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00878ce0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00878db0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+0087ba90	bytes_differ	BYTES_DIFFER masked sha1 differs
+0087bf40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '-' : no operator found which takes a right-hand operand of type 'C2DVector' (or there is no acceptable conversion)
+0087ca30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+0087e860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+008803e0	bytes_differ	BYTES_DIFFER length 278 != 301
+008b6ee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+008b8bc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeSquared2D' : is not a member of 'C3DVector'
+008beee0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'C3DVector::C3DVector(const C2DVector &)' : overloaded member function not found in 'C3DVector'
+008c2550	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator *' is ambiguous
+008c2810	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get2DLength' : is not a member of 'C3DVector'
+008c2ed0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float sqrtf(float)' already has a body
+008c2f70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float sqrtf(float)' already has a body
+008c34a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float sqrtf(float)' already has a body
+008c7e50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float fabsf(float)' already has a body
+008db240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetLength2D' : is not a member of 'C3DVector'
+008db460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetLength2D' : is not a member of 'C3DVector'
+008e0d20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetLength2D' : is not a member of 'C3DVector'
+008e5480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'float fabsf(float)' already has a body
+008e9460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetLength2' : is not a member of 'C3DVector'
+008ed6e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+008ed7a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+008f2e00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+008f3630	bytes_differ	BYTES_DIFFER masked sha1 differs
+008f5ba0	bytes_differ	BYTES_DIFFER masked sha1 differs
+008f7bd0	stray_change	STRAY_CHANGE own ?CreateFootEffectForCreature@NFoot008f7bd0@@YIXPAUCThingCreatureBase@1@JHHABUC3DVector@1@PAUCThingVector@1@@Z -> ?CreateFootEffectForCreature@NFoot008f7bd0@@YIXPAUCThingCreatureBase@1@JHHABVC3DVector@1@PAUCThingVector@1@@Z ; 004c73d0: ?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABUC3DVector@2@XZ -> ?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABVC3DVector@2@XZ ; 006e0880: ?Create@CTCDParticleEmitter@NFoot008f7bd0@@SIPAUCThing@2@JABUC3DVector@2@_N@Z -> ?Create@CTCDParticleEmitter@NFoot008f7bd0@@SIPAUCThing@2@JABVC3DVector@2@_N@Z
+008faf70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'float [3]' to 'C3DVector'
+0090bed0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+0090f320	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+0090fdb0	method_map	METHOD_MAP METHOD_MAP GetMagnitude defined 2 times (1 inside the local C3DVector)
+00911c20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+00911d90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+00911f80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get2DLengthSquared' : is not a member of 'C3DVector'
+009167f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+00916910	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+00917380	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+009175e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'C3DVector::Rotate' : cannot convert parameter 1 from 'float' to 'const C3DVector &'
+0091bd10	bytes_differ	BYTES_DIFFER masked sha1 differs
+0091c3d0	bytes_differ	BYTES_DIFFER length 620 != 616
+0091d510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0091e750	bytes_differ	BYTES_DIFFER masked sha1 differs
+0092b800	method_map	METHOD_MAP METHOD_MAP Normalise defined 2 times (1 inside the local C3DVector)
+0092ed40	bytes_differ	BYTES_DIFFER masked sha1 differs
+00935160	stray_change	STRAY_CHANGE 004c73d0: ?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ -> ?GetPosition@CThing@NCondition00935160@@QBEABVC3DVector@2@XZ
+0093b1d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'C3DVector C3DVector::operator +(const C2DVector &) const' : overloaded member function not found in 'C3DVector'
+0093d180	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'CXYDelta'
+0093dc10	bytes_differ	BYTES_DIFFER masked sha1 differs
+0094dac0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+0094fa00	bytes_differ	BYTES_DIFFER masked sha1 differs
+0094fff0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+00951b20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateAboutZ' : is not a member of 'C3DVector'
+00956fe0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C2DVector'
+0095a490	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetXYMagnitude' : is not a member of 'C3DVector'
+0095c1f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetXYMagnitude' : is not a member of 'C3DVector'
+0095d070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'initializing' : cannot convert from 'const C3DVector' to 'const C2DVector &'
+0095e900	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Get2DLength' : is not a member of 'C3DVector'
+009633e0	bytes_differ	BYTES_DIFFER masked sha1 differs
+009718f0	bytes_differ	BYTES_DIFFER masked sha1 differs
+0097e890	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+0097ec00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator +' is ambiguous
+00984b40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator -' is ambiguous
+00989700	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C4DVector'
+00989a60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'X' : is not a member of 'C4DVector'
+00a04160	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2621: member 'UInputEventData::__unnamed::HeldMouseMovement' of union 'UInputEventData::__unnamed' has copy constructor
+00a0c2b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2593: 'operator *' is ambiguous
+00a0c450	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2666: 'fmod' : 3 overloads have similar conversions
+00a13da0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ToString' : is not a member of 'C3DVector'
+00a14040	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'RotateXY' : is not a member of 'C3DVector'
+00a14260	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'void C3DVector::Rotate(float,float)' : overloaded member function not found in 'C3DVector'
+00a14480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00a145c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetRandomUnitVector' : is not a member of 'C3DVector'
+00a146c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetRandomPointWithinUnitSphere' : is not a member of 'C3DVector'
+00a14fd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2440: 'type cast' : cannot convert from 'const C3DVector' to 'C2DCoordI'
+00a1ab40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SetXY' : is not a member of 'C3DVector'
+00a442e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'C3DVector' (or there is no acceptable conversion)
+00a471d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2511: 'C3DVector C3DVector::operator +(const C2DVector &) const' : overloaded member function not found in 'C3DVector'
+00a4eb00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Clear' : is not a member of 'C3DVector'
+00a56180	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00a57ef0	method_map	METHOD_MAP METHOD_MAP GetLength defined 3 times (1 inside the local C3DVector)
+00a57f70	method_map	METHOD_MAP METHOD_MAP GetLength defined 2 times (1 inside the local C3DVector)
+00a58720	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00a6cb20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '-=' : 'C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00a75340	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetX' : is not a member of 'C3DVector'
+00a9dfa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00ac7050	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DotProduct' : is not a member of 'C3DVector'
+00ac9d50	bytes_differ	BYTES_DIFFER length 912 != 874
+00aee8c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00b161a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Zero' : is not a member of 'C3DVector'
+00b24150	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00b30480	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00b80940	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2679: binary '*' : no operator found which takes a right-hand operand of type 'const C3DVector' (or there is no acceptable conversion)
+00b80fe0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'ScaleInto' : is not a member of 'C3DVector'
+00b94d30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Length2D' : is not a member of 'C3DVector'
+00bb8090	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2552: 'corners' : non-aggregates cannot be initialized with initializer list
+00bcbc00	bytes_differ	BYTES_DIFFER masked sha1 differs
+00bdda80	method_map	METHOD_MAP METHOD_MAP GetLength defined 2 times (1 inside the local C3DVector)
+00c1bff0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Copy' : is not a member of 'C3DVector'
+00c1c070	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SwapYZ' : is not a member of 'C3DVector'
+00c1c280	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SwapYZ' : is not a member of 'C3DVector'
+00c20340	method_map	METHOD_MAP METHOD_MAP GetMagnitude is declared only (out of line); the header GetMagnitude is inline
+00c256a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'DotProduct' : is not a member of 'C3DVector'
+00c256f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2556: 'int C3DVector::operator ==(const C3DVector &) const' : overloaded function differs only by return type from 'bool C3DVector::operator ==
+00c25730	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: '!=' : is not a member of 'C3DVector'
+00c25860	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2084: function 'const C3DVector C3DVector::Cross(const C3DVector &) const' already has a body
+00c258d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetMagnitudeAndNormalise' : is not a member of 'C3DVector'
+00c25970	method_map	METHOD_MAP METHOD_MAP GetMagnitude defined 2 times (1 inside the local C3DVector)
+00c27550	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SwapYZ' : is not a member of 'C3DVector'
+00c40370	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SetCrossProduct' : is not a member of 'C3DVector'
+00c40410	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'Set' : is not a member of 'C3DVector'
+00c404f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '!=' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00c45810	method_map	METHOD_MAP METHOD_MAP GetMagnitude is declared only (out of line); the header GetMagnitude is inline
+00c458d0	method_map	METHOD_MAP METHOD_MAP GetMagnitude is declared only (out of line); the header GetMagnitude is inline
+00c53d50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '!=' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00c53e40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2676: binary '!=' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator
+00c62530	method_map	METHOD_MAP METHOD_MAP GetMagnitude is declared only (out of line); the header GetMagnitude is inline
+00cbe693	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InitialiseFromAngles' : is not a member of 'C3DVector'
+00e0de90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'MagSquared' : is not a member of 'C3DVector'
+0121aec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2675: unary '-' : 'const C3DVector' does not define this operator or a conversion to a type acceptable to the predefined operator

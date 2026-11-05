@@ -1,5 +1,6 @@
 // NScript::CQ_MinionClifftopChaseScript::CM_NotThisWay::Main() -- spawn the encounter creature and manage script lifecycle.
 // Leaf: ?Main@CM_NotThisWay@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native script projection: actual flattened headers included; PDB names/layouts preserved.
 // All declared virtuals are native signatures and ordering, including reversed overloads.
 // Naming wave 35: identity reg 00da3be0 "M_NotThisWay" in 00da34b0; Alloc 00da6670; vtable 012d7670 slot 1; PDB ?Main@CM_NotThisWay@CQ_MinionClifftopChaseScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CM_NotThisWay::Main (wave3/labels_alloc.tsv); PDB ?Main@CM_NotThisWay@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
@@ -23,7 +24,7 @@ typedef unsigned __int64 ScriptUID;
 #else
 typedef unsigned long long ScriptUID;
 #endif
-class C3DVector { public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CScriptGameResourceObjectScriptedThingBase;
 class CCharString { public:char* Data; CCharString(const char*,long=-1); CCharString(const CCharString&); ~CCharString();}; // 0099EBF0/0099EAE0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy

@@ -1,5 +1,6 @@
 // NHitLocations::CPhysicalPrimitiveCylinder::GetCylinderBaseAndTop(const CThing& thing, C3DVector& base, C3DVector& top) const -- the hit cylinder's end points: with no base dummy object, base = physics position + up * the def's base offset and top = base + up * the def's cylinder height; otherwise base and the up axis come from the named dummy object on the graphic appearance and top = base + up * GetCylinderHeight
 // Leaf: ?GetCylinderBaseAndTop@CPhysicalPrimitiveCylinder@NHitLocations@@QBEXABVCThing@@AAVC3DVector@@1@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008158D0, 460 bytes + 4 int3, thiscall `ret 0Ch`.
 // Identity: Ego_r.pdb ?GetCylinderBaseAndTop@CPhysicalPrimitiveCylinder@NHitLocations@@QBEXABVCThing@@AAVC3DVector@@1@Z
@@ -22,14 +23,7 @@
 //   C3DVector has a member-wise copy constructor; both branches end in the same `top = ...` store, which VC7.1 tail-merges.
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:                                // 24 bytes (Ego_r.pdb)
     C3DVector Up;                                       // +0x00
     C3DVector Forward;                                  // +0x0c

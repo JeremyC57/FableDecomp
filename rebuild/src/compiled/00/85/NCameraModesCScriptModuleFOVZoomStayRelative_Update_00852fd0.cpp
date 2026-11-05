@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleFOVZoomStayRelative::Update() -- keep the camera at a fixed offset from the thing's facing (rotated about Axis by Angle, scaled by Mag) around LookAtPos, gliding there until EndFrame, then run the FOV zoom step
 // Leaf: ?Update@CScriptModuleFOVZoomStayRelative
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852FD0, length 211 bytes (`ret`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (Thing), the physics component's virtual slot 70 GetFacing
 // (+0x118, C3DVector by hidden pointer), C3DVector::Rotate(const C3DVector&, float) @ 0x00A13C60, CWorld::GetFrame
@@ -15,13 +16,7 @@
 // tail-duplicates it, popping edi first), the physics component is read through an inline accessor straight into ecx.
 class CWorld { public: static long __fastcall GetFrame(); };                 // 0x0049D870
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    void Rotate(const C3DVector& axis, float angle); // 0x00A13C60
-    C3DVector& operator*=(float scale) { X *= scale; Y *= scale; Z *= scale; return *this; }
-    C3DVector& operator+=(const C3DVector& other) { X += other.X; Y += other.Y; Z += other.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase {
 public:

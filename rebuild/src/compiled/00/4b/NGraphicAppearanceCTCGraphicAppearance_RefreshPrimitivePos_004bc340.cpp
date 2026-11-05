@@ -2,6 +2,7 @@
 // Copy constructor: the C3DVector model DECLARES its memberwise copy constructor (retail's header class has one); with the
 // implicit copy VC7.1 schedules the copies differently (found by the retry-10 copy-constructor sweep).
 // Leaf: RefreshPrimitivePos
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BC340, length 202 bytes (+ int3 padding). __fastcall, `ret 0Ch`.
 //         Ego_r.pdb: `?RefreshPrimitivePos@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCPrimitive@2@ABVC3DPosition
 //         Interpolator@@ABVC3DOrientationInterpolator@@@Z`.
@@ -13,16 +14,7 @@
 // Layout: C3DPositionInterpolator (Ego_r.pdb): StartPosition +0x04, EndPosition +0x10; C3DOrientationInterpolator:
 //         StartOrientation +0x04, EndOrientation +0x1C; CPrimitive::PrimitiveHandle +0x04; CEnginePrimitivePosition
 //         {WorldPos, RightHandedSet} (36 bytes).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    __forceinline C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet {
 public:

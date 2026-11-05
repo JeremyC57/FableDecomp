@@ -1,4 +1,5 @@
 // CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FrameUpdate() -- finish when moving and enable hits after recovery percentage
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail0x00866D80,249 bytes. Action native base0x114 vs donor0x12c; PCreature+8, FramesRunning+1c,
 // MovementEventInterruptActive+dc, CanBeHit+114. Native ThingCreatureDef RecoverEvadeHitsPercent+140 vs donor148.
 // CBaseIntelligentPointer is real {vptr,CBaseObjectPointer*PData}, record{object,refcount}; never a counted pointer.
@@ -16,7 +17,7 @@
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
-class C3DVector { public: float X,Y,Z;float GetLength()const {return (float)sqrt(X*X+Y*Y+Z*Z);} };
+#include "engine/C3DVector.h"
 class CTCCreatureModeManager { public:void RemoveMode(unsigned long mode);}; //0x0073ABA0
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -60,7 +61,7 @@ class CCombatAction_GenericStrikeResponseKnockdownRecoverBase:public CCombatActi
 void CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FrameUpdate(){
     CCombatActionBase::FrameUpdate();
     if(MovementEventInterruptActive){Creature* creature=PCreature.GetPItem();
-        if(creature->ThingType==2 && creature->RelativeMovementAcceleration.GetLength()>0.1f)FinishAction();
+        if(creature->ThingType==2 && creature->RelativeMovementAcceleration.GetMagnitude()>0.1f)FinishAction();
     }
     if(!CanBeHit){
         float percent=(float)FramesRunning*100.0f/TotalTime;

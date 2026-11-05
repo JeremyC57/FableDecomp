@@ -1,5 +1,6 @@
 // CWorldMap::ClipLinePointsToMapBox(const C2DBoxI& box, C3DVector& point, const C3DVector& towards) const -- when `point` lies outside the box, slide it along the line towards `towards` onto each box side plane it is beyond (x = 0, y = 0, x = width, y = height)
 // Leaf: ?ClipLinePointsToMapBox@CWorldMap@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063BBC0, `ret 0xc`, esp frame; `this` unused.
 // Callees: _ftol 0x00BFEA70, CPlane::Initialise(const C3DVector&, const C3DVector&, const C3DVector&) 0x00A42170,
@@ -16,16 +17,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
 
-class C3DVector
-{ public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
-__forceinline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+#include "engine/C3DVector.h"
 
 class C2DBoxI
 { public:

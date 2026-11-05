@@ -1,5 +1,6 @@
 // CCreatureAction_AlertAllNearbyToThing::AlertAllNearby(const CThingSearchTools&, const CThing& perceived, CThingCreatureBase& alerter, float radius) -- every perceiver in the alerter's square neighbourhood that is perceiving the thing (other than the alerter) becomes indirectly aware of it
 // Leaf: AlertAllNearby
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084A720, 188 bytes (`ret 8`: static `__fastcall`, tools in ecx, the perceived
 // thing in edx, the alerter and the radius on the stack). Ego_r.pdb `?AlertAllNearby@CCreatureAction_AlertAllNearbyToThing@@
 // SIXABVCThingSearchTools@@ABVCThing@@AAVCThingCreatureBase@@M@Z`; its only caller is PerformAction 0x0084A7E0 (the next
@@ -25,7 +26,7 @@
 //        destructor.
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
@@ -34,10 +35,6 @@ class CTCPerceiveThing { public:
     void SetAsIndirectlyAwareOfPerceivedThing();   // 0x007449E0
 };
 
-class C2DCoordI { public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) {}
-};
 class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;

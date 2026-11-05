@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverAttack::Update() -- while the target lives, is to be attacked and the group stays runnable: hover to the combat manager's preferred position facing the target until there or within the combat minimum distance in XY, then perform the next combat action; terminate on any failure
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091E050, length 534 bytes (+ int3 padding), virtual slot 12.
 // Callees: CThingCreatureBase::GetCombatManager @ 0x00661ED0 / IsRegisteredCombatant @ 0x00662410, CAIStateGroupBase::
 // GetPWorld @ 0x008FCFC0, CCombatManager::SetAttackerAsReadyToAttack @ 0x006EA450 / GetPreferredPos @ 0x006EA770 /
@@ -7,12 +8,7 @@
 // virtual slots 15 IsRunnableLeaf (+0x3c), 19 GetCombatMinDistance (+0x4c), 22 AIAction_MoveToPosAndFacePos (+0x58).
 // Shape: an outer while over the attack conditions, an inner for(;;) hover loop whose in-range flag is reset per outer pass.
 // Layout: Ego_r.pdb CAIStateGroup_HoverMovementBase (0x1c bytes): target pointer +0x14; CWorld +0x4c combat manager.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
-inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+#include "engine/C3DVector.h"
 
 class CCombatManager;
 class CThing { public:

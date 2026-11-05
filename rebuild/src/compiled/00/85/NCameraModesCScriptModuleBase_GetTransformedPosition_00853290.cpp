@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleBase::GetTransformedPosition(const C3DVector& offset) -- the offset placed relative to the module's origin: the live origin thing's position when there is one, else CoordOrigin
 // Leaf: GetTransformedPosition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00853290, length 144 bytes (131 + int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times, re-fetched per test),
 // CThing::GetPos @ 0x004C73D0 (out of line here).
@@ -11,12 +12,7 @@
 // Layout: PDB NCameraModes::CScriptModuleBase (0x4c bytes): PThingOrigin +0xc, CoordOrigin +0x14.
 class CBaseObject;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     unsigned char _pad00[0x91];

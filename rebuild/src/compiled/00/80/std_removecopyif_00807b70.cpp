@@ -1,6 +1,7 @@
 // std::remove_copy_if(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint* result, CTargetPointIsNotEnemyOfThing pred) -- copy the target points whose thing is null, flagged dead or an enemy of pred.Thing to result; returns the new end
 // Flags: /Gr
 // Leaf: remove_copy_if
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00807B70, 167 bytes (/O2). Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50,
 // SetPItem 0x00A01B90, CTCEnemy::AreThingsEnemies 0x0076D2F0 (`__fastcall`, landed label).
 // Shape: STLport `for (; first != last; ++first) if (!pred(*first)) { *result = *first; ++result; } return
@@ -32,10 +33,7 @@ template <class T> struct CIntelligentPointer : CBaseIntelligentPointer {
         return *this;
     }
 };
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 struct CTCEnemy {
     static bool AreThingsEnemies(CThing* a, CThing* b);   // 0x0076D2F0
 };

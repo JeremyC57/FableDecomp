@@ -4,16 +4,12 @@
 //   is what makes VC7.1 load c.Z first (`fld [edi+8] ; fmul [esi+8]`); every direct `Normal.Z` spelling loaded Normal first.
 //   C3DVector / CPlane are classes (PDB key V: `ABVC3DVector`), so the leaf binds the PDB symbol.
 // Leaf: ?GetIntersectionWithTriangle@CPlane@@QBE_NABVC3DVector@@00AAV2@1@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: Ego_r.pdb ?GetIntersectionWithTriangle@CPlane@@QBE_NABVC3DVector@@00AAV2@1@Z.
 // Callees: CPlane::GetIntersectionWithLine(const C3DVector&, const C3DVector&, C3DVector*) const 0x00A422C0 (x2).
 // Data: 0.0f 0x0122DEDC.
 // Layout: Ego_r.pdb CPlane {C3DVector Normal +0, float Distance +0xc}.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-};
+#include "engine/C3DVector.h"
 class CPlane { public:
     C3DVector Normal;                                   // +0x00
     float     Distance;                                 // +0x0c

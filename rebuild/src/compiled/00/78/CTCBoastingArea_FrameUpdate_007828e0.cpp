@@ -1,4 +1,5 @@
 // CTCBoastingArea::FrameUpdate() -- track the living hero against the area's anticipation and boasting radii and fire the enter/leave/approach notifications on each state change
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail 0x007828E0, 432 bytes (plain `ret`). Callees: CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer
 // @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0, CTCBoastingArea::OnHeroEnteringArea
@@ -10,12 +11,7 @@
 // the boasting one in cl; the state switch returns from every arm. The parent thing goes through an inline GetThing()
 // accessor so it is read into ebx BEFORE the hero position call (a direct `Thing->` loads it after and keeps the bool in bl).
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-};
+#include "engine/C3DVector.h"
 __forceinline bool InRange(const C3DVector& d, float radius)
 {
     return d.X * d.X + (d.Y * d.Y + d.Z * d.Z) < radius * radius;

@@ -1,5 +1,6 @@
 // CTCTargetingPlayer::IsTargetedThingOfTypeInRange(unsigned long typeMask) -- the targeted thing must carry one of the targeting flags; unless the type is 2 the world's free-targeting switch accepts it outright, otherwise it must lie within the targeting range the owner's targeting def gives for that type and the weapon in its primary slot
 // Leaf: vfunc_38
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008039A0, 371 bytes (`ret 4`); CTCTargetingPlayer vtable 0x0124280C slot 38
 //          (catalog "vfunc_38"; the name used here is descriptive, the source keeps the catalog leaf).
@@ -14,11 +15,7 @@
 // Shape: both interface lookups are the out-pointer GetInterface without a test, its entry pick a ternary (component lands in ecx); the
 //          squared distance is summed Z, X, Y; the def pointer's dtor releases with `dec [ebp+4]`.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;

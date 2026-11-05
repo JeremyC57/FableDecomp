@@ -1,5 +1,6 @@
 // CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation(CTCPerceiveThing*) -- play a random WHATS_THAT animation; the
 // Leaf: SetWhatsThatAnimation
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // update finishes unless the animation completed, the perceived thing is still worth seeking and it has not moved
@@ -111,11 +112,7 @@ class CSoundPair { public:
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 class CAnimationEntry;
 class CThingCreatureBase;
@@ -158,7 +155,7 @@ void CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation(CTCPerceiveThing* per
     if (result == 2 && IsStillRunnable(perceive)) {
         C3DVector diff(perceive->PosX - LastKnownEnemyPosX, perceive->PosY - LastKnownEnemyPosY,
             perceive->PosZ - LastKnownEnemyPosZ);
-        if (!(diff.GetMagnitudeSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO))
+        if (!(diff.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO))
             return;
     }
     Terminate();

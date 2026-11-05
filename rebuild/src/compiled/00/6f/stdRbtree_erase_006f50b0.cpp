@@ -1,6 +1,7 @@
 // 006f50b0 std::_Rb_tree::erase
 // std::_Rb_tree<unsigned64,pair<constunsigned64,CCombatantInfo> >::erase key
 // Leaf: ?erase@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAEIAB_K@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 class CThing;class CThingCreatureBase;class CCombatSequenceBase;class CAttackPatternDef;class CDefPointeeBase;// Layout: original CBaseObjectPointer is classV; private PData is one pointer after vptr. Native erase works on full original typed tree nodes; donor4byte container shrink applied only where original retail offsets prove it.
 class CBaseObjectPointer;class CCPPointerInfo;struct CCombatantInfo;
@@ -55,7 +56,7 @@ template<class K,class T,class C=less<K>,class A=allocator<pair<const K,T> > >cl
 }
  #pragma pack(push,1)
 class C2DVector {public:float X,Y;};
-class C3DVector {public:float X,Y,Z;C3DVector();C3DVector(const C3DVector&);};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CBaseIntelligentPointer {private:CBaseObjectPointer*PData;public:CBaseIntelligentPointer();virtual ~CBaseIntelligentPointer();};
 template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {};

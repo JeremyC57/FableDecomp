@@ -1,4 +1,5 @@
 // CAIStateGroup_WorkAtSchool::MoveAndFace(C3DVector pos, float radius, C3DVector facePos) -- walk (run when 10 or
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // more units away) to within `radius` of pos, repeating while the move is in progress, then turn to look at facePos
 // the same way; true when both actions finish (2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009425F0, length 218 bytes (+ int3 padding), `ret 1Ch`.
@@ -17,13 +18,7 @@ extern "C" double __cdecl sqrt(double);
 
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLength() const { float s = X * X + Y * Y + Z * Z; return (float)sqrt(s); }
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
@@ -67,7 +62,7 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
 
 bool CAIStateGroup_WorkAtSchool::MoveAndFace(C3DVector pos, float radius, C3DVector facePos)
 {
-    long movementType = (pos - PBrain->PCreature->GetPos()).GetLength() < 10.0f ? 3 : 5;
+    long movementType = (pos - PBrain->PCreature->GetPos()).GetMagnitude() < 10.0f ? 3 : 5;
     bool reached;
     long result;
     do {

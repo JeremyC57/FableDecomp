@@ -1,4 +1,5 @@
 // CAIStateGroup_TavernServer::GetJug() -- keep a live jug; otherwise ask the bar's tavern-bar component
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // (interface 0xB9) for a free jug point for this creature and adopt the jug standing there.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00967180, length 206 bytes (+ int3 padding).
@@ -109,7 +110,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
 }
 
 class CRightHandedSet { public: float m[6]; };         // 0x18 bytes
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 struct CIntelligentPointerObject : CBaseIntelligentPointerCtor { };   // CIntelligentPointer<CThingObject>
 

@@ -1,5 +1,6 @@
 // CCreatureAction_JackDeathInto::Initialise() -- base Initialise; swap creature mode 0x34 for 0x35; spawn the creature's DEATH special effect at its position when its special-effects def maps one
 // Leaf: ?Initialise@CCreatureAction_JackDeathInto@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C0EA0, 268 bytes (272 with padding), virtual Initialise.
 // Callees: CCombatActionBase::Initialise 0x00857520 (direct, first), CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::
@@ -15,7 +16,7 @@
 //   the effect id's frame word, not the sub-def's); the name string is a named local in its own block and shares
 //   the sub-def's frame word (the def stays in esi) -- which needs the same-TU GetSubDef stand-in below (retail's LTCG
 //   knowledge that the def pointer's address does not escape).
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;

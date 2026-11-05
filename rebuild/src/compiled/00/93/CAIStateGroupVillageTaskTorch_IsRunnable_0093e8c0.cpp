@@ -1,5 +1,6 @@
 // CAIStateGroup_VillageTaskTorch::IsRunnable() -- clear the task, ask the creature's village for a torch task; keep it only when the task's torch exists and its graphic appearance has the torch dummy object (else clear it again); runnable when a task remains
 // Leaf: ?IsRunnable@CAIStateGroup_VillageTaskTorch@@UAE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E8C0, length 318 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10 (PTask
 //          assignments through CIntelligentPointer<CVillageTaskTorch> temporaries, vtable 0x0128B088), GFGetPVillageInterface
@@ -12,11 +13,7 @@
 // a local before SetPItem (so `&PTask` is formed after the GetPItem call, as retail).
 class CCharString { public: void* PStringData; };
 extern CCharString g_TorchDummyName;            // 0x013BACA0 (dynamically initialised global name)
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { }
-    C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long zero1, unsigned long zero2, C3DVector* position, CRightHandedSet* orientation, float scale);   // 0x004C08C0

@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleTransitionBetweenPoints::Update() -- until EndFrame step the camera position by Increment and track the thing's focal position (or drift the look-at by LookAtIncrement), then aim the camera and apply the FOV
 // Leaf: ?Update@CScriptModuleTransitionBetweenPoints
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: MATCH (retry 9) -- the LookAtPos drift is written per component in the function body
 // (`LookAtPos.X = LookAtIncrement.X + LookAtPos.X;` ...): retail loads the increment first (`fld LookAtIncrement ; fadd
 // LookAtPos ; fstp LookAtPos`). Through an inline C3DVector operator+= (`X += o.X`, `X = X + o.X`, `X = o.X + X`) VC7.1
@@ -19,19 +20,7 @@
 // the returned pointer and loads the component into eax); the drift is an inline `+=` straight into the member.
 class CWorld { public: static long __fastcall GetFrame(); };                 // 0x0049D870
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector operator+(const C3DVector& other) const
-    {
-        C3DVector result;
-        result.X = X + other.X;
-        result.Y = Y + other.Y;
-        result.Z = Z + other.Z;
-        return result;
-    }
-    C3DVector& operator+=(const C3DVector& other) { X += other.X; Y += other.Y; Z += other.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 
 class CTCGraphicAppearance {
 public:

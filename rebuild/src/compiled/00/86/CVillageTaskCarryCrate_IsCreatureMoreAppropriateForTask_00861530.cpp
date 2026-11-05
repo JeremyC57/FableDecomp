@@ -1,5 +1,6 @@
 // CVillageTaskCarryCrate::IsCreatureMoreAppropriateForTask(const CThing&) const -- for a pickup task, true when the candidate is valid for the task and more than 1.5x nearer to the crate stack than the assigned creature (squared distances, factor 2.25)
 // Leaf: IsCreatureMoreAppropriateForTask
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00861530, 313 bytes (320 with padding), `ret 4`.
 //   PDB ?IsCreatureMoreAppropriateForTask@CVillageTaskCarryCrate@@QBE_NABVCThing@@@Z (non-virtual).
 // Identity: labelled "CVillageTaskHorn::IsCreatureMoreAppropriateForTask" (propagated); it reads Pickup at +0x18 and
@@ -12,20 +13,7 @@
 //   the final comparison survive (`2.25 * c < a` via `test ah,5 ; jnp`, `c > a * 2.25` via `test ah,41h ; jne`).
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator-(const C3DVector& o) const
-    {
-        C3DVector r;
-        r.X = X - o.X;
-        r.Y = Y - o.Y;
-        r.Z = Z - o.Z;
-        return r;
-    }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CThing : public CBaseObject { public:
     const C3DVector& GetPos() const;          // 0x004C73D0
 };
@@ -53,8 +41,8 @@ bool CVillageTaskCarryCrate::IsCreatureMoreAppropriateForTask(const CThing& crea
         C3DVector crate = static_cast<const CThing*>(PCrateStack.GetPItem())->GetPos();
         C3DVector assigned = static_cast<const CThing*>(CreatureAssignedToTask.GetPItem())->GetPos();
         C3DVector position = creature.GetPos();
-        float assignedDistance = (crate - assigned).GetLengthSquared();
-        float creatureDistance = (crate - position).GetLengthSquared();
+        float assignedDistance = (crate - assigned).GetSquaredMagnitude();
+        float creatureDistance = (crate - position).GetSquaredMagnitude();
         if (Pickup)
             result = creatureDistance * 2.25f < assignedDistance;
         else

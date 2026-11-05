@@ -1,5 +1,6 @@
 // CTCInventoryItem::GetRHSetFromOrientation(EInventoryObjectOrientation orientation) -- private static: the right-handed set for one of the twelve inventory object orientations
 // Leaf: ?GetRHSetFromOrientation@CTCInventoryItem@@CI?AVCRightHandedSet@@W4EInventoryObjectOrientation@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005D8EF0, 316 bytes (incl. the 12-entry jump table), static __fastcall: hidden
 //   CRightHandedSet result in ecx, orientation in edx, plain `ret`.
 // Identity: Ego_r.pdb ?GetRHSetFromOrientation@CTCInventoryItem@@CI?AVCRightHandedSet@@W4EInventoryObjectOrientation@@@Z
@@ -18,11 +19,7 @@
 //   memberwise copy makes it non-trivial). VC7.1 calls it out of line for the twelve cases and expands it for the
 //   fall-through default, as retail does (first probe, the landed GetStartingRightHandedSet model).
 enum EInventoryObjectOrientation { };
-class C3DVector {                                       // 12 bytes
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {                                 // 24 bytes
 public:
     C3DVector Up;                                       // +0x00

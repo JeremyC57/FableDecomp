@@ -1,5 +1,6 @@
 // CCreatureAction_FinishWillForceSpell::FinishAction() -- finish as a combat action, release the creature's special-ability mutex, then re-draw the removed weapon with a fast unsheathe-to-combat-pose action
 // Leaf: ?FinishAction@CCreatureAction_FinishWillForceSpell@@UAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local same-TU LowerBound bodies removed (the header defines the same-TU noinline bodies).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008BA140, 219 bytes, thiscall virtual, plain `ret`.
 // Identity (proven): RTTI vtable 0x0127B87C (.?AVCCreatureAction_FinishWillForceSpell@@) slot 4 = FinishAction; Ego_r.pdb / FableWin.pdb
@@ -22,69 +23,11 @@ class CTCPhysicsBase;
 #pragma pack(pop)
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc> class vector {              // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    iterator end() { return this->_M_finish; }
-    const_iterator end() const { return this->_M_finish; }
-    _Tp& operator[](unsigned int n) { return *(this->_M_start + n); }
-};
-}   // namespace std
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                                     // +0x00
-    TCompare           Compare;                                  // +0x0C
-    bool               Dirty;                                    // +0x0D
-    value_type* LowerBound(const K& key);                        // 0x0040F020
-    const value_type* LowerBound(const K& key) const;            // 0x004365B0
-};
 // Same-TU bodies of the two retail LowerBound instances (STLport lower_bound over the sorted pairs), kept out of line:
 // VC7.1 then knows the key's address does not escape and shares its frame word with the component out-pointer.
 #pragma auto_inline(off)
-template <class K, class V, class TCompare>
-__declspec(noinline) const typename CVectorMap<K, V, TCompare>::value_type* CVectorMap<K, V, TCompare>::LowerBound(const K& key) const
-{
-    const value_type* it = Data._M_start;
-    long count = Data._M_finish - Data._M_start;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].first < key) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
-template <class K, class V, class TCompare>
-__declspec(noinline) typename CVectorMap<K, V, TCompare>::value_type* CVectorMap<K, V, TCompare>::LowerBound(const K& key)
-{
-    value_type* it = Data._M_start;
-    long count = Data._M_finish - Data._M_start;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].first < key) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
 #pragma auto_inline(on)
 
 // Definition objects: CIVCountedPointeeBase (vptr, IVRefCount +0x04; slot 1 Delete) -> CResource (0x1C) -> CDefClassBase
@@ -220,8 +163,8 @@ public:
         ETCInterfaceType key = T::StatGetInterfaceType();
         TCMap* map = &Components;
         TCMap::value_type* it = map->LowerBound(key);
-        if (it == map->Data.end() || T::StatGetInterfaceType() < it->first)
-            it = map->Data.end();
+        if (it == map->end() || T::StatGetInterfaceType() < it->first)
+            it = map->end();
         *out = (T*)it->second;
         return true;
     }
@@ -232,8 +175,8 @@ public:
         ETCInterfaceType key = T::StatGetInterfaceType();
         const TCMap* map = &Components;
         const TCMap::value_type* it = map->LowerBound(key);
-        if (it == map->Data.end() || T::StatGetInterfaceType() < it->first)
-            it = map->Data.end();
+        if (it == map->end() || T::StatGetInterfaceType() < it->first)
+            it = map->end();
         *out = (const T*)it->second;
         return true;
     }

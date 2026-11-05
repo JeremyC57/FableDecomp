@@ -1,5 +1,6 @@
 // CEnginePrimitive2DStaticMesh::CEnginePrimitive2DStaticMesh -- constructs mesh index, clip box, alpha, orientation, invalid bounding sphere and tint; retail00550940 192bytes. PDB wrapper layout0x6c confirmed at offsets0xc/0x10/0x20/0x24/0x58/0x68; no matching wrapper or composite headers exist. Orientation copy installs class vtable01239824; other members copied fieldwise.
-class C3DVector { public: float X,Y,Z; C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} C3DVector(float x,float y,float z):X(x),Y(y),Z(z){} };
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up,Forward; CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} CRightHandedSet(const C3DVector& up,const C3DVector& forward):Up(up),Forward(forward){} };
 class C3DOrientationInterpolator { public:
  virtual ~C3DOrientationInterpolator(); // RTTI vtable01239824 slot0 -> deleting destructor004c2130

@@ -1,5 +1,6 @@
 // CEnginePrimitive2DText original descriptor: real C3DVector Pos and const-font reference.
 // Leaf: ??0CEnginePrimitive2DText@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@W4EEngineInterpolationSet@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #include <stddef.h>
 #ifdef _MSC_VER
@@ -9,7 +10,7 @@ typedef unsigned int PrimitiveIdentifier __attribute__((mode(DI)));
 #endif
 #pragma pack(push,1)
 class C2DVector {public:float X,Y;C2DVector(float x,float y):X(x),Y(y){}C2DVector(const C2DVector&v):X(v.X),Y(v.Y){}};
-class C3DVector {public:float X,Y,Z;C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CWideStringData;class CWideString {public:CWideStringData*PStringData;CWideString();CWideString(const CWideString&);~CWideString();};
 // Original accessed anonymous RGBA component projection. Other overlapping union

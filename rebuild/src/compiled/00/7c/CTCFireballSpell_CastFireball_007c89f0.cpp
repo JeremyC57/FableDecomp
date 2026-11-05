@@ -1,5 +1,6 @@
 // CTCFireballSpell::CastFireball(CThing* target) -- release the charged fireball: clamp the accumulated will level to what the stamina allows, take the level's stamina cost from a hero, kill the build-up effect, stop the looping charge sound and play the level's cast criteria, read the fireball attachment dummy for the start position and frame, pick the FIREBALL_<level+1> shot definition, tilt the caster's frame about its side axis by the def's inclination, create the shot at the target and make it undrawable, immune to bullet time and undeflectable
 // Leaf: ?CastFireball@CTCFireballSpell@@QAEXPAVCThing@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C89F0, 966 bytes of code + `mov edi,edi` + two 4-entry jump tables (row 1000), `ret 4`.
 // Identity: Ego_r.pdb has `?CastFireball@CTCFireballSpell@@QAEXPAVCThing@@@Z` (donor 0x007C7730); the literals are the four
 //   HERO_ABILITY_FIREBALL_CAST_* criteria (0x0126EA8C..0x0126EA20) and FIREBALL_1..4 (0x0126EA14..0x0126E9F0). Jump tables
@@ -78,14 +79,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void Rotate(const C3DVector& axis, float angle);       // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                           // +0x00
     C3DVector Forward;                                      // +0x0C

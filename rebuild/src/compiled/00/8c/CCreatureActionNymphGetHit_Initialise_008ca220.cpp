@@ -1,5 +1,6 @@
 // CCreatureAction_NymphGetHit::Initialise() -- reset the nymph's physics interpolation and disable its physics, record where its "DUMMY_CENTRE" helper is (its position when it has none), flag the CTCNymph as hit, then the base strike-response Initialise
 // Leaf: ?Initialise@CCreatureAction_NymphGetHit@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CA220, 238 bytes, thiscall, plain `ret` (virtual).
 // Identity (proven): RTTI vtable 0x01263F84 (.?AVCCreatureAction_NymphGetHit@@) slot 12 = Initialise (slot 12 of the
@@ -26,10 +27,7 @@ public:
     void* PStringData;
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet {
 public:

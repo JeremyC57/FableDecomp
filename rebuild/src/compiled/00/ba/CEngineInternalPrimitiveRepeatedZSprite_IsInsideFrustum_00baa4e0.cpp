@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveRepeatedZSprite::IsInsideFrustum(const CEngineCamera& camera, bool ignoreFrustum) -- distance-cull the sprite group's bounding sphere against the scaled fade-out distance and the fade-in start, then (unless told to skip it) test the sphere against the camera's near/far planes and four frustum planes
 // Leaf: ?IsInsideFrustum@@YI_NPAVCEngineInternalPrimitiveRepeatedZSprite@@HABVCEngineCamera@@_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BAA4E0, 444 bytes (+2 int3), `ret 8`; vtable 0x012A524C slot 20. Ego_r.pdb:
 //   ?IsInsideFrustum@CEngineInternalPrimitiveRepeatedZSprite@@UAE_NABVCEngineCamera@@_N@Z.
 // Callees: CEngineInternalPrimitiveRepeatedZSprite::GetTransitionFade() const 0x00BAA460 (landed; Ego_r.pdb
@@ -19,14 +20,7 @@
 #pragma intrinsic(sqrt)
 #include "engine/CEngineInternalPrimitiveRepeatedZSprite.h"
 #include "engine/CEngineCamera.h"
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 class CPlane { public: C3DVector Normal; float D; };
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 class CEngineFadeDistance {                        // Ego_r.pdb, 8 bytes
@@ -84,7 +78,7 @@ static __forceinline float FadeFar(const CEngineInternalPrimitiveRepeatedZSprite
 
 bool __fastcall IsInsideFrustum(CEngineInternalPrimitiveRepeatedZSprite* self, int, const CEngineCamera& camera, bool ignoreFrustum)
 {
-    float dist = (Sphere(self).Center - CameraPosition(camera)).GetLength();
+    float dist = (Sphere(self).Center - CameraPosition(camera)).GetMagnitude();
     if (dist - Sphere(self).Radius > g_pEnginePrimitiveRendererSharedData->ZSpriteDrawDistanceFactor * FadeFar(self)) return false;
     if (dist + Sphere(self).Radius < static_cast<const CEngineInternalPrimitiveRepeatedZSprite_Methods*>(self)->GetTransitionFade().FadeBeginDistance) return false;
     if (ignoreFrustum) return true;

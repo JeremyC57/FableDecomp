@@ -1,5 +1,6 @@
 // CLandscapeBackgroundTreeNode::GetDesiredLODBand() -- the LOD band for the camera's shortest distance to the node's bounding box (the renderer's LOD Z bands), clamped to the node's [FirstBand, LastBand]
 // Leaf: ?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail-asm: 0x00BF7E1E..0x00BF7E58 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+0Ch],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind the g_SSEAvailable byte 0x013D2880 (the box and point pointers are spilled to [esp+8]/[esp+4] and reloaded because the asm names them; VC7.1 C++ emits no packed SSE: /arch:SSE only produces scalar ss code and the xmmintrin intrinsics would not reload the spilled pointers); the x87 branch is the C++ fallback.
 // Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF7DF0, 379 bytes, thiscall, plain `ret`, long in eax.
@@ -19,15 +20,7 @@ extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 extern bool g_SSEAvailable;                             // 0x013D2880
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00
@@ -74,7 +67,7 @@ public:
             closest.Z = MinCoord.Z;
         else if (closest.Z > MaxCoord.Z)
             closest.Z = MaxCoord.Z;
-        return (point - closest).GetLengthSquared();
+        return (point - closest).GetSquaredMagnitude();
     }
     __forceinline float CalcShortestDistanceToPoint(const C3DVector& point) const
     {

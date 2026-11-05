@@ -1,5 +1,6 @@
 // CTCVolumeContainmentTracker::~CTCVolumeContainmentTracker() -- Release the definition, destroy the owned member, then destroy the component base.
 // Leaf: ??1CTCVolumeContainmentTracker@@UAE@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Layout: genuine member chain from PDB; retail PDef+0x1c and PThingInside+0xc. Shared headers included as evidence where present but flatten real base/vptr and lifetime-bearing members; Oracle list is4bytes in retail, moving later members by8.
 #ifndef _MSC_VER
 #define __forceinline inline
@@ -11,7 +12,7 @@ class CIVCountedPointeeBase {public:virtual ~CIVCountedPointeeBase(){}virtual vo
 template<class T> class CDefPointer {public:T* Object;__forceinline ~CDefPointer(){if(Object){const CIVCountedPointeeBase* base=(const CIVCountedPointeeBase*)Object;if(--base->IVRefCount==0)base->Delete();Object=0;}}};
 class CBaseIntelligentPointer {public:virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;};
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {};
-class C3DVector {public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CEnginePrimitiveThemeChannelDesc {public:long ID;};
 enum EOracleMinigameState {};enum EOracleMinigameInput {};
 namespace std {template<class T>class allocator{};template<class T,class A=allocator<T> >class list {public:void* _M_node;~list();};}

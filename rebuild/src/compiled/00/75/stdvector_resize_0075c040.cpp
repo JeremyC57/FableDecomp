@@ -1,5 +1,6 @@
 // std::vector::resize(unsigned int n, const T& value) -- Shrink the range or insert copies of value.
 // Leaf: ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: Own C3DVector fill/resize callers and12-byte element. Own copy0074ca20 and fill-insert0075bb00.
 #ifndef _MSC_VER
 #define __fastcall
@@ -19,6 +20,6 @@ public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;
 protected:void _M_fill_insert(T*,unsigned int,const T&);
 };
 }
-class C3DVector {public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 typedef C3DVector Element;
 template void std::vector<Element>::resize(unsigned int,const Element&);

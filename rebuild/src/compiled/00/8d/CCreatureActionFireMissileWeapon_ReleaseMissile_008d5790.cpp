@@ -1,4 +1,5 @@
 // CCreatureAction_FireMissileWeapon::ReleaseMissile -- return held weapon, detach its loaded missile, play firing animation, select shot definition.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008D5790,316bytes; parameters CThing** missile,CThing** weapon,long* shot preserve incoming outputs on skipped branches.
 #define CCreatureAction_FireMissileWeapon CCreatureAction_FireMissileWeaponPdb
 #include "engine/CCreatureAction_FireMissileWeapon.h"
@@ -23,7 +24,7 @@
 #include "engine/CBaseObject.h"
 #include "fable_string.h"
 class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
-class C3DVector { public:float x,y,z;};
+#include "engine/C3DVector.h"
 class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {

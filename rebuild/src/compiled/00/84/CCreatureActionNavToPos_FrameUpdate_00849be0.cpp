@@ -1,5 +1,6 @@
 // CCreatureAction_NavToPos::FrameUpdate() -- ask the creature's navigation component for the next step towards NavPos: on failure move to where it stands and finish; on a step move to position + step and, unless the player is Z-targeting, look at it (priority 0x11); on arrival move to where it stands and finish; then the base FrameUpdate
 // Leaf: ?FrameUpdate@CCreatureAction_NavToPos@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00849BE0, 421 bytes, plain `ret` (virtual; Ego_r.pdb UAEXXZ).
 // Callees (Ego_r spellings): CBaseIntelligentPointer::GetPItem() const 0x00A01B50, CVectorMap<ETCInterfaceType, CTCBase*,
@@ -21,13 +22,7 @@
 //   FrameUpdate) VC7.1 keeps &PCreature in ebx as retail (the earlier stand-in model gave ebp); the GetTC lookup stores
 //   `((it == last || type < it->first) ? last : it)->second` through the out pointer.
 #define UNPROVEN_SLOT(n) virtual void UnprovenSlot##n();
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { TCI_CREATURE_NAVIGATION = 7, TCI_LOOK = 0x43 };   // descriptive enumerator names
 #include "engine/CVectorMap.h"

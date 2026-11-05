@@ -1,5 +1,6 @@
 // NScript::CExpression_WaitScript::Main() -- the hero "wait" expression quest: register a conscious-hero predicate, run a frame, take the hero under scripted control (retrying a frame at a time), then inside an empty movie sequence fade out, pause, kill the follow thread, deactivate the Expression_Follow quest, reset the camera, pause, fade back in and deactivate this quest later
 // Leaf: ?Main@CExpression_WaitScript@NScript@@UAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EEA460, length 0x218 bytes (+ int3 padding), no EH frame.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840, CScriptBase::SetPredicate 0x00CB7920 /
 //   IsActiveThreadTerminating 0x00CB7940 / KillSpawnedFunction 0x00CB7AA0, CBaseObject ctor 0x0099A380 / dtor 0x0099A430,
@@ -27,11 +28,9 @@ class CRGBColour { public:
     __forceinline CRGBColour(const CRGBColour& other) : B(other.B), G(other.G), R(other.R), A(other.A) { }
 };
 
-class CScriptThing { public:                                      // 12 bytes
-    unsigned char _body[0xc - 4];
-    CScriptThing(const CScriptThing& other);               // 0x004ABE90
-    virtual ~CScriptThing();                                       // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 struct CIsThingConscious {                                 // vtable 0x012C2FE8
     CScriptThing Thing;                                    // +0x04

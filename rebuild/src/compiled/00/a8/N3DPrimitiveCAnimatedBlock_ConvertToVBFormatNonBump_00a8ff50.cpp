@@ -1,5 +1,6 @@
 // N3DPrimitive::CAnimatedBlock::ConvertToVBFormatNonBump(CTVertexNormBlend4Tex1* out, CDeviceIndependent& mesh) -- fill the blended vertex buffer: for every block vertex copy position/normal/uv from the mesh vertex it indexes, then its bone indices (x3, palette slots) and weights, zero-padding to four
 // Leaf: ?ConvertToVBFormatNonBump@CAnimatedBlock@N3DPrimitive@@AAEXPAVCTVertexNormBlend4Tex1@@AAVCDeviceIndependent@2@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8FF50, length 231 bytes (+9 int3), `ret 8`. No callees.
@@ -11,7 +12,7 @@
 //   its dead frame store) into the CGenericVertex SetPosition / SetNormal / SetU1 / SetV1 inlines; then the bone loop (index x3
 //   as a byte, re-reading BonesPerVertex) and the zero padding to four from the same counter.
 #include "engine/CBaseClassNonCopyable.h"
-class C3DVector{public:float X,Y,Z;C3DVector(const C3DVector&o):X(o.X),Y(o.Y),Z(o.Z){}};
+#include "engine/C3DVector.h"
 class C3DVertex2{public:C3DVector Position,Normal;float U,V;const C3DVector GetPosition()const{return Position;}const C3DVector GetNormal()const{return Normal;}float GetU()const{return U;}float GetV()const{return V;}};
 class CTVertexNormBlend4Tex1Base{public:float X,Y,Z;unsigned char BlendingIndices[4];unsigned char BlendingWeights[4];float NormalX,NormalY,NormalZ,U1,V1;};     // Ego_r.pdb, 40 bytes
 template<class T>class CGenericVertex:public T{public:

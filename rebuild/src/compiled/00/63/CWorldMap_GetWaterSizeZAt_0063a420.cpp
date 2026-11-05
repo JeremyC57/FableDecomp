@@ -2,6 +2,7 @@
 // position and its +1 neighbours along X and Y must all lie on the same loaded map; the map's water offset at the
 // local position counts only above 0.05, else 0
 // Leaf: GetWaterSizeZAt
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063A420, 275 bytes, `ret 4`. PDB ?GetWaterSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z.
 // Callees: __ftol2 0x00BFEA70 (x6), IsPosInMap(const C3DVector&) 0x004FC600, IsPosInMap(const C2DCoordI&) 0x004FC5B0,
 //   GetMapNumberAt(const C2DCoordI&) virtual slot 17 (+0x44), IsMapLoaded virtual slot 10 (+0x28),
@@ -11,15 +12,7 @@
 // Layout: the local retail CWorldMap model of the landed sibling GetThemeMinCameraSizeZOffsetAt 0x0063A540 (vtable
 //   0x01244AEC; no data members are read here). Shape: the map reference is a named local (PeekMap runs before
 //   &local is pushed), as in the sibling.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
-class C2DCoordI { public:
-    long x, y;
-    C2DCoordI() { }
-    C2DCoordI(long ax, long ay) : x(ax), y(ay) { }
-};
+#include "engine/C3DVector.h"
 class CMap {
 public:
     float GetWaterSizeZOffsetAt(const C3DVector& localPos) const;   // 0x0081FEC0

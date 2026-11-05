@@ -1,5 +1,6 @@
 // _Rb_tree::_M_copy(_Rb_tree_node<pair<const unsigned __int64, CThingPosAndOrientation> >* x, _Rb_tree_node<...>* p) -- STLport structural copy of a map<unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation> subtree: clone x under p, recurse down every right child and walk the left spine iteratively
 // Leaf: ?_M_copy@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008260C0, 192 bytes, thiscall `ret 8`; recursive (0x008260E9 / 0x00826165).
 // Callees: _Rb_tree::_M_clone_node @ 0x00825A80 (the TOP clone stays out of line, `ret 4`), malloc @ 0x00BFEA0E (the
 //   inlined clone in the loop: 0x30-byte nodes), itself.
@@ -11,10 +12,7 @@
 //   the one in the loop by itself. The pair's memberwise copy moves the key and the Position (C3DVector's memberwise
 //   user copy ctor: direct [ecx+N] stores) and copies the trivially copyable FacingAngles through its own address
 //   (`lea ; add ecx,14h`).
-class C3DVector { public:                                          // user memberwise copy constructor
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class C3DAngles { public:                                          // trivially copyable
     float X, Y, Z;
 };

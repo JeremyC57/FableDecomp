@@ -1,5 +1,6 @@
 // CTCVolumeContainmentTracker::FrameUpdate() -- while tracking is enabled and the tracked volume is active, re-runs the containment Update every 5 seconds' worth of frames (every 0.8 s when the camera is within 10 units of the thing), staggered by the thing's UID; immediately when the def says so or the tracker is not yet updated
 // Leaf: ?FrameUpdate@CTCVolumeContainmentTracker@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00785B40, 318 bytes (plain `ret`, ebp frame).
@@ -14,13 +15,7 @@
 // Retail-asm: 0x00785B8E..0x00785BAE `fld [ebp - 0x10] ; fadd [ebp - 0xc] ; fistp [ebp - 4] ; fild [ebp - 4] ; fsub [ebp - 8] ; fstp [ebp - 0x14] ; mov eax, [ebp - 0x10] ; cmp eax, [ebp - 0x14] ; jne 0x785bab ; dec [ebp - 4] ; mov ecx, [ebp - 4] ; mov [ebp - 4], ecx` and 0x00785C1F..0x00785C3F `fld [ebp - 0xc] ; fadd [ebp - 0x10] ; fistp [ebp - 4] ; fild [ebp - 4] ; fsub [ebp - 0x14] ; fstp [ebp - 8] ; mov eax, [ebp - 0xc] ; cmp eax, [ebp - 8] ; jne 0x785c3c ; dec [ebp - 4] ; mov ecx, [ebp - 4] ; mov [ebp - 4], ecx` (the 5 s and 0.8 s intervals) -- the engine's inline-assembly ceiling helper expanded in place (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; dec dword ptr` in the same 10-instruction block: rasm1 family (b)). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the result is read back by C++ after the block.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 extern unsigned char g_bVolumeTrackingEnabled;  // 0x01375757
 class CMainGameComponent {
 protected:
@@ -73,7 +68,7 @@ void CTCVolumeContainmentTracker::FrameUpdate()
         long interval = GFFloatToLongCeil(CMainGameComponent::GetConstantFPS() * 5.0f);
         CWorld* world = &GetWorld();
         const C3DVector& pos = ParentThing->GetPos();
-        if ((world->GetCameraPosition() - pos).GetMagnitudeSquared() < 100.0f)
+        if ((world->GetCameraPosition() - pos).GetSquaredMagnitude() < 100.0f)
             interval = GFFloatToLongCeil(CMainGameComponent::GetConstantFPS() * 0.8f);
         unsigned __int64 uid = ParentThing->UID;
         if ((uid + CWorld::GetFrame()) % interval != 0)

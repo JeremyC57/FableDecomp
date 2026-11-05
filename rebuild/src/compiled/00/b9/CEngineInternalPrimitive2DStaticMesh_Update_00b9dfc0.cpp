@@ -1,5 +1,6 @@
 // CEngineInternalPrimitive2DStaticMesh::Update(const CEnginePrimitive& primitive, unsigned long flags) -- take a 2D static mesh primitive description: the flags, the static mesh info from the main mesh bank, alpha, tint, clip box, the fixed 2D layer, interpolation set and orientation (both orientation frames re-orthogonalised); the bounding sphere is the description's scaled by 100 when it has a radius, else the mesh's own; mark the primitive for re-initialisation
 // Leaf: ?Update@CEngineInternalPrimitive2DStaticMesh@@UAEXABVCEnginePrimitive@@K@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9DFC0, length 341 bytes, `ret 8`.
 // Name: FableWin.pdb `?Update@CEngineInternalPrimitive2DStaticMesh@@UAEXABVCEnginePrimitive@@K@Z` (virtual; catalog spelling agrees).
 // Callees: CMeshDataBank::PeekStaticMesh 0x00A24280 (landed), C3DOrientationInterpolator::operator= 0x006B0E00 (landed, FableWin
@@ -22,14 +23,7 @@
 #include "engine/CEngineResourceManager.h"
 #undef CEngineResourceManager
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;                                      // +0x00
     float     Radius;                                      // +0x0c

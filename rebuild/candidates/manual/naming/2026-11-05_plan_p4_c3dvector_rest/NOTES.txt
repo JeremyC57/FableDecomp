@@ -1,0 +1,22 @@
+Plan phase 4, wave "w1" (2026-11-05): C3DVector leftovers moved onto engine/C3DVector.h, no method respell.
+
+HEADER: engine/C3DVector.h and engine/C2DCoordI.h used as they are (no change, no sub-macro, no includer regrade).
+ROWS: 597 PASS under vland --recheck-landed (RELOCATION_MATCH 506, MATCH 91). Parity equals the landed source's on every row (--before
+  baseline). No symbol change; 0 introduced warnings (warnings that differ only in the ?A0x anonymous-namespace hash, which follows
+  the compile path, count as inherited; wave.py now normalises them).
+  - Sources: the 1,008 candidates = phase-3 w2 READY_PHASE4 (530) + phase-3 w2 compile_fail (478), through scripts/hdrmig4.py
+    (cfg.json, then cfg_lc.json for `.x/.y/.z` -> PDB X/Y/Z). 774 pass hdrmig4; the 177 that respell a local method are wave w1m.
+  - READY_PHASE4: 523 here, 7 in w1m (all 530 regated and passing).
+  - hdrmig4 additions (scripts/hdrmig4.py = hdrmig3 + ...):
+    - extra_classes_if_local: a local C2DCoordI is removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e,
+      public long X/Y): 59 rows here.
+    - strip_free_ops: a local inline free `C3DVector operator-(const C3DVector&, const C3DVector&)` (or +) whose body is the
+      member-wise difference / sum is removed; the header's member operator is the same inline computation: 10 rows.
+    - method_map (wave w1m), strip_member_defs / rewrites_if_local / ptr_triple / defines_if_local (wave w2),
+      include_before_unless / include_after_local / remove_with_include / accept_pdb_respell (wave w4).
+  - gate.py: 597 of 597 PASS.
+QUEUE LINES / BINDINGS / CALLERS: none (no spelling changes).
+DEFERRED.tsv (234 tried rows): compile_fail 169 (local methods / operators the header lacks: RotateXY, GetMagnitudeAndNormalise,
+  Set, Zero, unary -, operator*(C3DVector) dot, !=, -=, fmod overloads, local sqrtf/fabsf bodies, members x/y of other classes),
+  bytes_differ 41, method_map 20 (the local body is not the header computation, or the method is declared out of line, or is
+  defined in more than one class), free_op 2 (a body that is not member-wise), stray_change 2.

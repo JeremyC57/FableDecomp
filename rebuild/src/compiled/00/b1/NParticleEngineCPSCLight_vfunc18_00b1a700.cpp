@@ -1,12 +1,13 @@
 // NParticleEngine::CPSCLight::DatabaseCopy(const CPSCBase& other) -- copy the light's database fields; retail 0x00B1A700, 361 bytes (vtable slot 18).
 // Leaf: DatabaseCopy
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // The vtable maps this entry to CPSCLight slot 18. No generated CPSCLight header is
 // present, so this local model follows struct_layouts_egor.tsv (112-byte CPSCLight).
 // The copy order and bit units are confirmed by adjacent DatabaseCopy code and retail
 // loads. LightUserPointsArray is the PDB CArray<C3DVector>, a 12-byte STLport vector;
 // its reserve is 0x00920FF0 and resize is 0x0075C040. Timer state, primitive handle,
 // and StartedTimer are intentionally not copied.
-class C3DVector { public: float X, Y, Z; C3DVector() {} };   // retail class key V (Ego_r.pdb VC3DVector@@)
+#include "engine/C3DVector.h"
 namespace std {
 template <class T> class allocator { };
 template <class T, class A = allocator<T> > class vector {      // STLport vector (12 bytes)

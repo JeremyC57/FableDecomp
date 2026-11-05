@@ -1,5 +1,6 @@
 // std::_Deque_base::_M_initialize_map(size_t num_elements) -- STLport deque<CBezierCurve> map setup: max(8, nodes + 2) map slots, the node buffers malloc'd for the centred node range, start/finish cursors set
 // Leaf: ?_M_initialize_map@?$_Deque_base@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009137F0, 183 bytes (192 with padding), __fastcall `ret 4`.
 // Identity: STLport 4.6 _Deque_base<CBezierCurve, allocator<CBezierCurve> >::_M_initialize_map; called by the deque
 //   constructions of the flying-thing path code (0x00913174, 0x00913A07, 0x00913C33). The catalog label
@@ -21,14 +22,7 @@ extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 inline void* operator new(size_t, void* p) { return p; }
 
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CBezierCurve {                            // Ego_r.pdb, 48 bytes

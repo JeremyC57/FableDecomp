@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::DatabaseCopy(const CParticleSystem& other) -- copy a database system into this one: the name, then the component list entry by entry (a component of the same type copies in place, otherwise it is replaced by a clone owned by this system), then the Enabled flag, Scale and the ScaleParticles flag
 // Leaf: DatabaseCopy
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF4EE0, 299 bytes, `ret 4`. PDB: ?DatabaseCopy@CParticleSystem@NParticleEngine@@QAEXABV12@@Z.
 // Callees: CCharString::operator= 0x0099EFB0, vector<pair<EPSCType, CComponentInstance> >::resize(n) 0x00AF7A10 (catalogued
 //   "CThingCreatureBase::GetAnimsWithNameStartingWith", propagated), CCountedPointer<CPSCBase>::Reset(CPSCBase*) 0x00AF6010
@@ -23,11 +24,7 @@ public:
 };
 namespace NParticleEngine {
 
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CPSCBase {
 public:

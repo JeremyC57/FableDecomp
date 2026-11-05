@@ -1,5 +1,6 @@
 // CAIBrain::~CAIBrain() -- AI brain dtor: run OnKill unless it already ran, delete every state group (popping them off the back of the state-group vector map), then the member dtors in reverse order (update zones, brain def, the output's look-at thing and action, the state-group storage) and the tail jump to ~CSuspendableProcessMicrothread
 // Leaf: ??1CAIBrain@@UAE@XZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0088BBE0, 199 bytes, tail jump to the base destructor.
 // Identity: the one vptr store 0x012780C4 carries RTTI `.?AVCAIBrain@@` (rtti_bases: CSuspendableProcessMicrothread at +0);
@@ -23,10 +24,7 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 template <class K, class V> class CKeyPairCompareGreater { public:
 };
-template <class K, class V, class TCompare> class CVectorMap : public CArray<std::pair<K, V> > { public:  // retail 0x10 bytes
-    TCompare Compare;                                       // +0x0c
-    bool     Dirty;                                         // +0x0d
-};
+#include "engine/CVectorMap.h"
 
 class CBaseObjectPointer;
 class CBaseIntelligentPointer { public:                     // 8 bytes

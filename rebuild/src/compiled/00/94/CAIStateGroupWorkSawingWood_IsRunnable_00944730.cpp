@@ -1,5 +1,6 @@
 // CAIStateGroup_WorkSawingWood::IsRunnable() -- in work hours, unless the creature's current mode is 0x22 or 6, pick the nearest live object owned by the creature's workplace that is a thing class 5 object with property bit 4 and a free action point (interface 0x2D), latch it as the saw horse and run
 // Leaf: ?IsRunnable@CAIStateGroup_WorkSawingWood
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00944730, length 526 bytes (plain `ret`).
 // Callees: CAIStateGroupWorkBase::IsInWorkHours @ 0x0091A6F0, CVectorMap::LowerBound @ 0x0040F020 (mode manager 0x31,
 //          non-const) / const @ 0x004365B0 (0x21 CTCThingOwner, 0x2D CTCUserActionPointBase), CTCCreatureModeManager::
@@ -48,13 +49,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() {}
-    __forceinline C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(x - o.x, y - o.y, z - o.z); }
-    __forceinline float GetLengthSquared() const { return x * x + y * y + z * z; }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x10 - 0x04];
@@ -229,7 +224,7 @@ bool CAIStateGroup_WorkSawingWood::IsRunnable()
                         && static_cast<const CThing*>(horse)->GetInterface(&point, 0x2d)
                         && point->IsActionPointFree()) {
                         CThing* creature = PBrain->PCreature;
-                        float distance = (creature->GetPos() - horse->GetPos()).GetLengthSquared();
+                        float distance = (creature->GetPos() - horse->GetPos()).GetSquaredMagnitude();
                         if (best == 0 || distance < bestDistance) {
                             bestDistance = distance;
                             best = horse;

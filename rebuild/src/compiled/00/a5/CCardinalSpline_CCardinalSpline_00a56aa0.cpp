@@ -1,6 +1,7 @@
 // CCardinalSpline::CCardinalSpline(const C3DVector& start, const C3DVector& end, float tension, bool endPointsConnected) -- two-point cardinal spline: empty control-point array, the tension and the end-points-connected flag, then both points appended
 // Grade: RELOCATION_MATCH -- C3DVector (retail pack(1)) with a memberwise user copy constructor: the first placement copy then reads x through ecx and the overflow call pushes the tag from edx, as retail (the implicit copy gave the edx/ecx swap in the first push_back only)
 // Leaf: ??0CCardinalSpline@@
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A56AA0, 167 bytes, `ret 10h` (PDB ??0CCardinalSpline@@QAE@ABVC3DVector@@0M_N@Z).
 // Callees: vector<C3DVector>::_M_insert_overflow(pos, x, const __false_type&, n, atend) @ 0x0066E370 (twice).
@@ -13,11 +14,7 @@
 //   `add [esi+4],0Ch`, else _M_insert_overflow with the tag homed in the dead bool argument slot).
 
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 #include "engine/CArray.h"

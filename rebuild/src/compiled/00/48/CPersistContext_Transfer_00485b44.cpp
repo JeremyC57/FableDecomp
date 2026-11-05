@@ -1,5 +1,6 @@
 // CPersistContext::Transfer(const char* name, C3DVector& value) -- transfer a 3D vector with a default of (0, 0, 0)
 // Leaf: Transfer
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00485B44, length 40 bytes.
 // Callees: CPersistContext::Transfer<C3DVector>(const char*, C3DVector&, const C3DVector&) @ 0x004859AD (CheckCRC, the
 // mode switch with a three-`movsd` default copy, CDataOutputStream::Write3DVector @ 0x00993FD0; labelled
@@ -10,12 +11,7 @@
 // Layout: CPersistContext from the PDB (Ego_r.pdb, 0x2c bytes); no engine header exists, so a local model is used.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CDefinitionManager;
 class CSymbolMap;
 class CStringParser;

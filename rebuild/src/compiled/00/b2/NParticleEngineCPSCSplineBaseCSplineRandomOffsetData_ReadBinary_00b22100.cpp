@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::ReadBinary(CDataInputStream& in) -- read the two flags and the offset count, size and fill the offset limit/speed arrays, then either snapshot the current spline as the previous one or clear the previous spline's points
 // Leaf: ReadBinary@CSplineRandomOffsetData
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B22100, 528 bytes, `ret 4`.
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0 (slow path of each inlined Read),
 //   CArray<C3DVector>::resize(n, const C3DVector&) 0x0075C040, CDataInputStream::Read3DVector 0x009950F0 (C3DVector by
@@ -13,10 +14,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 
 class CDataInputStream { public:
     void* m_pVtable;                       // +0

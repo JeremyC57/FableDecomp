@@ -1,5 +1,6 @@
 // CAIStateGroup_OpinionReactionRoot::FollowUpdate(float distance, bool run) -- once the reacted-to thing is farther than `distance`, turn to face it and walk (or run) to a wander position within 0.9 x distance of it; true while following is fine
 // Leaf: ?FollowUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NM_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009852C0, 337 bytes (`ret 8`). Ego_r.pdb ?FollowUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NM_N@Z
 //   (private; the parked file emitted it on a derived "...Methods" stand-in).
 // Callees (Ego_r.pdb spellings): CBaseIntelligentPointer::GetPItem() const 0x00A01B50 (returns CBaseObject*; ThingReactingTo
@@ -71,14 +72,7 @@ public:
     C Compare;                                              // +0x0C
     bool Dirty;                                             // +0x0D
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
-    C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x20];
     std::bitset<274> UsingComponents;                       // +0x20
@@ -140,7 +134,7 @@ bool CAIStateGroup_OpinionReactionRoot::FollowUpdate(float distance, bool run)
     float lengthSquared;
     {
         C3DVector delta = target->GetPos() - from;
-        lengthSquared = delta.GetMagnitudeSquared();
+        lengthSquared = delta.GetSquaredMagnitude();
     }
     if ((float)sqrt(lengthSquared) > distance) {
         if (!TurnToFace())

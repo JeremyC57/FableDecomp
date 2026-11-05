@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionFollowCreature::Update() -- keep the follow target valid, ignore it for navigation, mirror its sneaking, then pick a speed from the gap to the target (stop, slow, match or run) and steer along the nav route, looking where it goes
 // Leaf: ?Update@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00713EE0, length 1153 bytes.
@@ -23,12 +24,7 @@
 template<class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
 template<class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public: float X, Y; };
 __forceinline C3DVector Offset(const C3DVector& pos, const C3DVector& delta) { return C3DVector(delta.X + pos.X, delta.Y + pos.Y, delta.Z + pos.Z); }
 float __fastcall Get2DDistance(const C2DVector& a, const C2DVector& b);   // 0x009E1AD0

@@ -1,5 +1,6 @@
 // CThingCreatureBase::OnCollision(ECollideType type, C3DVector* position, C3DVector* normal, CThing* other) -- base game-object collision handling; a creature in mode 0x42 hitting a surface that is not floor-like (normal . up < 0.866) gets knocked down; then (both alive) the creature's hit-on-collision component handles the hit
 // Leaf: ?OnCollision@CThingCreatureBase
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00667310, 307 bytes (+13 int3), `ret 10h`. CThingCreatureBase vtable 0x0125AC0C slot 41.
 // Callees: CThingGameObject::OnCollision @ 0x00839080, CInterfaceMap::LowerBound const @ 0x004365B0 / non-const @ 0x0040F020,
@@ -15,11 +16,7 @@
 // Shape: the mode test and the knockdown live inside HasTC(0x31) with the const GetTC; the slope test is an inline dot
 //   product with the constant up vector (the compiler keeps (Y + X) * 0 + Z); the knockdown action is a temporary passed
 //   straight to SetCurrentAction, destroyed by its implicit (inline) destructor.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    float Dot(const C3DVector& v) const { return X * v.X + Y * v.Y + Z * v.Z; }
-};
+#include "engine/C3DVector.h"
 enum ECollideType { COLLIDE_NONE = 0, COLLIDE_LANDSCAPE = 1 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

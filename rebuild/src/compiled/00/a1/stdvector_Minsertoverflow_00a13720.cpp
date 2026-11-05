@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<CPlane >) STLport growth insert for a 16-byte element with a user (memberwise) copy constructor: allocate size + max(size, fill_len) elements, copy the head out of line, construct x once (or fill out of line fill_len times), copy the tail unless atend, free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@VCPlane@@V?$allocator@VCPlane@@@std@@@std@@IAEXPAVCPlane@@ABV3@ABU__false_type@2@I_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A13720, 209 bytes (+ int3 padding to 224), thiscall, `ret 14h` (five arguments).
 // Identity (proven): std::vector<CPlane >::_M_insert_overflow; evidence: its callers are vector<CPlane>::insert(pos, n, x) 0x00AAB570 (0x00AAB6A0; the landed C3DMeshFileConvexVolumeChunk::ReadFromFile 0x00AAAB10 binds it for its CArray<CPlane> Planes), the chunk's push_back stub 0x00AAAAC0 (0x00AAAB03: `add ecx,30h`, Planes at retail +0x30 = Ego_r.pdb +0x38 less the 8-byte-smaller C3DMeshFileChunk base) and the push_back stub 0x00A138E0.
 // Label: the manifest's "Vector_InsertFill_Copy" is propagated / behavioural (family H043: six byte-identical bodies, each its own
@@ -14,13 +15,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
-class C3DVector {                                          // Ego_r.pdb, 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // PDB ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 class CPlane {                                             // Ego_r.pdb, 16 bytes
 public:
     C3DVector Normal;                                      // +0x0

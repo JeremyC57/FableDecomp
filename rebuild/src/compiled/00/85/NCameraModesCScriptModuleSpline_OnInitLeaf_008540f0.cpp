@@ -1,6 +1,7 @@
 // NCameraModes::CScriptModuleSpline::OnInitLeaf() -- set the camera point's spline to the module's node range and start the spline index at the start node's fraction, then run one Update without letting it advance the index
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008540F0, 143 bytes, plain `ret`.
 // Leaf: ?OnInitLeaf@CScriptModuleSpline@NCameraModes@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Name: vtable 0x01275A6C slot 8 (CScriptModuleBase::OnInitLeaf); FableWin.pdb ?OnInitLeaf@CScriptModuleSpline@NCameraModes@@UAEXXZ.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCamPoint, no null test), CVectorMap<ETCInterfaceType, CTCBase*>::
@@ -48,7 +49,7 @@ class CTCCameraPointScriptedSpline { public:
     long NumKeyCameras() const { return KeyCameras_last - KeyCameras_first; }
     void InitialiseSpline(long startNode, long endNode);   // 0x0075D050
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 namespace NCameraModes {
 class CBase;

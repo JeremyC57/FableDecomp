@@ -1,4 +1,5 @@
 // CTCTavernGameSpotTheAddition::OnInitialActivate() -- run the tavern-game activation, find the owner's free game-position action point, create the game piece named by the sub def, then look through the owner's linked things (component 0x21) for the first live one whose type matches the def's cover type: remember it with its position and frame, and lay the cover over the board unless the game is already showing
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe @ 0x007D83C0, 432 bytes (plain `ret`, no EH frame).
 // Shape: the sub-def GetSubDef is a same-TU auto_inline(off) stand-in (def stays in edi, release without re-reading); the linked-things lookup is a const GetInterface (LowerBound 0x4365B0); the cover frame comes from vslot 72 on the thing's +0x60 object.
@@ -6,7 +7,7 @@
 //   CCharString ctor 0x0099EBF0, CTCNamedUserActionPoints::GetFreeNamedActionPoint 0x007FF190, CTCTavernGame::CreateGamePiece 0x005EA9B0,
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, 0x00686D60 (game view), PositionCover 0x007D7F10
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
 class CCharString { public:
     void* m_data;

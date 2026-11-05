@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::UpdateIsMoving() -- a moving thing that rests on a stationary surface (or feels no gravity) and whose speed is at most the minimum moving speed stops moving; otherwise it keeps moving unless it is immoveable
 // Leaf: UpdateIsMoving
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E5270, 113 bytes.
 // Callees: virtual slots 54 (+0xd8, IsOnAnyStationarySurface 0x00723A60, landed), 48 (+0xc0, GetFeelsGravity: the override
@@ -7,10 +8,7 @@
 //   (the minimum moving speed, squared inline).
 // Layout: CTCPhysicsBase Velocity +0x28, Moving +0x3c bit 0.
 // Shape: |v|^2 > min*min through an inline C3DVector::GetMagnitudeSquared(); the stop store is shared by both stop exits.
-class C3DVector { public:
-    float X, Y, Z;
-    float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;    // 0x0129BA3C (1e-4)
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CThingPhysicsMeshInfo;
@@ -71,7 +69,7 @@ void CTCPhysicsStandard::UpdateIsMoving()
 {
     if (Moving) {
         if ((IsOnAnyStationarySurface() || !GetFeelsGravity())
-            && !(Velocity.GetMagnitudeSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)) {
+            && !(Velocity.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)) {
             Moving = false;
             return;
         }

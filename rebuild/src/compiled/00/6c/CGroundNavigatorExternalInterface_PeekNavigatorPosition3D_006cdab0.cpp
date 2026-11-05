@@ -1,4 +1,5 @@
 // CGroundNavigatorExternalInterface::PeekNavigatorPosition3D() const -- the creature's physics position (+0x60 -> +0xc), returned by value
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CDAB0, length 48 bytes.
 // Callees: none. Shape: the body pointer loaded, the position sub-object addressed once (`add ecx,0Ch`) and copied through three word moves into the hidden result, `ret 4`.
 // Model: the engine header for the interface (vptr, Creature at +4, Radius at +8); the creature, its physics body (+0x60) and its component map are local models (engine/CThingCreatureBase.h has no names at these offsets).
@@ -14,11 +15,7 @@ struct CTCMap_Retail {                             // the creature's component m
     STCEntry_Retail* LowerBound(const long* kind);          // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound)
     STCEntry_Retail* LowerBound(const long* kind) const;    // 0x004365B0 (the second instantiation)
 };
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
-};
+#include "engine/C3DVector.h"
 class CCreatureNavigationDef;
 struct CDefPointer_Nav {                           // CDefPointer<CCreatureNavigationDef>: one counted def pointer (released by hand in the bodies: the slot is reused for the float)
     CCreatureNavigationDef* m_p;

@@ -1,5 +1,6 @@
 // std::vector<C3DVector>::_M_range_insert<C3DVector*>(C3DVector* pos, C3DVector* first, C3DVector* last, const forward_iterator_tag&) -- STLport vector insert(pos, first, last) of 12-byte vectors: shift the tail in place when capacity allows, else reallocate to size + max(size, n) and copy prefix, range and suffix
 // Leaf: ??$_M_range_insert@PAVC3DVector@@@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@00ABUforward_iterator_tag@1@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A70CB0, 461 bytes, thiscall `ret 10h` (pos, first, last, the tag reference).
 // Identity: the one caller is the landed CArray::DeallocateUnusedMemory 0x00A725D0, called from
 //   CPhysicsMesh::GetMeshDataFromFileData at 0x00A6CFEB on this+0x3C = CPhysicsMesh::TotalPoints (Ego_r.pdb
@@ -19,13 +20,7 @@ extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector {                                     // 12 bytes (Ego_r.pdb X, Y, Z)
-public:
-    float X;                                          // +0x00
-    float Y;                                          // +0x04
-    float Z;                                          // +0x08
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // FableWin.pdb ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 struct __false_type { __false_type() { } };

@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_PerformActionTargetFace(CCreatureActionBase* action, CIntelligentPointer<const CThing> target) -- post the action together with a face-the-target look (flags 0x23) for one brain tick; 1 when stopping, else 2
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097DF60, length 470 bytes (`ret 0Ch`).
 // Callees: IsStopping @ 0x008FD010, CBaseIntelligentPointer GetPItem @ 0x00A01B50 / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 /
 //          dtor @ 0x00A01C10 (CIntelligentPointer<const CThing> vtable 0x01237F1C), the action's virtual slot 11 (+0x2c, Clone),
@@ -11,10 +12,7 @@
 //          SCountBlock for a non-null clone).
 // Layout: the base follows engine/CAIStateGroupBase.h (PBrain +4), modelled locally so the member functions can be declared;
 //          CBrainOutput per Ego_r.pdb / the landed 0x00835620 (Types +0, LookFlags +4, PAction +0x20, LookAtThing +0x40).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead

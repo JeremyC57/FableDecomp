@@ -1,6 +1,7 @@
 #pragma optimize("s", on)
 // CTCVillage::IsTimeToGoToSchool(CThingAICreature* child, const CWorld& world, bool run) -- true when the child's live school building is far enough away (capped) that, at its walk/run animation speed, it must set off now to arrive before its village's school start time
 // Leaf: ?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065A8EE, 385 bytes (`leave ; ret 0Ch`); size TU (unaligned entry, ebp frame, argument
 //   slots reused for locals): `optimize("s", on)` as the landed CTCVillage siblings (0x0065AC0E, 0x00658ACB).
@@ -36,15 +37,7 @@
 #pragma intrinsic(sqrt)
 
 class CTCBase;
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 class CCharString {
 public:
     void* PStringData;
@@ -141,7 +134,7 @@ bool CTCVillage::IsTimeToGoToSchool(CThingAICreature* child, const CWorld& world
         return false;
     C3DVector position = child->GetPos();
     C3DVector school = child->WorkBuilding.GetPItem()->GetPos();
-    float distance = (position - school).GetLength();
+    float distance = (position - school).GetMagnitude();
     CTCVillageMember* member;
     if (!child->GetTC(&member))
         return false;

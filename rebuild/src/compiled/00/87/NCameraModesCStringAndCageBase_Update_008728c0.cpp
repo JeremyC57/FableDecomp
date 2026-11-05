@@ -1,5 +1,6 @@
 // NCameraModes::CStringAndCageBase::Update() -- step the string-and-cage camera: move the go-to point, ease both Z heights and commit go-to and look-at
 // Leaf: ?Update@CStringAndCageBase@NCameraModes@@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x008728C0, 352 bytes, `ret`. Callees: NCameraModes::CBase::GetObservedThing 0x0084F1B0,
 // CTCGraphicAppearance::GetCameraFocalPos 0x004C12D0 (hidden C3DVector result, float), the class's private const
 // UpdateStringLength 0x008722D0 / UpdateCageRadius 0x00871D50 (both bool: `mov al,1` / `xor al,al`; Update ignores the
@@ -17,11 +18,7 @@
 // manager disables smoothing, the result parked across a GetCamTools call. Shape lessons: C3DVector needs a memberwise user
 // copy ctor (retail copies Y first, straight from the member; the implicit copy goes through `lea eax,[esi+54h]`), and the
 // observed thing is a named local so GetObservedThing runs before the GetCameraFocalPos argument pushes.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 class CThing {
 public:
     const C3DVector& GetPos() const;                         // 0x004C73D0

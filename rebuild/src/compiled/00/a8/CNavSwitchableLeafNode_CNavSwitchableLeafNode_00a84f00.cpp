@@ -1,5 +1,6 @@
 // CNavSwitchableLeafNode::~CNavSwitchableLeafNode() -- compiler-generated destructor: free the UniqueIDsOpen vector-map block, then ~CNavNavigableLeafNode
 // Leaf: ??1CNavSwitchableLeafNode@@UAE@XZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A84F00, 27 bytes, thiscall, tail jump to CNavNavigableLeafNode::~CNavNavigableLeafNode 0x00A76A80.
 // Identity (proven): the sole caller 0x00A84EE3 is the scalar deleting destructor 0x00A84EE0, slot 0 of vtable 0x0129DE04
 //   (rtti-vtables.tsv, RTTI .?AVCNavSwitchableLeafNode@@ : CNavNavigableLeafNode : CANavQuadTreeNode : CBaseClassNonCopyable).
@@ -15,50 +16,8 @@
 //   with an empty body only to emit the vtable, the ??_G and this implicit ??1 (not graded).
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;                                              // +0x00
-    _T2 second;                                             // +0x08
-};
-template <class _Tp> class allocator {
-public:
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc>
-class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp> inline void _Destroy(_Tp* __pointer) { __pointer->~_Tp(); }
-template <class _ForwardIterator> inline void _Destroy(_ForwardIterator __first, _ForwardIterator __last)
-{
-    for (; __first != __last; ++__first) _Destroy(&*__first);
-}
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-    ~_Vector_base()
-    {
-        if (_M_start != 0) _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-} // namespace std
+#include "engine/CVectorMap.h"
 
-template <class K, class V> class CKeyPairCompareLess {
-public:
-    bool operator()(const std::pair<K, V>& a, const std::pair<K, V>& b) const { return a.first < b.first; }
-};
-template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
-public:
-    C    Compare;                                           // +0x0C
-    bool Dirty;                                             // +0x0D
-};
 
 #include "engine/CBaseClassNonCopyable.h"
 

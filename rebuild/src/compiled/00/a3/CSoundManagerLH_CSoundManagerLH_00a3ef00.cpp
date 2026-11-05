@@ -1,5 +1,6 @@
 // CSoundManagerLH::CSoundManagerLH(const CSoundManagerInit& init, bool exclusive) -- Lionhead-audio sound manager: CASoundManager base, empty sound list / name maps, the (0, 0.5, 0) vector; registers the three sound allocators, creates the sound system from a setup record (buffer sizes, 10 MB, a CLHFileManager), configures its voices from the init block's channel mask, then builds the emitter and receiver and enables the player
 // Leaf: ??0CSoundManagerLH@@QAE@ABUCSoundManagerInit@@_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3EF00, 561 bytes, thiscall `ret 8`, returns this; frameless (two ebx/esi/edi/ebp pushes).
 // Identity (two sources): (1) the vtable written at +0 is 0x0129D2C4, whose RTTI names CSoundManagerLH; (2) the base-class
 //   constructor called first is the landed CASoundManager::CASoundManager(const CSoundManagerInit&, bool) 0x00991910 (this
@@ -131,10 +132,7 @@ class CASoundManager : public CBaseClassNonCopyable { public:
     CASoundManager(const CSoundManagerInit& init, bool flag);   // 0x00991910
     virtual ~CASoundManager();                  // 0x00991880
 };
-class C3DVector { public:
-    float x, y, z;
-    C3DVector(float X, float Y, float Z) : x(X), y(Y), z(Z) { }
-};
+#include "engine/C3DVector.h"
 // ---- the LHA (Lionhead audio) interfaces the game implements (RTTI: CBBBSoundAllocator / CBBBSoundPhysicalAllocator : LHA::CAllocator,
 //      CLHFileManager : LHA::CFileManager) ----
 namespace LHA {

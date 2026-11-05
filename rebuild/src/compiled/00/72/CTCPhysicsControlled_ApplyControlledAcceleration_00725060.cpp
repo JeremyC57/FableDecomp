@@ -1,4 +1,5 @@
 // CTCPhysicsControlled::ApplyControlledAcceleration(const C3DVector& acceleration, float maxSpeed) -- below the speed limit, apply 5% of the acceleration's part off its own projection; at or above it, turn the velocity towards the acceleration by at most 0.007 of a turn
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00725060, length 494 bytes (+ int3 padding), esp frame, `ret 8`.
 // Callees: CTCPhysicsBase::ApplyAcceleration(const C3DVector&) @ 0x006B0210, _CIfmod @ 0x00BFEB28 (the intrinsic fmod of
 // the inline WrapAngle), AngleDifference @ 0x00A441E0 (`__stdcall`), C3DVector::Rotate(const C3DVector& axis, float) @ 0x00A13C60.
@@ -13,16 +14,7 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod, sqrt)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-    void Rotate(const C3DVector& axis, float angle);    // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 inline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.X * b.X + (a.Y * b.Y + a.Z * b.Z); }
 float __stdcall AngleDifference(float a, float b);      // 0x00A441E0
 
@@ -53,7 +45,7 @@ void CTCPhysicsControlled::ApplyControlledAcceleration(const C3DVector& accelera
 {
     C3DVector direction = acceleration;
     C3DVector& velocity = Velocity;
-    if (velocity.GetLength() < maxSpeed) {
+    if (velocity.GetMagnitude() < maxSpeed) {
         C3DVector sideways = acceleration - direction * DotProduct(direction, velocity);
         ApplyAcceleration(sideways * 0.05f);
     } else {

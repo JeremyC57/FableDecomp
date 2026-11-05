@@ -1,5 +1,6 @@
 // CGetBestTurningAnim::CGetBestTurningAnim(const C2DVector& facing, const C2DVector& target) -- search functor: no best anim yet; the rotation needed to turn from the facing to the target direction, in turns (acos of the clamped normalised dot product / 2pi), negative when the target lies clockwise
 // Leaf: ??0CGetBestTurningAnim
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751610, length 258 bytes, `ret 8`.
 // Callees: C3DVector::AccurateNormalise @ 0x00A14440 (catalog "GetScaled" is propagated), _CIacos (MSVCR71 import thunk @ 0x00BFEBA2).
 //   Float pool: 0x0122DEE0 = -1.0f, 0x0122DED8 = 1.0f, 0x0122DEDC = 0.0f, 0x01237F08 = 1/(2pi).
@@ -8,12 +9,7 @@
 //   to [-1, 1] in the dead `facing` slot with immediate stores (if / else-if on a named float); the angle stays on the x87
 //   stack across the side test (the dot with the facing's clockwise perpendicular) and is negated by `*= -1.0f`.
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-    float Dot(const C3DVector& o) const { return o.X * X + o.Y * Y + o.Z * Z; }
-};
+#include "engine/C3DVector.h"
 extern "C" double __cdecl acos(double x);
 #pragma intrinsic(acos)
 class CAnimationEntry;

@@ -1,5 +1,6 @@
 // _global::__insertion_sort(PairCharStringVector* first, PairCharStringVector* last, CKeyPairCompareLess comp) -- SGI insertion sort over (name, C3DVector) pairs ordered by name: linear-insert each element after the first into the sorted prefix
 // Leaf: __insertion_sort
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077ECB0, length 96 bytes, `ret 4` (the empty comparator on the stack;
 //   first/last in ecx/edx -- the SGI algorithm TUs are /Gr). Callers: the final insertion pass of the sort at 0x0077F050 /
 //   0x0077F06E / 0x0077F48D / 0x0077F4A7.
@@ -21,13 +22,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class C3DVector {                                       // 12 bytes
-public:
-    float X;                                            // +0x00
-    float Y;                                            // +0x04
-    float Z;                                            // +0x08
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 struct PairCharStringVector {                           // std::pair<CCharString, C3DVector>, 16 bytes
     CCharString first;                                  // +0x00

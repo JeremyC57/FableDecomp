@@ -1,10 +1,11 @@
 // CAIStateGroup_HoverHornetQueen::GotoCirclePoint(long,float) -- move to a circle marker while checking the route and target.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0095a6c0 length259. Donor header places CurrentCirclePoint at50 and CircleMarkers54;
 // retail uses4c and vector begin/end50/54, so a native method/layout view is required.
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_HoverHornetQueen.h"
 #endif
-class C3DVector { public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CThing { public: const C3DVector& GetPos() const; };
 struct CQueenThing : public CThing { public:  }; //004c73d0
 class CBaseObject;

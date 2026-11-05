@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsCoordCartesian::FrameUpdate() -- integrates the camera physics state for one frame: velocity += acceleration * dt with each component clamped to +-100, then position += velocity * dt; a culled state instead snaps to its first attractor and stops
 // Leaf: ?FrameUpdate@CPhysicsCoordCartesian@NCameraModes@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008FA3B0, 460 bytes, plain `ret`; vtable slot 0. Ego_r.pdb
@@ -15,14 +16,7 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    __forceinline C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    __forceinline C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 template <class T> struct list {

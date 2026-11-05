@@ -1,5 +1,6 @@
 // CCardDef::~CCardDef() -- implicit definition destructor: free the SubDefInfoMap vector storage (+0x29), then the inline CDefClassBase / CDefPointeeBase levels (CDefPointeeBase vtable) and ~CResource (tail jump)
 // Leaf: ??1CCardDef@@UAE@XZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D7950, 33 bytes: push esi ; mov esi,ecx ; mov eax,[esi+29h] ; test eax,eax ; je ;
 //   push eax ; call free ; add esp,4 ; mov dword ptr [esi],0x01230BA0 ; mov ecx,esi ; pop esi ; jmp 0x009FC550. No caller
 //   (unreferenced COMDAT: every use in its TU is inlined; the linker keeps it).
@@ -28,47 +29,8 @@ class CDefString { public:
     long TablePos;                                         // +0x00
 };
 
-namespace std {
-struct __true_type { };
-template <class _Tp> struct __type_traits { typedef __true_type has_trivial_destructor; };
-template <class _ForwardIterator> inline void __destroy_aux(_ForwardIterator, _ForwardIterator, const __true_type&) { }
-template <class _Tp> inline void _Destroy(_Tp* __first, _Tp* __last)
-{
-    typedef typename __type_traits<_Tp>::has_trivial_destructor _Trivial_destructor;
-    __destroy_aux(__first, __last, _Trivial_destructor());
-}
-template <class _T1, class _T2> struct pair { _T1 first; _T2 second; };
-template <class _Tp> class allocator {
-public:
-    void deallocate(_Tp* __p, unsigned int) { if (__p != 0) free(__p); }
-};
-template <class _Value, class _Tp, class _MaybeReboundAlloc> class _STLP_alloc_proxy : public _MaybeReboundAlloc {
-public:
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class _Vector_base {
-public:
-    ~_Vector_base()
-    {
-        if (_M_start != 0)
-            _M_end_of_storage.deallocate(_M_start, _M_end_of_storage._M_data - _M_start);
-    }
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
-public:
-    ~vector() { _Destroy(this->_M_start, this->_M_finish); }
-};
-} // namespace std
+#include "engine/CVectorMap.h"
 
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
-public:
-    C    Compare;                                          // +0x0c
-    bool Dirty;                                            // +0x0d
-};
 
 #pragma pack(push, 1)                                      // retail: the def chain is packed (CDefString at +0x25)
 class CParentDefClassBase : public CDefClassBase {         // vtable 0x01230CBC

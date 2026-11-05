@@ -1,5 +1,6 @@
 // CPersistTraits<CIntelligentPointer<CThing> >::TransferIn(CPersistContext& context, CStringParser& parser, CIntelligentPointer<CThing>& value) -- read a thing UID from a text save; for a non-zero UID create a THING_DUMMY_FOR_SERIALISATION placeholder carrying the UID and point the value at it
 // Leaf: ?TransferIn@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAV?$CIntelligentPointer@VCThing@@@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000); the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C9900, 241 bytes, thiscall `ret 0Ch` (the traits `this` is unused).
 // Identity (proven): Ego_r.pdb donor 0x006FF800 holds this symbol right after TransferBinaryIn (0x006FF6C0), whose retail twin is
@@ -49,45 +50,10 @@ public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc> class vector {           // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    iterator end() { return this->_M_finish; }
-};
-template <unsigned int _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static unsigned int _S_whichword(unsigned int __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(unsigned int __pos) { return 1UL << (__pos % 32); }
-    _WordT _M_getword(unsigned int __pos) const { return _M_w[_S_whichword(__pos)]; }
-};
-template <unsigned int _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    typedef _Base_bitset<(_Nb + 31) / 32> _Base;
-    bool _Unchecked_test(unsigned int __pos) const { return (this->_M_getword(__pos) & _Base::_S_maskbit(__pos)) != 0; }
-    bool operator[](unsigned int __pos) const { return _Unchecked_test(__pos); }
-};
-}   // namespace std
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                            // +0x00
-    TCompare           Compare;                         // +0x0C
-    bool               Dirty;                           // +0x0D
-    value_type* LowerBound(const K& key);               // 0x0040F020
-};
 
 class CThing {                                          // partial view, retail offsets
 public:
@@ -101,7 +67,7 @@ public:
         ETCInterfaceType key = type;
         TCMap* map = &Components;
         TCMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->Data.end() || type < it->first) ? map->Data.end() : it)->second;
+        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
 };
 class CTCThingUIDDummyForSerialisation {                // Ego_r.pdb, 0x18 bytes (CTCBase 0xC)

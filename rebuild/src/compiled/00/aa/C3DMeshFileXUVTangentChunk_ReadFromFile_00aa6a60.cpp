@@ -9,6 +9,7 @@
 // 0x10 CArray is too large (retail adds 0x1C for the second array), so the arrays are viewed through
 // a three-pointer CArray model over the header's storage.
 // Leaf: ReadFromFile@C3DMeshFileXUVTangentChunkMethods
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/C3DMeshFileXUVTangentChunk.h"
@@ -29,7 +30,7 @@ struct CInputStreamAccess : CDataInputStream {
  }
  __forceinline unsigned int ReadULong() {unsigned int value;Read(&value,4);return value;}
 };
-class C3DVector { public: float X, Y, Z; C3DVector() {} };
+#include "engine/C3DVector.h"
 template<class T> class CArray { public:
  T* Begin;T* End;T* Capacity;
  unsigned long Size()const{return (unsigned long)(End-Begin);}

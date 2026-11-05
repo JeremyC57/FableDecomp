@@ -1,5 +1,6 @@
 // C3DAnimFileLoader::C3DAnimFileLoader() -- build the "3DAF" chunked-file loader: create the ANRT root chunk type, then register the object/helpers sub-chunk types under the root, sequence/bone-mask under the object, movement-vector/timing-event under the helpers and the movement track under the movement vector, keeping each registered type
 // Leaf: ??0C3DAnimFileLoader
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A999B0, 1152 bytes, plain ret.
 // Callees: CChunkedFileLoader::CChunkedFileLoader(const char*) 0x00AA7510 ("3DAF"), operator new 0x00BFEA1A,
@@ -130,7 +131,7 @@ class C3DAnimFileBoneMaskChunk : public CChunkedFileChunk { public:
     CArray<bool> EnableMask;                // +0x10
     C3DAnimFileBoneMaskChunk();             // 0x00AB0700
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DAnimFileMovementVectorChunk : public CChunkedFileSuperChunk { public:
     C3DVector Vector;                       // +0x2c
     C3DAnimFileMovementVectorChunk();       // 0x00AAE2A0

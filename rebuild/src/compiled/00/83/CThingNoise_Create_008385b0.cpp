@@ -1,6 +1,7 @@
 // CThingNoise::Create(long, const C3DVector&, float) -- static factory: allocate and construct a noise thing at the position, give its physics a CTCParamsPhysicsBase, activate it and set the duration component
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: ?Create@CThingNoise@@SIPAV1@JABVC3DVector@@M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Identity (sweep3; the catalog had `_global::Create`, the source already defined the static member): Ego_r/FableWin
 //   ?Create@CThingNoise@@SIPAV1@JABVC3DVector@@M@Z (called from 0x00662110; bsim CThingNoise::Create).
@@ -8,7 +9,7 @@
 //   ??1CBaseClassNonCopyable@@MAE@XZ (FINDINGS "Family pass 2": the binding ??1CBaseClass@@UAE@XZ -> 0x0099A300 was wrong):
 //   RTTI of vtable 0x0125C818 gives CTCParamsPhysicsBase : CTCParamsBase : CBaseClassNonCopyable : CBaseClass.
 #include <new>
-class C3DVector {public:float x,y,z;};
+#include "engine/C3DVector.h"
 class CRightHandedSet {public:float x,y,z,a,b,c;CRightHandedSet():x(0),y(0),z(1),a(0),b(1),c(0){}};
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass {protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};   // 0x0099A2F0 / 0x0099A300

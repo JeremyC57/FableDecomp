@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCRenderMesh::GetComponentCost(CParticleSystemCost& cost, const CParticleSystem& system, float particleCount, float) -- vtable slot 20: a mesh renderer adds the mesh's triangles per particle, the (system-scaled) bounding area of the larger of its start/end render sizes, and triangles x materials to the render cost; a trail adds two polygons per particle and its scaled width x length
 // Leaf: ?GetComponentCost@CPSCRenderMesh@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetSquaredMagnitude replaced by the header GetSquaredMagnitude (same computation).
 // Flags: /O2 /Oy /W3
 // Retail-asm: 0x00B00E47 `fld dword ptr [esp+38h]` + 0x00B00E4B `fistp dword ptr [esp+34h]` -- the engine's inline-assembly float-to-long helper (the landed FloatToLong of CPSCEmitterGeneric::GetRandomRadius 0x00B102C0), 7 sites; VC7.1 `(long)x` calls __ftol2.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
@@ -42,10 +43,7 @@ class CMeshDataBank : public CMeshDataBankLayout { public:
     const C3DMeshInfo* PeekMeshInfo(unsigned long index) const;     // 0x00A24260
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    float GetSquaredMagnitude() const { return X * X + Y * Y + Z * Z; }   // FableWin.pdb ?GetSquaredMagnitude@C3DVector@@QBEMXZ (inline)
-};
+#include "engine/C3DVector.h"
 
 namespace NParticleEngine {
 

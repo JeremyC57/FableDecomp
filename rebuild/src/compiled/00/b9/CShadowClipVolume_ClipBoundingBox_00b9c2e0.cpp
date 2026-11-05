@@ -1,5 +1,6 @@
 // CShadowClipVolume::ClipBoundingBox(const C3DBoundingBox& box) const -- false when the box is culled: outside the bounding sphere (if ClipToSphere) or entirely in front of any clip plane
 // Leaf: ClipBoundingBox
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Grade: RELOCATION_MATCH (494 bytes; parked 476v494 'inline-asm SSE lane gap' disproved): the landed retail_asm SSE
 //   kernel (0x00BF7DF0 form) for the sphere-centre distance; the fallback's X/Y differences in a frame C3DVector, the Z
 //   difference a scalar, the squares summed stepwise in retail order (Z, X, Y); plane normals as named locals.
@@ -11,15 +12,7 @@
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 extern bool g_SSEAvailable;                             // 0x013D2880
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00

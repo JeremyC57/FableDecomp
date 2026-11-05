@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(C3DVector* position, const C3DVector& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD vector growth for 3D points: allocate old + max(old, n), copy the head, construct the n new copies, copy the tail, free the old block
 // Leaf: ?_M_insert_overflow@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066E370, 272 bytes (270 without padding), thiscall `ret 14h`. Callers: 65 sites,
 //   every vector<C3DVector> push_back that runs out of room (CRegionMinimap::PopulateRegionMinimap, the camera manager,
 //   CCardinalSpline::AppendControlPoint 0x0075F980 landed, CTCCreatureFlyInCircles::QueueSwoop, ...).
@@ -19,13 +20,7 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* p);                                           // 0x00BFEA14
 inline void* operator new(unsigned int, void* __p) throw() { return __p; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 struct __false_type { __false_type() { } };

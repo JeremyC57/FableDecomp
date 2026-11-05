@@ -1,4 +1,5 @@
 // CCreatureAction_DragonBurninateInto::Initialise() -- animation "INTO_BURNINATE", base Initialise, then push a new CModeDragonStrafeBurninate(owner, the movement points, previous point, burn start/stop, flame start/end) onto the owner's mode manager
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F4320, length 218 bytes, plain `ret` (virtual, no arguments).
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("INTO_BURNINATE" @ 0x012884F0), SetCombatAnimation 0x008574D0,
@@ -56,9 +57,7 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 struct CVectorC3DVector {                       // std::vector<C3DVector> (retail 12 bytes)
     C3DVector* _First;
     C3DVector* _Last;

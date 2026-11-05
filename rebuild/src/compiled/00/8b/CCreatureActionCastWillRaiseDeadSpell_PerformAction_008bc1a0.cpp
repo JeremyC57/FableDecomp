@@ -19,6 +19,7 @@
 //   0x00692990, GetWorldMap 0x00692C10, GetWorld 0x00692940, CWorld::GetWorldSeed 0x0049D810, GFROR13 0x00497890, vector<long>
 //   reserve 0x00660684 / _M_insert_overflow 0x00440990, CDefinitionManager::GetDef<CBrainDef> 0x0079BD80, ModifyHealth = slot 59.
 // Leaf: ?PerformAction@CCreatureAction_CastWillRaiseDeadSpell@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetSquaredMagnitude2D replaced by the header GetSquaredMagnitude2D (same computation).
 class CBaseObject { public: virtual void v00(); };
 class CThing;
 class CThingPhysical;
@@ -36,10 +37,7 @@ class CCharString { public:
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CDefClassBase.h"
 #include "engine/CDefPointer.h"
-class C3DVector { public:
-    float X, Y, Z;
-    __forceinline float GetSquaredMagnitude2D() const { return X * X + Y * Y; }
-};
+#include "engine/C3DVector.h"
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6

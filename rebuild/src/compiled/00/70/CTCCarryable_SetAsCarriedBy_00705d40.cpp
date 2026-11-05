@@ -1,5 +1,6 @@
 // 00705d40 CTCCarryable::SetAsCarriedBy
 // Leaf: ?SetAsCarriedBy@CTCCarryable@@AAEXPAVCTCCarrying@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -29,8 +30,8 @@
 #define CDefinitionManager CDefinitionManagerFields
 #include "engine/CDefinitionManager.h"
 #undef CDefinitionManager
-class C3DVector{public:float X,Y,Z;};class CRightHandedSet{protected:C3DVector Up,Forward;};
-class C2DCoordI{public:long X,Y;C2DCoordI(long x,long y):X(x),Y(y){}};
+#include "engine/C3DVector.h"
+class CRightHandedSet{protected:C3DVector Up,Forward;};
 class CCharStringData;class CCharString{protected:CCharStringData*PStringData;public:CCharString(const char*,long=-1);~CCharString();};
 class CWorldMap;
 enum ETCInterfaceType{};class C2DVector;class CTCParamsBase;class CEnginePrimitivePrepareInfo;class CPersistContext;namespace NTCMessages{class CMessageBase;}

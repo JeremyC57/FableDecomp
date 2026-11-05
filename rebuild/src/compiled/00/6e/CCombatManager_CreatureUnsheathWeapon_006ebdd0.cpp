@@ -1,4 +1,5 @@
 // CCombatManager::CreatureUnsheathWeapon(CThingCreatureBase*,long) -- choose immediate or animated unsheathing after action eligibility checks.
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members first/last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail0x006EBDD0,268bytes. Native temporary is UnsheatheWeapons0x118; base dtor0062E900;
 // ctor008B85D0, PerformAction008B7BA0, ShouldPlay008B7CF0, incapacitated0085F0C0, knockdown0085F010,
@@ -23,14 +24,7 @@
 class CTCCombat { public:unsigned char _nativeBeforeWeaponType[0x6c];long UnsheathingWeaponType;};
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
-    Entry* first;Entry* last;
-    Entry* LowerBound(const ETCInterfaceType& key); //0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingCreatureBase;
 class CThing;
@@ -189,8 +183,8 @@ void CCombatManager::CreatureUnsheathWeapon(CThingCreatureBase* creature,long we
     if(!(creature->UsingComponents[1]&0x10000)) return;
     CInterfaceMap* map=&creature->Components;
     ETCInterfaceType type = (ETCInterfaceType)(0x30);
-    CInterfaceMap::Entry* found=map->LowerBound(type);
-    if(found==map->last || found->first>0x30) found=map->last;
+    CInterfaceMap::value_type* found=map->LowerBound(type);
+    if(found==map->end() || found->first>0x30) found=map->end();
     CTCCombat* combat=((CTCCombat*)found->second);
     CCreatureAction_UnsheatheWeapons action(*creature,weapon);
     if(creature->IsFreeToPerformAction(action)) {

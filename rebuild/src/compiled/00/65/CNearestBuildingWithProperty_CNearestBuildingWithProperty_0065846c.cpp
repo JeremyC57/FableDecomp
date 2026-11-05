@@ -8,14 +8,10 @@
 // the retail word-by-word edx copy is C3DVector's memberwise user copy constructor (raw words, not floats:
 // a float member would be copied through the x87).
 // Leaf: ??0CNearestBuildingWithProperty
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #pragma optimize("s", on)
 
-class C3DVector { public:                       // three float words; the copy moves them as raw dwords
-    unsigned long x;
-    unsigned long y;
-    unsigned long z;
-    C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) {}
-};
+#include "engine/C3DVector.h"
 
 class CThingBuilding;
 enum ESimBuildingProperty { SIM_BUILDING_PROPERTY_NONE = 0 };

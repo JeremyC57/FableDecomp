@@ -1,5 +1,6 @@
 // CAIStateGroup_ApprenticeHero::MoveToAppropriateDummy() -- pick the target point for the current practice action (the dummy, or a random "RangedPractice" thing) and a random proximity, then keep moving there while the dummy type stays legal; true once arrived
 // Leaf: ?MoveToAppropriateDummy@CAIStateGroupApprenticeHeroMethods@@QAE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092A220, length 455 bytes.
 // Callees: CThing::GetPosition @ 0x004C73D0, GetPWorldSeed @ 0x008FCFD0, GFFloatRandom @ 0x004978A0 (__fastcall: range on the
 //          stack, seed in ecx), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0 ("RangedPractice" @ 0x01291A40), the dummy finder
@@ -21,11 +22,7 @@ public:
 class CAIStateGroup_ApprenticeHero : public CAIStateGroupBase, public CAIStateGroup_ApprenticeHeroLayout
 {
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

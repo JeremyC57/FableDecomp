@@ -1,4 +1,5 @@
 // CTCPhysicsRigidBody::CalculateVertices(CRigidBody::CRigidBodyConfig& config) -- rebuild a configuration's world-space bounding vertices: each body-space vertex rotated by the configuration's orientation and offset by its centre of mass
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00759EC0, 183 bytes (`ret 4`; PDB ?CalculateVertices@CTCPhysicsRigidBody@@AAEXAAVCRigidBodyConfig@CRigidBody@@@Z).
 // Callees: CMatrix3x4::operator*(const C3DVector&) const @ 0x00A56530 (landed; hidden-pointer C3DVector result).
 // Layout: Ego_r.pdb CTCPhysicsRigidBody Body (CRigidBody) sits at retail +0xa0 (PDB +0xac: the three STLport vectors before it
@@ -9,13 +10,7 @@
 //   and `*(begin() + i)` element access (the byte offset in ebx). The rotated vertex is a NAMED local: retail reads it back
 //   from its frame slot (`fld [esp+1Ch]`); the unnamed temporary reads through the returned eax. The sum goes through the inline
 //   value-constructing operator+ and the implicit assignment (three fstp/mov pairs).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:
     C3DVector m_row0, m_row1, m_row2, m_translation;
     C3DVector operator*(const C3DVector& v) const;     // 0x00A56530

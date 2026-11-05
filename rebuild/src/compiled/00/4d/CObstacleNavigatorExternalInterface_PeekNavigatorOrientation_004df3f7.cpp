@@ -7,14 +7,10 @@
 // place, then returned through C2DVector's memberwise copy constructor, which in a /Os TU copies the first float
 // through the x87 (`fld ; fstp`) and the second through an integer register.
 // Leaf: PeekNavigatorOrientation
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class C2DVector;
 class C2DVector { public:

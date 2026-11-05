@@ -1,5 +1,6 @@
 // NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::Main() -- Orchard Farm raid, Whisper's sparring script: wait out her cutscene, make her unkillable and block-teaching, whisper the flourish tutorial, wait until the hero hits her with a flourish, whisper again, make her killable with a health bar, then flag the mission won once her health drops to 1
 // Leaf: ?Main@COrchardFarmWhisper@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCF0B0, 789 bytes (+ int3 padding); referenced from the
 //   COrchardFarmWhisper vtable 0x012DB3E4.
 // Callees: the entity-script machinery of the landed CHTG_Audience::Main 0x00D72200 (CIsThingAlive predicate vtable
@@ -31,20 +32,8 @@ template <class T> class CCountedPointer { public:                              
  CCountBlock* Info;
  CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
 };
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual float GetAngleXY() const;             // slot 10 (+0x28) 0x004AAA40
- virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
- virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54) 0x004AAB30
- virtual bool MsgIsHitByWithFlourish(const CCharString& name) const;   // slot 22 (+0x58) 0x004AAB50
- virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66();
- virtual void SetFriendsWithEverythingFlag(bool on);       // slot 67 (+0x10c) 0x004AB060
- CCountedPointer<CScriptThing> PImp;                                  // +0x04 Data, +0x08 Info
- struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
- CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
- CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- virtual ~CScriptThing();                                       // 0x004AA840
- CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};

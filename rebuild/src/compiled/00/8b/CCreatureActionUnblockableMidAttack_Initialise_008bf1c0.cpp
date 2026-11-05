@@ -1,6 +1,7 @@
 // 008bf1c0 CCreatureAction_UnblockableMidAttack::Initialise
 // Flags:
 // Leaf: ?Initialise@CCreatureAction_UnblockableMidAttack@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define CClass CClassLayout
 #include "engine/CClass.h"
 #undef CClass
@@ -34,7 +35,7 @@ class CCharStringData;
 class CCharString {CCharStringData*PStringData;public:CCharString(const char*,long=-1);~CCharString();};
 #include "engine/CBaseClassNonCopyable.h"
 class CThing;class CTCParamsBase;
-class C3DVector {public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class C2DVector;class CRightHandedSet;class CWorld;enum ETCInterfaceType{};
 class CPersistContext;class CEnginePrimitivePrepareInfo;namespace NTCMessages{class CMessageBase;}
 class CThingManager;

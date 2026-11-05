@@ -1,5 +1,6 @@
 // CTools::GetIntersectionWithWorldMap(const C3DVector& start, const C3DVector& end, C3DVector* position, C3DVector* normal, bool flag, bool (__fastcall *test)(CWorldMap*, const C3DVector*, const C3DVector*, bool)) -- march from start towards end in steps (0.5, shrinking by 10x on each hit) testing each step against the world map; each hit refines the end point and writes the midpoint and its ground normal; true when anything was hit (up to 100 steps / 4 hits)
 // Leaf: GetIntersectionWithWorldMap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008751D0, length 713 bytes (`ret 0x18`).
 // Callees: the world map from this->[0]->+0x74 virtual slot 13 (+0x34); CWorldMap::GetGroundFaceNormalAt 0x0063AB10 (C3DVector by
 //   hidden pointer); the caller's test (__fastcall). Constants: 1e-4f 0x0129BA3C, 1.0f 0x0122DED8, 0.1f 0x0122EE58, 0.5f 0x0122F59C,
@@ -9,15 +10,7 @@
 // Layout: CTools first member the owner (+0x00) whose +0x74 object hands out the world map (slot 13).
 #include <math.h>
 #pragma intrinsic(sqrt)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector* position) const;   // 0x0063AB10
@@ -45,7 +38,7 @@ bool CTools::GetIntersectionWithWorldMap(const C3DVector& start, const C3DVector
     float step = 0.5f;
     CWorldMap* map = Owner->WorldMapOwner->GetWorldMap();
     C3DVector direction = end - start;
-    float lengthSquared = direction.GetLengthSquared();
+    float lengthSquared = direction.GetSquaredMagnitude();
     if (lengthSquared < 0.0001f)
         return false;
     float length = (float)sqrt(lengthSquared);

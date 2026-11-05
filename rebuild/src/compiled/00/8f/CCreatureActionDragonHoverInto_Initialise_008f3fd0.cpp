@@ -1,4 +1,5 @@
 // CCreatureAction_DragonHoverInto::Initialise() -- animation "HOVER_INTO", base Initialise, drop the owner's physics body ~30 units below its position, query its facing, and flag the owner's interface-9 component
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F3FD0, length 213 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("HOVER_INTO" @ 0x012884B0), SetAnimationName 0x008574D0,
@@ -11,11 +12,7 @@
 // not tested, so the "missing" path writes through the uninitialised out-parameter (two tails).
 class CTCBase;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* PStringData;

@@ -1,5 +1,6 @@
 // 00929650 CAIStateGroup_MinionGuardGreetPlayer::IsRunnable()
 // Leaf: ?IsRunnable@CAIStateGroup_MinionGuardGreetPlayer@@UAE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Flags:
 extern "C" double __cdecl sqrt(double);
@@ -51,7 +52,7 @@ extern "C" double __cdecl sqrt(double);
 class CClass:public CBaseObject {private:unsigned char unobservedClassState[sizeof(CClassLayout)-sizeof(CBaseObject)];};
 enum ETCInterfaceType {};
 class CTCBase;
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing:public CClass {
 public:const C3DVector&GetPos()const;
 
@@ -92,14 +93,6 @@ template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {
 public:CIntelligentPointer(){} CIntelligentPointer(T*item){SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(item)));}
 };
 #pragma pack(push,1)
-class C3DVector {
-public:float X,Y,Z;
-    C3DVector(){}
-    C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
-    C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}
-    const C3DVector operator+(const C3DVector&v)const{return C3DVector(X+v.X,Y+v.Y,Z+v.Z);}
-    const C3DVector operator-(const C3DVector&v)const{return C3DVector(X-v.X,Y-v.Y,Z-v.Z);}
-};
 #pragma pack(pop)
 
 class CWorldMap;

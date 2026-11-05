@@ -1,5 +1,6 @@
 // NScript::CV_DemonDoorsScript::CDF_MarryLadyGrey::Main() -- demon-door face (marry Lady Grey): take scripted control of Me, make it persistent and immune, find the nearest REGION_EXIT_POINT and shut it; each time the hero talks to the face -- unless the master data says the hero married Lady Grey, speak the intro line; otherwise speak the opening line, fade the face out, open the door and reactivate the exit
 // Leaf: ?Main@CDF_MarryLadyGrey@CV_DemonDoorsScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E73410, 1092 bytes (+ int3 padding), plain `ret`. Literals "TEXT_QST_088_MARRY_LADY_GREY_INTRO"
 //   0x012E93E0, "TEXT_QST_088_MARRY_LADY_GREY_OPENING" 0x012E93B8, "DD_MarryLadyGrey" 0x012E93A4 (sibling of the matched
 //   CDF_CombatMult::Main 0x00E6F710; only the test differs: CQ_SunnyvaleMasterData::HeroMarriedLadyGrey, PDB +0xD7 = retail).
@@ -60,13 +61,8 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    VPAD16(ma) VPAD8(mb) VPAD2(mc)                      // slots 1..26
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {

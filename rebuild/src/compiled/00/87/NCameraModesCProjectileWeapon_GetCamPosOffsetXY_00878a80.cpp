@@ -1,5 +1,6 @@
 // NCameraModes::CProjectileWeapon::GetCamPosOffsetXY(float fraction) const -- the camera position offset at angle fraction*2pi on the mode's X/Y axis circle: XAxis*sin(a) + YAxis*cos(a)
 // Leaf: ?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00878A80, 119 bytes (`ret 8`: hidden C3DVector result pointer + the float).
 // Naming: Ego_r.pdb ?GetCamPosOffsetXY@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@M@Z (private const, C3DVector by
 //   value + one float = `ret 8`), the only CProjectileWeapon member of that signature; FINDINGS chunk 404. The earlier
@@ -13,14 +14,7 @@
 #include <math.h>
 #pragma intrinsic(cos, sin)
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 static const float TWO_PI = 6.2831855f;
 namespace NCameraModes {

@@ -1,5 +1,6 @@
 // CCombatRing::DebugGetAllProngVectors(vector<pair<C3DVector,bool> >& out, float scale) -- debug view of the ring: every prong direction rotated by the ring's angle about +Z, scaled, paired with its blocked flag and appended to `out`
 // Leaf: ?DebugGetAllProngVectors@CCombatRing
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006EB8A0, length 253 bytes (`ret 8`).
 // Callees: C3DVector::Rotate(const C3DVector& axis, float angle) 0x00A13C60 (axis = C3DVector(0, 0, 1), angle =
 //          RotationAngle), vector<pair<C3DVector,bool> >::_M_insert_overflow 0x006F3260 (tag homed in the dead `scale` slot).
@@ -7,14 +8,7 @@
 //          C3DVector is 1-aligned in this module -- modelled under pack(1) -- ProngBlockageTimer +0x10, POccupier +0x14).
 #include <new>
 #pragma pack(push, 1)
-class C3DVector { public:                              // 1-aligned in retail (CProng::Prong sits at +1)
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    void Rotate(const C3DVector& axis, float angle);   // 0x00A13C60
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 template <class A, class B> struct pair {
     A first;

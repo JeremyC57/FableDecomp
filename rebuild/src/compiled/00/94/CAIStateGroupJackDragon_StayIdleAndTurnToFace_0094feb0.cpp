@@ -1,4 +1,5 @@
 // CAIStateGroup_JackDragon::StayIdleAndTurnToFace(float,const C3DVector&) -- interpolate facing while idling until the duration expires or the enemy becomes invalid.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0094feb0 length311. Shared JackDragon/Base/Brain headers; narrow thing view exposes retail physics60 and dead91.
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_JackDragon.h"
@@ -12,7 +13,7 @@ class CAIStateGroupBase{ public:void* vtable;CAIBrain* PBrain;char state[12];};
 struct CAIStateGroup_JackDragon:CAIStateGroupBase{void* PEnemy[2];};
 #define __forceinline inline
 #endif
-class C3DVector{ public:float X,Y,Z;C3DVector(){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
+#include "engine/C3DVector.h"
 class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(const C3DVector& direction){Forward=direction;Up=C3DVector(0,0,1);}CRightHandedSet Interpolate(const CRightHandedSet&,float)const;}; //00a23190
 struct CDragonPhysics {
 virtual ~CDragonPhysics();

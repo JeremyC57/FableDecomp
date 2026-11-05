@@ -1,5 +1,6 @@
 // CTCDivineWrath::PerEffectInfo::PerEffectInfo() -- default constructor of the per-effect record: the 3D Position (+0) is left unset, the intelligent Effect thing pointer (+0xc) is default-constructed
 // Leaf: PerEffectInfo
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0078E3A0, 25 bytes, __fastcall, plain `ret`.
 // Ego_r.pdb: struct CTCDivineWrath::PerEffectInfo (20 bytes) { C3DVector Position; CIntelligentPointer<CThing> Effect; }
 //   (vector<CTCDivineWrath::PerEffectInfo> instantiations name the owner; byte twin: CTCUnholyPower::PerEffectInfo 0x007939D0).
@@ -11,12 +12,7 @@
 //   C3DVector's empty default constructor emits nothing. No engine header exists for CTCDivineWrath; minimal local model.
 class CThing;
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 class CBaseObject;
 class CBaseObjectPointer;

@@ -1,5 +1,6 @@
 // NThingShot::RandomiseShotDirection(const C3DVector& direction, long accuracy, unsigned long* seed) -- scatter a shot: unless a 0..99 roll is at or under the accuracy, tilt the direction by a small random angle about a random axis perpendicular to it
 // Leaf: ?RandomiseShotDirection@NThingShot@@YI?AVC3DVector@@ABV2@JPAK@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- the cross product is the landed 0x007A1870 CrossProduct shape ((float)(double) per component) assigned into a default-constructed axis, so each component goes through the temporary
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BEBE0, 288 bytes, `__fastcall` (hidden result pointer in ecx, direction in edx,
 //   accuracy + seed on the stack, `ret 8`). PDB: ?RandomiseShotDirection@NThingShot@@YI?AVC3DVector@@ABV2@JPAK@Z.
@@ -10,15 +11,7 @@
 //   because VC cannot fold x*0), built in the inline cross product's result temporary and copied into a named local;
 //   that axis is spun about the direction by a random angle, normalised, and the direction rotated about it by
 //   rand/48 + 1/144. The named result is copied out through the hidden pointer (no NRVO in VC7.1).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    void Rotate(const C3DVector& axis, float angle);    // 0x00A13C60
-    C3DVector& AccurateNormalise();                     // 0x00A14440 (Ego_r.pdb; the sqrt form)
-};
+#include "engine/C3DVector.h"
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
     const float* pa = &a.X; const float* pb = &b.X;

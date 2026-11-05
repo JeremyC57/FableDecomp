@@ -1,4 +1,5 @@
 // CPhysicsMeshObject::IsRigidBodyBoundingPointsValid(vector<C3DVector>& points) const -- the bounding points of a rigid body are valid when they are centred on the body: their sum has (near) zero length
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A11610, 317 bytes, `ret 4` (`this` unused). PDB:
 //   ?IsRigidBodyBoundingPointsValid@CPhysicsMeshObject@@QBE_NAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z.
@@ -8,12 +9,7 @@
 //   helper (`return lenSq > eps * eps;` gives `mov eax,1 / xor eax,eax`) negated in the return (`test al,al ; sete cl`).
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 template <class T> struct vector {
     T* _M_start;
@@ -25,7 +21,7 @@ template <class T> struct vector {
 
 static bool IsLongerThanEpsilon(const C3DVector& v)
 {
-    return v.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO;
+    return v.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO;
 }
 
 class CPhysicsMeshObject {

@@ -1,5 +1,6 @@
 // CAIStateGroup_TavernKeeper::OnReplace() -- finish any running action; if the keeper still holds the jug, take it out of the carry slot and put it back on the bar (reset its physics position and orientation, mark it on the bar); drop mode 0x2b, free and clear the bar point, and make the keeper pushable again
 // Leaf: ?OnReplace@CAIStateGroup_TavernKeeper
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00968BC0, length 570 bytes (plain `ret`, virtual slot 10).
 // Callees: CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0 / FinishCurrentAction @ 0x00662650, IsCarryingJug
@@ -15,7 +16,7 @@
 // Shape: RemoveMode(0x2b) belongs to the carrying-jug branch (the retail not-carrying `je` skips it); the ternary
 //   GetInterface form puts the 0x47 component straight into ecx.
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

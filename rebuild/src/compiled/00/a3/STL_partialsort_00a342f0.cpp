@@ -1,5 +1,6 @@
 // std::__partial_sort(pair<unsigned long, C3DHelperPoint>* first, pair<unsigned long, C3DHelperPoint>* middle, pair<unsigned long, C3DHelperPoint>* last, pair<unsigned long, C3DHelperPoint>*, CKeyPairCompareLess comp) -- heap-based partial sort of the helper-point table: heapify [first, middle), pop every smaller later entry into it, then sort the heap
 // Leaf: __partial_sort
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A342F0, 110 bytes (+ int3 padding), `ret 0Ch` (__fastcall: first in ecx,
 //   middle in edx, last, the value-type pointer and the empty comparator on the stack).
 // Identity: the depth-limit fallback of the C3DMeshStats helper-point introsort (20-byte family of 0x00A31280 / 0x00A329B0 /
@@ -12,10 +13,7 @@
 //   value-type and distance pointers, comp in ebp, the copy built straight in the argument area.
 namespace std {
 
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 struct C3DHelperPoint {                                // 16 bytes
     C3DVector Position;                                // +0x00

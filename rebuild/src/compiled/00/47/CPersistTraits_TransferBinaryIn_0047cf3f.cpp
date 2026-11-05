@@ -1,5 +1,6 @@
 // CPersistTraits::TransferBinaryIn(CMemoryDataInputStream*, C3DVector*) -- reads a C3DVector from the binary stream (0x009950F0, by value) and stores it through the output pointer
 // Leaf: TransferBinaryIn
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047CF3F, 34 bytes. Pragmas: frame pointer kept
@@ -12,11 +13,7 @@
 // value pointer: CPersistTraits<C3DVector>::TransferBinaryIn, `this` unused, `ret 8`. The vector
 // comes back in a 12-byte frame temporary and is copied to *value as a POD under /Os (three
 // `movsd` through esi/edi).
-class C3DVector { public:
-    float x;
-    float y;
-    float z;
-};
+#include "engine/C3DVector.h"
 
 class CDataInputStream
 {

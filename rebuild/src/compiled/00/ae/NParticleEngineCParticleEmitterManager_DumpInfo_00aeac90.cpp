@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitterManager::DumpInfo(const CWideString& fileName) -- write a text dump of every live emitter (name, position, and a Dead/Alive line per particle system) to the named file
 // Leaf: DumpInfo
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEAC90, length 546 bytes (`ret 4`, 8-byte aligned frame).
 // Callees: CCharString() @ 0x0099E4B0, ~CCharString @ 0x0099EAE0, operator+=(const CCharString&) @ 0x0099F0A0,
 //   operator+=(const char*) @ 0x0099F100, operator+(const char*, const CCharString&) @ 0x0099F690,
@@ -50,10 +51,7 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& a, const char* b);          // 0x0099F600
 CCharString __fastcall operator+(const char* a, const CCharString& b);          // 0x0099F690
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 namespace NParticleEngine {
 class CParticleSystem { public:
     unsigned char _state00[0x50];

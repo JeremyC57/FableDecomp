@@ -1,5 +1,6 @@
 // NScript::CGlobal_GiveHeroItemsFromRewardChestScript::Main() -- global script run when the hero uses a reward chest: keeps the quest persistent, hands the hero the items of the most recently used target and removes it, waits for player control, then (for the reward-on-death chest, an adult hero) shows tutorial 10 and waits for it to be clicked past; finally deactivates the quest
 // Leaf: ?Main@CGlobal_GiveHeroItemsFromRewardChestScript@NScript@@UAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EEC410, length 629 bytes (+ int3 padding).
 // Callees: CScriptBase::SetPredicate 0x00CB7920 / IsActiveThreadTerminating 0x00CB7940, the CIsThingConscious filter
 //   (vtable 0x012C2FE8, as in the landed CUndeadRisingZombieAttacker::Main 0x00E0CFF0), CScriptThing copy 0x004ABE90 /
@@ -23,24 +24,8 @@ template <class T> class CCountedPointer { public:                              
  CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
  CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (folded with CCountedPointer<CDiskFileWin32>::operator=)
 };
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- virtual void v01();
- virtual CCharString GetDefName() const;                 // slot 2 (+0x08) 0x004AA8D0
- virtual void v03(); virtual void v04(); virtual void v05();
- virtual const C3DVector& GetPos() const;               // slot 6 (+0x18)
- virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
- virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54) 0x004AAB30
- virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66();
- virtual void SetFriendsWithEverythingFlag(bool on);       // slot 67 (+0x10c) 0x004AB060
- virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71(); virtual void v72(); virtual void v73(); virtual void v74();
- virtual bool IsAlive() const;                            // slot 75 (+0x12c) 0x004AB130
- CCountedPointer<CScriptThing> PImp;                                  // +0x04 Data, +0x08 Info
- struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
- CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
- CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- virtual ~CScriptThing();                                       // 0x004AA840
- CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};

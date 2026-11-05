@@ -1,6 +1,7 @@
 // CTCCameraPointDefinitionBase::OnSerialise(CPersistContext& context, bool transfer) -- persist the camera point's flags, FOV, base position (relative to the parent thing) and axes, then the leaf class's own data
 //   `mov eax,ebp` for Up then `add ebp,0xc` for Forward) while the reads stay folded on this; C3DVector has a user copy ctor.
 // Leaf: OnSerialise
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x0075C670, 714 bytes (`ret 8`).
 // Callees: CThing::GetPos @ 0x004C73D0, CPersistContext::Transfer<bool> @ 0x004045C0, Transfer<float> @ 0x00410620
@@ -12,14 +13,7 @@
 // Shape: CoordBase is saved relative to the parent's position under an "IsCoordBaseRelativeToParent" flag (always written
 // true) and rebuilt on load; the axes are transferred through a local copy (Up default +Z, Forward default +X) and copied
 // back.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator-(const C3DVector& b) const { return C3DVector(X - b.X, Y - b.Y, Z - b.Z); }
-    C3DVector operator+(const C3DVector& b) const { return C3DVector(X + b.X, Y + b.Y, Z + b.Z); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     CRightHandedSet() {}
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) { Up = up; Forward = forward; }

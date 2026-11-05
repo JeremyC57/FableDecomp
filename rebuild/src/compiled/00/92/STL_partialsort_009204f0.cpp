@@ -1,6 +1,7 @@
 // std::__partial_sort(const CThingObject** first, const CThingObject** middle, const CThingObject** last, const CThingObject**, CThingCompare_Nearest comp) -- STLport partial sort for the nearest-first sort: heapify [first, middle), sift every nearer element of [middle, last) in, then sort_heap
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- port of the landed byte-identical twin 0x0095DE60 (relocations aside); see Twin below
 // Leaf: ??$__partial_sort@PAPBVCThingObject@@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Element (sweep3, FINDINGS "Family pass 2" G015): the sorted range is const CThingObject* -- the caller
 //   CAIStateGroup_TestTestTest::Update 0x0091F140 fills it with GetAllThingsInRoughArea 0x00920200 (type mask 0x807 =
 //   CThingObject) before sort 0x009206A0, and FableWin.pdb has sort<vector<const CThingObject*>, CThingCompare_Nearest> /
@@ -28,13 +29,7 @@ class CThing;
 
 // C3DVector with the engine's constructors (Ego_r.pdb: X, Y, Z): the user copy constructor makes the 12-byte
 // comparator copy memberwise into the argument area; operator- / GetLengthSquared serve the stand-in below.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:
@@ -62,7 +57,7 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
         return a;
     C3DVector deltaA = a->GetPos() - Pos;
     C3DVector deltaB = b->GetPos() - Pos;
-    return deltaA.GetLengthSquared() < deltaB.GetLengthSquared() ? a : b;
+    return deltaA.GetSquaredMagnitude() < deltaB.GetSquaredMagnitude() ? a : b;
 }
 #pragma auto_inline(on)
 typedef CThingCompare_Nearest TComp;

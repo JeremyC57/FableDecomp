@@ -1,5 +1,6 @@
 // NScript::CQ_TentacleKrakenBossFightScript::CM_Experience::Main() -- Kraken boss-fight experience marker: set a CIsThingConscious(Me) predicate, wait a frame at a time for the master data's MotherDodgingKraken flag, then wait while "TheKraken" is alive and drop an experience orb (PrisonExperienceForKillingKraken) 5 units above this marker
 // Leaf: ?Main@CM_Experience@CQ_TentacleKrakenBossFightScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF48F0, 348 bytes, plain `ret`.
 // Identity: Ego_r.pdb ?Main@CM_Experience@CQ_TentacleKrakenBossFightScript@NScript@@EAEXXZ (private virtual; the PDB also has
 //   ??0 / ?Alloc@ / ?GetMasterData@ / ?GetParentScript@ of CM_Experience); the body reads the Kraken script's master data
@@ -26,11 +27,7 @@ class CThing;
 #include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    const C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-};
+#include "engine/C3DVector.h"
 // CCharString: the engine string's data pointer and the two members used (no shared header with these spellings).
 class CCharString { public:
     void* PStringData;

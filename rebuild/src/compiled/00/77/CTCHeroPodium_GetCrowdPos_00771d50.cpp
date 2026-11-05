@@ -1,5 +1,6 @@
 // CTCHeroPodium::GetCrowdPos(const C3DVector& pos, C3DVector& crowd_pos) -- claims a crowd slot (at most eight occupants): takes the best vacant position for pos (always slot 0 at the origin in this build), marks the slot occupied, bumps the occupant count
 // Leaf: ?GetCrowdPos@CTCHeroPodium@@QAE_NABVC3DVector@@AAV2@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771D50, 85 bytes (+11 int3), thiscall `ret 8`. Single caller 0x00957D86.
 // Name: Ego_r.pdb ?GetCrowdPos@CTCHeroPodium@@QAE_NABVC3DVector@@AAV2@@Z (donor order: OnInitialActivate, GetPositionForMember,
 //   GetBestVacantPositionForThisPos, GetCrowdPos, ctor, FrameUpdate -- retail 0x00771BD0, 0x00771C70, (inlined), 0x00771D50,
@@ -12,13 +13,7 @@
 //   12-byte vector temporary (`sub esp,0Ch` -- the earlier parked residue).
 // Layout (Ego_r.pdb CTCHeroPodium, retail STLport vector 12 bytes, as the landed GetPositionForMember 0x00771C70):
 //   NumberOfCrowdOccupants +0x0c, CrowdOccupation vector<long> +0x10, E_X +0x1c, E_Y +0x28. No engine header exists.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class _T1, class _T2>
 struct pair {

@@ -1,4 +1,5 @@
 // CTCHeroStats::AddHousePosition(const CRegion*, const C3DVector&) -- remembers a house position for a region
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057CB4B, 51 bytes. Single caller 0x006C1871.
 // Callee: vector<pair<const CRegion*, C3DVector>>::push_back(const value_type&) @ 0x00581132.
 //
@@ -13,10 +14,7 @@
 
 class CRegion;
 
-class C3DVector { public:
-    float x, y, z;
-    C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) {}
-};
+#include "engine/C3DVector.h"
 
 struct CHousePosition {                        // std::pair<const CRegion*, C3DVector>
     const CRegion* first;

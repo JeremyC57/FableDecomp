@@ -1,5 +1,6 @@
 // std::vector<CPlane>::_M_fill_insert(pointer,unsigned int,const value_type&) -- Insert copied records with spare-capacity reuse or growth.
 // Leaf: ?_M_fill_insert@?$vector@VCPlane@@V?$allocator@VCPlane@@@std@@@std@@QAEXPAVCPlane@@IABV3@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /Gr
 // Identity: proven. Own C3DMeshFileConvexVolumeChunk::ReadFromFile00aaab10 invokes target for Planes48, same growth00a13720 and nonconst copy00a11210; CPlane Normal+Distance type independently confirmed. Memberwise user copy constructors and inline uninitialized_fill_n preserve the sixteen-byte local and placement-new null guard; exact original STLport typed helpers.
 // Layout: element16 and genuine vector12/base/proxy. No target engine header.
@@ -15,7 +16,8 @@ typedef __SIZE_TYPE__ PlacementSize;
 typedef unsigned int PlacementSize;
 #endif
 inline void* __cdecl operator new(PlacementSize,void* p){return p;}
-class C3DVector{public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& p):X(p.X),Y(p.Y),Z(p.Z){}};class CPlane{public:C3DVector Normal;float Distance;CPlane():Distance(0){}CPlane(const CPlane& p):Normal(p.Normal),Distance(p.Distance){}};
+#include "engine/C3DVector.h"
+class CPlane{public:C3DVector Normal;float Distance;CPlane():Distance(0){}CPlane(const CPlane& p):Normal(p.Normal),Distance(p.Distance){}};
 namespace std{
 struct __false_type{__false_type(){}};struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{};
 template<class T>class allocator{public:T* allocate(unsigned int n){return n?(T*)malloc(n*sizeof(T)):0;}void deallocate(T* p,unsigned int){if(p)free(p);}};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};

@@ -1,5 +1,6 @@
 // std::vector::erase(iterator first, iterator last) -- (vector<KnickKnack >) STLport range erase of 16-byte records: copy the tail [last, finish) down onto first element by element, set finish to the copy's end, return first
 // Leaf: ?erase@?$vector@UKnickKnack@@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D9C20, 81 bytes (+ int3 padding), thiscall, `ret 8`, returns first.
 // Identity: vector<KnickKnack >::erase(iterator, iterator) -- proven; evidence: the landed vector<KnickKnack>::resize(unsigned int) 0x007D9FC0 (Ego_r.pdb CTCTavernGameSpotTheAddition::KnickKnacks) shrinks through it, as does the fill-insert path 0x007D9F10; Ego_r.pdb struct KnickKnack is 16 bytes (Pos, Thing).
 // Label: the manifest's "vector_Erase_16byte_Range" is propagated across byte-identical bodies; family G040 (8 erase bodies of
@@ -8,11 +9,7 @@
 //   _M_finish = __i; return __first;` -- the default __type_traits give __false_type, so __copy_ptrs is the
 //   random-access __copy loop (both inlined: `__forceinline`), and __destroy_aux over the trivial destructor is empty.
 #include <stddef.h>
-class C3DVector {                                          // 12 bytes
-public:
-    C3DVector() { }
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class CThingObject;
 struct KnickKnack {                                         // 16 bytes (Ego_r.pdb struct)
     KnickKnack() { }

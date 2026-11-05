@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveStaticMesh::IsInsideFrustum(const CEngineCamera& camera, bool ignoreFrustum) -- the mesh's world-space bounding sphere centre (local centre through the object transform) must lie within the primitive's fade distance of the camera; unless ignoreFrustum, the sphere (radius scaled by +0x58) must also overlap the near / far depth range along the look vector and lie inside the four side frustum planes
 // Leaf: IsInsideFrustum
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local LengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B9DC60, `ret 8`. Ego_r.pdb: ?IsInsideFrustum@CEngineInternalPrimitiveStaticMesh@@UAE_NABVCEngineCamera@@_N@Z (virtual).
 // Callees: 0x00BEB660 (the primitive's fade distance: FadeDistance +0x18, or clamped to the global camera's range when OverrideFadeDistance).
 // Layout: engine/CEngineInternalPrimitiveStaticMesh.h -- MeshInfo (C3DMeshInfo*) is the header's `_pad_0x50` word, the radius scale
@@ -14,14 +15,7 @@
 #include "engine/C3DMeshInfo.h"
 #include "engine/CEngineCamera.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float LengthSquared() const { return Z * Z + Y * Y + X * X; }
-};
+#include "engine/C3DVector.h"
 class CPlane { public: C3DVector Normal; float D; };
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 
@@ -69,7 +63,7 @@ bool __fastcall IsInsideFrustum(CEngineInternalPrimitiveStaticMesh* self, int /*
                      x * m[2] + y * m[5] + z * m[8] + m[11]);
     C3DVector delta = centre - CameraPosition(camera);
     float fade = CEnginePrimitive_ComputeFadeDistance(self);
-    if (delta.LengthSquared() > fade * fade)
+    if (delta.GetSquaredMagnitude() > fade * fade)
         return false;
     if (ignoreFrustum)
         return true;

@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleEmitterManager::CreateInterpolatedEmitter(const CParticleEmitter* from, const CParticleEmitter* to, float interpolate, const C3DVector& position, const CRightHandedSet& orientation) -- when both emitters may spawn here, clone the source into the active list, interpolate it toward the target and place it; null otherwise
 // Leaf: ?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@0MABVC3DVector@@ABVCRightHandedSet@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEB600, 202 bytes (`ret 14h`). Ego_r.pdb
 //   ?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@PBV32@0MABVC3DVector@@ABVCRightHandedSet@@@Z.
@@ -12,10 +13,7 @@
 //   for the counted pointer's ctor/dtor and Insert tell VC7.1 the local does not escape, so the clone is read once into esi
 //   after Insert, as retail). Without them (chunk 754 tries a-i) VC loaded it through ecx and copied it to esi.
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c

@@ -1,5 +1,6 @@
 // C3DPrimitive2::ConvertToVBFormatStaticNonBump(CTVertexNormTex1* vertices) -- copy every device-independent C3DVertex2 (position, normal, U, V) into the static non-bump vertex-buffer format
 // Leaf: ?ConvertToVBFormatStaticNonBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A8EFA0, 520 bytes, thiscall, `ret 4`.
 // Identity (proven): the one caller is 0x00A9282B inside the landed C3DPrimitive2::ConvertToVBFormatStatic 0x00A92740
@@ -15,7 +16,7 @@
 //   unrolls the loop four times and finishes the remainder, re-reading Data->Vertices through `this` at every element.
 #include "engine/CMovableResource.h"
 #include "engine/CBaseClassNonCopyable.h"
-class C3DVector{public:float X,Y,Z;C3DVector(const C3DVector&o):X(o.X),Y(o.Y),Z(o.Z){}};
+#include "engine/C3DVector.h"
 class C3DVertex2{public:C3DVector Position,Normal;float U,V;const C3DVector GetPosition()const{return Position;}const C3DVector GetNormal()const{return Normal;}float GetU()const{return U;}float GetV()const{return V;}};
 class CTVertexNormTex1Base{public:float X,Y,Z,NormalX,NormalY,NormalZ,U1,V1;};     // Ego_r.pdb, 32 bytes
 template<class T>class CGenericVertex:public T{public:

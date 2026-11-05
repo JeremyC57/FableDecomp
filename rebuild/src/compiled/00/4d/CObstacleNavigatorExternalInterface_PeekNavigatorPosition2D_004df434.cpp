@@ -5,13 +5,9 @@
 // constructor C2DVector(const C3DVector&) copies X through the x87 and Y through ecx; the default (speed) build moves
 // both words through integer registers.
 // Leaf: PeekNavigatorPosition2D
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #pragma optimize("s", on)
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X;

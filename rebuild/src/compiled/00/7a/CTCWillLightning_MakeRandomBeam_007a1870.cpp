@@ -1,5 +1,6 @@
 // CTCWillLightning::MakeRandomBeam(bool) -- fire a temporary main beam from the caster in a random direction: rotate the caster's forward by random angles about its side and up axes, scale it to the area-effect range, offset it from the caster, activate the beam and keep it in the beam list
 // Leaf: ?MakeRandomBeam@CTCWillLightning
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A1870, 676 bytes (+ int3 padding), `ret 4` (the bool is unused).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; the caster physics' right-handed set (virtual +0x120);
 //   operator new 0x00BFEA1A; CLightningBeam(CThing*, CThing*) 0x007A0630; the counted-pointer deleter 0x007A4120;
@@ -9,14 +10,7 @@
 // Layout (retail CTCWillLightning, as the landed InitialiseBeams 0x007A16F0): m_lspDef +0x28, m_lbBeams +0x68,
 //   m_cbpPlayer +0x70, BeamsInitialised +0x95, m_fAreaEffect +0x9c, m_fActivationTime +0xa8, m_fDeActivationTime +0xac,
 //   m_fTemporaryBeamLife +0xc0; def angle ranges +0xcc / +0xd4; CLightningBeam (0x7c, landed ctor 0x007A0630).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void Rotate(const C3DVector& axis, float angle);   // 0x00A13C60
-    C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
-    C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
     const float* pa = &a.X; const float* pb = &b.X;

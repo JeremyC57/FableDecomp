@@ -1,5 +1,6 @@
 // CTCHeroPodium::~CTCHeroPodium() -- implicit component destructor: destroy the CrowdOccupation vector<long> (free its block), then ~CTCBase
 // Leaf: ??1CTCHeroPodium@@UAE@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00771F30, 27 bytes: `push esi ; mov esi,ecx ; mov eax,[esi+10h] ; test ; je ;
 //   push eax ; call free ; add esp,4 ; mov ecx,esi ; pop esi ; jmp ~CTCBase`.
 // Identity: the only caller is CTCHeroPodium's scalar deleting destructor 0x00771F10 (call at 0x00771F13), slot 0 of the
@@ -63,12 +64,7 @@ class CTCBase : public CBaseClassNonCopyable { public:
     virtual ~CTCBase();                                     // 0x00686830
 };
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 
 class CTCHeroPodium : public CTCBase { public:              // vtable 0x0126A89C
     long              NumberOfCrowdOccupants;               // +0x0C

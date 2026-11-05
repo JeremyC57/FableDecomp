@@ -1,5 +1,6 @@
 // NCameraModes::CScriptedControl::OnDie() -- when the script module is finished, restore the initial camera: go-to point = its position, look-at point = position + forward * distance to the observed thing (1 when gone), the FOV, and a camera cut
 // Leaf: OnDie
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation); local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087BBF0, length 298 bytes (`ret`).
 // Callees: the script module's virtual slot 7 (+0x1c, bool; descriptive IsFinished), NCameraModes::CBase::GetObservedThing()
 // const @ 0x0084F1B0 (twice), CThing::GetPos() const @ 0x004C73D0, CCamera::GetHorizontalFOV() const @ 0x00A0BEB0.
@@ -13,18 +14,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-    C3DVector& AccurateNormalise();                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                           // +0x00
     C3DVector Forward;                      // +0x0c
@@ -114,7 +104,7 @@ void CScriptedControl::OnDie()
         C3DVector position = InitCamera.WorldPosition;
         float distance = 1.0f;
         if (IS_THING_ALIVE(GetObservedThing()))
-            distance = (position - GetObservedThing()->GetPos()).GetLength();
+            distance = (position - GetObservedThing()->GetPos()).GetMagnitude();
         GoTo.Position = position;
         LookAt.Position = InitCamera.RHSet.Forward * distance + position;
         CameraFOV = InitCamera.GetHorizontalFOV();

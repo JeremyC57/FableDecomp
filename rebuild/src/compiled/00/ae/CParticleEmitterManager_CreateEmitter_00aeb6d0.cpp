@@ -1,4 +1,5 @@
 // CParticleEmitterManager::CreateEmitter(long, const C3DVector&, long, const CRightHandedSet&) -- fetch the emitter template; if it may spawn here and is not a 2D emitter, clone it into the active list and place it (position and orientation interpolators from/to the same value); null when anything fails
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEB6D0, length 192 bytes (`ret 10h`).
 // Callees: CParticleEmitterDatabase::GetEmitterTemplate @ 0x00AE89E0 on the static counted pointer 0x013D2E14,
 //          CParticleEmitter::ShouldSpawn @ 0x00AECF90, DatabaseClone @ 0x00AF0650, SetPosition @ 0x00AEDDC0,
@@ -12,10 +13,7 @@
 // and Insert have same-TU read-only stand-in bodies, so the local does not escape: the clone is read through
 // operator-> after the position interpolator temporary is built and kept in esi for both setters and the result.
 class C2DVector { public: float X, Y; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c

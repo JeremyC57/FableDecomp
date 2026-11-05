@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::SetEmitterPosition(const C3DVector& position) -- move the live emitter (start and end position both `position`), or else reset the component's physics position
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0500, length 142 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), CBaseClass::CBaseClass @ 0x0099A2D0 / ~CBaseClass @ 0x0099A2E0, NParticleEngine::
 // CParticleEmitter::SetPosition(const C3DPositionInterpolator&) @ 0x00AEDDC0, CTCPhysicsBase::ResetPosition (slot 31, +0x7C).
@@ -8,10 +9,7 @@
 // (CIntelligentPointer<NParticleEngine::CParticleEmitter>), PAttachedToThing +0x1C, PCreationParameters +0x3C (CCountedPointer:
 // object +0x3C, count block +0x40), flag bytes +0x44 (bit 0 WaitingForParticleToLoad, bit 3 ParticleCreationDisabled) and +0x45
 // (bit 0 AttachedToThing, bit 1 AlwaysUpdate, bit 2 Asleep). CParticleCreationParameters: ParticleCreationDisabled +1, RHSet +0x10.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c

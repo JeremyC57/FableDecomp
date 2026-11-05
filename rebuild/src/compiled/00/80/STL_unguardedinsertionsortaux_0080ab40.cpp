@@ -1,5 +1,6 @@
 // std::__unguarded_insertion_sort_aux(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, NPlayerTargeting::CTargetPoint*, CThingCompare_BestForTargeting2 comp) -- unguarded insertion sort of the player-targeting candidate points: each point, copied by value, goes through the unguarded linear insert with the 0x34-byte targeting comparator copied by value
 // Leaf: ??$__unguarded_insertion_sort_aux@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080AB40, 205 bytes, __fastcall (first ecx, last edx; the null value-type pointer and
 //   the 0x34-byte comparator on the stack, `ret 0x38`).
 // Callers: one, 0x0080B196 (the targeting sort's __final_insertion_sort; the manifest names that caller
@@ -19,13 +20,7 @@
 class CThing;
 class CBaseObjectPointer;
 
-class C3DVector {                               // retail C3DVector: memberwise user copy constructor
-public:
-    float X;                                    // +0x0
-    float Y;                                    // +0x4
-    float Z;                                    // +0x8
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CBaseObject;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

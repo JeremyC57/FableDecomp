@@ -1,5 +1,6 @@
 // NScript::CQ_GuildTrainingWoodsMeleeScript::TeleportOutHero() -- Rescue low-health hero from training woods until cancellation.
 // Leaf: ?TeleportOutHero@CQ_GuildTrainingWoodsMeleeScript@NScript@@QAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own DoMission callback registration00d66e21 stores this address with literal TeleportOutHero at012d19dc and parent pointer. PDB nameset independently confirms member TeleportOutHero; typed CScriptBase/CLevelScriptBase hierarchy yields Game64. Game slots70 GetHero,72 GetThingWithScriptName,264 GetHealth,472 EntityTeleportToThing,376 Pause,364 AddNewConversation,366 AddLineToConversation,263 ChangeHeroHealthBy resolved from own01260f0c vtable; health threshold0125a2a0 is6.0f.
 // Layout: actual typed script base and level base, inherited Game64; owned trailing quest state untouched. Real CScriptThing polymorphic handle/counting model and shared header evidence retained. Unused virtual slots descriptive.
@@ -16,9 +17,8 @@ class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCha
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

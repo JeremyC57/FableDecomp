@@ -3,6 +3,7 @@
 // gravity * GravityStrength + wind * WindStrength and damping is (1 - GlobalDamping)^dt * TimestepMultiplier; otherwise
 // the current positions are copied into the last-position buffer. Either way the timestep flags reset.
 // Leaf: ApplyForces
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADF760, 0x1FB bytes (padded to 512), `ret 4`, `and esp,-16` frame.
 // Callees: the source's virtual slot 1 (gravity) and slot 2 (wind), both returning a C3DVector; pow (_CIpow 0x00BFEB40).
 // Layout: CParticleSimulation per the Ego_r PDB (Timestep +0xC, TimestepChanged +0x10, TimestepMultiplier +0x14, Size
@@ -19,13 +20,7 @@
 namespace std {
 template <class _Tp> inline void swap(_Tp& __a, _Tp& __b) { _Tp __tmp = __a; __a = __b; __b = __tmp; }   // STLport <stl/_algobase.h>
 }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-};
+#include "engine/C3DVector.h"
 class C4DVector { public:
     float X, Y, Z, W;
     C4DVector() {}

@@ -1,4 +1,5 @@
 // CAIStateGroup_ReactToDeadLeader::Update() -- while the enemy lives: ask the creature's navigation component for the nearest flee position 20 units from the enemy, run there (re-issuing while the move is pending, the state is not stopping, the enemy lives and the frame budget lasts), forget the enemy when the move did not succeed or once it is more than 20 units away; then Terminate()
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetMagnitudeSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095E470, length 608 bytes (+ int3 padding), plain `ret` (virtual), `and esp,-8` frame.
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
 // CThingCreatureBase::PeekPos @ 0x006A4D00, CTCCreatureNavigation::GetNearestFleePosition @ 0x006CB840,
@@ -10,14 +11,7 @@
 // through an 8-byte intelligent-pointer temporary inside the loop (the `and esp,-8` frame); lower_bound copies `first` into
 // the walking pointer after the length; `reached` sits in its own block around the do-loop (shares the HasTC byte slot).
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -143,7 +137,7 @@ void CAIStateGroup_ReactToDeadLeader::Update()
         if (!IsStopping() && IS_THING_ALIVE(PEnemy) && FramesRunning < g_scaled_013bb738) {
             const CThing* creature = GetCreature();
             const CThing* enemy = PEnemy.GetPItem();
-            if ((enemy->GetPos() - creature->GetPos()).GetMagnitudeSquared() > 400.0f)
+            if ((enemy->GetPos() - creature->GetPos()).GetSquaredMagnitude() > 400.0f)
                 PEnemy = CIntelligentPointer<CThingCreatureBase>(0);
         }
     }

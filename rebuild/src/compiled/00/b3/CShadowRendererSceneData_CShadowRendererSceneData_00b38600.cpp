@@ -1,6 +1,7 @@
 // CShadowRendererSceneData::CShadowRendererSceneData(const CShadowRendererSceneData& other) -- copy constructor: the three shadow-buffer matrices, the spotlight falloff matrix, the fade range, light vector, camera position and the two clip volumes
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B38600, 213 bytes, `ret 4`, returns `this`.
 // Leaf: ??0CShadowRendererSceneData
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CShadowClipVolume::CShadowClipVolume(const CShadowClipVolume&) @ 0x00B36C50 (landed; the manifest's
 //   "CEngineCameraDesc" label there is propagated), twice.
 // Shape: the compiler-GENERATED copy constructor (CShadowClipVolume's copy is non-trivial, so VC7.1 emits it out of
@@ -11,10 +12,7 @@
 //   ...TextureSpace +0x80, SpotLightFalloffMatrix +0xC0, ShadowFadeStart +0xF0, ShadowFadeEnd +0xF4,
 //   ShadowLightVector +0xF8, CameraPos +0x104, CasterClipVolume +0x110, RecieverClipVolume +0x1A8.
 // No engine header exists for CShadowRendererSceneData.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CMatrix4x4 { public: float M[4][4]; };
 class CMatrix3x4 { public: float M[3][4]; };

@@ -1,6 +1,7 @@
 // std::__adjust_heap(CThing** first, int holeIndex, int len, CThing* val, CThingCompare_NearestToPos comp) -- STLport heap sift-down for the lightning target sort: move the nearer child up until the hole reaches the bottom, then push `val` back up from there
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the landed 0x0095CFE0 shape with the bool comparator: its real template body (0x007A2F90) noinline in the TU, member-init C3DVector copy ctor, template __adjust_heap
 // Leaf: ??$__adjust_heap@PAPAVCThing@@HPAV1@VCThingCompare_NearestToPos@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_NearestToPos@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A34A0, 135 bytes, __fastcall (/Gr algorithm TU: first in ecx, holeIndex
 //   in edx; len, val and the 12-byte comparator on the stack), `ret 14h`.
 // Instantiation: sort / partial_sort<CThing**, CThingCompare_NearestToPos> of CTCWillLightning.cpp -- Ego_r.pdb places
@@ -23,13 +24,7 @@ class CThing;
 
 // C3DVector with the engine's constructors (Ego_r.pdb: X, Y, Z): the user copy constructor makes the 12-byte
 // comparator copy memberwise into the argument area; operator- / GetLengthSquared serve the stand-in below.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:
@@ -53,7 +48,7 @@ template <class T> bool CThingCompare_NearestToPos::operator()(T* a, T* b) const
         return true;
     C3DVector deltaA = a->GetPos() - Pos;
     C3DVector deltaB = b->GetPos() - Pos;
-    if (deltaA.GetLengthSquared() < deltaB.GetLengthSquared())
+    if (deltaA.GetSquaredMagnitude() < deltaB.GetSquaredMagnitude())
         return true;
     return false;
 }

@@ -1,5 +1,6 @@
 // CAIStateGroup_TavernKeeper::Update() -- close the keeper's shop stock and reset the 0x23 component, walk back inside the pub if outside, then loop: serve payment requests (old jug point + receive payment), refill empty jug slots on the bar (fetch the jug, walk to it, fill it), or idle at random (do nothing / lean on the bar); terminates when stopped or any step fails
 // Leaf: ?Update@CAIStateGroup_TavernKeeper
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00969470, length 698 bytes (aligned `and esp,-8` frame, virtual slot 12).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x90 shop keeper, 0x23, 0xb9 tavern bar),
@@ -16,11 +17,7 @@
 //   push esp`); the pub pointer (IsPointInside) and the pub thing for GetPhysPos are named locals fetched before the
 //   argument pushes; the random idle is the landed inline seed step with `switch (r % 2)`.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float m[6]; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

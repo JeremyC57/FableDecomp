@@ -1,6 +1,7 @@
 // NCameraModes::CScriptModuleBase::ResetCameraOnEnd() const -- cut back out of the module at its end: the script's cut-out override when set, else the live camera point's CutOutOf flag
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00853FB0, 123 bytes, plain `ret`.
 // Leaf: ?ResetCameraOnEnd@CScriptModuleBase@NCameraModes@@UBE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Name: vtable 0x01255F74 slot 7; FableWin.pdb ?ResetCameraOnEnd@CScriptModuleBase@NCameraModes@@UBE_NXZ (CScriptModuleCameraOnAStick
 //       and CScriptModuleFOVZoom override slot 7, both PDB ResetCameraOnEnd overriders; SetCutOutOverride sets the override).
@@ -52,7 +53,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     CThing* Get() const { return (CThing*)GetPItem(); }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CTCCameraPointDefinitionBase { public:                // retail = Ego_r.pdb offsets for these bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();

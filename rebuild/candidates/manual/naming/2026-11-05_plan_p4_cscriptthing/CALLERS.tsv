@@ -1,0 +1,2 @@
+caller	targets	status	source	note
+00eea7c0	004ab130	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/ee/NScriptCExpressionDigScript_Main_00eea7c0.cpp	004ab130 ?IsAlive@CScriptThing@@QBE_NXZ -> ?IsAlive@CScriptThing@@UBE_NXZ

@@ -1,5 +1,6 @@
 // NCameraModes::CBase::AddIncidentalAttractorLookAt(const C3DVector&, float) -- adds an incidental look-at attractor (position, weight) to the mode's look-at physics, but only when the camera tools see a clear line from the camera's go-to position to it
 // Leaf: ?AddIncidentalAttractorLookAt@CBase@NCameraModes@@IAEXABVC3DVector@@M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084E2C0, 151 bytes, __fastcall, `ret 8`.
 // Identity: Ego_r.pdb / FableWin.pdb ?AddIncidentalAttractorLookAt@CBase@NCameraModes@@IAEXABVC3DVector@@M@Z, the fourth of the
 //   AddAttractorGoTo / AddIncidentalAttractorGoTo / AddAttractorLookAt / AddIncidentalAttractorLookAt run (TLC 0x0084E1A0 /
@@ -18,12 +19,7 @@
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-class C3DVector {
-public:
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing;
 

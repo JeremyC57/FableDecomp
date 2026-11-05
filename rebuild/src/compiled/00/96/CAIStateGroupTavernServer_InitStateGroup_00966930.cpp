@@ -9,12 +9,10 @@
 // Layout: engine/CAIStateGroup_TavernServer.h (PJug +0x14, PBar +0x1c, PTable +0x24, PTankard +0x2c, PPub +0x34,
 //          ServingActionPointIndex +0x40, BarActionPointIndex +0x68, ActionPointIndex +0x90, AverageWalkSpeed +0x98).
 // Leaf: InitStateGroup
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CAIStateGroup_TavernServer.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
-};
+#include "engine/C3DVector.h"
 class CThing;
 class CWorld;
 class CThingAICreature;

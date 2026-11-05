@@ -1,6 +1,7 @@
 // _global::_Adjust_heap(std::pair<unsigned long,C3DHelperPoint>*, long, long, std::pair<unsigned long,C3DHelperPoint>, CKeyPairCompareLess) -- Dinkumware heap sift-down for 20-byte (CRC key, helper point) pairs ordered by the unsigned key, then _Push_heap @ 0x00A31380
 // Flags: /Gr
 // Leaf: _Adjust_heap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00a32440, 187 bytes (+ int3 padding).
 // Callee: 0x00A31380 _Push_heap (same instantiation).  first in ecx, hole in edx (link-time
 // __fastcall); bottom, the 20-byte pair by value (built in its argument slot: `sub esp,14h ;
@@ -12,10 +13,7 @@
 // the pair, C3DHelperPoint and C3DVector all copy member by member (user copy constructors).
 namespace FableHeap_00a32440 {
 
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 
 struct C3DHelperPoint {
     C3DVector Position;

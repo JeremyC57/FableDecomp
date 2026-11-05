@@ -1,11 +1,12 @@
 // CHitParameters::CHitParameters(const CHitParameters&) -- actual copy constructor, PDB00807C70
 // Leaf: CHitParameters
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include "engine/CBaseObject.h"
 #include "engine/CIVCountedPointeeBase.h"
 #include "engine/_quarantine/CMaterialDef.h"
 // No CHitParameters/C3DVector/intelligent-pointer class headers exist. Native map/vector sizes12 vs donor16 shift the tail by8.
 #pragma pack(push,1)
-class C3DVector { public:C3DVector();C3DVector(const C3DVector&o):X(o.X),Y(o.Y),Z(o.Z){} float X,Y,Z;};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 struct DamageMap {DamageMap();DamageMap(const DamageMap&);~DamageMap();void*Head;unsigned long Size;unsigned long Allocator;}; //004F97B3 copies native tree,12 bytes
 struct AugmentationVector {AugmentationVector();AugmentationVector(const AugmentationVector&);~AugmentationVector();long*First,*Last,*End;}; //00811D40, enum vector copy12 bytes

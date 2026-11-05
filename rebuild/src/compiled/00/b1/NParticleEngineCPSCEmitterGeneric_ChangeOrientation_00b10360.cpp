@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCEmitterGeneric::ChangeOrientation(const C3DVector& v) -- remaps an emitter-space direction for the XZ or YZ emitter orientation (swapping axes and negating Z), unchanged for the default XY orientation
 // Leaf: ?ChangeOrientation@CPSCEmitterGeneric@NParticleEngine@@AAE?AVC3DVector@@ABV3@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B10360, length 136 bytes, thiscall `ret 8` (hidden result pointer, &v),
 //   the result pointer returned in eax.
 // Signature from Ego_r.pdb: ?ChangeOrientation@CPSCEmitterGeneric@NParticleEngine@@AAE?AVC3DVector@@ABV3@@Z (private).
@@ -13,13 +14,7 @@
 //   temporary (the negation by fchs), copied into the local, then copied out.  C3DVector's memberwise user copy
 //   constructor keeps the local in the frame (implicit copy: the result lives in ecx/edx/esi, DIFFER 113v136).
 // Label: catalog "CParticleDataSource_ApplyAxisRotation" is behavioural.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 namespace NParticleEngine {
 

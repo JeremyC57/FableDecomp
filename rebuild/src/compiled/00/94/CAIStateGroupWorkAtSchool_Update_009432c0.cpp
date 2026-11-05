@@ -1,4 +1,5 @@
 // CAIStateGroup_WorkAtSchool::Update() -- teacher loop: walk to the blackboard or a desk at random, mark the lesson on, wait for a pupil seat, then while inside school hours talk to up to four pupils and finally go to a seat and crouch-talk
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009432C0, length 1198 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10 (school pointer
@@ -14,13 +15,7 @@
 // `long side = r & 1; bool b = side == 1;` (cmp/sete); MoveAndFace is written in each arm (the common arg-push prefix is
 // hoisted by VC7.1) and GFRandom is called inside each talk arm (hoisted too); the look speed is 0.0027777f (0x3B360A13).
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Forward;
     C3DVector Up;

@@ -1,5 +1,6 @@
 // CIcicleData::CIcicleData(const CIcicleData& other) -- copy an ice-troll icicle record: the effect and trap intelligent pointers re-registered on the same things, the two timers and the position copied
 // Leaf: ??0CIcicleData
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E2FC0, length 105 bytes.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, GetPItem @ 0x00A01B50, SetPItem @ 0x00A01B90
 // (each pointer: base constructor, vtable 0x01238C6C, SetPItem(other.GetPItem())).
@@ -25,10 +26,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-class C3DVector { public:
-    float x, y, z;
-    C3DVector(const C3DVector& other) : x(other.x), y(other.y), z(other.z) {}
-};
+#include "engine/C3DVector.h"
 struct CIcicleData {
     CIntelligentPointer<CThing> PEffect;           // +0x00
     CIntelligentPointer<CThing> PTrap;             // +0x08

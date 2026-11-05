@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleFOVZoom::CalculateIncrementVector(const C3DVector& from, const C3DVector& to, long frames) -- Increment = (to - from) / frames
 // Leaf: CalculateIncrementVector
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- C3DVector operators built through the (x, y, z) ctor keep diff.X/diff.Y on the FPU; the reciprocal passed inline as operator*'s float argument is homed in the dead `to` slot as retail
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008520F0, length 112 bytes (106 + int3 padding). No callees.
 // Shape: the difference through an inline member `operator-` (named local), then `diff * (1.0f / frames)`
@@ -9,13 +10,7 @@
 // Layout: PDB NCameraModes::CScriptModuleFOVZoom (0x84 bytes): LookAtPos +0x4c, EndFrame +0x58,
 // WorldFrames +0x5c, FOVIncrement +0x60, FOVFraction +0x64, Increment +0x68, StartPos +0x74,
 // ShortenOnOcclusion +0x80, ResetCamera +0x81, over the 0x4c-byte CScriptModuleBase.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-};
+#include "engine/C3DVector.h"
 
 namespace NCameraModes {
 

@@ -1,5 +1,6 @@
 // CWorldMap::DrawConvertWorldMapCoordsToLocalCoords(long, const C3DVector&) const -- draw interface: a world position relative to one map's corner (Z kept)
 // Leaf: ?DrawConvertWorldMapCoordsToLocalCoords@CWorldMap@@UBE?AVC3DVector@@JABV2@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x0051CE60, 45 bytes, `ret 0Ch` (hidden C3DVector result). PDB
 // ?DrawConvertWorldMapCoordsToLocalCoords@CWorldMap@@UBE?AVC3DVector@@JABV2@@Z
@@ -11,11 +12,7 @@
 // the map member are 12 bytes, so a local model is used): +0x20 Maps (CArray<CMapInfo>, PDB +0x24).
 // Shape: byte-identical to 0x004FC2A0 apart from the +0x1C displacement.
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class CMapInfo {
 public:

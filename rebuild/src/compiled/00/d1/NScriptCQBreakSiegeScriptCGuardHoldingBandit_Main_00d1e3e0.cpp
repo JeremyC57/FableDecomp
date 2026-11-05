@@ -1,5 +1,6 @@
 // NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::Main() -- the Break Siege guard holding the bandit leader: take scripted control, heal fully, make Me unkillable and the bandit leader's ally, then until the leader is freed or the end cutscene is done answer a talk ("_STAY_BACK"), a hit (plain, or any special ability but 14: "_ON_HIT" and ally with the hero) and a "follow" expression ("_WONT_FOLLOW") with a TEXT_QST_018_<data> conversation line; then make Me killable, release him and remove him once the end cutscene is done
 // Leaf: ?Main@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D1E3E0, 1584 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
@@ -76,27 +77,8 @@ struct CBase {                                          // vtable 0x01231710
     virtual ~CBase();                                   // 0x0099A2E0
 };
 #include "engine/C3DVector.h"
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    virtual void s001() const; virtual void s002() const;
-    virtual CCharString GetDataString() const;   // slot 3 (+0xc)
-    virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const;
-    virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const; virtual void s017() const; virtual void s018() const; virtual void s019() const;
-    virtual void s020() const;
-    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
-    virtual void s022() const; virtual void s023() const; virtual void s024() const; virtual void s025() const; virtual void s026() const;
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    virtual void s028() const;
-    virtual bool MsgExpressionPerformedTo(CCharString& expression) const;   // slot 29 (+0x74)
-    virtual void s030() const; virtual void s031() const; virtual void s032() const; virtual void s033() const; virtual void s034() const; virtual void s035() const; virtual void s036() const; virtual void s037() const;
-    virtual void s038() const; virtual void s039() const; virtual void s040() const;
-    virtual bool MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
-    CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C

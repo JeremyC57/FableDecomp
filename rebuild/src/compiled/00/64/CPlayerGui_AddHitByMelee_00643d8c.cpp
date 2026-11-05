@@ -1,5 +1,6 @@
 // CPlayerGui::AddHitByMelee(CThing& attacker, CThing& victim, const C3DVector& pos) -- spawn the GUI def's "smack" particle effect at the hit position
 // Leaf: ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00643D8C, 89 bytes, `ret 0Ch`. Size-optimised NPlayerGui TU (frame pointer,
 // `leave`, fldz/fld1 + fstp constant stores, no function alignment).
 // Identity: Ego_r.pdb `?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z`; reached only through the forwarder at
@@ -13,12 +14,7 @@
 // Shape: the def is fetched first (named local); CreateEmitter's arguments evaluate right to left, so the orientation
 // temporaries come first: forward (0,1,0), then up (0,0,1), then the set; Get() runs after the pushes.
 #pragma optimize("s", on)
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;

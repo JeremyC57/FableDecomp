@@ -1,4 +1,5 @@
 // CAIStateGroup_StealStealableItem::IsStillValid() -- invalidate stealy when disabled or interrupted by hostile events
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members first/last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4); map pointer made const (the row grades the const LowerBound).
 // Retail0x009643d0,279 bytes including embedded switch tables. LowerBound0x4365b0.
 #include "engine/CAIStateGroup_StealStealableItem.h"
 #include "engine/CAIBrain.h"
@@ -7,18 +8,15 @@ class CTCAIScratchpad { public: unsigned char prefix[104]; bool StealStealableIt
 #include "engine/CTCEntityEvents.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public: typedef std::pair<ETCInterfaceType, CTCBase*> Entry; Entry *first,*last; const Entry* LowerBound(const ETCInterfaceType& key) const; };
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
     template<class T> __forceinline bool GetInterface(T** out,long type) {
         if(bits[type>>5]&(1UL<<(type&31))) {
-            ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&interfaces; const CInterfaceMap::Entry* it=map->LowerBound(key);
-            if(it==map->last || it->first>type) it=map->last;
+            ETCInterfaceType key = (ETCInterfaceType)(type); const CInterfaceMap* map=&interfaces; const CInterfaceMap::value_type* it=map->LowerBound(key);
+            if(it==map->end() || it->first>type) it=map->end();
             *out=(T*)((void*)it->second); return true;
         } return false;
     }

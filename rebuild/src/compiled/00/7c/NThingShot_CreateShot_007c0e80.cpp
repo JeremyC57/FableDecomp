@@ -1,5 +1,6 @@
 // NThingShot::CreateShot(CThing& shot, CThing* shooter, CThing* weapon, const CThing* target, float, float, float, const CDefPointer<const CMeleeCombatAbilityDef>& ability, long shot_def_index) -- turn an existing thing into a shot: the shot def (the given index, else the weapon's created-shot def; the shooter stands in for a missing weapon) names the shot-definition TC to add, which is Init'ed with the def, shooter, weapon, target, the three floats and the ability; returns the shot (0 when shots are off, there is no shooter/weapon or no shot def)
 // Leaf: ?CreateShot@NThingShot@@YIPAVCThing@@AAV2@PAV2@1PBV2@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@J@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000); the local same-TU LowerBound body removed (the header defines the same-TU noinline body); the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C0E80, 297 bytes, __fastcall (ecx shot, edx shooter), `ret 1Ch` (seven stack arguments).
@@ -26,65 +27,13 @@ class CBaseObjectPointer;
 class CTCBase;
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Tp, class _Alloc> class vector {           // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;
-    _Tp* _M_finish;
-    _Tp* _M_end_of_storage;
-    iterator end() { return this->_M_finish; }
-    const_iterator end() const { return this->_M_finish; }
-};
-template <unsigned int _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static unsigned int _S_whichword(unsigned int __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(unsigned int __pos) { return 1UL << (__pos % 32); }
-    _WordT _M_getword(unsigned int __pos) const { return _M_w[_S_whichword(__pos)]; }
-};
-template <unsigned int _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    typedef _Base_bitset<(_Nb + 31) / 32> _Base;
-    bool _Unchecked_test(unsigned int __pos) const { return (this->_M_getword(__pos) & _Base::_S_maskbit(__pos)) != 0; }
-    bool operator[](unsigned int __pos) const { return _Unchecked_test(__pos); }
-};
-}   // namespace std
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#define FABLE_RETAIL_STLP_BITSET_TEST_DECL
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                            // +0x00
-    TCompare           Compare;                         // +0x0C
-    bool               Dirty;                           // +0x0D
-    const value_type* LowerBound(const K& key) const;   // 0x004365B0
-};
 // Same-TU body of the real retail const LowerBound instance (binary search over the sorted pairs), not inlined: it lets the
 // inlined lookup share its key frame word with the dead weapon argument slot, as retail does.
 #pragma auto_inline(off)
-template <class K, class V, class TCompare>
-__declspec(noinline) const typename CVectorMap<K, V, TCompare>::value_type* CVectorMap<K, V, TCompare>::LowerBound(const K& key) const
-{
-    const value_type* it = Data._M_start;
-    long count = Data._M_finish - Data._M_start;
-    while (count > 0) {
-        long half = count / 2;
-        if (it[half].first < key) {
-            it += half + 1;
-            count -= half + 1;
-        } else
-            count = half;
-    }
-    return it;
-}
 #pragma auto_inline(on)
 
 class CCharString;
@@ -103,7 +52,7 @@ public:
         ETCInterfaceType key = type;
         const TCMap* map = &Components;
         const TCMap::value_type* it = map->LowerBound(key);
-        return (const T*)((it == map->Data.end() || type < it->first) ? map->Data.end() : it)->second;
+        return (const T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
     }
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
 };

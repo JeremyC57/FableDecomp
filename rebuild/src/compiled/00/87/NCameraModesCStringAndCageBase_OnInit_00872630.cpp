@@ -1,5 +1,6 @@
 // NCameraModes::CStringAndCageBase::OnInit() -- start the string-and-cage camera: inherit the current string/cage lengths and height from a previous string-and-cage mode (with an expansion timer when the new string is longer), else measure them from the go-to point or, with no previous mode, take the desired values and place the camera behind the thing; then schedule the next auto-go-behind frame
 // Leaf: OnInit
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872630, 647 bytes, `ret`. Callees: virtual slots 26 (+0x68, base reset), 14 (+0x38,
@@ -17,15 +18,7 @@
 //   a direct GetObservedThing()->... lets VC hoist the focal pushes into the subtraction). The fps is read into a local
 //   before the virtual call (fimul from the frame).
 #include <math.h>
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 struct CThingPhysics {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

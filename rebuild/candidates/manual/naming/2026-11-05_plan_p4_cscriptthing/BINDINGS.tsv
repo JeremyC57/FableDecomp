@@ -1,0 +1,2 @@
+action	symbol	target	by_row	note
+RETIRE	?IsAlive@CScriptThing@@QBE_NXZ	004ab130	00eea7c0	cscriptthing_p4 wave: no landed row binds this stand-in spelling after the wave

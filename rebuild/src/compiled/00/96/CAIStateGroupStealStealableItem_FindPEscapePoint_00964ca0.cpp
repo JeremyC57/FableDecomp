@@ -1,4 +1,5 @@
 // CAIStateGroup_StealStealableItem::FindPEscapePoint(bool nearest) -- pick an escape point thing: the nearest one to
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // the thief, or a random one of all of them.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00964CA0, length 245 bytes (+ int3 padding), `ret 4`.
@@ -20,7 +21,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
@@ -198,7 +199,6 @@ class CAIStateGroupBase { public:
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-class C3DVector { public: float x, y, z; };
 struct CThingPos : CThing {
 };
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
@@ -255,9 +255,9 @@ bool CThingSearchTools::GetPBestThing(const CThingFilter_EscapePoint& filter, co
         if (GetThingType(thing) != filter.m_type)
             continue;
         const C3DVector& pos = ((CThingPos*)thing)->GetPos();
-        float dx = pos.x - compare.m_pos.x;
-        float dy = pos.y - compare.m_pos.y;
-        float dz = pos.z - compare.m_pos.z;
+        float dx = pos.X - compare.m_pos.X;
+        float dy = pos.Y - compare.m_pos.Y;
+        float dz = pos.Z - compare.m_pos.Z;
         float distance = dx * dx + dy * dy + dz * dz;
         if (!best || distance < bestDistance) {
             best = thing;

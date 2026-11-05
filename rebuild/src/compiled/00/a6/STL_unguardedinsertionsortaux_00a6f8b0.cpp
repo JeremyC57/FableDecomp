@@ -1,5 +1,6 @@
 // std::__unguarded_insertion_sort_aux(pair<CCharString, C3DHelperPoint>* first, pair<CCharString, C3DHelperPoint>* last, pair<CCharString, C3DHelperPoint>*, CCompareString<C3DHelperPoint> comp) -- unguarded insertion sort of [first, last): each element, copied by value, goes through the unguarded linear insert
 // Leaf: ??$__unguarded_insertion_sort_aux@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A6F8B0, 84 bytes, __fastcall (first ecx, last edx; the null value-type pointer and
 //   the comparator on the stack, `ret 8`).
 // Callers: 0x00A70007 and 0x00A72276 (the __final_insertion_sort of the sort 0x00A735A0 that CPhysicsMesh::
@@ -20,13 +21,7 @@ public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-class C3DVector {                               // retail C3DVector: memberwise user copy constructor
-public:
-    float X;                                    // +0x0
-    float Y;                                    // +0x4
-    float Z;                                    // +0x8
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DHelperPoint {                          // Ego_r.pdb, 16 bytes
 public:

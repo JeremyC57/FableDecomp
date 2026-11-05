@@ -1,5 +1,6 @@
 // CTCDCameraPoint::Construct(const C3DVector& position) -- place the owning thing's physics component at the position with the identity axes: build a CTCParamsPhysicsBase(position, CRightHandedSet(Up (0,0,1), Forward (0,1,0))) on the stack and hand it to the physics component's virtual ConstructFromParams
 // Leaf: ?Construct@CTCDCameraPoint@@AAEXABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E8870, 127 bytes, thiscall, `ret 4`.
 // Identity (proven): CTCDCameraPoint::Construct(const C3DVector&), private (Ego_r.pdb and FableWin.pdb both hold
 //   ?Construct@CTCDCameraPoint@@AAEXABVC3DVector@@@Z); evidence: it sits between CTCDCameraPoint vtable 0x0123EC3C (RTTI .?AVCTCDCameraPoint@@) slot 29 0x007E8860 and slot 1 (Persist) 0x007E88F0, and its one caller is CTCDCameraPoint::Create(long, const C3DVector&) 0x007E8980 (Ego_r.pdb Construct 0x007E34B0, Create 0x007E3520)
@@ -17,11 +18,7 @@
 #include "engine/CTCBase.h"
 #include "engine/CTCPhysicsBase.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c

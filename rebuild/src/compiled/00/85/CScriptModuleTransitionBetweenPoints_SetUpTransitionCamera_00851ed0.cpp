@@ -1,4 +1,5 @@
 // CScriptModuleTransitionBetweenPoints::SetUpTransitionCamera(const C3DVector&, const C3DVector&, const C3DVector&, const C3DVector&, long, float) -- set up a camera move from start to end over N frames
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x00851ED0, 365 bytes, ret 0x18. Callee: GFGetCurrentFrame 0x0049D870 (__fastcall; catalog label
 // "GFGetPreMainMemoryUsed" is propagated). Pool: 1.0f 0x0122DED8.
 // Layout: PDB CScriptModuleTransitionBetweenPoints (0x90) matches retail: PThing +0x4C, Increment +0x54,
@@ -13,14 +14,7 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };            // 0x0049D870
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator/(float d) const { float inv = 1.0f / d; return C3DVector(X * inv, Y * inv, Z * inv); }
-};
+#include "engine/C3DVector.h"
 
 struct CScriptModuleTransitionBetweenPoints {
     unsigned char _base[0x4c];

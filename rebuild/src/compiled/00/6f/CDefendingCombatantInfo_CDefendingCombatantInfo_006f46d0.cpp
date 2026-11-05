@@ -1,5 +1,6 @@
 // CDefendingCombatantInfo::CDefendingCombatantInfo(const CDefendingCombatantInfo& other) -- copy constructor: attacker map and combat-wheel ring vector copied out of line, the scalars word by word, the last-attacker intelligent pointer re-pointed, the attack-pattern def pointer shared with an add-ref
 // Leaf: ??0CDefendingCombatantInfo
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006F46D0, length 116 bytes (`ret 4`).
 // Callees: map<unsigned __int64, CThingCreatureBase*> copy constructor @ 0x006F33A0, vector<CCombatRing> copy constructor
 // @ 0x006F43C0 (CombatWheel's only member), CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10,
@@ -27,10 +28,7 @@ struct CCombatRingVector {                       // vector<CCombatRing> (STLport
 struct CCombatWheel {
     CCombatRingVector CombatRings;               // +0x00
 };
-class C3DVector { public:                               // floats, moved as dwords (a float member copy would go through the FPU)
-    unsigned long X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

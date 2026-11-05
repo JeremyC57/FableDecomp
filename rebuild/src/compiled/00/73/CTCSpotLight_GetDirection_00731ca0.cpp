@@ -1,5 +1,6 @@
 // CTCSpotLight::GetDirection() const -- the owner's facing flattened onto the XY plane and normalised, tilted down about its horizontal perpendicular by (0.25 - angle) where the angle is the overridden light info's or the def's
 // Leaf: GetDirection
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00731CA0, length 147 bytes (`ret 4`, C3DVector returned through the hidden pointer).
 // Callees: CTCPhysicsBase virtual slot 70 (+0x118, returns a stored C3DVector by value; CTCPhysicsStandard's override 0x00723C00 copies
 // its +0x5C vector) on CThing::PhysicsTC, C3DVector::AccurateNormalise @ 0x00A14440 (in place; manifest label "GetScaled" is wrong: it divides
@@ -11,14 +12,7 @@
 // Shape: the facing is constructed straight into the result local; the axis is C3DVector(dir.Y, -dir.X, 0); the angle is a named float
 // local (retail keeps it on the x87 stack until after the argument store, `fstp st(0)`); the user copy ctor gives the copy-out
 // `fld X ; fstp [eax]` with Y/Z as dword moves.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector& AccurateNormalise();                                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-    void Rotate(const C3DVector& axis, float angle);            // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     virtual void v00();  virtual void v01();  virtual void v02();  virtual void v03();  virtual void v04();
     virtual void v05();  virtual void v06();  virtual void v07();  virtual void v08();  virtual void v09();

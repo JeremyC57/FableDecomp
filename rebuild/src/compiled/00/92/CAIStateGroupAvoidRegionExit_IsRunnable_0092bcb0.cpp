@@ -1,4 +1,5 @@
 // CAIStateGroup_AvoidRegionExit::IsRunnable() -- recover the live entrance position unless walk-to-marker disallows it.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- compiler-generated vector assignment preserves the retail shared destination-address adjustment (207 bytes).
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
@@ -77,11 +78,7 @@ inline CRetailThingView* ThingView(CThingAICreature* p) { return (CRetailThingVi
 
 
 #include "engine/CAIStateGroup_AvoidRegionExit.h"
-class C3DVector { public:
- float X,Y,Z;
- C3DVector() {}
- C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 // Retail CTCWalkToMarker bool fields; donor header is not available.
 struct CTCWalkToMarkerView {
  unsigned char _before68[0x68]; bool Flag68;

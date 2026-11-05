@@ -1,4 +1,5 @@
 // C3DAnimFileMovementVectorChunk::WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const -- X, Y, Z then the sub-chunks
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAE130, length 64 bytes.
 // Callees: CDataOutputStream::WriteFloat @ 0x00993EE0 (x3), CChunkedFileSuperChunk::WriteToFile @ 0x00AA78C0.
@@ -79,11 +80,7 @@ class CChunkedFileSuperChunk : public CChunkedFileChunk { public:   // retail si
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const; // 0x00AA7F40
 };
 
-class C3DVector { public:
-    float X;                                // +0
-    float Y;                                // +4
-    float Z;                                // +8
-};
+#include "engine/C3DVector.h"
 
 class C3DAnimFileMovementVectorChunk : public CChunkedFileSuperChunk { public:   // retail: Vector +0x2c (the PDB header says +0x34; its base is 8 bytes wider)
     C3DVector Vector;                       // +0x2c

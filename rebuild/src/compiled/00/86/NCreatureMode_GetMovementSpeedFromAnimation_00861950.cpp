@@ -1,5 +1,6 @@
 // NCreatureMode::GetMovementSpeedFromAnimation(long bankIndex, const CThingCreatureBase& creature, const CMeshDataBank& bank) -- the ground speed an animation moves the creature at: movement-vector length * 0.01 * appearance scale * physical scale / (frames per second * duration); 0 for an (almost) zero duration
 // Leaf: ?GetMovementSpeedFromAnimation@NCreatureMode@@YIMJABVCThingCreatureBase@@ABVCMeshDataBank@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00861950, length 110 bytes (+2 int3). `__fastcall` free function (bank index
@@ -20,12 +21,7 @@
 //   product chain moves it to the end); `fild fps ; fmul duration ; fdivp`.
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 class C3DAnimationInfo {                                // Ego_r.pdb, 0x28 bytes (engine/C3DAnimationInfo.h flattens MovementVector
 public:                                                 //   into three floats; the member C3DVector is kept here)
     void*         _vfptr;                               // +0x00
@@ -66,7 +62,7 @@ float __fastcall NCreatureMode::GetMovementSpeedFromAnimation(long bankIndex, co
     const C3DAnimationInfo* info = bank.PeekAnimation(bankIndex);
     float duration = info->Duration;
     if (duration > 0.0001f) {
-        float distance = info->MovementVector.GetLength() * 0.01f;
+        float distance = info->MovementVector.GetMagnitude() * 0.01f;
         return distance * creature.PGraphicAppearance->RenderSizeX * creature.Scale / (CMainGameComponent::GetConstantFPS() * duration);
     }
     return 0.0f;

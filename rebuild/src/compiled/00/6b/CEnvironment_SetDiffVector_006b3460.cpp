@@ -1,5 +1,6 @@
 // CEnvironment::SetDiffVector(CEnvironment& env, const vector<CGenericVar>& args) -- console: set the diffuse light direction (normalised x, y, z) in the current and previous game-tick states
 // Leaf: ?SetDiffVector@CEnvironment@@CIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B3460, length 87 bytes, private static __fastcall (`CI`):
 //   ecx = env, edx = args, plain `ret`.
 // Callees: C3DVector::AccurateNormalise @ 0x00A14440 (in place; the manifest's "GetScaled" is a propagated label,
@@ -34,13 +35,7 @@ public:
 }
 using std::vector;
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector& AccurateNormalise();                                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 
 class CEnvironmentGameTickState {                           // retail 0xc20 bytes
 public:

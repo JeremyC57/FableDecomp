@@ -1,5 +1,6 @@
 // std::vector::operator=(const vector<C3DVector>& x) -- assign a vector of 3D vectors (rigid-body bounding vertices and many others)
 // Leaf: ??4?$vector@VC3DVector@@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075B8D0, 274 bytes, thiscall `ret 4`, returns this.
 // Label correction: catalog "Std_Vector_Assign" -> STLport 4.x vector<C3DVector>::operator= (the landed
 //   _M_allocate_and_copy 0x0075B800 names this caller; 38 call sites, e.g. CRigidBodyConfig::operator= 0x0075BA30).
@@ -15,11 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

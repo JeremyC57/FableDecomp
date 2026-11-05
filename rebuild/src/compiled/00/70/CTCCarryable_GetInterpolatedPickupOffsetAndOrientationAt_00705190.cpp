@@ -1,4 +1,5 @@
 // CTCCarryable::GetInterpolatedPickupOffsetAndOrientationAt(const C3DVector&, const CRightHandedSet&, C3DVector*, CRightHandedSet*, bool) -- where the carrier's hand dummy (right hand, else left hand) would be for the given placement; the offset from that placement is written out when either dummy exists
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00705190, 168 bytes (`ret 14h`, 0x18-byte frame: the dummy position and the difference temporary).
 // Callees: CTCGraphicAppearance::GetDummyObjectAssumingObjectAt(const CCharString&, const C3DVector&, const CRightHandedSet&,
 // long, unsigned long, C3DVector*, CRightHandedSet*) @ 0x004C0C80 (twice); the hand names are the global CCharString objects
@@ -12,18 +13,7 @@
 class CCharString { public: void* m_pData; };
 extern CCharString g_RightHandAttachmentName;           // 0x013BAC30
 extern CCharString g_LeftHandAttachmentName;            // 0x013BAC34
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector operator-(const C3DVector& other) const
-    {
-        C3DVector r;
-        r.X = X - other.X;
-        r.Y = Y - other.Y;
-        r.Z = Z - other.Z;
-        return r;
-    }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 struct CTCGraphicAppearance {
     bool GetDummyObjectAssumingObjectAt(const CCharString& name, const C3DVector& position, const CRightHandedSet& orientation,

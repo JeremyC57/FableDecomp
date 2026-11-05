@@ -1,5 +1,6 @@
 // CThingFilter_NoiseCanBeHeardFromPosition::operator()(CThing* thing) const -- a noise-making thing passes when its distance from the listening position is within the smaller of the listener's hearing range and the thing's noise radius
 // Leaf: ??RCThingFilter_NoiseCanBeHeardFromPosition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation); local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8240, length 178 bytes, `ret 4`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0 (TC 0x37, the noise-emitting component; class not identified),
@@ -10,12 +11,7 @@
 // Shape: the HasTC test wraps the body (the false exit laid out last); GetTC inline; the squared distance is the plain inline `X*X + Y*Y + Z*Z` on an inline operator- delta
 //   kept on the x87 stack; the range is the Dinkumware reference `min(radius, ListenersHearingRange)` (`Right < Left ?
 //   Right : Left`, the radius copied into the dead argument slot so its address can be selected).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
-inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+#include "engine/C3DVector.h"
 template<class T> inline const T& Min(const T& left, const T& right) { return right < left ? right : left; }
 
 class CTCBase;
@@ -59,7 +55,7 @@ bool CThingFilter_NoiseCanBeHeardFromPosition::operator()(CThing* thing) const
 {
     if (thing->HasTC(0x37)) {
         CTCNoiseMaker_37* noise = thing->GetTC<CTCNoiseMaker_37>(0x37);
-        float distanceSquared = (thing->GetPos() - Position).GetLengthSquared();
+        float distanceSquared = (thing->GetPos() - Position).GetSquaredMagnitude();
         float radius = noise->NoiseRadius;
         float range = Min(radius, ListenersHearingRange);
         return distanceSquared <= range * range;

@@ -1,4 +1,5 @@
 // CAIStateGroup_RangedCombatUsePreferredFirePoint::Update() -- register as a combatant against the enemy, strafe
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // (shooting) to the preferred fire point, stamp the arrival frame, keep attacking while still runnable, then
 // deregister; any failure terminates the group.
@@ -22,7 +23,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
@@ -201,11 +202,6 @@ protected:
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
-};
 class CThingCreatureBase;
 class CCombatManager { public:
     void RegisterCombatant(CThingCreatureBase* creature, CThingCreatureBase* enemy, bool ranged);   // 0x006EDC50

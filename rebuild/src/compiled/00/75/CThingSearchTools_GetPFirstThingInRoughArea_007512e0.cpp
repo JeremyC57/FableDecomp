@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out) -- return the first thing of type T in the mapwho cells under the area that passes the filter (the scratch map list is left uncleared on a hit); instance <CThingFilter_OverlappingCircle, CThingCreatureBase>
 // Leaf: GetPFirstThingInRoughArea
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007512E0, length 618 bytes (`ret 0xc`).
 // Callees: GetMapsInArea 0x0049C6F0 (forwarder), GetCellExtents 0x0049C700 (C2DBoxI by value), memmove 0x00BFEAE6 (scratch-list clear).
 // Globals: search stamps 0x013B89A8 (+0 searches, +4 found, +8 stamp), mapwho level count 0x013BA848, level shift table 0x0137DADC (16-byte stride).
@@ -32,10 +33,7 @@ template <class T> inline bool IsThingOfType(const CThing* thing)
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
 class CThingCreatureBase : public CThing { public: enum { TypeMask = 0xf }; };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float         Radius;                           // +0x34

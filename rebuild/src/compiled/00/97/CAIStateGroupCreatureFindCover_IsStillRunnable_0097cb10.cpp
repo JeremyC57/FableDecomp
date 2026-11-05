@@ -1,4 +1,5 @@
 // `operator*=(const float&)` (chunk 278 / 00880510 lever) spills the Newton-step reciprocal and multiplies from memory as
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // retail; (2) the facing call's object through an inline accessor (`GetPItem()->GetPhysicsBody()->GetFacing()`, chunk 271
 // lever) loads the physics body straight into ecx (`mov ecx,[eax+60h] ; mov edx,[ecx]`) instead of eax + `mov ecx,eax`.
@@ -53,14 +54,8 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
-    __forceinline void Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
-};
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/C3DVector.h"
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 struct CPhysicsBody {
 #define VF(n) virtual void v##n();

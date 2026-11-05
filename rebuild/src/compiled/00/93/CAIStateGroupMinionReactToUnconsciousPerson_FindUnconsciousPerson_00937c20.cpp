@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson() -- once a second (staggered by the creature's
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -22,7 +23,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
@@ -211,10 +212,6 @@ protected:
 public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
-class C3DVector { public:
-    float x, y, z;
-    C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
-};
 
 struct CThingWithUID {                          // a thing seen through its 64-bit UID (+0x18)
     unsigned char _pad[0x18];
@@ -305,9 +302,9 @@ bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& box, const TUnco
                 || !IsAlly(filter.m_pThird->m_pCreature, thing))
             continue;
         const C3DVector& pos = PositionOf(thing);
-        float dx = pos.x - compare.m_pos.x;
-        float dy = pos.y - compare.m_pos.y;
-        float dz = pos.z - compare.m_pos.z;
+        float dx = pos.X - compare.m_pos.X;
+        float dy = pos.Y - compare.m_pos.Y;
+        float dz = pos.Z - compare.m_pos.Z;
         float distance = dx * dx + dy * dy + dz * dz;
         if (!best || distance < bestDistance) {
             best = thing;
@@ -326,8 +323,8 @@ CThingCreatureBase* CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciou
     CThingCreatureBase* found = 0;
     if ((CWorld::GetFrame() + uid) % framesPerSecond == 0) {
         const C3DVector& pos = ((CThingPos*)PBrain->PCreature)->GetPos();
-        long x = (long)pos.x;
-        long y = (long)pos.y;
+        long x = (long)pos.X;
+        long y = (long)pos.Y;
         C2DBoxI box(x - 7, y - 7, x + 7, y + 7);
         PeekThingSearchTools().GetPBestThingInRoughArea(box,
             CThingFilter_IsAICreatureAwareOf(PBrain->PCreature) && CThingFilter_IsUnconscious()

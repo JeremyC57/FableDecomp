@@ -1,5 +1,6 @@
 // CTCCreatureFlyInCircles::CTCCreatureFlyInCircles(CThing* parent) -- circling-flight component: the creature is the parent, two null intelligent pointers, an empty swoop spline (tension 0.5) sized to three control points, speed 3, fly mode 1, active
 // Leaf: ??0CTCCreatureFlyInCircles
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DDF90, length 156 bytes (+ int3 padding). Vtable 0x0126FB04.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (twice: then the
 // CIntelligentPointer<CThing> vtable 0x01238C6C and the CIntelligentPointer<const CThingCreatureBase> vtable 0x0125AAEC),
@@ -22,10 +23,7 @@ class CTCBase { public:
     bool    IsInGlobalUpdateTCs;                // +0x09
     CTCBase(CThing* parent);                    // 0x00686800
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 template <class T> struct SRetailAllocProxy {   // STLport _STLP_alloc_proxy: the end-of-storage pointer
     T* _M_data;
     SRetailAllocProxy(T* data) : _M_data(data) {}

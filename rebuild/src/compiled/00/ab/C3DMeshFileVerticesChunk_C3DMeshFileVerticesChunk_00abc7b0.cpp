@@ -1,5 +1,6 @@
 // C3DMeshFileVerticesChunk::~C3DMeshFileVerticesChunk() -- store the own vtable, free VertexList's element block (the STLport vector destructor inline: trivial elements, then `if (_M_start) free(_M_start)`), then the CChunkedFileChunk destructor as a tail jump
 // Leaf: ??1C3DMeshFileVerticesChunk@@UAE@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABC7B0, 33 bytes (+ int3 padding to 48), thiscall, tail `jmp` to the base destructor.
 // Identity (proven): C3DMeshFileVerticesChunk::~C3DMeshFileVerticesChunk() (Ego_r.pdb / FableWin.pdb ??1C3DMeshFileVerticesChunk@@UAE@XZ); evidence: it stores the C3DMeshFileVerticesChunk vtable 0x0129ECF8 first (RTTI .?AVC3DMeshFileVerticesChunk@@; bases CChunkedFileChunk <- CBaseClassNonCopyable <- CBaseClass) and tail-jumps to the parent's destructor
@@ -19,7 +20,7 @@ protected:
     CBaseClassNonCopyable();                                    // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();                           // 0x0099A300
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C3DVertex2 { public: C3DVector Position; C3DVector Normal; float U; float V; };   // 32 bytes (Ego_r.pdb)
 class CChunkedFileSuperChunk;
 class CChunkedFileChunk : public CBaseClassNonCopyable {   // 0x10 bytes (Ego_r.pdb, no STL member)

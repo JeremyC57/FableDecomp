@@ -1,5 +1,6 @@
 // CAIStateGroup_SummonerCharge::IsRunnable() -- once the next charge frame is reached and the summoner holds a live thing in its primary slot, charge a live enemy that lies (2D) between the def's near and far charge ranges and is either running away from combat (stealth timer >= 0) or a creature the summoner is fighting that the combat manager says is chargeable; latch it as the target
 // Leaf: IsRunnable
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096FA90, length 451 bytes (plain `ret`, virtual slot 11).
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (evaluated for the static call), CWorld::GetWorldFrame @ 0x0049D870
@@ -23,7 +24,7 @@ class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float x, y;
     C2DVector(float ax, float ay) : x(ax), y(ay) {}
@@ -149,7 +150,7 @@ bool CAIStateGroup_SummonerCharge::IsRunnable()
         if (enemy && !(enemy->m_flags91 & 1)) {
             const C3DVector& from = GetCreature()->GetPos();
             const C3DVector& to = enemy->GetPos();
-            float distanceSquared = C2DVector(to.x - from.x, to.y - from.y).GetLengthSquared();
+            float distanceSquared = C2DVector(to.X - from.X, to.Y - from.Y).GetLengthSquared();
             float nearRange = PDef->ChargeRangeNear;
             if (distanceSquared > nearRange * nearRange) {
                 float farRange = PDef->ChargeRangeFar;

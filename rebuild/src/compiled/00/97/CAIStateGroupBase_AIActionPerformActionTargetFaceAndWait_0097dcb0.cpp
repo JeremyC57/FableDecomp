@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_PerformActionTargetFaceAndWait(const CCreatureActionBase&, CIntelligentPointer<const CThing>, bool) -- post the action, then while the creature is still performing it (and the target lives, and, if asked, the action was not replaced) keep facing the target (look flags 0x11) one brain tick at a time; 1 when stopping, else 2
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097DCB0, 688 bytes (`ret 10h`, aligned frame).
 //   ?AIAction_PerformActionTargetFaceAndWait@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@V?$CIntelligentPointer@$$CBVCThing@@@@_N@Z
 // Callees: IsStopping 0x008FD010, CCreatureActionBase::GetActionID 0x00692620, CBrainOutput::CBrainOutput 0x00835620 (the
@@ -10,10 +11,7 @@
 //   PAction +0x20, LookAtThing +0x40); brain creature +0x18, creature CurrentAction +0x100 (landed 0x0097DB70).
 // Shape: natural code; the CBrainOutput ctor is plain inline and VC7.1 itself calls it out of line for the first output
 //   and inlines it for the per-tick look output; the counted-pointer assignment from Clone() is the out-of-line operator=.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead

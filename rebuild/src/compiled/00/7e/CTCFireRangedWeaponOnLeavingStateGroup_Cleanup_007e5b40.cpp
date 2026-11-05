@@ -1,5 +1,6 @@
 // CTCFireRangedWeaponOnLeavingStateGroup::Cleanup(CThingAICreature& creature) -- take the creature out of its combat manager's combatant list, then drop creature mode 0x19 if it has a mode manager
 // Leaf: ?Cleanup@CTCFireRangedWeaponOnLeavingStateGroup@@SIXAAVCThingAICreature@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members m_pFirst/m_pLast are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E5B40, 78 bytes (+ int3 padding). FableWin.pdb
 //   `?Cleanup@CTCFireRangedWeaponOnLeavingStateGroup@@SIXAAVCThingAICreature@@@Z` = public static void __fastcall
 //   (CThingAICreature&); callers: the component's vfunc_2 @ 0x007E5CC0 (tail jmp) and
@@ -15,17 +16,9 @@ class CCombatManager;
 class CThingCreatureBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    STCEntry* LowerBound(const ETCInterfaceType& kind);            // 0x0040F020
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing {
@@ -40,8 +33,8 @@ public:
         if (HasTC(T::INTERFACE_TYPE)) {
             CTCMap* map = &m_tcs;
             STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
-            if (it == map->m_pLast || T::INTERFACE_TYPE < it->first)
-                it = map->m_pLast;
+            if (it == map->end() || T::INTERFACE_TYPE < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

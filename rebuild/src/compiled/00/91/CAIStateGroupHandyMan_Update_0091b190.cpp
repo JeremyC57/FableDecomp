@@ -1,5 +1,6 @@
 // CAIStateGroup_HandyMan::Update() -- while the villager is in its work hours and the work spot is alive, walk to the spot and use it; then terminate
 // Leaf: ?Update@CAIStateGroup_HandyMan@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetSquaredMagnitude replaced by the header GetSquaredMagnitude (same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091B190, 332 bytes, thiscall, no EH frame.
 // Identity: vtable 0x01289CA0 (RTTI CAIStateGroup_HandyMan) slot 12 (slot 11 IsRunnable 0x0091B170); Ego_r.pdb name set
 //   ?Update@CAIStateGroup_HandyMan@@UAEXXZ. RTTI base list: CAIStateGroup_HandyMan : CAIStateGroup_WorkBase<CAIStateGroupBase>
@@ -61,15 +62,7 @@ public:
 
 }   // namespace std
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    __forceinline const C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    __forceinline float GetSquaredMagnitude() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 template <class K, class V> class CKeyPairCompareLess { };
 template <class T> class CArray : public std::vector<T, std::allocator<T> > { };

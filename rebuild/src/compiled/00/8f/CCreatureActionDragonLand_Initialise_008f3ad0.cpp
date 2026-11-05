@@ -1,4 +1,5 @@
 // CCreatureAction_DragonLand::Initialise() -- initialise landing, lower position, target dragon and suspend animation.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008F3AD0 length300. Physics slot31 ResetPosition006B01D0 const-vector reference; slot70
 // GetFacingVector723C00 native hidden-buffer ABI ECXthis/EAXbuffer/ret4. Real header + field-free adapter.
 #define CCreatureAction_DragonLand CCreatureAction_DragonLand_PDB
@@ -14,7 +15,7 @@
 #include "engine/CTCTargeted.h"
 #include "engine/CTCPhysicsBase.h"
 #include "fable_string.h"
-class C3DVector { public:float X,Y,Z;C3DVector(){} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
+#include "engine/C3DVector.h"
 struct CPhysicsMethods : CTCPhysicsBase { void ResetPosition(const C3DVector&); const C3DVector& GetFacingVectorInto(C3DVector&)const;};
 union CPhysicsSlot {
  void* Address;

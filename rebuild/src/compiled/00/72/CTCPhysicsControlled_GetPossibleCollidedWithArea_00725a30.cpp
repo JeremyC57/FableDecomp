@@ -1,5 +1,6 @@
 // CTCPhysicsControlled::GetPossibleCollidedWithArea() const -- the integer XY box the body can touch this frame: position +/- (radius + margin), stretched along the impulse-plus-velocity movement, orientation-validated
 // Leaf: GetPossibleCollidedWithArea
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00725A30, length 307 bytes (+ int3 padding), `ret 4` (hidden C2DBoxI result).
 // Vtable 0x0126616C (CTCPhysicsControlled) slot 98 (catalog "CTCPhysicsControlled::vfunc_98"); FableWin.pdb names it
 // ?GetPossibleCollidedWithArea@CTCPhysicsControlled@@UBE?AVC2DBoxI@@XZ.
@@ -14,8 +15,7 @@
 // Layout (PDB, as the landed AddImpulseVelocity 0x00725250 / GetPossibleCollidedWithArea 0x00759870): CTCBase ParentThing +0x04,
 // Position +0x0c, Velocity +0x28, Radius +0x34, CTCPhysicsControlled::ImpulseVelocity +0x88. engine/CTCPhysicsStandard.h does
 // not name the CTCPhysicsBase members (opaque pads), so the class is modelled locally.
-class C3DVector { public: float X, Y, Z; };
-class C2DCoordI { public: long X, Y; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;

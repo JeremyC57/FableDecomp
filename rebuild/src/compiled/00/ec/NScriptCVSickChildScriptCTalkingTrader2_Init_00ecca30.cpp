@@ -1,5 +1,6 @@
 // NScript::CV_SickChildScript::CTalkingTrader2::Init() -- configure talking-trader interaction and reset counters.
 // Leaf: ?Init@CTalkingTrader2@CV_SickChildScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven; Complete original CScriptBase64/CLevelScriptBase72 and CEntityScriptBase20 typed Game/Me/Parent/Master prefixes; real CBaseClassNonCopyable protected ctor/dtor and CBaseClass ancestry, non-POD counted-pointer special members, CCharString(constchar*,long). Original STLport list:_List_base/rebound-node allocatorproxy and vector:_Vector_base/end-storage proxy retained; unused map/tree declarations omitted. Unused virtual slots and owner suffixes explicit projections. Shared thing/resource headers aliased as data evidence. Game exact ownRTTI1260f0c and PDB publicconst APIs; child privatevirtualEAE signatures preserve original access. Field identities from PDB named layouts reconciled with actual factory allocation sizes. No donor address used asretailidentity; own literalTalkingTrader2 binding00ec5851->factory00ecc960->table012f2348 slot2; original TimesTalkedTo28/TimesHit32 complete36. Game ownRTTI1260f0c exact slots844/235/360/477/517/526 with PDB signatures (first takes actual non-POD CScriptThing byvalue), actual CCPPointerInfo12 RefCount/fastcall-DeleteFunc/Data (ownstoreddeleter00cdee00 consumesECX) plus inline original sharing copy..
 // Layout: full original bases and typed members, correct protected STLport storage; no unused tree.
@@ -20,9 +21,8 @@ class CCharStringData;class CCharString{public:CCharString();CCharString(const C
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
 
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

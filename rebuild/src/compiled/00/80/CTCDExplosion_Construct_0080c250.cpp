@@ -1,5 +1,6 @@
 // CTCDExplosion::Construct(const C3DVector& position) -- construct the thing's physics from a CTCParamsPhysicsBase holding the position and the default (up/forward) right-handed set
 // Leaf: ?Construct@CTCDExplosion@@AAEXABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080C250, length 127 bytes (`ret 4`); byte twin of 0x00778D60 (the real
 // CTCDCameraPoint::Construct, called from the camera-point TU). Identity (FINDINGS chunk 399): its only callers are the two
 // landed CTCDExplosion::Create overloads 0x0080C460 / 0x0080C500 (Ego_r-exact leaves `?Create@CTCDExplosion@@SIPAVCThing@@J
@@ -13,12 +14,7 @@
 // The position member is copied by C3DVector's user copy ctor (the implicit copy picks other registers).
 // Shape: CBaseClassNonCopyable is the polymorphic root (its ctor stores a vtable), so the vptr is shared at +0; the params object is a stack local built by an inline ctor over the out-of-line non-copyable base (position copied
 // as three dwords, then the vtable store, then the set's six constant floats); its implicit dtor calls the base dtor only.
-class C3DVector {                               // a class in Ego_r.pdb (mangled V)
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c

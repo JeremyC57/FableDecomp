@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsForceModelBase::PotentialFieldBufferPoints(const C3DVector& pos, const list<C3DVector>& points, float strength, float radius) const -- the gradient of the summed potential field of the buffer points at pos, by forward differences over the four sample offsets (pos itself and one 0.1 step along each axis)
 // Leaf: ?PotentialFieldBufferPoints@CPhysicsForceModelBase@NCameraModes@@IBE?AVC3DVector@@ABV3@ABV?$list@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@MM@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FBB90, 288 bytes (+ int3 padding), thiscall (`this` unused) with a
 //   hidden result pointer, `ret 14h` (result, pos, points, strength, radius); returns the result pointer in eax.
 // Identity: the catalog's "Light_ComputeContributionKernel" is descriptive. FableWin.pdb names
@@ -16,16 +17,7 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    const C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    const C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    const C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 template <class _Tp> class allocator { };
@@ -60,7 +52,7 @@ class CPhysicsForceModelBase {
 protected:
     float PotentialField(const C3DVector& pos, const C3DVector& source, float strength, float radius) const
     {
-        return (strength * 0.1f) / ((pos - source).GetLength() - radius);
+        return (strength * 0.1f) / ((pos - source).GetMagnitude() - radius);
     }
     C3DVector PotentialFieldBufferPoints(const C3DVector& pos, const std::list<C3DVector>& points, float strength,
                                          float radius) const;

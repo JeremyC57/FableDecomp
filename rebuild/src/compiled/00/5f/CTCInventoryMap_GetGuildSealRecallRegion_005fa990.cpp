@@ -1,5 +1,6 @@
 // CTCInventoryMap::GetGuildSealRecallRegion() const -- the region number that holds the world's guild-seal recall position, or 0 while no recall position is set (a zero vector)
 // Leaf: ?GetGuildSealRecallRegion@CTCInventoryMap@@ABEJXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetSquaredMagnitude replaced by the header GetSquaredMagnitude (same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FA990, length 111 bytes, thiscall, plain `ret`.
 // Identity: FableWin.pdb ?GetGuildSealRecallRegion@CTCInventoryMap@@ABEJXZ (private const, returns long).
@@ -20,11 +21,7 @@
 #include "engine/CTCBase.h"
 #undef CTCBase
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    float GetSquaredMagnitude() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 extern const float DELTA_NOTIONAL_ZERO;          // 0x0129BA3C (1e-4; descriptive, an existing bound spelling of this address)
 

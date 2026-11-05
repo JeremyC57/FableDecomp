@@ -1,5 +1,6 @@
 // CTCInventoryMap::GetRelativePosOnMap(NUISystem::CComponent* component, const C3DVector& position, C2DVector& relative) const -- scale a world position to the map screen: the bounding box of the world-map records 1..n-1 gives the world extent, and the UI misc-things def's map width/height over that extent scale X and Y
 // Leaf: GetRelativePosOnMap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FB630, 429 bytes (+int3), `ret 0Ch`, esp frame (speed TU).
 //   Ego_r.pdb: ?GetRelativePosOnMap@CTCInventoryMap@@IBEXPAVCComponent@NUISystem@@ABVC3DVector@@AAVC2DVector@@@Z.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CGameDefinitionManager::Get @ 0x0044C6B0
@@ -55,7 +56,7 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CUIMiscThingsDe
     return true;
 }
 #pragma auto_inline(on)
-class C2DCoordI { public: long X, Y; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public: C2DCoordI TopLeft; C2DCoordI BottomRight; };
 struct CMapRecord {                                     // 72 bytes
     C2DBoxI Box;                                        // +0x00
@@ -79,7 +80,6 @@ class CWorld { public:
     virtual void v10(); virtual void v11(); virtual void v12();
     virtual const CWorldMap* GetWorldMap() const;       // slot 13 (+0x34)
 };
-class C3DVector { public: float X, Y, Z; };
 class C2DVector { public: float X, Y; };
 namespace NUISystem { class CComponent; }
 class CTCBase

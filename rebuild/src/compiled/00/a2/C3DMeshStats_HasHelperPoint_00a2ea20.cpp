@@ -1,5 +1,6 @@
 // C3DMeshStats::HasHelperPoint(unsigned long id) -- true when the mesh's HelperPoints vector map holds the helper point id
 // Leaf: ?HasHelperPoint@C3DMeshStats@@QBE_NK@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00A2EA20, 63 bytes (`ret 4`). Callee: CPreAllocVectorMap<unsigned long,C3DHelperPoint,
 //   CKeyPairCompareLess<..>>::LowerBound 0x00A316B0 (PDB spelling, bound once in reloc_bindings.tsv).
 // Name: Ego_r/FableWin ?HasHelperPoint@C3DMeshStats@@QBE_NK@Z (public const).
@@ -14,7 +15,7 @@
 // Layout: supplied base flattens its vptr; original PDB has these four virtual slots.
 class CMovableResource {public:virtual ~CMovableResource();virtual void RelocateData(long,void*,void*,long)=0;virtual bool CanRelocateData(long)const;virtual unsigned long Verify()const;};
 namespace std {template<class A,class B>struct pair {A first;B second;};}
-class C3DVector {public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class C3DHelperPoint {private:C3DVector Position;long BoneIndex;};
 template<class K,class V>class CKeyPairCompareLess {};
 // Layout: raw original TPI Compare0, Elements4, Size8, Dirty12; native stride20.

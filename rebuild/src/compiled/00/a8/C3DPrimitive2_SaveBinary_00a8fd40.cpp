@@ -1,4 +1,5 @@
 // C3DPrimitive2::SaveBinary(CDataOutputStream&) const -- write the primitive header, static/animated blocks, the vertex buffer (format block + raw data), the index buffer and every cloth primitive
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A8FD40, 528 bytes (ret 4).
 // Callees: CDataOutputStream::WriteSLONG 0x00993EB0, Write3DVector 0x00993FD0, WriteFloat 0x00993EE0, WriteULong 0x00993EA0,
@@ -13,7 +14,7 @@
 // in front of their loops); the static-block loop steps a byte offset kept in the dead stream-argument slot;
 // the repeat count is max(RepeatingMeshReps, 1); the vertex buffer's 32-byte compression params are block-copied
 // to a local before the virtual WriteData.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CVertexCompressionParams { public: float PosScale[4]; float PosBias[4]; };
 
 class CDataOutputStream { public:

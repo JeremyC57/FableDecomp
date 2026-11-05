@@ -1,4 +1,5 @@
 // CTCForcePushed::SetUpForcePush(const C3DVector& direction, float distance, CThing& pusher) -- arm the push: remember where it started, how far and along which per-frame step it goes and who pushed; an AI creature being pushed has its animation suspended and its current action finished
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007986A0, length 202 bytes (+ int3 padding). __fastcall, `ret 0Ch`.
 //         Ego_r.pdb: `?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z`.
 // Callees: CThing::GetPos @ 0x004C73D0; CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/
@@ -18,18 +19,7 @@ extern "C" double __cdecl sqrt(double x);
 class CThing;
 class CBaseObject;
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    float GetLength() const
-    {
-        float z = Z, y = Y, x = X;
-        float s = x * x;
-        s += y * y;
-        s += z * z;
-        return (float)sqrt(s);
-    }
-};
+#include "engine/C3DVector.h"
 
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -89,7 +79,7 @@ void CTCForcePushed::SetUpForcePush(const C3DVector& direction, float distance, 
     PositionForcePushStarted = ParentThing->GetPos();
     DistanceBeingPushed = distance;
     DirectionBeingPushed = direction;
-    double length = direction.GetLength();
+    double length = direction.GetMagnitude();
     DistanceMovingPerFrame = (float)length;
     PThingCausingForcePush = CIntelligentPointer<CThing>(&pusher);
     CThing* owner = ParentThing;

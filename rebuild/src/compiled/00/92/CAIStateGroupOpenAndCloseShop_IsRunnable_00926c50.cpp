@@ -1,4 +1,5 @@
 // CAIStateGroup_OpenAndCloseShop::IsRunnable() -- a shopkeeper with a live shop and a shop-keeper component whose shop exists: mark the keeper present and read the opening hours; a shop without occupants just updates its sign (closed when shut) and is not runnable; otherwise close the sign when shut, then: with live occupants run when open, or when shut and either the shop/home position test disagrees or other people are still inside (GoToInsideFace = inside the building, Lock = false); without them run to lock up a permanently (or state-1) stocked, shut, empty shop (GoToInsideFace = the shop is home, Lock = true)
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00926C50, length 628 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the creature's +0x170 shop and +0x168 home), CVectorMap::LowerBound
@@ -11,7 +12,7 @@
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
 class CWorld;
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined

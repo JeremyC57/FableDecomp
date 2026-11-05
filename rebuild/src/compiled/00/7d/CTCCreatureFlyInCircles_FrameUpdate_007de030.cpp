@@ -1,5 +1,6 @@
 // CTCCreatureFlyInCircles::FrameUpdate() -- while active: keep the creature at full health (100), run a queued mode change, keep the loop anim playing, check for hits, advance the swoop (mode 2) or the circling flight from the creature's position and facing, record in the flagged component whether the position is on the map, then write the new position back and orient the creature along its facing (up = (facing.Y, -facing.X, 0) x facing)
 // Leaf: FrameUpdate
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Grade: RELOCATION_MATCH -- the CrossProduct is the landed 0x007A1870 shape ((float)(double) per component through component pointers), which puts retail's Up.X fstp before the Forward.Y copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DE030, 384 bytes (`ret`).
@@ -13,12 +14,7 @@
 // is bit 0 of +0x50 (as the landed CModeDragonFlying::OnDeactivate).
 // Shape: the component is fetched into a local before the map test; the orientation is built from an inline cross product
 // with a (Y, -X, 0) side vector (the zero product kept as `fmul 0.0f`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
     const float* pa = &a.X; const float* pb = &b.X;

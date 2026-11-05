@@ -1,5 +1,6 @@
 // 0082d0d0 CThingBuilding::DrawGetEditDrawInfo -- editor label and original object colour
 // Leaf: ?DrawGetEditDrawInfo@CThingBuilding@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 #define CClass CClass_Layout
 #include "engine/CClass.h"
@@ -68,12 +69,7 @@ public:
 };
 CCharString __fastcall operator+(const CCharString&,const CCharString&);
 CCharString __fastcall operator+(const CCharString&,const char*);
-class C3DVector {
-public:
-    float X,Y,Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRGBColour {
 public:
     unsigned char B,G,R,A;

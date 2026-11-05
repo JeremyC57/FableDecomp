@@ -1,5 +1,6 @@
 // CTCCreatureItemLevitationNymph::UpdateLevitationTarget() -- while the hover target is alive, re-aim the hover direction from the target towards the nymph (XY plane, normalised)
 // Leaf: UpdateLevitationTarget
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F84C0, length 116 bytes (+ int3 padding). Vtable 0x012415F4 slot 31 (catalog
 // "vfunc_31"; CTCCreatureItemLevitationBase::FrameUpdate 0x007F8300 calls this slot first every frame).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::GetPos @ 0x004C73D0 (parent, then target),
@@ -9,11 +10,7 @@
 // Layout: Ego_r.pdb CTCCreatureItemLevitationNymph (retail 8 bytes lower: the base list is one pointer, PDB 12):
 // NymphHoverXYDirectionFromTarget +0x18 (C2DVector), NymphHoverHeightOffset +0x20, NymphHoverXYMagnitude +0x24,
 // PTarget +0x28 (CIntelligentPointer<const CThing>, vtable 0x01237F1C). Local polymorphic model.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     void Set(float x, float y) { X = x; Y = y; }

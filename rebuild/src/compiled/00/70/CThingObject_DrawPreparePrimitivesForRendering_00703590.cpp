@@ -1,5 +1,6 @@
 // CThingObject::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- after the CThingPhysical preparation: prepare the weapon trail (interface 0x4C, when trails are shown) and the two draw-preparing components (0x54, 0xCF); take the render position and orientation interpolators from the carry pose when the object is being carried (pushing them into the physics component and updating attached particles, 0xD8) or else from the physics component; then let the graphic appearance prepare itself with them
 // Leaf: DrawPreparePrimitivesForRendering
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Callees: CThingPhysical::DrawPreparePrimitivesForRendering @ 0x006A64D0 (non-virtual), CVectorMap::LowerBound const @ 0x004365B0 /
 //          non-const @ 0x0040F020, CTCWeaponTrail @ 0x0076E6A0, the components' slot 11 (+0x2c), CBaseClass ctor @ 0x0099A2D0 /
@@ -15,11 +16,7 @@ class CEnginePrimitivePrepareInfo { public:
     long  _f00;
     float Time;                                         // +0x04
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DPositionInterpolator : public CBaseClass { public:                // vtable 0x0123981C

@@ -1,5 +1,6 @@
 // CGetBestTargetInDirection::operator()(CTargetPoint* point) -- search functor: take the XY direction from the base position to the target point (normalised when not degenerate) and keep the point when it lies on the requested side of the test line and points more along it than the best so far
 // Leaf: ??RCGetBestTargetInDirection
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00805A90, length 263 bytes, `ret 4`.
 // Callees: C3DVector::AccurateNormalise @ 0x00A14440. Globals: the length tolerance @ 0x0129BA3C (1e-4f, an extern float: squared
@@ -10,11 +11,7 @@
 //   the XY delta is a C3DVector local (Z = 0 stored with an immediate) whose Y stays on the x87 stack; the cosine is
 //   homed in the dead `point` slot; the side test is `Direction > 0 && side > 0` else `Direction <= 0 && side <= 0`,
 //   each arm with its own best-cosine compare and store.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 struct CTargetPoint {
     unsigned char _pad00[0xc];                          // PThing (CIntelligentPointer<CThing>), Index

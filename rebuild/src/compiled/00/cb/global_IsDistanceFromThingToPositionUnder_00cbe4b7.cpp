@@ -1,5 +1,6 @@
 // IsDistanceFromThingToPositionUnder(const CScriptThing& thing, const C3DVector& position, float distance) -- true when the thing is alive and closer than distance to the position
 // Leaf: ?IsDistanceFromThingToPositionUnder@@YI_NABVCScriptThing@@ABVC3DVector@@M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBE4B7, 91 bytes (`ret 4`).
 // TU: the global quest-script helper functions (__fastcall, size-optimised: `#pragma optimize("s", on)`).
 // Model: CScriptThing is polymorphic (vtable 0x01238C8C); the engine header models the vptr as data, so a local
@@ -12,13 +13,7 @@ class CCharString {
 public:
     void* m_pStringData;
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-    __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    __forceinline float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -27,5 +22,5 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 
 bool __fastcall IsDistanceFromThingToPositionUnder(const CScriptThing& thing, const C3DVector& position, float distance)
 {
-    return (thing.IsAlive() && (thing.GetPos() - position).GetLengthSquared() < distance * distance) ? true : false;
+    return (thing.IsAlive() && (thing.GetPos() - position).GetSquaredMagnitude() < distance * distance) ? true : false;
 }

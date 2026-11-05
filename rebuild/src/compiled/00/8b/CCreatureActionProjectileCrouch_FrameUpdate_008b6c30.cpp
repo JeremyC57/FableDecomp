@@ -1,4 +1,5 @@
 // CCreatureAction_ProjectileCrouch::FrameUpdate() -- the base frame update; then, when turning to face the target, turn the creature's facing towards FacePos (snap when within ~5 degrees, otherwise step 1/72 turn towards the side the target is on) and set the wrapped facing angle
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B6C30, length 546 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
@@ -24,18 +25,8 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
-    __forceinline void Normalise() { *this *= FastInvSqrt(Z * Z + Y * Y + X * X); }
-    float Dot(const C3DVector& o) const { return Z * o.Z + Y * o.Y + X * o.X; }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-public:
-    void RotateXY(float);   // 0x00A14040
-};
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/C3DVector.h"
 
 __forceinline float WrapAngle(float angle)
 {

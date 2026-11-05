@@ -1,5 +1,6 @@
 // std::deque::push_back(const CBezierCurve& t) -- STLport deque<CBezierCurve>::push_back: construct at the finish cursor and advance it while the finish buffer has room, else _M_push_back_aux_v
 // Leaf: ?push_back@?$deque@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00913E70, 49 bytes (64 with padding), __fastcall `ret 4`.
 // Identity: STLport 4.6 deque<CBezierCurve, allocator<CBezierCurve> >::push_back (an unreferenced out-of-line copy; the AI
 //   callers inline it). The catalog label "CGPUScratchBufferTextureManager_AddResourceEntry" is propagated: the element is
@@ -20,14 +21,7 @@ extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 inline void* operator new(size_t, void* p) { return p; }
 
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CBezierCurve {                            // Ego_r.pdb, 48 bytes

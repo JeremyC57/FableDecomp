@@ -1,5 +1,6 @@
 // NCameraModes::CBase::Reset() -- restore default camera dynamics and reset subcomponents.
 // Leaf: Reset
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 0x0084DFE0,194 bytes. Manifest CFirstPerson::OnDie is propagated incorrectly.
 // Layout: no engine CBase header; donor CPhysicsState lists are 12 bytes, retail lists 4 bytes,
 // so each physics state is 0x30. Reuses landed 0084CF80 member layout.
@@ -8,12 +9,7 @@
 #define CGameCameraManager CGameCameraManagerDonor
 #include "engine/CGameCameraManager.h"
 #undef CGameCameraManager
-class C3DVector { public:
- float X,Y,Z;
- C3DVector() {}
- C3DVector(const float& x,const float& y,const float& z):X(x),Y(y),Z(z){}
- C3DVector(const C3DVector& s):X(s.X),Y(s.Y),Z(s.Z){}
-};
+#include "engine/C3DVector.h"
 class CCamera { public: unsigned long Words[14]; };
 class CGameCameraManager { public:
  void* VTable; CCamera Camera,OldCamera;

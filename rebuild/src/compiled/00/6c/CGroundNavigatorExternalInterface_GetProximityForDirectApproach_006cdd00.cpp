@@ -1,4 +1,5 @@
 // CGroundNavigatorExternalInterface::GetProximityForDirectApproach() const -- the navigation component's (kind 7) proximity-for-direct-approach float (+0x58); the component pointer is left uninitialised (the dead key slot) when the creature has none
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CDD00, length 80 bytes.
 // Callees: the component map LowerBound @ 0x004365B0 (the const instantiation; kind 7 by address). Shape: as GetNavigatorObstacles @ 0x006CDBD0 with `fld [eax+58h]` on both paths.
 // Model: the engine header for the interface (vptr, Creature at +4, Radius at +8); the creature, its physics body (+0x60) and its component map are local models (engine/CThingCreatureBase.h has no names at these offsets).
@@ -16,11 +17,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;    // 0x004365B0 (the second instantiation)
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
-};
+#include "engine/C3DVector.h"
 class CCreatureNavigationDef;
 struct CDefPointer_Nav {                           // CDefPointer<CCreatureNavigationDef>: one counted def pointer (released by hand in the bodies: the slot is reused for the float)
     CCreatureNavigationDef* m_p;

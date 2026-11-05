@@ -1,5 +1,6 @@
 // CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, const CCharString& defName) const -- replace a live creature by a new one built from the named def: an unchanged def returns the thing itself; an AI creature (type 1) is re-created with its script name and game-state persistence; the player creature (type 2) is re-created persisted, takes copies of its component interfaces, and becomes the main player's character and controlled creature; the old thing is killed either way and the new script thing returned
 // Leaf: ?TurnCreatureInto@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0089F4A0, 1134 bytes (+ int3 padding), `ret 0Ch` (hidden result + 2).
 // Callees: CBaseClass ctor/dtor 0x0099A2D0 / 0x0099A2E0, CScriptThing::operator= 0x008AB980 / dtor 0x004AA840 (the
@@ -19,7 +20,7 @@
 //   ScriptName +0x74, DefGlobalIndex +0x8c, PlayerNumber +0x90 (PDB +0x84/+0x9c/+0xa0, the 0x10 retail CThing shift).
 //   CThingPlayerCreatureInit as Ego_r.pdb (12 bytes).
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0

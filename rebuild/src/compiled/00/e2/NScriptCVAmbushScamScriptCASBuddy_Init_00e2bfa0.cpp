@@ -1,5 +1,6 @@
 // NScript::CV_AmbushScamScript::CAS_Buddy::Init() -- ambush scam buddy setup: ally with the hero both ways, allow following the hero, clear the three approach/speech flags, mark the buddy as having information, remember its start position and make it wander around it (min 0, max from the script def) in scripting state group 4
 // Leaf: ?Init@CAS_Buddy@CV_AmbushScamScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E2BFA0, length 345 bytes (plain `ret`; vtable slot 2 = Init of the entity
 //          script contract).
 // Callees: the game interface's slots 70 GetHero, 599 EntitySetThingAsAllyOfThing, 235 EntitySetAsAllowedToFollowHero, 360
@@ -16,11 +17,7 @@
 //          BuddyFollowSpeechComplete +0x1e, BuddyStartPos +0x1f (unaligned C3DVector: pack(1) on the script only).
 // Naming wave 35: identity reg 00e2b1b8 "AS_Buddy" in 00e2b090; Alloc 00e2bec0; vtable 012e286c slot 2; PDB ?Init@CAS_Buddy@CV_AmbushScamScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CAS_Buddy::Init (wave3/labels_alloc.tsv); PDB ?Init@CAS_Buddy@CV_AmbushScamScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Init@CAS_Buddy@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own)); same bytes.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
-};
+#include "engine/C3DVector.h"
 
 class CCPPointerInfo { public:                                  // CCountedPointer's shared block
     unsigned long RefCount;

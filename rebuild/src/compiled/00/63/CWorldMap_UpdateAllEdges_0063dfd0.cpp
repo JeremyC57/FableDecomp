@@ -1,27 +1,13 @@
 // CWorldMap::UpdateAllEdges() -- for every loaded map, copy the neighbouring map's first column/row into this map's right and bottom border cells (or replicate this map's last inner cell where no map adjoins), then the bottom-right corner
 // Leaf: ?UpdateAllEdges@CWorldMap@@IAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063DFD0, plain `ret`, ebp frame.
 // Callees: slot 10 IsMapLoaded +0x28, slot 18 GetMap +0x48, slot 13 GetDimensions +0x34, slot 17 GetMapNumberAt(C2DCoordI) +0x44,
 //   ConvertWorldMapCoordsToLocalCoords(long, const C2DCoordI&) 0x004FC3C0, CMap::CopyPos 0x0081F240.
 // Layout: the landed 0x0063A7E0 CWorldMap model (retail offsets; Maps +0x20, 0x48-byte CMapInfo).
 #include <math.h>
-class C3DVector
-{ public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
-class C2DCoordI
-{ public:
-    long x;
-    long y;
-    C2DCoordI() {}
-    C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
-};
 
 class C2DBoxI
 { public:

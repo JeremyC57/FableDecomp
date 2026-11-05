@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToUnconsciousPerson::Update() -- walk up to the (living) unconscious person, mark it discovered by this creature, then either (creature in life state 3) look at it and play the alert-to-player action, or post the STANDARD_MESSAGE_EVENT_FOUND_UNCONSCIOUS_PERSON message to a guard at the person's position; always Terminate()
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009378F0, length 535 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 (the by-value
@@ -18,10 +19,7 @@
 // (the byte spill at +0x0b); the message def is released by hand through a pointer local (landed 0x00849140 shape) and
 // passed by value through an add-ref copy; a named person local puts the flags push after GetPItem.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;

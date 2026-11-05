@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::`scalar deleting destructor'(unsigned int) -- inline destructor, then free the object when bit 0 is set
 // Leaf: ??_GCSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEPAXI@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe @ 0x00B23110, 89 bytes, `ret 4`. Catalog label "CWound::Kill" is propagated; Ego_r.pdb lists
 // ??_GCSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEPAXI@Z (non-virtual: the class has no vtable). No
@@ -12,7 +13,7 @@
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 #include "engine/CArray.h"
 

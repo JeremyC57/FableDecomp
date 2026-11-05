@@ -1,5 +1,6 @@
 // NCameraModes::CStringAndCageBase::OnReset() -- snap the string-and-cage camera: put it behind the observed thing (the thing's position less its flattened, normalised facing times the desired string length, raised by the desired height offset) and look at the thing's camera focal point
 // Leaf: OnReset
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00871EC0, 270 bytes (+2 int3 padding), `ret`.
 // Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CThing::GetPos() const 0x004C73D0
 //   (const C3DVector&), the thing physics' virtual slot 70 (+0x118, GetFacingVector, C3DVector by hidden pointer),
@@ -11,16 +12,7 @@
 //   C3DVector(0, 0, 1) * offset (1 * offset folds, 0 * offset is computed once and reused for X and Y). The focal point
 //   is a named local in an inner block, so VC7.1 gives it the dead raise temporary's 12 bytes (0x3C frame); at function
 //   scope it takes its own slot (0x48), and assigning LookAt straight from the call copies through eax.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector& AccurateNormalise();                                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 struct CThingPhysics {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

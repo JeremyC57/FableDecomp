@@ -1,5 +1,6 @@
 // CAIStateGroup_TrollBase::IsStillRunnable() -- PEnemy is alive, the group is not stopping, and the creature's targeting component still targets PEnemy
 // Leaf: ?IsStillRunnable@CAIStateGroup_TrollBase@@QAE_NXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0094D930, 135 bytes, thiscall, plain `ret`.
 // Identity (proven): Ego_r.pdb ?IsStillRunnable@CAIStateGroup_TrollBase@@QAE_NXZ (donor 0x00971C10) sits beside the same neighbours; callers CAIStateGroup_RockTroll::Update 0x0094DD90 (x3);
 //   PEnemy is the Ego_r.pdb CIntelligentPointer<CThingCreatureBase> at retail +0x14.
@@ -11,57 +12,8 @@
 //   missing component reads the unset local, as the landed J018 GetTC rows); `if (PEnemy.GetPItem() == targeting->GetPTargetedThing()) return true; return false;` (the right operand -- the virtual
 //   call -- is evaluated first; `sete`), the entry picked by the ternary so the component loads straight into ecx.
 #include <stddef.h>
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class vector {           // retail STLport vector (12 bytes)
-public:
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    const_iterator end() const { return this->_M_finish; }
-};
-template <size_t _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static size_t _S_whichword(size_t __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(size_t __pos) { return 1UL << (__pos % 32); }
-};
-template <size_t _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    struct reference {
-        typedef _Base_bitset<(_Nb + 31) / 32> _Bitset_base;
-        unsigned long* _M_wp;
-        size_t _M_bpos;
-        reference(bitset<_Nb>& __b, size_t __pos)
-        {
-            _M_wp = &__b._M_w[_Bitset_base::_S_whichword(__pos)];
-            _M_bpos = __pos % 32;
-        }
-        ~reference() { }
-        operator bool() const { return (*(_M_wp) & _Bitset_base::_S_maskbit(_M_bpos)) != 0; }
-    };
-    reference operator[](size_t __pos) { return reference(*this, __pos); }
-};
-}   // namespace std
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    typedef typename CArray<value_type>::const_iterator const_iterator;
-    CArray<value_type> Data;                                  // +0x00
-    TCompare           Compare;                               // +0x0C
-    bool               Dirty;                                 // +0x0D
-    const_iterator LowerBound(const K& key) const;            // 0x004365B0 for the TC map (the const overload)
-};
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#include "engine/CVectorMap.h"
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };
 class CTCBase;
 class CThing {
@@ -77,7 +29,7 @@ public:
             ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
             const CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::const_iterator it = map->LowerBound(type);
-            *out = (T*)((it == map->Data.end() || T::INTERFACE_TYPE < it->first) ? map->Data.end() : it)->second;
+            *out = (T*)((it == map->end() || T::INTERFACE_TYPE < it->first) ? map->end() : it)->second;
             return true;
         }
         return false;

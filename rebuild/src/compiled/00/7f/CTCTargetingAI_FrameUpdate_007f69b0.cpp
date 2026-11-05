@@ -1,5 +1,6 @@
 // CTCTargetingAI::FrameUpdate() -- prune the things-not-to-attack list (dead or vanished things, and stealthed things that have come within 5 units), then refresh the best enemy creature for attack and the nearest interesting thing
 // Leaf: FrameUpdate
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F69B0, 306 bytes (plain `ret`). CTCTargetingAI vtable 0x012411FC slot 9 (the
 //   manifest's "CTCTargetingAI::vfunc_9"; slot 9 is the CTCBase FrameUpdate).
@@ -16,12 +17,7 @@
 //   returns the next node; the XY distance is `d.X * d.X + d.Y * d.Y` (VC emits the Y term first).
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-};
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;

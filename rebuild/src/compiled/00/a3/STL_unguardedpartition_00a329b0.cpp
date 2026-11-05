@@ -1,5 +1,6 @@
 // std::__unguarded_partition(pair<unsigned long, C3DHelperPoint>* first, pair<unsigned long, C3DHelperPoint>* last, pair<unsigned long, C3DHelperPoint> pivot, CKeyPairCompareLess comp) -- quicksort partition step of the helper-point table around the pivot's key: advance from both ends, swap out-of-place pairs, return the split point
 // Leaf: __unguarded_partition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A329B0, 163 bytes, `ret 18h` (__fastcall: first in ecx, last in edx, the
 //   20-byte pivot and the empty comparator on the stack). No callees.
 // Identity: the __introsort_loop partition of the C3DMeshStats helper-point sort (20-byte family of 0x00A31280 /
@@ -12,10 +13,7 @@
 //   slots, the two assignments implicit five-dword copies.
 namespace std {
 
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 
 struct C3DHelperPoint {                                // 16 bytes
     C3DVector Position;                                // +0x00

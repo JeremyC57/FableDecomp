@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplinePosParamData::GetScaleFactor(const CParticleUpdateParameters<unsigned long,unsigned long>& params, float pos) -- with MaintainSplineShape set, the ratio of the current to the original length of the spline segment around `pos`; 1.0 otherwise or when no control points bracket it
 // Leaf: ?GetScaleFactor@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEMABV?$CParticleUpdateParameters@KK@3@M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B216F0, length 177 bytes, `ret 8`, the float in st(0).
 // Signature from Ego_r.pdb: ?GetScaleFactor@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEMABV?$CParticleUpdate
 //   Parameters@KK@3@M@Z. Caller: the landed CPSCSpline::StartUpdate @ 0x00B1B0C0 (call 0x00B1B111, there named
@@ -12,14 +13,7 @@
 //   `pos` argument slot); both failure paths return the 1.0f literal.
 #include <math.h>
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 
 class CCardinalSpline;
 
@@ -51,7 +45,7 @@ float CPSCSplineBase::CSplinePosParamData::GetScaleFactor(const CParticleUpdateP
         if (GetClosestParameterisedControlPoints(params, pos, originalStart, originalEnd, currentStart, currentEnd)) {
             C3DVector current = currentEnd - originalEnd;
             C3DVector original = currentStart - originalStart;
-            return original.GetLength() / current.GetLength();
+            return original.GetMagnitude() / current.GetMagnitude();
         }
     }
     return 1.0f;

@@ -1,5 +1,6 @@
 // CTCGhostSword::MakeSwordsAppear() -- summon the ghost swords round the caster: take the facing vector, turn a copy a quarter turn about the up axis and scale it by the creation distance, then add one sword per spell level slot (level 0: ahead; 1: both sides; 2: ahead and both sides; 3: ahead, behind and both sides)
 // Leaf: ?MakeSwordsAppear@CTCGhostSword@@QAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C5DB0, 735 bytes of code + `nop` + a 4-entry jump table (row 752), `ret`.
 // Identity: Ego_r.pdb has `?MakeSwordsAppear@CTCGhostSword@@QAEXXZ` (donor 0x007C4A50) and the private
 //   `?AddSword@CTCGhostSword@@AAEXABVC3DVector@@@Z` (donor 0x007C43E0, retail 0x007C57C0); CTCGhostSword vtable 0x0126E494.
@@ -18,17 +19,7 @@ class CBaseClassNonCopyable : public CBaseClass { public:
 protected:
     virtual ~CBaseClassNonCopyable();                       // 0x0099A300
 };
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void Rotate(const C3DVector& axis, float angle);       // 0x00A13C60
-    C3DVector& operator*=(float scale) { X *= scale; Y *= scale; Z *= scale; return *this; }
-    C3DVector operator+(const C3DVector& other) const { return C3DVector(X + other.X, Y + other.Y, Z + other.Z); }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-};
+#include "engine/C3DVector.h"
 class CTCPhysicsBase;
 class CThing { public:                                      // partial view, retail offsets
     unsigned char   _pad_0x00[0x60];

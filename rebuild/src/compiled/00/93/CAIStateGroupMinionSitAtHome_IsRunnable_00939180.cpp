@@ -1,5 +1,6 @@
 // 00939180 CAIStateGroup_MinionSitAtHome::IsRunnable -- consult idle scheduler then set sitting deadline
 // Leaf: ?IsRunnable@CAIStateGroup_MinionSitAtHome@@MAE_NXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 #define CClass CClassLayout
@@ -41,8 +42,7 @@ public:float X,Y,Z;
 #pragma pack(push,1)
 class CClass:public CBaseObject {private:unsigned char unobservedClassState[sizeof(CClassLayout)-sizeof(CBaseObject)];};
 enum ETCInterfaceType{};class CTCBase;
-template<class K,class V>class CKeyPairCompareLess{};
-template<class K,class V,class C=CKeyPairCompareLess<K,V> >class CVectorMap:public CArray<std::pair<K,V> >{private:C Compare;bool Dirty;public:std::pair<K,V>*LowerBound(const K&);};
+#include "engine/CVectorMap.h"
 class CThing:public CClass {
 public:template<class T>__forceinline bool GetTC(T**out){
  unsigned long*bits=reinterpret_cast<unsigned long*>(reinterpret_cast<CThingLayout*>(this)->UsingComponents);

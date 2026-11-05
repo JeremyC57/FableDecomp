@@ -1,4 +1,5 @@
 // CAIStateGroupBase::CreateItem(CCharString&, CCharString&) -- look up the creature's carry slot, create the named thing at its position, then put it in the slot; retail 0x008fd0a0 (266 bytes), using CAIBrain/CThingAICreature headers and the opaque +0x44 map view.
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 #if defined(_MSC_VER)
 #include "engine/CAIStateGroupBase.h"
@@ -8,7 +9,7 @@
 #undef CThingAICreature
 #include "engine/CPlayerManager.h"
 #include "fable_string.h"
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public: const C3DVector& GetPos() const; };   // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
 class CThingAICreature : public CThing { public: unsigned char storage[sizeof(CThingAICreaturePdb)]; };
 #else
@@ -18,7 +19,6 @@ class CCharString { public:
     CCharString(const char*, long);
     ~CCharString();
 };
-class C3DVector;
 class CThing { public: const C3DVector& GetPos() const; };   // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
 class CThingAICreature : public CThing { public: unsigned char storage[0x100]; };
 class CPlayer;
@@ -27,7 +27,6 @@ class CAIBrain { public: CThingAICreature* Creature; CPlayerManager* PlayerManag
 class CAIStateGroupBase { public: CAIBrain* PBrain; };
 #endif
 
-class C3DVector { public: float x, y, z; };
 class CThing;
 class CThingObject;
 class CGameDefinitionManager { public:

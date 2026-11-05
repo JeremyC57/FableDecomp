@@ -1,5 +1,6 @@
 // CCreatureAction_NymphGetHit::FrameUpdate() -- base strike-response FrameUpdate, then keep the nymph's "DUMMY_CENTRE" helper where it was when the action started: move the nymph by (InitDummyPos - current helper position) and mark it as not moving
 // Leaf: ?FrameUpdate@CCreatureAction_NymphGetHit@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C9E60, 222 bytes, thiscall, plain `ret` (virtual).
 // Identity (proven): RTTI vtable 0x01263F84 (.?AVCCreatureAction_NymphGetHit@@) slot 56 = FrameUpdate (slot 56 of the
 //   CCreatureActionBase family, e.g. landed CCreatureAction_FireMissileWeapon::FrameUpdate 0x008D5000); Ego_r.pdb
@@ -22,14 +23,7 @@ public:
     void* PStringData;
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet {
 public:

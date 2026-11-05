@@ -1,73 +1,9 @@
 // CTCSpecialAbilities::CancelUsingAbility(EHeroAbility ability) -- cancel the hero ability in use: for the physical shield (if active), summon and ghost sword cancel the move and report true; for slow time, berserk, multi strike and multi arrow cancel the move and report false
 // Leaf: ?CancelUsingAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    typedef unsigned int size_type;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    iterator begin() { return this->_M_start; }
-    const_iterator begin() const { return this->_M_start; }
-    iterator end() { return this->_M_finish; }
-    const_iterator end() const { return this->_M_finish; }
-    const _Tp& operator[](size_type __n) const { return *(begin() + __n); }
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class list { public:   // retail STLport list (4 bytes)
-    void* _M_node;
-};
-template <unsigned int _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static unsigned int _S_whichword(unsigned int __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(unsigned int __pos) { return 1UL << (__pos % 32); }
-    _WordT _M_getword(unsigned int __pos) const { return _M_w[_S_whichword(__pos)]; }
-};
-template <unsigned int _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    typedef _Base_bitset<(_Nb + 31) / 32> _Base;
-    struct reference {
-        typedef _Base_bitset<(_Nb + 31) / 32> _Bitset_base;
-        unsigned long* _M_wp;
-        unsigned int _M_bpos;
-        reference(bitset<_Nb>& __b, unsigned int __pos)
-        {
-            _M_wp = &__b._M_w[_Bitset_base::_S_whichword(__pos)];
-            _M_bpos = __pos % 32;
-        }
-        ~reference() { }
-        operator bool() const { return (*(_M_wp) & _Bitset_base::_S_maskbit(_M_bpos)) != 0; }
-    };
-    reference operator[](unsigned int __pos) { return reference(*this, __pos); }
-    bool operator[](unsigned int __pos) const { return _Unchecked_test(__pos); }
-    bool _Unchecked_test(unsigned int __pos) const
-    {
-        return (this->_M_getword(__pos) & _Base::_S_maskbit(__pos)) != (unsigned long)0;
-    }
-};
-}   // namespace std
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T> { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                                  // +0x00
-    TCompare           Compare;                               // +0x0C
-    bool               Dirty;                                 // +0x0D
-    value_type* LowerBound(const K& key);                     // 0x0040F020 for the TC map
-    const value_type* LowerBound(const K& key) const;         // 0x004365B0 for the TC map
-};
 
 enum ETCInterfaceType { };                                  // values not needed here
 enum EHeroAbility { };                                      // values (1..19) are listed in the case comments
@@ -83,8 +19,8 @@ class CThing { public:                                      // partial view, ret
         if (UsingComponents[T::StatGetInterfaceType()]) {
             TCMap* map = &Components;
             TCMap::value_type* it = map->LowerBound(T::StatGetInterfaceType());
-            if (it == map->Data.end() || T::StatGetInterfaceType() < it->first)
-                it = map->Data.end();
+            if (it == map->end() || T::StatGetInterfaceType() < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }
@@ -95,8 +31,8 @@ class CThing { public:                                      // partial view, ret
         if (UsingComponents[T::StatGetInterfaceType()]) {
             const TCMap* map = &Components;
             const TCMap::value_type* it = map->LowerBound(T::StatGetInterfaceType());
-            if (it == map->Data.end() || T::StatGetInterfaceType() < it->first)
-                it = map->Data.end();
+            if (it == map->end() || T::StatGetInterfaceType() < it->first)
+                it = map->end();
             *out = (const T*)it->second;
             return true;
         }

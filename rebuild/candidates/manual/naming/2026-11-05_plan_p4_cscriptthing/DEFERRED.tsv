@@ -1,0 +1,146 @@
+address	stage	reason
+00719120	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'Memberc'
+007e7e40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'Member24'
+00891610	bytes_differ	BYTES_DIFFER length 83 != 97
+00891d50	bytes_differ	BYTES_DIFFER length 61 != 81
+008adf90	bytes_differ	BYTES_DIFFER length 59 != 72
+008cff40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+008d0c50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+008d0e00	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+008d19a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+008d1fd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+008d29c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+008d2bb0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+008d2d90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+008d2f80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00cdf430	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::CScriptThing(const CScriptThing &)' : cannot convert parameter 1 from 'void *' to 'const CScriptThing &'
+00ce0ec0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'Member1c'
+00ce15e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'SetClickText' : is not a member of 'CScriptThing'
+00cfd6c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d00050	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d00af0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d08790	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d15510	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d15a40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d22880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'PosOrZero' : is not a member of 'CScriptThing'
+00d246c0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+00d2c810	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00d34470	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d3a1a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPosition' : is not a member of 'CScriptThing'
+00d61d20	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d68810	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d6aea0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d6b240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d71b30	bytes_differ	BYTES_DIFFER length 1457 != 1453
+00d72200	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d72590	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d73970	bytes_differ	BYTES_DIFFER length 339 != 354
+00d73c70	bytes_differ	BYTES_DIFFER length 465 != 707
+00d79d50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00d7a360	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00d7dd80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d7f460	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d7f880	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00d80e40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d835d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d86150	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d86680	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d86c30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00d8f6d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2065: 'PImp_Data' : undeclared identifier
+00d91320	bytes_differ	BYTES_DIFFER length 324 != 335
+00d9d030	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00d9f070	bytes_differ	BYTES_DIFFER length 56 != 62
+00da0d90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'std::list' : too few template arguments
+00da47a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00da5f40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00da6240	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CEntityScriptBase::Me' uses undefined class 'CScriptThing'
+00da63f0	bytes_differ	BYTES_DIFFER length 345 != 353
+00da6d50	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00da7830	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00da8970	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+00da9c70	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00db8300	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00dc0830	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2976: 'std::vector' : too few template arguments
+00dc8890	bytes_differ	BYTES_DIFFER length 988 != 998
+00dd84b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00ddd030	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+00ded540	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00ded810	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00dedb80	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00dedf30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00def3b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00df0200	bytes_differ	BYTES_DIFFER length 1142 != 1174
+00df20f0	bytes_differ	BYTES_DIFFER length 249 != 256
+00df4610	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00df9710	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00dfba60	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00e02470	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2065: 'PImp_Data' : undeclared identifier
+00e02950	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2065: 'PImp_Data' : undeclared identifier
+00e04bd0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'InlineCopy' : is not a member of 'CScriptThing'
+00e0cff0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00e0f4e0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'PImpData' : is not a member of 'CScriptThing'
+00e11450	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00e11dc0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2065: 'PImp_Data' : undeclared identifier
+00e1af30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00e1b750	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00e1ee30	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00e383a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00e49980	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00e4a280	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00e5e0c0	bytes_differ	BYTES_DIFFER length 400 != 376
+00e5f2b0	bytes_differ	BYTES_DIFFER length 765 != 783
+00e5f6b0	bytes_differ	BYTES_DIFFER length 309 != 335
+00e5fb80	bytes_differ	BYTES_DIFFER length 224 != 232
+00e7b970	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CEntityScriptBase::Me' uses undefined class 'CScriptThing'
+00e998f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00ea0b10	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2065: 'PImp_Data' : undeclared identifier
+00ea76e0	bytes_differ	BYTES_DIFFER length 94 != 101
+00ea7b40	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00eae5a0	bytes_differ	BYTES_DIFFER length 120 != 122
+00eae910	bytes_differ	BYTES_DIFFER length 94 != 108
+00eb75f0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2039: 'GetPosition' : is not a member of 'CScriptThing'
+00ec42f0	bytes_differ	BYTES_DIFFER length 414 != 412
+00ed54d0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2143: syntax error : missing ';' before '*'
+00ee1be0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2146: syntax error : missing ';' before identifier 'Member1c'
+00ee8870	bytes_differ	BYTES_DIFFER length 791 != 866
+00eec890	bytes_differ	BYTES_DIFFER length 1540 != 1544
+00ef34a0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00ef3aa0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2079: 'CScriptThing::PImp' uses undefined class 'CCountedPointer<T>'
+00ef45b0	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+00f08e90	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2371: 'EScriptingStateGroups' : redefinition; different basic types
+00f1a990	compile_fail	COMPILE_FAIL COMPILE_FAIL error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+007e7760	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00893ff0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00894080	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00894110	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+0089a490	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+008ac970	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+008ac9d0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00cddab0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00cddae0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the copy of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00cddb10	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00cdf160	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00cfee30	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00d347b0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00d49d50	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00d9f160	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00dd6440	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00df0750	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00df2f90	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e36590	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e3b4a0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e4df20	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e569d0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e57530	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e7a740	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e7b050	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e7e020	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the copy of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e7f410	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00e9a270	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00ea80a0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00eb4710	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00eb6a00	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the dtor of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00eb94a0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00efb8c0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the copy of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00efd740	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls neither of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)
+00efe8d0	scope	gate-ready under the shared header (hdrmig4 OK, masked bytes + targets equal) but out of this step's scope: the row calls only the copy of ~CScriptThing 0x004AA840 / copy 0x004ABE90 out of line, not both (brief: migrate only rows that call both)

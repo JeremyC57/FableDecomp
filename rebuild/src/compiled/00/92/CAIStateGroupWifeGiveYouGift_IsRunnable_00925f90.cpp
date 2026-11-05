@@ -1,4 +1,5 @@
 // CAIStateGroup_WifeGiveYouGift::IsRunnable() -- the spouse has a gift to hand over (its interface-0xD7 component
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // names a gift def, remembered in GiftToGiveDef) and the hero is alive within 40 units.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00925F90, length 199 bytes (+ int3 padding).
@@ -11,7 +12,7 @@
 // compared `s < 1600.0f` (`test ah,5 ; jp`). PDB names from the engine header (GiftToGiveDef +0x18); local model.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

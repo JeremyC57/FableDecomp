@@ -1,5 +1,6 @@
 // CThingCreatureBase::GetCurrentSpeed() const -- distance the creature moved since the last frame: |PhysicsTC->Position - PhysicsTC->OldPosition|
 // Leaf: ?GetCurrentSpeed@CThingCreatureBase@@QBEMXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation); local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00661CD0, 46 bytes + 2 int3, thiscall `ret`, float in st(0). Name: Ego_r.pdb
 // `?GetCurrentSpeed@CThingCreatureBase@@QBEMXZ` (name set); the landed caller NTCScriptedControl::CActionFollowCreature::
 // Update 0x00713EE0 already calls 0x00661CD0 as GetCurrentSpeed (also CTCCreatureNavigation::FrameUpdate 0x006CC88B /
@@ -11,13 +12,7 @@
 // GetLengthSquared (0x007A2F90 model; the temporary on the x87 stack squares Z, Y, X) and `(float)sqrt` -> fsqrt.
 // No pragma.
 #include <math.h>
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    float GetLength() const { return (float)sqrt(GetLengthSquared()); }
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
@@ -36,5 +31,5 @@ class CThingCreatureBase : public CThingPhysical { public:
 
 float CThingCreatureBase::GetCurrentSpeed() const
 {
-    return (PhysicsTC->Position - PhysicsTC->OldPosition).GetLength();
+    return (PhysicsTC->Position - PhysicsTC->OldPosition).GetMagnitude();
 }

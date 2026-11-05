@@ -1,5 +1,6 @@
 // CCreatureActionBase::CCreatureActionBase(CThingCreatureBase*, const CSoundPair&, long, long) -- the base creature-action constructor: attach the creature, one-frame total/action time, the interruption group and priority, the sound pair, no pause (-1 frame/timer), empty containers, a fresh default animation entry, and the next unique action id
 // Leaf: ??0CCreatureActionBase
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00693C70, 321 bytes (336 with padding). `ret 10h`; vtable 0x01259D24.
 // Callees: CBaseObject::CBaseObject 0x0099A380; CBaseIntelligentPointer ctor 0x00A01B10 and SetPItem 0x00A01B90
 //          (CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8, CIntelligentPointer<CThing> 0x01238C6C);
@@ -54,10 +55,7 @@ class CSoundPair { public:
     long FirstSound;
     long LastSound;
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 template <class T> struct CAllocator {     // STLport allocator<T>: empty
     CAllocator() { }
 };

@@ -1,5 +1,6 @@
 // CShadowClipVolume::ClipSphere(const C3DBoundingSphere& sphere) const -- whether a bounding sphere can touch the shadow clip volume: rejected when it lies outside the volume's own bounding sphere (if clipping to it) or wholly in front of any clip plane
 // Leaf: ?ClipSphere@CShadowClipVolume@@QBE_NABVC3DBoundingSphere@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B96350, 208 bytes, thiscall, `ret 4`, bool in al.
 // Identity: Ego_d.pdb / FableWin.pdb ?ClipSphere@CShadowClipVolume@@QBE_NABVC3DBoundingSphere@@@Z (a sibling
 //   ?ClipSphere@...@@QBE_NABVC3DVector@@M@Z overload exists; forwarding to it inline leaves it a call); Ego_r.pdb CShadowClipVolume layout
@@ -10,20 +11,7 @@
 //   own early `return false` before esi is pushed; each plane test is `centre.Dot(normal) - radius > D`. Retry pass 3: retail's Z, X, Y term order
 //   comes from a Dot written as two statements (`dot = Z*v.Z + X*v.X; dot += Y*v.Y;`); every single-expression spelling
 //   (X+Y+Z, X+Z+Y, Z+(X+Y)) is reassociated by VC7.1 to Y, X, Z.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float Dot(const C3DVector& v) const                // retail term order Z, X, Y: separate statements stop
-    {                                                   // VC7.1 reassociating the sum into Y, X, Z
-        float dot = Z * v.Z + X * v.X;
-        dot += Y * v.Y;
-        return dot;
-    }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 class CPlane {
 public:
@@ -54,7 +42,7 @@ bool CShadowClipVolume::ClipSphere(const C3DBoundingSphere& sphere) const
     if (ClipToSphere) {
         C3DVector d = centre - BoundingSphere.Center;
         float r = radius + BoundingSphere.Radius;
-        if (d.GetLengthSquared() > r * r)
+        if (d.GetSquaredMagnitude() > r * r)
             return false;
     }
     for (long i = 0; i < ClipPlaneCount; ++i)

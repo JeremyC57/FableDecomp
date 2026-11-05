@@ -1,0 +1,81 @@
+address	stage	reason
+0049be10	bytes_differ	BYTES_DIFFER length 119 != 123
+004d8b3c	bytes_differ	BYTES_DIFFER length 50 != 42
+006700f0	bytes_differ	BYTES_DIFFER length 180 != 162
+006ac910	stray_change	STRAY_CHANGE own ?Create@CThingPlayerCreature@NFactory006ac910@@SIPAU12@HABUC3DVector@2@HH@Z -> ?Create@CThingPlayerCreature@NFactory006ac910@@SIPAU12@HABVC3DVector@2@HH@Z ; 006a9dd0: ?ConstructFromParams@CThingPlayerCreature@NFactory006ac910@@QAE_NHABUC3DVector@2@HH@Z -> ?ConstructFromParams@CThingPlayerCreature@NFactory006ac910@@QAE_NHABVC3DVector@2@HH@Z ; 006a06e0: ??0CTCParamsPhysicsBase@NFactory006ac910@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z -> ??0CTCParamsPhysicsBase@NFactory006ac910@@QAE@ABVC3DVector@1@ABUCRightHandedSet@1@@Z
+006b84e0	bytes_differ	BYTES_DIFFER length 53 != 101
+006c7960	bytes_differ	BYTES_DIFFER length 380 != 404
+006c8780	stray_change	STRAY_CHANGE 00835a20: ?Create@CTCDNone@X_006c8780@@SIPAUCThing@2@IABUC3DVector@2@_N@Z -> ?Create@CTCDNone@X_006c8780@@SIPAUCThing@2@IABVC3DVector@2@_N@Z
+006c88d0	bytes_differ	BYTES_DIFFER length 673 != 697
+006d5b50	bytes_differ	BYTES_DIFFER masked sha1 differs
+006e11f0	stray_change	STRAY_CHANGE own ?Create@X_006e11f0@@YIPAUCThing@1@HHMABUC3DVector@1@_N@Z -> ?Create@X_006e11f0@@YIPAUCThing@1@HHMABVC3DVector@1@_N@Z ; 006a06e0: ??0CTCParamsPhysicsBase@X_006e11f0@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z -> ??0CTCParamsPhysicsBase@X_006e11f0@@QAE@ABVC3DVector@1@ABUCRightHandedSet@1@@Z ; 00aeb8c0: ?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@X_006e11f0@@QAEPAUCParticleEmitter@@HHMABUC3DVector@3@ABUCRightHandedSet@3@_N@Z -> ?CreateInterpolatedEmitter@CParticleEmitterManager@NParticleEngine@X_006e11f0@@QAEPAUCParticleEmitter@@HHMABVC3DVector@3@ABUCRightHandedSet@3@_N@Z
+006e1620	bytes_differ	BYTES_DIFFER masked sha1 differs
+006e1d80	stray_change	STRAY_CHANGE own ?__uninitialized_copy@std@@YIPAU?$pair@KUC3DVector@FableCopy_006e1d80@@@FableCopy_006e1d80@@PBU23@0PAU23@ABU__false_type@@@Z -> ?__uninitialized_copy@std@@YIPAU?$pair@KVC3DVector@FableCopy_006e1d80@@@FableCopy_006e1d80@@PBU23@0PAU23@ABU__false_type@@@Z
+006e2000	stray_change	STRAY_CHANGE own ??4?$vector@U?$pair@IUC3DVector@FableAssign_006e2000@@@FableAssign_006e2000@@@FableAssign_006e2000@@QAEAAU01@ABU01@@Z -> ??4?$vector@U?$pair@IVC3DVector@FableAssign_006e2000@@@FableAssign_006e2000@@@FableAssign_006e2000@@QAEAAU01@ABU01@@Z ; 006e1d80: ?__uninitialized_copy@FableAssign_006e2000@@YIPAU?$pair@IUC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z -> ?__uninitialized_copy@FableAssign_006e2000@@YIPAU?$pair@IVC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z ; 006e1c10: ?__copy@FableAssign_006e2000@@YIPAU?$pair@IUC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z -> ?__copy@FableAssign_006e2000@@YIPAU?$pair@IVC3DVector@FableAssign_006e2000@@@1@PBU21@0PAU21@ABU__false_type@1@@Z
+006eac50	stray_change	STRAY_CHANGE 006f0810: ??0?$vector@UC3DVector@CombatDebug@@@std@CombatDebug@@QAE@ABU012@@Z -> ??0?$vector@VC3DVector@CombatDebug@@@std@CombatDebug@@QAE@ABU012@@Z
+006eba60	stray_change	STRAY_CHANGE own ?CCombatManager_RebuildCombatLists@CombatLists@@YIXPAU_Rb_tree@1@ABUC3DVector@1@PAUlist@1@2@Z -> ?CCombatManager_RebuildCombatLists@CombatLists@@YIXPAU_Rb_tree@1@ABVC3DVector@1@PAUlist@1@2@Z
+006efec0	stray_change	STRAY_CHANGE own ?__uninitialized_copy@std@@YIPAU?$pair@UC3DVector@FableCopy_006efec0@@_N@FableCopy_006efec0@@PBU23@0PAU23@ABU__false_type@@@Z -> ?__uninitialized_copy@std@@YIPAU?$pair@VC3DVector@FableCopy_006efec0@@_N@FableCopy_006efec0@@PBU23@0PAU23@ABU__false_type@@@Z
+0075fe30	bytes_differ	BYTES_DIFFER length 193 != 189
+00760910	bytes_differ	BYTES_DIFFER length 104 != 123
+00762440	stray_change	STRAY_CHANGE own ??0CBasicShape@NShape@@QAE@JABU?$CRetailVector@UC3DVector@NShape@@@@@Z -> ??0CBasicShape@NShape@@QAE@JABU?$CRetailVector@VC3DVector@NShape@@@@@Z ; 006f0810: ??0?$CRetailVector@UC3DVector@NShape@@@@QAE@ABU0@@Z -> ??0?$CRetailVector@VC3DVector@NShape@@@@QAE@ABU0@@Z
+00768fc0	stray_change	STRAY_CHANGE own ?__uninitialized_copy@std@@YIPAU?$pair@KUC3DVector@FableCopy_00768fc0@@@FableCopy_00768fc0@@PBU23@0PAU23@ABU__false_type@@@Z -> ?__uninitialized_copy@std@@YIPAU?$pair@KVC3DVector@FableCopy_00768fc0@@@FableCopy_00768fc0@@PBU23@0PAU23@ABU__false_type@@@Z
+00769470	stray_change	STRAY_CHANGE own ??$_Push_heap@PAU?$pair@KUC3DVector@N00769470@@@N00769470@@HU12@U?$CKeyPairCompareLess@KUC3DVector@N00769470@@@2@@N00769470@@YIXPAU?$pair@KUC3DVector@N00769470@@@0@HHU10@U?$CKeyPairCompareLess@KUC3DVector@N00769470@@@0@@Z -> ??$_Push_heap@PAU?$pair@KVC3DVector@N00769470@@@N00769470@@HU12@U?$CKeyPairCompareLess@KVC3DVector@N00769470@@@2@@N00769470@@YIXPAU?$pair@KVC3DVector@N00769470@@@0@HHU10@U?$CKeyPairCompareLess@KVC3DVector@N00769470@@@0@@Z
+007f1b70	no_block	NO_BLOCK NO_BLOCK
+007f9480	bytes_differ	BYTES_DIFFER length 119 != 109
+0080c140	bytes_differ	BYTES_DIFFER length 62 != 58
+0082e860	no_block	NO_BLOCK NO_BLOCK
+00835c80	stray_change	STRAY_CHANGE own ?Create@ExternalRetry_00835c80@@YIPAUCThingDeadCreature@1@HABUC3DVector@1@HABUCCharString@1@ABUCAnimFilterBase@1@@Z -> ?Create@ExternalRetry_00835c80@@YIPAUCThingDeadCreature@1@HABVC3DVector@1@HABUCCharString@1@ABUCAnimFilterBase@1@@Z ; 008388d0: ?ConstructFromParams@CThingDeadCreature@ExternalRetry_00835c80@@QAE_NHABUC3DVector@2@HIABUCCharString@2@PAU12@2_N@Z -> ?ConstructFromParams@CThingDeadCreature@ExternalRetry_00835c80@@QAE_NHABVC3DVector@2@HIABUCCharString@2@PAU12@2_N@Z ; 006a06e0: ??0CTCParamsPhysicsBase@ExternalRetry_00835c80@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z -> ??0CTCParamsPhysicsBase@ExternalRetry_00835c80@@QAE@ABVC3DVector@1@ABUCRightHandedSet@1@@Z
+00842b60	bytes_differ	BYTES_DIFFER length 61 != 85
+00842bc0	bytes_differ	BYTES_DIFFER length 39 != 62
+00855af0	bytes_differ	BYTES_DIFFER length 68 != 88
+008c6db0	bytes_differ	BYTES_DIFFER length 1094 != 1090
+008ca860	bytes_differ	BYTES_DIFFER length 100 != 96
+008cfe30	bytes_differ	BYTES_DIFFER length 25 != 31
+008e1580	bytes_differ	BYTES_DIFFER length 233 != 234
+008e3aa0	no_block	NO_BLOCK NO_BLOCK
+008ec1a0	bytes_differ	BYTES_DIFFER length 103 != 100
+008f5b50	bytes_differ	BYTES_DIFFER length 64 != 74
+008f69b0	bytes_differ	BYTES_DIFFER length 115 != 116
+008f7950	bytes_differ	BYTES_DIFFER masked sha1 differs
+00941210	bytes_differ	BYTES_DIFFER length 425 != 417
+0094d680	bytes_differ	BYTES_DIFFER length 249 != 251
+0097b3f0	bytes_differ	BYTES_DIFFER length 132 != 117
+00995340	bytes_differ	BYTES_DIFFER length 1038 != 1064
+00a03c80	no_block	NO_BLOCK NO_BLOCK
+00a03d10	no_block	NO_BLOCK NO_BLOCK
+00a03d60	no_block	NO_BLOCK NO_BLOCK
+00a03d90	no_block	NO_BLOCK NO_BLOCK
+00a03dc0	no_block	NO_BLOCK NO_BLOCK
+00a03e10	no_block	NO_BLOCK NO_BLOCK
+00a03e40	no_block	NO_BLOCK NO_BLOCK
+00a03e70	no_block	NO_BLOCK NO_BLOCK
+00a03ec0	no_block	NO_BLOCK NO_BLOCK
+00a4e150	bytes_differ	BYTES_DIFFER masked sha1 differs
+00a87260	no_block	NO_BLOCK NO_BLOCK
+00aa9b20	bytes_differ	BYTES_DIFFER length 40 != 51
+00aa9da0	bytes_differ	BYTES_DIFFER length 79 != 100
+00aa9e10	bytes_differ	BYTES_DIFFER length 53 != 74
+00ab9bb0	bytes_differ	BYTES_DIFFER length 100 != 43
+00acd900	stray_change	STRAY_CHANGE 00acd0e0: ?DetectFoldOver@COptimisedPrimitive@@QAE_NPAVCSubContraction@QuadricOptimiserInternals@@PAUC3DVector@3@@Z -> ?DetectFoldOver@COptimisedPrimitive@@QAE_NPAVCSubContraction@QuadricOptimiserInternals@@PAVC3DVector@3@@Z
+00ae18c0	bytes_differ	BYTES_DIFFER length 449 != 436
+00af0880	bytes_differ	BYTES_DIFFER length 136 != 79
+00af59a0	stray_change	STRAY_CHANGE 006e2000: ??4?$vector@U?$pair@KUC3DVector@NParticleEngine@@@NParticleEngine@@@NParticleEngine@@QAEAAU01@ABU01@@Z -> ??4?$vector@U?$pair@KVC3DVector@NParticleEngine@@@NParticleEngine@@@NParticleEngine@@QAEAAU01@ABU01@@Z ; 0076c000: ??$sort@U?$pair@KUC3DVector@NParticleEngine@@@NParticleEngine@@U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@2@@NParticleEngine@@YIXPAU?$pair@KUC3DVector@NParticleEngine@@@0@0U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@0@@Z -> ??$sort@U?$pair@KVC3DVector@NParticleEngine@@@NParticleEngine@@U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@2@@NParticleEngine@@YIXPAU?$pair@KVC3DVector@NParticleEngine@@@0@0U?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@0@@Z
+00afead0	bytes_differ	BYTES_DIFFER length 121 != 64
+00b179a0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00b20fd0	bytes_differ	BYTES_DIFFER masked sha1 differs
+00b21450	stray_change	STRAY_CHANGE own ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JPAUC3DVector@2@111@Z -> ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JPAVC3DVector@2@111@Z ; 00b20d30: ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JJPAUC3DVector@2@111@Z -> ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JJPAVC3DVector@2@111@Z
+00b214c0	stray_change	STRAY_CHANGE own ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@MPAUC3DVector@2@111@Z -> ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@MPAVC3DVector@2@111@Z ; 00b20d30: ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JJPAUC3DVector@2@111@Z -> ?GetClosestParameterisedControlPoints@CSplinePosParamData@NParticleEngine@@QAE_NPAUCParticleUpdateParameters@2@JJPAVC3DVector@2@111@Z
+00b52b30	bytes_differ	BYTES_DIFFER length 647 != 665
+00b63260	bytes_differ	BYTES_DIFFER length 747 != 711
+00b6e010	bytes_differ	BYTES_DIFFER masked sha1 differs
+00b7c510	bytes_differ	BYTES_DIFFER length 860 != 858
+00c1c3f0	bytes_differ	BYTES_DIFFER length 96 != 110
+00c1cc10	bytes_differ	BYTES_DIFFER length 198 != 133
+00c40450	bytes_differ	BYTES_DIFFER length 79 != 75
+00c404a0	bytes_differ	BYTES_DIFFER length 79 != 75
+00c40650	bytes_differ	BYTES_DIFFER length 255 != 249
+00cdff50	no_block	NO_BLOCK NO_BLOCK
+00d408b0	no_block	NO_BLOCK NO_BLOCK
+00d701c0	bytes_differ	BYTES_DIFFER length 834 != 850
+00d9c2b0	no_block	NO_BLOCK NO_BLOCK
+004feec0	standin_respell	hdrmig4 OK, but its one callee respell (0x00687540 ?AddMessage@CMessageEventManager@@QAEPAXJKPAUC3DVector@@PAUCThing@@1MMJ@Z -> ..PAVC3DVector@@PAUCThing@@..) would add one more spelling to a target that landed rows already bind under 12 stand-in spellings (Ego_r 0x006B2740 ?AddMessage@CMessageEventManager@@QAEPAVCMessageEvent@@W4EMessageEventType@@KABVC3DVector@@PAVCThing@@2MMJ@Z): inconsistent (owner rule 2026-11-05 b); unify every binder in step 6

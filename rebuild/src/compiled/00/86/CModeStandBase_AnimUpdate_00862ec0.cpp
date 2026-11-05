@@ -1,5 +1,6 @@
 // CModeStandBase::AnimUpdate(CAnimateThing& anim) -- per-frame animation update of the stand/walk mode: track how long the creature has idled, play the idle animation when it is not moving, otherwise the walking animation, and occasionally (one in three, once idled long enough at walking pace) add combination idles
 // Leaf: AnimUpdate
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00862EC0, length 331 bytes (padded to 333), `ret 4`; CModeStandBase vtable 0x01276D8C slot 2.
 // Ego_r.pdb: `?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z`.
 // Callees: CModeBase::GetGlobalComponents() const @ 0x0073A680 (reads [0x013B8A1C]+0x24, as the landed CModeStrafe rows) and its
@@ -24,12 +25,7 @@ struct CRandomGenerator {
     __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 
 struct CGameState {
     unsigned char _pad00[0x54];

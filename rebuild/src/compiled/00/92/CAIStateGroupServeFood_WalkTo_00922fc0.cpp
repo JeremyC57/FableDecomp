@@ -1,5 +1,6 @@
 // CAIStateGroup_ServeFood::WalkTo(C3DVector, C3DVector, C3DVector) -- walk to the position (repeating while the action returns 4); on arrival turn to look at position + look offset; report whether the look completed.
 // Leaf: WalkTo
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00922FC0, length 175 bytes (+ int3 padding), `ret 24h` (three by-value
 // C3DVectors; the middle one is unused here).
 // Callees: CAIStateGroupBase::AIAction_MoveToPos @ 0x0097EC00 (repeat 2, pos, &reached, movement 3, true, true, 0,
@@ -10,12 +11,7 @@
 // operator+ through the value constructor evaluates z first; a field-by-field sum needs a 0x10 frame);
 // `return result == 2;` (`sete cl`). No engine header for this class.
 class CThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();

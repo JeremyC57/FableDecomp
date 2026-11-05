@@ -1,28 +1,14 @@
 // CWorldMap::IsLineOfSight(const C3DVector& from, const C3DVector& to) const -- march from `from` to `to` one map block per step along the major axis; the line is blocked when the theme surface rises above it at all four corners of a block
 // Leaf: ?IsLineOfSight@CWorldMap@@QBE_NABVC3DVector@@0@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063AEE0, 514 bytes, `ret 8`, ebp frame (`and esp,-8`).
 // Callees: _ftol 0x00BFEA70, and GetThemeMinCameraSizeZOffsetAt(const C2DCoordI&) 0x0063A7E0 inlined (IsPosInMap
 //   0x004FC5B0, slot 17 GetMapNumberAt +0x44, slot 10 IsMapLoaded +0x28, ConvertWorldMapCoordsToLocalCoords 0x004FC3C0,
 //   slot 19 PeekMap +0x4C, CMap::GetThemeSizeZAt 0x00820100); the block-corner offset table 0x01385818 {(0,1),(1,1),(1,0),(0,0)}.
 // Layout: the landed 0x0063A7E0 CWorldMap model (retail offsets).
 #include <math.h>
-class C3DVector
-{ public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
-class C2DCoordI
-{ public:
-    long x;
-    long y;
-    C2DCoordI() {}
-    C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
-};
 
 class C2DBoxI
 { public:

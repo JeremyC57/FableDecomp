@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCAttractor::DatabaseCopy(const CPSCAttractor&) -- copy an attractor component's database settings: the two flag bits, the position parameter and its name, radius, force, fall-off and the user point list
 // Leaf: DatabaseCopy
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B18060, 170 bytes (+ int3 padding; `ret 4`).
 // Callees: vector<C3DVector>::reserve(size_type) 0x00920FF0 (manifest "vector_reserve") and resize(size_type, const C3DVector&)
 //   0x0075C040 (landed as std::vector<C3DVector>::resize in CTCNymph::OnInitialActivate 0x0080FD90; default, uninitialised C3DVector fill).
@@ -12,10 +13,7 @@
 //   read-modify-write); the scalars copy in retail order; the
 //   point list is sized with reserve + resize to the source count, then copied element by element (implicit C3DVector
 //   assignment) with both arrays re-read each pass.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class T> class allocator { };
 template <class T, class A = allocator<T> > class vector {      // STLport vector (12 bytes)

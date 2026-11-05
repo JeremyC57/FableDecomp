@@ -1,5 +1,6 @@
 // CEngineLandscapeRenderer::PatchWithinFadeStartSphere(long x, long y) -- is the landscape point (x, y, 0) closer to the engine camera than the foreground fade-start distance
 // Leaf: ?PatchWithinFadeStartSphere@CEngineLandscapeRenderer@@QAE_NJJ@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Length respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B670E0, 85 bytes. __fastcall, `ret 8`, bool in al.
 // Identity: FableWin.pdb `?PatchWithinFadeStartSphere@CEngineLandscapeRenderer@@QAE_NJJ@Z` (bool (long, long)); it sits
 //   in the CEngineLandscapeRenderer run (CreateMap 0x00B67140, CalcForegroundFadeFactors 0x00B671E0 -- landed, which
@@ -16,13 +17,7 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float Length() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 
 extern CEngineCamera* g_pEngineCamera;                  // 0x01436EA0
 
@@ -42,7 +37,7 @@ public:
 bool CEngineLandscapeRenderer::PatchWithinFadeStartSphere(long x, long y)
 {
     C3DVector offset = C3DVector((float)x, (float)y, 0.0f) - PeekCameraPos(g_pEngineCamera);
-    if (offset.Length() < m_foregroundFadeStart)
+    if (offset.GetMagnitude() < m_foregroundFadeStart)
         return true;
     return false;
 }

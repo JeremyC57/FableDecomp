@@ -1,5 +1,6 @@
 // NRumble::GetRumbleDistanceAttenuationAtPos(const C3DVector& pos, const C3DVector& source) -- the rumble strength factor at a position: exp(-0.01 * squared distance to the source)
 // Leaf: ?GetRumbleDistanceAttenuationAtPos@NRumble@@YIMABVC3DVector@@0@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F1840, 67 bytes (+ int3 padding), `__fastcall` (pos in ecx, source in edx),
 //   float in st(0). FableWin.pdb `?GetRumbleDistanceAttenuationAtPos@NRumble@@YIMABVC3DVector@@0@Z`; callers 0x0069863C
 //   and the CTCDRumble frame update 0x007F1A1D. Catalog label `Math_Distance3DExp` was descriptive.
@@ -10,12 +11,7 @@
 #include <math.h>
 #pragma intrinsic(exp)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 namespace NRumble {
 float __fastcall GetRumbleDistanceAttenuationAtPos(const C3DVector& pos, const C3DVector& source);
@@ -23,6 +19,6 @@ float __fastcall GetRumbleDistanceAttenuationAtPos(const C3DVector& pos, const C
 
 float __fastcall NRumble::GetRumbleDistanceAttenuationAtPos(const C3DVector& pos, const C3DVector& source)
 {
-    float distSq = (pos - source).GetLengthSquared();
+    float distSq = (pos - source).GetSquaredMagnitude();
     return (float)exp(distSq * -0.01f);
 }

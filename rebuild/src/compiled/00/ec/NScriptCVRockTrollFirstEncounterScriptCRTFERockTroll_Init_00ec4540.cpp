@@ -1,5 +1,6 @@
 // NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll::Init() -- initialize entity state and configure its original game properties.
 // Leaf: ?Init@CRTFE_RockTroll@CV_RockTrollFirstEncounterScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven; Complete original CScriptBase64/CLevelScriptBase72 and CEntityScriptBase20 typed Game/Me/Parent/Master prefixes; real CBaseClassNonCopyable protected ctor/dtor and CBaseClass ancestry, non-POD counted-pointer special members, CCharString(constchar*,long). Original STLport list:_List_base/rebound-node allocatorproxy and vector:_Vector_base/end-storage proxy retained; unused map/tree declarations omitted. Unused virtual slots and owner suffixes explicit projections. Shared thing/resource headers aliased as data evidence. Game exact ownRTTI1260f0c and PDB publicconst APIs; child privatevirtualEAE signatures preserve original access. Field identities from PDB named layouts reconciled with actual factory allocation sizes. No donor address used asretailidentity; own binding00ec3dff literalRTFE_RockTroll ->factory00ec4490 installs exacttable012f16c4 targetslot2, privatevirtualInit signature matches exact PDB nameset. Original own fields none beyond Parent/Master reconcile own 28-byte allocation.
 // Layout: original entity/base/typed members; parent uses correct original level-script prefix, unused own parent suffix omitted without sizeclaim. No inactive map/tree baggage.
@@ -18,9 +19,8 @@ class CCPPointerInfo;
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
 
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

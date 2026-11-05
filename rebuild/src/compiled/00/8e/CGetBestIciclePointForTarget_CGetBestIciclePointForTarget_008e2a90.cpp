@@ -8,13 +8,8 @@
 // copied into the member through a frame temporary (three dword moves).
 // Layout: Ego_r.pdb (TargetPos +0, BestPosScore +0x0c, BestPos +0x10).
 // Leaf: ??0CGetBestIciclePointForTarget
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 struct CThingPlacement_Retail {
     unsigned char _pad00[0x18];
     C3DVector     m_prevPosition;                  // +0x18

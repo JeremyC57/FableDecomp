@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<std::pair<unsigned long, C3DVector> >) STLport growth insert for a 16-byte element with a user (memberwise) copy constructor: allocate size + max(size, fill_len) elements, copy the head out of line, construct x once (or fill out of line fill_len times), copy the tail unless atend, free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@KVC3DVector@@@std@@V?$allocator@U?$pair@KVC3DVector@@@std@@@2@@std@@IAEXPAU?$pair@KVC3DVector@@@2@ABU32@ABU__false_type@2@I_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076ADA0, 209 bytes (+ int3 padding to 224), thiscall, `ret 14h` (five arguments).
 // Identity (proven): std::vector<std::pair<unsigned long, C3DVector> >::_M_insert_overflow; evidence: its callers are the push_back 0x0076B120, which 0x007C25A0, 0x007C2480, 0x007BE3E0 and 0x008548B0 call on +4 of a local whose constructor 0x006E24D0 stores vptr 0x0125FFDC (RTTI .?AV?$CParticleUpdateParameters@KK@NParticleEngine@@) with a {key, C3DVector} record -- Ego_r.pdb's VectorParams +4, a CVectorMap<unsigned long, C3DVector, ...>, i.e. vector<pair<unsigned long, C3DVector> > -- and 0x007A1380 / 0x00767DA0, which inline that push_back.
 // Label: the manifest's "Std_Vector_Insert_Range_Fill" is propagated / behavioural (family H089: six byte-identical bodies, each its own
@@ -14,13 +15,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
-class C3DVector {                                          // Ego_r.pdb, 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // PDB ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class _T1, class _T2> struct pair {             // STLport 4.6 pair
     _T1 first;

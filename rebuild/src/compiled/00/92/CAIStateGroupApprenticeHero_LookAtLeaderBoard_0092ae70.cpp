@@ -1,4 +1,5 @@
 // CAIStateGroup_ApprenticeHero::LookAtLeaderBoard() -- walk to the leaderboard marker and study the leaderboard
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092AE70, length 354 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 ("Leaderboard" @ 0x01291BB0, "LeaderboardMarker" @ 0x01291B9C,
 //          "ST_TRAINEE_LOOK_AT_MAP_TABLE" @ 0x01291B7C), the marker finder @ 0x00929FC0, ~CCharString @ 0x0099EAE0,
@@ -17,13 +18,7 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;

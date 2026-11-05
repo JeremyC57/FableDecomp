@@ -1,4 +1,5 @@
 // CTCDParticleEmitter::GetEmitterPosition() const -- the live emitter's current position (the translation of its transform), or the parent thing's position when no emitter exists yet
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0620, length 100 bytes (+ int3 padding); returns C3DVector through the hidden pointer.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), CThing::GetPos @ 0x004C73D0.
 // Layout: the retail NParticleEngine::CParticleEmitter keeps a 3x4 transform at +0xB0 whose translation row is at +0xD4 (+0x24 in
@@ -6,11 +7,7 @@
 // Shape: the emitter's inline by-value getter returns `C3DVector(t.X, t.Y, t.Z)` (arguments evaluated right to left: Z and Y on
 // the x87 stack, X through ecx; the dead `add eax,0B0h` is the matrix address); the absent arm copies the parent position through
 // C3DVector's user copy ctor (the implicit copy routes the result pointer through edx).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 struct CMatrix34 {                              // 48 bytes
     float Right[3];                             // +0x00
     float Up[3];                                // +0x0c

@@ -1,4 +1,5 @@
 // CTCPhysicsBase::HasSphereCylinderCollidedAt(const CTCPhysicsBase* other, const C3DVector& pos, CPhysicsCollideResponse* response) const -- this body's sphere placed at pos against other's vertical cylinder; on contact fill the response with the horizontal unit normal and the contact position
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008802B0, length 291 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: none (C3DVector's inline fast Normalise: exponent (380 - e) / 2 with the 128-entry mantissa table 0x013CE558,
@@ -15,31 +16,8 @@
 #include <math.h>
 extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    __forceinline void Normalise()
-    {
-        float x = X;
-        float y = Y;
-        float z = Z;
-        float lengthSquared = x * x;
-        lengthSquared += y * y;
-        lengthSquared += z * z;
-        unsigned long bits = *(unsigned long*)&lengthSquared;
-        unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
-        float r = *(float*)&estimate;
-        r = (3.0f - r * r * lengthSquared) * r * 0.5f;
-        X *= r;
-        Y *= r;
-        Z *= r;
-    }
-};
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/C3DVector.h"
 
 class CPhysicsCollideResponse { public:
     C3DVector CollidePos;       // +0x00

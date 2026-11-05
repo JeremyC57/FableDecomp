@@ -1,5 +1,6 @@
 // CCreatureAction_NymphGetHitDie::Initialise() -- FALL_DEAD animation, reconfigure the nymph's physics, stop its flying, record its height above the ground, then the base Initialise
 // Leaf: ?Initialise@CCreatureAction_NymphGetHitDie@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CA4A0, 251 bytes (256 with padding), virtual Initialise.
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("FALL_DEAD" 0x012821F8), CCombatActionBase::SetCombatAnimation
@@ -13,10 +14,7 @@
 // Shape: the animation name is a named local in its own block; the three physics calls each re-fetch the creature; the
 //   physics component comes through the inline GetPhysics accessor (straight into ecx; the direct member read goes
 //   through eax); the position is copied by value into the frame (three integer moves) and HeightOnInit = Z - ground height (`fsubr`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;

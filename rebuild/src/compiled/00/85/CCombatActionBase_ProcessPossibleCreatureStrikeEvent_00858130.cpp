@@ -1,5 +1,6 @@
 // CCombatActionBase::ProcessPossibleCreatureStrikeEvent(float, const std::pair<C3DVector,C3DVector>&, const std::pair<C3DVector,C3DVector>&, CThingGameObject&) -- a creature not yet struck this event is tested against the two triangles of the swept blade quad; on a hit it joins the strike event's struck list, may trigger the action-on-strike, gets melee hit parameters along the normalised sweep of the blade's second end and takes the hit, then the hit pause and on-hit frames run and both hit flags are set
 // Leaf: ?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00858130, 718 bytes (720 with padding); `ret 10h`.
 // Model: the landed sibling CCombatActionBase::ProcessPossibleProneThingsStrikeEvent 0x00858400 plus CHitParameters /
@@ -14,10 +15,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (CRT import thunk)
 class CTCBase;
 namespace NHitLocations { class CHitLocation; }
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class A, class B> struct pair { A first; B second; };
 }

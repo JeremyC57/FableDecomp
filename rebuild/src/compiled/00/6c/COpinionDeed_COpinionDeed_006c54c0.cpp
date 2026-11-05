@@ -1,5 +1,6 @@
 // COpinionDeed::COpinionDeed(EOpinionDeedType, long handle, const C3DVector& position, const CThing* target, bool happening, bool isCrime, long extraData) -- record a deed: type, handle, where, the world frame it happened on, the target, the witness/happening flags (both from one argument), not yet reported, crime flag and extra data
 // Leaf: ??0COpinionDeed
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C54C0, length 109 bytes.
 // Callees: GetWorldFrame @ 0x0049D870 (returns the global @ 0x013B89BC; manifest "GFGetPreMainMemoryUsed" is wrong),
 //          CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CBaseIntelligentPointer::SetPItem @ 0x00A01B90.
@@ -28,10 +29,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CWorld { public: static long __fastcall GetFrame(); };                     // 0x0049D870
 

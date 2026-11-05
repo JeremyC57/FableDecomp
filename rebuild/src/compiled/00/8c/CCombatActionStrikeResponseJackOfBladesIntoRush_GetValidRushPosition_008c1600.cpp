@@ -1,5 +1,6 @@
 // CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DVector*) -- gather the valid positions within the battle def's rush-away distance (+2) of Jack, drop those closer than the rush-away distance to Jack and those within 21 of the boss phase start position, then try random candidates until one Jack can navigate to (copied to *out); returns whether one was found
 // Leaf: ?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C1600, 761 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), GetSubDef<CJackOfBladesBattleDef> 0x008C33E0 (same-TU
 //   stand-in), CVectorMap::LowerBound 0x0040F020 (same-TU stand-in), CCreatureActionBase::GetPWorld 0x00692940, CWorld virtual
@@ -17,12 +18,7 @@
 //   plain expression form; `while (!found && size)` with if/else (no break) keeps retail's top-tested loop and the
 //   `mov bl,1` / `mov bl,[found]` exits.
 #include <stdlib.h>
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 namespace std {
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 #pragma auto_inline(off)

@@ -1,5 +1,6 @@
 // IsAwareOfThingImplementation(const CThingAICreature* creature, const CThing* thing, bool check_line_of_sight, bool (CTCPerceiveThing::*is_aware)() const) -- true when the creature perceives the thing through the given perception predicate, or the thing is in its field of view and sight radius (and, if asked, in navigation line of sight)
 // Leaf: ?IsAwareOfThingImplementation@
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00864250, 336 bytes incl. int3 padding, /Gr `__fastcall` (creature in ecx,
 //   thing in edx, the bool and the 4-byte member-function pointer on the stack), `ret 8`.
@@ -22,10 +23,7 @@
 class CBaseObject;
 class CTCBase;
 
-class C3DVector {
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

@@ -1,5 +1,6 @@
 // NShape::GetFirstPointThatBreaksConvexity(std::vector<C3DVector>& shape) -- walk the shape's consecutive point triples and return the middle point of the first triple whose turn is not between the direction back to the first point and the incoming edge; end() when the whole outline is convex
 // Leaf: ?GetFirstPointThatBreaksConvexity@NShape@@YI
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00760760, length 271 bytes (__fastcall: shape in ecx; returns the iterator
 //   (a C3DVector pointer in STLport) in eax; plain `ret`).
 // Identity: Ego_r.pdb / FableWin.pdb ?GetFirstPointThatBreaksConvexity@NShape@@YI?AV?$_Vector_iterator@...@std@@AAV?$vector@
@@ -10,13 +11,7 @@
 //   p1 = it[1]; p2 = it[2]; toFirst = first - p1; inEdge = p1 - p0; outEdge = p2 - p1; (named, in this order)
 //   if (!IsVectorBetween2OthersInThePlane(toFirst, inEdge, outEdge)) return it + 1; }
 //   return shape.end();`
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 

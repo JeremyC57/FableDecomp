@@ -1,5 +1,6 @@
 // CModeStandBase::UpdateWalkingAnim(CAnimateThing& anim) -- choose and blend the movement animation pair for the creature's planar speed: keep the movement-update counter (2 while moving, else count down), then blend run->sprint when the hero special-movement component is sprinting past running speed, else jog->run / walk->jog / stand->walk (walk->run / stand->walk without a jog animation) by the speed band, with the existing-anim status picked from the main anim's type
 // Leaf: ?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00862AA0, 1056 bytes incl. the two 4-entry status jump tables at 0x00862EA0 / 0x00862EB0,
 //   `ret 4`. Ego_r.pdb: ?UpdateWalkingAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z (private); caller AnimUpdate 0x00862EC0 (landed).
@@ -26,13 +27,7 @@
 #include <math.h>
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 class CTCPhysicsBase {
 public:

@@ -1,5 +1,6 @@
 // CLocalDetailPrimitiveMeshZSpriteBatch::CLocalDetailPrimitiveMeshZSpriteBatch(const CLocalDetailObjectCollectionType* type, CLocalDetailCacheMap* map) -- the local-detail primitive base, this class's vtable, an empty z-sprite primitive handle, then the object and z-sprite arrays and the mesh-handle flag cleared
 // Leaf: ??0CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@PBVCLocalDetailObjectCollectionType@@PAVCLocalDetailCacheMap@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BFAC70, 78 bytes, thiscall, `ret 8`, returns this.
 // Identity (proven): stores vtable 0x012A82D8 (RTTI .?AVCLocalDetailPrimitiveMeshZSpriteBatch@@, slot 0 = ??_G 0x00BFBD80);
 //   Ego_r.pdb ??0CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@PBVCLocalDetailObjectCollectionType@@PAVCLocalDetailCacheMap@@@Z
@@ -23,12 +24,7 @@ public:
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
 };
 
-class C3DVector {
-public:
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox {
 public:
     C3DVector Min, Max;

@@ -1,6 +1,7 @@
 // 00bde080 CLocalDetailCacheMap::CQuadTreeElement::ValidationTest
 // Flags:
 // Leaf: ?ValidationTest@CQuadTreeElement@CLocalDetailCacheMap@@QAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define CLocalDetailCacheMap Pass9LocalDetailMapStorage
 #include "engine/CLocalDetailCacheMap.h"
 #undef CLocalDetailCacheMap
@@ -17,9 +18,7 @@ class CMovableResource {public:
  virtual unsigned long Verify()const;
 };
 #pragma pack(push,1)
-class C3DVector {public:float X,Y,Z;
- __forceinline C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class C3DBoundingSphere {public:C3DVector Center;float Radius;
  __forceinline C3DBoundingSphere():Center(0.0f,0.0f,0.0f),Radius(0.0f){}

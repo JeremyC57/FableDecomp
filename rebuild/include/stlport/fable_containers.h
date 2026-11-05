@@ -510,6 +510,9 @@ template<size_t _Nw> struct _Base_bitset {
     static size_t _S_whichbit(size_t n) { return n%(8*sizeof(_WordT)); }
     static _WordT _S_maskbit(size_t n) { return _WordT(1)<<_S_whichbit(n); }
     _WordT _M_getword(size_t n) const { return _M_w[_S_whichword(n)]; }
+#ifdef FABLE_RETAIL_STLP_BITSET_INDEX
+    _WordT& _M_getword(size_t n) { return _M_w[_S_whichword(n)]; }
+#endif
 };
 inline void __cdecl __stl_throw_out_of_range(const char* message) { puts(message); abort(); }
 template<size_t _Nb> class bitset : public _Base_bitset<(_Nb+8*sizeof(unsigned long)-1)/(8*sizeof(unsigned long))> {
@@ -522,6 +525,29 @@ public:
     bool test(size_t n) const;
 #else
     bool test(size_t n) const { if(n>=_Nb) __stl_throw_out_of_range("bitset"); return _Unchecked_test(n); }
+#endif
+#ifdef FABLE_RETAIL_STLP_BITSET_INDEX
+    // Per-TU opt-in (plan phase 4, 2026-11-05): STLport 4.6 _bitset.h bitset<_Nb>::reference and operator[]. Retail expands the
+    // indexed bit test inline as a word test on the bitset, with no call: 0x0062D032 `test dword ptr [ebx+0x24],0x10000`
+    // (CWorld::EACreatureBlock, CThing::UsingComponents +0x20 bit 0x30) and 0x0044BFA1 `mov al,byte ptr [ecx+0x38]; test al,al;
+    // jns` (bit 0xC7). The rows that index the bitset define the macro; the non-const operator[] goes through the reference
+    // proxy (operator bool), the const one through _Unchecked_test, as in STLport.
+    struct reference {
+        typedef _Base_bitset<(_Nb+8*sizeof(unsigned long)-1)/(8*sizeof(unsigned long))> _Bitset_base;
+        typedef bitset<_Nb> _Bitset;
+        unsigned long* _M_wp;
+        size_t _M_bpos;
+        reference() {}
+        reference(_Bitset& b,size_t pos) { _M_wp=&b._M_getword(pos); _M_bpos=_Bitset_base::_S_whichbit(pos); }
+        ~reference() {}
+        reference& operator=(bool x) { if(x) *_M_wp|=_Bitset_base::_S_maskbit(_M_bpos); else *_M_wp&=~_Bitset_base::_S_maskbit(_M_bpos); return *this; }
+        reference& operator=(const reference& j) { if((*(j._M_wp)&_Bitset_base::_S_maskbit(j._M_bpos))) *_M_wp|=_Bitset_base::_S_maskbit(_M_bpos); else *_M_wp&=~_Bitset_base::_S_maskbit(_M_bpos); return *this; }
+        bool operator~() const { return (*(_M_wp)&_Bitset_base::_S_maskbit(_M_bpos))==0; }
+        operator bool() const { return (*(_M_wp)&_Bitset_base::_S_maskbit(_M_bpos))!=0; }
+        reference& flip() { *_M_wp^=_Bitset_base::_S_maskbit(_M_bpos); return *this; }
+    };
+    reference operator[](size_t pos) { return reference(*this,pos); }
+    bool operator[](size_t pos) const { return _Unchecked_test(pos); }
 #endif
 };
 // _function_base.h / _algo.h

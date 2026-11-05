@@ -1,5 +1,6 @@
 // CVillageTaskSecuritySweep::IsCreatureMoreAppropriateForTask(const CThing& creature) -- true when the candidate creature is more than 1.25x nearer to the sweep point than the creature currently assigned (squared distances: candidate * 1.5625 < assigned)
 // Leaf: IsCreatureMoreAppropriateForTask
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00860ED0, 205 bytes (padded to 208), `ret 4`.
 //   PDB name ?IsCreatureMoreAppropriateForTask@CVillageTaskSecuritySweep@@QBE_NABVCThing@@@Z.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (CreatureAssignedToTask +0x08), CThing::GetPos 0x004C73D0
@@ -10,20 +11,7 @@
 //   `<` is evaluated first (left operand), as in the IsBetterThan twin 0x00860430.
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator-(const C3DVector& o) const
-    {
-        C3DVector r;
-        r.X = X - o.X;
-        r.Y = Y - o.Y;
-        r.Z = Z - o.Z;
-        return r;
-    }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CThing : public CBaseObject { public:
     const C3DVector& GetPos() const;          // 0x004C73D0
 };
@@ -54,5 +42,5 @@ bool CVillageTaskSecuritySweep::IsCreatureMoreAppropriateForTask(const CThing& c
     C3DVector position = creature.GetPos();
     C3DVector assignedDelta = PositionToGoTo - assigned;
     C3DVector creatureDelta = PositionToGoTo - position;
-    return creatureDelta.GetLengthSquared() * 1.5625f < assignedDelta.GetLengthSquared();
+    return creatureDelta.GetSquaredMagnitude() * 1.5625f < assignedDelta.GetSquaredMagnitude();
 }

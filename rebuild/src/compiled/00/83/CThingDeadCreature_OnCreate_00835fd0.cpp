@@ -1,5 +1,6 @@
 // 00835fd0 CThingDeadCreature::OnCreate
 // Leaf: ?OnCreate@CThingDeadCreature@@MAE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 #include "engine/CCountedPointer.h"
@@ -19,7 +20,7 @@
 #undef CThingGameObject
 class CCharString;class C3DVector;class C2DVector;class CThing;class CThingPhysical;class CThingCreatureBase;class CThingAICreature;class CThingPlayerCreature;class CThingBuilding;class CTCBase;class CMaterialDef;class CEnvironment;class CEngineGraphic;class CInventoryItem;class CThingDef;class CThingProperties;class CInterpolationInfo;class CEnginePrimitivePrepareInfo;class CPhysicsObject;class CTCParamsBase;class CThingLevelScript;class CThingGameState;class CPhysicsObjectDamage;class CCollisionInfo;class CThingDrawInfo;class CThingDebugDrawInfo;class CThingPhysicalProperties;class CSoundPair;class CAnimationEntry;
 template<class T>class CDefPointer;template<class T>class CArray;namespace std{template<class T>class allocator;template<class T,class A>class vector;}
-class C3DVector;
+#include "engine/C3DVector.h"
 class CCharString;
 class CCreatureAbilityDef;
 class CEditEngineDrawInfo;
@@ -39,7 +40,6 @@ class CThingInfo;
 class CThingPhysical;
 class CThingPhysicalDebugInfo;
 enum ECollideType{};
-class C3DVector{public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}};
 // Layout: native CClass17-byte flattened header, rounded20 when used as a polymorphic base.
 class CClass:public CBaseObject{public:virtual void Save(CCharString&);private:unsigned char _pad_class[sizeof(CClassFields)-sizeof(CBaseObject)];};
 class CThing:public CClass{public:class CSerialiseInfo;

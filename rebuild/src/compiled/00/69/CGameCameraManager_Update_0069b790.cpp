@@ -1,4 +1,5 @@
 // CGameCameraManager::Update() -- update camera state for a live observed thing, retaining current view on a single cut
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0069B790 184bytes. Actual donor manager header retained; native CTools shrinks4, lists shrink4 each.
 #define CGameCameraManager CGameCameraManagerDonor
 #include "engine/CGameCameraManager.h"
@@ -12,7 +13,7 @@ class CBaseIntelligentPointer { public:
     CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
 };
 struct CObservedThingPointer {void* VTable;void* PointerInfo;}; //00A01B50
-class C3DVector { public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:C3DVector Up,Forward;};
 class CCamera { public:C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;unsigned int FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
 struct CCameraTools {unsigned char NativeTools[0x20];void FrameUpdate();}; //00877D20

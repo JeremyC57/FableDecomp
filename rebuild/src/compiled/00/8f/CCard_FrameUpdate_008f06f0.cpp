@@ -1,5 +1,6 @@
 // CCard::FrameUpdate(const C3DVector& position, const CRightHandedSet& orientation) -- advance a tavern-game card one frame along its move (lerp LocalPos to NewLocalPos) and its turn (lerp the rotation, lift and tilt the card), then place its mesh on the table
 // Leaf: ?FrameUpdate@CCard@@QAEXABVC3DVector@@ABVCRightHandedSet@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F06F0, length 553 bytes (ret 8). Name: Ego_r.pdb CCard::FrameUpdate; the
@@ -21,15 +22,7 @@
 // cos/sin are the /Oi intrinsics (fcos/fsin).
 class CThingObject;
 #pragma pack(push, 1)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {
 public:
     C3DVector Up;                             // +0x00

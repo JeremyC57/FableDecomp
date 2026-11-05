@@ -1,4 +1,5 @@
 // CWorldMap::ChangeMapPlacementValuesTo(long, long) -- rewrites every map-placement cell holding one map number to another
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail 0x004FCAC0, 0x64 bytes (CWorldMap.cpp TU), no callees. Walks the MapPlacement grid (vector<unsigned short>,
 // begin at retail +0x6C) row by row: rows = Area.BRY / Granularity (+0x68 / +0x50), columns = Area.BRX / Granularity
 // (+0x64), row stride MapPlacementPitch (+0x58). Both bounds are re-divided every iteration (members may alias
@@ -8,20 +9,8 @@
 // sits 4/8/12.. bytes lower in retail: Maps +0x20 (PDB +0x24), Granularity +0x50 (PDB +0x60),
 // MapPlacementPitch +0x58 (PDB +0x68), Area +0x5C..+0x68 (PDB +0x6C..+0x78), MapPlacement +0x6C
 // (PDB +0x7C), PlayerPositionInfo +0x78 (PDB +0x8C), LoadedMaps +0x90 (PDB +0xAC)).
-class C3DVector
-{ public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
-class C2DCoordI
-{ public:
-    long x;
-    long y;
-    C2DCoordI() {}
-    C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
-};
 
 class C2DBoxI
 { public:

@@ -1,0 +1,6 @@
+  WARN leaf '??R' matches no symbol in x.obj; graded the largest function
+gate: 177 rows {'PASS': 177} in 15.2s (0.09s/row wall, NJ=4)
+gate: 177 PASS of 177
+vland:
+     13 MATCH PASS
+    164 RELOCATION_MATCH PASS

@@ -1,17 +1,13 @@
 // CView3DBase::UpdateCameraMovementInfo(const CCamera& camera) -- shift the current camera into LastCam, store the new one; after the first few updates record the frame's movement vector (last - current) and mark it valid, otherwise count the update
 // Leaf: ?UpdateCameraMovementInfo@CView3DBase@@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069E870, length 123 bytes (padded to 128), `ret 4`.
 // Callees: none (two `rep movsd` 14-dword CCamera copies).
 // Layout (PDB, matches retail): CView3DBase vptr +0, PEngine +4, Window C2DBoxF +8, CameraMovementInfo +0x18:
 // NoUpdates +0x18, MovementVectorValid +0x1c, CurrentCam +0x20, LastCam +0x58 (CCamera, 56 bytes), MovementVector +0x90.
 // Shape: the difference is a C3DVector temporary built by the 3-float ctor (no user copy ctor) and copied into the member
 // through integer registers.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
     C3DVector Forward;                             // +0x0c

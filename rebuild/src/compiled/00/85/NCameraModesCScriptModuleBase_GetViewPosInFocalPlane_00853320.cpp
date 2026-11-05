@@ -8,22 +8,13 @@
 //   copy or member references give other spills); the vector operators are __forceinline (left to the compiler they are
 //   emitted out of line here).
 // Leaf: GetViewPosInFocalPlane
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 #include <math.h>
 #pragma intrinsic(fabs)
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    __forceinline C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    __forceinline C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    C3DVector& AccurateNormalise();                                // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
     return C3DVector(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
@@ -70,7 +61,7 @@ C3DVector CScriptModuleBase::GetViewPosInFocalPlane(const C3DVector& pos, const 
         C3DVector forward = CoordAxis.Forward;
         C3DVector up = CoordAxis.Up;
         C3DVector normal = CrossProduct(forward, up);
-        if (normal.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
+        if (normal.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
             normal.AccurateNormalise();
             float denominator = DotProduct(normal, dir);
             if (fabs(denominator) > DELTA_NOTIONAL_ZERO) {

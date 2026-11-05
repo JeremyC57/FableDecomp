@@ -1,6 +1,7 @@
 // NCreatureMode::CModeDragonFlying::CModeDragonFlying(CThing*) -- CModeDragonFlyingBase(thing) (spline zeroed, tension 0.5), own vtable, the "FLYING" filter, a null end-action pointer
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the spline's CArray modelled with the STLport alloc-proxy end-of-storage member: the `push -1` of the filter name lands after the three zero stores as in retail
 // Leaf: ??0CModeDragonFlying
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007437C0 (`ret 4`). Vtable 0x0126868C = NCreatureMode::CModeDragonFlying (rtti-vtables.tsv).
 // Callees: CModeBase::CModeBase(CThing*) @ 0x0073EAC0, CCharString @ 0x0099EBF0 / 0x0099E4B0 / operator= 0x0099EFB0 /
@@ -62,7 +63,7 @@ struct CModeBase {                         // CTCCreatureModeManager::CModeBase,
     CModeBase(CThing* thing);              // 0x0073EAC0
 };
 
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 
 template <class T> struct CArrayAllocProxy {   // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own constructor
     T* p;

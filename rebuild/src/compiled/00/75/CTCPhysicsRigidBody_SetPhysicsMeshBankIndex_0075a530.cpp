@@ -1,6 +1,7 @@
 // CTCPhysicsRigidBody::SetPhysicsMeshBankIndex(long index) -- (re)fill the physics mesh info from the bank's physics mesh: the render scale, the bounding-box centre rotated into the body's orientation and scaled, the bounding sphere and circle radii, then the XY offset from the mesh info's centre and the radius; finally re-place the thing in its mapwho if it is in one
 // Grade: RELOCATION_MATCH under /EHsc (retry wave 2 sec2: the lander's flag sweep; at plain /O2 the BoundingRadius product loaded the mesh radius first, 611v611). Respelled: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound (bound 0x0040F020), the PDB class keys (class, not struct), CTCBase::PeekWorld / CTCPhysicsBase::CalculateRadius / GetMapwhoPosition on their own classes, the protected virtual leaf (Ego_r MAE), CMeshDataBank::PeekPhysicsMeshInfo and NGraphicAppearance::CTCGraphicAppearance::GetScale (both PDBs; the bound GetWorld / CMeshBank::GetPhysicsMeshInfo / CTCGraphicAppearance::GetScale spellings were wrong, NAME_FIXES.tsv), CIVCountedPointer<const CPhysicsMesh> (Ego_r GetMesh). GetMatrixFromRHSet 0x00A358F0 keeps its descriptive name (no PDB entry).
 // Leaf: SetPhysicsMeshBankIndex
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0075A530, 610 bytes, `ret 4`.
 // Callees: operator new 0x00BFEA1A, CTCBase::PeekWorld 0x00686A80, NGraphicAppearance::CTCGraphicAppearance::GetScale 0x004BBFF0,
@@ -12,16 +13,7 @@
 //   (C2DVector); retail CPhysicsMesh = PDB - 0x1c (bounding sphere radius +0x80, bounding box +0x84, circle radius +0xa4).
 //   Same shape as the sibling CTCPhysicsStandard::SetPhysicsMeshBankIndex 0x00724630.
 extern void operator delete(void* p);
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
-    void Clear() { X = Y = Z = 0.0f; }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector Min;
     C3DVector Max;

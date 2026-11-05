@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<KnickKnack >) STLport growth insert for a 16-byte element with a user (memberwise) copy constructor: allocate size + max(size, fill_len) elements, copy the head out of line, construct x once (or fill out of line fill_len times), copy the tail unless atend, free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@UKnickKnack@@V?$allocator@UKnickKnack@@@std@@@std@@IAEXPAUKnickKnack@@ABU3@ABU__false_type@2@I_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D9C90, 209 bytes (+ int3 padding to 224), thiscall, `ret 14h` (five arguments).
 // Identity (proven): std::vector<KnickKnack >::_M_insert_overflow; evidence: its callers are the fill insert 0x007D9D70 (vector<KnickKnack>::_M_fill_insert, the callee of the landed vector<KnickKnack>::resize(n) 0x007D9FC0 on CTCTavernGameSpotTheAddition::KnickKnacks; it shares this function's __uninitialized_copy 0x007D98C0) and the push_back 0x007D9F10.
 // Label: the manifest's "std_vector_AllocateAndCopy" is propagated / behavioural (family H043: six byte-identical bodies, each its own
@@ -15,13 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 class CThingObject;
-class C3DVector {                                          // Ego_r.pdb, 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // PDB ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 struct KnickKnack {                                        // Ego_r.pdb struct, 16 bytes
     C3DVector    Pos;                                      // +0x0
     CThingObject* Thing;                                   // +0xC

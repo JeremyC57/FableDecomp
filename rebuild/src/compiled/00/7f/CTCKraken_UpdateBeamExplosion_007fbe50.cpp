@@ -1,4 +1,5 @@
 // CTCKraken::UpdateBeamExplosion() -- while the target and the beam effect live and the kraken's beam-explosion interval has passed, spawns KRAKEN_BEAM_EXPLOSION along the beam from the mouth dummy (or the effect's own facing) and, when the beam has no line of sight to its end, a BEAM_HIT effect at the hit point
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FBE50, 955 bytes (+ int3 padding), plain `ret`, speed TU (no pragmas, no frame pointer).
 // Callees: CWorld::GetFrame 0x0049D870, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0,
 //   CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CTCGraphicAppearance::GetDummyObject 0x004C08C0, physics slot 70 (+0x118)
@@ -16,14 +17,7 @@
 //   first, +4 bytes); the physics body and the graphic appearance go through inline CThing accessors (a direct member chain
 //   loads them into eax / after the pushes); the beam direction * length product is written twice (the Create end argument
 //   and the line-of-sight end) and VC keeps it in the frame; the driver is the uninitialised GetTCDriver out-pointer.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public:
     void* PStringData;

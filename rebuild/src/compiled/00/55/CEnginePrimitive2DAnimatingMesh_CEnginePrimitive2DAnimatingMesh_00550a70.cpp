@@ -1,5 +1,6 @@
 // CEnginePrimitive2DAnimatingMesh::CEnginePrimitive2DAnimatingMesh(unsigned __int64, unsigned long, const C3DAnimationBlendState&, const C2DBoxF&, const C3DBoundingSphere&, const C3DOrientationInterpolator&, EEngineInterpolationSet, unsigned char, CRGBColour) -- construct a 2D animating-mesh descriptor: primitive type 0x25, mesh index, clip box, alpha, orientation, an animation interpolator holding the given blend state at both ends, bounding sphere and tint
 // Leaf: ??0CEnginePrimitive2DAnimatingMesh
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00550A70, length 272 bytes (`ret 28h`: the unused 64-bit id + 8 arguments).
 // Label correction: the manifest calls this "CEnginePrimitiveAnimation::CEnginePrimitiveAnimation" (4 parameters); the stores
 // match the PDB CEnginePrimitive2DAnimatingMesh (0x80 bytes) exactly: ClipBox +0x0c, MeshIndex +0x1c, Alpha +0x20,
@@ -11,7 +12,7 @@
 // one blend state (`StartState(s), EndState(s)`, each an add-ref'ing copy of the counted animation pointer) after its
 // out-of-line CBaseClass constructor; the orientation copy needs no base call (the base copy is implicit).
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X,Y,Z; C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} C3DVector(float x,float y,float z):X(x),Y(y),Z(z){} };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up,Forward; CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} };
 class C3DOrientationInterpolator : public CBaseClass { public:   // vtable 0x01239824
     CRightHandedSet StartOrientation,EndOrientation;

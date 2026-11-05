@@ -1,5 +1,6 @@
 // NParticleEngine::CParticle::GetRecordedPos(float time, float offset) const -- position along the particle's 4-entry recorded-position buffer at time - offset (+1), interpolated linearly between the two bracketing entries
 // Leaf: ?GetRecordedPos@CParticle@NParticleEngine@@QBE?AVC3DVector@@MM@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AFE380, length 178 bytes, thiscall `ret 0Ch` (hidden result pointer,
 //   time, offset), ebp frame.
 // Signature from FableWin.pdb: ?GetRecordedPos@CParticle@NParticleEngine@@QBE?AVC3DVector@@MM@Z. No direct caller in
@@ -13,15 +14,7 @@
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 #pragma optimize("y", off)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 
 // the engine's inline-assembly FPU ceiling helper (0x004FA9A0 is its standalone copy): VC7.1 expands the __forceinline body in
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.

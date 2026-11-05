@@ -1,5 +1,6 @@
 // CCreatureAction_ScreamerDie::Initialise() -- clear the creature's interface-9 component flag, animation ST_DIE; create the creature's SCREAMER_DEATH special effect at its position, keep it in PDieEffect and attach it to the creature's DUMMY_CENTRE through its particle emitter; then the base Initialise (the sub-def is released last)
 // Leaf: ?Initialise@CCreatureAction_ScreamerDie@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B8D30, 499 bytes (512 with padding), virtual Initialise.
 // Callees: as CCreatureAction_BanditKingStuckGetHit::Initialise (0x008C87A0): CCharString ctor/dtor 0x0099EBF0/0x0099EAE0,
@@ -12,7 +13,7 @@
 // Layout (retail, local model): CCombatActionBase is 0x114 bytes (PCreature +0x08); PDieEffect +0x114 (PDB +0x12C);
 //   the interface-9 component's flag byte +0x10.
 // Shape: the sibling 0x008C87A0 model (block-scoped effect id, implicit string conversions, named-item operator=).
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CThing;
 

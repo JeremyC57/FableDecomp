@@ -1,5 +1,6 @@
 // NCreatureMode::CModeCreatureIsProjectile::Recover() -- the thrown creature lands: resume its animation and physics if it was in state 1, make it play the knockdown-recover combat action, then remove this projectile mode (0x39)
 // Leaf: Recover
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E08C0, 203 bytes (`ret`).
 // Callees: CThingAICreature::SuspendAI(bool, long) 0x00833A10; the creature's physics object (+0x60) virtual slots 40
@@ -85,7 +86,7 @@ class CCombatAction_GenericStrikeResponseKnockdownRecover : public CCombatAction
     }
 };
 
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();

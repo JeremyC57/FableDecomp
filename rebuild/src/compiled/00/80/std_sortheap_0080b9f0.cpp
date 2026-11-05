@@ -1,6 +1,7 @@
 // std::sort_heap(NPlayerTargeting::CTargetPoint* first, NPlayerTargeting::CTargetPoint* last, CThingCompare_BestForTargeting2 comp) -- order a heap of target points by repeatedly popping the best to the back
 // Flags: /Gr
 // Leaf: sort_heap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0080B9F0, 191 bytes of code (/O2). Callee: STLport __pop_heap_aux<CTargetPoint*,
 // CTargetPoint,CThingCompare_BestForTargeting2> 0x0080B430 (`__fastcall`: first ecx, last edx, the null
 // value-type pointer then the 52-byte comparator on the stack, `ret 38h`).
@@ -16,10 +17,7 @@
 // (Dinkumware) spelling; retail is STLport sort_heap.
 namespace N0080b9f0 {
 struct CThing;
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                      // +0x04

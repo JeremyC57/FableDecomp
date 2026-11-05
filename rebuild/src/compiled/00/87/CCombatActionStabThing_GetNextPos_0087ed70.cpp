@@ -1,4 +1,5 @@
 // CCombatAction_StabThing::GetNextPos()const -- use stealth approach position on first frame and face target, otherwise retain current position.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native0087ED70,244 bytes; component54 CTCStealth, actual PDB GetPositionToMoveToForStabOn(CThing&,float&)const at donor759570 -> native746EC0.
 #include "fable_string.h"
 #define CCreatureActionBase CCreatureActionBase_PDB
@@ -20,7 +21,7 @@
 #ifndef _MSC_VER
 #define __forceinline inline __attribute__((always_inline))
 #endif
-class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& other):X(other.X),Y(other.Y),Z(other.Z){}};
+#include "engine/C3DVector.h"
 struct Creature;struct PhysicsView;
 #pragma pointers_to_members(full_generality,single_inheritance)
 union PhysicsSlot {void* Address;void(PhysicsView::*SetFacingAngleXY)(float);};

@@ -1,5 +1,6 @@
 // std::__unguarded_partition(SNamedPosition* first, SNamedPosition* last, SNamedPosition pivot, CKeyPairCompareLess comp) -- STLport quicksort partition of 16-byte (CCharString, C3DVector) pairs around a by-value pivot (ordered by name); returns the cut
 // Leaf: __unguarded_partition
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077E8F0, 110 bytes (+ int3 padding to 112), `ret 14h` (__fastcall /Gr
 //   algorithm TU: first in ecx -> edi, last in edx -> ebx, the 16-byte by-value pivot and the empty comparator on the
 //   stack; the callee destroys its by-value pivot's string at the end).
@@ -57,10 +58,7 @@ class CCharString { public:
     }
 };
 
-class C3DVector { public:                                         // floats, moved as dwords
-    unsigned long X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 template <class T1, class T2> struct pair {                // STLport pair
     T1 first;

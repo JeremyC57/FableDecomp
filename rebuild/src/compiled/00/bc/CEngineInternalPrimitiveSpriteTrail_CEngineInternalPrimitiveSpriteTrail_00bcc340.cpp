@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveSpriteTrail::~CEngineInternalPrimitiveSpriteTrail() -- Release owned sequence storage and destroy the base.
 // Leaf: ??1CEngineInternalPrimitiveSpriteTrail@@UAE@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own deleting-dtor00bcc320 and full RTTI12a6a4c; actual inherited hierarchy and original Trail+104; base vtable12354d0.
 #define CIVCountedPointeeBase CIVCountedPointeeBase_HeaderLayout
@@ -24,7 +25,7 @@ class CEngineInternalPrimitiveBase:public CEnginePersistentPrimitiveBase {public
 unsigned long EnginePrimitiveFlags;float AlphaMipBias;struct CEngineFadeDistance{float FadeBeginDistance,MaxDrawDistance;} FadeDistance;unsigned long OcclusionLayerBitMask;CEngineSceneGridCell* GridCell;
 struct CEngineSceneGridPos{signed char Level;unsigned char X,Y;} GridPos;unsigned char Alpha,AlphaRef,PreloadStat;unsigned short Pad;int InterpolationSet;unsigned long RenderLayerMask;unsigned short StateFlags,LastFrameRendered;CEngineInternalPrimitiveBase* NextPrimitive;CEngineInternalPrimitiveBase** RefPrimitive;CEngineInternalPrimitiveBase* NextLayerMask;CEngineInternalPrimitiveBase** RefLayerMask;
 };
-class C3DVector {public:float X,Y,Z;};
+#include "engine/C3DVector.h"
 class CEngineInternalPrimitiveSpriteTrail:public CEngineInternalPrimitiveBase {public:class CSpriteTrailEntry {public:C3DVector Position;float Width;};unsigned long MaxLength,GraphicIndex,GraphicFrame;float SkipPoints,Width;unsigned int HeadColour,MidColour,TailColour;CArray<CSpriteTrailEntry> Trail;long NextPos;unsigned short Flags;int BlendOp,BlendMode;float WorldMat[12];};
 
 

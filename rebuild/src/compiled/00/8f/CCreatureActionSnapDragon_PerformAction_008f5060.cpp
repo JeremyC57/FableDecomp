@@ -2,17 +2,12 @@
 // an obstruction (radius 1.5) whose driver gets 1.5 and ignores the dragon; then create THING_EXPLOSION_JACK_DRAGON_BITE
 // 2.5 units behind the mouth along the dragon's facing, looking at the dragon, and make the dragon its owner
 // Leaf: ?PerformAction@CCreatureAction_SnapDragon
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Layout: CThing interface bitset +0x20, PTCDriver +0x5c (the cached driver component), physics +0x60, graphic appearance
 //   +0x64; the 0xED driver's ignore list (vector<CIntelligentPointer<CThing>>) at +0x2c.
 // Shape: the dummy lookup goes through an inline CThing wrapper (so the name temporary and GetPItem run before the six
 //   pushes); operator* / operator- are the constructor forms.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CCharString { public:
     void* PStringData;

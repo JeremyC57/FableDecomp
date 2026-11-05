@@ -1,4 +1,5 @@
 // CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update() -- with a living enemy: register as its combatant, refresh perception, strafe when in combat mode, signal ready-to-attack and mark the creature ready; then while the enemy lives, the group neither stops nor stops being runnable and the creature stays a combatant, post a look-at-enemy brain output and yield; finally clear the ready-to-attack mark and terminate
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E2D0, length 654 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
@@ -89,7 +90,7 @@ struct CCountedPointer_CCreatureActionBase {    // {object, count block}
         m_pObject = object;
     }
 };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CNavigationInput { public:                       // 24 bytes (Ego_r.pdb): Destination is left to the caller
     C3DVector Destination;                      // +0x00
     float Proximity;                            // +0x0c (float zero stores are immediates, the long uses the zero register)

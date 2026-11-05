@@ -1,5 +1,6 @@
 // CAIStateGroup_TellStory::IsRunnable() -- a villager with a workplace (and a village) tells a story when the workplace's material is a story building (def flag bit 2), the workplace's own village says it is cook time, and a "STORY_PLACE_MARKER" thing exists (nearest one searched)
 // Leaf: ?IsRunnable@CAIStateGroup_TellStory
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00942D40, length 416 bytes (plain `ret`, virtual slot 11).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the creature's +0x170 workplace pointer), CVectorMap::LowerBound
@@ -29,7 +30,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;            // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
     unsigned char _pad0[0x20];
@@ -228,7 +229,6 @@ private: public:
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-class C3DVector { public: float x, y, z; };
 class C2DVector { public:
     float x, y;
     float GetLengthSquared() const { return x * x + y * y; }
@@ -293,7 +293,7 @@ long BestSink_9107B0(const void* self, long index, float x);
 #pragma auto_inline(off)
 __declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out) const
 {
-    long best = BestSink_9107B0(this, filter.DefGlobalIndex, compare.Pos.x);
+    long best = BestSink_9107B0(this, filter.DefGlobalIndex, compare.Pos.X);
     *out = (CThing*)best;
     return best != 0;
 }

@@ -1,6 +1,7 @@
 // CPhysicsMesh::GetSphereIntersectionFromTo(float radius, const C3DVector& from, const C3DVector& to, CMeshIntersectionData& data) -- swept-sphere query: a tiny radius degenerates to the point query; otherwise, when the swept box touches the mesh bounds, use the segmentation tree (if enabled and built) or the full collision test
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A187C0, length 143 bytes.
 // Leaf: GetSphereIntersectionFromTo
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Callees: CPhysicsMesh::GetPointIntersectionFromTo @ 0x00A18760, HasBoundingBoxIntersectedFromTo @ 0x00A17690,
 // GetSphereIntersectionFromToUsingSegmentation @ 0x00A17AF0, GetSphereIntersectionFromToUsingFullCollision @ 0x00A182C0.
 // Global: the use-segmentation switch byte @ 0x013984D0. Constant: 0.01f @ 0x01230A5C.
@@ -10,14 +11,7 @@
 // returns its result); the result byte is zeroed in bl before the box test and receives either query's al; `ret 10h`.
 // `this` stays in edx across the box test because its body (and the point query's) is compiled above this function
 // in the same TU and never touches edx (VC7.1 callee register-usage knowledge).
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() {}
-    C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(x + v.x, y + v.y, z + v.z); }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(x - v.x, y - v.y, z - v.z); }
-    C3DVector operator*(float f) const { return C3DVector(x * f, y * f, z * f); }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector MinCoord, MaxCoord;
     C3DVector GetCentre() const { return (MinCoord + MaxCoord) * 0.5f; }
@@ -55,12 +49,12 @@ __declspec(noinline) bool CPhysicsMesh::HasBoundingBoxIntersectedFromTo(float to
     C3DVector centre = BoundingBox.GetCentre();
     C3DVector half = (BoundingBox.MaxCoord - BoundingBox.MinCoord) * 0.5f;
     C3DVector delta = to - from;
-    float dx = (float)fabs(delta.x) + 50.0f;
-    float dy = (float)fabs(delta.y) + 50.0f;
-    if (from.x - tolerance - dx < centre.x + half.x &&
-        from.y - tolerance - dy < centre.y + half.y &&
-        dx + from.x + tolerance > centre.x - half.x &&
-        dy + from.y + tolerance > centre.y - half.y)
+    float dx = (float)fabs(delta.X) + 50.0f;
+    float dy = (float)fabs(delta.Y) + 50.0f;
+    if (from.X - tolerance - dx < centre.X + half.X &&
+        from.Y - tolerance - dy < centre.Y + half.Y &&
+        dx + from.X + tolerance > centre.X - half.X &&
+        dy + from.Y + tolerance > centre.Y - half.Y)
         return true;
     return false;
 }

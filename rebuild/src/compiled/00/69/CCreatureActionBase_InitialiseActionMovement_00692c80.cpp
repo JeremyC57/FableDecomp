@@ -1,4 +1,5 @@
 // CCreatureActionBase::InitialiseActionMovement() -- divide animation displacement over usable frames or resolve diagnostic name and zero movement.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00692C80 length301. Actual actionVT1259D24 slots6 GetAnimDelayTime692460/7 GetAnimationIndex692870.
 // World+3C is PMainMeshBank (not AnimationManager); A242C0 is CMeshDataBank::PeekAnimation PDBB60570.
 #define CCreatureActionBase CCreatureActionBase_PDB
@@ -21,10 +22,7 @@
 #undef C3DAnimationInfo
 #include "engine/CMeshDataBankEntry.h"
 #include "fable_string.h"
-class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}
- C3DVector operator*(const float& f)const{return C3DVector(X*f,Y*f,Z*f);}
- C3DVector operator/(float f)const{return *this*(1.0f/f);}
-};
+#include "engine/C3DVector.h"
 struct CRetailString:CCharString {CRetailString(const char*,long);CRetailString(const CRetailString&);}; //native99EBF0/99EC30, actual shared storage and destructor
 class CBankFile:public CBankFile_PDB { public:CRetailString GetEntrySymbol(unsigned long)const;}; //009CC1D0 native const/byvalue string ABI
 class C3DAnimationInfo:public CMeshDataBankEntry { public:CRetailString GetName()const;};

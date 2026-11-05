@@ -1,5 +1,6 @@
 // CTCWillResponse::SetThingIsForcePushable(CThing* thing, bool value) -- set the thing's IsForcePushable will-response flag: clearing it adds the CTCWillResponse component when it is missing (every response defaults to allowed); setting it on an existing component removes the component again once every response flag is back at its default
 // Leaf: ?SetThingIsForcePushable@CTCWillResponse@@SIXPAVCThing@@_N@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members m_pFirst/m_pLast are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E3D50, 243 bytes. Ego_r.pdb / FableWin.pdb
 //   `?SetThingIsForcePushable@CTCWillResponse@@SIXPAVCThing@@_N@Z` = public static void __fastcall (CThing*, bool) (ecx thing,
 //   dl flag); the private inline members `SetThingIsForcePushable(bool)` (`AAEX_N`) and `Cleanup()` are expanded here.
@@ -24,17 +25,9 @@ public:
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    STCEntry* LowerBound(const ETCInterfaceType& kind);    // 0x0040F020
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing {
@@ -48,7 +41,7 @@ public:
     {
         CTCMap* map = &m_tcs;
         STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
-        return (T*)((it == map->m_pLast || T::INTERFACE_TYPE < it->first) ? map->m_pLast : it)->second;
+        return (T*)((it == map->end() || T::INTERFACE_TYPE < it->first) ? map->end() : it)->second;
     }
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     void RemoveTC(ETCInterfaceType kind);                   // 0x004C9840

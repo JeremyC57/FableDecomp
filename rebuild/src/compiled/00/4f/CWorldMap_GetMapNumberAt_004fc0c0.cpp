@@ -1,5 +1,6 @@
 // CWorldMap::GetMapNumberAt(const C3DVector&) const -- map number under a world position (0 outside the world area)
 // Leaf: ?GetMapNumberAt@CWorldMap@@UBEJABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe @ 0x004FC0C0, 107 bytes. PDB ?GetMapNumberAt@CWorldMap@@UBEJABVC3DVector@@@Z (virtual).
 // Callee: _ftol2 0x00BFEA70 (compiler helper for the two float -> long conversions).
 // Retail CWorldMap (the engine header engine/CWorldMap.h is the PDB layout with 16-byte containers; retail STLport
@@ -12,9 +13,8 @@
 // +0x20 MapUID, +0x24 Used ... +0x40 IsSea.
 // Shape: a half-open box test TLX <= X < BRX, TLY <= Y < BRY written with the integer corner on the left (fild first);
 // both coordinates truncated, scaled down by GranularityShift and used to index the 16-bit placement grid.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
-class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
 
 class CWorldMap { public:
     virtual void v00();

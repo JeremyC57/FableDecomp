@@ -1,4 +1,5 @@
 // CAIStateGroup_GameMaster::GetSeat() -- collect the pub's live tavern tables, then try them in order: take the table, and if it gives a game-master seat claim its food as the tankard and register the creature with the table's coin-golf game
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH (retry A 11b) -- the STLport list<CThing*> destructor (0x00792240) gets a same-TU auto_inline(off) body, so VC sees the local list's address never escapes and keeps its header node in esi for the whole function (this spilled to [esp+0x1c]); push_back links through STLport insert's n/prev locals; operator= reads the source item into a local before SetPItem
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0094CB40, 800 bytes (aligned frame, no EH frame).
@@ -15,7 +16,7 @@
 #include "engine/CAIBrain.h"
 #include "engine/CAIStateGroupBase.h"
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: float M[6]; };
 class CCharString { public:
     void* PStringData;

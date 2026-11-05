@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleSystem::InterpolateTo(const CParticleSystem& other, float t) -- interpolate towards another system: every component pair of the same type interpolates, the Enabled and ScaleParticles flags switch to the other system's past the halfway point, and Scale is blended linearly
 // Leaf: InterpolateTo
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF4100, 312 bytes, `ret 8`. PDB: ?InterpolateTo@CParticleSystem@NParticleEngine@@QAEXABV12@M@Z.
 // Callees: CPSCBase virtual slot 5 (+0x14, the component type; descriptive name) and slot 14 (+0x38)
 //   InterpolateTo(const CPSCBase&, float) (PDB, the CPSC* overrides).
@@ -50,13 +51,7 @@ template <class T> struct vector {
     T* end() const { return _M_finish; }
 };
 
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 
 class CParticleSystem {
 public:

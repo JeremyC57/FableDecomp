@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable() -- runnable for a village guard when the (re-acquired) living player carries a weapon, is in extended line of sight and within 15 units in XY; also resets or decays the warning count every two minutes
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -16,7 +17,7 @@
 // CIntelligentPointer<CThingPlayerCreature> temporary and an inline operator=.
 // Layout: Ego_r.pdb CAIStateGroup_MinionGuardReactToPlayerWithWeapon (NumberOfTimesPlayerTold +0x14, FrameLastToldPlayer
 // +0x18, LastMessageHeard +0x1c, Player +0x20); the engine header flattens the base, so the model is local.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

@@ -29181,7 +29181,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??_7CVtable_012c3224@@6B@	012c3224	00eb2000
 ??_7CV_TravellingHeroesScript@NScript@@6B@	012f407c	00edeba0
 ??1CScriptGameResourceObjectMovieBase@@QAE@XZ	006e7b80	00eea7c0
-?IsAlive@CScriptThing@@QBE_NXZ	004ab130	00eea7c0
 ?HasMode@CTCCreatureModeManager@@QAE_NK@Z	0073a8a0	008c2490
 ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z	0073a8a0	0096ddb0
 ?k_122df40@@3QBDB	0122df40	004069e0

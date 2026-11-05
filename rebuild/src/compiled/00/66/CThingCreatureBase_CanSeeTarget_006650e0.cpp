@@ -1,4 +1,5 @@
 // CThingCreatureBase::CanSeeTarget(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction) -- ask the look component (TC 0x43) when there is one, else test the angle from the head to the position against the facing: twice the angle difference within the field of view
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006650E0, length 171 bytes, `ret 10h`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0, CTCLook::IsPosInViewRange(const C3DVector&, float, bool, bool)
@@ -12,10 +13,7 @@
 #include <math.h>
 #pragma intrinsic(fabs)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

@@ -1,9 +1,10 @@
 // CEnvironmentSpellEffectInterpolator::FrameUpdate() -- update priority stacks and publish the four current screen effects.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail 006b8640,233 bytes. Calls CScreenEffectPriorityStack::FrameUpdate 00880e50 and interface setters 00884e90/00884f60/00884f90/00884fe0.
 // No generated headers for these classes. Native stack uses smaller STL containers than donor: current radial +1c, position +4c, displacement +84, filter +ac.
 class CRGBFloatColour { public: float R,G,B,A; };
 struct CDisplacementParams { CRGBFloatColour MonochromeEffectColour; };
-class C3DVector { public: float X,Y,Z; C3DVector() {} C3DVector(const C3DVector& x):X(x.X),Y(x.Y),Z(x.Z) {} };
+#include "engine/C3DVector.h"
 struct CRadialBlurParams { CRGBFloatColour ThresholdColour,IntensityColour; float Length,Fade,Range,Twist; };
 struct CRadialBlurPositionParams { C3DVector AreaCenter,BlurCenter; long AreaTrackPos,BlurTrackPos; };
 struct CScreenFilterParams { float Alpha,Saturation,Contrast,Brightness; CRGBFloatColour Tint; };

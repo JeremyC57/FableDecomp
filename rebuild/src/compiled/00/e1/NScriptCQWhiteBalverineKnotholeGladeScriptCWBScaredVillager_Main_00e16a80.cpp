@@ -1,5 +1,6 @@
 // NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager::Main() -- the White Balverine (Knothole Glade) villager script: keep the villager scripted while conscious, run one frame, then hold an empty scripted-thing handle until the thread is told to stop
 // Leaf: ?Main@CWB_ScaredVillager@CQ_WhiteBalverineKnotholeGladeScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E16A80, length 199 bytes; vtable 0x012E0B28 slot 1 (Main), factory "WB_ScaredVillager" (0x00E16990,
 // Ego_r.pdb 28 bytes). The catalog label CQ_HangingTreeEvilScript::BanditYells is propagated.
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 / ~CScriptThing 0x004AA840, CEntityScriptBase::SetPredicate 0x00F35B10
@@ -19,11 +20,8 @@ void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 
 
-class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
-    unsigned char _body[0xc - 4];
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    virtual ~CScriptThing();                                     // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace NScript {
 class CPredicateBase

@@ -1,6 +1,7 @@
 // CThingManager::PeekMapAt(const C3DVector& pos) const -- truncates the position's x/y to a cell coordinate and returns the
 // world map's CMap there (the const twin of GetMapAt 0x0051DEE0)
 // Leaf: ?PeekMapAt@CThingManager@@QBEABVCMap@@ABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051DF20, length 55 bytes.
 // Callees: __ftol2 @ 0x00BFEA70 (x2), CWorldMap::PeekMapAt(const C2DCoordI&) const virtual slot 15 (+0x3c).
 // Identity (sweep3; was "CThingManager::GetMapAt", the const overload of a name the PDB does not overload): Ego_r.pdb
@@ -12,15 +13,7 @@
 // retail base is 0xc smaller). Shape: the coordinate is a frame local filled member by member
 // (x converted and stored first -- a two-argument constructor would evaluate y first), its
 // address passed to the virtual call, whose result is returned unchanged.
-class C3DVector {
-public:
-    float X, Y, Z;
-};
-class C2DCoordI {
-public:
-    long X;
-    long Y;
-};
+#include "engine/C3DVector.h"
 class CMap;
 class CWorldMap {
 public:

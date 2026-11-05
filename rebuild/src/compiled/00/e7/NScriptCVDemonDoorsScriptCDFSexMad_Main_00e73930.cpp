@@ -1,5 +1,6 @@
 // NScript::CV_DemonDoorsScript::CDF_SexMad::Main() -- demon-door face (sex mad): take scripted control of Me, make it persistent and immune, shut the nearest REGION_EXIT_POINT; each time the hero talks to the face, speak the none / low / medium / high line by how often the hero has had sex (0, <4, <7, <10), and at ten or more speak the done line, fade the face out, open the door and reactivate the exit
 // Leaf: ?Main@CDF_SexMad@CV_DemonDoorsScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E73930, 1725 bytes (+ int3 padding), plain `ret`. Literals "TEXT_QST_B19_SEX_DOOR_NONE" 0x012E94A0,
 //   _LOW 0x012E9484, _MEDIUM 0x012E9464, _HIGH 0x012E9448, _DONE 0x012E942C, "DD_SexMad" 0x012E9420 (sibling of the matched
 //   CDF_CombatMult::Main 0x00E6F710, five arms).
@@ -60,13 +61,8 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    VPAD16(ma) VPAD8(mb) VPAD2(mc)                      // slots 1..26
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {

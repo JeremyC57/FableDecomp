@@ -2,6 +2,7 @@
 // Layout: CActionFollowCreature offsets are the PDB's (+0xC PTargetThing, +0x18 PTCOldPhysics, +0x25/+0x26); +8 is the base's activated flag;
 // the creature is re-read through the owning control at +4 (its +4), as in the landed CActionLeadCreature::OnActivate 0x007122D0.
 // Leaf: ?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // PDB spelling (sweep 3): the class lives in namespace NTCScriptedControl with the Ego_r CActionBase member PTCScript (+0x04);
 //   OnActivate is its virtual (?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ) and 0x00713D50 is the private
@@ -15,7 +16,7 @@ public:
     bool operator!=(const char* text) const;         // 0x0099E960
 };
 class CTCBase;
-class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { } };
+#include "engine/C3DVector.h"
 struct CBoundingBox { C3DVector Min, Max; };
 
 class CBaseClassNonCopyable {

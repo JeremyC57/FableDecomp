@@ -1,4 +1,5 @@
 // CTCPhysicsControlled::Move() -- one controlled physics step: honour a pending forced move (teleport, or fold it into the impulse), gather the things the impulse and velocity can reach, apply the impulse and step movement, then commit the position and update the additional impulse
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation); local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00725C40, 499 bytes (+ int3 padding), plain `ret`.
 // Callees: CTCPhysicsStandard::PerformForceUpdates 0x008E5670, GetPossibleInteractedWithList 0x008E57D0,
 //   PerformStepBasedMovement 0x008E5880, UpdateIsMoving 0x008E5270, UpdateVelocityForImpassability 0x007243C0;
@@ -16,18 +17,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    void operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; }
-};
+#include "engine/C3DVector.h"
 class C2DBoxI { public: long Left; long Top; long Right; long Bottom; };
 class CThing;
 struct CThingPtrVector {                            // retail STLport vector<CThing*> (12 bytes)
@@ -96,9 +86,9 @@ void CTCPhysicsControlled::Move()
     }
     {
         C2DBoxI area = GetPossibleCollidedWithArea();
-        float impulseSpeedSquared = ImpulseVelocity.GetLengthSquared();
+        float impulseSpeedSquared = ImpulseVelocity.GetSquaredMagnitude();
         CThingPtrVector things;
-        float speed = Velocity.GetLength();
+        float speed = Velocity.GetMagnitude();
         float margin = 0.5f;
         const CThing* owner = Owner;
         if (owner->HasTC(0xa8) || owner->HasTC(0xa9))

@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionFaceHero::Update() -- for up to six seconds while the hero lives: look at the hero, and stop once the hero (perceived in extended line of sight) is within 2.2m; idle a tick between looks; terminate
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009357F0, length 384 bytes (both exits are `jmp Terminate` tail calls).
@@ -36,11 +37,7 @@ struct CInterfaceMap {
         return it;
     }
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector operator-(const C3DVector& v) const { C3DVector r; r.X = X - v.X; r.Y = Y - v.Y; r.Z = Z - v.Z; return r; }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20

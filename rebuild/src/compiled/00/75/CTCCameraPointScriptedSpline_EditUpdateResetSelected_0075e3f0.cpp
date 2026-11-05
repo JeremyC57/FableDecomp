@@ -1,4 +1,5 @@
 // CTCCameraPointScriptedSpline::EditUpdateResetSelected(CCamera* camera) -- copy the editor camera's position, view direction and FOV into the selected key camera, then rebuild the splines
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 //
 // Retail 0x0075E3F0, 109 bytes (`ret 4`). Callees: CCamera::GetHorizontalFOV() const @ 0x00A0BEB0
 // (catalog label "CMap::DrawGetSeaLevel" is propagated; the body is `fld [ecx+2Ch]`, CCamera's
@@ -9,10 +10,7 @@
 // Shape: the selected iterator is a named local (esi); C3DVector has a user copy ctor and the view
 // direction comes from an inline by-value getter, so it is copied into a frame
 // temporary first and then into the key camera; the position is a direct member copy.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 

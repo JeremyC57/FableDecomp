@@ -1,4 +1,5 @@
 // CCreatureAction_DragonHoverOutOf::Initialise() -- animate descent, disable lifting/targeting, and stop solidity against the player.
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail008F40B0 length277. Targeted interface9, SolidToThing77, native component vector+44.
 #define CCreatureAction_DragonHoverOutOf CCreatureAction_DragonHoverOutOf_PDB
 #include "engine/CCreatureAction_DragonHoverOutOf.h"
@@ -29,14 +30,7 @@ class CGame { public:unsigned char _nativeBeforePlayerManager[0x1c];CPlayerManag
 extern CGame* g_Game; //013B86A0
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
- typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
- Entry* First;Entry* Last;
- Entry* LowerBound(const ETCInterfaceType& key); //0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
  unsigned char _nativeBeforeUsingComponents[0x20];
@@ -68,8 +62,8 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
  CTCTargeted* targeted;
  if(thing->UsingComponents[0]&0x200){
   CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(9);
-  CInterfaceMap::Entry* p=map->LowerBound(type);
-  if(p==map->Last || p->first>9)p=map->Last;
+  CInterfaceMap::value_type* p=map->LowerBound(type);
+  if(p==map->end() || p->first>9)p=map->end();
   targeted=static_cast<CTCTargeted*>(((void*)p->second));
  }
  targeted->Targetable=false; // native requires Targeted component on dragon
@@ -77,8 +71,8 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
  CTCSolidToThing* solid;
  if(thing->UsingComponents[2]&0x2000){
   CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(0x4d);
-  CInterfaceMap::Entry* p=map->LowerBound(type);
-  if(p==map->Last || p->first>0x4d)p=map->Last;
+  CInterfaceMap::value_type* p=map->LowerBound(type);
+  if(p==map->end() || p->first>0x4d)p=map->end();
   solid=static_cast<CTCSolidToThing*>(((void*)p->second));
  } else {
   CCharString name("CTCSolidToThing",-1);

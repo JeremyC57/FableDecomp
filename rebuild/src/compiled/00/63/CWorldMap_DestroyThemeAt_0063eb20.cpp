@@ -3,6 +3,7 @@
 // DestroyedThemePositions, clears layers 1 and 2, sets the block's blend to 0xff and, when the block's map is loaded
 // and changeable, resets the map's engine blend at the local block
 // Leaf: DestroyThemeAt
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063EB20, 350 bytes, `ret 4`, 8-aligned frame. PDB
 //   ?DestroyThemeAt@CWorldMap@@QAEXABVC3DVector@@@Z.
 // Callees: IsPosInMap(const C3DVector&) 0x004FC600, GetStrongestEngineThemeAt 0x0063ADF0, PeekDefinitionManager
@@ -15,13 +16,7 @@
 //   CEngineThemeDef::DestructionThemeDef retail +0x98 (PDB +0x9c, def layouts sit 4 below the PDB); the def's count at +4.
 #include <new>
 struct __false_type { __false_type() { } };
-class C3DVector { public: float X, Y, Z; };
-class C2DCoordI { public:
-    long X, Y;
-    C2DCoordI() { }
-    C2DCoordI(long x, long y) : X(x), Y(y) { }
-    C2DCoordI(const C2DCoordI& o) : X(o.X), Y(o.Y) { }
-};
+#include "engine/C3DVector.h"
 struct CCoordVector {                              // STLport vector<C2DCoordI> (12 bytes)
     C2DCoordI* _M_start;
     C2DCoordI* _M_finish;

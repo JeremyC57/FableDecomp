@@ -1,5 +1,6 @@
 // CEnvironmentSpellEffectInterface::SetRadialBlurCenterScreenPos(const C2DVector& position, bool interpolate) -- make the blur centre track a screen position (stored as a C3DVector with z = 0; current frame, and previous frame too when not interpolating)
 // Leaf: SetRadialBlurCenterScreenPos
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008851A0, 101 bytes (+ int3 padding).
 // Label correction: the manifest's "SetRadialBlurCenterAreaScreenPos" is shared with 0x00885210; this body writes the BLUR
 //   centre (+0x40 / +0xc0, track words +0x50 / +0xd0), 0x00885210 the AREA centre (+0x34 / +0xb4, +0x4c / +0xcc).
@@ -10,10 +11,7 @@
 //   stored to the frame and read back (`mov [esp+14h],0 ; mov esi,[esp+14h]`) -- then copied into each centre.
 class C2DVector { public: float x, y; };
 
-class C3DVector { public:
-    float x, y, z;
-    C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-};
+#include "engine/C3DVector.h"
 
 enum ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION {
     ENVIRONMENT_RADIAL_BLUR_TRACK_NONE = 0,

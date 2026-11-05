@@ -1,18 +1,10 @@
 // C3DBoundingSphere::AddToBounds(const C3DVector& point, float radius) -- grow the sphere to enclose another sphere: adopt it when empty or when it swallows this one, else span both
 // Leaf: ?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Length respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 35c: the exact PDB symbol (Ego_r.pdb + FableWin.pdb, the (const C3DVector&, float) overload the landed CPSCLight::AddToBoundingSphere 0x00B18AF0 binds); body unchanged.
 #include <math.h>
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator/(float s) const { float inv = 1.0f / s; return C3DVector(X * inv, Y * inv, Z * inv); }
-    float Length() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingSphere {
 public:
@@ -28,7 +20,7 @@ void C3DBoundingSphere::AddToBounds(const C3DVector& point, float radius)
         Radius = radius;
     } else if (radius != 0.0f) {
         C3DVector offset = Center - point;
-        float distance = offset.Length();
+        float distance = offset.GetMagnitude();
         if (Radius < radius) {
             if (radius - Radius > distance) {
                 Center = point;

@@ -1,12 +1,13 @@
 // 008852e0 CEnvironmentSpellEffectInterface::CEnvironmentSpellEffectInterface
 // Flags:
 // Leaf: ??0CEnvironmentSpellEffectInterface@@QAE@PAVCEnvironment@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
 class CEnvironment;
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;C3DVector(){}};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CRGBFloatColour{public:float R,G,B,A;CRGBFloatColour(){}
  __forceinline void Initialise(float r,float g,float b,float a){R=r;G=g;B=b;A=a;}

@@ -1,5 +1,6 @@
 // CGameScriptThing::MsgPerformedAnySpecialAbility() const -- true when the live thing's entity-event list holds an event of type 0x1A stamped inside the running quest thread's (last, current] script-frame window
 // Leaf: ?MsgPerformedAnySpecialAbility@CGameScriptThing@@UBE_NXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base.
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D2700, 219 bytes, thiscall, plain `ret`.
 // Identity (proven): CGameScriptThing vtable 0x012852CC slot 38; the manifest label is its FableWin.pdb mangled name; Ego_r.pdb ?MsgPerformedAnySpecialAbility@CGameScriptThing@@UBE_NXZ (donor 0x009098C0).
@@ -13,16 +14,7 @@
 //   engine/CGameScriptThing.h / CTCEntityEvents.h / CQuestManager.h flatten the vptr or hold PDB-width containers.
 #include <stddef.h>
 #include "engine/CArray.h"
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    typedef typename CArray<value_type>::const_iterator const_iterator;
-    CArray<value_type> Data;                                  // +0x00
-    TCompare           Compare;                               // +0x0C
-    bool               Dirty;                                 // +0x0D
-    const_iterator LowerBound(const K& key) const;            // 0x004365B0 for the TC map (the const overload)
-};
+#include "engine/CVectorMap.h"
 class CCPPointerInfo;
 template <class T> class CCountedPointer {                    // Ego_r.pdb: Data, Info
 public:
@@ -45,8 +37,8 @@ public:
             ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
             const CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::const_iterator it = map->LowerBound(type);
-            if (it == map->Data.end() || T::INTERFACE_TYPE < it->first)
-                it = map->Data.end();
+            if (it == map->end() || T::INTERFACE_TYPE < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

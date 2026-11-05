@@ -1,5 +1,6 @@
 // NHitLocations::CPhysicalPrimitiveCylinder::GetBoundingSphere(const CThing& thing, C3DVector& centre, float& radius) const -- the sphere around the hit cylinder: centred between its base and top, radius = sqrt(cylinderRadius^2 + (height / 2)^2), with the radius and height defaulting to the thing's values when they are not set
 // Leaf: GetBoundingSphere
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00815AA0, 256 bytes, `ret 0Ch`. PDB:
 //   ?GetBoundingSphere@CPhysicalPrimitiveCylinder@NHitLocations@@UBEXABVCThing@@AAVC3DVector@@AAM@Z.
@@ -17,13 +18,7 @@
 
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 
 class CThingDef {
 public:

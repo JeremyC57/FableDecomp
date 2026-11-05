@@ -1,5 +1,6 @@
 // CEnginePrimitiveRenderUtil::CalcDistanceFromCamera(const CMatrix3x4& transform) -- distance from the engine camera's world position to the transform's translation
 // Leaf: ?CalcDistanceFromCamera@CEnginePrimitiveRenderUtil@@SIMABVCMatrix3x4@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BB6450, 67 bytes, static __fastcall (transform ecx), float in st0, `ret`.
 // Identity: Ego_r.pdb ?CalcDistanceFromCamera@CEnginePrimitiveRenderUtil@@SIMABVCMatrix3x4@@@Z (static, float, one
 //   CMatrix3x4 reference): the body reads the matrix translation (+0x24) and the camera position, nothing else. No direct
@@ -13,13 +14,7 @@
 //   `sqrt(X*X + Y*Y + Z*Z)` squares Z first, then Y, then X, as retail.
 #include <math.h>
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 
 class CMatrix3x4 {
 public:
@@ -40,7 +35,7 @@ class CEnginePrimitiveRenderUtil {
 public:
     static float __fastcall CalcDistanceFromCamera(const C3DVector& position)
     {
-        return (position - g_pEngineCamera->WorldPosition).GetLength();
+        return (position - g_pEngineCamera->WorldPosition).GetMagnitude();
     }
     static float __fastcall CalcDistanceFromCamera(const CMatrix3x4& transform);
 };

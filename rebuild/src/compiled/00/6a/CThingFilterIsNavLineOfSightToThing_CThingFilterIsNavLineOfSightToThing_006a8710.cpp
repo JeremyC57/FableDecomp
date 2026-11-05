@@ -1,5 +1,6 @@
 // CThingFilter_IsNavLineOfSightToThing::CThingFilter_IsNavLineOfSightToThing(const CThing& thing) -- keep the thing's position and, when it has one, its creature-navigation component
 // Leaf: ??0CThingFilter_IsNavLineOfSightToThing
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8710, length 74 bytes, `ret 4`.
 // Callees: CThing::GetPos() const @ 0x004C73D0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0.
@@ -12,7 +13,7 @@
 // Shape: member initialiser Pos(&thing.GetPos()); the body's PeekTC writes PTCNav only when the component
 //   exists (the out-parameter is the member itself), the conversion-temporary key sits in the dead thing slot.
 class CTCBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 enum ETCInterfaceType { TC_CREATURE_NAVIGATION = 0x07 };
 
 #include "engine/CVectorMap.h"

@@ -1,5 +1,6 @@
 // NCameraModes::CStringAndCageBase::UpdateCageRadius(C3DVector&) const -- when the camera position is inside the cage radius (2D) around the observed thing, push it out onto the radius and return true
 // Leaf: ?UpdateCageRadius@CStringAndCageBase@NCameraModes@@QBE_NAAVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- squared XY distance summed in statement order (`distSq = offset.X * offset.X; distSq += offset.Y * offset.Y;`) so VC7.1 squares the spilled X first as retail
 // Retail 0x00871D50, 0xE3 bytes, __fastcall `ret 4`, bool in al. PDB (Ego_r):
 // ?UpdateCageRadius@CStringAndCageBase@NCameraModes@@ABE_NAAVC3DVector@@@Z (private const). Caller: the landed
@@ -18,14 +19,7 @@
 extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator+(const C3DVector& r) const { return C3DVector(X + r.X, Y + r.Y, Z + r.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector operator/(float s) const { float inv = 1.0f / s; return C3DVector(X * inv, Y * inv, Z * inv); }
-};
+#include "engine/C3DVector.h"
 class CThing {
 public:
     const C3DVector& GetPos() const;                  // 0x004C73D0

@@ -1,4 +1,5 @@
 // 00B109B0 NParticleEngine::CPSCEmitterGeneric::GetApproximateSplineLength.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local SquaredLength respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // PDB: ?GetApproximateSplineLength@CPSCEmitterGeneric@NParticleEngine@@UAEMXZ
 // (Ego_r row 30272, debug address 00AD17F0). Local layout follows the
 // landed CPSCEmitterGeneric::WriteBinary model: Spline counted pointer +0x18,
@@ -9,19 +10,7 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 extern const float Zero_0122dedc; // retail zero constant at 0x0122DEDC
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& b) : X(b.X), Y(b.Y), Z(b.Z) {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& b) const
-    {
-        C3DVector r;
-        r.X = X - b.X; r.Y = Y - b.Y; r.Z = Z - b.Z;
-        return r;
-    }
-    float SquaredLength() const { return Y * Y + (Z * Z + X * X); }
-};
+#include "engine/C3DVector.h"
 struct CPointVector {
     C3DVector* _M_start;
     C3DVector* _M_finish;
@@ -53,7 +42,7 @@ float CPSCEmitterGeneric::GetApproximateSplineLength()
     if (EmitterType == 3 && Spline.Data != 0) {
         int count = size();
         for (int i = 0; i < count - 1; ++i) {
-            total += (at(i) - at(i + 1)).SquaredLength();
+            total += (at(i) - at(i + 1)).GetSquaredMagnitude();
         }
     }
     float result = (float)sqrt(total);

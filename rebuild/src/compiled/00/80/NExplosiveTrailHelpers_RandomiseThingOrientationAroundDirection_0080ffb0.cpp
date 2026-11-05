@@ -1,5 +1,6 @@
 // NExplosiveTrailHelpers::RandomiseThingOrientationAroundDirection(CThing& thing, const C3DVector& direction) -- give a thing a random orientation: spin the default forward axis a random amount about the up axis, tilt both axes by up to +-0.125 about the direction, and hand the set to the thing's physics
 // Leaf: ?RandomiseThingOrientationAroundDirection@NExplosiveTrailHelpers@@YIXAAVCThing@@ABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0080FFB0, 229 bytes (+ int3 padding), `__fastcall` (thing in ecx -> ebx, direction in edx ->
@@ -21,13 +22,7 @@
 //   the physics is a CRightHandedSet(up, forward) temporary (the 24-byte pairwise copy). The physics pointer is a NAMED
 //   local read before the call: that loads it into ecx ahead of the copy, so the copy runs in eax/edx as retail (the
 //   parked `thing.PhysicsTC->SetRHSet(...)` spelling copied through three registers and loaded ecx last).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    void Rotate(const C3DVector& axis, float angle);         // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet {
 public:

@@ -1,4 +1,5 @@
 // CWorldMap::GetAllLoadedMapsInArea(const C2DBoxI&, vector<unsigned long>&) const -- appends every loaded map whose area overlaps the box
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail 0x004FF310, 0x7B bytes (CWorldMap.cpp TU), vtable 0x01244AEC slot 21. Walks LoadedMaps (CArray<long>, retail
 // +0x90/+0x94, PDB +0xAC) and tests Maps[n].Area (CMapInfo 72 bytes, Maps begin +0x20) with C2DBoxI::Overlapping
 // 0x004FAB40; hits are appended with the inline STLport push_back (placement copy at `finish`, else
@@ -9,20 +10,8 @@
 // sits 4/8/12.. bytes lower in retail: Maps +0x20 (PDB +0x24), Granularity +0x50 (PDB +0x60),
 // MapPlacementPitch +0x58 (PDB +0x68), Area +0x5C..+0x68 (PDB +0x6C..+0x78), MapPlacement +0x6C
 // (PDB +0x7C), PlayerPositionInfo +0x78 (PDB +0x8C), LoadedMaps +0x90 (PDB +0xAC)).
-class C3DVector
-{ public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
-class C2DCoordI
-{ public:
-    long x;
-    long y;
-    C2DCoordI() {}
-    C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
-};
 
 class C2DBoxI
 { public:

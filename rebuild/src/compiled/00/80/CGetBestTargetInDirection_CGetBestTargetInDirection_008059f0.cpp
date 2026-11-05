@@ -7,15 +7,9 @@
 // with the same zero register, then normalised when its squared length beats the squared epsilon.
 // Layout: Ego_r.pdb (BasePos +0, TestLine +4, Direction +0x10, PBestTargetPoint +0x14, CosThetaBestAngle +0x18).
 // Leaf: ??0CGetBestTargetInDirection
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-    C3DVector& AccurateNormalise();                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C (0.0001f)
 struct CTargetPoint;
 struct CGetBestTargetInDirection {
@@ -32,6 +26,6 @@ CGetBestTargetInDirection::CGetBestTargetInDirection(const C3DVector* basePos, c
 {
     TestLine = towards - *basePos;
     TestLine.Z = 0.0f;
-    if (TestLine.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
+    if (TestLine.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         TestLine.AccurateNormalise();
 }

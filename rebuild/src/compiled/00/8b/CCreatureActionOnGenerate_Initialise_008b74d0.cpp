@@ -1,5 +1,6 @@
 // CCreatureAction_OnGenerate::Initialise() -- the GENERATE_DROP animation, base Initialise, then spawn the creature's GENERATE special effect at its position when its special-effects def maps one
 // Leaf: Initialise
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Grade: RELOCATION_MATCH -- GetSubDef<CSpecialEffectsDef> is an extern call (no same-TU body) whose plain out word is read once, right after the call, into a by-value local (ebp) through an inline helper, inside a block holding the out word, so the release uses the cached pointer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B74D0, 262 bytes (272 with padding), virtual Initialise.
@@ -12,7 +13,7 @@
 //   VC's construction flags (ebx bits 1 and 2); the found flag lives in a frame byte. The sub-def out word is a plain
 //   struct zeroed at the top of a block (it shares the GENERATE_DROP string's word); an inline helper calls GetSubDef and
 //   copies the out word into `effects`, and the effects def is released by hand from that copy at the end.
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CCharString { public:
     void* PStringData;

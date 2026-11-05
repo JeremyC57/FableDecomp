@@ -1,5 +1,6 @@
 // NCreatureMode::CModeJackOfBladesScream::FrameUpdate() -- while the sword is alive and falling, for the first 30 frames interpolate its orientation from InitialSwordRHS towards (forward 0,1,0 / up 0,0,-1) and its position from InitialSwordPos towards SwordFallPos by timer/30, then advance the timer
 // Leaf: FrameUpdate
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D77A0, 316 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CRightHandedSet::Interpolate 0x00A23190 (result by hidden pointer),
 //   the sword thing's placement component (+0x60) slots 30 SetPosition (+0x78) and 75 SetRHSet (+0x12c).
@@ -11,14 +12,7 @@
 //   `(SwordFallPos - InitialSwordPos) * t + InitialSwordPos` through inline C3DVector operators.
 #define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Forward;
     C3DVector Up;

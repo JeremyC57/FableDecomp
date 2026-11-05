@@ -1,5 +1,6 @@
 // CEnginePrimitiveWeaponTrail::CWeaponTrailEntry::CWeaponTrailEntry(const C3DVector& top, const C3DVector& bottom, float creationTime) -- one weapon-trail sample: the blade's top and bottom points and the time it was taken
 // Leaf: ??0CWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@QAE@ABVC3DVector@@0M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0076DE20, 53 bytes (+11 int3 padding), thiscall, `ret 0Ch`.
 // Identity: the Ego_r.pdb name set lists ??0CWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@QAE@ABVC3DVector@@0M@Z (the
 //   nested entry class of the weapon-trail primitive); callers 0x0076F08C, 0x0076F0E3, 0x0076F13F.
@@ -7,11 +8,7 @@
 // Shape: `this` goes to eax first (the constructor's return value), each vector is copied word by word through edx/ecx
 //   straight from the argument pointer: C3DVector needs a memberwise user copy constructor (the implicit copy forms a
 //   `lea edx,[eax+0Ch]` destination pointer and an esi temporary); the float argument is copied as a dword.
-class C3DVector {                                        // 12 bytes
-public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CEnginePrimitiveWeaponTrail {
 public:

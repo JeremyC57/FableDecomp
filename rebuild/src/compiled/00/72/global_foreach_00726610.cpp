@@ -1,5 +1,6 @@
 // _global::for_each(CThingCreatureBase** first, CThingCreatureBase** last, CApplyAdditionalPlayerImpulseIfTooClose f) -- STLport for_each: push every listed creature away from the player when too close, return the functor by value
 // Leaf: for_each
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00726610, 77 bytes (80 with padding), `ret 18h`.
 // Label correction: the catalog "_For_each<CThingCreatureBase**,CApplyAdditionalImpulseIfInCombatAndTooClose>" is
 //   propagated from the 24-byte twin 0x00727500; this body calls CApplyAdditionalPlayerImpulseIfTooClose::operator()
@@ -15,10 +16,7 @@
 class CThingCreatureBase;
 class CTCPhysicsBase;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CApplyAdditionalPlayerImpulseIfTooClose { public:    // 20 bytes (PDB)
     C3DVector       Position;                       // +0x00

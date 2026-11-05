@@ -1,5 +1,6 @@
 // CEngineCamera::ConsoleAddDebugScript(CEngineCamera& camera, const vector<CGenericVar>& params) -- console command: build one debug-script element {world position, normalised look vector, FOV, time to next element} from the float values of eight parsed console arguments and append it to the camera's DebugScript
 // Leaf: ?ConsoleAddDebugScript@CEngineCamera@@CIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B317A0, length 154 bytes. Private static `__fastcall` (camera in ecx, the
 // argument vector in edx), plain `ret`.
 // Name: Ego_r.pdb / Ego_d.pdb name sets ?ConsoleAddDebugScript@CEngineCamera@@CIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@
@@ -13,12 +14,7 @@
 // Shape: the two vectors are `element.V = C3DVector(a, b, c)` with only the 3-float ctor declared: the temporary is built in
 // a shared frame slot and block-copied through integer registers (a user copy ctor or operator= turns the copies into x87
 // loads/stores).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector& AccurateNormalise();                              // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 
 class CGenericVar {                                // 0x1C bytes (struct_layouts_egor)
 public:

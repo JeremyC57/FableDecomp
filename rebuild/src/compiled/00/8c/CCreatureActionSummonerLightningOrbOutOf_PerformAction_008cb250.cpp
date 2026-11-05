@@ -1,5 +1,6 @@
 // 008cb250 CCreatureAction_SummonerLightningOrbOutOf::PerformAction
 // Leaf: ?PerformAction@CCreatureAction_SummonerLightningOrbOutOf@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Flags:
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -42,7 +43,8 @@
 #define CDefinitionManager CDefinitionManagerFields
 #include "engine/CDefinitionManager.h"
 #undef CDefinitionManager
-class C3DVector{public:float X,Y,Z;};class CRightHandedSet{protected:C3DVector Up,Forward;};
+#include "engine/C3DVector.h"
+class CRightHandedSet{protected:C3DVector Up,Forward;};
 class CCharStringData;class CCharString{protected:CCharStringData*PStringData;public:CCharString(const char*,long=-1);~CCharString();};
 class CDefString{private:long TablePos;public:bool operator==(const char*)const;};
 class CBaseObjectPointer;

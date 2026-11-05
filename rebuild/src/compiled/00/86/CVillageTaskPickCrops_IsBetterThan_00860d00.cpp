@@ -1,5 +1,6 @@
 // CVillageTaskPickCrops::IsBetterThan(const CVillageTaskPickCrops*, const CThing&) const -- with a rival task (and this one available) this task wins when its crop is nearer to the thing; with no rival the answer is IsTaskAvailable()
 // Leaf: IsBetterThan
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00860D00, 282 bytes (288 with padding), `ret 8`.
 //   PDB ?IsBetterThan@CVillageTaskPickCrops@@QBE_NPBV1@ABVCThing@@@Z (non-virtual).
 // Callees: virtual IsTaskAvailable (slot 4, +0x10 of vtable 0x0125A928; twice), CBaseIntelligentPointer::GetPItem
@@ -9,20 +10,7 @@
 //   things: by-value position copies, named deltas, `myDist < rivalDist` evaluated left first.
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator-(const C3DVector& o) const
-    {
-        C3DVector r;
-        r.X = X - o.X;
-        r.Y = Y - o.Y;
-        r.Z = Z - o.Z;
-        return r;
-    }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CThing : public CBaseObject { public:
     const C3DVector& GetPos() const;          // 0x004C73D0
 };
@@ -50,7 +38,7 @@ bool CVillageTaskPickCrops::IsBetterThan(const CVillageTaskPickCrops* other, con
         C3DVector position = thing.GetPos();
         C3DVector myDelta = crop - position;
         C3DVector rivalDelta = rivalCrop - position;
-        return myDelta.GetLengthSquared() < rivalDelta.GetLengthSquared();
+        return myDelta.GetSquaredMagnitude() < rivalDelta.GetSquaredMagnitude();
     }
     return IsTaskAvailable();
 }

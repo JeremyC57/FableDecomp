@@ -1,5 +1,6 @@
 // NScreenEffect::CScreenEffectPriorityStack::CRadialBlurProcess::Process(float t, const CStackEntry* entry) -- blend the stack's current radial-blur parameters and position towards a radial-blur entry: current = current * (1 - t) + entry * t
 // Leaf: Process@CRadialBlurProcess
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00880AE0, length 611 bytes (virtual, ret 8); PDB
 // ?Process@CRadialBlurProcess@CScreenEffectPriorityStack@NScreenEffect@@UAEXMPBUCStackEntry@23@@Z. No callees.
 // Layout: the retail CScreenEffectPriorityStack / CRadialBlurEntry model of the landed SetBlurTrackPos 0x008811D0:
@@ -8,13 +9,7 @@
 // Shape: `1 - t` once; each colour/vector member is `cur = cur * (1 - t) + entry * t` through by-value operator* and
 // operator+ temporaries (VC evaluates the right operand first, so entry * t is formed first, and the sum temporary is
 // copied with integer moves); the four scalars are blended in place. The stack pointer is re-read per member.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public:
     float R, G, B, A;
     CRGBFloatColour() {}

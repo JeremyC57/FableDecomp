@@ -1,4 +1,5 @@
 // CInputProcessCreatureMovementWatchForControlAngleChange::ProcessInput -- normalize movement, signal camera changes, remember direction
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00691C50 length206; GetControlMovementFromGameActionEvent00687D00.
 // Actual donor headers retained; native camera manager prefix differs because
 // CamTools vector16->12, AvailableCamPoints list12->4. ControlNoControlMovement+BD.
@@ -28,7 +29,7 @@ class CWorld:public DonorCWorld { public:CWorld(const CWorldInit&);};
 #include "engine/CProcessedInput.h"
 class CInputEvent;
 class C2DVector { public:float X,Y;C2DVector(){} C2DVector(float x,float y):X(x),Y(y){} float GetLength()const{return (float)sqrt(X*X+Y*Y);} };
-class C3DVector { public:float X,Y,Z;C3DVector(){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
+#include "engine/C3DVector.h"
 class CCamera;
 class CEnginePrimitivePrepareInfo;
 class CGameCameraManager;

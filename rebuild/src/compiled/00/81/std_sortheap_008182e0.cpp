@@ -1,6 +1,7 @@
 // std::sort_heap(THitLocationIntersectionElement* first, THitLocationIntersectionElement* last, THitLocationIntersectionElementPred comp) -- order a heap of hit-location intersections by key by repeatedly popping the front to the back
 // Flags: /Gr
 // Leaf: sort_heap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x008182E0, 212 bytes (/O2). Callee: STLport __adjust_heap<THitLocationIntersectionElement*,
 // int,THitLocationIntersectionElement,THitLocationIntersectionElementPred> 0x008175D0 (`__fastcall`: first ecx,
 // hole edx, the count, the 32-byte value and the empty comparator on the stack; signed key compare; its
@@ -16,10 +17,7 @@
 // is the Ego_r (Dinkumware) spelling; retail is STLport sort_heap.
 namespace N008182e0 {
 struct CHitLocation;
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }      // user copy ctor, implicit operator=
-};
+#include "engine/C3DVector.h"
 struct THitLocationIntersectionElement {                  // _anon_5EBD2A70, 0x20 bytes
     long key;                                             // +0x00
     CHitLocation* hit_location;                           // +0x04

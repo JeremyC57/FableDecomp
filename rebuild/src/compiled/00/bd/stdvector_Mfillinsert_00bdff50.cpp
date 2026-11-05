@@ -1,5 +1,6 @@
 // std::vector::_M_fill_insert(C3DBoundingSphere* position, unsigned int n, const C3DBoundingSphere& x) -- (vector<C3DBoundingSphere>) STLport insert of n copies of a 16-byte bounding sphere: slide the tail inside the spare capacity and fill the hole from a copy of x, or grow through _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@VC3DBoundingSphere@@V?$allocator@VC3DBoundingSphere@@@std@@@std@@QAEXPAVC3DBoundingSphere@@IABV3@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDFF50, 316 bytes, thiscall `ret 0Ch`, no EH frame (STLport built without exceptions).
 // Identity: the landed vector<C3DBoundingSphere>::resize 0x00BE0140 (the function-local static sphere_list of
 //   CQuadTreeElement::CalcBoundingSphereAndFadeDistanceFromChildren 0x00BDF100) calls this row through the inline
@@ -15,13 +16,7 @@
 //   memberwise copy of the inline fill loop.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class C3DVector {                                          // Ego_r.pdb, 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // PDB ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere {                                  // Ego_r.pdb, 16 bytes
 public:
     C3DVector Center;                                      // +0x0

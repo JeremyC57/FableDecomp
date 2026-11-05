@@ -1,4 +1,5 @@
 // CCreatureAction_ScreamerDrainAttack::FinishAction -- transition to drain-out action then finish combat state
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail008B9010,242 bytes. Callees: pointer GetPItemA01B50; Combat constructors857F30/858030;
 // creature SetCurrentAction6644F0; Combat destructor62E900 and FinishAction859A20.
 // Native combat action projection: base70 genuine slots; combat adds11 =81 slots.
@@ -24,7 +25,7 @@
 #include "engine/CBaseObject.h"
 #include "fable_string.h"
 class CThing;class CThingCreatureBase;class CCreatureActionBase;class CTCWeaponTrail;
-class C3DVector { public:float x,y,z;};
+#include "engine/C3DVector.h"
 class CSoundPair { public:long first,last;CSoundPair():first(0),last(0){}};
 struct CBaseObjectPointer {CBaseObject* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {

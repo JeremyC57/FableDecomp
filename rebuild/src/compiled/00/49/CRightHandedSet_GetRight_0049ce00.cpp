@@ -1,4 +1,5 @@
 // CRightHandedSet::GetRight() const -- the right vector of the frame: the cross product Forward x Up, returned by value
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049CE00, length 55 bytes.
 // Retail bytes:  fld [ecx+0Ch] ; mov eax,[esp+4] ; fmul [ecx+4] ; fld [ecx+10h] ; fmul [ecx] ; fsubp st(1),st ; fld [ecx+14h] ;
 //                fmul [ecx] ; fld [ecx+8] ; fmul [ecx+0Ch] ; fsubp st(1),st ; fld [ecx+10h] ; fmul [ecx+8] ; fld [ecx+14h] ;
@@ -10,13 +11,7 @@
 // components sit on the x87 stack and are stored x, y, z. The x87 load order of each product follows the helper's
 // reference parameters: the same products written directly on the members load Up.Y before Forward.X in the first
 // product (VC7.1 does not keep the source operand order of a `*` there).
-class C3DVector { public:
-    float X;                                 // +0x00
-    float Y;                                 // +0x04
-    float Z;                                 // +0x08
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;                            // +0x00

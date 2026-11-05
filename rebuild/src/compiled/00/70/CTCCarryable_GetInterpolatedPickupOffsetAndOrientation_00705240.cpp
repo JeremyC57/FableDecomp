@@ -1,5 +1,6 @@
 // CTCCarryable::GetInterpolatedPickupOffsetAndOrientation(C3DVector&, CRightHandedSet&, bool, float) const -- offset of the carrier's hand dummy (right hand, else left hand) from the owner's interpolated position, with the dummy's orientation; with no hand dummy, a zero offset and the physics orientation
 // Leaf: GetInterpolatedPickupOffsetAndOrientation
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00705240, 424 bytes (`ret 10h`, 0x24-byte frame).
 //         Ego_r.pdb: `?GetInterpolatedPickupOffsetAndOrientation@CTCCarryable@@ABEXAAVC3DVector@@AAVCRightHandedSet@@_NM@Z`.
 // Callees: NGraphicAppearance::CTCGraphicAppearance::GetDummyObject(const CCharString&, long, unsigned long, C3DVector&,
@@ -19,14 +20,7 @@
 class CCharString { public: void* m_pData; };
 extern CCharString g_RightHandAttachmentName;           // 0x013BAC30
 extern CCharString g_LeftHandAttachmentName;            // 0x013BAC34
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                                       // +0x00
     C3DVector Forward;                                  // +0x0c

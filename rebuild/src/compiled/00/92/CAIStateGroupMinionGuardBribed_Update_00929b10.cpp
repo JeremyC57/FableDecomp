@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionGuardBribed::Update() -- hold the main player's character; while the state stays valid and the hero lives, look away from the hero (at the point mirrored through the creature) and idle, whistling (WHISTLE_GUARD_BRIBED) at random intervals; afterwards stop the whistle, clear the village's bribe frame and Terminate()
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH (retry A 11a) -- the mirrored look point is a named C3DVector local (materialised, Z-first), the player character goes through an inline GetPCharacter() accessor (lea ecx,[eax+34h]), the first delay is an unsigned long added last (frame + min + delay) and the repeat target is `next = frame + delay; next += min;`
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00929B10, length 785 bytes (+ int3 padding), plain `ret` (virtual), `and esp,-8` frame.
 // Callees: GetPPlayerManager @ 0x008FCF80, CPlayerManager::GetMainPlayer const @ 0x00449960, CBaseIntelligentPointer ctor
@@ -14,14 +15,7 @@
 // Shape: the random delays are a static CWorld random called through GetPWorld() (the discarded call); the in-loop sound lookup
 // inlines the vector-map lower_bound, the after-loop one calls it.
 class CTCBase;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector operator*(float scale) const { return C3DVector(X * scale, Y * scale, Z * scale); }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-};
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

@@ -1,5 +1,6 @@
 // CAIStateGroup_MinionWorkInInn::CleanBench() -- take a free action point on a free bench, walk to it, face along the point's forward axis and play ST_WIPE_TABLE; free the action point afterwards (or when a step fails)
 // Leaf: ?CleanBench@CAIStateGroup_MinionWorkInInn@@AAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave (stand-in map): the local CInterfaceMap stand-in (and its same-TU LowerBound body) replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<..> > derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D; the same-TU noinline LowerBound is the header's); entries read as pair first/second, the map end through end(). Spellings unified: 0040f020: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090BD40, 399 bytes (+ int3 padding), plain `ret`.
 // Name: Ego_r.pdb ?CleanBench@CAIStateGroup_MinionWorkInInn@@AAEXXZ (private; the parked file had it public).
@@ -20,14 +21,7 @@
 //   CAIBrain::Creature +0x18 (engine/CAIBrain.h); the creature accessor GetCreature() is descriptive (as in the landed
 //   CAIStateGroup_MinionSitAtHome::IsRunnable 0x00939180). Retail CThing UsingComponents +0x20 / Components +0x44.
 //   Local models (not the shared headers) because the headers flatten the vptr; see NOTES.md header debt.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
-    C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet {
 public:
     C3DVector Up;                               // +0x00

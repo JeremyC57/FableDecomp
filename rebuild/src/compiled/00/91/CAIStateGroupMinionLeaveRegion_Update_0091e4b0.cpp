@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionLeaveRegion::Update() -- leave through exit, suspend in limbo, then relocate to a random entrance
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail0x0091E4B0,273 bytes. Callees MoveToPos97EC00,SetInLimbo4C8CF0,DoNothing97E200,
 // GetPWorld8FCFC0,GetAllRegionNodes91E660,GetPWorldSeed8FCFD0,GFROR13497890,GetPosition4C73D0,Terminate8FCF40.
 #define CAIStateGroup_MinionLeaveRegion CAIStateGroup_MinionLeaveRegionLayout
@@ -20,7 +21,7 @@ class CAIStateGroup_MinionLeaveRegion : public CAIStateGroupBase, public CAIStat
 #include "engine/CWorld.h"
 #include "engine/CThingSearchTools.h"
 #include <stdlib.h>
-class C3DVector { public: float X,Y,Z; C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){} };
+#include "engine/C3DVector.h"
 struct CThingBody {
  virtual void v00();
  virtual void v01();

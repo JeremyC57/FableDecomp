@@ -1,18 +1,11 @@
 // CWorldMap::GetAverageThemeMinCameraSizeZOffsetInArea(const C3DVector& tl, const C3DVector& br) const -- average of the positive theme camera offsets along the box edges (corners, then each whole-block step) and at every block inside the box; 0 when none is positive
 // Leaf: ?GetAverageThemeMinCameraSizeZOffsetInArea@CWorldMap@@QBEMABVC3DVector@@0@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z. Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063C230, `ret 8`, ebp frame.
 // Callees: _ftol 0x00BFEA70, CWorldMap::GetThemeMinCameraSizeZOffsetAt(const C3DVector&) 0x0063A540, GetThemeMinCameraSizeZOffsetAtBlock(const C2DCoordI&) 0x0063BB40 inlined (PeekMap called twice, CMap::GetThemeMinCameraSizeZOffsetAt 0x0081FA90).
 // Layout: the landed 0x0063A7E0 CWorldMap model (retail offsets).
 #include <math.h>
-class C3DVector
-{ public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class C2DVector
 { public:
@@ -22,13 +15,6 @@ class C2DVector
     C2DVector(const C2DVector& o) : X(o.X), Y(o.Y) {}
 };
 
-class C2DCoordI
-{ public:
-    long x;
-    long y;
-    C2DCoordI() {}
-    C2DCoordI(long ax, long ay) : x(ax), y(ay) {}
-};
 
 class C2DBoxI
 { public:
@@ -168,10 +154,10 @@ float CWorldMap::GetAverageThemeMinCameraSizeZOffsetInArea(const C3DVector& tl, 
     {
         C2DVector a(tl.X, tl.Y);
         C2DVector b(br.X, br.Y);
-        start.x = (long)a.X + 1;
-        start.y = (long)a.Y + 1;
-        end.x = (long)b.X;
-        end.y = (long)b.Y;
+        start.X = (long)a.X + 1;
+        start.Y = (long)a.Y + 1;
+        end.X = (long)b.X;
+        end.Y = (long)b.Y;
     }
     float h = GetThemeMinCameraSizeZOffsetAt(tl);
     if (h > 0.0f) { total += h; count += 1.0f; }
@@ -205,8 +191,8 @@ float CWorldMap::GetAverageThemeMinCameraSizeZOffsetInArea(const C3DVector& tl, 
         if (h > 0.0f) { total += h; count += 1.0f; }
     }
     C2DCoordI pos;
-    for (pos.x = start.x; pos.x <= end.x; ++pos.x) {
-        for (pos.y = start.y; pos.y <= end.y; ++pos.y) {
+    for (pos.X = start.X; pos.X <= end.X; ++pos.X) {
+        for (pos.Y = start.Y; pos.Y <= end.Y; ++pos.Y) {
             h = GetThemeMinCameraSizeZOffsetAtBlock(pos);
             if (h > 0.0f) { total += h; count += 1.0f; }
         }

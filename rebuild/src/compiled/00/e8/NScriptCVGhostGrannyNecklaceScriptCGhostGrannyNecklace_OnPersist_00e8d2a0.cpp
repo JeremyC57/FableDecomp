@@ -1,5 +1,6 @@
 // NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::OnPersist(context) -- transfer the original BrainState with its zero default.
 // Leaf: ?OnPersist@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@EAEXAAVCPersistContext@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven; Complete original CScriptBase64/CLevelScriptBase72 and CEntityScriptBase20 typed Game/Me/Parent/Master prefixes; real CBaseClassNonCopyable protected ctor/dtor and CBaseClass ancestry, non-POD counted-pointer special members, CCharString(constchar*,long). Original STLport list:_List_base/rebound-node allocatorproxy and vector:_Vector_base/end-storage proxy retained; unused map/tree declarations omitted. Unused virtual slots and owner suffixes explicit projections. Shared thing/resource headers aliased as data evidence. Game exact ownRTTI1260f0c and PDB publicconst APIs; child privatevirtualEAE signatures preserve original access. Field identities from PDB named layouts reconciled with actual factory allocation sizes. No donor address used asretailidentity; own literalbinding00e8ba0c ->factory00e8bd30 installs table012ebb14 methodslot4. Original privatevirtual OnPersist signature and full own fields match PDB; actualBrainState+28. Exact template Transfer<long>(constchar*,long&,constlong&) defaultzero at00410be0, not a pointer-valued fallback or invented persistence wrapper.
 // Layout: real complete typed entity and context44, original Game/Me/Parent/Master storage, level parent prefix only and omitted unused parent suffix.
@@ -18,9 +19,8 @@ class CCPPointerInfo;
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
 
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

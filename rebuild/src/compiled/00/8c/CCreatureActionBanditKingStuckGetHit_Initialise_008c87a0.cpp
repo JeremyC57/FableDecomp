@@ -1,5 +1,6 @@
 // CCreatureAction_BanditKingStuckGetHit::Initialise() -- animation STUCK_GET_HIT; create the creature's STUCKLOOP special effect at its position, keep it in PStuckEffect and attach it to the creature through its particle emitter; then the base Initialise (the sub-def is released last)
 // Leaf: ?Initialise@CCreatureAction_BanditKingStuckGetHit@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C87A0, 427 bytes (448 with padding), virtual Initialise.
 // Callees: as CCreatureAction_BanditKingStuck::Initialise (0x008C8380): CCharString ctor/dtor 0x0099EBF0/0x0099EAE0,
@@ -11,7 +12,7 @@
 // Layout (retail, local model): CCombatActionBase is 0x114 bytes (PCreature +0x08); PStuckEffect +0x114 (PDB +0x12C).
 // Shape: both string literals are implicit conversions (built before the other arguments); the sub-def holder is
 //   function-scoped, so the base Initialise runs before its release.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CTCBase;
 class CThing;
 

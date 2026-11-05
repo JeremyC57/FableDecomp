@@ -1,5 +1,6 @@
 // GetDistanceBetweenThingAndPosition(const CScriptThing& thing, const C3DVector& position) -- the distance from the thing's position to the given position
 // Leaf: ?GetDistanceBetweenThingAndPosition@@YIMABVCScriptThing@@ABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBE551, 50 bytes (`ret`).
 // TU: the global quest-script helper functions (__fastcall, size-optimised: `#pragma optimize("s", on)`).
 // Model: CScriptThing is polymorphic (vtable 0x01238C8C); the engine header models the vptr as data, so a local
@@ -14,13 +15,7 @@ class CCharString {
 public:
     void* m_pStringData;
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-    __forceinline C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    __forceinline C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    __forceinline float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
@@ -29,5 +24,5 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 
 float __fastcall GetDistanceBetweenThingAndPosition(const CScriptThing& thing, const C3DVector& position)
 {
-    return (thing.GetPos() - position).GetLength();
+    return (thing.GetPos() - position).GetMagnitude();
 }

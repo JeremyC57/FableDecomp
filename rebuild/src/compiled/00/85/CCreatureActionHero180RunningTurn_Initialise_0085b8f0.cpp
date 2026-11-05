@@ -2,19 +2,14 @@
 // RequiredFacing (clamped dot, sign from the cross product), base Initialise, then rotate the facing about Z by the
 // animation's rotation less the turn (in revolutions) and set the creature's orientation to (up, rotated facing)
 // Leaf: ?Initialise@CCreatureActionHero180RunningTurn@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <math.h>
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
-    void Rotate(const C3DVector& axis, float angle);  // 0x00A13C60
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;

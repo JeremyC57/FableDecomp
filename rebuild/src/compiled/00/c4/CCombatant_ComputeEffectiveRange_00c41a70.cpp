@@ -1,4 +1,5 @@
 // CCombatant::ComputeEffectiveRange() -- angle between two stored vectors (via |a-b| / |a+b|) mapped onto a linear range factor
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Length respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C41A70, 320 bytes (incl. int3 padding); one caller,
 // CCombatant::ComputeDerivedCombatStats 0x00C41FB0 (call at 0x00C4232C). No PDB class header exists for this
 // module, so `this` is a local descriptive model: two 3-vectors at +0x114/+0x120, two unsigned angle limits at
@@ -12,14 +13,7 @@
 // named-delta spellings load m_farFactor first and need an fxch.
 #include <math.h>
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    float Length() const { return sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 
 struct CCombatant {
     unsigned char _pad0[0x114];
@@ -36,8 +30,8 @@ float CCombatant::ComputeEffectiveRange() const
 {
     C3DVector diff = m_vecA - m_vecB;
     C3DVector sum = m_vecA + m_vecB;
-    float lenDiff = diff.Length();
-    float lenSum = sum.Length();
+    float lenDiff = diff.GetMagnitude();
+    float lenSum = sum.GetMagnitude();
     float angle;
     if (lenSum < lenDiff)
         angle = (float)atan2(lenSum, lenDiff) * 229.18311f;

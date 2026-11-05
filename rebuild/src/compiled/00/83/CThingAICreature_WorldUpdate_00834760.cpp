@@ -1,5 +1,6 @@
 // CThingAICreature::WorldUpdate() -- per-frame update of an AI creature: the optional combat stress test, the action, the creature-base update, the movement vector from the last position, then (alive) movement and animation by distance from the camera and the weapon trails; always false
 // Leaf: WorldUpdate
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00834760, length 328 bytes (plain `ret`, no frame pointer; Ego_r.pdb
 //   `?WorldUpdate@CThingAICreature@@UAE_NXZ`; catalog label propagated).
@@ -20,14 +21,7 @@
 //   vector and the camera distance follow the landed player / bullet-time bodies; the weapon trail comes through the
 //   plain entry pick (component loaded straight into ecx).
 #include <math.h>
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLength() const { float s = Z * Z; s += Y * Y; s += X * X; return (float)sqrt(s); }
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
@@ -107,7 +101,7 @@ bool CThingAICreature::WorldUpdate()
     m_updateFlags |= 2;
     CCamera* camera = GetCamera();
     const C3DVector& pos = PeekPos();
-    float distance = (camera->GetPosition() - pos).GetLength();
+    float distance = (camera->GetPosition() - pos).GetMagnitude();
     if (!IsDead()) {
         UpdateMovement(distance);
         UpdateAnimation(distance);

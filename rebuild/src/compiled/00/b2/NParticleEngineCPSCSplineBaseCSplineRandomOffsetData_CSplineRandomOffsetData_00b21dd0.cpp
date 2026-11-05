@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::CSplineRandomOffsetData(CCardinalSpline* initialSpline) -- copy the initial spline as the current one, start an empty previous spline, and size the offset limit/speed arrays to the control-point count
 // Leaf: ??0CSplineRandomOffsetData
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B21DD0, 181 bytes, `ret 4`.
 // Callees: CArray<C3DVector>::operator= @ 0x0075B8D0 (the copy constructor of ThisSpline's array assigns after zeroing),
 //   CArray<C3DVector>::resize(size_type, const C3DVector&) @ 0x0075C040 (catalog "vector<CBrainBehaviour>::resize",
@@ -11,10 +12,7 @@
 //   memberwise copy over CArray's copy constructor (zero the three words, then the out-of-line assignment); the arrays
 //   use the STLport `_Vector_base` + alloc-proxy shape; the two resizes share one uninitialised C3DVector() default
 //   argument slot in the 12-byte frame.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 template <class T> struct SRetailAllocProxy {   // STLport _STLP_alloc_proxy: the end-of-storage pointer
     T* _M_data;
     SRetailAllocProxy(T* data) : _M_data(data) {}

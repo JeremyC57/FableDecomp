@@ -1,4 +1,5 @@
 // CEngineWeatherRenderer::IsPointInPrecipitation(const C3DVector& point) -- true when the point lies within any of the three weather masks' bounding spheres grown by the weather box's bounding-sphere radius
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Length respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B52090, 142 bytes (+ int3 padding).
 // Callees: CEngineWeatherRenderer::GetBoxBoundingSphereRadiusSquared() @ 0x00B50E50 (float), the `fsqrt` intrinsic.
 // Layout: engine/CEngineWeatherRenderer.h keeps WeatherMaskList (CWeatherMask[3], 0x5c bytes each) at +0x66c as opaque bytes;
@@ -13,13 +14,7 @@
 extern "C" double __cdecl sqrt(double value);
 #pragma intrinsic(sqrt)
 
-class C3DVector { public:
-    float x, y, z;
-    C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(x - o.x, y - o.y, z - o.z); }
-    float Length() const { return (float)sqrt(x * x + y * y + z * z); }
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingSphere { public:
     C3DVector Centre;                            // +0x00
@@ -44,7 +39,7 @@ long CEngineWeatherRenderer::IsPointInPrecipitation(const C3DVector& point)
     float boxRadius = (float)sqrt(GetBoxBoundingSphereRadiusSquared());
     for (long i = 0; i < 3; ++i) {
         const C3DBoundingSphere& sphere = WeatherMaskList[i].BSphere;
-        if ((point - sphere.GetCentre()).Length() < boxRadius + sphere.Radius)
+        if ((point - sphere.GetCentre()).GetMagnitude() < boxRadius + sphere.Radius)
             return 1;
     }
     return 0;

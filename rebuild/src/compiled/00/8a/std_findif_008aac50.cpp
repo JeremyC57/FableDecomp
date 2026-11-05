@@ -1,5 +1,6 @@
 // std::__find_if(C3DVector* first, C3DVector* last, unary_negate<CVectorFilter_FurtherFromPointThan> pred, const random_access_iterator_tag&) -- STLport random-access find_if: the first point within the filter's XY radius of its centre (four predicate tests per pass, then the 3/2/1 remainder), or last
 // Leaf: ??$__find_if@PAVC3DVector@@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@0V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@ABUrandom_access_iterator_tag@0@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AAC50, 411 bytes, /Gr `__fastcall` (first in ecx, last in edx; the 16-byte
 //   predicate by value and the tag reference on the stack), `ret 14h`.
 // Identity (proven): bound under this spelling; called by the landed remove_if<C3DVector*, unary_negate<
@@ -16,11 +17,7 @@
 //   lane dead-code eliminated) re-keys the x87 operands so the FIRST inlined copy squares dx before dy, as retail; the earlier
 //   open-coded 2D delta (`C2DVector delta(pos.X - CentrePos.X, ...)`, dx/dy locals, radius locals) squared dy first there.
 //   The landed out-of-line 0x008AABC0 still grades MATCH with this predicate body (probe), so both TUs can share it.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    const C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-};
+#include "engine/C3DVector.h"
 
 class C2DVector { public:
     float X, Y;

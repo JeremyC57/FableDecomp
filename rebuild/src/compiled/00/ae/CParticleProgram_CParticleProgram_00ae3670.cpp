@@ -1,5 +1,6 @@
 // CParticleProgram::~CParticleProgram() -- clears the program, then destroys its members in reverse order: the loop stack, the constraint stream, the two group arrays, the index / position / texture-coordinate arrays, the render arrays, the export-particle map and the embedded initial simulation
 // Leaf: ??1CParticleProgram@@UAE@XZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Grades: 1 (RELOCATION_MATCH first grade)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE3670, 338 bytes, thiscall, plain `ret`.
@@ -45,12 +46,7 @@ class CCharString { public:                                   // 4 bytes
     CCharStringData* PStringData;
 };
 
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {   // retail 0x10
-public:
-    C    Compare;                                             // +0x0C
-    bool Dirty;                                               // +0x0D
-};
+#include "engine/CVectorMap.h"
 
 class CMemoryDataOutputStream { public:                       // retail 0x18 bytes, vtable
     virtual ~CMemoryDataOutputStream();                       // 0x00996B30

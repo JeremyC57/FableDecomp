@@ -1,4 +1,5 @@
 // NScreenEffect::CScreenEffectPriorityStack::CRadialBlurProcess::ResetToDefault() -- zero the stack's current radial-blur parameters and both centres, then take the position parameters of the top entry of the highest-priority non-empty radial-blur list
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00880EC0, 138 bytes (row padded to 144). Virtual slot 1 of CRadialBlurProcess's
 // vtable 0x0127803C; FableWin.pdb lists ?ResetToDefault@CRadialBlurProcess@CScreenEffectPriorityStack@NScreenEffect@@UAEXXZ.
 // No callees.
@@ -10,12 +11,7 @@
 // `add eax,1Ch`), the two centres through the inline C3DVector::Initialise(x,y,z) (address formed first); assigning C3DVector
 // temporaries leaves dead frame stores. The search loop reuses the zero register as the index; the found list's front entry's
 // PosParams is a 32-byte POD copied with `rep movsd`.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    void Initialise(float x, float y, float z) { X = x; Y = y; Z = z; }
-};
+#include "engine/C3DVector.h"
 class CRGBFloatColour { public:
     float R, G, B, A;
     void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }

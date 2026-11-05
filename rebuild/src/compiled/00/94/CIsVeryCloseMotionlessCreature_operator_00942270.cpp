@@ -1,5 +1,6 @@
 // CIsVeryCloseMotionlessCreature::operator()(CThing* thing) const -- a creature of category 2 whose kind-2 component shows no movement since the last frame (squared step <= 1e-4 squared) and whose ground distance from MyPos is under 1.4 times the sum of its physics radius and MyRadius
 // Leaf: ??RCIsVeryCloseMotionlessCreature
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00942270, 210 bytes, `ret 4`.
 // Callees: the creature category getter @ 0x00662000 (def +0xe0 -> +0xc4; landed callers name it), the const
@@ -14,13 +15,7 @@
 //   nested ifs sharing the `xor al,al` exit.
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double x);
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) {}
@@ -89,7 +84,7 @@ bool CIsVeryCloseMotionlessCreature::operator()(CThing* thing) const
 {
     if (thing->GetCreatureCategory() == 2) {
         CTCMotion* motion = GetMotionIfPresent(thing);
-        if (!((motion->Position - motion->LastPosition).GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)) {
+        if (!((motion->Position - motion->LastPosition).GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)) {
             const C3DVector& pos = thing->PeekPos();
             if (C2DVector(pos.X - MyPos.X, pos.Y - MyPos.Y).GetLength() < (thing->m_pBody->Radius + MyRadius) * 1.4f)
                 return true;

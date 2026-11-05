@@ -1,4 +1,5 @@
 // CThingCreatureBase::AutoPlaceNear(const C3DVector& position, float radius) -- find a wander position near the point and, if one exists, move the creature there (navigation reset before and after the physics reset)
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665DF0, 149 bytes (`ret 8`).
 // Callees: CInterfaceMap::LowerBound @ 0x0040F020, CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector*, float,
@@ -9,12 +10,7 @@
 // Shape: `T* p = 0; if (HasTC(k)) p = GetTC(k);` (the preloaded `xor esi,esi`), the result vector initialised from the
 //   argument through a `__forceinline` memberwise copy ctor (dword copies straight from the argument pointer in eax;
 //   the implicit copy goes through `mov ecx,eax`), the `false` pushed first.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    __forceinline C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"

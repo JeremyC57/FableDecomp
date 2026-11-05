@@ -1,4 +1,5 @@
 // CTCSmokeGenerator::CreatePositions() -- once the owner's graphic appearance has its resources, collect the focus_chimney_01..09 helper points as smoke generation positions (stopping at the first missing one), then take the generation distance from the smoke def and mark the positions created
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe @ 0x00722590, 432 bytes (plain `ret`).
 // Callees: LowerBound 0x004365B0 (const overload), CTCGraphicAppearance::IsResourcesLoaded 0x004BE3E0 / GetHelperPoint 0x004C0560,
@@ -9,11 +10,7 @@
 // Layout: Ego_r.pdb CTCSmokeGenerator with the retail 12-byte vector: GenerationDistance +0x0c, GenerationPositions +0x10,
 //   PositionsCreated +0x1c; CGenerationPos {C3DVector, CIntelligentPointer<CThing>} 0x14 bytes; CThing TC bitset +0x20
 //   (0x5b = +0x28 bit 27), interface map +0x44, def class +0x70; the smoke def's distance +0x28.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
-};
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_data;
     CCharString();                                      // 0x0099E4B0

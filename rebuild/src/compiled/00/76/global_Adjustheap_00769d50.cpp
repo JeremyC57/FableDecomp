@@ -1,6 +1,7 @@
 // _global::_Adjust_heap(SKeyedVector*, long, long, SKeyedVector, SKeyLess) -- Dinkumware heap sift-down for 16-byte (unsigned long key, C3DVector) pairs ordered by an unsigned key less, then _Push_heap @ 0x00769470
 // Flags: /Gr
 // Leaf: _Adjust_heap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00769d50, 169 bytes.
 // Callee: 0x00769470 _Push_heap (same instantiation).  first in ecx, hole in edx (link-time
 // __fastcall); bottom, the 16-byte pair by value (built in its argument slot: `sub esp,10h ;
@@ -15,10 +16,7 @@
 // copies the vector as a block through `add eax,4`).
 namespace FableHeap_00769d50 {
 
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise user copy (no user operator=)
-};
+#include "engine/C3DVector.h"
 
 struct SKeyedVector {
     unsigned long m_key;

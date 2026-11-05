@@ -1,0 +1,31 @@
+Plan phase 4, wave "w4" (2026-11-05): step 4. CScriptThing local stand-ins moved onto engine/CScriptThing.h (FABLE_RETAIL_NSCRIPT).
+
+HEADER: engine/CScriptThing.h is used as it is. Under FABLE_RETAIL_NSCRIPT it already declares ~CScriptThing (slot 0, 0x004AA840)
+  and the copy 0x004ABE90 out of line, with the per-TU opt-outs FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY / _ASSIGNMENT. No
+  change and no new sub-macro, so there is no includer regrade. The header's contract (CCountedPointer<T> defined first) is met
+  by including engine/CCountedPointer.h when the row has no local CCountedPointer; a local CCPPointerInfo is then removed with it.
+ROWS: 33 PASS under vland --recheck-landed (RELOCATION_MATCH 33); parity equal to the landed source on every row; gate.py 33 of 33.
+  - Scope (brief): only rows whose relocations reach BOTH ~CScriptThing 0x004AA840 and the copy 0x004ABE90 (index BIND.tsv), and
+    that carry no `// Revisit: inline-depth` or `two-view` marker.
+  - Survey (st_survey.tsv, scripts/stsurvey.py): 432 local CScriptThing rows at HEAD. 178 have the polymorphic model with a
+    declared dtor and a declared or implicit copy; those were tried. 68 pass hdrmig4: 33 call both (this wave); 35 call only one
+    or neither (DEFERRED `scope`: gate-ready, same bytes).
+  - The local CBaseClass goes too (the header includes engine/CBaseClass.h).
+  - No ??_G side effect: the dtor stays a declaration, so no includer gains an implicit ??_G COMDAT. Every row grades the same
+    leaf with the same length before and after.
+CALLERS / BINDINGS / QUEUE: 1 respell, 0x00EEA7C0 NScript::CExpressionDigScript::Main.
+  - The change: IsAlive (0x004AB130), called directly on a by-value CScriptThing, goes from the stand-in
+    ?IsAlive@CScriptThing@@QBE_NXZ to ?IsAlive@CScriptThing@@UBE_NXZ (virtual).
+  - Why it is accepted: that is the spelling in BOTH Ego_r.pdb (0x00429B90) and FableWin.pdb (0x018CD5F0), and the header's slot 75.
+    hdrmig4 `accept_pdb_respell` takes only a spelling that is in both PDB name lists, on the same retail target.
+  - Effect: BINDINGS RETIRE the QBE stand-in (no other binder). NAME_FIXES_QUEUE line 4613 closes.
+DEFERRED.tsv (145):
+  - scope 35;
+  - compile_fail 88:
+    - CCountedPointer undefined / defined after the class 46, or a non-template stand-in 11 (a CCountedPointer wave first);
+    - MsgIsHitBySpecialAbilityFrom(int, ..), where the header takes EHeroAbility: 6;
+    - raw PImp_Data reads: 5;
+    - others;
+  - bytes_differ 22.
+NOT DONE (see the hand-back / NEXT.md): the 121 CActiveEntityScript<T> ??_G rows (DECISIONS_W29_RESOLVED D1 still blocks: retail
+  expands the implicit ~CActiveEntityScriptBase, VC7.1 RTM calls it), and the 65 inline-depth / 17 two-view rows (left alone).

@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverMovementBase::AIAction_MoveToAndFaceThingAtDistance(EAIActionRepeat, CIntelligentPointer<CThingCreatureBase>&, float, bool&, EMovementType) -- move to the point `distance` out from the thing along the thing-to-creature direction (flattened), facing the thing; once (with movement 8) or repeated while the move reports 4; 3 for a dead/missing thing or another repeat mode
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091D320, length 491 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440,
 // own virtual slot 22 (+0x58) AIAction_MoveToPosAndFacePos(EAIActionRepeat, const C3DVector&, const C3DVector&, bool&,
@@ -12,14 +13,7 @@ typedef long EAIActionRepeat;
 typedef long EMovementType;
 typedef long EAIActionReturn;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-    C3DVector operator*(float scale) const { return C3DVector(X * scale, Y * scale, Z * scale); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: Dead

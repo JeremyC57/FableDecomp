@@ -1,5 +1,6 @@
 // CAIStateGroup_HandyMan::AcquireWorkSpot() -- drop the current work spot and pick a random other object with the work-spot property within 20 units (searched in the 60-unit square round the creature); false when there is none
 // Leaf: ?AcquireWorkSpot@CAIStateGroup_HandyMan@@AAE_NXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091B010, length 351 bytes, plain `ret`. Ego_r.pdb name (private, bool);
 //   Ego_r donor order: GetAllThingsInRoughArea<CThingObject, list<CThingObject*>, CFilter_Bind2<CThingFilter_ObjectHasProperty,
 //   CThingFilter_In2DRange> > immediately before it, IsRunnable / Update after it.
@@ -60,11 +61,7 @@ template <class T, class A = allocator<T> > class list : public _List_base<T, A>
 };
 }
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-};
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(long tlx, long tly, long brx, long bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}

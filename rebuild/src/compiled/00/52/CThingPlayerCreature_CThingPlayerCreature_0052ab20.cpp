@@ -1,5 +1,6 @@
 // CThingPlayerCreature::CThingPlayerCreature() -- player creature: CThingCreatureBase(2) base, vtable, the relative-movement acceleration map built empty, the two def pointers cleared
 // Leaf: ??0CThingPlayerCreature@@QAE@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x0052AB20, 93 bytes (16-aligned /O2 entry), thiscall `ret`, returns this.
 // Identity: the stored vtable 0x012457FC is RTTI .?AVCThingPlayerCreature@@ (base CThingCreatureBase); PDB name set
 // `??0CThingPlayerCreature@@QAE@XZ`; callers the thing factory thunk 0x0052B892 (`jmp`) and 0x006AC933. The catalog
@@ -64,10 +65,7 @@ class map { public:
 };
 }
 #pragma pack(push, 1)
-class C3DVector { public:
-    C3DVector() {}
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 template <class T> class CDefPointer { public:
     CDefPointer() : Data(0) {}

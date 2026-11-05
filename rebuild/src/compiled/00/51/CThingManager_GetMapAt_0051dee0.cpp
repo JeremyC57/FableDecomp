@@ -1,5 +1,6 @@
 // CThingManager::GetMapAt(const C3DVector& pos) -- truncates the position's x/y to a cell coordinate and returns the world map's CMap there
 // Leaf: ?GetMapAt@CThingManager@@QAEAAVCMap@@ABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051DEE0, length 55 bytes.
 // Callees: __ftol2 @ 0x00BFEA70 (x2), CWorldMap::GetMapAt(const C2DCoordI&) virtual slot 14 (+0x38).
 // Reached by the CThing::GetMapAt thunk 0x004C79B0 (`mov ecx,[0x013B8A1C] ; jmp`, the global thing manager).
@@ -10,15 +11,7 @@
 // retail base is 0xc smaller). Shape: the coordinate is a frame local filled member by member
 // (x converted and stored first -- a two-argument constructor would evaluate y first), its
 // address passed to the virtual call, whose result is returned unchanged.
-class C3DVector {
-public:
-    float X, Y, Z;
-};
-class C2DCoordI {
-public:
-    long X;
-    long Y;
-};
+#include "engine/C3DVector.h"
 class CMap;
 class CWorldMap {
 public:

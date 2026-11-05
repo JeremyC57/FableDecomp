@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSpline::CollectUpdateParameters(CParticleUpdateParameters<unsigned long,unsigned long>& params, const unsigned long& prefix) -- vtable slot 10: registers the spline component as the update-parameter callback for key `prefix`
 // Leaf: ?CollectUpdateParameters@CPSCSpline@NParticleEngine@@UAEXAAV?$CParticleUpdateParameters@KK@2@ABK@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1B380, length 159 bytes, `ret 8`.
 // Signature from Ego_r.pdb: ?CollectUpdateParameters@CPSCSpline@NParticleEngine@@UAEXAAV?$CParticleUpdateParameters@KK@2@ABK@Z;
 //   slot 10 of the CPSCSpline vtable 0x012A0934 (absolute ref 0x012A095C).
@@ -82,7 +83,7 @@ public:
     CParticleUpdateParamDesc(CParticleUpdateParamCallback<A, B>* callback, unsigned long data) : Callback(callback), Data(data) { }
 };
 
-struct C3DVector { float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 template <class A, class B> class CParticleUpdateParameters {
 public:

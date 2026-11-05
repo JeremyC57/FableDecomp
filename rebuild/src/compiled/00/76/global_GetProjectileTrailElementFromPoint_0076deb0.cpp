@@ -1,5 +1,6 @@
 // GetProjectileTrailElementFromPoint(const C3DVector& point) -- (file-local, anonymous namespace) the two edge points of a projectile's weapon-trail element at a point: half of an eighth of the render camera's up vector below and above the point
 // Leaf: ?GetProjectileTrailElementFromPoint@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076DEB0, 216 bytes (+8 int3), `__fastcall` (hidden pair result in ecx,
@@ -16,16 +17,7 @@
 //   and VC7.1 CSEs the halves (the `fld st(0)` duplicate and the scattered spills); a named `half` local gives a 0x50 frame,
 //   the copy constructor without the CSE a 0x5c one. The second argument is evaluated first.
 // The file-local helper is kept emitted by the exported caller below (not part of the graded body).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-};
+#include "engine/C3DVector.h"
 
 namespace std {
 template<class T1, class T2> struct pair {

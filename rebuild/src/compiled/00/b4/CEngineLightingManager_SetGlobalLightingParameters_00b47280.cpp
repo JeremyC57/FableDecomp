@@ -1,4 +1,5 @@
 // CEngineLightingManager::SetGlobalLightingParameters(const C3DVector& diffuseVector, const CRGBFloatColour& ambient, const CRGBFloatColour& diffuse, const CRGBFloatColour& backlight) -- stores the global light direction (normalised) and the first theme channel's ambient / diffuse / backlight colours, flagging both state groups dirty
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B47280, length 143 bytes (144 with padding).
 // Callees: C3DVector::AccurateNormalise @ 0x00A14440 (in place on the member; the manifest's "GetScaled" label is propagated).
 // Shape: StateUpdateFlags |= 3 first (the theme-channel array pointer is loaded above it), then the three 16-byte colours
@@ -7,10 +8,7 @@
 // Layout: PDB CEngineLightingManager has a 16-byte CArray<CThemeChannel> at +0x3C and StateUpdateFlags at +0xF0; the
 // retail CArray is 12 bytes (its first word is the element pointer), so the flags sit at +0xE4 -- modelled locally with
 // the PDB member names (CThemeChannel is the PDB's 0x70-byte record).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector& AccurateNormalise();                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 
 class CRGBFloatColour { public:
     float R, G, B, A;

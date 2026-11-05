@@ -1,5 +1,6 @@
 // GetRenderPositionForThing(const CThing& thing, float interpolation) -- the thing's render position: its physics position interpolated from last frame's position (exact when interpolation == 1), raised by the physics render Z offset for creatures
 // Leaf: ?GetRenderPositionForThing@?A0x
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // (Leaf is a prefix: the anonymous-namespace hash varies with the file path; it excludes the Call... wrapper.)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BBF00, length 180 bytes, `ret 4`: __fastcall (hidden C3DVector result
 // in ecx, the thing in edx, the interpolation on the stack).
@@ -15,16 +16,7 @@
 // Layout: CThing type byte +0x10, PhysicsTC +0x60 (retail; PDB +0x70 with 16-byte containers). engine/CTCPhysicsBase.h
 // exists (Position +0x0C, OldPosition +0x18 agree) but flattens the C3DVectors to floats and has no virtual interface for
 // slot 79, so the physics component is a local model with the same offsets.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-};
+#include "engine/C3DVector.h"
 
 #define VSLOT(n) virtual void vslot##n();
 #define VSLOT10(n) VSLOT(n##0) VSLOT(n##1) VSLOT(n##2) VSLOT(n##3) VSLOT(n##4) VSLOT(n##5) VSLOT(n##6) VSLOT(n##7) VSLOT(n##8) VSLOT(n##9)

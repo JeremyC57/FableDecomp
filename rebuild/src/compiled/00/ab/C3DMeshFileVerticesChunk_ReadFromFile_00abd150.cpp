@@ -3,10 +3,11 @@
 // Shared target header gives VertexList +0x10. Only its first three pointer slots are used (retail12 vs donor16).
 // PDB C3DVertex2 has Position +0, Normal +12, U +24, V +28, total32; default construction leaves fields uninitialized.
 // Leaf: ReadFromFile@C3DMeshFileVerticesChunkMethods
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/C3DMeshFileVerticesChunk.h"
-class C3DVector { public:float X,Y,Z;}; // no generated C3DVector header exists
+#include "engine/C3DVector.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 struct CInputStreamVirtuals { virtual void v0(); virtual void v1(); virtual unsigned long GetPosition(); };

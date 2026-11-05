@@ -1,5 +1,6 @@
 // CPersistContext::Transfer(CRandomAppearanceMorph& value) -- persist a random-appearance morph by binary stream only: CRC-check the empty key, build the default value, then load or save the morph by the context's binary mode
 // Leaf: ??$Transfer@
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00676740, 256 bytes (247 without padding), thiscall `ret 4`.
 // Callers: CCreatureDef::Transfer 0x00675E20 (PRandomAppearanceMorph's object, `call` at 0x00675E61) and the two-argument
@@ -29,13 +30,7 @@ class CMemoryDataInputStream;
 #include "engine/CArray.h"
 
 
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class Compare> class CVectorMap {   // retail 16 bytes
-public:
-    CArray<std::pair<K, V> > m_vector;                 // +0x00
-    Compare                  m_compare;                // +0x0c (empty)
-    bool                     m_sorted;                 // +0x0d
-};
+#include "engine/CVectorMap.h"
 
 class CRandomAppearanceMorph {                         // retail 0x3c bytes
 public:

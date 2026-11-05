@@ -1,5 +1,6 @@
 // NShape::CShape::OnSerialise(CPersistContext& context, long index, const C2DCoordI& offset) -- persist shape `index` as "Shape[<index>]": its type name ("<name>.Type", only for the two known shape types), the point count ("<name>.size()") and every point ("<name>.pos[<i>].X/.Y/.Z", X and Y relative to the integer offset)
 // Leaf: ?OnSerialise@CShape@NShape@@UAEXAAVCPersistContext@@JABVC2DCoordI@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00761C00, 821 bytes (+ int3 padding), thiscall `ret 0Ch`; NShape::CShape vtable 0x0126A208 slot 2
 //   (Ego_r.pdb ?OnSerialise@CShape@NShape@@UAEXAAVCPersistContext@@JABVC2DCoordI@@@Z).
 // Callees: CCharString(const char*, long) 0x0099EBF0, GFIntToCharString(long) 0x0099F830 (__fastcall, hidden result in ecx),
@@ -135,8 +136,7 @@ __declspec(noinline) void CPersistContext::Transfer<float>(const char* name, flo
 
 #pragma auto_inline(on)
 
-class C2DCoordI { public: long X, Y; };
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {      // STLport 4.6 (12 bytes)

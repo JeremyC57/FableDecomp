@@ -1,22 +1,16 @@
 // CMap::InitPassabilityFromThemesIfNecessary(const C2DBoxI&) -- when the map still needs it, mark each height-field cell of the area passable unless its theme forbids it or the ground there is steeper than a 0.7 normal
 // Leaf: InitPassabilityFromThemesIfNecessary
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Shape: same-TU out-only stand-ins for GetDef<CThemeDef> (0x0063F3A0) and CMap::GetThemeIndexAt (0x0081F910) keep the
 //   cell position, the weight and the def from escaping (x in edi, one shared out/def word, the def released without a
 //   re-read); the theme clears passability when it lacks flag 0 or has a positive Passability (`if (...) passable =
 //   false;` -- retail keeps the cell passable for Passability <= 0); the cell pointer steps before x.
 // Callees: CMap theme lookup 0x0081F910 (labelled CopyPos), CGameDefinitionManager::Get 0x0044C6B0 (__fastcall), CDefinitionManager::GetDef<T> 0x0063F3A0, CMap::GetGroundFaceNormalAt 0x0081F6C0; constants 0.0f @ 0x0122DEDC, 0.7f @ 0x01255318.
 // Layout: no CMap engine header; local model (height field +0x1A7C: cells +0x10 of 12 bytes, width +0x204, height +0x208; passability flag +0x1D38; theme def flags +0xA0 bit 0, passability +0x80).
-class C2DCoordI { public:
-    long X, Y;
-};
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI Min;
     C2DCoordI Max;
-};
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 struct CHeightFieldCell {
     unsigned char _pad00[9];

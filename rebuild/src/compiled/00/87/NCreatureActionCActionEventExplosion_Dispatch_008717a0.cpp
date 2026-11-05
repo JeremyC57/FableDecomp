@@ -1,4 +1,5 @@
 // NCreatureAction::CActionEventExplosion::Dispatch(const CCreatureActionBase&) -- resolve an effect point, create its thing, and add the source as an explosion exclusion
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4) re-padded by-value maps +8.
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail address 0x008717a0, 262 bytes. Captures SourceThing's appearance before the action helper-name callback; TC41 is CTCDExplosion and AddExcludedThing appends to ImmuneThings. PDB CThing uses UsingComponents/Components/PTCGraphicAppearance at +0x20/+0x48/+0x74; the local retail view adjusts Components to +0x44 and PTCGraphicAppearance to +0x64. CTCDExplosion::ImmuneThings is donor +0x68 and retail +0x60 after native vector widths differ.
 #include "fable_string.h"
@@ -12,15 +13,7 @@ class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 class CThing;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
-    Entry* First;
-    Entry* Last;
-    Entry* LowerBound(const ETCInterfaceType& type); // 0x0040F020
-};
+#include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CCreatureActionBaseVirtuals {
     virtual ~CCreatureActionBaseVirtuals();
@@ -56,7 +49,7 @@ class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
-    unsigned char _pad4c[0x18];
+    unsigned char _pad54[0x10];
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64, native adjusted view from PDB +0x74
     const C3DVector& GetPos() const;    // 0x004C73D0
 };
@@ -94,9 +87,9 @@ void CActionEventExplosion::Dispatch(const CCreatureActionBase& action)
         if ((created->UsingComponents[2] & 2) != 0) {
             CInterfaceMap* components = &created->Components;
             ETCInterfaceType key = (ETCInterfaceType)(0x41);
-            CInterfaceMap::Entry* found = components->LowerBound(key);
-            if (found == components->Last || found->first > 0x41)
-                found = components->Last;
+            CInterfaceMap::value_type* found = components->LowerBound(key);
+            if (found == components->end() || found->first > 0x41)
+                found = components->end();
             explosion = (CTCDExplosion*)((void*)found->second);
         }
         explosion->AddExcludedThing(SourceThing);

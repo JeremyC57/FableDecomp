@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleThingLookAtUpperBody::Update() -- while the thing exists, put the owning camera in front of its upper body (camera focal position plus 1.25 x its facing) looking at that focal position
 // Leaf: ?Update@CScriptModuleThingLookAtUpperBody
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852C40, length 199 bytes (`ret`).
 // PDB: ?Update@CScriptModuleThingLookAtUpperBody@NCameraModes@@UAEXXZ. Label correction: the catalog calls this CScriptModuleThingLookAtFace like
 // 0x00852B70; the PDB's only other ThingLookAt Update is CScriptModuleThingLookAtUpperBody, taken for the wider framing
@@ -14,13 +15,7 @@
 // RETURN A CONSTRUCTED TEMPORARY (`return C3DVector(X * s, ...)`): VC keeps the scaled x/y on the x87 stack (z spilled)
 // and builds the sum in the frame; operators filling a named `result` local copy it through memory instead. The sum
 // goes to the owner by integer moves, then the look-at copy.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator*(float scale) const { return C3DVector(X * scale, Y * scale, Z * scale); }
-    C3DVector operator+(const C3DVector& other) const { return C3DVector(X + other.X, Y + other.Y, Z + other.Z); }
-};
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase {
 public:

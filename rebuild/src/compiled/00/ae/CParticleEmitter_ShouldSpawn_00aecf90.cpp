@@ -1,6 +1,7 @@
 // CParticleEmitter::ShouldSpawn(const C3DVector&) const -- continuous emitters always spawn; otherwise only when the position lies within MaxSpawnDistance of the particle engine camera
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AECF90, length 118 bytes (padded to 128).
 // Leaf: ShouldSpawn
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 35c (caller respell): calls 0x00AEAB10 as NParticleEngine::GetEnvironmentInteraction() (?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ, FableWin.pdb); the object is the CAEnvironmentInteraction (was CParticleCamera* GetParticleCamera()); its slot 6 keeps the local name.
 // Callees: the particle-engine camera getter @ 0x00AEAB10 (returns the global 0x013D2E2C; manifest label
 // "GFGetPreMainMemoryUsed" is propagated), the camera's virtual GetPosition() at slot 6 (+0x18, C3DVector by hidden pointer).
@@ -10,13 +11,7 @@
 // (memberwise user copy ctor, so the three differences stay on the FPU stack); the length squared is summed first and the
 // limit squared second, and the test is written `!(lengthSq <= max * max)` -- that gives retail's `test ah,1 ; je`
 // (`>` gives `test ah,5 ; jp`, `max*max < lengthSq` squares the limit first).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-};
+#include "engine/C3DVector.h"
 namespace NParticleEngine {
 class CAEnvironmentInteraction { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

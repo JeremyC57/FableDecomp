@@ -1,5 +1,6 @@
 // CGameScriptInterface::GetFaceHeroForAction(CScriptThing thing) -- script query: false when the script thing resolves no thing, else the thing's CTCAIScratchpad::FaceHeroForAction flag (read through CThing::GetTC<CTCAIScratchpad>); the by-value CScriptThing is destroyed inline
 // Leaf: ?GetFaceHeroForAction@CGameScriptInterface@@UAE_NVCScriptThing@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A4560, 240 bytes, thiscall, `ret 0Ch` (the 12-byte CScriptThing by value).
 // Identity (proven): CGameScriptInterface::GetFaceHeroForAction(CScriptThing); evidence: CGameScriptInterface vtable slot 800 (ghidra_out/cgsi_slots_aligned.tsv) holds this body as ?GetFaceHeroForAction@CGameScriptInterface@@UAE_NVCScriptThing@@@Z, which FableWin.pdb and Ego_r.pdb hold; it reads the bool at +0x4C of interface 0xAA, Ego_r.pdb CTCAIScratchpad::FaceHeroForAction (the PDB getter ?GetFaceHeroForAction@CTCAIScratchpad@@QBE_NXZ; the landed GetActionFrequency 0x008A3D20 reads ActionFrequency +0x40 of the same 0xAA)
@@ -18,66 +19,10 @@
 //   before +0x7C, so its Ego_r.pdb offsets are retail's (FaceHeroForAction +0x4C). The engine CScriptThing / CGameScriptInterface
 //   headers model the vptr as a data member, so both are local here (no CThing / CTCAIScratchpad header exists).
 #include <stddef.h>
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class vector {           // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    iterator begin() { return this->_M_start; }
-    iterator end() { return this->_M_finish; }
-};
-template <size_t _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static size_t _S_whichword(size_t __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(size_t __pos) { return 1UL << (__pos % 32); }
-    _WordT _M_getword(size_t __pos) const { return _M_w[_S_whichword(__pos)]; }
-};
-template <size_t _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    struct reference {
-        typedef _Base_bitset<(_Nb + 31) / 32> _Bitset_base;
-        unsigned long* _M_wp;
-        size_t _M_bpos;
-        reference(bitset<_Nb>& __b, size_t __pos)
-        {
-            _M_wp = &__b._M_w[_Bitset_base::_S_whichword(__pos)];
-            _M_bpos = __pos % 32;
-        }
-        ~reference() { }
-        operator bool() const { return (*(_M_wp) & _Bitset_base::_S_maskbit(_M_bpos)) != 0; }
-    };
-    reference operator[](size_t __pos) { return reference(*this, __pos); }
-    bool operator[](size_t __pos) const { return _Unchecked_test(__pos); }
-    bool _Unchecked_test(size_t __pos) const { return (this->_M_getword(__pos) & this->_S_maskbit(__pos)) != 0; }
-};
-}   // namespace std
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
 
-template <class K, class V> class CKeyPairCompareLess {
-public:
-    bool operator()(const std::pair<K, V>& entry, const K& key) const { return entry.first < key; }
-};
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    typedef typename CArray<value_type>::iterator iterator;
-    CArray<value_type> Data;                                  // +0x00
-    TCompare           Compare;                               // +0x0C
-    bool               Dirty;                                 // +0x0D
-    iterator LowerBound(const K& key);                        // 0x0040F020 for the TC map
-};
 
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };   // enumerators not needed (CTCAIScratchpad is 0xAA)
 class CTCBase;
@@ -92,8 +37,8 @@ public:
             ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::iterator it = map->LowerBound(type);
-            if (it == map->Data.end() || T::INTERFACE_TYPE < it->first)
-                it = map->Data.end();
+            if (it == map->end() || T::INTERFACE_TYPE < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

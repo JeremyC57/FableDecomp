@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverWanderAroundThing::Update() -- three times: pick a wander position within 5m of the live thing, look at the thing, then hover to the position facing it (random movement type 8..10), terminating on any failure
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00959A60, length 400 bytes (vtable 0x0128D1BC slot 12).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 7 = CTCCreatureNavigation, bit 7 of +0x20 as a
@@ -20,9 +21,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 class CThing { public:
     unsigned char _pad0[0x20];

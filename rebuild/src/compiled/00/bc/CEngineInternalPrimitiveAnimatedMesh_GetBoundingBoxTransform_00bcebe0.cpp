@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveAnimatedMesh::GetBoundingBoxTransform(CMatrix3x4& transform) -- a conservative box for the animated mesh: a cube of half-size (|sphere centre| + radius) * Scale plus the renderer's bounds margin, over Scale, centred on the bounding-sphere centre, post-multiplied by the interpolated object transform; always true
 // Leaf: GetBoundingBoxTransform
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCEBE0, length 573 bytes (`ret 4`, virtual
 // ?GetBoundingBoxTransform@CEngineInternalPrimitiveAnimatedMesh@@UAE_NAAVCMatrix3x4@@@Z).
 // Callees: CalcInterpolatedObjectTransform (virtual slot 33, +0x84; `(out, float t, bool)` as the landed
@@ -14,13 +15,7 @@
 // an inline Multiply(a, b) on the target over a named copy `a` of the transform (an operator*= with an internal copy
 // loads the wrong operand of each row-2..4 product); one chained zero store, one chained diagonal store.
 #include <math.h>
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    float GetLength() const { return (float)sqrt(Z * Z + Y * Y + X * X); }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;
     float     Radius;
@@ -82,7 +77,7 @@ public:
 
 bool CEngineInternalPrimitiveAnimatedMesh::GetBoundingBoxTransform(CMatrix3x4& transform)
 {
-    float size = ((MeshInfo->GetBoundingSphere().Radius + MeshInfo->GetBoundingSphere().GetPos().GetLength()) * Scale + g_pEngineRender_01436e80->AnimatedBoundsMargin) / Scale;
+    float size = ((MeshInfo->GetBoundingSphere().Radius + MeshInfo->GetBoundingSphere().GetPos().GetMagnitude()) * Scale + g_pEngineRender_01436e80->AnimatedBoundsMargin) / Scale;
     transform.E12 = transform.E13 = transform.E21 = transform.E23 = transform.E31 = transform.E32 =
         transform.E41 = transform.E42 = transform.E43 = 0.0f;
     transform.E11 = transform.E22 = transform.E33 = size;

@@ -1,4 +1,5 @@
 // CCreatureAction_SummonerLightningOrbOutOfGroundSmash::PerformAction() -- remove creature mode 0x5a through the owner's mode manager when it has one, spawn THING_EXPLOSION_SUMMONER_LIGHTNING_GROUND_SMASH at the summoner and tell the explosion's driver to spare the summoner
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB500, length 189 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 =
@@ -10,7 +11,7 @@
 // Shape: the landed CCreatureAction_ScorpionTailPlunge::PerformAction (0x008C4810) without the explosion null test,
 // preceded by the CHECKED out-parameter mode-manager lookup (component left in eax, `mov ecx,eax`); the lookup key,
 // the def-name string and the unchecked driver out pointer share the one `push ecx` frame word.
-class C3DVector { public: float x, y, z; };
+#include "engine/C3DVector.h"
 class CThing;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

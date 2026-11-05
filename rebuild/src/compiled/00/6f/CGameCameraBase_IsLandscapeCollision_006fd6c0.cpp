@@ -1,5 +1,6 @@
 // CGameCameraBase::IsLandscapeCollision() -- march from the camera position towards the point it looks at in quarter-unit steps, sampling the ground height; if the ground rises above the camera anywhere on the way, lift the camera to two units above the highest sample and report a collision
 // Leaf: IsLandscapeCollision
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Length respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FD6C0, 498 bytes, `ret`.
 // Callees: the world's map accessor (virtual slot 12), C3DVector::AccurateNormalise @ 0x00A14440 (catalog label GetScaled),
 //   CWorldMap::GetGroundSizeZAt 0x0063A300; constants 0.25f 0x0123078C, 1.0f 0x0122DED8, 2.0f 0x0122DCDC.
@@ -7,17 +8,7 @@
 //   scalar floats, which cannot carry the C3DVector arithmetic; offsets match it (position +0x04, PointingAt +0x80,
 //   World +0x8c).
 #include <math.h>
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector& operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; return *this; }
-    float Length() const { return (float)sqrt(X * X + (Y * Y + Z * Z)); }
-    C3DVector& AccurateNormalise();                                    // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 class CWorldMap { public: float GetGroundSizeZAt(const C3DVector& pos) const; };   // 0x0063A300
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -46,7 +37,7 @@ bool CGameCameraBase::IsLandscapeCollision()
     C3DVector step = dir * 0.25f;
     C3DVector pos = start;
     C3DVector highest = start;
-    if (delta.Length() > 1.0f) {
+    if (delta.GetMagnitude() > 1.0f) {
         do {
             float height = map->GetGroundSizeZAt(pos);
             if (height > start.Z) {
@@ -54,7 +45,7 @@ bool CGameCameraBase::IsLandscapeCollision()
                 highest.Z = height;
             }
             pos += step;
-        } while ((target - pos).Length() > 1.0f);
+        } while ((target - pos).GetMagnitude() > 1.0f);
     }
     if (highest.Z > start.Z) {
         Position = C3DVector(highest.X, highest.Y, highest.Z + 2.0f);

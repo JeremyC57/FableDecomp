@@ -1,5 +1,6 @@
 // CThingFilter_IsInTargetingRangeAndFOV::operator()(CThing* thing) const -- a thing passes when it is (almost) at the targeting position, or within the targeting range for it and either inside the targeting cone or the targeter's live lock target
 // Leaf: ??RCThingFilter_IsInTargetingRangeAndFOV
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation); local free operator- removed (the header member operator- is the same inline member-wise computation).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the lock-target test is IS_THING_ALIVE as `template<class T> bool IS_THING_ALIVE(T* const&)` (retail's own IS_THING_ALIVE<T*> signature, 0x0040DCE0), which tests the member in eax; the radius argument goes through an inline Targeter->GetPhysicsTC() accessor so all IsInFOV ctor arguments load before the pushes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008090E0, length 190 bytes, `ret 4`, bool in al.
@@ -13,12 +14,7 @@
 // Shape: the delta is `thing->GetPos() - Position` through an inline operator-, its squared length the inline chain
 //   `s = Z*Z; s += Y*Y; s += X*X;` kept in a named float local (parked in the dead argument slot); the cone test is a temporary
 //   CThingFilter_IsInFOV called in place; the lock-target test is the inline IS_THING_ALIVE plus an identity compare.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    float GetLengthSquared() const { float s = Z * Z; s += Y * Y; s += X * X; return s; }
-};
-inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
+#include "engine/C3DVector.h"
 
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
@@ -63,7 +59,7 @@ struct CThingFilter_IsInTargetingRangeAndFOV {
 
 bool CThingFilter_IsInTargetingRangeAndFOV::operator()(CThing* thing) const
 {
-    float distanceSquared = (thing->GetPos() - Position).GetLengthSquared();
+    float distanceSquared = (thing->GetPos() - Position).GetSquaredMagnitude();
     if (distanceSquared < DELTA_NOTIONAL_ZERO)
         return true;
     float range = GetTargetingRangeForTarget(thing, Targeter, PCarriedThing);

@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerParticleGroup::RenderPrimitive(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&) -- when enabled, queue a 3D particle group as a pool-allocated sub-primitive at its distance from the camera: in list 1 (water-stage group without z-writes) or 0, or for a screen-displacement group (when the displacement pass is available) in lists 5 and 6 with a second displacement sub-primitive; returns 2 (rendered), 0 when disabled
 // Leaf: RenderPrimitive
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBBF70, length 307 bytes (`ret 0Ch`, virtual).
 // Callees: CEngineSubPrimitiveBase::operator new @ 0x00BEB540 (`__fastcall`, size 0x18), CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0,
 // CEngineSubPrimitiveParticleGroup::CEngineSubPrimitiveParticleGroup(CEngineInternalPrimitiveBase&) @ 0x00BBBDB0 (second
@@ -11,12 +12,7 @@
 // three float locals give a 0x10 frame with dx in the argument slot) and a copy of WorldPos (its Z copied through eax); the
 // distance is a named float homed in the dead `primitive` slot; the sort list is the `WaterStage && !ZBufferWritable ? 1 : 0`
 // ternary; RenderFlags/Alpha are assigned after each `new`.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 #include <math.h>
 class CBaseClassNonCopyable {
 protected:

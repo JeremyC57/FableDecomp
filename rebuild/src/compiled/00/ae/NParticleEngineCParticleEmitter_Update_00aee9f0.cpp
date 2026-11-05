@@ -3,6 +3,7 @@
 // while waiting to sleep or when a 3D emitter is out of spawn range of the engine camera, update every active,
 // unfinished particle system, and kill the emitter once none is left running
 // Leaf: ?Update@CParticleEmitter@NParticleEngine@@QAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Naming wave 35c (caller respell): calls 0x00AEAB10 as NParticleEngine::GetEnvironmentInteraction() (?GetEnvironmentInteraction@NParticleEngine@@YIAAVCAEnvironmentInteraction@1@XZ, FableWin.pdb; was CIEngine* GetParticleEngine()); CIEngine stays the Initialise argument type.
 // Naming wave 31 (family pek): the class is NParticleEngine::CParticleEmitter (Ego_r.pdb / FableWin.pdb): own row ?Update@CParticleEmitter@NParticleEngine@@
 //   QAEXXZ (bare Leaf "Update" before), callees ?Initialise@CParticleEmitter@NParticleEngine@@QAE_NPAVCIEngine@@@Z 0x00AEE240 and
@@ -21,13 +22,7 @@
 //   keeps the flag word loaded before it for the ParticleCreationDisabled store. The near-zero tests repeat the
 //   epsilon square (CSE'd and spilled to a frame word) and branch to the velocity refresh on `>`. The disable flag is a
 //   bool local built from (bool) bitfield reads, and the running counter is zeroed before it (ebx pushed early).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C
 #pragma auto_inline(off)
 __declspec(noinline) bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance)   // 0x006614F0
@@ -98,8 +93,8 @@ void NParticleEngine::CParticleEmitter::Update()
     if ((bool)Sleeping)
         return;
     C3DVector position(Transform.Translation.X, Transform.Translation.Y, Transform.Translation.Z);
-    if (OldPos.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO
-        || Velocity.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
+    if (OldPos.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO
+        || Velocity.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         Velocity = position - OldPos;
         OldPos = position;
     } else {

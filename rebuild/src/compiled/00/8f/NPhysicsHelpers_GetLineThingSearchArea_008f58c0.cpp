@@ -1,5 +1,6 @@
 // NPhysicsHelpers::GetLineThingSearchArea(const C3DVector&, const C3DVector&, float) -- integer box around the segment's midpoint, half-size = segment length + 2 * radius
 // Leaf: ?GetLineThingSearchArea@NPhysicsHelpers@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8); local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the PDB ctor C2DBoxI(const C2DCoordI&, long) written as two corner copies
 //   of the centre adjusted in place (tl -= r, br += r) and stored BR first gives retail's copy-then-add tail.
 // Retail 0x008F58C0, 0xA3 bytes, __fastcall (hidden C2DBoxI result in ecx, lineStart in edx, lineEnd and radius on the
@@ -12,40 +13,8 @@
 //   assigns BRX/BRY before TLX/TLY.
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    C3DVector operator-(const C3DVector& v) const
-    {
-        C3DVector result;
-        result.X = X - v.X;
-        result.Y = Y - v.Y;
-        result.Z = Z - v.Z;
-        return result;
-    }
-    C3DVector operator*(float f) const
-    {
-        C3DVector result;
-        result.X = X * f;
-        result.Y = Y * f;
-        result.Z = Z * f;
-        return result;
-    }
-    float GetLength() const
-    {
-        return (float)sqrt(X * X + Y * Y + Z * Z);
-    }
-};
+#include "engine/C3DVector.h"
 
-class C2DCoordI {
-public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) {}
-};
 
 class C2DBoxI {
 public:
@@ -72,6 +41,6 @@ C2DBoxI __fastcall GetLineThingSearchArea(const C3DVector& lineStart, const C3DV
     C3DVector centre = (lineStart + lineEnd) * 0.5f;
     C3DVector line = lineEnd - lineStart;
     C2DCoordI centreCoord((long)centre.X, (long)centre.Y);
-    return C2DBoxI(centreCoord, (long)(line.GetLength() + radius * 2.0f));
+    return C2DBoxI(centreCoord, (long)(line.GetMagnitude() + radius * 2.0f));
 }
 }

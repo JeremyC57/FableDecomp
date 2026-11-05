@@ -1,5 +1,6 @@
 // CCreatureAction_UnsheatheWeapons::PerformAction() -- carry out the (un)sheathe the creature's combat component has pending: sheathe all, unsheathe all / default / melee / ranged by the pending type; when the creature then carries a weapon, refresh its current creature mode and make the SIMPLE_NOISE noise; set up the strike events and clear the pending type
 // Leaf: ?PerformAction@CCreatureAction_UnsheatheWeapons@@UAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B7BA0, 315 bytes of code + `nop` + the 5-entry jump table (row 336), plain `ret`.
 // Identity: Ego_r.pdb `?PerformAction@CCreatureAction_UnsheatheWeapons@@UAEXXZ`; the catalog label is right.
 //   Jump table 0x008B7CDC checked entry by entry: cases 1..5 -> 0x008B7BFE SheatheAllWeapons, 0x008B7C0E UnsheatheAllWeapons,
@@ -20,46 +21,8 @@
 //   0x008B7ED0 stores it there); CThing UsingComponents +0x20, Components +0x44; CCreatureActionBase PCreature +0x08.
 // Shape: the pending type 0 returns before the switch (`test ; je` to the shared pops), cases 1..5 through the table; the
 //   noise string is block-scoped, so it shares the one `push ecx` frame word with both lookup keys.
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { public: allocator() { } };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    iterator end() { return this->_M_finish; }
-};
-template <unsigned int _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static unsigned int _S_whichword(unsigned int __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(unsigned int __pos) { return 1UL << (__pos % 32); }
-};
-template <unsigned int _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    struct reference {
-        typedef _Base_bitset<(_Nb + 31) / 32> _Bitset_base;
-        unsigned long* _M_wp;
-        unsigned int _M_bpos;
-        reference(bitset<_Nb>& __b, unsigned int __pos)
-        {
-            _M_wp = &__b._M_w[_Bitset_base::_S_whichword(__pos)];
-            _M_bpos = __pos % 32;
-        }
-        ~reference() { }
-        operator bool() const { return (*(_M_wp) & _Bitset_base::_S_maskbit(_M_bpos)) != 0; }
-    };
-    reference operator[](unsigned int __pos) { return reference(*this, __pos); }
-};
-}   // namespace std
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#include "engine/CVectorMap.h"
 
 enum ETCInterfaceType { };
 class CTCBase;
@@ -67,16 +30,6 @@ class CCharString { public:
     void* PStringData;                                      // +0x00
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
-};
-template <class T> class CArray : public std::vector<T> { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                                  // +0x00
-    TCompare           Compare;                               // +0x0C
-    bool               Dirty;                                 // +0x0D
-    value_type* LowerBound(const K& key);                     // 0x0040F020 for the TC map
 };
 
 class CThing { public:                                      // partial view, retail offsets
@@ -90,8 +43,8 @@ class CThing { public:                                      // partial view, ret
         if (UsingComponents[T::INTERFACE_TYPE]) {
             TCMap* map = &Components;
             TCMap::value_type* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
-            if (it == map->Data.end() || T::INTERFACE_TYPE < it->first)
-                it = map->Data.end();
+            if (it == map->end() || T::INTERFACE_TYPE < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }

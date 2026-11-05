@@ -10,18 +10,11 @@
 // the Z sum is homed in the dead `pos.X` argument slot) passed as `C3DVector(x, y, z)` (a C3DVector local takes three
 // frame words); the turn speed literal is 0.0027777f (not 1.0f/360.0f); the look-at runs twice; `return r == 2;` (full-register bool).
 // Leaf: WalkTo@CAIStateGroup_EatAtTable
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLength respelled GetMagnitude (the header / FableWin.pdb method, same computation).
 #include <math.h>
 class CThing;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    void operator+=(const C3DVector& o) { X += o.X; Y += o.Y; Z += o.Z; }
-    float GetLength() const { return (float)sqrt(X * X + Y * Y + Z * Z); }
-};
+#include "engine/C3DVector.h"
 
 class CRightHandedSet { public:
     C3DVector Up;                                  // +0x00
@@ -56,7 +49,7 @@ struct CAIStateGroup_EatAtTable : CAIStateGroupBase {
 bool CAIStateGroup_EatAtTable::WalkTo(C3DVector pos, CRightHandedSet axes)
 {
     long movementType = 3;
-    if (PBrain->PCreature->GetMovementMode() == 1 && (pos - PBrain->PCreature->GetPos()).GetLength() > 8.0f)
+    if (PBrain->PCreature->GetMovementMode() == 1 && (pos - PBrain->PCreature->GetPos()).GetMagnitude() > 8.0f)
         movementType = 5;
     bool reached;
     long result;

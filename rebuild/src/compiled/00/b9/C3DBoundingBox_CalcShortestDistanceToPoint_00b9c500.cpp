@@ -1,5 +1,6 @@
 // C3DBoundingBox::CalcShortestDistanceToPoint(const C3DVector& point) const -- distance from a point to the box (0 inside): the square root of the inlined squared form (SSE kernel or x87 clamp path)
 // Leaf: ?CalcShortestDistanceToPoint@C3DBoundingBox@@QBEMABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Grade: RELOCATION_MATCH over the true extent (286 bytes; catalog 328 = int3 padding + the next body): sqrt of the
 //   inlined CalcShortestDistanceToPointSquared (landed 0x00BF7DF0 model, retail_asm SSE kernel). Parked 'inline-asm SSE
 //   lane gap' disproved; the catalog label is propagated from the fsqrt-less twin.
@@ -13,15 +14,7 @@ extern "C" double __cdecl sqrt(double x);
 #pragma intrinsic(sqrt)
 extern bool g_SSEAvailable;                             // 0x013D2880
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00
@@ -71,7 +64,7 @@ __forceinline float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3D
         closest.Z = MinCoord.Z;
     else if (closest.Z > MaxCoord.Z)
         closest.Z = MaxCoord.Z;
-    return (point - closest).GetLengthSquared();
+    return (point - closest).GetSquaredMagnitude();
 }
 
 float C3DBoundingBox::CalcShortestDistanceToPoint(const C3DVector& point) const

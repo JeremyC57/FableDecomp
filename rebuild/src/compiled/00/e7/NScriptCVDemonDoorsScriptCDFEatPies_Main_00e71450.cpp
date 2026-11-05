@@ -1,5 +1,6 @@
 // NScript::CV_DemonDoorsScript::CDF_EatPies::Main() -- demon-door face (eat pies): take scripted control of Me, make it persistent and immune, find the nearest REGION_EXIT_POINT and shut it; each time the hero talks to the face, compare the hero's fatness with the def's level -- below it, speak the intro line; otherwise speak the opening line, fade the face out, open the door and reactivate the exit
 // Leaf: ?Main@CDF_EatPies@CV_DemonDoorsScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E71450, 1108 bytes (+ int3 padding), plain `ret`. Catalog label CDF_MarryLadyGrey::Main
 //   is propagated: the literals ("TEXT_QST_088_EAT_PIES_INTRO" 0x012E9024, "TEXT_QST_088_EAT_PIES_OPENING" 0x012E9004,
 //   "DD_EatPies" 0x012E8FF8) and the GetHeroFatness / DemonDoor_EatPies_FatnessLevel test name it CDF_EatPies (sibling of the
@@ -61,13 +62,8 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    VPAD16(ma) VPAD8(mb) VPAD2(mc)                      // slots 1..26
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {

@@ -1,0 +1,19 @@
+Plan phase 4, wave "w3" (2026-11-05): rows with more than one local value class, migrated from their LANDED (already migrated)
+source. The remaining local C3DVector moves onto engine/C3DVector.h.
+
+HEADER: engine/C3DVector.h / engine/C2DCoordI.h used as they are (no change, no includer regrade).
+ROWS: 265 PASS under vland --recheck-landed (RELOCATION_MATCH 261, MATCH 4). Parity equals the landed source's on every row;
+  0 introduced warnings; gate.py 265 of 265.
+  - Sources: the 345 landed local-C3DVector rows at HEAD outside w1's 1,008 candidates and outside w2's rows, through
+    scripts/hdrmig4.py with w1's configs (cfg.json, then cfg_lc.json). That covers:
+    - phase-3 w1, the CVectorMap rows that also had a local C3DVector: all 189 pass here;
+    - phase-3 w3, the CArray rows with a local C3DVector: 76 of 86 pass. The other 10 are deferred (bytes / no_block).
+  - These rows passed phase 3 once already, so the C3DVector strip runs on their current HEAD source; no wave depends on another
+    unapplied wave.
+  - No method respell in this wave (method_map found nothing to map here).
+QUEUE LINES / BINDINGS / CALLERS: none.
+DEFERRED.tsv (80): bytes_differ 47, stray_change 16 (own-symbol changes on FableCopy_* / NFactory* placeholder wrappers),
+  no_block 16 (the local C3DVector is nested or macro-made), standin_respell 1.
+  - The standin_respell row is 0x004FEEC0. Its callee respell would add a 13th spelling to 0x00687540
+    CMessageEventManager::AddMessage, which is inconsistent (owner rule 2026-11-05). Unify all of that target's binders in
+    step 6 instead.

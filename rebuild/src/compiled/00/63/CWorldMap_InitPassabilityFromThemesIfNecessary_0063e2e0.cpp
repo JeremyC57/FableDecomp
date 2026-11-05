@@ -1,5 +1,6 @@
 // CWorldMap::InitPassabilityFromThemesIfNecessary(const C2DBoxI& area) -- clip the area to the world map and let every map under it initialise its passability from themes
 // Leaf: ?InitPassabilityFromThemesIfNecessary@CWorldMap@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0063E2E0, 210 bytes (+ int3 padding), `ret 4`.
 // Identity: Ego_r.pdb `?InitPassabilityFromThemesIfNecessary@CWorldMap@@IAEXABVC2DBoxI@@@Z` (protected, non-virtual);
 // the per-map callee is the landed CMap::InitPassabilityFromThemesIfNecessary 0x008201E0. Catalog label
@@ -17,16 +18,8 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 
-class C2DCoordI { public:
-    long x;
-    long y;
-};
 
 class C2DBoxI { public:
     long TLX;   // +0x00

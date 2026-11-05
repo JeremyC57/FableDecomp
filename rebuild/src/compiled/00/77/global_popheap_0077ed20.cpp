@@ -1,5 +1,6 @@
 // _global::__pop_heap(SNamedPosition* first, SNamedPosition* last, SNamedPosition* result, SNamedPosition value, CKeyPairCompareLess comp, long*) -- SGI pop_heap core for a heap of (name, C3DVector) pairs: *result = *first, then sift `value` down from the root
 // Leaf: __pop_heap
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077ED20, length 114 bytes (`ret 1Ch`: result, the 16-byte value, the
 // comparator and the distance pointer on the stack; first/last in ecx/edx -- the SGI algorithm TUs are /Gr).
 // Label correction: the manifest's "CCreatureModeDef::operator=" is propagated and wrong; the callee 0x0077EA60 carries
@@ -20,10 +21,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class C3DVector { public:
-    unsigned long X, Y, Z;                    // floats, moved as dwords (a float member copy would go through the FPU)
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 struct SNamedPosition {                       // std::pair<CCharString, C3DVector>
     CCharString first;                        // +0x00

@@ -1,18 +1,12 @@
 // CEngineCamera::ClipWorldSpaceBoundingBox(const C3DBoundingBox& box, float farDistance, bool& fullyInside) const -- frustum-cull a world-space box: false when the box lies wholly outside one of the four side planes or wholly beyond farDistance along the look vector; fullyInside is cleared when the box straddles any plane or the far distance
 // Leaf: ClipWorldSpaceBoundingBox
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B308E0, length 616 bytes (`ret 0xc`,
 // ?ClipWorldSpaceBoundingBox@CEngineCamera@@QBE_NABVC3DBoundingBox@@MAA_N@Z). Constant 0.0f 0x0122DEDC.
 // Layout: Ego_r.pdb CEngineCamera (CameraDesc +0x14 with WorldPosition at desc +0x40 = +0x54, LookVector +0x1b4,
 // FrustrumPlanes CPlane[4] +0x1c0 {Normal, Distance}); C3DBoundingBox {MinCoord, MaxCoord}. Modelled locally (the shared
 // header's DebugScript is the PDB's 16-byte CArray; nothing past +0x200 is touched here).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float Dot(const C3DVector& o) const { return X * o.X + Y * o.Y + Z * o.Z; }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public: C3DVector MinCoord; C3DVector MaxCoord; };
 class CPlane { public: C3DVector Normal; float Distance; };
 

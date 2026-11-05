@@ -1,5 +1,6 @@
 // CTCBoss::FrameUpdate() -- while strikes are being counted, reset the count once the hero has been hit in melee by this boss (a matching CEventHitBy in the hero's entity events)
 // Leaf: ?FrameUpdate@CTCBoss@@UAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AF050, length 153 bytes (+7 int3 padding).
 // Callees: the CTCBase player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature
@@ -14,9 +15,7 @@
 // C3DVector is declared packed), HelperCreatures +0x30, Effects +0x3C; retail CThing: bitset +0x20, map +0x44, base def +0x70,
 // Dead +0x91.
 #pragma pack(push, 1)
-class C3DVector { public:                              // packed: CTCBoss keeps one at the unaligned +0x22
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

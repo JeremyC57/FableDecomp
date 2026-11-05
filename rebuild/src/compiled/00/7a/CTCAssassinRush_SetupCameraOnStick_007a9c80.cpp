@@ -1,4 +1,5 @@
 // CTCAssassinRush::SetupCameraOnStick() -- read the hero's camera-stick helper point; store it relative to the hero (LocalRelativeVectorForCamera) and the camera relative to it (RelativeVectorForCamera), then hand over to the camera setup
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A9C80, length 221 bytes (+ int3 padding).
 // Callees: CTCGraphicAppearance::GetHelperPoint(const CCharString&, long, unsigned long, C3DVector*, float) @ 0x004C0560 (on
 // ParentThing+0x64, the helper-name CCharString global 0x013BAC4C), CThing::GetPos @ 0x004C73D0, CTCBase::GetWorld
@@ -10,18 +11,7 @@
 // Shape: C3DVector has a user copy constructor and no operator=, so each difference built by `return C3DVector(...)` lands in a
 // frame temporary and is copied through a `lea` pointer register; the hero position is copied by value (x, y on the x87
 // stack, z through the frame); the camera manager comes through an inline accessor so it loads straight into ecx.
-class C3DVector { public:
-    float X;    // +0x00
-    float Y;    // +0x04
-    float Z;    // +0x08
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-    C3DVector operator-(const C3DVector& b) const
-    {
-        return C3DVector(X - b.X, Y - b.Y, Z - b.Z);
-    }
-};
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PStringData;
 };

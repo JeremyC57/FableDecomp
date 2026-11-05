@@ -1,5 +1,6 @@
 // CTCMeleeTrap::ProcessPossibleStrike(float hitTolerance, float damage, const CPointPair& previous, const CPointPair& current, CThing& thing) -- when the thing has hit locations: find the first hit location the triangle (current pair, previous point) intersects, hit the thing there along the trail direction with the trap's damage, and remember it in HitThings for a second and a half
 // Leaf: ?ProcessPossibleStrike@CTCMeleeTrap@@AAEXMMABU?$pair@VC3DVector@@V1@@std@@0AAVCThing@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00788617, 423 bytes, thiscall, `ret 14h`, the biased /Os frame (`lea ebp,[esp-64h]`).
 // Name: Ego_r.pdb `?ProcessPossibleStrike@CTCMeleeTrap@@AAEXMMABU?$pair@VC3DVector@@V1@@std@@0AAVCThing@@@Z` (private); the only
 //   caller is PerformPossibleTrapDamage 0x0078891D (call 0x00788A90) which passes its own two floats and consecutive trail pairs.
@@ -26,14 +27,7 @@ extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern const float DELTA_NOTIONAL_ZERO;                                   // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (ESTABLISHED_SPELLINGS; naming wave 20) (1e-4f)
 extern long g_framesPerSecond;                                // 0x01375550
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
-    C3DVector& AccurateNormalise();                           // 0x00A14440 Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ
-};
-class C2DCoordI { public: long X, Y; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(const C2DCoordI& centre, long radius);            // 0x00434740

@@ -1,5 +1,6 @@
 // NScript::CV_DemonDoorsScript::CDF_GiveGift::Main() -- demon-door face (give a gift): take scripted control of Me, make it persistent and immune, find the nearest REGION_EXIT_POINT and shut it; then each frame -- if Me is presented with a romantic gift, speak the opening line, fade the face out, open the door and reactivate the exit; else if the hero talks to the face, speak the intro line
 // Leaf: ?Main@CDF_GiveGift@CV_DemonDoorsScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E71980, 1201 bytes (+ int3 padding), plain `ret`. Literals "TEXT_QST_088_GIVE_GIFT_INTRO" 0x012E9088,
 //   "TEXT_QST_088_GIVE_GIFT_OPENING" 0x012E9068, "DD_GiveGift" 0x012E905C (sibling of the matched CDF_CombatMult::Main 0x00E6F710).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 /
@@ -60,15 +61,8 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    VPAD16(ma) VPAD8(mb) VPAD2(mc)                      // slots 1..26
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    VPAD4(md) VPAD2(me) VPAD1(mf)                       // slots 28..34
-    virtual bool MsgIsPresentedWithItem(CCharString& item) const;   // slot 35 (+0x8c)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {

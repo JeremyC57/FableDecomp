@@ -1,5 +1,6 @@
 // (anonymous namespace)::CIsUsableIciclePoint::operator()(const C3DVector& point) const -- a point is usable for a new icicle when no existing icicle lies within IciclesLimit of it in the ground (X/Y) plane
 // Leaf: ??RCIsUsableIciclePoint@?A0x
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E2E40, 89 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity (proven): Ego_r.pdb ??RCIsUsableIciclePoint@?A0xcee9a82c@@QBE_NABVC3DVector@@@Z (0x00825710), the predicate of the
 //   STLport partition right after it (Ego_r 0x00825790 _Partition<C3DVector*, CIsUsableIciclePoint>); its only callers are
@@ -30,13 +31,7 @@ private:
     void* PData;                                        // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-};
+#include "engine/C3DVector.h"
 namespace NCreatureMode {
 class CModeIceTrollGroundSmashIcicleAssault {
 public:

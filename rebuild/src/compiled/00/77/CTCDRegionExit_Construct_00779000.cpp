@@ -1,5 +1,6 @@
 // CTCDRegionExit::Construct(const C3DVector& position) -- place the owning thing's physics component at the position with the identity axes: build a CTCParamsPhysicsBase(position, CRightHandedSet(Up (0,0,1), Forward (0,1,0))) on the stack and hand it to the physics component's virtual ConstructFromParams
 // Leaf: ?Construct@CTCDRegionExit@@AAEXABVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00779000, 127 bytes, thiscall, `ret 4`.
 // Identity (proven): CTCDRegionExit::Construct(const C3DVector&), private (Ego_r.pdb and FableWin.pdb both hold
 //   ?Construct@CTCDRegionExit@@AAEXABVC3DVector@@@Z); evidence: it follows the CTCDRegionExit slot-29 override 0x00778F90 (vtable 0x0126AB54, RTTI .?AVCTCDRegionExit@@) and the constructor 0x00778FA0 and precedes CTCDRegionExit::MoveHeroThroughExit 0x00779080; its one caller is CTCDRegionExit::Create(long, const C3DVector&) 0x00779650 (Ego_r.pdb Construct 0x007364A0, Create 0x00736910)
@@ -17,11 +18,7 @@
 #include "engine/CTCBase.h"
 #include "engine/CTCPhysicsBase.h"
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c

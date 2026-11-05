@@ -1,4 +1,5 @@
 // CEngineInternalPrimitiveWeaponTrail::Update(const CEnginePrimitive&, unsigned long) -- copy the weapon-trail primitive state and rebuild the two vertex tracks and creation-time array
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native identity: RTTI vtable 0x012A6B24 slot 5 points here; retail class construction/destruction at 00BCD600/00BCDE40 confirms a 0x48 CEngineInternalPrimitiveBase prefix, 12-byte vector headers at +0x5c/+0x68, and the 0x7c native extent. The generated internal-trail donor layout incorrectly expands CArray fields to 16 bytes; this view follows retail accesses and the destructor.
 // Input view: the function's CEnginePrimitive reference has a weapon-trail extension. Its one-word list head and following members match retail reads (+0x0c..+0x2c); CWeaponTrailEntry Top/Bottom/CreationTime and list-node value offset +8 match Ego_r.pdb. No weapon-trail input header exists.
 // The base header's __vftable member is the real stored engine vptr. This update entry is modeled as a nonvirtual body method so no incomplete/synthetic vtable is emitted.
@@ -6,12 +7,7 @@
 
 #include "engine/CEngineInternalPrimitiveBase.h"
 
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-};
+#include "engine/C3DVector.h"
 
 struct CWeaponTrailEntry {
     C3DVector Top;

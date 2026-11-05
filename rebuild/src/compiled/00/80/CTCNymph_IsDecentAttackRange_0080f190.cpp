@@ -1,16 +1,11 @@
 // CTCNymph::IsDecentAttackRange(const C3DVector& target) -- the nymph is a decent attack position when it is more than 0.5 above the target and its horizontal distance lies strictly between MinAttackRange and CircleRange
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080F190, length 122 bytes (`ret 4`).
 // Callees: CThing::GetPos @ 0x004C73D0 (catalog "CVertexBufferWin32::DoSizeof" is a byte twin).
 // Layout: PDB CTCNymph PDef +0x0C (CNymphDef: MinAttackRange +0x28, CircleRange +0x34); 0.5f @ 0x0122F59C.
 // Shape: the delta `pos - target` is built on the x87 stack (all three differences kept), the squared ranges compared with
 // `!(a <= b)` style tests (`test ah,41h ; jne`) and the upper bound strict (`test ah,5 ; jp`); nested ifs, one false exit.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };

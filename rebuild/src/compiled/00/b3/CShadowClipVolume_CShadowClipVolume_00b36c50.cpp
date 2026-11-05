@@ -8,10 +8,8 @@
 // by the scalar members. That loop only comes out of the IMPLICIT copy constructor: a hand-written body loop is unrolled by the lane compiler,
 // and an array cannot be named in an initialiser list. VC7.1 emits the implicit constructor out of line for the copy site below.
 // Leaf: ??0CShadowClipVolume
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
+#include "engine/C3DVector.h"
 
 class CPlane { public:
     C3DVector Normal;                // +0x00

@@ -1,17 +1,12 @@
 // CCamera::MoveForward(float distance) -- moves the world position along the forward axis; with HeightLocked
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // only X and Y move, otherwise the scaled forward vector (an inline C3DVector temporary) is added.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0C250, length 86 bytes.
 // Callees: none.
 // PDB CCamera: +0x00 WorldPosition, +0x18 RHSet.Forward, +0x24 HeightLocked. The locked branch adds the two
 // products straight into the members; the free branch builds `Forward * distance` in a 12-byte stack
 // temporary (only its Z lands in memory, `fstp [esp+8]`) and adds it with the inline operator+=.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator*(float scale) const { return C3DVector(X * scale, Y * scale, Z * scale); }
-    C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 
 class CCamera { public:
     C3DVector       WorldPosition;               // +0x00

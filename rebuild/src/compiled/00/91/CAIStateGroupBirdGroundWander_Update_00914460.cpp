@@ -1,4 +1,5 @@
 // CAIStateGroup_BirdGroundWander::Update() -- hop to one to seven nearby wander positions, idling after each, then terminate
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00914460, length 395 bytes.
 // Callees: the creature's +0x60 subsystem virtual slot 67 (+0x10C, called with 0), GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890,
@@ -22,11 +23,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
-};
+#include "engine/C3DVector.h"
 
 class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
     const C3DVector& PeekPos() const;       // 0x006A4D00

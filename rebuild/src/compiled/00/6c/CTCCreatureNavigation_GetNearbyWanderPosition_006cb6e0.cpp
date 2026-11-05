@@ -1,4 +1,5 @@
 // CTCCreatureNavigation::GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool flag) -- ask the navigator for a random position near the centre; true when it is on the world map and not (XY) at the centre
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the XY squared distance is accumulated in statements (`r = dx*dx; r += dy*dy;`), which squares dx first as retail; the single-expression sum squares dy first
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CB6E0, length 145 bytes (+ int3 padding).
@@ -7,17 +8,7 @@
 // Shape: `return a && b;` gives the 32-bit 1/0 exits.
 // Layout: Ego_r.pdb CTCCreatureNavigation: PNavigator +0xC (the active CNavigatorBase). Retail CThing::GetPos @ 0x004C73D0.
 // Globals: the 1e-4f tolerance @ 0x0129BA3C is an extern float variable (`fld [g] ; fmul [g]` squares it).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector operator-(const C3DVector& o) const
-    {
-        C3DVector r;
-        r.X = X - o.X;
-        r.Y = Y - o.Y;
-        r.Z = Z - o.Z;
-        return r;
-    }
-};
+#include "engine/C3DVector.h"
 inline float DistanceSquared(const C3DVector& a, const C3DVector& b)
 {
     float dx = a.X - b.X;

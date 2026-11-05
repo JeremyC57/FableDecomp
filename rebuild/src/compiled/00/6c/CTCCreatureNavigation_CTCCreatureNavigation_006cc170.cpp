@@ -1,5 +1,6 @@
 // CTCCreatureNavigation::CTCCreatureNavigation(CThing* parent) -- creature navigation component: no navigator, empty navigator and steering-agent vectors, a zeroed navigation target, no thing to avoid; FrameLastNavigated -1 and CalculatingNewRoute set
 // Leaf: ??0CTCCreatureNavigation
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CC170, length 106 bytes (+ int3 padding). Vtable 0x0125EC24 (CTCCreatureNavigation).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10 (then the
 // CIntelligentPointer<const CThing> vtable 0x01237F1C).
@@ -28,10 +29,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes): _V
     SRetailAllocProxy<T> _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 class CNavigationInput { public:                       // 24 bytes
     C3DVector Destination;                      // +0x00
     float     Proximity;                        // +0x0c

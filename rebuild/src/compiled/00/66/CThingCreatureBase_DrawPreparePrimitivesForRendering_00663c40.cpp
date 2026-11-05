@@ -1,5 +1,6 @@
 // CThingCreatureBase::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- let the fly-on-spline TC prepare, run the CThingPhysical pass (false stops here); with a graphic appearance, test the game LOD centre against the creature position within the scaled fade distance: in range draw the appearance, add the weapon trails and the hit notification when trails are shown, let the emote icon prepare, and for a firefly-property creature add the firefly sprite at the interpolated physics position; out of range clear the appearance's primitives and the emote icon's
 // Leaf: ?DrawPreparePrimitivesForRendering@CThingCreatureBase@@MAE_NABVCEnginePrimitivePrepareInfo@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00663C40, 577 bytes, `ret 4`; CThingCreatureBase vtable 0x0125AC0C slot 36
 //   (CThingPhysical 0x01244E84 slot 36 = 0x006A64D0). Ego_r.pdb / FableWin.pdb: protected virtual (MAE).
@@ -25,12 +26,7 @@
 //   calls use the PDB inline `CTCBase& CThing::GetTC(ETCInterfaceType)` after `HasTC(ETCInterfaceType)`, written as the
 //   pick form (copied key, reference to Components, `(miss ? end : it)->second`), which loads the component straight
 //   into ecx. The parked source (one accessor for all four) missed the eax form by 4 bytes.
-class C3DVector {
-public:
-    float X;
-    float Y;
-    float Z;
-};
+#include "engine/C3DVector.h"
 class CEnginePrimitive {
 public:
     unsigned char _body[0x48];

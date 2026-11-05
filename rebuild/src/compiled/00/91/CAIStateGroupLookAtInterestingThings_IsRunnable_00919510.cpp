@@ -1,4 +1,5 @@
 // CAIStateGroup_LookAtInterestingThings::IsRunnable() -- runnable when the idle scheduler (if any) prefers this
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // group, a villager is not outside curfew time, and an interesting thing exists.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00919510, length 179 bytes (+ int3 padding). Vtable slot 11.
@@ -20,7 +21,7 @@ enum ETCInterfaceType { };                                   // CTCBase interfac
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class C3DVector;
+#include "engine/C3DVector.h"
 class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
@@ -165,7 +166,6 @@ class CTCIdleScheduler { public:                       // interface 0xd3
     void RegisterIdleStateGroup(CAIStateGroupBase* group, long idleType);   // 0x00801920
 };
 
-class C3DVector { public: float x, y, z; };
 struct CThingPositioned : public CThing {
 };
 class CThingCreatureBase { public:

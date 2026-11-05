@@ -1,6 +1,7 @@
 // CThingCompare_NearestToPos::operator()<CThing>(CThing* a, CThing* b) const -- strict-weak "a is nearer to Pos than b":
 //   null a never wins, null b always loses, else the squared 3D distances compare
 // Leaf: ??$?RVCThing@@@CThingCompare_NearestToPos@@QBE_NPAVCThing@@0@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A2F90, length 167 bytes, `ret 8`, bool in al.
 // Identity: the CTCWillLightning TU (retail 0x007A1870 MakeRandomBeam .. 0x007A4080 vfuncs) sorts its candidate CThing*
 //   targets with this predicate: 18 callers, all the TU's heap / median / partition / partial-sort helpers (0x007A34A0 is
@@ -16,13 +17,7 @@
 //   squared lengths are the plain inline `X*X + Y*Y + Z*Z` (VC7.1 ranks the terms itself: Z, X, Y for the spilled
 //   delta, Z, Y, X for the stack one; the statement chain forces one order on both and differs); `if (la < lb)
 //   return true; return false;` shares the `mov al,1` exit with the null-b test.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:
@@ -43,7 +38,7 @@ template<class T> bool CThingCompare_NearestToPos::operator()(T* a, T* b) const
         return true;
     C3DVector deltaA = a->GetPos() - Pos;
     C3DVector deltaB = b->GetPos() - Pos;
-    if (deltaA.GetLengthSquared() < deltaB.GetLengthSquared())
+    if (deltaA.GetSquaredMagnitude() < deltaB.GetSquaredMagnitude())
         return true;
     return false;
 }

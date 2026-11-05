@@ -1,5 +1,6 @@
 // NScript::CV_OracleScript::Main() -- register two original scripted entity factories.
 // Leaf: ?Main@CV_OracleScript@NScript@@UAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: proven; Complete original CScriptBase64/CLevelScriptBase72 and CEntityScriptBase20 typed Game/Me/Parent/Master prefixes; real CBaseClassNonCopyable protected ctor/dtor and CBaseClass ancestry, non-POD counted-pointer special members, CCharString(constchar*,long). Original STLport list:_List_base/rebound-node allocatorproxy and vector:_Vector_base/end-storage proxy retained; unused map/tree declarations omitted. Unused virtual slots and owner suffixes explicit projections. Shared thing/resource headers aliased as data evidence. Game exact ownRTTI1260f0c and PDB publicconst APIs; child privatevirtualEAE signatures preserve original access. Field identities from PDB named layouts reconciled with actual factory allocation sizes. No donor address used asretailidentity; own global scriptbinding S_VO/S_VPAAWB points own factory, original entityliteral/factory pairs VO_OracleMarker->00ebce80,VO_Woman->00ebe540. Own table slot2 is Main; table1 launches script Main thread. Original PDB class/method/nested Alloc namesets. Genuine CEntityScriptBinding28 two-slot abstract interface (no dtor), string4,parent8,memberfunction12,fastcall non-POD classreturn allocation16,bool20,ulongFlags24. Actual AddEntityScriptBinding00cb8230,PostAddScriptedEntities00cb8930 and constgame slot64..
 // Layout: original level-script72 and binding28, complete STLport base/proxy storage; unused script suffix omitted.
@@ -18,9 +19,8 @@ class CCPPointerInfo;
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
 
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

@@ -1,4 +1,5 @@
 // CTCPhysicsStandard::GetFacingVector(float t) -- the facing (RHSet.Forward) interpolated from OldRHSet.Forward by t, returned by value
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00723C20, length 94 bytes.
 // Callees: none (all operators inline).
 // Shape: the same inline-operator lerp as 0x0049D150 but the result goes through a NAMED local returned by C3DVector's
@@ -7,15 +8,7 @@
 // The direct `return expr;` form keeps the 0x0049D150 schedule (84 bytes).
 // Layout: Ego_r.pdb CTCPhysicsStandard RHSet +0x50 / OldRHSet +0x68 (CRightHandedSet = Up, Forward), so the Forward vectors sit at
 // +0x5c / +0x74. engine/CTCPhysicsStandard.h is a flattened POD without virtuals, so the class is modelled locally.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
 struct CTCPhysicsStandard {

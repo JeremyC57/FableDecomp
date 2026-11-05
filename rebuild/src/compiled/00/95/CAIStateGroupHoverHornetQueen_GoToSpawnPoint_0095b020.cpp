@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::GoToSpawnPoint() -- switch the queen's navigator to hover, pick deposit position 1 (first time) or a random 1..4, find the "QueenDepositPos<n>" marker within 60 units (else use the creature's start position), look at the target, then fly to the marker facing the target until arrived; restore the navigator, or terminate when the state stops being runnable
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095B020, length 599 bytes (+ int3 padding), plain `ret`, /GS cookie (sprintf buffer).
@@ -12,11 +13,7 @@
 // Shape: the search rectangle is a function-scope local written member by member (Left/Top/Right/Bottom); a ctor or a
 // block-scoped rectangle shares the look-at vector's frame words (frame 0x54) and schedules x+60 first.
 #include <stdio.h>
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* PData;
     CCharString(const char* text, long length);  // 0x0099EBF0
@@ -26,10 +23,6 @@ class CCharString { public:
 class CThingFilter_HasScriptName { public:
     CCharString Name;
     CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
-};
-class C2DCoordI { public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
 struct CRectI {
     long Left, Top, Right, Bottom;

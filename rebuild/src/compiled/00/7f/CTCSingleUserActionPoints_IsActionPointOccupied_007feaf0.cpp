@@ -1,5 +1,6 @@
 // CTCSingleUserActionPoints::IsActionPointOccupied(CThing* user, C3DVector* position, CRightHandedSet* orientation, long index) -- place the index'th action-point dummy, then report whether any creature other than the owner and the user stands within 0.5 of it
 // Leaf: IsActionPointOccupied
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FEAF0, 190 bytes (`ret 10h`); CTCSingleUserActionPoints vtable 0x01241EAC
 // slot 28 (the catalog's "vfunc_28"; with four arguments it is not CTCBase::OnActionUse -- named descriptively here).
 // Callees: CTCGraphicAppearance::GetDummyObject(const CCharString&, long, unsigned long, C3DVector*, CRightHandedSet*, float)
@@ -15,7 +16,7 @@
 // helper so they come after the temporaries and before the pushes; the search result is normalised to a bool.
 class CThing;
 class CThingCreatureBase;
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CRightHandedSet;
 class CCharString {
 public:
@@ -30,10 +31,6 @@ class CThing {
 public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* GraphicAppearance;            // +0x64
-};
-class C2DCoordI { public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) { }
 };
 class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;

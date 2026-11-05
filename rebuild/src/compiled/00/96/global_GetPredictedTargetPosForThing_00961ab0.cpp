@@ -1,5 +1,6 @@
 // GetPredictedTargetPosForThing(const CThing& creature, const CThing& target) -- the snow troll's icicle-attack aim point: the target's position extrapolated along its last-frame movement by the creature's SecondsIcicleAttackTargetPositionPredictionTime (2.0 without a snow-troll def)
 // Leaf: ?GetPredictedTargetPosForThing@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00961AB0, 221 bytes (+ int3 padding to 224), `ret 4`. Anonymous-namespace
 //   __fastcall (Ego_r.pdb ?GetPredictedTargetPosForThing@?A0x9e6dcc01@@YI?AVC3DVector@@ABVCThing@@0@Z): the C3DVector
 //   result by hidden pointer in ecx, creature in edx, target on the stack.
@@ -16,16 +17,7 @@
 //   OldPosition +0x18; CThing physics component +0x60 and counted def class +0x70 (as the landed CThing models).
 // Label: catalog name confirmed (Ego_r.pdb anonymous-namespace function of the ice-troll AI TU).
 // Build: the lane defaults (/O2 /Oy /W3), no pragma.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    C3DVector operator+(const C3DVector& other) const { return C3DVector(X + other.X, Y + other.Y, Z + other.Z); }
-    C3DVector operator*(float scale) const { return C3DVector(X * scale, Y * scale, Z * scale); }
-    C3DVector& operator+=(const C3DVector& other) { X += other.X; Y += other.Y; Z += other.Z; return *this; }
-};
+#include "engine/C3DVector.h"
 
 class CSnowTrollDef { public:
     virtual void v00();

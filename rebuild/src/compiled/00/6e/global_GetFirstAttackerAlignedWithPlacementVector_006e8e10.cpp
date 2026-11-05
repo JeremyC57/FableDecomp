@@ -1,5 +1,6 @@
 // GetFirstAttackerAlignedWithPlacementVector(const list<const CThingCreatureBase*>& attackers, const C3DVector& defenderPos, const C3DVector& placementVector) -- the first attacker whose ground-plane direction from the defender lies within 60 degrees of the placement vector (dot of the two flattened unit vectors above cos 60), else null
 // Leaf: ?GetFirstAttackerAlignedWithPlacementVector@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E8E10, 197 bytes (208 with int3 padding), file-static `__fastcall`
 //   (ecx = attackers, edx = defenderPos), `ret 4`.
 // Identity: Ego_r.pdb name set `?GetFirstAttackerAlignedWithPlacementVector@?A0xd8b789b9@@YIPBVCThingCreatureBase@@ABV?$list@
@@ -14,12 +15,7 @@
 extern "C" double __cdecl cos(double);
 #pragma intrinsic(cos)
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector& AccurateNormalise();                                       // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 inline float operator*(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + (a.X * b.X + a.Y * b.Y); }
 
 class CThing {

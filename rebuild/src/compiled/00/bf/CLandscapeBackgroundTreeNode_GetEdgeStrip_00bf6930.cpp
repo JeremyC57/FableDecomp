@@ -1,5 +1,6 @@
 // CLandscapeBackgroundTreeNode::GetEdgeStrip -- native landscape tree operation
 // Leaf: ?GetEdgeStrip@Tree@Native
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native projection: donor Tree data shifts -8, native sizeof e8, proven BF6E20.
 // Actual donor headers retained; native Movable/SubNode methods preserve genuine virtual member ABI.
 #include "engine/CLandscapeBackgroundTreeNode.h"
@@ -30,7 +31,7 @@ struct SubNode:Movable {
 struct Freeable:Movable { virtual bool FreeableResourceFreeBlock()=0; };
 struct EngineMap { unsigned char State[0x60];unsigned short WorldPosX,WorldPosY; };
 struct LandscapeMap { void* VTable;Tree* PatchTree;void* Patches;long PatchGridWidth,PatchGridHeight;EngineMap* Map; };
-struct C3DVector { float X,Y,Z; };
+#include "engine/C3DVector.h"
 struct C3DBoundingBox { C3DVector MinCoord,MaxCoord; };
 struct C3DBoundingSphere { C3DVector Center;float Radius; };
 struct CLODLoadInfo { long FileBlockPos,FileBlockSize,OffsetIntoFileBlock;unsigned char OptimizedBandRemap; };

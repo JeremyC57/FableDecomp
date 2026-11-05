@@ -1,5 +1,6 @@
 // CThingFilter_IsPerceivingThing::operator()(const CThing& thing) const -- whether the thing's perception component (kind 0x34) is perceiving the filter's thing
 // Leaf: ??RCThingFilter_IsPerceivingThing
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members m_pFirst/m_pLast are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A80E0, length 82 bytes.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (const instantiation), the component's
 // perceived-thing getter @ 0x007446A0 (`add ecx,0Ch ; jmp CIntelligentPointer::Get`; manifest "_Cons_val<...>" propagated).
@@ -16,17 +17,9 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                 // the thing's component map at +0x44: a sorted vector of pairs
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    const STCEntry* LowerBound(const ETCInterfaceType& kind) const;        // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing { public:
@@ -40,8 +33,8 @@ class CThing { public:
             ETCInterfaceType type = (ETCInterfaceType)(kind);
             const CTCMap* map = &m_tcs;
             const STCEntry* it = map->LowerBound(type);
-            if (it == map->m_pLast || kind < it->first)
-                it = map->m_pLast;
+            if (it == map->end() || kind < it->first)
+                it = map->end();
             *ppOut = (T*)it->second;
             return true;
         }

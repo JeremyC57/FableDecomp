@@ -1,5 +1,6 @@
 // CTCDParticleEmitter::UpdateEmitterThingAttachment(bool interpolate, float time) -- move the attached emitter to its thing (position and orientation from the attached thing physics or the emitter)
 // Leaf: ?UpdateEmitterThingAttachment@CTCDParticleEmitter@@QAEX_NM@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Flags:
 // Shape: the orientation is default-constructed and then assigned in an if/else on the emitter, each arm a
 //   (flags & 0x20) ? physics RHSet : (emitter orientation | creation RHSet) ternary. The two physics arms then keep
@@ -25,7 +26,7 @@
 #define CParticleEmitter CParticleEmitterFields
 #include "engine/CParticleEmitter.h"
 #undef CParticleEmitter
-class C3DVector{public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}};
+#include "engine/C3DVector.h"
 class CRightHandedSet{protected:C3DVector Up,Forward;public:CRightHandedSet(){}CRightHandedSet(const CRightHandedSet&r):Up(r.Up),Forward(r.Forward){}};
 class CCharStringData;class CCharString{protected:CCharStringData*PStringData;};
 class C3DPositionInterpolator:public CBaseClass{public:C3DVector StartPosition,EndPosition;C3DPositionInterpolator(const C3DVector&,const C3DVector&);};

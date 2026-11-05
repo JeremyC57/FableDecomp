@@ -2,6 +2,7 @@
 // Copy constructor: the C3DVector model DECLARES its memberwise copy constructor (retail's header class has one); with the
 // implicit copy VC7.1 schedules the copies differently (found by the retry-10 copy-constructor sweep).
 // Leaf: ??0CTrack
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00761F40, length 208 bytes (`ret 8`).
 // Callees: vector<C3DVector>::vector(const vector&) @ 0x006F0810 (manifest "Vector_CopyFrom").
 // Identity: vtables 0x0126A208 (NShape::CShape) then 0x0126A288 (NShape::CTrack) per rtti-vtables.tsv.
@@ -14,10 +15,7 @@
 // (`fsqrt` intrinsic; the squares are written x, y, z so VC7.1's right-first FPU order loads z first).
 #include <math.h>
 #pragma intrinsic(sqrt)
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { } C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) { }
-};
+#include "engine/C3DVector.h"
 class CTCShapeManager;
 struct CPointVector {                                       // STLport vector<C3DVector>, 12 bytes in retail
     C3DVector* _M_start;
@@ -60,9 +58,9 @@ NShape::CTrack::CTrack(CTCShapeManager* owner, const CPointVector& points)
         ++it;
         while (it != Points.end()) {
             const C3DVector& point = *it++;
-            float dx = point.x - previous.x;
-            float dy = point.y - previous.y;
-            float dz = point.z - previous.z;
+            float dx = point.X - previous.X;
+            float dy = point.Y - previous.Y;
+            float dz = point.Z - previous.Z;
             TrackLength += (float)sqrt(dx * dx + dy * dy + dz * dz);
             previous = point;
         }

@@ -1,5 +1,6 @@
 // std::__unguarded_linear_insert(SNamedPosition* last, SNamedPosition val, CKeyPairCompareLess comp) -- STLport insertion step over 16-byte (CCharString, C3DVector) pairs ordered by name: shift greater entries up one slot until val's place, then store it
 // Leaf: __unguarded_linear_insert
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077E6A0, 133 bytes (+ int3 padding to 144), `ret 14h` (__fastcall /Gr
 //   algorithm TU: last in ecx -> edi, the 16-byte by-value pair and the empty comparator on the stack, 0x10 + 4; the
 //   by-value pair's string is destroyed here).
@@ -59,10 +60,7 @@ class CCharString { public:
     }
 };
 
-class C3DVector { public:                                         // floats, moved as dwords
-    unsigned long X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 template <class T1, class T2> struct pair {                // STLport pair
     T1 first;

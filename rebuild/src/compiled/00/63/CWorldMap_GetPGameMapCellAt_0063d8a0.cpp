@@ -1,5 +1,6 @@
 // CWorldMap::GetPGameMapCellAt(const C3DVector&) const -- the game-map cell (atmos/sound/music themes) under a world position, or 0 when the position is outside the world or its map is not loaded
 // Leaf: GetPGameMapCellAt
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe @ 0x0063D8A0, 182 bytes, `ret 4`. PDB ?GetPGameMapCellAt@CWorldMap@@QBEPBVCGameMapCell@@ABVC3DVector@@@Z
 // Callees: CWorldMap::IsPosInMap(const C3DVector&) const 0x004FC600, _ftol2 0x00BFEA70, CWorldMap virtual slots 17
 // GetMapNumberAt(const C2DCoordI&) const (+0x44), 10 IsMapLoaded(long) const (+0x28), 19 PeekMap(long) const (+0x4C);
@@ -10,11 +11,7 @@
 // Shape: the world coordinate is a C2DCoordI temporary (X truncated first) whose slot the local C3DVector reuses; the
 // cell is an inline CGameMap accessor taking a C2DCoordI temporary (gives the X-first truncation order) and indexing
 // rows bottom-up (`(SizeY - y - 1) * SizeX + x`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-};
-class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+#include "engine/C3DVector.h"
 
 class CGameMapCell { public:                                        // 7 bytes
     unsigned char AtmosThemes[3];

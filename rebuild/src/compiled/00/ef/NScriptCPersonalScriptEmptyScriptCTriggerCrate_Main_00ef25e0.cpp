@@ -1,5 +1,6 @@
 // NScript::CPersonalScript_EmptyScript::CTriggerCrate::Main() -- test-script crate: each time the hero uses it, activate the "TestTheInventory" quest and drop a 10-point experience orb beside it; the next use deactivates the quest again
 // Leaf: ?Main@CTriggerCrate@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EF25E0, length 568 bytes.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, the is-alive predicate (vtable 0x012C32F0, out-of-line dtor
 //   0x00E241B0), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0;
@@ -18,11 +19,7 @@ class CCharString { public:
     ~CCharString();                                      // 0x0099EAE0
 };
 class CScriptThing;
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CCPPointerInfo;
 #include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

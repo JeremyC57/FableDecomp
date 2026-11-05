@@ -1,5 +1,6 @@
 // CGameCameraManager::ResetCamera() -- re-target the camera on the hero, reset the world height band around the hero, clear the camera flags and the hero's projectile aiming mode, drop the current mode and both script modules, clear the earthquakes, snapshot the camera, push the manual mode, and tell the renderer the camera moved (not in fast mode)
 // Leaf: ResetCamera
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members Start/Finish are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -30,15 +31,8 @@ class CCharString { public:
 #include "engine/C3DVector.h"
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
-    ComponentEntry* Start;
-    ComponentEntry* Finish;
-    ComponentEntry* LowerBound(const ETCInterfaceType& key);         // 0x0040F020
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 class CThing { public:
     unsigned char  Base[0x20];
@@ -153,7 +147,7 @@ template <class T, long TYPE> __forceinline T* GetComponent(CThing* thing)
     if (thing->UsingComponents[TYPE >> 5] & (1u << (TYPE & 31))) {
         ComponentMap* map = &thing->Components;
         ComponentEntry* it = map->LowerBound((ETCInterfaceType)TYPE);
-        ComponentEntry* end = map->Finish;
+        ComponentEntry* end = map->end();
         result = (T*)((void*)((it == end || it->first > TYPE) ? end : it)->second);
     }
     return result;

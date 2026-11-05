@@ -1,5 +1,6 @@
 // for_each<C3DVector*, CRescaleBy>(C3DVector* first, C3DVector* last, CRescaleBy f) -- scale every vector in the range by the functor's factor and return the functor
 // Leaf: ??$for_each@PAVC3DVector@@UCRescaleBy@@@std@@YI?AUCRescaleBy@@PAVC3DVector@@0U1@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A13440, 73 bytes, `ret 8`. Only caller 0x00A1287F.
 // Identity: the body MULTIPLIES each component by the functor's float, so the functor is the PDB's CRescaleBy
 //   (`_For_each<C3DVector*, CRescaleBy>` in Ego_r.pdb, struct, one float), not CAddElements<C3DVector> as the catalog
@@ -8,11 +9,7 @@
 // Calling convention: free template under /Gr = __fastcall: hidden result (CRescaleBy has a user constructor, so it
 //   is returned through memory) in ecx, first in edx, last and the functor by value on the stack.
 // Shape: the scale is re-loaded from the functor's argument slot for each component (`fld [esp+0Ch]; fmul [X]`).
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector& operator*=(float f) { X *= f; Y *= f; Z *= f; return *this; }
-};
+#include "engine/C3DVector.h"
 
 struct CRescaleBy {
     float Scale;

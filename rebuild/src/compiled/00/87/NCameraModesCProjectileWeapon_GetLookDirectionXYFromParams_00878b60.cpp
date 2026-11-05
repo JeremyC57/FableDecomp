@@ -1,5 +1,6 @@
 // NCameraModes::CProjectileWeapon::GetLookDirectionXYFromParams(float phi, float heightParam) const -- the camera's horizontal look direction for an orbit angle: the XY offset a quarter turn on (less the def's initial phi offset), turned to face back along the orbit
 // Leaf: ?GetLookDirectionXYFromParams@CProjectileWeapon@NCameraModes@@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00878B60, length 128 bytes (`ret 0Ch`: hidden C3DVector result pointer,
 //   phi, heightParam -- heightParam is unused).
 // Identity: Ego_r.pdb lists `?GetLookDirectionXYFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z`
@@ -17,13 +18,7 @@
 //   `fmul dword [-1.0f]` and the constant Z folds to -0.0f (0x80000000). Returning the product directly drops both
 //   frame vectors (85 bytes).
 #pragma pack(push, 1)
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CCameraModeDef { public:

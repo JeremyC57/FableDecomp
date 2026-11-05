@@ -1,4 +1,5 @@
 // CTCElectrocuteOnTouch::OnHit(CThing& thing) -- electrocute what touched the owner: give it a reset CTCElectrocutedEffect if it has none, then strike it with a knock-down hit carrying one point of damage attribute 2
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E2600, length 219 bytes (+ int3 padding). __fastcall, `ret 4`.
 //         Ego_r.pdb: `?OnHit@CTCElectrocuteOnTouch@@QAEXAAVCThing@@@Z`.
 // Callees: CThing::AddTC(const CCharString&, bool, const CTCParamsBase*) @ 0x004C9D60, CCharString(const char*, long) @
@@ -23,11 +24,7 @@ class CCharString { public:
     ~CCharString();                                 // 0x0099EAE0
 };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-};
+#include "engine/C3DVector.h"
 
 class CHitParameters {                              // 0x60 bytes in retail
 public:

@@ -1,0 +1,34 @@
+address	verdict	reason	changes	name_notes	secs
+00cdfb00	PASS				0.58
+00d02b80	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.50
+00d1e3e0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.52
+00d25d80	PASS				0.30
+00d25f50	PASS				0.39
+00d83dc0	PASS				0.40
+00d88540	PASS				0.43
+00dc3fc0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.47
+00dc7100	PASS				0.40
+00dc72a0	PASS				0.44
+00dcf0b0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.45
+00dd44c0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.55
+00de21d0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.39
+00de3830	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.38
+00df4be0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.48
+00df7bf0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.60
+00e0ad40	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.46
+00e16a80	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.47
+00e16c40	PASS			NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.53
+00e1b1f0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.48
+00e6ea30	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.43
+00e6f1c0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.47
+00e6f710	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.50
+00e71450	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.50
+00e71980	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.35
+00e73410	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.47
+00e73930	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.51
+00ee7a20	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.47
+00eea460	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.37
+00eea7c0	PASS		004ab130: ?IsAlive@CScriptThing@@QBE_NXZ -> ?IsAlive@CScriptThing@@UBE_NXZ	NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.49
+00eec410	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.42
+00ef2ba0	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.35
+00f1b220	PASS			NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.42

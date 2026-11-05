@@ -1,5 +1,6 @@
 // NScript::CQ_AwakeningTheOracleScript::CFinalSummoner::Main() -- Wait under the alive predicate and assign the hero as enemy target.
 // Leaf: ?Main@CFinalSummoner@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: own named registration/factory00cfb460->00cfdca0 stores vtable012c7d84 slot1; FableWin original nested Main signatures. Actual game API slots7/70/451 are NewScriptFrame const, GetHero mutable reference, GiveThingBestEnemyTarget const.
 // Layout: entity20 plus typed parent/master pointers; original CIsThingAlive16, Thing+4 and CPredicateBase slots0 predicate/1 Clone/2 dtor. CScriptThing shared header aliased to real CBaseClass/counting members. Outer declaration supplies nesting and original level base only.
@@ -15,9 +16,8 @@ class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCha
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT

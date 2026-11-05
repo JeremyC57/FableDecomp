@@ -15,14 +15,11 @@
 // the high byte of a frame word, the move with the as-landed AIAction_MoveToPosProximity arguments, the look-at,
 // then the animation action as an address-of-temporary (as the landed 0x009574D0) and `== 2` returned after the dtors.
 // Leaf: LookAtMap@CAIStateGroup_ApprenticeHero
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 class CThing;
 class CThingCreatureBase;
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CCharString { public:
     void* m_pData;

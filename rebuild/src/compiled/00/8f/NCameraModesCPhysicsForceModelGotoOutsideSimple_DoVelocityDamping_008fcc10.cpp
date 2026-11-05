@@ -1,5 +1,6 @@
 // NCameraModes::CPhysicsForceModelGotoOutsideSimple::DoVelocityDamping() -- the base force model's velocity damping (CPhysicsForceModelBase::DoVelocityDamping @ 0x008FA7E0) scaled by 6.0f
 // Leaf: DoVelocityDamping
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FCC10, length 56 bytes.
 // Identity: vtable 0x01275950 slot 7 (rtti-vtables.tsv); Ego_r.pdb has
 // `?DoVelocityDamping@CPhysicsForceModelGotoOutsideSimple@NCameraModes@@UAE?AVC3DVector@@XZ` right
@@ -10,12 +11,7 @@
 // Shape: as DoAttractToPoint: the inline `C3DVector * float` is built through the value constructor
 // straight into the hidden return slot, arguments evaluated right to left (z, y, x multiplied
 // first, stored x, y, z).
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() { }
-    C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) { }
-    C3DVector operator*(float s) const { return C3DVector(x * s, y * s, z * s); }
-};
+#include "engine/C3DVector.h"
 
 namespace NCameraModes {
 class CPhysicsForceModelBase { public:                    // vtable 0x0127592C

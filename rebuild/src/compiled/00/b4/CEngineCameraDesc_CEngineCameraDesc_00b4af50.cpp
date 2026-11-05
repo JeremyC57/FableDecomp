@@ -1,4 +1,5 @@
 // CEngineCameraDesc::CEngineCameraDesc(const CEngineCameraDesc& other) -- copy constructor: member-wise copy of the 0x6c-byte camera description
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B4AF50, length 114 bytes.
 // Callees: none. Layout = the PDB CEngineCameraDesc (0x6c bytes): Window C2DBoxF +0x00, RotationMatrix CMatrix3x4 +0x10, WorldPosition
 // C3DVector +0x40, HorizontalFOV +0x4c, VerticalFOV +0x50, Use2DFOV +0x54, NearZPlane +0x58, FarZPlane +0x5c, ZBufferStart +0x60,
@@ -15,10 +16,7 @@ class CMatrix3x4 { public:
     float m_elements[12];
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 
 struct CEngineCameraDesc {
     C2DBoxF    Window;               // +0x00

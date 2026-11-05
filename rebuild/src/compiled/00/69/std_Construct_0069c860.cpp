@@ -2,12 +2,10 @@
 // Retail: Fable.exe @ 0x0069C860, 75 bytes; __fastcall-shaped STLport helper (ecx = element slot, edx = source element).
 // Callees: none (inline trivial copy).
 // Leaf: _Construct
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 namespace N0069c860 {
-struct C3DVector {
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // user memberwise copy: fixed-offset dword moves, no block copy
-};
+#include "engine/C3DVector.h"
 struct CQuake {                                  // CGameCameraManager::CQuake (PDB, sizeof 0x30)
     C3DVector Position;                          // +0x00
     C3DVector Axis;                              // +0x0C

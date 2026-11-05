@@ -1,5 +1,6 @@
 // CEnginePrimitiveAnimatingMesh::CEnginePrimitiveAnimatingMesh(unsigned __int64, unsigned long, const C3DAnimationInterpolator&, const C3DPositionInterpolator&, const C3DOrientationInterpolator&, float, bool, unsigned char, CRGBColour, float, EEngineInterpolationSet, const CEnginePrimitiveThemeChannelDesc&, bool) -- construct an animating-mesh descriptor: primitive type 9, mesh index, size, fade start, alpha, lit flag, position/orientation/animation interpolators (copied), no mesh effect, theme channel, tint and the bullet-time cloth flag
 // Leaf: ??0CEnginePrimitiveAnimatingMesh
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007088F0, length 304 bytes (`ret 38h`: the unused 64-bit id + 12 arguments).
 // Callees: none (every copy constructor is inline). Vtables: 0x0123981C C3DPositionInterpolator, 0x01239824
 // C3DOrientationInterpolator, 0x01239840 C3DAnimationInterpolator, 0x01239838 C3DAnimationBlendState.
@@ -11,7 +12,7 @@
 // is implicit); the lit flag is a one-bit init-list member (`xor ; and 1 ; xor` merge); one `xor ebx,ebx` zero register
 // serves the theme-channel bytes, the null tests and the empty MeshEffect.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class C3DVector { public: float X,Y,Z; C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up,Forward; CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} };
 class C3DPositionInterpolator : public CBaseClass { public:      // vtable 0x0123981C
     C3DVector StartPosition,EndPosition;

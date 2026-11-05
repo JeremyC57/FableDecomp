@@ -1,4 +1,5 @@
 // 008e60d0 CThingSearchTools::GetAllThingsInRoughArea, 704 retail bytes.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Layout: shared CThingSearchTools donor has a 16-byte debug vector at +0xc;
 // retail uses the first three words (12-byte STLport vector). No trailing
 // donor member is accessed. CThing's retail type flags are +0x6c (PDB +0x7c).
@@ -33,7 +34,7 @@ template<class T> struct RetailVector {
  __forceinline void push_back(const T& value){if(Finish!=End){new(Finish)T(value);++Finish;}else _M_insert_overflow(Finish,value,FalseType(),1,true);}
  __forceinline void clear(){Finish=(T*)CopyTrivial(Finish,Finish,Start);}
 };
-class C3DVector { public:float X,Y,Z;C3DVector(){} C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
+#include "engine/C3DVector.h"
 // Donor supplies the shared object layout; adapter supplies its recovered method declaration.
 struct CTCPhysicsBase_Calls:CTCPhysicsBase {void GetBoundingInfo(C3DVector&,float&)const;}; // 0x006af640
 class CThing { public:

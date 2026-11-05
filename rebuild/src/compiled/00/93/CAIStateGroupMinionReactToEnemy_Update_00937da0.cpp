@@ -1,4 +1,5 @@
 // CAIStateGroup_MinionReactToEnemy::Update() -- while the enemy is alive and still a target to attack: back off (to 2.4 units beyond the creature, away from the enemy) when the enemy is within 5 units in XY, then keep looking at the enemy; terminate when the enemy dies, stops being a target, or a move or look fails
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00937DA0, length 450 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy), IsToAttackTarget(CThingAICreature*, CThingCreatureBase*)
 // @ 0x00864D00 (__fastcall), CThing::PeekPos @ 0x004C73D0 (the XY distance helper), CThingCreatureBase::PeekPos
@@ -11,18 +12,7 @@
 // constructor, so `creature position + away` is built straight into the argument slot; the back-off is `away *= 2.4f`
 // in place after the out-of-line Normalise; the look target converts through a template copy constructor.
 // Layout: Ego_r.pdb CAIStateGroup_MinionReactToEnemy (PEnemy +0x14, CIntelligentPointer<CThingCreatureBase>).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    float GetLengthSquaredXY() const { return X * X + Y * Y; }
-    C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead

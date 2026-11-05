@@ -1,5 +1,6 @@
 // CThingCreatureDef::~CThingCreatureDef() -- the compiler-generated destructor: free the NavigatorTypes block, then the inline CThingBaseDef (Components small vector delete[]d and reset) and CParentDefClassBase (SubDefInfoMap block freed) destructors, the CDefPointeeBase vtable reset and ~CResource
 // Leaf: ??1CThingCreatureDef@@UAE@XZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00671100, 75 bytes, thiscall, tail `jmp ~CResource`.
 // Identity (proven): the sole caller is the slot-0 `??_G` 0x006710E0 of vtable 0x0125B2DC (RTTI .?AVCThingCreatureDef@@ :
@@ -33,14 +34,7 @@ class CDefString {                                      // Ego_r.pdb, 4 bytes
 public:
     long TablePos;                                      // +0x00
 };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // sorted-on-demand vector map, retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    CArray<value_type> Data;                            // +0x00
-    TCompare           Compare;                         // +0x0c (empty comparator)
-    bool               Dirty;                           // +0x0d
-};
+#include "engine/CVectorMap.h"
 template <class T, int N> class CSmallVector {          // Ego_r.pdb, 8 bytes
 public:
     CSmallVector();

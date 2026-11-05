@@ -1,5 +1,6 @@
 // std::deque::clear() -- STLport deque<CBezierCurve>::clear: frees every full interior node buffer, then the finish buffer when start and finish differ, and sets finish = start
 // Leaf: ?clear@?$deque@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00913A20, 94 bytes (96 with padding), __fastcall.
 // Identity: STLport 4.6 deque<CBezierCurve, allocator<CBezierCurve> >::clear; single caller 0x00912BB4 (the flying-thing path
 //   builder). The catalog label "PathBuffer_ClearAndReset" is an autoname.
@@ -19,14 +20,7 @@ extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 inline void* operator new(size_t, void* p) { return p; }
 
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CBezierCurve {                            // Ego_r.pdb, 48 bytes

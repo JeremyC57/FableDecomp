@@ -1,5 +1,6 @@
 // CAIStateGroup_ThrowLogsOnFire::GetPNearestFreeLogPile() const -- the free log pile nearest this group's creature (0 if none)
 // Leaf: ?GetPNearestFreeLogPile@CAIStateGroup_ThrowLogsOnFire@@ABEPAVCThingObject@@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00917050, 83 bytes (+ int3 padding), thiscall, `ret`.
 // Identity (proven): label correction -- the row is labelled GetPNearestBonfire. Ego_r.pdb donor order GetPNearestFreeLogPile
 //   (0x0093A870) / GetPNearestBonfire (0x0093A8D0) = retail 0x00917050 / 0x009170B0, and this body calls 0x00916F30, the
@@ -41,14 +42,7 @@ public:
     T* Data;                                            // +0x00
     T* operator->() const { return Data; }
 };
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 class CClass : public CBaseObject { };
 class CThing : public CClass {
 public:
@@ -148,7 +142,7 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
         return a;
     C3DVector deltaA = a->GetPos() - Pos;
     C3DVector deltaB = b->GetPos() - Pos;
-    return (deltaA.GetLengthSquared() < deltaB.GetLengthSquared()) ? a : b;
+    return (deltaA.GetSquaredMagnitude() < deltaB.GetSquaredMagnitude()) ? a : b;
 }
 class CThingSearchTools {                                // Ego_r.pdb 28 bytes (only `this` is passed through here)
 public:

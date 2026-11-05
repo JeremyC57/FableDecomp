@@ -1,4 +1,5 @@
 // CTCPhysicsBase::HasSphereSphereCollidedAt(const CTCPhysicsBase& other, const C3DVector& from, const C3DVector& to, CPhysicsCollideResponse& response) const -- the sphere test at 'to' (0x008803E0); on contact move the contact point back along the from->to direction by both radii and drop it by this radius
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local Normalise replaced by the header Normalise (same computation).
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // `operator*=(const float&)` (chunk 278 lever) makes VC7.1 pop the Newton-step reciprocal to the frame and multiply
 // X/Y/Z from memory (`fstp [r] ; fxch ; fmul [r]`), which is retail's x87 shape; the plain `X *= r` form keeps r on
@@ -14,16 +15,8 @@ __forceinline float FastInvSqrt(float lengthSquared)
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
-class C3DVector { public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    C3DVector& operator*=(const float& s) { X *= s; Y *= s; Z *= s; return *this; }
-    __forceinline void Normalise() { *this *= FastInvSqrt(X * X + Y * Y + Z * Z); }
-};
+#define FABLE_RETAIL_C3DVECTOR
+#include "engine/C3DVector.h"
 
 class CPhysicsCollideResponse { public:
     C3DVector CollidePos;       // +0x00

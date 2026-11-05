@@ -1,4 +1,5 @@
 // Shared donor layouts remain visible alongside the retail call views below.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_PlayerGui_013b8790 (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_MainGameComponent_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -33,7 +34,7 @@
 
 // NDisplayView::CView3DBase::Render(const CInterpolationInfo&,bool)
 // PDB egor 13552 / debug 0x006c3850. Global spellings not recovered are explicitly descriptive.
-class C3DVector { public: float X,Y,Z; C3DVector(){} C3DVector(const C3DVector&); };
+#include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up,Forward; CRightHandedSet(){} CRightHandedSet(const CRightHandedSet&); };
 class C2DBoxF { public: float Left,Top,Right,Bottom; };
 struct CInterpolationInfoSet { float GTPredictedTimeSinceLastRenderFrame,WFInterpolate; };

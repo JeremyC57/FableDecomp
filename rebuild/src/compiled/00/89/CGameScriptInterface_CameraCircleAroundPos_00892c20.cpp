@@ -1,5 +1,6 @@
 // CGameScriptInterface::CameraCircleAroundPos(const C3DVector&, const C3DVector&, float) const -- hand the camera manager a scripted dolly mode circling a position at an offset
 // Leaf: ?CameraCircleAroundPos@CGameScriptInterface@@UBEXABVC3DVector@@0M@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x00892C20, 204 bytes, `ret 0xc`; Ego_r.pdb same symbol.
 // Body: World (+0x04)->PCurrentGameCamera (+0x34)->GetCameraManager(&manager) (slot 9); manager->SetScriptedCameraMode(
 // CCountedPointer<CScriptModuleBase>(new CScriptModuleDolly(pos, offset, time))) -- operator new 0x00BFEA1A (0x68 bytes);
@@ -8,10 +9,7 @@
 // Layout: Ego_r.pdb CScriptModuleDolly (0x68): PosAround +0x4c, DollyVector +0x58, TimeFor360Turn +0x64.
 // Shape: /O2 (16-aligned entry); __forceinline CCountedPointer(T*) handing Object to the info block; C3DVector user copy
 // ctor (direct-offset member copies).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 namespace NCameraModes {
 class CScriptModuleBase {
 public:

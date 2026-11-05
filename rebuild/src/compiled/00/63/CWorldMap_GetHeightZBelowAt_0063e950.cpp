@@ -1,5 +1,6 @@
 // CWorldMap::GetHeightZBelowAt(const C3DVector& pos, float radius, bool useTheme, const CThingFilterBase& filter) const -- the highest surface below pos: starts from the ground (or theme) height, gathers the things whose rough area overlaps a circle of `radius` round pos and pass `filter`, and raises the height to any physics-mesh hit (+0.007) on the 200-unit drop segment below pos that lies under pos
 // Leaf: GetHeightZBelowAt
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063E950, 463 bytes, `ret 10h`.
 //   PDB ?GetHeightZBelowAt@CWorldMap@@QBEMABVC3DVector@@M_NABVCThingFilterBase@1@@Z.
 // Callees: __ftol2 0x00BFEA70 (x4), C2DBoxI::ValidateOrientationAndFlip 0x00A3A150, malloc 0x00BFEA0E / free 0x00BFEA14
@@ -10,12 +11,7 @@
 //   0x0125A168, 0.007f @ 0x0125A164.
 // Layout: CWorldMap World +0x08 (as the PDB header); CWorld ThingSearchTools +0x20; CThing PhysicsTC +0x60; the
 //   CPhysicsMeshObject / CMeshIntersectionData models of the landed CThingFindHeightZBelowAt::operator() 0x00668AB0.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;
     C2DBoxI(long x0, long y0, long x1, long y1) : TLX(x0), TLY(y0), BRX(x1), BRY(y1) { }

@@ -1,5 +1,6 @@
 // std::deque::_M_push_back_aux_v(const CBezierCurve& t) -- STLport deque<CBezierCurve> slow push_back: copy t, make room in the node map, allocate the next 2-element buffer, construct the copy at the old finish cursor and move the finish iterator onto the new buffer
 // Leaf: ?_M_push_back_aux_v@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00913D60, 272 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: the catalog's "PathBuilder_AppendBezierCurveNode" is descriptive. Callers: the flying-thing path code
 //   0x00912B8C / 0x00912D22 / 0x009130AE (inlined push_back) and the out-of-line deque<CBezierCurve>::push_back
@@ -15,14 +16,7 @@ extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }
 
 #pragma pack(push, 1)
-class C3DVector {                               // retail: byte-packed, memberwise user copy ctor
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector() { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 class CBezierCurve {                            // Ego_r.pdb, 48 bytes

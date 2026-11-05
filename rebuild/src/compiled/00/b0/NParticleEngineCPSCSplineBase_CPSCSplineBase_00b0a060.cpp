@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSplineBase::~CPSCSplineBase() -- compiler-generated destructor: release the spline position-parameter and random-offset data (counted pointers), free the cardinal spline's control-point array, then the base chain down to ~CBaseClassNonCopyable
 // Leaf: ??1CPSCSplineBase@NParticleEngine@@UAE@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0A060, length 111 bytes, tail jump to ~CBaseClassNonCopyable.
 // Identity (proven): called by the scalar deleting destructors of NParticleEngine::CPSCSplineBase (0x00B230C0, slot 0 of vtable
@@ -27,10 +28,7 @@ extern "C" void __cdecl free(void* block);                      // 0x00BFEA14
 #include "engine/CCountedPointer.h"                    // retail model (8 bytes: Data, Info)
 
 #pragma pack(push, 1)
-class C3DVector {                                       // retail C3DVector is 1-aligned
-public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 
 

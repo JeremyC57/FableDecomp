@@ -1,0 +1,9 @@
+  WARN leaf '?TransformVector@CTCCameraPointDefinitionBase@@IBE?AVC3DVector@@ABV2@PBVCRightHandedSet@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?ProcessPossibleShotStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in x.obj; graded the largest function
+gate: 597 rows {'PASS': 597} in 52.8s (0.09s/row wall, NJ=4)
+gate: 597 PASS of 597
+vland:
+     91 MATCH PASS
+    506 RELOCATION_MATCH PASS

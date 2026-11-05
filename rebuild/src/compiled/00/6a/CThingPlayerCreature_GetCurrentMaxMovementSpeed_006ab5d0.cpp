@@ -1,5 +1,6 @@
 // CThingPlayerCreature::GetCurrentMaxMovementSpeed() const -- the speed limit for the current movement band: 0 while blocking, the stealth component's sneaking speed when sneaking (always under the sneak-speed option, else in the slow/walking bands), else walking/running/jogging by band (3 = running, 4 = jogging), overridden by sprinting when the hero special-movement component is sprinting
 // Leaf: ?GetCurrentMaxMovementSpeed@CThingPlayerCreature@@IBEMXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AB5D0, 412 bytes including the 5-entry band jump table at 0x006AB758.
 // Name: Ego_r.pdb ?GetCurrentMaxMovementSpeed@CThingPlayerCreature@@IBEMXZ (protected const; the parked file was public).
 // Callees (Ego_r.pdb spellings): CTCPhysicsBase::GetFacingVector() const (virtual slot 70, +0x118, by-value C3DVector: the only
@@ -19,13 +20,7 @@
 //   MovementBandType +0x200 (Ego_r.pdb +0x22C minus 0x10 CThing and 0x1C of container shrink). The vtable fillers v000..v078 and
 //   v00..v69 are unnamed slot placeholders; only the named slots are proven.
 #include <math.h>
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 class CTCBase;
 class CTCPhysicsBase {
 public:

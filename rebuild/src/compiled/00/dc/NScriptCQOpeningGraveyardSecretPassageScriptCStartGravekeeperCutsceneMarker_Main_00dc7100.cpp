@@ -1,5 +1,6 @@
 // NScript::CQ_OpeningGraveyardSecretPassageScript::CStartGravekeeperCutsceneMarker::Main() -- graveyard secret passage marker script: hold a conscious-thing predicate, then wait each frame until the hero comes within 5.0f of the marker and flag GravekeeperCutsceneStart on the parent quest
 // Leaf: ?Main@CStartGravekeeperCutsceneMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DC7100, 184 bytes (+ int3 padding); entity-script vtable 0x012DA890 slot 1 (Main).
 // Identity: the factory 0x00DC7020 ("StartGravekeeperCutsceneMarker" at 0x012DA298, `push 1Ch` = Ego_r.pdb sizeof CStartGravekeeperCutsceneMarker 28) stores this vtable;
 //   CStartGravekeeperCutsceneMarker {ParentClass +0x14 = CQ_OpeningGraveyardSecretPassageScript*, PMasterData +0x18}.
@@ -15,11 +16,9 @@
 // Naming wave 35: identity reg 00dc2c14 "StartGravekeeperCutsceneMarker" in 00dc27c0; Alloc 00dc7020; vtable 012da890 slot 1; PDB ?Main@CStartGravekeeperCutsceneMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@; refs=1; Anniversary RTTI agrees (confirmed); was under-qualified CStartGravekeeperCutsceneMarker::Main (wave3/labels_alloc.tsv); PDB ?Main@CStartGravekeeperCutsceneMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CStartGravekeeperCutsceneMarker@@QAEXXZ`; this source now defines the PDB member (outer stand-in CQ_OpeningGraveyardSecretPassageScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
-    unsigned char _body[0xc - 4];
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    virtual ~CScriptThing();                                     // 0x004AA840
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 

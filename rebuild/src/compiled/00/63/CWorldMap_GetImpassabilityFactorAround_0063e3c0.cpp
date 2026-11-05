@@ -1,5 +1,6 @@
 // CWorldMap::GetImpassabilityFactorAround(const C3DVector&, vector<float>&, bool) const -- fill nine impassability factors (0 passable, 1 blocked) for the world-map block under a position and its eight neighbours
 // Leaf: GetImpassabilityFactorAround
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe @ 0x0063E3C0, 177 bytes, `ret 0Ch`. PDB ?GetImpassabilityFactorAround@CWorldMap@@QBEXABVC3DVector@@AAV?$vector@MV?$allocator@M@std@@@std@@_N@Z
 // Callees: CWorldMap::PeekDefinitionManager() const 0x004FB310 (twice, results unused; it forwards to the component's
 // CGameDefinitionManager::Get 0x0044C6B0), memmove 0x00BFEAE6 (the inlined vector clear), _ftol2 0x00BFEA70,
@@ -11,8 +12,7 @@
 // its Y is ever stored); the bool argument is unused.
 #include <string.h>
 
-class C3DVector { public: float X, Y, Z; };
-class C2DCoordI { public: long X, Y; C2DCoordI(long x, long y) : X(x), Y(y) { } };
+#include "engine/C3DVector.h"
 extern const C2DCoordI g_BlockNeighbourOffsets[9];          // 0x01385978
 
 struct CFloatVector {                                        // STLport vector<float> (12 bytes)

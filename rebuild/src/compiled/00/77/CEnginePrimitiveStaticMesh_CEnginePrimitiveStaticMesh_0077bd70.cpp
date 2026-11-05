@@ -1,8 +1,9 @@
 // CEnginePrimitiveStaticMesh::CEnginePrimitiveStaticMesh -- initialize static mesh packet. Retail0077bd70 complete177bytes ret0x34 +15int3. PDB native layout0x4c agrees with stores; no wrapper/composite engine headers exist. Base12bytes Type=8/interpolation/default channel, mesh+c position+10,size+1c,fade+20,RHS+24,nullableMeshEffect+3c,channel+40,tint+44,alpha+48,litbit+49,bulletTime+4a. Unused64bit identifier preserved in signature.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #ifndef _MSC_VER
 #define __int64 long long
 #endif
-class C3DVector { public:float X,Y,Z;C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:C3DVector Up,Forward;CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} CRightHandedSet(const C3DVector& u,const C3DVector& f):Up(u),Forward(f){}};
 class CRGBColour { public:unsigned char B,G,R,A;CRGBColour(){} CRGBColour(const CRGBColour& c){Set(c.R,c.G,c.B,c.A);} void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a){R=r;G=g;B=b;A=a;}};
 class CEnginePrimitiveThemeChannelDesc { public:unsigned char ChannelIndex0,ChannelIndex1,ChannelBlendFactor,Pad;CEnginePrimitiveThemeChannelDesc():ChannelIndex0(0),ChannelIndex1(0),ChannelBlendFactor(0){}};

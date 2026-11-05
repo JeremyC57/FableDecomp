@@ -1,4 +1,5 @@
 //008dd6e0 NCreatureMode::CModeThunderLightningStorm::OnActivate; original PDB egor20086.
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members First/Last are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Fidelity correction only; direct helper/RTTI evidence: advisor/008dd6e0_main_audit.md.
 #include "fable_string.h"
 #define CModeStandBase CModeStandBasePdb
@@ -105,14 +106,7 @@ extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDef
 extern unsigned long g_InvalidSoundHandle;
 
 enum ETCInterfaceType {TC_SOUND_PLAYER=16};
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template<class K,class V> class CKeyPairCompareLess { public:};
-template<class K,class V,class Compare> class CVectorMap { public:
-    typedef std::pair<K,V> Entry;
-    typedef Entry* iterator; //retail one-pointer iterator ABI: EAX, no hidden return
-    Entry* First;Entry* Last;Entry* Limit;
-    iterator LowerBound(const K&); //0040f020 ORIGINAL NONCONST specialization; const overload is004365b0
-};
+#include "engine/CVectorMap.h"
 // Layout: no shared CThing header exists; this retail view uses UsingComponents+20,
 // interface vector+44; fields outside this operation are not asserted.
 class CThing { public:
@@ -124,7 +118,7 @@ class CThing { public:
             ETCInterfaceType type=interfaceType;
             typedef CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > Map;
             Map* map=&Interfaces;Map::iterator it=map->LowerBound(type);
-            *out=static_cast<T*>((it==map->Last||interfaceType<it->first?map->Last:it)->second);return true;
+            *out=static_cast<T*>((it==map->end()||interfaceType<it->first?map->end():it)->second);return true;
         }return false;
     }
 };

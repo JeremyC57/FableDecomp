@@ -1,4 +1,5 @@
 // CGroundNavigatorExternalInterface::IsDead() const -- true when there is no creature or its dead bit (+0x91 bit 0) is set
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CDB20, length 48 bytes.
 // Callees: none. Shape: the inline "alive" test (`creature && !dead`) materialised as `mov al,1` / `xor al,al` and then negated through `sete cl ; mov al,cl` on each path:
 // the function is the negation of an inline IsAlive helper.
@@ -15,11 +16,7 @@ struct CTCMap_Retail {                             // the creature's component m
     STCEntry_Retail* LowerBound(const long* kind);          // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound)
     STCEntry_Retail* LowerBound(const long* kind) const;    // 0x004365B0 (the second instantiation)
 };
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() {}
-    C3DVector(const C3DVector& o) : x(o.x), y(o.y), z(o.z) {}
-};
+#include "engine/C3DVector.h"
 class CCreatureNavigationDef;
 struct CDefPointer_Nav {                           // CDefPointer<CCreatureNavigationDef>: one counted def pointer (released by hand in the bodies: the slot is reused for the float)
     CCreatureNavigationDef* m_p;

@@ -3,13 +3,14 @@
 // its sibling 0x00AF2640 (GetCurrentPosition) applies GetSystemTransform 0x00AF2250, this body GetInverseSystemTransform 0x00AF22C0.
 // Flags: /O2 /Oy /W3
 // Leaf: ?GetCurrentPositionLocal@CPSCBase@NParticleEngine@@QBE?AVC3DVector@@ABV?$CParticleUpdateParameters@KK@2@ABKM_NK@Z
-class C3DVector { public:float x,y,z;C3DVector(){} __forceinline C3DVector(const C3DVector& v){z=v.z;x=v.x;y=v.y;}__forceinline C3DVector(float a,float b,float c){x=a;y=b;z=c;}};
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
+#include "engine/C3DVector.h"
 class CMatrix3x4 { public:float m[12];};
 // ABI: 0x00af3080 dereferences second stack argument as a key; 0x00af2c50 receives its address.
 namespace NParticleEngine {
 template<class A,class B> class CParticleUpdateParameters { public: bool GetUpdateParam(C3DVector&,const unsigned long&,float,bool,unsigned long)const;};
 // Layout: retail owner +4, owner flags +0x50, fallback virtual slot30.
-class CParticleSystem { public:char pad[80];unsigned char flags;void GetInverseSystemTransform(CMatrix3x4&)const;__forceinline C3DVector Transform(const C3DVector& p){C3DVector q=p;if(!(flags&64)){CMatrix3x4 m;GetInverseSystemTransform(m);const CMatrix3x4& mat=m;float x=q.x,y=q.y;q.x=mat.m[6]*q.z+mat.m[3]*q.y+mat.m[0]*q.x+mat.m[9];q.y=mat.m[7]*q.z+mat.m[4]*q.y+mat.m[1]*x+mat.m[10];q.z=mat.m[8]*q.z+mat.m[5]*y+mat.m[2]*x+mat.m[11];}return C3DVector(q.x,q.y,q.z);}};
+class CParticleSystem { public:char pad[80];unsigned char flags;void GetInverseSystemTransform(CMatrix3x4&)const;__forceinline C3DVector Transform(const C3DVector& p){C3DVector q=p;if(!(flags&64)){CMatrix3x4 m;GetInverseSystemTransform(m);const CMatrix3x4& mat=m;float x=q.X,y=q.Y;q.X=mat.m[6]*q.Z+mat.m[3]*q.Y+mat.m[0]*q.X+mat.m[9];q.Y=mat.m[7]*q.Z+mat.m[4]*q.Y+mat.m[1]*x+mat.m[10];q.Z=mat.m[8]*q.Z+mat.m[5]*y+mat.m[2]*x+mat.m[11];}return C3DVector(q.X,q.Y,q.Z);}};
 class CPSCBase { public:
 virtual void v0()=0;
 virtual void v1()=0;
@@ -43,5 +44,5 @@ virtual void v28()=0;
 virtual void v29()=0;
 virtual bool Fallback(C3DVector&)const=0;CParticleSystem* owner;C3DVector GetCurrentPositionLocal(const CParticleUpdateParameters<unsigned long,unsigned long>&,const unsigned long&,float,bool,unsigned long)const;
 };
-C3DVector CPSCBase::GetCurrentPositionLocal(const CParticleUpdateParameters<unsigned long,unsigned long>& r,const unsigned long&a,float b,bool c,unsigned long d)const{C3DVector p;if(!r.GetUpdateParam(p,a,b,c,d)&&!Fallback(p)){p.z=0;p.y=0;p.x=0;}if(owner)p=owner->Transform(p);return C3DVector(p.x,p.y,p.z);}
+C3DVector CPSCBase::GetCurrentPositionLocal(const CParticleUpdateParameters<unsigned long,unsigned long>& r,const unsigned long&a,float b,bool c,unsigned long d)const{C3DVector p;if(!r.GetUpdateParam(p,a,b,c,d)&&!Fallback(p)){p.Z=0;p.Y=0;p.X=0;}if(owner)p=owner->Transform(p);return C3DVector(p.X,p.Y,p.Z);}
 }

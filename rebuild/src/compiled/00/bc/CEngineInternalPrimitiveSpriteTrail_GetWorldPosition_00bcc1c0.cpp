@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveSpriteTrail::GetWorldPosition(C3DVector& position) -- the centre of the box bounding every trail point grown by the trail width; false for an empty trail
 // Leaf: ?GetWorldPosition@CEngineInternalPrimitiveSpriteTrail@@UAE_NAAVC3DVector@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Grade: RELOCATION_MATCH (retry wave 2) -- the bounds are two C3DVector locals (min at +FLT_MAX, max at -FLT_MAX)
 //   instead of one C3DBoundingBox, which puts them below the point copy in the frame as retail
@@ -12,13 +13,7 @@
 // Shape: `size() == 0` is `test eax,0FFFFFFF0h` on the byte difference; each point is copied (memberwise C3DVector copy
 //   constructor: X stays on the x87 stack, Y/Z go to the frame); the min tests keep the box value when it is smaller
 //   (`test ah,5 ; jnp`), the max tests when it is larger (`test ah,41h ; je`); the centre is written component by component.
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox { public:
     C3DVector MinCoord;                                    // +0x00
     C3DVector MaxCoord;                                    // +0x0c

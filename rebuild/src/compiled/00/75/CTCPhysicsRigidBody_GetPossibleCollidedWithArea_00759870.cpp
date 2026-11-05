@@ -1,5 +1,6 @@
 // CTCPhysicsRigidBody::GetPossibleCollidedWithArea() -- the integer box around the position that the body can touch: the position's XY plus/minus three times the mesh's bounding-circle radius, orientation-validated
 // Leaf: GetPossibleCollidedWithArea
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00759870, 124 bytes. CTCPhysicsRigidBody vtable 0x0126996C slot 97.
 // Callees: virtual slot 93 (+0x174, GetPhysicsMeshInfo), _ftol @ 0x00BFEA70 (four times), C2DBoxI::ValidateOrientationAndFlip()
 //   @ 0x00A3A150. 3.0f from the pool 0x0122DED4.
@@ -8,8 +9,7 @@
 // Shape: a C2DBoxI local filled corner by corner in order (x0, y0, x1, y1: the radius stays on the FPU stack), validated, and
 //   returned by value through the hidden pointer (copied out by the __forceinline memberwise copy ctor:
 //   no NRVO; the implicit copy goes through ecx with `mov ecx,eax`).
-class C3DVector { public: float X, Y, Z; };
-class C2DCoordI { public: long X, Y; };
+#include "engine/C3DVector.h"
 class C2DBoxI { public:
     C2DCoordI TopLeft;
     C2DCoordI BottomRight;

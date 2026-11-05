@@ -1,5 +1,6 @@
 // CCombatAction_KickThingOnGround::CCombatAction_KickThingOnGround(CThingCreatureBase* creature, CThing* target) -- base action (code 150, zeroed sound pair), the kick vector = sum of both things' (+0xc - +0x18) vectors, and the +0x12c float from the creature's virtual slot 81 on its +0x60 object's slot 70 result
 // Leaf: ??0CCombatAction_KickThingOnGround
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087FD20, 205 bytes (208 with padding), `ret 8`; vtable 0x01277D3C.
 // Callees: CCombatActionBase::CCombatActionBase(owner, thing, code, sound) 0x00857F30; the creature's +0x60 object's virtual
 //   slot 70 (+0x118, fills a C3DVector out-parameter and returns it), the creature's virtual slot 81 (+0x144, float).
@@ -7,13 +8,7 @@
 // Shape: C3DVector operator-/operator+ inline, returning by value; the sum is assigned as a dword block. The target's
 //   difference is the left operand (the right one, the creature's, is evaluated first); the position out-parameter is a
 //   block-scoped local so it shares the frame with the vector temporaries (sub esp,24h).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
-};
+#include "engine/C3DVector.h"
 
 struct CThingPhysics {                          // the thing's +0x60 object
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

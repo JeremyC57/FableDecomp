@@ -1,4 +1,5 @@
 // CAIStateGroup_NonVillageGuardPatrol::Update() -- follow track nodes while AIAction_MoveToPos asks for repetition.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Native: Fable.exe TLC VC7.1 @ 0x0093cb20, 306-byte body (320 including 14 bytes of int3 padding).
 // Retail evidence: CurrentGuardpostThing is the 8-byte CIntelligentPointer<const CThingTrackNode> at +0x14; successor is +0xd0.
 // Native callees: CBaseIntelligentPointer::{CBaseIntelligentPointer,GetPItem,SetPItem,~CBaseIntelligentPointer}
@@ -30,11 +31,7 @@ public:
 // native track-node layout on a 64-bit host. This view addresses the native
 // successor after its real CBaseObject prefix, using member access on the host.
 // The 0xc8-byte native state is independent of sizeof(CThing) in the donor view.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) { X=v.X; Y=v.Y; Z=v.Z; }
-};
+#include "engine/C3DVector.h"
 class CThingPhysical : public CBaseObject { public:
     const C3DVector& PeekPos() const; // 0x006a4d00
 };

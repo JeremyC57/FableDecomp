@@ -1,5 +1,6 @@
 // std::for_each(C3DVector* first, C3DVector* last, CGetBestIciclePointForTarget f) -- keeps the icicle point with the highest 1/(1+d^2) XY-closeness score to the target
 // Leaf: for_each
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E2F10, 158 bytes, `ret 20h`. Caller: CModeIceTrollGroundSmashIcicleAssault::FrameUpdate 0x008DE9C2.
 // Constants: 1.0f @ 0x0122DED8.
 // SGI/STLport `for_each` (`for (; first != last; ++first) f(*first); return f;`), compiled /Gr in retail so it is `__fastcall` here: the functor is returned through the hidden pointer (ecx), a pointer `first` rides in edx, the rest on the stack.
@@ -14,12 +15,7 @@ Function __fastcall for_each(InputIter first, InputIter last, Function f)
     return f;
 }
 }
-class C3DVector {
-public:
-    float x, y, z;
-    C3DVector() {}
-    C3DVector(const C3DVector& v) : x(v.x), y(v.y), z(v.z) {}
-};
+#include "engine/C3DVector.h"
 class CGetBestIciclePointForTarget {
 public:
     C3DVector m_target;                           // +0x00
@@ -28,8 +24,8 @@ public:
     CGetBestIciclePointForTarget() {}
     void operator()(const C3DVector& p)
     {
-        float dx = p.x - m_target.x;
-        float dy = p.y - m_target.y;
+        float dx = p.X - m_target.X;
+        float dy = p.Y - m_target.Y;
         float score = 1.0f / (dy * dy + dx * dx + 1.0f);
         if (score > m_bestScore) {
             m_bestScore = score;

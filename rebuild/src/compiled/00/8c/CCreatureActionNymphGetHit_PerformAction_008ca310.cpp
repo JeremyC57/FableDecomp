@@ -1,4 +1,5 @@
 // CCreatureAction_NymphGetHit::PerformAction() -- when the nymph's definition has a special-effects sub-def that maps "TELEPORT_POS" to an effect, spawn that effect at the nymph and attach its particle emitter to the nymph's "DUMMY_CENTRE" helper; then tell the CTCNymph component to fly around for the frames the action has left (TotalTime - FramesRunning)
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CA310, length 387 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8), CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580 on the
@@ -14,7 +15,7 @@
 // (null and bit 0 of +0x91) before the emitter lookup (`p = 0; if (HasTC) p = GetTC`). The nymph is found through the out-parameter
 // GetInterface(T**, type) template (component left in eax, `mov ecx,eax` after the argument). GetSubDef and GetEffectFromString
 // get same-TU stand-in bodies (write only the out slot / the `long&`), so neither the def slot nor the effect-type word escapes.
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

@@ -1,4 +1,5 @@
 // CSoundReceiverLH::CSoundReceiverLH(void* owner) -- base CBase(), own vtable, embedded receiver state (unit volume), an up vector (0,1,0), the owner
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAD020, length 50 bytes.
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0. This class's vtable is 0x0129E76C (rtti-vtables.tsv:
 // CSoundReceiverLH). Members +0x04..+0x0c are left uninitialised. The vtable store precedes the
@@ -9,12 +10,7 @@
 // (0x3F800000 in ecx) as VC7.1 emits float-constant stores; the owner is assigned in the body.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-class C3DVector { public:
-    float X;                                // +0x00
-    float Y;                                // +0x04
-    float Z;                                // +0x08
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-};
+#include "engine/C3DVector.h"
 
 struct SReceiverState {                     // inline constructor: null handles, unit volume
     void* m_pSound;                         // +0x00

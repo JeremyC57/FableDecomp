@@ -1,16 +1,11 @@
 // CEngineSimulationManager::WorldFrameUpdate -- refresh wind and advance simulation counters.
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail00b80790,172bytes. Slots1 of provider198 and environment yield wind14/strength20.
 // Shared PDB header retained for identity; native STLport list size4 vs donor12 shifts wind/counters -0x1c.
 #ifdef _MSC_VER
 #include "engine/CEngineSimulationManager.h"
 #endif
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 
 struct SWindRecord {
     unsigned char _pad[0x14];

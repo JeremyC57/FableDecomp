@@ -1,5 +1,6 @@
 // CAnimationSet::FindFirstAnimWithName(const CCharString& name) const -- the first animation-map entry whose key is the name's CRC, or end() when there is none
 // Leaf: ?FindFirstAnimWithName@CAnimationSet@@
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local same-TU LowerBound body removed (the header defines the same-TU noinline body).
 // Retail: Fable.exe @ 0x005DC020, 80 bytes, __fastcall `ret 4`. Ego_r.pdb
 // `?FindFirstAnimWithName@CAnimationSet@@QBE?AV?$_Vector_const_iterator@...pair@KVCAnimationEntry@@...@std@@ABVCCharString@@@Z`
 // (an STLport raw `const pair*` iterator in TLC). Callers: CAnimationSet::GetNoAnims 0x005DC290 and its siblings
@@ -37,42 +38,10 @@ public:
     void* GroupName;
     void* Components;
 };
-namespace std {
-template <class T1, class T2> struct pair {
-    T1 first;
-    T2 second;
-};
-}
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class Cmp> class CVectorMap {
-public:
-    typedef std::pair<K, V> value_type;
-    typedef const value_type* const_iterator;
-    const value_type* _M_start;                         // +0x00 (the STLport vector)
-    const value_type* _M_finish;                        // +0x04
-    const value_type* _M_end_of_storage;                // +0x08
-    const_iterator end() const { return _M_finish; }
-    const_iterator LowerBound(const K& key) const;      // 0x005DF960
-};
+#include "engine/CVectorMap.h"
 #pragma auto_inline(off)
 // Same-TU body (retail instantiates the map template in this TU): STLport lower_bound over the sorted pairs; reading
 // the key through its reference and never writing it lets the caller keep the key in edi across the call.
-template <class K, class V, class Cmp>
-__declspec(noinline) typename CVectorMap<K, V, Cmp>::const_iterator CVectorMap<K, V, Cmp>::LowerBound(const K& key) const
-{
-    const value_type* first = _M_start;
-    int len = _M_finish - _M_start;
-    while (len > 0) {
-        int half = len / 2;
-        const value_type* middle = first + half;
-        if (middle->first < key) {
-            first = middle + 1;
-            len = len - half - 1;
-        } else
-            len = half;
-    }
-    return first;
-}
 #pragma auto_inline(on)
 class CAnimationSet {
 public:

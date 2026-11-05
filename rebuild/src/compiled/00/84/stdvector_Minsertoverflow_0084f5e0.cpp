@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<std::pair<C3DVector, float> >) STLport growth insert for a 16-byte element with a user (memberwise) copy constructor: allocate size + max(size, fill_len) elements, copy the head out of line, construct x once (or fill out of line fill_len times), copy the tail unless atend, free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@U?$pair@VC3DVector@@M@std@@V?$allocator@U?$pair@VC3DVector@@M@std@@@2@@std@@IAEXPAU?$pair@VC3DVector@@M@2@ABU32@ABU__false_type@2@I_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084F5E0, 209 bytes (+ int3 padding to 224), thiscall, `ret 14h` (five arguments).
 // Identity (proven): std::vector<std::pair<C3DVector, float> >::_M_insert_overflow; evidence: its caller 0x0084E390 pushes a {C3DVector, float} record on this+0x18 (`ret 8`: the position and weight), called by 0x0084E590 on a local with each opponent's camera focal position and 1.0f -- Ego_r.pdb's only vector<pair<C3DVector, float> > is C3DFrustrum::Points at +0x18 (after Apex and Up); the other caller is the push_back stub 0x0084F6C0.
 // Label: the manifest's "StdVector_InsertRangeCloth" is propagated / behavioural (family H089: six byte-identical bodies, each its own
@@ -14,13 +15,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
-class C3DVector {                                          // Ego_r.pdb, 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // PDB ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 namespace std {
 template <class _T1, class _T2> struct pair {             // STLport 4.6 pair
     _T1 first;

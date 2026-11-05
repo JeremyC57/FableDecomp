@@ -1,5 +1,6 @@
 // CWorld::EACreatureBlock(const CGameEvent* event) -- game-event action: start the event player's controlled creature blocking (a CCreatureAction_StartBlocking, then CTCCombat::SetBlocking) unless the player is in mode 0x2F, the thing manager is paused, the player is in spell mode or not the main player, the creature is dead or already blocking, its primary-slot weapon is unusable or its berserk state forbids blocking
 // Leaf: ?EACreatureBlock@CWorld@@QAEXPBVCGameEvent@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's CArray member Data is the header's CArray base (Ego_r: CVectorMap derives CArray<pair<K,V> >): Data.end() / begin() / size() read through the base; the local std::bitset operator[] / reference is the STLport model of stlport/fable_containers.h under FABLE_RETAIL_STLP_BITSET_INDEX (retail tests the word inline, e.g. 0x0062D032 test dword ptr [ebx+0x24],0x10000).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062CF90, 506 bytes, thiscall, `ret 4`; 0x120-byte frame (the 0x114-byte action
 //   temporary, the conditional-destruction flag word, the IS_THING_ALIVE reference slot, the canBlock byte).
 // Identity (proven): registered by the static initialiser at 0x0121BEFB in the game-event dispatch table (no direct
@@ -35,64 +36,9 @@
 #include "engine/CPlayer.h"
 #undef CPlayer
 
-namespace std {
-template <class _T1, class _T2> struct pair {
-    _T1 first;
-    _T2 second;
-};
-template <class _Tp> class allocator { };
-template <class _Value, class _Tp, class _MaybeReboundAlloc> struct _STLP_alloc_proxy {
-    _Value _M_data;
-};
-template <class _Tp, class _Alloc> class vector {           // retail STLport vector (12 bytes)
-public:
-    typedef _Tp* iterator;
-    typedef const _Tp* const_iterator;
-    _Tp* _M_start;                                            // +0x00
-    _Tp* _M_finish;                                           // +0x04
-    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
-    iterator end() { return this->_M_finish; }
-    const_iterator end() const { return this->_M_finish; }
-};
-template <size_t _Nw> struct _Base_bitset {
-    typedef unsigned long _WordT;
-    _WordT _M_w[_Nw];
-    static size_t _S_whichword(size_t __pos) { return __pos / 32; }
-    static _WordT _S_maskbit(size_t __pos) { return 1UL << (__pos % 32); }
-    bool _M_test(size_t __pos) const { return (_M_w[_S_whichword(__pos)] & _S_maskbit(__pos)) != 0; }
-};
-template <size_t _Nb> class bitset : public _Base_bitset<(_Nb + 31) / 32> {
-public:
-    struct reference {
-        typedef _Base_bitset<(_Nb + 31) / 32> _Bitset_base;
-        unsigned long* _M_wp;
-        size_t _M_bpos;
-        reference(bitset<_Nb>& __b, size_t __pos)
-        {
-            _M_wp = &__b._M_w[_Bitset_base::_S_whichword(__pos)];
-            _M_bpos = __pos % 32;
-        }
-        ~reference() { }
-        operator bool() const { return (*(_M_wp) & _Bitset_base::_S_maskbit(_M_bpos)) != 0; }
-    };
-    reference operator[](size_t __pos) { return reference(*this, __pos); }
-    bool operator[](size_t __pos) const { return this->_M_test(__pos); }
-};
-}   // namespace std
+#define FABLE_RETAIL_STLP_BITSET_INDEX
+#include "engine/CVectorMap.h"
 
-template <class T> class CArray : public std::vector<T, std::allocator<T> > { };
-template <class K, class V> class CKeyPairCompareLess { };
-template <class K, class V, class TCompare> class CVectorMap {   // retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    typedef typename CArray<value_type>::iterator iterator;
-    typedef typename CArray<value_type>::const_iterator const_iterator;
-    CArray<value_type> Data;                                  // +0x00
-    TCompare           Compare;                               // +0x0C
-    bool               Dirty;                                 // +0x0D
-    iterator LowerBound(const K& key);                        // 0x0040F020 for the TC map
-    const_iterator LowerBound(const K& key) const;            // 0x004365B0 for the TC map
-};
 
 enum ETCInterfaceType { ETCInterfaceType_Force32 = 0x7fffffff };   // enumerators not needed
 class CTCBase;
@@ -128,8 +74,8 @@ public:
             ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::iterator it = map->LowerBound(type);
-            if (it == map->Data.end() || T::INTERFACE_TYPE < it->first)
-                it = map->Data.end();
+            if (it == map->end() || T::INTERFACE_TYPE < it->first)
+                it = map->end();
             *out = (T*)it->second;
             return true;
         }
@@ -141,8 +87,8 @@ public:
             ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
             const CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* map = &Components;
             CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::const_iterator it = map->LowerBound(type);
-            if (it == map->Data.end() || T::INTERFACE_TYPE < it->first)
-                it = map->Data.end();
+            if (it == map->end() || T::INTERFACE_TYPE < it->first)
+                it = map->end();
             *out = (const T*)it->second;
             return true;
         }

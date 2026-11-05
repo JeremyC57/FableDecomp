@@ -1,4 +1,5 @@
 // CEngineShadowRenderer::SetShadowClipVolumesToNeverShadow() -- empty both shadow clip volumes (no clip planes, no sphere test), then give each a bounding sphere of radius 0 at (-1e30, -1e30, -1e30) with the sphere test on, so nothing falls inside either volume
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B4CE20, 173 bytes (+ int3 padding).
 // Layout (Ego_r.pdb, retail agrees): SceneData (CShadowRendererSceneData) at +0xc; its CasterClipVolume at +0x11c and
 //   RecieverClipVolume at +0x1b4 (CShadowClipVolume, 0x98 bytes: ClipPlanes[8] +0, ClipPlaneCount +0x80, BoundingSphere +0x84,
@@ -7,11 +8,7 @@
 // Shape: two inline Clear() calls (count 0, flag false; the zero register shared), then two inline SetBoundingSphere() calls
 //   taking a C3DBoundingSphere temporary built from a C3DVector temporary (memberwise user copy ctors: each word is stored
 //   into the 16-byte frame temporary and read back into the member; -1e30f is the immediate 0xF149F2CA).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingSphere { public:
     C3DVector Center;                                  // +0x00
     float     Radius;                                  // +0x0c

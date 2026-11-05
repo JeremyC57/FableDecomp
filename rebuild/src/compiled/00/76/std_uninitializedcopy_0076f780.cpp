@@ -1,5 +1,6 @@
 // std::__uninitialized_copy(const SKeyedRecord18* first, const SKeyedRecord18* last, SKeyedRecord18* result, const __false_type&) -- 24-byte {key, two words + C3DVector} records: copy the key, then the record memberwise, return the end
 // Leaf: ?__uninitialized_copy@std@@YIPAU?$pair@JUSRecord14@FableCopy_0076f780@@@FableCopy_0076f780@@PBU23@0PAU23@ABU__false_type@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076F780, length 75 bytes, `ret 8`.
 // Element: 24 bytes = a key dword +0 and a 20-byte record +4 (two dwords, then a C3DVector at +0xC) whose memberwise
 // user copy constructor holds the C3DVector (itself memberwise): VC7.1 keeps the second src/dst pointer pair at
@@ -18,10 +19,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { __false_type() { } };
 namespace FableCopy_0076f780 {
 #pragma pack(push, 1)
-struct C3DVector {                                      // byte-packed record in retail (the PDB places C3DVector members at
-    float X, Y, Z;                                      // odd offsets, e.g. CPlayerPositionInfo::Pos +1); memberwise user copy
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 struct SRecord14 {                                      // 20 bytes
     long      m_word0;                                  // +0x00

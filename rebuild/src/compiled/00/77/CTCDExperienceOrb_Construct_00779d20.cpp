@@ -1,4 +1,5 @@
 // CTCDExperienceOrb::Construct(const C3DVector& position) -- place the orb's physics at the position (default facing), then give its graphic appearance the graphic of the thing's appearance def and flag the appearance for update
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- the real GetSubDef<CAppearanceDef> body (0x0042B0A2) in the TU lets the out pointer share the dead position slot; the physics TC is the call's object expression through an inline CThing::GetPhysicsTC() accessor (loaded into edi before the params temporary)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00779D20, 239 bytes (`ret 4`, 0x28-byte frame = the physics params object).
 // Callees: CBaseClassNonCopyable ctor @ 0x0099A2F0 / dtor ~CBaseClassNonCopyable @ 0x0099A300 (the CTCParamsPhysicsBase temporary,
@@ -13,11 +14,7 @@
 // (GOTCHAS chunk 166), the out pointer homed in the dead `position` slot; the graphic is a 3-dword + word struct copy.
 // GetSubDef is a CDefClassBase template instantiated in this TU, so its real body is defined here (auto_inline off,
 // noinline): name temp -> virtual slot 14 index lookup -> definition manager GetDef -> ref-counted assignment to *out.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;

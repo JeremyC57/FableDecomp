@@ -1,4 +1,5 @@
 // CPhysicsMeshObject::GetBoundingBoxZEdge() const -- half the mesh bounding box's Z extent along the object's third basis row, rotated into world orientation (no translation)
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A11BA0, length 113 bytes (`ret 4`, C3DVector by hidden pointer). Constants 0.5f @ 0x0122F59C, 0.0f @ 0x0122DEDC.
 // Identity: Ego_r.pdb `?GetBoundingBoxZEdge@CPhysicsMeshObject@@QBE?AVC3DVector@@XZ`; the X/Y/Z edges are 0x00A11C20 / 0x00A11C90 / 0x00A11BA0
 // (callers 0x004BC9A5.. use all three in a row). The manifest's "CEngineInternalPrimitiveParticleLine::GetWorldPosition" is propagated and wrong.
@@ -7,12 +8,7 @@
 // Shape: `PositionMatrix.Rotate(C3DVector(...))` -- the landed CMatrix3x4::Rotate of GetCentreOfGravity (0x00A11EC0, NAMED result,
 // memberwise copy constructor); the two zero components fold into `(a + b) * 0.0f` per row (the 0.0f pool constant), the half
 // extent is the only frame word of the temporary vector; the box is reached through a reference (`add eax,84h`).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-};
+#include "engine/C3DVector.h"
 
 class C3DBoundingBox { public:
     C3DVector Min;

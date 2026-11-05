@@ -1,5 +1,6 @@
 // CEngineInternalPrimitive2DAnimatedMesh::Update(const CEnginePrimitive& primitive, unsigned long flags) -- refresh the 2D animated mesh from its game-side primitive: mesh info, clip box, orientation (both ends re-orthogonalised), interpolation set, alpha, tint, animation, layer 0x48, the object bounding sphere scaled by 100, the optional 0x80 flag, a fresh bone-scaling cache, then Initialise() and clear Initialised
 // Leaf: ?Update@CEngineInternalPrimitive2DAnimatedMesh@@UAEXABVCEnginePrimitive@@K@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BD2BC0, 389 bytes, thiscall virtual, `ret 8`.
 // Identity: Ego_r.pdb ?Update@CEngineInternalPrimitive2DAnimatedMesh@@UAEXABVCEnginePrimitive@@K@Z; calls Initialise 0x00BCF4F0
 //   (the 2D mesh's own member, Ego_r donor order after SetupMesh2D 0x00BCF430) and writes Initialised +0x128.
@@ -12,12 +13,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-};
+#include "engine/C3DVector.h"
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 class C3DBoundingSphere { public: C3DVector Center; float Radius; };
 enum EEngine2DLayer { };

@@ -1,5 +1,6 @@
 // CShadowClipVolume::ClipBoundingBox(const C3DBoundingBox& box, bool& fullyInside) const -- false when the box lies outside the volume's bounding sphere or entirely in front of one of its clip planes; fullyInside stays true only when the box's farthest corner is inside the sphere and every plane's far vertex is behind its plane
 // Leaf: ?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@AA_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Grade: RELOCATION_MATCH (829 bytes; parked 787v831 'inline-asm SSE lane gap' disproved): retail_asm SSE kernel (landed
 //   0x00BF7DF0 C3DBoundingBox model, fallback as 0x00B99BB0); PDB overload with bool& (not bool*); the centre passed
 //   directly to the distance call, the far corner a frame C3DVector with scalar differences; plane normals as named
@@ -15,15 +16,7 @@ extern "C" double __cdecl fabs(double x);
 #pragma intrinsic(sqrt)
 #pragma intrinsic(fabs)
 extern bool g_SSEAvailable;                             // 0x013D2880
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
-    float GetLengthSquared() const { return Z * Z + Y * Y + X * X; }
-};
+#include "engine/C3DVector.h"
 class C3DBoundingBox {
 public:
     C3DVector MinCoord;                                 // +0x00

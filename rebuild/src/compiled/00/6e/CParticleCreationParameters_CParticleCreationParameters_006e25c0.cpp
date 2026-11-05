@@ -1,6 +1,7 @@
 // CParticleCreationParameters::CParticleCreationParameters(long, const CRightHandedSet&) -- single-particle creation record: flags clear, StartParticleID = id, EndParticleID/Interpolate zero, RHSet copied, empty update parameters
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E25C0, length 118 bytes (padded to 128).
 // Leaf: ??0CParticleCreationParameters@@QAE@JABVCRightHandedSet
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Callees: CBaseClass::CBaseClass() @ 0x0099A2D0 (base of NParticleEngine::CParticleUpdateParameters, vtable 0x0125FFDC).
 // Layout: Ego_r.pdb CParticleCreationParameters (four bools +0..+3, StartParticleID +4, EndParticleID +8, Interpolate
 // +0xc, RHSet +0x10, UpdateParameters +0x28); the retail CVectorMaps are 16 bytes (12-byte vector, Compare, Dirty),
@@ -9,10 +10,7 @@
 // is copied word by word through ecx/edx because C3DVector has a memberwise user copy constructor (the implicit one
 // goes through `lea ecx` + eax); the update parameters' inline ctor: CBase out of line, vtable, then each map's vector
 // (three zero words) and Dirty byte -- the empty comparator stores nothing.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CRightHandedSet { public:
     C3DVector Up;                           // +0x00
     C3DVector Forward;                      // +0x0c

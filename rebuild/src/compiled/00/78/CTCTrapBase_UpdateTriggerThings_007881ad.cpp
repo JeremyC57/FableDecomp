@@ -1,5 +1,6 @@
 // CTCTrapBase::UpdateTriggerThings() -- refresh the trap's trigger list: every creature able to be engaged in combat inside the box of the trap def's trigger radius around the trap
 // Leaf: ?UpdateTriggerThings@CTCTrapBase@@IAEXXZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: the local C2DCoordI removed too (engine/C3DVector.h includes engine/C2DCoordI.h, Ego_r TPI 0xa59e: public long X/Y, size 8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007881AD, 124 bytes, __fastcall, `leave ; ret` (frame-pointer size TU:
 //   `optimize("y", off)` + `optimize("s", on)`, as the landed UpdateTriggerOnProximity 0x007887BE of the same class).
 // Identity: Ego_r.pdb `?UpdateTriggerThings@CTCTrapBase@@IAEXXZ` (protected; donor 0x0078F26D); the landed FrameUpdate
@@ -20,7 +21,7 @@
 //   TriggerRadius +0x3c.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class C3DVector { public: float X, Y, Z; };
+#include "engine/C3DVector.h"
 
 class CThing {
 public:
@@ -28,11 +29,6 @@ public:
 };
 class CThingCreatureBase : public CThing { };
 
-class C2DCoordI {
-public:
-    long X, Y;
-    C2DCoordI(long x, long y) : X(x), Y(y) { }
-};
 class C2DBoxI {
 public:
     C2DCoordI TopLeft;

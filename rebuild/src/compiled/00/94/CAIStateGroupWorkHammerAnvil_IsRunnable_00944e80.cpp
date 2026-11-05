@@ -1,5 +1,6 @@
 // CAIStateGroup_WorkHammerAnvil::IsRunnable() -- in work hours and once the next hammer frame is reached, pick the nearest live object owned by the creature's workplace that is a thing class 5 object with property bit 6 and a free action point (interface 0x2D), latch it as the anvil and run
 // Leaf: ?IsRunnable@CAIStateGroup_WorkHammerAnvil
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00944E80, length 470 bytes (plain `ret`, virtual slot 11).
 // Callees: CAIStateGroupWorkBase::IsInWorkHours @ 0x0091A6F0, GFGetCurrentFrame @ 0x0049D870, CBaseIntelligentPointer::
 //          GetPItem @ 0x00A01B50 (the creature's +0x170 workplace, each list value) / SetPItem @ 0x00A01B90 (PAnvil),
@@ -44,13 +45,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
     return it;
 }
 #pragma auto_inline(on)
-class C3DVector { public:
-    float x, y, z;
-    C3DVector() {}
-    __forceinline C3DVector(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    __forceinline C3DVector operator-(const C3DVector& o) const { return C3DVector(x - o.x, y - o.y, z - o.z); }
-    __forceinline float GetLengthSquared() const { return x * x + y * y + z * z; }
-};
+#include "engine/C3DVector.h"
 class CThing { public:
     virtual void v00();
     unsigned char _pad04[0x10 - 0x04];
@@ -198,7 +193,7 @@ bool CAIStateGroup_WorkHammerAnvil::IsRunnable()
                     && (unsigned char)(anvil->GetProperties() >> 6) & 1 && anvil->GetInterface(&point, 0x2d)
                     && point->IsActionPointFree()) {
                     CThing* creature = PBrain->PCreature;
-                    float distance = (creature->GetPos() - anvil->GetPos()).GetLengthSquared();
+                    float distance = (creature->GetPos() - anvil->GetPos()).GetSquaredMagnitude();
                     if (best == 0 || distance < bestDistance) {
                         bestDistance = distance;
                         best = anvil;

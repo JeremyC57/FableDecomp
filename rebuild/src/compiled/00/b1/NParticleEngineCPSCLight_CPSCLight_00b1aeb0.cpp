@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCLight::~CPSCLight() -- destructor of the particle-system light component: free the user-point array, release the light primitive handle, then the component base
 // Leaf: ??1CPSCLight@NParticleEngine@@UAE@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave (rows with a second value class, from their landed source): the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Grade: RELOCATION_MATCH -- the member handle is the CEnginePrimitiveHandle model of the landed ??_G 0x0041C500: an inline Clear testing a null-safe `GetRefCount() == 1` (handle address formed first, Data loaded into eax after the vtable store, `mov ecx,eax` for the slot-3 call), `Data = 0` through the counted pointer's inline operator=, then the counted pointer's own inline destructor re-reading Data
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1AEB0, length 121 bytes.
@@ -62,9 +63,7 @@ public:
     __forceinline ~CEnginePrimitiveHandle() { Clear(); }
 };
 
-class C3DVector { public:
-    float X, Y, Z;
-};
+#include "engine/C3DVector.h"
 
 #include "engine/CArray.h"
 

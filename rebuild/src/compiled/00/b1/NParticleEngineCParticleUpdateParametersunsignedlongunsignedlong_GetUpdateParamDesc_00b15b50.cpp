@@ -1,5 +1,6 @@
 // NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>::GetUpdateParamDesc(CParticleUpdateParamDesc<unsigned long,unsigned long>& desc, const unsigned long& key) const -- looks up the update-parameter descriptor registered for a (non-zero) key; copies it out and returns true, else clears desc.Callback and returns false
 // Leaf: ?GetUpdateParamDesc@?$CParticleUpdateParameters@KK@NParticleEngine@@QBE_NAAV?$CParticleUpdateParamDesc@KK@2@ABK@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local same-TU LowerBound body removed (the header defines the same-TU noinline body).
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B15B50, length 86 bytes, `ret 8`.
 // Signature from Ego_r.pdb: ?GetUpdateParamDesc@?$CParticleUpdateParameters@KK@NParticleEngine@@QBE_NAAV?$CParticleUpdate
@@ -24,46 +25,11 @@ public:
 #include "engine/CArray.h"
 
 
-template <class K, class V, class TCompare> class CVectorMap {   // sorted-on-demand vector map, retail 0x10 bytes
-public:
-    typedef std::pair<K, V> value_type;
-    typedef typename CArray<value_type>::const_iterator const_iterator;
-    CArray<value_type> Data;                                // +0x00
-    TCompare           Compare;                             // +0x0C (empty comparator)
-    bool               Dirty;                               // +0x0D
-
-    const_iterator end() const { return Data.end(); }
-    const_iterator LowerBound(const K& key) const;
-    const_iterator Find(const K& key) const
-    {
-        const_iterator it = LowerBound(key);
-        const_iterator last = end();
-        if (it == last || Compare(key, *it))
-            return last;
-        return it;
-    }
-};
+#include "engine/CVectorMap.h"
 
 #pragma auto_inline(off)
 // Same-TU body of the binary search (retail instantiates LowerBound in this TU; out-of-line copy @ 0x00AF2C50 for the descriptor map): it
 // only reads memory, which lets VC7.1 keep the caller's key in ebx across the call as retail does.
-template <class K, class V, class TCompare>
-__declspec(noinline) typename CVectorMap<K, V, TCompare>::const_iterator CVectorMap<K, V, TCompare>::LowerBound(const K& key) const
-{
-    const_iterator first = Data.begin();
-    int len = Data.end() - first;
-    while (len > 0) {
-        int half = len / 2;
-        const_iterator middle = first + half;
-        if (middle->first < key) {
-            first = middle + 1;
-            len = len - half - 1;
-        }
-        else
-            len = half;
-    }
-    return first;
-}
 #pragma auto_inline(on)
 
 namespace NParticleEngine {

@@ -1,5 +1,6 @@
 // NScript::CExpression_DigScript::Main() -- the hero "dig" expression quest: register a conscious-hero predicate, mark the quest persistent, wait until the hero is player-controlled, take the hero under scripted control, then inside a cutscene/movie sequence fade out, sheathe weapons, give the hero the spade, play the digging idle loop, look for the nearest enabled digging spot within 3m (face it if found), dig, play the success or failure animation, fade, restore the weapon the hero was wielding, reset the camera, hand over the spot's contents if found and deactivate this quest later
 // Leaf: ?Main@CExpression_DigScript@NScript@@UAEXXZ
+// Plan phase 4 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line, as retail calls them here). Also: engine/CCountedPointer.h included first (the header's PImp is a by-value CCountedPointer<CScriptThing>, Data +0x04 / Info +0x08; the row never expands its members). Spellings unified: 004ab130: ?IsAlive@CScriptThing@@QBE_NXZ -> ?IsAlive@CScriptThing@@UBE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EEA7C0, length 1506 bytes (+ int3 padding), no EH frame.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 / IsAlive 0x004AB130, Is2DDistanceBetweenThingsUnder 0x00CBE371 (__fastcall),
@@ -27,16 +28,9 @@ class CRGBColour { public:
 
 #include "engine/C3DVector.h"
 
-class CScriptThing { public:                                      // 12 bytes: vfptr + PImp
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual const C3DVector& GetPos() const;               // slot 6 (+0x18)
-    virtual void v07(); virtual void v08(); virtual void v09();
-    virtual float GetAngleXY() const;                      // slot 10 (+0x28)
-    void* PImp[2];
-    CScriptThing(const CScriptThing& other);               // 0x004ABE90
-    virtual ~CScriptThing();                                       // 0x004AA840
-    bool IsAlive() const;                                  // 0x004AB130
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptThing.h"
 
 bool __fastcall Is2DDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE371
 

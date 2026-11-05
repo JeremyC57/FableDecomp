@@ -1,5 +1,6 @@
 // CPhysicsMeshObject::GetHelperPointPositionStatic(const CCharString& name, long index) -- a named helper point of the physics mesh, transformed by the object's position matrix
 // Leaf: ?GetHelperPointPositionStatic@CPhysicsMeshObject@@QBE?AVC3DVector@@ABVCCharString@@J@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A11760, 150 bytes, `ret 0Ch` (hidden C3DVector return + name + index).
 //   Callers 0x004BF6E1, 0x0050A0CF. PDB name (Ego_r) confirmed: ?GetHelperPointPositionStatic@CPhysicsMeshObject@@QBE...
 // Callees: CPhysicsMesh::GetHelperPointPositionStatic 0x00A6C9C0 (thiscall, hidden-pointer return).
@@ -7,12 +8,7 @@
 //   hidden pointer), x/y are cached, then the point is pushed through PositionMatrix (rows Right/Up/Forward/Position).
 class CCharString { public: void* PStringData; };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() {}
-    C3DVector(const C3DVector& p) : X(p.X), Y(p.Y), Z(p.Z) {}
-};
+#include "engine/C3DVector.h"
 
 class CPhysicsMesh {
 public:

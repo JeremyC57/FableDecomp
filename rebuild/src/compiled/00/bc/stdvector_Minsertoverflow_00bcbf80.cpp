@@ -1,5 +1,6 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry >) STLport growth insert for a 16-byte element with a user (memberwise) copy constructor: allocate size + max(size, fill_len) elements, copy the head out of line, construct x once (or fill out of line fill_len times), copy the tail unless atend, free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@VCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@V?$allocator@VCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@@std@@@std@@IAEXPAVCSpriteTrailEntry@CEngineInternalPrimitiveSpriteTrail@@ABV34@ABU__false_type@2@I_N@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCBF80, 209 bytes (+ int3 padding to 224), thiscall, `ret 14h` (five arguments).
 // Identity (proven): std::vector<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry >::_M_insert_overflow; evidence: its caller is the fill insert 0x00BCC080, which the slot-5 virtual 0x00BCBC00 of CEngineInternalPrimitiveSpriteTrail (vtable 0x012A6A4C) calls on this+0x68 -- Ego_r.pdb's Trail +0x68, CArray<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry> (resized there through 0x00BCC3B0, erase 0x00BCBF20); they share this function's __uninitialized_copy 0x00BCA370.
 // Label: the manifest's "std_vector_realloc_with_stride_16byte" is propagated / behavioural (family H089: six byte-identical bodies, each its own
@@ -14,13 +15,7 @@
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
-class C3DVector {                                          // Ego_r.pdb, 12 bytes
-public:
-    float X;
-    float Y;
-    float Z;
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // PDB ??0C3DVector@@QAE@ABV0@@Z
-};
+#include "engine/C3DVector.h"
 class CEngineInternalPrimitiveSpriteTrail {
 public:
     class CSpriteTrailEntry {                              // Ego_r.pdb, 16 bytes

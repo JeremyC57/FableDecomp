@@ -1,5 +1,6 @@
 // std::sort(CThing** first, CThing** last, CThingCompare_Nearest comp) -- entry of the preferred-fire-point sort: introsort to depth 2*lg(n), then the final insertion sort
 // Leaf: ??$sort@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Also: local GetLengthSquared respelled GetSquaredMagnitude (the header / FableWin.pdb method, same computation).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0095E010, 111 bytes (+ int3 padding to 112), __fastcall (/Gr algorithm TU: first
 //   in ecx, last in edx, the comparator on the stack), `ret 0Ch`.
 // Instantiation: the fire-point sort: std::sort<CThing**, CThingCompare_Nearest> called from
@@ -16,13 +17,7 @@ class CThing;
 
 // C3DVector with the engine's constructors (Ego_r.pdb: X, Y, Z): the user copy constructor makes the 12-byte
 // comparator copy memberwise into the argument area; operator- / GetLengthSquared serve the stand-in below.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-    float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
-};
+#include "engine/C3DVector.h"
 
 class CThing {
 public:
@@ -49,7 +44,7 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
         return a;
     C3DVector deltaA = a->GetPos() - Pos;
     C3DVector deltaB = b->GetPos() - Pos;
-    return deltaA.GetLengthSquared() < deltaB.GetLengthSquared() ? a : b;
+    return deltaA.GetSquaredMagnitude() < deltaB.GetSquaredMagnitude() ? a : b;
 }
 #pragma auto_inline(on)
 typedef CThingCompare_Nearest TComp;

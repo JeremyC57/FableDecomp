@@ -1,5 +1,6 @@
 // NCameraModes::CScriptModuleFullTransition::Update() -- until EndFrame, step the owning camera's position by Increment and its look-at by IncrementForLookAtPoints
 // Leaf: Update
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852220, length 144 bytes (133 + int3 padding).
 // Callees: GFGetCurrentFrame @ 0x0049D870 (`__fastcall`, no arguments).
 // Shape: `if (frame < EndFrame)`, then two `X = X + step` updates through the inline member operator+
@@ -14,12 +15,7 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                 // 0x0049D870
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator+(const C3DVector& other) const { return C3DVector(X + other.X, Y + other.Y, Z + other.Z); }
-};
+#include "engine/C3DVector.h"
 
 struct CCameraState {
     unsigned char _pad00[0x10];

@@ -1,5 +1,6 @@
 // CTCWillResponse::IsThingEpicSpellable(const CThing* thing) -- true when the thing may be targeted by epic spells (the will-response component's IsEpicSpellable bit); a thing without the component is spellable
 // Leaf: ?IsThingEpicSpellable@CTCWillResponse@@SI_NPBVCThing@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the local map's pointer members m_pFirst/m_pLast are the header CArray base's begin() / end() (STLport vector start +0 / finish +4).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E46D0, 69 bytes (+ int3 padding). FableWin.pdb
 //   `?IsThingEpicSpellable@CTCWillResponse@@SI_NPBVCThing@@@Z` = public static bool __fastcall (const CThing*);
 //   catalog label `ETCInterfaceType_GetVisibility` is a placeholder: bit 6 is IsEpicSpellable (PDB field order), default true as in the
@@ -15,17 +16,9 @@
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
-namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
-template <class K, class V> class CKeyPairCompareLess;
-template <class K, class V, class TCompare> class CVectorMap;
+#include "engine/CVectorMap.h"
 typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                 // the thing's sorted component map at +0x44
-    STCEntry* m_pFirst;
-    STCEntry* m_pLast;
-    STCEntry* m_pEnd;
-    const STCEntry* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
-};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing {
@@ -40,8 +33,8 @@ public:
         if (HasTC(T::INTERFACE_TYPE)) {
             const CTCMap* map = &m_tcs;
             const STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
-            if (it == map->m_pLast || T::INTERFACE_TYPE < it->first)
-                it = map->m_pLast;
+            if (it == map->end() || T::INTERFACE_TYPE < it->first)
+                it = map->end();
             *out = (const T*)it->second;
             return true;
         }

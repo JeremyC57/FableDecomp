@@ -1,5 +1,6 @@
 // std::uninitialized_fill_n(Iter first, unsigned int n, const T& value) -- Copy-construct repeated records into raw storage.
 // Leaf: ??$uninitialized_fill_n@PAVC3DVector@@IV1@@std@@YIPAVC3DVector@@PAV1@IABV1@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Identity: proven; Own fill-insert0075bb00 calls the same C3DVector uninitialized-copy0066ddf0 as established C3DVector vector operations;12-byte record.
 #ifndef _MSC_VER
 #define __fastcall
@@ -18,6 +19,6 @@ inline Iter __fastcall __uninitialized_fill_n(Iter first,Size n,const T& value,c
 template<class Iter,class Size,class T>
 Iter __fastcall uninitialized_fill_n(Iter first,Size n,const T& value){return __uninitialized_fill_n(first,n,value,__false_type());}
 }
-class C3DVector {public:float X,Y,Z;C3DVector(){}C3DVector(const C3DVector& v):X(v.X),Y(v.Y),Z(v.Z){}};
+#include "engine/C3DVector.h"
 typedef C3DVector Element;
 template Element* __fastcall std::uninitialized_fill_n<Element*,unsigned int,Element>(Element*,unsigned int,const Element&);

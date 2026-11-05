@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCSingleSprite::Initialise(CIEngine* engine, CParticleSystem& system, const CParticleUpdateParameters<unsigned long, unsigned long>& params, CEnginePrimitiveHandle& parent) -- vtable slot 28: initialise the spline base, then (with an engine) create the sprite child primitive -- one per crossed sprite when CrossedSprites is set -- and the trail child primitive under the parent handle unless they already exist, recording their ids in PrimIDList, mark the component initialised and pass StayWithEmitter to the particle system; returns the initialised flag
 // Leaf: ?Initialise@CPSCSingleSprite@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- the crossed-sprite loop as i = 0, a count guard, then the zero C3DVector built once in the
 //   guarded scope and a do/while (retail's preheader temporary; the parked 'lane gap: loop-invariant hoisting' was
 //   source shape)
@@ -21,12 +22,7 @@
 //   locals before the crossed-sprite test; each created id is stored after growing the list (inline one-argument resize
 //   over the 0x004428F0 fill overload); the trail record's members are set in the order GraphicFrame, GraphicIndex,
 //   SkipPoints, MaxLength, Flags, Width, BlendMode, BlendOp (found by a compile-only order search).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
-};
+#include "engine/C3DVector.h"
 class CEnginePrimitive { public:
     long Type;                                      // +0x00
     long InterpolationSet;                          // +0x04

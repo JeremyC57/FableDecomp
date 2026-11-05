@@ -1,5 +1,6 @@
 // CEnvironmentSpellEffectInterface::InterpolateRadialBlurPositionParams(float t, const CRadialBlurPositionParams& from, const CRadialBlurPositionParams& to) -- blend the blur and area centres from `from` towards `to` by t where both ends track the same position kind (else take `to`'s centre); the track kinds come from `to`
 // Leaf: ?InterpolateRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@SI?AUCRadialBlurPositionParams@1@MABU21@0@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00885680, 352 bytes incl. int3 padding (349 of code), static `__fastcall`
 //   with a hidden result pointer (ecx = result, edx = from, stack: t, to; `ret 8`), returns the result pointer in eax.
 // Identity: Ego_r/FableWin PDB name set:
@@ -15,15 +16,7 @@
 //   user copy constructor (the two track kinds straight from the registers that held them for the compares).
 enum ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION { ENVIRONMENT_RADIAL_BLUR_TRACK_NONE };
 
-class C3DVector {
-public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
-    C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-};
+#include "engine/C3DVector.h"
 
 class CEnvironmentSpellEffectInterface {
 public:

@@ -1,0 +1,6 @@
+  WARN leaf '?GetFollowingEntityList@CGameScriptInterface@@UBE_NABVCScriptThing@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z' matches no symbol in x.obj; graded the largest function
+gate: 263 rows {'PASS': 263} in 38.8s (0.15s/row wall, NJ=4)
+gate: 263 PASS of 263
+vland:
+      7 MATCH PASS
+    256 RELOCATION_MATCH PASS

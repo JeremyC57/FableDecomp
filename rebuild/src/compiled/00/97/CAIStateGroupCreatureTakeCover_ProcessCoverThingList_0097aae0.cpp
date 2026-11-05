@@ -1,4 +1,5 @@
 // CAIStateGroup_CreatureTakeCover::ProcessCoverThingList(std::vector<CThing*>& coverThings) -- sorts the candidate cover things by how well they lie in the direction from the creature to its threat
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097aae0, length 130 bytes, `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the threat pointer at +0x14), CThing::GetPosition
 // @ 0x004C73D0 (three times: creature, threat, creature again; manifest label DoSizeof is propagated),
@@ -15,11 +16,7 @@
 // to be built in place in the argument area (else it is built in the frame and copied), and its origin/direction
 // come from C3DVectors through a C2DVector(const C3DVector&) constructor (dword moves, no x87).
 // Model: local (engine/CAIStateGroup_CreatureTakeCover.h is a flattened base blob).
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator-(const C3DVector& other) const { return C3DVector(X - other.X, Y - other.Y, Z - other.Z); }
-};
+#include "engine/C3DVector.h"
 
 class C2DVector;
 class C2DVector { public:

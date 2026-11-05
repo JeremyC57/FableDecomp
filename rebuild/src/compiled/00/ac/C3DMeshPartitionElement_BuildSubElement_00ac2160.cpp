@@ -1,12 +1,13 @@
 // 00ac2160 C3DMeshPartitionElement::BuildSubElement
 // Flags:
 // Leaf: ?BuildSubElement@C3DMeshPartitionElement@@QAEPAV1@J@Z
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 #include <new>
 #ifndef _MSC_VER
 #define __forceinline inline
 #endif
 #pragma pack(push,1)
-class C3DVector{public:float X,Y,Z;C3DVector(){}__forceinline C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}__forceinline C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}};
+#include "engine/C3DVector.h"
 #pragma pack(pop)
 class C3DBoundingBox{public:C3DVector MinCoord,MaxCoord;C3DBoundingBox(){}};
 class C3DBoundingSphere{public:C3DVector Center;float Radius;__forceinline C3DBoundingSphere():Center(0.0f,0.0f,0.0f),Radius(0.0f){}};

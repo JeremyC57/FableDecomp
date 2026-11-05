@@ -1,5 +1,6 @@
 // GetRelativePosition(long index, long count) -- the levitation slot of item `index` of `count` around the creature: the fixed offset rotated toward a point on a horizontal circle (azimuth index/count of a turn, elevation a quarter of that)
 // Leaf: ?GetRelativePosition@
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F8220, 221 bytes (`ret 4` + int3 padding), `__fastcall` returning the C3DVector
 //   through the hidden pointer (hidden result in ecx, index in edx, count on the stack). FableWin.pdb / Ego_r.pdb
 //   `?GetRelativePosition@?A0x6dc84f21@@YI?AVC3DVector@@JJ@Z`: a function in the CTCCreatureItemLevitationBase TU's
@@ -16,13 +17,7 @@ extern "C" double __cdecl sin(double x);
 extern "C" double __cdecl cos(double x);
 #pragma intrinsic(sin, cos)
 
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector() { }
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
-    C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-};
+#include "engine/C3DVector.h"
 
 extern C3DVector g_LevitationOffset;                            // 0x01384494 (0, 0, 2.5)
 

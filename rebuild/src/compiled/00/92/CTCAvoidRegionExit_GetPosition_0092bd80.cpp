@@ -1,5 +1,6 @@
 // CTCAvoidRegionExit::GetPosition() -- the entrance marker's position while the marker is set and alive, else the zero vector
 // Leaf: ?GetPosition@CTCAvoidRegionExit@@QAE?AVC3DVector@@XZ
+// Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092BD80, length 107 bytes. Returns C3DVector through the hidden pointer; `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3: the inline HasPosition() test, then the position fetch),
 // CThing::GetPosition @ 0x004C73D0 (const C3DVector&; catalog "CVertexBufferWin32::DoSizeof").
@@ -8,11 +9,7 @@
 // user copy ctor; the implicit copy goes through esi).
 // Layout: PDB CTCAvoidRegionExit (0x20): EntranceMarker +0xC, ExitMarker +0x14 (CIntelligentPointer<CThing>), NextFrameCheck +0x1C;
 // retail CThing Dead = bit 0 of +0x91.
-class C3DVector { public:
-    float X, Y, Z;
-    C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
-    C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
-};
+#include "engine/C3DVector.h"
 class CThing {
 public:
     unsigned char _pad00[0x91];

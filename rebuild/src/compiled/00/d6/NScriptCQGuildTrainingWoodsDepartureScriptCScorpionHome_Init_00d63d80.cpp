@@ -1,5 +1,6 @@
 // NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Init() -- Initialise the scorpion count and flourish hint.
 // Leaf: ?Init@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: Own named ScorpionHome registration00d61ee2 ->factory00d63cc0 ->vtable012d19c0 slot2; original PDB nested private virtual Init, named ScorpionsLeft/FlourishHint and CScriptDef GUI_DepartureBeetles; global0143e90c and typed retail field+3852.
 // Layout: original CEntityScriptBase20, parent/master20/24, count28, hint32, full child36. Typed definition prefix through GUI_MeleeBeetles; original def base chain with packed parent57 and STLport12-byte vectors reconciles donor offsets. No opaque base prefix; inactive virtual slots are descriptive.
@@ -23,9 +24,8 @@ namespace NScript{class CQ_SunnyvaleMasterData;}
 #define __forceinline inline
 #endif
 #include "engine/CArray.h"
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 #define CDefClassBase CDefClassBase_HeaderLayout
 #include "engine/CDefClassBase.h"

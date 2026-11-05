@@ -1,5 +1,6 @@
 // NScript::CV_IntroductionToTrophiesScript::CV_IntroductionToTrophiesScript(CScriptDataBase* data,CGameScriptInterfaceBase& game) -- Initialize script ownership and register both timers.
 // Leaf: ??0CV_IntroductionToTrophiesScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Plan phase 4 (2026-11-05), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Plan phase 3 (2026-11-04), CArray wave: the local CArray (an empty public std::vector<T>) and its STLport stand-ins replaced by the shared engine/CArray.h (Lionhead's array: a public STLport 4.6 vector<T>, 12 bytes, no fields of its own). STLport algorithm / construct helpers and placement new come from the header's model (<new>).
 // Identity: own registration00cd8d97 literalV_IntroductionToTrophies -> Alloc00e9fb40/ctor00e9c360 stores012ed558. Original PDB names/fields/signatures. Actual CTimer::TimerIndex long and constructorRegisterTimer slot87, real game-interface RTTI chain.
 // Layout: typed original script base64 and level base72; own PCsize108; timers OpinionTimer/OutsideTavernTimer. Shared headers aliased for true inheritance; global game-interface receiver is an API-only projection, no complete instance size claimed. BriarRoseOpinion is nested as original mangled PDB type proves.
@@ -20,9 +21,8 @@ class CCPPointerInfo;
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 #include "engine/CArray.h"
-template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+#include "engine/CVectorMap.h"
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
-template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
