@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 (PAUSED by the owner; nothing running; exact progress recorded)
+# Resume here (one page) — updated 2026-11-05 late (work resumed; chunk 781 and plan phase 6 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -7,7 +7,18 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- **PAUSED 2026-11-05 (owner): launch nothing new until the owner says so.** All agents' work is landed or parked and committed.
+- **Resumed 2026-11-05 late** (the user: "continue where the last claude chat left off"). Done since the pause:
+  - lane: the older a013f3ec-... scratch survived with the whole lane (game SHA-1 checked, prime recheck 5/5); the 40effb6c-...
+    scratch is gone, and with it the phase 1-5 plan tools (hdrmig5 ...). Only the copies in `naming/2026-11-04_vendor_v2/scripts/`
+    and `2026-11-04_wave35c/scripts/apply_w35c.py` survive; the phase 6 agent rebuilds the rest and hands them back for committing.
+  - symbol index rebuilt at b7d036105 (`$S/plan/idx`: OK 53,902 / NO_FUNC 441 / LEAFGUESS 186 / COMPILE_FAIL 4); reloc_mask_audit
+    found 0x00A8E160 (no Leaf line, graded the base ctor COMDAT), fixed: 0 suspects.
+  - chunk 779 landed 2 of 5 (`batches/2026-11-05_landing_f/`), chunk 780 landed 1 of 5 (`_landing_g/`); parked rows in
+    `pending/2026-11-05_linux_hand779/` and `_hand780/`.
+  - **Running:** chunk 781 (`$S/w22/agent781`: the CV_DemonDoorsScript TU, CDF_Dragon::Main with its jump table -> land with
+    `verify_land_jumptable.py`) and plan phase 6 (`$S/plan/p6`, brief `$S/plan/BRIEF_PLAN6.md`; hand-back in `$S/plan/p6/handback/`).
+  - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.
+- Paused state before that (2026-11-05):
   Exact progress at the pause and the resume steps: `docs/journal/2026-11/2026-11-05_SESSION.md`.
   - Coverage: 46,897 genuine of 49,568 (94.62%); 57.63% of retail function bytes.
   - One asm bake left (0x009BEF80, parked); 0 in-row `__asm`; 0 reloc-masked false matches.
@@ -67,8 +78,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 
 ## Lane (already set up in the scratch directory)
 ```
-export S=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad; source $S/wine/env.sh; export S
-# (2026-11-03: the 5221bbec-... scratch of the previous page is gone; this one holds the same lane. Check `ls $S/wine/env.sh` first.)
+export S=/tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad; source $S/wine/env.sh; export S
+# (2026-11-05 late: the 40effb6c-... scratch is gone; this older one holds the same lane. Check `ls $S/wine/env.sh` first.)
 cd /home/user/FableDecomp   # every tool runs from the repo root
 ```
 `$S` holds Wine + cl 13.10.3077 RTM (`$S/wine/vc71rtm`), QFE 4035 (`$S/wine/vc71`), VS 2003 libs, LZO, and the game
@@ -99,7 +110,7 @@ cd /home/user/FableDecomp   # every tool runs from the repo root
   - Never add a device retail did not have: no inline_depth, no forwarding overloads, no member-dropping or invented local class copies, no pointer casts between "descriptive" element types.
   - Agents get 10+ attempts per row; no stopping agents mid-landing.
 
-## Next (in order, once the owner restarts work)
+## Next (in order)
 1. Land chunk 733's two rows once the owner's `cvdump` settles the CUIScreenUnitConverter statics' access (private: `@@0`, and the landed
    `@@2` binders get respelled).
 2. **Priority name fixes:** 518 open in `NAME_FIXES_QUEUE.tsv` (507 addresses; note starts with PRIORITY, no ` done]`). Cheapest first;
