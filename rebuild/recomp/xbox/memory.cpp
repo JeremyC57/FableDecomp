@@ -221,6 +221,26 @@ std::pair<uint32_t, uint32_t> vaRegion(uint32_t a) {
     return {it->first, it->second};
 }
 
+// Bytes of virtual memory the guest has touched (resident host pages in its reservations).
+uint32_t vaResidentBytes() {
+    std::lock_guard<std::mutex> l(g_vaLock);
+    uint64_t n = 0;
+    std::vector<unsigned char> v;
+    for (const auto& [b, sz] : g_va) {
+        v.resize((sz + kPage - 1) / kPage);
+        if (mincore(g_mem + b, sz, v.data()) != 0) continue;
+        for (unsigned char c : v) n += c & 1;
+    }
+    return static_cast<uint32_t>(n * kPage);
+}
+
+uint32_t vaReservedBytes() {
+    std::lock_guard<std::mutex> l(g_vaLock);
+    uint64_t n = 0;
+    for (const auto& r : g_va) n += r.second;
+    return static_cast<uint32_t>(n);
+}
+
 void vaDecommit(uint32_t base, uint32_t size) {
     madvise(g_mem + base, size, MADV_DONTNEED);  // zero-fill on next touch, frees host memory
 }

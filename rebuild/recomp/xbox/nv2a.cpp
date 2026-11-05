@@ -9,10 +9,14 @@
 #include "nv2a_methods.h"
 #include "xhost.hpp"
 
+#include <dirent.h>
+#include <unistd.h>
 #include <algorithm>
 #include <atomic>
 #include <cstring>
 #include <chrono>
+#include <map>
+#include <string>
 #include <thread>
 
 namespace xb {
@@ -96,6 +100,66 @@ uint32_t g_dacIndex = 0;  // entry * 3 + component
 uint32_t g_ptNum = 1, g_ptDen = 1;
 }  // namespace
 uint64_t g_frameCount = 0;  // flips (also the input script clock, FABLE_INPUT_FRAMES)
+
+namespace {
+// CPU time (ms) of each host thread, by name, from /proc/self/task.
+std::map<std::string, double> threadCpuMs() {
+    std::map<std::string, double> m;
+    static const double tick = 1000.0 / static_cast<double>(sysconf(_SC_CLK_TCK));
+    if (DIR* d = opendir("/proc/self/task")) {
+        while (dirent* e = readdir(d)) {
+            if (e->d_name[0] == '.') continue;
+            char path[64], buf[512];
+            snprintf(path, sizeof path, "/proc/self/task/%s/stat", e->d_name);
+            FILE* f = fopen(path, "r");
+            if (!f) continue;
+            const size_t n = fread(buf, 1, sizeof buf - 1, f);
+            fclose(f);
+            buf[n] = 0;
+            char* l = strchr(buf, '('), *r = strrchr(buf, ')');
+            if (!l || !r) continue;
+            std::string name(l + 1, r);
+            unsigned long ut = 0, st = 0;
+            // fields after ')': state ppid pgrp session tty tpgid flags minflt cminflt majflt cmajflt utime stime
+            sscanf(r + 2, "%*c %*d %*d %*d %*d %*d %*u %*u %*u %*u %*u %lu %lu", &ut, &st);
+            m[name + "#" + e->d_name] = (ut + st) * tick;
+        }
+        closedir(d);
+    }
+    return m;
+}
+
+void perfStats(uint64_t every) {
+    static std::map<std::string, double> last;
+    static uint32_t physPeak = 0, vaPeak = 0;
+    auto now = threadCpuMs();
+    double guest = 0, pusher = 0, other = 0;
+    std::string top;
+    for (const auto& [k, v] : now) {
+        const auto it = last.find(k);
+        const double d = v - (it == last.end() ? 0.0 : it->second);
+        if (k.rfind("guest", 0) == 0) guest += d;
+        else if (k.rfind("nv2a pusher", 0) == 0) pusher += d;
+        else other += d;
+    }
+    last = now;
+    const uint32_t phys = kPhysSize - physFreeBytes(), va = vaResidentBytes();
+    physPeak = std::max(physPeak, phys);
+    vaPeak = std::max(vaPeak, va);
+    long rss = 0, hwm = 0;
+    if (FILE* f = fopen("/proc/self/status", "r")) {
+        char line[128];
+        while (fgets(line, sizeof line, f)) {
+            sscanf(line, "VmRSS: %ld", &rss);
+            sscanf(line, "VmHWM: %ld", &hwm);
+        }
+        fclose(f);
+    }
+    XLOG(0, "perf flip %llu: cpu ms/flip guest %.1f pusher %.1f other %.1f | guest phys %u KB (peak %u) virt touched %u KB (peak %u, reserved %u) | host rss %ld KB (peak %ld)",
+         static_cast<unsigned long long>(g_frameCount), guest / every, pusher / every, other / every, phys / 1024, physPeak / 1024, va / 1024,
+         vaPeak / 1024, vaReservedBytes() / 1024, rss, hwm);
+}
+}  // namespace
 uint64_t g_lastLetterboxFlip = 0;  // last flip with cutscene letterbox bars (16:9 interface layout; input replay)
 namespace {
 
@@ -425,6 +489,12 @@ void kelvin(uint32_t method, uint32_t param, const uint32_t* params, uint32_t av
         const uint32_t mod = surfaceField(28);
         setSurfaceField(20, mod ? (surfaceField(20) + 1) % mod : 0);
         ++g_frameCount;
+        // FABLE_PERF_STATS=<n> (feasibility measurements): every n flips, CPU time per flip of
+        // each host thread group (guest threads under the GIL, the NV2A pusher, the rest) and
+        // guest memory in use (physical pages allocated, virtual pages touched), with peaks.
+        if (static const uint64_t perfEvery = getenv("FABLE_PERF_STATS") ? strtoull(getenv("FABLE_PERF_STATS"), nullptr, 10) : 0;
+            perfEvery && g_frameCount % perfEvery == 0)
+            perfStats(perfEvery);
         // FABLE_FLIP_TIMES (debugging): log flips that took over 50 ms.
         if (static const bool flipTimes = getenv("FABLE_FLIP_TIMES") != nullptr; flipTimes) {
             static auto last = std::chrono::steady_clock::now();

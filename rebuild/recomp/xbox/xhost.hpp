@@ -69,6 +69,8 @@ bool physAllocAt(uint32_t addr, uint32_t size);
 void physFree(uint32_t addr);
 uint32_t physAllocSize(uint32_t addr);  // size of the allocation starting at addr, or 0
 uint32_t physFreeBytes();
+uint32_t vaResidentBytes();   // guest virtual memory touched so far (FABLE_PERF_STATS)
+uint32_t vaReservedBytes();
 // Virtual memory range (NtAllocateVirtualMemory), backed lazily by the host.
 constexpr uint32_t kVaBase = 0x10000000u, kVaEnd = 0x70000000u;
 uint32_t vaReserve(uint32_t base, uint32_t size, bool topDown);  // 0 on failure
