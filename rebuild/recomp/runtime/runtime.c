@@ -7,12 +7,16 @@
 #if defined(_WIN32)
 #include <windows.h>
 #include <intrin.h>
+#elif defined(RECOMP_WINDOW_MEMORY)
+#include <time.h>
 #else
 #include <sys/mman.h>
 #include <time.h>
 #endif
 
-#if !defined(RECOMP_IDENTITY_MEMORY)
+#if defined(RECOMP_WINDOW_MEMORY)
+uint8_t* g_mem = (uint8_t*)RECOMP_WINDOW_BASE;
+#elif !defined(RECOMP_IDENTITY_MEMORY)
 uint8_t* g_mem;
 #endif
 
@@ -34,15 +38,15 @@ void (*recomp_on_nan)(Ctx* c, uint32_t eip);
 void (*recomp_on_nanload)(Ctx* c, uint32_t eip, uint32_t a);
 
 int recomp_init_memory(void) {
-#if defined(RECOMP_IDENTITY_MEMORY)
-    return 1; /* the host platform layer reserves the guest regions itself */
+#if defined(RECOMP_IDENTITY_MEMORY) || defined(RECOMP_WINDOW_MEMORY)
+    return 1; /* the host platform layer maps the guest regions itself */
 #elif defined(_WIN32)
     g_mem = (uint8_t*)VirtualAlloc(NULL, 0x100000000ull, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 #else
     void* p = mmap(NULL, 0x100000000ull, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE, -1, 0);
     g_mem = p == MAP_FAILED ? NULL : (uint8_t*)p;
 #endif
-#if !defined(RECOMP_IDENTITY_MEMORY)
+#if !defined(RECOMP_IDENTITY_MEMORY) && !defined(RECOMP_WINDOW_MEMORY)
     return g_mem != NULL;
 #endif
 }
@@ -185,3 +189,6 @@ void recomp_resume_at(Ctx* c, uint32_t frame, uint32_t target) {
         }
 }
 
+
+/* A function left out of a --keep lift was called: report it (the host may override). */
+__attribute__((weak)) void recomp_missing(Ctx* c, uint32_t fn) { recomp_fatal(c, fn, "function not in the lifted set (--keep)"); }

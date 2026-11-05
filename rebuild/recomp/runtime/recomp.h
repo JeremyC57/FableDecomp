@@ -57,6 +57,14 @@ typedef struct Ctx {
  * pointers can be passed straight to host APIs. */
 #if defined(RECOMP_IDENTITY_MEMORY)
 #define GP(a) ((uint8_t*)(uintptr_t)(uint32_t)(a))
+#elif defined(RECOMP_WINDOW_MEMORY)
+/* 32-bit hosts (New 3DS): guest data lives below RECOMP_WINDOW_MASK + 1 and is mapped at the fixed
+ * host address RECOMP_WINDOW_BASE; the mask also folds the Xbox's RAM aliases (0x80000000,
+ * 0xF0000000) onto the same pages. Two instructions per access (bic, orr), no load. */
+#define RECOMP_WINDOW_BASE 0x08000000u
+#define RECOMP_WINDOW_MASK 0x07FFFFFFu
+extern uint8_t* g_mem; /* == RECOMP_WINDOW_BASE */
+#define GP(a) ((uint8_t*)(uintptr_t)(((uint32_t)(a) & RECOMP_WINDOW_MASK) | RECOMP_WINDOW_BASE))
 #else
 extern uint8_t* g_mem;
 #define GP(a) (g_mem + (uint32_t)(a))
@@ -69,6 +77,8 @@ typedef void (*GuestFn)(Ctx*);
 void recomp_dispatch(Ctx* c, uint32_t target);
 /* Reached code the lifter could not translate, or a guest fault. */
 void recomp_fatal(Ctx* c, uint32_t eip, const char* what);
+/* --keep lifts: a function that was left out was called. */
+void recomp_missing(Ctx* c, uint32_t fn);
 /* C++ exception landing pads. Every lifted function that registers an MSVC EH frame
  * pushes one on entry (popped on return by a cleanup attribute). When the host's
  * _CxxThrowException has run a catch block, recomp_resume_at() longjmps to the

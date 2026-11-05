@@ -90,6 +90,12 @@ public:
     uint32_t end() const { return base_ + static_cast<uint32_t>(mem_.size()); }
     bool contains(uint32_t a, uint32_t n = 1) const { return a >= base_ && a - base_ + n <= mem_.size(); }
     const uint8_t* at(uint32_t a) const { return &mem_[a - base_]; }
+    // --patch: overwrite image bytes before discovery (false if outside the image).
+    bool patch(uint32_t a, const std::vector<uint8_t>& bytes) {
+        if (a < base_ || a - base_ + bytes.size() > mem_.size()) return false;
+        std::memcpy(&mem_[a - base_], bytes.data(), bytes.size());
+        return true;
+    }
     uint32_t r32(uint32_t a) const { uint32_t v; std::memcpy(&v, at(a), 4); return v; }
     uint8_t r8(uint32_t a) const { return *at(a); }
     std::string cstr(uint32_t a) const { return std::string(reinterpret_cast<const char*>(at(a))); }

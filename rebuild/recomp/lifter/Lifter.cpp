@@ -527,6 +527,10 @@ bool& safepoints() {
     return v;
 }
 
+bool& coverage() {  // --coverage: mark each function's first execution in recomp_cov[]
+    static bool v = false;
+    return v;
+}
 bool& nanCheck() {  // --nancheck: report NaN stores (debugging)
     static bool on = false;
     return on;
@@ -646,6 +650,7 @@ public:
                      : "    int fop = FOP(FK_EXPLICIT, 4); uint32_t fr = 0, fa = 0, fb = 0; /* flags undefined at entry */\n")
              << "    (void)fop; (void)fr; (void)fa; (void)fb;\n";
         if (traceAddrs().count(f.entry)) out_ << "    SPILL; recomp_trace(c, " << hex(f.entry) << "u);\n";
+        if (coverage()) out_ << "    recomp_cov[" << hex(f.entry) << "u] = 1;\n";
         if (f.eh) {
             // Landing pad: the host's C++ exception dispatch longjmps here to continue
             // at a catch continuation (any label of this function).
@@ -1459,9 +1464,10 @@ int main(int argc, char** argv) {
         std::cerr << "usage: fable_recomp <Fable.exe> <functions.tsv> <out-dir> [--only a,b,..] [--per-file N] [--prefix NAME] [--no-refs] [--hook ADDR=host_fn]... [--trace ADDR]...\n";
         return 2;
     }
-    const Image img(argv[1]);
+    Image img(argv[1]);
     const std::filesystem::path outDir = argv[3];
     std::set<uint32_t> only;
+    std::set<uint32_t> keep;  // --keep: the only functions emitted; calls to others reach recomp_missing
     size_t perFile = 400;
     int bucketBits = 0;  // --bucket N: one file per 2^N bytes of code, declarations per file
     bool noRefs = false;
@@ -1474,6 +1480,24 @@ int main(int argc, char** argv) {
             std::stringstream ss(argv[++i]);
             std::string t;
             while (std::getline(ss, t, ',')) only.insert(static_cast<uint32_t>(std::stoul(t, nullptr, 16)));
+        } else if (a == "--coverage") {
+            coverage() = true;
+        } else if (a == "--keep" && i + 1 < argc) {  // --keep FILE: emit only these functions (hex, one per line)
+            std::ifstream in(argv[++i]);
+            if (!in) {
+                std::cerr << "cannot read --keep " << argv[i] << "\n";
+                return 1;
+            }
+            std::string line;
+            while (std::getline(in, line)) {
+                const auto hash = line.find('#');
+                if (hash != std::string::npos) line.resize(hash);
+                if (line.find_first_not_of(" \t\r") != std::string::npos) keep.insert(static_cast<uint32_t>(std::stoul(line, nullptr, 16)));
+            }
+            if (keep.empty()) {
+                std::cerr << "--keep " << argv[i] << ": no addresses\n";
+                return 1;
+            }
         } else if (a == "--nancheck") {
             nanCheck() = true;
         } else if (a == "--trace" && i + 1 < argc) {  // --trace 0x434F60: call recomp_trace at entry
@@ -1502,6 +1526,18 @@ int main(int argc, char** argv) {
             bucketBits = std::stoi(argv[++i]);
         } else if (a == "--per-file" && i + 1 < argc) {
             perFile = std::stoul(argv[++i]);
+        } else if (a == "--patch" && i + 1 < argc) {  // --patch 0x13392=b800001000: new bytes at a guest address
+            const std::string h = argv[++i];
+            const auto eq = h.find('=');
+            std::vector<uint8_t> bytes;
+            for (size_t k = eq + 1; eq != std::string::npos && k + 2 <= h.size(); k += 2)
+                bytes.push_back(static_cast<uint8_t>(std::stoul(h.substr(k, 2), nullptr, 16)));
+            const uint32_t at = eq != std::string::npos ? static_cast<uint32_t>(std::stoul(h.substr(0, eq), nullptr, 16)) : 0;
+            if (bytes.empty() || !img.patch(at, bytes)) {
+                std::cerr << "bad --patch " << h << "\n";
+                return 1;
+            }
+            std::cerr << "patched " << bytes.size() << " bytes at 0x" << std::hex << at << std::dec << "\n";
         }
     }
 
@@ -1539,8 +1575,14 @@ int main(int argc, char** argv) {
     {
         Emitter em(prog, stats);
         std::deque<uint32_t> todo(only.begin(), only.end());
-        if (only.empty())
+        if (!keep.empty()) {
+            for (uint32_t a : keep) todo.push_back(a);
+            todo.push_back(img.entry());
+            for (const auto& h : hooks) todo.push_back(h.first);
+            for (const auto& w : wraps) todo.push_back(w.first);
+        } else if (only.empty()) {
             for (auto& [a, f] : funcs) todo.push_back(a);
+        }
         while (!todo.empty()) {
             const uint32_t a = todo.front();
             todo.pop_front();
@@ -1549,8 +1591,9 @@ int main(int argc, char** argv) {
             em.retBytes = 0;
             code[a] = em.function(funcs[a]);
             retOf[a] = em.retBytes;
-            for (uint32_t t : em.called)
-                if (!selected.count(t)) todo.push_back(t);
+            if (keep.empty())
+                for (uint32_t t : em.called)
+                    if (!selected.count(t)) todo.push_back(t);
         }
     }
 
@@ -1573,13 +1616,46 @@ int main(int argc, char** argv) {
             std::cerr << "wrapped " << fname(a) << " -> " << name << "\n";
         }
 
+    // --keep: functions referenced by emitted code but not emitted get a stub that reports them
+    // (recomp_missing), so they link and the first call names the address to add.
+    std::set<uint32_t> missing;
+    if (!keep.empty()) {
+        for (const auto& [a, src] : code)
+            for (size_t p = src.find("F_"); p != std::string::npos; p = src.find("F_", p + 2)) {
+                if (p + 10 > src.size() || (p > 0 && (std::isalnum(static_cast<unsigned char>(src[p - 1])) || src[p - 1] == '_'))) continue;
+                const std::string id = src.substr(p + 2, 8);
+                if (!std::all_of(id.begin(), id.end(), [](char ch) { return std::isxdigit(static_cast<unsigned char>(ch)); })) continue;
+                if (p + 10 < src.size() && (std::isalnum(static_cast<unsigned char>(src[p + 10])) || src[p + 10] == '_')) continue;
+                const uint32_t t = static_cast<uint32_t>(std::stoul(id, nullptr, 16));
+                if (!selected.count(t)) missing.insert(t);
+            }
+        std::cerr << "kept " << selected.size() << " functions, " << missing.size() << " referenced ones stubbed\n";
+    }
+
     std::filesystem::create_directories(outDir);
+    {
+        std::ostringstream m;
+        m << "/* Generated by fable_recomp: functions left out by --keep. */\n#include \"recomp.h\"\n"
+          << "void recomp_missing(Ctx* c, uint32_t fn);\n";
+        for (uint32_t a : missing) m << "void " << fname(a) << "(Ctx* c) { recomp_missing(c, " << hex(a) << "u); }\n";
+        if (coverage())
+            m << "uint8_t recomp_cov[0x1000000];\n"
+                 "#include <stdio.h>\n"
+                 "void recomp_coverage_dump(const char* path) {\n"
+                 "    FILE* f = fopen(path, \"w\");\n"
+                 "    if (!f) return;\n"
+                 "    for (uint32_t a = 0; a < sizeof recomp_cov; ++a) if (recomp_cov[a]) fprintf(f, \"%X\\n\", a);\n"
+                 "    fclose(f);\n"
+                 "}\n";
+        writeIfChanged(outDir / (prefix + "_missing.c"), m.str());
+    }
     const std::string tableSym = prefix == "recomp" ? "recomp_table" : "recomp_table_" + prefix;
     {
         std::ostringstream h;
         h << "/* Generated by fable_recomp. */\n#pragma once\n#include \"recomp.h\"\n"
           << "#define SPILL (c->eax = eax, c->ecx = ecx, c->edx = edx, c->ebx = ebx, c->esp = esp, c->ebp = ebp, c->esi = esi, c->edi = edi)\n"
           << "#define RELOAD (eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx, esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi)\n";
+        if (coverage()) h << "extern uint8_t recomp_cov[];\n";
         if (!bucketBits)
             for (uint32_t a : selected) h << "void " << fname(a) << "(Ctx* c);\n";
         // Hook/wrap declarations sit next to the functions (adding one recompiles one file).
@@ -1625,7 +1701,7 @@ int main(int argc, char** argv) {
         // Buckets that became empty (or the numbered files of a previous layout).
         for (const auto& e : std::filesystem::directory_iterator(outDir)) {
             const std::string n = e.path().filename().string();
-            if (n.rfind(prefix + "_", 0) == 0 && e.path().extension() == ".c" && n != prefix + "_table.c" && !live.count(n))
+            if (n.rfind(prefix + "_", 0) == 0 && e.path().extension() == ".c" && n != prefix + "_table.c" && n != prefix + "_missing.c" && !live.count(n))
                 std::filesystem::remove(e.path());
         }
     }
@@ -1649,9 +1725,13 @@ int main(int argc, char** argv) {
         t << "#include \"" << prefix << "_funcs.h\"\n";
         if (bucketBits)
             for (uint32_t a : selected) t << "void " << fname(a) << "(Ctx* c);\n";
+        std::set<uint32_t> all(selected);
+        all.insert(missing.begin(), missing.end());
+        if (bucketBits)
+            for (uint32_t a : missing) t << "void " << fname(a) << "(Ctx* c);\n";
         t << "const RecompEntry " << tableSym << "[] = {\n";
-        for (uint32_t a : selected) t << "    {" << hex(a) << "u, " << fname(a) << "},\n";
-        t << "};\nconst uint32_t " << tableSym << "_size = " << selected.size() << ";\n";
+        for (uint32_t a : all) t << "    {" << hex(a) << "u, " << fname(a) << "},\n";
+        t << "};\nconst uint32_t " << tableSym << "_size = " << all.size() << ";\n";
         writeIfChanged(outDir / (prefix + "_table.c"), t.str());
     }
 
