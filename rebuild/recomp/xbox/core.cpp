@@ -13,6 +13,7 @@
 // New 3DS: no signals or page protection; faults go to the platform's exception handler
 // (n3ds/platform.cpp), thread exit unwinds with setjmp.
 #include <setjmp.h>
+#include <unistd.h>
 #define sigjmp_buf jmp_buf
 #define sigsetjmp(b, m) setjmp(b)
 #define siglongjmp longjmp
@@ -63,6 +64,10 @@ void logf(int level, const char* fmt, ...) {
     if (g_logFile) {
         fprintf(g_logFile, "[%u] %s\n", t ? t->id : 0, buf);
         fflush(g_logFile);
+#if defined(__3DS__)
+        // FAT records the size only on close or sync: keep the important lines safe from a power-off.
+        if (level <= 0) fsync(fileno(g_logFile));
+#endif
     }
 }
 

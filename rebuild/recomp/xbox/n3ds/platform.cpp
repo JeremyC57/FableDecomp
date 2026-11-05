@@ -60,12 +60,27 @@ std::mutex g_screenLock;
 [[noreturn]] void platformFatal(const char* msg) {
     if (!g_fatal.exchange(true)) {
         std::snprintf(g_fatalMsg, sizeof g_fatalMsg, "%s", msg);
+        // Its own small file, closed at once (the log may be mid-write when the power goes).
+        if (FILE* f = std::fopen((std::string(g_dataDir) + "/fatal.txt").c_str(), "w")) {
+            std::fprintf(f, "%s\n", g_fatalMsg);
+            std::fclose(f);
+        }
         std::lock_guard<std::mutex> l(g_screenLock);
         consoleSelect(&g_top);
-        std::printf("\x1b[2J\x1b[1;1H\x1b[31mFATAL\x1b[0m\n%s\n\nLog: %s/xbox_recomp.log\nPress START to exit.\n", g_fatalMsg, g_dataDir);
+        std::printf("\x1b[2J\x1b[1;1H\x1b[31mFATAL\x1b[0m\n%s\n\nSaved to %s/fatal.txt\nPress START to exit.\n", g_fatalMsg, g_dataDir);
+        consoleSelect(&g_bottom);
     }
-    // The main thread shows the message and exits on START; other threads stop here.
-    for (;;) svcSleepThread(1000000000LL);
+    if (!threadGetCurrent()) {  // the main thread: nobody else reads the buttons
+        for (;;) {
+            hidScanInput();
+            if (hidKeysDown() & KEY_START) {
+                gfxExit();
+                _exit(1);
+            }
+            gspWaitForVBlank();
+        }
+    }
+    for (;;) svcSleepThread(1000000000LL);  // other threads: the main loop exits on START
 }
 
 namespace {
@@ -368,7 +383,7 @@ int main() {
     APT_CheckNew3DS(&n3ds);
     svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
     if (n3ds) g_gameCore = 2;
-    std::printf("Fable boot test build 3 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    std::printf("Fable boot test build 4 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);
