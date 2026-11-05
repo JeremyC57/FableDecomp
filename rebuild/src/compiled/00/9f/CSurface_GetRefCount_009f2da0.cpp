@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CSurface::GetRefCount @ 0x009f2da0
+// Leaf: ?CSurface_GetRefCount@@YIJPAVCSurface@@@Z
 // The member at [esi+4] is a COM-style interface pointer whose "vtable"
 // entries are __stdcall functions that take the interface as a stack arg.
 
@@ -21,7 +22,7 @@ class CSurface { public:
     IRefObj* obj;    // +4
 };
 
-long __fastcall GetRefCount(CSurface* surface)
+long __fastcall CSurface_GetRefCount(CSurface* surface)
 {
     IRefObj* p = surface->obj;
     if (p) {

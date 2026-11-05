@@ -1,6 +1,6 @@
 // 0074ab00 CTCCreatureGenerator::Destroy
 // Flags: /O2 /Oy
-// Leaf: DestroyGenerator
+// Leaf: ?CTCCreatureGenerator_Destroy@@YIXPAVCTCCreatureGenerator@@@Z
 #include "engine/CTCCreatureGenerator.h"
 #include <stdlib.h>
 // Layout: RTTI vtable1268c24 confirmed CTCCreatureGenerator. Retail uses smaller containers: ring+18, vectors1c/60/6c/78,ref8c,handle90,exclusiona4.
@@ -26,7 +26,7 @@ extern unsigned GeneratorVtable_01268c24[];extern int CreatureCount_013bad54;
 class CThing { public:public:
     void Kill(bool);   // 0x004C9B80
 };void __fastcall ClearList(void*);
-void __fastcall DestroyGenerator(CTCCreatureGenerator* self){
+void __fastcall CTCCreatureGenerator_Destroy(CTCCreatureGenerator* self){
  char* bytes=(char*)self;self->__vftable=GeneratorVtable_01268c24;CIntelligentPointer<CThing>* handle=(CIntelligentPointer<CThing>*)(bytes+0x90);
  if(handle->GetPItem() && !(*(unsigned char*)((char*)handle->GetPItem()+0x91)&1)){((CThing*)handle->GetPItem())->Kill(true);CIntelligentPointer<CThing> temp(0);handle->SetPItem(temp.GetPItem());}
  *(CTCShapeManager**)(bytes+0xa4)=0;CreatureCount_013bad54-=((ListView*)(bytes+0x18))->Size();handle->CBaseIntelligentPointer::~CBaseIntelligentPointer();

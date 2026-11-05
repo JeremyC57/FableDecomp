@@ -48,7 +48,7 @@ template<class T> class CCountedPointer { public:
     }
 };
 
-extern void FABLE_FASTCALL ClearPrimitiveList(CEngineInternalPrimitiveBase* first); // 0x00B8FEE0
+extern void FABLE_FASTCALL CEngineInternalPrimitiveBase_ClearPrimitiveList(CEngineInternalPrimitiveBase* first); // 0x00B8FEE0
 
 struct EmptyRangeTag {};
 extern void FABLE_FASTCALL DestroyManagerRange(
@@ -103,6 +103,6 @@ FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveRenderer2D, First2DDisplacementPrim
 
 CEnginePrimitiveRenderer2D::~CEnginePrimitiveRenderer2D()
 {
-    ClearPrimitiveList(First2DPrim);
-    ClearPrimitiveList(First2DDisplacementPrim);
+    CEngineInternalPrimitiveBase_ClearPrimitiveList(First2DPrim);
+    CEngineInternalPrimitiveBase_ClearPrimitiveList(First2DDisplacementPrim);
 }

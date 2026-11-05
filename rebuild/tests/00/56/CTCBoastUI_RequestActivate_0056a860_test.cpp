@@ -9,7 +9,7 @@ class CTCBoastUI { public:
     unsigned char f2a;
 };
 
-void __fastcall RequestActivate(CTCBoastUI *boastUI)
+void __fastcall CTCBoastUI_RequestActivate(CTCBoastUI *boastUI)
 {
     if (!boastUI->f2a && !boastUI->f18 && !boastUI->f28)
         boastUI->f2a = 1;
@@ -17,8 +17,7 @@ void __fastcall RequestActivate(CTCBoastUI *boastUI)
 
 static void call_ra(CTCBoastUI *p)
 {
-    __asm { mov ecx, p }
-    __asm { call RequestActivate }
+    CTCBoastUI_RequestActivate(p);   // __fastcall: p goes in ecx, as the retail caller passes it
 }
 
 int main()

@@ -75,9 +75,9 @@ class CEngineSceneGridCell { public:                      // 0x48 bytes (PDB lay
     ~CEngineSceneGridCell();
 };
 
-void __fastcall ClearPrimitiveList(CEngineInternalPrimitiveBase* first);   // 0x00B8FEE0
+void __fastcall CEngineInternalPrimitiveBase_ClearPrimitiveList(CEngineInternalPrimitiveBase* first);   // 0x00B8FEE0
 
 CEngineSceneGridCell::~CEngineSceneGridCell()
 {
-    ClearPrimitiveList(FirstPrimitive);
+    CEngineInternalPrimitiveBase_ClearPrimitiveList(FirstPrimitive);
 }

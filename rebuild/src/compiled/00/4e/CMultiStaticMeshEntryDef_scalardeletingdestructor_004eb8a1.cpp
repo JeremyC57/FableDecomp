@@ -1,3 +1,4 @@
+// Leaf: ?CMultiStaticMeshEntryDef_scalar_deleting_destructor@@YIPAXPAVCMultiStaticMeshEntryDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CMultiStaticMeshEntryDef
 };
 extern void* const g_CMultiStaticMeshEntryDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CMultiStaticMeshEntryDef* def, int, unsigned int flags)
+void* __fastcall CMultiStaticMeshEntryDef_scalar_deleting_destructor(CMultiStaticMeshEntryDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CMultiStaticMeshEntryDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

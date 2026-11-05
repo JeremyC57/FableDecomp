@@ -1,44 +1,13 @@
-// std::_Dest_val<allocator<CCountedPointer<T>>, CCountedPointer<T>>(CCountedPointer<T>*) -- release one counted-pointer slot
-// Leaf: ?DestVal@Slot@@QAEXXZ
+// CCountedPointer<CUnprovenPointee_00403d70>::~CCountedPointer() -- release one counted pointer
+// Leaf: ??1?$CCountedPointer@VCUnprovenPointee_00403d70@@@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00403D70, 53 bytes. Callees: the control block's releaser (indirect), engine free 0x00BFE9BC.
 //
-// STLport's allocator "destroy" hook over a CCountedPointer element, which inlines the counted-pointer
-// destructor. A CCountedPointer is two words: the object and a shared control block holding the reference
-// count, a release routine and the owner to call it on. Destroying the slot drops the count; when it
-// reaches zero the release routine is invoked for the owner (that is what deletes the object) and the
-// control block itself is returned to the engine heap. Both words are then nulled so a stale slot can
-// never be released twice. A slot with no control block is already empty and only gets nulled.
-//
-// The name attached to this address is the QuadricOptimiser instantiation; the body is identical for
-// every CCountedPointer<T>, so the same bytes serve many element types.
-//
-// Matching: `this` in ecx; the count is decremented in memory and compared to zero; the releaser is
-// called through the block's member pointer with the block's owner word in ecx; the free is __cdecl.
-struct Owner;
-// The shared control block behind a counted pointer.
-struct Info {
-    long rc;                                    // reference count
-    void (__fastcall *release)(Owner* self);    // routine that destroys the pointee
-    Owner* owner;                               // object the releaser is invoked on
-};
-// CCountedPointer<T>: the pointee and its control block.
-struct Slot {
-    void* p;        // pointee
-    Info* info;     // control block (null when the pointer is empty)
-    void DestVal();
-};
-// Engine heap release for the control block.
-void operator delete(void*);   // 0x00bfe9bc
-void Slot::DestVal() {
-    if (this->info) {
-        // Last reference away: destroy the pointee and the block.
-        --this->info->rc;
-        if (this->info->rc == 0) {
-            this->info->release(this->info->owner);
-            operator delete(this->info);
-        }
-    }
-    // Leave the slot empty.
-    this->p = 0;
-    this->info = 0;
-}
+// The shared count block's RefCount drops by one; at zero its DeleteFunc runs on the block's Data and the block is
+// freed. Data and then Info are cleared (the destructor's Data-first order, engine/CCountedPointer.h: retail emits one
+// ~CCountedPointer COMDAT per T). The catalog's "Release" placeholder and the earlier _Dest_val label name this body; the
+// order of the two stores is the destructor's, not ReleaseData's (Info first).
+// T unresolved: no typed caller with PDB evidence names the pointee, so a stand-in pointee class carries it (CUnproven<Kind>_<addr>, EXTRA_RULES 2026-10-28).
+// Matching: `this` in ecx; DeleteFunc is __fastcall (Data in ecx); the block goes back through operator delete.
+#include "engine/CCountedPointer.h"
+class CUnprovenPointee_00403d70;
+template CCountedPointer<CUnprovenPointee_00403d70>::~CCountedPointer();

@@ -1,4 +1,5 @@
 // CGameScriptInterface::SetToKeepHeroAbilitiesDuringCutscenes @ 0x00890b50
+// Leaf: ?CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes@@YIXPAVCGameScriptInterface@@H_N@Z
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CMainGameComponent { public:
     char pad[0x1c];
@@ -13,7 +14,7 @@ class CPlayer;
 #include "engine/CPlayerManager.h"
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 
-void __fastcall SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface* self, int /*edx*/, bool keep)
+void __fastcall CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface* self, int /*edx*/, bool keep)
 {
     unsigned char* obj = (unsigned char*)((void*)&((CPlayerManager*)self->Component->PPlayerManager)->GetMainPlayer());
     obj[0x224] = (unsigned char)keep;

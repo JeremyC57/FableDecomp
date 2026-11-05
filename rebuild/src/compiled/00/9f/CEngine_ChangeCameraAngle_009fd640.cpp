@@ -1,4 +1,5 @@
 // ChangeCameraAngle @ 009fd640  (CEngine::ChangeCameraAngle)
+// Leaf: ?CEngine_ChangeCameraAngle@@YIXPAVCEngine@@@Z
 struct CCameraSub;
 
 // The method called on the sub-object at [this+0x280]; __fastcall, no args, void.
@@ -11,7 +12,7 @@ class CEngine { public:
     CCameraSub* sub_280;      // [this+0x280]
 };
 
-void __fastcall ChangeCameraAngle(CEngine* self)
+void __fastcall CEngine_ChangeCameraAngle(CEngine* self)
 {
     CCameraSub_Reset(self->sub_280);
     self->flag_1f8 = 0;

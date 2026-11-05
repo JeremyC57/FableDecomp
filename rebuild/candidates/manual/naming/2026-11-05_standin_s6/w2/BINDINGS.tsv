@@ -1,0 +1,5 @@
+action	symbol	target	by_row	note
+ADD	?CEngineInternalPrimitiveBase_ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z	00b8fee0	00b93660	standin_class_method wave: the decided spelling the respelled rows emit
+ADD	?CThing_HasScriptThing@@YI_NPAVCThing@@@Z	004c7e70	006a8560	standin_class_method wave: the decided spelling the respelled rows emit
+RETIRE	?ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z	00b8fee0	00b4aaa0,00b93660	standin_class_method wave: no landed row binds this stand-in spelling after the wave
+RETIRE	?GFHasScriptThing@@YI_NPAVCThing@@@Z	004c7e70	0065c36e,006a8560	standin_class_method wave: no landed row binds this stand-in spelling after the wave

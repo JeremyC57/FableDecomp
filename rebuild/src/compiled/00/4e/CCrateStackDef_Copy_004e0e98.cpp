@@ -1,3 +1,4 @@
+// Leaf: ?CCrateStackDef_Copy@@YIXPAVCCrateStackDef@@PAXPBVCDefClassBase@@@Z
 #pragma optimize("s",on)
 // CCrateStackDef::Copy  0x004e0e98
 
@@ -10,11 +11,11 @@ class CCrateStackDef : public CDefClassBase { public:
     unsigned int m28;
     unsigned int m2c;
     virtual void Transfer(CPersistContext& context);         // slot 18 0x004DE9A1
-    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E0E98
+    virtual void CCrateStackDef_Copy(const CDefClassBase* other);           // slot 19 0x004E0E98
     virtual unsigned long GetSizeofClass();                  // slot 20 0x004D50B2
 };
 
-void __fastcall Copy(CCrateStackDef* self, void* edx, const CDefClassBase* other)
+void __fastcall CCrateStackDef_Copy(CCrateStackDef* self, void* edx, const CDefClassBase* other)
 {
     self->CDefClassBase::operator=(*(const CDefClassBase*)(other));
     const CCrateStackDef* o = (const CCrateStackDef*)other;

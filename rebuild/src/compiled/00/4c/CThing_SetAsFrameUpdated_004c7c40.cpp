@@ -1,3 +1,4 @@
+// Leaf: ?CThing_SetAsFrameUpdated@@YIXPAVCThing@@@Z
 class CThing;
 struct GlobalMgr {
     void Notify(CThing* t);
@@ -7,7 +8,7 @@ class CThing { public:
     unsigned char pad[0x91];
     unsigned char flags;
 };
-void __fastcall SetAsFrameUpdated(CThing* thing) {
+void __fastcall CThing_SetAsFrameUpdated(CThing* thing) {
     if (!(thing->flags & 1))
         g_mgr->Notify(thing);
 }

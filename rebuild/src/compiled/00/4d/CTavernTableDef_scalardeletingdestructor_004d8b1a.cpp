@@ -1,3 +1,4 @@
+// Leaf: ?CTavernTableDef_scalar_deleting_destructor@@YIPAXPAVCTavernTableDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CTavernTableDef
 };
 extern void* const g_CTavernTableDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CTavernTableDef* def, int, unsigned int flags)
+void* __fastcall CTavernTableDef_scalar_deleting_destructor(CTavernTableDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CTavernTableDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

@@ -30,7 +30,7 @@ void Mapped::Add(CThing* t)    { g_add_this = this; g_add_arg = t; ++g_add_calls
 void Mapped::Remove(CThing* t) { g_rem_this = this; g_rem_arg = t; ++g_rem_calls; }
 
 // --- function under test (byte-exact source) ---------------------------------
-void __fastcall F(void* self, void* edx, CEntityWrap* entityA, CEntityWrap* entityB, u8 alwaysBlock)
+void __fastcall CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(void* self, void* edx, CEntityWrap* entityA, CEntityWrap* entityB, u8 alwaysBlock)
 {
     CThing* a = (*(ResolveFn**)entityA)[0x2c/4](entityA);
     CThing* b = (*(ResolveFn**)entityB)[0x2c/4](entityB);
@@ -81,7 +81,7 @@ int main()
         g_lb_ret = &node;
         thA.blockSet._end = (void*)0xDEAD0004;
         makeWrapper(&wA, &thA); makeWrapper(&wB, &thB);
-        F(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
+        CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
         if (g_add_calls != 1) return fail("S1: Add not called once");
         if (g_rem_calls != 0) return fail("S1: Remove wrongly called");
         if (g_add_arg != &thB) return fail("S1: Add arg != b");
@@ -96,7 +96,7 @@ int main()
         g_lb_ret = &node;
         thA.blockSet._end = (void*)0xBEEF0008;
         makeWrapper(&wA, &thA); makeWrapper(&wB, &thB);
-        F(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 0);
+        CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 0);
         if (g_rem_calls != 1) return fail("S2: Remove not called once");
         if (g_add_calls != 0) return fail("S2: Add wrongly called");
         if (g_rem_arg != &thB) return fail("S2: Remove arg != b");
@@ -110,7 +110,7 @@ int main()
         thA.blockSet._end = &endNode;
         thA.flags = 0x10000; thA.guardFlag = 0; thB.guardFlag = 0;
         makeWrapper(&wA, &thA); makeWrapper(&wB, &thB);
-        F(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
+        CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
         if (g_add_calls != 1) return fail("S3: Add not called");
         if (g_add_this != &theMapped) return fail("S3: mapped from end+4");
     }
@@ -122,7 +122,7 @@ int main()
         g_lb_ret = &hiNode;
         thA.blockSet._end = &endN;
         makeWrapper(&wA, &thA); makeWrapper(&wB, &thB);
-        F(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
+        CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
         if (g_add_calls != 1) return fail("S4: Add not called");
         if (g_add_this != &theMapped) return fail("S4: sel should be end");
     }
@@ -132,20 +132,20 @@ int main()
         g_lb_ret = &node;
         Wrapper wNull; makeWrapper(&wNull, 0);
         makeWrapper(&wB, &thB);
-        F(0, 0, (CEntityWrap*)&wNull, (CEntityWrap*)&wB, 1);
+        CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(0, 0, (CEntityWrap*)&wNull, (CEntityWrap*)&wB, 1);
         if (g_add_calls || g_rem_calls) return fail("S5a: a==0");
         resetRec();
         thA.flags = 0x10000; thA.guardFlag = 1; thB.guardFlag = 0;
         makeWrapper(&wA, &thA);
-        F(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
+        CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
         if (g_add_calls || g_rem_calls) return fail("S5b: a guard");
         resetRec();
         thA.guardFlag = 0; thB.guardFlag = 1; makeWrapper(&wB, &thB);
-        F(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
+        CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
         if (g_add_calls || g_rem_calls) return fail("S5c: b guard");
         resetRec();
         thB.guardFlag = 0; thA.flags = 0;
-        F(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
+        CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(0, 0, (CEntityWrap*)&wA, (CEntityWrap*)&wB, 1);
         if (g_add_calls || g_rem_calls) return fail("S5d: flags clear");
     }
 

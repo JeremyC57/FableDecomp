@@ -14,7 +14,7 @@ struct World {
     Sub sub;
 };
 
-static void RegisterScriptedMapBrush(World* self, long key, void* brush)
+static void CWorldMap_RegisterScriptedMapBrush(World* self, long key, void* brush)
 {
     int k = transform_key(key);
     void** slot = self->sub.index(k);
@@ -25,7 +25,7 @@ int main()
 {
     World w;
     int dummyBrush = 0;
-    RegisterScriptedMapBrush(&w, 41, &dummyBrush);
+    CWorldMap_RegisterScriptedMapBrush(&w, 41, &dummyBrush);
     if (w.sub.storage == &dummyBrush && g_lastKey == 42) {
         printf("BEHAVIOUR_OK\n");
     } else {

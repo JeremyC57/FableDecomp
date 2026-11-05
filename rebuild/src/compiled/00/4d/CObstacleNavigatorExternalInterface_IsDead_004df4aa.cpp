@@ -1,3 +1,4 @@
+// Leaf: ?CObstacleNavigatorExternalInterface_IsDead@@YI_NPAVCObstacleNavigatorExternalInterface@@@Z
 #pragma optimize("s",on)
 struct Inner {
     char pad[0x91];
@@ -9,7 +10,7 @@ class CObstacleNavigatorExternalInterface { public:
     Inner* inner;    // +4
 };
 
-bool __fastcall IsDead(CObstacleNavigatorExternalInterface* self)
+bool __fastcall CObstacleNavigatorExternalInterface_IsDead(CObstacleNavigatorExternalInterface* self)
 {
     Inner* p = self->inner;
     bool alive = (p != 0) && ((p->flag & 1) == 0);

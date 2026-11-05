@@ -20,7 +20,7 @@ void operator_delete_stub(void* p)
     g_delete_calls++;
 }
 
-void* __fastcall scalar_deleting_destructor(CInputProcessInventory* process, int edx, unsigned int flags)
+void* __fastcall CInputProcessInventory_scalar_deleting_destructor(CInputProcessInventory* process, int edx, unsigned int flags)
 {
     process->dtor();
     if (flags & 1)
@@ -35,17 +35,17 @@ int main()
 
     // flags & 1 == 0 : dtor only, no delete
     g_dtor_calls = 0; g_delete_calls = 0;
-    void* r0 = scalar_deleting_destructor(&obj, 0, 0);
+    void* r0 = CInputProcessInventory_scalar_deleting_destructor(&obj, 0, 0);
     bool ok0 = (r0 == &obj) && (g_dtor_calls == 1) && (g_delete_calls == 0);
 
     // flags & 1 == 1 : dtor + delete
     g_dtor_calls = 0; g_delete_calls = 0;
-    void* r1 = scalar_deleting_destructor(&obj, 0, 1);
+    void* r1 = CInputProcessInventory_scalar_deleting_destructor(&obj, 0, 1);
     bool ok1 = (r1 == &obj) && (g_dtor_calls == 1) && (g_delete_calls == 1);
 
     // flag bit high but low bit clear -> no delete
     g_dtor_calls = 0; g_delete_calls = 0;
-    void* r2 = scalar_deleting_destructor(&obj, 0, 2);
+    void* r2 = CInputProcessInventory_scalar_deleting_destructor(&obj, 0, 2);
     bool ok2 = (r2 == &obj) && (g_dtor_calls == 1) && (g_delete_calls == 0);
 
     if (ok0 && ok1 && ok2)

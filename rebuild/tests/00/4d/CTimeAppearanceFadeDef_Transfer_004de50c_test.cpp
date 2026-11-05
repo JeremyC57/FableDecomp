@@ -21,7 +21,7 @@ class CCarrySlotDef { public:
     A a2;
 };
 
-void __fastcall CCarrySlotDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
+void __fastcall CTimeAppearanceFadeDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
 {
     ctx->PersistA(&def->a);
     ctx->PersistB(&def->b);
@@ -34,7 +34,7 @@ int main()
     CCarrySlotDef d;
     d.a.x = 0; d.b.x = 0; d.c.x = 0; d.a2.x = 0;
     CPersistContext ctx;
-    CCarrySlotDef_Transfer(&d, 0, &ctx);
+    CTimeAppearanceFadeDef_Transfer(&d, 0, &ctx);
     if (g_n != 4) { std::printf("FAIL count %d\n", g_n); return 1; }
     if (g_seq[0]!=1 || g_seq[1]!=2 || g_seq[2]!=3 || g_seq[3]!=1) { std::printf("FAIL seq\n"); return 1; }
     if (d.a.x!=10 || d.b.x!=20 || d.c.x!=30 || d.a2.x!=10) { std::printf("FAIL vals\n"); return 1; }

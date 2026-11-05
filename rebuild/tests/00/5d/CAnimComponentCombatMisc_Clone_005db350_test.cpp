@@ -20,7 +20,7 @@ static CAnimComponentCombatMisc* __fastcall my_clone(CAnimComponentCombatMisc* c
     return &g_new;
 }
 
-void* __fastcall Clone_CombatMisc(CAnimComponentCombatMisc* component)
+void* __fastcall CAnimComponentCombatMisc_Clone(CAnimComponentCombatMisc* component)
 {
     CAnimComponentCombatMisc* n = component->vptr->clone(component);
     n->b8 = component->b8;
@@ -35,7 +35,7 @@ int main()
     src.vptr = &vt;
     src.b8 = (char)0xAB;
     src.b9 = (char)0xCD;
-    void* r = Clone_CombatMisc(&src);
+    void* r = CAnimComponentCombatMisc_Clone(&src);
     CAnimComponentCombatMisc* n = (CAnimComponentCombatMisc*)r;
     if (r == &g_new && n->b8 == (char)0xAB && n->b9 == (char)0xCD) {
         printf("OK_005db350\n");

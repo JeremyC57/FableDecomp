@@ -1,3 +1,4 @@
+// Leaf: ?CLightDef_scalar_deleting_destructor@@YIPAXPAVCLightDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CLightDef
 };
 extern void* const g_CLightDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CLightDef* def, int, unsigned int flags)
+void* __fastcall CLightDef_scalar_deleting_destructor(CLightDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CLightDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

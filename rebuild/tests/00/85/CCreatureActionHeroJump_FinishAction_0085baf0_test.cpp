@@ -8,11 +8,11 @@ class CBaseIntelligentPointer { public: CBaseObject* GetPItem() const; };   // 0
 static int g_inner = 0, g_outer = 0;
 CBaseObject* CBaseIntelligentPointer::GetPItem() const { g_inner++; return 0; }
 void FABLE_FASTCALL FableDestVal_0085baf0_t::outer() { g_outer++; }
-extern "C" void FABLE_FASTCALL FableDestVal_0085baf0(FableDestVal_0085baf0_t* action);
+extern "C" void FABLE_FASTCALL CCreatureActionHeroJump_FinishAction(FableDestVal_0085baf0_t* action);
 int main()
 {
     char buf[0x8 + 8];
-    FableDestVal_0085baf0((FableDestVal_0085baf0_t*)buf);
+    CCreatureActionHeroJump_FinishAction((FableDestVal_0085baf0_t*)buf);
     if (g_inner != 1) { std::printf("BAD_INNER\n"); return 1; }
     if (g_outer != 1) { std::printf("BAD_OUTER\n"); return 1; }
     std::printf("DESTVAL_0085baf0_OK\n"); return 0;

@@ -1,4 +1,5 @@
 // CTCBuyableHouse::HasMultipleDressLevels  @ 0x006bf7f0
+// Leaf: ?CTCBuyableHouse_HasMultipleDressLevels@@YI_NPAVCTCBuyableHouse@@@Z
 
 #include "engine/CTCBuyableHouse.h"  // retyped onto the PDB layout; byte parity re-verified
 class CDefPointeeBase { public:
@@ -8,7 +9,7 @@ class CDefPointeeBase { public:
 };
 
 
-bool __fastcall HasMultipleDressLevels(CTCBuyableHouse* house)
+bool __fastcall CTCBuyableHouse_HasMultipleDressLevels(CTCBuyableHouse* house)
 {
     CDefPointeeBase* d = house->PDef_Object;
     if (d != 0)

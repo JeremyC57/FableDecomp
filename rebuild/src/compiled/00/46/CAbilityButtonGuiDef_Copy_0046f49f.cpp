@@ -1,3 +1,4 @@
+// Leaf: ?CAbilityButtonGuiDef_Copy@@YIPAVCAbilityButtonGuiDef@@PAV1@PBVCDefClassBase@@@Z
 #include "rebuild_abi.h"
 
 // 0x0046f49f  ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z
@@ -13,8 +14,9 @@ extern "C" CAbilityButtonGuiDef* __fastcall
 CAbilityButtonGuiDef_Copy_impl_0046f49f(CAbilityButtonGuiDef* thisptr, const CDefClassBase* src);
 
 CAbilityButtonGuiDef* __fastcall
-CAbilityButtonGuiDef_Copy_0046f49f(CAbilityButtonGuiDef* thisptr, const CDefClassBase* src)
+CAbilityButtonGuiDef_Copy(CAbilityButtonGuiDef* thisptr, const CDefClassBase* src)
 {
     // Tail call -> single `jmp rel32`.
     return CAbilityButtonGuiDef_Copy_impl_0046f49f(thisptr, src);
 }
+// Stand-in (owner rule 2026-11-05): CAbilityButtonGuiDef_Copy for CAbilityButtonGuiDef::Copy; RTTI vtable slot ?Copy@CAbilityButtonGuiDef@@UAEXPBVCDefClassBase@@@Z + PDB name set (egor/fablewin).

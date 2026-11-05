@@ -1,0 +1,19 @@
+address	verdict	reason	changes	name_notes	secs
+00418fbc	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@QAE@ABV0@@Z		0.18
+0041ba30	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCGraphicDataBank@@@@QAE@ABV0@@Z		0.17
+00428905	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCMeshDataBank@@@@QAE@ABV0@@Z		0.18
+00428928	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@ABV0@@Z		0.19
+0056c050	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_0056c050@@@@QAE@ABV0@@Z		0.18
+005ba124	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_005ba124@@@@QAE@ABV0@@Z		0.18
+005c05d5	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@ABV0@@Z		0.15
+00654dfd	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_00654dfd@@@@QAE@ABV0@@Z		0.16
+0065d806	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_0065d806@@@@QAE@ABV0@@Z		0.18
+0065d822	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_0065d822@@@@QAE@ABV0@@Z		0.16
+0065d87f	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_0065d87f@@@@QAE@ABV0@@Z		0.14
+0065d89b	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCVillageTaskHorn@@@@QAE@ABV0@@Z		0.15
+0065d8d0	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_0065d8d0@@@@QAE@ABV0@@Z		0.15
+0065d8f6	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_0065d8f6@@@@QAE@ABV0@@Z		0.15
+00704430	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_00704430@@@@QAE@ABV0@@Z		0.15
+008aa6a0	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@ABV0@@Z		0.16
+008aa9b0	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_008aa9b0@@@@QAE@ABV0@@Z		0.18
+009d69a0	PASS		DEF ?Copy@T@@QAEPAU1@ABUPtr@@@Z -> ??0?$CCountedPointer@VCUnprovenPointee_009d69a0@@@@QAE@ABV0@@Z		0.16

@@ -9,7 +9,7 @@ struct CEngineInternalPrimitive2DStaticMesh {
     CMatrix3x4 frameEnd;
 };
 
-bool __fastcall GetTransformFrameEnd(CEngineInternalPrimitive2DStaticMesh* mesh, int /*edx*/, CMatrix3x4& out)
+bool __fastcall CEngineInternalPrimitive2DStaticMesh_GetTransformFrameEnd(CEngineInternalPrimitive2DStaticMesh* mesh, int /*edx*/, CMatrix3x4& out)
 {
     out = mesh->frameEnd;
     return true;
@@ -21,7 +21,7 @@ int main()
     for (int i = 0; i < 12; ++i) obj.frameEnd.m[i] = (float)(i + 1) * 1.5f;
     CMatrix3x4 dst;
     for (int i = 0; i < 12; ++i) dst.m[i] = -1.0f;
-    bool r = GetTransformFrameEnd(&obj, 0, dst);
+    bool r = CEngineInternalPrimitive2DStaticMesh_GetTransformFrameEnd(&obj, 0, dst);
     bool ok = r;
     for (int i = 0; i < 12; ++i) {
         if (dst.m[i] != (float)(i + 1) * 1.5f) ok = false;

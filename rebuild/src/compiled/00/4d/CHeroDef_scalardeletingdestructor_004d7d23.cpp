@@ -1,3 +1,4 @@
+// Leaf: ?CHeroDef_scalar_deleting_destructor@@YIPAXPAVCHeroDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CHeroDef
 };
 extern void* const g_CHeroDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CHeroDef* def, int, unsigned int flags)
+void* __fastcall CHeroDef_scalar_deleting_destructor(CHeroDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CHeroDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

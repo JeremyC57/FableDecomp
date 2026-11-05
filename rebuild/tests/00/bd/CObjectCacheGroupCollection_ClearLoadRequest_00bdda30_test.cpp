@@ -12,7 +12,7 @@ static int g_called = 0;
 
 static void MgrRelease(void* block) { g_called++; g_released = block; }
 
-static void ClearLoadRequest(Coll* self, void* mgr) {
+static void CObjectCacheGroupCollection_ClearLoadRequest(Coll* self, void* mgr) {
     (void)mgr;
     if (self->flags & 8) {
         MgrRelease(self->field_34);
@@ -23,13 +23,13 @@ static void ClearLoadRequest(Coll* self, void* mgr) {
 int main() {
     Coll a; a.flags = 0x08 | 0x01; a.field_34 = (void*)0xABCD;
     g_called = 0; g_released = 0;
-    ClearLoadRequest(&a, (void*)0x1234);
+    CObjectCacheGroupCollection_ClearLoadRequest(&a, (void*)0x1234);
     bool ok1 = (g_called == 1) && (g_released == (void*)0xABCD) &&
                (a.flags == 0x01);
 
     Coll b; b.flags = 0x01; b.field_34 = (void*)0x9999;
     g_called = 0;
-    ClearLoadRequest(&b, (void*)0x1234);
+    CObjectCacheGroupCollection_ClearLoadRequest(&b, (void*)0x1234);
     bool ok2 = (g_called == 0) && (b.flags == 0x01);
 
     if (ok1 && ok2) printf("BEHAVIOUR_OK\n");

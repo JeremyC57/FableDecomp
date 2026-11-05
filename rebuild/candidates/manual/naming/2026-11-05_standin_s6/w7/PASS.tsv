@@ -1,0 +1,19 @@
+address	grade	log	family	introduced_warnings	inherited_warnings
+00418fbc	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+0041ba30	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+00428905	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+00428928	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+0056c050	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+005ba124	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+005c05d5	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+00654dfd	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+0065d806	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+0065d822	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+0065d87f	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+0065d89b	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+0065d8d0	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+0065d8f6	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+00704430	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+008aa6a0	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+008aa9b0	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		
+009d69a0	MATCH PASS	logs/vland_w7A00.log	standin_ccp_copyctor		

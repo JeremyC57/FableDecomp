@@ -14,7 +14,7 @@ extern "C" void __fastcall CPlayer_OnAggressiveChanged(CPlayer* player)
     g_tailCalls++;
 }
 
-void __fastcall ToggleAggressiveMode(CPlayer* player)
+void __fastcall CPlayer_ToggleAggressiveMode(CPlayer* player)
 {
     if (g_aggressiveEnabled) {
         player->aggressive = (player->aggressive == 0);
@@ -26,7 +26,7 @@ static void callToggle(CPlayer* p)
 {
     __asm {
         mov ecx, p
-        call ToggleAggressiveMode
+        call CPlayer_ToggleAggressiveMode
     }
 }
 

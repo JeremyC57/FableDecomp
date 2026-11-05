@@ -1,3 +1,4 @@
+// Leaf: ?CAnimComponentCombatComboChain_Clone@@YIPAVCAnimComponentCombatComboChain@@PAV1@@Z
 class CAnimComponentCombatComboChain { public:
     void* vtbl_slot0;
     void* f4;
@@ -14,7 +15,7 @@ struct VT {
     CAnimComponentCombatComboChain* (__fastcall* clone)(void* component); // slot 4, [eax+0x10]
 };
 
-CAnimComponentCombatComboChain* __fastcall Clone_ComboChain(CAnimComponentCombatComboChain* component)
+CAnimComponentCombatComboChain* __fastcall CAnimComponentCombatComboChain_Clone(CAnimComponentCombatComboChain* component)
 {
     VT* vt = *(VT**)component;
     CAnimComponentCombatComboChain* n = vt->clone(component);

@@ -1,3 +1,4 @@
+// Leaf: ?CPlayer_ToggleAggressiveMode@@YIXPAVCPlayer@@@Z
 extern unsigned char g_aggressiveEnabled;
 
 class CPlayer;
@@ -8,7 +9,7 @@ class CPlayer { public:
     unsigned char aggressive;
 };
 
-void __fastcall ToggleAggressiveMode(CPlayer* player)
+void __fastcall CPlayer_ToggleAggressiveMode(CPlayer* player)
 {
     if (g_aggressiveEnabled) {
         player->aggressive = (player->aggressive == 0);

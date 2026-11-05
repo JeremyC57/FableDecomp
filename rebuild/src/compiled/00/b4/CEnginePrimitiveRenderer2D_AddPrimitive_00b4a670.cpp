@@ -1,4 +1,5 @@
 // CEnginePrimitiveRenderer2D::AddPrimitive @ 0x00b4a670
+// Leaf: ?CEnginePrimitiveRenderer2D_AddPrimitive@@YIXPAVCEnginePrimitiveRenderer2D@@HPAVCEngineInternalPrimitiveBase@@@Z
 // void __fastcall AddPrimitive(CEnginePrimitiveRenderer2D* this, CEngineInternalPrimitiveBase* prim)
 
 class CEnginePrimitiveRenderer2D { public:
@@ -14,7 +15,7 @@ private: public:
     unsigned int flags;   // +0x0c
 };
 
-void __fastcall AddPrimitive(CEnginePrimitiveRenderer2D* self, int edx_dummy, CEngineInternalPrimitiveBase* prim)
+void __fastcall CEnginePrimitiveRenderer2D_AddPrimitive(CEnginePrimitiveRenderer2D* self, int edx_dummy, CEngineInternalPrimitiveBase* prim)
 {
     if (prim->flags & 0x400)
         ((CEngineInternalPrimitiveBase*)prim)->AddToList((CEngineInternalPrimitiveBase**)((char*)self + 0x44));

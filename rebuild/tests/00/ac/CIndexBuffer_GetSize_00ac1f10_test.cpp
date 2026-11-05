@@ -10,7 +10,7 @@ struct IBufImplVtbl {
 struct IBufImpl { IBufImplVtbl* vtbl; };
 class CIndexBuffer { public: void* f0; IBufImpl* PD3DIndexBuffer; };
 
-long __fastcall GetSize(CIndexBuffer* self);
+long __fastcall CIndexBuffer_GetSize(CIndexBuffer* self);
 
 static IBufImpl* g_expect;
 static void __stdcall FakeGetDesc(IBufImpl* self, Desc* out)
@@ -28,7 +28,7 @@ int main()
     CIndexBuffer ib; ib.f0=0; ib.PD3DIndexBuffer=&impl;
     g_expect=&impl;
 
-    long r = GetSize(&ib);
+    long r = CIndexBuffer_GetSize(&ib);
     if (r == 4096) printf("00ac1f10_TEST PASS\n");
     else printf("FAIL r=%ld\n", r);
     return 0;

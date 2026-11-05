@@ -1,5 +1,5 @@
 #pragma optimize("s",on)
-// Leaf: EndAttackBeam
+// Leaf: ?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z
 
 class CTCKraken { public:
     char pad[0x64];
@@ -9,7 +9,7 @@ class CTCKraken { public:
 extern "C" void __fastcall Kraken_PreEnd(CTCKraken* self);
 extern "C" void __fastcall Kraken_Finish(CTCKraken* self);
 
-void __fastcall EndAttackBeam(CTCKraken* self)
+void __fastcall CTCKraken_EndAttackBeam(CTCKraken* self)
 {
     self->beamState = 3;
     Kraken_PreEnd(self);

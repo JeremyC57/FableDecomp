@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of LHHttp2::IsDataAvailable @ 0x0083ea50
+// Leaf: ?LHHttp2_IsDataAvailable@@YIHPAULHHttp2@@@Z
 
 #include "engine/LHHttp2.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef int LH_RETURN;
@@ -11,7 +12,7 @@ struct LSocket {
 
 
 // __fastcall modeled as __fastcall free fn (self in ecx)
-LH_RETURN __fastcall IsDataAvailable(LHHttp2* http2)
+LH_RETURN __fastcall LHHttp2_IsDataAvailable(LHHttp2* http2)
 {
     LSocket* c = *(LSocket**)http2; // mov ecx,[ecx]
     if (c != 0)

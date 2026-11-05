@@ -1,5 +1,5 @@
 // CTCSpotLight::FrameUpdate() -- random-walk the accumulated flicker factor by the (overridden or def) flicker amount, kept between 1 - flicker and 1
-// Leaf: FrameUpdate
+// Leaf: ?CTCSpotLight_FrameUpdate@@YIXPAVCTCSpotLight@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00731BF0, 169 bytes (plain `ret`); `this` in ecx (written as a __fastcall free
 // function over the engine header, as the landed CTCSpotLight::SetAngle 0x00731BE0).
 // Callees: CTCBase::GetPLocalSeed @ 0x00686DB0 (called on the header struct cast to its CTCBase part), GFFloatRandom(float range, unsigned long* seed) @ 0x004978A0
@@ -25,7 +25,7 @@ class CTCBase { public:                                        // the engine hea
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);  // 0x004978A0
 
-void __fastcall FrameUpdate(CTCSpotLight* light)
+void __fastcall CTCSpotLight_FrameUpdate(CTCSpotLight* light)
 {
     light->OldAccumilativeFlickerFactor = light->AccumilativeFlickerFactor;
     CSpotLightDef* def = (CSpotLightDef*)light->PLightDef_Object;

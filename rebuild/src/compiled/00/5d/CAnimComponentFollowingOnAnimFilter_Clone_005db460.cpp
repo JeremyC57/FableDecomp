@@ -1,6 +1,7 @@
+// Leaf: ?CAnimComponentFollowingOnAnimFilter_Clone@@YIPAVCAnimComponentFollowingOnAnimFilter@@PAV1@@Z
 #include "engine/CAnimComponentFollowingOnAnimFilter.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef CAnimComponentFollowingOnAnimFilter* (__fastcall* CloneFollowingFilterFn)(CAnimComponentFollowingOnAnimFilter*);
-CAnimComponentFollowingOnAnimFilter* __fastcall Clone(CAnimComponentFollowingOnAnimFilter* component)
+CAnimComponentFollowingOnAnimFilter* __fastcall CAnimComponentFollowingOnAnimFilter_Clone(CAnimComponentFollowingOnAnimFilter* component)
 {
     CloneFollowingFilterFn* vtable = (CloneFollowingFilterFn*)component->__vftable;
     CAnimComponentFollowingOnAnimFilter* copy = vtable[0x10 / 4](component);

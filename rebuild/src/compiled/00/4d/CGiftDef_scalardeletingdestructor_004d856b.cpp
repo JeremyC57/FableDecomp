@@ -1,3 +1,4 @@
+// Leaf: ?CGiftDef_scalar_deleting_destructor@@YIPAXPAVCGiftDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CGiftDef
 };
 extern void* const g_CGiftDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CGiftDef* def, int, unsigned int flags)
+void* __fastcall CGiftDef_scalar_deleting_destructor(CGiftDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CGiftDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

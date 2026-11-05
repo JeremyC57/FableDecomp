@@ -1,3 +1,4 @@
+// Leaf: ?CExpressionSubDef_scalar_deleting_destructor@@YIPAXPAVCExpressionSubDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CExpressionSubDef
 };
 extern void* const g_CExpressionSubDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CExpressionSubDef* def, int, unsigned int flags)
+void* __fastcall CExpressionSubDef_scalar_deleting_destructor(CExpressionSubDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CExpressionSubDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

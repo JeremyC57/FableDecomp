@@ -1,6 +1,6 @@
 // 0083eee0 LHHttp2::GetUntilCRLF
 // Flags: /O2 /Oy /Gr
-// Leaf: GetUntilCRLF
+// Leaf: ?LHHttp2_GetUntilCRLF@@YIHPAULHHttp2@@PAXPADAAH@Z
 #include "engine/LHHttp2.h"
 extern "C" void __cdecl free(void*);
 // Layout: socket methods observed at008f8210,008f99a0; packet12 points at byte buffer+0.
@@ -15,7 +15,7 @@ __declspec(noinline) void Packet_0083eee0::Insert(int position,int count,const c
 }
 #pragma auto_inline(on)
 struct LSocket{bool IsConnected(int);bool Receive(Packet_0083eee0&);};
-int __fastcall GetUntilCRLF(LHHttp2* self,void*,char* buffer,int& offset){
+int __fastcall LHHttp2_GetUntilCRLF(LHHttp2* self,void*,char* buffer,int& offset){
  bool seenCR=false;
  if(self->Host && self->Host->IsConnected(0)){
   unsigned short count=0;

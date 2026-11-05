@@ -1,8 +1,9 @@
 // CWideString::Sizeof @ 0099b2a0
+// Leaf: ?CWideString_Sizeof@@YIKPAVCWideString@@@Z
 struct WVec { long begin; long end; };
 class CWideString { public: WVec* vec; };
 
-unsigned long __fastcall Sizeof(CWideString* self)
+unsigned long __fastcall CWideString_Sizeof(CWideString* self)
 {
     WVec* v = self->vec;
     unsigned long r = 4;

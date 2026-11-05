@@ -6,7 +6,7 @@ class CGraphicDataBank { public:
     char* f1e0;
 };
 
-void __fastcall NotifyEntryRemoved(CGraphicDataBank* bank, int edx, unsigned long idx);
+void __fastcall CGraphicDataBank_NotifyEntryRemoved(CGraphicDataBank* bank, int edx, unsigned long idx);
 
 int main()
 {
@@ -17,7 +17,7 @@ int main()
     obj.f1e0 = arr;
 
     unsigned long idx = 3;
-    NotifyEntryRemoved(&obj, 0, idx);
+    CGraphicDataBank_NotifyEntryRemoved(&obj, 0, idx);
 
     int v = *(int*)(arr + idx * 0x2c + 0x24);
     int other = *(int*)(arr + 2 * 0x2c + 0x24);

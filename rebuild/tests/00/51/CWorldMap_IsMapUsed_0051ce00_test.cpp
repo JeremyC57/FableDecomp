@@ -2,7 +2,7 @@
 
 struct MapEntry { char pad[0x24]; unsigned char used; char pad2[0x48-0x25]; };
 class CWorldMap { public: char pad[0x20]; MapEntry* maps; };
-unsigned char __fastcall IsMapUsed(CWorldMap* self, int /*edx*/, int index)
+unsigned char __fastcall CWorldMap_IsMapUsed(CWorldMap* self, int /*edx*/, int index)
 {
     return self->maps[index].used;
 }
@@ -18,9 +18,9 @@ int main()
     wm.maps = entries;
 
     // __fastcall: this in ecx, dummy in edx, index on the stack.
-    unsigned char r0 = IsMapUsed(&wm, 0, 0);
-    unsigned char r2 = IsMapUsed(&wm, 0, 2);
-    unsigned char r3 = IsMapUsed(&wm, 0, 3);
+    unsigned char r0 = CWorldMap_IsMapUsed(&wm, 0, 0);
+    unsigned char r2 = CWorldMap_IsMapUsed(&wm, 0, 2);
+    unsigned char r3 = CWorldMap_IsMapUsed(&wm, 0, 3);
 
     if (r0 != 0 || r2 != 1 || r3 != 0xAB) {
         printf("FAIL r0=%u r2=%u r3=%u\n", r0, r2, r3);

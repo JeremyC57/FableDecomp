@@ -18,7 +18,7 @@ static Self* __fastcall clone_impl(Self* component) {
     return &g_new;
 }
 
-Self* __fastcall Clone_CombatHandedness(Self* component)
+Self* __fastcall CAnimComponentCombatHandedness_Clone(Self* component)
 {
     Self* n = component->vt->clone(component);
     n->f8 = component->f8;
@@ -30,11 +30,11 @@ int main() {
     VTbl vt = {0,0,0,0, clone_impl};
     Self s;
     s.vt = &vt; s.f4 = 1; s.f8 = 0x1234; s.fc = 0x5678;
-    Self* r = Clone_CombatHandedness(&s);
+    Self* r = CAnimComponentCombatHandedness_Clone(&s);
     bool ok = (r == &g_new) && (r->f8 == 0x1234) && (r->fc == 0x5678) && (r->f4 == 999);
     // second case: different values
     s.f8 = -7; s.fc = 42;
-    Self* r2 = Clone_CombatHandedness(&s);
+    Self* r2 = CAnimComponentCombatHandedness_Clone(&s);
     ok = ok && (r2->f8 == -7) && (r2->fc == 42);
     printf(ok ? "OK_005db260\n" : "FAIL\n");
     return ok ? 0 : 1;

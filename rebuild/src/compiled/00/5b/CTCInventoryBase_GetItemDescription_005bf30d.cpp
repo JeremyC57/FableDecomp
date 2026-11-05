@@ -1,3 +1,4 @@
+// Leaf: ?CTCInventoryBase_GetItemDescription@@YIXPAUCTCInventoryBase@@PAXPAVCWideString@@J_N@Z
 #pragma optimize("s",on)
 // Byte-exact reconstruction of CTCInventoryBase::GetItemDescription @ 0x005bf30d
 
@@ -23,7 +24,7 @@ struct CFinal {
     void Emit(CWideString* out, long a, bool b);
 };
 
-void __fastcall GetItemDescription(CTCInventoryBase* self, void* edxDummy,
+void __fastcall CTCInventoryBase_GetItemDescription(CTCInventoryBase* self, void* edxDummy,
                                    CWideString* out, long itemId, bool flag)
 {
     (void)edxDummy;

@@ -1,3 +1,4 @@
+// Leaf: ?CResurrectionItemDef_scalar_deleting_destructor@@YIPAXPAVCResurrectionItemDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CResurrectionItemDef
 };
 extern void* const g_CResurrectionItemDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CResurrectionItemDef* def, int, unsigned int flags)
+void* __fastcall CResurrectionItemDef_scalar_deleting_destructor(CResurrectionItemDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CResurrectionItemDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

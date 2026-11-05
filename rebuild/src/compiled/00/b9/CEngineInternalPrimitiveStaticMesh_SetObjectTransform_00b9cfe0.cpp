@@ -1,3 +1,4 @@
+// Leaf: ?CEngineInternalPrimitiveStaticMesh_SetObjectTransform@@YI_NPAVCEngineInternalPrimitiveStaticMesh@@HABVCMatrix3x4@@@Z
 class CMatrix3x4 { public: float m[12]; };
 
 class CEngineInternalPrimitiveStaticMesh { public:
@@ -5,7 +6,7 @@ class CEngineInternalPrimitiveStaticMesh { public:
     CMatrix3x4 transform;
 };
 
-bool __fastcall SetObjectTransform(CEngineInternalPrimitiveStaticMesh* mesh, int /*edx*/, const CMatrix3x4& mat)
+bool __fastcall CEngineInternalPrimitiveStaticMesh_SetObjectTransform(CEngineInternalPrimitiveStaticMesh* mesh, int /*edx*/, const CMatrix3x4& mat)
 {
     mesh->transform = mat;
     return true;

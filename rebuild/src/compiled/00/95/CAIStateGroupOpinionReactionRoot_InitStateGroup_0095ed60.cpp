@@ -1,3 +1,4 @@
+// Leaf: ?CAIStateGroup_OpinionReactionRoot_InitStateGroup@@YIXPAVCAIStateGroup_OpinionReactionRoot@@HABVCWorld@@AAVCThingAICreature@@@Z
 #include <string.h>
 
 class CWorld;
@@ -9,7 +10,7 @@ class CAIStateGroup_OpinionReactionRoot { public:
     unsigned char states[79];
 };
 
-void __fastcall InitStateGroup(CAIStateGroup_OpinionReactionRoot* self, int edx_dummy,
+void __fastcall CAIStateGroup_OpinionReactionRoot_InitStateGroup(CAIStateGroup_OpinionReactionRoot* self, int edx_dummy,
                                const CWorld& world, CThingAICreature& creature)
 {
     unsigned char* d = self->states;

@@ -12,7 +12,7 @@ static Prim* ctor(Prim* self) {
     return self;
 }
 
-static Prim* CreateInternalPrimitive(void* self, int type) {
+static Prim* CEnginePrimitive2DViewportManager_CreateInternalPrimitive(void* self, int type) {
     (void)self; (void)type;
     void* p = malloc(0xA0);
     if (p != 0)
@@ -21,7 +21,7 @@ static Prim* CreateInternalPrimitive(void* self, int type) {
 }
 
 int main() {
-    Prim* r = CreateInternalPrimitive((void*)1, 7);
+    Prim* r = CEnginePrimitive2DViewportManager_CreateInternalPrimitive((void*)1, 7);
     int ok = (r != 0) && (r->tag == 0x1234) && (g_ctorCalls == 1);
     free(r);
     if (ok)

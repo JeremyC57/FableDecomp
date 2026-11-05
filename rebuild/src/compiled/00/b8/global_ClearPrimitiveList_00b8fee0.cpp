@@ -1,3 +1,4 @@
+// Leaf: ?CEngineInternalPrimitiveBase_ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z
 class CEngineInternalPrimitiveBase
 { public:
     char pad0[0x20];
@@ -9,7 +10,7 @@ class CEngineInternalPrimitiveBase
     void* RefLayerMask;      // +0x44
 };
 
-void __fastcall ClearPrimitiveList(CEngineInternalPrimitiveBase* self)
+void __fastcall CEngineInternalPrimitiveBase_ClearPrimitiveList(CEngineInternalPrimitiveBase* self)
 {
     CEngineInternalPrimitiveBase* p = self;
     while (p != 0)

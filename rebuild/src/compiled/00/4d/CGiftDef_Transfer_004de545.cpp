@@ -1,3 +1,4 @@
+// Leaf: ?CGiftDef_Transfer@@YIXPAVCGuildMasterDef@@PAXPAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct CMember { int x; };
 
@@ -12,8 +13,9 @@ class CGuildMasterDef { public:
     CMember m2c;
 };
 
-void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
+void __fastcall CGiftDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
 {
     ctx->Transfer_004de566(&def->m28);
     ctx->Transfer(*(bool*)(&def->m2c));
 }
+// Stand-in (owner rule 2026-11-05): CGiftDef_Transfer for CGiftDef::Transfer; RTTI vtable slot ?Transfer@CGiftDef@@UAEXAAVCPersistContext@@@Z + PDB name set (egor/fablewin).

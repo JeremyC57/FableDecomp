@@ -1,3 +1,4 @@
+// Leaf: ?CCreatureActionBase_Update@@YIXPAVCCreatureActionBase@@@Z
 #include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
 
 struct CCreatureActionUpdateTarget;
@@ -8,7 +9,7 @@ struct CCreatureActionBaseVTable {
 extern "C" CCreatureActionUpdateTarget* __fastcall getSub(void* creaturePointer);
 extern "C" void __fastcall runSub(CCreatureActionUpdateTarget* target);
 
-void __fastcall Update(CCreatureActionBase* self)
+void __fastcall CCreatureActionBase_Update(CCreatureActionBase* self)
 {
     if (self->Finished) {
         CCreatureActionUpdateTarget* target = getSub((void*)self->PCreature);

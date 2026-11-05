@@ -1,3 +1,4 @@
+// Leaf: ?CWillResponseDef_scalar_deleting_destructor@@YIPAXPAVCWillResponseDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CWillResponseDef
 };
 extern void* const g_CWillResponseDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CWillResponseDef* def, int, unsigned int flags)
+void* __fastcall CWillResponseDef_scalar_deleting_destructor(CWillResponseDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CWillResponseDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

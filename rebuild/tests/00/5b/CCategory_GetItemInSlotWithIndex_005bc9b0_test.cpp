@@ -4,7 +4,7 @@ struct CCategory {
     char pad[8];
     struct Slot { CItem* item; int a, b, c, d; }* slots;
 };
-CItem* __fastcall GetItemInSlotWithIndex(CCategory* category, int edx_dummy, int index) {
+CItem* __fastcall CCategory_GetItemInSlotWithIndex(CCategory* category, int edx_dummy, int index) {
     return index >= 0 ? category->slots[index].item : 0;
 }
 static CItem* call(CCategory* category, int index) {
@@ -13,7 +13,7 @@ static CItem* call(CCategory* category, int index) {
         mov ecx, category
         mov edx, 0xDEAD
         push index
-        call GetItemInSlotWithIndex
+        call CCategory_GetItemInSlotWithIndex
         mov r, eax
     }
     return r;

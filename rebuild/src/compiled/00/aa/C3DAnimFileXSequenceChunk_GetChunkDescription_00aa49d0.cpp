@@ -1,3 +1,4 @@
+// Leaf: @C3DAnimFileXSequenceChunk_GetChunkDescription@12
 #include "rebuild_abi.h"
 
 // C3DAnimFileXSequenceChunk::GetChunkDescription @ 0x00aa49d0
@@ -20,8 +21,9 @@ class CCharString { public:
 };
 
 extern "C" CCharString* FABLE_FASTCALL
-FableGetChunkDescription_00aa49d0(void* thisptr, void* edx, CCharString* result)
+C3DAnimFileXSequenceChunk_GetChunkDescription(void* thisptr, void* edx, CCharString* result)
 {
     result->ctor_99ebf0((const char*)0x129e1c0, -1);
     return result;
 }
+// Stand-in (owner rule 2026-11-05): C3DAnimFileXSequenceChunk_GetChunkDescription for C3DAnimFileXSequenceChunk::GetChunkDescription; RTTI vtable slot ?GetChunkDescription@C3DAnimFileXSequenceChunk@@UBE?BVCCharString@@XZ + PDB name set (egor/fablewin).

@@ -11,7 +11,7 @@ struct Node
     void* RefLayerMask;
 };
 
-void __fastcall ClearPrimitiveList(Node* self)
+void __fastcall CEngineInternalPrimitiveBase_ClearPrimitiveList(Node* self)
 {
     Node* p = self;
     while (p != 0)
@@ -34,7 +34,7 @@ int main()
     c.GridCell = (void*)1; c.RefPrimitive = (void*)1; c.NextLayerMask = (void*)1; c.RefLayerMask = (void*)1;
     a.NextPrimitive = &b; b.NextPrimitive = &c; c.NextPrimitive = 0;
 
-    ClearPrimitiveList(&a);
+    CEngineInternalPrimitiveBase_ClearPrimitiveList(&a);
 
     int ok = 1;
     Node* arr[3]; arr[0]=&a; arr[1]=&b; arr[2]=&c;
@@ -44,7 +44,7 @@ int main()
             ok = 0;
     }
 
-    ClearPrimitiveList(0);
+    CEngineInternalPrimitiveBase_ClearPrimitiveList(0);
 
     if (ok) printf("PARITY_OK\n");
     else printf("FAIL\n");

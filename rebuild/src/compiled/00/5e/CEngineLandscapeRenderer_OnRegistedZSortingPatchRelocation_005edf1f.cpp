@@ -1,4 +1,5 @@
 // CEngineLandscapeRenderer::OnRegistedZSortingPatchRelocation
+// Leaf: ?CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation@@YIXPAVCEngineLandscapeRenderer@@PAXHH@Z
 // 0x005edf1f
 // mov eax,[ecx+0x148]; mov ecx,[esp+8]; mov edx,[esp+4]; mov [eax+edx*4],ecx; ret 8
 //
@@ -10,7 +11,7 @@ class CEngineLandscapeRenderer { public:
     int* m_zSortingPatchArray; // +0x148
 };
 
-void __fastcall OnRegistedZSortingPatchRelocation(CEngineLandscapeRenderer* self, void* /*edx_unused*/, int index, int value)
+void __fastcall CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation(CEngineLandscapeRenderer* self, void* /*edx_unused*/, int index, int value)
 {
     self->m_zSortingPatchArray[index] = value;
 }

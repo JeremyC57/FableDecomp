@@ -1,3 +1,4 @@
+// Leaf: ?CGameScriptInterface_CreatureGeneratorAddTriggerer@@YGXPAUHost@@0@Z
 struct BObj {
     unsigned char pad[0x6c];
     unsigned char flag6c;
@@ -35,7 +36,7 @@ struct Host { void** vt; };
 typedef AObj* (__fastcall *GetA_t)(void*);
 typedef BObj* (__fastcall *GetB_t)(void*);
 
-void __stdcall CGameScriptInterface_CreatureGeneratorRemoveTriggerer(Host* p0, Host* p1)
+void __stdcall CGameScriptInterface_CreatureGeneratorAddTriggerer(Host* p0, Host* p1)
 {
     AObj* a = ((GetA_t)(p0->vt[0x0b]))(p0);
     BObj* b = ((GetB_t)(p1->vt[0x0b]))(p1);
@@ -44,3 +45,4 @@ void __stdcall CGameScriptInterface_CreatureGeneratorRemoveTriggerer(Host* p0, H
     if (GetTCOut(a, 0x3d, &val) && (b->flag6c & 8))
         val->consume_0074ac80(b);
 }
+// Stand-in (owner rule 2026-11-05): CGameScriptInterface_CreatureGeneratorAddTriggerer for CGameScriptInterface::CreatureGeneratorAddTriggerer; RTTI vtable slot ?CreatureGeneratorAddTriggerer@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z + PDB name set (egor/fablewin).

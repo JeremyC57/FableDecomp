@@ -1,3 +1,4 @@
+// Leaf: ?CTeleporterDef_scalar_deleting_destructor@@YIPAXPAVCTeleporterDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CTeleporterDef
 };
 extern void* const g_CTeleporterDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CTeleporterDef* def, int, unsigned int flags)
+void* __fastcall CTeleporterDef_scalar_deleting_destructor(CTeleporterDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CTeleporterDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

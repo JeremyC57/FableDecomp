@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CHeroDef* def, int, unsigned int flags)
+void* __fastcall CHeroDef_scalar_deleting_destructor(CHeroDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CHeroDef_vftable;
     CHeroDef_Destruct(def);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CHeroDef* def, int, unsigned int fla
 int main()
 {
     CHeroDef object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CHeroDef_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CHeroDef_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CHeroDef_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

@@ -8,7 +8,7 @@ class CTCTargetingPlayer { public:
     unsigned int f44;
 };
 
-void __fastcall SetAsPickUpNewLockTarget(CTCTargetingPlayer* player);
+void __fastcall CTCTargetingPlayer_SetAsPickUpNewLockTarget(CTCTargetingPlayer* player);
 
 // CWorld::GetFrame (0x0049D870) is static and takes no object: the stub only feeds the frame.
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
@@ -20,7 +20,7 @@ int main()
     obj.f3c = 0;
     obj.f40 = 123;
     obj.f44 = 0;
-    SetAsPickUpNewLockTarget(&obj);
+    CTCTargetingPlayer_SetAsPickUpNewLockTarget(&obj);
     if (obj.f3c == 1 && obj.f40 == 0 && obj.f44 == 0xDEADBEEF)
         printf("008023a0_TEST PASS\n");
     else

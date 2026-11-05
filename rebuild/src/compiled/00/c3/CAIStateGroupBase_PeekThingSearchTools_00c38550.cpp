@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CAIStateGroupBase::PeekThingSearchTools @ 0x00c38550
+// Leaf: ?CAIStateGroupBase_PeekThingSearchTools@@YIPAVCThingSearchTools@@PAVCAIStateGroupBase@@@Z
 class CThingSearchTools;
 
 struct Inner3 {
@@ -27,7 +28,7 @@ class CAIStateGroupBase { public:
 
 extern const float g_const; // 0x1252370
 
-CThingSearchTools* __fastcall PeekThingSearchTools(CAIStateGroupBase* self)
+CThingSearchTools* __fastcall CAIStateGroupBase_PeekThingSearchTools(CAIStateGroupBase* self)
 {
     return SubPeek((Sub*)((char*)self + 0xc), g_const / self->PBrain->p4->p4->rate);
 }

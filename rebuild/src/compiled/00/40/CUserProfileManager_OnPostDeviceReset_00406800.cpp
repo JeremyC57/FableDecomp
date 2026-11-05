@@ -1,1 +1,2 @@
-char OnPostDeviceReset(){ return 1; }
+// Leaf: ?CUserProfileManager_OnPostDeviceReset@@YADXZ
+char CUserProfileManager_OnPostDeviceReset(){ return 1; }

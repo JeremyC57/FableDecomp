@@ -16,7 +16,7 @@ class CTCInventoryItem { public:
 
 // ---- function under test (copy of source_cpp) ----
 class CEngineGraphic;
-CEngineGraphic * __fastcall GetEngineGraphic(CTCInventoryItem *self)
+CEngineGraphic * __fastcall CTCInventoryItem_GetEngineGraphic(CTCInventoryItem *self)
 {
     RcObj *p = self->m_holder;
     if (p)
@@ -46,7 +46,7 @@ int main()
     CTCInventoryItem *pitem = &item;
     __asm {
         mov  ecx, pitem
-        call GetEngineGraphic
+        call CTCInventoryItem_GetEngineGraphic
         mov  result, eax
     }
 
@@ -62,7 +62,7 @@ int main()
     void *r2 = 0; CTCInventoryItem *p2 = &item2;
     __asm {
         mov  ecx, p2
-        call GetEngineGraphic
+        call CTCInventoryItem_GetEngineGraphic
         mov  r2, eax
     }
     if (r2 != (void*)0x25) { printf("FAIL null path %p\n", r2); return 1; }

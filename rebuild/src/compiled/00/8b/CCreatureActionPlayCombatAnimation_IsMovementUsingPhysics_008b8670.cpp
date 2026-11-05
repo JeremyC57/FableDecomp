@@ -1,6 +1,8 @@
 // Layout: retail STLport 4.6 container sizes put the PDB member on these bytes; renamed `f_2` -> `UsePhysics`.
+// Leaf: ?IsMovementUsingPhysics@CCreatureAction_PlayCombatAnimation_Methods@@QAEEXZ
 #include "engine/CCreatureAction_PlayCombatAnimation.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CCreatureAction_PlayCombatAnimation_Methods : CCreatureAction_PlayCombatAnimation {
-    unsigned char M();
+    unsigned char IsMovementUsingPhysics();
 };
-unsigned char CCreatureAction_PlayCombatAnimation_Methods::M(){ return this->UsePhysics; }
+unsigned char CCreatureAction_PlayCombatAnimation_Methods::IsMovementUsingPhysics(){ return this->UsePhysics; }
+// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?IsMovementUsingPhysics@CCreatureAction_PlayCombatAnimation@@UBE_NXZ); evidence: RTTI vtable slot + PDB name set.

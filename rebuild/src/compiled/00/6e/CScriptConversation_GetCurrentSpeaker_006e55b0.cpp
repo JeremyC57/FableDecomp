@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CScriptConversation::GetCurrentSpeaker @ 0x006e55b0
+// Leaf: ?CScriptConversation_GetCurrentSpeaker@@YIPAVCThing@@PAVCScriptConversation@@@Z
 class CThing;
 
 // element of the +0x14 array: 16-byte records, first dword is an index
@@ -25,7 +26,7 @@ class CScriptConversation { public:
 // tail callee @ 0xa01b50 : takes a pointer to an Entry8, returns CThing*
 extern "C" CThing* __fastcall ResolveSpeaker(Entry8* e);
 
-CThing* __fastcall GetCurrentSpeaker(CScriptConversation* conversation)
+CThing* __fastcall CScriptConversation_GetCurrentSpeaker(CScriptConversation* conversation)
 {
     int idx = conversation->current;
     if (idx > -1)

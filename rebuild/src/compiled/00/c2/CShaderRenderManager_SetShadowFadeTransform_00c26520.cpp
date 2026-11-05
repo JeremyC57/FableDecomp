@@ -1,4 +1,5 @@
 // CShaderRenderManager::SetShadowFadeTransform 0x00c26520
+// Leaf: ?CShaderRenderManager_SetShadowFadeTransform@@YIIPAVCShaderRenderManager@@@Z
 struct Inner {
     virtual int vf0();
     virtual int vf1();
@@ -22,7 +23,7 @@ class CShaderRenderManager { public:
     Holder* holder;  // +0x20
 };
 
-unsigned int __fastcall SetShadowFadeTransform(CShaderRenderManager* self)
+unsigned int __fastcall CShaderRenderManager_SetShadowFadeTransform(CShaderRenderManager* self)
 {
     unsigned int sum = self->c + self->a + self->b;
     unsigned int divisor = self->holder->pInner->vf2();

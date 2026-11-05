@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCCreatureGenerator::IsDepleted @ 0x00749e20
+// Leaf: ?CTCCreatureGenerator_IsDepleted@@YI_NPAVCTCCreatureGenerator@@@Z
 
 struct ListNode {
     ListNode* next; // +0x00
@@ -15,7 +16,7 @@ class CTCCreatureGenerator { public:
     int   f84;        // +0x84
 };
 
-bool __fastcall IsDepleted(CTCCreatureGenerator* self)
+bool __fastcall CTCCreatureGenerator_IsDepleted(CTCCreatureGenerator* self)
 {
     ListNode* head = self->list;
     if (head->next == head)          // list empty

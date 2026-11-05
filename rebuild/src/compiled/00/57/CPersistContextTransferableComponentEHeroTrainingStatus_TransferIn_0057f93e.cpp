@@ -1,4 +1,5 @@
 // CPersistContext_TransferableComponent<EHeroTrainingStatus>::TransferIn  @ 0x0057f93e
+// Leaf: ?CPersistContext_TransferableComponent_TransferIn@@YIXPAUCPersistContext_TransferableComponent@@HPAVCPersistContext@@H@Z
 #pragma optimize("y", off)   // retail keeps the EBP frame here
 #pragma optimize("s", on)    // favor size -> reload temp lands in eax (retail regalloc)
 class CPersistContext;
@@ -13,7 +14,7 @@ struct CPersistContext_TransferableComponent {
     EHeroAbility_slot* dst;   // +4
 };
 
-void __fastcall TransferIn(CPersistContext_TransferableComponent* transferable, int /*edx*/, CPersistContext* pc, int value)
+void __fastcall CPersistContext_TransferableComponent_TransferIn(CPersistContext_TransferableComponent* transferable, int /*edx*/, CPersistContext* pc, int value)
 {
     EHeroAbility_slot* dst = transferable->dst;
     PC_Transfer(pc, value, &value);

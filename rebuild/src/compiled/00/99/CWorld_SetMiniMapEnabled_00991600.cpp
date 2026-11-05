@@ -1,3 +1,4 @@
+// Leaf: ?CWorld_SetMiniMapEnabled@@YIXPAVCWorld@@H_N@Z
 class CWorld;
 struct CWorldVtbl {
     void (__fastcall *slots[0x10])(CWorld*);
@@ -9,7 +10,7 @@ class CWorld { public:
     bool f24;           // +0x24
 };
 
-void __fastcall SetMiniMapEnabled(CWorld* self, int /*edx*/, bool enabled)
+void __fastcall CWorld_SetMiniMapEnabled(CWorld* self, int /*edx*/, bool enabled)
 {
     if (self->f24 != enabled) {
         self->f24 = enabled;

@@ -1,4 +1,5 @@
 // CEnginePrimitiveManagerSprites::RenderPrimitive @ 0x00baf9e0
+// Leaf: ?CEnginePrimitiveManagerSprites_RenderPrimitive@@YIHPAVCEnginePrimitiveManagerSprites@@HAAVCEngineInternalPrimitiveBase@@HAAVCEngineSubPrimitiveChain@@@Z
 #include "engine/CEnginePrimitiveManagerSprites.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef int ERendered;
 typedef int EEngineRenderLayer;
@@ -10,7 +11,7 @@ class CEngineSubPrimitiveChain { public: int dummy; };
 // callee at 0xbade40: takes the primitive ref (one stack arg), stdcall (self-cleans)
 extern "C" void __stdcall SpriteHelper(CEngineInternalPrimitiveBase &prim);
 
-ERendered __fastcall RenderPrimitive(
+ERendered __fastcall CEnginePrimitiveManagerSprites_RenderPrimitive(
     CEnginePrimitiveManagerSprites *sprites,  // ecx
     int edx_dummy,                         // edx (unused by thiscall)
     CEngineInternalPrimitiveBase &prim,    // [esp+4]

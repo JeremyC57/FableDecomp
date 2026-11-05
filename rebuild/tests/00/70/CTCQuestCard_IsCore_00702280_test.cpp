@@ -10,7 +10,7 @@ class CTCQuestCard { public:
     int  FeatIndex;
 };
 
-bool __fastcall IsCore(CTCQuestCard* self)
+bool __fastcall CTCQuestCard_IsCore(CTCQuestCard* self)
 {
     if (self->FeatIndex <= -1) {
         if (self->inner->flag)
@@ -26,14 +26,14 @@ int main()
     CTCQuestCard c; c.inner = pin;
     CTCQuestCard* pc = &c;
 
-    c.FeatIndex = 0;   if (IsCore(pc)) { printf("FAIL1\n"); return 1; }
-    c.FeatIndex = 5;   if (IsCore(pc)) { printf("FAIL2\n"); return 1; }
+    c.FeatIndex = 0;   if (CTCQuestCard_IsCore(pc)) { printf("FAIL1\n"); return 1; }
+    c.FeatIndex = 5;   if (CTCQuestCard_IsCore(pc)) { printf("FAIL2\n"); return 1; }
 
-    c.FeatIndex = -1;  if (!IsCore(pc)) { printf("FAIL3\n"); return 1; }
-    c.FeatIndex = -100;if (!IsCore(pc)) { printf("FAIL4\n"); return 1; }
+    c.FeatIndex = -1;  if (!CTCQuestCard_IsCore(pc)) { printf("FAIL3\n"); return 1; }
+    c.FeatIndex = -100;if (!CTCQuestCard_IsCore(pc)) { printf("FAIL4\n"); return 1; }
 
     innr.flag = 0;
-    c.FeatIndex = -1;  if (IsCore(pc)) { printf("FAIL5\n"); return 1; }
+    c.FeatIndex = -1;  if (CTCQuestCard_IsCore(pc)) { printf("FAIL5\n"); return 1; }
 
     printf("OK_00702280\n");
     return 0;

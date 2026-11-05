@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CBankFileAsyncData::ChangeLoadingPriority @ 0x009d5630
+// Leaf: ?CBankFileAsyncData_ChangeLoadingPriority@@YIXPAVCBankFileAsyncData@@PAXH@Z
 typedef int EThreadedFilePriority;
 
 struct Inner;
@@ -22,7 +23,7 @@ class CBankFileAsyncData { public:
     Manager* BankFile; // +0x28
 };
 
-void __fastcall ChangeLoadingPriority(CBankFileAsyncData* self, void* /*edx*/, EThreadedFilePriority prio)
+void __fastcall CBankFileAsyncData_ChangeLoadingPriority(CBankFileAsyncData* self, void* /*edx*/, EThreadedFilePriority prio)
 {
     Inner* item = self->field_18;
     if (item) {

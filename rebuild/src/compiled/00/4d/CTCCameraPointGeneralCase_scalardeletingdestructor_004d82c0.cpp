@@ -1,3 +1,4 @@
+// Leaf: ?CTCCameraPointGeneralCase_scalar_deleting_destructor@@YIPAXPAVCTCCameraPointGeneralCase@@HI@Z
 #pragma optimize("s", on)
 class CTCBase {
 public:
@@ -9,7 +10,7 @@ class CTCCameraPointGeneralCase
 };
 extern void* const g_CTCCameraPointGeneralCase_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CTCCameraPointGeneralCase* generalCase, int, unsigned int flags)
+void* __fastcall CTCCameraPointGeneralCase_scalar_deleting_destructor(CTCCameraPointGeneralCase* generalCase, int, unsigned int flags)
 {
     generalCase->vftable = (void*)&g_CTCCameraPointGeneralCase_vftable;
     ((CTCBase*)(generalCase))->CTCBase::~CTCBase();

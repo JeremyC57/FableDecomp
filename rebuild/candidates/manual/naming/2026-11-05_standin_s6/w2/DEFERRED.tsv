@@ -1,0 +1,306 @@
+address	stage	reason
+00416268	plan	one source: catalog class only, untyped this
+0041627f	plan	one source: catalog class only, untyped this
+0042b44a	plan	one source: catalog class only, untyped this
+004336b0	plan	one source: catalog class only, untyped this
+00443cf0	plan	new name ?CMiniMapDisplay_ClearPrimitiveHandles@@YIXPAVCMiniMapDisplay@@@Z is shared by 1 rows / defined at 00a46d90 (one address, one name: needs the template or a disambiguating name)
+00447a40	plan	this parameter typed Obj, catalog class CEditControlCentre
+0044c12f	plan	name carries another class prefix CSpecialAbilitiesDrainLifeDef (names-another family)
+0044c1cd	plan	name carries another class prefix CActionUseDef (names-another family)
+0044c1f6	plan	name carries another class prefix CDragonActionNapalmDef (names-another family)
+0044c229	plan	name carries another class prefix CGuildMasterDef (names-another family)
+0044c2e2	plan	name carries another class prefix COpinionSourceDef (names-another family)
+0044c71f	plan	one source: catalog class only, untyped this
+0045087c	plan	this parameter typed LTextTree, catalog class LTextTreeWalkThrough
+004508a9	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004508d6	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+00453ac7	plan	name carries another class prefix CSpecialAbilitiesDrainLifeDataDef (names-another family)
+00453b15	plan	name carries another class prefix CCompressedMemoryDataInputStream (names-another family)
+00453e51	plan	name carries another class prefix CAIStateGroup (names-another family)
+004546d5	plan	name carries another class prefix CSpecialAbilitiesDrainLifeDef (names-another family)
+00455d44	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+004560a9	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+004567db	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+00457132	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+0045720a	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+004572a7	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+004576db	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+00457936	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+004579c2	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+00457ae4	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+00457e03	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+00457ed6	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+00458476	plan	name carries another class prefix CPatchTesselationEdgeStrip (names-another family)
+00459704	plan	name carries another class prefix CVillagerInteractionsDef (names-another family)
+004611a1	plan	name carries another class prefix CObjectFamilyDef (names-another family)
+00462888	plan	name carries another class prefix CCardDef (names-another family)
+0046a742	plan	name carries another class prefix CCameraManagerSetDef (names-another family)
+0046a7e0	plan	name carries another class prefix CVillagerInteractionsDef (names-another family)
+004784e4	plan	name carries another class prefix CVillagerInteractionsDef (names-another family)
+00478827	plan	name carries another class prefix CVillagerInteractionsDef (names-another family)
+0047cfc2	plan	new name ?CUserProfileManager_GetCameraSensitivity@@YIMPAVCUserProfileManager@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00485616	plan	one source: catalog class only, untyped this
+0048b5c0	plan	name LandscapeBackgroundPatch_scalar_deleting_destructor carries another class
+0048e062	plan	one source: catalog class only, untyped this
+0049369b	plan	one source: catalog class only, untyped this
+0049b990	plan	one source: catalog class only, untyped this
+0049dbd0	plan	this parameter typed S, catalog class CWorld
+004aaa60	plan	p4_localcopy CScriptThing
+004b87d0	plan	this parameter typed Tree, catalog class CGuiControlTreePane
+004b9d00	plan	one source: catalog class only, untyped this
+004c74f0	plan	one source: catalog class only, untyped this
+004d26d0	plan	new name ?CTCVillage_OnInitialActivate@@YIXPAVCTCVillage@@@Z is shared by 8 rows / defined at 00cbe010 (one address, one name: needs the template or a disambiguating name)
+004d2a74	plan	one source: catalog class only, untyped this
+004d31c0	plan	this parameter typed CCharString, catalog class CTCVillage
+004d39cf	plan	one source: catalog class only, untyped this
+004d3cde	plan	name carries another class prefix CActionDoCreatureAction (names-another family)
+004d4232	plan	this parameter typed CCharString, catalog class CTCDHeroSuit
+004d4369	plan	this parameter typed CCharString, catalog class CTCDExperienceOrb
+004d5ce6	plan	one source: catalog class only, untyped this
+004d66c3	plan	one source: catalog class only, untyped this
+004da1cb	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da1f8	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da225	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da252	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da27f	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da2ac	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da2d9	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da306	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da333	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da38d	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da3ba	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da40e	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004da495	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+004dd9dd	plan	name carries another class prefix CGuildMasterDef (names-another family)
+004dd9fe	plan	name carries another class prefix CCarrySlotDef (names-another family)
+004ddeaa	plan	name carries another class prefix CGuildMasterDef (names-another family)
+004de50c	plan	name carries another class prefix CCarrySlotDef (names-another family)
+004de545	plan	name carries another class prefix CGuildMasterDef (names-another family)
+004de891	plan	name carries another class prefix CGuildMasterDef (names-another family)
+004dedac	plan	name carries another class prefix CTCNoiseDef (names-another family)
+004def0f	plan	name carries another class prefix CTCNoiseDef (names-another family)
+004def3d	plan	name carries another class prefix CCarrySlotDef (names-another family)
+004df8e9	plan	new name ?CDisplayManager_CopyBackBufferToTexture@@YIPAVCTexture@@PAVCDisplayManager@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+004e0d33	plan	name carries another class prefix CSpecialAbilitiesDrainLifeDataDef (names-another family)
+004e1394	plan	name carries another class prefix CSpecialAbilitiesDrainLifeDataDef (names-another family)
+004e38e4	plan	name carries another class prefix CCameraManagerSetDef (names-another family)
+004e3c24	plan	name carries another class prefix CVillagerInteractionsDef (names-another family)
+004e3f7b	plan	name carries another class prefix CCameraManagerSetDef (names-another family)
+004e4648	plan	name carries another class prefix CCardDef (names-another family)
+004e7ea7	plan	name carries another class prefix CCarrySlotDef (names-another family)
+004eac7b	plan	name carries another class prefix CGuildMasterDef (names-another family)
+004ff560	plan	this parameter typed S, catalog class CWorldMap
+005143e0	plan	this parameter typed Tree, catalog class CGuiControlTreePane
+0054a510	plan	new name ?CUserProfileManager_GetCameraSensitivity@@YIMPAVCUserProfileManager@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00556520	plan	one source: catalog class only, untyped this
+00556540	plan	one source: catalog class only, untyped this
+00557840	plan	one source: catalog class only, untyped this
+00578fa1	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+00580133	plan	one source: catalog class only, untyped this
+00581114	plan	new name ?CDisplayManager_CopyBackBufferToTexture@@YIPAVCTexture@@PAVCDisplayManager@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00592bce	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+005b1904	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+005b1931	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+005b1975	plan	one source: catalog class only, untyped this
+005b1ff4	plan	one source: catalog class only, untyped this
+005ba78b	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+005ba7cc	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+005baeac	plan	one source: catalog class only, untyped this
+005bc746	plan	p4_localcopy CScriptBase
+005cbfc1	plan	one source: catalog class only, untyped this
+005d847a	plan	one source: catalog class only, untyped this
+005d9790	plan	one source: catalog class only, untyped this
+005d97b0	plan	one source: catalog class only, untyped this
+005d97d0	plan	this parameter typed CDefPointer, catalog class CTCInventoryItem
+005d9b30	plan	one source: catalog class only, untyped this
+005d9b50	plan	one source: catalog class only, untyped this
+005da7f0	plan	this parameter typed CCategory, catalog class CTCWeapon
+005e9b10	plan	this parameter typed CMeshEntity, catalog class CTCTavernGame
+005f80f4	plan	this parameter typed AutoTinyTreeWalker, catalog class LTextTreeWalkThrough
+005f93c1	plan	one source: catalog class only, untyped this
+005f93e6	plan	one source: catalog class only, untyped this
+005fad30	plan	this parameter typed S, catalog class CWADFile
+00615220	plan	this parameter typed Tree, catalog class CGuiControlTreePane
+00617d30	plan	name GetTCDriver_CTCDExperienceOrb carries another class
+00633be0	plan	this parameter typed A1, catalog class CPlayer
+006404b0	plan	new name ?CTCInventoryAbilities_AddLearnedExpression@@YIXPAVCTCInventoryAbilities@@PAXJ@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00643be2	plan	this parameter typed V2, catalog class CComponent
+00643e52	plan	one source: catalog class only, untyped this
+00643ea2	plan	this parameter typed S, catalog class CMeleeApprentice
+006463f0	plan	this parameter typed S, catalog class CRenderTarget
+006620e0	plan	this parameter typed Outer, catalog class CTCPhysicsBase
+006625e0	plan	new name ?CTCWeapon_GetAnimationSpeedValue@@YIMPAVCTCWeapon@@@Z is shared by 2 rows / defined at 006625c0 (one address, one name: needs the template or a disambiguating name)
+00662600	plan	new name ?CTCWeapon_GetAnimationSpeedValue@@YIMPAVCTCWeapon@@@Z is shared by 2 rows / defined at 006625c0 (one address, one name: needs the template or a disambiguating name)
+0066c7a0	plan	this parameter typed S, catalog class CRenderTarget
+00694ef0	plan	this parameter typed AutoTinyVirtualObject, catalog class CCountedPointer
+006978c0	plan	this parameter typed S, catalog class CScriptGameResourceObjectScriptedThingBase
+006bcec0	plan	one source: catalog class only, untyped this
+006cd240	plan	this parameter typed Tree, catalog class CGuiControlTreePane
+006dd1c0	plan	this parameter typed CMemoryDataInputStream, catalog class CHeroExperienceDef
+007022a0	plan	this parameter typed QCard, catalog class CTCQuestCard
+007022c0	plan	one source: catalog class only, untyped this
+0071f890	plan	one source: catalog class only, untyped this
+007220c0	plan	new name ?CTCVillage_OnInitialActivate@@YIXPAVCTCVillage@@@Z is shared by 8 rows / defined at 00cbe010 (one address, one name: needs the template or a disambiguating name)
+0072a430	plan	this parameter typed CTCCameraPointDefinitionBase, catalog class CTCBase
+0072db70	plan	this parameter typed Self, catalog class CTCInventoryMagic
+00746810	plan	this parameter typed S, catalog class CMeleeApprentice
+00746eb0	plan	this parameter typed S, catalog class CThingPlayerCreature
+00748760	plan	one source: catalog class only, untyped this
+007512c0	plan	name GetTCDriver_CTCDExperienceOrb carries another class
+00751a70	plan	this parameter typed S, catalog class CThingPlayerCreature
+00756100	plan	one source: catalog class only, untyped this
+0078e7b0	plan	this parameter typed S, catalog class CTCDivineWrath
+00793cb0	plan	this parameter typed S, catalog class CTCDivineWrath
+007acbb0	plan	one source: catalog class only, untyped this
+007acc00	plan	one source: catalog class only, untyped this
+007bed10	plan	new name ?CTCShotDefinitionBase_IsToDie@@YIHPAUCTCShotDefinitionBase@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+007bedf0	plan	p4_rows
+007cbf50	plan	this parameter typed S, catalog class CTCDivineWrath
+007cca80	plan	this parameter typed S, catalog class CTCDivineWrath
+007ea280	plan	this parameter typed S, catalog class CScriptBase
+007f6150	plan	this parameter typed S, catalog class CTCUserActionPointBase
+0081e1b0	plan	new name ?CTCVillage_OnInitialActivate@@YIXPAVCTCVillage@@@Z is shared by 8 rows / defined at 00cbe010 (one address, one name: needs the template or a disambiguating name)
+00829ce0	plan	p4_localcopy C3DVector
+0082a180	plan	this parameter typed Self, catalog class CMiniMapDisplay
+0083b390	plan	this parameter typed C, catalog class CThingVillage
+0083f640	plan	this parameter typed S, catalog class LHHttpHeaderStatus
+0084cf60	plan	p4_rows
+008561a0	plan	this parameter typed CSoundPair, catalog class CCombatActionBase
+0085a680	plan	name GetPointType_CTCCameraPointFixedPoint_ carries another class
+0085ee90	plan	this parameter typed CThing, catalog class NCreatureMode
+00870250	plan	new name ?CTCVillage_OnInitialActivate@@YIXPAVCTCVillage@@@Z is shared by 8 rows / defined at 00cbe010 (one address, one name: needs the template or a disambiguating name)
+0088b7d0	plan	one source: catalog class only, untyped this
+008f2c60	plan	this parameter typed S, catalog class CMainGameComponent
+00919a30	plan	this parameter typed S, catalog class CAIStateGroup_BuyFromSeller
+00923cb0	plan	new name ?CTCShotDefinitionBase_IsToDie@@YIHPAUCTCShotDefinitionBase@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00958c00	plan	p4_rows
+0096d2d0	plan	p4_localcopy CVectorMap
+0098b280	plan	this parameter typed Self, catalog class CShaderRenderManager
+0099b4d0	plan	name carries another class prefix CWideString (names-another family)
+009aad60	plan	one source: catalog class only, untyped this
+009aadb0	plan	one source: catalog class only, untyped this
+009aae00	plan	one source: catalog class only, untyped this
+009b31a0	plan	this parameter typed SCountedRecord10, catalog class _unattributed
+009b9510	plan	new name ?CTCVillage_OnInitialActivate@@YIXPAVCTCVillage@@@Z is shared by 8 rows / defined at 00cbe010 (one address, one name: needs the template or a disambiguating name)
+009c7b70	plan	one source: catalog class only, untyped this
+009c7b80	plan	one source: catalog class only, untyped this
+009d2ba0	plan	one source: catalog class only, untyped this
+009d68a0	plan	this parameter typed S, catalog class CBankFileAsyncData
+009d8640	plan	this parameter typed IDataHolder, catalog class CCountedPointer
+009e3620	plan	one source: catalog class only, untyped this
+009e9f20	plan	one source: catalog class only, untyped this
+009e9fd0	plan	this parameter typed CCountedProgressDisplay, catalog class NProgressDisplay
+009eec10	plan	one source: catalog class only, untyped this
+009f1f90	plan	one source: catalog class only, untyped this
+009f26b0	plan	new name ?CMemoryAllocator_ClearPerformanceStats@@YIXPAVCMemoryAllocator@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+009f26d0	plan	new name ?CMemoryAllocator_ClearPerformanceStats@@YIXPAVCMemoryAllocator@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+009f4ac0	plan	this parameter typed S, catalog class CInputManager
+009fc440	plan	this parameter typed S, catalog class CTCActivationTrigger
+00a0d390	plan	this parameter typed S, catalog class CWomanToAttract
+00a10e10	plan	this parameter typed S, catalog class CRenderTarget
+00a10e20	plan	this parameter typed S, catalog class CRenderTarget
+00a24a70	plan	one source: catalog class only, untyped this
+00a2ac30	plan	one source: catalog class only, untyped this
+00a35b50	plan	this parameter typed CWideString, catalog class NGameText
+00a66750	plan	one source: catalog class only, untyped this
+00a76340	plan	one source: catalog class only, untyped this
+00a85340	plan	new name ?CTCVillage_OnInitialActivate@@YIXPAVCTCVillage@@@Z is shared by 8 rows / defined at 00cbe010 (one address, one name: needs the template or a disambiguating name)
+00a99ff0	plan	this parameter typed AutoTinyVirtualObject, catalog class CCountedPointer
+00adb570	plan	this parameter typed Tree, catalog class CGuiControlTreePane
+00b564c0	plan	one source: catalog class only, untyped this
+00b99bb0	plan	p4_rows
+00b9dc60	plan	p4_rows
+00bcf760	plan	p4_rows
+00bcf930	plan	p4_rows
+00bddd50	plan	new name ?CLocalDetailCacheMap_CloseStaticMap@@YIXPAVCLocalDetailCacheMap@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00befca0	plan	new name ?CTCVillage_OnInitialActivate@@YIXPAVCTCVillage@@@Z is shared by 8 rows / defined at 00cbe010 (one address, one name: needs the template or a disambiguating name)
+00bf3160	plan	new name ?CActiveFile_OnReadFinished@@YIXPAUCActiveFile@@@Z is shared by 1 rows / defined at 0043fcd0,004405d0,00440cb0,00440d40,0044 (one address, one name: needs the template or a disambiguating name)
+00c100f0	plan	this parameter typed S, catalog class CScriptBase
+00c16670	plan	this parameter typed T, catalog class CTimer
+00c16680	plan	this parameter typed T, catalog class CTimer
+00c19610	plan	new name ?CTexture_GetNoLevels@@YIJPAVCTexture@@HPAX@Z is shared by 4 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c1b930	plan	one source: catalog class only, untyped this
+00c1d810	plan	this parameter typed S, catalog class CScriptModuleSelfTerminateBase
+00c203c0	plan	this parameter typed CPersistTraitsLong, catalog class CPersistTraits
+00c21f30	plan	new name ?CTCInventoryAbilities_AddLearnedExpression@@YIXPAVCTCInventoryAbilities@@PAXJ@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c22820	plan	new name ?CTexture_GetNoLevels@@YIJPAVCTexture@@HPAX@Z is shared by 4 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c22a20	plan	new name ?CTexture_GetNoLevels@@YIJPAVCTexture@@HPAX@Z is shared by 4 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c22b20	plan	new name ?CTexture_GetNoLevels@@YIJPAVCTexture@@HPAX@Z is shared by 4 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c25e00	plan	new name ?CBankFileAsyncData_FreeBuffer@@YIXPAVCBankFileAsyncData@@@Z is shared by 1 rows / defined at 0040f470 (one address, one name: needs the template or a disambiguating name)
+00c26500	plan	this parameter typed Self, catalog class CGameScriptInterface
+00c2a2d0	plan	one source: catalog class only, untyped this
+00c2d8e0	plan	new name ?CTCTavernGame_IsBetting@@YI_NPAVCTCTavernGame@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c35c30	plan	one source: catalog class only, untyped this
+00c36080	plan	one source: catalog class only, untyped this
+00c38380	plan	this parameter typed Pair, catalog class CUserProfileManager
+00c3a700	plan	one source: catalog class only, untyped this
+00c3a720	plan	one source: catalog class only, untyped this
+00c3c380	plan	one source: catalog class only, untyped this
+00c3c980	plan	new name ?CTCTavernGame_IsBetting@@YI_NPAVCTCTavernGame@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c3eba0	plan	this parameter typed S, catalog class C3DMeshInfo
+00c3f630	plan	one source: catalog class only, untyped this
+00c41530	plan	new name ?CTCLook_SetHeadTurnState@@YIXPAVCTCLook@@HJ@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c415a0	plan	new name ?CTCLook_SetHeadTurnState@@YIXPAVCTCLook@@HJ@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c491b0	plan	new name ?CLocalDetailCacheMap_CloseStaticMap@@YIXPAVCLocalDetailCacheMap@@@Z is shared by 2 rows / defined at  (one address, one name: needs the template or a disambiguating name)
+00c4bf80	plan	name HoverHornetQueen_GetNextCirclePoint_h carries another class
+00c4c2c0	plan	this parameter typed S, catalog class CCreatureActionBase
+00c4e2d0	plan	new name ?CGuiWindow_OnResize@@YIXPAVCGuiWindow@@@Z is shared by 1 rows / defined at 00e80cd0 (one address, one name: needs the template or a disambiguating name)
+00c62350	plan	one source: catalog class only, untyped this
+00c62780	plan	one source: catalog class only, untyped this
+00c628c0	plan	one source: catalog class only, untyped this
+00ca4d60	plan	new name ?CLandscapeBackgroundPatch_ClearTextures@@YIXPAVCLandscapeBackgroundPatch@@@Z is shared by 1 rows / defined at 00be5c30,00c5e480 (one address, one name: needs the template or a disambiguating name)
+00cb01b0	plan	this parameter typed S, catalog class CActiveFile
+00cb7900	plan	p4_localcopy CScriptBase
+00cb7940	plan	this parameter typed S, catalog class CScriptBase
+00cbded0	plan	new name ?CTCVillage_OnInitialActivate@@YIXPAVCTCVillage@@@Z is shared by 8 rows / defined at 00cbe010 (one address, one name: needs the template or a disambiguating name)
+00cd3ec0	plan	one source: catalog class only, untyped this
+00cd3f40	plan	one source: catalog class only, untyped this
+00da0ed0	plan	this parameter typed Tree, catalog class CGuiControlTreePane
+01228ce0	plan	one source: catalog class only, untyped this
+01229480	plan	one source: catalog class only, untyped this
+012294a0	plan	one source: catalog class only, untyped this
+01229510	plan	one source: catalog class only, untyped this
+012295f0	plan	one source: catalog class only, untyped this
+01229df0	plan	one source: catalog class only, untyped this
+01229e20	plan	one source: catalog class only, untyped this
+01229e40	plan	one source: catalog class only, untyped this
+01229e60	plan	one source: catalog class only, untyped this
+01229ef0	plan	one source: catalog class only, untyped this
+0122a460	plan	one source: catalog class only, untyped this
+0122ac70	plan	one source: catalog class only, untyped this
+0122ac90	plan	one source: catalog class only, untyped this
+0122acb0	plan	one source: catalog class only, untyped this
+0122ad00	plan	one source: catalog class only, untyped this
+0122ad20	plan	one source: catalog class only, untyped this
+0122ad40	plan	one source: catalog class only, untyped this
+0122aef0	plan	one source: catalog class only, untyped this
+00434ad0	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+00445670	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+004456b0	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+00445730	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+00445770	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+00487e90	grade	vland: RELOCATION_MATCH TCC_FAIL (the landed source grades RELOCATION_MATCH PASS)
+0048b5e0	grade	vland: RELOCATION_MATCH TCC_FAIL (the landed source grades RELOCATION_MATCH PASS)
+0048bc40	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+0048db35	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+0049bb30	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+0049c9b0	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+004a9210	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+004ae9d0	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+004c7580	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+004c7e10	grade	vland: RELOCATION_MATCH TCC_FAIL (the landed source grades RELOCATION_MATCH PASS)
+0051ce20	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+0051ce40	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+0051e580	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+005486b0	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+0055ddf0	grade	vland: RELOCATION_MATCH TCC_FAIL (the landed source grades RELOCATION_MATCH PASS)
+0056a860	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+005bc9b0	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+005d92d0	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+005dacf0	grade	vland: NOT_GENUINE - (the landed source grades NOT_GENUINE - too: pre-existing, not caused by this wave)
+005e3e70	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+005ede7f	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+005edeeb	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+005edf1f	grade	vland: MATCH TCC_FAIL (the landed source grades MATCH PASS)
+006d5a90	grade	vland: RELOCATION_MATCH TCC_FAIL (the landed source grades RELOCATION_MATCH PASS)
+00ab7a50	grade	vland: RELOCATION_MATCH TCC_FAIL (the landed source grades RELOCATION_MATCH PASS)

@@ -21,7 +21,7 @@ class CAIStateGroupBase { public: char pad0[4]; Inner1* PBrain; char pad8[4]; ch
 
 const float g_const = 8.0f;
 
-CThingSearchTools* __fastcall PeekThingSearchTools(CAIStateGroupBase* self) {
+CThingSearchTools* __fastcall CAIStateGroupBase_PeekThingSearchTools(CAIStateGroupBase* self) {
     return SubPeek((Sub*)((char*)self + 0xc), g_const / self->PBrain->p4->p4->rate);
 }
 
@@ -31,7 +31,7 @@ int main() {
     Inner1 i1; i1.p4 = &i2;
     CAIStateGroupBase s; s.PBrain = &i1;
 
-    CThingSearchTools* r = PeekThingSearchTools(&s);
+    CThingSearchTools* r = CAIStateGroupBase_PeekThingSearchTools(&s);
     if (r && r->id == 42 && g_seenScaled == 4.0f) {
         printf("PEEK_OK\n");
     } else {

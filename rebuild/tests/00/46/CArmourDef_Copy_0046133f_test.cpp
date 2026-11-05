@@ -12,13 +12,13 @@ void __fastcall CArmourDef_Copy_impl_0046133f(CArmourDef* thisptr, CArmourDef* o
     g_called = 1;
 }
 
-extern void __fastcall CArmourDef_Copy_0046133f(CArmourDef* thisptr, CArmourDef* other);
+extern void __fastcall CArmourDef_Copy(CArmourDef* thisptr, CArmourDef* other);
 
 int main()
 {
     CArmourDef* a = (CArmourDef*)0x1000;
     CArmourDef* b = (CArmourDef*)0x2000;
-    CArmourDef_Copy_0046133f(a, b);
+    CArmourDef_Copy(a, b);
     if (g_called == 1)
         printf("PASS_0046133f_OK\n");
     else

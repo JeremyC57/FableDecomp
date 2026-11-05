@@ -8,7 +8,7 @@ class CWorldMap { public:
     MapEntry6* end;     // +0x30
 };
 
-long __fastcall DrawGetNoMaps(CWorldMap* self);
+long __fastcall CWorldMap_DrawGetNoMaps(CWorldMap* self);
 
 int main()
 {
@@ -16,12 +16,12 @@ int main()
     CWorldMap w;
     w.begin = &buf[0];
     w.end   = &buf[7];   // 7 elements
-    long n = DrawGetNoMaps(&w);
+    long n = CWorldMap_DrawGetNoMaps(&w);
     if (n != 7) { printf("FAIL got %ld\n", n); return 1; }
 
     w.begin = &buf[3];
     w.end   = &buf[3];
-    if (DrawGetNoMaps(&w) != 0) { printf("FAIL empty\n"); return 1; }
+    if (CWorldMap_DrawGetNoMaps(&w) != 0) { printf("FAIL empty\n"); return 1; }
 
     printf("00aba370_TEST PASS\n");
     return 0;

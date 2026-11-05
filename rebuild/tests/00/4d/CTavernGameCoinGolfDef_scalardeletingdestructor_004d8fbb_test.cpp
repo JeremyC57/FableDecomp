@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CTavernGameCoinGolfDef* def, int, unsigned int flags)
+void* __fastcall CTavernGameCoinGolfDef_scalar_deleting_destructor(CTavernGameCoinGolfDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CTavernGameCoinGolfDef_vftable;
     CTavernGameCoinGolfDef_Destruct(def);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CTavernGameCoinGolfDef* def, int, un
 int main()
 {
     CTavernGameCoinGolfDef object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CTavernGameCoinGolfDef_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CTavernGameCoinGolfDef_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CTavernGameCoinGolfDef_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

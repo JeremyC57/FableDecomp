@@ -8,7 +8,7 @@ class CPlayerGui { public:
     char  fd;
 };
 
-CPlayerGui* __fastcall ForceOpen(CPlayerGui* self)
+CPlayerGui* __fastcall CPlayerGui_ForceOpen(CPlayerGui* self)
 {
     self->fd = 0;
     self->fc = 0;
@@ -22,7 +22,7 @@ int main()
 {
     CPlayerGui g;
     g.f0 = 7; g.World = 7; g.f8 = 99.0f; g.fc = 9; g.fd = 9;
-    CPlayerGui* r = ForceOpen(&g);
+    CPlayerGui* r = CPlayerGui_ForceOpen(&g);
     if (r == &g && g.f0 == 0 && g.World == 0 && g.fc == 0 && g.fd == 0 && g.f8 == 1.0f)
         printf("OK_0067d7b0\n");
     else

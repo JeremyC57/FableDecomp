@@ -17,7 +17,7 @@ void* __fastcall helper_49d870(CTCActivationReceptorBase* receptor)
     return (void*)0xDEADBEEF;
 }
 
-void __fastcall Activate(CTCActivationReceptorBase* receptor)
+void __fastcall CTCActivationReceptorBase_Activate(CTCActivationReceptorBase* receptor)
 {
     receptor->Activated = 1;
     if (receptor->f20)
@@ -28,12 +28,12 @@ int main()
 {
     CTCActivationReceptorBase a;
     a.Activated = 0; a.f20 = 0; a.f28 = (void*)0x11;
-    Activate(&a);
+    CTCActivationReceptorBase_Activate(&a);
     bool okA = (a.Activated == 1) && (a.f28 == (void*)0x11) && (g_helper_calls == 0);
 
     CTCActivationReceptorBase b;
     b.Activated = 0; b.f20 = 1; b.f28 = (void*)0x22;
-    Activate(&b);
+    CTCActivationReceptorBase_Activate(&b);
     bool okB = (b.Activated == 1) && (b.f28 == (void*)0xDEADBEEF) && (g_helper_calls == 1);
 
     if (okA && okB)

@@ -1,3 +1,4 @@
+// Leaf: ?CWorldMap_PeekMap@@YIPAXPAVCWorldMap@@PAXH@Z
 struct MapEntry {
     char pad[0x10];
     void* ptr;      // +0x10
@@ -9,6 +10,6 @@ class CWorldMap { public:
     MapEntry* entries;  // +0x20
 };
 
-void* __fastcall PeekMap(CWorldMap* self, void* /*edx*/, int n) {
+void* __fastcall CWorldMap_PeekMap(CWorldMap* self, void* /*edx*/, int n) {
     return self->entries[n].ptr;
 }

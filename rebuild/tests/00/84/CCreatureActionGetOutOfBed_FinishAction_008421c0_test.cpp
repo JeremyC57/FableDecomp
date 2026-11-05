@@ -21,18 +21,18 @@ static CCreatureVtbl g_vtbl = { 0, 0, 0, my_slot12 };
 
 void __fastcall CCreatureAction_Base_FinishAction(CCreatureAction_GetOutOfBed* action) { g_base++; }
 
-void __fastcall FinishAction(CCreatureAction_GetOutOfBed* action);
+void __fastcall CCreatureAction_GetOutOfBed_FinishAction(CCreatureAction_GetOutOfBed* action);
 
 int main() {
     CCreatureAction_GetOutOfBed obj;
     obj.vtbl = &g_vtbl;
 
     obj.interrupted = false;
-    FinishAction(&obj);
+    CCreatureAction_GetOutOfBed_FinishAction(&obj);
     if (g_virt != 1 || g_base != 1) { printf("FAIL a\n"); return 1; }
 
     obj.interrupted = true;
-    FinishAction(&obj);
+    CCreatureAction_GetOutOfBed_FinishAction(&obj);
     if (g_virt != 1 || g_base != 2) { printf("FAIL b\n"); return 1; }
 
     printf("OK_008421c0\n");

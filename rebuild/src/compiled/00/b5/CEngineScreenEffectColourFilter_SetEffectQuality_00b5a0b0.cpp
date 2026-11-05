@@ -1,3 +1,4 @@
+// Leaf: ?CEngineScreenEffectColourFilter_SetEffectQuality@@YIXPAVCEngineScreenEffectColourFilter@@HPAVCEngineVideoOptionsDef@@@Z
 #include "engine/CEngineScreenEffectColourFilter.h"  // retyped onto the PDB layout; byte parity re-verified
 class CEngineVideoOptionsDef { public:
     char pad[0x72];
@@ -7,7 +8,7 @@ class CEngineVideoOptionsDef { public:
 
 // __fastcall modeled: self in ecx, one stack arg (def). __fastcall with a
 // dummy edx placeholder pushes the real arg onto the stack -> ret 4.
-void __fastcall SetEffectQuality(CEngineScreenEffectColourFilter* self, int /*edx*/, CEngineVideoOptionsDef* def)
+void __fastcall CEngineScreenEffectColourFilter_SetEffectQuality(CEngineScreenEffectColourFilter* self, int /*edx*/, CEngineVideoOptionsDef* def)
 {
     if (def->EnableGlow && self->EffectSupported)
         self->enabled = 1;

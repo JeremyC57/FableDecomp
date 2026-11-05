@@ -1,3 +1,4 @@
+// Leaf: ?CCoinGameObstacleDef_scalar_deleting_destructor@@YIPAXPAVCCoinGameObstacleDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CCoinGameObstacleDef
 };
 extern void* const g_CCoinGameObstacleDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CCoinGameObstacleDef* def, int, unsigned int flags)
+void* __fastcall CCoinGameObstacleDef_scalar_deleting_destructor(CCoinGameObstacleDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CCoinGameObstacleDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

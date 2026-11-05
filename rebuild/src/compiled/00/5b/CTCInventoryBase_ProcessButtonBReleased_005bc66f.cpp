@@ -1,4 +1,5 @@
 // CTCInventoryBase::ProcessButtonBReleased  @ 0x005bc66f
+// Leaf: ?CTCInventoryBase_ProcessButtonBReleased@@YIXPAUCTCInventoryBase@@@Z
 #pragma optimize("s",on)
 
 struct CTCInventoryBase {
@@ -20,7 +21,7 @@ struct CTCInventoryBase {
     int   state_1c;
 };
 
-void __fastcall ProcessButtonBReleased(CTCInventoryBase* self)
+void __fastcall CTCInventoryBase_ProcessButtonBReleased(CTCInventoryBase* self)
 {
     switch (self->state_1c) {
     case 0: self->SlotA(); break;

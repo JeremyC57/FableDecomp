@@ -1,3 +1,4 @@
+// Leaf: ?CActivateQuestDef_Copy@@YIXPAVCActivateQuestDef@@PAXPBVCDefClassBase@@@Z
 #pragma optimize("s",on)
 
 class CDefClassBase { public:
@@ -10,7 +11,7 @@ class CActivateQuestDef : public CDefClassBase { public:
     char LoadResources;      // +0x2c
 };
 
-void __fastcall Copy(CActivateQuestDef* self, void* edx, CDefClassBase const* src)
+void __fastcall CActivateQuestDef_Copy(CActivateQuestDef* self, void* edx, CDefClassBase const* src)
 {
     self->CDefClassBase::operator=(*(const CDefClassBase*)(src));
     CActivateQuestDef const* s = (CActivateQuestDef const*)src;

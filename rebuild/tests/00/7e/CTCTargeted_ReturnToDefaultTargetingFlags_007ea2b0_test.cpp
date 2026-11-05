@@ -1,7 +1,7 @@
 #include "engine/CTCTargeted.h"
 #include <stdio.h>
 class CDefPointeeBase { public: char pad[0x28]; unsigned int defFlags; };
-void __fastcall ReturnToDefaultTargetingFlags(CTCTargeted* targeted)
+void __fastcall CTCTargeted_ReturnToDefaultTargetingFlags(CTCTargeted* targeted)
 {
   CDefPointeeBase* s = targeted->PTargetingDef_Object;
   if (s)
@@ -12,10 +12,10 @@ void __fastcall ReturnToDefaultTargetingFlags(CTCTargeted* targeted)
 int main(){
   CDefPointeeBase s; s.defFlags = 0x1234;
   CTCTargeted a; a.TargetingFlags = 0x999; a.PTargetingDef_Object = &s;
-  ReturnToDefaultTargetingFlags(&a);
+  CTCTargeted_ReturnToDefaultTargetingFlags(&a);
   if (a.TargetingFlags != 0x1234) { printf("FAIL1\n"); return 1; }
   CTCTargeted b; b.TargetingFlags = 0x999; b.PTargetingDef_Object = 0;
-  ReturnToDefaultTargetingFlags(&b);
+  CTCTargeted_ReturnToDefaultTargetingFlags(&b);
   if (b.TargetingFlags != 0) { printf("FAIL2\n"); return 1; }
   printf("OK_007ea2b0\n");
   return 0;

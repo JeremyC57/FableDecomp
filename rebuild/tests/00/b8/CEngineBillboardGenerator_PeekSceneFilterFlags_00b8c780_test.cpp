@@ -2,11 +2,11 @@
 
 class CEngineBillboardGenerator;
 
-unsigned long __fastcall PeekSceneFilterFlags(CEngineBillboardGenerator* generator);
+unsigned long __fastcall CEngineBillboardGenerator_PeekSceneFilterFlags(CEngineBillboardGenerator* generator);
 
 int main()
 {
-    unsigned long r = PeekSceneFilterFlags((CEngineBillboardGenerator*)0);
+    unsigned long r = CEngineBillboardGenerator_PeekSceneFilterFlags((CEngineBillboardGenerator*)0);
     if (r == 1)
         std::printf("00b8c780_TEST PASS\n");
     else

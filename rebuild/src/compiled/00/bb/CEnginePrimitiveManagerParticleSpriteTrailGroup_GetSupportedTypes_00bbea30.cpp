@@ -1,4 +1,5 @@
 // PushBackConstant_00bbea30(CRetailVector_dword*) -- vector->push_back(0x1d) with the retail push_back inlined (InsertGrow @ 0x00440990 when full)
+// Leaf: ?CEnginePrimitiveManagerParticleSpriteTrailGroup_GetSupportedTypes@@YGXPAUCRetailVector_dword@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBEA30, oracle length 62 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -29,8 +30,9 @@ struct CRetailVector_dword {
     }
 };
 
-void __stdcall PushBackConstant_00bbea30(CRetailVector_dword* vector)
+void __stdcall CEnginePrimitiveManagerParticleSpriteTrailGroup_GetSupportedTypes(CRetailVector_dword* vector)
 {
     long value = 0x1d;
     vector->push_back(value);
 }
+// Stand-in (owner rule 2026-11-05): CEnginePrimitiveManagerParticleSpriteTrailGroup_GetSupportedTypes for CEnginePrimitiveManagerParticleSpriteTrailGroup::GetSupportedTypes; RTTI vtable slot ?GetSupportedTypes@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UBEXAAVCEnginePrimitiveTypeList@@@Z + PDB name set (egor/fablewin).

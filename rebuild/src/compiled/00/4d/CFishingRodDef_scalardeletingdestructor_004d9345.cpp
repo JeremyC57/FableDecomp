@@ -1,3 +1,4 @@
+// Leaf: ?CFishingRodDef_scalar_deleting_destructor@@YIPAXPAVCFishingRodDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CFishingRodDef
 };
 extern void* const g_CFishingRodDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CFishingRodDef* def, int, unsigned int flags)
+void* __fastcall CFishingRodDef_scalar_deleting_destructor(CFishingRodDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CFishingRodDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

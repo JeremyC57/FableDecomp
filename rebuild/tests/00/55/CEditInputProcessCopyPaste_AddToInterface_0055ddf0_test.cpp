@@ -14,7 +14,7 @@ void __fastcall AddToInterfaceBase(CEditInputProcessCopyPaste* self)
     g_base_self = self;
 }
 
-void __fastcall AddToInterface(CEditInputProcessCopyPaste* self)
+void __fastcall CEditInputProcessCopyPaste_AddToInterface(CEditInputProcessCopyPaste* self)
 {
     self->m_flag = 0;
     AddToInterfaceBase(self);
@@ -28,7 +28,7 @@ int main()
     /* __fastcall shim: this in ecx */
     __asm {
         mov ecx, p
-        call AddToInterface
+        call CEditInputProcessCopyPaste_AddToInterface
     }
     if (obj.m_flag == 0 && g_base_called == 1 && g_base_self == &obj) {
         printf("OK_0x0055ddf0\n");

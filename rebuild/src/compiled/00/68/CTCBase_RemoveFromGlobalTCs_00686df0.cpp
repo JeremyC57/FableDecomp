@@ -1,4 +1,5 @@
 // RemoveFromGlobalTCs @ 00686df0, module CTCBase, __fastcall(CTCBase*)
+// Leaf: ?CTCBase_RemoveFromGlobalTCs@@YIXPAVCTCBase@@@Z
 #include "engine/CTCBase.h"  // retyped onto the PDB layout; byte parity re-verified
 class CTCBase;
 
@@ -9,7 +10,7 @@ struct GContainer {
 extern GContainer g_container;
 
 
-void __fastcall RemoveFromGlobalTCs(CTCBase* other)
+void __fastcall CTCBase_RemoveFromGlobalTCs(CTCBase* other)
 {
     other->IsInGlobalUpdateTCs = 0;
     CTCBase* local = other;

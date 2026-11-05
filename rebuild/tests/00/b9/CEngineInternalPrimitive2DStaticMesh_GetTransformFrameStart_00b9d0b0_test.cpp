@@ -7,7 +7,7 @@ struct CEngineInternalPrimitive2DStaticMesh {
     CMatrix3x4 frame;
 };
 
-bool __fastcall GetTransformFrameStart(CEngineInternalPrimitive2DStaticMesh* mesh, int, CMatrix3x4& out);
+bool __fastcall CEngineInternalPrimitive2DStaticMesh_GetTransformFrameStart(CEngineInternalPrimitive2DStaticMesh* mesh, int, CMatrix3x4& out);
 
 int main()
 {
@@ -15,7 +15,7 @@ int main()
     for (int i = 0; i < 12; ++i) obj.frame.m[i] = (float)(i * 3 + 1);
     CMatrix3x4 dst;
     for (int i = 0; i < 12; ++i) dst.m[i] = -1.0f;
-    bool r = GetTransformFrameStart(&obj, 0, dst);
+    bool r = CEngineInternalPrimitive2DStaticMesh_GetTransformFrameStart(&obj, 0, dst);
     bool ok = r;
     for (int i = 0; i < 12; ++i) if (dst.m[i] != (float)(i * 3 + 1)) ok = false;
     if (ok) printf("00b9d0b0_TEST PASS\n");

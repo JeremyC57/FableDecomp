@@ -34,7 +34,7 @@ void* Router::Post(GSI_MsgArg* arg)
 }
 
 /* ---- the function under test (exact source that assembles byte-identical) ---- */
-unsigned char __fastcall Func(void* thisptr, unsigned long edx, void** out)
+unsigned char __fastcall CGameScriptInterface_MsgOnHeroCastSpell(void* thisptr, unsigned long edx, void** out)
 {
     void* a = GetA(thisptr);
     void* b = GetB(thisptr);
@@ -79,7 +79,7 @@ int main()
     g_post_ret = resultBlock;
 
     void* outVal = 0;
-    unsigned char rv = Func(this_block, 0, &outVal);
+    unsigned char rv = CGameScriptInterface_MsgOnHeroCastSpell(this_block, 0, &outVal);
 
     if (rv != 1)                   { printf("FAIL rv!=1 (%d)\n", rv); return 1; }
     if (outVal != payload)         { printf("FAIL out mismatch\n");   return 2; }
@@ -98,7 +98,7 @@ int main()
     g_post_ret = 0;
     void* untouched = (void*)0x12345678;
     outVal = untouched;
-    rv = Func(this_block, 0, &outVal);
+    rv = CGameScriptInterface_MsgOnHeroCastSpell(this_block, 0, &outVal);
     if (rv != 0)                   { printf("FAIL rv!=0\n");          return 10; }
     if (outVal != untouched)       { printf("FAIL out clobbered\n");  return 11; }
 

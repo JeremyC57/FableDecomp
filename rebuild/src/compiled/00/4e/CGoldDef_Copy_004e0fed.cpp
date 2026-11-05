@@ -1,3 +1,4 @@
+// Leaf: ?CGoldDef_Copy@@YIXPAVCGoldDef@@HPBVCDefClassBase@@@Z
 #include "engine/CGoldDef.h"
 
 class CDefClassBase { public: char pad[0x2c]; 
@@ -5,7 +6,7 @@ class CDefClassBase { public: char pad[0x2c];
 };
 struct CGoldDef_Methods : CGoldDef {  };
 
-void __fastcall Copy(CGoldDef* self, int /*edx*/, const CDefClassBase* other)
+void __fastcall CGoldDef_Copy(CGoldDef* self, int /*edx*/, const CDefClassBase* other)
 {
     ((CDefClassBase*)self)->operator=(*(const CDefClassBase*)(other));
     self->Gold = ((const CGoldDef*)other)->Gold;

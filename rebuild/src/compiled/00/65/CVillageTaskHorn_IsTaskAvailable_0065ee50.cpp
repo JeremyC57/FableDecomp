@@ -1,3 +1,4 @@
+// Leaf: ?CVillageTaskHorn_IsTaskAvailable@@YI_NPAUS@@@Z
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -10,7 +11,7 @@ private:
     CBaseObjectPointer* PData;                           // +0x04
 };
 struct S { char pad[0x10]; char sub[4]; };
-bool __fastcall IsTaskAvailable(S* task)
+bool __fastcall CVillageTaskHorn_IsTaskAvailable(S* task)
 {
     return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task) + 0x10))->GetPItem())) == 0;
 }

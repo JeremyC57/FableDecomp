@@ -1,3 +1,4 @@
+// Leaf: ?CEngine_Enable2DSceneRendering@@YIXPAVCEngine@@M@Z
 class CEngine { public:
     char pad0[0x14];
     unsigned int flags;   // +0x14
@@ -5,7 +6,7 @@ class CEngine { public:
     float value;          // +0x20
 };
 
-void __fastcall Enable2DSceneRendering(CEngine *self, float v)
+void __fastcall CEngine_Enable2DSceneRendering(CEngine *self, float v)
 {
     if (self->value != v) {
         self->value = v;

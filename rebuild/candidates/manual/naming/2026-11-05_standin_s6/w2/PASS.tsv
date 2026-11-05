@@ -1,0 +1,333 @@
+address	grade	log	family	introduced_warnings	inherited_warnings
+00406800	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+0042d930	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+0042da10	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004376b0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CPlayerGui
+00445620	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004456f0	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004457b0	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+0048b500	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CInputProcessInventory | RELOC_NAME: ?dtor@CInputProcessInventory@@QAEXXZ -> 00a0d3d0 labelled 'CAInputProcess::~CAInputProcess'
+004aaa90	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptThing (use engine/CScriptThing.h)
+004aaaa0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptThing (use engine/CScriptThing.h)
+004aaab0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptThing (use engine/CScriptThing.h)
+004aaac0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptThing (use engine/CScriptThing.h)
+004aac10	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptThing (use engine/CScriptThing.h)
+004bbff0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CMap
+004bc180	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004c7c40	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CThing | RELOC_NAME: ?g_mgr@@3PAUGlobalMgr@@A -> 013b8a1c labelled 'CThing::PCurrentThingManager' | RELOC_NAME: ?Notify@GlobalMgr@@QAEXPAVCThing@@@Z -> 0051ec50 labelled 'CThingManager::AddToUpdateList'
+004c7e70	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004d3a3e	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCBase
+004d7b7f	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CBuyHouseDef
+004d7bc5	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d7c0b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CDoorDef
+004d7c51	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CKickableDef
+004d7c97	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CLightDef
+004d7cdd	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CSpotLightDef
+004d7d23	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CHeroDef
+004d7eda	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CPerceivedThingDef
+004d7f20	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CStealthDef
+004d80c2	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CExplodingObjectDef
+004d8108	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CLookDef
+004d8203	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCBase
+004d8242	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCBase
+004d8281	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCBase
+004d82c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCBase
+004d82ff	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCBase
+004d837e	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CEnemyDef
+004d83ef	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d8427	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CShopItemDef
+004d84a6	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CStockItemDef
+004d84ec	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CTimeAppearanceFadeDef
+004d856b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d8695	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CHighlightItemDef
+004d8714	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CHeroCentreDef
+004d875a	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d87bd	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CShipDef
+004d883c	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CExpressionSubDef
+004d8874	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d8920	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE COccupiableDef
+004d89ca	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CInterestingToVillagersDef
+004d8a10	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CGuardDef
+004d8a48	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CActivateQuestDef
+004d8a8e	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CCrateStackDef
+004d8ad4	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE COverheadDisplayDef
+004d8b1a	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CTavernTableDef
+004d8c05	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CTavernDef
+004d8cb5	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d8d34	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CFireballSpellLevelDef
+004d8d7a	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CThingDrainLifeShotDef
+004d8ee9	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CGoldDef
+004d8f2f	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d8f75	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CTavernGameCoinBaseDef
+004d8fbb	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CTavernGameCoinGolfDef
+004d906b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CDecapitationDef
+004d90ea	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d9130	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CFishDef
+004d9176	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d91bc	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CHeroSpecialMovementDef
+004d9202	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CResurrectionItemDef
+004d9248	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CKrakenTentacleDef
+004d928e	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CAICreatureWillPowerIndicatorDef
+004d92c6	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CCarriedReadableDef
+004d9345	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d93c4	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CNymphDef
+004d940a	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CSummonDef
+004d9489	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CCameraCollisionDef
+004d94ec	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CTCVolumeContainmentTrackerDef
+004d964d	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CWillResponseDef
+004d9701	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CBettingDef
+004d980d	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE COracleMinigameDef
+004d98a6	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004d98ec	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CHasNameDef
+004da78b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CCarryableDef
+004da7d1	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CVillageMemberDef
+004da809	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004da84f	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004da895	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CCreatureNavigationDef
+004daa32	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CReadableDef
+004df3b4	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004df3bd	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004df3d4	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004df3dd	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004df485	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004df492	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004df499	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004df4aa	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004e0e79	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CDefClassBase
+004e0e98	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004e0ee3	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CDefClassBase
+004e0fed	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CDefClassBase
+004e26b6	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+004e4082	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?CopyBackBuffer_FormatStep@@YGXPA_N0@Z -> 004dd487 labelled 'TextureFormat_Handler_14'
+004eac59	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004eafa7	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource
+004eb8a1	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CResource | SHARED_HEADER_AVAILABLE CMultiStaticMeshEntryDef
+004ff900	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorldMap | RELOC_NAME: ?transform@KeyHolder@@QAEHXZ -> 0082e250 labelled 'CScriptedMapBrush::GetBrushName' | RELOC_NAME: ?index@MapSub@@QAEPAPAXH@Z -> 00519230 labelled 'std::map::operator[]'
+0050b450	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+0051cde0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE C2DBoxI | SHARED_HEADER_AVAILABLE CWorldMap
+0051ce00	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorldMap
+00548570	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CUserProfileManager
+00557940	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+0056e5ab	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCInventoryExperience | RELOC_NAME: ?HelperGetValue@@YAHXZ -> 005bc4b2 labelled '_global::GetMember_dword0x70_005bc4b2' | RELOC_NAME: ?StoreIndicator@CTCInventoryExperience@@QAEHH@Z -> 005bd328 labelled 'NInventory::CTCInventoryBase::GetNumberOfSlotsInCategory'
+0057a5be	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCHeroStats
+0057f93e	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CPersistContext_TransferableComponent | RELOC_NAME: ?PC_Transfer@@YIXPAVCPersistContext@@HPAH@Z -> 009e2590 labelled '_global::TransferIn'
+0057f95e	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CPersistContext_TransferableComponent
+005bc66f	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005bc988	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CCategory
+005bf30d	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?sub_5D97B0@@YIPAXPAVCWideString@@@Z -> 005d97b0 labelled 'CTCInventoryItem::GetInventoryCategory' | RELOC_NAME: ?sub_5C08C0@@YIPAXPAX00@Z -> 005c08c0 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>' | RELOC_NAME: ?Emit@CFinal@@QAEXPAVCWideString@@J_N@Z -> 005bf1d7 labelled 'CCategory::GetAmountOfItemsContainable'
+005d8167	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?Persist_ReadValue@@YIXPAVCPersistContext@@PAVCStringParser@@PAX@Z -> 009e2590 labelled '_global::TransferIn'
+005d9050	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CCategory
+005db1d0	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db200	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db230	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db250	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAnimComponentCombatHandedness
+005db260	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db2b0	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db2c0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAnimComponentCombatComboChain
+005db320	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db350	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db400	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db430	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db460	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005db470	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+005df8e0	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00646da7	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00655fe9	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D | RELOC_NAME: ?PrimSlotAssign@@YIXPAD@Z -> 0099eae0 labelled 'CCharString::~CCharString' | RELOC_NAME: ?PrimGrow@@YIXPAVCEnginePrimitiveRenderer2D@@@Z -> 00655ca7 labelled 'std::deque::_M_pop_front_aux'
+006582df	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?CVillageTaskBase_Destruct@@YIXPAX@Z -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+006590a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCVillage
+0065c36e	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CThing | SHARED_HEADER_AVAILABLE CTCVillage | RELOC_NAME: ??0CPeopleList@@QAE@ABU0@@Z -> 00519420 labelled 'std::list<CIntelligentPointer<CThingAICreature>, std::allocator<CIntelligentPointer<CThingAICreature>>>::list' | RELOC_NAME: ?ProcessCrimeDeeds@CTCVillage@@QAEXXZ -> 0065c2d0 labelled 'CTCVillage::ClearCrimes' | RELOC_NAME: ??1CPeopleList@@QAE@XZ -> 00512890 labelled '_global::StdList_Dtor_00512890'
+0065ee50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CVillageTaskHorn (use engine/CVillageTaskHorn.h)
+0065eef1	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CVillageTaskPatrol (use engine/CVillageTaskPatrol.h)
+0065ef86	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CVillageTaskPickCrops (use engine/CVillageTaskPickCrops.h)
+0066c750	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE C2DExtentsI | SHARED_HEADER_AVAILABLE CPixelFormat | SHARED_HEADER_AVAILABLE CSurface | SHARED_HEADER_AVAILABLE CRegionMinimap
+006724b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D | RELOC_NAME: _EngineAssertLog@4 -> 00404500 labelled 'CPersistContext::CheckCRC'
+0067d7b0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CPlayerGui
+00686df0	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00688a00	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CInputEvent | SHARED_HEADER_AVAILABLE CProcessedInput
+00692380	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: _GetActionRegistrar -> 006f90b0 labelled '_global::GetGlobal_013babb4_006f90b0' | RELOC_NAME: ?RegisterAction@ActionRegistrar@@QAEXHPAX@Z -> 006f9720 labelled 'CAnimationEventQuery_006f9720::AnimHasEvent'
+00692450	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00692670	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00692880	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+006928b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?cat_probe@@YIHPAVCAnimationEntry@@@Z -> 005dc210 labelled 'CAnimationEntry::GetFlags'
+00692980	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?g_thingmgr@@3PAVCThingManager@@A -> 013b8a1c labelled 'CThing::PCurrentThingManager'
+006929a0	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+006929c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CCreatureActionBase (use engine/CCreatureActionBase.h) | SHARED_HEADER_AVAILABLE CCreatureActionBase | RELOC_NAME: ?Method@Foo@@QAEJJ@Z -> 005dc230 labelled 'CAnimationEntry::GetTimeToBlendIn'
+006a40b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CInputProcessJumpingAndRolling | RELOC_NAME: _JR_Helper@8 -> 00687d50 labelled 'CInputProcessGameBase::IsGameActionEventInQueue'
+006a8560	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCScriptedControl | SHARED_HEADER_AVAILABLE CThing | RELOC_NAME: ?IsTaskListEmpty@CTCScriptedControl@@QAE_NXZ -> 007122c0 labelled 'CTCScriptedControl::IsActionListEmpty' | STANDIN_LEAF ??RCThingFilter_HasScriptedControl@@QBE_NPAVCThing@@@Z (catalog CThingFilter_HasScriptedControl::operator; names another function)
+006b0170	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+006bd760	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+006bf7f0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CDefPointeeBase
+006cd970	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CThingCreatureBase
+006cec80	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorld
+006d6830	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCHeroExperience
+006e55b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CScriptConversation
+006e71b0	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+006f06f0	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+006f0710	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+006f0720	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+006f0730	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+006fedb0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorld
+00702280	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CTCQuestCard (use engine/CTCQuestCard.h) | SHARED_HEADER_AVAILABLE CTCQuestCard
+00705fe0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers
+00706860	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCActivationReceptorBase | RELOC_NAME: ?Method@CTCActivationTrigger@@QAEXPAX@Z -> 006b9e00 labelled 'std::_Rb_tree<CCharString, CCharString, std::_Identity<CCharString>, std::less<CCharString>, std::allocator<CCharString>>::operator='
+00710540	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0071a710	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCMapwho | GENERIC_STRUCT module=CTCMapwho (use engine/CTCMapwho.h) | RELOC_NAME: _GetMapwhoHelper -> 00686d30 labelled 'CTCBase::GetWorldMap'
+00731be0	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00731bf0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CSpotLightDef | SHARED_HEADER_AVAILABLE CTCBase
+00749e20	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCCreatureGenerator
+0074ab00	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCBase | SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle | SHARED_HEADER_AVAILABLE CThing
+0075fc40	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCBase
+0076c830	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc | SHARED_HEADER_AVAILABLE CPlayerGui
+00781d80	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00789ba0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CDefPointeeBase
+0078be60	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CMainGameComponent
+007b8570	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+007bbc47	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCShotDefinitionProjectile | RELOC_NAME: ?ShouldUpdate@@YI_NPAUCTCShotDefinitionProjectile@@@Z -> 007bf3d0 labelled 'CTCShotDefinitionBase::HasPassedTarget'
+007e7360	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptGameResourceObjectScriptedThingBase (use engine/CScriptGameResourceObjectScriptedThingBase.h) | SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+007e7370	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptGameResourceObjectScriptedThingBase (use engine/CScriptGameResourceObjectScriptedThingBase.h)
+007e7400	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptGameResourceObjectScriptedThingBase (use engine/CScriptGameResourceObjectScriptedThingBase.h) | SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+007e7410	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptGameResourceObjectScriptedThingBase (use engine/CScriptGameResourceObjectScriptedThingBase.h) | SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+007e7430	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptGameResourceObjectScriptedThingBase (use engine/CScriptGameResourceObjectScriptedThingBase.h) | SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+007e7440	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptGameResourceObjectScriptedThingBase (use engine/CScriptGameResourceObjectScriptedThingBase.h) | SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+007e7450	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptGameResourceObjectScriptedThingBase (use engine/CScriptGameResourceObjectScriptedThingBase.h) | SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+007e7460	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CScriptGameResourceObjectScriptedThingBase (use engine/CScriptGameResourceObjectScriptedThingBase.h) | SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+007ea290	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCTargeted
+007ea2b0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CDefPointeeBase
+007f76e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCActivationReceptorBase | SHARED_HEADER_AVAILABLE CWorld
+007fc710	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?CTCKraken_ClearTentacles@@YIXPAVCTCKraken@@@Z -> 007fc210 labelled 'CTCKraken::CreateTentacles'
+007fc800	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+008023a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCTargetingPlayer | SHARED_HEADER_AVAILABLE CWorld
+00826400	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?copyCtor@CCharString@@QAEPAXPAD@Z -> 0099b720 labelled 'CWideString::CWideString'
+00827870	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CMap
+00829c70	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE C2DVector | SHARED_HEADER_AVAILABLE CMiniMapDisplay | RELOC_NAME: ?GetSize@MapSizeProvider@@QAEXPAUIntSize@@0@Z -> 0066c6a0 labelled 'CRegionMinimap::GetRegionMapExtents'
+0082a310	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CMiniMapDisplay | RELOC_NAME: ?Sub_Reset@@YIXPAUSub@@@Z -> 00440730 labelled 'std::_List_base<CMiniMapDisplay::CMarkerInfo>::clear'
+008389c0	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+0083ea50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE LSocket | RELOC_NAME: ?query@LSocket@@QAEDH@Z -> 008f8210 labelled 'LSocket::IsReadable'
+0083eee0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE LSocket | RELOC_NAME: ?IsConnected@LSocket@@QAE_NH@Z -> 008f8210 labelled 'LSocket::IsReadable'
+008421c0	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00842c20	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CCreatureAction_PerformExpression (use engine/CCreatureAction_PerformExpression.h)
+00842c30	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CCreatureAction_PerformExpression (use engine/CCreatureAction_PerformExpression.h)
+00842c40	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CCreatureAction_PerformExpressionExtended (use engine/CCreatureAction_PerformExpressionExtended.h)
+00851e50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorld
+008546a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CCreatureActionBase | SHARED_HEADER_AVAILABLE CMainGameComponent
+0085bad0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?Base_FrameStep@@YIXPAVCCreatureActionHeroJump@@@Z -> 00859d80 labelled 'CCombatActionBase::FrameUpdate'
+00860130	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CCreatureActionBase | RELOC_NAME: ?Sub_668d90@CSubObject@@QAEXH@Z -> 00668d90 labelled 'CCountedPointer_00668610::Reset'
+00860940	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00860c50	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00860fc0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CVillageTaskSecuritySweep (use engine/CVillageTaskSecuritySweep.h)
+00861020	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CVillageTaskCarryCrate (use engine/CVillageTaskCarryCrate.h)
+00865b40	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00865e00	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?r_h2@@YI_NPAX@Z -> 006622c0 labelled '_unattributed::CCombatAction_IsToCauseRecoilCommon'
+00865e10	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?r_h2@@YI_NPAX@Z -> 006622c0 labelled '_unattributed::CCombatAction_IsToCauseRecoilCommon'
+0088b780	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIBrain
+00890b50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CMainGameComponent
+008aa0d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?Inner@@YIXVCCharString@@@Z -> 008ae660 labelled 'CTCAIScratchpad::AddGossip'
+008aa590	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?Inner_008aeac0@@YIXVCCharString@@@Z -> 008aeac0 labelled 'CTCAIScratchpad::AddGossipFactions'
+008b86c0	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+008c52b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?dv_h2_00859a20@@YIXPAX@Z -> 00859a20 labelled 'CCombatActionBase::FinishAction'
+008c9e40	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CCreatureAction_NymphSummonOutOf (use engine/CCreatureAction_NymphSummonOutOf.h)
+008cfe00	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CGameScriptThing | RELOC_NAME: ?Consume@Arg@@QAEXPAX@Z -> 0099ec30 labelled 'CCharString::CCharString'
+008d0820	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+008d5960	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?dv_h1_008d58d0@@YIXPAX@Z -> 008d58d0 labelled 'CCreatureAction_FireMissileWeapon::ResetCreatureUseProjectileWeaponState' | RELOC_NAME: ?dv_h2_00694430@@YIXPAX@Z -> 00694430 labelled 'CCreatureActionBase::FinishAction'
+008fe0f4	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+008fe105	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase
+00900c19	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase | SHARED_HEADER_AVAILABLE CAIStateGroup_HoverWander
+00900c54	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase | SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttack
+00900c8f	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase | SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttackUnlessTargetIsFleeing
+00900d06	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase | SHARED_HEADER_AVAILABLE CAIStateGroup_HoverKeepInArea
+00900d41	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase | SHARED_HEADER_AVAILABLE CAIStateGroup_HoverAttackArea
+00900d7c	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIStateGroup_EnemyCreatureBase | SHARED_HEADER_AVAILABLE CAIStateGroup_HoverHornetQueenTakeDamage
+00906fa0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CMainGameComponent | SHARED_HEADER_AVAILABLE CWorld
+00906fc0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorld
+009076a0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorld
+00908d80	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CCombatSequenceWhisperAttackBigCombo (use engine/CCombatSequenceWhisperAttackBigCombo.h)
+00908d90	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CCombatSequenceWhisperAttack360 (use engine/CCombatSequenceWhisperAttack360.h)
+00917110	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?subA@@YIHPAUCAIStateGroup_IdleAtHome@@@Z -> 00917050 labelled 'CAIStateGroup_ThrowLogsOnFire::GetPNearestFreeLogPile' | RELOC_NAME: ?subB@@YIHPAUCAIStateGroup_IdleAtHome@@@Z -> 009170b0 labelled 'CAIStateGroup_ThrowLogsOnFire::GetPNearestBonfire'
+00919a10	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorld | SHARED_HEADER_AVAILABLE CMainGameComponent
+0091ccb0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorld
+00932980	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CAIStateGroup_MinionGuardReactToCriminal (use engine/CAIStateGroup_MinionGuardReactToCriminal.h)
+009340f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorld
+0095ed60	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIStateGroup_OpinionReactionRoot
+0095ede0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=CAIStateGroup_OpinionReactionRoot (use engine/CAIStateGroup_OpinionReactionRoot.h)
+00989ba0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CRGBFloatColour | SHARED_HEADER_AVAILABLE CShaderRenderManager
+0098c4c0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CRGBFloatColour | SHARED_HEADER_AVAILABLE CShaderRenderManager
+0098c510	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CRGBFloatColour | SHARED_HEADER_AVAILABLE CShaderRenderManager
+00991600	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorld
+0099b2a0	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+0099e500	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+0099ef90	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		GENERIC_STRUCT module=C3DAnimationBlendState (use engine/C3DAnimationBlendState.h) | SHARED_HEADER_AVAILABLE C3DAnimationBlendState | RELOC_NAME: ?helperA@C3DAnimationBlendState@@QAEXXZ -> 0099eb40 labelled 'CCharString::MakeOwnCopyOfDataOrEmptyString' | RELOC_NAME: ?addAlpha@Inner@@QAEXPAVC3DAnimationStateAlpha@@@Z -> 009a01c0 labelled 'CBasicString<char>::ExtendData'
+0099f390	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+009a0ea0	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+009d52b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?Apply@Target@@QAEXPAXPAVC2DCoordI@@KK@Z -> 009cc2a0 labelled 'CBankFile::ReadEntryData'
+009d5630	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_NAME: ?SetPriority@Consumer@@QAEXPAUInner@@H@Z -> 0098f0e0 labelled '_global::Static_SetObjectPriority_on_013bc870_0098f0e0'
+009e3800	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+009f2da0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CSurface
+009f9e60	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		RELOC_ALIAS: _D3DXFilterTexture@16 -> 00bfefce is the import thunk 'D3DX9_25.DLL::D3DXFilterTexture'
+009fd640	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngine | RELOC_NAME: ?CCameraSub_Reset@@YIXPAUCCameraSub@@@Z -> 00a696d0 labelled 'CTextureManager::Uninitialise'
+009fd970	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CGraphicDataBank
+009fd990	RELOCATION_MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00a02170	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool
+00a026f0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool
+00a02710	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool
+00a26c50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CMeshDataBank | RELOC_NAME: ?h1@@YIXPAVCMeshDataBank@@@Z -> 00a26900 labelled 'CMeshDataBank::CloseMeshes' | RELOC_NAME: ?h2@@YIXPAVCMeshDataBank@@@Z -> 009d58a0 labelled 'CBankFileAsync::Close'
+00a3b1a0	MATCH PASS INHERITED_WARN	logs/vland_w2A00.log	standin_class_method		SHARED_HEADER_AVAILABLE CVideoSys
+00a4b200	MATCH PASS	logs/vland_w2A00.log	standin_class_method		
+00a5b200	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00a5f420	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CStreamingFontDataBank | RELOC_NAME: ?h1@@YIXPAVCStreamingFontDataBank@@@Z -> 00a5f2f0 labelled 'CStreamingFontDataBank::CloseFonts' | RELOC_NAME: ?h2@@YIXPAVCStreamingFontDataBank@@@Z -> 009ce360 labelled 'CBankFile::Close'
+00a62000	RELOCATION_MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00a62110	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CShaderDataBank | RELOC_NAME: ?h1@@YIXPAVCShaderDataBank@@@Z -> 00a62050 labelled 'CShaderDataBank::CloseShaders' | RELOC_NAME: ?h2@@YIXPAVCShaderDataBank@@@Z -> 009ce360 labelled 'CBankFile::Close'
+00a62f70	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00a632d0	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CFontBankStateBlock
+00a635c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CFontDataBank | RELOC_NAME: ?h1@@YIXPAVCFontDataBank@@@Z -> 00a633a0 labelled 'CFontDataBank::CloseFonts' | RELOC_NAME: ?h2@@YIXPAVCFontDataBank@@@Z -> 009ce360 labelled 'CBankFile::Close'
+00a755a0	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00a75c00	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		GENERIC_STRUCT module=CNavSwitchableLeafNode (use engine/CNavSwitchableLeafNode.h)
+00a75c10	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00a86100	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		GENERIC_STRUCT module=CPhysicsFacesSegmentLeaf (use engine/CPhysicsFacesSegmentLeaf.h)
+00aba370	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorldMap
+00ac1f10	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CIndexBuffer
+00b23bc0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle | SHARED_HEADER_AVAILABLE CEnginePrimitive | RELOC_NAME: ?RealSet@CGlobalTarget@@QAEXPAVCEnginePrimitiveHandle@@PAVCEnginePrimitive@@KH@Z -> 00b324a0 labelled 'CEnginePrimitiveRenderer::SetPersistentPrimitive'
+00b3b8c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineResourceManager | RELOC_NAME: ?Do@SubObj@@QAEXHN@Z -> 00b3b7f0 labelled 'CEngineResourceManager::ProcessLoading'
+00b4a670	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D | SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b4aaa0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CCountedPointer | RELOC_NAME: ?DestroyManagerRange@@YIXPAV?$CCountedPointer@VCEnginePrimitiveManager@@@@0PAUEmptyRangeTag@@@Z -> 00b38930 labelled '_global::DestroyRange_CountedPointer_00b38930'
+00b50c60	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00b56670	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00b5a0b0	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineVideoOptionsDef
+00b5af60	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter | RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00b84290	RELOCATION_MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00b8c780	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00b8fee0	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b93660	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase | SHARED_HEADER_AVAILABLE CIVCountedPointer
+00b9cfe0	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CMatrix3x4 | SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh
+00b9d000	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CMatrix3x4 | SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh
+00b9d0b0	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CMatrix3x4
+00b9d0d0	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CMatrix3x4
+00b9d980	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CMatrix3x4 | SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b9e290	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CMatrix3x4 | SHARED_HEADER_AVAILABLE C3DBoundingBox
+00baf9e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bbbdf0	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleGroup
+00bce9f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CMatrix3x4
+00bcea10	RELOCATION_MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00bd9ac0	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bdc040	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00bdc140	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00bdd980	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager | RELOC_NAME: ?ReleaseBlock@CEngineStaticMapFileBlockManager@@QAEXPAX@Z -> 00be0400 labelled 'CEngineStaticMapFileBlockManager::ReleaseRequest'
+00bdda30	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00be1b90	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00be2260	RELOCATION_MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00be5e50	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		GENERIC_STRUCT module=CLandscapeBackgroundPatch (use engine/CLandscapeBackgroundPatch.h) | SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode
+00c0a860	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00c0a880	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00c203e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		RELOC_NAME: ?Set@SubObj@@QAEXJ@Z -> 00c1bb40 labelled 'C3DAnimationSequence::InitialiseFromFileData'
+00c25de0	MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00c26520	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		GENERIC_STRUCT module=CShaderRenderManager (use engine/CShaderRenderManager.h) | SHARED_HEADER_AVAILABLE CShaderRenderManager
+00c2a600	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineResourceManager | RELOC_NAME: ?Param_method@@YIXPAUParam@@@Z -> 00c37930 labelled 'CSoundLoop_00c377f0::~CSoundLoop_00c377f0'
+00c38550	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00c38a20	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCActivationReceptorBase | RELOC_NAME: ?Add@SubListF2@@QAEXPAUSubObjA@@@Z -> 00c48430 labelled 'CAIStateGroup_BirdFlyToFood::Update'
+00c3a740	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		RELOC_NAME: ?BaseChain@@YIXPAVCThingNoiseDef@@@Z -> 00c3a110 labelled 'CSlotTable_00c3a110::CSlotTable_00c3a110' | RELOC_NAME: ?M@SubObj@@QAEXPAVCThingNoiseDef@@H@Z -> 00c39610 labelled '_unattributed::CScriptEntry_00c39610'
+00c3c5d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CCreatureAction_FireMissileWeapon
+00c3d460	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CShaderRenderManager
+00c42fe0	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngine
+00c89b40	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCActivationReceptorBase | RELOC_NAME: ?Handle@GTarget@@QAEXPAVCTCActivationTrigger@@PAX10@Z -> 00c763e0 labelled 'CDspOps::ReadRing'
+00d732a0	RELOCATION_MATCH PASS	logs/vland_w2A01.log	standin_class_method		
+00e11d80	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00f35a00	MATCH PASS INHERITED_WARN	logs/vland_w2A01.log	standin_class_method		SHARED_HEADER_AVAILABLE CPredicateBase

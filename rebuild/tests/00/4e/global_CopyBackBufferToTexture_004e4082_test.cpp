@@ -4,7 +4,7 @@ class CTexture;
 class CDisplayManager;
 
 void __stdcall CopyBackBuffer_FormatStep(bool* a, bool* b);
-CTexture* __fastcall CopyBackBufferToTexture(CDisplayManager* self, void*);
+CTexture* __fastcall CDisplayManager_CopyBackBufferToTexture(CDisplayManager* self, void*);
 
 static bool* g_a;
 static bool* g_b;
@@ -19,7 +19,7 @@ int main()
 {
     int obj;
     CDisplayManager* self = (CDisplayManager*)&obj;
-    CTexture* r = CopyBackBufferToTexture(self, 0);
+    CTexture* r = CDisplayManager_CopyBackBufferToTexture(self, 0);
 
     // Forwarder must return `this`, must have called the worker exactly once,
     // and must have handed it two non-null flag addresses.

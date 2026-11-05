@@ -1,6 +1,7 @@
+// Leaf: ?CCombatAction_GenericStrikeResponseKnockdownRecoverBase_IsOverrideableByActionOfSamePriority@@YI_NPAVCCombatAction_GenericStrikeResponseKnockdownRecoverBase@@@Z
 #include "engine/CCombatAction_GenericStrikeResponseKnockdownRecoverBase.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef unsigned char (__fastcall* OverrideCheckFn)(CCombatAction_GenericStrikeResponseKnockdownRecoverBase*);
-bool __fastcall IsOverrideableByActionOfSamePriority(
+bool __fastcall CCombatAction_GenericStrikeResponseKnockdownRecoverBase_IsOverrideableByActionOfSamePriority(
     CCombatAction_GenericStrikeResponseKnockdownRecoverBase* self)
 {
     OverrideCheckFn* vtable = (OverrideCheckFn*)self->__vftable;

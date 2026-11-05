@@ -1,3 +1,4 @@
+// Leaf: ?CCreatureModeDef_Transfer@@YIXPAVCCarrySlotDef@@PAXPAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct A { int x; };
 struct B { int x; };
@@ -16,10 +17,11 @@ class CCarrySlotDef { public:
     A a2;  // +0x34
 };
 
-void __fastcall CCarrySlotDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
+void __fastcall CCreatureModeDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
 {
     ctx->Transfer(*(long*)(&def->a));
     ctx->Transfer(*(long*)(&def->b));
     ctx->Transfer(*(long*)(&def->c));
     ctx->Transfer_00466a47(&def->a2);
 }
+// Stand-in (owner rule 2026-11-05): CCreatureModeDef_Transfer for CCreatureModeDef::Transfer; RTTI vtable slot ?Transfer@CCreatureModeDef@@UAEXAAVCPersistContext@@@Z + PDB name set (egor/fablewin).

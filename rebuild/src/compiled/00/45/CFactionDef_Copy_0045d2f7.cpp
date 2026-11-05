@@ -1,3 +1,4 @@
+// Leaf: ?CFactionDef_Copy@@YIXPAVCFactionDef@@PAX@Z
 #include "rebuild_abi.h"
 
 /* 0x0045d2f7  CFactionDef::Copy (5-byte jmp thunk)
@@ -13,8 +14,9 @@ class CFactionDef;
 /* Real target of the thunk (relocation-masked; extern decl is sufficient). */
 extern void __fastcall CFactionDef_Copy_impl(CFactionDef* thisptr, void* src);
 
-void __fastcall CFactionDef_Copy_thunk(CFactionDef* thisptr, void* src)
+void __fastcall CFactionDef_Copy(CFactionDef* thisptr, void* src)
 {
     /* tail call -> compiles to a single jmp rel32 */
     CFactionDef_Copy_impl(thisptr, src);
 }
+// Stand-in (owner rule 2026-11-05): CFactionDef_Copy for CFactionDef::Copy; RTTI vtable slot ?Copy@CFactionDef@@UAEXPBVCDefClassBase@@@Z + PDB name set (egor/fablewin).

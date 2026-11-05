@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CCreatureActionHeroJump::FrameUpdate 0x0085bad0
+// Leaf: ?CCreatureActionHeroJump_FrameUpdate@@YIXPAVCCreatureActionHeroJump@@@Z
 
 struct SubObj8;
 
@@ -22,7 +23,7 @@ class CCreatureActionHeroJump { public:
 // tail-called method at 0x859d80 (ecx = self)
 void __fastcall Base_FrameStep(CCreatureActionHeroJump* action);
 
-void __fastcall FrameUpdate(CCreatureActionHeroJump* action)
+void __fastcall CCreatureActionHeroJump_FrameUpdate(CCreatureActionHeroJump* action)
 {
     int v = action->m1c + 7;
     if (v >= action->m10) {

@@ -1,3 +1,4 @@
+// Leaf: ?CSmokeGeneratorDef_scalar_deleting_destructor@@YIPAXPAVCSmokeGeneratorDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CSmokeGeneratorDef
 };
 extern void* const g_CSmokeGeneratorDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CSmokeGeneratorDef* def, int, unsigned int flags)
+void* __fastcall CSmokeGeneratorDef_scalar_deleting_destructor(CSmokeGeneratorDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CSmokeGeneratorDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

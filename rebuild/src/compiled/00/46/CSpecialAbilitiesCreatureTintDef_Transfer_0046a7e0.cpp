@@ -1,3 +1,4 @@
+// Leaf: ?CSpecialAbilitiesCreatureTintDef_Transfer@@YIXPAVCVillagerInteractionsDef@@PAXPAVCPersistContext@@@Z
 #pragma optimize("s",on)
 class CPersistContext { public:
     template <class T> void Transfer(T& value);
@@ -11,9 +12,10 @@ class CVillagerInteractionsDef { public:
     int fieldC;   // +0x44
 };
 
-void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* /*edx*/, CPersistContext* ctx)
+void __fastcall CSpecialAbilitiesCreatureTintDef_Transfer(CVillagerInteractionsDef* def, void* /*edx*/, CPersistContext* ctx)
 {
     ctx->Transfer(*(float*)&(def->fieldA));
     ctx->Transfer(*(float*)&(def->fieldB));
     ctx->PersistB_00466a47(def->fieldC);
 }
+// Stand-in (owner rule 2026-11-05): CSpecialAbilitiesCreatureTintDef_Transfer for CSpecialAbilitiesCreatureTintDef::Transfer; RTTI vtable slot ?Transfer@CSpecialAbilitiesCreatureTintDef@@UAEXAAVCPersistContext@@@Z + PDB name set (egor/fablewin).

@@ -7,7 +7,7 @@ struct CFontBankStateBlock {
     char  fc;
 };
 
-void __stdcall GetDefault(CFontBankStateBlock* block)
+void __stdcall CFontBankStateBlock_GetDefault(CFontBankStateBlock* block)
 {
     block->f4 = 0;
     block->f8 = 0x190;
@@ -21,7 +21,7 @@ int main()
     b.f4 = 0x22222222;
     b.f8 = 0x33333333;
     b.fc = (char)0x44;
-    GetDefault(&b);
+    CFontBankStateBlock_GetDefault(&b);
     if (b.f0 != 0x11111111) { printf("FAIL f0\n"); return 1; }
     if (b.f4 != 0) { printf("FAIL f4\n"); return 1; }
     if (b.f8 != 0x190) { printf("FAIL f8\n"); return 1; }

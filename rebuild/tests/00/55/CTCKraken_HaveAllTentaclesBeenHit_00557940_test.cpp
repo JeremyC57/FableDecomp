@@ -8,7 +8,7 @@ class CTCKraken { public:
     int  m_remaining;  // +0x1ac
 };
 
-char __fastcall HaveAllTentaclesBeenHit(CTCKraken *kraken)
+char __fastcall CTCKraken_HaveAllTentaclesBeenHit(CTCKraken *kraken)
 {
     if (kraken->m_phase != 2)
         return 0;
@@ -22,18 +22,18 @@ int main()
 
     // phase != 2 -> 0, regardless of remaining
     k.m_phase = 0; k.m_remaining = 0;
-    if (HaveAllTentaclesBeenHit(&k) != 0) { printf("FAIL case1\n"); return 1; }
+    if (CTCKraken_HaveAllTentaclesBeenHit(&k) != 0) { printf("FAIL case1\n"); return 1; }
 
     k.m_phase = 1; k.m_remaining = 5;
-    if (HaveAllTentaclesBeenHit(&k) != 0) { printf("FAIL case2\n"); return 1; }
+    if (CTCKraken_HaveAllTentaclesBeenHit(&k) != 0) { printf("FAIL case2\n"); return 1; }
 
     // phase == 2, remaining != 0 -> 0
     k.m_phase = 2; k.m_remaining = 3;
-    if (HaveAllTentaclesBeenHit(&k) != 0) { printf("FAIL case3\n"); return 1; }
+    if (CTCKraken_HaveAllTentaclesBeenHit(&k) != 0) { printf("FAIL case3\n"); return 1; }
 
     // phase == 2, remaining == 0 -> 1
     k.m_phase = 2; k.m_remaining = 0;
-    if (HaveAllTentaclesBeenHit(&k) != 1) { printf("FAIL case4\n"); return 1; }
+    if (CTCKraken_HaveAllTentaclesBeenHit(&k) != 1) { printf("FAIL case4\n"); return 1; }
 
     printf("OK_0x00557940\n");
     return 0;

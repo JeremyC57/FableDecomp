@@ -1,4 +1,5 @@
 // callee at 0x6b9e00 is a __fastcall member on the trigger: ecx=trigger, stack arg = void*
+// Leaf: ?CTCActivationReceptorBase_AddTrigger@@YI_NPAVCTCActivationReceptorBase@@PAXPAVCTCActivationTrigger@@@Z
 class CTCActivationTrigger { public:
     void Method(void* p);   // real member -> this in ecx, p on stack, no edx
 };
@@ -9,7 +10,7 @@ class CTCActivationReceptorBase { public:
     void* p28;          // +0x28
 };
 
-bool __fastcall AddTrigger(CTCActivationReceptorBase* self, void* edx, CTCActivationTrigger* trig)
+bool __fastcall CTCActivationReceptorBase_AddTrigger(CTCActivationReceptorBase* self, void* edx, CTCActivationTrigger* trig)
 {
     trig->Method(&self->field24);
     return self->p28 != 0;

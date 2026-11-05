@@ -17,7 +17,7 @@ class CAIBrain { public:
     CAIStateGroup* f38;
 };
 
-EAIStateGroupType __fastcall GetCurrentStateGroupType(CAIBrain* self);
+EAIStateGroupType __fastcall CAIBrain_GetCurrentStateGroupType(CAIBrain* self);
 
 static EAIStateGroupType __fastcall fakeGetType(CAIStateGroup*) { return 42; }
 
@@ -30,18 +30,18 @@ int main() {
 
     CAIBrain b1;
     b1.f38 = &g;
-    int r1 = GetCurrentStateGroupType(&b1);
+    int r1 = CAIBrain_GetCurrentStateGroupType(&b1);
 
     CAIBrain b2;
     b2.f38 = 0;
-    int r2 = GetCurrentStateGroupType(&b2);
+    int r2 = CAIBrain_GetCurrentStateGroupType(&b2);
 
     CAIStateGroup g3;
     g3.vtbl = &vt;
     g3.f10 = 1;
     CAIBrain b3;
     b3.f38 = &g3;
-    int r3 = GetCurrentStateGroupType(&b3);
+    int r3 = CAIBrain_GetCurrentStateGroupType(&b3);
 
     if (r1 == 42 && r2 == 0 && r3 == 0) {
         printf("0088b780_TEST PASS\n");

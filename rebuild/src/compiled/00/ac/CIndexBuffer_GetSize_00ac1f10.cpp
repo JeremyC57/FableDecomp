@@ -1,4 +1,5 @@
 // CIndexBuffer::GetSize @ 00ac1f10
+// Leaf: ?CIndexBuffer_GetSize@@YIJPAVCIndexBuffer@@@Z
 // eax=this->f4; ecx2=this->f4->vtbl; sub esp,0x14; call vtbl[0xd](this->f4, &local20);
 // returns a dword from the 0x14-byte descriptor filled by the vtbl call.
 
@@ -36,7 +37,7 @@ class CIndexBuffer { public:
     IBufImpl* PD3DIndexBuffer;     // +0x04
 };
 
-long __fastcall GetSize(CIndexBuffer* self)
+long __fastcall CIndexBuffer_GetSize(CIndexBuffer* self)
 {
     Desc d;
     self->PD3DIndexBuffer->vtbl->GetDesc(self->PD3DIndexBuffer, &d);

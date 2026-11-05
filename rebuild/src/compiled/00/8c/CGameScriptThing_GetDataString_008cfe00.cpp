@@ -1,3 +1,4 @@
+// Leaf: ?CGameScriptThing_GetDataString@@YIPAXPAVCGameScriptThing@@HPAX@Z
 struct Arg {
     void Consume(void* p);
 };
@@ -7,7 +8,7 @@ class CGameScriptThing { public:
     char data;
 };
 
-void* __fastcall GetDataString(CGameScriptThing* thing, int /*edx*/, void* arg)
+void* __fastcall CGameScriptThing_GetDataString(CGameScriptThing* thing, int /*edx*/, void* arg)
 {
     ((Arg*)arg)->Consume(&thing->data);
     return arg;

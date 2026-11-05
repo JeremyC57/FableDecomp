@@ -1,4 +1,5 @@
 // CEnginePrimitiveRenderer2D::AddPrimitive @ 0x00655fe9
+// Leaf: ?CEnginePrimitiveRenderer2D_AddPrimitive@@YIXPAVCEnginePrimitiveRenderer2D@@PAVCEngineInternalPrimitiveBase@@@Z
 class CEngineInternalPrimitiveBase;
 
 class CEnginePrimitiveRenderer2D { public:
@@ -12,7 +13,7 @@ extern void __fastcall PrimSlotAssign(char *slot);
 // grow path at 0x655ca7: thiscall, ecx = self
 extern void __fastcall PrimGrow(CEnginePrimitiveRenderer2D *self);
 
-void __fastcall AddPrimitive(CEnginePrimitiveRenderer2D *self, CEngineInternalPrimitiveBase *prim)
+void __fastcall CEnginePrimitiveRenderer2D_AddPrimitive(CEnginePrimitiveRenderer2D *self, CEngineInternalPrimitiveBase *prim)
 {
     char *e = self->end;
     char *c = self->cur;

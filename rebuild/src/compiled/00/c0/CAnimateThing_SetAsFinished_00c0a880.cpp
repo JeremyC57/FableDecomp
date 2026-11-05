@@ -1,3 +1,4 @@
+// Leaf: ?CAnimateThing_SetAsFinished@@YIXPAVCAnimateThing@@H_N@Z
 #pragma optimize("s",on)
 class CAnimateThing { public:
     char pad[0x100];
@@ -5,7 +6,7 @@ class CAnimateThing { public:
 
 // retail is __fastcall: ecx=this, arg on stack [esp+4], ret 4.
 // Model with __fastcall + dummy edx so the real bool lands on the stack.
-void __fastcall SetAsFinished(CAnimateThing *self, int edx_dummy, bool finished)
+void __fastcall CAnimateThing_SetAsFinished(CAnimateThing *self, int edx_dummy, bool finished)
 {
     unsigned char *p = (unsigned char *)self;
     p[0x26] |= 0x80;

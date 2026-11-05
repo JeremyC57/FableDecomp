@@ -1,3 +1,4 @@
+// Leaf: ?CGameScriptInterface_MsgOnHeroCastSpell@@YIEPAXKPAPAX@Z
 struct GSI_MsgKind { unsigned long kind; void* a; void* b; };
 struct GSI_MsgArg  { GSI_MsgKind* pInner; void** pB; };
 
@@ -14,7 +15,7 @@ extern void* __fastcall GetB(const void* thisptr);
 
 /* bool __fastcall CGameScriptInterface::MsgOnHeroCastSpell(void** out)
  * Free __fastcall (this in ecx). One stack arg (out) -> ret 4. */
-unsigned char __fastcall Func(void* thisptr, unsigned long edx, void** out)
+unsigned char __fastcall CGameScriptInterface_MsgOnHeroCastSpell(void* thisptr, unsigned long edx, void** out)
 {
     void* a = GetA(thisptr);
     void* b = GetB(thisptr);
@@ -36,3 +37,4 @@ unsigned char __fastcall Func(void* thisptr, unsigned long edx, void** out)
     }
     return 0;
 }
+// Stand-in (owner rule 2026-11-05): CGameScriptInterface_MsgOnHeroCastSpell for CGameScriptInterface::MsgOnHeroCastSpell; RTTI vtable slot ?MsgOnHeroCastSpell@CGameScriptInterface@@UBE_NAAW4EHeroAbility@@@Z + PDB name set (egor/fablewin).

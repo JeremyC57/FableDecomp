@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCInventoryExperience::ResetStatIndicatorValues @ 0x0056e5ab
+// Leaf: ?CTCInventoryExperience_ResetStatIndicatorValues@@YIXPAVCTCInventoryExperience@@@Z
 // Size-optimized zeroing (and mem,0 vs mov mem,0) matches retail; harness also sweeps optimize("s").
 #pragma optimize("s",on)
 class CTCInventoryExperience { public:
@@ -12,7 +13,7 @@ class CTCInventoryExperience { public:
 // helper @ 0x5bc4b2 : cdecl, no args, returns a value (in eax)
 extern int __cdecl HelperGetValue(void);
 
-void __fastcall ResetStatIndicatorValues(CTCInventoryExperience* self)
+void __fastcall CTCInventoryExperience_ResetStatIndicatorValues(CTCInventoryExperience* self)
 {
     self->field_1bc = 0;
     self->field_1c0 = self->StoreIndicator(HelperGetValue());

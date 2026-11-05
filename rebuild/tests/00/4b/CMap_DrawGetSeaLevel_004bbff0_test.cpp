@@ -7,7 +7,7 @@ class CMap { public:
     float f4c;
 };
 
-float __fastcall DrawGetSeaLevel(CMap *thisptr)
+float __fastcall CMap_DrawGetSeaLevel(CMap *thisptr)
 {
     return thisptr->f4c * thisptr->f34;
 }
@@ -17,7 +17,7 @@ int main(void)
     CMap m;
     m.f34 = 2.5f;    // scale
     m.f4c = 4.0f;    // sea level
-    float r = DrawGetSeaLevel(&m);
+    float r = CMap_DrawGetSeaLevel(&m);
     if (r == 10.0f) {
         printf("OK_0x004bbff0 result=%f\n", r);
         return 0;

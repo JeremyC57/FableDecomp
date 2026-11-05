@@ -19,7 +19,7 @@ static int g_n;
 void CPersistContext::PersistA(int& r) { calls++; g_seq[g_n++] = 1; }
 void CPersistContext::PersistB(int& r) { calls++; g_seq[g_n++] = 2; }
 
-void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def, void* edx, CPersistContext* ctx)
+void __fastcall CAppearanceModifierScalingDef_Transfer(CVillagerInteractionsDef* def, void* edx, CPersistContext* ctx)
 {
     ctx->PersistA(def->fieldA);
     ctx->PersistA(def->fieldB);
@@ -29,7 +29,7 @@ void __fastcall CVillagerInteractionsDef_Transfer(CVillagerInteractionsDef* def,
 int main() {
     CVillagerInteractionsDef d;
     CPersistContext c; c.calls = 0; g_n = 0;
-    CVillagerInteractionsDef_Transfer(&d, 0, &c);
+    CAppearanceModifierScalingDef_Transfer(&d, 0, &c);
     if (c.calls == 3 && g_seq[0]==1 && g_seq[1]==1 && g_seq[2]==2) {
         std::printf("CVillagerInteractionsDef_004784e4_TEST PASS\n");
         return 0;

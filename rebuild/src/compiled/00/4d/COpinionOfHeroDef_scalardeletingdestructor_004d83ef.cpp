@@ -1,3 +1,4 @@
+// Leaf: ?COpinionOfHeroDef_scalar_deleting_destructor@@YIPAXPAVCOpinionOfHeroDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class COpinionOfHeroDef
 };
 extern void* const g_COpinionOfHeroDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(COpinionOfHeroDef* def, int, unsigned int flags)
+void* __fastcall COpinionOfHeroDef_scalar_deleting_destructor(COpinionOfHeroDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_COpinionOfHeroDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

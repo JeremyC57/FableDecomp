@@ -1,3 +1,4 @@
+// Leaf: ?CCategory_GetHighlightedItem@@YIPAXPAUCCategory@@@Z
 struct CategoryEntry { void* item; int a, b, c, d; };
 struct CCategory {
     char pad0[0x8];
@@ -5,7 +6,7 @@ struct CCategory {
     char pad8[0x24 - 0xC];
     int highlightIndex;
 };
-void* __fastcall GetHighlightedItem(CCategory* this_) {
+void* __fastcall CCategory_GetHighlightedItem(CCategory* this_) {
     int idx = this_->highlightIndex;
     if (idx >= 0)
         return this_->entries[idx].item;

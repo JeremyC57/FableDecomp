@@ -1,3 +1,4 @@
+// Leaf: ?CPrizeScoreDef_scalar_deleting_destructor@@YIPAXPAVCPrizeScoreDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CPrizeScoreDef
 };
 extern void* const g_CPrizeScoreDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CPrizeScoreDef* def, int, unsigned int flags)
+void* __fastcall CPrizeScoreDef_scalar_deleting_destructor(CPrizeScoreDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CPrizeScoreDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

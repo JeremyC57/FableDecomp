@@ -32,12 +32,12 @@ void __fastcall CTCEnemy_base_OnInitialActivate(CTCEnemy* enemy)
     g_baseSelf = enemy;
 }
 
-void __fastcall OnInitialActivate(CTCEnemy* enemy);
+void __fastcall CTCEnemy_OnInitialActivate(CTCEnemy* enemy);
 
 int main()
 {
     CTCEnemy e; e.tag = 42;
-    OnInitialActivate(&e);
+    CTCEnemy_OnInitialActivate(&e);
     if (g_obj.calls == 1 && g_obj.lastArg == 0 &&
         g_baseCalled == 1 && g_baseSelf == &e)
         printf("0076c830_TEST PASS\n");

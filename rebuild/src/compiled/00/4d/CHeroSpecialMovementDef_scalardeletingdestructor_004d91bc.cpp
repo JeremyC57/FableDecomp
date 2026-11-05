@@ -1,3 +1,4 @@
+// Leaf: ?CHeroSpecialMovementDef_scalar_deleting_destructor@@YIPAXPAVCHeroSpecialMovementDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CHeroSpecialMovementDef
 };
 extern void* const g_CHeroSpecialMovementDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CHeroSpecialMovementDef* def, int, unsigned int flags)
+void* __fastcall CHeroSpecialMovementDef_scalar_deleting_destructor(CHeroSpecialMovementDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CHeroSpecialMovementDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

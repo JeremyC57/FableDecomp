@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CBoastingPodiumDef* def, int, unsigned int flags)
+void* __fastcall CBoastingPodiumDef_scalar_deleting_destructor(CBoastingPodiumDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CBoastingPodiumDef_vftable;
     CBoastingPodiumDef_Destruct(def);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CBoastingPodiumDef* def, int, unsign
 int main()
 {
     CBoastingPodiumDef object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CBoastingPodiumDef_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CBoastingPodiumDef_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CBoastingPodiumDef_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

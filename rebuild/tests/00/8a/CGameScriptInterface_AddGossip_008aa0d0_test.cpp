@@ -19,14 +19,14 @@ static void Inner(CCharString byval) {
     strcpy(g_innerLast, byval.buf);
 }
 
-static void AddGossip(CCharString category) {
+static void CGameScriptInterface_AddGossip(CCharString category) {
     Inner(category);
 }
 
 int main() {
     CCharString g;
     strcpy(g.buf, "TIQUATL_GOSSIP");
-    AddGossip(g);
+    CGameScriptInterface_AddGossip(g);
     // Original must be untouched; Inner must have received a faithful copy.
     if (g_innerCalls == 1 &&
         strcmp(g_innerLast, "TIQUATL_GOSSIP") == 0 &&

@@ -37,7 +37,7 @@ class CThing { public:
         return false;
     }
 };
-bool __fastcall GFHasScriptThing(CThing* thing);   // 0x004C7E70
+bool __fastcall CThing_HasScriptThing(CThing* thing);   // 0x004C7E70
 
 class CThingFilter_HasScriptedControl { public:
     bool CheckForActive;                        // +0x00
@@ -46,7 +46,7 @@ class CThingFilter_HasScriptedControl { public:
 
 bool CThingFilter_HasScriptedControl::operator()(CThing* thing) const
 {
-    if (GFHasScriptThing(thing) && thing->HasTC(0x1f)) {
+    if (CThing_HasScriptThing(thing) && thing->HasTC(0x1f)) {
         if (!CheckForActive || thing->GetTC<CTCScriptedControl>(0x1f)->IsActive())
             return true;
     }

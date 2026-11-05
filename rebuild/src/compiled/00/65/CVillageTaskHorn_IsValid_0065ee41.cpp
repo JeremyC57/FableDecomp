@@ -1,3 +1,4 @@
+// Leaf: ?CVillageTaskHorn_IsValid@@YI_NPAVCVillageTaskHorn@@@Z
 #include "engine/CVillageTaskHorn.h"  // retyped onto the PDB layout; byte parity re-verified
 class CBaseObject;
 class CBaseObjectPointer;
@@ -10,4 +11,5 @@ public:
 private:
     CBaseObjectPointer* PData;                           // +0x04
 };
-bool __fastcall f(CVillageTaskHorn* task){ return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task)+8))->GetPItem())) != 0; }
+bool __fastcall CVillageTaskHorn_IsValid(CVillageTaskHorn* task){ return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task)+8))->GetPItem())) != 0; }
+// Stand-in (owner rule 2026-11-05): CVillageTaskHorn_IsValid for CVillageTaskHorn::IsValid; RTTI vtable slot ?IsValid@CVillageTaskHorn@@UBE_NXZ + PDB name set (fablewin).

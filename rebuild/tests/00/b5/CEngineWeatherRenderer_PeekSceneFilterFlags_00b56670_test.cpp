@@ -2,7 +2,7 @@
 
 class CEngineWeatherRenderer { public: int dummy; };
 
-unsigned long __fastcall PeekSceneFilterFlags(CEngineWeatherRenderer* renderer)
+unsigned long __fastcall CEngineWeatherRenderer_PeekSceneFilterFlags(CEngineWeatherRenderer* renderer)
 {
     (void)renderer;
     return 1UL;
@@ -12,7 +12,7 @@ int main()
 {
     CEngineWeatherRenderer r;
     r.dummy = 0x1234;
-    unsigned long v = PeekSceneFilterFlags(&r);
+    unsigned long v = CEngineWeatherRenderer_PeekSceneFilterFlags(&r);
     if (v == 1UL)
         printf("PARITY_OK\n");
     else

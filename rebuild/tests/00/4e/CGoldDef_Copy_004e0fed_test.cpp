@@ -11,11 +11,11 @@ CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other_)
      g_baseCalled = 1;
     return *this;
 }
-void __fastcall Copy(CGoldDef* self, int, const CDefClassBase* other);
+void __fastcall CGoldDef_Copy(CGoldDef* self, int, const CDefClassBase* other);
 int main()
 {
     CGoldDef_Methods src, dst; src.Gold = (long)0xDEADBEEF; dst.Gold = 0;
-    Copy(&dst, 0, (const CDefClassBase*)&src);
+    CGoldDef_Copy(&dst, 0, (const CDefClassBase*)&src);
     if (g_baseCalled == 1 && dst.Gold == (long)0xDEADBEEF) printf("004e0fed_TEST PASS\n");
     else printf("FAIL base=%d f=%08lx\n", g_baseCalled, dst.Gold);
     return 0;

@@ -1,3 +1,4 @@
+// Leaf: ?CEngineInternalPrimitiveParticleGroup_GetRenderLayerMask@@YIKPAUCEngineInternalPrimitiveParticleGroup@@@Z
 typedef unsigned long ulong;
 
 struct CEngineInternalPrimitiveParticleGroup {
@@ -5,7 +6,7 @@ struct CEngineInternalPrimitiveParticleGroup {
     unsigned long type;
 };
 
-ulong __fastcall GetRenderLayerMask(CEngineInternalPrimitiveParticleGroup* self)
+ulong __fastcall CEngineInternalPrimitiveParticleGroup_GetRenderLayerMask(CEngineInternalPrimitiveParticleGroup* self)
 {
     switch (self->type) {
     case 0:

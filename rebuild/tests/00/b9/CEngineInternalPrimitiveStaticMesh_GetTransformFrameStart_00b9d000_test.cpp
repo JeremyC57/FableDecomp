@@ -10,7 +10,7 @@ class CEngineInternalPrimitiveStaticMesh { public:
     CMatrix3x4 frame;
 };
 
-bool __fastcall GetTransformFrameStart(
+bool __fastcall CEngineInternalPrimitiveStaticMesh_GetTransformFrameStart(
     CEngineInternalPrimitiveStaticMesh* mesh, int /*edx*/, CMatrix3x4& out);
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
 
     CMatrix3x4 out;
     memset(&out, 0, sizeof(out));
-    bool r = GetTransformFrameStart(&obj, 0, out);
+    bool r = CEngineInternalPrimitiveStaticMesh_GetTransformFrameStart(&obj, 0, out);
 
     bool ok = r;
     for (int i = 0; i < 12; ++i)

@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of
+// Leaf: ?CCreatureAction_NymphSummonOutOf_FinishAction@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z
 // ?FinishAction@CCreatureAction_NymphSummonOutOf@@UAEXXZ  @ 0x008c9e40
 
 // The invoked object at [Inner+0x60]. Its used method is the 37th virtual (byte
@@ -40,7 +41,7 @@ struct Inner {
 // base method tail-jumped to: 0x859a20, __fastcall(self)
 extern void __fastcall base_FinishAction_859a20(CCreatureAction_NymphSummonOutOf* action);
 
-void __fastcall FinishAction(CCreatureAction_NymphSummonOutOf* action)
+void __fastcall CCreatureAction_NymphSummonOutOf_FinishAction(CCreatureAction_NymphSummonOutOf* action)
 {
     Inner* p = ((Inner*)(((CBaseIntelligentPointer*)((char*)action + 8))->GetPItem()));
     Target* h = p->pField60;      // ecx = [eax+0x60]; slot fetched from [ecx]

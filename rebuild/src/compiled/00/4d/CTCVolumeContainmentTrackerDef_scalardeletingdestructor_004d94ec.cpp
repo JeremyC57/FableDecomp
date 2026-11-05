@@ -1,3 +1,4 @@
+// Leaf: ?CTCVolumeContainmentTrackerDef_scalar_deleting_destructor@@YIPAXPAVCTCVolumeContainmentTrackerDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CTCVolumeContainmentTrackerDef
 };
 extern void* const g_CTCVolumeContainmentTrackerDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CTCVolumeContainmentTrackerDef* def, int, unsigned int flags)
+void* __fastcall CTCVolumeContainmentTrackerDef_scalar_deleting_destructor(CTCVolumeContainmentTrackerDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CTCVolumeContainmentTrackerDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

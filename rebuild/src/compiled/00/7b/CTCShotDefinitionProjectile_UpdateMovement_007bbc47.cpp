@@ -1,3 +1,4 @@
+// Leaf: ?CTCShotDefinitionProjectile_UpdateMovement@@YIXPAUCTCShotDefinitionProjectile@@@Z
 #pragma optimize("s",on)
 // Byte-exact reconstruction of CTCShotDefinitionProjectile::UpdateMovement @ 0x007bbc47
 
@@ -30,7 +31,7 @@ struct CTCShotDefinitionProjectile {
 // predicate at 0x7bf3d0: __fastcall taking self in ecx, returns bool in al
 extern bool __fastcall ShouldUpdate(CTCShotDefinitionProjectile* self);
 
-void __fastcall UpdateMovement(CTCShotDefinitionProjectile* self)
+void __fastcall CTCShotDefinitionProjectile_UpdateMovement(CTCShotDefinitionProjectile* self)
 {
     if (ShouldUpdate(self)) {
         self->m4->m60->Notify(1);

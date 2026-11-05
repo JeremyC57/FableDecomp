@@ -1,3 +1,4 @@
+// Leaf: ?CPersistTraits_TransferIn@@YIXPAUCPersistTraits@@HPAVCPersistContext@@PAVCStringParser@@PAH@Z
 #pragma optimize("s",on)
 // CPersistTraits<EInputKey>::TransferIn @ 0x005d8167
 typedef int EInputKey;
@@ -11,7 +12,7 @@ extern void __fastcall Persist_ReadValue(CPersistContext* ecx, CStringParser* ed
 
 // __fastcall member modeled as __fastcall free fn:
 //   self -> ecx (unused this), edx_dummy -> edx, then 3 stack args.
-void __fastcall TransferIn(CPersistTraits* self, int edx_dummy,
+void __fastcall CPersistTraits_TransferIn(CPersistTraits* self, int edx_dummy,
                            CPersistContext* ctx, CStringParser* parser, EInputKey* out)
 {
     (void)self; (void)edx_dummy;

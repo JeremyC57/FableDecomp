@@ -1,3 +1,4 @@
+// Leaf: ?CInputProcessJumpingAndRolling_Update@@YIXPAVCInputProcessJumpingAndRolling@@HAAVCProcessedInput@@@Z
 #pragma optimize("s",on)
 
 class CInputProcessJumpingAndRolling { public:
@@ -9,7 +10,7 @@ class CProcessedInput;
 
 extern "C" char __stdcall JR_Helper(int a, int b);
 
-void __fastcall Update(CInputProcessJumpingAndRolling* process, int edx_ignored, CProcessedInput& in)
+void __fastcall CInputProcessJumpingAndRolling_Update(CInputProcessJumpingAndRolling* process, int edx_ignored, CProcessedInput& in)
 {
     char r = JR_Helper(0x3c, 2);
     if (!r)

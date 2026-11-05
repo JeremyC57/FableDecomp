@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CShaderRenderManager::SetXBoxUserVertexShaderConstant @ 0x00989ba0
+// Leaf: ?CShaderRenderManager_SetXBoxUserVertexShaderConstant@@YIXPAVCShaderRenderManager@@HJPAVCRGBFloatColour@@@Z
 
 class CRGBFloatColour { public: float x, y, z, w; };
 
@@ -16,7 +17,7 @@ class CShaderRenderManager { public:
     Device* device; // +0x1d4
 };
 
-void __fastcall SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, int /*edx*/, long index, CRGBFloatColour* colour)
+void __fastcall CShaderRenderManager_SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, int /*edx*/, long index, CRGBFloatColour* colour)
 {
     float buf[4];
     buf[0] = colour->x;

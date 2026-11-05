@@ -1,3 +1,4 @@
+// Leaf: ?CGoldDef_scalar_deleting_destructor@@YIPAXPAVCGoldDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CGoldDef
 };
 extern void* const g_CGoldDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CGoldDef* def, int, unsigned int flags)
+void* __fastcall CGoldDef_scalar_deleting_destructor(CGoldDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CGoldDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

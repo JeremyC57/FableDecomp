@@ -1,4 +1,5 @@
 // CEditWorldMap::GetEditMap(int index)
+// Leaf: ?CEditWorldMap_GetEditMap@@YIPAXPAVCEditWorldMap@@PAXH@Z
 // this=ecx (__fastcall). Element stride = 12 bytes (3 dwords); returns dword at +4.
 struct EditMapEntry {
     void* a;      // +0x0
@@ -11,7 +12,7 @@ class CEditWorldMap { public:
     EditMapEntry* maps;   // +0x3c
 };
 
-void* __fastcall GetEditMap(CEditWorldMap* self, void* /*edx*/, int index)
+void* __fastcall CEditWorldMap_GetEditMap(CEditWorldMap* self, void* /*edx*/, int index)
 {
     return self->maps[index].map;
 }

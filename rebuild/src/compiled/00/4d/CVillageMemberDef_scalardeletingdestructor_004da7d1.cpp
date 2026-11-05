@@ -1,3 +1,4 @@
+// Leaf: ?CVillageMemberDef_scalar_deleting_destructor@@YIPAXPAVCVillageMemberDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CVillageMemberDef
 };
 extern void* const g_CVillageMemberDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CVillageMemberDef* def, int, unsigned int flags)
+void* __fastcall CVillageMemberDef_scalar_deleting_destructor(CVillageMemberDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CVillageMemberDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

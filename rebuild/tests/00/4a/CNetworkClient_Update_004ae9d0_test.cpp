@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-void __fastcall Update(CNetworkClient *client, void * /*edx*/, int a, int b, int c)
+void __fastcall CNetworkClient_Update(CNetworkClient *client, void * /*edx*/, int a, int b, int c)
 {
     if (client->LocalGame) {
         client->LocalFrame = a;
@@ -20,7 +20,7 @@ static void call_update(CNetworkClient *client, int a, int b, int c)
         push b
         push a
         mov  ecx, client
-        call Update
+        call CNetworkClient_Update
     }
 }
 

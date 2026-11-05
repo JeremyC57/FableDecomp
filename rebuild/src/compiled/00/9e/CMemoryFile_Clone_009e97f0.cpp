@@ -1,4 +1,5 @@
 // Create_CMemoryFile(CMemoryFile*) -- factory: new CMemoryFile(owner)
+// Leaf: ?CMemoryFile_Clone@@YIPAVCMemoryFile@@PAV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E97F0, oracle length 31 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -15,7 +16,8 @@ class CMemoryFile { public:
     CMemoryFile(CMemoryFile* owner);                   // 0x009E99C0
 };
 
-CMemoryFile* __fastcall Create_CMemoryFile(CMemoryFile* owner)
+CMemoryFile* __fastcall CMemoryFile_Clone(CMemoryFile* owner)
 {
     return new CMemoryFile(owner);
 }
+// Stand-in (owner rule 2026-11-05): CMemoryFile_Clone for CMemoryFile::Clone; RTTI vtable slot ?Clone@CMemoryFile@@UBEPAVCAFile@@XZ + PDB name set (egor/fablewin).

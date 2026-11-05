@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CVillageTaskBase* task, int, unsigned int flags)
+void* __fastcall CVillageTaskBase_scalar_deleting_destructor(CVillageTaskBase* task, int, unsigned int flags)
 {
     task->vftable = (void*)&g_CVillageTaskBase_vftable;
     CVillageTaskBase_Destruct(task);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CVillageTaskBase* task, int, unsigne
 int main()
 {
     CVillageTaskBase object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CVillageTaskBase_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CVillageTaskBase_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CVillageTaskBase_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

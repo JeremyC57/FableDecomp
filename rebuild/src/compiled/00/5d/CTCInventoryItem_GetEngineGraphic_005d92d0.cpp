@@ -1,3 +1,4 @@
+// Leaf: ?CTCInventoryItem_GetEngineGraphic@@YIPAVCEngineGraphic@@PAVCTCInventoryItem@@@Z
 struct RcVtbl {
     void (__fastcall *dtor)(void *self);
     void (__fastcall *release_dtor)(void *self);
@@ -11,7 +12,7 @@ class CTCInventoryItem { public:
     RcObj  *m_holder;
 };
 class CEngineGraphic;
-CEngineGraphic * __fastcall GetEngineGraphic(CTCInventoryItem *self)
+CEngineGraphic * __fastcall CTCInventoryItem_GetEngineGraphic(CTCInventoryItem *self)
 {
     RcObj *p = self->m_holder;
     if (p)

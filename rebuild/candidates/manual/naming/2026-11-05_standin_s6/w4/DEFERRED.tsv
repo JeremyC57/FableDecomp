@@ -1,0 +1,25 @@
+address	stage	reason
+0045266f	plan	CCoopSpiritDef already named in the TU
+00456244	plan	CTextureReplacementDef already named in the TU
+004ddb66	plan	generic class S in a TU with templates
+004de772	plan	generic class S in a TU with templates
+004dec1c	plan	generic class S in a TU with templates
+004df477	plan	new name ?GetNavigatorObstacles@CObstacleNavigatorExternalInterface@@QAEPAXXZ shared by 2 wave rows / defined at  (one address, one name)
+004df47b	plan	new name ?GetNavigatorObstacles@CObstacleNavigatorExternalInterface@@QAEPAXXZ shared by 2 wave rows / defined at  (one address, one name)
+004e39a2	plan	generic class S in a TU with templates
+005dbee0	plan	CAnimComponentStrikeSpeedMultiplier already named in the TU
+00969a80	plan	CAIStateGroup_SleepOnFloor already named in the TU
+009ea190	plan	new name ?Init@CGenericVar@@QAEXPBX@Z shared by 4 wave rows / defined at  (one address, one name)
+009ea1b0	plan	new name ?Init@CGenericVar@@QAEXPBX@Z shared by 4 wave rows / defined at  (one address, one name)
+009ea1d0	plan	new name ?Init@CGenericVar@@QAEXPBX@Z shared by 4 wave rows / defined at  (one address, one name)
+009ea1f0	plan	new name ?Init@CGenericVar@@QAEXPBX@Z shared by 4 wave rows / defined at  (one address, one name)
+00a5afa0	plan	CCachedFile already named in the TU
+00ba8010	plan	CEngineInternalPrimitiveMeshBase already named in the TU
+00432e50	gate	unexpected changes: 00432e60: ?CopyImpl_00432e60@CControlsDef@@QAEXPBV1@@Z -> ?CopyImpl_00432e60@CFrontEndDef@@QAEXPBV1@@Z (the class rename also respells a same-class callee at another retail address; left for its own evidence)
+00434590	gate	unexpected changes: 004345a0: ?CopyImpl_004345a0@CControlsDef@@QAEXPBV1@@Z -> ?CopyImpl_004345a0@CConfigOptionsDefaultsDef@@QAEXPBV1@@Z (the class rename also respells a same-class callee at another retail address; left for its own evidence)
+00495610	gate	unexpected changes: 00494840: ?InitGraphics@CFrontendGameComponent_00495610@@QAE_NXZ -> ?InitGraphics@CFrontendGameComponent@@QAE_NXZ (the class rename also respells a same-class callee at another retail address; left for its own evidence)
+0067ce40	gate	unexpected changes: 0067ce50: ?CopyImpl_0067ce50@CControlsDef@@QAEXPBV1@@Z -> ?CopyImpl_0067ce50@COpinionReactionManagerDef@@QAEXPBV1@@Z (the class rename also respells a same-class callee at another retail address; left for its own evidence)
+00b9e570	gate	unexpected changes: 00b9d8e0: ?BaseUpdate@C@@QAEXAAUP@@K@Z -> ?BaseUpdate@CEngineInternalPrimitiveMorphedStaticMesh@@QAEXAAUP@@K@Z (the class rename also respells a same-class callee at another retail address; left for its own evidence)
+00bb6980	gate	unexpected changes: 00b8fd40: ?Method@C@@QAEXH@Z -> ?Method@CEngineInternalPrimitiveWeatherMask@@QAEXH@Z (the class rename also respells a same-class callee at another retail address; left for its own evidence)
+00bd2b70	gate	unexpected changes: 00bd2920: ?BaseUpdate_00bd2920@C@@QAEXAAUP@@K@Z -> ?BaseUpdate_00bd2920@CEngineInternalPrimitiveMorphedAnimatedMesh@@QAEXAAUP@@K@Z (the class rename also respells a same-class callee at another retail address; left for its own evidence)
+00bd2d50	gate	unexpected changes: 00bd2bc0: ?BaseUpdate_00bd2bc0@C@@QAEXAAUP@@K@Z -> ?BaseUpdate_00bd2bc0@CEngineInternalPrimitive2DMorphedAnimatedMesh@@QAEXAAUP@@K@Z (the class rename also respells a same-class callee at another retail address; left for its own evidence)

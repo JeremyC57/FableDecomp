@@ -1,0 +1,5 @@
+caller	targets	status	source	note
+0065c36e	004c7e70	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/65/CTCVillage_SetVillageLimbo_0065c36e.cpp	004c7e70 ?GFHasScriptThing@@YI_NPAVCThing@@@Z -> ?CThing_HasScriptThing@@YI_NPAVCThing@@@Z
+006a8560	004c7e70	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/6a/CThingFilterHasScriptedControl_operator_006a8560.cpp	004c7e70 ?GFHasScriptThing@@YI_NPAVCThing@@@Z -> ?CThing_HasScriptThing@@YI_NPAVCThing@@@Z
+00b4aaa0	00b8fee0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/b4/CEnginePrimitiveRenderer2D_CEnginePrimitiveRenderer2D_00b4aaa0.cpp	00b8fee0 ?ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z -> ?CEngineInternalPrimitiveBase_ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z
+00b93660	00b8fee0	RESPELLED_IN_OVERLAY (RELOCATION_MATCH PASS INHERITED_WARN)	00/b9/CEngineSceneGridCell_CEngineSceneGridCell_00b93660.cpp	00b8fee0 ?ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z -> ?CEngineInternalPrimitiveBase_ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z

@@ -1,3 +1,4 @@
+// Leaf: ?CCategory_GetCategoryIdentifier@@YIHPAUCCategory@@@Z
 typedef int EInventoryCategoryIdentifier;
 
 struct RefObj {
@@ -23,7 +24,7 @@ struct SmartRef {
     }
 };
 
-EInventoryCategoryIdentifier __fastcall GetCategoryIdentifier(CCategory* self)
+EInventoryCategoryIdentifier __fastcall CCategory_GetCategoryIdentifier(CCategory* self)
 {
     SmartRef ref(self->m0c);
     EInventoryCategoryIdentifier id = self->m0c->catId;

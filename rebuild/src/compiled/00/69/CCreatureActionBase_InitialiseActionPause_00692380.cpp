@@ -1,3 +1,4 @@
+// Leaf: ?CCreatureActionBase_InitialiseActionPause@@YIXPAVCCreatureActionBase@@@Z
 #include "engine/CCreatureActionBase.h"
 
 struct ActionRegistrar { void RegisterAction(int actionId, void* description); };
@@ -9,7 +10,7 @@ struct CCreatureActionBaseVirtuals {
     virtual int GetActionId();
 };
 
-void __fastcall InitialiseActionPause(CCreatureActionBase* action) {
+void __fastcall CCreatureActionBase_InitialiseActionPause(CCreatureActionBase* action) {
     CCreatureActionBaseVirtuals* virtuals =
         reinterpret_cast<CCreatureActionBaseVirtuals*>(action);
     int actionId = virtuals->GetActionId();

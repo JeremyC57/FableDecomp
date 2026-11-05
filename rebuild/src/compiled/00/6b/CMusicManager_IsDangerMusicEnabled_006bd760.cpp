@@ -1,4 +1,5 @@
 // CMusicManager::IsDangerMusicEnabled @ 0x006bd760
+// Leaf: ?CMusicManager_IsDangerMusicEnabled@@YIPAXPAVCMusicManager@@@Z
 // Reads pointer fields at +8, +0xc, +4, +0x10, returns first non-null,
 // else field at +0 (mov eax,[ecx]). Returns raw pointer value in eax.
 
@@ -10,7 +11,7 @@ class CMusicManager { public:
     void* f10;  // +0x10
 };
 
-void* __fastcall IsDangerMusicEnabled(CMusicManager* manager)
+void* __fastcall CMusicManager_IsDangerMusicEnabled(CMusicManager* manager)
 {
     void* p;
     if ((p = manager->f8) != 0) return p;

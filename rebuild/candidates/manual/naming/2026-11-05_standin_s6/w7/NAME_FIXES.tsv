@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00428905	??0?$CCountedPointer@VCMeshDataBank@@@@QAE@ABV0@@Z	T = CMeshDataBank: caller binding (0042dd28,0042e98f,005958f5) + PDB symbol ??0?$CCountedPointer@VCMeshDataBank@@@@QAE@ABV0@@Z.	?Register@Bank@@QAEXPAUSub@@@Z
+00428928	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@ABV0@@Z	T = NUISystem::CComponent: caller binding (00429f9c,0042a961,0053b321,005820e7,00582673,005b358c,005b3613,005c323a,005c3444) + PDB symbol ??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@ABV0@@Z.	??0CCountedPointer@@QAE@ABU0@@Z, ??0CElement8_00428928@@QAE@ABU0@@Z
+0065d89b	??0?$CCountedPointer@VCVillageTaskHorn@@@@QAE@ABV0@@Z	T = CVillageTaskHorn: caller binding (0065f96d) + PDB symbol ??0?$CCountedPointer@VCVillageTaskHorn@@@@QAE@ABV0@@Z.	??0value_type_0065d89b@CRetailList_node0x10@@QAE@ABU01@@Z

@@ -1,3 +1,4 @@
+// Leaf: ?CHandleBasedMemoryPool_EndCritical@@YIXPAVCHandleBasedMemoryPool@@@Z
 struct CRIT { int x; };
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void*);   // IAT 0x0143FE10 = KERNEL32.dll!LeaveCriticalSection
 
@@ -8,7 +9,7 @@ class CHandleBasedMemoryPool { public:
     CRIT cs;
 };
 
-void __fastcall EndCritical(CHandleBasedMemoryPool* self)
+void __fastcall CHandleBasedMemoryPool_EndCritical(CHandleBasedMemoryPool* self)
 {
     if (self->flag) {
         LeaveCriticalSection(&self->cs);

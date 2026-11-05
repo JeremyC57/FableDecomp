@@ -17,7 +17,7 @@ float CThingCreatureBase::FindPosZ(const C3DVector& pos, int flag, bool b)
     return g_ret;
 }
 
-float __fastcall FindPosZAt(CGroundNavigatorExternalInterface* self, void* edx, const C3DVector& pos, bool b);
+float __fastcall CGroundNavigatorExternalInterface_FindPosZAt(CGroundNavigatorExternalInterface* self, void* edx, const C3DVector& pos, bool b);
 
 int main()
 {
@@ -26,10 +26,10 @@ int main()
     C3DVector pos = { 1.0f, 2.0f, 3.0f };
     g_expect_pos = &pos;
     g_expect_b = true;
-    float r = FindPosZAt(&self, 0, pos, true);
+    float r = CGroundNavigatorExternalInterface_FindPosZAt(&self, 0, pos, true);
     if (r != g_ret) { printf("BAD ret "); return 1; }
     g_expect_b = false;
-    r = FindPosZAt(&self, 0, pos, false);
+    r = CGroundNavigatorExternalInterface_FindPosZAt(&self, 0, pos, false);
     if (r != g_ret) { printf("BAD ret2 "); return 1; }
     printf("OK_006cd970 ");
     return 0;

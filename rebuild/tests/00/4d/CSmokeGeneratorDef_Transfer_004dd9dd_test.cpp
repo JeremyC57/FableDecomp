@@ -14,7 +14,7 @@ class CGuildMasterDef { public:
     CMember m2c;
 };
 
-void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
+void __fastcall CSmokeGeneratorDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
 {
     ctx->Persist(&def->m28);
     ctx->Persist(&def->m2c);
@@ -24,7 +24,7 @@ int main()
 {
     CGuildMasterDef d;
     CPersistContext ctx; ctx.calls = 0;
-    CGuildMasterDef_Transfer(&d, 0, &ctx);
+    CSmokeGeneratorDef_Transfer(&d, 0, &ctx);
     unsigned char* base = (unsigned char*)&d;
     if (ctx.calls == 2 && ctx.args[0] == (void*)(base + 0x28) && ctx.args[1] == (void*)(base + 0x2c)) {
         std::printf("CGuildMasterDef_004dd9dd_TEST PASS\n");

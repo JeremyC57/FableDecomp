@@ -1,3 +1,4 @@
+// Leaf: ?CTCCameraPointFixedPoint_scalar_deleting_destructor@@YIPAXPAVCTCCameraPointFixedPoint@@HI@Z
 #pragma optimize("s", on)
 class CTCBase {
 public:
@@ -9,7 +10,7 @@ class CTCCameraPointFixedPoint
 };
 extern void* const g_CTCCameraPointFixedPoint_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CTCCameraPointFixedPoint* point, int, unsigned int flags)
+void* __fastcall CTCCameraPointFixedPoint_scalar_deleting_destructor(CTCCameraPointFixedPoint* point, int, unsigned int flags)
 {
     point->vftable = (void*)&g_CTCCameraPointFixedPoint_vftable;
     ((CTCBase*)(point))->CTCBase::~CTCBase();

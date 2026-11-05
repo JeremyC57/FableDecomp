@@ -1,3 +1,4 @@
+// Leaf: ?CVillageTaskTorch_IsAnyCreatureAssignedToTask@@YI_NPAVCVillageTaskTorch@@@Z
 #include "engine/CVillageTaskTorch.h"  // retyped onto the PDB layout; byte parity re-verified
 class CBaseObject;
 class CBaseObjectPointer;
@@ -10,4 +11,5 @@ public:
 private:
     CBaseObjectPointer* PData;                           // +0x04
 };
-bool __fastcall f(CVillageTaskTorch* task){ return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task)+0x10))->GetPItem())) != 0; }
+bool __fastcall CVillageTaskTorch_IsAnyCreatureAssignedToTask(CVillageTaskTorch* task){ return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task)+0x10))->GetPItem())) != 0; }
+// Stand-in (owner rule 2026-11-05): CVillageTaskTorch_IsAnyCreatureAssignedToTask for CVillageTaskTorch::IsAnyCreatureAssignedToTask; RTTI vtable slot ?IsAnyCreatureAssignedToTask@CVillageTaskTorch@@UBE_NXZ + PDB name set (egor/fablewin).

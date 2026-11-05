@@ -1,3 +1,4 @@
+// Leaf: ?CTCActivationReceptorBase_Activate@@YIXPAVCTCActivationReceptorBase@@@Z
 class CTCActivationReceptorBase { public:
     char pad0[0x0c];
     unsigned char Activated;   // +0x0c
@@ -9,7 +10,7 @@ class CTCActivationReceptorBase { public:
 
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
-void __fastcall Activate(CTCActivationReceptorBase* receptor)
+void __fastcall CTCActivationReceptorBase_Activate(CTCActivationReceptorBase* receptor)
 {
     receptor->Activated = 1;
     if (receptor->f20)

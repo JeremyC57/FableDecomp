@@ -6,7 +6,7 @@ class CEngineLandscapeRenderer { public:
 };
 
 // __fastcall: this in ecx, args (index, value) on stack, callee cleans 8 (ret 8).
-void __fastcall OnRegistedZSortingPatchRelocation(CEngineLandscapeRenderer* self, void* /*edx*/, int index, int value)
+void __fastcall CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation(CEngineLandscapeRenderer* self, void* /*edx*/, int index, int value)
 {
     self->m_zSortingPatchArray[index] = value;
 }
@@ -24,7 +24,7 @@ int main()
     int val = 0x1234;
 
     // Invoke via a raw __fastcall shim: this=ecx, push value then index.
-    void* fn = (void*)&OnRegistedZSortingPatchRelocation;
+    void* fn = (void*)&CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation;
     __asm {
         push val
         push idx

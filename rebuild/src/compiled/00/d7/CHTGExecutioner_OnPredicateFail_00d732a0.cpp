@@ -1,5 +1,5 @@
 // Byte-exact reconstruction of CHTG_Executioner::OnPredicateFail @ 0x00d732a0
-// Leaf: OnPredicateFail
+// Leaf: ?CHTG_Executioner_OnPredicateFail@@YIXPAUCHTG_Executioner@@@Z
 
 // The pushed arg is the ADDRESS 0x12d29d4 (a global). Model as extern global,
 // pass its address.
@@ -24,7 +24,7 @@ struct CHTG_Executioner {
     Obj* obj;   // +0x14
 };
 
-void __fastcall OnPredicateFail(CHTG_Executioner* self)
+void __fastcall CHTG_Executioner_OnPredicateFail(CHTG_Executioner* self)
 {
     SubObj* s = (SubObj*)((char*)self->obj + 0x9c);
     ((CCharString*)s)->operator=((char const*)(&g_PredMsg));

@@ -1,3 +1,4 @@
+// Leaf: ?CHighlightItemDef_scalar_deleting_destructor@@YIPAXPAVCHighlightItemDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CHighlightItemDef
 };
 extern void* const g_CHighlightItemDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CHighlightItemDef* def, int, unsigned int flags)
+void* __fastcall CHighlightItemDef_scalar_deleting_destructor(CHighlightItemDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CHighlightItemDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

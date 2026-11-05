@@ -13,7 +13,7 @@ struct Gen {
     int f84;
 };
 
-static bool IsDepleted(Gen* self)
+static bool CTCCreatureGenerator_IsDepleted(Gen* self)
 {
     ListNode* head = self->list;
     if (head->next == head) {          // list empty
@@ -32,19 +32,19 @@ int main()
     Gen g;
     // Case A: non-empty -> NEVER depleted regardless of counts
     g.list = &n; g.f84 = 999; g.f40 = 100; g.f54 = 0;
-    bool a = IsDepleted(&g);
+    bool a = CTCCreatureGenerator_IsDepleted(&g);
 
     // Case B: empty, count below cap, f54!=0 -> NOT depleted
     g.list = &selfNode; g.f84 = 5; g.f40 = 100; g.f54 = 1;
-    bool b = IsDepleted(&g);
+    bool b = CTCCreatureGenerator_IsDepleted(&g);
 
     // Case C: empty, count >= cap -> depleted
     g.list = &selfNode; g.f84 = 100; g.f40 = 100; g.f54 = 1;
-    bool c = IsDepleted(&g);
+    bool c = CTCCreatureGenerator_IsDepleted(&g);
 
     // Case D: empty, below cap, f54==0 -> depleted
     g.list = &selfNode; g.f84 = 5; g.f40 = 100; g.f54 = 0;
-    bool d = IsDepleted(&g);
+    bool d = CTCCreatureGenerator_IsDepleted(&g);
 
     if (!a && !b && c && d) {
         printf("BEHAVIOUR_OK\n");

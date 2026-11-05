@@ -1,3 +1,4 @@
+// Leaf: ?CCachedFile_GetPathname@@YIPAXPAVCCachedFile@@HPAVCCharString@@@Z
 class CCharString { public:
     void* copyCtor(char* src);   // default thiscall: ecx=this, src on stack
 };
@@ -7,7 +8,7 @@ class CCachedFile { public:
     char m_pathname[4];
 };
 
-void* __fastcall GetPathname(CCachedFile* file, int /*edx*/, CCharString* dst)
+void* __fastcall CCachedFile_GetPathname(CCachedFile* file, int /*edx*/, CCharString* dst)
 {
     dst->copyCtor(file->m_pathname);
     return dst;

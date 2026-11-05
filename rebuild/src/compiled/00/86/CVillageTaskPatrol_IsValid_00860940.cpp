@@ -1,3 +1,4 @@
+// Leaf: ?CVillageTaskPatrol_IsValid@@YI_NPAVCVillageTaskPatrol@@@Z
 #include "engine/CVillageTaskPatrol.h"  // retyped onto the PDB layout; byte parity re-verified
 class CBaseObject;
 class CBaseObjectPointer;
@@ -10,4 +11,4 @@ public:
 private:
     CBaseObjectPointer* PData;                           // +0x04
 };
-bool __fastcall IsValid(CVillageTaskPatrol* task){ return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task)+8))->GetPItem())) != 0; }
+bool __fastcall CVillageTaskPatrol_IsValid(CVillageTaskPatrol* task){ return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task)+8))->GetPItem())) != 0; }

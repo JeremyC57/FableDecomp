@@ -21,7 +21,7 @@ struct CRegionMinimap {
     CSurface surf;
 };
 
-void __fastcall InitialiseSurface(CRegionMinimap* minimap)
+void __fastcall CRegionMinimap_InitialiseSurface(CRegionMinimap* minimap)
 {
     CPixelFormat pf;
     int dim = minimap->handle;
@@ -35,7 +35,7 @@ void __fastcall InitialiseSurface(CRegionMinimap* minimap)
 
 int main(){
     CRegionMinimap rm; rm.handle = 77;
-    InitialiseSurface(&rm);
+    CRegionMinimap_InitialiseSurface(&rm);
     if(g_calls==2 && g_r==8 && g_g==8 && g_b==8 && g_a==0 && g_signd==1 && g_extx==77 && g_exty==77)
         printf("SURFACE_OK\n");
     else printf("FAIL c=%d r=%d g=%d b=%d a=%d s=%d x=%d y=%d\n",g_calls,g_r,g_g,g_b,g_a,g_signd,g_extx,g_exty);

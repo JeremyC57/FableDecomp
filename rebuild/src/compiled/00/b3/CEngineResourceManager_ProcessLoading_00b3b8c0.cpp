@@ -1,4 +1,5 @@
 // CEngineResourceManager::ProcessLoading @ 00b3b8c0
+// Leaf: ?CEngineResourceManager_ProcessLoading@@YIXPAVCEngineResourceManager@@@Z
 // fld [g]; sub esp,8; fstp [esp]; push 0; add ecx,-0xc; call 0xb3b7f0; ret
 extern double g_procLoadTime;
 
@@ -10,7 +11,7 @@ class CEngineResourceManager { public:
     char pad[0x10];
 };
 
-void __fastcall ProcessLoading(CEngineResourceManager* manager)
+void __fastcall CEngineResourceManager_ProcessLoading(CEngineResourceManager* manager)
 {
     SubObj* s = reinterpret_cast<SubObj*>(reinterpret_cast<char*>(manager) - 0xc);
     s->Do(0, g_procLoadTime);

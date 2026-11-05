@@ -3,7 +3,7 @@
 struct Inner { char pad[0x5c]; unsigned char flag; };
 class CLandscapeBackgroundTreeNode { public: char pad[0xa4]; Inner* inner; };
 
-bool __fastcall CanRelocateData(CLandscapeBackgroundPatch* patch, int /*edx*/, long a) {
+bool __fastcall CLandscapeBackgroundPatch_CanRelocateData(CLandscapeBackgroundPatch* patch, int /*edx*/, long a) {
     (void)a;
     return patch->Parent->inner->flag == 0;
 }
@@ -15,8 +15,8 @@ int main() {
     CLandscapeBackgroundTreeNode m1; m1.inner = &in1;
     CLandscapeBackgroundPatch p0; p0.Parent = &m0;
     CLandscapeBackgroundPatch p1; p1.Parent = &m1;
-    if (CanRelocateData(&p0, 0, 7L) != true) { printf("FAIL0\n"); return 1; }
-    if (CanRelocateData(&p1, 0, 7L) != false) { printf("FAIL1\n"); return 2; }
+    if (CLandscapeBackgroundPatch_CanRelocateData(&p0, 0, 7L) != true) { printf("FAIL0\n"); return 1; }
+    if (CLandscapeBackgroundPatch_CanRelocateData(&p1, 0, 7L) != false) { printf("FAIL1\n"); return 2; }
     printf("OK_00be5e50\n");
     return 0;
 }

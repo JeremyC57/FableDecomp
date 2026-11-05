@@ -1,3 +1,4 @@
+// Leaf: ?CThingDrainLifeShotDef_scalar_deleting_destructor@@YIPAXPAVCThingDrainLifeShotDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CThingDrainLifeShotDef
 };
 extern void* const g_CThingDrainLifeShotDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CThingDrainLifeShotDef* def, int, unsigned int flags)
+void* __fastcall CThingDrainLifeShotDef_scalar_deleting_destructor(CThingDrainLifeShotDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CThingDrainLifeShotDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

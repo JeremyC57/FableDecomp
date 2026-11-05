@@ -18,7 +18,7 @@ void SubObj::Set(long a) {
     g_lastSelf = this;
 }
 
-void __fastcall SetAsPumpCombatActions(CBrainOutput* self, int /*edx*/, long a)
+void __fastcall CBrainOutput_SetAsPumpCombatActions(CBrainOutput* self, int /*edx*/, long a)
 {
     self->sub.Set(a);
     self->flags |= 2;
@@ -29,7 +29,7 @@ int main()
     CBrainOutput o;
     o.flags = 0x1;
     o.pad = 0;
-    SetAsPumpCombatActions(&o, 0, 1234);
+    CBrainOutput_SetAsPumpCombatActions(&o, 0, 1234);
 
     bool ok = (g_lastArg == 1234)
            && (g_lastSelf == (void*)&o.sub)

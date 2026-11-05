@@ -1,3 +1,4 @@
+// Leaf: ?CDisplayEngine_IsScreenFullyFadedOut@@YIHPAVCDisplayEngine@@@Z
 
 class CDisplayEngine { public:
     char pad_bc[0xbc];
@@ -7,7 +8,7 @@ class CDisplayEngine { public:
     unsigned char flagC9;       // +0xc9
 };
 
-int __fastcall IsScreenFullyFadedOut(CDisplayEngine *engine)
+int __fastcall CDisplayEngine_IsScreenFullyFadedOut(CDisplayEngine *engine)
 {
     if (engine->fadeActive) {
         if (!engine->flagC9) {

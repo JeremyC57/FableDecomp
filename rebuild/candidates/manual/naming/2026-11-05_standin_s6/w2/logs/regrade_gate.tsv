@@ -1,0 +1,333 @@
+address	verdict	reason	changes	name_notes	secs
+00406800	PASS		DEF ?OnPostDeviceReset@@YADXZ -> ?CUserProfileManager_OnPostDeviceReset@@YADXZ		0.16
+0042d930	PASS		DEF @DeleteIfSet@4 -> @CIVCountedPointeeBase_Delete@4		0.15
+0042da10	PASS		DEF ?GetInstantiationName@@YGPAHPAH@Z -> ?CDefClassBase_GetInstantiationName@@YGPAHPAH@Z		0.13
+004376b0	PASS		DEF ?SetCrimeAsDisplaying@@YIXPAVCPlayerGui@@@Z -> ?CPlayerGui_SetCrimeAsDisplaying@@YIXPAVCPlayerGui@@@Z		0.18
+00445620	PASS		DEF ?GetType@@YIHPAX@Z -> ?CInputTypeXboxPadButtonEvent_GetType@@YIHPAX@Z		0.14
+004456f0	PASS		DEF ?GetType@@YIHPAX@Z -> ?CInputTypeMouseMovementEvent_GetType@@YIHPAX@Z		0.14
+004457b0	PASS		DEF ?GetType@@YIHPAX@Z -> ?CInputTypeMouseWheelMovementDownEvent_GetType@@YIHPAX@Z		0.18
+0048b500	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCInputProcessInventory@@HI@Z -> ?CInputProcessInventory_scalar_deleting_destructor@@YIPAXPAVCInputProcessInventory@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004aaa90	PASS		DEF ?GetCurrentStateGroupType@@YIHPAUS@@@Z -> ?CScriptThing_GetCurrentStateGroupType@@YIHPAUS@@@Z		0.15
+004aaaa0	PASS		DEF ?GetCurrentScriptPriority@@YIHPAUS@@@Z -> ?CScriptThing_GetCurrentScriptPriority@@YIHPAUS@@@Z		0.19
+004aaab0	PASS		DEF ?IsSneaking@@YI_NPAUS@@@Z -> ?CScriptThing_IsSneaking@@YI_NPAUS@@@Z		0.16
+004aaac0	PASS		DEF ?IsAwareOfHero@@YI_NPAUS@@@Z -> ?CScriptThing_IsAwareOfHero@@YI_NPAUS@@@Z		0.15
+004aac10	PASS		DEF ?MsgHowLongWasExpressionPerformed@@YIHPAUS@@@Z -> ?CScriptThing_MsgHowLongWasExpressionPerformed@@YIHPAUS@@@Z		0.14
+004bbff0	PASS		DEF ?DrawGetSeaLevel@@YIMPAVCMap@@@Z -> ?CMap_DrawGetSeaLevel@@YIMPAVCMap@@@Z		0.14
+004bc180	PASS		DEF ?GetFadeDistance@@YIMPAUCTCGraphicAppearance@@@Z -> ?CTCGraphicAppearance_GetFadeDistance@@YIMPAUCTCGraphicAppearance@@@Z		0.14
+004c7c40	PASS		DEF ?SetAsFrameUpdated@@YIXPAVCThing@@@Z -> ?CThing_SetAsFrameUpdated@@YIXPAVCThing@@@Z		0.14
+004c7e70	PASS		DEF ?GFHasScriptThing@@YI_NPAVCThing@@@Z -> ?CThing_HasScriptThing@@YI_NPAVCThing@@@Z		0.16
+004d3a3e	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAUCTCCameraPointShapeActivationBase@@HI@Z -> ?CTCCameraPointShapeActivationBase_scalar_deleting_destructor@@YIPAXPAUCTCCameraPointShapeActivationBase@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d7b7f	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCBuyHouseDef@@HI@Z -> ?CBuyHouseDef_scalar_deleting_destructor@@YIPAXPAVCBuyHouseDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.18
+004d7bc5	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCWifeDef@@HI@Z -> ?CWifeDef_scalar_deleting_destructor@@YIPAXPAVCWifeDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.19
+004d7c0b	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCDoorDef@@HI@Z -> ?CDoorDef_scalar_deleting_destructor@@YIPAXPAVCDoorDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d7c51	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCKickableDef@@HI@Z -> ?CKickableDef_scalar_deleting_destructor@@YIPAXPAVCKickableDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.18
+004d7c97	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCLightDef@@HI@Z -> ?CLightDef_scalar_deleting_destructor@@YIPAXPAVCLightDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.18
+004d7cdd	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCSpotLightDef@@HI@Z -> ?CSpotLightDef_scalar_deleting_destructor@@YIPAXPAVCSpotLightDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d7d23	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCHeroDef@@HI@Z -> ?CHeroDef_scalar_deleting_destructor@@YIPAXPAVCHeroDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+004d7eda	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCPerceivedThingDef@@HI@Z -> ?CPerceivedThingDef_scalar_deleting_destructor@@YIPAXPAVCPerceivedThingDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+004d7f20	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCStealthDef@@HI@Z -> ?CStealthDef_scalar_deleting_destructor@@YIPAXPAVCStealthDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d80c2	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCExplodingObjectDef@@HI@Z -> ?CExplodingObjectDef_scalar_deleting_destructor@@YIPAXPAVCExplodingObjectDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d8108	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCLookDef@@HI@Z -> ?CLookDef_scalar_deleting_destructor@@YIPAXPAVCLookDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.18
+004d8203	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTCCameraPointFixedPoint@@HI@Z -> ?CTCCameraPointFixedPoint_scalar_deleting_destructor@@YIPAXPAVCTCCameraPointFixedPoint@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+004d8242	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTCCameraPointFixedDolly@@HI@Z -> ?CTCCameraPointFixedDolly_scalar_deleting_destructor@@YIPAXPAVCTCCameraPointFixedDolly@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d8281	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTCCameraPointTrack@@HI@Z -> ?CTCCameraPointTrack_scalar_deleting_destructor@@YIPAXPAVCTCCameraPointTrack@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d82c0	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTCCameraPointGeneralCase@@HI@Z -> ?CTCCameraPointGeneralCase_scalar_deleting_destructor@@YIPAXPAVCTCCameraPointGeneralCase@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.19
+004d82ff	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAUCTCCameraPointDead@@HI@Z -> ?CTCCameraPointDead_scalar_deleting_destructor@@YIPAXPAUCTCCameraPointDead@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+004d837e	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCEnemyDef@@HI@Z -> ?CEnemyDef_scalar_deleting_destructor@@YIPAXPAVCEnemyDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.20
+004d83ef	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCOpinionOfHeroDef@@HI@Z -> ?COpinionOfHeroDef_scalar_deleting_destructor@@YIPAXPAVCOpinionOfHeroDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.21
+004d8427	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCShopItemDef@@HI@Z -> ?CShopItemDef_scalar_deleting_destructor@@YIPAXPAVCShopItemDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d84a6	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCStockItemDef@@HI@Z -> ?CStockItemDef_scalar_deleting_destructor@@YIPAXPAVCStockItemDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d84ec	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTimeAppearanceFadeDef@@HI@Z -> ?CTimeAppearanceFadeDef_scalar_deleting_destructor@@YIPAXPAVCTimeAppearanceFadeDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d856b	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCGiftDef@@HI@Z -> ?CGiftDef_scalar_deleting_destructor@@YIPAXPAVCGiftDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d8695	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCHighlightItemDef@@HI@Z -> ?CHighlightItemDef_scalar_deleting_destructor@@YIPAXPAVCHighlightItemDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.18
+004d8714	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCHeroCentreDef@@HI@Z -> ?CHeroCentreDef_scalar_deleting_destructor@@YIPAXPAVCHeroCentreDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d875a	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCBoastingPodiumDef@@HI@Z -> ?CBoastingPodiumDef_scalar_deleting_destructor@@YIPAXPAVCBoastingPodiumDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.19
+004d87bd	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCShipDef@@HI@Z -> ?CShipDef_scalar_deleting_destructor@@YIPAXPAVCShipDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d883c	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCExpressionSubDef@@HI@Z -> ?CExpressionSubDef_scalar_deleting_destructor@@YIPAXPAVCExpressionSubDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.19
+004d8874	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCSummonableCreatureDef@@HI@Z -> ?CSummonableCreatureDef_scalar_deleting_destructor@@YIPAXPAVCSummonableCreatureDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d8920	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCOccupiableDef@@HI@Z -> ?COccupiableDef_scalar_deleting_destructor@@YIPAXPAVCOccupiableDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+004d89ca	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCInterestingToVillagersDef@@HI@Z -> ?CInterestingToVillagersDef_scalar_deleting_destructor@@YIPAXPAVCInterestingToVillagersDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d8a10	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCGuardDef@@HI@Z -> ?CGuardDef_scalar_deleting_destructor@@YIPAXPAVCGuardDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+004d8a48	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCActivateQuestDef@@HI@Z -> ?CActivateQuestDef_scalar_deleting_destructor@@YIPAXPAVCActivateQuestDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+004d8a8e	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCCrateStackDef@@HI@Z -> ?CCrateStackDef_scalar_deleting_destructor@@YIPAXPAVCCrateStackDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+004d8ad4	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCOverheadDisplayDef@@HI@Z -> ?COverheadDisplayDef_scalar_deleting_destructor@@YIPAXPAVCOverheadDisplayDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+004d8b1a	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTavernTableDef@@HI@Z -> ?CTavernTableDef_scalar_deleting_destructor@@YIPAXPAVCTavernTableDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d8c05	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTavernDef@@HI@Z -> ?CTavernDef_scalar_deleting_destructor@@YIPAXPAVCTavernDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.19
+004d8cb5	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCDrunkennessDef@@HI@Z -> ?CDrunkennessDef_scalar_deleting_destructor@@YIPAXPAVCDrunkennessDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d8d34	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCFireballSpellLevelDef@@HI@Z -> ?CFireballSpellLevelDef_scalar_deleting_destructor@@YIPAXPAVCFireballSpellLevelDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d8d7a	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCThingDrainLifeShotDef@@HI@Z -> ?CThingDrainLifeShotDef_scalar_deleting_destructor@@YIPAXPAVCThingDrainLifeShotDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.20
+004d8ee9	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCGoldDef@@HI@Z -> ?CGoldDef_scalar_deleting_destructor@@YIPAXPAVCGoldDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d8f2f	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCCoinGameObstacleDef@@HI@Z -> ?CCoinGameObstacleDef_scalar_deleting_destructor@@YIPAXPAVCCoinGameObstacleDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.18
+004d8f75	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTavernGameCoinBaseDef@@HI@Z -> ?CTavernGameCoinBaseDef_scalar_deleting_destructor@@YIPAXPAVCTavernGameCoinBaseDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d8fbb	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTavernGameCoinGolfDef@@HI@Z -> ?CTavernGameCoinGolfDef_scalar_deleting_destructor@@YIPAXPAVCTavernGameCoinGolfDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d906b	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCDecapitationDef@@HI@Z -> ?CDecapitationDef_scalar_deleting_destructor@@YIPAXPAVCDecapitationDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d90ea	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCWallMountEffectsDef@@HI@Z -> ?CWallMountEffectsDef_scalar_deleting_destructor@@YIPAXPAVCWallMountEffectsDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+004d9130	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCFishDef@@HI@Z -> ?CFishDef_scalar_deleting_destructor@@YIPAXPAVCFishDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+004d9176	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTeleporterDef@@HI@Z -> ?CTeleporterDef_scalar_deleting_destructor@@YIPAXPAVCTeleporterDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d91bc	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCHeroSpecialMovementDef@@HI@Z -> ?CHeroSpecialMovementDef_scalar_deleting_destructor@@YIPAXPAVCHeroSpecialMovementDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.19
+004d9202	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCResurrectionItemDef@@HI@Z -> ?CResurrectionItemDef_scalar_deleting_destructor@@YIPAXPAVCResurrectionItemDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d9248	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCKrakenTentacleDef@@HI@Z -> ?CKrakenTentacleDef_scalar_deleting_destructor@@YIPAXPAVCKrakenTentacleDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d928e	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCAICreatureWillPowerIndicatorDef@@HI@Z -> ?CAICreatureWillPowerIndicatorDef_scalar_deleting_destructor@@YIPAXPAVCAICreatureWillPowerIndicatorDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+004d92c6	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCCarriedReadableDef@@HI@Z -> ?CCarriedReadableDef_scalar_deleting_destructor@@YIPAXPAVCCarriedReadableDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004d9345	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCFishingRodDef@@HI@Z -> ?CFishingRodDef_scalar_deleting_destructor@@YIPAXPAVCFishingRodDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+004d93c4	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCNymphDef@@HI@Z -> ?CNymphDef_scalar_deleting_destructor@@YIPAXPAVCNymphDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d940a	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCSummonDef@@HI@Z -> ?CSummonDef_scalar_deleting_destructor@@YIPAXPAVCSummonDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.20
+004d9489	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCCameraCollisionDef@@HI@Z -> ?CCameraCollisionDef_scalar_deleting_destructor@@YIPAXPAVCCameraCollisionDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d94ec	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCTCVolumeContainmentTrackerDef@@HI@Z -> ?CTCVolumeContainmentTrackerDef_scalar_deleting_destructor@@YIPAXPAVCTCVolumeContainmentTrackerDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d964d	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCWillResponseDef@@HI@Z -> ?CWillResponseDef_scalar_deleting_destructor@@YIPAXPAVCWillResponseDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.13
+004d9701	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCBettingDef@@HI@Z -> ?CBettingDef_scalar_deleting_destructor@@YIPAXPAVCBettingDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.13
+004d980d	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCOracleMinigameDef@@HI@Z -> ?COracleMinigameDef_scalar_deleting_destructor@@YIPAXPAVCOracleMinigameDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d98a6	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCLightningOrbDef@@HI@Z -> ?CLightningOrbDef_scalar_deleting_destructor@@YIPAXPAVCLightningOrbDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004d98ec	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCHasNameDef@@HI@Z -> ?CHasNameDef_scalar_deleting_destructor@@YIPAXPAVCHasNameDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004da78b	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCCarryableDef@@HI@Z -> ?CCarryableDef_scalar_deleting_destructor@@YIPAXPAVCCarryableDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004da7d1	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCVillageMemberDef@@HI@Z -> ?CVillageMemberDef_scalar_deleting_destructor@@YIPAXPAVCVillageMemberDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004da809	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCBedDef@@HI@Z -> ?CBedDef_scalar_deleting_destructor@@YIPAXPAVCBedDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+004da84f	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCSmokeGeneratorDef@@HI@Z -> ?CSmokeGeneratorDef_scalar_deleting_destructor@@YIPAXPAVCSmokeGeneratorDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004da895	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCCreatureNavigationDef@@HI@Z -> ?CCreatureNavigationDef_scalar_deleting_destructor@@YIPAXPAVCCreatureNavigationDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+004daa32	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCReadableDef@@HI@Z -> ?CReadableDef_scalar_deleting_destructor@@YIPAXPAVCReadableDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+004df3b4	PASS		DEF ?FindPosZAt@@YGMMM@Z -> ?CObstacleNavigatorExternalInterface_FindPosZAt@@YGMMM@Z		0.15
+004df3bd	PASS		DEF ?FindPosZAtIncludingThemes@@YGMMM@Z -> ?CObstacleNavigatorExternalInterface_FindPosZAtIncludingThemes@@YGMMM@Z		0.14
+004df3d4	PASS		DEF ?GetTerrainHeightAt@@YGMPAX@Z -> ?CObstacleNavigatorExternalInterface_GetTerrainHeightAt@@YGMPAX@Z		0.16
+004df3dd	PASS		DEF ?GetThemeHeightAt@@YGMH@Z -> ?CObstacleNavigatorExternalInterface_GetThemeHeightAt@@YGMH@Z		0.17
+004df485	PASS		DEF ?GetProximityForDirectApproach@@YAMXZ -> ?CObstacleNavigatorExternalInterface_GetProximityForDirectApproach@@YAMXZ		0.18
+004df492	PASS		DEF ?GetMinPathCost@@YAMXZ -> ?CObstacleNavigatorExternalInterface_GetMinPathCost@@YAMXZ		0.15
+004df499	PASS		DEF ?GetMaxPathCost@@YAMXZ -> ?CObstacleNavigatorExternalInterface_GetMaxPathCost@@YAMXZ		0.15
+004df4aa	PASS		DEF ?IsDead@@YI_NPAVCObstacleNavigatorExternalInterface@@@Z -> ?CObstacleNavigatorExternalInterface_IsDead@@YI_NPAVCObstacleNavigatorExternalInterface@@@Z		0.19
+004e0e79	PASS		DEF ?Copy@@YIXPAVCActivateQuestDef@@PAXPBVCDefClassBase@@@Z -> ?CActivateQuestDef_Copy@@YIXPAVCActivateQuestDef@@PAXPBVCDefClassBase@@@Z		0.16
+004e0e98	PASS		DEF ?Copy@@YIXPAVCCrateStackDef@@PAXPBVCDefClassBase@@@Z -> ?CCrateStackDef_Copy@@YIXPAVCCrateStackDef@@PAXPBVCDefClassBase@@@Z		0.22
+004e0ee3	PASS		DEF ?Copy@@YIXPAVCTavernTableDef@@PAXPBVCDefClassBase@@@Z -> ?CTavernTableDef_Copy@@YIXPAVCTavernTableDef@@PAXPBVCDefClassBase@@@Z		0.14
+004e0fed	PASS		DEF ?Copy@@YIXPAVCGoldDef@@HPBVCDefClassBase@@@Z -> ?CGoldDef_Copy@@YIXPAVCGoldDef@@HPBVCDefClassBase@@@Z		0.16
+004e26b6	PASS		DEF ?GetSizeofClass@@YIKPAVCWeaponDef@@@Z -> ?CWeaponDef_GetSizeofClass@@YIKPAVCWeaponDef@@@Z		0.15
+004e4082	PASS		DEF ?CopyBackBufferToTexture@@YIPAVCTexture@@PAVCDisplayManager@@PAX@Z -> ?CDisplayManager_CopyBackBufferToTexture@@YIPAVCTexture@@PAVCDisplayManager@@PAX@Z		0.17
+004eac59	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCPrizeScoreDef@@HI@Z -> ?CPrizeScoreDef_scalar_deleting_destructor@@YIPAXPAVCPrizeScoreDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+004eafa7	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCShoveHaPennyRegionDef@@HI@Z -> ?CShoveHaPennyRegionDef_scalar_deleting_destructor@@YIPAXPAVCShoveHaPennyRegionDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.16
+004eb8a1	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCMultiStaticMeshEntryDef@@HI@Z -> ?CMultiStaticMeshEntryDef_scalar_deleting_destructor@@YIPAXPAVCMultiStaticMeshEntryDef@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+004ff900	PASS		DEF ?RegisterScriptedMapBrush@@YIXPAVCWorldMap@@HPAVCScriptedMapBrush@@J@Z -> ?CWorldMap_RegisterScriptedMapBrush@@YIXPAVCWorldMap@@HPAVCScriptedMapBrush@@J@Z		0.15
+0050b450	PASS		DEF ?GetDataFormatVersion@@YAHXZ -> ?CWADBank_GetDataFormatVersion@@YAHXZ		0.17
+0051cde0	PASS		DEF ?GetDimensions@@YIABVC2DBoxI@@PAVCWorldMap@@@Z -> ?CWorldMap_GetDimensions@@YIABVC2DBoxI@@PAVCWorldMap@@@Z		0.17
+0051ce00	PASS		DEF ?IsMapUsed@@YIEPAVCWorldMap@@HH@Z -> ?CWorldMap_IsMapUsed@@YIEPAVCWorldMap@@HH@Z		0.15
+00548570	PASS		DEF ?IsVibrationEnabled@@YIDPAVCUserProfileManager@@@Z -> ?CUserProfileManager_IsVibrationEnabled@@YIDPAVCUserProfileManager@@@Z		0.15
+00557940	PASS		DEF ?HaveAllTentaclesBeenHit@@YIDPAVCTCKraken@@@Z -> ?CTCKraken_HaveAllTentaclesBeenHit@@YIDPAVCTCKraken@@@Z		0.17
+0056e5ab	PASS		DEF ?ResetStatIndicatorValues@@YIXPAVCTCInventoryExperience@@@Z -> ?CTCInventoryExperience_ResetStatIndicatorValues@@YIXPAVCTCInventoryExperience@@@Z		0.15
+0057a5be	PASS		DEF ?SoberUp@@YIXPAVCTCHeroStats@@@Z -> ?CTCHeroStats_SoberUp@@YIXPAVCTCHeroStats@@@Z		0.14
+0057f93e	PASS		DEF ?TransferIn@@YIXPAUCPersistContext_TransferableComponent@@HPAVCPersistContext@@H@Z -> ?CPersistContext_TransferableComponent_TransferIn@@YIXPAUCPersistContext_TransferableComponent@@HPAVCPersistContext@@H@Z		0.17
+0057f95e	PASS		DEF ?TransferOut@@YIXPAUCPersistContext_TransferableComponent@@HPAVCPersistContext@@PAVCCharString@@@Z -> ?CPersistContext_TransferableComponent_TransferOut@@YIXPAUCPersistContext_TransferableComponent@@HPAVCPersistContext@@PAVCCharString@@@Z		0.16
+005bc66f	PASS		DEF ?ProcessButtonBReleased@@YIXPAUCTCInventoryBase@@@Z -> ?CTCInventoryBase_ProcessButtonBReleased@@YIXPAUCTCInventoryBase@@@Z		0.17
+005bc988	PASS		DEF ?GetHighlightedItem@@YIPAXPAUCCategory@@@Z -> ?CCategory_GetHighlightedItem@@YIPAXPAUCCategory@@@Z		0.14
+005bf30d	PASS		DEF ?GetItemDescription@@YIXPAUCTCInventoryBase@@PAXPAVCWideString@@J_N@Z -> ?CTCInventoryBase_GetItemDescription@@YIXPAUCTCInventoryBase@@PAXPAVCWideString@@J_N@Z		0.14
+005d8167	PASS		DEF ?TransferIn@@YIXPAUCPersistTraits@@HPAVCPersistContext@@PAVCStringParser@@PAH@Z -> ?CPersistTraits_TransferIn@@YIXPAUCPersistTraits@@HPAVCPersistContext@@PAVCStringParser@@PAH@Z		0.14
+005d9050	PASS		DEF ?GetCategoryIdentifier@@YIHPAUCCategory@@@Z -> ?CCategory_GetCategoryIdentifier@@YIHPAUCCategory@@@Z		0.14
+005db1d0	PASS		DEF ?Clone@@YIPAVCAnimComponentFlags@@PAV1@@Z -> ?CAnimComponentFlags_Clone@@YIPAVCAnimComponentFlags@@PAV1@@Z		0.17
+005db200	PASS		DEF ?Clone@@YIPAVCAnimComponentTransitionInTime@@PAV1@@Z -> ?CAnimComponentTransitionInTime_Clone@@YIPAVCAnimComponentTransitionInTime@@PAV1@@Z		0.20
+005db230	PASS		DEF ?Clone@@YIPAVCAnimComponentDelayTime@@PAV1@@Z -> ?CAnimComponentDelayTime_Clone@@YIPAVCAnimComponentDelayTime@@PAV1@@Z		0.18
+005db250	PASS		DEF ?SetDefaultValue@@YIXPAVCAnimComponentCombatHandedness@@@Z -> ?CAnimComponentCombatHandedness_SetDefaultValue@@YIXPAVCAnimComponentCombatHandedness@@@Z		0.17
+005db260	PASS		DEF ?Clone_CombatHandedness@@YIPAVCAnimComponentCombatHandedness@@PAV1@@Z -> ?CAnimComponentCombatHandedness_Clone@@YIPAVCAnimComponentCombatHandedness@@PAV1@@Z		0.17
+005db2b0	PASS		DEF ?SetDefaultValue@@YIXPAVCAnimComponentCombatComboChain@@@Z -> ?CAnimComponentCombatComboChain_SetDefaultValue@@YIXPAVCAnimComponentCombatComboChain@@@Z		0.18
+005db2c0	PASS		DEF ?Clone_ComboChain@@YIPAVCAnimComponentCombatComboChain@@PAV1@@Z -> ?CAnimComponentCombatComboChain_Clone@@YIPAVCAnimComponentCombatComboChain@@PAV1@@Z		0.15
+005db320	PASS		DEF ?Clone@@YIPAVCAnimComponentCombatRecoil@@PAV1@@Z -> ?CAnimComponentCombatRecoil_Clone@@YIPAVCAnimComponentCombatRecoil@@PAV1@@Z		0.19
+005db350	PASS		DEF ?Clone_CombatMisc@@YIPAXPAVCAnimComponentCombatMisc@@@Z -> ?CAnimComponentCombatMisc_Clone@@YIPAXPAVCAnimComponentCombatMisc@@@Z		0.16
+005db400	PASS		DEF ?Clone@@YIPAVCAnimComponentFollowingOnAnim@@PAV1@@Z -> ?CAnimComponentFollowingOnAnim_Clone@@YIPAVCAnimComponentFollowingOnAnim@@PAV1@@Z		0.17
+005db430	PASS		DEF ?Clone@@YIPAVCAnimComponentSetCreatureMode@@PAV1@@Z -> ?CAnimComponentSetCreatureMode_Clone@@YIPAVCAnimComponentSetCreatureMode@@PAV1@@Z		0.16
+005db460	PASS		DEF ?Clone@@YIPAVCAnimComponentFollowingOnAnimFilter@@PAV1@@Z -> ?CAnimComponentFollowingOnAnimFilter_Clone@@YIPAVCAnimComponentFollowingOnAnimFilter@@PAV1@@Z		0.16
+005db470	PASS		DEF ?Clone@@YIPAVCAnimComponentStrikeSpeedMultiplier@@PAV1@@Z -> ?CAnimComponentStrikeSpeedMultiplier_Clone@@YIPAVCAnimComponentStrikeSpeedMultiplier@@PAV1@@Z		0.14
+005df8e0	PASS		DEF ?Alloc@@YIPAVCAnimComponentBase@@PAVCAnimComponentStrikeSpeedMultiplier@@@Z -> ?CAnimComponentStrikeSpeedMultiplier_Alloc@@YIPAVCAnimComponentBase@@PAVCAnimComponentStrikeSpeedMultiplier@@@Z		0.14
+00646da7	PASS		DEF ?GetCurrentChange@@YIJPAUCMultiStatBar@@@Z -> ?CMultiStatBar_GetCurrentChange@@YIJPAUCMultiStatBar@@@Z		0.15
+00655fe9	PASS		DEF ?AddPrimitive@@YIXPAVCEnginePrimitiveRenderer2D@@PAVCEngineInternalPrimitiveBase@@@Z -> ?CEnginePrimitiveRenderer2D_AddPrimitive@@YIXPAVCEnginePrimitiveRenderer2D@@PAVCEngineInternalPrimitiveBase@@@Z		0.16
+006582df	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAVCVillageTaskBase@@HI@Z -> ?CVillageTaskBase_scalar_deleting_destructor@@YIPAXPAVCVillageTaskBase@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.17
+006590a0	PASS		DEF ?InvalidateAndClearAllSecuritySweepTasks@@YIXPAVCTCVillage@@@Z -> ?CTCVillage_InvalidateAndClearAllSecuritySweepTasks@@YIXPAVCTCVillage@@@Z		0.15
+0065c36e	PASS		004c7e70: ?GFHasScriptThing@@YI_NPAVCThing@@@Z -> ?CThing_HasScriptThing@@YI_NPAVCThing@@@Z		0.15
+0065ee50	PASS		DEF ?IsTaskAvailable@@YI_NPAUS@@@Z -> ?CVillageTaskHorn_IsTaskAvailable@@YI_NPAUS@@@Z		0.14
+0065eef1	PASS		DEF ?IsTaskAvailable@@YI_NPAUS@@@Z -> ?CVillageTaskPatrol_IsTaskAvailable@@YI_NPAUS@@@Z		0.14
+0065ef86	PASS		DEF ?IsTaskAvailable@@YI_NPAUS@@@Z -> ?CVillageTaskPickCrops_IsTaskAvailable@@YI_NPAUS@@@Z		0.15
+0066c750	PASS		DEF ?InitialiseSurface@@YIXPAUCRegionMinimap@@@Z -> ?CRegionMinimap_InitialiseSurface@@YIXPAUCRegionMinimap@@@Z		0.14
+006724b0	PASS		DEF ?AddPrimitive@@YIXPAVCEnginePrimitiveRenderer2D@@PAXPAVCEngineInternalPrimitiveBase@@@Z -> ?CEnginePrimitiveRenderer2D_AddPrimitive@@YIXPAVCEnginePrimitiveRenderer2D@@PAXPAVCEngineInternalPrimitiveBase@@@Z		0.14
+0067d7b0	PASS		DEF ?ForceOpen@@YIPAVCPlayerGui@@PAV1@@Z -> ?CPlayerGui_ForceOpen@@YIPAVCPlayerGui@@PAV1@@Z		0.14
+00686df0	PASS		DEF ?RemoveFromGlobalTCs@@YIXPAVCTCBase@@@Z -> ?CTCBase_RemoveFromGlobalTCs@@YIXPAVCTCBase@@@Z		0.16
+00688a00	PASS		DEF ?ProcessInput@@YIXPAVCInputProcessDead@@HABVCInputEvent@@AAVCProcessedInput@@@Z -> ?CInputProcessDead_ProcessInput@@YIXPAVCInputProcessDead@@HABVCInputEvent@@AAVCProcessedInput@@@Z		0.16
+00692380	PASS		DEF ?InitialiseActionPause@@YIXPAVCCreatureActionBase@@@Z -> ?CCreatureActionBase_InitialiseActionPause@@YIXPAVCCreatureActionBase@@@Z		0.16
+00692450	PASS		DEF ?ReinitialiseActionID@@YIXPAVCCreatureActionBase@@@Z -> ?CCreatureActionBase_ReinitialiseActionID@@YIXPAVCCreatureActionBase@@@Z		0.16
+00692670	PASS		DEF ?IsPreventingLookTurning@@YI_NPAVCCreatureActionBase@@@Z -> ?CCreatureActionBase_IsPreventingLookTurning@@YI_NPAVCCreatureActionBase@@@Z		0.18
+00692880	PASS		DEF ?OverrideFaceWithDefault@@YI_NPAVCCreatureActionBase@@@Z -> ?CCreatureActionBase_OverrideFaceWithDefault@@YI_NPAVCCreatureActionBase@@@Z		0.16
+006928b0	PASS		DEF ?CanAnimationTransitionOut@@YI_NPAVCCreatureActionBase@@@Z -> ?CCreatureActionBase_CanAnimationTransitionOut@@YI_NPAVCCreatureActionBase@@@Z		0.18
+00692980	PASS		DEF ?GetThingManager@@YIPAVCThingManager@@PAVCCreatureActionBase@@@Z -> ?CCreatureActionBase_GetThingManager@@YIPAVCThingManager@@PAVCCreatureActionBase@@@Z		0.17
+006929a0	PASS		DEF ?Update@@YIXPAVCCreatureActionBase@@@Z -> ?CCreatureActionBase_Update@@YIXPAVCCreatureActionBase@@@Z		0.18
+006929c0	PASS		DEF ?GetAnimationTransitionInTime@@YIJPAVCCreatureActionBase@@@Z -> ?CCreatureActionBase_GetAnimationTransitionInTime@@YIJPAVCCreatureActionBase@@@Z		0.15
+006a40b0	PASS		DEF ?Update@@YIXPAVCInputProcessJumpingAndRolling@@HAAVCProcessedInput@@@Z -> ?CInputProcessJumpingAndRolling_Update@@YIXPAVCInputProcessJumpingAndRolling@@HAAVCProcessedInput@@@Z		0.13
+006a8560	PASS		004c7e70: ?GFHasScriptThing@@YI_NPAVCThing@@@Z -> ?CThing_HasScriptThing@@YI_NPAVCThing@@@Z	NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 004365b0, in the index to 13b54747,31a6b4b7	0.27
+006b0170	PASS		DEF ?IsPhysicsMeshTypeCylinder@@YI_NPAVCTCPhysicsBase@@@Z -> ?CTCPhysicsBase_IsPhysicsMeshTypeCylinder@@YI_NPAVCTCPhysicsBase@@@Z		0.16
+006bd760	PASS		DEF ?IsDangerMusicEnabled@@YIPAXPAVCMusicManager@@@Z -> ?CMusicManager_IsDangerMusicEnabled@@YIPAXPAVCMusicManager@@@Z		0.15
+006bf7f0	PASS		DEF ?HasMultipleDressLevels@@YI_NPAVCTCBuyableHouse@@@Z -> ?CTCBuyableHouse_HasMultipleDressLevels@@YI_NPAVCTCBuyableHouse@@@Z		0.16
+006cd970	PASS		DEF ?FindPosZAt@@YIMPAVCGroundNavigatorExternalInterface@@PAXABVC3DVector@@_N@Z -> ?CGroundNavigatorExternalInterface_FindPosZAt@@YIMPAVCGroundNavigatorExternalInterface@@PAXABVC3DVector@@_N@Z		0.19
+006cec80	PASS		DEF ?IsMarriedToThePlayer@@YI_NPAVCTCWife@@@Z -> ?CTCWife_IsMarriedToThePlayer@@YI_NPAVCTCWife@@@Z		0.20
+006d6830	PASS		DEF ?ForceTrainableStatExperienceTo@@YIXPAVCTCHeroExperience@@HHJ@Z -> ?CTCHeroExperience_ForceTrainableStatExperienceTo@@YIXPAVCTCHeroExperience@@HHJ@Z		0.15
+006e55b0	PASS		DEF ?GetCurrentSpeaker@@YIPAVCThing@@PAVCScriptConversation@@@Z -> ?CScriptConversation_GetCurrentSpeaker@@YIPAVCThing@@PAVCScriptConversation@@@Z		0.17
+006e71b0	PASS		DEF ?IsActiveThreadTerminating@@YI_NPAVCGameScriptInterface@@PAX@Z -> ?CGameScriptInterface_IsActiveThreadTerminating@@YI_NPAVCGameScriptInterface@@PAX@Z		0.19
+006f06f0	PASS		DEF ?IsInterruptableDueToZoneChange@@YI_NPAUS@@@Z -> ?CCombatSequenceBase_IsInterruptableDueToZoneChange@@YI_NPAUS@@@Z		0.15
+006f0710	PASS		DEF ?IsBreakIntoMeleeSequence@@YI_NPAUS@@@Z -> ?CCombatSequenceBase_IsBreakIntoMeleeSequence@@YI_NPAUS@@@Z		0.17
+006f0720	PASS		DEF ?IsBoastSequence@@YI_NPAUS@@@Z -> ?CCombatSequenceBase_IsBoastSequence@@YI_NPAUS@@@Z		0.16
+006f0730	PASS		DEF ?IsOuterRingSequence@@YI_NPAUS@@@Z -> ?CCombatSequenceBase_IsOuterRingSequence@@YI_NPAUS@@@Z		0.19
+006fedb0	PASS		DEF ?LogReaction@@YIXPAUCReactionFrequencyTraits_PeriodicFrequency@@HABVCThingAICreature@@_N@Z -> ?CReactionFrequencyTraits_PeriodicFrequency_LogReaction@@YIXPAUCReactionFrequencyTraits_PeriodicFrequency@@HABVCThingAICreature@@_N@Z		0.16
+00702280	PASS		DEF ?IsCore@@YI_NPAVCTCQuestCard@@@Z -> ?CTCQuestCard_IsCore@@YI_NPAVCTCQuestCard@@@Z		0.14
+00705fe0	PASS		DEF ?HandleMessage@@YIXPAVCTCHeroAttachableAppearanceModifiers@@HPAUMsg@@@Z -> ?CTCHeroAttachableAppearanceModifiers_HandleMessage@@YIXPAVCTCHeroAttachableAppearanceModifiers@@HPAUMsg@@@Z		0.14
+00706860	PASS		DEF ?AddTrigger@@YI_NPAVCTCActivationReceptorBase@@PAXPAVCTCActivationTrigger@@@Z -> ?CTCActivationReceptorBase_AddTrigger@@YI_NPAVCTCActivationReceptorBase@@PAXPAVCTCActivationTrigger@@@Z		0.16
+00710540	PASS		DEF ?FindDominantAnimation@@YIABVC3DAnimationState@@PAVC3DAnimationTransitionState@@@Z -> ?C3DAnimationTransitionState_FindDominantAnimation@@YIABVC3DAnimationState@@PAVC3DAnimationTransitionState@@@Z		0.15
+0071a710	PASS		DEF ?PlaceInMapwho@@YIXPAVCTCMapwho@@HPAVC3DVector@@@Z -> ?CTCMapwho_PlaceInMapwho@@YIXPAVCTCMapwho@@HPAVC3DVector@@@Z		0.16
+00731be0	PASS		DEF ?SetAngle@@YIXPAVCTCSpotLight@@M@Z -> ?CTCSpotLight_SetAngle@@YIXPAVCTCSpotLight@@M@Z		0.15
+00731bf0	PASS		DEF ?FrameUpdate@@YIXPAVCTCSpotLight@@@Z -> ?CTCSpotLight_FrameUpdate@@YIXPAVCTCSpotLight@@@Z		0.16
+00749e20	PASS		DEF ?IsDepleted@@YI_NPAVCTCCreatureGenerator@@@Z -> ?CTCCreatureGenerator_IsDepleted@@YI_NPAVCTCCreatureGenerator@@@Z		0.13
+0074ab00	PASS		DEF ?DestroyGenerator@@YIXPAVCTCCreatureGenerator@@@Z -> ?CTCCreatureGenerator_Destroy@@YIXPAVCTCCreatureGenerator@@@Z	NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.17
+0075fc40	PASS		DEF ?DestroySpline@@YIXPAVCTCCameraPointScriptedSpline@@@Z -> ?CTCCameraPointScriptedSpline_Destroy@@YIXPAVCTCCameraPointScriptedSpline@@@Z	NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10 | NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+0076c830	PASS		DEF ?OnInitialActivate@@YIXPAVCTCEnemy@@@Z -> ?CTCEnemy_OnInitialActivate@@YIXPAVCTCEnemy@@@Z		0.13
+00781d80	PASS		DEF ?IsPositionActivated@@YIDPAVCTCBoastingPosition@@HPAJ@Z -> ?CTCBoastingPosition_IsPositionActivated@@YIDPAVCTCBoastingPosition@@HPAJ@Z		0.15
+00789ba0	PASS		DEF ?IsUsingProjectileTargetingAnalogueZoom@@YI_NPAVCTCHeroRangedAttacks@@@Z -> ?CTCHeroRangedAttacks_IsUsingProjectileTargetingAnalogueZoom@@YI_NPAVCTCHeroRangedAttacks@@@Z		0.17
+0078be60	PASS		DEF ?SetAnimationTime@@YIXPAVCTCBerserk@@M@Z -> ?CTCBerserk_SetAnimationTime@@YIXPAVCTCBerserk@@M@Z		0.19
+007b8570	PASS		DEF ?GetSelectedCategory@@YIEPAUCTCInventoryBase@@HI@Z -> ?CTCInventoryBase_GetSelectedCategory@@YIEPAUCTCInventoryBase@@HI@Z		0.13
+007bbc47	PASS		DEF ?UpdateMovement@@YIXPAUCTCShotDefinitionProjectile@@@Z -> ?CTCShotDefinitionProjectile_UpdateMovement@@YIXPAUCTCShotDefinitionProjectile@@@Z		0.14
+007e7360	PASS		DEF ?ClearCommands@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z -> ?CScriptGameResourceObjectScriptedThingBase_ClearCommands@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z		0.14
+007e7370	PASS		DEF ?WaitWhilePerformingTasks@@YIXPAUOuter@@@Z -> ?CScriptGameResourceObjectScriptedThingBase_WaitWhilePerformingTasks@@YIXPAUOuter@@@Z		0.14
+007e7400	PASS		DEF ?ClearAllActions@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z -> ?CScriptGameResourceObjectScriptedThingBase_ClearAllActions@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z		0.14
+007e7410	PASS		DEF ?ClearAllActionsIncludingLoopingAnimations@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z -> ?CScriptGameResourceObjectScriptedThingBase_ClearAllActionsIncludingLoopingAnimations@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z		0.14
+007e7430	PASS		DEF ?DropGenericBox@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z -> ?CScriptGameResourceObjectScriptedThingBase_DropGenericBox@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z		0.15
+007e7440	PASS		DEF ?UnsheatheWeapons@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z -> ?CScriptGameResourceObjectScriptedThingBase_UnsheatheWeapons@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z		0.18
+007e7450	PASS		DEF ?IsPerformingScriptTask@@YI_NPAVCScriptGameResourceObjectScriptedThingBase@@@Z -> ?CScriptGameResourceObjectScriptedThingBase_IsPerformingScriptTask@@YI_NPAVCScriptGameResourceObjectScriptedThingBase@@@Z		0.14
+007e7460	PASS		DEF ?IsFollowingThing@@YI_NPAVCScriptGameResourceObjectScriptedThingBase@@@Z -> ?CScriptGameResourceObjectScriptedThingBase_IsFollowingThing@@YI_NPAVCScriptGameResourceObjectScriptedThingBase@@@Z		0.14
+007ea290	PASS		DEF ?IsZTargetable@@YI_NPAVCTCTargeted@@@Z -> ?CTCTargeted_IsZTargetable@@YI_NPAVCTCTargeted@@@Z		0.13
+007ea2b0	PASS		DEF ?ReturnToDefaultTargetingFlags@@YIXPAVCTCTargeted@@@Z -> ?CTCTargeted_ReturnToDefaultTargetingFlags@@YIXPAVCTCTargeted@@@Z		0.19
+007f76e0	PASS		DEF ?Activate@@YIXPAVCTCActivationReceptorBase@@@Z -> ?CTCActivationReceptorBase_Activate@@YIXPAVCTCActivationReceptorBase@@@Z		0.14
+007fc710	PASS		DEF ?InitTentaclesAndHead@@YIXPAVCTCKraken@@@Z -> ?CTCKraken_InitTentaclesAndHead@@YIXPAVCTCKraken@@@Z		0.13
+007fc800	PASS		DEF ?EndAttackBeam@@YIXPAVCTCKraken@@@Z -> ?CTCKraken_EndAttackBeam@@YIXPAVCTCKraken@@@Z		0.13
+008023a0	PASS		DEF ?SetAsPickUpNewLockTarget@@YIXPAVCTCTargetingPlayer@@@Z -> ?CTCTargetingPlayer_SetAsPickUpNewLockTarget@@YIXPAVCTCTargetingPlayer@@@Z		0.13
+00826400	PASS		DEF ?GetPathname@@YIPAXPAVCCachedFile@@HPAVCCharString@@@Z -> ?CCachedFile_GetPathname@@YIPAXPAVCCachedFile@@HPAVCCharString@@@Z		0.13
+00827870	PASS		DEF ?DrawGetSeaLevel@@YIMPAVCMap@@HH@Z -> ?CMap_DrawGetSeaLevel@@YIMPAVCMap@@HH@Z		0.18
+00829c70	PASS		DEF ?GetRelativeMapSize@@YIXPAVCMiniMapDisplay@@PAXPAVC2DVector@@@Z -> ?CMiniMapDisplay_GetRelativeMapSize@@YIXPAVCMiniMapDisplay@@PAXPAVC2DVector@@@Z		0.17
+0082a310	PASS		DEF ?Initialise@@YIXPAVCMiniMapDisplay@@M@Z -> ?CMiniMapDisplay_Initialise@@YIXPAVCMiniMapDisplay@@M@Z		0.13
+008389c0	PASS		DEF ?SetAsGivingHeroStatChangesOnBeingHit@@YIXPAVCThingGameObject@@H_N@Z -> ?CThingGameObject_SetAsGivingHeroStatChangesOnBeingHit@@YIXPAVCThingGameObject@@H_N@Z		0.15
+0083ea50	PASS		DEF ?IsDataAvailable@@YIHPAULHHttp2@@@Z -> ?LHHttp2_IsDataAvailable@@YIHPAULHHttp2@@@Z		0.16
+0083eee0	PASS		DEF ?GetUntilCRLF@@YIHPAULHHttp2@@PAXPADAAH@Z -> ?LHHttp2_GetUntilCRLF@@YIHPAULHHttp2@@PAXPADAAH@Z		0.18
+008421c0	PASS		DEF ?FinishAction@@YIXPAVCCreatureAction_GetOutOfBed@@@Z -> ?CCreatureAction_GetOutOfBed_FinishAction@@YIXPAVCCreatureAction_GetOutOfBed@@@Z		0.17
+00842c20	PASS		DEF ?IsToHaveEmptyHands@@YIEPAUS@@@Z -> ?CCreatureAction_PerformExpression_IsToHaveEmptyHands@@YIEPAUS@@@Z		0.13
+00842c30	PASS		DEF ?IsToReplaceItemIfRemoved@@YIEPAUS@@@Z -> ?CCreatureAction_PerformExpression_IsToReplaceItemIfRemoved@@YIEPAUS@@@Z		0.13
+00842c40	PASS		DEF ?IsToReplaceItemIfRemovedExt@@YIEPAUS@@@Z -> ?CCreatureAction_PerformExpressionExtended_IsToReplaceItemIfRemoved@@YIEPAUS@@@Z		0.13
+00851e50	PASS		DEF ?IsFinished@@YI_NPAUCScriptModuleSelfTerminateBase@@@Z -> ?CScriptModuleSelfTerminateBase_IsFinished@@YI_NPAUCScriptModuleSelfTerminateBase@@@Z		0.13
+008546a0	PASS		DEF ?Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z -> ?CCreatureAction_SpiritReturnToHero_Initialise@@YIXPAVCCreatureAction_SpiritReturnToHero@@@Z		0.16
+0085bad0	PASS		DEF ?FrameUpdate@@YIXPAVCCreatureActionHeroJump@@@Z -> ?CCreatureActionHeroJump_FrameUpdate@@YIXPAVCCreatureActionHeroJump@@@Z		0.13
+00860130	PASS		DEF ?RemoveModeWithAction@@YIXPAUCModeSitBase@@PAXPAVCCreatureActionBase@@@Z -> ?CModeSitBase_RemoveModeWithAction@@YIXPAUCModeSitBase@@PAXPAVCCreatureActionBase@@@Z		0.13
+00860940	PASS		DEF ?IsValid@@YI_NPAVCVillageTaskPatrol@@@Z -> ?CVillageTaskPatrol_IsValid@@YI_NPAVCVillageTaskPatrol@@@Z		0.17
+00860c50	PASS		DEF ?IsValid@@YI_NPAVCVillageTaskPickCrops@@@Z -> ?CVillageTaskPickCrops_IsValid@@YI_NPAVCVillageTaskPickCrops@@@Z		0.16
+00860fc0	PASS		DEF ?IsTaskAvailable@@YI_NPAUS@@@Z -> ?CVillageTaskSecuritySweep_IsTaskAvailable@@YI_NPAUS@@@Z		0.14
+00861020	PASS		DEF ?IsTaskAvailable@@YI_NPAUS@@@Z -> ?CVillageTaskCarryCrate_IsTaskAvailable@@YI_NPAUS@@@Z		0.13
+00865b40	PASS		DEF ?IsOverrideableByActionOfSamePriority@@YI_NPAVCCombatAction_GenericStrikeResponseKnockdownRecoverBase@@@Z -> ?CCombatAction_GenericStrikeResponseKnockdownRecoverBase_IsOverrideableByActionOfSamePriority@@YI_NPAVCCombatAction_GenericStrikeResponseKnockdownRecoverBase@@@Z		0.17
+00865e00	PASS		DEF ?IsToCauseRecoil@@YI_NPAX@Z -> ?CCombatAction_GenericStrikeResponseBase_IsToCauseRecoil@@YI_NPAX@Z		0.14
+00865e10	PASS		DEF ?IsToCauseRecoil@@YI_NPAX@Z -> ?CCombatAction_GenericStrikeResponseKnockdown_IsToCauseRecoil@@YI_NPAX@Z		0.16
+0088b780	PASS		DEF ?GetCurrentStateGroupType@@YIHPAVCAIBrain@@@Z -> ?CAIBrain_GetCurrentStateGroupType@@YIHPAVCAIBrain@@@Z		0.16
+00890b50	PASS		DEF ?SetToKeepHeroAbilitiesDuringCutscenes@@YIXPAVCGameScriptInterface@@H_N@Z -> ?CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes@@YIXPAVCGameScriptInterface@@H_N@Z		0.19
+008aa0d0	PASS		DEF ?AddGossip@@YIXPAVCGameScriptInterface@@PAXVCCharString@@@Z -> ?CGameScriptInterface_AddGossip@@YIXPAVCGameScriptInterface@@PAXVCCharString@@@Z	NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.27
+008aa590	PASS		DEF ?AddGossipFactions@@YIXPAVCGameScriptInterface@@PAXVCCharString@@@Z -> ?CGameScriptInterface_AddGossipFactions@@YIXPAVCGameScriptInterface@@PAXVCCharString@@@Z	NAME_CLASH ??1CCharString@@QAE@XZ bound here to 0099eae0, in the index to 0099a2e0,0099b510,00a01c10	0.25
+008b86c0	PASS		DEF ?IsToEvadeAllHits@@YI_NPAVCCreatureAction_LeapLong@@@Z -> ?CCreatureAction_LeapLong_IsToEvadeAllHits@@YI_NPAVCCreatureAction_LeapLong@@@Z		0.16
+008c52b0	PASS		DEF ?FinishAction@@YIXPAX@Z -> ?CCreatureAction_ScorpionSummon_FinishAction@@YIXPAX@Z		0.16
+008c9e40	PASS		DEF ?FinishAction@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z -> ?CCreatureAction_NymphSummonOutOf_FinishAction@@YIXPAVCCreatureAction_NymphSummonOutOf@@@Z		0.16
+008cfe00	PASS		DEF ?GetDataString@@YIPAXPAVCGameScriptThing@@HPAX@Z -> ?CGameScriptThing_GetDataString@@YIPAXPAVCGameScriptThing@@HPAX@Z		0.13
+008d0820	PASS		DEF ?IsOpenDoor@@YI_NPAX@Z -> ?CGameScriptThing_IsOpenDoor@@YI_NPAX@Z		0.13
+008d5960	PASS		DEF ?FinishAction@@YIXPAX@Z -> ?CCreatureAction_FireMissileWeapon_FinishAction@@YIXPAX@Z		0.13
+008fe0f4	PASS		DEF ?GetCombatProximity@@YAMXZ -> ?CAIStateGroup_EnemyCreatureBase_GetCombatProximity@@YAMXZ		0.13
+008fe105	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverMovementBase@@HI@Z -> ?CAIStateGroup_HoverMovementBase_scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverMovementBase@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.13
+00900c19	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverWander@@HI@Z -> ?CAIStateGroup_HoverWander_scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverWander@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+00900c54	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverAttack@@HI@Z -> ?CAIStateGroup_HoverAttack_scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverAttack@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+00900c8f	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverAttackUnlessTargetIsFleeing@@HI@Z -> ?CAIStateGroup_HoverAttackUnlessTargetIsFleeing_scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverAttackUnlessTargetIsFleeing@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+00900d06	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverKeepInArea@@HI@Z -> ?CAIStateGroup_HoverKeepInArea_scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverKeepInArea@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.13
+00900d41	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverAttackArea@@HI@Z -> ?CAIStateGroup_HoverAttackArea_scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverAttackArea@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.13
+00900d7c	PASS		DEF ?scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverHornetQueenTakeDamage@@HI@Z -> ?CAIStateGroup_HoverHornetQueenTakeDamage_scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverHornetQueenTakeDamage@@HI@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.15
+00906fa0	PASS		DEF ?IsValid@@YI_NPAUCCombatSequence_ScorpionLungeAttack@@@Z -> ?CCombatSequence_ScorpionLungeAttack_IsValid@@YI_NPAUCCombatSequence_ScorpionLungeAttack@@@Z		0.18
+00906fc0	PASS		DEF ?OnStart@@YIXPAUCCombatSequence_ScorpionLungeAttack@@@Z -> ?CCombatSequence_ScorpionLungeAttack_OnStart@@YIXPAUCCombatSequence_ScorpionLungeAttack@@@Z		0.16
+009076a0	PASS		DEF ?IsValid@@YI_NPAUCCombatSequence_TrollOpeningGroundPound@@@Z -> ?CCombatSequence_TrollOpeningGroundPound_IsValid@@YI_NPAUCCombatSequence_TrollOpeningGroundPound@@@Z		0.17
+00908d80	PASS		DEF ?IsValid@@YIEPAUS@@@Z -> ?CCombatSequenceWhisperAttackBigCombo_IsValid@@YIEPAUS@@@Z		0.15
+00908d90	PASS		DEF ?IsValid@@YIEPAUS@@@Z -> ?CCombatSequenceWhisperAttack360_IsValid@@YIEPAUS@@@Z		0.14
+00917110	PASS		DEF ?IsRunnable@@YI_NPAUCAIStateGroup_IdleAtHome@@@Z -> ?CAIStateGroup_ThrowLogsOnFire_IsRunnable@@YI_NPAUCAIStateGroup_IdleAtHome@@@Z		0.17
+00919a10	PASS		DEF ?ShouldBuyFromSeller@@YI_NPAUCAIStateGroup_BuyFromSeller@@@Z -> ?CAIStateGroup_BuyFromSeller_ShouldBuyFromSeller@@YI_NPAUCAIStateGroup_BuyFromSeller@@@Z		0.19
+0091ccb0	PASS		DEF ?OnReplace@@YIXPAUCAIStateGroup_MinionReactToNoise@@@Z -> ?CAIStateGroup_MinionReactToNoise_OnReplace@@YIXPAUCAIStateGroup_MinionReactToNoise@@@Z		0.19
+00932980	PASS		DEF ?IsStillValid@@YI_NPAUS@@@Z -> ?CAIStateGroup_MinionGuardReactToCriminal_IsStillValid@@YI_NPAUS@@@Z		0.14
+009340f0	PASS		DEF ?OnReplaceKidGroup@@YIXPAUCAIStateGroup_MinionKidGroupTag@@@Z -> ?CAIStateGroup_MinionKidGroupTag_OnReplace@@YIXPAUCAIStateGroup_MinionKidGroupTag@@@Z		0.18
+0095ed60	PASS		DEF ?InitStateGroup@@YIXPAVCAIStateGroup_OpinionReactionRoot@@HABVCWorld@@AAVCThingAICreature@@@Z -> ?CAIStateGroup_OpinionReactionRoot_InitStateGroup@@YIXPAVCAIStateGroup_OpinionReactionRoot@@HABVCWorld@@AAVCThingAICreature@@@Z		0.16
+0095ede0	PASS		DEF ?GetDebugText@@YIPBVCCharString@@PAUS@@@Z -> ?CAIStateGroup_OpinionReactionRoot_GetDebugText@@YIPBVCCharString@@PAUS@@@Z		0.15
+00989ba0	PASS		DEF ?SetXBoxUserVertexShaderConstant@@YIXPAVCShaderRenderManager@@HJPAVCRGBFloatColour@@@Z -> ?CShaderRenderManager_SetXBoxUserVertexShaderConstant@@YIXPAVCShaderRenderManager@@HJPAVCRGBFloatColour@@@Z		0.14
+0098c4c0	PASS		DEF ?SetXBoxUserVertexShaderConstant@@YIXPAVCShaderRenderManager@@PAXJPAVCRGBFloatColour@@J@Z -> ?CShaderRenderManager_SetXBoxUserVertexShaderConstant@@YIXPAVCShaderRenderManager@@PAXJPAVCRGBFloatColour@@J@Z		0.14
+0098c510	PASS		DEF ?SetXBoxUserVertexShaderConstant@@YIXPAVCShaderRenderManager@@PAXJPAVCRGBFloatColour@@@Z -> ?CShaderRenderManager_SetXBoxUserVertexShaderConstant@@YIXPAVCShaderRenderManager@@PAXJPAVCRGBFloatColour@@@Z		0.15
+00991600	PASS		DEF ?SetMiniMapEnabled@@YIXPAVCWorld@@H_N@Z -> ?CWorld_SetMiniMapEnabled@@YIXPAVCWorld@@H_N@Z		0.13
+0099b2a0	PASS		DEF ?Sizeof@@YIKPAVCWideString@@@Z -> ?CWideString_Sizeof@@YIKPAVCWideString@@@Z		0.13
+0099e500	PASS		DEF ?Sizeof@@YIKPAVCCharString@@@Z -> ?CCharString_Sizeof@@YIKPAVCCharString@@@Z		0.14
+0099ef90	PASS		DEF ?AddCombinationBlend@@YIXPAVC3DAnimationBlendState@@HPAVC3DAnimationStateAlpha@@@Z -> ?C3DAnimationBlendState_AddCombinationBlend@@YIXPAVC3DAnimationBlendState@@HPAVC3DAnimationStateAlpha@@@Z		0.13
+0099f390	PASS		DEF ?SetChar@@YIXPAVCCharString@@HJD@Z -> ?CCharString_SetChar@@YIXPAVCCharString@@HJD@Z		0.13
+009a0ea0	PASS		DEF ?GetFontMaxHeight@@YIMPAUCStreamingFontBank@@@Z -> ?CStreamingFontBank_GetFontMaxHeight@@YIMPAUCStreamingFontBank@@@Z		0.16
+009d52b0	PASS		DEF ?ActionSetEngineTheme@@YIXPAVCEditTransactionBase@@PAXPAVC2DCoordI@@KK@Z -> ?CEditTransactionBase_ActionSetEngineTheme@@YIXPAVCEditTransactionBase@@PAXPAVC2DCoordI@@KK@Z		0.16
+009d5630	PASS		DEF ?ChangeLoadingPriority@@YIXPAVCBankFileAsyncData@@PAXH@Z -> ?CBankFileAsyncData_ChangeLoadingPriority@@YIXPAVCBankFileAsyncData@@PAXH@Z		0.14
+009e3800	PASS		DEF ?GetByteColourDepth@@YIKPAVCPixelFormat@@@Z -> ?CPixelFormat_GetByteColourDepth@@YIKPAVCPixelFormat@@@Z		0.18
+009f2da0	PASS		DEF ?GetRefCount@@YIJPAVCSurface@@@Z -> ?CSurface_GetRefCount@@YIJPAVCSurface@@@Z		0.17
+009f9e60	PASS		DEF ?GenerateMipmaps@@YIXPAVCTexture@@HKK@Z -> ?CTexture_GenerateMipmaps@@YIXPAVCTexture@@HKK@Z		0.16
+009fd640	PASS		DEF ?ChangeCameraAngle@@YIXPAVCEngine@@@Z -> ?CEngine_ChangeCameraAngle@@YIXPAVCEngine@@@Z		0.13
+009fd970	PASS		DEF ?NotifyEntryRemoved@@YIXPAVCGraphicDataBank@@HK@Z -> ?CGraphicDataBank_NotifyEntryRemoved@@YIXPAVCGraphicDataBank@@HK@Z		0.14
+009fd990	PASS		DEF ?PrepareDataForInclusion@@YIXPAVCGraphicDataBank@@PAXPAVCWorldMap@@JPBUCArrayStr@@JPAUCCountedPtr@@PAVCDataOutputStream@@5@Z -> ?CGraphicDataBank_PrepareDataForInclusion@@YIXPAVCGraphicDataBank@@PAXPAVCWorldMap@@JPBUCArrayStr@@JPAUCCountedPtr@@PAVCDataOutputStream@@5@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.13
+00a02170	PASS		DEF ?EndCritical@@YIXPAVCHandleBasedMemoryPool@@@Z -> ?CHandleBasedMemoryPool_EndCritical@@YIXPAVCHandleBasedMemoryPool@@@Z		0.15
+00a026f0	PASS		DEF ?Lock@@YIXPAVCHandleBasedMemoryPool@@HJ@Z -> ?CHandleBasedMemoryPool_Lock@@YIXPAVCHandleBasedMemoryPool@@HJ@Z		0.14
+00a02710	PASS		DEF ?Unlock@@YIXPAVCHandleBasedMemoryPool@@HJ@Z -> ?CHandleBasedMemoryPool_Unlock@@YIXPAVCHandleBasedMemoryPool@@HJ@Z		0.14
+00a26c50	PASS		DEF ?Close@@YIXPAVCMeshDataBank@@@Z -> ?CMeshDataBank_Close@@YIXPAVCMeshDataBank@@@Z		0.14
+00a3b1a0	PASS		DEF ?AttemptToPlay@@YI_NPAUCVideoSys@@@Z -> ?CVideoSys_AttemptToPlay@@YI_NPAUCVideoSys@@@Z		0.15
+00a4b200	PASS		DEF ?TerminateProcess@@YIXPAVCASuspendableProcess@@@Z -> ?CASuspendableProcess_TerminateProcess@@YIXPAVCASuspendableProcess@@@Z		0.18
+00a5b200	PASS		DEF ?GetLength@@YIHPAUS@@@Z -> ?CCachedFile_GetLength@@YIHPAUS@@@Z		0.16
+00a5f420	PASS		DEF ?Close@@YIXPAVCStreamingFontDataBank@@@Z -> ?CStreamingFontDataBank_Close@@YIXPAVCStreamingFontDataBank@@@Z		0.16
+00a62000	PASS		DEF ?PrepareDataForInclusion@@YIXPAVCShaderDataBank@@PAXJ111PAURefBlock@@11@Z -> ?CShaderDataBank_PrepareDataForInclusion@@YIXPAVCShaderDataBank@@PAXJ111PAURefBlock@@11@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.20
+00a62110	PASS		DEF ?Close@@YIXPAVCShaderDataBank@@@Z -> ?CShaderDataBank_Close@@YIXPAVCShaderDataBank@@@Z		0.15
+00a62f70	PASS		DEF ?CanMoveResource_forward@@YG_NPAUIMovableResource@@J@Z -> ?CMovableResourceMemoryPool_CanMoveResource@@YG_NPAUIMovableResource@@J@Z		0.18
+00a632d0	PASS		DEF ?GetDefault@@YGXPAUCFontBankStateBlock@@@Z -> ?CFontBankStateBlock_GetDefault@@YGXPAUCFontBankStateBlock@@@Z		0.20
+00a635c0	PASS		DEF ?Close@@YIXPAVCFontDataBank@@@Z -> ?CFontDataBank_Close@@YIXPAVCFontDataBank@@@Z		0.16
+00a755a0	PASS		DEF ?RelocateData@@YIXPAVCContainmentVolume@@HJPAX1J@Z -> ?CContainmentVolume_RelocateData@@YIXPAVCContainmentVolume@@HJPAX1J@Z		0.17
+00a75c00	PASS		DEF ?GetRegion@@YIPBVCNavRegion@@PAUS@@@Z -> ?CNavSwitchableLeafNode_GetRegion@@YIPBVCNavRegion@@PAUS@@@Z		0.15
+00a75c10	PASS		DEF ?GetPreferabilityCost@@YIEPAVCNavSwitchableLeafNode@@@Z -> ?CNavSwitchableLeafNode_GetPreferabilityCost@@YIEPAVCNavSwitchableLeafNode@@@Z		0.18
+00a86100	PASS		DEF ?Sizeof@@YIHPAUS@@@Z -> ?CPhysicsFacesSegmentLeaf_Sizeof@@YIHPAUS@@@Z		0.16
+00aba370	PASS		DEF ?DrawGetNoMaps@@YIJPAVCWorldMap@@@Z -> ?CWorldMap_DrawGetNoMaps@@YIJPAVCWorldMap@@@Z		0.17
+00ac1f10	PASS		DEF ?GetSize@@YIJPAVCIndexBuffer@@@Z -> ?CIndexBuffer_GetSize@@YIJPAVCIndexBuffer@@@Z		0.18
+00b23bc0	PASS		DEF ?SetPersistentPrimitive@@YGXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z -> ?CEngine_SetPersistentPrimitive@@YGXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z		0.18
+00b3b8c0	PASS		DEF ?ProcessLoading@@YIXPAVCEngineResourceManager@@@Z -> ?CEngineResourceManager_ProcessLoading@@YIXPAVCEngineResourceManager@@@Z		0.20
+00b4a670	PASS		DEF ?AddPrimitive@@YIXPAVCEnginePrimitiveRenderer2D@@HPAVCEngineInternalPrimitiveBase@@@Z -> ?CEnginePrimitiveRenderer2D_AddPrimitive@@YIXPAVCEnginePrimitiveRenderer2D@@HPAVCEngineInternalPrimitiveBase@@@Z		0.16
+00b4aaa0	PASS		00b8fee0: ?ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z -> ?CEngineInternalPrimitiveBase_ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.22
+00b50c60	PASS		DEF ?Set@@YIXPAUCShaderBankStateBlock@@HPAX@Z -> ?CShaderBankStateBlock_Set@@YIXPAUCShaderBankStateBlock@@HPAX@Z		0.17
+00b56670	PASS		DEF ?PeekSceneFilterFlags@@YIKPAVCEngineWeatherRenderer@@@Z -> ?CEngineWeatherRenderer_PeekSceneFilterFlags@@YIKPAVCEngineWeatherRenderer@@@Z		0.14
+00b5a0b0	PASS		DEF ?SetEffectQuality@@YIXPAVCEngineScreenEffectColourFilter@@HPAVCEngineVideoOptionsDef@@@Z -> ?CEngineScreenEffectColourFilter_SetEffectQuality@@YIXPAVCEngineScreenEffectColourFilter@@HPAVCEngineVideoOptionsDef@@@Z		0.16
+00b5af60	PASS		DEF ?Render@@YIXPAVCEngineScreenEffectColourFilter@@HABVCEngineComponentRenderParams@@@Z -> ?CEngineScreenEffectColourFilter_Render@@YIXPAVCEngineScreenEffectColourFilter@@HABVCEngineComponentRenderParams@@@Z		0.15
+00b84290	PASS		DEF ?SetMaxSortDistance@@YIXPAVCEngineSubPrimitiveRenderer@@M@Z -> ?CEngineSubPrimitiveRenderer_SetMaxSortDistance@@YIXPAVCEngineSubPrimitiveRenderer@@M@Z		0.17
+00b8c780	PASS		DEF ?PeekSceneFilterFlags@@YIKPAVCEngineBillboardGenerator@@@Z -> ?CEngineBillboardGenerator_PeekSceneFilterFlags@@YIKPAVCEngineBillboardGenerator@@@Z		0.16
+00b8fee0	PASS		DEF ?ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z -> ?CEngineInternalPrimitiveBase_ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z		0.15
+00b93660	PASS		00b8fee0: ?ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z -> ?CEngineInternalPrimitiveBase_ClearPrimitiveList@@YIXPAVCEngineInternalPrimitiveBase@@@Z	NAME_CLASH ??1CBaseClass@@UAE@XZ bound here to 0099a2e0, in the index to 0099a300	0.15
+00b9cfe0	PASS		DEF ?SetObjectTransform@@YI_NPAVCEngineInternalPrimitiveStaticMesh@@HABVCMatrix3x4@@@Z -> ?CEngineInternalPrimitiveStaticMesh_SetObjectTransform@@YI_NPAVCEngineInternalPrimitiveStaticMesh@@HABVCMatrix3x4@@@Z		0.16
+00b9d000	PASS		DEF ?GetTransformFrameStart@@YI_NPAVCEngineInternalPrimitiveStaticMesh@@HAAVCMatrix3x4@@@Z -> ?CEngineInternalPrimitiveStaticMesh_GetTransformFrameStart@@YI_NPAVCEngineInternalPrimitiveStaticMesh@@HAAVCMatrix3x4@@@Z		0.15
+00b9d0b0	PASS		DEF ?GetTransformFrameStart@@YI_NPAUCEngineInternalPrimitive2DStaticMesh@@HAAVCMatrix3x4@@@Z -> ?CEngineInternalPrimitive2DStaticMesh_GetTransformFrameStart@@YI_NPAUCEngineInternalPrimitive2DStaticMesh@@HAAVCMatrix3x4@@@Z		0.17
+00b9d0d0	PASS		DEF ?GetTransformFrameEnd@@YI_NPAUCEngineInternalPrimitive2DStaticMesh@@HAAVCMatrix3x4@@@Z -> ?CEngineInternalPrimitive2DStaticMesh_GetTransformFrameEnd@@YI_NPAUCEngineInternalPrimitive2DStaticMesh@@HAAVCMatrix3x4@@@Z		0.20
+00b9d980	PASS		DEF ?GetBoundingBoxTransform@@YI_NPAVCEngineInternalPrimitiveStaticMesh@@HAAVCMatrix3x4@@@Z -> ?CEngineInternalPrimitiveStaticMesh_GetBoundingBoxTransform@@YI_NPAVCEngineInternalPrimitiveStaticMesh@@HAAVCMatrix3x4@@@Z		0.23
+00b9e290	PASS		DEF ?GetBoundingBoxTransform@@YI_NPAUCEngineInternalPrimitive2DStaticMesh@@HAAVCMatrix3x4@@@Z -> ?CEngineInternalPrimitive2DStaticMesh_GetBoundingBoxTransform@@YI_NPAUCEngineInternalPrimitive2DStaticMesh@@HAAVCMatrix3x4@@@Z		0.25
+00baf9e0	PASS		DEF ?RenderPrimitive@@YIHPAVCEnginePrimitiveManagerSprites@@HAAVCEngineInternalPrimitiveBase@@HAAVCEngineSubPrimitiveChain@@@Z -> ?CEnginePrimitiveManagerSprites_RenderPrimitive@@YIHPAVCEnginePrimitiveManagerSprites@@HAAVCEngineInternalPrimitiveBase@@HAAVCEngineSubPrimitiveChain@@@Z		0.17
+00bbbdf0	PASS		DEF ?GetRenderLayerMask@@YIKPAUCEngineInternalPrimitiveParticleGroup@@@Z -> ?CEngineInternalPrimitiveParticleGroup_GetRenderLayerMask@@YIKPAUCEngineInternalPrimitiveParticleGroup@@@Z		0.20
+00bce9f0	PASS		DEF ?GetTransformFrameStart@@YI_NPAVCEngineInternalPrimitiveAnimatedMesh@@PAXAAVCMatrix3x4@@@Z -> ?CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameStart@@YI_NPAVCEngineInternalPrimitiveAnimatedMesh@@PAXAAVCMatrix3x4@@@Z		0.14
+00bcea10	PASS		DEF ?GetTransformFrameEnd@@YI_NPAUMesh@@PAXAAVCMatrix3x4@@@Z -> ?CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameEnd@@YI_NPAUMesh@@PAXAAVCMatrix3x4@@@Z		0.16
+00bd9ac0	PASS		DEF ?FrameStart@@YIXPAVCEngineLandscapeMemoryManager@@@Z -> ?CEngineLandscapeMemoryManager_FrameStart@@YIXPAVCEngineLandscapeMemoryManager@@@Z		0.17
+00bdc040	PASS		DEF ?ReleaseDefaultPoolSurfaces@@YIXPAVCEngineLandscapeMap@@@Z -> ?CEngineLandscapeMap_ReleaseDefaultPoolSurfaces@@YIXPAVCEngineLandscapeMap@@@Z		0.17
+00bdc140	PASS		DEF ?CanRelocateData@@YI_NPAUS@@PAX1@Z -> ?CEngineLandscapeMap_CanRelocateData@@YI_NPAUS@@PAX1@Z		0.15
+00bdd980	PASS		DEF ?ClearLoadRequest@@YIXPAUCObjectCacheGroupCollection@@HPAVCEngineStaticMapFileBlockManager@@@Z -> ?CObjectCacheGroupCollection_ClearLoadRequest@@YIXPAUCObjectCacheGroupCollection@@HPAVCEngineStaticMapFileBlockManager@@@Z		0.14
+00bdda30	PASS		DEF ?ClearLoadRequest@@YIXPAUCObjectCacheGroupCollection@@PAXPAVCEngineStaticMapFileBlockManager@@@Z -> ?CObjectCacheGroupCollection_ClearLoadRequest@@YIXPAUCObjectCacheGroupCollection@@PAXPAVCEngineStaticMapFileBlockManager@@@Z		0.14
+00be1b90	PASS		DEF ?RenderPrimitive@@YIHPAVCEnginePrimitive2DViewportManager@@HPAVCEngineInternalPrimitiveBase@@HPAVCEngineSubPrimitiveChain@@@Z -> ?CEnginePrimitive2DViewportManager_RenderPrimitive@@YIHPAVCEnginePrimitive2DViewportManager@@HPAVCEngineInternalPrimitiveBase@@HPAVCEngineSubPrimitiveChain@@@Z		0.17
+00be2260	PASS		DEF ?CreateInternalPrimitive@@YIPAVCEngineInternalPrimitiveBase@@PAVCEnginePrimitive2DViewportManager@@HH@Z -> ?CEnginePrimitive2DViewportManager_CreateInternalPrimitive@@YIPAVCEngineInternalPrimitiveBase@@PAVCEnginePrimitive2DViewportManager@@HH@Z		0.14
+00be5e50	PASS		DEF ?CanRelocateData@@YI_NPAVCLandscapeBackgroundPatch@@HJ@Z -> ?CLandscapeBackgroundPatch_CanRelocateData@@YI_NPAVCLandscapeBackgroundPatch@@HJ@Z		0.17
+00c0a860	PASS		DEF ?SetAsFinished@@YIXPAVCAnimateThing@@HPAX@Z -> ?CAnimateThing_SetAsFinished@@YIXPAVCAnimateThing@@HPAX@Z		0.14
+00c0a880	PASS		DEF ?SetAsFinished@@YIXPAVCAnimateThing@@H_N@Z -> ?CAnimateThing_SetAsFinished@@YIXPAVCAnimateThing@@H_N@Z		0.15
+00c203e0	PASS		DEF ?SetAsPumpCombatActions@@YIXPAVCBrainOutput@@HJ@Z -> ?CBrainOutput_SetAsPumpCombatActions@@YIXPAVCBrainOutput@@HJ@Z		0.15
+00c25de0	PASS		DEF ?IsAngry@@YI_NPAVCTCOnHeroPush@@@Z -> ?CTCOnHeroPush_IsAngry@@YI_NPAVCTCOnHeroPush@@@Z		0.15
+00c26520	PASS		DEF ?SetShadowFadeTransform@@YIIPAVCShaderRenderManager@@@Z -> ?CShaderRenderManager_SetShadowFadeTransform@@YIIPAVCShaderRenderManager@@@Z		0.15
+00c2a600	PASS		DEF ?Render@@YIXPAVCEngineResourceManager@@HPAUParam@@@Z -> ?CEngineResourceManager_Render@@YIXPAVCEngineResourceManager@@HPAUParam@@@Z	NAME_CLASH ??3@YAXPAX@Z bound here to 00bfe9bc, in the index to 191062cf	0.14
+00c38550	PASS		DEF ?PeekThingSearchTools@@YIPAVCThingSearchTools@@PAVCAIStateGroupBase@@@Z -> ?CAIStateGroupBase_PeekThingSearchTools@@YIPAVCThingSearchTools@@PAVCAIStateGroupBase@@@Z		0.14
+00c38a20	PASS		DEF ?AddTrigger@@YIXPAVCTCActivationReceptorBase@@PAVCTCActivationTrigger@@@Z -> ?CTCActivationReceptorBase_AddTrigger@@YIXPAVCTCActivationReceptorBase@@PAVCTCActivationTrigger@@@Z		0.14
+00c3a740	PASS		DEF ?Transfer@@YIPAVCThingNoiseDef@@PAV1@PAVCPersistContext@@@Z -> ?CThingNoiseDef_Transfer@@YIPAVCThingNoiseDef@@PAV1@PAVCPersistContext@@@Z		0.14
+00c3c5d0	PASS		DEF ?FrameUpdate@@YI_NPAVCCreatureAction_FireMissileWeapon@@@Z -> ?CCreatureAction_FireMissileWeapon_FrameUpdate@@YI_NPAVCCreatureAction_FireMissileWeapon@@@Z		0.14
+00c3d460	PASS		DEF ?OnPostViewportChanged@@YIXPAVCShaderRenderManager@@@Z -> ?CShaderRenderManager_OnPostViewportChanged@@YIXPAVCShaderRenderManager@@@Z		0.15
+00c42fe0	PASS		DEF ?Enable2DSceneRendering@@YIXPAVCEngine@@M@Z -> ?CEngine_Enable2DSceneRendering@@YIXPAVCEngine@@M@Z		0.15
+00c89b40	PASS		DEF ?AddTrigger@@YIXPAVCTCActivationReceptorBase@@HPAXPAVCTCActivationTrigger@@@Z -> ?CTCActivationReceptorBase_AddTrigger@@YIXPAVCTCActivationReceptorBase@@HPAXPAVCTCActivationTrigger@@@Z		0.17
+00d732a0	PASS		DEF ?OnPredicateFail@@YIXPAUCHTG_Executioner@@@Z -> ?CHTG_Executioner_OnPredicateFail@@YIXPAUCHTG_Executioner@@@Z		0.14
+00e11d80	PASS		DEF ?Init@@YIXPAUCHornetDrone@@@Z -> ?CHornetDrone_Init@@YIXPAUCHornetDrone@@@Z		0.17
+00f35a00	PASS		DEF ?TestPredicate@@YI_NPAVCSpawnedFuncBase@@@Z -> ?CSpawnedFuncBase_TestPredicate@@YI_NPAVCSpawnedFuncBase@@@Z		0.19

@@ -1,0 +1,5 @@
+s6 w5 -- RTTI-proven member stand-ins whose class HAS an engine header and whose stand-in class is already named after it
+(CResource_Methods, CIEngine_Methods, a local copy of the real class ...): only the method is respelled to the real method
+(e.g. ?IsEditorActive@CResource_Methods@@QAE_NXZ at 0x0042D940 / 0x0042D950 -> UnloadResource / IsResourceLoaded, so two
+addresses no longer share one name). Generic stand-in classes (S/T/C/address) on header classes were NOT touched (164 plan-stage
+deferrals): they need the method declared in engine/<Class>.h (header wave). Grade: see PASS.tsv / DEFERRED.tsv.

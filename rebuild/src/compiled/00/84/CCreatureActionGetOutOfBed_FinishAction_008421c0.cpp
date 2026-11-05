@@ -1,3 +1,4 @@
+// Leaf: ?CCreatureAction_GetOutOfBed_FinishAction@@YIXPAVCCreatureAction_GetOutOfBed@@@Z
 #pragma optimize("y",on)
 #include "engine/CCreatureAction_GetOutOfBed.h"  // retyped onto the PDB layout; byte parity re-verified
 
@@ -8,7 +9,7 @@ struct CCreatureActionGetOutOfBedVTable {
 extern void __fastcall CCreatureAction_Base_FinishAction(
     CCreatureAction_GetOutOfBed* action);
 
-void __fastcall FinishAction(CCreatureAction_GetOutOfBed* action)
+void __fastcall CCreatureAction_GetOutOfBed_FinishAction(CCreatureAction_GetOutOfBed* action)
 {
     if (!action->interrupted)
         ((CCreatureActionGetOutOfBedVTable*)action->__vftable)->Slots[3](action);

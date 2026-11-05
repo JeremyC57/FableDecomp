@@ -9,7 +9,7 @@ class CEditControlCentre { public:
     void* trackNodeB;
 };
 
-void* __fastcall PeekConnectedToTrackNode(CEditControlCentre* self)
+void* __fastcall CEditControlCentre_PeekConnectedToTrackNode(CEditControlCentre* self)
 {
     if (self->connectedFlag)
         return self->trackNodeB;
@@ -19,7 +19,7 @@ void* __fastcall PeekConnectedToTrackNode(CEditControlCentre* self)
 static void* callit(CEditControlCentre* obj)
 {
     void* r;
-    void* fn = (void*)&PeekConnectedToTrackNode;
+    void* fn = (void*)&CEditControlCentre_PeekConnectedToTrackNode;
     __asm {
         mov ecx, obj
         call fn

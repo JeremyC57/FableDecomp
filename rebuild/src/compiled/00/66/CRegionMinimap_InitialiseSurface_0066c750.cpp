@@ -1,4 +1,5 @@
 // CRegionMinimap::InitialiseSurface  0x0066c750  __fastcall void(CRegionMinimap*)
+// Leaf: ?CRegionMinimap_InitialiseSurface@@YIXPAUCRegionMinimap@@@Z
 class C2DExtentsI { public: int x; int y; };
 
 class CPixelFormat { public:
@@ -15,7 +16,7 @@ struct CRegionMinimap {
     CSurface surf;   // +0x24
 };
 
-void __fastcall InitialiseSurface(CRegionMinimap* minimap)
+void __fastcall CRegionMinimap_InitialiseSurface(CRegionMinimap* minimap)
 {
     CPixelFormat pf;
     int dim = minimap->handle;

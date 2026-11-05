@@ -28,7 +28,7 @@ class CBankFileAsyncData { public:
     Manager* BankFile;
 };
 
-void ChangeLoadingPriority(CBankFileAsyncData* self, EThreadedFilePriority prio)
+void CBankFileAsyncData_ChangeLoadingPriority(CBankFileAsyncData* self, EThreadedFilePriority prio)
 {
     Inner* item = self->field_18;
     if (item) {
@@ -47,13 +47,13 @@ int main() {
     a.BankFile = &mgr;
 
     // Case 1: field_18 non-null -> calls SetPriority(item, prio)
-    ChangeLoadingPriority(&a, 42);
+    CBankFileAsyncData_ChangeLoadingPriority(&a, 42);
     if (g_called != 1 || g_item != &item || g_prio != 42) { printf("BAD1\n"); return 1; }
 
     // Case 2: field_18 null -> no call
     g_called = 0;
     a.field_18 = 0;
-    ChangeLoadingPriority(&a, 99);
+    CBankFileAsyncData_ChangeLoadingPriority(&a, 99);
     if (g_called != 0) { printf("BAD2\n"); return 1; }
 
     printf("PARITY_OK\n");

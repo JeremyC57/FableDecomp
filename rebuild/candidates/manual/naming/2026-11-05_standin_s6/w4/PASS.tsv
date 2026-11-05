@@ -1,0 +1,81 @@
+address	grade	log	family	introduced_warnings	inherited_warnings
+0042dc5c	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+0042dc5f	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+0042dc60	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00430340	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00430470	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00431e30	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00434280	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00459353	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_00459363@CPersistContext@@QAEXPAX@Z -> 00459363 labelled '_global::PersistTransfer_00459363'
+0045e7cf	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_0045e808@CPersistContext@@QAEXPAJ@Z -> 0045e808 labelled 'CPersistContext::Transfer<COpinionPersonalityTraits*>'
+00464b8a	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_00464b9a@CPersistContext@@QAEXPAX@Z -> 00464b9a labelled 'CPersistContext::Transfer<CSimVoice>'
+00465662	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_00464cbf@CPersistContext@@QAEXPAX@Z -> 00464cbf labelled 'CPersistContext::TransferBinary_00464cbf'
+00467553	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_00466a47@CPersistContext@@QAEXPAX@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47' | RELOC_NAME: ?Transfer_00467597@CPersistContext@@QAEXPAX@Z -> 00467597 labelled 'CPersistContext::TransferBinary_00467597'
+004696c1	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_00466a47@CPersistContext@@QAEXPAJ@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47' | RELOC_NAME: ?Transfer_004696fa@CPersistContext@@QAEXPAJ@Z -> 004696fa labelled 'CPersistContext::TransferBinary_004696fa'
+00469c2e	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_00469c3e@CPersistContext@@QAEXPAX@Z -> 00469c3e labelled 'CPersistContext::TransferBinary_00469c3e'
+0046a6dd	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_00464cbf@CPersistContext@@QAEXPAJ@Z -> 00464cbf labelled 'CPersistContext::TransferBinary_00464cbf' | RELOC_NAME: ?Transfer_00466a47@CPersistContext@@QAEXPAJ@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+0046a77b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_00466a47@CPersistContext@@QAEXPAJ@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+0046c284	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_00466a47@CPersistContext@@QAEXPAX@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+0046c294	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_0046c2a4@CPersistContext@@QAEXPAX@Z -> 0046c2a4 labelled 'CPersistContext::TransferBinary_0046c2a4'
+0046c6e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_00466a47@CPersistContext@@QAEXPAX@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+004702c8	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_00470301@CPersistContext@@QAEXPAJ@Z -> 00470301 labelled 'CPersistContext::Transfer<CSoundMap>'
+0047989b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_004798ab@CPersistContext@@QAEXPAX@Z -> 004798ab labelled 'CPersistContext::TransferVectorOfSubComponents<CEngineLocalDetailLayerDef>'
+00494370	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+004dd999	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext
+004de36b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext
+004df107	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext
+004df3c6	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+004df3e6	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+004df738	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext
+004e394f	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext
+004e5011	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext
+004e55f1	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_004e5601@CPersistContext@@QAEXPAX@Z -> 004e5601 labelled '_global::PersistTransfer_004e5601'
+004e599d	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_004e59e1@CPersistContext@@QAEXPAX@Z -> 004e59e1 labelled 'CPersistContext::Transfer<CFireEffectCreationSet>'
+004e6248	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_004e6258@CPersistContext@@QAEXPAX@Z -> 004e6258 labelled '_global::PersistTransfer_004e6258'
+004e77e9	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_004e7822@CPersistContext@@QAEXPAJ@Z -> 004e7822 labelled 'CPersistContext::Transfer<CTextureMorphs>' | RELOC_NAME: ?Transfer_004e788a@CPersistContext@@QAEXPAJ@Z -> 004e788a labelled 'CPersistContext::Transfer<CSkeletalMorphs>' | RELOC_NAME: ?Transfer_004e78f2@CPersistContext@@QAEXPAJ@Z -> 004e78f2 labelled 'CPersistContext::Transfer<CParticleMorphs>'
+004e7e36	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_004657f2@CPersistContext@@QAEXPAX@Z -> 004657f2 labelled 'CPersistContext::TransferBinary_004657f2'
+004e8987	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_004e8997@CPersistContext@@QAEXPAX@Z -> 004e8997 labelled 'CPersistContext::TransferBinary_004e8997'
+004e9caa	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_004e9cba@CPersistContext@@QAEXPAX@Z -> 004e9cba labelled 'CPersistContext::TransferBinary_004e9cba'
+004ea20e	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_004ea21e@CPersistContext@@QAEXPAX@Z -> 004ea21e labelled 'CPersistContext::Transfer<NGraphicAppearance::CReplaceableMeshes>'
+004ebf22	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Xfer_00475d99@CPersistContext@@QAEXPAX@Z -> 00475d99 labelled 'CPersistContext::TransferBinary_00475d99'
+004ec0b3	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext
+004ede1b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CPersistContext
+005db410	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+005db480	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CDataOutputStream | RELOC_NAME: ?Write_00993ee0@CDataOutputStream@@QAEXPAX@Z -> 00993ee0 labelled 'CDataOutputStream::WriteFloat'
+0074db70	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00751a90	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+008263f0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+0084a860	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+008b6530	RELOCATION_MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+008c0620	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+009174d0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00922fa0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00938ed0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CWorld
+00940bd0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CWorld
+009454b0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+0094c7b0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+0094c850	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CThing
+0096bf70	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+0096bff0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+0096c870	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+0096f030	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+0096f490	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00a1bfc0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		RELOC_NAME: ?Run_00a1b470@Sub@@QAEXXZ -> 00a1b470 labelled 'CSteeringAgent::CreateLineList'
+00a224c0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00baa370	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bb16e0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bb6ce0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bb6d70	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bbf2b0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bbf300	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bbf320	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bbf360	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bc3d00	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bc3db0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bc3df0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bc6810	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		RELOC_NAME: ?M@Sub@@QAEXPAX@Z -> 0099b7d0 labelled 'CWideString::operator='
+00bc6860	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w4A00.log	standin_rtti_member		RELOC_NAME: ?M@Sub@@QAEXPAX@Z -> 0099b7d0 labelled 'CWideString::operator='
+00bd93c0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bd9820	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bd9a30	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		
+00bfddb0	MATCH PASS	logs/vland_w4A00.log	standin_rtti_member		

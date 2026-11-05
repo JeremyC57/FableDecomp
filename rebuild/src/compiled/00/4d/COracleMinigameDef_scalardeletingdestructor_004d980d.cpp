@@ -1,3 +1,4 @@
+// Leaf: ?COracleMinigameDef_scalar_deleting_destructor@@YIPAXPAVCOracleMinigameDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class COracleMinigameDef
 };
 extern void* const g_COracleMinigameDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(COracleMinigameDef* def, int, unsigned int flags)
+void* __fastcall COracleMinigameDef_scalar_deleting_destructor(COracleMinigameDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_COracleMinigameDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

@@ -1,3 +1,4 @@
+// Leaf: ?CObjectCacheGroupCollection_ClearLoadRequest@@YIXPAUCObjectCacheGroupCollection@@PAXPAVCEngineStaticMapFileBlockManager@@@Z
 class CEngineStaticMapFileBlockManager { public:
     void Release(void* block);  // __fastcall -> rewritten to __fastcall(this): ecx=this, stack arg
 };
@@ -9,7 +10,7 @@ struct CObjectCacheGroupCollection {
     unsigned char flags;  // +0x48
 };
 
-void __fastcall ClearLoadRequest(CObjectCacheGroupCollection* self, void* edx, CEngineStaticMapFileBlockManager* mgr)
+void __fastcall CObjectCacheGroupCollection_ClearLoadRequest(CObjectCacheGroupCollection* self, void* edx, CEngineStaticMapFileBlockManager* mgr)
 {
     if (self->flags & 8) {
         mgr->Release(self->field_34);

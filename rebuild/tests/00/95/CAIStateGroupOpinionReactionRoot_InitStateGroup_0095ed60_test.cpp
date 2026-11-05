@@ -8,7 +8,7 @@ struct Obj {
     unsigned char guard;
 };
 
-void __fastcall InitStateGroup(Obj* self, int edx_dummy, const void* world, void* creature)
+void __fastcall CAIStateGroup_OpinionReactionRoot_InitStateGroup(Obj* self, int edx_dummy, const void* world, void* creature)
 {
     unsigned char* d = self->states;
     self->CurrentReactionType = 0;
@@ -22,7 +22,7 @@ int main()
     o.CurrentReactionType = 0x12345678;
     o.guard = 0xEE;
     int dummyWorld = 0, dummyCreature = 0;
-    InitStateGroup(&o, 0, &dummyWorld, &dummyCreature);
+    CAIStateGroup_OpinionReactionRoot_InitStateGroup(&o, 0, &dummyWorld, &dummyCreature);
 
     if (o.CurrentReactionType != 0) { printf("BAD field_18\n"); return 1; }
     for (int i = 0; i < 79; i++) {

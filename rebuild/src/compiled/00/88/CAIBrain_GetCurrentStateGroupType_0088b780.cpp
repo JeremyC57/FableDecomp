@@ -1,3 +1,4 @@
+// Leaf: ?CAIBrain_GetCurrentStateGroupType@@YIHPAVCAIBrain@@@Z
 typedef int EAIStateGroupType;
 
 struct CAIStateGroup {
@@ -20,7 +21,7 @@ class CAIBrain { public:
     CAIStateGroup* f38;                     // +0x38
 };
 
-EAIStateGroupType __fastcall GetCurrentStateGroupType(CAIBrain* self)
+EAIStateGroupType __fastcall CAIBrain_GetCurrentStateGroupType(CAIBrain* self)
 {
     if (self->f38 != 0 && self->f38->f10 == 0) {
         return self->f38->GetType();

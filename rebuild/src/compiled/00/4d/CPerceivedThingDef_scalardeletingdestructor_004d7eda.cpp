@@ -1,3 +1,4 @@
+// Leaf: ?CPerceivedThingDef_scalar_deleting_destructor@@YIPAXPAVCPerceivedThingDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CPerceivedThingDef
 };
 extern void* const g_CPerceivedThingDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CPerceivedThingDef* def, int, unsigned int flags)
+void* __fastcall CPerceivedThingDef_scalar_deleting_destructor(CPerceivedThingDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CPerceivedThingDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

@@ -8,7 +8,7 @@ class CInputEvent { public: int code; };
 class CProcessedInput { public: int flags; };
 class CInputProcessDead { public: int dummy; };
 
-void __fastcall ProcessInput(CInputProcessDead* process,
+void __fastcall CInputProcessDead_ProcessInput(CInputProcessDead* process,
                              int edx_dummy,
                              const CInputEvent& ev,
                              CProcessedInput& out)
@@ -25,7 +25,7 @@ int main()
     CInputEvent ev; ev.code = 12345;
     CProcessedInput out; out.flags = 0xABCD;
 
-    ProcessInput(&obj, 0, ev, out);
+    CInputProcessDead_ProcessInput(&obj, 0, ev, out);
 
     // No-op: output must be unchanged by the dead-input handler.
     if (out.flags == 0xABCD)

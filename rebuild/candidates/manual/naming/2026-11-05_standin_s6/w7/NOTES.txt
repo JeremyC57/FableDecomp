@@ -1,0 +1,6 @@
+s6 w7 -- ?Copy@T@@QAEPAU1@ABUPtr@@@Z (30): the body is engine/CCountedPointer.h's copy constructor; rows instantiate
+  template CCountedPointer<T>::CCountedPointer(const CCountedPointer<T>&);
+T from the one typed header-form caller + PDB symbol (7, LABELS), else CUnprovenPointee_<addr> (11, LABELS_PROPOSAL).
+DEFERRED 12: typed callers bind the converting member-template ctor ??$?0<Derived>@?$CCountedPointer@<Base>@@ (a different
+function with the same bytes); emitting it needs Base/Derived with their inheritance -- left for a header wave.
+Grade: gate 18/18; vland 18 MATCH PASS, parity unchanged.

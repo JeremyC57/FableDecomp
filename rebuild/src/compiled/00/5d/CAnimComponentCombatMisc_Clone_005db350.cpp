@@ -1,6 +1,7 @@
+// Leaf: ?CAnimComponentCombatMisc_Clone@@YIPAXPAVCAnimComponentCombatMisc@@@Z
 #include "engine/CAnimComponentCombatMisc.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef CAnimComponentCombatMisc* (__fastcall* CloneCombatMiscFn)(CAnimComponentCombatMisc*);
-void* __fastcall Clone_CombatMisc(CAnimComponentCombatMisc* component)
+void* __fastcall CAnimComponentCombatMisc_Clone(CAnimComponentCombatMisc* component)
 {
     CloneCombatMiscFn* vtable = (CloneCombatMiscFn*)component->__vftable;
     CAnimComponentCombatMisc* copy = vtable[0x10 / 4](component);

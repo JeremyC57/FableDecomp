@@ -1,0 +1,6 @@
+s6 w3 -- free stand-ins whose own address is RTTI-proven (labels_rtti_port.tsv slot + the same mangled name in the PDB name
+sets): the free function is respelled Class_Method after the real class and method, in every row status (generic, address-only,
+names-another, lacks-class): e.g. _Forward (extern "C", 0x004E2C03) -> _CBossDef_Copy, ?candidate_004456d0@@ ->
+?CInputTypeXboxPadRightStickEvent_IsInputTypeWithMouseButton@@, ?CActionUseDef_GetSizeofClass@@ (catalog/RTTI CTCNoiseDef) ->
+?CTCNoiseDef_GetSizeofClass@@. Parameter types are left as landed (a wrong this-type such as PBVCActionUseDef stays; noted).
+No landed caller binds the old names. Grade: see PASS.tsv / DEFERRED.tsv.

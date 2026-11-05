@@ -1,4 +1,5 @@
 // CAIStateGroup_GameMaster::InitCreaturePosition() -- acquire work building and seat, place the creature, then run replacement cleanup.
+// Leaf: ?InitCreaturePosition@CAIStateGroup_GameMaster@@QAE_NXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Grade: RELOCATION_MATCH -- explicit temporary lifetime and placement receiver reproduce retail ordering.
 #include "engine/CAIStateGroupBase.h"
@@ -35,12 +36,12 @@ struct CSeatVirtualView {
  virtual void v12(); virtual void v13(); virtual bool GetSeat();
 };
 extern float GameMasterPlacementRadius; // 0138CEC8
-struct CGameMasterMethods : CAIStateGroupBase {
+struct CAIStateGroup_GameMaster : CAIStateGroupBase {
  CIntelligentPointerThing Building;
  unsigned char _beforeSeat[0x40-0x1c]; C3DVector SeatPosition;
  bool InitCreaturePosition();
 };
-bool CGameMasterMethods::InitCreaturePosition() {
+bool CAIStateGroup_GameMaster::InitCreaturePosition() {
  CCreatureWorkView* creature=(CCreatureWorkView*)PBrain->Creature;
  {
  CIntelligentPointerThing work(((CThing*)creature->GetWorkBuilding().GetPItem()));
@@ -56,3 +57,4 @@ bool CGameMasterMethods::InitCreaturePosition() {
  }
  return false;
 }
+// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?InitCreaturePosition@CAIStateGroup_GameMaster@@MAE_NXZ); evidence: RTTI vtable slot + PDB name set.

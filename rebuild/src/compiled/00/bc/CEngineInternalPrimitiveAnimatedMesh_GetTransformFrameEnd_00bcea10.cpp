@@ -1,4 +1,5 @@
 // callee at 0xbebaa0: CEngineInternalPrimitiveMeshBase::CalcObjectMatrix (static __fastcall, Ego_r / FableWin; naming wave 11):
+// Leaf: ?CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameEnd@@YI_NPAUMesh@@PAXAAVCMatrix3x4@@@Z
 // ecx = matrix, edx = EndPosition self+0x94, stack: EndOrientation self+0xbc, Scale +0x58
 class CMatrix3x4;
 class C3DVector;
@@ -15,7 +16,7 @@ struct Mesh {
 };
 
 // self in ecx, matrix ref on stack -> ret 4
-bool __fastcall GetTransformFrameEnd(Mesh* self, void* /*edx*/, CMatrix3x4& matrix)
+bool __fastcall CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameEnd(Mesh* self, void* /*edx*/, CMatrix3x4& matrix)
 {
     char* base = (char*)self;
     CEngineInternalPrimitiveMeshBase::CalcObjectMatrix(matrix, *(const C3DVector*)(base + 0x94), *(const CRightHandedSet*)(base + 0xbc), self->field58);

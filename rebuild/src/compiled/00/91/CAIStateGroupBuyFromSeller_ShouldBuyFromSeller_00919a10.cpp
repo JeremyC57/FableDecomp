@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CAIStateGroup_BuyFromSeller::ShouldBuyFromSeller @ 0x00919a10
+// Leaf: ?CAIStateGroup_BuyFromSeller_ShouldBuyFromSeller@@YI_NPAUCAIStateGroup_BuyFromSeller@@@Z
 // Naming wave 18: the global stand-in g_div_1375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // __fastcall bool f(Self* this)
@@ -20,7 +21,7 @@ public:
 };
 extern int g_cmp_138c694;   // [0x138c694] compare value
 
-bool __fastcall ShouldBuyFromSeller(CAIStateGroup_BuyFromSeller* stateGroup)
+bool __fastcall CAIStateGroup_BuyFromSeller_ShouldBuyFromSeller(CAIStateGroup_BuyFromSeller* stateGroup)
 {
     int elapsed = CWorld::GetFrame() - stateGroup->FrameLastBought;
     int quot = elapsed / CMainGameComponent::GetConstantFPS();

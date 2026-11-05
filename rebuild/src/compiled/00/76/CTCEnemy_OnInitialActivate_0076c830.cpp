@@ -1,4 +1,5 @@
 // CTCEnemy::OnInitialActivate @ 0076c830
+// Leaf: ?CTCEnemy_OnInitialActivate@@YIXPAVCTCEnemy@@@Z
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 class CTCEnemy;
@@ -22,7 +23,7 @@ class CPlayerGui { public:
 // base OnInitialActivate (tail jmp 0x686870), __fastcall(this)
 void __fastcall CTCEnemy_base_OnInitialActivate(CTCEnemy* enemy);
 
-void __fastcall OnInitialActivate(CTCEnemy* enemy)
+void __fastcall CTCEnemy_OnInitialActivate(CTCEnemy* enemy)
 {
     CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
     CTCEnemy_base_OnInitialActivate(enemy);

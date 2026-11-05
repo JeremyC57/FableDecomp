@@ -1,3 +1,4 @@
+// Leaf: ?CActivateQuestDef_scalar_deleting_destructor@@YIPAXPAVCActivateQuestDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CActivateQuestDef
 };
 extern void* const g_CActivateQuestDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CActivateQuestDef* def, int, unsigned int flags)
+void* __fastcall CActivateQuestDef_scalar_deleting_destructor(CActivateQuestDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CActivateQuestDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

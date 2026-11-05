@@ -1,0 +1,16 @@
+0042f948	catalog T CFontBank_const; callers $$CBVCFontBank@@
+0043e1c0	callers bind VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@
+0062d9a0	callers bind VCStrikeEvent@CCombatActionBase@@
+00654b0a	callers bind UCQuestInfoElementBar@NPlayerGui@@@NPlayerGui
+00654b4f	callers bind VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@
+00654b94	callers bind UCQuestInfoElementCounter@NPlayerGui@@@NPlayerGui VCQuestInfoElementCounter@CDrawQuestInfo@NPlayerGui@@
+00654bd9	callers bind VCQuestInfoElementCounterList@CDrawQuestInfo@NPlayerGui@@
+00654c1e	callers bind UCQuestInfoElementTick@NPlayerGui@@@NPlayerGui VCQuestInfoElementTick@CDrawQuestInfo@NPlayerGui@@
+00654c63	callers bind UCQuestInfoElementMiniGameBar@NPlayerGui@@@NPlayerGui
+0071ee70	catalog T CTCAppearanceMorphBase::CMeshMorphSet; callers -
+0073d630	callers bind VCHoverAnim@CModeHoverBase@NCreatureMode@@
+009a9d60	callers bind UCRetailBank@@
+00a36ec0	catalog T const C3DMesh2; callers -
+00a45d20	catalog T C3DSkeletalMorphParameter::CShared; callers -
+00cdd4f0	catalog T NScript::CPredicateBase const; callers $$CBVCPredicateBase@NScript@@
+00ce1000	callers bind UCEntityScriptBase@ExternalRetry_00ce0ef0@@@ExternalRetry_00ce0ef0 VCEntityScriptBase@@ VCEntityScriptBase@@@ArenaBinding VCEntityScriptBase@@@EntityScriptBinding_00d7c2e0 VCEntityScriptBase@@@EntityScriptBinding_00d7fab0 VCEntityScriptBase@@@EntityScriptBinding_00d82210 VCEntityScriptBase@@@EntityScriptBinding_00d844a0 VCEntityScriptBase@@@EntityScriptBinding_00d89580 VCEntityScriptBase@@@EntityScriptBinding_00d8a960 VCEntityScriptBase@@@EntityScriptBinding_00d915b0 VCEntityScriptBase@@@EntityScriptBinding_00d9d930 VCEntityScriptBase@@@EntityScriptBinding_00d9ffd0 VCEntityScriptBase@@@EntityScriptBinding_00da8320 VCEntityScriptBase@@@EntityScriptBinding_00db8520 VCEntityScriptBase@@@EntityScriptBinding_00dc0170 VCEntityScriptBase@@@EntityScriptBinding_00dc8700 VCEntityScriptBase@@@EntityScriptBinding_00dcf790 VCEntityScriptBase@@@EntityScriptBinding_00dd9300 VCEntityScriptBase@@@EntityScriptBinding_00ddc7d0 VCEntityScriptBase@@@EntityScriptBinding_00ddeee0 VCEntityScriptBase@@@EntityScriptBinding_00dec5b0 VCEntityScriptBase@@@EntityScriptBinding_00def220 VCEntityScriptBase@@@EntityScriptBinding_00df3550 VCEntityScriptBase@@@EntityScriptBinding_00df4a50 VCEntityScriptBase@@@EntityScriptBinding_00df99f0 VCEntityScriptBase@@@EntityScriptBinding_00dfc100 VCEntityScriptBase@@@EntityScriptBinding_00e05170 VCEntityScriptBase@@@EntityScriptBinding_00efad80 VCEntityScriptBase@@@EntityScriptBinding_00efb9c0 VCEntityScriptBase@@@EntityScriptBinding_00efbf80 VCEntityScriptBase@@@EntityScriptBinding_00efda90 VCEntityScriptBase@@@EntityScriptBinding_00eff5c0 VCEntityScriptBase@@@EntityScriptBinding_00f01150 VCEntityScriptBase@@@EntityScriptBinding_00f01d20 VCEntityScriptBase@@@EntityScriptBinding_00f09b10 VCEntityScriptBase@@@HenchmenBinding

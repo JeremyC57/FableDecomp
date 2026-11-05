@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CMiniMapDisplay::Initialise @ 0x0082a310
+// Leaf: ?CMiniMapDisplay_Initialise@@YIXPAVCMiniMapDisplay@@M@Z
 // __fastcall(CMiniMapDisplay* self, float) -> void
 // add ecx,0x20 ; call 0x440730 (subobject method) ; mov byte [g]=0 ; ret 4
 //
@@ -19,7 +20,7 @@ extern unsigned char g_miniMapFlag;
 
 // Author Initialise as a __fastcall free fn: arg1=this in ecx, arg2(edx dummy) then stack float.
 // Actually the retail sig is __fastcall(self,float): ecx=this, float on stack, ret 4.
-void __fastcall Initialise(CMiniMapDisplay* self, float /*unused*/)
+void __fastcall CMiniMapDisplay_Initialise(CMiniMapDisplay* self, float /*unused*/)
 {
     Sub* p = reinterpret_cast<Sub*>(reinterpret_cast<char*>(self) + 0x20);
     Sub_Reset(p);           // add ecx,0x20 ; call 0x440730

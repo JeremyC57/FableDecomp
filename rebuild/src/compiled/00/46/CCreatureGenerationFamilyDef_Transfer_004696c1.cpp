@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CCreatureGenerationFamilyDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 // CPersistable_004696c1::Transfer(CPersistContext&) -- 4 members at +0x3c..+0x50 handed to the context's typed transfer helpers (0x00431102, 0x00466A47, 0x004696FA)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004696C1, oracle length 57 bytes.
@@ -15,7 +16,7 @@ class CPersistContext { public:
     void Transfer_004696fa(long* value);   // 0x004696FA
 };
 
-struct CPersistable_004696c1 {
+struct CCreatureGenerationFamilyDef {
     virtual void v00();
     unsigned char _pad[0x38];
     long m_3c;                          // +0x3c (via Transfer_00466a47)
@@ -26,10 +27,11 @@ struct CPersistable_004696c1 {
     virtual void Transfer(CPersistContext& context);
 };
 
-void CPersistable_004696c1::Transfer(CPersistContext& context)
+void CCreatureGenerationFamilyDef::Transfer(CPersistContext& context)
 {
     context.Transfer_00466a47(&m_3c);
     context.Transfer(*(long*)(&m_48));
     context.Transfer(*(long*)(&m_4c));
     context.Transfer_004696fa(&m_50);
 }
+// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?Transfer@CCreatureGenerationFamilyDef@@UAEXAAVCPersistContext@@@Z); evidence: RTTI vtable slot + PDB name set.

@@ -1,4 +1,5 @@
 // CTCHeroAttachableAppearanceModifiers::HandleMessage @ 00705fe0
+// Leaf: ?CTCHeroAttachableAppearanceModifiers_HandleMessage@@YIXPAVCTCHeroAttachableAppearanceModifiers@@HPAUMsg@@@Z
 
 struct Msg;
 
@@ -16,7 +17,7 @@ class CTCHeroAttachableAppearanceModifiers { public:
     unsigned char f14;
 };
 
-void __fastcall HandleMessage(CTCHeroAttachableAppearanceModifiers* self, int /*edx*/, Msg* msg)
+void __fastcall CTCHeroAttachableAppearanceModifiers_HandleMessage(CTCHeroAttachableAppearanceModifiers* self, int /*edx*/, Msg* msg)
 {
     if (msg->vtbl->slot1(msg) == 3)
         self->f14 |= 1;

@@ -1,4 +1,5 @@
 // CInputProcessInventory::`vector deleting destructor' @ 0x0048b500
+// Leaf: ?CInputProcessInventory_scalar_deleting_destructor@@YIPAXPAVCInputProcessInventory@@HI@Z
 // Standard MSVC vector-deleting-destructor thunk:
 //   push esi; mov esi,ecx; call <dtor>; test [esp+8],1; jz L;
 //   push esi; call operator delete; add esp,4; L: mov eax,esi; pop esi; ret 4
@@ -9,7 +10,7 @@ class CInputProcessInventory
 };
 
 
-void* __fastcall scalar_deleting_destructor(CInputProcessInventory* process, int edx, unsigned int flags)
+void* __fastcall CInputProcessInventory_scalar_deleting_destructor(CInputProcessInventory* process, int edx, unsigned int flags)
 {
     process->dtor();
     if (flags & 1)

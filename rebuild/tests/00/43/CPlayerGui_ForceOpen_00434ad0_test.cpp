@@ -13,7 +13,7 @@ class CPlayerGui { public:
     unsigned int  d_f4;   // +0xf4
 };
 
-void __fastcall ForceOpen(CPlayerGui *this_)
+void __fastcall CPlayerGui_ForceOpen(CPlayerGui *this_)
 {
     this_->b_c9 = 0;
     this_->b_c8 = 1;
@@ -30,7 +30,7 @@ int main()
     CPlayerGui *p = (CPlayerGui*)buf;
 
     // Invoke via __fastcall shim (this=ecx).
-    void *fn = (void*)&ForceOpen;
+    void *fn = (void*)&CPlayerGui_ForceOpen;
     __asm {
         mov ecx, p
         mov eax, fn

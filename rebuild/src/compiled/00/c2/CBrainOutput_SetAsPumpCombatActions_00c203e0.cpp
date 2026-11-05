@@ -1,4 +1,5 @@
 // CBrainOutput::SetAsPumpCombatActions @ 00c203e0
+// Leaf: ?CBrainOutput_SetAsPumpCombatActions@@YIXPAVCBrainOutput@@HJ@Z
 // retail: mov eax,[esp+4]; push esi; mov esi,ecx; push eax;
 //         lea ecx,[esi+8]; call 0xc1bb40; or dword[esi],2; pop esi; ret 4
 
@@ -12,7 +13,7 @@ class CBrainOutput { public:
     SubObj sub;          // +8
 };
 
-void __fastcall SetAsPumpCombatActions(CBrainOutput* self, int /*edx*/, long a)
+void __fastcall CBrainOutput_SetAsPumpCombatActions(CBrainOutput* self, int /*edx*/, long a)
 {
     self->sub.Set(a);
     self->flags |= 2;

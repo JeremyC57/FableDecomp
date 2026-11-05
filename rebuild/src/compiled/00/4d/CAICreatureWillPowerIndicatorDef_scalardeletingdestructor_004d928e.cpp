@@ -1,3 +1,4 @@
+// Leaf: ?CAICreatureWillPowerIndicatorDef_scalar_deleting_destructor@@YIPAXPAVCAICreatureWillPowerIndicatorDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CAICreatureWillPowerIndicatorDef
 };
 extern void* const g_CAICreatureWillPowerIndicatorDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CAICreatureWillPowerIndicatorDef* def, int, unsigned int flags)
+void* __fastcall CAICreatureWillPowerIndicatorDef_scalar_deleting_destructor(CAICreatureWillPowerIndicatorDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CAICreatureWillPowerIndicatorDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

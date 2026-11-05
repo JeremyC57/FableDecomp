@@ -7,7 +7,7 @@ class CTCCoopSpirit { public:
     C3DVector movement;
 };
 
-void __fastcall ApplyMovementVector(CTCCoopSpirit* self, int /*edx_unused*/, const C3DVector* pos)
+void __fastcall CTCCoopSpirit_ApplyMovementVector(CTCCoopSpirit* self, int /*edx_unused*/, const C3DVector* pos)
 {
     self->movement = *pos;
 }
@@ -26,7 +26,7 @@ int main()
     __asm {
         mov  ecx, pobj
         push pvec
-        call ApplyMovementVector
+        call CTCCoopSpirit_ApplyMovementVector
     }
 
     char* base = (char*)&obj;

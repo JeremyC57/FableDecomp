@@ -1,3 +1,4 @@
+// Leaf: ?CEngineLandscapeMemoryManager_FrameStart@@YIXPAVCEngineLandscapeMemoryManager@@@Z
 class CEngineLandscapeMemoryManager { public:
     char pad0[0x34];
     int frame;
@@ -5,7 +6,7 @@ class CEngineLandscapeMemoryManager { public:
     unsigned char flag;
 };
 
-void __fastcall FrameStart(CEngineLandscapeMemoryManager* manager)
+void __fastcall CEngineLandscapeMemoryManager_FrameStart(CEngineLandscapeMemoryManager* manager)
 {
     manager->frame = (manager->frame + 1) % 3;
     manager->flag = 1;

@@ -1,3 +1,4 @@
+// Leaf: ?CKickableDef_scalar_deleting_destructor@@YIPAXPAVCKickableDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CKickableDef
 };
 extern void* const g_CKickableDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CKickableDef* def, int, unsigned int flags)
+void* __fastcall CKickableDef_scalar_deleting_destructor(CKickableDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CKickableDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

@@ -14,7 +14,7 @@ void __stdcall capture(IShaderDevice* dev, long reg, float* data, long count) {
     for (int i = 0; i < 4; ++i) g_data[i] = data[i];
 }
 
-void __fastcall SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, void* edx, long reg, CRGBFloatColour* colour)
+void __fastcall CShaderRenderManager_SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, void* edx, long reg, CRGBFloatColour* colour)
 {
     float local[4];
     local[0] = colour->x; local[1] = colour->y; local[2] = colour->z; local[3] = colour->w;
@@ -31,7 +31,7 @@ int main() {
     CShaderRenderManager mgr; mgr.dev = &dev;
     CRGBFloatColour c = { 1.5f, 2.5f, 3.5f, 4.5f };
 
-    SetXBoxUserVertexShaderConstant(&mgr, 0, 7, &c);
+    CShaderRenderManager_SetXBoxUserVertexShaderConstant(&mgr, 0, 7, &c);
 
     bool ok = (g_dev == &dev) && (g_reg == 7) && (g_count == 1) &&
               g_data[0]==1.5f && g_data[1]==2.5f && g_data[2]==3.5f && g_data[3]==4.5f;

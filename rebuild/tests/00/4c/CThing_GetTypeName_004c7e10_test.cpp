@@ -6,7 +6,7 @@ struct CThingTypeManager { int pad; CThingTypeEntry *entries; };
 CThingTypeManager *g_thingTypeManager;
 class CThing { public: char pad[0x10]; unsigned char typeIndex; };
 
-char * __fastcall GetTypeName(CThing *self)
+char * __fastcall CThing_GetTypeName(CThing *self)
 {
     unsigned int idx = self->typeIndex;
     return g_thingTypeManager->entries[idx].name;
@@ -32,7 +32,7 @@ int main()
     CThing *pt = &t;
     __asm {
         mov ecx, pt
-        call GetTypeName
+        call CThing_GetTypeName
         mov got, eax
     }
 
@@ -44,7 +44,7 @@ int main()
     t.typeIndex = 0;
     __asm {
         mov ecx, pt
-        call GetTypeName
+        call CThing_GetTypeName
         mov got, eax
     }
     if (got != table[0].name || strcmp(got, "CREATURE") != 0) { printf("FAIL idx0\n"); return 1; }

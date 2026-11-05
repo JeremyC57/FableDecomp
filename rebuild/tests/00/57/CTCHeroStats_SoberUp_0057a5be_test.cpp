@@ -10,7 +10,7 @@ class CTCHeroStats { public:
     unsigned char b1b8;
 };
 
-void __fastcall SoberUp(CTCHeroStats* self)
+void __fastcall CTCHeroStats_SoberUp(CTCHeroStats* self)
 {
     self->i1ac = -1;
     self->f19c = 0.0f;
@@ -25,7 +25,7 @@ int main()
     s.f19c = 9.0f;
     s.f1a0 = 9.0f;
     s.b1b8 = 0;
-    SoberUp(&s);
+    CTCHeroStats_SoberUp(&s);
     if (s.i1ac == -1 && s.f19c == 0.0f && s.f1a0 == 0.0f && s.b1b8 == 1) {
         printf("SOBERUP_OK\n");
     } else {

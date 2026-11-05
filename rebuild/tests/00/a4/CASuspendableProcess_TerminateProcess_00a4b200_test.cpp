@@ -15,7 +15,7 @@ class CASuspendableProcess { public:
 };
 #pragma pack(pop)
 
-void __fastcall TerminateProcess(CASuspendableProcess* process)
+void __fastcall CASuspendableProcess_TerminateProcess(CASuspendableProcess* process)
 {
     process->terminateRequested = 1;
     while (process->active) {
@@ -44,7 +44,7 @@ int main()
     p.active = 1;
     p.terminateRequested = 0;
     g_pumps = 0;
-    TerminateProcess(&p);
+    CASuspendableProcess_TerminateProcess(&p);
     int ok1 = (p.terminateRequested == 1) && (p.active == 0) && (g_pumps == 3);
 
     // Case 2: already inactive -> sets flag, no pump.
@@ -53,7 +53,7 @@ int main()
     q.active = 0;
     q.terminateRequested = 0;
     g_pumps = 0;
-    TerminateProcess(&q);
+    CASuspendableProcess_TerminateProcess(&q);
     int ok2 = (q.terminateRequested == 1) && (q.active == 0) && (g_pumps == 0);
 
     if (ok1 && ok2) printf("PARITY_OK\n");

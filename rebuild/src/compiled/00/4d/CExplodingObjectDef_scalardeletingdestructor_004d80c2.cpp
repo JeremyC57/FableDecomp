@@ -1,3 +1,4 @@
+// Leaf: ?CExplodingObjectDef_scalar_deleting_destructor@@YIPAXPAVCExplodingObjectDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CExplodingObjectDef
 };
 extern void* const g_CExplodingObjectDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CExplodingObjectDef* def, int, unsigned int flags)
+void* __fastcall CExplodingObjectDef_scalar_deleting_destructor(CExplodingObjectDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CExplodingObjectDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

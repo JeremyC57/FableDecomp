@@ -1,6 +1,7 @@
+// Leaf: ?CAnimComponentCombatRecoil_Clone@@YIPAVCAnimComponentCombatRecoil@@PAV1@@Z
 #include "engine/CAnimComponentCombatRecoil.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef CAnimComponentCombatRecoil* (__fastcall* CloneRecoilFn)(CAnimComponentCombatRecoil*);
-CAnimComponentCombatRecoil* __fastcall Clone(CAnimComponentCombatRecoil* component)
+CAnimComponentCombatRecoil* __fastcall CAnimComponentCombatRecoil_Clone(CAnimComponentCombatRecoil* component)
 {
     CloneRecoilFn* vtable = (CloneRecoilFn*)component->__vftable;
     CAnimComponentCombatRecoil* copy = vtable[0x10 / 4](component);

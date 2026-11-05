@@ -1,3 +1,4 @@
+// Leaf: ?CShopItemDef_scalar_deleting_destructor@@YIPAXPAVCShopItemDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CShopItemDef
 };
 extern void* const g_CShopItemDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CShopItemDef* def, int, unsigned int flags)
+void* __fastcall CShopItemDef_scalar_deleting_destructor(CShopItemDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CShopItemDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

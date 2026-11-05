@@ -15,7 +15,7 @@ void __fastcall Persist_ReadValue(CPersistContext* ecx, CStringParser* edx, void
     g_readCount++;
 }
 
-void __fastcall TransferIn(CPersistTraits* self, int edx_dummy,
+void __fastcall CPersistTraits_TransferIn(CPersistTraits* self, int edx_dummy,
                            CPersistContext* ctx, CStringParser* parser, EInputKey* out)
 {
     (void)self; (void)edx_dummy;
@@ -28,7 +28,7 @@ int main()
     EInputKey out = -1;
     CPersistContext* ctx = (CPersistContext*)0x1000;
     CStringParser* parser = (CStringParser*)0x2000;
-    TransferIn((CPersistTraits*)0x3000, 0, ctx, parser, &out);
+    CPersistTraits_TransferIn((CPersistTraits*)0x3000, 0, ctx, parser, &out);
     if (g_readCount == 1 && out == 0x2A) {
         printf("PARITY_OK\n");
     } else {

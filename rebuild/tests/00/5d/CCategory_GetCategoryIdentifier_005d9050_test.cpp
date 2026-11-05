@@ -31,7 +31,7 @@ struct SmartRef {
     }
 };
 
-EInventoryCategoryIdentifier __fastcall GetCategoryIdentifier(CCategory* self)
+EInventoryCategoryIdentifier __fastcall CCategory_GetCategoryIdentifier(CCategory* self)
 {
     SmartRef ref(self->m0c);
     EInventoryCategoryIdentifier id = self->m0c->catId;
@@ -51,13 +51,13 @@ int main() {
     CCategory cat;
     cat.m0c = &obj;
 
-    int r = GetCategoryIdentifier(&cat);
+    int r = CCategory_GetCategoryIdentifier(&cat);
     // refcount 5 -> +1 =6 -> -1 =5, not zero: no delete
     if (r == 42 && obj.refcnt == 5 && g_deleted == 0) {
         // last-ref delete path
         obj.refcnt = 0;   // copy makes it 1, dtor makes it 0 -> delete
         g_deleted = 0;
-        int r2 = GetCategoryIdentifier(&cat);
+        int r2 = CCategory_GetCategoryIdentifier(&cat);
         if (r2 == 42 && g_deleted == 1) {
             printf("PARITY_OK\n");
             return 0;

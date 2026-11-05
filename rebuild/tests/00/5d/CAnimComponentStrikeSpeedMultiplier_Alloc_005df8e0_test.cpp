@@ -7,7 +7,7 @@ struct Obj { ULONG vtable; ULONG field4; ULONG field8; };
 
 static void * my_new(unsigned int size) { return malloc(size); }
 
-static Obj * Alloc()
+static Obj * CAnimComponentStrikeSpeedMultiplier_Alloc()
 {
     Obj * p = (Obj *)my_new(0xc);
     if (p) {
@@ -20,7 +20,7 @@ static Obj * Alloc()
 
 int main()
 {
-    Obj * o = Alloc();
+    Obj * o = CAnimComponentStrikeSpeedMultiplier_Alloc();
     int ok = (o != 0) && (o->field4 == 1) && (o->vtable == 0x1255800);
     if (ok) printf("BEHAVIOR_PASS\n");
     else printf("BEHAVIOR_FAIL\n");

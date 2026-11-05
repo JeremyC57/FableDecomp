@@ -13,17 +13,17 @@ struct Pool {
     CRIT cs;
 };
 
-void EndCritical(Pool* self){
+void CHandleBasedMemoryPool_EndCritical(Pool* self){
     if (self->flag) { g_leave(&self->cs); }
 }
 
 int main(){
     Pool a; a.flag = 0; g_called = 0;
-    EndCritical(&a);
+    CHandleBasedMemoryPool_EndCritical(&a);
     if (g_called != 0) { printf("FAIL flag0\n"); return 1; }
 
     Pool b; b.flag = 1; g_called = 0; g_arg = 0;
-    EndCritical(&b);
+    CHandleBasedMemoryPool_EndCritical(&b);
     if (g_called != 1) { printf("FAIL flag1 not called\n"); return 1; }
     if (g_arg != (void*)&b.cs) { printf("FAIL wrong arg\n"); return 1; }
 

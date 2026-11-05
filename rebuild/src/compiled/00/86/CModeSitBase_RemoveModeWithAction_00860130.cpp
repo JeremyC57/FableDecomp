@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CModeSitBase::RemoveModeWithAction @ 0x00860130
+// Leaf: ?CModeSitBase_RemoveModeWithAction@@YIXPAUCModeSitBase@@PAXPAVCCreatureActionBase@@@Z
 
 class CCreatureActionBase { public:
     virtual void v00();
@@ -27,7 +28,7 @@ struct CModeSitBase {
     CSubObject sub;       // +0x20
 };
 
-void __fastcall RemoveModeWithAction(CModeSitBase* self, void* /*edx*/, CCreatureActionBase* action)
+void __fastcall CModeSitBase_RemoveModeWithAction(CModeSitBase* self, void* /*edx*/, CCreatureActionBase* action)
 {
     self->flags |= 8;
     int r = action->GetSomething();

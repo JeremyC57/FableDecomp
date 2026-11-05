@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CTavernTableDef* def, int, unsigned int flags)
+void* __fastcall CTavernTableDef_scalar_deleting_destructor(CTavernTableDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CTavernTableDef_vftable;
     CTavernTableDef_Destruct(def);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CTavernTableDef* def, int, unsigned 
 int main()
 {
     CTavernTableDef object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CTavernTableDef_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CTavernTableDef_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CTavernTableDef_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

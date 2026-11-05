@@ -4,7 +4,7 @@ class CAnimateThing { public:
     unsigned char b[0x50];
 };
 
-void __fastcall SetAsFinished(CAnimateThing *self, int /*edx*/, void *value)
+void __fastcall CAnimateThing_SetAsFinished(CAnimateThing *self, int /*edx*/, void *value)
 {
     *((unsigned char *)self + 0x26) |= 0x20;
     *(void **)((char *)self + 0x48) = value;
@@ -17,7 +17,7 @@ int main()
     t.b[0x26] = 0x01; // pre-existing bits must be preserved
 
     int marker = 12345;
-    SetAsFinished(&t, 0, &marker);
+    CAnimateThing_SetAsFinished(&t, 0, &marker);
 
     bool ok = true;
     if (t.b[0x26] != (0x01 | 0x20)) ok = false;           // OR set bit 0x20, kept 0x01

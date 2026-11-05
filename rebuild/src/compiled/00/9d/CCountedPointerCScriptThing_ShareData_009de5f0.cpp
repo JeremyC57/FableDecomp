@@ -1,24 +1,10 @@
-void operator delete(void* p);
-struct Ctl {
-    long rc;
-    void (__fastcall *fn)(void* self);
-    void* ctx;
-};
-struct CCPtr {
-    void* info;
-    Ctl*  p;
-    void ShareData(void* newInfo, Ctl* np);
-};
-void CCPtr::ShareData(void* newInfo, Ctl* np) {
-    if (this->p != np) {
-        if (this->p) {
-            if (--this->p->rc == 0) {
-                this->p->fn(this->p->ctx);
-                ::operator delete(this->p);
-            }
-        }
-        this->info = newInfo;
-        this->p = np;
-        if (np) ++np->rc;
-    }
-}
+// CCountedPointer<CUnprovenPointee_009de5f0>::ShareData(T* data, CCPPointerInfo* info) -- share another pointer's count block
+// Leaf: ?ShareData@?$CCountedPointer@VCUnprovenPointee_009de5f0@@@@QAEXPAVCUnprovenPointee_009de5f0@@PAVCCPPointerInfo@@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009DE5F0, 67 bytes. Callees: the old block's DeleteFunc (indirect), operator delete 0x00BFE9BC.
+//
+// When the block differs from the current one: release the current block (RefCount drop; at zero DeleteFunc on its Data
+// and the block freed), then adopt data / info and take a reference on the new block (engine/CCountedPointer.h).
+// T unresolved: the catalog's CCountedPointer<CScriptThing> label is propagated across 149 byte-identical ShareData bodies, and no typed caller names this one, so a stand-in pointee class carries it (CUnproven<Kind>_<addr>, EXTRA_RULES 2026-10-28).
+#include "engine/CCountedPointer.h"
+class CUnprovenPointee_009de5f0;
+template void CCountedPointer<CUnprovenPointee_009de5f0>::ShareData(CUnprovenPointee_009de5f0*, CCPPointerInfo*);

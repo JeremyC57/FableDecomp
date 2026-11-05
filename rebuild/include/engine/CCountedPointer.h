@@ -26,7 +26,7 @@
 //     mov [x],edi`). Reset and ShareData are written over it (their dead zero stores vanish):
 //   Reset(T*) = 0x008AB2B0 (and 197 more): <ReleaseData> leaves only `mov [esi+4],0`, then Data = data; if (data)
 //     Info = new CCPPointerInfo(1, DeleteData, Data) (the block reads Data back; a failed new leaves Info 0).
-//   ShareData = 0x00CE1040 (CCountedPointer<CScriptThing>, Ego_r.pdb name): `if (Info != info) { <release>; Data = data;
+//   ShareData = 0x00CE1040 (CCountedPointer<CEntityScriptBase>: every landed caller binds that T, FableWin has the symbol; the method name is Ego_r.pdb's): `if (Info != info) { <release>; Data = data;
 //     Info = info; if (info) ++info->RefCount; }`.
 //   operator= = 0x00704580 (CScriptThing): loads o.Data / o.Info first, then the ShareData body, returns *this.
 //   The (T*) ctor is the allocation without the release (out of line at 0x008C58F0 / 0x008C5980, `ret 4`).

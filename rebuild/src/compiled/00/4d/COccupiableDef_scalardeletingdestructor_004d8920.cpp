@@ -1,3 +1,4 @@
+// Leaf: ?COccupiableDef_scalar_deleting_destructor@@YIPAXPAVCOccupiableDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class COccupiableDef
 };
 extern void* const g_COccupiableDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(COccupiableDef* def, int, unsigned int flags)
+void* __fastcall COccupiableDef_scalar_deleting_destructor(COccupiableDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_COccupiableDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

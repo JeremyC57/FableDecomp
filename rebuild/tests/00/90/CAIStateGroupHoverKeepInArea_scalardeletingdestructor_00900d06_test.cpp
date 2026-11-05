@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CAIStateGroup_HoverKeepInArea* stateGroup, int, unsigned int flags)
+void* __fastcall CAIStateGroup_HoverKeepInArea_scalar_deleting_destructor(CAIStateGroup_HoverKeepInArea* stateGroup, int, unsigned int flags)
 {
     stateGroup->vftable = (void*)&g_CAIStateGroup_HoverKeepInArea_vftable;
     CAIStateGroup_HoverKeepInArea_Destruct(stateGroup);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CAIStateGroup_HoverKeepInArea* state
 int main()
 {
     CAIStateGroup_HoverKeepInArea object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CAIStateGroup_HoverKeepInArea_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CAIStateGroup_HoverKeepInArea_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CAIStateGroup_HoverKeepInArea_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

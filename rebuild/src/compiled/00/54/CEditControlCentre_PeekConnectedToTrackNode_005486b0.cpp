@@ -1,3 +1,4 @@
+// Leaf: ?CEditControlCentre_PeekConnectedToTrackNode@@YIPAXPAVCEditControlCentre@@@Z
 class CEditControlCentre { public:
     char pad0[0xC];
     unsigned char connectedFlag;
@@ -7,7 +8,7 @@ class CEditControlCentre { public:
     void* trackNodeB;
 };
 
-void* __fastcall PeekConnectedToTrackNode(CEditControlCentre* self)
+void* __fastcall CEditControlCentre_PeekConnectedToTrackNode(CEditControlCentre* self)
 {
     if (self->connectedFlag)
         return self->trackNodeB;

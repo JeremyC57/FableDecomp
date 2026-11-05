@@ -1,3 +1,4 @@
+// Leaf: ?CTCVillage_InvalidateAndClearAllSecuritySweepTasks@@YIXPAVCTCVillage@@@Z
 #pragma optimize("s",on)
 // InvalidateAndClearAllSecuritySweepTasks 0x006590a0  __fastcall(CTCVillage*)
 // this+0x5c is an intrusive doubly-linked list (sentinel node). Each list node:
@@ -24,7 +25,7 @@ class CTCVillage { public:
 // The tail-called clear routine (0x65fefc). Thiscall on the List* (ecx = this+0x5c).
 extern "C" void __fastcall List_Clear(List* self);
 
-void __fastcall InvalidateAndClearAllSecuritySweepTasks(CTCVillage* self)
+void __fastcall CTCVillage_InvalidateAndClearAllSecuritySweepTasks(CTCVillage* self)
 {
     List* lst = &self->list;                 // add ecx,0x5c
     ListNode* sentinel = lst->head;          // mov edx,[ecx]

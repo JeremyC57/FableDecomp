@@ -25,7 +25,7 @@ static void callee(void* self, Trigger* a1, void* a2, void* a3, Trigger* a4) {
     cap_this = self; cap_a1 = a1; cap_a2 = a2; cap_a3 = a3; cap_a4 = a4;
 }
 
-static void AddTrigger(Receptor* self, void* p1, Trigger* trigger) {
+static void CTCActivationReceptorBase_AddTrigger(Receptor* self, void* p1, Trigger* trigger) {
     callee(g_target, (Trigger*)p1, (void*)&self->sub18, self->field20, trigger);
 }
 
@@ -33,7 +33,7 @@ int main() {
     Receptor r; r.sub18 = 7; r.field20 = (void*)0x1234;
     Trigger t; t.id = 99;
     Trigger p; p.id = 42;
-    AddTrigger(&r, (void*)&p, &t);
+    CTCActivationReceptorBase_AddTrigger(&r, (void*)&p, &t);
 
     bool ok = cap_this == g_target
            && cap_a1 == (Trigger*)&p

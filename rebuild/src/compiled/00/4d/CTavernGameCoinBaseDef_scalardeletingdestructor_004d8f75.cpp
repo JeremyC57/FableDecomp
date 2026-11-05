@@ -1,3 +1,4 @@
+// Leaf: ?CTavernGameCoinBaseDef_scalar_deleting_destructor@@YIPAXPAVCTavernGameCoinBaseDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CTavernGameCoinBaseDef
 };
 extern void* const g_CTavernGameCoinBaseDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CTavernGameCoinBaseDef* def, int, unsigned int flags)
+void* __fastcall CTavernGameCoinBaseDef_scalar_deleting_destructor(CTavernGameCoinBaseDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CTavernGameCoinBaseDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

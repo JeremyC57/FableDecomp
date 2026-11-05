@@ -1,0 +1,2 @@
+s6 w2b -- the 29 w2 rows whose behaviour test also names the function without a call (`&Name`): same source as w2, test
+respelled at every free occurrence. 26 PASS; 3 still TCC_FAIL (deferred).

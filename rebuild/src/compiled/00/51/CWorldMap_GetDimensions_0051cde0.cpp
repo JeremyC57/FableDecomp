@@ -1,3 +1,4 @@
+// Leaf: ?CWorldMap_GetDimensions@@YIABVC2DBoxI@@PAVCWorldMap@@@Z
 class C2DBoxI { public: int x0, y0, x1, y1; };
 
 class CWorldMap { public:
@@ -5,7 +6,7 @@ class CWorldMap { public:
     C2DBoxI dimensions;
 };
 
-C2DBoxI const & __fastcall GetDimensions(CWorldMap *self)
+C2DBoxI const & __fastcall CWorldMap_GetDimensions(CWorldMap *self)
 {
     return self->dimensions;
 }

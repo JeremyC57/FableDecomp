@@ -1,3 +1,4 @@
+// Leaf: ?CTCCameraPointTrack_scalar_deleting_destructor@@YIPAXPAVCTCCameraPointTrack@@HI@Z
 #pragma optimize("s", on)
 class CTCBase {
 public:
@@ -9,7 +10,7 @@ class CTCCameraPointTrack
 };
 extern void* const g_CTCCameraPointTrack_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CTCCameraPointTrack* track, int, unsigned int flags)
+void* __fastcall CTCCameraPointTrack_scalar_deleting_destructor(CTCCameraPointTrack* track, int, unsigned int flags)
 {
     track->vftable = (void*)&g_CTCCameraPointTrack_vftable;
     ((CTCBase*)(track))->CTCBase::~CTCBase();

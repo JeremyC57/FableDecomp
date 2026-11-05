@@ -1,3 +1,4 @@
+// Leaf: ?CCreatureActionBase_GetThingManager@@YIPAVCThingManager@@PAVCCreatureActionBase@@@Z
 #include "engine/CCreatureActionBase.h"  // retyped onto the PDB layout; byte parity re-verified
 class CBaseObject;
 class CBaseObjectPointer;
@@ -12,7 +13,7 @@ private:
 };
 struct Sub; 
 class CThingManager; extern CThingManager* g_thingmgr;
-CThingManager* __fastcall GetThingManager(CCreatureActionBase* action)
+CThingManager* __fastcall CCreatureActionBase_GetThingManager(CCreatureActionBase* action)
 {
     ((CBaseIntelligentPointer*)(reinterpret_cast<Sub*>(reinterpret_cast<char*>(action) + 8)))->GetPItem();
     return g_thingmgr;

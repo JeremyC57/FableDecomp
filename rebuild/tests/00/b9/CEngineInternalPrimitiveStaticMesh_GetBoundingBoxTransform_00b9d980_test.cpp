@@ -35,7 +35,7 @@ class C3DBoundingBox { public:
 };
 class C3DMeshInfo { public: C3DBoundingBox BoundingBox; };
 struct CMesh { C3DMeshInfo* MeshInfo; CMatrix3x4 ObjectTransform; };
-static bool GetBoundingBoxTransform(CMesh* self, CMatrix3x4& transform)
+static bool CEngineInternalPrimitiveStaticMesh_GetBoundingBoxTransform(CMesh* self, CMatrix3x4& transform)
 {
     {
         C3DBoundingBox box(self->MeshInfo->BoundingBox);
@@ -55,7 +55,7 @@ int main()
     float* po = &mesh.ObjectTransform.E11;
     for (int i = 0; i < 12; ++i) po[i] = o[i];
     CMatrix3x4 m;
-    if (!GetBoundingBoxTransform(&mesh, m)) { std::printf("00b9d980_TEST FAIL\n"); return 1; }
+    if (!CEngineInternalPrimitiveStaticMesh_GetBoundingBoxTransform(&mesh, m)) { std::printf("00b9d980_TEST FAIL\n"); return 1; }
     // reference: box matrix B = diag(2,2,4) with centre (1,0,1); result = B * O
     float b[12] = { 2, 0, 0, 0, 2, 0, 0, 0, 4, 1, 0, 1 };
     float* pm = &m.E11;

@@ -15,7 +15,7 @@ class CTCInventoryAbilities { public:
     AbilityEntry* entries; // +0x160
 };
 
-int __fastcall GetAbilityGraphicIndex(CTCInventoryAbilities* abilities, void* /*edx*/, int index)
+int __fastcall CTCInventoryAbilities_GetAbilityGraphicIndex(CTCInventoryAbilities* abilities, void* /*edx*/, int index)
 {
     return abilities->entries[index].def->graphicIndex;
 }
@@ -26,7 +26,7 @@ static int call_it(CTCInventoryAbilities* abilities, int index)
     __asm {
         mov  ecx, abilities
         push index
-        call GetAbilityGraphicIndex
+        call CTCInventoryAbilities_GetAbilityGraphicIndex
         mov  result, eax
     }
     return result;

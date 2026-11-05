@@ -1,3 +1,4 @@
+// Leaf: ?CHeroDef_Transfer@@YIXPAVCGuildMasterDef@@PAXPAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct CMember { int x; };
 
@@ -12,8 +13,9 @@ class CGuildMasterDef { public:
     CMember m2c;
 };
 
-void __fastcall CGuildMasterDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
+void __fastcall CHeroDef_Transfer(CGuildMasterDef* def, void* edx, CPersistContext* ctx)
 {
     ctx->Transfer(*(long*)(&def->m28));
     ctx->Transfer_004ddecb(&def->m2c);
 }
+// Stand-in (owner rule 2026-11-05): CHeroDef_Transfer for CHeroDef::Transfer; RTTI vtable slot ?Transfer@CHeroDef@@UAEXAAVCPersistContext@@@Z + PDB name set (egor/fablewin).

@@ -1,4 +1,5 @@
 // C3DAnimationTransitionState::FindDominantAnimation @ 0x00710540
+// Leaf: ?C3DAnimationTransitionState_FindDominantAnimation@@YIABVC3DAnimationState@@PAVC3DAnimationTransitionState@@@Z
 #include "engine/C3DAnimationTransitionState.h"  // retyped onto the PDB layout; byte parity re-verified
 class C3DAnimationState;
 
@@ -12,7 +13,7 @@ class CIVCountedPointeeBase { public:
 
 extern const float g_threshold; // [0x122f59c]
 
-const C3DAnimationState& __fastcall FindDominantAnimation(C3DAnimationTransitionState* self)
+const C3DAnimationState& __fastcall C3DAnimationTransitionState_FindDominantAnimation(C3DAnimationTransitionState* self)
 {
     if (self->Progress <= g_threshold)
         return self->StartState_Object->FindDominant();

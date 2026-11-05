@@ -19,7 +19,7 @@ struct Mesh {
     char field94[0x100];
 };
 
-bool __fastcall GetTransformFrameEnd(Mesh* self, void* edx, CMatrix3x4& matrix)
+bool __fastcall CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameEnd(Mesh* self, void* edx, CMatrix3x4& matrix)
 {
     char* base = (char*)self;
     FrameEndCallee(&matrix, base + 0x94, base + 0xbc, self->field58);
@@ -31,7 +31,7 @@ int main()
     Mesh m;
     m.field58 = 0x1234;
     CMatrix3x4 mat; mat.tag = 7;
-    bool r = GetTransformFrameEnd(&m, 0, mat);
+    bool r = CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameEnd(&m, 0, mat);
     char* base = (char*)&m;
     if (r && g_m == &mat && g_sub == base + 0x94 && g_p == base + 0xbc && g_v == 0x1234)
         printf("PARITY_OK\n");

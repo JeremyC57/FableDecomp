@@ -1,4 +1,5 @@
 // CPlayerGui::ForceOpen  @ 0x00434ad0  (__fastcall, this=ecx, no stack args)
+// Leaf: ?CPlayerGui_ForceOpen@@YIXPAVCPlayerGui@@@Z
 class CPlayerGui { public:
     char pad_c8[0xc8];
     unsigned char b_c8;   // +0xc8
@@ -10,7 +11,7 @@ class CPlayerGui { public:
     unsigned int  d_f4;   // +0xf4
 };
 
-void __fastcall ForceOpen(CPlayerGui *this_)
+void __fastcall CPlayerGui_ForceOpen(CPlayerGui *this_)
 {
     this_->b_c9 = 0;
     this_->b_c8 = 1;

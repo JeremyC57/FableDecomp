@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // Function under test: exact reconstruction of CInputTypeXboxPadButtonEvent::GetType
-int __fastcall GetType(void *event)
+int __fastcall CInputTypeXboxPadButtonEvent_GetType(void *event)
 {
     (void)event;
     return 2;
@@ -13,7 +13,7 @@ int main()
     char obj[16];
     for (int i = 0; i < 16; ++i) obj[i] = (char)0xCD;
 
-    int r = GetType(obj);
+    int r = CInputTypeXboxPadButtonEvent_GetType(obj);
     if (r != 2) {
         std::printf("FAIL GetType returned %d expected 2\n", r);
         return 1;

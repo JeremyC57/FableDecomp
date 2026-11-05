@@ -1,3 +1,4 @@
+// Leaf: ?CArmourDef_Copy@@YIXPAVCArmourDef@@0@Z
 #include "rebuild_abi.h"
 
 /* 0x0046133f  CArmourDef::Copy (5 bytes)
@@ -11,7 +12,8 @@ class CArmourDef;
 /* real implementation this thunk tail-calls (relocation-masked target) */
 extern void __fastcall CArmourDef_Copy_impl_0046133f(CArmourDef* thisptr, CArmourDef* other);
 
-void __fastcall CArmourDef_Copy_0046133f(CArmourDef* thisptr, CArmourDef* other)
+void __fastcall CArmourDef_Copy(CArmourDef* thisptr, CArmourDef* other)
 {
     CArmourDef_Copy_impl_0046133f(thisptr, other);
 }
+// Stand-in (owner rule 2026-11-05): CArmourDef_Copy for CArmourDef::Copy; RTTI vtable slot ?Copy@CArmourDef@@UAEXPBVCDefClassBase@@@Z + PDB name set (egor/fablewin).

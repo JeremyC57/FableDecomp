@@ -1,0 +1,10 @@
+s6 w6 -- ?ShareData@CCPtr@@QAEXPAXPAUCtl@@@Z (149) + 0x00CE1000 from w1.
+ShareData body = engine/CCountedPointer.h ShareData; each row includes the header and instantiates
+  template void CCountedPointer<T>::ShareData(T*, CCPPointerInfo*);
+The catalog said CCountedPointer<CScriptThing>::ShareData for all 149 addresses (propagated). T = CUnprovenPointee_<addr> except
+0x00CE1040: 36 typed callers bind CCountedPointer<CEntityScriptBase>::ShareData there + FableWin has that symbol, and its
+neighbour 0x00CE1000 (170 typed callers: ~CCountedPointer<CEntityScriptBase>) -> both CEntityScriptBase (LABELS / NAME_FIXES).
+Note for the coordinator: engine/CCountedPointer.h line 29 names 0x00CE1040 as CCountedPointer<CScriptThing>; the evidence says
+CEntityScriptBase (comment fix only; not edited here).
+The 17 ?ShareData@CCPtr@@QAEXPAXPAJ@Z rows call an out-of-line release (pragma s) the header cannot express: left.
+Grade: gate 150/150 PASS; vland 150 RELOCATION_MATCH PASS, parity unchanged, no new warnings.

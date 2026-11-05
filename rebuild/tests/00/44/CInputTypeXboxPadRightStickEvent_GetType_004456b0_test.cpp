@@ -2,7 +2,7 @@
 
 // Function under test: CInputTypeXboxPadRightStickEvent::GetType
 // Retail 0x004456b0: mov eax, 4 ; ret  (__fastcall, this in ecx, unused)
-int __fastcall GetType(void* ecx)
+int __fastcall CInputTypeXboxPadRightStickEvent_GetType(void* ecx)
 {
     (void)ecx;
     return 4;
@@ -15,7 +15,7 @@ int main()
     // Invoke via __asm shim: put this in ecx (__fastcall convention).
     __asm {
         mov ecx, fakeThis
-        call GetType
+        call CInputTypeXboxPadRightStickEvent_GetType
         mov r, eax
     }
     if (r != 4) {
@@ -26,7 +26,7 @@ int main()
     void* other = (void*)0;
     __asm {
         mov ecx, other
-        call GetType
+        call CInputTypeXboxPadRightStickEvent_GetType
         mov r, eax
     }
     if (r != 4) {

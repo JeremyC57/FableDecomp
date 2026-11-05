@@ -1,0 +1,27 @@
+address	grade	log	family	introduced_warnings	inherited_warnings
+00434ad0	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CPlayerGui
+00445670	MATCH PASS	logs/vland_w2bA00.log	standin_class_method		
+004456b0	MATCH PASS	logs/vland_w2bA00.log	standin_class_method		
+00445730	MATCH PASS	logs/vland_w2bA00.log	standin_class_method		
+00445770	MATCH PASS	logs/vland_w2bA00.log	standin_class_method		
+00487e90	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CPlayer
+0048bc40	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CThing
+0048db35	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CUserProfileManager
+0049bb30	MATCH PASS	logs/vland_w2bA00.log	standin_class_method		
+0049c9b0	MATCH PASS	logs/vland_w2bA00.log	standin_class_method		
+004a9210	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CDisplayEngine
+004ae9d0	MATCH PASS	logs/vland_w2bA00.log	standin_class_method		
+004c7580	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CThing
+004c7e10	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CThingManager | SHARED_HEADER_AVAILABLE CThing
+0051ce20	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorldMap
+0051ce40	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CWorldMap
+0051e580	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CEditWorldMap
+005486b0	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CEditControlCentre
+0055ddf0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		RELOC_NAME: ?AddToInterfaceBase@@YIXPAVCEditInputProcessCopyPaste@@@Z -> 0055dc00 labelled 'CTCPhotojournalCapture::CreateScreen'
+0056a860	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCBoastUI
+005bc9b0	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CCategory | GENERIC_STRUCT module=CCategory (use engine/CCategory.h)
+005d92d0	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCInventoryItem
+005e3e70	MATCH PASS	logs/vland_w2bA00.log	standin_class_method		
+005ede7f	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+005edeeb	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+005edf1f	MATCH PASS INHERITED_WARN	logs/vland_w2bA00.log	standin_class_method		SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer

@@ -1,6 +1,7 @@
+// Leaf: ?CAnimComponentDelayTime_Clone@@YIPAVCAnimComponentDelayTime@@PAV1@@Z
 #include "engine/CAnimComponentDelayTime.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef CAnimComponentDelayTime* (__fastcall* CloneDelayFn)(CAnimComponentDelayTime*);
-CAnimComponentDelayTime* __fastcall Clone(CAnimComponentDelayTime* component)
+CAnimComponentDelayTime* __fastcall CAnimComponentDelayTime_Clone(CAnimComponentDelayTime* component)
 {
     CloneDelayFn* vtable = (CloneDelayFn*)component->__vftable;
     CAnimComponentDelayTime* copy = vtable[0x10 / 4](component);

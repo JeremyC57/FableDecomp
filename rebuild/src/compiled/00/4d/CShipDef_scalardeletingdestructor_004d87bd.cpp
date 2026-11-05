@@ -1,3 +1,4 @@
+// Leaf: ?CShipDef_scalar_deleting_destructor@@YIPAXPAVCShipDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CShipDef
 };
 extern void* const g_CShipDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CShipDef* def, int, unsigned int flags)
+void* __fastcall CShipDef_scalar_deleting_destructor(CShipDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CShipDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

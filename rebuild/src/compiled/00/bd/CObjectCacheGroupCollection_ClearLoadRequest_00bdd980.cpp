@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CObjectCacheGroupCollection::ClearLoadRequest @ 0x00bdd980
+// Leaf: ?CObjectCacheGroupCollection_ClearLoadRequest@@YIXPAUCObjectCacheGroupCollection@@HPAVCEngineStaticMapFileBlockManager@@@Z
 
 // callee at 0xbe0400 : __fastcall member taking one pushed arg, returns void.
 // Model as a real (non-virtual) member method so the compiler emits ecx=this,
@@ -17,7 +18,7 @@ struct CObjectCacheGroupCollection {
 // __fastcall: self in ecx, mgr on stack. Harness rewrites __fastcall->__fastcall,
 // which keeps self in ecx AND puts arg2 in edx. To force mgr onto the stack, place
 // an int edx dummy as the 2nd param so mgr becomes the 3rd (stack) param.
-void __fastcall ClearLoadRequest(CObjectCacheGroupCollection* self,
+void __fastcall CObjectCacheGroupCollection_ClearLoadRequest(CObjectCacheGroupCollection* self,
                                  int edx_dummy,
                                  CEngineStaticMapFileBlockManager* mgr)
 {

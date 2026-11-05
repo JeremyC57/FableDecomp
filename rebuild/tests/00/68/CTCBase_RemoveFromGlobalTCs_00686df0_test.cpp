@@ -8,7 +8,7 @@ struct GContainer {
 };
 GContainer g_container = {0};
 
-void __fastcall RemoveFromGlobalTCs(CTCBase* other)
+void __fastcall CTCBase_RemoveFromGlobalTCs(CTCBase* other)
 {
     other->IsInGlobalUpdateTCs = 0;
     CTCBase* local = other;
@@ -19,7 +19,7 @@ int main()
 {
     CTCBase o;
     o.IsInGlobalUpdateTCs = 7;
-    RemoveFromGlobalTCs(&o);
+    CTCBase_RemoveFromGlobalTCs(&o);
     if (o.IsInGlobalUpdateTCs == 0 && g_container.captured == &o)
         std::printf("00686df0_TEST PASS\n");
     else

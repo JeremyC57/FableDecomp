@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 // Function under test: returns constant type id 6.
-int __fastcall GetType(void *ecx)
+int __fastcall CInputTypeMouseWheelMovementEvent_GetType(void *ecx)
 {
     (void)ecx;
     return 6;
@@ -15,7 +15,7 @@ int main(void)
     // Invoke with this in ecx via a __fastcall shim.
     __asm {
         mov ecx, self
-        call GetType
+        call CInputTypeMouseWheelMovementEvent_GetType
         mov r, eax
     }
     if (r != 6) {

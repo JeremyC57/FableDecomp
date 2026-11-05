@@ -1,4 +1,4 @@
 #include "rebuild_abi.h"
 #include <cstdio>
-extern "C" char FABLE_FASTCALL R_976f10(void* action){ return 1; }
-int main(){ int x; if(R_976f10(&x)!=1){std::printf("B1");return 1;} std::printf("RB_976f10_OK\n"); return 0; }
+extern "C" char FABLE_FASTCALL CCreatureAction_JackFlash_IsToFaceTarget(void* action){ return 1; }
+int main(){ int x; if(CCreatureAction_JackFlash_IsToFaceTarget(&x)!=1){std::printf("B1");return 1;} std::printf("RB_976f10_OK\n"); return 0; }

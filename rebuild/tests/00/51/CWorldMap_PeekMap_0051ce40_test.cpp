@@ -12,7 +12,7 @@ class CWorldMap { public:
     MapEntry* entries;  // +0x20
 };
 
-void* __fastcall PeekMap(CWorldMap* self, void* /*edx*/, int n) {
+void* __fastcall CWorldMap_PeekMap(CWorldMap* self, void* /*edx*/, int n) {
     return self->entries[n].ptr;
 }
 
@@ -38,13 +38,13 @@ int main() {
     __asm {
         push 1
         mov  ecx, p
-        call PeekMap
+        call CWorldMap_PeekMap
         mov  r1, eax
     }
     __asm {
         push 3
         mov  ecx, p
-        call PeekMap
+        call CWorldMap_PeekMap
         mov  r3, eax
     }
 

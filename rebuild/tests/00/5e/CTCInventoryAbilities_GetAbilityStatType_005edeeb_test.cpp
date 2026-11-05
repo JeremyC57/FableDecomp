@@ -4,7 +4,7 @@ struct Entry { void* a; struct Ability* b; };
 struct Ability { char pad[0x40]; int statType; };
 class CTCInventoryAbilities { public: char pad[0x160]; Entry* table; };
 
-int __fastcall GetAbilityStatType(CTCInventoryAbilities* abilities, void*, int index)
+int __fastcall CTCInventoryAbilities_GetAbilityStatType(CTCInventoryAbilities* abilities, void*, int index)
 {
     Ability* ab = abilities->table[index].b;
     if (ab)
@@ -19,7 +19,7 @@ int call_it(CTCInventoryAbilities* abilities, int index)
     __asm {
         push index
         mov  ecx, pself
-        call GetAbilityStatType
+        call CTCInventoryAbilities_GetAbilityStatType
         mov  result, eax
     }
     return result;

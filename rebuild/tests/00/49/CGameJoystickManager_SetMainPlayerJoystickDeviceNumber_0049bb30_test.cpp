@@ -7,7 +7,7 @@ class CGameJoystickManager { public:
 };
 
 // Function under test (same lowering as retail 0x0049bb30)
-void __fastcall SetMainPlayerJoystickDeviceNumber(CGameJoystickManager *manager, void * /*edx*/, int deviceNumber)
+void __fastcall CGameJoystickManager_SetMainPlayerJoystickDeviceNumber(CGameJoystickManager *manager, void * /*edx*/, int deviceNumber)
 {
     manager->deviceNumber = deviceNumber;
     manager->isSet = true;
@@ -23,7 +23,7 @@ int main()
     // Invoke via a small __asm shim: this=ecx, one dword stack arg, ret 4.
     int arg = 7;
     CGameJoystickManager *p = &mgr;
-    void (__fastcall *fn)(CGameJoystickManager*, void*, int) = SetMainPlayerJoystickDeviceNumber;
+    void (__fastcall *fn)(CGameJoystickManager*, void*, int) = CGameJoystickManager_SetMainPlayerJoystickDeviceNumber;
     __asm {
         mov  ecx, p
         push arg

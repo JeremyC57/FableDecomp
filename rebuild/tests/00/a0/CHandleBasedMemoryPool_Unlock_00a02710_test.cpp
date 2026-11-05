@@ -12,7 +12,7 @@ class CHandleBasedMemoryPool { public:
     Entry** table;
 };
 
-void __fastcall Unlock(CHandleBasedMemoryPool* self, int edxDummy, long index)
+void __fastcall CHandleBasedMemoryPool_Unlock(CHandleBasedMemoryPool* self, int edxDummy, long index)
 {
     Entry* e = self->table[index];
     if (e->locked) {
@@ -33,11 +33,11 @@ int main()
     b.locked = 0;
 
     // Unlock index 0: was locked -> clears + decrements
-    Unlock(&pool, 0, 0);
+    CHandleBasedMemoryPool_Unlock(&pool, 0, 0);
     // Unlock index 1: not locked -> no change
-    Unlock(&pool, 0, 1);
+    CHandleBasedMemoryPool_Unlock(&pool, 0, 1);
     // Unlock index 0 again: already cleared -> no change
-    Unlock(&pool, 0, 0);
+    CHandleBasedMemoryPool_Unlock(&pool, 0, 0);
 
     int ok = (a.locked == 0) && (b.locked == 0) && (pool.lockedCount == 4);
     if (ok) printf("UNLOCK_OK\n");

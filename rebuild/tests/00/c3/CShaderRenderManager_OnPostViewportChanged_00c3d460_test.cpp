@@ -5,7 +5,7 @@ class CShaderRenderManager { public:
     unsigned int flags;   // +0xa4
 };
 
-void __fastcall OnPostViewportChanged(CShaderRenderManager* self)
+void __fastcall CShaderRenderManager_OnPostViewportChanged(CShaderRenderManager* self)
 {
     self->flags |= 0x80000000u;
 }
@@ -14,15 +14,15 @@ int main()
 {
     CShaderRenderManager m;
     m.flags = 0;
-    OnPostViewportChanged(&m);
+    CShaderRenderManager_OnPostViewportChanged(&m);
     bool ok = (m.flags == 0x80000000u);
 
     m.flags = 0x1;
-    OnPostViewportChanged(&m);
+    CShaderRenderManager_OnPostViewportChanged(&m);
     ok = ok && (m.flags == 0x80000001u);
 
     // idempotent OR
-    OnPostViewportChanged(&m);
+    CShaderRenderManager_OnPostViewportChanged(&m);
     ok = ok && (m.flags == 0x80000001u);
 
     if (ok) printf("PARITY_OK\n");

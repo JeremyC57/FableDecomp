@@ -5,13 +5,13 @@ class CMap { public:
     float seaLevel; // +0x1d08
 };
 
-float __fastcall DrawGetSeaLevel(CMap* self, int, int);
+float __fastcall CMap_DrawGetSeaLevel(CMap* self, int, int);
 
 int main()
 {
     CMap m;
     m.seaLevel = 42.5f;
-    float r = DrawGetSeaLevel(&m, 0, 0);
+    float r = CMap_DrawGetSeaLevel(&m, 0, 0);
     if (r == 42.5f)
         printf("00827870_TEST PASS\n");
     else

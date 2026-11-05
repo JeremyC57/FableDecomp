@@ -21,7 +21,7 @@ int __fastcall Callee(CMatrix3x4* mtx, void* edxArg, void* pA4, int val58)
     return 7;
 }
 
-bool __fastcall GetTransformFrameStart(Mesh* self, void* edxDummy, CMatrix3x4& mtx)
+bool __fastcall CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameStart(Mesh* self, void* edxDummy, CMatrix3x4& mtx)
 {
     Callee(&mtx, self->m88, self->mA4, self->m58);
     return true;
@@ -32,7 +32,7 @@ int main()
     Mesh m;
     m.m58 = 0x1234;
     CMatrix3x4 mtx;
-    bool r = GetTransformFrameStart(&m, 0, mtx);
+    bool r = CEngineInternalPrimitiveAnimatedMesh_GetTransformFrameStart(&m, 0, mtx);
     if (r && g_mtx == &mtx && g_edx == (void*)m.m88 && g_pA4 == (void*)m.mA4 && g_val58 == 0x1234) {
         printf("PARITY_OK\n");
     } else {

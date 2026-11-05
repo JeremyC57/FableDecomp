@@ -1,3 +1,4 @@
+// Leaf: ?CTCQuestCard_IsCore@@YI_NPAVCTCQuestCard@@@Z
 struct Inner {
     char pad[0x58];
     char flag;
@@ -9,7 +10,7 @@ class CTCQuestCard { public:
     int  FeatIndex;   // +0x14
 };
 
-bool __fastcall IsCore(CTCQuestCard* self)
+bool __fastcall CTCQuestCard_IsCore(CTCQuestCard* self)
 {
     if (self->FeatIndex <= -1) {
         if (self->inner->flag)

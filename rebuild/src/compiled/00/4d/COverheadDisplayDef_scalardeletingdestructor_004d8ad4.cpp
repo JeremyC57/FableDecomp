@@ -1,3 +1,4 @@
+// Leaf: ?COverheadDisplayDef_scalar_deleting_destructor@@YIPAXPAVCOverheadDisplayDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class COverheadDisplayDef
 };
 extern void* const g_COverheadDisplayDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(COverheadDisplayDef* def, int, unsigned int flags)
+void* __fastcall COverheadDisplayDef_scalar_deleting_destructor(COverheadDisplayDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_COverheadDisplayDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

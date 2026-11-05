@@ -25,11 +25,11 @@ void SubObj::M(CThingNoiseDef* a, int b) {
 
 void __fastcall BaseChain(CThingNoiseDef* self) { g_base_called = 1; }
 
-CThingNoiseDef* __fastcall Transfer(CThingNoiseDef* self, CPersistContext* ctx);
+CThingNoiseDef* __fastcall CThingNoiseDef_Transfer(CThingNoiseDef* self, CPersistContext* ctx);
 
 int main() {
     CThingNoiseDef obj;
-    CThingNoiseDef* r = Transfer(&obj, 0);
+    CThingNoiseDef* r = CThingNoiseDef_Transfer(&obj, 0);
     if (r == &obj && g_base_called && g_sub_a_ok && g_sub_b == 1 && g_sub_self_off == 0x14)
         printf("00c3a740_TEST PASS\n");
     else

@@ -1,6 +1,7 @@
+// Leaf: ?CAnimComponentCombatHandedness_Clone@@YIPAVCAnimComponentCombatHandedness@@PAV1@@Z
 #include "engine/CAnimComponentCombatHandedness.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef CAnimComponentCombatHandedness* (__fastcall* CloneHandednessFn)(CAnimComponentCombatHandedness*);
-CAnimComponentCombatHandedness* __fastcall Clone_CombatHandedness(CAnimComponentCombatHandedness* component)
+CAnimComponentCombatHandedness* __fastcall CAnimComponentCombatHandedness_Clone(CAnimComponentCombatHandedness* component)
 {
     CloneHandednessFn* vtable = (CloneHandednessFn*)component->__vftable;
     CAnimComponentCombatHandedness* copy = vtable[0x10 / 4](component);

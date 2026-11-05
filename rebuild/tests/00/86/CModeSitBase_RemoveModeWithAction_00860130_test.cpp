@@ -14,7 +14,7 @@ struct Mode {
     Sub sub;
 };
 
-static void RemoveModeWithAction(Mode* self, Action* action)
+static void CModeSitBase_RemoveModeWithAction(Mode* self, Action* action)
 {
     self->flags |= 8;
     int r = action->GetSomething();
@@ -25,7 +25,7 @@ int main()
 {
     Mode m; m.flags = 1; m.sub.last = 0;
     Action a;
-    RemoveModeWithAction(&m, &a);
+    CModeSitBase_RemoveModeWithAction(&m, &a);
     if ((m.flags & 8) && (m.flags & 1) && m.sub.last == 42)
         printf("PARITY_OK\n");
     else

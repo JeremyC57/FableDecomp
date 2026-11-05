@@ -1,4 +1,5 @@
 // C3DAnimationBlendState::AddCombinationBlend @ 0099ef90
+// Leaf: ?C3DAnimationBlendState_AddCombinationBlend@@YIXPAVC3DAnimationBlendState@@HPAVC3DAnimationStateAlpha@@@Z
 
 class C3DAnimationStateAlpha;
 
@@ -11,7 +12,7 @@ class C3DAnimationBlendState { public:
     void helperA();     // extern __fastcall @ 0x99eb40
 };
 
-void __fastcall AddCombinationBlend(C3DAnimationBlendState* self, int /*edx*/, C3DAnimationStateAlpha* a)
+void __fastcall C3DAnimationBlendState_AddCombinationBlend(C3DAnimationBlendState* self, int /*edx*/, C3DAnimationStateAlpha* a)
 {
     self->helperA();
     self->pInner->addAlpha(a);

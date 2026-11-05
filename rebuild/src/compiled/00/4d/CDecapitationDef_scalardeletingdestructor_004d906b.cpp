@@ -1,3 +1,4 @@
+// Leaf: ?CDecapitationDef_scalar_deleting_destructor@@YIPAXPAVCDecapitationDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CDecapitationDef
 };
 extern void* const g_CDecapitationDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CDecapitationDef* def, int, unsigned int flags)
+void* __fastcall CDecapitationDef_scalar_deleting_destructor(CDecapitationDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CDecapitationDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

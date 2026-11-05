@@ -1,4 +1,5 @@
 // CEngineLandscapeMap::ReleaseDefaultPoolSurfaces  0x00bdc040
+// Leaf: ?CEngineLandscapeMap_ReleaseDefaultPoolSurfaces@@YIXPAVCEngineLandscapeMap@@@Z
 // this-call void(CEngineLandscapeMap*)
 
 struct ISurface {
@@ -13,7 +14,7 @@ class CEngineLandscapeMap { public:
     unsigned char flag;  // +0x5d
 };
 
-void __fastcall ReleaseDefaultPoolSurfaces(CEngineLandscapeMap* self)
+void __fastcall CEngineLandscapeMap_ReleaseDefaultPoolSurfaces(CEngineLandscapeMap* self)
 {
     if (self->flag) {
         ISurface* s = self->surface;

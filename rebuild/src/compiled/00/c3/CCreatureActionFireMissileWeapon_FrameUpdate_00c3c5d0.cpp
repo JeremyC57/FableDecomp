@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CCreatureAction_FireMissileWeapon::FrameUpdate @ 0x00c3c5d0
+// Leaf: ?CCreatureAction_FireMissileWeapon_FrameUpdate@@YI_NPAVCCreatureAction_FireMissileWeapon@@@Z
 // __fastcall (this in ecx). Returns bool (al).
 
 // Global error sink referenced by mov ecx, 0x143bb58; call 0xc3d090 is a thiscall
@@ -17,7 +18,7 @@ class CCreatureAction_FireMissileWeapon { public:
     unsigned int counter; // +0xc
 };
 
-bool __fastcall FrameUpdate(CCreatureAction_FireMissileWeapon* self)
+bool __fastcall CCreatureAction_FireMissileWeapon_FrameUpdate(CCreatureAction_FireMissileWeapon* self)
 {
     unsigned int v = self->counter;
     if (v < 0xFFFFFFFFu) {

@@ -23,7 +23,7 @@ struct CTCGraphicAppearance
 unsigned char g_useForcedFadeDistance = 0;
 int          g_forcedFadeDistanceInt  = 0;
 
-float __fastcall GetFadeDistance(CTCGraphicAppearance *thisptr)
+float __fastcall CTCGraphicAppearance_GetFadeDistance(CTCGraphicAppearance *thisptr)
 {
     if (g_useForcedFadeDistance)
         return (float)g_forcedFadeDistanceInt;
@@ -42,12 +42,12 @@ int main()
 
     // case 1: flag clear -> follow object chain
     g_useForcedFadeDistance = 0;
-    float r1 = GetFadeDistance(&obj);
+    float r1 = CTCGraphicAppearance_GetFadeDistance(&obj);
 
     // case 2: flag set -> fild of int global
     g_useForcedFadeDistance = 1;
     g_forcedFadeDistanceInt = 100;
-    float r2 = GetFadeDistance(&obj);
+    float r2 = CTCGraphicAppearance_GetFadeDistance(&obj);
 
     bool ok = (r1 == 42.5f) && (r2 == 100.0f);
     if (ok)

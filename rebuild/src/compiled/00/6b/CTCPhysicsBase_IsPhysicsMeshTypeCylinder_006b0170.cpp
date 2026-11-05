@@ -1,3 +1,4 @@
+// Leaf: ?CTCPhysicsBase_IsPhysicsMeshTypeCylinder@@YI_NPAVCTCPhysicsBase@@@Z
 #include "engine/CTCPhysicsBase.h"  // retyped onto the PDB layout; byte parity re-verified
 
 struct CPhysicsMeshTypeView {
@@ -11,7 +12,7 @@ struct CTCPhysicsBaseVTable {
     PhysicsMeshTypeFn GetPhysicsMeshType;
 };
 
-bool __fastcall IsPhysicsMeshTypeCylinder(CTCPhysicsBase* physics)
+bool __fastcall CTCPhysicsBase_IsPhysicsMeshTypeCylinder(CTCPhysicsBase* physics)
 {
     if (((CTCPhysicsBaseVTable*)physics->__vftable)->GetPhysicsMeshType(physics) == 0 &&
         (((CPhysicsMeshTypeView*)physics->sub)->Flags & 8))

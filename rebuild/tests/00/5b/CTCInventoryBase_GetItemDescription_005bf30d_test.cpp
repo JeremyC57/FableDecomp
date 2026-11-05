@@ -18,7 +18,7 @@ static void sub_5BF1D7(void* self, void* out, long a, bool b) {
     g_final = (int)(long long)self + (int)a + (b ? 100 : 0);
 }
 
-static void GetItemDescription(CTCInventoryBase* self, void* out, long itemId, bool flag) {
+static void CTCInventoryBase_GetItemDescription(CTCInventoryBase* self, void* out, long itemId, bool flag) {
     void* t = sub_5D97B0(itemId);
     void* r = sub_5C08C0(self->member20, self->member24, t);
     sub_5BF1D7(r, out, itemId, flag);
@@ -28,7 +28,7 @@ int main() {
     CTCInventoryBase inv;
     inv.member20 = (void*)10;
     inv.member24 = (void*)5;
-    GetItemDescription(&inv, (void*)0, 7, true);
+    CTCInventoryBase_GetItemDescription(&inv, (void*)0, 7, true);
     // t = 8; r = 10+5 = 15; final = 15 + 7 + 100 = 122
     if (g_final == 122 && g_log == (7 + 8)) {
         printf("BEHAVIOR_OK\n");

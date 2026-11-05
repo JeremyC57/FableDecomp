@@ -11,7 +11,7 @@ struct CShaderBankStateBlock {
     char pad9[0x12f8 - 9];
     int  d12f8;
 };
-void __fastcall Set(CShaderBankStateBlock* self, int, void* srcv)
+void __fastcall CShaderBankStateBlock_Set(CShaderBankStateBlock* self, int, void* srcv)
 {
     Src* src = (Src*)srcv;
     self->b8    = src->b71;
@@ -20,10 +20,10 @@ void __fastcall Set(CShaderBankStateBlock* self, int, void* srcv)
 int main(){
     Src s; s.b71 = 0xAB; s.d74 = 0x11223344;
     CShaderBankStateBlock blk; blk.b8 = 0; blk.d12f8 = 0;
-    Set(&blk, 0, &s);
+    CShaderBankStateBlock_Set(&blk, 0, &s);
     int ok = (blk.b8 == 0xAB) && (blk.d12f8 == 0x11223344);
     Src s2; s2.b71 = 0; s2.d74 = 0;
-    Set(&blk, 0, &s2);
+    CShaderBankStateBlock_Set(&blk, 0, &s2);
     ok = ok && (blk.b8 == 0) && (blk.d12f8 == 0);
     if(ok) printf("OK_00b50c60\n"); else printf("FAIL\n");
     return ok?0:1;

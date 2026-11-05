@@ -1,3 +1,4 @@
+// Leaf: ?CUserProfileManager_IsCameraResetting@@YIDPAVCUserProfileManager@@@Z
 #pragma optimize("s",on)
 class CUserProfileManager { public:
     char pad0[0xc];
@@ -7,7 +8,7 @@ class CUserProfileManager { public:
     char m_resetAlt;    // +0xcd
 };
 
-char __fastcall IsCameraResetting(CUserProfileManager *self)
+char __fastcall CUserProfileManager_IsCameraResetting(CUserProfileManager *self)
 {
     if (self->m_flag)
         return self->m_resetAlt;

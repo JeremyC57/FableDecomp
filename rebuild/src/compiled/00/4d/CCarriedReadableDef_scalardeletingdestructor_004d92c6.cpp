@@ -1,3 +1,4 @@
+// Leaf: ?CCarriedReadableDef_scalar_deleting_destructor@@YIPAXPAVCCarriedReadableDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CCarriedReadableDef
 };
 extern void* const g_CCarriedReadableDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CCarriedReadableDef* def, int, unsigned int flags)
+void* __fastcall CCarriedReadableDef_scalar_deleting_destructor(CCarriedReadableDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CCarriedReadableDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

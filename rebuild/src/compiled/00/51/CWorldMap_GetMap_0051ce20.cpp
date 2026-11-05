@@ -1,4 +1,5 @@
 // CWorldMap::GetMap @ 0x0051ce20
+// Leaf: ?CWorldMap_GetMap@@YIPAXPAVCWorldMap@@PAXH@Z
 // Retail bytes: 8b 44 24 04  8b 49 20  8d 04 c0  8b 44 c1 10  c2 04 00
 //   mov eax,[esp+4]          ; index arg
 //   mov ecx,[ecx+0x20]       ; this->m_maps (base of entry array)
@@ -18,7 +19,7 @@ class CWorldMap { public:
     char pad[0x20];               // 0x00..0x1F
     MapEntry* m_maps;             // 0x20
 };
-void* __fastcall GetMap(CWorldMap* thisptr, void* /*edx*/, int index)
+void* __fastcall CWorldMap_GetMap(CWorldMap* thisptr, void* /*edx*/, int index)
 {
     return thisptr->m_maps[index].map;
 }

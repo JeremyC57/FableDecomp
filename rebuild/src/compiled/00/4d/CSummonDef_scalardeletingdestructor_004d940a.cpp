@@ -1,3 +1,4 @@
+// Leaf: ?CSummonDef_scalar_deleting_destructor@@YIPAXPAVCSummonDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CSummonDef
 };
 extern void* const g_CSummonDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CSummonDef* def, int, unsigned int flags)
+void* __fastcall CSummonDef_scalar_deleting_destructor(CSummonDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CSummonDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

@@ -1,4 +1,5 @@
 // CInputProcessDead::ProcessInput  @ 0x00688a00
+// Leaf: ?CInputProcessDead_ProcessInput@@YIXPAVCInputProcessDead@@HABVCInputEvent@@AAVCProcessedInput@@@Z
 // Empty override: dead hero consumes no input. Body is a no-op; the two
 // reference args (CInputEvent const&, CProcessedInput&) occupy 8 bytes of
 // stack, so the __fastcall epilogue is `ret 8`.
@@ -12,7 +13,7 @@
 class CInputEvent { public: int _pad; };
 class CProcessedInput { public: int _pad; };
 
-void __fastcall ProcessInput(CInputProcessDead* process,
+void __fastcall CInputProcessDead_ProcessInput(CInputProcessDead* process,
                              int edx_dummy,
                              const CInputEvent& ev,
                              CProcessedInput& out)

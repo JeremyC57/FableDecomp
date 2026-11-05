@@ -1,7 +1,7 @@
 #include <cstdio>
 
 // ---- function under test (mirror of source_cpp) ----
-int __fastcall GetType(void *ecx)
+int __fastcall CInputTypeXboxPadLeftStickEvent_GetType(void *ecx)
 {
     (void)ecx;
     return 3;
@@ -14,7 +14,7 @@ int main()
     int r;
     __asm {
         mov ecx, obj
-        call GetType
+        call CInputTypeXboxPadLeftStickEvent_GetType
         mov r, eax
     }
     if (r != 3) {

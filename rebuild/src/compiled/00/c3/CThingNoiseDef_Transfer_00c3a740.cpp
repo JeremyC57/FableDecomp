@@ -1,4 +1,5 @@
 // CThingNoiseDef::Transfer  @ 00c3a740  (23 bytes)
+// Leaf: ?CThingNoiseDef_Transfer@@YIPAVCThingNoiseDef@@PAV1@PAVCPersistContext@@@Z
 // push esi; mov esi,ecx; call 0xc3a110(this=esi);
 // push 1; push esi; lea ecx,[esi+0x14]; call 0xc39610(this=esi+0x14, esi, 1);
 // mov eax,esi; pop esi; ret
@@ -20,7 +21,7 @@ class CThingNoiseDef { public:
     SubObj sub;
 };
 
-CThingNoiseDef* __fastcall Transfer(CThingNoiseDef* self, CPersistContext* ctx)
+CThingNoiseDef* __fastcall CThingNoiseDef_Transfer(CThingNoiseDef* self, CPersistContext* ctx)
 {
     BaseChain(self);
     self->sub.M(self, 1);

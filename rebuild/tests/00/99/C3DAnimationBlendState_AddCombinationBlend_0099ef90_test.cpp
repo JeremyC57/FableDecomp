@@ -14,7 +14,7 @@ class C3DAnimationBlendState { public:
     void helperA() { g_log = g_log * 10 + 1; }
 };
 
-void __fastcall AddCombinationBlend(C3DAnimationBlendState* self, int /*edx*/, C3DAnimationStateAlpha* a)
+void __fastcall C3DAnimationBlendState_AddCombinationBlend(C3DAnimationBlendState* self, int /*edx*/, C3DAnimationStateAlpha* a)
 {
     self->helperA();
     self->pInner->addAlpha(a);
@@ -24,7 +24,7 @@ int main() {
     Inner inner;
     C3DAnimationBlendState st; st.pInner = &inner;
     C3DAnimationStateAlpha alpha; alpha.id = 77;
-    AddCombinationBlend(&st, 0, &alpha);
+    C3DAnimationBlendState_AddCombinationBlend(&st, 0, &alpha);
     if (g_log == 12 && g_gotArg == &alpha) {
         printf("0099ef90_TEST PASS\n");
     } else {

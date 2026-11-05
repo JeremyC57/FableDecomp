@@ -1,3 +1,4 @@
+// Leaf: ?CCombatAction_GenericStrikeResponseBase_IsToCauseRecoil@@YI_NPAX@Z
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -10,4 +11,4 @@ private:
     CBaseObjectPointer* PData;                           // +0x04
 };
 extern bool __fastcall r_h2(void*);
-bool __fastcall IsToCauseRecoil(void* action){ return r_h2(((void*)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(action)+8))->GetPItem()))); }
+bool __fastcall CCombatAction_GenericStrikeResponseBase_IsToCauseRecoil(void* action){ return r_h2(((void*)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(action)+8))->GetPItem()))); }

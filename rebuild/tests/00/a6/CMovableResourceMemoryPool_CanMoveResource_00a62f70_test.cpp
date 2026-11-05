@@ -6,7 +6,7 @@ struct IMovableResource {
     virtual bool CanMove(long arg) { return false; }
 };
 
-bool __stdcall CanMoveResource_forward(IMovableResource *obj, long arg);
+bool __stdcall CMovableResourceMemoryPool_CanMoveResource(IMovableResource *obj, long arg);
 
 struct Impl : IMovableResource {
     long seen;
@@ -19,11 +19,11 @@ struct Impl : IMovableResource {
 int main()
 {
     // null obj -> false
-    bool r0 = CanMoveResource_forward(0, 99);
+    bool r0 = CMovableResourceMemoryPool_CanMoveResource(0, 99);
     // real obj, arg dispatched to slot 2
     Impl a;
-    bool r1 = CanMoveResource_forward(&a, 42);
-    bool r2 = CanMoveResource_forward(&a, 5);
+    bool r1 = CMovableResourceMemoryPool_CanMoveResource(&a, 42);
+    bool r2 = CMovableResourceMemoryPool_CanMoveResource(&a, 5);
     if (r0 == false && r1 == true && r2 == false && a.seen == 5) {
         printf("CANMOVE_OK\n");
         return 0;

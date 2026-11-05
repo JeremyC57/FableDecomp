@@ -1,4 +1,5 @@
 // CopyBackBufferToTexture @ 0x004e4082  CDisplayManager  __fastcall -> CTexture*
+// Leaf: ?CDisplayManager_CopyBackBufferToTexture@@YIPAVCTexture@@PAVCDisplayManager@@PAX@Z
 //
 // Forwarder: builds two transient bool flags (default state), hands their
 // addresses to the texture-format worker at 0x4dd487, then returns `this`
@@ -14,7 +15,7 @@ class CDisplayManager;
 // worker @ 0x4dd487 (TextureFormat_Handler_14): __stdcall(bool*, bool*)
 void __stdcall CopyBackBuffer_FormatStep(bool* a, bool* b);
 
-CTexture* __fastcall CopyBackBufferToTexture(CDisplayManager* self, void* /*edx*/)
+CTexture* __fastcall CDisplayManager_CopyBackBufferToTexture(CDisplayManager* self, void* /*edx*/)
 {
     bool* a;
     bool* b;

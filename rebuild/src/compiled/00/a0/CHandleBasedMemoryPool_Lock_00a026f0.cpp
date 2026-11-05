@@ -1,3 +1,4 @@
+// Leaf: ?CHandleBasedMemoryPool_Lock@@YIXPAVCHandleBasedMemoryPool@@HJ@Z
 struct PoolEntry {
     char pad[0xf];
     unsigned char locked;   // +0xf
@@ -10,7 +11,7 @@ class CHandleBasedMemoryPool { public:
     PoolEntry** entries;        // +0x438
 };
 
-void __fastcall Lock(CHandleBasedMemoryPool* self, int edxDummy, long handle)
+void __fastcall CHandleBasedMemoryPool_Lock(CHandleBasedMemoryPool* self, int edxDummy, long handle)
 {
     PoolEntry* e = self->entries[handle];
     if (e->locked == 0) {

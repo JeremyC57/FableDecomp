@@ -1,3 +1,4 @@
+// Leaf: ?CAnimateThing_SetAsFinished@@YIXPAVCAnimateThing@@HPAX@Z
 #pragma optimize("s",on)
 // Byte-exact reconstruction of CAnimateThing::SetAsFinished @ 0x00c0a860
 // Retail thiscall reads its single argument from the stack ([esp+4]) rather
@@ -8,7 +9,7 @@ class CAnimateThing { public:
     // 0x26: flag byte, 0x48: stored value
 };
 
-void __fastcall SetAsFinished(CAnimateThing *self, int /*edx*/, void *value)
+void __fastcall CAnimateThing_SetAsFinished(CAnimateThing *self, int /*edx*/, void *value)
 {
     *((unsigned char *)self + 0x26) |= 0x20;
     *(void **)((char *)self + 0x48) = value;

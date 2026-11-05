@@ -1,3 +1,4 @@
+// Leaf: ?CGameScriptThing_IsOpenDoor@@YI_NPAX@Z
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -17,7 +18,7 @@ struct DoorMap {
 };
 
 
-bool __fastcall IsOpenDoor(void* thisptr)
+bool __fastcall CGameScriptThing_IsOpenDoor(void* thisptr)
 {
     char* subobj = (char*)thisptr + 0xc;
     char* ent;

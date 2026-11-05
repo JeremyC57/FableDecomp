@@ -1,3 +1,4 @@
+// Leaf: ?CShaderRenderManager_SetXBoxUserVertexShaderConstant@@YIXPAVCShaderRenderManager@@PAXJPAVCRGBFloatColour@@J@Z
 class CRGBFloatColour { public: float r; float g; float b; };
 struct Consts4 { float x; float y; float z; float w; };
 
@@ -14,7 +15,7 @@ class CShaderRenderManager { public:
     ConstTarget* device;
 };
 
-void __fastcall SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, void* edx, long reg, CRGBFloatColour* col, long w)
+void __fastcall CShaderRenderManager_SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, void* edx, long reg, CRGBFloatColour* col, long w)
 {
     Consts4 c;
     c.x = col->r;

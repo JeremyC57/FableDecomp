@@ -1,0 +1,231 @@
+address	grade	log	family	introduced_warnings	inherited_warnings
+004456d0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0044c12f	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0044c1cd	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CActionUseDef
+0044c1f6	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0044c229	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0044c2e2	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0044c4a0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0044c4ca	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0044c4f8	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00453ac7	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+004546d5	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00459704	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+0045a154	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045a159 -> 0045a159 labelled 'CParentDefClassBase::operator='
+0045bd3d	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045bd42 -> 0045bd42 labelled 'CInventoryCategoryDef::operator='
+0045bdb1	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045bdb6 -> 0045bdb6 labelled '_unattributed::operator='
+0045be26	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045be2b -> 0045be2b labelled 'CEnvironmentDef::operator='
+0045c10d	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045c112 -> 0045c112 labelled 'CMaterialDef::operator='
+0045c2e3	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045c2e8 -> 0045c2e8 labelled 'CCombatTypeDef::Copy'
+0045c60f	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045c614 -> 0045c614 labelled 'CCreatureGenerationFamilyDef::operator='
+0045cb17	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045cb1c -> 0045cb1c labelled 'CHeroAbilityDef::operator='
+0045cbff	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045cc04 -> 0045cc04 labelled 'CAppearanceModifierDef::operator='
+0045ce43	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045ce48 -> 0045ce48 labelled 'CRegionDef::operator='
+0045d2f7	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?CFactionDef_Copy_impl@@YIXPAVCFactionDef@@PAX@Z -> 0045d2fc labelled 'CFactionDef::operator='
+0045d33f	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045d344 -> 0045d344 labelled 'CCameraModeDef::operator='
+0045d578	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045d57d -> 0045d57d labelled '_unattributed::operator='
+0045d5ce	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045d5d3 -> 0045d5d3 labelled 'CHeroPostcardGeneratorDef::operator='
+0045d637	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045d63c -> 0045d63c labelled 'CExpressionDef::operator='
+0045d724	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045d729 -> 0045d729 labelled 'CTargetingDef::operator='
+0045ee96	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045ee9b -> 0045ee9b labelled 'COpinionSourceDef::operator='
+0045f585	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0045f58a -> 0045f58a labelled 'CSpecialAbilitiesAssassinRushDef::operator='
+0046029f	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004602a4 -> 004602a4 labelled 'CSpecialAbilitiesLightningSpellDef::operator='
+00460652	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_00460657 -> 00460657 labelled 'CSpecialAbilitiesDivineWrathDef::operator='
+004611a1	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?BaseCopy@BaseDef@@QAEXPBVCDefClassBase@@@Z -> 00431ed0 labelled 'CParentDefClassBase::operator=' | RELOC_NAME: ?Copy@SubDef@@QAEXPBX@Z -> 00454886 labelled 'std::vector<long, std::allocator<long>>::operator='
+0046133f	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?CArmourDef_Copy_impl_0046133f@@YIXPAVCArmourDef@@0@Z -> 00461344 labelled 'CArmourDef::operator='
+00461ac8	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_00461acd -> 00461acd labelled 'CHitLocationDef::operator='
+00462678	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0046267d -> 0046267d labelled 'CThingShotDef::operator='
+00462888	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+004643ca	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004643cf -> 004643cf labelled 'CThingBaseDef::operator='
+0046a742	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_00466a47@CPersistContext@@QAEXPAH@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+0046a7e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?PersistB_00466a47@CPersistContext@@QAEXAAH@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+0046f49f	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00472e7e	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_00472e83 -> 00472e83 labelled 'CEnvironmentThemeDaySetDef::operator='
+0047812d	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_00478132 -> 00478132 labelled 'CHeroStatsDef::operator='
+004784e4	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+00478827	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004dd9dd	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004dd9fe	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004ddeaa	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004de50c	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004de545	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004de891	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004dedac	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004def0f	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004def3d	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004df46e	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+004df48c	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?g_value@@3HA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+004df4a3	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+004dfeb3	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004dfeb8 -> 004dfeb8 labelled 'CCarryableDef::operator='
+004dffbe	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004dffc3 -> 004dffc3 labelled '_unattributed::operator='
+004e0015	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e001a -> 004e001a labelled '_unattributed::operator='
+004e021d	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e0222 -> 004e0222 labelled 'CKickableDef::operator='
+004e0279	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e027e -> 004e027e labelled 'CLightDef::operator='
+004e03cf	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e03d4 -> 004e03d4 labelled 'CPerceivedThingDef::operator='
+004e0425	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e042a -> 004e042a labelled 'CStealthDef::operator='
+004e046f	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e0474 -> 004e0474 labelled 'CTrophyDef::operator='
+004e0564	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e0569 -> 004e0569 labelled 'CChestDef::operator='
+004e05a8	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e05ad -> 004e05ad labelled '_unattributed::operator='
+004e05da	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e05df -> 004e05df labelled 'CLookDef::operator='
+004e0667	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e066c -> 004e066c labelled '_unattributed::operator='
+004e074b	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e0750 -> 004e0750 labelled '_unattributed::operator='
+004e091e	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e0923 -> 004e0923 labelled 'CHighlightItemDef::operator='
+004e0d33	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+004e0e23	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e0e28 -> 004e0e28 labelled 'CGuardDef::operator='
+004e0f4d	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e0f52 -> 004e0f52 labelled '_unattributed::operator='
+004e112d	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e1132 -> 004e1132 labelled 'CTavernGameCoinGolfDef::operator='
+004e12b3	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e12b8 -> 004e12b8 labelled 'CFishDef::operator='
+004e1362	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e1367 -> 004e1367 labelled '_unattributed::operator='
+004e1394	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+004e148f	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e1494 -> 004e1494 labelled 'CKrakenTentacleDef::operator='
+004e159b	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e15a0 -> 004e15a0 labelled '_unattributed::operator='
+004e1769	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e176e -> 004e176e labelled 'CNymphDef::operator='
+004e17cd	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e17d2 -> 004e17d2 labelled 'CSummonDef::operator='
+004e1897	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e189c -> 004e189c labelled '_unattributed::operator='
+004e18c9	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e18ce -> 004e18ce labelled 'CWillResponseDef::operator='
+004e1913	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e1918 -> 004e1918 labelled 'CBettingDef::operator='
+004e1975	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e197a -> 004e197a labelled 'COracleMinigameDef::operator='
+004e19dd	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e19e2 -> 004e19e2 labelled 'CFireheartMinigameDef::operator='
+004e1a21	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e1a26 -> 004e1a26 labelled '_unattributed::operator='
+004e1e01	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e1e06 -> 004e1e06 labelled 'CVillageDef::operator='
+004e238c	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e2391 -> 004e2391 labelled 'CBuyableHouseDef::operator='
+004e2442	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e2447 -> 004e2447 labelled 'CCreatureGeneratorDef::operator='
+004e2963	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e2968 -> 004e2968 labelled 'CCreatureModeDef::operator='
+004e2c03	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e2c08 -> 004e2c08 labelled 'CBossDef::operator='
+004e2c4d	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e2c52 -> 004e2c52 labelled 'CFishingDef::operator='
+004e2cdf	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e2ce4 -> 004e2ce4 labelled 'CTurncoatDef::operator='
+004e2e08	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e2e0d -> 004e2e0d labelled 'CTavernGameSpotTheAdditionDef::operator='
+004e2eca	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e2ecf -> 004e2ecf labelled 'CExplosionDef::operator='
+004e3168	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e316d -> 004e316d labelled 'CKrakenDef::operator='
+004e38e4	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004e3c24	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004e3f7b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004e4294	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e4299 -> 004e4299 labelled 'CQuestCardDef::operator='
+004e444b	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e4450 -> 004e4450 labelled 'CClockDef::operator='
+004e457e	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e4583 -> 004e4583 labelled 'CMazeBattleDef::operator='
+004e45f2	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e45f7 -> 004e45f7 labelled '_unattributed::operator='
+004e4648	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+004e46c8	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e46cd -> 004e46cd labelled 'CJackOfBladesBattleDef::operator='
+004e476f	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e4774 -> 004e4774 labelled 'CScorpionKingBattleDef::operator='
+004e47e3	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e47e8 -> 004e47e8 labelled 'CTrollBattleDef::operator='
+004e4939	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e493e -> 004e493e labelled 'CWeaponDef::operator='
+004e4d83	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e4d88 -> 004e4d88 labelled 'CExperienceDef::operator='
+004e5834	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e5839 -> 004e5839 labelled 'CFlammableDef::operator='
+004e5c84	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e5c89 -> 004e5c89 labelled 'CTrapDef::operator='
+004e64ee	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e64f3 -> 004e64f3 labelled 'CRumbleDef::operator='
+004e6cc1	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e6cc6 -> 004e6cc6 labelled '_unattributed::operator='
+004e6f06	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e6f0b -> 004e6f0b labelled 'CHeroMorphDef::operator='
+004e7ea7	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext | RELOC_NAME: ?Transfer_00466a47@CPersistContext@@QAEXPAUA@@@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+004e980e	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004e9813 -> 004e9813 labelled 'CShopDef::operator='
+004eac7b	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CPersistContext
+004ead02	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004ead07 -> 004ead07 labelled 'CTavernGameShoveHaPennyDef::operator='
+004ebc11	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004ebc16 -> 004ebc16 labelled 'CTavernGameCardBaseDef::operator='
+004ec16f	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004ec174 -> 004ec174 labelled 'CObjectAugmentationsDef::operator='
+004f9145	MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_004f914a -> 004f914a labelled 'CHeroExperienceDef::operator='
+0062eac0	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0062ead0	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0065ed8e	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0065ed9d	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0065ee41	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0066a6d0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00676a50	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_00675c00 -> 00675c00 labelled 'CCreatureDef::operator='
+0068c6d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _Helper_68c6d0@4 -> 00687a90 labelled 'CInputProcessGameBase::IsEventButtonPressed'
+00690df0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+006c27d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_006c2710 -> 006c2710 labelled 'CLevelLoader::ProcessHoverAnimQueue'
+006cd9e0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CThingCreatureBase | RELOC_NAME: ?Lookup@CThingCreatureBase@@QAEPAUCTerrainResult@@ABVC3DVector@@@Z -> 004c79e0 labelled 'CThing::PeekWorldMap' | RELOC_NAME: ?GetHeight_0063a390@CTerrainResult@@QAEMXZ -> 0063a390 labelled 'CWorldMap::GetThemeSizeZAt'
+006cdb00	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?g_value@@3HA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+006cdb10	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+006f5700	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?virtual_tgt@GS@@QAEDXZ -> 008562f0 labelled 'CCombatActionBase::IsUsingAnimationMovement'
+006f58f0	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00739a50	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0074db90	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0074dd70	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0085b8a0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0085baf0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?outer@FableDestVal_0085baf0_t@@QAIXXZ -> 00859a20 labelled 'CCombatActionBase::FinishAction'
+0085c300	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008601d0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008659e0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0088e070	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0049d870 -> 0049d870 labelled 'CWorld::GetFrame'
+0088e930	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0088e950	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00890670	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?g_singleton_890670@@3PAXA -> 013b86a0 labelled 'CMainGameComponent::PMainGameComponent'
+00893f80	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?GetA@@YIPAXPBX@Z -> 006e7510 labelled 'CGameScriptInterface::GetMinWorldFrameForMessages' | RELOC_NAME: ?GetB@@YIPAXPBX@Z -> 006e7530 labelled 'CGameScriptInterface::GetMaxWorldFrameForMessages' | RELOC_NAME: ?Post@Router@@QAEPAXPAUGSI_MsgArg@@@Z -> 008abed0 labelled 'CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_OccuredBetween>>'
+0089dff0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CThing
+0089ec60	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?find@MapT@@QAEPAUNode@@ABK@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound' | RELOC_NAME: ?consume_0074ac80@BObj@@QAEXPAU1@@Z -> 0074ac80 labelled 'CTCShop::AddShopper'
+008a9fc0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?op_index@GossipMap@@QAEAAUCArrayHdr@@ABVCCharString@@@Z -> 007aebe0 labelled 'std::map::operator[]'
+008c3890	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008c3910	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008c5b70	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008cf970	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008cf9f0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008cfa80	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008e4400	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008e4540	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008e4750	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008e4a40	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008e4bc0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+008fe0fb	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00900216	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_0094b730 -> 0094b730 labelled 'ReturnTrue_0094b730'
+00906c10	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00906c50	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00908090	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z -> 0099efe0 labelled 'CCharString::operator='
+00908140	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z -> 0099efe0 labelled 'CCharString::operator='
+009081d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z -> 0099efe0 labelled 'CCharString::operator='
+009106b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_00910570 -> 00910570 labelled 'CAIStateGroup_MinionListenToStory::StandUp'
+009143c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CWorld | RELOC_NAME: ?h1_9143c0@@YIXPAUCAIStateGroup_BirdGroundWander@@@Z -> 008fcfa0 labelled 'CAIStateGroupBase::PeekWorld'
+00915860	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00920710	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?h_920710@@YIDPAX@Z -> 0085f120 labelled 'NCreatureMode::IsUnderground'
+009252a0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00925310	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+009352b0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_00935160 -> 00935160 labelled 'Condition::Check'
+00946630	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		GENERIC_STRUCT module=CAIStateGroup_LightWorkCandle (use engine/CAIStateGroup_LightWorkCandle.h) | RELOC_NAME: ?Check_006bb2c0@M@@QAE_NXZ -> 006bb2c0 labelled 'CGameTimeManager::IsDay'
+00953240	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+009532e0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00953590	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+009567d0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00956850	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+009571f0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0095caa0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0095cb60	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00961a30	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00962970	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+009629d0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0096c080	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0096c740	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00976f10	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00976fa0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00977040	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+009770e0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00977270	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00977300	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+009773a0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0097c810	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0097c8e0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+0097c9a0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00993c80	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+009ce360	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_009cd850 -> 009cd850 labelled 'CBankFile::CloseEntries'
+009e97f0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CMemoryFile
+009fc540	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _Helper_9fc540@4 -> 009fc170 labelled 'CResourceList::UnloadNextResource'
+00a23c20	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00a39dc0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: _ForwardTarget_00a39cc0 -> 00a39cc0 labelled 'CWADFile::Open'
+00aa49d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?ctor_99ebf0@CCharString@@QAEPAV1@PBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+00ab78d0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		SHARED_HEADER_AVAILABLE CJoystickDX | RELOC_NAME: ?h1@@YIXPAUCJoystickDX@@@Z -> 009e41b0 labelled 'CJoystick::Update'
+00b3a990	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00b98d50	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00ba7770	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00baa410	RELOCATION_MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00babf30	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bacd10	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bb1600	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bb6be0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bb6dc0	MATCH PASS	logs/vland_w3A00.log	standin_rtti_free		
+00bbac20	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bbcf30	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bbea30	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bc5bc0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bc6540	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bc97c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bca910	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bcc7c0	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00bce030	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'
+00be2280	RELOCATION_MATCH PASS INHERITED_WARN	logs/vland_w3A00.log	standin_rtti_free		RELOC_NAME: ?InsertGrow@CRetailVector_dword@@QAEXPAJABJABUSScalarTag@@K_N@Z -> 00440990 labelled 'std::vector<long,std::allocator<long> >::_M_insert_overflow'

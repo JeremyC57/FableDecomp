@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of
+// Leaf: ?CShaderDataBank_PrepareDataForInclusion@@YIXPAVCShaderDataBank@@PAXJ111PAURefBlock@@11@Z
 // ?PrepareDataForInclusion@CShaderDataBank@@MAEXKABV?$CArray@VCCharString@@@@KV?$CCountedPointer@VCBankStateBlock@@@@AAVCDataOutputStream@@2@Z
 // this-call member with a by-value CCountedPointer arg; body only touches that arg's control block.
 
@@ -21,7 +22,7 @@ void operator delete(void*);
 // The by-value CCountedPointer arg lands as a stack dword = pointer to RefBlock.
 // __fastcall: self->ecx, edxDummy->edx (consumed from stack model), rest on stack.
 // Need 7 stack dwords total for ret 0x1c, esi = 5th stack dword ([esp+0x18] after push esi).
-void __fastcall PrepareDataForInclusion(
+void __fastcall CShaderDataBank_PrepareDataForInclusion(
         CShaderDataBank* bank,     // ecx
         void* edxDummy,            // edx
         long s1,                   // stack [esp+8]

@@ -1,0 +1,3 @@
+address	name	evidence
+0x00CE1000	CCountedPointer<CEntityScriptBase>::~CCountedPointer	T = CEntityScriptBase: caller bindings (170 typed callers bind CCountedPointer<CEntityScriptBase>::~CCountedPointer here) + PDB fablewin symbol FableWin dtor. (was _global::CCountedPointer_Release_00ce1000)
+0x00CE1040	CCountedPointer<CEntityScriptBase>::ShareData	T = CEntityScriptBase: caller bindings (36 typed callers bind CCountedPointer<CEntityScriptBase>::ShareData here) + PDB fablewin symbol FableWin ShareData. (was CCountedPointer<CScriptThing>::ShareData)

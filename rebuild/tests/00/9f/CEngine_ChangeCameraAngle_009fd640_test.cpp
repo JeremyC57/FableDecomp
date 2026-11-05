@@ -19,7 +19,7 @@ void __fastcall CCameraSub_Reset(CCameraSub* self) {
     g_reset_this = self;
 }
 
-void __fastcall ChangeCameraAngle(CEngine* self)
+void __fastcall CEngine_ChangeCameraAngle(CEngine* self)
 {
     CCameraSub_Reset(self->sub_280);
     self->flag_1f8 = 0;
@@ -29,7 +29,7 @@ int main() {
     CEngine e;
     e.flag_1f8 = 0x7f;
     e.sub_280 = (CCameraSub*)(void*)0x12345678;
-    ChangeCameraAngle(&e);
+    CEngine_ChangeCameraAngle(&e);
     if (g_reset_called == 1 &&
         g_reset_this == (void*)0x12345678 &&
         e.flag_1f8 == 0) {

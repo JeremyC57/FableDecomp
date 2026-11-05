@@ -1,3 +1,4 @@
+// Leaf: ?CDrunkennessDef_scalar_deleting_destructor@@YIPAXPAVCDrunkennessDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CDrunkennessDef
 };
 extern void* const g_CDrunkennessDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CDrunkennessDef* def, int, unsigned int flags)
+void* __fastcall CDrunkennessDef_scalar_deleting_destructor(CDrunkennessDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CDrunkennessDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

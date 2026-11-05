@@ -4,7 +4,7 @@
 float g_sortDistanceNumerator = 100.0f; // [0x12a3a20]
 
 
-void __fastcall SetMaxSortDistance(CEngineSubPrimitiveRenderer* renderer, float dist)
+void __fastcall CEngineSubPrimitiveRenderer_SetMaxSortDistance(CEngineSubPrimitiveRenderer* renderer, float dist)
 {
     renderer->MaxSortDistance = dist;
     renderer->SortDistanceMultiplier = g_sortDistanceNumerator / dist;
@@ -13,7 +13,7 @@ void __fastcall SetMaxSortDistance(CEngineSubPrimitiveRenderer* renderer, float 
 int main()
 {
     CEngineSubPrimitiveRenderer o;
-    SetMaxSortDistance(&o, 4.0f);
+    CEngineSubPrimitiveRenderer_SetMaxSortDistance(&o, 4.0f);
     if (o.MaxSortDistance == 4.0f && o.SortDistanceMultiplier == 25.0f)
         printf("00b84290_TEST PASS\n");
     else

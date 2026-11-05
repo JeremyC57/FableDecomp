@@ -1,3 +1,4 @@
+// Leaf: ?Transfer@CSpecialAbilitiesSummonSpellDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 // CPersistable_0046a6dd::Transfer(CPersistContext&) -- 8 members at +0x3c..+0x68 handed to the context's typed transfer helpers (0x00431061, 0x00431102, 0x00431143, 0x0045228F, 0x00464CBF, 0x00466A47)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0046A6DD, oracle length 101 bytes.
@@ -17,7 +18,7 @@ class CPersistContext { public:
     void Transfer_00466a47(long* value);   // 0x00466A47
 };
 
-struct CPersistable_0046a6dd {
+struct CSpecialAbilitiesSummonSpellDef {
     virtual void v00();
     unsigned char _pad[0x38];
     long m_3c;                          // +0x3c (via Transfer_00464cbf)
@@ -33,7 +34,7 @@ struct CPersistable_0046a6dd {
     virtual void Transfer(CPersistContext& context);
 };
 
-void CPersistable_0046a6dd::Transfer(CPersistContext& context)
+void CSpecialAbilitiesSummonSpellDef::Transfer(CPersistContext& context)
 {
     context.Transfer_00464cbf(&m_3c);
     context.Transfer(*(CDefString*)(&m_48));
@@ -44,3 +45,4 @@ void CPersistable_0046a6dd::Transfer(CPersistContext& context)
     context.Transfer(*(CCharString*)(&m_64));
     context.Transfer(*(CCharString*)(&m_68));
 }
+// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?Transfer@CSpecialAbilitiesSummonSpellDef@@UAEXAAVCPersistContext@@@Z); evidence: RTTI vtable slot + PDB name set.

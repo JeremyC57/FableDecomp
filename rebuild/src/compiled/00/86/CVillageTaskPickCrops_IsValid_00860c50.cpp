@@ -1,3 +1,4 @@
+// Leaf: ?CVillageTaskPickCrops_IsValid@@YI_NPAVCVillageTaskPickCrops@@@Z
 #include "engine/CVillageTaskPickCrops.h"  // retyped onto the PDB layout; byte parity re-verified
 class CBaseObject;
 class CBaseObjectPointer;
@@ -10,4 +11,4 @@ public:
 private:
     CBaseObjectPointer* PData;                           // +0x04
 };
-bool __fastcall IsValid(CVillageTaskPickCrops* task){ return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task)+8))->GetPItem())) != 0; }
+bool __fastcall CVillageTaskPickCrops_IsValid(CVillageTaskPickCrops* task){ return ((int)(((CBaseIntelligentPointer*)(reinterpret_cast<char*>(task)+8))->GetPItem())) != 0; }

@@ -1,3 +1,4 @@
+// Leaf: ?CEngine_SetPersistentPrimitive@@YGXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
 class CEnginePrimitiveHandle { public:};
 class CEnginePrimitive { public:};
 
@@ -7,7 +8,7 @@ struct CGlobalTarget {
 
 extern CGlobalTarget* g_target;
 
-void __stdcall SetPersistentPrimitive(CEnginePrimitiveHandle& h,
+void __stdcall CEngine_SetPersistentPrimitive(CEnginePrimitiveHandle& h,
                                       CEnginePrimitive const& p,
                                       unsigned long x)
 {

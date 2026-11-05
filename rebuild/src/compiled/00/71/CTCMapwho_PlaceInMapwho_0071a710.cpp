@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCMapwho::PlaceInMapwho @ 0x0071a710
+// Leaf: ?CTCMapwho_PlaceInMapwho@@YIXPAVCTCMapwho@@HPAVC3DVector@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12). Member accesses x/y/z respelled to the PDB X/Y/Z.
 
 #include "engine/C3DVector.h"
@@ -31,7 +32,7 @@ struct Helper {
 // Retail PlaceInMapwho is __fastcall: this in ecx, the C3DVector* on the stack.
 // The harness rewrites __fastcall->__fastcall, so model the this pointer in
 // ecx and force the vector onto the stack by consuming edx with a dummy arg.
-void __fastcall PlaceInMapwho(CTCMapwho* mapwho, int /*edx*/, C3DVector* v)
+void __fastcall CTCMapwho_PlaceInMapwho(CTCMapwho* mapwho, int /*edx*/, C3DVector* v)
 {
     if (!(mapwho->flags & 1)) {
         Helper* h = GetMapwhoHelper();

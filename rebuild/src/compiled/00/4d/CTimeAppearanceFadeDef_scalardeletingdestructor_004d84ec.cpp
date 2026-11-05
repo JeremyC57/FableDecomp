@@ -1,3 +1,4 @@
+// Leaf: ?CTimeAppearanceFadeDef_scalar_deleting_destructor@@YIPAXPAVCTimeAppearanceFadeDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CTimeAppearanceFadeDef
 };
 extern void* const g_CTimeAppearanceFadeDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CTimeAppearanceFadeDef* def, int, unsigned int flags)
+void* __fastcall CTimeAppearanceFadeDef_scalar_deleting_destructor(CTimeAppearanceFadeDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CTimeAppearanceFadeDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

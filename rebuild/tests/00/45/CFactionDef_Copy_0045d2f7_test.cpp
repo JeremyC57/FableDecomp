@@ -13,12 +13,12 @@ void __fastcall CFactionDef_Copy_impl(CFactionDef* thisptr, void* src)
     mark_hit();
 }
 
-void __fastcall CFactionDef_Copy_thunk(CFactionDef* thisptr, void* src);
+void __fastcall CFactionDef_Copy(CFactionDef* thisptr, void* src);
 
 int main()
 {
     int dummy = 0;
-    CFactionDef_Copy_thunk((CFactionDef*)&dummy, &dummy);
+    CFactionDef_Copy((CFactionDef*)&dummy, &dummy);
     if (g_hit) {
         printf("OK_0045d2f7\n");
     } else {

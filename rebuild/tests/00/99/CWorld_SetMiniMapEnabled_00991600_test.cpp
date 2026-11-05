@@ -11,7 +11,7 @@ class CWorld { public:
     bool f24;
 };
 
-void __fastcall SetMiniMapEnabled(CWorld* self, int edx, bool enabled);
+void __fastcall CWorld_SetMiniMapEnabled(CWorld* self, int edx, bool enabled);
 
 static int g_calls = 0;
 void __fastcall myDisable(CWorld*) { g_calls++; }
@@ -26,19 +26,19 @@ int main()
     w.vtbl = &vt;
     w.f24 = false;
 
-    SetMiniMapEnabled(&w, 0, false);
+    CWorld_SetMiniMapEnabled(&w, 0, false);
     bool ok = (w.f24 == false && g_calls == 0);
 
-    SetMiniMapEnabled(&w, 0, true);
+    CWorld_SetMiniMapEnabled(&w, 0, true);
     ok = ok && (w.f24 == true && g_calls == 0);
 
-    SetMiniMapEnabled(&w, 0, true);
+    CWorld_SetMiniMapEnabled(&w, 0, true);
     ok = ok && (w.f24 == true && g_calls == 0);
 
-    SetMiniMapEnabled(&w, 0, false);
+    CWorld_SetMiniMapEnabled(&w, 0, false);
     ok = ok && (w.f24 == false && g_calls == 1);
 
-    SetMiniMapEnabled(&w, 0, false);
+    CWorld_SetMiniMapEnabled(&w, 0, false);
     ok = ok && (w.f24 == false && g_calls == 1);
 
     if (ok) printf("00991600_TEST PASS\n");

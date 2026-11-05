@@ -20,7 +20,7 @@ static void __stdcall RecordConstant(Device* self, long index, const float* data
     for (int i = 0; i < 4; ++i) g_data[i] = data[i];
 }
 
-void __fastcall SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, int, long index, CRGBFloatColour* colour) {
+void __fastcall CShaderRenderManager_SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, int, long index, CRGBFloatColour* colour) {
     float buf[4];
     buf[0] = colour->x; buf[1] = colour->y; buf[2] = colour->z; buf[3] = colour->w;
     Device* d = self->device;
@@ -33,7 +33,7 @@ int main() {
     CShaderRenderManager mgr; mgr.device = &dev;
     CRGBFloatColour c = { 1.5f, -2.0f, 3.25f, 4.0f };
 
-    SetXBoxUserVertexShaderConstant(&mgr, 0, 0x70, &c);
+    CShaderRenderManager_SetXBoxUserVertexShaderConstant(&mgr, 0, 0x70, &c);
 
     bool ok = g_self == &dev && g_index == (0x70 - 0x60) && g_count == 1 &&
               g_data[0] == 1.5f && g_data[1] == -2.0f && g_data[2] == 3.25f && g_data[3] == 4.0f;

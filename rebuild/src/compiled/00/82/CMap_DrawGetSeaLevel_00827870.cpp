@@ -1,4 +1,5 @@
 // CMap::DrawGetSeaLevel @ 00827870
+// Leaf: ?CMap_DrawGetSeaLevel@@YIMPAVCMap@@HH@Z
 // retail: fld dword ptr [ecx+0x1d08]; ret 4
 // float member getter; ret 4 => one unused stack arg cleaned.
 
@@ -8,7 +9,7 @@ class CMap { public:
 };
 
 // this in ECX (self), one unused stack arg (occupies caller cleanup -> ret 4).
-float __fastcall DrawGetSeaLevel(CMap* self, int /*edx unused*/, int /*unused stack arg*/)
+float __fastcall CMap_DrawGetSeaLevel(CMap* self, int /*edx unused*/, int /*unused stack arg*/)
 {
     return self->seaLevel;
 }

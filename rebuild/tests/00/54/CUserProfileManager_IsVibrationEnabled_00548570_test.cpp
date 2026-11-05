@@ -9,7 +9,7 @@ class CUserProfileManager { public:
     char VibrationEnabledNewProfile;   // +0xce
 };
 
-char __fastcall IsVibrationEnabled(CUserProfileManager* manager) {
+char __fastcall CUserProfileManager_IsVibrationEnabled(CUserProfileManager* manager) {
     if (manager->UseNewProfileValues)
         return manager->VibrationEnabledNewProfile;
     return manager->VibrationEnabled;
@@ -20,13 +20,13 @@ int main() {
     obj.UseNewProfileValues = 1;
     obj.VibrationEnabled = 0x22;
     obj.VibrationEnabledNewProfile = 0x55;
-    char r1 = IsVibrationEnabled(&obj);
+    char r1 = CUserProfileManager_IsVibrationEnabled(&obj);
     if (r1 != 0x55) { printf("FAIL case1 got %d\n", (int)r1); return 1; }
 
     obj.UseNewProfileValues = 0;
     obj.VibrationEnabled = 0x33;
     obj.VibrationEnabledNewProfile = 0x77;
-    char r2 = IsVibrationEnabled(&obj);
+    char r2 = CUserProfileManager_IsVibrationEnabled(&obj);
     if (r2 != 0x33) { printf("FAIL case2 got %d\n", (int)r2); return 1; }
 
     printf("OK_0x00548570\n");

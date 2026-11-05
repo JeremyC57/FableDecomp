@@ -1,3 +1,4 @@
+// Leaf: ?CTCHeroExperience_ForceTrainableStatExperienceTo@@YIXPAVCTCHeroExperience@@HHJ@Z
 class CTCHeroExperience { public:
     char pad[0x18];
     long* stats;   /* +0x18 */
@@ -6,7 +7,7 @@ class CTCHeroExperience { public:
 /* Retail is __fastcall: this in ecx, category and value both on the stack.
    The harness rewrites __fastcall->__fastcall; an unused edx parameter keeps
    category/value on the stack (esp+4/esp+8) and yields ret 8, matching retail. */
-void __fastcall ForceTrainableStatExperienceTo(CTCHeroExperience* experience, int edxpad, int category, long value)
+void __fastcall CTCHeroExperience_ForceTrainableStatExperienceTo(CTCHeroExperience* experience, int edxpad, int category, long value)
 {
     if (value < 0)
         value = 0;

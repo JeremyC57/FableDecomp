@@ -1,0 +1,11 @@
+s6 w1 -- stand-in family ?DestVal@Slot@@QAEXXZ (768 work-list rows; 767 here, 0x00CE1000 moved to w6).
+What: the body (release the count block, then Data = 0, Info = 0) is engine/CCountedPointer.h's ~CCountedPointer (Data-first,
+retail emits one COMDAT per T). Each row now includes the shared header and explicitly instantiates the destructor:
+  template CCountedPointer<T>::~CCountedPointer();   Leaf ??1?$CCountedPointer@<T>@@QAE@XZ
+T: the real pointee where a typed caller binds ??1?$CCountedPointer@<T>@@QAE@XZ here AND FableWin/Ego_r has that symbol
+(21 rows, LABELS.tsv; their other caller spellings in NAME_FIXES.tsv); otherwise CUnprovenPointee_<addr> (EXTRA_RULES
+2026-10-28), with the catalog label proposal in LABELS_PROPOSAL.tsv. T_PROPOSALS.tsv: 16 targets whose callers disagree or
+whose T is a nested class / const T (left on CUnproven, need the owner's or a header wave's T).
+Grade: gate PASS 768/768 (masked sha + targets); vland --recheck-landed 767 PASS, parity unchanged (RELOCATION_MATCH).
+14 rows print an INTRODUCED STANDIN_LEAF "names another function": their catalog label says ::Release while the body is the
+dtor. Apply LABELS.tsv with the wave and the warning clears (label fix, not a respell).

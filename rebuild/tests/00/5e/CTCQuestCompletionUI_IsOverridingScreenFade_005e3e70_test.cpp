@@ -13,7 +13,7 @@ class CTCQuestCompletionUI { public:
     unsigned char m_c0;
 };
 
-bool __fastcall IsOverridingScreenFade(CTCQuestCompletionUI* completionUI)
+bool __fastcall CTCQuestCompletionUI_IsOverridingScreenFade(CTCQuestCompletionUI* completionUI)
 {
     if (completionUI->Active != 0 && completionUI->m_1c == 0 && completionUI->m_c0 == 0
         && completionUI->m_10 != completionUI->m_14)
@@ -24,7 +24,7 @@ bool __fastcall IsOverridingScreenFade(CTCQuestCompletionUI* completionUI)
 typedef bool (__fastcall *FN)(void* ecx, void* edx);
 
 static bool call_it(CTCQuestCompletionUI* obj) {
-    FN fn = (FN)(void*)&IsOverridingScreenFade;
+    FN fn = (FN)(void*)&CTCQuestCompletionUI_IsOverridingScreenFade;
     return fn(obj, 0);
 }
 

@@ -9,7 +9,7 @@ class CUserProfileManager { public:
     char m_resetAlt;
 };
 
-char __fastcall IsCameraResetting(CUserProfileManager *self)
+char __fastcall CUserProfileManager_IsCameraResetting(CUserProfileManager *self)
 {
     if (self->m_flag)
         return self->m_resetAlt;
@@ -21,7 +21,7 @@ static char call_it(CUserProfileManager *obj)
     char out;
     __asm {
         mov ecx, obj
-        call IsCameraResetting
+        call CUserProfileManager_IsCameraResetting
         mov out, al
     }
     return out;

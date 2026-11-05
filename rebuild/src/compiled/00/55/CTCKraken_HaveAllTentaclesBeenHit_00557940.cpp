@@ -1,3 +1,4 @@
+// Leaf: ?CTCKraken_HaveAllTentaclesBeenHit@@YIDPAVCTCKraken@@@Z
 
 class CTCKraken { public:
     char pad[0x1a8];
@@ -5,7 +6,7 @@ class CTCKraken { public:
     int  m_remaining;  // +0x1ac
 };
 
-char __fastcall HaveAllTentaclesBeenHit(CTCKraken *kraken)
+char __fastcall CTCKraken_HaveAllTentaclesBeenHit(CTCKraken *kraken)
 {
     if (kraken->m_phase != 2)
         return 0;

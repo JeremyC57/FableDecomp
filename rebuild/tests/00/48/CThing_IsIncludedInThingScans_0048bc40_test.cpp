@@ -5,7 +5,7 @@ class CThing { public:
     unsigned char flags;
 };
 
-int __fastcall IsIncludedInThingScans(CThing *thing)
+int __fastcall CThing_IsIncludedInThingScans(CThing *thing)
 {
     unsigned char f = thing->flags;
     unsigned char nf = ~f;
@@ -17,7 +17,7 @@ int __fastcall IsIncludedInThingScans(CThing *thing)
 static int call_it(CThing *t)
 {
     int r;
-    void *fn = (void*)&IsIncludedInThingScans;
+    void *fn = (void*)&CThing_IsIncludedInThingScans;
     __asm {
         mov ecx, t
         call fn

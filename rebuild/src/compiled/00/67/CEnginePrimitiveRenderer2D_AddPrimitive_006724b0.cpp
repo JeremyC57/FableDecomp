@@ -1,4 +1,5 @@
 // CEnginePrimitiveRenderer2D::AddPrimitive @ 0x006724b0
+// Leaf: ?CEnginePrimitiveRenderer2D_AddPrimitive@@YIXPAVCEnginePrimitiveRenderer2D@@PAXPAVCEngineInternalPrimitiveBase@@@Z
 class CEngineInternalPrimitiveBase;
 
 class CEnginePrimitiveRenderer2D { public:
@@ -16,7 +17,7 @@ extern "C" void __stdcall EngineAssertLog(const char* msg);
 extern "C" void __fastcall AddPrimitive_Path24(void* self, CEngineInternalPrimitiveBase* prim); // 0x672530
 extern "C" void __fastcall AddPrimitive_Path28(void* self, CEngineInternalPrimitiveBase* prim); // 0x6724f0
 
-void __fastcall AddPrimitive(CEnginePrimitiveRenderer2D* self, void* edx, CEngineInternalPrimitiveBase* prim)
+void __fastcall CEnginePrimitiveRenderer2D_AddPrimitive(CEnginePrimitiveRenderer2D* self, void* edx, CEngineInternalPrimitiveBase* prim)
 {
     EngineAssertLog((const char*)0x122d70e);
     if (self->mode - 2 != 0) {

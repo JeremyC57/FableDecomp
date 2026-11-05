@@ -1,3 +1,4 @@
+// Leaf: ?CCrateStackDef_scalar_deleting_destructor@@YIPAXPAVCCrateStackDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CCrateStackDef
 };
 extern void* const g_CCrateStackDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CCrateStackDef* def, int, unsigned int flags)
+void* __fastcall CCrateStackDef_scalar_deleting_destructor(CCrateStackDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CCrateStackDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

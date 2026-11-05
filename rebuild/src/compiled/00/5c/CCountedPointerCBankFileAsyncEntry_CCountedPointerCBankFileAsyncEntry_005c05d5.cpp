@@ -1,20 +1,10 @@
-// Intelligent-pointer copy: take the target and the refcount block from the
-// Leaf: ?Copy@T@@QAEPAU1@ABUPtr@@@Z
-// source, then bump the count when the block exists. VC7.1 schedules the
-// second store ahead of the branch. __fastcall this=ecx (ret 4).
-struct RefCount { int count; };
-struct Ptr {
-    void* target;
-    RefCount* refs;
-};
-struct T {
-    void* target;
-    RefCount* refs;
-    T* Copy(const Ptr& other);
-};
-T* T::Copy(const Ptr& other) {
-    this->target = other.target;
-    this->refs = other.refs;
-    if (this->refs) ++this->refs->count;
-    return this;
-}
+// CCountedPointer<NInventory::CPerItemData>::CCountedPointer(const CCountedPointer&) -- copy a counted pointer
+// Leaf: ??0?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@ABV0@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x005C05D5, 25 bytes. Callees: none.
+//
+// Copies Data and Info from the source and, when there is a count block, takes a reference on it; returns this
+// (engine/CCountedPointer.h copy constructor). The catalog's CopyCtor placeholder describes the same body.
+// T = NInventory::CPerItemData: caller binding (005c08e6) + PDB symbol ??0?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@ABV0@@Z.
+#include "engine/CCountedPointer.h"
+namespace NInventory { class CPerItemData; }
+template CCountedPointer<NInventory::CPerItemData>::CCountedPointer(const CCountedPointer<NInventory::CPerItemData>&);

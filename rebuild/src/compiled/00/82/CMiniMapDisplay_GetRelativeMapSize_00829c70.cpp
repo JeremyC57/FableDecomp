@@ -1,8 +1,9 @@
+// Leaf: ?CMiniMapDisplay_GetRelativeMapSize@@YIXPAVCMiniMapDisplay@@PAXPAVC2DVector@@@Z
 class C2DVector { public: float x; float y; };
 struct IntSize { int w; int h; };
 struct MapSizeProvider { void GetSize(IntSize* other, IntSize* dst); };
 class CMiniMapDisplay { public: char pad[0x54]; MapSizeProvider provider; };
-void __fastcall GetRelativeMapSize(CMiniMapDisplay* display, void* edx, C2DVector* out)
+void __fastcall CMiniMapDisplay_GetRelativeMapSize(CMiniMapDisplay* display, void* edx, C2DVector* out)
 {
     IntSize dst;
     IntSize other;

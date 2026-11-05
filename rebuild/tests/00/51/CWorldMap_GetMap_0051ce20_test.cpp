@@ -10,7 +10,7 @@ class CWorldMap { public:
     char pad[0x20];
     MapEntry* m_maps;
 };
-void* __fastcall GetMap(CWorldMap* thisptr, void* /*edx*/, int index)
+void* __fastcall CWorldMap_GetMap(CWorldMap* thisptr, void* /*edx*/, int index)
 {
     return thisptr->m_maps[index].map;
 }
@@ -37,7 +37,7 @@ int main()
             mov  ecx, self
             mov  eax, idx
             push eax
-            call GetMap
+            call CWorldMap_GetMap
             mov  r, eax
         }
         void* want = (void*)(0xC0DE0000u + (unsigned)idx);

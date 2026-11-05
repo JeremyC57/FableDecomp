@@ -1,3 +1,4 @@
+// Leaf: ?CLightningOrbDef_scalar_deleting_destructor@@YIPAXPAVCLightningOrbDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CLightningOrbDef
 };
 extern void* const g_CLightningOrbDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CLightningOrbDef* def, int, unsigned int flags)
+void* __fastcall CLightningOrbDef_scalar_deleting_destructor(CLightningOrbDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CLightningOrbDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

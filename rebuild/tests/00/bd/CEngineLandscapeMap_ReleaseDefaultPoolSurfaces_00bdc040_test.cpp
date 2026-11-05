@@ -18,7 +18,7 @@ struct FakeSurface : public ISurface {
     void Slot0(int a) { g_released++; g_arg = a; }
 };
 
-void __fastcall ReleaseDefaultPoolSurfaces(CEngineLandscapeMap* self)
+void __fastcall CEngineLandscapeMap_ReleaseDefaultPoolSurfaces(CEngineLandscapeMap* self)
 {
     if (self->flag) {
         ISurface* s = self->surface;
@@ -37,21 +37,21 @@ int main()
     CEngineLandscapeMap a;
     a.flag = 1; a.surface = &fs;
     g_released = 0; g_arg = 0;
-    ReleaseDefaultPoolSurfaces(&a);
+    CEngineLandscapeMap_ReleaseDefaultPoolSurfaces(&a);
     if (g_released != 1 || g_arg != 1 || a.surface != 0) { printf("FAIL1\n"); return 1; }
 
     // Case 2: flag set, surface null -> nothing released, still null
     CEngineLandscapeMap b;
     b.flag = 1; b.surface = 0;
     g_released = 0;
-    ReleaseDefaultPoolSurfaces(&b);
+    CEngineLandscapeMap_ReleaseDefaultPoolSurfaces(&b);
     if (g_released != 0 || b.surface != 0) { printf("FAIL2\n"); return 1; }
 
     // Case 3: flag clear -> surface untouched, no release
     CEngineLandscapeMap c;
     c.flag = 0; c.surface = &fs;
     g_released = 0;
-    ReleaseDefaultPoolSurfaces(&c);
+    CEngineLandscapeMap_ReleaseDefaultPoolSurfaces(&c);
     if (g_released != 0 || c.surface != &fs) { printf("FAIL3\n"); return 1; }
 
     printf("PARITY_OK\n");

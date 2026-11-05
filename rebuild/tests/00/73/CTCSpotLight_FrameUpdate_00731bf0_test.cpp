@@ -19,7 +19,7 @@ static float g_random = 0.0f; static unsigned long g_seed = 0; static unsigned l
 unsigned long* __fastcall GetPLocalSeed(CTCSpotLight* light) { return &g_seed; }
 float __fastcall GFFloatRandom(float range, unsigned long* seed) { g_range = range; g_seedPassed = seed; return g_random; }
 
-void __fastcall FrameUpdate(CTCSpotLight* light)
+void __fastcall CTCSpotLight_FrameUpdate(CTCSpotLight* light)
 {
     light->OldAccumilativeFlickerFactor = light->AccumilativeFlickerFactor;
     CSpotLightDef* def = (CSpotLightDef*)light->PLightDef_Object;
@@ -44,14 +44,14 @@ int main()
     CTCSpotLight s; s.PLightDef_Object = &def; s.PLightInfo_Data = &info; s.Overridden = false;
     s.AccumilativeFlickerFactor = 0.9f; s.OldAccumilativeFlickerFactor = 0.0f;
     g_random = 0.6f;                                  // +0.1 * 3 * 0.2 = +0.06
-    FrameUpdate(&s);
+    CTCSpotLight_FrameUpdate(&s);
     if (!Near(s.OldAccumilativeFlickerFactor, 0.9f) || !Near(s.AccumilativeFlickerFactor, 0.96f)) bad |= 1;
     if (g_range != 1.0f || g_seedPassed != &g_seed) bad |= 2;
-    g_random = 1.0f; FrameUpdate(&s);                 // +0.5*3*0.2 = +0.3 -> clamp to 1
+    g_random = 1.0f; CTCSpotLight_FrameUpdate(&s);                 // +0.5*3*0.2 = +0.3 -> clamp to 1
     if (s.AccumilativeFlickerFactor != 1.0f) bad |= 4;
-    s.AccumilativeFlickerFactor = 0.81f; g_random = 0.0f; FrameUpdate(&s);   // -0.3 -> 0.51 < 0.8 -> 0.8
+    s.AccumilativeFlickerFactor = 0.81f; g_random = 0.0f; CTCSpotLight_FrameUpdate(&s);   // -0.3 -> 0.51 < 0.8 -> 0.8
     if (!Near(s.AccumilativeFlickerFactor, 0.8f)) bad |= 8;
-    s.Overridden = true; s.AccumilativeFlickerFactor = 0.5f; FrameUpdate(&s);   // flicker 0.001 below the threshold
+    s.Overridden = true; s.AccumilativeFlickerFactor = 0.5f; CTCSpotLight_FrameUpdate(&s);   // flicker 0.001 below the threshold
     if (s.AccumilativeFlickerFactor != 0.5f || s.OldAccumilativeFlickerFactor != 0.5f) bad |= 16;
     if (bad) { std::printf("00731bf0_TEST FAIL\n"); return 1; }
     std::printf("00731bf0_TEST PASS\n");

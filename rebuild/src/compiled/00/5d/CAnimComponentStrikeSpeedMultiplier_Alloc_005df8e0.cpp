@@ -1,4 +1,5 @@
 // CAnimComponentStrikeSpeedMultiplier::Alloc @ 0x005df8e0
+// Leaf: ?CAnimComponentStrikeSpeedMultiplier_Alloc@@YIPAVCAnimComponentBase@@PAVCAnimComponentStrikeSpeedMultiplier@@@Z
 // __fastcall (self in ecx) returning CAnimComponentBase*
 // Classic: p = operator new(0xc); if(p){ p[+4]=1; p[0]=vtable; } return p;
 
@@ -14,7 +15,7 @@ class CAnimComponentStrikeSpeedMultiplier { public:
 
 
 // this-call modeled as __fastcall: self arrives in ecx
-CAnimComponentBase * __fastcall Alloc(CAnimComponentStrikeSpeedMultiplier * component)
+CAnimComponentBase * __fastcall CAnimComponentStrikeSpeedMultiplier_Alloc(CAnimComponentStrikeSpeedMultiplier * component)
 {
     CAnimComponentStrikeSpeedMultiplier * p =
         (CAnimComponentStrikeSpeedMultiplier *)operator new(0xc);

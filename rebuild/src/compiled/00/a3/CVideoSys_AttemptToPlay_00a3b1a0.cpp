@@ -1,5 +1,5 @@
 // CVideoSys::AttemptToPlay  0x00a3b1a0
-// Leaf: AttemptToPlay
+// Leaf: ?CVideoSys_AttemptToPlay@@YI_NPAUCVideoSys@@@Z
 struct IPlayer;
 struct IPlayerVtbl {
     // slots 0..6 unknown
@@ -23,7 +23,7 @@ struct CVideoSys {
     int  State;         // +0x28
 };
 
-bool __fastcall AttemptToPlay(CVideoSys* sys)
+bool __fastcall CVideoSys_AttemptToPlay(CVideoSys* sys)
 {
     IPlayer* p = sys->MControl;
     if (p->vtbl->slot7(p) == 0) {

@@ -1,3 +1,4 @@
+// Leaf: ?CTCInventoryAbilities_GetAbilityGraphicIndex@@YIHPAVCTCInventoryAbilities@@PAXH@Z
 #pragma optimize("s",on)
 // GetAbilityGraphicIndex @ 0x005ede7f (CTCInventoryAbilities)
 // __fastcall(int index):
@@ -22,7 +23,7 @@ class CTCInventoryAbilities { public:
     AbilityEntry* entries; // +0x160
 };
 
-int __fastcall GetAbilityGraphicIndex(CTCInventoryAbilities* abilities, void* /*edx*/, int index)
+int __fastcall CTCInventoryAbilities_GetAbilityGraphicIndex(CTCInventoryAbilities* abilities, void* /*edx*/, int index)
 {
     return abilities->entries[index].def->graphicIndex;
 }

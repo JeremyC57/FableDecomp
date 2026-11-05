@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CTCCameraPointFixedPoint* point, int, unsigned int flags)
+void* __fastcall CTCCameraPointFixedPoint_scalar_deleting_destructor(CTCCameraPointFixedPoint* point, int, unsigned int flags)
 {
     point->vftable = (void*)&g_CTCCameraPointFixedPoint_vftable;
     CTCCameraPointFixedPoint_Destruct(point);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CTCCameraPointFixedPoint* point, int
 int main()
 {
     CTCCameraPointFixedPoint object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CTCCameraPointFixedPoint_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CTCCameraPointFixedPoint_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CTCCameraPointFixedPoint_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

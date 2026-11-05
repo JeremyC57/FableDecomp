@@ -10,7 +10,7 @@ static int g_base_called = 0;
 void Sub8(void* p) { g_sub_called++; (void)p; }
 void Base(Obj* action) { g_base_called++; (void)action; }
 
-void FrameUpdate(Obj* action)
+void CCreatureActionHeroJump_FrameUpdate(Obj* action)
 {
     int v = action->m1c + 7;
     if (v >= action->m10) {
@@ -25,35 +25,35 @@ int main()
     Obj a = {0};
     a.m1c = 100; a.m10 = 100;   // 107 >= 100 -> sub called
     g_sub_called = g_base_called = 0;
-    FrameUpdate(&a);
+    CCreatureActionHeroJump_FrameUpdate(&a);
     if (g_sub_called != 1 || g_base_called != 1) { printf("FAIL1\n"); return 1; }
 
     // Case 2: m1c+7 < m10 -> sub NOT called, base called
     Obj b = {0};
     b.m1c = 0; b.m10 = 100; // 7 < 100 -> no sub
     g_sub_called = g_base_called = 0;
-    FrameUpdate(&b);
+    CCreatureActionHeroJump_FrameUpdate(&b);
     if (g_sub_called != 0 || g_base_called != 1) { printf("FAIL2\n"); return 1; }
 
     // Case 3: exact boundary m1c+7 == m10 -> jl false -> sub called
     Obj c = {0};
     c.m1c = 93; c.m10 = 100;  // 100 >= 100 true
     g_sub_called = g_base_called = 0;
-    FrameUpdate(&c);
+    CCreatureActionHeroJump_FrameUpdate(&c);
     if (g_sub_called != 1 || g_base_called != 1) { printf("FAIL3\n"); return 1; }
 
     // Case 4: signed compare
     Obj d = {0};
     d.m1c = -8; d.m10 = -5;  // -1 >= -5 true -> sub called
     g_sub_called = g_base_called = 0;
-    FrameUpdate(&d);
+    CCreatureActionHeroJump_FrameUpdate(&d);
     if (g_sub_called != 1 || g_base_called != 1) { printf("FAIL4\n"); return 1; }
 
     // Case 5: signed, no call
     Obj e = {0};
     e.m1c = -20; e.m10 = -5;  // -13 < -5 -> no sub
     g_sub_called = g_base_called = 0;
-    FrameUpdate(&e);
+    CCreatureActionHeroJump_FrameUpdate(&e);
     if (g_sub_called != 0 || g_base_called != 1) { printf("FAIL5\n"); return 1; }
 
     printf("BEHAVIOR_OK\n");

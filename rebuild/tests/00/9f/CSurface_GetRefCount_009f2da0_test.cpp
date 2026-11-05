@@ -10,7 +10,7 @@ static int g_slot1_calls = 0;
 static long __stdcall impl_slot1(IRefObj*) { g_slot1_calls++; return 999; }
 static long __stdcall impl_slot2(IRefObj*) { return 42; }
 
-long __fastcall GetRefCount(CSurface* surface)
+long __fastcall CSurface_GetRefCount(CSurface* surface)
 {
     IRefObj* p = surface->obj;
     if (p) {
@@ -28,8 +28,8 @@ int main()
     CSurface s1 = { 0, &o };
     CSurface s0 = { 0, 0 };
 
-    long r1 = GetRefCount(&s1);
-    long r0 = GetRefCount(&s0);
+    long r1 = CSurface_GetRefCount(&s1);
+    long r0 = CSurface_GetRefCount(&s0);
 
     bool ok = (r1 == 42) && (r0 == 0) && (g_slot1_calls == 1);
     if (ok) printf("PARITY_OK\n");

@@ -1,3 +1,4 @@
+// Leaf: ?CEnemyDef_scalar_deleting_destructor@@YIPAXPAVCEnemyDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CEnemyDef
 };
 extern void* const g_CEnemyDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CEnemyDef* def, int, unsigned int flags)
+void* __fastcall CEnemyDef_scalar_deleting_destructor(CEnemyDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CEnemyDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

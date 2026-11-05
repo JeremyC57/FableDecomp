@@ -1,3 +1,4 @@
+// Leaf: ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing_Methods@@QAE_NH@Z
 #include "rebuild_abi.h"
 #include "engine/CScriptThing.h"
 // CScriptThing::MsgIsHitByAnyAggressiveSpecial @ 0x004aad60
@@ -49,10 +50,11 @@ struct CScriptThingInner {
   virtual bool m42(int name);
   virtual bool m43(int name);
 };
-struct CScriptThing_Methods : CScriptThing { bool MsgIsHitByAnyAggressiveSpecial(int name); };
-bool CScriptThing_Methods::MsgIsHitByAnyAggressiveSpecial(int name)
+struct CScriptThing_Methods : CScriptThing { bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(int name); };
+bool CScriptThing_Methods::MsgIsHitByAnyAggressiveSpecialAbilityFrom(int name)
 {
     CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
     if (!p) return false;
     return p->m43(name);
 }
+// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?MsgIsHitByAnyAggressiveSpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z); evidence: RTTI vtable slot + PDB name set.

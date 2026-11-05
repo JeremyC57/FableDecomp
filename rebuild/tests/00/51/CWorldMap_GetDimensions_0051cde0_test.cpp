@@ -7,7 +7,7 @@ class CWorldMap { public:
     C2DBoxI dimensions;
 };
 
-C2DBoxI const & __fastcall GetDimensions(CWorldMap *self)
+C2DBoxI const & __fastcall CWorldMap_GetDimensions(CWorldMap *self)
 {
     return self->dimensions;
 }
@@ -19,7 +19,7 @@ int main()
     m.dimensions.y0 = 2;
     m.dimensions.x1 = 3;
     m.dimensions.y1 = 4;
-    C2DBoxI const & r = GetDimensions(&m);
+    C2DBoxI const & r = CWorldMap_GetDimensions(&m);
     if (&r == &m.dimensions && r.x0 == 1 && r.y1 == 4)
         printf("0051cde0_TEST PASS\n");
     else

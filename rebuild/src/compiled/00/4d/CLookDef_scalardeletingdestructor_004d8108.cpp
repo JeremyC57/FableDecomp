@@ -1,3 +1,4 @@
+// Leaf: ?CLookDef_scalar_deleting_destructor@@YIPAXPAVCLookDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CLookDef
 };
 extern void* const g_CLookDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CLookDef* def, int, unsigned int flags)
+void* __fastcall CLookDef_scalar_deleting_destructor(CLookDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CLookDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

@@ -16,7 +16,7 @@ void __stdcall SpriteHelper(CEngineInternalPrimitiveBase &prim) {
     g_lastTag = prim.tag;
 }
 
-ERendered __fastcall RenderPrimitive(
+ERendered __fastcall CEnginePrimitiveManagerSprites_RenderPrimitive(
     CEnginePrimitiveManagerSprites *sprites,
     int edx_dummy,
     CEngineInternalPrimitiveBase &prim,
@@ -37,11 +37,11 @@ int main() {
     // disabled -> returns 0, no helper call
     CEnginePrimitiveManagerSprites off; off.enabled = 0;
     g_helperCalls = 0;
-    ERendered r0 = RenderPrimitive(&off, 0, prim, 3, chain);
+    ERendered r0 = CEnginePrimitiveManagerSprites_RenderPrimitive(&off, 0, prim, 3, chain);
 
     // enabled -> returns 2, helper called once with prim
     CEnginePrimitiveManagerSprites on; on.enabled = 1;
-    ERendered r1 = RenderPrimitive(&on, 0, prim, 3, chain);
+    ERendered r1 = CEnginePrimitiveManagerSprites_RenderPrimitive(&on, 0, prim, 3, chain);
 
     if (r0 == 0 && r1 == 2 && g_helperCalls == 1 && g_lastTag == 77)
         printf("PARITY_OK\n");

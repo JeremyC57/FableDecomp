@@ -1,4 +1,5 @@
 // CMap::DrawGetSeaLevel @ 0x004bbff0
+// Leaf: ?CMap_DrawGetSeaLevel@@YIMPAVCMap@@@Z
 // Disassembly:
 //   fld  dword ptr [ecx+0x4c]
 //   fmul dword ptr [ecx+0x34]
@@ -11,7 +12,7 @@ class CMap { public:
     float f4c;      // +0x4c sea level
 };
 
-float __fastcall DrawGetSeaLevel(CMap *thisptr)
+float __fastcall CMap_DrawGetSeaLevel(CMap *thisptr)
 {
     return thisptr->f4c * thisptr->f34;
 }

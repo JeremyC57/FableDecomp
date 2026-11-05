@@ -1,3 +1,4 @@
+// Leaf: ?CCreatureActionBase_GetAnimationTransitionInTime@@YIJPAVCCreatureActionBase@@@Z
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -19,7 +20,7 @@ class CCreatureActionBase { public:
     Foo* f74;
 };
 
-long __fastcall GetAnimationTransitionInTime(CCreatureActionBase* action)
+long __fastcall CCreatureActionBase_GetAnimationTransitionInTime(CCreatureActionBase* action)
 {
     Foo* f = action->f74;
     long r = ((__declspec(noinline) long)(((CBaseIntelligentPointer*)(&action->sub))->GetPItem()));

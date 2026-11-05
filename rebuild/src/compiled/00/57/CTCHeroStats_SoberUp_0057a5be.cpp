@@ -1,3 +1,4 @@
+// Leaf: ?CTCHeroStats_SoberUp@@YIXPAVCTCHeroStats@@@Z
 #pragma optimize("s",on)
 class CTCHeroStats { public:
     char pad[0x19c];
@@ -9,7 +10,7 @@ class CTCHeroStats { public:
     unsigned char b1b8; // +0x1b8
 };
 
-void __fastcall SoberUp(CTCHeroStats* self)
+void __fastcall CTCHeroStats_SoberUp(CTCHeroStats* self)
 {
     self->i1ac = -1;
     self->f19c = 0.0f;

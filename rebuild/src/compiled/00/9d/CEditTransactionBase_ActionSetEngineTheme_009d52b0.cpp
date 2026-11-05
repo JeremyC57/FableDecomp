@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CEditTransactionBase::ActionSetEngineTheme @ 0x009d52b0
+// Leaf: ?CEditTransactionBase_ActionSetEngineTheme@@YIXPAVCEditTransactionBase@@PAXPAVC2DCoordI@@KK@Z
 class C2DCoordI;
 
 struct Target {
@@ -12,7 +13,7 @@ class CEditTransactionBase { public:
     void*   m8;   // +0x08
 };
 
-void __fastcall ActionSetEngineTheme(CEditTransactionBase* transaction, void* /*edx*/, C2DCoordI* coord, unsigned long a, unsigned long b)
+void __fastcall CEditTransactionBase_ActionSetEngineTheme(CEditTransactionBase* transaction, void* /*edx*/, C2DCoordI* coord, unsigned long a, unsigned long b)
 {
     transaction->m4->Apply(transaction->m8, coord, a, b);
 }

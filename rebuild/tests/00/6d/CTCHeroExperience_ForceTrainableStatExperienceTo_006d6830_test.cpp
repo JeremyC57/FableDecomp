@@ -5,7 +5,7 @@ class CTCHeroExperience { public:
     long* stats;
 };
 
-void __fastcall ForceTrainableStatExperienceTo(CTCHeroExperience* experience, int edxpad, int category, long value);
+void __fastcall CTCHeroExperience_ForceTrainableStatExperienceTo(CTCHeroExperience* experience, int edxpad, int category, long value);
 
 int main() {
     long arr[8];
@@ -13,9 +13,9 @@ int main() {
     CTCHeroExperience obj;
     obj.stats = arr;
 
-    ForceTrainableStatExperienceTo(&obj, 0, 3, 500);
-    ForceTrainableStatExperienceTo(&obj, 0, 5, -7);   /* negative -> clamp 0 */
-    ForceTrainableStatExperienceTo(&obj, 0, 0, 0);
+    CTCHeroExperience_ForceTrainableStatExperienceTo(&obj, 0, 3, 500);
+    CTCHeroExperience_ForceTrainableStatExperienceTo(&obj, 0, 5, -7);   /* negative -> clamp 0 */
+    CTCHeroExperience_ForceTrainableStatExperienceTo(&obj, 0, 0, 0);
 
     if (arr[3] == 500 && arr[5] == 0 && arr[0] == 0) {
         printf("OK_006d6830\n");

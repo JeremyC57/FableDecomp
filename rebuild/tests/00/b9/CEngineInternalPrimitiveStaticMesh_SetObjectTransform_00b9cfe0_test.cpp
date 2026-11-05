@@ -7,7 +7,7 @@ class CEngineInternalPrimitiveStaticMesh { public:
     CMatrix3x4 transform;
 };
 
-bool __fastcall SetObjectTransform(CEngineInternalPrimitiveStaticMesh* mesh, int /*edx*/, const CMatrix3x4& mat)
+bool __fastcall CEngineInternalPrimitiveStaticMesh_SetObjectTransform(CEngineInternalPrimitiveStaticMesh* mesh, int /*edx*/, const CMatrix3x4& mat)
 {
     mesh->transform = mat;
     return true;
@@ -19,7 +19,7 @@ int main()
     CMatrix3x4 src;
     for (int i = 0; i < 12; ++i) src.m[i] = (float)(i * 3 + 1);
 
-    bool r = SetObjectTransform(&obj, 0, src);
+    bool r = CEngineInternalPrimitiveStaticMesh_SetObjectTransform(&obj, 0, src);
 
     bool ok = r;
     for (int i = 0; i < 12; ++i)

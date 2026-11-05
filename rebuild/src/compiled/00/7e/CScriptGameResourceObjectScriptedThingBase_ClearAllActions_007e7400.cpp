@@ -1,7 +1,8 @@
+// Leaf: ?CScriptGameResourceObjectScriptedThingBase_ClearAllActions@@YIXPAVCScriptGameResourceObjectScriptedThingBase@@@Z
 struct Inner; typedef void (__fastcall* VFn)(Inner*);
 struct Inner { void** vtbl; };
 class CScriptGameResourceObjectScriptedThingBase { public: char pad[8]; Inner* inner; };
-void __fastcall ClearAllActions(CScriptGameResourceObjectScriptedThingBase* thing)
+void __fastcall CScriptGameResourceObjectScriptedThingBase_ClearAllActions(CScriptGameResourceObjectScriptedThingBase* thing)
 {
     Inner* p = thing->inner;
     if (p)

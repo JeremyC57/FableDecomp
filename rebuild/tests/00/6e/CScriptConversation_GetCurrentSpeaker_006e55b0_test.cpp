@@ -16,7 +16,7 @@ class CScriptConversation { public:
 Entry8* g_lastArg = 0;
 void* ResolveSpeaker(Entry8* e) { g_lastArg = e; return (void*)e; }
 
-void* GetCurrentSpeaker(CScriptConversation* conversation)
+void* CScriptConversation_GetCurrentSpeaker(CScriptConversation* conversation)
 {
     int idx = conversation->current;
     if (idx <= -1) return 0;
@@ -33,18 +33,18 @@ int main()
 
     // case 1: current = -1 -> null
     c.current = -1;
-    if (GetCurrentSpeaker(&c) != 0) { printf("FAIL neg\n"); return 1; }
+    if (CScriptConversation_GetCurrentSpeaker(&c) != 0) { printf("FAIL neg\n"); return 1; }
 
     // case 2: current = 2, speakers[2].index = 5 -> &entries[5]
     c.current = 2;
     speakers[2].index = 5;
-    void* r = GetCurrentSpeaker(&c);
+    void* r = CScriptConversation_GetCurrentSpeaker(&c);
     if (r != (void*)&entries[5]) { printf("FAIL idx\n"); return 1; }
 
     // case 3: current = 0, speakers[0].index = 0 -> &entries[0]
     c.current = 0;
     speakers[0].index = 0;
-    if (GetCurrentSpeaker(&c) != (void*)&entries[0]) { printf("FAIL zero\n"); return 1; }
+    if (CScriptConversation_GetCurrentSpeaker(&c) != (void*)&entries[0]) { printf("FAIL zero\n"); return 1; }
 
     printf("SPEAKER_OK\n");
     return 0;

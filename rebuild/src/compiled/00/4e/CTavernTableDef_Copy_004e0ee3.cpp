@@ -1,3 +1,4 @@
+// Leaf: ?CTavernTableDef_Copy@@YIXPAVCTavernTableDef@@PAXPBVCDefClassBase@@@Z
 #pragma optimize("s",on)
 // CTavernTableDef::Copy @ 0x004e0ee3
 // void __fastcall Copy(CTavernTableDef* this, CDefClassBase const* src)
@@ -14,7 +15,7 @@ class CTavernTableDef : public CDefClassBase { public:
     unsigned char HighQualityTankards;   // +0x26
 };
 
-void __fastcall Copy(CTavernTableDef* self, void* /*edx*/, CDefClassBase const* src)
+void __fastcall CTavernTableDef_Copy(CTavernTableDef* self, void* /*edx*/, CDefClassBase const* src)
 {
     self->CDefClassBase::operator=(*(const CDefClassBase*)(src));
     CTavernTableDef* s = (CTavernTableDef*)src;

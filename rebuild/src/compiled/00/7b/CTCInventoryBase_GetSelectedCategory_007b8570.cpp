@@ -1,4 +1,5 @@
 // CTCInventoryBase::GetSelectedCategory @ 0x007b8570
+// Leaf: ?CTCInventoryBase_GetSelectedCategory@@YIEPAUCTCInventoryBase@@HI@Z
 
 struct CategoryVec {
     unsigned char* m_begin; // +0x00 (struct placed at +0x34)
@@ -13,7 +14,7 @@ struct CTCInventoryBase {
     CategoryVec m_cats; // +0x34
 };
 
-unsigned char __fastcall GetSelectedCategory(CTCInventoryBase* self, int /*edx*/, unsigned int index)
+unsigned char __fastcall CTCInventoryBase_GetSelectedCategory(CTCInventoryBase* self, int /*edx*/, unsigned int index)
 {
     if (self->m_cats.size() > index)
         return self->m_cats.at(index);

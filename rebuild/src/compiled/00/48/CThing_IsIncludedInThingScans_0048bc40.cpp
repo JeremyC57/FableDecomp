@@ -1,11 +1,12 @@
 // CThing::IsIncludedInThingScans @ 0x0048bc40
+// Leaf: ?CThing_IsIncludedInThingScans@@YIHPAVCThing@@@Z
 // Reads flags byte at this+0x91. Returns 1 iff bits: 0x04 set, 0x08 set, 0x01 clear, 0x20 clear.
 class CThing { public:
     char pad[0x91];
     unsigned char flags;
 };
 
-int __fastcall IsIncludedInThingScans(CThing *thing)
+int __fastcall CThing_IsIncludedInThingScans(CThing *thing)
 {
     unsigned char f = thing->flags;
     unsigned char nf = ~f;

@@ -1,3 +1,4 @@
+// Leaf: ?CShaderBankStateBlock_Set@@YIXPAUCShaderBankStateBlock@@HPAX@Z
 struct Src {
     char pad0[0x71];
     unsigned char b71;
@@ -12,7 +13,7 @@ struct CShaderBankStateBlock {
     int  d12f8;
 };
 
-void __fastcall Set(CShaderBankStateBlock* self, int /*edx*/, void* srcv)
+void __fastcall CShaderBankStateBlock_Set(CShaderBankStateBlock* self, int /*edx*/, void* srcv)
 {
     Src* src = (Src*)srcv;
     self->b8    = src->b71;

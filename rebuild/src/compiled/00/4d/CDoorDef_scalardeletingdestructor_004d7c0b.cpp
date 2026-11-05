@@ -1,3 +1,4 @@
+// Leaf: ?CDoorDef_scalar_deleting_destructor@@YIPAXPAVCDoorDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CDoorDef
 };
 extern void* const g_CDoorDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CDoorDef* def, int, unsigned int flags)
+void* __fastcall CDoorDef_scalar_deleting_destructor(CDoorDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CDoorDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

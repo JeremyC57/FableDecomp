@@ -1,0 +1,27 @@
+address	verdict	reason	changes	name_notes	secs
+00434ad0	PASS		DEF ?ForceOpen@@YIXPAVCPlayerGui@@@Z -> ?CPlayerGui_ForceOpen@@YIXPAVCPlayerGui@@@Z		0.18
+00445670	PASS		DEF ?GetType@@YIHPAX@Z -> ?CInputTypeXboxPadLeftStickEvent_GetType@@YIHPAX@Z		0.15
+004456b0	PASS		DEF ?GetType@@YIHPAX@Z -> ?CInputTypeXboxPadRightStickEvent_GetType@@YIHPAX@Z		0.15
+00445730	PASS		DEF ?GetType@@YIHPAX@Z -> ?CInputTypeMouseWheelMovementEvent_GetType@@YIHPAX@Z		0.16
+00445770	PASS		DEF ?GetType@@YIHPAX@Z -> ?CInputTypeMouseWheelMovementUpEvent_GetType@@YIHPAX@Z		0.17
+00487e90	PASS		DEF ?ToggleAggressiveMode@@YIXPAVCPlayer@@@Z -> ?CPlayer_ToggleAggressiveMode@@YIXPAVCPlayer@@@Z		0.15
+0048bc40	PASS		DEF ?IsIncludedInThingScans@@YIHPAVCThing@@@Z -> ?CThing_IsIncludedInThingScans@@YIHPAVCThing@@@Z		0.14
+0048db35	PASS		DEF ?IsCameraResetting@@YIDPAVCUserProfileManager@@@Z -> ?CUserProfileManager_IsCameraResetting@@YIDPAVCUserProfileManager@@@Z		0.14
+0049bb30	PASS		DEF ?SetMainPlayerJoystickDeviceNumber@@YIXPAVCGameJoystickManager@@PAXH@Z -> ?CGameJoystickManager_SetMainPlayerJoystickDeviceNumber@@YIXPAVCGameJoystickManager@@PAXH@Z		0.16
+0049c9b0	PASS		DEF ?ApplyMovementVector@@YIXPAVCTCCoopSpirit@@HPBVC3DVector@@@Z -> ?CTCCoopSpirit_ApplyMovementVector@@YIXPAVCTCCoopSpirit@@HPBVC3DVector@@@Z		0.17
+004a9210	PASS		DEF ?IsScreenFullyFadedOut@@YIHPAVCDisplayEngine@@@Z -> ?CDisplayEngine_IsScreenFullyFadedOut@@YIHPAVCDisplayEngine@@@Z		0.14
+004ae9d0	PASS		DEF ?Update@@YIXPAUCNetworkClient@@PAXHHH@Z -> ?CNetworkClient_Update@@YIXPAUCNetworkClient@@PAXHHH@Z		0.16
+004c7580	PASS		DEF ?SetCurrentMapNumber@@YIXPAVCThing@@HF@Z -> ?CThing_SetCurrentMapNumber@@YIXPAVCThing@@HF@Z		0.19
+004c7e10	PASS		DEF ?GetTypeName@@YIPADPAVCThing@@@Z -> ?CThing_GetTypeName@@YIPADPAVCThing@@@Z		0.16
+0051ce20	PASS		DEF ?GetMap@@YIPAXPAVCWorldMap@@PAXH@Z -> ?CWorldMap_GetMap@@YIPAXPAVCWorldMap@@PAXH@Z		0.14
+0051ce40	PASS		DEF ?PeekMap@@YIPAXPAVCWorldMap@@PAXH@Z -> ?CWorldMap_PeekMap@@YIPAXPAVCWorldMap@@PAXH@Z		0.14
+0051e580	PASS		DEF ?GetEditMap@@YIPAXPAVCEditWorldMap@@PAXH@Z -> ?CEditWorldMap_GetEditMap@@YIPAXPAVCEditWorldMap@@PAXH@Z		0.14
+005486b0	PASS		DEF ?PeekConnectedToTrackNode@@YIPAXPAVCEditControlCentre@@@Z -> ?CEditControlCentre_PeekConnectedToTrackNode@@YIPAXPAVCEditControlCentre@@@Z		0.14
+0055ddf0	PASS		DEF ?AddToInterface@@YIXPAVCEditInputProcessCopyPaste@@@Z -> ?CEditInputProcessCopyPaste_AddToInterface@@YIXPAVCEditInputProcessCopyPaste@@@Z		0.15
+0056a860	PASS		DEF ?RequestActivate@@YIXPAVCTCBoastUI@@@Z -> ?CTCBoastUI_RequestActivate@@YIXPAVCTCBoastUI@@@Z		0.16
+005bc9b0	PASS		DEF ?GetItemInSlotWithIndex@@YIPAUCItem@@PAUCCategory@@HH@Z -> ?CCategory_GetItemInSlotWithIndex@@YIPAUCItem@@PAUCCategory@@HH@Z		0.16
+005d92d0	PASS		DEF ?GetEngineGraphic@@YIPAVCEngineGraphic@@PAVCTCInventoryItem@@@Z -> ?CTCInventoryItem_GetEngineGraphic@@YIPAVCEngineGraphic@@PAVCTCInventoryItem@@@Z		0.17
+005e3e70	PASS		DEF ?IsOverridingScreenFade@@YI_NPAVCTCQuestCompletionUI@@@Z -> ?CTCQuestCompletionUI_IsOverridingScreenFade@@YI_NPAVCTCQuestCompletionUI@@@Z		0.14
+005ede7f	PASS		DEF ?GetAbilityGraphicIndex@@YIHPAVCTCInventoryAbilities@@PAXH@Z -> ?CTCInventoryAbilities_GetAbilityGraphicIndex@@YIHPAVCTCInventoryAbilities@@PAXH@Z		0.14
+005edeeb	PASS		DEF ?GetAbilityStatType@@YIHPAVCTCInventoryAbilities@@PAXH@Z -> ?CTCInventoryAbilities_GetAbilityStatType@@YIHPAVCTCInventoryAbilities@@PAXH@Z		0.14
+005edf1f	PASS		DEF ?OnRegistedZSortingPatchRelocation@@YIXPAVCEngineLandscapeRenderer@@PAXHH@Z -> ?CEngineLandscapeRenderer_OnRegistedZSortingPatchRelocation@@YIXPAVCEngineLandscapeRenderer@@PAXHH@Z		0.15

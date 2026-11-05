@@ -1,3 +1,4 @@
+// Leaf: ?CCreatureNavigationDef_scalar_deleting_destructor@@YIPAXPAVCCreatureNavigationDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CCreatureNavigationDef
 };
 extern void* const g_CCreatureNavigationDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CCreatureNavigationDef* def, int, unsigned int flags)
+void* __fastcall CCreatureNavigationDef_scalar_deleting_destructor(CCreatureNavigationDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CCreatureNavigationDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

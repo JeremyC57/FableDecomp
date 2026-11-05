@@ -1,4 +1,5 @@
 // CTCQuestCompletionUI::IsOverridingScreenFade  @ 0x005e3e70  (__fastcall, this=ecx)
+// Leaf: ?CTCQuestCompletionUI_IsOverridingScreenFade@@YI_NPAVCTCQuestCompletionUI@@@Z
 class CTCQuestCompletionUI { public:
     char   pad00[0x0c];
     unsigned char Active;
@@ -11,7 +12,7 @@ class CTCQuestCompletionUI { public:
     unsigned char m_c0;
 };
 
-bool __fastcall IsOverridingScreenFade(CTCQuestCompletionUI* completionUI)
+bool __fastcall CTCQuestCompletionUI_IsOverridingScreenFade(CTCQuestCompletionUI* completionUI)
 {
     if (completionUI->Active != 0 && completionUI->m_1c == 0 && completionUI->m_c0 == 0
         && completionUI->m_10 != completionUI->m_14)

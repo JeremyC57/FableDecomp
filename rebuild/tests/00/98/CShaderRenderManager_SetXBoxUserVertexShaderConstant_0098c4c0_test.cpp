@@ -20,7 +20,7 @@ class CShaderRenderManager { public:
     ConstTarget* device;
 };
 
-void __fastcall SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, void* edx, long reg, CRGBFloatColour* col, long w)
+void __fastcall CShaderRenderManager_SetXBoxUserVertexShaderConstant(CShaderRenderManager* self, void* edx, long reg, CRGBFloatColour* col, long w)
 {
     Consts4 c;
     c.x = col->r;
@@ -53,7 +53,7 @@ int main()
     long reg = 42;
     long w = 99;
 
-    SetXBoxUserVertexShaderConstant(&mgr, 0, reg, &col, w);
+    CShaderRenderManager_SetXBoxUserVertexShaderConstant(&mgr, 0, reg, &col, w);
 
     bool ok = (g_cap.self == &dev) && (g_cap.reg == 42) &&
               (g_cap.d0 == 1.5f) && (g_cap.d1 == 2.5f) && (g_cap.d2 == 3.5f) &&

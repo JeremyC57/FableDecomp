@@ -1,3 +1,4 @@
+// Leaf: ?CBettingDef_scalar_deleting_destructor@@YIPAXPAVCBettingDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CBettingDef
 };
 extern void* const g_CBettingDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CBettingDef* def, int, unsigned int flags)
+void* __fastcall CBettingDef_scalar_deleting_destructor(CBettingDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CBettingDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

@@ -1,3 +1,4 @@
+// Leaf: ?CCameraCollisionDef_scalar_deleting_destructor@@YIPAXPAVCCameraCollisionDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CCameraCollisionDef
 };
 extern void* const g_CCameraCollisionDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CCameraCollisionDef* def, int, unsigned int flags)
+void* __fastcall CCameraCollisionDef_scalar_deleting_destructor(CCameraCollisionDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CCameraCollisionDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

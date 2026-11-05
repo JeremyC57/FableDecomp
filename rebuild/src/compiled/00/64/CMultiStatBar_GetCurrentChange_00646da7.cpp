@@ -1,3 +1,4 @@
+// Leaf: ?CMultiStatBar_GetCurrentChange@@YIJPAUCMultiStatBar@@@Z
 #pragma optimize("s", on)
 struct Node {
     Node* next;            // +0x00
@@ -19,7 +20,7 @@ struct CMultiStatBar {
     NodeList list;         // +0x68
 };
 
-long __fastcall GetCurrentChange(CMultiStatBar* self)
+long __fastcall CMultiStatBar_GetCurrentChange(CMultiStatBar* self)
 {
     if (self->mode != 1 && !self->list.empty())
         return self->list.front();

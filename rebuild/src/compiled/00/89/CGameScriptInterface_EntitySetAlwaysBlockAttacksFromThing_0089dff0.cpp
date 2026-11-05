@@ -1,3 +1,4 @@
+// Leaf: ?CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing@@YIXPAX0PAUCEntityWrap@@1E@Z
 typedef unsigned char  u8;
 typedef unsigned long  u32;
 struct BlockSet { void* _node; void* _end; };
@@ -7,7 +8,7 @@ typedef CThing* (__fastcall *ResolveFn)(CEntityWrap*);
 struct BlockSet2 { void* _node; void* _end; void* LowerBound(const int* key); };
 struct Mapped { void Add(CThing* thing); void Remove(CThing* thing); };
 // Member modeled as __fastcall free fn: this in ecx (dead), unused edx, then 3 stack args (ret 0xc).
-void __fastcall F(void* self, void* edx, CEntityWrap* entityA, CEntityWrap* entityB, u8 alwaysBlock)
+void __fastcall CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing(void* self, void* edx, CEntityWrap* entityA, CEntityWrap* entityB, u8 alwaysBlock)
 {
     CThing* a = (*(ResolveFn**)entityA)[0x2c/4](entityA);
     CThing* b = (*(ResolveFn**)entityB)[0x2c/4](entityB);
@@ -25,3 +26,4 @@ void __fastcall F(void* self, void* edx, CEntityWrap* entityA, CEntityWrap* enti
     Mapped* mapped = *(Mapped**)((char*)sel + 4);    // mov ecx,[eax+4]
     if (alwaysBlock) mapped->Add(b); else mapped->Remove(b);   // __fastcall members
 }
+// Stand-in (owner rule 2026-11-05): CGameScriptInterface_EntitySetAlwaysBlockAttacksFromThing for CGameScriptInterface::EntitySetAlwaysBlockAttacksFromThing; RTTI vtable slot ?EntitySetAlwaysBlockAttacksFromThing@CGameScriptInterface@@UBEXABVCScriptThing@@0_N@Z + PDB name set (egor/fablewin).

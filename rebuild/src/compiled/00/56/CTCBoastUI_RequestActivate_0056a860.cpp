@@ -1,3 +1,4 @@
+// Leaf: ?CTCBoastUI_RequestActivate@@YIXPAVCTCBoastUI@@@Z
 class CTCBoastUI { public:
     char pad0[0x18];
     unsigned char f18;
@@ -7,7 +8,7 @@ class CTCBoastUI { public:
     unsigned char f2a;
 };
 
-void __fastcall RequestActivate(CTCBoastUI *boastUI)
+void __fastcall CTCBoastUI_RequestActivate(CTCBoastUI *boastUI)
 {
     if (!boastUI->f2a && !boastUI->f18 && !boastUI->f28)
         boastUI->f2a = 1;

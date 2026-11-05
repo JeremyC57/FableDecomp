@@ -12,7 +12,7 @@ struct Inv {
     CategoryVec m_cats;
 };
 
-unsigned char __fastcall GetSelectedCategory(Inv* self, int, unsigned int index)
+unsigned char __fastcall CTCInventoryBase_GetSelectedCategory(Inv* self, int, unsigned int index)
 {
     if (self->m_cats.size() > index)
         return self->m_cats.at(index);
@@ -27,13 +27,13 @@ int main()
     inv.m_cats.m_end = data + 4;
 
     int ok = 1;
-    if (GetSelectedCategory(&inv, 0, 0) != 10) ok = 0;
-    if (GetSelectedCategory(&inv, 0, 3) != 40) ok = 0;
-    if (GetSelectedCategory(&inv, 0, 4) != 0) ok = 0;   // out of bounds
-    if (GetSelectedCategory(&inv, 0, 999) != 0) ok = 0; // out of bounds
+    if (CTCInventoryBase_GetSelectedCategory(&inv, 0, 0) != 10) ok = 0;
+    if (CTCInventoryBase_GetSelectedCategory(&inv, 0, 3) != 40) ok = 0;
+    if (CTCInventoryBase_GetSelectedCategory(&inv, 0, 4) != 0) ok = 0;   // out of bounds
+    if (CTCInventoryBase_GetSelectedCategory(&inv, 0, 999) != 0) ok = 0; // out of bounds
 
     inv.m_cats.m_end = data; // empty
-    if (GetSelectedCategory(&inv, 0, 0) != 0) ok = 0;
+    if (CTCInventoryBase_GetSelectedCategory(&inv, 0, 0) != 0) ok = 0;
 
     if (ok) printf("BEHAVIOR_OK\n");
     else printf("BEHAVIOR_FAIL\n");

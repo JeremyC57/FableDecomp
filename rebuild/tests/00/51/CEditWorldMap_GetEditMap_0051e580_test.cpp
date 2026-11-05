@@ -11,7 +11,7 @@ class CEditWorldMap { public:
     EditMapEntry* maps;   // +0x3c
 };
 
-void* __fastcall GetEditMap(CEditWorldMap* self, void* /*edx*/, int index)
+void* __fastcall CEditWorldMap_GetEditMap(CEditWorldMap* self, void* /*edx*/, int index)
 {
     return self->maps[index].map;
 }
@@ -40,19 +40,19 @@ int main()
     __asm {
         push 0
         mov  ecx, p
-        call GetEditMap
+        call CEditWorldMap_GetEditMap
         mov  r0, eax
     }
     __asm {
         push 1
         mov  ecx, p
-        call GetEditMap
+        call CEditWorldMap_GetEditMap
         mov  r1, eax
     }
     __asm {
         push 2
         mov  ecx, p
-        call GetEditMap
+        call CEditWorldMap_GetEditMap
         mov  r2, eax
     }
 

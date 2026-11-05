@@ -1,3 +1,4 @@
+// Leaf: ?CInterestingToVillagersDef_scalar_deleting_destructor@@YIPAXPAVCInterestingToVillagersDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CInterestingToVillagersDef
 };
 extern void* const g_CInterestingToVillagersDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CInterestingToVillagersDef* def, int, unsigned int flags)
+void* __fastcall CInterestingToVillagersDef_scalar_deleting_destructor(CInterestingToVillagersDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CInterestingToVillagersDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

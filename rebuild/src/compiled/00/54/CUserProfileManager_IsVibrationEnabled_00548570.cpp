@@ -1,3 +1,4 @@
+// Leaf: ?CUserProfileManager_IsVibrationEnabled@@YIDPAVCUserProfileManager@@@Z
 class CUserProfileManager { public:
     char pad0[0xc];
     char UseNewProfileValues;    // +0xc
@@ -7,7 +8,7 @@ class CUserProfileManager { public:
     char VibrationEnabledNewProfile;   // +0xce
 };
 
-char __fastcall IsVibrationEnabled(CUserProfileManager* manager) {
+char __fastcall CUserProfileManager_IsVibrationEnabled(CUserProfileManager* manager) {
     if (manager->UseNewProfileValues)
         return manager->VibrationEnabledNewProfile;
     return manager->VibrationEnabled;

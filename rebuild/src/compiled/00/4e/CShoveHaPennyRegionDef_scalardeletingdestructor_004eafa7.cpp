@@ -1,3 +1,4 @@
+// Leaf: ?CShoveHaPennyRegionDef_scalar_deleting_destructor@@YIPAXPAVCShoveHaPennyRegionDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CShoveHaPennyRegionDef
 };
 extern void* const g_CShoveHaPennyRegionDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CShoveHaPennyRegionDef* def, int, unsigned int flags)
+void* __fastcall CShoveHaPennyRegionDef_scalar_deleting_destructor(CShoveHaPennyRegionDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CShoveHaPennyRegionDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

@@ -1,3 +1,4 @@
+// Leaf: ?CEngineResourceManager_Render@@YIXPAVCEngineResourceManager@@HPAUParam@@@Z
 struct Param;
 
 void __fastcall Param_method(Param* self);         // 0xc37930
@@ -10,7 +11,7 @@ struct Param {
 
 class CEngineResourceManager { public: char x; };
 
-void __fastcall Render(CEngineResourceManager* self, int edx, Param* p)
+void __fastcall CEngineResourceManager_Render(CEngineResourceManager* self, int edx, Param* p)
 {
     (void)self;
     if (--p->refcount == 0) {

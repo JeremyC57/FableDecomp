@@ -8,7 +8,7 @@ class CDefPointeeBase { public:
 };
 
 
-bool __fastcall HasMultipleDressLevels(CTCBuyableHouse* house);
+bool __fastcall CTCBuyableHouse_HasMultipleDressLevels(CTCBuyableHouse* house);
 
 int main()
 {
@@ -19,24 +19,24 @@ int main()
 
     // null dress -> false
     h.PDef_Object = 0;
-    bool r0 = HasMultipleDressLevels(&h);
+    bool r0 = CTCBuyableHouse_HasMultipleDressLevels(&h);
 
     // 0 elements -> false
     d.first = arr; d.last = arr;
     h.PDef_Object = &d;
-    bool r1 = HasMultipleDressLevels(&h);
+    bool r1 = CTCBuyableHouse_HasMultipleDressLevels(&h);
 
     // 1 element -> false
     d.first = arr; d.last = arr + 1;
-    bool r2 = HasMultipleDressLevels(&h);
+    bool r2 = CTCBuyableHouse_HasMultipleDressLevels(&h);
 
     // 2 elements -> true
     d.first = arr; d.last = arr + 2;
-    bool r3 = HasMultipleDressLevels(&h);
+    bool r3 = CTCBuyableHouse_HasMultipleDressLevels(&h);
 
     // 4 elements -> true
     d.first = arr; d.last = arr + 4;
-    bool r4 = HasMultipleDressLevels(&h);
+    bool r4 = CTCBuyableHouse_HasMultipleDressLevels(&h);
 
     if (!r0 && !r1 && !r2 && r3 && r4) {
         printf("PASS_HASMULTIPLEDRESSLEVELS\n");

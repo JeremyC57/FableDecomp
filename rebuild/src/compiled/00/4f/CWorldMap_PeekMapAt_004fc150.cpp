@@ -1,3 +1,4 @@
+// Leaf: ?PeekMapAt@CWorldMap_Methods@@QAEPAVCEditMap@@PBVC2DCoordI@@@Z
 #include "engine/CWorldMap.h"
 
 class CEditMap;
@@ -13,13 +14,14 @@ struct CWorldMap_Methods : CWorldMap {
     virtual int vf8(); virtual int vf9(); virtual int vf10(); virtual int vf11();
     virtual int vf12(); virtual int vf13(); virtual int vf14(); virtual int vf15();
     virtual int vf16(); virtual int GetIndex(const C2DCoordI* coordinate);
-    CEditMap* GetMapAt(const C2DCoordI* coordinate);
+    CEditMap* PeekMapAt(const C2DCoordI* coordinate);
 };
 
-CEditMap* CWorldMap_Methods::GetMapAt(const C2DCoordI* coordinate) {
+CEditMap* CWorldMap_Methods::PeekMapAt(const C2DCoordI* coordinate) {
     int index = GetIndex(coordinate);
     CWorldMap* worldMap = reinterpret_cast<CWorldMap*>(this);
     RetailMapEntry* entries = *reinterpret_cast<RetailMapEntry**>(
         worldMap->LoadedScriptedMapBrushes + 0x0c);
     return entries[index].map;
 }
+// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?PeekMapAt@CWorldMap@@UBEABVCMap@@ABVC2DCoordI@@@Z); evidence: RTTI vtable slot + PDB name set.

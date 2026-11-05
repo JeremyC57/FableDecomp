@@ -1,3 +1,4 @@
+// Leaf: ?CPersistContext_TransferableComponent_TransferOut@@YIXPAUCPersistContext_TransferableComponent@@HPAVCPersistContext@@PAVCCharString@@@Z
 #pragma optimize("s",on)
 // Byte-exact reconstruction of
 // CPersistContext_TransferableComponent<NUISystem::ETextAlignement>::TransferOut @ 0x0057f95e
@@ -16,7 +17,7 @@ extern "C" void __fastcall Transfer_9e2560(CPersistContext* ctx, CCharString* na
 
 // this in ecx, ctx+name on stack, ret 8. Model with __fastcall + dummy edx so the
 // two real args land on the stack and get cleaned by the callee (retN).
-void __fastcall TransferOut(CPersistContext_TransferableComponent* transferable, int /*edx*/, CPersistContext* ctx, CCharString* name)
+void __fastcall CPersistContext_TransferableComponent_TransferOut(CPersistContext_TransferableComponent* transferable, int /*edx*/, CPersistContext* ctx, CCharString* name)
 {
     ETextAlignement v = *(transferable->pValue);
     Transfer_9e2560(ctx, name, &v);

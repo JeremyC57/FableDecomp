@@ -1,3 +1,4 @@
+// Leaf: ?CWorldMap_RegisterScriptedMapBrush@@YIXPAVCWorldMap@@HPAVCScriptedMapBrush@@J@Z
 class CScriptedMapBrush;
 
 // 0x82e250: thiscall-style, ecx = key, returns transformed key in eax
@@ -15,7 +16,7 @@ class CWorldMap { public:
     MapSub sub;
 };
 
-void __fastcall RegisterScriptedMapBrush(CWorldMap* self, int edx, CScriptedMapBrush* brush, long key)
+void __fastcall CWorldMap_RegisterScriptedMapBrush(CWorldMap* self, int edx, CScriptedMapBrush* brush, long key)
 {
     int k = ((KeyHolder*)key)->transform();
     void** slot = self->sub.index(k);

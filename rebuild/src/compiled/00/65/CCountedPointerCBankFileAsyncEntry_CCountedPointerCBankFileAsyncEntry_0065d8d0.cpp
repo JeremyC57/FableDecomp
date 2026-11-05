@@ -1,20 +1,10 @@
-// Intelligent-pointer copy: take the target and the refcount block from the
-// Leaf: ?Copy@T@@QAEPAU1@ABUPtr@@@Z
-// source, then bump the count when the block exists. VC7.1 schedules the
-// second store ahead of the branch. __fastcall this=ecx (ret 4).
-struct RefCount { int count; };
-struct Ptr {
-    void* target;
-    RefCount* refs;
-};
-struct T {
-    void* target;
-    RefCount* refs;
-    T* Copy(const Ptr& other);
-};
-T* T::Copy(const Ptr& other) {
-    this->target = other.target;
-    this->refs = other.refs;
-    if (this->refs) ++this->refs->count;
-    return this;
-}
+// CCountedPointer<CUnprovenPointee_0065d8d0>::CCountedPointer(const CCountedPointer&) -- copy a counted pointer
+// Leaf: ??0?$CCountedPointer@VCUnprovenPointee_0065d8d0@@@@QAE@ABV0@@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0065D8D0, 25 bytes. Callees: none.
+//
+// Copies Data and Info from the source and, when there is a count block, takes a reference on it; returns this
+// (engine/CCountedPointer.h copy constructor). The catalog's CopyCtor placeholder describes the same body.
+// T unresolved: no typed caller names the pointee (the earlier label was propagated), so a stand-in pointee class carries it (CUnproven<Kind>_<addr>, EXTRA_RULES 2026-10-28).
+#include "engine/CCountedPointer.h"
+class CUnprovenPointee_0065d8d0;
+template CCountedPointer<CUnprovenPointee_0065d8d0>::CCountedPointer(const CCountedPointer<CUnprovenPointee_0065d8d0>&);

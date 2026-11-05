@@ -12,7 +12,7 @@ static void Base_Copy(CTavernTableDef* self, CTavernTableDef* src) {
     (void)src;
 }
 
-static void Copy(CTavernTableDef* self, CTavernTableDef* src) {
+static void CTavernTableDef_Copy(CTavernTableDef* self, CTavernTableDef* src) {
     Base_Copy(self, src);
     self->AddTankards = src->AddTankards;
     self->HighQualityTankards = src->HighQualityTankards;
@@ -23,7 +23,7 @@ int main() {
     CTavernTableDef dst = {};
     src.AddTankards = 0xAB;
     src.HighQualityTankards = 0xCD;
-    Copy(&dst, &src);
+    CTavernTableDef_Copy(&dst, &src);
     if (dst.AddTankards == 0xAB && dst.HighQualityTankards == 0xCD && dst.base_copied == 1) {
         printf("COPY_OK\n");
     } else {

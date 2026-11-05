@@ -1,6 +1,7 @@
+// Leaf: ?CAnimComponentSetCreatureMode_Clone@@YIPAVCAnimComponentSetCreatureMode@@PAV1@@Z
 #include "engine/CAnimComponentSetCreatureMode.h"  // retyped onto the PDB layout; byte parity re-verified
 typedef CAnimComponentSetCreatureMode* (__fastcall* CloneCreatureModeFn)(CAnimComponentSetCreatureMode*);
-CAnimComponentSetCreatureMode* __fastcall Clone(CAnimComponentSetCreatureMode* component)
+CAnimComponentSetCreatureMode* __fastcall CAnimComponentSetCreatureMode_Clone(CAnimComponentSetCreatureMode* component)
 {
     CloneCreatureModeFn* vtable = (CloneCreatureModeFn*)component->__vftable;
     CAnimComponentSetCreatureMode* copy = vtable[0x10 / 4](component);

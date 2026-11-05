@@ -1,3 +1,4 @@
+// Leaf: ?CAIStateGroup_HoverWander_scalar_deleting_destructor@@YIPAXPAUCAIStateGroup_HoverWander@@HI@Z
 #pragma optimize("s", on)
 class CAIStateGroup_EnemyCreatureBase {
 public:
@@ -9,7 +10,7 @@ struct CAIStateGroup_HoverWander
 };
 extern void* const g_CAIStateGroup_HoverWander_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CAIStateGroup_HoverWander* stateGroup, int, unsigned int flags)
+void* __fastcall CAIStateGroup_HoverWander_scalar_deleting_destructor(CAIStateGroup_HoverWander* stateGroup, int, unsigned int flags)
 {
     stateGroup->vftable = (void*)&g_CAIStateGroup_HoverWander_vftable;
     ((CAIStateGroup_EnemyCreatureBase*)(stateGroup))->CAIStateGroup_EnemyCreatureBase::~CAIStateGroup_EnemyCreatureBase();

@@ -1,9 +1,10 @@
+// Leaf: ?Transfer@CFishingRodDef@@QAEXAAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct Field { unsigned char b[4]; };
 class CPersistContext { public:                       // typed transfer helpers: each starts `push 0x122d70e ; call 0x404500` (CheckCRC)
     template <class T> void Transfer(T& value);                // 0x00431061 Transfer(float&)
 };
-class CContextSensitiveItemDef { public:
+class CFishingRodDef { public:
     unsigned char _pad[0x28];
     Field f0; // 0x28
     Field f1; // 0x2c
@@ -13,7 +14,7 @@ class CContextSensitiveItemDef { public:
     void Transfer(CPersistContext& ctx);
 };
 
-void CContextSensitiveItemDef::Transfer(CPersistContext& ctx)
+void CFishingRodDef::Transfer(CPersistContext& ctx)
 {
     ctx.Transfer(*(float*)(&f0));
     ctx.Transfer(*(float*)(&f1));
@@ -21,3 +22,4 @@ void CContextSensitiveItemDef::Transfer(CPersistContext& ctx)
     ctx.Transfer(*(float*)(&f3));
     ctx.Transfer(*(float*)(&f4));
 }
+// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?Transfer@CFishingRodDef@@UAEXAAVCPersistContext@@@Z); evidence: RTTI vtable slot + PDB name set.

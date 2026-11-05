@@ -18,7 +18,7 @@ void BaseCopy(Def* self, Def const* src) {
     (void)self; (void)src;
 }
 
-void Copy(Def* self, Def const* src) {
+void CActivateQuestDef_Copy(Def* self, Def const* src) {
     BaseCopy(self, src);
     self->field28 = src->field28;
     self->LoadResources = src->LoadResources;
@@ -29,7 +29,7 @@ int main() {
     b.field28 = 0x12345678;
     b.LoadResources = (char)0xAB;
     a.field28 = 0; a.LoadResources = 0;
-    Copy(&a, &b);
+    CActivateQuestDef_Copy(&a, &b);
     if (a.field28 == 0x12345678 && a.LoadResources == (char)0xAB && g_basecopy_calls == 1) {
         printf("COPY_OK\n");
     } else {

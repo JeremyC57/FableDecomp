@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CFishingRodDef* def, int, unsigned int flags)
+void* __fastcall CFishingRodDef_scalar_deleting_destructor(CFishingRodDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CFishingRodDef_vftable;
     CFishingRodDef_Destruct(def);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CFishingRodDef* def, int, unsigned i
 int main()
 {
     CFishingRodDef object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CFishingRodDef_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CFishingRodDef_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CFishingRodDef_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

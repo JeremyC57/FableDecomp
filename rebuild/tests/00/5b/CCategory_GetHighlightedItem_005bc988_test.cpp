@@ -6,7 +6,7 @@ struct CCategory {
     char pad8[0x24 - 0xC];
     int highlightIndex;
 };
-void* __fastcall GetHighlightedItem(CCategory* this_) {
+void* __fastcall CCategory_GetHighlightedItem(CCategory* this_) {
     int idx = this_->highlightIndex;
     if (idx < 0)
         return 0;
@@ -18,13 +18,13 @@ int main() {
     CCategory cat;
     cat.entries = ents;
     cat.highlightIndex = 2;
-    void* r = GetHighlightedItem(&cat);
+    void* r = CCategory_GetHighlightedItem(&cat);
     if (r != (void*)0x1002) { printf("FAIL idx2 got %p\n", r); return 1; }
     cat.highlightIndex = 0;
-    r = GetHighlightedItem(&cat);
+    r = CCategory_GetHighlightedItem(&cat);
     if (r != (void*)0x1000) { printf("FAIL idx0 got %p\n", r); return 1; }
     cat.highlightIndex = -1;
-    r = GetHighlightedItem(&cat);
+    r = CCategory_GetHighlightedItem(&cat);
     if (r != 0) { printf("FAIL neg got %p\n", r); return 1; }
     printf("OK_0x005bc988\n");
     return 0;

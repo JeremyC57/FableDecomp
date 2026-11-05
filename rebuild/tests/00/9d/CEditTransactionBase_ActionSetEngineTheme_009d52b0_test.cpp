@@ -15,7 +15,7 @@ class CEditTransactionBase { public:
     void*   m8;
 };
 
-void ActionSetEngineTheme(CEditTransactionBase* transaction, C2DCoordI* coord, unsigned long a, unsigned long b)
+void CEditTransactionBase_ActionSetEngineTheme(CEditTransactionBase* transaction, C2DCoordI* coord, unsigned long a, unsigned long b)
 {
     transaction->m4->Apply(transaction->m8, coord, a, b);
 }
@@ -26,7 +26,7 @@ int main() {
     tx.m0 = 0; tx.m4 = &t; tx.m8 = (void*)0xDEADBEEF;
     C2DCoordI coord; coord.x = 3; coord.y = 7;
 
-    ActionSetEngineTheme(&tx, &coord, 11u, 22u);
+    CEditTransactionBase_ActionSetEngineTheme(&tx, &coord, 11u, 22u);
 
     if (t.called == 1 &&
         t.got_a == (void*)0xDEADBEEF &&

@@ -1,0 +1,7 @@
+s6 w4 -- member stand-ins on a generic / wrong class whose retail class has NO engine header (RTTI-proven).
+Evidence (two sources): ghidra_out/labels_rtti_port.tsv (retail RTTI vtable slot -> donor method) names this address, the
+same mangled name is in egor_pdb_names.tsv or fablewin_pdb_names.tsv, and the catalog agrees. The stand-in class is renamed to
+the real class and the method to the real method ("the real method on a stand-in class named after the real class"): e.g.
+?SetInstantiationName@T@@QAEXPBD@Z -> ?ChangeTextureColourDepth@CNewFrontendGameComponent@@QAEXPBD@Z (retail UAEXJ: virtual
+and parameter type still differ -- noted, bytes unaffected). Grade: gate 88 PASS, 8 deferred (the class rename respells a
+same-class callee at another address); vland 80 PASS, parity unchanged, no new warnings.

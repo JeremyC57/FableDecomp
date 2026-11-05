@@ -1,0 +1,8 @@
+s6 w2 -- "free function lacks its class" (634): Lionhead-style Class_Method, the catalog class added to the free stand-in
+(?Close@@YIXPAVCShaderDataBank@@@Z -> ?CShaderDataBank_Close@@...). Pure identifier rename in the row source and its test
+(+ the // Leaf: line); 4 callers respelled (CALLERS.tsv: 0x004C7E70 GFHasScriptThing -> CThing_HasScriptThing, 0x00B8FEE0).
+Two sources required besides the catalog: the free function's own this-parameter typed as the catalog class, or an RTTI vtable
+slot that agrees. Deferred at plan stage (DEFERRED.tsv): one source only 85, this-parameter typed as another class 90 / name
+carries another class 48+5 (names-another family), new name not unique (template instantiations, e.g. 22 BuildTreeArray) 35,
+phase-4 rows 12. Grade: 332 PASS (parity unchanged; inherited warnings only); 30 behaviour tests failed because a test took the
+function's address (&Name) -> fixed in w2b; 1 NOT_GENUINE pre-existing (005dacf0).

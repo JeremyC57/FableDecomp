@@ -1,0 +1,4 @@
+gate: 18 rows {'PASS': 18} in 1.5s (0.08s/row wall, NJ=2)
+gate: 18 PASS of 18
+vland:
+     18 MATCH PASS

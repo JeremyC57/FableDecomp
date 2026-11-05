@@ -1,4 +1,5 @@
 // CTexture::GenerateMipmaps @ 009f9e60
+// Leaf: ?CTexture_GenerateMipmaps@@YIXPAVCTexture@@HKK@Z
 // thiscall(this, ulong a, ulong b); this in ecx, a=[esp+4], b=[esp+8]; ret 8.
 // Harness rewrites __fastcall->__fastcall, so add a dummy EDX param to keep
 // both real args on the stack (matching retail's [esp+4]/[esp+8] reads).
@@ -10,7 +11,7 @@ typedef unsigned long ulong;
 
 extern "C" long __stdcall D3DXFilterTexture(void* pBaseTexture, const void* pPalette, unsigned int SrcLevel, ulong Filter);   // 0x00BFEFCE d3dx9_25 import thunk
 
-void __fastcall GenerateMipmaps(CTexture* texture, int /*edx*/, ulong a, ulong b)
+void __fastcall CTexture_GenerateMipmaps(CTexture* texture, int /*edx*/, ulong a, ulong b)
 {
     D3DXFilterTexture(texture->PD3DTexture, 0, b, a);
 }

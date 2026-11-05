@@ -1,5 +1,5 @@
 // CTCKraken::InitTentaclesAndHead @ 0x007fc710
-// Leaf: InitTentaclesAndHead
+// Leaf: ?CTCKraken_InitTentaclesAndHead@@YIXPAVCTCKraken@@@Z
 struct ListNode { ListNode* next; };
 class CTCKraken {
 public:
@@ -14,7 +14,7 @@ public:
 
 void __fastcall CTCKraken_ClearTentacles(CTCKraken* self);   // 0x7fc210
 
-void __fastcall InitTentaclesAndHead(CTCKraken* self)
+void __fastcall CTCKraken_InitTentaclesAndHead(CTCKraken* self)
 {
     ListNode* head = self->list;
     if (head->next == (ListNode*)head)

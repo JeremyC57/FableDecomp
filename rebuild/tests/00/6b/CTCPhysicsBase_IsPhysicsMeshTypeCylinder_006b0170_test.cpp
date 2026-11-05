@@ -18,7 +18,7 @@ class CTCPhysicsBase { public:
     SubObj* sub;
 };
 
-bool __fastcall IsPhysicsMeshTypeCylinder(CTCPhysicsBase* physics)
+bool __fastcall CTCPhysicsBase_IsPhysicsMeshTypeCylinder(CTCPhysicsBase* physics)
 {
     if (physics->vtbl->slot174(physics) == 0 && (physics->sub->flags & 8))
         return true;
@@ -40,19 +40,19 @@ int main()
 
     // slot returns nonzero -> false regardless of flags
     g_ret = 1; s.flags = 8;
-    if (IsPhysicsMeshTypeCylinder(&o) != false) { printf("BAD1\n"); return 1; }
+    if (CTCPhysicsBase_IsPhysicsMeshTypeCylinder(&o) != false) { printf("BAD1\n"); return 1; }
 
     // slot returns 0, flag 8 set -> true
     g_ret = 0; s.flags = 8;
-    if (IsPhysicsMeshTypeCylinder(&o) != true) { printf("BAD2\n"); return 1; }
+    if (CTCPhysicsBase_IsPhysicsMeshTypeCylinder(&o) != true) { printf("BAD2\n"); return 1; }
 
     // slot returns 0, flag 8 clear -> false
     g_ret = 0; s.flags = 0;
-    if (IsPhysicsMeshTypeCylinder(&o) != false) { printf("BAD3\n"); return 1; }
+    if (CTCPhysicsBase_IsPhysicsMeshTypeCylinder(&o) != false) { printf("BAD3\n"); return 1; }
 
     // slot returns 0, other bits set but not 8 -> false
     g_ret = 0; s.flags = 0x07;
-    if (IsPhysicsMeshTypeCylinder(&o) != false) { printf("BAD4\n"); return 1; }
+    if (CTCPhysicsBase_IsPhysicsMeshTypeCylinder(&o) != false) { printf("BAD4\n"); return 1; }
 
     printf("PARITY_OK_006b0170\n");
     return 0;

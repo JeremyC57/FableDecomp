@@ -25,7 +25,7 @@ class CEnginePrimitiveHandle {public:virtual ~CEnginePrimitiveHandle();unsigned 
 typedef CIntelligentPointer<CThingCreatureBase> CreaturePointer;
 extern unsigned GeneratorVtable_01268c24[];extern int CreatureCount_013bad54;
 struct Killable {void Kill(bool);};void __fastcall ClearList(void*);void __fastcall DestroyBase(CTCCreatureGenerator*);
-void __fastcall DestroyGenerator(CTCCreatureGenerator* self){
+void __fastcall CTCCreatureGenerator_Destroy(CTCCreatureGenerator* self){
  char* bytes=(char*)self;self->__vftable=GeneratorVtable_01268c24;CIntelligentPointer<CThing>* handle=(CIntelligentPointer<CThing>*)(bytes+0x90);
  if(handle->GetPItem() && !(*(unsigned char*)((char*)handle->GetPItem()+0x91)&1)){((Killable*)handle->GetPItem())->Kill(true);CIntelligentPointer<CThing> temp(0);handle->SetPItem(temp.GetPItem());}
  *(CTCShapeManager**)(bytes+0xa4)=0;CreatureCount_013bad54-=((ListView*)(bytes+0x18))->Size();handle->CBaseIntelligentPointer::~CBaseIntelligentPointer();
@@ -49,11 +49,11 @@ void __fastcall ClearList(void* p){Node* h=*(Node**)p;Node* n=h->next;while(n!=h
 static Node* MakeList(unsigned n){Node* h=(Node*)malloc(sizeof(Node));h->next=h->prev=h;while(n--){Node* p=(Node*)malloc(sizeof(Node));p->next=h;p->prev=h->prev;h->prev->next=p;h->prev=p;}return h;}
 int main(){
  CTCCreatureGenerator self;memset(&self,0,sizeof(self));char* bytes=(char*)&self;
- new(bytes+0x90)CIntelligentPointer<CThing>(0);*(Node**)(bytes+0x18)=MakeList(0);DestroyGenerator(&self);assert(CreatureCount_013bad54==10 && baseCalls==1 && kills==0);
+ new(bytes+0x90)CIntelligentPointer<CThing>(0);*(Node**)(bytes+0x18)=MakeList(0);CTCCreatureGenerator_Destroy(&self);assert(CreatureCount_013bad54==10 && baseCalls==1 && kills==0);
  memset(&self,0,sizeof(self));char alive[256]={0};new(bytes+0x90)CIntelligentPointer<CThing>((CThing*)alive);*(Node**)(bytes+0x18)=MakeList(2);
  CEnginePrimitiveHandle* primitives=(CEnginePrimitiveHandle*)malloc(2*sizeof(CEnginePrimitiveHandle));new(primitives)CEnginePrimitiveHandle;new(primitives+1)CEnginePrimitiveHandle;*(CEnginePrimitiveHandle**)(bytes+0x78)=primitives;*(CEnginePrimitiveHandle**)(bytes+0x7c)=primitives+2;
  CreaturePointer* creatures=(CreaturePointer*)malloc(sizeof(CreaturePointer));new(creatures)CreaturePointer((CThingCreatureBase*)alive);*(CreaturePointer**)(bytes+0x1c)=creatures;*(CreaturePointer**)(bytes+0x20)=creatures+1;
- CCharString* name=(CCharString*)(bytes+0x48);name->data=(char*)malloc(5);strcpy(name->data,"test");DestroyGenerator(&self);
+ CCharString* name=(CCharString*)(bytes+0x48);name->data=(char*)malloc(5);strcpy(name->data,"test");CTCCreatureGenerator_Destroy(&self);
  assert(kills==1 && baseCalls==2 && CreatureCount_013bad54==8 && primitiveDestructions==2 && stringDestructions==2 && linksFreed==1 && !((CBaseObject*)alive)->registration);
  puts("0074ab00_TEST PASS");return 0;
 }

@@ -1,3 +1,4 @@
+// Leaf: ?CTCCameraPointDead_scalar_deleting_destructor@@YIPAXPAUCTCCameraPointDead@@HI@Z
 #pragma optimize("s", on)
 class CTCBase {
 public:
@@ -9,7 +10,7 @@ struct CTCCameraPointDead
 };
 extern void* const g_CTCCameraPointDead_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CTCCameraPointDead* dead, int, unsigned int flags)
+void* __fastcall CTCCameraPointDead_scalar_deleting_destructor(CTCCameraPointDead* dead, int, unsigned int flags)
 {
     dead->vftable = (void*)&g_CTCCameraPointDead_vftable;
     ((CTCBase*)(dead))->CTCBase::~CTCBase();

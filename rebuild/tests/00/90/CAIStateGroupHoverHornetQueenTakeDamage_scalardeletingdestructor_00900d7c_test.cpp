@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CAIStateGroup_HoverHornetQueenTakeDamage* stateGroup, int, unsigned int flags)
+void* __fastcall CAIStateGroup_HoverHornetQueenTakeDamage_scalar_deleting_destructor(CAIStateGroup_HoverHornetQueenTakeDamage* stateGroup, int, unsigned int flags)
 {
     stateGroup->vftable = (void*)&g_CAIStateGroup_HoverHornetQueenTakeDamage_vftable;
     CAIStateGroup_HoverHornetQueenTakeDamage_Destruct(stateGroup);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CAIStateGroup_HoverHornetQueenTakeDa
 int main()
 {
     CAIStateGroup_HoverHornetQueenTakeDamage object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CAIStateGroup_HoverHornetQueenTakeDamage_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CAIStateGroup_HoverHornetQueenTakeDamage_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CAIStateGroup_HoverHornetQueenTakeDamage_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

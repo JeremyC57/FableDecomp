@@ -1,4 +1,5 @@
 // CMovableResourceMemoryPool::CanMoveResource  @ 00a62f70
+// Leaf: ?CMovableResourceMemoryPool_CanMoveResource@@YG_NPAUIMovableResource@@J@Z
 // Static forwarder: (obj, arg). If obj null -> false; else obj->vslot2(arg).
 
 struct IMovableResource {
@@ -7,7 +8,7 @@ struct IMovableResource {
     virtual bool CanMove(long arg);   // vtable slot 2 -> [vptr+8]
 };
 
-bool __stdcall CanMoveResource_forward(IMovableResource *obj, long arg)
+bool __stdcall CMovableResourceMemoryPool_CanMoveResource(IMovableResource *obj, long arg)
 {
     if (obj)
         return obj->CanMove(arg);

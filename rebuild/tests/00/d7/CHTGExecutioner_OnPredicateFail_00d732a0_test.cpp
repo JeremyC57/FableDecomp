@@ -13,7 +13,7 @@ static void SubHelper(char* subptr, void* msg)
     s->lastMsg = msg;
 }
 
-static void OnPredicateFail(Exec* self)
+static void CHTG_Executioner_OnPredicateFail(Exec* self)
 {
     SubHelper((char*)self->obj + 0x9c, g_PredMsg);
     ((char*)self->obj)[0x4b] = 1;
@@ -28,7 +28,7 @@ int main()
     Exec e;
     e.obj = &o;
 
-    OnPredicateFail(&e);
+    CHTG_Executioner_OnPredicateFail(&e);
 
     if (o.flag == 1 && o.sub.calls == 1 && o.sub.lastMsg == g_PredMsg) {
         printf("PARITY_OK\n");

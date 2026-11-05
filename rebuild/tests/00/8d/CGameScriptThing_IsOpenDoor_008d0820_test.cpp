@@ -44,7 +44,7 @@ MapTreeNode* DoorMap::LowerBound(int* keyPtr)
 }
 
 // ---- the reconstructed function under test (identical to source_cpp) ----
-static bool __fastcall IsOpenDoor(void* thisptr)
+static bool __fastcall CGameScriptThing_IsOpenDoor(void* thisptr)
 {
     char* subobj = (char*)thisptr + 0xc;
     char* ent;
@@ -96,21 +96,21 @@ int main()
     // Case 1: GetEnt returns null -> false, exactly 1 call.
     reset();
     g_entToReturn = 0;
-    if (IsOpenDoor(g_this) != false) { printf("c1 ret\n"); ++fails; }
+    if (CGameScriptThing_IsOpenDoor(g_this) != false) { printf("c1 ret\n"); ++fails; }
     if (g_getEntCalls != 1)          { printf("c1 calls=%d\n", g_getEntCalls); ++fails; }
 
     // Case 2: entity present but [+0x91]&1 set -> false, 2 calls.
     reset();
     g_entToReturn = E;
     E[0x91] = 0x1;
-    if (IsOpenDoor(g_this) != false) { printf("c2 ret\n"); ++fails; }
+    if (CGameScriptThing_IsOpenDoor(g_this) != false) { printf("c2 ret\n"); ++fails; }
     if (g_getEntCalls != 2)          { printf("c2 calls=%d\n", g_getEntCalls); ++fails; }
 
     // Case 3: [+0x91]&1 clear but [+0x24]&0x40 clear -> false, 3 calls.
     reset();
     g_entToReturn = E;
     E[0x91] = 0x0; E[0x24] = 0x00;
-    if (IsOpenDoor(g_this) != false) { printf("c3 ret\n"); ++fails; }
+    if (CGameScriptThing_IsOpenDoor(g_this) != false) { printf("c3 ret\n"); ++fails; }
     if (g_getEntCalls != 3)          { printf("c3 calls=%d\n", g_getEntCalls); ++fails; }
 
     // Case 4: full success path (value[+0x12]==0 && [+0x13]==0 && [+0x10]!=0).
@@ -122,7 +122,7 @@ int main()
     g_lbToReturn = &realNode;
     for (int i=0;i<0x20;++i) valMem[i]=0;
     valMem[0x10] = 0x5;
-    if (IsOpenDoor(g_this) != true) { printf("c4 ret\n"); ++fails; }
+    if (CGameScriptThing_IsOpenDoor(g_this) != true) { printf("c4 ret\n"); ++fails; }
     if (g_getEntCalls != 3)         { printf("c4 calls=%d\n", g_getEntCalls); ++fails; }
     if (g_lbCalls != 1)             { printf("c4 lb=%d\n", g_lbCalls); ++fails; }
     if (g_lbKeySeen != 0x26)        { printf("c4 key=%x\n", g_lbKeySeen); ++fails; }
@@ -135,7 +135,7 @@ int main()
     g_lbToReturn = &realNode;
     for (int i=0;i<0x20;++i) valMem[i]=0;
     valMem[0x10]=0x5; valMem[0x12]=0x1;
-    if (IsOpenDoor(g_this) != false) { printf("c5 ret\n"); ++fails; }
+    if (CGameScriptThing_IsOpenDoor(g_this) != false) { printf("c5 ret\n"); ++fails; }
 
     // Case 6: value[+0x13]!=0 -> false.
     reset();
@@ -145,7 +145,7 @@ int main()
     g_lbToReturn = &realNode;
     for (int i=0;i<0x20;++i) valMem[i]=0;
     valMem[0x10]=0x5; valMem[0x13]=0x1;
-    if (IsOpenDoor(g_this) != false) { printf("c6 ret\n"); ++fails; }
+    if (CGameScriptThing_IsOpenDoor(g_this) != false) { printf("c6 ret\n"); ++fails; }
 
     // Case 7: value[+0x10]==0 -> false.
     reset();
@@ -155,7 +155,7 @@ int main()
     g_lbToReturn = &realNode;
     for (int i=0;i<0x20;++i) valMem[i]=0;
     valMem[0x10]=0x0;
-    if (IsOpenDoor(g_this) != false) { printf("c7 ret\n"); ++fails; }
+    if (CGameScriptThing_IsOpenDoor(g_this) != false) { printf("c7 ret\n"); ++fails; }
 
     // Case 8: LowerBound returns the end node -> node stays end; use endNode.value.
     reset();
@@ -165,7 +165,7 @@ int main()
     g_lbToReturn = &endNode;
     for (int i=0;i<0x20;++i) valMem[i]=0;
     valMem[0x10]=0x7;
-    if (IsOpenDoor(g_this) != true) { printf("c8 ret\n"); ++fails; }
+    if (CGameScriptThing_IsOpenDoor(g_this) != true) { printf("c8 ret\n"); ++fails; }
 
     // Case 9: node found but node key > 0x26 -> falls back to end node's value.
     reset();
@@ -179,7 +179,7 @@ int main()
     for (int i=0;i<0x20;++i) valMem[i]=0;
     valMem[0x10]=0x0;                                       // if wrongly used -> false
     g_lbToReturn = &realNode;
-    if (IsOpenDoor(g_this) != true) { printf("c9 ret (should use endNode value)\n"); ++fails; }
+    if (CGameScriptThing_IsOpenDoor(g_this) != true) { printf("c9 ret (should use endNode value)\n"); ++fails; }
 
     if (fails == 0) {
         printf("FSE2_008d0820_TEST PASS\n");

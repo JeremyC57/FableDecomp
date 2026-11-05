@@ -11,7 +11,7 @@ class CCameraManagerSetDef { public:
   int CameraManagerCombat;
   int CameraManagerPCMain;
 };
-void __fastcall CCameraManagerSetDef_Transfer(CCameraManagerSetDef* def, void* unused, CPersistContext* ctx) {
+void __fastcall CSpecialAbilitiesBurntEffectDef_Transfer(CCameraManagerSetDef* def, void* unused, CPersistContext* ctx) {
   ctx->Transfer(&def->f3c);
   ctx->Transfer(&def->CameraManagerMain);
   ctx->Transfer(&def->CameraManagerCombat);
@@ -20,7 +20,7 @@ void __fastcall CCameraManagerSetDef_Transfer(CCameraManagerSetDef* def, void* u
 int main() {
   CCameraManagerSetDef d;
   CPersistContext ctx; ctx.count = 0;
-  CCameraManagerSetDef_Transfer(&d, 0, &ctx);
+  CSpecialAbilitiesBurntEffectDef_Transfer(&d, 0, &ctx);
   if (ctx.count == 4 &&
       ctx.seen[0] == &d.f3c && ctx.seen[1] == &d.CameraManagerMain &&
       ctx.seen[2] == &d.CameraManagerCombat && ctx.seen[3] == &d.CameraManagerPCMain) {

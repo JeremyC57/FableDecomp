@@ -1,4 +1,5 @@
 // Byte-exact reconstruction of CTCActivationReceptorBase::AddTrigger @ 0x00c89b40
+// Leaf: ?CTCActivationReceptorBase_AddTrigger@@YIXPAVCTCActivationReceptorBase@@HPAXPAVCTCActivationTrigger@@@Z
 class CTCActivationTrigger;
 
 class CTCActivationReceptorBase { public:
@@ -21,7 +22,7 @@ extern GTarget* g_target; // [0x143ccdc]
 // self in ecx, an unused edx slot, then the two real stack params p1 and trigger.
 // Retail forwards Handle(p1, &self->sub18, self->field20, trigger): the first
 // push is trigger (a4), the second load (post-push, esp-shifted) reaches p1 (a1).
-void __fastcall AddTrigger(CTCActivationReceptorBase* self, int /*edx*/,
+void __fastcall CTCActivationReceptorBase_AddTrigger(CTCActivationReceptorBase* self, int /*edx*/,
                            void* p1, CTCActivationTrigger* trigger)
 {
     g_target->Handle((CTCActivationTrigger*)p1, (void*)&self->sub18,

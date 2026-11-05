@@ -16,7 +16,7 @@ CPlayer& CPlayerManager::GetMainPlayer()
     return *(CPlayer*)g_obj;
 }
 
-void __fastcall SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface* self, int edx, bool keep);
+void __fastcall CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface* self, int edx, bool keep);
 
 int main()
 {
@@ -26,10 +26,10 @@ int main()
     inner.PPlayerManager = (void*)0x1234;
 
     g_obj[0x224] = 0;
-    SetToKeepHeroAbilitiesDuringCutscenes(&gsi, 0, true);
+    CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes(&gsi, 0, true);
     if (g_obj[0x224] != 1) { printf("FAIL true\n"); return 1; }
 
-    SetToKeepHeroAbilitiesDuringCutscenes(&gsi, 0, false);
+    CGameScriptInterface_SetToKeepHeroAbilitiesDuringCutscenes(&gsi, 0, false);
     if (g_obj[0x224] != 0) { printf("FAIL false\n"); return 1; }
 
     printf("00890b50_TEST PASS\n");

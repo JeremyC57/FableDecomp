@@ -1,3 +1,4 @@
+// Leaf: ?CBuyHouseDef_scalar_deleting_destructor@@YIPAXPAVCBuyHouseDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CBuyHouseDef
 };
 extern void* const g_CBuyHouseDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CBuyHouseDef* def, int, unsigned int flags)
+void* __fastcall CBuyHouseDef_scalar_deleting_destructor(CBuyHouseDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CBuyHouseDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

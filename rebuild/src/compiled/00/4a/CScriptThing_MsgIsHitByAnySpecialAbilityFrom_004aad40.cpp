@@ -1,3 +1,4 @@
+// Leaf: ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing_Methods@@QAE_NH@Z
 #include "rebuild_abi.h"
 #include "engine/CScriptThing.h"
 // CScriptThing::MsgIsHitByAnySpecialAbility @ 0x004aad40
@@ -48,10 +49,11 @@ struct CScriptThingInner {
   virtual bool m41(int name);
   virtual bool m42(int name);
 };
-struct CScriptThing_Methods : CScriptThing { bool MsgIsHitByAnySpecialAbility(int name); };
-bool CScriptThing_Methods::MsgIsHitByAnySpecialAbility(int name)
+struct CScriptThing_Methods : CScriptThing { bool MsgIsHitByAnySpecialAbilityFrom(int name); };
+bool CScriptThing_Methods::MsgIsHitByAnySpecialAbilityFrom(int name)
 {
     CScriptThingInner *p = (CScriptThingInner*)PImp_Data;
     if (!p) return false;
     return p->m42(name);
 }
+// Stand-in (owner rule 2026-11-05): the real method on a stand-in class named after the real class (retail ?MsgIsHitByAnySpecialAbilityFrom@CScriptThing@@UBE_NABVCCharString@@@Z); evidence: RTTI vtable slot + PDB name set.

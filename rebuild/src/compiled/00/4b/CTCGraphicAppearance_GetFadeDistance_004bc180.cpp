@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::GetFadeDistance @ 0x004bc180
+// Leaf: ?CTCGraphicAppearance_GetFadeDistance@@YIMPAUCTCGraphicAppearance@@@Z
 // Retail: a0ca863b01 84c0 7407 db0510573701 c3 8b4104 8b4870 d94148 c3
 //
 // Byte flag global: if set, return (float)g_forcedFadeDistanceInt via fild;
@@ -29,7 +30,7 @@ struct CTCGraphicAppearance
 extern unsigned char g_useForcedFadeDistance; // ds:0x13b86ca  (mov al,ds:imm)
 extern int          g_forcedFadeDistanceInt;  // ds:0x1375710  (fild dword ds:imm)
 
-float __fastcall GetFadeDistance(CTCGraphicAppearance *thisptr)
+float __fastcall CTCGraphicAppearance_GetFadeDistance(CTCGraphicAppearance *thisptr)
 {
     if (g_useForcedFadeDistance)
         return (float)g_forcedFadeDistanceInt;   // fild -> st0

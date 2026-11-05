@@ -14,7 +14,7 @@ void __cdecl operator delete(void*)
 {
     ++g_AutoTinyVectorDeleteCalls;
 }
-void* __fastcall scalar_deleting_destructor(CActivateQuestDef* def, int, unsigned int flags)
+void* __fastcall CActivateQuestDef_scalar_deleting_destructor(CActivateQuestDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CActivateQuestDef_vftable;
     CActivateQuestDef_Destruct(def);
@@ -25,12 +25,12 @@ void* __fastcall scalar_deleting_destructor(CActivateQuestDef* def, int, unsigne
 int main()
 {
     CActivateQuestDef object = {0};
-    if (scalar_deleting_destructor(&object, 0, 0) != &object ||
+    if (CActivateQuestDef_scalar_deleting_destructor(&object, 0, 0) != &object ||
         object.vftable != &g_CActivateQuestDef_vftable ||
         g_AutoTinyVectorDestructorCalls != 1 ||
         g_AutoTinyVectorDeleteCalls != 0)
         return 1;
-    scalar_deleting_destructor(&object, 0, 1);
+    CActivateQuestDef_scalar_deleting_destructor(&object, 0, 1);
     if (g_AutoTinyVectorDestructorCalls != 2 ||
         g_AutoTinyVectorDeleteCalls != 1)
         return 1;

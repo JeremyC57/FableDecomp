@@ -1,3 +1,4 @@
+// Leaf: ?CBoastingPodiumDef_scalar_deleting_destructor@@YIPAXPAVCBoastingPodiumDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CBoastingPodiumDef
 };
 extern void* const g_CBoastingPodiumDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CBoastingPodiumDef* def, int, unsigned int flags)
+void* __fastcall CBoastingPodiumDef_scalar_deleting_destructor(CBoastingPodiumDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CBoastingPodiumDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

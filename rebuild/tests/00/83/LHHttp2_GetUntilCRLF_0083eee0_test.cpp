@@ -19,7 +19,7 @@ __declspec(noinline) void Packet_0083eee0::Insert(int position,int count,const c
 }
 #pragma auto_inline(on)
 struct LSocket{bool IsConnected(int);bool Receive(Packet_0083eee0&);};
-int __fastcall GetUntilCRLF(LHHttp2* self,void*,char* buffer,int& offset){
+int __fastcall LHHttp2_GetUntilCRLF(LHHttp2* self,void*,char* buffer,int& offset){
  bool seenCR=false;
  if(self->Host && self->Host->IsConnected(0)){
   unsigned short count=0;
@@ -41,4 +41,4 @@ static const char* input;static int inputAt;static bool connected;static int fai
 
 bool LSocket::IsConnected(int){return connected;}
 bool LSocket::Receive(Packet_0083eee0& p){if(inputAt==failure)return false;*p.start=input[inputAt++];return true;}
-int main(){LHHttp2 self;LSocket socket;char buffer[1100];int offset=0;self.Host=0;assert(GetUntilCRLF(&self,0,buffer,offset)==6 && offset==0);self.Host=&socket;connected=false;assert(GetUntilCRLF(&self,0,buffer,offset)==6);connected=true;input="hello\r\n";inputAt=0;failure=-1;assert(GetUntilCRLF(&self,0,buffer,offset)==7 && strcmp(buffer,"hello")==0 && offset==6);inputAt=0;offset=0;failure=0;assert(GetUntilCRLF(&self,0,buffer,offset)==-102 && offset==0);char longInput[1025];memset(longInput,'a',1024);input=longInput;inputAt=0;failure=-1;offset=0;assert(GetUntilCRLF(&self,0,buffer,offset)==6 && offset==1024);puts("0083eee0_TEST PASS");return 0;}
+int main(){LHHttp2 self;LSocket socket;char buffer[1100];int offset=0;self.Host=0;assert(LHHttp2_GetUntilCRLF(&self,0,buffer,offset)==6 && offset==0);self.Host=&socket;connected=false;assert(LHHttp2_GetUntilCRLF(&self,0,buffer,offset)==6);connected=true;input="hello\r\n";inputAt=0;failure=-1;assert(LHHttp2_GetUntilCRLF(&self,0,buffer,offset)==7 && strcmp(buffer,"hello")==0 && offset==6);inputAt=0;offset=0;failure=0;assert(LHHttp2_GetUntilCRLF(&self,0,buffer,offset)==-102 && offset==0);char longInput[1025];memset(longInput,'a',1024);input=longInput;inputAt=0;failure=-1;offset=0;assert(LHHttp2_GetUntilCRLF(&self,0,buffer,offset)==6 && offset==1024);puts("0083eee0_TEST PASS");return 0;}

@@ -1,3 +1,4 @@
+// Leaf: ?CTimeAppearanceFadeDef_Transfer@@YIXPAVCCarrySlotDef@@PAXPAVCPersistContext@@@Z
 #pragma optimize("s",on)
 struct A { int x; };
 struct B { int x; };
@@ -15,10 +16,11 @@ class CCarrySlotDef { public:
     A a2;  // +0x34
 };
 
-void __fastcall CCarrySlotDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
+void __fastcall CTimeAppearanceFadeDef_Transfer(CCarrySlotDef* def, void* edx, CPersistContext* ctx)
 {
     ctx->Transfer(*(float*)(&def->a));
     ctx->Transfer(*(float*)(&def->b));
     ctx->Transfer(*(float*)(&def->c));
     ctx->Transfer(*(float*)(&def->a2));
 }
+// Stand-in (owner rule 2026-11-05): CTimeAppearanceFadeDef_Transfer for CTimeAppearanceFadeDef::Transfer; RTTI vtable slot ?Transfer@CTimeAppearanceFadeDef@@UAEXAAVCPersistContext@@@Z + PDB name set (egor/fablewin).

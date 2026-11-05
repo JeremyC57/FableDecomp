@@ -1,3 +1,4 @@
+// Leaf: ?CFireballSpellLevelDef_scalar_deleting_destructor@@YIPAXPAVCFireballSpellLevelDef@@HI@Z
 #pragma optimize("s", on)
 class CResource {
 public:
@@ -9,7 +10,7 @@ class CFireballSpellLevelDef
 };
 extern void* const g_CFireballSpellLevelDef_vftable;
 void operator delete(void*);
-void* __fastcall scalar_deleting_destructor(CFireballSpellLevelDef* def, int, unsigned int flags)
+void* __fastcall CFireballSpellLevelDef_scalar_deleting_destructor(CFireballSpellLevelDef* def, int, unsigned int flags)
 {
     def->vftable = (void*)&g_CFireballSpellLevelDef_vftable;
     ((CResource*)(def))->CResource::~CResource();

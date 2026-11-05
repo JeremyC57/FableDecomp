@@ -17,12 +17,12 @@ extern "C" long __stdcall D3DXFilterTexture(void* p, const void* palette, unsign
     return 0;
 }
 
-void __fastcall GenerateMipmaps(CTexture* texture, int edx, ulong a, ulong b);
+void __fastcall CTexture_GenerateMipmaps(CTexture* texture, int edx, ulong a, ulong b);
 
 int main()
 {
     CTexture t; t.field0 = (void*)0xDEAD;
-    GenerateMipmaps(&t, 0, 11u, 22u);
+    CTexture_GenerateMipmaps(&t, 0, 11u, 22u);
     if (g_p == (void*)0xDEAD && g_zero == 0 && g_b == 22u && g_a == 11u)
         printf("009f9e60_TEST PASS\n");
     else
