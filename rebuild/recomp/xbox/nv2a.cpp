@@ -792,7 +792,7 @@ void Renderer::report(uint32_t addr) {
 void init() {
     g_irqEoi = eoi;
     R(PFIFO + 0x1214) |= 0x10;
-    std::thread(pusherMain).detach();
+    startHostThread(pusherMain, 256u << 10, ThreadRole::System);
 }
 
 }  // namespace xb::gpu

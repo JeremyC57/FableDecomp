@@ -123,7 +123,7 @@ void bootGame(std::vector<uint8_t> xbe, const std::string& game, const std::stri
     symlinkCreate("\\??\\D:", "\\Device\\CdRom0");
     hleInstall();
     gpu::init();
-    std::thread([] {
+    startHostThread([] {
         setThreadName("kernel tick");
         for (;;) {
             kernelTick();
@@ -131,7 +131,7 @@ void bootGame(std::vector<uint8_t> xbe, const std::string& game, const std::stri
             recomp_preempt_flag = 1;
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
-    }).detach();
+    }, 64u << 10, ThreadRole::Tick);
     g_gil.lock();
     workerStart();
     XThread* t = newThread(std::max<uint32_t>(le32(0x130), 0x10000), tlsSize(), 0);

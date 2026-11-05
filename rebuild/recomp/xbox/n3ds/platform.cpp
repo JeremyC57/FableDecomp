@@ -23,6 +23,7 @@
 #include <cstdarg>
 #include <cstdio>
 #include <cstring>
+#include <functional>
 #include <mutex>
 #include <string>
 #include <thread>
@@ -33,6 +34,7 @@
 extern "C" {
 u32 __ctru_heap_size = 0;
 u32 __ctru_linear_heap_size = 0;
+u32 __stacksize__ = 256 * 1024;  // the main thread runs the boot sequence
 }
 
 namespace xb {
@@ -101,6 +103,27 @@ void platformThreadInit() {
     threadOnException(onException, t_exc->stack + kExcStack, &t_exc->data);
 }
 void platformInstallFaultHandler() { platformThreadInit(); }
+
+// ---- host threads ----------------------------------------------------------------------------
+namespace {
+int g_gameCore = -2;  // core 2 on the New 3DS (set in main), else the process default
+s32 g_mainPrio = 0x30;
+}
+
+void startHostThread(std::function<void()> fn, size_t stackBytes, ThreadRole role) {
+    auto* f = new std::function<void()>(std::move(fn));
+    const s32 prio = role == ThreadRole::Tick ? g_mainPrio - 1 : role == ThreadRole::System ? g_mainPrio + 1 : g_mainPrio;
+    const int core = role == ThreadRole::Game ? g_gameCore : -2;
+    auto entry = [](void* p) {
+        platformThreadInit();
+        auto* fn = static_cast<std::function<void()>*>(p);
+        (*fn)();
+        delete fn;
+    };
+    Thread t = threadCreate(entry, f, stackBytes, prio, core, true);
+    if (!t && core != -2) t = threadCreate(entry, f, stackBytes, prio, -2, true);  // core 2 refused
+    if (!t) die("cannot create a host thread (%zu KB stack)", stackBytes / 1024);
+}
 
 // ---- small host services the desktop files provide elsewhere ---------------------------------
 void setThreadName(const char*) {}
@@ -341,7 +364,9 @@ int main() {
     const uint64_t start = osGetTime();
     bool n3ds = false;
     APT_CheckNew3DS(&n3ds);
-    std::printf("Fable boot test (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
+    svcGetThreadPriority(&g_mainPrio, CUR_THREAD_HANDLE);
+    if (n3ds) g_gameCore = 2;
+    std::printf("Fable boot test build 2 (%s, app memory %lu KB)\n", n3ds ? "New 3DS" : "old 3DS: too slow",
                 static_cast<unsigned long>(osGetMemRegionSize(MEMREGION_APPLICATION) / 1024));
 
     mkdirs(g_dataDir);

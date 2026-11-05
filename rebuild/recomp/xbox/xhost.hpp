@@ -20,6 +20,7 @@
 #include <cstdarg>
 #include <cstdint>
 #include <cstring>
+#include <functional>
 #include <mutex>
 #include <utility>
 #include <chrono>
@@ -281,6 +282,11 @@ extern std::atomic<uint64_t> g_perfPasses, g_perfGpuWaitNs;
 // fps, slowest frame (ms), render passes per frame, share of time waiting for the GPU (0..1).
 void perfStatsEx(float* out4);
 bool profilerCapture(double delay, double secs, const std::string& path);  // profiler.cpp
+// Host threads with an explicit stack (real memory on the New 3DS) and a role. The New 3DS runs
+// Game threads (guest code, one at a time under the GIL) on core 2; System threads share core 0
+// with the screens at a lower priority, Tick (the 1 ms kernel ticker) above them.
+enum class ThreadRole { Game, System, Tick };
+void startHostThread(std::function<void()> fn, size_t stackBytes, ThreadRole role);
 void setThreadName(const char* name);  // for profiles and debuggers (15 characters)                   // frames/s and slowest frame (ms), last 0.5 s
 uint64_t gameClockNs();  // RDTSC / performance counter clock (FABLE_FLIPTIME: per flip)
 std::string resolveObjectName(uint32_t objectAttributes);  // full object path ("\Device\CdRom0\...")

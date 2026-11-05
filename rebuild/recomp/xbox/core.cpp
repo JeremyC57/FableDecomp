@@ -12,7 +12,6 @@
 #if defined(__3DS__)
 // New 3DS: no signals or page protection; faults go to the platform's exception handler
 // (n3ds/platform.cpp), thread exit unwinds with setjmp.
-#include <pthread.h>
 #include <setjmp.h>
 #define sigjmp_buf jmp_buf
 #define sigsetjmp(b, m) setjmp(b)
@@ -333,27 +332,11 @@ static void threadMain(XThread* t, uint32_t start, uint32_t ctx, uint32_t system
 void startThread(XThread* t, uint32_t start, uint32_t ctx, uint32_t system, bool suspended) {
     t->suspend = suspended ? 1 : 0;
     wr32(t->ethread + 0x130, start);
-#if defined(__3DS__)
-    // Explicit host stacks (real memory here): the first guest thread is the game's main thread.
+    // The first guest thread is the game's main thread: the deepest host stack.
     static bool first = true;
-    pthread_attr_t attr;
-    pthread_attr_init(&attr);
-    pthread_attr_setstacksize(&attr, first ? (1u << 20) : (512u << 10));
+    const size_t stack = first ? (1u << 20) : (512u << 10);
     first = false;
-    struct Args { XThread* t; uint32_t start, ctx, system; };
-    pthread_t th;
-    if (pthread_create(&th, &attr, [](void* p) -> void* {
-            const Args a = *static_cast<Args*>(p);
-            delete static_cast<Args*>(p);
-            threadMain(a.t, a.start, a.ctx, a.system);
-            return nullptr;
-        }, new Args{t, start, ctx, system}) != 0)
-        die("cannot create a host thread for guest thread %u", t->id);
-    pthread_detach(th);
-    pthread_attr_destroy(&attr);
-#else
-    std::thread(threadMain, t, start, ctx, system).detach();
-#endif
+    startHostThread([=] { threadMain(t, start, ctx, system); }, stack, ThreadRole::Game);
 }
 
 void exitCurrentThread(uint32_t status) {
@@ -650,8 +633,12 @@ static void workerMain() {
 void workerStart() {
     g_worker = newThread(0x40000, 0, 0);
     g_worker->system = true;
-    std::thread(workerMain).detach();
+    startHostThread(workerMain, 512u << 10, ThreadRole::Game);  // runs guest timers, DPCs and ISRs
 }
+
+#if !defined(__3DS__)
+void startHostThread(std::function<void()> fn, size_t, ThreadRole) { std::thread(std::move(fn)).detach(); }
+#endif
 
 // ============================================================================================
 // faults

@@ -346,7 +346,7 @@ void start() {
     }
     XLOG(1, "audio: no device (%s), mixing silently", SDL_GetError());
 #endif
-    std::thread(silentMixer).detach();
+    startHostThread(silentMixer, 64u << 10, ThreadRole::System);
 }
 
 // ---- guest objects ----------------------------------------------------------------------
