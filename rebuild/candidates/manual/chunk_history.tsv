@@ -27303,3 +27303,8 @@ chunk	address	module	name	length
 777	006303c0	CUIDef	CUIDef	1272
 777	00803540	_global	CViewBase_UpdateSeaLevelParticles	1108
 777	00ac92c0	_global	COptimisedPrimitive_ContractVertexPair	1045
+778	00615e70	CPersistTraits<CTCInventoryMap::CUIRegionInfo>	TransferIn	1423
+778	00631720	CUIDef	operator=	1337
+778	00839420	_global	CreateEffectOnHit	1308
+778	00accbf0	QuadricOptimiserInternals::COptimisedPrimitive	PerformSubContraction	1264
+778	00e50910	CV_BeardyBaldyScript	WatchForQuestCardConditions	1328
