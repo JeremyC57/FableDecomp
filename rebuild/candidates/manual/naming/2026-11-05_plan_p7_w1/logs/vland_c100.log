@@ -1,0 +1,7 @@
+addr       parity           behav  name
+004aa940   RELOCATION_MATCH PASS   GetFocalPos
+004aa9a0   RELOCATION_MATCH PASS   GetHomePos
+
+WINS: 2
+  004aa940 RELOCATION_MATCH CScriptThing::GetFocalPos
+  004aa9a0 RELOCATION_MATCH CScriptThing::GetHomePos

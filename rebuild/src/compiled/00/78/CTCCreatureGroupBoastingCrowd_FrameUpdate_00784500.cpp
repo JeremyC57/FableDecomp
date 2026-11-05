@@ -41,20 +41,9 @@ class CQuestManager { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCBase
 {
 public:
@@ -85,7 +74,7 @@ class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:
         long state = CrowdState;
         return state == 0 || state == 1 || state == 7 || state == 8 || state == 9 || state == 10;
     }
-    bool IsHeroAlive() const { return PHero.GetPItem() && !PHero.GetPItem()->IsDead(); }
+    bool IsHeroAlive() const { return PHero.Get() && !PHero.Get()->IsDead(); }
     void FrameUpdate();
 };
 
@@ -100,7 +89,7 @@ void CTCCreatureGroupBoastingCrowd::FrameUpdate()
         FrameToClearRemainingOpinionSources = 0;
         while (HeroOpinionSourcesPushed > 0) {
             COpinionReactionManager* manager = GetWorld().POpinionReactionManager;
-            manager->ClearOpinionSource(PHero.GetPItem(), true);
+            manager->ClearOpinionSource(PHero.Get(), true);
             --HeroOpinionSourcesPushed;
         }
         EnterCrowdState(0);

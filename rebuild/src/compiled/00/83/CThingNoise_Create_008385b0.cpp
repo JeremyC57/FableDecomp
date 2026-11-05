@@ -38,7 +38,7 @@ virtual void v15()=0;
 virtual int Get(const C3DVector&)=0;};struct Global {char pad[40];Defs* defs;};extern Global* global;
 }
 using namespace NFactory008385b0;
-class CThing {public:virtual ~CThing();char pad[32];unsigned flags;char gap[28];Map map;char gap2[16];Physics* physics;__forceinline Map& GetComponents(){return map;}CThing(unsigned long);static void* __fastcall operator new(unsigned int,bool);bool DoActivationSequence();char tail[52];protected:
+class CThing {public:virtual ~CThing();char pad[32];unsigned flags;char gap[28];Map map;char gap2[16];Physics* physics;__forceinline Map& GetComponents(){return map;}CThing(unsigned long);protected:static void* __fastcall operator new(unsigned int,bool);public:bool DoActivationSequence();char tail[52];protected:
     bool ConstructFromParams(long, long, long, bool);   // 0x004CA010
 };
 class CThingNoise:public CThing {public:CThingNoise():CThing(14){}virtual ~CThingNoise();static CThingNoise* __fastcall Create(long,const C3DVector&,float);};

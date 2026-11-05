@@ -22,12 +22,14 @@ struct CScriptThingImpl {
     virtual void i00(); virtual void i01(); virtual void i02(); virtual void i03(); virtual void i04(); virtual void i05();
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)
 };
-extern const C3DVector g_ZeroPos;                       // 0x0143E8E0
 struct CBase {
     CBase();                                            // 0x0099A2D0
     virtual ~CBase();                                   // 0x0099A2E0
 };
 class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
@@ -49,7 +51,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     virtual void s64(); virtual void s65(); virtual void s66(); virtual void s67(); virtual void s68(); virtual void s69();
     virtual void s70(); virtual void s71(); virtual void s72(); virtual void s73(); virtual void s74();
     virtual bool IsAlive() const;                       // slot 75 (+0x12c) 0x004AB130
-    __forceinline const C3DVector& PosOrZero() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }
+    __forceinline const C3DVector& PosOrZero() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
 };
 class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();

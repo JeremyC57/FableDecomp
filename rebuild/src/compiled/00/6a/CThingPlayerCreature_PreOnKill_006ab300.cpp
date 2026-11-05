@@ -16,17 +16,11 @@
 // the main-player test wraps the body so the `return true` exit is laid out last.
 typedef unsigned short wchar_t;                                // VC7.1 without /Zc:wchar_t
 class CTCBase;
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);           // 0x0099EBF0
-    ~CCharString();                                            // 0x0099EAE0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString(const wchar_t* text);                          // 0x0099B6B0
-    ~CWideString();                                            // 0x0099B510
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -34,30 +28,7 @@ class CPlayer {
 public:
     bool IsMainPlayer() const;                                 // 0x00487520
 };
-class CThing {
-public:
-    virtual void v00();
-    unsigned char _pad04[0x20 - 0x04];
-    unsigned long m_presentBits[9];                            // +0x20
-    CInterfaceMap m_interfaces;                                // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                                    // +0x91 bit 0
-    __forceinline bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-    __forceinline CTCBase* GetTC(long interfaceType)
-    {
-        long type = interfaceType;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-        return ((it == map->end() || interfaceType < it->first) ? map->end() : it)->second;
-    }
-public:
-    CPlayer& GetPlayer();   // 0x004C7A30
-};
+
 class CThingCreatureBase : public CThing { };
 class CThingPlayerCreature : public CThingCreatureBase {
 public:
@@ -83,19 +54,19 @@ extern const char g_emptyString_0122d70e[];                    // 0x0122D70E (""
 bool CThingPlayerCreature::PreOnKill()
 {
     if (GetPlayer().IsMainPlayer()) {
-        if (HasTC(0x11)) {
-            CThing* item = ((CTCInventoryBase*)GetTC(0x11))->GetResurrectionItemInInventory();
-            if (item && !item->Dead) {
+        if (HasTC(TCI_INVENTORY)) {
+            CThing* item = ((CTCInventoryBase*)(&GetTC(TCI_INVENTORY)))->GetResurrectionItemInInventory();
+            if (item && !item->IsDead()) {
                 CTCResurrectionItem* resurrection = 0;
-                if (item->HasTC(0xe1))
-                    resurrection = (CTCResurrectionItem*)item->GetTC(0xe1);
+                if (item->HasTC(TCI_RESURRECTION_ITEM))
+                    resurrection = (CTCResurrectionItem*)((CTCResurrectionItem*)&item->GetTC(TCI_RESURRECTION_ITEM));
                 resurrection->OnItemUsed(*this);
                 return false;
             }
         }
         CTCQuestCompletionUI* ui = 0;
-        if (HasTC(0xfc))
-            ui = (CTCQuestCompletionUI*)GetTC(0xfc);
+        if (HasTC(TCI_QUEST_COMPLETION_UI))
+            ui = (CTCQuestCompletionUI*)(&GetTC(TCI_QUEST_COMPLETION_UI));
         ui->Activate(COMPLETION_TYPE_3, g_emptyString_0122d70e, true, g_emptyWideString_0122d70c, true);
         return false;
     }

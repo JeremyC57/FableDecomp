@@ -1,4 +1,5 @@
 // CThing::SetToKillOnLevelUnload(bool kill) -- change the kill-on-level-unload flag; when it becomes set on a thing in limbo whose map is no longer loaded, kill the thing now
+// Leaf: ?SetToKillOnLevelUnload@CThing@@QAEX_N@Z
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9C40, 89 bytes. Callees: the map manager's virtual slot 10 (+0x28,
@@ -19,32 +20,10 @@ class CThingManager { public:
     CMapManager*  m_pMapManager;                     // +0x28
 };
 
-
-class CThing {
-private:
-    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
-public:
-    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
-private: public:
-    void*         __vftable;                         // +0x00
-    unsigned char _pad04[0x8e - 0x04];
-    short         CurrentMapNumber;                  // +0x8e (PDB +0x9e)
-    signed char   PlayerNumber;                      // +0x90
-    unsigned char Dead : 1;                          // +0x91 bit 0
-    unsigned char CreatedByOwnerThingCreation : 1;   // bit 1
-    unsigned char IncludeInThingScans : 1;           // bit 2
-    unsigned char Activated : 1;                     // bit 3
-    unsigned char GloballyLoaded : 1;                // bit 4
-    unsigned char InLimbo : 1;                       // bit 5
-    unsigned char KillLocked : 1;                    // bit 6
-    unsigned char CreatedBySerialisation : 1;        // bit 7
-    unsigned char _flags92;                          // +0x92
-    unsigned char NotPausedDuringCutscenes : 1;      // +0x93 bit 0
-    unsigned char DeathPersistent : 1;               // bit 1
-    unsigned char KillOnLevelUnload : 1;             // bit 2
-    void Kill(bool immediately);                     // 0x004C9B80
-    void SetToKillOnLevelUnload(bool kill);
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MANAGERACCESS
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 
 void CThing::SetToKillOnLevelUnload(bool kill)
 {

@@ -27,25 +27,14 @@ class CCombatTypeDef { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CSoundPair { public: long FirstSound, LastSound; };
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -77,15 +66,15 @@ void CCombatActionBase::OnBlowBlocked(bool flag)
     if (IS_THING_ALIVE(PTarget) && IS_THING_ALIVE(PCreature)) {
         bool canRecoil = true;
         const CTCCarrying* carrying;
-        if (PCreature.GetPItem()->PeekTC(TCI_CARRYING, &carrying)) {
+        if (PCreature.Get()->PeekTC(TCI_CARRYING, &carrying)) {
             CThing* held = carrying->GetThingInPrimarySlot();
             if (!held || held->IsDead())
                 canRecoil = false;
         }
-        CThing* item = PCreature.GetPItem();
-        if ((item->GetType() == 2 || ((CThingCreatureBase*)PCreature.GetPItem())->GetCombatTypeDef()->BlockedResponse != 2) && canRecoil) {
-            CThing* target = PTarget.GetPItem();
-            CThingCreatureBase* creature = (CThingCreatureBase*)PCreature.GetPItem();
+        CThing* item = PCreature.Get();
+        if ((item->GetType() == 2 || ((CThingCreatureBase*)PCreature.Get())->GetCombatTypeDef()->BlockedResponse != 2) && canRecoil) {
+            CThing* target = PTarget.Get();
+            CThingCreatureBase* creature = (CThingCreatureBase*)PCreature.Get();
             FinishAction();
             creature->SetCurrentAction(CCreatureAction_GeneralInterruptedAttack(creature, target, "STRIKE_RECOIL"));
         }

@@ -23,22 +23,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 struct CTCUserActionPointBase {
     bool IsActionPointFree() const;                     // 0x007FEBF0
     long GetNumberOfActionPointsInUse();          // 0x007FEC10
@@ -59,13 +46,13 @@ public:
 };
 bool CIsFreeBed::operator()(const CIntelligentPointer<CThing>& thing) const
 {
-    if (thing.GetPItem() && thing.GetPItem()->HasTC(TCI_BED) && !thing.GetPItem()->IsInLimbo()) {
+    if (thing.Get() && thing.Get()->HasTC(TCI_BED) && !thing.Get()->IsInLimbo()) {
         CTCBed* bed;
-        if (!thing.GetPItem()->GetTC(TCI_ON_ACTION_USE, &bed) || !bed->m_taken) {
+        if (!thing.Get()->GetTC(TCI_ON_ACTION_USE, &bed) || !bed->m_taken) {
             const CTCUserActionPointBase* actionPoint;
-            if (thing.GetPItem()->PeekTC(TCI_SINGLE_USER_ACTION_POINTS, &actionPoint))
+            if (thing.Get()->PeekTC(TCI_SINGLE_USER_ACTION_POINTS, &actionPoint))
                 return actionPoint->IsActionPointFree();
-            if (!m_occupied(thing.GetPItem()))
+            if (!m_occupied(thing.Get()))
                 return true;
         }
     }

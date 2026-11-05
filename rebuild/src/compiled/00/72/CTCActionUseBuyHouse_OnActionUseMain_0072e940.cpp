@@ -1,4 +1,5 @@
 // CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money) -- unless the hero's buy-house tutorial takes over, ask the hero to buy the house (or tell him he cannot afford it) or to sell it
+// Leaf: ?OnActionUseMain@CTCActionUseBuyHouse@@QAEXPAVCTCBuyableHouse@@J@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
@@ -23,27 +24,13 @@
 #include "engine/CTCBuyableHouse.h"
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
@@ -59,19 +46,6 @@ class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
 
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-};
-class CWideString { public:
-    void* PStringData;
-    CWideString();                                           // 0x0099AED0
-    ~CWideString();                                          // 0x0099B510
-    const CWideString& operator+=(const CWideString& other); // 0x0099B8D0
-    const CWideString& operator=(const CWideString& other);        // 0x0099B7D0
-    bool operator!=(const wchar_t* text) const;              // 0x0099B150
-};
 bool __fastcall ConstructString(CWideString* text, long value);   // 0x009C7B70
 class CFontBank;
 namespace NGameText {
@@ -125,9 +99,9 @@ public:
 void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
 {
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-    if (hero && !hero->Dead) {
+    if (hero && !hero->IsDead()) {
         CTCHero* heroTC;
-        if (hero->GetInterface(&heroTC, 0x29) && heroTC->GiveTutorialForCategory(0x23, false))
+        if (hero->GetTC(TCI_HERO, &heroTC) && heroTC->GiveTutorialForCategory(0x23, false))
             return;
     }
     HouseQuestion = HOUSE_QUESTION_BUY;

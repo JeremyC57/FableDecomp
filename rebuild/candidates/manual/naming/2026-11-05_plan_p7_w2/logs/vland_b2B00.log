@@ -1,0 +1,19 @@
+addr       parity           behav  name
+0077b6b0   WARN SHARED_HEADER_AVAILABLE CThing
+0077b6b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0077b6b0   WARN STANDIN_LEAF ??_GCTCGraphicAppearanceAnimatedMesh@NGraphicAppearance@@UAEPAXI@Z (catalog NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::`scalar_deleting_destructor'; names another function)
+0077b6b0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00963810   WARN SHARED_HEADER_AVAILABLE CThing
+00963810   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+00963810   WARN RELOC_NAME: ?IsModeActive@CTCCreatureModeManager@@QBE_NJ@Z -> 00811340 labelled 'CTCEntityEvents::HasEventOfType'
+00963810   WARN STANDIN_LEAF ??RCIsImposterHit@@QBE_NXZ (catalog CIsImposterHit::operator; names another function)
+00963810   RELOCATION_MATCH PASS   operator
+00970420   WARN SHARED_HEADER_AVAILABLE CThing
+00970420   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+00970420   WARN STANDIN_LEAF ??0CCreatureAction_SummonerChargeSuccess@?A0x798dfb8c@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z (catalog CCombatAction_GenericResponseToDrain::CCombatAction_GenericResponseToDrain; names another function)
+00970420   RELOCATION_MATCH PASS   CCombatAction_GenericResponseToDrain
+
+WINS: 3
+  0077b6b0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::??_GCTCGraphicAppearanceAnimatedMesh
+  00963810 RELOCATION_MATCH CIsImposterHit::??RCIsImposterHit
+  00970420 RELOCATION_MATCH CCreatureAction_SummonerChargeSuccess::??0CCreatureAction_SummonerChargeSuccess@

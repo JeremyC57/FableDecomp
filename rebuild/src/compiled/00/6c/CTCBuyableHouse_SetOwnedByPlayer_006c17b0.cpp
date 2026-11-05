@@ -1,4 +1,5 @@
 // CTCBuyableHouse::SetOwnedByPlayer(bool owned) -- (un)register the house with the living hero (ownership flag, frame stamp, persisted state, the hero stats' house positions, eviction on sale), refresh the sign post and the player GUI
+// Leaf: ?SetOwnedByPlayer@CTCBuyableHouse@@QAEX_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
@@ -18,30 +19,13 @@
 // dead `owned` slot with the key); the world is a named local read before the position for the stats call.
 class CTCBase;
 #include "engine/C3DVector.h"
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    void SetAsGameStatePersisted(bool persisted);   // 0x004C7880
-    const C3DVector& GetPos() const;           // 0x004C73D0
-    void Kill(bool b);                              // 0x004C9B80
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
@@ -114,14 +98,14 @@ private:
 void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
 {
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-    if (hero && !hero->Dead) {
+    if (hero && !hero->IsDead()) {
         if (owned) {
             OwnedByPlayer = true;
             FrameToNextCheckIfWeNeedToCreateAnything = CWorld::GetFrame();
             Thing->SetAsGameStatePersisted(true);
             long region = PeekWorld().PeekWorldMap().GetLoadedRegion();
             CTCHeroStats* stats;
-            hero->GetInterface(&stats, 4);
+            hero->GetTC(TCI_HERO_STATS, &stats);
             const CWorld* world = &PeekWorld();
             stats->AddHousePosition(world->PeekWorldMap().GetRegion(region), Thing->GetPos());
         } else {
@@ -129,14 +113,14 @@ void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
             FrameToNextCheckIfWeNeedToCreateAnything = CWorld::GetFrame();
             long region = PeekWorld().PeekWorldMap().GetLoadedRegion();
             CTCHeroStats* stats;
-            hero->GetInterface(&stats, 4);
+            hero->GetTC(TCI_HERO_STATS, &stats);
             const CWorld* world = &PeekWorld();
             stats->RemoveHousePosition(world->PeekWorldMap().GetRegion(region), Thing->GetPos());
             if (PDef->EvictOnSale)
                 Evict();
         }
     }
-    if (MainSignPost.GetPItem() && !MainSignPost.GetPItem()->Dead)
+    if (MainSignPost.GetPItem() && !MainSignPost.GetPItem()->IsDead())
         MainSignPost.GetPItem()->Kill(true);
     if (NeedsMainSignPost())
         CreateMainSignPost();

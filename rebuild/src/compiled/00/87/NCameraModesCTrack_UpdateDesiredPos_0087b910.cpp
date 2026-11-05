@@ -40,20 +40,9 @@ class CTCBase { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 namespace NCameraModes {
 struct CTrack {
@@ -73,7 +62,7 @@ struct CTrack {
 void NCameraModes::CTrack::UpdateDesiredPos(C3DVector& desired)
 {
     const CTCBase* pComponent;
-    m_target.GetPItem()->PeekTC(TCI_CAMERA_POINT, &pComponent);
+    m_target.Get()->PeekTC(TCI_CAMERA_POINT, &pComponent);
     CTCBase* pFallback;
     if (pComponent->GetKind() != 3)
         pComponent = pFallback;

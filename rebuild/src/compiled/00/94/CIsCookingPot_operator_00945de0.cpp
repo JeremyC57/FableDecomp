@@ -67,7 +67,7 @@ public:
 
 class CTCUserActionPointBase {                  // interface 0x2d
 public:
-    bool IsActionPointFree();                   // 0x007FEBF0
+    bool IsActionPointFree() const;                   // 0x007FEBF0
 };
 
 namespace {

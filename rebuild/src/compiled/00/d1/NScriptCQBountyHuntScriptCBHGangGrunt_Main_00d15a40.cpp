@@ -17,7 +17,6 @@
 //   Was `?Main@CBH_GangGrunt@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_BountyHuntScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                         // 0x0143E8E0
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -42,10 +41,13 @@ enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE };
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
 class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     VPAD2(p0x0) VPAD1(p0x1)   // slots 0..2
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     VPAD2(p1x0)   // slots 4..5
-    __forceinline virtual const C3DVector& GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
+    __forceinline virtual const C3DVector& GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }   // slot 6 (+0x18)
     VPAD8(p2x0) VPAD4(p2x1) VPAD2(p2x2)   // slots 7..20
     virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
     VPAD16(p3x0) VPAD2(p3x1) VPAD1(p3x2)   // slots 22..40

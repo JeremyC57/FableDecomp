@@ -23,7 +23,6 @@ class C3DVector { public:
     float MagSquared() const { return X * X + Y * Y + Z * Z; }
 };
 inline C3DVector operator-(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z); }
-extern C3DVector g_ZeroVector;                              // 0x0143E8E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 void* __cdecl operator new(unsigned int size);              // 0x00BFEA1A
@@ -33,7 +32,7 @@ void* __cdecl operator new(unsigned int size);              // 0x00BFEA1A
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::~CScriptThing() { }
-inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
+inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 inline bool CScriptThing::IsNull() const { return !PImp.Data || PImp.Data->IsNull(); }
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :

@@ -95,7 +95,7 @@ long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPr
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CTCWeapon { public:                              // interface type 0x48
-    bool IsProjectileWeapon();                  // 0x005DAA40
+    bool IsProjectileWeapon() const;                  // 0x005DAA40
 };
 
 struct CInterfaceMapB {                         // the same vector map, this module's LowerBound instantiation

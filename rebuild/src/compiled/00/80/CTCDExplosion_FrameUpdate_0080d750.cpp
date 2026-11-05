@@ -20,23 +20,10 @@
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY
+#include "engine/CIntelligentPointer.h"
 
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 struct SEmitter {                               // pair<CIntelligentPointer<CThing>, long> (12 bytes)
     CIntelligentPointer<CThing> first;
     long                second;

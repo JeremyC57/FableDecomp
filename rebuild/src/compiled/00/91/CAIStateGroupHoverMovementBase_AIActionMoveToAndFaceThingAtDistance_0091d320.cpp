@@ -19,22 +19,10 @@ typedef long EAIActionReturn;
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
-inline bool IsThingAlive(const CIntelligentPointer<CThingCreatureBase>& thing) { return thing.GetPItem() != 0 && !thing.GetPItem()->IsDead(); }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
+inline bool IsThingAlive(const CIntelligentPointer<CThingCreatureBase>& thing) { return thing.Get() != 0 && !thing.Get()->IsDead(); }
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
@@ -59,24 +47,24 @@ EAIActionReturn CAIStateGroup_HoverMovementBase::AIAction_MoveToAndFaceThingAtDi
         return 3;
     if (repeat == 2) {
         CThing* me = GetCreature();
-        const C3DVector& thingPos = thing.GetPItem()->GetPos();
+        const C3DVector& thingPos = thing.Get()->GetPos();
         const C3DVector& myPos = me->GetPos();
         C3DVector dir(myPos.X - thingPos.X, myPos.Y - thingPos.Y, 0.0f);
         dir.AccurateNormalise();
         C3DVector offset = dir * distance;
-        C3DVector target = thing.GetPItem()->GetPos() + offset;
-        return AIAction_MoveToPosAndFacePos(2, target, thing.GetPItem()->GetPos(), arrived, 8);
+        C3DVector target = thing.Get()->GetPos() + offset;
+        return AIAction_MoveToPosAndFacePos(2, target, thing.Get()->GetPos(), arrived, 8);
     }
     if (repeat == 1) {
         for (;;) {
             CThing* me = GetCreature();
-            const C3DVector& thingPos = thing.GetPItem()->GetPos();
+            const C3DVector& thingPos = thing.Get()->GetPos();
             const C3DVector& myPos = me->GetPos();
             C3DVector dir(myPos.X - thingPos.X, myPos.Y - thingPos.Y, 0.0f);
             dir.AccurateNormalise();
             C3DVector offset = dir * distance;
-            C3DVector target = thing.GetPItem()->GetPos() + offset;
-            EAIActionReturn result = AIAction_MoveToPosAndFacePos(1, target, thing.GetPItem()->GetPos(), arrived, movement);
+            C3DVector target = thing.Get()->GetPos() + offset;
+            EAIActionReturn result = AIAction_MoveToPosAndFacePos(1, target, thing.Get()->GetPos(), arrived, movement);
             if (result != 4)
                 return result;
         }

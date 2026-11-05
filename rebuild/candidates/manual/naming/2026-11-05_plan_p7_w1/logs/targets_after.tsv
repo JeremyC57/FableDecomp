@@ -1,0 +1,16 @@
+target	spellings_after (symbol:count)
+004bf9e0	?SetAsChanged@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z:13
+004bfae0	?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z:8
+004bfb40	?SetLightingChannel@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEnginePrimitiveThemeChannelDesc@@_N1@Z:6
+004bffc0	?ClearHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z:3 || ?ClearMeshEffect@CTCGraphicAppearance@@QAEXPAX@Z:2 || ?ClearMeshEffect_004bffc0@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z:1 || ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z:1
+004c12d0	?GetCameraFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z:14 || ?GetCameraFocalPos@CTCGraphicAppearance@NCameraModes@@QBE?AUC3DVector@2@M@Z:2
+004c7a10	?PeekPlayer@CThing@@QBEABVCPlayer@@XZ:19 || ?dv_h2_004c7a10@@YIXPAX@Z:1 || ?GetPlayer@CThing@@QAEPAVCPlayer@@XZ:1
+004c9920	?IsAffectedByBulletTime@CThing@@QBE_NXZ:15
+005daa40	?IsProjectileWeapon@CTCWeapon@@QBE_NXZ:21 || ?IsMissileWeapon@CTCWeapon@@QBE_NXZ:1
+006a1440	?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ:85 || ?GetWeaponInHand@CTCInventoryAbilities@@QBEPAVCThing@@XZ:1 || ?GetThingInPrimarySlot@CTCInventory@@QAEPAVCThing@@XZ:1 || ?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ:1 || ?GetThingInPrimarySlot@CTCCarrying@@QAEPAUCThingB@@XZ:1
+006b0850	?GetPhysicsMeshObject@CTCPhysicsBase@@QBE?AVCPhysicsMeshObject@@XZ:22
+007cbdc0	?GetGold@CTCGold@@QBEJXZ:3
+007febf0	?IsActionPointFree@CTCUserActionPointBase@@QBE_NXZ:25
+0143e8e0	?NullCoord@CScriptThing@@1VC3DVector@@A:44 || ?g_ZeroVector@@3VC3DVector@@A:4
+0143e8e4	?NullCoord@CScriptThing@@1VC3DVector@@A:2
+0143e8e8	?NullCoord@CScriptThing@@1VC3DVector@@A:2

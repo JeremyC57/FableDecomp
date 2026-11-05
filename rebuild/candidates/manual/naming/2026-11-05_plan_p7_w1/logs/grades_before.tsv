@@ -1,0 +1,3 @@
+address	grade	behaviour	warnings	log
+00939a50	RELOCATION_MATCH	PASS	SHARED_HEADER_AVAILABLE CThing | STANDIN_LEAF ??RCIsNearCampfireWithSpace@@QBE_NPAVCThing@@@Z (catalog CIsNearCampfireWithSpace::operator; names another function)	logs/vland_b1B00.log
+00941be0	RELOCATION_MATCH	PASS	STANDIN_LEAF ??RCIsFreeHopscotchBoard@@QAE_NPAUCThing_Retail@@@Z (catalog CIsFreeHopscotchBoard::operator; names another function)	logs/vland_b1B00.log

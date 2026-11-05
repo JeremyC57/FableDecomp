@@ -54,7 +54,11 @@ class CTCPhysicsBase { public:
 };
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_PEEKPLAYER
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer { public:
@@ -67,43 +71,12 @@ class CTCCombat { public:
 class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);                          // 0x0073AE10
 };
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                            // +0x20
-    CInterfaceMap m_interfaces;                                // +0x44
-    unsigned char _pad54[0xc];
-    CTCPhysicsBase* PhysicsTC;                                 // +0x60
-    CPlayer* GetPlayer();                                      // 0x004C7A10
-    CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
-    unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    CTCBase* GetTC(long type) const
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(key);
-        if (it == map->end() || type < it->first)
-            it = map->end();
-        return it->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingCreatureBase : public CThing { public:
     bool IsBlocking() const
     {
-        if (HasTC(0x30))
-            return ((CTCCombat*)GetTC(0x30))->IsBlocking();
+        if (HasTC(TCI_COMBAT))
+            return ((CTCCombat*)(&GetTC(TCI_COMBAT)))->IsBlocking();
         return false;
     }
 };
@@ -123,12 +96,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);           // 0x0099EBF0
-    ~CCharString();                                            // 0x0099EAE0
-    const CCharString& operator+=(const char* text);                 // 0x0099F100
-};
+
 class CCombatManager { public:
     unsigned char _pad00[0x1c];
     bool CombatStrafeTurningEnabled;                           // +0x1C
@@ -164,7 +132,7 @@ public:
 
 void CCombatAction_ControlledStrafeJump::Initialise()
 {
-    CTCPhysicsBase& physics = *PCreature.GetPItem()->GetPhysics();
+    CTCPhysicsBase& physics = *PCreature.GetPItem()->GetPhysicsTC();
     physics.ResetRHSet(CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), C3DVector(OriginalFacing.X, OriginalFacing.Y, 0.0f)));
     C3DVector facing = physics.GetFacing();
     float cosAngle = facing.Y * RequiredFacing.Y;
@@ -198,15 +166,15 @@ void CCombatAction_ControlledStrafeJump::Initialise()
         name += "FORWARD";
     }
     SetCombatAnimation(name);
-    if (GetCombatManager()->CombatStrafeTurningEnabled && !PCreature.GetPItem()->GetPlayer()->ZTargeting) {
+    if (GetCombatManager()->CombatStrafeTurningEnabled && !PCreature.GetPItem()->PeekPlayer().ZTargeting) {
         float delta = turnOffset - angle;
-        const C3DVector& forward = PCreature.GetPItem()->GetPhysics()->GetRHSet()->Forward;
+        const C3DVector& forward = PCreature.GetPItem()->GetPhysicsTC()->GetRHSet()->Forward;
         float heading = FacingFraction(forward.X, forward.Y);
-        PCreature.GetPItem()->GetPhysics()->SetFacingAngle(heading - delta);
+        PCreature.GetPItem()->GetPhysicsTC()->SetFacingAngle(heading - delta);
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modes;
-    if (PCreature.GetPItem()->GetInterface(&modes, 0x31))
+    if (PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
         modes->AddMode(70);
     AddedRollMode = true;
 }

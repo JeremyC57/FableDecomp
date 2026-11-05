@@ -22,20 +22,9 @@ struct CTCInterface9 {                          // the owner's interface-type-9 
 #pragma pack(push, 1)
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCBase {
 public:
     virtual ~CTCBase();
@@ -57,8 +46,8 @@ public:
     CIntelligentPointer<CThing> PParticleEffect;    // +0x2e CIntelligentPointer<CThing> (unaligned)
     void KillParticleEffect()
     {
-        if (PParticleEffect.GetPItem() && !PParticleEffect.GetPItem()->IsDead())
-            PParticleEffect.GetPItem()->Kill(true);
+        if (PParticleEffect.Get() && !PParticleEffect.Get()->IsDead())
+            PParticleEffect.Get()->Kill(true);
     }
     void DeactivatePosition();
     void RemoveBoast();

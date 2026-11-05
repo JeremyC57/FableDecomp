@@ -1,4 +1,5 @@
 // CThingCompare_BestForTargeting2::GetThingCompareMultiplier(CThing* thing) const -- targeting weight of a thing: 0 when dead, 0.1 when its TC 9 component flags it (bit 2 of +0xc), the enemy preference factor for enemies of the hero, else 1
+// Leaf: ?GetThingCompareMultiplier@CThingCompare_BestForTargeting2@@QBEMPAVCThing@@@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: map pointer made const (the row grades the const LowerBound) re-padded by-value maps +8.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F9E70, 129 bytes (`ret 4`, float in st0).
 // Callees: CInterfaceMap::LowerBound @ 0x004365B0, AreThingsEnemies(CThing*, CThing*) @ 0x0076D2F0 (`__fastcall`).
@@ -9,50 +10,17 @@
 // Shape: IS_THING_ALIVE inline; the TC 9 lookup is the out-parameter GetInterface(&tc, 9) (the component re-uses eax;
 //   a GetTC return value takes ecx); the hero read once.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CTCInterface9 {                          // the component behind ETCInterfaceType 9
     unsigned char _pad[0xc];
     unsigned long m_flags;                      // +0x0c (bit 2: low-priority target)
 };
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                     // +0x91 bit 0
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-};
+
 bool __fastcall AreThingsEnemies(CThing* a, CThing* b);     // 0x0076D2F0
-__forceinline bool IS_THING_ALIVE(CThing* p) { return p && !p->Dead; }
+__forceinline bool IS_THING_ALIVE(CThing* p) { return p && !p->IsDead(); }
 
 class CVectorCompare_BestForTargeting { public: unsigned long m_words[11]; };
 class CThingCompare_BestForTargeting2 { public:
@@ -66,8 +34,8 @@ float CThingCompare_BestForTargeting2::GetThingCompareMultiplier(CThing* thing) 
 {
     if (!IS_THING_ALIVE(thing))
         return 0.0f;
-    CTCInterface9* tc;
-    if (thing->GetInterface(&tc, 9) && (tc->m_flags & 4))
+    const CTCInterface9* tc;
+    if (thing->PeekTC(TCI_TARGETED, &tc) && (tc->m_flags & 4))
         return 0.1f;
     if (AreThingsEnemies(Hero, thing))
         return EnemyPreferenceFactor;

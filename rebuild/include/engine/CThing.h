@@ -24,6 +24,9 @@ class CThingManager; class CThingSearchTools;                   // chunk 765: th
 #ifdef FABLE_RETAIL_CTHING
 class CMainGameComponent; class CPlayer;                        // chunk 732: PeekComponent / GetPlayer return types
 #endif
+#ifdef FABLE_RETAIL_CTHING_MOREACCESS
+class CGameDefinitionManager; class CASoundBank; class CWorldMap;   // plan phase 7: FABLE_RETAIL_CTHING_MOREACCESS return types
+#endif
 #ifdef FABLE_RETAIL_CTHING_STATEACCESS
 class CScriptThing; class CDefString;                           // plan phase 6: GetScriptThing / GetDefName return types
 #endif
@@ -268,6 +271,37 @@ public:
 protected:
     void UpdateThingScanInclusion();                             // 0x004C8C00 ?UpdateThingScanInclusion@CThing@@IAEXXZ (3 rows)
     const CPlayerManager& PeekPlayerManager() const;             // 0x004C79F0 ?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ (3 rows)
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_MOREACCESS
+    // Nested opt-in (plan phase 7, 2026-11-06): more public / protected non-virtual members the CThing rows call out of line. Each
+    // is in both PDB name sets (Ego_r.pdb + FableWin.pdb, the spelling below) and is the catalog row at the retail address; the
+    // rows' local CThing models declared them at those addresses. Declarations only: no layout change.
+    void SetAsFrameUpdated();                                    // 0x004C7C40 ?SetAsFrameUpdated@CThing@@QAEXXZ
+    static CThing* __fastcall Create(long,long,long,bool);       // 0x004CA1D0 ?Create@CThing@@SIPAV1@JJJ_N@Z
+    const CGameDefinitionManager& PeekDefinitionManager() const; // 0x004C7990 ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ
+    CASoundBank& GetSampleBank() const;                          // 0x004C7A80 ?GetSampleBank@CThing@@QBEAAVCASoundBank@@XZ
+    long GetJoystickDeviceNumber() const;                        // 0x004C7CA0 ?GetJoystickDeviceNumber@CThing@@QBEJXZ
+    bool IsRenderedThisFrame() const;                            // 0x004C78F0 ?IsRenderedThisFrame@CThing@@QBE_NXZ
+    bool IsForceNoSerialise() const;                             // 0x004C7BD0 ?IsForceNoSerialise@CThing@@QBE_NXZ
+    bool IsFreeForDeletion() const;                              // 0x004C7500 ?IsFreeForDeletion@CThing@@QBE_NXZ
+    const CCharString& GetTypeName() const;                      // 0x004C7E10 ?GetTypeName@CThing@@QBEABVCCharString@@XZ
+    void CreateUID();                                            // 0x004C7FF0 ?CreateUID@CThing@@QAEXXZ
+    bool IsUnderScriptControl() const;                           // 0x004C8C90 ?IsUnderScriptControl@CThing@@QBE_NXZ
+    void SetToKillOnLevelUnload(bool);                           // 0x004C9C40 ?SetToKillOnLevelUnload@CThing@@QAEX_N@Z
+    void FrameUpdate();                                          // 0x004C9D20 ?FrameUpdate@CThing@@QAEXXZ
+protected:
+    const CWorldMap& PeekWorldMap() const;                       // 0x004C79E0 ?PeekWorldMap@CThing@@IBEABVCWorldMap@@XZ
+public:
+#endif
+#ifdef FABLE_RETAIL_CTHING_OPERATORNEW
+    // Nested opt-in (plan phase 7, 2026-11-06): CThing::operator new(size_t, bool) 0x004C7380, Ego_r.pdb / FableWin.pdb
+    // ??2CThing@@KIPAXI_N@Z (protected static __fastcall: ecx = size, dl = the flag the thing manager is asked about; the catalog's
+    // CThing::operator new). Every derived class's Alloc / Create calls it as `new (flag) CThingX` (13 landed rows modelled it
+    // locally). A declaration only: no layout change. It hides the global operator new for CThing and its derived classes, as
+    // in retail, so only the TUs that allocate things opt in.
+protected:
+    static void* __fastcall operator new(unsigned int size, bool flag);  // 0x004C7380
 public:
 #endif
 #ifdef FABLE_RETAIL_CTHING_PEEKPLAYER

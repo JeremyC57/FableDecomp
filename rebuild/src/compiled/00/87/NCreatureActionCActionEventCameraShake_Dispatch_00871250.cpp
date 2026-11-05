@@ -1,4 +1,5 @@
 // NCreatureAction::CActionEventCameraShake::Dispatch(const CActionEventContext&) -- starts a camera shake at the context thing's (bone) position unless the thing is gone or flagged dead
+// Leaf: ?Dispatch@CActionEventCameraShake@@QAEXABUCActionEventContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00871250, length 59 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (on the intelligent pointer at +8 of the
 // context), CThing::GetPos @ 0x004C73D0 (Ego_r.pdb; the "CVertexBufferWin32::DoSizeof" label is propagated),
@@ -10,11 +11,7 @@
 // the __fastcall creator with the strength at +0x14 in edx.
 class C3DVector;
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char m_isDead : 1;                         // +0x91 bit 0
-    const C3DVector& GetPos() const;                    // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb; the two pushes belong to the __fastcall creator below)
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -52,6 +49,6 @@ struct CActionEventCameraShake {
 void CActionEventCameraShake::Dispatch(const CActionEventContext& context)
 {
     CThing* thing = const_cast<CIntelligentPointer<CThing>&>(context.m_pThing).GetPItem();
-    if (thing && !thing->m_isDead)
+    if (thing && !thing->IsDead())
         CreateCameraShake(thing->GetPos(), m_strength, m_bone, m_boneFlag);
 }

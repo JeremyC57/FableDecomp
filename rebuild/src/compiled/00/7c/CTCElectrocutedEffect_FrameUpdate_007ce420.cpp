@@ -1,4 +1,5 @@
 // CTCElectrocutedEffect::FrameUpdate() -- fades the electrocution tint and highlight in and out on the thing and its tint list, then removes the effect when the fade-out ends
+// Leaf: ?FrameUpdate@CTCElectrocutedEffect@@QAEXXZ
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?SetActive@CThing@@QAEX_N@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CE420, 784 bytes, `ret`.
@@ -29,17 +30,11 @@ namespace NGraphicAppearance {
                               EAppearanceMeshEffectPriority priority, void* owner);   // 0x004C04C0
     };
 }
-enum ETCInterfaceType { };
-class CThing {
-public:
-    unsigned char _pad00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    unsigned char _pad68[0x91 - 0x68];
-    unsigned char Flags91;                          // +0x91 (bit 0: being destroyed)
-    void SetAsRenderedThisFrame(unsigned long reasons);   // 0x004C7590
-    void SetAsFrameUpdated();                       // 0x004C7C40
-    void RemoveTC(ETCInterfaceType type);                       // 0x004C9840
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -96,7 +91,7 @@ public:
         CRGBColour highlight((unsigned char)def->HighlightColor._M_start[0], (unsigned char)def->HighlightColor._M_start[1],
                              (unsigned char)def->HighlightColor._M_start[2], (unsigned char)(def->Color._M_start[3] * t));
         float width = t * def->HighlightWidth;
-        NGraphicAppearance::CTCGraphicAppearance* appearance = thing->PGraphicAppearance;
+        NGraphicAppearance::CTCGraphicAppearance* appearance = thing->GetTCGraphicAppearance();
         if (appearance) {
             appearance->SetTintColour(tint, this);
             appearance->SetAsHighlighted(width, 0.0f, highlight, false, false, NGraphicAppearance::PRIORITY_2, this);
@@ -104,8 +99,8 @@ public:
         CIntelligentPointer<CThing>* end = TintList._M_finish;
         for (CIntelligentPointer<CThing>* it = TintList._M_start; it != end; ++it) {
             CThing* other = it->GetPItem();
-            if (other && !(other->Flags91 & 1)) {
-                NGraphicAppearance::CTCGraphicAppearance* otherAppearance = other->PGraphicAppearance;
+            if (other && !other->IsDead()) {
+                NGraphicAppearance::CTCGraphicAppearance* otherAppearance = other->GetTCGraphicAppearance();
                 if (otherAppearance) {
                     otherAppearance->SetTintColour(tint, this);
                     otherAppearance->SetAsHighlighted(width, 0.0f, highlight, false, false, NGraphicAppearance::PRIORITY_2, this);

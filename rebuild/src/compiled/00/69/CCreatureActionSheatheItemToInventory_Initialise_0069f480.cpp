@@ -21,20 +21,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCHeroRangedAttacks { public:               // interface type 0x81 component
     void CancelAimingWeapon();              // 0x00789FF0
     void ResetProjectileWeaponMode();       // 0x00789B30
@@ -56,9 +45,9 @@ void CCreatureAction_SheatheItemToInventory::Initialise()
 {
     CCreatureActionBase::Initialise();
     CTCHeroRangedAttacks* pRanged;
-    if (PCreature.GetPItem()->GetTC(TCI_HERO_RANGED_ATTACKS, &pRanged)) {
+    if (PCreature.Get()->GetTC(TCI_HERO_RANGED_ATTACKS, &pRanged)) {
         pRanged->CancelAimingWeapon();
         pRanged->ResetProjectileWeaponMode();
-        PCreature.GetPItem()->GetPlayer().RemoveMode(0x22);
+        PCreature.Get()->GetPlayer().RemoveMode(0x22);
     }
 }

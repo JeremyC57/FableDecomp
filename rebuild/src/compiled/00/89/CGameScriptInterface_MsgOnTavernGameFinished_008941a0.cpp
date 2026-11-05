@@ -22,21 +22,16 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-class CThing { public:
-    enum { ThingTypeMask = 0 };
-    unsigned char _pad[0x6c];
-    unsigned long ThingTypeFlags;                   // +0x6c
-    unsigned char _pad70[0x91 - 0x70];
-    unsigned char m_dead : 1;                       // +0x91 bit 0
-    unsigned char m_91_1 : 7;
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATTYPEFLAGS
+#include "engine/CThing.h"
 template <class T> inline bool IsThingOfType(const CThing* const& thing)
 {
-    unsigned long mask = T::ThingTypeMask;
-    return (thing->ThingTypeFlags & mask) == mask;
+    unsigned long mask = T::StatGetTypeFlags();
+    return (thing->GetTypeFlags() & mask) == mask;
 }
 
-inline bool IS_THING_DEAD(CThing* const& thing) { return thing->m_dead; }
+inline bool IS_THING_DEAD(CThing* const& thing) { return thing->IsDead(); }
 template<class T> inline bool IS_THING_ALIVE(T* const& thing) { return thing != 0 && !IS_THING_DEAD(thing); }
 
 class CMessageEvent { public:

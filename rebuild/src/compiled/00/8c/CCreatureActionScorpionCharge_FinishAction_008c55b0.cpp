@@ -30,25 +30,14 @@ class CTCPhysicalShieldSpell { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;                // +0x08
-    CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
+    CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.Get(); }
 };
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _pad10[0xa8 - 0x10];
@@ -56,8 +45,8 @@ class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _padb0[0x114 - 0xb0];
     virtual ~CCombatActionBase();                             // 0x0062E900
     void FinishAction();                              // 0x00859A20
-    CThing* GetTarget() const { return PTarget.GetPItem(); }
-    bool IsTargetAlive() const { return PTarget.GetPItem() && !PTarget.GetPItem()->IsDead(); }
+    CThing* GetTarget() const { return PTarget.Get(); }
+    bool IsTargetAlive() const { return PTarget.Get() && !PTarget.Get()->IsDead(); }
 };
 class CCreatureAction_ScorpionCharge : public CCombatActionBase { public:
     float     ChargeDistance;                         // +0x114
@@ -82,17 +71,17 @@ void CCreatureAction_ScorpionCharge::FinishAction()
     CCombatActionBase::FinishAction();
     if (IsTargetAlive()) {
         CTCPhysicalShieldSpell* shield;
-        if (PTarget.GetPItem()->GetTC(TCI_PHYSICAL_SHIELD_SPELL, &shield))
+        if (PTarget.Get()->GetTC(TCI_PHYSICAL_SHIELD_SPELL, &shield))
             shield->AllowReactionsOnHitFromAttacker(GetCreature(), false);
     }
     if (IsTargetAlive()) {
         if (remaining > 0.0f && travelled > 0.1f) {
             if (!GetCreature()->IsCollidingWithLandscape())
-                GetCreature()->SetCurrentAction(CCreatureAction_ScorpionCharge(*GetCreature(), *PTarget.GetPItem(), remaining));
+                GetCreature()->SetCurrentAction(CCreatureAction_ScorpionCharge(*GetCreature(), *PTarget.Get(), remaining));
         } else {
             GetCreature()->RemoveTC((ETCInterfaceType)(0xc8));
             if (!GetCreature()->IsCollidingWithLandscape())
-                GetCreature()->SetCurrentAction(CCreatureAction_ScorpionChargeStrike(GetCreature(), PTarget.GetPItem()));
+                GetCreature()->SetCurrentAction(CCreatureAction_ScorpionChargeStrike(GetCreature(), PTarget.Get()));
         }
     }
 }

@@ -35,21 +35,10 @@ inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-inline bool IsAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() != 0 && !p.GetPItem()->IsDead(); }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
+inline bool IsAlive(const CIntelligentPointer<CThing>& p) { return p.Get() != 0 && !p.Get()->IsDead(); }
 struct CIntelligentPointerVector {              // STLport vector<CIntelligentPointer<CThing> > (12 bytes)
     CIntelligentPointer<CThing>* _M_start;
     CIntelligentPointer<CThing>* _M_finish;
@@ -93,12 +82,12 @@ bool CAIStateGroup_HoverHornetQueen::IsRouteToPosBlockedByTarget(long circlePoin
 {
     if (IsAlive(PTarget) && IsAlive(CircleMarkers[circlePoint])) {
         const CThing* creature = GetCreature();
-        const CThing* target = PTarget.GetPItem();
+        const CThing* target = PTarget.Get();
         C3DVector toTarget = target->GetPos() - creature->GetPos();
         float distanceXY = toTarget.GetXYMagnitude();
         toTarget.Normalise();
         const CThing* me = GetCreature();
-        const CThing* marker = CircleMarkers[circlePoint].GetPItem();
+        const CThing* marker = CircleMarkers[circlePoint].Get();
         C3DVector toMarker = marker->GetPos() - me->GetPos();
         toMarker.Normalise();
         if (Dot(toMarker, toTarget) > 0.5f && distanceXY < 3.0f)

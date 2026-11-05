@@ -14,19 +14,13 @@
 // action destructor, with no vtable store.
 class CBaseObject;
 
-class CThing { public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;                      // +0x10 thing type (5 = object)
-    unsigned char _pad11[0x80];
-    unsigned char Dead : 1;                    // +0x91 bit 0
-};
+#include "engine/CThing.h"
 
 class CThingObject : public CThing { public: };
 
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-
 
 class CCreatureActionBase { public:
     virtual void v00();
@@ -63,6 +57,6 @@ void CTCActionUsePutInInventory::OnActionUse(CThing& user)
 {
     CTCActionUseBase::OnActionUse(user);
     CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(&user);
-    if (creature && !creature->Dead && ParentThing->m_type == 5)
+    if (creature && !creature->IsDead() && ParentThing->GetType() == 5)
         creature->SetCurrentAction(CCreatureAction_AddRealObjectToInventory(creature, static_cast<CThingObject*>(ParentThing)));
 }

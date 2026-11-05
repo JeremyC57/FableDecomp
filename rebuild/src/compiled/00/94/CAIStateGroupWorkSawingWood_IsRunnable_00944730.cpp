@@ -163,7 +163,7 @@ class CTCThingOwner { public:                          // interface 0x21
     CThingList ObjectList;                      // +0x0c
 };
 struct CTCUserActionPointBase {                 // interface 0x2D
-    bool IsActionPointFree();                   // 0x007FEBF0
+    bool IsActionPointFree() const;                   // 0x007FEBF0
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];

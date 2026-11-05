@@ -48,7 +48,9 @@ public:
     ::CTCPhysicsBase* PhysicsTC;                         // +0x60 (PDB +0x70)
     unsigned char   _pad64[0x34];
     bool DoActivationSequence();                         // 0x004C9CA0
-    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380
+protected:
+    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380; protected in retail (Ego_r ??2CThing@@KIPAXI_N@Z)
+public:
 };
 
 class CThingVillage : public CThing {

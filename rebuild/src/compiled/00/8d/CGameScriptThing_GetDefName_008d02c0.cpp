@@ -7,12 +7,10 @@
 // Shape: two 4-byte frame temporaries (the CDefString and the looked-up name); the name is a NAMED local returned by value
 // (VC7.1 has no NRVO: copy constructor into the hidden pointer, then the local's destructor).
 // Leaf: ?GetDefName@CGameScriptThing@@UBE?AVCCharString@@XZ
-class CCharString { public:
-    void* m_pData;
-    CCharString(const CCharString& other);         // 0x0099EC30
-    CCharString(const char* text, long length);    // 0x0099EBF0
-    ~CCharString();                                // 0x0099EAE0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 class CDefString { public:                                // a definition-string handle: one table index
     long m_index;
@@ -21,12 +19,7 @@ class CDefStringTable { public:
     CCharString GetString(CDefString name);        // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
-class CThing { public:
-    unsigned char  _pad00[0x91];
-    unsigned char  m_dead : 1;                     // +0x91 bit 0
-    unsigned char  m_91_1 : 7;
-    CDefString GetDefName() const;                 // 0x004C7CC0
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -52,7 +45,7 @@ class CGameScriptThing { public:
 
 CCharString CGameScriptThing::GetDefName() const
 {
-    if (PThing.GetPItem() && !PThing.GetPItem()->m_dead) {
+    if (PThing.GetPItem() && !PThing.GetPItem()->IsDead()) {
         CCharString name = GDefStringTable.GetString(PThing.GetPItem()->GetDefName());
         return name;
     }

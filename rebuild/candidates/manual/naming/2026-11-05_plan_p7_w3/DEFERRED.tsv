@@ -1,0 +1,132 @@
+address	stage	reason
+00449f90	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00487af0	compile_fail	COMPILE_FAIL user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThingPlayerCreature *'
+00487c20	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00487ef0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+004884d0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+004af560	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+004b0c80	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+004b0f10	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+004b0fc0	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+00634890	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00634a30	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00634f60	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00635080	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00635190	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+006352a0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+006353b0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+006354c0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00636270	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+006369b0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00636b00	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00658ec3	no_rule	UNCHANGED: no local CIntelligentPointer<T> block
+0066aef0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00691fe0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+006a5950	no_rule	UNCHANGED: no engine/CThing.h
+006a5af0	compile_fail	COMPILE_FAIL \-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006a5af0\x.cpp(93) : error C2065: 'ThingClass' : undeclared identifier
+006bf960	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+006c04d0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+006c0580	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+006e0480	compile_fail	COMPILE_FAIL omp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'NParticleEngine::CParticleEmitter *'
+006e0500	compile_fail	COMPILE_FAIL omp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'NParticleEngine::CParticleEmitter *'
+006e05f0	compile_fail	COMPILE_FAIL omp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'NParticleEngine::CParticleEmitter *'
+006e0620	compile_fail	COMPILE_FAIL omp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'NParticleEngine::CParticleEmitter *'
+006e2d30	compile_fail	COMPILE_FAIL e\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThingSoundEmitter *'
+00712df0	compile_fail	COMPILE_FAIL error C2664: 'CIntelligentPointer<T>::CIntelligentPointer(T *)' : cannot convert parameter 1 from 'CBaseObject *' to 'NTCScriptedControl::CScriptConversation *'
+00729ca0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+0072f9e0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00731680	no_rule	UNCHANGED: local CIntelligentPointer<T> has extra members: IsAlive,IsDead
+00747b80	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0074ab00	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0075d940	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007674a0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+0076cc00	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00782390	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00799000	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0079d020	compile_fail	COMPILE_FAIL omp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'NParticleEngine::CParticleEmitter *'
+0079d110	compile_fail	COMPILE_FAIL omp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'NParticleEngine::CParticleEmitter *'
+007a7bf0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007af310	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007b01c0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007b0950	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007ba1d0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007ba8c0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007c6940	no_rule	UNCHANGED: local CIntelligentPointer<T> has extra members: v00
+007c6aa0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007ca9e0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007cab30	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007cc060	compile_fail	COMPILE_FAIL user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007cc060\x.cpp(24) : error C2039: 'IsDead' : is not a member of 'CBaseObject'
+007d2ef0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+007e34e0	bytes_differ	BYTES (masked sha1 differs)
+007f11d0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007fb1c0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007fb4a0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007fbc90	bytes_differ	BYTES (masked sha1 differs); TARGETS differ (35 vs index 35) 10a401cd 10a41255 -00a01b10
+008004d0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00835fd0	no_rule	UNCHANGED: no engine/CThing.h
+00842f70	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+00844260	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+008442f0	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+00844380	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+00844410	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+008445a0	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+00845fe0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+0084d7e0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0085aa90	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00860950	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00866fb0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00867010	no_rule	UNCHANGED: no engine/CThing.h
+008b7ba0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008c1e00	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008c40f0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008c4b00	no_rule	UNCHANGED: local CIntelligentPointer<T> has extra members: GetCreature
+008c7200	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008c9e60	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008ca170	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008ca220	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008cb120	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008cb250	no_rule	UNCHANGED: no engine/CThing.h
+008cc7a0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008cc820	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008cd820	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008cda30	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008d7370	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008d7430	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008d7580	no_rule	UNCHANGED: no engine/CThing.h
+008ef400	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008f20f0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008f2580	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008f3a50	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008f42a0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008f4570	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+0090c670	no_rule	UNCHANGED: no engine/CThing.h
+0090e120	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0090e2e0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0090e4a0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00918050	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CIntelligentPointer.h(36) : error C2440: 'static_cast' : cannot convert from 'CBaseObject *' to 'CThing *'
+0091d8c0	no_rule	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+0092e300	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00939180	no_rule	UNCHANGED: no engine/CThing.h
+0093a080	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0093afc0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0093ea00	compile_fail	COMPILE_FAIL _work\0093ea00\x.cpp(52) : error C2664: 'CTCVillage::RemoveThingFromTask' : cannot convert parameter 1 from 'CIntelligentPointer<T>' to 'CIntelligentPointer<T>'
+0093ee40	compile_fail	COMPILE_FAIL _work\0093ee40\x.cpp(52) : error C2664: 'CTCVillage::RemoveThingFromTask' : cannot convert parameter 1 from 'CIntelligentPointer<T>' to 'CIntelligentPointer<T>'
+0093fb30	compile_fail	COMPILE_FAIL _work\0093fb30\x.cpp(52) : error C2664: 'CTCVillage::RemoveThingFromTask' : cannot convert parameter 1 from 'CIntelligentPointer<T>' to 'CIntelligentPointer<T>'
+009408d0	compile_fail	COMPILE_FAIL _work\009408d0\x.cpp(52) : error C2664: 'CTCVillage::RemoveThingFromTask' : cannot convert parameter 1 from 'CIntelligentPointer<T>' to 'CIntelligentPointer<T>'
+00943b40	compile_fail	COMPILE_FAIL _work\00943b40\x.cpp(83) : error C2664: 'CTCVillage::RemoveThingFromTask' : cannot convert parameter 1 from 'CIntelligentPointer<T>' to 'CIntelligentPointer<T>'
+00948060	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+009490d0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+009498b0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0094a840	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0094cb40	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00954900	compile_fail	COMPILE_FAIL Decomp\rebuild\include\engine\CIntelligentPointer.h(53) : error C2440: 'static_cast' : cannot convert from 'const CThingCreatureBase *' to 'const CBaseObject *'
+00959a60	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0095a2c0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0095e790	no_rule	UNCHANGED: no local CIntelligentPointer<T> block
+00961790	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00961c50	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+009647c0	no_rule	UNCHANGED: no local CIntelligentPointer<T> block
+0096ddb0	compile_fail	COMPILE_FAIL ser-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0096ddb0\x.cpp(120) : error C2039: 'IsDead' : is not a member of 'CBaseObject'
+0096fa90	no_rule	UNCHANGED: no local CIntelligentPointer<T> block
+00970b60	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model
+009713e0	no_rule	UNCHANGED: non-canonical CBaseIntelligentPointer model

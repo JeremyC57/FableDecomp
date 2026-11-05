@@ -38,20 +38,9 @@ struct CTCCreatureFlags9 {                  // the interface-9 component: one by
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
 };
@@ -88,9 +77,9 @@ void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
 {
     SetCombatAnimation("TAKE_OFF");
     CCombatActionBase::Initialise();
-    SetThingIsAbleToBeLifted(PCreature.GetPItem(), false);
+    SetThingIsAbleToBeLifted(PCreature.Get(), false);
     CTCCreatureFlags9* pFlags;
-    PCreature.GetPItem()->GetTC(TCI_TARGETED, &pFlags);
+    PCreature.Get()->GetTC(TCI_TARGETED, &pFlags);
     pFlags->m_canBeTargeted = 0;
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCSolidToThing* pSolid;
@@ -99,7 +88,7 @@ void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
     else
         pSolid = ((CTCSolidToThing*)hero->AddTC("CTCSolidToThing", false, 0));
     if (pSolid)
-        pSolid->AddThingNotSolidTo(PCreature.GetPItem());
-    const C3DVector& pos = PCreature.GetPItem()->GetPos();
+        pSolid->AddThingNotSolidTo(PCreature.Get());
+    const C3DVector& pos = PCreature.Get()->GetPos();
     Dest = C3DVector(pos.X, pos.Y, pos.Z + 35.14837646484375f);
 }

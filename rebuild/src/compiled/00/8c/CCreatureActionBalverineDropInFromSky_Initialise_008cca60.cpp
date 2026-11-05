@@ -21,20 +21,9 @@ struct CTCGraphicAppearance;
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 struct CThingCreatureCalls {                // the creature's own virtuals: slot 28 takes one flag
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -69,10 +58,10 @@ class CCreatureAction_BalverineDropInFromSky : public CCombatActionBase { public
 void CCreatureAction_BalverineDropInFromSky::Initialise()
 {
     SetCombatAnimation("GENERATE_DROP");
-    ((CThingCreatureCalls*)PCreature.GetPItem())->SetInvisible(true);
+    ((CThingCreatureCalls*)PCreature.Get())->SetInvisible(true);
     CTCParticleAttacher* pParticles;
-    if (PCreature.GetPItem()->GetTC(TCI_PARTICLE_ATTACHER, &pParticles))
+    if (PCreature.Get()->GetTC(TCI_PARTICLE_ATTACHER, &pParticles))
         pParticles->AttachParticles();
-    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(PCreature.GetPItem(), true);
+    CTCWillResponse::SetThingAsNotBloodyWillableAtAll(PCreature.Get(), true);
     CCombatActionBase::Initialise();
 }

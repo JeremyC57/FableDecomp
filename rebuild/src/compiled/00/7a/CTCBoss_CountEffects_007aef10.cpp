@@ -1,4 +1,5 @@
 // CTCBoss::CountEffects() const -- count the boss's effect things that still exist and are not dead
+// Leaf: ?CountEffects@CTCBoss@@QAEJXZ
 //
 // Retail 0x007AEF10, 78 bytes. Callee: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 (twice
 // per element). Effects is the retail 12-byte vector<CIntelligentPointer<CThing>> {first, last, end}
@@ -9,11 +10,7 @@
 // re-read from the members after the calls; the element is bound to a reference local once per
 // iteration (`lea edi,[ecx+ebp*8]`) so both GetPItem calls reuse it.
 
-class CThing
-{ public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 
@@ -70,7 +67,7 @@ long CTCBoss::CountEffects()
     for (unsigned int i = 0; i < Effects.size(); ++i)
     {
         const CIntelligentPointer<CThing>& effect = Effects[i];
-        if (effect.Get() && !effect.Get()->Dead)
+        if (effect.Get() && !effect.Get()->IsDead())
             ++count;
     }
     return count;

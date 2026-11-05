@@ -61,20 +61,9 @@ class CThingCreatureBase : public CThing { public:
 namespace NCreatureMode { bool __fastcall IsUnderground(const CThingCreatureBase& creature); }   // 0x0085F120
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 struct SListNode {
     SListNode* next;
     SListNode* prev;
@@ -99,9 +88,9 @@ void CTCCreatureGenerator::UpdateUndead()
     if (Triggerers.empty())
         UndeadTriggered = false;
     for (CIntelligentPointer<CThingCreatureBase>* it = Triggerers._M_start; it != Triggerers._M_finish; ++it) {
-        CThingCreatureBase* triggerer = it->GetPItem();
+        CThingCreatureBase* triggerer = it->Get();
         for (SListNode* node = CreatedCreatures->next; node != CreatedCreatures; node = node->next) {
-            CThingCreatureBase* creature = node->data.GetPItem();
+            CThingCreatureBase* creature = node->data.Get();
             const C3DVector& creaturePos = creature->GetPos();
             const C3DVector& triggererPos = triggerer->GetPos();
             C3DVector delta;

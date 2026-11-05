@@ -28,17 +28,13 @@ class CRightHandedSet { public:
 };
 
 class CBaseObject;
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_dead : 1;                        // +0x91 bit 0
-    unsigned char m_91_1 : 7;
-};
+#include "engine/CThing.h"
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
     virtual void v00();
 };
-#define IS_THING_ALIVE(p) ((p).GetPItem() && !((const CThing*)(p).GetPItem())->m_dead)
+#define IS_THING_ALIVE(p) ((p).GetPItem() && !((const CThing*)(p).GetPItem())->IsDead())
 
 namespace NCameraModes {
 

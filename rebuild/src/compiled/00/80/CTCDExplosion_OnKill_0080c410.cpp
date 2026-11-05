@@ -12,11 +12,7 @@
 // engine header for the class, so a local model.
 #include "engine/C3DVector.h"
 
-class CThing { public:                             // only the dead bit and the call are modelled
-    unsigned char _pad[0x91];
-    unsigned char Dead : 1;                 // +0x91 bit 0
-    void Kill(bool checkLocked);            // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -39,7 +35,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->Dead)
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;

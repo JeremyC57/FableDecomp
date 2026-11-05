@@ -62,9 +62,12 @@ __declspec(noinline) CVectorList::~CVectorList()      // list<C3DVector>::~list 
 #pragma auto_inline(on)
 
 extern const C3DVector g_EvasionSampleOffsets[4];  // 0x013893AC: 0, X, Y, Z
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float t) const;    // 0x004C12D0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* Appearance;              // +0x64

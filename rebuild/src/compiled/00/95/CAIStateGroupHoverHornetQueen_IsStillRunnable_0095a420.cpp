@@ -22,25 +22,14 @@ class CThingCreatureBase;
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    return p.GetPItem() != 0 && !p.GetPItem()->IsDead();
+    return p.Get() != 0 && !p.Get()->IsDead();
 }
 
 // Retail STLport vector<CIntelligentPointer<CThing>>: {start, finish, end_of_storage}.
@@ -92,9 +81,9 @@ bool CAIStateGroup_HoverHornetQueen::IsStillRunnable()
         return false;
     if (CircleMarkers.size() > 0) {
         CIntelligentPointer<CThing>& marker = CircleMarkers[0];
-        if (marker.GetPItem() == 0)
+        if (marker.Get() == 0)
             return false;
-        if (marker.GetPItem()->IsDead())
+        if (marker.Get()->IsDead())
             return false;
     }
     if (IsStopping())

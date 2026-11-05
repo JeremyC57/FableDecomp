@@ -106,12 +106,12 @@ class CAIBrain
 
 class CTCCarrying                                  // interface type 0x46 (word 2 bit 6)
 { public:
-    CThing* GetThingInPrimarySlot();                // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;                // 0x006A1440
 };
 
 class CTCWeapon                                    // interface type 0x48 (word 2 bit 8)
 { public:
-    bool IsProjectileWeapon();                      // 0x005DAA40
+    bool IsProjectileWeapon() const;                      // 0x005DAA40
 };
 
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)

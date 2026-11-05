@@ -18,21 +18,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCVillage {
 public:
     unsigned char _pad00[0x7c];
@@ -80,8 +68,8 @@ public:
 
 void CTCHeroOpinionDeedLog::RemoveCrimeFromVillage(long handle)
 {
-    if (VillageForCrimes.GetPItem()) {
-        CThing* villageThing = VillageForCrimes.GetPItem();
+    if (VillageForCrimes.Get()) {
+        CThing* villageThing = VillageForCrimes.Get();
         if (villageThing->HasTC(TCI_VILLAGE)) {
             CTCVillage* village = ((CTCVillage*)&villageThing->GetTC(TCI_VILLAGE));
             if (!village->CrimeReportedFlag) {

@@ -1,4 +1,5 @@
 // CCombatActionBase::ProcessStrikeEvents() -- run the active strike event (damage, weapon aug effect), clear it when it ends, then arm the interrupt / reset-combo / movement-interrupt flags
+// Leaf: ?ProcessStrikeEvents@CCombatActionBase@@QAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +8.
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -30,7 +31,9 @@ public:
 };
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -40,27 +43,6 @@ class CTCObjectAugmentations { public:                        // interface 0xbf
 };
 class CTCCombat { public:                                     // interface 0x30
     void ResetComboChainPos();                         // 0x00733210
-};
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                    // +0x20
-    CInterfaceMap m_interfaces;                        // +0x44
-    unsigned char _pad54[0x18];
-    unsigned long ThingTypeFlags;                      // +0x6c (PDB +0x7c)
-    unsigned char _pad70[0x91 - 0x70];
-    unsigned char Dead : 1;                            // +0x91 bit 0 (PDB +0xa1)
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
 };
 
 class CBaseObject;
@@ -150,12 +132,12 @@ void CCombatActionBase::ProcessStrikeEvents()
         if (strikeEvent) {
             if (strikeEvent->StrikeEventIndex != ActiveStrikeEventIndex) {
                 ActiveStrikeEventIndex = strikeEvent->StrikeEventIndex;
-                if (((CThing*)PCreature.GetPItem())->ThingTypeFlags & 0x20) {
+                if (((CThing*)PCreature.GetPItem())->GetTypeFlags() & 0x20) {
                     CThing* weapon = GetWeaponUsedInStrikeAction();
                     if (weapon) {
                         LastWeaponUsedInStrike = weapon;
                         CTCObjectAugmentations* augmentations;
-                        if (weapon->GetInterface(&augmentations, 0xbf))
+                        if (weapon->GetTC(TCI_OBJECT_AUGMENTATIONS, &augmentations))
                             augmentations->FireCombatAugEffect();
                     }
                 }
@@ -163,15 +145,15 @@ void CCombatActionBase::ProcessStrikeEvents()
         } else if (ActiveStrikeEventIndex >= 0) {
             if (IS_THING_ALIVE(LastWeaponUsedInStrike)) {
                 CTCObjectAugmentations* augmentations;
-                if (((CThing*)LastWeaponUsedInStrike.GetPItem())->GetInterface(&augmentations, 0xbf))
+                if (((CThing*)LastWeaponUsedInStrike.GetPItem())->GetTC(TCI_OBJECT_AUGMENTATIONS, &augmentations))
                     augmentations->EndStrikeAction();
             }
             ActiveStrikeEventIndex = -1;
         }
     } else if (ActiveStrikeEventIndex >= 0) {
-        if (((CThing*)LastWeaponUsedInStrike.GetPItem()) && !((CThing*)LastWeaponUsedInStrike.GetPItem())->Dead) {
+        if (((CThing*)LastWeaponUsedInStrike.GetPItem()) && !((CThing*)LastWeaponUsedInStrike.GetPItem())->IsDead()) {
             CTCObjectAugmentations* augmentations;
-            if (((CThing*)LastWeaponUsedInStrike.GetPItem())->GetInterface(&augmentations, 0xbf))
+            if (((CThing*)LastWeaponUsedInStrike.GetPItem())->GetTC(TCI_OBJECT_AUGMENTATIONS, &augmentations))
                 augmentations->EndStrikeAction();
         }
         ActiveStrikeEventIndex = -1;
@@ -183,7 +165,7 @@ void CCombatActionBase::ProcessStrikeEvents()
         FramesRunning > (long)(GetAnimDelayTime() + framesPerSecond * StrikeEventResetComboTime)) {
         HasStrikeEventResetCombo = false;
         CTCCombat* combat;
-        ((CThing*)PCreature.GetPItem())->GetInterface(&combat, 0x30);
+        ((CThing*)PCreature.GetPItem())->GetTC(TCI_COMBAT, &combat);
         combat->ResetComboChainPos();
     }
     if (HasMovementEventInterrupt && !MovementEventInterruptActive && MovementEventInterruptFrame == FramesRunning)

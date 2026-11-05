@@ -9,12 +9,7 @@
 // user dtor: an empty inline one would store the vtable before each base-dtor call); then the members PHeroCentre and PParticle are destroyed in reverse order.
 // Layout (packed, Ego_r.pdb CTCHeroCentreDoorMarker 0x28): Radius +0x0c, DoorType +0x10, HeroInsideRadius +0x14,
 // PParticle +0x15, PHeroCentre +0x1d (CIntelligentPointer<CThing>: vptr + item); CThing dead bit = bit 0 of +0x91.
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                     // +0x91 bit 0
-    void Kill(bool b);                          // 0x004C9B80
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -34,7 +29,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
+template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 
 class CTCBase {
 public:

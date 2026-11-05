@@ -1,0 +1,41 @@
+gate: 200 rows {'PASS': 200} in 23.4s (0.12s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 19.1s (0.10s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 21.1s (0.11s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 22.3s (0.11s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 22.9s (0.11s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 23.8s (0.12s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 21.6s (0.11s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 21.6s (0.11s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 22.3s (0.11s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 24.6s (0.12s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 22.6s (0.11s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 24.4s (0.12s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 18.7s (0.09s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 18.7s (0.09s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 19.6s (0.10s/row wall, NJ=2)
+  WARN leaf '?EntityGetSex@CGameScriptInterface@@UBE?AW4ESex@@ABVCScriptThing@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?AddPersonToConversation@CGameScriptInterface@@UBEXJABVCScriptThing@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?IsReportedOrUnreportedCrimeKnown@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?SetFireToThing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?IsThingOnFire@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?EntityGetHearingRadius@CGameScriptInterface@@UBEMABVCScriptThing@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?EntityResetForceToLookAt@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?EntityGiveGold@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?EntityGetBossPhase@CGameScriptInterface@@UBEJABVCScriptThing@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?SetLightColour@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCRGBColour@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?SetTavernTableAvailableForUse@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?IsThingTurncoated@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 200} in 18.3s (0.09s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 28.1s (0.14s/row wall, NJ=2)
+  WARN leaf '?GetFollowingEntityList@CGameScriptInterface@@UBE_NABVCScriptThing@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 200} in 23.9s (0.12s/row wall, NJ=2)
+  WARN leaf '?DealWithHeroHittingMe@CVictimsBrother@CQ_RansomVictimScript@NScript@@AAEXXZ' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 200} in 25.3s (0.13s/row wall, NJ=2)
+  WARN leaf '?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 200} in 24.5s (0.12s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 25.4s (0.13s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 26.3s (0.13s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 28.6s (0.14s/row wall, NJ=2)
+gate: 154 rows {'PASS': 154} in 29.7s (0.19s/row wall, NJ=2)
+gatewave /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/plan/p7/w1i {'PASS': 4754}

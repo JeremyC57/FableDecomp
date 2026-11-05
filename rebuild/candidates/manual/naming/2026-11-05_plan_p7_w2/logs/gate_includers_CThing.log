@@ -1,0 +1,15 @@
+gate: 200 rows {'PASS': 200} in 33.9s (0.17s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 31.7s (0.16s/row wall, NJ=2)
+  WARN leaf '??R' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 200} in 31.5s (0.16s/row wall, NJ=2)
+gate: 200 rows {'PASS': 198, 'FAIL': 2} in 30.3s (0.15s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 32.0s (0.16s/row wall, NJ=2)
+  WARN leaf '??R' matches no symbol in x.obj; graded the largest function
+  WARN leaf '??R' matches no symbol in x.obj; graded the largest function
+  WARN leaf '?IsRunnable@CAIStateGroup_MinionSitOnSeatBase@@MAE_NXZ' matches no symbol in x.obj; graded the largest function
+gate: 200 rows {'PASS': 200} in 35.5s (0.18s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 31.7s (0.16s/row wall, NJ=2)
+gate: 200 rows {'PASS': 200} in 35.3s (0.18s/row wall, NJ=2)
+gate: 200 rows {'PASS': 199, 'FAIL': 1} in 33.5s (0.17s/row wall, NJ=2)
+gate: 179 rows {'PASS': 178, 'FAIL': 1} in 38.9s (0.22s/row wall, NJ=2)
+gatewave /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/plan/p7/w2i {'PASS': 1975, 'FAIL': 4}

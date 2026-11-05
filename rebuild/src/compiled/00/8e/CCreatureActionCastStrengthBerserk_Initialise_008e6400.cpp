@@ -24,20 +24,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 struct CTCStrengthBoost {                   // the interface-167 component: a flag byte at +0xc and a strength word at +0x10
     unsigned char _pad[0xc];
     unsigned char m_active;                 // +0x0c
@@ -63,11 +52,11 @@ void CCreatureAction_CastStrengthBerserk::Initialise()
     CTCBerserk* pBerserk;
     {
         CCharString name("CTCBerserk", -1);
-        pBerserk = ((CTCBerserk*)PCreature.GetPItem()->AddTC(name, true, 0));
+        pBerserk = ((CTCBerserk*)PCreature.Get()->AddTC(name, true, 0));
     }
     pBerserk->CreateStartingEffect();
     CTCStrengthBoost* pBoost;
-    if (PCreature.GetPItem()->GetTC(TCI_SPECIAL_ABILITIES, &pBoost)) {
+    if (PCreature.Get()->GetTC(TCI_SPECIAL_ABILITIES, &pBoost)) {
         pBoost->m_active = 1;
         pBoost->m_boostLevel = 8;
     }

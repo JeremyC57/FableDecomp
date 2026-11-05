@@ -1,0 +1,37 @@
+Plan phase 7, wave 3: the CIntelligentPointer leftovers that the CThing header waves unblock.
+
+Scope. Phase 5 w3 deferred rows whose CBaseObject / T was incomplete. The candidates (519, w3cands.lst) are those rows that now
+include engine/CThing.h (after phase 6, or this phase's w2) and still define the canonical local CBaseIntelligentPointer /
+CIntelligentPointer<T> stand-ins. ip_def.lst lists the 2,196 landed rows with a local CIntelligentPointer model; the other 1,677
+do not include CThing.h and are outside this wave.
+
+Tool. tools/ipmig7.py replaces the two local blocks with
+    #define FABLE_RETAIL_CINTELLIGENTPOINTER
+    [#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN]   when the local template declares operator= (45 rows)
+    [#define FABLE_RETAIL_CINTELLIGENTPOINTER_COPY]     when it declares a copy constructor (4 rows)
+    #include "engine/CIntelligentPointer.h"
+and moves the typed calls to the header's names: p.GetPItem() -> p.Get(), p.SetPItem(x) -> p.Set(x). Get and Set are FableWin.pdb
+?Get@?$CIntelligentPointer@..@@QBEPAV..@XZ / ?Set@..; both are inline, so the bytes are the same GetPItem 0x00A01B50 /
+SetPItem 0x00A01B90 calls and no relocation symbol changes. Objects declared as the plain CBaseIntelligentPointer keep
+GetPItem / SetPItem. Both sub-macros already exist at HEAD (chunks 754 / 755); no header changes in this wave.
+ - A first run without the ASSIGN / COPY opt-ins gave LENGTH failures: the header without them falls back to the implicit
+   member-wise copy. Only the second run's results are used.
+ - Rows were built with --base w1 --base w2. 00938580, 009415b0, 009445f0, 00944d10 and 00970790 start from w1's text (apply w1
+   first). Their w1 respells are not repeated in this wave's CALLERS (handback.py --prior-hb).
+
+Result. 418 rows rewritten. Gate: 388 PASS, 30 FAIL.
+ - 28 are compile failures. 21 are C2440 / C2039: the header's static_cast<T*>(CBaseObject*) needs T derived from CBaseObject.
+   The row's T model (a particle class, a local CThing-derived class), or CThing in that TU, does not derive CBaseObject; the
+   local model's C-style cast hid this. Then 6 C2664 (a T* / const T* mismatch at a call) and 1 C2065.
+ - 2 are BYTES failures.
+Not rewritten (UNCHANGED in rows.tsv): non-canonical CBaseIntelligentPointer model 58, an extra operator on the local template 29
+(operator T* / ->), no engine/CThing.h 7, no local template block 4, extra members 3.
+vland --recheck-landed read-only, before (landed text) and after: all 388 gate passes are RELOCATION_MATCH PASS both ways.
+conscheck --prior w1 --prior w2: OK. Only the 5 w1-based files carry changes, and those are w1's.
+ - In 4 rows (00487bd0, 007448b0, 00948d40, 00948ef0) an earlier include (engine/CPlayer.h, CTCPerceiveThing.h, ...) already
+   pulls in engine/CIntelligentPointer.h. A define placed at the old block's position would therefore have no effect, so the
+   #define is moved above the row's first #include. Those 4 were regated and re-graded by vland after the move
+   (logs/vland_w3m00.log).
+ - tools/gatewave.py now deletes a batch's output file before running gate.py and reports a short batch. One gatewave call had
+   read a stale batch file left from an earlier run (the re-gate of the 4 moved rows). That call was rerun after the fix. The
+   main run's three batch files all hold that run's rows, and vland, an independent compile, agrees with every gate PASS.

@@ -63,23 +63,12 @@ public: public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 __forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    return p.GetPItem() && !p.GetPItem()->IsDead();
+    return p.Get() && !p.Get()->IsDead();
 }
 
 class CCombatActionBase {
@@ -104,7 +93,7 @@ void CCombatAction_KickThingOnGround::Initialise()
 {
     float forward;
     float side;
-    if (IS_THING_ALIVE(PTarget) && PTarget.GetPItem()->GetType() == 13) {
+    if (IS_THING_ALIVE(PTarget) && PTarget.Get()->GetType() == 13) {
         {
             CCharString name("STRIKE_STEALTH_KICK_THING_ON_GROUND");
             SetCombatAnimation(name);
@@ -119,36 +108,36 @@ void CCombatAction_KickThingOnGround::Initialise()
         forward = 0.0f;
         side = 0.1f;
     }
-    CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysicsTC();
-    C3DVector position = PCreature.GetPItem()->GetPos();
+    CTCPhysicsBase* physics = PCreature.Get()->GetPhysicsTC();
+    C3DVector position = PCreature.Get()->GetPos();
     C3DVector facing = physics->GetFacing();
     C3DVector direction = -facing;
     if (IS_THING_ALIVE(PTarget)) {
-        if (PTarget.GetPItem()->GetType() == 1) {
-            CThingAICreature* creature = (CThingAICreature*)PTarget.GetPItem();
+        if (PTarget.Get()->GetType() == 1) {
+            CThingAICreature* creature = (CThingAICreature*)PTarget.Get();
             ((CThingAICreature*)creature)->SuspendAI(true, 0);
         }
         CTCSolidToThing* targetSolid;
         {
             CCharString name("CTCSolidToThing");
-            targetSolid = ((CTCSolidToThing*)PTarget.GetPItem()->AddTC(name, true, 0));
+            targetSolid = ((CTCSolidToThing*)PTarget.Get()->AddTC(name, true, 0));
         }
         CTCSolidToThing* creatureSolid;
         {
             CCharString name("CTCSolidToThing");
-            creatureSolid = ((CTCSolidToThing*)PCreature.GetPItem()->AddTC(name, true, 0));
+            creatureSolid = ((CTCSolidToThing*)PCreature.Get()->AddTC(name, true, 0));
         }
-        targetSolid->AddThingNotSolidTo(PCreature.GetPItem());
-        creatureSolid->AddThingNotSolidTo(PTarget.GetPItem());
-        position = PTarget.GetPItem()->GetPos();
+        targetSolid->AddThingNotSolidTo(PCreature.Get());
+        creatureSolid->AddThingNotSolidTo(PTarget.Get());
+        position = PTarget.Get()->GetPos();
         const CTCHitLocations* hitLocations;
-        if (PTarget.GetPItem()->PeekTC(TCI_HIT_LOCATIONS, &hitLocations)) {
+        if (PTarget.Get()->PeekTC(TCI_HIT_LOCATIONS, &hitLocations)) {
             CHitLocation* location = hitLocations->GetHitLocation();
             if (location)
-                position = location->GetClosestPointToPos2D(PCreature.GetPItem()->GetPos(), direction);
+                position = location->GetClosestPointToPos2D(PCreature.Get()->GetPos(), direction);
         }
     }
-    position.Z = PCreature.GetPItem()->GetPos().Z;
+    position.Z = PCreature.Get()->GetPos().Z;
     MoveToPos = position;
     direction.Z = 0.0f;
     if (direction.X * direction.X + direction.Y * direction.Y > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {

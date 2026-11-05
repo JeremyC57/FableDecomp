@@ -1,0 +1,60 @@
+Plan phase 7, wave 2: the CThing leftovers (the phase 6 deferral classes in plan_p6_w1/NEXT.md).
+
+Scope and tool. 2431 candidates (cands.lst) are the rows phase 6 deferred on CThing. tools/hdrmig7.py is hdrmig6.py extended:
+ - `--base W0`: a row starts from an earlier wave's overlay text;
+ - header_lacks members are mapped onto the new sub-macro accessors (below);
+ - the +0x91 bitfield positions are tracked: Dead bit 0 -> IsDead(), m_dead -> IsDead(), and bits 3/4/5/6/10/12/13/17 map to the
+   FableWin inline Is*() accessors;
+ - the operator new rule emits FABLE_RETAIL_CTHING_OPERATORNEW instead of deferring;
+ - a derived class's first pad is rebased when the local CThing model ends past 0x98.
+It rewrote 462 rows (rewritten.lst). Together with the 4 operator-new access respells (below), 123 rows pass (119 header
+migrations + 4 respells) and 2308 are deferred:
+ - no_rule 1968: rows the rewriter does not touch. Top reasons: local_std 567, closure_model 461, searchtools_template 103,
+   quarantine 104, own_definition 39, template_instance_row 38, local_base CThingPhysical 24, header_lacks of members with no
+   FableWin accessor.
+ - compile_fail 177 (C2440 47, C2039 27, C2662 17 const propagation, C2106 7 bitfield writes needing setters, ...).
+ - bytes_differ 94, targets_differ 13.
+ - consistency 47: mostly the CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound QAE/QBE spellings, which are bound at several
+   addresses in the index, plus NGraphicAppearance GetDummyObject / GetHelperPoint / ClearMeshEffect.
+ - grade 9 (004bfce0, 007de500, 007fb120, 0087c3f0, 008d04b0, 0093a890, 009445c0, 00944ce0, 0095ee40): gate PASS and vland
+   behaviour PASS, but vland grades DIFFER(40v39) / DIFFER(55v43) against the catalog length. The landed text grades exactly the
+   same (logs/grades_before.tsv), so this is a catalog-length question, not this wave's. They are deferred conservatively; the
+   coordinator may pass them as grade-equal.
+0x0059F304 (deferred by the coordinator in phase 6) is rewritten from the landed HEAD text, which carries no w1 text, and passes
+(RELOCATION_MATCH, inherited warnings only).
+
+Header. engine/CThing.h gets two new nested sub-macros, both inside FABLE_RETAIL_CTHING:
+ - FABLE_RETAIL_CTHING_MOREACCESS declares the members the passing rows call out of line:
+   SetAsFrameUpdated 0x004C7C40, static __fastcall Create(long,long,long,bool) 0x004CA1D0, PeekDefinitionManager 0x004C7990,
+   GetSampleBank 0x004C7A80, GetJoystickDeviceNumber 0x004C7CA0, IsRenderedThisFrame 0x004C78F0, IsForceNoSerialise 0x004C7BD0,
+   IsFreeForDeletion 0x004C7500, GetTypeName 0x004C7E10, CreateUID 0x004C7FF0, IsUnderScriptControl 0x004C8C90,
+   SetToKillOnLevelUnload 0x004C9C40, FrameUpdate 0x004C9D20, protected PeekWorldMap 0x004C79E0.
+   It also forward-declares CGameDefinitionManager / CASoundBank / CWorldMap.
+   Spellings come from Ego_r.pdb / FableWin.pdb and the index definers.
+ - FABLE_RETAIL_CTHING_OPERATORNEW: protected static void* __fastcall operator new(unsigned int, bool) 0x004C7380
+   (Ego_r ??2CThing@@KIPAXI_N@Z). 008369f0 is respelled SI -> KI through the header. The other 4 SI binders (00833800,
+   008385b0, 0083b7f0, 0083c5d0) have failed or missing rewrites, so they are respelled on their landed text instead: their
+   local CThing model declares operator new under `protected:` (rows.tsv RESPELLED). ??2CThing@@SIPAXI_N@Z then has no binder
+   left (BINDINGS RETIRE). Queue line 220 is only NARROWED: it also lists two free-function stand-ins in placeholder namespaces,
+   ?Allocate@NFactory006ac910@@YIPAXI_N@Z (006ac910) and ?operator_new@ExternalRetry_00835c80@@YIPAXI_N@Z (00835c80). Their
+   CThingPlayerCreature / CThingDeadCreature models sit inside those namespaces and do not derive a CThing model, so the
+   respell needs those models rebuilt (NEXT.md).
+ - A FLAGACCESS sub-macro was drafted for the other +0x91 bits. No passing row used it, so it was dropped before hand-back.
+hdrcheck2 on the overlay include dir (logs/hdrcheck2.log): default=same and every existing macro same. MOREACCESS=DIFF, from its
+file-scope forward declarations. OPERATORNEW reads same: hdrcheck2 defines one macro at a time, and OPERATORNEW (like
+MOREACCESS's members) only acts together with FABLE_RETAIL_CTHING, so the gate / vland runs of the 7 rows that use it are its test. The overlay
+also carries w1's CScriptThing.h unchanged (it ships in w1 only).
+
+Sub-macros the 119 migrated passing rows use: CTHING 54, GETTC_EXPANDED 34, CCHARSTRING 20, MOREACCESS 18, STATEACCESS 7, OPERATORNEW 7,
+CWIDESTRING 5, MANAGERACCESS 4, STATTYPEFLAGS 1, PEEKPLAYER 1.
+
+Overlap. 0074e560, 0077c490, 0084db30, 008534f0 and 0085bd70 were rewritten on top of w1's text (--base w1). Apply w1 first.
+Their w1 respells are listed in w1's CALLERS only (handback.py --prior-hb).
+
+Verification.
+ - gate.py on every rewritten row.
+ - vland --recheck-landed read-only, before and after, on every gate PASS.
+ - conscheck --prior w1.
+ - Every CThing.h includer (1979) through the gate with the overlay header: 1975 PASS (logs/gate_includers_CThing.tsv). The 4
+   FAILs (00666ea0, 006ebdd0, 00838a00, 0089cd70) are this wave's own failed rewrites (deferred), not landed text: the landed text
+   of those rows gates PASS against the overlay header.

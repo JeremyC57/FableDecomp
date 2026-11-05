@@ -1,4 +1,5 @@
 // CTCInventoryTrade::CloseInventory() -- closes the console trade screen: restores the hero-info screen type, empties the special categories, closes the base view, deletes every UI component, clears the buy/sell maps, notifies the front end, re-enables the HUD, stamps the world's close frame, restores the sound categories, resets the player's GUI state, re-checks sold wielded weapons and closes the menu count
+// Leaf: ?CloseInventory@CTCInventoryTrade@@QAEXXZ
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: the empty local std::bitset stand-in is the STLport bitset<274> (36 bytes) of stlport/fable_containers.h, test() declared only under FABLE_RETAIL_STLP_BITSET_TEST_DECL (retail calls 0x00410DE0); bitset pad _pad_0x21[0x23] removed.
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
@@ -159,27 +160,9 @@ class CTCInventoryWeapons { public:
 #define FABLE_RETAIL_STLP_BITSET_TEST_DECL
 #include "engine/CVectorMap.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad_0x00[0x20];
-    std::bitset<274> m_present;                         // +0x20
-    CInterfaceMap m_interfaces;                      // +0x44
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_present.test(wanted)) {
-            ETCInterfaceType type = (ETCInterfaceType)(wanted);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)((void*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
 
 namespace NHeroInformationScreens {
 class CManager { public:
@@ -251,7 +234,7 @@ void CTCInventoryTrade::CloseInventory()
     b->Slot40(&a->Slot42().Data->SomeState, true);
     CMainGameComponent::Get()->World->Hud->Slot56(0, 0);
     CTCInventoryWeapons* weapons;
-    if (ParentThing->GetInterface(&weapons, 0x13))
+    if (ParentThing->GetTC(TCI_INVENTORY_WEAPONS, &weapons))
         weapons->CheckForSoldWieldedWeapons();
     OnCloseMenus();
 }

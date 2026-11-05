@@ -22,18 +22,7 @@
 
 enum EPlayerMode { PLAYER_MODE_NULL = 0 };
 
-class CThing {                                             // partial view (retail +0x91 = Ego_r.pdb +0xA1)
-public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char Dead : 1;                                // +0x91 bit 0
-    unsigned char CreatedByOwnerThingCreation : 1;
-    unsigned char IncludeInThingScans : 1;
-    unsigned char Activated : 1;
-    unsigned char GloballyLoaded : 1;
-    unsigned char InLimbo : 1;
-    unsigned char KillLocked : 1;
-    unsigned char CreatedBySerialisation : 1;
-};
+#include "engine/CThing.h"
 class CThingPhysical : public CThing { };
 class CThingGameObject : public CThingPhysical { };
 class CCreatureActionBase;
@@ -84,6 +73,6 @@ public:
 void CWorld::EAControlledCreatureJump(const CGameEvent* event)
 {
     CThingPlayerCreature* creature = GetPlayer(event->Player)->GetPControlledCreature();
-    if (creature && !creature->Dead)
+    if (creature && !creature->IsDead())
         creature->SetCurrentAction(CCreatureActionHeroJump(*creature));
 }

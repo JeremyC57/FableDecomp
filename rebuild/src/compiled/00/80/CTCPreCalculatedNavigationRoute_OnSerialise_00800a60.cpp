@@ -34,20 +34,9 @@ class CPersistContext { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCPreCalculatedNavigationRoute : public CTCBase {
 public:
     CIntelligentPointer<CThing> PThingToCalculateRouteTo;   // +0x0c
@@ -64,10 +53,10 @@ void CTCPreCalculatedNavigationRoute::OnSerialise(CPersistContext& context, bool
     long version = 2;
     context.Transfer<long>("PrecCalculatedNavigationRouteVersion", version, 0);
     if (context.IsSaving()) {
-        if (PThingToCalculateRouteTo.GetPItem() == 0) {
+        if (PThingToCalculateRouteTo.Get() == 0) {
             ThingToCalculateRouteToUID = 0;
         } else {
-            CThing* item = PThingToCalculateRouteTo.GetPItem();
+            CThing* item = PThingToCalculateRouteTo.Get();
             ThingToCalculateRouteToUID = item->GetUniqueID();
             ThingToCalculateRouteToUID = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->GetCurrentMapNumber(), ThingToCalculateRouteToUID);
         }

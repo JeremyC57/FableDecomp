@@ -17,20 +17,9 @@ class CBaseObject;
 #include "engine/CThing.h"
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CCreatureAction_BlockBase { public:
     virtual void v00();
@@ -49,5 +38,5 @@ C3DVector CCreatureAction_BlockBase::GetNextPos()
 {
     float t = 1.0f - (float)(TotalFrames - CurrentFrame) / TotalFrames;
     C3DVector dir = MovementDirection * 0.2f;
-    return Owner.GetPItem()->GetPos() + dir * (float)exp(t * t * -100.0f);
+    return Owner.Get()->GetPos() + dir * (float)exp(t * t * -100.0f);
 }

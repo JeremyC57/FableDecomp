@@ -1,0 +1,96 @@
+address	rule
+004aa940	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses) (FABLE_RETAIL_CSCRIPTTHING_NULLCOORD: the default-branch CScriptThing declares the protected static)
+004aa980	RESPELL: 0143e8e0 ?g_def_004aa980@@3HA -> ?NullCoord@CScriptThing@@1VC3DVector@@A (CScriptThing::GetPos definer; FABLE_RETAIL_CSCRIPTTHING_NULLCOORD)
+004aa9a0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses) (FABLE_RETAIL_CSCRIPTTHING_NULLCOORD: the default-branch CScriptThing declares the protected static)
+004c9d20	RESPELL: 004c9920: const CThing::IsAffectedByBulletTime x1
+0051eab0	RESPELL: 004c9920: const CThing::IsAffectedByBulletTime x1
+00663f50	RESPELL: 004bf9e0: ns NGraphicAppearance | 004bfb40: SetLightingChannel by const reference (Ego_r.pdb / FableWin.pdb ABV; the call passes *channel)
+006655a0	RESPELL: 004c9920: const CThing::IsAffectedByBulletTime x1
+0068f9d0	RESPELL: 005daa40: const CTCWeapon::IsProjectileWeapon x1
+00692920	UNCHANGED: 004c7a10 bound as the free stand-in dv_h2_004c7a10 (YIXPAX): needs a CThing model (PeekPlayer) in a destructor-value row
+006b0850	RESPELL: 006b0850: const CTCPhysicsBase::GetPhysicsMeshObject x2 (the slot 72 / 93 virtual stand-ins called in the body made const: Ego_r.pdb GetPhysicsMeshInfo overrides are UBE)
+006c0160	RESPELL: 007cbdc0: const CTCGold::GetGold x1
+006c0580	RESPELL: 007cbdc0: const CTCGold::GetGold x1
+006ed510	RESPELL: 005daa40: const CTCWeapon::IsProjectileWeapon x1
+0071e130	RESPELL: 004bf9e0: ns NGraphicAppearance
+0072caa0	RESPELL: 004c7a10 ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ -> ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ (0x004C7A10 calls the const CPlayerManager::GetPlayer 0x00449910; catalog + landed definer CThing::PeekPlayer)
+00733100	UNCHANGED: 004c7a10 GetPlayer stand-in returning CPlayer*: the PeekPlayer respell makes the CPlayer::HasMode 0x00634160 calls const (PDB QBE_NW4EPlayerMode@@@Z, the local spelling is (long) QAE): a second target to decide
+0074e560	RESPELL: 004bf9e0: ns NGraphicAppearance | 004bfb40: SetLightingChannel by const reference (Ego_r.pdb / FableWin.pdb ABV; the call passes *channel)
+0077c490	RESPELL: 004bf9e0: ns NGraphicAppearance
+007b1eb0	UNCHANGED: 004c7a30 ?GetPlayer@CThing@@QAEPAUCPlayer@@XZ (pointer) -> QAEAAVCPlayer@@XZ: the calls ->AddMode need the PDB CPlayer::AddMode(EPlayerMode, bool) spelling too
+007babe0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+007cc120	RESPELL: 004bfae0: ns NGraphicAppearance
+007e5b90	RESPELL: 005daa40: const CTCWeapon::IsProjectileWeapon x1
+007f5860	RESPELL: 007f5860: const CTCTargetingBase::GetPNearestInterestingThing x2
+0084db30	RESPELL: 004c12d0: const CTCGraphicAppearance::GetCameraFocalPos x1; ns NGraphicAppearance
+008529d0	RESPELL: 004c12d0: const CTCGraphicAppearance::GetCameraFocalPos x1; ns NGraphicAppearance
+00852b70	RESPELL: 004c12d0: const CTCGraphicAppearance::GetCameraFocalPos x1; ns NGraphicAppearance
+00852c40	RESPELL: 004c12d0: const CTCGraphicAppearance::GetCameraFocalPos x1; ns NGraphicAppearance
+008534f0	RESPELL: 004c12d0: ns NGraphicAppearance
+00853580	RESPELL: 004c12d0: const CTCGraphicAppearance::GetCameraFocalPos x1; ns NGraphicAppearance
+0085bd70	RESPELL: 004c7a10 ?GetPlayer@CThing@@QAEPAVCPlayer@@XZ -> ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ (as 0072caa0; the row reads ZTargeting only)
+00873030	RESPELL: 004c12d0: ns NGraphicAppearance
+0089a510	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+0089a6e0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+0089a880	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+0089aa70	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+0089ef90	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+008faa80	RESPELL: 004c12d0: ns NGraphicAppearance
+0090c060	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+009109b0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00918050	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00938580	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00938cd0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00938db0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00939a50	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+009415b0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00941be0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+009438f0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+009445f0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00944730	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00944d10	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00944e80	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00945de0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00945e70	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00946520	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+00946c60	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+0094b9b0	RESPELL: 007febf0: const CTCUserActionPointBase::IsActionPointFree x1
+0095d310	RESPELL: 005daa40: const CTCWeapon::IsProjectileWeapon x1
+00970790	RESPELL: 006b0850: const CTCPhysicsBase::GetPhysicsMeshObject x1
+00978e60	RESPELL: 005daa40: const CTCWeapon::IsProjectileWeapon x1 | 006a1440: const CTCCarrying::GetThingInPrimarySlot x1
+00978f10	RESPELL: 005daa40: const CTCWeapon::IsProjectileWeapon x1 | 006a1440: const CTCCarrying::GetThingInPrimarySlot x1
+00979d80	RESPELL: 005daa40: const CTCWeapon::IsProjectileWeapon x1 | 006a1440: const CTCCarrying::GetThingInPrimarySlot x1
+00979e90	RESPELL: 005daa40: const CTCWeapon::IsProjectileWeapon x1 | 006a1440: const CTCCarrying::GetThingInPrimarySlot x1
+0097cb10	RESPELL: 005daa40: const CTCWeapon::IsProjectileWeapon x1 | 006a1440: const CTCCarrying::GetThingInPrimarySlot x1
+00d15510	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00d15a40	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00d22880	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00d3a1a0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00d643a0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00d67270	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00d6b240	UNCHANGED: 0143e8e0 g_ZeroVector read outside a CScriptThing member (an expanded GetPos: protected NullCoord is not reachable there)
+00d701c0	UNCHANGED: 0143e8e0 g_ZeroVector read outside a CScriptThing member (an expanded GetPos)
+00d71b30	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00d73970	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00d73c70	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00d7f880	UNCHANGED: 0143e8e0 g_ZeroVector read outside a CScriptThing member (an expanded GetPos)
+00daa260	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00daa700	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00dde230	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00def3b0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00e0de90	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00e0e040	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00e0f4e0	UNCHANGED: 0143e8e0 g_ZeroVector read outside a CScriptThing member (an expanded GetPos)
+00e1e960	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00e1f0c0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00e49980	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00e4e0e0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00e8b020	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00e96660	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00eb75f0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00ec42f0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00ee1500	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00ee6850	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00f045e0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00f04cc0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)
+00f051d0	RESPELL: 0143e8e0 -> ?NullCoord@CScriptThing@@1VC3DVector@@A (1 uses)

@@ -17,7 +17,6 @@ extern "C" void free(void* p);                           // 0x00BFEA14
 void operator delete(void* p);                           // 0x00BFE9BC
 class CCharString { public: void* PStringData; };
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -28,7 +27,7 @@ extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 inline CScriptThing::CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing::~CScriptThing() { }
-inline const C3DVector& CScriptThing::GetPos() const { if (PImp.Data == 0) return g_ZeroVector; return PImp.Data->GetPos(); }
+inline const C3DVector& CScriptThing::GetPos() const { if (PImp.Data == 0) return NullCoord; return PImp.Data->GetPos(); }
 template <class T> __forceinline void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)

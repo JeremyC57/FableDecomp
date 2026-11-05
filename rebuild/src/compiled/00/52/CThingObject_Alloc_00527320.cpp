@@ -7,19 +7,13 @@
 // Shape: `xor dl,dl ; mov ecx,0E0h ; call new ; test ; je ; mov ecx,eax ; jmp ctor ; xor eax,eax ; ret` is a
 //   placement-argument new-expression `new (false) CThingObject` whose null test VC7.1 keeps (operator new may
 //   return 0) and whose constructor call becomes a sibling tail jump (the constructor returns `this`).
-class CClass {
-public:
-    virtual void v00();
-};
-class CThing : public CClass {
-protected:
-    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380
-public:
-    unsigned char _body[0xC0 - 4];
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_OPERATORNEW
+#include "engine/CThing.h"
+
 class CThingObject : public CThing {
 public:
-    unsigned char _body2[0xE0 - 0xC0];                                  // sizeof(CThingObject) = 0xE0 in retail
+    unsigned char _body2[0xE0 - 0x98];                                  // sizeof(CThingObject) = 0xE0 in retail
     CThingObject();                                                      // 0x007031C0
     static CClass* __fastcall Alloc();
 };

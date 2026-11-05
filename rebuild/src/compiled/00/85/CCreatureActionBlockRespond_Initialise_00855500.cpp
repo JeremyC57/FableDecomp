@@ -64,23 +64,12 @@ class CThingCreatureBase : public CThing { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 __forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThingCreatureBase>& p)
 {
-    return p.GetPItem() && !p.GetPItem()->IsDead();
+    return p.Get() && !p.Get()->IsDead();
 }
 
 class CCombatActionBase {
@@ -115,7 +104,7 @@ public:
 
 void CCreatureAction_BlockRespond::Initialise()
 {
-    PCreature.GetPItem()->GetPos();
+    PCreature.Get()->GetPos();
     CCharString animation;
     if (IS_THING_ALIVE(PTarget)) {
         C3DVector direction;
@@ -123,11 +112,11 @@ void CCreatureAction_BlockRespond::Initialise()
             direction = HitPos;
         } else {
             CTCPhysicsBase* targetPhysics;
-            PTarget.GetPItem()->GetTC(TCI_PHYSICS, &targetPhysics);
+            PTarget.Get()->GetTC(TCI_PHYSICS, &targetPhysics);
             direction = targetPhysics->Position;
         }
         CTCPhysicsBase* physics;
-        PCreature.GetPItem()->GetTC(TCI_PHYSICS, &physics);
+        PCreature.Get()->GetTC(TCI_PHYSICS, &physics);
         direction -= physics->Position;
         direction *= FastInvSqrt(direction.GetLengthSquared());
         C3DVector facing = physics->GetFacing();
@@ -145,7 +134,7 @@ void CCreatureAction_BlockRespond::Initialise()
         MovementDirection.Normalise();
     }
     CAnimationEntryVector animations;
-    if (PCreature.GetPItem()->GetPossibleCombatAnimations(animation, animations)) {
+    if (PCreature.Get()->GetPossibleCombatAnimations(animation, animations)) {
         SetCombatAnimations(animations);
     } else {
         {

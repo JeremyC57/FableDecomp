@@ -26,20 +26,9 @@ class CAnimationEntry { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[4];
@@ -62,7 +51,7 @@ void CCreatureActionHero180RunningTurn::Initialise()
         CCharString name("ST_RUN_180_TURN");
         SetCombatAnimation(name);
     }
-    C3DVector facing = PCreature.GetPItem()->GetPhysicsTC()->GetFacing();
+    C3DVector facing = PCreature.Get()->GetPhysicsTC()->GetFacing();
     float dot = facing.Y * RequiredFacing.Y;
     dot += facing.Z * RequiredFacing.Z;
     dot += facing.X * RequiredFacing.X;
@@ -78,7 +67,7 @@ void CCreatureActionHero180RunningTurn::Initialise()
     PAnimEntry->GetRotationInAnimation(&rotation);
     float turn = acos(dot) * 0.15915494f;
     float angle = rotation - turn * sign;
-    C3DVector forward = PCreature.GetPItem()->GetPhysicsTC()->GetFacing();
+    C3DVector forward = PCreature.Get()->GetPhysicsTC()->GetFacing();
     forward.Rotate(C3DVector(0.0f, 0.0f, 1.0f), -angle);
-    PCreature.GetPItem()->GetPhysicsTC()->SetOrientation(CRightHandedSet(forward));
+    PCreature.Get()->GetPhysicsTC()->SetOrientation(CRightHandedSet(forward));
 }

@@ -9,29 +9,10 @@
 // Shape: `if (parent && !dead && GetInterface(..))` (the template's bool is the third test); each found set gets an
 // inline `FadeOut()` (test the bit, set it, copy the alpha).
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_dead : 1;               // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CAnimSet { public:                           // retail layout (12-byte vectors)
     unsigned char _pad00[0x2c];
@@ -69,7 +50,7 @@ struct CModeStrafe {
 void CModeStrafe::ClearStrafingCombinationAnims(bool immediately)
 {
     CTCAnimationComplex* animation;
-    if (ParentThing && !ParentThing->m_dead && ParentThing->GetInterface(&animation, 0x5a)) {
+    if (ParentThing && !ParentThing->IsDead() && ParentThing->GetTC(TCI_ANIMATION, &animation)) {
         CAnimateThing& animator = animation->GetAnimation();
         CAnimSet* set = animator.GetFirstCombinationAnimFromType(0x1b);
         if (set)

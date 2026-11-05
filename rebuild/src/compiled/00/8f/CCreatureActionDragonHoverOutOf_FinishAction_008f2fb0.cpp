@@ -30,20 +30,9 @@ class CTCPhysicsBase { public:                     // the thing's physics TC; on
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
@@ -59,13 +48,13 @@ class CCreatureAction_DragonHoverOutOf : public CCombatActionBase { public:
 
 void CCreatureAction_DragonHoverOutOf::FinishAction()
 {
-    const C3DVector& current = PCreature.GetPItem()->GetPos();
+    const C3DVector& current = PCreature.Get()->GetPos();
     C3DVector position;
     position.X = current.X;
     position.Y = current.Y;
     position.Z = current.Z + 31.148378f;    // 0x01288430
-    CThing* creature = PCreature.GetPItem();   // named: the physics TC then loads straight into ecx
+    CThing* creature = PCreature.Get();   // named: the physics TC then loads straight into ecx
     creature->GetPhysicsTC()->ResetPosition(position);
-    PCreature.GetPItem()->RemoveTC((ETCInterfaceType)(0x4d));
+    PCreature.Get()->RemoveTC((ETCInterfaceType)(0x4d));
     CCombatActionBase::FinishAction();
 }

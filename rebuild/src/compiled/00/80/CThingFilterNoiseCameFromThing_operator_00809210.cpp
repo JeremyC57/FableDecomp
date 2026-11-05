@@ -15,20 +15,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 struct CTCInterface77 {                             // interface 0x77 component (class not established)
     unsigned char _pad[0x28];
@@ -43,7 +32,7 @@ class CThingFilter_NoiseCameFromThing { public:
 bool CThingFilter_NoiseCameFromThing::operator()(CThing* thing) const
 {
     const CTCInterface77* component;
-    if (thing->PeekTC(TCI_SHOT_DEFINITION, &component) && component->m_source.GetPItem() == Thing)
+    if (thing->PeekTC(TCI_SHOT_DEFINITION, &component) && component->m_source.Get() == Thing)
         return true;
     return false;
 }

@@ -11,28 +11,13 @@
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -55,15 +40,15 @@ struct CTCWaterWader : CTCBase {                // vtable 0x0126D95C
 CTCWaterWader::~CTCWaterWader()
 {
     if (IS_THING_ALIVE(PParticle)) {
-        PParticle.GetPItem()->Kill(true);
+        PParticle.Get()->Kill(true);
         CIntelligentPointer<CThing> cleared(0);
-        CThing* item = cleared.GetPItem();
-        PParticle.SetPItem(item);
+        CThing* item = cleared.Get();
+        PParticle.Set(item);
     }
     if (IS_THING_ALIVE(PWaterfallParticle)) {
-        PWaterfallParticle.GetPItem()->Kill(true);
+        PWaterfallParticle.Get()->Kill(true);
         CIntelligentPointer<CThing> cleared(0);
-        CThing* item = cleared.GetPItem();
-        PWaterfallParticle.SetPItem(item);
+        CThing* item = cleared.Get();
+        PWaterfallParticle.Set(item);
     }
 }

@@ -25,20 +25,9 @@ class CRightHandedSet;
 CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 struct CJugVector {                                 // retail STLport vector<CIntelligentPointer<CThingObject> > (12 bytes)
     CIntelligentPointer<CThingObject>* first;
     CIntelligentPointer<CThingObject>* last;
@@ -70,8 +59,8 @@ bool CTCTavernBar::GetPickupSlot(CThing& user, C3DVector& pos, CRightHandedSet& 
     for (slot = 0; (unsigned long)slot < Jugs.size(); ++slot) {
         if (needFullJug) {
             CIntelligentPointer<CThingObject> jug = GetJug(slot);
-            if (jug.GetPItem()) {
-                CThingObject* item = jug.GetPItem();
+            if (jug.Get()) {
+                CThingObject* item = jug.Get();
                 CTCJug* tc;
                 if (!item->HasTC(TCI_TAVERN_JUG) || (tc = ((CTCJug*)&item->GetTC(TCI_TAVERN_JUG))) == 0 || !tc->Filled || !tc->Contents)
                     continue;

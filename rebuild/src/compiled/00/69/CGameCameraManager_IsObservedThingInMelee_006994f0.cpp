@@ -22,20 +22,9 @@ class CTCCombat { public:                          // interface type 0x36
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CGameCameraManager { public:
     void*                   __vftable;      // +0x00
@@ -46,9 +35,9 @@ class CGameCameraManager { public:
 
 bool CGameCameraManager::IsObservedThingInMelee()
 {
-    if (PObservedThing.GetPItem() && !PObservedThing.GetPItem()->IsDead()) {
+    if (PObservedThing.Get() && !PObservedThing.Get()->IsDead()) {
         const CTCCombat* combat;
-        if (PObservedThing.GetPItem()->PeekTC(TCI_STEALTH, &combat)) {
+        if (PObservedThing.Get()->PeekTC(TCI_STEALTH, &combat)) {
             if (combat->m_meleeTarget >= 0)
                 return true;
         }

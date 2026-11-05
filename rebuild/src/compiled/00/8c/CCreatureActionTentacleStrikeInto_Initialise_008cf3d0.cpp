@@ -18,20 +18,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCKrakenTentacle { public:                  // interface type 0xe3 component
     void SetIsStriking(bool striking);      // 0x007F0770
 };
@@ -52,7 +41,7 @@ class CCreatureAction_TentacleStrikeInto : public CCombatActionBase { public:
 
 void CCreatureAction_TentacleStrikeInto::Initialise()
 {
-    PCreature.GetPItem()->GetTC(TCI_KRAKEN_TENTACLE, &PTentacle);
+    PCreature.Get()->GetTC(TCI_KRAKEN_TENTACLE, &PTentacle);
     {
         CCharString name("TENTACLE_SMASH_INTO", -1);
         SetCombatAnimation(name);

@@ -20,20 +20,9 @@ class CThingCreatureBase : public CThing { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CCreatureActionBase { public:                    // retail sizeof 0xa8 (Ego_r.pdb 0xb4)
     virtual void v00();
@@ -41,7 +30,7 @@ class CCreatureActionBase { public:                    // retail sizeof 0xa8 (Eg
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0xa8 - 0x10];
-    __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
+    __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.Get()); }
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
     CIntelligentPointer<CThing> PTarget;            // +0xa8 CIntelligentPointer<CThing>

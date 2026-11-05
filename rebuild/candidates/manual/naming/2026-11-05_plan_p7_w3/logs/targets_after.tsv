@@ -1,0 +1,3 @@
+target	spellings_after (symbol:count)
+006b0850	?GetPhysicsMeshObject@CTCPhysicsBase@@QBE?AVCPhysicsMeshObject@@XZ:23
+007febf0	?IsActionPointFree@CTCUserActionPointBase@@QBE_NXZ:29

@@ -15,6 +15,7 @@
 // Naming wave 16: the CPlayer_Methods stand-in respelled to CPlayer on the layout header (#define-Layout precedent 0x00830150);
 //   AddMode takes the Ego_r EPlayerMode (name-only: the bytes are unchanged).
 #define CPlayer CPlayer_Layout
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CPlayer.h"
 #undef CPlayer
 
@@ -27,20 +28,8 @@ enum EPlayerMode { PLAYER_MODE_NULL = 0 };    // enumerator name is ours; mode 3
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#include "engine/CIntelligentPointer.h"
+
 
 class CPlayer : public CPlayer_Layout { public:
     bool IsMainPlayer() const                      // out of line @ 0x00487520
@@ -60,6 +49,6 @@ void CPlayer::UninitCharacter()
     else
         AddMode((EPlayerMode)3, true);
     CIntelligentPointer<CThing>* character = reinterpret_cast<CIntelligentPointer<CThing>*>(this->PlayerCharacter);
-    if (character->GetPItem())
-        character->GetPItem()->Kill(false);
+    if (character->Get())
+        character->Get()->Kill(false);
 }

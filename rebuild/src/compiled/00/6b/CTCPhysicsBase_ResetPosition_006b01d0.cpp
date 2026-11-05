@@ -14,9 +14,9 @@ struct SPhysicsBaseFlags {                  // CTCPhysicsBase +0x3c bool:1 group
     bool OldMoving : 1;                     // bit 1
 };
 
-class CThing { public:
-    void SetAsFrameUpdated();               // 0x004C7C40
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 
 struct CTCPhysicsBaseVirtuals {                    // vtable-shaped view of `this` (slot = offset / 4)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();

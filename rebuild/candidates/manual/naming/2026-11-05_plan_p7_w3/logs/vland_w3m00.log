@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00487bd0   RELOCATION_MATCH PASS   UninitCharacter
+007448b0   RELOCATION_MATCH PASS   IsPlayerIgnoreFOVLineOfSight
+00948d40   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00948d40   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00948d40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00948d40   WARN RELOC_NAME: ??1CCreatureAction_PlayAnimation@@QAE@XZ -> 00693ef0 labelled 'CCreatureActionBase::~CCreatureActionBase'
+00948d40   RELOCATION_MATCH PASS   PlayAnims
+00948ef0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00948ef0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00948ef0   WARN SHARED_HEADER_AVAILABLE CWorld
+00948ef0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00948ef0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00948ef0   WARN RELOC_NAME: ??1CCreatureAction_PlayAnimation@@QAE@XZ -> 00693ef0 labelled 'CCreatureActionBase::~CCreatureActionBase'
+00948ef0   RELOCATION_MATCH PASS   PlayAnims
+
+WINS: 4
+  00487bd0 RELOCATION_MATCH CPlayer::?UninitCharacter@CPlayer@@QAEXXZ
+  007448b0 RELOCATION_MATCH CTCPerceiveThing::IsPlayerIgnoreFOVLineOfSight
+  00948d40 RELOCATION_MATCH CAIStateGroup_GoToPub::?PlayAnims@CAIStateGroup_GoToPub@@QAE_NABVCCharString@@00J@Z
+  00948ef0 RELOCATION_MATCH CAIStateGroup_GoToPub::?PlayAnims@CAIStateGroup_GoToPub@@QAE_NABVCCharString@@00M@Z

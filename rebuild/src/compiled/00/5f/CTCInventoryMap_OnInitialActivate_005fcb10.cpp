@@ -1,4 +1,5 @@
 // CTCInventoryMap::OnInitialActivate() -- after the base hook, re-activates every teleporter whose UID was serialised with the map screen (live, non-dead things carrying the teleporter component) and drops the serialised UID list
+// Leaf: ?OnInitialActivate@CTCInventoryMap@@UAEXXZ
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FCB10, length 208 bytes (+ int3 padding); speed TU (no frame pointer). CTCInventoryMap vtable
 // 0x01257A9C slot 6 (OnInitialActivate).
@@ -38,29 +39,11 @@ struct CSerialisedUIDPointer {                                               // 
     }
 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char IsDead : 1;                   // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((void*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingManager { public:
     CThing* GetPThingWithUID(unsigned __int64 uid);            // 0x0051ED80
 };
@@ -93,9 +76,9 @@ void CTCInventoryMap::OnInitialActivate()
         for (unsigned __int64* it = uids->_M_start; it != uids->_M_finish; ++it) {
             __int64 uid = *it;
             CThing* thing = GetThingManager().GetPThingWithUID(uid);
-            if (thing && !thing->IsDead) {
+            if (thing && !thing->IsDead()) {
                 CTCTeleporter* teleporter;
-                if (thing->GetInterface(&teleporter, 0xDD))
+                if (thing->GetTC(TCI_TELEPORTER, &teleporter))
                     teleporter->SetAsActive(true);
             }
         }

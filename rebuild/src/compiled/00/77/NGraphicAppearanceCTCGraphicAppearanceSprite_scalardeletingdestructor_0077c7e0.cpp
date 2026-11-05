@@ -20,12 +20,8 @@ class CTCGraphicAppearance { public:
 };
 }
 
-class CThing { public:
-    unsigned char _pad00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64
-    unsigned char _pad68[0x29];
-    unsigned char Dead : 1;                                 // +0x91 bit 0
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CTCBase { public:
     CThing* ParentThing;                                    // +0x04
@@ -53,8 +49,8 @@ class CTCGraphicAppearanceSprite : public CTCBase, public CAGraphicAppearanceCom
     CTCGraphicAppearanceSprite(CThing* thing) : CTCBase(thing), PrimHandle(0) { }
     __forceinline virtual ~CTCGraphicAppearanceSprite()
     {
-        if (!ParentThing->Dead)
-            ParentThing->PTCGraphicAppearance->UnregisterComponent(*this);
+        if (!ParentThing->IsDead())
+            ParentThing->GetTCGraphicAppearance()->UnregisterComponent(*this);
     }
     virtual void OnAppearanceDraw();
 };

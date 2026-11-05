@@ -15,32 +15,13 @@
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 #pragma pack(push, 1)
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for <CThing>
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other)
-    {
-        T* item = other.GetPItem();
-        SetPItem(item);
-        return *this;
-    }
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 #pragma pack(pop)
-inline bool IsThingAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
+inline bool IsThingAlive(const CIntelligentPointer<CThing>& p) { return p.Get() && !p.Get()->IsDead(); }
 
 class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80

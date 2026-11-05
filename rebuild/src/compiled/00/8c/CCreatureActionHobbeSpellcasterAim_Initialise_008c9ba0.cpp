@@ -13,20 +13,8 @@
 // Shape: the landed FinishAction 0x008C99C0 (inline IS_THING_ALIVE, `PEffect = 0` through a CIntelligentPointer<CThing>
 //   temporary); the new effect is one full expression, so the helper-name temporary lives until after the assignment.
 // Layout: PEffect +0x114 (Ego_r +0x12C; retail CCombatActionBase is 0x114 bytes, the aim action adds nothing).
-class CCharString {
-public:
-    CCharString(const char* text, long length = -1);         // 0x0099EBF0
-    ~CCharString();                                          // 0x0099EAE0
-    void* PStringData;
-};
-
-class CThing {
-public:
-    virtual ~CThing();
-    unsigned char _pad_0x04[0x91 - 0x04];
-    unsigned char Dead : 1;                                  // +0x91 bit 0
-    void Kill(bool now);                                     // 0x004C9B80
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CThingCreatureBase : public CThing { };
 
@@ -57,7 +45,7 @@ template <class T>
 inline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!p->Dead)
+        if (!p->IsDead())
             return true;
     }
     return false;

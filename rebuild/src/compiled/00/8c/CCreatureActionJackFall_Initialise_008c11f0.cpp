@@ -16,20 +16,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCBoss { public:                            // interface type 0xAD
     void ClearEffects();                    // 0x007AEF60
 };
@@ -50,7 +39,7 @@ class CCreatureAction_JackFall : public CCombatActionBase { public:
 void CCreatureAction_JackFall::Initialise()
 {
     CTCBoss* boss;
-    PCreature.GetPItem()->GetTC(TCI_BOSS, &boss);
+    PCreature.Get()->GetTC(TCI_BOSS, &boss);
     boss->ClearEffects();
     CCombatActionBase::Initialise();
 }

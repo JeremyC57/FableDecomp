@@ -14,11 +14,7 @@
 class CBaseObject;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-};
+#include "engine/CThing.h"
 class CPlayer {
 public:
     unsigned char           _pad00[0x34];
@@ -46,6 +42,6 @@ public:
 void CPlayerGui::UpdateQuestInfoIfHeroAlive()
 {
     CThing* hero = PlayerManager->GetMainPlayer().GetPlayerCharacter();
-    if (hero && !hero->Dead)
+    if (hero && !hero->IsDead())
         PDrawQuestInfo->Update();
 }

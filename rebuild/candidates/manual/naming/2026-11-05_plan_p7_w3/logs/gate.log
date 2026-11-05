@@ -1,0 +1,4 @@
+gate: 200 rows {'PASS': 178, 'FAIL': 22} in 33.4s (0.17s/row wall, NJ=2)
+gate: 200 rows {'PASS': 193, 'FAIL': 7} in 32.4s (0.16s/row wall, NJ=2)
+gate: 18 rows {'PASS': 17, 'FAIL': 1} in 3.0s (0.17s/row wall, NJ=2)
+gatewave /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/plan/p7/w3 {'PASS': 388, 'FAIL': 30}

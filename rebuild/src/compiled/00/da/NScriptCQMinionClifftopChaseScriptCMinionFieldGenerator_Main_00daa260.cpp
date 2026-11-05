@@ -59,11 +59,13 @@ struct CScriptThingImp {
     VPAD4(i0) VPAD2(i1)                                 // slots 0..5
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)
 };
-extern const C3DVector g_ZeroPos;                       // 0x0143E8E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     VPAD4(t1) VPAD1(t2)                                                  // slots 1..5
-    virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }   // slot 6
+    virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }   // slot 6
     VPAD8(t7) VPAD4(t8) VPAD2(t9)                                        // slots 7..20
     virtual bool MsgIsHitBy(const CCharString& name) const;              // slot 21 (+0x54)
     CCountedPointer<CScriptThingImp> PImp;              // +0x04

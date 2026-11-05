@@ -19,20 +19,9 @@ struct CTCGraphicAppearance;
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCInventory { public:                       // the interface-203 component
     void AddItemToInventory(CThing* item, bool real);   // 0x007CAB30
 };
@@ -55,11 +44,11 @@ class CCreatureAction_AddRealObjectToInventory : public CCreatureActionBase { pu
 
 void CCreatureAction_AddRealObjectToInventory::PerformAction()
 {
-    if (PObject.GetPItem()) {
-        if (!((CThingFlags91*)PObject.GetPItem())->m_isBeingRemoved) {
+    if (PObject.Get()) {
+        if (!((CThingFlags91*)PObject.Get())->m_isBeingRemoved) {
             CTCInventory* pInventory;
-            if (PCreature.GetPItem()->GetTC(TCI_HERO_RECEIVE_ITEMS, &pInventory))
-                pInventory->AddItemToInventory(PObject.GetPItem(), true);
+            if (PCreature.Get()->GetTC(TCI_HERO_RECEIVE_ITEMS, &pInventory))
+                pInventory->AddItemToInventory(PObject.Get(), true);
         }
     }
 }

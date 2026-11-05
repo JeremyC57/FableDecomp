@@ -21,32 +21,12 @@
 #undef CWorld
 #include "engine/C3DVector.h"
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
-    CInterfaceMap m_interfaces;                         // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPos() const;               // 0x004C73D0
-    void Kill(bool b);                                  // 0x004C9B80
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template<class T> __forceinline T* GetTC(long type)
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-};
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);    // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
+
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 class CTCDParticleEmitter {
 public:
@@ -71,7 +51,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
+template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 
 class CWorld : public CWorldDonor {
  public:
@@ -109,8 +89,8 @@ void CTCHeroCentreDoorMarker::UpdateParticleExperience()
         if (IS_THING_ALIVE(PParticle)) {
             CTCDParticleEmitter* emitter = 0;
             CThing* particle = PParticle.GetPItem();
-            if (particle->HasTC(0x4b))
-                emitter = particle->GetTC<CTCDParticleEmitter>(0x4b);
+            if (particle->HasTC(TCI_PARTICLE_EMITTER))
+                emitter = ((CTCDParticleEmitter*)&particle->GetTC(TCI_PARTICLE_EMITTER));
             emitter->AttachToThing(*ParentThing, 0x20, "", 0, 0.0f);
         }
     }

@@ -27,20 +27,9 @@ class CThingCreatureBase_Calls : public CThingGameObject { public:           // 
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CCreatureAction_InterruptableMidAttackAutoTurn { public:   // engine/CCreatureAction_InterruptableMidAttackAutoTurn.h exists but is not used: retail CCreatureActionBase is 0xa8 bytes, the PDB build's 0xb4
     virtual void v00();
@@ -51,5 +40,5 @@ class CCreatureAction_InterruptableMidAttackAutoTurn { public:   // engine/CCrea
 
 bool CCreatureAction_InterruptableMidAttackAutoTurn::IsToFaceTarget() const
 {
-    return PCreature.GetPItem()->PeekPlayer().m_autoFaceTarget ? true : false;
+    return PCreature.Get()->PeekPlayer().m_autoFaceTarget ? true : false;
 }

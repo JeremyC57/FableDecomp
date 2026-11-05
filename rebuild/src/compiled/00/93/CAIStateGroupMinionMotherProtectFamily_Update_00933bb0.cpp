@@ -21,20 +21,9 @@ class CThingAICreature;
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CCreatureActionBase { public:
     virtual void v00();
@@ -67,7 +56,7 @@ struct CAIStateGroup_MinionMotherProtectFamily : CAIStateGroupBase {
 
 void CAIStateGroup_MinionMotherProtectFamily::Update()
 {
-    if (PFamilyMember.GetPItem() != 0 && !PFamilyMember.GetPItem()->IsDead()) {
+    if (PFamilyMember.Get() != 0 && !PFamilyMember.Get()->IsDead()) {
         CThingAICreature* creature = PBrain->Creature;
         long result = AIAction_PerformActionAndWait(CCreatureAction_AlertToPlayer(creature), false);
         if (result == 2) {

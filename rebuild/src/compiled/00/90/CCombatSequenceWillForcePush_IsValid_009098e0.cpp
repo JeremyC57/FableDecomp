@@ -32,20 +32,9 @@ bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CPlayer { public:
     unsigned char _pad[0x34];
@@ -88,7 +77,7 @@ bool CCombatSequence_WillForcePush::IsValid()
     const CTCWillPower* willPower;
     if (m_pOwner->PeekTC(TCI_AICREATURE_WILL_POWER_INDICATOR, &willPower)) {
         if (willPower->Active) {
-            CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetCharacter().GetPItem();
+            CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetCharacter().Get();
             if (!AreThingsEnemies(hero, m_pOwner)) {
                 if ((hero->GetPos() - m_pOwner->GetPos()).GetMagnitude() < 8.0f)
                     return false;

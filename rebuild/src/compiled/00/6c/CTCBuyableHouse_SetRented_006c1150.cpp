@@ -30,39 +30,16 @@
 #define FABLE_RETAIL_STLP_BITSET_INDEX
 #include "engine/CVectorMap.h"
 
-
-enum ETCInterfaceType { };                                  // values not needed here
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase;
 
 #define CTCHeroStats CTCHeroStatsLayout
 #include "engine/CTCHeroStats.h"
 #undef CTCHeroStats
 class CTCHeroStats : public CTCHeroStatsLayout { public:
-    enum { INTERFACE_TYPE = 4 };                            // key 4 (`cmp [eax],4`); enumerator name not recovered
 };
 
-class CThing { public:                                      // partial view, retail offsets
-    typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > TCMap;
-    unsigned char      Header[0x20];                        // CClass / CBaseObject / CBaseClass part
-    std::bitset<274>   UsingComponents;                     // +0x20
-    TCMap              Components;                          // +0x44
-    unsigned char      _pad54[0x91 - 0x54];
-    unsigned char      Dead : 1;                            // +0x91 bit 0
-    void Kill(bool b);                                      // 0x004C9B80
-    template <class T> __forceinline bool GetTC(T** out)
-    {
-        if (UsingComponents[T::INTERFACE_TYPE]) {
-            ETCInterfaceType type = (ETCInterfaceType)T::INTERFACE_TYPE;
-            TCMap* map = &Components;
-            TCMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || T::INTERFACE_TYPE < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 
 #define CPlayer CPlayerLayout
@@ -128,9 +105,9 @@ private:
 void CTCBuyableHouse::SetRented(bool rented)
 {
     CThingPlayerCreature* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-    if (hero && !hero->Dead) {
+    if (hero && !hero->IsDead()) {
         CTCHeroStats* stats = 0;
-        hero->GetTC(&stats);
+        hero->GetTC(TCI_HERO_STATS, &stats);
         if (rented == true) {
             if (!Rented)
                 stats->NumberOfBuildingsRented++;
@@ -143,7 +120,7 @@ void CTCBuyableHouse::SetRented(bool rented)
     if (!rented && OwnedByPlayer)
         Evict();
     if (reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost).Get()
-        && !reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost).Get()->Dead)
+        && !reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost).Get()->IsDead())
         reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost).Get()->Kill(true);
     if (NeedsMainSignPost())
         CreateMainSignPost();

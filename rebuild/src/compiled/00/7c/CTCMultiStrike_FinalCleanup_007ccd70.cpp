@@ -21,17 +21,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CTCInventoryWeapons {                         // interface 0x13
 public:
@@ -59,7 +51,7 @@ void CTCMultiStrike::FinalCleanup()
     const const CTCInventoryWeapons* weapons;
     const const CTCCarrying* carrying;
     if (parent->PeekTC(TCI_INVENTORY_WEAPONS, &weapons))
-        weapon = weapons->PActiveMeleeWeapon.GetPItem();
+        weapon = weapons->PActiveMeleeWeapon.Get();
     else if (parent->PeekTC(TCI_CARRYING, &carrying))
         weapon = carrying->GetThingInPrimarySlot();
     if (weapon)

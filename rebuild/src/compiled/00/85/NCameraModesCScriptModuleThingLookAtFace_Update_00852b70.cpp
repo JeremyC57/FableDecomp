@@ -34,10 +34,13 @@ public:
     virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069();
     virtual C3DVector GetFacing();                   // slot 70 (+0x118), by value through the hidden pointer
 };
+namespace NGraphicAppearance {
 class CTCGraphicAppearance {
 public:
-    C3DVector GetCameraFocalPos(float height);       // 0x004C12D0
+    C3DVector GetCameraFocalPos(float height) const;       // 0x004C12D0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CBaseObject {
 public:
     unsigned char         _pad00[0x60];

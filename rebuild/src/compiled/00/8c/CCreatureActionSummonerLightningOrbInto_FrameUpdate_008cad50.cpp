@@ -49,17 +49,9 @@ class CThingCreatureBase : public CThing { };
 class CAnimationEntry;
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C
-public:
-    virtual ~CBaseIntelligentPointer();               // 0x00A01C10
-    CBaseObject* GetPItem() const;                    // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                        // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CCreatureActionBase {                           // retail sizeof 0xa8
 public:
     virtual ~CCreatureActionBase();
@@ -83,13 +75,13 @@ public:
 void CCreatureAction_SummonerLightningOrbInto::FrameUpdate()
 {
     CCombatActionBase::FrameUpdate();
-    if (PTarget.GetPItem() && !PTarget.GetPItem()->IsDead()) {
-        CThing* target = PTarget.GetPItem();
-        const C3DVector& from = PCreature.GetPItem()->GetPos();
+    if (PTarget.Get() && !PTarget.Get()->IsDead()) {
+        CThing* target = PTarget.Get();
+        const C3DVector& from = PCreature.Get()->GetPos();
         const C3DVector& to = target->GetPos();
         C3DVector direction(to.X - from.X, to.Y - from.Y, 0.0f);
         direction.AccurateNormalise();
-        C3DVector facing = PCreature.GetPItem()->GetPhysicsTC()->GetFacingVector();
+        C3DVector facing = PCreature.Get()->GetPhysicsTC()->GetFacingVector();
         float dot = direction.Z * facing.Z + direction.X * facing.X + direction.Y * facing.Y;
         if (dot < -1.0f)
             dot = -1.0f;
@@ -102,6 +94,6 @@ void CCreatureAction_SummonerLightningOrbInto::FrameUpdate()
         if (CrossProduct(facing, direction).Z > 0.0f)
             angle *= -1.0f;
         facing.Rotate(C3DVector(0.0f, 0.0f, 1.0f), angle);
-        PCreature.GetPItem()->GetPhysicsTC()->SetRHSet(CRightHandedSet(facing));
+        PCreature.Get()->GetPhysicsTC()->SetRHSet(CRightHandedSet(facing));
     }
 }

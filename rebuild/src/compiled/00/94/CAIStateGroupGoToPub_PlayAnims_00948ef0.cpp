@@ -17,6 +17,7 @@
 // Layout (supersedes any local-model note above): engine/CTCTavernGame.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
 #define CTCTavernGame CTCTavernGameDonor
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CTCTavernGame.h"
 #undef CTCTavernGame
 class CCharString;
@@ -31,20 +32,8 @@ class CTCTavernGame : public CTCTavernGameDonor {
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#include "engine/CIntelligentPointer.h"
+
 class CThingCreatureBase;
 class CSoundPair { public:
     long FirstSound;
@@ -93,7 +82,7 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 bool CAIStateGroup_GoToPub::PlayAnims(const CCharString& intoAnim, const CCharString& loopAnim, const CCharString& outAnim, float seconds)
 {
     CTCTavernGame* game = 0;
-    PTable.GetPItem()->GetTC(TCI_TAVERN_GAME, &game);
+    PTable.Get()->GetTC(TCI_TAVERN_GAME, &game);
     bool failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), intoAnim, CSoundPair(),
                                                                               false, true, false, 0, 0), false) != 2;
     if (failed)

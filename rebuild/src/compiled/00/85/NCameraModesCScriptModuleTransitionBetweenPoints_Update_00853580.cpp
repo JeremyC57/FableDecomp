@@ -22,10 +22,13 @@ class CWorld { public: static long __fastcall GetFrame(); };                 // 
 
 #include "engine/C3DVector.h"
 
+namespace NGraphicAppearance {
 class CTCGraphicAppearance {
 public:
-    C3DVector GetCameraFocalPos(float height);       // 0x004C12D0
+    C3DVector GetCameraFocalPos(float height) const;       // 0x004C12D0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThing {
 public:
     unsigned char         _pad00[0x64];

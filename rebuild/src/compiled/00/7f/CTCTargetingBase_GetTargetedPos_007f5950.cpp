@@ -13,20 +13,9 @@
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CWorld;
 namespace NTargeting {
 C3DVector __fastcall GetTargetingPositionOnThing(const CWorld& world, const CThing& thing, float height);   // 0x007EA2F0
@@ -53,14 +42,14 @@ class CTCTargetingBase : public CTCBase { public:
 
 static inline bool IsThingAlive(const CIntelligentPointer<CThing>& p)
 {
-    return p.GetPItem() && !p.GetPItem()->IsDead();
+    return p.Get() && !p.Get()->IsDead();
 }
 
 bool CTCTargetingBase::GetTargetedPos(C3DVector& pos, float radius) const
 {
     const CIntelligentPointer<CThing>& target = PTargetedThing;
     if (IsThingAlive(target)) {
-        pos = NTargeting::GetTargetingPositionOnThing(PeekWorld(), *target.GetPItem(), radius);
+        pos = NTargeting::GetTargetingPositionOnThing(PeekWorld(), *target.Get(), radius);
         return true;
     }
     return false;

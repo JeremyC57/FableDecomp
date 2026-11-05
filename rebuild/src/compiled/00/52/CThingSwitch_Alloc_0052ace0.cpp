@@ -8,19 +8,13 @@
 //   size in ecx, the bool in dl), CThingSwitch::CThingSwitch() @ 0x00529B00.
 // Shape: the landed CThingObject::Alloc 0x00527320: `new (false) CThingSwitch` keeps its null test and tail-jumps to the
 //   constructor (which returns `this`).
-class CClass {
-public:
-    virtual void v00();
-};
-class CThing : public CClass {
-protected:
-    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380
-public:
-    unsigned char _body[0xC0 - 4];
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_OPERATORNEW
+#include "engine/CThing.h"
+
 class CThingSwitch : public CThing {
 public:
-    unsigned char _body2[0xE8 - 0xC0];                                  // sizeof(CThingSwitch) = 0xE8 in retail
+    unsigned char _body2[0xE8 - 0x98];                                  // sizeof(CThingSwitch) = 0xE8 in retail
     CThingSwitch();                                                      // 0x00529B00
     static CClass* __fastcall Alloc();
 };

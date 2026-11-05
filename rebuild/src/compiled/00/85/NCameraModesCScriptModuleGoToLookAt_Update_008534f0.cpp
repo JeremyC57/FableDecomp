@@ -14,17 +14,15 @@ class CBaseObject;
 
 #include "engine/C3DVector.h"
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float t) const;      // 0x004C12D0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
-class CThing { public:
-    unsigned char         _pad00[0x64];
-    CTCGraphicAppearance* m_pGraphicAppearance;      // +0x64
-    unsigned char         _pad68[0x29];
-    unsigned char         m_dead : 1;                // +0x91 bit 0
-    unsigned char         m_91_1 : 7;
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 struct CCameraState {
     unsigned char _pad00[0x10];
@@ -58,9 +56,9 @@ void CScriptModuleGoToLookAt::Update()
 {
     POwner->Position = GoTo;
     if (PThing.GetPItem()) {
-        if (!PThing->m_dead) {
+        if (!PThing->IsDead()) {
             const CThing* target = PThing.operator->();
-            C3DVector focal = target->m_pGraphicAppearance->GetCameraFocalPos(1.0f);
+            C3DVector focal = target->GetTCGraphicAppearance()->GetCameraFocalPos(1.0f);
             LookAt = focal;
         }
     }

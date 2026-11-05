@@ -16,60 +16,38 @@
 //   immediate (`cmp [eax],46h ; jle`). esi is pushed before the first test because both lookups use it; the
 //   weapon query's own bool is returned as is, the misses share the `xor al,al` tail.
 class CTCBase;
-enum ETCInterfaceType { TC_CARRYING = 0x46, TC_WEAPON = 0x48 };
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];               // +0x20 bitset<274>
-    CInterfaceMap Components;                       // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    bool HasTC(ETCInterfaceType type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline bool PeekTC(const T** pp) const
-    {
-        if (HasTC(T::StatGetInterfaceType())) {
-            *pp = (const T*)Components.Find(T::StatGetInterfaceType())->second;
-            return true;
-        }
-        return false;
-    }
-};
-
 inline bool IsThingAlive(const CThing* thing)
 {
-    if (thing && !thing->Dead)
+    if (thing && !thing->IsDead())
         return true;
     return false;
 }
 
 class CTCWeapon {
 public:
-    static ETCInterfaceType StatGetInterfaceType() { return TC_WEAPON; }
+    static ETCInterfaceType StatGetInterfaceType() { return TCI_WEAPON; }
     bool IsProjectileWeapon() const;                    // 0x005DAA40
 };
 
 class CTCCarrying {
 public:
-    static ETCInterfaceType StatGetInterfaceType() { return TC_CARRYING; }
+    static ETCInterfaceType StatGetInterfaceType() { return TCI_CARRYING; }
     CThing* GetThingInPrimarySlot() const;          // 0x006A1440
     static bool __fastcall IsThingCarryingRangedWeapon(const CThing& thing);
 };
 
 bool __fastcall CTCCarrying::IsThingCarryingRangedWeapon(const CThing& thing)
 {
-    const CTCCarrying* carrying;
+    const const CTCCarrying* carrying;
     if (thing.PeekTC(&carrying)) {
         CThing* item = carrying->GetThingInPrimarySlot();
-        const CTCWeapon* weapon;
+        const const CTCWeapon* weapon;
         if (IsThingAlive(item) && item->PeekTC(&weapon))
             return weapon->IsProjectileWeapon();
     }

@@ -19,7 +19,10 @@
 //   the divide), then the bank as a named reference (the getter runs before the pushes; in the argument
 //   list it is called after them).
 // No pragma.
-class CCharString { public: void* PStringData; };
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 #include "engine/C3DVector.h"
 class CASoundBank {
 public:
@@ -60,13 +63,7 @@ public:
     unsigned char _pad00[0x0c];
     C3DVector     Position;                     // +0x0c
 };
-class CThing {
-public:
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                  // +0x60
-    const C3DVector& GetPosition() const { return PhysicsTC->Position; }   // CThing::GetPosition 0x004C73D0, inline
-    CASoundBank& GetSampleBank() const;         // 0x004C7A80
-};
+
 extern void*         g_pGameState;              // 0x013B8394 (no sound while null)
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
 long __fastcall GFROR13(unsigned long);   // 0x00497890

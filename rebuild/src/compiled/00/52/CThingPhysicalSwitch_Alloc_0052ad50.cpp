@@ -12,31 +12,19 @@
 //   bytes narrower: +0xd0 / +0xd4, 0xd8 bytes. Local retail model (engine/CThingGameObject.h is the PDB layout).
 // Shape: `new (false) T` through CThing's protected static __fastcall operator new(size, bool); the CCharString member's
 //   out-of-line default ctor (0x0099E4B0) runs after the derived vtable store; Triggered stays uninitialised.
-class CCharString {
-public:
-    void* PData;                                // CBasicString<char>* (4 bytes)
-    CCharString();                              // 0x0099E4B0
-};
-
-class CClass {                                  // the reflection root every thing class derives from (vptr owner)
-public:
-    virtual void v00();
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_OPERATORNEW
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-
-class CThing : public CClass {
-protected:
-    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380 (null when the manager refuses)
-};
-
 class CThingPhysical : public CThing {
 public:
-    unsigned char _pad04[0xbc];                 // +0x04 .. +0xbf (CThing + CThingPhysical members, not touched here)
+    unsigned char _pad04[0x24];   // own members from +0x98
     CThingPhysical(long type);                  // 0x005296B0
 };
 

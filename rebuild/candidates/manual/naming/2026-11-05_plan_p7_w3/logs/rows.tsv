@@ -1,0 +1,520 @@
+address	rule
+0043a080	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00449f90	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00487af0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2 +ASSIGN
+00487bd0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00487c20	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00487ef0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+004884d0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0048c740	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0048cb20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+004ab8f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+004af560	UNCHANGED: non-canonical CBaseIntelligentPointer model
+004b0c80	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+004b0f10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+004b0fc0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+004cc340	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+005cc1b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00634890	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00634a30	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00634f60	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00635080	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00635190	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+006352a0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+006353b0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+006354c0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00636270	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+006369b0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00636b00	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00655d04	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00658ec3	UNCHANGED: no local CIntelligentPointer<T> block
+0065f8ca	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0066aef0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0066c1e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006705f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4 +ASSIGN
+006836d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00689340	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00691fe0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00692ec0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00694d10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+006961f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006988b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006994f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0069b650	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0069ce20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0069ce50	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0069f480	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0069f4f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+0069f700	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0069f7b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0069f860	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0069f910	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0069fce0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+006a0ff0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006a10a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006a1d60	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+006a5950	UNCHANGED: no engine/CThing.h
+006a5af0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +ASSIGN
+006a8c00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+006af520	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+006bf960	UNCHANGED: non-canonical CBaseIntelligentPointer model
+006c04d0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+006c0580	UNCHANGED: non-canonical CBaseIntelligentPointer model
+006c52d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006c5410	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0
+006c55e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +ASSIGN
+006c5f80	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006e0480	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006e0500	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006e05f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006e0620	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006e0af0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+006e0df0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+006e1020	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006e14e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+006e2d30	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006e5600	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+006e5690	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00712df0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0
+0071a9c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0071b240	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0071c1f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+007224e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00729ca0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+0072cd00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +ASSIGN
+0072ce20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +ASSIGN
+0072e4c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0072f9e0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007304c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00731680	UNCHANGED: local CIntelligentPointer<T> has extra members: IsAlive,IsDead
+007448b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00747b80	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0074ab00	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0074ace0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0074baa0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0075d940	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0075d9a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+007664e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+00766a60	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+007674a0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+0076cc00	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00773aa0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00773c00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00779340	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2 +ASSIGN
+0077f750	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+00780700	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+00782060	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00782390	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007832b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00783680	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00784260	MIGRATED: migrated GetPItem/SetPItem->Get/Set x9
+00784500	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00784600	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007846b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x9
+007849c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+00784bd0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+0078b2a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0078b640	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0078e7c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00793cc0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007986a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +ASSIGN
+00798f50	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00799000	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00799e30	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0079a660	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0079a6a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0079a820	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0079b650	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0079d020	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+0079d110	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+0079e3a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+0079e990	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0079fd90	MIGRATED: migrated GetPItem/SetPItem->Get/Set x7
+007a16f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+007a7bf0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007aa6b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0
+007af310	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007b01c0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007b0950	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007b0ba0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+007b5ba0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x8
+007ba000	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+007ba1d0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007ba8c0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007baf00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+007bb150	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+007c4320	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007c5480	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007c54f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007c5710	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007c6940	UNCHANGED: local CIntelligentPointer<T> has extra members: v00
+007c6aa0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007c8fd0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007c90a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007c9920	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+007ca9e0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007cab30	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007cc060	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +COPY base:p
+007cc9e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007ccd70	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+007d2ef0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+007d3560	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007de2b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+007de530	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007de5d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x7 +ASSIGN
+007e34e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007e8370	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007e8420	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+007e8440	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+007ee3d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+007ee4d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+007ee540	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+007f07a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+007f11d0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007f2360	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+007f5950	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+007f84c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+007fb150	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+007fb1c0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007fb4a0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+007fb610	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+007fbc90	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +ASSIGN
+008004d0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00800500	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00800a60	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00809210	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0080d0b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +COPY
+0080d750	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +COPY
+008116d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008138e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00813b80	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0082d9c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00835fd0	UNCHANGED: no engine/CThing.h
+00836a50	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2 +ASSIGN
+00836be0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00842f70	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00843fc0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+00844260	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+008442f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+00844380	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+00844410	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+008445a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008446e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008448a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00844b40	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00845850	MIGRATED: migrated GetPItem/SetPItem->Get/Set x7
+00845a70	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00845bc0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00845c70	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00845fe0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+00846090	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00846660	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00848ae0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00848d10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00848db0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+00848fd0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008491e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+00849be0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+0084a180	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0084a200	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0084d7e0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00854810	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008552f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00855500	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+008569c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00856b20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x7
+00856d30	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00857070	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00857520	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00858cc0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x7
+0085aa90	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0085b8f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0085c0b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0085c120	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00860310	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00860350	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00860390	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008603d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00860520	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008605b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+008607a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+00860950	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00860c60	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+00861030	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+00866ce0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00866fb0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00867010	UNCHANGED: no engine/CThing.h
+00867820	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0087b910	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0087c900	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0087cd50	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0087e860	MIGRATED: migrated GetPItem/SetPItem->Get/Set x15
+00883aa0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008b6c30	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008b6ee0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008b7640	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008b76b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008b7920	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008b79a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008b7a20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+008b7ba0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008b8cb0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008b8f30	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008ba0b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008ba970	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008baa00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008bab70	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008bcea0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008bd7c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008bf6a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c0730	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c0790	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008c08b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c0b70	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c0c00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+008c0d10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008c1180	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c11f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c1260	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c19b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c1ac0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c1bd0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c1e00	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008c2490	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008c4020	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c40d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c40f0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008c42b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c4330	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c43b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c4430	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c4780	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008c48a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c4990	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c4b00	UNCHANGED: local CIntelligentPointer<T> has extra members: GetCreature
+008c55b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x7
+008c63c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c67a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c6a50	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+008c7200	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008c7480	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008c7d80	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +COPY
+008c8080	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c80e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c8130	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008c8960	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008c9e60	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008c9f40	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008ca110	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008ca170	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008ca220	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008ca4a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+008cad10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008cad50	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+008cb120	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008cb250	UNCHANGED: no engine/CThing.h
+008cb4a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008cb5c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008cc7a0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008cc820	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008cc9c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008cca60	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008cd820	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008cda30	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008cf3d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008cf540	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008cf610	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008cf700	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008d2700	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008d3170	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008d3850	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008d3930	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008d3a10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008d58d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008d7370	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008d7430	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008d7580	UNCHANGED: no engine/CThing.h
+008d8f30	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008da610	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008dba90	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008e6400	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008e6490	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008e6690	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008e6ae0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x8
+008e7850	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008e8760	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008ea9b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008ec3f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008ec470	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008ed850	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008ed8c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008ed950	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+008eda10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+008ef2f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008ef400	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008ef950	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008f20f0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008f2580	UNCHANGED: non-canonical CBaseIntelligentPointer model
+008f2f30	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008f2fb0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008f3a50	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008f3c00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+008f3e70	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+008f42a0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+008f4570	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+009098e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0090bed0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0090c670	UNCHANGED: no engine/CThing.h
+0090e120	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0090e2e0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0090e4a0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0090ee20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0090f1c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+0090f470	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0
+0090fa60	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0090fc50	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0090fdb0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00918050	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00919040	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0091c130	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN base:PTarget
+0091c640	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0091d320	MIGRATED: migrated GetPItem/SetPItem->Get/Set x8
+0091d8c0	UNCHANGED: local CIntelligentPointer<T> has an extra operator
+0091d930	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0091dda0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0091e050	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+00920990	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +ASSIGN
+00923cf0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00923ec0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00923f60	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00923fd0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00924040	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00924120	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00924260	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+009242d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+009243b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00924670	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00924a90	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00924b40	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+009285d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+00928e20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN base:PTarget
+0092bd80	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0092c740	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4 +ASSIGN
+0092e300	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0092e540	MIGRATED: migrated GetPItem/SetPItem->Get/Set x6
+0092e630	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+009331e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00933470	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00933bb0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00935a10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00936020	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00936830	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00938580	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+009387f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00938a10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00939180	UNCHANGED: no engine/CThing.h
+0093a080	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0093afc0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0093bdf0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+0093c230	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+0093c420	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3 +ASSIGN
+0093d580	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0093ea00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+0093ee40	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+0093f870	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0093fb30	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+009408d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+009415b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00941e00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00943b40	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN
+009445f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00944690	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00944d10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00944db0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00945530	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00945a90	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00945b10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00945db0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+009460c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00946100	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00946380	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00947280	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4 +ASSIGN
+00947e20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00948060	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00948d40	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00948ef0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+009490d0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+009492a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00949320	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+009498b0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0094a2b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0094a840	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0094cb40	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0094d930	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0094fbb0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0094fdf0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0094fe30	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+009500a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00951b20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00954190	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+009542b0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+009542f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00954330	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00954370	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00954900	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +ASSIGN
+00956460	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+00956a70	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00956c00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00956c70	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00956d90	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00956e00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+009576d0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00959a60	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0095a2c0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+0095a420	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+0095a490	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+0095ad20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0095c1f0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+0095d070	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0095e790	UNCHANGED: no local CIntelligentPointer<T> block
+0095e870	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+0095ebf0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0095f660	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00961790	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00961c50	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00961e10	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00961f40	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00962180	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00962af0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+009635c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+009647c0	UNCHANGED: no local CIntelligentPointer<T> block
+00965fb0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2 +ASSIGN
+00967250	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+009672c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00967930	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00967b40	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+00968860	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+009689c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00969ae0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1 +ASSIGN base:PTarget
+0096a350	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0096a730	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0096c1e0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0096cfc0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x2
+0096ddb0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x0 +ASSIGN base:PTarget
+0096e610	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0096fa20	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0096fa90	UNCHANGED: no local CIntelligentPointer<T> block
+0096fc60	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00970790	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+00970b60	UNCHANGED: non-canonical CBaseIntelligentPointer model
+009713e0	UNCHANGED: non-canonical CBaseIntelligentPointer model
+00971b00	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4
+009779a0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+00979260	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0097aae0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+0097b870	MIGRATED: migrated GetPItem/SetPItem->Get/Set x3
+0097ccd0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x5
+00982b50	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00982bb0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+009830c0	MIGRATED: migrated GetPItem/SetPItem->Get/Set x1
+00984b40	MIGRATED: migrated GetPItem/SetPItem->Get/Set x4

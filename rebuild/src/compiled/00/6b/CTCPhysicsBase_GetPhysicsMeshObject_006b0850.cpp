@@ -67,12 +67,12 @@ public:
     virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
     virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
     virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
-    virtual const CRightHandedSet& GetRightHandedSet();   // slot 72 (+0x120)
+    virtual const CRightHandedSet& GetRightHandedSet() const;   // slot 72 (+0x120)
     virtual void v073(); virtual void v074(); virtual void v075(); virtual void v076(); virtual void v077(); virtual void v078();
     virtual void v079(); virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084();
     virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089(); virtual void v090();
     virtual void v091(); virtual void v092();
-    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo();   // slot 93 (+0x174)
+    virtual const CThingPhysicsMeshInfo* GetPhysicsMeshInfo() const;   // slot 93 (+0x174; Ego_r.pdb overrides are const, UBE)
 protected:
     const CWorld& PeekWorld() const;   // 0x00686A80
 };
@@ -81,10 +81,10 @@ class CTCPhysicsBase : public CTCBase { public:
     void*     ParentThing;                      // +0x04
     unsigned char _pad08[0x4];
     C3DVector Position;                         // +0x0c
-    CPhysicsMeshObject GetPhysicsMeshObject();
+    CPhysicsMeshObject GetPhysicsMeshObject() const;
 };
 
-CPhysicsMeshObject CTCPhysicsBase::GetPhysicsMeshObject()
+CPhysicsMeshObject CTCPhysicsBase::GetPhysicsMeshObject() const
 {
     const CThingPhysicsMeshInfo* info = GetPhysicsMeshInfo();
     CMeshBank* bank = PeekWorld().PMeshBank;

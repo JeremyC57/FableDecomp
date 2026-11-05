@@ -58,7 +58,9 @@ public:
 class CThingAICreatureInit;
 class CThing : public CClass {
 public:
-    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380 (null when the manager refuses)
+protected:
+    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380 (null when the manager refuses); protected in retail (Ego_r ??2CThing@@KIPAXI_N@Z)
+public:
     unsigned char   _pad04[0x5c];
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }

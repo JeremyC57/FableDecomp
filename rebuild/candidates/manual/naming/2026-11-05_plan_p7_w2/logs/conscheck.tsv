@@ -1,0 +1,63 @@
+address	verdict	why
+00583bd5	FLAG	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0
+0059d820	FLAG	005bf482: new spelling ?GetAllItems@CTCInventoryBase@@QBEXAAUCItemVector@ not at target; old ?GetAllItems@CTCInventoryBase@@QAEXAAUCItemVector@ keeps 1 binder(s) 005bf77d
+0062cf90	FLAG	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0
+00698a30	FLAG	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0
+006a8300	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006a84f0	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006a8630	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006a8c60	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006c8de0	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006cf3b0	FLAG	0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+006e7820	FLAG	0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+006e7920	FLAG	0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+007034d0	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+00726340	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+00736910	OK	
+0073a9f0	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+00745c70	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+00747660	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+0074e560	OK	
+00753b40	FLAG	0070b470: new spelling ?GetState@CTCTurnSource@@QBEPAUCTurnState@@XZ not at target; old ?GetState@CTCTurnSource@@QAEPAUCTurnState@@XZ keeps 1 binder(s) 006d5af0
+00771230	FLAG	004be4e0: new spelling ?DrawPreparePrimitivesForRendering@CTCGraphicAppea not at target; old ?DrawPreparePrimitivesForRendering@CTCGraphicAppea keeps 1 binder(s) 0083ba70
+0077c490	OK	
+0079eaa0	FLAG	004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is bound in the index to 004bfe20; 004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is defined at 004bfe20
+007a9c80	FLAG	004c0560: new spelling ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetHelperPoint@CTCGraphicAppearance@@QAE_NABVCCha keeps 4 binder(s) 00661b40,00722590,00781e40,008717a0
+007b2d50	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+007cc120	FLAG	004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is bound in the index to 004bfe20; 004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is defined at 004bfe20
+007e5b40	FLAG	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0; 0073aba0: new spelling ?RemoveMode@CTCCreatureModeManager@@QBEXK@Z not at target; old ?RemoveMode@CTCCreatureModeManager@@QAEXK@Z keeps 115 binder(s) 006355d0,00635840,00635b30,00635d70
+007e5b90	FLAG	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0; 005da980: ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ replaces the non-PDB ?IsProjectileWeaponLoaded@CTCWeapon@@QAE_NXZ (4 binder(s) left: 0068eb20,0068f9d0,0078a2c0,0078a5d0)
+007ea490	FLAG	004c0560: new spelling ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetHelperPoint@CTCGraphicAppearance@@QAE_NABVCCha keeps 4 binder(s) 00661b40,00722590,00781e40,008717a0
+007ee8f0	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+007feaf0	FLAG	004c08c0: new spelling ?GetDummyObject@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetDummyObject@CTCGraphicAppearance@@QAE_NABVCCha keeps 21 binder(s) 00661aa0,00661b40,0072ddb0,0072df50
+007ff0c0	FLAG	004c08c0: new spelling ?GetDummyObject@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetDummyObject@CTCGraphicAppearance@@QAE_NABVCCha keeps 21 binder(s) 00661aa0,00661b40,0072ddb0,0072df50
+00802d10	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+00809270	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+00833800	OK	
+008369f0	OK	
+008385b0	OK	
+0083b7f0	OK	
+0083c5d0	OK	
+0084db30	OK	
+008534f0	OK	
+0085b160	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+0085bd70	OK	
+0085ff10	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+00864250	OK	
+00864d00	FLAG	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0; 007f6200: new spelling ?UpdatePBestEnemyCreatureForAttack@CTCTargetingAI@ not at target; old ?UpdatePBestEnemyCreatureForAttack@CTCTargetingAI@ keeps 2 binder(s) 007f69b0,0093d580
+008d43c0	OK	
+008dcb60	FLAG	0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+008e5750	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+008e7040	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+008e7600	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+008e9950	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+00905600	OK	
+00929820	FLAG	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0
+0092c5a0	FLAG	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0
+009352c0	FLAG	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0
+0093d800	FLAG	00744430: new spelling ?GetDirectAwareness@CTCPerceiveThing@@QBE_NXZ not at target; old ?GetDirectAwareness@CTCPerceiveThing@@QAE_NXZ keeps 1 binder(s) 009576d0; 0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 004365b0
+0093dfc0	FLAG	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+0093e8c0	FLAG	004c08c0: new spelling ?GetDummyObject@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetDummyObject@CTCGraphicAppearance@@QAE_NABVCCha keeps 21 binder(s) 00661aa0,00661b40,0072ddb0,0072df50
+00958cb0	FLAG	006610c7: new spelling ?FindMostRecentDeed@CTCCreatureOpinionOfHero@@QBEP not at target; old ?FindMostRecentDeed@CTCCreatureOpinionOfHero@@QAEP keeps 5 binder(s) 0065bffa,0092d060,00930a70,00930ee0
+0095f9a0	FLAG	006aeb60: new spelling ?IsRegionFollower@CTCRegionFollower@@QBE_NPAVCThin not at target; old ?IsRegionFollower@CTCRegionFollower@@QAE_NPAVCThin keeps 1 binder(s) 0094c900
+00970420	OK	

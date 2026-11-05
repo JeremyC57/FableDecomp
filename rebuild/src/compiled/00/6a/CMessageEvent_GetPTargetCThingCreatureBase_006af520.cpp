@@ -12,17 +12,9 @@
 // Shape: the landed 0x0090DF30 body: `T* result = 0` in edi, the mask test `not eax ; test al,0Fh`.
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 #define FABLE_RETAIL_CTHING
 #include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
@@ -38,9 +30,9 @@ public:
 template <class T> T* CMessageEvent::GetPTarget() const
 {
     T* result = 0;
-    if (PTarget.GetPItem()) {
-        if (!(~PTarget.GetPItem()->GetTypeFlags() & 0x0F))
-            result = (T*)PTarget.GetPItem();
+    if (PTarget.Get()) {
+        if (!(~PTarget.Get()->GetTypeFlags() & 0x0F))
+            result = (T*)PTarget.Get();
     }
     return result;
 }

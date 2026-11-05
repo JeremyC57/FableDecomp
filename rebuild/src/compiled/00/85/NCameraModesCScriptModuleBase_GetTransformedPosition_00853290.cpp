@@ -15,12 +15,7 @@ class CBaseObject;
 
 #include "engine/C3DVector.h"
 
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char m_dead : 1;                        // +0x91 bit 0
-    unsigned char m_91_1 : 7;
-    const C3DVector& GetPos() const;            // 0x004C73D0
-};
+#include "engine/CThing.h"
 
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -46,7 +41,7 @@ C3DVector CScriptModuleBase::GetTransformedPosition(const C3DVector& offset)
 {
     C3DVector origin = CoordOrigin;
     if (PThingOrigin.GetPItem()) {
-        if (!PThingOrigin->m_dead)
+        if (!PThingOrigin->IsDead())
             origin = PThingOrigin->GetPos();
     }
     return C3DVector(origin.X + offset.X, origin.Y + offset.Y, origin.Z + offset.Z);

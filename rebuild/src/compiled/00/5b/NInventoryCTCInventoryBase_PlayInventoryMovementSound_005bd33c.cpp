@@ -37,9 +37,9 @@ struct CGameState {
 };
 class CASoundManager;
 extern CASoundManager* PSoundManager;                        // 0x013B8394
-class CThing { public:
-    CASoundBank& GetSampleBank() const;                 // 0x004C7A80
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 class CInventoryDef { public:
     virtual void v000();
     virtual void Destroy() const;                       // slot 1 (+0x04)

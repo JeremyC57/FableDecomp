@@ -16,35 +16,15 @@
 #pragma pack(push, 1)                                   // the PDB puts ProjectileTrailEffect at the odd offset +0x65
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
-public:
-    virtual ~CIntelligentPointer();
-    CIntelligentPointer& operator=(const CIntelligentPointer& other)
-    {
-        CThing* item = other.GetPItem();
-        SetPItem(item);
-        return *this;
-    }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 #pragma pack(pop)
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -117,7 +97,7 @@ void CTCObjectAugmentations::FireCombatAugEffect()
     InStrikeAction = true;
     for (long i = 0; i < (long)CurrentRunningAugEffect.size(); ++i) {
         if (IS_THING_ALIVE(CurrentRunningAugEffect[i]))
-            CurrentRunningAugEffect[i].GetPItem()->Kill(true);
+            CurrentRunningAugEffect[i].Get()->Kill(true);
     }
     CurrentRunningAugEffect.clear();
     for (long i = 0; i < (long)AttackParticleEffects.size(); ++i) {

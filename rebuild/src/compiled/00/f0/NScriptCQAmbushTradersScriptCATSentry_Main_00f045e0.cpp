@@ -17,7 +17,6 @@
 //   Was `?Main@CAT_Sentry@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -62,10 +61,13 @@ class CBaseClass { public:                                    // vtable 0x012317
     __forceinline CBaseClass() { }
 };
 class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     virtual void t1(); virtual void t2();
     virtual CCharString GetDataString() const;         // slot 3 (+0x0c)
     virtual void t4(); virtual void t5();
-    virtual __forceinline const C3DVector& GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPosition(); }   // slot 6
+    virtual __forceinline const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }   // slot 6
     virtual void t07(); virtual void t08(); virtual void t09(); virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14();
     virtual void t15(); virtual void t16(); virtual void t17(); virtual void t18(); virtual void t19(); virtual void t20(); virtual void t21(); virtual void t22();
     virtual void t23(); virtual void t24(); virtual void t25(); virtual void t26(); virtual void t27(); virtual void t28(); virtual void t29(); virtual void t30();

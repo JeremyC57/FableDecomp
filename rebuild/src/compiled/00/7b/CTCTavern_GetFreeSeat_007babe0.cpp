@@ -84,7 +84,7 @@ class CTCThingOwner { public:
     CObjectNode* ObjectList;                            // +0x0c (header node)
 };
 struct CTCUserActionPointBase {
-    bool IsActionPointFree();                           // 0x007FEBF0
+    bool IsActionPointFree() const;                           // 0x007FEBF0
 };
 class CTCTavern { public:
     virtual void v00();

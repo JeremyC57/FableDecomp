@@ -30,10 +30,7 @@ class CGameEvent : public CMemoryBuffer { public:
     void AddBool(bool value) { Copy(1, &value); }
 };
 
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char IsDead : 1;                         // +0x91 bit 0
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
@@ -73,7 +70,7 @@ class CTCInventoryMap : public CTCBase { public:
 void CTCInventoryMap::TeleportHeroToGuildSealRecallLocation() const
 {
     const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
-    if (hero && !hero->IsDead) {
+    if (hero && !hero->IsDead()) {
         GetWorld().DisplayMiniMapOnRegionLoad = true;
         const C3DVector& pos = GetWorldConst().GuildSealRecallPos;
         float angle = GetWorldConst().GuildSealRecallAngleXY;

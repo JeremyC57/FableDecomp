@@ -9,8 +9,8 @@
 // Layout (retail, as the landed CThingFilter_IsPotentialCustomer::operator() 0x00799E30 / CTCShopKeeper 0x00799140):
 //   CThing thing-type byte +0x10, interface bitset +0x20 (0x75 = dword +0x2C bit 21), interface map +0x44, Dead
 //   +0x91 bit 0; component 0x75 holds the building intelligent pointer at +0x0C.
-// Shape: `if (thing.HasTC(0x75)) { building = GetTC(0x75)->Building.GetPItem(); if (building && !building->Dead &&
-//   building->ThingType == 3) return building; } return 0;` -- one GetPItem call (no IS_THING_ALIVE re-reads); the
+// Shape: `if (thing.HasTC(0x75)) { building = GetTC(0x75)->Building.GetPItem(); if (building && !building->IsDead() &&
+//   building->GetType() == 3) return building; } return 0;` -- one GetPItem call (no IS_THING_ALIVE re-reads); the
 //   key temporary is the `push ecx` slot taken before the bitset test.
 // Name: Ego_r.pdb `?GetPBuildingThingOccupying@NCameraModes@@YIPBVCThingBuilding@@ABVCThing@@@Z`.
 class CThing;
@@ -18,7 +18,8 @@ class CThingBuilding;
 
 class CTCBase { public: void* vfptr; CThing* ParentThing; };
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
@@ -44,37 +45,12 @@ struct CTCBuildingOccupant : CTCBase {                      // component 0x75 (d
     CIntelligentPointer<CThing> Building;                       // +0x0C
 };
 
-class CThing {
-public:
-    unsigned char  _pad00[0x10];
-    unsigned char  ThingType;                               // +0x10
-    unsigned char  _pad11[0x20 - 0x11];
-    unsigned long  m_presentBits[9];                        // +0x20 interface-present bitset
-    CInterfaceMap  m_interfaces;                            // +0x44
-    unsigned char  _pad54[0x3d];
-    unsigned char  Dead : 1;                                // +0x91 bit 0
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline const CTCBase* GetTC(long type) const
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(key);
-        const CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
-};
-
 namespace NCameraModes {
 const CThingBuilding* __fastcall GetPBuildingThingOccupying(const CThing& thing)
 {
-    if (thing.HasTC(0x75)) {
-        const CThing* building = ((const CTCBuildingOccupant*)thing.GetTC(0x75))->Building.GetPItem();
-        if (building && !building->Dead && building->ThingType == 3)
+    if (thing.HasTC(TCI_VOLUME_CONTAINMENT_TRACKER)) {
+        const CThing* building = ((const CTCBuildingOccupant*)((const CTCBuildingOccupant*)&thing.GetTC(TCI_VOLUME_CONTAINMENT_TRACKER)))->Building.GetPItem();
+        if (building && !building->IsDead() && building->GetType() == 3)
             return (const CThingBuilding*)building;
     }
     return 0;

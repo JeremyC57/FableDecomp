@@ -40,20 +40,9 @@ class CTCHeroOpinionDeedLog { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCBase
 {
 public:
@@ -87,12 +76,12 @@ void CTCCreatureGroupBoastingCrowd::EnterCrowdState(long state)
         return;
     if (HeroOpinionSourcesPushed > 0) {
         COpinionReactionManager* manager = GetWorld().POpinionReactionManager;
-        manager->ClearOpinionSource(PHero.GetPItem(), true);
+        manager->ClearOpinionSource(PHero.Get(), true);
         --HeroOpinionSourcesPushed;
     }
     if (CurrentOpinionDeedHandle != -1) {
         CTCHeroOpinionDeedLog* log;
-        if (PHero.GetPItem() && !PHero.GetPItem()->IsDead() && PHero.GetPItem()->GetTC(TCI_HERO_OPINION_DEED_LOG, &log))
+        if (PHero.Get() && !PHero.Get()->IsDead() && PHero.Get()->GetTC(TCI_HERO_OPINION_DEED_LOG, &log))
             log->RemoveDeed(CurrentOpinionDeedHandle);
         CurrentOpinionDeedHandle = -1;
     }
@@ -141,13 +130,13 @@ void CTCCreatureGroupBoastingCrowd::EnterCrowdState(long state)
     }
     if (sourceName != "") {
         COpinionReactionManager* manager = GetWorld().POpinionReactionManager;
-        if (manager->AddOpinionSource(PHero.GetPItem(), sourceName, COpinionSourceParams()))
+        if (manager->AddOpinionSource(PHero.Get(), sourceName, COpinionSourceParams()))
             ++HeroOpinionSourcesPushed;
     }
     if (deedType) {
         CTCHeroOpinionDeedLog* log;
-        if (PHero.GetPItem() && !PHero.GetPItem()->IsDead() && PHero.GetPItem()->GetTC(TCI_HERO_OPINION_DEED_LOG, &log))
-            CurrentOpinionDeedHandle = log->AddDeed(deedType, PHero.GetPItem()->GetPos(), 0, 0, 2, 0, 1, 0, 0, 0);
+        if (PHero.Get() && !PHero.Get()->IsDead() && PHero.Get()->GetTC(TCI_HERO_OPINION_DEED_LOG, &log))
+            CurrentOpinionDeedHandle = log->AddDeed(deedType, PHero.Get()->GetPos(), 0, 0, 2, 0, 1, 0, 0, 0);
     }
     CrowdState = state;
 }

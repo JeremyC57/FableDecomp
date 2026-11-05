@@ -15,9 +15,9 @@ struct SPhysicsBaseFlags {                  // CTCPhysicsBase +0x3c bool:1 group
     bool OldMoving : 1;                     // bit 1
 };
 
-class CThing { public:
-    void SetAsFrameUpdated();               // 0x004C7C40
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {
     CThing* GetThing() { return reinterpret_cast<CThing*>(sub); }

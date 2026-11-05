@@ -16,11 +16,7 @@
 // destructor call, then free the node).
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                             // +0x91 bit 0
-};
+#include "engine/CThing.h"
 class CThingAICreature : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -40,7 +36,7 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
+template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
 
 template <class T> struct _List_node {
     _List_node* _M_next;

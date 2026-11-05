@@ -20,16 +20,8 @@ class CTCPhysicsBase { public:
     unsigned char _pad00[0x34];
     float Radius;                               // +0x34
 };
-class CThing {
-public:
-    unsigned char _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;
-    CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
-    unsigned char _pad64[0x91 - 0x64];
-    unsigned char Dead : 1;                     // +0x91 bit 0
-    const C3DVector& GetPos() const;       // 0x004C73D0
-};
-template<class T> inline bool IS_THING_ALIVE(T* const& thing) { return thing && !thing->Dead; }
+#include "engine/CThing.h"
+template<class T> inline bool IS_THING_ALIVE(T* const& thing) { return thing && !thing->IsDead(); }
 
 extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 float __fastcall GetTargetingRangeForTarget(CThing* target, CThing* targeter, CThing* carried);   // 0x00802B60

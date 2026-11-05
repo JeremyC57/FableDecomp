@@ -9,10 +9,9 @@
 #define FABLE_RETAIL_CTCBASE
 #include "engine/CTCBase.h"
 
-class CThing { public:
-    void SetAsRenderedThisFrame(unsigned long reasons);   // 0x004C7590
-    void SetAsFrameUpdated();                             // 0x004C7C40
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 
 class CTCElectrocutedEffect : public CTCBase { public:
     virtual void OnInitialActivate();

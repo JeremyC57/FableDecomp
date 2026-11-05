@@ -21,7 +21,6 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-extern C3DVector g_ZeroVector;                          // 0x0143E8E0
 
 #include "engine/CCountedPointer.h"
 
@@ -34,7 +33,7 @@ extern C3DVector g_ZeroVector;                          // 0x0143E8E0
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
  CScriptThing::~CScriptThing() {}
-inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
+inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 inline bool CScriptThing::MsgIsUsedBy(const CCharString& user) const { if (!PImp.Data) return false; return PImp.Data->MsgIsUsedBy(user); }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }

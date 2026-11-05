@@ -49,27 +49,12 @@ class CAIStateGroupBase { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
 // `PThing = thing` is the converting-temporary + inline `SetPItem(other.GetPItem())` assignment.
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 
 struct CCountBlock {                            // CCountedPointer's shared block
     long Count;                                 // +0x00
@@ -111,8 +96,8 @@ class CTCNymph { public:
 
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -128,7 +113,7 @@ void CAIStateGroup_NymphFloatAround::OnReplace()
 {
     CBrainOutput output;
     if (IS_THING_ALIVE(PFloatTarget)) {
-        ((CThing*)(((CThingKill*)PFloatTarget.GetPItem())))->Kill(true);
+        ((CThing*)(((CThingKill*)PFloatTarget.Get())))->Kill(true);
         PFloatTarget = 0;
     }
     CTCNymph* nymph;

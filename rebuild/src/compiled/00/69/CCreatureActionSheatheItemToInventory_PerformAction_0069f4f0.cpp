@@ -25,20 +25,9 @@ public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCCarrying { public:
     CThing* RemoveThingFromPrimarySlot(bool drop);   // 0x006A1E00
 };
@@ -68,7 +57,7 @@ void CCreatureAction_SheatheItemToInventory::PerformAction()
 {
     CTCCarrying* carrying = 0;
     {
-        CThing* creature = PCreature.GetPItem();
+        CThing* creature = PCreature.Get();
         if (creature->HasTC(TCI_CARRYING))
             carrying = ((CTCCarrying*)&creature->GetTC(TCI_CARRYING));
     }
@@ -76,20 +65,20 @@ void CCreatureAction_SheatheItemToInventory::PerformAction()
     if (item && !item->IsDead() && item->HasTC(TCI_FLAMMABLE))
         ((CTCFlammable*)&item->GetTC(TCI_FLAMMABLE))->ExtinguishFire();
     {
-        CThing* creature = PCreature.GetPItem();
+        CThing* creature = PCreature.Get();
         if (creature->HasTC(TCI_INVENTORY_WEAPONS))
             ((CTCInventoryWeapons*)&creature->GetTC(TCI_INVENTORY_WEAPONS))->RefreshSheathedWeapons();
     }
     CTCCombat* combat;
-    if (PCreature.GetPItem()->GetTC(TCI_COMBAT, &combat))
+    if (PCreature.Get()->GetTC(TCI_COMBAT, &combat))
         combat->SetMeleeFlourishValid(false);
     CTCCreatureModeManager* modeManager = 0;
     {
-        CThing* creature = PCreature.GetPItem();
+        CThing* creature = PCreature.Get();
         if (creature->HasTC(TCI_ENTITY_MODE_MANAGER))
             modeManager = ((CTCCreatureModeManager*)&creature->GetTC(TCI_ENTITY_MODE_MANAGER));
     }
     modeManager->RestartCurrentMode();
-    if (PCreature.GetPItem()->GetPlayer().IsMainPlayer())
-        PCreature.GetPItem()->GetPlayer().SetAggressiveMode(false);
+    if (PCreature.Get()->GetPlayer().IsMainPlayer())
+        PCreature.Get()->GetPlayer().SetAggressiveMode(false);
 }

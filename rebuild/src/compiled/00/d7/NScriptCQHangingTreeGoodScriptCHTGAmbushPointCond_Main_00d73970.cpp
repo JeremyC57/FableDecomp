@@ -23,16 +23,18 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                     // 0x0143E8E0
 class CCPPointerInfo;
 class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CCharString GetDataString() const;     // slot 3 (+0x0c), 0x004AA900
     virtual void v004(); virtual void v005();
     virtual const C3DVector& GetPos() const        // slot 6 (+0x18), 0x004AA980
     {
         if (!PImp_Data)
-            return g_ZeroVector;
+            return NullCoord;
         return PImp_Data->GetPos();
     }
     CScriptThing*   PImp_Data;                     // +0x04

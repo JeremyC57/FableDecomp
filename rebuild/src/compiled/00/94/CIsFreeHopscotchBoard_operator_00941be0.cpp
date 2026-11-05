@@ -23,7 +23,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 struct CTCUserActionPointBase {
-    bool IsActionPointFree();                      // 0x007FEBF0
+    bool IsActionPointFree() const;                      // 0x007FEBF0
 };
 struct SStateFlags_00941be0 {                      // the slot-48 flags word
     unsigned long m_low : 15;

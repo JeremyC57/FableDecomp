@@ -35,25 +35,10 @@ class CThingCreatureBase : public CThing { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {    // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 struct CCountBlock {
     long Count;
     void (__fastcall* Destroy)(void* object);
@@ -118,7 +103,7 @@ class CTCDiceGame { public:
     long NumberOfPlayers;                       // +0x0c
     CIntelligentPointer<CThing> CurrentPlayer;     // +0x10
     void SetCurrentPlayer(CThing* player);      // 0x00929550
-    CThing* GetCurrentPlayer() const { return CurrentPlayer.GetPItem(); }
+    CThing* GetCurrentPlayer() const { return CurrentPlayer.Get(); }
 };
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 long __fastcall GFROR13(unsigned long value);   // 0x00497890

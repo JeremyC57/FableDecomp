@@ -29,26 +29,15 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -149,7 +138,7 @@ struct CTCUserActionPointBase {
 public:
     void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
 public:                 // interface 0x2d
-    bool IsActionPointFree();                   // 0x007FEBF0
+    bool IsActionPointFree() const;                   // 0x007FEBF0
 };
 
 #pragma pack(push, 1)
@@ -166,7 +155,7 @@ void CAIStateGroup_KidPlayHopscotch::Cleanup()
 {
     if (IS_THING_ALIVE(m_pMarker)) {
         CTCUserActionPointBase* point;
-        m_pMarker.GetPItem()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &point);
+        m_pMarker.Get()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &point);
         if (!point->IsActionPointFree())
             ((CTCUserActionPointBase*)point)->SetActionPointAsFree(m_slot);
         CMessageEvent* event = GetWorld().GetPMessageManager()->FindMostRecentMessage_0090dee0(

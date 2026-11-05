@@ -15,20 +15,9 @@ CThingBuilding* __fastcall GetPBuildingThingOccupying(CThing* thing);   // 0x006
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 namespace NCameraModes { class CBase; }
 #include "engine/CCountedPointer.h"
@@ -54,8 +43,8 @@ void CGameCameraManager::UpdateObservedThingInBuilding()
     if (!IsCameraModeInterruptable(CurrentMode) && PendingMode.Data == 0)
         return;
     CThingBuilding* building;
-    if (PObservedThing.GetPItem() && !PObservedThing.GetPItem()->IsDead()
-        && (building = GetPBuildingThingOccupying(PObservedThing.GetPItem())) != 0 && !building->IsDead()) {
+    if (PObservedThing.Get() && !PObservedThing.Get()->IsDead()
+        && (building = GetPBuildingThingOccupying(PObservedThing.Get())) != 0 && !building->IsDead()) {
         if (!ObservedThingInBuilding)
             PushBuildingCameraMode();
     } else {

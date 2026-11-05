@@ -35,20 +35,9 @@ class CAnimationEntry { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 __forceinline float FacingFraction(float x, float y)
 {
     float fraction = (float)atan2(x, y) * 0.15915493667125702f;
@@ -85,9 +74,9 @@ class CCombatActionBase { public:
 
 void CCombatActionBase::UpdateFacingDirection()
 {
-    if (PTarget.GetPItem() == 0)
+    if (PTarget.Get() == 0)
         return;
-    if (PTarget.GetPItem() == PCreature.GetPItem())
+    if (PTarget.Get() == PCreature.Get())
         return;
     if (!IsToUpdateFacing())
         return;
@@ -97,8 +86,8 @@ void CCombatActionBase::UpdateFacingDirection()
         if (fabs(rotation) > 0.0001f)
             return;
     }
-    CThing* target = PTarget.GetPItem();
-    CThing* creature = PCreature.GetPItem();
+    CThing* target = PTarget.Get();
+    CThing* creature = PCreature.Get();
     const C3DVector& from = creature->GetPos();
     const C3DVector& to = target->GetPos();
     C3DVector delta;
@@ -109,11 +98,11 @@ void CCombatActionBase::UpdateFacingDirection()
     if (delta.Y * delta.Y + delta.X * delta.X > distance * distance) {
         float tolerance = GetFacingTolerance();
         if (tolerance < 0.5f) {
-            C3DVector current = PCreature.GetPItem()->GetPhysicsTC()->GetFacing();
+            C3DVector current = PCreature.Get()->GetPhysicsTC()->GetFacing();
             float currentFacing = FacingFraction(current.X, current.Y);
             if (fabs(AngleDifference(currentFacing, facing)) > tolerance)
                 return;
         }
     }
-    PCreature.GetPItem()->GetPhysicsTC()->SetFacingAngle(facing);
+    PCreature.Get()->GetPhysicsTC()->SetFacingAngle(facing);
 }

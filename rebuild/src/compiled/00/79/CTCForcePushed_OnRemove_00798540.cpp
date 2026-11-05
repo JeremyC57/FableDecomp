@@ -16,13 +16,7 @@
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
-class CThing { public:
-    unsigned char _pad_0x00[0x10];
-    unsigned char m_type;                               // +0x10 (1 = the player creature)
-    unsigned char _pad_0x11[0x80];
-    unsigned char Dead : 1;                             // +0x91 bit 0
-    unsigned char _flags_0x91 : 7;
-};
+#include "engine/CThing.h"
 
 class CTCForcePushed {
 public:
@@ -33,7 +27,7 @@ private:
     void FinalCleanup()                                 // inlined into both slots in retail
     {
         CThing* thing = ParentThing;
-        if (thing && !thing->Dead && thing->m_type == 1)
+        if (thing && !thing->IsDead() && thing->GetType() == 1)
             ((CThingAICreature*)thing)->SuspendAI(false, 0);
     }
     CThing*       ParentThing;                          // +0x04 (CTCBase)

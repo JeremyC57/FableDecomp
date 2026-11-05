@@ -29,16 +29,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer { public:                 // vtable 0x0129C95C
-    CBaseIntelligentPointer();                          // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CBaseObject* GetPItem() const;                      // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                          // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CThingObject : public CThing { public: };
 class CTCUserActionPointBase { public:                  // interface 0x2D
     void SetActionPointAsFree(long index);              // 0x007FEF40
@@ -109,7 +102,7 @@ bool CAIStateGroup_UsesSeat::GetUpFromSeat()
     }
     Sitting = false;
     CTCUserActionPointBase* action_point;
-    PSeat.GetPItem()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &action_point);
+    PSeat.Get()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &action_point);
     action_point->SetActionPointAsFree(SeatPosIndex);
     GotSeatPos = false;
     SeatPosIndex = -1;

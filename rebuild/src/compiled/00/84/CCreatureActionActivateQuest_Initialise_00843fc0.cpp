@@ -33,24 +33,11 @@ extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDef
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 
 #include "engine/CCountedPointer.h"
 template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
@@ -81,9 +68,9 @@ class CCreatureAction_ActivateQuest { public:
 void CCreatureAction_ActivateQuest::Initialise()
 {
     CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
-    questManager->LastObjectUsed = CIntelligentPointer<CThing>(PObjectToUse.GetPItem());
-    if (PObjectToUse.GetPItem()) {
-        CThing* object = PObjectToUse.GetPItem();
+    questManager->LastObjectUsed = CIntelligentPointer<CThing>(PObjectToUse.Get());
+    if (PObjectToUse.Get()) {
+        CThing* object = PObjectToUse.Get();
         CCharString name = GDefStringTable.GetString(object->GetDefName());
         CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().LastObjectUsedName = name;
     }

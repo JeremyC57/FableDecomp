@@ -16,25 +16,18 @@
 //   delete, so no EH cleanup frame); the CThingGameObject ctor is inline (vtable store after the base call, then the
 //   intelligent pointer's base ctor and vtable); the bitfield clear in the ctor body is scheduled before the derived
 //   vtable store, ForceOpenCount's init-list zero after it.
-class CClass {                                  // the reflection root every thing class derives from (vptr owner)
-public:
-    virtual void v00();
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_OPERATORNEW
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
 
-
-class CThing : public CClass {
-protected:
-    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380 (null when the manager refuses)
-};
-
 class CThingPhysical : public CThing {
 public:
-    unsigned char _pad04[0xbc];                 // +0x04 .. +0xbf (CThing + CThingPhysical members, not touched here)
+    unsigned char _pad04[0x24];   // own members from +0x98
     CThingPhysical(long type);                  // 0x005296B0
 };
 

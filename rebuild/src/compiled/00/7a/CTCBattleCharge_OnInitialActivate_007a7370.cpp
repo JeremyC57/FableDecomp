@@ -11,36 +11,14 @@
 // Layout: retail CThing: +0x10 thing type (1 = player creature), +0x20 component bitset (0x31 = bit 17 of the dword at +0x24),
 // +0x44 interface map, +0x91 bit 0 Dead.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingAICreature { public:
     void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
-class CThing {
-public:
-    unsigned char _pad00[0x10];
-    unsigned char m_type;                       // +0x10
-    unsigned char _pad11[0xf];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_dead : 1;                   // +0x91 bit 0
-    unsigned char m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCCreatureModeManager { public:
     bool AddMode(unsigned long mode);           // 0x0073AE10
 };
@@ -62,9 +40,9 @@ void CTCBattleCharge::OnInitialActivate()
 {
     CThing* thing = ParentThing;
     CTCCreatureModeManager* modes;
-    if (thing->GetInterface(&modes, 0x31))
+    if (thing->GetTC(TCI_ENTITY_MODE_MANAGER, &modes))
         modes->AddMode(0x23);
-    if (!thing->m_dead && thing->m_type == 1)
+    if (!thing->IsDead() && thing->GetType() == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(true, (void*)false);
     else
         Reset_007a7000();

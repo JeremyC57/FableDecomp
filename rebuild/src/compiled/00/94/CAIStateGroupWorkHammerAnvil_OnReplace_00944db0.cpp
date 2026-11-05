@@ -25,20 +25,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -58,8 +47,8 @@ class CAIStateGroupBase { public:
 
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -98,7 +87,7 @@ void CAIStateGroup_WorkHammerAnvil::OnReplace()
 {
     if (IS_THING_ALIVE(PAnvil) && TookActionPoint) {
         CTCUserActionPointBase* point;
-        if (PAnvil.GetPItem()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &point))
+        if (PAnvil.Get()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &point))
             ((CTCUserActionPointBase*)point)->SetActionPointAsFree(ActionPointIndex);
     }
     ((CThingCreatureBase*)PBrain->PCreature)->FinishCurrentAction();

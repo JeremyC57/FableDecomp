@@ -13,13 +13,10 @@
 #include <new>
 #include "engine/C3DVector.h"
 
-class CThing {
-public:
-    virtual void v000();
-    bool DoActivationSequence();                         // 0x004C9CA0
-    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380
-    unsigned char _pad04[0x94];
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_OPERATORNEW
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 
 class CThingSoundEmitter : public CThing {
 public:

@@ -22,20 +22,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -78,9 +67,9 @@ void CAIStateGroup_EatAtTable::OnReplace()
     GetCreature()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     modes->RemoveMode(0x28);
     bool removeSitMode = true;
-    if (Table.GetPItem()) {
+    if (Table.Get()) {
         CTCSeatTable* table;
-        if (!Table.GetPItem()->GetTC(TCI_TAVERN_TABLE, &table))
+        if (!Table.Get()->GetTC(TCI_TAVERN_TABLE, &table))
             return;
         if (table->IsSeatTaken(SeatIndex)) {
             bool gotUp;

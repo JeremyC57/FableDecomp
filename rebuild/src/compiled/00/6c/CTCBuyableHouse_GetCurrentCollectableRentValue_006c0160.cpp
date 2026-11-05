@@ -73,7 +73,7 @@ struct CTCBuildingContents {                    // interface 0x21
     SThingListNode* ThingsHead;                 // +0x0c (VC6 list head)
 };
 class CTCGold { public:                                // interface 0xCC
-    long GetGold();                             // 0x007CBDC0
+    long GetGold() const;                             // 0x007CBDC0
 };
 class CCharString { public:
     void* PStringData;

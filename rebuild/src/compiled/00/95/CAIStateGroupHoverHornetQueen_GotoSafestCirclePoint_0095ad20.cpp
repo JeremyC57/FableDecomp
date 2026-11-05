@@ -28,20 +28,9 @@ class CThingCreatureBase : public CThing { public: };
 __forceinline C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPos() - from->GetPos(); }
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 template <class T> struct CVec {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     long size() const { return _M_finish - _M_start; }
@@ -75,11 +64,11 @@ long CAIStateGroup_HoverHornetQueen::GotoSafestCirclePoint(long movementType)
 {
     if (CircleMarkers.size() == 0)
         return 3;
-    C3DVector toTarget = Direction(PTarget.GetPItem(), GetCreature());
+    C3DVector toTarget = Direction(PTarget.Get(), GetCreature());
     toTarget.Normalise();
-    C3DVector toNext = Direction(CircleMarkers[GetNextCirclePoint()].GetPItem(), GetCreature());
+    C3DVector toNext = Direction(CircleMarkers[GetNextCirclePoint()].Get(), GetCreature());
     toNext.Normalise();
-    C3DVector toPrev = Direction(CircleMarkers[GetPrevCirclePoint()].GetPItem(), GetCreature());
+    C3DVector toPrev = Direction(CircleMarkers[GetPrevCirclePoint()].Get(), GetCreature());
     toPrev.Normalise();
     if (Dot(toNext, toTarget) > Dot(toPrev, toTarget))
         return GotoCirclePoint(GetPrevCirclePoint(), movementType);

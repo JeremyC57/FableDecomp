@@ -27330,3 +27330,9 @@ chunk	address	module	name	length
 782	00eb4760	NScript::CMurderTwistAssassin	DoDealWithHero	2075
 782	00dfd600	NScript::CQ_TraderConflictGoodScript	AttackPeople	2088
 782	00e00db0	NScript::CV_TravellingHeroesScript	Main	2088
+783	00a15890	CNavigatorManager	InitializeNavigationData	1973
+783	009fa780	CTexture	BltToRenderTargetWithGPU	2028
+783	004321f0	CSpecialAbilitiesBerserkDef	operator=	2117
+783	007ebea0	CTCActionUseBed	OnActionUse	2145
+783	00ddb720	NScript::CPrisonRaceGuard	Main	2158
+783	00d07490	NScript::CGate3Guard	Main	2182

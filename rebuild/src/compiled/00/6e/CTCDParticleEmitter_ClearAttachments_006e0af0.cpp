@@ -25,27 +25,14 @@ struct CTCDependentThings {                             // interface 0xd8
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -77,7 +64,7 @@ void CTCDParticleEmitter::ClearAttachments()
 {
     if (IS_THING_ALIVE(PAttachedToThing)) {
         CTCDependentThings* dependents;
-        if (PAttachedToThing.GetPItem()->GetTC(TCI_PARTICLE_ATTACHMENT_TRACKER, &dependents))
+        if (PAttachedToThing.Get()->GetTC(TCI_PARTICLE_ATTACHMENT_TRACKER, &dependents))
             dependents->AddDependentThing(ParentThing);
     }
     AttachmentFlags = 1;

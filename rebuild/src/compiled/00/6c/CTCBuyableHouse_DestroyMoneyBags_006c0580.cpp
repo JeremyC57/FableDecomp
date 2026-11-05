@@ -44,7 +44,7 @@ struct CTCThingList_0x21 {
 
 class CThingPlayerCreature : public CThing { };
 class CTCGold { public:
-    long GetGold();                                     // 0x007CBDC0
+    long GetGold() const;                                     // 0x007CBDC0
 };
 class CTCHeroStats { public:
     void AddMoney(long amount, bool b);                 // 0x0057B327

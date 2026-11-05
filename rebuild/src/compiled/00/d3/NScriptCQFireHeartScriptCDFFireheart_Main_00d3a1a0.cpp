@@ -25,7 +25,6 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 #include "engine/C3DVector.h"
-extern const C3DVector g_ZeroVector;                   // 0x0143E8E0
 struct CThingBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual const C3DVector* GetPosition() const;     // slot 6 (+0x18)
@@ -33,6 +32,9 @@ struct CThingBase {
     virtual float GetAngleXY() const;                  // slot 10 (+0x28)
 };
 class CScriptThing { public:
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -43,7 +45,7 @@ class CScriptThing { public:
     long        _08;                                   // +0x08
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     virtual ~CScriptThing();                                   // 0x004AA840
-    const C3DVector& GetPosition() const { return PThing == 0 ? g_ZeroVector : *PThing->GetPosition(); }
+    const C3DVector& GetPosition() const { return PThing == 0 ? NullCoord : *PThing->GetPosition(); }
     float GetAngleXY() const { return PThing == 0 ? 0.0f : PThing->GetAngleXY(); }
 };
 #define FABLE_RETAIL_NSCRIPT

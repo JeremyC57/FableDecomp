@@ -19,20 +19,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 struct SBoastingPositionEntry {                 // pair<long, CIntelligentPointer<CThing> >
     long                    first;
     CIntelligentPointer<CThing> second;
@@ -64,7 +53,7 @@ long CTCBoastingPodium::GetNumberOfActiveBoastingPositions() const
     long count = 0;
     for (unsigned long i = 0; i < BoastingPositions.size(); ++i) {
         const CTCBoastingPosition* position;
-        BoastingPositions[i].second.GetPItem()->PeekTC(TCI_BOASTING_POSITION, &position);
+        BoastingPositions[i].second.Get()->PeekTC(TCI_BOASTING_POSITION, &position);
         long cost;
         if (position->IsPositionActivated(cost))
             ++count;

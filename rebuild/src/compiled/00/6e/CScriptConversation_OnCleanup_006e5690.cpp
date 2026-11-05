@@ -22,25 +22,14 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -75,11 +64,11 @@ void CScriptConversationRetail::OnCleanup(bool stopSpeech)
         if (IS_THING_ALIVE(PeopleInConversation[i])) {
             {
                 CTCTargetingBase* targeting;
-                if (PeopleInConversation[i].GetPItem()->GetTC(TCI_TARGETING, &targeting))
+                if (PeopleInConversation[i].Get()->GetTC(TCI_TARGETING, &targeting))
                     targeting->SetPScriptOverrideInterestingThing(0);
             }
             if (stopSpeech) {
-                CThing* thing = PeopleInConversation[i].GetPItem();
+                CThing* thing = PeopleInConversation[i].Get();
                 if (thing->HasTC(TCI_TALK))
                     ((CTCTalk*)&thing->GetTC(TCI_TALK))->StopCurrentSpeech();
             }

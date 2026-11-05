@@ -14,7 +14,6 @@
 // Naming wave 35: identity reg 00f0276d "AT_Phase3Archer" in 00f024c0; Alloc 00f04bd0; vtable 012f7e4c slot 1; PDB ?Main@CAT_Phase3Archer@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_Phase3Archer::Main (wave3/labels_alloc.tsv); PDB ?Main@CAT_Phase3Archer@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAT_Phase3Archer@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -26,7 +25,7 @@ class CCharString { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPos(); }
+__forceinline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"

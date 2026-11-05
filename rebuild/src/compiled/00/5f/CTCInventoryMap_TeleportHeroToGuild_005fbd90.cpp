@@ -16,11 +16,8 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 
-class CCharString { public:
-    void* m_pStringData;
-    CCharString(const char* text, long length = -1);  // 0x0099EBF0
-    ~CCharString();                                   // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 class CDefinitionManager { public:
 public:
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
@@ -29,12 +26,6 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();  // 0x0044C6B0
 };
 
-class CThing { public:
-    unsigned char _pad00[0x8c];
-    unsigned short DefIndex;                          // +0x8c global def index
-    unsigned char _pad8e[0x91 - 0x8e];
-    unsigned char IsDead : 1;                         // +0x91 bit 0
-};
 class CThingPlayerCreature : public CThing { };
 
 template <class T> struct list {                      // STLport list<T>: one head-node pointer
@@ -141,12 +132,12 @@ class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
 void CTCInventoryMap::TeleportHeroToGuild() const
 {
     const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
-    if (hero && !hero->IsDead) {
+    if (hero && !hero->IsDead()) {
         list<CThing*> teleporters;
         GetAllThings(CThingFilter_HasTC(0xDD), teleporters);
         for (list<CThing*>::iterator it = teleporters.begin(); it != teleporters.end(); ++it) {
             CThing* teleporter = *it;
-            bool isGuild = teleporter->DefIndex ==
+            bool isGuild = teleporter->GetDefGlobalIndex() ==
                 CGameDefinitionManager::Get().GetDefGlobalIndexFromName("HERO_GUILD_TELEPORT_MARKER");
             if (isGuild) {
                 TeleportHeroToTeleporter(*teleporter);

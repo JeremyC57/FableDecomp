@@ -1,4 +1,5 @@
 // CTCHeroCentre::RemoveQuestCard(CThing* card) -- find the live quest card in the QuestCards vector and erase it (shift the tail down, destroy the last intelligent pointer)
+// Leaf: ?RemoveQuestCard@CTCHeroCentre@@QAEXPAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077D400, length 104 bytes (+8 int3 padding), `ret 4` (the final virtual
 // destructor call tail-jumps with the argument slot rewritten to 0).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the `__fastcall` STLport
@@ -10,11 +11,7 @@
 // Layout: engine/CTCHeroCentre.h is the PDB layout (16-byte vectors); retail: PDef +0x0c, CurrentGUIMode +0x10,
 // FrameQuestCardListFrom +0x14, QuestCards +0x18 (12-byte vector of 8-byte CIntelligentPointer<CThing>), QuestCardPositions +0x24.
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                     // +0x91 bit 0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -50,7 +47,7 @@ struct CThingPointerVector {                    // STLport vector<CIntelligentPo
         _M_finish->~CThingPointer();
     }
 };
-inline bool IsThingAlive(const CThing* thing) { return thing && !thing->Dead; }
+inline bool IsThingAlive(const CThing* thing) { return thing && !thing->IsDead(); }
 
 struct CDefPointerHeroCentre { void* Object; };
 class CTCBase {

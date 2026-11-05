@@ -23,20 +23,9 @@ class CThingAICreature { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCCreatureModeManager { public:             // interface type 0x31 component
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
@@ -55,12 +44,12 @@ class CCreatureAction_ScorpionTailWithdraw : public CCombatActionBase { public:
 
 void CCreatureAction_ScorpionTailWithdraw::FinishAction()
 {
-    if (PCreature.GetPItem()->GetType() == 1) {
-        CThing* creature = PCreature.GetPItem();   // fetched before the argument pushes: a named local
+    if (PCreature.Get()->GetType() == 1) {
+        CThing* creature = PCreature.Get();   // fetched before the argument pushes: a named local
         ((CThingAICreature*)creature)->SuspendAI(false, (void*)false);
     }
     CTCCreatureModeManager* pModes;
-    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);
+    PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &pModes);
     pModes->RemoveMode(47);
     CCombatActionBase::FinishAction();
 }

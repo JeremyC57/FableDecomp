@@ -14,13 +14,9 @@
 // `sub esp,8` frame words (the string returned through an inline CDefString::GetString()); the success test is an
 // `if` so both failures share the `xor al,al` tail.
 
-class CCharString {
-public:
-    void* PStringData;
-    ~CCharString();                                 // 0x0099EAE0
-    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    bool operator!=(const char* text) const;        // 0x0099E960
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 class CDefStringTable {
 public:
@@ -40,33 +36,10 @@ public:
 class CGameDefinitionManager : public CDefinitionManager { };
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    virtual void v000();
-    unsigned char _pad04[0x1c];
-    unsigned long m_presentBits[9];       // +0x20 std::bitset of the interface types present
-    CInterfaceMap m_interfaces;           // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_dead : 1;             // +0x91 bit 0
-    unsigned char m_91_1 : 7;
-    unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 
 struct CTCHeroWeaponHistory {           // TC 0x13
@@ -91,8 +64,8 @@ public:
 bool CGameScriptInterface::GetPreviouslyWieldedMeleeWeaponName(CCharString& name) const
 {
     CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
-    CTCHeroWeaponHistory* history;
-    if (hero && !hero->m_dead && hero->GetInterface(&history, 0x13)) {
+    const CTCHeroWeaponHistory* history;
+    if (hero && !hero->IsDead() && hero->PeekTC(TCI_INVENTORY_WEAPONS, &history)) {
         long weapon = history->PreviouslyWieldedMeleeWeapon;
         if (weapon > 0) {
             name = DefinitionManager->GetDefNameFromGlobalIndex(weapon).GetString();

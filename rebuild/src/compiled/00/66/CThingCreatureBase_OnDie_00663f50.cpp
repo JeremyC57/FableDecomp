@@ -82,10 +82,13 @@ class CTCPhysicsBase { public:
     C3DVector Position;                                 // +0x0c
 };
 class CEnginePrimitiveThemeChannelDesc;
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
-    void SetLightingChannel(CEnginePrimitiveThemeChannelDesc* channel, bool a, bool b);   // 0x004BFB40
+    void SetLightingChannel(const CEnginePrimitiveThemeChannelDesc& channel, bool a, bool b);   // 0x004BFB40 (Ego_r.pdb / FableWin.pdb: by const reference)
     void SetAsChanged(unsigned long reasons);           // 0x004BF9E0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 struct CTCLightingChannel {                             // interface 0x75: the channel description at +0x14
     unsigned char _pad00[0x14];
     unsigned char Channel[4];                           // +0x14 CEnginePrimitiveThemeChannelDesc
@@ -269,7 +272,7 @@ void CThingCreatureBase::OnDie()
             const CTCLightingChannel* lighting;
             if (GetConstInterface(&lighting, 0x75)) {
                 if (body->PTCGraphicAppearance) {
-                    body->PTCGraphicAppearance->SetLightingChannel((CEnginePrimitiveThemeChannelDesc*)lighting->Channel, true, true);
+                    body->PTCGraphicAppearance->SetLightingChannel(*(const CEnginePrimitiveThemeChannelDesc*)lighting->Channel, true, true);
                     body->PTCGraphicAppearance->SetAsChanged(4);
                 }
             }

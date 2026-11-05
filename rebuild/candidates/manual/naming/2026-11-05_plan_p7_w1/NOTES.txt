@@ -1,0 +1,43 @@
+Plan phase 7, wave 1: respell the old-spelling binders of PDB-spelled targets (plan_p6_w2/CALLERS.tsv), plus NullCoord and PeekPlayer.
+
+Scope. 44 targets (w1/targets.lst) taken from plan_p6_w2/CALLERS.tsv plus 0x0143E8E0 (queue tag land0511h) and 0x004C7A10.
+logs/targets_before.tsv holds the per-target spelling survey (tools/w7_targets.py) made from the index at HEAD 248ea936.
+ - Mechanical respells (tools/w7_respell.py, 56 jobs):
+   * QAE -> QBE (const) on the local class declaration and on every out-of-class definition;
+   * CTCGraphicAppearance -> NGraphicAppearance::CTCGraphicAppearance: namespace wrap plus a using-declaration; an existing
+     namespace block is reopened.
+   Two rows were edited by hand to the PDB parameter type:
+   * SetLightingChannel takes `const CEnginePrimitiveThemeChannelDesc&` (ABV) in 00663f50 and 0074e560.
+   * 006b0850: the slot-72/93 stand-ins are const (the PDB overrides are UBE).
+ - NullCoord (tools/w7_nullcoord.py). 0x0143E8E0 is `?NullCoord@CScriptThing@@1VC3DVector@@A` (protected static; Ego_r.pdb
+   `dynamic initializer for 'CScriptThing::NullCoord'`; the catalog). Inside CScriptThing members, the uses of g_ZeroVector /
+   g_ZeroPos / g_def_004aa980 become NullCoord; the +4 / +8 relocations are NullCoord.Y / .Z. That gives 36 rows plus the 3
+   CScriptThing members 004aa940 / 004aa980 / 004aa9a0.
+   * Those 3 rows use the default (flattened) CScriptThing branch, so the declaration goes behind the new per-TU sub-macro
+     FABLE_RETAIL_CSCRIPTTHING_NULLCOORD in engine/CScriptThing.h. hdrcheck2: default=same, every existing macro same,
+     NULLCOORD=DIFF (logs/hdrcheck2.log).
+   * conscheck FLAGged 004aa940 / 004aa9a0 on the +4 / +8 targets. I overrode them to OK by hand: the targets are the same
+     object's members, and the index records the old g_ZeroVector there too. BINDINGS therefore ADDs NullCoord at 0143e8e4 and
+     0143e8e8 and RETIREs g_ZeroVector there.
+   * The 4 reads outside a CScriptThing member (00d6b240, 00d701c0, 00d7f880, 00e0f4e0: an expanded GetPos) cannot reach the
+     protected static. They stay on g_ZeroVector (BINDINGS KEEP) and are deferred.
+ - PeekPlayer: 0x004C7A10 = ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ. Retail 0x004C7A10 calls the const CPlayerManager::GetPlayer
+   0x00449910 (QBE), while 0x004C7A30 (= ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ) calls the non-const 0x004498C0. The same name is
+   given by the catalog, the landed definer and the Ego_r donor order. Rows 0072caa0 and 0085bd70 are respelled.
+   * 00733100 and 00692920 are deferred: each needs a second target decided (CPlayer::HasMode const / a destructor-value row).
+   * 007b1eb0 (the 0x004C7A30 pointer-vs-reference respell) needs the PDB CPlayer::AddMode spelling as well.
+ - 007cc120 is deferred (consistency). Its namespace respell would bind ?ClearMeshEffect@NGraphicAppearance::CTCGraphicAppearance
+   at 0x004BFFC0, but the index binds and defines that name at 0x004BFE20. Ego_r has ClearHighlighted for 0x004BFFC0, the PDB
+   majority. That naming decision is listed in NEXT.md.
+
+Overlap with later waves. 0074e560, 0077c490, 0084db30, 008534f0 and 0085bd70 are also in w2. Their w2 text was built on THIS
+wave's text (hdrmig7.py --base w1), so apply w1 before w2. 00938580, 009415b0, 009445f0, 00944d10 and 00970790 are also in w3,
+built on this wave's text (ipmig7.py --base w1 --base w2).
+
+Verification.
+ - gate.py on every row (logs/gate.tsv).
+ - vland --recheck-landed read-only on every changed row, before (landed text) and after (logs/grades*.tsv, vland_*.log).
+ - Every CScriptThing.h includer through the gate with the overlay header: 4754 / 4754 PASS
+   (logs/gate_includers_CScriptThing.tsv).
+ - vland note: the first after-run shared a work dir with the w2 run (same --tag). I killed my own run and reran with unique
+   tags (w1 / w2). Only the rerun's logs are used.

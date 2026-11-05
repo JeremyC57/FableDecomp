@@ -52,7 +52,7 @@ public:
         return false;
     }
     CWorld* GetWorld();                         // 0x004C7AB0
-    bool IsAffectedByBulletTime();              // 0x004C9920
+    bool IsAffectedByBulletTime() const;              // 0x004C9920
 };
 class CCreatureActionBase { public:
 #define VF(n) virtual void v##n();

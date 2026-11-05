@@ -11,13 +11,14 @@
 //          no operator=: the focal point (a named return) and the camera position are copied into
 //          locals, the first hit is copied back through a pointer register.
 #include "engine/C3DVector.h"
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
-    C3DVector GetCameraFocalPos(float scale);   // 0x004C12D0
+    C3DVector GetCameraFocalPos(float scale) const;   // 0x004C12D0
 };
-class CThing { public:
-    unsigned char         _pad[0x64];
-    CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-};
+}
+using NGraphicAppearance::CTCGraphicAppearance;
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -60,7 +61,7 @@ void NCameraModes::CBase::UpdateCameraOcclusion(C3DVector& cameraPosition)
     if (!UsesCameraOcclusion())
         return;
     CThing* thing = m_pManager->GetObservedThing();
-    C3DVector focal = thing->PGraphicAppearance->GetCameraFocalPos(1.0f);
+    C3DVector focal = thing->GetTCGraphicAppearance()->GetCameraFocalPos(1.0f);
     C3DVector from = focal;
     C3DVector to = cameraPosition;
     C3DVector hit;

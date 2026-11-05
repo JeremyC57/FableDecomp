@@ -22,20 +22,9 @@ struct CTCGraphicAppearance;
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCBoss {                             // interface 173 (0xAD)
 public:
     unsigned char _pad[0x1c];               // CTCBase (vptr, ParentThing, flags), PBossDef +0x0C, GenericCounter, StrikesSinceHit, currentBossPhase
@@ -61,10 +50,10 @@ class CCreatureAction_BanditKingChangeWeapons : public CCombatActionBase { publi
 void CCreatureAction_BanditKingChangeWeapons::PerformAction()
 {
     CTCBoss* pBoss;
-    if (PCreature.GetPItem()->GetTC(TCI_BOSS, &pBoss)) {
+    if (PCreature.Get()->GetTC(TCI_BOSS, &pBoss)) {
         long def = pBoss->GetNextWeapon();      // named: retail reads the def into a callee-saved register before the creature fetch
-        CThingCreatureBase::CreateWeaponForThingFromDef(*PCreature.GetPItem(), def);   // one weapon per hand
+        CThingCreatureBase::CreateWeaponForThingFromDef(*PCreature.Get(), def);   // one weapon per hand
         long def2 = pBoss->GetNextWeapon();
-        CThingCreatureBase::CreateWeaponForThingFromDef(*PCreature.GetPItem(), def2);
+        CThingCreatureBase::CreateWeaponForThingFromDef(*PCreature.Get(), def2);
     }
 }

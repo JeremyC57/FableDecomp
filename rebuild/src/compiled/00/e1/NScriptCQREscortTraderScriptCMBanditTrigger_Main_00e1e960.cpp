@@ -31,7 +31,6 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
     bool operator!=(const char* text) const;           // 0x0099E960
 };
-extern C3DVector g_ZeroVector;                          // 0x0143E8E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing;
 #include "engine/CCountedPointer.h"
@@ -40,7 +39,7 @@ class CScriptThing;
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() {}
-inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
+inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
 #include "engine/CIsThingAlive.h"

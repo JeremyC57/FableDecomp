@@ -13,20 +13,9 @@
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -54,9 +43,9 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
 
 bool CAIStateGroup_JackDragon::IsStillRunnable()
 {
-    if (PEnemy.GetPItem() == 0)
+    if (PEnemy.Get() == 0)
         return false;
-    if (PEnemy.GetPItem()->IsDead())
+    if (PEnemy.Get()->IsDead())
         return false;
     return IsStopping() ? false : true;
 }

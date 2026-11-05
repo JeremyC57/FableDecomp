@@ -1,0 +1,2432 @@
+address	status	note
+00436380	deferred	header_lacks flags(no offset)
+004383d0	rewritten	migrated
+00438cb0	deferred	header_lacks GetInterface,m_presentBits@0x20(no accessor)
+00439ab0	deferred	local_std
+0044a2a0	deferred	local_std
+0044bfa0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0047dc69	deferred	header_lacks GetInterfaceUnchecked
+0047eee4	deferred	local_std
+00487de0	deferred	closure_model CDefPointer (local pointee stand-ins)
+004887c0	deferred	local_std
+004888c0	deferred	header_lacks DebugCheck
+00488b20	deferred	local_std
+0048a070	deferred	local_std
+0048b2f0	deferred	local_std
+0048bc40	deferred	header_lacks flags(no offset)
+0048cb50	deferred	local_std
+0048cbd0	deferred	local_std
+0048d400	deferred	local_std
+0048d5c0	deferred	local_std
+00490927	deferred	header_lacks GetInterfaceUnchecked
+00490a22	deferred	local_std
+00492bab	deferred	local_std
+0049e590	rewritten	migrated
+0049ea40	deferred	header_lacks PBaseDef@0x70(no accessor),SerialisationSectionName@0x58(no accessor)
+0049f180	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+004a0370	rewritten	migrated removed:CCharString+CWideString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CWIDESTRING
+004a0850	rewritten	migrated removed:CWideString macros:FABLE_RETAIL_CWIDESTRING
+004a0940	deferred	local_std
+004a0bb0	rewritten	migrated removed:CWideString macros:FABLE_RETAIL_CWIDESTRING
+004a9da0	deferred	searchtools_template (IsIncludedInThingScans shape)
+004a9e50	deferred	searchtools_template (IsIncludedInThingScans shape)
+004ac2c0	deferred	local_std
+004acab0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+004acb50	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+004acd70	deferred	searchtools_template (IsIncludedInThingScans shape)
+004acf90	deferred	searchtools_template (IsIncludedInThingScans shape)
+004ad700	deferred	local_std
+004ad780	deferred	local_std
+004adcb0	deferred	header_lacks Flag@0xd4
+004afa60	deferred	header_lacks ScriptName@0x74(no accessor)
+004afb00	deferred	header_lacks ScriptName@0x74(no accessor)
+004afbb0	deferred	header_lacks ScriptBindingName@0x74(no accessor)
+004afca0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+004b0aa0	deferred	local_std
+004b0b90	deferred	quarantine_model: #define CThing <alias> include
+004b0c80	deferred	local_std
+004b0d30	deferred	local_std
+004b0e50	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+004b0eb0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+004b0f10	deferred	local_std
+004b0fc0	deferred	local_std
+004b1110	deferred	local_std
+004b11a0	deferred	local_std
+004b1270	deferred	local_std
+004b1590	deferred	local_std
+004b2490	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+004b26b0	deferred	header_lacks IncludeInThingScans(bit),ScriptName@0x74(no accessor)
+004b2b70	deferred	local_std
+004b4490	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+004b4aa0	deferred	local_std
+004b4c50	deferred	local_std
+004baa50	deferred	searchtools_template (IsIncludedInThingScans shape)
+004bd200	deferred	closure_model CDefPointer (local pointee stand-ins)
+004bd2e0	deferred	header_lacks PBaseDef@0x70(no accessor)
+004bd3c0	deferred	quarantine_model: #define CThing <alias> include
+004bfa50	deferred	header_lacks GetInterface
+004bfc50	deferred	header_lacks GetBaseDef
+004bfce0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+004bfd10	deferred	closure_model CDefPointer (local pointee stand-ins)
+004bffd0	deferred	header_lacks PBaseDef@0x70(no accessor)
+004c0000	deferred	local_std
+004c0240	deferred	header_lacks IsWeapon
+004c04c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+004c72d0	deferred	header_lacks SaveSerialiseCreatableTCs,m_componentsLast@0x48
+004c7380	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MANAGERACCESS+FABLE_RETAIL_CTHING_OPERATORNEW own
+004c73e0	deferred	header_lacks InitTC
+004c7470	deferred	header_lacks ValidateThing,m_componentsLast@0x48
+004c74b0	deferred	header_lacks DrawGetEditDrawInfo,context(no offset)
+004c7500	deferred	header_lacks m_componentsLast@0x48
+004c7540	deferred	header_lacks DrawIsDrawable,DrawPreparePrimitivesForRendering,v00,v01,v02,v03
+004c7580	deferred	header_lacks currentMapNumber(no offset)
+004c7770	deferred	header_lacks flags(other bits)
+004c7790	deferred	header_lacks DrawIsDrawable
+004c77b0	deferred	header_lacks vfunc_29
+004c77d0	deferred	header_lacks OnLevelUnload,m_componentsLast@0x48
+004c7820	deferred	header_lacks SendMessageW,m_componentsLast@0x48
+004c7870	deferred	header_lacks IsEntitySerialisable,_v01,_v02,_v03,_v04,_v05
+004c7880	deferred	header_lacks flags(no offset)
+004c78a0	deferred	header_lacks SetCutscenePauseBehaviour
+004c78f0	deferred	header_lacks DrawIsDrawable
+004c7930	deferred	header_lacks level(no offset)
+004c7950	deferred	header_lacks _pad04(no offset)
+004c7990	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MANAGERACCESS+FABLE_RETAIL_CTHING_MOREACCESS own
+004c79e0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MANAGERACCESS+FABLE_RETAIL_CTHING_MOREACCESS own
+004c7a10	deferred	header_lacks PlayerManager(no offset),_pad00(no offset)
+004c7a30	deferred	header_lacks PlayerManager(no offset),_pad00(no offset)
+004c7ac0	deferred	header_lacks IsRenderable
+004c7b00	deferred	header_lacks GetInfo
+004c7b80	deferred	header_lacks vfunc_17
+004c7bd0	deferred	header_lacks pad(no offset)
+004c7bf0	deferred	header_lacks DrawIsDrawable,IsFrameUpdated
+004c7c40	deferred	header_lacks flags(no offset)
+004c7ca0	deferred	header_lacks pad(no offset)
+004c7cf0	deferred	header_lacks OnKill,m_componentsLast@0x48
+004c7d50	deferred	header_lacks OnDie,m_componentsLast@0x48
+004c7da0	deferred	quarantine_model: #define CThing <alias> include
+004c7e10	deferred	header_lacks pad(no offset),typeIndex(no offset)
+004c7e30	deferred	header_lacks m_type(no offset),pad(no offset)
+004c7e90	deferred	quarantine_model: #define CThing <alias> include
+004c7f40	deferred	closure_model CDefPointer (non-template local stand-in)
+004c7ff0	deferred	header_lacks __vftable@0x0
+004c8050	deferred	own_definition CVectorMap member (same-TU body)
+004c81f0	deferred	header_lacks SerialiseThingInfo,context(no offset)
+004c8310	deferred	local_std
+004c88e0	deferred	local_std
+004c8a30	deferred	local_std
+004c8ba0	deferred	local_std
+004c8c00	deferred	header_lacks IsToBePlacedInMap
+004c8c90	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS own
+004c8cf0	deferred	header_lacks OnInLimboChanged_slot14,SendMessageW,m_componentsLast@0x48,v00,v01,v02
+004c8da0	deferred	header_lacks OnCollision,phase(no offset)
+004c8e50	deferred	header_lacks SetAsDrawable
+004c8fb0	deferred	local_std
+004c9030	deferred	closure_model CDefPointer (non-template local stand-in)
+004c9560	deferred	closure_model CDefPointer (non-template local stand-in)
+004c9690	deferred	closure_model CDefPointer (non-template local stand-in)
+004c97b0	deferred	header_lacks DrawIsDrawable,OnInitialActivate,v00,v01,v02,v03
+004c9840	deferred	own_definition CVectorMap member (same-TU body)
+004c9b80	deferred	header_lacks CanBeKilledImmediately,OnKill,OnKillImmediately
+004c9c40	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MANAGERACCESS+FABLE_RETAIL_CTHING_MOREACCESS own
+004c9ca0	deferred	header_lacks InitialActivate,OnCreate,OnInitialActivate,OnKill
+004c9d20	deferred	header_lacks WorldUpdate,WorldUpdateBulletTime
+004c9d60	deferred	own_definition CVectorMap member (same-TU body)
+004ca010	deferred	own_definition_of_header_inline GetPCurrentThingManager
+004ca1d0	deferred	header_lacks ConstructFromParams,defIndex(no offset),map(no offset),player(no offset)
+004ca230	deferred	local_std
+004ca930	deferred	header_lacks CreateFromDef,_pad00(no offset)
+004cd1a0	deferred	header_lacks SerialiseGameState
+004cd1e0	deferred	header_lacks DrawIsDrawable,vfunc_30
+004cd220	deferred	header_lacks vfunc_34
+004cd230	deferred	header_lacks vfunc_35
+005064c0	deferred	local_std
+00512ed0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00512f60	deferred	searchtools_template (IsIncludedInThingScans shape)
+00516200	deferred	searchtools_template (IsIncludedInThingScans shape)
+005163b0	deferred	local_std
+00516530	deferred	local_std
+005166b0	deferred	local_std
+00516830	deferred	searchtools_template (IsIncludedInThingScans shape)
+005185f0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00518850	deferred	local_std
+00518900	deferred	searchtools_template (IsIncludedInThingScans shape)
+00518dc0	deferred	own_definition CVectorMap member (same-TU body)
+005198b0	deferred	local_std
+0051e2f0	deferred	header_lacks Activate,InitialisationStage@0x94,Initialise,OnCreate
+0051e530	deferred	header_lacks GetChecksum
+0051e5a0	deferred	header_lacks m_flags93@0x93
+0051e630	deferred	local_std
+0051eab0	deferred	pack_region
+0051ebd0	deferred	header_lacks RenderUpdate,RenderUpdatePost
+0051efc0	rewritten	migrated
+0051f070	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING
+0051f0e0	deferred	header_lacks CopyTCState
+0051f980	deferred	local_std
+0051fa00	deferred	local_std
+0051fba0	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING
+0051fc20	deferred	header_lacks SectionName@0x58(no accessor)
+0051fcc0	deferred	local_std
+005202f0	deferred	pack_region
+00520c80	deferred	header_lacks SectionName@0x58(no accessor),m_flags93@0x93
+005215f0	deferred	pack_region
+00521eb0	deferred	local_std
+00522160	deferred	local_std
+00522600	deferred	header_lacks IsToBeSerialised
+00522880	deferred	local_std
+005239c0	deferred	local_std
+00523b40	deferred	local_std
+005252b0	deferred	header_lacks PrepareForLimbo
+00525cd0	rewritten	migrated
+00527300	rewritten	migrated removed:CClass macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_OPERATORNEW
+00527320	rewritten	migrated removed:CClass macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_OPERATORNEW
+00528720	deferred	local_std
+005296b0	deferred	header_lacks ctor
+005299c0	deferred	header_lacks ctor
+00529b00	deferred	header_lacks ctor
+0052ac10	rewritten	migrated removed:CClass macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_OPERATORNEW
+0052ac90	deferred	closure_model CDefPointer (local pointee stand-ins)
+0052ace0	rewritten	migrated removed:CClass macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_OPERATORNEW
+0052ad50	rewritten	migrated removed:CClass+CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_OPERATORNEW
+0052b270	deferred	searchtools_template (IsIncludedInThingScans shape)
+0052b300	deferred	searchtools_template (IsIncludedInThingScans shape)
+00563130	deferred	local_std
+0056a980	deferred	header_lacks SetCurrentAction
+0056d050	deferred	local_std
+0056fdc3	deferred	local_std
+0056fe7c	deferred	local_std
+0057713f	deferred	closure_model CDefPointer (local pointee stand-ins)
+0057adb8	deferred	header_lacks PBaseDef@0x70(no accessor)
+0057c239	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0057c2e6	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0057d5a0	deferred	header_lacks ModifyHealth,PeekInterface
+0057d9fd	deferred	closure_model CDefPointer (local pointee stand-ins)
+0057daf5	deferred	closure_model CDefPointer (local pointee stand-ins)
+0057de57	deferred	quarantine_model: #define CThing <alias> include
+00582944	deferred	closure_model CDefPointer (local pointee stand-ins)
+00582a16	deferred	closure_model CDefPointer (local pointee stand-ins)
+00583a92	deferred	local_std
+00583bd5	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00583cd4	deferred	closure_model CDefPointer (local pointee stand-ins)
+00584157	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00584a73	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00584b42	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00587847	deferred	local_std
+00587a41	deferred	local_std
+005907ab	deferred	local_std
+005943a2	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0059c8f2	deferred	closure_model CDefPointer (local pointee stand-ins)
+0059d820	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0059dabb	deferred	header_lacks GetDisplayEngine
+0059de76	deferred	local_std
+0059f304	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+005a30a1	deferred	local_std
+005a3581	deferred	header_lacks GetInterface
+005a45f6	deferred	header_lacks m_present@0x20(no accessor)
+005a731f	deferred	header_lacks m_present@0x20(no accessor)
+005a8a5d	deferred	local_std
+005b36e9	deferred	closure_model CDefPointer (local pointee stand-ins)
+005b37f7	deferred	closure_model CDefPointer (local pointee stand-ins)
+005b3c95	deferred	closure_model CDefPointer (local pointee stand-ins)
+005b3d7a	deferred	closure_model CDefPointer (local pointee stand-ins)
+005b43a2	deferred	closure_model CDefPointer (local pointee stand-ins)
+005b4a95	deferred	closure_model CDefPointer (local pointee stand-ins)
+005bd33c	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+005bd3a0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+005be028	deferred	header_lacks QueryTC
+005be3b1	deferred	local_std
+005be62c	deferred	local_std
+005bedcb	deferred	header_lacks m_present@0x20(no accessor)
+005bf414	rewritten	migrated macros:FABLE_RETAIL_CTHING
+005bf5a4	deferred	closure_model CDefPointer (non-template local stand-in)
+005bf654	deferred	local_std
+005bf77d	deferred	closure_model CDefPointer (local pointee stand-ins)
+005c0121	deferred	quarantine_model: #define CThing <alias> include
+005c3057	deferred	closure_model CDefPointer (local pointee stand-ins)
+005c311a	deferred	header_lacks GetDefIndex
+005c3180	deferred	closure_model CDefPointer (local pointee stand-ins)
+005c3a95	deferred	unresolved_call GetInterface(T** out, long kind)
+005c44fa	deferred	header_lacks GetInterface
+005c4769	rewritten	migrated macros:FABLE_RETAIL_CTHING
+005c7913	deferred	closure_model CDefPointer (local pointee stand-ins)
+005c7b10	deferred	closure_model CDefPointer (local pointee stand-ins)
+005c7d0d	deferred	closure_model CDefPointer (local pointee stand-ins)
+005c7f07	deferred	closure_model CDefPointer (local pointee stand-ins)
+005c99fd	deferred	header_lacks GetDefIndex
+005cbdbd	deferred	header_lacks m_flags(no offset)
+005cd33f	deferred	closure_model CDefPointer (local pointee stand-ins)
+005cd433	rewritten	migrated removed:CCharString+CWideString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CWIDESTRING
+005cd767	deferred	closure_model CDefPointer (local pointee stand-ins)
+005cdbbe	deferred	local_std
+005cdccb	deferred	local_std
+005cdd86	deferred	local_std
+005d64dd	deferred	local_std
+005d66ba	deferred	closure_model CDefPointer (local pointee stand-ins)
+005d8d50	deferred	header_lacks SendMessage
+005d9380	deferred	closure_model CDefPointer (local pointee stand-ins)
+005d93b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+005d9430	deferred	closure_model CDefPointer (non-template local stand-in)
+005d9c90	deferred	closure_model CDefPointer (local pointee stand-ins)
+005daaa0	deferred	closure_model CDefPointer (local pointee stand-ins)
+005dabe0	deferred	closure_model CDefPointer (local pointee stand-ins)
+005dac50	deferred	closure_model CDefPointer (local pointee stand-ins)
+005e4430	deferred	closure_model CDefPointer (local pointee stand-ins)
+005e4860	deferred	local_std
+005ea010	deferred	header_lacks PDef@0x70(no accessor)
+005ea1a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+005ea250	deferred	closure_model CDefPointer (local pointee stand-ins)
+005ea310	deferred	closure_model CDefPointer (non-template local stand-in)
+005ea3c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+005ea9b0	deferred	header_lacks SetActive,_flags91(other bits)
+005eb4b0	deferred	header_lacks GetInterface
+005eb810	deferred	header_lacks PDef@0x70(no accessor)
+005ec0f0	deferred	closure_model CDefPointer (non-template local stand-in)
+005ec650	deferred	header_lacks SetVisible
+005ec990	deferred	closure_model CDefPointer (non-template local stand-in)
+005ed7d0	deferred	local_std
+005ed860	deferred	searchtools_template (IsIncludedInThingScans shape)
+005ee418	deferred	header_lacks GetTCUnchecked
+005ee6bf	deferred	unresolved_call GetTC<T>(N) zeroed wrapper (not a declaration)
+005ee99d	deferred	local_std
+005eea9b	deferred	closure_model CDefPointer (local pointee stand-ins)
+005f05e5	deferred	closure_model CDefPointer (local pointee stand-ins)
+005f4a86	deferred	closure_model CDefPointer (local pointee stand-ins)
+005fad40	rewritten	migrated
+005fbd20	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+005fbd90	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+005fc2d0	deferred	nested_in_namespace NScreen005fc2d0
+005fc620	deferred	local_std
+005fc8a0	deferred	nested_in_namespace NScreen005fc8a0
+005fcb10	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+005fd1d0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+005fd410	deferred	local_std
+00602e30	deferred	closure_model CDefPointer (local pointee stand-ins)
+006156e0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00615750	deferred	searchtools_template (IsIncludedInThingScans shape)
+00617780	deferred	local_std
+00617860	deferred	searchtools_template (IsIncludedInThingScans shape)
+00617970	deferred	searchtools_template (IsIncludedInThingScans shape)
+00617a00	deferred	local_std
+00617a90	deferred	local_std
+00617b20	deferred	searchtools_template (IsIncludedInThingScans shape)
+00617bb0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00617ca0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00617d30	deferred	header_lacks f2c@0x2c,f5c@0x5c(no accessor)
+006186f0	deferred	local_std
+00618790	deferred	local_std
+00618e60	deferred	searchtools_template (IsIncludedInThingScans shape)
+0061a2c0	rewritten	migrated
+0061a3b0	rewritten	migrated removed:CWideString macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CWIDESTRING
+006223c0	deferred	local_std
+006276f0	deferred	local_std
+0062ad90	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0062b7c0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0062c1c0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0062c300	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0062c3e0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0062c4b0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0062cf90	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0062d380	rewritten	migrated
+0062e840	deferred	searchtools_template (IsIncludedInThingScans shape)
+00633d80	rewritten	migrated
+00633f10	rewritten	migrated
+00633ff0	rewritten	migrated
+006349b0	deferred	quarantine_model: #define <closure class> alias
+006355d0	deferred	header_lacks GetConstTC
+00636400	deferred	quarantine_model: #define <closure class> alias
+00636480	deferred	header_lacks GetConstTC
+006366b0	deferred	local_std
+00637a10	deferred	header_lacks IsMapwhoExempt
+0063f150	deferred	header_lacks CanBlockNavigatingCreature
+0063f1e0	deferred	header_lacks CanBlockNavigatingCreature
+0063fae0	deferred	local_std
+00640c40	deferred	closure_model CDefPointer (local pointee stand-ins)
+00640c70	deferred	closure_model CDefPointer (local pointee stand-ins)
+00640ca0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00640cd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00640f00	deferred	closure_model CDefPointer (local pointee stand-ins)
+00640f80	deferred	closure_model CDefPointer (local pointee stand-ins)
+00641020	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+006412b0	deferred	own_definition CVectorMap member (same-TU body)
+006437d0	deferred	local_std
+0064a060	deferred	local_std
+0064a1ae	deferred	local_std
+0064a2db	deferred	local_std
+0064a568	deferred	local_std
+0064b5c1	deferred	closure_model CDefPointer (non-template local stand-in)
+0064b668	deferred	header_lacks GetInterfaceUnchecked
+0064be45	deferred	local_std
+0064db2b	deferred	local_std
+0064e0da	deferred	header_lacks GetInterfaceUnchecked
+0064fc23	deferred	local_std
+0065196c	deferred	header_lacks GetInterfaceUncheckedConst
+0065575f	deferred	local_std
+00658fa2	deferred	closure_model CDefPointer (non-template local stand-in)
+00659164	deferred	closure_model CDefPointer (local pointee stand-ins)
+006592e2	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0065935e	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006594bb	deferred	own_definition CVectorMap member (same-TU body)
+00659c7e	deferred	header_lacks PDef@0x70(no accessor),m_present@0x20(no accessor)
+0065a075	deferred	quarantine_model: #define CThing <alias> include
+0065a1fd	deferred	local_std
+0065a28f	deferred	closure_model CDefPointer (local pointee stand-ins)
+0065a5bb	deferred	closure_model CDefPointer (local pointee stand-ins)
+0065a686	deferred	closure_model CDefPointer (local pointee stand-ins)
+0065a8ee	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0065ac0e	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0065ac83	deferred	local_std
+0065b0b4	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0065b2c4	rewritten	migrated removed:CBaseObject macros:FABLE_RETAIL_CTHING
+0065b349	rewritten	migrated removed:CBaseObject+CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+0065b598	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0065bffa	rewritten	migrated removed:CBaseObject macros:FABLE_RETAIL_CTHING
+0065c1fc	deferred	closure_model CDefPointer (local pointee stand-ins)
+0065c36e	deferred	local_std
+0065c45a	rewritten	migrated removed:CBaseObject macros:FABLE_RETAIL_CTHING
+0065c781	deferred	header_lacks GetVillagerState
+0065d639	deferred	header_lacks flags(no offset)
+0065e6b8	deferred	local_std
+0065e6ed	deferred	local_std
+0065e722	deferred	local_std
+0065e757	deferred	local_std
+0065e78c	deferred	local_std
+0065e7c1	deferred	local_std
+0065f056	deferred	closure_model CDefPointer (local pointee stand-ins)
+0065f6da	deferred	local_std
+0065f744	deferred	searchtools_template (IsIncludedInThingScans shape)
+0065fbe1	rewritten	migrated
+00661aa0	deferred	header_lacks ComputeDistanceToMorphDummy
+00661b40	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+00661d20	rewritten	migrated
+00661d70	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00661ea0	deferred	header_lacks flags(no offset)
+00662110	rewritten	migrated
+006622d0	rewritten	migrated
+00662c10	deferred	closure_model CDefPointer (local pointee stand-ins)
+00662c70	deferred	closure_model CDefPointer (local pointee stand-ins)
+00662ef0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00663260	deferred	closure_model CDefPointer (local pointee stand-ins)
+00663340	deferred	closure_model CDefPointer (local pointee stand-ins)
+00663510	rewritten	migrated
+006637d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00663b10	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00663ba0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00663c40	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00663f50	deferred	closure_model CDefPointer (local pointee stand-ins)
+00664370	deferred	local_std
+006644f0	deferred	local_std
+00664680	deferred	header_lacks CreatedByOwnerThingCreation(bit)
+006647f0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006648d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00664a50	deferred	closure_model CDefPointer (local pointee stand-ins)
+00664c60	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00664cb0	deferred	local_std
+00664d00	deferred	local_std
+006650e0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00665190	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00665260	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00665510	deferred	closure_model CDefPointer (local pointee stand-ins)
+006655a0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00665e90	deferred	closure_model CDefPointer (local pointee stand-ins)
+006666a0	deferred	own_definition_of_header_inline GetPCurrentThingManager
+00666b50	deferred	local_std
+00666ea0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+00667310	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+00669040	rewritten	migrated
+00669110	rewritten	migrated
+006698d0	deferred	searchtools_template (IsIncludedInThingScans shape)
+0066ace0	deferred	header_lacks Position(no offset)
+0066aeb0	deferred	header_lacks m_thingFlags@0x91(derived)
+0066b040	deferred	closure_model CDefPointer (local pointee stand-ins)
+0066b1d0	deferred	header_lacks PDef@0x70(no accessor)
+0066b280	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+0066ba80	deferred	own_definition CVectorMap member (same-TU body)
+0066bbf0	deferred	header_lacks m_tcBits28@0x28
+0066bd00	deferred	local_std
+0066bdf0	deferred	local_std
+0066e5a0	deferred	local_std
+0066fc90	deferred	header_lacks GetCurrentRelativeMovementAngleXY
+0066ff20	deferred	header_lacks Health@0xb4,MaxHealth@0xb0
+006700f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006701a0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006702e0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00670470	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00670a10	deferred	header_lacks m_lifeRemaining@0xb4
+00681b30	rewritten	migrated
+00683590	deferred	closure_model CDefPointer (local pointee stand-ins)
+00683650	deferred	header_lacks m_interfaces@0x44(no accessor)
+00684210	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00685ee0	deferred	searchtools_template (IsIncludedInThingScans shape)
+006869d0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+00687540	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00687730	deferred	closure_derived CMessageEvent:CBaseObject
+00687fd0	deferred	local_std
+00688a80	rewritten	migrated
+00688c90	deferred	closure_model CDefPointer (local pointee stand-ins)
+00688eb0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00689050	deferred	local_std
+0068ae30	deferred	local_std
+0068b2e0	deferred	local_std
+0068b7c0	deferred	local_std
+0068eb20	deferred	own_definition CVectorMap member (same-TU body)
+0068f180	deferred	local_std
+0068f320	deferred	local_std
+0068f9d0	deferred	header_lacks GetConstInterface
+0068ff50	deferred	local_std
+00690030	deferred	header_lacks GetInterfaceUnchecked
+00690830	deferred	local_std
+00690b20	deferred	local_std
+00690fd0	deferred	local_std
+00691130	deferred	local_std
+00691560	deferred	local_std
+00691680	deferred	local_std
+00691870	deferred	unresolved_call GetInterface(0x108)
+00692910	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+00692940	deferred	quarantine_model: #define CThing <alias> include
+00692aa0	rewritten	migrated
+00692b30	rewritten	migrated
+00692c10	rewritten	migrated
+00692db0	deferred	header_lacks ClearCurrentAction
+00693140	deferred	local_std
+00694020	deferred	local_std
+00694430	deferred	header_lacks IsPlayerCreature
+006946c0	deferred	local_std
+006989d0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00698a30	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00698b50	deferred	quarantine_model: #define CThing <alias> include
+00698c30	deferred	quarantine_model: #define CThing <alias> include
+00698d10	deferred	quarantine_model: #define CThing <alias> include
+00698e40	deferred	header_lacks GetDeleted
+00698f50	deferred	quarantine_model: #define CThing <alias> include
+00699970	deferred	quarantine_model: #define CThing <alias> include
+00699a50	deferred	closure_model CDefPointer (local pointee stand-ins)
+0069a990	deferred	header_lacks Components@0x44(no accessor),UsingComponents@0x20(no accessor)
+0069ad10	deferred	closure_model CDefPointer (local pointee stand-ins)
+0069b790	deferred	quarantine_model: #define CThing <alias> include
+0069f2b0	deferred	unresolved_call GetTCName()
+0069f3e0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0069f670	deferred	header_lacks SetCurrentAction
+0069f750	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0069f800	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0069f8b0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0069f9e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0069fc40	deferred	header_lacks SetCurrentAction
+006a1120	deferred	header_lacks GetDefIndex
+006a1370	deferred	header_lacks SetAsDrawable
+006a1440	deferred	header_lacks m_flags@0x20(no accessor)
+006a1540	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006a15a0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+006a1620	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+006a1e00	deferred	header_lacks GetTCConst
+006a2370	rewritten	migrated
+006a2540	deferred	closure_model CDefPointer (local pointee stand-ins)
+006a4ba0	deferred	header_lacks Save
+006a4d20	deferred	header_lacks OnCreate
+006a4e90	deferred	header_lacks DrawGetEditDrawInfo,HasEditDrawInfo,_pad04(no offset),time@0x4c74b0,v000,v001
+006a5230	deferred	header_lacks GetThingManager,InitialActivate
+006a5950	deferred	header_lacks ConstructFromParams,defIndex@0x4ca010,mapNumber@0x4ca010,v00
+006a5af0	rewritten	migrated
+006a5d50	deferred	local_std
+006a62e0	deferred	unresolved_call HasTC(long type),GetTC(long interfaceType),GetTC(long interfaceType)
+006a6880	deferred	local_std
+006a74f0	deferred	header_lacks m_scriptName@0x74(no accessor)
+006a78d0	deferred	header_lacks AsCreature
+006a7ab0	deferred	header_lacks CanBeUsedAsCoverImpl
+006a7c00	deferred	header_lacks nameObj@0x70(no accessor)
+006a7c20	deferred	header_lacks SerialisationSectionName(no offset)
+006a7c60	deferred	header_lacks SerialisationSectionName@0x58(no accessor)
+006a7e30	deferred	header_lacks ScriptName@0x74(no accessor)
+006a7e70	deferred	header_lacks ScriptData@0x78(no accessor)
+006a7f30	deferred	header_lacks m_scriptData@0xe8
+006a80a0	deferred	header_lacks UsingComponents@0x20(no accessor)
+006a8240	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006a8300	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006a8370	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006a84f0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006a8560	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006a8630	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006a8710	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+006a8930	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006a8a30	deferred	local_std
+006a8a80	deferred	local_std
+006a8c60	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006a8d30	deferred	local_std
+006a9520	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+006a9590	rewritten	migrated
+006a9dd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006a9ef0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006ab300	rewritten	migrated removed:CCharString+CWideString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CWIDESTRING
+006ab5d0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+006ac140	deferred	header_lacks m_flags(other bits),m_reactionTarget@0xf4
+006ac390	deferred	own_definition CVectorMap member (same-TU body)
+006ac690	deferred	closure_model CDefPointer (local pointee stand-ins)
+006ad580	deferred	own_definition_of_header_inline GetTCDriver
+006ae5c0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+006ae830	deferred	searchtools_template (IsIncludedInThingScans shape)
+006aeba0	deferred	local_std
+006aebf0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006aedc0	deferred	local_std
+006aeea0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006aff00	deferred	header_lacks OnCollision
+006b0130	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+006b01d0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+006b0210	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+006b0780	deferred	closure_model CDefPointer (local pointee stand-ins)
+006b0c10	deferred	header_lacks OnCollision
+006b2720	deferred	local_std
+006bf9e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006bfb90	deferred	closure_model CDefPointer (local pointee stand-ins)
+006bffd0	deferred	own_definition CVectorMap member (same-TU body)
+006c0160	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+006c0330	deferred	header_lacks ScriptName@0x78(no accessor)
+006c0fd0	deferred	local_std
+006c1150	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+006c17b0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_STATEACCESS
+006c1c70	deferred	local_std
+006c1dd0	deferred	searchtools_template (IsIncludedInThingScans shape)
+006c3ca0	deferred	local_std
+006c3f40	deferred	header_lacks SetAsDrawable
+006c4210	deferred	local_std
+006c4270	deferred	local_std
+006c7b00	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+006c7c30	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+006c8780	deferred	nested_in_namespace X_006c8780
+006c8de0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006c9280	deferred	local_std
+006c9900	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+006ca120	deferred	closure_model CDefPointer (local pointee stand-ins)
+006ca400	deferred	closure_model CDefPointer (local pointee stand-ins)
+006ca4e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006ca5a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006cc6b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006cd3b0	deferred	local_std
+006ce300	deferred	searchtools_template (IsIncludedInThingScans shape)
+006ce730	deferred	local_std
+006cf3b0	rewritten	migrated removed:CVectorMap macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+006cf480	deferred	closure_model CDefPointer (local pointee stand-ins)
+006cf810	deferred	header_lacks Flags1C9@0x1c9
+006cf890	deferred	header_lacks GetInterface,m_presentBits@0x20(no accessor)
+006cf920	deferred	closure_model CDefPointer (local pointee stand-ins)
+006cfaa0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006cfec0	deferred	header_lacks m_flags1c9@0x1c9
+006cff10	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+006d0180	deferred	header_lacks Flags1C9@0x1c9
+006d3fb0	deferred	searchtools_template (IsIncludedInThingScans shape)
+006d4600	deferred	local_std
+006d4fd0	deferred	header_lacks GetInterface
+006d5050	deferred	header_lacks GetInterface
+006d5180	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+006d5260	rewritten	migrated
+006d53c0	deferred	header_lacks TCs@0x44(no accessor)
+006d56e0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_STATEACCESS
+006d5b50	rewritten	migrated macros:FABLE_RETAIL_CTHING
+006d6370	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d64b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d6590	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d65e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d6620	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d6770	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d67b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d6870	deferred	own_definition CVectorMap member (same-TU body)
+006d6ea0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d6ee0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d6f60	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d7120	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d7570	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d7640	deferred	local_std
+006d76c0	deferred	header_lacks GetConstTC
+006d7960	deferred	own_definition CVectorMap member (same-TU body)
+006d7cb0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d7de0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d7e10	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d7e70	deferred	closure_model CDefPointer (local pointee stand-ins)
+006d8170	deferred	own_definition CVectorMap member (same-TU body)
+006d83b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006dd8f0	deferred	header_lacks SetCurrentAction
+006dd980	deferred	header_lacks SetCurrentAction
+006dda20	deferred	header_lacks Def@0x70(no accessor)
+006ddae0	deferred	header_lacks m_pState@0x70(no accessor)
+006dfa50	deferred	searchtools_template (IsIncludedInThingScans shape)
+006dffb0	deferred	quarantine_model: #define CThing <alias> include
+006e0be0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006e0e80	deferred	header_lacks PTCDriver@0x5c(no accessor)
+006e0f10	deferred	header_lacks PTCDriver@0x5c(no accessor)
+006e11f0	deferred	nested_in_namespace X_006e11f0
+006e13e0	deferred	header_lacks SetAsGameStatePersisted_004c9c10
+006e1620	deferred	header_lacks Flags91(other bits)
+006e2e60	deferred	local_std
+006e3180	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+006e3440	deferred	local_std
+006e3780	deferred	closure_model CDefPointer (local pointee stand-ins)
+006e58a0	deferred	local_std
+006e7820	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_STATTYPEFLAGS
+006e7920	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_STATTYPEFLAGS
+006e8e10	deferred	local_std
+006e97f0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+006e9f60	deferred	own_definition CVectorMap member (same-TU body)
+006ea450	deferred	header_lacks GetUID
+006ea5f0	deferred	closure_derived CDefClassBase:CDefPointeeBase
+006ea770	deferred	pack_region
+006eac50	deferred	local_std
+006eb390	deferred	closure_model CDefPointer (local pointee stand-ins)
+006ebdd0	rewritten	migrated
+006ec4f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+006ed030	deferred	local_std
+006ed510	deferred	closure_model CDefPointer (local pointee stand-ins)
+00700780	deferred	header_lacks GetInterface
+00700820	deferred	header_lacks GetInterface
+00700940	deferred	header_lacks GetOpinionOfHeroTC
+00701750	deferred	quarantine_model: #define CThing <alias> include
+00702810	deferred	local_std
+00702b10	deferred	header_lacks SerialisationSectionName@0x58(no accessor)
+00702c60	deferred	header_lacks DrawIsDrawable,GetDisplayEngine
+007031c0	deferred	header_lacks ctor
+007032f0	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+00703470	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007034d0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00703780	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007037d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007038d0	deferred	header_lacks SetSpin_006a4dc0
+007040e0	deferred	header_lacks IsFrameUpdated,_pad00(no offset)
+00704150	deferred	unresolved_call HasTC(long type),GetTC(long interfaceType),GetInterface(const T** out, long interfaceT)
+00705b60	rewritten	migrated
+00705c30	deferred	closure_model CDefPointer (local pointee stand-ins)
+00705cc0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00705d00	deferred	closure_model CDefPointer (local pointee stand-ins)
+00705d40	deferred	quarantine_model: #define CThing <alias> include
+00706d10	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00706e00	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007079e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0070a490	deferred	local_std
+0070b4d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00712340	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007128c0	deferred	header_lacks GetConversationState
+007132c0	rewritten	migrated removed:CCharString+CWideString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CWIDESTRING
+00713740	deferred	own_definition CVectorMap member (same-TU body)
+00713ee0	deferred	header_lacks GetCurrentSpeed,GetMaxSpeedTowards,GetSneakSpeedTowards,IsPerformingAnyAction
+00714730	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00714900	deferred	local_std
+00714d30	deferred	closure_derived CScriptConversation:CBaseObject
+00714f60	rewritten	migrated removed:CWideString macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CWIDESTRING
+007153b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00715710	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007158f0	deferred	unresolved_call GetTCName()
+00717450	rewritten	migrated removed:CWideString macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CWIDESTRING
+00717710	deferred	header_lacks GetConstInterface
+00717950	rewritten	migrated removed:CArray macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+007197c0	deferred	local_std
+0071a850	deferred	quarantine_model: #define CThing <alias> include
+0071a8a0	deferred	header_lacks SetAsDrawable
+0071a8f0	deferred	local_std
+0071a940	deferred	local_std
+0071ab20	deferred	header_lacks GetGraphicAppearance
+0071ae90	deferred	header_lacks IsDrawable
+0071b1b0	deferred	local_std
+0071b300	deferred	local_std
+0071b380	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_STATEACCESS
+0071b590	deferred	local_std
+0071b690	deferred	local_std
+0071b700	deferred	local_std
+0071c260	deferred	local_std
+0071c7c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0071c9f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0071d7c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0071da70	deferred	closure_model CDefPointer (local pointee stand-ins)
+0071dbd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0071de80	deferred	closure_model CDefPointer (local pointee stand-ins)
+0071e130	deferred	header_lacks SendMessage
+00722590	deferred	header_lacks DefClass@0x70(no accessor)
+00723ac0	deferred	header_lacks OnCollision
+00725a30	deferred	header_lacks UsingComponents@0x20(no accessor)
+00726340	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007275c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00727b40	deferred	local_std
+00727c20	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00728000	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00728470	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00729410	deferred	closure_model CDefPointer (local pointee stand-ins)
+007294a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00729b20	deferred	header_lacks ScriptData@0x78(no accessor)
+0072a950	deferred	header_lacks m_presentBits@0x20(no accessor)
+0072a970	deferred	local_std
+0072a9b0	deferred	local_std
+0072aa00	deferred	local_std
+0072aa50	deferred	local_std
+0072aaa0	deferred	local_std
+0072ab70	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0072abd0	deferred	local_std
+0072ac40	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0072af30	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0072b160	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+0072b3b0	deferred	local_std
+0072b420	deferred	unresolved_call GetTC(0x96, (CTCForcePushPower*)0),GetTC(0x92, (CTCBulletTime*)0),GetTC(0x95, (CTCWillEnflame*)0),GetTC(0x93, (CTCPhysicalShieldSpell*)
+0072b940	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0072ba40	deferred	unresolved_call GetTC(0x92, (CTCBulletTime*)0),GetTC(0x93, (CTCPhysicalShieldSpell*),GetTC(0x84, (CTCBerserk*)0),GetTC(0x91, (CTCSummonSpell*)0)
+0072bc60	deferred	unresolved_call GetTC(0x92, (CTCBulletTime*)0),GetTC(0x93, (CTCPhysicalShieldSpell*),GetTC(0x84, (CTCBerserk*)0),GetTC(0x91, (CTCSummonSpell*)0)
+0072c230	deferred	header_lacks DrawIsDrawable,SetAsDrawable
+0072c3c0	deferred	header_lacks IsUnconscious
+0072c680	deferred	local_std
+0072c790	deferred	header_lacks Interfaces@0x44(no accessor),TCBits@0x20(no accessor)
+0072caa0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_PEEKPLAYER
+0072cba0	deferred	header_lacks m_flags30@0x30
+0072dc70	deferred	closure_model CDefPointer (local pointee stand-ins)
+0072ddb0	deferred	header_lacks m_flags91(other bits)
+0072df50	deferred	header_lacks m_flags91(other bits)
+0072e130	deferred	header_lacks PTCDriver@0x5c(no accessor),m_flags91(other bits)
+0072e940	rewritten	migrated removed:CCharString+CWideString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CWIDESTRING
+0072ed10	deferred	closure_model CDefPointer (local pointee stand-ins)
+0072ee30	deferred	closure_model CDefPointer (local pointee stand-ins)
+0072f2f0	deferred	header_lacks GetVillagerRole
+00730070	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007305d0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+00730630	deferred	closure_model CDefPointer (local pointee stand-ins)
+007306c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00730a00	deferred	closure_model CDefPointer (local pointee stand-ins)
+00730ae0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00730c00	deferred	closure_model CDefPointer (local pointee stand-ins)
+00730dd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007310c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007313b0	deferred	searchtools_template (IsIncludedInThingScans shape)
+007317d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00731970	deferred	header_lacks Slot28
+00731d40	deferred	closure_model CDefPointer (local pointee stand-ins)
+00731e20	deferred	closure_model CDefPointer (local pointee stand-ins)
+007327f0	deferred	quarantine_model: #define <closure class> alias
+00732850	deferred	closure_model CDefPointer (local pointee stand-ins)
+00732950	deferred	header_lacks GetInterface
+007329e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00733100	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_PEEKPLAYER
+007334b0	deferred	own_definition_of_header_inline GetPBaseDef
+007338a0	deferred	local_std
+00733e10	deferred	closure_model CDefPointer (local pointee stand-ins)
+00734190	deferred	local_std
+00735340	deferred	local_std
+007363a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00736760	deferred	local_std
+00736910	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00736ad0	deferred	quarantine_model: #define <closure class> alias
+0073a9f0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+0073aac0	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0073af60	deferred	closure_model CDefPointer (local pointee stand-ins)
+0073afc0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00743120	deferred	local_std
+007445e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00744ed0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00745c70	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007461c0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00746560	deferred	searchtools_template (IsIncludedInThingScans shape)
+00746860	deferred	quarantine_model: #define <closure class> alias
+00747480	deferred	closure_model CDefPointer (local pointee stand-ins)
+00747660	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007479b0	deferred	header_lacks GetRunSpeed,GetWalkSpeed
+00747da0	deferred	header_lacks GetRadiusAt,GetTC2,HeroState@0x200,PCurrentAction@0x100,VelocityX@0x10c,VelocityY@0x110
+007483e0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00748c10	deferred	local_std
+00748d80	deferred	nested_in_namespace N00748d80
+00748e40	deferred	local_std
+00749170	deferred	local_std
+00749530	deferred	local_std
+007498e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00749b40	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00749ea0	deferred	header_lacks DefClass@0x70(no accessor)
+0074a1e0	deferred	local_std
+0074a260	deferred	header_lacks GetTCConst
+0074d710	deferred	local_std
+0074d940	deferred	local_std
+0074e280	deferred	header_lacks Health@0xb4,MaxHealth@0xb0
+0074e460	deferred	header_lacks GetInterface
+0074e560	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+0074ee90	deferred	local_std
+0074f350	deferred	local_std
+00750050	deferred	closure_model CDefPointer (local pointee stand-ins)
+00750110	deferred	header_lacks PBaseDef@0x70(no accessor)
+00750240	deferred	closure_model CDefPointer (local pointee stand-ins)
+007502d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007504e0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00750540	deferred	closure_model CDefPointer (local pointee stand-ins)
+00750730	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00750850	deferred	local_std
+007508d0	deferred	header_lacks SetCutscenePauseBehaviour
+00750be0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00750cd0	deferred	closure_model CDefPointer (non-template local stand-in)
+00750dd0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTCDRIVER
+007512c0	deferred	header_lacks f28@0x28,f5c@0x5c(no accessor)
+007512e0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00751bc0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00752000	deferred	closure_model CDefPointer (local pointee stand-ins)
+00752200	deferred	closure_model CDefPointer (local pointee stand-ins)
+00752300	deferred	header_lacks Flags178@0x178
+00752480	deferred	closure_model CDefPointer (local pointee stand-ins)
+00753040	deferred	header_lacks PBaseDef@0x70(no accessor)
+00753170	deferred	closure_model CDefPointer (local pointee stand-ins)
+00753290	deferred	local_std
+00753930	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00753b40	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00753c70	deferred	header_lacks IsLookTurningOverridenByParent
+00757b30	deferred	closure_model CDefPointer (local pointee stand-ins)
+00757c90	deferred	closure_model CDefPointer (local pointee stand-ins)
+0075a530	deferred	local_std
+0075bc40	deferred	local_std
+0075c210	deferred	pack_region
+0075dc00	deferred	local_std
+00766550	deferred	local_std
+00766c00	deferred	local_std
+007673c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00767da0	deferred	local_std
+00768210	deferred	local_std
+0076c850	deferred	local_std
+0076cfe0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0076d1b0	deferred	local_std
+0076d270	deferred	local_std
+0076d460	deferred	header_lacks GetInterface
+0076d7b0	deferred	local_std
+0076e2f0	deferred	local_std
+0076e4a0	deferred	header_lacks m_properties@0x2c
+0076ef40	deferred	quarantine_model: #define CThing <alias> include
+00770e50	deferred	local_std
+00770f20	deferred	local_std
+00771200	deferred	header_lacks SetAsDrawable
+00771230	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00771540	deferred	closure_model CDefPointer (local pointee stand-ins)
+00771660	deferred	header_lacks PBaseDef@0x70(no accessor)
+007721a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00772250	deferred	closure_model CDefPointer (local pointee stand-ins)
+007723f0	rewritten	migrated
+00772510	deferred	quarantine_model: #define <closure class> alias
+00772590	deferred	quarantine_model: #define <closure class> alias
+00772610	deferred	closure_model CDefPointer (local pointee stand-ins)
+00773b20	deferred	header_lacks GetInterface
+00773e10	deferred	closure_model CDefPointer (local pointee stand-ins)
+00774100	deferred	local_std
+007742c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007743b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007744a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007748e0	deferred	local_std
+007751a0	deferred	header_lacks Get,GetPWorkplace,m_houseLockingOverridden@0xd4
+00777000	deferred	searchtools_template (IsIncludedInThingScans shape)
+007786f0	deferred	header_lacks DefClass@0x70(no accessor)
+00778ae0	deferred	local_std
+00778fa0	deferred	header_lacks SetCutscenePauseBehaviour
+00779080	deferred	header_lacks GetAngleXY
+007796b0	deferred	header_lacks Health@0xb4
+00779d20	deferred	closure_model CDefPointer (local pointee stand-ins)
+00779e10	deferred	local_std
+00779e90	deferred	header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0,map@0x4ca1d0
+0077a130	deferred	closure_model CDefPointer (local pointee stand-ins)
+0077a180	deferred	local_std
+0077adf0	deferred	searchtools_template (IsIncludedInThingScans shape)
+0077b2e0	deferred	local_std
+0077b6b0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0077bc80	deferred	local_std
+0077bd20	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0077c160	deferred	closure_model CDefPointer (local pointee stand-ins)
+0077c2a0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0077c3e0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0077c490	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0077c740	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0077c7e0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0077cb60	deferred	closure_model CDefPointer (local pointee stand-ins)
+0077cbe0	deferred	header_lacks PDef@0x70(no accessor)
+0077cca0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0077cd50	deferred	closure_model CDefPointer (local pointee stand-ins)
+0077d230	deferred	closure_model CDefPointer (local pointee stand-ins)
+0077d400	rewritten	migrated
+0077ec20	deferred	local_std
+0077f5c0	rewritten	migrated
+0077f7e0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+0077f970	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+0077fb00	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007800b0	deferred	header_lacks HeroCentre@0x170
+00780540	deferred	header_lacks GetParticleEmitter
+00780c80	deferred	header_lacks GetInterface
+00780d20	deferred	header_lacks m_pDefClass@0x70(no accessor)
+00781df0	rewritten	migrated
+00781e40	deferred	header_lacks SetAsDrawable
+00781f10	deferred	header_lacks SetAsDrawable
+00781fe0	deferred	header_lacks SetVisible
+00782670	deferred	searchtools_template (IsIncludedInThingScans shape)
+007828e0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00782a90	rewritten	migrated
+00783020	deferred	local_std
+00783090	deferred	searchtools_template (IsIncludedInThingScans shape)
+00783110	deferred	searchtools_template (IsIncludedInThingScans shape)
+00783240	deferred	header_lacks GetUID
+00783380	deferred	closure_model CDefPointer (local pointee stand-ins)
+00783730	deferred	header_lacks GetInterface,GetUID
+00784b30	deferred	header_lacks m_pState@0x70(no accessor)
+00785dd0	deferred	local_std
+00786140	deferred	local_std
+007868a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00787750	deferred	header_lacks SetCutscenePauseBehaviour
+00787d4f	deferred	header_lacks Def@0x70(no accessor)
+00787e12	deferred	header_lacks UsingComponents@0x20(no accessor),m_interfaces@0x44(no accessor)
+0078809b	deferred	closure_model CDefPointer (local pointee stand-ins)
+007881ad	deferred	local_std
+00788229	deferred	own_definition_of_header_inline GetTCDriver
+00788406	deferred	closure_model CDefPointer (local pointee stand-ins)
+007884f5	deferred	header_lacks PBaseDef@0x70(no accessor)
+00788555	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00788617	deferred	local_std
+007890ea	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0078954d	deferred	searchtools_template (IsIncludedInThingScans shape)
+0078971d	deferred	searchtools_template (IsIncludedInThingScans shape)
+00789900	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00789c20	deferred	closure_model CDefPointer (local pointee stand-ins)
+00789d90	deferred	local_std
+00789e60	deferred	local_std
+00789ff0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0078a2c0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0078a5d0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0078b070	deferred	closure_model CDefPointer (local pointee stand-ins)
+0078b410	deferred	closure_model CDefPointer (local pointee stand-ins)
+0078b6b0	deferred	quarantine_model: #define CThing <alias> include
+0078c080	deferred	local_std
+0078c4c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0078c610	deferred	closure_model CDefPointer (local pointee stand-ins)
+0078db20	deferred	local_std
+0078ddb0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS own
+0078e820	deferred	header_lacks GetTCSelect
+0078e9c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0078ebf0	deferred	header_lacks GetInterface,MakeNoise
+0078f4d0	deferred	header_lacks GetObstructionDriver
+0078f5a0	deferred	local_std
+00792e50	deferred	local_std
+007930b0	deferred	local_std
+00793d20	deferred	local_std
+00793ec0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007940f0	deferred	header_lacks GetInterface,MakeNoise
+007949f0	deferred	header_lacks GetDriver
+00794ac0	deferred	local_std
+00798540	rewritten	migrated
+00798570	deferred	closure_model CDefPointer (local pointee stand-ins)
+00798620	deferred	local_std
+00798770	deferred	header_lacks OnHit
+00799140	deferred	header_lacks HomeBuilding@0x170
+00799790	deferred	header_lacks ShopThing@0x170
+00799c40	deferred	searchtools_template (IsIncludedInThingScans shape)
+00799fb0	deferred	searchtools_template (IsIncludedInThingScans shape)
+0079a050	deferred	searchtools_template (IsIncludedInThingScans shape)
+0079a280	deferred	searchtools_template (IsIncludedInThingScans shape)
+0079a6e0	deferred	local_std
+0079b9d0	deferred	header_lacks m_presentBits@0x20(no accessor)
+0079bf30	deferred	local_std
+0079c240	deferred	header_lacks PDef@0x70(no accessor)
+0079c290	deferred	header_lacks Killer@0xf4
+0079c750	deferred	closure_model CDefPointer (local pointee stand-ins)
+0079e250	deferred	closure_model CDefPointer (local pointee stand-ins)
+0079e420	deferred	closure_model CDefPointer (local pointee stand-ins)
+0079eaa0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007a00e0	deferred	unresolved_call GetInterface(0x4b)
+007a0400	deferred	local_std
+007a0770	deferred	local_std
+007a07f0	deferred	header_lacks m_bDead(other bits)
+007a09b0	deferred	header_lacks GetTCConst
+007a1870	deferred	closure_model CDefPointer (non-template local stand-in)
+007a30b0	deferred	local_std
+007a3410	deferred	local_std
+007a34a0	deferred	local_std
+007a37b0	deferred	local_std
+007a3ac0	deferred	local_std
+007a3ca0	deferred	searchtools_template (IsIncludedInThingScans shape)
+007a3f30	deferred	local_std
+007a3fa0	deferred	local_std
+007a4140	deferred	local_std
+007a43a0	deferred	local_std
+007a5190	deferred	local_std
+007a54a0	deferred	local_std
+007a63d0	deferred	local_std
+007a66a0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007a66f0	deferred	local_std
+007a6740	deferred	closure_model CDefPointer (non-template local stand-in)
+007a69f0	deferred	header_lacks SendMessageW
+007a6ab0	deferred	local_std
+007a6f00	deferred	closure_model CDefPointer (local pointee stand-ins)
+007a71b0	deferred	local_std
+007a7370	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007a73f0	deferred	local_std
+007a8be0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007a9300	deferred	searchtools_template (IsIncludedInThingScans shape)
+007a9580	deferred	searchtools_template (IsIncludedInThingScans shape)
+007a9b70	deferred	closure_model CDefPointer (local pointee stand-ins)
+007a9c80	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+007a9d60	deferred	local_std
+007a9e40	deferred	local_std
+007a9fe0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007aa370	deferred	header_lacks SetAlpha
+007aa9e0	deferred	header_lacks GetHeightZBelowAt,Radius@0x34
+007ab190	deferred	header_lacks FinishCurrentAction
+007ad880	deferred	closure_model CDefPointer (local pointee stand-ins)
+007aee40	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007aee90	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007aeec0	rewritten	migrated
+007aef10	rewritten	migrated
+007aef60	deferred	closure_model CDefPointer (local pointee stand-ins)
+007aefd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007af050	deferred	closure_model CDefPointer (local pointee stand-ins)
+007af0f0	deferred	quarantine_model: #define CThing <alias> include
+007af6c0	deferred	local_std
+007b0800	deferred	closure_model CDefPointer (local pointee stand-ins)
+007b0880	deferred	local_std
+007b1eb0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007b2bf0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007b2d50	rewritten	migrated removed:CInterfaceMap macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007b2e20	deferred	local_std
+007b2fd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007b5ca0	deferred	local_std
+007b6300	deferred	local_std
+007b6a80	deferred	closure_model CDefPointer (local pointee stand-ins)
+007b7140	deferred	local_std
+007b7b60	deferred	local_std
+007b8680	deferred	closure_model CDefPointer (non-template local stand-in)
+007b9090	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007ba550	deferred	local_std
+007babe0	deferred	header_lacks GetThingTypeFlags
+007bb660	deferred	searchtools_template (IsIncludedInThingScans shape)
+007bb800	deferred	closure_model CDefPointer (local pointee stand-ins)
+007bdac7	deferred	header_lacks Heal
+007bdb66	deferred	header_lacks TCBits@0x20(no accessor)
+007bdcfc	deferred	header_lacks GetInterfaceUnchecked
+007be0f9	deferred	closure_model CDefPointer (local pointee stand-ins)
+007bf2b0	deferred	local_std
+007bf3d0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007c04a0	deferred	local_std
+007c0e80	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c0fb0	deferred	local_std
+007c2480	deferred	header_lacks PTCDriver@0x5c(no accessor)
+007c25a0	deferred	header_lacks PTCDriver@0x5c(no accessor)
+007c2800	deferred	header_lacks PTCDriver@0x5c(no accessor)
+007c3070	deferred	closure_model CDefPointer (non-template local stand-in)
+007c30e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c31c0	deferred	local_std
+007c3c20	deferred	local_std
+007c3f10	deferred	local_std
+007c4bd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c5560	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c5db0	deferred	local_std
+007c6760	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c6a40	deferred	local_std
+007c6da0	deferred	header_lacks FadeOutEffect
+007c75e0	deferred	header_lacks FadeOutEffect
+007c7960	deferred	local_std
+007c7a00	deferred	closure_model CDefPointer (non-template local stand-in)
+007c8760	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c87f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c89f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c8de0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c9180	deferred	pack_region
+007c93b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007c9760	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+007c9770	deferred	header_lacks GetUID
+007c98a0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007ca630	deferred	quarantine_model: #define <closure class> alias
+007ca8e0	deferred	local_std
+007cabd0	deferred	header_lacks GetCheckedInterface
+007cbdc0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007cbf60	deferred	quarantine_model: #define CThing <alias> include
+007cc120	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007cc2b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007cc410	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+007cc4d0	deferred	own_definition CVectorMap member (same-TU body)
+007ccb00	deferred	local_std
+007cce20	deferred	header_lacks OnHit
+007cd930	deferred	local_std
+007cdc20	deferred	local_std
+007cdd10	deferred	closure_model CDefPointer (local pointee stand-ins)
+007cdfe0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007ce370	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS
+007ce420	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_MOREACCESS+FABLE_RETAIL_CTHING_STATEACCESS
+007ceb00	deferred	closure_model CDefPointer (local pointee stand-ins)
+007cf040	deferred	local_std
+007cf110	deferred	closure_model CDefPointer (local pointee stand-ins)
+007cf7e0	rewritten	migrated
+007cff40	deferred	closure_model CDefPointer (non-template local stand-in)
+007d0850	deferred	closure_model CDefPointer (non-template local stand-in)
+007d2a00	deferred	closure_model CDefPointer (non-template local stand-in)
+007d3510	deferred	closure_model CDefPointer (non-template local stand-in)
+007d3700	deferred	closure_model CDefPointer (non-template local stand-in)
+007d4410	deferred	closure_model CDefPointer (non-template local stand-in)
+007d4ce0	deferred	local_std
+007d4e30	deferred	closure_model CDefPointer (non-template local stand-in)
+007d5730	deferred	closure_model CDefPointer (non-template local stand-in)
+007d60c0	deferred	closure_model CDefPointer (non-template local stand-in)
+007d6f70	deferred	closure_model CDefPointer (non-template local stand-in)
+007d7ec0	deferred	closure_model CDefPointer (non-template local stand-in)
+007d7f10	deferred	header_lacks PDef@0x70(no accessor)
+007d7fd0	deferred	closure_model CDefPointer (non-template local stand-in)
+007d80c0	deferred	closure_model CDefPointer (non-template local stand-in)
+007d8160	deferred	closure_model CDefPointer (non-template local stand-in)
+007d83c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007d8ab0	deferred	closure_model CDefPointer (non-template local stand-in)
+007d8c20	deferred	closure_model CDefPointer (non-template local stand-in)
+007dd990	deferred	unresolved_call GetInterface(T** ppOut, long interfaceType)
+007de030	deferred	unresolved_call HasTC(long type),GetTC(long interfaceType)
+007de500	rewritten	migrated
+007df130	deferred	header_lacks m_flags92@0x92
+007df610	deferred	header_lacks PDef@0x70(no accessor)
+007df6a0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007dfb20	deferred	closure_model CDefPointer (local pointee stand-ins)
+007dfe20	deferred	closure_model CDefPointer (non-template local stand-in)
+007dff90	deferred	header_lacks Health@0xb4
+007e00d0	deferred	header_lacks ScriptName@0x74(no accessor)
+007e0910	deferred	closure_model CDefPointer (local pointee stand-ins)
+007e0e70	deferred	closure_model CDefPointer (local pointee stand-ins)
+007e14c0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007e1510	deferred	local_std
+007e1570	deferred	closure_model CDefPointer (non-template local stand-in)
+007e1eb0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007e2450	deferred	closure_model CDefPointer (non-template local stand-in)
+007e2600	deferred	header_lacks OnHit,UsingComponents@0x20(no accessor)
+007e3040	deferred	closure_model CDefPointer (local pointee stand-ins)
+007e3c70	deferred	closure_model CDefPointer (local pointee stand-ins)
+007e3d50	deferred	unresolved_call GetTC(),GetTC()
+007e3f40	deferred	unresolved_call GetTC(),GetTC()
+007e4040	deferred	unresolved_call GetTC(),GetTC()
+007e4330	deferred	unresolved_call GetTC(),GetTC()
+007e4430	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007e44e0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007e45d0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007e4680	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007e46d0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007e50c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007e5230	deferred	closure_model CDefPointer (local pointee stand-ins)
+007e59b0	deferred	local_std
+007e5b40	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007e5b90	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_STATEACCESS
+007e6ec0	deferred	local_std
+007e7640	deferred	closure_model CDefPointer (local pointee stand-ins)
+007e76b0	deferred	header_lacks GetScriptedControl
+007e7760	deferred	header_lacks GetScriptedControl
+007e83b0	deferred	header_lacks DrawIsDrawable,SetAsDrawable
+007ea040	deferred	searchtools_template (IsIncludedInThingScans shape)
+007ea0e0	deferred	searchtools_template (IsIncludedInThingScans shape)
+007ea490	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+007ea510	deferred	closure_model CDefPointer (local pointee stand-ins)
+007eac10	deferred	closure_model CDefPointer (local pointee stand-ins)
+007eacb0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007eaf20	deferred	header_lacks GetStateFlags
+007eb110	deferred	closure_model CDefPointer (local pointee stand-ins)
+007eb1a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007eb390	rewritten	migrated
+007ecee0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007ed170	deferred	header_lacks GetTCConst
+007ed2c0	deferred	header_lacks GetTCConst
+007ed560	deferred	own_definition CVectorMap member (same-TU body)
+007ed870	deferred	closure_model CDefPointer (local pointee stand-ins)
+007edb80	deferred	local_std
+007edbe0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007edd60	deferred	closure_model CDefPointer (local pointee stand-ins)
+007edee0	deferred	header_lacks GetTCSelect
+007ee270	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+007ee660	deferred	searchtools_template (IsIncludedInThingScans shape)
+007ee8f0	rewritten	migrated removed:CCharString+CInterfaceMap macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007eeb20	deferred	closure_model CDefPointer (non-template local stand-in)
+007eec50	deferred	closure_model CDefPointer (non-template local stand-in)
+007eec90	deferred	closure_model CDefPointer (local pointee stand-ins)
+007eecf0	deferred	closure_model CDefPointer (non-template local stand-in)
+007eed20	deferred	closure_model CDefPointer (non-template local stand-in)
+007eefe0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007ef600	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f01f0	deferred	unresolved_call HasTC(long interfaceType),GetTC(long interfaceType)
+007f0300	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f04c0	deferred	header_lacks Health@0xb4,MaxHealth@0xb0,PTCDriver@0x5c(no accessor)
+007f08b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f0b10	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f1170	rewritten	migrated
+007f1410	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f14f0	deferred	header_lacks EmergeFraction@0xb4
+007f1930	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f1ac0	deferred	header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0
+007f23d0	deferred	header_lacks PBaseDef@0x70(no accessor)
+007f2410	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f4020	deferred	searchtools_template (IsIncludedInThingScans shape)
+007f42a0	deferred	searchtools_template (IsIncludedInThingScans shape)
+007f4500	deferred	searchtools_template (IsIncludedInThingScans shape)
+007f4d50	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f4e10	deferred	closure_model CDefPointer (non-template local stand-in)
+007f4e80	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f4f40	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f4f80	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f4fc0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007f50b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f53a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f59c0	deferred	header_lacks PDef@0x70(no accessor)
+007f59f0	deferred	local_std
+007f5d20	deferred	searchtools_template (IsIncludedInThingScans shape)
+007f69b0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007f6bf0	rewritten	migrated removed:CBaseObject macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATTYPEFLAGS
+007f6cb0	rewritten	migrated removed:CBaseObject macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATTYPEFLAGS
+007f6df0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f7040	deferred	searchtools_template (IsIncludedInThingScans shape)
+007f70d0	deferred	header_lacks IsRequestedType
+007f7340	deferred	header_lacks IsAICreature
+007f7b70	deferred	local_std
+007f7c10	deferred	local_std
+007f7e70	deferred	local_std
+007f8300	deferred	header_lacks SetAsDrawable
+007f8760	deferred	local_std
+007f8890	deferred	header_lacks PBaseDef@0x70(no accessor),PTCDriver@0x5c(no accessor),ThingTypeBit3(no offset)
+007f8f30	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f90b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007f9b90	deferred	header_lacks m_flags91(other bits)
+007f9c00	deferred	searchtools_template (IsIncludedInThingScans shape)
+007f9e70	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+007f9ff0	deferred	local_std
+007fa0e0	deferred	local_std
+007fa320	deferred	local_std
+007fa450	deferred	local_std
+007fa710	deferred	local_std
+007fa7b0	deferred	local_std
+007fa830	deferred	local_std
+007fa890	deferred	local_std
+007faa20	deferred	local_std
+007fac00	deferred	local_std
+007fac80	deferred	local_std
+007fae60	deferred	local_std
+007faf60	rewritten	migrated
+007fb120	rewritten	migrated
+007fb500	deferred	local_std
+007fb6a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007fb870	deferred	closure_model CDefPointer (local pointee stand-ins)
+007fba20	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTCDRIVER
+007fbb00	deferred	local_std
+007fbe50	deferred	closure_model CDefPointer (local pointee stand-ins)
+007fc8e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+007fcef0	deferred	searchtools_template (IsIncludedInThingScans shape)
+007fd110	deferred	searchtools_template (IsIncludedInThingScans shape)
+007fd4b0	deferred	header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0
+007fda20	rewritten	migrated macros:FABLE_RETAIL_CTHING
+007fda80	deferred	local_std
+007fdb10	deferred	local_std
+007fde70	deferred	closure_model CDefPointer (local pointee stand-ins)
+007fe730	deferred	searchtools_template (IsIncludedInThingScans shape)
+007feaf0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+007fecb0	deferred	local_std
+007ff0c0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+007ff7d0	deferred	header_lacks defIndex@0x4ca1d0
+007ff8a0	deferred	local_std
+008006d0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+00801a50	deferred	closure_model CDefPointer (local pointee stand-ins)
+00802610	deferred	local_std
+00802d10	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008039a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00803b20	deferred	header_lacks IsControlledCreature
+00807b70	deferred	nested_in_namespace N00807b70
+008090e0	rewritten	migrated
+008091a0	deferred	quarantine_model: #define CThing <alias> include
+00809270	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008093d0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00809a70	deferred	searchtools_template (IsIncludedInThingScans shape)
+00809d60	deferred	nested_in_namespace N00809d60
+00809f80	deferred	local_std
+0080a550	deferred	searchtools_template (IsIncludedInThingScans shape)
+0080c3c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0080c410	rewritten	migrated
+0080c460	deferred	own_definition_of_header_inline GetPCurrentThingManager
+0080c500	deferred	header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0,map@0x4ca1d0
+0080ca20	deferred	header_lacks OnHit
+0080cbf0	deferred	local_std
+0080ccf0	deferred	local_std
+0080e400	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0080e530	rewritten	migrated removed:CInterfaceMap macros:FABLE_RETAIL_CTHING
+0080e5d0	rewritten	migrated removed:CInterfaceMap macros:FABLE_RETAIL_CTHING
+0080e670	deferred	local_std
+0080e8e0	deferred	local_std
+0080ecc0	deferred	local_std
+0080f190	deferred	closure_model CDefPointer (local pointee stand-ins)
+0080f270	deferred	own_definition CVectorMap member (same-TU body)
+0080f5e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0080f870	deferred	closure_model CDefPointer (local pointee stand-ins)
+0080fad0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0080fd30	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0080fd90	deferred	closure_model CDefPointer (local pointee stand-ins)
+0080ff20	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+008100a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00810970	deferred	local_std
+00811100	deferred	header_lacks ScriptName@0x74(no accessor)
+00811190	deferred	closure_model CDefPointer (local pointee stand-ins)
+00811470	deferred	closure_model CDefPointer (local pointee stand-ins)
+008115a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00811760	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008128f0	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00812a10	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00812e20	deferred	header_lacks GetUID
+00812eb0	deferred	header_lacks GetUID
+00812f20	rewritten	migrated
+00812f70	deferred	header_lacks GetUID
+00813100	deferred	header_lacks GetUID
+00814c70	deferred	header_lacks GetPosition
+00814d10	deferred	header_lacks GetPhysicsRadius
+00814d90	deferred	header_lacks GetPhysicsRadius
+00814e10	deferred	header_lacks GetPhysicsRadius
+00814f90	deferred	header_lacks GetPhysicsRadius
+00815070	rewritten	migrated removed:CIVCountedPointeeBase
+00815200	rewritten	migrated
+008158d0	deferred	closure_model CDefPointer (non-template local stand-in)
+00815aa0	deferred	closure_model CDefPointer (non-template local stand-in)
+00815ba0	deferred	header_lacks GetPhysicsRadius
+00815c40	deferred	header_lacks GetPhysicsRadius
+008162f0	rewritten	migrated
+00816390	deferred	local_std
+00820790	deferred	quarantine_model: #define CThing <alias> include
+00820840	deferred	local_std
+008209c0	deferred	quarantine_model: #define CThing <alias> include
+008266e0	deferred	searchtools_template (IsIncludedInThingScans shape)
+0082a960	rewritten	migrated
+0082a9b0	deferred	header_lacks GetMapIndex,HasInformationFlag
+0082abd0	deferred	header_lacks GetMapIndex
+0082acd0	deferred	local_std
+0082add0	deferred	header_lacks MinimapFlags@0x15d
+0082ae80	deferred	header_lacks GetMapIndex
+0082b520	deferred	header_lacks GetMapIndex
+0082b630	deferred	header_lacks GetMapIndex,HiddenFromMiniMap@0x15d
+0082be60	deferred	header_lacks Flags91@0x91(derived)
+0082c6e0	deferred	local_std
+0082c770	deferred	local_std
+0082d0d0	deferred	quarantine_model: #define <closure class> alias
+0082d810	deferred	header_lacks m_thingFlags@0x2c(derived)
+0082db00	deferred	own_definition CVectorMap member (same-TU body)
+0082dd90	deferred	header_lacks CountMoneyBags,m_stateFlags(other bits)
+0082de20	deferred	own_definition CVectorMap member (same-TU body)
+0082def0	deferred	own_definition CVectorMap member (same-TU body)
+0082e090	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0082e0e0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0082fd90	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+0082fe60	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+0082fed0	rewritten	migrated
+0082ff70	rewritten	migrated
+00830000	rewritten	migrated
+00830150	deferred	quarantine_model: #define <closure class> alias
+00830cb0	rewritten	migrated
+00830d80	deferred	quarantine_model: #define <closure class> alias
+008326a0	deferred	local_std
+00832840	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008328d0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00832e60	deferred	local_std
+00833010	deferred	closure_model CDefPointer (non-template local stand-in)
+008330d0	deferred	unresolved_call HasTC(long interfaceType),GetInterface(const T** ppOut, long interfac)
+00833230	deferred	local_std
+008332e0	deferred	local_std
+00833390	deferred	local_std
+008334f0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+00833710	deferred	closure_model CDefPointer (local pointee stand-ins)
+008337b0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00833800	rewritten	migrated removed:CClass+CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_OPERATORNEW+FABLE_RETAIL_CTHING_STATEACCESS
+00833ba0	deferred	header_lacks OnLevelUnload
+00835a20	deferred	header_lacks defIndex@0x4ca1d0,map@0x4ca1d0
+00835b90	deferred	closure_model CDefPointer (local pointee stand-ins)
+00835bd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00835e30	deferred	closure_model CDefPointer (local pointee stand-ins)
+00835fd0	deferred	quarantine_model: #define CThing <alias> include
+00836240	rewritten	migrated
+00836260	deferred	own_definition_of_header_inline GetTCDriver
+00836740	deferred	header_lacks OnCreate,v000
+008367b0	deferred	header_lacks ctor
+00836910	deferred	own_definition_of_header_inline GetPCurrentThingManager
+008369f0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_OPERATORNEW+FABLE_RETAIL_CTHING_STATEACCESS
+00836ad0	deferred	header_lacks RenderUpdate
+00837830	deferred	header_lacks OnInitialActivate
+00837c70	deferred	header_lacks ctor
+00838530	deferred	nested_in_namespace N_004c9030
+00838570	deferred	header_lacks WorldUpdate
+008385b0	deferred	header_lacks ctor
+00838950	deferred	header_lacks IsLineOfSightTo_00838950
+00838a00	rewritten	migrated removed:CClass
+00838bc0	deferred	own_definition CVectorMap member (same-TU body)
+00838ec0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00839080	deferred	header_lacks OnCollision,normal@0x4c8da0,position@0x4c8da0,type@0x4c8da0
+0083af60	deferred	own_definition_of_header_inline GetPBaseDef
+0083b3b0	deferred	header_lacks DrawIsDrawable
+0083b3e0	deferred	quarantine_model: #define <closure class> alias
+0083b520	deferred	closure_model CDefPointer (local pointee stand-ins)
+0083b610	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+0083b7f0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_OPERATORNEW+FABLE_RETAIL_CTHING_STATEACCESS
+0083b9f0	deferred	header_lacks DrawIsDrawable,GetDisplayEngine,v00
+0083bbf0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+0083be50	deferred	header_lacks DrawIsDrawable,GetDisplayEngine,v00
+0083be90	deferred	header_lacks GetPhysicsPosition
+0083c5d0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_OPERATORNEW+FABLE_RETAIL_CTHING_STATEACCESS
+0083c690	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0083c800	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0083c990	deferred	header_lacks GetPhysicsPosition
+0083ca90	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0083cc10	deferred	closure_model CDefPointer (local pointee stand-ins)
+0083d100	deferred	header_lacks DrawIsDrawable,GetDisplayEngine,v00
+0083d190	deferred	closure_model CDefPointer (local pointee stand-ins)
+0083d280	deferred	closure_model CDefPointer (non-template local stand-in)
+0083d710	deferred	quarantine_model: #define <closure class> alias
+0083d900	deferred	closure_model CDefPointer (local pointee stand-ins)
+0083dbe0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+0083ddc0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00842f70	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00842fd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008435b0	rewritten	migrated
+00843610	rewritten	migrated
+00844260	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+008442f0	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00844380	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00844410	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+008444a0	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+008445a0	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00845040	deferred	local_std
+00845350	deferred	closure_model CDefPointer (local pointee stand-ins)
+008455c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00845900	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00845b10	deferred	quarantine_model: #define CThing <alias> include
+00845ce0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00846100	deferred	closure_model CDefPointer (local pointee stand-ins)
+00846410	deferred	closure_model CDefPointer (local pointee stand-ins)
+00847470	deferred	closure_model CDefPointer (local pointee stand-ins)
+00847990	deferred	closure_model CDefPointer (local pointee stand-ins)
+00847ac0	deferred	quarantine_model: #define CThing <alias> include
+00847be0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00847fb0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00848500	deferred	closure_model CDefPointer (local pointee stand-ins)
+00848730	deferred	closure_model CDefPointer (local pointee stand-ins)
+00848850	deferred	closure_model CDefPointer (local pointee stand-ins)
+00848f10	deferred	closure_model CDefPointer (local pointee stand-ins)
+00849140	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00849250	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00849320	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00849380	deferred	header_lacks GetCheckedInterface,GetMainGameComponent
+00849700	deferred	header_lacks GetCheckedTC
+00849d90	deferred	closure_model CDefPointer (local pointee stand-ins)
+00849e80	deferred	closure_model CDefPointer (local pointee stand-ins)
+0084a0a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0084a350	deferred	closure_model CDefPointer (local pointee stand-ins)
+0084a4a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0084a5f0	deferred	quarantine_model: #define CThing <alias> include
+0084a720	deferred	local_std
+0084d8b0	deferred	header_lacks GetCurrentMeshHeight
+0084db30	rewritten	migrated macros:FABLE_RETAIL_CTHING
+0084f850	deferred	searchtools_template (IsIncludedInThingScans shape)
+008508b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00851490	deferred	searchtools_template (IsIncludedInThingScans shape)
+00852750	deferred	header_lacks GetPlaceholder,GetRHSet,Position(no offset)
+008529d0	deferred	header_lacks GetPTCGraphicAppearance,GetXYDirectionTo
+00852c40	deferred	header_lacks GetPTCGraphicAppearance
+008531e0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00853290	rewritten	migrated
+00853320	rewritten	migrated
+008534f0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00853580	deferred	header_lacks GetPTCGraphicAppearance
+00853830	deferred	nested_in_namespace NCameraModes
+00853ba0	deferred	nested_in_namespace NCameraModes
+008547d0	deferred	quarantine_model: #define <closure class> alias
+00854b90	deferred	quarantine_model: #define CThing <alias> include
+008553c0	deferred	local_std
+00855920	deferred	header_lacks FindEntry
+008559e0	deferred	quarantine_model: #define CThing <alias> include
+00856570	deferred	local_std
+00857250	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00857430	deferred	local_std
+008579d0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00858130	deferred	local_std
+00858400	deferred	local_std
+00858590	deferred	local_std
+008587b0	deferred	local_std
+00858a20	deferred	closure_model CDefPointer (local pointee stand-ins)
+00859040	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+008597a0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00859a20	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+00859a70	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0085b0d0	deferred	local_std
+0085b160	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0085b5b0	deferred	local_std
+0085bd70	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_PEEKPLAYER
+0085ee90	deferred	header_lacks inner@0x100
+0085eeb0	deferred	header_lacks GetModeManager
+0085ef00	deferred	local_std
+0085ef70	deferred	local_std
+0085f010	deferred	header_lacks GetModeManager
+0085f070	deferred	header_lacks GetModeManager
+0085f0c0	deferred	header_lacks GetModeManager
+0085f120	deferred	header_lacks GetModeManager
+0085f180	deferred	header_lacks GetModeManager
+0085f200	deferred	local_std
+0085f2b0	deferred	header_lacks GetModeManager
+0085f310	deferred	header_lacks GetModeManager
+0085f370	deferred	header_lacks GetModeManager
+0085f3e0	deferred	header_lacks GetModeManager
+0085f470	deferred	local_std
+0085f560	deferred	header_lacks GetModeManager
+0085f600	deferred	header_lacks GetModeManager
+0085f6a0	deferred	header_lacks GetModeManager
+0085f880	deferred	local_std
+0085faa0	deferred	local_std
+0085fb30	deferred	quarantine_model: #define CThing <alias> include
+0085fc50	deferred	header_lacks GetModeManager
+0085fcd0	deferred	header_lacks GetModeManager
+0085fd70	deferred	local_std
+0085fe60	deferred	local_std
+0085ff10	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+008610d0	rewritten	migrated
+008611f0	rewritten	migrated
+00861310	rewritten	migrated
+00861430	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00861900	deferred	nested_in_namespace NCreatureMode
+00862780	deferred	header_lacks AreWeaponsUnsheathed,GetConstTC
+00862aa0	deferred	header_lacks VelocityX@0x10c,VelocityY@0x110
+00862ec0	deferred	header_lacks GetMaxJoggingSpeed,VelocityX@0x10c,VelocityY@0x110
+00864250	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008643a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008644e0	deferred	local_std
+00864620	deferred	local_std
+00864700	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00864840	deferred	local_std
+008648a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00864b30	deferred	closure_model CDefPointer (local pointee stand-ins)
+00864d00	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00865c20	rewritten	migrated
+00865e70	deferred	header_lacks Flags@0x30
+00866e80	deferred	header_lacks GetBody
+00867010	deferred	local_std
+00868220	deferred	closure_model CDefPointer (local pointee stand-ins)
+00868b40	deferred	header_lacks Get,flags(no offset),flags2(no offset),key(no offset)
+00869020	deferred	header_lacks ArmourAbsorb@0xb4,Flags1c8@0x1c8,IsRangedWeapon
+00870bb0	deferred	header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0
+00871250	rewritten	migrated
+008717a0	deferred	quarantine_model: #define CThing <alias> include
+00871cc0	deferred	local_std
+00872ec0	deferred	local_std
+00873030	deferred	local_std
+00875990	deferred	header_lacks GetSwitchRadius
+00877110	deferred	local_std
+00877c40	rewritten	migrated
+008786e0	deferred	searchtools_template (IsIncludedInThingScans shape)
+0087b6f0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0087bf40	deferred	quarantine_model: #define CThing <alias> include
+0087c3f0	rewritten	migrated
+0087c420	deferred	header_lacks m_pDef@0x70(no accessor)
+0087ca30	deferred	closure_model CDefPointer (local pointee stand-ins)
+0087cb10	deferred	closure_model CDefPointer (local pointee stand-ins)
+0087cdf0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0087cec0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0087ebd0	deferred	local_std
+0087ecb0	deferred	header_lacks GetGraphic
+0087ed70	deferred	quarantine_model: #define CThing <alias> include
+0087f340	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0087fd20	deferred	header_lacks GetDistanceTo
+00883ae0	deferred	local_std
+0088ae40	rewritten	migrated removed:CBaseObject+CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0088aff0	deferred	header_lacks GetInterface
+0088de90	deferred	header_lacks m_followBit0@0x1c9
+0088ded0	deferred	header_lacks m_followBit1(no offset)
+0088df20	deferred	header_lacks m_followBit2(no offset)
+0088e5a0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+0088fd00	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_FLAGACCESS
+008910d0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+00892220	deferred	header_lacks GetStandingOnThing
+008941a0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATTYPEFLAGS
+00894500	deferred	quarantine_model: #define CThing <alias> include
+008946e0	deferred	header_lacks GetTargetAttachments
+00894b90	deferred	closure_model CDefPointer (local pointee stand-ins)
+00894dd0	deferred	unresolved_call GetInterface(T** ppOut, long interfaceType),HasInterface(long interfaceType)
+00894ec0	deferred	local_std
+00895010	deferred	unresolved_call GetInterface(T** ppOut, long interfaceType),HasInterface(long interfaceType)
+00896120	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+008968c0	deferred	local_std
+00897150	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008973a0	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+00897480	deferred	local_std
+00897560	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008976f0	deferred	header_lacks Components@0x44(no accessor),DeletedFlags(no offset)
+00897e10	deferred	header_lacks GetInterface
+008981c0	deferred	unresolved_call HasInterface(long interfaceType),GetInterface(long interfaceType),GetInterface(interfaceType),GetInterface(3)
+00898340	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00898410	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00899000	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008990c0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008994e0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00899a10	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00899a90	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0089ad90	deferred	unresolved_call GetTC()
+0089ae30	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_STATTYPEFLAGS
+0089b3f0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0089b780	deferred	header_lacks Flags24@0x24,Flags28@0x28,IsCreature
+0089bb30	deferred	unresolved_call HasTC(long kind),GetTC(CThing_Retail* thing, long kin),GetTC(thing, kind),GetTC(thing, kind)
+0089c000	rewritten	migrated removed:CVectorMap+CKeyPairCompareLess macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0089c080	rewritten	migrated removed:CVectorMap+CKeyPairCompareLess macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0089c560	rewritten	migrated
+0089c670	deferred	local_std
+0089c710	deferred	local_std
+0089c7b0	deferred	local_std
+0089cd70	rewritten	migrated
+0089d9d0	deferred	local_std
+0089df70	deferred	header_lacks m_tcs@0x44(no accessor)
+0089dff0	deferred	header_lacks flags(no offset),guardFlag(no offset)
+0089e130	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0089e540	deferred	local_std
+0089ef30	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0089f300	deferred	local_std
+0089f4a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0089f910	rewritten	migrated
+0089f9e0	deferred	local_std
+0089faa0	deferred	header_lacks Components@0x44(no accessor)
+0089fbb0	deferred	quarantine_model: #define CThing <alias> include
+0089fc80	deferred	header_lacks ScriptName@0x74(no accessor)
+0089fd20	deferred	header_lacks ScriptName@0x74(no accessor)
+0089fda0	deferred	header_lacks ScriptName@0x74(no accessor)
+008a03f0	deferred	quarantine_model: #define CThing <alias> include
+008a0720	deferred	local_std
+008a0820	deferred	local_std
+008a08a0	deferred	quarantine_model: #define CThing <alias> include
+008a0a20	deferred	quarantine_model: #define CThing <alias> include
+008a0b10	deferred	quarantine_model: #define CThing <alias> include
+008a0cb0	deferred	local_std
+008a0f70	rewritten	migrated removed:CWideString macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CWIDESTRING
+008a1040	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008a10c0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008a1140	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008a11c0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008a1360	deferred	closure_model CDefPointer (local pointee stand-ins)
+008a1cc0	deferred	header_lacks GetHomeBuilding,GetInterface,GetOtherResidence,SetIsAvailableForResidency
+008a1e50	deferred	local_std
+008a1f30	deferred	local_std
+008a2020	deferred	local_std
+008a2100	deferred	local_std
+008a21e0	deferred	local_std
+008a22d0	deferred	local_std
+008a23b0	deferred	header_lacks Components@0x44(no accessor)
+008a24c0	deferred	header_lacks Components@0x44(no accessor)
+008a2590	deferred	header_lacks Components@0x44(no accessor)
+008a2690	deferred	local_std
+008a2770	deferred	header_lacks Components@0x44(no accessor)
+008a2870	deferred	local_std
+008a2950	deferred	local_std
+008a2a30	deferred	header_lacks Components@0x44(no accessor)
+008a2b30	deferred	local_std
+008a2c10	deferred	local_std
+008a2cf0	deferred	local_std
+008a2de0	deferred	local_std
+008a2ec0	deferred	local_std
+008a2fa0	deferred	local_std
+008a3090	deferred	local_std
+008a3170	deferred	local_std
+008a3250	deferred	local_std
+008a3340	deferred	local_std
+008a3420	deferred	local_std
+008a3500	deferred	local_std
+008a35f0	deferred	local_std
+008a36d0	deferred	local_std
+008a37b0	deferred	local_std
+008a38a0	deferred	local_std
+008a3980	deferred	local_std
+008a3a60	deferred	header_lacks Components@0x44(no accessor)
+008a3b60	deferred	local_std
+008a3c40	deferred	local_std
+008a3d20	deferred	local_std
+008a3e10	deferred	local_std
+008a3ef0	deferred	local_std
+008a3fd0	deferred	header_lacks Components@0x44(no accessor)
+008a40d0	deferred	local_std
+008a41b0	deferred	header_lacks Components@0x44(no accessor)
+008a4390	deferred	header_lacks Components@0x44(no accessor)
+008a4480	deferred	local_std
+008a4650	deferred	local_std
+008a4730	deferred	header_lacks Components@0x44(no accessor)
+008a4910	deferred	header_lacks Components@0x44(no accessor)
+008a4a00	deferred	local_std
+008a4ae0	deferred	header_lacks Components@0x44(no accessor)
+008a4be0	deferred	local_std
+008a4cc0	deferred	local_std
+008a4e90	deferred	local_std
+008a4f70	deferred	local_std
+008a5050	deferred	local_std
+008a5140	deferred	local_std
+008a5220	deferred	local_std
+008a5300	deferred	header_lacks Components@0x44(no accessor)
+008a5400	deferred	local_std
+008a54e0	deferred	local_std
+008a55c0	deferred	header_lacks Components@0x44(no accessor)
+008a56c0	deferred	local_std
+008a57b0	deferred	local_std
+008a5980	deferred	local_std
+008a5a70	deferred	local_std
+008a5c40	deferred	local_std
+008a5d30	deferred	local_std
+008a5f00	deferred	local_std
+008a5ff0	deferred	local_std
+008a61c0	deferred	local_std
+008a62b0	deferred	local_std
+008a6480	deferred	local_std
+008a6570	deferred	header_lacks Components@0x44(no accessor)
+008a6750	deferred	header_lacks Components@0x44(no accessor)
+008a6840	deferred	header_lacks Components@0x44(no accessor)
+008a6a20	deferred	quarantine_model: #define CThing <alias> include
+008a6b10	deferred	local_std
+008a6ce0	deferred	local_std
+008a6dd0	deferred	local_std
+008a6fa0	deferred	local_std
+008a7090	deferred	local_std
+008a7260	deferred	local_std
+008a7350	deferred	local_std
+008a7520	deferred	local_std
+008a7610	deferred	local_std
+008a76f0	deferred	header_lacks Components@0x44(no accessor)
+008a77f0	deferred	quarantine_model: #define CThing <alias> include
+008a7ee0	rewritten	migrated removed:CVectorMap+CKeyPairCompareLess macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008a80f0	deferred	header_lacks GetInterface
+008a8570	deferred	local_std
+008a86c0	deferred	local_std
+008a8890	deferred	local_std
+008a89d0	deferred	local_std
+008a8af0	deferred	local_std
+008a8e40	deferred	header_lacks m_flagsbc@0xbc
+008a8f20	deferred	own_definition CVectorMap member (same-TU body)
+008a9c40	deferred	local_std
+008abdf0	deferred	searchtools_template (IsIncludedInThingScans shape)
+008ac5d0	deferred	searchtools_template (IsIncludedInThingScans shape)
+008ac660	deferred	local_std
+008ac700	deferred	local_std
+008ad710	deferred	local_std
+008ad950	deferred	quarantine_model: #define <closure class> alias
+008adba0	deferred	local_std
+008adc30	deferred	local_std
+008b69f0	deferred	header_lacks FastCastType(no offset)
+008b6a20	deferred	quarantine_model: #define <closure class> alias
+008b6a60	deferred	header_lacks FastCastType(no offset)
+008b6a90	deferred	quarantine_model: #define <closure class> alias
+008b7350	deferred	closure_model CDefPointer (local pointee stand-ins)
+008b7470	deferred	header_lacks OnPropertyChanged,m_flags@0x28
+008b74a0	deferred	quarantine_model: #define <closure class> alias
+008b74d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008b7b10	deferred	header_lacks MakeNoise,SheatheAllWeapons
+008b7cf0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008b8190	deferred	closure_derived CCreatureActionBase:CBaseObject
+008b8260	deferred	closure_model CDefPointer (local pointee stand-ins)
+008b8310	deferred	closure_model CDefPointer (local pointee stand-ins)
+008b8b80	deferred	quarantine_model: #define <closure class> alias
+008b8bc0	deferred	header_lacks GetCombatTypeDef
+008b8d30	deferred	closure_model CDefPointer (local pointee stand-ins)
+008b9010	deferred	quarantine_model: #define CThing <alias> include
+008b94a0	deferred	quarantine_model: #define CThing <alias> include
+008b95a0	deferred	quarantine_model: #define CThing <alias> include
+008b96a0	deferred	header_lacks SetCurrentAction
+008b9740	deferred	header_lacks SetCurrentAction
+008b97e0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+008b98d0	deferred	header_lacks SetCurrentAction
+008b9a60	deferred	header_lacks SetCurrentAction
+008b9bf0	deferred	header_lacks SetCurrentAction
+008b9c90	deferred	quarantine_model: #define CThing <alias> include
+008b9e50	deferred	closure_model CDefPointer (local pointee stand-ins)
+008b9f20	deferred	closure_model CDefPointer (local pointee stand-ins)
+008b9ff0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ba140	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ba3c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ba6b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008baa90	deferred	closure_model CDefPointer (local pointee stand-ins)
+008bac40	deferred	header_lacks SetCurrentAction
+008bc1a0	deferred	local_std
+008bc790	deferred	closure_model CDefPointer (local pointee stand-ins)
+008bc8c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008bca00	deferred	closure_model CDefPointer (local pointee stand-ins)
+008bcbe0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008beee0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008bf0f0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+008bf1c0	deferred	quarantine_model: #define CThing <alias> include
+008bf740	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c0820	rewritten	migrated
+008c0900	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c0b10	deferred	quarantine_model: #define <closure class> alias
+008c0ea0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c0fb0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c1600	deferred	local_std
+008c1900	deferred	closure_derived CCreatureActionBase:CBaseObject
+008c1a10	deferred	closure_derived CCreatureActionBase:CBaseObject
+008c1b20	deferred	closure_derived CCreatureActionBase:CBaseObject
+008c1c30	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c1f70	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c2240	deferred	header_lacks GetDummyObject
+008c2550	deferred	header_lacks GetSubDef
+008c2810	deferred	closure_derived CDefClassBase:CDefPointeeBase
+008c3810	deferred	closure_derived CCreatureActionBase:CBaseObject
+008c3f20	deferred	local_std
+008c3f90	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+008c4040	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+008c4170	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c4250	deferred	header_lacks m_presentBits@0x20(no accessor)
+008c44b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c4680	deferred	quarantine_model: #define CThing <alias> include
+008c4810	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTCDRIVER
+008c4a80	deferred	header_lacks FindEntry
+008c4b80	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c4cb0	deferred	closure_model CDefPointer (non-template local stand-in)
+008c52c0	deferred	header_lacks GetTCParticleEmitter
+008c5410	deferred	closure_derived CCreatureActionBase:CBaseObject
+008c5490	deferred	quarantine_model: #define CThing <alias> include
+008c6160	deferred	quarantine_model: #define CThing <alias> include
+008c6430	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c64f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c6b20	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c6ce0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c6db0	deferred	header_lacks GetGraphicAppearanceTC
+008c74f0	deferred	quarantine_model: #define CThing <alias> include
+008c7e50	deferred	header_lacks GetBody
+008c8180	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c8380	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c8550	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c87a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c89d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008c9a40	deferred	local_std
+008c9ba0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+008c9fe0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ca310	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ca680	deferred	closure_derived CCreatureActionBase:CBaseObject
+008ca700	deferred	closure_derived CCreatureActionBase:CBaseObject
+008caf10	deferred	header_lacks m_pObstruction@0x5c(no accessor)
+008cafa0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTCDRIVER
+008cb250	deferred	quarantine_model: #define CThing <alias> include
+008cb500	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTCDRIVER+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008cb620	deferred	closure_model CDefPointer (local pointee stand-ins)
+008cb6e0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_MOREACCESS
+008cb780	deferred	closure_model CDefPointer (local pointee stand-ins)
+008cb940	deferred	closure_model CDefPointer (local pointee stand-ins)
+008cbb90	deferred	quarantine_model: #define CThing <alias> include
+008cc8a0	deferred	quarantine_model: #define <closure class> alias
+008cc8e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ccb00	deferred	header_lacks GetGraphicAppearance
+008ccd70	deferred	closure_model CDefPointer (local pointee stand-ins)
+008cd470	deferred	quarantine_model: #define CThing <alias> include
+008cdc40	deferred	header_lacks LacksTC,LowerBoundTC
+008ce6f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ce900	deferred	closure_model CDefPointer (local pointee stand-ins)
+008cf460	deferred	header_lacks m_health@0xb4
+008cf7d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008d02c0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+008d03e0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008d04b0	rewritten	migrated
+008d0ba0	deferred	header_lacks Interfaces@0x44(no accessor),UsingComponents@0x20(no accessor)
+008d23c0	deferred	local_std
+008d43c0	rewritten	migrated
+008d45a0	deferred	header_lacks IsFlaggedDead
+008d5790	deferred	quarantine_model: #define CThing <alias> include
+008d5970	deferred	quarantine_model: #define CThing <alias> include
+008d6690	deferred	quarantine_model: #define <closure class> alias
+008d66e0	deferred	nested_in_namespace NCreatureMode
+008d6710	deferred	quarantine_model: #define <closure class> alias
+008d6740	deferred	nested_in_namespace NCreatureMode
+008d68a0	deferred	quarantine_model: #define <closure class> alias
+008d6920	deferred	nested_in_namespace NCreatureMode
+008d6a50	deferred	nested_in_namespace NCreatureMode
+008d6d70	rewritten	migrated
+008d7270	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008d74b0	deferred	nested_in_namespace NCreatureMode
+008d7510	deferred	nested_in_namespace NCreatureMode
+008d7580	rewritten	migrated
+008d7630	deferred	quarantine_model: #define CThing <alias> include
+008d7730	deferred	nested_in_namespace NCreatureMode
+008d77a0	deferred	header_lacks GetPlacement
+008d78e0	deferred	header_lacks CreatureFlags@0xbc
+008d7930	rewritten	migrated
+008d79a0	deferred	nested_in_namespace NCreatureMode
+008d79f0	deferred	nested_in_namespace NCreatureMode
+008d7a90	deferred	local_std
+008d7b20	deferred	local_std
+008d7ca0	rewritten	migrated
+008d8330	deferred	closure_model CDefPointer (local pointee stand-ins)
+008d87c0	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+008d89c0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008d8b00	deferred	local_std
+008d90b0	deferred	header_lacks Brain@0x70(no accessor)
+008d9410	deferred	header_lacks GetConstInterface
+008d9480	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008d9650	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008d9740	deferred	closure_model CDefPointer (local pointee stand-ins)
+008d9870	deferred	closure_model CDefPointer (local pointee stand-ins)
+008d99b0	deferred	header_lacks PDef@0x70(no accessor)
+008d9ca0	deferred	quarantine_model: #define CThing <alias> include
+008d9e30	deferred	closure_model CDefPointer (local pointee stand-ins)
+008da0f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008da2e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008da3b0	deferred	header_lacks CreatureFlags@0xbc
+008da690	deferred	quarantine_model: #define CThing <alias> include
+008dacb0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008dae10	deferred	closure_model CDefPointer (local pointee stand-ins)
+008db620	deferred	closure_model CDefPointer (local pointee stand-ins)
+008dbb00	deferred	quarantine_model: #define <closure class> alias
+008dc900	deferred	header_lacks PDef@0x70(no accessor)
+008dcb60	rewritten	migrated removed:CInterfaceMap macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+008dd6e0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ddad0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ddd70	deferred	closure_model CDefPointer (local pointee stand-ins)
+008de700	deferred	quarantine_model: #define CThing <alias> include
+008df310	deferred	nested_in_namespace NCreatureMode
+008df3a0	deferred	nested_in_namespace NCreatureMode
+008df510	deferred	header_lacks PDef@0x70(no accessor)
+008df680	deferred	header_lacks Killed(no offset)
+008e0060	deferred	closure_model CDefPointer (local pointee stand-ins)
+008e07f0	rewritten	migrated
+008e0990	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008e0d20	deferred	header_lacks GetDriver
+008e3bb0	deferred	searchtools_template (IsIncludedInThingScans shape)
+008e3c50	deferred	searchtools_template (IsIncludedInThingScans shape)
+008e3eb0	deferred	quarantine_model: #define <closure class> alias
+008e4100	deferred	searchtools_template (IsIncludedInThingScans shape)
+008e5750	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008e5fb0	deferred	local_base CTCPhysicsBase (CThing modelled on a local base with members)
+008e60d0	deferred	searchtools_template (IsIncludedInThingScans shape)
+008e63b0	deferred	quarantine_model: #define <closure class> alias
+008e6500	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_MOREACCESS
+008e6780	deferred	header_lacks LacksTC
+008e6940	deferred	quarantine_model: #define CThing <alias> include
+008e6d90	deferred	local_std
+008e7040	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008e7390	deferred	header_lacks Damageable@0xbc,SetAsDrawable
+008e74f0	deferred	header_lacks Damageable@0xbc,SetAsDrawable,SetCurrentAction
+008e7600	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008e79a0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+008e7a00	deferred	closure_model CDefPointer (local pointee stand-ins)
+008e7b90	deferred	closure_model CDefPointer (local pointee stand-ins)
+008e7cf0	deferred	quarantine_model: #define CThing <alias> include
+008e7e70	deferred	quarantine_model: #define CThing <alias> include
+008e8a10	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008e8ac0	deferred	local_std
+008e8c50	deferred	closure_derived CCreatureActionBase:CBaseObject
+008e9460	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+008e9710	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008e97b0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008e9850	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+008e9950	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+008ea220	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_MOREACCESS
+008ec260	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ec320	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ec4f0	deferred	header_lacks Slot28
+008ec870	deferred	closure_model CDefPointer (local pointee stand-ins)
+008eca50	deferred	header_lacks PParticleEmitter@0x5c(no accessor)
+008ecac0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ecbe0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ed090	deferred	header_lacks GetTCIfPresent
+008ed1f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+008ed770	deferred	header_lacks FastCastType(no offset)
+008eda90	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING
+008eddd0	deferred	local_std
+008ef390	deferred	closure_model CDefPointer (non-template local stand-in)
+008efa00	deferred	closure_model CDefPointer (non-template local stand-in)
+008f0b20	deferred	closure_model CDefPointer (local pointee stand-ins)
+008f2e00	deferred	quarantine_model: #define CThing <alias> include
+008f3020	deferred	header_lacks GetShotAccuracyPercentage,PhysicsTC@0x70(no accessor)
+008f3100	deferred	closure_model CDefPointer (local pointee stand-ins)
+008f3630	deferred	closure_model CDefPointer (local pointee stand-ins)
+008f3ad0	deferred	quarantine_model: #define CThing <alias> include
+008f3fd0	deferred	unresolved_call GetInterface(T** ppOut, long interfaceType)
+008f40b0	deferred	quarantine_model: #define CThing <alias> include
+008f47e0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED+FABLE_RETAIL_CTHING_STATEACCESS
+008f4990	deferred	local_std
+008f5060	deferred	header_lacks GetDummyObject,PTCDriver@0x5c(no accessor)
+008f5220	deferred	header_lacks GetDummyObject,PTCDriver@0x5c(no accessor)
+008f5490	deferred	header_lacks GetDriver,GetGraphicAppearance
+008f5c50	deferred	local_std
+008f7860	deferred	quarantine_model: #define CThing <alias> include
+008f7950	deferred	nested_in_namespace NDust008f7950
+008f7bd0	deferred	nested_in_namespace NFoot008f7bd0
+008f7e70	deferred	header_lacks PTCDriver@0x5c(no accessor)
+008f7f50	deferred	header_lacks PTCDriver@0x5c(no accessor)
+008fa280	deferred	header_lacks GetPDef,PBaseDef@0x70(no accessor)
+008faa80	rewritten	migrated macros:FABLE_RETAIL_CTHING
+008fbdd0	deferred	local_std
+008fca40	deferred	local_std
+008fd0a0	deferred	blocks=2
+008fd1b0	deferred	unresolved_call GetInterface(T** ppOut, long interfaceType)
+009038d0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_STATEACCESS
+009039d0	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00904030	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00904cd0	deferred	unresolved_call HasTC(long interfaceType),GetInterface(T** ppOut, long interfaceType)
+00905600	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00905d10	deferred	searchtools_template (IsIncludedInThingScans shape)
+00906330	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+009074c0	deferred	closure_derived CCreatureActionBase:CBaseObject
+00909640	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+009096e0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00909780	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00909830	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0090c060	deferred	header_lacks GetStateFlags
+0090c1a0	deferred	header_lacks FindEntry
+0090c2d0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0090c670	deferred	quarantine_model: #define CThing <alias> include
+0090ca60	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0090df60	deferred	quarantine_model: #define CThing <alias> include
+0090dfb0	deferred	quarantine_model: #define CThing <alias> include
+0090eec0	deferred	closure_derived CMessageEvent:CBaseObject
+0090f290	deferred	unresolved_call HasTC(long interfaceType)
+0090f830	deferred	header_lacks GetRandomAnimFromNameWithFilter
+0090fae0	deferred	unresolved_call GetInterface(T** ppOut, long interfaceType)
+0090fcd0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00910740	deferred	local_std
+009107b0	deferred	local_std
+009109b0	deferred	local_std
+00910a90	deferred	local_std
+00910c30	rewritten	migrated
+009112a0	deferred	local_std
+00911710	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+009118a0	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00911c20	deferred	own_definition CVectorMap member (same-TU body)
+00911d90	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00911f80	deferred	header_lacks IsShown,SetShown
+00912700	rewritten	migrated
+009142b0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00914330	deferred	local_std
+00914460	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+009147e0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00914aa0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00914b20	deferred	searchtools_template (IsIncludedInThingScans shape)
+00914c10	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00914c60	deferred	header_lacks GetTCConst
+00914f00	deferred	header_lacks GetAnimFromName
+00915080	deferred	local_std
+009162f0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+009167f0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00916910	deferred	closure_model CDefPointer (local pointee stand-ins)
+00916e30	deferred	local_std
+00916e90	deferred	local_std
+00916f30	deferred	local_std
+00916fc0	deferred	local_std
+00917050	deferred	local_std
+009170b0	deferred	local_std
+00917380	deferred	quarantine_model: #define CThing <alias> include
+00917bb0	deferred	local_std
+00917e30	deferred	local_std
+00918050	deferred	header_lacks GetStateFlags
+009195d0	deferred	header_lacks PhysicsTC@0x70(no accessor)
+00919780	deferred	quarantine_model: #define <closure class> alias
+0091a6f0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0091a750	deferred	local_std
+0091a9b0	deferred	local_std
+0091adb0	deferred	local_std
+0091b010	deferred	local_std
+0091b190	deferred	local_std
+0091b340	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0091ba40	deferred	searchtools_template (IsIncludedInThingScans shape)
+0091bd10	deferred	header_lacks GetInterfaceR,GetSoundPair
+0091c9c0	deferred	local_std
+0091cdc0	deferred	own_definition CVectorMap member (same-TU body)
+0091db50	deferred	own_definition CVectorMap member (same-TU body)
+0091e4b0	deferred	header_lacks Body(no offset)
+0091e660	deferred	searchtools_template (IsIncludedInThingScans shape)
+0091e700	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+0091e750	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0091eb60	deferred	local_std
+0091f050	deferred	header_lacks FindInterface
+0091f870	deferred	local_std
+0091faa0	deferred	local_std
+0091fb30	deferred	local_std
+0091fdb0	deferred	local_std
+009200c0	deferred	local_std
+00920480	deferred	local_std
+009204f0	deferred	local_std
+009205d0	deferred	local_std
+009212c0	deferred	header_lacks m_flags1c9@0x1c9
+00921440	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00921870	deferred	header_lacks FindEntry,m_flags92@0x92
+00922320	deferred	local_std
+009223a0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00922600	deferred	own_definition CVectorMap member (same-TU body)
+009226b0	deferred	own_definition CVectorMap member (same-TU body)
+00923070	deferred	local_std
+00923510	deferred	header_lacks m_flags91(other bits)
+009236c0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00923aa0	rewritten	migrated removed:CVectorMap+CKeyPairCompareLess macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00923b00	rewritten	migrated removed:CVectorMap+CKeyPairCompareLess macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00923da0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00923e10	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+009240c0	deferred	closure_derived CCreatureActionBase:CBaseObject
+00924180	deferred	header_lacks m_health@0xb4
+00924200	deferred	closure_derived CCreatureActionBase:CBaseObject
+00924350	deferred	closure_derived CCreatureActionBase:CBaseObject
+009244d0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00924520	deferred	local_std
+00924720	deferred	header_lacks m_health@0xb4
+009261f0	deferred	header_lacks GetTCIfHas,GetTCIfPresent
+00926980	rewritten	migrated
+00926a10	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00926b30	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00926c50	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00929650	deferred	quarantine_model: #define CThing <alias> include
+00929820	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00929b10	rewritten	migrated removed:CCharString+CInterfaceMap macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00929f10	deferred	closure_derived CAIStateGroupBase:CBaseClass
+0092a0c0	rewritten	migrated removed:CCharString+CInterfaceMap macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0092a220	rewritten	migrated removed:CCharString+CInterfaceMap macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0092ae70	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+0092b110	deferred	header_lacks TestTC
+0092b2d0	deferred	local_std
+0092bf50	deferred	local_std
+0092c070	deferred	header_lacks PhysicsTC@0x70(no accessor)
+0092c260	deferred	local_std
+0092c5a0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0092d060	deferred	header_lacks Home@0x168
+0092d7c0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+0092e890	deferred	header_lacks FindEntry
+0092edc0	deferred	local_std
+0092f240	deferred	local_std
+00930a70	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00930ee0	deferred	own_definition CVectorMap member (same-TU body)
+00931010	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00932990	rewritten	migrated removed:CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00933aa0	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00933ae0	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+00933c10	deferred	header_lacks FindEntry
+00935040	deferred	local_std
+00935160	deferred	nested_in_namespace NCondition00935160
+009352c0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+009357f0	rewritten	migrated removed:CInterfaceMap macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00936070	deferred	searchtools_template (IsIncludedInThingScans shape)
+00936100	deferred	local_std
+00936590	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+009365e0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00936950	deferred	searchtools_template (IsIncludedInThingScans shape)
+00937080	deferred	local_std
+00937420	deferred	header_lacks IsRequestedType
+00937690	deferred	searchtools_template (IsIncludedInThingScans shape)
+009378f0	deferred	closure_model CDefPointer (non-template local stand-in)
+00937da0	rewritten	migrated
+00937f70	deferred	header_lacks FindEntry
+00938cd0	deferred	header_lacks GetStateFlags
+00938db0	deferred	local_std
+00939180	deferred	quarantine_model: #define CThing <alias> include
+009395f0	deferred	quarantine_model: #define CThing <alias> include
+00939a50	deferred	local_std
+00939af0	deferred	searchtools_template (IsIncludedInThingScans shape)
+0093a890	rewritten	migrated
+0093ad70	deferred	unresolved_call HasTC(long type),GetInterface(T** ppOut, long type)
+0093b1d0	rewritten	migrated removed:CClass+CBaseObject+CCharString+CCharStringData macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0093b5e0	deferred	local_std
+0093b640	deferred	searchtools_template (IsIncludedInThingScans shape)
+0093b740	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0093bef0	deferred	header_lacks FindEntry
+0093bfa0	deferred	unresolved_call GetInterface(T** ppOut, long interfaceType)
+0093c2f0	deferred	local_std
+0093c4e0	deferred	local_std
+0093c830	deferred	own_definition CVectorMap member (same-TU body)
+0093cdb0	deferred	searchtools_template (IsIncludedInThingScans shape)
+0093d3a0	deferred	header_lacks GetFacing
+0093d800	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0093db10	deferred	header_lacks GetRegionAtPosition
+0093dc10	rewritten	migrated
+0093dfc0	rewritten	migrated removed:CInterfaceMap macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0093e090	rewritten	migrated removed:CInterfaceMap macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0093e2d0	deferred	header_lacks GetCombatManager,IsCombatant,IsInCombatMode
+0093e5e0	deferred	header_lacks IsInCombatMode
+0093e8c0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING
+0093f8a0	deferred	searchtools_template (IsIncludedInThingScans shape)
+0093f930	deferred	searchtools_template (IsIncludedInThingScans shape)
+00940180	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00940240	deferred	header_lacks FindEntry
+00941450	deferred	searchtools_template (IsIncludedInThingScans shape)
+00941c40	deferred	local_std
+00942270	deferred	local_std
+00942390	deferred	searchtools_template (IsIncludedInThingScans shape)
+00942a00	deferred	closure_model CDefPointer (local pointee stand-ins)
+00942b30	deferred	own_definition CVectorMap member (same-TU body)
+00942d40	deferred	closure_model CDefPointer (local pointee stand-ins)
+00942ee0	deferred	header_lacks m_interfaces@0x44(no accessor),m_presentBits@0x20(no accessor)
+009432c0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING+FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00943830	deferred	searchtools_template (IsIncludedInThingScans shape)
+009438f0	deferred	local_std
+00943ae0	rewritten	migrated
+009445c0	rewritten	migrated
+00944730	deferred	own_definition CVectorMap member (same-TU body)
+00944ce0	rewritten	migrated
+00944e80	deferred	own_definition CVectorMap member (same-TU body)
+00945de0	deferred	header_lacks GetThingTypeFlags
+00945e70	deferred	local_std
+009462a0	deferred	closure_model CDefPointer (non-template local stand-in)
+00946330	deferred	closure_derived CAIStateGroupBase:CBaseClass
+00946520	deferred	header_lacks GetStateFlags
+00946850	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00946ae0	deferred	local_std
+00946b50	deferred	closure_model CDefPointer (local pointee stand-ins)
+00946c60	deferred	header_lacks GetStateFlags
+00946e70	deferred	header_lacks FindEntry
+00946f90	deferred	local_std
+00947110	deferred	local_std
+009474f0	deferred	header_lacks m_interfaces@0x44(no accessor),m_presentBits@0x20(no accessor)
+00947780	deferred	local_std
+00947840	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00947a30	deferred	header_lacks dead(no offset),flags24(no offset),interfaces(no offset)
+00947fb0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0094a6d0	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+0094b490	deferred	local_std
+0094b840	deferred	local_std
+0094b9b0	deferred	header_lacks GetStateFlags
+0094bb20	deferred	closure_model CDefPointer (local pointee stand-ins)
+0094bfc0	deferred	local_std
+0094c010	deferred	local_std
+0094c900	deferred	own_definition CVectorMap member (same-TU body)
+0094d020	deferred	own_definition CVectorMap member (same-TU body)
+0094d680	deferred	closure_model CDefPointer (local pointee stand-ins)
+0094d9c0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0094dac0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0094e6b0	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+0094f090	rewritten	migrated
+0094fff0	deferred	closure_model CDefPointer (non-template local stand-in)
+00950950	deferred	closure_model CDefPointer (local pointee stand-ins)
+00950a30	deferred	closure_model CDefPointer (non-template local stand-in)
+00950b20	rewritten	migrated removed:CVectorMap+CKeyPairCompareLess macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00952e80	rewritten	migrated removed:CInterfaceMap macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+009540f0	deferred	header_lacks TypeFlags(no offset)
+00954150	deferred	header_lacks TypeFlags(no offset)
+009541e0	deferred	header_lacks TypeFlags(no offset)
+00954410	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00954470	rewritten	migrated macros:FABLE_RETAIL_CTHING+FABLE_RETAIL_CTHING_GETTC_EXPANDED
+009547d0	rewritten	migrated
+00954980	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00954ab0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00954cd0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00956b00	deferred	own_definition CVectorMap member (same-TU body)
+00956ce0	deferred	local_std
+00956fe0	deferred	closure_derived CDefClassBase:CDefPointeeBase
+00957210	deferred	closure_derived CCreatureActionBase:CBaseObject
+009572a0	deferred	closure_derived CCreatureActionBase:CBaseObject
+009575c0	deferred	header_lacks FindEntry
+00957940	deferred	header_lacks GetTCConst
+009580e0	deferred	local_std
+00958770	deferred	local_std
+00958cb0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00958e20	deferred	header_lacks FindEntry
+009595c0	deferred	local_std
+0095a7d0	deferred	own_definition CVectorMap member (same-TU body)
+0095b020	deferred	header_lacks StartPos@0xe8,m_interfaces@0x44(no accessor),m_presentBits@0x20(no accessor)
+0095b280	deferred	header_lacks GetCombatManager,IsCombatant
+0095b3e0	deferred	local_std
+0095b6f0	rewritten	migrated removed:CCharString macros:FABLE_RETAIL_CCHARSTRING
+0095c0b0	deferred	local_std
+0095cdf0	deferred	local_std
+0095cf50	deferred	local_std
+0095cfe0	deferred	local_std
+0095d310	deferred	unresolved_call HasTC(long interfaceType),GetInterface(T** ppOut, long interfaceType)
+0095d3a0	deferred	header_lacks FindEntry
+0095d880	deferred	local_std
+0095da90	deferred	local_std
+0095db30	deferred	local_std
+0095db90	deferred	searchtools_template (IsIncludedInThingScans shape)
+0095ddf0	deferred	local_std
+0095de60	deferred	local_std
+0095df40	deferred	local_std
+0095e010	deferred	local_std
+0095e260	deferred	local_std
+0095e430	deferred	closure_derived CAIStateGroupBase:CBaseClass
+0095e470	deferred	own_definition CVectorMap member (same-TU body)
+0095e900	deferred	local_std
+0095ee40	rewritten	migrated
+0095f9a0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0095fed0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00960070	deferred	header_lacks FindEntry
+00960760	deferred	closure_model CDefPointer (local pointee stand-ins)
+00960fc0	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00961080	deferred	local_std
+009613a0	deferred	local_std
+00961550	deferred	unresolved_call HasTC(long type)
+00961ab0	deferred	header_lacks GetPDefClass
+00961b90	deferred	header_lacks GetPDefClass
+00961e80	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00961fb0	deferred	header_lacks GetPDefClass
+00962c10	deferred	closure_model CDefPointer (local pointee stand-ins)
+009633e0	deferred	header_lacks GetPhysicsBody
+00963640	deferred	closure_model CDefPointer (local pointee stand-ins)
+00963810	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00964230	deferred	searchtools_template (IsIncludedInThingScans shape)
+009642d0	deferred	local_std
+00964da0	deferred	own_definition CVectorMap member (same-TU body)
+00964ef0	deferred	local_std
+009650c0	deferred	local_std
+00965180	deferred	local_std
+009652c0	deferred	local_std
+00965e80	deferred	searchtools_template (IsIncludedInThingScans shape)
+00966cf0	deferred	closure_model CDefPointer (local pointee stand-ins)
+00967180	deferred	header_lacks FindEntry
+00968230	deferred	local_base CThingPhysical (CThing modelled on a local base with members)
+009685c0	deferred	header_lacks GetAverageWalkSpeed
+009687b0	deferred	closure_model CDefPointer (local pointee stand-ins)
+009697e0	deferred	local_std
+00969a80	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00969fb0	deferred	searchtools_template (IsIncludedInThingScans shape)
+0096aad0	deferred	header_lacks GetCombatTypeDef
+0096af60	deferred	header_lacks SetActive
+0096b600	deferred	header_lacks UnsheatheMeleeWeapon
+0096bac0	deferred	local_std
+0096bb70	deferred	local_std
+0096bcb0	deferred	quarantine_model: #define <closure class> alias
+0096bf10	deferred	closure_derived CCreatureActionBase:CBaseObject
+0096bf90	deferred	closure_derived CCreatureActionBase:CBaseObject
+0096c250	rewritten	migrated removed:CVectorMap+CKeyPairCompareLess macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0096c2e0	deferred	header_lacks m_pDef@0x70(no accessor)
+0096c4f0	deferred	closure_model CDefPointer (non-template local stand-in)
+0096d200	rewritten	migrated removed:CVectorMap+CKeyPairCompareLess macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0096e540	deferred	header_lacks FindEntry,FindEntryConst
+0096e700	rewritten	migrated
+0096ee90	deferred	header_lacks IsInCombatMode
+0096f260	deferred	searchtools_template (IsIncludedInThingScans shape)
+0096f770	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0096fcd0	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0096ff10	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+00970420	rewritten	migrated
+00970930	rewritten	migrated macros:FABLE_RETAIL_CTHING
+00970ab0	deferred	local_std
+00970c10	deferred	header_lacks FindEntry
+00971530	deferred	local_std
+009718f0	rewritten	migrated
+009720c0	deferred	template_instance_row (the row is a GetTC<T> instantiation body)
+00972340	deferred	header_lacks PDef@0x70(no accessor)
+00972670	deferred	closure_model CDefPointer (local pointee stand-ins)
+00972830	deferred	closure_model CDefPointer (local pointee stand-ins)
+009771f0	deferred	closure_derived CCreatureActionBase:CBaseObject
+00977320	deferred	closure_derived CCreatureActionBase:CBaseObject
+00978a00	deferred	local_std
+00978a80	deferred	local_std
+00978b00	deferred	local_std
+00978c50	deferred	local_std
+00978d00	deferred	local_std
+00978da0	deferred	local_std
+00978e60	deferred	local_std
+00978f10	deferred	local_std
+009792f0	deferred	local_std
+00979370	deferred	local_std
+009793d0	deferred	searchtools_template (IsIncludedInThingScans shape)
+00979650	deferred	local_std
+00979760	deferred	local_std
+00979870	deferred	local_std
+00979d80	deferred	local_std
+00979e90	deferred	local_std
+00979f70	deferred	closure_model CDefPointer (local pointee stand-ins)
+0097ae60	deferred	local_std
+0097aee0	deferred	local_std
+0097af70	deferred	local_std
+0097b030	deferred	local_std
+0097b0e0	deferred	local_std
+0097b180	deferred	local_std
+0097b240	deferred	local_std
+0097b2c0	deferred	local_std
+0097b320	deferred	local_std
+0097b4e0	deferred	local_std
+0097b660	deferred	local_std
+0097b780	deferred	header_lacks FindEntry
+0097b900	deferred	header_lacks Health@0xb4
+0097baa0	rewritten	migrated removed:CVectorMap+CKeyPairCompareLess macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0097c5e0	deferred	closure_derived CAIStateGroupBase:CBaseClass
+0097cb10	deferred	local_std
+0097cff0	deferred	closure_derived CCreatureActionBase:CBaseObject
+0097d050	deferred	closure_derived CCreatureActionBase:CBaseObject
+0097dcb0	rewritten	migrated
+0097e140	deferred	unresolved_call HasTC(long type),GetTC(long type)
+0097ef60	deferred	closure_model CDefPointer (local pointee stand-ins)
+0097f3a0	deferred	closure_model CDefPointer (local pointee stand-ins)
+0097f870	rewritten	migrated macros:FABLE_RETAIL_CTHING_GETTC_EXPANDED
+0097fbe0	deferred	header_lacks GetInterfaceR
+009804a0	deferred	header_lacks GetInterfaceR
+00980770	deferred	header_lacks TestTC
+009823d0	deferred	local_std
+00982450	deferred	local_std
+00982890	deferred	closure_model CDefPointer (local pointee stand-ins)
+00984d90	deferred	closure_model CDefPointer (local pointee stand-ins)
+009852c0	deferred	local_std
+00986510	deferred	header_lacks GetUID
+00986d90	deferred	searchtools_template (IsIncludedInThingScans shape)
+00986e30	deferred	searchtools_template (IsIncludedInThingScans shape)
+00987430	deferred	searchtools_template (IsIncludedInThingScans shape)
+00991750	deferred	header_lacks Deactivate,OnDie,m_active@0x24,m_entriesFirst@0x30,m_entriesLast@0x34,v00
+00aac2e0	deferred	header_lacks m_pAnimationOwner@0x40
+00c1bbc0	deferred	header_lacks SetCurrentMapNumber_a
+00c1bbd0	deferred	header_lacks currentMapNumber_b(no offset)
+00c1bc00	deferred	header_lacks currentMapNumber(no offset)
+00c36430	deferred	header_lacks m_pDef@0x0,m_pMorphTable@0xc8
+0121a670	deferred	local_std

@@ -1,4 +1,5 @@
 // CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context) -- when the target thing exists and is alive, recompute the owner->target route and save its step count, then each step's local position and nav layer; otherwise save a step count of 0
+// Leaf: ?SaveRoute@CTCPreCalculatedNavigationRoute@@QAEXPAVCPersistContext@@@Z
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe @ 0x008006D0, 480 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, CalculateRouteFromTo 0x00800540,
@@ -10,20 +11,11 @@
 #include <stdlib.h>
 class C2DVector { public: float X; float Y; C2DVector(float x, float y) : X(x), Y(y) {} };
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* m_data;
-    ~CCharString();                                 // 0x0099EAE0
-    operator const char*() const;                   // 0x0099E4C0 (Ego_r / FableWin ??BCCharString@@QBEPBDXZ)
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 CCharString __fastcall GFIntToCharString(long value);                       // 0x0099F830
 CCharString __fastcall operator+(const char* a, const CCharString& b);       // 0x0099F690
-class CThing { public:
-    unsigned char  _pad00[0x8e];
-    short          RegionIndex;                     // +0x8e
-    unsigned char  _pad90;
-    unsigned char  Dead : 1;                        // +0x91 bit 0
-    const C3DVector& GetPos() const;           // 0x004C73D0
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -81,10 +73,10 @@ __forceinline void SaveValue(CPersistContext* context, const char* name, T& valu
 
 void CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context)
 {
-    if (PThingToCalculateRouteTo.GetPItem() && !PThingToCalculateRouteTo.GetPItem()->Dead)
+    if (PThingToCalculateRouteTo.GetPItem() && !PThingToCalculateRouteTo.GetPItem()->IsDead())
     {
         CThing* owner = Owner;
-        long region = owner->RegionIndex;
+        long region = owner->GetCurrentMapNumber();
         CNavStepVector route;
         CalculateRouteFromTo(owner->GetPos(), PThingToCalculateRouteTo.GetPItem()->GetPos(), route);
         long steps = route.size();

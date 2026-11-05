@@ -13,20 +13,9 @@
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCBase {
 public:
     virtual ~CTCBase();
@@ -39,11 +28,11 @@ public:
     CIntelligentPointer<CThing> EntranceMarker;     // +0x0c CIntelligentPointer<CThing>
     CIntelligentPointer<CThing> ExitMarker;         // +0x14
     unsigned long NextFrameCheck;               // +0x1c
-    bool HasPosition() { return EntranceMarker.GetPItem() && !EntranceMarker.GetPItem()->IsDead(); }
+    bool HasPosition() { return EntranceMarker.Get() && !EntranceMarker.Get()->IsDead(); }
     C3DVector GetPosition();
 };
 
 C3DVector CTCAvoidRegionExit::GetPosition()
 {
-    return HasPosition() ? EntranceMarker.GetPItem()->GetPos() : C3DVector(0.0f, 0.0f, 0.0f);
+    return HasPosition() ? EntranceMarker.Get()->GetPos() : C3DVector(0.0f, 0.0f, 0.0f);
 }

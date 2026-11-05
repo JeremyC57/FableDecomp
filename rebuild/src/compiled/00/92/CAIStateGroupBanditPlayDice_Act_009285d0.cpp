@@ -24,25 +24,10 @@ class CSoundPair { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 class CTCDiceGame { public:
     unsigned char _pad00[0xc];
     long NumberOfPlayers;                       // +0x0c
@@ -102,7 +87,7 @@ EAIActionReturn CAIStateGroup_BanditPlayDice::Act()
     unsigned long wait = Random(300);
     long endFrame = CWorld::GetFrame() + wait + 375;
     while (CWorld::GetFrame() < endFrame) {
-        if (DiceGame->NumberOfPlayers >= 2 && !DiceGame->CurrentPlayer.GetPItem()
+        if (DiceGame->NumberOfPlayers >= 2 && !DiceGame->CurrentPlayer.Get()
             && GFFloatRandom(1.0f, GetPWorldSeed()) < 0.2f) {
             CThing* player = GetCreature();
             CTCDiceGame* game = DiceGame;

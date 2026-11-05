@@ -18,30 +18,12 @@ extern "C" double __cdecl pow(double x, double y);
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char  _pad0[0x20];
-    unsigned long  m_presentBits[9];       // +0x20 std::bitset of interface types
-    CInterfaceMap  m_interfaces;           // +0x44
-    template<class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (const T*)it->second;
-            return true;
-        }
-        return false;
-    }
-public:
-    long GetJoystickDeviceNumber() const;   // 0x004C7CA0
-};
 
 struct CTCProjectileCharge {               // interface type 0x81
     float GetChargeFraction() const;       // 0x00789A70
@@ -94,8 +76,8 @@ struct CModeStrafe : CModeBase {           // vtable 0x01268588
 void CModeStrafe::FrameUpdate()
 {
     UpdateWeaponState();
-    const CTCProjectileCharge* charge;
-    if (ParentThing->GetInterface(&charge, 0x81)) {
+    const const CTCProjectileCharge* charge;
+    if (ParentThing->PeekTC(TCI_HERO_RANGED_ATTACKS, &charge)) {
         float fraction = charge->GetChargeFraction();
         if (fraction < 0.0f)
             fraction = 0.0f;

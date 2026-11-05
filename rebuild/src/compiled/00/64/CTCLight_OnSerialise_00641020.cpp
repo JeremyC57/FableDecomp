@@ -28,13 +28,9 @@ public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // bool 0x004045C0, float 0x00410620, CRGBColour 0x006420F0
 };
 
-class CThing {
-public:
-    unsigned char _pad00[0x6c];
-    unsigned long ThingTypeFlags;                       // +0x6c
-    void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
-    void SetAsFrameUpdated();                           // 0x004C7C40
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 
 class CTCBase {
 public:
@@ -67,7 +63,7 @@ void CTCLight::OnSerialise(CPersistContext& context, bool flag)
 {
     context.Transfer("Active", Active, false);
     if (flag && !context.IsSaving()) {
-        if (!(ParentThing->ThingTypeFlags & 2) || !PeekWorld().SerialisingHeroState) {
+        if (!(ParentThing->GetTypeFlags() & 2) || !PeekWorld().SerialisingHeroState) {
             ParentThing->SetAsRenderedThisFrame(4);
             ParentThing->SetAsFrameUpdated();
         }

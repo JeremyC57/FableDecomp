@@ -37,20 +37,9 @@ class CTCSolidToThing { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
     virtual void Initialise();                        // 0x00857520
@@ -60,7 +49,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     CIntelligentPointer<CThing> PTarget;                  // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThing* GetCreature() const { return PCreature.Get(); }
 };
 class CCreatureAction_LeapLong : public CCombatActionBase { public:
     bool NoRoom;                                      // +0x114
@@ -86,7 +75,7 @@ void CCreatureAction_LeapLong::Initialise()
         SetCombatAnimation("MOVEMENT_LONG_FORWARD");
         NoRoom = false;
         CTCSolidToThing* solid = ((CTCSolidToThing*)GetCreature()->AddTC("CTCSolidToThing", false, 0));
-        solid->AddThingNotSolidTo(PTarget.GetPItem());
+        solid->AddThingNotSolidTo(PTarget.Get());
         CCombatActionBase::Initialise();
         return;
     }

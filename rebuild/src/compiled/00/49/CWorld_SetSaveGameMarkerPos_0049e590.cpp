@@ -27,12 +27,7 @@ class CTCPhysicsBase { public:
     virtual float GetAngleXY() const;                   // slot 63 (+0xfc)
 };
 
-class CThing { public:
-    unsigned char   _pad_0x00[0x60];
-    CTCPhysicsBase* PhysicsTC;                          // +0x60
-    unsigned char   _pad_0x64[0x2d];
-    unsigned char   Dead : 1;                           // +0x91 bit 0
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };             // 0x00487DC0
@@ -59,6 +54,6 @@ void CWorld::SetSaveGameMarkerPos(const C3DVector& pos)
 {
     SaveGameMarkerPos = pos;
     CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
-    if (hero && !hero->Dead)
-        SaveGameMarkerAngleXY = hero->PhysicsTC->GetAngleXY();
+    if (hero && !hero->IsDead())
+        SaveGameMarkerAngleXY = hero->GetPhysicsTC()->GetAngleXY();
 }

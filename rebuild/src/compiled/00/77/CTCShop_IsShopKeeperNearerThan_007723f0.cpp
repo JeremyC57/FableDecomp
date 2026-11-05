@@ -14,7 +14,7 @@
 // Shape: three levers. (1) ONE bool expression `return IS_THING_ALIVE(keeper) && IS_THING_ALIVE(hero) && near;` --
 //   with an `if (..) return 1; return 0;` VC7.1 gives the hero ebp at entry and shrink-wraps edi for the keeper; the
 //   expression form gives retail's hero-in-edi and the late `push ebp` for the keeper. (2) the ONE generic __fastcall
-//   IS_THING_ALIVE<T>(const T&) of the PDB (`thing != 0 && !thing->Dead`): over CIntelligentPointer its operator T* and
+//   IS_THING_ALIVE<T>(const T&) of the PDB (`thing != 0 && !thing->IsDead()`): over CIntelligentPointer its operator T* and
 //   operator-> each call GetPItem (the two retail calls); the two instantiations mangle exactly as FableWin.pdb's
 //   ??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_N.. and ??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThingCreatureBase@@@@@@YI_N.. (3) the XY distance as a
 //   C2DVector temporary's inline squared length (`X * X + Y * Y`) -- named dx/dy locals square dy first (`fld st(0)`),
@@ -29,11 +29,7 @@ class C2DVector { public:
     float GetSquaredLength() const { return X * X + Y * Y; }
 };
 class CBaseObject;
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    const C3DVector& GetPos() const;                // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 class CThingPlayerCreature : public CThingCreatureBase { };
 class CBaseIntelligentPointer { public:
@@ -49,7 +45,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 };
 template <class T> inline bool __fastcall IS_THING_ALIVE(const T& thing)
 {
-    return thing != 0 && !thing->Dead;
+    return thing != 0 && !thing->IsDead();
 }
 __forceinline bool IsWithin2DDistance(const CThing* a, const CThing* b, float distance)
 {

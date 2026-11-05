@@ -30,7 +30,6 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CLevelScriptBase.h"
 #include "engine/CGameScriptInterfaceBase.h"
 
-extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 __forceinline CScriptThing::CScriptThing() { }
 __forceinline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 __forceinline CScriptThing::~CScriptThing() { }
@@ -42,7 +41,7 @@ __forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other)
 __forceinline const C3DVector& CScriptThing::GetPos() const
 {
     if (!PImp.Data)
-        return g_ZeroVector;
+        return NullCoord;
     return PImp.Data->GetPos();
 }
 

@@ -20,20 +20,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CTCCarrying { public:                        // interface type 0x46 component
 public:
@@ -59,7 +48,7 @@ class CCreatureAction_GenericLoadProjectileWeapon : public CCombatActionBase { p
 void CCreatureAction_GenericLoadProjectileWeapon::FinishAction()
 {
     CTCCarrying* carrying;
-    if (PCreature.GetPItem()->GetTC(TCI_CARRYING, &carrying)) {
+    if (PCreature.Get()->GetTC(TCI_CARRYING, &carrying)) {
         CThing* weapon = carrying->GetThingInPrimarySlot();
         if (weapon != 0 && !weapon->IsDead()) {
             if (weapon->HasTC(TCI_WEAPON))

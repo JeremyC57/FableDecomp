@@ -24,14 +24,13 @@ class CCharString { public:
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                         // 0x0143E8E0
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-inline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPos(); }
+inline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 inline CScriptThing::~CScriptThing() { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }

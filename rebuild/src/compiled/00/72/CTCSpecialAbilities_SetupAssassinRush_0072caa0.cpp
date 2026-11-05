@@ -46,7 +46,7 @@ public:
     unsigned long ThingTypeFlags;                       // +0x6c
     unsigned char _pad70[0x91 - 0x70];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    CPlayer& GetPlayer();                               // 0x004C7A10
+    const CPlayer& PeekPlayer() const;                 // 0x004C7A10 ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ (Ego_r.pdb / FableWin.pdb; catalog)
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
     template <class T> __forceinline T* GetTC(ETCInterfaceType type) const
     {
@@ -92,7 +92,7 @@ bool CTCSpecialAbilities::SetupAssassinRush()
             if (target && !target->Dead && (target->ThingTypeFlags & 8)) {
                 bool flag = false;
                 if (Creature->ThingTypeFlags & 0x20)
-                    flag = Creature->GetPlayer().ZTargeting;
+                    flag = Creature->PeekPlayer().ZTargeting;
                 return Creature->SetCurrentAction(CCreatureAction_CastAssassinRush(*Creature, *target, flag, 0, CCountedPointer<CCreatureActionBase>()));
             }
         }

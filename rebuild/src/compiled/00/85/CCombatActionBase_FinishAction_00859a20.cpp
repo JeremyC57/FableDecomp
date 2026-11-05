@@ -10,15 +10,12 @@
 //   (Ego_r +0xB4) is +0xA8; CThing::Dead is bit 0 of +0x91 (Ego_r bitfield).
 // Shape: IS_THING_ALIVE(PTarget) as the inline __fastcall template the PDB name sets list (??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_N..)
 //   -- GetPItem twice then the Dead test; a third GetPItem for the RemoveTC call.
-enum ETCInterfaceType { };
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                                   // +0x91 bit 0
-    void RemoveTC(ETCInterfaceType type);                     // 0x004C9840
-};
+
 class CBaseIntelligentPointer {
 public:
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
@@ -31,7 +28,7 @@ public:
 };
 template <class T> inline bool __fastcall IS_THING_ALIVE(const T& thing)
 {
-    return thing.GetPItem() && !thing.GetPItem()->Dead;
+    return thing.GetPItem() && !thing.GetPItem()->IsDead();
 }
 class CCreatureActionBase {
 public:

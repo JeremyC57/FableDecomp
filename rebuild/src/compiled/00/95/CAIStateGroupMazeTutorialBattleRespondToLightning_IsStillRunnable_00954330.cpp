@@ -6,22 +6,14 @@
 // Header debt: engine/CAIStateGroup_MazeTutorialBattleRespondToLightning.h / CAIStateGroup_MazeBase.h / CAIStateGroupBase.h are flat layouts; modelled locally.
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                            // Ego_r: vptr + PData, 8 bytes
-public:
-    virtual ~CBaseIntelligentPointer();
-    CBaseObject* GetPItem() const;                         // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 #include "engine/CThing.h"
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;

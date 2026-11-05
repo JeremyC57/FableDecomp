@@ -1,0 +1,152 @@
+target	catalog	symbol	pdb	n	callers
+004bc800		?GetPositionMatrix@CTCGraphicAppearance@NGraphicAppearance@@QAE?AVCMatrix3x4@@M@Z	-	1	006626e0
+004bdb40	NGraphicAppearance::CTCGraphicAppearance::GetAllDummyObjectNames	?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAUCCharStringVector@@@Z	-	1	0072e290
+004bdb40	NGraphicAppearance::CTCGraphicAppearance::GetAllDummyObjectNames	?GetAllDummyObjectNames@CTCGraphicAppearance@NGraphicAppearance@@QBEXAAU?$CStdVector@VCCharString@@@@@Z	-	0+def	
+004bf9e0	NGraphicAppearance::CTCGraphicAppearance::SetAsChanged	?SetAsChanged@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z	EF	9	004c7590 004c8e50 00707930 00707970 007079e0 00707ad0 00785c80 007a69f0 008ec9c0
+004bf9e0	NGraphicAppearance::CTCGraphicAppearance::SetAsChanged	?SetAsChanged@CTCGraphicAppearance@@QAEXK@Z	-	4	00663f50 0071e130 0074e560 0077c490
+004bf9e0	NGraphicAppearance::CTCGraphicAppearance::SetAsChanged	?SetAsChanged@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z	-	0+def	
+004bfa20	NGraphicAppearance::CTCGraphicAppearance::SetSelfIlluminating	?SetSelfIlluminating@CTCGraphicAppearance@NGraphicAppearance@@QAEX_N@Z	EF	1+def	007e33b0
+004bfae0	NGraphicAppearance::CTCGraphicAppearance::RemoveTintColour	?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z	EF	9	007cd930 007ce390 007ce3c0 007ce3f0 007cf040 007e33b0 007e3420
+004bfae0	NGraphicAppearance::CTCGraphicAppearance::RemoveTintColour	?RemoveTintColour@CTCGraphicAppearance@@QAEXPAX@Z	-	1	007cc120
+004bfae0	NGraphicAppearance::CTCGraphicAppearance::RemoveTintColour	?Kill@@YIXPAUCParticleSystem@@HH@Z	-	0+def	
+004bfb00	NGraphicAppearance::CTCGraphicAppearance::SetByPassColorFilter	?SetByPassColorFilter@CTCGraphicAppearance@NGraphicAppearance@@QAEX_N@Z	EF	2+def	00883aa0 00883ae0
+004bfb40	NGraphicAppearance::CTCGraphicAppearance::SetLightingChannel	?SetLightingChannel@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEnginePrimitiveThemeChannelDesc@@_N1@Z	EF	5+def	004bfb40 004bfc50 004bfd10 00785c80
+004bfb40	NGraphicAppearance::CTCGraphicAppearance::SetLightingChannel	?SetLightingChannel@CTCGraphicAppearance@@QAEXPAVCEnginePrimitiveThemeChannelDesc@@_N1@Z	-	2	00663f50 0074e560
+004bffd0	NGraphicAppearance::CTCGraphicAppearance::SetActivePersistenceFlags	?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXJ@Z	-	2	006afd60
+004bffd0	NGraphicAppearance::CTCGraphicAppearance::SetActivePersistenceFlags	?SetActivePersistenceFlags@CTCGraphicAppearance@NGraphicAppearance@@QAEXK@Z	EF	1+def	006b0150
+004c00b0	NGraphicAppearance::CTCGraphicAppearance::SetTintColour	?SetTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCRGBColour@@PAX@Z	EF	10+def	007cc060 007ce420 007cee40 007e33b0
+004c0c80		?GetDummyObjectAssumingObjectAt@CTCGraphicAppearance@NGraphicAppearance@@QAE_NABVCCharString@@ABVC3DVector@@ABVCRightHandedSet@@JKPAV4@PAV5@@Z	-	2	00705190
+004c10e0		?GetHelperPointPosition@CTCGraphicAppearance@NGraphicAppearance@@QAE?AVC3DVector@@XZ	-	2	004884d0
+004c10e0		?GetHeadPosition@CTCGraphicAppearance@@QBE?AVC3DVector@@XZ	-	1	006d5b50
+004c12d0	CTCGraphicAppearance::GetCameraFocalPos	?GetCameraFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z	EF	6+def	0075daa0 00852d10 00852d90 00871ec0 00872630 008728c0
+004c12d0	CTCGraphicAppearance::GetCameraFocalPos	?GetCameraFocalPos@CTCGraphicAppearance@@QAE?AVC3DVector@@M@Z	-	5	0084db30 008529d0 00852b70 00852c40 00853580
+004c12d0	CTCGraphicAppearance::GetCameraFocalPos	?GetCameraFocalPos@CTCGraphicAppearance@@QBE?AVC3DVector@@M@Z	-	3	008534f0 00873030 008faa80
+004c12d0	CTCGraphicAppearance::GetCameraFocalPos	?GetCameraFocalPos@CTCGraphicAppearance@NCameraModes@@QBE?AUC3DVector@2@M@Z	-	2	00853830 00853ba0
+004c9920		?IsAffectedByBulletTime@CThing@@QBE_NXZ	EF	12	005dc230 006b0250 006b0460 006e0be0 006e14e0 007308f0 0073a690 0073a6f0 0073a760 0073a7d0 00787c62 007f8e20
+004c9920		?IsAffectedByBulletTime@CThing@@QAE_NXZ	-	3	004c9d20 0051eab0 006655a0
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z	EF	97+def	004c9f60 004ca010 004ca230 004ca930 005ea9b0 00667d30 0069f2b0 0069f700 0069f7b0 0069f860 006a4d20 006a9dd0 006c0c90 00700780 00700820 007158f0 00729f60 0072a970 0072a9b0 0072aa00 0072aa50 0072aaa0 0072b0d0 0072b160 0072b260 0072b330 0072c680 0072c930 0072dd60 0072ddb0 0072df50 0072e130 0074e560 0078b410 007ba550 007c0e80 007df3e0 007e2600 007e3d50 007e3f40 007e4040 007e4330 007e59b0 007eac70 0080ca20 008328d0 008330d0 00835fd0 00837ce0 00837e40 0083b610 008718b0 0087e860 00894dd0 00895010 008967f0 0089bb30 008a0720 008b76b0 008b97e0 008b9970 008b9b00 008ba0b0 008ba220 008ba7f0 008bae10 008baf20 008c08b0 008c0900 008cd5a0 008cd730 008cdc40 008dae10 008ddd70 008e6400 008e6780 008f3100 008f3630 008f3e70 008f40b0 009162f0 0091e990 00934920
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPAX@Z	-	5	005b37f7 007be0f9 00845ce0 00923510
+004c9d60	CThing::AddTC	?AddTC@CThingDeadCreature@ExternalRetry_00835c80@@QAEXABUCCharString@2@HH@Z	-	5	00835c80
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCHitOnCollision@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	-	4	008c3f90 008c4040 008c4250 008cc8e0
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@JJ@Z	-	2	00694020 00836260
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEXABVCCharString@@_NABVCPhysicsSnapshot@@@Z	-	2	00714730 00715710
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEXABVCCharString@@_N1@Z	-	1	005cd767
+004c9d60	CThing::AddTC	?AddTC@CThingNative@@QAEPAVCTCBase@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	-	1	0089c560
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCForcePushPower@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	-	1	008b94a0
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCTurncoatSpell@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	-	1	008b95a0
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCWillLightning@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	-	1	008b9c90
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCSolidToThing@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	-	1	008c0820
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCHitOnCollision@@ABVCCharString@@_NPAX@Z	-	1	008c4680
+004c9d60	CThing::AddTC	?AddTC@CThing@@QAEPAVCTCAssassinRush@@ABVCCharString@@_NPAVCTCParamsBase@@@Z	-	1	008cd470
+005da980	CTCWeapon::IsProjectileWeaponLoaded	?IsProjectileWeaponLoaded@CTCWeapon@@QAE_NXZ	-	5	0068eb20 0068f9d0 0078a2c0 0078a5d0 007e5b90
+005da980	CTCWeapon::IsProjectileWeaponLoaded	?IsLoaded@CTCWeapon@@QBE_NXZ	-	1	00715110
+005da980	CTCWeapon::IsProjectileWeaponLoaded	?IsProjectileWeaponLoaded@CTCWeapon_Getters@@QBE_NXZ	-	0+def	
+005daa40	CTCWeapon::IsProjectileWeapon	?IsProjectileWeapon@CTCWeapon@@QBE_NXZ	EF	12+def	0068eb20 006a1620 006a1e00 006e9f60 006ea450 006eb390 00789e60 00789ff0 0078a2c0 0078a5d0 008bf740 00905600
+005daa40	CTCWeapon::IsProjectileWeapon	?IsProjectileWeapon@CTCWeapon@@QAE_NXZ	-	9	0068f9d0 006ed510 007e5b90 0095d310 00978e60 00978f10 00979d80 00979e90 0097cb10
+005daa40	CTCWeapon::IsProjectileWeapon	?IsMissileWeapon@CTCWeapon@@QBE_NXZ	-	1	00715110
+005dad60	CTCWeapon::IsCapableOfStealthAttackBy	?IsCapableOfStealthAttackBy@CTCWeapon@@QBE_NPAVCThing@@@Z	-	1	00747790
+005dad60	CTCWeapon::IsCapableOfStealthAttackBy	?IsCapableOfStealthAttackBy@CTCWeapon_Getters@@QBE_NABVCThing@@@Z	-	0+def	
+005ed5a0	CTCEntityEvents::GetEvent	?GetEvent@CTCEntityEvents@@QBE_NPAPBVCEventHitBy@NEntityEvents@@ABVCEventFilter_None@3@@Z	-	1	005eb510
+005ed5a0	CTCEntityEvents::GetEvent	??$GetEvent@$$CBVCEventHitBy@NEntityEvents@@VCEventFilter_None@2@@CTCEntityEventsMethods@@QBE_NPAPBVCEventHitBy@NEntityEvents@@ABVCEventFilter_None@2@@Z	-	0+def	
+00639e40		?GiveGold@CTCHeroMoney@@QBEXJ@Z	-	1	00435000
+006a1440	CTCCarrying::GetThingInPrimarySlot	?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ	EF	88+def	00583a92 005840a6 0062b7c0 0062cf90 006655a0 0068eb20 0068f9d0 00692f30 0069f3e0 0069f9e0 006a1540 006a15a0 006a1620 006a1e00 006aabe0 006e9f60 006ea450 006ea5f0 006eb390 006ed510 0072af30 0072b940 0072cba0 0072cd00 0072ce20 00736760 0073aac0 0073afc0 00747790 00789e60 00789ff0 0078a2c0 0078a5d0 0078b410 0078e9c0 00793ec0 007b0880 007ccd70 007e5b90 00802d10 008039a0 00845fe0 00846090 00846100 00847ac0 00848850 0084a0a0 0084a200 00858cc0 00859040 0085ef70 008614b0 008973a0 00897480 008974f0 008976f0 008b7cf0 008ba3c0 008bf6a0 008bf740 008c0d10 008c2240 008c67a0 008c9a40 008cb780 008d5480 008d5790 008d5970 008d87c0 008d89c0 008e7040 008e9950 00905600 009162f0 00917130 009239c0 009647c0 0096cfc0 0096fa90 0096fcd0
+006a1440	CTCCarrying::GetThingInPrimarySlot	?GetThingInPrimarySlot@CTCCarrying@@QAEPAVCThing@@XZ	-	5	00978e60 00978f10 00979d80 00979e90 0097cb10
+006a1440	CTCCarrying::GetThingInPrimarySlot	?GetWeaponInHand@CTCInventoryAbilities@@QBEPAVCThing@@XZ	-	1	00715110
+006a1440	CTCCarrying::GetThingInPrimarySlot	?GetThingInPrimarySlot@CTCInventory@@QAEPAVCThing@@XZ	-	1	0072c790
+006a1440	CTCCarrying::GetThingInPrimarySlot	?GetThingInPrimarySlot@CarryingMethods@@QAEPAUThingNative@@XZ	-	1	008d9530
+006a1440	CTCCarrying::GetThingInPrimarySlot	?GetThingInPrimarySlot@CTCCarrying@@QAEPAUCThingB@@XZ	-	1	0095d310
+006b0850	CTCPhysicsBase::GetPhysicsMeshObject	?GetPhysicsMeshObject@CTCPhysicsBase@@QBE?AVCPhysicsMeshObject@@XZ	EF	21	004ad3d0 004fb370 0063e480 0063e950 0063efb0 0063f150 0063f1e0 00666ef0 00668ab0 006a4f10 006a4f60 006a5460 006a7b20 0074a5d0 00799d80 00815070 0082d000 00875e60 00875f00 00880640 008fca40
+006b0850	CTCPhysicsBase::GetPhysicsMeshObject	?GetPhysicsMeshObject@CTCPhysicsBase@@QAE?AVCPhysicsMeshObject@@XZ	-	1+def	00970790
+006cb9b0	CTCCreatureNavigation::CalculateRouteFromTo	?CalculateRouteFromTo@CTCNavigationBase@@QBEXABVC3DVector@@0AAUCRoute@@@Z	-	1	00800540
+006cb9b0	CTCCreatureNavigation::CalculateRouteFromTo	?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z	EF	0+def	
+006cba20	CTCCreatureNavigation::IsPosNavLineOfSightTo	?IsPosNavLineOfSightTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@@Z	EF	2	008b76b0
+006cba20	CTCCreatureNavigation::IsPosNavLineOfSightTo	?CTCCreatureNavigation_IsPosNavLineOfSightTo@@YI_NPAVCTCCreatureNavigation@@PAXPBUCPos@@@Z	-	0+def	
+006d6520	CTCHeroExperience::GetTrainableStatLevel	?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z	EF	17	005729d8 00573792 00789d90 00851b50 00851bd0 00899290
+006d6520	CTCHeroExperience::GetTrainableStatLevel	?GetAbilityLevel_006d6520@CTCInventoryAbilities@@QBEJJ@Z	-	1	0057be71
+006d6520	CTCHeroExperience::GetTrainableStatLevel	?GetTrainableStatLevel@CTCHeroExperience@@QBEKJ@Z	-	1	0057c239
+006d6520	CTCHeroExperience::GetTrainableStatLevel	?GetTrainableStatLevel@CTCHeroExperience@@QAEJJ@Z	-	1	005ee887
+006d6520	CTCHeroExperience::GetTrainableStatLevel	?GetAbilityLevel@@YIHPAUS@@PAXH@Z	-	0+def	
+006e3180	CTCTalk::GetAttitude	?GetAttitude@CTCTalk@@QBEJXZ	-	3	008d9220 008d92c0 008d9350
+006e3180	CTCTalk::GetAttitude	?GetAttitude@CTCTalk@@QBE?AW4EConversationAttitude@@XZ	EF	1	00717710
+006e3180	CTCTalk::GetAttitude	??$GetInterface@UCModeComponent@@@CThing@@QAE_NPAPAUCModeComponent@@J@Z	-	0+def	
+0072ddb0	CTCMeshAutomaticEntityCreator::CreateObject	?CreateObject@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@NGraphicAppearance@@@Z	-	1	0072e290
+0072ddb0	CTCMeshAutomaticEntityCreator::CreateObject	?CreateObject@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@@@Z	-	0+def	
+0072df50	CTCMeshAutomaticEntityCreator::CreateBuilding	?CreateBuilding@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@NGraphicAppearance@@@Z	-	1	0072e290
+0072df50	CTCMeshAutomaticEntityCreator::CreateBuilding	?CreateBuilding@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@@@Z	-	0+def	
+0072e130	CTCMeshAutomaticEntityCreator::CreateParticle	?CreateParticle@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAUCTCGraphicAppearance@NGraphicAppearance@@@Z	-	1	0072e290
+0072e130	CTCMeshAutomaticEntityCreator::CreateParticle	?CreateParticle@CTCMeshAutomaticEntityCreator@@QAEXABVCCharString@@0PAVCTCGraphicAppearance@@@Z	-	0+def	
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@@XZ	-	18	0085eeb0 0085f010 0085f070 0085f0c0 0085f120 0085f180 0085f200 0085f2b0 0085f310 0085f370 0085f3e0 0085f470 0085f560 0085faa0 0085fc50 0085fcd0 0085fd70 0097e140
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@1@XZ	EF	16+def	00635e90 006360a0 0065ac83 00667450 00667d30 00747da0 007fdb10 0082fed0 0082ff70 00830000 0085fb30 008663d0 0089d420 0089d4c0 0089d560
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QAEPAUCMode@@XZ	-	10	00635a50 00635bf0 007337e0 008ed850 008eda10 0092c5a0 00944730 00950bb0
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QAEPAUCCreatureModeBase@@XZ	-	5	00662a00 00662cc0 00662d80 00662fa0 009208e0
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QBEPAUCMode@@XZ	-	4	006355d0 00636480
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QAEPAVCMode@@XZ	-	4	00714e00 0080e530 0080e5d0
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QBEAAVCModeBase@NCreatureMode@@XZ	-	3	007fda20 0080e400 0085f6f0
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QAEPAUCModeBase@@XZ	-	2	00663ba0 00868220
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QBEPAUCCreatureModeBase@@XZ	-	2	00663f50 006e0df0
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetObject@CTCInterface31@@QBEPAUCTypedObject@@XZ	-	2	007892ea 0080e480
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QBEPAVCModeBase@@XZ	-	2	0085ff10 00910570
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QAEPAUCCreatureMode@@XZ	-	2	009039d0 0093afc0
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCCreatureModeManager@@QBEPAUCCreatureMode@@XZ	-	1	00667310
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetObject@CTCEpicSpellTarget@@QBEPAUCTypedObject@@XZ	-	1	006a8d30
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CTCModeOwner@@QAEPAUCMode@@XZ	-	1	00789e60
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetKindObject@CTC31@@QBEPAUCKindObject@@XZ	-	1	007b5ca0
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@CModeManager@@QAEPAUCMode@@XZ	-	1	00830f20
+0073a6e0	CTCCreatureModeManager::GetCurrentMode	?GetCurrentMode@ModeManager@@QBEAAUModeInterface@@XZ	-	1	008da890
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPerceivedThing@CTCPerceiveThing@@QAEPAVCThing@@XZ	-	16	007be0f9 00832840 0090f1c0 0091cdc0 00932990 009352c0 0093b740 0093d3a0 0093d800 0093dfc0 0097a630 0097ccd0
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPerceivedThing@CTCPerceiveThing@@QBEPAVCThing@@XZ	-	5	00665e90 006a8630 008d0ba0 0096eb40
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ	EF	5+def	006a80e0 00864250 00864700 00929650 0093c2f0
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPerceivedThing@CTCPerception@@QAEPAVCThing@@XZ	-	2	008dcb60
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPerceivedThing@PerceiveMethods@@QBEPBUCThingNative@@XZ	-	1	0089cd70
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPerceivedThing@CTCPerceiveThing_Retail@@QAEPAUCThing_Retail@@XZ	-	1	0089d0e0
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPTarget@CTCTargeting@@QAEPAVCThing@@XZ	-	1	0091db50
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPerceivedThing@CTCPerceiveThing@NCondition00935160@@QAEPAUCThing@2@XZ	-	1	00935160
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPerceivedThing@CTCPerceiveThingAccess@@QAEPAVCThing@@XZ	-	1	0093b8b0
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetPerceivedThing@CTCPerceiveThingMethods@@QBEPAVCThing@@XZ	-	1	0093c4e0
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetThing@CPerceptionMethods@@QAEPAVCThing@@XZ	-	1	009577e0
+007446a0	CTCPerceiveThing::GetPerceivedThing	?GetTargetThing@CTCCreatureOpinionOfHero@@QAEPAVCThing@@XZ	-	1	0095f9a0
+007448f0	CTCPerceiveThing::GetSightRadius	?GetSightRadius@CTCPerceiveThing@@QBEMXZ	EF	3	00833230 00864250 00864700
+007448f0	CTCPerceiveThing::GetSightRadius	?GetExtendedSightRadius@CTCPerceiveThing@@QAEMXZ	-	2	00665190 00935ad0
+007448f0	CTCPerceiveThing::GetSightRadius	?GetExtendedSightRadius@CTCPerceiveThing@@QBEMXZ	EF	2	00864620 00933b30
+007448f0	CTCPerceiveThing::GetSightRadius	?GetSurfaceRange@CTCUndergroundMover@@QBEMXZ	-	1	009207a0
+007448f0	CTCPerceiveThing::GetSightRadius	?GetSightRadius@CTCPerceiveThing@@QAEMXZ	-	1	00936210
+007448f0	CTCPerceiveThing::GetSightRadius	?GetSightRadius@CTCPerceiveThing_Methods@@QBEMXZ	-	0+def	
+007498d0	CTCNoise::GetCreator	?GetSourceThing@CTCInterface37@@QBEPAVCThing@@XZ	-	1	006a81f0
+007498d0	CTCNoise::GetCreator	?GetCreator@CTCNoise@@QBEPBVCThing@@XZ	EF	0+def	
+0075d8b0	CTCCameraPointScriptedSpline::IsCombatSplineValidForAnimAndThing	?IsCombatSplineValidForAnimAndThing@CTCCameraPointScriptedSpline@@QBE_NJPAVCThing@@@Z	-	1	0085afd0
+0075d8b0	CTCCameraPointScriptedSpline::IsCombatSplineValidForAnimAndThing	?IsCombatSplineValidForAnimAndThing@CTCCameraPointScriptedSpline@@QAE_NJPAVCThing@@@Z	-	0+def	
+007cbdc0	CTCGold::GetGold	?GetGold@CTCGold@@QAEJXZ	-	2	006c0160 006c0580
+007cbdc0	CTCGold::GetGold	?GetGold@CTCGold@@QBEJXZ	EF	1+def	0074e500
+007f5860	CTCTargetingBase::GetPNearestInterestingThing	?GetPNearestInterestingThing@CTCTargetingBase@@QBEPAVCThing@@XZ	EF	3	00753380 00753840
+007f5860	CTCTargetingBase::GetPNearestInterestingThing	?GetPNearestInterestingThing@CTCTargetingBase@@QAEPAVCThing@@XZ	-	0+def	
+007f6150	CTCUserActionPointBase::IsActionPointFree	?IsEnabled@CTCWanderControl@@QBE_NXZ	-	1	00911a00
+007f6150	CTCUserActionPointBase::IsActionPointFree	?IsActionPointFree@@YI_NPAUS@@@Z	-	0+def	
+007febf0	CTCUserActionPointBase::IsActionPointFree	?IsActionPointFree@CTCUserActionPointBase@@QAE_NXZ	-	20	007babe0 0090c060 009109b0 00918050 00938580 00938cd0 00938db0 00939a50 009415b0 00941be0 009438f0 009445f0 00944730 00944d10 00944e80 00945de0 00945e70 00946520 00946c60 0094b9b0
+007febf0	CTCUserActionPointBase::IsActionPointFree	?IsActionPointFree@CTCUserActionPointBase@@QBE_NXZ	EF	5	006a8b40 00916e30 00916e90 0092e540 0093b5e0
+007febf0	CTCUserActionPointBase::IsActionPointFree	?Free@C@@QAE_NXZ	-	0+def	
+00811340	CTCEntityEvents::HasEventOfType	?IsModeActive@CTCModeManager42@@QBE_NK@Z	-	2	0092c5a0
+00811340	CTCEntityEvents::HasEventOfType	?HasMode_00811340@CTCCreatureModeManager@@QBE_NJ@Z	-	2	00938960
+00811340	CTCEntityEvents::HasEventOfType	?IsInMode@CTCCreatureModeQuery@@QBE_NJ@Z	-	1	00664c60
+00811340	CTCEntityEvents::HasEventOfType	?HasEventOfType@CTCEntityEvents@@QBE_NW4EEventType@NEntityEvents@@@Z	EF	1+def	008643a0
+00811340	CTCEntityEvents::HasEventOfType	?HasMode@CTCModeHolder@@QAE_NK@Z	-	1	0091e700
+00811340	CTCEntityEvents::HasEventOfType	?IsModeActive@CTCCreatureModeManager@@QBE_NJ@Z	-	1	00963810
+00814bf0	CTCHitLocations::GetHitLocation	?GetHitLocation@CTCHitLocations@@QBEPAUCHitLocation@@XZ	-	1	0087e860
+00814bf0	CTCHitLocations::GetHitLocation	?DrawGetEnvironment@CWorld@@QAEPAXXZ	-	0+def	
+00956650	CTCEntityEvents::HasEvent	?HasEvent@CTCEntityEvents@@QBE_NABVCIsEventOfTypeCreatedAfter@NEntityEvents@@@Z	-	1	00954c60
+00956650	CTCEntityEvents::HasEvent	??$HasEvent@VCIsEventOfTypeCreatedAfter@NEntityEvents@@@CTCEntityEventsMethods@@QBE_NABVCIsEventOfTypeCreatedAfter@NEntityEvents@@@Z	-	0+def	
+0143e8e0		?g_ZeroVector@@3VC3DVector@@A	-	35	004aa940 004aa9a0 0089a510 0089a880 0089aa70 0089ef90 00d15510 00d15a40 00d6b240 00d701c0 00d73970 00d73c70 00d7f880 00dde230 00def3b0 00e0de90 00e0f4e0 00e1e960 00e49980 00eb75f0 00ec42f0 00ee1500 00ee6850 00f045e0 00f04cc0 00f051d0
+0143e8e0		?NullCoord@CScriptThing@@1VC3DVector@@A	-	14	00d17470 00dc7490 00dd35d0 00e055b0 00e0a820 00e36d50 00e479b0 00ee0c50
+0143e8e0		?g_ZeroPos@@3VC3DVector@@B	-	10	00d22880 00daa260 00daa700 00e4e0e0 00e96660
+0143e8e0		?g_ZeroVector@@3VC3DVector@@B	-	8	0089a6e0 00d3a1a0 00d643a0 00d67270 00d71b30 00e0e040 00e1f0c0 00e8b020
+0143e8e0		?g_def_004aa980@@3HA	-	1	004aa980
+004c7a10	CThing::PeekPlayer	?PeekPlayer@CThing@@QBEABVCPlayer@@XZ	EF	21+def	00582a16 0068eb20 0072c790 0072c9c0 00789e60 0078e820 00793d20 007e0750 007f59f0 00802420 008025d0 00802610 00854030 0085f200 0085f8d0 0087c900 008bac40
+004c7a10	CThing::PeekPlayer	?GetPlayer@CThing@@QAEPAVCPlayer@@XZ	-	4	00733100 0085bd70
+004c7a10	CThing::PeekPlayer	?dv_h2_004c7a10@@YIXPAX@Z	-	1	00692920
+004c7a10	CThing::PeekPlayer	?GetPlayer@CThing@@QAEAAVCPlayer@@XZ	EF	1	0072caa0
+004c7a30	CThing::GetPlayer	?GetPlayer@CThing@@QAEAAVCPlayer@@XZ	EF	48+def	0062b7c0 0068f9d0 0069f480 0069f4f0 0069f910 0069f9e0 006a9590 006aabe0 006ab300 0072b260 007337e0 00747090 00747b80 00747da0 00789b30 0078e9c0 00793ec0 007a7000 007a71b0 007a75f0 007a8be0 007a9960 007a9e40 007aa370 007b0950 007c9180 007ccb00 007e0750 00849be0 008ba3c0 008d68a0 008e9460 008eddd0
+004c7a30	CThing::GetPlayer	?dv_h2_004c7a30@@YIXPAX@Z	-	1	00692930
+004c7a30	CThing::GetPlayer	?GetPlayer@CThing@@QAEPAUCPlayer@@XZ	-	1	007b1eb0
+004c7380	CThing::operator new	??2CThing@@KIPAXI_N@Z	EF	6+def	00527300 00527320 0052ac10 0052ac90 0052ace0 0052ad50
+004c7380	CThing::operator new	??2CThing@@SIPAXI_N@Z	-	5	00833800 008369f0 008385b0 0083b7f0 0083c5d0
+004c7380	CThing::operator new	?Allocate@NFactory006ac910@@YIPAXI_N@Z	-	1	006ac910
+004c7380	CThing::operator new	?operator_new@ExternalRetry_00835c80@@YIPAXI_N@Z	-	1	00835c80

@@ -21,33 +21,11 @@ void* __cdecl operator new(size_t size);           // 0x00BFEA1A
 
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char  _pad00[0x20];
-    unsigned long  m_presentBits[9];               // +0x20 std::bitset of interface types
-    CInterfaceMap  m_interfaces;                   // +0x44
-    unsigned char  _pad54[0x18];
-    unsigned long  ThingTypeFlags;                 // +0x6c
-    unsigned char  _pad70[0x21];
-    unsigned char  m_dead : 1;                     // +0x91 bit 0
-    unsigned char  m_91_1 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -102,10 +80,10 @@ public:
 void CScriptGameResourceObjectScriptedThing::FollowThing(const CScriptThing& target, float distance, bool run)
 {
     if (PThing.GetPItem()) {
-        if (!PThing.GetPItem()->m_dead) {
+        if (!PThing.GetPItem()->IsDead()) {
             if (target.IsAlive()) {
                 CTCScriptedControl* control;
-                PThing.GetPItem()->GetInterface(&control, 0x1f);
+                PThing.GetPItem()->GetTC(TCI_SCRIPTED_CONTROL, &control);
                 CThing* targetThing = target.GetPThing();
                 control->AddAction(new NTCScriptedControl::CActionFollowCreature(*targetThing, distance, run));
             }

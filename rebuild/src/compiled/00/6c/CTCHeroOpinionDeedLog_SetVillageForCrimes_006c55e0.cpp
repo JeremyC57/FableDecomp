@@ -19,19 +19,10 @@
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CThing.h"
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {
-public:
-    CBaseIntelligentPointer();                         // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                // 0x00A01C10
-    CBaseObject* GetPItem() const;                     // 0x00A01B50
-    void SetPItem(CBaseObject* item);                  // 0x00A01B90
-    CBaseObjectPointer* PData;                         // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer(T* item) { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
+
 
 class CTCHeroOpinionDeedLog {
 public:

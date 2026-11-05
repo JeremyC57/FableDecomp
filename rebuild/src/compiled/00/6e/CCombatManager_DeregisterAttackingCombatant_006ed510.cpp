@@ -124,7 +124,7 @@ class CTCCarrying { public:                               // interface 0x46
     CThing* GetThingInPrimarySlot() const;               // 0x006A1440
 };
 class CTCWeapon { public:                                 // interface 0x48
-    bool IsProjectileWeapon();                     // 0x005DAA40
+    bool IsProjectileWeapon() const;                     // 0x005DAA40
     void ResetAiming();                            // 0x005DA4E0 (AimingTime +0x14 = -1, AimingTimeOverride +0x18 = false)
 };
 enum EDangerStatus { DANGER_NONE = 0 };

@@ -24,20 +24,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCDParticleEmitter { public:                    // interface type 0x4b component
 public:
     void EnterTimelineEnd();   // 0x006E05F0
@@ -101,7 +90,7 @@ class CTCPhysicalShieldSpell : public CTCBase { public:       // vtable 0x0126C5
     CThingPointerSet AllowReactionAttackers;    // +0x48
     static __forceinline void FadeOrKillEffect(CIntelligentPointer<CThing>& effect)   // CTCSpecialAbilities helper, inlined
     {
-        CThing* thing = effect.GetPItem();
+        CThing* thing = effect.Get();
         if (thing && !thing->IsDead()) {
             CTCDParticleEmitter* emitter = 0;
             if (thing->HasTC(TCI_PARTICLE_EMITTER))

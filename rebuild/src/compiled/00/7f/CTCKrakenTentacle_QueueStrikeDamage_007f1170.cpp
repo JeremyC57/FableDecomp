@@ -1,4 +1,5 @@
 // CTCKrakenTentacle::QueueStrikeDamage() -- while the kraken is alive, queue the strike: QueuedStrikeTick = current frame + (long)(def strike delay in seconds * frames per second)
+// Leaf: ?QueueStrikeDamage@CTCKrakenTentacle@@QAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F1170, length 84 bytes.
@@ -23,10 +24,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* Get() const { return (T*)GetPItem(); }
 };
 
-class CThing { public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-};
+#include "engine/CThing.h"
 
 class CKrakenTentacleDef { public:
     unsigned char _pad_0x00[0x40];
@@ -55,7 +53,7 @@ class CTCKrakenTentacle { public:
 
 void CTCKrakenTentacle::QueueStrikeDamage()
 {
-    if (PKraken.Get() && !PKraken.Get()->Dead) {
+    if (PKraken.Get() && !PKraken.Get()->IsDead()) {
         CThing* kraken = PKraken.Get();
         long framesPerSecond = CMainGameComponent::GetConstantFPS();
         const CKrakenTentacleDef* def = PTentacleDef;

@@ -20,18 +20,9 @@ class CTCCreatureModeManager { public:                // interface 0x31
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CCreatureActionBase { public:                   // retail sizeof 0xa8
     virtual ~CCreatureActionBase();
     virtual void v01(); virtual void v02(); virtual void v03();
@@ -39,7 +30,7 @@ class CCreatureActionBase { public:                   // retail sizeof 0xa8
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;            // +0x08
     unsigned char _pad10[0xa8 - 0x10];
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThing* GetCreature() const { return PCreature.Get(); }
 };
 class CCombatActionBase : public CCreatureActionBase { public:      // retail sizeof 0x114
     unsigned char _pad0a8[0x114 - 0xa8];

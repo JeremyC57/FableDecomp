@@ -64,20 +64,9 @@ class CWorld { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa4];
@@ -150,10 +139,10 @@ void CAIStateGroup_MinionSitAtSchool::Update()
     if (endTime > 1.0f)
         endTime = endTime - 1.0f;
     long movement = 5;
-    CThing* seat = PSeat.GetPItem();
+    CThing* seat = PSeat.Get();
     if (seat && !seat->IsDead()) {
         const CThing* creature = GetCreature();
-        const CThing* item = PSeat.GetPItem();
+        const CThing* item = PSeat.Get();
         if ((item->GetPos() - creature->GetPos()).GetMagnitude() < 10.0f)
             movement = 3;
     }

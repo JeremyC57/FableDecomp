@@ -15,8 +15,9 @@ class CTCParamsBase;
 class CThingCreatureBase : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer { public: virtual ~CBaseIntelligentPointer(); CBaseObject* GetPItem() const; CBaseObjectPointer* PData; };
-template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); } };
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CCreatureActionBase { public:
 virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {}
 virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {}
@@ -29,5 +30,5 @@ class CCreatureAction_SheatheItemToInventory_ForEnflame : public CCreatureAction
 void CCreatureAction_SheatheItemToInventory_ForEnflame::Initialise()
 {
     CCreatureAction_SheatheItemToInventory::Initialise();
-    PCreature.GetPItem()->AddTC("CTCWillEnflame", true, 0);
+    PCreature.Get()->AddTC("CTCWillEnflame", true, 0);
 }

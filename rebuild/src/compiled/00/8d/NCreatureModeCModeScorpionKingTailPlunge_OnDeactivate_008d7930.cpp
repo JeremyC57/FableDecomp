@@ -10,13 +10,7 @@
 // Global classes (Ego_r.pdb spellings): CThing::Kill ?Kill@CThing@@QAEX_N@Z, CBaseIntelligentPointer::GetPItem
 // ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ, CTCCreatureModeManager::CModeBase, CModeStandBase.
 class CBaseObject;
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char m_dead : 1;                      // +0x91 bit 0
-    unsigned char m_91_1 : 7;
-    void Kill(bool flag);                          // 0x004C9B80
-};
+#include "engine/CThing.h"
 class CBaseIntelligentPointer {
 public:
     virtual ~CBaseIntelligentPointer();            // 0x00A01C10
@@ -65,9 +59,9 @@ public:
 
 void CModeScorpionKingTailPlunge::OnDeactivate()
 {
-    if (PTailEmitter.GetPItem() && !PTailEmitter.GetPItem()->m_dead)
+    if (PTailEmitter.GetPItem() && !PTailEmitter.GetPItem()->IsDead())
         PTailEmitter.GetPItem()->Kill(true);
-    if (PDustTrailEmitter.GetPItem() && !PDustTrailEmitter.GetPItem()->m_dead)
+    if (PDustTrailEmitter.GetPItem() && !PDustTrailEmitter.GetPItem()->IsDead())
         PDustTrailEmitter.GetPItem()->Kill(true);
     Active = false;
 }

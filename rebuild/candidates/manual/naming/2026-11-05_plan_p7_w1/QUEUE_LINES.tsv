@@ -1,0 +1,15 @@
+line	line_sha1_12	address	effect	old_binders_respelled	old_binders_left
+4451	b1396d5889c3	006b0850	closed	1	0
+5150	f30cfc558ece	007f5860	closed	0	0
+249	76a4226e8db4	005daa40	narrowed	9	0
+140	eb43241ef957	006a1440	narrowed	5	0
+206	fba4829c850b	006a1440	narrowed	5	0
+277	f0d18481fe2d	006a1440	narrowed	5	0
+1659	3cae0416d32f	006a1440	narrowed	5	0
+1893	11f77abed098	006a1440	narrowed	5	0
+1979	43b135ba4a1e	004c7a10	narrowed	2	1
+2223	8189baf1b171	004c7a10	narrowed	2	1
+3902	965083c9c398	004c7a10	narrowed	2	1
+4988	b3cf7d322b99	004c7a10	narrowed	2	1
+4223	3f87ccb798f1	0143e8e0	narrowed	36	4
+6222	792ea41450dd	0143e8e0	narrowed	36	4

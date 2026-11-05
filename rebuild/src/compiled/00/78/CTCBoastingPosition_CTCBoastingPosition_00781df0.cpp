@@ -7,7 +7,7 @@
 // CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 (+0x2e then +0x0c),
 // CTCBase::~CTCBase @ 0x00686830 (tail jump; the chunk label "~CChunkedFileChunk" is propagated).
 // Vtable 0x0126B24C = CTCBoastingPosition, stored first (a concrete class with a destructor body).
-// Body: `if (effect && !effect->Dead) effect->Kill(true);` with every use of the pointer going
+// Body: `if (effect && !effect->IsDead()) effect->Kill(true);` with every use of the pointer going
 // through the out-of-line GetPItem (three calls, nothing cached); `test byte ptr [eax+91h],1` is the
 // CThing::Dead bit (retail CThing sits 0x10 bytes below the PDB offset 0xa1). The member pointer
 // objects are destroyed in reverse declaration order with no CIntelligentPointer vtable store, so the
@@ -17,12 +17,7 @@
 
 class CBaseObject;
 
-class CThing
-{ public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    void Kill(bool immediately);                    // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -77,6 +72,6 @@ class CTCBoastingPosition : public CTCBase                // vtable 0x0126B24C
 
 CTCBoastingPosition::~CTCBoastingPosition()
 {
-    if (PParticleEffect.Get() && !PParticleEffect.Get()->Dead)
+    if (PParticleEffect.Get() && !PParticleEffect.Get()->IsDead())
         PParticleEffect.Get()->Kill(true);
 }

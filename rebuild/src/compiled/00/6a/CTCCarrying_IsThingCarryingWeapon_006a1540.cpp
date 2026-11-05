@@ -14,35 +14,14 @@
 //   shared `xor al,al` false tail.
 class CTCBase;
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing {
-public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];               // +0x20 bitset<274>
-    CInterfaceMap Components;                       // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long type) const
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        const CInterfaceMap* map = &Components;
-        const CInterfaceMap::value_type* it = map->LowerBound(key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-};
-
 inline bool IsThingAlive(const CThing* thing)
 {
-    if (thing && !thing->Dead)
+    if (thing && !thing->IsDead())
         return true;
     return false;
 }
@@ -53,13 +32,11 @@ public:
     static bool __fastcall IsThingCarryingWeapon(const CThing& thing);
 };
 
-enum { TC_CARRYING = 0x46, TC_WEAPON = 0x48 };
-
 bool __fastcall CTCCarrying::IsThingCarryingWeapon(const CThing& thing)
 {
-    if (thing.HasTC(TC_CARRYING)) {
-        CThing* item = thing.GetTC<CTCCarrying>(TC_CARRYING)->GetThingInPrimarySlot();
-        if (IsThingAlive(item) && item->HasTC(TC_WEAPON))
+    if (thing.HasTC(TCI_CARRYING)) {
+        CThing* item = ((const CTCCarrying*)&thing.GetTC(TCI_CARRYING))->GetThingInPrimarySlot();
+        if (IsThingAlive(item) && item->HasTC(TCI_WEAPON))
             return true;
     }
     return false;

@@ -35,11 +35,10 @@ void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
 
-extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 __forceinline const C3DVector& CScriptThing::GetPos() const    // slot 6 0x004AA980, inlined here
 {
     if (!PImp.Data)
-        return g_ZeroVector;
+        return NullCoord;
     return PImp.Data->GetPos();
 }
 

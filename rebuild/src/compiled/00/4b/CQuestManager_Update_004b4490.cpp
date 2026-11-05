@@ -1,4 +1,5 @@
 // CQuestManager::Update() -- per-frame quest update: publish the main player's id to the script interface, update the script thing manager, run the pending quest deactivations and clear that list, run one frame of every active quest's script, and re-lay the quest cards when the hero changed map
+// Leaf: ?Update@CQuestManager@@QAEXXZ
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B4490, length 254 bytes, plain `ret`.
@@ -18,10 +19,8 @@
 // the running-quest reset and the hero null test.
 extern "C" void free(void* p);                         // 0x00BFEA14 (MSVCR71)
 
-class CCharString { public:
-    void* PStringData;
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 
 class CThingPlayerCreature;
 class CPlayer { public:
@@ -43,12 +42,6 @@ private: public:
     CPlayerManager* PlayerManager;                     // +0x1c
 };
 
-class CThing { public:
-    unsigned char _pad0[0x8e];
-    short         MapNumber;                           // +0x8e
-    unsigned char _pad90;
-    unsigned char Dead : 1;                            // +0x91 bit 0
-};
 class CThingPlayerCreature : public CThing { };
 
 class CGameScriptThingManager { public:
@@ -144,8 +137,8 @@ void CQuestManager::Update()
         }
     }
     CThing* hero = player->GetPControlledCreature();
-    if (hero != 0 && !hero->Dead && hero->MapNumber != HeroMapNumber) {
+    if (hero != 0 && !hero->IsDead() && hero->GetCurrentMapNumber() != HeroMapNumber) {
         ResetPositionOfAllQuestCards();
-        HeroMapNumber = hero->MapNumber;
+        HeroMapNumber = hero->GetCurrentMapNumber();
     }
 }

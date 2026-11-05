@@ -13,11 +13,7 @@
 // re-read from the members after the calls; the element is bound to a reference local once per
 // iteration (`lea edi,[ecx+ebp*8]`) so both GetPItem calls reuse it.
 
-class CThing
-{ public:
-    unsigned char _pad_0x00[0x91];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 
@@ -74,7 +70,7 @@ long CTCBoss::CountLivingHelperCreatures() const
     for (unsigned int i = 0; i < HelperCreatures.size(); ++i)
     {
         const CIntelligentPointer<CThingAICreature>& helper = HelperCreatures[i];
-        if (helper.Get() && !helper.Get()->Dead)
+        if (helper.Get() && !helper.Get()->IsDead())
             ++count;
     }
     return count;

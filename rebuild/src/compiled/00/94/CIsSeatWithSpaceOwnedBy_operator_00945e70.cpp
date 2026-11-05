@@ -39,7 +39,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 struct CTCUserActionPointBase {
-    bool IsActionPointFree();                      // 0x007FEBF0
+    bool IsActionPointFree() const;                      // 0x007FEBF0
 };
 #pragma pack(push, 1)
 class CTCOwnedEntity { public:                            // component kind 0x33

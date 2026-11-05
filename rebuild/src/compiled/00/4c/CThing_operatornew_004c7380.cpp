@@ -16,15 +16,10 @@ public:
 
 void* __cdecl operator new[](unsigned int size);  // 0x00BFEB22, the MSVCR71 operator new[] import (retail calls new[], not the scalar thunk 0x00BFEA1A)
 
-class CThing {
-private:
-    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
-public:
-    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
-private:
-protected:
-    static void* __fastcall operator new(unsigned int size, bool flag);
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MANAGERACCESS
+#define FABLE_RETAIL_CTHING_OPERATORNEW
+#include "engine/CThing.h"
 
 void* __fastcall CThing::operator new(unsigned int size, bool flag)
 {

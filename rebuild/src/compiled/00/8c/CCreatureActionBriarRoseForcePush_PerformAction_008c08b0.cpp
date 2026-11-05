@@ -25,20 +25,9 @@ class CTCForcePushPower { public:                  // the component just added
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CCreatureAction_BriarRoseForcePush { public:
     virtual void v00(); virtual void v01(); virtual void v02();
@@ -49,7 +38,7 @@ class CCreatureAction_BriarRoseForcePush { public:
 
 void CCreatureAction_BriarRoseForcePush::PerformAction()
 {
-    CTCForcePushPower* pPower = (CTCForcePushPower*)PCreature.GetPItem()->AddTC("CTCForcePushPower", true, 0);
+    CTCForcePushPower* pPower = (CTCForcePushPower*)PCreature.Get()->AddTC("CTCForcePushPower", true, 0);
     pPower->m_level = 1;
     pPower->m_active = 1;
 }

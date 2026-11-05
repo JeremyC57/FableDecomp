@@ -41,33 +41,14 @@ class CThingManager { public:
 };
 
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
-    CIntelligentPointer(T* item) { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other)
-    {
-        CThing* item = other.GetPItem();
-        SetPItem(item);
-        return *this;
-    }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -102,14 +83,14 @@ void CTCWallMount::OnInitialActivate()
         return;
     Trophy = CIntelligentPointer<CThing>(GetThingManager().GetPThingWithUID(TrophyID));
     if (IS_THING_ALIVE(Trophy)) {
-        if (Trophy.GetPItem()->GetPhysicsTC())
-            Trophy.GetPItem()->GetPhysicsTC()->SetPhysicsActive(false);
-        CThing* trophy = Trophy.GetPItem();
+        if (Trophy.Get()->GetPhysicsTC())
+            Trophy.Get()->GetPhysicsTC()->SetPhysicsActive(false);
+        CThing* trophy = Trophy.Get();
         if (trophy->HasTC(TCI_PARTICLE_ATTACHER)) {
             ((CTCComponent82*)((CTCComponent82*)&trophy->GetTC(TCI_PARTICLE_ATTACHER)))->ClearEntries();
-            Trophy.GetPItem()->RemoveTC((ETCInterfaceType)(0x82));
+            Trophy.Get()->RemoveTC((ETCInterfaceType)(0x82));
         }
-        CThing* target = Trophy.GetPItem();
+        CThing* target = Trophy.Get();
         if (target->HasTC(TCI_TARGETED))
             ((CTCTargeted*)((CTCTargeted*)&target->GetTC(TCI_TARGETED)))->Targetable = false;
     }

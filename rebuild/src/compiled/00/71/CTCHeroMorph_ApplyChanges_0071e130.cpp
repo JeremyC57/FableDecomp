@@ -21,9 +21,12 @@ struct CMessageOnMorphChanged : CBaseClass {       // NTCMessages::CMessageOnMor
     CMessageOnMorphChanged() {}
 };
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     void SetAsChanged(unsigned long flags);   // 0x004BF9E0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
 class CThing { public:
     unsigned char         _pad_0x00[0x64];

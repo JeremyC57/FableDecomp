@@ -27,12 +27,8 @@ class CTCGraphicAppearance { public:
 
 }
 
-class CThing { public:
-    unsigned char         _pad_0x00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64 (retail)
-    unsigned char         _pad_0x68[0x29];
-    unsigned char         Dead : 1;                     // +0x91 bit 0 (retail)
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual ~CTCBase();                                 // 0x00686830
@@ -56,8 +52,8 @@ class CTCGraphicAppearanceAnimatedMesh : public CTCBase, public CAGraphicAppeara
     CTCGraphicAppearanceAnimatedMesh(CThing* owner) : CTCBase(owner), PrimHandle(0) { }
     __forceinline virtual ~CTCGraphicAppearanceAnimatedMesh()
     {
-        if (!ParentThing->Dead)
-            ParentThing->PTCGraphicAppearance->UnregisterComponent(*this);
+        if (!ParentThing->IsDead())
+            ParentThing->GetTCGraphicAppearance()->UnregisterComponent(*this);
     }
 };
 

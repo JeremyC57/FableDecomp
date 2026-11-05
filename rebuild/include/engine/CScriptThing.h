@@ -126,6 +126,9 @@ FABLE_STATIC_ASSERT(sizeof(CScriptThing) == 0xc);
 #include "rebuild_abi.h"
 
 class CCPPointerInfo;
+#ifdef FABLE_RETAIL_CSCRIPTTHING_NULLCOORD
+class C3DVector;
+#endif
 
 #pragma pack(push, 1)
 class CScriptThing {
@@ -133,6 +136,14 @@ public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CScriptThing*   PImp_Data;                               // +0x04 CCountedPointer<CScriptThing>::Data
     CCPPointerInfo* PImp_Info;                               // +0x08 CCountedPointer<CScriptThing>::Info
+#ifdef FABLE_RETAIL_CSCRIPTTHING_NULLCOORD
+    // Per-TU opt-in (plan phase 7, 2026-11-06) for CScriptThing's own members on this flattened view (GetPos 0x004AA980, GetFocalPos
+    // 0x004AA940 ...): the protected static the null-PImp branch returns, 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb
+    // `dynamic initializer for 'CScriptThing::NullCoord'`; the retail branch above declares it the same way). No layout change.
+protected:
+    static C3DVector NullCoord;                              // 0x0143E8E0
+public:
+#endif
 };
 #pragma pack(pop)
 

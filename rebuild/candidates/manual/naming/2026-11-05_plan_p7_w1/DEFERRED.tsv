@@ -1,0 +1,9 @@
+address	stage	reason
+00692920	no_rule	UNCHANGED: 004c7a10 bound as the free stand-in dv_h2_004c7a10 (YIXPAX): needs a CThing model (PeekPlayer) in a destructor-value row
+00733100	no_rule	UNCHANGED: 004c7a10 GetPlayer stand-in returning CPlayer*: the PeekPlayer respell makes the CPlayer::HasMode 0x00634160 calls const (PDB QBE_NW4EPlayerMode@@@Z, the local spelling is (long) QAE): a second target to decide
+007b1eb0	no_rule	UNCHANGED: 004c7a30 ?GetPlayer@CThing@@QAEPAUCPlayer@@XZ (pointer) -> QAEAAVCPlayer@@XZ: the calls ->AddMode need the PDB CPlayer::AddMode(EPlayerMode, bool) spelling too
+007cc120	consistency	004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is bound in the index to 004bfe20; 004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is defined at 004bfe20; 004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe replaces the non-PDB ?ClearMeshEffect@CTCGraphicAppearance
+00d6b240	no_rule	UNCHANGED: 0143e8e0 g_ZeroVector read outside a CScriptThing member (an expanded GetPos: protected NullCoord is not reachable there)
+00d701c0	no_rule	UNCHANGED: 0143e8e0 g_ZeroVector read outside a CScriptThing member (an expanded GetPos)
+00d7f880	no_rule	UNCHANGED: 0143e8e0 g_ZeroVector read outside a CScriptThing member (an expanded GetPos)
+00e0f4e0	no_rule	UNCHANGED: 0143e8e0 g_ZeroVector read outside a CScriptThing member (an expanded GetPos)

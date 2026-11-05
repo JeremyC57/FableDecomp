@@ -16,7 +16,6 @@
 // Naming wave 35: identity reg 00f02709 "AT_Phase3Guard" in 00f024c0; Alloc 00f050e0; vtable 012f7e68 slot 1; PDB ?Main@CAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@; refs=1; was under-qualified CAT_Phase3Guard::Main (wave3/labels_alloc.tsv); PDB ?Main@CAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@EAEXXZ in Ego_r.pdb / FableWin.pdb.
 //   Was `?Main@CAT_Phase3Guard@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic)); same bytes.
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -42,13 +41,16 @@ class CBaseClass { public:                                   // vtable 0x0123171
     virtual void b0();
 };
 class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     CCountedPointer<CScriptThingImp> PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     struct InlineCopy { };                             // tag: the inline copy retail expands at by-value call sites
     CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing();                                   // 0x004AA840
     virtual void t1(); virtual void t2(); virtual void t3(); virtual void t4(); virtual void t5();
-    virtual __forceinline const C3DVector& GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPosition(); }   // slot 6
+    virtual __forceinline const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }   // slot 6
     virtual void t07(); virtual void t08(); virtual void t09(); virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14();
     virtual void t15(); virtual void t16(); virtual void t17(); virtual void t18(); virtual void t19(); virtual void t20(); virtual void t21(); virtual void t22();
     virtual void t23(); virtual void t24(); virtual void t25(); virtual void t26(); virtual void t27(); virtual void t28(); virtual void t29(); virtual void t30();

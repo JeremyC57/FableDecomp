@@ -23,22 +23,13 @@ class CTCBase;
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                               // Ego_r: vptr + PData, 8 bytes
-public:
-    CBaseIntelligentPointer();                                // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CBaseObject* GetPItem() const;                            // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                                // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -95,7 +86,7 @@ bool CGameScriptThing::MsgAttackedWithMeleeWeaponWithoutHittingAnything() const
         long lastFrame = (quest && quest->PScript.Data) ? quest->PScript->PActiveThread->LastScriptFrame : 0;
         long currentFrame = (quest && quest->PScript.Data) ? quest->PScript->PActiveThread->CurrentScriptFrame : 0;
         const CTCEntityEvents* events;
-        if (PThing.GetPItem()->PeekTC(TCI_ENTITY_EVENTS, &events)) {
+        if (PThing.Get()->PeekTC(TCI_ENTITY_EVENTS, &events)) {
             for (std::list<CCountedPointer<NEntityEvents::CEventBase> >::const_iterator it = events->Events.begin();
                  it != events->Events.end(); ++it) {
                 const NEntityEvents::CEventBase* event = it->Data;

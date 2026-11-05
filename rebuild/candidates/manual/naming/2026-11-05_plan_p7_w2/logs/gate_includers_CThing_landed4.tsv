@@ -1,0 +1,5 @@
+address	verdict	reason	changes	name_notes	secs
+00666ea0	PASS				0.17
+006ebdd0	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.47
+00838a00	PASS				0.23
+0089cd70	PASS			NAME_CLASH ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z bound here to 0040f020, in the index to 004365b0,01427cc3,838a0818,8c69ce7a	0.32

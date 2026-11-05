@@ -1,4 +1,5 @@
 // CWorld::AutoSaveInternal(const CWideString&, bool) -- autosave the game unless there is no live hero or an autosave is already running
+// Leaf: ?AutoSaveInternal@CWorld@@QAE_NABVCWideString@@_N@Z
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -15,12 +16,9 @@
 #include "engine/CWorld.h"
 #undef CWorld
 class CWideStringData;
-class CWideString { public: CWideStringData* PStringData; };
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
 
-class CThing { public:
-    unsigned char _pad[0x91];
-    unsigned char Dead : 1;                      // +0x91 bit 0
-};
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                   // 0x00487DC0
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -45,7 +43,7 @@ class CWorld : public CWorldDonor {
 bool CWorld::AutoSaveInternal(const CWideString& name, bool b)
 {
     CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
-    if (hero && !hero->Dead && !AutoSaveLocked)
+    if (hero && !hero->IsDead() && !AutoSaveLocked)
     {
         AutoSaveLocked = true;
         if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsBetweenQuestStartAndFinishScreens())

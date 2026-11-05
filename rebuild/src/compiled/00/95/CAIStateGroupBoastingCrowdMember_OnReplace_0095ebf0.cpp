@@ -19,20 +19,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 struct CTCBoastingCrowd {                       // interface 0x74
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -69,8 +58,8 @@ struct CAIStateGroup_BoastingCrowdMember : CAIStateGroupBase {
 
 void CAIStateGroup_BoastingCrowdMember::OnReplace()
 {
-    if (PBoaster.GetPItem() != 0 && !PBoaster.GetPItem()->IsDead()) {
-        CThing* boaster = PBoaster.GetPItem();
+    if (PBoaster.Get() != 0 && !PBoaster.Get()->IsDead()) {
+        CThing* boaster = PBoaster.Get();
         if (boaster->HasTC(TCI_CREATURE_GROUP_BOASTING_CROWD)) {
             CTCBoastingCrowd* crowd = ((CTCBoastingCrowd*)&boaster->GetTC(TCI_CREATURE_GROUP_BOASTING_CROWD));
             crowd->RemoveCrowdMember(PBrain->Creature);

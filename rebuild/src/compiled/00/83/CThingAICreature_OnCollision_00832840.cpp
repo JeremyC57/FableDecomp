@@ -16,7 +16,8 @@
 #include "engine/C3DVector.h"
 enum ECollideType { COLLIDE_NONE = 0, COLLIDE_LANDSCAPE = 1 };
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CWorld { public:
@@ -25,31 +26,6 @@ class CThing;
 class CTCPerceiveThing { public:
     CThing* GetPerceivedThing();                // 0x007446A0
     void SetAsDirectlyAwareOfPerceivedThing();  // 0x007449B0
-};
-
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long m_presentBits[9];             // +0x20
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                     // +0x91 bit 0
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-    bool HasTC(long interfaceType) const
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
-            return true;
-        return false;
-    }
-protected:
-    CWorld& GetWorld();   // 0x004C7AA0 (Ego_r.pdb ?GetWorld@CThing@@IAEAAVCWorld@@XZ)
 };
 
 class CThingCreatureBase : public CThing { public:
@@ -63,9 +39,9 @@ class CThingAICreature : public CThingCreatureBase { public:
 void CThingAICreature::OnCollision(ECollideType type, C3DVector* position, C3DVector* normal, CThing* other)
 {
     CThingCreatureBase::OnCollision(type, position, normal, other);
-    if (!Dead && other && !other->Dead) {
-        if (HasTC(0x34)) {
-            CTCPerceiveThing* perceive = GetTC<CTCPerceiveThing>(0x34);
+    if (!Dead && other && !other->IsDead()) {
+        if (HasTC(TCI_PERCEIVE_THING)) {
+            CTCPerceiveThing* perceive = ((CTCPerceiveThing*)&GetTC(TCI_PERCEIVE_THING));
             if (perceive->GetPerceivedThing() == other)
                 perceive->SetAsDirectlyAwareOfPerceivedThing();
         }

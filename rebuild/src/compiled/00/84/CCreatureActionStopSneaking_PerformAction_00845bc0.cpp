@@ -20,20 +20,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CTCCreatureModeManager { public:             // interface type 0x31 component
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
@@ -56,9 +45,9 @@ class CCreatureAction_StopSneaking : public CCreatureActionBase { public:
 void CCreatureAction_StopSneaking::PerformAction()
 {
     CTCCreatureModeManager* mode;
-    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &mode);
+    PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &mode);
     CTCSneaking* sneak;
-    PCreature.GetPItem()->GetTC(TCI_STEALTH, &sneak);
+    PCreature.Get()->GetTC(TCI_STEALTH, &sneak);
     mode->RemoveMode(7);
     sneak->Active = 0;
 }

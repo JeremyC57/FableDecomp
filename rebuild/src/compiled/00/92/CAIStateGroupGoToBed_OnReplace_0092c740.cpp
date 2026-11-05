@@ -25,30 +25,15 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    __forceinline CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -95,14 +80,14 @@ void CAIStateGroup_GoToBed::OnReplace()
     if (!IsBedSleepPointMarker) {
         if (ActionPointIndex != -1 && IS_THING_ALIVE(PBed)) {
             CTCActionPointOwner* points;
-            PBed.GetPItem()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &points);
+            PBed.Get()->GetTC(TCI_SINGLE_USER_ACTION_POINTS, &points);
             ((CTCUserActionPointBase*)points)->SetActionPointAsFree(ActionPointIndex);
             ActionPointIndex = -1;
         }
     }
     else if (IS_THING_ALIVE(PBed)) {
         CTCBed* bed;
-        PBed.GetPItem()->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE, &bed);
+        PBed.Get()->GetTC(TCI_SINGLE_PERSON_OCCUPIABLE, &bed);
         CThing* creature = PBrain->PCreature;
         if (bed->GetOccupant() == creature)
             bed->SetOccupant(0);

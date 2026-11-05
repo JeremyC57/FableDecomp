@@ -13,13 +13,7 @@
 //   twin GetPHitBy 0x00810FC0 reads PThingHitting at +0x50).
 // Layout: retail CThing DefGlobalIndex (unsigned short) +0x8c, Dead bit 0 of +0x91 (PDB +0x9c / +0xa1).
 // Shape: `movzx eax,word ptr [eax+8Ch] ; cmp eax,[esi]`, separate `mov al,1` / `xor al,al` exits.
-class CThing {
-public:
-    unsigned char  _pad00[0x8c];
-    unsigned short DefGlobalIndex;                 // +0x8c
-    unsigned char  _pad8e[3];
-    unsigned char  Dead : 1;                       // +0x91 bit 0
-};
+#include "engine/CThing.h"
 
 namespace NEntityEvents {
 class CEventHitBase {
@@ -38,7 +32,7 @@ public:
 bool CEventFilter_HitEventWithWeapon::operator()(NEntityEvents::CEventHitBase* event) const
 {
     CThing* weapon = event->GetPWeaponUsed();
-    if (weapon && !weapon->Dead && weapon->DefGlobalIndex == WeaponDefIndex)
+    if (weapon && !weapon->IsDead() && weapon->GetDefGlobalIndex() == WeaponDefIndex)
         return true;
     return false;
 }

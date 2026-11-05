@@ -1,4 +1,5 @@
 // CCreatureAction_ReleaseStrengthBerserk::FrameUpdate() -- the combat-action FrameUpdate, then when the creature has a CTCBerserk component read its four super-rumble values, clamp each to [0, 1] and rumble the creature's joystick (type 4) with them as a looping rumble
+// Leaf: ?FrameUpdate@CCreatureAction_ReleaseStrengthBerserk@@UAEXXZ
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end().
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E6500, length 395 bytes (+ int3 padding).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8),
@@ -10,29 +11,13 @@
 // (`test ah,5 ; jp` / `test ah,41h ; jne`); the joystick entries are 8-byte {device, id} pairs at the input manager's +0x2c; the
 // rumble parameters are a 20-byte {a, b, c, d, true} temporary built by an inline ctor in the argument area's frame slot.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char  _pad0[0x20];
-    unsigned long  m_presentBits[9];            // +0x20 std::bitset of interface types
-    CInterfaceMap  m_interfaces;                // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-public:
-    long GetJoystickDeviceNumber() const;   // 0x004C7CA0
-};
+
 class CTCBerserk { public:                             // interface type 0x84
     void GetSuperRumble(float& a, float& b, float& c, float& d);   // 0x0078BE70
 };
@@ -103,7 +88,7 @@ void CCreatureAction_ReleaseStrengthBerserk::FrameUpdate()
 {
     CCombatActionBase::FrameUpdate();
     CTCBerserk* berserk;
-    if (PCreature.GetPItem()->GetInterface(&berserk, 0x84)) {
+    if (PCreature.GetPItem()->GetTC(TCI_BERSERK, &berserk)) {
         float a, b, c, d;
         berserk->GetSuperRumble(a, b, c, d);
         Clamp01(a);

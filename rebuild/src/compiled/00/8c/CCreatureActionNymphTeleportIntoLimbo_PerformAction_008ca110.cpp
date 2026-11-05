@@ -13,20 +13,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCNymph { public:
     void StartFlyingAround(long duration);  // 0x0080F5E0
 };
@@ -48,7 +37,7 @@ class CCreatureAction_NymphTeleportIntoLimbo : public CCreatureAction_NymphTelep
 void CCreatureAction_NymphTeleportIntoLimbo::PerformAction()
 {
     CTCNymph* pNymph;
-    if (PCreature.GetPItem()->GetTC(TCI_NYMPH, &pNymph))
+    if (PCreature.Get()->GetTC(TCI_NYMPH, &pNymph))
         pNymph->StartFlyingAround(m_duration - m_elapsed);
     DoEffect();
 }

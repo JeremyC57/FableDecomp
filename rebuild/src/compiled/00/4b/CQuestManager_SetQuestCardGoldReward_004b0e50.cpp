@@ -1,4 +1,5 @@
 // CQuestManager::SetQuestCardGoldReward(const CCharString&, long) -- store the gold reward on the quest-card component of the active quest card for the given script, when the card exists and is not dead
+// Leaf: ?SetQuestCardGoldReward@CQuestManager@@QAEXABVCCharString@@J@Z
 // Plan phase 3 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). Also: re-padded by-value maps +4.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B0E50, length 93 bytes.
 // Callees: CQuestManager::GetActiveQuestCardFromScriptName(const CCharString&) @ 0x004B0C80 (manifest),
@@ -15,35 +16,12 @@
 #include "engine/CTCQuestCard.h"
 
 class CTCBase;
-class CCharString { public:
-    void* PStringData;
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;             // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char m_dead : 1;               // +0x91 bit 0
-    unsigned char m_91 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
 
 class CQuestManager { public:
     void SetQuestCardGoldReward(const CCharString& scriptName, long reward);
@@ -54,9 +32,9 @@ public:
 void CQuestManager::SetQuestCardGoldReward(const CCharString& scriptName, long reward)
 {
     CThing* card = GetActiveQuestCardFromScriptName(scriptName);
-    if (card && !card->m_dead) {
+    if (card && !card->IsDead()) {
         CTCQuestCard* questCard;
-        card->GetInterface(&questCard, 0x6c);
+        card->GetTC(TCI_QUEST_CARD, &questCard);
         if (questCard)
             questCard->GoldReward = reward;
     }

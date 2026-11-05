@@ -38,10 +38,9 @@ public:
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
 };
 
-class CCharString { public:
-    void* m_pData;
-    ~CCharString();                                    // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 
 struct CAnimEvent {                                    // std::pair<CCharString, float>
     CCharString Name;
@@ -83,27 +82,10 @@ class CManager { public:
 NAnimationEvents::CManager* __fastcall GetAnimManager();   // 0x006F90B0
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                    // +0x20
-    CInterfaceMap m_interfaces;                        // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                            // +0x91 bit 0
-    template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CTCWeaponTrail { public:                                // interface 0x4c
     long GetStrikeEventIndexFromEventName(const CCharString& eventName);   // 0x0076DF90
 };
@@ -228,9 +210,9 @@ void CCombatActionBase::SetupCombatStrikeEvents()
                 startFrame = 1;
             CThing* creature = ((CThing*)PCreature.GetPItem());
             CThing* weapon = GetThingDoingDamageFromCreatureAndEventName(creature, it->Name, isWeapon, legacy, primaryLegacy);
-            if (weapon && !weapon->Dead) {
+            if (weapon && !weapon->IsDead()) {
                 CTCWeaponTrail* trail;
-                if (weapon->GetInterface(&trail, 0x4c)) {
+                if (weapon->GetTC(TCI_WEAPON_TRAIL, &trail)) {
                     long index = trail->GetStrikeEventIndexFromEventName(it->Name);
                     CCharStringVector helperNames;
                     GetHelperPointNamesFromStrikeEventName(it->Name, helperNames, isWeapon, legacy, primaryLegacy);

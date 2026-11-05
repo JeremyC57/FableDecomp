@@ -1,4 +1,5 @@
 // CTCInventoryQuests::GetQuestPositionAndRemoveIt(long questDefIndex) -- finds the live quest thing of the given def in the quest list, erases it and returns its former position (-1 when absent)
+// Leaf: ?GetQuestPositionAndRemoveIt@CTCInventoryQuests@@QAEJJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0061A2C0, length 153 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the `__fastcall` STLport
 // __copy<CIntelligentPointer<CThing>*>(first, last, result, const random_access_iterator_tag&, int*) @ 0x004AA610
@@ -8,13 +9,7 @@
 // erase(iterator), whose tag temporary lands in the dead `questDefIndex` slot.
 // Layout: retail CTCInventoryQuests quest list at +0x178 (12-byte vector of 8-byte CIntelligentPointer<CThing>; local model).
 struct random_access_iterator_tag { random_access_iterator_tag() {} };
-class CThing {
-public:
-    unsigned char  _pad00[0x8c];
-    unsigned short DefIndex;                    // +0x8c
-    unsigned char  _pad8e[0x91 - 0x8e];
-    unsigned char  Dead : 1;                    // +0x91 bit 0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -50,7 +45,7 @@ struct CThingPointerVector {                    // STLport vector<CIntelligentPo
         _M_finish->~CThingPointer();
     }
 };
-inline bool IsThingAlive(const CThing* thing) { return thing && !thing->Dead; }
+inline bool IsThingAlive(const CThing* thing) { return thing && !thing->IsDead(); }
 
 class CTCInventoryQuests {
 public:
@@ -63,7 +58,7 @@ long CTCInventoryQuests::GetQuestPositionAndRemoveIt(long questDefIndex)
 {
     for (CThingPointer* it = Quests.begin(); it != Quests.end(); ++it) {
         CThing* quest = it->GetPItem();
-        if (IsThingAlive(quest) && quest->DefIndex == questDefIndex) {
+        if (IsThingAlive(quest) && quest->GetDefGlobalIndex() == questDefIndex) {
             long position = it - Quests.begin();
             Quests.erase(it);
             return position;

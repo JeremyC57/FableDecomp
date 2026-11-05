@@ -52,20 +52,9 @@ class CTCPhysicsBase { public:
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 #pragma pack(push, 1)
 class CCombatActionBase { public:
@@ -86,10 +75,10 @@ void CCreatureAction_ProjectileCrouch::FrameUpdate()
     CCombatActionBase::FrameUpdate();
     if (!TurnToFaceTarget)
         return;
-    const C3DVector& position = PCreature.GetPItem()->GetPos();
+    const C3DVector& position = PCreature.Get()->GetPos();
     C3DVector toTarget = FacePos - position;
     toTarget.Normalise();
-    C3DVector facing = PCreature.GetPItem()->GetPhysicsTC()->GetFacingVector();
+    C3DVector facing = PCreature.Get()->GetPhysicsTC()->GetFacingVector();
     C3DVector desired = facing;
     if (facing.Dot(toTarget) < 0.9962f) {
         C3DVector side = facing;
@@ -100,7 +89,7 @@ void CCreatureAction_ProjectileCrouch::FrameUpdate()
             desired.RotateXY(-0.013888889f);
     } else
         desired = toTarget;
-    CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysicsTC();
+    CTCPhysicsBase* physics = PCreature.Get()->GetPhysicsTC();
     float angle = WrapAngle((float)atan2(desired.X, desired.Y) * 0.15915494f);
     physics->SetFacingAngleXY(angle);
 }

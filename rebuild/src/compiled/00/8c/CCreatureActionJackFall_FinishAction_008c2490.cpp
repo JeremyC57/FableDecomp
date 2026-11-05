@@ -19,20 +19,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCCreatureModeManager { public:             // interface type 0x31
     bool HasMode(unsigned long mode);       // 0x0073A8A0
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
@@ -53,7 +42,7 @@ class CCombatActionBase : public CCreatureActionBase { public:          // retai
     unsigned char _combat[0x114 - 0xa8];    // +0xa8
     virtual ~CCombatActionBase();                   protected: // 0x0062E900
     virtual void FinishAction(); public:            // 0x00859A20
-    CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
+    CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.Get(); }
 };
 namespace N_008c3810 { struct CCreatureAction_GoUnderground : CCombatActionBase {
     CCreatureAction_GoUnderground(CThingCreatureBase* creature);   // 0x008C3810
@@ -65,7 +54,7 @@ class CCreatureAction_JackFall : public CCombatActionBase { public:
 void CCreatureAction_JackFall::FinishAction()
 {
     CTCCreatureModeManager* modes;
-    PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
+    PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modes);
     if (modes->HasMode(0x33))
         modes->RemoveMode(0x33);
     CThingCreatureBase* creature = GetCreature();

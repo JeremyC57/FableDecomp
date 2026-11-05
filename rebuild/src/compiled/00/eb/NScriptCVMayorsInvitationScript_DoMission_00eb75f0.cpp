@@ -23,12 +23,14 @@ void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 struct CScriptThingImp {                                 // the game-side thing behind a CScriptThing
     virtual void i0(); virtual void i1(); virtual void i2(); virtual void i3(); virtual void i4(); virtual void i5();
     virtual const C3DVector& GetPosition() const;        // slot 6 (+0x18)
 };
 class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     CCountedPointer<CScriptThingImp> PImp;               // +0x04 Data, +0x08 Info
     CScriptThing() {}
     virtual ~CScriptThing();                             // 0x004AA840
@@ -41,7 +43,7 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
     virtual void s61(); virtual void s62(); virtual void s63(); virtual void s64(); virtual void s65(); virtual void s66(); virtual void s67(); virtual void s68(); virtual void s69(); virtual void s70();
     virtual void s71(); virtual void s72(); virtual void s73(); virtual void s74();
     virtual bool IsAlive() const;                        // slot 75 (+0x12c) 0x004AB130
-    const C3DVector& GetPosition() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPosition(); }
+    const C3DVector& GetPosition() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }
     __forceinline CScriptThing& operator=(const CScriptThing& other)
     {
         PImp = other.PImp;

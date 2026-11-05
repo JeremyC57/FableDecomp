@@ -1,4 +1,5 @@
 // CQuestManager::ResetPositionOfAllQuestCards() -- while the hero lives, move every living in-limbo quest-card thing (active and completed lists) onto the hero's position through its physics component
+// Leaf: ?ResetPositionOfAllQuestCards@CQuestManager@@QAEXXZ
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
@@ -22,20 +23,9 @@ class CTCPhysicsBase { public:
     virtual void v30();
     virtual void ResetPosition(const C3DVector& position);   // slot 31 (0x006B01D0 in the base)
 };
-class CThing { public:                                  // retail CThing (local model: offsets PDB -0x10 past the containers)
-    unsigned char   _pad00[0x60];
-    CTCPhysicsBase* PhysicsTC;                   // +0x60 (PDB +0x70)
-    unsigned char   _pad64[0x91 - 0x64];
-    unsigned char   Dead : 1;                    // +0x91 bit 0 (PDB +0xa1)
-    unsigned char   CreatedByOwnerThingCreation : 1;
-    unsigned char   IncludeInThingScans : 1;
-    unsigned char   Activated : 1;
-    unsigned char   GloballyLoaded : 1;
-    unsigned char   InLimbo : 1;                 // bit 5
-    unsigned char   KillLocked : 1;
-    unsigned char   CreatedBySerialisation : 1;
-    const C3DVector& GetPos() const;        // 0x004C73D0
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
@@ -85,21 +75,21 @@ class CQuestManager { public:
 void CQuestManager::ResetPositionOfAllQuestCards()
 {
     CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
-    if (hero == 0 || hero->Dead)
+    if (hero == 0 || hero->IsDead())
         return;
     CCardNode* node;
     for (node = ActiveQuestCards->_M_next; node != ActiveQuestCards; node = node->_M_next) {
         CThing* card = node->_M_data.GetPItem();
-        if (card && !card->Dead && card->InLimbo) {
-            CTCPhysicsBase* physics = card->PhysicsTC;
+        if (card && !card->IsDead() && card->IsInLimbo()) {
+            CTCPhysicsBase* physics = card->GetPhysicsTC();
             if (physics)
                 physics->ResetPosition(hero->GetPos());
         }
     }
     for (node = CompletedQuestCards->_M_next; node != CompletedQuestCards; node = node->_M_next) {
         CThing* card = node->_M_data.GetPItem();
-        if (card && !card->Dead && card->InLimbo) {
-            CTCPhysicsBase* physics = card->PhysicsTC;
+        if (card && !card->IsDead() && card->IsInLimbo()) {
+            CTCPhysicsBase* physics = card->GetPhysicsTC();
             if (physics)
                 physics->ResetPosition(hero->GetPos());
         }

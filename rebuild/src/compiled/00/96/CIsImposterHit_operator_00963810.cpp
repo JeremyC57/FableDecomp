@@ -7,33 +7,14 @@
 // manifest label "CPlayer::HasMode" is propagated).
 // Model: the out-parameter GetInterface template of the landed CCreatureAction_JackFall::FinishAction 0x008C2490 (the
 // component stays in eax: `mov eax,[eax+4] ; push ; mov ecx,eax`); kind 0x42 is bit 2 of the presence word at +0x28.
-// Shape: `P.GetPItem() && !P.GetPItem()->Dead` re-calls the getter; the third call's thing serves both the presence test
+// Shape: `P.GetPItem() && !P.GetPItem()->IsDead()` re-calls the getter; the third call's thing serves both the presence test
 // and the lookup; the two-exit `mov al,1` / `xor al,al` tail.
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                    // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                        // +0x91 bit 0
-    unsigned char _flags91 : 7;
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -61,9 +42,9 @@ struct CIsImposterHit {
 
 bool CIsImposterHit::operator()() const
 {
-    if (PImposter.GetPItem() && !PImposter.GetPItem()->Dead) {
+    if (PImposter.GetPItem() && !PImposter.GetPItem()->IsDead()) {
         CTCCreatureModeManager* modes;
-        if (PImposter.GetPItem()->GetInterface(&modes, 0x42) && modes->IsModeActive(0x25))
+        if (PImposter.GetPItem()->GetTC(TCI_ENTITY_EVENTS, &modes) && modes->IsModeActive(0x25))
             return true;
     }
     return false;

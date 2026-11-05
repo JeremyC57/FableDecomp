@@ -26,16 +26,18 @@ struct CScriptThingImp {
     virtual void v07() const; virtual void v08() const; virtual void v09() const;
     virtual float GetHeading() const;                    // slot 10 (+0x28)
 };
-extern const C3DVector g_ZeroPos;                        // 0x0143E8E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     CCountedPointer<CScriptThingImp> PImp;               // +0x04
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);             // 0x004ABE90
     ~CScriptThing() { }                                  // out of line 0x004AA840
     __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
     virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
-    virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }   // slot 6
+    virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }   // slot 6
     virtual void v07() const; virtual void v08() const; virtual void v09() const;
     virtual float GetHeading() const { return PImp.Data == 0 ? 0.0f : PImp.Data->GetHeading(); }          // slot 10
 };

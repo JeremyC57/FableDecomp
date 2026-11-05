@@ -11,19 +11,9 @@
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<CIntelligentPointer<CThing> > {
@@ -33,7 +23,7 @@ template<> struct CPersistTraits<CIntelligentPointer<CThing> > {
 void CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryOut(CDataOutputStream* stream, const CIntelligentPointer<CThing>* value)
 {
     unsigned __int64 uid = 0;
-    if (value->GetPItem() != 0)
-        uid = value->GetPItem()->GetUniqueID();
+    if (value->Get() != 0)
+        uid = value->Get()->GetUniqueID();
     ((CDataOutputStream*)stream)->WriteUHUGE(uid);
 }

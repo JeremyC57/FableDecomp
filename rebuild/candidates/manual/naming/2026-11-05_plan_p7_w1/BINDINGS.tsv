@@ -1,0 +1,21 @@
+action	symbol	target	by_row	note
+ADD	?NullCoord@CScriptThing@@1VC3DVector@@A	0143e8e4	004aa940	w1_respells wave: the decided spelling the respelled rows emit
+ADD	?NullCoord@CScriptThing@@1VC3DVector@@A	0143e8e8	004aa940	w1_respells wave: the decided spelling the respelled rows emit
+RETIRE	?SetAsChanged@CTCGraphicAppearance@@QAEXK@Z	004bf9e0	00663f50	w1_respells wave: no landed binder left
+RETIRE	?SetLightingChannel@CTCGraphicAppearance@@QAEXPAVCEnginePrimitiveThemeChannelDesc@@_N1@Z	004bfb40	00663f50	w1_respells wave: no landed binder left
+RETIRE	?GetCameraFocalPos@CTCGraphicAppearance@@QAE?AVC3DVector@@M@Z	004c12d0	0084db30	w1_respells wave: no landed binder left
+RETIRE	?GetCameraFocalPos@CTCGraphicAppearance@@QBE?AVC3DVector@@M@Z	004c12d0	008534f0	w1_respells wave: no landed binder left
+RETIRE	?GetPlayer@CThing@@QAEAAVCPlayer@@XZ	004c7a10	0072caa0	w1_respells wave: no landed binder left
+KEEP	?GetPlayer@CThing@@QAEPAVCPlayer@@XZ	004c7a10	0085bd70	w1_respells wave: 1 binder(s) still bind it: 00733100
+RETIRE	?IsAffectedByBulletTime@CThing@@QAE_NXZ	004c9920	004c9d20	w1_respells wave: no landed binder left
+RETIRE	?IsProjectileWeapon@CTCWeapon@@QAE_NXZ	005daa40	0068f9d0	w1_respells wave: no landed binder left
+RETIRE	?GetThingInPrimarySlot@CTCCarrying@@QAEPAVCThing@@XZ	006a1440	00978e60	w1_respells wave: no landed binder left
+RETIRE	?GetPhysicsMeshObject@CTCPhysicsBase@@QAE?AVCPhysicsMeshObject@@XZ	006b0850	00970790	w1_respells wave: no landed binder left
+RETIRE	?GetGold@CTCGold@@QAEJXZ	007cbdc0	006c0160	w1_respells wave: no landed binder left
+RETIRE	?IsActionPointFree@CTCUserActionPointBase@@QAE_NXZ	007febf0	007babe0	w1_respells wave: no landed binder left
+RETIRE	?g_ZeroPos@@3VC3DVector@@B	0143e8e0	00d22880	w1_respells wave: no landed binder left
+KEEP	?g_ZeroVector@@3VC3DVector@@A	0143e8e0	004aa940	w1_respells wave: 4 binder(s) still bind it: 00d6b240,00d701c0,00d7f880,00e0f4e0
+RETIRE	?g_ZeroVector@@3VC3DVector@@B	0143e8e0	0089a6e0	w1_respells wave: no landed binder left
+RETIRE	?g_def_004aa980@@3HA	0143e8e0	004aa980	w1_respells wave: no landed binder left
+RETIRE	?g_ZeroVector@@3VC3DVector@@A	0143e8e4	004aa940	w1_respells wave: no landed binder left
+RETIRE	?g_ZeroVector@@3VC3DVector@@A	0143e8e8	004aa940	w1_respells wave: no landed binder left

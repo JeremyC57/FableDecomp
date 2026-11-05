@@ -5,10 +5,13 @@
 #include "engine/C3DVector.h"
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
+namespace NGraphicAppearance {
 class CTCGraphicAppearance {
 public:
-    C3DVector GetCameraFocalPos(float height);       // 0x004C12D0
+    C3DVector GetCameraFocalPos(float height) const;       // 0x004C12D0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CBaseObject;
 class CThing {
 public:

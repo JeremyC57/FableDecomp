@@ -15,12 +15,9 @@
 // Layout: CThing UniqueID +0x18, presence bits +0x20, Components +0x44, Dead +0x91 bit 0; CTCOnHeroPush DistPushed +0x0C,
 //         PushDir +0x10, FrameSincePushed +0x1C (Ego_r.pdb).
 #include "engine/C3DVector.h"
-class CCharString {
-public:
-    void* PStringData;
-    CCharString(const char* text, long length);      // 0x0099EBF0
-    ~CCharString();                                  // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 class CTCBase; class CTCParamsBase;
 class CTCOnHeroPush { public:                               // interface type 0xC4
     unsigned char _pad00[0x0c];
@@ -28,41 +25,11 @@ class CTCOnHeroPush { public:                               // interface type 0x
     C3DVector     PushDir;                           // +0x10
     long          FrameSincePushed;                  // +0x1c
 };
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayerManager;
-class CThing { public:
-    unsigned char    _pad00[0x18];
-    unsigned __int64 UniqueID;                       // +0x18
-    unsigned long    m_presentBits[9];               // +0x20 UsingComponents
-    CInterfaceMap    m_interfaces;                   // +0x44
-    unsigned char    _pad54[0x3d];
-    unsigned char    Dead : 1;                       // +0x91 bit 0
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline bool GetInterface(T** out, long wanted)
-    {
-        if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
-            long type = wanted;
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)type);
-            if (it == map->end() || wanted < it->first)
-                it = map->end();
-            *out = (T*)it->second;
-            return true;
-        }
-        return false;
-    }
-public:
-    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
-protected:
-    CPlayerManager& GetPlayerManager();   // 0x004C7A00
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
@@ -77,9 +44,9 @@ class CThingAICreature : public CThing { public:
 void CThingAICreature::OnHeroPush(CThing* pusher, float distance, const C3DVector& direction)
 {
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-    if (hero && !hero->Dead && hero->UniqueID == pusher->UniqueID && pusher->HasTC(0x51)) {
+    if (hero && !hero->IsDead() && hero->GetUniqueID() == pusher->GetUniqueID() && pusher->HasTC(TCI_HERO_OPINION_DEED_LOG)) {
         CTCOnHeroPush* push;
-        if (!GetInterface(&push, 0xc4)) {
+        if (!GetTC(TCI_ON_HERO_PUSH, &push)) {
             CCharString name("CTCOnHeroPush", -1);
             push = (CTCOnHeroPush*)AddTC(name, true, 0);
         }

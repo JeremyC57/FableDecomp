@@ -9,19 +9,13 @@
 //   size in ecx, the bool in dl), CThingDeadCreature::CThingDeadCreature() @ 0x00835C20.
 // Shape: the landed CThingObject::Alloc 0x00527320: `new (false) CThingDeadCreature` keeps its null test and tail-jumps to
 //   the constructor (which returns `this`).
-class CClass {
-public:
-    virtual void v00();
-};
-class CThing : public CClass {
-protected:
-    static void* __fastcall operator new(unsigned int size, bool flag);   // 0x004C7380
-public:
-    unsigned char _body[0xC0 - 4];
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_OPERATORNEW
+#include "engine/CThing.h"
+
 class CThingDeadCreature : public CThing {
 public:
-    unsigned char _body2[0xF0 - 0xC0];                                  // sizeof(CThingDeadCreature) = 0xF0 in retail
+    unsigned char _body2[0xF0 - 0x98];                                  // sizeof(CThingDeadCreature) = 0xF0 in retail
     CThingDeadCreature();                                                // 0x00835C20
     static CClass* __fastcall Alloc();
 };

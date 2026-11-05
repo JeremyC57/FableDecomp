@@ -19,20 +19,9 @@ class CThingPos : public CThing { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -54,6 +43,6 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
 
 bool CAIStateGroup_OpinionReactionRoot::TryAndLookOnAwarenessUpdate()
 {
-    CThingPos* pThing = ThingReactingTo.GetPItem();   // fetched before the literal pushes (a named local)
+    CThingPos* pThing = ThingReactingTo.Get();   // fetched before the literal pushes (a named local)
     return AIAction_LookAtPos(1, pThing->GetPos(), 0x21, 0.0027777f) == 2;
 }

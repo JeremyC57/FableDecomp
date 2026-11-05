@@ -20,22 +20,23 @@ class CTCBase;
 class CTCParamsBase;
 class CRightHandedSet;
 #include "engine/C3DVector.h"
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-};
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CEnginePrimitiveThemeChannelDesc;
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     unsigned char _pad00[0x40];
     unsigned char LightingChannel[4];                   // +0x40
-    void SetLightingChannel(CEnginePrimitiveThemeChannelDesc* channel, bool a, bool b);   // 0x004BFB40
+    void SetLightingChannel(const CEnginePrimitiveThemeChannelDesc& channel, bool a, bool b);   // 0x004BFB40 (Ego_r.pdb / FableWin.pdb: by const reference)
     void SetAsChanged(unsigned long what);              // 0x004BF9E0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -51,25 +52,7 @@ class CTCPhysicsBase { public:
     virtual void SetSpin(float spin);                   // slot 66 (+0x108)
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
-class CThing { public:
-    unsigned char         _pad00[0x20];
-    unsigned long         m_presentBits[9];             // +0x20
-    CInterfaceMap         m_interfaces;                 // +0x44
-    unsigned char         _pad54[0xc];
-    CTCPhysicsBase*       Physics;                      // +0x60
-    CTCGraphicAppearance* Graphic;                      // +0x64
-    unsigned char         _pad68[0x91 - 0x68];
-    unsigned char         m_flags;                      // +0x91 bit 0: dead
-    CTCBase* AddTC(const CCharString& name, bool flag, const CTCParamsBase* params);   // 0x004C9D60
-    __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    template <class T> __forceinline T* GetTC(long type)
-    {
-        long key = type;
-        CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::value_type* it = map->LowerBound((const ETCInterfaceType&)key);
-        return (T*)((it == map->end() || type < it->first) ? map->end() : it)->second;
-    }
-};
+
 class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long def, const C3DVector& position, long kind, const CRightHandedSet* orientation,
                                            unsigned long flags, const CCharString& scriptName);   // 0x00703210 (Ego_r.pdb)
@@ -104,21 +87,21 @@ CThing* CTCContainerRewardHero::CreateNewObject(long def, const C3DVector& posit
                                                 const CCharString& scriptName)
 {
     CThing* thing = CThingObject::Create(def, position, 5, 0, 0, scriptName);
-    if (thing && !(thing->m_flags & 1)) {
-        thing->Physics->ApplyAcceleration(acceleration);
+    if (thing && !thing->IsDead()) {
+        thing->GetPhysicsTC()->ApplyAcceleration(acceleration);
         float spin = GFFloatRandom(1.0f, PeekWorld().GetWorldSeed());
-        thing->Physics->SetSpin(spin);
+        thing->GetPhysicsTC()->SetSpin(spin);
         CTCSolidToThing* solid = (CTCSolidToThing*)thing->AddTC("CTCSolidToThing", false, 0);
         solid->AddThingNotSolidTo(ParentThing);
-        CTCGraphicAppearance* containerGraphic = ParentThing->Graphic;
-        if (containerGraphic && thing->Graphic) {
-            thing->Graphic->SetLightingChannel((CEnginePrimitiveThemeChannelDesc*)containerGraphic->LightingChannel, true, true);
-            thing->Graphic->SetAsChanged(4);
+        CTCGraphicAppearance* containerGraphic = ParentThing->GetTCGraphicAppearance();
+        if (containerGraphic && thing->GetTCGraphicAppearance()) {
+            thing->GetTCGraphicAppearance()->SetLightingChannel(*(const CEnginePrimitiveThemeChannelDesc*)containerGraphic->LightingChannel, true, true);
+            thing->GetTCGraphicAppearance()->SetAsChanged(4);
         }
         if (CreateObjectsThatTimeOut) {
             CTCLifeTimer* timer;
-            if (thing->HasTC(0x103))
-                timer = thing->GetTC<CTCLifeTimer>(0x103);
+            if (thing->HasTC(TCI_LIFE_TIMER))
+                timer = ((CTCLifeTimer*)&thing->GetTC(TCI_LIFE_TIMER));
             else
                 timer = (CTCLifeTimer*)thing->AddTC("CTCLifeTimer", false, 0);
             timer->SetLifeTime(90.0f);

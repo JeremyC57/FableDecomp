@@ -9,18 +9,9 @@
 //   and the intelligent pointers into bytes, so the class is modelled locally from the PDB layout.
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                          // Ego_r: vptr + PData, 8 bytes
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 #include "engine/CThing.h"
 class CThingTrackNode : public CThing { };
 class CVillageTaskBase {                                  // RTTI base; 8 bytes (vptr + one word)
@@ -38,5 +29,5 @@ public:
 };
 bool CVillageTaskPatrol::IsThingInvolvedWithTask(const CThing& thing) const
 {
-    return PatrolStart.GetPItem() == &thing || CreatureAssignedToTask.GetPItem() == &thing;
+    return PatrolStart.Get() == &thing || CreatureAssignedToTask.Get() == &thing;
 }

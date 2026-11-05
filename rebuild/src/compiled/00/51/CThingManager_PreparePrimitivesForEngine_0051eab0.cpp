@@ -79,7 +79,7 @@ public:
     unsigned char _pad84[0x91 - 0x84];
     unsigned char Dead : 1;                                    // +0x91 bit 0
     bool IsRenderedThisFrame();                                // 0x004C78F0
-    bool IsAffectedByBulletTime();                             // 0x004C9920
+    bool IsAffectedByBulletTime() const;                             // 0x004C9920
 };
 
 struct ThingLList {

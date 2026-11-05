@@ -8,38 +8,17 @@
 // CWideString::CWideString(const CWideString&) @ 0x0099B720 from the empty-string global 0x013BCA24.
 // Shape: the inline IsThingAlive test (null, dead bit 0 of +0x91) and the bitset test share the empty-string arm; the
 // GetInterface key is homed in the dead `thing` slot.
-class CWideString { public:
-    void* PStringData;
-    CWideString(const CWideString& other);      // 0x0099B720
-};
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#define FABLE_RETAIL_CWIDESTRING
+#include "engine/CThing.h"
 extern const CWideString g_EmptyWideString;     // 0x013BCA24
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                     // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((void*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
-inline bool IsThingAlive(const CThing* thing) { return thing && !thing->Dead; }
+
+inline bool IsThingAlive(const CThing* thing) { return thing && !thing->IsDead(); }
 
 class CTCQuestCard { public:                           // interface type 0x6C
     CWideString GetQuestName() const;           // 0x00702310
@@ -52,8 +31,8 @@ public:
 
 CWideString CTCInventoryQuests::GetCategoryNameFromAssociation(CThing* thing) const
 {
-    CTCQuestCard* questCard;
-    if (IsThingAlive(thing) && thing->GetInterface(&questCard, 0x6C))
+    const CTCQuestCard* questCard;
+    if (IsThingAlive(thing) && thing->PeekTC(TCI_QUEST_CARD, &questCard))
         return questCard->GetQuestName();
     return g_EmptyWideString;
 }

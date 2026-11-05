@@ -8,22 +8,10 @@
 // Header debt: engine/CVillageTaskHorn.h is a flat byte layout without its CVillageTaskBase base or methods; modelled locally.
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // Ego_r: vptr + PData, 8 bytes
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
+
 #include "engine/CThing.h"
 class CThingObject : public CThing { };
 class CVillageTaskBase {                               // retail: vptr + one dword
@@ -39,7 +27,7 @@ public:
 };
 void CVillageTaskHorn::RemoveThingFromTask(const CThing& thing, bool& removed)
 {
-    if (PHorn.GetPItem() == &thing) {
+    if (PHorn.Get() == &thing) {
         PHorn = 0;
         removed = true;
     } else {

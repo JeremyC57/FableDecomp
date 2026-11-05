@@ -12,10 +12,9 @@
 //   restated here with the same layout.
 class CGameDefinitionManager;
 
-class CThing {
-public:
-    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 
 class CTCBase {
 public:

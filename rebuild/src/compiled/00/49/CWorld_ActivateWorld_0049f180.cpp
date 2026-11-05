@@ -27,20 +27,14 @@
 #define CWorld CWorld_PDB
 #include "engine/CWorld.h"
 #undef CWorld
-class CCharString { public:
-    void* PStringData;
-    CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    ~CCharString();                                      // 0x0099EAE0
-};
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CThing.h"
 #include "engine/CArray.h"
 namespace NProfileTimer {
 void __fastcall StartProfile(const CCharString& name, long level);      // 0x009D8240 (empty in retail)
 void __fastcall EndProfile(long level);                                 // 0x009D8250 (empty in retail)
 }
-class CThing { public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                              // +0x91 bit 0
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                           // 0x00487DC0
@@ -102,7 +96,7 @@ void CWorld::ActivateWorld(bool loadedGame)
 {
     NProfileTimer::StartProfile("Init Characters", 0);
     CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
-    if (!hero || hero->Dead)
+    if (!hero || hero->IsDead())
         PlayerManager->InitPlayerCharacter(loadedGame);
     PEnvironment_ptr->SpellEffectInterpolator->RefreshScreenEffects();
     NProfileTimer::StartProfile("Init GUI", 0);

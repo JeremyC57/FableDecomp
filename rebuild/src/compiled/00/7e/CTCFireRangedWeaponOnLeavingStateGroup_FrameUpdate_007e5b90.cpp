@@ -71,7 +71,7 @@ class CTCCarrying { public:
     CThing* GetThingInPrimarySlot() const;            // 0x006A1440
 };
 class CTCWeapon { public:
-    bool IsProjectileWeapon();                  // 0x005DAA40
+    bool IsProjectileWeapon() const;                  // 0x005DAA40
     bool IsProjectileWeaponLoaded();            // 0x005DA980
     void SetFireRequested();                    // 0x005DA4C0 (+0x18 = 1)
 };

@@ -69,17 +69,9 @@ public:
 class CThingCreatureBase : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {
-public:
-    virtual ~CBaseIntelligentPointer();               // 0x00A01C10
-    CBaseObject* GetPItem() const;                    // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCPhysicsBase;
 class CCreatureActionBase {                           // retail sizeof 0xa8
 public:
@@ -102,20 +94,20 @@ public:
 void CCreatureAction_NavToPos::FrameUpdate()
 {
     CTCCreatureNavigation* navigation;
-    PCreature.GetPItem()->GetTC(&navigation);
+    PCreature.Get()->GetTC(&navigation);
     CNavigationInput input(NavPos, 0.0f, MOVEMENT_TYPE_3);
     CTCCreatureNavigation::CCreatureNavOutput output = navigation->GetNextNavPosOnRoute(input, false, true, true, false, false);
     if (output.NavResult == NAV_FAILED) {
-        SetMoveToPos(PCreature.GetPItem()->GetPos());
+        SetMoveToPos(PCreature.Get()->GetPos());
         FinishAction();
     } else if (output.NavResult == NAV_MOVING) {
-        C3DVector position = PCreature.GetPItem()->GetPos() + output.MovementVector;
+        C3DVector position = PCreature.Get()->GetPos() + output.MovementVector;
         SetMoveToPos(position);
         CTCLook* look;
-        if (PCreature.GetPItem()->GetTC(&look) && !PCreature.GetPItem()->GetPlayer().ZTargeting)
+        if (PCreature.Get()->GetTC(&look) && !PCreature.Get()->GetPlayer().ZTargeting)
             look->LookAtPos(position, 0x11);
     } else if (output.NavResult == NAV_ARRIVED) {
-        SetMoveToPos(PCreature.GetPItem()->GetPos());
+        SetMoveToPos(PCreature.Get()->GetPos());
         FinishAction();
     }
     CCreatureActionBase::FrameUpdate();

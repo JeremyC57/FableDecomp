@@ -36,13 +36,12 @@ class CWideString { public:
 void operator delete(void* p);                          // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
-extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
+__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 #include "engine/CPredicateBase.h"                    // NScript::CPredicateBase, vtable 0x012C2FF4
 namespace NScript {
 class CIsThingAlive : public CPredicateBase { public:               // vtable 0x012C32F0

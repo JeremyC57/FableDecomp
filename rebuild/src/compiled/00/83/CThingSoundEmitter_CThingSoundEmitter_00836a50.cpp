@@ -28,24 +28,11 @@ extern CASoundManager* PSoundManager;                     // 0x013B8394
 #pragma pack(push, 1)
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01237F1C
-public:
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 
 #include "engine/C3DVector.h"
 
@@ -64,6 +51,6 @@ CThingSoundEmitter::~CThingSoundEmitter()
     if (m_pSoundObject)
         ((CSoundSystem*)PSoundManager)->ReleaseSoundObject(m_pSoundObject);
     CIntelligentPointer<const CThing> cleared(0);
-    const CThing* item = cleared.GetPItem();
-    PAttachedThing.SetPItem(item);
+    const CThing* item = cleared.Get();
+    PAttachedThing.Set(item);
 }

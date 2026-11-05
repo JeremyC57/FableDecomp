@@ -20,13 +20,9 @@ class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThi
 public:
     static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
-class CThing {
-public:
-    unsigned char  _pad00[0x91];
-    unsigned char  m_dead : 1;                     // +0x91 bit 0
-    unsigned char  m_91_1 : 7;
-    CScriptThing GetScriptThing() const;           // 0x004C7E50
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_STATEACCESS
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -58,7 +54,7 @@ public:
 CScriptThing CScriptGameResourceObjectScriptedThing::GetScriptThing() const
 {
     if (PThing.GetPItem()) {
-        if (!PThing.GetPItem()->m_dead)
+        if (!PThing.GetPItem()->IsDead())
             return PThing.GetPItem()->GetScriptThing();
     }
     return CGameScriptThing::CreateNullThing();

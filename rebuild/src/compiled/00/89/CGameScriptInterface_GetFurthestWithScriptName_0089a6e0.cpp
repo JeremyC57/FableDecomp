@@ -17,7 +17,6 @@
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 #include "engine/C3DVector.h"
-extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 struct CScriptThingImp {
     virtual void _i00();
     virtual void _i01();
@@ -125,6 +124,9 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
 };
 class CCharString { public: void* PStringData; };
 class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     CCountedScriptImp PImp;                             // +0x04
     CScriptThing() {}
     virtual ~CScriptThing() {}
@@ -133,7 +135,7 @@ class CScriptThing : public CBaseClass { public:                      // vtable 
     virtual void _slot3();
     virtual void _slot4();
     virtual void _slot5();
-    virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? g_ZeroVector : PImp.Data->GetPos(); }
+    virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? NullCoord : PImp.Data->GetPos(); }
     bool operator==(const CScriptThing& other) const { return PImp.Data->IsSameThing(other.PImp.Data); }
 };
 __forceinline void _Destroy(CScriptThing* first, CScriptThing* last)

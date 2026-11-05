@@ -21,22 +21,13 @@ class CTCBase;
 class CThingCreatureBase : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                               // Ego_r: vptr + PData, 8 bytes
-public:
-    CBaseIntelligentPointer();                                // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CBaseObject* GetPItem() const;                            // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                                // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 template <class T> inline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -82,7 +73,7 @@ bool CAIStateGroup_Guildmaster::IsStillRunnable()
         return false;
     const CTCTargetingBase* targeting;
     PBrain->PCreature->PeekTC(TCI_TARGETING, &targeting);
-    if (PEnemy.GetPItem() == targeting->GetPTargetedThing())
+    if (PEnemy.Get() == targeting->GetPTargetedThing())
         return true;
     return false;
 }

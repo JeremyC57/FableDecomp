@@ -26,7 +26,6 @@ void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
 #include "engine/C3DVector.h"
 extern const CCharString g_EmptyString;                // 0x0143E8EC
-extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 struct CScriptThingImpl {                              // the game-side thing behind CScriptThing::PImp
     virtual void i000() const;
     virtual const CCharString& GetDataString() const;   // slot 1 (+0x4)
@@ -46,10 +45,13 @@ struct CScriptThingImpl {                              // the game-side thing be
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
     virtual void s001() const; virtual void s002() const;
     virtual const CCharString& GetDataString() const { return !PImp.Data ? g_EmptyString : PImp.Data->GetDataString(); }   // slot 3 (+0xc)
     virtual void s004() const; virtual void s005() const;
-    virtual const C3DVector& GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPos(); }   // slot 6 (+0x18)
+    virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPos(); }   // slot 6 (+0x18)
     virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const;
     virtual void s015() const; virtual void s016() const; virtual void s017() const; virtual void s018() const; virtual void s019() const; virtual void s020() const; virtual void s021() const; virtual void s022() const;
     virtual void s023() const; virtual void s024() const; virtual void s025() const; virtual void s026() const; virtual void s027() const; virtual void s028() const; virtual void s029() const; virtual void s030() const;

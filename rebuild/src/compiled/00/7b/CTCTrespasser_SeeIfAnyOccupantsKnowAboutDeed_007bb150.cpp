@@ -22,20 +22,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CTCCreatureOpinionOfHero { public:
     bool KnowsOfDeed(long deedHandle, EOpinionDeedType type, bool includeReported);   // 0x00681AE0
@@ -73,7 +62,7 @@ bool CTCTrespasser::SeeIfAnyOccupantsKnowAboutDeed(long deedIndex, EOpinionDeedT
 {
     SOccupantNode* end = OccupantsOfCurrentTrespassingThing;
     for (SOccupantNode* node = end->_M_next; node != end; node = node->_M_next) {
-        CThing* occupant = node->_M_data.GetPItem();
+        CThing* occupant = node->_M_data.Get();
         if (occupant && occupant->HasTC(TCI_CREATURE_OPINION_OF_HERO)) {
             CTCCreatureOpinionOfHero* opinion = ((CTCCreatureOpinionOfHero*)&occupant->GetTC(TCI_CREATURE_OPINION_OF_HERO));
             if (opinion->KnowsOfDeed(DeedHandles[deedIndex], type, true)) {

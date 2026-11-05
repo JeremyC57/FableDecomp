@@ -18,26 +18,15 @@ bool __fastcall CompareActorRotations(CThingCreatureBase* creature, CThing* targ
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined, re-fetching GetPItem).
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -62,8 +51,8 @@ bool CCreatureAction_BanditKingAttack::IsToCauseRecoil() const
 {
     if (!ForceCauseRecoil) {
         if (IS_THING_ALIVE(PTarget)) {
-            CThingCreatureBase* creature = (CThingCreatureBase*)PCreature.GetPItem();
-            if (CompareActorRotations(creature, PTarget.GetPItem()))
+            CThingCreatureBase* creature = (CThingCreatureBase*)PCreature.Get();
+            if (CompareActorRotations(creature, PTarget.Get()))
                 return false;
         }
     }

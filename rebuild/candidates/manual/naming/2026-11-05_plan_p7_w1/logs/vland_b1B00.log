@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00939a50   WARN SHARED_HEADER_AVAILABLE CThing
+00939a50   WARN STANDIN_LEAF ??RCIsNearCampfireWithSpace@@QBE_NPAVCThing@@@Z (catalog CIsNearCampfireWithSpace::operator; names another function)
+00939a50   RELOCATION_MATCH PASS   operator
+  WARN leaf 'operator' matches no symbol in 00941be0.obj; graded the largest function
+  WARN leaf 'operator' matches no symbol in 00941be0.obj; graded the largest function
+00941be0   WARN STANDIN_LEAF ??RCIsFreeHopscotchBoard@@QAE_NPAUCThing_Retail@@@Z (catalog CIsFreeHopscotchBoard::operator; names another function)
+00941be0   RELOCATION_MATCH PASS   operator
+
+WINS: 2
+  00939a50 RELOCATION_MATCH CIsNearCampfireWithSpace::??RCIsNearCampfireWithSpace
+  00941be0 RELOCATION_MATCH CIsFreeHopscotchBoard::operator

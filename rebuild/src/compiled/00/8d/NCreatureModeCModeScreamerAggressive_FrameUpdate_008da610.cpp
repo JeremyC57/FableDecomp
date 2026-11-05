@@ -25,20 +25,9 @@ class CTCLook { public:                           // interface 0x43
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
     virtual void v00();
@@ -62,7 +51,7 @@ struct CModeScreamerAggressive : CModeStandBase {
 void NCreatureMode::CModeScreamerAggressive::FrameUpdate()
 {
     CTCLook* look;
-    if (PTarget.GetPItem() != 0 && !PTarget.GetPItem()->IsDead() && ParentThing->GetTC(TCI_LOOK, &look))
-        look->LookAtPos(&PTarget.GetPItem()->GetPos(), 0x67);
+    if (PTarget.Get() != 0 && !PTarget.Get()->IsDead() && ParentThing->GetTC(TCI_LOOK, &look))
+        look->LookAtPos(&PTarget.Get()->GetPos(), 0x67);
     CModeBase::FrameUpdate();
 }

@@ -30,32 +30,11 @@ class CGameEvent { public:
 };
 
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
-    unsigned char _pad00[0x20];
-    unsigned long UsingComponents[9];              // +0x20 bitset<274>
-    CInterfaceMap Components;                      // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                        // +0x91 bit 0
-    bool HasTC(long type) const
-    {
-        if (UsingComponents[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    template<class T> __forceinline T* GetTC(long interfaceType)
-    {
-        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-        CInterfaceMap* map = &Components;
-        CInterfaceMap::value_type* it = map->LowerBound(type);
-        if (it == map->end() || interfaceType < it->first)
-            it = map->end();
-        return (T*)it->second;
-    }
-};
 class CThingPlayerCreature : public CThing { };
 
 class CTCInventory { public:
@@ -71,13 +50,13 @@ class CWorld { public:
 void CWorld::EAUseQuickAccessItemInCutscene(const CGameEvent* event)
 {
     CThing* hero = GetPlayer(event->Player)->GetPControlledCreature();
-    if (hero && !hero->Dead)
+    if (hero && !hero->IsDead())
     {
         CMemoryBuffer buffer;
         event->GetData(buffer);
-        if (hero->HasTC(0x11))
+        if (hero->HasTC(TCI_INVENTORY))
         {
-            CTCInventory* inventory = hero->GetTC<CTCInventory>(0x11);
+            CTCInventory* inventory = ((CTCInventory*)&hero->GetTC(TCI_INVENTORY));
             if (inventory)
             {
                 long slot;

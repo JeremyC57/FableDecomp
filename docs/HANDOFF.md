@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunk 782 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 landed; chunk 782 landing; chunk 783 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -22,10 +22,13 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     coordinator regrade 2,006/2,006 PASS. The rebuilt plan tools are committed in `plan_p6_w1/scripts/`. Phase 7 brief:
     `plan_p6_w1/NEXT.md` (2,431 deferred CThing rows by class, waves 3-4 CIntelligentPointer / CTCBase / CThingCreatureBase,
     62 old-spelling binders in `plan_p6_w2/CALLERS.tsv`). Refresh the index first (`$S/plan/symindex2.py $S/plan/idx --all`).
-  - **Running (the user: "Start plan phase 7 on one agent, and continue authoring chunks on another agent"):** plan phase 7
-    (`$S/plan/p7`, brief `$S/plan/BRIEF_PLAN7.md`, tools copied from `plan_p6_w1/scripts/`; hand-back to `$S/plan/p7/handback/`)
-    and chunk 782 (`$S/w22/agent782`: CTCUnholyPower and CEnginePrimitiveManagerDecal ctors, four quest-script bodies). The symbol
-    index is being refreshed at 248ea936c (`$S/plan/idx7.log`) for phase 7.
+  - **Plan phase 7 applied** (`naming/2026-11-05_plan_p7_w1/README.md`): w1 87 old-spelling binders (incl. CScriptThing::NullCoord
+    0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
+    6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
+    wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
+  - **Running (the user: "continue authoring chunks on another agent"):** chunk 783 (`$S/w22/agent783`: CNavigatorManager,
+    CTexture, CSpecialAbilitiesBerserkDef::operator=, CTCActionUseBed::OnActionUse, two guard Mains). Chunk 782 is back (4 of 6
+    matched, `$S/w22/agent782`) and lands next as `batches/2026-11-05_landing_i`.
   - Open naming decision: 0x0122DEDC (the shared 0.0f, 30+ spellings, no PDB name), like EPSILON / TWO_PI on 2026-11-01.
   - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.
 - Paused state before that (2026-11-05):

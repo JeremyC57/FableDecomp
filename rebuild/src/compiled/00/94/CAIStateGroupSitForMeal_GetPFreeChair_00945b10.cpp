@@ -24,26 +24,15 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -84,7 +73,7 @@ struct CTCBuildingContents {                    // interface type 0x21 component
 class CThingAICreature : public CThing { public:
     unsigned char _pad2[0x168 - sizeof(CThing)];
     CIntelligentPointer<CThing> PHome;              // +0x168 CIntelligentPointer<CThingBuilding>
-    CThing* GetPHome() const { return PHome.GetPItem(); }   // inline accessor: `lea ecx,[eax+168h]`
+    CThing* GetPHome() const { return PHome.Get(); }   // inline accessor: `lea ecx,[eax+168h]`
 };
 
 struct CIsFreeChairInBuilding {                 // predicate holding the building being searched
@@ -134,7 +123,7 @@ CThing* CAIStateGroup_SitForMeal::GetPFreeChair()
         SThingListIterator it = FindIfFreeChair(contents->Things.begin(), contents->Things.end(),
                                                 CIsFreeChairInBuilding(home));
         if (it.node != contents->Things.end().node) {
-            CThingChair* chair = (CThingChair*)it.node->value.GetPItem();
+            CThingChair* chair = (CThingChair*)it.node->value.Get();
             if (chair->ThingFlags & 0x800)
                 return (CThing*)chair;
         }

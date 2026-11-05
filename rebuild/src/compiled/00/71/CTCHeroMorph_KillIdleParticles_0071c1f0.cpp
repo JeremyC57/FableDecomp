@@ -13,22 +13,9 @@ extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    virtual ~CIntelligentPointer();
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
 
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
 template <class T> struct SListNode {
     SListNode* _M_next;
     SListNode* _M_prev;
@@ -74,8 +61,8 @@ public:
 void CTCHeroMorph::KillIdleParticles()
 {
     while (!IdleParticleEmitters.empty()) {
-        if (IdleParticleEmitters._M_node->_M_prev->_M_data.GetPItem())
-            IdleParticleEmitters.back().GetPItem()->Kill(true);
+        if (IdleParticleEmitters._M_node->_M_prev->_M_data.Get())
+            IdleParticleEmitters.back().Get()->Kill(true);
         IdleParticleEmitters.pop_back();
     }
 }

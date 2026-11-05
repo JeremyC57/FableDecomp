@@ -35,20 +35,9 @@ class CTCCarrying { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CCombatActionBase { public:
     virtual void v00();
@@ -72,10 +61,10 @@ void CCreatureAction_TrollThrowProjectile::FrameUpdate()
     if (ShotAlpha > 255)
         ShotAlpha = 255;
     CTCCarrying* carrying;
-    if (PCreature.GetPItem()->GetTC(TCI_CARRYING, &carrying) && carrying->GetThingInPrimarySlot() == 0)
+    if (PCreature.Get()->GetTC(TCI_CARRYING, &carrying) && carrying->GetThingInPrimarySlot() == 0)
         ShotAlpha = 255;
-    if (PShot.GetPItem() && !PShot.GetPItem()->IsDead()) {
-        CThing* shot = PShot.GetPItem();
+    if (PShot.Get() && !PShot.Get()->IsDead()) {
+        CThing* shot = PShot.Get();
         shot->GetTCGraphicAppearance()->SetAlpha((unsigned char)ShotAlpha);
     }
     CCombatActionBase::FrameUpdate();

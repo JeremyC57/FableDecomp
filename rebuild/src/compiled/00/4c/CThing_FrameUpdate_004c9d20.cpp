@@ -40,7 +40,7 @@ private: public:
     virtual void v16(); virtual void v17(); virtual void v18();
     virtual void WorldUpdate();                      // slot 19 (+0x4c)
     virtual void WorldUpdateBulletTime();            // slot 20 (+0x50)
-    bool IsAffectedByBulletTime();                   // 0x004C9920
+    bool IsAffectedByBulletTime() const;                   // 0x004C9920
     void FrameUpdate();
 };
 

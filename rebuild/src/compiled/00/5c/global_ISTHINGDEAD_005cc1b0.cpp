@@ -10,22 +10,13 @@
 class CBaseObject;
 class CBaseObjectPointer;
 #include "engine/CThing.h"
-class CBaseIntelligentPointer {                           // vtable 0x0129C95C (vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                            // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                   // 0x00A01C10
-    CBaseObject* GetPItem() const;                        // 0x00A01B50
-private:
-    CBaseObjectPointer* PData;                            // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 template <class T> bool __fastcall IS_THING_DEAD(const T& thing)
 {
-    if (thing.GetPItem() != 0) {
-        if (!thing.GetPItem()->IsDead())
+    if (thing.Get() != 0) {
+        if (!thing.Get()->IsDead())
             return false;
     }
     return true;

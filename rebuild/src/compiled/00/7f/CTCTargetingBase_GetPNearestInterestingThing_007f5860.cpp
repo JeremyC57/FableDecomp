@@ -26,11 +26,11 @@ class CTCTargetingBase { public:
     bool          ScriptOverrideIgnoreEverything;                  // +0x0c
     CIntelligentPointer<CThing> PNearestInterestingThing;          // +0x0d
     CIntelligentPointer<CThing> PScriptOverrideInterestingThing;   // +0x15
-    CThing* GetPNearestInterestingThing();
+    CThing* GetPNearestInterestingThing() const;
 };
 #pragma pack(pop)
 
-CThing* CTCTargetingBase::GetPNearestInterestingThing()
+CThing* CTCTargetingBase::GetPNearestInterestingThing() const
 {
     if (ScriptOverrideIgnoreEverything)
         return 0;

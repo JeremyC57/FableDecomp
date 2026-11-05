@@ -25,35 +25,10 @@ class CTCBase;
 
 #include "engine/C3DVector.h"
 
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-
-class CThing {
-public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                         // +0x20 UsingComponents bitset
-    CInterfaceMap m_interfaces;                             // +0x44 Components
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                                 // +0x91 bit 0
-    unsigned char CreatedByOwnerThingCreation : 1;
-
-    const C3DVector& GetPos() const;                   // 0x004C73D0
-    __forceinline bool HasTC(long type) const
-    {
-        if (m_presentBits[type >> 5] & (1UL << (type & 31)))
-            return true;
-        return false;
-    }
-    __forceinline const CTCBase* PeekTC(long type) const
-    {
-        ETCInterfaceType key = (ETCInterfaceType)(type);
-        const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::value_type* it = map->LowerBound(key);
-        const CInterfaceMap::value_type* end = map->end();
-        return (it == end || type < it->first ? end : it)->second;
-    }
-};
 
 class CThingCreatureBase : public CThing {
 public:
@@ -91,13 +66,13 @@ namespace {
 bool __fastcall IsAwareOfThingImplementation(const CThingAICreature* creature, const CThing* thing, bool check_line_of_sight,
                                              bool (CTCPerceiveThing::*is_aware)() const)
 {
-    if (thing == 0 || thing->Dead)
+    if (thing == 0 || thing->IsDead())
         return false;
-    if (creature == 0 || creature->Dead)
+    if (creature == 0 || creature->IsDead())
         return false;
-    if (!creature->HasTC(0x34))
+    if (!creature->HasTC(TCI_PERCEIVE_THING))
         return false;
-    const CTCPerceiveThing* perceive = (const CTCPerceiveThing*)creature->PeekTC(0x34);
+    const CTCPerceiveThing* perceive = (const CTCPerceiveThing*)((const CTCPerceiveThing*)&creature->GetTC(TCI_PERCEIVE_THING));
     if (creature == thing)
         return true;
     if (thing == perceive->GetPerceivedThing() && (perceive->*is_aware)())
@@ -112,8 +87,8 @@ bool __fastcall IsAwareOfThingImplementation(const CThingAICreature* creature, c
             if (!check_line_of_sight)
                 return true;
             const CTCCreatureNavigation* navigation;
-            if (creature->HasTC(7))
-                navigation = (const CTCCreatureNavigation*)creature->PeekTC(7);
+            if (creature->HasTC(TCI_NAVIGATION))
+                navigation = (const CTCCreatureNavigation*)((const CTCCreatureNavigation*)&creature->GetTC(TCI_NAVIGATION));
             if (navigation->IsPosNavLineOfSightToPos(creature->GetPos(), thing->GetPos()))
                 return true;
         }

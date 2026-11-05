@@ -33,33 +33,14 @@ __forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 }
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {            // CIntelligentPointer<CThing>, vtable 0x01238C6C
-public:
-    CIntelligentPointer(T* item) { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other)
-    {
-        SetPItem(other.GetPItem());
-        return *this;
-    }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN
+#include "engine/CIntelligentPointer.h"
 
-public:
-    T* GetPItem() const { return reinterpret_cast<T*>(CBaseIntelligentPointer::GetPItem()); }
-public:
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
-};
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -75,10 +56,10 @@ class CTCCoopSpirit { public:
 void CTCCoopSpirit::SetAppearanceParticle(const CCharString& particleThingName)
 {
     if (IS_THING_ALIVE(PAppearanceParticle))
-        PAppearanceParticle.GetPItem()->Kill(true);
+        PAppearanceParticle.Get()->Kill(true);
     PAppearanceParticle = CIntelligentPointer<CThing>(Create(particleThingName, ParentThing->GetPos(), false));
     if (IS_THING_ALIVE(PAppearanceParticle)) {
-        CTCDParticleEmitter* emitter = GetParticleEmitter(PAppearanceParticle.GetPItem());
+        CTCDParticleEmitter* emitter = GetParticleEmitter(PAppearanceParticle.Get());
         {
             CCharString noBone("", -1);
             emitter->AttachToThing(*ParentThing, 0x88, noBone, 0, 1.1f);

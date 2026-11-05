@@ -19,14 +19,8 @@ public:
     C3DVector GetFocalPos(float scale) const;                // 0x004C1060
 };
 }
-class CThing {
-public:
-    unsigned char _pad00[0x64];
-    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64
-    unsigned char _pad68[0x91 - 0x68];
-    unsigned char Dead : 1;                                  // +0x91 bit 0
-    bool IsDead() const { return Dead; }
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                              // 8 bytes (Ego_r.pdb)
@@ -53,9 +47,9 @@ public:
 C3DVector CGameScriptThing::GetFocalPos() const
 {
     if (PThing) {
-        if (!PThing->Dead) {
+        if (!PThing->IsDead()) {
             CThing* thing = PThing;
-            return thing->PTCGraphicAppearance->GetFocalPos(1.0f);
+            return thing->GetTCGraphicAppearance()->GetFocalPos(1.0f);
         }
     }
     return Pos;

@@ -37,12 +37,7 @@ class CProcessedInput {
 public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
 };
-class CThing { public:
-    unsigned char    _pad00[0x18];
-    unsigned __int64 UniqueID;                     // +0x18
-    unsigned char    _pad20[0x91 - 0x20];
-    unsigned char    Dead : 1;                     // +0x91 bit 0
-};
+#include "engine/CThing.h"
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
@@ -75,12 +70,12 @@ void CInputProcessStrafe::ProcessInput(const CInputEvent& event, CProcessedInput
     if (event.GetDeviceType() == 2 && !IsEventButtonReleased(event))
         return;
     CGameEvent gameEvent(0x2b);
-    if (creature == 0 || creature->Dead)
+    if (creature == 0 || creature->IsDead())
         return;
     long key = -1;
     if (event.GetDeviceType() == 2)
         key = event.GetKey();
-    gameEvent.AddUID(creature->UniqueID);
+    gameEvent.AddUID(creature->GetUniqueID());
     gameEvent.AddFloat(strafe.X);
     gameEvent.AddFloat(strafe.Y);
     gameEvent.AddLong(key);

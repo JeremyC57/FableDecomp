@@ -21,20 +21,9 @@ class CThingCreatureBase : public CThing { public:
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CCreatureActionBase { public:
     virtual void v00();
@@ -59,13 +48,13 @@ class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase { publi
 void CCreatureAction_CastStrengthMultiStrike::FinishAction()
 {
     CCombatActionBase::FinishAction();
-    if (NumberOfStrikes > 1 && Owner.GetPItem() && !Owner.GetPItem()->IsDead()
-        && Target.GetPItem() && !Target.GetPItem()->IsDead()) {
-        CThing* target = Target.GetPItem();
-        CThingCreatureBase* owner = Owner.GetPItem();
-        CThingCreatureBase* creature = Owner.GetPItem();
+    if (NumberOfStrikes > 1 && Owner.Get() && !Owner.Get()->IsDead()
+        && Target.Get() && !Target.Get()->IsDead()) {
+        CThing* target = Target.Get();
+        CThingCreatureBase* owner = Owner.Get();
+        CThingCreatureBase* creature = Owner.Get();
         creature->SetCurrentAction(CCreatureAction_CastStrengthMultiStrike(owner, target, NumberOfStrikes - 1));
     } else {
-        Owner.GetPItem()->RemoveTC((ETCInterfaceType)(0x8c));
+        Owner.Get()->RemoveTC((ETCInterfaceType)(0x8c));
     }
 }

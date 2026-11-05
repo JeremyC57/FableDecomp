@@ -11,10 +11,10 @@
 // copy constructor of the global (x through the x87, y/z through integer registers) into the
 // hidden result, no frame; else `push esi` of the hidden pointer and the virtual (slot 5,
 // `call [eax+14h]`), returning that pointer.
+#define FABLE_RETAIL_CSCRIPTTHING_NULLCOORD
 #include "engine/CScriptThing.h"
 
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                      // 0x0143E8E0 (12 bytes, directly before the empty string)
 
 struct CScriptThingVirtuals {                       // vtable view of the implementation object
     virtual void v0();
@@ -33,6 +33,6 @@ C3DVector CScriptThing_Methods::GetFocalPos() const
 {
     const CScriptThingVirtuals* imp = (const CScriptThingVirtuals*)PImp_Data;
     if (imp == 0)
-        return g_ZeroVector;
+        return NullCoord;
     return imp->GetFocalPos();
 }

@@ -1,4 +1,5 @@
 // CTCInventoryMap::TeleportHeroToTeleporter(CThing* teleporter) -- while the hero creature is alive, sends it through the teleporter thing's teleporter component
+// Leaf: ?TeleportHeroToTeleporter@CTCInventoryMap@@QAEXPAVCThing@@@Z
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FBD20, length 98 bytes (+ int3), `ret 4`; `this` only feeds the player-manager getter.
 // Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50 (manifest "CViewBase::GetDisplayEngine", propagated),
@@ -10,29 +11,11 @@
 // Layout: CThing flag byte +0x91 bit 0 (dead), interface bitset +0x20, interface map +0x44 (local models).
 struct CTCBase_Any;
 class CTCBase;
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char IsDead : 1;                   // +0x91 bit 0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            if (it == map->end() || interfaceType < it->first)
-                it = map->end();
-            *ppOut = (T*)((void*)it->second);
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
@@ -64,9 +47,9 @@ class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
 void CTCInventoryMap::TeleportHeroToTeleporter(CThing* teleporter)
 {
     const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
-    if (hero && !hero->IsDead) {
+    if (hero && !hero->IsDead()) {
         CTCTeleporter* teleporterTC;
-        if (teleporter->GetInterface(&teleporterTC, 0xDD))
+        if (teleporter->GetTC(TCI_TELEPORTER, &teleporterTC))
             teleporterTC->TeleportHero();
     }
 }

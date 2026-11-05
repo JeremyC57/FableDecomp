@@ -32,21 +32,10 @@ class CWorld { public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
-inline bool IsAlive(const CIntelligentPointer<CThing>& p) { return p.GetPItem() != 0 && !p.GetPItem()->IsDead(); }
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
+inline bool IsAlive(const CIntelligentPointer<CThing>& p) { return p.Get() != 0 && !p.Get()->IsDead(); }
 
 class CAIBrain { public:
     virtual void v00();
@@ -90,20 +79,20 @@ void CAIStateGroup_HoverAttack::Update()
         CWorld* world = GetPWorld();
         world->PCombatManager->SetAttackerAsReadyToAttack(creature, true);
     }
-    while (IsAlive(PTarget) && IsToAttackTarget(GetCreature(), PTarget.GetPItem()) && IsRunnableLeaf()) {
+    while (IsAlive(PTarget) && IsToAttackTarget(GetCreature(), PTarget.Get()) && IsRunnableLeaf()) {
         bool inRange = false;
         for (;;) {
             if (!IsAlive(PTarget) || !GetCreature()->IsInMeleeAsAttacker()
-                || !IsToAttackTarget(GetCreature(), PTarget.GetPItem())) {
+                || !IsToAttackTarget(GetCreature(), PTarget.Get())) {
                 Terminate();
                 return;
             }
             bool arrived;
             C3DVector preferred = combat->GetPreferredPos(GetCreature());
-            long result = AIAction_MoveToPosAndFacePos(2, preferred, PTarget.GetPItem()->GetPos(), arrived, 8);
+            long result = AIAction_MoveToPosAndFacePos(2, preferred, PTarget.Get()->GetPos(), arrived, 8);
             if (IsAlive(PTarget)) {
                 const CThing* me = GetCreature();
-                const CThing* target = PTarget.GetPItem();
+                const CThing* target = PTarget.Get();
                 float minDistance = GetCombatMinDistance();
                 C3DVector offset = target->GetPos() - me->GetPos();
                 inRange = offset.X * offset.X + offset.Y * offset.Y < minDistance * minDistance;

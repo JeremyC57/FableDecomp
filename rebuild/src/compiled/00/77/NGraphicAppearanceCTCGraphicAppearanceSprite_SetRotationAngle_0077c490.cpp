@@ -1,4 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearanceSprite::SetRotationAngle(float amount) -- flag the owner's appearance as changed, store the per-frame rotation amount and pick a random starting angle in [0,1)
+// Leaf: ?SetRotationAngle@CTCGraphicAppearanceSprite@NGraphicAppearance@@QAEXM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077C490, length 56 bytes (64 with padding). Callees:
 // CTCGraphicAppearance::SetAsChanged(unsigned long reasons) @ 0x004BF9E0 (reason 4), the shared display-engine getter
 // @ 0x00686A70 (manifest "CViewBase::GetDisplayEngine": `return g_world->DisplayEngine` -- it ignores ecx),
@@ -23,14 +24,15 @@ public:
 private:              // 0x0049D810
 };
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     void SetAsChanged(unsigned long reasons);           // 0x004BF9E0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
-class CThing { public:
-    unsigned char         _pad_0x00[0x64];
-    CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64 (retail)
-};
+#define FABLE_RETAIL_CTHING
+#include "engine/CThing.h"
 
 class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
     virtual void v00();
@@ -64,7 +66,7 @@ class CTCGraphicAppearanceSprite : public CTCBase, public CAGraphicAppearanceCom
 
 void CTCGraphicAppearanceSprite::SetRotationAngle(float amount)
 {
-    ParentThing->PTCGraphicAppearance->SetAsChanged(4);
+    ParentThing->GetTCGraphicAppearance()->SetAsChanged(4);
     RotationAmountPerFrame = amount;
     CRandomGenerator* random = ((CRandomGenerator*)((CWorld*)&(GetWorld()))->GetWorldSeed());
     RotationAngle = random->FloatRandom(1.0f);

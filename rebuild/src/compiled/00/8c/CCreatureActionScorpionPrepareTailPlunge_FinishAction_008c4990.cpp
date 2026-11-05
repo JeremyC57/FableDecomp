@@ -23,20 +23,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 void operator delete(void* p);                  // 0x00BFE9BC
 
@@ -100,7 +89,7 @@ public:
     __forceinline CTCCreatureModeManager* GetModeManager() const
     {
         CTCCreatureModeManager* modeManager;
-        PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
+        PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager);
         return modeManager;
     }
 };
@@ -112,10 +101,10 @@ public:
 
 void CCreatureAction_ScorpionPrepareTailPlunge::FinishAction()
 {
-    if (PCreature.GetPItem()->GetTypeFlags() & 8) {
-        CThing* target = PTarget.GetPItem();
+    if (PCreature.Get()->GetTypeFlags() & 8) {
+        CThing* target = PTarget.Get();
         CTCCreatureModeManager* modeManager = GetModeManager();
-        CCountedPointer<CModeScorpionKingVulnerable> mode(new CModeScorpionKingVulnerable(PCreature.GetPItem()));
+        CCountedPointer<CModeScorpionKingVulnerable> mode(new CModeScorpionKingVulnerable(PCreature.Get()));
         mode->SetTarget(target);
         modeManager->AddMode(mode);
     }

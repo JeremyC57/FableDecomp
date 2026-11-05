@@ -18,13 +18,8 @@
 // GetPItem calls: the local does not escape, because _M_insert_overflow and IsLineOfSight are in retail's TU (VC7.1 escape
 // is flow-insensitive) -> same-TU stand-ins for both that pass the bounds by value.
 extern "C" void __cdecl free(void* p);                      // 0x00BFEA14
-inline void* operator new(unsigned int, void* where) { return where; }
 #include "engine/C3DVector.h"
-class CThing {
-public:
-    unsigned char _pad00[0x91];
-    unsigned char Dead : 1;                                 // +0x91 bit 0
-};
+#include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -115,7 +110,7 @@ bool CTools::IsLineOfSight(const C3DVector& from, const C3DVector& to, C3DVector
 {
     CThingConstVector things;
     for (CIntelligentPointer<CThing>* it = ScanThings._M_start; it != ScanThings._M_finish; ++it) {
-        if (it->GetPItem() && !it->GetPItem()->Dead)
+        if (it->GetPItem() && !it->GetPItem()->IsDead())
             things.push_back(it->GetPItem());
     }
     return IsLineOfSight(things, from, to, hitPos, hitNormal, distance, hitThing, test, flag);

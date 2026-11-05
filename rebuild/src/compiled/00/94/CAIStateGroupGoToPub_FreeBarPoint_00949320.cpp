@@ -27,20 +27,9 @@ struct CTCBarPoints {                           // interface type 0xB9 component
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CAIStateGroupBase { public:
     virtual void v00();
@@ -64,7 +53,7 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 void CAIStateGroup_GoToPub::FreeBarPoint()
 {
     CTCBarPoints* pBarPoints;
-    m_pBar.GetPItem()->GetTC(TCI_TAVERN_BAR, &pBarPoints);
+    m_pBar.Get()->GetTC(TCI_TAVERN_BAR, &pBarPoints);
     pBarPoints->FreeBarPoint(m_barPointIndex);
     m_barPointIndex = -1;
 }

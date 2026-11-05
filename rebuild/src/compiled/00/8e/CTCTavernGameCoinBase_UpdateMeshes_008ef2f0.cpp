@@ -26,20 +26,9 @@ class CThingObject : public CThing { };              // CThingObject derives fro
 #pragma pack(push, 1)
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class Coin { public:                                   // 0x3c bytes
     long      _pad_0x00;
     C2DVector Pos;                              // +0x04
@@ -76,9 +65,9 @@ struct CTCTavernGameCoinBase {
 void CTCTavernGameCoinBase::UpdateMeshes()
 {
     for (Coin* coin = CoinsBegin; coin != CoinsEnd; ++coin) {
-        if (coin->Thing.GetPItem() && !coin->Thing.GetPItem()->IsDead() && coin->Owned) {
+        if (coin->Thing.Get() && !coin->Thing.Get()->IsDead() && coin->Owned) {
             C3DVector offset(coin->Pos.X, coin->Pos.Y, 0.0f);
-            CThingObject* mesh = (CThingObject*)coin->Thing.GetPItem();
+            CThingObject* mesh = (CThingObject*)coin->Thing.Get();
             CTCTavernGame::PositionMesh(mesh, BoardPos, BoardRHSet, offset, 0.0f, coin->Angle * 0.15915494f);
         }
     }

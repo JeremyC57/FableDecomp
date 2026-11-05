@@ -1,4 +1,5 @@
 // CTCPhysicsBase::SetAsMoving(bool)
+// Leaf: ?SetAsMoving@CTCPhysicsBase_Methods@@QAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B0130, oracle length 32 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
@@ -10,10 +11,9 @@
 // "moving" bit; the xor/and/xor sequence is VC7.1's single-bit bitfield store.
 #include "engine/CTCPhysicsBase.h"
 
-class CThing { public:
-public:
-    void SetAsFrameUpdated();   // 0x004C7C40
-};
+#define FABLE_RETAIL_CTHING
+#define FABLE_RETAIL_CTHING_MOREACCESS
+#include "engine/CThing.h"
 
 struct CPhysicsMovingFlags {
     unsigned char Moving    : 1;    // bit 0 (written here)

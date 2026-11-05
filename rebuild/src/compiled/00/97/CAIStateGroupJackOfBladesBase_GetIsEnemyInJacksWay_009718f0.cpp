@@ -53,14 +53,10 @@ public:
     }
 };
 
+#define FABLE_RETAIL_CCLASS
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"
-class CThing : public CBaseObject {
-public:
-    unsigned char _pad08[0x91 - 8];
-    unsigned char Dead : 1;                     // +0x91 bit 0
-    const C3DVector& GetPos() const;            // 0x004C73D0
-};
+#include "engine/CThing.h"
 class CThingCreatureBase : public CThing { };
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
 #include "engine/CIntelligentPointer.h"
@@ -76,7 +72,7 @@ protected:
 bool CAIStateGroup_JackOfBladesBase::GetIsEnemyInJacksWay(const C3DVector& from, const C3DVector& to)
 {
     const CIntelligentPointer<CThingCreatureBase>& target = *(const CIntelligentPointer<CThingCreatureBase>*)PTargetThing;
-    if (!(target.Get() != 0 && !target->Dead))
+    if (!(target.Get() != 0 && !target->IsDead()))
         return false;
     C3DVector path = to - from;
     C3DVector fromEnemy = to - target->GetPos();

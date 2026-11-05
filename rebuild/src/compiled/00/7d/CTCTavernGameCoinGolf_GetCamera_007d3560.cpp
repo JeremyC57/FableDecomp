@@ -23,24 +23,13 @@ public:
 #include "engine/CThing.h"
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (p.Get() != 0) {
+        if (!p.Get()->IsDead())
             return true;
     }
     return false;
@@ -71,7 +60,7 @@ void CTCTavernGameCoinGolf::GetCamera(C3DVector& camPos, C3DVector& lookAt)
     camPos = offset;
     lookAt = centre;
     if (PCoin && IS_THING_ALIVE(PCoin->Thing)) {
-        lookAt = PCoin->Thing.GetPItem()->GetPos();
+        lookAt = PCoin->Thing.Get()->GetPos();
         lookAt.Z += 0.1f;
         camPos = C3DVector(0.0f, XAngle * 0.9f + 0.25f, 0.0f);
         camPos.Rotate(0.0f, XAngle * 0.2f + 0.025f);

@@ -77,7 +77,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 struct CTCUserActionPointBase {
-    bool IsActionPointFree();                     // 0x007FEBF0
+    bool IsActionPointFree() const;                     // 0x007FEBF0
     long GetNumberOfActionPointsInUse();          // 0x007FEC10
 };
 

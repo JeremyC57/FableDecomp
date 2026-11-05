@@ -19,20 +19,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 
 class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
@@ -50,7 +39,7 @@ class CCombatActionBase { public:
     __forceinline CTCKrakenTentacle* GetTentacle() const
     {
         CTCKrakenTentacle* tentacle;
-        PCreature.GetPItem()->GetTC(TCI_KRAKEN_TENTACLE, &tentacle);
+        PCreature.Get()->GetTC(TCI_KRAKEN_TENTACLE, &tentacle);
         return tentacle;
     }
 public:
@@ -64,7 +53,7 @@ class CCreatureAction_TentacleStrikeOutOf : public CCombatActionBase { public:
 void CCreatureAction_TentacleStrikeOutOf::Initialise()
 {
     CTCCreatureModeManager* modeManager;
-    if (PCreature.GetPItem()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
+    if (PCreature.Get()->GetTC(TCI_ENTITY_MODE_MANAGER, &modeManager))
         modeManager->RemoveMode(0x53);
     CTCKrakenTentacle* tentacle = GetTentacle();
     tentacle->RemoveObstruction();

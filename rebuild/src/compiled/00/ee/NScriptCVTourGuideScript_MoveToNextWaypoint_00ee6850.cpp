@@ -20,7 +20,6 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                              // 0x0143E8E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -31,7 +30,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing::~CScriptThing() { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
+__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return NullCoord; return PImp.Data->GetPos(); }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 enum EScriptEntityMoveType { MOVE_TYPE_WALK = 0 };
 class CScriptGameResourceObjectScriptedThingBase { public:         // vtable 0x0127094C, 0x10 bytes

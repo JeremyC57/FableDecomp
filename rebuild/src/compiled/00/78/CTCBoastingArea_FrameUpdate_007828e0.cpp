@@ -1,4 +1,5 @@
 // CTCBoastingArea::FrameUpdate() -- track the living hero against the area's anticipation and boasting radii and fire the enter/leave/approach notifications on each state change
+// Leaf: ?FrameUpdate@CTCBoastingArea@@QAEXXZ
 // Plan phase 4 (2026-11-05), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Plan phase 2 (2026-11-04), CVectorMap wave: the local CVectorMap / CKeyPairCompareLess / CArray / STLport stand-ins replaced by the shared engine/CVectorMap.h (Ego_r: CVectorMap<K,V,CompareType> derives CArray<pair<K,V> >, Compare +0x0C, Dirty +0x0D); map ends read through the inherited end(). By-value members re-padded to the header layout (re-padded by-value maps +8).
 // Retail 0x007828E0, 432 bytes (plain `ret`). Callees: CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer
@@ -16,28 +17,11 @@ __forceinline bool InRange(const C3DVector& d, float radius)
 {
     return d.X * d.X + (d.Y * d.Y + d.Z * d.Z) < radius * radius;
 }
-enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+#define FABLE_RETAIL_CTHING_GETTC_EXPANDED
+#include "engine/CThing.h"
 #include "engine/CVectorMap.h"
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CThing { public:
-    unsigned char _pad0[0x20];
-    unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
-    CInterfaceMap m_interfaces;                     // +0x44
-    unsigned char _pad54[0x3d];
-    unsigned char Dead : 1;                         // +0x91 bit 0
-    const C3DVector& GetPos() const;           // 0x004C73D0
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
-    {
-        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
-            CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::value_type* it = map->LowerBound(type);
-            *ppOut = (T*)(it == map->end() || interfaceType < it->first ? map->end() : it)->second;
-            return true;
-        }
-        return false;
-    }
-};
+
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
@@ -70,7 +54,7 @@ struct CTCBoastingArea : public CTCBase {
 void CTCBoastingArea::FrameUpdate()
 {
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
-    if (!hero || hero->Dead) {
+    if (!hero || hero->IsDead()) {
         HeroWithinRadiusState = HERO_OUTSIDE;
         return;
     }
@@ -88,7 +72,7 @@ void CTCBoastingArea::FrameUpdate()
         HeroWithinRadiusState = HERO_IN_ANTICIPATION;
         {
             CTCBoastingCrowdControl* crowd;
-            if (hero->GetInterface(&crowd, 0x73))
+            if (hero->GetTC(TCI_BOASTING_CROWD_CONTROL, &crowd))
                 crowd->OnHeroApproachPodiumArea();
         }
         return;

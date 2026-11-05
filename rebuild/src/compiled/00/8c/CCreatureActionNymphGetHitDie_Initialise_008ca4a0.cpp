@@ -38,20 +38,9 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CBaseObject;
 class CBaseObjectPointer;
-class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
-public:
-    CBaseIntelligentPointer();                           // 0x00A01B10
-    virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CBaseObject* item);                    // 0x00A01B90
-private:
-    CBaseObjectPointer* PData;                           // +0x04
-};
-template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
-public:
-    T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
-    void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
-};
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"
+
 class CTCNymph { public:                                     // interface type 0xF5
     void StopFlyingAround(long mode);                 // 0x0080F870
 };
@@ -79,13 +68,13 @@ void CCreatureAction_NymphGetHitDie::Initialise()
         CCharString name("FALL_DEAD");
         SetCombatAnimation(name);
     }
-    PCreature.GetPItem()->GetPhysicsTC()->SetMovementType(1);
-    PCreature.GetPItem()->GetPhysicsTC()->SetCollisionType(2);
-    PCreature.GetPItem()->GetPhysicsTC()->ResetMovement();
+    PCreature.Get()->GetPhysicsTC()->SetMovementType(1);
+    PCreature.Get()->GetPhysicsTC()->SetCollisionType(2);
+    PCreature.Get()->GetPhysicsTC()->ResetMovement();
     CTCNymph* nymph;
-    if (PCreature.GetPItem()->GetTC(TCI_NYMPH, &nymph))
+    if (PCreature.Get()->GetTC(TCI_NYMPH, &nymph))
         nymph->StopFlyingAround(-1);
-    C3DVector position = PCreature.GetPItem()->GetPos();
+    C3DVector position = PCreature.Get()->GetPos();
     HeightOnInit = position.Z - GetWorldMap()->GetHeightZBelowPos(&position);
     CCombatActionBase::Initialise();
 }

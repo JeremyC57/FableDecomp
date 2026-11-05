@@ -17,7 +17,6 @@
 //   Was `?Main@CHTG_AmbushPointBackup@@QAEXXZ`; this source now defines the PDB member (vptr placeholder dropped (own, base CEntityScriptBase made polymorphic); outer stand-in CQ_HangingTreeGoodScript moved into NScript); same bytes.
 namespace NScript { class CPredicateBase; }
 #include "engine/C3DVector.h"
-extern C3DVector g_ZeroVector;                      // 0x0143E8E0
 class CCharString { public:
  void* PStringData;
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -63,6 +62,9 @@ template <class T> class CCountedPointer { public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass { public:                  // vtable 0x01238C8C
+protected:
+    static C3DVector NullCoord;                        // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r.pdb; engine/CScriptThing.h)
+public:
  CCountedPointer<CScriptThing> PImp;
  CScriptThing() { }
  virtual ~CScriptThing();                                   // 0x004AA840
@@ -70,7 +72,7 @@ class CScriptThing : public CBaseClass { public:                  // vtable 0x01
  virtual void v1(); virtual void v2();
  virtual CCharString GetDataString() const { if (PImp.Data == 0) return g_EmptyString; return PImp.Data->GetDataString(); }   // slot 3
  virtual void v4(); virtual void v5();
- virtual const C3DVector& GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPosition(); }      // slot 6
+ virtual const C3DVector& GetPos() const { return !PImp.Data ? NullCoord : PImp.Data->GetPosition(); }      // slot 6
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

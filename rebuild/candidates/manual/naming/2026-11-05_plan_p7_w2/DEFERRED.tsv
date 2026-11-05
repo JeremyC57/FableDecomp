@@ -1,0 +1,2309 @@
+address	stage	reason
+00436380	no_rule	UNCHANGED: header_lacks flags(no offset)
+00438cb0	no_rule	UNCHANGED: header_lacks GetInterface,m_presentBits@0x20(no accessor)
+00439ab0	no_rule	UNCHANGED: local_std
+0044a2a0	no_rule	UNCHANGED: local_std
+0044bfa0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0047dc69	no_rule	UNCHANGED: header_lacks GetInterfaceUnchecked
+0047eee4	no_rule	UNCHANGED: local_std
+00487de0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+004887c0	no_rule	UNCHANGED: local_std
+004888c0	no_rule	UNCHANGED: header_lacks DebugCheck
+00488b20	no_rule	UNCHANGED: local_std
+0048a070	no_rule	UNCHANGED: local_std
+0048b2f0	no_rule	UNCHANGED: local_std
+0048bc40	no_rule	UNCHANGED: header_lacks flags(no offset)
+0048cb50	no_rule	UNCHANGED: local_std
+0048cbd0	no_rule	UNCHANGED: local_std
+0048d400	no_rule	UNCHANGED: local_std
+0048d5c0	no_rule	UNCHANGED: local_std
+00490927	no_rule	UNCHANGED: header_lacks GetInterfaceUnchecked
+00490a22	no_rule	UNCHANGED: local_std
+00492bab	no_rule	UNCHANGED: local_std
+0049ea40	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor),SerialisationSectionName@0x58(no accessor)
+004a0370	compile_fail	COMPILE_FAIL 0370\x.cpp(121) : error C2678: binary '=' : no operator found which takes a left-hand operand of type 'const CWideString' (or there is no acceptable conversion)
+004a0940	no_rule	UNCHANGED: local_std
+004a0bb0	compile_fail	COMPILE_FAIL x.cpp(60) : error C2664: 'bool CThing::GetTC<NInventory::CTCInventoryBase>(T ** )' : cannot convert parameter 1 from 'int' to 'NInventory::CTCInventoryBase ** '
+004a9da0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+004a9e50	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+004ac2c0	no_rule	UNCHANGED: local_std
+004acab0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+004acb50	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+004acd70	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+004acf90	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+004ad700	no_rule	UNCHANGED: local_std
+004ad780	no_rule	UNCHANGED: local_std
+004adcb0	no_rule	UNCHANGED: header_lacks Flag@0xd4
+004afa60	no_rule	UNCHANGED: header_lacks ScriptName@0x74(no accessor)
+004afb00	no_rule	UNCHANGED: header_lacks ScriptName@0x74(no accessor)
+004afbb0	no_rule	UNCHANGED: header_lacks ScriptBindingName@0x74(no accessor)
+004b0aa0	no_rule	UNCHANGED: local_std
+004b0b90	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+004b0c80	no_rule	UNCHANGED: local_std
+004b0d30	no_rule	UNCHANGED: local_std
+004b0f10	no_rule	UNCHANGED: local_std
+004b0fc0	no_rule	UNCHANGED: local_std
+004b1110	no_rule	UNCHANGED: local_std
+004b11a0	no_rule	UNCHANGED: local_std
+004b1270	no_rule	UNCHANGED: local_std
+004b1590	no_rule	UNCHANGED: local_std
+004b2490	compile_fail	COMPILE_FAIL ableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\004b2490\x.cpp(23) : error C2039: 'm_length' : is not a member of 'CCharStringData'
+004b26b0	no_rule	UNCHANGED: header_lacks IncludeInThingScans(bit),ScriptName@0x74(no accessor)
+004b2b70	no_rule	UNCHANGED: local_std
+004b4aa0	no_rule	UNCHANGED: local_std
+004b4c50	no_rule	UNCHANGED: local_std
+004baa50	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+004bd200	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+004bd2e0	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor)
+004bd3c0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+004bfa50	no_rule	UNCHANGED: header_lacks GetInterface
+004bfc50	no_rule	UNCHANGED: header_lacks GetBaseDef
+004bfce0	grade	vland DIFFER(55v43) PASS
+004bfd10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+004bffd0	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor)
+004c0000	no_rule	UNCHANGED: local_std
+004c0240	no_rule	UNCHANGED: header_lacks IsWeapon
+004c04c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+004c72d0	no_rule	UNCHANGED: header_lacks SaveSerialiseCreatableTCs,m_componentsLast@0x48
+004c73e0	no_rule	UNCHANGED: header_lacks InitTC
+004c7470	no_rule	UNCHANGED: header_lacks ValidateThing,m_componentsLast@0x48
+004c74b0	no_rule	UNCHANGED: header_lacks DrawGetEditDrawInfo,context(no offset)
+004c7500	no_rule	UNCHANGED: header_lacks m_componentsLast@0x48
+004c7540	no_rule	UNCHANGED: header_lacks DrawIsDrawable,DrawPreparePrimitivesForRendering,v00,v01,v02,v03
+004c7580	no_rule	UNCHANGED: header_lacks currentMapNumber(no offset)
+004c7770	no_rule	UNCHANGED: header_lacks flags(other bits)
+004c7790	no_rule	UNCHANGED: header_lacks DrawIsDrawable
+004c77b0	no_rule	UNCHANGED: header_lacks vfunc_29
+004c77d0	no_rule	UNCHANGED: header_lacks OnLevelUnload,m_componentsLast@0x48
+004c7820	no_rule	UNCHANGED: header_lacks SendMessageW,m_componentsLast@0x48
+004c7870	no_rule	UNCHANGED: header_lacks IsEntitySerialisable,_v01,_v02,_v03,_v04,_v05
+004c7880	no_rule	UNCHANGED: header_lacks flags(no offset)
+004c78a0	no_rule	UNCHANGED: header_lacks SetCutscenePauseBehaviour
+004c78f0	no_rule	UNCHANGED: header_lacks DrawIsDrawable
+004c7930	no_rule	UNCHANGED: header_lacks level(no offset)
+004c7950	no_rule	UNCHANGED: header_lacks _pad04(no offset)
+004c7a10	no_rule	UNCHANGED: header_lacks PlayerManager(no offset),_pad00(no offset)
+004c7a30	no_rule	UNCHANGED: header_lacks PlayerManager(no offset),_pad00(no offset)
+004c7ac0	no_rule	UNCHANGED: header_lacks IsRenderable
+004c7b00	no_rule	UNCHANGED: header_lacks GetInfo
+004c7b80	no_rule	UNCHANGED: header_lacks vfunc_17
+004c7bd0	no_rule	UNCHANGED: header_lacks pad(no offset)
+004c7bf0	no_rule	UNCHANGED: header_lacks DrawIsDrawable,IsFrameUpdated
+004c7c40	no_rule	UNCHANGED: header_lacks flags(no offset)
+004c7ca0	no_rule	UNCHANGED: header_lacks pad(no offset)
+004c7cf0	no_rule	UNCHANGED: header_lacks OnKill,m_componentsLast@0x48
+004c7d50	no_rule	UNCHANGED: header_lacks OnDie,m_componentsLast@0x48
+004c7da0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+004c7e10	no_rule	UNCHANGED: header_lacks pad(no offset),typeIndex(no offset)
+004c7e30	no_rule	UNCHANGED: header_lacks m_type(no offset),pad(no offset)
+004c7e90	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+004c7f40	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+004c7ff0	no_rule	UNCHANGED: header_lacks __vftable@0x0
+004c8050	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+004c81f0	no_rule	UNCHANGED: header_lacks SerialiseThingInfo,context(no offset)
+004c8310	no_rule	UNCHANGED: local_std
+004c88e0	no_rule	UNCHANGED: local_std
+004c8a30	no_rule	UNCHANGED: local_std
+004c8ba0	no_rule	UNCHANGED: local_std
+004c8c00	no_rule	UNCHANGED: header_lacks IsToBePlacedInMap
+004c8c90	compile_fail	COMPILE_FAIL 0dfb\scratchpad\plan\p7\gate_work\004c8c90\x.cpp(26) : error C2511: 'bool CThing::IsUnderScriptControl(void)' : overloaded member function not found in 'CThing'
+004c8cf0	no_rule	UNCHANGED: header_lacks OnInLimboChanged_slot14,SendMessageW,m_componentsLast@0x48,v00,v01,v02
+004c8da0	no_rule	UNCHANGED: header_lacks OnCollision,phase(no offset)
+004c8e50	no_rule	UNCHANGED: header_lacks SetAsDrawable
+004c8fb0	no_rule	UNCHANGED: local_std
+004c9030	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+004c9560	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+004c9690	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+004c97b0	no_rule	UNCHANGED: header_lacks DrawIsDrawable,OnInitialActivate,v00,v01,v02,v03
+004c9840	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+004c9b80	no_rule	UNCHANGED: header_lacks CanBeKilledImmediately,OnKill,OnKillImmediately
+004c9ca0	no_rule	UNCHANGED: header_lacks InitialActivate,OnCreate,OnInitialActivate,OnKill
+004c9d20	no_rule	UNCHANGED: header_lacks WorldUpdate,WorldUpdateBulletTime
+004c9d60	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+004ca010	no_rule	UNCHANGED: own_definition_of_header_inline GetPCurrentThingManager
+004ca1d0	no_rule	UNCHANGED: header_lacks ConstructFromParams,defIndex(no offset),map(no offset),player(no offset)
+004ca230	no_rule	UNCHANGED: local_std
+004ca930	no_rule	UNCHANGED: header_lacks CreateFromDef,_pad00(no offset)
+004cd1a0	no_rule	UNCHANGED: header_lacks SerialiseGameState
+004cd1e0	no_rule	UNCHANGED: header_lacks DrawIsDrawable,vfunc_30
+004cd220	no_rule	UNCHANGED: header_lacks vfunc_34
+004cd230	no_rule	UNCHANGED: header_lacks vfunc_35
+005064c0	no_rule	UNCHANGED: local_std
+00512ed0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00512f60	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00516200	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+005163b0	no_rule	UNCHANGED: local_std
+00516530	no_rule	UNCHANGED: local_std
+005166b0	no_rule	UNCHANGED: local_std
+00516830	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+005185f0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00518850	no_rule	UNCHANGED: local_std
+00518900	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00518dc0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+005198b0	no_rule	UNCHANGED: local_std
+0051e2f0	no_rule	UNCHANGED: header_lacks Activate,InitialisationStage@0x94,Initialise,OnCreate
+0051e530	no_rule	UNCHANGED: header_lacks GetChecksum
+0051e5a0	no_rule	UNCHANGED: header_lacks m_flags93@0x93
+0051e630	no_rule	UNCHANGED: local_std
+0051eab0	no_rule	UNCHANGED: pack_region
+0051ebd0	no_rule	UNCHANGED: header_lacks RenderUpdate,RenderUpdatePost
+0051f070	compile_fail	COMPILE_FAIL bleDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0051f070\x.cpp(23) : error C2039: 'm_pStringData' : is not a member of 'CCharString'
+0051f0e0	no_rule	UNCHANGED: header_lacks CopyTCState
+0051f980	no_rule	UNCHANGED: local_std
+0051fa00	no_rule	UNCHANGED: local_std
+0051fba0	compile_fail	COMPILE_FAIL bleDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0051fba0\x.cpp(24) : error C2039: 'm_pStringData' : is not a member of 'CCharString'
+0051fc20	no_rule	UNCHANGED: header_lacks SectionName@0x58(no accessor)
+0051fcc0	no_rule	UNCHANGED: local_std
+005202f0	no_rule	UNCHANGED: pack_region
+00520c80	no_rule	UNCHANGED: header_lacks SectionName@0x58(no accessor),m_flags93@0x93
+005215f0	no_rule	UNCHANGED: pack_region
+00521eb0	no_rule	UNCHANGED: local_std
+00522160	no_rule	UNCHANGED: local_std
+00522600	no_rule	UNCHANGED: header_lacks IsToBeSerialised
+00522880	no_rule	UNCHANGED: local_std
+005239c0	no_rule	UNCHANGED: local_std
+00523b40	no_rule	UNCHANGED: local_std
+005252b0	no_rule	UNCHANGED: header_lacks PrepareForLimbo
+00525cd0	compile_fail	COMPILE_FAIL 13f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00525cd0\x.cpp(99) : error C2039: 'PrepareForLevelUnload_005271b0' : is not a member of 'CThing'
+00528720	no_rule	UNCHANGED: local_std
+005296b0	no_rule	UNCHANGED: header_lacks ctor
+005299c0	no_rule	UNCHANGED: header_lacks ctor
+00529b00	no_rule	UNCHANGED: header_lacks ctor
+0052ac90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0052b270	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0052b300	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00563130	no_rule	UNCHANGED: local_std
+0056a980	no_rule	UNCHANGED: header_lacks SetCurrentAction
+0056d050	no_rule	UNCHANGED: local_std
+0056fdc3	no_rule	UNCHANGED: local_std
+0056fe7c	no_rule	UNCHANGED: local_std
+0057713f	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0057adb8	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor)
+0057c239	bytes_differ	LENGTH 155 != index 173; TARGETS differ (0 vs index 4) -00410de0 -004365b0 -006d6520 -006869d0
+0057c2e6	bytes_differ	BYTES (masked sha1 differs)
+0057d5a0	no_rule	UNCHANGED: header_lacks ModifyHealth,PeekInterface
+0057d9fd	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0057daf5	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0057de57	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00582944	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00582a16	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00583a92	no_rule	UNCHANGED: local_std
+00583bd5	consistency	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a
+00583cd4	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00584157	bytes_differ	LENGTH 144 != index 162; TARGETS differ (0 vs index 5) -005bdf08 -005d9710 -00410de0 -0040f020 -006c9fa0
+00584a73	bytes_differ	LENGTH 95 != index 131; TARGETS differ (0 vs index 8) -00410de0 -0040f020 -00625930 -00625940 -00625920 -005bc527
+00584b42	bytes_differ	LENGTH 54 != index 68; TARGETS differ (0 vs index 2) -00410de0 -0040f020
+00587847	no_rule	UNCHANGED: local_std
+00587a41	no_rule	UNCHANGED: local_std
+005907ab	no_rule	UNCHANGED: local_std
+005943a2	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0059c8f2	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0059d820	consistency	005bf482: new spelling ?GetAllItems@CTCInventoryBase@@QBEXAAUCItemVector@ not at target; old ?GetAllItems@CTCInventoryBase@@QAEXAAUCItemVector@ keeps 1 binder(s) 005bf77d
+0059dabb	no_rule	UNCHANGED: header_lacks GetDisplayEngine
+0059de76	no_rule	UNCHANGED: local_std
+005a30a1	no_rule	UNCHANGED: local_std
+005a3581	no_rule	UNCHANGED: header_lacks GetInterface
+005a45f6	no_rule	UNCHANGED: header_lacks m_present@0x20(no accessor)
+005a731f	no_rule	UNCHANGED: header_lacks m_present@0x20(no accessor)
+005a8a5d	no_rule	UNCHANGED: local_std
+005b36e9	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005b37f7	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005b3c95	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005b3d7a	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005b43a2	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005b4a95	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005be028	no_rule	UNCHANGED: header_lacks QueryTC
+005be3b1	no_rule	UNCHANGED: local_std
+005be62c	no_rule	UNCHANGED: local_std
+005bedcb	no_rule	UNCHANGED: header_lacks m_present@0x20(no accessor)
+005bf414	compile_fail	COMPILE_FAIL b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\005bf414\x.cpp(49) : error C2440: 'const_cast' : cannot convert from 'const CTCInventoryItem *' to 'CThing &'
+005bf5a4	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+005bf654	no_rule	UNCHANGED: local_std
+005bf77d	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005c0121	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+005c3057	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005c311a	no_rule	UNCHANGED: header_lacks GetDefIndex
+005c3180	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005c3a95	no_rule	UNCHANGED: unresolved_call GetInterface(T** out, long kind)
+005c44fa	no_rule	UNCHANGED: header_lacks GetInterface
+005c4769	bytes_differ	LENGTH 69 != index 108; TARGETS differ (0 vs index 5) -004cc340 -00a01b50 -00410de0 -004365b0 -005daaa0
+005c7913	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005c7b10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005c7d0d	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005c7f07	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005c99fd	no_rule	UNCHANGED: header_lacks GetDefIndex
+005cbdbd	no_rule	UNCHANGED: header_lacks m_flags(no offset)
+005cd33f	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005cd433	bytes_differ	LENGTH 110 != index 145; TARGETS differ (0 vs index 9) -00410de0 -0040f020 -0099ebf0 -0099f830 -0099f0a0 -0099eae0
+005cd767	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005cdbbe	no_rule	UNCHANGED: local_std
+005cdccb	no_rule	UNCHANGED: local_std
+005cdd86	no_rule	UNCHANGED: local_std
+005d64dd	no_rule	UNCHANGED: local_std
+005d66ba	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005d8d50	no_rule	UNCHANGED: header_lacks SendMessage
+005d9380	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005d93b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005d9430	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+005d9c90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005daaa0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005dabe0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005dac50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005e4430	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005e4860	no_rule	UNCHANGED: local_std
+005ea010	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+005ea1a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005ea250	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005ea310	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+005ea3c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005ea9b0	no_rule	UNCHANGED: header_lacks SetActive,_flags91(other bits)
+005eb4b0	no_rule	UNCHANGED: header_lacks GetInterface
+005eb810	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+005ec0f0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+005ec650	no_rule	UNCHANGED: header_lacks SetVisible
+005ec990	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+005ed7d0	no_rule	UNCHANGED: local_std
+005ed860	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+005ee418	no_rule	UNCHANGED: header_lacks GetTCUnchecked
+005ee6bf	no_rule	UNCHANGED: unresolved_call GetTC<T>(N) zeroed wrapper (not a declaration)
+005ee99d	no_rule	UNCHANGED: local_std
+005eea9b	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005f05e5	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005f4a86	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+005fc2d0	no_rule	UNCHANGED: nested_in_namespace NScreen005fc2d0
+005fc620	no_rule	UNCHANGED: local_std
+005fc8a0	no_rule	UNCHANGED: nested_in_namespace NScreen005fc8a0
+005fd1d0	compile_fail	COMPILE_FAIL 1-ed975cb80dfb\scratchpad\plan\p7\gate_work\005fd1d0\x.cpp(184) : error C2440: 'initializing' : cannot convert from 'const CTCTeleporter *' to 'CTCTeleporter *'
+005fd410	no_rule	UNCHANGED: local_std
+00602e30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006156e0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00615750	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00617780	no_rule	UNCHANGED: local_std
+00617860	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00617970	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00617a00	no_rule	UNCHANGED: local_std
+00617a90	no_rule	UNCHANGED: local_std
+00617b20	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00617bb0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00617ca0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00617d30	no_rule	UNCHANGED: header_lacks f2c@0x2c,f5c@0x5c(no accessor)
+006186f0	no_rule	UNCHANGED: local_std
+00618790	no_rule	UNCHANGED: local_std
+00618e60	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+006223c0	no_rule	UNCHANGED: local_std
+006276f0	no_rule	UNCHANGED: local_std
+0062b7c0	bytes_differ	BYTES (masked sha1 differs)
+0062c1c0	compile_fail	COMPILE_FAIL _work\0062c1c0\x.cpp(79) : error C2662: 'CTCHeroCentre::OnHeroWalkedThroughDoor' : cannot convert 'this' pointer from 'const CTCHeroCentre' to 'CTCHeroCentre &'
+0062c300	compile_fail	COMPILE_FAIL \p7\gate_work\0062c300\x.cpp(69) : error C2662: 'CTCHeroCentre::OnHeroCloseDoor' : cannot convert 'this' pointer from 'const CTCHeroCentre' to 'CTCHeroCentre &'
+0062cf90	consistency	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a
+0062e840	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00633d80	bytes_differ	BYTES (masked sha1 differs)
+00633f10	bytes_differ	BYTES (masked sha1 differs)
+00633ff0	bytes_differ	BYTES (masked sha1 differs)
+006349b0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+006355d0	no_rule	UNCHANGED: header_lacks GetConstTC
+00636400	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+00636480	no_rule	UNCHANGED: header_lacks GetConstTC
+006366b0	no_rule	UNCHANGED: local_std
+00637a10	no_rule	UNCHANGED: header_lacks IsMapwhoExempt
+0063f150	no_rule	UNCHANGED: header_lacks CanBlockNavigatingCreature
+0063f1e0	no_rule	UNCHANGED: header_lacks CanBlockNavigatingCreature
+0063fae0	no_rule	UNCHANGED: local_std
+00640c40	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00640c70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00640ca0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00640cd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00640f00	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00640f80	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006412b0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+006437d0	no_rule	UNCHANGED: local_std
+0064a060	no_rule	UNCHANGED: local_std
+0064a1ae	no_rule	UNCHANGED: local_std
+0064a2db	no_rule	UNCHANGED: local_std
+0064a568	no_rule	UNCHANGED: local_std
+0064b5c1	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+0064b668	no_rule	UNCHANGED: header_lacks GetInterfaceUnchecked
+0064be45	no_rule	UNCHANGED: local_std
+0064db2b	no_rule	UNCHANGED: local_std
+0064e0da	no_rule	UNCHANGED: header_lacks GetInterfaceUnchecked
+0064fc23	no_rule	UNCHANGED: local_std
+0065196c	no_rule	UNCHANGED: header_lacks GetInterfaceUncheckedConst
+0065575f	no_rule	UNCHANGED: local_std
+00658fa2	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+00659164	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006592e2	bytes_differ	LENGTH 104 != index 124; TARGETS differ (0 vs index 7) -004a96f0 -004ba4e0 -00a01b50 -00410de0 -0040f020 -007ee270
+0065935e	bytes_differ	LENGTH 296 != index 349; TARGETS differ (0 vs index 19) -004ab8f0 -00a01b50 -00410de0 -0040f020 -004c70f0 -006d5ab0
+006594bb	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00659c7e	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor),m_present@0x20(no accessor)
+0065a075	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0065a1fd	no_rule	UNCHANGED: local_std
+0065a28f	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0065a5bb	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0065a686	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0065a8ee	bytes_differ	BYTES (masked sha1 differs)
+0065ac0e	bytes_differ	LENGTH 101 != index 117; TARGETS differ (0 vs index 7) -00686d40 -00449970 -00487dc0 -0043dbd0 -00410de0 -0040f020
+0065ac83	no_rule	UNCHANGED: local_std
+0065b0b4	bytes_differ	LENGTH 128 != index 142; TARGETS differ (0 vs index 9) -00686a70 -006bbe30 -00686d40 -00449970 -00487dc0 -0043dbd0
+0065b2c4	bytes_differ	LENGTH 119 != index 133; TARGETS differ (0 vs index 6) -00a01b50 -0040dce0 -00410de0 -0040f020 -0065f01d
+0065b349	bytes_differ	LENGTH 162 != index 183; TARGETS differ (0 vs index 9) -0044c6b0 -009ad410 -00a01b50 -0040dce0 -00410de0 -0040f020
+0065b598	bytes_differ	LENGTH 309 != index 325; TARGETS differ (0 vs index 27) -0125a9ac -00a01b50 -0040dce0 -00410de0 -0040f020 -007ee270
+0065bffa	bytes_differ	LENGTH 130 != index 144; TARGETS differ (0 vs index 5) -00a01b50 -0040dce0 -00410de0 -004365b0 -006610c7
+0065c1fc	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0065c36e	no_rule	UNCHANGED: local_std
+0065c45a	bytes_differ	LENGTH 306 != index 353; TARGETS differ (0 vs index 19) -00a01b50 -0040dce0 -00410de0 -0040f020 -0072f0e0 -004a88f0
+0065c781	no_rule	UNCHANGED: header_lacks GetVillagerState
+0065d639	no_rule	UNCHANGED: header_lacks flags(no offset)
+0065e6b8	no_rule	UNCHANGED: local_std
+0065e6ed	no_rule	UNCHANGED: local_std
+0065e722	no_rule	UNCHANGED: local_std
+0065e757	no_rule	UNCHANGED: local_std
+0065e78c	no_rule	UNCHANGED: local_std
+0065e7c1	no_rule	UNCHANGED: local_std
+0065f056	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0065f6da	no_rule	UNCHANGED: local_std
+0065f744	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0065fbe1	bytes_differ	BYTES (masked sha1 differs)
+00661aa0	no_rule	UNCHANGED: header_lacks ComputeDistanceToMorphDummy
+00661b40	compile_fail	COMPILE_FAIL \a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00661b40\x.cpp(56) : error C2227: left of '->GetDummyObject' must point to class/struct/union
+00661d20	compile_fail	COMPILE_FAIL 3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00661d20\x.cpp(33) : error C2228: left of '.GetNavigationLayerAt' must have class/struct/union type
+00661d70	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00661ea0	no_rule	UNCHANGED: header_lacks flags(no offset)
+00662110	compile_fail	COMPILE_FAIL 440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00662110\x.cpp(34) : error C2228: left of '.GetDefGlobalIndexFromName' must have class/struct/union type
+006622d0	bytes_differ	BYTES (masked sha1 differs)
+00662c10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00662c70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00662ef0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00663260	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00663340	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00663510	compile_fail	COMPILE_FAIL \00663510\x.cpp(66) : error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+006637d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00663b10	compile_fail	COMPILE_FAIL 0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00663b10\x.cpp(49) : error C2065: 'm_flags6c' : undeclared identifier
+00663ba0	compile_fail	COMPILE_FAIL 5cb80dfb\scratchpad\plan\p7\gate_work\00663ba0\x.cpp(53) : error C2440: '=' : cannot convert from 'const CTCCreatureModeManager *' to 'CTCCreatureModeManager *'
+00663c40	compile_fail	COMPILE_FAIL 87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00663c40\x.cpp(197) : error C2228: left of '.DrawPreparePrimitivesForRendering' must have class/struct/union type
+00663f50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00664370	no_rule	UNCHANGED: local_std
+006644f0	no_rule	UNCHANGED: local_std
+00664680	no_rule	UNCHANGED: header_lacks CreatedByOwnerThingCreation(bit)
+006647f0	compile_fail	COMPILE_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006647f0\x.cpp(52) : error C3861: 'IsPlayer': identifier not found, even with argument-dependent lookup
+006648d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00664a50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00664c60	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00664cb0	no_rule	UNCHANGED: local_std
+00664d00	no_rule	UNCHANGED: local_std
+006650e0	compile_fail	COMPILE_FAIL \006650e0\x.cpp(52) : error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00665190	compile_fail	COMPILE_FAIL \00665190\x.cpp(38) : error C2676: binary '[' : 'std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00665260	compile_fail	COMPILE_FAIL 260\x.cpp(68) : error C2676: binary '[' : 'const std::bitset<_Nb>' does not define this operator or a conversion to a type acceptable to the predefined operator
+00665510	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006655a0	compile_fail	COMPILE_FAIL 3f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006655a0\x.cpp(125) : error C2819: type 'CWorld' does not have an overloaded member 'operator ->'
+00665e90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006666a0	no_rule	UNCHANGED: own_definition_of_header_inline GetPCurrentThingManager
+00666b50	no_rule	UNCHANGED: local_std
+00666ea0	compile_fail	COMPILE_FAIL 1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00666ea0\x.cpp(35) : error C2248: 'CThing::PeekWorldMap' : cannot access protected member declared in class 'CThing'
+00667310	compile_fail	COMPILE_FAIL _work\00667310\x.cpp(77) : error C2662: 'CTCHitOnCollision::OnCollision' : cannot convert 'this' pointer from 'const CTCHitOnCollision' to 'CTCHitOnCollision &'
+00669040	compile_fail	COMPILE_FAIL -ed975cb80dfb\scratchpad\plan\p7\gate_work\00669040\x.cpp(82) : error C2440: 'initializing' : cannot convert from 'const CTCPhysicsBase *' to 'CTCPhysicsBase *'
+00669110	compile_fail	COMPILE_FAIL \gate_work\00669110\x.cpp(31) : error C2662: 'CTCPhysicsBase::GetBoundingInfo' : cannot convert 'this' pointer from 'const CTCPhysicsBase' to 'CTCPhysicsBase &'
+006698d0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0066ace0	no_rule	UNCHANGED: header_lacks Position(no offset)
+0066aeb0	no_rule	UNCHANGED: header_lacks m_thingFlags@0x91(derived)
+0066b040	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0066b1d0	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+0066ba80	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0066bbf0	no_rule	UNCHANGED: header_lacks m_tcBits28@0x28
+0066bd00	no_rule	UNCHANGED: local_std
+0066bdf0	no_rule	UNCHANGED: local_std
+0066e5a0	no_rule	UNCHANGED: local_std
+0066fc90	no_rule	UNCHANGED: header_lacks GetCurrentRelativeMovementAngleXY
+0066ff20	no_rule	UNCHANGED: header_lacks Health@0xb4,MaxHealth@0xb0
+006700f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006701a0	bytes_differ	LENGTH 296 != index 312; TARGETS differ (0 vs index 9) -01375550 -0137ea20 -00bfea70 -00487dc0 -004c73d0 -00a14480
+006702e0	bytes_differ	LENGTH 388 != index 400; TARGETS differ (0 vs index 7) -006622a0 -006a9640 -00a14040 -00a14440 -0040f020 -013ce558
+00670470	bytes_differ	LENGTH 216 != index 228; TARGETS differ (0 vs index 3) -0040f020 -00666d40 -006b0210
+00670a10	no_rule	UNCHANGED: header_lacks m_lifeRemaining@0xb4
+00683590	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00683650	no_rule	UNCHANGED: header_lacks m_interfaces@0x44(no accessor)
+00684210	compile_fail	COMPILE_FAIL plan\p7\gate_work\00684210\x.cpp(127) : error C2664: 'ReportList' : cannot convert parameter 1 from 'const CTCHeroOpinionDeedLog *' to 'CTCHeroOpinionDeedLog *'
+00685ee0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00687540	bytes_differ	LENGTH 482 != index 486; TARGETS differ (0 vs index 24) -0099a380 -0125be8c -00a01b10 -01238c6c -0049d870 -00a01b90
+00687730	no_rule	UNCHANGED: closure_derived CMessageEvent:CBaseObject
+00687fd0	no_rule	UNCHANGED: local_std
+00688c90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00688eb0	compile_fail	COMPILE_FAIL b\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(153) : error C2440: '=' : cannot convert from 'const CTCHeroTargeting *' to 'CTCHeroTargeting *'
+00689050	no_rule	UNCHANGED: local_std
+0068ae30	no_rule	UNCHANGED: local_std
+0068b2e0	no_rule	UNCHANGED: local_std
+0068b7c0	no_rule	UNCHANGED: local_std
+0068eb20	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0068f180	no_rule	UNCHANGED: local_std
+0068f320	no_rule	UNCHANGED: local_std
+0068f9d0	no_rule	UNCHANGED: header_lacks GetConstInterface
+0068ff50	no_rule	UNCHANGED: local_std
+00690030	no_rule	UNCHANGED: header_lacks GetInterfaceUnchecked
+00690830	no_rule	UNCHANGED: local_std
+00690b20	no_rule	UNCHANGED: local_std
+00690fd0	no_rule	UNCHANGED: local_std
+00691130	no_rule	UNCHANGED: local_std
+00691560	no_rule	UNCHANGED: local_std
+00691680	no_rule	UNCHANGED: local_std
+00691870	no_rule	UNCHANGED: unresolved_call GetInterface(0x108)
+00692940	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00692aa0	bytes_differ	BYTES (masked sha1 differs)
+00692b30	compile_fail	COMPILE_FAIL -87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00692b30\x.cpp(64) : error C2248: 'CThing::GetWorld' : cannot access protected member declared in class 'CThing'
+00692c10	compile_fail	COMPILE_FAIL -87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00692c10\x.cpp(39) : error C2248: 'CThing::GetWorld' : cannot access protected member declared in class 'CThing'
+00692db0	no_rule	UNCHANGED: header_lacks ClearCurrentAction
+00693140	no_rule	UNCHANGED: local_std
+00694020	no_rule	UNCHANGED: local_std
+00694430	no_rule	UNCHANGED: header_lacks IsPlayerCreature
+006946c0	no_rule	UNCHANGED: local_std
+00698a30	consistency	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a
+00698b50	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00698c30	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00698d10	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00698e40	no_rule	UNCHANGED: header_lacks GetDeleted
+00698f50	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00699970	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00699a50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0069a990	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor),UsingComponents@0x20(no accessor)
+0069ad10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0069b790	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0069f2b0	no_rule	UNCHANGED: unresolved_call GetTCName()
+0069f670	no_rule	UNCHANGED: header_lacks SetCurrentAction
+0069f750	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0069f800	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0069f8b0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0069f9e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0069fc40	no_rule	UNCHANGED: header_lacks SetCurrentAction
+006a1120	no_rule	UNCHANGED: header_lacks GetDefIndex
+006a1370	no_rule	UNCHANGED: header_lacks SetAsDrawable
+006a1440	no_rule	UNCHANGED: header_lacks m_flags@0x20(no accessor)
+006a1e00	no_rule	UNCHANGED: header_lacks GetTCConst
+006a2370	compile_fail	COMPILE_FAIL -user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006a2370\x.cpp(91) : error C2039: 'SetInLimbo' : is not a member of 'CThing'
+006a2540	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006a4ba0	no_rule	UNCHANGED: header_lacks Save
+006a4d20	no_rule	UNCHANGED: header_lacks OnCreate
+006a4e90	no_rule	UNCHANGED: header_lacks DrawGetEditDrawInfo,HasEditDrawInfo,_pad04(no offset),time@0x4c74b0,v000,v001
+006a5230	no_rule	UNCHANGED: header_lacks GetThingManager,InitialActivate
+006a5950	no_rule	UNCHANGED: header_lacks ConstructFromParams,defIndex@0x4ca010,mapNumber@0x4ca010,v00
+006a5af0	compile_fail	COMPILE_FAIL -home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006a5af0\x.cpp(112) : error C2065: 'ThingClass' : undeclared identifier
+006a5d50	no_rule	UNCHANGED: local_std
+006a62e0	no_rule	UNCHANGED: unresolved_call HasTC(long type),GetTC(long interfaceType),GetTC(long interfaceType)
+006a6880	no_rule	UNCHANGED: local_std
+006a74f0	no_rule	UNCHANGED: header_lacks m_scriptName@0x74(no accessor)
+006a78d0	no_rule	UNCHANGED: header_lacks AsCreature
+006a7ab0	no_rule	UNCHANGED: header_lacks CanBeUsedAsCoverImpl
+006a7c00	no_rule	UNCHANGED: header_lacks nameObj@0x70(no accessor)
+006a7c20	no_rule	UNCHANGED: header_lacks SerialisationSectionName(no offset)
+006a7c60	no_rule	UNCHANGED: header_lacks SerialisationSectionName@0x58(no accessor)
+006a7e30	no_rule	UNCHANGED: header_lacks ScriptName@0x74(no accessor)
+006a7e70	no_rule	UNCHANGED: header_lacks ScriptData@0x78(no accessor)
+006a7f30	no_rule	UNCHANGED: header_lacks m_scriptData@0xe8
+006a80a0	no_rule	UNCHANGED: header_lacks UsingComponents@0x20(no accessor)
+006a8240	compile_fail	COMPILE_FAIL 75cb80dfb\scratchpad\plan\p7\gate_work\006a8240\x.cpp(36) : error C2440: 'initializing' : cannot convert from 'const CTCNoiseMaker_37 *' to 'CTCNoiseMaker_37 *'
+006a8300	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006a8370	compile_fail	COMPILE_FAIL d975cb80dfb\scratchpad\plan\p7\gate_work\006a8370\x.cpp(57) : error C2440: 'initializing' : cannot convert from 'const CTCSolidToThing *' to 'CTCSolidToThing *'
+006a84f0	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006a8560	compile_fail	COMPILE_FAIL _work\006a8560\x.cpp(35) : error C2662: 'CTCScriptedControl::IsActive' : cannot convert 'this' pointer from 'const CTCScriptedControl' to 'CTCScriptedControl &'
+006a8630	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006a8710	compile_fail	COMPILE_FAIL ad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(153) : error C2440: '=' : cannot convert from 'const CTCCreatureNavigation *' to 'CTCCreatureNavigation *'
+006a8930	compile_fail	COMPILE_FAIL 41) : error C2662: 'CTCSinglePersonOccupiable::IsOfType' : cannot convert 'this' pointer from 'const CTCSinglePersonOccupiable' to 'CTCSinglePersonOccupiable &'
+006a8a30	no_rule	UNCHANGED: local_std
+006a8a80	no_rule	UNCHANGED: local_std
+006a8c60	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006a8d30	no_rule	UNCHANGED: local_std
+006a9520	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+006a9590	compile_fail	COMPILE_FAIL 440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006a9590\x.cpp(52) : error C3861: 'GetPlayer': identifier not found, even with argument-dependent lookup
+006a9dd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006a9ef0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006ab5d0	bytes_differ	BYTES (masked sha1 differs)
+006ac140	no_rule	UNCHANGED: header_lacks m_flags(other bits),m_reactionTarget@0xf4
+006ac390	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+006ac690	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006ad580	no_rule	UNCHANGED: own_definition_of_header_inline GetTCDriver
+006ae5c0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+006ae830	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+006aeba0	no_rule	UNCHANGED: local_std
+006aebf0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006aedc0	no_rule	UNCHANGED: local_std
+006aeea0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006aff00	no_rule	UNCHANGED: header_lacks OnCollision
+006b0780	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006b0c10	no_rule	UNCHANGED: header_lacks OnCollision
+006b2720	no_rule	UNCHANGED: local_std
+006bf9e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006bfb90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006bffd0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+006c0160	compile_fail	COMPILE_FAIL dfb\scratchpad\plan\p7\gate_work\006c0160\x.cpp(70) : error C2440: 'initializing' : cannot convert from 'const CTCBuildingContents *' to 'CTCBuildingContents *'
+006c0330	no_rule	UNCHANGED: header_lacks ScriptName@0x78(no accessor)
+006c0fd0	no_rule	UNCHANGED: local_std
+006c1c70	no_rule	UNCHANGED: local_std
+006c1dd0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+006c3ca0	no_rule	UNCHANGED: local_std
+006c3f40	no_rule	UNCHANGED: header_lacks SetAsDrawable
+006c4210	no_rule	UNCHANGED: local_std
+006c4270	no_rule	UNCHANGED: local_std
+006c7b00	compile_fail	COMPILE_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006c7b00\x.cpp(48) : error C2440: 'type cast' : cannot convert from 'unsigned __int64' to 'CCharString'
+006c7c30	compile_fail	COMPILE_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006c7c30\x.cpp(45) : error C2440: 'type cast' : cannot convert from 'unsigned __int64' to 'CCharString'
+006c8780	no_rule	UNCHANGED: nested_in_namespace X_006c8780
+006c8de0	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+006c9280	no_rule	UNCHANGED: local_std
+006c9900	bytes_differ	LENGTH 250 != index 241; TARGETS differ (0 vs index 13) -009ba5b0 -0099ebf0 -013b8a1c -009ad410 -00835a20 -0099eae0
+006ca120	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006ca400	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006ca4e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006ca5a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006cc6b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006cd3b0	no_rule	UNCHANGED: local_std
+006ce300	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+006ce730	no_rule	UNCHANGED: local_std
+006cf3b0	consistency	0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+006cf480	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006cf810	no_rule	UNCHANGED: header_lacks Flags1C9@0x1c9
+006cf890	no_rule	UNCHANGED: header_lacks GetInterface,m_presentBits@0x20(no accessor)
+006cf920	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006cfaa0	compile_fail	COMPILE_FAIL f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006cfaa0\x.cpp(97) : error C2440: '=' : cannot convert from 'const CTCVillage *' to 'CTCVillage *'
+006cfec0	no_rule	UNCHANGED: header_lacks m_flags1c9@0x1c9
+006cff10	bytes_differ	BYTES (masked sha1 differs)
+006d0180	no_rule	UNCHANGED: header_lacks Flags1C9@0x1c9
+006d3fb0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+006d4600	no_rule	UNCHANGED: local_std
+006d4fd0	no_rule	UNCHANGED: header_lacks GetInterface
+006d5050	no_rule	UNCHANGED: header_lacks GetInterface
+006d5180	compile_fail	COMPILE_FAIL -0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006d5180\x.cpp(89) : error C2106: '=' : left operand must be l-value
+006d53c0	no_rule	UNCHANGED: header_lacks TCs@0x44(no accessor)
+006d56e0	compile_fail	COMPILE_FAIL -0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\006d56e0\x.cpp(99) : error C2106: '=' : left operand must be l-value
+006d5b50	bytes_differ	BYTES (masked sha1 differs)
+006d6370	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d64b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d6590	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d65e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d6620	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d6770	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d67b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d6870	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+006d6ea0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d6ee0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d6f60	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d7120	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d7570	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d7640	no_rule	UNCHANGED: local_std
+006d76c0	no_rule	UNCHANGED: header_lacks GetConstTC
+006d7960	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+006d7cb0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d7de0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d7e10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d7e70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006d8170	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+006d83b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006dd8f0	no_rule	UNCHANGED: header_lacks SetCurrentAction
+006dd980	no_rule	UNCHANGED: header_lacks SetCurrentAction
+006dda20	no_rule	UNCHANGED: header_lacks Def@0x70(no accessor)
+006ddae0	no_rule	UNCHANGED: header_lacks m_pState@0x70(no accessor)
+006dfa50	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+006dffb0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+006e0be0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006e0e80	no_rule	UNCHANGED: header_lacks PTCDriver@0x5c(no accessor)
+006e0f10	no_rule	UNCHANGED: header_lacks PTCDriver@0x5c(no accessor)
+006e11f0	no_rule	UNCHANGED: nested_in_namespace X_006e11f0
+006e13e0	no_rule	UNCHANGED: header_lacks SetAsGameStatePersisted_004c9c10
+006e1620	no_rule	UNCHANGED: header_lacks Flags91(other bits)
+006e2e60	no_rule	UNCHANGED: local_std
+006e3180	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+006e3440	no_rule	UNCHANGED: local_std
+006e3780	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006e58a0	no_rule	UNCHANGED: local_std
+006e7820	consistency	0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+006e7920	consistency	0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+006e8e10	no_rule	UNCHANGED: local_std
+006e97f0	bytes_differ	LENGTH 366 != index 360; TARGETS differ (0 vs index 18) -0085fb30 -004c7cc0 -013ca828 -009d49b0 -0099f600 -0099eae0
+006e9f60	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+006ea450	no_rule	UNCHANGED: header_lacks GetUID
+006ea5f0	no_rule	UNCHANGED: closure_derived CDefClassBase:CDefPointeeBase
+006ea770	no_rule	UNCHANGED: pack_region
+006eac50	no_rule	UNCHANGED: local_std
+006eb390	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006ebdd0	bytes_differ	LENGTH 271 != index 268; TARGETS differ (0 vs index 10) -008b7cf0 -0085f0c0 -0085f010 -0040f020 -008b85d0 -00662210
+006ec4f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+006ed030	no_rule	UNCHANGED: local_std
+006ed510	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00700780	no_rule	UNCHANGED: header_lacks GetInterface
+00700820	no_rule	UNCHANGED: header_lacks GetInterface
+00700940	no_rule	UNCHANGED: header_lacks GetOpinionOfHeroTC
+00701750	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00702810	no_rule	UNCHANGED: local_std
+00702b10	no_rule	UNCHANGED: header_lacks SerialisationSectionName@0x58(no accessor)
+00702c60	no_rule	UNCHANGED: header_lacks DrawIsDrawable,GetDisplayEngine
+007031c0	no_rule	UNCHANGED: header_lacks ctor
+007032f0	bytes_differ	LENGTH 337 != index 380; TARGETS differ (0 vs index 11) -004bfa50 -00838a40 -006a4d60 -0129ba3c -0040f020 -0099ebf0
+00703470	compile_fail	COMPILE_FAIL 7-87a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(153) : error C2440: '=' : cannot convert from 'const CTCBase *' to 'CTCBase *'
+007034d0	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+00703780	compile_fail	COMPILE_FAIL 7-87a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(153) : error C2440: '=' : cannot convert from 'const CTCBase *' to 'CTCBase *'
+007037d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007038d0	no_rule	UNCHANGED: header_lacks SetSpin_006a4dc0
+007040e0	no_rule	UNCHANGED: header_lacks IsFrameUpdated,_pad00(no offset)
+00704150	no_rule	UNCHANGED: unresolved_call HasTC(long type),GetTC(long interfaceType),GetInterface(const T** out, long interfaceT)
+00705b60	compile_fail	COMPILE_FAIL ome-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00705b60\x.cpp(50) : error C2061: syntax error : identifier 'ParentThing'
+00705c30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00705cc0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00705d00	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00705d40	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00706d10	compile_fail	COMPILE_FAIL 3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00706d10\x.cpp(130) : error C2027: use of undefined type 'NGraphicAppearance::CTCGraphicAppearance'
+007079e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0070a490	no_rule	UNCHANGED: local_std
+0070b4d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00712340	compile_fail	COMPILE_FAIL .cpp(117) : error C2440: 'initializing' : cannot convert from 'const NGraphicAppearance::CTCGraphicAppearance *' to 'NGraphicAppearance::CTCGraphicAppearance *'
+007128c0	no_rule	UNCHANGED: header_lacks GetConversationState
+007132c0	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CClass.h(32) : error C2118: negative subscript
+00713740	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00713ee0	no_rule	UNCHANGED: header_lacks GetCurrentSpeed,GetMaxSpeedTowards,GetSneakSpeedTowards,IsPerformingAnyAction
+00714730	compile_fail	COMPILE_FAIL -87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00714730\x.cpp(109) : error C2440: 'initializing' : cannot convert from 'CTCPhysicsBase *' to 'CPhysicsObject *'
+00714900	no_rule	UNCHANGED: local_std
+00714d30	no_rule	UNCHANGED: closure_derived CScriptConversation:CBaseObject
+00714f60	compile_fail	COMPILE_FAIL -d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00714f60\x.cpp(67) : error C2440: 'type cast' : cannot convert from 'CWideStringText' to 'CWideString'
+007153b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00715710	compile_fail	COMPILE_FAIL \scratchpad\plan\p7\gate_work\00715710\x.cpp(114) : error C2664: 'CThing::AddTC' : cannot convert parameter 3 from 'CPhysicsSnapshot' to 'const CTCParamsBase *'
+007158f0	no_rule	UNCHANGED: unresolved_call GetTCName()
+00717450	compile_fail	COMPILE_FAIL leDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00717450\x.cpp(90) : error C2039: 'SetAsSubString' : is not a member of 'CWideString'
+00717710	no_rule	UNCHANGED: header_lacks GetConstInterface
+00717950	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\stlport\fable_containers.h(180) : error C2036: 'CSubtitledMessage *' : unknown size
+007197c0	no_rule	UNCHANGED: local_std
+0071a850	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0071a8a0	no_rule	UNCHANGED: header_lacks SetAsDrawable
+0071a8f0	no_rule	UNCHANGED: local_std
+0071a940	no_rule	UNCHANGED: local_std
+0071ab20	no_rule	UNCHANGED: header_lacks GetGraphicAppearance
+0071ae90	no_rule	UNCHANGED: header_lacks IsDrawable
+0071b1b0	no_rule	UNCHANGED: local_std
+0071b300	no_rule	UNCHANGED: local_std
+0071b380	bytes_differ	LENGTH 277 != index 309; TARGETS differ (0 vs index 11) -00bfea0e -00a01b50 -004c82a0 -007e8590 -00bfea14
+0071b590	no_rule	UNCHANGED: local_std
+0071b690	no_rule	UNCHANGED: local_std
+0071b700	no_rule	UNCHANGED: local_std
+0071c260	no_rule	UNCHANGED: local_std
+0071c7c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0071c9f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0071d7c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0071da70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0071dbd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0071de80	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0071e130	no_rule	UNCHANGED: header_lacks SendMessage
+00722590	no_rule	UNCHANGED: header_lacks DefClass@0x70(no accessor)
+00723ac0	no_rule	UNCHANGED: header_lacks OnCollision
+00725a30	no_rule	UNCHANGED: header_lacks UsingComponents@0x20(no accessor)
+00726340	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+007275c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00727b40	no_rule	UNCHANGED: local_std
+00727c20	compile_fail	COMPILE_FAIL 3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00727c20\x.cpp(101) : error C2027: use of undefined type 'NGraphicAppearance::CTCGraphicAppearance'
+00728000	compile_fail	COMPILE_FAIL -ed975cb80dfb\scratchpad\plan\p7\gate_work\00728000\x.cpp(73) : error C2248: 'CThing::GetPWorldSeed' : cannot access protected member declared in class 'CThing'
+00728470	bytes_differ	LENGTH 112 != index 86
+00729410	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007294a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00729b20	no_rule	UNCHANGED: header_lacks ScriptData@0x78(no accessor)
+0072a950	no_rule	UNCHANGED: header_lacks m_presentBits@0x20(no accessor)
+0072a970	no_rule	UNCHANGED: local_std
+0072a9b0	no_rule	UNCHANGED: local_std
+0072aa00	no_rule	UNCHANGED: local_std
+0072aa50	no_rule	UNCHANGED: local_std
+0072aaa0	no_rule	UNCHANGED: local_std
+0072ab70	bytes_differ	LENGTH 78 != index 88; TARGETS differ (0 vs index 3) -006e0880 -0040f020 -006e0590
+0072abd0	no_rule	UNCHANGED: local_std
+0072ac40	compile_fail	COMPILE_FAIL -user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0072ac40\x.cpp(18) : error C2065: 'ETCInterfaceType' : undeclared identifier
+0072af30	compile_fail	COMPILE_FAIL 975cb80dfb\scratchpad\plan\p7\gate_work\0072af30\x.cpp(52) : error C2440: '=' : cannot convert from 'const CTCAbilityPermissions *' to 'CTCAbilityPermissions *'
+0072b160	compile_fail	COMPILE_FAIL tchpad\plan\p7\gate_work\0072b160\x.cpp(59) : error C2662: 'CTCTargeter::GetPTarget' : cannot convert 'this' pointer from 'const CTCTargeter' to 'CTCTargeter &'
+0072b3b0	no_rule	UNCHANGED: local_std
+0072b420	no_rule	UNCHANGED: unresolved_call GetTC(0x96, (CTCForcePushPower*)0),GetTC(0x92, (CTCBulletTime*)0),GetTC(0x95, (CTCWillEnflame*)0),GetTC(0x93, (CTCPhysicalShieldSpell*)
+0072b940	bytes_differ	LENGTH 267 != index 247; TARGETS differ (0 vs index 6) -004365b0 -006a1440 -00a01b50 -0040f020 -005da7d0
+0072ba40	no_rule	UNCHANGED: unresolved_call GetTC(0x92, (CTCBulletTime*)0),GetTC(0x93, (CTCPhysicalShieldSpell*),GetTC(0x84, (CTCBerserk*)0),GetTC(0x91, (CTCSummonSpell*)0)
+0072bc60	no_rule	UNCHANGED: unresolved_call GetTC(0x92, (CTCBulletTime*)0),GetTC(0x93, (CTCPhysicalShieldSpell*),GetTC(0x84, (CTCBerserk*)0),GetTC(0x91, (CTCSummonSpell*)0)
+0072c230	no_rule	UNCHANGED: header_lacks DrawIsDrawable,SetAsDrawable
+0072c3c0	no_rule	UNCHANGED: header_lacks IsUnconscious
+0072c680	no_rule	UNCHANGED: local_std
+0072c790	no_rule	UNCHANGED: header_lacks Interfaces@0x44(no accessor),TCBits@0x20(no accessor)
+0072caa0	compile_fail	COMPILE_FAIL tchpad\plan\p7\gate_work\0072caa0\x.cpp(75) : error C2662: 'CTCTargeter::GetPTarget' : cannot convert 'this' pointer from 'const CTCTargeter' to 'CTCTargeter &'
+0072cba0	no_rule	UNCHANGED: header_lacks m_flags30@0x30
+0072dc70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0072ddb0	no_rule	UNCHANGED: header_lacks m_flags91(other bits)
+0072df50	no_rule	UNCHANGED: header_lacks m_flags91(other bits)
+0072e130	no_rule	UNCHANGED: header_lacks PTCDriver@0x5c(no accessor),m_flags91(other bits)
+0072ed10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0072ee30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0072f2f0	no_rule	UNCHANGED: header_lacks GetVillagerRole
+00730070	bytes_differ	BYTES (masked sha1 differs)
+00730630	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007306c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00730a00	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00730ae0	compile_fail	COMPILE_FAIL -ed975cb80dfb\scratchpad\plan\p7\gate_work\00730ae0\x.cpp(85) : error C2440: 'initializing' : cannot convert from 'const CTCInterfaceC2 *' to 'CTCInterfaceC2 *'
+00730c00	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00730dd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007310c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007313b0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007317d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00731970	no_rule	UNCHANGED: header_lacks Slot28
+00731d40	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00731e20	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007327f0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+00732850	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00732950	no_rule	UNCHANGED: header_lacks GetInterface
+007329e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00733100	compile_fail	COMPILE_FAIL 3f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00733100\x.cpp(34) : error C2819: type 'CPlayer' does not have an overloaded member 'operator ->'
+007334b0	no_rule	UNCHANGED: own_definition_of_header_inline GetPBaseDef
+007338a0	no_rule	UNCHANGED: local_std
+00733e10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00734190	no_rule	UNCHANGED: local_std
+00735340	no_rule	UNCHANGED: local_std
+007363a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00736760	no_rule	UNCHANGED: local_std
+00736ad0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+0073a9f0	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+0073aac0	compile_fail	COMPILE_FAIL -FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0073aac0\x.cpp(32) : error C2039: 'GetPString' : is not a member of 'CCharString'
+0073af60	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0073afc0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00743120	no_rule	UNCHANGED: local_std
+007445e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00744ed0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00745c70	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+007461c0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00746560	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00746860	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+00747480	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00747660	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+007479b0	no_rule	UNCHANGED: header_lacks GetRunSpeed,GetWalkSpeed
+00747da0	no_rule	UNCHANGED: header_lacks GetRadiusAt,GetTC2,HeroState@0x200,PCurrentAction@0x100,VelocityX@0x10c,VelocityY@0x110
+007483e0	bytes_differ	BYTES (masked sha1 differs)
+00748c10	no_rule	UNCHANGED: local_std
+00748d80	no_rule	UNCHANGED: nested_in_namespace N00748d80
+00748e40	no_rule	UNCHANGED: local_std
+00749170	no_rule	UNCHANGED: local_std
+00749530	no_rule	UNCHANGED: local_std
+007498e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00749b40	bytes_differ	LENGTH 148 != index 163; TARGETS differ (0 vs index 5) -0040f020 -0070b460 -01375550 -0070e8b0 -0129ba3c
+00749ea0	no_rule	UNCHANGED: header_lacks DefClass@0x70(no accessor)
+0074a1e0	no_rule	UNCHANGED: local_std
+0074a260	no_rule	UNCHANGED: header_lacks GetTCConst
+0074d710	no_rule	UNCHANGED: local_std
+0074d940	no_rule	UNCHANGED: local_std
+0074e280	no_rule	UNCHANGED: header_lacks Health@0xb4,MaxHealth@0xb0
+0074e460	no_rule	UNCHANGED: header_lacks GetInterface
+0074ee90	no_rule	UNCHANGED: local_std
+0074f350	no_rule	UNCHANGED: local_std
+00750050	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00750110	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor)
+00750240	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007502d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007504e0	bytes_differ	LENGTH 112 != index 86
+00750540	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00750730	bytes_differ	LENGTH 112 != index 86
+00750850	no_rule	UNCHANGED: local_std
+007508d0	no_rule	UNCHANGED: header_lacks SetCutscenePauseBehaviour
+00750be0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00750cd0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+00750dd0	compile_fail	COMPILE_FAIL -87a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(374) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCDriverBase'
+007512c0	no_rule	UNCHANGED: header_lacks f28@0x28,f5c@0x5c(no accessor)
+007512e0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00751bc0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00752000	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00752200	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00752300	no_rule	UNCHANGED: header_lacks Flags178@0x178
+00752480	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00753040	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor)
+00753170	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00753290	no_rule	UNCHANGED: local_std
+00753930	bytes_differ	LENGTH 386 != index 401; TARGETS differ (0 vs index 10) -0040f020 -0070b460 -0070c0d0 -00a242c0 -00a23f50 -0070b4a0
+00753b40	consistency	0070b470: new spelling ?GetState@CTCTurnSource@@QBEPAUCTurnState@@XZ not at target; old ?GetState@CTCTurnSource@@QAEPAUCTurnState@@XZ keeps 1 binder(s) 006d5af0
+00753c70	no_rule	UNCHANGED: header_lacks IsLookTurningOverridenByParent
+00757b30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00757c90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0075a530	no_rule	UNCHANGED: local_std
+0075bc40	no_rule	UNCHANGED: local_std
+0075c210	no_rule	UNCHANGED: pack_region
+0075dc00	no_rule	UNCHANGED: local_std
+00766550	no_rule	UNCHANGED: local_std
+00766c00	no_rule	UNCHANGED: local_std
+007673c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00767da0	no_rule	UNCHANGED: local_std
+00768210	no_rule	UNCHANGED: local_std
+0076c850	no_rule	UNCHANGED: local_std
+0076cfe0	bytes_differ	LENGTH 502 != index 454; TARGETS differ (0 vs index 12) -004365b0 -007c7890 -00a01b50 -01375731 -013b86a0 -00449970
+0076d1b0	no_rule	UNCHANGED: local_std
+0076d270	no_rule	UNCHANGED: local_std
+0076d460	no_rule	UNCHANGED: header_lacks GetInterface
+0076d7b0	no_rule	UNCHANGED: local_std
+0076e2f0	no_rule	UNCHANGED: local_std
+0076e4a0	no_rule	UNCHANGED: header_lacks m_properties@0x2c
+0076ef40	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00770e50	no_rule	UNCHANGED: local_std
+00770f20	no_rule	UNCHANGED: local_std
+00771200	no_rule	UNCHANGED: header_lacks SetAsDrawable
+00771230	consistency	004be4e0: new spelling ?DrawPreparePrimitivesForRendering@CTCGraphicAppea not at target; old ?DrawPreparePrimitivesForRendering@CTCGraphicAppea keeps 1 binder(s) 0083ba70
+00771540	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00771660	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor)
+007721a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00772250	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00772510	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+00772590	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+00772610	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00773b20	no_rule	UNCHANGED: header_lacks GetInterface
+00773e10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00774100	no_rule	UNCHANGED: local_std
+007742c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007743b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007744a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007748e0	no_rule	UNCHANGED: local_std
+007751a0	no_rule	UNCHANGED: header_lacks Get,GetPWorkplace,m_houseLockingOverridden@0xd4
+00777000	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007786f0	no_rule	UNCHANGED: header_lacks DefClass@0x70(no accessor)
+00778ae0	no_rule	UNCHANGED: local_std
+00778fa0	no_rule	UNCHANGED: header_lacks SetCutscenePauseBehaviour
+00779080	no_rule	UNCHANGED: header_lacks GetAngleXY
+007796b0	no_rule	UNCHANGED: header_lacks Health@0xb4
+00779d20	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00779e10	no_rule	UNCHANGED: local_std
+00779e90	no_rule	UNCHANGED: header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0,map@0x4ca1d0
+0077a130	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0077a180	no_rule	UNCHANGED: local_std
+0077adf0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0077b2e0	no_rule	UNCHANGED: local_std
+0077bc80	no_rule	UNCHANGED: local_std
+0077c160	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0077c3e0	compile_fail	COMPILE_FAIL f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0077c3e0\x.cpp(64) : error C2027: use of undefined type 'NGraphicAppearance::CTCGraphicAppearance'
+0077c740	compile_fail	COMPILE_FAIL f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0077c740\x.cpp(68) : error C2027: use of undefined type 'NGraphicAppearance::CTCGraphicAppearance'
+0077cb60	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0077cbe0	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+0077cca0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0077cd50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0077d230	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0077ec20	no_rule	UNCHANGED: local_std
+0077fb00	compile_fail	COMPILE_FAIL eDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0077fb00\x.cpp(107) : error C2039: 'GetPlayerNumber' : is not a member of 'CGameEvent'
+007800b0	no_rule	UNCHANGED: header_lacks HeroCentre@0x170
+00780540	no_rule	UNCHANGED: header_lacks GetParticleEmitter
+00780c80	no_rule	UNCHANGED: header_lacks GetInterface
+00780d20	no_rule	UNCHANGED: header_lacks m_pDefClass@0x70(no accessor)
+00781e40	no_rule	UNCHANGED: header_lacks SetAsDrawable
+00781f10	no_rule	UNCHANGED: header_lacks SetAsDrawable
+00781fe0	no_rule	UNCHANGED: header_lacks SetVisible
+00782670	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00783020	no_rule	UNCHANGED: local_std
+00783090	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00783110	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00783240	no_rule	UNCHANGED: header_lacks GetUID
+00783380	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00783730	no_rule	UNCHANGED: header_lacks GetInterface,GetUID
+00784b30	no_rule	UNCHANGED: header_lacks m_pState@0x70(no accessor)
+00785dd0	no_rule	UNCHANGED: local_std
+00786140	no_rule	UNCHANGED: local_std
+007868a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00787750	no_rule	UNCHANGED: header_lacks SetCutscenePauseBehaviour
+00787d4f	no_rule	UNCHANGED: header_lacks Def@0x70(no accessor)
+00787e12	no_rule	UNCHANGED: header_lacks UsingComponents@0x20(no accessor),m_interfaces@0x44(no accessor)
+0078809b	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007881ad	no_rule	UNCHANGED: local_std
+00788229	no_rule	UNCHANGED: own_definition_of_header_inline GetTCDriver
+00788406	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007884f5	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor)
+00788555	compile_fail	COMPILE_FAIL 0788555\x.cpp(83) : error C2662: 'CTCAnimationComplex::GetAnimation' : cannot convert 'this' pointer from 'const CTCAnimationComplex' to 'CTCAnimationComplex &'
+00788617	no_rule	UNCHANGED: local_std
+007890ea	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0078954d	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0078971d	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00789900	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00789c20	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00789d90	no_rule	UNCHANGED: local_std
+00789e60	no_rule	UNCHANGED: local_std
+00789ff0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0078a2c0	compile_fail	COMPILE_FAIL -5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0078a2c0\x.cpp(77) : error C2440: 'initializing' : cannot convert from 'const CTCWeapon *' to 'CTCWeapon *'
+0078a5d0	compile_fail	COMPILE_FAIL -5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0078a5d0\x.cpp(63) : error C2440: 'initializing' : cannot convert from 'const CTCWeapon *' to 'CTCWeapon *'
+0078b070	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0078b410	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0078b6b0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0078c080	no_rule	UNCHANGED: local_std
+0078c4c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0078c610	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0078db20	no_rule	UNCHANGED: local_std
+0078ddb0	bytes_differ	BYTES (masked sha1 differs)
+0078e820	no_rule	UNCHANGED: header_lacks GetTCSelect
+0078e9c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0078ebf0	no_rule	UNCHANGED: header_lacks GetInterface,MakeNoise
+0078f4d0	no_rule	UNCHANGED: header_lacks GetObstructionDriver
+0078f5a0	no_rule	UNCHANGED: local_std
+00792e50	no_rule	UNCHANGED: local_std
+007930b0	no_rule	UNCHANGED: local_std
+00793d20	no_rule	UNCHANGED: local_std
+00793ec0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007940f0	no_rule	UNCHANGED: header_lacks GetInterface,MakeNoise
+007949f0	no_rule	UNCHANGED: header_lacks GetDriver
+00794ac0	no_rule	UNCHANGED: local_std
+00798570	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00798620	no_rule	UNCHANGED: local_std
+00798770	no_rule	UNCHANGED: header_lacks OnHit
+00799140	no_rule	UNCHANGED: header_lacks HomeBuilding@0x170
+00799790	no_rule	UNCHANGED: header_lacks ShopThing@0x170
+00799c40	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00799fb0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0079a050	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0079a280	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0079a6e0	no_rule	UNCHANGED: local_std
+0079b9d0	no_rule	UNCHANGED: header_lacks m_presentBits@0x20(no accessor)
+0079bf30	no_rule	UNCHANGED: local_std
+0079c240	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+0079c290	no_rule	UNCHANGED: header_lacks Killer@0xf4
+0079c750	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0079e250	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0079e420	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0079eaa0	consistency	004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is bound in the index to 004bfe20; 004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is defined at 004bfe20
+007a00e0	no_rule	UNCHANGED: unresolved_call GetInterface(0x4b)
+007a0400	no_rule	UNCHANGED: local_std
+007a0770	no_rule	UNCHANGED: local_std
+007a07f0	no_rule	UNCHANGED: header_lacks m_bDead(other bits)
+007a09b0	no_rule	UNCHANGED: header_lacks GetTCConst
+007a1870	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007a30b0	no_rule	UNCHANGED: local_std
+007a3410	no_rule	UNCHANGED: local_std
+007a34a0	no_rule	UNCHANGED: local_std
+007a37b0	no_rule	UNCHANGED: local_std
+007a3ac0	no_rule	UNCHANGED: local_std
+007a3ca0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007a3f30	no_rule	UNCHANGED: local_std
+007a3fa0	no_rule	UNCHANGED: local_std
+007a4140	no_rule	UNCHANGED: local_std
+007a43a0	no_rule	UNCHANGED: local_std
+007a5190	no_rule	UNCHANGED: local_std
+007a54a0	no_rule	UNCHANGED: local_std
+007a63d0	no_rule	UNCHANGED: local_std
+007a66a0	compile_fail	COMPILE_FAIL f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007a66a0\x.cpp(68) : error C2027: use of undefined type 'NGraphicAppearance::CTCGraphicAppearance'
+007a66f0	no_rule	UNCHANGED: local_std
+007a6740	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007a69f0	no_rule	UNCHANGED: header_lacks SendMessageW
+007a6ab0	no_rule	UNCHANGED: local_std
+007a6f00	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007a71b0	no_rule	UNCHANGED: local_std
+007a73f0	no_rule	UNCHANGED: local_std
+007a8be0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007a9300	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007a9580	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007a9b70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007a9c80	consistency	004c0560: new spelling ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetHelperPoint@CTCGraphicAppearance@@QAE_NABVCCha keeps 4 binder(s) 00661b40,00722590,00781e40,008717a0
+007a9d60	no_rule	UNCHANGED: local_std
+007a9e40	no_rule	UNCHANGED: local_std
+007a9fe0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007aa370	no_rule	UNCHANGED: header_lacks SetAlpha
+007aa9e0	no_rule	UNCHANGED: header_lacks GetHeightZBelowAt,Radius@0x34
+007ab190	no_rule	UNCHANGED: header_lacks FinishCurrentAction
+007ad880	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007aee40	bytes_differ	BYTES (masked sha1 differs)
+007aee90	bytes_differ	BYTES (masked sha1 differs)
+007aef60	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007aefd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007af050	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007af0f0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+007af6c0	no_rule	UNCHANGED: local_std
+007b0800	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007b0880	no_rule	UNCHANGED: local_std
+007b1eb0	compile_fail	COMPILE_FAIL 3f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007b1eb0\x.cpp(50) : error C2819: type 'CPlayer' does not have an overloaded member 'operator ->'
+007b2bf0	bytes_differ	LENGTH 99 != index 113; TARGETS differ (0 vs index 5) -0040f020 -007ee540 -0065bfce -007b29b0 -0065a686
+007b2d50	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+007b2e20	no_rule	UNCHANGED: local_std
+007b2fd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007b5ca0	no_rule	UNCHANGED: local_std
+007b6300	no_rule	UNCHANGED: local_std
+007b6a80	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007b7140	no_rule	UNCHANGED: local_std
+007b7b60	no_rule	UNCHANGED: local_std
+007b8680	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007b9090	bytes_differ	LENGTH 112 != index 90
+007ba550	no_rule	UNCHANGED: local_std
+007babe0	no_rule	UNCHANGED: header_lacks GetThingTypeFlags
+007bb660	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007bb800	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007bdac7	no_rule	UNCHANGED: header_lacks Heal
+007bdb66	no_rule	UNCHANGED: header_lacks TCBits@0x20(no accessor)
+007bdcfc	no_rule	UNCHANGED: header_lacks GetInterfaceUnchecked
+007be0f9	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007bf2b0	no_rule	UNCHANGED: local_std
+007bf3d0	compile_fail	COMPILE_FAIL 7-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007bf3d0\x.cpp(30) : error C2440: 'return' : cannot convert from 'const CTCPhysicsBase *' to 'CTCPhysicsBase *'
+007c04a0	no_rule	UNCHANGED: local_std
+007c0e80	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c0fb0	no_rule	UNCHANGED: local_std
+007c2480	no_rule	UNCHANGED: header_lacks PTCDriver@0x5c(no accessor)
+007c25a0	no_rule	UNCHANGED: header_lacks PTCDriver@0x5c(no accessor)
+007c2800	no_rule	UNCHANGED: header_lacks PTCDriver@0x5c(no accessor)
+007c3070	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007c30e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c31c0	no_rule	UNCHANGED: local_std
+007c3c20	no_rule	UNCHANGED: local_std
+007c3f10	no_rule	UNCHANGED: local_std
+007c4bd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c5560	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c5db0	no_rule	UNCHANGED: local_std
+007c6760	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c6a40	no_rule	UNCHANGED: local_std
+007c6da0	no_rule	UNCHANGED: header_lacks FadeOutEffect
+007c75e0	no_rule	UNCHANGED: header_lacks FadeOutEffect
+007c7960	no_rule	UNCHANGED: local_std
+007c7a00	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007c8760	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c87f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c89f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c8de0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c9180	no_rule	UNCHANGED: pack_region
+007c93b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007c9760	compile_fail	COMPILE_FAIL -0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007c9760\x.cpp(25) : error C2106: '=' : left operand must be l-value
+007c9770	no_rule	UNCHANGED: header_lacks GetUID
+007c98a0	compile_fail	COMPILE_FAIL cb80dfb\scratchpad\plan\p7\gate_work\007c98a0\x.cpp(65) : error C2440: 'return' : cannot convert from 'const CTCCreatureGenerator *' to 'CTCCreatureGenerator *'
+007ca630	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+007ca8e0	no_rule	UNCHANGED: local_std
+007cabd0	no_rule	UNCHANGED: header_lacks GetCheckedInterface
+007cbdc0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007cbf60	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+007cc120	consistency	004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is bound in the index to 004bfe20; 004bffc0: ?ClearMeshEffect@CTCGraphicAppearance@NGraphicAppe is defined at 004bfe20
+007cc2b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007cc410	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+007cc4d0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+007ccb00	no_rule	UNCHANGED: local_std
+007cce20	no_rule	UNCHANGED: header_lacks OnHit
+007cd930	no_rule	UNCHANGED: local_std
+007cdc20	no_rule	UNCHANGED: local_std
+007cdd10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007cdfe0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007ceb00	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007cf040	no_rule	UNCHANGED: local_std
+007cf110	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007cf7e0	bytes_differ	LENGTH 131 != index 127; TARGETS differ (0 vs index 6) -008ef180 -007d1260 -008ef950 -008efb00 -008efa00 -005e9b20
+007cff40	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d0850	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d2a00	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d3510	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d3700	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d4410	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d4ce0	no_rule	UNCHANGED: local_std
+007d4e30	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d5730	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d60c0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d6f70	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d7ec0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d7f10	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+007d7fd0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d80c0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d8160	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d83c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007d8ab0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007d8c20	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007dd990	no_rule	UNCHANGED: unresolved_call GetInterface(T** ppOut, long interfaceType)
+007de030	no_rule	UNCHANGED: unresolved_call HasTC(long type),GetTC(long interfaceType)
+007de500	grade	vland DIFFER(40v39) PASS
+007df130	no_rule	UNCHANGED: header_lacks m_flags92@0x92
+007df610	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+007df6a0	bytes_differ	BYTES (masked sha1 differs)
+007dfb20	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007dfe20	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007dff90	no_rule	UNCHANGED: header_lacks Health@0xb4
+007e00d0	no_rule	UNCHANGED: header_lacks ScriptName@0x74(no accessor)
+007e0910	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007e0e70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007e14c0	compile_fail	COMPILE_FAIL f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007e14c0\x.cpp(76) : error C2027: use of undefined type 'NGraphicAppearance::CTCGraphicAppearance'
+007e1510	no_rule	UNCHANGED: local_std
+007e1570	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007e1eb0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007e2450	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007e2600	no_rule	UNCHANGED: header_lacks OnHit,UsingComponents@0x20(no accessor)
+007e3040	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007e3c70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007e3d50	no_rule	UNCHANGED: unresolved_call GetTC(),GetTC()
+007e3f40	no_rule	UNCHANGED: unresolved_call GetTC(),GetTC()
+007e4040	no_rule	UNCHANGED: unresolved_call GetTC(),GetTC()
+007e4330	no_rule	UNCHANGED: unresolved_call GetTC(),GetTC()
+007e4430	compile_fail	COMPILE_FAIL -5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007e4430\x.cpp(84) : error C2272: 'IsThingForcePushable' : modifiers not allowed on static member functions
+007e44e0	compile_fail	COMPILE_FAIL -5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007e44e0\x.cpp(43) : error C2272: 'IsThingLifeDrainable' : modifiers not allowed on static member functions
+007e45d0	compile_fail	COMPILE_FAIL 1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007e45d0\x.cpp(43) : error C2272: 'IsThingNotBloodyWillableAtAll' : modifiers not allowed on static member functions
+007e4680	compile_fail	COMPILE_FAIL 87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007e4680\x.cpp(42) : error C2272: 'IsThingEpicPowerExplodable' : modifiers not allowed on static member functions
+007e46d0	compile_fail	COMPILE_FAIL -5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007e46d0\x.cpp(42) : error C2272: 'IsThingEpicSpellable' : modifiers not allowed on static member functions
+007e50c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007e5230	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007e59b0	no_rule	UNCHANGED: local_std
+007e5b40	consistency	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a
+007e5b90	consistency	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a
+007e6ec0	no_rule	UNCHANGED: local_std
+007e7640	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007e76b0	no_rule	UNCHANGED: header_lacks GetScriptedControl
+007e7760	no_rule	UNCHANGED: header_lacks GetScriptedControl
+007e83b0	no_rule	UNCHANGED: header_lacks DrawIsDrawable,SetAsDrawable
+007ea040	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007ea0e0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007ea490	consistency	004c0560: new spelling ?GetHelperPoint@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetHelperPoint@CTCGraphicAppearance@@QAE_NABVCCha keeps 4 binder(s) 00661b40,00722590,00781e40,008717a0
+007ea510	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007eac10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007eacb0	compile_fail	COMPILE_FAIL scratchpad\plan\p7\gate_work\007eacb0\x.cpp(68) : error C2440: 'initializing' : cannot convert from 'const CIntelligentPointer<T>' to 'CIntelligentPointer<T> &'
+007eaf20	no_rule	UNCHANGED: header_lacks GetStateFlags
+007eb110	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007eb1a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007ecee0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007ed170	no_rule	UNCHANGED: header_lacks GetTCConst
+007ed2c0	no_rule	UNCHANGED: header_lacks GetTCConst
+007ed560	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+007ed870	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007edb80	no_rule	UNCHANGED: local_std
+007edbe0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007edd60	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007edee0	no_rule	UNCHANGED: header_lacks GetTCSelect
+007ee270	compile_fail	COMPILE_FAIL -0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\007ee270\x.cpp(62) : error C2106: '=' : left operand must be l-value
+007ee660	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007ee8f0	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+007eeb20	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007eec50	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007eec90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007eecf0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007eed20	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007eefe0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007ef600	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f01f0	no_rule	UNCHANGED: unresolved_call HasTC(long interfaceType),GetTC(long interfaceType)
+007f0300	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f04c0	no_rule	UNCHANGED: header_lacks Health@0xb4,MaxHealth@0xb0,PTCDriver@0x5c(no accessor)
+007f08b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f0b10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f1410	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f14f0	no_rule	UNCHANGED: header_lacks EmergeFraction@0xb4
+007f1930	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f1ac0	no_rule	UNCHANGED: header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0
+007f23d0	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor)
+007f2410	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f4020	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007f42a0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007f4500	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007f4d50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f4e10	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+007f4e80	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f4f40	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f4f80	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f4fc0	compile_fail	COMPILE_FAIL scratchpad\plan\p7\gate_work\007f4fc0\x.cpp(58) : error C2440: 'initializing' : cannot convert from 'const CIntelligentPointer<T>' to 'CIntelligentPointer<T> &'
+007f50b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f53a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f59c0	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+007f59f0	no_rule	UNCHANGED: local_std
+007f5d20	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007f69b0	compile_fail	COMPILE_FAIL plan\p7\gate_work\007f69b0\x.cpp(89) : error C2662: 'CTCStealth::IsAvailableForAttack' : cannot convert 'this' pointer from 'const CTCStealth' to 'CTCStealth &'
+007f6bf0	bytes_differ	BYTES (masked sha1 differs)
+007f6cb0	bytes_differ	BYTES (masked sha1 differs)
+007f6df0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f7040	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007f70d0	no_rule	UNCHANGED: header_lacks IsRequestedType
+007f7340	no_rule	UNCHANGED: header_lacks IsAICreature
+007f7b70	no_rule	UNCHANGED: local_std
+007f7c10	no_rule	UNCHANGED: local_std
+007f7e70	no_rule	UNCHANGED: local_std
+007f8300	no_rule	UNCHANGED: header_lacks SetAsDrawable
+007f8760	no_rule	UNCHANGED: local_std
+007f8890	no_rule	UNCHANGED: header_lacks PBaseDef@0x70(no accessor),PTCDriver@0x5c(no accessor),ThingTypeBit3(no offset)
+007f8f30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f90b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007f9b90	no_rule	UNCHANGED: header_lacks m_flags91(other bits)
+007f9c00	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007f9ff0	no_rule	UNCHANGED: local_std
+007fa0e0	no_rule	UNCHANGED: local_std
+007fa320	no_rule	UNCHANGED: local_std
+007fa450	no_rule	UNCHANGED: local_std
+007fa710	no_rule	UNCHANGED: local_std
+007fa7b0	no_rule	UNCHANGED: local_std
+007fa830	no_rule	UNCHANGED: local_std
+007fa890	no_rule	UNCHANGED: local_std
+007faa20	no_rule	UNCHANGED: local_std
+007fac00	no_rule	UNCHANGED: local_std
+007fac80	no_rule	UNCHANGED: local_std
+007fae60	no_rule	UNCHANGED: local_std
+007faf60	bytes_differ	LENGTH 454 != index 444; TARGETS differ (0 vs index 10) -00a01b50 -004c73d0 -00bfeb28 -00a441e0
+007fb120	grade	vland DIFFER(40v39) PASS
+007fb500	no_rule	UNCHANGED: local_std
+007fb6a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007fb870	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007fba20	compile_fail	COMPILE_FAIL -87a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(374) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCDriverBase'
+007fbb00	no_rule	UNCHANGED: local_std
+007fbe50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007fc8e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007fcef0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007fd110	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007fd4b0	no_rule	UNCHANGED: header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0
+007fda20	compile_fail	COMPILE_FAIL -ed975cb80dfb\scratchpad\plan\p7\gate_work\007fda20\x.cpp(42) : error C2440: 'static_cast' : cannot convert from 'const CTCBase *' to 'CTCCreatureModeManager *'
+007fda80	no_rule	UNCHANGED: local_std
+007fdb10	no_rule	UNCHANGED: local_std
+007fde70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+007fe730	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+007feaf0	consistency	004c08c0: new spelling ?GetDummyObject@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetDummyObject@CTCGraphicAppearance@@QAE_NABVCCha keeps 21 binder(s) 00661aa0,00661b40,0072ddb0,0072df50
+007fecb0	no_rule	UNCHANGED: local_std
+007ff0c0	consistency	004c08c0: new spelling ?GetDummyObject@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetDummyObject@CTCGraphicAppearance@@QAE_NABVCCha keeps 21 binder(s) 00661aa0,00661b40,0072ddb0,0072df50
+007ff7d0	no_rule	UNCHANGED: header_lacks defIndex@0x4ca1d0
+007ff8a0	no_rule	UNCHANGED: local_std
+00801a50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00802610	no_rule	UNCHANGED: local_std
+00802d10	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+008039a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00803b20	no_rule	UNCHANGED: header_lacks IsControlledCreature
+00807b70	no_rule	UNCHANGED: nested_in_namespace N00807b70
+008091a0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00809270	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+008093d0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00809a70	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00809d60	no_rule	UNCHANGED: nested_in_namespace N00809d60
+00809f80	no_rule	UNCHANGED: local_std
+0080a550	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0080c3c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0080c460	no_rule	UNCHANGED: own_definition_of_header_inline GetPCurrentThingManager
+0080c500	no_rule	UNCHANGED: header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0,map@0x4ca1d0
+0080ca20	no_rule	UNCHANGED: header_lacks OnHit
+0080cbf0	no_rule	UNCHANGED: local_std
+0080ccf0	no_rule	UNCHANGED: local_std
+0080e400	compile_fail	COMPILE_FAIL -ed975cb80dfb\scratchpad\plan\p7\gate_work\0080e400\x.cpp(42) : error C2440: 'static_cast' : cannot convert from 'const CTCBase *' to 'CTCCreatureModeManager *'
+0080e530	compile_fail	COMPILE_FAIL pp(32) : error C2662: 'CTCCreatureModeManager::GetCurrentMode' : cannot convert 'this' pointer from 'const CTCCreatureModeManager' to 'CTCCreatureModeManager &'
+0080e5d0	compile_fail	COMPILE_FAIL pp(35) : error C2662: 'CTCCreatureModeManager::GetCurrentMode' : cannot convert 'this' pointer from 'const CTCCreatureModeManager' to 'CTCCreatureModeManager &'
+0080e670	no_rule	UNCHANGED: local_std
+0080e8e0	no_rule	UNCHANGED: local_std
+0080ecc0	no_rule	UNCHANGED: local_std
+0080f190	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0080f270	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0080f5e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0080f870	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0080fad0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0080fd30	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0080fd90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0080ff20	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+008100a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00810970	no_rule	UNCHANGED: local_std
+00811100	no_rule	UNCHANGED: header_lacks ScriptName@0x74(no accessor)
+00811190	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00811470	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008115a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00811760	compile_fail	COMPILE_FAIL 80dfb\scratchpad\plan\p7\gate_work\00811760\x.cpp(73) : error C2440: 'initializing' : cannot convert from 'const CTCWeaponHolder_77 *' to 'CTCWeaponHolder_77 *'
+008128f0	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00812a10	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00812e20	no_rule	UNCHANGED: header_lacks GetUID
+00812eb0	no_rule	UNCHANGED: header_lacks GetUID
+00812f20	compile_fail	COMPILE_FAIL e-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00812f20\x.cpp(38) : error C2061: syntax error : identifier 'thing'
+00812f70	no_rule	UNCHANGED: header_lacks GetUID
+00813100	no_rule	UNCHANGED: header_lacks GetUID
+00814c70	no_rule	UNCHANGED: header_lacks GetPosition
+00814d10	no_rule	UNCHANGED: header_lacks GetPhysicsRadius
+00814d90	no_rule	UNCHANGED: header_lacks GetPhysicsRadius
+00814e10	no_rule	UNCHANGED: header_lacks GetPhysicsRadius
+00814f90	no_rule	UNCHANGED: header_lacks GetPhysicsRadius
+00815070	compile_fail	COMPILE_FAIL bleDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00815070\x.cpp(97) : error C2065: 'CIVCountedPointeeBasePdb' : undeclared identifier
+00815200	compile_fail	COMPILE_FAIL \gate_work\00815200\x.cpp(30) : error C2662: 'CTCPhysicsBase::GetBoundingInfo' : cannot convert 'this' pointer from 'const CTCPhysicsBase' to 'CTCPhysicsBase &'
+008158d0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+00815aa0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+00815ba0	no_rule	UNCHANGED: header_lacks GetPhysicsRadius
+00815c40	no_rule	UNCHANGED: header_lacks GetPhysicsRadius
+008162f0	compile_fail	COMPILE_FAIL ser-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008162f0\x.cpp(37) : error C2039: 'HandlerType1' : is not a member of 'CThing'
+00816390	no_rule	UNCHANGED: local_std
+00820790	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00820840	no_rule	UNCHANGED: local_std
+008209c0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008266e0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0082a9b0	no_rule	UNCHANGED: header_lacks GetMapIndex,HasInformationFlag
+0082abd0	no_rule	UNCHANGED: header_lacks GetMapIndex
+0082acd0	no_rule	UNCHANGED: local_std
+0082add0	no_rule	UNCHANGED: header_lacks MinimapFlags@0x15d
+0082ae80	no_rule	UNCHANGED: header_lacks GetMapIndex
+0082b520	no_rule	UNCHANGED: header_lacks GetMapIndex
+0082b630	no_rule	UNCHANGED: header_lacks GetMapIndex,HiddenFromMiniMap@0x15d
+0082be60	no_rule	UNCHANGED: header_lacks Flags91@0x91(derived)
+0082c6e0	no_rule	UNCHANGED: local_std
+0082c770	no_rule	UNCHANGED: local_std
+0082d0d0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+0082d810	no_rule	UNCHANGED: header_lacks m_thingFlags@0x2c(derived)
+0082db00	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0082dd90	no_rule	UNCHANGED: header_lacks CountMoneyBags,m_stateFlags(other bits)
+0082de20	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0082def0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0082e090	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0082e0e0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0082fd90	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+0082fe60	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+0082fed0	compile_fail	COMPILE_FAIL Decomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0082fed0\x.cpp(11) : error C2653: 'CThingAICreature' : is not a class or namespace name
+0082ff70	compile_fail	COMPILE_FAIL Decomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0082ff70\x.cpp(11) : error C2653: 'CThingAICreature' : is not a class or namespace name
+00830000	compile_fail	COMPILE_FAIL Decomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00830000\x.cpp(11) : error C2653: 'CThingAICreature' : is not a class or namespace name
+00830150	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+00830cb0	compile_fail	COMPILE_FAIL ecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00830cb0\x.cpp(64) : error C2228: left of '.GetPlayer' must have class/struct/union type
+00830d80	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008326a0	no_rule	UNCHANGED: local_std
+00832e60	no_rule	UNCHANGED: local_std
+00833010	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+008330d0	no_rule	UNCHANGED: unresolved_call HasTC(long interfaceType),GetInterface(const T** ppOut, long interfac)
+00833230	no_rule	UNCHANGED: local_std
+008332e0	no_rule	UNCHANGED: local_std
+00833390	no_rule	UNCHANGED: local_std
+008334f0	compile_fail	COMPILE_FAIL x.cpp(58) : error C2440: 'initializing' : cannot convert from 'const NGraphicAppearance::CTCGraphicAppearance *' to 'NGraphicAppearance::CTCGraphicAppearance *'
+00833710	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008337b0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00833ba0	no_rule	UNCHANGED: header_lacks OnLevelUnload
+00835a20	no_rule	UNCHANGED: header_lacks defIndex@0x4ca1d0,map@0x4ca1d0
+00835b90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00835bd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00835e30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00835fd0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00836240	compile_fail	COMPILE_FAIL ude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00836240\x.cpp(20) : error C2504: 'CThing' : base class undefined
+00836260	no_rule	UNCHANGED: own_definition_of_header_inline GetTCDriver
+00836740	no_rule	UNCHANGED: header_lacks OnCreate,v000
+008367b0	no_rule	UNCHANGED: header_lacks ctor
+00836910	no_rule	UNCHANGED: own_definition_of_header_inline GetPCurrentThingManager
+00836ad0	no_rule	UNCHANGED: header_lacks RenderUpdate
+00837830	no_rule	UNCHANGED: header_lacks OnInitialActivate
+00837c70	no_rule	UNCHANGED: header_lacks ctor
+00838530	no_rule	UNCHANGED: nested_in_namespace N_004c9030
+00838570	no_rule	UNCHANGED: header_lacks WorldUpdate
+00838950	no_rule	UNCHANGED: header_lacks IsLineOfSightTo_00838950
+00838a00	compile_fail	COMPILE_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00838a00\x.cpp(57) : error C2228: left of '.RemoveFromGameObjectList' must have class/struct/union type
+00838bc0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00838ec0	compile_fail	COMPILE_FAIL r-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00838ec0\x.cpp(107) : error C2589: 'const' : illegal token on right side of '::'
+00839080	no_rule	UNCHANGED: header_lacks OnCollision,normal@0x4c8da0,position@0x4c8da0,type@0x4c8da0
+0083af60	no_rule	UNCHANGED: own_definition_of_header_inline GetPBaseDef
+0083b3b0	no_rule	UNCHANGED: header_lacks DrawIsDrawable
+0083b3e0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+0083b520	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0083b610	bytes_differ	LENGTH 160 != index 157; TARGETS differ (0 vs index 8) -0099ebf0 -004c9d60 -0099eae0 -0083b520 -00838a40
+0083b9f0	no_rule	UNCHANGED: header_lacks DrawIsDrawable,GetDisplayEngine,v00
+0083bbf0	compile_fail	COMPILE_FAIL er-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0083bbf0\x.cpp(63) : error C2589: 'const' : illegal token on right side of '::'
+0083be50	no_rule	UNCHANGED: header_lacks DrawIsDrawable,GetDisplayEngine,v00
+0083be90	no_rule	UNCHANGED: header_lacks GetPhysicsPosition
+0083c690	compile_fail	COMPILE_FAIL 0dfb\scratchpad\plan\p7\gate_work\0083c690\x.cpp(79) : error C2662: 'CThing::GetPlayerManager' : cannot convert 'this' pointer from 'const CThing' to 'CThing &'
+0083c800	compile_fail	COMPILE_FAIL 0dfb\scratchpad\plan\p7\gate_work\0083c800\x.cpp(78) : error C2662: 'CThing::GetPlayerManager' : cannot convert 'this' pointer from 'const CThing' to 'CThing &'
+0083c990	no_rule	UNCHANGED: header_lacks GetPhysicsPosition
+0083ca90	compile_fail	COMPILE_FAIL 0dfb\scratchpad\plan\p7\gate_work\0083ca90\x.cpp(79) : error C2662: 'CThing::GetPlayerManager' : cannot convert 'this' pointer from 'const CThing' to 'CThing &'
+0083cc10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0083d100	no_rule	UNCHANGED: header_lacks DrawIsDrawable,GetDisplayEngine,v00
+0083d190	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0083d280	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+0083d710	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+0083d900	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0083dbe0	compile_fail	COMPILE_FAIL er-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0083dbe0\x.cpp(79) : error C2589: 'const' : illegal token on right side of '::'
+0083ddc0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00842f70	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00842fd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008435b0	compile_fail	COMPILE_FAIL -home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008435b0\x.cpp(11) : error C2143: syntax error : missing ')' before '&'
+00843610	compile_fail	COMPILE_FAIL -home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00843610\x.cpp(11) : error C2143: syntax error : missing ')' before '&'
+00844260	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+008442f0	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00844380	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00844410	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+008444a0	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+008445a0	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00845040	no_rule	UNCHANGED: local_std
+00845350	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008455c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00845900	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00845b10	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00845ce0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00846100	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00846410	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00847470	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00847990	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00847ac0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00847be0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00847fb0	compile_fail	COMPILE_FAIL me-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00847fb0\x.cpp(54) : error C2061: syntax error : identifier 'PObjectToUse'
+00848500	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00848730	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00848850	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00848f10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00849140	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00849250	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00849320	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00849380	no_rule	UNCHANGED: header_lacks GetCheckedInterface,GetMainGameComponent
+00849700	no_rule	UNCHANGED: header_lacks GetCheckedTC
+00849d90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00849e80	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0084a0a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0084a350	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0084a4a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0084a5f0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0084a720	no_rule	UNCHANGED: local_std
+0084d8b0	no_rule	UNCHANGED: header_lacks GetCurrentMeshHeight
+0084f850	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+008508b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00851490	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00852750	no_rule	UNCHANGED: header_lacks GetPlaceholder,GetRHSet,Position(no offset)
+008529d0	no_rule	UNCHANGED: header_lacks GetPTCGraphicAppearance,GetXYDirectionTo
+00852c40	no_rule	UNCHANGED: header_lacks GetPTCGraphicAppearance
+008531e0	compile_fail	COMPILE_FAIL x.cpp(60) : error C2440: 'initializing' : cannot convert from 'const NGraphicAppearance::CTCGraphicAppearance *' to 'NGraphicAppearance::CTCGraphicAppearance *'
+00853580	no_rule	UNCHANGED: header_lacks GetPTCGraphicAppearance
+00853830	no_rule	UNCHANGED: nested_in_namespace NCameraModes
+00853ba0	no_rule	UNCHANGED: nested_in_namespace NCameraModes
+008547d0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+00854b90	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008553c0	no_rule	UNCHANGED: local_std
+00855920	no_rule	UNCHANGED: header_lacks FindEntry
+008559e0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00856570	no_rule	UNCHANGED: local_std
+00857250	compile_fail	COMPILE_FAIL d975cb80dfb\scratchpad\plan\p7\gate_work\00857250\x.cpp(62) : error C2440: 'initializing' : cannot convert from 'const CTCSolidToThing *' to 'CTCSolidToThing *'
+00857430	no_rule	UNCHANGED: local_std
+008579d0	compile_fail	COMPILE_FAIL -5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008579d0\x.cpp(124) : error C2440: '=' : cannot convert from 'const CTCCameraPoint *' to 'CTCCameraPoint *'
+00858130	no_rule	UNCHANGED: local_std
+00858400	no_rule	UNCHANGED: local_std
+00858590	no_rule	UNCHANGED: local_std
+008587b0	no_rule	UNCHANGED: local_std
+00858a20	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00859040	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CClass.h(32) : error C2118: negative subscript
+0085b0d0	no_rule	UNCHANGED: local_std
+0085b160	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+0085b5b0	no_rule	UNCHANGED: local_std
+0085ee90	no_rule	UNCHANGED: header_lacks inner@0x100
+0085eeb0	no_rule	UNCHANGED: header_lacks GetModeManager
+0085ef00	no_rule	UNCHANGED: local_std
+0085ef70	no_rule	UNCHANGED: local_std
+0085f010	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f070	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f0c0	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f120	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f180	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f200	no_rule	UNCHANGED: local_std
+0085f2b0	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f310	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f370	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f3e0	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f470	no_rule	UNCHANGED: local_std
+0085f560	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f600	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f6a0	no_rule	UNCHANGED: header_lacks GetModeManager
+0085f880	no_rule	UNCHANGED: local_std
+0085faa0	no_rule	UNCHANGED: local_std
+0085fb30	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0085fc50	no_rule	UNCHANGED: header_lacks GetModeManager
+0085fcd0	no_rule	UNCHANGED: header_lacks GetModeManager
+0085fd70	no_rule	UNCHANGED: local_std
+0085fe60	no_rule	UNCHANGED: local_std
+0085ff10	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+008610d0	compile_fail	COMPILE_FAIL \-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008610d0\x.cpp(8) : error C2143: syntax error : missing ';' before '<'
+008611f0	compile_fail	COMPILE_FAIL \-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008611f0\x.cpp(8) : error C2143: syntax error : missing ';' before '<'
+00861310	compile_fail	COMPILE_FAIL \-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00861310\x.cpp(8) : error C2143: syntax error : missing ';' before '<'
+00861430	compile_fail	COMPILE_FAIL cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(153) : error C2440: '=' : cannot convert from 'const CTCCrateStack *' to 'CTCCrateStack *'
+00861900	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+00862780	no_rule	UNCHANGED: header_lacks AreWeaponsUnsheathed,GetConstTC
+00862aa0	no_rule	UNCHANGED: header_lacks VelocityX@0x10c,VelocityY@0x110
+00862ec0	no_rule	UNCHANGED: header_lacks GetMaxJoggingSpeed,VelocityX@0x10c,VelocityY@0x110
+008643a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008644e0	no_rule	UNCHANGED: local_std
+00864620	no_rule	UNCHANGED: local_std
+00864840	no_rule	UNCHANGED: local_std
+008648a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00864b30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00864d00	consistency	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a
+00865c20	bytes_differ	BYTES (masked sha1 differs)
+00865e70	no_rule	UNCHANGED: header_lacks Flags@0x30
+00866e80	no_rule	UNCHANGED: header_lacks GetBody
+00867010	no_rule	UNCHANGED: local_std
+00868220	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00868b40	no_rule	UNCHANGED: header_lacks Get,flags(no offset),flags2(no offset),key(no offset)
+00869020	no_rule	UNCHANGED: header_lacks ArmourAbsorb@0xb4,Flags1c8@0x1c8,IsRangedWeapon
+00870bb0	no_rule	UNCHANGED: header_lacks _pad_0x00(no offset),defIndex@0x4ca1d0
+008717a0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00871cc0	no_rule	UNCHANGED: local_std
+00872ec0	no_rule	UNCHANGED: local_std
+00873030	no_rule	UNCHANGED: local_std
+00875990	no_rule	UNCHANGED: header_lacks GetSwitchRadius
+00877110	no_rule	UNCHANGED: local_std
+008786e0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0087b6f0	compile_fail	COMPILE_FAIL 5cb80dfb\scratchpad\plan\p7\gate_work\0087b6f0\x.cpp(65) : error C2662: 'CTCBase::GetCentre' : cannot convert 'this' pointer from 'const CTCBase' to 'CTCBase &'
+0087bf40	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0087c3f0	grade	vland DIFFER(40v39) PASS
+0087c420	no_rule	UNCHANGED: header_lacks m_pDef@0x70(no accessor)
+0087ca30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0087cb10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0087cdf0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0087cec0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0087ebd0	no_rule	UNCHANGED: local_std
+0087ecb0	no_rule	UNCHANGED: header_lacks GetGraphic
+0087ed70	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0087f340	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0087fd20	no_rule	UNCHANGED: header_lacks GetDistanceTo
+00883ae0	no_rule	UNCHANGED: local_std
+0088ae40	bytes_differ	LENGTH 429 != index 431; TARGETS differ (0 vs index 20) -00a01b50 -013b8a1c -0051e210 -0044bb00 -0099ebf0 -009ad410
+0088aff0	no_rule	UNCHANGED: header_lacks GetInterface
+0088de90	no_rule	UNCHANGED: header_lacks m_followBit0@0x1c9
+0088ded0	no_rule	UNCHANGED: header_lacks m_followBit1(no offset)
+0088df20	no_rule	UNCHANGED: header_lacks m_followBit2(no offset)
+0088e5a0	compile_fail	COMPILE_FAIL -0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0088e5a0\x.cpp(28) : error C2106: '=' : left operand must be l-value
+0088fd00	compile_fail	COMPILE_FAIL -0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0088fd00\x.cpp(27) : error C2106: '=' : left operand must be l-value
+008910d0	compile_fail	COMPILE_FAIL -0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008910d0\x.cpp(40) : error C2106: '=' : left operand must be l-value
+00892220	no_rule	UNCHANGED: header_lacks GetStandingOnThing
+00894500	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008946e0	no_rule	UNCHANGED: header_lacks GetTargetAttachments
+00894b90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00894dd0	no_rule	UNCHANGED: unresolved_call GetInterface(T** ppOut, long interfaceType),HasInterface(long interfaceType)
+00894ec0	no_rule	UNCHANGED: local_std
+00895010	no_rule	UNCHANGED: unresolved_call GetInterface(T** ppOut, long interfaceType),HasInterface(long interfaceType)
+00896120	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CClass.h(32) : error C2118: negative subscript
+008968c0	no_rule	UNCHANGED: local_std
+00897150	targets_differ	TARGETS differ (0 vs index 1) -0040f020
+008973a0	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CClass.h(32) : error C2118: negative subscript
+00897480	no_rule	UNCHANGED: local_std
+008976f0	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor),DeletedFlags(no offset)
+00897e10	no_rule	UNCHANGED: header_lacks GetInterface
+008981c0	no_rule	UNCHANGED: unresolved_call HasInterface(long interfaceType),GetInterface(long interfaceType),GetInterface(interfaceType),GetInterface(3)
+00898340	bytes_differ	LENGTH 179 != index 193; TARGETS differ (0 vs index 5) -00449970 -00487dc0 -0040f020 -004fb150 -004fb490
+00898410	bytes_differ	LENGTH 191 != index 205; TARGETS differ (0 vs index 7) -00449970 -00487dc0 -0040f020 -004fb150 -004fb490 -006ca380
+008990c0	targets_differ	TARGETS differ (0 vs index 5) -00449970 -00487dc0 -0040f020 -0057d8be
+008994e0	targets_differ	TARGETS differ (0 vs index 5) -00449970 -00487dc0 -0040f020 -0057b05f
+00899a10	targets_differ	TARGETS differ (0 vs index 5) -00449970 -00487dc0 -0040f020 -0057b26f
+00899a90	targets_differ	TARGETS differ (0 vs index 3) -00449970 -00487dc0 -0040f020
+0089ad90	no_rule	UNCHANGED: unresolved_call GetTC()
+0089ae30	bytes_differ	LENGTH 215 != index 252; TARGETS differ (0 vs index 8) -006e7510 -006e7530 -008abed0 -00a01b50 -0040f020 -00411570
+0089b780	no_rule	UNCHANGED: header_lacks Flags24@0x24,Flags28@0x28,IsCreature
+0089bb30	no_rule	UNCHANGED: unresolved_call HasTC(long kind),GetTC(CThing_Retail* thing, long kin),GetTC(thing, kind),GetTC(thing, kind)
+0089c000	targets_differ	TARGETS differ (0 vs index 2) -0040f020 -0076d1b0
+0089c080	targets_differ	TARGETS differ (0 vs index 2) -0040f020 -0076cc00
+0089c560	compile_fail	COMPILE_FAIL ed975cb80dfb\scratchpad\plan\p7\gate_work\0089c560\x.cpp(13) : error C2908: explicit specialization; 'CVectorMap<K,V,CompareType>' has already been instantiated
+0089c670	no_rule	UNCHANGED: local_std
+0089c710	no_rule	UNCHANGED: local_std
+0089c7b0	no_rule	UNCHANGED: local_std
+0089cd70	compile_fail	COMPILE_FAIL ed975cb80dfb\scratchpad\plan\p7\gate_work\0089cd70\x.cpp(13) : error C2908: explicit specialization; 'CVectorMap<K,V,CompareType>' has already been instantiated
+0089d9d0	no_rule	UNCHANGED: local_std
+0089df70	no_rule	UNCHANGED: header_lacks m_tcs@0x44(no accessor)
+0089dff0	no_rule	UNCHANGED: header_lacks flags(no offset),guardFlag(no offset)
+0089e540	no_rule	UNCHANGED: local_std
+0089f300	no_rule	UNCHANGED: local_std
+0089f4a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0089f910	compile_fail	COMPILE_FAIL ed975cb80dfb\scratchpad\plan\p7\gate_work\0089f910\x.cpp(13) : error C2908: explicit specialization; 'CVectorMap<K,V,CompareType>' has already been instantiated
+0089f9e0	no_rule	UNCHANGED: local_std
+0089faa0	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+0089fbb0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0089fc80	no_rule	UNCHANGED: header_lacks ScriptName@0x74(no accessor)
+0089fd20	no_rule	UNCHANGED: header_lacks ScriptName@0x74(no accessor)
+0089fda0	no_rule	UNCHANGED: header_lacks ScriptName@0x74(no accessor)
+008a03f0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008a0720	no_rule	UNCHANGED: local_std
+008a0820	no_rule	UNCHANGED: local_std
+008a08a0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008a0a20	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008a0b10	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008a0cb0	no_rule	UNCHANGED: local_std
+008a1040	targets_differ	TARGETS differ (0 vs index 5) -00449970 -00487dc0 -0040f020 -0055f3b0
+008a10c0	targets_differ	TARGETS differ (0 vs index 5) -00449970 -00487dc0 -0040f020 -0055f3b0
+008a1140	targets_differ	TARGETS differ (0 vs index 5) -00449970 -00487dc0 -0040f020 -0055f3b0
+008a11c0	targets_differ	TARGETS differ (0 vs index 5) -00449970 -00487dc0 -0040f020 -0055f3b0
+008a1360	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008a1cc0	no_rule	UNCHANGED: header_lacks GetHomeBuilding,GetInterface,GetOtherResidence,SetIsAvailableForResidency
+008a1e50	no_rule	UNCHANGED: local_std
+008a1f30	no_rule	UNCHANGED: local_std
+008a2020	no_rule	UNCHANGED: local_std
+008a2100	no_rule	UNCHANGED: local_std
+008a21e0	no_rule	UNCHANGED: local_std
+008a22d0	no_rule	UNCHANGED: local_std
+008a23b0	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a24c0	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a2590	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a2690	no_rule	UNCHANGED: local_std
+008a2770	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a2870	no_rule	UNCHANGED: local_std
+008a2950	no_rule	UNCHANGED: local_std
+008a2a30	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a2b30	no_rule	UNCHANGED: local_std
+008a2c10	no_rule	UNCHANGED: local_std
+008a2cf0	no_rule	UNCHANGED: local_std
+008a2de0	no_rule	UNCHANGED: local_std
+008a2ec0	no_rule	UNCHANGED: local_std
+008a2fa0	no_rule	UNCHANGED: local_std
+008a3090	no_rule	UNCHANGED: local_std
+008a3170	no_rule	UNCHANGED: local_std
+008a3250	no_rule	UNCHANGED: local_std
+008a3340	no_rule	UNCHANGED: local_std
+008a3420	no_rule	UNCHANGED: local_std
+008a3500	no_rule	UNCHANGED: local_std
+008a35f0	no_rule	UNCHANGED: local_std
+008a36d0	no_rule	UNCHANGED: local_std
+008a37b0	no_rule	UNCHANGED: local_std
+008a38a0	no_rule	UNCHANGED: local_std
+008a3980	no_rule	UNCHANGED: local_std
+008a3a60	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a3b60	no_rule	UNCHANGED: local_std
+008a3c40	no_rule	UNCHANGED: local_std
+008a3d20	no_rule	UNCHANGED: local_std
+008a3e10	no_rule	UNCHANGED: local_std
+008a3ef0	no_rule	UNCHANGED: local_std
+008a3fd0	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a40d0	no_rule	UNCHANGED: local_std
+008a41b0	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a4390	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a4480	no_rule	UNCHANGED: local_std
+008a4650	no_rule	UNCHANGED: local_std
+008a4730	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a4910	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a4a00	no_rule	UNCHANGED: local_std
+008a4ae0	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a4be0	no_rule	UNCHANGED: local_std
+008a4cc0	no_rule	UNCHANGED: local_std
+008a4e90	no_rule	UNCHANGED: local_std
+008a4f70	no_rule	UNCHANGED: local_std
+008a5050	no_rule	UNCHANGED: local_std
+008a5140	no_rule	UNCHANGED: local_std
+008a5220	no_rule	UNCHANGED: local_std
+008a5300	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a5400	no_rule	UNCHANGED: local_std
+008a54e0	no_rule	UNCHANGED: local_std
+008a55c0	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a56c0	no_rule	UNCHANGED: local_std
+008a57b0	no_rule	UNCHANGED: local_std
+008a5980	no_rule	UNCHANGED: local_std
+008a5a70	no_rule	UNCHANGED: local_std
+008a5c40	no_rule	UNCHANGED: local_std
+008a5d30	no_rule	UNCHANGED: local_std
+008a5f00	no_rule	UNCHANGED: local_std
+008a5ff0	no_rule	UNCHANGED: local_std
+008a61c0	no_rule	UNCHANGED: local_std
+008a62b0	no_rule	UNCHANGED: local_std
+008a6480	no_rule	UNCHANGED: local_std
+008a6570	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a6750	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a6840	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a6a20	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008a6b10	no_rule	UNCHANGED: local_std
+008a6ce0	no_rule	UNCHANGED: local_std
+008a6dd0	no_rule	UNCHANGED: local_std
+008a6fa0	no_rule	UNCHANGED: local_std
+008a7090	no_rule	UNCHANGED: local_std
+008a7260	no_rule	UNCHANGED: local_std
+008a7350	no_rule	UNCHANGED: local_std
+008a7520	no_rule	UNCHANGED: local_std
+008a7610	no_rule	UNCHANGED: local_std
+008a76f0	no_rule	UNCHANGED: header_lacks Components@0x44(no accessor)
+008a77f0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008a7ee0	targets_differ	TARGETS differ (0 vs index 2) -0040f020 -0076c850
+008a80f0	no_rule	UNCHANGED: header_lacks GetInterface
+008a8570	no_rule	UNCHANGED: local_std
+008a86c0	no_rule	UNCHANGED: local_std
+008a8890	no_rule	UNCHANGED: local_std
+008a89d0	no_rule	UNCHANGED: local_std
+008a8af0	no_rule	UNCHANGED: local_std
+008a8e40	no_rule	UNCHANGED: header_lacks m_flagsbc@0xbc
+008a8f20	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+008a9c40	no_rule	UNCHANGED: local_std
+008abdf0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+008ac5d0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+008ac660	no_rule	UNCHANGED: local_std
+008ac700	no_rule	UNCHANGED: local_std
+008ad710	no_rule	UNCHANGED: local_std
+008ad950	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008adba0	no_rule	UNCHANGED: local_std
+008adc30	no_rule	UNCHANGED: local_std
+008b69f0	no_rule	UNCHANGED: header_lacks FastCastType(no offset)
+008b6a20	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008b6a60	no_rule	UNCHANGED: header_lacks FastCastType(no offset)
+008b6a90	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008b7350	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008b7470	no_rule	UNCHANGED: header_lacks OnPropertyChanged,m_flags@0x28
+008b74a0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008b74d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008b7b10	no_rule	UNCHANGED: header_lacks MakeNoise,SheatheAllWeapons
+008b7cf0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008b8190	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+008b8260	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008b8310	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008b8b80	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008b8bc0	no_rule	UNCHANGED: header_lacks GetCombatTypeDef
+008b8d30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008b9010	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008b94a0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008b95a0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008b96a0	no_rule	UNCHANGED: header_lacks SetCurrentAction
+008b9740	no_rule	UNCHANGED: header_lacks SetCurrentAction
+008b97e0	bytes_differ	BYTES (masked sha1 differs)
+008b98d0	no_rule	UNCHANGED: header_lacks SetCurrentAction
+008b9a60	no_rule	UNCHANGED: header_lacks SetCurrentAction
+008b9bf0	no_rule	UNCHANGED: header_lacks SetCurrentAction
+008b9c90	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008b9e50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008b9f20	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008b9ff0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ba140	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ba3c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ba6b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008baa90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008bac40	no_rule	UNCHANGED: header_lacks SetCurrentAction
+008bc1a0	no_rule	UNCHANGED: local_std
+008bc790	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008bc8c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008bca00	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008bcbe0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008beee0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008bf0f0	compile_fail	COMPILE_FAIL e-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008bf0f0\x.cpp(41) : error C2065: 'm_pBody' : undeclared identifier
+008bf1c0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008bf740	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c0820	compile_fail	COMPILE_FAIL a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008c0820\x.cpp(62) : error C2440: '=' : cannot convert from 'CTCBase *' to 'CTCSolidToThing *'
+008c0900	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c0b10	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008c0ea0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c0fb0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c1600	no_rule	UNCHANGED: local_std
+008c1900	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+008c1a10	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+008c1b20	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+008c1c30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c1f70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c2240	no_rule	UNCHANGED: header_lacks GetDummyObject
+008c2550	no_rule	UNCHANGED: header_lacks GetSubDef
+008c2810	no_rule	UNCHANGED: closure_derived CDefClassBase:CDefPointeeBase
+008c3810	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+008c3f20	no_rule	UNCHANGED: local_std
+008c3f90	compile_fail	COMPILE_FAIL 13f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008c3f90\x.cpp(63) : error C2440: '=' : cannot convert from 'CTCBase *' to 'CTCHitOnCollision *'
+008c4040	compile_fail	COMPILE_FAIL 13f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008c4040\x.cpp(63) : error C2440: '=' : cannot convert from 'CTCBase *' to 'CTCHitOnCollision *'
+008c4170	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c4250	no_rule	UNCHANGED: header_lacks m_presentBits@0x20(no accessor)
+008c44b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c4680	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008c4810	compile_fail	COMPILE_FAIL -87a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(374) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCDriverBase'
+008c4a80	no_rule	UNCHANGED: header_lacks FindEntry
+008c4b80	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c4cb0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+008c52c0	no_rule	UNCHANGED: header_lacks GetTCParticleEmitter
+008c5410	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+008c5490	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008c6160	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008c6430	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c64f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c6b20	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c6ce0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c6db0	no_rule	UNCHANGED: header_lacks GetGraphicAppearanceTC
+008c74f0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008c7e50	no_rule	UNCHANGED: header_lacks GetBody
+008c8180	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c8380	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c8550	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c87a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c89d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008c9a40	no_rule	UNCHANGED: local_std
+008c9fe0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ca310	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ca680	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+008ca700	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+008caf10	no_rule	UNCHANGED: header_lacks m_pObstruction@0x5c(no accessor)
+008cafa0	compile_fail	COMPILE_FAIL -87a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(374) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCDriverBase'
+008cb250	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008cb500	compile_fail	COMPILE_FAIL -87a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(374) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCDriverBase'
+008cb620	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008cb780	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008cb940	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008cbb90	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008cc8a0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008cc8e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ccb00	no_rule	UNCHANGED: header_lacks GetGraphicAppearance
+008ccd70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008cd470	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008cdc40	no_rule	UNCHANGED: header_lacks LacksTC,LowerBoundTC
+008ce6f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ce900	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008cf460	no_rule	UNCHANGED: header_lacks m_health@0xb4
+008cf7d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008d04b0	grade	vland DIFFER(40v39) PASS
+008d0ba0	no_rule	UNCHANGED: header_lacks Interfaces@0x44(no accessor),UsingComponents@0x20(no accessor)
+008d23c0	no_rule	UNCHANGED: local_std
+008d45a0	no_rule	UNCHANGED: header_lacks IsFlaggedDead
+008d5790	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008d5970	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008d6690	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008d66e0	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008d6710	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008d6740	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008d68a0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008d6920	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008d6a50	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008d6d70	compile_fail	COMPILE_FAIL e-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008d6d70\x.cpp(36) : error C2039: 'SuspendAI' : is not a member of 'CThing'
+008d7270	compile_fail	COMPILE_FAIL e-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008d7270\x.cpp(91) : error C2039: 'SuspendAI' : is not a member of 'CThing'
+008d74b0	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008d7510	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008d7580	compile_fail	COMPILE_FAIL de-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008d7580\x.cpp(50) : error C2065: 'CThing' : undeclared identifier
+008d7630	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008d7730	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008d77a0	no_rule	UNCHANGED: header_lacks GetPlacement
+008d78e0	no_rule	UNCHANGED: header_lacks CreatureFlags@0xbc
+008d79a0	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008d79f0	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008d7a90	no_rule	UNCHANGED: local_std
+008d7b20	no_rule	UNCHANGED: local_std
+008d7ca0	compile_fail	COMPILE_FAIL er-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008d7ca0\x.cpp(11) : error C2065: 'CCreatureActionBase' : undeclared identifier
+008d8330	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008d87c0	compile_fail	COMPILE_FAIL -FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008d87c0\x.cpp(37) : error C2039: 'GetPString' : is not a member of 'CCharString'
+008d89c0	compile_fail	COMPILE_FAIL -5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008d89c0\x.cpp(67) : error C2440: 'initializing' : cannot convert from 'const CTCWeapon *' to 'CTCWeapon *'
+008d8b00	no_rule	UNCHANGED: local_std
+008d90b0	no_rule	UNCHANGED: header_lacks Brain@0x70(no accessor)
+008d9410	no_rule	UNCHANGED: header_lacks GetConstInterface
+008d9480	compile_fail	COMPILE_FAIL e-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008d9480\x.cpp(54) : error C2039: 'SuspendAI' : is not a member of 'CThing'
+008d9650	compile_fail	COMPILE_FAIL -user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008d9650\x.cpp(125) : error C2039: 'SuspendAI' : is not a member of 'CThing'
+008d9740	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008d9870	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008d99b0	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+008d9ca0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008d9e30	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008da0f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008da2e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008da3b0	no_rule	UNCHANGED: header_lacks CreatureFlags@0xbc
+008da690	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008dacb0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008dae10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008db620	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008dbb00	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008dc900	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+008dcb60	consistency	0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,8c69ce7a,838a0818
+008dd6e0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ddad0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ddd70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008de700	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008df310	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008df3a0	no_rule	UNCHANGED: nested_in_namespace NCreatureMode
+008df510	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+008df680	no_rule	UNCHANGED: header_lacks Killed(no offset)
+008e0060	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008e07f0	compile_fail	COMPILE_FAIL home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008e07f0\x.cpp(94) : error C2027: use of undefined type 'CTCPhysicsBase'
+008e0990	bytes_differ	LENGTH 103 != index 118; TARGETS differ (0 vs index 4) -0040f020 -0070b460 -008de700 -0073ac50
+008e0d20	no_rule	UNCHANGED: header_lacks GetDriver
+008e3bb0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+008e3c50	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+008e3eb0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008e4100	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+008e5750	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+008e5fb0	no_rule	UNCHANGED: local_base CTCPhysicsBase (CThing modelled on a local base with members)
+008e60d0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+008e63b0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+008e6780	no_rule	UNCHANGED: header_lacks LacksTC
+008e6940	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008e6d90	no_rule	UNCHANGED: local_std
+008e7040	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+008e7390	no_rule	UNCHANGED: header_lacks Damageable@0xbc,SetAsDrawable
+008e74f0	no_rule	UNCHANGED: header_lacks Damageable@0xbc,SetAsDrawable,SetCurrentAction
+008e7600	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+008e79a0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+008e7a00	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008e7b90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008e7cf0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008e7e70	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008e8a10	targets_differ	TARGETS differ (0 vs index 5) -00a01b50 -0040f020 -0073a8a0
+008e8ac0	no_rule	UNCHANGED: local_std
+008e8c50	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+008e9460	compile_fail	COMPILE_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008e9460\x.cpp(117) : error C2440: '=' : cannot convert from 'const CTCTargeting *' to 'CTCTargeting *'
+008e9850	compile_fail	COMPILE_FAIL -FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008e9850\x.cpp(40) : error C2039: 'GetPString' : is not a member of 'CCharString'
+008e9950	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 0040f020,8c69ce7a,838a0818; 004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is defined at 0040f020
+008ec260	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ec320	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ec4f0	no_rule	UNCHANGED: header_lacks Slot28
+008ec870	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008eca50	no_rule	UNCHANGED: header_lacks PParticleEmitter@0x5c(no accessor)
+008ecac0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ecbe0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ed090	no_rule	UNCHANGED: header_lacks GetTCIfPresent
+008ed1f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008ed770	no_rule	UNCHANGED: header_lacks FastCastType(no offset)
+008eda90	compile_fail	COMPILE_FAIL Z:\home\user\FableDecomp\rebuild\include\engine\CClass.h(32) : error C2118: negative subscript
+008eddd0	no_rule	UNCHANGED: local_std
+008ef390	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+008efa00	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+008f0b20	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008f2e00	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008f3020	no_rule	UNCHANGED: header_lacks GetShotAccuracyPercentage,PhysicsTC@0x70(no accessor)
+008f3100	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008f3630	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+008f3ad0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008f3fd0	no_rule	UNCHANGED: unresolved_call GetInterface(T** ppOut, long interfaceType)
+008f40b0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008f47e0	bytes_differ	BYTES (masked sha1 differs)
+008f4990	no_rule	UNCHANGED: local_std
+008f5060	no_rule	UNCHANGED: header_lacks GetDummyObject,PTCDriver@0x5c(no accessor)
+008f5220	no_rule	UNCHANGED: header_lacks GetDummyObject,PTCDriver@0x5c(no accessor)
+008f5490	no_rule	UNCHANGED: header_lacks GetDriver,GetGraphicAppearance
+008f5c50	no_rule	UNCHANGED: local_std
+008f7860	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+008f7950	no_rule	UNCHANGED: nested_in_namespace NDust008f7950
+008f7bd0	no_rule	UNCHANGED: nested_in_namespace NFoot008f7bd0
+008f7e70	no_rule	UNCHANGED: header_lacks PTCDriver@0x5c(no accessor)
+008f7f50	no_rule	UNCHANGED: header_lacks PTCDriver@0x5c(no accessor)
+008fa280	no_rule	UNCHANGED: header_lacks GetPDef,PBaseDef@0x70(no accessor)
+008faa80	compile_fail	COMPILE_FAIL leDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\008faa80\x.cpp(38) : error C2660: 'operator new' : function does not take 2 arguments
+008fbdd0	no_rule	UNCHANGED: local_std
+008fca40	no_rule	UNCHANGED: local_std
+008fd0a0	no_rule	UNCHANGED: blocks=2
+008fd1b0	no_rule	UNCHANGED: unresolved_call GetInterface(T** ppOut, long interfaceType)
+009039d0	bytes_differ	LENGTH 223 != index 234; TARGETS differ (0 vs index 12) -0099a380 -0128d86c -00a01b10 -01238c6c -00a01b90 -00a01b50
+00904cd0	no_rule	UNCHANGED: unresolved_call HasTC(long interfaceType),GetInterface(T** ppOut, long interfaceType)
+00905d10	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00906330	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+009074c0	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+00909640	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+009096e0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00909780	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00909830	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0090c060	no_rule	UNCHANGED: header_lacks GetStateFlags
+0090c1a0	no_rule	UNCHANGED: header_lacks FindEntry
+0090c2d0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0090c670	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0090ca60	bytes_differ	BYTES (masked sha1 differs)
+0090df60	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0090dfb0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+0090eec0	no_rule	UNCHANGED: closure_derived CMessageEvent:CBaseObject
+0090f290	no_rule	UNCHANGED: unresolved_call HasTC(long interfaceType)
+0090f830	no_rule	UNCHANGED: header_lacks GetRandomAnimFromNameWithFilter
+0090fae0	no_rule	UNCHANGED: unresolved_call GetInterface(T** ppOut, long interfaceType)
+0090fcd0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00910740	no_rule	UNCHANGED: local_std
+009107b0	no_rule	UNCHANGED: local_std
+009109b0	no_rule	UNCHANGED: local_std
+00910a90	no_rule	UNCHANGED: local_std
+00910c30	compile_fail	COMPILE_FAIL -home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00910c30\x.cpp(11) : error C2143: syntax error : missing ')' before '&'
+009112a0	no_rule	UNCHANGED: local_std
+00911710	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+009118a0	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00911c20	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00911d90	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00911f80	no_rule	UNCHANGED: header_lacks IsShown,SetShown
+00912700	bytes_differ	LENGTH 315 != index 309; TARGETS differ (0 vs index 15) -008fcff0 -004c73d0 -0040f020 -006cb6a0 -0129cb44 -006cba80
+009142b0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00914330	no_rule	UNCHANGED: local_std
+00914460	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+009147e0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00914aa0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00914b20	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00914c10	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00914c60	no_rule	UNCHANGED: header_lacks GetTCConst
+00914f00	no_rule	UNCHANGED: header_lacks GetAnimFromName
+00915080	no_rule	UNCHANGED: local_std
+009162f0	bytes_differ	LENGTH 482 != index 498; TARGETS differ (0 vs index 26) -006622a0 -00692620 -00662650 -0040f020 -006a1440 -006b0130
+009167f0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00916910	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00916e30	no_rule	UNCHANGED: local_std
+00916e90	no_rule	UNCHANGED: local_std
+00916f30	no_rule	UNCHANGED: local_std
+00916fc0	no_rule	UNCHANGED: local_std
+00917050	no_rule	UNCHANGED: local_std
+009170b0	no_rule	UNCHANGED: local_std
+00917380	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00917bb0	no_rule	UNCHANGED: local_std
+00917e30	no_rule	UNCHANGED: local_std
+00918050	no_rule	UNCHANGED: header_lacks GetStateFlags
+009195d0	no_rule	UNCHANGED: header_lacks PhysicsTC@0x70(no accessor)
+00919780	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+0091a6f0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0091a750	no_rule	UNCHANGED: local_std
+0091a9b0	no_rule	UNCHANGED: local_std
+0091adb0	no_rule	UNCHANGED: local_std
+0091b010	no_rule	UNCHANGED: local_std
+0091b190	no_rule	UNCHANGED: local_std
+0091b340	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0091ba40	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0091bd10	no_rule	UNCHANGED: header_lacks GetInterfaceR,GetSoundPair
+0091c9c0	no_rule	UNCHANGED: local_std
+0091cdc0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0091db50	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0091e4b0	no_rule	UNCHANGED: header_lacks Body(no offset)
+0091e660	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0091e700	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+0091e750	compile_fail	COMPILE_FAIL vents::GetEvent(NEntityEvents::CEventChildHurtGoToMother ** ,const NEntityEvents::CIsEventOfType &)' : overloaded member function not found in 'CTCEntityEvents'
+0091eb60	no_rule	UNCHANGED: local_std
+0091f050	no_rule	UNCHANGED: header_lacks FindInterface
+0091f870	no_rule	UNCHANGED: local_std
+0091faa0	no_rule	UNCHANGED: local_std
+0091fb30	no_rule	UNCHANGED: local_std
+0091fdb0	no_rule	UNCHANGED: local_std
+009200c0	no_rule	UNCHANGED: local_std
+00920480	no_rule	UNCHANGED: local_std
+009204f0	no_rule	UNCHANGED: local_std
+009205d0	no_rule	UNCHANGED: local_std
+009212c0	no_rule	UNCHANGED: header_lacks m_flags1c9@0x1c9
+00921440	compile_fail	COMPILE_FAIL omp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00921440\x.cpp(38) : error C2953: 'CBasicString' : template class has already been defined
+00921870	no_rule	UNCHANGED: header_lacks FindEntry,m_flags92@0x92
+00922320	no_rule	UNCHANGED: local_std
+009223a0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00922600	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+009226b0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00923070	no_rule	UNCHANGED: local_std
+00923510	no_rule	UNCHANGED: header_lacks m_flags91(other bits)
+009236c0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00923aa0	compile_fail	COMPILE_FAIL a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(159) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCVillageMember'
+00923b00	compile_fail	COMPILE_FAIL a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(159) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCVillageMember'
+00923da0	bytes_differ	BYTES (masked sha1 differs)
+00923e10	bytes_differ	BYTES (masked sha1 differs)
+009240c0	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+00924180	no_rule	UNCHANGED: header_lacks m_health@0xb4
+00924200	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+00924350	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+009244d0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00924520	no_rule	UNCHANGED: local_std
+00924720	no_rule	UNCHANGED: header_lacks m_health@0xb4
+009261f0	no_rule	UNCHANGED: header_lacks GetTCIfHas,GetTCIfPresent
+00926a10	bytes_differ	BYTES (masked sha1 differs)
+00926b30	bytes_differ	BYTES (masked sha1 differs)
+00926c50	bytes_differ	BYTES (masked sha1 differs)
+00929650	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00929820	consistency	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a
+00929b10	bytes_differ	LENGTH 756 != index 785; TARGETS differ (0 vs index 41) -008fcf80 -00449960 -00a01b50 -00a01b10 -01231c4c -00a01b90
+00929f10	no_rule	UNCHANGED: closure_derived CAIStateGroupBase:CBaseClass
+0092a0c0	bytes_differ	LENGTH 238 != index 346; TARGETS differ (0 vs index 9) -008fcfd0 -00497890 -013bae1a -013bae19 -013bae18 -0099ebf0
+0092a220	bytes_differ	LENGTH 385 != index 455; TARGETS differ (0 vs index 16) -004c73d0 -008fcfd0 -004978a0 -0099ebf0 -00929fc0 -0099eae0
+0092ae70	bytes_differ	LENGTH 357 != index 354; TARGETS differ (0 vs index 18) -013bb6b0 -0099ebf0 -00929fc0 -0099eae0 -006af640 -013bb6ac
+0092b110	no_rule	UNCHANGED: header_lacks TestTC
+0092b2d0	no_rule	UNCHANGED: local_std
+0092bf50	no_rule	UNCHANGED: local_std
+0092c070	no_rule	UNCHANGED: header_lacks PhysicsTC@0x70(no accessor)
+0092c260	no_rule	UNCHANGED: local_std
+0092c5a0	consistency	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a
+0092d060	no_rule	UNCHANGED: header_lacks Home@0x168
+0092d7c0	bytes_differ	BYTES (masked sha1 differs)
+0092e890	no_rule	UNCHANGED: header_lacks FindEntry
+0092edc0	no_rule	UNCHANGED: local_std
+0092f240	no_rule	UNCHANGED: local_std
+00930a70	compile_fail	COMPILE_FAIL Hero::FindMostRecentDeed(const COpinionDeedFilter_IsCrimeToRunAndFindAGuard &,long *,bool)' : overloaded member function not found in 'CTCCreatureOpinionOfHero'
+00930ee0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00931010	bytes_differ	BYTES (masked sha1 differs)
+00932990	compile_fail	COMPILE_FAIL omp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00932990\x.cpp(58) : error C2953: 'CBasicString' : template class has already been defined
+00933aa0	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00933ae0	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+00933c10	no_rule	UNCHANGED: header_lacks FindEntry
+00935040	no_rule	UNCHANGED: local_std
+00935160	no_rule	UNCHANGED: nested_in_namespace NCondition00935160
+009352c0	consistency	0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT keeps 1751 binder(s) 0042c43f,0042c48b,0042c4d6,0042c521; 0040f020: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 004365b0,31a
+009357f0	bytes_differ	LENGTH 350 != index 384; TARGETS differ (0 vs index 19) -0049d870 -00a01b50 -01375550 -00a01b10 -01237f1c -00a01b90
+00936070	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00936100	no_rule	UNCHANGED: local_std
+00936590	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+009365e0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00936950	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00937080	no_rule	UNCHANGED: local_std
+00937420	no_rule	UNCHANGED: header_lacks IsRequestedType
+00937690	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+009378f0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+00937da0	bytes_differ	BYTES (masked sha1 differs)
+00937f70	no_rule	UNCHANGED: header_lacks FindEntry
+00938cd0	no_rule	UNCHANGED: header_lacks GetStateFlags
+00938db0	no_rule	UNCHANGED: local_std
+00939180	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+009395f0	no_rule	UNCHANGED: quarantine_model: #define CThing <alias> include
+00939a50	no_rule	UNCHANGED: local_std
+00939af0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0093a890	grade	vland DIFFER(40v39) PASS
+0093ad70	no_rule	UNCHANGED: unresolved_call HasTC(long type),GetInterface(T** ppOut, long type)
+0093b1d0	compile_fail	COMPILE_FAIL error C2556: 'unsigned long CCharString::GetLength(void) const' : overloaded function differs only by return type from 'long CCharString::GetLength(void) const'
+0093b5e0	no_rule	UNCHANGED: local_std
+0093b640	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0093b740	compile_fail	COMPILE_FAIL 75cb80dfb\scratchpad\plan\p7\gate_work\0093b740\x.cpp(90) : error C2440: 'initializing' : cannot convert from 'const CTCPerceiveThing *' to 'CTCPerceiveThing *'
+0093bef0	no_rule	UNCHANGED: header_lacks FindEntry
+0093bfa0	no_rule	UNCHANGED: unresolved_call GetInterface(T** ppOut, long interfaceType)
+0093c2f0	no_rule	UNCHANGED: local_std
+0093c4e0	no_rule	UNCHANGED: local_std
+0093c830	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0093cdb0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0093d3a0	no_rule	UNCHANGED: header_lacks GetFacing
+0093d800	consistency	00744430: new spelling ?GetDirectAwareness@CTCPerceiveThing@@QBE_NXZ not at target; old ?GetDirectAwareness@CTCPerceiveThing@@QAE_NXZ keeps 1 binder(s) 009576d0; 0040f020: new spelling ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT not at target; old ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@
+0093db10	no_rule	UNCHANGED: header_lacks GetRegionAtPosition
+0093dc10	bytes_differ	LENGTH 198 != index 192; TARGETS differ (0 vs index 5) -0093d800 -00a01b50 -004c73d0
+0093dfc0	consistency	004365b0: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCT is bound in the index to 31a6b4b7,13b54747
+0093e090	bytes_differ	LENGTH 360 != index 428; TARGETS differ (0 vs index 16) -008fcfc0 -006ea770 -0049d870 -0093dcd0 -00662410 -00bfebb0
+0093e2d0	no_rule	UNCHANGED: header_lacks GetCombatManager,IsCombatant,IsInCombatMode
+0093e5e0	no_rule	UNCHANGED: header_lacks IsInCombatMode
+0093e8c0	consistency	004c08c0: new spelling ?GetDummyObject@CTCGraphicAppearance@NGraphicAppea not at target; old ?GetDummyObject@CTCGraphicAppearance@@QAE_NABVCCha keeps 21 binder(s) 00661aa0,00661b40,0072ddb0,0072df50
+0093f8a0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0093f930	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00940180	compile_fail	COMPILE_FAIL 40-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00940180\x.cpp(63) : error C2440: 'return' : cannot convert from 'const CTCVillager *' to 'CTCVillager *'
+00940240	no_rule	UNCHANGED: header_lacks FindEntry
+00941450	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00941c40	no_rule	UNCHANGED: local_std
+00942270	no_rule	UNCHANGED: local_std
+00942390	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00942a00	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00942b30	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00942d40	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00942ee0	no_rule	UNCHANGED: header_lacks m_interfaces@0x44(no accessor),m_presentBits@0x20(no accessor)
+009432c0	bytes_differ	BYTES (masked sha1 differs)
+00943830	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+009438f0	no_rule	UNCHANGED: local_std
+00943ae0	compile_fail	COMPILE_FAIL \-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00943ae0\x.cpp(37) : error C2065: 'PWarehouse' : undeclared identifier
+009445c0	grade	vland DIFFER(40v39) PASS
+00944730	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00944ce0	grade	vland DIFFER(40v39) PASS
+00944e80	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00945de0	no_rule	UNCHANGED: header_lacks GetThingTypeFlags
+00945e70	no_rule	UNCHANGED: local_std
+009462a0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+00946330	no_rule	UNCHANGED: closure_derived CAIStateGroupBase:CBaseClass
+00946520	no_rule	UNCHANGED: header_lacks GetStateFlags
+00946850	bytes_differ	LENGTH 669 != index 653; TARGETS differ (0 vs index 35) -00a01b50 -0040f020 -007fec10 -00946730 -007fede0 -0097ec00
+00946ae0	no_rule	UNCHANGED: local_std
+00946b50	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00946c60	no_rule	UNCHANGED: header_lacks GetStateFlags
+00946e70	no_rule	UNCHANGED: header_lacks FindEntry
+00946f90	no_rule	UNCHANGED: local_std
+00947110	no_rule	UNCHANGED: local_std
+009474f0	no_rule	UNCHANGED: header_lacks m_interfaces@0x44(no accessor),m_presentBits@0x20(no accessor)
+00947780	no_rule	UNCHANGED: local_std
+00947840	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00947a30	no_rule	UNCHANGED: header_lacks dead(no offset),flags24(no offset),interfaces(no offset)
+00947fb0	bytes_differ	LENGTH 177 != index 168; TARGETS differ (0 vs index 7) -004365b0 -007ee540 -00a01b50
+0094a6d0	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+0094b490	no_rule	UNCHANGED: local_std
+0094b840	no_rule	UNCHANGED: local_std
+0094b9b0	no_rule	UNCHANGED: header_lacks GetStateFlags
+0094bb20	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0094bfc0	no_rule	UNCHANGED: local_std
+0094c010	no_rule	UNCHANGED: local_std
+0094c900	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0094d020	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0094d680	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0094d9c0	compile_fail	COMPILE_FAIL 7a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0094d9c0\x.cpp(113) : error C2440: 'return' : cannot convert from 'const CTCEnemyTracker *' to 'CTCEnemyTracker *'
+0094dac0	compile_fail	COMPILE_FAIL 7a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0094dac0\x.cpp(109) : error C2440: 'return' : cannot convert from 'const CTCEnemyTracker *' to 'CTCEnemyTracker *'
+0094e6b0	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+0094f090	bytes_differ	LENGTH 229 != index 223; TARGETS differ (0 vs index 5) -004c73d0 -00a14440 -008fcfc0 -0063e480
+0094fff0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+00950950	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00950a30	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+00950b20	compile_fail	COMPILE_FAIL 7a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(159) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCEntityEvents'
+00952e80	bytes_differ	LENGTH 352 != index 380; TARGETS differ (0 vs index 21) -008fcf90 -00449970 -00487dc0 -00a01b10 -0123e7d8 -00a01b90
+009540f0	no_rule	UNCHANGED: header_lacks TypeFlags(no offset)
+00954150	no_rule	UNCHANGED: header_lacks TypeFlags(no offset)
+009541e0	no_rule	UNCHANGED: header_lacks TypeFlags(no offset)
+00954410	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00954470	compile_fail	COMPILE_FAIL ed975cb80dfb\scratchpad\plan\p7\gate_work\00954470\x.cpp(101) : error C2440: 'initializing' : cannot convert from 'const CTCTargetingAI *' to 'CTCTargetingAI *'
+009547d0	bytes_differ	LENGTH 309 != index 294; TARGETS differ (0 vs index 15) -0040f020 -007aed10 -004c73d0 -00a01b50 -00a01b10 -0123e7d8
+00954980	compile_fail	COMPILE_FAIL -d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00954980\x.cpp(81) : error C2440: '=' : cannot convert from 'const CTCTargeting *' to 'CTCTargeting *'
+00954ab0	compile_fail	COMPILE_FAIL -d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00954ab0\x.cpp(82) : error C2440: '=' : cannot convert from 'const CTCTargeting *' to 'CTCTargeting *'
+00954cd0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00956b00	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00956ce0	no_rule	UNCHANGED: local_std
+00956fe0	no_rule	UNCHANGED: closure_derived CDefClassBase:CDefPointeeBase
+00957210	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+009572a0	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+009575c0	no_rule	UNCHANGED: header_lacks FindEntry
+00957940	no_rule	UNCHANGED: header_lacks GetTCConst
+009580e0	no_rule	UNCHANGED: local_std
+00958770	no_rule	UNCHANGED: local_std
+00958cb0	consistency	006610c7: new spelling ?FindMostRecentDeed@CTCCreatureOpinionOfHero@@QBEP not at target; old ?FindMostRecentDeed@CTCCreatureOpinionOfHero@@QAEP keeps 5 binder(s) 0065bffa,0092d060,00930a70,00930ee0
+00958e20	no_rule	UNCHANGED: header_lacks FindEntry
+009595c0	no_rule	UNCHANGED: local_std
+0095a7d0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0095b020	no_rule	UNCHANGED: header_lacks StartPos@0xe8,m_interfaces@0x44(no accessor),m_presentBits@0x20(no accessor)
+0095b280	no_rule	UNCHANGED: header_lacks GetCombatManager,IsCombatant
+0095b3e0	no_rule	UNCHANGED: local_std
+0095b6f0	compile_fail	COMPILE_FAIL ude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0095b6f0\x.cpp(20) : error C2504: 'CThing' : base class undefined
+0095c0b0	no_rule	UNCHANGED: local_std
+0095cdf0	no_rule	UNCHANGED: local_std
+0095cf50	no_rule	UNCHANGED: local_std
+0095cfe0	no_rule	UNCHANGED: local_std
+0095d310	no_rule	UNCHANGED: unresolved_call HasTC(long interfaceType),GetInterface(T** ppOut, long interfaceType)
+0095d3a0	no_rule	UNCHANGED: header_lacks FindEntry
+0095d880	no_rule	UNCHANGED: local_std
+0095da90	no_rule	UNCHANGED: local_std
+0095db30	no_rule	UNCHANGED: local_std
+0095db90	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0095ddf0	no_rule	UNCHANGED: local_std
+0095de60	no_rule	UNCHANGED: local_std
+0095df40	no_rule	UNCHANGED: local_std
+0095e010	no_rule	UNCHANGED: local_std
+0095e260	no_rule	UNCHANGED: local_std
+0095e430	no_rule	UNCHANGED: closure_derived CAIStateGroupBase:CBaseClass
+0095e470	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+0095e900	no_rule	UNCHANGED: local_std
+0095ee40	grade	vland DIFFER(40v39) PASS
+0095f9a0	consistency	006aeb60: new spelling ?IsRegionFollower@CTCRegionFollower@@QBE_NPAVCThin not at target; old ?IsRegionFollower@CTCRegionFollower@@QAE_NPAVCThin keeps 1 binder(s) 0094c900
+0095fed0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00960070	no_rule	UNCHANGED: header_lacks FindEntry
+00960760	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00960fc0	compile_fail	COMPILE_FAIL 75cb80dfb\scratchpad\plan\p7\gate_work\00960fc0\x.cpp(61) : error C2440: 'initializing' : cannot convert from 'const CTCOpinionSource *' to 'CTCOpinionSource *'
+00961080	no_rule	UNCHANGED: local_std
+009613a0	no_rule	UNCHANGED: local_std
+00961550	no_rule	UNCHANGED: unresolved_call HasTC(long type)
+00961ab0	no_rule	UNCHANGED: header_lacks GetPDefClass
+00961b90	no_rule	UNCHANGED: header_lacks GetPDefClass
+00961e80	compile_fail	COMPILE_FAIL ser-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\00961e80\x.cpp(171) : error C2039: 'IsDead' : is not a member of 'CThingEnemy'
+00961fb0	no_rule	UNCHANGED: header_lacks GetPDefClass
+00962c10	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+009633e0	no_rule	UNCHANGED: header_lacks GetPhysicsBody
+00963640	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00964230	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+009642d0	no_rule	UNCHANGED: local_std
+00964da0	no_rule	UNCHANGED: own_definition CVectorMap member (same-TU body)
+00964ef0	no_rule	UNCHANGED: local_std
+009650c0	no_rule	UNCHANGED: local_std
+00965180	no_rule	UNCHANGED: local_std
+009652c0	no_rule	UNCHANGED: local_std
+00965e80	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00966cf0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00967180	no_rule	UNCHANGED: header_lacks FindEntry
+00968230	no_rule	UNCHANGED: local_base CThingPhysical (CThing modelled on a local base with members)
+009685c0	no_rule	UNCHANGED: header_lacks GetAverageWalkSpeed
+009687b0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+009697e0	no_rule	UNCHANGED: local_std
+00969a80	bytes_differ	LENGTH 112 != index 105
+00969fb0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0096aad0	no_rule	UNCHANGED: header_lacks GetCombatTypeDef
+0096af60	no_rule	UNCHANGED: header_lacks SetActive
+0096b600	no_rule	UNCHANGED: header_lacks UnsheatheMeleeWeapon
+0096bac0	no_rule	UNCHANGED: local_std
+0096bb70	no_rule	UNCHANGED: local_std
+0096bcb0	no_rule	UNCHANGED: quarantine_model: #define <closure class> alias
+0096bf10	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+0096bf90	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+0096c250	compile_fail	COMPILE_FAIL 7a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(159) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCEntityEvents'
+0096c2e0	no_rule	UNCHANGED: header_lacks m_pDef@0x70(no accessor)
+0096c4f0	no_rule	UNCHANGED: closure_model CDefPointer (non-template local stand-in)
+0096d200	compile_fail	COMPILE_FAIL a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(159) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCVillageMember'
+0096e540	no_rule	UNCHANGED: header_lacks FindEntry,FindEntryConst
+0096e700	bytes_differ	LENGTH 303 != index 297; TARGETS differ (0 vs index 15) -00662410 -008fcfc0 -006ea770 -004c73d0 -012925cc -01238170
+0096ee90	no_rule	UNCHANGED: header_lacks IsInCombatMode
+0096f260	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+0096f770	compile_fail	COMPILE_FAIL 6) : error C2664: 'CAIStateGroup_SummonerLightningAttack::IsTargetable' : cannot convert parameter 1 from 'const CTCLightningTarget *' to 'CTCLightningTarget *'
+0096fcd0	compile_fail	COMPILE_FAIL 0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0096fcd0\x.cpp(130) : error C2061: syntax error : identifier 'weapon'
+0096ff10	bytes_differ	BYTES (masked sha1 differs)
+00970930	compile_fail	COMPILE_FAIL 975cb80dfb\scratchpad\plan\p7\gate_work\00970930\x.cpp(77) : error C2440: '=' : cannot convert from 'const CTCCreatureNavigation *' to 'CTCCreatureNavigation *'
+00970ab0	no_rule	UNCHANGED: local_std
+00970c10	no_rule	UNCHANGED: header_lacks FindEntry
+00971530	no_rule	UNCHANGED: local_std
+009720c0	no_rule	UNCHANGED: template_instance_row (the row is a GetTC<T> instantiation body)
+00972340	no_rule	UNCHANGED: header_lacks PDef@0x70(no accessor)
+00972670	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00972830	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+009771f0	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+00977320	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+00978a00	no_rule	UNCHANGED: local_std
+00978a80	no_rule	UNCHANGED: local_std
+00978b00	no_rule	UNCHANGED: local_std
+00978c50	no_rule	UNCHANGED: local_std
+00978d00	no_rule	UNCHANGED: local_std
+00978da0	no_rule	UNCHANGED: local_std
+00978e60	no_rule	UNCHANGED: local_std
+00978f10	no_rule	UNCHANGED: local_std
+009792f0	no_rule	UNCHANGED: local_std
+00979370	no_rule	UNCHANGED: local_std
+009793d0	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00979650	no_rule	UNCHANGED: local_std
+00979760	no_rule	UNCHANGED: local_std
+00979870	no_rule	UNCHANGED: local_std
+00979d80	no_rule	UNCHANGED: local_std
+00979e90	no_rule	UNCHANGED: local_std
+00979f70	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0097ae60	no_rule	UNCHANGED: local_std
+0097aee0	no_rule	UNCHANGED: local_std
+0097af70	no_rule	UNCHANGED: local_std
+0097b030	no_rule	UNCHANGED: local_std
+0097b0e0	no_rule	UNCHANGED: local_std
+0097b180	no_rule	UNCHANGED: local_std
+0097b240	no_rule	UNCHANGED: local_std
+0097b2c0	no_rule	UNCHANGED: local_std
+0097b320	no_rule	UNCHANGED: local_std
+0097b4e0	no_rule	UNCHANGED: local_std
+0097b660	no_rule	UNCHANGED: local_std
+0097b780	no_rule	UNCHANGED: header_lacks FindEntry
+0097b900	no_rule	UNCHANGED: header_lacks Health@0xb4
+0097baa0	compile_fail	COMPILE_FAIL 7a1-ed975cb80dfb\scratchpad\plan\p7\w2\overlay\rebuild\include\engine\CThing.h(159) : error C2039: 'StatGetInterfaceType' : is not a member of 'CTCEntityEvents'
+0097c5e0	no_rule	UNCHANGED: closure_derived CAIStateGroupBase:CBaseClass
+0097cb10	no_rule	UNCHANGED: local_std
+0097cff0	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+0097d050	no_rule	UNCHANGED: closure_derived CCreatureActionBase:CBaseObject
+0097dcb0	bytes_differ	BYTES (masked sha1 differs)
+0097e140	no_rule	UNCHANGED: unresolved_call HasTC(long type),GetTC(long type)
+0097ef60	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0097f3a0	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+0097f870	compile_fail	COMPILE_FAIL \-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\plan\p7\gate_work\0097f870\x.cpp(31) : error C2089: 'CThingBuilding' : 'class' too large
+0097fbe0	no_rule	UNCHANGED: header_lacks GetInterfaceR
+009804a0	no_rule	UNCHANGED: header_lacks GetInterfaceR
+00980770	no_rule	UNCHANGED: header_lacks TestTC
+009823d0	no_rule	UNCHANGED: local_std
+00982450	no_rule	UNCHANGED: local_std
+00982890	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+00984d90	no_rule	UNCHANGED: closure_model CDefPointer (local pointee stand-ins)
+009852c0	no_rule	UNCHANGED: local_std
+00986510	no_rule	UNCHANGED: header_lacks GetUID
+00986d90	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00986e30	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00987430	no_rule	UNCHANGED: searchtools_template (IsIncludedInThingScans shape)
+00991750	no_rule	UNCHANGED: header_lacks Deactivate,OnDie,m_active@0x24,m_entriesFirst@0x30,m_entriesLast@0x34,v00
+00aac2e0	no_rule	UNCHANGED: header_lacks m_pAnimationOwner@0x40
+00c1bbc0	no_rule	UNCHANGED: header_lacks SetCurrentMapNumber_a
+00c1bbd0	no_rule	UNCHANGED: header_lacks currentMapNumber_b(no offset)
+00c1bc00	no_rule	UNCHANGED: header_lacks currentMapNumber(no offset)
+00c36430	no_rule	UNCHANGED: header_lacks m_pDef@0x0,m_pMorphTable@0xc8
+0121a670	no_rule	UNCHANGED: local_std

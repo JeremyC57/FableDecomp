@@ -31,9 +31,12 @@ class CTCBase { public:
     virtual const CThing* GetTargetedThing() const;     // slot 36 (+0x90)
 };
 
+namespace NGraphicAppearance {
 struct CTCGraphicAppearance {
     C3DVector GetCameraFocalPos(float heightFraction) const;    // 0x004C12D0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

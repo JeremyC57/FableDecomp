@@ -10,11 +10,7 @@
 // sizeof 0x65c) does not fit the bytes past +0x24: the retail STLport lists are 4 bytes (PDB 12), so PendingDeeds sits at
 // +0x54, KnownDeeds[92] at +0x1c8, HeroOpinionEnemy at +0x342 and PUnknownThreatOpinionSource at +0x344 (as the landed
 // SetHeroOpinionEnemy 0x006815D0 also shows), hence a local model.
-class CThing { public:                             // only the dead bit and the call are modelled
-    unsigned char _pad[0x91];
-    unsigned char Dead : 1;                 // +0x91 bit 0
-    void Kill(bool checkLocked);            // 0x004C9B80
-};
+#include "engine/CThing.h"
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -37,7 +33,7 @@ public:
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
     if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->Dead)
+        if (!p.GetPItem()->IsDead())
             return true;
     }
     return false;
