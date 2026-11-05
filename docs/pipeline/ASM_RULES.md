@@ -28,6 +28,11 @@ EXTRA_RULES.md, the briefs, the handoffs, older journal entries. The earlier rou
       wrapper that retail expanded must be forced (`engine/GFPackFloat.h`).
 4. **Each site keeps a table** of the plain-C++ and intrinsic attempts made before the helper, in the row comment or the batch
    README.
+   - **Attempt budget** (owner, 2026-11-05): "absolutely confirm you can't figure out a way of using clean c++ first. i can clear
+     you to increase attempts towards that goal." Portability is a main goal, and inline asm hinders it.
+   - At least 30 distinct plain-C++ spellings per site, then at least 10 intrinsic spellings, before any helper.
+   - Up to 60 C++ spellings where a family is a few bytes off.
+   - Each attempt is recorded with what VC7.1 emitted.
 5. **No `__asm`, `naked`, `_emit` or `volatile` in any row source or behaviour test.** A row reaches asm only by `#include`-ing a
    shared helper header.
    - Such a row is reconstruction: it lands, grades `retail_asm` and counts as genuine.
