@@ -236,6 +236,13 @@ public:
     const_iterator end() const { return this->_M_finish; }
     size_type size() const { return size_type(this->_M_finish-this->_M_start); }
     bool empty() const { return this->_M_start==this->_M_finish; }
+#ifdef FABLE_RETAIL_STLP_VECTOR_SWAP_OUTOFLINE
+    // Retail opt-in (chunk 798, row 0x00F0C140 CQ_AmbushTradersScript::PhaseTwo): STLport 4.6 _vector.h swap(_Self&) is one inline
+    // body (three _STLP_STD::swap calls), which VC7.1 called as a COMDAT in that TU: vector<CQ_AmbushTradersScript::TeleportData>::swap
+    // 0x00F0CA30 (Ego_r.pdb ?swap@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@...@std@@QAEXAAV12@@Z; call at 0x00F0C823 with
+    // ecx = &TeleportInfo and an empty local vector). A declaration only here, so the row calls it.
+    void swap(vector& x);
+#endif
     _Tp& front() { return *this->_M_start; }
     _Tp& back() { return *(end()-1); }
     const _Tp& back() const { return *(end()-1); }

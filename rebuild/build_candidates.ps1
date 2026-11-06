@@ -384610,6 +384610,27 @@ $catalog = @(
         TestSource = '00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_AskForFish_00e80f10_test.cpp'
         PassPattern = '00e80f10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d35090'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_Main_00d35090.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_Main_00d35090_test.cpp'
+        PassPattern = '00d35090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d39330'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_PlayCutscene_00d39330.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_PlayCutscene_00d39330_test.cpp'
+        PassPattern = '00d39330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed5830'
+        Module = 'NScript::CV_SwordInTheStoneScript'
+        Source = '00/ed/NScriptCVSwordInTheStoneScript_SwordPullCutscene_00ed5830.cpp'
+        TestSource = '00/ed/NScriptCVSwordInTheStoneScript_SwordPullCutscene_00ed5830_test.cpp'
+        PassPattern = '00ed5830_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

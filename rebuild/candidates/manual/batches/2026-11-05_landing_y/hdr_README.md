@@ -1,0 +1,14 @@
+# chunk 798 header overlay
+
+All changes are additive. Four headers are new, and two repo headers gained opt-in branches only. No default path changed.
+
+| header | change | path | evidence | includers rechecked |
+|---|---|---|---|---|
+| engine/CQ_FireHeartScript.h | NEW. NScript::CQ_FireHeartScript : CLevelScriptBase, 0x1A4. QuestStartScreenShown +0x48 .. FreedAllPrisoners +0x1A3; CutsceneFlags map +0x4C, csargs map +0x58; std::vector<bool> members; seh_* handles; methods with retail addresses (CheckGameEnding 0xD360E0, SetupPuzzleBlocks 0xD36140, RestoreFollowers 0xD361F0, RunThemeOverriding 0xD35ED0, RunVillagerComments 0xD38D20, PlayCutscene 0xD39330, StartRound 0xD39960, DisableFollowers 0xD3A050); ten nested entity classes forward-declared; `enum EMissionHistory { }` (enumerators not recovered) | new file | Ego_r.pdb layout (PDB offset - 0x14, minus 4 after each STLport container) checked against the field offsets of RELOCATION_MATCH rows 0x00D35090 and 0x00D39330 | none (new) |
+| engine/CV_SwordInTheStoneScript.h | NEW, 0x80: SwordRemovalAttemptCount +0x48 .. CrowdSwordTimer +0x7C; nested CSwordOfStrength and CSwordCrowd forward-declared | new file | Ego_r.pdb, offsets proven by RELOCATION_MATCH 0x00ED5830 | none (new) |
+| engine/CQ_HeroSoulsThunderScript.h | NEW, 0x58: PlayedThunderCS +0x48, QuestStartScreened +0x49, JackSpoken +0x4A, csargs +0x4C; nested CHeroThunder (0x1C: ParentClass +0x14, PMasterData +0x18; private virtual Main / OnPredicateFail, static Alloc, GetParentScript) | new file | Ego_r.pdb + parked row 0x00D7B510 (21 difflines, all field uses equal) | none (new) |
+| engine/CQS_GuardianTrophyDealerInfoScript.h | NEW, 0x4C: PieceOver +0x48, WaitForPieceOver 0xE27AC0; nested CGTDI_Maze (0x20: ParentClass, PMasterData, InitialAngle +0x1C; private virtual Main / Init / OnPredicateFail) | new file | Ego_r.pdb + parked row 0x00E27E90 (37 difflines, all field uses equal) | none (new) |
+| engine/CQ_AmbushTradersScript.h | opt-in FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_PHASETWO: declares TeleportData(const TeleportData&) 0x00F0CA60 and PhaseTwo() 0x00F0C140 | opt-in (declarations only) | Ego_r.pdb names; PhaseTwo called by DoQuest at 0x00F0B691 | 4 landed includers, all RELOCATION_MATCH + PASS (SIBLINGS.tsv); no landed row defines the macro |
+| stlport/fable_containers.h | opt-in FABLE_RETAIL_STLP_VECTOR_SWAP_OUTOFLINE: declares vector::swap(vector&) so the row calls the COMDAT (vector<TeleportData>::swap 0x00F0CA30) | opt-in (a declaration only) | call at 0x00F0C823 in 0x00F0C140 | copied fresh at the end of the chunk, including chunk 796's FABLE_RETAIL_STLP_SORT_FASTCALL; no landed row defines the new macro, so every includer preprocesses the same; the 3 matched rows and 4 AT siblings regraded with it |
+
+Only parked row 0x00F0C140 uses the two opt-ins. The matched rows need only the new headers and existing repo opt-ins.

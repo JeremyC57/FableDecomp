@@ -1,0 +1,10 @@
+address	name	evidence
+00d35090	NScript::CQ_FireHeartScript::Main	landing 2026-11-05y (chunk 798): own row RELOCATION_MATCH; CQ_FireHeartScript vtable slot .rdata 0x012CCB98; Ego_r.pdb + FableWin.pdb ?Main@CQ_FireHeartScript@NScript@@UAEXXZ
+00d39330	NScript::CQ_FireHeartScript::PlayCutscene	landing 2026-11-05y (chunk 798): own row RELOCATION_MATCH; 9 callers in CQ_FireHeartScript; Ego_r.pdb + FableWin.pdb ?PlayCutscene@CQ_FireHeartScript@NScript@@QAEXVCCharString@@@Z (the second label CScriptBase::PlayCutscene at this address is wrong)
+00ed5830	NScript::CV_SwordInTheStoneScript::SwordPullCutscene	landing 2026-11-05y (chunk 798): own row RELOCATION_MATCH; called at 0x00ED5814; Ego_r.pdb + FableWin.pdb ?SwordPullCutscene@CV_SwordInTheStoneScript@NScript@@QAEXXZ
+00f0c140	NScript::CQ_AmbushTradersScript::PhaseTwo	landing 2026-11-05y (chunk 798): parked row; called by CQ_AmbushTradersScript::DoQuest at 0x00F0B691; Ego_r.pdb + FableWin.pdb ?PhaseTwo@CQ_AmbushTradersScript@NScript@@QAEXXZ
+00d7b510	NScript::CQ_HeroSoulsThunderScript::CHeroThunder::Main	landing 2026-11-05y (chunk 798): parked row; CHeroThunder vtable slot .rdata 0x012D3664; Ego_r.pdb + FableWin.pdb ?Main@CHeroThunder@CQ_HeroSoulsThunderScript@NScript@@EAEXXZ
+00e27e90	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::Main	landing 2026-11-05y (chunk 798): parked row; CGTDI_Maze vtable slot .rdata 0x012E20A8; Ego_r.pdb + FableWin.pdb ?Main@CGTDI_Maze@CQS_GuardianTrophyDealerInfoScript@NScript@@EAEXXZ
+00d38d20	NScript::CQ_FireHeartScript::RunVillagerComments	landing 2026-11-05y (chunk 798): spawned by name "RunVillagerComments" from 0x00D35090; Ego_r.pdb + FableWin.pdb ?RunVillagerComments@CQ_FireHeartScript@NScript@@QAEXXZ; currently unlabelled
+00d39960	NScript::CQ_FireHeartScript::StartRound	landing 2026-11-05y (chunk 798): called from 0x00D35090 (bound-same); Ego_r.pdb + FableWin.pdb ?StartRound@CQ_FireHeartScript@NScript@@QAEXXZ
+012cce90	CEntityScriptBinding<NScript::CQ_FireHeartScript>::`vftable'	landing 2026-11-05y (chunk 798): stored by the ten bindings in 0x00D35090 (RELOCATION_MATCH); ??_7?$CEntityScriptBinding@VCQ_FireHeartScript@NScript@@@@6B@

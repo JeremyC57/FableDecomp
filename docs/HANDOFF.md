@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-797 recorded; chunks 798 and 799 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-798 recorded; chunks 799 and 800 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -26,21 +26,23 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
     6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
     wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
-  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 798
-    (`$S/w22/agent798`: CQ_FireHeartScript::Main + PlayCutscene, CV_SwordInTheStoneScript::SwordPullCutscene,
-    CQ_AmbushTradersScript::PhaseTwo, CHeroThunder::Main, CGTDI_Maze::Main) and chunk 799 (`$S/w22/agent799`: six 4.0-5.6 KB script
-    Mains: CPersonalScript_EmptyScript, CGhostGrannyNecklace, CQ_HobbeToothContestScript, CVictimsFatherGuard,
-    CQ_OpeningGraveyardSecretPassageScript, CQ_WhiteBalverineKnotholeGladeScript). Land each like 782-797 with the next free letter (`landing_y`, `_z`; after z use `2026-11-06_landing_a`),
+  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 799
+    (`$S/w22/agent799`: six 4.0-5.6 KB script Mains: CPersonalScript_EmptyScript, CGhostGrannyNecklace, CQ_HobbeToothContestScript,
+    CVictimsFatherGuard, CQ_OpeningGraveyardSecretPassageScript, CQ_WhiteBalverineKnotholeGladeScript) and chunk 800
+    (`$S/w22/agent800`: CEndGameScythe::Main, CBanditKing::Main, CQ_GuildTrainingScript::Main,
+    CTCTavernGameSpotTheAddition::FrameUpdate, CAIStateGroup_GoToPub::Update, NUISystem::CSpellContainerList::ProcessEvent). Land each like 782-798 with the next free letter (`landing_z`, then `2026-11-06_landing_a`),
     `pending/2026-11-05_linux_hand79N`, labels `2026-11-05<letter>` incl. the landed rows' own labels, queue tag
     `land0511<letter>`. Diff every overlay header against rebuild/include first and three-way merge any that would drop another
     chunk's lines (796's overlay predates the 794 / 795 landings). When a hand-back extends an existing
     opt-in macro, recheck the landed sources that define it (GOTCHAS 2026-11-06 coordinator line). Each agent runs at most 2
     grades. When one lands, cut the next chunk so two authors stay busy. Chunk 793 (`_t/`) parked all six x87-heavy engine rows:
-    prefer game-logic rows (CTC*, CThing*, quest/UI, AI state) over renderers and maths. Pool: the groups ledger (`pending/2026-11-03_groups/ROWS.tsv`) still has about 138 unworked rows (script bodies remain over 3.6 KB: CPersonalScript_EmptyScript, CGhostGrannyNecklace, CQ_HobbeToothContestScript, ...) (the earlier "about
-    40" counted only rows with no remaining callees). Take rows that are 16-byte aligned (an odd start such as 0x00651273 is a
-    mid-function entry) and check each extent for a second function after its tables. The parked 782-797 rows are the other pool.
-  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`), 795 2 of 6 (`_v/`), 797 3 of 6 (`_w/`), 796 3 of 6 (`_x/`). The
-    parked rows are in `pending/2026-11-05_linux_hand782..797/`.
+    prefer game-logic rows (CTC*, CThing*, quest/UI, AI state) over renderers and maths. Pool: the groups ledger (`pending/2026-11-03_groups/ROWS.tsv`) still has about 200 unworked named rows (plus 213 Unwind funclets), mostly renderers,
+    audio / FFT and large inventory-UI builders; about 190 unnamed `gapscan` rows, most in the script range 0x00CF-0x00F2 (the script
+    Mains left are over 3.6 KB, e.g. CHobbeTorrent::Main). Take rows that are 16-byte aligned (an odd start such as 0x00651273 is a
+    mid-function entry). The ledger's byte counts often run on into the next functions: end each row at its own int3 padding or
+    after its switch tables (a byte index table can end off a 4-byte boundary). The parked 782-798 rows are the other pool.
+  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`), 795 2 of 6 (`_v/`), 797 3 of 6 (`_w/`), 796 3 of 6 (`_x/`), 798 3 of 6 (`_y/`). The
+    parked rows are in `pending/2026-11-05_linux_hand782..798/`.
   - A container restart stopped chunk 784 once; the scratch survived, and the agent was resumed from its transcript.
   - Naming: 0x0122DEDC (the shared 0.0f) is the compiler literal `__real@00000000` (chunk 796 evidence, queued `land0511x`).
     Open decision: `pGlobalScriptDef` 0x0143E90C is spelled `CScriptDef*` in 148 landed rows and `CDefPointer<const CScriptDef>` in

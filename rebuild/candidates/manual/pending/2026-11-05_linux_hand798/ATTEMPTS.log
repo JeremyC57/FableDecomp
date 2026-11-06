@@ -1,0 +1,45 @@
+# chunk 798 attempts log (one line per graded variant: addr probe result -- what changed / what VC7.1 emitted)
+00f0c140 a1  DIFFER(2749v2285) 959dl -- first model (ConvoyMember shared headers + vector::swap / TeleportData copy-ctor opt-ins); main for(;;) rotated (+0x49 test duplicated at bottom), 11 inline ~CScriptThing (retail 6), size() called out of line, region text reloaded per compare
+00f0c140 x1  DIFFER(2749v2285) 959dl -- while(!(QuestFinished||QuestFailed)): same code as a1
+00f0c140 x2  DIFFER(2749v2285) 959dl -- while(!QuestFinished && !QuestFailed): same
+00f0c140 x3  DIFFER(2787v2285) 973dl -- two separate breaks: worse
+00f0c140 x4  DIFFER(2445v2285) 260dl -- bool done loop: loop unrotated (top tests +0x49 like retail), frame slots right, 7 inline / 6 calls
+00f0c140 x5  DIFFER(2399v2285) 441dl -- + template inline Compare body: Compare inlined (wrong)
+00f0c140 x6  DIFFER(2399v2285) 441dl -- + auto_inline(off) template Compare: still inlined (instantiated at TU end)
+00f0c140 x7  DIFFER(2429v2285) 282dl -- + __declspec(noinline) template Compare: region text kept in esi across the 3 compares as retail; frame flipped back
+00f0c140 x8  DIFFER(2733v2285) 500dl -- loop-head if(T)return (DoQuest shape): not rotated, everything hotter (12 inline)
+00f0c140 x9  DIFFER(2733v2285) 500dl -- loop-head check in do-while(0): identical to x8
+00f0c140 y1  DIFFER(2208v2285) 247dl -- x7 + explicit if(count>0) guard on bandit for: bandit.IsAlive exit cold (retail), but pre-loop/loop-bottom exits also cold (retail hot), post-loop vector dtor called
+00f0c140 y2  DIFFER(2429v2285) 282dl -- i++: same as x7
+00f0c140 zx8 DIFFER(2511v2285) 494dl -- y1 guard + loop-head T: worse
+00d35090 a1: AT-Main binding model, flags 1 -> DIFFER(3642v3641) 107 lines (binding +0x18 is 0 in retail; ebp=0 cache lost)
+00d35090 a2: binding flags 0 -> DIFFER(3638v3641) 23 (VillagerEscapeMarker op= called whole; ternary -> mov/je; pad)
+00d35090 a3: __forceinline CScriptThing::op= + if/else PlayCutscene -> 3716, op= fully expanded (CCountedPointer op= inlined too)
+00d35090 a4: a2 + if/else PlayCutscene (tail-merged as retail) -> DIFFER(3641v3641) 12 (only op= left)
+00d35090 a5: a4 + declared-only explicit specialization CCountedPointer<CScriptThing>::operator= (0x00704580) -> RELOCATION_MATCH; relpair: all bound-same / strings 43 ok
+00d39330 a1: WaspBoss Outro shared-header model (STLP_MAP, OUTOFLINE_ASSIGN + __forceinline op=, auto_inline(off) movie PImp dtor, MOVIEBASE_OUTOFLINE_CTOR, CWideScreenMagicPauseEntities, declared-only map<CCharString,CCharString>::clear specialization) -> RELOCATION_MATCH first try
+00ed5830 a1: WaspBoss cutscene model + new CV_SwordInTheStoneScript.h, OUTOFLINE_DTOR (hero dtor call 0x007E74D0), inline CScriptThing ctor/IsAlive -> DIFFER(1812v1819) 11 (only the closing count update)
+00ed5830 a2: SwordRemovalAttemptCount++ -> RELOCATION_MATCH
+00d7b510 a1: new CQ_HeroSoulsThunderScript.h (+ nested CHeroThunder), InfoKeeper entity model -> DIFFER(3533v3524) 411 (CIsThingAlive dtor called, timer ops called, frame +4)
+00d7b510 a2: inline ~CIsThingAlive -> 3508, 341 (frame +4 remains)
+00d7b510 a3: __forceinline CTimer::operator= -> 3523, 333
+00d7b510 a4: __forceinline CTimer::GetTime -> 3533, 330
+00d7b510 a5: { } block from the CTimer through the idle loop (chunk 789 lever) -> 3533, 48 (frame exact; second pause ctor called)
+00d7b510 a6: FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR -> DIFFER(3533v3524) 21: only the final idle loop duplicates its test where retail jumps to one bottom test (same residue as parked 0x00D82640)
+00d7b510 a7: idle for(;;){if(T)break;NSF} -> same 21
+00d7b510 a8: idle for(;;){if(T)return;NSF} -> same 21
+00d7b510 a9: health loop for(;;){if(!(h>5))break;...} -> same 21
+00d7b510 a10: idle bool-done loop -> 3524v3524, 26 (top test + jmp back, not retail's bottom test)
+00d7b510 a11: idle for(;!T;NSF()); -> same 21
+00d7b510 a12: health loop if(h>5) do{}while(h>5) -> same 21
+00e27e90 a1: new CQS_GuardianTrophyDealerInfoScript.h (+ nested CGTDI_Maze), two for(;;){if(T)return;...} loops, ScriptedThingBase OUTOFLINE_DTOR+ASSIGN, MOVIEBASE OUTOFLINE_CTOR/DTOR, inline CIsThingAlive ctor -> DIFFER(3563v3595) 62 (SetIsPushableByHero by-value CScriptThing copy called 0x4abe90, retail inline; hit-branch seh_hero ctor called 0x7e72a0, retail inline)
+00e27e90 a2: + FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY -> 3595v3595 37 (fixes the by-value copy but also inlines the CIsThingAlive member copy that retail calls)
+00e27e90 a3: named bool hit in loop 1 -> same 62
+00e27e90 a4: named bool hit in both loops -> same 62
+00e27e90 a5: a2 + { CIsThingAlive alive(Me); SetPredicate(alive); } -> same 37
+00e27e90 a6: a1 + inline CScriptThing copy ctor defined after the inline CIsThingAlive ctor (definition-order split) -> same 37 as a2 (order does not matter)
+00e27e90 a7: a2 + talk branch as else-if -> same 37
+00e27e90 a8: a2 + hit-branch seh_hero value-initialised -> same 37
+00e27e90 a9: a2 without FORCEINLINE pause ctor (budget shift) -> 3630v3595 702
+00e27e90 a10: a2 without MOVIEBASE_OUTOFLINE_CTOR (budget shift) -> same 37
+00e27e90 PARK a2: DIFFER(3595v3595) 37 -- retail calls the CScriptThing copy inside the inlined CIsThingAlive ctor yet expands the SetIsPushableByHero by-value copy, and expands the STB ctor in the hit branch but calls 0x007E72A0 in the talk branch (per-site inline choices)

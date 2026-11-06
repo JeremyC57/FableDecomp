@@ -1,0 +1,5 @@
+address	source	grade_with_final_overlay	note
+00cf9610	rebuild/src/compiled/00/cf/NScriptCQAmbushTradersScript_OnPersist_00cf9610.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_AmbushTradersScript.h (PHASETWO opt-in added; not defined by the row)
+00cf9a50	rebuild/src/compiled/00/cf/NScriptCQAmbushTradersScript_Init_00cf9a50.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_AmbushTradersScript.h
+00f024c0	rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_Main_00f024c0.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_AmbushTradersScript.h
+00f0caa0	rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_Main_00f0caa0.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_AmbushTradersScript.h; RELOC_NAME warning 0x00F0D470 (label fix in LABELS.tsv)

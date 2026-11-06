@@ -1,0 +1,6 @@
+manifest 00d38d20 CQ_FireHeartScript::RunVillagerComments -> NScript::CQ_FireHeartScript::RunVillagerComments
+manifest 00d39330 CQ_FireHeartScript::PlayCutscene -> NScript::CQ_FireHeartScript::PlayCutscene
+manifest 00d39960 CQ_FireHeartScript::StartRound -> NScript::CQ_FireHeartScript::StartRound
+manifest 00ed5830 CV_SwordInTheStoneScript::SwordPullCutscene -> NScript::CV_SwordInTheStoneScript::SwordPullCutscene
+manifest 00f0c140 CQ_AmbushTradersScript::PhaseTwo -> NScript::CQ_AmbushTradersScript::PhaseTwo
+labels 9  catalog renamed 0  manifest renamed 5

@@ -21,6 +21,11 @@ public:
     // +4 (EntityGetAppearanceSeed), +0 (GetDefName), +8 (GetHealth), +0xc and +0x10. Both declared only (out of line in retail).
     struct TeleportData {
         TeleportData();                                                  // 0x00F0D470
+#ifdef FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_PHASETWO
+        // Retail opt-in (chunk 798): the copy ctor PhaseTwo 0x00F0C140 calls out of line for "TeleportData data = TeleportInfo[i];"
+        // (Ego_r.pdb ??0TeleportData@CQ_AmbushTradersScript@NScript@@QAE@ABU012@@Z; the COMDAT 0x00F0CA60 right after PhaseTwo's TU body).
+        TeleportData(const TeleportData&);                               // 0x00F0CA60
+#endif
         ~TeleportData();                                                 // 0x00CDBC50
         CCharString defName;                                             // +0x00
         unsigned long appearanceSeed;                                    // +0x04
@@ -131,6 +136,11 @@ public:
     class CAT_ConvoyMember;                                              // Alloc 0x00F04280
     class CAT_ConvoySpy;                                                 // Alloc 0x00F04360
     class CAT_Sentry;                                                    // Alloc 0x00F04510
+#endif
+#ifdef FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_PHASETWO
+    // Retail opt-in (chunk 798): Ego_r.pdb ?PhaseTwo@CQ_AmbushTradersScript@NScript@@QAEXXZ (0x00F0C140), called by DoQuest at 0x00F0B691
+    // after PhaseOne 0x00F0B780. Declarations only; no layout change.
+    void PhaseTwo();                                                     // 0x00F0C140
 #endif
 };
 }

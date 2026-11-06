@@ -49939,11 +49939,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d38b90	CreateActiveEntityScript	CEntityScriptBinding<NScript::CQ_FireHeartScript>	unknown	undefined	0		0	yes	accepted									
 00d38ca0	SuspendableProcess	CActiveEntityScript<NScript::CQ_FireHeartScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
 00d38cf0	`scalar deleting destructor'	CActiveEntityScript<NScript::CQ_FireHeartScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d3\CThingSwitch_vectordeletingdestructor_00d38cf0.cpp
-00d38d20	RunVillagerComments	CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
+00d38d20	RunVillagerComments	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
 00d38f30	vector	std::vector<long>	unknown	undefined	0		0	yes	accepted									
 00d38f70	Main	NScript::CQ_FireHeartScript::CProphetCage	__thiscall	void	1	CProphetCage *	1	yes	accepted									
-00d39330	PlayCutscene	CQ_FireHeartScript	unknown	undefined	0		0	yes	accepted									
-00d39960	StartRound	CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
+00d39330	PlayCutscene	NScript::CQ_FireHeartScript	unknown	undefined	0		0	yes	accepted									
+00d39960	StartRound	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
 00d3a050	DisableFollowers	NScript::CQ_FireHeartScript	__thiscall	void	1	CQ_FireHeartScript *	1	yes	accepted									
 00d3a1a0	Main	NScript::CQ_FireHeartScript::CDF_Fireheart	__thiscall	void	1	CDF_Fireheart *	1	yes	accepted									
 00d3a4a0	Main	NScript::CQ_FireHeartScript::CFH_Prisoner	unknown	undefined	0		0	yes	accepted									
@@ -53890,7 +53890,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ed54a0	`scalar deleting destructor'	CActiveEntityScript<NScript::CV_SwordInTheStoneScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ed\CThingSwitch_vectordeletingdestructor_00ed54a0.cpp
 00ed54d0	Main	NScript::CV_SwordInTheStoneScript::CSwordOfStrength	__thiscall	void	1	CSwordOfStrength *	1	yes	accepted									
 00ed57e0	WatchForSwordPickup	NScript::CV_SwordInTheStoneScript	__thiscall	void	1	CV_SwordInTheStoneScript *	1	yes	accepted									
-00ed5830	SwordPullCutscene	CV_SwordInTheStoneScript	__thiscall	void	1	CV_SwordInTheStoneScript *	1	yes	accepted									
+00ed5830	SwordPullCutscene	NScript::CV_SwordInTheStoneScript	__thiscall	void	1	CV_SwordInTheStoneScript *	1	yes	accepted									
 00ed5f50	Main	NScript::CV_SwordInTheStoneScript::CSwordCrowd	unknown	undefined	0		0			discovered	gapscan							
 00ed72f0	ResetCrowdSwordTimer	NScript::CV_SwordInTheStoneScript	__thiscall	void	1	CV_SwordInTheStoneScript *	1	yes	accepted									
 00ed7320	WatchForDeathDuringSwordPull	NScript::CV_SwordInTheStoneScript	__thiscall	void	2	CV_SwordInTheStoneScript *,CScriptThing	1	yes	accepted									
@@ -54873,7 +54873,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f0b890	CheckForValidRegion	NScript::CQ_AmbushTradersScript	__thiscall	bool	1	CQ_AmbushTradersScript *	1	yes	accepted									
 00f0b960	WatchForBanditsDeath	NScript::CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
 00f0bb10	Intro	NScript::CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
-00f0c140	PhaseTwo	CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
+00f0c140	PhaseTwo	NScript::CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
 00f0ca30	Swap	SThreeWordRecord	__thiscall	undefined	2	CNearestBuildingWithProperty *,CNearestBuildingWithProperty *	0	yes	accepted									
 00f0ca60	TeleportData	TeleportData	__thiscall	undefined	2	TeleportData *,TeleportData *	0	yes	accepted									
 00f0caa0	Main	NScript::CQ_AmbushTradersScript::CAT_ConvoyMember	__thiscall	void	1	CAT_ConvoyMember *	1	yes	accepted									

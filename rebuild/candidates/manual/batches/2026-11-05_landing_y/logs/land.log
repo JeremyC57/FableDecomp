@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00d35090   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d35090   RELOCATION_MATCH PASS   Main
+00d39330   RELOCATION_MATCH PASS   PlayCutscene
+00ed5830   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00ed5830   RELOCATION_MATCH PASS   SwordPullCutscene
+
+WINS: 3
+  00d35090 RELOCATION_MATCH NScript::CQ_FireHeartScript::?Main@CQ_FireHeartScript@NScript@@UAEXXZ
+  00d39330 RELOCATION_MATCH NScript::CQ_FireHeartScript::?PlayCutscene@CQ_FireHeartScript@NScript@@QAEXVCCharString@@@Z
+  00ed5830 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::?SwordPullCutscene@CV_SwordInTheStoneScript@NScript@@QAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NScriptCQFireHeartScript_Main_00d35090
+  NScriptCQFireHeartScript_PlayCutscene_00d39330
+  NScriptCVSwordInTheStoneScript_SwordPullCutscene_00ed5830
