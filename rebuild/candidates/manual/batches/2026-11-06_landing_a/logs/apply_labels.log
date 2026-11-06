@@ -1,0 +1,4 @@
+manifest 00544d20 CSpellContainerList::ProcessEvent -> NUISystem::CSpellContainerList::ProcessEvent
+manifest 0094ab00 CAIStateGroup_GoToPub::CAIStateGroup_GoToPub::Update -> CAIStateGroup_GoToPub::Update
+manifest 00d45060 _gapscan::sub_00d45060 -> NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks
+labels 13  catalog renamed 0  manifest renamed 3

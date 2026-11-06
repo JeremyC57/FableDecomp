@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00544d20   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 here, 00429160 in landed 0056f615
+00544d20   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429b72 labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429b72'
+00544d20   WARN RELOC_CONFLICT: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 here, 004291de in landed 00596a68
+00544d20   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 00429c53 labelled '_global::TailJmp__Dest_val_std__allocator_CCountedPointer_00429c53'
+00544d20   RELOCATION_MATCH PASS   ProcessEvent
+00d3bc60   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00544d20 RELOCATION_MATCH NUISystem::CSpellContainerList::?ProcessEvent@CSpellContainerList@NUISystem@@UAEXW4EEvent@2@@Z
+  00d3bc60 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::?Main@CQ_GuildTrainingScript@NScript@@UAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NUISystemCSpellContainerList_ProcessEvent_00544d20
+  NScriptCQGuildTrainingScript_Main_00d3bc60

@@ -76,6 +76,12 @@ public:
     // +0xE5 in place). Member functions only: the layout is unchanged on both paths.
     bool IsDisplayingText() const { return DisplayingText; }
 #endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_CLEAR
+    // Retail opt-in (chunk 800, row 0x007D8E20 CTCTavernGameSpotTheAddition::FrameUpdate): Ego_r.pdb / FableWin.pdb
+    // ?Clear@CSubtitleRenderer@@QAEX_N@Z, out of line in retail at 0x00492BAB (the call `mov ecx,[0x013B8790] ; push 0 ; add ecx,18h ;
+    // call 0x00492BAB`). Declaration only: no layout change.
+    void Clear(bool);                                                    // 0x00492BAB
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT
     // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z
     // (0x00492E4B) and ?SetText@..ABVCFontBank@@ABVCWideString@@111KM_N2@Z (the text and three button texts; 0x00492F69), out of line

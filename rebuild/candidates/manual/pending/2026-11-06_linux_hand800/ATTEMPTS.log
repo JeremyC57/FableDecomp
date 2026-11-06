@@ -1,0 +1,52 @@
+00d2ed20	a1	DIFFER(2223v2248)	49	first model (CMazeAtTavern idiom)
+00d2ed20	a2	DIFFER(2223v2248)	49	op= specialization only: implicit STB op= still a COMDAT call
+00d2ed20	a3	DIFFER(2255v2248)	16	OUTOFLINE_ASSIGN + forceinline op= body: only speak-loop exits call movie dtor COMDAT
+00d2ed20	a4	DIFFER(2276v2248)	19	do-while(0) on in-loop speak check: that exit expands movie dtor, post-loop exit calls COMDAT, no tail merge
+00d2ed20	a5	DIFFER(2276v2248)	19	both speak checks do-while(0): first exit expanded, post-loop exit still COMDAT
+00d2ed20	a6	DIFFER(2255v2248)	16	post-loop speak check only do-while(0): no change from a3
+00d2ed20	a7	DIFFER(2255v2248)	16	speak loop as for(;;) with break: same as a3
+00d0a830	a1	DIFFER(2612v2720)	284	first model (CMazeAtTavern idiom, CTimer inline): reg swap ebx/ebp, movie ctor not inline, BegCount not in ebx
+00d3bc60	a1	DIFFER(2753v3034)	397	first model: binding ctor out of line, frame temps +0xc, 2nd teleport temp dtor called (retail inline)
+00d3bc60	a2	DIFFER(2977v3034)	174	+FABLE_RETAIL_CENTITYSCRIPTBINDING_FORCEINLINE_CTOR: bindings now expanded; temp slot / 2nd temp dtor / reg rotation left
+00d3bc60	a3	RELOCATION_MATCH	0	+inline ~CScriptThing (2nd teleport temp expands, 1st called, as retail)
+007d8e20	a1	DIFFER(1728v1900)	540	first model (shared CTCTavernGame retail header, local def/KnickKnack)
+007d8e20	a2	DIFFER(1888v1900)	481	case order 29/27/2c + single coverPos variable
+007d8e20	a3	DIFFER(1924v1900)	320	(t < A+B || !Updated) form, block-scoped appearance pointers, unsigned Selected compare
+007d8e20	a4	DIFFER(1912v1900)	74	GetSubDef<CTavernGameSpotTheAdditionDef> body in the TU (def stays in ebx)
+007d8e20	a5	DIFFER(1900v1900)	22	vector<long> copy ctor left to the inline header body (VC calls it, sees no capture)
+007d8e20	a6	DIFFER(1900v1900)	22	GetSubDef written in place (no invented GetDef): same
+007d8e20	a7	DIFFER(1900v1900)	22	bounds def unbraced in the update block: same slot 0x14 v retail 0x18
+007d8e20	a8	DIFFER(1876v1900)	80	coverPos=0 before the update test: store hoisted, worse
+007d8e20	a9	DIFFER(1900v1900)	22	halton declared at the update block top: same
+007d8e20	a10	DIFFER(1904v1900)	60	bounds def declared at the update block top: worse
+007d8e20	a11	DIFFER(1900v1900)	118	t and coverPos one variable: worse
+007d8e20	a12	DIFFER	36	round counter outside the bounds def scope: worse
+007d8e20	a13	DIFFER(1904v1900)	40	no radius local: worse
+007d8e20	a14	DIFFER(1784v1900)	104	diagnostic only: bounds in an inline helper (not inlined)
+007d8e20	a15	DIFFER	62	halton at case scope: worse
+007d8e20	a16	DIFFER(1900v1900)	25	first random stored into halton: worse
+007d8e20	a17	DIFFER(1900v1900)	22	knick-knack record declared outside the push loop: same
+0094ab00	a1	DIFFER(2048v2067)	476	first model (local AI-state-group / tavern TC models, inline GFRandom, goto found)
+0094ab00	a2	DIFFER(2032v2067)	468	thing-owner GetTC inside the alive condition
+0094ab00	a3	DIFFER(1968v2067)	743	one table TC lookup reused for GetSeat/GetTankard, named random (shorter; diff realigned)
+0094ab00	a4	DIFFER(2068v2067)	489	diagnostic: GetTC<CTCTavernTable> specialisation walking lower_bound inline
+00544d20	a1	DIFFER(1598v1602)	297	first model (local NUISystem model, filler virtual slots)
+00544d20	a2	DIFFER(1598v1602)	125	case order LIST_UP/DOWN before ROTATE (block order follows source)
+00544d20	a3	DIFFER(1602v1602)	38	shared NUISystem headers (CChangingStateComponent/CClickable CAction AddParam/CSprite/CSpellContainer opt-in/CManager), literal arg
+00544d20	a4	RELOCATION_MATCH	0	this == GetExclusiveObserver() operand order
+00d0a830	a2	DIFFER(2732v2720)	22	MovieBase FORCEINLINE ctor/dtor (PImp dtor spec declared before the header)
+00d2ed20	a8	DIFFER(2274v2248)	31	a3 + MovieBase FORCEINLINE: all exits expanded, no tail merge
+007d8e20	a18	DIFFER(1900v1900)	22	a6 + shared CRGBColour.h / CRightHandedSet.h (no local copies): same residue
+0094ab00	a5	DIFFER(2127v2067)	478	exploratory hdr opt-in CVECTORMAP_LOWERBOUND_INLINE (plain inline): VC expands 4 of 9 lookups (retail 1)
+0094ab00	a6	DIFFER(2068v2067)	489	diagnostic: a3 single table lookup + a4 inline lookup specialisation (same as a4)
+0094ab00	a7	DIFFER(1984v2067)	461	a3 + tables.insert(tables.end(), x): insert expands inline (retail shape), best so far
+00d0a830	a3	DIFFER(2612v2720)	284	a1 without the declared-only PImp dtor spec: same as a1 (movie dtor COMDAT)
+00d2ed20	a9	DIFFER(2223v2248)	24	a3 without the declared-only PImp dtor spec: worse
+00d0a830	a4	DIFFER(2676v2720)	26	hdr opt-in MovieBase FORCEINLINE_CTOR only (implicit dtor): both dtor sites called as the COMDAT
+00d2ed20	a10	DIFFER(2255v2248)	14	a8 with MovieBase FORCEINLINE_CTOR only (implicit dtor): every site expanded except the first speech exit (COMDAT, no tail merge) -- best
+00d2ed20	a11	DIFFER(2276v2248)	17	a10 + do-while(0) on the in-loop speech exit: worse
+00d2ed20	a12	DIFFER(2255v2248)	14	a10 + do-while(0) on the post-loop speech exit: same
+00d0a830	a5	DIFFER(2676v2720)	26	a4 + do-while(0) on the in-loop speech exit: same as a4
+00d0a830	a6	DIFFER(2676v2720)	26	a4 + do-while(0) on the post-loop speech exit: same as a4
+00d0a830	a7	DIFFER(2700v2720)	22	a4 + do-while(0) as the speech-movie scope: the scope-end dtor expands (matches); only the merged terminate exit calls the COMDAT -- best (one site)
+00d0a830	a8	DIFFER(2676v2720)	26	a4 without the declared-only PImp dtor spec: same as a4

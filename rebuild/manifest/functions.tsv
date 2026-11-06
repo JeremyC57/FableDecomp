@@ -9578,7 +9578,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00544810	ScrollDown	NUISystem::CSpellContainerList	__thiscall	void	1	CSpellContainerList *	1	yes	accepted									
 00544b70	CSpellContainerList	NUISystem::CSpellContainerList	__thiscall	undefined	2	CSpellContainerList *,long	0	yes	accepted									
 00544c10	~CSpellContainerList	NUISystem::CSpellContainerList	__thiscall	void	1	CSpellContainerList *	1	yes	accepted									
-00544d20	ProcessEvent	CSpellContainerList	__thiscall	void	2	CSpellContainerList *,EEvent	1	yes	accepted									
+00544d20	ProcessEvent	NUISystem::CSpellContainerList	__thiscall	void	2	CSpellContainerList *,EEvent	1	yes	accepted									
 005455f0	`scalar_deleting_destructor'	NUISystem::CSpellContainerList	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\54\CLandscapeBackgroundPatch_vectordeletingdestructor_005455f0.cpp
 00545610	vfunc_64	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00545670	AcceptAssignments	NUISystem::CSpellContainer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -32027,7 +32027,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0094a6d0	WalkToPoint	CAIStateGroup_GoToPub	__thiscall	bool	3	CAIStateGroup_GoToPub *,C3DVector *,CRightHandedSet *	1	yes	accepted									
 0094a840	PayMoney	CAIStateGroup_GoToPub	__thiscall	bool	1	CAIStateGroup_GoToPub *	1	yes	accepted									
 0094aac0	PayAtBar	CAIStateGroup_GoToPub	__thiscall	bool	1	CAIStateGroup_GoToPub *	1	yes	accepted									
-0094ab00	CAIStateGroup_GoToPub::Update	CAIStateGroup_GoToPub	__thiscall	void	1	CAIStateGroup_GoToPub *	1	yes	accepted									
+0094ab00	Update	CAIStateGroup_GoToPub	__thiscall	void	1	CAIStateGroup_GoToPub *	1	yes	accepted									
 0094b330	IsCreatureAssignedToTask	CVillageTaskCarryCrate	__thiscall	bool	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CVillageTaskCarryCrate_IsCreatureAssignedToTask_0094b330.cpp
 0094b350	`scalar_deleting_destructor'	CCreatureAction_PickUpTankard	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CEngineSubPrimitiveText_scalardeletingdestructor_0094b350.cpp
 0094b380	`scalar_deleting_destructor'	CCreatureAction_PutDownTankard	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\94\CLandscapeBackgroundPatch_vectordeletingdestructor_0094b380.cpp
@@ -50044,7 +50044,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d446d0	Main	NScript::CQ_GuildTrainingScript::CHeroBed	__thiscall	void	1	CHeroBed *	1	yes	accepted									
 00d44c60	OnPersist	NScript::CQ_GuildTrainingScript::CBirdKiller	unknown	undefined	0		0			discovered	gapscan							
 00d44cb0	RunArrivalCutscene	NScript::CQ_GuildTrainingScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									
-00d45060	sub_00d45060	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00d45060	CheckFriendlyAttacks	NScript::CQ_GuildTrainingScript	unknown	undefined	0		0			discovered	gapscan							
 00d496f0	RunSaveXPCutscene	NScript::CQ_GuildTrainingScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									
 00d49a20	RunSaveXPCutscene2	CQ_GuildTrainingScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									
 00d49d50	RunCeremonyCutscene	CQ_GuildTrainingScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									

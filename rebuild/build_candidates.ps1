@@ -384666,6 +384666,20 @@ $catalog = @(
         TestSource = '00/ef/NScriptCPersonalScriptEmptyScript_Main_00ef0090_test.cpp'
         PassPattern = '00ef0090_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00544d20'
+        Module = 'NUISystem::CSpellContainerList'
+        Source = '00/54/NUISystemCSpellContainerList_ProcessEvent_00544d20.cpp'
+        TestSource = '00/54/NUISystemCSpellContainerList_ProcessEvent_00544d20_test.cpp'
+        PassPattern = '00544d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3bc60'
+        Module = 'NScript::CQ_GuildTrainingScript'
+        Source = '00/d3/NScriptCQGuildTrainingScript_Main_00d3bc60.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScript_Main_00d3bc60_test.cpp'
+        PassPattern = '00d3bc60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -44,6 +44,13 @@ public:
     __forceinline CScriptGameResourceObjectMovieBase() { }
     __forceinline virtual ~CScriptGameResourceObjectMovieBase() { }
 #endif
+#if defined(FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_FORCEINLINE_CTOR) && defined(_MSC_VER)
+    // Per-TU opt-in (chunk 800, rows 0x00D2ED20 CEndGameScythe::Main / 0x00D0A830 CBanditKing::Main): the ctor forced inline
+    // (`call 0x0099A380; mov [esi],0x01260EF4; zero +8/+C` at every site of both rows) and the dtor left compiler-generated, so
+    // that where VC7.1 expands it there is no MovieBase vtable reset (retail's expansions are `call 0x006E7AB0` ; GROBase vtable
+    // store ; `call 0x0099A430`, which the user-declared __forceinline dtor of FABLE_..._FORCEINLINE adds a vtable store to).
+    __forceinline CScriptGameResourceObjectMovieBase() { }
+#endif
     void Release();                                                      // 0x00CF8850
     void SetImplementation(CScriptGameResourceObjectMovieBase*);         // unproven: candidate 0x008AB970
     CCountedPointer<CScriptGameResourceObjectMovieBase> PImp;            // +0x08

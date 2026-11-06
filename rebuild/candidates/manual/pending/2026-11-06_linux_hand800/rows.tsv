@@ -1,0 +1,7 @@
+address	module	name	length
+00d2ed20	NScript::CQ_EndGameFocalSitesScript::CEndGameScythe	Main	2248
+00d0a830	NScript::CQ_BanditCampBossBattleScript::CBanditKing	Main	2720
+00d3bc60	NScript::CQ_GuildTrainingScript	Main	3034
+007d8e20	CTCTavernGameSpotTheAddition	FrameUpdate	1900
+0094ab00	CAIStateGroup_GoToPub	Update	2067
+00544d20	NUISystem::CSpellContainerList	ProcessEvent	1602

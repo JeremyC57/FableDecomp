@@ -88,10 +88,34 @@ public:
     protected:
         NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
     };
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_BANDITKING
+    // Retail opt-in (chunk 800): Ego_r.pdb CBanditKing (32 bytes: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18,
+    //   HealthBarIndex +0x1c -- Main 0x00D0A830 stores AddQuestInfoBar's result at [esi+1Ch]); vtable 0x012C9474: 0 scalar deleting
+    //   dtor 0x00D0A810, 1 Main 0x00D0A830, 2 CEntityScriptBase::Init 0x00CDEBB0 (not overridden), 3 GetParentScript 0x00D0A7A0,
+    //   4 CEntityScriptBase::OnPersist 0x00CDEBC0, 5 OnPredicateFail 0x00D0A7B0, 6 CEntityScriptBase::OnInterrupted 0x00CDEBE0;
+    //   Alloc 0x00D0A700 (the landed rows' leaves). Declarations only; existing includers do not define the macro.
+    class CBanditKing : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D0A700
+        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00D0A7A0
+    private:
+        virtual void Main();                                             // slot 1 0x00D0A830
+        virtual void OnPredicateFail();                                  // slot 5 0x00D0A7B0
+    protected:
+        NScript::CQ_BanditCampBossBattleScript & ParentClass;            // +0x14
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
+    private:
+        long HealthBarIndex;                                             // +0x1c
+    };
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript) == 0x70);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CGate3Guard) == 0x1c);
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_BANDITKING
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CBanditKing) == 0x20);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_BANDITCAMPBOSSBATTLESCRIPT_H

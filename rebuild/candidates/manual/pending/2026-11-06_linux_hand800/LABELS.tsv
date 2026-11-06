@@ -1,0 +1,34 @@
+address	name	evidence
+0x00D3BC60	NScript::CQ_GuildTrainingScript::Main	Ego_r.pdb / FableWin.pdb ?Main@CQ_GuildTrainingScript@NScript@@UAEXXZ; slot 2 of the level-script vtable 0x012CD458 (RegisterMain 0x00D3BB50); row RELOCATION_MATCH (chunk 800)
+0x00544D20	NUISystem::CSpellContainerList::ProcessEvent	Ego_r.pdb ?ProcessEvent@CSpellContainerList@NUISystem@@UAEXW4EEvent@2@@Z; CObserver slot 1 of the CSpellContainerList secondary vtable (this-4 adjustor); row RELOCATION_MATCH (chunk 800)
+0x00D2ED20	NScript::CQ_EndGameFocalSitesScript::CEndGameScythe::Main	Ego_r.pdb / FableWin.pdb ?Main@CEndGameScythe@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ; slot 1 of the entity vtable 0x012CC33C (Alloc 0x00D2C650); row parked (chunk 800)
+0x00D0A830	NScript::CQ_BanditCampBossBattleScript::CBanditKing::Main	Ego_r.pdb / FableWin.pdb ?Main@CBanditKing@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ; slot 1 of the entity vtable 0x012C9474; row parked (chunk 800)
+0x007D8E20	CTCTavernGameSpotTheAddition::FrameUpdate	Ego_r.pdb / FableWin.pdb ?FrameUpdate@CTCTavernGameSpotTheAddition@@UAEXXZ; FrameUpdate slot of the CTCTavernGameSpotTheAddition vtable; row parked (chunk 800)
+0x0094AB00	CAIStateGroup_GoToPub::Update	Ego_r.pdb / FableWin.pdb ?Update@CAIStateGroup_GoToPub@@MAEXXZ; slot 12 (Update) of the GoToPub state-group vtable; row parked (chunk 800). Current label is the bare mangled name
+0x00544100	NUISystem::CSpellContainerList::SetSpellToAssign	see NAME_FIXES.tsv (slot 144, stores +0x17C)
+0x005453D0	NUISystem::CSpellContainerList::AddChildAndSetOffsets	Ego_r.pdb ?AddChildAndSetOffsets@CSpellContainerList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z; slot 147 of 0x012475C4, the one remaining CCountedPointer<CComponent>& name (slots 142 / 143 are labelled AddSpellSelectionChild / AddSpellIndicationChild); body dereferences its CCountedPointer argument (`mov edi,[esp+18h] ; mov ecx,[edi]`)
+0x005455A0	NUISystem::CSpellContainerList::SetNextSpellContainerAlpha	Ego_r.pdb ?SetNextSpellContainerAlpha@CSpellContainerList@NUISystem@@UAEXM@Z; slot 149; body stores the float at +0x18C (NextSpellContainerAlpha, Ego_r.pdb +0x1C0 - 0x34)
+0x005455B0	NUISystem::CSpellContainerList::SetNextSpellContainerPosition	Ego_r.pdb ?SetNextSpellContainerPosition@CSpellContainerList@NUISystem@@UAEXAAVC2DVector@@@Z; slot 150; body copies the C2DVector to +0x190 / +0x194 (NextSpellContainerPosition)
+0x00546060	NUISystem::CSpellContainer::SetEmptySlotDef	see NAME_FIXES.tsv
+0x00546070	NUISystem::CSpellContainer::GetBaseSpells	see NAME_FIXES.tsv
+0x00860130	CBrainOutput::SetAsPerformAction	see NAME_FIXES.tsv
+0x00D45DD0	NScript::CQ_GuildTrainingScript::RunTutorials	Ego_r.pdb ?RunTutorials@CQ_GuildTrainingScript@NScript@@QAEXXZ; Main 0x00D3BC60 spawns it as CSpawnedFunc "RunTutorials" (member pointer next to the thread-name literal)
+0x00D45060	NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks	Ego_r.pdb ?CheckFriendlyAttacks@...; spawned as "CheckFriendlyAttacks" by Main 0x00D3BC60
+0x00D3CBD0	NScript::CQ_GuildTrainingScript::KeepTabsOnWhisper	Ego_r.pdb ?KeepTabsOnWhisper@...; spawned as "KeepTabsOnWhisper" by Main 0x00D3BC60
+0x00D3C840	NScript::CQ_GuildTrainingScript::WatchForSparrowKilled	Ego_r.pdb ?WatchForSparrowKilled@...; spawned as "WatchForSparrowKilled" by Main 0x00D3BC60
+0x00D3C8F0	NScript::CQ_GuildTrainingScript::KeepBookcaseExitRemoved	Ego_r.pdb ?KeepBookcaseExitRemoved@...; spawned as "KeepBookcaseExitRemoved" by Main 0x00D3BC60 (label already right)
+0x00D44CB0	NScript::CQ_GuildTrainingScript::RunArrivalCutscene	Ego_r.pdb ?RunArrivalCutscene@...; called by Main 0x00D3BC60 after the start screen (label already right)
+0x00D3D060	NScript::CQ_GuildTrainingScript::CAppleGirl::Alloc	Ego_r.pdb ?Alloc@CAppleGirl@CQ_GuildTrainingScript@NScript@@SI...; bound by Main 0x00D3BC60 under binding name "AppleGirl"
+0x00D3E1F0	NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::Alloc	Ego_r.pdb ?Alloc@CApprenticeSpeedTest@...; binding "ApprenticeSpeedTest" (Main 0x00D3BC60)
+0x00D407C0	NScript::CQ_GuildTrainingScript::CSpeedFriend::Alloc	Ego_r.pdb ?Alloc@CSpeedFriend@...; binding "SpeedFriend" (label already right)
+0x00D409E0	NScript::CQ_GuildTrainingScript::CRaceMarker::Alloc	Ego_r.pdb ?Alloc@CRaceMarker@...; binding "RaceMarker"
+0x00D40C10	NScript::CQ_GuildTrainingScript::CMeleeApprentice::Alloc	Ego_r.pdb ?Alloc@CMeleeApprentice@...; binding "MeleeApprentice"
+0x00D41A30	NScript::CQ_GuildTrainingScript::CCombatApprentice::Alloc	Ego_r.pdb ?Alloc@CCombatApprentice@...; binding "CombatApprentice"
+0x00D41B10	NScript::CQ_GuildTrainingScript::CSkillApprentice::Alloc	Ego_r.pdb ?Alloc@CSkillApprentice@...; binding "SkillApprentice"
+0x00D43280	NScript::CQ_GuildTrainingScript::CWillApprentice::Alloc	Ego_r.pdb ?Alloc@CWillApprentice@...; binding "WillApprentice"
+0x00D40B30	NScript::CQ_GuildTrainingScript::CHeroBed::Alloc	Ego_r.pdb ?Alloc@CHeroBed@...; binding "HeroBed"
+0x00D41BF0	NScript::CQ_GuildTrainingScript::CSkillTarget::Alloc	Ego_r.pdb ?Alloc@CSkillTarget@...; binding "SkillTarget"
+0x00D43360	NScript::CQ_GuildTrainingScript::CWillDummy::Alloc	Ego_r.pdb ?Alloc@CWillDummy@...; binding "WillDummy" (engine/CQ_GuildTrainingScript.h already names the factory)
+0x00D42F40	NScript::CQ_GuildTrainingScript::CBirdKiller::Alloc	Ego_r.pdb ?Alloc@CBirdKiller@...; binding "BirdKiller"
+0x00D43040	NScript::CQ_GuildTrainingScript::CKillBird::Alloc	Ego_r.pdb ?Alloc@CKillBird@...; binding "KillBird"
+0x00D43CD0	NScript::CQ_GuildTrainingScript::CPreMeleeMaze::Alloc	Ego_r.pdb ?Alloc@CPreMeleeMaze@...; binding "PreMeleeMaze"

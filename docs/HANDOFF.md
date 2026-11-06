@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-799 recorded; chunks 800 and 801 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-800 recorded; chunks 801 and 802 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -26,12 +26,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
     6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
     wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
-  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 800
-    (`$S/w22/agent800`: CEndGameScythe::Main, CBanditKing::Main, CQ_GuildTrainingScript::Main,
-    CTCTavernGameSpotTheAddition::FrameUpdate, CAIStateGroup_GoToPub::Update, NUISystem::CSpellContainerList::ProcessEvent) and
-    chunk 801 (`$S/w22/agent801`: CTCBattleCharge::CreateHitEffect, CAIStateGroup_DeedReactionRoot::Update,
+  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 801
+    (`$S/w22/agent801`: CTCBattleCharge::CreateHitEffect, CAIStateGroup_DeedReactionRoot::Update,
     CContextSensitiveItemDef::IsValidOverride, CTCFishing::FrameUpdate, CTCTavernGameCardBlackjack::CardsMainGame, CThingAICreature
-    vtable 0x012729C0 slot 36). Land each like 782-799 with the next free letter (`2026-11-06_landing_a`, `_b`; queue tags `land0611a`, ...),
+    vtable 0x012729C0 slot 36) and chunk 802 (`$S/w22/agent802`: CModeHoverBase::OnActivate,
+    CTCHeroOnlineScoreboard::DisplayScoreboardGUI, CAIStateGroup_JackOfBladesStage2::Update, COpinionReactionManager 0x00684610,
+    CTCAIScratchpad slot 1, CRegionMinimap::PopulateRegionMinimap). Land each like 782-800 with the next free letter (`2026-11-06_landing_b`, `_c`; queue tags `land0611b`, ...),
     `pending/2026-11-05_linux_hand79N`, labels `2026-11-05<letter>` incl. the landed rows' own labels, queue tag
     `land0511<letter>`. Diff every overlay header against rebuild/include first and three-way merge any that would drop another
     chunk's lines (796's overlay predates the 794 / 795 landings). When a hand-back extends an existing
@@ -41,11 +41,13 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     audio / FFT and large inventory-UI builders; about 190 unnamed `gapscan` rows, most in the script range 0x00CF-0x00F2 (the script
     Mains left are over 3.6 KB, e.g. CHobbeTorrent::Main). Take rows that are 16-byte aligned (an odd start such as 0x00651273 is a
     mid-function entry). The ledger's byte counts often run on into the next functions: end each row at its own int3 padding or
-    after its switch tables (a byte index table can end off a 4-byte boundary). The parked 782-799 rows are the other pool (0x00DE2610 waits on the pragma-free inline-depth mechanism, not on more attempts).
-  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`), 795 2 of 6 (`_v/`), 797 3 of 6 (`_w/`), 796 3 of 6 (`_x/`), 798 3 of 6 (`_y/`), 799 5 of 6 (`_z/`). The
-    parked rows are in `pending/2026-11-05_linux_hand782..799/`.
+    after its switch tables (a byte index table can end off a 4-byte boundary). The parked 782-800 rows are the other pool (0x00DE2610 waits on the pragma-free inline-depth mechanism, not on more attempts).
+  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`), 795 2 of 6 (`_v/`), 797 3 of 6 (`_w/`), 796 3 of 6 (`_x/`), 798 3 of 6 (`_y/`), 799 5 of 6 (`_z/`), 800 2 of 6 (`2026-11-06_landing_a/`). The
+    parked rows are in `pending/2026-11-05_linux_hand782..799/` and `pending/2026-11-06_linux_hand800/`.
   - A container restart stopped chunk 784 once; the scratch survived, and the agent was resumed from its transcript.
   - Naming: 0x0122DEDC (the shared 0.0f) is the compiler literal `__real@00000000` (chunk 796 evidence, queued `land0511x`).
+    Open (chunk 800): 0x00544D20 binds the NUISystem CCountedPointer<CAction> / <CComponent> dtors to the 5-byte jmp stubs
+    0x00429B72 / 0x00429C53, other rows to the bodies 0x00429160 / 0x004291DE (one symbol, two addresses; queued CHECK `land0611a`).
     Open decision: `pGlobalScriptDef` 0x0143E90C is spelled `CScriptDef*` in 148 landed rows and `CDefPointer<const CScriptDef>` in
     15 (queue lines `cg10`, `land0511x`).
   - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.
