@@ -384406,6 +384406,48 @@ $catalog = @(
         TestSource = '00/df/NScriptCQTraderConflictGoodScript_Main_00dfa450_test.cpp'
         PassPattern = '00dfa450_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d7c890'
+        Module = 'NScript::CQ_HeroSoulsArenaScript'
+        Source = '00/d7/NScriptCQHeroSoulsArenaScript_Main_00d7c890.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsArenaScript_Main_00d7c890_test.cpp'
+        PassPattern = '00d7c890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d84d60'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScript_Main_00d84d60.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScript_Main_00d84d60_test.cpp'
+        PassPattern = '00d84d60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d8dd10'
+        Module = 'NScript::CQ_HobbeCaveScript'
+        Source = '00/d8/NScriptCQHobbeCaveScript_Main_00d8dd10.cpp'
+        TestSource = '00/d8/NScriptCQHobbeCaveScript_Main_00d8dd10_test.cpp'
+        PassPattern = '00d8dd10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e693f0'
+        Module = 'NScript::CV_ChapelOfEvilScript'
+        Source = '00/e6/NScriptCVChapelOfEvilScript_Main_00e693f0.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScript_Main_00e693f0_test.cpp'
+        PassPattern = '00e693f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edb190'
+        Module = 'NScript::CV_TempleOfLightScript'
+        Source = '00/ed/NScriptCVTempleOfLightScript_Main_00edb190.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScript_Main_00edb190_test.cpp'
+        PassPattern = '00edb190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f024c0'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/f0/NScriptCQAmbushTradersScript_Main_00f024c0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScript_Main_00f024c0_test.cpp'
+        PassPattern = '00f024c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,16 @@
+address	Class::Name	evidence
+0x00D8E990	NScript::CQ_HobbeCaveScript::WatchForTermination	thread "WatchForTermination" of CQ_HobbeCaveScript::Main 0x00D8DD10; catalog lacks NScript::
+0x00D7FE90	NScript::CQ_HeroSoulsArenaScript::WatchForRoundsInArena	thread "WatchForRoundsInArena" of CQ_HeroSoulsArenaScript::Main 0x00D7C890 (CSpawnedFunc<CQ_HeroSoulsArenaScript> 0x012D39A8); Ego_r.pdb ?WatchForRoundsInArena@CQ_HeroSoulsArenaScript@NScript@@QAEXXZ; catalog has no name
+0x00F032C0	NScript::CQ_AmbushTradersScript::WatchForHeroDeath	thread "WatchForHeroDeath" of CQ_AmbushTradersScript::Main 0x00F024C0; Ego_r.pdb name set; catalog has no name
+0x00F03330	NScript::CQ_AmbushTradersScript::WatchForAllTradersDead	thread "WatchForAllTradersDead" of CQ_AmbushTradersScript::Main 0x00F024C0; Ego_r.pdb name set; catalog has no name
+0x00D87A80	NScript::CQ_HeroSoulsGuildmasterScript::Alloc	news the script and runs ctor 0x00D84B50, which stores the script vtable 0x012D4804 whose slot 2 is Main 0x00D84D60; Ego_r.pdb ?Alloc@CQ_HeroSoulsGuildmasterScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z; catalog has no name
+0x00E69F90	NScript::CV_ChapelOfEvilScript::WatchForQuestInfoDisplayConditions	thread-name literal in CV_ChapelOfEvilScript::Main 0x00E693F0; catalog WatchForQuestInfoDisplay is truncated
+0x00EDBD10	NScript::CV_TempleOfLightScript::WatchForQuestInfoDisplayConditions	thread-name literal in CV_TempleOfLightScript::Main 0x00EDB190; catalog WatchForQuestInfoDisplay is truncated
+0x00E6A0B0	NScript::CV_ChapelOfEvilScript::WatchForInsideChapel	thread of CV_ChapelOfEvilScript::Main 0x00E693F0; catalog lacks NScript::
+0x00E6A340	NScript::CV_ChapelOfEvilScript::WatchForWeaponUnsheathed	thread of CV_ChapelOfEvilScript::Main 0x00E693F0; catalog lacks NScript::
+0x00E6A7F0	NScript::CV_ChapelOfEvilScript::DoMission	thread of CV_ChapelOfEvilScript::Main 0x00E693F0; catalog lacks NScript::
+0x00E6A9E0	NScript::CV_ChapelOfEvilScript::EndMission	called by DoMission 0x00E6A7F0; catalog lacks NScript::
+0x00E6AF20	NScript::CV_ChapelOfEvilScript::WatchForAcolyteHit	Ego_r.pdb name set; catalog lacks NScript::
+0x00E6A940	NScript::CV_ChapelOfEvilScript::WatchForLeaving	thread "WatchForLeaving" spawned by DoMission 0x00E6A7F0 (CSpawnedFunc<CV_ChapelOfEvilScript> 0x012E8094); catalog has no name
+0x00EDC450	NScript::CV_TempleOfLightScript::DoMission	thread "DoMission" of CV_TempleOfLightScript::Main 0x00EDB190 (CSpawnedFunc<CV_TempleOfLightScript> 0x012F3C7C); catalog CV_ChapelOfEvilScript::DoMission is a propagated (byte-similar) label and wrong
+0x00EDC5A0	NScript::CV_TempleOfLightScript::WatchForLeaving	thread "WatchForLeaving" spawned by CV_TempleOfLightScript::DoMission 0x00EDC450; FableWin.pdb name set; catalog has no name

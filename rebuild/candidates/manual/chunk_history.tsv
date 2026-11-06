@@ -27366,3 +27366,9 @@ chunk	address	module	name	length
 788	00f024c0	NScript::CQ_AmbushTradersScript	Main	3503
 788	00e693f0	NScript::CV_ChapelOfEvilScript	Main	2832
 788	00edb190	NScript::CV_TempleOfLightScript	Main	2711
+789	00d7fe90	NScript::CQ_HeroSoulsArenaScript	WatchForRoundsInArena	3148
+789	00dea3f0	NScript::CQ_RansomVictimScript::CVictimsBrother	Main	3076
+789	00cfe030	NScript::CQ_AwakeningTheOracleScript::COracleTablet	Main	3575
+789	00d82640	NScript::CQ_HeroSoulsBriarScript::CBriarRose	Main	3260
+789	00e776f0	NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager	Main	2564
+789	00eb8900	NScript::CV_MayorsInvitationScript::CMI_InfoKeeper	Main	2964

@@ -242,6 +242,12 @@ public:
     // ??8CCharString@@QBE_NPBD@Z, both inline in retail (0x00AE8D50 expands GetAsCharArray: `test; jne; mov eax,offset NullChar; jmp; mov eax,[eax]`;
     // the landed local models spell the same ternary). NullChar is 0x0129AAF4 (static data member per the Ego_r TPI as Codex pass 12 read it).
     const char* GetAsCharArray() const { return PStringData==0 ? &NullChar : PStringData->Data.PeekData(); }
+#ifdef FABLE_RETAIL_CCHARSTRING_CONTAINS
+    // Retail opt-in (chunk 788, row 0x00E693F0 NScript::CV_ChapelOfEvilScript::Main): FableWin.pdb ?Contains@CCharString@@QBE_NABV1@@Z
+    // (FableWin 0x018D7370; no Ego_r out-of-line copy is bound), inline in retail: 0x00E695B8..0x00E695E8 takes the pattern's text from one null test
+    // (`mov ecx,offset NullChar`), then this string's, and tests strstr 0x00BFEB3A != 0 (`setne`).
+    __forceinline bool Contains(const CCharString& other) const { return strstr(GetAsCharArray(),other.GetAsCharArray())!=0; }
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
     // Per-TU inline opt-in (Codex pass 13, row 0x00E36D50; like FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE): that TU expands both
     // null / non-null arms in place where the plain inline operator is called out of line.

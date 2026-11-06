@@ -1,0 +1,7 @@
+address	module	name	length
+00d8dd10	NScript::CQ_HobbeCaveScript	Main	3194
+00d84d60	NScript::CQ_HeroSoulsGuildmasterScript	Main	3259
+00d7c890	NScript::CQ_HeroSoulsArenaScript	Main	3736
+00f024c0	NScript::CQ_AmbushTradersScript	Main	3503
+00e693f0	NScript::CV_ChapelOfEvilScript	Main	2832
+00edb190	NScript::CV_TempleOfLightScript	Main	2711

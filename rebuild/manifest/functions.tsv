@@ -50484,7 +50484,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d7fc10	`scalar deleting destructor'	CActiveEntityScript<NScript::CQ_HeroSoulsArenaScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d7\CThingSwitch_vectordeletingdestructor_00d7fc10.cpp
 00d7fc40	OnPersist	NScript::CQ_HeroSoulsArenaScript::CDyingVillager	unknown	undefined	0		0			discovered	gapscan							
 00d7fc70	PlayCutscene	NScript::CQ_HeroSoulsArenaScript	unknown	undefined	0		0	yes	accepted									
-00d7fe90	WatchForRoundsInArena	CQ_HeroSoulsArenaScript	__thiscall	void	1	CQ_HeroSoulsArenaScript *	1	yes	accepted									
+00d7fe90	WatchForRoundsInArena	NScript::CQ_HeroSoulsArenaScript	__thiscall	void	1	CQ_HeroSoulsArenaScript *	1	yes	accepted									
 00d80ae0	GetJackSpeech	NScript::CQ_HeroSoulsArenaScript	__thiscall	CCharString	2	CQ_HeroSoulsArenaScript *,long	1	yes	accepted									
 00d80ba0	Alloc	NScript::CQ_HeroSoulsArenaScript	unknown	undefined	0		0			discovered	boundary							
 00d80c00	`scalar deleting destructor'	CVtable_012d3994	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d8\CThingSwitch_vectordeletingdestructor_00d80c00.cpp

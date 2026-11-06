@@ -1,0 +1,9 @@
+address	source	grade_with_final_overlay	note
+00cf9610	rebuild/src/compiled/00/cf/NScriptCQAmbushTradersScript_OnPersist_00cf9610.cpp	RELOCATION_MATCH PASS	includes engine/CQ_AmbushTradersScript.h (opt-in FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_MAIN not defined: default path unchanged); vland --recheck-landed with the hdr/ overlay
+00cf9a50	rebuild/src/compiled/00/cf/NScriptCQAmbushTradersScript_Init_00cf9a50.cpp	RELOCATION_MATCH PASS	includes engine/CQ_AmbushTradersScript.h and engine/CScriptDef.h (reaches fable_definition_table.h -> fable_string.h overlay copies); vland --recheck-landed
+00e92a50	rebuild/src/compiled/00/e9/NScriptCVHiddenBootyScript_Main_00e92a50.cpp	RELOCATION_MATCH PASS	includes engine/CScriptDef.h (fable_definition_table.h / fable_string.h overlay copies, opt-in not defined); vland --recheck-landed
+00e8a2b0	rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCTyler_FightWarmupRounds_00e8a2b0.cpp	RELOCATION_MATCH PASS	includes engine/CScriptDef.h (overlay fable_string.h, opt-in not defined); vland --recheck-landed
+009d4a40	rebuild/src/compiled/00/9d/CDefStringTable_SetTablePath_009d4a40.cpp	RELOCATION_MATCH PASS	includes fable_definition_table.h directly (overlay copy, unchanged); vland --recheck-landed
+00ea0090	rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Main_00ea0090.cpp	RELOCATION_MATCH PASS	fable_string.h with FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ / FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE (the opt-ins the village Mains also use); vland --recheck-landed
+00e6b750	rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_WatchForRegionEntry_00e6b750.cpp	RELOCATION_MATCH PASS	Chapel sibling (local CCharString model; no overlay header included); vland --recheck-landed
+00e6e050	rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_GetVictimIsGuard_00e6e050.cpp	RELOCATION_MATCH PASS	Chapel sibling with the strstr name test (local model); vland --recheck-landed

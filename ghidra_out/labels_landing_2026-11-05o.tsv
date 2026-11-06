@@ -1,0 +1,13 @@
+address	name	evidence
+00d7c890	NScript::CQ_HeroSoulsArenaScript::Main	landing 2026-11-05o (chunk 788): Ego_r.pdb ?Main@CQ_HeroSoulsArenaScript@NScript@@UAEXXZ; RELOCATION_MATCH
+00d84d60	NScript::CQ_HeroSoulsGuildmasterScript::Main	landing 2026-11-05o (chunk 788): Ego_r.pdb ?Main@CQ_HeroSoulsGuildmasterScript@NScript@@UAEXXZ; RELOCATION_MATCH
+00d8dd10	NScript::CQ_HobbeCaveScript::Main	landing 2026-11-05o (chunk 788): Ego_r.pdb ?Main@CQ_HobbeCaveScript@NScript@@UAEXXZ; RELOCATION_MATCH
+00e693f0	NScript::CV_ChapelOfEvilScript::Main	landing 2026-11-05o (chunk 788): Ego_r.pdb ?Main@CV_ChapelOfEvilScript@NScript@@UAEXXZ; RELOCATION_MATCH
+00edb190	NScript::CV_TempleOfLightScript::Main	landing 2026-11-05o (chunk 788): Ego_r.pdb ?Main@CV_TempleOfLightScript@NScript@@UAEXXZ; RELOCATION_MATCH
+00f024c0	NScript::CQ_AmbushTradersScript::Main	landing 2026-11-05o (chunk 788): Ego_r.pdb ?Main@CQ_AmbushTradersScript@NScript@@UAEXXZ; RELOCATION_MATCH
+00d7fe90	NScript::CQ_HeroSoulsArenaScript::WatchForRoundsInArena	landing 2026-11-05o (chunk 788): thread "WatchForRoundsInArena" of CQ_HeroSoulsArenaScript::Main 0x00D7C890 (CSpawnedFunc<CQ_HeroSoulsArenaScript> 0x012D39A8); Ego_r.pdb ?WatchForRoundsInArena@CQ_HeroSoulsArenaScript@NScript@@QAEXXZ; catalog has no name
+00f032c0	NScript::CQ_AmbushTradersScript::WatchForHeroDeath	landing 2026-11-05o (chunk 788): thread "WatchForHeroDeath" of CQ_AmbushTradersScript::Main 0x00F024C0; Ego_r.pdb name set; catalog has no name
+00f03330	NScript::CQ_AmbushTradersScript::WatchForAllTradersDead	landing 2026-11-05o (chunk 788): thread "WatchForAllTradersDead" of CQ_AmbushTradersScript::Main 0x00F024C0; Ego_r.pdb name set; catalog has no name
+00d87a80	NScript::CQ_HeroSoulsGuildmasterScript::Alloc	landing 2026-11-05o (chunk 788): news the script and runs ctor 0x00D84B50, which stores the script vtable 0x012D4804 whose slot 2 is Main 0x00D84D60; Ego_r.pdb ?Alloc@CQ_HeroSoulsGuildmasterScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z; catalog has no name
+00e6a940	NScript::CV_ChapelOfEvilScript::WatchForLeaving	landing 2026-11-05o (chunk 788): thread "WatchForLeaving" spawned by DoMission 0x00E6A7F0 (CSpawnedFunc<CV_ChapelOfEvilScript> 0x012E8094); catalog has no name
+00edc5a0	NScript::CV_TempleOfLightScript::WatchForLeaving	landing 2026-11-05o (chunk 788): thread "WatchForLeaving" spawned by CV_TempleOfLightScript::DoMission 0x00EDC450; FableWin.pdb name set; catalog has no name

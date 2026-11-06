@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00d7c890   RELOCATION_MATCH PASS   Main
+00d84d60   RELOCATION_MATCH PASS   Main
+00d8dd10   RELOCATION_MATCH PASS   Main
+00e693f0   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+00e693f0   RELOCATION_MATCH PASS   Main
+00edb190   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+00edb190   RELOCATION_MATCH PASS   Main
+00f024c0   RELOCATION_MATCH PASS   Main
+
+WINS: 6
+  00d7c890 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::?Main@CQ_HeroSoulsArenaScript@NScript@@UAEXXZ
+  00d84d60 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::?Main@CQ_HeroSoulsGuildmasterScript@NScript@@UAEXXZ
+  00d8dd10 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::?Main@CQ_HobbeCaveScript@NScript@@UAEXXZ
+  00e693f0 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?Main@CV_ChapelOfEvilScript@NScript@@UAEXXZ
+  00edb190 RELOCATION_MATCH NScript::CV_TempleOfLightScript::?Main@CV_TempleOfLightScript@NScript@@UAEXXZ
+  00f024c0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?Main@CQ_AmbushTradersScript@NScript@@UAEXXZ
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHeroSoulsArenaScript_Main_00d7c890
+  NScriptCQHeroSoulsGuildmasterScript_Main_00d84d60
+  NScriptCQHobbeCaveScript_Main_00d8dd10
+  NScriptCVChapelOfEvilScript_Main_00e693f0
+  NScriptCVTempleOfLightScript_Main_00edb190
+  NScriptCQAmbushTradersScript_Main_00f024c0
