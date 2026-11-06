@@ -37115,3 +37115,14 @@ _New_c35b10@8	00c35b10	00c275e0
 ?clear@?$_List_base@U?$pair@VCCharString@@K@std@@V?$allocator@U?$pair@VCCharString@@K@std@@@2@@std@@QAEXXZ	004b8b70	004b5500
 ?clear@?$_List_base@VCQuestCard@CQuestManager@@V?$allocator@VCQuestCard@CQuestManager@@@std@@@std@@QAEXXZ	004b8bb0	004b5500
 ?GetCachedImage@CTCHeroOnlineScoreboard@@AAE?AV?$CCountedPointer@VCTexture@@@@ABVCWideString@@J@Z	0055fc90	0055fec0
+??_7?$CEntityScriptBinding@VCQ_WhiteBalverineWWScript@NScript@@@@6B@	012e0dcc	00e18630
+?Alloc@CKG_Chief@CQ_WhiteBalverineWWScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e192e0	00e18630
+?Alloc@CWBWW_SoldierBalverine@CQ_WhiteBalverineWWScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e191e0	00e18630
+?Alloc@CWBWW_WhiteBalverine@CQ_WhiteBalverineWWScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e190a0	00e18630
+?MonitorBalverine@CQ_WhiteBalverineWWScript@NScript@@QAEXXZ	00e18eb0	00e18630
+?SpawnBalverines@CQ_WhiteBalverineWWScript@NScript@@QAEXXZ	00e19560	00e18630
+??_7?$CEntityScriptBinding@VCV_BanditCampPathScript@NScript@@@@6B@	012e4b30	00e46d30
+?Alloc@CBCP_Bandit@CV_BanditCampPathScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e47500	00e46d30
+??0TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ	00f0d470	00f0caa0
+??1TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ	00cdbc50	00f0caa0
+?push_back@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAEXABUTeleportData@CQ_AmbushTradersScript@NScript@@@Z	00f0d490	00f0caa0

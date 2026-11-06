@@ -27420,3 +27420,9 @@ chunk	address	module	name	length
 797	00da91a0	NScript::CQ_MinionClifftopChaseScript::CMapKeeper	Main	2765
 797	00dadf80	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager	Main	2787
 797	00d18df0	NScript::CQ_BountyHuntScript::CBH_GangDeputy2	Main	3321
+798	00d39330	NScript::CQ_FireHeartScript	PlayCutscene	1578
+798	00d35090	NScript::CQ_FireHeartScript	Main	3641
+798	00ed5830	NScript::CV_SwordInTheStoneScript	SwordPullCutscene	1819
+798	00f0c140	NScript::CQ_AmbushTradersScript	PhaseTwo	2285
+798	00d7b510	NScript::CQ_HeroSoulsThunderScript::CHeroThunder	Main	3524
+798	00e27e90	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze	Main	3595

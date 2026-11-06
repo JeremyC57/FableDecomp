@@ -2,6 +2,7 @@
 #define FABLE_ENGINE_CQ_BOUNTYHUNTSCRIPT_H
 // Original Ego_r TPI 0x1317c, field order and types; native base is 0x48.
 // Layout: native Game+0x40; QuestFailed+0x48; BoastTime+0x80.
+// Chunk 797: opt-in FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY2 (TeleportData ctor/dtor, WatchForDeputy2GruntsKilled, CBH_GangDeputy2).
 #include "engine/CLevelScriptBase.h"
 #include "engine/CTimer.h"
 #include "fable_string.h"
@@ -13,6 +14,10 @@ public:
     struct TeleportData {
         CCharString defName; unsigned long appearanceSeed; float health;
         CCharString scriptName, teleportTo, teleportMkr;
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY2
+        TeleportData();                                                  // 0x00D15140
+        ~TeleportData();                                                 // 0x00CD4550
+#endif
     };
     CQ_BountyHuntScript(CScriptDataBase*,CGameScriptInterfaceBase&);
     virtual ~CQ_BountyHuntScript();
@@ -21,6 +26,10 @@ public:
     virtual void Init();
     virtual void OnPersist(CPersistContext&);
     void SpawnBanditGangGrunts(CCharString spawnName);
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY2
+    void WatchForDeputy2GruntsKilled();                                  // 0x00D19AF0
+    class CBH_GangDeputy2;                                               // Alloc 0x00D161A0
+#endif
     bool QuestFailed;
     bool QuestSucceeded;
     bool QuestOver;
@@ -72,4 +81,27 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript)==0x94);
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY2
+// Opt-in (chunk 797): the CBH_GangDeputy2 entity script (Ego_r.pdb CBH_GangDeputy2, 28 bytes: ParentClass +0x14, PMasterData +0x18)
+// and the TeleportData ctor / dtor its Main 0x00D18DF0 calls out of line (Ego_r.pdb ??0 / ??1TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ),
+// plus WatchForDeputy2GruntsKilled (landed 0x00D19AF0, the thread Main spawns). Entity vtable stored by the landed Alloc 0x00D161A0:
+// Main 0x00D18DF0, Init 0x00D169E0, OnPersist 0x00D16250, OnPredicateFail 0x00D16260, GetParentScript 0x00D16240.
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_BountyHuntScript::CBH_GangDeputy2 : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BountyHuntScript&, CScriptDataBase*, const CScriptThing&); // 0x00D161A0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D16240
+private:
+    virtual void Main();                                                 // 0x00D18DF0
+    virtual void Init();                                                 // 0x00D169E0
+    virtual void OnPersist(CPersistContext&);                            // 0x00D16250
+    virtual void OnPredicateFail();                                      // 0x00D16260
+protected:
+    CQ_BountyHuntScript& ParentClass;                                    // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_GangDeputy2) == 0x1c);
+#endif
 #endif

@@ -37,6 +37,13 @@ public:
     // (same kind) the dtor COMDAT 0x006E7B80 (??1CScriptGameResourceObjectMovieBase@@UAE@XZ) is called, not expanded.
     virtual ~CScriptGameResourceObjectMovieBase();
 #endif
+#if defined(FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_FORCEINLINE) && defined(_MSC_VER)
+    // Per-TU opt-in (chunk 797, like FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR): retail expands the ctor (`call 0x0099A380;
+    // mov [esi],0x01260EF4; zero +8/+C`) and the dtor (PImp release 0x006E7AB0, GROBase vtable store, ~CBaseObject 0x0099A430) at every site
+    // of CBH_GangDeputy2::Main 0x00D18DF0, where VC7.1's own choice for the implicit pair in that 3.3 KB body is the COMDAT call.
+    __forceinline CScriptGameResourceObjectMovieBase() { }
+    __forceinline virtual ~CScriptGameResourceObjectMovieBase() { }
+#endif
     void Release();                                                      // 0x00CF8850
     void SetImplementation(CScriptGameResourceObjectMovieBase*);         // unproven: candidate 0x008AB970
     CCountedPointer<CScriptGameResourceObjectMovieBase> PImp;            // +0x08

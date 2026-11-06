@@ -1,0 +1,14 @@
+address	name	evidence
+0x00E18630	NScript::CQ_WhiteBalverineWWScript::Main	Ego_r.pdb / FableWin.pdb ?Main@CQ_WhiteBalverineWWScript@NScript@@UAEXXZ; slot 2 of the level-script vtable 0x012E0CE4 (RegisterMain 0x00E18570 binds it); row RELOCATION_MATCH (chunk 797)
+0x00E46D30	NScript::CV_BanditCampPathScript::Main	Ego_r.pdb / FableWin.pdb ?Main@CV_BanditCampPathScript@NScript@@UAEXXZ; level-script vtable slot 2 (RegisterMain 0x00E46C40 binds it); row RELOCATION_MATCH (chunk 797)
+0x00F0CAA0	NScript::CQ_AmbushTradersScript::CAT_ConvoyMember::Main	Ego_r.pdb / FableWin.pdb ?Main@CAT_ConvoyMember@CQ_AmbushTradersScript@NScript@@EAEXXZ; slot 1 of the entity vtable 0x012F7DF8 stored by the landed Alloc 0x00F04280; row RELOCATION_MATCH (chunk 797)
+0x00DA91A0	NScript::CQ_MinionClifftopChaseScript::CMapKeeper::Main	Ego_r.pdb / FableWin.pdb ?Main@CMapKeeper@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ; slot 1 of the entity vtable 0x012D73E0 stored by the landed Alloc 0x00DA4250; binding "MapKeeper" (Main 0x00DA34B0) (row parked, chunk 797)
+0x00DADF80	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::Main	Ego_r.pdb / FableWin.pdb ?Main@CNOVI_Villager@CQ_NewOakValeIntroScript@NScript@@EAEXXZ; slot 1 of the entity vtable 0x012D8678 stored by the landed Alloc 0x00DADE50; binding "NOVI_Villager" (Main 0x00DABAC0) (row parked, chunk 797)
+0x00D18DF0	NScript::CQ_BountyHuntScript::CBH_GangDeputy2::Main	Ego_r.pdb / FableWin.pdb ?Main@CBH_GangDeputy2@CQ_BountyHuntScript@NScript@@EAEXXZ; slot 1 of the entity vtable stored by the landed Alloc 0x00D161A0; strings TEXT_QST_017_DEPUTY2 / BH_GangDeputy2 (row parked, chunk 797)
+0x00E19560	NScript::CQ_WhiteBalverineWWScript::SpawnBalverines	Ego_r.pdb / FableWin.pdb ?SpawnBalverines@CQ_WhiteBalverineWWScript@NScript@@QAEXXZ; Main 0x00E18630 spawns it as a CSpawnedFunc named "ParentClass." + "SpawnBalverines" with this member pointer (MonitorBalverine 0x00E18EB0, landed, is the twin)
+0x00F0D470	NScript::CQ_AmbushTradersScript::TeleportData::TeleportData	see NAME_FIXES.tsv (landed as SScriptQuery_00f0d470); called by 0x00F0CAA0 on its stack record
+0x00CDBC50	NScript::CQ_AmbushTradersScript::TeleportData::~TeleportData	see NAME_FIXES.tsv; called by 0x00F0CAA0 after the push_back 0x00F0D490
+0x00D15140	NScript::CQ_BountyHuntScript::TeleportData::TeleportData	see NAME_FIXES.tsv (landed as CMainGameComponentInit); called by 0x00D18DF0
+0x012F7DF8	vtable NScript::CQ_AmbushTradersScript::CAT_ConvoyMember	stored by the landed Alloc 0x00F04280; slot 1 = 0x00F0CAA0, slot 2 = Init 0x00F08C30
+0x012D73E0	vtable NScript::CQ_MinionClifftopChaseScript::CMapKeeper	reloc_bindings ??_7CMapKeeper@CQ_MinionClifftopChaseScript@NScript@@6B@ (Alloc 0x00DA4250); slot 1 = 0x00DA91A0
+0x012D8678	vtable NScript::CQ_NewOakValeIntroScript::CNOVI_Villager	stored by the landed Alloc 0x00DADE50; slot 1 = 0x00DADF80, slot 2 = Init 0x00DADF00

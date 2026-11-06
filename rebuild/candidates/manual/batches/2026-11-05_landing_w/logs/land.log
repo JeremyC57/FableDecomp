@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00e18630   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e18630   RELOCATION_MATCH PASS   Main
+00e46d30   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e46d30   RELOCATION_MATCH PASS   Main
+00f0caa0   WARN RELOC_NAME: ??0TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ -> 00f0d470 labelled 'SScriptQuery_00f0d470::SScriptQuery_00f0d470'
+00f0caa0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00e18630 RELOCATION_MATCH NScript::CQ_WhiteBalverineWWScript::?Main@CQ_WhiteBalverineWWScript@NScript@@UAEXXZ
+  00e46d30 RELOCATION_MATCH NScript::CV_BanditCampPathScript::?Main@CV_BanditCampPathScript@NScript@@UAEXXZ
+  00f0caa0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_ConvoyMember::?Main@CAT_ConvoyMember@CQ_AmbushTradersScript@NScript@@EAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NScriptCQWhiteBalverineWWScript_Main_00e18630
+  NScriptCVBanditCampPathScript_Main_00e46d30
+  NScriptCQAmbushTradersScriptCATConvoyMember_Main_00f0caa0

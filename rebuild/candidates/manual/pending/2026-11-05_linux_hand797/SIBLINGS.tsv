@@ -1,0 +1,19 @@
+address	source	grade_with_final_overlay	note
+00da34b0	rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_Main_00da34b0.cpp	RELOCATION_MATCH PASS	includes engine/CQ_MinionClifftopChaseScript.h (opt-in MAPKEEPER branch not defined: default text unchanged)
+00cf9610	rebuild/src/compiled/00/cf/NScriptCQAmbushTradersScript_OnPersist_00cf9610.cpp	RELOCATION_MATCH PASS	includes engine/CQ_AmbushTradersScript.h (CONVOYMEMBER opt-in not defined)
+00cf9a50	rebuild/src/compiled/00/cf/NScriptCQAmbushTradersScript_Init_00cf9a50.cpp	RELOCATION_MATCH PASS	includes engine/CQ_AmbushTradersScript.h (CONVOYMEMBER opt-in not defined)
+00d17470	rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_SpawnBanditGangGrunts_00d17470.cpp	RELOCATION_MATCH PASS	includes engine/CQ_BountyHuntScript.h (GANGDEPUTY2 opt-in not defined)
+00d13130	rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_OnPersist_00d13130.cpp	RELOCATION_MATCH PASS	includes engine/CQ_BountyHuntScript.h (GANGDEPUTY2 opt-in not defined)
+00f024c0	rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_Main_00f024c0.cpp	RELOCATION_MATCH PASS	includes engine/CQ_AmbushTradersScript.h (CONVOYMEMBER opt-in not defined)
+00da4250	rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Alloc_00da4250.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00da4350	rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Init_00da4350.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00dade50	rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIVillager_Alloc_00dade50.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00dadf00	rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIVillager_Init_00dadf00.cpp	MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00f04280	rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_Alloc_00f04280.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00f08c30	rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_Init_00f08c30.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00d161a0	rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_Alloc_00d161a0.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00d169e0	rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_Init_00d169e0.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00e18eb0	rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScript_MonitorBalverine_00e18eb0.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00e18440	rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScript_CQWhiteBalverineWWScript_00e18440.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00e46bd0	rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScript_CV_BanditCampPathScript_00e46bd0.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay
+00e477a0	rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScript_Alloc_00e477a0.cpp	RELOCATION_MATCH PASS	same class as a chunk 797 row (local model / landed sibling), rechecked with the final overlay

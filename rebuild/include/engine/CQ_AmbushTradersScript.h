@@ -12,7 +12,25 @@ namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_AmbushTradersScript:public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
+#ifdef FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_CONVOYMEMBER
+    // Retail opt-in (chunk 797): the TeleportData record CAT_ConvoyMember::Main 0x00F0CAA0 builds and pushes onto TeleportInfo.
+    // Ego_r.pdb CQ_AmbushTradersScript::TeleportData (32 bytes, struct key U: ??0TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ /
+    // ??1..@@QAE@XZ / ??0..@@QAE@ABU012@@Z): defName +0, appearanceSeed +4, health +8, scriptName +0xc, itemsCarried +0x10 (the retail
+    // STLport vector is 12 bytes: 0x1c). Retail bytes: the out-of-line ctor 0x00F0D470 (CCharString() at +0 / +0xc, zero words
+    // +0x10..+0x18, +4 / +8 left unset) and dtor 0x00CDBC50 (the vector<CCharString> at +0x10, then +0xc and +0); Main writes
+    // +4 (EntityGetAppearanceSeed), +0 (GetDefName), +8 (GetHealth), +0xc and +0x10. Both declared only (out of line in retail).
+    struct TeleportData {
+        TeleportData();                                                  // 0x00F0D470
+        ~TeleportData();                                                 // 0x00CDBC50
+        CCharString defName;                                             // +0x00
+        unsigned long appearanceSeed;                                    // +0x04
+        float health;                                                    // +0x08
+        CCharString scriptName;                                          // +0x0c
+        std::vector<CCharString> itemsCarried;                           // +0x10
+    };
+#else
     struct TeleportData;
+#endif
     CQ_AmbushTradersScript(CScriptDataBase*,CGameScriptInterfaceBase&);
     virtual ~CQ_AmbushTradersScript();
     virtual void RegisterMain();
@@ -116,5 +134,25 @@ public:
 #endif
 };
 }
+#if defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_CONVOYMEMBER) && defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_MAIN)
+// Retail opt-in (chunk 797): the nested entity script CAT_ConvoyMember (Ego_r.pdb, 28 bytes: CEntityScriptBase 0x14, ParentClass +0x14,
+// PMasterData +0x18; the landed Alloc 0x00F04280 news 0x1c). Methods: Ego_r / FableWin ?Alloc@CAT_ConvoyMember@CQ_AmbushTradersScript@NScript@@SI...,
+// ?Init@..@@EAEXXZ (0x00F08C30, landed), ?Main@..@@EAEXXZ (0x00F0CAA0; slot 1 of the entity vtable 0x012F7DF8).
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_AmbushTradersScript::CAT_ConvoyMember : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_AmbushTradersScript&, CScriptDataBase*, const CScriptThing&); // 0x00F04280
+    virtual CScriptBase* GetParentScript() const;                        // 0x00F04320
+private:
+    virtual void Main();                                                 // 0x00F0CAA0
+    virtual void Init();                                                 // 0x00F08C30
+protected:
+    CQ_AmbushTradersScript& ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AmbushTradersScript::TeleportData)==0x1c);
+#endif
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AmbushTradersScript)==0x1d0);
 #endif

@@ -49012,7 +49012,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cdb960	~vector	std::vector<CUnprovenElement_00cdb960, std::allocator<CUnprovenElement_00cdb960>>	__thiscall	void	1	vector<CConversation,std::allocator<CConversation>_> *	1	yes	accepted									
 00cdb9e0	CVtable_012c2748	CVtable_012c2748	__thiscall	undefined	1	CIcicleData *	0	yes	accepted									
 00cdba10	Init	NScript::CQ_SunnyvaleMasterData	__thiscall	void	1	CQ_SunnyvaleMasterData *	1	yes	accepted									
-00cdbc50	Catch@0040d88c	_global	unknown	undefined	0		0	yes	accepted									
+00cdbc50	~TeleportData	NScript::CQ_AmbushTradersScript::TeleportData	unknown	undefined	0		0	yes	accepted									
 00cdbc90	~vector	std::vector<NScript::CQ_BountyHuntScript::TeleportData, std::allocator<NScript::CQ_BountyHuntScript::TeleportData>>	__thiscall	void	1	CActiveFile *	1	yes	accepted									
 00cdbcc0	~CRetailVector_SPairCMember_0099eae012	CRetailVector_SPairCMember_0099eae012	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
 00cdbd00	ScalarDeletingDtor_00cdbd00	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CLandscapeBackgroundPatch_vectordeletingdestructor_00cdbd00.cpp
@@ -52092,7 +52092,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e193d0	CreateActiveEntityScript	CEntityScriptBinding<NScript::CQ_WhiteBalverineWWScript>	unknown	undefined	0		0	yes	accepted									
 00e194e0	SuspendableProcess	CActiveEntityScript<NScript::CQ_WhiteBalverineWWScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
 00e19530	`scalar deleting destructor'	CActiveEntityScript<NScript::CQ_WhiteBalverineWWScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e1\CThingSwitch_vectordeletingdestructor_00e19530.cpp
-00e19560	sub_00e19560	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00e19560	SpawnBalverines	NScript::CQ_WhiteBalverineWWScript	unknown	undefined	0		0			discovered	gapscan							
 00e19d80	Main	NScript::CQ_WhiteBalverineWWScript::CKG_Chief	unknown	undefined	0		0			discovered	gapscan							
 00e1a770	Alloc	NScript::CQ_WhiteBalverineWWScript	__fastcall	CScriptBase *	2	CScriptDataBase *,CGameScriptInterfaceBase *	1	yes	accepted									
 00e1a7d0	`scalar deleting destructor'	NScript::CQ_WhiteBalverineWWScript	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e1\CEngineSubPrimitiveText_scalardeletingdestructor_00e1a7d0.cpp

@@ -1,0 +1,3 @@
+manifest 00cdbc50 _global::Catch@0040d88c -> NScript::CQ_AmbushTradersScript::TeleportData::~TeleportData
+manifest 00e19560 _gapscan::sub_00e19560 -> NScript::CQ_WhiteBalverineWWScript::SpawnBalverines
+labels 11  catalog renamed 0  manifest renamed 2

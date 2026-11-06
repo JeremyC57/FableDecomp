@@ -1,6 +1,7 @@
 #ifndef FABLE_ENGINE_CQ_MINIONCLIFFTOPCHASESCRIPT_H
 #define FABLE_ENGINE_CQ_MINIONCLIFFTOPCHASESCRIPT_H
 // Retail opt-in (chunk 787): NScript::CQ_MinionClifftopChaseScript, new header (no includer before chunk 787).
+// Chunk 797: opt-in FABLE_RETAIL_CQ_MINIONCLIFFTOPCHASESCRIPT_MAPKEEPER adds the CMapKeeper class (after the main class).
 // Layout: Ego_r.pdb CQ_MinionClifftopChaseScript (struct_layouts_egor.tsv, 128 bytes) at retail offsets = PDB - 0x14 (retail
 // CLevelScriptBase is 0x48): bools +0x48..+0x4e, KilledGuardingMinions +0x50, RockTrollAppeared +0x54, MCC4Taken +0x55,
 // MakeUniqueComment +0x58, MissionTimer +0x5c, MissionTimerID +0x60, ReasonForFailure +0x64, MinionCount +0x68 -- the offsets the
@@ -66,6 +67,28 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_MinionClifftopChaseScript) == 0x6c);
+#ifdef FABLE_RETAIL_CQ_MINIONCLIFFTOPCHASESCRIPT_MAPKEEPER
+// Opt-in (chunk 797): the CMapKeeper entity script (Ego_r.pdb CMapKeeper, 44 bytes: ParentClass +0x14, PMasterData +0x18,
+// DoneIntro +0x1c, ImprisonedFX +0x20; the offsets the landed Init 0x00DA4350 / OnPredicateFail 0x00DA4300 use). Entity vtable
+// 0x012D73E0 (stored by the landed Alloc 0x00DA4250): slot 1 Main 0x00DA91A0, slot 2 Init 0x00DA4350, slot 5 OnPredicateFail.
+namespace NScript {
+class CQ_MinionClifftopChaseScript::CMapKeeper : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_MinionClifftopChaseScript&, CScriptDataBase*, const CScriptThing&); // 0x00DA4250
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DA42F0
+private:
+    virtual void Main();                                                 // 0x00DA91A0
+    virtual void Init();                                                 // 0x00DA4350
+    virtual void OnPredicateFail();                                      // 0x00DA4300
+protected:
+    CQ_MinionClifftopChaseScript& ParentClass;                           // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    bool DoneIntro;                                                      // +0x1c
+    CScriptThing ImprisonedFX;                                           // +0x20
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_MinionClifftopChaseScript::CMapKeeper) == 0x2c);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_MINIONCLIFFTOPCHASESCRIPT_H
