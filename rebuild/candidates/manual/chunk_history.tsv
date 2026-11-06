@@ -27390,3 +27390,9 @@ chunk	address	module	name	length
 792	00b5a3f0	CEngineScreenEffectColourFilter	ApplyColourFilter	2916
 792	00ab6e40	CJoystickDX	UpdateEvents	2568
 792	00715a70	CActionTalkBase	SetUpCamera	3356
+793	00a58b50	CSphere	GetFirstIntersectionWithTriangle	2207
+793	00a593f0	CCylinder	GetFirstIntersectionWithTriangle	3027
+793	00ade080	C3DBoundingBox	InitialiseFromOBB	2878
+793	00bc8a60	CEnginePrimitiveManagerLines	RenderLine	3416
+793	009a25d0	CStreamingFontBank	Render	3722
+793	00715a70	NTCScriptedControl::CActionTalkBase	SetUpCamera	3356

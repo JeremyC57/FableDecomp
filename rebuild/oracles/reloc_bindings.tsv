@@ -37088,3 +37088,15 @@ _New_c35b10@8	00c35b10	00c275e0
 ?ShowMoreWorlds@CFrontendGameComponent@@AAEXXZ	004946c0	004963a0
 ?D3DTextureTransformModeTable@CRenderStateManager@@0PAKA	01396fcc	009a1720
 ?SetVertexFormat@CRenderManagerCore@@QAEXK@Z	00a0aa30	00ab83a0
+?AddEventToStore@CJoystick@@IAE_NPBVCInputEvent@@@Z	009e41e0	00ab6e40
+?AddMaintainedEventsToEventStore@CJoystick@@IAEXXZ	009e4360	00ab6e40
+?EmptyEventStore@CJoystick@@IAEXXZ	009e41d0	00ab6e40
+?ProcessMaintainedEvents@CJoystick@@IAEXPBVCInputEvent@@@Z	009e4470	00ab6e40
+?SetAsJoystickButtonPressed@CInputEvent@@QAEXJMABVC2DVector@@N@Z	00a04090	00ab6e40
+?SetAsJoystickButtonReleased@CInputEvent@@QAEXJMABVC2DVector@@N@Z	00a04110	00ab6e40
+?SetAsJoystickPosition2@CInputEvent@@QAEXABVC2DVector@@N@Z	00a04060	00ab6e40
+?SetAsJoystickPosition@CInputEvent@@QAEXABVC2DVector@@N@Z	00a04030	00ab6e40
+?UpdateMaintainedEventPositions@CJoystick@@IAEXXZ	009e42e0	00ab6e40
+?CopyFromMemory@CSurface@@QAEXPBVC2DBoxI@@PBX0ABVCPixelFormat@@JK@Z	009f4390	00ab8e10
+?GetBestCompressedAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z	009be870	00ab8e10
+?Read@CGlyph@@QAEXAAVCDataInputStream@@@Z	00ab96b0	00ab8e10

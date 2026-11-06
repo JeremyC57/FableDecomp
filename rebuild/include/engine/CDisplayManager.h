@@ -42,6 +42,19 @@ public:
  // Nested opt-in (asm round 2b): Ego_r.pdb 0x00B23C90 / FableWin.pdb 0x0301F590 ?SetViewport@CDisplayManager@@QAEXABVC2DBoxI@@@Z.
  void SetViewport(const C2DBoxI& viewport);                             // 0x009BEF80
 #endif
+ #ifdef FABLE_RETAIL_CDISPLAYMANAGER_TEXTUREFORMATS
+ // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb / FableWin.pdb
+ // ?GetBestCompressedAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z (landed 0x009BE870 under this spelling).
+ bool GetBestCompressedAlphaTextureFormat(unsigned long bitDepth, class CPixelFormat& format);   // 0x009BE870
+ #endif
+ #ifdef FABLE_RETAIL_CDISPLAYMANAGER_BACKSCREEN
+ // Retail opt-in (chunk 792, row 0x00B5A3F0 CEngineScreenEffectColourFilter::ApplyColourFilter): Ego_r.pdb / FableWin.pdb
+ // ?CopyBackBufferToTexture@CDisplayManager@@QAEAAVCTexture@@XZ (landed 0x009BF5E0; the caller keeps the reference and later
+ // passes its address to AttachTextureToStage) and ?SetRenderTargetAsBackScreen@CDisplayManager@@QAE_NXZ (landed 0x009BF220;
+ // result dropped). Declarations only.
+ CTexture& CopyBackBufferToTexture();                                   // 0x009BF5E0
+ bool SetRenderTargetAsBackScreen();                                    // 0x009BF220
+ #endif
  const C2DExtentsI GetRenderTargetDimensions();                         // 0x009BEDC0 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ
  void AddDeviceResetCallback(CDeviceResetCallback* callback);          // 0x009C0190 ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z (CEngine::Initialise)
  unsigned long GetVertexShaderVersion() const;                         // 0x009BEDE0 ?GetVertexShaderVersion@CDisplayManager@@QBEKXZ (Ego_r 0x00B23A60, FableWin)

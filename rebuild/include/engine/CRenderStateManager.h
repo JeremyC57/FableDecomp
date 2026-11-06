@@ -228,6 +228,21 @@ public:
     void SetTextureCoordWrapUVW(long,bool,bool,bool);
     void SetTextureBorderColour(long,unsigned long);
     void SetTextureBumpEnvMatrix(long,float,float,float,float);
+#ifdef FABLE_RETAIL_CRENDERSTATEMANAGER_STENCIL_INLINE
+    // Retail opt-in (chunk 792, rows 0x00B5A3F0 CEngineScreenEffectColourFilter::ApplyColourFilter / 0x00B5AF80 RenderColorFilteredQuad):
+    // ?SetStencilEnable@CRenderStateManager@@QAEX_N@Z, ?SetStencilFunc@CRenderStateManager@@QAEXW4STENCIL_FUNC@@@Z,
+    // ?SetStencilRef@CRenderStateManager@@QAEXK@Z, ?SetStencilMask@CRenderStateManager@@QAEXK@Z (Ego_r.pdb / FableWin.pdb name sets) have
+    // no out-of-line copy in retail Fable.exe: both rows expand them into SetRenderState on StencilEnable +0x370 (0x00B5AB01, value 1),
+    // StencilFunc +0x3C0 (0x00B5AB6D, D3DStencilFuncModeTable 0x01396E18 [STENCIL_FUNC_EQUAL] = D3DCMP_EQUAL), StencilMask +0x3E8
+    // (0x00B5ABDA, immediate 2) and StencilRef +0x3D4 (0x00B5AC46, immediate 0). The default branch keeps the declarations.
+    __forceinline void SetStencilEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.StencilEnable); }
+    __forceinline void SetStencilFunc(STENCIL_FUNC func) { SetRenderState(D3DStencilFuncModeTable[func], DeviceState.StencilFunc); }
+    __forceinline void SetStencilRef(unsigned long ref) { SetRenderState(ref, DeviceState.StencilRef); }
+    __forceinline void SetStencilMask(unsigned long mask) { SetRenderState(mask, DeviceState.StencilMask); }
+    void SetStencilOpFail(STENCIL_OP_MODE);
+    void SetStencilOpZFail(STENCIL_OP_MODE);
+    void SetStencilOpPass(STENCIL_OP_MODE);
+#else
     void SetStencilEnable(bool);
     void SetStencilOpFail(STENCIL_OP_MODE);
     void SetStencilOpZFail(STENCIL_OP_MODE);
@@ -235,6 +250,7 @@ public:
     void SetStencilFunc(STENCIL_FUNC);
     void SetStencilRef(unsigned long);
     void SetStencilMask(unsigned long);
+#endif
     void SetStencilWriteMask(unsigned long);
     void SetDepthOffset(float);
     void SetSlopeScaledDepthOffset(float);
@@ -263,7 +279,7 @@ private:
     static unsigned long D3DAlphaBlendModeTable[13];                     // 0x01396F68 {1..13} = D3DBLEND_ZERO .. BOTHINVSRCALPHA
     static unsigned long D3DAlphaFuncModeTable[8];                       // 0x01396DD8 {1..8} = D3DCMP_NEVER .. ALWAYS (723: D3DAlphaTestFuncTable)
     static unsigned long D3DZBufferFuncModeTable[8];                     // 0x01396DF8
-    static unsigned long D3DStencilFuncModeTable[8];
+    static unsigned long D3DStencilFuncModeTable[8];                     // 0x01396E18 {1..8} = D3DCMP_NEVER .. ALWAYS (chunk 792)
     static unsigned long D3DVertexBlendModeTable[4];
     static unsigned long D3DShadowFuncModeTable[8];
     static unsigned long D3DTextureTransformModeTable[10];               // 0x01396FCC {0..4, 0x100..0x104} = D3DTTFF_DISABLE .. COUNT4|PROJECTED

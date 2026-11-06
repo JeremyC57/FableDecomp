@@ -18,7 +18,32 @@ struct IDirectInputDevice8W;
 // and the DirectInput 8 device interface's IUnknown + IDirectInputDevice8W slots up to Unacquire (dinput.h order; __stdcall COM).
 // Same retail offsets as the default path (+0xd18 .. +0xd40, sizeof 0xd44).
 #define FABLE_RETAIL_CJOYSTICK
+#ifdef FABLE_RETAIL_CJOYSTICKDX_UPDATEEVENTS
+#define FABLE_RETAIL_CJOYSTICK_VIRTUALS
+#define FABLE_RETAIL_CSYSTEMMANAGER_FOCUS
+#ifndef FABLE_RETAIL_CSYSTEMMANAGER
+#define FABLE_RETAIL_CSYSTEMMANAGER
+#endif
+#include "engine/CSystemManager.h"
+#endif
 #include "engine/CJoystick.h"
+#ifdef FABLE_RETAIL_CJOYSTICKDX_UPDATEEVENTS
+// Retail opt-in (chunk 792, row 0x00AB6E40 CJoystickDX::UpdateEvents): DirectInput 8's buffered-data record (dinput.h
+// DIDEVICEOBJECTDATA for DIRECTINPUT_VERSION >= 0x0700, 0x14 bytes: retail passes `push 14h` as cbObjectData and reads
+// dwOfs/dwData/dwTimeStamp at +0/+4/+8 of the stack record) and the joystick offsets UpdateEvents switches on (dinput.h DIJOFS_*).
+struct DIDEVICEOBJECTDATA {
+    unsigned long dwOfs;                                     // +0x00
+    unsigned long dwData;                                    // +0x04
+    unsigned long dwTimeStamp;                               // +0x08
+    unsigned long dwSequence;                                // +0x0c
+    unsigned long uAppData;                                  // +0x10 (UINT_PTR)
+};
+enum {
+    DIJOFS_X = 0x00, DIJOFS_Y = 0x04, DIJOFS_Z = 0x08, DIJOFS_RX = 0x0c, DIJOFS_RY = 0x10, DIJOFS_RZ = 0x14,
+    DIJOFS_BUTTON0 = 0x30
+};
+#define DIJOFS_BUTTON(n) (DIJOFS_BUTTON0 + (n))
+#endif
 struct IDirectInputDevice8W {
     virtual long __stdcall QueryInterface(const struct _GUID& riid, void** object);   // slot 0
     virtual unsigned long __stdcall AddRef();                                       // slot 1
@@ -29,11 +54,49 @@ struct IDirectInputDevice8W {
     virtual long __stdcall SetProperty(const struct _GUID& property, const struct DIPROPHEADER* header);   // slot 6
     virtual long __stdcall Acquire();                                               // slot 7 (+0x1c)
     virtual long __stdcall Unacquire();                                             // slot 8 (+0x20)
+#ifdef FABLE_RETAIL_CJOYSTICKDX_UPDATEEVENTS
+    // Retail opt-in (chunk 792): the rest of the dinput.h IDirectInputDevice8W order up to Poll (UpdateEvents calls +0x28
+    // GetDeviceData and +0x64 Poll).
+    virtual long __stdcall GetDeviceState(unsigned long size, void* data);         // slot 9
+    virtual long __stdcall GetDeviceData(unsigned long objectDataSize, DIDEVICEOBJECTDATA* data,
+                                         unsigned long* inOut, unsigned long flags);   // slot 10 (+0x28)
+    virtual long __stdcall SetDataFormat(const struct DIDATAFORMAT* format);        // slot 11
+    virtual long __stdcall SetEventNotification(void* event);                       // slot 12
+    virtual long __stdcall SetCooperativeLevel(struct HWND__* window, unsigned long flags);   // slot 13
+    virtual long __stdcall GetObjectInfo(struct DIDEVICEOBJECTINSTANCEW* info, unsigned long object, unsigned long how);   // slot 14
+    virtual long __stdcall GetDeviceInfo(struct DIDEVICEINSTANCEW* info);           // slot 15
+    virtual long __stdcall RunControlPanel(struct HWND__* owner, unsigned long flags);   // slot 16
+    virtual long __stdcall Initialize(struct HINSTANCE__* instance, unsigned long version, const struct _GUID& guid);   // slot 17
+    virtual long __stdcall CreateEffect(const struct _GUID& guid, const struct DIEFFECT* effect, struct IDirectInputEffect** out, void* outer);   // slot 18
+    virtual long __stdcall EnumEffects(void* callback, void* ref, unsigned long type);   // slot 19
+    virtual long __stdcall GetEffectInfo(struct DIEFFECTINFOW* info, const struct _GUID& guid);   // slot 20
+    virtual long __stdcall GetForceFeedbackState(unsigned long* out);               // slot 21
+    virtual long __stdcall SendForceFeedbackCommand(unsigned long flags);           // slot 22
+    virtual long __stdcall EnumCreatedEffectObjects(void* callback, void* ref, unsigned long flags);   // slot 23
+    virtual long __stdcall Escape(struct DIEFFESCAPE* escape);                      // slot 24
+    virtual long __stdcall Poll();                                                  // slot 25 (+0x64)
+#endif
 };
 #pragma pack(push, 1)
 class CJoystickDX : public CJoystick {
 public:
     virtual ~CJoystickDX();                                  // 0x00AB6A90
+#ifdef FABLE_RETAIL_CJOYSTICKDX_UPDATEEVENTS
+    // Retail opt-in (chunk 792): Ego_r.pdb ?SetHasInputFocus@CJoystickDX@@UAEX_N@Z (slot 16, 0x00AB6D10), the protected
+    // ?UpdateAcquired@CJoystickDX@@IAEXXZ (out of line at 0x00AB6D60 and expanded in place inside UpdateEvents, so defined
+    // here with the landed row's body) and ?UpdateEvents@CJoystickDX@@IAE_NXZ.
+    virtual void SetHasInputFocus(bool focus);               // slot 16 0x00AB6D10
+protected:
+    void UpdateAcquired()                                    // 0x00AB6D60
+    {
+        if (GFGetSystemManager()->IsApplicationActive() && GFGetSystemManager()->HasInputFocus())
+            SetHasInputFocus(true);
+        else
+            SetHasInputFocus(false);
+    }
+    bool UpdateEvents();                                     // 0x00AB6E40
+public:
+#endif
     float                 XAxis;                             // +0xd18
     float                 YAxis;                             // +0xd1c
     float                 XAxis2;                            // +0xd20

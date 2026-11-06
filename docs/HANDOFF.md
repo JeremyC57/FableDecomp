@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-791 landed; chunk 792 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-792 landed; chunk 793 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -26,15 +26,15 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
     6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
     wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
-  - **Running (the user: "continue authoring chunks on another agent"):** chunk 792 (`$S/w22/agent792`: the CStaticFontBank
-    ctor 0x00AB8E10, CStreamingFontBank::Render, the CEngineScreenEffectColourFilter RenderColorFilteredQuad / ApplyColourFilter
-    pair, CJoystickDX::UpdateEvents, CActionTalkBase::SetUpCamera; 2.2-3.7 KB). Land it like 782-791 (`landing_s`,
-    `pending/2026-11-05_linux_hand792`, labels `2026-11-05s` incl. the landed rows' own labels, queue tag `land0511s`). Pool: the
-    groups ledger (`pending/2026-11-03_groups/ROWS.tsv`) still has about 194 unworked rows (the earlier "about
+  - **Running (the user: "continue authoring chunks on another agent"):** chunk 793 (`$S/w22/agent793`: CSphere / CCylinder::
+    GetFirstIntersectionWithTriangle, C3DBoundingBox::InitialiseFromOBB, CEnginePrimitiveManagerLines::RenderLine, and
+    CStreamingFontBank::Render + CActionTalkBase::SetUpCamera carried over unattempted from 792). Land it like 782-792 (`landing_t`,
+    `pending/2026-11-05_linux_hand793`, labels `2026-11-05t` incl. the landed rows' own labels, queue tag `land0511t`). Pool: the
+    groups ledger (`pending/2026-11-03_groups/ROWS.tsv`) still has about 186 unworked rows (the earlier "about
     40" counted only rows with no remaining callees). Take rows that are 16-byte aligned (an odd start such as 0x00651273 is a
-    mid-function entry) and check each extent for a second function after its tables. The parked 782-791 rows are the other pool.
-  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`). The
-    parked rows are in `pending/2026-11-05_linux_hand782..791/`.
+    mid-function entry) and check each extent for a second function after its tables. The parked 782-792 rows are the other pool.
+  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`). The
+    parked rows are in `pending/2026-11-05_linux_hand782..792/`.
   - A container restart stopped chunk 784 once; the scratch survived, and the agent was resumed from its transcript.
   - Open naming decision: 0x0122DEDC (the shared 0.0f, 30+ spellings, no PDB name), like EPSILON / TWO_PI on 2026-11-01.
   - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.

@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00ab6e40   WARN RELOC_NAME: ?EmptyEventStore@CJoystick@@IAEXXZ -> 009e41d0 labelled '_global::SetMemberConst_009e41d0'
+00ab6e40   WARN RELOC_NAME: ?HasInputFocus@CSystemManager@@QAE_NXZ -> 009a4fb0 labelled 'CSystemManager::IsApplicationInputFocus'
+00ab6e40   WARN RELOC_NAME: ?SetAsJoystickButtonPressed@CInputEvent@@QAEXJMABVC2DVector@@N@Z -> 00a04090 labelled 'CInputEvent::SetAsJoystickButton1'
+00ab6e40   WARN RELOC_NAME: ?SetAsJoystickButtonReleased@CInputEvent@@QAEXJMABVC2DVector@@N@Z -> 00a04110 labelled 'CInputEvent::SetAsJoystickButton3'
+00ab6e40   RELOCATION_MATCH PASS   UpdateEvents
+00ab8e10   RELOCATION_MATCH PASS   CStaticFontBank
+
+WINS: 2
+  00ab6e40 RELOCATION_MATCH CJoystickDX::?UpdateEvents@CJoystickDX@@IAE_NXZ
+  00ab8e10 RELOCATION_MATCH CStaticFontBank::??0CStaticFontBank@@QAE@PAVCFontDataBank@@K@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CJoystickDX_UpdateEvents_00ab6e40
+  CStaticFontBank_CStaticFontBank_00ab8e10

@@ -18,7 +18,45 @@ public:
     // Retail opt-in (chunk 770, row 0x00AB6A90 ~CJoystickDX): the polymorphic retail class (RTTI .?AVCJoystick@@, no base; vtable
     // 0x0129C0EC). Only the virtual destructor is declared (slot 9 in retail, Ego_r.pdb ??1CJoystick@@UAE@XZ, retail 0x009E4420);
     // the vptr takes the +0x00 word of the default path, so every offset below is unchanged.
+#ifdef FABLE_RETAIL_CJOYSTICK_VIRTUALS
+    // Retail opt-in (chunk 792, row 0x00AB6E40 CJoystickDX::UpdateEvents): the whole retail vtable (CJoystick 0x0129C0EC and
+    // CJoystickDX 0x0129EA7C both hold 19 slots; the dword after CJoystickDX's slot 18 is the float 0x37800000 at 0x0129EAC8),
+    // in slot order, with the Ego_r.pdb / FableWin.pdb spellings. Slots 3..6, 13, 14, 17, 18 are _purecall (0x00BFEA08) in
+    // CJoystick. Declarations only: no layout change (the vptr is the same +0x00 word).
+protected:
+    virtual bool EventScanStart(class CInputEventScanInfo* info, class CInputEvent* event) const;   // slot 0  0x009E4230
+    virtual bool EventScanNext(class CInputEventScanInfo* info, class CInputEvent* event) const;    // slot 1  0x009E4280
+    virtual void EventScanEnd(class CInputEventScanInfo* info) const;                               // slot 2  0x009E41C0
+    virtual float GetXAxis() = 0;                                                                   // slot 3  (DX 0x00AB6AD0)
+    virtual float GetYAxis() = 0;                                                                   // slot 4  (DX 0x00AB6AE0)
+    virtual float GetXAxis2() = 0;                                                                  // slot 5  (DX 0x00AB6AF0)
+    virtual float GetYAxis2() = 0;                                                                  // slot 6  (DX 0x00AB6B00)
+public:
+    class CInitRumble;
+    class CActiveRumble;
+    virtual void SetAxes(const class C2DVector& axes) = 0;                                          // slot 7  (DX 0x00AB78E0)
+    virtual long GetJoystickDeviceNumber() const = 0;                                               // slot 8  (DX 0x00AB7900)
+#endif
     virtual ~CJoystick();                                    // 0x009E4420
+#ifdef FABLE_RETAIL_CJOYSTICK_VIRTUALS
+    virtual void Update();                                                                          // slot 10 0x009E41B0
+    virtual void Clear();                                                                           // slot 11 0x009E4930
+    virtual bool SetExclusiveMode(bool exclusive);                                                  // slot 12 0x009E41A0
+    virtual CActiveRumble* GetRumbleWithID(long id) = 0;                                            // slot 13 (DX 0x00AB7910)
+    virtual const CActiveRumble* PeekRumbleWithID(long id) const = 0;                               // slot 14 (DX 0x00AB7920)
+    virtual void UpdateInsertionsAndRemovals(unsigned long inserted, unsigned long removed);       // slot 15 0x009E4940
+    virtual void SetHasInputFocus(bool focus);                                                      // slot 16 0x009E4950
+    virtual void AddRumble(long id, const CInitRumble& rumble, bool replace) = 0;                   // slot 17 (DX 0x00AB7930)
+    virtual void ClearAllRumbles() = 0;                                                             // slot 18 (DX 0x00AB7940)
+protected:
+    // Non-virtual protected members (Ego_r.pdb IAE spellings; retail addresses from the landed rows).
+    void EmptyEventStore();                                         // 0x009E41D0 ?EmptyEventStore@CJoystick@@IAEXXZ
+    bool AddEventToStore(const class CInputEvent* event);           // 0x009E41E0 ?AddEventToStore@CJoystick@@IAE_NPBVCInputEvent@@@Z
+    void UpdateMaintainedEventPositions();                          // 0x009E42E0 ?UpdateMaintainedEventPositions@CJoystick@@IAEXXZ
+    void AddMaintainedEventsToEventStore();                         // 0x009E4360 ?AddMaintainedEventsToEventStore@CJoystick@@IAEXXZ
+    void ProcessMaintainedEvents(const class CInputEvent* event);   // 0x009E4470 ?ProcessMaintainedEvents@CJoystick@@IAEXPBVCInputEvent@@@Z
+public:
+#endif
 #else
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
 #endif

@@ -71,6 +71,13 @@ public:
     void DrawAsIndexedTris(const CTexture** textures, unsigned long textureCount, const void* vertices, long stride,
                            long vertexCount, void* indices, long triangleCount);   // 0x00A0AEA0
 #endif
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASINDEXEDTRIS_USER
+    // Retail opt-in (chunk 792, rows 0x00B5A3F0 / 0x00B5AF80, the colour filter's full-screen quad): the texture-less overload
+    // ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z (Ego_r.pdb / FableWin.pdb name sets) = retail 0x00A0AF40 (landed: 5 arguments,
+    // `ret 14h`, RealiseRenderState then DrawIndexedPrimitiveUP with D3DFMT_INDEX16): user vertices + stride + count, 16-bit index
+    // list, triangle count. Declaration only.
+    void DrawAsIndexedTris(const void* vertices, long stride, long vertexCount, void* indices, long triangleCount);   // 0x00A0AF40
+#endif
     bool IsRendering();
     void SetVWindow(const C2DBoxF&);                                     // 0x00A0B560 ?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z
     // ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z: inline in the original header, with the out-of-line COMDAT copy

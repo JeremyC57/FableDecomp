@@ -27,6 +27,15 @@ public:
     // PD3DTexture and the +4 bitfield word in place) and Initialise (called out of line by 0x009A3640).
     CTexture() : PD3DTexture(0), ByteLength(0), AllocationSource(0) { }
     bool Initialise(const C2DExtentsI&,long,const CPixelFormat&,unsigned long,ESurfacePool,bool,bool);
+#ifdef FABLE_RETAIL_CTEXTURE_SIZED
+    // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb
+    // ??0CTexture@@QAE@ABVC2DExtentsI@@JABVCPixelFormat@@KW4ESurfacePool@@@Z, inline in retail (0x00AB95A2: the +4 word's top
+    // four bits cleared, PD3DTexture zeroed, then Initialise 0x009FA280 with the two bools pushed as 0), and
+    // ?GetSurfaceLevel@CTexture@@QBE?AVCSurface@@J@Z (0x009F9E00, hidden result).
+    CTexture(const C2DExtentsI& size, long levels, const CPixelFormat& format, unsigned long usage, ESurfacePool pool)
+        : PD3DTexture(0), AllocationSource(0) { Initialise(size, levels, format, usage, pool, false, false); }
+    class CSurface GetSurfaceLevel(long level) const;                    // 0x009F9E00
+#endif
     CTexture(const CTexture& other);                                     // 0x009F9D00 ??0CTexture@@QAE@ABV0@@Z
     ~CTexture() { Uninitialise(); }                                      // inline (Ego_r lists no ??1CTexture)
     // 0x009FA1C0: Ego_r.pdb ??4CTexture@@QAEABV0@ABV0@@Z returns a const reference (2026-11-03 landing b; was spelled

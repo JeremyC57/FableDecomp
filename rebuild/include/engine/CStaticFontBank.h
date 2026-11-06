@@ -18,8 +18,36 @@
 #include "engine/CFontBank.h"
 #include "engine/C2DExtentsI.h"
 class CTexture;
+#ifdef FABLE_RETAIL_CSTATICFONTBANK_CTOR
+// Nested opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb ??0CStaticFontBank@@QAE@PAVCFontDataBank@@K@Z
+// and the glyph types it fills. CGlyph (Ego_r.pdb class, 0x18 bytes: Left/Top/Right/Bottom floats, Offset/Width/Advance shorts)
+// with ?Read@CGlyph@@QAEXAAVCDataInputStream@@@Z (retail 0x00AB96B0: called once per glyph with a 0x18 stride and the stream's
+// address); GlyphBank (Ego_r.pdb, 8 bytes: FirstGlyph, NoGlyphs, CGlyph* Glyphs) types the GlyphBanks block (same offset and size).
+class CDataInputStream;
+class CFontDataBank;
+class CGlyph {
+public:
+    float Left;                                                          // +0x00
+    float Top;                                                           // +0x04
+    float Right;                                                         // +0x08
+    float Bottom;                                                        // +0x0c
+    short Offset;                                                        // +0x10
+    short Width;                                                         // +0x12
+    short Advance;                                                       // +0x14
+    void Read(CDataInputStream& stream);                                 // 0x00AB96B0
+};
+FABLE_STATIC_ASSERT(sizeof(CGlyph) == 0x18);
+struct GlyphBank {
+    unsigned short FirstGlyph;                                           // +0x00
+    unsigned short NoGlyphs;                                             // +0x02
+    CGlyph*        Glyphs;                                               // +0x04
+};
+#endif
 class CStaticFontBank : public CFontBank {                               // vtable 0x0129EAD4
 public:
+#ifdef FABLE_RETAIL_CSTATICFONTBANK_CTOR
+    CStaticFontBank(CFontDataBank* bank, unsigned long index);           // 0x00AB8E10
+#endif
     virtual ~CStaticFontBank();                                          // slot 0 (??_G 0x00AB9990, ??1 0x00AB7A70)
     virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const;   // slot 1 0x00AB7B00
     virtual float GetFontMaxHeight() const;                              // slot 2 0x00AB7A50
@@ -33,7 +61,11 @@ protected:
     long          MinChar;                                               // +0x24
     long          MaxChar;                                               // +0x28
     long          TotalNoGlyphs;                                         // +0x2c
+#ifdef FABLE_RETAIL_CSTATICFONTBANK_CTOR
+    GlyphBank     GlyphBanks[1024];                                      // +0x30
+#else
     unsigned char GlyphBanks[0x2000];                                    // +0x30 GlyphBank[1024] (8 bytes: FirstGlyph, NoGlyphs, CGlyph* Glyphs)
+#endif
     CTexture*     PTexture;                                              // +0x2030
 };
 FABLE_STATIC_ASSERT(sizeof(CStaticFontBank) == 0x2034);

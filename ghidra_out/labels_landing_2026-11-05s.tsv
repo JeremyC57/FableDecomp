@@ -1,0 +1,10 @@
+address	name	evidence
+00ab6e40	CJoystickDX::UpdateEvents	landing 2026-11-05s (chunk 792): landed row (RELOCATION_MATCH); ?UpdateEvents@CJoystickDX@@IAE_NXZ; vtable 0x0129EA7C owner, DJoystick +0xD38 Poll/GetDeviceData loop
+00ab8e10	CStaticFontBank::CStaticFontBank	landing 2026-11-05s (chunk 792): landed row (RELOCATION_MATCH); ??0CStaticFontBank@@QAE@PAVCFontDataBank@@K@Z; vtable 0x0129EAD4 stored
+00b5a3f0	CEngineScreenEffectColourFilter::ApplyColourFilter	landing 2026-11-05s (chunk 792): parked row; ?ApplyColourFilter@CEngineScreenEffectColourFilter@@AAEXXZ; only caller Render 0x00B5AF60; tail jmp RestoreCaptureBlock 0x00A05840
+00b5af80	CEngineScreenEffectColourFilter::RenderColorFilteredQuad	landing 2026-11-05s (chunk 792): parked row; ?RenderColorFilteredQuad@CEngineScreenEffectColourFilter@@QAEXMMABVC4DVector@@MMPAVCTexture@@@Z; caller 0x00B25C5C; function ends 0x00B5BAB1
+009a25d0	CStreamingFontBank::Render	landing 2026-11-05s (chunk 792): parked row; vtable 0x0129AB54 slot 5; ?Render@CStreamingFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z
+00715a70	NTCScriptedControl::CActionTalkBase::SetUpCamera	landing 2026-11-05s (chunk 792): parked row (catalog name); calls CActionTalkBase::GetCameraSetupPositions 0x00712340 and CGameCameraManager::SetGameScriptedCameraMode 0x00697B70
+009f4390	CSurface::CopyFromMemory	landing 2026-11-05s (chunk 792): ?CopyFromMemory@CSurface@@QAEXPBVC2DBoxI@@PBX0ABVCPixelFormat@@JK@Z (Ego_r.pdb): six arguments at 0x00AB963C/43 (dest box, pixels, source box, source format, pitch = width*4, colour key -1); the four-argument overload does not fit
+009a23e0	?A0x::GFUpdateFontTextureCache	landing 2026-11-05s (chunk 792): FableWin.pdb ?GFUpdateFontTextureCache@?A0xfe46a155@@YIXXZ (anonymous namespace, __fastcall, no arguments): Render calls it with no register setup when the dirty byte 0x013C5A70 is set; the body locks the cache texture 0x013C5A80 (GFontTextureCache, dynamic initializer/atexit pair) and copies dirty glyph cells
+009a1140	CStreamingFontBank::GlyphLookup	landing 2026-11-05s (chunk 792): ?GlyphLookup@CStreamingFontBank@@IBEPAUCStreamingGlyphLookup@@G@Z; see NAME_FIXES.tsv

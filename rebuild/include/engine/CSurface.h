@@ -6,8 +6,18 @@ struct IDirect3DSurface9;
 class CSurface {
 public:
  CSurface() :PD3DSurface(0),AllocationSource(0) {}
+#ifdef FABLE_RETAIL_CSURFACE_COPYFROMMEMORY
+ // Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): the destructor is inline in retail (the
+ // GetSurfaceLevel temporary is destroyed in place: vtable 0x0122F84C stored, then ?Uninitialise@CSurface@@QAEXXZ 0x009F2E20
+ // called; no out-of-line ??1CSurface is bound) and Ego_r.pdb ?CopyFromMemory@CSurface@@QAEXPBVC2DBoxI@@PBX0ABVCPixelFormat@@JK@Z
+ // (0x009F4390, six arguments: destination box, source pixels, source box, source format, source pitch, colour key).
+ virtual ~CSurface() { Uninitialise(); }
+ void CopyFromMemory(const class C2DBoxI* destRect, const void* source, const class C2DBoxI* sourceRect,
+                     const class CPixelFormat& sourceFormat, long sourcePitch, unsigned long colourKey);   // 0x009F4390
+#else
  virtual ~CSurface();
- void Uninitialise();
+#endif
+ void Uninitialise();                                     // 0x009F2E20
 #ifdef FABLE_RETAIL_CSURFACE_PIXELFORMAT
  // chunk 751 (row 0x009BEE40): Ego_r.pdb ?GetPixelFormat@CSurface@@QBE?AVCPixelFormat@@XZ (0x009F2F60, by value through the hidden
  // pointer). Needs CPixelFormat complete (engine/CPixelFormat.h) before the include.

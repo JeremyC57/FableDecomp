@@ -22,7 +22,15 @@
 class C3DVector; class CRGBColour; class CTexture; class CFontManager;
 float __fastcall GFAXToVX(float x);                                      // 0x009E1DA0
 float __fastcall GFAYToVY(float y);                                      // 0x009E1DD0
+#ifdef FABLE_RETAIL_CFONTBANK_BASE
+// Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): the RTTI base CBaseClassNonCopyable (no
+// members, vptr at +0): the constructor's first call is ??0CBaseClassNonCopyable@@IAE@XZ 0x0099A2F0, then the CFontBank
+// vtable 0x0129AB38 store and CCharString() 0x0099E4B0 on Name +0x08. Same offsets as the plain branch.
+#include "engine/CBaseClassNonCopyable.h"
+class CFontBank : public CBaseClassNonCopyable {
+#else
 class CFontBank {
+#endif
 public:
     virtual ~CFontBank();                                                // slot 0 (??_G 0x009A0B30)
     virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const = 0;   // slot 1

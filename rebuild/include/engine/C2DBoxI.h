@@ -9,6 +9,12 @@ class C2DBoxI { public: long TLX,TLY,BRX,BRY; C2DBoxI() {}
 // Original Ego_r TPI0xb186; centre/radius arithmetic is native0074a685 onward.
 C2DBoxI(const C2DCoordI& p,long radius){long x=p.X;long y=p.Y;Initialise(x-radius,y-radius,x+radius,y+radius);}
 void Initialise(long tlx,long tly,long brx,long bry){TLX=tlx;TLY=tly;BRX=brx;BRY=bry;}
+#ifdef FABLE_RETAIL_C2DBOXI_CTORS
+// Retail opt-in (chunk 792, row 0x00AB8E10 CStaticFontBank::CStaticFontBank): Ego_r.pdb ??0C2DBoxI@@QAE@JJJJ@Z and
+// ??0C2DBoxI@@QAE@ABVC2DCoordI@@ABVC2DExtentsI@@@Z, inline (no out-of-line copy bound in Fable.exe).
+C2DBoxI(long tlx,long tly,long brx,long bry){Initialise(tlx,tly,brx,bry);}
+C2DBoxI(const C2DCoordI& tl,const C2DExtentsI& extents){Initialise(tl.X,tl.Y,tl.X+extents.X,tl.Y+extents.Y);}
+#endif
 #ifdef FABLE_RETAIL_C2DBOXI
 // Header wave 2026-11-03 (row 0x00821010 reads the brush corners): Ego_r.pdb ?GetTLPos@C2DBoxI@@QBE?AVC2DCoordI@@XZ and
 // ?GetBRPos@C2DBoxI@@QBE?AVC2DCoordI@@XZ, inline (no out-of-line copy in Fable.exe).

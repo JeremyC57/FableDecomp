@@ -18,6 +18,11 @@ class CEngineCamera : public CEngineComponent {
 public:
     CEngineCamera(bool);                       // 0x00B31700 ??0CEngineCamera@@QAE@_N@Z
     virtual unsigned long PeekSceneFilterFlags() const;
+#ifdef FABLE_RETAIL_CENGINECAMERA_REFRESHD3DTRANSFORMS
+    // Retail opt-in (chunk 792, row 0x00B5A3F0 CEngineScreenEffectColourFilter::ApplyColourFilter): Ego_r.pdb / FableWin.pdb
+    // ?RefreshD3DTransforms@CEngineCamera@@QAEXXZ (landed 0x00B2FC50), called on the camera component pointer 0x01436EA0. Declaration only.
+    void RefreshD3DTransforms();                                         // 0x00B2FC50
+#endif
 #ifdef FABLE_RETAIL_CENGINECAMERA_NOSCALEVIEWTRANSFORM
     // Chunk 764 (row 0x00B451D0 CEngineLightingManager::CalculateFogTransformMatrix): Ego_r.pdb NoScaleViewTransform (CMatrix3x4) at +0x114,
     // read in place by retail (fmul [eax+114h] .. [eax+140h] off the camera pointer 0x01436EA0). No size change.

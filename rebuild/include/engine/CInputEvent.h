@@ -7,7 +7,7 @@
 // retail 0x00A03B30 `ret`, 0x00A03B40, 0x00A03B70, 0x00A04410): the constructor and the empty destructor are out of line.
 // The enum types' enumerator names are not in the repo's PDB extracts: declared without enumerators (landed convention).
 #include "rebuild_abi.h"
-#ifdef FABLE_RETAIL_CINPUTEVENT_ACCESSORS
+#if defined(FABLE_RETAIL_CINPUTEVENT_ACCESSORS) || defined(FABLE_RETAIL_CINPUTEVENT_JOYSTICK_SETTERS)
 class C2DVector;
 #endif
 enum EInputKey { };
@@ -35,6 +35,18 @@ public:
     long GetDeviceNumber() const;                                        // 0x00A03B60
     long GetJoystickButton() const;                                      // 0x00A03B90
     C2DVector GetJoystickPosition() const;                               // 0x00A043A0
+#endif
+#ifdef FABLE_RETAIL_CINPUTEVENT_JOYSTICK_SETTERS
+    // Retail opt-in (chunk 792, row 0x00AB6E40 CJoystickDX::UpdateEvents): the joystick setters, declarations only (no layout
+    // change). Ego_r.pdb / FableWin.pdb spellings; retail addresses from the event type each one stores (+0x28: 17 position,
+    // 18 position 2, 19 pressed, 20 held, 21 released; Held 0x00A040D0 is already bound under its PDB name) and from UpdateEvents,
+    // which builds the primary-stick event (XAxis/YAxis) with 0x00A04030 and the second-stick event (XAxis2/YAxis2) with 0x00A04060.
+    // UpdateEvents pushes (button, 0 pressure, &position, double time): the PDB parameter order (J M ABVC2DVector N).
+    void SetAsJoystickButtonPressed(long button, float pressure, const C2DVector& position, double time);    // 0x00A04090
+    void SetAsJoystickButtonHeld(long button, float pressure, const C2DVector& position, double time);       // 0x00A040D0
+    void SetAsJoystickButtonReleased(long button, float pressure, const C2DVector& position, double time);   // 0x00A04110
+    void SetAsJoystickPosition(const C2DVector& position, double time);                                     // 0x00A04030
+    void SetAsJoystickPosition2(const C2DVector& position, double time);                                    // 0x00A04060
 #endif
     UInputEventData  Data;                                               // +0x00
     EInputDeviceType DeviceType;                                         // +0x20

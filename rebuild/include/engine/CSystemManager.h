@@ -63,6 +63,13 @@ public:CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
 // inline in retail (~CText 0x0054F6E0 reads PFontManager +0x84 in place).
  CFontManager* GetFontManager(){return PFontManager.Get();}
 #endif
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER_FOCUS
+// Retail opt-in (chunk 792, row 0x00AB6E40 CJoystickDX::UpdateEvents, which expands UpdateAcquired 0x00AB6D60 in place):
+// Ego_r.pdb ?IsApplicationActive@CSystemManager@@QAE_NXZ (0x009A57B0) and ?HasInputFocus@CSystemManager@@QAE_NXZ (0x009A4FB0),
+// both out of line in retail (reloc_bindings: one binding each).
+ bool IsApplicationActive();
+ bool HasInputFocus();
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CSystemManager)==0x180);
 CSystemManager* __fastcall GFGetSystemManager();

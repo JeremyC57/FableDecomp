@@ -18505,7 +18505,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007156b0	CTCScriptedControl	CTCScriptedControl	__thiscall	undefined	2	CTCRegionDisplay *,CThing *	0	yes	accepted									
 00715710	OnActivate	NTCScriptedControl::CActionFollowCreature	__thiscall	void	1	CActionFollowCreature *	1	yes	accepted									
 007158f0	OnCleanup	NTCScriptedControl::CActionFollowCreature	__thiscall	void	1	CActionFollowCreature *	1	yes	accepted									
-00715a70	SetUpCamera	CActionTalkBase	__thiscall	void	2	CActionTalkBase *,CCameraTag *	1	yes	accepted									
+00715a70	SetUpCamera	NTCScriptedControl::CActionTalkBase	__thiscall	void	2	CActionTalkBase *,CCameraTag *	1	yes	accepted									
 00716790	CActionFireProjectileWeapon	NTCScriptedControl::CActionFireProjectileWeapon	__thiscall	undefined	2	CTCTargeted *,CThing *	0	yes	accepted									
 007167e0	InitialiseDefaultCameraTags	NTCScriptedControl::CActionTalkBase	unknown	undefined	0		0	yes	accepted									
 00716b30	SetUpTextAndSpeech	CActionTalkBase	__thiscall	void	1	CActionTalkBase *	1	yes	accepted									
@@ -33606,8 +33606,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009a1660	UninitializeStreamingFontTextureCache	_global	__fastcall	void	0		1	yes	accepted									
 009a1720	PrepareToRender	CStreamingFontBank	__thiscall	void	2	CStreamingFontBank *,bool	1	yes	accepted									
 009a2000	?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	CStreamingFontBank	__thiscall	bool	3	CStreamingFontBank *,CWideString *,bool	1	yes	accepted									
-009a23e0	GFUpdateFontTextureCache	_global	__fastcall	void	0		1	yes	accepted									
-009a25d0	CStreamingFontBank::Render	CStreamingFontBank	__thiscall	void	7	CStreamingFontBank *,CWideString const &,C3DVector const &,float,CRGBColour const &,ulong,CTexture const *	1	yes	accepted									
+009a23e0	GFUpdateFontTextureCache	?A0x	__fastcall	void	0		1	yes	accepted									
+009a25d0	Render	CStreamingFontBank	__thiscall	void	7	CStreamingFontBank *,CWideString const &,C3DVector const &,float,CRGBColour const &,ulong,CTexture const *	1	yes	accepted									
 009a3460	ReadTextFileIntoArray	_global	__fastcall	ulong	2	CWideString *,CArray<unsigned_short> *	1	yes	accepted									
 009a3640	InitializeStreamingFontTextureCache	`anonymous namespace'	__fastcall	void	1	CStreamingFontDataBank *	1	yes	accepted									
 009a3c20	CStreamingFontBank	CStreamingFontBank	__thiscall	undefined	3	CStreamingFontBank *,CStreamingFontDataBank *,ulong	0	yes	accepted									

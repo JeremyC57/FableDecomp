@@ -384518,6 +384518,21 @@ $catalog = @(
         TestSource = '00/e9/NScriptCVGuildMasterScript_GetGuildMasterSpeech_00e91f20_test.cpp'
         PassPattern = '00e91f20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ab6e40'
+        Module = 'CJoystickDX'
+        Source = '00/ab/CJoystickDX_UpdateEvents_00ab6e40.cpp'
+        TestSource = '00/ab/CJoystickDX_UpdateEvents_00ab6e40_test.cpp'
+        PassPattern = '00ab6e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab8e10'
+        Module = 'CStaticFontBank'
+        Source = '00/ab/CStaticFontBank_CStaticFontBank_00ab8e10.cpp'
+        TestSource = '00/ab/CStaticFontBank_CStaticFontBank_00ab8e10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00ab8e10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

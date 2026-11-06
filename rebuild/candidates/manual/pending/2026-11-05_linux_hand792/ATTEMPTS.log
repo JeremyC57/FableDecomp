@@ -1,0 +1,15 @@
+# chunk 792 attempts log (one line per graded source change)
+00b5a3f0 a1: first full model (capture block + scoped shaders + GFLimit clamps + 4 PS consts + 13 inline setters + PrepareForRender(0)) -> DIFFER(2905v2916) 58 difflines: (Tint*c)*0.5 temporaries folded (retail keeps a temp: R,G,B spilled, A on st; B',A' copied); bookmark test/or flips at block 9 (retail block 7)
+00b5af80 a1: same model with C4DVector tint -> DIFFER(2863v2865 vs cut extent) 33 difflines: x87 keeps A*c (retail keeps R*c, spills G,B,A); test/or flip at block 9 (retail 7)
+00b5af80 v2: temp = tint*c; scale = temp*0.5 -> same 33
+00b5af80 v3: scale = tint*c; scale = scale*0.5 -> same 33
+00b5af80 xA/xB/xD/xG (assign, direct-init, const&, named temp): same 33 -- VC7.1 canonicalises the expression
+00b5af80 xF C4DVector(tint)*c*0.5 -> 84; S1..S6 local Scale helpers (by-ref ctor = same 33; by-value 142; named return 44 (copy pattern, flip moves 1 block earlier); r(v)*= 195)
+00b5af80 T1..T6 (reverse field order, mixed helpers) -> 33..79, none keeps R*c on the x87 stack
+00b5a3f0 P1 tinted local, P5 C4DVector(Tint)*c*.5, P6 assign, P7 CRGBFloatColour local: 55..66
+00b5a3f0 P2 C4DVector scale = C4DVector(Settings.Tint * contrast * 0.5f) -> DIFFER(2923v2916) 23: float block now exact; left: 4th PS const or [mem] scheduling, test/or flip block 8 (retail 7), loop nop
+00b5a3f0 Q1 inverse = C4DVector(1,1,1,1)-grey 31; Q3/Q4 alpha byte/long locals 23; Q5 implicit conversion 23; Q6 grey(GrayRGBWeights)+W 31
+00b5a3f0 R3 explicit if clamps / R4 alpha*=255 / R6 no rm / R7 int i / R8 operand order: all 23, flips nnnnnnnFFFFF (retail nnnnnnFFFFFF)
+00b5a3f0 probes (not candidates): Z1 no float block -> flips from block 2; W3 no contrast clamp -> retail flip pattern; K2 no PrepareForRender -> block 5; K4 no 4th PS const -> retail pattern => the bookmark test/or operand order is a whole-function IR-count effect (header: lane gap)
+00b5a3f0 X1-X3 GFLimitReturn clamps 150-221 (clamp code wrong); Y1-Y9 (GetA, settings copy, CTexture*, 1+c, const grey, forceinline GFLimit, upper<value, early-return GFLimit) 23-53, flip unchanged
+00b5a3f0 D1-D6 declaration order / field-wise inverse / inverse from members / direct-init: 23-359, flip unchanged or later

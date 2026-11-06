@@ -1,0 +1,4 @@
+manifest 00715a70 CActionTalkBase::SetUpCamera -> NTCScriptedControl::CActionTalkBase::SetUpCamera
+manifest 009a23e0 _global::GFUpdateFontTextureCache -> ?A0x::GFUpdateFontTextureCache
+manifest 009a25d0 CStreamingFontBank::CStreamingFontBank::Render -> CStreamingFontBank::Render
+labels 9  catalog renamed 0  manifest renamed 3

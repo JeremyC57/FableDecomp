@@ -2169,3 +2169,13 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-11-06, chunk 791) a template instantiated out of line in the same retail TU (GFWrapLimit<long,int,int> 0x00496EB0) is written as a same-TU `__declspec(noinline)` body: the int temporaries are then seen as uncaptured and share one slot pair (frame 0x98 not 0xA0); a visible plain body gets the first call expanded.
 - (2026-11-06, chunk 791) an event-scan loop is `if (Start()==true) do { if (handled==true) break; ... } while (Next()==true);` -- a for/while condition aligns the loop top and adds an entry jump (0x004963A0).
 - (2026-11-06, chunk 791) font-bank PrepareToRender pair: the inline CRenderStateManager setters through GFGetSystemManager()->GetDisplayManager()->GetRenderManager() match first try once the class is polymorphic (opt-in retail headers); CStaticFontBank adds out-of-line SetVertexFormat.
+- (2026-11-06, chunk 792) An explicit empty `case` keeps its own jump-table entry only if it emits something: VC7.1 folds `case A: case B: break;` into the default (one entry fewer). A store (here `addEvent = false;`) keeps the separate index (0x00AB6E40).
+- (2026-11-06, chunk 792) Retail's single shared "add the event" block after a switch is a flag tested after the switch, not the same call pair in every case (cross-jumping only merges the last few instructions) (0x00AB6E40).
+- (2026-11-06, chunk 792) A `count = 1` store that precedes a local's constructor call means the variable is declared before that local.
+- (2026-11-06, chunk 792) `new T[n]` emits scalar `??2` unless `operator new[]` is declared; retail binds 0x00BFEB22 -> RELOC_IDENTITY otherwise.
+- (2026-11-06, chunk 792) A C2DBoxI whose stores sink between argument pushes is a temporary built in the call (`&C2DBoxI(...)`), not a named local.
+- (2026-11-06, chunk 792) A two-function oracle row (0x00B5AF80: the row runs past `ret` into a 10-byte setter) has to be graded against a cut copy.
+- (2026-11-06, chunk 792) The CRenderStateManager bookmark test/or flip point depends on the whole function's IR (moving statements before or after the setters moves it), so it cannot be fixed locally at the flipping block.
+- (2026-11-06, chunk 792) `C4DVector(tint * contrast * 0.5f)` through CRGBFloatColour's operators gives retail's temporaries for the colour filter.
+- (2026-11-06, chunk 792) Never name a helper script after a stdlib module (`dis.py` in the grading script's directory broke q.py's imports).
+- (2026-11-06, chunk 792) VC7.1's vector<unsigned char>::insert(it, const char*, const char*) picks the (it, n, value) overload: tests must push bytes.
