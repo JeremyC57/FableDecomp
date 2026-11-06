@@ -1,0 +1,17 @@
+addr       parity           behav  name
+007b0cd0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+007b0cd0   WARN SHARED_HEADER_AVAILABLE CJoystick
+007b0cd0   WARN SHARED_HEADER_AVAILABLE CInputManager
+007b0cd0   WARN SHARED_HEADER_AVAILABLE CWorld
+007b0cd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007b0cd0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+007b0cd0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007b0cd0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007b0cd0   WARN SHARED_HEADER_AVAILABLE CTBaseSingletonNoDefaultAlloc
+007b0cd0   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 1
+  007b0cd0 RELOCATION_MATCH CTCFishing::?FrameUpdate@CTCFishing@@UAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCFishing_FrameUpdate_007b0cd0

@@ -1,0 +1,14 @@
+address	Class::Name	evidence
+0x007B0CD0	CTCFishing::FrameUpdate	Ego_r.pdb + FableWin.pdb ?FrameUpdate@CTCFishing@@UAEXXZ; CTCFishing vtable FrameUpdate slot; row RELOCATION_MATCH (chunk 801)
+0x007A7D20	CTCBattleCharge::CreateHitEffect	Ego_r.pdb + FableWin.pdb ?CreateHitEffect@CTCBattleCharge@@AAEXXZ; CTCBattleCharge-only callers in the same TU (the landed 0x007A8BE0 model); row parked DIFFER(2504v2520)
+0x007DB6A0	CTCTavernGameCardBlackjack::CardsMainGame	Ego_r.pdb + FableWin.pdb ?CardsMainGame@CTCTavernGameCardBlackjack@@UAEXXZ; blackjack vtable 0x0126F8F4 CardsMainGame slot; row parked DIFFER(2544v2556)
+0x00833C00	CThingAICreature::DrawPreparePrimitivesForRendering	CThingAICreature vtable 0x0127293C (RTTI) slot 36 holds 0x00833C00 (.rdata 0x012729CC); CThingCreatureBase vtable 0x0125AC0C slot 36 = DrawPreparePrimitivesForRendering 0x00663C40 (landed), which the body calls first with the same argument (0x00833C2B); Ego_r.pdb + FableWin.pdb list ?DrawPreparePrimitivesForRendering@CThingAICreature@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z; row parked DIFFER(2296v2300)
+0x00850A80	CContextSensitiveItemDef::IsValidOverride	Ego_r.pdb + FableWin.pdb ?IsValidOverride@CContextSensitiveItemDef@@QBE_NABVCThing@@JPBVCTCInventory@@@Z; `ret 0Ch` = three args; the item Type switch over the def's members; row parked DIFFER(2684v2576)
+0x00960120	CAIStateGroup_DeedReactionRoot::Update	Ego_r.pdb + FableWin.pdb ?Update@CAIStateGroup_DeedReactionRoot@@UAEXXZ; CAIStateGroupBase vtable slot 12 (Update) of the class's vtable; row parked DIFFER(1576v1600)
+0x0088B7D0	CAIBrain::PeekCurrentStateGroupName	see NAME_FIXES.tsv (PDB name sets + body + caller on PBrain)
+0x0088B7E0	CAIBrain::GetCurrentStateGroupDebugText	see NAME_FIXES.tsv
+0x007DB5C0	CTCTavernGameCardBlackjack::Split	see NAME_FIXES.tsv
+0x006B82E0	CEnvironmentSpellEffectInterpolator::RadialBlurFadeOut	see NAME_FIXES.tsv
+0x00662000	CThingCreatureBase::GetCreatureType	see NAME_FIXES.tsv
+0x007B0950	CTCFishing::FinishFishing	Ego_r.pdb + FableWin.pdb ?FinishFishing@CTCFishing@@IAEX_N@Z (protected, bool arg); called by 0x007B0CD0 on this; catalog already CTCFishing::FinishFishing (signature now exact)
+0x00654D58	CIntelligentPointer<const CThing>::CIntelligentPointer	copy ctor ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z (FableWin.pdb); body = base ctor 0x00A01B10, vptr 0x01237F1C, GetPItem on the source, SetPItem; called out of line by 0x00960120 for a by-value argument (catalog agrees)

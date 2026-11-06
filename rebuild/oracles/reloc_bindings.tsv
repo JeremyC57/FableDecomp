@@ -37245,3 +37245,4 @@ _New_c35b10@8	00c35b10	00c275e0
 ?RunArrivalCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ	00d44cb0	00d3bc60
 ?RunTutorials@CQ_GuildTrainingScript@NScript@@QAEXXZ	00d45dd0	00d3bc60
 ?WatchForSparrowKilled@CQ_GuildTrainingScript@NScript@@QAEXXZ	00d3c840	00d3bc60
+?FinishFishing@CTCFishing@@IAEX_N@Z	007b0950	007b0cd0

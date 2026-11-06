@@ -13,6 +13,12 @@
 class CThingBuilding;
 #endif
 class C3DVector; class CThingAICreatureInit; class CBrainDef;
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_DEBUGRENDER
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CEnginePrimitiveHandle.h"
+class CAIBrain; class CEnginePrimitivePrepareInfo;   // chunk 801
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_MESSAGERANGE
 class CMessageEvent;                                                     // chunk 765
 #endif
@@ -89,7 +95,27 @@ private:
     CIntelligentPointer<CThingAICreature> MotherCreature;                // +0x180
     CIntelligentPointer<CThingAICreature> SpouseCreature;                // +0x188
     CCharString OverridingBrainName;                                     // +0x190
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_DEBUGRENDER
+    // Nested opt-in (chunk 801, row 0x00833C00): Ego_r.pdb / FableWin.pdb
+    // ?DrawPreparePrimitivesForRendering@CThingAICreature@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z (vtable 0x0127293C slot 36, public
+    // virtual; it calls the CThingCreatureBase one 0x00663C40 first) and the Ego_r.pdb members DebugRenderHandles
+    // (list<CEnginePrimitiveHandle>, retail +0x194: `lea edi,[esi+194h]` then clear 0x00834F90), MoodSprite / MoodSpriteCounter
+    // (+0x198 / +0x19C), PCurrentBrainOutput (+0x1A0, opaque) and PBrain (CCountedPointer<CAIBrain>, +0x1A8: `cmp [esi+1A8h],0`
+    // then `mov ecx,[esi+1A8h] ; call 0x0088B7E0`). The offsets agree with the landed ~CThingAICreature 0x008320C0. No size change.
+    // Needs FABLE_RETAIL_STLP_LIST (back()); the includes above bring the list, CCountedPointer and CEnginePrimitiveHandle (whose
+    // retail branch needs FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE).
+public:
+    virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x00833C00
+private:
+    std::list<CEnginePrimitiveHandle> DebugRenderHandles;                // +0x194
+    unsigned long MoodSprite;                                            // +0x198
+    unsigned long MoodSpriteCounter;                                     // +0x19C
+    unsigned char _pad_0x1a0[0x8];                                       // +0x1A0 PCurrentBrainOutput (opaque)
+    CCountedPointer<CAIBrain> PBrain;                                    // +0x1A8
+    unsigned char _pad_0x1b0[0x18];                                      // +0x1B0 WFTimeLastDamaged .. MaxFlyingSpeed (opaque)
+#else
     unsigned char _pad_0x194[0x34];                                      // +0x194 DebugRenderHandles .. MaxFlyingSpeed (opaque)
+#endif
 #else
 private:
     unsigned char _pad_0x160[0x8];                                       // +0x160 RelationshipsInit (opaque)

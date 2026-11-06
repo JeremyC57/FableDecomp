@@ -49,6 +49,13 @@ public:
     // in the inline push_back), not the implicit member-wise copy of PData.
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 #endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_OUTOFLINE
+    // Retail opt-in (chunk 801, row 0x00960120 CAIStateGroup_DeedReactionRoot::Update): FableWin.pdb
+    // ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z called out of line in retail (0x00654D58: the base ctor 0x00A01B10, the vptr
+    // 0x01237F1C, GetPItem on the source, SetPItem -- the COPY branch's body), for the by-value argument of
+    // AIAction_PerformActionTargetFaceAndWait at 0x00960646. Declaration only: callers call the COMDAT.
+    CIntelligentPointer(const CIntelligentPointer& other);
+#endif
 #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT
     // Retail opt-in (chunk 795, row 0x0092FAB0): the converting constructor from another instantiation, out of line in retail
     // (0x00930D20 CIntelligentPointer<const CThing> from CIntelligentPointer<CThingPlayerCreature>: the base ctor 0x00A01B10, the

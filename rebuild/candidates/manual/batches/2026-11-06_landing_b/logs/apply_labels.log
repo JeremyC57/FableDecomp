@@ -1,0 +1,4 @@
+manifest 007db5c0 _global::CTCTavernGameCardBlackjack_DealCards -> CTCTavernGameCardBlackjack::Split
+manifest 00833c00 CThingAICreature::CThingAICreature::vfunc_36 -> CThingAICreature::DrawPreparePrimitivesForRendering
+manifest 00960120 CAIStateGroup_DeedReactionRoot::CAIStateGroup_DeedReactionRoot::Update -> CAIStateGroup_DeedReactionRoot::Update
+labels 7  catalog renamed 0  manifest renamed 3

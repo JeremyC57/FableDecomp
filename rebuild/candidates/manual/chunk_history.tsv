@@ -27450,3 +27450,9 @@ chunk	address	module	name	length
 802	00684610	COpinionReactionManager	TransferOpinionData	2823
 802	007abbd0	CTCAIScratchpad	vfunc_1	2828
 802	0066cf00	CRegionMinimap	PopulateRegionMinimap	3248
+803	00db6c60	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug	Main	4241
+803	00db09e0	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan	Main	5058
+803	00e158f0	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine	Main	4241
+803	00ed5f50	NScript::CV_SwordInTheStoneScript	sub_00ed5f50	5024
+803	00ddf090	NScript::CQ_PrisonWardenGameScript	sub_00ddf090	4599
+803	00f1b9c0	NScript::CQ_ArenaScript::CArenaCellExitGuard	Main	4198

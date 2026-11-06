@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-11-06T15:25:16+00:00`
+Generated: `2026-11-06T16:08:15+00:00`
 
 ## Landed reconstruction (live)
 
@@ -8,14 +8,14 @@ From `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1`
 
 | Measure | Landed | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
-| Original catalog functions landed, genuine C++ | 46,958 | 49,567 | 94.736% | Byte-matching C++ (no hand-written asm bake; `retail_asm` and `toolchain_library` rows included) for the original analysis catalog |
-| All known functions landed, genuine C++ | 54,600 | 57,612 | 94.772% | Adds the gap-scan and boundary functions found later |
-| Retail function bytes reproduced, genuine C++ | 6,039,105 | 10,196,938 | 59.225% | Landed row lengths over landed + unlanded (unlanded sized to the next function start, capped at 64 KB) |
-| Retail `.text` bytes reproduced, genuine C++ | 6,039,105 | 14,858,408 | 40.644% | Against the whole `.text` section (includes padding and inline data) |
-| Landed rows using retail inline asm (grade `retail_asm`) | 211 | 54,601 | — | Counted as genuine: the original used asm (docs/pipeline/ASM_RULES.md); retail itself ran the asm (owner rule 2026-10-24) |
-| Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`) | 441 | 54,601 | — | Counted as genuine: the bytes are a VC7.1 library member's (msvcrt.lib CRT object or linker import thunk) and the build links that library (owner rule 2026-10-30; `docs/pipeline/LIBRARY_SIGNATURES.md`) |
-| Landed rows that are VC7.1 compiles of vendor CRT source (`// Library:` line) | 8 | 54,601 | — | Genuine compiles whose bytes equal the library object retail linked (crtexew, atonexit, initsect, fp8, ehvecdtr); vendor code, not Fable logic |
-| Landed rows that are hand-written asm bakes | 1 | 54,601 | — | Byte-exact oracles, **not** reconstruction; excluded above (`toolchain_library` rows are not asm bakes) |
+| Original catalog functions landed, genuine C++ | 46,959 | 49,567 | 94.738% | Byte-matching C++ (no hand-written asm bake; `retail_asm` and `toolchain_library` rows included) for the original analysis catalog |
+| All known functions landed, genuine C++ | 54,601 | 57,612 | 94.774% | Adds the gap-scan and boundary functions found later |
+| Retail function bytes reproduced, genuine C++ | 6,042,521 | 10,196,930 | 59.258% | Landed row lengths over landed + unlanded (unlanded sized to the next function start, capped at 64 KB) |
+| Retail `.text` bytes reproduced, genuine C++ | 6,042,521 | 14,858,408 | 40.667% | Against the whole `.text` section (includes padding and inline data) |
+| Landed rows using retail inline asm (grade `retail_asm`) | 211 | 54,602 | — | Counted as genuine: the original used asm (docs/pipeline/ASM_RULES.md); retail itself ran the asm (owner rule 2026-10-24) |
+| Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`) | 441 | 54,602 | — | Counted as genuine: the bytes are a VC7.1 library member's (msvcrt.lib CRT object or linker import thunk) and the build links that library (owner rule 2026-10-30; `docs/pipeline/LIBRARY_SIGNATURES.md`) |
+| Landed rows that are VC7.1 compiles of vendor CRT source (`// Library:` line) | 8 | 54,602 | — | Genuine compiles whose bytes equal the library object retail linked (crtexew, atonexit, initsect, fp8, ehvecdtr); vendor code, not Fable logic |
+| Landed rows that are hand-written asm bakes | 1 | 54,602 | — | Byte-exact oracles, **not** reconstruction; excluded above (`toolchain_library` rows are not asm bakes) |
 
 ## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-10-20)
 
@@ -49,7 +49,7 @@ Written by `tools/bootstrap_rebuild_tree.py` (the Windows pipeline). The Linux l
 
 ## Interpretation
 
-The reverse-engineering database is near complete. Landed byte-matching C++ covers 94.736% of the original catalog by function count but 59.225% by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
+The reverse-engineering database is near complete. Landed byte-matching C++ covers 94.738% of the original catalog by function count but 59.258% by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
 
 The clean-decompile sweep predates later function discovery, so its denominator is 49,082 while the current catalog contains 49,568 functions. The dashboard does not silently extrapolate the missing 486 measurements.
 

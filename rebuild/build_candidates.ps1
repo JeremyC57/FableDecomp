@@ -384680,6 +384680,13 @@ $catalog = @(
         TestSource = '00/d3/NScriptCQGuildTrainingScript_Main_00d3bc60_test.cpp'
         PassPattern = '00d3bc60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007b0cd0'
+        Module = 'CTCFishing'
+        Source = '00/7b/CTCFishing_FrameUpdate_007b0cd0.cpp'
+        TestSource = '00/7b/CTCFishing_FrameUpdate_007b0cd0_test.cpp'
+        PassPattern = '007b0cd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

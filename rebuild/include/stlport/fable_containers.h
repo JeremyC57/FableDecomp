@@ -455,6 +455,13 @@ public:
     }
     ~_List_base() { clear();_M_node.deallocate(_M_node._M_data,1); }
     _STLP_alloc_proxy<_List_node<_Tp>*,_List_node<_Tp>,allocator<_List_node<_Tp> > > _M_node;
+#ifdef FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE
+    // Per-TU opt-in (chunk 801, row 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering): STLport 4.6 _list.c
+    // _List_base::clear(), declared only. Retail calls the list<CEnginePrimitiveHandle> instantiation out of line at 0x00834F90
+    // (`lea edi,[esi+194h] ; mov ecx,edi ; call 0x00834F90`, 0x00833C0C; the landed ~CThingAICreature 0x008320C0 binds the same
+    // address as ?clear@?$_List_base@VCEnginePrimitiveHandle@@..@std@@QAEXXZ).
+    void clear();
+#else
     void clear() {
         _List_node<_Tp>* cur=(_List_node<_Tp>*)_M_node._M_data->_M_next;
         while(cur!=_M_node._M_data) {
@@ -466,6 +473,7 @@ public:
         _M_node._M_data->_M_next=_M_node._M_data;
         _M_node._M_data->_M_prev=_M_node._M_data;
     }
+#endif
 };
 template<class _Tp,class _Alloc=allocator<_Tp> > class list : public _List_base<_Tp,_Alloc> {
 public:
@@ -498,6 +506,15 @@ public:
         return iterator(tmp);
     }
     void push_back(const _Tp& x) { insert(end(),x); }
+#ifdef FABLE_RETAIL_STLP_LIST_INSERT_DEFAULT
+    // Per-TU opt-in (chunk 801, row 0x00833C00): STLport 4.6 _list.h `iterator insert(iterator __pos)` (the no-default-parameter
+    // overload, `return insert(__pos, _Tp());`), declared only: retail calls it out of line at 0x007464A0 (the landed body builds the
+    // default CEnginePrimitiveHandle and links the node), with the iterator copied in place into the argument slot (`push ecx ;
+    // mov ecx,[edi] ; mov eax,esp ; mov [eax],ecx`, 0x00833C74) and the result through a hidden pointer. push_back() is the
+    // STLport inline `insert(end())`.
+    iterator insert(iterator position);
+    void push_back() { insert(end()); }
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST
     // Retail branch (chunk 726): STLport 4.6 _list.h size() / front() / push_front(). size() is distance(begin(), end())
     // with the input-iterator __distance loop inlined (NUISystem::CList::ChangeState 0x0053A0A1 counts the

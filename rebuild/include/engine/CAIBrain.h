@@ -10,6 +10,9 @@
 #include "rebuild_abi.h"
 
 class CAIStateGroupBase;
+#ifdef FABLE_RETAIL_CAIBRAIN_STATEGROUPTEXT
+class CCharString;   // chunk 801 opt-in only (the default path declares nothing new)
+#endif
 class CBrainUpdateZone;
 class CDefPointeeBase;
 class CMainGameComponent;
@@ -28,6 +31,15 @@ public:
     unsigned char       _pad_0x10[0x4];                      // +0x10
     CMainGameComponent* Component;                           // +0x14
     CThingAICreature*   Creature;                            // +0x18
+#ifdef FABLE_RETAIL_CAIBRAIN_STATEGROUPTEXT
+    // Nested opt-in (chunk 801, row 0x00833C00 CThingAICreature::DrawPreparePrimitivesForRendering): Ego_r.pdb / FableWin.pdb
+    // ?PeekCurrentStateGroupName@CAIBrain@@QBEPBVCCharString@@XZ (retail 0x0088B7D0: `mov eax,[ecx+38h] ; test eax,eax ; je ;
+    // add eax,0Ch ; ret` -- PActiveStateGroup's name) and ?GetCurrentStateGroupDebugText@CAIBrain@@QBEPBVCCharString@@XZ (retail
+    // 0x0088B7E0: PActiveStateGroup's virtual slot 6), out of line in retail; Ego_r's donor order (0x0082F5A0 / 0x0082F5B0) agrees.
+    // Declarations only: no layout change.
+    const CCharString* PeekCurrentStateGroupName() const;               // 0x0088B7D0
+    const CCharString* GetCurrentStateGroupDebugText() const;           // 0x0088B7E0
+#endif
 #ifdef FABLE_RETAIL_CAIBRAIN_GETCREATURE
     // Nested opt-in (chunk 755, row 0x0090C540): FableWin.pdb ?GetCreature@CAIBrain@@QBEAAVCThingAICreature@@XZ (inline in retail).
     CThingAICreature& GetCreature() const { return *Creature; }

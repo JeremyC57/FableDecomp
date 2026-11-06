@@ -1,0 +1,7 @@
+address	module	name	length
+007a7d20	CTCBattleCharge	CreateHitEffect	2520
+00960120	CAIStateGroup_DeedReactionRoot	Update	1600
+00850a80	CContextSensitiveItemDef	IsValidOverride	2576
+007b0cd0	CTCFishing	FrameUpdate	3416
+007db6a0	CTCTavernGameCardBlackjack	CardsMainGame	2556
+00833c00	CThingAICreature	vfunc_36	2300

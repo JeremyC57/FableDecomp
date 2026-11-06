@@ -1,0 +1,5 @@
+address	source	grade_with_final_overlay	note
+007b0cd0	src/007b0cd0.cpp	RELOCATION_MATCH PASS	own row; final read-only vland with the final hdr/ overlay (log deleted with tmp/ per the brief)
+008320c0	rebuild/src/compiled/00/83/CThingAICreature_CThingAICreature_008320c0.cpp	RELOCATION_MATCH PASS	landed includer of engine/CThingAICreature.h (~CThingAICreature); read-only recheck.py + vland --recheck-landed with the final overlay
+00831f80	rebuild/src/compiled/00/83/CThingAICreature_CThingAICreature_00831f80.cpp	RELOCATION_MATCH PASS	landed includer of engine/CThingAICreature.h (ctor); same read-only recheck
+-	hdr/engine/CAIBrain.h, hdr/engine/CIntelligentPointer.h, hdr/stlport/fable_containers.h	no full includer recheck needed	every edit is behind a new opt-in macro (FABLE_RETAIL_CAIBRAIN_STATEGROUPTEXT, FABLE_RETAIL_CINTELLIGENTPOINTER_COPY_OUTOFLINE, FABLE_RETAIL_STLP_LIST_CLEAR_OUTOFLINE, FABLE_RETAIL_STLP_LIST_INSERT_DEFAULT) that no landed source defines (grep -rl over rebuild/src and rebuild/include: 0 hits); `diff` against rebuild/include shows only the added #ifdef blocks plus one forward declaration (class CCharString; in CAIBrain.h, which emits no code)

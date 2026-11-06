@@ -1,0 +1,56 @@
+# chunk 801 attempts log (one line per grade)
+00960120 a1 src first draft (sibling OnReplace model, plain HasTC/GetTC): SRC_FAIL PStringData protected
+00960120 a2 IsEmpty(): DIFFER 1572v1600, 846 difflines (HasTC test form `test dword` vs retail shr/and/store bool)
+00960120 a3 const bool& present GetInterface form: DIFFER 1576v1600, 686 dl
+00960120 a4 GetTC (non-const, 0x40F020) / PeekTC (const, 0x4365B0) split per retail: 681 dl; bit-16 HasTC narrows to byte load `mov cl,[eax+2Ah]` (retail dword shr 10h)
+00960120 a5 probe std::bitset<274>::test: same narrowing, 673 dl (probe only)
+00850a80 a1 first draft: DIFFER 2820v2576, 694 dl
+00850a80 a2 forceinline HasTC, case3/4 break, copy ctor C3DVector, const carrying: 2804v2576, 604 dl
+00850a80 a3 all case-5 sub-case 'return false' -> break: 2760v2576, 627 dl (true epilogues cross-jumped; worse) reverted
+00850a80 a4 sub4/sub5 folded 'followed != 0 &&' into the final test: 2804v2576, 595 dl (sub5 setne gone; sub4 true cross-jumps to case 3's true; VC merges return blocks to the FIRST instance, retail to the LAST/end)
+007b0cd0 a1 first draft (local models, CThing.h retail, CDefPointer.h): DIFFER 3380v3416, 402 dl
+007b0cd0 a2 GETTC_EXPANDED out-pointer TC locals, local def + fps copies in cases 2/3: 3408v3416, 96 dl
+007b0cd0 a3 fps local in the caught timer, experience test folded, bank reference locals (text + caught): RELOCATION_MATCH
+00833c00 a1 local models (CThing : CBaseObject, local list/handle/engine): DIFFER 2072v2300
+00833c00 a2 ported to shared headers (0x006AA2E0 recipe) + hdr opt-ins CThingAICreature DEBUGRENDER, CAIBrain STATEGROUPTEXT, STLP_LIST clear/insert out of line: DIFFER 2263v2300, 652 dl
+00833c00 a3 vectors as copy-then-`Z += h`, compare Work == Home: DIFFER 2255v2300, 736 dl (worse: X/Y copied before the Z add)
+00833c00 a4 vectors as `pos + C3DVector(0,0,h)` (VC7.1 folds the +0.0f): DIFFER 2229v2300, 715 dl (Z first as retail; UID still loaded before X)
+007db6a0 a1 first draft (CTCTavernGame retail header, local CardBase/Blackjack models, inline HasGoneBust/CardsFaceDown, GFFloatToLongFloor): DIFFER 2444v2556, 339 dl
+007db6a0 a2 RoundFinished loop as while + `if (!C) {result; return;}`: DIFFER 2480v2556, 499 dl (worse, reverted)
+007db6a0 a3 a1 + qualified CTCTavernGameCardBlackjack::DealCards() (retail calls 0x007DB5C0 directly): 2444v2556, 340 dl; V1 switch returns->breaks 387 dl (reverted)
+007db6a0 a4 case order 0x1c,0x1e,0x1d,0x1f (retail layout), case 0x25 last, busted stores Total/Amount/NumHands: 2444v2556, 274 dl
+007db6a0 a5 cases 0x1c/0x22/0x23/0x24 end in return (0x17-empty, 0x20/21, 0x25 break): DIFFER 2556v2556, 116 dl
+007db6a0 a6 0x17-empty path `return`: 2556v2556, 106 dl
+007db6a0 a7 0x20/0x21 also `return` (0x25 break): 2556v2556, 98 dl; 0x25 return too: 2580v2556 164 dl (reverted)
+007db6a0 a8 0x25 before 0x20 (any earlier position same), 0x7DB5C0 is Split() (non-virtual, not in vtable 0x0126F8F4): 2544v2556, 63 dl (residue: 0x1c tail cross-jumped into 0x17-empty)
+007db6a0 a9 case 0x1c break / 0x1c+0x22 break: 63 / 152 dl (no change / worse)
+007a7d20 a1 first draft (local models after 0x007A8BE0 / 0x007CCE20 / 0x008DDAD0; pack(1) pads): DIFFER 2524v2520, 560 dl
+007a7d20 a2 same-TU noinline stand-in body for GetAllThingsInRoughArea (vectors uncaptured), GetTC/sound lookups as named locals: 2556v2520, 261 dl
+007a7d20 a3 memberwise diff vector (X first), stand-in GetSubDef / GetEffectFromString bodies (effects ptr in edi), rumble thing local: 2528v2520, 86 dl
+007a7d20 a4 C2DBoxI.h (C2DCoordI centre, radius) box: 68 dl; loops on things.size() / dragons.size() (hoisted by VC: uncaptured): 66 dl
+007a7d20 a5 sound lookup as std::lower_bound shape (by-value first/last, nested distance): 65-90 dl, no gain (begin/first copy residue)
+00850a80 a5 same-TU noinline stand-in bodies for GetSubDef / GetDef / GetAllThingsInRoughArea (0x00851490 is in this TU): 2688v2576, 383 dl
+00960120 a6 HasTC as `((word >> bit) & 1) != 0`: 650 dl (bit 16 still narrowed to `mov cl,[eax+2Ah]`)
+00960120 a7 HasTC with the word as a named local: 619 dl (same narrowing)
+00960120 a8 __forceinline HasTC: 650 dl (same narrowing)
+00960120 a9 HasTC through `const unsigned long&` word + named bit: 619 dl (same narrowing; residue is VC7.1's byte narrowing of the bit-16 test, retail keeps the dword `shr ecx,10h`)
+007a7d20 a6 the first search (pos, centre, box, call) in its own block: frame 0x140 (retail 0x148, was 0x150), 64 dl
+007a7d20 a7 probes: ternary folded into the damage expression / CanBeHitByEpicSpell with operator() / effect declared before effects / the hit body in its own block: 64-66 dl, no gain
+007a7d20 a8 probe: box via `C2DBoxI area; area = C2DBoxI(...)`: 106 dl; box via 4-long ctor: SRC_FAIL (opt-in order) -- the box residue is VC7.1 storing TLX/TLY early (retail computes all four, then stores)
+007db6a0 a10 analysis: retail's case 0x1c tail jumps to the later ebx=0 epilogue copy 0x007DC03E (after 0x20/0x21's DealCard), ours cross-jumps its SetState call into the 0x17-empty block's identical tail (0x007DBB23); a9 break variants do not move it -- parked
+00850a80 a6 case 8 dig box centre as named long x / y: 383 dl (Y still converted first: the out-of-line C2DBoxI ctor takes the coord by reference)
+00850a80 a7 case 8 dig box centre as a named C2DCoordI: 383 dl (same)
+00850a80 a8 case 8 coord members assigned one by one (X first): 1092 dl (frame layout shifts everywhere; reverted)
+00833c00 a5 a2 + compare Work == Home: 652 dl (no change)
+00833c00 a6 a2 + height declared before name: 654 dl
+00833c00 a7 a2 + engine pointer local for the first line: 652 dl
+00833c00 a8 a2 + top as `PeekPos()` copy then `Z += height`: 654 dl
+00833c00 a9 the first two blocks unscoped (distinct colour / vector objects): frame 0x98 (retail 0x88), 652 dl
+00833c00 a10 only the line block unscoped (or only the name block): frame 0x88 = retail, 2296v2300, 648 dl (kept)
+00833c00 a11 a10 + line top as `PeekPos() + C3DVector(0,0,h)`: 691 dl (reverted). Residue: Y copied through the FPU (`fld [eax+4]; fstp`) where retail moves X/Y as integers, and info.Engine cached in ebp (retail re-reads [ebp+34h] and keeps info in ebp)
+00850a80 a9 dig distance through named myX / myY floats: 383 dl (no change)
+00850a80 a10 dig distance as dy*dy + dx*dx: 383 dl (no change)
+00850a80 a11 fishing case `return IsThingAbleToFish(..);` (retail `test al,al ; setne al`): 2684v2576, 378 dl (kept). Residue: frame 0x3c v 0x30 and the param-slot reuse for the out pointers (retail homes them in [ebp+0Ch] / [ebp+10h], ours in [ebp+8]), edi = 0 kept by retail, the case-5 sub-case true/false epilogue copies
+007a7d20 a9 box via the 4-long C2DBoxI ctor (FABLE_RETAIL_C2DBOXI_CTORS) from the named centre: 64 dl (no change)
+007a7d20 a10 box from a C2DCoordI temporary: 64 dl (no change) -- parked
+00960120 a10 GetTC / PeekTC presence as a plain bool (not a const bool&): 618 dl (kept; the bit-16 narrowing stays) -- parked

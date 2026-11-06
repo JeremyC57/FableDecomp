@@ -22831,7 +22831,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007daef0	DealCard	CTCTavernGameCardBlackjack	__thiscall	void	1	CTCTavernGameCardBlackjack *	1	yes	accepted									
 007db280	CTCTavernGameCardBlackjack	CTCTavernGameCardBlackjack	__thiscall	undefined	2	CTCTavernGameCardBlackjack *,CThing *	0	yes	accepted									
 007db2e0	CTCTavernGameCardBase_NewGame	_global	unknown	undefined	0		0	yes	accepted									
-007db5c0	CTCTavernGameCardBlackjack_DealCards	_global	unknown	undefined	0		0	yes	accepted									
+007db5c0	Split	CTCTavernGameCardBlackjack	unknown	undefined	0		0	yes	accepted									
 007db6a0	CardsMainGame	CTCTavernGameCardBlackjack	__thiscall	void	1	CTCTavernGameCardBlackjack *	1	yes	accepted									
 007dc350	vector	std::vector	unknown	undefined	0		0	yes	accepted									
 007dc3f0	operator=	std::vector<CCard*>	unknown	undefined	0		0	yes	accepted									
@@ -24663,7 +24663,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00833a10	SuspendAI	CThingAICreature	unknown	undefined	0		0	yes	accepted									
 00833a70	OnCreate	CThingAICreature	__thiscall	bool	1	CThingAICreature *	1	yes	accepted									
 00833ba0	OnLevelUnload	CThingAICreature	__thiscall	void	1	CTCCarryable *	1	yes	accepted									
-00833c00	CThingAICreature::vfunc_36	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00833c00	DrawPreparePrimitivesForRendering	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00834530	CombatStressTestDebug	CThingAICreature	unknown	undefined	0		0	yes	accepted									
 00834760	WorldUpdate	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00834970	FreeSelf_00834970	_unattributed	unknown	undefined	0		0			discovered	gapscan							
@@ -32410,7 +32410,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0095fe60	InitStateGroup	CAIStateGroup_DeedReactionRoot	__thiscall	void	3	CAIStateGroup_DeedReactionRoot *,CWorld *,CThingAICreature *	1	yes	accepted									
 0095fed0	IsStillValid	CAIStateGroup_DeedReactionRoot	__thiscall	bool	1	CAIStateGroup_DeedReactionRoot *	1	yes	accepted									
 00960070	OnActivate	CAIStateGroup_DeedReactionRoot	__thiscall	void	1	CAIStateGroup_DeedReactionRoot *	1	yes	accepted									
-00960120	CAIStateGroup_DeedReactionRoot::Update	CAIStateGroup_DeedReactionRoot	__thiscall	void	1	CAIStateGroup_DeedReactionRoot *	1	yes	accepted									
+00960120	Update	CAIStateGroup_DeedReactionRoot	__thiscall	void	1	CAIStateGroup_DeedReactionRoot *	1	yes	accepted									
 00960760	OnReplace	CAIStateGroup_DeedReactionRoot	__thiscall	void	1	CAIStateGroup_DeedReactionRoot *	1	yes	accepted									
 009609b0	IsRunnable	CAIStateGroup_DeedReactionRoot	__thiscall	bool	1	CAIStateGroup_DeedReactionRoot *	1	yes	accepted									
 00960f00	IsRunnable	CAIStateGroup_DeedReactionRootFromSleep	__thiscall	bool	1	CAIStateGroup_DeedReactionRootFromSleep *	1	yes	accepted									
