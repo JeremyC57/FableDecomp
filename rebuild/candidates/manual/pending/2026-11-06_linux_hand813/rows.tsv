@@ -1,0 +1,7 @@
+address	module	name	length
+00d524a0	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper	Main	2540
+00db5330	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan	Main	6148
+00e5b3b0	NScript::CV_BeggarAndChildScript::CBeggarBully	Main	7012
+00db97a0	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa	Main	7013
+00f17c70	NScript::CQ_ArenaScript::CArenaCellDoorGuard	Main	7740
+00e84b80	NScript::CV_FisticuffsClubScript::CFisticuffsMember	Main	8836

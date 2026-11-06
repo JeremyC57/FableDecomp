@@ -71,12 +71,12 @@ a worklist, not the intended end state.
 |---|---:|
 | Catalogued retail functions | **49,568** |
 | Landed byte-matching C++ (genuine) | **46,960 · 94.74%** |
-| Retail function bytes reproduced | **6,134,437 · 60.16%** |
+| Retail function bytes reproduced | **6,144,717 · 60.33%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
 Landed byte-matching C++ covers **94.74%** of the 49,567-function catalog by count
-and **60.16%** of retail function bytes: the functions still to do are the large ones.
+and **60.33%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,10 +93,10 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **54,621** |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **54,623** |
 | Reconstruction | Landed byte-matching genuine C++, original catalog | **46,960** (94.74%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,612 known functions | 54,620 (94.81%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 6,134,437 (60.16%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,612 known functions | 54,622 (94.81%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 6,144,717 (60.33%) |
 | Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 211 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 441 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |

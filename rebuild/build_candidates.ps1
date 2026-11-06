@@ -384820,6 +384820,20 @@ $catalog = @(
         TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderBrother_Main_00ea59e0_test.cpp'
         PassPattern = '00ea59e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d524a0'
+        Module = 'NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper'
+        Source = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_Main_00d524a0.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_Main_00d524a0_test.cpp'
+        PassPattern = '00d524a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f17c70'
+        Module = 'NScript::CQ_ArenaScript::CArenaCellDoorGuard'
+        Source = '00/f1/NScriptCQArenaScriptCArenaCellDoorGuard_Main_00f17c70.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCArenaCellDoorGuard_Main_00f17c70_test.cpp'
+        PassPattern = '00f17c70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

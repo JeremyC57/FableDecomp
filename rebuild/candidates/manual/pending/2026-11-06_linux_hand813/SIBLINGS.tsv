@@ -1,0 +1,11 @@
+address	source	grade_with_final_overlay	note
+00D524A0	src/00d524a0.cpp	RELOCATION_MATCH	authored row; vland RELOCATION_MATCH + PASS (logs/vland.log)
+00F17C70	src/00f17c70.cpp	RELOCATION_MATCH	authored row; vland RELOCATION_MATCH + PASS (logs/vland.log)
+00E5B3B0	differ/00e5b3b0.cpp	DIFFER(6996v7012)	parked, 138 difflines; CIsThingAlive copy blocker only (chunk 810)
+00E84B80	differ/00e84b80.cpp	DIFFER(8968v8836)	parked, 190 difflines; implicit ~seh_me expanded at one exit more than retail (chunk 809 class)
+00DB97A0	differ/00db97a0.cpp	DIFFER(6954v7013)	parked, 873 raw / 181 masked difflines; CIsThingConscious copy/dtor blocker (chunk 810)
+00DB5330	differ/00db5330.cpp	DIFFER(6228v6148)	parked, 769 raw / 317 masked difflines; CIsThingConscious copy/dtor blocker (chunk 810)
+00DB09E0	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_Main_00db09e0.cpp	RELOCATION_MATCH	landed includer of engine/CQ_NewOakValeIntroScript.h; read-only recheck with the overlay (vland --recheck-landed) RELOCATION_MATCH + PASS (logs/recheck_vland.log); opt-in edit, default path textually unchanged
+00DB2B10	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_Main_00db2b10.cpp	RELOCATION_MATCH	landed includer of engine/CQ_NewOakValeIntroScript.h; read-only recheck with the overlay (vland --recheck-landed) RELOCATION_MATCH + PASS (logs/recheck_vland.log); opt-in edit, default path textually unchanged
+00DB6C60	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_Main_00db6c60.cpp	RELOCATION_MATCH	landed includer of engine/CQ_NewOakValeIntroScript.h; read-only recheck with the overlay (vland --recheck-landed) RELOCATION_MATCH + PASS (logs/recheck_vland.log); opt-in edit, default path textually unchanged
+00DBCD60	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIVictim_Main_00dbcd60.cpp	RELOCATION_MATCH	landed includer of engine/CQ_NewOakValeIntroScript.h; read-only recheck with the overlay (vland --recheck-landed) RELOCATION_MATCH + PASS (logs/recheck_vland.log); opt-in edit, default path textually unchanged

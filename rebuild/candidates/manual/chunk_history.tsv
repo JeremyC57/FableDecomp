@@ -27522,3 +27522,9 @@ chunk	address	module	name	length
 814	00ea8f40	NScript::CV_MurderTwistScript::CMurderTwistLeader	Main	7933
 814	00cf68c0	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard	Main	8070
 814	00e2ff00	NScript::CV_AmbushScamScript::CAS_Buddy	Main	8567
+815	00d58490	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster	Main	9560
+815	00e33ea0	NScript::CV_ArcheryCompetitionScript::CAC_Owner	Main	9228
+815	00e5fd40	NScript::CV_BodyGuardScript::CBodyGuard	Main	9381
+815	00dfe0f0	NScript::CQ_TraderConflictGoodScript::CTraderToRescue	Main	9501
+815	00d973d0	NScript::CQ_HobbeCaveScript::CBanditSacrifice	Main	9821
+815	00e50fd0	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	Main	9885

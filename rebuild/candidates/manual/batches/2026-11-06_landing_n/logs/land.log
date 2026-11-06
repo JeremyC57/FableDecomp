@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00d524a0   RELOCATION_MATCH PASS   Main
+00f17c70   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00d524a0 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::?Main@CPreMeleeWhisper@CQ_GuildTrainingPreMeleeScript@NScript@@EAEXXZ
+  00f17c70 RELOCATION_MATCH NScript::CQ_ArenaScript::CArenaCellDoorGuard::?Main@CArenaCellDoorGuard@CQ_ArenaScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_Main_00d524a0
+  NScriptCQArenaScriptCArenaCellDoorGuard_Main_00f17c70
