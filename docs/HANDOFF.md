@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-784 landed; chunk 785 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-785 landed; chunk 786 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -26,11 +26,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
     6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
     wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
-  - **Running (the user: "continue authoring chunks on another agent"):** chunk 785 (`$S/w22/agent785`: CAnimateThing::
-    CalcInterpolatedMeshAnim, the COptimisedPrimitive ctor, two CWaterPatchTesselatorBase rows, CMurderTwistBrotherFriend::Main,
-    CQ_GuildTrainingScript::RunCeremonyCutscene). Land it like 782-784 (`landing_l`, `pending/2026-11-05_linux_hand785`, labels
-    `2026-11-05l`, queue tag `land0511l`). The groups-ledger pool has 73 unworked rows left, mostly quest-script Mains.
-  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`). The
+  - **Running (the user: "continue authoring chunks on another agent"):** chunk 786 (`$S/w22/agent786`: six quest-script Mains
+    next to matched siblings, starting with 0x00EACF00, which differs from the landed 0x00EAC5B0 by 171 bytes). Land it like 782-785
+    (`landing_m`, `pending/2026-11-05_linux_hand786`, labels `2026-11-05m` incl. the landed rows' own labels, queue tag
+    `land0511m`). 67 unworked rows are left in the groups ledger, mostly quest-script Mains.
+  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`). The
     parked rows are in `pending/2026-11-05_linux_hand782..784/`.
   - A container restart stopped chunk 784 once; the scratch survived, and the agent was resumed from its transcript.
   - Open naming decision: 0x0122DEDC (the shared 0.0f, 30+ spellings, no PDB name), like EPSILON / TWO_PI on 2026-11-01.

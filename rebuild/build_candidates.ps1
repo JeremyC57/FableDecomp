@@ -384322,6 +384322,20 @@ $catalog = @(
         TestSource = '00/95/CAIStateGroupJackDragon_OnActivate_009500e0_test.cpp'
         PassPattern = '009500e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00dd3b80'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_PrisonLifeIntro_00dd3b80.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_PrisonLifeIntro_00dd3b80_test.cpp'
+        PassPattern = '00dd3b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eac5b0'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrotherFriend'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Main_00eac5b0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Main_00eac5b0_test.cpp'
+        PassPattern = '00eac5b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

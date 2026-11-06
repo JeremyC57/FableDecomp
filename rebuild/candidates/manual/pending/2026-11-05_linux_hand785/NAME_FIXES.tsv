@@ -1,0 +1,8 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00aba360	?GetCount@C3DMeshFileVerticesChunk@@QBEKXZ	see LABELS.tsv (call site in 0x00ACDB80 + Ego_r name + body offsets)	CShaderPreParser::GetConstantCount (rebuild/src/compiled/00/ab/CShaderPreParser_GetConstantCount_00aba360.cpp)
+00aba370	?GetCount@C3DMeshFileTrianglesChunk@@QBEKXZ	see LABELS.tsv	CWorldMap_DrawGetNoMaps / ?CWorldMap_DrawGetNoMaps@@YIJPAVCWorldMap@@@Z (CWorldMap_DrawGetNoMaps_00aba370.cpp)
+00aba350	?GetCount@C3DMeshFileGroupChunk@@QBEKXZ	see LABELS.tsv	CShaderPreParser::GetConstantCount (CShaderPreParser_GetConstantCount_00aba350.cpp)
+00ab9f60	?GetBoneIndex@C3DMeshFileGroupChunk@@QBEJXZ	see LABELS.tsv	DrawGetEnvironment / _global::GetMember_dword0x2c_00ab9f60 (global_DrawGetEnvironment_00ab9f60.cpp)
+013bac20	CAnimateThing::CalcInterpolatedMeshAnim's block-scoped static sorted_combination_anims	retail 0x0070D940 initialises the static (guard 0x013BAC2C) only after the 0x013756F7 flag test, i.e. inside a nested block, so its mangled name is ?sorted_combination_anims@?N??CalcInterpolatedMeshAnim@CAnimateThing@@ABE..@4V..@A with N > 1; the exact TLC scope id is unproven (Ego_r.pdb says `23', FableWin.pdb `50')	the landed atexit row 0x01229630 (global_E2_01229630.cpp) declares it at function top level (scope ?1)
+00dd3b80	?PrisonLifeIntro@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ	see LABELS.tsv	catalog CQ_GuildTrainingScript::RunCeremonyCutscene
+00be4660	?TesselateEdge@?$CWaterPatchTesselatorBase@VCTVertexWaterBackground@@@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSCAPE_EDGE_STRIP_SIDE@@PAG@Z	see LABELS.tsv	catalog CWaterPatchTesselatorBase::vfunc_0

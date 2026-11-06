@@ -39591,7 +39591,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00acd900	DetectFoldOver	COptimisedPrimitive	__thiscall	bool	2	COptimisedPrimitive *,CVertexPairContraction *	1	yes	accepted									
 00acd960	Optimise	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
 00acdae0	Optimise	QuadricOptimiserInternals::COptimisedMesh	unknown	undefined	0		0			discovered	gapscan							
-00acdb80	COptimisedPrimitive	COptimisedPrimitive	__thiscall	undefined	2	COptimisedPrimitive *,C3DMeshFilePrimitiveChunk *	0	yes	accepted									
+00acdb80	COptimisedPrimitive	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	undefined	2	COptimisedPrimitive *,C3DMeshFilePrimitiveChunk *	0	yes	accepted									
 00ace600	COptimisedMesh	QuadricOptimiserInternals::COptimisedMesh	__thiscall	undefined	2	COptimisedMesh *,C3DMeshFile *	0	yes	accepted									
 00aced20	C3DOptimisedMeshBase	C3DOptimisedMeshBase	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00acf3b0	DeleteViaVtable0_00acf3b0	_global	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\global_DeleteData_00acf3b0.cpp
@@ -43057,7 +43057,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00be3970	?TesselateEdge@CLandscapePatchTesselator@@EAEXPAVCPatchTesselationEdgeStrip@@JJ_N1W4LANDSCAPE_EDGE_STRIP_SIDE@@PAG@Z	CLandscapePatchTesselator	__thiscall	void	8	CLandscapePatchTesselator *,CPatchTesselationEdgeStrip *,long,long,bool,bool,LANDSCAPE_EDGE_STRIP_SIDE,ushort *	1	yes	accepted									
 00be4380	push_back	std::vector<CTVertexLandscapeBackground,std::allocator<CTVertexLandscapeBackground> >	__thiscall	void	1	CScriptModuleFullTransition *	1	yes	accepted									
 00be4400	AddLearnedExpression	_global	__thiscall	void	2	CTCInventoryAbilities *,long	1	yes	accepted									
-00be4660	CWaterPatchTesselatorBase::vfunc_0	CWaterPatchTesselatorBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00be4660	TesselateEdge	CWaterPatchTesselatorBase<CTVertexWaterBackground>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00be4f90	push_back	CArray<CTVertexWaterBackground>	unknown	undefined	0		0	yes	accepted									
 00be4fe0	TesselateEdge	CWaterPatchTesselatorBase<CTVertexSeaBackground>	__thiscall	void	8	CWaterPatchTesselatorBase<CTVertexSeaBackground> *,CPatchTesselationEdgeStrip *,long,long,bool,bool,LANDSCAPE_EDGE_STRIP_SIDE,ushort *	1	yes	accepted									
 00be5950	push_back	CArray<CTVertexSeaBackground>	unknown	undefined	0		0	yes	accepted									
@@ -51310,7 +51310,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00dd2ce0	Main	NScript::CQ_PrisonEscapeRescueMotherScript	__thiscall	void	1	CQ_PrisonEscapeRescueMotherScript *	1	yes	accepted									
 00dd35c0	GetEntityScriptName	CEntityScriptBinding<NScript::CQ_PrisonEscapeRescueMotherScript>	unknown	undefined	0		0			discovered	gapscan							
 00dd35d0	WatchHeroEscapeStatus	NScript::CQ_PrisonEscapeRescueMotherScript	unknown	undefined	0		0			discovered	gapscan							
-00dd3b80	RunCeremonyCutscene	CQ_GuildTrainingScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									
+00dd3b80	PrisonLifeIntro	NScript::CQ_PrisonEscapeRescueMotherScript	__thiscall	void	1	CQ_GuildTrainingScript *	1	yes	accepted									
 00dd43d0	Alloc	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00dd4470	GetParentScript	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard	unknown	undefined	0		0			discovered	gapscan							
 00dd4480	Init	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard	unknown	undefined	0		0			discovered	gapscan							

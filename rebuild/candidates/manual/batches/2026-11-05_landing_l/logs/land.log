@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00dd3b80   RELOCATION_MATCH PASS   PrisonLifeIntro
+00eac5b0   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00dd3b80 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::?PrisonLifeIntro@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ
+  00eac5b0 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrotherFriend::?Main@CMurderTwistBrotherFriend@CV_MurderTwistScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQPrisonEscapeRescueMotherScript_PrisonLifeIntro_00dd3b80
+  NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Main_00eac5b0

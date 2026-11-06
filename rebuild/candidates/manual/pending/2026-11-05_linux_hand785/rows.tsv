@@ -1,0 +1,7 @@
+address	module	name	length
+0070d940	CAnimateThing	CalcInterpolatedMeshAnim	2395
+00acdb80	COptimisedPrimitive	COptimisedPrimitive	2674
+00be4660	CWaterPatchTesselatorBase	vfunc_0	2349
+00be4fe0	CWaterPatchTesselatorBase<CTVertexSeaBackground>	TesselateEdge	2412
+00eac5b0	NScript::CMurderTwistBrotherFriend	Main	2089
+00dd3b80	NScript::CQ_GuildTrainingScript	RunCeremonyCutscene	2126

@@ -1,0 +1,7 @@
+- QuadricOptimiser / chunked-file TU is /Gr: a push_back whose _M_insert_overflow will not inline under any hint (even an `inline` specialisation) expands at once with `// Flags: /Gr`; check sibling rows' Flags lines before chasing "inline budget" (0x00ACDB80).
+- q.py ignores `// Flags:`; pass `--flags /Gr` to grade what vland will build.
+- Loop counters declared once and reused across loops block VC7.1's strength reduction (imul per iteration); per-loop `for (T i = 0; ...)` gives retail's running offsets.
+- A loop counter passed to a `const unsigned long&` parameter: `unsigned long i` lives in memory; `unsigned int i` (distinct type) stays in a register with a per-call temp, retail's shape.
+- A row-local STLport tree without a declared operator= makes element erase inline its trivial copy; declare operator= so __copy stays a call.
+- Grading with FABLE_HDR_OVERLAY pointing nowhere makes cl.exe spin (like #error): stop it via the background task, not kill.
+- `__forceinline` is required for out-of-class template helper definitions retail expands (plain `inline` stays out of line under the lane flags).

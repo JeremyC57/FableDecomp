@@ -40,6 +40,16 @@ public:
     // CSymbolMap::CSymbolInfo> instance 0x009E7C70). A declaration only.
     void DeallocateUnusedMemory();
 #endif
+#ifdef FABLE_RETAIL_CARRAY_PUSHBACK
+    // Retail opt-in (chunk 785, rows 0x00BE4660 / 0x00BE4FE0 water tesselators): Lionhead's own push_back pair (Ego_r.pdb
+    // ?push_back@?$CArray@VCTVertexWaterBackground@@@@QAEXABVCTVertexWaterBackground@@@Z and ...QAEXXZ, the Sea twins likewise).
+    // push_back(const T&) is out of line in retail (0x00BE4F90 water, 0x00BE5950 sea, both landed under this spelling); the
+    // argument-less push_back appends an uninitialised element: retail passes the address of a fresh, never-written local at each
+    // expansion (0x00BE48E4 [esp+4Ch], 0x00BE497E [esp+0BCh], ...), the POD vertex having no constructor.
+    // The CArray<unsigned short> instance expands inline (straight to vector<unsigned short>::_M_insert_overflow 0x005135D0).
+    void push_back(const T& x) { std::vector<T>::push_back(x); }
+    void push_back() { T element; push_back(element); }
+#endif
 private:
     T* GetZeroSizeArray() { return (T*)this; }
 };

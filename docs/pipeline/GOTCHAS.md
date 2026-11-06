@@ -2116,3 +2116,10 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-11-06, chunk 784) An IntelligentPointer ctor taking `T* const&` loads the source after the base ctor, as retail; by-value T* loads it before (0x009500E0).
 - (2026-11-06, chunk 784) VC7.1's inliner can expand a push_back inside a loop yet call it out of line before the loop (budget). FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE is all-or-nothing, so it cannot reproduce that split (0x00A15890).
 - (2026-11-06, chunk 784) Declaring loop-local scalars (first / blocked / start) once before the loop changes the frame size (0x9C to 0x94 at 0x00A15890); try it when the frame is too big.
+- (2026-11-06, chunk 785) QuadricOptimiser / chunked-file TU is /Gr: a push_back whose _M_insert_overflow will not inline under any hint (even an `inline` specialisation) expands at once with `// Flags: /Gr`; check sibling rows' Flags lines before chasing "inline budget" (0x00ACDB80).
+- (2026-11-06, chunk 785) q.py ignores `// Flags:`; pass `--flags /Gr` to grade what vland will build.
+- (2026-11-06, chunk 785) Loop counters declared once and reused across loops block VC7.1's strength reduction (imul per iteration); per-loop `for (T i = 0; ...)` gives retail's running offsets.
+- (2026-11-06, chunk 785) A loop counter passed to a `const unsigned long&` parameter: `unsigned long i` lives in memory; `unsigned int i` (distinct type) stays in a register with a per-call temp, retail's shape.
+- (2026-11-06, chunk 785) A row-local STLport tree without a declared operator= makes element erase inline its trivial copy; declare operator= so __copy stays a call.
+- (2026-11-06, chunk 785) Grading with FABLE_HDR_OVERLAY pointing nowhere makes cl.exe spin (like #error): stop it via the background task, not kill.
+- (2026-11-06, chunk 785) `__forceinline` is required for out-of-class template helper definitions retail expands (plain `inline` stays out of line under the lane flags).

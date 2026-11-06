@@ -27348,3 +27348,9 @@ chunk	address	module	name	length
 785	00be4fe0	CWaterPatchTesselatorBase<CTVertexSeaBackground>	TesselateEdge	2412
 785	00eac5b0	NScript::CMurderTwistBrotherFriend	Main	2089
 785	00dd3b80	NScript::CQ_GuildTrainingScript	RunCeremonyCutscene	2126
+786	00eacf00	NScript::CV_MurderTwistScript::CMurderTwistBrotherOlderFriend	Main	2089
+786	00eadbb0	NScript::CV_MurderTwistScript::CMurderTwistBrotherYounger	Main	2452
+786	00dd2ce0	NScript::CQ_PrisonEscapeRescueMotherScript	Main	2265
+786	00dd5a60	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner	Main	2250
+786	00ea0090	NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside	Main	2392
+786	00dce230	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember	Main	2589

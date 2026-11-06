@@ -1,0 +1,4 @@
+manifest 00acdb80 COptimisedPrimitive::COptimisedPrimitive -> QuadricOptimiserInternals::COptimisedPrimitive::COptimisedPrimitive
+manifest 00be4660 CWaterPatchTesselatorBase::CWaterPatchTesselatorBase::vfunc_0 -> CWaterPatchTesselatorBase<CTVertexWaterBackground>::TesselateEdge
+manifest 00dd3b80 CQ_GuildTrainingScript::RunCeremonyCutscene -> NScript::CQ_PrisonEscapeRescueMotherScript::PrisonLifeIntro
+labels 6  catalog renamed 0  manifest renamed 3

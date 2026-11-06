@@ -36873,3 +36873,4 @@ _New_c35b10@8	00c35b10	00c275e0
 ??4CResource@@QAEAAV0@ABV0@@Z	00431f60	004321f0
 ??$GetSubDef@VCJackDragonDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCJackDragonDef@@@@@Z	008e3300	009500e0
 ?PreloadAnims@CThingCreatureBase@@QAEXXZ	00663140	009500e0
+?GetHeroTitleAsLHTSTag@@YI?AVCCharString@@XZ	00cbeba7	00dd3b80

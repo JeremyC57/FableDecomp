@@ -1,0 +1,8 @@
+address	source	grade_with_final_overlay	note
+00be4f90	rebuild/src (landed CArray<CTVertexWaterBackground>::push_back)	not rechecked	callee of 0x00BE4660; the overlay changes are opt-in only (FABLE_RETAIL_CARRAY_PUSHBACK etc.), the default path every landed includer sees is unchanged
+00be5950	rebuild/src (landed CArray<CTVertexSeaBackground>::push_back)	not rechecked	callee of 0x00BE4FE0; same reason
+00ad84d0	rebuild/src (landed ~COptimisedPrimitive)	not rechecked	member layout source for 0x00ACDB80 (row-local model, no header touched)
+00aa94e0	rebuild/src (landed vector<CCountedPointer<CChunkedFileChunk> >::_M_insert_overflow, // Flags: /Gr)	not rechecked	evidence that the QuadricOptimiser / chunked-file TU builds with /Gr
+00eabb30	rebuild/src (landed CMurderTwistBrotherOlder::Main)	not rechecked	model for 0x00EAC5B0 (repo headers only)
+00dd35d0	rebuild/src (landed WatchHeroEscapeStatus)	not rechecked	model for 0x00DD3B80 (repo headers only)
+01229630	rebuild/src (landed _$E2 sorted_combination_anims atexit)	not rechecked	static scope spelling, see NAME_FIXES.tsv

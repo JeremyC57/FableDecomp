@@ -1,0 +1,19 @@
+# chunk 785 header overlay
+
+Every change is an opt-in branch or a new file: no default path changed, so no landed includer can change bytes
+(no INCLUDERS_*.txt needed). Only the parked tesselator rows (0x00BE4660 / 0x00BE4FE0, differ/) use them; the matched rows
+(src/00dd3b80.cpp, src/00eac5b0.cpp) use repo headers only.
+
+| header | change | evidence | path |
+|---|---|---|---|
+| engine/CArray.h | `FABLE_RETAIL_CARRAY_PUSHBACK`: Lionhead's own `push_back(const T&)` (forwards to vector::push_back) and argument-less `push_back()` (appends a fresh uninitialised element) | Ego_r.pdb `?push_back@?$CArray@VCTVertexWaterBackground@@@@QAEXABV..@@Z` / `..QAEXXZ` (Sea twins likewise); retail 0x00BE4F90 / 0x00BE5950 (landed under that spelling) are the out-of-line const& instances; the water tesselator passes a never-written local at each argument-less expansion (0x00BE48E4 `[esp+4Ch]`, 0x00BE497E `[esp+0BCh]`) | opt-in |
+| engine/CEdgeStipVertexArray.h | `FABLE_RETAIL_CEDGESTIPVERTEXARRAY_ACCESSORS`: `operator[]` (both constness) and `Size()` | Ego_r.pdb `??A?$CEdgeStipVertexArray@..@@QAEAAU..@J@Z` / `QBEABU..@J@Z`, `?Size@..@@QBEJXZ`; no out-of-line copy in retail (the tesselators index Data with `imul 3Ch` / `lea [i*5]*4` in place) | opt-in |
+| engine/CPatchTesselationEdgeStrip.h | `FABLE_RETAIL_CPATCHTESSELATIONEDGESTRIP_ACCESSORS`: the inline accessors GetWaterVertex / GetVert / GetFanBaseVert / GetWaterFanBaseVert / FindWaterVert (`__forceinline` out-of-class body) / GetMainAxisVertexWorldPos / PeekIsVertical / PeekSize / PeekEndPos / PeekWaterVertexCount, and the four nested vertex structs CVertex 0x14, CFanBaseVertex 0x10, CWaterVertex 0x3C, CWaterFanBaseVertex 0x38 | Ego_r.pdb names (class key U) and struct_layouts_egor.tsv layouts, checked against both retail tesselators' field offsets (WorldX +8 / WorldY +0xA / FanBaseIndex +0x10; EdgeVertexBufferIndex +0x34 / EdgeIndexBufferIndex +0x36 / FanBaseIndex +0x38 / LandscapeVertexIndex +0x3A; VertexBufferIndex +0x34) | opt-in |
+| engine/CWaterPatchTesselatorBase.h | `FABLE_RETAIL_CWATERPATCHTESSELATORBASE_HELPERS`: declarations of the private helpers FindFirstWaterAdjacentVertex / IterateThroughAdjacentVerts / AddDuplicateEdgeVertex / AddFanBaseVertex (+ `class CEngineMap;`) | Ego_r.pdb `?FindFirstWaterAdjacentVertex@?$CWaterPatchTesselatorBase@V..@@@@AAEXAAPAVCPatchTesselationEdgeStrip@@AAJPBVCEngineMap@@_NJJJW4LANDSCAPE_EDGE_STRIP_SIDE@@@Z` etc.; retail expands all four inside TesselateEdge (no out-of-line copy) | opt-in |
+| engine/CTesselationData.h | NEW: CTesselationData : CBaseClass (vtable 0x012A800C), Width +0x0C / Height +0x10 / EngineMap +0x14 with the Peek accessors; other members declared | RTTI bases (rtti_bases.tsv), Ego_r layout (sizeof 0x5C, no containers so offsets carry over), CLandscapeTesselatorBase::TesselatePatch 0x00BE3910 walks EdgeStrips +0x1C..+0x28 | new file |
+| engine/CTVertexWaterBackground.h | NEW: 56-byte POD vertex (short X/Y, float Z, float ShoreLookUpArray[12]) | Ego_r.pdb CGenericVertex<CTVertexWaterBackgroundBase>; push_back 0x00BE4F90 copies 14 dwords; the tesselator indexes with `imul 38h` | new file |
+| engine/CTVertexSeaBackground.h | NEW: 12-byte POD vertex (float X/Y/Z; member names descriptive, after the water base) | Ego_r names CArray<CTVertexSeaBackground> without a layout record; push_back 0x00BE5950 copies 3 dwords; the sea tesselator stores fild-converted X/Y and Z | new file |
+
+Confirmed the overlay is the copy used: the tesselator grades change when the opt-in macros are dropped (helpers / accessors
+undeclared -> SRC_FAIL), and removing the unedited CLandscapeTesselatorBase.h copy left both grades byte-identical (its
+`#include "engine/CArray.h"` already resolves through the /I search, overlay first), so that copy is no longer handed back.
