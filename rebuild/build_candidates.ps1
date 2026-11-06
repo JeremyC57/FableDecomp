@@ -384315,6 +384315,13 @@ $catalog = @(
         TestSource = '00/43/NUISystemCUIMiscThingsDef_operator_004321f0_test.cpp'
         PassPattern = '004321f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009500e0'
+        Module = 'CAIStateGroup_JackDragon'
+        Source = '00/95/CAIStateGroupJackDragon_OnActivate_009500e0.cpp'
+        TestSource = '00/95/CAIStateGroupJackDragon_OnActivate_009500e0_test.cpp'
+        PassPattern = '009500e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

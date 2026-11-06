@@ -1,0 +1,7 @@
+address	module	name	length
+00a15890	CNavigatorManager	OutputWorld	1973
+007ebea0	CTCActionUseBed	OnActionUse	2145
+009500e0	CAIStateGroup_JackDragon	OnActivate	2154
+00bc6db0	CEnginePrimitiveManagerText	RenderSubPrimitive	2217
+00a92900	C3DPrimitive2	LoadBinary	2274
+00491ad2	CSubtitleRenderer	ProcessEmbeddedHighlightTags	2223

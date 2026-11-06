@@ -1,0 +1,3 @@
+address	name	evidence
+00a15890	CNavigatorManager::OutputWorld	landing 2026-11-05k (chunk 784): Ego_r.pdb + FableWin.pdb ?OutputWorld@CNavigatorManager@@QAEXABVC2DVector@@E@Z (donor order, chunk 783 NOTES), and the body writes nav.data for FablePathVisualiser. The catalog label InitializeNavigationData is wrong.
+009500e0	CAIStateGroup_JackDragon::OnActivate	landing 2026-11-05k (chunk 784): Ego_r.pdb + FableWin.pdb ?OnActivate@CAIStateGroup_JackDragon@@UAEXXZ; RELOCATION_MATCH

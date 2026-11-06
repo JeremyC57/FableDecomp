@@ -27342,3 +27342,9 @@ chunk	address	module	name	length
 784	00bc6db0	CEnginePrimitiveManagerText	RenderSubPrimitive	2217
 784	00a92900	C3DPrimitive2	LoadBinary	2274
 784	00491ad2	CSubtitleRenderer	ProcessEmbeddedHighlightTags	2223
+785	0070d940	CAnimateThing	CalcInterpolatedMeshAnim	2395
+785	00acdb80	COptimisedPrimitive	COptimisedPrimitive	2674
+785	00be4660	CWaterPatchTesselatorBase	vfunc_0	2349
+785	00be4fe0	CWaterPatchTesselatorBase<CTVertexSeaBackground>	TesselateEdge	2412
+785	00eac5b0	NScript::CMurderTwistBrotherFriend	Main	2089
+785	00dd3b80	NScript::CQ_GuildTrainingScript	RunCeremonyCutscene	2126

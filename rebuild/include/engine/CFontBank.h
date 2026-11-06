@@ -32,6 +32,14 @@ public:
     virtual void PrepareToRender(bool = true) const = 0;                 // slot 3
     virtual bool Preload(const CWideString& text, bool) const;           // slot 4 0x009A0B20
     virtual void Render(const CWideString& text, const C3DVector& pos, float scale, const CRGBColour& colour, unsigned long flags, const CTexture* texture = 0) const = 0;   // slot 5
+#ifdef FABLE_RETAIL_CFONTBANK_STRING_HELPERS
+    // Retail opt-in (chunk 784, row 0x00491AD2 CSubtitleRenderer::ProcessEmbeddedHighlightTags): the out-of-line FableWin.pdb
+    // non-virtual helpers ?GetStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@_N@Z (0x0048DAA2: slot 1 with the string's
+    // GetAsCharArray, the hidden result handed through; landed under the wrong label CGuiControlListBox::SelectEntryFromName) and
+    // ?GetStringWidth@CFontBank@@QBEMABVCWideString@@@Z (0x0048DA62). Declarations only: no layout change.
+    C2DExtentsF GetStringExtents(const CWideString& text, bool) const;   // 0x0048DAA2
+    float GetStringWidth(const CWideString& text) const;                 // 0x0048DA62
+#endif
     float GetVFontMaxHeight() const { return GFAYToVY(GetFontMaxHeight()); }
     C2DExtentsF GetVStringExtents(const CWideString& text) const
     {

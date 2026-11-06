@@ -59,11 +59,17 @@ public:
     // Ego_r ?GetSize@CANavQuadTreeNode@@QBEMXZ (out of line in Ego_r, inline in retail) and ?GetAreaCovering@CANavQuadTreeNode@@
     // QBE?AVC2DBoxF@@XZ (retail 0x00A763B0; CNavQuadTree::IsAreaClear 0x00A78E20 expands it: `fld size[level] ; fmul 0.5 ; fst`).
     float GetSize() const { return g_QuadTreeLevelSizes[QuadTreeLevel]; }
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_AREA_OUTOFLINE
+    // Nested opt-in (chunk 784, row 0x00A15890 CNavigatorManager::OutputWorld): that /O2 TU calls the out-of-line copy 0x00A763B0
+    // at every site (seven calls: `push <box> ; mov ecx,<node> ; call 0x00A763B0`) where the inline body below would be expanded.
+    C2DBoxF GetAreaCovering() const;                                                     // 0x00A763B0
+#else
     C2DBoxF GetAreaCovering() const
     {
         float half = GetSize() * 0.5f;
         return C2DBoxF(Position.X - half, Position.Y - half, half + Position.X, half + Position.Y);
     }
+#endif
     bool operator==(const CANavQuadTreeNode&) const;                                     // 0x00A763F0 ??8CANavQuadTreeNode@@QBE_NABV0@@Z
     const C2DVector& GetPosition() const { return Position; }                            // Ego_r ?GetPosition@CANavQuadTreeNode@@QBEABVC2DVector@@XZ
     C2DVector     Position;                                                              // +0x04

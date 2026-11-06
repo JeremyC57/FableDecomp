@@ -12,6 +12,11 @@ class CNavBlockedQuadTreeNode : public CANavQuadTreeNode {
 public:
     CNavBlockedQuadTreeNode(unsigned char, unsigned char);                               // 0x00A768C0
     const CNavBlockedQuadTreeNode& operator=(const CNavBlockedQuadTreeNode&);            // 0x00A76240
+#ifdef FABLE_RETAIL_CNAVBLOCKEDQUADTREENODE_COPY
+    // Nested opt-in (chunk 784, row 0x00A15890): Ego_r.pdb ??0CNavBlockedQuadTreeNode@@QAE@ABV0@@Z, out of line at 0x00A76900 (landed);
+    // CNavigatorManager::OutputWorld copies the static blocked node GetNextNeighbour hands back (`push node ; call 0x00A76900`).
+    CNavBlockedQuadTreeNode(const CNavBlockedQuadTreeNode&);                             // 0x00A76900
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CNavBlockedQuadTreeNode) == 0x10);
 #else // flattened Ego_r layout (the landed default, unchanged)

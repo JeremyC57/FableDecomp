@@ -32105,7 +32105,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0094feb0	StayIdleAndTurnToFace	CAIStateGroup_JackDragon	__thiscall	void	3	CAIStateGroup_JackDragon *,float,C3DVector *	1	yes	accepted									
 0094fff0	ChooseHoverOrStrafeState	CAIStateGroup_JackDragon	__thiscall	EDragonState	1	CAIStateGroup_JackDragon *	1	yes	accepted									
 009500a0	Cleanup	CAIStateGroup_JackDragon	__thiscall	void	1	CAIStateGroup_JackDragon *	1	yes	accepted									
-009500e0	?OnActivate@CAIStateGroup_JackDragon@@UAEXXZ	CAIStateGroup_JackDragon	__thiscall	void	1	CAIStateGroup_JackDragon *	1	yes	accepted									
+009500e0	OnActivate	CAIStateGroup_JackDragon	__thiscall	void	1	CAIStateGroup_JackDragon *	1	yes	accepted									
 00950950	WaitForAnimLoop	CAIStateGroup_JackDragon	__thiscall	void	2	CAIStateGroup_JackDragon *,float	1	yes	accepted									
 00950a30	ChooseIntoGroundState	CAIStateGroup_JackDragon	__thiscall	EDragonState	1	CAIStateGroup_JackDragon *	1	yes	accepted									
 00950b20	FindHitEvent	CAIStateGroup_JackDragon	__thiscall	bool	1	CAIStateGroup_JackDragon *	1	yes	accepted									

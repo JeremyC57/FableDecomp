@@ -1,0 +1,13 @@
+- q.py does not read a source's `// Flags:` line; pass `--flags /GS` or a /GS row grades without its cookie (0x007EBEA0).
+- Export FABLE_HDR_OVERLAY before EVERY grade: without it the opt-in macros are silently ignored and the row still compiles (0x00A15890 2047 vs 1999).
+- The biased frame-pointer prologue (`push ebp; lea ebp,[esp-78h]`) comes from `#pragma optimize("s", on)` alone; adding optimize("y", off) gives a plain ebp frame (0x00491AD2).
+- Under /Os VC7.1 calls plain inline bodies out of line; where retail expands them, add a per-TU `__forceinline` opt-in (CWideString operator==, CCharString::StartsWith; 0x00491AD2).
+- A missing char_traits<unsigned short>::length body blocks an STLport basic_string==text instantiation; declare the explicit specialization in the header and bind it out of line (0x00404280).
+- Do not write a local std::vector / allocator next to fable_containers.h: C2953 surfaces as a misleading "2 overloads" error, and q.py shows only the last 3000 chars, so call V.cl to see the first error (0x00491AD2).
+- An `add reg,0Ch ... +8` pointer split instead of a folded +0x14 means retail reads through a sub-object pointer; model the sub-object (0x00BC6DB0).
+- Member-wise assignment of a C3DVector (X, Y, Z) reproduces retail's order where a ctor or copy-then-overwrite does not (0x00BC6DB0).
+- All five same-type lookups in ONE block with one out-pointer let the dead pointer's slot take the spill (0x009500E0).
+- `a = b = f();` stores b first; use the chain where retail stores the later member first (0x009500E0).
+- An IntelligentPointer ctor taking `T* const&` loads the source after the base ctor, as retail; by-value T* loads it before (0x009500E0).
+- VC7.1's inliner can expand a push_back inside a loop yet call it out of line before the loop (budget). FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE is all-or-nothing, so it cannot reproduce that split (0x00A15890).
+- Declaring loop-local scalars (first / blocked / start) once before the loop changes the frame size (0x9C to 0x94 at 0x00A15890); try it when the frame is too big.

@@ -11,6 +11,10 @@
 // Retail CWideStringData (Ego_r TPI: protected Data, public NoRefs at +0x0C, const operator==); the STLport
 // basic_string<unsigned short> is the three-pointer string of stlport/fable_string.h (0x10 bytes in all).
 #include "stlport/fable_string.h"
+#ifdef FABLE_RETAIL_CWIDESTRING_TEXT_EQ
+// (chunk 784) the wide text comparison is out of line in retail (0x00404280; char_traits<unsigned short>::length has no body here).
+namespace std { template<> bool operator==(const basic_string<unsigned short>&,const unsigned short*); }
+#endif
 class CWideStringData
 {
 protected:
@@ -18,6 +22,12 @@ protected:
 public:
     long NoRefs;
     bool operator==(const CWideStringData& other) const { const std::basic_string<unsigned short>& other_data=other.Data; return Data==other_data; }
+#ifdef FABLE_RETAIL_CWIDESTRING_TEXT_EQ
+    // Retail opt-in (chunk 784, row 0x00491AD2 CSubtitleRenderer::ProcessEmbeddedHighlightTags): the text comparison under the
+    // inline CWideString::operator==(const wchar_t*) below; retail calls the STLport operator== 0x00404280 out of line
+    // (??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z).
+    bool operator==(const unsigned short* text) const { return Data==text; }
+#endif
 };
 #else
 class CWideStringData
@@ -114,6 +124,12 @@ public:
         const CCharString& text);
 #ifdef FABLE_RETAIL_CWIDESTRING
     CCharString ToCharString() const;                          // ?ToCharString@CWideString@@QBE?AVCCharString@@XZ
+#ifdef FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ
+    // Per-TU inline opt-in (chunk 784, row 0x00491AD2; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ): the size-optimised
+    // CSubtitleRenderer TU expands both operator== bodies in place (0x00491CF6..0x00491D1B, 0x0049227C..0x004922A7) where the plain
+    // inline operators are called out of line.
+    __forceinline
+#endif
     bool operator==(const CWideString& other) const            // inline in retail (FableWin ??8CWideString@@QBE_NABV0@@Z)
     {
         if(PStringData==other.PStringData)return true;
@@ -121,6 +137,19 @@ public:
         return *PStringData==*other.PStringData;
     }
     bool Contains(const CWideString& other) const;             // ?Contains@CWideString@@QBE_NABV1@@Z
+#ifdef FABLE_RETAIL_CWIDESTRING_TEXT_EQ
+    // Retail opt-in (chunk 784, row 0x00491AD2): FableWin.pdb ??8CWideString@@QBE_NPBG@Z, inline in retail (0x0049227C..0x004922A7:
+    // a null string compares the literal with "" through wcscmp 0x00BFE94C, else the STLport text operator== 0x00404280).
+#ifdef FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ
+    __forceinline
+#endif
+    bool operator==(const wchar_t* text) const { if(!PStringData) { if(wcscmp(text,L"")==0) return true; return false; } return *PStringData==text; }
+#endif
+#ifdef FABLE_RETAIL_CWIDESTRING_SUBSTRING
+    // Retail opt-in (chunk 784, row 0x00491AD2): Ego_r.pdb / FableWin.pdb ?GetSubString@CWideString@@QBE?AV1@KK@Z, out of line;
+    // (start, end) as the CSubtitleRenderer callers use it (0x00491B44: GetSubString(open + 1, close) for the text between '<' '>').
+    CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
+#endif
     void Replace(const CWideString& search, const CWideString& replacement);   // 0x0099C1E0 ?Replace@CWideString@@QAEXABV1@0@Z (Ego_r + FableWin)
 #endif
 
@@ -203,6 +232,12 @@ public:
     // dec eax`; the `PStringData ? ... : 0` form adds `jmp; xor eax,eax`, 1068v1064); 0x00521620 / 0x00522720 are byte-identical either way.
     long GetLength() const { return PStringData==0 ? 0 : (long)PStringData->Data.GetLength(); }
     bool IsEmpty() const { return GetLength() == 0; }
+#ifdef FABLE_RETAIL_CCHARSTRING_STARTSWITH
+    // Retail opt-in (chunk 784, row 0x00491AD2): Ego_r.pdb ?StartsWith@CCharString@@QBE_NABV1@@Z, inline in retail (0x004920BE..0x004920F6:
+    // the prefix's data / length from one null test, strncmp 0x00BFEAF8 on this string's GetAsCharArray, `neg ; sbb ; inc`).
+    // __forceinline: the size-optimised CSubtitleRenderer TU expands it in place where a plain inline body is called out of line.
+    __forceinline bool StartsWith(const CCharString& prefix) const { return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
+#endif
     // Ego_r 0x004037B0 / FableWin 0x0186C770 ?GetAsCharArray@CCharString@@QBEPBDXZ and FableWin 0x01899D30
     // ??8CCharString@@QBE_NPBD@Z, both inline in retail (0x00AE8D50 expands GetAsCharArray: `test; jne; mov eax,offset NullChar; jmp; mov eax,[eax]`;
     // the landed local models spell the same ternary). NullChar is 0x0129AAF4 (static data member per the Ego_r TPI as Codex pass 12 read it).

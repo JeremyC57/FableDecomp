@@ -61,6 +61,13 @@ public:
     // (the CRenderManager2D overload; the CDisplayManager one is 0x009BE420). Draw calls it on the render manager with (colour, 0).
     void ClearRenderTarget(const CRGBColour&,unsigned long);              // 0x009D8CF0
 #endif
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D_VIEWPORTBOXFLOAT
+    // Retail opt-in (chunk 784, row 0x00BC6DB0 CEnginePrimitiveManagerText::RenderSubPrimitive): the out-of-line viewport box getter
+    // 0x00A0AAA0 (`ret`, returns the address of the float viewport box), called on NEngineInternal::GPRenderManager (0x01436E18) there and
+    // on `this` by the landed CRenderManager2D::Add2DTri 0x009DC030; bound spelling ?GetViewportBoxFloat@CRenderManager2D@@QBEABVC2DBoxF@@XZ
+    // (rebuild/oracles/reloc_bindings.tsv). No PDB record (neither Ego_r nor FableWin lists it). A declaration only: no layout change.
+    const C2DBoxF& GetViewportBoxFloat() const;                          // 0x00A0AAA0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CRenderManager2D) == 0x3ea4);
 #endif // FABLE_ENGINE_CRENDERMANAGER2D_H

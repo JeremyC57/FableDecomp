@@ -1,0 +1,8 @@
+address	label	evidence
+0x00A15890	CNavigatorManager::OutputWorld	Ego_r.pdb + FableWin.pdb ?OutputWorld@CNavigatorManager@@QAEXABVC2DVector@@E@Z (donor order, chunk 783 NOTES), and the body writes nav.data for FablePathVisualiser. The catalog label InitializeNavigationData is wrong.
+0x0048DAA2	CFontBank::GetStringExtents	see NAME_FIXES.tsv (catalog CGuiControlListBox::SelectEntryFromName)
+0x00442870	std::vector<CSubtitleRenderer::CEmbeddedHighlight>::~vector	see NAME_FIXES.tsv
+0x009A0EF0	CStreamingFontBank::SetUseFixedFunction	see NAME_FIXES.tsv
+0x013C5A7C	CStreamingFontBank fixed-function flag (descriptive: UseFixedFunction)	written only by SetUseFixedFunction 0x009A0EF0 and read by RenderSubPrimitive 0x00BC6DB0. Its PDB name is not found, so the name is descriptive.
+0x00A93A60	CCountedPointer<C3DClothPrimitive>::DeleteData	see NAME_FIXES.tsv
+0x00A98600	std::vector<CCountedPointer<C3DClothPrimitive> >::resize	see NAME_FIXES.tsv

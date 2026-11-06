@@ -1,0 +1,2 @@
+address	source	grade_with_final_overlay	note
+-	-	-	No default path changed: every overlay edit is behind a new FABLE_RETAIL_* opt-in macro that no landed source defines, so no landed includer can change. No includer recheck needed (brief: required only when the default path changes).

@@ -36871,3 +36871,5 @@ _New_c35b10@8	00c35b10	00c275e0
 ?WatchForSurprisingBalverines@CQ_TraderEscortScript@NScript@@QAEXXZ	00e06050	00e00db0
 ??4?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QAEAAV01@ABV01@@Z	00432b38	004321f0
 ??4CResource@@QAEAAV0@ABV0@@Z	00431f60	004321f0
+??$GetSubDef@VCJackDragonDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCJackDragonDef@@@@@Z	008e3300	009500e0
+?PreloadAnims@CThingCreatureBase@@QAEXXZ	00663140	009500e0
