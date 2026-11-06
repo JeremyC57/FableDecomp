@@ -27,6 +27,28 @@ public:
     virtual void Main();
     virtual void Init();                                                 // 0x00D03610
     void WatchForTermination();                                          // 0x00D04260
+    // Retail opt-in (chunk 787): the spawned thread bodies Main 0x00D038E0 hands to CSpawnedFunc (thread-name literals + Ego_r.pdb
+    //   ?<Name>@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ), and the nested entity scripts its bindings allocate (Ego_r.pdb
+    //   ?Alloc@<Class>@CQ_BanditCampBossBattleScript@NScript@@SI...); declarations only, no layout change.
+    void BanditKingMissionProcess();                                     // 0x00D109F0
+    void WatchForBanditCampGates();                                      // 0x00D04770
+    void ProcessHostageCutscenes();                                      // 0x00D0FE80
+    void CheckForFirstAreaMassacre();                                    // 0x00D0EE70
+    void CheckForSecondAreaMassacre();                                   // 0x00D0F640
+    void CheckForSecondAreaDoorHelp();                                   // 0x00D043A0
+    class CGate2Guard1;                                                  // Alloc 0x00D071F0
+    class CBCGameMaster;                                                 // Alloc 0x00D066B0
+    class CAssassinMarker;                                               // Alloc 0x00D048C0
+    class CAssassin1;                                                    // Alloc 0x00D04990
+    class CAssassin2;                                                    // Alloc 0x00D05910
+    class CAssassin3;                                                    // Alloc 0x00D05FE0
+    class CCampHostage;                                                  // Alloc 0x00D07D20
+    class CCampHostage2;                                                 // Alloc 0x00D08670
+    class CCampHostageDoor;                                              // Alloc 0x00D08A70
+    class CCampHostageGuard;                                             // Alloc 0x00D08E50
+    class CBanditForger;                                                 // Alloc 0x00D0C2C0
+    class CBanditKing;                                                   // Alloc 0x00D0A700
+    class CCROWDBANDITS;                                                 // Alloc 0x00D0B2D0
     bool AttackedOuterGateGuards;                                        // +0x48
     bool AttackedGate2OuterGuard;                                        // +0x49
     bool AttackedGate3OuterGuard;                                        // +0x4a

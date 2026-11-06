@@ -384364,6 +384364,48 @@ $catalog = @(
         TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Main_00eadbb0_test.cpp'
         PassPattern = '00eadbb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cf9a50'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/cf/NScriptCQAmbushTradersScript_Init_00cf9a50.cpp'
+        TestSource = '00/cf/NScriptCQAmbushTradersScript_Init_00cf9a50_test.cpp'
+        PassPattern = '00cf9a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfb080'
+        Module = 'NScript::CQ_AwakeningTheOracleScript'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScript_Main_00cfb080.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScript_Main_00cfb080_test.cpp'
+        PassPattern = '00cfb080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d038e0'
+        Module = 'NScript::CQ_BanditCampBossBattleScript'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScript_Main_00d038e0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScript_Main_00d038e0_test.cpp'
+        PassPattern = '00d038e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da34b0'
+        Module = 'NScript::CQ_MinionClifftopChaseScript'
+        Source = '00/da/NScriptCQMinionClifftopChaseScript_Main_00da34b0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScript_Main_00da34b0_test.cpp'
+        PassPattern = '00da34b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de0850'
+        Module = 'NScript::CQ_RansomVictimScript'
+        Source = '00/de/NScriptCQRansomVictimScript_Main_00de0850.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScript_Main_00de0850_test.cpp'
+        PassPattern = '00de0850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfa450'
+        Module = 'NScript::CQ_TraderConflictGoodScript'
+        Source = '00/df/NScriptCQTraderConflictGoodScript_Main_00dfa450.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScript_Main_00dfa450_test.cpp'
+        PassPattern = '00dfa450_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

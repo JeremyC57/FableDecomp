@@ -27360,3 +27360,9 @@ chunk	address	module	name	length
 787	00dfa450	NScript::CQ_TraderConflictGoodScript	Main	2640
 787	00da34b0	NScript::CQ_MinionClifftopChaseScript	Main	2681
 787	00cfb080	NScript::CQ_AwakeningTheOracleScript	Main	2699
+788	00d8dd10	NScript::CQ_HobbeCaveScript	Main	3194
+788	00d84d60	NScript::CQ_HeroSoulsGuildmasterScript	Main	3259
+788	00d7c890	NScript::CQ_HeroSoulsArenaScript	Main	3736
+788	00f024c0	NScript::CQ_AmbushTradersScript	Main	3503
+788	00e693f0	NScript::CV_ChapelOfEvilScript	Main	2832
+788	00edb190	NScript::CV_TempleOfLightScript	Main	2711

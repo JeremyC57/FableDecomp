@@ -1,0 +1,15 @@
+address	name	evidence
+00d038e0	NScript::CQ_BanditCampBossBattleScript::Main	landing 2026-11-05n (chunk 787): row matched (RELOCATION_MATCH); PDB ?Main@CQ_BanditCampBossBattleScript@NScript@@UAEXXZ
+00d109f0	NScript::CQ_BanditCampBossBattleScript::BanditKingMissionProcess	landing 2026-11-05n (chunk 787): unlabelled; only ref is CSpawnedFunc in Main 0xD038E0 paired with literal "BanditKingMissionProcess"; PDB name set
+00d0fe80	NScript::CQ_BanditCampBossBattleScript::ProcessHostageCutscenes	landing 2026-11-05n (chunk 787): unlabelled; Main 0xD038E0 literal "ProcessHostageCutscenes"; PDB name set
+00d0ee70	NScript::CQ_BanditCampBossBattleScript::CheckForFirstAreaMassacre	landing 2026-11-05n (chunk 787): was Quest009_BanditCamp_Outer_OnLoad; Main 0xD038E0 literal "CheckForFirstAreaMassacre"; PDB name set
+00d0f640	NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaMassacre	landing 2026-11-05n (chunk 787): was Quest009_BanditCamp_Residential_OnLoad; Main 0xD038E0 literal "CheckForSecondAreaMassacre"; PDB name set
+00d0b2d0	NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::Alloc	landing 2026-11-05n (chunk 787): unlabelled; binding "CROWDBANDITS" in Main 0xD038E0; PDB ?Alloc@CCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@SI...
+00da34b0	NScript::CQ_MinionClifftopChaseScript::Main	landing 2026-11-05n (chunk 787): row matched; PDB ?Main@CQ_MinionClifftopChaseScript@NScript@@UAEXXZ
+00de0850	NScript::CQ_RansomVictimScript::Main	landing 2026-11-05n (chunk 787): row matched; PDB ?Main@CQ_RansomVictimScript@NScript@@UAEXXZ
+00de4710	NScript::CQ_RansomVictimScript::DisappearFollowers	landing 2026-11-05n (chunk 787): was Script_Witchwood_Cavern_Load; Main 0xDE0850 literal "DisappearFollowers"; PDB name set
+00dfa450	NScript::CQ_TraderConflictGoodScript::Main	landing 2026-11-05n (chunk 787): row matched; PDB ?Main@CQ_TraderConflictGoodScript@NScript@@UAEXXZ
+00dfcc10	NScript::CQ_TraderConflictGoodScript::WatchForTradersFreed	landing 2026-11-05n (chunk 787): was FUN_00dfcc10; Main 0xDFA450 literal "WatchForTradersFreed"; PDB name set
+00cfb080	NScript::CQ_AwakeningTheOracleScript::Main	landing 2026-11-05n (chunk 787): row matched; PDB ?Main@CQ_AwakeningTheOracleScript@NScript@@UAEXXZ
+00cff110	NScript::CQ_AwakeningTheOracleScript::WatchForAliveTablets	landing 2026-11-05n (chunk 787): unlabelled; Main 0xCFB080 literal "WatchForAliveTablets"; PDB name set
+00cf9a50	NScript::CQ_AmbushTradersScript::Init	landing 2026-11-05n (chunk 787): row matched; PDB ?Init@CQ_AmbushTradersScript@NScript@@UAEXXZ

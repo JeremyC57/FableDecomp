@@ -1,0 +1,7 @@
+address	module	name	length
+00cf9a50	NScript::CQ_AmbushTradersScript	Init	2199
+00d038e0	NScript::CQ_BanditCampBossBattleScript	Main	2419
+00de0850	NScript::CQ_RansomVictimScript	Main	2606
+00dfa450	NScript::CQ_TraderConflictGoodScript	Main	2640
+00da34b0	NScript::CQ_MinionClifftopChaseScript	Main	2681
+00cfb080	NScript::CQ_AwakeningTheOracleScript	Main	2699

@@ -1,0 +1,9 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+008ADF10	??A?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@QAEAA_NABVCCharString@@@Z	PDB name set (egor) + caller CQ_AmbushTradersScript::Init 0xCF9A50 indexes map<CCharString,bool> CSFlagMap; STLport 4.6 map::operator[]	Map::lookup; GossipMap::lookup; CCutsceneFlagMap::operator[]; CBoolMap::operator[]
+00D04770	?WatchForBanditCampGates@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ	PDB name set + sole ref CSpawnedFunc in 0xD038E0 with literal	CV_ChapelOfEvilScript::EndMission (label)
+00D0EE70	?CheckForFirstAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ	PDB name set + sole ref in 0xD038E0 with literal	Quest009_BanditCamp_Outer_OnLoad (label)
+00D0F640	?CheckForSecondAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ	PDB name set + sole ref in 0xD038E0 with literal	Quest009_BanditCamp_Residential_OnLoad (label)
+00D043A0	?CheckForSecondAreaDoorHelp@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ	PDB has only this class's method + sole ref in 0xD038E0	CQ_BanditCampScript::CheckForSecondAreaDoorHelp (catalog)
+00DA3F40	?WatchForTermination@CQ_MinionClifftopChaseScript@NScript@@QAEXXZ	PDB name set + sole ref in 0xDA34B0 with literal "WatchForTermination"	CQ_MinionClifftopChaseScript::ProcessMission (label)
+00DE1770	?WatchForNewRegion@CQ_RansomVictimScript@NScript@@QAEXXZ	PDB name set + sole ref in 0xDE0850 with literal	CV_ChapelOfEvilScript::EndMission (label)
+00DE4710	?DisappearFollowers@CQ_RansomVictimScript@NScript@@QAEXXZ	PDB name set + sole ref in 0xDE0850 with literal	Script_Witchwood_Cavern_Load (label)

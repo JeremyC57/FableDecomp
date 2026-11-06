@@ -1,0 +1,30 @@
+addr       parity           behav  name
+00cf9a50   RELOCATION_MATCH PASS   Init
+00cfb080   RELOCATION_MATCH PASS   Main
+00d038e0   WARN RELOC_NAME: ?WatchForBanditCampGates@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ -> 00d04770 labelled 'CV_ChapelOfEvilScript::EndMission'
+00d038e0   WARN RELOC_NAME: ?CheckForFirstAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ -> 00d0ee70 labelled 'Quest009_BanditCamp_Outer_OnLoad'
+00d038e0   WARN RELOC_NAME: ?CheckForSecondAreaMassacre@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ -> 00d0f640 labelled 'Quest009_BanditCamp_Residential_OnLoad'
+00d038e0   RELOCATION_MATCH PASS   Main
+00da34b0   WARN RELOC_NAME: ?WatchForTermination@CQ_MinionClifftopChaseScript@NScript@@QAEXXZ -> 00da3f40 labelled 'CQ_MinionClifftopChaseScript::ProcessMission'
+00da34b0   RELOCATION_MATCH PASS   Main
+00de0850   WARN RELOC_NAME: ?WatchForNewRegion@CQ_RansomVictimScript@NScript@@QAEXXZ -> 00de1770 labelled 'CV_ChapelOfEvilScript::EndMission'
+00de0850   WARN RELOC_NAME: ?DisappearFollowers@CQ_RansomVictimScript@NScript@@QAEXXZ -> 00de4710 labelled 'Script_Witchwood_Cavern_Load'
+00de0850   RELOCATION_MATCH PASS   Main
+00dfa450   WARN RELOC_NAME: ?WatchForTradersFreed@CQ_TraderConflictGoodScript@NScript@@QAEXXZ -> 00dfcc10 labelled '_global::FUN_00dfcc10'
+00dfa450   RELOCATION_MATCH PASS   Main
+
+WINS: 6
+  00cf9a50 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?Init@CQ_AmbushTradersScript@NScript@@UAEXXZ
+  00cfb080 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::?Main@CQ_AwakeningTheOracleScript@NScript@@UAEXXZ
+  00d038e0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::?Main@CQ_BanditCampBossBattleScript@NScript@@UAEXXZ
+  00da34b0 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::?Main@CQ_MinionClifftopChaseScript@NScript@@UAEXXZ
+  00de0850 RELOCATION_MATCH NScript::CQ_RansomVictimScript::?Main@CQ_RansomVictimScript@NScript@@UAEXXZ
+  00dfa450 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::?Main@CQ_TraderConflictGoodScript@NScript@@UAEXXZ
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  NScriptCQAmbushTradersScript_Init_00cf9a50
+  NScriptCQAwakeningTheOracleScript_Main_00cfb080
+  NScriptCQBanditCampBossBattleScript_Main_00d038e0
+  NScriptCQMinionClifftopChaseScript_Main_00da34b0
+  NScriptCQRansomVictimScript_Main_00de0850
+  NScriptCQTraderConflictGoodScript_Main_00dfa450

@@ -1,0 +1,21 @@
+address	Class::Name	evidence
+00D038E0	NScript::CQ_BanditCampBossBattleScript::Main	row matched (RELOCATION_MATCH); PDB ?Main@CQ_BanditCampBossBattleScript@NScript@@UAEXXZ
+00D109F0	NScript::CQ_BanditCampBossBattleScript::BanditKingMissionProcess	unlabelled; only ref is CSpawnedFunc in Main 0xD038E0 paired with literal "BanditKingMissionProcess"; PDB name set
+00D04770	NScript::CQ_BanditCampBossBattleScript::WatchForBanditCampGates	was CV_ChapelOfEvilScript::EndMission; Main 0xD038E0 spawns it with literal "WatchForBanditCampGates"; PDB name set
+00D0FE80	NScript::CQ_BanditCampBossBattleScript::ProcessHostageCutscenes	unlabelled; Main 0xD038E0 literal "ProcessHostageCutscenes"; PDB name set
+00D0EE70	NScript::CQ_BanditCampBossBattleScript::CheckForFirstAreaMassacre	was Quest009_BanditCamp_Outer_OnLoad; Main 0xD038E0 literal "CheckForFirstAreaMassacre"; PDB name set
+00D0F640	NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaMassacre	was Quest009_BanditCamp_Residential_OnLoad; Main 0xD038E0 literal "CheckForSecondAreaMassacre"; PDB name set
+00D043A0	NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaDoorHelp	catalog says CQ_BanditCampScript::; PDB has only the CQ_BanditCampBossBattleScript method; Main 0xD038E0 literal
+00D0B2D0	NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::Alloc	unlabelled; binding "CROWDBANDITS" in Main 0xD038E0; PDB ?Alloc@CCROWDBANDITS@CQ_BanditCampBossBattleScript@NScript@@SI...
+00DA34B0	NScript::CQ_MinionClifftopChaseScript::Main	row matched; PDB ?Main@CQ_MinionClifftopChaseScript@NScript@@UAEXXZ
+00DA3F40	NScript::CQ_MinionClifftopChaseScript::WatchForTermination	was CQ_MinionClifftopChaseScript::ProcessMission; Main 0xDA34B0 pairs literal "WatchForTermination"; PDB name set
+00DA8510	NScript::CQ_MinionClifftopChaseScript::ProcessMission	catalog lacks NScript::; Main 0xDA34B0 literal "ProcessMission"; PDB name set
+00DE0850	NScript::CQ_RansomVictimScript::Main	row matched; PDB ?Main@CQ_RansomVictimScript@NScript@@UAEXXZ
+00DE1770	NScript::CQ_RansomVictimScript::WatchForNewRegion	was CV_ChapelOfEvilScript::EndMission; Main 0xDE0850 literal "WatchForNewRegion"; PDB name set
+00DE4710	NScript::CQ_RansomVictimScript::DisappearFollowers	was Script_Witchwood_Cavern_Load; Main 0xDE0850 literal "DisappearFollowers"; PDB name set
+00DFA450	NScript::CQ_TraderConflictGoodScript::Main	row matched; PDB ?Main@CQ_TraderConflictGoodScript@NScript@@UAEXXZ
+00DFCC10	NScript::CQ_TraderConflictGoodScript::WatchForTradersFreed	was FUN_00dfcc10; Main 0xDFA450 literal "WatchForTradersFreed"; PDB name set
+00CFB080	NScript::CQ_AwakeningTheOracleScript::Main	row matched; PDB ?Main@CQ_AwakeningTheOracleScript@NScript@@UAEXXZ
+00CFF110	NScript::CQ_AwakeningTheOracleScript::WatchForAliveTablets	unlabelled; Main 0xCFB080 literal "WatchForAliveTablets"; PDB name set
+00CF9A50	NScript::CQ_AmbushTradersScript::Init	row matched; PDB ?Init@CQ_AmbushTradersScript@NScript@@UAEXXZ
+008ADF10	std::map<CCharString,bool>::operator[]	called by CSFlagMap["ConvoyTrigger1"] in Init 0xCF9A50 (map<CCharString,bool> member); STLport 4.6 _M_t lower_bound+insert shape; PDB name set

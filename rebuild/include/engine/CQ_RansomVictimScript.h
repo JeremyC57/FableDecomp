@@ -16,6 +16,14 @@ public:
     virtual void Init();
     virtual void Main();
     void PlayCutscene(CCharString,CCharString);
+#ifdef FABLE_RETAIL_CQ_RANSOMVICTIMSCRIPT_METHODS
+    // Retail opt-in (chunk 787): the quest methods Main 0x00DE0850 calls or spawns (Ego_r.pdb ?<Name>@CQ_RansomVictimScript@NScript@@QAEXXZ;
+    //   the threads are named by their thread-name literals, GossipSetup is the landed row 0x00DE1280). Declarations only, no layout change.
+    void WatchForTermination();                                          // 0x00DE14A0
+    void WatchForNewRegion();                                            // 0x00DE1770
+    void DisappearFollowers();                                           // 0x00DE4710
+    void GossipSetup();                                                  // 0x00DE1280
+#endif
     bool QuestStartScreened; // +48
     bool MissionSucceeded; // +49
     bool MissionFailed; // +4a

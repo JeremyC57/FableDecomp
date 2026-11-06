@@ -1,0 +1,4 @@
+manifest 00d0ee70 _global::Quest009_BanditCamp_Outer_OnLoad -> NScript::CQ_BanditCampBossBattleScript::CheckForFirstAreaMassacre
+manifest 00d0f640 _global::Quest009_BanditCamp_Residential_OnLoad -> NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaMassacre
+manifest 00de4710 _global::Script_Witchwood_Cavern_Load -> NScript::CQ_RansomVictimScript::DisappearFollowers
+labels 14  catalog renamed 0  manifest renamed 3

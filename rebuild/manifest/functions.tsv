@@ -49496,8 +49496,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d0ede0	`scalar deleting destructor'	CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d0\CThingSwitch_vectordeletingdestructor_00d0ede0.cpp
 00d0ee10	OnPersist	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster	unknown	undefined	0		0			discovered	gapscan							
 00d0ee40	OnPersist	NScript::CQ_BanditCampBossBattleScript::CBanditForger	unknown	undefined	0		0			discovered	gapscan							
-00d0ee70	Quest009_BanditCamp_Outer_OnLoad	_global	unknown	undefined	0		0	yes	accepted									
-00d0f640	Quest009_BanditCamp_Residential_OnLoad	_global	unknown	undefined	0		0	yes	accepted									
+00d0ee70	CheckForFirstAreaMassacre	NScript::CQ_BanditCampBossBattleScript	unknown	undefined	0		0	yes	accepted									
+00d0f640	CheckForSecondAreaMassacre	NScript::CQ_BanditCampBossBattleScript	unknown	undefined	0		0	yes	accepted									
 00d11930	Main	NScript::CQ_BanditCampBossBattleScript::CAssassinMarker	unknown	undefined	0		0			discovered	gapscan							
 00d12920	Alloc	NScript::CQ_BanditCampBossBattleScript	__thiscall	CActionEventBase *	4	CActionEventShot *,long,CThingCreatureBase *,CGameCameraManager *	1	yes	accepted									
 00d12960	`scalar deleting destructor'	NScript::CQ_BanditCampBossBattleScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d1\CLandscapeBackgroundPatch_vectordeletingdestructor_00d12960.cpp
@@ -51530,7 +51530,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00de4610	OnPersist	NScript::CQ_RansomVictimScript::CVictimsFather	unknown	undefined	0		0			discovered	gapscan							
 00de4660	OnPersist	NScript::CQ_RansomVictimScript::CVictim	unknown	undefined	0		0			discovered	gapscan							
 00de46c0	OnPersist	NScript::CQ_RansomVictimScript::CNPCComment	unknown	undefined	0		0			discovered	gapscan							
-00de4710	Script_Witchwood_Cavern_Load	_global	unknown	undefined	0		0	yes	accepted									
+00de4710	DisappearFollowers	NScript::CQ_RansomVictimScript	unknown	undefined	0		0	yes	accepted									
 00de4cb0	Main	NScript::CQ_RansomVictimScript::CVictimsFather	unknown	undefined	0		0			discovered	gapscan							
 00de6730	PlayCutscene	CV_ExposeMayorScript	__thiscall	void	4	CV_ExposeMayorScript *,CCharString,bool,CCharString	1	yes	accepted									
 00de6c20	Main	NScript::CQ_RansomVictimScript::CVictim	unknown	undefined	0		0			discovered	gapscan							
