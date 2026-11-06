@@ -43,6 +43,10 @@ public:
     bool IsValid() const { return PD3DTexture != 0; }
     IDirect3DTexture9* GetD3DTexture() const { return PD3DTexture; }
     C2DExtentsI GetDimensions(unsigned long mipmapLevel) const;
+#ifdef FABLE_RETAIL_CTEXTURE_BLTTORENDERTARGET
+    // Retail opt-in (chunk 783): Ego_r.pdb 0x00B6A840 ?BltToRenderTargetWithGPU@CTexture@@QBEX_N00@Z = retail 0x009FA780 (`ret 0Ch`).
+    void BltToRenderTargetWithGPU(bool fullRenderTarget, bool scaleHalf, bool pointSample) const;   // 0x009FA780
+#endif
     IDirect3DTexture9* PD3DTexture;                                      // +0x00
     unsigned long      ByteLength : 28;                                  // +0x04 bits 0..27
     unsigned long      AllocationSource : 4;                             // +0x04 bits 28..31

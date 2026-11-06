@@ -51,6 +51,11 @@ public:
  // ?GetD3DDevice@CDisplayManager@@QAEPAUIDirect3DDevice9@@XZ (FableWin 0x030C99A0, debug only: inline in release; Codex pass 13
  // row 0x009DA9F0 CRenderManager2D::Render2DDrawList reads D3DDevice in place for DrawPrimitiveUP).
  IDirect3DDevice9* GetD3DDevice(){return D3DDevice;}
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_GETVIEWPORT
+ // Retail opt-in (chunk 783, row 0x009FA780): FableWin.pdb ?GetViewport@CDisplayManager@@QBEABVC2DBoxI@@XZ (debug only, inline in
+ // release): 0x009FA7FE..0x009FA828 copies ViewportBox (+0x1F4, Ego_r.pdb offset 500) field by field in place.
+ const C2DBoxI& GetViewport() const{return ViewportBox;}
+#endif
 #endif
 private:
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER

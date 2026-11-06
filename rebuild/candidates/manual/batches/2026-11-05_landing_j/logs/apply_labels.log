@@ -1,0 +1,3 @@
+manifest 004321f0 CSpecialAbilitiesBerserkDef::operator= -> NUISystem::CUIMiscThingsDef::operator=
+manifest 00a15890 _global::CNavigatorManager_InitializeNavigationData -> CNavigatorManager::OutputWorld
+labels 6  catalog renamed 0  manifest renamed 2

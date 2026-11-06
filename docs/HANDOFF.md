@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunk 782 landed; chunk 783 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-783 landed; chunk 784 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -26,10 +26,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
     6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
     wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
-  - **Running (the user: "continue authoring chunks on another agent"):** chunk 783 (`$S/w22/agent783`: CNavigatorManager,
-    CTexture, CSpecialAbilitiesBerserkDef::operator=, CTCActionUseBed::OnActionUse, two guard Mains). Chunk 782 landed 4 of 6
-    (`batches/2026-11-05_landing_i/`); DoInitialBalverineAttack and AttackPeople parked (`pending/2026-11-05_linux_hand782/`).
-    Land 783 like 782 (`landing_j`, `pending/2026-11-05_linux_hand783`, labels `2026-11-05j`, queue tag `land0511j`).
+  - **Running (the user: "continue authoring chunks on another agent"):** chunk 784 (`$S/w22/agent784`: CNavigatorManager::
+    OutputWorld and CTCActionUseBed::OnActionUse carried from 783, JackDragon OnActivate, Text RenderSubPrimitive,
+    C3DPrimitive2::LoadBinary, CSubtitleRenderer::ProcessEmbeddedHighlightTags). Land it like 782 / 783 (`landing_k`,
+    `pending/2026-11-05_linux_hand784`, labels `2026-11-05k`, queue tag `land0511k`).
+  - Chunk 782 landed 4 of 6 (`batches/2026-11-05_landing_i/`), chunk 783 landed 1 of 6 (`_landing_j/`: CUIMiscThingsDef::operator=;
+    3 parked in `pending/2026-11-05_linux_hand783/`).
   - Open naming decision: 0x0122DEDC (the shared 0.0f, 30+ spellings, no PDB name), like EPSILON / TWO_PI on 2026-11-01.
   - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.
 - Paused state before that (2026-11-05):

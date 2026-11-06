@@ -1,0 +1,7 @@
+address	source	grade_with_final_overlay	note
+00432e60	rebuild/src/compiled/00/43/CFrontEndDef_operator_00432e60.cpp	RELOCATION_MATCH	def-TU sibling of 0x004321F0 (same CDefClassBase / CResource / CParentDefClassBase headers); regraded read-only with the final chunk 783 overlay (q.py); every overlay change is opt-in or a new header
+009fa1c0	rebuild/src/compiled/00/9f/CTexture_Assignment_009fa1c0.cpp	MATCH	CTexture sibling (engine/CTexture.h overlay); regraded read-only
+009f9d00	rebuild/src/compiled/00/9f/CTexture_CTexture_009f9d00.cpp	MATCH	CTexture sibling; regraded read-only
+00d07410	rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate3Guard_Init_00d07410.cpp	RELOCATION_MATCH	CGate3Guard sibling (row-local model; the new CQ_BanditCampBossBattleScript.h has no includer yet); regraded read-only
+00ddb570	rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_Init_00ddb570.cpp	RELOCATION_MATCH	CPrisonRaceGuard sibling (row-local model; the new CQ_PrisonRaceScript.h has no includer yet); regraded read-only
+00e6fc40	rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFDragon_Main_00e6fc40.cpp	RELOCATION_MATCH	the quest-Main model the two parked guard Mains follow (CLevelScriptBase / CEntityScriptBase / movie headers, none changed); regraded read-only

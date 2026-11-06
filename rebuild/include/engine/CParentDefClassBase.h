@@ -49,7 +49,22 @@ public:
     CParentDefClassBase();                                               // 0x00430370 (??0CParentDefClassBase@@QAE@XZ)
 #endif
     CParentDefClassBase(const CParentDefClassBase&);                     // 0x0046EE98 (??0CParentDefClassBase@@QAE@ABV0@@Z)
-#ifndef FABLE_RETAIL_PDCB_IMPLICIT_ASSIGN
+#if defined(FABLE_RETAIL_PDCB_FORCEINLINE_ASSIGN) && defined(FABLE_PDCB_TYPED_MEMBERS)
+    // Retail opt-in (chunk 783, row 0x004321F0 NUISystem::CUIMiscThingsDef::operator=): the /O2 expanders of the def TU at
+    // 0x00431ED0.. (0x004321F0, and the landed row-local models 0x00432C70, 0x00432E60, 0x00434450, 0x004345A0) expand this
+    // assignment AND the CDefClassBase one inside it; only the CResource copy 0x00431F60 stays a call. As the comment above
+    // records, no implicit / inline / out-of-line form gives that at /O2 (0x004321F0: implicit -> call 0x00431ED0 COMDAT,
+    // plain inline -> the same call; DIFFER 2031v2117); the member-wise body forced inline gives retail's bytes. Use with
+    // FABLE_RETAIL_CDEFCLASSBASE_IMPLICIT_ASSIGN (engine/CDefClassBase.h), FABLE_RETAIL_CRESOURCE_ASSIGN (engine/CResource.h)
+    // and FABLE_PDCB_TYPED_MEMBERS.
+    __forceinline CParentDefClassBase& operator=(const CParentDefClassBase& other)
+    {
+        CDefClassBase::operator=(other);
+        InstantiationName = other.InstantiationName;
+        SubDefInfoMap = other.SubDefInfoMap;
+        return *this;
+    }
+#elif !defined(FABLE_RETAIL_PDCB_IMPLICIT_ASSIGN)
     CParentDefClassBase& operator=(const CParentDefClassBase&);          // 0x00431ED0 (??4CParentDefClassBase@@QAEAAV0@ABV0@@Z)
 #else
     // Retail opt-in (chunk 778, row 0x00631720 NUISystem::CUIDef::operator=): operator= is the implicit one (0x00431ED0 is its

@@ -384308,6 +384308,13 @@ $catalog = @(
         TestSource = '00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_DoDealWithHero_00eb4760_test.cpp'
         PassPattern = '00eb4760_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004321f0'
+        Module = 'NUISystem::CUIMiscThingsDef'
+        Source = '00/43/NUISystemCUIMiscThingsDef_operator_004321f0.cpp'
+        TestSource = '00/43/NUISystemCUIMiscThingsDef_operator_004321f0_test.cpp'
+        PassPattern = '004321f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -27336,3 +27336,9 @@ chunk	address	module	name	length
 783	007ebea0	CTCActionUseBed	OnActionUse	2145
 783	00ddb720	NScript::CPrisonRaceGuard	Main	2158
 783	00d07490	NScript::CGate3Guard	Main	2182
+784	00a15890	CNavigatorManager	OutputWorld	1973
+784	007ebea0	CTCActionUseBed	OnActionUse	2145
+784	009500e0	CAIStateGroup_JackDragon	OnActivate	2154
+784	00bc6db0	CEnginePrimitiveManagerText	RenderSubPrimitive	2217
+784	00a92900	C3DPrimitive2	LoadBinary	2274
+784	00491ad2	CSubtitleRenderer	ProcessEmbeddedHighlightTags	2223

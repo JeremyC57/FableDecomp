@@ -46,7 +46,15 @@ public:
         long OriginalParentDefIndex;                                     // +0x04
     };
     CDefClassBase(const CDefClassBase&);                                 // 0x0046644C
+#ifndef FABLE_RETAIL_CDEFCLASSBASE_IMPLICIT_ASSIGN
     CDefClassBase& operator=(const CDefClassBase&);                      // 0x00431F10 (Ego_r ??4CDefClassBase@@QAEAAV0@ABV0@@Z; out of line: an implicit one inlines the 0x00431F60 base copy, retail calls it)
+#else
+    // Retail opt-in (chunk 783, row 0x004321F0 NUISystem::CUIMiscThingsDef::operator=): operator= is the implicit one. In the
+    // def TU that emits its out-of-line COMDAT 0x00431F10, retail expands it inline in the implicit derived assignments
+    // (0x004321FB: call 0x00431F60, PDefManager +0x1c, GlobalIndex +0x20, then the three bits of +0x24 as xor/and/xor merges;
+    // the landed CFrontEndDef 0x00432E60 / CEngineVideoOptionsDef 0x00434450 show the same). The base copy 0x00431F60 stays a
+    // call: pair this with FABLE_RETAIL_CRESOURCE_ASSIGN (engine/CResource.h).
+#endif
     template <class T> bool GetSubDef(CDefPointer<const T>*) const;      // Ego_r ??$GetSubDef@V..@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBV..@@@@@Z
     bool AreDefaultValsApplied() const { return DefaultValsApplied; }    // FableWin.pdb ?AreDefaultValsApplied@CDefClassBase@@QBE_NXZ
     void SetDefaultValsApplied(bool value) { DefaultValsApplied = value; }   // FableWin.pdb ?SetDefaultValsApplied@CDefClassBase@@QAEX_N@Z

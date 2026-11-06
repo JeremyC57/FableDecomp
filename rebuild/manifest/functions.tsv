@@ -1196,7 +1196,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0043212b	_M_allocate_and_copy	std::vector<std::pair<unsigned long, CDefClassBase::CSubDefInfo> >	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x0043212B_global_Vector_AllocateAndCopy.cpp				
 00432180	Alloc	CControlsDef	unknown	undefined	0		0			discovered	gapscan							
 004321e0	vfunc_19	NUISystem::CUIMiscThingsDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-004321f0	operator=	CSpecialAbilitiesBerserkDef	__thiscall	CSpecialAbilitiesBerserkDef *	2	CSpecialAbilitiesBerserkDef *,CSpecialAbilitiesBerserkDef *	1	yes	accepted									
+004321f0	operator=	NUISystem::CUIMiscThingsDef	__thiscall	CSpecialAbilitiesBerserkDef *	2	CSpecialAbilitiesBerserkDef *,CSpecialAbilitiesBerserkDef *	1	yes	accepted									
 00432a35	operator=	CRetailTree_00432aa8	unknown	undefined	0		0	yes	accepted									
 00432aa8	Copy	CRetailTree_00431471	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00432AA8_global_CTCCarryable_CloneTree.cpp				
 00432b38	operator=	CRetailTree_00432bab	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x00432B38_global_CTCCarryable_assign.cpp				
@@ -35961,7 +35961,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a15670	CNavigatorManager	CNavigatorManager	__thiscall	undefined	4	CNavigatorManager *,ulong,ulong *,CNavigatorManagerExternalInterface *	0	yes	accepted									
 00a156d0	AddNavigationMap	CNavigatorManager	__thiscall	void	3	CNavigatorManager *,long,CNavigationAreaInit *	1	yes	accepted									
 00a157c0	AddNavigationMap	CNavigatorManager	__thiscall	void	6	CNavigatorManager *,long,C2DBoxI *,CCharString *,CAFile *,CASuspendableProcess *	1	yes	accepted									
-00a15890	CNavigatorManager_InitializeNavigationData	_global	unknown	undefined	0		0	yes	accepted									
+00a15890	OutputWorld	CNavigatorManager	unknown	undefined	0		0	yes	accepted									
 00a16050	ActivateNavigationMap	CNavigatorManager	__thiscall	void	2	CNavigatorManager *,long	1	yes	accepted									
 00a16270	sub_00a16270	_global	unknown	undefined	0		0			discovered	gapscan							
 00a16400	CCountedPointer_Release_00a16400	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a1\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a16400.cpp

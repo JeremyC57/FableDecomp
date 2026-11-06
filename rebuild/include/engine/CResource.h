@@ -15,6 +15,12 @@ class CResourceList;
 class CResource : public CIVCountedPointeeBase {
 public:
     CResource();                                                         // 0x009FBEC0 (??0CResource@@QAE@XZ, bound)
+#ifdef FABLE_RETAIL_CRESOURCE_ASSIGN
+    // Retail opt-in (chunk 783, row 0x004321F0): the implicit-style member copy +0x04..+0x18 is the separate function
+    // 0x00431F60 (landed as ??4CResource@@QAEAAV0@ABV0@@Z; FableWin.pdb has the symbol), called from CDefClassBase::operator=
+    // 0x00431F19 and from every def assignment that expands it (0x004321FB, 0x00432E6B). Declared only, so it stays a call.
+    CResource& operator=(const CResource&);                              // 0x00431F60
+#endif
     virtual ~CResource();                                                // slot 0  0x004664FF (scalar deleting); ~CResource 0x009FC550
     virtual bool UnloadResource();                                       // slot 2  0x0042D940
     virtual unsigned long GetUnloadableMemory() const;                   // slot 3  0x009FBEF0

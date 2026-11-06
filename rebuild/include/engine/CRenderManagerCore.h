@@ -64,6 +64,13 @@ public:
     void EnableXBoxShaderConstants(bool enable);
     void SetVertexFormat(unsigned long);
     void FlushRender();
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_DRAWASINDEXEDTRIS
+    // Retail opt-in (chunk 783, row 0x009FA780 CTexture::BltToRenderTargetWithGPU): Ego_r.pdb 0x00B74460 / FableWin.pdb 0x030EC200
+    // ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPAPBVCTexture@@KPBXJJPAXJ@Z = retail 0x00A0AEA0 (7 arguments, `ret 1Ch`): texture
+    // array + count, the user vertices with stride and count, the 16-bit index list and the triangle count. Declaration only.
+    void DrawAsIndexedTris(const CTexture** textures, unsigned long textureCount, const void* vertices, long stride,
+                           long vertexCount, void* indices, long triangleCount);   // 0x00A0AEA0
+#endif
     bool IsRendering();
     void SetVWindow(const C2DBoxF&);                                     // 0x00A0B560 ?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z
     // ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z: inline in the original header, with the out-of-line COMDAT copy

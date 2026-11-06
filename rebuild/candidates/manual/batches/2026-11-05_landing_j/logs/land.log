@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004321f0   RELOCATION_MATCH PASS   operator=
+
+WINS: 1
+  004321f0 RELOCATION_MATCH NUISystem::CUIMiscThingsDef::??4CUIMiscThingsDef@NUISystem@@QAEAAV01@ABV01@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NUISystemCUIMiscThingsDef_operator_004321f0
