@@ -1,0 +1,2 @@
+address	source	grade_with_final_overlay	note
+-	-	-	no repo header changed: the three hdr/ headers (engine/CQ_ArenaHoldingScriptScript.h, engine/CV_SingingStonesScript.h, engine/CQ_HerosOldHouseScript.h) are new files with no landed includer (grep -rl over rebuild/src, rebuild/include, rebuild/candidates: none), so there is nothing to recheck

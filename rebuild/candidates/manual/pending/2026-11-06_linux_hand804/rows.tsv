@@ -1,0 +1,7 @@
+address	module	name	length
+00cf18d0	NScript::CQ_ArenaHoldingScriptScript::COakvaleFan	Main	4539
+00cf2b70	NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan	Main	4298
+00cf3d20	NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan	Main	4298
+00ed17d0	NScript::CV_SingingStonesScript::CManWithDoorName	Main	4279
+00dc4d70	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan	Main	4319
+00d8abf0	NScript::CQ_HerosOldHouseScript	sub_00d8abf0	4306

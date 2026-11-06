@@ -1,0 +1,64 @@
+# chunk 804 attempts log (one line per graded attempt: addr probe verdict difflines sdiff note)
+00cf18d0 oak_a1 DIFFER(4612v4539) 1314 368 first model: implicit movie ctor/dtor -> 3 movie ctor + 10 dtor COMDAT calls, &Me in ebp
+00cf18d0 oak_a2 SRC_FAIL - - MOVIEBASE_FORCEINLINE_CTOR with the PImp-dtor specialization after the movie header (C2908)
+00cf18d0 oak_a3 DIFFER(4676v4539) 392 123 spec before movie header + FORCEINLINE_CTOR: ctors inline; movie dtor still called at second-loop + exit sites
+00cf18d0 oak_a4 DIFFER(4618v4539) 535 17 MOVIEBASE_FORCEINLINE (ctor+dtor): every site expanded, but the user dtor adds a MovieBase vtable store (known gap ch797/800) + FadeOut arg order
+00cf18d0 oak_a5 DIFFER(4819v4539) 719 279 a3 without pause FORCEINLINE_CTOR: worse
+00cf18d0 oak_a6 DIFFER(4728v4539) 485 223 a3 + do{T}while(0) at every terminate check: worse (12 dtor calls)
+00cf18d0 oak_a7 DIFFER(4730v4539) 395 114 a3 + do{}while(0) around the else (walk) branch: second-loop normal sites expand; exit sites still called
+00cf3d20 hook_a1 DIFFER(4394v4298) 37 - Oakvale a4 shape with HOOK_COAST strings, WELL_DONE_10, no helmet; full MOVIEBASE_FORCEINLINE: 10 MovieBase vtable stores (user dtor) + FadeOut scheduling
+00cf3d20 hook_a2 DIFFER(4464v4298) 712 126 a1 with MOVIEBASE_FORCEINLINE_CTOR only (implicit dtor): 9 ??1MovieBase calls at the second-loop and exit sites
+00cf3d20 hook_fx DIFFER(4394v4298) 37 - a1 with FadeOut(Me,1.0f,1,1): no change
+00cf3d20 hook_h3 DIFFER(4464v4298) 712 126 a2 with `== false` loop condition spelling: no change
+00cf3d20 hook_w1 DIFFER(4514v4298) 1034 - a2 + do{}while(0) around the whole post-loop tail: worse
+00cf3d20 hook_w3 DIFFER(4464v4298) 712 126 a2 + do{}while(0) around the else branch and its checks: no change
+00cf3d20 hook_w4 DIFFER(4464v4298) 712 126 a2 + do{T}while(0) at the else-branch checks: no change
+00cf3d20 hook_cap1 DIFFER(2480v4298) 1136 - diagnostic: a2 without the first loop -> the later movie sites expand (caller-size dependence)
+00cf3d20 hook_a2+/d2inlS10,S12 DIFFER(4464v4298) 712 126 diagnostic: cap at 10000/12000 IL still too low
+00cf3d20 hook_a2+/d2inlS20 DIFFER(4298v4298) 18 4 DIAGNOSTIC ONLY: caller-size cap lifted -> every implicit movie dtor expands, length matches, only the final FadeOut push/mov dl order differs. Residue = VC7.1 caller IL-size cap (default /d2inlS9)
+00cf3d20 hook_f2+/d2inlS20 DIFFER(4298v4298) 18 4 `if (!T) FadeOut(..)` spelling: same schedule (retail: push 1; mov ecx,edi; mov dl,1; push 1.0f)
+00cf2b70 bow_a1 DIFFER(4394v4298) 81 - Hook shape with BOWERSTONE strings, one Spoken flag + SpokenLeaving; FORCEINLINE: MovieBase vtable stores + FadeOut + movie frame slot 0x54v0x50 + &Me spill 0x5c v 0x6c
+00ed17d0 man_a1(pre) TIMEOUT - - fable_script_def_global.h without FABLE_RETAIL_DEF_CLASS_BASE / CDEFSTRINGTABLE: a VC7.1 #error HANGS cl.exe on this lane (g++ -fsyntax-only finds it: bin/errchk.sh)
+00ed17d0 man_a1 DIFFER(4910v4279) 752 579 first model (Woman shape, while(!T) loop, CIsThingAlive inline ctor, implicit movie ctor/dtor): every movie ctor expanded (retail calls 0x006E7B60 at 5 of 6)
+00ed17d0 man_a2 DIFFER(4413v4279) 301 155 + MOVIEBASE_OUTOFLINE_CTOR/DTOR: residue = predicate copy expanded (retail calls 0x004ABE90; GOTCHAS 1913/2131), bribe-site movie ctor+dtor inline in retail, 2 extra inline seh_me/~CCharString exit copies, ruby-branch block order
+00ed17d0 man_a3 DIFFER(4472v4279) 790 262 a2 with implicit (inline) movie ctor: all 6 ctors expand again
+00dc4d70 spm_a1 DIFFER(4259v4319) 970 271 CSecretPassageWoman (parked 0x00DC5F80) source with GATEMAN strings: FriendEscape fetched once at the top, 2 ClearCommands missing
+00dc4d70 spm_a2 DIFFER(4275v4319) 87 72 FriendEscape a local per first-loop arm + after the first loop; ClearCommands in both VisitorsAttacked arms: residue = CIsThingConscious copy/dtor (retail calls 0x004ABE90 + 0x004AA840 inside the expanded predicate; GOTCHAS 1913/2258), ebp==0 knock-on, per-exit inline seh_me dtor split (retail 0x00DC5643 exit)
+00d8abf0 gf_a1 DIFFER(3998v4306) 535 309 first model (GhostGranny 0x00E8DFA0 includes: STB OUTOFLINE_DTOR + OUTOFLINE_ASSIGN, implicit movie): STB operator= / seh_hero dtor called where retail expands them
+00d8abf0 gf_a2 DIFFER(4158v4306) 242 92 - OUTOFLINE_ASSIGN: CBaseObject::operator= 0x0099A3B0 + inline PImp assign as retail
+00d8abf0 gf_a3 DIFFER(4288v4306) 144 118 - OUTOFLINE_DTOR as well: seh_hero dtor expands at the normal end; the movie dtor expands its PImp release where retail calls 0x006E7AB0
+00d8abf0 gf_a4 RELOCATION_MATCH - - + declared-only `template <> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();` before the movie header: MATCH (relpair: all bound-same; strchk 40/40)
+00cf18d0 oak_tm DIFFER(4618v4539) 531 16 oak_a4 (full MOVIEBASE_FORCEINLINE) + the final `if (T) return; FadeOut(..)` written at the end of BOTH arms: FadeOut schedule now matches retail's tail merge; residue = the user-dtor MovieBase vtable stores
+00cf18d0 oak_tmc DIFFER(4676v4539) 388 - oak_tm with MOVIEBASE_FORCEINLINE_CTOR only (implicit dtor = the true model): second-loop / exit movie dtor sites stay ??1MovieBase calls (caller IL-size cap)
+00cf18d0 oak_tmc+/d2inlS20 RELOCATION_MATCH 0 0 DIAGNOSTIC ONLY: cap lifted -> byte-exact; residue is purely the VC7.1 caller IL-size inline cap (/d2inl* is never a landing flag) -> differ/00cf18d0.cpp
+00cf3d20 hook_a1_tm DIFFER(4394v4298) 33 - hook_a1 (full FORCEINLINE) + FadeOut duplicated into both arms: FadeOut fixed; the 10 MovieBase vtable stores remain
+00cf3d20 hook_a2_tm DIFFER(4464v4298) 708 126 hook_a2 (FORCEINLINE_CTOR, implicit dtor) + FadeOut in both arms = the true model; 9 ??1MovieBase calls (cap)
+00cf3d20 hook_a2_tm+/d2inlS20 RELOCATION_MATCH 0 0 DIAGNOSTIC ONLY: the true model is byte-exact once the cap is lifted -> differ/00cf3d20.cpp
+00cf3d20 hook_dw1 DIFFER - - hook_a2_tm + do{}while(0) around the SaidWellDone and InHitCutsceneAlready blocks (frequency lever): still 8 ??1MovieBase calls, no gain
+00cf2b70 bow_tm DIFFER(4394v4298) 77 15 bow_a1 + FadeOut in both arms: FadeOut fixed; MovieBase vtable stores + frame slot knock-on remain
+00cf2b70 bow_tmc DIFFER(4454v4298) 1523 128 true model (FORCEINLINE_CTOR, implicit dtor, FadeOut in both arms): 9 ??1MovieBase calls (cap)
+00cf2b70 bow_tmc+/d2inlS20 RELOCATION_MATCH 0 0 DIAGNOSTIC ONLY
+00cf2b70 bow_c3 DIFFER(4454v4298) 1523 128 bow_tmc with FadeOut(Me,1.0f,1,1): identical
+00cf2b70 bow_c4 DIFFER(4611v4298) 489 255 bow_tmc without the pause FORCEINLINE_CTOR: 12 movie dtor calls, worse
+00cf2b70 bow_c5 DIFFER(4454v4298) 1523 128 bow_tmc with the movie local value-initialised: identical
+00cf2b70 bow_tmc+/d2inlS15 RELOCATION_MATCH 0 0 DIAGNOSTIC: cap 15000 IL is enough
+00cf2b70 bow_tmc+/d2inlS13 DIFFER(4454v4298) 1523 - DIAGNOSTIC: 13000 is not -> retail's effective cap lies between; differ/00cf2b70.cpp = bow_tmc
+00ed17d0 man_a4 DIFFER(4149v4279) 228 98 a2 with `if (T) return; do { .. } while (!T);` loop: fewer lines, 130 bytes short (retail expands two more exit cascades)
+00ed17d0 man_a5 DIFFER(4449v4279) 340 170 a2 with a named CIsThingAlive local for SetPredicate: worse
+00ed17d0 man_a6 DIFFER(4413v4279) 301 155 a2 without the declared-only ~CCountedPointer<MovieBase> specialization: same (OUTOFLINE_DTOR hides it)
+00ed17d0 man_a7 DIFFER(4304v4279) 350 227 a2 without the inline CScriptThing copy ctor: predicate copy called, but the by-value pushes then call it too, worse
+00ed17d0 man_a8 DIFFER(4149v4279) 228 98 a4 + SCRIPTEDTHINGBASE_OUTOFLINE_DTOR: no change
+00ed17d0 man_a9 DIFFER(4413v4279) 301 155 a2 with the bribe test split into nested ifs: no change
+00ed17d0 man_a10 DIFFER(4410v4279) 339 157 a2 with `IsValid() && !T` folded into one condition: worse
+00ed17d0 man_a11 DIFFER(4413v4279) 297 - a2 with the PresentedItem string in a block that closes before NewScriptFrame: -4 lines
+00ed17d0 man_a12 DIFFER(4149v4279) 224 94 a11 + the a4 do-while loop: best (4 event hunks: predicate copy, bribe-site movie ctor, two exit cascades) -> differ/00ed17d0.cpp
+00dc4d70 spm_a3 DIFFER(4408v4319) 429 214 a2 with a named CIsThingConscious local: worse
+00dc4d70 spm_a4 DIFFER(4275v4319) 87 72 a2 without the inline ~CIsThingConscious body: identical
+00dc4d70 spm_a5 DIFFER(4227v4319) 155 118 a2 without the inline ~CScriptThing: dtor called everywhere, worse
+00dc4d70 spm_a6 DIFFER(4159v4319) 141 129 a2 without the inline CScriptThing copy: copy called everywhere, worse
+00dc4d70 spm_a7 DIFFER(4323v4319) 134 27 a2 + MOVIEBASE_OUTOFLINE_CTOR: both movie ctors called (retail expands the first); structurally closest (SDIFF 27)
+00dc4d70 spm_a8 DIFFER(4303v4319) 565 206 a2 without the declared-only ~CCountedPointer<MovieBase> specialization: PImp release expanded, much worse
+00dc4d70 spm_a9 DIFFER(4275v4319) 87 72 named predicate local in its own block: identical to a2
+00dc4d70 spm_a10 DIFFER(4275v4319) 87 72 __forceinline CIsThingConscious ctor: identical -> best stays a2 = differ/00dc4d70.cpp
+00cf2b70 bow_c6 DIFFER(4470v4298) 1467 - bow_tmc with each of the 5 bare movie+pause+Speak blocks in its own scope: dtor order moves, still 9 ??1MovieBase calls
+00cf2b70 bow_c7 DIFFER(4454v4298) 1523 128 bow_tmc + `continue;` closing the walk-loop hit arm: identical (no effect on the cap)

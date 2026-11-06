@@ -27468,3 +27468,9 @@ chunk	address	module	name	length
 805	00d706e0	NScript::CQ_HangingTreeGoodScript::CHTG_Guard	Main	4755
 805	00ea36b0	NScript::CV_LostTraderScript::CLostTraderTrader	Main	4804
 805	00d2d930	NScript::CQ_EndGameFocalSitesScript::CPermanentBarrier	Main	5094
+806	00db2b10	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife	Main	4890
+806	00daf080	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl	Main	5504
+806	00d01630	NScript::CQ_BanditCampScript::CGate1GuardOuter	Main	5178
+806	00d0c410	NScript::CQ_BanditCampBossBattleScript::CBanditForger	Main	5373
+806	00ebcf70	NScript::CV_OracleScript::CVO_OracleMarker	Main	5572
+806	00ec68a0	NScript::CV_SickChildScript::CSickChildsSister	Main	5962

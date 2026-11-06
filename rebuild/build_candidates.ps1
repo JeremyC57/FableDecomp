@@ -384729,6 +384729,13 @@ $catalog = @(
         TestSource = '00/f1/NScriptCQArenaScriptCArenaCellExitGuard_Main_00f1b9c0_test.cpp'
         PassPattern = '00f1b9c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d8abf0'
+        Module = 'NScript::CQ_HerosOldHouseScript::CGhostFisherman'
+        Source = '00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Main_00d8abf0.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Main_00d8abf0_test.cpp'
+        PassPattern = '00d8abf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
