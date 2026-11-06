@@ -1,0 +1,66 @@
+# chunk 810 attempts log (one line per graded attempt: addr probe verdict difflines note)
+00d8bcd0 fw_a1 DIFFER(6263v6343) 982 first body (GhostFisherman model: implicit movie ctor/dtor + declared-only ~CCountedPointer<MovieBase>, FORCEINLINE pause ctor, inline CTimer, forceinline GetPos, inline ~CIsThingAlive): SetIsPushableByHero by-value Me copy called 0x004ABE90 where retail expands it
+00d8bcd0 fw_a2 DIFFER(6301v6343) 533 sd82 + row-local inline CScriptThing copy ctor: by-value site matches; predicate copy now inline too (retail calls 0x004ABE90: CIsThingAlive copy-inline lane gap); retail expands the first-loop GetHealth temp ~CScriptThing; loop-2 entry jmp
+00d8bcd0 fw_a3 DIFFER(6359v6343) 111 sd31 + row-local inline ~CScriptThing: first-loop GetHealth temp now expanded as retail; only the predicate differs (ours: copy inline, ~CIsThingAlive called; retail: copy called 0x004ABE90, ~CIsThingAlive expanded around a called ~CScriptThing) + 4 loop-alignment pads
+00d8bcd0 fw_a4 DIFFER(6416v6343) 1024 - a3 with __forceinline ~CIsThingAlive: the nested ~CScriptThing expands too (worse)
+00d8bcd0 fw_a3+/d2inlT60..70 DIFFER 474..111 - DIAGNOSTIC ONLY: lowering the total inline budget declines other sites first, never the predicate copy (not a budget-order effect)
+00d8bcd0 fw_a5 DIFFER(6311v6343) 125 sd43 a3 with the copy ctor declared-only: predicate copy called as retail but ~CIsThingAlive now called (retail expands it); the by-value SetIsPushableByHero copy called (retail inline)
+00d8bcd0 fw_a6 DIFFER(6359v6343) 111 sd31 a3 with CIsThingAlive members defined before the CScriptThing copy/dtor bodies: no change (definition order is irrelevant)
+00ec8300 mil_a1 DIFFER(6404v6394) 1431 - first body (CMansLover model + row-local inline CScriptThing copy for the 5 by-value Me args): predicate copy inline too (retail calls 0x004ABE90): CIsThingAlive copy-inline lane gap; ebp=0 propagates
+00ec8300 mil_a2 DIFFER(6295v6394) 742 sd259 a1 without the inline copy: predicate matches; the 5 by-value Me copies called (retail expands); hit-block movie ctor expanded (retail calls 0x006E7B60)
+00ec8300 mil_a3 DIFFER(6268v6394) 304 sd238 a2 + MOVIEBASE OUTOFLINE_CTOR+DTOR (retail calls 0x006E7B60/0x006E7B80 at every site): movie sites match; left: 5 by-value copies called, talk-block first T exits to the expanded epilogue (retail calls 0x007E74D0), eax/edx register swaps
+00ec8300 mil_a4 DIFFER 1404 sd273 a3 + inline copy + __forceinline CIsThingAlive ctor: predicate copy still expands (lane gap)
+00ec8300 mil_a5 DIFFER(6268v6394) 304 sd238 a3 with plain return; (no TRetVoid): identical
+00ec8300 mil_a6 DIFFER 303 sd239 a3 as while(!T){..;NSF;}: talk-block first T still exits to the expanded epilogue
+00e3eb10 bl_a1 DIFFER(6265v6330) 302 - first body (CBordelloGuard includes + OUTOFLINE_ASSIGN, MovieBase FORCEINLINE_CTOR + declared-only ~CCountedPointer<MovieBase>, text-eq opt-ins, GetLHTSTag opt-in)
+00e3eb10 bl_a2 DIFFER(6253v6330) 134 sd107 a1 with each else arm opening on its own thread check (else { T; if (HeroTricking..) }): if-chain layout matches
+00e3eb10 bl_a3 DIFFER 135 sd108 a2 + ScriptedThingBase OUTOFLINE_DTOR declaration with a row-local inline empty body: adds a second vtable store at each expansion (worse); residue: 4 by-value Me copies (lane gap), sex-counter tail cross-jump direction (retail FREE jumps into PAID copy; ours PAID into FREE), natural-exit ~seh_me store order (ours vptr/Info/Data, retail Data/Info/vptr)
+00d1b200 gl_a1 DIFFER(5924v6100) 549 - first body (CBH_GangDeputy2 model + FW cutscene cast map; GANGLEADER opt-in)
+00d1b200 gl_a2 DIFFER(5924v6100) 549 sd195 a1 + plain inline STB operator= body + CDEFSTRING_FORCEINLINE_GETSTRING: no change (inliner declined the plain-inline operator=)
+00d1b200 gl_a3 DIFFER(5988v6100) 229 sd83 a2 with __forceinline STB operator= over declared-only CCountedPointer<STB>::operator= 0x008AB1E0: cutscene cast-map assigns match; left: movie dtor ~CBaseObject expansion at 5 sites, GetString inline at the reward CDefString, exit-block layout, ebx flag colouring
+00d56790 mo_a1 DIFFER(6134v6151) 836 sd29 first body (FW model: FORCEINLINE movie ctor + declared-only ~CCountedPointer<MovieBase>, called CTimer ctor/dtor, forceinline SetTimer/GetTimer): left: stage-3 counter load/inc/store (ours inc mem), stage-4 HitCount=0 store order, 2 loop-entry jmps, stage-6 ebx=6/ebp timer colouring, stage-6 conversation string register
+00d56790 mo_a2 DIFFER(6134v6151) 836 sd27 a1 with stage-4 HitCount = 0 before InsultTimer = 15 (store order matches) + counter as x = x + 1 (no change: still inc mem)
+00d56790 mo_a3 DIFFER 836 sd27 a2 with counter += 1: no change
+00d56790 mo_a4 DIFFER 836 sd27 a2 with counter through a named local: no change (retail stage-3 load/inc/store is a scheduling split: TimerIndex load hoisted between load and inc)
+00d62480 at_a1 DIFFER(6240v6195) 366 sd25 first body (CIsThingConscious inline ctor/dtor over the called copy, inline ~CScriptThing, inline CTimer ctor/dtor + forceinline SetTimer/GetTimer, FORCEINLINE movie ctor + declared-only ~CCountedPointer<MovieBase>)
+00d62480 at_a2 DIFFER(6266v6195) 205 sd24 a1 with __forceinline ~CIsThingConscious: predicate dtor expands as retail but its nested ~CScriptThing expands too (retail calls 0x004AA840 there)
+00d62480 at_a3 DIFFER(6243v6195) 168 sd19 a2 with the plain-inline movie ctor (no FORCEINLINE_CTOR): the nested RETURN_QUESTION_NO movie ctor is now called 0x006E7B60 as retail, the 4 others still expand; only the predicate nested ~CScriptThing (+45 B) and one alignment pad left
+00d62480 at_a4 DIFFER(6243v6195) 168 sd19 a3 with the predicate as a named local in its own block: identical to a3
+00d62480 at_a5 DIFFER(6212v6195) 209 sd21 a4 with plain-inline ~CIsThingConscious: VC declines it (dtor called), the predicate vptr/ebp shape lost
+00d62480 at_a6 DIFFER(6243v6195) 168 sd19 a3 with ~CIsThingConscious defined before ~CScriptThing: no change (definition order irrelevant)
+00d62480 at_a7 DIFFER(6128v6195) 599 sd20 a3 with ~CScriptThing declared-only: the predicate now matches byte-for-byte (outer expanded, inner called) but the hit-block ArtifactThiefRunMarker temp (retail's only expanded ~CScriptThing site) is called
+00d62480 at_a3+/d2inlS20,/d2inlT80,/d2inlT100 DIFFER 1524/477/501 - DIAGNOSTIC ONLY: budget flags make it worse (not a budget-order effect)
+00d56790 mo_a5 DIFFER(6134v6151) 836 sd27 a2 with ++counter: no change
+00d56790 mo_a6 DIFFER 842 sd39 a2 with the stage-6 timer set before EntitySetCombatType: worse
+00d56790 mo_a7 DIFFER(6190v6151) 1076 sd50 a2 with InsultTimer = 15 inside each stage-6 rand branch: no tail merge (worse)
+00d56790 mo_a8 DIFFER(6134v6151) 836 sd27 a5 with a forceinline CTimer::operator<= for the stage-3 test: identical
+00d1b200 gl_a4 DIFFER(5988v6100) 225 sd85 a3 with HealthCurrent = HealthInitial = GetHealth(Me) (fst +0x24 then fstp +0x28 as retail)
+00d1b200 gl_a5 DIFFER 225 sd85 a4 + explicit return after the entrance branch's final thread check: no change (retail keeps two identical ~TeleportData exit copies)
+00d1b200 gl_a6 DIFFER 225 sd85 a4 with TRetVoid _Fail_Val returns: identical
+00d1b200 gl_a4+/d2inlS20 (and S30) DIFFER(6132v6100) 129 sd39 - DIAGNOSTIC ONLY: with the budget raised the movie dtor expands at every site and the CDefString GetString inlines as retail -> the function-wide inline budget residue
+00d1b200 gl_a7 DIFFER(5988v6100) 225 sd85 a4 with __forceinline GetPos: identical
+00d1b200 gl_a8 DIFFER(6164v6100) 181 sd68 a4 with MOVIEBASE_FORCEINLINE (ctor+dtor forced): every movie dtor site expands as retail, but the user-declared dtor adds a MovieBase vptr store retail lacks (7 x 11 B)
+00d1b200 gl_a9 DIFFER(5988v6100) 225 sd85 a4 with __forceinline CIsThingAlive ctor: identical
+00d1b200 gl_a10 DIFFER(6180v6100) 172 sd49 a8 with the reward object spelled BountyHuntRewardObject.GetString() at both sites: GetString expands in place as retail (FORCEINLINE_GETSTRING)
+00d1b200 gl_a11 DIFFER(6180v6100) 173 sd55 a8 with GetString() at the first site only: slightly worse
+00e3eb10 bl_a4 DIFFER(6346v6330) 51 sd17 a2 + row-local inline CScriptThing copy ctor: the 4 by-value Me copies expand as retail and the sex-counter tail cross-jump now matches; left: the predicate copy inlines (retail calls 0x004ABE90: CIsThingAlive copy-inline lane gap)
+00ec8300 mil_a7 DIFFER(6378v6394) 1404 sd175 a3 + row-local inline CScriptThing copy (the bl_a4 lever): the predicate copy inlines and ebp=0 replaces retail's ebp=&Me across the body (worse; ManInLove keeps the called copy)
+00e3eb10 bl_a5 DIFFER(6346v6330) 51 sd17 a2 + FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY (no row-local copy): identical to a4
+00e3eb10 bl_a6 DIFFER(6346v6330) 51 sd17 a4 with the predicate as a named local in its own block: identical
+00e3eb10 bl_a7 DIFFER(6346v6330) 51 sd17 a4 with __forceinline CIsThingAlive ctor: identical (the nested copy still inlines)
+00d56790 mo_a9 DIFFER(6134v6151) 838 sd29 a2 with HitCount declared before the CTimer: slightly worse
+00d56790 mo_a10 DIFFER(6134v6151) 836 sd27 a2 with HitCount hoisted out of the RepeatMelee loop: identical
+00d8bcd0 fw_a7 DIFFER(6359v6343) 111 sd20 a3 with FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY in place of the row-local copy: identical
+00d8bcd0 fw_a8 DIFFER(6359v6343) 111 sd20 a3 with the predicate as a named local in its own block: identical
+00d8bcd0 fw_a9 DIFFER(6301v6343) 533 sd38 a3 with __forceinline ~CIsThingAlive over a declared-only ~CScriptThing (the at_a7 lever): the GetHealth temps lose their expansion (worse)
+00d8bcd0 fw_a10 DIFFER(6359v6343) 111 sd20 a3 with __forceinline CIsThingAlive ctor: identical
+00ec8300 mil_a8 DIFFER(6268v6394) 304 sd101 a3 with the predicate as a named local in its own block: identical
+00ec8300 mil_a9 DIFFER(6378v6394) 1404 sd175 a3 + FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY: same as the inline-copy a7 (predicate copy inlines, ebp=0 cascade)
+00ec8300 mil_a10 DIFFER(6378v6394) 1405 sd176 a7 + inline ~CIsThingAlive: no better
+00d62480 at_a8 DIFFER(6243v6195) 168 sd19 a7 with inline ~CScriptThing defined after Main: same as a3 (VC7.1 defers inline expansion to the end of the TU; definition position is irrelevant)
+00d62480 at_a9 DIFFER(6243v6195) 168 sd19 a3 with __forceinline CIsThingConscious ctor: identical
+00d62480 at_a10 DIFFER(6260v6195) 304 sd38 a3 + FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY: the predicate copy inlines (retail calls 0x004ABE90; worse)
+00e3eb10 bl_a8 DIFFER(6346v6330) 51 sd17 a4 with plain returns (no TRetVoid): identical
+00e3eb10 bl_a9 DIFFER(6346v6330) 51 sd17 a4 + row-local inline ~CScriptThing: identical
+00e3eb10 bl_a10 DIFFER(6346v6330) 51 sd17 a4 with __forceinline copy ctor: identical (the predicate copy inlines either way)
+00d8bcd0 fw_a11 DIFFER(6359v6343) 111 sd20 a3 with the shared engine/EHeroAbility.h in place of the local enum (header hygiene, the differ/ source): identical

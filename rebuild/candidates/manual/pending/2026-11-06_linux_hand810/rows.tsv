@@ -1,0 +1,7 @@
+address	module	name	length
+00d1b200	NScript::CQ_BountyHuntScript::CBH_GangLeader	Main	6100
+00d56790	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent	Main	6151
+00d62480	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief	Main	6195
+00e3eb10	NScript::CV_BordelloScript::CBordelloLady	Main	6330
+00d8bcd0	NScript::CQ_HerosOldHouseScript::CFishermansWife	Main	6343
+00ec8300	NScript::CV_SickChildScript::CManInLove	Main	6394

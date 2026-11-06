@@ -1,0 +1,7 @@
+address	source	grade_with_final_overlay	note
+00d8bcd0	differ/00d8bcd0.cpp (probe/fw_a11.cpp)	DIFFER(6359v6343)	parked row re-graded with the final hdr/ overlay; no landed includer rechecked (all header changes opt-in / new)
+00ec8300	differ/00ec8300.cpp (probe/mil_a3.cpp)	DIFFER(6268v6394)	parked row re-graded with the final hdr/ overlay; no landed includer rechecked (all header changes opt-in / new)
+00e3eb10	differ/00e3eb10.cpp (probe/bl_a4.cpp)	DIFFER(6346v6330)	parked row re-graded with the final hdr/ overlay; no landed includer rechecked (all header changes opt-in / new)
+00d1b200	differ/00d1b200.cpp (probe/gl_a10.cpp)	DIFFER(6180v6100)	parked row re-graded with the final hdr/ overlay; no landed includer rechecked (all header changes opt-in / new)
+00d56790	differ/00d56790.cpp (probe/mo_a2.cpp)	DIFFER(6134v6151)	parked row re-graded with the final hdr/ overlay; no landed includer rechecked (all header changes opt-in / new)
+00d62480	differ/00d62480.cpp (probe/at_a3.cpp)	DIFFER(6243v6195)	parked row re-graded with the final hdr/ overlay; no landed includer rechecked (all header changes opt-in / new)

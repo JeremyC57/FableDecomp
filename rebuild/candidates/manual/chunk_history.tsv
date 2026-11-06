@@ -27504,3 +27504,9 @@ chunk	address	module	name	length
 811	00edd170	NScript::CV_TempleOfLightScript::CTOL_AcolyteGood	Main	6594
 811	00dbb310	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully	Main	6639
 811	00de4cb0	NScript::CQ_RansomVictimScript::CVictimsFather	Main	6778
+812	00d0d910	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1	Main	4752
+812	00d2aa40	NScript::CQ_EndGameFocalSitesScript	Main	5860
+812	00d09010	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard	Main	5864
+812	00cf4ec0	NScript::CQ_ArenaHoldingScriptScript::CFanMarker	Main	6164
+812	00ea59e0	NScript::CV_LostTraderScript::CLostTraderBrother	Main	6780
+812	00d13580	NScript::CQ_BountyHuntScript	Main	6917
