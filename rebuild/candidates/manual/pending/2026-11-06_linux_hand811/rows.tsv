@@ -1,0 +1,7 @@
+address	module	name	length
+00dca6d0	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGraveyardKeeper	Main	6395
+00df6010	NScript::CQ_TraderConflictEvilScript	Main	6493
+00dd6a60	NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture	Main	6494
+00edd170	NScript::CV_TempleOfLightScript::CTOL_AcolyteGood	Main	6594
+00dbb310	NScript::CQ_NewOakValeIntroScript::CNOVI_Bully	Main	6639
+00de4cb0	NScript::CQ_RansomVictimScript::CVictimsFather	Main	6778

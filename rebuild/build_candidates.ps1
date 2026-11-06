@@ -384799,6 +384799,13 @@ $catalog = @(
         TestSource = '00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_Main_00f0d630_test.cpp'
         PassPattern = '00f0d630_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00dca6d0'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGraveyardKeeper'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Main_00dca6d0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Main_00dca6d0_test.cpp'
+        PassPattern = '00dca6d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -27510,3 +27510,9 @@ chunk	address	module	name	length
 812	00cf4ec0	NScript::CQ_ArenaHoldingScriptScript::CFanMarker	Main	6164
 812	00ea59e0	NScript::CV_LostTraderScript::CLostTraderBrother	Main	6780
 812	00d13580	NScript::CQ_BountyHuntScript	Main	6917
+813	00d524a0	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper	Main	2540
+813	00db5330	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan	Main	6148
+813	00e5b3b0	NScript::CV_BeggarAndChildScript::CBeggarBully	Main	7012
+813	00db97a0	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa	Main	7013
+813	00f17c70	NScript::CQ_ArenaScript::CArenaCellDoorGuard	Main	7740
+813	00e84b80	NScript::CV_FisticuffsClubScript::CFisticuffsMember	Main	8836
