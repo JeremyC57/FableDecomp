@@ -384462,6 +384462,34 @@ $catalog = @(
         TestSource = '00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_Main_00eb8900_test.cpp'
         PassPattern = '00eb8900_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d26190'
+        Module = 'NScript::CQ_DragonBossFightScript'
+        Source = '00/d2/NScriptCQDragonBossFightScript_DoMission_00d26190.cpp'
+        TestSource = '00/d2/NScriptCQDragonBossFightScript_DoMission_00d26190_test.cpp'
+        PassPattern = '00d26190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d78670'
+        Module = 'NScript::CQ_HeroSoulsScript'
+        Source = '00/d7/NScriptCQHeroSoulsScript_Main_00d78670.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsScript_Main_00d78670_test.cpp'
+        PassPattern = '00d78670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e93120'
+        Module = 'NScript::CV_HiddenBootyScript::CM_HiddenBooty'
+        Source = '00/e9/NScriptCVHiddenBootyScriptCMHiddenBooty_Main_00e93120.cpp'
+        TestSource = '00/e9/NScriptCVHiddenBootyScriptCMHiddenBooty_Main_00e93120_test.cpp'
+        PassPattern = '00e93120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee95c0'
+        Module = 'NScript::CExpression_FishScript'
+        Source = '00/ee/NScriptCExpressionFishScript_Main_00ee95c0.cpp'
+        TestSource = '00/ee/NScriptCExpressionFishScript_Main_00ee95c0_test.cpp'
+        PassPattern = '00ee95c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,8 @@
+address	name	evidence
+00d26190	NScript::CQ_DragonBossFightScript::DoMission	landing 2026-11-05q (chunk 790): row (RELOCATION_MATCH); ?DoMission@CQ_DragonBossFightScript@NScript@@QAEXXZ in Ego_r + FableWin PDB name sets; it is the method that spawns the level's threads and waits on DragonState
+00e93120	NScript::CV_HiddenBootyScript::CM_HiddenBooty::Main	landing 2026-11-05q (chunk 790): row (RELOCATION_MATCH); vtable 0x012ECAE8 slot 1 (only reference .rdata 0x012ECAEC), stored by Alloc 0x00E92F70; PDB name set
+00ee95c0	NScript::CExpression_FishScript::Main	landing 2026-11-05q (chunk 790): row (RELOCATION_MATCH); vtable 0x012F54E4 slot 2 (only reference .rdata 0x012F54EC); PDB name set
+00d78670	NScript::CQ_HeroSoulsScript::Main	landing 2026-11-05q (chunk 790): row (RELOCATION_MATCH); vtable 0x012D2F48 slot 2 (only reference .rdata 0x012D2F50), stored by ctor 0x00D784D0; PDB name set
+00e64210	NScript::CV_ChickenKickingScript::CKickedChicken::Main	landing 2026-11-05q (chunk 790): parked row (DIFFER 8md); vtable 0x012E7498 slot 1 (only reference .rdata 0x012E749C), stored by the ctor at 0x00E635C6; PDB name set
+00dc5f80	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::Main	landing 2026-11-05q (chunk 790): parked row (DIFFER 36md); vtable 0x012DA7A4 slot 1 (only reference .rdata 0x012DA7A8), stored by the ctor at 0x00DC5E86; PDB name set (the chunk oracle row spells the class `CSecretPass`, a truncation)
+00d26ba0	NScript::CQ_DragonBossFightScript::RunEnemySpawning	landing 2026-11-05q (chunk 790): unlabelled before; DoMission 0x00D26190 spawns it as CSpawnedFunc<CQ_DragonBossFightScript>("RunEnemySpawning", ..., &CQ_DragonBossFightScript::<0x00D26BA0>); ?RunEnemySpawning@CQ_DragonBossFightScript@NScript@@QAEXXZ in both PDB name sets

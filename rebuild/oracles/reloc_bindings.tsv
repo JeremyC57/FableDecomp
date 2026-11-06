@@ -37066,3 +37066,11 @@ _New_c35b10@8	00c35b10	00c275e0
 ?WatchForRegionClear@CQ_AmbushTradersScript@NScript@@QAEXXZ	00f09cd0	00f024c0
 ?WatchForSpySpeechTimer@CQ_AmbushTradersScript@NScript@@QAEXXZ	00f036c0	00f024c0
 ?PlayCutscene@CV_ExposeMayorScript@NScript@@QAEXVCCharString@@_N0@Z	00e78100	00e776f0
+?JackTaunts@CQ_DragonBossFightScript@NScript@@QAEXXZ	00d26a50	00d26190
+?PlayCutscene@CQ_DragonBossFightScript@NScript@@QAEXVCCharString@@@Z	00d27050	00d26190
+?RunEnemySpawning@CQ_DragonBossFightScript@NScript@@QAEXXZ	00d26ba0	00d26190
+??_7?$CEntityScriptBinding@VCQ_HeroSoulsScript@NScript@@@@6B@	012d3394	00d78670
+?Alloc@CEndBriarRose@CQ_HeroSoulsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d7a290	00d78670
+?Alloc@CEndScythe@CQ_HeroSoulsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d79c80	00d78670
+?Alloc@CNotForODG@CQ_HeroSoulsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d79b90	00d78670
+?PlayCutscene@CQ_HeroSoulsScript@NScript@@QAEXVCCharString@@@Z	00d7aa30	00d78670

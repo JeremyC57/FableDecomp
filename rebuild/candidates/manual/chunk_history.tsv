@@ -27378,3 +27378,9 @@ chunk	address	module	name	length
 790	00e64210	NScript::CV_ChickenKickingScript::CKickedChicken	Main	2803
 790	00dc5f80	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman	Main	4245
 790	00d78670	NScript::CQ_HeroSoulsScript	Main	5390
+791	009a1720	CStreamingFontBank	PrepareToRender	2260
+791	00ab83a0	CStaticFontBank	PrepareToRender	2672
+791	004963a0	CFrontendGameComponent	Input	2384
+791	00ec32f0	NScript::CV_RandomPopulationSimScript	ChooseRandomBanditFromDefs	2016
+791	00e49020	NScript::CV_BanditTollScript::CTauntingBandit	Main	2084
+791	00e91f20	NScript::CV_GuildMasterScript	GetGuildMasterSpeech	2522

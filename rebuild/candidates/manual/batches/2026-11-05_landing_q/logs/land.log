@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00d26190   RELOCATION_MATCH PASS   DoMission
+00d78670   RELOCATION_MATCH PASS   Main
+00e93120   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00e93120   RELOCATION_MATCH PASS   Main
+00ee95c0   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  00d26190 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::?DoMission@CQ_DragonBossFightScript@NScript@@QAEXXZ
+  00d78670 RELOCATION_MATCH NScript::CQ_HeroSoulsScript::?Main@CQ_HeroSoulsScript@NScript@@UAEXXZ
+  00e93120 RELOCATION_MATCH NScript::CV_HiddenBootyScript::CM_HiddenBooty::?Main@CM_HiddenBooty@CV_HiddenBootyScript@NScript@@EAEXXZ
+  00ee95c0 RELOCATION_MATCH NScript::CExpression_FishScript::?Main@CExpression_FishScript@NScript@@UAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  NScriptCQDragonBossFightScript_DoMission_00d26190
+  NScriptCQHeroSoulsScript_Main_00d78670
+  NScriptCVHiddenBootyScriptCMHiddenBooty_Main_00e93120
+  NScriptCExpressionFishScript_Main_00ee95c0

@@ -1,0 +1,7 @@
+address	module	name	length
+00d26190	NScript::CQ_DragonBossFightScript	DoMission	2235
+00e93120	NScript::CV_HiddenBootyScript::CM_HiddenBooty	Main	2354
+00ee95c0	NScript::CExpression_FishScript	Main	2357
+00e64210	NScript::CV_ChickenKickingScript::CKickedChicken	Main	2803
+00dc5f80	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPass	Main	4245
+00d78670	NScript::CQ_HeroSoulsScript	Main	5390

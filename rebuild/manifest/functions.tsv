@@ -49720,7 +49720,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d26000	CreateActiveEntityScript	CEntityScriptBinding<NScript::CQ_DragonBossFightScript>	unknown	undefined	0		0			discovered	gapscan							
 00d26110	SuspendableProcess	CActiveEntityScript<NScript::CQ_DragonBossFightScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
 00d26160	`scalar deleting destructor'	CActiveEntityScript<NScript::CQ_DragonBossFightScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d2\CThingSwitch_vectordeletingdestructor_00d26160.cpp
-00d26190	DoMission	CQ_DragonBossFightScript	__thiscall	void	1	CQ_DragonBossFightScript *	1	yes	accepted									
+00d26190	DoMission	NScript::CQ_DragonBossFightScript	__thiscall	void	1	CQ_DragonBossFightScript *	1	yes	accepted									
 00d26a50	JackTaunts	NScript::CQ_DragonBossFightScript	__thiscall	void	1	CQ_DragonBossFightScript *	1	yes	accepted									
 00d26cc0	SpawnMinions	NScript::CQ_DragonBossFightScript	__thiscall	void	1	CQ_DragonBossFightScript *	1	yes	accepted									
 00d26e60	SpawnSummoners	NScript::CQ_DragonBossFightScript	__thiscall	void	1	CQ_DragonBossFightScript *	1	yes	accepted									
