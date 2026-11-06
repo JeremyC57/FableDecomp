@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00d2aa40   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d2aa40   RELOCATION_MATCH PASS   Main
+00ea59e0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00ea59e0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ea59e0   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00d2aa40 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::?Main@CQ_EndGameFocalSitesScript@NScript@@UAEXXZ
+  00ea59e0 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderBrother::?Main@CLostTraderBrother@CV_LostTraderScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQEndGameFocalSitesScript_Main_00d2aa40
+  NScriptCVLostTraderScriptCLostTraderBrother_Main_00ea59e0

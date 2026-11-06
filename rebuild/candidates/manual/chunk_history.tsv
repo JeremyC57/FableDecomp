@@ -27516,3 +27516,9 @@ chunk	address	module	name	length
 813	00db97a0	NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa	Main	7013
 813	00f17c70	NScript::CQ_ArenaScript::CArenaCellDoorGuard	Main	7740
 813	00e84b80	NScript::CV_FisticuffsClubScript::CFisticuffsMember	Main	8836
+814	00e44ea0	NScript::CV_BordelloScript::CBordelloClient	Main	7002
+814	00d647f0	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze	Main	7389
+814	00e6bc50	NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil	Main	7655
+814	00ea8f40	NScript::CV_MurderTwistScript::CMurderTwistLeader	Main	7933
+814	00cf68c0	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard	Main	8070
+814	00e2ff00	NScript::CV_AmbushScamScript::CAS_Buddy	Main	8567

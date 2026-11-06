@@ -1,0 +1,7 @@
+address	module	name	length
+00d0d910	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1	Main	4752
+00d2aa40	NScript::CQ_EndGameFocalSitesScript	Main	5860
+00d09010	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard	Main	5864
+00cf4ec0	NScript::CQ_ArenaHoldingScriptScript::CFanMarker	Main	6164
+00ea59e0	NScript::CV_LostTraderScript::CLostTraderBrother	Main	6780
+00d13580	NScript::CQ_BountyHuntScript	Main	6917

@@ -1,0 +1,51 @@
+00d2aa40 a1 DIFFER(5716v5860) 645 md: first full model (8 bindings, 4-region loop, battle inner loop, switch)
+00d2aa40 a2 DIFFER(5864v5860) 521: FORCEINLINE binding ctor (default inline ctor was called); frame 0x130 v 0x118
+00d2aa40 a3 DIFFER(5864v5860) 31: offset += GetHero().GetPos() in place (retail sums X,Y,Z back into offset); left: Game cached in ebx/edi across rand (retail reloads [esi+0x40] after rand)
+00d2aa40 a4 DIFFER 31: extern C rand decl instead of stdlib.h: identical
+00d2aa40 a5 DIFFER 31: GetGameAngleXY() + product: identical (canonicalised)
+00d2aa40 a6 RELOCATION_MATCH: float angle = (rand()%60-30)*0.01f as its own statement (keeps the Game load after rand)
+00d0d910 a1 DIFFER(4720v4752) 1305 md/362 sd: first full model; residue: pre-loop and arm-entry T checks go to called ~CTimer (retail: expanded DeregisterTimer epilogues, TimerIndex in edi); frame slots 4-8 bytes off
+00d0d910 a2 DIFFER(4676v4752) 1455: arm-entry T checks in do{}while(0): closed-arm check now hits an expanded ~CTimer pad (shared with restart-loop exits), open arm not; natural end still calls ~CTimer
+00d09010 a1 DIFFER(5880v5864) 836: first full model (two loops, two CTimers, Hostage thing, jump tables)
+00ea59e0 a1 DIFFER(6780v6780) 183: first full model
+00ea59e0 a2 DIFFER 145/16sd: distance compare written GetDistance(Me,Home) < GetDistance(Hero,Home) (left evaluated first, test ah,0x41)
+00ea59e0 a3 RELOCATION_MATCH: state-4 body in an if (stateBrain == 4) block so Trader shares HomePos's slot and the exit pad
+00cf4ec0 a1 DIFFER(6212v6164) 424: first full model (two loops, 14+7 chat cases, inline ~CScriptThing)
+00cf4ec0 a2 DIFFER(6228v6164) 294/317sd: + OakvaleInsult = true in the NINTH early case (missed store)
+00cf4ec0 a3 DIFFER(6196v6164) 268/168sd: early cases 6..12 write ChatCount before ChatTimer (retail tail-merges their `ChatTimer = 3; break;`); left: the predicate's vptr reset is dropped (inline ~CScriptThing), loop-1 exit pads placed differently, loop-2 movie dtor
+00cf4ec0 a4 DIFFER(5988v6164) 621/317sd: without the row-local inline ~CScriptThing the predicate matches but the three loop-1 GetScriptThing temporaries are called, not expanded (retail expands those three only)
+00d13580 a1 DIFFER(6800v6917) 628: first full model (7 bindings, intro, entrance loop, intro two, teleport loop, fail/complete, exit waits)
+00d13580 a2 DIFFER(6800v6917) 612: GetHero first arg of the distance test; !IsRegionLoaded(Fisherman)
+00d13580 a3 566/345sd: + MOVIEBASE_FORCEINLINE_CTOR
+00d13580 a4 431/184sd: + row-local inline ~CScriptThing (the distance temporary expands)
+00d13580 a5 DIFFER(6831v6917) 344/248sd: implicit TeleportData dtor (ctor + operator= declared out of line in the MAIN opt-in), Deputy2 row-local
+00d13580 a6 416/244sd: main loop as for(;;){if (QuestSucceeded || QuestFailed) break;...} (retail does not rotate it), lake wait loop likewise
+00d13580 a7 478/321sd: without the row-local inline ~CScriptThing (worse; movie dtor still called) [diag: plain-inline STB operator= 627, no TEXT_EQ 1527]
+00d13580 a8 416/244sd: post-loop thread checks in do-while(0) (no change: VC still cross-jumps them)
+00d13580 a9 416/244sd: main loop back to while (identical code to the for(;;) form)
+00d13580 a10 277/273sd: MOVIEBASE_FORCEINLINE (both movie dtors expand, but with the MovieBase vptr store retail lacks; register shifts)
+00cf4ec0 a5 268/168sd: predicate as a named local in a block (no change)
+00cf4ec0 a6 231/175sd: __forceinline ~CIsThingAlive (the vptr reset comes back but the member ~CScriptThing expands too)
+00d13580 a11 344/248sd: TRetVoid _Fail_Val returns (no change)
+00cf4ec0 a7 268/168sd: TRetVoid _Fail_Val returns (no change)
+00cf4ec0 a8 268/168sd: same-TU auto_inline(off) stand-in for ~CCountedPointer<MovieBase> (movie dtor still called x4)
+00cf4ec0 a9 268/168sd: a8 without MOVIEBASE_FORCEINLINE_CTOR (identical)
+00cf4ec0 a10 2538: plain-inline CTimer operator=/GetTime (called; much worse)
+00d0d910 a3 DIFFER(4880v4752) 673/463sd: MOVIEBASE_FORCEINLINE (no movie COMDAT calls; adds the MovieBase vptr store; 15 dtor sites vs retail 9)
+00d0d910 a4 1305/362sd: same-TU auto_inline(off) ~CCountedPointer<MovieBase> stand-in (no change)
+00d0d910 a5 1305/362sd: TRetVoid _Fail_Val returns (no change)
+00d0d910 a6 1305/362sd: __forceinline ~CIsThingAlive (no change)
+00d0d910 a7 673/463sd: a3 + TRetVoid returns (no change)
+00d0d910 a8 673/463sd: a3 + __forceinline ~CIsThingAlive (no change)
+00d0d910 a9 673/463sd: a2 arm-entry do-while(0) + MOVIEBASE_FORCEINLINE (no change)
+00d0d910 a10 DIFFER(4928v4752) 551/304sd: a3 + __forceinline ~CTimer (every exit expands DeregisterTimer)
+00d0d910 a11 DIFFER(4684v4752) 748/328sd: a1 + __forceinline ~CTimer
+00d09010 a2 DIFFER(5868v5864) 233/147sd: MOVIEBASE_FORCEINLINE
+00d09010 a3 DIFFER(5948v5864) 963/448sd: __forceinline ~CTimer
+00d09010 a4 DIFFER(6108v5864) 676/487sd: both
+00d09010 a5 836/444sd: TRetVoid returns (no change)
+00d09010 a6 DIFFER 204/111sd: a2 + loop-1 hit test also fires on ParentClass.HostageKilled
+00d09010 a7 204/111sd: loop 2 as T-check then for(;;){...; NSF; T} (identical code)
+00d09010 a8 204/111sd: loop 2 as do { } while (!T) (identical code)
+00d09010 a9 246/111sd: loop-2 TalkedTo as a fresh bool (worse)
+00d09010 a10 203/110sd: post-loop TalkedTo = false after ClearThingHasInformation

@@ -37285,3 +37285,14 @@ _New_c35b10@8	00c35b10	00c275e0
 ?WatchForHeroProximity@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	00f0ee90	00f0d630
 ?WatchForSpyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	00f0eda0	00f0d630
 ?WatchForSpySpeechMarkers@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	00f0ef60	00f0d630
+??_7?$CEntityScriptBinding@VCQ_EndGameFocalSitesScript@NScript@@@@6B@	012cc260	00d2aa40
+?Alloc@CBattleGuard@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d2c430	00d2aa40
+?Alloc@CBattleMinion@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d2c340	00d2aa40
+?Alloc@CEndGameFocalSite@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d2c140	00d2aa40
+?Alloc@CEndGameJackOfBlades@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d2c260	00d2aa40
+?Alloc@CEndGameScarletRobe@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d2cf80	00d2aa40
+?Alloc@CEndGameScythe@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d2c650	00d2aa40
+?Alloc@CEndGameThunder@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d2c730	00d2aa40
+?Alloc@CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d2d730	00d2aa40
+??_7?$CSpawnedFunc1@VCV_LostTraderScript@NScript@@VCScriptThing@@@@6B@	012ee360	00ea59e0
+?WatchForQuestFailureState@CV_LostTraderScript@NScript@@QAEXVCScriptThing@@@Z	00ea7460	00ea59e0

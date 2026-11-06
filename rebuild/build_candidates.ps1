@@ -384806,6 +384806,20 @@ $catalog = @(
         TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Main_00dca6d0_test.cpp'
         PassPattern = '00dca6d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d2aa40'
+        Module = 'NScript::CQ_EndGameFocalSitesScript'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScript_Main_00d2aa40.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScript_Main_00d2aa40_test.cpp'
+        PassPattern = '00d2aa40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea59e0'
+        Module = 'NScript::CV_LostTraderScript::CLostTraderBrother'
+        Source = '00/ea/NScriptCVLostTraderScriptCLostTraderBrother_Main_00ea59e0.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderBrother_Main_00ea59e0_test.cpp'
+        PassPattern = '00ea59e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

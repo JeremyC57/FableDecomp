@@ -19,6 +19,11 @@ public:
     virtual void Init();
     virtual void OnPersist(CPersistContext&);
     void WatchForQuestFailure();
+#ifdef FABLE_RETAIL_CV_LOSTTRADERSCRIPT_BROTHER
+    // Retail opt-in (chunk 812): the thread CLostTraderBrother::Main 0x00EA59E0 spawns (CSpawnedFunc1<CV_LostTraderScript,CScriptThing>
+    // vtable 0x012EE360, Func +0x34 = 0x00EA7460); Ego_r.pdb ?WatchForQuestFailureState@CV_LostTraderScript@NScript@@QAEXVCScriptThing@@@Z.
+    void WatchForQuestFailureState(CScriptThing);                        // 0x00EA7460
+#endif
     bool g_bLostTraderKilled;
     bool g_bTraderBrotherKilled;
     bool g_bQuestFailed;
