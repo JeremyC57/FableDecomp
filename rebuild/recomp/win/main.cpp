@@ -177,7 +177,8 @@ void recomp_register_table(const RecompEntry* table, uint32_t size);
     X(00661F70, host_is_child) X(0041E6D3, host_ui_manager_event) X(00446000, host_quick_button) X(0054E6F0, host_viewport_draw) \
     X(00BE1E70, host_viewport2d_render) X(00A4CEC0, host_calc_local_transformations)                                           \
     X(00A4D770, host_calc_local_transformations_relative) X(00A4D330, host_calc_local_bone_transformation) X(00C78A10, host_hrtf_fir) X(00C79440, host_hrtf_fir_ramp)           \
-    X(00C9C2F0, host_mdct_butterfly)
+    X(00C9C2F0, host_mdct_butterfly) X(00A88B60, host_native_quat_mul) X(00ADDD80, host_native_sphere_add)                 \
+    X(00B9DC60, host_native_inside_frustum) X(009E1BC0, host_native_gfgettime)
 #define FABLE_WRAP_DECL(a, h) __attribute__((weak)) void F_##a##_orig(Ctx* c); __attribute__((weak)) void h(Ctx* c);
 FABLE_WRAPS(FABLE_WRAP_DECL)
 #undef FABLE_WRAP_DECL
