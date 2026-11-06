@@ -40,6 +40,9 @@ class CThing;
 template<class T> class CIntelligentPointer;
 enum EAIActionReturn; enum EAIActionRepeat; enum EMovementType;      // MS forward enums
 #endif
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH)
+class CThingCreatureBase; class CPlayerManager; class CWorldMap;    // chunk 795
+#endif
 
 class CAIStateGroupBase : public CBaseClass {
 public:
@@ -82,6 +85,22 @@ protected:
     EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, float proximity,
         bool& reached, EMovementType movement, bool, bool, bool, bool, float);   // 0x0097E380
     EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
+#endif
+#if defined(FABLE_RETAIL_CAISTATEGROUPBASE_AIACTIONS) && defined(FABLE_RETAIL_CAISTATEGROUPBASE_SPEECH)
+    // Nested opt-in (chunk 795, row 0x0092FAB0 CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction): Ego_r.pdb protected
+    // members, out of line in retail, declarations only: ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ (0x008FCFC0),
+    // ?GetPlayerManager@CAIStateGroupBase@@IBEAAVCPlayerManager@@XZ (0x008FCF90), ?PeekWorldMap@CAIStateGroupBase@@IBEABVCWorldMap@@XZ
+    // (0x008FCFF0), ?AIAction_SpeakToTarget@..K_NJ3@Z (0x00980BD0) and the two ?AIAction_SpeakAISpeechToTarget@ overloads
+    // (ABVCCharString@@_NJ 0x00981EA0, K_NJ 0x009812C0; both landed).
+    CWorld& GetWorld() const;                                            // 0x008FCFC0
+    CPlayerManager& GetPlayerManager() const;                            // 0x008FCF90
+    const CWorldMap& PeekWorldMap() const;                               // 0x008FCFF0
+    EAIActionReturn AIAction_SpeakToTarget(EAIActionRepeat repeat, CIntelligentPointer<CThingCreatureBase> speaker,
+        CIntelligentPointer<const CThing> target, unsigned long speech, bool interrupt, long priority, bool wait);   // 0x00980BD0
+    EAIActionReturn AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointer<CThingCreatureBase> speaker,
+        CIntelligentPointer<const CThing> target, const CCharString& speech, bool interrupt, long priority);       // 0x00981EA0
+    EAIActionReturn AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointer<CThingCreatureBase> speaker,
+        CIntelligentPointer<const CThing> target, unsigned long speech, bool interrupt, long priority);            // 0x009812C0
 #endif
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE_PEEK
     // Chunk 756 (row 0x009104D0): Ego_r.pdb ?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ (0x008FCFA0) and

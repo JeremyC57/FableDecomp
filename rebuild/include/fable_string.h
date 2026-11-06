@@ -61,6 +61,10 @@ public:
     // with the in-class body VC7.1 folds it into CCharString::operator== and calls that instead. Declaration only.
     bool operator==(const CBasicString& other) const;                 // 0x004A93C0 (CBasicString<char>)
 #else
+#ifdef FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQ
+    // (chunk 795 opt-in, see CCharString::operator== below)
+    __forceinline
+#endif
     bool operator==(const CBasicString& other) const { if(StringLength!=other.StringLength)return false; return !Compare(PData,other.PData); }
 #endif
     // Ego_r 0x0040C910 / FableWin 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z (retail out-of-line copy 0x004115A0; a TU that holds
@@ -215,6 +219,12 @@ public:
 #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
     // (same opt-in) retail expands CCharString::operator== in place around the CBasicString call even in the size-optimised
     // CTCVillage TU (0x0065B956..0x0065B97A), where plain inline is called out of line.
+    __forceinline
+#elif defined(FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQ)
+    // Per-TU inline opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ):
+    // that TU expands CCharString::operator==(const CCharString&) and the CBasicString<char> length-then-Compare body in place
+    // (0x005E7CC2..0x005E7CF7: data pointers equal, either null, StringLength +4, `call Compare 0x00411570 ; neg ; sbb ; inc`)
+    // where the plain inline body is called out of line once the function's inline budget is spent.
     __forceinline
 #endif
     bool operator==(const CCharString& other) const {

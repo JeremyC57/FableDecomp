@@ -151,6 +151,15 @@ public:
     // AddMessage argument pushes). No layout change.
     CMessageEventManager& GetMessageEventManager() { return *PMessageEventManager_Data; }
 #endif
+#ifdef FABLE_RETAIL_CWORLD_QUESTCOMPLETIONUI
+    // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb ?GetMusicManager@CWorld@@QAEAAVCMusicManager@@XZ
+    // (inline: `call GetWorld ; mov ecx,[eax+6Ch]`, 0x005E7BF1), Ego_r.pdb ?SetAsStarting3DRendering@CWorld@@QAEXXZ (inline: GetWorld,
+    // then GetFrame stored to +0x8C, 0x005E7929; as the landed dtor 0x005E41E0) and ?IsPerformingRegionLoad@CWorld@@QBE_NXZ (inline
+    // here, `cmp 0 ; cmp 9` at 0x005E7C36; its out-of-line copy is the landed 0x0048DB13). No layout change.
+    CMusicManager& GetMusicManager() { return *PMusicManager_Data; }
+    void SetAsStarting3DRendering() { FrameStarted3DRendering = GetFrame(); }
+    bool IsPerformingRegionLoad() const { return RegionLoadStatus != 0 && RegionLoadStatus != 9; }
+#endif
     // Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ, out of line in retail at 0x0049D9D0 (CalculateSecuritySweepTasks
     // 0x006598D0 on CMainGameComponent::Get()->PeekWorld()). Declaration only.
     const CPlayer* PeekMyPlayer() const;                         // 0x0049D9D0

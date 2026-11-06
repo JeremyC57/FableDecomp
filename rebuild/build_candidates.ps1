@@ -384554,6 +384554,20 @@ $catalog = @(
         TestSource = '00/83/CThingAICreature_Save_008304a0_test.cpp'
         PassPattern = '008304a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004b5500'
+        Module = 'CQuestManager'
+        Source = '00/4b/CQuestManager_LoadGameState_004b5500.cpp'
+        TestSource = '00/4b/CQuestManager_LoadGameState_004b5500_test.cpp'
+        PassPattern = '004b5500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055fec0'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/55/CTCHeroOnlineScoreboard_ChooseAClan_0055fec0.cpp'
+        TestSource = '00/55/CTCHeroOnlineScoreboard_ChooseAClan_0055fec0_test.cpp'
+        PassPattern = '0055fec0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

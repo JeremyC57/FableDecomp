@@ -31602,7 +31602,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0092edc0	FindPlayerInteractionEvent	CAIStateGroup_MinionReactToPlayerInteraction	__thiscall	CMessageEvent *	1	CAIStateGroup_MinionReactToPlayerInteraction *	1	yes	accepted									
 0092ee10	UpdateWaitingForConfirmation	CAIStateGroup_MinionReactToPlayerInteraction	__thiscall	void	2	CAIStateGroup_MinionReactToPlayerInteraction *,CIntelligentPointer<CThingPlayerCreature> *	1	yes	accepted									
 0092f240	InteractionFailed	CAIStateGroup_MinionReactToPlayerInteraction	__thiscall	void	1	CAIStateGroup_MinionReactToPlayerInteraction *	1	yes	accepted									
-0092f310	Interaction_EvaluateAndAct	_global	unknown	undefined	0		0	yes	accepted									
+0092f310	GetGossipPhrase	CAIStateGroup_MinionReactToPlayerInteraction	unknown	undefined	0		0	yes	accepted									
 0092fab0	TestOrDoInteraction	CAIStateGroup_MinionReactToPlayerInteraction	__thiscall	bool	3	CAIStateGroup_MinionReactToPlayerInteraction *,bool,CThingPlayerCreature *	1	yes	accepted									
 00930480	?Update@CAIStateGroup_MinionReactToPlayerInteraction@@UAEXXZ	CAIStateGroup_MinionReactToPlayerInteraction	__thiscall	void	1	CAIStateGroup_MinionReactToPlayerInteraction *	1	yes	accepted									
 00930a70	IsRunnable	CAIStateGroup_MinionReactToPlayerInteraction	__thiscall	bool	1	CAIStateGroup_MinionReactToPlayerInteraction *	1	yes	accepted									

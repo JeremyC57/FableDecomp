@@ -37110,3 +37110,8 @@ _New_c35b10@8	00c35b10	00c275e0
 ?HasDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@@Z	004be2c0	0079acc0
 ?GFBoolToCharString@@YI?AVCCharString@@_N@Z	0099f9b0	008304a0
 ?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z	00661a60	008304a0
+?LoadFromGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z	004b5080	004b5500
+?ReadNextItemAsQuotedString@CStringParser@@QAE_NAAVCCharString@@@Z	009ba1d0	004b5500
+?clear@?$_List_base@U?$pair@VCCharString@@K@std@@V?$allocator@U?$pair@VCCharString@@K@std@@@2@@std@@QAEXXZ	004b8b70	004b5500
+?clear@?$_List_base@VCQuestCard@CQuestManager@@V?$allocator@VCQuestCard@CQuestManager@@@std@@@std@@QAEXXZ	004b8bb0	004b5500
+?GetCachedImage@CTCHeroOnlineScoreboard@@AAE?AV?$CCountedPointer@VCTexture@@@@ABVCWideString@@J@Z	0055fc90	0055fec0

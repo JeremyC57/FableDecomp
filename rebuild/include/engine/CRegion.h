@@ -29,6 +29,11 @@ public: const CCharString& GetName() const { return Name; }
     // Codex pass 13 (rows 0x004FD040 / 0x00501450): Ego_r / FableWin accessors; GetDisplayName, GetWorldMapOffset and
     // GetNameGraphicOffset out of line, the rest inline in retail.
     const CCharString& GetDisplayName() const;
+#ifdef FABLE_RETAIL_CREGION_PREGIONDEF
+    // Retail opt-in (chunk 795, row 0x0092FAB0): FableWin.pdb ?GetPRegionDef@CRegion@@QBE?AV?$CDefPointer@$$CBVCRegionDef@@@@XZ, inline in
+    // retail (the caller copies PDef +0x24 in place: the null test, then the AddRef `inc dword ptr [eax+4]`, 0x00930170). Body only.
+    CDefPointer<const CRegionDef> GetPRegionDef() const { return PDef; }
+#endif
     const CCharString& GetRegionDefName() const { return RegionDefName; }
     bool IsOnWorldMap() const { return AppearOnWorldMap; }
     // Chunk 734 (row 0x004A5A40): FableWin.pdb / Ego_r.pdb ?IsSoundThemesEnabled@CRegion@@QBE_NXZ, inline in retail (UpdateFrame

@@ -27414,3 +27414,9 @@ chunk	address	module	name	length
 796	008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2073
 796	008e9b70	NCreatureMode::CModeStrafe	vfunc_2	1705
 796	008315c0	CThingAICreature	vfunc_4	2488
+797	00e46d30	NScript::CV_BanditCampPathScript	Main	1971
+797	00e18630	NScript::CQ_WhiteBalverineWWScript	Main	2150
+797	00f0caa0	NScript::CQ_AmbushTradersScript::CAT_ConvoyMember	Main	2509
+797	00da91a0	NScript::CQ_MinionClifftopChaseScript::CMapKeeper	Main	2765
+797	00dadf80	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager	Main	2787
+797	00d18df0	NScript::CQ_BountyHuntScript::CBH_GangDeputy2	Main	3321

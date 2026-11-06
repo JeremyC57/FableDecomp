@@ -53,6 +53,11 @@ public:
     unsigned __int64 ReadAsUHUGE();                     // 0x009BA5B0
 #endif
     bool NextItemExists();
+#ifdef FABLE_RETAIL_CSTRINGPARSER_READQUOTED
+    // Nested opt-in (chunk 795, row 0x004B5500 CQuestManager::LoadGameState): Ego_r.pdb / FableWin.pdb
+    // ?ReadNextItemAsQuotedString@CStringParser@@QAE_NAAVCCharString@@@Z (retail 0x009BA1D0, landed; returns bool), out of line.
+    bool ReadNextItemAsQuotedString(CCharString&);      // 0x009BA1D0
+#endif
     CCharString ReadAsStringUntilWhitespace();
     CCharString ReadAsSymbol();
     CCharString ReadAsString();

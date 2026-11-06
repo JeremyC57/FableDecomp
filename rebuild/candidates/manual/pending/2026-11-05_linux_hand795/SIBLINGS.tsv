@@ -1,0 +1,5 @@
+address	source	grade_with_final_overlay	note
+00930a70	rebuild/src/compiled/00/93/CAIStateGroupMinionReactToPlayerInteraction_IsRunnable_00930a70.cpp	RELOCATION_MATCH	same class as 0x0092FAB0; local models, unaffected
+00563130	rebuild/src/compiled/00/56/CTCHeroOnlineScoreboard_ShowScoreboard_00563130.cpp	RELOCATION_MATCH	same class as 0x0055FEC0
+0090c540	rebuild/src/compiled/00/90/CAIStateGroupMinionGuardFollowPlayer_Update_0090c540.cpp	RELOCATION_MATCH	includes the overlaid CAIStateGroupBase.h / CMainGameComponent.h / CWorld.h / CTCVillage.h / CIntelligentPointer.h with retail macros
+005e41e0	rebuild/src/compiled/00/5e/CTCQuestCompletionUI_CTCQuestCompletionUI_005e41e0.cpp	RELOCATION_MATCH	same class as 0x005E78F0

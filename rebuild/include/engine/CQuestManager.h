@@ -31,6 +31,22 @@ inline _InputIter find(_InputIter __first, _InputIter __last, const _Tp& __val) 
 }
 #endif
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
+// Nested opt-in (chunk 795): the members LoadGameState(CStringParser&) touches. NQuestManager::CRuntimeQuestPersistence has no
+// header: Ego_r.pdb / FableWin.pdb ?LoadFromGameStateScript@CRuntimeQuestPersistence@NQuestManager@@QAEXAAVCCharString@@@Z (retail
+// 0x004B5080, landed), class key V (pdb_class_keys.tsv), retail size 0x20 (+0x0C .. +0x2C of CQuestManager; contents opaque here).
+#include "engine/CArray.h"
+class CWorld;
+class CStringParser;
+namespace NQuestManager {
+class CRuntimeQuestPersistence {
+public:
+    void LoadFromGameStateScript(CCharString& text);         // 0x004B5080
+private:
+    unsigned char _pad_0x00[0x20];
+};
+}
+#endif
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
 public:
     // Chunk 732 (row 0x004B05C0 TransferBoasts): the nested boast record. Ego_r.pdb layout CBoast (32 bytes): ID +0, Cost +4,
@@ -80,6 +96,18 @@ public:
     bool IsBetweenQuestStartAndFinishScreens() const;        // 0x004AF290
     // Chunk 734 (row 0x004A0D90 CWorld::LoadQuestsFromFile): Ego_r.pdb / FableWin.pdb ?RegisterQuest@CQuestManager@@QAEXABVCCharString@@@Z.
     void RegisterQuest(const CCharString& name);             // 0x004B2850
+#ifdef FABLE_RETAIL_CQUESTMANAGER_COMPLETIONUI
+    // Nested opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): Ego_r.pdb / FableWin.pdb spellings of the three
+    // landed members it calls (?AreAllBoastsProcessed@CQuestManager@@QBE_NAAVCCharString@@@Z 0x004AF9C0,
+    // ?GetIndexFromRegisteredQuest@CQuestManager@@QBEJABVCCharString@@@Z 0x004AF740,
+    // ?RemoveAcceptedBoastsForScript@CQuestManager@@QAEXVCCharString@@@Z 0x004B0030). Declarations only.
+    bool AreAllBoastsProcessed(CCharString& script_name) const;  // 0x004AF9C0
+    long GetIndexFromRegisteredQuest(const CCharString& name) const;   // 0x004AF740
+    void RemoveAcceptedBoastsForScript(CCharString script_name); // 0x004B0030
+    // FableWin.pdb ?GetQuestBoasts@CQuestManager@@QAEAAV?$list@VCBoast@CQuestManager@@...@std@@XZ, the only non-const list<CBoast>&
+    // accessor (GetBoasts is const): inline in retail, the row walks and erases AcceptedBoasts +0x6C in place (0x005E7CAC).
+    std::list<CBoast>& GetQuestBoasts() { return AcceptedBoasts; }
+#endif
 #ifdef FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK
     // Nested opt-in (chunk 763, row 0x004B01B0 IsRegionValidInRegionLockingMode): the nested active-quest record
     // (Ego_r.pdb / FableWin.pdb ?ContainsRegion@CActiveQuest@CQuestManager@@QBE_NABVCRegion@@@Z: `V` key, nested) with its
@@ -101,6 +129,49 @@ public:
     CActiveQuest* GetActiveQuestFromScriptName(const CCharString& name) const;    // 0x004AF5B0
     // Ego_r.pdb / FableWin.pdb ?IsRegionValidInRegionLockingMode@CQuestManager@@QBE_NABVCRegion@@@Z (retail 0x004B01B0).
     bool IsRegionValidInRegionLockingMode(const CRegion& region) const;
+#endif
+#ifdef FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
+    // Nested opt-in (chunk 795, row 0x004B5500 LoadGameState(CStringParser&)): the nested quest-card type record. FableWin.pdb
+    // ??0CQuestCard@CQuestManager@@QAE@ABVCCharString@@0_N@Z / ...0J@Z / ??1CQuestCard@CQuestManager@@QAE@XZ / the copy ctor
+    // ??0CQuestCard@CQuestManager@@QAE@ABV01@@Z (`V` key, nested); Ego_r list<CQuestManager::CQuestCard> (AvailableQuestCardTypes).
+    // Retail layout (LoadGameState's list node, malloc(0x18) = 8 + 16): two CCharStrings +0x0 / +0x4, a bool +0x8, a long +0xC.
+    // Both constructors are inline in retail: the members are default-constructed, then assigned in the body (0x004B5670..0x004B56B0:
+    // two CCharString() calls, two operator= calls, the byte, then the long). Member names are descriptive (no nested layout in
+    // the PDB dumps): the (name, name, bool) form stores -1 in the long, the (name, name, long) feat form stores false in the bool.
+    class CQuestCard {
+    public:
+        CCharString DefName;                                 // +0x00
+        CCharString ScriptName;                              // +0x04
+        bool        Flag;                                    // +0x08
+        long        FeatIndex;                               // +0x0c
+        CQuestCard(const CCharString& def_name, const CCharString& script_name, bool flag)
+        {
+            DefName = def_name;
+            ScriptName = script_name;
+            Flag = flag;
+            FeatIndex = -1;
+        }
+        CQuestCard(const CCharString& def_name, const CCharString& script_name, long feat_index)
+        {
+            DefName = def_name;
+            ScriptName = script_name;
+            Flag = false;
+            FeatIndex = feat_index;
+        }
+    };
+    // Ego_r.pdb / FableWin.pdb ?ActivateMultipleQuests@CQuestManager@@QAE_NABV?$CArray@VCCharString@@@@_N1@Z (retail 0x004B4260).
+    bool ActivateMultipleQuests(const CArray<CCharString>& names, bool load_resources, bool from_saved_game);
+    // Ego_r.pdb / FableWin.pdb ?LoadGameState@CQuestManager@@QAEXAAVCStringParser@@@Z (retail 0x004B5500).
+    void LoadGameState(CStringParser& parser);
+private:
+    unsigned char _pad_0x04[0x0c - 0x04];                    // +0x04 PGameScriptThingManager (CCountedPointer)
+    NQuestManager::CRuntimeQuestPersistence RuntimeQuestPersistence;   // +0x0c (0x20 bytes)
+    unsigned char _pad_0x2c[0x3c - 0x2c];                    // +0x2c RegisteredQuestNames, ActiveQuests
+    std::list<std::pair<CCharString, unsigned long> > PendingQuestsToDeactivate;   // +0x3c
+    std::vector<CCharString> CreatureGenerationDisabledQuests;   // +0x40
+    std::vector<CCharString> BetweenStartAndEndScreenQuests; // +0x4c (Ego_r vector<CCharString>)
+    std::list<CQuestCard> AvailableQuestCardTypes;           // +0x58
+#elif defined(FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK)
 private:
     unsigned char _pad_0x04[0x4c - 0x04];                    // +0x04 PGameScriptThingManager .. ActiveQuestsStack
     std::vector<CCharString> BetweenStartAndEndScreenQuests; // +0x4c (Ego_r vector<CCharString>)
@@ -115,7 +186,17 @@ private:
     std::list<CBoast> Boasts;                                // +0x68 (Ego_r list<CQuestManager::CBoast>)
     std::list<CBoast> AcceptedBoasts;                        // +0x6c
     std::list<CBoast> TempBoasts;                            // +0x70
+#ifdef FABLE_RETAIL_CQUESTMANAGER_LOADGAMESTATE
+    unsigned char _pad_0x74[0x7c - 0x74];                    // +0x74 Objectives, ScriptInfoManager
+    CWorld* World;                                           // +0x7c (LoadGameState: `mov ecx,[ebx+7Ch]`, virtual slot 3 GetThingManager)
+    unsigned char _pad_0x80[0x8f - 0x80];                    // +0x80 GameInterface .. WorldDestructed
+    bool QuestCardsNeedUpdating;                             // +0x8f (LoadGameState 0x004B556C `mov byte ptr [ebx+8Fh],0`)
+    unsigned char _pad_0x90[0x98 - 0x90];                    // +0x90 HeroMapNumber, LastAutoSaveFrame
+    long NumberOfQuestsBetweenStartAndFinishScreens;         // +0x98 (LoadGameState 0x004B5ECD)
+    unsigned char _pad_0x9c[0xb4 - 0x9c];                    // +0x9c QuestsWithResourcesLoadedThatAreNotActivated .. PMostRecentValidUsedTargetName
+#else
     unsigned char _pad_0x74[0xb4 - 0x74];                    // +0x74 Objectives .. PMostRecentValidUsedTargetName
+#endif
 public:
     static void CheckRetailLayout() {
         FABLE_STATIC_ASSERT(offsetof(CQuestManager, ActiveQuestCards) == 0x5c);

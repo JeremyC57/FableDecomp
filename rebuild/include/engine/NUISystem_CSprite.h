@@ -47,6 +47,12 @@ protected:
     unsigned char NoRenderNextFrame;                                               // +0x170
     EEngineSprite2DFlag Sprite2DFlag;                                              // +0x174
     unsigned long GraphicIndex;                                                    // +0x178
+#ifdef FABLE_RETAIL_CSPRITE_PUBLIC_TEXTURE
+    // Retail opt-in (chunk 795, row 0x0055FEC0 CTCHeroOnlineScoreboard::ChooseAClan): that row assigns the clan logo straight into
+    // the sprite's texture (inline CCountedPointer::operator= on +0x17C / +0x180, 0x00560350..0x0056039D); no PDB accessor is bound,
+    // so the member is reachable here. Access only: no layout change.
+public:
+#endif
     CCountedPointer<CTexture> PTexture;                                            // +0x17c
 };
 }

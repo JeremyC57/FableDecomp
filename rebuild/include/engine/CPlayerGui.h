@@ -25,6 +25,11 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ, out of line at 0x00437CD0 (it reads
     // PHeroInfoScreensManager's scoped_ptr word at +0x32C).
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;  // 0x00437CD0
+#ifdef FABLE_RETAIL_CPLAYERGUI_OPEN
+    // Retail opt-in (chunk 795, row 0x005E78F0): Ego_r.pdb ?Open@CPlayerGui@@QAEXXZ, out of line at 0x004374B0 (landed callers, e.g.
+    // the CTCQuestCompletionUI dtor 0x005E41E0). Declaration only.
+    void Open();                                                         // 0x004374B0
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUI_CRIME
     // Nested opt-in (chunk 755, row 0x00775B40 CTCShop::FrameUpdate): Ego_r.pdb 0x0044A410 / FableWin.pdb 0x01A7EF10
     // ?SetCrimeAsDisplaying@CPlayerGui@@QAEXXZ, out of line in retail at 0x004376B0 (landed).

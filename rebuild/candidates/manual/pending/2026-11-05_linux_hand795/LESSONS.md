@@ -1,0 +1,8 @@
+- VC7.1 `a->Mgr().Lookup(a->Mgr().Remap(x))` nested: World is held across both vcalls and the 64-bit UID is spilled; two statements with a named remapped local reload the member per vcall and keep the UID in registers (0x004B5500, 2567 -> 2525).
+- A CWideString temp that retail constructs before the argument pushes is a named block-scoped local (`{ CWideString t(L".."); f(t); }`), not an inline temporary (0x0055FEC0, 0x0092FAB0).
+- If you overlay a root header (fable_string.h), also overlay every root header that includes it (fable_game_text_bank.h, fable_definition_table.h); otherwise the un-overlaid copy is pulled in too and you get C2011 redefinitions.
+- Overlay edits made by script must anchor inside the class body; a first-occurrence anchor can land in a forward-declaration block or after `#pragma pack(pop)`.
+- CPlayerGui::Get() returns a reference (`static T& Get()`); use `.` not `->`.
+- CDefPointer has no bool conversion: test `!p.IsNull()`, and the pointee must derive from CDefPointeeBase.
+- Spelling a GetTC key read straight from the parameter hoists the key store above the call setup (0x0092FAB0 a8, worse); keep the key as an enum constant.
+- A frame-only residue (every diff line an [esp+X] offset, same size) is a slot-sharing decision: VC7.1 reuses a dead parameter slot for a later local unless that parameter is still live; mask esp offsets (bd3.py) to confirm before trying spellings.

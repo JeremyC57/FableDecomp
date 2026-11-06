@@ -29,6 +29,11 @@ public:
     void PreChangeResolution();                                         // 0x00434A10 ?PreChangeResolution@CDisplayEngine@@QAEXXZ
     void PostChangeResolution(unsigned long, unsigned long, unsigned long);   // 0x00434A20 ?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z
 #endif
+#ifdef FABLE_RETAIL_CDISPLAYENGINE_GET3DENGINE
+    // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb ?Get3DEngine@CDisplayEngine@@QAEAAVCIEngine@@XZ,
+    // inline in retail (the caller reads Engine3D +0x2C in place, 0x005E790E). Define FABLE_RETAIL_CIENGINE for the polymorphic CIEngine.
+    CIEngine& Get3DEngine() { return *Engine3D; }
+#endif
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long           EnginePreloadFlags;              // +0x04
     CMainGameComponent*     Component;                       // +0x08

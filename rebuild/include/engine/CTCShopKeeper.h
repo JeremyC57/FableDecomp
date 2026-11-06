@@ -10,9 +10,20 @@
 #include "engine/CTCBase.h"
 #include "engine/CIntelligentPointer.h"
 #include "engine/CThingCreatureBase.h"
+#ifdef FABLE_RETAIL_CTCSHOPKEEPER_SHOP
+class CTCShop;                                                           // chunk 795
+#endif
 class CTCShopKeeper : public CTCBase {
 public:
     CThingCreatureBase* GetCustomer() const;                             // 0x00798D80
+#ifdef FABLE_RETAIL_CTCSHOPKEEPER_SHOP
+    // Retail opt-in (chunk 795, row 0x0092FAB0): the interface key (TCI_SHOP_KEEPER, the row's inline GetTC key 0x90) and Ego_r.pdb
+    // ?GetShopTC@CTCShopKeeper@@QBEPAVCTCShop@@XZ (0x00798F50, landed) / ?GetHint@CTCShopKeeper@@QAE?AVCCharString@@XZ (0x00798D30: Ego_r
+    // orders GetHint 0x0079E7C0 before GetShopTC 0x0079E900, as retail; the body returns a CCharString built from one literal).
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SHOP_KEEPER; }
+    CTCShop* GetShopTC() const;                                          // 0x00798F50
+    CCharString GetHint();                                               // 0x00798D30
+#endif
 protected:
     CIntelligentPointer<CThingCreatureBase> Customer;                    // +0x0c
     CIntelligentPointer<CThing> Shop;                                    // +0x14

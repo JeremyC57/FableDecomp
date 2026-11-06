@@ -1,0 +1,7 @@
+address	name	status	attempts	best	grade	difflines	file	notes
+004b5500	CQuestManager::LoadGameState	RELOCATION_MATCH	7	a7	RELOCATION_MATCH	0	src/004b5500.cpp	a1-a5 DIFFER (best a5 2567v2525: this live-range split, UID pair spilled); a6 named bool flag (no change); a7 match: remap and lookup as two statements
+005e78f0	CTCQuestCompletionUI::GlobalUpdate	PARK	13	a13	DIFFER(2340v2340)	4	differ/005e78f0.cpp	see ATTEMPTS.log a1-a13; residue: x87 TargetExperience spill-store / Gold-load scheduling around fmul/fdivp, 10 spellings no change
+0055fec0	CTCHeroOnlineScoreboard::ChooseAClan	RELOCATION_MATCH	4	a4	RELOCATION_MATCH	0	src/0055fec0.cpp	a1 87 lines (2144v2132); a2 16 lines (block-scoped named CWideString locals); a3 match (frame via PScoreboardScreen->FindChild); a4 shared CText.h
+0092fab0	CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction	PARK	9	a3	DIFFER(2508v2508)	311	differ/0092fab0.cpp	a1 2492v2508 114 lines; a2 size match, every residue a frame-slot offset (masked diff 0 lines beyond the jump-table reloc): frame 0x1C v 0x24; a3-a9 temp / string / fps / GetTC-key spellings: no change (a4, a8 worse)
+007cacb0	CTCHeroReceiveItems::GlobalUpdate	SKIP	0	-	-	-	-	no draft for lack of time: large state machine (fish-text concatenation, sound init); left for a later chunk
+0087f3a0	CCombatAction_KickThingOnGround::PerformAction	SKIP	0	-	-	-	-	no draft for lack of time: x87-heavy kick-impulse maths; left for a later chunk

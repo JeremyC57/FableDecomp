@@ -1,0 +1,13 @@
+addr       parity           behav  name
+004b5500   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+004b5500   RELOCATION_MATCH PASS   LoadGameState
+0055fec0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@IAEXPAPAVCComponent@NUISystem@@ABQAV34@ABU__true_type@2@I_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+0055fec0   RELOCATION_MATCH PASS   ChooseAClan
+
+WINS: 2
+  004b5500 RELOCATION_MATCH CQuestManager::?LoadGameState@CQuestManager@@QAEXAAVCStringParser@@@Z
+  0055fec0 RELOCATION_MATCH CTCHeroOnlineScoreboard::?ChooseAClan@CTCHeroOnlineScoreboard@@QAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CQuestManager_LoadGameState_004b5500
+  CTCHeroOnlineScoreboard_ChooseAClan_0055fec0

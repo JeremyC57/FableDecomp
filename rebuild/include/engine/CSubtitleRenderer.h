@@ -12,6 +12,9 @@
 class CFontBank;
 class CGraphicDataBank;
 class CWideStringData;
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT
+class CWideString;                                              // chunk 795
+#endif
 
 #pragma pack(push, 1)
 class CSubtitleRenderer {
@@ -72,6 +75,14 @@ public:
     // retail (CTCTavernGame::FrameUpdate reads the byte +0xFD of the CPlayerGui singleton = SubtitleRenderer +0x18 + DisplayingText
     // +0xE5 in place). Member functions only: the layout is unchanged on both paths.
     bool IsDisplayingText() const { return DisplayingText; }
+#endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT
+    // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@KM_N2@Z
+    // (0x00492E4B) and ?SetText@..ABVCFontBank@@ABVCWideString@@111KM_N2@Z (the text and three button texts; 0x00492F69), out of line
+    // in retail (landed callers, e.g. CTCChest::DisplayLockedMessage 0x00750110). Declarations only: no layout change.
+    void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float time, bool click_past, bool pause_game);   // 0x00492E4B
+    void SetText(const CFontBank& font, const CWideString& text, const CWideString& button0_text, const CWideString& button1_text,
+                 const CWideString& button2_text, unsigned long flags, float time, bool click_past, bool pause_game);              // 0x00492F69
 #endif
 };
 #pragma pack(pop)

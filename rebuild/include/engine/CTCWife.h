@@ -67,6 +67,12 @@ public:
     void OnHeroViolence();                                   // 0x006CFDA0 ?OnHeroViolence@CTCWife@@QAEXXZ
     void Divorce();                                          // 0x006D0180 ?Divorce@CTCWife@@QAEXXZ
     void InitWifeNonpersistentState();                       // 0x006D03E0 ?InitWifeNonpersistentState@CTCWife@@QAEXXZ
+#ifdef FABLE_RETAIL_CTCWIFE_GREET
+    // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?GetGreetDialogueGroupName@CTCWife@@QBE_NAAVCCharString@@@Z (0x006D0410) and
+    // ?GetGreetConfirmationText@CTCWife@@QBE_NAAVCWideString@@@Z (0x006D0590), out of line in retail (both landed). Declarations only.
+    bool GetGreetDialogueGroupName(CCharString& group_name) const;       // 0x006D0410
+    bool GetGreetConfirmationText(CWideString& text) const;              // 0x006D0590
+#endif
 #ifdef FABLE_RETAIL_CTCWIFE_MARRIAGEEND
     // Retail opt-in (chunk 754, row 0x006D00A0 Murdered): the end-of-marriage members, Ego_r.pdb spellings (Ego_r 0x00704A90 /
     // 0x00704C00 / 0x00704C90, the manifest's CTCWife run in the same order). Declarations only: no layout or vtable change.

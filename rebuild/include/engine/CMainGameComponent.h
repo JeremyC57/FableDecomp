@@ -18,6 +18,13 @@ class CPlayerManager;
 #if defined(FABLE_RETAIL_CMAINGAMECOMPONENT) && defined(FABLE_RETAIL_CMAINGAMECOMPONENT_WORLD)
 class CWorld;
 #endif
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT) && defined(FABLE_RETAIL_CMAINGAMECOMPONENT_DISPLAYENGINE)
+class CDisplayEngine;
+#endif
+#if defined(FABLE_RETAIL_CMAINGAMECOMPONENT) && defined(FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK)
+namespace NGameText { class CDataBank; }
+class CFontBank;
+#endif
 class CMainGameComponentInit;
 class CMainGameComponent : public CGameComponent {
 protected:
@@ -87,6 +94,20 @@ public:
     // ?PeekWorld@CMainGameComponent@@QBEABVCWorld@@XZ (0x0187EFF0; inline in Ego_r and retail: the caller reads the scoped_ptr word
     // +0x24 in place, 0x0090C55D). PWorld stays opaque here (boost::scoped_ptr<CWorld>, one pointer word), read as that word.
     const CWorld& PeekWorld() const { return **reinterpret_cast<CWorld* const*>(PWorld); }
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_TEXTBANK
+    // Retail opt-in (chunk 795, row 0x0092FAB0 CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction): Ego_r.pdb
+    // ?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ and ?PeekCutSceneMainFont@CMainGameComponent@@QBEABVCFontBank@@XZ,
+    // inline in retail (the caller reads the counted pointers' object words +0x14 / +0x1614C in place, 0x0093033B / 0x00930372; as the
+    // landed CTCChest::DisplayLockedMessage 0x00750110 model). The members stay opaque (CCountedPointer: object word first).
+    const NGameText::CDataBank& GetTextBank() const { return **reinterpret_cast<NGameText::CDataBank* const*>(PTextBank); }
+    const CFontBank& PeekCutSceneMainFont() const { return **reinterpret_cast<CFontBank* const*>(PCutSceneMainFont); }
+#endif
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_DISPLAYENGINE
+    // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): FableWin.pdb
+    // ?GetDisplayEngine@CMainGameComponent@@QAEAAVCDisplayEngine@@XZ, inline in retail (the caller reads the scoped_ptr word +0x28 in
+    // place, 0x005E790B). PDisplayEngine stays opaque (boost::scoped_ptr<CDisplayEngine>, one pointer word), read as that word.
+    CDisplayEngine& GetDisplayEngine() { return **reinterpret_cast<CDisplayEngine* const*>(PDisplayEngine); }
 #endif
 #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_WORLDFRAME
     // Nested opt-in (chunk 755, row 0x008AF500 CombatDialogueManager::AttemptToSpeak): Ego_r.pdb

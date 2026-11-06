@@ -1,0 +1,6 @@
+address	name	evidence
+004b5500	CQuestManager::LoadGameState	landing 2026-11-05v (chunk 795): Ego_r.pdb / FableWin.pdb ?LoadGameState@CQuestManager@@QAEXAAVCStringParser@@@Z; caller 0x004B6380; row RELOCATION_MATCH (chunk 795)
+0055fec0	CTCHeroOnlineScoreboard::ChooseAClan	landing 2026-11-05v (chunk 795): Ego_r.pdb ?ChooseAClan@CTCHeroOnlineScoreboard@@QAEXXZ; strings PC_SCOREBOARD_CLANS_LIST / TEXT_GUI_MENU_CHOOSE_CLAN; row RELOCATION_MATCH (chunk 795)
+005e78f0	CTCQuestCompletionUI::GlobalUpdate	landing 2026-11-05v (chunk 795): vtable slot 26 (CTCBase::GlobalUpdate); Ego_r ?GlobalUpdate@CTCQuestCompletionUI@@UAEX_N@Z (row parked, chunk 795)
+0092fab0	CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction	landing 2026-11-05v (chunk 795): Ego_r.pdb ?TestOrDoInteraction@..@@AAE_N_NPAVCThingPlayerCreature@@@Z; caller IsRunnable 0x00930A70 (row parked, chunk 795)
+0092f310	CAIStateGroup_MinionReactToPlayerInteraction::GetGossipPhrase	landing 2026-11-05v (chunk 795): NAME_FIXES.tsv (Ego_r order + call shape)

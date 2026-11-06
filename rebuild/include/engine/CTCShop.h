@@ -42,6 +42,11 @@ public:
     // Ego_r.pdb ?IsOpeningHours@CTCShop@@QBE_NXZ (Fable.exe 0x00773950; row 0x00918A40).
     bool IsOpeningHours() const;
 #endif
+#ifdef FABLE_RETAIL_CTCSHOP_AVAILABLE
+    // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?IsShopKeeperAvailable@CTCShop@@QBE_NXZ, out of line in retail (0x00773AA0,
+    // landed). Declaration only.
+    bool IsShopKeeperAvailable() const;                                  // 0x00773AA0
+#endif
 #ifdef FABLE_RETAIL_CTCSHOP_SHOPKEEPER
     // Retail opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): FableWin.pdb ?GetShopKeeper@CTCShop@@QBEPAVCThingCreatureBase@@XZ,
     // inline in retail (GetPItem 0x00A01B50 on PShopKeeper +0x10, `lea ebp,[esi+10h]`), and the interface key. Bodies only.

@@ -1,0 +1,2 @@
+manifest 0092f310 _global::Interaction_EvaluateAndAct -> CAIStateGroup_MinionReactToPlayerInteraction::GetGossipPhrase
+labels 5  catalog renamed 0  manifest renamed 1

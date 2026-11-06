@@ -33,7 +33,13 @@ public:
     virtual bool Virtual06_009915c0();                          // slot  6 (+0x18) 0x009915c0; CSoundManagerLH 0x00a3ec70
     virtual void Virtual07_00a3e350() = 0;                      // slot  7 (+0x1C) pure here; CSoundManagerLH 0x00a3e350
     virtual void Virtual08_00a3e380() = 0;                      // slot  8 (+0x20) pure here; CSoundManagerLH 0x00a3e380
+#ifdef FABLE_RETAIL_CASOUNDMANAGER_SLOT9
+    // Retail opt-in (chunk 795, row 0x005E78F0): CSoundManagerLH's slot 9 body 0x00a3e3a0 is `mov eax,[ecx+44h] ; ret` and the caller
+    // uses the result as an object whose slot 9 (+0x24) takes the counting-sound handle (0x005E7A2D..0x005E7A3B). Names descriptive.
+    virtual class CASoundSampleOwner_Unproven* Virtual09_00a3e3a0() = 0;   // slot  9 (+0x24) pure here; CSoundManagerLH 0x00a3e3a0
+#else
     virtual void Virtual09_00a3e3a0() = 0;                      // slot  9 (+0x24) pure here; CSoundManagerLH 0x00a3e3a0
+#endif
     virtual unsigned long Virtual10_00a3ec90() = 0;             // slot 10 (+0x28) pure here; CSoundManagerLH 0x00a3ec90
     virtual void Virtual11_00a3e3b0() = 0;                      // slot 11 (+0x2C) pure here; CSoundManagerLH 0x00a3e3b0
     virtual void Virtual12_00993690(bool);                      // slot 12 (+0x30) 0x00993690 (both vtables)

@@ -1,0 +1,7 @@
+address	module	name	length
+0087f3a0	CCombatAction_KickThingOnGround	PerformAction	2422
+005e78f0	CTCQuestCompletionUI	GlobalUpdate	2340
+007cacb0	CTCHeroReceiveItems	GlobalUpdate	2974
+004b5500	CQuestManager	LoadGameState	2525
+0055fec0	CTCHeroOnlineScoreboard	ChooseAClan	2132
+0092fab0	CAIStateGroup_MinionReactToPlayerInteraction	TestOrDoInteraction	2508

@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-794 recorded; chunks 795 and 796 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-795 recorded; chunks 796 and 797 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -26,20 +26,21 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
     6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
     wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
-  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 795
-    (`$S/w22/agent795`: CCombatAction_KickThingOnGround::PerformAction, CTCQuestCompletionUI / CTCHeroReceiveItems::GlobalUpdate,
-    CQuestManager::LoadGameState, CTCHeroOnlineScoreboard::ChooseAClan, CAIStateGroup_MinionReactToPlayerInteraction::
-    TestOrDoInteraction) and chunk 796 (`$S/w22/agent796`: CFishCompOrganiser::AskForFish, CBS_Teacher::AskForBook,
-    CAIStateGroup_JackDragon::UpdateHover, CModeThunderLightningStorm::UpdateLightningBeams, CModeStrafe slot 2, CThingAICreature
-    slot 4). Land each like 782-794 with the next free letter (`landing_v`, `_w`), `pending/2026-11-05_linux_hand79N`, labels
-    `2026-11-05<letter>` incl. the landed rows' own labels, queue tag `land0511<letter>`. When a hand-back extends an existing
+  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 796
+    (`$S/w22/agent796`: CFishCompOrganiser::AskForFish, CBS_Teacher::AskForBook, CAIStateGroup_JackDragon::UpdateHover,
+    CModeThunderLightningStorm::UpdateLightningBeams, CModeStrafe slot 2, CThingAICreature slot 4) and chunk 797
+    (`$S/w22/agent797`: six script Mains: CV_BanditCampPathScript, CQ_WhiteBalverineWWScript, CAT_ConvoyMember, CMapKeeper,
+    CNOVI_Villager, CBH_GangDeputy2). Land each like 782-795 with the next free letter (`landing_w`, `_x`),
+    `pending/2026-11-05_linux_hand79N`, labels `2026-11-05<letter>` incl. the landed rows' own labels, queue tag
+    `land0511<letter>`. Diff every overlay header against rebuild/include first and three-way merge any that would drop another
+    chunk's lines (796's overlay predates the 794 / 795 landings). When a hand-back extends an existing
     opt-in macro, recheck the landed sources that define it (GOTCHAS 2026-11-06 coordinator line). Each agent runs at most 2
     grades. When one lands, cut the next chunk so two authors stay busy. Chunk 793 (`_t/`) parked all six x87-heavy engine rows:
-    prefer game-logic rows (CTC*, CThing*, quest/UI, AI state) over renderers and maths. Pool: the groups ledger (`pending/2026-11-03_groups/ROWS.tsv`) still has about 168 unworked rows (the earlier "about
+    prefer game-logic rows (CTC*, CThing*, quest/UI, AI state) over renderers and maths. Pool: the groups ledger (`pending/2026-11-03_groups/ROWS.tsv`) still has about 162 unworked rows (script Mains remain: e.g. CHeroThunder, CGTDI_Maze, CQ_FireHeartScript::PlayCutscene) (the earlier "about
     40" counted only rows with no remaining callees). Take rows that are 16-byte aligned (an odd start such as 0x00651273 is a
-    mid-function entry) and check each extent for a second function after its tables. The parked 782-794 rows are the other pool.
-  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`). The
-    parked rows are in `pending/2026-11-05_linux_hand782..794/`.
+    mid-function entry) and check each extent for a second function after its tables. The parked 782-795 rows are the other pool.
+  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`), 795 2 of 6 (`_v/`). The
+    parked rows are in `pending/2026-11-05_linux_hand782..795/`.
   - A container restart stopped chunk 784 once; the scratch survived, and the agent was resumed from its transcript.
   - Open naming decision: 0x0122DEDC (the shared 0.0f, 30+ spellings, no PDB name), like EPSILON / TWO_PI on 2026-11-01.
   - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.

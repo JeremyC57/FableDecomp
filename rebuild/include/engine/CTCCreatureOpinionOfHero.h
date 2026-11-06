@@ -50,6 +50,19 @@ public:
     bool IsFactionEnemyToHeroOverriddenOnOpinion() const;                // 0x00681850
     bool IsWillingToStartFollowingHero() const;                          // 0x006818A0
     bool IsWillingToContinueFollowingHero() const;                       // 0x006818F0
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_GREET
+    // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?GetGreetDialogueGroupIndex@CTCCreatureOpinionOfHero@@QAEKW4EOpinionAttitudeType@@@Z
+    // (0x00683C10, landed callers), FableWin.pdb ?ResetLastOpinionReactionFrame@CTCCreatureOpinionOfHero@@QAEXXZ (out of line in retail
+    // 0x006CEAE0: GetWorld then LastOpinionReactionFrame +0x0C = GetFrame()) and the inline ?SetHasInteracted@ / ?SetHasGreeted@..QAEXXZ
+    // (the row stores 1 to +0x340 then +0x341 in place). Members only: no layout change.
+    unsigned long GetGreetDialogueGroupIndex(EOpinionAttitudeType attitude);   // 0x00683C10
+    void ResetLastOpinionReactionFrame();                                // 0x006CEAE0
+    void SetHasInteracted() { InteractedFlag = true; }
+    void SetHasGreeted() { GreetedFlag = true; }
+#ifndef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_OPINION_OF_HERO; }   // as the INFORM opt-in
+#endif
+#endif
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM
     // Nested opt-in (chunk 794, row 0x006C6040 CTCHeroOpinionDeedLog::InformRelevantThingsOfDeed): Ego_r.pdb
     // ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z and

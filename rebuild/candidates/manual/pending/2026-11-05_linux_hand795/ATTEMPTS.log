@@ -1,0 +1,34 @@
+# chunk 795 attempts log (one line per graded attempt)
+004b5500 a1 explicit CCharString("...") temps -> DIFFER 2531v2525 1147 difflines: frame 0x54 (retail 0x48), this spilled, push eax vs lea reload of temps
+004b5500 a2 flag as inline arg `ReadAsInteger() > 0` -> same frame, setg bl remains
+004b5500 a3 implicit const char* -> CCharString conversions: lea reload matches retail; 2559v2525 1094 difflines; this spilled to [esp+2c], list insert position in ebx
+004b5500 a4 named CQuestCard locals for both push_backs -> 2559v2525, 1088 slot-difflines (no change in regalloc)
+004b5500 a5 same-TU noinline ActivateMultipleQuests stand-in (reads begin/end only) -> 2567v2525; names._M_finish now cached in esi like retail (cmp esi,[esp+40h]); this still split/spilled around the normal-card push (setg bl + list position in ebx where retail keeps both in the dead arg slot [esp+5Ch]); frame 0x54 v 0x48 (this spill slot; names vector not sharing slots with the feat card)
+005e78f0 a1: first draft (shared CTCBase/CWorld/CMainGameComponent/CQuestManager + opt-ins) -> DIFFER(2287v2340) 210 lines: CCharString==, CDefPointer dtor called out of line (inline budget), CText slot 134 v 144
+005e78f0 a2: FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQ overlay opt-in, CRefCounted def model + forceinline dtor, CText +10 slots, parent local -> DIFFER(2340v2340) 4 lines (x87 block scheduling: TargetExperience spill store before fmul, Gold load before fdivp)
+005e78f0 a3: target locals declared together -> 24 lines (worse)
+005e78f0 a4: members direct (no target locals) -> 4 lines (same as a2)
+005e78f0 a5: digit_count_time * FPS order -> 4
+005e78f0 a6: shared divisor local -> 2356v2340 (worse)
+005e78f0 a7: (float) casts of the differences -> 4
+005e78f0 a8: (float)GetConstantFPS() -> 4
+005e78f0 a9: difference locals first -> 4
+005e78f0 a10: const digit_count_time + named param -> 4
+005e78f0 a11: x = x + ... -> 4
+005e78f0 a12: clamp comparisons reversed (target < displayed) -> 4
+0055fec0	a1	DIFFER(2144v2132) 87 lines: first compile after EActionType/CSprite define fixes
+0055fec0	a2	DIFFER(2132v2132) 16 lines: named block-scoped CWideString locals for SetValue/GetCachedImage
+0055fec0	a3	RELOCATION_MATCH: frame via PScoreboardScreen->FindChild
+0055fec0	a4	RELOCATION_MATCH: shared engine/CText.h (FABLE_RETAIL_CTEXT) replaces the local CText; CTCInventory +0x21C renamed CurrentOpenMenu (Ego_r)
+005e78f0	a13	DIFFER(2340v2340) 4 lines: members direct + GetMiscThingsDef()->DigitCountTime; same x87 residue (best)
+0092fab0	a1	DIFFER(2492v2508) 114 lines: first compile (shared headers + chunk-795 opt-ins)
+0092fab0	a2	DIFFER(2508v2508) 311 lines, all frame-slot offsets (bd3 masked: 0): named block-scoped SetText strings + money temp
+0092fab0	a3	DIFFER(2508v2508) 311 lines frame-only: fps read inline (no change)
+0092fab0	a4	DIFFER(2508v2508) 319 lines, 27 masked: strings at the if-body level (worse; WaitingForConfirmation store moves)
+0092fab0	a5	DIFFER(2508v2508) 311 lines frame-only: typed GetTC<T>/PeekTC<T> (no change)
+0092fab0	a6	DIFFER(2508v2508) 311 lines frame-only: case-1 fps named at block start (no change)
+0092fab0	a7	DIFFER(2508v2508) 311 lines frame-only: strings in a forceinline helper (no change; experiment only)
+0092fab0	a8	DIFFER(2516v2508) 118 masked: GetTC key read from the parameter (worse: key store hoisted above the test; reverted)
+0092fab0	a9	DIFFER(2508v2508) 311 lines frame-only: raw-player alive test via inline helper (no change)
+004b5500	a6	DIFFER(2567v2525) 1096 lines (242 masked): named bool flag for the normal card (no change)
+004b5500	a7	RELOCATION_MATCH: the remap and the lookup as two statements (named remapped UID): VC7.1 then reloads World for the second GetThingManager and keeps the UID pair in esi:edi

@@ -39,6 +39,24 @@ public:
 private:
     unsigned char _pad_0x2c[0x1dc - 0x2c];                               // +0x2c MoralityChangingEnabled .. (opaque)
 public:
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_BOASTS)
+    // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z (retail
+    // 0x0057B327, landed), ?AddRewardMoney@CTCHeroStats@@QAEXJ@Z (0x0057A59B, landed) and NumBoastsCompleted (+0xD0, the generated
+    // default branch's offset; the row's `inc dword ptr [ebp+0D0h]`, 0x005E7D35).
+    void AddMoney(long amount, bool flag);                               // 0x0057B327
+    void AddRewardMoney(long amount);                                    // 0x0057A59B
+    unsigned char _pad_after_base[0xd0 - sizeof(CTCBase)];
+    long NumBoastsCompleted;                                             // +0xd0
+    unsigned char _pad_0xd4[0x1dc - 0xd4];
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_BRIBE)
+    // Retail opt-in (chunk 795, row 0x0092FAB0 CAIStateGroup_MinionReactToPlayerInteraction::TestOrDoInteraction): Money +0x3C (the
+    // row's `mov edi,[eax+3Ch]` against CTCVillage::GetCostToBribe) and TrainingStatus +0x114 (EHeroTrainingStatus, the row's
+    // `mov ecx,[eax+114h] ; test ecx,ecx`), the generated default branch's offsets and Ego_r.pdb names.
+    unsigned char _pad_after_base[0x3c - sizeof(CTCBase)];
+    long Money;                                                          // +0x3c
+    unsigned char _pad_0x40[0x114 - 0x40];
+    long TrainingStatus;                                                 // +0x114 EHeroTrainingStatus
+    unsigned char _pad_0x118[0x1dc - 0x118];
 #else
     unsigned char _pad_after_base[0x1dc - sizeof(CTCBase)];
 #endif

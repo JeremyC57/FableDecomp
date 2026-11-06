@@ -49,6 +49,12 @@ public:
     // in the inline push_back), not the implicit member-wise copy of PData.
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
 #endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CONVERT
+    // Retail opt-in (chunk 795, row 0x0092FAB0): the converting constructor from another instantiation, out of line in retail
+    // (0x00930D20 CIntelligentPointer<const CThing> from CIntelligentPointer<CThingPlayerCreature>: the base ctor 0x00A01B10, the
+    // vptr 0x01237F1C, GetPItem on the source, SetPItem; the landed row's body). Declaration only: callers call the COMDAT.
+    template<class U> CIntelligentPointer(const CIntelligentPointer<U>& other);
+#endif
 private:
     void SetPointer(const T* pointer) { SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(pointer))); }
 };

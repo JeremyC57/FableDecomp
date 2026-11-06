@@ -34,6 +34,11 @@ public:
     CThingAICreature* GetGuardFollowingPlayer() { return reinterpret_cast<CIntelligentPointer<CThingAICreature>*>(GuardFollowingPlayer)->Get(); }
 #endif
     __forceinline CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
+#ifdef FABLE_RETAIL_CTCVILLAGE_BRIBE
+    // Retail opt-in (chunk 795, row 0x0092FAB0): Ego_r.pdb ?GetCostToBribe@CTCVillage@@QAEJXZ, out of line in retail (0x006588CF:
+    // `mov eax,[ecx+94h] ; mov eax,[eax+0F8h] ; ret`, PDef's CVillageDef::BribeCost; landed as _global::GetMember_dword0x94_deref0xf8).
+    long GetCostToBribe();                                               // 0x006588CF
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_LIMBO
     // Retail opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): FableWin.pdb ?GetVillageLimbo@CTCVillage@@QBE_NXZ, inline in retail
     // (`mov cl,[eax+0B3h]` straight after GetPVillage 0x007EE540). +0xB3 is LaggyLimbo in the retail layout below (Ego_r.pdb +0x13F;
