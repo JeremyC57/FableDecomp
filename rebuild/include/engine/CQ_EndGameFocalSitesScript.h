@@ -67,6 +67,26 @@ public:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameFocalSitesScript) == 0x94);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameFocalSitesScript::CEndGameScythe) == 0x1c);
+#ifdef FABLE_RETAIL_CQ_ENDGAMEFOCALSITESSCRIPT_JACKOFBLADES
+// Retail opt-in (chunk 805): the nested entity CEndGameJackOfBlades (Ego_r.pdb CEndGameJackOfBlades, 28 bytes: CEntityScriptBase
+// 0x14, ParentClass +0x14, PMasterData +0x18; the Alloc 0x00D2C260 allocates 0x1c). Entity vtable 0x012CC2E8 (stored by the Alloc):
+// 0 scalar deleting dtor 0x00D2C320, 1 Main 0x00D2D930, 2 Init 0x00D2C310, 3 GetParentScript 0x00D2C300; Ego_r.pdb
+// ?Main@CEndGameJackOfBlades@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ (private), ?Alloc@CEndGameJackOfBlades@..@@SI..
+namespace NScript {
+class CQ_EndGameFocalSitesScript::CEndGameJackOfBlades : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_EndGameFocalSitesScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D2C260
+    virtual CScriptBase* GetParentScript() const;                        // slot 3 0x00D2C300
+private:
+    virtual void Main();                                                 // slot 1 0x00D2D930
+    virtual void Init();                                                 // slot 2 0x00D2C310
+protected:
+    NScript::CQ_EndGameFocalSitesScript & ParentClass;                   // +0x14
+    NScript::CQ_SunnyvaleMasterData * PMasterData;                       // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameFocalSitesScript::CEndGameJackOfBlades) == 0x1c);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_ENDGAMEFOCALSITESSCRIPT_H

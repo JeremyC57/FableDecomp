@@ -38,7 +38,11 @@ public:
     void MonitorRegionPresence();                                        // 0x00D773E0
     void DoCutscene(long);                                               // 0x00D77690
     class CHTG_Prisoner : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };           // 0x00D71980
+#ifdef FABLE_RETAIL_CQ_HANGINGTREEGOODSCRIPT_GUARD
+    class CHTG_Guard;                                                    // defined below (chunk 805 opt-in)
+#else
     class CHTG_Guard : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };              // 0x00D70520
+#endif
     class CHTG_AmbushPoint : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };        // 0x00D6FD70
     class CHTG_AmbushPointRear : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };    // 0x00D6FF30
     class CHTG_AmbushPointCond : public CEntityScriptBase { public: static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); };    // 0x00D6FE50
@@ -83,4 +87,27 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HangingTreeGoodScript)==0xdc);
+#if defined(FABLE_RETAIL_CQ_HANGINGTREEGOODSCRIPT) && defined(FABLE_RETAIL_CQ_HANGINGTREEGOODSCRIPT_GUARD)
+// Retail opt-in FABLE_RETAIL_CQ_HANGINGTREEGOODSCRIPT_GUARD (chunk 805): the full CHTG_Guard entity (needs
+// FABLE_RETAIL_CQ_HANGINGTREEGOODSCRIPT). Ego_r.pdb layout (struct_layouts_egor.tsv): 28 bytes, ParentClass +0x14, PMasterData +0x18,
+// no own members; the Alloc 0x00D70520 allocates 0x1c. Entity vtable 0x012D27A8 (stored by the Alloc): 0 scalar deleting dtor
+// 0x00D706C0, 1 Main 0x00D706E0, 2 Init 0x00D705D0, 3 GetParentScript 0x00D705C0, 4 OnPersist (base 0x00CDEBC0), 5 OnPredicateFail
+// 0x00D70650 (Ego_r ?Main/?Init/?OnPredicateFail/?OnInterrupted@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ, private).
+namespace NScript {
+class CQ_HangingTreeGoodScript::CHTG_Guard : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HangingTreeGoodScript&,CScriptDataBase*,const CScriptThing&); // 0x00D70520
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D705C0
+private:
+    virtual void Main();                                                 // 0x00D706E0
+    virtual void Init();                                                 // 0x00D705D0
+    virtual void OnPredicateFail();                                      // 0x00D70650
+    virtual void OnInterrupted();                                        // 0x00D706B0
+protected:
+    CQ_HangingTreeGoodScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HangingTreeGoodScript::CHTG_Guard)==0x1c);
+#endif
 #endif

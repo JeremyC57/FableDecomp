@@ -74,6 +74,13 @@ public:
         long YellAtHero;
     private:
         long RandomComment;
+#ifdef FABLE_RETAIL_CV_LOSTTRADERSCRIPT_TRADER
+        // Retail opt-in (chunk 805): the trader's private helpers that Main 0x00EA36B0 calls (Ego_r.pdb
+        // ?TraderYellForHelp / ?TraderYellAtHero / ?MakeRandomComment@CLostTraderTrader@CV_LostTraderScript@NScript@@AAEXXZ).
+        void TraderYellForHelp();                                        // 0x00EA4980
+        void TraderYellAtHero();                                         // 0x00EA4BB0
+        void MakeRandomComment();                                        // 0x00EA4DE0
+#endif
     };
 };
 }

@@ -1,0 +1,60 @@
+# chunk 805 attempts log
+00d3d150 a1 DIFFER 4252v4252 56 lines (22 non-reloc): MANY_MORE / NO_MORE conversation branches: retail vtable in eax + `lea ecx;push ecx;mov ecx,[esi+4]`, ours edx + `mov ecx` early.
+00d3d150 a2 (else if ApplesGiven==0 inverted) 58: block order flips, no help.
+00d3d150 a3 (else if (ApplesGiven)) 56: same as a1.
+00d41d00 a1 DIFFER 4610v4662 378 lines: frame 0x158 v 0x19c; float deltas divided by a float local -> VC7.1 reciprocal (fdivr 1.0 + fmul), retail fdiv st(1) each.
+00d41d00 a2 C3DVector deltas with .X/.Y assigned and `/Speed` (long) -> fdiv st(1) like retail; 294 lines; frame 0x16c v 0x19c; delta slots order differs; teleport x87 order differs (retail computes both products, spills y*i).
+00d41d00 a3 teleport args as (Delta*(float)i).X temps: products first like retail, 288 lines; frame unchanged (temps scalar-replaced), retail has 0x30 more (one 12-byte object per teleport site).
+00ec9d30 a1 DIFFER: full model, CCharString== called out of line (retail inlines Compare 0x411570).
+00ec9d30 a2 duplicated give-letter block: not merged, 6225 bytes.
+00ec9d30 a3 a1 + FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQ: 368 lines.
+00ec9d30 a4 GiveLetter flag, if(!ShownLetter){question} else {GiveLetter=true}: 4708v4708, 96 lines (56 real); residue answer==1 threaded X-head placed after the else (retail falls through after jne).
+00ec9d30 a5 answer if/else swapped (answer!=1 first): 244 lines, layout flips.
+00ec9d30 a6 GiveLetter uninitialised + =false in NOT_SEEN arm: 96, identical to a4.
+00ec9d30 a7 outer if(ShownLetter){GiveLetter=true}else{question}: 4719v4708, 368.
+00d706e0 a1 first model (out-of-line ~CScriptThing everywhere, no ~CIsThingAlive def): 4675v4755, 136 real; prologue vtable restore missing, movie2 GetHealth temp dtor retail inline.
+00d706e0 a2 + inline ~CIsThingAlive: 4675v4755, 88; prologue matches; residue = movie2 (SUPPORT) GetHealth temp ~CScriptThing retail expands inline (18 lines) + frame slots.
+00d706e0 a3 + plain inline ~CScriptThing: 4755v4755, 48 (prologue only): VC now expands movie2's temp exactly like retail but stops inlining ~CIsThingAlive (calls it); retail inlines ~CIsThingAlive with ~CScriptThing out of line inside (INLINE_DEPTH_REVISIT "still unexplained" CIsThingAlive case).
+00d706e0 a4 a3 + __forceinline ~CIsThingAlive: 4803v4755, 19 real; ~CIsThingAlive inline but its ~CScriptThing now expanded too (+48 bytes).
+00d706e0 a5 a3 with the two inline definitions swapped in order: identical to a3.
+00d706e0 a6 a3 + implicit ~CIsThingAlive (hdr opt-in FABLE_RETAIL_CISTHINGALIVE_IMPLICIT_DTOR): 4819v4755, 65; implicit dtor inlined with ~CScriptThing expanded and no vtable restore. Opt-in dropped.
+00ea36b0 a1 first model: 4824v4804, 58 real; retail keeps the CTimer index in ebp across calls, ours reloads.
+00ea36b0 a2 a1 + plain inline CTimer ctor (still called out of line at both sites; body visible): RELOCATION_MATCH. -> src/
+00d2d930 a1 first model (if-chain on CurrentFocalSiteRegion, four cutscene blocks): 5005v5094, 16 real; implicit CScriptThing operator= called out of line at the MarkerHero sites, implicit MovieBase dtor called at the four normal cutscene exits where retail expands it.
+00d2d930 a2 switch on region: 5229v5094, much worse.
+00d2d930 a3 do-while(0) on every check: worse.
+00d2d930 a4 do-while(0) on the four MarkerHero checks: identical to a1.
+00d2d930 a5 do-while(0) on the four region-entry checks: identical to a1.
+00d2d930 a6 a1 + declared-only CCountedPointer<CScriptThing>::operator= (0x00704580): 5069v5094; implicit CScriptThing op= now inlined at region-1 site only, sites 2-4 call ??4 (per-site frequency rule), no tail merge.
+00d2d930 a7 explicit plain-inline CScriptThing::operator= { PImp=other.PImp; } (FireHeart 0x00D35090 model) without IMPLICIT_ASSIGNMENT: same as a6.
+00d2d930 a8 a7 with __forceinline operator=: 5005v5094, 11 real; all four MarkerHero sites expand and tail-merge as retail. Left: implicit MovieBase dtor called (COMDAT 0x006E7B80) at the four cutscene scope exits.
+00d2d930 a9 a8 + /d2inlS14 / S16 / S20 diagnostic: S14 = a8; S16 and S20 5180v5094 (545 lines, other inlines flip). Not a landable knob; cliff, not a cap value that matches retail.
+00d2d930 a10 a8 with full MOVIEBASE_FORCEINLINE (user dtor): 5083v5094, 1338 real; frame and vtable stores move. Dropped.
+00d2d930 a11 a8 + do-while(0) as each speech-movie scope (hand800 0x00D0A830 lever): identical to a8.
+00d41d00 a4 a3 + named per-site `C3DVector step=D*(float)i;` at the four slide steps: 4674v4662, 58 real; frame 0x19C now matches; left fxch/fmul-mem (scale lifetime), damage compares, i=0 order.
+00d41d00 a5 a4 + static test as `damage>0.5 -> break` first + `i=0;` before EntitySetTargetable(Me,false): 49 real.
+00d41d00 a6 a5 + hit ladder `damage<0.25/<0.5/<0.75` (retail fcomp; test ah,5): 4658v4662, 23 real; only the four slide-step scale lifetimes left.
+00d41d00 a7 a6 with `C3DVector step=D; step*=(float)i;`: same as a6.
+00d41d00 a8 a6 with a named `float scale=(float)i;`: same as a6.
+00d41d00 a9 a6 with `const C3DVector& step=D*(float)i;`: same as a6.
+00d41d00 a10 a6 with `C3DVector step; step=D*(float)i;`: 4962v4662, frame 0x1CC (extra temp). Dropped.
+00d41d00 a11 a6 with step.X+MyPos.X operand order: same as a6.
+00d41d00 e1-e4 (pos=MyPos+D*(float)i; pos.Z=MyPos.Z / named pos / pos.X+= / step.Z=0;MyPos+step): e3 frame 0x16C worse, others = a6.
+00d41d00 a12 a6 with `C3DVector step=C3DVector(D.X*(float)i,D.Y*(float)i,D.Z*(float)i);`: RELOCATION_MATCH.
+00d41d00 a13 a6 with `C3DVector step(D.X*(float)i,D.Y*(float)i,0.0f);`: RELOCATION_MATCH (no read of the unset Z) -> src/. a14 `step(D.X*i,D.Y*i,D.Z*i)` also RELOCATION_MATCH.
+00d3d150 a4 a1 with one `long Conversation;` shared by the ONE/MANY/NO_MORE branches: same 56 (21 real).
+00d3d150 a5 switch (ApplesGiven) {case 1; case 0; default}: 4256v4252, worse.
+00d3d150 a6 nested else { if (ApplesGiven!=0) .. else .. }: same as a1.
+00d3d150 a8 ApplesGiven declared at function scope: same as a1.
+00d3d150 a9 ApplesGiven declared at the loop-body top: SRC_FAIL (dropped).
+00d3d150 a10 plain `return;` in the MANY/NO_MORE checks: same as a1.
+00d3d150 a11 int ApplesGiven: same as a1.
+00d3d150 a12 `else if (ApplesGiven>0)`: 58, worse (jle).
+00ec9d30 a8 outer swap variant of a7 (if(ShownLetter) first, question in else): 368 (same as a7).
+00ec9d30 a9 GiveLetter=true by default, cleared in the NOT_SEEN arm: 96, identical to a4.
+00ec9d30 a10 no flag: outer `long answer=1;`, join `if (answer==1)`: 96, identical to a4.
+00ec9d30 a11 join `if (ShownLetter || GiveLetter)` with the ShownLetter arm only a check: 96, identical to a4.
+00d706e0 a7 __forceinline ~CIsThingAlive, no row-local ~CScriptThing: 4675v4755, 88 real; prologue now as retail (vptr restore + call 0x004AA840) but every local CScriptThing dtor becomes a call (retail expands them).
+00d706e0 a8 a4 with the definitions in the other order: 4803v4755, 19 real (= a4).
+00d706e0 a9 a3 with ~CIsThingAlive defined after Main: identical to a3 (VC7.1 defers inline bodies).
+00d706e0 a10 a4 with ~CScriptThing defined after Main: = a4.

@@ -384736,6 +384736,20 @@ $catalog = @(
         TestSource = '00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Main_00d8abf0_test.cpp'
         PassPattern = '00d8abf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d41d00'
+        Module = 'NScript::CQ_GuildTrainingScript::CSkillTarget'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCSkillTarget_Main_00d41d00.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCSkillTarget_Main_00d41d00_test.cpp'
+        PassPattern = '00d41d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea36b0'
+        Module = 'NScript::CV_LostTraderScript::CLostTraderTrader'
+        Source = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_Main_00ea36b0.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_Main_00ea36b0_test.cpp'
+        PassPattern = '00ea36b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

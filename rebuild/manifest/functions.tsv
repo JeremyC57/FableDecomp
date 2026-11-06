@@ -18179,7 +18179,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00704430	CCountedPointer_CopyCtor_00704430	_global	__thiscall	undefined	2	CCountedPointer<CBankFileAsyncEntry> *,CCountedPointer<class_CBankFileAsyncEntry> *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_00704430.cpp
 007044b0	DeleteViaVtable0_007044b0	_global	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\global_DeleteData_007044b0.cpp
 007044d0	ShareData	CCountedPointer<CScriptThing>	__thiscall	void	3	CCountedPointer<CScriptThing> *,CScriptThing *,CCPPointerInfo *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CCountedPointerCScriptThing_ShareData_007044d0.cpp
-00704580	CCountedPointer_Set_00704580	_global	__thiscall	CCountedPointer<class_CDiskFileWin32> *	2	CCountedPointer<CDiskFileWin32> *,CCountedPointer<class_CDiskFileWin32> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CCountedPointerCDiskFileWin32_operator_00704580.cpp
+00704580	operator=	CCountedPointer<CScriptThing>	__thiscall	CCountedPointer<class_CDiskFileWin32> *	2	CCountedPointer<CDiskFileWin32> *,CCountedPointer<class_CDiskFileWin32> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CCountedPointerCDiskFileWin32_operator_00704580.cpp
 007045f0	Reset	CCountedPointer_007044b0	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 007046d0	SetAnimationMemoryPool	CMeshDataBank_007046d0	__thiscall	void	3	CMeshDataBank *,CCountedPointer<CMovableResourceMemoryPool>,bool	1	yes	accepted									
 00704730	GetNullScriptThing	CGameScriptThingManager	__thiscall	undefined	2	CScriptThing *,CScriptThing *	0	yes	accepted									
@@ -53386,7 +53386,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ea2de0	RegisterMain	NScript::CV_LostTraderScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00ea2e70	SuspendableProcess	CSpawnedFunc<NScript::CV_LostTraderScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ea\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ea2e70.cpp
 00ea2e80	Main	NScript::CV_LostTraderScript	unknown	undefined	0		0			discovered	gapscan							
-00ea3490	WatchForQuestFinished	CV_BeardyBaldyScript	__thiscall	void	1	CV_BeardyBaldyScript *	1	yes	accepted									
+00ea3490	WatchForQuestFailure	NScript::CV_LostTraderScript	__thiscall	void	1	CV_BeardyBaldyScript *	1	yes	accepted									
 00ea34e0	GetEntityScriptName	CEntityScriptBinding<NScript::CV_LostTraderScript>	unknown	undefined	0		0			discovered	gapscan							
 00ea34f0	Alloc	NScript::CV_LostTraderScript::CLostTraderTrader	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00ea3590	GetParentScript	NScript::CV_LostTraderScript::CLostTraderTrader	unknown	undefined	0		0			discovered	gapscan							

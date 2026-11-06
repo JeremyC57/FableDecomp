@@ -1,0 +1,14 @@
+address	source	grade_with_final_overlay	note
+00d3bc60	rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScript_Main_00d3bc60.cpp	RELOCATION_MATCH PASS	includes engine/CQ_GuildTrainingScript.h (opt-in branch not defined)
+00d43400	rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillDummy_GetParentScript_00d43400.cpp	MATCH PASS	includes engine/CQ_GuildTrainingScript.h
+00d43420	rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillDummy_OnPredicateFail_00d43420.cpp	MATCH PASS	includes engine/CQ_GuildTrainingScript.h
+00d43450	rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillDummy_Main_00d43450.cpp	RELOCATION_MATCH PASS	includes engine/CQ_GuildTrainingScript.h
+00f29500	rebuild/src/compiled/00/f2/CScriptDef_GetSizeofClass_00f29500.cpp	MATCH PASS	includes engine/CQ_GuildTrainingScript.h
+00f2a240	rebuild/src/compiled/00/f2/CScriptDef_Copy_00f2a240.cpp	RELOCATION_MATCH PASS	includes engine/CQ_GuildTrainingScript.h
+00ea2e80	rebuild/src/compiled/00/ea/NScriptCVLostTraderScript_Main_00ea2e80.cpp	RELOCATION_MATCH PASS	includes engine/CV_LostTraderScript.h; vland WARN RELOC_NAME 0x00EA3490 (label correction in LABELS.tsv)
+00ea3590	rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_GetParentScript_00ea3590.cpp	MATCH PASS	includes engine/CV_LostTraderScript.h
+00ea51f0	rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderBanditSpawn_GetParentScript_00ea51f0.cpp	MATCH PASS	includes engine/CV_LostTraderScript.h
+00ea5930	rebuild/src/compiled/00/ea/NScriptCVLostTraderScript_OnPersist_00ea5930.cpp	RELOCATION_MATCH PASS	includes engine/CV_LostTraderScript.h
+00d6f480	rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScript_OnPersist_00d6f480.cpp	RELOCATION_MATCH PASS	includes engine/CQ_HangingTreeGoodScript.h
+00d74430	rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_DoMission_00d74430.cpp	RELOCATION_MATCH PASS	includes engine/CQ_HangingTreeGoodScript.h
+00d76030	rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_SpawnParty_00d76030.cpp	RELOCATION_MATCH PASS	includes engine/CQ_HangingTreeGoodScript.h

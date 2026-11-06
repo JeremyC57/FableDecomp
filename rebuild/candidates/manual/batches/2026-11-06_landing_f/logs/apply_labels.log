@@ -1,0 +1,5 @@
+catalog  00704580 _global::CCountedPointer_Set_00704580 -> CCountedPointer<CScriptThing>::operator=
+catalog  00ea3490 CV_BeardyBaldyScript::WatchForQuestFinished -> NScript::CV_LostTraderScript::WatchForQuestFailure
+manifest 00704580 _global::CCountedPointer_Set_00704580 -> CCountedPointer<CScriptThing>::operator=
+manifest 00ea3490 CV_BeardyBaldyScript::WatchForQuestFinished -> NScript::CV_LostTraderScript::WatchForQuestFailure
+labels 8  catalog renamed 2  manifest renamed 2

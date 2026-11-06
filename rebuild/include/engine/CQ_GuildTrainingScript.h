@@ -59,4 +59,46 @@ public:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript)==0x68);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CWillDummy)==0x1c);
+#if defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_ENTITIES) && defined(FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN)
+// Retail opt-in (chunk 805): two entity scripts (needs FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN for the nested declarations).
+// Ego_r.pdb layouts (struct_layouts_egor.tsv; entity offsets equal retail's, CEntityScriptBase 0x14 in both): CAppleGirl 40 bytes
+// (AppleMode +0x1c, CurrentApples +0x20, ChildAppleMode +0x24, HaveChatted +0x25), CSkillTarget 40 bytes (Speed +0x1c,
+// DummyNumber +0x20, DummyWorth +0x24); the landed Allocs 0x00D3D060 / 0x00D41BF0 allocate 0x28. Entity vtables 0x012CD7E8
+// (CAppleGirl: 0 scalar deleting dtor 0x00D3D130, 1 Main 0x00D3D150, 2 Init 0x00D3D110, 3 GetParentScript 0x00D3D100) and
+// 0x012CE0CC (CSkillTarget: 0 0x00D41CE0, 1 Main 0x00D41D00, 2 Init 0x00D41CA0, 3 GetParentScript 0x00D41C90); Main / Init are
+// private (PDB ?Main@<Class>@CQ_GuildTrainingScript@NScript@@EAEXXZ).
+namespace NScript {
+class CQ_GuildTrainingScript::CAppleGirl : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_GuildTrainingScript&, CScriptDataBase*, const CScriptThing&); // 0x00D3D060
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D3D100
+private:
+    virtual void Main();                                                 // 0x00D3D150
+    virtual void Init();                                                 // 0x00D3D110
+protected:
+    CQ_GuildTrainingScript& ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    long AppleMode;                                                      // +0x1c
+    long CurrentApples;                                                  // +0x20
+    bool ChildAppleMode;                                                 // +0x24
+    bool HaveChatted;                                                    // +0x25
+};
+class CQ_GuildTrainingScript::CSkillTarget : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_GuildTrainingScript&, CScriptDataBase*, const CScriptThing&); // 0x00D41BF0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D41C90
+private:
+    virtual void Main();                                                 // 0x00D41D00
+    virtual void Init();                                                 // 0x00D41CA0
+protected:
+    CQ_GuildTrainingScript& ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    long Speed;                                                          // +0x1c
+    long DummyNumber;                                                    // +0x20
+    long DummyWorth;                                                     // +0x24
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CAppleGirl) == 0x28);
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_GuildTrainingScript::CSkillTarget) == 0x28);
+#endif
 #endif

@@ -37255,3 +37255,6 @@ _New_c35b10@8	00c35b10	00c275e0
 ?push_back@?$vector@VCHoverState@CModeHoverBase@NCreatureMode@@V?$allocator@VCHoverState@CModeHoverBase@NCreatureMode@@@std@@@std@@QAEXABVCHoverState@CModeHoverBase@NCreatureMode@@@Z	008ec1a0	008eacb0
 ?AddBadDeed@CQ_NewOakValeIntroScript@NScript@@QAEXW4EBadDeeds@12@@Z	00daea70	00db09e0
 ?ClearAllActions@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	007e7400	00db09e0
+?MakeRandomComment@CLostTraderTrader@CV_LostTraderScript@NScript@@AAEXXZ	00ea4de0	00ea36b0
+?TraderYellAtHero@CLostTraderTrader@CV_LostTraderScript@NScript@@AAEXXZ	00ea4bb0	00ea36b0
+?TraderYellForHelp@CLostTraderTrader@CV_LostTraderScript@NScript@@AAEXXZ	00ea4980	00ea36b0

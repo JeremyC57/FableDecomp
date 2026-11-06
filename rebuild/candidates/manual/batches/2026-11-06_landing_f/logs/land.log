@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00d41d00   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d41d00   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d41d00   RELOCATION_MATCH PASS   Main
+00ea36b0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ea36b0   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00d41d00 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CSkillTarget::?Main@CSkillTarget@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00ea36b0 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderTrader::?Main@CLostTraderTrader@CV_LostTraderScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQGuildTrainingScriptCSkillTarget_Main_00d41d00
+  NScriptCVLostTraderScriptCLostTraderTrader_Main_00ea36b0
