@@ -384701,6 +384701,34 @@ $catalog = @(
         TestSource = '00/8e/NCreatureModeCModeHoverBase_OnActivate_008eacb0_test.cpp'
         PassPattern = '008eacb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00db09e0'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_Main_00db09e0.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_Main_00db09e0_test.cpp'
+        PassPattern = '00db09e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db6c60'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_Main_00db6c60.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_Main_00db6c60_test.cpp'
+        PassPattern = '00db6c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e158f0'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_Main_00e158f0.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_Main_00e158f0_test.cpp'
+        PassPattern = '00e158f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1b9c0'
+        Module = 'NScript::CQ_ArenaScript::CArenaCellExitGuard'
+        Source = '00/f1/NScriptCQArenaScriptCArenaCellExitGuard_Main_00f1b9c0.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCArenaCellExitGuard_Main_00f1b9c0_test.cpp'
+        PassPattern = '00f1b9c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

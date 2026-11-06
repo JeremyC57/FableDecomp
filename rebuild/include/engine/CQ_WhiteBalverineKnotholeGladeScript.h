@@ -46,5 +46,27 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WhiteBalverineKnotholeGladeScript) == 0x64);
+#ifdef FABLE_RETAIL_CQ_WHITEBALVERINEKNOTHOLEGLADESCRIPT_ENTITIES
+// Retail opt-in (chunk 803): the white balverine entity script. Ego_r.pdb CWB_WhiteBalverine (struct_layouts_egor.tsv, 32 bytes:
+// ParentClass +0x14, PMasterData +0x18, WBCounter +0x1c; entity offsets equal retail's, CEntityScriptBase is 0x14 in both; the
+// landed Alloc 0x00E15750 allocates 0x20). Entity vtable 0x012E0A50: 0 scalar deleting dtor 0x00E15810, 1 Main 0x00E158F0,
+// 2 Init 0x00E15830, 3 GetParentScript 0x00E157F0 (OnPredicateFail 0x00E15800); Main / Init private (PDB EAEXXZ).
+class CScriptDataBase;
+namespace NScript {
+class CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_WhiteBalverineKnotholeGladeScript&, CScriptDataBase*, const CScriptThing&); // 0x00E15750
+    virtual CScriptBase* GetParentScript() const;                        // 0x00E157F0
+private:
+    virtual void Main();                                                 // 0x00E158F0
+    virtual void Init();                                                 // 0x00E15830
+protected:
+    CQ_WhiteBalverineKnotholeGladeScript& ParentClass;                   // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    long WBCounter;                                                      // +0x1c
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine) == 0x20);
+#endif
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_WHITEBALVERINEKNOTHOLEGLADESCRIPT_H

@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-802 recorded; chunks 803 and 804 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-803 recorded; chunks 804 and 805 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -26,11 +26,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
     6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
     wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
-  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 803
-    (`$S/w22/agent803`: six unnamed gap-scan script bodies: CNOVI_BarrelThug / CNOVI_AffairMan / CWB_WhiteBalverine /
-    CArenaCellExitGuard Mains, and one each in CV_SwordInTheStoneScript 0x00ED5F50 and CQ_PrisonWardenGameScript 0x00DDF090) and
-    chunk 804 (`$S/w22/agent804`: six unnamed gap-scan entity Mains: the three CQ_ArenaHoldingScriptScript fans, CManWithDoorName,
-    CSecretPassageMan, and one in CQ_HerosOldHouseScript 0x00D8ABF0). Land each like 782-802 with the next free letter (`2026-11-06_landing_d`, `_e`; queue tags `land0611d`, ...),
+  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 804
+    (`$S/w22/agent804`: six unnamed gap-scan entity Mains: the three CQ_ArenaHoldingScriptScript fans, CManWithDoorName,
+    CSecretPassageMan, and one in CQ_HerosOldHouseScript 0x00D8ABF0) and chunk 805 (`$S/w22/agent805`: CAppleGirl, CSkillTarget,
+    CMansLover, CHTG_Guard, CLostTraderTrader and CPermanentBarrier Mains, all from the gap scan). Land each like 782-803 with the next free letter (`2026-11-06_landing_e`, `_f`; queue tags `land0611e`, ...),
     `pending/2026-11-05_linux_hand79N`, labels `2026-11-05<letter>` incl. the landed rows' own labels, queue tag
     `land0511<letter>`. Diff every overlay header against rebuild/include first and three-way merge any that would drop another
     chunk's lines (796's overlay predates the 794 / 795 landings). When a hand-back extends an existing
@@ -40,10 +39,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     audio / FFT and large inventory-UI builders; about 190 unnamed `gapscan` rows, most in the script range 0x00CF-0x00F2 (the script
     Mains left are over 3.6 KB, e.g. CHobbeTorrent::Main). Take rows that are 16-byte aligned (an odd start such as 0x00651273 is a
     mid-function entry). Game-logic chunks 800-802 landed 5 of 18, against 33 of 48 for script chunks 786-799; the unnamed gap-scan
-    rows in the script range are placed by their landed neighbours and their single .rdata reference (chunk 803). The ledger's byte counts often run on into the next functions: end each row at its own int3 padding or
-    after its switch tables (a byte index table can end off a 4-byte boundary). The parked 782-802 rows are the other pool (0x00DE2610 waits on the pragma-free inline-depth mechanism, not on more attempts).
-  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`), 795 2 of 6 (`_v/`), 797 3 of 6 (`_w/`), 796 3 of 6 (`_x/`), 798 3 of 6 (`_y/`), 799 5 of 6 (`_z/`), 800 2 of 6 (`2026-11-06_landing_a/`), 801 1 of 6 (`_b/`), 802 2 of 6 (`_c/`). The
-    parked rows are in `pending/2026-11-05_linux_hand782..799/` and `pending/2026-11-06_linux_hand800..802/`.
+    rows in the script range are placed by their landed neighbours and their single .rdata reference (chunk 803 proved all six
+    names and landed 4; about 90 such rows remain, most 4-15 KB entity Mains that follow their entity's scalar deleting dtor). The ledger's byte counts often run on into the next functions: end each row at its own int3 padding or
+    after its switch tables (a byte index table can end off a 4-byte boundary). The parked 782-803 rows are the other pool (0x00DE2610 waits on the pragma-free inline-depth mechanism, not on more attempts).
+  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`), 795 2 of 6 (`_v/`), 797 3 of 6 (`_w/`), 796 3 of 6 (`_x/`), 798 3 of 6 (`_y/`), 799 5 of 6 (`_z/`), 800 2 of 6 (`2026-11-06_landing_a/`), 801 1 of 6 (`_b/`), 802 2 of 6 (`_c/`), 803 4 of 6 (`_d/`). The
+    parked rows are in `pending/2026-11-05_linux_hand782..799/` and `pending/2026-11-06_linux_hand800..803/`.
   - A container restart stopped chunk 784 once; the scratch survived, and the agent was resumed from its transcript.
   - Naming: 0x0122DEDC (the shared 0.0f) is the compiler literal `__real@00000000` (chunk 796 evidence, queued `land0511x`).
     Open (chunk 800): 0x00544D20 binds the NUISystem CCountedPointer<CAction> / <CComponent> dtors to the 5-byte jmp stubs

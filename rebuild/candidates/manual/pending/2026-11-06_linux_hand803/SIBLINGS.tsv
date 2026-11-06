@@ -1,0 +1,3 @@
+address	source	grade_with_final_overlay	note
+00ed5830	rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScript_SwordPullCutscene_00ed5830.cpp	RELOCATION_MATCH PASS	includer of engine/CV_SwordInTheStoneScript.h (CV_SWORDINTHESTONESCRIPT_ENTITIES opt-in added; not defined by the row); vland --recheck-landed, tmp/recheck.log
+00e13f10	rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_Main_00e13f10.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_WhiteBalverineKnotholeGladeScript.h (CQ_WHITEBALVERINEKNOTHOLEGLADESCRIPT_ENTITIES opt-in added; not defined by the row)

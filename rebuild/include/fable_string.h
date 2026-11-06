@@ -201,6 +201,11 @@ public:
     // 0x0121E3A0, vector<CCharString>(18, "") 0x0121A460 which matches only through the implicit conversion, a const
     // CCharString& bound to a literal 0x0121EF70): the declaration carries the default length -1.
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
+#ifdef FABLE_RETAIL_CCHARSTRING_SPRINTF
+    // Retail opt-in (chunk 803): the varargs formatter ?Sprintf@CCharString@@QAAXPBDZZ 0x0099F1F0 (reloc_bindings; the landed
+    // GFIntToCharString 0x0099F830 calls it cdecl with this pushed first, as row 0x00DDF090 does: add esp,10h after 4 pushes).
+    void __cdecl Sprintf(const char* format, ...);             // 0x0099F1F0
+#endif
     // Retail opt-in (Codex pass 11 consolidation): further Ego_r CCharString members used inline by retail callers.
     unsigned long GetCRC() const;                              // 0x00404310 (Ego_r 0x00403C00)
     // Codex pass 13: ?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z (Ego_r + FableWin), ?EqualsCaseInsensitive@CCharString@@QBE_NABV1@@Z and

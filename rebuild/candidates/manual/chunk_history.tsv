@@ -27462,3 +27462,9 @@ chunk	address	module	name	length
 804	00ed17d0	NScript::CV_SingingStonesScript::CManWithDoorName	Main	4279
 804	00dc4d70	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan	Main	4319
 804	00d8abf0	NScript::CQ_HerosOldHouseScript	sub_00d8abf0	4306
+805	00d3d150	NScript::CQ_GuildTrainingScript::CAppleGirl	Main	4252
+805	00d41d00	NScript::CQ_GuildTrainingScript::CSkillTarget	Main	4662
+805	00ec9d30	NScript::CV_SickChildScript::CMansLover	Main	4708
+805	00d706e0	NScript::CQ_HangingTreeGoodScript::CHTG_Guard	Main	4755
+805	00ea36b0	NScript::CV_LostTraderScript::CLostTraderTrader	Main	4804
+805	00d2d930	NScript::CQ_EndGameFocalSitesScript::CPermanentBarrier	Main	5094

@@ -33,7 +33,13 @@ public:
     void WatchForSwordPickup();                                          // 0x00ED57E0
     void SwordPullCutscene();                                            // 0x00ED5830
     void ResetCrowdSwordTimer();                                         // 0x00ED72F0
+#ifdef FABLE_RETAIL_CV_SWORDINTHESTONESCRIPT_ENTITIES
+    // Retail opt-in (chunk 803): the thread takes the puller by value (Ego_r.pdb / FableWin.pdb
+    // ?WatchForDeathDuringSwordPull@CV_SwordInTheStoneScript@NScript@@QAEXVCScriptThing@@@Z; the landed row 0x00ED7320 defines it so).
+    void WatchForDeathDuringSwordPull(CScriptThing);                     // 0x00ED7320
+#else
     void WatchForDeathDuringSwordPull();                                 // 0x00ED7320
+#endif
     long SwordRemovalAttemptCount;                                       // +0x48
     bool SwordCutscene;                                                  // +0x4c
     bool CrowdAttemptingToPullSword;                                     // +0x4d
@@ -56,6 +62,27 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_SwordInTheStoneScript) == 0x80);
+#ifdef FABLE_RETAIL_CV_SWORDINTHESTONESCRIPT_ENTITIES
+// Retail opt-in (chunk 803): the sword crowd entity script. Ego_r.pdb CSwordCrowd (struct_layouts_egor.tsv, 28 bytes: ParentClass
+// +0x14, PMasterData +0x18; the landed Alloc 0x00ED5260). Entity vtable 0x012F3174: 0 scalar deleting dtor 0x00ED5320, 1 Main
+// 0x00ED5F50, 2 Init 0x00ED5310, 3 GetParentScript 0x00ED5300; Main / Init private (PDB EAEXXZ).
+#include "engine/CEntityScriptBase.h"
+class CScriptDataBase;
+namespace NScript {
+class CV_SwordInTheStoneScript::CSwordCrowd : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_SwordInTheStoneScript&, CScriptDataBase*, const CScriptThing&); // 0x00ED5260
+    virtual CScriptBase* GetParentScript() const;                        // 0x00ED5300
+private:
+    virtual void Main();                                                 // 0x00ED5F50
+    virtual void Init();                                                 // 0x00ED5310
+protected:
+    CV_SwordInTheStoneScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_SwordInTheStoneScript::CSwordCrowd) == 0x1c);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_SWORDINTHESTONESCRIPT_H

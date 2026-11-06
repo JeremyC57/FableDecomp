@@ -1,0 +1,7 @@
+address	module	name	length
+00db6c60	NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug	Main	4241
+00db09e0	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan	Main	5058
+00e158f0	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine	Main	4241
+00ed5f50	NScript::CV_SwordInTheStoneScript	sub_00ed5f50	5024
+00ddf090	NScript::CQ_PrisonWardenGameScript	sub_00ddf090	4599
+00f1b9c0	NScript::CQ_ArenaScript::CArenaCellExitGuard	Main	4198

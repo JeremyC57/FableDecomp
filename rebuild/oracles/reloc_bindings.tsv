@@ -37253,3 +37253,5 @@ _New_c35b10@8	00c35b10	00c275e0
 ?InitialiseMovementSpeeds@CModeHoverBase@NCreatureMode@@AAEXXZ	008ea500	008eacb0
 ?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	0073aac0	008eacb0
 ?push_back@?$vector@VCHoverState@CModeHoverBase@NCreatureMode@@V?$allocator@VCHoverState@CModeHoverBase@NCreatureMode@@@std@@@std@@QAEXABVCHoverState@CModeHoverBase@NCreatureMode@@@Z	008ec1a0	008eacb0
+?AddBadDeed@CQ_NewOakValeIntroScript@NScript@@QAEXW4EBadDeeds@12@@Z	00daea70	00db09e0
+?ClearAllActions@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	007e7400	00db09e0
