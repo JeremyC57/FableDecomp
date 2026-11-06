@@ -1,0 +1,43 @@
+00a58b50 sph_a1 DIFFER(2183v2207) 605n: first draft (edge1/edge2 locals, inline coefs, const& pos); frame 0x7c v 0x78, intersections reloaded+null-tested
+00a58b50 sph_a2 DIFFER(2251v2207) 366n: same-TU inline __declspec(noinline) push_back<C2DVector> body -> frame 0x78 right, intersections uncaptured
+00a58b50 sph_a3 DIFFER(2219v2207) 175n: normal=(t1-t0).Cross(t2-t0) (arg first: matches retail edge order); coef_a GSM, coef_b Dot, coef_c GSM; C2DVector pos copy -> final block matches
+00a58b50 sph_a4 DIFFER(2211v2207) 155n: coef_a inline XY (matches), coef_c YX (no change), push_back(start + C2DVector(l*X,l*Y)) (lambda load order matches); coef_b now X first
+00a58b50 sweeps t1(27 coef spellings) t2 t3 t4(statement orders): coef spellings do not move the x87 operand order of coef_b/coef_c (155 best)
+00a58b50 sph_a5 DIFFER(2211v2207) 221n: line as two float locals -> coef_b Y-first matches, but slots move (line pair lowest)
+00a58b50 sweep t5 (12): start_x/start_y locals -> coef_c load order matches (209n, sph_a6), slot layout still off
+00a58b50 sweep t6 (4): C2DVector line + float copies -> frame 0x88 (worse)
+00a593f0 cyl_a1 DIFFER(3049v3027) 936n (258 masked): first draft from the sphere model; frame 0xb4 v 0xbc; fabs test return inline; loop reciprocal of height_sq
+00a593f0 cyl_a2 DIFFER(3037v3027) 563n (237 masked): height/-DELTA inline per use (retail hoists them itself); coef_b term order unchanged by source order
+00ade080 obb_a1 DIFFER(2233v2735) 1318n: first draft; SSE block as intrinsics (load/add/sub/min/max), x87 7 Limit pairs in a loop (not unrolled by VC7.1)
+00ade080 obb_a2 DIFFER(2887v2735) 1402n: x87 Limit pairs unrolled by hand -> too long (corners/vects assigned via temporaries)
+00ade080 obb_a3 DIFFER(2614v2735) 1273n: aggregate-initialised corners/vects (in-place construction, w=0 stores hoisted as retail); GetCenter adds Min.X first (retail Max.X first)
+00ade080 obb_a4 DIFFER(2614v2735) 1273n: (Min+Max)*0.5 spelled out -> same; X sum order still Min first, obb pointer load hoisted above the branch (retail loads it after)
+00bc8a60 rl_a1 DIFFER(3420v3416) 1195n: first draft from ShowDisplacementTexture/GetDiffuseTexture models: view-space clip at near plane, screen-space perp quad, blend switch (3/4/default), SetPSConstant(2), PrepareForRender(1), frame texture fetch
+009a25d0 fnt_a1 DIFFER(3633v3722) 679n: first draft on the shared CStreamingFontBank/CRenderManager headers (overlay adds GlyphLookup decl); AttachTextureToStage forceinline, 7 texture-stage setters, glyph quad build
+00715a70 cam_a1 DIFFER(3828v3356) 1414n: first draft on the landed GetCameraSetupPositions model (CCameraTag, CActionTalkBase re-offset +0x6d/+0x74/+0x80/+0x8c/+0x8d), GFFastOneOverSqrt normalise, focus switch 1..7, position switch 0..12, creature head-height pass, GoToLookAt / MoveBetween module
+00715a70 cam_a2 DIFFER(3724v3356) 1426n: dir computed in branches, one normalise (retail merges the three normalise tails) -> 104 bytes shorter; focus cases still store offset through a temp (retail fst from a cached 0.0)
+00715a70 cam_a3 DIFFER(3644v3356) 1564n: offset *= k -> VC7.1 multiplies the zero X/Y (retail stores a cached 0.0 with fst/fstp); worse, reverted to cam_a2
+00bc8a60 rl_a2 DIFFER(3422v3416) 1087n: four corner C3DVector locals transformed in place, copied into the vertices after the colour loop (retail order)
+009a25d0 fnt_a2 DIFFER(3696v3722) 592n: each vertex built as its own temporary through a C4DVector ctor arg (retail rep movsd per vertex); block-on-load flag read through system +0x84 (not PFontManager +0x7C)
+009a25d0 fnt_a3 DIFFER(3723v3722) 322n: new-line flag is a dword (retail mov dword [esp+50h],1 / test eax,eax) -> frame 0x25F0 matches
+009a25d0 fnt_a4 DIFFER(3723v3722) 292n: the seven texture-stage states are stages 1/2 (retail DeviceState offsets +0x3218.. = stage 1)
+009a25d0 fnt_a5 DIFFER(3723v3722) 290n: weight table as {unsigned char scale, signed char baseline}; cache select on the flag sign bit (js)
+00a593f0 cyl_a3 DIFFER(3043v3027) 550n: everything after the fabs(cos) test inside one if, single trailing return false
+00a593f0 cyl_a4 + sweep t1 (4): coef_b operand spellings: all canonicalised to 550 except line.Y*(line_start.Y*major_sq)+... = 540 (sw_00a593f0_2)
+00a593f0 sweep t2 (3): line_start by value / line from components -> 540 or worse (805); best stays sw_00a593f0_2
+00ade080 sweep t1 (3) x87 arm as four named locals: v1/v2/v3 built from v0's components = 2696v2735 1280n (obb_a5; retail's store pattern now reproduced: v1.X copied from v0.X through eax, -hy/-hx fchs shared, v1..v3 reloaded from memory per transform); v1=v0 + field negate 1287n; from a separate half 1339n
+00ade080 sweep t2 (2) centre spelled Min+Max / per component: 1280n / 1273n -- VC7.1 canonicalises the commutative sum (Min.X loaded first either way) and hoists the obb load above the SSE test
+00ade080 sweep t3 (4) local rotate helper term orders: x,z,y and E1k*x forms = 1280n (same code); parenthesised 1300n; += accumulate form 2413v2735 1224n but VC7.1 then calls the helpers out of line (inline budget) -- not retail
+00bc8a60 sweep t1 (4) TransformPoint forms (parenthesised X/Y/Z vs SUMS: Y/Z left to right) for WorldToCamera x CameraToWorld: 1087 / 1041 (corners SUMS) / 1046 / 1108
+00bc8a60 sweep t2 (2) near-plane clip in place (`start += delta * ((near - start.Z) / delta.Z)`, retail fadd/fstp into start/end): 3323v3416 1006n (rl_a3); named t same code
+00bc8a60 sweep t3 (3) clip branch shapes: bool flags 3409v3416 958n but materialises setcc bools (retail tests the two fnstsw results directly; not retail); else-return / &&-return first = 1006n identical. Residue: VC7.1 sinks the early-return block (inline ~CShaderEnableSaver) to the function end; retail keeps it fall-through; `this` homed at [esp+60h] in retail vs ebp in ours
+009a25d0 sweep t1 (6) local declaration orders (line/cursor/col x inv width/height): 290 / 288 (inv_half_height first, fnt_a6) / 334 / 332 / 432 / 430
+009a25d0 sweep t2 (3) width/x1 then height/y1 (retail fild/fst/fmul/fadd per axis): 3715v3722 280n (fnt_a7); x0 + w*s form 288n; inline casts 381n. Residue: slot layout of the line/cursor floats and eax/edx colouring around the glyph byte loads (retail loads Height after Width)
+00715a70 cam_a4 DIFFER(2956v3356) 1283n: side vector spelled C3DVector(dir.Y * k, -dir.X * k, 0.0f) (retail never computes 0*k: camera Z = from.Z in cases 1..10); VC7.1 folds from.Z -/+ 0.0f but now hoists from.Z above the jump table (retail reloads it per case) and computes -(x*k) where retail does (-x)*k
+00715a70 sweep t1 (3) dir branches with per-branch normalise (retail call order: at/from GetPos, facing, me/other GetPos): 3196v3356 1374n / 1370n -- VC7.1 does not merge the normalise tails
+00715a70 sweep t2 (2) single normalise skipped by the talking-to-self branch: flag `normalise=false` 2952v3356 1438n (slot shift) / goto dir_done 2952v3356 1300n (cam_a5); retail call order and the direct jump past the normalise both reproduced
+00715a70 cam_a6 DIFFER(2932v3356) 1276n: focus cases `offset *= k`
+00715a70 cam_a7 DIFFER(2868v3356) 1258n: focus cases `offset.X = 0; offset.Y = 0; offset.Z *= k` -- best; residue: VC7.1 cross-jumps focus cases 1..4 into one tail and keeps offset.Z in st (retail keeps a cached 0.0 in st0 across both switches, writes each case out in full and reloads from.Z per position case) -> 488 bytes short
+00a593f0 cyl_a5 DIFFER(3043v3027) 540n: the t1 winning coef_b spelling folded into the draft (same code as sw_00a593f0_2)
+009a25d0 fnt_a8 DIFFER(3715v3722) 282n: PDB types (CStreamingGlyphLookup font:4/cachePos:12, CStreamingGlyph AdjustmentIndex:8, CStreamingGlyphData Advance:8/BigChar:1, CStreamingGlyphAdjustment) and names (GFontTextureCache, glyphTextureCacheGlyphAdjustment, CStreamingFontBank::AlphaMaskUVMul/Add) -> same code as fnt_a7 (bitfield extraction = retail shr/and/js); +2 difflines are the bdiff normaliser printing symbol+4 as [4]
+00715a70 cam_a8 DIFFER(2860v3356) 1269n: the twelve g_Talk* externs replaced by retail's literal values (read from Fable.exe: 2.0, 0.4, 1/2.6, 0.1, 0.25, 0.33, 0.75, 2.6, 0.2, 0.3, 15.0, 0.8; they sit in the shared literal pool, e.g. 0.5 at 0x0122F59C is the OBB's too) -- no invented names; 8 bytes shorter, +11 difflines vs cam_a7; promoted for the naming rule

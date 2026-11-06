@@ -27402,3 +27402,9 @@ chunk	address	module	name	length
 794	006c6040	CTCHeroOpinionDeedLog	InformRelevantThingsOfDeed	2377
 794	007c4430	CTCHealLife	StartHealingEffect	1952
 794	008304a0	CThingAICreature	Save	2060
+795	0087f3a0	CCombatAction_KickThingOnGround	PerformAction	2422
+795	005e78f0	CTCQuestCompletionUI	GlobalUpdate	2340
+795	007cacb0	CTCHeroReceiveItems	GlobalUpdate	2974
+795	004b5500	CQuestManager	LoadGameState	2525
+795	0055fec0	CTCHeroOnlineScoreboard	ChooseAClan	2132
+795	0092fab0	CAIStateGroup_MinionReactToPlayerInteraction	TestOrDoInteraction	2508

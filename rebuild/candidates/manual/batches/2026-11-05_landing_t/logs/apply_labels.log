@@ -1,0 +1,4 @@
+manifest 00a58b50 CSphere::GetFirstIntersectionWithTriangle -> NBBBMaths::CSphere::GetFirstIntersectionWithTriangle
+manifest 00a593f0 CCylinder::GetFirstIntersectionWithTriangle -> NBBBMaths::CCylinder::GetFirstIntersectionWithTriangle
+manifest 00a5a9d0 _global::Vector_InsertMany_PairFloat -> std::transform<const C3DVector*, std::back_insert_iterator<std::vector<C2DVector> >, (anonymous namespace)::CTransformWorldCoordsToPlaneCoords>
+labels 10  catalog renamed 0  manifest renamed 3

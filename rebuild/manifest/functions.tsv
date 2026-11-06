@@ -37287,8 +37287,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a58720	operator()	CProjectOntoPlane	unknown	undefined	0		0	yes	accepted									
 00a58790	GetFirstIntersectionWithFiniteLine	CSphere	__thiscall	bool	5	CSphere *,C3DVector *,C3DVector *,C3DVector *,C3DVector *	1	yes	accepted									
 00a58a60	IsPointInsideTriangleInThePlane	NBBBMaths	__fastcall	bool	2	vector<C2DVector,std::allocator<C2DVector>_> *,C2DVector *	1	yes	accepted									
-00a58b50	GetFirstIntersectionWithTriangle	CSphere	__thiscall	bool	4	CSphere *,vector<C3DVector,std::allocator<C3DVector>_> *,C3DVector *,C3DVector *	1	yes	accepted									
-00a593f0	GetFirstIntersectionWithTriangle	CCylinder	__thiscall	bool	4	CCylinder *,vector<C3DVector,std::allocator<C3DVector>_> *,C3DVector *,C3DVector *	1	yes	accepted									
+00a58b50	GetFirstIntersectionWithTriangle	NBBBMaths::CSphere	__thiscall	bool	4	CSphere *,vector<C3DVector,std::allocator<C3DVector>_> *,C3DVector *,C3DVector *	1	yes	accepted									
+00a593f0	GetFirstIntersectionWithTriangle	NBBBMaths::CCylinder	__thiscall	bool	4	CCylinder *,vector<C3DVector,std::allocator<C3DVector>_> *,C3DVector *,C3DVector *	1	yes	accepted									
 00a59fd0	GetFirstIntersectionWithFiniteLine	NBBBMaths::CCylinder	unknown	undefined	0		0	yes	accepted									
 00a5a540	__unguarded_insertion_sort_aux	std	__fastcall	void	3	CHeroMarriageInfo *,CHeroMarriageInfo *,CHeroMarriageInfo *	1	yes	accepted									
 00a5a580	_Adjust_heap	_global	__fastcall	void	5	CAStarState * *,int,int,CAStarState * *,CAStarStateTotalGreaterThan	1	yes	accepted									
@@ -37298,7 +37298,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a5a860	__insertion_sort	std	unknown	undefined	0		0	yes	accepted									
 00a5a8a0	__partial_sort	std	unknown	undefined	0		0	yes	accepted									
 00a5a910	operator=	std::back_insert_iterator	unknown	undefined	0		0	yes	accepted									
-00a5a9d0	Vector_InsertMany_PairFloat	_global	unknown	undefined	0		0	yes	accepted									
+00a5a9d0	transform<const C3DVector*, std::back_insert_iterator<std::vector<C2DVector> >, (anonymous namespace)::CTransformWorldCoordsToPlaneCoords>	std	unknown	undefined	0		0	yes	accepted									
 00a5aaa0	__introsort_loop	std	unknown	undefined	0		0	yes	accepted									
 00a5aba0	Sort_SElement4_00a5aba0	_global	unknown	undefined	0		0	yes	accepted									
 00a5ac60	GetNavigationLayerAt	CCachedVolumes	__thiscall	long	2	CCachedVolumes *,C3DVector *	1	yes	accepted									

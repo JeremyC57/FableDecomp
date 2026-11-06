@@ -1,0 +1,7 @@
+address	module	name	length
+00a58b50	CSphere	GetFirstIntersectionWithTriangle	2207
+00a593f0	CCylinder	GetFirstIntersectionWithTriangle	3027
+00ade080	C3DBoundingBox	InitialiseFromOBB	2878
+00bc8a60	CEnginePrimitiveManagerLines	RenderLine	3416
+009a25d0	CStreamingFontBank	Render	3722
+00715a70	NTCScriptedControl::CActionTalkBase	SetUpCamera	3356
