@@ -27480,3 +27480,9 @@ chunk	address	module	name	length
 807	00dc93f0	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton	Main	4507
 807	00e0b160	NScript::CQ_UndeadRisingScript	Main	4584
 807	00ecf7f0	NScript::CV_SickChildScript::CWomanToAttract	Main	4885
+808	00de8370	NScript::CQ_RansomVictimScript::CRansommer	Main	4894
+808	00e90be0	NScript::CV_GuildMasterScript::CGuildMasterGameFlow	Main	4914
+808	00e78630	NScript::CV_ExposeMayorScript::CEM_Sheriff	Main	5045
+808	00e93eb0	NScript::CV_HauntedHouseScript	Main	5321
+808	00e7c8e0	NScript::CV_FishermanScript::CFisherman	Main	5358
+808	00de6c20	NScript::CQ_RansomVictimScript::CVictim	Main	5511

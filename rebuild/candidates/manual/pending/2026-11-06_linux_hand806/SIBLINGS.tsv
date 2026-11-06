@@ -1,0 +1,4 @@
+address	source	grade_with_final_overlay	note
+00db09e0	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_Main_00db09e0.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_NewOakValeIntroScript.h (default path; my edit is the opt-in FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES2); vland --recheck-landed, log tmp/recheck.log
+00db6c60	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_Main_00db6c60.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_NewOakValeIntroScript.h (default path)
+00d038e0	rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScript_Main_00d038e0.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_BanditCampBossBattleScript.h (default path; my edit is the opt-in FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_FORGER)

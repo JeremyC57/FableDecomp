@@ -105,6 +105,9 @@ public:
     class CNOVI_AffairMan;                                               // Alloc 0x00DB0880
     class CNOVI_BarrelThug;                                              // Alloc 0x00DB6B40
 #endif
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES2
+    class CNOVI_AffairWife;                                              // Alloc 0x00DB29A0
+#endif
 };
 #pragma pack(pop)
 // The villager entity script (Ego_r.pdb CNOVI_Villager, 32 bytes: ParentClass +0x14, PMasterData +0x18, HeroDidHitMe +0x1c; the
@@ -163,6 +166,49 @@ protected:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan) == 0x24);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug) == 0x24);
+#endif
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_ENTITIES2
+// Retail opt-in (chunk 806): two more entity scripts. Ego_r.pdb layouts (struct_layouts_egor.tsv, entity offsets equal retail's:
+// CEntityScriptBase is 0x14 in both): CNOVI_AffairWife 32 bytes (GoingForHusband +0x1c, ForceFirstTimeSpeak +0x1d,
+// SaidRunningLine +0x1e), CNOVI_TeddyGirl 32 bytes (DoneIntro +0x1c, FoundTeddy +0x1d, SpokeAboutFindingTeddy +0x1e, HeroHitMe
+// +0x1f); retail Main 0x00DB2B10 / 0x00DAF080 read these offsets, the Allocs 0x00DB29A0 / 0x00DAEF50 allocate 0x20. Entity vtables
+// 0x012D8C98 (AffairWife: 0 scalar deleting dtor 0x00DB2A50, 1 Main 0x00DB2B10, 2 Init 0x00DB2A70, 3 GetParentScript 0x00DB2A40)
+// and 0x012D87D4 (TeddyGirl: 0 0x00DAF060, 1 Main 0x00DAF080, 2 Init 0x00DAF000, 3 GetParentScript 0x00DAEFF0); Main / Init are
+// private (PDB EAEXXZ), GivenTeddy private (PDB ?GivenTeddy@CNOVI_TeddyGirl@CQ_NewOakValeIntroScript@NScript@@AAEXXZ, 0x00DB0600).
+namespace NScript {
+class CQ_NewOakValeIntroScript::CNOVI_AffairWife : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DB29A0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DB2A40
+private:
+    virtual void Main();                                                 // 0x00DB2B10
+    virtual void Init();                                                 // 0x00DB2A70
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    bool GoingForHusband;                                                // +0x1c
+    bool ForceFirstTimeSpeak;                                            // +0x1d
+    bool SaidRunningLine;                                                // +0x1e
+};
+class CQ_NewOakValeIntroScript::CNOVI_TeddyGirl : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DAEF50
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DAEFF0
+private:
+    virtual void Main();                                                 // 0x00DAF080
+    virtual void Init();                                                 // 0x00DAF000
+    void GivenTeddy();                                                   // 0x00DB0600
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    bool DoneIntro;                                                      // +0x1c
+    bool FoundTeddy;                                                     // +0x1d
+    bool SpokeAboutFindingTeddy;                                         // +0x1e
+    bool HeroHitMe;                                                      // +0x1f
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife) == 0x20);
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl) == 0x20);
 #endif
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript) == 0x10c);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Villager) == 0x20);

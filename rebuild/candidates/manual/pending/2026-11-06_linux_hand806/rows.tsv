@@ -1,0 +1,7 @@
+address	module	name	length
+00db2b10	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife	Main	4890
+00daf080	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl	Main	5504
+00d01630	NScript::CQ_BanditCampScript::CGate1GuardOuter	Main	5178
+00d0c410	NScript::CQ_BanditCampBossBattleScript::CBanditForger	Main	5373
+00ebcf70	NScript::CV_OracleScript::CVO_OracleMarker	Main	5572
+00ec68a0	NScript::CV_SickChildScript::CSickChildsSister	Main	5962

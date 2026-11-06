@@ -384750,6 +384750,13 @@ $catalog = @(
         TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_Main_00ea36b0_test.cpp'
         PassPattern = '00ea36b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00db2b10'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife'
+        Source = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_Main_00db2b10.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_Main_00db2b10_test.cpp'
+        PassPattern = '00db2b10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

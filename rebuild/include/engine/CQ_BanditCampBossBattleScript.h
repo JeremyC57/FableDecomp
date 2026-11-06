@@ -109,12 +109,37 @@ public:
         long HealthBarIndex;                                             // +0x1c
     };
 #endif
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_FORGER
+    // Retail opt-in (chunk 806): Ego_r.pdb CBanditForger (32 bytes: CEntityScriptBase 0x14, ParentClass +0x14, PMasterData +0x18,
+    //   GivenPass +0x1c -- Main 0x00D0C410 reads and sets [esi+1Ch]); vtable 0x012C9700: 0 scalar deleting dtor 0x00D0C370, 1 Main
+    //   0x00D0C410, 2 Init 0x00D0C390, 3 GetParentScript 0x00D0C360, 4 OnPersist 0x00D0EE40; Alloc 0x00D0C2C0 (allocates 0x20 and
+    //   stores the vtable). Names: Ego_r.pdb / FableWin.pdb ?<Name>@CBanditForger@CQ_BanditCampBossBattleScript@NScript@@ (Main / Init
+    //   private EAEXXZ). Declarations only; existing includers do not define the macro.
+    class CBanditForger : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BanditCampBossBattleScript&, CScriptDataBase*, const CScriptThing&);   // 0x00D0C2C0
+        virtual CScriptBase* GetParentScript() const;                    // slot 3 0x00D0C360
+        virtual void OnPersist(CPersistContext&);                        // slot 4 0x00D0EE40
+    private:
+        virtual void Main();                                             // slot 1 0x00D0C410
+        virtual void Init();                                             // slot 2 0x00D0C390
+    protected:
+        NScript::CQ_BanditCampBossBattleScript & ParentClass;            // +0x14
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;                   // +0x18
+    private:
+        bool GivenPass;                                                  // +0x1c
+    };
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript) == 0x70);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CGate3Guard) == 0x1c);
 #ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_BANDITKING
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CBanditKing) == 0x20);
+#endif
+#ifdef FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_FORGER
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BanditCampBossBattleScript::CBanditForger) == 0x20);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

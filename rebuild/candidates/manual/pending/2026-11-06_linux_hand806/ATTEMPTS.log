@@ -1,0 +1,25 @@
+00db2b10 a1 DIFFER 375n | a2 116n | a3 22n | a4 RELOCATION_MATCH
+00daf080 a1 DIFFER(5451v5504) 46n (only the main-exit ~CScriptThing Bully expansion; rest relocs) | a2 row-local inline ~CScriptThing: 5520v5504 171n (predicate ~CIsThingConscious goes out of line, frame shifts) | a3 a2+__forceinline ~CIsThingConscious: 5571v5504 54n (predicate nested ~CScriptThing expands too)
+00d01630	a1	DIFFER(5089v5178) 402n	first full body (shared headers, new hdr CQ_BanditCampScript.h); movie ctor called COMDAT (0x6e7b60)
+00d01630	a2	DIFFER(5134v5178) 114n	+ MOVIEBASE_FORCEINLINE_CTOR: residue = implicit movie dtor called (0x6e7b80) at 4 sites where retail expands (6e7ab0 + GROBase vptr + ~CBaseObject); frame slots follow
+00d01630	a3	DIFFER(5216v5178) 203n	MOVIEBASE_FORCEINLINE (user dtor): expands but adds MovieBase vptr store (chunk 797 gotcha) -- worse
+00d01630	x1	DIFFER(5134v5178) 114n	probe: an earlier movie user in the TU does not change the dtor inlining (hypothesis rejected)
+00d0c410	a1	DIFFER(5255v5373) 799n	first full body; frame 0xa0 v 0xa4; loop-1 rotated (retail top-tests NotAttacked every pass); implicit movie dtor COMDAT x6 where retail expands x5; loop-1 TURNED_DOWN block moved out of line
+00d0c410	a2	DIFFER(5255v5373) 799n	for(;;){if(!NotAttacked)break; -- identical code
+00d0c410	a3	DIFFER(5255v5373) 801n	NotAttacked declared at loop 1
+00d0c410	a4	DIFFER(5255v5373) 801n	bools declared after seh_me
+00ec68a0	a1	DIFFER(5962v5962) 152n	first full body (head from landed same-TU sibling CIngredientOwner::Main 0x00ECB0E0); anim index evaluated with the def pointer CSE'd across rand
+00ec68a0	a2	DIFFER(5969v5962) 105n	anim index in a local first (retail re-reads pGlobalScriptDef after rand)
+00ec68a0	a3	DIFFER(5969v5962) 101n	WavedAtHero/MoveState stores before WaveTimer=5 (retail schedules them before the SetTimer call); residue: rotated test of the run-to-mother loop placed after the far-from-hero branch in retail, after the near branch in ours (+7 bytes), one GetTimer register swap
+00ec68a0	a4	DIFFER(5969v5962) 101n	if/else swapped (VC canonicalises: identical code)
+00ec68a0	a5	DIFFER(5969v5962) 101n	continue at end of the far branch: identical
+00ec68a0	a6	DIFFER(5969v5962) 101n	continue at end of the near branch: identical
+a1 DIFFER(5704v5572) 1513n first compile
+a2 + declared-only ~CCountedPointer<MovieBase>: DIFFER(5508v5572) 783n
+a3 outer while(!T): 782n; a4 per-branch intro: 6488 worse
+a5 a3 minus T after Start: 5492v5572 778n
+a6 /Oa: 5383 1240n worse; 
+a7 no FORCEINLINE_TEXT_EQ: identical to a5 (778n). parked at a5
+00daf080 a4 loop cond for(;!T;NSF): 5515v5504 110n (natural-end exit now, but ~CScriptThing Bully COMDAT there)
+00daf080 a5 a4+inline ~CScriptThing: 192n; a6 a5+forceinline ~CIsThingConscious: 108n
+00daf080 a7 inline ~CScriptThing defined after Main: 192n (VC uses it anyway). parked at a1 46n
