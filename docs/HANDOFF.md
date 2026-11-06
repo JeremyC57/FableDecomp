@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-792 landed; chunk 793 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-792 landed; chunks 793 and 794 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -29,8 +29,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - **Running (the user: "continue authoring chunks on another agent"):** chunk 793 (`$S/w22/agent793`: CSphere / CCylinder::
     GetFirstIntersectionWithTriangle, C3DBoundingBox::InitialiseFromOBB, CEnginePrimitiveManagerLines::RenderLine, and
     CStreamingFontBank::Render + CActionTalkBase::SetUpCamera carried over unattempted from 792). Land it like 782-792 (`landing_t`,
-    `pending/2026-11-05_linux_hand793`, labels `2026-11-05t` incl. the landed rows' own labels, queue tag `land0511t`). Pool: the
-    groups ledger (`pending/2026-11-03_groups/ROWS.tsv`) still has about 186 unworked rows (the earlier "about
+    `pending/2026-11-05_linux_hand793`, labels `2026-11-05t` incl. the landed rows' own labels, queue tag `land0511t`).
+    The user (2026-11-06): "you can have two chunk authors". Chunk 794 (`$S/w22/agent794`: CThingObject::OnHit,
+    CTCSummonSpell::CreateMinion, CTCWallMount::AttachObject, CTCHeroOpinionDeedLog::InformRelevantThingsOfDeed,
+    CTCHealLife::StartHealingEffect, CThingAICreature::Save) runs beside it; land it as `landing_u` / `hand794` / `2026-11-05u` /
+    `land0511u` (letters follow landing order, so swap them if 794 reports first). Each agent runs at most 2 grades. Pool: the
+    groups ledger (`pending/2026-11-03_groups/ROWS.tsv`) still has about 180 unworked rows (the earlier "about
     40" counted only rows with no remaining callees). Take rows that are 16-byte aligned (an odd start such as 0x00651273 is a
     mid-function entry) and check each extent for a second function after its tables. The parked 782-792 rows are the other pool.
   - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`). The
