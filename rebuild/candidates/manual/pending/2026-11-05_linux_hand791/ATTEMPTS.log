@@ -1,0 +1,42 @@
+004963a0 a: first model (for-loop more==true&&handled!=true, inline SetMode body, declared-only GetMaxVisible*) -> DIFFER 2408v2384 (loop head aligned + entry jump, no edi=7, mov ecx,esi after GetMaxVisible calls, frame 0xa0)
+004963a0 b: a + `if (Start()==true) do { if (handled==true) break; switch } while (Next()==true)` -> 2396v2384: loop head + edi=7 now retail
+004963a0 c: b + same-TU GetMaxVisible{Profile,World,Save}Number bodies (not inlined; VC7.1 then knows ecx survives: the 6 `mov ecx,esi` vanish) + handled=true before SetQuit at key 1 -> 2384v2384, only frame slots differ (0xa0 v 0x98; first GFWrapLimit temps get own slots 0x54/0x58, retail reuses 0x44/0x48 swapped)
+004963a0 d: c with deduced GFWrapLimit(CursorHighlight,1,7) -> identical to c
+004963a0 f: c with `if (!ChangeSelection(n)) break;` in mode 1 (calls directly in the Y-test blocks) -> identical to c
+004963a0 g: c + SetMode clearing through the same-TU ClearString() body (0x004944C0 = ?ClearString@CFrontendGameComponent@@AAEXXZ, expanded at every use) -> identical bytes to c (kept: retail-faithful)
+004963a0 x_h (diagnostic, not a candidate): first GFWrapLimit without int temporaries -> frame 0x98 and the four stick positions take retail's slots (10:0x54 12:0x5c 1:0x64 11:0x6c): the whole residue is the first temp pair not sharing the second pair's 8 bytes
+004963a0 i: g with the mode-1 down test as a separate `if` after a `break` in the up block -> identical
+004963a0 j: g with `else if (Y < -0.5f && ChangeSelection(1))` -> identical
+004963a0 l: g with const C2DVector position -> identical
+004963a0 o: g with postfix CursorHighlight++/-- -> identical
+004963a0 p: g + the GFWrapLimit template body visible -> 2396v2384: VC7.1 expands the first call and calls the second (budget); retail calls both
+004963a0 q: g + the same-TU GFWrapLimit<long,int,int> body as `__declspec(noinline)` (retail instantiates it in this TU at 0x00496EB0, right after Run) -> RELOCATION_MATCH: the temporaries are seen as uncaptured and pack into one 8-byte pair as retail. Jump tables checked by hand: all 12 case pointers and the 12-byte mode index equal retail.
+== 0x00E49020 CTauntingBandit::Main
+a plain while(!term) loop, plain returns: DIFFER(2484v2084) 642 -- in-loop exits expand ~CTimer/~CScriptThing/~handle, final exit calls them (retail: the reverse)
+b for(;;) + head do{term}while(0) (loop-head macro): DIFFER(2416v2084) 1084 -- final exit expanded as retail; in-loop exits still expand ~CTimer (retail calls 0x00CD4470 at 15 of them); TimerIndex cached in ebp
+c every check do{}while(0) (dwall), while head: DIFFER(2492v2084) 610 -- TollPaid-block exits match retail's t/T pattern, Flee/Angered exits hotter
+d dwall + loop-head macro: DIFFER(2656v2084) 680
+e while head, only TollPaid-block checks wrapped: DIFFER(2276v2084) 554 -- final cold (Tsh) vs retail all-inline
+f loop-head macro + TollPaid-block checks wrapped: DIFFER(2424v2084) 1085 -- every TollPaid exit + final match retail; Flee/Angered 219/299/354 expand ~CTimer, 131/256 expand all three (retail: calls)
+g f + Angered block wrapped: hotter (Angered exits Tiih)
+h f + Flee block wrapped: hotter (Flee exits Tiih)
+i f with plain-inline GetTime/operator=: no change
+j f with a named exitDistance local: no change
+== 0x00EC32F0 CV_RandomPopulationSimScript::ChooseRandomBanditFromDefs
+a switch(GetHeroRoughExperienceLevel()) cases 0..8 + default in source order, push_back per entry: DIFFER(2040v2016) 1086 -- no push_back expanded (retail expands the 5 default-arm sites); zero cached in ebx (extra push ebp), finish cached in edi
+b a + default arm in do{}while(0): no change (default stays cold)
+c a + whole switch in do{}while(0): DIFFER(3276v2016) -- every site expanded (frequency confirmed as the lever)
+d a + case 8 in do{}while(0): case 8 and the default arm expand (post-loop leak)
+e default label written first in the switch (still laid out last): DIFFER(2040v2016) 1086 -- the 5 default sites expand as retail, but the first is folded (vector known empty after the switch) and finish/zero stay register-cached; retail reloads the vector words at every site
+f e with the vector declared before the string: stores move before the ctor call (retail order is string first)
+g e with a named index local: no change
+h e with begin()+i: no change
+j e with all pushes through a vector pointer local: no change
+k e with a vector reference local: no change
+== 0x00E91F20 CV_GuildMasterScript::GetGuildMasterSpeech
+a switch(PostSavePosition) over the 37 EGP_ values, if/else bodies with a terminate return of the empty default, if-chain on CurrentHeroSoulsPosition, tail repeat check: DIFFER(2514v2522) 1020 -- the empty default is a named-local getter (lea), retail copies the ctor's eax temp; return-default blocks not tail-merged
+b getter returning CCharString("", -1): copy elided (DIFFER 2490v2522)
+c CCharString nothing = CCharString("", -1): elided
+d cast to const CCharString&: elided
+e inline pass-through CopyString(const CCharString&) over the CCharString("", -1) temporary: RELOCATION_MATCH; 29 dword jump-table entries and the 5 byte index tables checked against retail
+[0x00E49020] k f + distance loop as for(;;) with break: no change (16 of 48 exit pads differ, same as f)

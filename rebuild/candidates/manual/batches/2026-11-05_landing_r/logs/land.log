@@ -1,0 +1,19 @@
+addr       parity           behav  name
+004963a0   RELOCATION_MATCH PASS   Input
+009a1720   RELOCATION_MATCH PASS   PrepareToRender
+00ab83a0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00ab83a0   RELOCATION_MATCH PASS   PrepareToRender
+00e91f20   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e91f20   RELOCATION_MATCH PASS   GetGuildMasterSpeech
+
+WINS: 4
+  004963a0 RELOCATION_MATCH CFrontendGameComponent::?Input@CFrontendGameComponent@@AAEXXZ
+  009a1720 RELOCATION_MATCH CStreamingFontBank::?PrepareToRender@CStreamingFontBank@@UBEX_N@Z
+  00ab83a0 RELOCATION_MATCH CStaticFontBank::?PrepareToRender@CStaticFontBank@@UBEX_N@Z
+  00e91f20 RELOCATION_MATCH NScript::CV_GuildMasterScript::?GetGuildMasterSpeech@CV_GuildMasterScript@NScript@@QAE?AVCCharString@@XZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CFrontendGameComponent_Input_004963a0
+  CStreamingFontBank_PrepareToRender_009a1720
+  CStaticFontBank_PrepareToRender_00ab83a0
+  NScriptCVGuildMasterScript_GetGuildMasterSpeech_00e91f20

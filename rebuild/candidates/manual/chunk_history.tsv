@@ -27384,3 +27384,9 @@ chunk	address	module	name	length
 791	00ec32f0	NScript::CV_RandomPopulationSimScript	ChooseRandomBanditFromDefs	2016
 791	00e49020	NScript::CV_BanditTollScript::CTauntingBandit	Main	2084
 791	00e91f20	NScript::CV_GuildMasterScript	GetGuildMasterSpeech	2522
+792	00ab8e10	CStaticFontBank	CStaticFontBank	2197
+792	009a25d0	CStreamingFontBank	Render	3722
+792	00b5af80	CEngineScreenEffectColourFilter	RenderColorFilteredQuad	2890
+792	00b5a3f0	CEngineScreenEffectColourFilter	ApplyColourFilter	2916
+792	00ab6e40	CJoystickDX	UpdateEvents	2568
+792	00715a70	CActionTalkBase	SetUpCamera	3356

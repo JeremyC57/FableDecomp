@@ -7,6 +7,9 @@
 // retail 0x00A03B30 `ret`, 0x00A03B40, 0x00A03B70, 0x00A04410): the constructor and the empty destructor are out of line.
 // The enum types' enumerator names are not in the repo's PDB extracts: declared without enumerators (landed convention).
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CINPUTEVENT_ACCESSORS
+class C2DVector;
+#endif
 enum EInputKey { };
 enum EInputDeviceType { };
 enum EInputEventType { };
@@ -24,6 +27,15 @@ public:
 #endif
     EInputEventType GetType() const;                                     // 0x00A03B40 ?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ
     EInputKey GetKey() const;                                            // 0x00A03B70 ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ
+#ifdef FABLE_RETAIL_CINPUTEVENT_ACCESSORS
+    // Retail opt-in (chunk 791, row 0x004963A0 CFrontendGameComponent::Input): three more out-of-line accessors, declarations only
+    // (no layout change). Ego_r.pdb / FableWin.pdb ?GetDeviceNumber@CInputEvent@@QBEJXZ (0x00A03B60), ?GetJoystickButton@CInputEvent@@QBEJXZ
+    // (0x00A03B90) and ?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ (0x00A043A0, hidden result: 0x00496433 pushes the
+    // result slot and passes the event in ecx).
+    long GetDeviceNumber() const;                                        // 0x00A03B60
+    long GetJoystickButton() const;                                      // 0x00A03B90
+    C2DVector GetJoystickPosition() const;                               // 0x00A043A0
+#endif
     UInputEventData  Data;                                               // +0x00
     EInputDeviceType DeviceType;                                         // +0x20
     long             DeviceNumber;                                       // +0x24

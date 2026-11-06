@@ -37074,3 +37074,17 @@ _New_c35b10@8	00c35b10	00c275e0
 ?Alloc@CEndScythe@CQ_HeroSoulsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d79c80	00d78670
 ?Alloc@CNotForODG@CQ_HeroSoulsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d79b90	00d78670
 ?PlayCutscene@CQ_HeroSoulsScript@NScript@@QAEXVCCharString@@@Z	00d7aa30	00d78670
+??$GFWrapLimit@JHH@@YIXAAJABH1@Z	00496eb0	004963a0
+?ChangeSelection@CFrontendGameComponent@@AAE_NW4ECursorMovement@NGameComponentHelpers@@@Z	00494380	004963a0
+?ChooseProfileNumber@CFrontendGameComponent@@AAEXJ@Z	004962c0	004963a0
+?ChooseSaveNumber@CFrontendGameComponent@@AAEXJ@Z	00494800	004963a0
+?ChooseWorldNumber@CFrontendGameComponent@@AAEXJ@Z	00494710	004963a0
+?GetMaxVisibleProfileNumber@CFrontendGameComponent@@ABEJXZ	00494520	004963a0
+?GetMaxVisibleSaveNumber@CFrontendGameComponent@@ABEJXZ	00494770	004963a0
+?GetMaxVisibleWorldNumber@CFrontendGameComponent@@ABEJXZ	00494680	004963a0
+?SetMode@CFrontendGameComponent@@AAEXW4EGameMode@@@Z	00495fe0	004963a0
+?ShowMoreProfiles@CFrontendGameComponent@@AAEXXZ	00494560	004963a0
+?ShowMoreSaves@CFrontendGameComponent@@AAEXXZ	004947b0	004963a0
+?ShowMoreWorlds@CFrontendGameComponent@@AAEXXZ	004946c0	004963a0
+?D3DTextureTransformModeTable@CRenderStateManager@@0PAKA	01396fcc	009a1720
+?SetVertexFormat@CRenderManagerCore@@QAEXK@Z	00a0aa30	00ab83a0

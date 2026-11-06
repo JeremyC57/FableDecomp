@@ -8,6 +8,36 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSTATICFONTBANK
+// Retail opt-in (chunk 791, row 0x00AB83A0 CStaticFontBank::PrepareToRender): the polymorphic retail class over the
+// FABLE_RETAIL_CFONTBANK base (define both macros before the include). Evidence: RTTI `.?AVCStaticFontBank@@` : CFontBank :
+// CBaseClassNonCopyable : CBaseClass, vtable 0x0129EAD4 (rtti-vtables.tsv: 0 ??_G 0x00AB9990, 1 GetStringExtents 0x00AB7B00,
+// 2 GetFontMaxHeight 0x00AB7A50, 3 PrepareToRender 0x00AB83A0, 5 Render 0x00AB7C20; slot 4 keeps CFontBank::Preload), in the
+// FableWin.pdb order and spellings (?PrepareToRender@CStaticFontBank@@UBEX_N@Z, also in Ego_r.pdb). Members: Ego_r.pdb names
+// and offsets, the same in retail (the landed ~CStaticFontBank 0x00AB7A70 reads GlyphBanks +0x30 and PTexture +0x2030).
+#include "engine/CFontBank.h"
+#include "engine/C2DExtentsI.h"
+class CTexture;
+class CStaticFontBank : public CFontBank {                               // vtable 0x0129EAD4
+public:
+    virtual ~CStaticFontBank();                                          // slot 0 (??_G 0x00AB9990, ??1 0x00AB7A70)
+    virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const;   // slot 1 0x00AB7B00
+    virtual float GetFontMaxHeight() const;                              // slot 2 0x00AB7A50
+    virtual void PrepareToRender(bool = true) const;                     // slot 3 0x00AB83A0
+    virtual void Render(const CWideString& text, const C3DVector& pos, float scale, const CRGBColour& colour, unsigned long flags, const CTexture* texture = 0) const;   // slot 5 0x00AB7C20
+protected:
+    unsigned long MaxHeight;                                             // +0x10
+    long          Weight;                                                // +0x14
+    bool          Italics;                                               // +0x18
+    C2DExtentsI   TextureSize;                                           // +0x1c
+    long          MinChar;                                               // +0x24
+    long          MaxChar;                                               // +0x28
+    long          TotalNoGlyphs;                                         // +0x2c
+    unsigned char GlyphBanks[0x2000];                                    // +0x30 GlyphBank[1024] (8 bytes: FirstGlyph, NoGlyphs, CGlyph* Glyphs)
+    CTexture*     PTexture;                                              // +0x2030
+};
+FABLE_STATIC_ASSERT(sizeof(CStaticFontBank) == 0x2034);
+#else
 class CTexture;
 
 #pragma pack(push, 1)
@@ -43,5 +73,6 @@ FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, MaxChar) == 0x28);
 FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, TotalNoGlyphs) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, GlyphBanks) == 0x30);
 FABLE_STATIC_ASSERT(offsetof(CStaticFontBank, PTexture) == 0x2030);
+#endif // FABLE_RETAIL_CSTATICFONTBANK
 
 #endif // FABLE_ENGINE_CSTATICFONTBANK_H

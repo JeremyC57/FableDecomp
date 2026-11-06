@@ -1,0 +1,6 @@
+manifest 004959e0 CFrontEndManager::GetProfileNames -> CFrontendGameComponent::GetProfileNames
+manifest 009a1720 CStreamingFontBank::?PrepareToRender@CStreamingFontBank@@UBEX_N@Z -> CStreamingFontBank::PrepareToRender
+manifest 00ab83a0 CStaticFontBank::?PrepareToRender@CStaticFontBank@@UBEX_N@Z -> CStaticFontBank::PrepareToRender
+manifest 00e91f20 CV_GuildMasterScript::GetGuildMasterSpeech -> NScript::CV_GuildMasterScript::GetGuildMasterSpeech
+manifest 00ec32f0 CV_RandomPopulationSimScript::ChooseRandomBanditFromDefs -> NScript::CV_RandomPopulationSimScript::ChooseRandomBanditFromDefs
+labels 7  catalog renamed 0  manifest renamed 5

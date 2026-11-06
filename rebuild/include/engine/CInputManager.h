@@ -18,6 +18,11 @@ public:
     virtual void Update();                                               // slot 2 (+0x08) ?Update@CInputManager@@UAEXXZ
     bool EventScanStart(CInputEventScanInfo&,CInputEvent&) const;        // 0x009F4ED0 ?EventScanStart@CInputManager@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z
     bool EventScanNext(CInputEventScanInfo&,CInputEvent&) const;         // 0x009F4F10 ?EventScanNext@CInputManager@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z
+#ifdef FABLE_RETAIL_CINPUTMANAGER_EVENTSCANEND
+    // Retail opt-in (chunk 791, row 0x004963A0 CFrontendGameComponent::Input): Ego_r.pdb / FableWin.pdb
+    // ?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z (0x009F4AC0), called after every EventScanStart / Next loop.
+    void EventScanEnd(CInputEventScanInfo&) const;                       // 0x009F4AC0
+#endif
 private:
     unsigned char _pad_0x04[0x80 - 0x04];                                // +0x04 data members (opaque, see above)
 };

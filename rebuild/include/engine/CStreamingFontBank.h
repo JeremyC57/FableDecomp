@@ -8,6 +8,41 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CSTREAMINGFONTBANK
+// Retail opt-in (chunk 791, row 0x009A1720 CStreamingFontBank::PrepareToRender): the polymorphic retail class over the
+// FABLE_RETAIL_CFONTBANK base (define both macros before the include). Evidence: RTTI `.?AVCStreamingFontBank@@` : CFontBank :
+// CBaseClassNonCopyable : CBaseClass, vtable 0x0129AB54 with six slots (rtti-vtables.tsv: 0 ??_G 0x009A4E40, 1 GetStringExtents
+// 0x009A14E0, 2 GetFontMaxHeight 0x009A0EA0, 3 PrepareToRender 0x009A1720, 4 Preload 0x009A2000, 5 Render 0x009A25D0), in the
+// FableWin.pdb order and spellings (?PrepareToRender@CStreamingFontBank@@UBEX_N@Z, also in Ego_r.pdb). Members: Ego_r.pdb names
+// and offsets, the same in retail (the landed ~CStreamingFontBank 0x009A1090 reads glyphBankCache +0x14, GlyphBankMemory +0x28,
+// fontIndex +0x302C, PTexture +0x3030).
+#include "engine/CFontBank.h"
+class CStreamingFontDataBank;
+class CTexture;
+struct GlyphBank;
+class CStreamingFontBank : public CFontBank {                            // vtable 0x0129AB54
+public:
+    virtual ~CStreamingFontBank();                                       // slot 0 (??_G 0x009A4E40, ??1 0x009A1090)
+    virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const;   // slot 1 0x009A14E0
+    virtual float GetFontMaxHeight() const;                              // slot 2 0x009A0EA0
+    virtual void PrepareToRender(bool = true) const;                     // slot 3 0x009A1720
+    virtual bool Preload(const CWideString& text, bool) const;           // slot 4 0x009A2000
+    virtual void Render(const CWideString& text, const C3DVector& pos, float scale, const CRGBColour& colour, unsigned long flags, const CTexture* texture = 0) const;   // slot 5 0x009A25D0
+protected:
+    CStreamingFontDataBank* data_bank;                                   // +0x10
+    GlyphBank*              glyphBankCache;                              // +0x14
+    unsigned long           glyphBankCacheIndex;                         // +0x18
+    unsigned long           MaxHeight;                                   // +0x1c
+    long                    Weight;                                      // +0x20
+    bool                    Italics;                                     // +0x24
+    void*                   GlyphBankMemory;                             // +0x28
+    void*                   GlyphBanks[1024];                            // +0x2c
+    unsigned long           GlyphFlags[2048];                            // +0x102c
+    unsigned long           fontIndex;                                   // +0x302c
+    CTexture*               PTexture;                                    // +0x3030
+};
+FABLE_STATIC_ASSERT(sizeof(CStreamingFontBank) == 0x3034);
+#else
 class CStreamingFontDataBank;
 class CTexture;
 struct GlyphBank;
@@ -47,5 +82,6 @@ FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, GlyphBanks) == 0x2c);
 FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, GlyphFlags) == 0x102c);
 FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, fontIndex) == 0x302c);
 FABLE_STATIC_ASSERT(offsetof(CStreamingFontBank, PTexture) == 0x3030);
+#endif // FABLE_RETAIL_CSTREAMINGFONTBANK
 
 #endif // FABLE_ENGINE_CSTREAMINGFONTBANK_H

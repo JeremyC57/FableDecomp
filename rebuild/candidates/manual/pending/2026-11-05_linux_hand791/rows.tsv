@@ -1,0 +1,7 @@
+address	module	name	length
+009a1720	CStreamingFontBank	PrepareToRender	2260
+00ab83a0	CStaticFontBank	PrepareToRender	2672
+004963a0	CFrontendGameComponent	Input	2384
+00ec32f0	NScript::CV_RandomPopulationSimScript	ChooseRandomBanditFromDefs	2016
+00e49020	NScript::CV_BanditTollScript::CTauntingBandit	Main	2084
+00e91f20	NScript::CV_GuildMasterScript	GetGuildMasterSpeech	2522

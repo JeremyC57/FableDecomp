@@ -1,0 +1,12 @@
+address	source	grade_with_final_overlay	note
+0x006286F0	rebuild/src/compiled/00/62/global_GFPlayFullScreenXBoxMovie_006286f0.cpp	RELOCATION_MATCH	CInputManager.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x009A1090	rebuild/src/compiled/00/9a/CStreamingFontBank_CStreamingFontBank_009a1090.cpp	RELOCATION_MATCH	CStreamingFontBank.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x009A4160	rebuild/src/compiled/00/9a/CStreamingFontBank_FindGlyph_009a4160.cpp	RELOCATION_MATCH	CStreamingFontBank.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x009A0EA0	rebuild/src/compiled/00/9a/CStreamingFontBank_GetFontMaxHeight_009a0ea0.cpp	RELOCATION_MATCH	CStreamingFontBank.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x009A14E0	rebuild/src/compiled/00/9a/CStreamingFontBank_GetStringExtents_009a14e0.cpp	RELOCATION_MATCH	CStreamingFontBank.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x009F55C0	rebuild/src/compiled/00/9f/CInputManager_FlagEventAsProcessed_009f55c0.cpp	RELOCATION_MATCH	CInputEvent.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x00A04410	rebuild/src/compiled/00/a0/CInputEvent_CInputEvent_00a04410.cpp	MATCH	CInputEvent.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x00A04160	rebuild/src/compiled/00/a0/CInputEvent_GetChecksum_00a04160.cpp	RELOCATION_MATCH	CInputEvent.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x00AB5FC0	rebuild/src/compiled/00/ab/CKeyboardDX_CKeyboardDX_00ab5fc0.cpp	RELOCATION_MATCH	CInputEvent.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x00AB7A70	rebuild/src/compiled/00/ab/CStaticFontBank_CStaticFontBank_00ab7a70.cpp	RELOCATION_MATCH	CStaticFontBank.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)
+0x00AB7A50	rebuild/src/compiled/00/ab/CStaticFontBank_GetFontMaxHeight_00ab7a50.cpp	RELOCATION_MATCH	CStaticFontBank.h includer; opt-in branches only, default text unchanged; test PASS (read-only vland --recheck-landed)

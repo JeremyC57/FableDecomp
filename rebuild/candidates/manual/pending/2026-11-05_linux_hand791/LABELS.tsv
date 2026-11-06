@@ -1,0 +1,12 @@
+address	label	evidence
+0x009A1720	CStreamingFontBank::PrepareToRender	Ego_r.pdb + FableWin.pdb ?PrepareToRender@CStreamingFontBank@@UBEX_N@Z; RTTI vtable 0x0129AB54 slot 3; landed RELOCATION_MATCH (chunk 791)
+0x00AB83A0	CStaticFontBank::PrepareToRender	Ego_r.pdb + FableWin.pdb ?PrepareToRender@CStaticFontBank@@UBEX_N@Z; RTTI vtable 0x0129EAD4 slot 3; RELOCATION_MATCH (chunk 791)
+0x004963A0	CFrontendGameComponent::Input	Ego_r.pdb + FableWin.pdb ?Input@CFrontendGameComponent@@AAEXXZ; called once per frame by the landed Run 0x00496CF0 before Output 0x00494900; RELOCATION_MATCH (chunk 791)
+0x00E49020	NScript::CV_BanditTollScript::CTauntingBandit::Main	Ego_r.pdb + FableWin.pdb ?Main@CTauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ; vtable 0x012E4DD4 slot 1; TEXT_QST_011_BANDIT_* literals (already labelled, agrees; parked DIFFER)
+0x00EC32F0	NScript::CV_RandomPopulationSimScript::ChooseRandomBanditFromDefs	Ego_r.pdb + FableWin.pdb ?ChooseRandomBanditFromDefs@CV_RandomPopulationSimScript@NScript@@QAE?AVCCharString@@XZ; calls ChooseRandomBanditGruntString 0x00EC3AD0, CREATURE_BANDIT_* literals, between ChooseRandomGuardFromDefs 0x00EC3230 and its callee (parked DIFFER)
+0x00E91F20	NScript::CV_GuildMasterScript::GetGuildMasterSpeech	Ego_r.pdb + FableWin.pdb ?GetGuildMasterSpeech@CV_GuildMasterScript@NScript@@QAE?AVCCharString@@XZ; TEXT_QST_081_* literals, LastDialogueSaid/GuildMasterDialogue members; RELOCATION_MATCH (chunk 791)
+0x004944C0	CFrontendGameComponent::ClearString	Ego_r.pdb + FableWin.pdb ?ClearString@CFrontendGameComponent@@AAEXXZ; catalog had ClearTextInput (see NAME_FIXES.tsv)
+0x00496EB0	GFWrapLimit<long,int,int>	Ego_r.pdb + FableWin.pdb ??$GFWrapLimit@JHH@@YIXAAJABH1@Z; called twice by Input 0x004963A0 (reference params, __fastcall)
+0x00495830	CFrontendGameComponent::GetSaveNames	Ego_r.pdb + FableWin.pdb static __fastcall (vector<CWideString>&); SetMode 0x00495FE0 passes &SaveNames
+0x004959E0	CFrontendGameComponent::GetProfileNames	Ego_r.pdb + FableWin.pdb static __fastcall (vector<CWideString>&); SetMode 0x00495FE0 passes &ProfileNames
+0x01396DC8	CRenderStateManager::D3DTextureUVModeTable	(proposed) the shared CRenderStateManager.h binds ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA here (vland RELOC_NAME warn on 0x00AB83A0); sibling 0x01396E58 is labelled CRenderStateManager::D3DTextureFilterModeTable from a PDB DATA citation; current label g_textureUVModeToD3D is marked descriptive. Needs a cvdump check of the PDB data symbol before relabelling

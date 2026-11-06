@@ -4204,7 +4204,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00495780	Shutdown	CFrontendGameComponent	__thiscall	void	1	C3DMeshStripifier *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CFrontendGameComponent_ClearProfileResources_00495780.cpp
 00495830	Refresh	CFrontendProfileList	__thiscall	void	1	CEngineLandscapeMap *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CFrontendProfileList_Refresh_00495830.cpp
 00495890	GetWorldNames	CFrontendGameComponent	__thiscall	void	2	CBrushLibraryDialog *,CGuiControlFlatListBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CFrontendGameComponent_PopulateProfiles_00495890.cpp
-004959e0	GetProfileNames	CFrontEndManager	__thiscall	void	2	CFrontEndManager *,vector<CWideString,std::allocator<CWideString>_> *	1	yes	accepted									
+004959e0	GetProfileNames	CFrontendGameComponent	__thiscall	void	2	CFrontEndManager *,vector<CWideString,std::allocator<CWideString>_> *	1	yes	accepted									
 00495fe0	SetMode	CFrontendGameComponent	__thiscall	void	2	CFrontendGameComponent *,EGameMode	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CFrontendGameComponent_SetMode_00495fe0.cpp
 00496070	CFrontendGameComponent	CFrontendGameComponent	__thiscall	undefined	3	CFrontendGameComponent *,CGame *,CFrontendGameComponentInit *	0	yes	accepted									
 004962c0	ChooseProfileNumber	CFrontendGameComponent	__thiscall	void	2	CFrontendGameComponent *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CFrontendGameComponent_ChooseProfileNumber_004962c0.cpp
@@ -33604,7 +33604,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009a1140	GlyphLookup	CStreamingFontBank	__thiscall	CStreamingGlyphLookup *	2	CStreamingFontBank *,ushort	1	yes	accepted									
 009a14e0	GetStringExtents	CStreamingFontBank	__thiscall	C2DExtentsF	3	CStreamingFontBank *,wchar_t *,bool	1	yes	accepted									
 009a1660	UninitializeStreamingFontTextureCache	_global	__fastcall	void	0		1	yes	accepted									
-009a1720	?PrepareToRender@CStreamingFontBank@@UBEX_N@Z	CStreamingFontBank	__thiscall	void	2	CStreamingFontBank *,bool	1	yes	accepted									
+009a1720	PrepareToRender	CStreamingFontBank	__thiscall	void	2	CStreamingFontBank *,bool	1	yes	accepted									
 009a2000	?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	CStreamingFontBank	__thiscall	bool	3	CStreamingFontBank *,CWideString *,bool	1	yes	accepted									
 009a23e0	GFUpdateFontTextureCache	_global	__fastcall	void	0		1	yes	accepted									
 009a25d0	CStreamingFontBank::Render	CStreamingFontBank	__thiscall	void	7	CStreamingFontBank *,CWideString const &,C3DVector const &,float,CRGBColour const &,ulong,CTexture const *	1	yes	accepted									
@@ -39200,7 +39200,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ab7a70	~CStaticFontBank	CStaticFontBank	__thiscall	void	1	CStaticFontBank *	1	yes	accepted									
 00ab7b00	CStaticFontBank::GetStringExtents	CStaticFontBank	__thiscall	C2DExtentsF	3	CStaticFontBank *,wchar_t const *,bool	1	yes	accepted									
 00ab7c20	CStaticFontBank::Render	CStaticFontBank	__thiscall	void	7	CStaticFontBank *,CWideString const &,C3DVector const &,float,CRGBColour const &,ulong,CTexture const *	1	yes	accepted									
-00ab83a0	?PrepareToRender@CStaticFontBank@@UBEX_N@Z	CStaticFontBank	__thiscall	void	2	CStaticFontBank *,bool	1	yes	accepted									
+00ab83a0	PrepareToRender	CStaticFontBank	__thiscall	void	2	CStaticFontBank *,bool	1	yes	accepted									
 00ab8e10	CStaticFontBank	CStaticFontBank	__thiscall	undefined	3	CStaticFontBank *,CFontDataBank *,ulong	0	yes	accepted									
 00ab96b0	Read	CGlyph	__thiscall	void	2	CGlyph *,CDataInputStream *	1	yes	accepted									
 00ab9940	MakeRenderKey_00ab9940	_global	__thiscall	bool	2	CEngineInternalPrimitive2DStaticMesh *,CMatrix3x4 *	1	yes	accepted									
@@ -53186,7 +53186,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e90b90	`scalar deleting destructor'	CSpawnedFunc<NScript::CV_GuildMasterScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e9\CLandscapeBackgroundPatch_vectordeletingdestructor_00e90b90.cpp
 00e90bb0	`scalar deleting destructor'	CActiveEntityScript<NScript::CV_GuildMasterScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e9\CThingSwitch_vectordeletingdestructor_00e90bb0.cpp
 00e90be0	Main	NScript::CV_GuildMasterScript::CGuildMasterGameFlow	unknown	undefined	0		0			discovered	gapscan							
-00e91f20	GetGuildMasterSpeech	CV_GuildMasterScript	__thiscall	CCharString	1	CV_GuildMasterScript *	1	yes	accepted									
+00e91f20	GetGuildMasterSpeech	NScript::CV_GuildMasterScript	__thiscall	CCharString	1	CV_GuildMasterScript *	1	yes	accepted									
 00e92900	Alloc	NScript::CV_GuildMasterScript	__thiscall	CActionEventBase *	4	CActionEventRemoveObject *,long,CThingCreatureBase *,CGameCameraManager *	1	yes	accepted									
 00e92940	`scalar deleting destructor'	NScript::CV_GuildMasterScript	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e9\CEngineSubPrimitiveText_scalardeletingdestructor_00e92940.cpp
 00e92970	CV_HiddenBootyScript	NScript::CV_HiddenBootyScript	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									
@@ -53701,7 +53701,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ec3130	ChooseRandomVillagerFromDefs	NScript::CV_RandomPopulationSimScript	__thiscall	CCharString	1	CV_RandomPopulationSimScript *	1	yes	accepted									
 00ec3230	ChooseRandomGuardFromDefs	NScript::CV_RandomPopulationSimScript	__thiscall	undefined	1	COpinionSourceDef *	0	yes	accepted									
 00ec3270	GetCurrentPopulationLevel	CV_RandomPopulationSimScript	__thiscall	long	2	CV_RandomPopulationSimScript *,POPULATION_TYPES	1	yes	accepted									
-00ec32f0	ChooseRandomBanditFromDefs	CV_RandomPopulationSimScript	__thiscall	CCharString	1	CV_RandomPopulationSimScript *	1	yes	accepted									
+00ec32f0	ChooseRandomBanditFromDefs	NScript::CV_RandomPopulationSimScript	__thiscall	CCharString	1	CV_RandomPopulationSimScript *	1	yes	accepted									
 00ec3ad0	ChooseRandomBanditGruntString	NScript::CV_RandomPopulationSimScript	__thiscall	CCharString	2	CV_RandomPopulationSimScript *,long	1	yes	accepted									
 00ec3bc0	Alloc	NScript::CV_RandomPopulationSimScript	__thiscall	CActionEventBase *	4	CActionEventShot *,long,CThingCreatureBase *,CGameCameraManager *	1	yes	accepted									
 00ec3c00	`scalar deleting destructor'	NScript::CV_RandomPopulationSimScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ec\CLandscapeBackgroundPatch_vectordeletingdestructor_00ec3c00.cpp

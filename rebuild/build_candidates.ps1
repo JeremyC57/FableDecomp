@@ -384490,6 +384490,34 @@ $catalog = @(
         TestSource = '00/ee/NScriptCExpressionFishScript_Main_00ee95c0_test.cpp'
         PassPattern = '00ee95c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004963a0'
+        Module = 'CFrontendGameComponent'
+        Source = '00/49/CFrontendGameComponent_Input_004963a0.cpp'
+        TestSource = '00/49/CFrontendGameComponent_Input_004963a0_test.cpp'
+        PassPattern = '004963a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a1720'
+        Module = 'CStreamingFontBank'
+        Source = '00/9a/CStreamingFontBank_PrepareToRender_009a1720.cpp'
+        TestSource = '00/9a/CStreamingFontBank_PrepareToRender_009a1720_test.cpp'
+        PassPattern = '009a1720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab83a0'
+        Module = 'CStaticFontBank'
+        Source = '00/ab/CStaticFontBank_PrepareToRender_00ab83a0.cpp'
+        TestSource = '00/ab/CStaticFontBank_PrepareToRender_00ab83a0_test.cpp'
+        PassPattern = '00ab83a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e91f20'
+        Module = 'NScript::CV_GuildMasterScript'
+        Source = '00/e9/NScriptCVGuildMasterScript_GetGuildMasterSpeech_00e91f20.cpp'
+        TestSource = '00/e9/NScriptCVGuildMasterScript_GetGuildMasterSpeech_00e91f20_test.cpp'
+        PassPattern = '00e91f20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
