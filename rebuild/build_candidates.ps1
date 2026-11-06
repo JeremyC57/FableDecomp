@@ -384448,6 +384448,20 @@ $catalog = @(
         TestSource = '00/f0/NScriptCQAmbushTradersScript_Main_00f024c0_test.cpp'
         PassPattern = '00f024c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e776f0'
+        Module = 'NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager'
+        Source = '00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_Main_00e776f0.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_Main_00e776f0_test.cpp'
+        PassPattern = '00e776f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb8900'
+        Module = 'NScript::CV_MayorsInvitationScript::CMI_InfoKeeper'
+        Source = '00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_Main_00eb8900.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_Main_00eb8900_test.cpp'
+        PassPattern = '00eb8900_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

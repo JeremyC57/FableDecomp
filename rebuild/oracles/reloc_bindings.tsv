@@ -37065,3 +37065,4 @@ _New_c35b10@8	00c35b10	00c275e0
 ?WatchForRegionChange@CQ_AmbushTradersScript@NScript@@QAEXXZ	00f058d0	00f024c0
 ?WatchForRegionClear@CQ_AmbushTradersScript@NScript@@QAEXXZ	00f09cd0	00f024c0
 ?WatchForSpySpeechTimer@CQ_AmbushTradersScript@NScript@@QAEXXZ	00f036c0	00f024c0
+?PlayCutscene@CV_ExposeMayorScript@NScript@@QAEXVCCharString@@_N0@Z	00e78100	00e776f0

@@ -1,0 +1,7 @@
+address	module	name	length
+00d7fe90	NScript::CQ_HeroSoulsArenaScript	WatchForRoundsInArena	3148
+00dea3f0	NScript::CQ_RansomVictimScript::CVictimsBrother	Main	3076
+00cfe030	NScript::CQ_AwakeningTheOracleScript::COracleTablet	Main	3575
+00d82640	NScript::CQ_HeroSoulsBriarScript::CBriarRose	Main	3260
+00e776f0	NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager	Main	2564
+00eb8900	NScript::CV_MayorsInvitationScript::CMI_InfoKeeper	Main	2964

@@ -63,8 +63,35 @@ public:
     class CFinalSummoner;                                                // Alloc 0x00CFDCA0
     class CPretendGuard;                                                 // Alloc 0x00CFCBD0
 };
+#ifdef FABLE_RETAIL_CQ_AWAKENINGTHEORACLESCRIPT_CORACLETABLET
+// Retail opt-in (chunk 789): the nested entity script COracleTablet (Ego_r.pdb, 0x20: ParentClass +0x14, PMasterData +0x18,
+// AlreadyDugHere +0x1c, struct_layouts_egor.tsv; retail Main 0x00CFE030 reads [this+0x14] / [this+0x18] and writes [this+0x1c]).
+// Methods: Ego_r.pdb ?Main@COracleTablet@...@EAEXXZ (vtable slot 1, 0x00CFE030), ?OnPersist@...@EAEXAAVCPersistContext@@@Z
+// (0x00CFDFD0), ?RemoveCursedTablets@...@AAEXXZ (private, 0x00CFEE30, called by Main), ?Alloc@...@SI... (0x00CFBB20);
+// Init 0x00CFBBD0 / GetParentScript 0x00CFBBC0 are the anniversary-wave labels.
+class CQ_AwakeningTheOracleScript::COracleTablet : public CEntityScriptBase {
+public:
+    typedef CQ_AwakeningTheOracleScript TParentClass;
+    COracleTablet(CQ_AwakeningTheOracleScript&, CScriptDataBase*, const CScriptThing&);
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_AwakeningTheOracleScript&, CScriptDataBase*, const CScriptThing&); // 0x00CFBB20
+    virtual CScriptBase* GetParentScript() const;                        // 0x00CFBBC0
+    CQ_SunnyvaleMasterData* GetMasterData();
+protected:
+    CQ_AwakeningTheOracleScript& ParentClass;                            // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    bool AlreadyDugHere;                                                 // +0x1c
+    virtual void Init();                                                 // 0x00CFBBD0
+    virtual void OnPersist(CPersistContext&);                            // 0x00CFDFD0
+    virtual void Main();                                                 // 0x00CFE030
+    void RemoveCursedTablets();                                          // 0x00CFEE30
+};
+#endif
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AwakeningTheOracleScript) == 0x98);
+#ifdef FABLE_RETAIL_CQ_AWAKENINGTHEORACLESCRIPT_CORACLETABLET
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AwakeningTheOracleScript::COracleTablet) == 0x20);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_AWAKENINGTHEORACLESCRIPT_H

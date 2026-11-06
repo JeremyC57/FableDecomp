@@ -70,13 +70,13 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Landed byte-matching C++ (genuine) | **46,928 · 94.68%** |
-| Retail function bytes reproduced | **5,947,194 · 58.32%** |
+| Landed byte-matching C++ (genuine) | **46,930 · 94.68%** |
+| Retail function bytes reproduced | **5,952,722 · 58.37%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
 Landed byte-matching C++ covers **94.68%** of the 49,567-function catalog by count
-and **58.32%** of retail function bytes: the functions still to do are the large ones.
+and **58.37%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,10 +93,10 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **54,568** |
-| Reconstruction | Landed byte-matching genuine C++, original catalog | **46,928** (94.68%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,612 known functions | 54,567 (94.71%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,947,194 (58.32%) |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **54,570** |
+| Reconstruction | Landed byte-matching genuine C++, original catalog | **46,930** (94.68%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,612 known functions | 54,569 (94.72%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,952,722 (58.37%) |
 | Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 211 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 441 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |

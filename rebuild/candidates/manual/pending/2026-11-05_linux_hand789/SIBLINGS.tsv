@@ -1,0 +1,2 @@
+address	source	grade_with_final_overlay	note
+00CFB080	rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScript_Main_00cfb080.cpp	RELOCATION_MATCH (0 difflines)	only includer of engine/CQ_AwakeningTheOracleScript.h; the overlay adds an opt-in block only (FABLE_RETAIL_CQ_AWAKENINGTHEORACLESCRIPT_CORACLETABLET), default path unchanged

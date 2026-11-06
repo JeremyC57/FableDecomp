@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00e776f0   RELOCATION_MATCH PASS   Main
+00eb8900   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00e776f0 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager::?Main@CEM_SuspiciousVillager@CV_ExposeMayorScript@NScript@@EAEXXZ
+  00eb8900 RELOCATION_MATCH NScript::CV_MayorsInvitationScript::CMI_InfoKeeper::?Main@CMI_InfoKeeper@CV_MayorsInvitationScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCVExposeMayorScriptCEMSuspiciousVillager_Main_00e776f0
+  NScriptCVMayorsInvitationScriptCMIInfoKeeper_Main_00eb8900
