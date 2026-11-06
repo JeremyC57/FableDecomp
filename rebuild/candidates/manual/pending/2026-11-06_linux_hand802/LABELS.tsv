@@ -1,0 +1,16 @@
+address	Class::Name	evidence
+008eacb0	NCreatureMode::CModeHoverBase::OnActivate	landed row RELOCATION_MATCH; Ego_r.pdb ?OnActivate@CModeHoverBase@NCreatureMode@@UAEXXZ; CModeHoverBase vtable slot
+007abbd0	CTCAIScratchpad::OnSerialise	landed row RELOCATION_MATCH; Ego_r.pdb ?OnSerialise@CTCAIScratchpad@@MAEXAAVCPersistContext@@_N@Z (donor 0x0054BB30 after the ctor); vtable 0x0126D07C slot 1 (catalog vfunc_1 is a placeholder)
+00684610	CTCCreatureOpinionOfHero::OnSerialise	only reference is slot 1 of vtable 0x0125BC3C (RTTI .?AVCTCCreatureOpinionOfHero@@); Ego_r.pdb ?OnSerialise@CTCCreatureOpinionOfHero@@UAEXAAVCPersistContext@@_N@Z (donor 0x00592120); catalog COpinionReactionManager::TransferOpinionData is propagated
+00681ba0	CTCCreatureOpinionOfHero::SerialiseFlagMask	Ego_r.pdb private member (donor 0x0058FBD0); three calls from 0x00684610 with the mask names
+0066cf00	CRegionMinimap::PopulateRegionMinimap	Ego_r.pdb ?PopulateRegionMinimap@CRegionMinimap@@QAEXABVCWorldMap@@@Z (donor 0x006A1B80); called by CreateRegionMinimap 0x0066DC50
+0066c900	CRegionMinimap::IlluminateRegionMinimapTheme	Ego_r.pdb ?IlluminateRegionMinimapTheme@CRegionMinimap@@QBEMABVCWorldMap@@ABVC3DVector@@@Z; engine_api.tsv 0x0066C900 (this, CWorldMap*, C3DVector*) returning float
+0066c560	C2DBoxF::ClipTo	Ego_r/FableWin ?ClipTo@C2DBoxF@@QAEXABV1@@Z; 0x0066CF00 calls it on a float box with the region float box
+00974aa0	CAIStateGroup_JackOfBladesStage2::Update	Ego_r.pdb ?Update@CAIStateGroup_JackOfBladesStage2@@UAEXXZ (donor 0x00999CF0); strings JACK_BATTLE_PHASE_2_MINIONS_FAMILY / TEXT_QST_039_JACK_BOSS_FINAL_TAUNT_*
+00971b00	CAIStateGroup_JackOfBladesBase::IsStillRunnable	Ego_r.pdb ?IsStillRunnable@CAIStateGroup_JackOfBladesBase@@IAE_NXZ; landed row 0x00971B00
+00973900	CAIStateGroup_JackOfBladesBase::SummonPillarsOld	Ego_r.pdb ?SummonPillarsOld@..@@IAEXXZ; called from 0x00974AA0 when Pillars is empty
+00973dc0	CAIStateGroup_JackOfBladesBase::SummonPillars	Ego_r.pdb ?SummonPillars@..@@IAEXXZ; called when Pillars is not empty
+00974110	CAIStateGroup_JackOfBladesBase::Summon	Ego_r.pdb ?Summon@CAIStateGroup_JackOfBladesBase@@IAEXJ_N@Z; called with (minion family index, false)
+0062e900	CCombatActionBase::~CCombatActionBase	see NAME_FIXES.tsv
+0073a680	CTCCreatureModeManager::CModeBase::GetWorld	Ego_r.pdb ?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ; called on the mode this from 0x008EACB0 (vland RELOC_NAME: catalog label GetGlobal_013b8a1c_deref0x24_0073a680)
+0070c050	CAnimInit::Init	Ego_r.pdb ?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z (and the inline ctor ??0CAnimInit@@QAE@EKJW4EAnimUpdateMode@@_NKJ@Z); 7 args as pushed by 0x008EACB0; the catalog label CAnimInit::Init is right

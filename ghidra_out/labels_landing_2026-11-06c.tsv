@@ -1,0 +1,10 @@
+address	name	evidence
+008eacb0	NCreatureMode::CModeHoverBase::OnActivate	landing 2026-11-06c (chunk 802): landed row RELOCATION_MATCH; Ego_r.pdb ?OnActivate@CModeHoverBase@NCreatureMode@@UAEXXZ; CModeHoverBase vtable slot
+007abbd0	CTCAIScratchpad::OnSerialise	landing 2026-11-06c (chunk 802): landed row RELOCATION_MATCH; Ego_r.pdb ?OnSerialise@CTCAIScratchpad@@MAEXAAVCPersistContext@@_N@Z (donor 0x0054BB30 after the ctor); vtable 0x0126D07C slot 1 (catalog vfunc_1 is a placeholder)
+00684610	CTCCreatureOpinionOfHero::OnSerialise	landing 2026-11-06c (chunk 802): only reference is slot 1 of vtable 0x0125BC3C (RTTI .?AVCTCCreatureOpinionOfHero@@); Ego_r.pdb ?OnSerialise@CTCCreatureOpinionOfHero@@UAEXAAVCPersistContext@@_N@Z (donor 0x00592120); catalog COpinionReactionManager::TransferOpinionData is propagated
+0066cf00	CRegionMinimap::PopulateRegionMinimap	landing 2026-11-06c (chunk 802): Ego_r.pdb ?PopulateRegionMinimap@CRegionMinimap@@QAEXABVCWorldMap@@@Z (donor 0x006A1B80); called by CreateRegionMinimap 0x0066DC50
+0066c900	CRegionMinimap::IlluminateRegionMinimapTheme	landing 2026-11-06c (chunk 802): Ego_r.pdb ?IlluminateRegionMinimapTheme@CRegionMinimap@@QBEMABVCWorldMap@@ABVC3DVector@@@Z; engine_api.tsv 0x0066C900 (this, CWorldMap*, C3DVector*) returning float
+00974aa0	CAIStateGroup_JackOfBladesStage2::Update	landing 2026-11-06c (chunk 802): Ego_r.pdb ?Update@CAIStateGroup_JackOfBladesStage2@@UAEXXZ (donor 0x00999CF0); strings JACK_BATTLE_PHASE_2_MINIONS_FAMILY / TEXT_QST_039_JACK_BOSS_FINAL_TAUNT_*
+00973900	CAIStateGroup_JackOfBladesBase::SummonPillarsOld	landing 2026-11-06c (chunk 802): Ego_r.pdb ?SummonPillarsOld@..@@IAEXXZ; called from 0x00974AA0 when Pillars is empty
+00973dc0	CAIStateGroup_JackOfBladesBase::SummonPillars	landing 2026-11-06c (chunk 802): Ego_r.pdb ?SummonPillars@..@@IAEXXZ; called when Pillars is not empty
+00974110	CAIStateGroup_JackOfBladesBase::Summon	landing 2026-11-06c (chunk 802): Ego_r.pdb ?Summon@CAIStateGroup_JackOfBladesBase@@IAEXJ_N@Z; called with (minion family index, false)

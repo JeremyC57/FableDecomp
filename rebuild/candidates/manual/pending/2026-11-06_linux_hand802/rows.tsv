@@ -1,0 +1,7 @@
+address	module	name	length
+008eacb0	NCreatureMode::CModeHoverBase	OnActivate	2548
+00563920	CTCHeroOnlineScoreboard	DisplayScoreboardGUI	3143
+00974aa0	CAIStateGroup_JackOfBladesStage2	Update	3080
+00684610	COpinionReactionManager	TransferOpinionData	2823
+007abbd0	CTCAIScratchpad	vfunc_1	2828
+0066cf00	CRegionMinimap	PopulateRegionMinimap	3248

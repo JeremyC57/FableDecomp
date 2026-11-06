@@ -1,0 +1,5 @@
+manifest 00684610 COpinionReactionManager::COpinionReactionManager::TransferOpinionData -> CTCCreatureOpinionOfHero::OnSerialise
+manifest 007abbd0 CTCAIScratchpad::CTCAIScratchpad::vfunc_1 -> CTCAIScratchpad::OnSerialise
+manifest 008eacb0 CModeHoverBase::OnActivate -> NCreatureMode::CModeHoverBase::OnActivate
+manifest 00974aa0 CAIStateGroup_JackOfBladesStage2::CAIStateGroup_JackOfBladesStage2::Update -> CAIStateGroup_JackOfBladesStage2::Update
+labels 9  catalog renamed 0  manifest renamed 4

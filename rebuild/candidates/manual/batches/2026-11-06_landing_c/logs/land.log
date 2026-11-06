@@ -1,0 +1,13 @@
+addr       parity           behav  name
+007abbd0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+007abbd0   RELOCATION_MATCH PASS   OnSerialise
+008eacb0   WARN RELOC_NAME: ?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+008eacb0   RELOCATION_MATCH PASS   OnActivate
+
+WINS: 2
+  007abbd0 RELOCATION_MATCH CTCAIScratchpad::?OnSerialise@CTCAIScratchpad@@MAEXAAVCPersistContext@@_N@Z
+  008eacb0 RELOCATION_MATCH NCreatureMode::CModeHoverBase::?OnActivate@CModeHoverBase@NCreatureMode@@UAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCAIScratchpad_OnSerialise_007abbd0
+  NCreatureModeCModeHoverBase_OnActivate_008eacb0

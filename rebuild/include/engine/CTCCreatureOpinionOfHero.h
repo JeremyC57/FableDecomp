@@ -34,6 +34,28 @@ class COpinionOfHeroDef;
 class COpinionPersonalityDef;
 class COpinionDeedEffectsDef;
 enum EOpinionAttitudeType;                                               // MS forward enum (the row defines the enumerators it uses)
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_SERIALISE
+#include "engine/CArray.h"
+enum EOpinion;                                                           // MS forward enum
+// Ego_r.pdb COpinionTransientOffset (24 bytes: Opinion +0, OffsetPerFrameRunIn +4, FramesToRunIn +8, FramesOfCappedPeak +0xc,
+// OffsetPerFrameRunOut +0x10, FramesToRunOut +0x14) and COpinionSet (CArray<float> OpinionValues +0; retail 12 bytes). Chunk 802 opt-in.
+class COpinionTransientOffset {
+public:
+    // ??0COpinionTransientOffset@@QAE@XZ (Ego_r / FableWin), inline in retail: the stores run Opinion, the run-in pair, the run-out pair,
+    // then FramesOfCappedPeak (0x00684F5E..0x00684F7A).
+    COpinionTransientOffset() { Opinion = (EOpinion)0; OffsetPerFrameRunIn = 0.0f; FramesToRunIn = 0; OffsetPerFrameRunOut = 0.0f; FramesToRunOut = 0; FramesOfCappedPeak = 0; }
+    EOpinion Opinion;
+    float OffsetPerFrameRunIn;
+    long FramesToRunIn;
+    long FramesOfCappedPeak;
+    float OffsetPerFrameRunOut;
+    long FramesToRunOut;
+};
+class COpinionSet {
+public:
+    CArray<float> OpinionValues;
+};
+#endif
 
 class CTCCreatureOpinionOfHero : public CTCBase {
 public:
@@ -80,10 +102,22 @@ public:
     long                                      FrameToDecayNumberOfTimesHit;  // +0x18
     CDefPointer<const COpinionOfHeroDef>      PDef;                          // +0x1c
     CDefPointer<const COpinionPersonalityDef> PPersonalityDef;               // +0x20
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_SERIALISE
+    // Nested opt-in (chunk 802, row 0x00684610 OnSerialise; needs FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDS and FABLE_RETAIL_STLP_LIST):
+    // the masks, the opinion set and the transient offsets typed at the same retail offsets (Ego_r.pdb member types: vector<bool> x3,
+    // COpinionSet {CArray<float> OpinionValues}, list<COpinionTransientOffset>; STLport 4.6 has no vector<bool> bit specialisation in
+    // the retail model, 12 bytes each), and the private ?SerialiseFlagMask@CTCCreatureOpinionOfHero@@AAEXAAVCPersistContext@@ABVCCharString@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z
+    // (Ego_r.pdb; out of line in retail at 0x00681BA0, called three times by OnSerialise with ecx = this).
+    std::vector<bool>    AttitudeMask;           // +0x24
+    std::vector<bool>    ReactionMask;           // +0x30
+    std::vector<bool>    DeedMask;               // +0x3c
+    COpinionSet          RelativeOpinion;        // +0x48
+#else
     unsigned long        AttitudeMask_[3];       // +0x24 std::vector<bool> AttitudeMask (retail: 12-byte byte vector)
     unsigned long        ReactionMask_[3];       // +0x30 std::vector<bool> ReactionMask
     unsigned long        DeedMask_[3];           // +0x3c std::vector<bool> DeedMask
     unsigned long        RelativeOpinion_[3];    // +0x48 COpinionSet RelativeOpinion (CArray<float> OpinionValues)
+#endif
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDS
     // Nested opt-in (chunk 760, row 0x00683B00 ClearPendingDeeds): the deed lists typed (STLport list<long>, 4 bytes each; the
     // retail list members below need FABLE_RETAIL_STLP_LIST); ?ClearPendingDeeds@CTCCreatureOpinionOfHero@@QAEXXZ (Ego_r.pdb).
@@ -96,7 +130,11 @@ public:
     long                 LastFrameAppliedDeedEffect[92];   // +0x58
     unsigned long        KnownDeeds_[92];        // +0x1c8 std::list<long> KnownDeeds[92]
 #endif
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_SERIALISE
+    std::list<COpinionTransientOffset> TransientOffsets;   // +0x338
+#else
     unsigned long        TransientOffsets_[1];   // +0x338 std::list<COpinionTransientOffset> TransientOffsets
+#endif
     EOpinionAttitudeType ForcedAttitude;         // +0x33c
     bool                 InteractedFlag;         // +0x340
     bool                 GreetedFlag;            // +0x341
@@ -104,6 +142,10 @@ public:
     bool                 InFindAGuardAndYellForHelp;   // +0x343
     unsigned long        PUnknownThreatOpinionSource_[2];   // +0x344 CIntelligentPointer<CThing> PUnknownThreatOpinionSource
     long                 FrameLastUpdatedUnknownThreat;     // +0x34c
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_SERIALISE
+private:
+    void SerialiseFlagMask(CPersistContext& context, const CCharString& name, std::vector<bool>& mask);   // 0x00681BA0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCCreatureOpinionOfHero) == 0x350);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureOpinionOfHero, LastOpinionReactionFrame) == 0xc);

@@ -384687,6 +384687,20 @@ $catalog = @(
         TestSource = '00/7b/CTCFishing_FrameUpdate_007b0cd0_test.cpp'
         PassPattern = '007b0cd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007abbd0'
+        Module = 'CTCAIScratchpad'
+        Source = '00/7a/CTCAIScratchpad_OnSerialise_007abbd0.cpp'
+        TestSource = '00/7a/CTCAIScratchpad_OnSerialise_007abbd0_test.cpp'
+        PassPattern = '007abbd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008eacb0'
+        Module = 'NCreatureMode::CModeHoverBase'
+        Source = '00/8e/NCreatureModeCModeHoverBase_OnActivate_008eacb0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeHoverBase_OnActivate_008eacb0_test.cpp'
+        PassPattern = '008eacb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

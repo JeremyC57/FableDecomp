@@ -6,6 +6,11 @@ class C2DBoxF { public: float TLX,TLY,BRX,BRY; C2DBoxF() {}
  // Retail opt-in (movie row 0x006286F0): FableWin.pdb ??0C2DBoxF@@QAE@MMMM@Z (debug only: inline in release; 0x006286F0
  // builds C2DBoxF(0, 0, VIRTUAL_SCREEN_WIDTH, VIRTUAL_SCREEN_HEIGHT) on the stack, four stores, no call).
  C2DBoxF(float tlx,float tly,float brx,float bry):TLX(tlx),TLY(tly),BRX(brx),BRY(bry){}
+#ifdef FABLE_RETAIL_C2DBOXF_CLIPTO
+ // Retail opt-in (chunk 802, row 0x0066CF00 CRegionMinimap::PopulateRegionMinimap): Ego_r.pdb / FableWin.pdb ?ClipTo@C2DBoxF@@QAEXABV1@@Z
+ // (Ego_r 0x006A11F0), out of line in retail at 0x0066C560 (the caller passes the region box by address, `this` the building box).
+ void ClipTo(const C2DBoxF& other);                                     // 0x0066C560
+#endif
 #ifdef FABLE_RETAIL_C2DBOXF_CORNERS
  // Chunk 749 (row 0x005502E0 NUISystem::CMesh::Draw): FableWin.pdb ??0C2DBoxF@@QAE@ABVC2DVector@@0@Z (top-left, bottom-right;
  // inline in retail).

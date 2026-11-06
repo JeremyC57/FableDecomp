@@ -33,6 +33,14 @@ public:
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE
     void UnregisterComponent(CAGraphicAppearanceComponent& component);   // 0x004C0000
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SCALE
+    // Nested opt-in (chunk 802, row 0x00974AA0 CAIStateGroup_JackOfBladesStage2::Update): Ego_r.pdb
+    // ?GetScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ (inline in retail: `fld dword ptr [eax+34h]`, Scale at retail +0x34, as
+    // the LIGHTINGCHANNEL note above) and ?SetScale@..@@QAEXM@Z (out of line at 0x004BFA50). The layout stays opaque: GetScale reads
+    // the +0x34 word in place. No layout change.
+    float GetScale() const { return *reinterpret_cast<const float*>(reinterpret_cast<const unsigned char*>(this) + 0x34); }
+    void SetScale(float scale);                              // 0x004BFA50
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_SETALPHA
     // Nested opt-in (chunk 768, row 0x0089DA70 CGameScriptInterface::EntitySetAlpha): Ego_r.pdb / FableWin.pdb
     // ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z (the bound spelling at 0x004BFAC0). Declaration only.

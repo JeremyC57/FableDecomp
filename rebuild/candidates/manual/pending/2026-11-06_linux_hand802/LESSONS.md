@@ -1,0 +1,9 @@
+- A serialise loop whose index is shared by save and load wants ONE `long num` at the outer scope (per-block locals reverse the frame order): 0x007ABBD0.
+- `for (...; ++it, ++i)` (increment in the for header) not `++i` in the body: VC7.1 colours i differently and moves the ++ before the key dtor (0x007ABBD0).
+- GetDefaultVal<CCharString> written as `{ CCharString value; return value; }` gives retail's local-copy-plus-dtor shape for the inline 2-arg Transfer.
+- A same-TU `__declspec(noinline)` GetSubDef<T> body (0x0079ACC0 model) fixes the caller's register choice and the CDefPointer release shape even though the callee is out of line: 0x008EACB0.
+- Angles stored as turn fractions compile to retail's constants when written `N.0f / 360.0f` (0x008EACB0 hover sectors).
+- GetWorldCoordinatesFromTGAPosition written as `world = C3DVector(...)` builds a temporary and copies it; member stores go straight into the caller's vector (0x0066CF00, 754 -> 734).
+- A minimap loop over one `C2DCoordI position` (`for (position.Y = 0; ...)`) gives retail's adjacent x/y frame words; separate x/y locals plus a per-cell C2DCoordI add a copy (0x0066CF00, 734 -> 671).
+- AIAction_PerformActionAndWait(CCreatureAction_X(...), wait): the wait bool is pushed BEFORE the action ctor's arguments, so a ctor looks one argument longer than the PDB in the listing -- count from the PDB (0x00974AA0).
+- A bound spelling is not proof: 0x0070C050 carried two invented `CAnimInit::Set` bindings while Ego_r.pdb has only `?Init@CAnimInit@@QAEXEKJW4EAnimUpdateMode@@_NKJ@Z`; vland's RELOC_NAME warning (catalog label Init) caught it.

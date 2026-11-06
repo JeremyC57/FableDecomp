@@ -16,6 +16,12 @@ struct IDirect3DTexture9;
 // methods that read them: GetRegionMapExtents (C2DCoordI&, C2DExtentsI&) const 0x0066C6A0 / (C2DCoordI&, C2DCoordI&) const
 // 0x0066C6D0 (both inline here: same TU as their callers) and InitialiseRegionBox 0x0066C7B0.
 #include "engine/C2DBoxI.h"
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_POPULATE
+class CWorldMap; class CGameDefinitionManager;
+#include "engine/C2DCoordI.h"
+#include "engine/C3DVector.h"
+#include "engine/CMainGameComponent.h"
+#endif
 #pragma pack(push, 1)
 class CRegionMinimap {
 public:
@@ -25,6 +31,44 @@ public:
         extents = RegionMapBox.GetExtents();
     }
     void InitialiseRegionBox();
+#ifdef FABLE_RETAIL_CREGIONMINIMAP_POPULATE
+    // Nested opt-in (chunk 802, row 0x0066CF00 PopulateRegionMinimap): the Ego_r.pdb CRegionMinimap members that row uses.
+    // RegionMinimapTheme is the PDB's nested enum (pdb_class_keys W4, ?SetRegionMinimapThemeValue@..W4RegionMinimapTheme@1@@Z);
+    // its enumerators are in neither PDB name list, so values are written as casts. RegionMinimapCellData is the PDB's nested
+    // struct (eTheme +0, light +4, 8 bytes). The cell list stays the opaque 12-byte word triple below (STLport vector: first
+    // pointer at +0x48), read through CellAt. Inline in retail (no out-of-line copy is called): GetRegionMinimapSize,
+    // GetTGAPositionFromWorldCoordinates, GetWorldCoordinatesFromTGAPosition, SetRegionMinimapThemeValue / Lighting and
+    // PeekDefinitionManager (reads CMainGameComponent::PMainGameComponent 0x013B86A0, calls the jmp thunk 0x00415FBC).
+    // Needs engine/C2DCoordI.h, engine/C3DVector.h, FABLE_RETAIL_CMAINGAMECOMPONENT (engine/CMainGameComponent.h) at use.
+    enum RegionMinimapTheme { };
+    struct RegionMinimapCellData { RegionMinimapTheme eTheme; float light; };
+    long GetRegionMinimapSize() const { return RegionMinimapSize; }
+    RegionMinimapCellData& CellAt(const C2DCoordI& position)
+    {
+        return (*reinterpret_cast<RegionMinimapCellData* const*>(RegionMinimapCellList))[RegionMinimapSize * position.Y + position.X];
+    }
+    void SetRegionMinimapThemeValue(const C2DCoordI& position, RegionMinimapTheme theme) { CellAt(position).eTheme = theme; }
+    void SetRegionMinimapThemeLighting(const C2DCoordI& position, float light) { CellAt(position).light = light; }
+    void GetWorldCoordinatesFromTGAPosition(C3DVector& world, const C2DCoordI& tga) const
+    {
+        C2DCoordI topLeft = RegionMapBox.GetTLPos();
+        long size = RegionMinimapSize;
+        C2DExtentsI squareSize = RegionMapSquare.GetExtents();
+        world.X = topLeft.X + (float)tga.X / (float)size * squareSize.X;
+        world.Y = topLeft.Y + (float)tga.Y / (float)size * RegionMapSquare.GetExtents().Y;
+        world.Z = 0.0f;
+    }
+    void GetTGAPositionFromWorldCoordinates(const C3DVector& world, C2DCoordI& tga) const
+    {
+        C2DCoordI topLeft = RegionMapBox.GetTLPos();
+        long size = RegionMinimapSize;
+        tga.X = (long)((world.X - topLeft.X) / RegionMapSquare.GetExtents().X * size);
+        tga.Y = (long)((world.Y - topLeft.Y) / RegionMapSquare.GetExtents().Y * size);
+    }
+    const CGameDefinitionManager& PeekDefinitionManager() const { return CMainGameComponent::Get()->PeekDefinitionManager(); }
+    float IlluminateRegionMinimapTheme(const CWorldMap& worldMap, const C3DVector& position) const;   // 0x0066C900
+    void PopulateRegionMinimap(const CWorldMap& worldMap);                                             // 0x0066CF00
+#endif
     long          RegionMinimapSize;                         // +0x00
     C2DBoxI       RegionMapBox;                              // +0x04
     C2DBoxI       RegionMapSquare;                           // +0x14

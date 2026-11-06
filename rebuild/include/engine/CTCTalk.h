@@ -22,6 +22,12 @@ public:
     // nested result enum's enumerator names are descriptive (the landed callers' spellings): 0 started, 1 failed for good.
     enum ESpeechPlaybackResult { SPEECH_PLAYBACK_STARTED, SPEECH_PLAYBACK_FAILED_FINAL, SPEECH_PLAYBACK_FAILED_RETRY };
     ESpeechPlaybackResult PlayAISpeech(unsigned long textGroup, bool, NSpeechGainManager::EDialogueLayer layer, bool, bool);   // 0x006E3B60
+#ifdef FABLE_RETAIL_CTCTALK_AISPEECHTEXT
+    // Nested opt-in (chunk 802, row 0x00974AA0 CAIStateGroup_JackOfBladesStage2::Update): Ego_r.pdb
+    // ?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@_NW4EDialogueLayer@NSpeechGainManager@@11@Z, the text-symbol
+    // overload, out of line in retail at 0x006E3B30 (the caller pushes 1, 0, 0, 1 and the CCharString address). Declaration only.
+    ESpeechPlaybackResult PlayAISpeech(const CCharString& text, bool, NSpeechGainManager::EDialogueLayer layer, bool, bool);   // 0x006E3B30
+#endif
 #endif
     void StopCurrentSpeech();
 #ifdef FABLE_RETAIL_CTCTALK

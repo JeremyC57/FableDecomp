@@ -27456,3 +27456,9 @@ chunk	address	module	name	length
 803	00ed5f50	NScript::CV_SwordInTheStoneScript	sub_00ed5f50	5024
 803	00ddf090	NScript::CQ_PrisonWardenGameScript	sub_00ddf090	4599
 803	00f1b9c0	NScript::CQ_ArenaScript::CArenaCellExitGuard	Main	4198
+804	00cf18d0	NScript::CQ_ArenaHoldingScriptScript::COakvaleFan	Main	4539
+804	00cf2b70	NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan	Main	4298
+804	00cf3d20	NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan	Main	4298
+804	00ed17d0	NScript::CV_SingingStonesScript::CManWithDoorName	Main	4279
+804	00dc4d70	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan	Main	4319
+804	00d8abf0	NScript::CQ_HerosOldHouseScript	sub_00d8abf0	4306

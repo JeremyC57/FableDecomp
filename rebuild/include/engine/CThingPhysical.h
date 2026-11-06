@@ -29,6 +29,12 @@ public:
     bool IsToRespondToHits() const { return RespondToHits; }
     bool IsKillable() const { return Killable; }
     bool IsDamageable() const { return Damageable; }
+#ifdef FABLE_RETAIL_CTHINGPHYSICAL_HITSETTERS
+    // Nested opt-in (chunk 802, row 0x00974AA0): FableWin.pdb ?SetAsDamageable@CThingPhysical@@QAEX_N@Z and
+    // ?SetAsRespondToHits@CThingPhysical@@QAEX_N@Z, inline in retail (`and byte ptr [thing+0BCh],0FEh` / `0FBh`). Bodies only.
+    void SetAsDamageable(bool value) { Damageable = value; }
+    void SetAsRespondToHits(bool value) { RespondToHits = value; }
+#endif
     // Chunk 724 round 3 (row 0x008771A0): Ego_r.pdb ?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QBE_NXZ,
     // out of line at retail 0x006A5AB0 (catalog name; `mov ecx,edi ; call` in CTools::GetThingPointIntersectionFromTo).
     bool IsThingAbleToComeBetweenCameraAndObservedThing() const;   // 0x006A5AB0

@@ -28,6 +28,11 @@ public:
     virtual bool SetActionForMelee(const CCreatureAbilityDef& ability);                     // 0x006AABE0 UAE
     void OnCollisionWithObject(CThing* thing);                                             // 0x006ACA30 QAE
     float GetCurrentRelativeMovementAngleXY() const;                                      // 0x006A9640 QBE
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE_MOVEMENTSPEEDS
+    // Retail opt-in (chunk 802, row 0x008EACB0): Ego_r.pdb / FableWin.pdb ?InitialiseMovementSpeeds@CThingPlayerCreature@@QAEXXZ (the
+    // landed row 0x006A9A00), called out of line. Declaration only: no layout change.
+    void InitialiseMovementSpeeds();                                                       // 0x006A9A00 QAE
+#endif
 protected:
     void SetPlayerCreatureActionForMelee(ECombatZone zone, const C3DVector& direction, CThing* target,
                                          const CCreatureAbilityDef& ability);              // 0x006AA720 IAE

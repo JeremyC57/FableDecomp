@@ -37246,3 +37246,10 @@ _New_c35b10@8	00c35b10	00c275e0
 ?RunTutorials@CQ_GuildTrainingScript@NScript@@QAEXXZ	00d45dd0	00d3bc60
 ?WatchForSparrowKilled@CQ_GuildTrainingScript@NScript@@QAEXXZ	00d3c840	00d3bc60
 ?FinishFishing@CTCFishing@@IAEX_N@Z	007b0950	007b0cd0
+??$TransferMap@_NVCCharString@@@CPersistContext@@QAEXPBDAAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@AB_N@Z	007ae3d0	007abbd0
+?GetAnimationFromCreature@NCreatureMode@@YIPBVCAnimationEntry@@ABVCCharString@@ABVCThingCreatureBase@@@Z	008618b0	008eacb0
+?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z	00662d80	008eacb0
+?GetWorld@CModeBase@CTCCreatureModeManager@@QBEAAVCWorld@@XZ	0073a680	008eacb0
+?InitialiseMovementSpeeds@CModeHoverBase@NCreatureMode@@AAEXXZ	008ea500	008eacb0
+?OnActivate@CModeBase@CTCCreatureModeManager@@UAEXXZ	0073aac0	008eacb0
+?push_back@?$vector@VCHoverState@CModeHoverBase@NCreatureMode@@V?$allocator@VCHoverState@CModeHoverBase@NCreatureMode@@@std@@@std@@QAEXABVCHoverState@CModeHoverBase@NCreatureMode@@@Z	008ec1a0	008eacb0

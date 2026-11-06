@@ -129,6 +129,14 @@ public:
     const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
     const CCreatureActionBase* PeekPCurrentAction() const { return PCurrentAction.Data; }
 #endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ACTIONQUERY
+    // Retail opt-in (chunk 802, row 0x008EACB0 NCreatureMode::CModeHoverBase::OnActivate): Ego_r.pdb
+    // ?IsPerformingAnyAction@CThingCreatureBase@@QBE_NXZ (out of line in retail at 0x006622A0) and
+    // ?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (0x00662D80; FableWin.pdb the same).
+    // Declarations only: no layout change.
+    bool IsPerformingAnyAction() const;                                  // 0x006622A0
+    const class CAnimationEntry& GetRandomAnimFromName(const CCharString& name, long index) const;   // 0x00662D80
+#endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SAVE
     // Nested opt-in (chunk 794, row 0x008304A0 CThingAICreature::Save): Ego_r.pdb ?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z (public
     // virtual), retail 0x00661A60 (the catalog row CThingCreatureBase::Save: `jmp 0x006A4BA0`, CThingPhysical::Save), called by name from the

@@ -55,7 +55,18 @@ public:
     void SetAsSingleTransfer() { SingleTransfer=true; }
 #endif
     template<class T> void Transfer(T&);
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_NAMED_DEFAULTS
+    // Retail opt-in (chunk 802, row 0x007ABBD0 CTCAIScratchpad::OnSerialise): Ego_r.pdb 0x0040D2E0 / FableWin.pdb 0x018951E0
+    // ??$Transfer@J@CPersistContext@@QAEXPBDAAJ@Z (and the CCharString twin 0x0040DAD0 / 0x01895D30) is inline in retail: the
+    // caller expands `Transfer(name, value, GetDefaultVal<T>())` (0x007ABC80: the long default 0 stored in the dead context slot;
+    // 0x007ABCF1..0x007ABD08: GetDefaultVal<CCharString> builds a local, copies it out and destroys it, no NRVO).
+    template<class T> void Transfer(const char* name,T& value) { Transfer(name,value,GetDefaultVal<T>()); }
+    // Ego_r.pdb / FableWin.pdb ??$TransferMap@_NVCCharString@@@CPersistContext@@QAEXPBDAAV?$map@...@std@@AB_N@Z (retail 0x007AE3D0,
+    // the named map transfer with a default value). Declaration only.
+    template<class V,class K> void TransferMap(const char*,std::map<K,V,std::less<K>,std::allocator<std::pair<const K,V> > >&,const V&);
+#else
     template<class T> void Transfer(const char*,T&);
+#endif
     template<class T> void TransferVector(std::vector<T,std::allocator<T> >&);
     template<class V,class K> void TransferMap(std::map<K,V,std::less<K>,std::allocator<std::pair<const K,V> > >&);
     template<class T> void TransferVectorOfSubComponents(std::vector<T,std::allocator<T> >&);

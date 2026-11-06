@@ -30,7 +30,18 @@ private:
  EUnsheatheWeaponType UnsheathingWeaponType;
  typedef std::pair<CCountedPointer<CCombatAbilityData>,CCombatAbility> TCombatAbilityData;
  typedef std::multimap<ECombatAbilityDataType,TCombatAbilityData> TCombatAbilityList;
- TCombatAbilityList CombatAbilities;long ShotOverrideType;bool ReadyForMelee;long CurFlourishTimer;
+ TCombatAbilityList CombatAbilities;
+#ifdef FABLE_RETAIL_CTCCOMBAT_SHOTOVERRIDE
+ // Nested opt-in (chunk 802, row 0x00974AA0 CAIStateGroup_JackOfBladesStage2::Update): the boss AI writes ShotOverrideType (+0x7c)
+ // directly (`mov [eax+7Ch],edx` on the GetTC<CTCCombat> result) and neither PDB name set has an accessor for it, so the member is
+ // reachable from outside the class. Access only; no layout change.
+public:
+#endif
+ long ShotOverrideType;
+#ifdef FABLE_RETAIL_CTCCOMBAT_SHOTOVERRIDE
+private:
+#endif
+ bool ReadyForMelee;long CurFlourishTimer;
  std::vector<CIntelligentPointer<CThing> > FlourishParticles;bool IsInMiddleOfFlourishAction;
  CCombatManager& GetCombatManager(){return CombatManager;}
  CThingCreatureBase& GetParentCreature(){return *ParentCreature;}

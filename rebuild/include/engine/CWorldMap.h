@@ -100,6 +100,12 @@ protected:
 public:
     void GetMapNavigationAreaUpdateInfo(long,const C2DBoxI&,const CCharString&,CNavigationAreaUpdate&) const;
     long GetNavigationLayerAt(const C3DVector&,const CThing*) const;
+#ifdef FABLE_RETAIL_CWORLDMAP_STRONGESTTHEME
+    // Retail opt-in (chunk 802, row 0x0066CF00 CRegionMinimap::PopulateRegionMinimap): Ego_r.pdb / FableWin.pdb
+    // ?GetStrongestEngineThemeAt@CWorldMap@@QBEJABVC3DVector@@AAJ@Z (Ego_r 0x006E84E0), out of line in retail at 0x0063ADF0
+    // (the caller passes the position and the strength out-word by address, `this` the const world map). Declaration only.
+    long GetStrongestEngineThemeAt(const C3DVector& pos, long& strength) const;   // 0x0063ADF0
+#endif
 #ifdef FABLE_RETAIL_CWORLDMAP_HEIGHTZ
     // Chunk 764 (row 0x007BC004 CTCShotDefinitionNymphFun::InitMovement): Ego_r.pdb ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z
     // (retail 0x0063E480). Declaration only.

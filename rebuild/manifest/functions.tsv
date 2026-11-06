@@ -15285,7 +15285,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00684050	DecriminaliseAllKnownCrimes	CTCCreatureOpinionOfHero	__thiscall	void	1	CTCCreatureOpinionOfHero *	1	yes	accepted									
 00684210	ReportAllCrimes	CTCCreatureOpinionOfHero	__thiscall	void	2	CTCCreatureOpinionOfHero *,CTCCreatureOpinionOfHero *	1	yes	accepted									
 00684420	CTCCreatureOpinionOfHero	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
-00684610	COpinionReactionManager::TransferOpinionData	COpinionReactionManager	unknown	undefined	0		0	yes	accepted									
+00684610	OnSerialise	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
 00685130	sub_00685130	_global	unknown	undefined	0		0			discovered	gapscan							
 00685150	sub_00685150	_global	unknown	undefined	0		0			discovered	gapscan							
 00685200	operator++	std::_List_iterator<CUnprovenValue_00685200, std::_Nonconst_traits<CUnprovenValue_00685200>>	unknown	undefined	0		0			discovered	gapscan							
@@ -21955,7 +21955,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007abab0	__distance<std::_Rb_tree_iterator<CUnprovenValue_007abab0,CUnprovenTraits_007abab0<CUnprovenValue_007abab0> > >	std	unknown	undefined	0		0	yes	accepted									
 007abb30	CAIScratchpadDef	CAIScratchpadDef	__thiscall	undefined	1	CAIScratchpadDef *	0	yes	accepted									
 007abb80	CTCAIScratchpad	CTCAIScratchpad	__thiscall	undefined	2	CTCAIScratchpad *,CThing *	0	yes	accepted									
-007abbd0	CTCAIScratchpad::vfunc_1	CTCAIScratchpad	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+007abbd0	OnSerialise	CTCAIScratchpad	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007ac6e0	GetSizeofClass	CAIScratchpadDef	__thiscall	ulong	1	CAIScratchpadDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\CAIScratchpadDef_GetSizeofClass_007ac6e0.cpp
 007ac720	operator++	std::_Rb_tree_iterator<CUnprovenValue_007ac720,CUnprovenTraits_007ac720<CUnprovenValue_007ac720> >	unknown	undefined	0		0	yes	accepted									
 007ac7a0	CIVCountedPointer_Release_007ac7a0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007ac7a0.cpp
@@ -29510,7 +29510,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008ea9f0	UpdateHoverAnim	NCreatureMode::CModeHoverBase	__thiscall	void	1	CModeHoverBase *	1	yes	accepted									
 008eac30	AnimUpdate	NCreatureMode::CModeHoverBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008eac40	CModeHoverBase	NCreatureMode::CModeHoverBase	__thiscall	undefined	2	CTCKrakenTentacle *,CThing *	0	yes	accepted									
-008eacb0	OnActivate	CModeHoverBase	__thiscall	void	1	CModeHoverBase *	1	yes	accepted									
+008eacb0	OnActivate	NCreatureMode::CModeHoverBase	__thiscall	void	1	CModeHoverBase *	1	yes	accepted									
 008eb810	CCountedPointer_Release_008eb810	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008eb810.cpp
 008eb9a0	CCountedPointer_Release_008eb9a0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_008eb9a0.cpp
 008eba00	ScalarDeletingDtor_008eba00	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\CLandscapeBackgroundPatch_vectordeletingdestructor_008eba00.cpp
@@ -32719,7 +32719,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00973dc0	SummonPillars	CAIStateGroup_JackOfBladesBase	__thiscall	void	1	CAIStateGroup_JackOfBladesBase *	1	yes	accepted									
 00974110	Summon	CAIStateGroup_JackOfBladesBase	__thiscall	void	3	CAIStateGroup_JackOfBladesBase *,long,bool	1	yes	accepted									
 00974770	PowerUpSword	CAIStateGroup_JackOfBladesStage1	__thiscall	void	1	CAIStateGroup_JackOfBladesStage1 *	1	yes	accepted									
-00974aa0	CAIStateGroup_JackOfBladesStage2::Update	CAIStateGroup_JackOfBladesStage2	__thiscall	void	1	CAIStateGroup_JackOfBladesStage2 *	1	yes	accepted									
+00974aa0	Update	CAIStateGroup_JackOfBladesStage2	__thiscall	void	1	CAIStateGroup_JackOfBladesStage2 *	1	yes	accepted									
 009756b0	CAIStateGroup_JackOfBladesStage3::Update	CAIStateGroup_JackOfBladesStage3	__thiscall	void	1	CAIStateGroup_JackOfBladesStage3 *	1	yes	accepted									
 00975bb0	?Update@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	CAIStateGroup_JackOfBladesStage1	__thiscall	void	1	CAIStateGroup_JackOfBladesStage1 *	1	yes	accepted									
 00976e80	CCreatureAction_JackFlash	CCreatureAction_JackFlash	__thiscall	undefined	3	CCreatureAction_BriarRoseShotFarInto *,CThingCreatureBase *,CThingCreatureBase *	0	yes	accepted									
