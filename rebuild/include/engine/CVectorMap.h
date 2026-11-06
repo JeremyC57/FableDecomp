@@ -56,6 +56,14 @@ public:
         return *this;
     }
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_INSERT
+    // Retail opt-in (chunk 796, row 0x008E18D0 CModeThunderLightningStorm::UpdateLightningBeams; the landed 0x00767DA0
+    // UpdateParticleAttachment local model): Ego_r.pdb CVectorMap::Insert (push_back, then mark Dirty) and Update (sort with the
+    // stored Compare when Dirty, then clear it), both inline in retail (the push_backs and the guarded std::sort calls 0x0076C000 /
+    // 0x0076C1A0 sit in the callers).
+    void Insert(const value_type& value) { this->push_back(value); Dirty=true; }
+    void Update() { if(Dirty) { std::sort(this->begin(),this->end(),Compare); Dirty=false; } }
+#endif
 private:
     CompareType Compare;
     bool Dirty;

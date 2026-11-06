@@ -37126,3 +37126,14 @@ _New_c35b10@8	00c35b10	00c275e0
 ??0TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ	00f0d470	00f0caa0
 ??1TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ	00cdbc50	00f0caa0
 ?push_back@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAEXABUTeleportData@CQ_AmbushTradersScript@NScript@@@Z	00f0d490	00f0caa0
+?ConstructFromLevelScript@CThingCreatureBase@@UAE_NPBD@Z	00662930	008315c0
+?Reset@?$CCountedPointer@VCRelationshipsInit@CThingAICreature@@@@QAEXPAVCRelationshipsInit@CThingAICreature@@@Z	00834d30	008315c0
+??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ	009ac2d0	00e55ce0
+??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ	009ac310	00e55ce0
+??_7?$CSpawnedFunc1@VCV_BookCollectingScript@NScript@@J@@6B@	012e6228	00e55ce0
+?AdjustHeroReputation@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXW4EOpinionDeedType@@@Z	00e56d10	00e55ce0
+?BookReaction@CV_BookCollectingScript@NScript@@QAEXJ@Z	00e566f0	00e55ce0
+?GetBookSpecificArgs@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXJAAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@@Z	00e57020	00e55ce0
+?CheckForFish@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAE_NXZ	00e81ad0	00e80f10
+?CheckForRod@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAE_NXZ	00e81a60	00e80f10
+?GetBiggestFishWeight@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEMXZ	00e81b40	00e80f10

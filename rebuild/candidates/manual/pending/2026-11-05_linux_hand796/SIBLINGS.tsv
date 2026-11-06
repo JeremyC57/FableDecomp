@@ -1,0 +1,5 @@
+address	source	grade_with_final_overlay	note
+008315c0	src/008315c0.cpp	RELOCATION_MATCH	own row; uses the CThingAICreature LEVELSCRIPT + CThingCreatureBase LEVELSCRIPT opt-ins (relpair checked)
+00e80f10	src/00e80f10.cpp	RELOCATION_MATCH	own row; no chunk-796 opt-in used (repo retail macros only; CScriptDef.h + fable_map.h)
+00e55ce0	src/00e55ce0.cpp	RELOCATION_MATCH	own row; no chunk-796 opt-in used (repo retail macros only)
+-	(every landed includer of the nine overlay headers)	unchanged	all edits are opt-in FABLE_RETAIL_* blocks; the default path of every header is byte-identical to the repo (checked with diff), so no landed includer was rechecked (no INCLUDERS_*.txt)

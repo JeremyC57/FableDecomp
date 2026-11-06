@@ -1,6 +1,14 @@
 #ifndef FABLE_ENGINE_CCOMBATACTIONBASE_H
 #define FABLE_ENGINE_CCOMBATACTIONBASE_H
 #include "engine/CCreatureActionBase.h"
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+// Retail opt-in (chunk 796, row 0x00951FB0 CAIStateGroup_JackDragon::UpdateHover): Ego_r.pdb
+// ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z (out of line, retail 0x00858030; the inline
+// CCreatureAction_DragonHoverOutOf(CThingCreatureBase&) ctor calls it with 250 and the "SWORD_SWING" pair) and the protected static
+// ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z (__fastcall, hidden result, 0x008561A0).
+// Declarations only, in both class branches; no layout change.
+class CThingCreatureBase; class CSoundPair; class CCharString;
+#endif
 // Ego_r0x37dee; native base is0x114 after STLport list/vector reductions.
 #ifdef FABLE_RETAIL_CCOMBATACTIONBASE_MELEE
 // Chunk 764 (row 0x00859660 ResetMeleeCombatAbilityEffects): the Ego_r.pdb members from +0xa8 with retail STLport sizes (Ego_r PTarget
@@ -10,6 +18,10 @@
 // stlport/fable_containers.h and engine/C3DVector.h first.
 class CThing;class CMeleeCombatAbilityDef;class CAnimationEntry;
 class CCombatActionBase : public CCreatureActionBase {
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+public: CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sound);   // 0x00858030
+protected: static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+#endif
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;
@@ -44,6 +56,10 @@ protected:
 };
 #else
 class CCombatActionBase : public CCreatureActionBase {
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SOUNDCTOR
+public: CCombatActionBase(CThingCreatureBase& creature, long priority, const CSoundPair& sound);   // 0x00858030
+protected: static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& creature, const CCharString& name);   // 0x008561A0
+#endif
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;

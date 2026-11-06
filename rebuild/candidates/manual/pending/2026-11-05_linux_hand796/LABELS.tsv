@@ -1,0 +1,31 @@
+address	name	evidence
+0x008315C0	CThingAICreature::ConstructFromLevelScript	Ego_r.pdb / FableWin.pdb ?ConstructFromLevelScript@CThingAICreature@@UAE_NPBD@Z; CThingAICreature vtable 0x0127293C slot 4 (oracle placeholder vfunc_4 is wrong); calls CThingCreatureBase::ConstructFromLevelScript 0x00662930 by name; row RELOCATION_MATCH (chunk 796)
+0x00E80F10	NScript::CV_FishingCompetitionScript::CFishCompOrganiser::AskForFish	Ego_r.pdb ?AskForFish@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXXZ; calls CheckForRod 0x00E81A60 and RefreshCompetition 0x00E7FD50; row RELOCATION_MATCH (chunk 796)
+0x00E55CE0	NScript::CV_BookCollectingScript::CBS_Teacher::AskForBook	Ego_r.pdb ?AskForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAE_NJVCCharString@@@Z; calls GetBookSpecificArgs 0x00E57020 / AdjustHeroReputation 0x00E56D10; row RELOCATION_MATCH (chunk 796)
+0x008E18D0	NCreatureMode::CModeThunderLightningStorm::UpdateLightningBeams	Ego_r.pdb ?UpdateLightningBeams@CModeThunderLightningStorm@NCreatureMode@@AAEXXZ; row parked DIFFER(1833v2073) (chunk 796)
+0x008E9B70	NCreatureMode::CModeStrafe::AnimUpdate	Ego_r.pdb ?AnimUpdate@CModeStrafe@NCreatureMode@@UAEXAAVCAnimateThing@@@Z; CModeStrafe vtable 0x01268588 slot 2 = CModeBase::AnimUpdate slot (oracle placeholder vfunc_2 is wrong); row parked DIFFER(1699v1705) (chunk 796)
+0x00951FB0	CAIStateGroup_JackDragon::UpdateHover	Ego_r.pdb ?UpdateHover@CAIStateGroup_JackDragon@@AAEXXZ; strings DRAGON_MOUTH_DUMMY / SWORD_SWING; row parked DIFFER(2229v2272) (chunk 796)
+0x00662930	CThingCreatureBase::ConstructFromLevelScript	Ego_r / FableWin ?ConstructFromLevelScript@CThingCreatureBase@@UAE_NPBD@Z; the only base call of 0x008315C0
+0x00662A00	CThingCreatureBase::GetAnimFromName	Ego_r ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z; called from 0x008E9B70
+0x008E8FF0	NCreatureMode::GetStrafingAnimationName	Ego_r ?GetStrafingAnimationName@NCreatureMode@@YI?AVCCharString@@ABVCThing@@W4EMovementType@@@Z (__fastcall free function); called from 0x008E9B70
+0x008E9080	NCreatureMode::GetAnimDistanceAndIndexFromAnimName	Ego_r ?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z; called from 0x008E9B70
+0x0072A860	CTCSpecialAbilities::GetAbilityMutexLock	Ego_r ?GetAbilityMutexLock@CTCSpecialAbilities@@QBE_NXZ; called from 0x008E9B70
+0x0072B870	CTCSpecialAbilities::GetCurrentAbilityStrafeAnim	Ego_r ?GetCurrentAbilityStrafeAnim@CTCSpecialAbilities@@QBE?AVCCharString@@XZ; called from 0x008E9B70
+0x005DA8F0	CTCWeapon::IsAnalogueLoading	Ego_r ?IsAnalogueLoading@CTCWeapon@@QBE_NXZ; called from 0x008E9B70
+0x005DA980	CTCWeapon::IsProjectileWeaponLoaded	Ego_r ?IsProjectileWeaponLoaded@CTCWeapon@@QBE_NXZ; called from 0x008E9B70
+0x0073A690	NAnimationEntryBodge::CAnimEntryLite::GetTimeToBlendIn	Ego_r ?GetTimeToBlendIn@CAnimEntryLite@NAnimationEntryBodge@@QBEJABVCThing@@@Z; called from 0x008E9B70
+0x008D8580	NCreatureMode::CModeDragonHover::CModeDragonHover	Ego_r ??0CModeDragonHover@NCreatureMode@@QAE@AAVCThing@@0@Z; new(0x80) then this call in 0x00951FB0
+0x00950950	CAIStateGroup_JackDragon::WaitForAnimLoop	Ego_r ?WaitForAnimLoop@CAIStateGroup_JackDragon@@AAEXM@Z; called from 0x00951FB0
+0x00950BB0	CAIStateGroup_JackDragon::SetHeadTurning	Ego_r ?SetHeadTurning@CAIStateGroup_JackDragon@@AAEX_N@Z; called from 0x00951FB0
+0x007FD3D0	CTCDPhysicalObstruction::SetLifeTimeSeconds	Ego_r ?SetLifeTimeSeconds@CTCDPhysicalObstruction@@QAEXM@Z; called from 0x00951FB0
+0x007FD4B0	CTCDPhysicalObstruction::Create	Ego_r ?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z (static __fastcall); called from 0x00951FB0
+0x008561A0	CCombatActionBase::GetSoundPair	Ego_r ?GetSoundPair@CCombatActionBase@@KI?AVCSoundPair@@ABVCThingCreatureBase@@ABVCCharString@@@Z (protected static __fastcall); expanded HoverOutOf ctor in 0x00951FB0
+0x00858030	CCombatActionBase::CCombatActionBase	Ego_r ??0CCombatActionBase@@QAE@AAVCThingCreatureBase@@JABVCSoundPair@@@Z; expanded HoverOutOf ctor in 0x00951FB0
+0x0066E630	std::vector<C3DVector>::push_back	Ego_r ?push_back@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXABVC3DVector@@@Z; route pushes in 0x00951FB0
+0x00E80D60	NScript::CV_FishingCompetitionScript::CFishCompOrganiser::PlayCutscene	Ego_r ?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z (wave-1 naming decision agrees); vland RELOC_NAME: the active label is forge-autoname 'CTCCarryable_Initialize' (wrong)
+0x00E81A60	NScript::CV_FishingCompetitionScript::CFishCompOrganiser::CheckForRod	Ego_r ?CheckForRod@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAE_NXZ; AskForFish tests it before TEXT_CS_B15_NOROD_REMINDER; vland RELOC_NAME: labelled 'CFishCompOrganiser::CheckForFish' (that is 0x00E81AD0)
+0x00E7FD50	NScript::CV_FishingCompetitionScript::RefreshCompetition	Ego_r ?RefreshCompetition@CV_FishingCompetitionScript@NScript@@QAEXXZ; vland RELOC_NAME: labelled 'FishingCompetition_Initialize'
+0x009AC2D0	std::map<CCharString,CCharString>::map	STLport map default ctor (src/00e55ce0.cpp symbol, relocation-matched); vland RELOC_NAME: labelled 'CUnprovenContainer_009ac2d0'
+0x009AC310	std::map<CCharString,CCharString>::~map	matching out-of-line dtor (src/00e55ce0.cpp symbol); vland RELOC_NAME: labelled 'CRetailTree_erase009aa830::~CRetailTree_erase009aa830'
+0x00CDBFB0	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map	src/00e55ce0.cpp symbol (relocation-matched), wave-1 naming decision and chunk 584 agree; vland RELOC_NAME: the active label is 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+0x004046B0	std::_List_base<CStringParserCommentBoundaries>::~_List_base	src/008315c0.cpp (relocation-matched) binds ??1?$_List_base@VCStringParserCommentBoundaries@@...@std@@QAE@XZ here (STLport ~list is inline and calls the _List_base dtor); the label 'std::list<...>::~list' names the inline wrapper

@@ -1,0 +1,7 @@
+address	module	name	length
+00e80f10	NScript::CV_FishingCompetitionScript::CFishCompOrganiser	AskForFish	2894
+00e55ce0	NScript::CV_BookCollectingScript::CBS_Teacher	AskForBook	2529
+00951fb0	CAIStateGroup_JackDragon	UpdateHover	2272
+008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2073
+008e9b70	NCreatureMode::CModeStrafe	vfunc_2	1705
+008315c0	CThingAICreature	vfunc_4	2488

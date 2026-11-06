@@ -384589,6 +384589,27 @@ $catalog = @(
         TestSource = '00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_Main_00f0caa0_test.cpp'
         PassPattern = '00f0caa0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008315c0'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_ConstructFromLevelScript_008315c0.cpp'
+        TestSource = '00/83/CThingAICreature_ConstructFromLevelScript_008315c0_test.cpp'
+        PassPattern = '008315c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e55ce0'
+        Module = 'NScript::CV_BookCollectingScript::CBS_Teacher'
+        Source = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_AskForBook_00e55ce0.cpp'
+        TestSource = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_AskForBook_00e55ce0_test.cpp'
+        PassPattern = '00e55ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e80f10'
+        Module = 'NScript::CV_FishingCompetitionScript::CFishCompOrganiser'
+        Source = '00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_AskForFish_00e80f10.cpp'
+        TestSource = '00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_AskForFish_00e80f10_test.cpp'
+        PassPattern = '00e80f10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

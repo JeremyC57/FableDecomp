@@ -1,0 +1,7 @@
+manifest 008315c0 CThingAICreature::CThingAICreature::vfunc_4 -> CThingAICreature::ConstructFromLevelScript
+manifest 008e18d0 CModeThunderLightningStorm::UpdateLightningBeams -> NCreatureMode::CModeThunderLightningStorm::UpdateLightningBeams
+manifest 008e9b70 NCreatureMode::CModeStrafe::NCreatureMode::CModeStrafe::vfunc_2 -> NCreatureMode::CModeStrafe::AnimUpdate
+manifest 00e55ce0 CBS_Teacher::AskForBook -> NScript::CV_BookCollectingScript::CBS_Teacher::AskForBook
+manifest 00e7fd50 NScript::CV_FishingCompetitionScript::GenerateSignText -> NScript::CV_FishingCompetitionScript::RefreshCompetition
+manifest 00e80f10 CFishCompOrganiser::AskForFish -> NScript::CV_FishingCompetitionScript::CFishCompOrganiser::AskForFish
+labels 8  catalog renamed 0  manifest renamed 6

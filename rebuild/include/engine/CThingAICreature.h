@@ -60,8 +60,29 @@ public:
     // Body in the includer once CThingBuilding is complete, like GetHomeBuilding.
     CThingBuilding* GetWorkBuilding() const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_LEVELSCRIPT
+    // Nested opt-in (chunk 796, row 0x008315C0): Ego_r.pdb / FableWin.pdb ?ConstructFromLevelScript@CThingAICreature@@UAE_NPBD@Z (vtable
+    // 0x0127293C slot 4, public virtual) and the nested CRelationshipsInit (Ego_r.pdb: five unsigned __int64 UIDs, sizeof 0x28;
+    // ??0CRelationshipsInit@CThingAICreature@@QAE@XZ inline: retail `new(0x28)` then ten zero dword stores) held in
+    // RelationshipsInit (CCountedPointer<CRelationshipsInit>, +0x160; Reset out of line at 0x00834D30,
+    // ?Reset@?$CCountedPointer@VCRelationshipsInit@CThingAICreature@@@@QAEXPAVCRelationshipsInit@CThingAICreature@@@Z).
+    // Same offsets as the opaque pad it replaces: no layout change.
+    class CRelationshipsInit {
+    public:
+        unsigned __int64 HomeBuildingUID;                                // +0x00
+        unsigned __int64 WorkBuildingUID;                                // +0x08
+        unsigned __int64 FatherCreatureUID;                              // +0x10
+        unsigned __int64 MotherCreatureUID;                              // +0x18
+        unsigned __int64 SpouseCreatureUID;                              // +0x20
+        CRelationshipsInit() : HomeBuildingUID(0), WorkBuildingUID(0), FatherCreatureUID(0), MotherCreatureUID(0), SpouseCreatureUID(0) { }
+    };
+    virtual bool ConstructFromLevelScript(const char* script);          // 0x008315C0
+private:
+    CCountedPointer<CRelationshipsInit> RelationshipsInit;               // +0x160
+#else
 private:
     unsigned char _pad_0x160[0x8];                                       // +0x160 RelationshipsInit (opaque)
+#endif
     CIntelligentPointer<CThingBuilding> HomeBuilding;                    // +0x168
     CIntelligentPointer<CThingBuilding> WorkBuilding;                    // +0x170
     CIntelligentPointer<CThingAICreature> FatherCreature;                // +0x178

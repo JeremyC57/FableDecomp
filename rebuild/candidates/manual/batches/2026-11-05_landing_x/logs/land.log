@@ -1,0 +1,22 @@
+addr       parity           behav  name
+008315c0   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+008315c0   RELOCATION_MATCH PASS   ConstructFromLevelScript
+00e55ce0   WARN RELOC_NAME: ??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac2d0 labelled 'CUnprovenContainer_009ac2d0::CUnprovenContainer_009ac2d0'
+00e55ce0   WARN RELOC_NAME: ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac310 labelled 'CRetailTree_erase009aa830::~CRetailTree_erase009aa830'
+00e55ce0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e55ce0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e55ce0   RELOCATION_MATCH PASS   AskForBook
+00e80f10   WARN RELOC_NAME: ?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z -> 00e80d60 labelled '_global::CTCCarryable_Initialize'
+00e80f10   WARN RELOC_NAME: ?CheckForRod@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAE_NXZ -> 00e81a60 labelled 'CFishCompOrganiser::CheckForFish'
+00e80f10   WARN RELOC_NAME: ?RefreshCompetition@CV_FishingCompetitionScript@NScript@@QAEXXZ -> 00e7fd50 labelled 'FishingCompetition_Initialize'
+00e80f10   RELOCATION_MATCH PASS   AskForFish
+
+WINS: 3
+  008315c0 RELOCATION_MATCH CThingAICreature::?ConstructFromLevelScript@CThingAICreature@@UAE_NPBD@Z
+  00e55ce0 RELOCATION_MATCH NScript::CV_BookCollectingScript::CBS_Teacher::?AskForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAE_NJVCCharString@@@Z
+  00e80f10 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CFishCompOrganiser::?AskForFish@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CThingAICreature_ConstructFromLevelScript_008315c0
+  NScriptCVBookCollectingScriptCBSTeacher_AskForBook_00e55ce0
+  NScriptCVFishingCompetitionScriptCFishCompOrganiser_AskForFish_00e80f10

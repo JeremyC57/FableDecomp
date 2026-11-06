@@ -7,6 +7,9 @@
 #include "engine/C3DVector.h"
 #include "engine/CCountedPointer.h"
 class CThingBuilding; class CThingCreatureDef; class CCreatureActionBase;
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMATION
+class CAnimationEntry;                                                   // chunk 796 opt-in: GetAnimFromName's return type
+#endif
 class CCreatureInteraction; class CTCCreatureModeManager;
 class CHeroCombatDef;
 class CEnginePrimitivePrepareInfo;
@@ -111,6 +114,20 @@ public:
     // Nested opt-in (chunk 765, row 0x00663600): Ego_r.pdb / FableWin.pdb ?ClearQueuedActions@CThingCreatureBase@@QAEXXZ, out of line in
     // retail (`add ecx,108h ; jmp` the PQueuedActions list's out-of-line clear 0x00669B50). Declaration only: no layout change.
     void ClearQueuedActions();                                           // 0x00663600
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_LEVELSCRIPT
+    // Retail opt-in (chunk 796, row 0x008315C0 CThingAICreature::ConstructFromLevelScript): Ego_r.pdb / FableWin.pdb
+    // ?ConstructFromLevelScript@CThingCreatureBase@@UAE_NPBD@Z (public virtual override of CThingGameObject's, landed row 0x00662930),
+    // called by name from the CThingAICreature override. Declaration only: no layout change.
+    virtual bool ConstructFromLevelScript(const char* script);          // 0x00662930
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_ANIMATION
+    // Retail opt-in (chunk 796, row 0x008E9B70 NCreatureMode::CModeStrafe::AnimUpdate): Ego_r.pdb
+    // ?GetAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z (const, returns a reference; out of line in retail at
+    // 0x00662A00) and ?PeekPCurrentAction@CThingCreatureBase@@QBEPBVCCreatureActionBase@@XZ (inline in retail: `mov eax,[creature+100h]`).
+    // Declaration plus an accessor body: no layout change.
+    const CAnimationEntry& GetAnimFromName(const CCharString& name, long index) const;   // 0x00662A00
+    const CCreatureActionBase* PeekPCurrentAction() const { return PCurrentAction.Data; }
 #endif
 #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SAVE
     // Nested opt-in (chunk 794, row 0x008304A0 CThingAICreature::Save): Ego_r.pdb ?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z (public

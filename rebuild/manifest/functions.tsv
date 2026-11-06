@@ -24641,7 +24641,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00830eb0	SetHasInformation	CThingAICreature	__thiscall	void	5	CThingAICreature *,bool,bool,bool,bool	1	yes	accepted									
 00830f20	AnimExists	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00830fe0	SerialiseGameState	CThingAICreature	__thiscall	bool	2	CThingAICreature *,CPersistContext *	1	yes	accepted									
-008315c0	CThingAICreature::vfunc_4	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008315c0	ConstructFromLevelScript	CThingAICreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00831f80	CThingAICreature	CThingAICreature	__thiscall	undefined	1	CThingAICreature *	0	yes	accepted									
 008320c0	~CThingAICreature	CThingAICreature	__thiscall	void	1	CTCTavernGame *	1	yes	accepted									
 00832260	InitialActivate	CThingAICreature	__thiscall	void	1	CThingAICreature *	1	yes	accepted									
@@ -29284,7 +29284,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e1580	CModeDragonStrafeBurninate	NCreatureMode::CModeDragonStrafeBurninate	__thiscall	undefined	8	CModeDragonStrafeBurninate *,CThing *,vector<C3DVector,std::allocator<C3DVector>_> *,C3DVector *,float,float,C3DVector *,C3DVector *	0	yes	accepted									
 008e1670	FrameUpdate	NCreatureMode::CModeCreatureIsProjectile	__thiscall	void	1	CModeCreatureIsProjectile *	1	yes	accepted									
 008e16a0	FrameUpdate	CModeScreamerSuperAttack	__thiscall	void	1	CModeScreamerSuperAttack *	1	yes	accepted									
-008e18d0	UpdateLightningBeams	CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
+008e18d0	UpdateLightningBeams	NCreatureMode::CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
 008e20f0	NCreatureMode::CModeGuildmasterPowerUpShield::vfunc_3	NCreatureMode::CModeGuildmasterPowerUpShield	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e24f0	NCreatureMode::CModeGuildmasterPowerUpSpeed::vfunc_3	NCreatureMode::CModeGuildmasterPowerUpSpeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008e28f0	NCreatureMode::CModeThunderLightningStorm::vfunc_3	NCreatureMode::CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29500,7 +29500,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e9950	UpdateWeaponState	NCreatureMode::CModeStrafe	__thiscall	void	1	CModeStrafe *	1	yes	accepted									
 008e9a30	OnActivate	NCreatureMode::CModeStrafe	__thiscall	void	1	CModeStrafe *	1	yes	accepted									
 008e9b60	OnDeactivate	NCreatureMode::CModeStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008e9b70	NCreatureMode::CModeStrafe::vfunc_2	NCreatureMode::CModeStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008e9b70	AnimUpdate	NCreatureMode::CModeStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008ea220	FrameUpdate	NCreatureMode::CModeStrafe	__thiscall	void	1	CModeStrafe *	1	yes	accepted									
 008ea3f0	IsPosInArea	NCreatureMode::CModeHoverBase::CRadialArea	unknown	undefined	0		0	yes	accepted									
 008ea500	InitialiseMovementSpeeds	NCreatureMode::CModeHoverBase	__thiscall	void	1	CModeHoverBase *	1	yes	accepted									
@@ -52698,7 +52698,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e54e40	_M_allocate_and_copy<CConversation const *>	std::vector<CConversation, std::allocator<CConversation>>	unknown	undefined	0		0	yes	accepted									
 00e54e90	Main	NScript::CV_BookCollectingScript::CBS_Teacher	unknown	undefined	0		0			discovered	gapscan							
 00e55c60	AddGossip	NScript::CV_BookCollectingScript	__thiscall	void	5	CV_BookCollectingScript *,CCharString,CCharString,CCharString,CCharString	1	yes	accepted									
-00e55ce0	AskForBook	CBS_Teacher	__thiscall	bool	3	CBS_Teacher *,long,CCharString	1	yes	accepted									
+00e55ce0	AskForBook	NScript::CV_BookCollectingScript::CBS_Teacher	__thiscall	bool	3	CBS_Teacher *,long,CCharString	1	yes	accepted									
 00e566d0	SuspendableProcess	CSpawnedFunc1<NScript::CV_BookCollectingScript,long>	__thiscall	void	1	CSpawnedFunc1<NScript::CQ_WizardBattleScript,CScriptThing&> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e5\CSpawnedFunc1_SuspendableProcess_00e566d0.cpp
 00e566f0	BookReaction	NScript::CV_BookCollectingScript	__thiscall	void	2	CV_BookCollectingScript *,long	1	yes	accepted									
 00e569d0	DoConversation	NScript::CV_BookCollectingScript	__thiscall	void	3	CV_BookCollectingScript *,long,long	1	yes	accepted									
@@ -53069,13 +53069,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e7f7d0	GetNextPrizeCategoryWeight	NScript::CV_FishingCompetitionScript	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\e7\0x00E7F7D0_global_GetFloatTableEntryByIndex.cpp				
 00e7f7f0	RespawnFishermen	CBountyHuntActivationChecker	__thiscall	void	1	CBountyHuntActivationChecker *	1	yes	accepted									
 00e7fb80	RemoveFishermen	CBountyHuntActivationChecker	__thiscall	void	1	CBountyHuntActivationChecker *	1	yes	accepted									
-00e7fd50	GenerateSignText	NScript::CV_FishingCompetitionScript	unknown	undefined	0		0	yes	accepted									
+00e7fd50	RefreshCompetition	NScript::CV_FishingCompetitionScript	unknown	undefined	0		0	yes	accepted									
 00e80060	GetHeroTitleTextTag	NScript::CV_FishingCompetitionScript	__thiscall	CCharString	1	CV_FishingCompetitionScript *	1	yes	accepted									
 00e80c00	SuspendCompetition	NScript::CV_FishingCompetitionScript	__thiscall	void	1	CQ_OrchardFarmRaidScript *	1	yes	accepted									
 00e80cd0	OnResize	CGuiWindow	__thiscall	void	1	CGuiWindow *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e8\CGuiWindow_OnResize_00e80cd0.cpp
 00e80cf0	SpeakConversationLine	CFishCompOrganiser	__thiscall	void	2	CFishCompOrganiser *,CCharString	1	yes	accepted									
 00e80d60	CTCCarryable_Initialize	_global	unknown	undefined	0		0	yes	accepted									
-00e80f10	AskForFish	CFishCompOrganiser	__thiscall	void	1	CFishCompOrganiser *	1	yes	accepted									
+00e80f10	AskForFish	NScript::CV_FishingCompetitionScript::CFishCompOrganiser	__thiscall	void	1	CFishCompOrganiser *	1	yes	accepted									
 00e81a60	CheckForFish	CFishCompOrganiser	__thiscall	bool	1	CFishCompOrganiser *	1	yes	accepted									
 00e81ad0	CheckForFish	CFishCompOrganiser	__thiscall	bool	1	CFishCompOrganiser *	1	yes	accepted									
 00e81b40	GetBiggestFishWeight	NScript::CV_FishingCompetitionScript::CFishCompOrganiser	unknown	undefined	0		0	yes	accepted									

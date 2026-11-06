@@ -1,0 +1,13 @@
+- VC7.1 `CPersistTraits<bool>` temporaries: compile the TransferIn body in the TU (block-scope named traits) so every traits object shares one temp slot like retail; with only a declaration each takes its own slot, and a value-initialised temp gets zero-filled (0x008315C0).
+- A defaulted answer (`answer = 1`) checked as `if (answer == 1) {...} else {refusal}` puts the refusal last and lets the early exit cross-jump into its tail (0x00E80F10).
+- Write a test negated (`if (!CheckForRod())`) when retail falls through into the "false" arm (0x00E80F10).
+- An explicit `CCharString("")` argument after a new-expression is built after the allocation, as retail does; a default argument is not (0x00E55CE0).
+- Close an inner block before a spawn so its name temporaries reuse the cut-scene objects' frame slots (0x00E55CE0).
+- STLport map ctor/dtor/clear stay out of line with explicit-specialisation declarations (landed 0x00DC1770 spelling) (0x00E55CE0).
+- `do { ... } while (0)` around one call site changes VC7.1's inline decision for that site alone (CAnimInit ctor expanded at the aim site only, 0x008E9B70).
+- Compile a member template body (CDefClassBase::GetSubDef<T>, landed 0x008E3300) in the TU under `#pragma auto_inline(off)`: VC7.1 then sees the CDefPointer does not escape, keeps the def in ebp and drops the release null tests (0x00951FB0, 1127 -> 629). An explicit specialisation declaration of the member template ICEs (C1001).
+- In a large AI update the inline budget runs out: `__forceinline` IS_THING_ALIVE and small action ctors (HoverOutOf) to match retail's expansions (0x00951FB0).
+- `bool valid = IS_THING_ALIVE(p) && !IsStopping(); if (!valid) { Terminate(); return; }` keeps an early-exit block inline; using it at every check makes the layout worse (0x00951FB0).
+- VC7.1 sinks non-escaping float products (x*x, y*y, sqrt) below later calls; retail sometimes computes and spills them first (unsolved, 0x00951FB0).
+- VC7.1 has no value-initialisation: `T()` leaves a non-POD struct's members garbage, so behaviour tests need explicit constructors.
+- Retail free functions in NCreatureMode and the std::sort instantiations are `__fastcall` (YI in the mangled name).

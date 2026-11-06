@@ -177,6 +177,22 @@ protected:
     // chunk 751 (row 0x00854720 CCreatureAction_SpiritReturnToHero::PerformAction): Ego_r.pdb PCreature
     // (CIntelligentPointer<CThingCreatureBase>) at +0x08; the rest stays opaque. Needs engine/CIntelligentPointer.h first.
 protected: CIntelligentPointer<CThingCreatureBase> PCreature; unsigned char _pad_0x10[0x98];
+#elif defined(FABLE_RETAIL_CCREATUREACTIONBASE_INTERRUPTION)
+    // Retail opt-in (chunk 796, row 0x008E9B70 NCreatureMode::CModeStrafe::AnimUpdate): Ego_r.pdb InterruptionGroupID +0x20,
+    // InterruptionPriority +0x24 and Finished +0x61 (no STLport member before them, so the Ego_r offsets hold), read in retail as
+    // `cmp [eax+20h],64h` / `cmp [eax+24h],96h` / `mov cl,[eax+61h]`; the accessors are Ego_r.pdb ?GetInterruptionGroupID@CCreatureActionBase@@QBEJXZ,
+    // ?GetInterruptionPriority@CCreatureActionBase@@QBEJXZ and ?IsFinished@CCreatureActionBase@@QBE_NXZ (inline in retail). The rest stays opaque.
+public:
+    long GetInterruptionGroupID() const { return InterruptionGroupID; }
+    long GetInterruptionPriority() const { return InterruptionPriority; }
+    bool IsFinished() const { return Finished; }
+protected:
+    unsigned char _pad_0x08[0x18];
+    long InterruptionGroupID;                                            // +0x20
+    long InterruptionPriority;                                           // +0x24
+    unsigned char _pad_0x28[0x39];
+    bool Finished;                                                       // +0x61
+    unsigned char _pad_0x62[0x46];
 #else
 protected: unsigned char _pad_0x08[0xa0];
 #endif

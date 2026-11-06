@@ -15,6 +15,17 @@
 class CTCDPhysicalObstruction : public CTCDriverBase {
 public:
     virtual void OnInitialActivate();                    // slot 6 0x007FD3C0
+#ifdef FABLE_RETAIL_CTCDPHYSICALOBSTRUCTION_CREATE
+    // Retail opt-in (chunk 796, row 0x00951FB0 CAIStateGroup_JackDragon::UpdateHover): Ego_r.pdb
+    // ?StatGetInterfaceType@CTCDPhysicalObstruction@@SI?AW4ETCInterfaceType@@XZ (inline: TCI_PHYSICAL_OBSTRUCTION 237, the
+    // UsingComponents bit the caller tests before reading PTCDriver), ?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z
+    // (0x007FD4B0), ?SetLifeTimeSeconds@CTCDPhysicalObstruction@@QAEXM@Z (0x007FD3D0) and
+    // ?SetThingToIgnoreObstruction@CTCDPhysicalObstruction@@QAEXPAVCThing@@@Z (0x007898A3). Declarations only.
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_PHYSICAL_OBSTRUCTION; }
+    static CThing* __fastcall Create(const C3DVector& start, const C3DVector& end, float radius);   // 0x007FD4B0
+    void SetLifeTimeSeconds(float seconds);              // 0x007FD3D0
+    void SetThingToIgnoreObstruction(CThing* thing);     // 0x007898A3
+#endif
     C3DVector     StartPos;                              // +0x0c
     C3DVector     EndPos;                                // +0x18
     long          LifeTimer;                             // +0x24

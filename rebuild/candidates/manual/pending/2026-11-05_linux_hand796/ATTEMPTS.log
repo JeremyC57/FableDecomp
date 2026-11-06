@@ -1,0 +1,62 @@
+Fri Nov  6 11:56:54 UTC 2026 008315c0 a1-a7 see STATUS
+Fri Nov  6 12:00:48 UTC 2026 008315c0 a8-a13 RELOCATION_MATCH (traits body in TU + named per-block traits)
+2026-11-06 008e9b70 s1 temps CAnimInit in args: 1679v1705/880 (ctor/Init order wrong at Add sites, aim ctor outlined)
+2026-11-06 008e9b70 s2 named CAnimInit init per site: 1675/440 (call order now = retail except aim ctor outlined)
+2026-11-06 008e9b70 s3 block-start const CThingCreatureBase& strafer (ParentThing read before StrafeAnimName=): 1681/312 frame 0x44 ok
+2026-11-06 008e9b70 s4 PDB CAnimSet accessors SetFrame/CAnimFrameInfo(float)/SetAsUpdated/GetTC-or-0: 1681/490 (one-arg CAnimFrameInfo loads once)
+2026-11-06 008e9b70 s5 if-form current/last for aim, CAnimFrameInfo(PB,PB): 1677/273 BEST
+2026-11-06 008e9b70 s6 named CAnimFrameInfo info for pullback: 1684/475 (new slot, frame 0x48)
+2026-11-06 008e9b70 s7 function-scope frame reused (frame = PullBackAmount): 1684/283 (PB loaded before Current%)
+2026-11-06 008e9b70 s8 SetFractionComplete(pullBack->GetPercentageComplete()): 1684/475 (CSE spill new slot)
+2026-11-06 008e9b70 s9 SetMainAnim(CAnimInit temp, ternaries): identical bytes to s5 (273)
+2026-11-06 008e9b70 s10 flipped branch (!locked && projectile): identical (VC normalises)
+2026-11-06 008e9b70 s11 do{}while(0) around aim-site CAnimInit + Add: aim ctor now inline as retail: 1699/95
+2026-11-06 008e9b70 s12 SetFractionComplete(GetPercentageComplete()): 1706/225 (new frame slot 0x48)
+2026-11-06 008e9b70 s13 last/fraction locals: 1706/101 (PB loaded before Current%, +1 byte)
+2026-11-06 008e9b70 s14 split interrupted / !loaded remove branches: pull-back block order = retail: 1699/85 BEST
+2026-11-06 008e9b70 s15 GetStrafingAnimationName(ParentThing): identical
+2026-11-06 008e9b70 s16 CThingCreatureBase& creature: identical
+2026-11-06 008e9b70 s17 if/else delay/blendIn: identical
+2026-11-06 008e9b70 s18 fraction = PullBackAmount inside the args: 1706/343 (worse); best stays s14
+2026-11-06 00e80f10 f1 decode as written (local map/def stubs): DIFFER 2914v2894 / 403 (CheckForRod true arm inline)
+2026-11-06 00e80f10 f2 `if (!CheckForRod())`: 2930/229 (won/else block moved after BIGGER_BONUS)
+2026-11-06 00e80f10 f3 `if (!CompetitionWon) {Q} else {X}`: 2925/109 (refuse inline, no cross-jump to GENERIC tail)
+2026-11-06 00e80f10 f4 answer=1 default + `if (answer == 1) {rest} else {refuse}`: 2884/22 (X hoisted above the branch)
+2026-11-06 00e80f10 f5 `if (Won) {X} else {X; ask; loop; X}` + answer==1 nesting: 2894/2 (fucompp operand order)
+2026-11-06 00e80f10 f6 bool enter variant: 8 lines
+2026-11-06 00e80f10 f7 `weight == BiggestFish`: RELOCATION_MATCH
+2026-11-06 00e80f10 f8 without FORCEINLINE_TEXT_EQ: 2862/1216 (opt-in needed)
+2026-11-06 00e80f10 f9 engine/CScriptDef.h + local std stubs: SRC_FAIL (allocator clash)
+2026-11-06 00e80f10 f10 engine/CScriptDef.h + stlport/fable_map.h: RELOCATION_MATCH (relpair: one symbol per retail target) -> src/00e80f10.cpp, test PASS g++
+2026-11-06 00e55ce0 b1 decode (shared headers, out-of-line map members by explicit specialisation): 2545v2529 / 689 (book in ebx, bools in frame)
+2026-11-06 00e55ce0 b2 named alive bools: identical
+2026-11-06 00e55ce0 b3 `> 0` int: identical
+2026-11-06 00e55ce0 b4 result after question: 691
+2026-11-06 00e55ce0 b5 answer at top: identical
+2026-11-06 00e55ce0 b6 spawn split into two statements: 2529/437 (book -> ebp, but name temporaries die early)
+2026-11-06 00e55ce0 b7 explicit CCharString("") region arg: 2529/76 (registers right; cut-scene objects die late)
+2026-11-06 00e55ce0 b8 inner block for hero/cast/args: RELOCATION_MATCH (relpair: one symbol per target) -> src/00e55ce0.cpp, test PASS g++
+2026-11-06 008e18d0 d1a/d1b SRC_FAIL (missing CIntelligentPointer.h, then the GetDummyObject opt-in)
+2026-11-06 008e18d0 d1 decode (shared CThing/CVectorMap/C3DVector, CVectorMap Insert/Update + fastcall sort opt-ins, local CParticleUpdateParameters): DIFFER 1817v2073 / 722 (loops right; sky block calls LowerBound / uninit copy / dtor)
+2026-11-06 008e18d0 d2 rotation in a local before ftol: 718 (fld st(0) / fsubr st(1) = retail)
+2026-11-06 008e18d0 d3 per-loop index declarations: 734
+2026-11-06 008e18d0 d4 reference local for the alive test: 676 (count in ebx, i*8 in ebp, element in edi = retail)
+2026-11-06 008e18d0 d5 radius declared before rotation: 676
+2026-11-06 008e18d0 d6 loop pairs as temporaries: 731
+2026-11-06 008e18d0 d8 no start copy (focus used directly): 1833v2073 / 671 BEST
+2026-11-06 008e18d0 d9 inline-able LowerBound opt-in + implicit dtor: 1942v2073 / 613 lines (expands at all three sites; opt-in dropped)
+2026-11-06 008e18d0 d10 pairs before GetTC: 726
+2026-11-06 008e18d0 d11 frame declared before focus: 671 (same as d8) -> parked differ/008e18d0.cpp (d8)
+2026-11-06 00951fb0 h1 first decode (retail AI headers, local physics/def/action views; explicit GetSubDef specialisation ICE'd, removed): 2150v2272 / 1127
+2026-11-06 00951fb0 h2 same-TU GetSubDef<T> body under auto_inline(off) (def stays in ebp, releases lose the null test) + block-scoped dummy name + CModeDragonHover sized 0x80: 2103v2272 / 629
+2026-11-06 00951fb0 h3 modes declared before def + sqrt(GetSquaredMagnitude2D): 630
+2026-11-06 00951fb0 h4 named xx / yy products: 632 (products still sunk below the landed-marker calls)
+2026-11-06 00951fb0 h5 __forceinline HoverOutOf ctor + inline IS_THING_ALIVE helper: 567 (last IS_THING_ALIVE called out of line: budget)
+2026-11-06 00951fb0 h6 IS_THING_ALIVE through GetPItem: 567
+2026-11-06 00951fb0 h7 __forceinline IS_THING_ALIVE (the landed Update 0x00952E80 spelling): 554
+2026-11-06 00951fb0 h8 alive and stopping as two separate ifs: 556
+2026-11-06 00951fb0 h9 function-scope distance + GetMagnitude: 552
+2026-11-06 00951fb0 h10 function-scope toEnemy: 1039 (dropped)
+2026-11-06 00951fb0 h11 first exit through `bool valid = ...; if (!valid)`: 528 BEST (Terminate block inline as retail)
+2026-11-06 00951fb0 h12 bool flag at all five alive checks: 897 (dropped)
+2026-11-06 00951fb0 h13 bool flag also at the hover-out check: 619 -> parked differ/00951fb0.cpp (h11)

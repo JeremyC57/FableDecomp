@@ -589,7 +589,14 @@ template<class _Arg1,class _Arg2,class _Result> struct binary_function {
 template<class _Tp> struct less : public binary_function<_Tp,_Tp,bool> {
     bool operator()(const _Tp& x,const _Tp& y) const { return x<y; }
 };
+#ifdef FABLE_RETAIL_STLP_SORT_FASTCALL
+// Retail opt-in (chunk 796, row 0x008E18D0): the std::sort instantiations are __fastcall in retail (first in ecx, last in edx, the
+// comparator pushed: 0x0076C000 / 0x0076C1A0 are bound as ??$sort@...@std@@YIX...; the landed 0x00767DA0 local model spells the
+// same). A declaration only.
+template<class _RandomAccessIter,class _Compare> void __fastcall sort(_RandomAccessIter,_RandomAccessIter,_Compare);
+#else
 template<class _RandomAccessIter,class _Compare> void sort(_RandomAccessIter,_RandomAccessIter,_Compare);
+#endif
 template<class _RandomAccessIter,class _RandomNumberGenerator>
 void __fastcall random_shuffle(_RandomAccessIter,_RandomAccessIter,_RandomNumberGenerator&);
 }
