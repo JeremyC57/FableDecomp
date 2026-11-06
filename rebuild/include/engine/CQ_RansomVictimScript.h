@@ -24,6 +24,12 @@ public:
     void DisappearFollowers();                                           // 0x00DE4710
     void GossipSetup();                                                  // 0x00DE1280
 #endif
+#ifdef FABLE_RETAIL_CQ_RANSOMVICTIMSCRIPT_CHECKVICTIMHIT
+    // Retail opt-in (chunk 808): the watch thread CVictim::Main 0x00DE6C20 spawns through CSpawnedFunc1<CQ_RansomVictimScript,
+    //   CScriptThing> (vtable 0x012DD860, Func +0x34 = 0x00DE81B0; thread name "ParentClass." + "CheckVictimHit"); Ego_r.pdb
+    //   ?CheckVictimHit@CQ_RansomVictimScript@NScript@@QAEXVCScriptThing@@@Z, the landed row 0x00DE81B0. Declaration only.
+    void CheckVictimHit(CScriptThing);                                   // 0x00DE81B0
+#endif
     bool QuestStartScreened; // +48
     bool MissionSucceeded; // +49
     bool MissionFailed; // +4a

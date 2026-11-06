@@ -384771,6 +384771,13 @@ $catalog = @(
         TestSource = '00/e0/NScriptCQUndeadRisingScript_Main_00e0b160_test.cpp'
         PassPattern = '00e0b160_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e78630'
+        Module = 'NScript::CV_ExposeMayorScript::CEM_Sheriff'
+        Source = '00/e7/NScriptCVExposeMayorScriptCEMSheriff_Main_00e78630.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCEMSheriff_Main_00e78630_test.cpp'
+        PassPattern = '00e78630_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

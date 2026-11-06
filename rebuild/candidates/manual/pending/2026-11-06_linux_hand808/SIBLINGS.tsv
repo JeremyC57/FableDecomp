@@ -1,0 +1,7 @@
+address	source	grade_with_final_overlay	note
+00E78630	src/00e78630.cpp	RELOCATION_MATCH	landed candidate; vland RELOCATION_MATCH + PASS
+00DE8370	differ/00de8370.cpp	DIFFER(4894v4894)	parked, SDIFF 4
+00DE6C20	differ/00de6c20.cpp	DIFFER(5479v5511)	parked, SDIFF 26
+00E90BE0	differ/00e90be0.cpp	DIFFER(4977v4914)	parked, SDIFF 49
+00E93EB0	differ/00e93eb0.cpp	DIFFER(5171v5321)	parked, SDIFF 514
+00E7C8E0	differ/00e7c8e0.cpp	DIFFER(5358v5358)	parked, SDIFF 38

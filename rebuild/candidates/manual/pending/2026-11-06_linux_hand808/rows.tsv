@@ -1,0 +1,7 @@
+address	module	name	length
+00de8370	NScript::CQ_RansomVictimScript::CRansommer	Main	4894
+00e90be0	NScript::CV_GuildMasterScript::CGuildMasterGameFlow	Main	4914
+00e78630	NScript::CV_ExposeMayorScript::CEM_Sheriff	Main	5045
+00e93eb0	NScript::CV_HauntedHouseScript	Main	5321
+00e7c8e0	NScript::CV_FishermanScript::CFisherman	Main	5358
+00de6c20	NScript::CQ_RansomVictimScript::CVictim	Main	5511

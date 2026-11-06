@@ -27492,3 +27492,9 @@ chunk	address	module	name	length
 809	00e9e420	NScript::CV_IntroductionToTrophiesScript::CBriarRose	Main	5915
 809	00f0d630	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy	Main	5989
 809	00e8ef80	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon	Main	5996
+810	00d1b200	NScript::CQ_BountyHuntScript::CBH_GangLeader	Main	6100
+810	00d56790	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent	Main	6151
+810	00d62480	NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief	Main	6195
+810	00e3eb10	NScript::CV_BordelloScript::CBordelloLady	Main	6330
+810	00d8bcd0	NScript::CQ_HerosOldHouseScript::CFishermansWife	Main	6343
+810	00ec8300	NScript::CV_SickChildScript::CManInLove	Main	6394

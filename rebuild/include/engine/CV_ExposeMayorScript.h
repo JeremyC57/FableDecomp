@@ -79,9 +79,35 @@ public:
     class CEM_FlashLightPoint;                                           // Alloc 0x00E76730
     class CHH_CellarDoor;                                                // Alloc 0x00E76800
 };
+#ifdef FABLE_RETAIL_CV_EXPOSEMAYORSCRIPT_CEM_SHERIFF
+// Retail opt-in (chunk 808): nested CEM_Sheriff (Ego_r.pdb, 32 bytes): CEntityScriptBase (0x14), ParentClass +0x14, PMasterData +0x18,
+// IntroDone +0x1c, StageTwoSpoken +0x1d, StageFourSpoken +0x1e, CommentedOnHeroMarriedStatus +0x1f. Retail: the Alloc 0x00E76470 news
+// 0x20 and stores vtable 0x012E98B4 (slot 0 ??_G 0x00E76520, slot 1 Main 0x00E78630, slot 2 Init 0x00E76540, slot 3 GetParentScript
+// 0x00E76510, slot 4 OnPersist 0x00E776C0); Main 0x00E78630 reads / writes +0x1c..+0x1f, OnPersist 0x00E776C0 transfers "IntroDone" at +0x1c.
+// Methods: the Ego_r.pdb / FableWin.pdb name set ?<Name>@CEM_Sheriff@CV_ExposeMayorScript@NScript@@...
+class CV_ExposeMayorScript::CEM_Sheriff : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_ExposeMayorScript&, CScriptDataBase*, const CScriptThing&); // 0x00E76470
+    virtual CScriptBase* GetParentScript() const;                        // 0x00E76510
+protected:
+    CV_ExposeMayorScript& ParentClass;                                   // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    bool IntroDone;                                                      // +0x1c
+    bool StageTwoSpoken;                                                 // +0x1d
+    bool StageFourSpoken;                                                // +0x1e
+    bool CommentedOnHeroMarriedStatus;                                   // +0x1f
+    virtual void Init();                                                 // 0x00E76540
+    virtual void OnPersist(CPersistContext&);                            // 0x00E776C0
+    virtual void Main();                                                 // 0x00E78630
+};
+#endif
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_ExposeMayorScript) == 0xA0);
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager) == 0x20);
+#ifdef FABLE_RETAIL_CV_EXPOSEMAYORSCRIPT_CEM_SHERIFF
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_ExposeMayorScript::CEM_Sheriff) == 0x20);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_EXPOSEMAYORSCRIPT_H

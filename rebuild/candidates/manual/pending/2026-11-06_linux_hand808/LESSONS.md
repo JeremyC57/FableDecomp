@@ -1,0 +1,9 @@
+- VC7.1 emits a `#error` reached through CScriptDef.h (CSubDefClassBase.h / CDefString.h) as an endless cl.exe spin under Wine: run bin/errchk.sh with an ABSOLUTE path before every new grade; quest rows that read pGlobalScriptDef need FABLE_RETAIL_DEF_CLASS_BASE + FABLE_RETAIL_CDEFSTRINGTABLE + FABLE_RETAIL_CRGBCOLOUR.
+- Entity-script Mains whose T-exit epilogue copies land in the wrong place: `TRetVoid _Fail_Val;` + `return _Fail_Val.Return();` (CVictimsBrotherHelper::Main form) fixed Ransommer from 107 to 32 lines.
+- seh release on a parent member: `CQ_RansomVictimScript& parent = ParentClass; if (parent.seh_X.IsValid()) parent.seh_X.Release();` gives retail's `mov eax,[esi+14h]; lea ebp,[eax+8Ch]`; the handle-reference form gives `add ebp,8Ch`.
+- `CTimer t; t = x; t.GetTime()` in quest Mains: retail expands both (pDSTGame slot 89 SetTimer / 90 GetTimer) -- define `__forceinline` operator= / GetTime row-locally; plain `inline` gets declined at some sites.
+- `CCharString == "TEXT"` in quest Mains needs both FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ (null arm repe cmpsb) and FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE (non-null arm Compare 0x411570; neg; sbb; inc).
+- Frame size off by one object: wrap the one local retail does not keep live (Fisherman: `C3DVector hidingPos` + its run loop) in a block; wrapping more than that undershoots the frame.
+- SetEntityAsRegionFollowing pushes Me before the GetHero call: the argument order is (GetHero(), Me, bool), read the push order, not the call order.
+- Movie / CScriptThing ctor-dtor inline expansion is a function-wide budget (loop sites first): OUTOFLINE_CTOR/_DTOR and declared-only ~CCountedPointer<MovieBase> move the whole TU, not single sites; freeing budget inlines other sites.
+- Declined inline virtual wrappers stay virtual slot calls in retail (HauntedHouse IsAlive), an out-of-line declared virtual on a local is devirtualized: both appear in one function.
