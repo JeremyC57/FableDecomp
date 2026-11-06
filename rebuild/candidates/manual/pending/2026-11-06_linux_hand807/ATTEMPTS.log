@@ -1,0 +1,45 @@
+00e0b160 a1 DIFFER(4568v4584) 51 lines: IsAlive called (COMDAT 0x004AB130) where retail expands null test + slot-75 vcall
+00e0b160 a2 RELOCATION_MATCH: row-local inline CScriptThing::IsAlive body; relpair all bound-same, strchk 49/49
+00ee57b0 a1 DIFFER(4581v4246) 344 lines: first full model (header opt-in GUIDE); exits/loop shape differ, spawned-func flag word in ebx, +335 bytes of expanded dtors
+dbcd60 a1 RELOCATION_MATCH
+db86b0 a1 DIFFER(4325v4325) 111 lines: hint branch pads; retail Xbox+PC returns share one PauseAll pad (edx) and the final T has its own (eax); ours Xbox shares with final (edx), PC own (eax); parity flip carries into AddQuestInfoCounter/DisplayQuestInfo; also fcomp [0] reloc noise
+db86b0 a2 if(!IsXbox()) swapped branches: same pad pattern (first branch merges with final)
+db86b0 a3 final check as if(!T){...}else return: worse 159
+db86b0 a4 do{}while(0) around the hint: 111 unchanged
+db86b0 a5 explicit CCharString temps: worse 156 (frame shift)
+db86b0 a6 counter via named local: 116
+db86b0 a7 bool xbox local: 111 unchanged
+db86b0 a8 final plain return: 111 unchanged
+db86b0 a9 branch plain returns: 111 unchanged
+ecf7f0 a1 DIFFER(5079v4885) 907: by-value SetIsPushableByHero copy called (retail expands it); compare chains reload expression's data after each Compare call (retail keeps it in esi); loop shape
+ecf7f0 a2 +row-local inline copy ctor: 1255 (predicate copy expands too)
+ecf7f0 a3 +IMPLICIT_COPY: 1212 (same)
+ecf7f0 a4 +same-TU noinline CBasicString<char>::Compare body: 204 (VC now caches the string data across the chain, as retail)
+ecf7f0 a5 a4 with the landed 0x00411570 loop body, inline __declspec(noinline): 204
+ecf7f0 a6 a5 + while(!T) loop: 204 (loop top now matches)
+ecf7f0 a7 a6 + inline ~CTimer body: 204 (still called at every exit; retail expands it at the natural loop exit only)
+ecf7f0 a8 a7 + inline copy body: 351
+ecf7f0 a9 a7 + IMPLICIT_COPY: 264
+dc93f0 a1 DIFFER(4538v4507) 486: first shape (row-local inline ~CScriptThing, declared-only movie PImp dtor)
+dc93f0 a2 explicit CCharString("") spawn name arg: 374, SDIFF 13 (retail builds the "" after the new expression)
+dc93f0 a3 a2 + IMPLICIT_COPY: 898 (by-value argument copy now expanded as retail, but the CSpawnedFunc1 Par1 copy and ~temp expand too)
+dc93f0 a4 IMPLICIT_COPY, out-of-line ~CScriptThing: 849
+dc93f0 a5 out-of-line ~CScriptThing: 893
+dc93f0 a6 a2 + IsDistanceBetweenThingsUnder(hero, marker): 320, SDIFF 9
+dc93f0 a7 a6 + `returned[j]==false`: 320 unchanged
+ee57b0 a2 a1 with plain-inline CTimer operator=/GetTime: 344, SDIFF 34 unchanged
+ee57b0 a3 a2 with ~CTimer declared-only (called): 302, SDIFF 24
+ee57b0 a4 a2 with CTimer ctor+dtor declared-only: 256, SDIFF 22 (retail expands RegisterTimer; index kept in ebx/ebp lost)
+ee57b0 a5 a1 + for(;;){if(T)break;...} loop (gotcha 705): 344 unchanged
+ee57b0 a6 a2 + for/break loop: 344 unchanged
+ee57b0 a7 a1 with ~CTimer declared-only: 302, SDIFF 24
+ee57b0 a8 a1 with __declspec(noinline) inline ~CTimer: 302, SDIFF 23
+ee57b0 a9 a1 with ctor+dtor declared-only: 256, SDIFF 22
+ee57b0 a10 a9 + talk block nested (retail tests T between the talk-distance test and MsgIsTalkedToBy): 287, SDIFF 26; body hunks gone (no cond-dtor flag word), residue is exit pads + timer-index registers
+ee57b0 a11 a1 + nested talk block: 330, SDIFF 29 (~CTimer expanded at 6 pads, retail 2)
+ee57b0 a12 a11 with ~CTimer declared-only: 326, SDIFF 24
+db86b0 a10 a1 + do{T}while(0) mask on the final hint check: 111 unchanged
+ecf7f0 a10 a7 with __forceinline ~CTimer: 230 (expanded at every exit; retail only at the natural loop exit)
+dc93f0 a8 a6 + row-local inline CScriptThing copy ctor: 850 (Par1 copy expands too)
+dc93f0 a9 a6 + out-of-line STB dtor: 1120
+dc93f0 a10 a6 + declared-only map ctor/dtor: 909

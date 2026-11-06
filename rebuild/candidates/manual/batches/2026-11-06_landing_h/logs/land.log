@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00dbcd60   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00dbcd60   RELOCATION_MATCH PASS   Main
+00e0b160   WARN RELOC_NAME: ?WatchForTermination@CQ_UndeadRisingScript@NScript@@QAEXXZ -> 00e0c350 labelled 'CV_LostTraderScript::WatchForQuestFailureState'
+00e0b160   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e0b160   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00dbcd60 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::?Main@CNOVI_Victim@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+  00e0b160 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::?Main@CQ_UndeadRisingScript@NScript@@UAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQNewOakValeIntroScriptCNOVIVictim_Main_00dbcd60
+  NScriptCQUndeadRisingScript_Main_00e0b160

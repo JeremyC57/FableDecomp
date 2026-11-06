@@ -1,0 +1,7 @@
+address	module	name	length
+00ee57b0	NScript::CV_TourGuideScript::CTourGuideGuide	Main	4246
+00dbcd60	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim	Main	4309
+00db86b0	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather	Main	4325
+00dc93f0	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton	Main	4507
+00e0b160	NScript::CQ_UndeadRisingScript	Main	4584
+00ecf7f0	NScript::CV_SickChildScript::CWomanToAttract	Main	4885

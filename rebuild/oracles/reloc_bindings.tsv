@@ -37259,3 +37259,11 @@ _New_c35b10@8	00c35b10	00c275e0
 ?TraderYellAtHero@CLostTraderTrader@CV_LostTraderScript@NScript@@AAEXXZ	00ea4bb0	00ea36b0
 ?TraderYellForHelp@CLostTraderTrader@CV_LostTraderScript@NScript@@AAEXXZ	00ea4980	00ea36b0
 ?AddGoodDeed@CQ_NewOakValeIntroScript@NScript@@QAEXXZ	00db0660	00db2b10
+??_7?$CEntityScriptBinding@VCQ_UndeadRisingScript@NScript@@@@6B@	012dfed0	00e0b160
+?Alloc@CUndeadRisingBoss@CQ_UndeadRisingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e0d130	00e0b160
+?Alloc@CUndeadRisingCentre@CQ_UndeadRisingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e0d760	00e0b160
+?Alloc@CUndeadRisingFirefly@CQ_UndeadRisingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e0c970	00e0b160
+?Alloc@CUndeadRisingZombieAttacker@CQ_UndeadRisingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e0cf20	00e0b160
+?Alloc@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e0d590	00e0b160
+?LampChecker@CQ_UndeadRisingScript@NScript@@QAEXXZ	00e0c4c0	00e0b160
+?WatchForTermination@CQ_UndeadRisingScript@NScript@@QAEXXZ	00e0c350	00e0b160

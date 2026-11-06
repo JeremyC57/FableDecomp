@@ -27486,3 +27486,9 @@ chunk	address	module	name	length
 808	00e93eb0	NScript::CV_HauntedHouseScript	Main	5321
 808	00e7c8e0	NScript::CV_FishermanScript::CFisherman	Main	5358
 808	00de6c20	NScript::CQ_RansomVictimScript::CVictim	Main	5511
+809	00da0ef0	NScript::CQ_MinionCampScript::CBriarRose	Main	5527
+809	00f063b0	NScript::CQ_AmbushTradersScript::CAT_BanditAlly	Main	5651
+809	00dac760	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard	Main	5867
+809	00e9e420	NScript::CV_IntroductionToTrophiesScript::CBriarRose	Main	5915
+809	00f0d630	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy	Main	5989
+809	00e8ef80	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon	Main	5996

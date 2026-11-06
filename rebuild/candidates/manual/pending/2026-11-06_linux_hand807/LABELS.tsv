@@ -1,0 +1,24 @@
+address	Class::Name	evidence
+0x00EE57B0	NScript::CV_TourGuideScript::CTourGuideGuide::Main	slot 1 of entity vtable 0x012F511C (landed Alloc 0x00EE4BB0, Init 0x00EE4C60, GetParentScript 0x00EE4C50, sdd 0x00EE4CD0); Ego_r.pdb + FableWin.pdb ?Main@CTourGuideGuide@CV_TourGuideScript@NScript@@EAEXXZ (parked)
+0x00DBCD60	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::Main	slot 1 of entity vtable 0x012D87B8 (sdd 0x00DAEE90, Init 0x00DAEEB0, GetParentScript 0x00DAEE80); both PDBs ?Main@CNOVI_Victim@CQ_NewOakValeIntroScript@NScript@@EAEXXZ; RELOCATION_MATCH
+0x00DB86B0	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::Main	slot 1 of entity vtable 0x012D8388 (sdd 0x00DAC370, Init 0x00DAC390, GetParentScript 0x00DAC360); both PDBs ?Main@CNOVI_LiveFather@...@@EAEXXZ (parked)
+0x00DC93F0	NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton::Main	slot 1 of entity vtable 0x012DA494 (landed sdd 0x00DC3EA0, Init 0x00DC3E50, GetParentScript 0x00DC3E40); both PDBs ?Main@CSecretPassageSkeleton@...@@EAEXXZ (parked)
+0x00E0B160	NScript::CQ_UndeadRisingScript::Main	slot 2 of script vtable 0x012DFD3C (landed ctor 0x00E0AFE0, RegisterMain 0x00E0B0A0, Init 0x00E0B020); both PDBs ?Main@CQ_UndeadRisingScript@NScript@@UAEXXZ; RELOCATION_MATCH
+0x00ECF7F0	NScript::CV_SickChildScript::CWomanToAttract::Main	slot 1 of entity vtable 0x012F2404 (landed sdd 0x00ECD5D0, Init 0x00ECD380, GetParentScript 0x00ECD370); both PDBs ?Main@CWomanToAttract@CV_SickChildScript@NScript@@EAEXXZ (parked)
+0x00DAEDE0	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::Alloc	both PDBs ?Alloc@CNOVI_Victim@...; stores vtable 0x012D87B8; bound by CQ_NewOakValeIntroScript::Main 0x00DABAC0 (as CVictim, see NAME_FIXES)
+0x00DAC2C0	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::Alloc	both PDBs ?Alloc@CNOVI_LiveFather@...; stores vtable 0x012D8388; bound by 0x00DABAC0 (as CLiveFather)
+0x00DAEE80	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::GetParentScript	slot 3 of 0x012D87B8; both PDBs
+0x00DAEEB0	NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::Init	slot 2 of 0x012D87B8; both PDBs
+0x00DAC360	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::GetParentScript	slot 3 of 0x012D8388; both PDBs
+0x00DAC390	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::Init	slot 2 of 0x012D8388; both PDBs
+0x00E0C350	NScript::CQ_UndeadRisingScript::WatchForTermination	spawned by 0x00E0B160 under "WatchForTermination"; both PDBs; was CV_LostTraderScript::WatchForQuestFailureState
+0x00E0C4C0	NScript::CQ_UndeadRisingScript::LampChecker	spawned by 0x00E0B160 under "LampChecker"; both PDBs; landed under this name (bound-same)
+0x00E0C970	NScript::CQ_UndeadRisingScript::CUndeadRisingFirefly::Alloc	bound by 0x00E0B160 to the "UndeadRisingFirefly" binding; Ego_r.pdb ?Alloc@CUndeadRisingFirefly@CQ_UndeadRisingScript@NScript@@...
+0x00E0CF20	NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttacker::Alloc	"UndeadRisingZombieAttacker" binding in 0x00E0B160; Ego_r.pdb Alloc spelling
+0x00E0D590	NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss::Alloc	"UndeadRisingZombieAttackerBoss" binding in 0x00E0B160; Ego_r.pdb Alloc spelling
+0x00E0D130	NScript::CQ_UndeadRisingScript::CUndeadRisingBoss::Alloc	"UndeadRisingBoss" binding in 0x00E0B160; Ego_r.pdb Alloc spelling
+0x00E0D760	NScript::CQ_UndeadRisingScript::CUndeadRisingCentre::Alloc	"UndeadRisingCentre" binding in 0x00E0B160; Ego_r.pdb Alloc spelling
+0x00EE6850	NScript::CV_TourGuideScript::MoveToNextWaypoint	called by 0x00EE57B0 with (NextTourWaypoint, seh_me); Ego_r.pdb / FableWin.pdb name set
+0x00EE6A40	NScript::CV_TourGuideScript::WatchForNoFollowers	spawned by 0x00EE57B0 under "ParentClass.WatchForNoFollowers" (CSpawnedFunc target); both PDBs
+0x00411570	CBasicString<char>::Compare	Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z; was strcmp_signed
+0x00CDBFB0	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map	FSE StdMap_Destroy_API + vland RELOC_NAME; was CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a

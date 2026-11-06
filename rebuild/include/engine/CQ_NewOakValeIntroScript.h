@@ -210,6 +210,43 @@ protected:
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife) == 0x20);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl) == 0x20);
 #endif
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_VICTIM_LIVEFATHER
+// Retail opt-in (chunk 807): the two entity scripts the default body forward-declares. Ego_r.pdb layouts (struct_layouts_egor.tsv,
+// entity offsets equal retail's: CEntityScriptBase is 0x14 in both): CNOVI_Victim 32 bytes (DisplayedGameInfo +0x1c, DoneThanks
+// +0x1d), CNOVI_LiveFather 32 bytes (PenniesGiven +0x1c); retail Main 0x00DBCD60 / 0x00DB86B0 read these offsets. Entity vtables
+// 0x012D87B8 (Victim: 0 scalar deleting dtor 0x00DAEE90, 1 Main 0x00DBCD60, 2 Init 0x00DAEEB0, 3 GetParentScript 0x00DAEE80) and
+// 0x012D8388 (LiveFather: 0 0x00DAC370, 1 Main 0x00DB86B0, 2 Init 0x00DAC390, 3 GetParentScript 0x00DAC360); Main / Init are
+// private (Ego_r.pdb ?Main@CNOVI_Victim@CQ_NewOakValeIntroScript@NScript@@EAEXXZ and the LiveFather / Init spellings).
+namespace NScript {
+class CQ_NewOakValeIntroScript::CNOVI_Victim : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DAEDE0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DAEE80
+private:
+    virtual void Main();                                                 // 0x00DBCD60
+    virtual void Init();                                                 // 0x00DAEEB0
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    bool DisplayedGameInfo;                                              // +0x1c
+    bool DoneThanks;                                                     // +0x1d
+};
+class CQ_NewOakValeIntroScript::CNOVI_LiveFather : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DAC2C0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DAC360
+private:
+    virtual void Main();                                                 // 0x00DB86B0
+    virtual void Init();                                                 // 0x00DAC390
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    long PenniesGiven;                                                   // +0x1c
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Victim) == 0x20);
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather) == 0x20);
+#endif
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript) == 0x10c);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Villager) == 0x20);
 
