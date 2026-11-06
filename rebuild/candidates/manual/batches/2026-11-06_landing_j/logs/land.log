@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00da0ef0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00da0ef0   RELOCATION_MATCH PASS   Main
+00f063b0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00f063b0   RELOCATION_MATCH PASS   Main
+00f0d630   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00f0d630   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00f0d630   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00da0ef0 RELOCATION_MATCH NScript::CQ_MinionCampScript::CBriarRose::?Main@CBriarRose@CQ_MinionCampScript@NScript@@EAEXXZ
+  00f063b0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_BanditAlly::?Main@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00f0d630 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::?Main@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NScriptCQMinionCampScriptCBriarRose_Main_00da0ef0
+  NScriptCQAmbushTradersScriptCATBanditAlly_Main_00f063b0
+  NScriptCQAmbushTradersScriptCATConvoySpy_Main_00f0d630

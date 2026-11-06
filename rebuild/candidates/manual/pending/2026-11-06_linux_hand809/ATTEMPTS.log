@@ -1,0 +1,37 @@
+19:23 00f063b0 a1 DIFFER 46; a2 RELOCATION_MATCH (noinline Compare)
+19:29 00f0d630 a1 DIFFER 59; a2 RELOCATION_MATCH (for(;!T;NSF), inline CScriptThing())
+00dac760	a1	DIFFER(5913v5867) 2057 lines: call sequence matches (movie ctor split call/expanded as retail, no lever); residue: retail keeps 0 in ebx loop-carried (xor ebx,ebx at loop bottom; push ebx for the false args), ours push 0 -> ebx/ebp swap, +4 spill slot; hit-block T expands the STB dtor (retail calls 0x7E74D0)
+00dac760	v2-v9	loop-form probes: while(!T){..;NSF} -> 128 lines (ebx zero loop-carried as retail, but the after-loop dtor becomes a call and the WAIT-loop exits expand); for(;;){if(T)break;..} 116; do-while 2036; function-scope conversation / index local no change
+00dac760	t1-t2	hit condition as a bool local / without inner parens: no change (2057)
+00e8ef80	a1	DIFFER(5937v5996) 178 lines: calls match; natural loop exit calls ~STB (retail expands it, the only expanded site) + frame-slot permutation (bool temp before seh_me)
+00e8ef80	v2-v5	loop-head do-while(0), all/pre-loop T wrapped, while form: no help (STB OUTOFLINE_DTOR was on, so no site could expand)
+00e8ef80	a2	DIFFER(6054v5996) 91 lines: STB dtor implicit (OUTOFLINE_DTOR dropped) -> slots right, natural exit expanded; extra: talk-block first T expands too (retail calls) and the zero reg is ebx (retail esi)
+00e8ef80	v6-v8	loop head written for(;;NSF){T-return / do-while(0) T / T-break}: 85 lines (all three identical), zero reg now esi as retail; residue: the talk-block first T (0x00E8F176) still expands the seh_me dtor (retail calls 0x7E74D0), so the exit pads differ
+00e9e420	a1	DIFFER(5988v5915) 558 lines: first compile; the in-loop LookAtMe.IsAlive is expanded (retail calls 0x4AB130; the pre-loop one is expanded in both); exit-pad CScriptThing dtor splits differ
+00da0ef0	a1	DIFFER(5239v5527)	225	first compile: natural shape, DoChant/DoOnHeroHitSpeech inline
+00da0ef0	a2	DIFFER(5527v5527)	30	__forceinline DoChant (plain inline: VC7.1 calls it at both sites, retail expands both), chant-bar colours swapped (green, red)
+00da0ef0	a3	RELOCATION_MATCH	0	the ONHIT_STAGEONE line a named block-scope CCharString built before AddNewConversation (retail builds it first; the FOLLOW line stays a temporary)
+00e9e420	diag	/d2inlS6-8 no change (558); /d2inlS12 537, /d2inlS20 720, /d2inlT60 585 (diagnostics only, none reaches retail)
+00e9e420	v2	DIFFER(5992v5915) 571: CScriptThing::IsAlive declared only (both sites call; retail expands the pre-loop one)
+00e9e420	v3	DIFFER(5733v5915) 508: CTimer dtor declared only (every ~CTimer a call; retail expands 8 sites, calls 2)
+00e9e420	v4	DIFFER(5912v5915) 911: main loop while(!T){..;NSF}
+00e9e420	v5	DIFFER(6035v5915) 440: main loop for(;;NSF){T-return;..}: OpinionDeedTimer index now in ebx as retail; residue zero kept in ebp (retail pushes immediates), in-loop IsAlive expanded, exit-pad merges
+00e9e420	v6	DIFFER(5733v5915) 482: v5 + CTimer dtor declared only (wrong model: retail expands 8 sites)
+00e9e420	v7	DIFFER(6035v5915) 471: v5 + IsAlive declared only
+00e9e420	v8	DIFFER(6035v5915) 440: v5 + loop-head T in do-while(0): identical code
+00e9e420	v9	DIFFER(6260v5915) 690: v5 without the pre-loop post-wait T
+00e9e420	v10	DIFFER(5960v5915) 477: v5 without the row-local empty ~CScriptThing body
+00e9e420	v11	DIFFER(5912v5915) 911: for(;;){T;..;NSF} (NSF at the end of the body)
+00e9e420	PARK	best v5 440 lines: per-exit ~CTimer / ~CScriptThing / movie dtor splits (retail expands the natural exit and the outer pads, calls 0x00CD4470 / 0x004AA840 at the shared nested pad), the in-loop LookAtMe.IsAlive call (retail 0x004AB130, ours expands), zero register (ours keeps 0 in ebp, retail pushes immediates); chunk 807's 0x00EE57B0 ~CTimer park is the same residue
+00e8ef80	s_v10	DIFFER(6004v5996)	27	OUTOFLINE_DTOR + row-local inline empty user-declared STB dtor: the talk-block T pad now calls 0x7E74D0 as retail (user dtor costs more), but the expanded natural-exit copy stores the STB vptr first (8 bytes, retail's implicit dtor stores none)
+00e8ef80	s_v11	DIFFER(6038v5996) 85: talk condition through a named bool (TalkedTo = A || B; if (TalkedTo)): identical code to v6
+00e8ef80	s_v12	DIFFER(6038v5996) 85: talk condition spelled !(!A && !B): identical code to v6
+00e8ef80	PARK	(superseded below) best s_v10 27 lines (8 bytes): the talk-block T pad is an inline-cost split of the implicit STB dtor (retail calls 0x007E74D0 there and expands the natural exit; the implicit dtor costs too little, a user-declared inline dtor costs enough but stores the STB vptr first)
+00e8ef80	diag	/d2inlS8-12 no change; /d2inlT70 and /d2inlT72 RELOCATION_MATCH on s_v6 (implicit dtor): the talk-pad split is the inline threshold (cost side), diagnostic only
+00dac760	diag	a1 /d2inlT66-73 2022 (regalloc stays); v4 /d2inlT70-72 128
+00dac760	g_r1	DIFFER(5903v5867) 116: for(;;){T-return; body; NSF}
+00dac760	g_r2	DIFFER(5885v5867) 103: for(;;NSF){T-return; body} (Son's loop form): loop-top / latch zero register now as retail (xor ebx at the latch)
+00dac760	g_r3	DIFFER(5906v5867) 97: r2 + both EntitySetFacingAngleTowardsThing(Me,hero,false) flipped
+00dac760	g_r4	DIFFER(5906v5867) 93: r2 + only the movie-scene one flipped: retail Game->EntitySetFacingAngleTowardsThing(Game->GetHero(),Me,false) (pushes false, Me, then the GetHero result); residue = one more expanded seh_me-dtor pad than retail (pad sharing differs); r4 + /d2inlT72 = RELOCATION_MATCH (diagnostic only)
+00dac760	PARK	best g_r4 93 lines: inline-threshold split of the implicit STB dtor at one T pad (matches only under the diagnostic /d2inlT72, like 00e8ef80 s_v6)
+00e8ef80	PARK2	differ source switched to s_v6 (implicit STB dtor, the retail model: retail's expanded copies store no STB vptr), 85 lines, RELOCATION_MATCH under the diagnostic /d2inlT72; s_v10 (user-declared inline dtor, 27 lines) kept in probe/ as evidence of the cost side

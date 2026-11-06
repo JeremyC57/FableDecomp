@@ -247,6 +247,27 @@ protected:
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Victim) == 0x20);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather) == 0x20);
 #endif
+#ifdef FABLE_RETAIL_CQ_NEWOAKVALEINTROSCRIPT_GUARD
+// Retail opt-in (chunk 809): the NOVI_Guard entity script. Ego_r.pdb layout (struct_layouts_egor.tsv, entity offsets equal
+// retail's: CEntityScriptBase is 0x14 in both): CNOVI_Guard 28 bytes (ParentClass +0x14, PMasterData +0x18); the landed Alloc
+// 0x00DAC580 allocates 0x1c. Entity vtable 0x012D83C0 (0 scalar deleting dtor 0x00DAC630, 1 Main 0x00DAC760, 2 Init 0x00DAC650,
+// 3 GetParentScript 0x00DAC620, all landed as CNOVI_Guard); Main / Init are private (Ego_r.pdb and FableWin.pdb
+// ?Main@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@EAEXXZ).
+namespace NScript {
+class CQ_NewOakValeIntroScript::CNOVI_Guard : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_NewOakValeIntroScript&, CScriptDataBase*, const CScriptThing&); // 0x00DAC580
+    virtual CScriptBase* GetParentScript() const;                        // 0x00DAC620
+private:
+    virtual void Main();                                                 // 0x00DAC760
+    virtual void Init();                                                 // 0x00DAC650
+protected:
+    CQ_NewOakValeIntroScript& ParentClass;                               // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Guard) == 0x1c);
+#endif
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript) == 0x10c);
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_NewOakValeIntroScript::CNOVI_Villager) == 0x20);
 

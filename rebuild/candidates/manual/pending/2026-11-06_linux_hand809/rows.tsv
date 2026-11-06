@@ -1,0 +1,7 @@
+address	module	name	length
+00da0ef0	NScript::CQ_MinionCampScript::CBriarRose	Main	5527
+00f063b0	NScript::CQ_AmbushTradersScript::CAT_BanditAlly	Main	5651
+00dac760	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard	Main	5867
+00e9e420	NScript::CV_IntroductionToTrophiesScript::CBriarRose	Main	5915
+00f0d630	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy	Main	5989
+00e8ef80	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon	Main	5996

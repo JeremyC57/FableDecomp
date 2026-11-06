@@ -8,6 +8,9 @@
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 #include "stlport/fable_map.h"
+#if defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_BANDITALLY) || defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_CONVOYSPY)
+class CScriptGameResourceObjectScriptedThingBase;
+#endif
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_AmbushTradersScript:public CLevelScriptBase<CQ_SunnyvaleMasterData> {
@@ -142,6 +145,28 @@ public:
     // after PhaseOne 0x00F0B780. Declarations only; no layout change.
     void PhaseTwo();                                                     // 0x00F0C140
 #endif
+#ifdef FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_BANDITALLY
+    // Retail opt-in (chunk 809): the parent helpers CAT_BanditAlly::Main 0x00F063B0 calls on ParentClass (Ego_r.pdb / FableWin.pdb
+    // ?AddBanditHealthBar@CQ_AmbushTradersScript@NScript@@QAEJABVCScriptThing@@@Z, ?AskBanditHireQuestion@..@@QAE_NABVCScriptThing@@
+    // AAVCScriptGameResourceObjectScriptedThingBase@@@Z, ?BanditHireSetup@..@@QAEJABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z,
+    // ?WatchForBanditSpeechMarkers@..@@QAEXVCScriptThing@@@Z, the spawned-thread member). Declarations only; no layout change.
+    long AddBanditHealthBar(const CScriptThing&);                        // 0x00F07A80
+    bool AskBanditHireQuestion(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&); // 0x00F07ED0
+    long BanditHireSetup(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&);      // 0x00F081E0
+    void WatchForBanditSpeechMarkers(CScriptThing);                      // 0x00F07B80
+#endif
+#ifdef FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_CONVOYSPY
+    // Retail opt-in (chunk 809): the parent helpers CAT_ConvoySpy::Main 0x00F0D630 calls on ParentClass (Ego_r.pdb / FableWin.pdb
+    // ?RefreshSpyAllegiences@CQ_AmbushTradersScript@NScript@@QAEXXZ, ?WatchForSpyDeath@..@@QAEXVCScriptThing@@@Z,
+    // ?WatchForHeroProximity@..@@QAEXVCScriptThing@@@Z, ?WatchForSpySpeechMarkers@..@@QAEXVCScriptThing@@@Z (the three spawned threads,
+    // their member pointers stored at CSpawnedFunc1 +0x34), ?ProcessInitialSpyExtraction@..@@QAEXABVCScriptThing@@
+    // AAVCScriptGameResourceObjectScriptedThingBase@@@Z). Declarations only; no layout change.
+    void RefreshSpyAllegiences();                                        // 0x00F05A10
+    void WatchForSpyDeath(CScriptThing);                                 // 0x00F0EDA0
+    void WatchForHeroProximity(CScriptThing);                            // 0x00F0EE90
+    void WatchForSpySpeechMarkers(CScriptThing);                         // 0x00F0EF60
+    void ProcessInitialSpyExtraction(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&); // 0x00F0F680
+#endif
 };
 }
 #if defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_CONVOYMEMBER) && defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_MAIN)
@@ -163,6 +188,64 @@ protected:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AmbushTradersScript::TeleportData)==0x1c);
+#endif
+#if defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_BANDITALLY) && defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_MAIN)
+// Retail opt-in (chunk 809): the nested entity script CAT_BanditAlly (Ego_r.pdb, 44 bytes: CEntityScriptBase 0x14, ParentClass +0x14,
+// PMasterData +0x18, BanditHired +0x1c, BanditFollowing +0x1d, BanditTeleported +0x1e, BanditSwitchedAllegience +0x1f,
+// BanditRemovedFromBowerstonePosh +0x20, ResetInvalidRegionTimer +0x21, BanditHealthBarID +0x24, InvalidRegionTimer +0x28; Main
+// 0x00F063B0 reads/writes each at those offsets). Entity vtable 0x012F7D88 (stored by Alloc 0x00F037A0): 0 scalar deleting dtor
+// 0x00F03870, 1 Main 0x00F063B0, 2 Init 0x00F05F30, 3 GetParentScript 0x00F03840, 4 OnPersist 0x00F0A8E0, 5 OnPredicateFail
+// 0x00F03850. Names: Ego_r / FableWin ?Main@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXXZ (private virtual), ?Init@..@@EAEXXZ,
+// ?OnPersist@..@@EAEXAAVCPersistContext@@@Z, ?OnPredicateFail@..@@EAEXXZ, ?SwitchBanditAllegience@..@@AAEXXZ (private, 0x00F079D0).
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_AmbushTradersScript::CAT_BanditAlly : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_AmbushTradersScript&, CScriptDataBase*, const CScriptThing&); // 0x00F037A0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00F03840
+private:
+    virtual void Main();                                                 // 0x00F063B0
+    virtual void Init();                                                 // 0x00F05F30
+    virtual void OnPersist(CPersistContext&);                            // 0x00F0A8E0
+    virtual void OnPredicateFail();                                      // 0x00F03850
+    void SwitchBanditAllegience();                                       // 0x00F079D0
+protected:
+    CQ_AmbushTradersScript& ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    bool BanditHired;                                                    // +0x1c
+    bool BanditFollowing;                                                // +0x1d
+    bool BanditTeleported;                                               // +0x1e
+    bool BanditSwitchedAllegience;                                       // +0x1f
+    bool BanditRemovedFromBowerstonePosh;                                // +0x20
+    bool ResetInvalidRegionTimer;                                        // +0x21
+    long BanditHealthBarID;                                              // +0x24
+    CTimer InvalidRegionTimer;                                           // +0x28
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AmbushTradersScript::CAT_BanditAlly)==0x2c);
+#endif
+#if defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_CONVOYSPY) && defined(FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_MAIN)
+// Retail opt-in (chunk 809): the nested entity script CAT_ConvoySpy (Ego_r.pdb, 28 bytes: CEntityScriptBase 0x14, ParentClass +0x14,
+// PMasterData +0x18). Entity vtable 0x012F7E14 (stored by Alloc 0x00F04360): 0 scalar deleting dtor 0x00F044F0, 1 Main 0x00F0D630,
+// 2 Init 0x00F04410, 3 GetParentScript 0x00F04400, 4 OnPersist 0x00F04470, 5 OnPredicateFail 0x00F04480. Names: Ego_r / FableWin
+// ?Main@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXXZ (private virtual), ?Init@..@@EAEXXZ, ?OnPredicateFail@..@@EAEXXZ.
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_AmbushTradersScript::CAT_ConvoySpy : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_AmbushTradersScript&, CScriptDataBase*, const CScriptThing&); // 0x00F04360
+    virtual CScriptBase* GetParentScript() const;                        // 0x00F04400
+private:
+    virtual void Main();                                                 // 0x00F0D630
+    virtual void Init();                                                 // 0x00F04410
+    virtual void OnPersist(CPersistContext&);                            // 0x00F04470
+    virtual void OnPredicateFail();                                      // 0x00F04480
+protected:
+    CQ_AmbushTradersScript& ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AmbushTradersScript::CAT_ConvoySpy)==0x1c);
 #endif
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_AmbushTradersScript)==0x1d0);
 #endif

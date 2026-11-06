@@ -54837,7 +54837,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f058a0	OnPredicateFail	NScript::CQ_AmbushTradersScript::CAT_BanditContact	unknown	undefined	0		0			discovered	gapscan							
 00f058b0	`scalar deleting destructor'	NScript::CQ_AmbushTradersScript::CAT_BanditContact	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f0\CLandscapeBackgroundPatch_vectordeletingdestructor_00f058b0.cpp
 00f058d0	WatchForRegionChange	NScript::CQ_AmbushTradersScript	__thiscall	void	1	CV_ChapelOfEvilScript *	1	yes	accepted									
-00f05a10	RefreshSpyAllegiences	CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
+00f05a10	RefreshSpyAllegiences	NScript::CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
 00f05f30	Init	NScript::CQ_AmbushTradersScript::CAT_BanditAlly	unknown	undefined	0		0			discovered	gapscan							
 00f060d0	SetBanditAllegiences	NScript::CQ_AmbushTradersScript	__thiscall	void	2	CQ_AmbushTradersScript *,CScriptThing *	1	yes	accepted									
 00f061e0	WatchForHeroAttackOnBandit	NScript::CQ_AmbushTradersScript	__thiscall	void	2	CQ_AmbushTradersScript *,CScriptThing	1	yes	accepted									

@@ -1,0 +1,52 @@
+address	name	evidence
+00DA0EF0	NScript::CQ_MinionCampScript::CBriarRose::Main	authored row (RELOCATION_MATCH); Ego_r.pdb + FableWin.pdb ?Main@CBriarRose@CQ_MinionCampScript@NScript@@EAEXXZ; one .rdata ref = slot 1 of entity vtable 0x012D6D0C stored by the landed ctor 0x00D9E930
+00F063B0	NScript::CQ_AmbushTradersScript::CAT_BanditAlly::Main	authored row (RELOCATION_MATCH); Ego_r.pdb + FableWin.pdb ?Main@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXXZ; one .rdata ref = slot 1 of entity vtable 0x012F7D88 stored by Alloc 0x00F037A0
+00F0D630	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::Main	authored row (RELOCATION_MATCH); Ego_r.pdb + FableWin.pdb ?Main@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXXZ; one .rdata ref = slot 1 of entity vtable 0x012F7E14 stored by Alloc 0x00F04360
+00DAC760	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::Main	parked row; Ego_r.pdb + FableWin.pdb ?Main@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@EAEXXZ; one .rdata ref = slot 1 of entity vtable 0x012D83C0 stored by the landed Alloc 0x00DAC580
+00E8EF80	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon::Main	parked row; Ego_r.pdb + FableWin.pdb ?Main@CGhostGrannySon@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ; one .rdata ref = slot 1 of entity vtable 0x012EBC34 stored by the landed Alloc 0x00E8CA60
+00E9E420	NScript::CV_IntroductionToTrophiesScript::CBriarRose::Main	parked row; Ego_r.pdb + FableWin.pdb ?Main@CBriarRose@CV_IntroductionToTrophiesScript@NScript@@EAEXXZ; one .rdata ref = slot 1 of entity vtable 0x012ED67C stored by the landed Alloc 0x00E9D9D0
+00D9E8B0	NScript::CQ_MinionCampScript::CBriarRose::Alloc	landed row; Ego_r.pdb + FableWin.pdb ?Alloc@CBriarRose@CQ_MinionCampScript@NScript@@SI...; news 0x50 and calls the ctor 0x00D9E930
+00D9E930	NScript::CQ_MinionCampScript::CBriarRose::CBriarRose	landed row; stores the entity vtable 0x012D6D0C; called only by Alloc 0x00D9E8B0
+00D9FED0	NScript::CQ_MinionCampScript::CBriarRose::~CBriarRose	landed row; called by the scalar deleting dtor 0x00D9FEB0
+00D9FEB0	NScript::CQ_MinionCampScript::CBriarRose::`scalar deleting destructor'	landed row; slot 0 of 0x012D6D0C (label CVtable_012d6d0c::`scalar deleting destructor' is a placeholder)
+00D9E9E0	NScript::CQ_MinionCampScript::CBriarRose::Init	landed row; slot 2 of 0x012D6D0C; Ego_r.pdb + FableWin.pdb ?Init@CBriarRose@CQ_MinionCampScript@NScript@@EAEXXZ
+00D9E9C0	NScript::CQ_MinionCampScript::CBriarRose::GetParentScript	landed row (label sub_00d9e9c0 is a placeholder); slot 3 of 0x012D6D0C; FableWin.pdb ?GetParentScript@CBriarRose@CQ_MinionCampScript@NScript@@UBEPAVCScriptBase@@XZ
+00D9E9D0	NScript::CQ_MinionCampScript::CBriarRose::OnPredicateFail	landed row (label _unattributed::SetFlag_00d9e9d0 is wrong); slot 5 of 0x012D6D0C; FableWin.pdb ?OnPredicateFail@CBriarRose@CQ_MinionCampScript@NScript@@EAEXXZ
+00DA2610	NScript::CQ_MinionCampScript::CBriarRose::DoSpeech	callee of 0x00DA0EF0; Ego_r.pdb + FableWin.pdb ?DoSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXABVCCharString@@@Z; called with the TEXT_QST_B08_BRIAR_* lines
+00DA26B0	NScript::CQ_MinionCampScript::CBriarRose::DoOnHitSpeech	callee of 0x00DA0EF0 (hit branch); Ego_r.pdb + FableWin.pdb ?DoOnHitSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXXZ
+00DA27B0	NScript::CQ_MinionCampScript::CBriarRose::DoOnSpeakToSpeech	callee of 0x00DA0EF0 (talked-to branch); Ego_r.pdb + FableWin.pdb ?DoOnSpeakToSpeech@CBriarRose@CQ_MinionCampScript@NScript@@AAEXXZ; landed row
+00DA2A20	NScript::CQ_MinionCampScript::CBriarRose::UpdateTarget	callee of 0x00DA0EF0 (stage-2 loop, bool result); Ego_r.pdb + FableWin.pdb ?UpdateTarget@CBriarRose@CQ_MinionCampScript@NScript@@AAE_NXZ
+00DA2CA0	NScript::CQ_MinionCampScript::CBriarRose::PlayCutscene	callee of 0x00DA0EF0 (intro / outro cut scene names by value); Ego_r.pdb + FableWin.pdb ?PlayCutscene@CBriarRose@CQ_MinionCampScript@NScript@@AAEXVCCharString@@@Z (labels FUN_00da2ca0 / Game_InitializeRoseCharacter are wrong)
+00DA2860	NScript::CQ_MinionCampScript::CheckBriarHit	spawned by 0x00DA0EF0 through CSpawnedFunc1 (vtable 0x012D7064); Ego_r.pdb + FableWin.pdb ?CheckBriarHit@CQ_MinionCampScript@NScript@@QAEXVCScriptThing@@@Z
+00DA24F0	NScript::CQ_MinionCampScript::RunChantTimer	spawned by 0x00DA0EF0 through CSpawnedFunc (vtable 0x012D6CAC); Ego_r.pdb + FableWin.pdb name set
+00DA2490	NScript::CQ_MinionCampScript::PauseChantTimer	spawned by 0x00DA0EF0 through CSpawnedFunc (vtable 0x012D6CAC); Ego_r.pdb + FableWin.pdb name set
+012D6D0C	NScript::CQ_MinionCampScript::CBriarRose::`vftable'	stored by the ctor 0x00D9E930; slots dtor / Main / Init / GetParentScript / 0x00CDEBC0 / OnPredicateFail
+012D7064	CSpawnedFunc1<NScript::CQ_MinionCampScript,CScriptThing>::`vftable'	stored in 0x00DA0EF0 for the CheckBriarHit thread; ??_7?$CSpawnedFunc1@VCQ_MinionCampScript@NScript@@VCScriptThing@@@@6B@
+00F079D0	NScript::CQ_AmbushTradersScript::CAT_BanditAlly::SwitchBanditAllegience	callee of 0x00F063B0 on this; Ego_r.pdb + FableWin.pdb ?SwitchBanditAllegience@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@AAEXXZ
+00F07A80	NScript::CQ_AmbushTradersScript::AddBanditHealthBar	callee of 0x00F063B0 on ParentClass; Ego_r.pdb + FableWin.pdb ?AddBanditHealthBar@CQ_AmbushTradersScript@NScript@@QAEJABVCScriptThing@@@Z
+00F07B80	NScript::CQ_AmbushTradersScript::WatchForBanditSpeechMarkers	spawned by 0x00F063B0 (CSpawnedFunc1 vtable 0x012F7EBC); Ego_r.pdb + FableWin.pdb name set
+00F07ED0	NScript::CQ_AmbushTradersScript::AskBanditHireQuestion	callee of 0x00F063B0; Ego_r.pdb + FableWin.pdb name set
+00F081E0	NScript::CQ_AmbushTradersScript::BanditHireSetup	callee of 0x00F063B0; Ego_r.pdb + FableWin.pdb name set
+00F05A10	NScript::CQ_AmbushTradersScript::RefreshSpyAllegiences	callee of 0x00F0D630 on ParentClass; Ego_r.pdb + FableWin.pdb ?RefreshSpyAllegiences@CQ_AmbushTradersScript@NScript@@QAEXXZ
+00F0EDA0	NScript::CQ_AmbushTradersScript::WatchForSpyDeath	spawned by 0x00F0D630; Ego_r.pdb + FableWin.pdb name set
+00F0EE90	NScript::CQ_AmbushTradersScript::WatchForHeroProximity	spawned by 0x00F0D630; Ego_r.pdb + FableWin.pdb ?WatchForHeroProximity@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+00F0EF60	NScript::CQ_AmbushTradersScript::WatchForSpySpeechMarkers	spawned by 0x00F0D630; Ego_r.pdb + FableWin.pdb name set
+00F0F680	NScript::CQ_AmbushTradersScript::ProcessInitialSpyExtraction	callee of 0x00F0D630; Ego_r.pdb + FableWin.pdb name set
+012F7D88	NScript::CQ_AmbushTradersScript::CAT_BanditAlly::`vftable'	stored by Alloc 0x00F037A0; slot 1 = 0x00F063B0
+012F7E14	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::`vftable'	stored by Alloc 0x00F04360; slot 1 = 0x00F0D630
+00F03840	NScript::CQ_AmbushTradersScript::CAT_BanditAlly::GetParentScript	landed row (label sub_00f03840 is a placeholder); slot 3 of 0x012F7D88; FableWin.pdb ?GetParentScript@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@UBEPAVCScriptBase@@XZ
+00F0A8E0	NScript::CQ_AmbushTradersScript::CAT_BanditAlly::OnPersist	landed row (label _unattributed::PersistTransfer2_00f0a8e0 is wrong); slot 4 of 0x012F7D88; Ego_r.pdb + FableWin.pdb ?OnPersist@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXAAVCPersistContext@@@Z
+00F04400	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::GetParentScript	landed row (one label sub_00f04400 is a placeholder); slot 3 of 0x012F7E14; FableWin.pdb name
+00F04470	NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::OnPersist	landed row (label sub_00f04470 is a placeholder); slot 4 of 0x012F7E14; FableWin.pdb ?OnPersist@CAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@EAEXAAVCPersistContext@@@Z
+012D83C0	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::`vftable'	stored by Alloc 0x00DAC580; slot 1 = 0x00DAC760
+00DAC620	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::GetParentScript	landed row (label sub_00dac620 is a placeholder); slot 3 of 0x012D83C0; FableWin.pdb ?GetParentScript@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@UBEPAVCScriptBase@@XZ
+00DAC580	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::Alloc	landed row; Ego_r.pdb + FableWin.pdb ?Alloc@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@SI...; stores 0x012D83C0 (see NAME_FIXES.tsv: bound as CGuard)
+013AC840	g_NOVIGuardArrestDistance	DESCRIPTIVE (no PDB name): .data float 3.0f read by 0x00DAC760 as the arrest range
+013AC844	g_NOVIGuardNoticeDistances	DESCRIPTIVE (no PDB name): .data float[4] {0,5,10,15} indexed by min(bad deeds,3) in 0x00DAC760
+012EBC34	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon::`vftable'	stored by Alloc 0x00E8CA60; slot 1 = 0x00E8EF80
+00E8CB10	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon::Init	landed row (label sub_00e8cb10 is a placeholder); slot 2 of 0x012EBC34; Ego_r.pdb + FableWin.pdb ?Init@CGhostGrannySon@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ
+00E8CB00	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon::GetParentScript	landed row (label sub_00e8cb00 is a placeholder); slot 3 of 0x012EBC34; FableWin.pdb name
+012ED67C	NScript::CV_IntroductionToTrophiesScript::CBriarRose::`vftable'	stored by Alloc 0x00E9D9D0; slot 1 = 0x00E9E420
+00E9DAC0	NScript::CV_IntroductionToTrophiesScript::CBriarRose::Init	landed row (label NScript::CBriarRose::Init drops the parent class); slot 2 of 0x012ED67C; Ego_r.pdb + FableWin.pdb ?Init@CBriarRose@CV_IntroductionToTrophiesScript@NScript@@EAEXXZ
+00E9DA70	NScript::CV_IntroductionToTrophiesScript::CBriarRose::GetParentScript	landed row (label sub_00e9da70 is a placeholder); slot 3 of 0x012ED67C; FableWin.pdb name
+00E9DA80	NScript::CV_IntroductionToTrophiesScript::CBriarRose::OnPredicateFail	landed row (one label sub_00e9da80 is a placeholder); slot 5 of 0x012ED67C; FableWin.pdb ?OnPredicateFail@CBriarRose@CV_IntroductionToTrophiesScript@NScript@@EAEXXZ (not in the Ego_r.pdb name set)
