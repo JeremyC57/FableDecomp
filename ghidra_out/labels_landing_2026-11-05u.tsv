@@ -1,0 +1,8 @@
+address	name	evidence
+008304a0	CThingAICreature::Save	landing 2026-11-05u (chunk 794): landed row (RELOCATION_MATCH); Ego_r / FableWin ?Save@CThingAICreature@@UAEXAAVCCharString@@@Z
+007039a0	CThingObject::OnHit	landing 2026-11-05u (chunk 794): landed row (RELOCATION_MATCH); Ego_r / FableWin ?OnHit@CThingObject@@MAEXAAVCHitParameters@@@Z
+0079acc0	CTCSummonSpell::CreateMinion	landing 2026-11-05u (chunk 794): landed row (RELOCATION_MATCH); Ego_r ?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z
+0079aa90	CTCSummonSpell::GetValidTeleportPos	landing 2026-11-05u (chunk 794): Ego_r.pdb + the CreateMinion call shape
+009a08b0	GFFloatToCharString	landing 2026-11-05u (chunk 794): Ego_r / FableWin ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z
+00682810	CTCCreatureOpinionOfHero::InformOfDeed	landing 2026-11-05u (chunk 794): Ego_r spelling; IRTOD call shape
+006c8e90	CThingFilter_IsEligibleWitness::operator()	landing 2026-11-05u (chunk 794): Ego_r spelling

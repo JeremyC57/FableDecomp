@@ -12,7 +12,7 @@
 #include "engine/CIntelligentPointer.h"
 class CThingBuilding;
 #endif
-class C3DVector; class CThingAICreatureInit;
+class C3DVector; class CThingAICreatureInit; class CBrainDef;
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_MESSAGERANGE
 class CMessageEvent;                                                     // chunk 765
 #endif
@@ -27,6 +27,12 @@ public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long, const CThingAICreatureInit& init);   // 0x00833800
     void AutoSetupSexuality(float probabilityOfHomosexuality);           // 0x008330D0
     void SetAsAllowedToFollowHero(bool allowed) { AllowedToFollowHero = allowed; }
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_SETNEWBRAIN
+    // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb / FableWin.pdb
+    // ?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z (retail 0x00833010, out of line; the CDefPointer is passed by
+    // value: `push ecx ; mov ecx,esp ; mov [ecx],eax ; inc [eax+4]`). Declaration only: no layout change.
+    void SetNewBrain(CDefPointer<const CBrainDef> brain);                // 0x00833010
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_MESSAGERANGE
     // Nested opt-in (chunk 765, row 0x006AF270 CMessageEventFilter_CanBeHeard::operator()): Ego_r.pdb / FableWin.pdb
     // ?IsMessageEventWithinSightRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z (0x00833230) and
@@ -40,10 +46,35 @@ public:
     // (CIntelligentPointer<CThingBuilding>, retail +0x168: `lea ecx,[eax+168h] ; call 0x00A01B50`) and FableWin.pdb
     // ?GetHomeBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ (inline in retail). Needs FABLE_RETAIL_CINTELLIGENTPOINTER.
     CThingBuilding* GetHomeBuilding() const;                            // body in the includer once CThingBuilding is complete
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_SAVE
+    // Retail opt-in (chunk 794, row 0x008304A0 CThingAICreature::Save): Ego_r.pdb / FableWin.pdb ?Save@CThingAICreature@@UAEXAAVCCharString@@@Z
+    // (public virtual; it calls ?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z 0x00661A60 by name). The Ego_r.pdb members after
+    // HomeBuilding keep their order and sizes in retail: WorkBuilding / FatherCreature / MotherCreature / SpouseCreature
+    // (CIntelligentPointer<CThingBuilding|CThingAICreature>, 8 bytes each) at +0x170 / +0x178 / +0x180 / +0x188 and
+    // OverridingBrainName (CCharString) at +0x190 -- Save reads them at exactly those offsets (`lea esi,[ebp+170h] ; call 0x00A01B50`,
+    // ..., `mov ecx,[ebp+190h]`), the generated default branch below lists the same offsets from the PDB. No size change.
+    virtual void Save(CCharString& out);                                // 0x008304A0
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_WORKBUILDING
+    // Nested opt-in (chunk 794, row 0x006C6040 CTCHeroOpinionDeedLog::InformRelevantThingsOfDeed): FableWin.pdb
+    // ?GetWorkBuilding@CThingAICreature@@QBEPAVCThingBuilding@@XZ, inline in retail (`lea ecx,[esi+170h] ; call 0x00A01B50`).
+    // Body in the includer once CThingBuilding is complete, like GetHomeBuilding.
+    CThingBuilding* GetWorkBuilding() const;
+#endif
+private:
+    unsigned char _pad_0x160[0x8];                                       // +0x160 RelationshipsInit (opaque)
+    CIntelligentPointer<CThingBuilding> HomeBuilding;                    // +0x168
+    CIntelligentPointer<CThingBuilding> WorkBuilding;                    // +0x170
+    CIntelligentPointer<CThingAICreature> FatherCreature;                // +0x178
+    CIntelligentPointer<CThingAICreature> MotherCreature;                // +0x180
+    CIntelligentPointer<CThingAICreature> SpouseCreature;                // +0x188
+    CCharString OverridingBrainName;                                     // +0x190
+    unsigned char _pad_0x194[0x34];                                      // +0x194 DebugRenderHandles .. MaxFlyingSpeed (opaque)
+#else
 private:
     unsigned char _pad_0x160[0x8];                                       // +0x160 RelationshipsInit (opaque)
     CIntelligentPointer<CThingBuilding> HomeBuilding;                    // +0x168
     unsigned char _pad_0x170[0x58];                                      // +0x170 .. MaxFlyingSpeed (Ego_r.pdb members, opaque)
+#endif
 #else
 private:
     unsigned char _pad_0x160[0x68];                                      // +0x160 RelationshipsInit .. MaxFlyingSpeed (Ego_r.pdb members, opaque)

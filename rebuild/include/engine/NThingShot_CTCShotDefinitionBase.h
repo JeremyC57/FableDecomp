@@ -13,10 +13,23 @@
 #include "engine/CIntelligentPointer.h"
 #include "stlport/fable_containers.h"
 class CThing;
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ONHITBYMELEE
+class C3DVector;
+enum ECollideType;                                                      // MS forward enum (chunk 794)
+#endif
 namespace NThingShot {
 class CTCShotDefinitionBase : public CTCBase {
 public:
     CThing* GetPWeapon() const;                                         // 0x007BEFF0
+#ifdef FABLE_RETAIL_CTCSHOTDEFINITIONBASE_ONHITBYMELEE
+    // Retail opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): the first two virtuals CTCShotDefinitionBase adds after CTCBase's 28
+    // slots (vtable 0x0126E1A4 family; CTCShotDefinitionThrow 0x0123CDC4 slot 28 = 0x007BF510, slot 29 = 0x007C22F0), Ego_r.pdb
+    // ?OnCollision@CTCShotDefinitionBase@NThingShot@@UAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z (slot 28) and
+    // ?OnHitByMelee@CTCShotDefinitionBase@NThingShot@@UAEXAAVCThing@@PAV3@ABVC3DVector@@2_N3@Z (slot 29; OnHit calls `[eax+74h]`).
+    // Declarations only: no layout change.
+    virtual void OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* thing);   // slot 28
+    virtual void OnHitByMelee(CThing& hitter, CThing* weapon, const C3DVector& position, const C3DVector& direction, bool knockDown, bool blockable);   // slot 29
+#endif
 protected:
     CIntelligentPointer<CThing> PEffect;                                // +0x0c
     std::vector<CIntelligentPointer<const CThing> > HitThingsList;      // +0x14

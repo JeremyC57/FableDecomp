@@ -1,0 +1,8 @@
+address	source	grade_with_final_overlay	note
+008304a0	src/008304a0.cpp	RELOCATION_MATCH	regraded with final hdr/
+007039a0	src/007039a0.cpp	RELOCATION_MATCH	regraded with final hdr/ after the r2 constness fix
+0079acc0	src/0079acc0.cpp	RELOCATION_MATCH	regraded with final hdr/
+007c4430	differ/007c4430.cpp	DIFFER(1980v1952)	parked
+006c6040	differ/006c6040.cpp	DIFFER(2793v2377)	parked
+007de710	differ/007de710.cpp	DIFFER(2574v2578)	parked
+(none)	-	-	no default header path changed (all opt-ins / a new header), so no landed includer needed a recheck

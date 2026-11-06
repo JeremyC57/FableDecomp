@@ -17,6 +17,13 @@ class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector
     void SetForward(const C3DVector& forward) { Forward = forward; }
     void SetUp(const C3DVector& up) { Up = up; }
     void MakePerpendicular();                                            // 0x00A22E10
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_CTOR_INLINE
+    // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z with its
+    // body visible (the out-of-line COMDAT is 0x00487050; CreateMinion builds the set in place: `mov [esp+1Ch],0 ; mov [esp+20h],0 ;
+    // mov [esp+24h],3F800000h` for Up then the negated forward). Mutually exclusive with FABLE_RETAIL_CRIGHTHANDEDSET_CTOR.
+    CRightHandedSet() {}
+    CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {}
+#endif
 #ifdef FABLE_RETAIL_CRIGHTHANDEDSET_CTOR
     // Chunk 764 (row 0x007BC004): Ego_r.pdb ??0CRightHandedSet@@QAE@XZ and ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z (retail 0x00487050,
     // out of line). Declarations only: no layout change.

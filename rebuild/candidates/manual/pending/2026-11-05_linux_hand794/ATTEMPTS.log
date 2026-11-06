@@ -1,0 +1,46 @@
+# attempts log chunk 794
+008304a0 a1 DIFFER(2060v2060) 10 difflines: ";\r\n" push placed before RemapUID call (VC evaluates outer arg first)
+008304a0 a2 RELOCATION_MATCH: uid local
+007039a0 a1 GetTC/PeekTC expanded, posted flag, Contains(CCharString("BARREL")): DIFFER 128 (GetString out of line; morality hoisted)
+007039a0 a2 conversion operator + GetMorality()+def: DIFFER 149
+007039a0 a3 forceinline GetString opt-in + local change: DIFFER 71 (name before BARREL)
+007039a0 a4 named wobble CCharString local: DIFFER 64
+007039a0 a5 def pointer local: DIFFER 96
+007039a0 a6 morality += : DIFFER 64
+007039a0 a7 strstr(GetAsCharArray, CCharString().GetAsCharArray()): DIFFER 61
+007039a0 a8 Contains("BARREL") implicit: DIFFER 26 (morality register only)
+007039a0 a9 (CCharString)GetDefName(): DIFFER 162
+007039a0 p9 raw Morality access probe: RELOCATION_MATCH
+007039a0 a10 Morality public member: RELOCATION_MATCH
+007039a0 a11 a10 without forceinline GetString: DIFFER 112
+0079acc0 a1 linear reconstruction, local models, explicit CCharString temps: DIFFER 676
+0079acc0 a2 implicit const char* -> CCharString conversions (temp built before the constant pushes): DIFFER 646
+0079acc0 a3 SetFacingAnglesFromRHSet (slot 74, [edx+128h]) + effects declared before effect: DIFFER 640
+0079acc0 a4 tint declared at top: DIFFER 631 (frame still 0x64 v 0x5C)
+0079acc0 a5 inline flag setters (SetLeaveDeadBodyOverride ...): DIFFER 628 / 134 with esp offsets masked
+0079acc0 a6 DeathSoundCriteria = CCharString(...) temp + cached end iterator: DIFFER 613 / 109 masked (residue: frame 8 bytes larger -- effect/effects not in the arg slots; CDefPointer dtor load/dec/store shape; brain copy)
+007c4430 a1 first compile (switch, PeekTC targeting, out-of-line GetAllThingsInRoughArea): DIFFER 868 (1896v1952)
+007c4430 a2 IS_THING_ALIVE inline templates (pointer + intelligent pointer), global new: DIFFER 657 (1972v1952) -- call pattern now retail's except the loop float push_back (inline v out-of-line 0x00568850)
+006c6040 a1 first source (pointer-to-intelligent-pointer building local): SRC_FAIL (CTCOwnedEntity::POwner private)
+006c6040 a2 building branches duplicated textually (GetPOwner / GetPThingInside), inline fastcall std::find, opinion opt-in: DIFFER 1007 (2777v2377)
+007de710 a1 approximate first compile (dummy objects, CMatrix3x4 Set/PreMultiply + orthogonal inverse guess, ResetPosition/ResetRHSet slots 31/32, EnablePhysics(false), SetInLimbo, trophies count): DIFFER 892 (2338v2578)
+007c4430 a3 C3DVector pos by value (scalar-replaced like retail): DIFFER 492 / 176 masked (1992v1952)
+007c4430 a4 loop body as if (creature != target) {..} instead of continue: DIFFER 494 / 176 masked (loop float push_back still inline)
+007c4430 a5 same-TU __declspec(noinline) GetSubDef<CSpecialEffectsDef> + GetEffectFromString bodies (ReactToGenericStrike row shape): DIFFER 326 / 160 masked; effects dtor now dec [ecx+4]
+0079acc0 a7 same-TU noinline GetSubDef<CSpecialEffectsDef> + GetEffectFromString bodies: DIFFER 247 / 95 masked (2453v2442)
+0079acc0 a8 + same-TU noinline CDefinitionManager::GetDef<CBrainDef> (retail instance 0x0079BD80 is in this TU): DIFFER 156 / 40 masked (2437v2442)
+0079acc0	a9	FableWin inline CTCEffectOnDie setters (SetEffect/SetTimer/SetSoundEffect/SetAlphaFadeOutTimer): DIFFER(2442v2442) 8 raw / 4 masked; only Normalise squared-magnitude fld order left
+0079acc0	a12	+ FABLE_RETAIL_C3DVECTOR_SQUAREDMAGNITUDE_XYZ overlay opt-in (X*X+Y*Y+Z*Z): RELOCATION_MATCH
+007c4430	a6	iterator declared before the for: no change (326/160)
+007c4430	a7	push_back(0) int literal at both float sites: no change
+007c4430	a8	second condition as continue: no change in inlining (332/158)
+007c4430	a9	outer (flags & 8) && IS_THING_ALIVE(target = ...): identical bytes to a5
+007c4430	p3	probe: one extra if around the loop float push_back outlines it (0x00568850 shape) -> retail's loop site has <= half the frequency estimate of a5's
+006c6040	a3	shared building/member/village locals hoisted: 2761v2377, no tail merge
+006c6040	a4	same-TU GetDeedFromHandle (auto-inlined; retail copies the handle): 2793v2377, prologue now copies handle
+007de710	a2	FableWin PostMultiply (this*m, landed 0x00C1CF20 sums) + SetInverseOfUniformScaleRotationTranslation (forceinline opt-in): 2573v2578, 676/546
+007de710	a3	cached wall/object CTCGraphicAppearance pointers: 2574v2578, 293/321 (prefix to the matrix block matches)
+007de710	a4	PostMultiply sums written k3..k1 (overlay probe, reverted): 2576v2578, 298 raw; VC still emits k1 first, operand order register-first
+007039a0	r2	BARREL-branch village-member lookup through non-const GetTC (retail 0x00703D13 calls LowerBound 0x0040F020): RELOCATION_MATCH, relocation identity clean
+007de710	a5	CTCTargeted::SetTargetable / CTCWallMountEffects::OnPutOnMount names (bytes unchanged): 2574v2578
+007de710	a6	PostMultiply sums written k2,k3,k1 (the PreMultiply header order; probe, reverted): VC still emits the memory*memory product first (retail: last)

@@ -259,6 +259,13 @@ public:
     // 0x004C9920 is not a catalog row; both PDBs spell it ?IsAffectedByBulletTime@CThing@@QBE_NXZ and 15 landed rows call it there
     // (8 of them with a non-const QAE stand-in spelling, respelled by the wave).
     bool IsAffectedByBulletTime() const;                         // 0x004C9920
+#ifdef FABLE_RETAIL_CTHING_BULLETTIMEOVERRIDE
+    // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): FableWin.pdb ?SetIsAffectedByBulletTimeOverride@CThing@@QAEX_N@Z,
+    // inline in retail (`mov bl,[eax+93h] ; and bl,0DFh ; mov [eax+93h],bl` = bit 21 of the +0x91 run). Body only: no layout change.
+    void SetIsAffectedByBulletTimeOverride(bool value) { IsAffectedByBulletTimeOverride = value; }
+    // and FableWin.pdb ?SetScriptName@CThing@@QAEXABVCCharString@@@Z, inline in retail (`lea ecx,[eax+74h] ; call CCharString::operator=`).
+    void SetScriptName(const CCharString& name) { ScriptName = name; }
+#endif
     // FableWin.pdb-only inline flag accessors (?IsInLimbo@CThing@@QBE_NXZ, ?IsActivated@, ?IsDying@, ?IsKillLocked@,
     // ?IsGloballyLoaded@, ?IsDeathPersistent@; inline in retail, which tests the +0x91..+0x93 bits in place in every caller --
     // the same evidence as GetTypeFlags above).

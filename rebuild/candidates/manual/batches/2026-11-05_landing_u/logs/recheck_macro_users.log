@@ -1,0 +1,52 @@
+addr       parity           behav  name
+004ff750   RELOCATION_MATCH PASS   CreateRelevantPersonAndUpdateStats
+00522a20   RELOCATION_MATCH PASS   InitThingTypes
+005eb9e0   RELOCATION_MATCH PASS   FrameUpdate
+0065b854   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065b854   RELOCATION_MATCH PASS   AddThingToVillage
+00681850   WARN SHARED_HEADER_AVAILABLE COpinionReactionManager
+00681850   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00681850   RELOCATION_MATCH PASS   IsFactionEnemyToHeroOverriddenOnOpinion
+006817f0   WARN SHARED_HEADER_AVAILABLE COpinionReactionManager
+006817f0   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+006817f0   RELOCATION_MATCH PASS   IsWillingToAttackHeroOnOpinion
+006af270   RELOCATION_MATCH PASS   operator()
+006d00a0   RELOCATION_MATCH PASS   Murdered
+0079acc0   WARN RELOC_NAME: ?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z -> 0079aa90 labelled 'CTCSummonSpell_GetValidSummonPos'
+0079acc0   RELOCATION_MATCH PASS   CreateMinion
+008304a0   RELOCATION_MATCH PASS   Save
+0090c540   RELOCATION_MATCH PASS   Update
+00919a00   RELOCATION_MATCH PASS   Cleanup
+0091ea70   RELOCATION_MATCH PASS   IsAbleToFire
+00938280   RELOCATION_MATCH PASS   AllocChairSittingMode
+00946400   RELOCATION_MATCH PASS   IsRunnable
+0094bf50   RELOCATION_MATCH PASS   Cleanup
+00945bd0   WARN RELOC_NAME: ?SetSeat@CAIStateGroup_UsesSeat@@IAEXPAVCThingObject@@@Z -> 009106e0 labelled '_unattributed::AssignTarget_009106e0'
+00945bd0   RELOCATION_MATCH PASS   Update
+00943c20   RELOCATION_MATCH PASS   IsRunnable
+00954740   RELOCATION_MATCH PASS   IsStillRunnable
+00969e70   RELOCATION_MATCH PASS   IsRunnable
+0096ae50   RELOCATION_MATCH PASS   UseWill
+
+WINS: 21
+  004ff750 RELOCATION_MATCH _global::?CreateRelevantPersonAndUpdateStats@@YIPAVCThingAICreature@@MMJJAAJ0ABVC3DVector@@ABVCThingAICreatureInit@@PAVCTCVillage@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@4_N@Z
+  00522a20 RELOCATION_MATCH CThingManager::?InitThingTypes@CThingManager@@QAEXXZ
+  005eb9e0 RELOCATION_MATCH CTCTavernGame::?FrameUpdate@CTCTavernGame@@UAEXXZ
+  0065b854 RELOCATION_MATCH CTCVillage::?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+  00681850 RELOCATION_MATCH CTCCreatureOpinionOfHero::?IsFactionEnemyToHeroOverriddenOnOpinion@CTCCreatureOpinionOfHero@@QBE_NXZ
+  006817f0 RELOCATION_MATCH CTCCreatureOpinionOfHero::?IsWillingToAttackHeroOnOpinion@CTCCreatureOpinionOfHero@@QBE_NXZ
+  006af270 RELOCATION_MATCH CMessageEventFilter_CanBeHeard::??RCMessageEventFilter_CanBeHeard@@QBE_NABVCMessageEvent@@@Z
+  006d00a0 RELOCATION_MATCH CTCWife::?Murdered@CTCWife@@QAEXXZ
+  0079acc0 RELOCATION_MATCH CTCSummonSpell::?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z
+  008304a0 RELOCATION_MATCH CThingAICreature::?Save@CThingAICreature@@UAEXAAVCCharString@@@Z
+  0090c540 RELOCATION_MATCH CAIStateGroup_MinionGuardFollowPlayer::?Update@CAIStateGroup_MinionGuardFollowPlayer@@UAEXXZ
+  00919a00 RELOCATION_MATCH CAIStateGroup_BuyFromSeller::?Cleanup@CAIStateGroup_BuyFromSeller@@UAEXXZ
+  0091ea70 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombat2::?IsAbleToFire@CAIStateGroup_CreatureRangedCombat2@@ABE_NXZ
+  00938280 RELOCATION_MATCH CAIStateGroup_UsesSeat::?AllocChairSittingMode@CAIStateGroup_UsesSeat@@MBEPAVCModeSitBase@NCreatureMode@@XZ
+  00946400 RELOCATION_MATCH CAIStateGroup_PrepareMeal::?IsRunnable@CAIStateGroup_PrepareMeal@@MAE_NXZ
+  0094bf50 RELOCATION_MATCH CAIStateGroup_SellToBuyer::?Cleanup@CAIStateGroup_SellToBuyer@@UAEXXZ
+  00945bd0 RELOCATION_MATCH CAIStateGroup_SitForMeal::?Update@CAIStateGroup_SitForMeal@@MAEXXZ
+  00943c20 RELOCATION_MATCH CAIStateGroup_WorkInWarehouse::?IsRunnable@CAIStateGroup_WorkInWarehouse@@UAE_NXZ
+  00954740 RELOCATION_MATCH CAIStateGroup_MazeShieldedChase::?IsStillRunnable@CAIStateGroup_MazeShieldedChase@@IAE_NXZ
+  00969e70 RELOCATION_MATCH CAIStateGroup_SleepOnFloor::?IsRunnable@CAIStateGroup_SleepOnFloor@@UAE_NXZ
+  0096ae50 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?UseWill@CAIStateGroup_WhisperRetreat@@IAEXXZ

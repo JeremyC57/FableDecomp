@@ -37100,3 +37100,13 @@ _New_c35b10@8	00c35b10	00c275e0
 ?CopyFromMemory@CSurface@@QAEXPBVC2DBoxI@@PBX0ABVCPixelFormat@@JK@Z	009f4390	00ab8e10
 ?GetBestCompressedAlphaTextureFormat@CDisplayManager@@QAE_NKAAVCPixelFormat@@@Z	009be870	00ab8e10
 ?Read@CGlyph@@QAEXAAVCDataInputStream@@@Z	00ab96b0	00ab8e10
+?IsAbleToBreakDownDoors@CTCHeroExperience@@QBE_NXZ	006d6370	007039a0
+?PostVandalismCrimeIfDestroyed@CTCDoor@@QBE_NXZ	007305f0	007039a0
+?AddAllyThing@CTCEnemy@@QAEXABVCThing@@@Z	0076d270	0079acc0
+?AddFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z	006aedc0	0079acc0
+?SummonCreatureGlobalDefNum@CTCSummonSpell@@2JA	0138306c	0079acc0
+?GetBrainName@CTCSummonableCreature@@QBE?AVCCharString@@XZ	0079c1c0	0079acc0
+?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z	0079aa90	0079acc0
+?HasDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@@Z	004be2c0	0079acc0
+?GFBoolToCharString@@YI?AVCCharString@@_N@Z	0099f9b0	008304a0
+?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z	00661a60	008304a0

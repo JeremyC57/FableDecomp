@@ -50,6 +50,19 @@ public:
     bool IsCreateParticleEffectOnHit() const { return CreateParticleEffectOnHit; }
     CDefPointer<const CMaterialDef> GetPHitMaterialDef() const { return PHitMaterialDef; }
 #endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_BLOCKABLE
+    // Retail opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): FableWin.pdb ?IsBlockable@CHitParameters@@QBE_NXZ, inline in retail
+    // (the +0x1C byte read in place, passed to CTCShotDefinitionBase::OnHitByMelee). Body only: no layout change.
+    bool IsBlockable() const { return Blockable; }
+#endif
+#ifdef FABLE_RETAIL_CHITPARAMETERS_CTOR
+    // Retail opt-in (chunk 794, row 0x007C4430 CTCHealLife::StartHealingEffect): Ego_r.pdb ??0CHitParameters@@QAE@XZ /
+    // ??1CHitParameters@@QAE@XZ / ?SetThingHitting@CHitParameters@@QAEXAAVCThing@@@Z, out of line in retail (0x007A3BC0 /
+    // 0x00789358 / 0x008685F0; landed callers 0x007CCE20 and chunk 759 bind the same addresses). Declarations only: no layout change.
+    CHitParameters();                                                    // 0x007A3BC0
+    ~CHitParameters();                                                   // 0x00789358
+    void SetThingHitting(CThing& thing);                                 // 0x008685F0
+#endif
     void SetKnockDown(bool value) { KnockDown=value; }
     void SetDecapitate(bool value) { Decapitate=value; }
     void SetPlayHitResponse(bool value) { PlayHitResponseOverrideSet=true;PlayHitResponse=value; }

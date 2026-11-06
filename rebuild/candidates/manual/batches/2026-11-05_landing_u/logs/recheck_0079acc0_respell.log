@@ -1,0 +1,6 @@
+addr       parity           behav  name
+0079acc0   WARN RELOC_NAME: ?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z -> 0079aa90 labelled 'CTCSummonSpell_GetValidSummonPos'
+0079acc0   RELOCATION_MATCH PASS   CreateMinion
+
+WINS: 1
+  0079acc0 RELOCATION_MATCH CTCSummonSpell::?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z

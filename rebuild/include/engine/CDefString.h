@@ -36,7 +36,14 @@ public:
  // 0x00415DD0 (AddThingToVillage 0x0065B951..0x0065B95C, the conversion temporary at [ebp-4]).
  operator CCharString()const{return GetString();}
 #endif
+#ifdef FABLE_RETAIL_CDEFSTRING_FORCEINLINE_GETSTRING
+ // Per-TU inline opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): that TU expands GetString in place inside a conditional
+ // full expression (0x00703F4B..0x00703F58: `mov ecx,[eax] ; push ecx ; push <result> ; mov ecx,offset GDefStringTable ; call
+ // CDefStringTable::GetString 0x009D49B0`) where VC7.1's plain-inline heuristic calls the out-of-line copy 0x00415DD0. Same body.
+ __forceinline CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
+#else
  CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
+#endif
 #ifdef FABLE_RETAIL_CDEFSTRING
  // Chunk 732 (row 0x006AA2E0): Ego_r.pdb / FableWin.pdb ?ToWideString@CDefString@@QBE?AVCWideString@@XZ, out of line in retail
  // (0x00415D90: GetString through GDefStringTable, then CCharString::ToWideString 0x0099E480). Declaration only.

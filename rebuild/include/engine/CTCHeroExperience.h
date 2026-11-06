@@ -32,6 +32,11 @@ public:
     // Chunk 735 (row 0x00577AC0): ?GetExperiencePointsAvailableToSpend@CTCHeroExperience@@QBEJXZ (Ego_r.pdb / FableWin.pdb),
     // inline in retail (OpenInventoryInternalPC reads +0x14 in place).
     long GetExperiencePointsAvailableToSpend() const { return ExperiencePointsAvailableToSpend; }
+#ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_BREAKDOORS
+    // Nested opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): Ego_r.pdb / FableWin.pdb ?IsAbleToBreakDownDoors@CTCHeroExperience@@QBE_NXZ,
+    // out of line in retail at 0x006D6370 (the landed row). Declaration only: no layout change.
+    bool IsAbleToBreakDownDoors() const;                                 // 0x006D6370
+#endif
 public: virtual ETCInterfaceType GetInterfaceType() const;
 public: virtual CCharString GetClassTypeName() const;
 public: virtual void OnCreate();

@@ -17,6 +17,12 @@
 // define FABLE_RETAIL_CTCGRAPHICAPPEARANCE for the public non-virtual UnregisterComponent 0x004C0000 (the only spelling bound there,
 // ?UnregisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAVCAGraphicAppearanceComponent@2@@Z, Ego_r.pdb / FableWin.pdb;
 // every component destructor passes its CAGraphicAppearanceComponent subobject, `push edi` = this+0xC). A declaration only.
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_TINT
+class CCharString; class CRGBColour;
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_DUMMYOBJECT
+class CCharString; class CRightHandedSet;
+#endif
 namespace NGraphicAppearance {
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE
 class CAGraphicAppearanceComponent;
@@ -44,6 +50,21 @@ private:
     unsigned char LayoutMeshEffectsToComponents[0x40 - 0x0C];       // +0x0C .. +0x3F (opaque)
     CEnginePrimitiveThemeChannelDesc LightingChannel;               // +0x40
 public:
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_TINT
+    // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb
+    // ?HasDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@@Z (retail 0x004BE2C0) and
+    // ?SetTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCRGBColour@@PAX@Z (retail 0x004C00B0), both out of line.
+    // Declarations only: no layout change.
+    bool HasDummyObject(const CCharString& name) const;      // 0x004BE2C0
+    void SetTintColour(const CRGBColour& colour, void* owner);   // 0x004C00B0
+#endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_DUMMYOBJECT
+    // Retail opt-in (chunk 794, row 0x007DE710 CTCWallMount::AttachObject): Ego_r.pdb
+    // ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z, out of line in
+    // retail (0x004C08C0; catalog name agrees; the row pushes 1.0f, the set, the position, 0, 0, the name). Declaration only.
+    bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector& pos, CRightHandedSet& orientation,
+                        float scale) const;                  // 0x004C08C0
 #endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_FOCALPOS
     // Nested opt-in (chunk 768, row 0x00753380 CTCLook::FrameUpdateHeadInterested): Ego_r.pdb / FableWin.pdb

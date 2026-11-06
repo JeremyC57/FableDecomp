@@ -1,0 +1,7 @@
+address	module	name	length
+007039a0	CThingObject	OnHit	1848
+0079acc0	CTCSummonSpell	CreateMinion	2442
+007de710	CTCWallMount	AttachObject	2578
+006c6040	CTCHeroOpinionDeedLog	InformRelevantThingsOfDeed	2377
+007c4430	CTCHealLife	StartHealingEffect	1952
+008304a0	CThingAICreature	Save	2060

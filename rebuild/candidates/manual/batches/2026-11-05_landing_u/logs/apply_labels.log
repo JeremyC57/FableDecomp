@@ -1,0 +1,2 @@
+manifest 0079aa90 _global::CTCSummonSpell_GetValidSummonPos -> CTCSummonSpell::GetValidTeleportPos
+labels 7  catalog renamed 0  manifest renamed 1

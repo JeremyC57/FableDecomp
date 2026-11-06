@@ -21679,7 +21679,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0079a6e0	CTCSummonSpell	CTCSummonSpell	__thiscall	undefined	2	CTCSummonSpell *,CThing *	0	yes	accepted									
 0079a820	CancelMove	CTCSummonSpell	__thiscall	void	1	CTCSummonSpell *	1	yes	accepted									
 0079a890	IsValidTeleportPos	CTCSummonSpell	__thiscall	bool	4	CTCSummonSpell *,C3DVector *,CWorldMap *,CThing *	1	yes	accepted									
-0079aa90	CTCSummonSpell_GetValidSummonPos	_global	unknown	undefined	0		0	yes	accepted									
+0079aa90	GetValidTeleportPos	CTCSummonSpell	unknown	undefined	0		0	yes	accepted									
 0079acc0	CreateMinion	CTCSummonSpell	__thiscall	void	3	CTCSummonSpell *,C3DVector *,C3DVector *	1	yes	accepted									
 0079b650	SetSummonCreatureGlobalDefNum	CTCSummonSpell	__thiscall	void	4	CTCSummonSpell *,long,C3DVector *,C3DVector *	1	yes	accepted									
 0079b6f0	ResetMinionPos	CTCSummonSpell	__thiscall	void	1	CTCSummonSpell *	1	yes	accepted									

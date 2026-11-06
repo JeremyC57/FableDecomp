@@ -158,5 +158,37 @@ public:
         destination.Z+=E23*pSource.Y;
         destination.Z+=E43;
     }
+#ifdef FABLE_RETAIL_CMATRIX3X4_POSTMULTIPLY
+    // Retail opt-in (chunk 794, row 0x007DE710 CTCWallMount::AttachObject): FableWin.pdb ?PostMultiply@CMatrix3x4@@QAEXABV1@@Z (this =
+    // this * matrix; the landed out-of-line copy 0x00C1CF20 gives the k-order sums) and
+    // ?SetInverseOfUniformScaleRotationTranslation@CMatrix3x4@@QAEMABV1@@Z (FableWin debug copy 0x0261C690; no retail out-of-line copy:
+    // 0x007DE710 expands it -- one reciprocal of the X row's squared length (`fdivr [1.0f]`), the transposed 3x3 times it, then the
+    // translation through the result). The copy of *this is implicit (AttachObject's `rep movsd` of 12 dwords).
+    __forceinline void PostMultiply(const CMatrix3x4& matrix) {
+        CMatrix3x4 a(*this);
+        E11 = a.E11 * matrix.E11 + a.E12 * matrix.E21 + a.E13 * matrix.E31;
+        E12 = a.E11 * matrix.E12 + a.E12 * matrix.E22 + a.E13 * matrix.E32;
+        E13 = a.E11 * matrix.E13 + a.E12 * matrix.E23 + a.E13 * matrix.E33;
+        E21 = a.E21 * matrix.E11 + a.E22 * matrix.E21 + a.E23 * matrix.E31;
+        E22 = a.E21 * matrix.E12 + a.E22 * matrix.E22 + a.E23 * matrix.E32;
+        E23 = a.E21 * matrix.E13 + a.E22 * matrix.E23 + a.E23 * matrix.E33;
+        E31 = a.E31 * matrix.E11 + a.E32 * matrix.E21 + a.E33 * matrix.E31;
+        E32 = a.E31 * matrix.E12 + a.E32 * matrix.E22 + a.E33 * matrix.E32;
+        E33 = a.E31 * matrix.E13 + a.E32 * matrix.E23 + a.E33 * matrix.E33;
+        E41 = a.E41 * matrix.E11 + a.E42 * matrix.E21 + a.E43 * matrix.E31 + matrix.E41;
+        E42 = a.E41 * matrix.E12 + a.E42 * matrix.E22 + a.E43 * matrix.E32 + matrix.E42;
+        E43 = a.E41 * matrix.E13 + a.E42 * matrix.E23 + a.E43 * matrix.E33 + matrix.E43;
+    }
+    __forceinline float SetInverseOfUniformScaleRotationTranslation(const CMatrix3x4& m) {
+        float scale = 1.0f / (m.E11 * m.E11 + m.E12 * m.E12 + m.E13 * m.E13);
+        E11 = m.E11 * scale; E21 = m.E12 * scale; E31 = m.E13 * scale;
+        E12 = m.E21 * scale; E22 = m.E22 * scale; E32 = m.E23 * scale;
+        E13 = m.E31 * scale; E23 = m.E32 * scale; E33 = m.E33 * scale;
+        E41 = -(E11 * m.E41 + E21 * m.E42 + E31 * m.E43);
+        E42 = -(E12 * m.E41 + E22 * m.E42 + E32 * m.E43);
+        E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
+        return scale;
+    }
+#endif
 };
 #endif

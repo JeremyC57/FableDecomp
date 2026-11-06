@@ -23,7 +23,25 @@ private:
     void SetMarriageState(const CThingAICreature* wife, EMarriageState state);   // 0x0057BC6E
 public:
 #endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_MORALITY
+    // Nested opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): Ego_r.pdb Morality (long; PDB +0x30, retail +0x28: OutstandingCrimes
+    // map and ExperienceSpentOn vector are 4 bytes smaller each in STLport, OnHit reads `[esi+28h]`), FableWin.pdb's inline
+    // ?GetMorality@CTCHeroStats@@QBEJXZ and Ego_r.pdb ?SetMorality@CTCHeroStats@@QAEXJ@Z (retail 0x0057C2E6, out of line).
+    long GetMorality() const { return Morality; }
+    void SetMorality(long morality);                                     // 0x0057C2E6
+    // Morality is reached directly, not through the inline getter: OnHit reads `[esi+28h]` after the PeekDefinitionManager call as the
+    // second operand of the add (the inline GetMorality() form is hoisted above the call, 2 lines off), as the landed hero-stat
+    // modifier rows do (0x008F5BF0 / 0x008F5C20 / 0x008F5C50 `stats->Morality + ...` from three unrelated classes) -- so public.
+private:
+    unsigned char _pad_0x0c[0x28 - 0x0c];                                // +0x0c OutstandingCrimes .. NumberOfDecapitations (opaque)
+public:
+    long Morality;                                                       // +0x28
+private:
+    unsigned char _pad_0x2c[0x1dc - 0x2c];                               // +0x2c MoralityChangingEnabled .. (opaque)
+public:
+#else
     unsigned char _pad_after_base[0x1dc - sizeof(CTCBase)];
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCHeroStats) == 0x1dc);
 #endif

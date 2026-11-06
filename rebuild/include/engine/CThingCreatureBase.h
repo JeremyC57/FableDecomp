@@ -53,6 +53,14 @@ public:
     bool UseMovementInActions:1,UpdateMovementVectorThisFrame:1,AbortingCurrentAction:1,DemonDoor:1,
         Oracle:1,HadFacingAngleYZSetByBodyOrientation:1,UnderInfluenceOfEpicSpell:1,HiddenOnMiniMap:1;
     bool IsShowingDebugInfo:1;
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_FLAGSETTERS
+    // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): FableWin.pdb's inline setters
+    // ?SetLeaveDeadBodyOverride@CThingCreatureBase@@QAEX_N@Z, ?SetLeaveExperienceOrbsOverride@CThingCreatureBase@@QAEX_N@Z and
+    // ?SetAsFollowingHeroThroughTeleporters@CThingCreatureBase@@QAEX_N@Z (retail RMWs the +0x15C byte in place). Bodies only.
+    void SetLeaveDeadBodyOverride(bool value) { LeaveDeadBodyOverride = value; }
+    void SetLeaveExperienceOrbsOverride(bool value) { LeaveExperienceOrbsOverride = value; }
+    void SetAsFollowingHeroThroughTeleporters(bool value) { FollowHeroThroughTeleporters = value; }
+#endif
 protected:
     void ReactToGenericStrike(const CHitParameters&);
     // FableWin-only ?PeekDefinition@CThingCreatureBase@@IBEABVCThingCreatureDef@@XZ (0x01D6DD10; inline in Ego_r and retail): the body
@@ -103,6 +111,12 @@ public:
     // Nested opt-in (chunk 765, row 0x00663600): Ego_r.pdb / FableWin.pdb ?ClearQueuedActions@CThingCreatureBase@@QAEXXZ, out of line in
     // retail (`add ecx,108h ; jmp` the PQueuedActions list's out-of-line clear 0x00669B50). Declaration only: no layout change.
     void ClearQueuedActions();                                           // 0x00663600
+#endif
+#ifdef FABLE_RETAIL_CTHINGCREATUREBASE_SAVE
+    // Nested opt-in (chunk 794, row 0x008304A0 CThingAICreature::Save): Ego_r.pdb ?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z (public
+    // virtual), retail 0x00661A60 (the catalog row CThingCreatureBase::Save: `jmp 0x006A4BA0`, CThingPhysical::Save), called by name from the
+    // CThingAICreature override. Declaration only: no layout change.
+    virtual void Save(CCharString& out);                                 // 0x00661A60
 #endif
 protected:
     virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x00663C40

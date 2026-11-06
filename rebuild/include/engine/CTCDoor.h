@@ -24,6 +24,12 @@ enum EDoorTriggerType;                                                   // MS f
 class CTCDoor : public CTCBase {
 public:
     virtual void Copy(const CTCBase&);                                   // 12 0x007305A0
+#ifdef FABLE_RETAIL_CTCDOOR_VANDALISM
+    // Nested opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): Ego_r.pdb ?PostVandalismCrimeIfDestroyed@CTCDoor@@QBE_NXZ, out of line in
+    // retail at 0x007305F0 (the landed row), and the interface key. Declarations only: no layout change.
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_DOOR; }
+    bool PostVandalismCrimeIfDestroyed() const;                          // 0x007305F0
+#endif
     long                     Jammed;                                     // +0x0c
     bool                     CurrentOpen;                                // +0x10
     bool                     OldOpen;                                    // +0x11

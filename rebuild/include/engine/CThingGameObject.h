@@ -15,6 +15,11 @@ private:
         GiveHeroStatChangesOnBeingHit:1,GiveHeroStatChangesOnBeingHitOverrideSet:1;
 public:
     virtual void OnHit(CHitParameters&);
+#ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_COMBOMULTIPLIER
+    // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb ?SetAddToComboMultiplierOnHit@CThingGameObject@@QAEX_N@Z,
+    // out of line in retail (0x008389A0, `push 0 ; call`). Declaration only: no layout change.
+    void SetAddToComboMultiplierOnHit(bool value);                       // 0x008389A0
+#endif
 #ifdef FABLE_RETAIL_CTHINGGAMEOBJECT_STANDINGON
     // Nested opt-in (chunk 765, row 0x00529930): FableWin.pdb ?GetThingStandingOn@CThingGameObject@@UBEPBVCThing@@XZ (0x01D3E690) and
     // ?GetThingStandingOn@CThingGameObject@@UAEPAVCThing@@XZ (0x01D3E6B0, also Ego_r 0x00532720), overrides of CThing's pair (FableWin

@@ -42,6 +42,12 @@ public:
     // Ego_r.pdb ?IsOpeningHours@CTCShop@@QBE_NXZ (Fable.exe 0x00773950; row 0x00918A40).
     bool IsOpeningHours() const;
 #endif
+#ifdef FABLE_RETAIL_CTCSHOP_SHOPKEEPER
+    // Retail opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): FableWin.pdb ?GetShopKeeper@CTCShop@@QBEPAVCThingCreatureBase@@XZ,
+    // inline in retail (GetPItem 0x00A01B50 on PShopKeeper +0x10, `lea ebp,[esi+10h]`), and the interface key. Bodies only.
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SHOP; }
+    CThingCreatureBase* GetShopKeeper() const { return PShopKeeper.Get(); }
+#endif
 private:
     CIntelligentPointer<CThingCreatureBase> PShopKeeper;
     std::vector<CIntelligentPointer<CThingCreatureBase> > Shoppers;

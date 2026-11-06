@@ -1,0 +1,7 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0079aa90	?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z (CTCSummonSpell::GetValidTeleportPos)	Ego_r.pdb name; private, C3DVector by hidden pointer + one const CThing* (CreateMinion: push Minion item, push result, mov ecx,ebp)	CTCSummonSpell_GetValidSummonPos (brief stand-in), FUN_0079aa90
+00868860	?IsMeleeStrike@CHitParameters@@QBE_NXZ (CHitParameters::IsMeleeStrike)	Ego_r / FableWin spelling; OnHit calls it on the hit parameters before the directional/localised tests	CStateMapOwner_00868860::HasStateZeroOrOne
+0079bd80	??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCBrainDef@@@@@Z (CDefinitionManager::GetDef<CBrainDef>)	the template instance CreateMinion calls (same TU); body reproduced by the same-TU definition in src/0079acc0.cpp	CDefinitionManager::GetDef_0079bd80
+009a08b0	?GFFloatToCharString@@YI?AVCCharString@@NJ@Z (GFFloatToCharString)	Ego_r / FableWin spelling; free __fastcall, hidden result + double + long digits (Save)	CCharString::FormatDouble
+007f8860	?DetachParticles@CTCParticleAttacher@@QAEXXZ (CTCParticleAttacher::DetachParticles)	Ego_r / FableWin spelling; AttachObject calls it on the interface-130 (TCI_PARTICLE_ATTACHER) component	CTCInterface82::ClearEntry_7f8860
+007df3e0	?OnPutOnMount@CTCWallMountEffects@@QAEXXZ (CTCWallMountEffects::OnPutOnMount)	Ego_r.pdb: OnPutOnMount follows HasEffect (0x007DF3D0 here, the 16-byte PDef test) exactly as in Ego_r; called from AttachObject on the interface-219 component	(unlabelled)

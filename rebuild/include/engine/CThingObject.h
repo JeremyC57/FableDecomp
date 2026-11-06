@@ -10,6 +10,13 @@ protected:
     bool DiesOff; // +d8, ctor7031f8
     unsigned char _pad_0xd9[7];
 public: static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGOBJECT_ONHIT
+    // Retail opt-in (chunk 794, row 0x007039A0): Ego_r.pdb / FableWin.pdb ?OnHit@CThingObject@@MAEXAAVCHitParameters@@@Z (protected
+    // virtual override of CThingGameObject::OnHit 0x00839940, which it calls by name). Declaration only: no layout change.
+protected:
+    virtual void OnHit(CHitParameters& params);                        // 0x007039A0
+public:
+#endif
 #ifdef FABLE_RETAIL_CTHINGOBJECT_STATGETTYPE
     // Chunk 756 (row 0x009104D0): Ego_r.pdb / FableWin.pdb ?StatGetType@CThingObject@@SIJXZ; the thing-type list 5 that
     // GetAllLeafThings<CThingObject> 0x00910A90 scans (`push 5 ; call PeekTypeList`).

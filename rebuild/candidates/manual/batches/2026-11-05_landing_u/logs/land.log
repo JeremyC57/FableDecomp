@@ -1,0 +1,17 @@
+addr       parity           behav  name
+007039a0   WARN RELOC_NAME: ?IsMeleeStrike@CHitParameters@@QBE_NXZ -> 00868860 labelled 'CStateMapOwner_00868860::HasStateZeroOrOne'
+007039a0   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+007039a0   RELOCATION_MATCH PASS   OnHit
+0079acc0   WARN RELOC_NAME: ?GetValidTeleportPos@CTCSummonSpell@@AAE?AVC3DVector@@PBVCThing@@@Z -> 0079aa90 labelled 'CTCSummonSpell_GetValidSummonPos'
+0079acc0   RELOCATION_MATCH PASS   CreateMinion
+008304a0   RELOCATION_MATCH PASS   Save
+
+WINS: 3
+  007039a0 RELOCATION_MATCH CThingObject::?OnHit@CThingObject@@MAEXAAVCHitParameters@@@Z
+  0079acc0 RELOCATION_MATCH CTCSummonSpell::?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z
+  008304a0 RELOCATION_MATCH CThingAICreature::?Save@CThingAICreature@@UAEXAAVCCharString@@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CThingObject_OnHit_007039a0
+  CTCSummonSpell_CreateMinion_0079acc0
+  CThingAICreature_Save_008304a0

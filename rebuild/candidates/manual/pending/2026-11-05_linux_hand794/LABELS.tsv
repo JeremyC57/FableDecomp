@@ -1,0 +1,17 @@
+address	name	evidence
+008304a0	CThingAICreature::Save	landed row (RELOCATION_MATCH); Ego_r / FableWin ?Save@CThingAICreature@@UAEXAAVCCharString@@@Z
+007039a0	CThingObject::OnHit	landed row (RELOCATION_MATCH); Ego_r / FableWin ?OnHit@CThingObject@@MAEXAAVCHitParameters@@@Z
+0079acc0	CTCSummonSpell::CreateMinion	landed row (RELOCATION_MATCH); Ego_r ?CreateMinion@CTCSummonSpell@@QAEXABVC3DVector@@PBV2@@Z
+0079aa90	CTCSummonSpell::GetValidTeleportPos	Ego_r.pdb + the CreateMinion call shape
+0079bd80	CDefinitionManager::GetDef<CBrainDef>	same-TU instance called by CreateMinion (body reproduced)
+00868860	CHitParameters::IsMeleeStrike	PDB spelling + OnHit use
+00661a60	CThingCreatureBase::Save	Ego_r ?Save@CThingCreatureBase@@UAEXAAVCCharString@@@Z, called by name from 0x008304A0
+009a08b0	GFFloatToCharString	Ego_r / FableWin ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z
+00681ae0	CTCCreatureOpinionOfHero::KnowsOfDeed	three-argument overload; Ego_r spelling; landed 0x00683650 binds it
+00682810	CTCCreatureOpinionOfHero::InformOfDeed	Ego_r spelling; IRTOD call shape
+006c58f0	CTCHeroOpinionDeedLog::GetDeedFromHandle	Ego_r / FableWin; body find 0x006C7830 + NULL on end (auto-inlined in 0x006C6040)
+006c8de0	CThingFilter_IsEligibleWitness::CThingFilter_IsEligibleWitness	Ego_r ctor spelling; IRTOD pushes 7 args
+006c8e90	CThingFilter_IsEligibleWitness::operator()	Ego_r spelling
+0076c7d0	CTCEnemy::IsEnemyOfFaction	Ego_r spelling; IRTOD reverse-faction arm
+007f8860	CTCParticleAttacher::DetachParticles	Ego_r / FableWin + AttachObject use
+007df3e0	CTCWallMountEffects::OnPutOnMount	Ego_r order (after HasEffect 0x007DF3D0) + AttachObject use

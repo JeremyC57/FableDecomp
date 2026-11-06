@@ -24,11 +24,15 @@
 #include "rebuild_abi.h"
 #include "engine/CTCBase.h"
 #include "engine/CDefPointer.h"
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM
+#include "engine/EOpinionDeedType.h"
+#endif
 #ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_DEEDS
 #include "stlport/fable_containers.h"
 #endif
 class COpinionOfHeroDef;
 class COpinionPersonalityDef;
+class COpinionDeedEffectsDef;
 enum EOpinionAttitudeType;                                               // MS forward enum (the row defines the enumerators it uses)
 
 class CTCCreatureOpinionOfHero : public CTCBase {
@@ -46,6 +50,17 @@ public:
     bool IsFactionEnemyToHeroOverriddenOnOpinion() const;                // 0x00681850
     bool IsWillingToStartFollowingHero() const;                          // 0x006818A0
     bool IsWillingToContinueFollowingHero() const;                       // 0x006818F0
+#ifdef FABLE_RETAIL_CTCCREATUREOPINIONOFHERO_INFORM
+    // Nested opt-in (chunk 794, row 0x006C6040 CTCHeroOpinionDeedLog::InformRelevantThingsOfDeed): Ego_r.pdb
+    // ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QBE_NJW4EOpinionDeedType@@_N@Z and
+    // ?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXW4EOpinionDeedType@@JABVCOpinionDeedEffectsDef@@_N@Z, out of line in retail (0x00681AE0
+    // `push 1 ; push type ; push handle` then `test al,al`; 0x00682810 `push flag ; push def ; push handle ; push type`). The addresses are
+    // the row's call targets matched to the PDB signatures (one bool-returning (long, type, bool) const member, one (type, long, def&, bool)
+    // member); declarations only, no layout change.
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_OPINION_OF_HERO; }   // Ego_r ?StatGetInterfaceType@..@@SI?AW4ETCInterfaceType@@XZ (inline; vtable slot 21 returns 0x4F)
+    bool KnowsOfDeed(long handle, EOpinionDeedType type, bool flag) const;                                // 0x00681AE0
+    void InformOfDeed(EOpinionDeedType type, long handle, const COpinionDeedEffectsDef& def, bool flag);  // 0x00682810
+#endif
     long                                      LastOpinionReactionFrame;      // +0x0c
     float                                     NumberOfTimesHit;              // +0x10
     float                                     ToleranceToBeingHitOverride;   // +0x14

@@ -384533,6 +384533,27 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00ab8e10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007039a0'
+        Module = 'CThingObject'
+        Source = '00/70/CThingObject_OnHit_007039a0.cpp'
+        TestSource = '00/70/CThingObject_OnHit_007039a0_test.cpp'
+        PassPattern = '007039a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079acc0'
+        Module = 'CTCSummonSpell'
+        Source = '00/79/CTCSummonSpell_CreateMinion_0079acc0.cpp'
+        TestSource = '00/79/CTCSummonSpell_CreateMinion_0079acc0_test.cpp'
+        PassPattern = '0079acc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008304a0'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_Save_008304a0.cpp'
+        TestSource = '00/83/CThingAICreature_Save_008304a0_test.cpp'
+        PassPattern = '008304a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

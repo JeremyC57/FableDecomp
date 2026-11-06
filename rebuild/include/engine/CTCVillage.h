@@ -34,6 +34,12 @@ public:
     CThingAICreature* GetGuardFollowingPlayer() { return reinterpret_cast<CIntelligentPointer<CThingAICreature>*>(GuardFollowingPlayer)->Get(); }
 #endif
     __forceinline CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
+#ifdef FABLE_RETAIL_CTCVILLAGE_LIMBO
+    // Retail opt-in (chunk 794, row 0x007039A0 CThingObject::OnHit): FableWin.pdb ?GetVillageLimbo@CTCVillage@@QBE_NXZ, inline in retail
+    // (`mov cl,[eax+0B3h]` straight after GetPVillage 0x007EE540). +0xB3 is LaggyLimbo in the retail layout below (Ego_r.pdb +0x13F;
+    // Limbo is +0xB2) -- which member the accessor returns is read from the retail byte offset only. Body only: no layout change.
+    bool GetVillageLimbo() const { return LaggyLimbo; }
+#endif
 #ifdef FABLE_RETAIL_CTCVILLAGE_CRATETASK
     // Chunk 754 (row 0x00943C20 CAIStateGroup_WorkInWarehouse::IsRunnable): Ego_r.pdb / FableWin.pdb
     // ?GetBestCrateTaskForThing@CTCVillage@@QAEPAVCVillageTaskCarryCrate@@ABVCThing@@@Z (retail 0x00658EA0, out of line).

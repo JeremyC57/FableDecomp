@@ -41,7 +41,14 @@ public:
     // the result into a running float total (0x00AE0710 CalculateAveragePatchSize: `fmul; faddp st(1); fmul; faddp st(1);
     // faddp st(3)`); the unparenthesised default lets it reassociate each product into the total (identical bytes everywhere
     // else). The operand order inside the parentheses does not change the bytes there.
+#ifdef FABLE_RETAIL_C3DVECTOR_SQUAREDMAGNITUDE_XYZ
+    // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): the same parenthesised one-line sum in X, Y, Z
+    // order. There the inlined Normalise loads Z, Y, X (0x0079AE93 fld [esp+24h], 0x0079AEA0 fld [esp+20h], 0x0079AEAA fld
+    // [esp+1Ch]); the X, Z, Y spelling loads Y, Z, X in that TU. Body only: no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return (X*X+Y*Y+Z*Z);}
+#else
     FABLE_VECTOR_INLINE float GetSquaredMagnitude()const{return (X*X+Z*Z+Y*Y);}
+#endif
     // Chunk 732 (row 0x006AABE0 SetActionForMelee): FableWin.pdb ?GetSquaredMagnitude2D@C3DVector@@QBEMXZ (debug copy 0x01DAEC70; no
     // Ego_r.pdb copy, expanded in retail) as running statements: retail loads X then Y (0x006AACCF, 0x006AADB1, 0x006AAF97); the
     // one-line `X*X+Y*Y` lets VC7.1 load Y first there. No other FABLE_RETAIL_C3DVECTOR includer uses it.
