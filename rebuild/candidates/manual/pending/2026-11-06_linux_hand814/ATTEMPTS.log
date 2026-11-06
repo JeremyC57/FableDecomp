@@ -1,0 +1,38 @@
+# chunk 814 attempts log (one line per grade)
+00d647f0 a1 fm_a1.cpp DIFFER(7405v7389) 512 SDIFF164 r10 -- first full source; phase-2 lightning branch register choice + frame slot order
+00d647f0 a2 fm_a2.cpp same 512 -- `long counter;` declared at top: inert
+00d647f0 a3 fm_a3.cpp same 512 -- counter declared after seh_me: inert
+00d647f0 a4 fm_a4.cpp DIFFER(7405v7389) 316 -- per-phase counter locals: all three share retail slot 0x38; timer/str slot swap remains
+00d647f0 a5 fm_a5.cpp 316 -- phase 2/3 counters block-scoped: inert
+00d647f0 a7 fm_a7.cpp 316 -- BeenHit++ then if: inert
+00d647f0 a8 fm_a8.cpp 316 -- conversation declared at top: inert
+00e6bc50 a1 ae_a1.cpp DIFFER(7692v7655) 112 -- first full source (TOL twin model): SDIFF 45, reg-masked 14; residue: follower-loop ebx/ebp swap + pad merge, DonationThisVisit edi hoist
+00e6bc50 a2 ae_a2.cpp 102 -- DonationThisVisit=VictimHealth*(rand()%3+1)+50: ParentClass loaded after rand like retail (SDIFF 36, reg-masked 10)
+00e6bc50 a3 ae_a3.cpp 112 -- unsigned int i / i++ loop counter: inert
+00e6bc50 a4 ae_a4.cpp 102 -- plain return instead of TRetVoid _Fail_Val: inert (kept, simpler)
+00e6bc50 a5 ae_a5.cpp 102 -- declared-only cast-map ctor/dtor specializations: inert
+00e6bc50 a6 ae_a6.cpp 102 -- SCRIPTEDTHINGBASE_OUTOFLINE_ASSIGN: inert (operator= already called)
+00e6bc50 x1/x2 -- drop IMPLICIT_COPY / inline default ctor (diagnostic): worse (199/196) and natural-exit ~seh_me store order unchanged (ours vptr,Info,Data; retail Data,Info,vptr; chunk 811's TOL twin builds the retail order)
+00e2ff00 a1 ab_a1.cpp DIFFER(8487v8567) 448 -- first full source (BriarRose spawn model, row-local inline copy/assign/IsAlive/GetPos, packed BuddyStartPos overlay): reg-masked SDIFF 250; residue: CScriptThing copy split (ours expands the 3 spawn Par1 copies + spawn temp dtors and calls the 4 SetWander copies; retail the reverse), early-return epilogue expansions
+00ea8f40 a1 mt_a1.cpp RELOCATION_MATCH -- first full source from the landed BrotherYounger model; blocker 1/2 shapes (CIsThingAlive copy call, first movie expanded) came out of the plain spelling
+00e44ea0 a1 bc_a1.cpp DIFFER(6986v7002) 35 -- first full source; only residue timer=120 called vs expanded
+00e44ea0 a2 bc_a2.cpp RELOCATION_MATCH -- __forceinline CTimer::operator=
+00cf68c0 a1 eg_a1.cpp DIFFER(8226v8070) 1308 -- first full source
+00cf68c0 a2 eg_a2.cpp DIFFER(8210v8070) 1299 -- declared-only CCountedPointer<CScriptThing> copy ctor (0x704430 called as retail)
+00cf68c0 a3 eg_a3.cpp DIFFER(8253v8070) 1416 -- + MOVIEBASE_FORCEINLINE_CTOR (ctor sites now as retail; dtor still called)
+00cf68c0 a4 eg_a4.cpp DIFFER(8253v8070) 1416 -- TRetVoid _Fail_Val returns: inert
+00e6bc50 a7 ae_a7.cpp 102 -- loop index declared before the size()>1 test: inert
+00e6bc50 a8 ae_a8.cpp 102 -- `if (victim==followers[i]) continue;` instead of the negated if: inert
+00e6bc50 a9 ae_a9.cpp 116 -- victim declared before followers: worse
+00e6bc50 a10 ae_a10.cpp 102 -- rand index as its own long: inert
+00e2ff00 a2 ab_a2.cpp 448 -- CSCRIPTTHING_IMPLICIT_COPY instead of the row-local copy: identical
+00e2ff00 a3 ab_a3.cpp 542 -- header out-of-line copy (all copies called): worse
+00e2ff00 x3 x3.cpp 2542 -- diagnostic #pragma inline_depth(1) (forbidden in a row; the landed UndeadRising Init 0x00E0DAA0 spawn uses it): far worse, so depth alone is not the cause
+00e2ff00 a4 ab_a4.cpp 759 -- diagnostic opt-in plain-inline CSpawnedFunc1 ctor (overlay removed again): ctor no longer expanded, worse
+00e2ff00 a5 ab_a5.cpp 396 -- no row-local ~CScriptThing (dtor called): spawn temp dtors as retail, early-exit dtors called (retail expands), 8151 bytes
+00e2ff00 a7 ab_a7.cpp 448 -- explicit instantiation of CSpawnedFunc1<CV_AmbushScamScript,CScriptThing> before the row-local inline bodies: inert
+00e2ff00 a8 ab_a8.cpp 387 -- __forceinline row-local copy ctor: the 4 SetWander / HeroAttackOnBuddy copies now expanded as retail; left: the spawn Par1 copy + temp dtor (retail calls 0x4ABE90 / 0x4AA840 inside the forced CSpawnedFunc1 ctor), the early-exit ~trickster / ~seh_me expansions, the 2 bottom SetScriptingStateGroup copies (retail calls)
+00e2ff00 a9 ab_a9.cpp 335 -- a8 + no row-local dtor: 335 lines but 8215 bytes (further from retail: every dtor called)
+00e2ff00 a10 ab_a10.cpp 1950 -- a8 + __forceinline dtor: far worse
+00d647f0 a9 fm_a9.cpp 316 -- const phase-2 counter: inert
+00d647f0 a10 fm_a10.cpp 316 -- phase-2 lightning line in its own block: inert

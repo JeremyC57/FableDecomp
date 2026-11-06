@@ -1,0 +1,8 @@
+address	source	grade_with_final_overlay	note
+0x00EA8F40	src/00ea8f40.cpp	RELOCATION_MATCH PASS	this chunk; vland (overlay set) RELOCATION_MATCH + test PASS; uses no overlay header
+0x00E44EA0	src/00e44ea0.cpp	RELOCATION_MATCH PASS	this chunk; vland (overlay set) RELOCATION_MATCH + test PASS; uses no overlay header
+0x00D647F0	differ/00d647f0.cpp	DIFFER(7405v7389) PASS	parked; uses new hdr/engine/CQ_GuildTrainingWoodsDepartureScript.h (FABLE_RETAIL_NSCRIPT)
+0x00E6BC50	differ/00e6bc50.cpp	DIFFER(7692v7655) PASS	parked; uses hdr/engine/CV_ChapelOfEvilScript.h opt-in FABLE_RETAIL_CV_CHAPELOFEVILSCRIPT_ACOLYTEEVIL
+0x00E2FF00	differ/00e2ff00.cpp	DIFFER(8551v8567) PASS	parked; uses hdr/engine/CV_AmbushScamScript.h opt-in FABLE_RETAIL_CV_AMBUSHSCAMSCRIPT_BUDDY
+0x00CF68C0	differ/00cf68c0.cpp	DIFFER(8210v8070) PASS	parked; uses hdr/engine/CQ_ArenaHoldingScriptScript.h opt-in FABLE_RETAIL_CQ_ARENAHOLDINGSCRIPTSCRIPT_ENTRANCEGUARD
+-	(landed includers)	unchanged by construction	every overlay edit is an additive #ifdef opt-in branch (default path textually unchanged, no reflow), so no landed includer recheck was required; includer counts: CV_ChapelOfEvilScript.h 1, CV_AmbushScamScript.h 10, CQ_ArenaHoldingScriptScript.h 0, CQ_GuildTrainingWoodsDepartureScript.h new

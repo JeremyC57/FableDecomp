@@ -384834,6 +384834,20 @@ $catalog = @(
         TestSource = '00/f1/NScriptCQArenaScriptCArenaCellDoorGuard_Main_00f17c70_test.cpp'
         PassPattern = '00f17c70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e44ea0'
+        Module = 'NScript::CV_BordelloScript::CBordelloClient'
+        Source = '00/e4/NScriptCVBordelloScriptCBordelloClient_Main_00e44ea0.cpp'
+        TestSource = '00/e4/NScriptCVBordelloScriptCBordelloClient_Main_00e44ea0_test.cpp'
+        PassPattern = '00e44ea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea8f40'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistLeader'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Main_00ea8f40.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Main_00ea8f40_test.cpp'
+        PassPattern = '00ea8f40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,7 @@
+address	module	name	length
+00e44ea0	NScript::CV_BordelloScript::CBordelloClient	Main	7002
+00d647f0	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze	Main	7389
+00e6bc50	NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil	Main	7655
+00ea8f40	NScript::CV_MurderTwistScript::CMurderTwistLeader	Main	7933
+00cf68c0	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard	Main	8070
+00e2ff00	NScript::CV_AmbushScamScript::CAS_Buddy	Main	8567
