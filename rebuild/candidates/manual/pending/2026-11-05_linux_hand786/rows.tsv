@@ -1,0 +1,7 @@
+address	module	name	length
+00eacf00	NScript::CV_MurderTwistScript::CMurderTwistBrotherOlderFriend	Main	2089
+00eadbb0	NScript::CMurderTwistBrotherYounger	Main	2452
+00dd2ce0	NScript::CQ_PrisonEscapeRescueMotherScript	Main	2265
+00dd5a60	NScript::CPrisoner	Main	2250
+00ea0090	NScript::CKGG_VillagerOutside	Main	2392
+00dce230	NScript::CCrateTeamMember	Main	2589

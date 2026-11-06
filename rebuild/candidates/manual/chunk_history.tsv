@@ -27354,3 +27354,9 @@ chunk	address	module	name	length
 786	00dd5a60	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner	Main	2250
 786	00ea0090	NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside	Main	2392
 786	00dce230	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember	Main	2589
+787	00cf9a50	NScript::CQ_AmbushTradersScript	Init	2199
+787	00d038e0	NScript::CQ_BanditCampBossBattleScript	Main	2419
+787	00de0850	NScript::CQ_RansomVictimScript	Main	2606
+787	00dfa450	NScript::CQ_TraderConflictGoodScript	Main	2640
+787	00da34b0	NScript::CQ_MinionClifftopChaseScript	Main	2681
+787	00cfb080	NScript::CQ_AwakeningTheOracleScript	Main	2699

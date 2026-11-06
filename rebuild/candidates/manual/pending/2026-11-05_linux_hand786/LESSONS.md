@@ -1,0 +1,7 @@
+- A quest-script entity Main whose sibling has landed is usually that sibling's source with new literals: diff the annotated disassembly against the sibling first (0x00EACF00, 0x00EADBB0 matched on the first grade).
+- An entity Main's address appears once in .rdata, at slot 1 of its entity vtable (xref.py). That plus the PDB name set proves the class.
+- A CCharString == literal test against GetDefName() needs both FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ and FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE. The tell is `repe cmpsb` against "" on the null arm and Compare 0x00411570 + neg/sbb/inc on the other (0x00EA0090).
+- Thread member pointers in a quest Main name their callees: vland RELOC_NAME warnings on the spawned functions are free label corrections (0x00DD9520, 0x00DD9900).
+- A scheduled `mov [local], al` right after a terminate test means the source assigns the local before the following calls. al is known to be 0 there (0x00DCE230 `fetching = false`).
+- CIsThingAlive's ctor calls the CScriptThing copy out of line while hot by-value copies expand inline in the same function. No copy-ctor spelling tried reproduces this. Probe a7 (`PImp() { PImp = other.PImp; }`) and probe a6 (body-assign) bracket the c2 size (0x00DCE230).
+- A local CScriptThing gets its virtual wrappers (IsAlive, IsBeingCarriedBy, GetPos) expanded only when they are defined after the header. CScriptThing members reached through a pointer (MyTeam->TeamCrateCarrier.IsDead()) stay virtual calls.

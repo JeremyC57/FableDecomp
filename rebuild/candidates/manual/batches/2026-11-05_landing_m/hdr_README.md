@@ -1,0 +1,5 @@
+# Chunk 786 header overlay
+
+No header changes. Every row compiles against the repo headers with existing opt-ins (FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_CTOR / _DTOR,
+FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ, FABLE_RETAIL_CBASICSTRING_TEXT_EQ_INLINE, FABLE_RETAIL_STLP_VECTOR_ERASE_OUTOFLINE, ...),
+so no landed includer needs a recheck.

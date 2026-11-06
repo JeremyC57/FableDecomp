@@ -384336,6 +384336,34 @@ $catalog = @(
         TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Main_00eac5b0_test.cpp'
         PassPattern = '00eac5b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00dd2ce0'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_Main_00dd2ce0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_Main_00dd2ce0_test.cpp'
+        PassPattern = '00dd2ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea0090'
+        Module = 'NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Main_00ea0090.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Main_00ea0090_test.cpp'
+        PassPattern = '00ea0090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eacf00'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrotherOlderFriend'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_Main_00eacf00.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_Main_00eacf00_test.cpp'
+        PassPattern = '00eacf00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eadbb0'
+        Module = 'NScript::CV_MurderTwistScript::CMurderTwistBrotherYounger'
+        Source = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Main_00eadbb0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Main_00eadbb0_test.cpp'
+        PassPattern = '00eadbb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

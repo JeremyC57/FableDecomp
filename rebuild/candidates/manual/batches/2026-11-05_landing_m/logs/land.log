@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00dd2ce0   WARN RELOC_NAME: ?SplittingUpCutscene@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ -> 00dd9520 labelled 'CQ_PrisonEscapeRescueMotherScript::PrisonEscape'
+00dd2ce0   WARN RELOC_NAME: ?ProcessRaces@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ -> 00dd9900 labelled 'CV_ChapelOfEvilScript::EndMission'
+00dd2ce0   RELOCATION_MATCH PASS   Main
+00ea0090   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ea0090   RELOCATION_MATCH PASS   Main
+00eacf00   RELOCATION_MATCH PASS   Main
+00eadbb0   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  00dd2ce0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::?Main@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEXXZ
+  00ea0090 RELOCATION_MATCH NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::?Main@CKGG_VillagerOutside@CV_KnotholeGladeGatesScript@NScript@@EAEXXZ
+  00eacf00 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrotherOlderFriend::?Main@CMurderTwistBrotherOlderFriend@CV_MurderTwistScript@NScript@@EAEXXZ
+  00eadbb0 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrotherYounger::?Main@CMurderTwistBrotherYounger@CV_MurderTwistScript@NScript@@EAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  NScriptCQPrisonEscapeRescueMotherScript_Main_00dd2ce0
+  NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Main_00ea0090
+  NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_Main_00eacf00
+  NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Main_00eadbb0
