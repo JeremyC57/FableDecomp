@@ -1,0 +1,7 @@
+address	module	name	length
+00ef0090	NScript::CPersonalScript_EmptyScript	Main	4002
+00e8dfa0	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace	Main	4056
+00d9a190	NScript::CQ_HobbeToothContestScript	Main	4441
+00de2610	NScript::CQ_RansomVictimScript::CVictimsFatherGuard	Main	4420
+00dc27c0	NScript::CQ_OpeningGraveyardSecretPassageScript	Main	4134
+00e13f10	NScript::CQ_WhiteBalverineKnotholeGladeScript	Main	5589

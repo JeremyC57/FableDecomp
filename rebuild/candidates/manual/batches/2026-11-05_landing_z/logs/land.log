@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00d9a190   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d9a190   RELOCATION_MATCH PASS   Main
+00dc27c0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00dc27c0   RELOCATION_MATCH PASS   Main
+00e13f10   WARN RELOC_NAME: ?WatchForTermination@CQ_WhiteBalverineKnotholeGladeScript@NScript@@QAEXXZ -> 00e15500 labelled '_global::CScriptGameResourceObjectScriptedThingBase_HandleWhiteBalverineQuestObjective'
+00e13f10   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e13f10   RELOCATION_MATCH PASS   Main
+00e8dfa0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e8dfa0   RELOCATION_MATCH PASS   Main
+00ef0090   RELOCATION_MATCH PASS   Main
+
+WINS: 5
+  00d9a190 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::?Main@CQ_HobbeToothContestScript@NScript@@UAEXXZ
+  00dc27c0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::?Main@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEXXZ
+  00e13f10 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::?Main@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEXXZ
+  00e8dfa0 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::?Main@CGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ
+  00ef0090 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::?Main@CPersonalScript_EmptyScript@NScript@@UAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHobbeToothContestScript_Main_00d9a190
+  NScriptCQOpeningGraveyardSecretPassageScript_Main_00dc27c0
+  NScriptCQWhiteBalverineKnotholeGladeScript_Main_00e13f10
+  NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Main_00e8dfa0
+  NScriptCPersonalScriptEmptyScript_Main_00ef0090

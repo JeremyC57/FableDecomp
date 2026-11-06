@@ -27438,3 +27438,9 @@ chunk	address	module	name	length
 800	007d8e20	CTCTavernGameSpotTheAddition	FrameUpdate	1900
 800	0094ab00	CAIStateGroup_GoToPub	Update	2067
 800	00544d20	NUISystem::CSpellContainerList	ProcessEvent	1602
+801	007a7d20	CTCBattleCharge	CreateHitEffect	2520
+801	00960120	CAIStateGroup_DeedReactionRoot	Update	1600
+801	00850a80	CContextSensitiveItemDef	IsValidOverride	2576
+801	007b0cd0	CTCFishing	FrameUpdate	3416
+801	007db6a0	CTCTavernGameCardBlackjack	CardsMainGame	2556
+801	00833c00	CThingAICreature	vfunc_36	2300

@@ -1,0 +1,14 @@
+# chunk 799 lessons (GOTCHAS one-liners)
+- Long entity Main where retail sinks a state body and inlines CTimer: `__forceinline` CTimer::operator=/GetTime in the TU flips VC7.1's inliner budget (0x00E8DFA0). Plain `inline` stays a call in a 4 KB body.
+- CWideScreenMagicPauseEntities ctor called out of line in a big Main -> FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR (0x00D9A190, 0x00DC27C0, 0x00E13F10).
+- CEntityScriptBinding<T> ctor called xN in a large level Main -> FABLE_RETAIL_CENTITYSCRIPTBINDING_FORCEINLINE_CTOR (precedent 0x00E479B0; 0x00E13F10 went from 870 lines to RELOCATION_MATCH).
+- Retail `test al,al; setne bl` after IsQuestActive in a while condition -> write `while (Game->IsQuestActive(...) != false)`. Plain truthiness gives `mov bl,al` (0x00DC27C0, precedent 0x00D50800).
+- IsValid()/Release() on a ParentClass member handle reloads the address unless you bind `CParent& parent = ParentClass;` in a block first (0x00DE2610, precedent 0x00E776F0).
+- Retail switch with a dead `dec eax` before the jump table -> spell `case 3:` and `default:` with the same body (0x00DE2610).
+- EmptyScript-style loops where retail splits the first check out of each arm: a loop-head `do { ... } while (0)` plus the first check repeated in each arm reproduces the block order (0x00EF0090).
+- Making `~CScriptThing` inline-visible makes `~CIsThingAlive` all-or-nothing in VC7.1 (called whole, or expanded together with the nested ~CScriptThing). Retail's one-level expansion (outer inlined, nested called) only comes from `#pragma inline_depth(0)` (0x00D08B40), which is forbidden. Park it.
+- c2 resolves inline bodies defined later in the TU (after the function that uses them), so definition order is not a lever for inlining.
+- vland: `--recheck-landed` must come after the payload/oracle positional args.
+- gall.sh without FABLE_HDR_OVERLAY exported gives SRC_FAIL for rows that need hdr/ opt-ins. Export it before every grade.
+- strchk can show a " u~" (offset-by-one) or comma-mangled retail string. That is a retail-scanner artifact; relpair is the authority.
+- Quoted heredoc ('EOF') when writing headers/python through bash. Backticks in an unquoted heredoc run as command substitution.

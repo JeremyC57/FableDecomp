@@ -2248,3 +2248,16 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-11-06, chunk 798) VC7.1 splits inline choices per site within one function, and no single spelling reproduces it. In 0x00E27E90, retail calls the CScriptThing copy inside the inlined CIsThingAlive ctor but expands the by-value argument copy, and expands one ScriptedThingBase ctor but calls 0x007E72A0 at the next. Definition order, named locals, else-if and budget shifts did not move it.
 - (2026-11-06, chunk 798) A `__declspec(noinline)` template CBasicString Compare body keeps the region text in esi across three `region == "..."` tests, as retail does (0x00F0C140). A plain inline or auto_inline(off) body is still expanded.
 - (2026-11-06, chunk 798) vland.py takes `--recheck-landed` after the positional payload/oracle arguments; placed first, it is read as the payload path.
+- (2026-11-06, chunk 799) Long entity Main where retail sinks a state body and inlines CTimer: `__forceinline` CTimer::operator=/GetTime in the TU flips VC7.1's inliner budget (0x00E8DFA0). Plain `inline` stays a call in a 4 KB body.
+- (2026-11-06, chunk 799) CWideScreenMagicPauseEntities ctor called out of line in a big Main -> FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR (0x00D9A190, 0x00DC27C0, 0x00E13F10).
+- (2026-11-06, chunk 799) CEntityScriptBinding<T> ctor called xN in a large level Main -> FABLE_RETAIL_CENTITYSCRIPTBINDING_FORCEINLINE_CTOR (precedent 0x00E479B0; 0x00E13F10 went from 870 lines to RELOCATION_MATCH).
+- (2026-11-06, chunk 799) Retail `test al,al; setne bl` after IsQuestActive in a while condition -> write `while (Game->IsQuestActive(...) != false)`. Plain truthiness gives `mov bl,al` (0x00DC27C0, precedent 0x00D50800).
+- (2026-11-06, chunk 799) IsValid()/Release() on a ParentClass member handle reloads the address unless you bind `CParent& parent = ParentClass;` in a block first (0x00DE2610, precedent 0x00E776F0).
+- (2026-11-06, chunk 799) Retail switch with a dead `dec eax` before the jump table -> spell `case 3:` and `default:` with the same body (0x00DE2610).
+- (2026-11-06, chunk 799) EmptyScript-style loops where retail splits the first check out of each arm: a loop-head `do { ... } while (0)` plus the first check repeated in each arm reproduces the block order (0x00EF0090).
+- (2026-11-06, chunk 799) Making `~CScriptThing` inline-visible makes `~CIsThingAlive` all-or-nothing in VC7.1 (called whole, or expanded together with the nested ~CScriptThing). Retail's one-level expansion (outer inlined, nested called) only comes from `#pragma inline_depth(0)` (0x00D08B40), which is forbidden. Park it.
+- (2026-11-06, chunk 799) c2 resolves inline bodies defined later in the TU (after the function that uses them), so definition order is not a lever for inlining.
+- (2026-11-06, chunk 799) vland: `--recheck-landed` must come after the payload/oracle positional args.
+- (2026-11-06, chunk 799) gall.sh without FABLE_HDR_OVERLAY exported gives SRC_FAIL for rows that need hdr/ opt-ins. Export it before every grade.
+- (2026-11-06, chunk 799) strchk can show a " u~" (offset-by-one) or comma-mangled retail string. That is a retail-scanner artifact; relpair is the authority.
+- (2026-11-06, chunk 799) Quoted heredoc ('EOF') when writing headers/python through bash. Backticks in an unquoted heredoc run as command substitution.

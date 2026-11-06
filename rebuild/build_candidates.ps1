@@ -384631,6 +384631,41 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVSwordInTheStoneScript_SwordPullCutscene_00ed5830_test.cpp'
         PassPattern = '00ed5830_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d9a190'
+        Module = 'NScript::CQ_HobbeToothContestScript'
+        Source = '00/d9/NScriptCQHobbeToothContestScript_Main_00d9a190.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScript_Main_00d9a190_test.cpp'
+        PassPattern = '00d9a190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc27c0'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_Main_00dc27c0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_Main_00dc27c0_test.cpp'
+        PassPattern = '00dc27c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e13f10'
+        Module = 'NScript::CQ_WhiteBalverineKnotholeGladeScript'
+        Source = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_Main_00e13f10.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_Main_00e13f10_test.cpp'
+        PassPattern = '00e13f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8dfa0'
+        Module = 'NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace'
+        Source = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Main_00e8dfa0.cpp'
+        TestSource = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Main_00e8dfa0_test.cpp'
+        PassPattern = '00e8dfa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef0090'
+        Module = 'NScript::CPersonalScript_EmptyScript'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScript_Main_00ef0090.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScript_Main_00ef0090_test.cpp'
+        PassPattern = '00ef0090_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
