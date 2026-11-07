@@ -1,0 +1,7 @@
+address	module	name	length
+00cfbdf0	NScript::CQ_AwakeningTheOracleScript::CNecropolisGhost	Main	2317
+00d328c0	NScript::CQ_EndGameBossBattleScript::CEndGameSister	Main	2484
+00e799f0	NScript::CV_ExposeMayorScript::CEM_Rhodri	Main	2580
+00ecd9e0	NScript::CV_SickChildScript::CSickChildsMother	Main	2679
+00cf0d20	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2	Main	2755
+00d21040	NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader	Main	2758

@@ -1,0 +1,7 @@
+address	module	name	length
+00e25f70	NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern	Main	2049
+00d886b0	NScript::CQ_HeroSoulsNostroScript::CGuardNearGraveyardPath	Main	2064
+00d368d0	NScript::CQ_FireHeartScript::CFH_GuildMaster	Main	2147
+00d1fd30	NScript::CQ_BreakSiegeScript::CDisplacedTrader	Main	2255
+00e72630	NScript::CV_DemonDoorsScript::CDF_ThreeSuits	Main	2252
+00d24a40	NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh	Main	2403

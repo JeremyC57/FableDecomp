@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00d328c0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d328c0   RELOCATION_MATCH PASS   Main
+00ecd9e0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ecd9e0   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00d328c0 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CEndGameSister::?Main@CEndGameSister@CQ_EndGameBossBattleScript@NScript@@EAEXXZ
+  00ecd9e0 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChildsMother::?Main@CSickChildsMother@CV_SickChildScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQEndGameBossBattleScriptCEndGameSister_Main_00d328c0
+  NScriptCVSickChildScriptCSickChildsMother_Main_00ecd9e0

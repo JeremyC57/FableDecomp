@@ -1,0 +1,4 @@
+address	name	evidence
+00d368d0	NScript::CQ_FireHeartScript::CFH_GuildMaster::Main	landed row (this chunk, RELOCATION_MATCH); label already correct; Ego_r.pdb ?Main@CFH_GuildMaster@CQ_FireHeartScript@NScript@@EAEXXZ, slot 1 of the vtable stored by the landed Alloc 0x00D36790
+00d1fd30	NScript::CQ_BreakSiegeScript::CDisplacedTrader::Main	landed row (this chunk, RELOCATION_MATCH); label already correct; Ego_r.pdb ?Main@CDisplacedTrader@CQ_BreakSiegeScript@NScript@@EAEXXZ, slot 1 of the vtable stored by its landed Alloc (GetParentScript 0x00D1FCD0)
+00e72f00	NScript::CV_DemonDoorsScript::CDF_ThreeSuits::DressedAsBandit	catalog label CDF_ThreeSuits::DressedAsBandit lacks the NScript::CV_DemonDoorsScript prefix (its landed siblings 0x00E730A0 / 0x00E731F0 carry it); Ego_r.pdb + FableWin.pdb ?DressedAsBandit@CDF_ThreeSuits@CV_DemonDoorsScript@NScript@@AAE_NXZ; called on this by CDF_ThreeSuits::Main 0x00E72630

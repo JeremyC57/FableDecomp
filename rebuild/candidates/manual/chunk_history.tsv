@@ -27662,3 +27662,15 @@ chunk	address	module	name	length
 836	00ecd9e0	NScript::CV_SickChildScript::CSickChildsMother	Main	2679
 836	00cf0d20	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2	Main	2755
 836	00d21040	NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader	Main	2758
+837	00d23dc0	NScript::CQ_BowerstoneTownLifeIntroScript	Main	1079
+837	00d3a4a0	NScript::CQ_FireHeartScript::CFH_Prisoner	Main	1140
+837	00ddae40	NScript::CQ_PrisonRaceScript	Main	1180
+837	00ef4b40	NScript::CPersonalScript_EmptyScript::CTestPerson	Main	1268
+837	00efa4f0	NScript::Cbandit_level_cutsceneScript	Main	1362
+837	00ed3b30	NScript::CV_StatueMasterScript	Main	1402
+838	00d9daf0	NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe	Main	1693
+838	00f0a960	NScript::CQ_AmbushTradersScript::CAT_BanditContact	Main	1985
+838	00d21b40	NScript::CQ_BreakSiegeScript::CBanditSiegeLeader	Main	2965
+838	00dee2e0	NScript::CQ_SecretPassageScript::CMotherTorture	Main	3102
+838	00d33730	NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster	Main	3292
+838	00eb7b00	NScript::CV_MayorsInvitationScript::CWiseVillager	Main	3334

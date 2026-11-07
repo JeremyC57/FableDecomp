@@ -37354,3 +37354,5 @@ $notRedefined$4399	0068a01d	00689df0
 ?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z	00a0af40	00b5af80
 ?QuadIndices@?1??RenderColorFilteredQuad@CEngineScreenEffectColourFilter@@QAEXMMABVC4DVector@@MMPAVCTexture@@@Z@4PAGA	0139a4ec	00b5af80
 ?UpdateUVs@CEngineScreenEffectColourFilter@@AAEXXZ	00b5a160	00b5af80
+?ShareData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@PAVCCPPointerInfo@@@Z	008aa8e0	00d368d0
+?PlayCutscene@CV_SickChildScript@NScript@@QAEXVCCharString@@0@Z	00ece460	00ecd9e0

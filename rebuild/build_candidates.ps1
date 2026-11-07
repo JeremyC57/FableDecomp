@@ -385034,6 +385034,34 @@ $catalog = @(
         TestSource = '00/b5/CEngineScreenEffectColourFilter_RenderColorFilteredQuad_00b5af80_test.cpp'
         PassPattern = '00b5af80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d1fd30'
+        Module = 'NScript::CQ_BreakSiegeScript::CDisplacedTrader'
+        Source = '00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Main_00d1fd30.cpp'
+        TestSource = '00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Main_00d1fd30_test.cpp'
+        PassPattern = '00d1fd30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d368d0'
+        Module = 'NScript::CQ_FireHeartScript::CFH_GuildMaster'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHGuildMaster_Main_00d368d0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHGuildMaster_Main_00d368d0_test.cpp'
+        PassPattern = '00d368d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d328c0'
+        Module = 'NScript::CQ_EndGameBossBattleScript::CEndGameSister'
+        Source = '00/d3/NScriptCQEndGameBossBattleScriptCEndGameSister_Main_00d328c0.cpp'
+        TestSource = '00/d3/NScriptCQEndGameBossBattleScriptCEndGameSister_Main_00d328c0_test.cpp'
+        PassPattern = '00d328c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecd9e0'
+        Module = 'NScript::CV_SickChildScript::CSickChildsMother'
+        Source = '00/ec/NScriptCVSickChildScriptCSickChildsMother_Main_00ecd9e0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCSickChildsMother_Main_00ecd9e0_test.cpp'
+        PassPattern = '00ecd9e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

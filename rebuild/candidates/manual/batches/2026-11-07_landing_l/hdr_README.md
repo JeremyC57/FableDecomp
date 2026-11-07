@@ -1,0 +1,15 @@
+# Chunk 836 header overlay
+
+All four headers are opt-in only: each new declaration sits inside a new `#ifdef FABLE_RETAIL_<...>` block, so the default path is
+textually unchanged (the repo copies were re-diffed just before hand-back: only added lines). Nobody else's overlay (agent834 /
+agent835) touches these headers.
+
+| header | change | opt-in macro | evidence | includers rechecked |
+|---|---|---|---|---|
+| engine/CQ_EndGameBossBattleScript.h | NEW header: `NScript::CQ_EndGameBossBattleScript : CLevelScriptBase<CQ_SunnyvaleMasterData>` (RegisterMain, Main, JackOfBladesBossFightCutscene / PhaseWatcher / BossBattle; IntroFinished +0x48, FinalDecision +0x49, FinalDecisionMade +0x4a, SisterNeededForCutscene +0x4b, GuildmasterChat +0x4c, FinalCutscenePlayed +0x4d, seh_Jack +0x50, Jack +0x60, sizeof 0x6c; nested entity classes forward-declared) and, opt-in, the nested `CEndGameSister` (ParentClass +0x14, PMasterData +0x18, sizeof 0x1c, Main 0x00D328C0, Init 0x00D2FCB0, GetParentScript 0x00D2FCA0, Alloc 0x00D2FC00) | the whole header needs FABLE_RETAIL_NSCRIPT; class CEndGameSister under FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CENDGAMESISTER | Ego_r.pdb CQ_EndGameBossBattleScript 128 bytes (struct_layouts_egor.tsv) at PDB - 0x14; retail 0x00D328C0 reads +0x48..+0x4b and writes +0x4a / +0x4d; the landed Jack Main 0x00D2FB20 reads +0x48; the landed Alloc 0x00D2FC00 news 0x1c | none (no includer before chunk 836; the landed siblings keep local models) |
+| engine/CQ_AwakeningTheOracleScript.h | nested `CNecropolisGhost` (ParentClass +0x14, PMasterData +0x18, `long MyGraveNumber` +0x1c, sizeof 0x20; Alloc 0x00CFBCE0; private virtual Init / OnPersist / Main) | FABLE_RETAIL_CQ_AWAKENINGTHEORACLESCRIPT_CNECROPOLISGHOST | Ego_r.pdb CNecropolisGhost (struct_layouts_egor.tsv); retail 0x00CFBDF0 reads / writes +0x1c | 0x00CFB080 RELOCATION_MATCH PASS (vland --recheck-landed with the overlay) |
+| engine/CV_ExposeMayorScript.h | nested `CEM_Rhodri` (ParentClass +0x14, PMasterData +0x18, `bool ExplainedPlight` +0x1c, sizeof 0x20; Alloc 0x00E765D0, GetParentScript 0x00E76670, Init 0x00E766A0, Main 0x00E799F0) | FABLE_RETAIL_CV_EXPOSEMAYORSCRIPT_CEM_RHODRI | Ego_r.pdb CEM_Rhodri; retail 0x00E799F0 writes +0x1c and tests it | 0x00E78630, 0x00E776F0 RELOCATION_MATCH PASS |
+| engine/CQ_ArenaHoldingScriptScript.h | nested `CEntranceGuard2` (ParentClass +0x14, PMasterData +0x18, sizeof 0x1c; Alloc 0x00CF0C40, GetParentScript 0x00CF0CE0, Init 0x00CF0CF0, Main 0x00CF0D20) | FABLE_RETAIL_CQ_ARENAHOLDINGSCRIPTSCRIPT_CENTRANCEGUARD2 | Ego_r.pdb CEntranceGuard2 28 bytes; the landed Alloc 0x00CF0C40 news 0x1c and stores vtable 0x012C6174; retail 0x00CF0D20 reads / writes ParentClass+0x4c (InHitCutsceneAlready) | none (no landed includer) |
+
+Note: chunk 814's pending overlay (rebuild/candidates/manual/pending/2026-11-06_linux_hand814/hdr/engine/CQ_ArenaHoldingScriptScript.h) adds
+a CEntranceGuard opt-in to the same header; the two opt-ins are independent blocks and merge without conflict.

@@ -1,0 +1,4 @@
+address	source	grade_with_final_overlay	note
+0x00CFB080	rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScript_Main_00cfb080.cpp	RELOCATION_MATCH PASS	landed includer of engine/CQ_AwakeningTheOracleScript.h (opt-in block added); vland --recheck-landed with FABLE_HDR_OVERLAY=hdr (tmp/recheck.log)
+0x00E78630	rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSheriff_Main_00e78630.cpp	RELOCATION_MATCH PASS	landed includer of engine/CV_ExposeMayorScript.h (opt-in block added)
+0x00E776F0	rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_Main_00e776f0.cpp	RELOCATION_MATCH PASS	landed includer of engine/CV_ExposeMayorScript.h (opt-in block added)

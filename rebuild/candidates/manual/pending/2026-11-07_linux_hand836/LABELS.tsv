@@ -1,0 +1,5 @@
+address	name	evidence
+0x00D328C0	NScript::CQ_EndGameBossBattleScript::CEndGameSister::Main	landed row (RELOCATION_MATCH); Ego_r.pdb ?Main@CEndGameSister@CQ_EndGameBossBattleScript@NScript@@EAEXXZ; slot 1 of the CEndGameSister vtable stored by Alloc 0x00D2FC00 (label already correct)
+0x00ECD9E0	NScript::CV_SickChildScript::CSickChildsMother::Main	landed row (RELOCATION_MATCH); Ego_r.pdb ?Main@CSickChildsMother@CV_SickChildScript@NScript@@EAEXXZ; registration "SickChildsMother" 0x00EC552A (label already correct)
+0x00CDBFB0	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map	catalog label CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a is a placeholder; FableWin + Ego_r ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@...; vland RELOC_NAME warning on 0x00D328C0
+0x00CDBF70	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map	catalog label std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree is a placeholder; FableWin + Ego_r ??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@...
