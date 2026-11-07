@@ -17,6 +17,7 @@
 #define FABLE_RETAIL_LHHTTP2
 #define FABLE_RETAIL_LHHTTP2_RECEIVEDOCUMENT
 #include <new>
+void* __cdecl operator new[](unsigned int);
 void __cdecl operator delete[](void*);
 #include "engine/LHHttp2.h"
 #include "engine/LSocket.h"

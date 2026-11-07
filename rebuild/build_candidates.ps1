@@ -241463,13 +241463,7 @@ $catalog = @(
         TestSource = '00/8e/NCreatureModeCModeBriarRoseConcentrate_CModeBriarRoseConcentrate_008e78c0_test.cpp'
         PassPattern = '008e78c0_TEST PASS'
     }
-    [pscustomobject]@{
-        Address = '00ab5d00'
-        Module = 'CMouseDX'
-        Source = '00/ab/CMouseDX_CMouseDX_00ab5d00.cpp'
-        TestSource = '00/ab/CMouseDX_CMouseDX_00ab5d00_test.cpp'
-        PassPattern = '00ab5d00_TEST PASS'
-    }
+
     [pscustomobject]@{
         Address = '00ac5080'
         Module = 'CMirroredTextureHighlightsChunk'
@@ -385375,6 +385369,41 @@ $catalog = @(
         Source = '00/d3/NScriptCQGuildTrainingScript_GossipSetup_00d3b410.cpp'
         TestSource = '00/d3/NScriptCQGuildTrainingScript_GossipSetup_00d3b410_test.cpp'
         PassPattern = '00d3b410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab58e0'
+        Module = 'CMouseDX'
+        Source = '00/ab/CMouseDX_Update_00ab58e0.cpp'
+        TestSource = '00/ab/CMouseDX_Update_00ab58e0_test.cpp'
+        PassPattern = '00ab58e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083efe0'
+        Module = 'LHNetworkLib::LHHttp2'
+        Source = '00/83/LHNetworkLibLHHttp2_ReceiveDocumentAsync_0083efe0.cpp'
+        TestSource = '00/83/LHNetworkLibLHHttp2_ReceiveDocumentAsync_0083efe0_test.cpp'
+        PassPattern = '0083efe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00501d30'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_GetLevelFilesFromWorldFile_00501d30.cpp'
+        TestSource = '00/50/CWorldMap_GetLevelFilesFromWorldFile_00501d30_test.cpp'
+        PassPattern = '00501d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00924c70'
+        Module = 'CAIStateGroup_KrakenAttack'
+        Source = '00/92/CAIStateGroupKrakenAttack_Update_00924c70.cpp'
+        TestSource = '00/92/CAIStateGroupKrakenAttack_Update_00924c70_test.cpp'
+        PassPattern = '00924c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab5d00'
+        Module = 'CMouseDX'
+        Source = '00/ab/CMouseDX_CMouseDX_00ab5d00.cpp'
+        TestSource = '00/ab/CMouseDX_CMouseDX_00ab5d00_test.cpp'
+        PassPattern = '00ab5d00_TEST PASS'
     }
 )
 

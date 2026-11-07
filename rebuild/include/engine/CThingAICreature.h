@@ -33,6 +33,11 @@ public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long, const CThingAICreatureInit& init);   // 0x00833800
     void AutoSetupSexuality(float probabilityOfHomosexuality);           // 0x008330D0
     void SetAsAllowedToFollowHero(bool allowed) { AllowedToFollowHero = allowed; }
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_IMMUNETOATTACK
+    // Nested opt-in (chunk 854, row 0x00924C70 CAIStateGroup_KrakenAttack::Update): FableWin.pdb ?SetAsImmuneToAttack@CThingAICreature@@QAEX_N@Z
+    // (Ego_r.pdb has the ?IsImmuneToAttack@..QBE_NXZ twin), inline in retail: `or cl,40h` on +0x1C8 = bit 6 ImmuneToAttack below.
+    void SetAsImmuneToAttack(bool immune) { ImmuneToAttack = immune; }
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_SETNEWBRAIN
     // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb / FableWin.pdb
     // ?SetNewBrain@CThingAICreature@@QAEXV?$CDefPointer@$$CBVCBrainDef@@@@@Z (retail 0x00833010, out of line; the CDefPointer is passed by

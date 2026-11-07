@@ -63,6 +63,11 @@ protected: static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase& c
 public: virtual ~CCombatActionBase();
     virtual void PerformAction();
 protected: virtual CCreatureActionBase* Clone() const;
+#ifdef FABLE_RETAIL_CCOMBATACTIONBASE_SETCOMBATANIMATION
+    // Nested opt-in (chunk 854, row 0x00924C70: the inline CCreatureAction_KrakenReturnToWater ctor): Ego_r.pdb
+    // ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z (0x008574D0), the declaration the MELEE branch has under _INITIALISE.
+public: void SetCombatAnimation(const CCharString& name);              // 0x008574D0
+#endif
 protected: unsigned char _pad_0xa8[0x6c];
 };
 #endif

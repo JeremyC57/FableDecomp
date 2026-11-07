@@ -3,7 +3,7 @@
 // Plan phase 5 (2026-11-05), CCountedPointer wave: the local CCountedPointer / count-block stand-ins replaced by the shared engine/CCountedPointer.h (Ego_r.pdb: CCountedPointer<T> Data +0x0 / Info +0x4; CCPPointerInfo RefCount +0x0 / DeleteFunc +0x4 / Data +0x8). Also: the local CCountedPointer members Object->Data, Count->Info are the header CCountedPointer's (same offsets).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AB5D00, 188 bytes (`ret 8`). Vtable 0x0129EA14 (CMouseDX).
-// Callees: CMouse::CMouse(CInputManagerDX*, bool) 0x00A66F20; CMouse::ClearStoredEvents 0x00A66B10 (zeroes NoStoredEvents;
+// Callees: CMouse::CMouse(CInputManagerDX*, bool) 0x00A66F20; CMouse::EmptyEventStore 0x00A66B10 (protected, Ego_r.pdb / FableWin.pdb ?EmptyEventStore@CMouse@@IAEXXZ; zeroes NoStoredEvents;
 // manifest label "CGameEventPackage::Clear" is a propagated byte-twin); USER32 ShowCursor (import 0x01440350);
 // GFGetSystemManager 0x009A4EC0 (`__fastcall`); CMouseDX::SetExclusiveMode(bool) 0x00AB5710 (called directly: in the ctor).
 // The engine cursor primitive is a COM-style (`__stdcall`, `this` pushed) interface; slot 12 (+0x30) enables the cursor.
@@ -14,7 +14,7 @@
 // ExclusiveModeData +0x3440 (256 DIDEVICEOBJECTDATA), ExclusiveModeEventsCount +0x4840, NoExclusiveModeEvents +0x4844,
 // LMBOn/MMBOn/RMBOn/Filtering +0x4848, LastUpdateMovement +0x484c, CursorGraphic +0x4858 (CCountedPointer<CSurface>).
 // Shape: only InputManagerDX and the CursorGraphic counted pointer are initialisers (stored right after the vptr);
-// the remaining fields are body assignments in retail's store order around the ClearStoredEvents call.
+// the remaining fields are body assignments in retail's store order around the EmptyEventStore call.
 class CInputManager { public: };
 class CInputManagerDX : public CInputManager { public: };
 class CSurface;
@@ -72,7 +72,8 @@ class CMouse { public:                            // vtable 0x0129DBC4, retail 0
     void*         MaintainedEventsList;    // +0x340c (STLport list sentinel)
     long          InputManager;            // +0x3410
     CMouse(CInputManager& manager, bool exclusiveMode);     // 0x00A66F20
-    void ClearStoredEvents();              // 0x00A66B10
+protected:
+    void EmptyEventStore();                // 0x00A66B10
 };
 
 struct CMouseDX : CMouse {                 // vtable 0x0129EA14
@@ -114,7 +115,7 @@ CMouseDX::CMouseDX(CInputManagerDX& manager, bool exclusiveMode)
     MouseStep = 1.0f;
     InputEnabled = true;
     NoEventScansRunning = 0;
-    ClearStoredEvents();
+    EmptyEventStore();
     ForceRecentre = false;
     DrawingCursor = true;
     ExclusiveModeEventsCount = 0;

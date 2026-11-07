@@ -1,0 +1,8 @@
+address	name	evidence
+0x00AB58E0	CMouseDX::Update	landed row (chunk 854): Ego_r.pdb / FableWin.pdb ?Update@CMouseDX@@UAEXXZ; CMouseDX vtable 0x0129EA14 slot 5
+0x0083EFE0	LHNetworkLib::LHHttp2::ReceiveDocumentAsync	landed row (chunk 854): Ego_r.pdb / FableWin.pdb ?ReceiveDocumentAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ; sole caller of the DocumentParts push_back 0x00841A70
+0x00501D30	CWorldMap::GetLevelFilesFromWorldFile	landed row (chunk 854): Ego_r.pdb / FableWin.pdb protected ?GetLevelFilesFromWorldFile@CWorldMap@@IAEXABVCWideString@@AAV?$vector@...@Z; sole caller CWorldMap::CreateWorldLevelWad 0x00502170
+0x00924C70	CAIStateGroup_KrakenAttack::Update	landed row (chunk 854): Ego_r.pdb / FableWin.pdb ?Update@CAIStateGroup_KrakenAttack@@MAEXXZ; RTTI .?AVCAIStateGroup_KrakenAttack@@ : CAIStateGroupBase
+0x00A66B10	CMouse::EmptyEventStore	was CMouse::ClearStoredEvents (no such PDB name): Ego_r.pdb / FableWin.pdb ?EmptyEventStore@CMouse@@IAEXXZ (protected; the CInputManager / CJoystick / CKeyboard twins share the name); body zeroes NoStoredEvents +0x3404; called by the CMouseDX ctor 0x00AB5D00 and CMouseDX::Update 0x00AB58E0 (chunk 854)
+0x0062E900	CCombatActionBase::~CCombatActionBase	was CCreatureAction_CastWillFireballSpell::~CCreatureAction_CastWillFireballSpell (propagated): Ego_r.pdb / FableWin.pdb ??1CCombatActionBase@@UAE@XZ; the five CCreatureAction_Kraken* temporaries in 0x00924C70 (no own dtors) end with it; queue c606 / c657 / c718
+0x007FB120	CTCKraken::IsTargetAlive	descriptive (was _global::IsThingAlive_007fb120): thiscall on CTCKraken, PTarget +0x20 non-null and not dead (`test byte [eax+91h],1`); in neither PDB name set; sole caller CAIStateGroup_KrakenAttack::Update 0x00924EDE (chunk 854)

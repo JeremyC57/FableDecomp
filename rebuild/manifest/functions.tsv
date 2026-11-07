@@ -13316,7 +13316,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0062e820	StdList_Dtor_0062e820	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CActiveFile_OnReadFinished_0062e820.cpp
 0062e840	GetAllThings	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CThingFilter_HasScriptName *,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 0062e8e0	StdList_Dtor_0062e8e0	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CActiveFile_OnReadFinished_0062e8e0.cpp
-0062e900	~CCreatureAction_CastWillFireballSpell	CCreatureAction_CastWillFireballSpell	__thiscall	void	1	CTCLightningOrb *	1	yes	accepted									
+0062e900	~CCombatActionBase	CCombatActionBase	__thiscall	void	1	CTCLightningOrb *	1	yes	accepted									
 0062e9b0	CCreatureAction_HeroRangedWeaponUseDummy	CCreatureAction_HeroRangedWeaponUseDummy	__thiscall	undefined	2	CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *	0	yes	accepted									
 0062e9f0	PerformAction	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CCombatActionBase_PerformAction_0062e9f0.cpp
 0062ea00	GetAnimDelayTime	CCombatActionBase	__thiscall	long	1	CCombatActionBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CCombatActionBase_GetAnimDelayTimeCCombatActionBaseUBE_0062ea00.cpp
@@ -23594,7 +23594,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007fae34	Resize	CPersistContext_TransferableVector<CHeroMarriageInfo>	__thiscall	void	2	CPersistContext_TransferableVector<CHeroMarriageInfo> *,long	1	yes	accepted									
 007fae60	sort<CThing **, CThingCompare_BestForTargeting2>	std	unknown	undefined	0		0	yes	accepted									
 007faf60	DoHeadTracking	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted									
-007fb120	IsThingAlive_007fb120	_global	__fastcall	bool	1	CIntelligentPointer<CThingPhysical_const_> *	1	yes	accepted									
+007fb120	IsTargetAlive	CTCKraken	__fastcall	bool	1	CIntelligentPointer<CThingPhysical_const_> *	1	yes	accepted									
 007fb150	EndHeadEffects	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted									
 007fb1c0	KillTentacles	CTCKraken	unknown	undefined	0		0	yes	accepted									
 007fb230	OnDie	CTCKraken	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\global_Destval_007fb230.cpp
@@ -24888,7 +24888,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0083ecf0	toUpperCase	LHNetworkLib	unknown	undefined	0		0	yes	accepted									
 0083ee10	StartsWith	LHNetworkLib	unknown	undefined	0		0	yes	accepted									
 0083eee0	GetUntilCRLF	LHHttp2	__thiscall	LH_HTTP_STATUS	3	LHHttp2 *,char *,ulong *	1	yes	accepted									
-0083efe0	ReceiveDocumentAsync	LHHttp2	__thiscall	LH_HTTP_STATUS	1	LHHttp2 *	1	yes	accepted									
+0083efe0	ReceiveDocumentAsync	LHNetworkLib::LHHttp2	__thiscall	LH_HTTP_STATUS	1	LHHttp2 *	1	yes	accepted									
 0083f420	ParseLocationData	LHNetworkLib::LHHttpHeaderStatus	unknown	undefined	0		0	yes	accepted									
 0083f5c0	GetHost_0083f5c0	CHttpUrl_0083f420	__thiscall	undefined	4	CColourConverter *,CPixelFormat *,CPixelFormat *,bool	0	yes	accepted									
 0083f600	GetPath_0083f600	CHttpUrl_0083f420	__thiscall	undefined	4	CColourConverter *,CPixelFormat *,CPixelFormat *,bool	0	yes	accepted									
@@ -31409,7 +31409,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00924a90	FinishAction	CCreatureAction_KrakenHighAttackInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924b40	FinishAction	CCreatureAction_KrakenRoarInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00924b90	?A0x29922355::CCreatureAction_KrakenRoarLoop::vfunc_4	?A0x29922355::CCreatureAction_KrakenRoarLoop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00924c70	CAIStateGroup_KrakenAttack::Update	CAIStateGroup_KrakenAttack	__thiscall	void	1	CAIStateGroup_KrakenAttack *	1	yes	accepted									
+00924c70	Update	CAIStateGroup_KrakenAttack	__thiscall	void	1	CAIStateGroup_KrakenAttack *	1	yes	accepted									
 009250f0	Update	CAIStateGroup_KrakenTentacleIdle	__thiscall	void	1	CAIStateGroup_KrakenTentacleIdle *	1	yes	accepted									
 00925170	Update	CAIStateGroup_KrakenTentacleRise	__thiscall	void	1	CAIStateGroup_KrakenTentacleRise *	1	yes	accepted									
 009251e0	Update	CAIStateGroup_KrakenTentacleAttack	__thiscall	void	1	CAIStateGroup_KrakenTentacleAttack *	1	yes	accepted									
@@ -37641,7 +37641,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a66ad0	GetKeyName	CKeyboard	__thiscall	bool	3	CKeyboard *,EInputKey,CWideString &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CKeyboard_GetKeyName_00a66ad0.cpp
 00a66ae0	`scalar deleting destructor'	CKeyboard	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CLandscapeBackgroundPatch_vectordeletingdestructor_00a66ae0.cpp
 00a66b00	EventScanEnd	CInputManager	__thiscall	void	2	CInputManager *,CInputEventScanInfo *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CInputManager_EventScanEnd_00a66b00.cpp
-00a66b10	ClearStoredEvents	CMouse	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\Clear_Clear_00a66b10.cpp
+00a66b10	EmptyEventStore	CMouse	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\Clear_Clear_00a66b10.cpp
 00a66b20	AddEventToStore	CMouse	__thiscall	bool	2	CJoystick *,CInputEvent *	1	yes	accepted									
 00a66b60	GetEventFromStore	CMouse	__thiscall	CInputEvent *	2	CMouse *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CMouse_GetEventFromStore_00a66b60.cpp
 00a66b70	EventScanStart	CMouse	__thiscall	bool	3	CMouse *,CInputEventScanInfo *,CInputEvent *	1	yes	accepted									
@@ -39150,7 +39150,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ab5390	SetMouseCursor	CMouseDX	__thiscall	void	2	CMouseDX *,CSurface const &	1	yes	accepted	FAIL	wave2			D:\Documents\FableTLC\lift\reports\wave2\code\00\ab\0x00AB5390_global_SetMouseCursor_CMouseDX_UAEXABVCSurface_Z.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ab\CMouseDX_SetMouseCursor_00ab5390.cpp
 00ab5420	ConvertMouseEventToInputEvent	CMouseDX	__thiscall	bool	3	CMouseDX *,CMouseEvent *,CInputEvent *	1	yes	accepted									
 00ab5710	SetExclusiveMode	CMouseDX	__thiscall	bool	2	CMouseDX *,bool	1	yes	accepted									
-00ab58e0	?Update@CMouseDX@@UAEXXZ	CMouseDX	__thiscall	void	1	CMouseDX *	1	yes	accepted									
+00ab58e0	Update	CMouseDX	__thiscall	void	1	CMouseDX *	1	yes	accepted									
 00ab5d00	CMouseDX	CMouseDX	__thiscall	void	3	CMouseDX *,CInputManagerDX *,bool	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\ab\0x00AB5D00_CMouseDX_CMouseDX.cpp				
 00ab5df0	sub_00ab5df0	_global	unknown	undefined	0		0			discovered	gapscan							
 00ab5e00	CCountedPointer_Release_00ab5e00	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ab\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00ab5e00.cpp

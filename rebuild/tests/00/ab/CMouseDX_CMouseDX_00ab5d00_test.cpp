@@ -6,7 +6,7 @@ static void ShowCursorStub(int show) { g_showCursorArg = show; g_showOrder = ++g
 class CMouse { public:
     long NoStoredEvents; long NoEventScansRunning; void* Manager; bool BaseExclusive;
     CMouse(void* manager, bool exclusive) : NoStoredEvents(5), NoEventScansRunning(3), Manager(manager), BaseExclusive(exclusive) {}
-    void ClearStoredEvents() { NoStoredEvents = 0; g_clearOrder = ++g_order; }
+    void EmptyEventStore() { NoStoredEvents = 0; g_clearOrder = ++g_order; }
 };
 struct CMouseDX : CMouse {
     void* DMouse; void* InputManagerDX; float MouseStep; bool ExclusiveMode, InputEnabled, ForceRecentre, DrawingCursor;
@@ -15,7 +15,7 @@ struct CMouseDX : CMouse {
     {
         DMouse = 0; MouseStep = 1.0f; InputEnabled = true;
         NoEventScansRunning = 0;
-        ClearStoredEvents();
+        EmptyEventStore();
         ForceRecentre = false; DrawingCursor = true; ExclusiveModeEventsCount = 0; NoExclusiveModeEvents = 0;
         LMBOn = false; MMBOn = false; RMBOn = false; Filtering = false;
         ShowCursorStub(!exclusiveMode);

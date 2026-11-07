@@ -1,0 +1,6 @@
+address	name	grade	behav	note
+00ab58e0	CMouseDX::Update	RELOCATION_MATCH	PASS	landed
+0083efe0	LHNetworkLib::LHHttp2::ReceiveDocumentAsync	RELOCATION_MATCH	PASS	landed (operator new[] declaration added)
+00501d30	CWorldMap::GetLevelFilesFromWorldFile	RELOCATION_MATCH	PASS	landed on the N+1 (1087) row
+00924c70	CAIStateGroup_KrakenAttack::Update	RELOCATION_MATCH	PASS	landed
+00ab5d00	CMouseDX::CMouseDX	RELOCATION_MATCH	PASS	re-landed (EmptyEventStore respelling)

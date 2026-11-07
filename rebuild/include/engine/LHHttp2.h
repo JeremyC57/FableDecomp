@@ -10,6 +10,11 @@ struct LHHttpDocumentParts {
     char* Buffer;
     unsigned long BufferLength;
     unsigned long CurrBufPos;
+#ifdef FABLE_RETAIL_LHHTTP2_RECEIVEDOCUMENT
+    // Nested opt-in (chunk 854, row 0x0083EFE0 LHHttp2::ReceiveDocumentAsync): FableWin.pdb ??0LHHttpDocumentParts@LHNetworkLib@@QAE@XZ,
+    // inline in retail (after `new`: `mov [eax],edi ; mov [eax+4],edi ; mov [eax+8],edi`).
+    LHHttpDocumentParts() { Buffer=0;BufferLength=0;CurrBufPos=0; }
+#endif
     ~LHHttpDocumentParts() { if(Buffer) { delete[] Buffer;Buffer=0; } BufferLength=0; }
 };
 class LHHttpHeaders {
@@ -70,6 +75,13 @@ public:
 #endif
     LH_HTTP_STATUS PrepareRequest(HTTP_REQUEST_TYPE,const std::string&,LHHttpHeaders*,const std::string&,unsigned long);
     LH_HTTP_STATUS ReceiveHeaderAsync();
+#ifdef FABLE_RETAIL_LHHTTP2_RECEIVEDOCUMENT
+    // Nested opt-in (chunk 854, row 0x0083EFE0): Ego_r.pdb + FableWin.pdb spellings; the three callees out of line in retail and landed.
+    LH_HTTP_STATUS ReceiveDocumentAsync();
+    LH_HTTP_STATUS GetUntilCRLF(char*,unsigned long*);                   // 0x0083EEE0
+    LH_RETURN IsDataAvailable();                                         // 0x0083EA50
+    void ResetDocumentRecv();                                            // 0x0083EB90
+#endif
     void ResetCurrentHeaderPart() { CurrentHeaderPos=0;memset(CurrentHeaderPart,0,sizeof CurrentHeaderPart); }
     void ResetCurrentDocumentPart() {
         DocumentEstimatedLength=0;DocumentLength=0;memset(CurrentDocumentPart,0,sizeof CurrentDocumentPart);

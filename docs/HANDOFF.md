@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-08 (chunks 782-853 recorded; AUTHORING STOPPED by the user; chunk 854 stopped mid-run, saved)
+# Resume here (one page) — updated 2026-11-08 late (chunks 782-853 recorded; AUTHORING STOPPED by the user; chunk 854's four saved matches landed)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -33,13 +33,18 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     (landed 5 of 15, `2026-11-07_landing_y/`; the other 10 are 2-8-line ties after 53-1071 attempts each, `pending/2026-11-07_linux_hand847/`) retried fifteen 4-7-line near misses no expert had worked (0x00C75F80, 0x00A852B0, 0x005029A0, 0x0065B142,
     0x0063E590, 0x00C71F80, 0x00A22E10, 0x00B92300, 0x00F36A30, 0x006AFE60, 0x006A9690, 0x0075E270, 0x00760A70, 0x00986ED0, 0x0085C7D0).
     No Fable agent is running; start none unless the user asks.
+  - **Resumed 2026-11-08 late** (the user: "continue where the last claude chat left off"; authoring stays stopped, no agent started):
+    the a013f3ec-... scratch is gone; the older 5221bbec-... scratch holds the whole lane (game SHA-1 checked; the Lane block below
+    names it, but `$S/w22/*.sh`, `$S/w22/jtext.py` and `$S/plan/` were in a013 and are gone). Chunk 854's four saved matches landed
+    (`2026-11-08_landing_e/`: CMouseDX::Update, LHHttp2::ReceiveDocumentAsync with a missing `operator new[]` declaration added,
+    GetLevelFilesFromWorldFile on its N+1 row, CAIStateGroup_KrakenAttack::Update; two tests written) plus the CMouseDX ctor 0x00AB5D00
+    respelled to the PDB `CMouse::EmptyEventStore`. Coverage 47,013 genuine (94.85%; 62.40% of bytes). **Do not run
+    `tools/sync_catalog_names.py` bare and commit it:** it now rewrites 4,284 unrelated names (a backlog, some to placeholders such as
+    `T::Get`); keep only the landing's addresses (landing_e README) until that backlog is reviewed.
   - **Authoring is STOPPED (the user, 2026-11-08: "No more authoring").** No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled
-    CQ_GuildTrainingScript::GossipSetup; GetMapNavigationAreaInit 0x0050A650 parked at 6 lines). Chunk 854 was stopped mid-run with
-    FOUR UNLANDED RELOCATION_MATCH sources (CMouseDX::Update 0x00AB58E0, GetLevelFilesFromWorldFile 0x00501D30, ReceiveDocumentAsync
-    0x0083EFE0, CAIStateGroup_KrakenAttack::Update 0x00924C70; the last two still need tests) saved in
-    `pending/2026-11-08_linux_hand854_stopped/` (README says how to land them: an easy first job when work resumes). Earlier today:
+    CQ_GuildTrainingScript::GossipSetup; GetMapNavigationAreaInit 0x0050A650 parked at 6 lines). Chunk 854 was stopped mid-run; its four RELOCATION_MATCH sources landed later (`2026-11-08_landing_e/`); its two WIP rows (0x007602F0, 0x00507070) stay in `pending/2026-11-08_linux_hand854_stopped/`. Earlier today:
     chunk 850 landed 2 of 6 (`2026-11-08_landing_a/`), 851 4 of 6 (`_b/`, 30 headers, 321 includers rechecked), 852 0 of 6 (`_c/`).
     The two open landing follow-ups: queue line land0811a 0x009EF900 (respell landed 0x009EBB30 to the `__false_type` _M_insert_overflow)
     and land0811d 0x0066B370 (respell landed FrameUpdate 0x0066BBF0's UpdateSounds callee to PlayAllSoundEvents). Chunks 834 / 836 landed 2 of 6 each
@@ -148,8 +153,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
 
 ## Lane (already set up in the scratch directory)
 ```
-export S=/tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad; source $S/wine/env.sh; export S
-# (2026-11-05 late: the 40effb6c-... scratch is gone; this older one holds the same lane. Check `ls $S/wine/env.sh` first.)
+export S=/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad; source $S/wine/env.sh; export S
+# (2026-11-08 late: a013f3ec-... and 40effb6c-... are gone; this older one holds the lane. Check `ls $S/wine/env.sh` first.)
 cd /home/user/FableDecomp   # every tool runs from the repo root
 ```
 `$S` holds Wine + cl 13.10.3077 RTM (`$S/wine/vc71rtm`), QFE 4035 (`$S/wine/vc71`), VS 2003 libs, LZO, and the game

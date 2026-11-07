@@ -1,0 +1,28 @@
+addr       parity           behav  name
+00ab58e0   WARN RELOC_NAME: ?EmptyEventStore@CMouse@@IAEXXZ -> 00a66b10 labelled 'CMouse::ClearStoredEvents'
+00ab58e0   RELOCATION_MATCH PASS   Update
+0083efe0   WARN RELOC_ALIAS: _time -> 00bfed22 is the import thunk 'MSVCR71.DLL::time'
+0083efe0   WARN RELOC_ALIAS: _sscanf -> 00bfed1c is the import thunk 'MSVCR71.DLL::sscanf'
+0083efe0   RELOCATION_MATCH PASS   ReceiveDocumentAsync
+00501d30   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00501d30   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+00501d30   RELOCATION_MATCH PASS   GetLevelFilesFromWorldFile
+00924c70   WARN RELOC_NAME: ??1CCombatActionBase@@UAE@XZ -> 0062e900 labelled 'CCreatureAction_CastWillFireballSpell::~CCreatureAction_CastWillFireballSpell'
+00924c70   WARN RELOC_NAME: ?IsTargetAlive@CTCKraken@@QBE_NXZ -> 007fb120 labelled '_global::IsThingAlive_007fb120'
+00924c70   RELOCATION_MATCH PASS   Update
+00ab5d00   WARN RELOC_NAME: ?EmptyEventStore@CMouse@@IAEXXZ -> 00a66b10 labelled 'CMouse::ClearStoredEvents'
+00ab5d00   RELOCATION_MATCH PASS   CMouseDX
+
+WINS: 5
+  00ab58e0 RELOCATION_MATCH CMouseDX::?Update@CMouseDX@@UAEXXZ
+  0083efe0 RELOCATION_MATCH LHNetworkLib::LHHttp2::?ReceiveDocumentAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ
+  00501d30 RELOCATION_MATCH CWorldMap::?GetLevelFilesFromWorldFile@CWorldMap@@IAEXABVCWideString@@AAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  00924c70 RELOCATION_MATCH CAIStateGroup_KrakenAttack::?Update@CAIStateGroup_KrakenAttack@@MAEXXZ
+  00ab5d00 RELOCATION_MATCH CMouseDX::??0CMouseDX
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CMouseDX_Update_00ab58e0
+  LHNetworkLibLHHttp2_ReceiveDocumentAsync_0083efe0
+  CWorldMap_GetLevelFilesFromWorldFile_00501d30
+  CAIStateGroupKrakenAttack_Update_00924c70
+  CMouseDX_CMouseDX_00ab5d00

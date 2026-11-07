@@ -33,3 +33,8 @@ and `mk854.py` (how the brief was cut). Not committed (retail bytes, regenerate 
    use into rebuild/include, then follow the landing steps used by `batches/2026-11-08_landing_*`.
 4. IsShapeConvex (0x007602F0): start from probe/760_a8.cpp (register assignment only, per the agent) and prove the name; then
    0x00507070 from probe/507_a1.cpp.
+
+## Landed 2026-11-08 (`batches/2026-11-08_landing_e/`)
+The four matches landed RELOCATION_MATCH + PASS with tests written by the coordinator (test/0083efe0.cpp, test/00924c70.cpp). 0x0083EFE0 needed
+`void* __cdecl operator new[](unsigned int);` (src/ here carries the landed text). Only the LHHttp2 / CAIStateGroupBase / CCombatActionBase /
+CThingAICreature opt-ins went into rebuild/include. Still open here: 0x007602F0 (probe/760_a8.cpp) and 0x00507070 (probe/507_a1.cpp), names unproven.
