@@ -1,0 +1,10 @@
+address	Class::Name	evidence
+0x00DD9A50	NScript::CQ_PrisonEscapeRescueMotherScript::ResetCells	landed row (RELOCATION_MATCH); Ego_r.pdb + FableWin.pdb; reloc_bindings had CV_ChapelOfEvilScript::ResetCells
+0x00DD9900	NScript::CQ_PrisonEscapeRescueMotherScript::ProcessRaces	Ego_r.pdb + FableWin.pdb name sets, FableWin order ProcessRaces -> ResetCells; reloc_bindings already binds ProcessRaces; catalog says CV_ChapelOfEvilScript::EndMission
+0x00662160	CThingCreatureBase::GetEyeGraphic	Ego_r.pdb + FableWin.pdb; use in 0x007542B0; catalog says CVertexBufferWin32::DoSizeof
+0x007554C0	CEnginePrimitiveMorphedStaticMesh::CEnginePrimitiveMorphedStaticMesh	Ego_r.pdb + FableWin.pdb ??0CEnginePrimitiveMorphedStaticMesh@@QAE@XZ; 0x007542B0 builds its morphed eye mesh local with it (vector at +0x4C, morph header +0x58); catalog placeholder CLookDrawRequest_007554c0
+0x00755520	CEnginePrimitiveMorphedStaticMesh::~CEnginePrimitiveMorphedStaticMesh	Ego_r.pdb + FableWin.pdb ??1CEnginePrimitiveMorphedStaticMesh@@QAE@XZ; 0x007542B0 destroys the same local with it; catalog placeholder SAppearanceDrawRecord_00755520
+0x007512C0	CThing::GetTCDriver<CTCDExplosion>	reloc_bindings.tsv; use in 0x007C1000; catalog says <CTCDExperienceOrb>
+0x0090DF30	CMessageEvent::GetPOriginator<CThingAICreature>	sibling 0x0090DF60's inline body; use in 0x0090D030; catalog placeholder CThingHolder_0090df30::GetPThing
+0x004BBE10	CRightHandedSet::Init	Ego_r.pdb + FableWin.pdb ?Init@CRightHandedSet@@QAEXABVC3DVector@@0@Z; catalog CRightHandedSet::Set is descriptive
+0x00CDBFB0	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map	the cast-map destructor 0x00DD9A50 (and the landed same-TU scripts) call on the actor map; bound ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@...@std@@QAE@XZ; current label is the placeholder CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a (vland RELOC_NAME warning)

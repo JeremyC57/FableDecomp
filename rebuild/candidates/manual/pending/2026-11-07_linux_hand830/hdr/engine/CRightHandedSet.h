@@ -1,0 +1,47 @@
+#ifndef FABLE_ENGINE_CRIGHTHANDEDSET_H
+#define FABLE_ENGINE_CRIGHTHANDEDSET_H
+#include "engine/C3DVector.h"
+// Ego_r original class0x9f08: protected Up+0,Forward+12,size24.
+// Native CThingCreatureBase::OnHit gets GetRHSet then reads Forward at+12.
+#ifndef FABLE_RETAIL_CRIGHTHANDEDSET
+class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector& GetForward() const { return Forward; } };
+#else
+// Retail opt-in (chunk 734, row 0x004A1CB0): Ego_r.pdb / FableWin.pdb ?GetUp@CRightHandedSet@@QBEABVC3DVector@@XZ (inline) and
+// ?GetRight@CRightHandedSet@@QBE?AVC3DVector@@XZ, out of line at 0x0049CE00 (landed: Forward x Up) and expanded in
+// PreparePrimitivesForEngine (0x004A1D95..0x004A1E01). FableWin.pdb: GetRight (0x01B409F0) is followed by ??TC3DVector (0x01B40A20).
+class CRightHandedSet { protected: C3DVector Up,Forward; public: const C3DVector& GetForward() const { return Forward; }
+    const C3DVector& GetUp() const { return Up; }
+    C3DVector GetRight() const { return Forward ^ Up; }
+    // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?SetForward@CRightHandedSet@@QAEXABVC3DVector@@@Z / ?SetUp@...@QAEXABVC3DVector@@@Z
+    // (inline) and ?MakePerpendicular@CRightHandedSet@@QAEXXZ (out of line at 0x00A22E10, landed users 0x00B9DFC0 / 0x00BD2BC0).
+    void SetForward(const C3DVector& forward) { Forward = forward; }
+    void SetUp(const C3DVector& up) { Up = up; }
+    void MakePerpendicular();                                            // 0x00A22E10
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_CTOR_INLINE
+    // Retail opt-in (chunk 794, row 0x0079ACC0 CTCSummonSpell::CreateMinion): Ego_r.pdb ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z with its
+    // body visible (the out-of-line COMDAT is 0x00487050; CreateMinion builds the set in place: `mov [esp+1Ch],0 ; mov [esp+20h],0 ;
+    // mov [esp+24h],3F800000h` for Up then the negated forward). Mutually exclusive with FABLE_RETAIL_CRIGHTHANDEDSET_CTOR.
+    CRightHandedSet() {}
+    CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {}
+#endif
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_CTOR
+    // Chunk 764 (row 0x007BC004): Ego_r.pdb ??0CRightHandedSet@@QAE@XZ and ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z (retail 0x00487050,
+    // out of line). Declarations only: no layout change.
+    CRightHandedSet() {}
+    CRightHandedSet(const C3DVector& a, const C3DVector& b);
+#endif
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_INIT
+    // Opt-in (chunk 830, row 0x007542B0 CTCLook::OnAppearanceDraw): Ego_r.pdb / FableWin.pdb ?Init@CRightHandedSet@@QAEXABVC3DVector@@0@Z
+    // (the only two-vector void member in either name set), out of line in retail at 0x004BBE10: the landed row there (descriptive
+    // name Set) is the two 12-byte copies with `ret 8`, and Ego_r.pdb places Init among the CTCGraphicAppearance helpers as retail
+    // does (0x004BC180 GetFadeDistance follows). 0x007542B0 calls it as Init(C3DVector(0,0,1), C3DVector(0,1,0)). A declaration only.
+    void Init(const C3DVector& up, const C3DVector& forward);            // 0x004BBE10
+#endif
+#ifdef FABLE_RETAIL_CRIGHTHANDEDSET_ANGLES
+    // Chunk 771 (row 0x006A5D90): Ego_r.pdb ??0CRightHandedSet@@QAE@ABVC3DAngles@@@Z (out of line at 0x00A229E0; the level script's
+    // AngleXY / AngleYZ / AngleXZ triple). A declaration only.
+    CRightHandedSet(const class C3DAngles& angles);                      // 0x00A229E0
+#endif
+};
+#endif
+#endif

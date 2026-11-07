@@ -384982,6 +384982,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '0068bc70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00dd9a50'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_ResetCells_00dd9a50.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_ResetCells_00dd9a50_test.cpp'
+        PassPattern = '00dd9a50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -27634,3 +27634,9 @@ chunk	address	module	name	length
 832	00b5a3f0	CEngineScreenEffectColourFilter	ApplyColourFilter	2916
 832	00d0a830	NScript::CQ_BanditCampBossBattleScript::CBanditKing	Main	2720
 832	00dd5a60	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner	Main	2250
+833	00d17f20	NScript::CQ_BountyHuntScript::CBH_GangDeputy1	Main	3068
+833	00d19bd0	NScript::CQ_BountyHuntScript::CBH_Hostage1	Main	2918
+833	00d1a740	NScript::CQ_BountyHuntScript::CBH_Hostage2	Main	2743
+833	00e17840	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief	Main	2515
+833	00e19d80	NScript::CQ_WhiteBalverineWWScript::CKG_Chief	Main	2539
+833	00db1f00	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman	Main	2714

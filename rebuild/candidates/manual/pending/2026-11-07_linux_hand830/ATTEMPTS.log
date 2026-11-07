@@ -1,0 +1,56 @@
+00dd9a50 a1 v1: PrisonLifeIntro + FirstFleeCutscene model -> DIFFER(4712v4696) (pause ctor called, frame 0xd0)
+00dd9a50 a2 v2: + FORCEINLINE_CTOR pause opt-in -> RELOCATION_MATCH 0; strings 35/35 exact, bindings all OK
+0083e1f0 a1 v1: first model (local class, inline CStringParser ctor body, GetDefaultVal specs, two replace loops) -> DIFFER(2019v1973) 338 lines; uint64 default not hoisted, this in esi
+0083e1f0 a2 v2: + visible Transfer<unsigned __int64> body under auto_inline(off) (GOTCHAS chunk 824) -> DIFFER(2038v1973) 302; default hoisted to 0x7c
+0083e1f0 a3 v3: find text pointer named once per loop (retail ebp) -> DIFFER(1984v1973) 226
+0083e1f0 a4 v4: thing as const CCharString& bound temporary -> identical to v3 (1984v1973, 226)
+0083e1f0 a5 v5: per-loop index scope + nested result block (retail ~result before index++) -> DIFFER(1984v1973) 214; residue = frame slot assignment only (thing/temps shifted by 4) plus loop-2 index register
+0090d030 a1 v1: full local-model first attempt (filters, Bind4, gossip handshake, listen/talk loop) -> DIFFER(2847v3269) 930
+00931390 a1 v1: full local-model first attempt (occupant herding, hide/marker, cower) -> DIFFER(3843v3863) 2063
+007542b0 a1 v1: local-model first attempt (eye primitives, two axis-angle rotations, attachment) + CMatrix3x4 SetFromVectorAndAngle opt-in -> DIFFER(1269v2266) 652
+007542b0 a2 v2: CRightHandedSet::Rotate opt-in (FableWin inline) + one GetEyeGraphic call -> DIFFER(1177v2266) 636 (Rotate/IVCountedPointer/attach ctor called out of line: budget)
+007542b0 a3 v3: __forceinline Rotate + IVCountedPointer ops + attachment ctor/dtor -> DIFFER(2124v2266) 929
+007c1000 a1 v1: local model (shot collision: bounce/deflect, explosion, noise, stick-in-thing, leave object) -> DIFFER(4676v4510) 1279
+007c1000 a2 v2: __forceinline C3DVector ops / HasTC / SetVelocity (CrossProduct, operator/, HasTC were called out of line) -> DIFFER(4716v4510) 1267
+007c1000 a3 v3: def release slot 1, hit-thing temp default-ctor+Set, inline set copy in deflect branch, GetTC bool for hero experience -> DIFFER(4725v4510) 1252; call sequence now identical
+007c1000 a4 v4: CTCBase-derived pads start at 0x0c (velocity +0x28), unsigned mask in HasTC -> DIFFER(4725v4510) 1242 (bit tests still shr form)
+007c1000 a5 v5: UsingComponents as STLport bitset<274> with inline test() -> DIFFER(4683v4510) 1099 (byte tests as retail)
+007c1000 a6 v6: shared engine/C3DVector.h (retail branch: copy ctor, operator^, reciprocal operator/), CDefPointer release through a local -> DIFFER(4674v4510) 995
+007c1000 a7 v7: DELTA_NOTIONAL_ZERO + GetSquaredMagnitude2D for the three 2D length tests -> DIFFER(4674v4510) 995 (no change)
+007c1000 a8 v8: CDefPointer holds a non-const pointee (release = dec [ecx+4]; jne), trail points via end()-1/-2 -> DIFFER(4655v4510) 974
+007c1000 a9 v9: normal.Dot(direction) -> DIFFER(4655v4510) 974 (no change)
+007c1000 a10 v10: direction = direction * (b*0.5f) -> DIFFER(4732v4510) 1050 (worse)
+007c1000 a11 v11: mutable unsigned RefCount + const Delete (release still the load/dec/store form; scratch-TU probes: every CDefPointer release spelling incl. engine/CDefPointer.h gives it once the pointer escaped) -> DIFFER(4655v4510) 974
+0083e1f0 a6 v6: loop-2 iterator declared before its index -> DIFFER(1984v1973) 214 (no change)
+0083e1f0 a7 v7: one function-scope iterator for both loops -> DIFFER(1984v1973) 214 (no change)
+0083e1f0 a8 v8: one function-scope index for both loops -> DIFFER(1984v1973) 226 (worse)
+0083e1f0 a9 v9: loop 2 as a while loop with ++it at the end -> DIFFER(1989v1973) 216 (worse)
+0083e1f0 a10 v10: loop 2 counts index in the for header -> DIFFER(1989v1973) 216 (worse); parked on v5
+007542b0 a4 v4: out-of-line CRightHandedSet::Set 0x004BBE10 (overlay decl) for the eye set -> DIFFER(2096v2266) 839
+007542b0 a5 v5: CIVCountedPointer release through a local (retail's load/dec/store form), final return as if/false/true (byte al returns) -> DIFFER(2084v2266) 801
+007542b0 a6 v6: out-of-line vector<CEngineTextureMorph>::operator= 0x00728830 (FABLE_RETAIL_STLP_VECTOR_ASSIGN), header spellings Release/Delete -> DIFFER(2068v2266) 794
+007542b0 a7 v6+hdr: overlay Rotate writes Up / Forward as C3DVector temporaries (E1k*v for Up, v*E1k for Forward) -> DIFFER(2212v2266) 792
+007542b0 a8 v7: WorldPos as chained X = Y = Z = 0.0f (retail stores ebx Z,Y,X), Lit as bool:1 -> DIFFER(2178v2266) 629
+007542b0 a9 v8: rotations written in the caller with named CMatrix3x4 locals rotationXY / rotationYZ (retail keeps two matrix slots alive per eye, LIFO-reused by the right eye) -> DIFFER(2268v2266) 563
+007542b0 a10 v9: both matrices declared up front after the set (YZ first) -> DIFFER(2268v2266) 557 (slot order unchanged: left eye XY 0x90 / YZ 0x60, retail 0x64 / 0x94; CPrimitive temp at 0x110 vs retail 0x34; frame 0x180 vs 0x168)
+007542b0 a11 v10: WorldPos zeroed before Size -> DIFFER(2268v2266) 563 (worse; retail fstp Size before the zero stores); parked on v9
+0090d030 a2 v2: __forceinline GetTC / HasTC / Random / GetTypedOriginator / IsThingOfType / intelligent-pointer operator= (all were called out of line: inline budget) -> DIFFER(3291v3269) 628
+0090d030 a3 v3: IsThingOfType as (flags & mask) == mask, GetTypedOriginator through a zeroed result local, dead test through a local -> DIFFER(3291v3269) 601
+0090d030 a4 v4: CMessageEvent::GetPOriginator<T> body visible (sibling 0x0090DF60 spelling: two early returns), originator local for the null/dead test, GetPOriginator()->HasTC -> DIFFER(3243v3269) 577 (first expansion inline, second out of line; retail inlines two, calls 0x0090DF30 for the third)
+0090d030 a5 v5: GetPOriginator mask test through an inline GetTypeFlags() accessor (sibling spelling) -> DIFFER(3243v3269) 577 (no change: still not/test; retail inline sites show xor eax,1Fh, its out-of-line 0x0090DF30 not/test)
+0090d030 a6 v6: PDB AIAction signatures (EAIActionRepeat / EMovementType / bool& / const CCreatureActionBase&), actions passed as temporaries -> DIFFER(3243v3269) 577 (bytes unchanged)
+0090d030 a7 v7: CThingFilter_IsNavLineOfSightToThing at its PDB size (8: Pos, PTCNav) -> DIFFER(3243v3269) 621 (frame 0x590 vs 0x580; local placement differs: retail LOS 0x58 / Bind4 0x60 / range 0x70 / gossipee 0x98, actions from 0xC8)
+0090d030 a8 v8: converting CIntelligentPointer<U> ctor, LookAtThing passed PTCGossip->Gossipee (retail builds the by-value pointer in the argument area: ctor, vtable, GetPItem, SetPItem) -> DIFFER(3247v3269) 588 (GetPOriginator now out of line at both later sites)
+0090d030 a9 v9: __forceinline GetPOriginator -> DIFFER(3327v3269) 577 (third site inline where retail calls 0x0090DF30; the early-return body gives xor/jmp arms where retail presets the result register)
+0090d030 a10 v10: GetPOriginator body as a zeroed result local (matches the out-of-line 0x0090DF30 xor edi,edi preset) -> DIFFER(3247v3269) 588; parked on v6 (577) -- see NOTES
+00931390 a2 v2: __forceinline GetTC / PeekTC / HasTC / Random / SetNextSpeakFrame / IS_ALIVE, scream loops as for(;;) with break -> DIFFER(4011v3863) 1179
+00931390 a3 v3: converting CIntelligentPointer<U> ctor (PHero passed directly), target.GetPItem() for the by-value MoveToThingProximity pointer, PlayAISpeech result in a named local -> DIFFER(3977v3863) 707
+00931390 a4 v4: occupants-locking flag as Ego_r bool:1 through the FableWin inline SetOverrideAutomaticLocking -> DIFFER(3977v3863) 706
+00931390 a5 v5: occupants test as size() != 0 (retail tests (end-begin) & ~3 and reaches it on the PeekTC-absent path) -> DIFFER(3977v3863) 700
+00931390 a6 v6: occupants as an STLport list<CIntelligentPointer<CThing> > walked with a const_iterator (retail keeps the iterator in the key's frame slot) -> DIFFER(3977v3863) 690
+00931390 a7 v7: one function-scope arrived flag for the four moves -> DIFFER(3977v3863) 768 (worse)
+00931390 a8 v8: PDB AIAction signatures (EAIActionRepeat / EMovementType / bool& / const CCreatureActionBase&) -> DIFFER(3977v3863) 690 (bytes unchanged; best, kept for the right mangling)
+00931390 a9 v9: result typed EAIActionReturn -> DIFFER(3977v3863) 690 (no change)
+00931390 a10 v10: scream loops as do { spoken = Play(); } while (spoken == 2 && DoNothing() == 4); if (spoken == 2) { Terminate(); return; } -> DIFFER(3836v3863) 809 (loop shape, inline Terminate/dtor exit and the 0x2C/0x34 frame slots now as retail; this moved to esi, result in ebx)
+00931390 a11 v11: scream loops as for(;;) { spoken; break; if (DoNothing() == 4) continue; Terminate; return; } -> DIFFER(3977v3863) 690 (same bytes as v8); parked on v10
+007542b0 a12 v11: the out-of-line 0x004BBE10 call respelled with its PDB name Init (overlay FABLE_RETAIL_CRIGHTHANDEDSET_INIT replaces the ROTATE block; unused Rotate / TransformVector opt-ins dropped) -> DIFFER(2268v2266) 557 (same bytes); parked on v11

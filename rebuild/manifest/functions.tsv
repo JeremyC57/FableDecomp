@@ -51385,7 +51385,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00dd94f0	OnPersist	NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture	unknown	undefined	0		0			discovered	gapscan							
 00dd9520	SplittingUpCutscene	NScript::CQ_PrisonEscapeRescueMotherScript	__thiscall	void	1	CQ_SecretPassageScript *	1	yes	accepted									
 00dd9900	EndMission	CV_ChapelOfEvilScript	__thiscall	void	1	CV_ChapelOfEvilScript *	1	yes	accepted									
-00dd9a50	ResetCells	CQ_PrisonEscapeRescueMotherScript	__thiscall	void	1	CQ_PrisonEscapeRescueMotherScript *	1	yes	accepted									
+00dd9a50	ResetCells	NScript::CQ_PrisonEscapeRescueMotherScript	__thiscall	void	1	CQ_PrisonEscapeRescueMotherScript *	1	yes	accepted									
 00ddacb0	Alloc	NScript::CQ_PrisonEscapeRescueMotherScript	__fastcall	CScriptBase *	2	CScriptDataBase *,CGameScriptInterfaceBase *	1	yes	accepted									
 00ddad00	`scalar deleting destructor'	NScript::CQ_PrisonEscapeRescueMotherScript	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\dd\CEngineSubPrimitiveText_scalardeletingdestructor_00ddad00.cpp
 00ddad30	CQ_PrisonRaceScript	NScript::CQ_PrisonRaceScript	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									

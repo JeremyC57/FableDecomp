@@ -1,0 +1,12 @@
+# Chunk 830 lessons (GOTCHAS one-liners)
+
+- (chunk 830) A float vector zeroed with `mov [esi+18h],ebx ; mov [esi+14h],ebx ; mov [esi+10h],ebx` (Z, Y, X through a zero register) is the chained `v.X = v.Y = v.Z = 0.0f`; the C3DVector(0,0,0) assignment goes through temporaries (0x007542B0).
+- (chunk 830) A one-bit flag set as `mov al,[m] ; or al,1 ; ... ; mov [m],al` is a `bool x : 1 = true` (Ego_r bool:1); the plain `|= 1` on an unsigned char gives `or byte ptr [m],1`.
+- (chunk 830) Two axis-angle matrices that live in two frame slots per block (the second block reusing them in LIFO order) are named CMatrix3x4 locals of the caller; an inline Rotate() member packs them into one slot (0x007542B0, 792 -> 563 diff lines).
+- (chunk 830) A by-value CIntelligentPointer argument built as `ctor ; vtable ; GetPItem ; SetPItem` is the converting `CIntelligentPointer<U>` constructor fed the source pointer object; `GetPItem ; ctor ; vtable ; SetPItem` is the T* constructor fed `p.GetPItem()` (0x0090D030, 0x00931390).
+- (chunk 830) A speak-and-wait loop that retail leaves unrotated with the failure exit falling through (`cmp eax,4 ; je top ; Terminate ; dtors ; ret`) is `do spoken = Play(); while (spoken == 2 && AIAction_DoNothing() == 4); if (spoken == 2) { Terminate(); return; }`; `while (Play() == 2) {...}` and every `for(;;)` spelling duplicate the body (0x00931390).
+- (chunk 830) An emptiness test that retail reaches even on the path where nothing was pushed (`sub ; test edx,0FFFFFFFCh ; je`) is `v.size() != 0`; `!v.empty()` lets VC7.1 fold it away on that path (0x00931390).
+- (chunk 830) CMessageEvent::GetPOriginator<T> (out of line 0x0090DF30) is `T* result = 0; if (GetPItem() && type test) result = GetPItem(); return result;` (the `xor edi,edi` preset); the early-return spelling gives xor/jmp arms at inline sites.
+- (chunk 830) In 0x0090D030 / 0x00931390 every GetTC / PeekTC / HasTC / Random helper must be `__forceinline` (VC7.1 calls them out of line under plain inline: 930 -> 628 diff lines); CThingFilter_IsNavLineOfSightToThing is 8 bytes (Pos, PTCNav), not 0x40.
+- (chunk 830) The landed 0x004BBE10 "CRightHandedSet::Set" is the PDB `CRightHandedSet::Init(const C3DVector&, const C3DVector&)`; 0x0099F930 is GFUHUGEToCharString in both PDBs (no CCharString(unsigned __int64) ctor exists).
+- (chunk 830) Tooling: a call-sequence aligner (retail call names vs the object's relocation symbols, difflib on short keys) plus a per-call address-delta table finds where a body grows or shrinks in one pass (bin/calls2.py, bin/segs.py).
