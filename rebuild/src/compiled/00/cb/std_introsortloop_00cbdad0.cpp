@@ -9,7 +9,9 @@
 // __partial_sort 0x00CBD0F0, and itself. Caller 0x00CBDDBD is the recursion; 0x00CBDFAD is the sort<> body (landed as
 // global_SortSElement1200cbdf70, which binds this row as an invented IntrosortLoop_00cbdad0 -> NAME_FIXES).
 // Model: the landed std_introsortloop_00cbd700.cpp (CActiveScriptPair instantiation) with this TU's element and comparator.
+#ifdef _MSC_VER
 #pragma inline_recursion(on)
+#endif
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
 class CCharString {
 public:

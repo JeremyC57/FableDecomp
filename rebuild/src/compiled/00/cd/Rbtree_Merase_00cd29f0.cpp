@@ -1,6 +1,8 @@
 // _Rb_tree::_M_erase(_Rb_tree_node* x) -- STLport red-black tree erase without rebalancing for map<long, CCharString>: free the subtree under x (right subtrees recursively, left children iteratively), destroying each value
 #pragma optimize("s", on)
+#ifdef _MSC_VER
 #pragma inline_recursion(on)
+#endif
 // Leaf: ?_M_erase@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD29F0, 129 bytes, `__fastcall` (tree in ecx, the node on the stack: `ret 4`);
 //   callers: its clear() @ 0x00CD2DDC (landed as CTCCarryable::OnKill_00cd2ddc), the tree destructor @ 0x00CD3211.

@@ -83,7 +83,9 @@ public: bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b) const {
  *
  */
 // Modified excerpt: only the algorithms required by this instantiation are retained.
+#ifdef _MSC_VER
 #pragma inline_recursion(on)
+#endif
 namespace std {
 template<class _Tp,class _Compare>
 const _Tp& __median(const _Tp&,const _Tp&,const _Tp&,_Compare);

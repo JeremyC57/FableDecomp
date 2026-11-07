@@ -28,7 +28,9 @@
 // Modified excerpt: only the algorithms required by this instantiation are retained.
 #include "engine/CRuntimeScriptedEntityPersist.h"
 #include "engine/CVectorMap.h"
+#ifdef _MSC_VER
 #pragma inline_recursion(on)
+#endif
 namespace std {
 template<class _Tp,class _Compare>
 inline const _Tp& __median(const _Tp& __a,const _Tp& __b,const _Tp& __c,_Compare __comp) {

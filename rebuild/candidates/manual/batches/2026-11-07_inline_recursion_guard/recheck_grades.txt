@@ -1,0 +1,7 @@
+00cbd700   RELOCATION_MATCH PASS   __introsort_loop
+00cb7310   RELOCATION_MATCH PASS   pair<CCharString,CScriptInfo>,int,CKeyPairCompareLess<CCharString,CScriptInfo> >
+00cbdad0   RELOCATION_MATCH PASS   pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >,int,CCompareString<CCountedPointer<CEntityScriptBindingBase> > >
+00cbca50   RELOCATION_MATCH PASS   CPersistInfo>>
+00cd2919   RELOCATION_MATCH PASS   _M_erase
+00cd344a   RELOCATION_MATCH PASS   _M_erase
+00cd29f0   RELOCATION_MATCH PASS   _M_erase

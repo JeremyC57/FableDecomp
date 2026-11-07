@@ -14,7 +14,9 @@
 // Shape: the STLport text as written under `#pragma inline_recursion(on)`: VC7.1 expands the recursive call five levels
 //   deep inside the out-of-line body (the sixth calls 0x00CBD700). Only the outermost level inlines __median and the
 //   pivot copy; the nested levels call them (the inline budget), exactly as retail.
+#ifdef _MSC_VER
 #pragma inline_recursion(on)
+#endif
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
 #include "engine/CCountedPointer.h"
 class CActiveEntityScriptBase;

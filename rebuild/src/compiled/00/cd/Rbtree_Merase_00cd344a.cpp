@@ -1,6 +1,8 @@
 // _Rb_tree::_M_erase(_Rb_tree_node* x) -- STLport red-black tree erase without rebalancing for map<CCharString, CScriptGameResourceObjectScriptedThingBase> (the cutscene actor map CSFindThing 0x00CBF9DE searches): free the subtree under x (right subtrees recursively, left children iteratively), destroying each value
 #pragma optimize("s", on)
+#ifdef _MSC_VER
 #pragma inline_recursion(on)
+#endif
 // Leaf: ?_M_erase@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD344A, 123 bytes, `__fastcall` (tree in ecx, the node on the stack: `ret 4`);
 //   callers: 46 callers (the map clear/destructor copies of the cutscene scripts, e.g. 0x00CDBEC2, 0x00CDBFC2).
