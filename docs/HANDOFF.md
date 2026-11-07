@@ -48,6 +48,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Chunk 856 finished **0 of 10** (51-103 grades per row, no source beat the parked best; saved `pending/2026-11-08_linux_hand856/`,
     nothing to land; it reports the 0x00AAD650 oracle extent mis-cut: 1574 + int3, not 1840). Its slot went to chunk 857
     (`$S/w22/agent857`: eight never-attempted 1.6-3.5 KB engine / UI rows, several forge-autoname placeholders to prove).
+    Chunk 855 finished 3 of 8 (RELOCATION_MATCH: floor1_encode 0x00CA2BB0, CSubtitleRenderer::GetGraphicFromEmbeddedTag 0x00490BE0,
+    NUISystem::CComponent::UpdateColour 0x0052F900; landing_f). Its slot went to chunk 859, a **Fable** retry agent (the user: "give
+    huge budget ... keep trying every row until half or more match"): twenty parked 2-15-line near misses, rounds over all rows, goal
+    10+, `$S/w22/agent859`. Chunk 858 (six small gap-scan rows + four 3.3-3.5 KB UI rows, `$S/w22/agent858`, brief written) is cut
+    but HELD (not launched, not in chunk_history) until a lane slot frees.
   - (superseded) Authoring was STOPPED (the user, 2026-11-08: "No more authoring"). No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled
