@@ -1,0 +1,2 @@
+address	name	evidence
+00ea5230	NScript::CV_LostTraderScript::CLostTraderBanditSpawn::Main	matched row (RELOCATION_MATCH): slot 1 of the CLostTraderBanditSpawn entity vtable stored by Alloc; Ego_r.pdb ?Main@CLostTraderBanditSpawn@CV_LostTraderScript@NScript@@EAEXXZ; current label already correct (labels_anniversary_2026-11-04_waves23.tsv)

@@ -27682,3 +27682,13 @@ chunk	address	module	name	length
 839	00e482f0	NScript::CV_BanditTollScript	CheckForLeaderDead	1627
 839	00775350	CTCShop	UpdateStock	1988
 839	00d0ee70	NScript::CQ_BanditCampBossBattleScript	CheckForFirstAreaMassacre	1989
+840	0070c4e0	CAnimateThing	GetFirstCombinationAnimFromType	81
+840	00c52bb0	CCpuInfo	GetAMDModelName	140
+840	0052ea30	NUISystem::CComponent	ChangePositionDelta	181
+840	007bc8fc	NThingShot::CTCShotDefinitionTearInGround	InitMovement	308
+840	0058301a	CTCInventory	CreateEditBoxActions	321
+840	00773950	CTCShop	IsOpeningHours	324
+840	0073acc0	CTCCreatureModeManager	AddMode	331
+840	0047ed76	CTCInGameMenu	SetToSave	366
+840	009e5c90	CSymbolMap	LoadFromFile	373
+840	007534b0	CTCLook	IsPosInViewRange	384

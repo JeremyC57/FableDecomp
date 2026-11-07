@@ -37356,3 +37356,4 @@ $notRedefined$4399	0068a01d	00689df0
 ?UpdateUVs@CEngineScreenEffectColourFilter@@AAEXXZ	00b5a160	00b5af80
 ?ShareData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@PAVCCPPointerInfo@@@Z	008aa8e0	00d368d0
 ?PlayCutscene@CV_SickChildScript@NScript@@QAEXVCCharString@@0@Z	00ece460	00ecd9e0
+?GetRandomBanditName@CV_LostTraderScript@NScript@@QAE?AVCCharString@@XZ	00ea5690	00ea5230

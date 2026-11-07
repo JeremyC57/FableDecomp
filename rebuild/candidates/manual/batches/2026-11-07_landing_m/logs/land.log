@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00ea5230   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00ea5230 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderBanditSpawn::?Main@CLostTraderBanditSpawn@CV_LostTraderScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVLostTraderScriptCLostTraderBanditSpawn_Main_00ea5230

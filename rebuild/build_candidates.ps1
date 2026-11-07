@@ -385062,6 +385062,13 @@ $catalog = @(
         TestSource = '00/ec/NScriptCVSickChildScriptCSickChildsMother_Main_00ecd9e0_test.cpp'
         PassPattern = '00ecd9e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ea5230'
+        Module = 'NScript::CV_LostTraderScript::CLostTraderBanditSpawn'
+        Source = '00/ea/NScriptCVLostTraderScriptCLostTraderBanditSpawn_Main_00ea5230.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderBanditSpawn_Main_00ea5230_test.cpp'
+        PassPattern = '00ea5230_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
