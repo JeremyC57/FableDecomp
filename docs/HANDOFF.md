@@ -29,7 +29,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 837 (`$S/w22/agent837`: four level-script Mains + two entity Mains, 1.1-1.4 KB, no prior art: CQ_BowerstoneTownLifeIntroScript 0x00D23DC0,
     CFH_Prisoner 0x00D3A4A0, CQ_PrisonRaceScript 0x00DDAE40, CTestPerson 0x00EF4B40, Cbandit_level_cutsceneScript 0x00EFA4F0, CV_StatueMasterScript 0x00ED3B30)
     and chunk 838 (`$S/w22/agent838`: six 1.7-3.3 KB entity Mains with Codex pass-13 prior art: CSpawnNewHobbe 0x00D9DAF0, CAT_BanditContact 0x00F0A960,
-    CBanditSiegeLeader 0x00D21B40, CMotherTorture 0x00DEE2E0, CTheRealGuildmaster 0x00D33730, CWiseVillager 0x00EB7B00). Also (the user, 2026-11-07: "add one more expert ... chunk author", "make it a fable chunk author", "authoring never before tried
+    CBanditSiegeLeader 0x00D21B40, CMotherTorture 0x00DEE2E0, CTheRealGuildmaster 0x00D33730, CWiseVillager 0x00EB7B00). **The user, 2026-11-07: "dont relaunch the fable agents for now": when chunks 839 / 840 report, land them but start no new Fable-model agent.** Also (the user, 2026-11-07: "add one more expert ... chunk author", "make it a fable chunk author", "authoring never before tried
     ones"): expert chunk 839 (`$S/w22/agent839`, Fable model, 25+ attempts per row) authors eight never-attempted rows: CQ_RansomVictimScript
     PlayCutscene 0x00DE6730 (catalog label CV_ExposeMayorScript is wrong) / DisappearFollowers 0x00DE4710, CV_ExposeMayorScript PhaseFour 0x00E7AB50 /
     PlayCutscene 0x00E78100 / HeroFlashesLamp 0x00E76E90, CV_BanditTollScript::CheckForLeaderDead 0x00E482F0, CTCShop::UpdateStock 0x00775350,
