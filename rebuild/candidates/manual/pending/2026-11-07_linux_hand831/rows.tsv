@@ -1,0 +1,7 @@
+address	module	name	length
+00689df0	CInputProcessInventory	ProcessInput	3827
+008dbc80	NCreatureMode::CModeDragonFlying	vfunc_3	2319
+008dec80	NCreatureMode::CModeJackOfBladesFlash	vfunc_3	1665
+00873e10	NCameraModes::CPCMouseLook	vfunc_1	2386
+00d6d080	_global	CQ_HangingTreeEvil_Init	1516
+00e0f8a0	_global	CScriptGameResourceObjectScriptedThingBase_HandleWaspQueenHelper	4389

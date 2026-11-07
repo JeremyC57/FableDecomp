@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00d6a560   RELOCATION_MATCH PASS   Main
+00ea1720   RELOCATION_MATCH PASS   DoInitialBalverineAttack
+
+WINS: 2
+  00d6a560 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter::?Main@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00ea1720 RELOCATION_MATCH NScript::CV_KnotholeGladeGatesScript::?DoInitialBalverineAttack@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Main_00d6a560
+  NScriptCVKnotholeGladeGatesScript_DoInitialBalverineAttack_00ea1720

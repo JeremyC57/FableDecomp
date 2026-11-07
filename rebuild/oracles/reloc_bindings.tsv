@@ -37348,3 +37348,5 @@ _New_c35b10@8	00c35b10	00c275e0
 ?IsEventButtonHeld@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	00687bd0	0068bc70
 ?PanMap@CTCInventoryMap@@QAEXVC2DVector@@@Z	005fb140	0068bc70
 ?ProcessInput@CInputProcessInventoryBase@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	006894c0	0068bc70
+$notRedefined$4399	0068a01d	00689df0
+?IsRedefinerListActive@CRedefinerList@NUISystem@@SI_NXZ	00556520	00689df0

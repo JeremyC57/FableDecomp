@@ -1,0 +1,4 @@
+address	source	grade_with_final_overlay	note
+00e13310	rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_EndMission_00e13310.cpp	RELOCATION_MATCH PASS	includer of engine/NScript_CQ_WaspBossScript.h (overlay opt-in branch off: default path unchanged); vland --recheck-landed with FABLE_HDR_OVERLAY=hdr
+00e137b0	rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_Outro_00e137b0.cpp	RELOCATION_MATCH PASS	includer of engine/NScript_CQ_WaspBossScript.h; WARN RELOC_NAME on the map dtor 0x00CDBFB0 (label CRetailTree_erase00cd344a, pre-existing)
+00e11670	rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspVictim_Main_00e11670.cpp	RELOCATION_MATCH PASS	includer of engine/NScript_CQ_WaspBossScript.h; the shape donor of 0x00E0F8A0

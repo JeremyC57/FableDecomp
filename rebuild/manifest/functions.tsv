@@ -1320,7 +1320,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00436c80	push_back	std::vector<CThing*>	unknown	undefined	0		0	yes	accepted									
 00436cc0	Reset	CCountedPointer_00436ba0	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 00436d30	CEngineManager	CEngineManager	__thiscall	undefined	2	CConsoleCommandBase *,CCharString *	0	yes	accepted									
-00436d60	GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
+00436d60	GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_OverlappingCircle>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_HasTrackName *,CThingCompare_Nearest *,CThingTrackNode * *	1	yes	accepted									
 00436fb0	Get	CTBaseSingleton<CEngineManager>	__fastcall	CGameJoystickManager *	0		1	yes	accepted									
 00437020	`scalar_deleting_destructor'	CEngineManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CLandscapeBackgroundPatch_vectordeletingdestructor_00437020.cpp
 00437040	~CEngineManager	CEngineManager	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CTCInventoryItem_OnDie_00437040.cpp
@@ -15055,7 +15055,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00678250	TransferBinaryOut	CPersistTraits<std::list<CReactionMatch*> >	__thiscall	void	3	CPersistTraits<std::list<CReactionMatch*,std::allocator<CReactionMatch*>_>_> *,CDataOutputStream *,list<CReactionMatch*,std::allocator<CReactionMatch*>_> *	1	yes	accepted									
 006782b0	TransferBinaryIn	CPersistTraits<list<CReactionMatch*>>	__thiscall	void	3	CPersistTraits<std::list<CReactionMatch*,std::allocator<CReactionMatch*>_>_> *,CMemoryDataInputStream *,list<CReactionMatch*,std::allocator<CReactionMatch*>_> *	1	yes	accepted									
 00678460	~COpinionReactionManagerDef	COpinionReactionManagerDef	unknown	undefined	0		0	yes	accepted									
-00678760	TransferIn	CPersistTraits<std::list<CReactionMatch*	__thiscall	void	4	CPersistTraits<std::list<CReactionMatch*,std::allocator<CReactionMatch*>_>_> *,CPersistContext *,CStringParser *,list<CReactionMatch*,std::allocator<CReactionMatch*>_> *	1	yes	accepted									
+00678760	TransferIn	CPersistTraits<std::list<CReactionMatch*> >	__thiscall	void	4	CPersistTraits<std::list<CReactionMatch*,std::allocator<CReactionMatch*>_>_> *,CPersistContext *,CStringParser *,list<CReactionMatch*,std::allocator<CReactionMatch*>_> *	1	yes	accepted									
 00679560	COpinionReactionManagerDef	COpinionReactionManagerDef	unknown	undefined	0		0	yes	accepted									
 00679740	Transfer	COpinionReactionManagerDef	__thiscall	void	2	COpinionReactionManagerDef *,CPersistContext &	1	yes	accepted									
 00679910	TransferIn	CPersistTraits<EInputKey>	__thiscall	void	4	CPersistTraits<EInputKey> *,CPersistContext *,CStringParser *,EInputKey *	1	yes	accepted									
@@ -15467,7 +15467,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00689c30	GetPInventory	CInputProcessInventoryStatsScreen	__thiscall	NInventory::CTCInventoryBase *	1	CInputProcessInventoryStatsScreen *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\CInputProcessInventoryStatsScreen_GetPInventory_00689c30.cpp
 00689c40	ProcessInput	CInputProcessInventoryStatsScreen	__thiscall	void	3	CInputProcessInventoryStatsScreen *,CInputEvent *,CProcessedInput *	1	yes	accepted									
 00689da0	Init	CInputProcessInventory	__thiscall	void	1	CInputProcessInventory *	1	yes	accepted									
-00689df0	?ProcessInput@CInputProcessInventory@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	CInputProcessInventory	__thiscall	void	3	CInputProcessInventory *,CInputEvent *,CProcessedInput *	1	yes	accepted									
+00689df0	ProcessInput	CInputProcessInventory	__thiscall	void	3	CInputProcessInventory *,CInputEvent *,CProcessedInput *	1	yes	accepted									
 0068acf0	Init	CInputProcessInventoryClothing	__thiscall	void	1	CInputProcessInventoryClothing *	1	yes	accepted									
 0068ad40	Init	CInputProcessInventoryWeapons	__thiscall	void	1	CInputProcessInventoryWeapons *	1	yes	accepted									
 0068ad90	Init	CInputProcessHeroAbilitiesScreen	__thiscall	void	1	CInputProcessHeroAbilitiesScreen *	1	yes	accepted									
@@ -26076,7 +26076,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00873bb0	vfunc_22	NCameraModes::CPCMouseLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00873bc0	Recentre	CPCMouseLook	__thiscall	void	1	CPCMouseLook *	1	yes	accepted									
 00873db0	OnCameraInsideObservedThing	NCameraModes::CPCMouseLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00873e10	NCameraModes::CPCMouseLook::vfunc_1	NCameraModes::CPCMouseLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00873e10	Update	NCameraModes::CPCMouseLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00874770	Alloc	NCameraModes::CPCMouseLook::CPCMouseLookInit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00874790	OnInit	CPCMouseLook	__thiscall	void	1	CPCMouseLook *	1	yes	accepted									
 00874bd0	StdList_Clear_00874bd0	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\87\CGuiControlTreePane_SortTreeRecursively_00874bd0.cpp
@@ -29236,7 +29236,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008dba90	KillBeamEffect	NCreatureMode::CModeDragonFireBeam	__thiscall	void	1	CCreatureAction_CastWillReclaimUndeadFollower *	1	yes	accepted									
 008dbb00	OnDeactivate	NCreatureMode::CModeDragonFireBeam	__thiscall	void	1	CModeDragonFireBeam *	1	yes	accepted									
 008dbb30	OnActivate	NCreatureMode::CModeDragonFlying	__thiscall	void	1	CModeDragonFlying *	1	yes	accepted									
-008dbc80	NCreatureMode::CModeDragonFlying::vfunc_3	NCreatureMode::CModeDragonFlying	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008dbc80	FrameUpdate	NCreatureMode::CModeDragonFlying	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dc590	OnDeactivate	NCreatureMode::CModeDragonFlying	__thiscall	void	1	CModeDragonFlying *	1	yes	accepted									
 008dc600	OnActivate	NCreatureMode::CModeDragonStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dc660	OnDeactivate	NCreatureMode::CModeDragonStrafe	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29245,7 +29245,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008dc900	UpdateBeam	NCreatureMode::CModeDragonStrafeBurninate	__thiscall	void	2	CModeDragonStrafeBurninate *,float	1	yes	accepted									
 008dcb00	OnDeactivate	NCreatureMode::CModeDragonStrafeBurninate	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dcb60	ExtinguishFlames	CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
-008dcc80	Flash	CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
+008dcc80	Flash	NCreatureMode::CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
 008dd0f0	OnActivate	CModeScorpionKingVulnerable	__thiscall	void	1	CModeScorpionKingVulnerable *	1	yes	accepted									
 008dd6e0	vfunc_5	NCreatureMode::CModeThunderLightningStorm	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008dd7e0	UpdateDamage	CModeThunderLightningStorm	__thiscall	void	1	CModeThunderLightningStorm *	1	yes	accepted									
@@ -29258,7 +29258,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008de6a0	OnActivate	NCreatureMode::CModeRockTrollVulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008de700	Recover	NCreatureMode::CModeRockTrollVulnerable	__thiscall	void	1	CModeRockTrollVulnerable *	1	yes	accepted									
 008de7a0	FrameUpdate	CModeIceTrollGroundSmashIcicleAssault	__thiscall	void	1	CModeIceTrollGroundSmashIcicleAssault *	1	yes	accepted									
-008dec80	NCreatureMode::CModeJackOfBladesFlash::vfunc_3	NCreatureMode::CModeJackOfBladesFlash	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008dec80	FrameUpdate	NCreatureMode::CModeJackOfBladesFlash	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008df310	OnDeactivate	NCreatureMode::CModeJackOfBladesFlash	__thiscall	void	1	CModeJackOfBladesFlash *	1	yes	accepted									
 008df3a0	Recover	NCreatureMode::CModeScorpionKingVulnerable	unknown	undefined	0		0	yes	accepted									
 008df510	Recover	NCreatureMode::CModeScorpionKingTailPlunge	unknown	undefined	0		0	yes	accepted									
@@ -50295,7 +50295,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d6ca90	WatchForHeroNearExit	NScript::CQ_HangingTreeEvilScript	unknown	undefined	0		0			discovered	gapscan							
 00d6ccc0	MonitorBanditRegion	NScript::CQ_HangingTreeEvilScript	unknown	undefined	0		0			discovered	gapscan							
 00d6cdc0	MonitorRegionPresence	NScript::CQ_HangingTreeEvilScript	__thiscall	void	1	CQ_HangingTreeGoodScript *	1	yes	accepted									
-00d6d080	CQ_HangingTreeEvil_Init	_global	unknown	undefined	0		0	yes	accepted									
+00d6d080	Introduction	NScript::CQ_HangingTreeEvilScript	unknown	undefined	0		0	yes	accepted									
 00d6d670	CQ_HangingTreeEvil_Execute	_global	unknown	undefined	0		0	yes	accepted									
 00d6ed10	Alloc	NScript::CQ_HangingTreeEvilScript	unknown	undefined	0		0			discovered	gapscan							
 00d6ed40	`scalar deleting destructor'	NScript::CQ_HangingTreeEvilScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d6\CLandscapeBackgroundPatch_vectordeletingdestructor_00d6ed40.cpp
@@ -51972,7 +51972,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e0f860	GetParentScript	NScript::CQ_WaspBossScript::CWaspHelper	unknown	undefined	0		0			discovered	gapscan							
 00e0f870	Init	NScript::CQ_WaspBossScript::CWaspHelper	unknown	undefined	0		0			discovered	gapscan							
 00e0f880	`scalar deleting destructor'	NScript::CQ_WaspBossScript::CWaspHelper	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e0\CLandscapeBackgroundPatch_vectordeletingdestructor_00e0f880.cpp
-00e0f8a0	CScriptGameResourceObjectScriptedThingBase_HandleWaspQueenHelper	_global	unknown	undefined	0		0	yes	accepted									
+00e0f8a0	Main	NScript::CQ_WaspBossScript::CWaspHelper	unknown	undefined	0		0	yes	accepted									
 00e109d0	Alloc	NScript::CQ_WaspBossScript::CGratefulVillagerSpawn	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00e10a70	GetParentScript	NScript::CQ_WaspBossScript::CGratefulVillagerSpawn	unknown	undefined	0		0			discovered	gapscan							
 00e10a80	Init	NScript::CQ_WaspBossScript::CGratefulVillagerSpawn	unknown	undefined	0		0			discovered	gapscan							

@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00689df0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00689df0   WARN SHARED_HEADER_AVAILABLE CInputEvent
+00689df0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00689df0   WARN SHARED_HEADER_AVAILABLE CManager
+00689df0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00689df0   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+00689df0   WARN SHARED_HEADER_AVAILABLE CTCInventory
+00689df0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00689df0   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase
+00689df0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00689df0   RELOCATION_MATCH PASS   ProcessInput
+00e0f8a0   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00689df0 RELOCATION_MATCH CInputProcessInventory::?ProcessInput@CInputProcessInventory@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  00e0f8a0 RELOCATION_MATCH NScript::CQ_WaspBossScript::CWaspHelper::?Main@CWaspHelper@CQ_WaspBossScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CInputProcessInventory_ProcessInput_00689df0
+  NScriptCQWaspBossScriptCWaspHelper_Main_00e0f8a0

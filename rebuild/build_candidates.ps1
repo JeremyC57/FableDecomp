@@ -384996,6 +384996,37 @@ $catalog = @(
         TestSource = '00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Main_00e19d80_test.cpp'
         PassPattern = '00e19d80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d6a560'
+        Module = 'NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter'
+        Source = '00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Main_00d6a560.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Main_00d6a560_test.cpp'
+        PassPattern = '00d6a560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea1720'
+        Module = 'NScript::CV_KnotholeGladeGatesScript'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScript_DoInitialBalverineAttack_00ea1720.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScript_DoInitialBalverineAttack_00ea1720_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ea1720_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00689df0'
+        Module = 'CInputProcessInventory'
+        Source = '00/68/CInputProcessInventory_ProcessInput_00689df0.cpp'
+        TestSource = '00/68/CInputProcessInventory_ProcessInput_00689df0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00689df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0f8a0'
+        Module = 'NScript::CQ_WaspBossScript::CWaspHelper'
+        Source = '00/e0/NScriptCQWaspBossScriptCWaspHelper_Main_00e0f8a0.cpp'
+        TestSource = '00/e0/NScriptCQWaspBossScriptCWaspHelper_Main_00e0f8a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 none'
+        PassPattern = '00e0f8a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
