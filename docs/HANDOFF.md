@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-829 recorded; chunks 830 and 831 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-829 recorded; chunks 830 and 831 and the expert retry chunk 832 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -31,7 +31,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     CQ_HangingTreeEvil_Init 0x00D6D080, the WaspQueen script body 0x00E0F8A0) and chunk 830 (`$S/w22/agent830`: six new ledger rows, CAIStateGroup_MinionGossip::Update
     0x0090D030, CAIStateGroup_MinionReactToCriminal::Update 0x00931390, the CThingScriptUIDReplacer ctor 0x0083E1F0,
     NThingShot::CTCShotDefinitionBase::OnCollisionProper 0x007C1000, CQ_PrisonEscapeRescueMotherScript::ResetCells 0x00DD9A50,
-    CTCLook::OnAppearanceDraw 0x007542B0). Rows were picked to avoid the CIsThingAlive copy
+    CTCLook::OnAppearanceDraw 0x007542B0). Also running (the user, 2026-11-07: "add a fable agent who is an expert reverse engineer ... work on retries of parked rows and
+    give it more tries per row"): chunk 832 (`$S/w22/agent832`, Fable model, 25+ attempts per row) retries the ten closest parked rows
+    (0x00D6A560, 0x00D18DF0, 0x00EA1720, 0x005E78F0, 0x00CFE030, 0x00DE8370, 0x00B5AF80, 0x00B5A3F0, 0x00D0A830, 0x00DD5A60; md 2-21).
+    When it reports, land it and cut the next expert retry set from the parked pool ranked by residue. Rows were picked to avoid the CIsThingAlive copy
     blocker. A retry that matches needs its pending header overlay copied in; a Main outside
     the manifest goes into `rebuild/manifest/boundary-starts.tsv` + `crawl/manifest_add_boundaries.py --write` first. Measure a cut
     by its first `ret` + int3 unless a jump table follows (jtext's maxbranch can sit in the next function: chunk 818). Land
