@@ -1,0 +1,21 @@
+address	name	status	attempts	best	grade	difflines	file	notes
+006a9690	CThingPlayerCreature::ResolveRelativeMovementAcceleration	matched	8	RELOCATION_MATCH	RELOCATION_MATCH	0	src/006a9690.cpp	lea ecx (RotateXY this) one slot early; 0x00A14040 is RotateXY (NAME fix)
+0058301a	CTCInventory::CreateEditBoxActions	matched	5	RELOCATION_MATCH	RELOCATION_MATCH	0	src/0058301a.cpp	address-taken box home store slot
+0047ed76	CTCInGameMenu::SetToSave	parked	2	DIFFER	366v366	2	differ/0047ed76.cpp	push ecx before fsubp
+00a22e10	CRightHandedSet::MakePerpendicular	parked	1	DIFFER	358v358	2	differ/00a22e10.cpp	ParentThing load after push eax
+006afe60	CTCPhysicsBase::RespondToCollision	parked	2	DIFFER	145v145	2	differ/006afe60.cpp	velocity load after fld [ecx+0x2c]
+00d18df0	NScript::CQ_BountyHuntScript::CBH_GangDeputy2::Main	parked	1	DIFFER	3337v3321	2	differ/00d18df0.cpp	size diff 7
+005e78f0	CTCQuestCompletionUI::GlobalUpdate	parked	4	DIFFER	2340v2340	4	differ/005e78f0.cpp	x87 block scheduling (mov [esp+0x20],eax / mov eax,[esi+0x60])
+00c52bb0	CCpuInfo::GetAMDModelName	parked	1	DIFFER	140v140	4	differ/00c52bb0.cpp	cmp eax,4/jae vs cmp eax,3/ja
+00c75f80	CCombFilter::Allocate	parked	11	DIFFER	111v111	4	differ/00c75f80.cpp	memset count hoisted
+00a852b0	CVectorMap<unsigned __int64,std::list<C2DLineF>,CKeyPairCompareLess<...> >::Insert	matched	9	RELOCATION_MATCH	RELOCATION_MATCH	0	src/00a852b0.cpp	same-TU bodies of every address-taking callee; test PASS
+0065b142	CTCVillage::EnableVillagerDefTypes	parked	3	DIFFER	386v386	4	differ/0065b142.cpp	second mov esi,0x17c slot
+00b92300	CEngineSceneGridCell::CreateOcclusionGroup	parked	3	DIFFER	335v335	4	differ/00b92300.cpp	two extra vtable stores (inline budget)
+00f36a30	NFractal::CHeteroTerrainFractal::GetFractalHeight	parked	16	DIFFER	361v361	4	differ/00f36a30.cpp	counter reload after fmul [edi]
+009fa780	CTexture::BltToRenderTargetWithGPU	parked	1	DIFFER	2028v2028	4	differ/009fa780.cpp	edx/eax swap at vcall
+00986ed0	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby::CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	parked	1	DIFFER	353v353	8	differ/00986ed0.cpp	register swap ecx/edx (lane gap)
+0085c7d0	NCameraModes::CMoveOnCylinder::OnInit	parked	2	DIFFER	332v332	8	differ/0085c7d0.cpp	mov ebp,ecx / this spill order
+00cfe030	NScript::CQ_AwakeningTheOracleScript::COracleTablet::Main	parked	14	DIFFER	3575v3575	8	differ/00cfe030.cpp	[edi+ecx] vs lea at two GetPos sites
+00e76e90	NScript::CV_ExposeMayorScript::HeroFlashesLamp	parked	1	DIFFER	1613v1612	10	differ/00e76e90.cpp	~CTimer exit block order
+00de8370	NScript::CQ_RansomVictimScript::CRansommer::Main	parked	4	DIFFER	4894v4894	12	differ/00de8370.cpp	two rotated IsPerformingScriptTask tests
+00b5a3f0	CEngineScreenEffectColourFilter::ApplyColourFilter	parked	1	DIFFER	2923v2916	7	differ/00b5a3f0.cpp	fld/fmul operand order x2

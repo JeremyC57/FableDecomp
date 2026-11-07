@@ -58,6 +58,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Chunk 857 finished 2 of 8 (ComputeVertexCost 0x00AC8C80, CNavigatorAStar::CullWayPoints 0x00A1C010; landed `2026-11-08_landing_g/`,
     queue land0811g) but stopped its six other rows early (four had one draft); they went on to chunk 860 (`$S/w22/agent860`, 100-attempt
     floor, tests required). Running now: chunks 858 (launched on the user's "do another chunk agent"), 859 (Fable retry) and 860.
+    Chunk 859 round 1: 3 of 20 (CVectorMap::Insert 0x00A852B0, CreateEditBoxActions 0x0058301A, ResolveRelativeMovementAcceleration
+    0x006A9690; landed `2026-11-08_landing_h/`, queue land0811h) after only 89 grades; sent back for round 2 (goal 10 of 20, 100+ grades per
+    unmatched row; its matches will land as new rows only).
   - (superseded) Authoring was STOPPED (the user, 2026-11-08: "No more authoring"). No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled

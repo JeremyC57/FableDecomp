@@ -385441,6 +385441,27 @@ $catalog = @(
         TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_ComputeVertexCost_00ac8c80_test.cpp'
         PassPattern = '00ac8c80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0058301a'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_CreateEditBoxActions_0058301a.cpp'
+        TestSource = '00/58/CTCInventory_CreateEditBoxActions_0058301a_test.cpp'
+        PassPattern = '0058301a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a9690'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_ResolveRelativeMovementAcceleration_006a9690.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_ResolveRelativeMovementAcceleration_006a9690_test.cpp'
+        PassPattern = '006a9690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a852b0'
+        Module = 'CVectorMap'
+        Source = '00/a8/CVectorMap_Insert_00a852b0.cpp'
+        TestSource = '00/a8/CVectorMap_Insert_00a852b0_test.cpp'
+        PassPattern = '00a852b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

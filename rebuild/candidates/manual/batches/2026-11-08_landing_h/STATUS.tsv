@@ -1,0 +1,4 @@
+address	name	grade	behav	note
+00a852b0	CVectorMap<unsigned __int64,std::list<C2DLineF>,CKeyPairCompareLess<...> >::Insert	RELOCATION_MATCH	PASS	landed
+0058301a	CTCInventory::CreateEditBoxActions	RELOCATION_MATCH	PASS	landed
+006a9690	CThingPlayerCreature::ResolveRelativeMovementAcceleration	RELOCATION_MATCH	PASS	landed

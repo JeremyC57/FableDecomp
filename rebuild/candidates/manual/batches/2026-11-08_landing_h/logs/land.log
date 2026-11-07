@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0058301a   WARN RELOC_NAME: ?push_back@?$list@PAVCEditBox@NUISystem@@V?$allocator@PAVCEditBox@NUISystem@@@std@@@std@@QAEXABQAVCEditBox@NUISystem@@@Z -> 005939ee labelled 'LinkedList_InsertWrapper'
+0058301a   RELOCATION_MATCH PASS   CreateEditBoxActions
+006a9690   WARN RELOC_NAME: ?PeekWorld@CThing@@IBEABVCWorld@@XZ -> 004c7ab0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7ab0'
+006a9690   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006a9690   WARN RELOC_NAME: ??0CRightHandedSet@@QAE@ABVC3DVector@@@Z -> 00a229e0 labelled 'BuildEulerRotationMatrix'
+006a9690   RELOCATION_MATCH PASS   ResolveRelativeMovementAcceleration
+00a852b0   RELOCATION_MATCH PASS   Insert
+
+WINS: 3
+  0058301a RELOCATION_MATCH CTCInventory::?CreateEditBoxActions@CTCInventory@@QAEXPAVCComponent@NUISystem@@ABVCCharString@@1ABVCWideString@@_N2@Z
+  006a9690 RELOCATION_MATCH CThingPlayerCreature::?ResolveRelativeMovementAcceleration@CThingPlayerCreature@@IAEXXZ
+  00a852b0 RELOCATION_MATCH CVectorMap::?Insert@?$CVectorMap@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$CKeyPairCompareLess@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@@@@QAEXAB_KABV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CTCInventory_CreateEditBoxActions_0058301a
+  CThingPlayerCreature_ResolveRelativeMovementAcceleration_006a9690
+  CVectorMap_Insert_00a852b0

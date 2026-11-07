@@ -1,0 +1,90 @@
+21:42:52	0047ed76	r1	DIFFER(366v366)	md=2	bytes=3	0s	
+21:42:52	0058301a	r1	DIFFER(321v321)	md=2	bytes=7	0s	
+21:42:52	0065b142	r1	DIFFER(386v386)	md=4	bytes=13	0s	
+21:42:52	006a9690	r1	DIFFER(450v450)	md=2	bytes=8	0s	
+21:42:52	006afe60	r1	DIFFER(145v145)	md=2	bytes=6	0s	
+21:42:52	005e78f0	r1	DIFFER(2340v2340)	md=4	bytes=11	0s	
+21:42:53	0085c7d0	r1	DIFFER(332v332)	md=8	bytes=4	0s	
+21:42:53	00986ed0	r1	DIFFER(353v353)	md=8	bytes=13	0s	
+21:42:53	00a22e10	r1	DIFFER(358v358)	md=2	bytes=7	0s	
+21:42:53	00a852b0	r1	DIFFER(143v143)	md=4	bytes=19	0s	
+21:42:54	009fa780	r1	DIFFER(2028v2028)	md=4	bytes=2	1s	
+21:42:54	00b92300	r1	DIFFER(335v335)	md=4	bytes=16	0s	
+21:42:54	00c52bb0	r1	DIFFER(140v140)	md=4	bytes=2	0s	
+21:42:54	00b5a3f0	r1	DIFFER(2923v2916)	md=7	bytes=1942	0s	
+21:42:55	00c75f80	r1	DIFFER(111v111)	md=4	bytes=17	0s	
+21:42:55	00cfe030	r1	DIFFER(3575v3575)	md=8	bytes=4	0s	
+21:42:55	00d18df0	r1	DIFFER(3337v3321)	md=2	bytes=317	0s	
+21:42:56	00de8370	r1	DIFFER(4894v4894)	md=12	bytes=8	0s	
+21:42:56	00f36a30	r1	DIFFER(361v361)	md=4	bytes=10	0s	
+21:42:56	00e76e90	r1	DIFFER(1613v1612)	md=10	bytes=223	0s	
+21:51:22	006afe60	sig1	DIFFER(145v145)	md=2	bytes=6	0s	PDB signature: const ref params, const this, protected
+21:51:23	00cfe030	bidx	DIFFER(3575v3575)	md=8	bytes=4	0s	GetPos sites as spawn_points.begin()[i]
+21:51:23	00cfe030	ipb	DIFFER(3575v3575)	md=8	bytes=4	0s	GetPos sites as *(i + spawn_points.begin())
+21:51:23	00cfe030	ptrlocal	DIFFER(3548v3575)	md=153	bytes=592	0s	CScriptThing* point = &spawn_points[i] at the top of the body, used everywhere
+21:57:49	00a852b0	stat_zero	DIFFER(151v143)	md=5	bytes=103	0s	static allocate (no this) + proxy zero init
+21:57:49	00a852b0	stat	DIFFER(143v143)	md=4	bytes=19	0s	static allocate (no this)
+21:57:49	00a852b0	tmpalloc_zero	DIFFER(151v143)	md=5	bytes=103	0s	allocate on a temporary allocator + proxy zero init
+21:57:49	00a852b0	direct_zero	DIFFER(151v143)	md=5	bytes=103	0s	direct malloc in _List_base + proxy zero init
+22:03:37	00f36a30	postinc_idx	DIFFER(361v361)	md=4	bytes=10	0s	ExponentArray[i++] with no increment in the for header
+22:03:37	00f36a30	postinc_idx_while	DIFFER(361v361)	md=4	bytes=10	0s	while loop with ExponentArray[i++]
+22:03:37	00f36a30	idx_local	DIFFER(361v361)	md=4	bytes=10	0s	index copied to a local before the call
+22:03:37	00f36a30	inc_then_idx	DIFFER(345v361)	md=74	bytes=261	0s	increment first, index i-1
+22:03:37	00f36a30	value_times	DIFFER(363v361)	md=6	bytes=187	0s	value *= 1 + noise*exp (Musgrave multiplicative form)
+22:04:18	00a852b0	real_Oa	DIFFER(157v143)	md=20	bytes=108	0s	real STLport spelling (zero init + real begin) under /Oa DIAGNOSTIC
+22:04:18	00a852b0	real_Ow	DIFFER(153v143)	md=6	bytes=103	0s	real STLport spelling under /Ow DIAGNOSTIC
+22:06:21	00a852b0	bodies	RELOCATION_MATCH	md=0	bytes=0	0s	stock STLport text + same-TU bodies of every callee that takes the temp's address (overflow, pair copy, ~_List_base, dispatch)
+22:12:52	00a852b0	bodies2	RELOCATION_MATCH	md=0	bytes=0	0s	bodies model respelled to the landed two-argument STLport symbols (traits iterators, member-template dispatch, ~list out of line, protected overflow)
+22:18:28	0058301a	bod_ins_noinl	RELOCATION_MATCH	md=0	bytes=0	0s	same-TU push_back body with a visible noinline insert, two variables
+22:18:28	0058301a	bod_ins_inl	RELOCATION_MATCH	md=0	bytes=0	0s	same-TU push_back body with insert inlined into it, two variables
+22:18:28	0058301a	bod_single_noinl	RELOCATION_MATCH	md=0	bytes=0	0s	same-TU push_back bodies, single editBox variable
+22:18:28	0058301a	bod_single_inl	RELOCATION_MATCH	md=0	bytes=0	0s	same-TU push_back bodies (insert inlined), single editBox variable
+22:22:01	0047ed76	vbody_noinl	DIFFER(366v366)	md=2	bytes=3	0s	std::vector<CComponent*>::push_back same-TU body (noinline), overflow declared
+22:22:01	006a9690	vecbodies	DIFFER(450v450)	md=2	bytes=8	0s	same-TU noinline bodies of AccurateNormalise and RotateXY (C3DVector.h as retail's TU saw it)
+22:22:01	006a9690	rotbody	DIFFER(450v450)	md=2	bytes=8	0s	same-TU noinline body of RotateXY only
+22:28:34	006a9690	angleref_plain	RELOCATION_MATCH	md=0	bytes=0	0s	angle passed through a float& reference (micro m7 flips the this-lea after the push)
+22:28:34	006a9690	angleref_bod	RELOCATION_MATCH	md=0	bytes=0	0s	angle passed through a float& reference (micro m7 flips the this-lea after the push)
+22:28:34	00b92300	addtolist	DIFFER(335v335)	md=4	bytes=16	0s	same-TU noinline body of AddToList (landed 0x00B8FDF0)addtolist
+22:28:34	00b92300	bothbodies	DIFFER(335v335)	md=4	bytes=16	0s	same-TU noinline body of AddToList (landed 0x00B8FDF0) and InvalidateAll (landed 0x00B91710)
+22:31:31	00f36a30	iref	DIFFER(361v361)	md=4	bytes=10	0s	counter walked through a long& reference (GOTCHAS reference lever)
+22:31:31	00f36a30	iref_tail	DIFFER(361v361)	md=4	bytes=10	0s	counter incremented through a long& reference only
+22:31:31	00f36a30	incr_first	DIFFER(346v361)	md=74	bytes=260	0s	increment at the top of the body, table indexed by i-1
+22:31:31	00f36a30	ptrwalk_iref	DIFFER(361v361)	md=8	bytes=67	0s	exponent pointer walk + counter reference
+22:31:31	00f36a30	unsigned_i	DIFFER(370v361)	md=39	bytes=257	0s	unsigned counter
+22:31:31	00f36a30	int_i	DIFFER(361v361)	md=4	bytes=10	0s	int counter
+22:31:31	00f36a30	i_struct	DIFFER(361v361)	md=4	bytes=10	0s	counter inside a one-member struct
+22:31:31	00f36a30	noise_local	DIFFER(361v361)	md=4	bytes=10	0s	noise result in a local before the multiply
+22:36:05	0065b142	acc_both	DIFFER(383v386)	md=46	bytes=279	0s	inline GetParentThing() accessor (acc_both)
+22:36:05	0065b142	acc_if	DIFFER(383v386)	md=46	bytes=279	0s	inline GetParentThing() accessor (acc_if)
+22:36:05	00c75f80	sizeref	DIFFER(111v111)	md=4	bytes=17	0s	Clear spelling: sizeref
+22:36:05	00c75f80	dataref	DIFFER(111v111)	md=4	bytes=17	0s	Clear spelling: dataref
+22:36:05	00c75f80	bothref	DIFFER(111v111)	md=4	bytes=17	0s	Clear spelling: bothref
+22:36:06	00c75f80	bytes_member_fn	DIFFER(111v111)	md=4	bytes=17	0s	Clear spelling: bytes_member_fn
+22:36:06	00c75f80	ptr_this	DIFFER(111v111)	md=4	bytes=17	0s	Clear spelling: ptr_this
+22:36:06	00c75f80	elems_loop_fill	DIFFER(90v111)	md=56	bytes=108	0s	Clear spelling: elems_loop_fill
+22:41:43	006a9690	final_local	RELOCATION_MATCH	md=0	bytes=0	0s	final names: AccurateNormalise/RotateXY/GetWorld/PeekMyPlayer/SpellMode/GetCurrentRenderCamera/GetControlAngleXY, protected, float& turn
+22:41:44	006a9690	final_hdr	RELOCATION_MATCH	md=0	bytes=0	0s	same with engine/C3DVector.h (FABLE_RETAIL_C3DVECTOR)
+22:41:44	0085c7d0	leafbody	DIFFER(332v332)	md=8	bytes=4	0s	same-TU body of the CPhysicsLeaf ctor 0x0085C950 (landed model), references for owner/manager
+22:41:44	00cfe030	firstref	DIFFER(3527v3575)	md=265	bytes=679	0s	CScriptThing* const& first = begin(); first[i]
+22:41:45	00cfe030	idxref	DIFFER(3575v3575)	md=8	bytes=4	0s	const unsigned long& idx = i in the loop body
+22:41:45	005e78f0	targetrefs	DIFFER(2326v2340)	md=77	bytes=346	0s	const long& bindings of the three targets
+22:41:45	00cfe030	vecref	DIFFER(3575v3575)	md=8	bytes=4	0s	const vector& points = spawn_points
+22:41:45	005e78f0	timeref	DIFFER(2334v2340)	md=32	bytes=351	0s	const float& digit_count_time
+22:41:46	005e78f0	disprefs	DIFFER(2326v2340)	md=79	bytes=341	0s	float& bindings of the three displayed counters
+22:43:34	00cfe030	cD_reflocal	DIFFER(3583v3575)	md=25	bytes=440	0s	create sites only: cD_reflocal (compare sites keep operator[])
+22:43:34	00cfe030	cA_iter	DIFFER(3575v3575)	md=8	bytes=4	0s	create sites only: cA_iter (compare sites keep operator[])
+22:43:35	00cfe030	cE_frontidx	DIFFER(3575v3575)	md=8	bytes=4	0s	create sites only: cE_frontidx (compare sites keep operator[])
+22:43:35	00cfe030	cB_iplus	DIFFER(3575v3575)	md=8	bytes=4	0s	create sites only: cB_iplus (compare sites keep operator[])
+22:43:36	00cfe030	cC_beginidx	DIFFER(3575v3575)	md=8	bytes=4	0s	create sites only: cC_beginidx (compare sites keep operator[])
+22:47:59	00de8370	parentref_while	DIFFER(4862v4894)	md=32	bytes=3118	0s	parent reference only for the while at the two sites
+22:47:59	00de8370	parentref	DIFFER(4878v4894)	md=239	bytes=3572	0s	CQ_RansomVictimScript& parent at the two block-1 sites (Speak + while)
+22:47:59	00de8370	parentref_all	DIFFER(4862v4894)	md=248	bytes=3573	0s	parent reference covering GetHealth/Speak/while at the two sites
+22:49:41	00cfe030	inti	DIFFER(3575v3575)	md=8	bytes=4	0s	int loop counter
+22:49:41	00cfe030	longi	DIFFER(3575v3575)	md=19	bytes=25	0s	signed long loop counter
+22:53:00	00c75f80	pmem_last	DIFFER(120v111)	md=20	bytes=114	0s	statement order: pmem_last
+22:53:00	00c75f80	pmem_after_clear	DIFFER(122v111)	md=43	bytes=119	0s	statement order: pmem_after_clear
+22:53:00	00c75f80	pmem_mid	DIFFER(119v111)	md=18	bytes=114	0s	statement order: pmem_mid
+22:53:00	00c75f80	clear_len	DIFFER(111v111)	md=37	bytes=100	0s	statement order: clear_len
+22:57:58	00f36a30	standin	DIFFER(350v361)	md=84	bytes=262	0s	same-TU noinline stand-in body for CNoise::PerlinNoise (p no longer captured)
+22:57:58	00f36a30	names	DIFFER(361v361)	md=4	bytes=10	0s	PDB names: NFractal namespace, PerlinNoise const, GetFractalHeight virtual const
+23:02:00	006a9690	peekworld	RELOCATION_MATCH	md=0	bytes=0	0s	PeekWorld (0x004C7AB0 naming decision) instead of GetWorld

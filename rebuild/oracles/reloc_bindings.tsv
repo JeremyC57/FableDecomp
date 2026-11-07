@@ -37551,3 +37551,6 @@ __imp__ShowCursor@4	01440350	00ab5d00
 ??E?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@std@@QAE?AU01@H@Z	00ad0a70	00ac8c80
 ?GetFaceNormal@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVC3DVector@@ABVCOptimisedFace@2@@Z	00ac7cb0	00ac8c80
 ?MakeOrthogonal@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVC3DVector@@ABV3@0@Z	00ac7200	00ac8c80
+?push_back@?$list@PAVCEditBox@NUISystem@@V?$allocator@PAVCEditBox@NUISystem@@@std@@@std@@QAEXABQAVCEditBox@NUISystem@@@Z	005939ee	0058301a
+??0?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@QAE@ABU01@@Z	00a825d0	00a852b0
+?_M_insert_overflow@?$vector@U?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@V?$allocator@U?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@@2@@std@@IAEXPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@ABU32@ABU__false_type@2@I_N@Z	00a84c20	00a852b0

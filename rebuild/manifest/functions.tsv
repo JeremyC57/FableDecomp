@@ -38281,7 +38281,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a85050	__introsort_loop	std	unknown	undefined	0		0	yes	accepted									
 00a851e0	~CVectorTriple_00a851e0	CVectorTriple_00a851e0	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
 00a85240	resize	std::vector<list<C2DLineF> >	unknown	undefined	0		0	yes	accepted									
-00a852b0	Insert	CVectorMap<unsigned __int64,std::list<C2DLineF>,CKeyPairCompareLess<unsigned __int64,std::list<C2DLineF> > >	unknown	undefined	0		0	yes	accepted									
+00a852b0	Insert	CVectorMap<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>, CKeyPairCompareLess<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>>>	unknown	undefined	0		0	yes	accepted									
 00a85340	OnInitialActivate	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\CTCVillage_OnInitialActivate_00a85340.cpp
 00a85360	_Construct	std	__fastcall	void	3	allocator<CNavQuadTree::CNavigationLayer> *,CNavigationLayer *,CNavigationLayer *	1	yes	accepted									
 00a853a0	Sort_SElement16_00a853a0	_global	unknown	undefined	0		0	yes	accepted									
@@ -55221,7 +55221,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f36540	GetGaussian2DNoise	NFractal::CPerlinNoise	__thiscall	float	2	CPerlinNoise *,C2DVector *	1	yes	accepted									
 00f36710	GetFractalHeight	NFractal::CRidgedMultifractal	unknown	undefined	0		0	yes	accepted									
 00f36860	GetFractalHeight	CHybridMultifractal	__thiscall	double	2	CHybridMultifractal *,C2DVector *	1	yes	accepted									
-00f36a30	GetFractalHeight	CHeteroTerrainFractal	__thiscall	double	2	CHeteroTerrainFractal *,C2DVector *	1	yes	accepted									
+00f36a30	GetFractalHeight	NFractal::CHeteroTerrainFractal	__thiscall	double	2	CHeteroTerrainFractal *,C2DVector *	1	yes	accepted									
 00f36ba0	CNoise	CNoise	__thiscall	undefined	1	CNoise *	0	yes	accepted									
 00f36be0	CPerlinNoise	NFractal::CPerlinNoise	__fastcall	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	2	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *	1	yes	accepted									
 00f36c60	CDynamicObjectHeapBase	CDynamicObjectHeapBase	__thiscall	undefined	1	CDynamicObjectHeapBase *	0	yes	accepted									
