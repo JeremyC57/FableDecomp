@@ -41,7 +41,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     respelled to the PDB `CMouse::EmptyEventStore`. Coverage 47,013 genuine (94.85%; 62.40% of bytes). **Do not run
     `tools/sync_catalog_names.py` bare and commit it:** it now rewrites 4,284 unrelated names (a backlog, some to placeholders such as
     `T::Get`); keep only the landing's addresses (landing_e README) until that backlog is reviewed.
-  - **Authoring is STOPPED (the user, 2026-11-08: "No more authoring").** No agent is running; do not cut or launch chunks until the
+  - **Authoring RESUMED (the user, 2026-11-08 late: "continue chunk authoring ... Two agents, both experts at game decompilation ... large
+    attempt budgets per row").** Running: chunk 855 (`$S/w22/agent855`: six never-attempted 0.9-2.1 KB rows + chunk 854's two WIP rows)
+    and chunk 856 (`$S/w22/agent856`: expert retry of ten parked near misses, 2-22 lines, no expert had worked them), 50+ attempts per
+    row. Briefs `$S/w22/agent85N/CHUNK_BRIEF.md` (copied into the pending dir at landing). Land each like landing_e (next letter `_f`).
+  - (superseded) Authoring was STOPPED (the user, 2026-11-08: "No more authoring"). No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled
     CQ_GuildTrainingScript::GossipSetup; GetMapNavigationAreaInit 0x0050A650 parked at 6 lines). Chunk 854 was stopped mid-run; its four RELOCATION_MATCH sources landed later (`2026-11-08_landing_e/`); its two WIP rows (0x007602F0, 0x00507070) stay in `pending/2026-11-08_linux_hand854_stopped/`. Earlier today:
