@@ -12,7 +12,7 @@
 - **Headers landed:** 30 files from the agent's hdr/ (additive opt-ins; 6 new: C3DMeshFileRootChunk / MapChunk / BoneChunk /
   ConvexVolumeChunk, CPlane, C3DVertexBlend2, CThingFilter_InMap). The CThing / CWorldMap / CTCQuestCard / CTCDRegionExit /
   CTCActionUseScriptedHook opt-ins serve only the parked 0x005FE840 and stay in the pending dir. Every landed row that includes a changed
-  header, directly or through another header (321 rows), was rechecked: `recheck/recheck.log`.
+  header, directly or through another header (321 rows), was rechecked: 321 of 321 still match (265 RELOCATION_MATCH, 56 MATCH, all PASS; `recheck_grades.txt`).
 - **Names:** labels `labels_landing_2026-11-08b.tsv` (14: IsThingAsPosBeingDrawn 0x005FABA0, GetRelativePosOnMiniMap 0x005FBAA0,
   CBankFile::FindIndexBySymbolCRC 0x009CC410, the set<long> find 0x00616580, the nested CKeyCamera ctors, UpdateBoneTransform 0x0098A8E0,
   UpdateCameraPos 0x00989700, CTCShop::IsBarberShop 0x00772490, ...). Queue `land0811b` (15).
