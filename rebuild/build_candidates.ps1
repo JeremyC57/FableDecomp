@@ -384883,6 +384883,34 @@ $catalog = @(
         TestSource = '00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_Main_00eb9980_test.cpp'
         PassPattern = '00eb9980_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d7b510'
+        Module = 'NScript::CQ_HeroSoulsThunderScript::CHeroThunder'
+        Source = '00/d7/NScriptCQHeroSoulsThunderScriptCHeroThunder_Main_00d7b510.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsThunderScriptCHeroThunder_Main_00d7b510_test.cpp'
+        PassPattern = '00d7b510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e64210'
+        Module = 'NScript::CV_ChickenKickingScript::CKickedChicken'
+        Source = '00/e6/NScriptCVChickenKickingScriptCKickedChicken_Main_00e64210.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScriptCKickedChicken_Main_00e64210_test.cpp'
+        PassPattern = '00e64210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d8e20'
+        Module = 'CTCTavernGameSpotTheAddition'
+        Source = '00/7d/CTCTavernGameSpotTheAddition_FrameUpdate_007d8e20.cpp'
+        TestSource = '00/7d/CTCTavernGameSpotTheAddition_FrameUpdate_007d8e20_test.cpp'
+        PassPattern = '007d8e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2ed20'
+        Module = 'NScript::CQ_EndGameFocalSitesScript::CEndGameScythe'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScythe_Main_00d2ed20.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScythe_Main_00d2ed20_test.cpp'
+        PassPattern = '00d2ed20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

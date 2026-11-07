@@ -1,0 +1,2 @@
+address	symbol	evidence
+00cdbfb0	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map	catalog label is the placeholder CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a (vland RELOC_NAME on 0x00DA91A0 CMapKeeper::Main, which binds ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@...@@QAE@XZ there, bound-same in reloc_bindings.tsv:32156); already raised by chunks 584 and later (labels_*.tsv); still unfixed in the catalog

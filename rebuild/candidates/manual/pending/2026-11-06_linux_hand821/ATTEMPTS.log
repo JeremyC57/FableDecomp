@@ -1,0 +1,76 @@
+00d2ed20	a0	DIFFER(2255v2248)	14	parked hand800 a10 source unchanged, re-graded: same grade (both speech-wait T exits call the MovieBase COMDAT, no tail merge)
+00d0a830	a0	DIFFER(2700v2720)	20	parked hand800 a7 source unchanged: same grade (merged terminate exit calls the COMDAT; rest jump-table noise)
+00d2d930	a0	DIFFER(5005v5094)	15	parked hand805 a8 source unchanged: same grade
+00cfe030	a0	DIFFER(3511v3575)	23	parked hand789 a11 source unchanged: same grade
+00de8370	a0	DIFFER(4894v4894)	12	parked hand808 a6 source unchanged: same grade (12 masked lines = the 2x2 eax/lea vs ecx/add instructions)
+007d8e20	a0	DIFFER(1900v1900)	20	parked hand800 a18 source unchanged: same grade (frame slot 0x14 v 0x18)
+00d2ed20	d1	DIFFER(2255v2248)	14	diagnostic /d2inlT72: no change
+00d2ed20	d2	RELOCATION_MATCH	0	diagnostic only (not a landing): /d2inlS15 and /d2inlS16 and /d2inlS20 give RELOCATION_MATCH; /d2inlS14 = default (2 COMDAT calls) -> the residue is purely VC7.1's caller-size inline cap, one step short
+00d2ed20	x1	DIFFER(1976v2248)	372	diagnostic: hit block deleted -> still 2 COMDAT calls at the speech exits (later code does not free budget)
+00d2ed20	x2	DIFFER(1840v2248)	262	diagnostic: intro cut-scene block deleted -> 1 COMDAT call left (earlier code frees budget)
+00d2ed20	x3	DIFFER(1802v2248)	144	diagnostic: distance block deleted -> still 2 COMDAT calls
+00d2ed20	a1	DIFFER(2255v2248)	14	MOVIEBASE_FORCEINLINE_CTOR dropped (implicit movie ctor, plain inline): both ctors still expand, exits unchanged
+00d2ed20	a2	DIFFER(2255v2248)	14	speech-wait bottom `NSF; if (!T) continue; return;` (chunk 816): no change
+00d0a830	d1	DIFFER(2784v2720)	189	diagnostic /d2inlS15..S20: other inlines flip (2784); S12-S14 2744; /d2inlT72 = default: not a pure budget offset here
+00d0a830	a1	DIFFER(2700v2720)	20	TRetVoid _Fail_Val dropped (plain returns): same residue (1 COMDAT call at the merged over-speech exit)
+00de8370	a1	DIFFER(4885v4894)	153	both block-1 not-enough SAY waits with the chunk 816 bottom `NSF; if (!T) continue; return;`: loop no longer rotated as retail, worse
+00de8370	a2	DIFFER(4917v4894)	73	both waits as `for(;;){ if (!IsPerforming) break; NSF; T; }`: worse
+00d2ed20	a3	DIFFER(2255v2248)	14	TRetVoid _Fail_Val returns everywhere (chunk 808 lever): no change
+00cfe030	a1	DIFFER(3585v3575)	183	row-local `inline CScriptThing::~CScriptThing() { }` before Main (chunk 815 lever) = hand789 a9/a12: expanded at in-loop-1, post-loop AND final exits (retail: first two only)
+00cfe030	d1	DIFFER(3630v3575)	228	diagnostic a1 + /d2inlS13: more expansions, worse
+00d2ed20	a4	DIFFER(2619v2248)	348	every T check as `do { if (T) return; } while (0);` (INLINE_DEPTH_REVISIT lever 2): everything hot, every dtor site expanded, far worse
+00d2ed20	a5	DIFFER(2239v2248)	33	only the T after the speech StartScriptingEntity loop wrapped in do-while(0): the movie moves to frame slot 0x58 and its scope-end dtor turns into a call too (3 COMDAT calls)
+00d2ed20	a6	DIFFER(2239v2248)	33	only the talked-to T wrapped: identical to a5
+00d2ed20	a7	DIFFER(2239v2248)	33	the two T after the speech loops wrapped: identical to a5
+00d2ed20	a8	DIFFER(2239v2248)	33	talked-to T + T after the speech StartScriptingEntity loop wrapped: identical to a5 (any do-while inside the main loop moves the movie slot)
+00d0a830	a2	DIFFER(2928v2720)	230	every T check wrapped in do-while(0): 0 COMDAT calls but every other dtor site expands too, far worse
+00d2ed20	a9	DIFFER(2255v2248)	14	pre-loop T (after the first StartScriptingEntity loop) wrapped in do-while(0): no change
+00d2ed20	a10	DIFFER(2255v2248)	14	T after the intro hero loop wrapped: no change
+00d2ed20	a11	DIFFER(2255v2248)	14	both pre-loop T wrapped: no change
+00d2ed20	a12	DIFFER(2255v2248)	14	quest-start-screen T wrapped: no change
+007d8e20	a1	RELOCATION_MATCH	0	halton + its position loop + the PositionMesh loop in a sibling block before the bounds-def block (chunk 818 sibling-block lever): the bounds def reuses halton's slot 0x18 as retail
+00cfe030	a2	DIFFER(3585v3575)	183	a1 + final wait `for(;;){NSF; if (T) return;}`: no change
+00cfe030	a3	DIFFER(3585v3575)	183	a1 + final wait `for(;;){NSF; if (!T) continue; return;}` (chunk 816 bottom): no change
+00cfe030	a4	DIFFER(3585v3575)	183	a1 + the tail (AlreadyDugHere .. FadeOut) in its own block before the final wait: no change
+00cfe030	a5	DIFFER(3585v3575)	183	a1 + TRetVoid _Fail_Val returns everywhere: no change
+00de8370	a4	DIFFER(4862v4894)	252	`CScriptGameResourceObjectScriptedThingBase& ransommer = ParentClass.seh_Ransommer;` around the two block-1 not-enough SAYs: worse
+00de8370	a3	DIFFER(4901v4894)	311	gold compares reversed (`< N` with the SAY arm first, pay arm second): block layout moves, worse
+00de8370	a5	DIFFER(4894v4894)	12	each block-1 not-enough SAY (GetHealth if) wrapped in do { } while (0): no change
+00de8370	a6	DIFFER(4894v4894)	12	only the in-loop T of the two waits as do-while(0): no change
+00de8370	a7	DIFFER(4894v4894)	12	each block-1 not-enough SAY in its own sibling block { } (chunk 818 lever): no change
+00de8370	a8	DIFFER(4917v4894)	263	both answer tests written  with the refused arm first: block layout moves, worse
+00d2ed20	a13	DIFFER(2276v2248)	17	Speak + wait + post-wait T inside `do { } while (0)` within the GetHealth if: in-loop exit expands, post-loop calls (no tail merge)
+00d2ed20	a14	RELOCATION_MATCH	0	the whole `if (GetHealth > 0) { Speak; wait; T }` SAY block wrapped in `do { } while (0);` (statement-macro shape): both speech exits expand the implicit MovieBase dtor and tail-merge as retail
+00d0a830	a3	DIFFER(2676v2720)	24	ed20 a14 lever: movie scope as a plain block, `if (GetHealth > 0) { SAY }` wrapped in do-while(0): both the scope end and the merged exit call the COMDAT
+00d0a830	a4	DIFFER(2760v2720)	69	movie-scope do-while kept + SAY if wrapped: in-loop exit expands but post-loop exit and scope end call, no merge
+00d0a830	a5	DIFFER(2780v2720)	45	movie do-while + Speak/wait/T in a do-while inside the GetHealth if: in-loop exit expands, post-loop exit calls, no merge
+00d0a830	a6	DIFFER(2780v2720)	45	movie do-while + both speech T checks wrapped individually: = a5
+00d0a830	a7	DIFFER(2676v2720)	24	movie do-while + only the post-loop T wrapped: both exits and the scope end call
+00d0a830	a8	DIFFER(2892v2720)	69	a4 + both inner T checks as do-while(0) (nested macro composition): too hot, every site expands
+00d2ed20	a15	DIFFER(2356v2248)	35	consistency check: a14 + inner T checks as do-while(0): too hot (so a14's single SAY-level do-while is the match)
+00d2d930	d1	RELOCATION_MATCH	0	diagnostic only (not a landing): /d2inlS15 gives RELOCATION_MATCH (S14 = default, S16 flips other inlines): the four movie dtor sites are blocked by c2's caller-size inline penalty (IL size + growth past the inlS cap), not by the dtor spelling
+00d2d930	a1	DIFFER(5005v5094)	15	each of the four cut-scene movie scopes as do { } while (0) (hotter sites): no change (penalty dominates)
+00d0a830	a9	DIFFER(2780v2720)	45	a5 without TRetVoid (smaller IL): = a5
+00d0a830	a10	DIFFER(2760v2720)	69	a4 without TRetVoid: = a4
+00d0a830	a11	DIFFER(2676v2720)	24	a3 without TRetVoid: = a3
+00d2d930	a2	DIFFER(4907v5094)	401	MOVIEBASE_FORCEINLINE_CTOR dropped (implicit movie ctor): the movie ctors turn into calls too, far worse
+00d0a830	a12	DIFFER(2700v2720)	20	speech wait as `for(;;){ if (!IsPerforming) { T; break; } NSF; T; }` (post-wait check inside the loop): byte-identical to a0 (equivalent spelling), exit still calls
+00d0a830	a13	DIFFER(2676v2720)	24	a12 with the movie scope as a plain block: scope end calls too
+00d0a830	a14	DIFFER(2724v2720)	73	a12 + both T checks as do-while(0): first expands, other calls, layout moves
+00d0a830	a15	DIFFER(2676v2720)	24	a12 + only the post-wait T as do-while(0): exits and scope end call
+00d0a830	a16	DIFFER(2700v2720)	20	movie do-while + the health-bar tail in a second do-while: = a0
+00d2d930	a3	DIFFER(4853v5094)	893	chunk 819 lever: OUTOFLINE_ASSIGN and the forceinline STB op= dropped (implicit STB op=): op= sites become calls, far worse
+00d2d930	a4	DIFFER(5005v5094)	15	dead trailing T after the infinite final loop removed (for(;;) final): no change
+00de8370	a9	DIFFER(4917v4894)	73	both waits as `for(;;){ if (!IsPerforming) { T; break; } NSF; T; }`: worse
+00de8370	a10	DIFFER(4894v4894)	12	plain `return;` (no _Fail_Val) in the two block-1 not-enough SAY waits only: no change
+00cfe030	a6	DIFFER(3585v3575)	183	a1 + in-loop-1 T as do-while(0): no change
+00cfe030	a7	DIFFER(3585v3575)	183	a1 + the three digging-loop T checks as do-while(0): no change
+00cfe030	a8	DIFFER(3662v3575)	558	a1 + every T check as do-while(0) (dwall): far worse
+00cfe030	a9	DIFFER(3585v3575)	183	a1 + in-loop-1 and post-loop T as do-while(0): no change
+00cfe030	a10	DIFFER(3575v3575)	8	a1 + the final DiggingPoints erase loop as `it = begin(); for(;;){ if (it == end()) break; if (Me == *it) { erase(it); break; } ++it; }` (a for(;;)-break loop does not leak its body frequency to the code after it, so the final exit stays cold and calls 0x004AA840 as retail): size exact, only the [edi+ecx] / [ecx+edi] operand order of the two spawn_points[i] addresses in the CreateCreature arms left
+00cfe030	a11	DIFFER(3575v3575)	8	same with `while (it != end()) { ...; ++it; }`: = a10
+00cfe030	a12	DIFFER(3583v3575)	25	a10 + `CScriptThing& point = spawn_points[i];` in both CreateCreature arms: worse
+00cfe030	a13	DIFFER(3575v3575)	8	a10 + `*(spawn_points.begin() + i)` in the arms: = a10
+00cfe030	a14	DIFFER(3575v3575)	8	a10 +  in the arms: = a10
+00d2d930	a5	DIFFER(4989v5094)	32	row-local inline CScriptThing default ctor dropped (less growth before the cut scenes): the MarkerHero ctor becomes a call, the four movie dtor sites still call
+00d2d930	a6	DIFFER(4989v5094)	233	GetPos plain inline instead of __forceinline: GetPos sites called, movie sites still call

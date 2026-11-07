@@ -1,0 +1,7 @@
+# Chunk 820 lessons (GOTCHAS one-liners)
+
+- The chunk 817 else-wait idle loop `if (T) return; for(;;){NSF; if (T) return;}` fixes the duplicated-head idle-loop residue of 0x00D7B510 CHeroThunder (RELOCATION_MATCH), and it carries to parked 0x00D82640 CBriarRose (38 -> 32 lines; the rest is a prologue CIsThingAlive copy).
+- VC7.1 devirtualises a virtual call on a by-value class local by its static type, through static_cast, a C-style cast, `(&x)->` and `(*&x)`. A same-type `reinterpret_cast<const T&>(x).f()` keeps the call virtual and computes `this` first, as retail does: the cast-only form of I-44, with no view struct (0x00DA91A0). It is a compiler lever: flag it for review.
+- An inlined C3DVector Dot follows how its operand was built. Ctor-built vectors give direction-first products. Member-wise stores give `a`-first products, with term order the reverse of the store order. Named float differences keep the source evaluation order (0x00E64210: dy, dx; then X, Z, Y stores).
+- Look at per-site out-of-line dtor calls at `if (T) return;` exits: when retail CALLS ~CTimer at one exit and ours expands it, the expanded copy cross-jumps into the final block and reshuffles the epilogue (0x00DD5A60). `/d2inlT<n>` as a diagnostic shows which exits sit near the 74 threshold.
+- A register-colouring residue whose sites have identical surrounding code but different colouring is global: local respellings around the site do not move it (0x00E64FB0, 20 attempts over chunks 818 and 820).

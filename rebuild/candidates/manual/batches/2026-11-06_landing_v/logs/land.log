@@ -1,0 +1,14 @@
+addr       parity           behav  name
+007d8e20   WARN RELOC_NAME: ?KillThing@CTCTavernGameSpotTheAddition@@QAEXPAVCThing@@@Z -> 005e9a60 labelled 'std::_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>'
+007d8e20   RELOCATION_MATCH PASS   FrameUpdate
+00d2ed20   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEAAV0@ABV0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00d2ed20   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d2ed20   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  007d8e20 RELOCATION_MATCH CTCTavernGameSpotTheAddition::?FrameUpdate@CTCTavernGameSpotTheAddition@@UAEXXZ
+  00d2ed20 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameScythe::?Main@CEndGameScythe@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCTavernGameSpotTheAddition_FrameUpdate_007d8e20
+  NScriptCQEndGameFocalSitesScriptCEndGameScythe_Main_00d2ed20

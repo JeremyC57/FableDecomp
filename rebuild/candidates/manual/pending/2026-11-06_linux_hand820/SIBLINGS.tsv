@@ -1,0 +1,7 @@
+address	source	grade_with_final_overlay	note
+0x00D7B510	src/00d7b510.cpp	RELOCATION_MATCH PASS	matched; no overlay header used
+0x00DA91A0	src/00da91a0.cpp	RELOCATION_MATCH PASS	matched; no overlay header used
+0x00E64210	src/00e64210.cpp	RELOCATION_MATCH PASS	matched; no overlay header used
+0x00DD5A60	differ/00dd5a60.cpp	DIFFER(2246v2250) PASS	parked; no overlay header used
+0x00E64FB0	differ/00e64fb0.cpp	DIFFER(15210v15210) PASS	parked; needs hdr/ (chunk 818 opt-ins FABLE_RETAIL_CV_CHICKENKICKINGSCRIPT_CHICKENMASTER + FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_FORCEINLINE_ASSIGN)
+0x005E78F0	differ/005e78f0.cpp	DIFFER(2340v2340) PASS	parked; no overlay header used

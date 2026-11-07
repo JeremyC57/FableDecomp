@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00d7b510   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00d7b510   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d7b510   RELOCATION_MATCH PASS   Main
+00e64210   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e64210   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00e64210   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00e64210   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00d7b510 RELOCATION_MATCH NScript::CQ_HeroSoulsThunderScript::CHeroThunder::?Main@CHeroThunder@CQ_HeroSoulsThunderScript@NScript@@EAEXXZ
+  00e64210 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CKickedChicken::?Main@CKickedChicken@CV_ChickenKickingScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHeroSoulsThunderScriptCHeroThunder_Main_00d7b510
+  NScriptCVChickenKickingScriptCKickedChicken_Main_00e64210

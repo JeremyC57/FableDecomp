@@ -1,0 +1,7 @@
+address	module	name	length
+00d7b510	NScript::CQ_HeroSoulsThunderScript::CHeroThunder	Main	3524
+00da91a0	NScript::CQ_MinionClifftopChaseScript::CMapKeeper	Main	2765
+00dd5a60	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner	Main	2250
+00e64210	NScript::CV_ChickenKickingScript::CKickedChicken	Main	2803
+00e64fb0	NScript::CV_ChickenKickingScript::CChickenMaster	Main	15210
+005e78f0	CTCQuestCompletionUI	GlobalUpdate	2340

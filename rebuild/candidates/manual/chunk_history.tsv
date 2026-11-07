@@ -27564,3 +27564,15 @@ chunk	address	module	name	length
 821	00cfe030	NScript::CQ_AwakeningTheOracleScript::COracleTablet	Main	3575
 821	00de8370	NScript::CQ_RansomVictimScript::CRansommer	Main	4894
 821	007d8e20	CTCTavernGameSpotTheAddition	FrameUpdate	1900
+822	00d18df0	NScript::CQ_BountyHuntScript::CBH_GangDeputy2	Main	3321
+822	00daf080	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl	Main	5504
+822	00dac760	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard	Main	5867
+822	00db86b0	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather	Main	4325
+822	00dadf80	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager	Main	2787
+822	00ebcb60	NScript::CV_MayorsInvitationScript	MonitorParanoidQuest	176
+823	00e90be0	NScript::CV_GuildMasterScript::CGuildMasterGameFlow	Main	4914
+823	00d3d150	NScript::CQ_GuildTrainingScript::CAppleGirl	Main	4252
+823	00b5a3f0	CEngineScreenEffectColourFilter	ApplyColourFilter	2916
+823	00ec68a0	NScript::CV_SickChildScript::CSickChildsSister	Main	5962
+823	00ec9d30	NScript::CV_SickChildScript::CMansLover	Main	4708
+823	007db6a0	CTCTavernGameCardBlackjack	CardsMainGame	2556

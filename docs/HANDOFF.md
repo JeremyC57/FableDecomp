@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-819 recorded; chunks 820 and 821 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-821 recorded; chunks 822 and 823 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -26,15 +26,16 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
     6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
     wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
-  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 820
-    (`$S/w22/agent820`: six retries of parks 4-21 lines from a match: CHeroThunder 0x00D7B510, CMapKeeper 0x00DA91A0, CPrisoner
-    0x00DD5A60, CKickedChicken 0x00E64210, CChickenMaster 0x00E64FB0, CTCQuestCompletionUI::GlobalUpdate 0x005E78F0) and chunk 821
-    (`$S/w22/agent821`: six retries: the one-exit MovieBase dtor rows CEndGameScythe 0x00D2ED20, CBanditKing 0x00D0A830 and
-    CEndGameJackOfBlades 0x00D2D930, plus COracleTablet 0x00CFE030, CRansommer 0x00DE8370 and CTCTavernGameSpotTheAddition::FrameUpdate
-    0x007D8E20). A retry that matches needs its pending header overlay copied in; a Main outside
+  - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 822
+    (`$S/w22/agent822`: five retries, CBH_GangDeputy2 0x00D18DF0 and the CQ_NewOakValeIntroScript Mains CNOVI_TeddyGirl 0x00DAF080,
+    CNOVI_Guard 0x00DAC760, CNOVI_LiveFather 0x00DB86B0 and CNOVI_Villager 0x00DADF80, plus the new 176-byte
+    CV_MayorsInvitationScript::MonitorParanoidQuest 0x00EBCB60) and chunk 823 (`$S/w22/agent823`: six retries, CGuildMasterGameFlow
+    0x00E90BE0, CAppleGirl 0x00D3D150, CEngineScreenEffectColourFilter::ApplyColourFilter 0x00B5A3F0, CSickChildsSister 0x00EC68A0,
+    CMansLover 0x00EC9D30 and CTCTavernGameCardBlackjack::CardsMainGame 0x007DB6A0). Rows were picked to avoid the CIsThingAlive copy
+    blocker. A retry that matches needs its pending header overlay copied in; a Main outside
     the manifest goes into `rebuild/manifest/boundary-starts.tsv` + `crawl/manifest_add_boundaries.py --write` first. Measure a cut
     by its first `ret` + int3 unless a jump table follows (jtext's maxbranch can sit in the next function: chunk 818). Land
-    each like 782-818 with the next free letter (`2026-11-06_landing_u`, `_v`; queue tags `land0611u`, ...),
+    each like 782-818 with the next free letter (`2026-11-06_landing_w`, `_x`; queue tags `land0611w`, ...),
     `pending/2026-11-05_linux_hand79N`, labels `2026-11-05<letter>` incl. the landed rows' own labels, queue tag
     `land0511<letter>`. Diff every overlay header against rebuild/include first and three-way merge any that would drop another
     chunk's lines (796's overlay predates the 794 / 795 landings). When a hand-back extends an existing
@@ -47,8 +48,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     rows in the script range are placed by their landed neighbours and their single .rdata reference (chunk 803 proved all six
     names and landed 4; about 60 such rows remain (`$S/w22/gaps_left.txt`; after chunk 819 the gap-scan Mains left are 0x00EBCB60 MonitorParanoidQuest (176 B, uncatalogued until chunk 818), 0x00E44980 (uncatalogued, after CMagicman), 0x00D4A270 (19.8 KB+, jump table) and 0x00CE7670 (32 KB), so later chunks are mostly retries of parks; 0x00D2AA40 CQ_EndGameFocalSitesScript::Main has a jump table inside its extent: measure it by hand), most 4-15 KB entity Mains that follow their entity's scalar deleting dtor). The ledger's byte counts often run on into the next functions: end each row at its own int3 padding or
     after its switch tables (a byte index table can end off a 4-byte boundary). The parked 782-819 rows are the other pool (gap-scan chunks 803-819 landed 26 of 102; `$S/w22/parked_all.txt` lists 172 parks with their residue line counts; chunks 817-819 mix three retries with three new rows; the implicit MovieBase dtor: where retail mixes expanded and called sites, the implicit dtor + the declared-only ~CCountedPointer<MovieBase> reproduces it (chunk 814); where retail expands every site (call 0x6E7AB0 + GROBase vptr store + call 0x0099A430; 0x00CF68C0) it turns on frame-slot sharing of the movies and is still open; 0x00D647F0 CFinalMaze is 10 masked lines (one register choice) from a match; the 0x00C0-0x00CA gap rows are compiler adjustor / vcall thunks, not authoring material; 0x00D52E90 (11.9 KB, vtable 0x012CF840 slot 1, after CPreMeleeWhisper::Main) is a Main in neither the manifest nor the gap scan; chunk 810's six entity Mains all hit the CIsThingAlive / CIsThingConscious nested-copy blocker, so prefer quest-own Mains and jump-table Mains (`$S/tools/jtext.py <addr> <next>` measures a row whose switch tables follow its code); several parked ones differ only in register choice or block layout) (0x00DE2610 waits on the pragma-free inline-depth mechanism, not on more attempts).
-  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`), 795 2 of 6 (`_v/`), 797 3 of 6 (`_w/`), 796 3 of 6 (`_x/`), 798 3 of 6 (`_y/`), 799 5 of 6 (`_z/`), 800 2 of 6 (`2026-11-06_landing_a/`), 801 1 of 6 (`_b/`), 802 2 of 6 (`_c/`), 803 4 of 6 (`_d/`), 804 1 of 6 (`_e/`), 805 2 of 6 (`_f/`), 806 1 of 6 (`_g/`), 807 2 of 6 (`_h/`), 808 1 of 6 (`_i/`), 809 3 of 6 (`_j/`), 810 0 of 6 (`_k/`), 811 1 of 6 (`_l/`), 812 2 of 6 (`_m/`), 813 2 of 6 (`_n/`), 814 2 of 6 (`_o/`), 815 1 of 6 (`_p/`), 816 0 of 6 (`_q/`), 817 3 of 6 (`_r/`), 818 1 of 6 (`_s/`), 819 0 of 6 (`_t/`); from 810 on, the header overlay of parked-only rows is kept in the pending dir because no landed row needs it. The
-    parked rows are in `pending/2026-11-05_linux_hand782..799/` and `pending/2026-11-06_linux_hand800..819/`.
+  - Landed since the resume: chunk 782 4 of 6 (`batches/2026-11-05_landing_i/`), 783 1 of 6 (`_j/`), 784 1 of 6 (`_k/`), 785 2 of 6 (`_l/`), 786 4 of 6 (`_m/`), 787 6 of 6 (`_n/`), 788 6 of 6 (`_o/`), 789 2 of 6 (`_p/`), 790 4 of 6 (`_q/`), 791 4 of 6 (`_r/`), 792 2 of 6 (`_s/`), 793 0 of 6 (`_t/`), 794 3 of 6 (`_u/`), 795 2 of 6 (`_v/`), 797 3 of 6 (`_w/`), 796 3 of 6 (`_x/`), 798 3 of 6 (`_y/`), 799 5 of 6 (`_z/`), 800 2 of 6 (`2026-11-06_landing_a/`), 801 1 of 6 (`_b/`), 802 2 of 6 (`_c/`), 803 4 of 6 (`_d/`), 804 1 of 6 (`_e/`), 805 2 of 6 (`_f/`), 806 1 of 6 (`_g/`), 807 2 of 6 (`_h/`), 808 1 of 6 (`_i/`), 809 3 of 6 (`_j/`), 810 0 of 6 (`_k/`), 811 1 of 6 (`_l/`), 812 2 of 6 (`_m/`), 813 2 of 6 (`_n/`), 814 2 of 6 (`_o/`), 815 1 of 6 (`_p/`), 816 0 of 6 (`_q/`), 817 3 of 6 (`_r/`), 818 1 of 6 (`_s/`), 819 0 of 6 (`_t/`), 820 2 of 6 (`_u/`; 0x00DA91A0 held, see below), 821 2 of 6 (`_v/`); from 810 on, the header overlay of parked-only rows is kept in the pending dir because no landed row needs it. The
+    parked rows are in `pending/2026-11-05_linux_hand782..799/` and `pending/2026-11-06_linux_hand800..821/`.
   - A container restart stopped chunk 784 once; the scratch survived, and the agent was resumed from its transcript.
   - Naming: 0x0122DEDC (the shared 0.0f) is the compiler literal `__real@00000000` (chunk 796 evidence, queued `land0511x`).
     Open (chunk 800): 0x00544D20 binds the NUISystem CCountedPointer<CAction> / <CComponent> dtors to the 5-byte jmp stubs
@@ -56,6 +57,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Owner question (chunk 804): the three CQ_ArenaHoldingScriptScript fan Mains (0x00CF18D0 / 0x00CF2B70 / 0x00CF3D20) match
     only under the undocumented VC7.1 flag `/d2inlS20` (the caller-size inline cap), and chunk 809's CNOVI_Guard / CGhostGrannySon
     Mains (0x00DAC760 / 0x00E8EF80) only under `/d2inlT72` (the inline threshold); they stay parked unless the owner rules on it.
+    Owner question (chunk 820): 0x00DA91A0 CMapKeeper::Main matches only through `reinterpret_cast<const CScriptThing&>(escort).IsAlive()`
+    on a by-value CScriptThing local (keeps the virtual call that VC7.1 otherwise devirtualises): the cast-only form of the I-44 view
+    device. Held unlanded (source in `pending/2026-11-06_linux_hand820/differ/`); if approved it could also replace the view struct in
+    the six landed CScriptThingView rows. Chunk 821: `/d2inlS15` (diagnostic) matches 0x00D2ED20 / 0x00D2D930. Naming open: 0x0129BA3C
+    EPSILON v DELTA_NOTIONAL_ZERO; 0x004BFFC0 also bound as the placeholder ClearMeshEffect_004bffc0 (queued `land0611v`).
     Open decision: `pGlobalScriptDef` 0x0143E90C is spelled `CScriptDef*` in 148 landed rows and `CDefPointer<const CScriptDef>` in
     15 (queue lines `cg10`, `land0511x`).
   - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.

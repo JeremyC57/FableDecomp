@@ -1,0 +1,7 @@
+address	source	grade_with_final_overlay	note
+007d8e20	src/007d8e20.cpp	RELOCATION_MATCH	this chunk's match; overlay hdr/ empty (no shared header changed), so no landed includer needs a recheck
+00d2ed20	src/00d2ed20.cpp	RELOCATION_MATCH	this chunk's match; overlay hdr/ empty
+00d2d930	differ/00d2d930.cpp	DIFFER(5005v5094)	parked; compared with the landed quest Main 0x00D2AA40 (same script) -- no movie sites there, nothing to borrow
+00d0a830	differ/00d0a830.cpp	DIFFER(2700v2720)	parked
+00cfe030	differ/00cfe030.cpp	DIFFER(3575v3575)	parked (8 masked lines)
+00de8370	differ/00de8370.cpp	DIFFER(4894v4894)	parked; landed sibling CVictimsBrotherHelper::Main 0x00DEB280 has the identical SAY statement shape

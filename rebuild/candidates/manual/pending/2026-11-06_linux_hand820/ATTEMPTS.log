@@ -1,0 +1,94 @@
+# chunk 820 attempts (one line per graded source; probe/<addr>_<tag>.cpp)
+00d7b510 a0: parked chunk 798 source unchanged -> DIFFER(3533v3524) 5 masked lines (md.py; chunk 798 counted 21 with its tool): idle loop head duplicates the T test
+00d7b510 a1: idle loop `if (T) return; for(;;){NSF; if (T) return;}` (chunk 817 else-wait) -> RELOCATION_MATCH
+00d7b510 a2: `if (T) return; for(;;){NSF; if (!T) continue; return;}` (816 bottom) -> RELOCATION_MATCH
+00d7b510 a3: `for(;;){ if (T) return; NSF; if (!T) continue; return; }` -> DIFFER(3533v3524) 5 (same residue)
+00da91a0 a0: parked chunk 797 source unchanged -> DIFFER(2765v2765) 2 masked lines (retail hoists lea ecx,[esp+0x1c] above the loop-head T jne)
+00dd5a60 a0: parked chunk 786 source unchanged -> DIFFER(2246v2250) 21
+00e64210 a0: parked chunk 790 source unchanged -> DIFFER(2803v2803) 8
+00e64fb0 a0: parked chunk 818 source unchanged (818 overlay re-applied on fresh repo headers) -> DIFFER(15210v15210) 16
+005e78f0 a0: parked chunk 795 source unchanged -> DIFFER(2340v2340) 4
+00da91a0 a1: first IsAlive as static_cast<const CScriptThing&>(escort).IsAlive() -> DIFFER 2 (identical code)
+00da91a0 a2: (&escort)->IsAlive() -> DIFFER 2 (identical)
+00da91a0 a3: escort loop as for(;;){...; if (!escort_gone) continue; break;} (816 bottom) -> DIFFER(2897v2765) 391 (layout rebuilt)
+00da91a0 a4: NSF;T hoisted above a do{...; if (escort_gone) break; NSF; T;} while(true) (817 merge) -> DIFFER(2785v2765) 32
+00da91a0 a5: by-value direct-init escort(Game->GetNearest...) -> DIFFER(2753v2765) 34 (VC7.1 devirtualises IsAlive: type-based, even after operator= calls)
+00da91a0 a6: by-value copy-init escort = ... -> DIFFER(2753v2765) 34 (same as a5)
+00e64210 a1: `C3DVector direction;` declared before the markers vector, assigned later -> DIFFER(2838v2803) 87 (still direction-first in the dot)
+00e64210 a2: block {} from arenaPos/direction through the sector loop -> DIFFER 8 (identical)
+00e64210 a3: `float facing = direction.Dot(a); if (facing > cos(...))` -> DIFFER 8 (identical)
+00e64210 a4: `C3DVector a, b;` declared before direction, assigned in the loop -> DIFFER(2889v2803) 524 (dot still direction-first for X)
+00e64210 a5: `cos(...) < direction.Dot(a)` -> DIFFER 20: cos computed first, sum order Z,Y,X; still Z a-first, Y/X direction-first
+00e64210 a6: a.Dot(direction) -> DIFFER 8 (identical: operand order canonicalised)
+00e64210 a7: named axis `C3DVector up(0,0,1); a.Rotate(up, angle);` -> DIFFER 8 (identical)
+00dd5a60 a1: GUARDS loop `if (T) return; for(;;){...; NSF; if (T) return;}` (817 shape) -> DIFFER(2259v2250) 78
+00dd5a60 a2: same with the 816 bottom `NSF; if (!T) continue; return;` -> DIFFER(2254v2250) 49
+00dd5a60 a3: GUARDS hit-arm T wrapped in do{}while(0) -> DIFFER 21 (identical). Finding: the real residue is the hit-arm T exit: retail calls ~CTimer OUT OF LINE there (0x00DD6293 jne 0x00DD5B0B, the [call 0xCD4470; epilogue] tail shared with the first cell-door exit), ours expands it and cross-jumps it into the final block, which then schedules push ebp first and absorbs the cell-door exit
+00dd5a60 a4: hit condition into a named `bool hit` first -> DIFFER 21 (identical; retail materialises the bool in [esp+0x13] either way)
+00dd5a60 a5: comment-arm T wrapped in do{}while(0) -> DIFFER 21 (identical)
+005e78f0 a1: per-line `float step = ...; Displayed += step;` -> DIFFER 4 (identical)
+005e78f0 a2: target member copied into a long local just before each line -> DIFFER 4 (identical)
+005e78f0 a3: long difference local before each line -> DIFFER 4 (identical)
+00d82640 x0/x1 (probe only, CBriarRose, not authored): parked chunk 789 source 38 masked lines; with the 817 idle loop 32 lines, 3276v3260: the idle-loop head/bottom residue is gone; what is left is the prologue CIsThingAlive copy (+16 bytes) and the alignment pads it shifts. The lever carries.
+00dd5a60 a6: hit-arm `if (!T) { conversation... } else return;` -> DIFFER 21 (identical)
+00dd5a60 a7: hit-arm conversation in its own inner {} -> DIFFER 21 (identical)
+00dd5a60 a8: extra plain `if (T) return;` before the GUARDS for(;;) (top do-while(0) T kept) -> DIFFER(2265v2250) 64: the hit-arm exit now CALLS ~CTimer (jne 0x00DD5B0B, as retail) -- confirms the frequency mechanism -- but the comment-arm exit goes out of line too and the top T is no longer rotated (extra block)
+00dd5a60 a9: post-courtyard T as do{}while(0) -> DIFFER 21 (identical)
+00dd5a60 a10: plain pre-loop T, comment-arm T do-while(0), hit-arm plain, bottom `NSF; do{T}while(0);` -> DIFFER(2254v2250) 49 (hit-arm inline again)
+00dd5a60 a11: as a10 with a plain bottom T -> DIFFER(2259v2250) 78
+00dd5a60 a12: as a10 with the 816 bottom `NSF; if (!T) continue; return;` -> DIFFER(2199v2250) 71
+00dd5a60 a13: a8 + comment-arm T do-while(0) -> DIFFER(2260v2250) 54 (hit-arm inline again)
+00e64fb0 a1: third-branch leading T as do{}while(0) -> DIFFER 16 (identical)
+00e64fb0 a2: third-branch spectators T as do{}while(0) -> DIFFER 16 (identical)
+00e64fb0 a3: spectators condition into a named bool first -> DIFFER 16 (identical)
+00e64fb0 a4: third-branch CM_SPECTATORS in its own {} -> DIFFER 16 (identical)
+00e64fb0 a5: no row-local inline ~CScriptThing -> DIFFER(15114v15210) 107 (worse; kept)
+00e64fb0 a6: CRGBColour black declared at the top of the enclosing else block, used by the third FadeScreenOut -> DIFFER 16 (identical)
+00e64fb0 a7: branch condition inverted, branches swapped (`if (!(IsPerforming && IsDistanceOver)) {third} else {second}`) -> DIFFER 16 (identical: VC7.1 lays out the same blocks)
+00e64fb0 a8: plain inline GFIntToWideString -> DIFFER(15179v15210) 976 (forceinline needed; kept)
+00e64fb0 a9: third (else) branch body wrapped in do{}while(0) -> DIFFER 16 (identical)
+00e64fb0 a10: second (IsPerforming) branch body wrapped in do{}while(0) -> DIFFER 16 (identical). Finding: sites 1 and 3 have identical surrounding code but are coloured differently, so the eax/edx choice is global (register-colouring blocker); park
+00e64210 a8: magnitude test as a.IsNonZero() && b.IsNonZero() -> DIFFER 12 (a's test now loads X first, dot unchanged)
+00e64210 a9: a.GetSquaredMagnitude() > D*D && ... -> DIFFER 12 (same as a8)
+00e64210 a10: GetSquaredMagnitude2D -> DIFFER 12 (same as a8)
+00e64210 a11: `const C3DVector& dir = direction; dir.Dot(a)` -> DIFFER 8 (identical)
+00e64210 a12: C3DVector(direction).Dot(a) (copy is scalar-replaced away) -> DIFFER 8 (identical)
+00e64210 a13: direction.Dot(C3DVector(a)) -> DIFFER 8 (identical)
+00e64210 a14: C3DVector(a).Dot(direction) -> DIFFER 8 (identical)
+00da91a0 a7: `const CScriptThing& escort` + const_cast for the reassignments -> DIFFER 2 (identical)
+00da91a0 a8: direct-init reference `CScriptThing& escort(...)` -> DIFFER 2 (identical)
+00da91a0 d1 (diagnostic, not a source): reference escort through an inline `DiagRef(escort).IsAlive()` -> DIFFER 2 (no hoist)
+00da91a0 d2 (diagnostic): value escort + the landed I-44 CScriptThingView device -> RELOCATION_MATCH (proves retail = value local, virtual IsAlive, this computed first; the view struct is banned for new rows)
+00da91a0 a9: value escort + (&escort)->IsAlive() -> DIFFER(2753v2765) 34 (devirtualised)
+00da91a0 a10: value escort + `const CScriptThing& escort_ref = escort;` alias -> DIFFER 2 (virtual, no hoist)
+00da91a0 d3 (diagnostic): value escort + inline DiagRef -> DIFFER 2
+00da91a0 d4: value escort + `reinterpret_cast<const CScriptThing&>(escort).IsAlive()` at both tests -> RELOCATION_MATCH (src/00da91a0.cpp)
+00da91a0 a11: value escort + static_cast<const CScriptThing&> -> DIFFER(2753v2765) 34 (devirtualised)
+00da91a0 a12: value escort + C-style (const CScriptThing&) cast -> DIFFER(2753v2765) 34 (devirtualised)
+00da91a0 a13: value escort + (*&escort).IsAlive() -> DIFFER(2753v2765) 34 (devirtualised)
+00e64210 a15: direction.Dot(reinterpret_cast<const C3DVector&>(a)) -> DIFFER 8 (identical)
+00e64210 a16: reinterpret_cast<const C3DVector&>(direction).Dot(a) -> DIFFER 8 (identical)
+00e64210 a17: both operands reinterpret_cast -> DIFFER 8 (identical)
+00e64210 a18: direction built by the 3-argument ctor (Z 0.0f): construction bytes exact, dot all direction-first in retail's Y,Z,X order -> DIFFER 12
+00e64210 a19: direction member-wise X, Y, Z: dot all a-first (order Z,Y,X), construction X-first -> DIFFER 12
+00e64210 a20: direction member-wise Z, Y, X: dot all a-first (order X,Y,Z) -> DIFFER 12. Finding: member-wise stores make the dot a-first and its term order is the reverse of the store order
+00e64210 mXZY: member-wise X, Z, Y: dot exact (aY dY aZ dZ aX dX), construction computes X before Y -> DIFFER 6
+00e64210 mYXZ / mYZX / mZXY: member-wise permutations -> DIFFER 12 / 12 / 16 (term order = reverse store order)
+00e64210 t1: `float dy = ...Y; float dx = ...X; C3DVector direction; direction.X = dx; direction.Z = 0.0f; direction.Y = dy;` -> RELOCATION_MATCH (src/00e64210.cpp)
+00e64210 t2: Y named first, X assigned directly, then Z, Y -> RELOCATION_MATCH (t1 kept: symmetric)
+00e64210 t3: offset = strikePos - arenaPos, then member-wise X, Z, Y -> DIFFER(2805v2803) 7
+005e78f0 a4: the three updates in their own {} -> DIFFER 4 (identical)
+005e78f0 a5: `long fps = GetConstantFPS();` local -> DIFFER(2354v2340) 117 (worse)
+005e78f0 a6: digit_count_time declared then assigned -> DIFFER 4 (identical)
+005e78f0 a7: per-statement block with `float frames = FPS * d;` -> DIFFER 4 (identical)
+005e78f0 a8: (float) casts on the targets in the clamps -> DIFFER 4 (identical)
+005e78f0 a9: first clamp as a ternary assignment -> DIFFER(2341v2340) 10 (worse)
+005e78f0 a10: digit_count_time declared at the top of the function -> DIFFER 4 (identical)
+00dd5a60 T60/T64/T68/T72/T73 (diagnostics only, `// Flags: /d2inlT<n>`, never a source): T60 DIFFER(2141v2250) 226, T64 DIFFER(2173v2250) 32, T68/T72/T73 DIFFER(2254v2250) 2 -- at threshold 68-73 the GUARDS hit-arm exit CALLS ~CTimer as retail does, but the comment-arm exit goes out of line too (retail keeps it inline): retail's comment-arm exit is slightly hotter than its hit-arm exit, ours has them nearly equal
+00dd5a60 b1: plain-pre-loop T as do{}while(0), comment-arm T do-while(0), bottom `NSF; do{T}while(0);` -> DIFFER(2254v2250) 49
+00dd5a60 b3: as b1 with a plain bottom T -> DIFFER(2259v2250) 78
+00dd5a60 b4: do-while(0) T before the for(;;) and at the bottom (comment arm plain) -> DIFFER(2250v2250) 81
+00dd5a60 b5: as b4 with a plain bottom T -> DIFFER(2259v2250) 78
+00dd5a60 c1: GUARDS comment test as nested `if (GetTime()==0) { if (MakePrisonerComment) {...} }` -> DIFFER(2209v2250) 103 (worse)
+00dd5a60 c2: hit test spelled De Morgan `if (!(!A && (!B || C)))` -> DIFFER 21 (identical)
+00dd5a60 c3: `!comment_timer.GetTime() && MakePrisonerComment(...) == true` -> DIFFER(2245v2250) 27 (worse)
