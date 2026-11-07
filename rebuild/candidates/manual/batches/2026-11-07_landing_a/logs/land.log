@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00684610   WARN RELOC_NAME: ??$TransferVector@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z -> 00569fe0 labelled 'CPersistContext::Transfer<CQuestScoreRecord>'
+00684610   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00684610   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00684610   WARN RELOC_NAME: ?SerialiseFlagMask@CTCCreatureOpinionOfHero@@AAEXAAVCPersistContext@@ABVCCharString@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z -> 00681ba0 labelled '_global::CParticleMorphs_TransferEntry'
+00684610   RELOCATION_MATCH PASS   OnSerialise
+
+WINS: 1
+  00684610 RELOCATION_MATCH CTCCreatureOpinionOfHero::?OnSerialise@CTCCreatureOpinionOfHero@@UAEXAAVCPersistContext@@_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCCreatureOpinionOfHero_OnSerialise_00684610

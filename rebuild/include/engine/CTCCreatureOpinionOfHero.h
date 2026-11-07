@@ -39,11 +39,26 @@ enum EOpinionAttitudeType;                                               // MS f
 enum EOpinion;                                                           // MS forward enum
 // Ego_r.pdb COpinionTransientOffset (24 bytes: Opinion +0, OffsetPerFrameRunIn +4, FramesToRunIn +8, FramesOfCappedPeak +0xc,
 // OffsetPerFrameRunOut +0x10, FramesToRunOut +0x14) and COpinionSet (CArray<float> OpinionValues +0; retail 12 bytes). Chunk 802 opt-in.
+#ifdef FABLE_RETAIL_COPINIONTRANSIENTOFFSET_BINARY
+class CMemoryDataInputStream;
+#endif
 class COpinionTransientOffset {
 public:
     // ??0COpinionTransientOffset@@QAE@XZ (Ego_r / FableWin), inline in retail: the stores run Opinion, the run-in pair, the run-out pair,
     // then FramesOfCappedPeak (0x00684F5E..0x00684F7A).
     COpinionTransientOffset() { Opinion = (EOpinion)0; OffsetPerFrameRunIn = 0.0f; FramesToRunIn = 0; OffsetPerFrameRunOut = 0.0f; FramesToRunOut = 0; FramesOfCappedPeak = 0; }
+#ifdef FABLE_RETAIL_COPINIONTRANSIENTOFFSET_BINARY
+    // Chunk 824 (row 0x00684610 CTCCreatureOpinionOfHero::OnSerialise): Ego_r.pdb ?TransferBinaryIn@COpinionTransientOffset@@QAEXAAVCMemoryDataInputStream@@@Z,
+    // reached through the ILT thunk 0x004793F8 from Transfer<COpinionTransientOffset> 0x00685F80 (binary-load arm).
+    void TransferBinaryIn(CMemoryDataInputStream& stream);
+#endif
+#ifdef FABLE_RETAIL_COPINIONTRANSIENTOFFSET_COPY
+    // Retail opt-in (chunk 827, row 0x00684610): Ego_r.pdb names a user copy constructor ??0COpinionTransientOffset@@QAE@ABV0@@Z (Ego_r 0x0045DA29; a
+    // trivial implicit copy would never be emitted). Retail copies member-wise in memory order (list node 0x00684FD9..0x00684FFB).
+    COpinionTransientOffset(const COpinionTransientOffset& other)
+        : Opinion(other.Opinion), OffsetPerFrameRunIn(other.OffsetPerFrameRunIn), FramesToRunIn(other.FramesToRunIn),
+          FramesOfCappedPeak(other.FramesOfCappedPeak), OffsetPerFrameRunOut(other.OffsetPerFrameRunOut), FramesToRunOut(other.FramesToRunOut) {}
+#endif
     EOpinion Opinion;
     float OffsetPerFrameRunIn;
     long FramesToRunIn;

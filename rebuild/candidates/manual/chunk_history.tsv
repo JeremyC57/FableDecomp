@@ -27600,3 +27600,9 @@ chunk	address	module	name	length
 827	0094ab00	CAIStateGroup_GoToPub	Update	2067
 827	0066cf00	CRegionMinimap	PopulateRegionMinimap	3248
 827	008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2073
+828	00d56790	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent	Main	6151
+828	00e9e420	NScript::CV_IntroductionToTrophiesScript::CBriarRose	Main	5915
+828	00d0c410	NScript::CQ_BanditCampBossBattleScript::CBanditForger	Main	5373
+828	006c6040	CTCHeroOpinionDeedLog	InformRelevantThingsOfDeed	2377
+828	00e2c100	NScript::CV_AmbushScamScript::CAS_Trickster	Main	8945
+828	00974aa0	CAIStateGroup_JackOfBladesStage2	Update	3080

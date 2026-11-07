@@ -37336,3 +37336,6 @@ _New_c35b10@8	00c35b10	00c275e0
 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@111KM_N2@Z	00492f69	0092fab0
 ??1?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAE@XZ	00cdd0d0	00f0c140
 ?swap@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@QAEXAAV12@@Z	00f0ca30	00f0c140
+??$Transfer@VCOpinionTransientOffset@@@CPersistContext@@QAEXPBDAAVCOpinionTransientOffset@@ABV1@@Z	00685f80	00684610
+??$Transfer@W4EOpinionAttitudeType@@@CPersistContext@@QAEXPBDAAW4EOpinionAttitudeType@@ABW41@@Z	00685cc0	00684610
+?SerialiseFlagMask@CTCCreatureOpinionOfHero@@AAEXAAVCPersistContext@@ABVCCharString@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z	00681ba0	00684610

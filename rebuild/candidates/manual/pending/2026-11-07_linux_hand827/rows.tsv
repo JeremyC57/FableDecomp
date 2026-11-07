@@ -1,0 +1,7 @@
+address	module	name	length
+00684610	CTCCreatureOpinionOfHero	OnSerialise	2823
+007c4430	CTCHealLife	StartHealingEffect	1952
+00833c00	CThingAICreature	DrawPreparePrimitivesForRendering	2300
+0094ab00	CAIStateGroup_GoToPub	Update	2067
+0066cf00	CRegionMinimap	PopulateRegionMinimap	3248
+008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2073

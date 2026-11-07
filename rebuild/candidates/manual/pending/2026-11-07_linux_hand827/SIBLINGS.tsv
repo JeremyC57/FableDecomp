@@ -1,0 +1,7 @@
+address	source	grade_with_final_overlay	note
+00684610	src/00684610.cpp	RELOCATION_MATCH	this chunk's match; needs FABLE_RETAIL_COPINIONTRANSIENTOFFSET_BINARY (chunk 824) + FABLE_RETAIL_COPINIONTRANSIENTOFFSET_COPY (chunk 827) in hdr/engine/CTCCreatureOpinionOfHero.h; test PASS (g++ and VC7.1)
+007c4430	differ/007c4430.cpp	DIFFER(1980v1952)	parked, 222 lines (chunk 825's source unchanged; no new overlay)
+00833c00	differ/00833c00.cpp	DIFFER(2296v2300)	parked, 608 lines (684 for the old source on today's headers); no overlay header used
+0094ab00	differ/0094ab00.cpp	DIFFER(2018v2067)	parked, 246 lines (743 before); repo headers only (shared engine/CIntelligentPointer.h now, not a local model)
+0066cf00	differ/0066cf00.cpp	DIFFER(3236v3248)	parked, 659 lines (669 before); uses the new opt-in FABLE_RETAIL_CDEFPOINTER_ASSIGN_REREAD (hdr/engine/CDefPointer.h)
+008e18d0	differ/008e18d0.cpp	DIFFER(2005v2073)	parked, 481 lines (643 before); repo headers only. All hdr/ edits are opt-in branches (default path textually unchanged), so no landed includer needs a recheck
