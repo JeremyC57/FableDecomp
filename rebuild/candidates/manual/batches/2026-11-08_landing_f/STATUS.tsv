@@ -1,0 +1,4 @@
+address	name	grade	behav	note
+00ca2bb0	floor1_encode	RELOCATION_MATCH	PASS	landed (Codex pass-12 source, renamed from CEnvironment_SerializeTheme)
+00490be0	CSubtitleRenderer::GetGraphicFromEmbeddedTag	RELOCATION_MATCH	PASS	landed
+0052f900	NUISystem::CComponent::UpdateColour	RELOCATION_MATCH	PASS	landed

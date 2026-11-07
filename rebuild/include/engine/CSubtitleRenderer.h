@@ -15,6 +15,9 @@ class CWideStringData;
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT
 class CWideString;                                              // chunk 795
 #endif
+#if defined(FABLE_RETAIL_CSUBTITLERENDERER_GRAPHICTAG) && !defined(FABLE_RETAIL_CSUBTITLERENDERER_SETTEXT)
+class CWideString;                                              // chunk 855
+#endif
 
 #pragma pack(push, 1)
 class CSubtitleRenderer {
@@ -96,6 +99,14 @@ public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float time, bool click_past, bool pause_game);   // 0x00492E4B
     void SetText(const CFontBank& font, const CWideString& text, const CWideString& button0_text, const CWideString& button1_text,
                  const CWideString& button2_text, unsigned long flags, float time, bool click_past, bool pause_game);              // 0x00492F69
+#endif
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_GRAPHICTAG
+    // Retail opt-in (chunk 855, row 0x00490BE0): Ego_r.pdb / FableWin.pdb ?GetGraphicFromEmbeddedTag@CSubtitleRenderer@@ABEJABVCWideString@@@Z
+    // (private const thiscall, ret 4; its one caller ProcessEmbeddedGraphicTags 0x0049241E passes this in ecx and a CWideString).
+    // Declaration only: no layout change.
+private:
+    long GetGraphicFromEmbeddedTag(const CWideString& tag) const;        // 0x00490BE0
+public:
 #endif
 };
 #pragma pack(pop)

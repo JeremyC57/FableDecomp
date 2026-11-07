@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00490be0   WARN RELOC_NAME: ?GetAsUpperCase@CCharString@@QBE?AV1@XZ -> 0099ee20 labelled 'CCharString::ToUpper'
+00490be0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+00490be0   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >'
+00490be0   RELOCATION_MATCH PASS   GetGraphicFromEmbeddedTag
+0052f900   RELOCATION_MATCH PASS   UpdateColour
+00ca2bb0   WARN RELOC_CONFLICT: @ilog@4 -> 00ca1790 here, 00c9fe70 in landed 00c9fea0
+00ca2bb0   RELOCATION_MATCH PASS   floor1_encode
+
+WINS: 3
+  00490be0 RELOCATION_MATCH CSubtitleRenderer::?GetGraphicFromEmbeddedTag@CSubtitleRenderer@@ABEJABVCWideString@@@Z
+  0052f900 RELOCATION_MATCH NUISystem::CComponent::?UpdateColour@CComponent@NUISystem@@UAEXM@Z
+  00ca2bb0 RELOCATION_MATCH _global::@floor1_encode@16
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CSubtitleRenderer_GetGraphicFromEmbeddedTag_00490be0
+  NUISystemCComponent_UpdateColour_0052f900
+  global_floor1encode_00ca2bb0

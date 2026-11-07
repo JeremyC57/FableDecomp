@@ -49,7 +49,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     nothing to land; it reports the 0x00AAD650 oracle extent mis-cut: 1574 + int3, not 1840). Its slot went to chunk 857
     (`$S/w22/agent857`: eight never-attempted 1.6-3.5 KB engine / UI rows, several forge-autoname placeholders to prove).
     Chunk 855 finished 3 of 8 (RELOCATION_MATCH: floor1_encode 0x00CA2BB0, CSubtitleRenderer::GetGraphicFromEmbeddedTag 0x00490BE0,
-    NUISystem::CComponent::UpdateColour 0x0052F900; landing_f). Its slot went to chunk 859, a **Fable** retry agent (the user: "give
+    NUISystem::CComponent::UpdateColour 0x0052F900; landed `2026-11-08_landing_f/`, coverage 47,016 genuine, 62.45% of bytes;
+    queue land0811f PRIORITY: respell the landed CCharString ToUpper / ToLower 0x0099EE20 / 0x0099ED10 to the PDB GetAsUpperCase /
+    GetAsLowerCase with their 22 callers). Its slot went to chunk 859, a **Fable** retry agent (the user: "give
     huge budget ... keep trying every row until half or more match"): twenty parked 2-15-line near misses, rounds over all rows, goal
     10+, `$S/w22/agent859`. Chunk 858 (six small gap-scan rows + four 3.3-3.5 KB UI rows, `$S/w22/agent858`, brief written) is cut
     but HELD (not launched, not in chunk_history) until a lane slot frees.

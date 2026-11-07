@@ -138,6 +138,11 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     void Update(bool paused);                                            // 0x0043A080
     void UpdateMiniMapMarkers(bool);                                     // 0x004378C0
     CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; }
+#ifdef FABLE_RETAIL_CPLAYERGUI_PEEKGUIDEF
+    // Retail opt-in (chunk 855, row 0x00490BE0): Ego_r.pdb 0x0044B230 / FableWin.pdb 0x01A80EA0 ?PeekGuiDef@CPlayerGui@@SIABVCPlayerGuiDef@@XZ
+    // (public static __fastcall), out of line in retail at 0x00438570 (no this set up at its callers). Declaration only.
+    static const class CPlayerGuiDef& __fastcall PeekGuiDef();          // 0x00438570
+#endif
     // Chunk 735 (row 0x00577AC0 CTCInventoryExperience::OpenInventoryInternalPC): Ego_r.pdb / FableWin.pdb
     // ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ, out of line at 0x00437CD0 (it reads
     // PHeroInfoScreensManager's scoped_ptr word at +0x32C).

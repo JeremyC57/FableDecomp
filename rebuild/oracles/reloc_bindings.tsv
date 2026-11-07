@@ -37544,3 +37544,7 @@ _sscanf	00bfed1c	0083efe0
 ??_7CMouseDX@@6B@	0129ea14	00ab5d00
 ?SetExclusiveMode@CMouseDX@@QAE_N_N@Z	00ab5710	00ab5d00
 __imp__ShowCursor@4	01440350	00ab5d00
+?GetAsUpperCase@CCharString@@QBE?AV1@XZ	0099ee20	00490be0
+?seq@?1??floor1_encode@@9@9	0143ccec	00ca2bb0
+@render_line0@20	00ca2010	00ca2bb0
+@render_point@20	00ca1e00	00ca2bb0

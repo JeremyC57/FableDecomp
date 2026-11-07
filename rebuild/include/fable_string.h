@@ -323,6 +323,12 @@ public:
     const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
+#ifdef FABLE_RETAIL_CCHARSTRING_GETASUPPERCASE
+    // Retail opt-in (chunk 855, row 0x00490BE0 CSubtitleRenderer::GetGraphicFromEmbeddedTag): Ego_r.pdb 0x00AFA710 / FableWin.pdb
+    // 0x02F61680 ?GetAsUpperCase@CCharString@@QBE?AV1@XZ, out of line in retail at 0x0099EE20 (it calls toupper 0x00BFED16 on every
+    // byte below 0x80; its twin 0x0099ED10 calls tolower, ?GetAsLowerCase@CCharString@@QBE?AV1@XZ). Declaration only.
+    CCharString GetAsUpperCase() const;                        // 0x0099EE20
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_REPLACE
     // Retail opt-in (chunk 848, row 0x005253F0 CThingManager::LoadGameState): FableWin.pdb ?Replace@CCharString@@QAEXABV1@0@Z (0x018D9CA0,
     // public, void (const CCharString&, const CCharString&)), inline in retail: LoadGameState expands it four times (0x0052573A..0x005257FD:

@@ -1,0 +1,9 @@
+# Chunk 855 lessons (GOTCHAS one-liners)
+- (chunk 855) An implicit STLport destructor that retail calls as a COMDAT (map<CCharString, CScriptGameResourceObjectScriptedThingBase> ~map 0x00CDBFB0) needs a declared, bodiless `~map()` (fable_map.h opt-in FABLE_RETAIL_STLP_MAP_OUTOFLINE_DTOR); a `template <> map<...>::~map();` declaration of the implicit dtor is accepted by VC7.1 and ignored (still expanded).
+- (chunk 855) Where retail calls `__destroy_aux` with first/last in ecx/edx and the tag pushed (0x00519EB0, 0x0051AC70 in the CWorldMap TU), the instantiation is `__fastcall` (fable_containers.h opt-in FABLE_RETAIL_STLP_FASTCALL_DESTROY_AUX); 738 -> 445 lines on 0x00507070.
+- (chunk 855) Diff the call sequence first: a call list with retail targets beside the build's relocation symbols (agent855/bin/calls.sh) shows every inline/out-of-line mismatch in one screen; fix those before reading instruction diffs.
+- (chunk 855) Never grade one address twice at once: q.py's per-address work dir makes both grades report the same (wrong) object.
+- (chunk 855) 0x005136B0 and 0x00514E20 are byte-identical vector<1-byte>(n) bodies, both landed as ??0?$vector@EV?$allocator@E@std@@@std@@QAE@I@Z: one is another element type (open label conflict).
+- (chunk 855) CCharString's case converters are GetAsUpperCase 0x0099EE20 / GetAsLowerCase 0x0099ED10 (Ego_r + FableWin), not ToUpper / ToLower (NAME_FIXES.tsv).
+- (chunk 855) NUISystem::CComponent::UpdateColour: CRGBFloatColour::Clamp must be `__forceinline` (plain inline is called out of line); scale velocity per channel by `1.0f / T` and compute the render colour into a third named local declared after parent and colour.
+- (chunk 855) VC7.1 frame slots of two simultaneously live 12-byte vectors (kills/things in 0x00D0F640) follow neither declaration order nor scope nesting; park slot-order-only residue early.

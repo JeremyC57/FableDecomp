@@ -4108,7 +4108,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004908da	SetCutsceneActionMode	CSubtitleRenderer	__thiscall	void	3	CSubtitleRenderer *,bool,CCharString *	1	yes	accepted									
 00490927	IsAllowedToSetText	CSubtitleRenderer	__thiscall	bool	2	CSubtitleRenderer *,bool	1	yes	accepted									
 00490a22	IsInInteractiveState	CSubtitleRenderer	__thiscall	bool	1	CSubtitleRenderer *	1	yes	accepted									
-00490be0	ProcessEmbeddedGraphicTags_ResolveButtonName	_global	unknown	undefined	0		0	yes	accepted									
+00490be0	GetGraphicFromEmbeddedTag	CSubtitleRenderer	unknown	undefined	0		0	yes	accepted									
 0049124e	GetActionNameFromEmbeddedTag	CSubtitleRenderer	__fastcall	bool	2	CWideString *,CWideString *	1	yes	accepted									
 0049166e	CSubtitleRenderer	CSubtitleRenderer	__thiscall	undefined	2	CSubtitleRenderer *,CGraphicDataBank *	0	yes	accepted									
 004917b5	FormatTextWithGameActionNames	CSubtitleRenderer	__fastcall	CWideString	2	CWideString *,vector<CWideString,std::allocator<CWideString>_> *	1	yes	accepted									
@@ -8347,7 +8347,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00506d40	LoadRegionGraph	CWorldMap	__thiscall	void	2	CWorldMap *,CWideString *	1	yes	accepted									
 00506e30	GetLevelDimensions	CWorldMap	__thiscall	C2DBoxI	2	CWorldMap *,CCharString *	1	yes	accepted									
 00506f30	AddLevelFromFile	CWorldMap	__thiscall	long	3	CWorldMap *,C2DCoordI *,CCharString *	1	yes	accepted									
-00507070	RebuildStringPairTableFromTree	_global	unknown	undefined	0		0	yes	review-low									
+00507070	BuildStaticMapGenerationVisibilityInfo	CWorldMap	unknown	undefined	0		0	yes	review-low									
 00507610	DeleteAllRegions	CWorldMap	__thiscall	void	1	CWorldMap *	1	yes	accepted									
 00507650	CWorldMap::LoadFromFile	CWorldMap	unknown	undefined	0		0	yes	accepted									
 005079c0	LoadGameState	CWorldMap	unknown	undefined	0		0	yes	accepted									
@@ -9226,7 +9226,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052f540	GetTargetColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f580	GetParentColour	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f5c0	UpdateZoom	NUISystem::CComponent	__thiscall	void	2	CComponent *,float	1	yes	accepted									
-0052f900	GameAnimation_UpdatePosition	_global	unknown	undefined	0		0	yes	accepted									
+0052f900	UpdateColour	NUISystem::CComponent	unknown	undefined	0		0	yes	accepted									
 0052ffd0	UpdatePosition	NUISystem::CComponent	__thiscall	void	2	CComponent *,float	1	yes	accepted									
 00530260	Draw	NUISystem::CComponent	__thiscall	void	6	CComponent *,CIEngine *,CEnginePrimitiveHandle *,long,long *,CComponent *	1	yes	accepted									
 005303f0	RemoveObserverRecursive	NUISystem::CComponent	__thiscall	void	1	CComponent *	1	yes	accepted									
@@ -13701,7 +13701,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00642970	BuildMinimapTGA	CMinimapData	__thiscall	void	2	CMinimapData *,CWideString *	1	yes	accepted									
 00642a30	CMinimapData	CMinimapData	unknown	undefined	0		0			discovered	gapscan							
 00642a60	~CResourceHolder_00642a60	CResourceHolder_00642a60	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
-00642aa0	sub_00642aa0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00642aa0	PopulateMinimapThemeList	CMinimapData	unknown	undefined	0		0			discovered	gapscan							
 006437d0	GetAllThings<CThingBuilding, std::vector<CThingBuilding *, std::allocator<CThingBuilding *>>, CThingFilter_OverlappingArea>	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_BoundingBoxOverlapsMap,CThingFilter_HasNavigationInformation> *,vector<CThingPhysical_const*,std::allocator<CThingPhysical_const*>_> *	1	yes	accepted									
 00643890	resize	std::vector<CMinimapData::MinimapTheme, std::allocator<CMinimapData::MinimapTheme>>	unknown	undefined	0		0			discovered	gapscan							
 00643970	GetTRPos	C2DBoxF	unknown	undefined	0		0			discovered	gapscan							
@@ -20457,7 +20457,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00760000	GetBestCameraPosition	NShape::CTrack	unknown	undefined	0		0			discovered	gapscan							
 00760020	IsLineIntersectingWithOthersInList	_global	__fastcall	bool	2	C2DLineF *,vector<C3DVector,std::allocator<C3DVector>_> *	1	yes	accepted									
 00760190	IsTriangleWithPointsInside	_global	__fastcall	bool	3	vector<C3DVector,std::allocator<C3DVector>_> *,vector<C3DVector,std::allocator<C3DVector>_> *,ECirculationOrder	1	yes	accepted									
-007602f0	Math_PolygonAngleSumClosureCheck	_global	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\76\0x007602F0_global_Math_PolygonAngleSumClosureCheck.cpp				
+007602f0	IsShapeConvex	NShape	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\76\0x007602F0_global_Math_PolygonAngleSumClosureCheck.cpp				
 00760760	GetFirstPointThatBreaksConvexity	NShape	__fastcall	_Vector_iterator<std::_Vector_val<C3DVector,std::allocator<C3DVector>_>_>	1	vector<C3DVector,std::allocator<C3DVector>_> *	1	yes	accepted									
 00760870	IsPosInAnyShape	CTCShapeManager	__thiscall	bool	2	CTCShapeManager *,C3DVector *	1	yes	accepted									
 00760910	GetPrincipalVector	CTCShapeManager	__thiscall	bool	2	CTCShapeManager *,C3DVector *	1	yes	accepted									
@@ -37687,7 +37687,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a68690	InitialiseSlicesFromTextureList	CVolumeTexture	__thiscall	bool	3	CVolumeTexture *,CTexture *,long	1	yes	accepted									
 00a68910	GetAsTextureList	CVolumeTexture	unknown	undefined	0		0	yes	accepted									
 00a68ae0	SaveToDataStream	CVolumeTexture	unknown	undefined	0		0			discovered	gapscan							
-00a68de0	sub_00a68de0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00a68de0	LoadFromDataStream	CVolumeTexture	unknown	undefined	0		0			discovered	gapscan							
 00a69550	ForwardToVolumeLevel	CVolumeTexture	__thiscall	void	4	CPaintMapDialog *,CCharString *,CGuiWindowBox *,float	1	yes	accepted									
 00a69590	`scalar deleting destructor'	CVolumeTexture	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
 00a695c0	CVolumeTexture	CVolumeTexture	__thiscall	undefined	1	CTargetPoint *	0	yes	accepted									
@@ -47905,7 +47905,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca26a0	post_Y	libvorbis	unknown	undefined	0		0	yes	accepted									
 00ca26c0	floor1_fit	_global	unknown	undefined	0		0	yes	accepted									
 00ca2b00	floor1_interpolate_fit	libvorbis	unknown	undefined	0		0	yes	accepted									
-00ca2bb0	CEnvironment_SerializeTheme	_global	unknown	undefined	0		0	yes	accepted									
+00ca2bb0	floor1_encode	_global	unknown	undefined	0		0	yes	accepted									
 00ca3420	floor1_inverse2	libvorbis	unknown	undefined	0		0	yes	accepted									
 00ca3580	floor0_free_info	libvorbis	__fastcall	void	3	allocator<C3DGeneratorObject> *,C3DGeneratorObject *,C3DGeneratorObject *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\Consvalstd_allocatorC3DGeneratorObjectC3DGeneratorObjectC3D_00ca3580.cpp
 00ca35a0	floor0_free_look	libvorbis	unknown	undefined	0		0	yes	accepted									

@@ -63,6 +63,18 @@ public:
         return CRGBColour((unsigned char)r, (unsigned char)g, (unsigned char)b, (unsigned char)a);
     }
 #endif
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_CLAMP
+    // Retail opt-in (chunk 855, row 0x0052F900 NUISystem::CComponent::UpdateColour): FableWin.pdb ?Clamp@CRGBFloatColour@@QAEXXZ, inline in
+    // retail (no out-of-line copy is bound; __forceinline: with plain inline VC7.1 calls it out of line in UpdateColour). Clamp limits each channel
+    // to [0, 1] in member order (0x0052FCF7..0x0052FDC7: above 1.0f stores 1.0f, else below 0.0f stores 0.0f).
+    __forceinline void Clamp()
+    {
+        if (R > 1.0f) R = 1.0f; else if (R < 0.0f) R = 0.0f;
+        if (G > 1.0f) G = 1.0f; else if (G < 0.0f) G = 0.0f;
+        if (B > 1.0f) B = 1.0f; else if (B < 0.0f) B = 0.0f;
+        if (A > 1.0f) A = 1.0f; else if (A < 0.0f) A = 0.0f;
+    }
+#endif
     float R;                                                             // +0x00
     float G;                                                             // +0x04
     float B;                                                             // +0x08

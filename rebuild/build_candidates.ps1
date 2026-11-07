@@ -385405,6 +385405,28 @@ $catalog = @(
         TestSource = '00/ab/CMouseDX_CMouseDX_00ab5d00_test.cpp'
         PassPattern = '00ab5d00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00490be0'
+        Module = 'CSubtitleRenderer'
+        Source = '00/49/CSubtitleRenderer_GetGraphicFromEmbeddedTag_00490be0.cpp'
+        TestSource = '00/49/CSubtitleRenderer_GetGraphicFromEmbeddedTag_00490be0_test.cpp'
+        PassPattern = '00490be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052f900'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_UpdateColour_0052f900.cpp'
+        TestSource = '00/52/NUISystemCComponent_UpdateColour_0052f900_test.cpp'
+        PassPattern = '0052f900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca2bb0'
+        Module = '_global'
+        Source = '00/ca/global_floor1encode_00ca2bb0.cpp'
+        TestSource = '00/ca/global_floor1encode_00ca2bb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
+        PassPattern = '00ca2bb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
