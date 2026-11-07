@@ -1,0 +1,7 @@
+address	module	name	length
+00d18df0	NScript::CQ_BountyHuntScript::CBH_GangDeputy2	Main	3321
+00daf080	NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl	Main	5504
+00dac760	NScript::CQ_NewOakValeIntroScript::CNOVI_Guard	Main	5867
+00db86b0	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather	Main	4325
+00dadf80	NScript::CQ_NewOakValeIntroScript::CNOVI_Villager	Main	2787
+00ebcb60	NScript::CV_MayorsInvitationScript	MonitorParanoidQuest	176

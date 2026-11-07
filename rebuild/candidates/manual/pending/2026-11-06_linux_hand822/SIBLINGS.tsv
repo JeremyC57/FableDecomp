@@ -1,0 +1,7 @@
+address	source	grade_with_final_overlay	note
+00db86b0	src/00db86b0.cpp	RELOCATION_MATCH	this chunk's match; overlay hdr/ empty (no shared header changed), so no landed includer needs a recheck
+00ebcb60	src/00ebcb60.cpp	RELOCATION_MATCH	this chunk's match; overlay hdr/ empty
+00d18df0	differ/00d18df0.cpp	DIFFER(3337v3321)	parked; overlay hdr/ empty
+00daf080	differ/00daf080.cpp	DIFFER(5571v5504)	parked; overlay hdr/ empty
+00dac760	differ/00dac760.cpp	DIFFER(5906v5867)	parked; overlay hdr/ empty
+00dadf80	differ/00dadf80.cpp	DIFFER(2790v2787)	parked; overlay hdr/ empty

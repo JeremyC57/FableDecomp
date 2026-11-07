@@ -27576,3 +27576,9 @@ chunk	address	module	name	length
 823	00ec68a0	NScript::CV_SickChildScript::CSickChildsSister	Main	5962
 823	00ec9d30	NScript::CV_SickChildScript::CMansLover	Main	4708
 823	007db6a0	CTCTavernGameCardBlackjack	CardsMainGame	2556
+824	007a7d20	CTCBattleCharge	CreateHitEffect	2520
+824	008e9b70	NCreatureMode::CModeStrafe	AnimUpdate	1705
+824	00684610	CTCCreatureOpinionOfHero	OnSerialise	2823
+824	00edd170	NScript::CV_TempleOfLightScript::CTOL_AcolyteGood	Main	6594
+824	00e6bc50	NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil	Main	7655
+824	00d01630	NScript::CQ_BanditCampScript::CGate1GuardOuter	Main	5178
