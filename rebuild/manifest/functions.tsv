@@ -8876,8 +8876,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00523b40	RuntimeSaveGameHero	CThingManager	unknown	undefined	0		0	yes	accepted									
 00523cf0	RuntimeSaveGamePersistentEntitiesInLoadedMaps	CThingManager	__thiscall	void	2	CThingManager *,bool	1	yes	accepted									
 00524290	CThingManager_SaveGameState	_global	unknown	undefined	0		0	yes	accepted									
-005248b0	LoadFromGameStateScript	CEntityRuntimePersistence	__thiscall	void	2	CEntityRuntimePersistence *,CStringParser *	1	yes	accepted									
-00524ec0	CDrawQuestInfo_LoadDeadCreatures	_global	unknown	undefined	0		0	yes	accepted									
+005248b0	LoadFromGameStateScript	NThingManager::CEntityRuntimePersistence	__thiscall	void	2	CEntityRuntimePersistence *,CStringParser *	1	yes	accepted									
+00524ec0	LoadFromGameStateBinary	NThingManager::CEntityRuntimePersistence	unknown	undefined	0		0	yes	accepted									
 005252b0	SaveThingsOnLevelReadyForUnloading	CThingManager	__thiscall	void	4	CThingManager *,long,bool,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 005253f0	LoadGameState	CThingManager	__thiscall	void	2	CThingManager *,CPersistContext *	1	yes	accepted									
 00525cd0	OnLevelsUnload	CThingManager	__thiscall	void	3	CThingManager *,vector<long,std::allocator<long>_> *,bool	1	yes	accepted									
@@ -34110,7 +34110,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009bba40	TransferObjectLoadText	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CPersistContext_TransferableComponentGenericType *	1	yes	accepted									
 009bbbf0	CheckUnknownSymbols	CPersistContext	__thiscall	void	1	CPersistContext *	1	yes	accepted									
 009bbcc0	TransferSubComponentLoadText	CPersistContext	__thiscall	void	3	CPersistContext *,char *,CPersistContext_TransferableSubComponentGenericType *	1	yes	accepted									
-009bc120	sub_009bc120	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+009bc120	TransferVectorOfSubComponentsLoadText	CPersistContext	unknown	undefined	0		0			discovered	gapscan							
 009bc7d0	CXMVPlaybackInfo	CXMVPlaybackInfo	__thiscall	undefined	1	CXMVPlaybackInfo *	0	yes	accepted									
 009bc890	SetLeftAlignText	_global	__fastcall	void	1	bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890.cpp
 009bc8a0	SetLeftAlignText	_global	__fastcall	void	1	bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9b\TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp
@@ -35449,7 +35449,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009fd020	Set	CGraphicBankStateBlock	__thiscall	void	2	CGraphicBankStateBlock *,CBankStateBlock const *	1	yes	accepted									
 009fd0b0	GetDataFormatVersion	CGraphicDataBank	__thiscall	ulong	1	CGraphicDataBank *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CGraphicDataBank_GetDataFormatVersion_009fd0b0.cpp
 009fd0c0	ChangeScene	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
-009fd0f0	SetMember_dword0x268_009fd0f0	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CObservable_AddExclusiveObserver_009fd0f0.cpp
+009fd0f0	SetUnloadFrameDelay	CGraphicDataBank	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CObservable_AddExclusiveObserver_009fd0f0.cpp
 009fd100	SetReduceSizeFrameDelay	CGraphicDataBank	__thiscall	void	2	CLandscapeBackgroundSubNodeSplitBranch *,CLandscapeBackgroundTreeNode *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CLandscapeBackgroundSubNode_OnPostParentRelocation_009fd100.cpp
 009fd120	SetMember_dword0x270_009fd120	_global	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\AddExclusiveObserver_AddExclusiveObserver_009fd120.cpp
 009fd130	sub_009fd130	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -49853,7 +49853,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d2ffb0	SuspendableProcess	CActiveEntityScript<NScript::CQ_EndGameBossBattleScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
 00d30000	`scalar deleting destructor'	CVtable_012cc724	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d3\CThingSwitch_vectordeletingdestructor_00d30000.cpp
 00d30030	CScriptGameResourceObject_LoadGuildComplex	_global	unknown	undefined	0		0	yes	accepted									
-00d321c0	CScriptGameResourceObject_LoadEndGameSister	_global	unknown	undefined	0		0	yes	accepted									
+00d321c0	JackOfBladesBossFightCutscene	NScript::CQ_EndGameBossBattleScript	unknown	undefined	0		0	yes	accepted									
 00d328c0	Main	NScript::CQ_EndGameBossBattleScript::CEndGameSister	unknown	undefined	0		0			discovered	gapscan							
 00d33280	Main	NScript::CQ_EndGameBossBattleScript::CSwordVoid	__thiscall	void	1	CSwordVoid *	1	yes	accepted									
 00d33730	Main	NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster	unknown	undefined	0		0			discovered	gapscan							
@@ -53380,7 +53380,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ea1720	DoInitialBalverineAttack	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea1ec0	DoPanicBanter	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
 00ea2080	ControlMainBalverines	NScript::CV_KnotholeGladeGatesScript	__thiscall	void	1	CV_KnotholeGladeGatesScript *	1	yes	accepted									
-00ea2720	KnotHoleGates_OnScript	_global	unknown	undefined	0		0	yes	accepted									
+00ea2720	WatchForCutscene1	NScript::CV_KnotholeGladeGatesScript	unknown	undefined	0		0	yes	accepted									
 00ea2c60	Alloc	NScript::CV_KnotholeGladeGatesScript	__fastcall	CScriptBase *	2	CScriptDataBase *,CGameScriptInterfaceBase *	1	yes	accepted									
 00ea2cc0	`scalar deleting destructor'	NScript::CV_KnotholeGladeGatesScript	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ea\CEngineSubPrimitiveText_scalardeletingdestructor_00ea2cc0.cpp
 00ea2cf0	CV_LostTraderScript	NScript::CV_LostTraderScript	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									

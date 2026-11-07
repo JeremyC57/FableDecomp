@@ -24,6 +24,11 @@ class CTexture;
 class CGraphicFrame {
 public:
     CGraphicFrameData* FrameData;                            // +0x00
+#ifdef FABLE_RETAIL_CGRAPHICFRAME_CTOR
+    // Retail opt-in (chunk 848, row 0x00B2D9F0): Ego_r.pdb / FableWin.pdb ??0CGraphicFrame@@QAE@XZ, inline in retail (the expanded
+    // CCompositeSurfaceCache ctor zeroes GraphicFrame +0x4C in member order, before the ManagedTexture CBaseClass call 0x00B2DB0B).
+    CGraphicFrame() : FrameData(0) { }
+#endif
     bool InitialiseAsSurface(const CCountedPointer<CTexture>& texture, long width, long height, bool alpha,
                              bool booleanAlpha);                                       // 0x009FCB20
     bool InitialiseAsSurfaceSection(const CCountedPointer<CTexture>& texture, float tlx, float tly, long width,

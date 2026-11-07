@@ -273,7 +273,15 @@ public:
     // Ego_r 0x004037B0 / FableWin 0x0186C770 ?GetAsCharArray@CCharString@@QBEPBDXZ and FableWin 0x01899D30
     // ??8CCharString@@QBE_NPBD@Z, both inline in retail (0x00AE8D50 expands GetAsCharArray: `test; jne; mov eax,offset NullChar; jmp; mov eax,[eax]`;
     // the landed local models spell the same ternary). NullChar is 0x0129AAF4 (static data member per the Ego_r TPI as Codex pass 12 read it).
+#ifdef FABLE_RETAIL_CCHARSTRING_GETASCHARARRAY_SELECT
+    // Retail opt-in (chunk 848, row 0x009BC120 CPersistContext::TransferVectorOfSubComponentsLoadText): the preset-and-assign spelling
+    // of the same inline accessor (the landed CPersistContext::CleanOutLine 0x009BB0D0 models it so: `text = ""; if (PStringData) text =
+    // ...`). Where CleanOutLine is expanded inside 0x009BC120 (0x009BC610..0x009BC632) retail indexes the text as [ecx+eax]; the
+    // ternary below gives [eax+ecx]. Same code otherwise (`mov ecx,offset NullChar ; je ; mov ecx,[eax]`).
+    const char* GetAsCharArray() const { const char* text = &NullChar; if (PStringData) text = PStringData->Data.PeekData(); return text; }
+#else
     const char* GetAsCharArray() const { return PStringData==0 ? &NullChar : PStringData->Data.PeekData(); }
+#endif
 #ifdef FABLE_RETAIL_CCHARSTRING_CONTAINS
     // Retail opt-in (chunk 788, row 0x00E693F0 NScript::CV_ChapelOfEvilScript::Main): FableWin.pdb ?Contains@CCharString@@QBE_NABV1@@Z
     // (FableWin 0x018D7370; no Ego_r out-of-line copy is bound), inline in retail: 0x00E695B8..0x00E695E8 takes the pattern's text from one null test
@@ -315,6 +323,29 @@ public:
     const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
+#ifdef FABLE_RETAIL_CCHARSTRING_REPLACE
+    // Retail opt-in (chunk 848, row 0x005253F0 CThingManager::LoadGameState): FableWin.pdb ?Replace@CCharString@@QAEXABV1@0@Z (0x018D9CA0,
+    // public, void (const CCharString&, const CCharString&)), inline in retail: LoadGameState expands it four times (0x0052573A..0x005257FD:
+    // a default-constructed result, strstr 0x00BFEB3A over the text, the match cut with `mov byte ptr [esi],0`, the search length by the
+    // inline strlen loop, `+=` 0x0099F0A0 of the cut piece and of the replacement, the tail appended, then operator= 0x0099EFB0).
+    __forceinline void Replace(const CCharString& search, const CCharString& replacement)
+    {
+        CCharString result;
+        char* text = (char*)GetAsCharArray();
+        const char* search_text = search.GetAsCharArray();
+        char* found = strstr(text, search_text);
+        while (found) {
+            *found = 0;
+            found += strlen(search_text);
+            result += CCharString(text);
+            result += replacement;
+            text = found;
+            found = strstr(found, search_text);
+        }
+        result += CCharString(text);
+        *this = result;
+    }
+#endif
 
 protected:
     void UnassignString();                                     // 0x0099E9B0 protected (Ego_r / FableWin: IAE)

@@ -162,7 +162,15 @@ public:
     // _M_find (0x00527D20, landed) as the non-const one does. Body only: no layout change.
     const_iterator find(const K& key) const { return const_iterator(_M_find(key)); }
 #else
+#ifdef FABLE_RETAIL_STLP_TREE_FIND_TEMPLATE
+    // Retail opt-in (chunk 848, row 0x00B2D9F0 CEngineSurfaceCompositionManager::UpdateDiskCache): owner decision D1 (2026-11-03) --
+    // STLport 4.6.1 _tree.h 457-467 declare find as member templates under _STLP_MEMBER_TEMPLATES (VC7.1: set). Retail calls the
+    // const instance out of line (0x00B2EB20 for set<long>: `push &key ; push &result ; call`, hidden const_iterator result).
+    // Declaration only.
+    template<class KT> const_iterator find(const KT& key) const;
+#else
     const_iterator find(const K&) const;
+#endif
 #endif
     const_iterator end()const{return const_iterator(this->_M_header._M_data);}
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE
@@ -272,6 +280,11 @@ public:
 #endif
     pair<iterator,bool> insert(const K& value){typedef typename _Rep_type::iterator RepIterator;pair<RepIterator,bool> p=_M_t.insert_unique(value);return pair<iterator,bool>((const iterator&)p.first,p.second);}
     size_t erase(const K& value){return _M_t.erase(value);}
+#ifdef FABLE_RETAIL_STLP_SET_FIND
+    // Retail opt-in (chunk 848, row 0x00B2D9F0): STLport 4.6 _set.h `iterator find(const key_type& x) const { return _M_t.find(x); }`
+    // (inline; the tree's const find stays the out-of-line call 0x00B2EB20). Pair with FABLE_RETAIL_STLP_SET for end().
+    iterator find(const K& key) const { return _M_t.find(key); }
+#endif
 #ifdef FABLE_RETAIL_STLP_SET
     // Retail branch (chunk 728, row 0x006D2BD0 CTCWife::OnSerialise): STLport 4.6 _set.h begin() / end() / size() (inline: retail
     // walks CTCWife::ThingsSeenThePlayerWear with the expanded _Rb_global::_M_increment and reads _M_node_count +4 in place).

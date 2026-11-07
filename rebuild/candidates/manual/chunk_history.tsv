@@ -27766,3 +27766,9 @@ chunk	address	module	name	length
 850	00500540	CWorldMap	LoadRegion	2412
 850	00ac5770	C3DMeshFileEngineMaterialChunk	ReadFromFile	2568
 850	00772bb0	CTCShop	AddSaleItem	2585
+851	00ba1b00	CEnginePrimitiveManagerStaticMeshesBase	DisplayMirroredTextures	2113
+851	0075e4c0	CTCCameraPointScriptedSpline	vfunc_33	2316
+851	005fe840	CTCInventoryMap	ConstructRegionExitMarkers	2379
+851	006001e0	CTCInventoryMap	ConstructRegionDescriptionShops	2422
+851	00a9bbe0	C3DMeshFileLoader	C3DMeshFileLoader	3281
+851	00402510	_global	GFMain	3952

@@ -37444,3 +37444,13 @@ $notRedefined$4399	0068a01d	00689df0
 ??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind3@VCThingFilter_IsNot@@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsNot@@VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@AAVCThingFindNavigationLayerAt@@@Z	0063f7c0	0063e590
 ?GetNavigationLayerAt@CMap@@QBEJABVC3DVector@@@Z	0081e920	0063e590
 ?g_bMapNavigationLayers@@3_NA	0137571c	0063e590
+?CheckUnknownSymbols@CPersistContext@@QAEXXZ	009bbbf0	009bc120
+??$find@J@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@1@ABJ@Z	00b2eb20	00b2d9f0
+??1CCompositeSurfaceCache@@UAE@XZ	00b2b910	00b2d9f0
+?BeginUpdateEntries@CBankFile@@QAEXXZ	009ce8d0	00b2d9f0
+?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ	00b2c8e0	00b2d9f0
+?EndUpdateEntries@CBankFile@@QAEXXZ	009cea70	00b2d9f0
+?GPEngine@NEngineInternal@@3PAVCEngine@@A	01436ea4	00b2d9f0
+?PreloadCompletedBank@CEngineSurfaceCompositionManager@@AAEXXZ	00b2c010	00b2d9f0
+?SetUnloadFrameDelay@CGraphicDataBank@@QAEXK@Z	009fd0f0	00b2d9f0
+?UpdateDiskCacheTexture@CEngineSurfaceCompositionManager@@AAE_NAAVCCompositeSurfaceCache@@K_N@Z	00b2d330	00b2d9f0

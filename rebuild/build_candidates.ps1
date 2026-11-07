@@ -385284,6 +385284,34 @@ $catalog = @(
         TestSource = '00/c7/CAudioSource_ComputePitchScale_00c71f80_test.cpp'
         PassPattern = '00c71f80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009bc120'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_TransferVectorOfSubComponentsLoadText_009bc120.cpp'
+        TestSource = '00/9b/CPersistContext_TransferVectorOfSubComponentsLoadText_009bc120_test.cpp'
+        PassPattern = '009bc120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b2d9f0'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_UpdateDiskCache_00b2d9f0.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_UpdateDiskCache_00b2d9f0_test.cpp'
+        PassPattern = '00b2d9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d321c0'
+        Module = 'NScript::CQ_EndGameBossBattleScript'
+        Source = '00/d3/NScriptCQEndGameBossBattleScript_JackOfBladesBossFightCutscene_00d321c0.cpp'
+        TestSource = '00/d3/NScriptCQEndGameBossBattleScript_JackOfBladesBossFightCutscene_00d321c0_test.cpp'
+        PassPattern = '00d321c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea2720'
+        Module = 'NScript::CV_KnotholeGladeGatesScript'
+        Source = '00/ea/NScriptCVKnotholeGladeGatesScript_WatchForCutscene1_00ea2720.cpp'
+        TestSource = '00/ea/NScriptCVKnotholeGladeGatesScript_WatchForCutscene1_00ea2720_test.cpp'
+        PassPattern = '00ea2720_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,21 @@
+addr       parity           behav  name
+009bc120   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bc120   RELOCATION_MATCH PASS   TransferVectorOfSubComponentsLoadText
+00b2d9f0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager
+00b2d9f0   WARN RELOC_NAME: ?SetUnloadFrameDelay@CGraphicDataBank@@QAEXK@Z -> 009fd0f0 labelled '_global::SetMember_dword0x268_009fd0f0'
+00b2d9f0   RELOCATION_MATCH PASS   UpdateDiskCache
+00d321c0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEAAV0@ABV0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00d321c0   RELOCATION_MATCH PASS   JackOfBladesBossFightCutscene
+00ea2720   RELOCATION_MATCH PASS   WatchForCutscene1
+
+WINS: 4
+  009bc120 RELOCATION_MATCH CPersistContext::?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z
+  00b2d9f0 RELOCATION_MATCH CEngineSurfaceCompositionManager::?UpdateDiskCache@CEngineSurfaceCompositionManager@@QAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z
+  00d321c0 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::?JackOfBladesBossFightCutscene@CQ_EndGameBossBattleScript@NScript@@QAEXXZ
+  00ea2720 RELOCATION_MATCH NScript::CV_KnotholeGladeGatesScript::?WatchForCutscene1@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CPersistContext_TransferVectorOfSubComponentsLoadText_009bc120
+  CEngineSurfaceCompositionManager_UpdateDiskCache_00b2d9f0
+  NScriptCQEndGameBossBattleScript_JackOfBladesBossFightCutscene_00d321c0
+  NScriptCVKnotholeGladeGatesScript_WatchForCutscene1_00ea2720

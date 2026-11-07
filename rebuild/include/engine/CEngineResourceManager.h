@@ -42,6 +42,11 @@ public:
     // Chunk 742: ?PeekGraphicBank@CEngineResourceManager@@QBEPBVCGraphicDataBank@@W4EGraphicBankNo@@@Z (FableWin.pdb 0x02C85CC0;
     // inline in retail: the particle line / sprite-trail render passes 0x00BC3F30 / 0x00BBE090 read GraphicBanks[0] at +0x954).
     const CGraphicDataBank* PeekGraphicBank(EGraphicBankNo bank) const { return GraphicBanks[bank]; }
+#ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER_GETGRAPHICBANK
+    // Retail opt-in (chunk 848, row 0x00B2D9F0): Ego_r.pdb ?GetGraphicBank@CEngineResourceManager@@QAEPAVCGraphicDataBank@@W4EGraphicBankNo@@@Z,
+    // inline in retail (UpdateDiskCache 0x00B2DA07 / 0x00B2DBA2 read GraphicBanks[0] at +0x954 and write through it).
+    CGraphicDataBank* GetGraphicBank(EGraphicBankNo bank) { return GraphicBanks[bank]; }
+#endif
     CGPUScratchBufferTextureManager& GetGPUScratchBufferTextureManager()
     {
         return *(CGPUScratchBufferTextureManager*)GPUScratchBufferTextureManager;

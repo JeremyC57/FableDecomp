@@ -1,0 +1,7 @@
+address	name	evidence
+0x005253F0	CThingManager::LoadGameState	row (parked DIFFER); Ego_r.pdb / FableWin.pdb, sole caller CWorld::LoadGameStateInternal 0x004A2AAF (chunk 843) (chunk 848)
+0x00DD4AD0	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice::Main	row (parked DIFFER); vtable 0x012DBEF0 slot 1 (Alloc 0x00DD49A0); Ego_r.pdb / FableWin.pdb (chunk 848)
+0x00524EC0	NThingManager::CEntityRuntimePersistence::LoadFromGameStateBinary	was ghidra label CDrawQuestInfo_LoadDeadCreatures (forge-autoname3): called by LoadGameState for a binary SAVED_ENTITIES section; Ego_r.pdb / FableWin.pdb (chunk 848)
+0x005248B0	NThingManager::CEntityRuntimePersistence::LoadFromGameStateScript	no label: called by LoadGameState for a text SAVED_ENTITIES section with the section parser; Ego_r.pdb / FableWin.pdb (chunk 848)
+0x009BBBF0	CPersistContext::CheckUnknownSymbols	catalog right; reloc binding ??1CPersistContext@@QAE@XZ is wrong (the body parses and reports, NAME_FIXES.tsv) (chunk 848)
+0x009FD0F0	CGraphicDataBank::SetUnloadFrameDelay	Ego_r.pdb / FableWin.pdb ?SetUnloadFrameDelay@CGraphicDataBank@@QAEXK@Z; body stores its argument to +0x268 (UnloadFrameDelay), the member just before ReduceSizeFrameDelay +0x26c written by the landed sibling 0x009FD100 SetReduceSizeFrameDelay (Ego_r layout keeps the same +4 order); called by 0x00B2D9F0 (RELOCATION_MATCH); catalog placeholder _global::SetMember_dword0x268_009fd0f0 (chunk 848)

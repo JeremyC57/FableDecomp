@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-849 recorded; chunks 848 and 850 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-849 recorded; chunks 850 and 851 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -39,9 +39,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     5 landed `2026-11-07_landing_x/`, 0x00AE2E20 held in `pending/2026-11-07_linux_hand849/held/` until queue line cx12 (0x0051AC70 =
     __destroy_aux<CMapDesc*>?) is settled; the rest of that Codex pool: GFMain 0x00402510, the C3DMeshFileLoader ctor 0x00A9BBE0,
     floor1_encode 0x00CA2BB0)
-    and chunk 848 (`$S/w22/agent848`: chunk 843's leftovers CThingManager::LoadGameState 0x005253F0 and CPrisonerAccomplice::Main 0x00DD4AD0,
-    the Codex pass-12 matched UpdateDiskCache 0x00B2D9F0 / TransferVectorOfSubComponentsLoadText 0x009BC120 to rebase, and the placeholders
-    0x00D321C0 / 0x00EA2720; chunk 845 landed 1 of 6, `2026-11-07_landing_v/`). Chunks 834 / 836 landed 2 of 6 each
+    and chunk 851 (`$S/w22/agent851`: CEnginePrimitiveManagerStaticMeshesBase::DisplayMirroredTextures 0x00BA1B00, the placeholder
+    0x0075E4C0 (CTCCameraPointScriptedSpline vfunc), CTCInventoryMap::ConstructRegionExitMarkers 0x005FE840 /
+    ConstructRegionDescriptionShops 0x006001E0, and the Codex rebases C3DMeshFileLoader ctor 0x00A9BBE0 / GFMain 0x00402510;
+    chunk 848 landed 4 of 6, `2026-11-07_landing_z/`). Chunks 834 / 836 landed 2 of 6 each
     (`2026-11-07_landing_k/`, `_l/`). The remaining never-chunked unlanded Mains (about 20, mostly 3-4 KB Codex rows plus the 20-32 KB
     CHobbeTorrent / CCombatApprentice / CGameflowScript) come from `rebuild/manifest/functions.tsv` filtered by `rebuild/src/compiled/` files
     (the manifest's compiled_status column is not reliable for this) and `rebuild/candidates/manual/chunk_history.tsv`. Also running (the user, 2026-11-07: "add a fable agent who is an expert reverse engineer ... work on retries of parked rows and
@@ -52,7 +53,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     blocker. A retry that matches needs its pending header overlay copied in; a Main outside
     the manifest goes into `rebuild/manifest/boundary-starts.tsv` + `crawl/manifest_add_boundaries.py --write` first. Measure a cut
     by its first `ret` + int3 unless a jump table follows (jtext's maxbranch can sit in the next function: chunk 818). Land
-    each like 782-818 with the next free letter (`2026-11-07_landing_z`, then `2026-11-08_landing_a`; queue tags `land0711z`, ...),
+    each like 782-818 with the next free letter (`2026-11-08_landing_a`, then `_b`; queue tags `land0811a`, ...),
     `pending/2026-11-05_linux_hand79N`, labels `2026-11-05<letter>` incl. the landed rows' own labels, queue tag
     `land0511<letter>`. Diff every overlay header against rebuild/include first and three-way merge any that would drop another
     chunk's lines (796's overlay predates the 794 / 795 landings). When a hand-back extends an existing
