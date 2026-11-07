@@ -1,0 +1,7 @@
+address	module	name	length
+00e90be0	NScript::CV_GuildMasterScript::CGuildMasterGameFlow	Main	4914
+00d3d150	NScript::CQ_GuildTrainingScript::CAppleGirl	Main	4252
+00b5a3f0	CEngineScreenEffectColourFilter	ApplyColourFilter	2916
+00ec68a0	NScript::CV_SickChildScript::CSickChildsSister	Main	5962
+00ec9d30	NScript::CV_SickChildScript::CMansLover	Main	4708
+007db6a0	CTCTavernGameCardBlackjack	CardsMainGame	2556

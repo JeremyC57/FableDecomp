@@ -1,0 +1,6 @@
+- A store between two destructor calls shows where a block scope ended: wrapping the run-to-mother locals + loop in an inner `{ }` put retail's `~CTimer; LeadHeroToSickChild=true` order back (0x00EC68A0 k1).
+- An implicit or row-local plain-`inline` CScriptGameResourceObjectMovieBase ctor is expanded at every site even at zero inline thresholds and /Ob1, so a mixed inline/called per-site pattern (0x00E90BE0) is out of reach of every inline-budget lever.
+- do-while(0) "heat" round inner sites raises inlining of every movie site in the function, not only the heated ones (0x00E90BE0 x0001/m3/m4).
+- A by-value GFLimit(T&, T, T) drops one IR node per clamp and moves a whole-function test/or operand flip (0x00B5A3F0 21 -> 15 lines), but the PDB symbol ??$GFLimit@MMM@@YIXAAMABM1@Z is const-ref; copying into locals inside a const-ref body does not reproduce it.
+- To find out why VC7.1 cross-jumps a tail that retail keeps separate, add one extra store to the suspected merge partner (diagnostic only): if the far jump then matches retail, retail's partner tail was different at cross-jump time (0x007DB6A0 d1).
+- Swapping if/else arms, `if(!T) x; else return;` inversions and do-while(0) wraps usually emit identical bytes: VC7.1 canonicalises arm order before layout (0x00EC9D30 a1-a11, 0x00EC68A0 s1-s3).

@@ -1,0 +1,7 @@
+address	source	grade_with_final_overlay	note
+00e90be0	differ/00e90be0.cpp	DIFFER(4977v4914)	parked; overlay hdr/ empty (no shared header changed), so no landed includer needs a recheck
+00d3d150	differ/00d3d150.cpp	DIFFER(4252v4252)	parked; overlay hdr/ empty
+00b5a3f0	differ/00b5a3f0.cpp	DIFFER(2923v2916)	parked; overlay hdr/ empty. Landed caller 0x00B5AF60 (CEngineScreenEffectColourFilter_Render_00b5af60.cpp) binds this address under a placeholder name: NAME_FIXES.tsv
+00ec68a0	differ/00ec68a0.cpp	DIFFER(5969v5962)	parked; overlay hdr/ empty
+00ec9d30	differ/00ec9d30.cpp	DIFFER(4708v4708)	parked; overlay hdr/ empty
+007db6a0	differ/007db6a0.cpp	DIFFER(2544v2556)	parked; overlay hdr/ empty

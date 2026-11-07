@@ -27582,3 +27582,9 @@ chunk	address	module	name	length
 824	00edd170	NScript::CV_TempleOfLightScript::CTOL_AcolyteGood	Main	6594
 824	00e6bc50	NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil	Main	7655
 824	00d01630	NScript::CQ_BanditCampScript::CGate1GuardOuter	Main	5178
+825	00e44980	NScript::CV_BordelloScript	sub_00e44980	184
+825	0092fab0	CAIStateGroup_MinionReactToPlayerInteraction	TestOrDoInteraction	2508
+825	007c4430	CTCHealLife	StartHealingEffect	1952
+825	00f0c140	NScript::CQ_AmbushTradersScript	PhaseTwo	2285
+825	00ee57b0	NScript::CV_TourGuideScript::CTourGuideGuide	Main	4246
+825	00dea3f0	NScript::CQ_RansomVictimScript::CVictimsBrother	Main	3076
