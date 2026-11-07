@@ -385160,6 +385160,36 @@ $catalog = @(
         TestSource = '00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Main_00d40cf0_test.cpp'
         PassPattern = '00d40cf0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0070c4e0'
+        Module = 'CAnimateThing'
+        Source = '00/70/CAnimateThing_GetFirstCombinationAnimFromType_0070c4e0.cpp'
+        TestSource = '00/70/CAnimateThing_GetFirstCombinationAnimFromType_0070c4e0_test.cpp'
+        PassPattern = '0070c4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073acc0'
+        Module = 'CTCCreatureModeManager'
+        Source = '00/73/CTCCreatureModeManager_AddMode_0073acc0.cpp'
+        TestSource = '00/73/CTCCreatureModeManager_AddMode_0073acc0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 none'
+        PassPattern = '0073acc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007534b0'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_IsPosInViewRange_007534b0.cpp'
+        TestSource = '00/75/CTCLook_IsPosInViewRange_007534b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 none'
+        PassPattern = '007534b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e482f0'
+        Module = 'NScript::CV_BanditTollScript'
+        Source = '00/e4/NScriptCVBanditTollScript_CheckForLeaderDead_00e482f0.cpp'
+        TestSource = '00/e4/NScriptCVBanditTollScript_CheckForLeaderDead_00e482f0_test.cpp'
+        PassPattern = '00e482f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

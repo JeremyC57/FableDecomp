@@ -18313,7 +18313,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0070b440	vfunc_28	CTCAnimationComplex	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0070b450	vfunc_29	CTCAnimationComplex	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0070b460	GetAnimation	CTCAnimationComplex	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\global_DrawGetEnvironment_0070b460.cpp
-0070b470	DrawGetEnvironment	CWorld	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CWorld_DrawGetEnvironment_0070b470.cpp
+0070b470	GetState	CTCTurnSource	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CWorld_DrawGetEnvironment_0070b470.cpp
 0070b480	vfunc_31	CTCAnimationComplex	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0070b490	GetAnimIndex	CTCAnimationComplex	__thiscall	long	1	CTCAnimationComplex *	1	yes	accepted									
 0070b4a0	GetAnimDuration	CTCAnimationComplex	__thiscall	float	2	CTCAnimationComplex *,long	1	yes	accepted									
@@ -48911,7 +48911,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cd3119	Forward_CForwarder_00cd3119	_unattributed	__thiscall	undefined	2	CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *	0	yes	accepted									
 00cd3152	erase	std::vector<CScriptThing>	unknown	undefined	0		0	yes	accepted									
 00cd3187	SetMiniMapRegionExitTextOffsetX	CRegion	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CRegion_SetMiniMapRegionExitTextOffsetX_00cd3187.cpp
-00cd319b	StdList_Dtor_00cd319b	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CActiveFile_OnReadFinished_00cd319b.cpp
+00cd319b	~vector	std::vector<CScriptGameResourceObjectScriptedThingBase>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CActiveFile_OnReadFinished_00cd319b.cpp
 00cd31d2	~_Rb_tree	std::_Rb_tree<CCharString, CCharString, std::_Identity<CCharString>, std::less<CCharString>, std::allocator<CCharString>>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CActiveFile_OnReadFinished_00cd31d2.cpp
 00cd3211	~_Rb_tree	std::_Rb_tree<long, std::pair<long const, CCharString>, std::_Select1st<std::pair<long const, CCharString>>, std::less<long>, std::allocator<std::pair<long const, CCharString>>>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CActiveFile_OnReadFinished_00cd3211.cpp
 00cd3228	erase	std::vector	unknown	undefined	0		0	yes	accepted									

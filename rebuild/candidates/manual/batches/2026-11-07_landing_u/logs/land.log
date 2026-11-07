@@ -1,0 +1,24 @@
+addr       parity           behav  name
+0070c4e0   MATCH            PASS   GetFirstCombinationAnimFromType
+0073acc0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0073acc0   WARN SHARED_HEADER_AVAILABLE CThing
+0073acc0   WARN SHARED_HEADER_AVAILABLE CWorld
+0073acc0   RELOCATION_MATCH PASS   AddMode
+007534b0   WARN SHARED_HEADER_AVAILABLE C3DVector
+007534b0   WARN SHARED_HEADER_AVAILABLE CThing
+007534b0   WARN RELOC_NAME: ?GetState@CTCTurnSource@@QAEPAUCTurnState@@XZ -> 0070b470 labelled 'CWorld::DrawGetEnvironment'
+007534b0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+007534b0   RELOCATION_MATCH PASS   IsPosInViewRange
+00e482f0   RELOCATION_MATCH PASS   CheckForLeaderDead
+
+WINS: 4
+  0070c4e0 MATCH CAnimateThing::?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z
+  0073acc0 RELOCATION_MATCH CTCCreatureModeManager::?AddMode@CTCCreatureModeManager@@QAE_NUCModePointer@@@Z
+  007534b0 RELOCATION_MATCH CTCLook::?IsPosInViewRange@CTCLook@@QBE_NABVC3DVector@@M_N1@Z
+  00e482f0 RELOCATION_MATCH NScript::CV_BanditTollScript::?CheckForLeaderDead@CV_BanditTollScript@NScript@@QAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CAnimateThing_GetFirstCombinationAnimFromType_0070c4e0
+  CTCCreatureModeManager_AddMode_0073acc0
+  CTCLook_IsPosInViewRange_007534b0
+  NScriptCVBanditTollScript_CheckForLeaderDead_00e482f0

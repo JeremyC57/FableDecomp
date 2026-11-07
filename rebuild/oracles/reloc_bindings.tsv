@@ -37376,3 +37376,4 @@ $notRedefined$4399	0068a01d	00689df0
 ?_M_erase@CNameSet@@QAEXPAUSNameNode@@@Z	004aba70	009e5c90
 ?clear@CSymbolVectorMap@@QAEXXZ	009e79e0	009e5c90
 ?g_CurrentSymbolFile@@3VCWideString@@A	013caa34	009e5c90
+?push_front@CModeList@@QAEXABUCModePointer@@@Z	007421c0	0073acc0

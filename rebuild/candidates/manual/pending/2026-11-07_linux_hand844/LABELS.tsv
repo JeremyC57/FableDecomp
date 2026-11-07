@@ -1,0 +1,9 @@
+address	Class::Name	evidence
+0x0070C4E0	CAnimateThing::GetFirstCombinationAnimFromType	landed this chunk (MATCH); Ego_r/FableWin ?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z (label already right)
+0x0073ACC0	CTCCreatureModeManager::AddMode	landed this chunk (RELOCATION_MATCH); PDB ?AddMode@CTCCreatureModeManager@@QAE_NV?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@Z
+0x007534B0	CTCLook::IsPosInViewRange	landed this chunk (RELOCATION_MATCH); Ego_r ?IsPosInViewRange@CTCLook@@QBE_NABVC3DVector@@M_N1@Z
+0x00E482F0	NScript::CV_BanditTollScript::CheckForLeaderDead	landed this chunk (RELOCATION_MATCH); Ego_r/FableWin ?CheckForLeaderDead@CV_BanditTollScript@NScript@@QAEXXZ
+0x0070B470	CTCTurnSource::GetState (descriptive)	catalog label CWorld::DrawGetEnvironment is a propagated wrong label: the body is `mov eax,[ecx+0Ch]; ret` on the interface-90 (0x5A) component, called by 0x007534B0 / 0x00753B40 / 0x006D5AF0; bound as ?GetState@CTCTurnSource@@QAEPAUCTurnState@@XZ
+0x0049D870	CWorld::GetFrame	labels say CWorld::GetWorldFrame (chunk 241/313) and GFGetCurrentFrame (chunk 249/257) for one getter; reloc_bindings.tsv binds ?GetFrame@CWorld@@SIJXZ (landed 0x0065A686, 0x0083CD70)
+0x01375550	CMainGameComponent::ConstantFPS	naming wave 18 (landed 0x00836260): protected static long; five global stand-in names are bound at this address
+0x00CD319B	std::vector<CScriptGameResourceObjectScriptedThingBase>::~vector	catalog placeholder StdList_Dtor_00cd319b: it is the STLport vector dtor (_Destroy range + free) that 0x00DE4710 calls at its shared deeper-exit pad (chunk 839 note, confirmed by the e1 declared-only specialisation binding)

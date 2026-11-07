@@ -1,0 +1,4 @@
+address	source	grade_with_final_overlay	note
+0073acc0	src/0073acc0.cpp	RELOCATION_MATCH	regraded after the respelling to the bound symbols (GetFrame, GetConstantFPS, push_front); overlay unused by the row
+007534b0	src/007534b0.cpp	RELOCATION_MATCH	regraded after the respelling to the bound symbols (class C3DVector, GetPos, private GetHeadPos, GFGetAngleXYTo, CTCTurnSource::GetState); overlay unused by the row
+-	-	-	no landed includer defines FABLE_RETAIL_STLP_TREE_ERASE_KEY / _BINARY_SEARCH / _RANDOM_SHUFFLE (grep -rlw rebuild/src/compiled empty): no sibling recheck needed
