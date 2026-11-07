@@ -1,0 +1,7 @@
+address	module	name	length
+00b5af80	CEngineScreenEffectColourFilter	RenderColorFilteredQuad	2865
+0068bc70	CInputProcessInventoryQuestsScreen	ProcessInput	2481
+0068cb90	CInputProcessControlFreeCamera	ProcessInput	2339
+00435530	CDisplayEngine	DoRender	2617
+00439070	CPlayerGui	DrawPreparePrimitivesForEngine	2613
+00678760	CPersistTraits<std::list<CReactionMatch*> >	TransferIn	3579

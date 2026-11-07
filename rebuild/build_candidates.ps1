@@ -384974,6 +384974,14 @@ $catalog = @(
         TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Main_00da91a0_test.cpp'
         PassPattern = '00da91a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0068bc70'
+        Module = 'CInputProcessInventoryQuestsScreen'
+        Source = '00/68/CInputProcessInventoryQuestsScreen_ProcessInput_0068bc70.cpp'
+        TestSource = '00/68/CInputProcessInventoryQuestsScreen_ProcessInput_0068bc70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0068bc70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

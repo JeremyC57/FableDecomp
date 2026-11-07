@@ -1,0 +1,17 @@
+address	Class::Name	evidence
+0x00435530	CDisplayEngine::DoRender	Ego_r.pdb ?DoRender@CDisplayEngine@@IAEXPBVCInterpolationInfo@@_N1@Z (0x004490E0, ret 0Ch, followed by Render) + FableWin.pdb; obj symbol confirmed IAEX
+0x00435F70	CDisplayEngine::Render	see NAME_FIXES (currently labelled/landed as DoRender)
+0x00435000	CDisplayEngine::RenderHeroFuckShit	FableWin.pdb + Ego_r.pdb; was GiveHeroGold
+0x00436D60	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_OverlappingCircle>	FableWin.pdb + Ego_r.pdb 0x00449D00
+0x004376B0	CPlayerGui::SetMoneyAsDisplaying	PMoney +0x2cc; FableWin order; see NAME_FIXES
+0x006448A4	NPlayerGui::CDrawMorality::Draw	was _global::Draw; called through retail CPlayerGui +0x180 = Ego_r PDrawMorality (Ego_r offset - 8 layout)
+0x00644424	NPlayerGui::CDrawSpiritScores::Draw	called through retail CPlayerGui +0x228 = Ego_r PDrawSpiritScores
+0x00678760	CPersistTraits<std::list<CReactionMatch*> >::TransferIn	Ego_r.pdb 0x006AA810 ?TransferIn@?$CPersistTraits@V?$list@PAVCReactionMatch@@V?$allocator@PAVCReactionMatch@@@std@@@std@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAV?$list@PAVCReactionMatch@@V?$allocator@PAVCReactionMatch@@@std@@@std@@@Z + FableWin.pdb
+0x00679910	CPersistTraits<EOpinion>::TransferIn	ICF fold with the EInputKey instantiation; see NAME_FIXES
+0x009EA550	CConsole::Render	descriptive-plus: was Nop_ret4; DoRender calls it with C2DBoxF(0,0,VW,VH*5/12) on the console singleton 0x013CAA40 when Visible (+0x78); argument type from the call site, not yet PDB-checked
+0x00619FD0	NHeroInformationScreens::CBase::IsInventoryScreen	FableWin.pdb ?IsInventoryScreen@CBase@NHeroInformationScreens@@UBE_NXZ; slot 3 of the CBase vtable used by 0x0068BC70
+0x0061A170	NInventory::CTCInventoryBase::ProcessButtonYReleased	vtable slot 61 (+0xf4) of CTCInventoryBase, FableWin.pdb declaration order
+0x0061A160	NInventory::CTCInventoryBase::ProcessButtonWhiteReleased	vtable slot 67 (+0x10c), FableWin.pdb declaration order
+0x00687B30	CInputProcessGameBase::IsEventButtonHeld	GetType()==0x14; see NAME_FIXES
+0x00687BD0	CInputProcessGameBase::IsEventButtonReleased	GetType()==0x15; see NAME_FIXES
+0x00A0D390	CProcessedInput::SetAsPerformedEvent	FableWin.pdb ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ; vland RELOC_NAME shows the label 'NScript::CV_SickChildScript::CWomanToAttract::Init' (wrong)

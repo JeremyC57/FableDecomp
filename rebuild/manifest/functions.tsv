@@ -15478,7 +15478,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0068b770	Init	CInputProcessInventoryTradeScreen	__thiscall	void	1	CInputProcessInventoryTradeScreen *	1	yes	accepted									
 0068b7c0	ProcessInput	CInputProcessInventoryTradeScreen	__thiscall	void	3	CInputProcessInventoryTradeScreen *,CInputEvent *,CProcessedInput *	1	yes	accepted									
 0068bc20	Init	CInputProcessInventoryQuestsScreen	__thiscall	void	1	CInputProcessInventoryQuestsScreen *	1	yes	accepted									
-0068bc70	?ProcessInput@CInputProcessInventoryQuestsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	CInputProcessInventoryQuestsScreen	__thiscall	void	3	CInputProcessInventoryQuestsScreen *,CInputEvent *,CProcessedInput *	1	yes	accepted									
+0068bc70	ProcessInput	CInputProcessInventoryQuestsScreen	__thiscall	void	3	CInputProcessInventoryQuestsScreen *,CInputEvent *,CProcessedInput *	1	yes	accepted									
 0068c630	Init	CInputProcessInventoryMagicScreen	__thiscall	void	1	CInputProcessInventoryMagicScreen *	1	yes	accepted									
 0068c680	Init	CInputProcessInventoryStatsScreen	__thiscall	void	1	CInputProcessInventoryStatsScreen *	1	yes	accepted									
 0068c6d0	ProcessInput	CInputProcessHeroInformationScreens	__thiscall	void	3	CInputProcessHeroInformationScreens *,CInputEvent const &,CProcessedInput &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\68\CInputProcessHeroInformationScreens_ProcessInput_0068c6d0.cpp

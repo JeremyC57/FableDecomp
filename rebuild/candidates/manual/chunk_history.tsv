@@ -27618,3 +27618,9 @@ chunk	address	module	name	length
 830	007c1000	NThingShot::CTCShotDefinitionBase	OnCollisionProper	4510
 830	00dd9a50	NScript::CQ_PrisonEscapeRescueMotherScript	ResetCells	4696
 830	007542b0	CTCLook	OnAppearanceDraw	2266
+831	00689df0	CInputProcessInventory	ProcessInput	3827
+831	008dbc80	NCreatureMode::CModeDragonFlying	vfunc_3	2319
+831	008dec80	NCreatureMode::CModeJackOfBladesFlash	vfunc_3	1665
+831	00873e10	NCameraModes::CPCMouseLook	vfunc_1	2386
+831	00d6d080	_global	CQ_HangingTreeEvil_Init	1516
+831	00e0f8a0	_global	CScriptGameResourceObjectScriptedThingBase_HandleWaspQueenHelper	4389

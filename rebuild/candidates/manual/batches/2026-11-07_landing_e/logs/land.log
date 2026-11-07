@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0068bc70   WARN SHARED_HEADER_AVAILABLE C2DVector
+0068bc70   WARN SHARED_HEADER_AVAILABLE CInputEvent
+0068bc70   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068bc70   WARN SHARED_HEADER_AVAILABLE CManager
+0068bc70   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+0068bc70   WARN SHARED_HEADER_AVAILABLE CTCInventoryMap
+0068bc70   WARN SHARED_HEADER_AVAILABLE CThing
+0068bc70   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068bc70   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase
+0068bc70   WARN RELOC_NAME: ?SetAsPerformedEvent@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068bc70   RELOCATION_MATCH PASS   ProcessInput
+
+WINS: 1
+  0068bc70 RELOCATION_MATCH CInputProcessInventoryQuestsScreen::?ProcessInput@CInputProcessInventoryQuestsScreen@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CInputProcessInventoryQuestsScreen_ProcessInput_0068bc70

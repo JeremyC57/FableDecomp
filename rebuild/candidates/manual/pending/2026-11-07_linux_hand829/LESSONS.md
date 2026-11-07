@@ -1,0 +1,13 @@
+# Chunk 829 lessons (GOTCHAS one-liners)
+- The project default is /Gr: std::for_each and other free templates are __fastcall; with a mem_fun_t that has a ctor the hidden result goes in ecx and `first` in edx.
+- A protected member's obj symbol is IAE..., public QAE...: declare the local class member `protected:` or the grader silently falls back to "largest function" (WARN line) -- check the WARN line on the first grade.
+- CRGBFloatColour(c.R/255.f, ...) arguments are evaluated right to left: retail's A,B,G,R load order then R,G,B,A stores comes from the plain ctor call.
+- Frame size is a cheap layout check: use the PDB sizeof of every local (CEnginePrimitive2DSprite 0x54) before chasing slot offsets.
+- Hoist `unsigned long count = v.size()` before a loop to keep the count in a callee-saved register as retail does.
+- An inline helper returning CWideString by value (`GetString(i).ToWideString()`) ends the CCharString temp before the outer call, giving retail's string-then-position order.
+- A conditional argument in a memory slot: `float t = 0; if (!n) t = x; f(t);` -- the ternary keeps it in x87.
+- Filling a member box: direct field stores through `T* p = &Member` in retail order beat a temp + copy; placement new adds a null test.
+- A tint*scalar product whose x87 order is wrong can be reordered by passing the scalar as a folded rvalue (`s * 1.0f`): no fmul is emitted -- flag it, it is not source evidence.
+- if-form vs ternary-form `operator==` flips branch layout across a whole compare chain; neither reproduces a cached-pointer threaded chain.
+- Grades are cached on identical source text: diff every sed/python-generated variant against its base before grading (a non-matching replace silently regrades the base).
+- Opt-in header edits can still change a TU's preprocessed text through `__LINE__`-numbered static-assert typedefs: harmless, but regrade those includers.

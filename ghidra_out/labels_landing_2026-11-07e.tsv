@@ -1,0 +1,4 @@
+address	name	evidence
+0x00435530	CDisplayEngine::DoRender	chunk 829: Ego_r.pdb ?DoRender@CDisplayEngine@@IAEXPBVCInterpolationInfo@@_N1@Z (0x004490E0, ret 0Ch, followed by Render) + FableWin.pdb; obj symbol confirmed IAEX
+0x00436D60	CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_OverlappingCircle>	chunk 829: FableWin.pdb + Ego_r.pdb 0x00449D00
+0x00678760	CPersistTraits<std::list<CReactionMatch*> >::TransferIn	chunk 829: Ego_r.pdb 0x006AA810 ?TransferIn@?$CPersistTraits@V?$list@PAVCReactionMatch@@V?$allocator@PAVCReactionMatch@@@std@@@std@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAV?$list@PAVCReactionMatch@@V?$allocator@PAVCReactionMatch@@@std@@@std@@@Z + FableWin.pdb

@@ -37345,3 +37345,6 @@ _New_c35b10@8	00c35b10	00c275e0
 ?ResetRandomSpeechTime@CV_AmbushScamScript@NScript@@QAEXXZ	00e2e400	00e2c100
 ?WatchForHeroAttack@CV_AmbushScamScript@NScript@@QAEXVCScriptThing@@@Z	00e2e520	00e2c100
 ?WatchForTricksterKilledAfterBeingSpared@CV_AmbushScamScript@NScript@@QAEXVCScriptThing@@@Z	00e2e800	00e2c100
+?IsEventButtonHeld@CInputProcessGameBase@@IBE_NABVCInputEvent@@@Z	00687bd0	0068bc70
+?PanMap@CTCInventoryMap@@QAEXVC2DVector@@@Z	005fb140	0068bc70
+?ProcessInput@CInputProcessInventoryBase@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	006894c0	0068bc70

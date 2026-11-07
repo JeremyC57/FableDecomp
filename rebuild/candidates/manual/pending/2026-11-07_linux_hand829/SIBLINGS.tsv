@@ -1,0 +1,4 @@
+address	source	grade_with_final_overlay	note
+0x00BBC460	rebuild/src/compiled/00/bb/CEnginePrimitiveManagerParticleGroup_RenderSubPrimitive_00bbc460.cpp	RELOCATION_MATCH	includer of engine/CRenderManager2D.h; its preprocessed text changes only in the __LINE__-numbered static-assert typedef name (fable_static_assert_72 -> _78), so it was regraded with the overlay: unchanged
+0x009DA9F0	rebuild/src/compiled/00/9d/CRenderManager2D_Render2DDrawList_009da9f0.cpp	RELOCATION_MATCH	same __LINE__ typedef-name shift; regraded with the overlay: unchanged
+*	the other 3253 direct includers of engine/C3DVector.h / engine/CRenderManager2D.h under rebuild/src	unchanged (preprocessed text byte-identical)	both hdr edits are opt-in #ifdef blocks on macros no file in rebuild/ defines; g++ -E with and without the overlay compared for all 3255 direct includers: 3253 identical, the 2 above differ only in a static-assert typedef name
