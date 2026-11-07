@@ -1,0 +1,7 @@
+address	source	grade_with_final_overlay	note
+00821010	rebuild/src/compiled/00/82/CMap_LoadBrushesFromFile_00821010.cpp	RELOCATION_MATCH	landed includer of engine/CMap.h (default path), rechecked read-only with hdr/ overlay
+0084f850	rebuild/src/compiled/00/84/GetPBestThingInRoughAreaCFilterBind3CThingFilterIsAvailableForCreatureInteractio_unarynegateCThingFilterIsIncapacitatedCThingComp_0084f850.cpp	RELOCATION_MATCH	landed includer of engine/CThingSearchTools.h, rechecked read-only with hdr/ overlay
+007a9580	rebuild/src/compiled/00/7a/GetAllThingsInRoughAreaCThingCreatureBasestdlistCThingCreatureBasestdallocatorCT_CThingFilterIsEvadeExplosion_007a9580.cpp	RELOCATION_MATCH	landed includer of engine/CThingSearchTools.h, rechecked read-only with hdr/ overlay
+007a3ca0	rebuild/src/compiled/00/7a/GetPBestThingInRoughAreaCFilterBind4CThingFilterIsAICreatureAwareOfCThingFilterI_unarynegateCThingFilterHasBeenDiscoveredCThingCo_007a3ca0.cpp	RELOCATION_MATCH	landed includer of engine/CThingSearchTools.h, rechecked read-only with hdr/ overlay
+0065b349	rebuild/src/compiled/00/65/CTCVillage_TryToRespawnDefNamed_0065b349.cpp	not regraded	landed sibling of parked 0x0065B142; binds CreateVillager with a pointer village parameter where Ego_r.pdb has a reference (NAME_FIXES.tsv candidate)
+00c72e00	(landed CAudioSource::ApplySound)	not regraded	caller of 0x00C71F80; binds ?ComputePitchScale@CAudioSource@@QAEXPBM_J@Z, this row emits the struct spelling (NAME_FIXES.tsv)

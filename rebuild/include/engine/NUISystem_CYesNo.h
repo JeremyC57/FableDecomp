@@ -9,6 +9,19 @@
 #include "engine/NUISystem_CChangingStateComponent.h"
 namespace NUISystem {
 class CYesNo : public CChangingStateComponent {
+#ifdef FABLE_RETAIL_CYESNO_CTOR
+    // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 164h ; call operator new` then the
+    // constructor 0x0041CADC): Ego_r.pdb / FableWin.pdb ??0CYesNo@NUISystem@@QAE@J@Z and the two Ego_r members (YesCallback +396,
+    // NoCallback +400, __cdecl void function pointers) 0x30 lower in retail; sizeof 0x164.
+public:
+    CYesNo(long);                                                   // 0x0041CADC
+protected:
+    void (*YesCallback)();                                          // +0x15c
+    void (*NoCallback)();                                           // +0x160
+#endif
 };
 }
+#ifdef FABLE_RETAIL_CYESNO_CTOR
+FABLE_STATIC_ASSERT(sizeof(NUISystem::CYesNo) == 0x164);
+#endif
 #endif

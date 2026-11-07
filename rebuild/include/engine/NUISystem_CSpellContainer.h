@@ -6,6 +6,11 @@
 // The destructor 0x00545840 removes the observer from CManager, then the compiler destroys the BaseSpells vector.
 // Data members are not modelled (no row needs them), hence no sizeof assertion. Overrides are not declared.
 #include "engine/NUISystem_CChangingStateComponent.h"
+#ifdef FABLE_RETAIL_CSPELLCONTAINER_MEMBERS
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+#include "engine/C2DVector.h"
+#endif
 namespace NUISystem {
 class CSpellContainer : public CChangingStateComponent {
 public:
@@ -27,6 +32,19 @@ public:
     virtual void AddChildAndSetOffsets(CCountedPointer<CComponent>&);                            // slot 147 0x00545DF0
     virtual std::vector<CCountedPointer<CComponent> >& GetBaseSpells();                          // slot 148 0x00546070
 #endif
+#ifdef FABLE_RETAIL_CSPELLCONTAINER_MEMBERS
+    // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 0x17c ; call operator new` before the
+    // constructor 0x00545720): the Ego_r.pdb data members (struct_layouts_egor.tsv) 0x30 lower in retail (STLport 4.6 container sizes),
+    // so sizeof is retail's 0x17c. Members only: no row reads them yet.
+protected:
+    std::vector<CCountedPointer<CComponent> > BaseSpells; // +0x15c (STLport 12 bytes; Ego_r +396)
+    std::pair<CComponent*,unsigned long> NewSpell; // +0x168 (Ego_r +412)
+    long EmptySlot;                              // +0x170 (Ego_r +420; SetEmptySlotDef stores it)
+    C2DVector PositionOffset;                    // +0x174 (Ego_r +424)
+#endif
 };
 }
+#ifdef FABLE_RETAIL_CSPELLCONTAINER_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(NUISystem::CSpellContainer) == 0x17c);
+#endif
 #endif

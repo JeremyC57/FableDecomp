@@ -1,0 +1,25 @@
+addr       parity           behav  name
+0041d21b   WARN RELOC_NAME: ??$GetDef@VCUIDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@@Z -> 0042aeda labelled 'CDefinitionManager::GetDef<NUISystem::CUIDef>'
+0041d21b   RELOCATION_MATCH PASS   CreateComponent
+00501450   WARN RELOC_NAME: ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 0048d400 labelled 'GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_>_>'
+00501450   RELOCATION_MATCH PASS   GenerateRegionConnectivityGraph
+0057e2f1   WARN RELOC_NAME: ??$TransferVector@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z -> 00569fe0 labelled 'CPersistContext::Transfer<CQuestScoreRecord>'
+0057e2f1   WARN RELOC_NAME: ??$copy@U?$_List_iterator@VCHeroMarriageInfo@@U?$_Nonconst_traits@VCHeroMarriageInfo@@@std@@@std@@V?$back_insert_iterator@V?$vector@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@@2@@std@@YI?AV?$back_insert_iterator@V?$vector@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@@0@U?$_List_iterator@VCHeroMarriageInfo@@U?$_Nonconst_traits@VCHeroMarriageInfo@@@std@@@0@0V10@@Z -> 00581376 labelled '_unattributed::Construct_CRangeString_00581376'
+0057e2f1   WARN RELOC_NAME: ??$copy@PAVCHeroMarriageInfo@@V?$back_insert_iterator@V?$list@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@@std@@@std@@YI?AV?$back_insert_iterator@V?$list@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@@0@PAVCHeroMarriageInfo@@0V10@@Z -> 005813a0 labelled 'CTCCameraPointScripted::GetLookDirection'
+0057e2f1   RELOCATION_MATCH PASS   OnSerialise
+0058e99f   RELOCATION_MATCH PASS   OpenInventoryShortcut
+009cf3a0   RELOCATION_MATCH PASS   WriteSymbolHeaderFile
+
+WINS: 5
+  0041d21b RELOCATION_MATCH NUISystem::CManager::?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@J@Z
+  00501450 RELOCATION_MATCH CWorldMap::?GenerateRegionConnectivityGraph@CWorldMap@@QAEXXZ
+  0057e2f1 RELOCATION_MATCH CTCHeroStats::?OnSerialise@CTCHeroStats@@MAEXAAVCPersistContext@@_N@Z
+  0058e99f RELOCATION_MATCH CTCInventory::?OpenInventoryShortcut@CTCInventory@@QAEXJ@Z
+  009cf3a0 RELOCATION_MATCH CBankFile::?WriteSymbolHeaderFile@CBankFile@@QAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  NUISystemCManager_CreateComponent_0041d21b
+  CWorldMap_GenerateRegionConnectivityGraph_00501450
+  CTCHeroStats_OnSerialise_0057e2f1
+  CTCInventory_OpenInventoryShortcut_0058e99f
+  CBankFile_WriteSymbolHeaderFile_009cf3a0

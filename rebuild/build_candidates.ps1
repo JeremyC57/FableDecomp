@@ -385211,6 +385211,79 @@ $catalog = @(
         TestSource = '00/52/CThingManager_LoadEntitiesFromScript_00520d00_test.cpp'
         PassPattern = '00520d00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041d21b'
+        Module = 'NUISystem::CManager'
+        Source = '00/41/NUISystemCManager_CreateComponent_0041d21b.cpp'
+        TestSource = '00/41/NUISystemCManager_CreateComponent_0041d21b_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Os /Oy-'
+        PassPattern = '0041d21b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00501450'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_GenerateRegionConnectivityGraph_00501450.cpp'
+        TestSource = '00/50/CWorldMap_GenerateRegionConnectivityGraph_00501450_test.cpp'
+        PassPattern = '00501450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057e2f1'
+        Module = 'CTCHeroStats'
+        Source = '00/57/CTCHeroStats_OnSerialise_0057e2f1.cpp'
+        TestSource = '00/57/CTCHeroStats_OnSerialise_0057e2f1_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O1 /Oy- /Oi'
+        PassPattern = '0057e2f1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0058e99f'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OpenInventoryShortcut_0058e99f.cpp'
+        TestSource = '00/58/CTCInventory_OpenInventoryShortcut_0058e99f_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O1 /Oy-'
+        PassPattern = '0058e99f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cf3a0'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_WriteSymbolHeaderFile_009cf3a0.cpp'
+        TestSource = '00/9c/CBankFile_WriteSymbolHeaderFile_009cf3a0_test.cpp'
+        PassPattern = '009cf3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005029a0'
+        Module = '_global'
+        Source = '00/50/global_GetRelevantBuilding_005029a0.cpp'
+        TestSource = '00/50/global_GetRelevantBuilding_005029a0_test.cpp'
+        PassPattern = '005029a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0063e590'
+        Module = 'CWorldMap'
+        Source = '00/63/CWorldMap_GetNavigationLayerAt_0063e590.cpp'
+        TestSource = '00/63/CWorldMap_GetNavigationLayerAt_0063e590_test.cpp'
+        PassPattern = '0063e590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075e270'
+        Module = 'CTCCameraPointScriptedSpline'
+        Source = '00/75/CTCCameraPointScriptedSpline_OnInitialActivate_0075e270.cpp'
+        TestSource = '00/75/CTCCameraPointScriptedSpline_OnInitialActivate_0075e270_test.cpp'
+        PassPattern = '0075e270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00760a70'
+        Module = 'NShape::CSubdivisionTriangle'
+        Source = '00/76/NShapeCSubdivisionTriangle_GetUpDirection_00760a70.cpp'
+        TestSource = '00/76/NShapeCSubdivisionTriangle_GetUpDirection_00760a70_test.cpp'
+        PassPattern = '00760a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c71f80'
+        Module = 'CAudioSource'
+        Source = '00/c7/CAudioSource_ComputePitchScale_00c71f80.cpp'
+        TestSource = '00/c7/CAudioSource_ComputePitchScale_00c71f80_test.cpp'
+        PassPattern = '00c71f80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

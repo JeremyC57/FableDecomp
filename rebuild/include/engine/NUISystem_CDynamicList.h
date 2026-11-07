@@ -7,6 +7,10 @@
 // ~CChangingStateComponent 0x0052CCF0; its user body is empty.
 // Data members are not modelled (no row needs them), hence no sizeof assertion. Overrides are not declared.
 #include "engine/NUISystem_CChangingStateComponent.h"
+#ifdef FABLE_RETAIL_CDYNAMICLIST_MEMBERS
+#include "stlport/fable_containers.h"
+#include "engine/C2DVector.h"
+#endif
 namespace NUISystem {
 class CDynamicList : public CChangingStateComponent {
 public:
@@ -15,6 +19,21 @@ public:
     virtual ~CDynamicList();
 protected:
     void GetDataFromDef();                                          // ?GetDataFromDef@CDynamicList@NUISystem@@IAEXXZ
+#ifdef FABLE_RETAIL_CDYNAMICLIST_MEMBERS
+    // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 0x180 ; call operator new` before the
+    // constructor 0x005415F0): the Ego_r.pdb data members (struct_layouts_egor.tsv) 0x30 lower in retail (STLport 4.6 container sizes),
+    // so sizeof is retail's 0x180. Members only: no row reads them yet.
+protected:
+    int BInitialised;                            // +0x15c (Ego_r +396)
+    C2DVector PositionOffset;                    // +0x160
+    long TopIndex;                               // +0x168
+    long SelectionIndex;                         // +0x16c
+    long NumVisible;                             // +0x170
+    std::vector<CComponent*> ScrollingChildren;  // +0x174 (STLport 12 bytes; Ego_r +420)
+#endif
 };
 }
+#ifdef FABLE_RETAIL_CDYNAMICLIST_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(NUISystem::CDynamicList) == 0x180);
+#endif
 #endif

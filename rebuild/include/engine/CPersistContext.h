@@ -25,7 +25,14 @@ public:
     template<class T> void Transfer(const char*,T&,const T&);
     template<class T> void Transfer(const char*,std::vector<T,std::allocator<T> >&);
     CPersistContext(CStringParser&,void (__fastcall*)(const CCharString&),bool,const CDefinitionManager*,const CSymbolMap*,CCharString*);
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_ISSAVING_OUTOFLINE
+    // Per-TU opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise): ?IsSaving@CPersistContext@@QBE_NXZ declared only. That TU
+    // calls the out-of-line copy at 0x004AEF50 (`mov ecx,esi ; call 0x004AEF50 ; test al,al`, 0x0057E8E0 and 0x0057EB91) instead of
+    // expanding the Mode test.
+    bool IsSaving()const;
+#else
     bool IsSaving()const{return Mode==MODE_SAVE_TEXT||Mode==MODE_SAVE_BINARY;}
+#endif
     CStringParser* GetPParser(){return PParser;}
     void WriteString(const CCharString&);
     enum EMode { MODE_LOAD_TEXT=0,MODE_SAVE_TEXT=1,MODE_LOAD_BINARY=2,MODE_SAVE_BINARY=3,MODE_CLEAR=4 };

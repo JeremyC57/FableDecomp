@@ -93,6 +93,10 @@ public:
     _Rb_tree(const Compare& c,const A& a):_Rb_tree_base<V,A>(a),_M_node_count(0),_M_key_compare(c){_M_empty_initialize();}
     _Rb_tree& operator=(const _Rb_tree&);
     size_t size() const { return _M_node_count; }
+#ifdef FABLE_RETAIL_STLP_SET_EMPTY
+    // chunk 849 (row 0x00501450): STLport 4.6 _tree.h `bool empty() const { return _M_node_count == 0; }`.
+    bool empty() const { return _M_node_count==0; }
+#endif
 private:
     void _M_empty_initialize(){this->_M_header._M_data->_M_color=false;this->_M_header._M_data->_M_parent=0;this->_M_header._M_data->_M_left=this->_M_header._M_data;this->_M_header._M_data->_M_right=this->_M_header._M_data;}
 public:
@@ -274,6 +278,12 @@ public:
     iterator begin() const { return _M_t.begin(); }
     iterator end() const { return _M_t.end(); }
     size_t size() const { return _M_t.size(); }
+#endif
+#ifdef FABLE_RETAIL_STLP_SET_EMPTY
+    // Per-TU opt-in (chunk 849, row 0x00501450 CWorldMap::GenerateRegionConnectivityGraph): STLport 4.6 _set.h `bool empty() const
+    // { return _M_t.empty(); }`, inline (the row tests the local set's _M_node_count in place: `mov eax,[esp+58h] ; test eax,eax`,
+    // 0x005016E6).
+    bool empty() const { return _M_t.empty(); }
 #endif
 #ifdef FABLE_RETAIL_STLP_TREE_CONSTFIND
     // (same opt-in, chunk 846 row 0x00520D00) STLport 4.6 _set.h `iterator find(const key_type& __x) const { return _M_t.find(__x); }`:

@@ -15,6 +15,10 @@ public:
     virtual ~CMemoryFile() { Close(); }
     virtual void Open(const CWideString&,FileAccessType,unsigned long);   // 0x009E94A0
     virtual void Close();                                                 // 0x009E9390
+#ifdef FABLE_RETAIL_CMEMORYFILE_DUMPTOFILE
+    // Retail opt-in (chunk 849, row 0x009CF3A0): Ego_r.pdb ?DumpToFile@CMemoryFile@@QAEXXZ (0x009E9330, bound), out of line.
+    void DumpToFile();                                                    // 0x009E9330
+#endif
     virtual void Read(void*,long,CASuspendableProcess*);
     virtual void Write(const void*,long,CASuspendableProcess*);
     virtual void SetPosition(long);

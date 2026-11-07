@@ -164,6 +164,12 @@ public:
     _STLP_alloc_proxy(const _MaybeReboundAlloc& a, _Value p)
         : _MaybeReboundAlloc(a), _M_data(p) { }
 };
+#ifdef FABLE_RETAIL_STLP_VECTOR_SWAP
+// Retail opt-in (chunk 849, row 0x00AE2E20 CParticleProgram::OptimiseSpringOrder): STLport 4.6 _algobase.h swap(_Tp&, _Tp&), used by
+// the inline vector::swap below (retail expands `particle_list.swap(next_particle_list)` in place: the words exchanged through
+// registers at 0x00AE30C7..0x00AE30DC, then the old storage freed at 0x00AE30E3; no call).
+template<class _Tp> inline void swap(_Tp& a,_Tp& b) { _Tp tmp=a; a=b; b=tmp; }
+#endif
 // _vector.h / _vector.c
 template<class _Tp, class _Alloc> class _Vector_base {
 public:
@@ -242,6 +248,10 @@ public:
     // 0x00F0CA30 (Ego_r.pdb ?swap@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@...@std@@QAEXAAV12@@Z; call at 0x00F0C823 with
     // ecx = &TeleportInfo and an empty local vector). A declaration only here, so the row calls it.
     void swap(vector& x);
+#endif
+#ifdef FABLE_RETAIL_STLP_VECTOR_SWAP
+    // (chunk 849) STLport 4.6 _vector.h swap(_Self&): three _STLP_STD::swap calls, inline (0x00AE2E20 expands it).
+    void swap(vector& x) { std::swap(this->_M_start,x._M_start); std::swap(this->_M_finish,x._M_finish); std::swap(this->_M_end_of_storage,x._M_end_of_storage); }
 #endif
     _Tp& front() { return *this->_M_start; }
     _Tp& back() { return *(end()-1); }
@@ -448,6 +458,16 @@ template<class _Tp,class _Traits> struct _List_iterator : public _List_iterator_
     _List_iterator& operator--() { this->_M_decr(); return *this; }
 #endif
 };
+#ifdef FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE
+// Per-TU opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise): STLport 4.6 _iterator_base.h distance() / __distance() (const
+// reference arguments, the input-iterator loop on a copy of first), for list::size() below.
+template<class _InputIterator> inline ptrdiff_t __distance(const _InputIterator& first,const _InputIterator& last,const input_iterator_tag&) {
+    ptrdiff_t n=0; _InputIterator it(first); while(it!=last) { ++it; ++n; } return n;
+}
+template<class _InputIterator> inline ptrdiff_t distance(const _InputIterator& first,const _InputIterator& last) {
+    return __distance(first,last,input_iterator_tag());
+}
+#endif
 template<class _Tp,class _Alloc> class _List_base {
 public:
     _List_base(const _Alloc&) : _M_node(allocator<_List_node<_Tp> >(),0) {
@@ -520,7 +540,14 @@ public:
     // with the input-iterator __distance loop inlined (NUISystem::CList::ChangeState 0x0053A0A1 counts the
     // GPreviousSelected nodes in place: mov ecx,[ecx] ; inc edi ; cmp ecx,eax ; jne); push_front(x) is insert(begin(), x)
     // (out of line in that TU at 0x0053CA3C).
+#ifdef FABLE_RETAIL_STLP_LIST_SIZE_DISTANCE
+    // chunk 849 (row 0x0057E2F1): STLport 4.6's own spelling, `size_type __result = distance(begin(), end()); return __result;`. The
+    // copy-of-first loop keeps the head in eax and walks ecx (`mov eax,[ebx+1D8h] ; mov ecx,[eax] ; .. mov ecx,[ecx] ; inc edx ;
+    // cmp ecx,eax`, 0x0057EBA3, before the vector reserve); the for-loop form above swaps the two registers.
+    size_t size() const { size_t result=distance(begin(),end()); return result; }
+#else
     size_t size() const { ptrdiff_t n=0; for(const_iterator first=begin(),last=end();first!=last;++first) ++n; return n; }
+#endif
     _Tp& front() { return *begin(); }
     void push_front(const _Tp& x) { insert(begin(),x); }
     // chunk 736 (row 0x00A7A0A0): STLport 4.6 _list.h back(): `iterator __tmp = end(); return *(--__tmp);` (SetUpRegions reads
@@ -621,7 +648,32 @@ template<class _RandomAccessIter,class _Compare> void __fastcall sort(_RandomAcc
 #else
 template<class _RandomAccessIter,class _Compare> void sort(_RandomAccessIter,_RandomAccessIter,_Compare);
 #endif
+#ifdef FABLE_RETAIL_STLP_SORT2
+// Retail opt-in (chunk 849, row 0x00AE2E20): STLport 4.6 _algo.h `template <class _RandomAccessIter> void sort(_RandomAccessIter,
+// _RandomAccessIter)`, out of line in retail (sort<pair<long,unsigned long>*> 0x00AE7DC0, first in ecx, last in edx under /Gr).
+// A declaration only.
+template<class _RandomAccessIter> void sort(_RandomAccessIter,_RandomAccessIter);
+#endif
 template<class _RandomAccessIter,class _RandomNumberGenerator>
 void __fastcall random_shuffle(_RandomAccessIter,_RandomAccessIter,_RandomNumberGenerator&);
+#ifdef FABLE_RETAIL_STLP_BACK_INSERTER
+// Per-TU opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise; the landed 0x007B3760 CTCGuard::OnSerialise models the same
+// locally): STLport 4.6 _iterator.h back_insert_iterator / back_inserter, and _algobase.h copy() declared only. Retail calls the copy
+// instantiations out of line as __fastcall with the result through a hidden pointer in ecx (0x0057EBDE -> 0x00581376 list to
+// back_insert_iterator<vector>, 0x0057EC1C -> 0x005813A0 pointer range in edx to back_insert_iterator<list>).
+template<class _Container> class back_insert_iterator {
+protected:
+    _Container* container;
+public:
+    typedef _Container container_type;
+    explicit back_insert_iterator(_Container& x) : container(&x) { }
+    back_insert_iterator<_Container>& operator=(const typename _Container::value_type& value) { container->push_back(value); return *this; }
+    back_insert_iterator<_Container>& operator*() { return *this; }
+    back_insert_iterator<_Container>& operator++() { return *this; }
+    back_insert_iterator<_Container> operator++(int) { return *this; }
+};
+template<class _Container> inline back_insert_iterator<_Container> back_inserter(_Container& x) { return back_insert_iterator<_Container>(x); }
+template<class _InputIter,class _OutputIter> _OutputIter __fastcall copy(_InputIter first,_InputIter last,_OutputIter result);
+#endif
 }
 #endif

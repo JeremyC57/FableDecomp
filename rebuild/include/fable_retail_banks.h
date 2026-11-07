@@ -87,6 +87,13 @@ public:
     };
     void OpenRetailBank(const CWideString& pathname, bool startupPriority);   // 0x009A8840
     void OpenIniFile(const CWideString& pathname);                            // 0x009A8170
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_HEADERPATHS
+    // Retail opt-in (chunk 849, row 0x009CF3A0 CBankFile::WriteSymbolHeaderFile): Ego_r.pdb / FableWin.pdb
+    // ?GetDevHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z (0x009A7E20) and
+    // ?GetRetailHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z (0x009A7ED0), out of line. Declarations only.
+    CWideString GetDevHeaderFilePath(const CCharString& bankHandle) const;      // 0x009A7E20
+    CWideString GetRetailHeaderFilePath(const CCharString& bankHandle) const;   // 0x009A7ED0
+#endif
     void Close();
 private:
     bool ReadQuotedString(CCharString& text, CDataInputStream& stream);   // 0x009A77D0
@@ -100,6 +107,11 @@ protected:
     unsigned long FileVersion;                                           // +0x34
 };
 FABLE_STATIC_ASSERT(sizeof(CBankFileManager::CBankInfo) == 0x14);
+#ifdef FABLE_RETAIL_CBANKFILEMANAGER_HEADERPATHS
+// (same opt-in) the manager singleton NBankFileManager::GBankFileManager at 0x013CA79C: both PDBs name its
+// "NBankFileManager::`dynamic initializer for 'GBankFileManager''" and atexit destructor.
+namespace NBankFileManager { extern CBankFileManager GBankFileManager; }   // 0x013CA79C
+#endif
 #else
 namespace NBankFileManager
 {

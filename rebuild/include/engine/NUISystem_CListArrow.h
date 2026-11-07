@@ -13,6 +13,18 @@ public:
     CListArrow(long);
     CListArrow(const CListArrow&);
     virtual ~CListArrow();
+#ifdef FABLE_RETAIL_CLISTARROW_MEMBERS
+    // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 0x190 ; call operator new` before the
+    // constructor 0x0054C1D0): the Ego_r.pdb data members (struct_layouts_egor.tsv) 0x30 lower in retail (STLport 4.6 container sizes),
+    // so sizeof is retail's 0x190. Members only: no row reads them yet.
+protected:
+    long MinToDraw;                              // +0x184 (Ego_r +436)
+    long MaxToDraw;                              // +0x188
+    bool Internal;                               // +0x18c
+#endif
 };
 }
+#ifdef FABLE_RETAIL_CLISTARROW_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(NUISystem::CListArrow) == 0x190);
+#endif
 #endif

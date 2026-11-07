@@ -27760,3 +27760,9 @@ chunk	address	module	name	length
 849	0041d21b	NUISystem::CManager	CreateComponent	1677
 849	009cf3a0	CBankFile	WriteSymbolHeaderFile	1991
 849	0057e2f1	CTCHeroStats	OnSerialise	2373
+850	0050a650	CWorldMap	GetMapNavigationAreaInit	2233
+850	009ed190	CConsole	Initialise	2266
+850	00ae3c30	CParticleProgram	ReadFromFile	2310
+850	00500540	CWorldMap	LoadRegion	2412
+850	00ac5770	C3DMeshFileEngineMaterialChunk	ReadFromFile	2568
+850	00772bb0	CTCShop	AddSaleItem	2585

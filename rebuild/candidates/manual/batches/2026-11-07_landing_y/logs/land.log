@@ -1,0 +1,21 @@
+addr       parity           behav  name
+005029a0   RELOCATION_MATCH PASS   GetRelevantBuilding
+0063e590   RELOCATION_MATCH PASS   GetNavigationLayerAt
+0075e270   RELOCATION_MATCH PASS   OnInitialActivate
+00760a70   RELOCATION_MATCH PASS   GetUpDirection
+00c71f80   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c71f80   RELOCATION_MATCH PASS   ComputePitchScale
+
+WINS: 5
+  005029a0 RELOCATION_MATCH _global::?GetRelevantBuilding@@YIPAVCThingBuilding@@AAV?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@W4ESimBuildingProperty@@_N2@Z
+  0063e590 RELOCATION_MATCH CWorldMap::GetNavigationLayerAt@CWorldMap
+  0075e270 RELOCATION_MATCH CTCCameraPointScriptedSpline::?OnInitialActivate@CTCCameraPointScriptedSpline
+  00760a70 RELOCATION_MATCH NShape::CSubdivisionTriangle::GetUpDirection
+  00c71f80 RELOCATION_MATCH CAudioSource::?ComputePitchScale@CAudioSource
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  global_GetRelevantBuilding_005029a0
+  CWorldMap_GetNavigationLayerAt_0063e590
+  CTCCameraPointScriptedSpline_OnInitialActivate_0075e270
+  NShapeCSubdivisionTriangle_GetUpDirection_00760a70
+  CAudioSource_ComputePitchScale_00c71f80

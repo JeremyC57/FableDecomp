@@ -25,6 +25,9 @@ public:
 };
 #endif
 class CAFile;class CScriptedMapBrush;class CScriptedMapBrushInit;
+#ifdef FABLE_RETAIL_CMAP_NAVIGATIONLAYER
+class C3DVector;
+#endif
 // Retail class (header wave 2026-11-03, Codex pass 12 row 0x00821010): RTTI .?AVCMap@@ : CIDrawMap@0, CBaseClassNonCopyable@4
 // (ghidra_out/rtti_bases.tsv); every Ego_r.pdb data member in order (struct_layouts_egor.tsv), composites without a shared header
 // opaque at retail STLport sizes; sizeof 0x1D40.
@@ -79,6 +82,11 @@ public:
     CScriptedMapBrush& CreateScriptedMapBrush(const CScriptedMapBrushInit&);
     bool IsPassableAt(const C2DCoordI&)const;
     bool IsPrefNavAt(const C2DCoordI&)const;
+#ifdef FABLE_RETAIL_CMAP_NAVIGATIONLAYER
+    // Chunk 847 (row 0x0063E590 CWorldMap::GetNavigationLayerAt): Ego_r.pdb ?GetNavigationLayerAt@CMap@@QBEJABVC3DVector@@@Z, out of
+    // line in retail at 0x0081E920 (catalog CMap::GetNavigationLayerAt). Declaration only: no layout change.
+    long GetNavigationLayerAt(const C3DVector&)const;
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CMap)==0x1d40);
 #endif

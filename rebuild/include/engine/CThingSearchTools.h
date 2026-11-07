@@ -128,6 +128,13 @@ public:
     template<class T,class Container,class Filter>
     void GetAllThingsInRoughArea(const C2DBoxI&,const Filter&,Container&) const;
 #endif
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_FOREACHINROUGHAREA
+    // Chunk 847 (row 0x0063E590 CWorldMap::GetNavigationLayerAt): Ego_r.pdb ??$ForEachInRoughArea@VCThingPhysical@@V?$CFilter_Bind2@
+    // VCThingFilter_HasNavigationInformation@@VCThingFilter_OverlappingBoundingBox@@@@VCThingFindNavigationLayerAt@@@CThingSearchTools@@
+    // QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@...@@AAVCThingFindNavigationLayerAt@@@Z and the CFilter_Bind3<CThingFilter_IsNot, ...> twin
+    // (out of line in retail: 0x0063F4B0 the Bind2, 0x0063F7C0 the Bind3 instantiation). Declaration only: no layout change.
+    template<class T,class Filter,class Proc> bool ForEachInRoughArea(const C2DBoxI& area,const Filter& filter,Proc& proc) const;
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingSearchTools)==0x18);
 #else

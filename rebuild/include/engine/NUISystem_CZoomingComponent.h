@@ -6,6 +6,9 @@
 // The destructor 0x00546660 removes the observer from CManager, then ~CChangingStateComponent.
 // Data members are not modelled (no row needs them), hence no sizeof assertion. Overrides are not declared.
 #include "engine/NUISystem_CChangingStateComponent.h"
+#ifdef FABLE_RETAIL_CZOOMINGCOMPONENT_MEMBERS
+#include "engine/C2DVector.h"
+#endif
 namespace NUISystem {
 class CZoomingComponent : public CChangingStateComponent {
 public:
@@ -13,6 +16,23 @@ public:
     CZoomingComponent(const CZoomingComponent&);
     virtual ~CZoomingComponent();
     void GetDataFromDef();
+#ifdef FABLE_RETAIL_CZOOMINGCOMPONENT_MEMBERS
+    // Retail opt-in (chunk 849, row 0x0041D21B NUISystem::CManager::CreateComponent: `push 0x184 ; call operator new` before the
+    // constructor 0x00546B00): the Ego_r.pdb data members (struct_layouts_egor.tsv) 0x30 lower in retail (STLport 4.6 container sizes),
+    // so sizeof is retail's 0x184. Members only: no row reads them yet.
+protected:
+    float LastInputTime;                         // +0x15c (Ego_r +396)
+    C2DVector ZoomCenter;                        // +0x160
+    C2DVector MinZoom;                           // +0x168
+    C2DVector MaxZoom;                           // +0x170
+    bool Panning;                                // +0x178
+    bool Zooming;                                // +0x179
+    float InputDelay;                            // +0x17c
+    float ScrollingSpeed;                        // +0x180
+#endif
 };
 }
+#ifdef FABLE_RETAIL_CZOOMINGCOMPONENT_MEMBERS
+FABLE_STATIC_ASSERT(sizeof(NUISystem::CZoomingComponent) == 0x184);
+#endif
 #endif

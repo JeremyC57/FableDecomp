@@ -7,6 +7,11 @@
 template<class K,class V> class CKeyPairCompareLess {
 public:
     bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b) const { return a.first<b.first; }
+#ifdef FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND
+    // chunk 849 (row 0x00501450): the key/key overload, the second of the two the Codex pass 13 TPI read gives CKeyPairCompareLess; the
+    // inline LowerBound below compares through it.
+    bool operator()(const K& a,const K& b) const { return a<b; }
+#endif
 };
 template<class K,class V,class CompareType=CKeyPairCompareLess<K,V> >
 class CVectorMap : public CArray<std::pair<K,V> > {
@@ -70,6 +75,26 @@ private:
 };
 // LowerBound: out of line in retail (every caller calls it). A same-TU noinline body (EXTRA_RULES chunk 422): VC7.1 then knows
 // the callee does not capture the caller's key temporary, so Find compares the folded constant key (00626E40 `cmp [eax],8`).
+#ifdef FABLE_RETAIL_CVECTORMAP_INLINE_LOWERBOUND
+// Per-TU opt-in (chunk 849, row 0x00501450 CWorldMap::GenerateRegionConnectivityGraph; the Codex pass 13 macros
+// FABLE_RETAIL_CVECTORMAP_SIZE_LOWERBOUND / _ORDINARY_LOWERBOUND): the non-const LowerBound as an ordinary inline body in the debug
+// donor's spelling (`long count=size(); iterator left=begin();`, count/2, the stored Compare on the keys, `left=++mid`), which that
+// TU expands in place (0x00501645..0x00501687: finish then start loaded, `(finish-start)>>3`, `cdq ; sub ; sar` halving, `cmp
+// [esi+eax*8],0C2h ; jge`), while the const overload stays the out-of-line noinline body below (0x004365B0, called at 0x00501597).
+template<class K,class V,class CompareType>
+inline typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K& key)
+{
+    long count=this->size();
+    iterator left=this->begin();
+    while(count>0) {
+        long count2=count/2;
+        iterator mid=left+count2;
+        if(Compare(mid->first,key)) { left=++mid; count-=count2+1; }
+        else count=count2;
+    }
+    return left;
+}
+#else
 template<class K,class V,class CompareType>
 __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K,V,CompareType>::LowerBound(const K& key)
 {
@@ -83,6 +108,7 @@ __declspec(noinline) typename CVectorMap<K,V,CompareType>::iterator CVectorMap<K
     }
     return first;
 }
+#endif
 template<class K,class V,class CompareType>
 __declspec(noinline) typename CVectorMap<K,V,CompareType>::const_iterator CVectorMap<K,V,CompareType>::LowerBound(const K& key) const
 {

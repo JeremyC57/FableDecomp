@@ -7,6 +7,15 @@
 // out of line at 0x0057A690).
 #include "engine/CTCBase.h"
 #include "engine/ETCInterfaceType.h"
+#ifdef FABLE_RETAIL_CTCHEROSTATS_SERIALISE
+// Nested opt-in (chunk 849, row 0x0057E2F1 CTCHeroStats::OnSerialise): the typed members the serialiser transfers (map, vectors,
+// CCharString, list), so the includes they need come in only under the macro.
+#include "stlport/fable_map.h"
+#include "fable_string.h"
+#include "engine/CHeroMarriageInfo.h"
+#include "engine/EHeroTrainingStatus.h"
+class CPersistContext;
+#endif
 #ifdef FABLE_RETAIL_CTCHEROSTATS_MARRIAGE
 class CThingAICreature;
 enum EMarriageState;                                         // MS forward enum (the row defines the enumerators it uses)
@@ -57,6 +66,134 @@ public:
     unsigned char _pad_0x40[0x114 - 0x40];
     long TrainingStatus;                                                 // +0x114 EHeroTrainingStatus
     unsigned char _pad_0x118[0x1dc - 0x118];
+#elif defined(FABLE_RETAIL_CTCHEROSTATS_SERIALISE)
+    // Nested opt-in (chunk 849, row 0x0057E2F1 ?OnSerialise@CTCHeroStats@@MAEXAAVCPersistContext@@_N@Z, the protected virtual that
+    // overrides CTCBase slot 1): the generated default branch's offsets and Ego_r.pdb names, typed (STLport map/vector 0xC, list 4).
+    // MirroredCriminalStatus is Ego_r.pdb's 68-byte nested struct (Crimes[10] .. EntranceAngle +0x40); its ctor is out of line
+    // (??0MirroredCriminalStatus@CTCHeroStats@@QAE@XZ, retail 0x0057A5DD). The row's offsets: Morality `[ebx+28h]` .. Marriages `[ebx+1D8h]`.
+    struct MirroredCriminalStatus {
+        long Crimes[10];                                                 // +0x00
+        long LastTimeSeenByGuard;                                        // +0x28
+        long LastTimeExited;                                             // +0x2c
+        bool ExitedUsingTeleporter;                                      // +0x30
+        float EntrancePosX;                                              // +0x34
+        float EntrancePosY;                                              // +0x38
+        float EntrancePosZ;                                              // +0x3c
+        float EntranceAngle;                                             // +0x40
+        MirroredCriminalStatus();                                        // 0x0057A5DD
+    };
+protected:
+    void OnSerialise(CPersistContext& context, bool in_game);            // 0x0057E2F1 (virtual through CTCBase)
+public:
+    std::map<CCharString,MirroredCriminalStatus> OutstandingCrimes;      // +0x0c
+    std::vector<long> ExperienceSpentOn;                                 // +0x18
+    long             NumberOfDecapitations;                              // +0x24
+    long             Morality;                                           // +0x28
+    bool             MoralityChangingEnabled;                            // +0x2c
+    float            Age;                                                // +0x30
+    float            SunTan;                                             // +0x34
+    float            Fatness;                                            // +0x38
+    long             Money;                                              // +0x3c
+    long             MaxMoney;                                           // +0x40
+    long             ConfiscatedMoney;                                   // +0x44
+    long             TotalMoneyEarned;                                   // +0x48
+    long             TotalMoneySpent;                                    // +0x4c
+    long             RewardMoney;                                        // +0x50
+    long             RentMoney;                                          // +0x54
+    long             Stamina;                                            // +0x58
+    long             MaxStamina;                                         // +0x5c
+    long             FramesUntilStaminaRefills;                          // +0x60
+    long             FramesUntilHealthRefills;                           // +0x64
+    bool             ScriptOverridePreventStaminaRefill;                 // +0x68
+    long             FramesUntilFatnessReduces;                          // +0x6c
+    long             RenownLevel;                                        // +0x70
+    long             RenownMaxLevel;                                     // +0x74
+    long             RenownPointsInLevel;                                // +0x78
+    long             RenownTotal;                                        // +0x7c
+    float            Agreeableness;                                      // +0x80
+    float            InherentAttractiveness;                             // +0x84
+    float            InherentScariness;                                  // +0x88
+    float            ExtraMaxHealth;                                     // +0x8c
+    long             ExtraMaxStamina;                                    // +0x90
+    long             FramesLeftForSpeedMultiplier;                       // +0x94
+    long             MaximumMultiplier;                                  // +0x98
+    float            Attractiveness;                                     // +0x9c
+    float            Scariness;                                          // +0xa0
+    float            AppearanceGoodstrength;                             // +0xa4
+    float            SoundRadiusMultiplier;                              // +0xa8
+    float            VisibilityMultiplier;                               // +0xac
+    long             FrameUpdatedClothingStats;                          // +0xb0
+    long             FrameUpdatedTattooStats;                            // +0xb4
+    long             NumFailedAQuest;                                    // +0xb8
+    long             NumCompletedAQuest;                                 // +0xbc
+    long             NumCompletedACoreQuest;                             // +0xc0
+    long             NumCompletedAFeatQuest;                             // +0xc4
+    long             NumCompletedAnOptionalQuest;                        // +0xc8
+    long             NumBoastsTaken;                                     // +0xcc
+    long             NumBoastsCompleted;                                 // +0xd0
+    long             NumMountedTrophies;                                 // +0xd4
+    long             NumTrophyGamePlayed;                                // +0xd8
+    long             BestTrophyWitnesses;                                // +0xdc
+    long             NumberOfShopsOwned;                                 // +0xe0
+    long             NumberOfHousesOwned;                                // +0xe4
+    long             NumberOfBuildingsRented;                            // +0xe8
+    long             NumberOfVomits;                                     // +0xec
+    long             NumberOfDrinks;                                     // +0xf0
+    long             NumberOfCrimes;                                     // +0xf4
+    long             NumberOfCrimesOfMurder;                             // +0xf8
+    long             TotalFine;                                          // +0xfc
+    long             FinePaid;                                           // +0x100
+    long             TimesThrownOut;                                     // +0x104
+    long             TotalBribeAmount;                                   // +0x108
+    long             NumTeleports;                                       // +0x10c
+    float            MaxChickenThrow;                                    // +0x110
+    EHeroTrainingStatus TrainingStatus;                                  // +0x114
+    std::vector<long> HeroStatsExperience;                               // +0x118
+    std::vector<long> RegionTime;                                        // +0x124
+    std::vector<long> NumberOfTimesUsedAbility;                          // +0x130
+    long             TotalSpentExperience;                               // +0x13c
+    long             NumLoversAcquired;                                  // +0x140
+    long             NumWeddings;                                        // +0x144
+    long             NumSpousesMurdered;                                 // +0x148
+    long             NumSpousesDied;                                     // +0x14c
+    long             NumDivorces;                                        // +0x150
+    long             NumSex;                                             // +0x154
+    bool             HadScriptedSex;                                     // +0x158
+    bool             HadScriptedGaySex;                                  // +0x159
+    float            BiggestFish;                                        // +0x15c
+    unsigned char    HousePositions[0xc];                                // +0x160 vector<pair<const CRegion*,C3DVector> >
+    bool             InfiniteStamina;                                    // +0x16c
+    CCharString      DeathRecoveryMarkerName;                            // +0x170
+    bool             FailQuestOnDeath;                                   // +0x174
+    float            BestTimePairs;                                      // +0x178
+    float            BestTimeSorting;                                    // +0x17c
+    float            BestScoreBlackjack;                                 // +0x180
+    float            BestScoreCoinGolfOakVale;                           // +0x184
+    float            BestScoreCoinGolfSnowSpire;                         // +0x188
+    float            BestScoreShoveHaPenny;                              // +0x18c
+    float            BestTimeGuessTheAddition;                           // +0x190
+    bool             PrizeGivenPairs;                                    // +0x194
+    bool             PrizeGivenSorting;                                  // +0x195
+    bool             PrizeGivenBlackjack;                                // +0x196
+    bool             PrizeGivenCoinGolfOakVale;                          // +0x197
+    bool             PrizeGivenCoinGolfSnowSpire;                        // +0x198
+    bool             PrizeGivenShoveHaPenny;                             // +0x199
+    bool             PrizeGivenGuessTheAddition;                         // +0x19a
+    float            Drunkenness;                                        // +0x19c
+    float            BeerReservoir;                                      // +0x1a0
+    float            DrinkAffectMultiplier;                              // +0x1a4
+    float            DrinkAffectMultiplierMultiplier;                    // +0x1a8
+    long             FrameToVomit;                                       // +0x1ac
+    long             DeedHandle;                                         // +0x1b0
+    long             FrameEndVomit;                                      // +0x1b4
+    bool             UpdateDrunkenness;                                  // +0x1b8
+    unsigned char    PDef[0x4];                                          // +0x1bc CDefPointer<const CSpecialAbilitiesDrunkennessDef>
+    unsigned char    PrimitiveHandle[0x8];                               // +0x1c0 CEnginePrimitiveHandle
+    float            UCounter;                                           // +0x1c8
+    float            VCounter;                                           // +0x1cc
+    float            RotCounter;                                         // +0x1d0
+    bool             IsInCutSceneFirstTime;                              // +0x1d4
+    std::list<CHeroMarriageInfo> Marriages;                              // +0x1d8
 #else
     unsigned char _pad_after_base[0x1dc - sizeof(CTCBase)];
 #endif

@@ -1,0 +1,7 @@
+address	module	name	length
+00ae2e20	CParticleProgram	OptimiseSpringOrder	1293
+00501450	CWorldMap	GenerateRegionConnectivityGraph	1334
+0058e99f	CTCInventory	OpenInventoryShortcut	1498
+0041d21b	NUISystem::CManager	CreateComponent	1677
+009cf3a0	CBankFile	WriteSymbolHeaderFile	1991
+0057e2f1	CTCHeroStats	OnSerialise	2373

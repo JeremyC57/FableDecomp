@@ -1,3 +1,66 @@
+#ifdef FABLE_RETAIL_CTCINVENTORY
+#ifndef FABLE_ENGINE_CTCINVENTORY_RETAIL_H
+#define FABLE_ENGINE_CTCINVENTORY_RETAIL_H
+// Retail opt-in (chunk 849, row 0x0058E99F OpenInventoryShortcut; the CTCInventoryExperience pattern): the thing component on its
+// two RTTI bases (.?AVCTCInventory@@: NInventory::CTCInventoryBase at +0, sizeof 0x130, and NHeroInformationScreens::CBase at
+// +0x130, rtti_bases.tsv), then the members at the generated retail offsets below (Ego_r.pdb names; STLport 4.6 sizes). Retail
+// reads ParentThing +0x04 (CTCBase), Components +0x0C..+0x10 (CTCInventoryBase, FABLE_RETAIL_CTCINVENTORYBASE) and
+// PTop_Level_List +0x218 (`cmp dword ptr [esi+218h],0` at 0x0058E9EC). Methods: Ego_r.pdb / FableWin.pdb spellings (all public
+// QAEXXZ / QAEXJ@Z): OpenInventoryShortcut, DeleteMenuComponents 0x00587A41, OpenPCInventoryMenu 0x0058807D, OpenPCMapMenu
+// 0x00589A30, OpenPCSkillsMenu 0x00587BFF, OpenPCStatusMenu 0x0058A763 (the jump table at 0x0058EF31: cases 0-2 / 4 / 5,8 / 3,6,7).
+// Define FABLE_RETAIL_CTCBASE and FABLE_RETAIL_CTCINVENTORYBASE with it.
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "engine/NInventory_CTCInventoryBase.h"
+#include "engine/NHeroInformationScreens_CBase.h"
+namespace NUISystem { class CComponent; }
+class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
+public:
+    void OpenInventoryShortcut(long screen);
+    void DeleteMenuComponents();                                     // 0x00587A41
+    void OpenPCInventoryMenu();                                      // 0x0058807D
+    void OpenPCMapMenu();                                            // 0x00589A30
+    void OpenPCSkillsMenu();                                         // 0x00587BFF
+    void OpenPCStatusMenu();                                         // 0x0058A763
+    long          ThingToAssign;                             // +0x134
+    long          ThingSlotToSwap;                           // +0x138
+    NUISystem::CComponent* PComponentSlotToSwap;                      // +0x13c
+    long          ScreenToShortcut;                          // +0x140
+    unsigned char EditBoxes[0x4];                            // +0x144 list<NUISystem::CEditBox_*,std::allocator<NUISystem::CEditBox_*>_>
+    unsigned char QuickAccessItems[0xc];                     // +0x148 vector<long,std::allocator<long>_>
+    unsigned char ContextSensitiveItems[0xc];                // +0x154 vector<long,std::allocator<long>_>
+    unsigned char ContextSensitiveFadeTimes[0xc];            // +0x160 vector<CFadeInFadeOutBase,std::allocator<CFadeInFadeOutBase>_>
+    unsigned char InventoryMainPrimitiveHandles[0xc];        // +0x16c vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+    unsigned char QuickAccessPrimitiveHandles[0xc];          // +0x178 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+    unsigned char QuickAccessUnusableIconPrimitiveHandles[0xc];  // +0x184 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+    unsigned char OldObjectRHSet[0x18];                      // +0x190 CRightHandedSet
+    float         OldRotationAngle;                          // +0x1a8
+    unsigned char CurrentObjectRHSet[0x18];                  // +0x1ac CRightHandedSet
+    float         CurrentRotationAngle;                      // +0x1c4
+    long          ItemRHSetsApplyTo;                         // +0x1c8
+    bool          EnableQuickAccessAssign;                   // +0x1cc
+    bool          EnableQuickAccessRemove;                   // +0x1cd
+    bool          QuickAccessFlashState;                     // +0x1ce
+    unsigned char _pad_0x1cf[0x1];                           // +0x1cf
+    long          QuickAccessFlashTimer;                     // +0x1d0
+    bool          ContextSensitiveUpdate;                    // +0x1d4
+    unsigned char _pad_0x1d5[0x1];                           // +0x1d5
+    unsigned char _pad_0x1d6[0x2];                           // +0x1d6
+    unsigned char NumberOfCSOpinionExpressions[0xc];         // +0x1d8 vector<long,std::allocator<long>_>
+    unsigned char LastCSOpinionExpression[0xc];              // +0x1e4 vector<long,std::allocator<long>_>
+    unsigned char LastButOneCSOpinionExpression[0xc];        // +0x1f0 vector<long,std::allocator<long>_>
+    unsigned char ItemsMenuEntries[0xc];                     // +0x1fc map<long,NUISystem::CComponent_*,std::less<long>,std::allocator<std::pair<long_const_,NUISystem::CComponent_*>_>_>
+    unsigned char AssignedIcons[0xc];                        // +0x208 map<long,NUISystem::CComponent_*,std::less<long>,std::allocator<std::pair<long_const_,NUISystem::CComponent_*>_>_>
+    NUISystem::CComponent* PMouse_Pointer;                            // +0x214
+    NUISystem::CComponent* PTop_Level_List;                           // +0x218
+    unsigned char CurrentOpenMenu[0x4];                      // +0x21c CURRENT_OPEN_MENU
+    float         AccumFadeTime;                             // +0x220
+    unsigned char _pad_0x224[0x4];                           // +0x224
+};
+FABLE_STATIC_ASSERT(sizeof(CTCInventory) == 0x228);
+FABLE_STATIC_ASSERT(offsetof(CTCInventory, PTop_Level_List) == 0x218);
+#endif // FABLE_ENGINE_CTCINVENTORY_RETAIL_H
+#else // generated flattened default (unchanged)
 #ifndef FABLE_ENGINE_CTCINVENTORY_H
 #define FABLE_ENGINE_CTCINVENTORY_H
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
@@ -156,3 +219,4 @@ FABLE_STATIC_ASSERT(offsetof(CTCInventory, CurrentOpenMenu) == 0x21c);
 FABLE_STATIC_ASSERT(offsetof(CTCInventory, AccumFadeTime) == 0x220);
 
 #endif // FABLE_ENGINE_CTCINVENTORY_H
+#endif // FABLE_RETAIL_CTCINVENTORY

@@ -4055,7 +4055,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0048d050	__destroy_aux<std::_Deque_iterator<C2DVector, std::_Nonconst_traits<C2DVector>>>	std	unknown	undefined	0		0	yes	accepted									
 0048d0d0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 0048d390	`scalar deleting destructor'	CInputProcessJumpingAndRolling	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted									
-0048d400	GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_>_>	_global	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_> *,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
+0048d400	GetAllThings<CThing,std::vector<CThing*>,CThingFilter_HasTC>	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_> *,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 0048d490	_Destroy	std	__fastcall	CGetBestIciclePointForTarget	3	_Vector_iterator<std::_Vector_val<C3DVector,std::allocator<C3DVector>_>_>,_Vector_iterator<std::_Vector_val<C3DVector,std::allocator<C3DVector>_>_>,CGetBestIciclePointForTarget	1	yes	accepted									
 0048d520	FreeBuffer	CBankFileAsyncData	__thiscall	void	1	CBankFileAsyncData *	1	yes	accepted									
 0048d5c0	CopyFlaggedThings	_global	unknown	undefined	0		0	yes	accepted									
@@ -8723,7 +8723,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0051aac0	insert_unique	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
 0051ab90	Copy_CElement88_00519b80_0051ab90	_global	__fastcall	pair<CCharString,CCharString> *	4	pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 0051ac00	__uninitialized_copy<CNavigationAreaUpdate::CSwitchableBlockage const *, CNavigationAreaUpdate::CSwitchableBlockage *>	std	__fastcall	CMusicSetEntry *	4	CMusicSetEntry *,CMusicSetEntry *,CMusicSetEntry *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-0051ac70	DestroyRange_Tree_0051ac70	_global	unknown	undefined	0		0	yes	accepted									
+0051ac70	__destroy_aux<std::set<unsigned long>*>	std	unknown	undefined	0		0	yes	accepted									
 0051acf0	__partial_sort	_global	unknown	undefined	0		0	yes	accepted									
 0051adc0	`scalar deleting destructor'	CRegion	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CLandscapeBackgroundPatch_vectordeletingdestructor_0051adc0.cpp
 0051adf0	GetMaxSize	CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHeader8>	__fastcall	long	2	long,long	1	yes	accepted									
@@ -10294,7 +10294,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00569df0	RbTree_Clear_00569df0	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\CTCCarryable_OnKill_00569df0.cpp
 00569e30	_M_insert_overflow	std::vector<basic_string>	unknown	undefined	0		0	yes	accepted									
 00569f20	Transfer<CQuestActivityRecord>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
-00569fe0	Transfer<CQuestScoreRecord>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00569fe0	TransferVector<float>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 0056a0a0	_M_insert	std::_Rb_tree<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, std::vector<std::pair<float, CWideString>, std::allocator<std::pair<float, CWideString>>>>, std::_Select1st<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, std::vector<std::pair<float, CWideString>, std::allocator<std::pair<float, CWideString>>>>>, std::less<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity>, std::allocator<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, std::vector<std::pair<float, CWideString>, std::allocator<std::pair<float, CWideString>>>>>>	unknown	undefined	0		0	yes	accepted									
 0056a170	InsertUnique_CRetailTree_0056a170	_unattributed	unknown	undefined	0		0	yes	accepted									
 0056a230	resize	CRetailVectorSThreeStringEntry	__thiscall	void	1	CAIStateGroup_JackOfBladesBase *	1	yes	accepted									
@@ -10742,7 +10742,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0057f504	sub_0057f504	_global	unknown	undefined	0		0			discovered	gapscan							
 0057f525	Buynode	CRetailList_node0xc_dword	unknown	undefined	0		0	yes	accepted									
 0057f564	RbTreeIterator_PostIncrement_0057f564	_global	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CRegion_SetMiniMapRegionExitTextOffsetX_0057f564.cpp
-0057f58e	StdList_Clear_0057f58e	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CGuiControlTreePane_SortTreeRecursively_0057f58e.cpp
+0057f58e	clear	std::_List_base<CHeroMarriageInfo,std::allocator<CHeroMarriageInfo> >	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CGuiControlTreePane_SortTreeRecursively_0057f58e.cpp
 0057f5e1	StdList_Clear_0057f5e1	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CGuiControlTreePane_SortTreeRecursively_0057f5e1.cpp
 0057f616	CStringOwner_0057f616	_unattributed	__thiscall	undefined	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	0	yes	accepted									
 0057f62d	Forward_CForwarder_0057f62d	_unattributed	__thiscall	undefined	2	CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *	0	yes	accepted									
@@ -10839,8 +10839,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005812ae	GetBlockData	CBlockTable_005812ae	__thiscall	uchar *	2	CEngineStaticMapFileBlockManager *,long	1	yes	accepted									
 005812df	operator[]	std::map<CCharString, MirroredCriminalStatus>	unknown	undefined	0		0	yes	accepted									
 00581353	StdList_Dtor_00581353	_global	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\58\CActiveFile_OnReadFinished_00581353.cpp
-00581376	Construct_CRangeString_00581376	_unattributed	__thiscall	C2DVector	3	CPersistTraits<C2DVector> *,CPersistContext *,CStringParser *	1	yes	accepted									
-005813a0	GetLookDirection	CTCCameraPointScripted	__thiscall	C3DVector	2	CTCCameraPointScripted *,CRightHandedSet *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\58\CTCCameraPointScripted_GetLookDirection_005813a0.cpp
+00581376	copy<std::_List_iterator<CHeroMarriageInfo,std::_Nonconst_traits<CHeroMarriageInfo> >,std::back_insert_iterator<std::vector<CHeroMarriageInfo> > >	std	__thiscall	C2DVector	3	CPersistTraits<C2DVector> *,CPersistContext *,CStringParser *	1	yes	accepted									
+005813a0	copy<CHeroMarriageInfo*,std::back_insert_iterator<std::list<CHeroMarriageInfo> > >	std	__thiscall	C3DVector	2	CTCCameraPointScripted *,CRightHandedSet *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\58\CTCCameraPointScripted_GetLookDirection_005813a0.cpp
 005813bc	vfunc_1	CPersistContext_TransferableVector<long>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\58\vectorEWeaponClass_UmoveEWeaponClass_005813bc.cpp
 005813d7	Resize	CPersistContext_TransferableVector<CHeroMarriageInfo>	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted									
 00581404	GFSerialiseVectorBinaryIn<CHeroMarriageInfo>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CBrainUpdateZone,std::allocator<CBrainUpdateZone>_> *	1	yes	accepted									
@@ -10946,7 +10946,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0058a0c7	ConstructItemEntry	CTCInventory	__thiscall	void	6	CTCInventory *,long,long,CList *,CComponent *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 0058a724	GetStyleCardsListUIComponent	CTCInventory	__thiscall	void	5	CTCInventory *,long,long,long,CComponent *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\58\CTCInventory_GetStyleCardsListUIComponent_0058a724.cpp
 0058a729	ConstructStyleCardsScreenPC	CTCInventory	__thiscall	void	5	CTCInventory *,long,long,long,CComponent *	1	yes	accepted									
-0058a763	OpenPCSkillsMenu	CTCInventory	__thiscall	void	1	CTCInventory *	1	yes	accepted									
+0058a763	OpenPCStatusMenu	CTCInventory	__thiscall	void	1	CTCInventory *	1	yes	accepted									
 0058af10	OpenPCOptionsMenu	CTCInventory	__thiscall	void	1	CTCInventory *	1	yes	accepted									
 0058e208	ConstructItemEntryPC	CTCInventory	__thiscall	void	6	CTCInventory *,long,long,CList *,CComponent *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 0058e99f	OpenInventoryShortcut	CTCInventory	__thiscall	void	2	CTCInventory *,long	1	yes	accepted									
@@ -20462,7 +20462,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00760870	IsPosInAnyShape	CTCShapeManager	__thiscall	bool	2	CTCShapeManager *,C3DVector *	1	yes	accepted									
 00760910	GetPrincipalVector	CTCShapeManager	__thiscall	bool	2	CTCShapeManager *,C3DVector *	1	yes	accepted									
 00760990	FrameUpdate	CTCShapeManager	__thiscall	void	1	CTCShapeManager *	1	yes	accepted									
-00760a70	GetUpDirection	CSubdivisionTriangle	__thiscall	void	1	CSubdivisionTriangle *	1	yes	accepted									
+00760a70	GetUpDirection	NShape::CSubdivisionTriangle	__thiscall	void	1	CSubdivisionTriangle *	1	yes	accepted									
 00760bc0	GetBounds	NShape::CShape	__thiscall	void	2	CShape *,C2DBoxF *	1	yes	accepted									
 00760c40	GetTrackPosAtLengthFraction	NShape::CTrack	__thiscall	C3DVector	2	CTrack *,float	1	yes	accepted									
 00760da0	GetTrackPosNearest	NShape::CTrack	__thiscall	void	4	CTrack *,C3DVector *,C3DVector *,float *	1	yes	accepted									
@@ -34500,7 +34500,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009cea70	EndUpdateEntries	CBankFile	__thiscall	void	1	CBankFile *	1	yes	accepted									
 009ceae0	AllocateBuffers	CBankFile	unknown	undefined	0		0	yes	accepted									
 009cec60	Update	CBankFile	__thiscall	void	1	CBankFile *	1	yes	accepted									
-009cf3a0	CBankFile_WriteSymbolFile	_global	unknown	undefined	0		0	yes	accepted									
+009cf3a0	WriteSymbolHeaderFile	CBankFile	unknown	undefined	0		0	yes	accepted									
 009cfb70	PostInitEntries	CBankFile	__thiscall	void	1	CTCVillage *	1	yes	accepted									
 009cfbc0	ReadEntryList	CBankFile	__thiscall	bool	4	CBankFile *,CFileDataInputStream *,ulong,ulong	1	yes	accepted									
 009d0380	ReadRecoveryFile	CBankFile	__thiscall	bool	2	CBankFile *,ulong	1	yes	accepted									
@@ -34564,7 +34564,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009d3cf0	__make_heap	std	unknown	undefined	0		0	yes	accepted									
 009d3d90	DeallocateMemory	CArray<SElement12>	__thiscall	void	1	CArray<std::pair<unsigned_long,CDefClassBase::CSubDefInfo>_> *	1	yes	accepted									
 009d3df0	Resize_CRetailVector_009d3df0	_global	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
-009d3e80	Erase	CRetailTree_erase009d3e80	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
+009d3e80	_M_erase	std::_Rb_tree<CCharString,std::pair<const CCharString,CArray<unsigned long> >,...>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009d3ed0	__final_insertion_sort	std	unknown	undefined	0		0	yes	accepted									
 009d3fb0	~CArray	CArray<CCharString>	__thiscall	void	1	CArray<CCharString> *	1	yes	accepted									
 009d4010	resize	std::vector<CBankFile::CRuntimeData, std::allocator<CBankFile::CRuntimeData>>	__thiscall	void	3	vector<CBrainBehaviour,std::allocator<CBrainBehaviour>_> *,uint,CBrainBehaviour	1	yes	accepted									
@@ -38281,7 +38281,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a85050	__introsort_loop	std	unknown	undefined	0		0	yes	accepted									
 00a851e0	~CVectorTriple_00a851e0	CVectorTriple_00a851e0	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
 00a85240	resize	std::vector<list<C2DLineF> >	unknown	undefined	0		0	yes	accepted									
-00a852b0	Vector_PushBack_ControlTreeNode_With_Sort	_global	unknown	undefined	0		0	yes	accepted									
+00a852b0	Insert	CVectorMap<unsigned __int64,std::list<C2DLineF>,CKeyPairCompareLess<unsigned __int64,std::list<C2DLineF> > >	unknown	undefined	0		0	yes	accepted									
 00a85340	OnInitialActivate	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\CTCVillage_OnInitialActivate_00a85340.cpp
 00a85360	_Construct	std	__fastcall	void	3	allocator<CNavQuadTree::CNavigationLayer> *,CNavigationLayer *,CNavigationLayer *	1	yes	accepted									
 00a853a0	Sort_SElement16_00a853a0	_global	unknown	undefined	0		0	yes	accepted									
@@ -39949,7 +39949,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ae2cb0	SimulationStep	CParticleProgram	__thiscall	void	3	CParticleProgram *,CParticleSimulation *,CParticleContext *	1	yes	accepted									
 00ae2d20	SimulationStep	CParticleProgram	__thiscall	void	7	CParticleProgram *,CParticleSimulation *,CParticleContext *,C3DAnimationBlendState *,C3DAnimationManager *,C3DVector *,C3DMesh2 *	1	yes	accepted									
 00ae2d90	AddExportParticle	CParticleProgram	unknown	undefined	0		0	yes	accepted									
-00ae2e20	LTextBinTree_BuildAndSort	_global	unknown	undefined	0		0	yes	accepted									
+00ae2e20	OptimiseSpringOrder	CParticleProgram	unknown	undefined	0		0	yes	accepted									
 00ae3330	ReserveBoth	CVectorPairOwner_00ae3330	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 00ae3360	Clear	CParticleProgram	__thiscall	void	3	allocator<CScriptGameResourceObjectScriptedThingBase> *,CScriptGameResourceObjectScriptedThingBase *,CScriptGameResourceObjectScriptedThingBase *	1	yes	accepted									
 00ae34d0	SortAndProcess	CSortedMapOwner_00ae34d0	__thiscall	void	1	CTCVillage *	1	yes	accepted									
@@ -47403,7 +47403,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c71e10	sub_00c71e10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c71e90	sub_00c71e90	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c71f10	SetPitchProperties	CAudioSource	unknown	undefined	0		0	yes	accepted									
-00c71f80	CAudioSource::ComputePitchScale	CAudioSource	unknown	undefined	0		0	yes	accepted									
+00c71f80	ComputePitchScale	CAudioSource	unknown	undefined	0		0	yes	accepted									
 00c720c0	StartFade	CAudioSource	unknown	undefined	0		0	yes	accepted									
 00c72130	StartLinearFade	CAudioSource	unknown	undefined	0		0	yes	accepted									
 00c72200	CAudioSource::UpdateGainState	CAudioSource	unknown	undefined	0		0	yes	accepted									
@@ -47500,7 +47500,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c75ca0	Reset	CReverbTapBank	unknown	undefined	0		0	yes	accepted									
 00c75ce0	Process	CReverbStage94	unknown	undefined	0		0	yes	accepted									
 00c75e90	Process	CReverbTapBank	unknown	undefined	0		0	yes	accepted									
-00c75f80	CQ_GuildTrainingSkillScript_AllocateSkillBuffer	_global	unknown	undefined	0		0	yes	accepted									
+00c75f80	Allocate	CCombFilter	unknown	undefined	0		0	yes	accepted									
 00c75ff0	Process	CCombFilter	unknown	undefined	0		0	yes	accepted									
 00c76120	Blend	CCombFilter	unknown	undefined	0		0	yes	accepted									
 00c763c0	TailJmp_operator_new_00c763c0	_global	__thiscall	void	2	CTCHeroStats *,CBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CTCHeroStats_InformOfEvent_00c763c0.cpp
