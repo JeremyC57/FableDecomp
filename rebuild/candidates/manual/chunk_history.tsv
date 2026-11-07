@@ -27692,3 +27692,9 @@ chunk	address	module	name	length
 840	0047ed76	CTCInGameMenu	SetToSave	366
 840	009e5c90	CSymbolMap	LoadFromFile	373
 840	007534b0	CTCLook	IsPosInViewRange	384
+841	00ee3140	NScript::CV_TravellingHeroesScript::CTH_Whisper	Main	1366
+841	00da8bf0	NScript::CQ_MinionClifftopChaseScript::CMinionSpawnAdv	Main	1447
+841	00e71f10	NScript::CV_DemonDoorsScript::CDF_DressAsBandit	Main	1605
+841	00eeaef0	NScript::CExpression_PickpocketScript	Main	1906
+841	00ee4dd0	NScript::CV_TourGuideScript::CTourGuideFollower	Main	1946
+841	00ddd430	NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard	Main	2044

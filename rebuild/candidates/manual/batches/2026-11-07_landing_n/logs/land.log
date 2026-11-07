@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00d23dc0   RELOCATION_MATCH PASS   Main
+00ed3b30   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00ed3b30   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00d23dc0 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::?Main@CQ_BowerstoneTownLifeIntroScript@NScript@@UAEXXZ
+  00ed3b30 RELOCATION_MATCH NScript::CV_StatueMasterScript::?Main@CV_StatueMasterScript@NScript@@UAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQBowerstoneTownLifeIntroScript_Main_00d23dc0
+  NScriptCVStatueMasterScript_Main_00ed3b30

@@ -50996,7 +50996,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00da84e0	OnPersist	NScript::CQ_MinionClifftopChaseScript::CMinionEscort	unknown	undefined	0		0			discovered	gapscan							
 00da8510	ProcessMission	CQ_MinionClifftopChaseScript	__thiscall	void	1	CQ_MinionClifftopChaseScript *	1	yes	accepted									
 00da8970	GuardComment	NScript::CQ_MinionClifftopChaseScript	__thiscall	void	2	CQ_MinionClifftopChaseScript *,CCharString	1	yes	accepted									
-00da8bf0	Script_Minion_Summoner	_global	unknown	undefined	0		0	yes	accepted									
+00da8bf0	Main	NScript::CQ_MinionClifftopChaseScript::CMinionSpawnAdv	unknown	undefined	0		0	yes	accepted									
 00da91a0	Main	NScript::CQ_MinionClifftopChaseScript::CMapKeeper	__thiscall	void	1	CMapKeeper *	1	yes	accepted									
 00da9c70	Main	NScript::CQ_MinionClifftopChaseScript::CMinionWarningGuard	__thiscall	void	1	CMinionWarningGuard *	1	yes	accepted									
 00daa260	Main	NScript::CQ_MinionClifftopChaseScript::CMinionFieldGenerator	__thiscall	void	1	CMinionFieldGenerator *	1	yes	accepted									
@@ -51430,7 +51430,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ddc980	Main	NScript::CQ_PrisonRaceScript::CPrisonRacer	__thiscall	void	1	CPrisonRacer *	1	yes	accepted									
 00ddcf50	MakeRacerComment	NScript::CQ_PrisonRaceScript	__thiscall	bool	3	CQ_PrisonEscapeRescueMotherScript *,CScriptThing *,CCharString *	1	yes	accepted									
 00ddd030	Main	NScript::CQ_PrisonRaceScript::CPrisonRaceWarden	__thiscall	void	1	CPrisonRaceWarden *	1	yes	accepted									
-00ddd430	Script_Guard_Prison_Race	_global	unknown	undefined	0		0	yes	accepted									
+00ddd430	Main	NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard	unknown	undefined	0		0	yes	accepted									
 00dddc30	Alloc	NScript::CQ_PrisonRaceScript	__thiscall	CActionEventBase *	4	CActionEventShot *,long,CThingCreatureBase *,CGameCameraManager *	1	yes	accepted									
 00dddc70	`scalar deleting destructor'	NScript::CQ_PrisonRaceScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\dd\CLandscapeBackgroundPatch_vectordeletingdestructor_00dddc70.cpp
 00dddc90	CQ_PrisonWardenGameScript	NScript::CQ_PrisonWardenGameScript	__thiscall	undefined	1	CIcicleData *	0	yes	accepted									
@@ -52911,7 +52911,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e71e40	Alloc	NScript::CV_DemonDoorsScript::CDF_DressAsBandit	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00e71ee0	GetParentScript	NScript::CV_DemonDoorsScript::CDF_DressAsBandit	unknown	undefined	0		0			discovered	gapscan							
 00e71ef0	`scalar deleting destructor'	NScript::CV_DemonDoorsScript::CDF_DressAsBandit	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e7\CLandscapeBackgroundPatch_vectordeletingdestructor_00e71ef0.cpp
-00e71f10	CScriptGameResourceObjectScriptedThingBase_HandleBanditCampQuestSequence	_global	unknown	undefined	0		0	yes	accepted									
+00e71f10	Main	NScript::CV_DemonDoorsScript::CDF_DressAsBandit	unknown	undefined	0		0	yes	accepted									
 00e72560	Alloc	NScript::CV_DemonDoorsScript::CDF_ThreeSuits	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00e72600	GetParentScript	NScript::CV_DemonDoorsScript::CDF_ThreeSuits	unknown	undefined	0		0			discovered	gapscan							
 00e72610	`scalar deleting destructor'	NScript::CV_DemonDoorsScript::CDF_ThreeSuits	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e7\CLandscapeBackgroundPatch_vectordeletingdestructor_00e72610.cpp
@@ -54067,7 +54067,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ee29d0	ThunderChatter	NScript::CV_TravellingHeroesScript	unknown	undefined	0		0			discovered	gapscan							
 00ee2a80	DoConversation	NScript::CV_TravellingHeroesScript	__thiscall	void	2	CV_TravellingHeroesScript *,long	1	yes	accepted									
 00ee2db0	PlayCutscene	NScript::CV_TravellingHeroesScript	__thiscall	void	4	CV_ExposeMayorScript *,CCharString,bool,CCharString	1	yes	accepted									
-00ee3140	Script_TravHeroWhisper_Main	_global	unknown	undefined	0		0	yes	accepted									
+00ee3140	Main	NScript::CV_TravellingHeroesScript::CTH_Whisper	unknown	undefined	0		0	yes	accepted									
 00ee36a0	Main	NScript::CV_TravellingHeroesScript::CTH_SnowTroll	__thiscall	void	1	CStopDrawing *	1	yes	accepted									
 00ee3b20	Main	NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze	unknown	undefined	0		0			discovered	gapscan							
 00ee3ee0	Main	NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Rose	__thiscall	void	1	CTH_Trigger_Guild_Rose *	1	yes	accepted									
@@ -54091,7 +54091,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ee4d90	GetParentScript	NScript::CV_TourGuideScript::CTourGuideFollower	unknown	undefined	0		0			discovered	gapscan							
 00ee4da0	Init	NScript::CV_TourGuideScript::CTourGuideFollower	unknown	undefined	0		0			discovered	gapscan							
 00ee4db0	`scalar deleting destructor'	NScript::CV_TourGuideScript::CTourGuideFollower	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CLandscapeBackgroundPatch_vectordeletingdestructor_00ee4db0.cpp
-00ee4dd0	Script_TourGuide_Main	_global	unknown	undefined	0		0	yes	accepted									
+00ee4dd0	Main	NScript::CV_TourGuideScript::CTourGuideFollower	unknown	undefined	0		0	yes	accepted									
 00ee5570	CreateActiveEntityScript	CEntityScriptBinding<NScript::CV_TourGuideScript>	unknown	undefined	0		0	yes	accepted									
 00ee5680	SuspendableProcess	CActiveEntityScript<NScript::CV_TourGuideScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
 00ee56d0	`scalar deleting destructor'	CSpawnedFunc<NScript::CV_TourGuideScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CLandscapeBackgroundPatch_vectordeletingdestructor_00ee56d0.cpp
@@ -54182,7 +54182,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00eeaea0	`scalar deleting destructor'	NScript::CExpression_DigScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CLandscapeBackgroundPatch_vectordeletingdestructor_00eeaea0.cpp
 00eeaec0	CExpression_PickpocketScript	NScript::CExpression_PickpocketScript	__thiscall	undefined	2	CEngineSubPrimitive2DClockSprite *,CEngineInternalPrimitive2DClockSprite *	0	yes	accepted									
 00eeaee0	Init	NScript::CExpression_PickpocketScript	unknown	undefined	0		0			discovered	gapscan							
-00eeaef0	Script_PickpocketExpression	_global	unknown	undefined	0		0	yes	accepted									
+00eeaef0	Main	NScript::CExpression_PickpocketScript	unknown	undefined	0		0	yes	accepted									
 00eeb670	RegisterMain	NScript::CExpression_PickpocketScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00eeb700	SuspendableProcess	CSpawnedFunc<NScript::CExpression_PickpocketScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00eeb700.cpp
 00eeb710	`scalar deleting destructor'	CSpawnedFunc<NScript::CExpression_PickpocketScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CLandscapeBackgroundPatch_vectordeletingdestructor_00eeb710.cpp

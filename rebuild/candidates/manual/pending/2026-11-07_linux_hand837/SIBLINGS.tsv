@@ -1,0 +1,10 @@
+address	source	grade_with_final_overlay	note
+00d23dc0	src/00d23dc0.cpp	RELOCATION_MATCH	this chunk, vland PASS
+00ed3b30	src/00ed3b30.cpp	RELOCATION_MATCH	this chunk, vland PASS (RELOC_ALIAS warn: _CIfmod import thunk)
+00d35090	rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_Main_00d35090.cpp	RELOCATION_MATCH	landed includer of engine/CQ_FireHeartScript.h (opt-in edit)
+00d368d0	rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHGuildMaster_Main_00d368d0.cpp	RELOCATION_MATCH	landed includer of engine/CQ_FireHeartScript.h
+00d39330	rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_PlayCutscene_00d39330.cpp	RELOCATION_MATCH	landed includer of engine/CQ_FireHeartScript.h
+00d3a4a0	differ/00d3a4a0.cpp	DIFFER(1140v1140) md13	parked, this chunk
+00ddae40	differ/00ddae40.cpp	DIFFER(1180v1180) md2	parked, this chunk
+00ef4b40	differ/00ef4b40.cpp	DIFFER(1252v1268) md13	parked, this chunk
+00efa4f0	differ/00efa4f0.cpp	DIFFER(1365v1362) md33	parked, this chunk

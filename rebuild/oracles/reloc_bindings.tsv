@@ -37357,3 +37357,10 @@ $notRedefined$4399	0068a01d	00689df0
 ?ShareData@?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEXPAVCScriptGameResourceObjectScriptedThingBase@@PAVCCPPointerInfo@@@Z	008aa8e0	00d368d0
 ?PlayCutscene@CV_SickChildScript@NScript@@QAEXVCCharString@@0@Z	00ece460	00ecd9e0
 ?GetRandomBanditName@CV_LostTraderScript@NScript@@QAE?AVCCharString@@XZ	00ea5690	00ea5230
+??_7?$CEntityScriptBinding@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@6B@	012cb5a4	00d23dc0
+?Alloc@CBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d24210	00d23dc0
+?Alloc@CBowerstoneIntroGuardToPosh@CQ_BowerstoneTownLifeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d24330	00d23dc0
+??_7?$CEntityScriptBinding@VCV_StatueMasterScript@NScript@@@@6B@	012f2f0c	00ed3b30
+?Alloc@CStatueMasterCellarDoors@CV_StatueMasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ed44c0	00ed3b30
+?Alloc@CStatueMasterChest@CV_StatueMasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ed4770	00ed3b30
+?Alloc@CStatueMasterStatue@CV_StatueMasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ed40c0	00ed3b30

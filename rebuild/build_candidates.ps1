@@ -385069,6 +385069,20 @@ $catalog = @(
         TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderBanditSpawn_Main_00ea5230_test.cpp'
         PassPattern = '00ea5230_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d23dc0'
+        Module = 'NScript::CQ_BowerstoneTownLifeIntroScript'
+        Source = '00/d2/NScriptCQBowerstoneTownLifeIntroScript_Main_00d23dc0.cpp'
+        TestSource = '00/d2/NScriptCQBowerstoneTownLifeIntroScript_Main_00d23dc0_test.cpp'
+        PassPattern = '00d23dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed3b30'
+        Module = 'NScript::CV_StatueMasterScript'
+        Source = '00/ed/NScriptCVStatueMasterScript_Main_00ed3b30.cpp'
+        TestSource = '00/ed/NScriptCVStatueMasterScript_Main_00ed3b30_test.cpp'
+        PassPattern = '00ed3b30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
