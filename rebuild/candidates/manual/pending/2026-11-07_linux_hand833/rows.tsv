@@ -1,0 +1,7 @@
+address	module	name	length
+00d17f20	NScript::CQ_BountyHuntScript::CBH_GangDeputy1	Main	3068
+00d19bd0	NScript::CQ_BountyHuntScript::CBH_Hostage1	Main	2918
+00d1a740	NScript::CQ_BountyHuntScript::CBH_Hostage2	Main	2743
+00e17840	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief	Main	2515
+00e19d80	NScript::CQ_WhiteBalverineWWScript::CKG_Chief	Main	2539
+00db1f00	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman	Main	2714

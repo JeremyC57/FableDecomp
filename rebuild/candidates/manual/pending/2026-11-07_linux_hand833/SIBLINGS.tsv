@@ -1,0 +1,11 @@
+address	source	grade_with_final_overlay	note
+00e158f0	rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_Main_00e158f0.cpp	RELOCATION_MATCH PASS	includer of CQ_WhiteBalverineKnotholeGladeScript.h; vland --recheck-landed with FABLE_HDR_OVERLAY=hdr (opt-in edit only, default path untouched)
+00e18630	rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScript_Main_00e18630.cpp	RELOCATION_MATCH PASS	includer of CQ_WhiteBalverineWWScript.h; RELOC_NAME warn on 0x00CDBFB0 label only (see LABELS.tsv)
+00e13f10	rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_Main_00e13f10.cpp	RELOCATION_MATCH PASS	includer of CQ_WhiteBalverineKnotholeGladeScript.h; RELOC_NAME warns on 0x00E15500 / 0x00CDBFB0 labels only (see LABELS.tsv)
+00d17470	rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_SpawnBanditGangGrunts_00d17470.cpp	RELOCATION_MATCH PASS	includer of CQ_BountyHuntScript.h
+00d13130	rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_OnPersist_00d13130.cpp	RELOCATION_MATCH PASS	includer of CQ_BountyHuntScript.h
+00db09e0	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_Main_00db09e0.cpp	RELOCATION_MATCH PASS	includer of CQ_NewOakValeIntroScript.h
+00db86b0	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVILiveFather_Main_00db86b0.cpp	RELOCATION_MATCH PASS	includer of CQ_NewOakValeIntroScript.h
+00db2b10	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_Main_00db2b10.cpp	RELOCATION_MATCH PASS	includer of CQ_NewOakValeIntroScript.h
+00dbcd60	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIVictim_Main_00dbcd60.cpp	RELOCATION_MATCH PASS	includer of CQ_NewOakValeIntroScript.h
+00db6c60	rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_Main_00db6c60.cpp	RELOCATION_MATCH PASS	includer of CQ_NewOakValeIntroScript.h

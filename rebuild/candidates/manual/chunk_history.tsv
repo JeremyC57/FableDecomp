@@ -27640,3 +27640,9 @@ chunk	address	module	name	length
 833	00e17840	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief	Main	2515
 833	00e19d80	NScript::CQ_WhiteBalverineWWScript::CKG_Chief	Main	2539
 833	00db1f00	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman	Main	2714
+834	00e25f70	NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern	Main	2049
+834	00d886b0	NScript::CQ_HeroSoulsNostroScript::CGuardNearGraveyardPath	Main	2064
+834	00d368d0	NScript::CQ_FireHeartScript::CFH_GuildMaster	Main	2147
+834	00d1fd30	NScript::CQ_BreakSiegeScript::CDisplacedTrader	Main	2255
+834	00e72630	NScript::CV_DemonDoorsScript::CDF_ThreeSuits	Main	2252
+834	00d24a40	NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh	Main	2403

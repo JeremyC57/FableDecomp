@@ -1,0 +1,6 @@
+address	name	evidence
+00e17840	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::Main	chunk 833: parked row; slot 1 of entity vtable 0x012E0B98; Ego_r.pdb ?Main@CKG_Chief@CQ_WhiteBalverineKnotholeGladeScript@NScript@@EAEXXZ
+00db1f00	NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman::Main	chunk 833: parked row; slot 1 of entity vtable 0x012D8C08; Ego_r.pdb ?Main@CNOVI_AffairWoman@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+00d17f20	NScript::CQ_BountyHuntScript::CBH_GangDeputy1::Main	chunk 833: parked row; slot 1 of entity vtable 0x012CA554 (stored by landed Alloc 0x00D15FC0); Ego_r.pdb ?Main@CBH_GangDeputy1@CQ_BountyHuntScript@NScript@@EAEXXZ
+00d19bd0	NScript::CQ_BountyHuntScript::CBH_Hostage1::Main	chunk 833: parked row; slot 1 of entity vtable 0x012CA570 (stored by landed Alloc 0x00D160B0); Ego_r.pdb ?Main@CBH_Hostage1@CQ_BountyHuntScript@NScript@@EAEXXZ
+00d1a740	NScript::CQ_BountyHuntScript::CBH_Hostage2::Main	chunk 833: parked row; slot 1 of entity vtable 0x012CA5A8 (stored by landed Alloc 0x00D16290); Ego_r.pdb ?Main@CBH_Hostage2@CQ_BountyHuntScript@NScript@@EAEXXZ

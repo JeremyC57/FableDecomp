@@ -1,0 +1,56 @@
+# address attempt-id result -- what changed / what VC7.1 emitted
+00d17f20 a1 DIFFER(3035v3068) md78 -- GangDeputy2 (chunk 822 park) defines/includes + MOVIEBASE FORCEINLINE_CTOR + implicit dtor + declared-only PImp dtor spec; both MovieBase dtor sites call COMDAT 0x006E7B80 (retail expands: PImp 0x006E7AB0 + GROBase vtable + ~CBaseObject); knock-on: temp flag home [esp+0x74] v retail 0x10, cond-loop string temps descending v ascending, ParentClass/flags register swap in the CSpawnedFunc block
+00d17f20 d1 RELOCATION_MATCH(diag /d2inlS15) -- a1 unchanged under /d2inlS15: the whole residue is the MovieBase dtor inline decision
+00d17f20 a2 DIFFER(3035v3068) md78 -- chunk 821 SAY do{}while(0) round the speech if: identical bytes
+00d17f20 a3 DIFFER(3071v3068) md538 -- region arms swapped (if (!GE) {Fisherman} else {GE}) to visit the movie sites earlier: layout changes (neg/sbb), dtor still called
+00d17f20 a4 DIFFER(3035v3068) md135 -- drop MOVIEBASE FORCEINLINE_CTOR (implicit ctor): frame 0x88, worse
+00d17f20 a5 DIFFER(3035v3068) md148 -- a4 + drop CWIDESCREEN FORCEINLINE_CTOR: worse
+00d17f20 x1-x4 diag -- removing the teleport block / the spawn block / the whole GE branch / the hostage-escape block: dtor still called (not caller-size before or after)
+00d17f20 h1-h6 DIFFER(3035v3068) md78 -- do{}while(0) round the intro if / movie scope / health if / speech-wait T checks / speech loop: identical bytes
+00d19bd0 a1 DIFFER(2807v2918) md188: plain source; implicit STB operator= (CBaseObject::operator= 0x0099A3B0 + CCountedPointer share) is called at all 5 cast-map assignment sites where retail expands it, plus the MovieBase dtor called v expanded
+00d19bd0 a2 md188: OUTOFLINE_ASSIGN opt-in + row-local plain inline operator=, identical (not expanded)
+00d19bd0 a3 DIFFER(2888v2918) md127: __forceinline row-local operator= (owner 2026-11-07: forbidden for an inlining residue; diagnostic only)
+00d19bd0 d1/d2 DIFFER(2853v2918) md101 under /d2inlS15: a1/a2 still call operator=
+00d19bd0 d3 RELOCATION_MATCH under /d2inlS15 with the a3 forceinline operator=: both rows blocked by the caller-size inline budget
+00d19bd0 a4 md188: do{}while(0) round every cast-map assignment block (WW lever), identical
+00d19bd0 a5 md188: do{}while(0) round the first block only, identical
+00d19bd0 a6 md188: TRetVoid _Fail_Val returns, identical
+00d19bd0 d4 DIFFER(2853v2918) md101: a4 + /d2inlS15, operator= still called (the heat lever does not reach a 2.9 KB caller)
+00d1a740 a1 DIFFER(2706v2743) md130: OUTOFLINE_ASSIGN + __forceinline row-local STB operator= (forbidden per owner 2026-11-07; diagnostic)
+00d1a740 a2 a1 + TRetVoid returns (no grade kept; superseded by d2)
+00d1a740 a3 md167: plain implicit operator= + do{}while(0) round the 2 cast-map assignments: operator= still called at both sites, MovieBase dtor called
+00d1a740 a4 md167: plain implicit operator=, no lever (parked best)
+00d1a740 d1 DIFFER(2743v2743) md4 under /d2inlS15 with forceinline operator=: only the post-loop T test at 0x00D1AA9F differs
+00d1a740 d2 md4: d1 + TRetVoid, identical
+00d1a740 d5 md10: GreatwoodLake wait as for(;;){if(...)break;}, worse
+00d1a740 d6 md4: wait loop in its own block, identical
+00d1a740 d7 md10: bool lake_loaded do/while, worse
+00d1a740 d8 DIFFER(2707v2743) md49: a3 (plain + do-while) under /d2inlS15: operator= still called
+00d1a740 d9 md4: d1 TRetVoid variant, identical
+00d1a740 d10 md10: d5 under S15, worse
+00d1a740 d11 md4: De Morgan wait condition, identical
+00e17840 a1 DIFFER(2724v2515) md180: implicit MovieBase ctor/dtor, declared-only CScriptThing copy
+00e17840 a2 md140: + MOVIEBASE OUTOFLINE_DTOR
+00e17840 a3 DIFFER(2605v2515) md121: + row-local inline CScriptThing copy: both the CIsThingAlive Thing copy and the by-value SetIsPushableByHero copy expanded (retail: first called 0x004ABE90, second expanded)
+00e17840 a4 md121: FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY instead, identical to a3
+00e17840 a5 DIFFER(2576v2515) md148: loop head as for(;;){do{if(T)return;}while(0);...} (heat), more pads expanded
+00e17840 a6 DIFFER(2624v2515) md129: a5 + inline copy
+00e17840 a7 md121: a3 + temporary predicate SetPredicate(CIsThingAlive(Me)), identical
+00e17840 a8 DIFFER(2453v2515) md112: a2 + MOVIEBASE OUTOFLINE_CTOR + named predicate, declared-only copy: both movie ctors call 0x006E7B60 (retail expands the talk one; chunk 823 blocker), both thing copies called
+00e17840 a9 DIFFER(2501v2515) md97: a8 + inline CScriptThing copy defined after Main: both copies expanded, everything else as a8
+00e17840 a10 md97: copy defined before Main and the CIsThingAlive ctor after Main, identical (definition order does not move the decision)
+00e17840 a11 DIFFER(2517v2515) md99: a9 + STB OUTOFLINE_DTOR + row-local inline empty STB dtor (per-exit split lever): seh_me dtor expanded at two exits and still called at one, worse
+00e17840 a12 md97: a9 with the copy definition beside the other inline definitions (final differ source), identical to a9. Residues left: mixed MovieBase ctor, CScriptThing copy split, CWideScreenMagicPauseEntities dtor duplicated per return pad + seh_me dtor expanded only at the natural loop exit
+00e19d80 a1 DIFFER(2358v2539) md292: plain cast-map assignments call the implicit STB operator= (retail expands both)
+00e19d80 a2 RELOCATION_MATCH: one do { } while (0); round the two cast-map assignments (single-site heat lever, line-3 Inline-split note) expands both
+00e19d80 a3 RELOCATION_MATCH: one do-while per assignment, same bytes; a2 kept (one site). vland read-only RELOCATION_MATCH + PASS; every relocation agrees with reloc_bindings.tsv
+00db1f00 a1 DIFFER(2992v2714) md243: TRetVoid _Fail_Val returns + row-local inline ~CScriptThing (per-exit split lever)
+00db1f00 a2 DIFFER(2752v2714) md653: a1 without the inline dtor: every ~CScriptThing called, pads merged, much worse
+00db1f00 a3 md243: a1 with plain returns, identical
+00db1f00 a4 md653: a2 with plain returns, identical
+00db1f00 a5 DIFFER(3034v2714) md396: a3 + walk-home loop as for(;;){if(!...)break;}, worse
+00db1f00 a6 DIFFER(2864v2714) md198: main loop as explicit pre-loop T + loop-bottom NSF/T (was for(;;NSF){T...})
+00db1f00 a7 md198: a6 + empty block in the walk-home branch, identical
+00db1f00 a8 DIFFER(2858v2714) md135: a6 + block scope round the post-loop run-off tail (parked best): residue = the walk-home wait-loop return pad expands ~CScriptThing for AffairWife/AffairMan (retail calls 0x004AA840) + predicate home [esp+0x6c] v retail 0x60 with the vtable in edi
+00db1f00 a9 DIFFER(2797v2714) md241: a8 + block scope holding AffairWife/AffairMan round the main loop, worse
+00db1f00 a10 DIFFER(2876v2714) md153: a8 + walk-home loop as for(;;) with break test, worse

@@ -384989,6 +384989,13 @@ $catalog = @(
         TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScript_ResetCells_00dd9a50_test.cpp'
         PassPattern = '00dd9a50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e19d80'
+        Module = 'NScript::CQ_WhiteBalverineWWScript::CKG_Chief'
+        Source = '00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Main_00e19d80.cpp'
+        TestSource = '00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Main_00e19d80_test.cpp'
+        PassPattern = '00e19d80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
