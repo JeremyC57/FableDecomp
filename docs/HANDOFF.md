@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-838 and 841 recorded; chunks 842 and 843 running; Fable chunks 839 / 840 landed, no new Fable agents)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-838 and 841 recorded; chunks 842, 843 and the Fable retry chunk 844 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -26,6 +26,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x0143E8E0, CThing::PeekPlayer), w2 123 CThing leftovers, w3 388 CIntelligentPointer leftovers; coordinator regrade
     6,778/6,778 PASS. Phase 8 brief: `plan_p7_w1/NEXT.md` (wave 4 CTCBase / CThingCreatureBase, the CThing deferral classes, the
     wave 1 naming decisions incl. 0x004BFFC0 ClearHighlighted vs ClearMeshEffect). Refresh the index first.
+  - **Fable-model agents (the user, 2026-11-07):** "dont relaunch the fable agents for now", then "start a fable retry agent on retrying even
+    harder on the ones from 839 and 840 that didnt land": chunk 844 (`$S/w22/agent844`, 50+ attempts per row) retries those 11 rows
+    (0x0070C4E0, 0x00C52BB0, 0x0058301A, 0x0073ACC0, 0x0047ED76, 0x007534B0, 0x00DE4710, 0x00E76E90, 0x00E482F0, 0x00775350, 0x00D0EE70).
+    Start no other Fable agent unless the user asks.
   - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 843 (`$S/w22/agent843`: 0x00B2FD60 (placeholder, probably a CEngineCamera member), CIPhysicsFacesSegmentBase::CalculateDividingPlane
     0x00A86110, CThingManager::LoadGameState 0x005253F0, and Codex rows CKG_Sheriff 0x00D22F30, CRansomHelper 0x00DE9690, CPrisonerAccomplice
     0x00DD4AD0; chunk 841 landed 1 of 6, `2026-11-07_landing_p/`)
