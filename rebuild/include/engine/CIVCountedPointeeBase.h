@@ -19,6 +19,12 @@
 #include <stddef.h>
 class CIVCountedPointeeBase {
 public:
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_CTOR
+    // Nested opt-in (chunk 850, row 0x00AC5770): Ego_r.pdb / FableWin.pdb ??0CIVCountedPointeeBase@@QAE@XZ is a user constructor,
+    // inline in retail: the expanded CMapFilenames constructor stores +4 = 1 before the derived vtable and before the member
+    // constructors (0x00AC5ECB, and the out-of-line 0x00AC5190), with the base vtable store folded away.
+    CIVCountedPointeeBase() : IVRefCount(1) { }
+#endif
     virtual ~CIVCountedPointeeBase() { }                                 // slot 0  0x004664E0 (scalar deleting; inline dtor)
     virtual void Delete() const;                                         // slot 1  0x0042D930
     void AddRef() const { ++IVRefCount; }                                // FableWin.pdb ?AddRef@CIVCountedPointeeBase@@QBEXXZ (inline)

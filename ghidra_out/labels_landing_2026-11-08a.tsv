@@ -1,0 +1,4 @@
+address	name	evidence
+0x009EE7B0	std::_List_base<CConsoleCommandLine>::clear	called on CConsole::CommandLineHistory (+0x4C) before HistoryPos = begin() in CConsole::Initialise 0x009ED190 (src/009ed190.cpp, RELOCATION_MATCH); STLport 4.6 _List_base::clear; current label _unattributed::clear_CRetailList_009ee7b0 is a placeholder (chunk 850)
+0x009964E0	CDataInputStream::CopyTo	Ego_r.pdb ?CopyTo@CDataInputStream@@QAEXAAVCDataOutputStream@@K@Z; caller CParticleProgram::ReadFromFile 0x00AE3C30; manifest label ReadWithChunking is wrong (chunk 850)
+0x00ADF460	CParticleProgram::AllocateArrays	Ego_r.pdb ?AllocateArrays@CParticleProgram@@AAE_NKAAVCMovableResourceMemoryPool@@@Z; body writes CParticleProgram +0x13C/+0x138/+0xC0; manifest label CMovableResource::AllocateParticles is wrong (chunk 850)

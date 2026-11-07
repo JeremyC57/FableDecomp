@@ -18,7 +18,16 @@ public:
     // ?Reset@?$CIVCountedPointer@..@@QAEXPAV1@@Z and ?Release@?$CIVCountedPointer@..@@QAEXXZ, inline in retail. Release clears the
     // pointer inside its null test and Reset stores the new one after it: CEnginePrimitiveHandle::Clear's `Data.Reset(0)` gives
     // retail's `mov [esi+4],0` on the release path plus the unconditional second store (0x00B1A623 / 0x00B1A626).
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RESET_ADOPT
+    // Nested opt-in (chunk 850, row 0x00AC5770 C3DMeshFileEngineMaterialChunk::ReadFromFile): Ego_r.pdb
+    // ?Reset@?$CIVCountedPointer@VCMapFilenames@C3DMeshFileEngineMaterialChunk@@@@QAEXPAV..@@Z adopts the pointer: the new
+    // CMapFilenames (IVRefCount 1 from its constructor) is stored after the release with no AddRef (0x00AC5A86 / 0x00AC5F16:
+    // `mov [edi+0x34],ebp` right after the release block, no `inc [ebp+4]`). The AddRef of the branch below is unproven
+    // (its only landed users pass 0).
+    void Reset(T* object) { Release(); Object = object; }
+#else
     void Reset(T* object) { Release(); Object = object; if (Object) Object->AddRef(); }
+#endif
 #else
     void Reset(T* object);
 #endif

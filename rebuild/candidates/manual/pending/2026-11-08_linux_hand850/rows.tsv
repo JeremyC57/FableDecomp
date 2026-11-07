@@ -1,0 +1,7 @@
+address	module	name	length
+0050a650	CWorldMap	GetMapNavigationAreaInit	2233
+009ed190	CConsole	Initialise	2266
+00ae3c30	CParticleProgram	ReadFromFile	2310
+00500540	CWorldMap	LoadRegion	2412
+00ac5770	C3DMeshFileEngineMaterialChunk	ReadFromFile	2568
+00772bb0	CTCShop	AddSaleItem	2585

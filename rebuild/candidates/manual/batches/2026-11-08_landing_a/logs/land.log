@@ -1,0 +1,11 @@
+addr       parity           behav  name
+009ed190   RELOCATION_MATCH PASS   Initialise
+00ac5770   RELOCATION_MATCH PASS   ReadFromFile
+
+WINS: 2
+  009ed190 RELOCATION_MATCH CConsole::?Initialise@CConsole@@QAEXDW4EInputKey@@PBVCFontBank@@@Z
+  00ac5770 RELOCATION_MATCH C3DMeshFileEngineMaterialChunk::?ReadFromFile@C3DMeshFileEngineMaterialChunk@@UAEXAAVCDataInputStream@@KAAVCChunkedFileLoader@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CConsole_Initialise_009ed190
+  C3DMeshFileEngineMaterialChunk_ReadFromFile_00ac5770

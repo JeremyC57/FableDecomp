@@ -385312,6 +385312,20 @@ $catalog = @(
         TestSource = '00/ea/NScriptCVKnotholeGladeGatesScript_WatchForCutscene1_00ea2720_test.cpp'
         PassPattern = '00ea2720_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009ed190'
+        Module = 'CConsole'
+        Source = '00/9e/CConsole_Initialise_009ed190.cpp'
+        TestSource = '00/9e/CConsole_Initialise_009ed190_test.cpp'
+        PassPattern = '009ed190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac5770'
+        Module = 'C3DMeshFileEngineMaterialChunk'
+        Source = '00/ac/C3DMeshFileEngineMaterialChunk_ReadFromFile_00ac5770.cpp'
+        TestSource = '00/ac/C3DMeshFileEngineMaterialChunk_ReadFromFile_00ac5770_test.cpp'
+        PassPattern = '00ac5770_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

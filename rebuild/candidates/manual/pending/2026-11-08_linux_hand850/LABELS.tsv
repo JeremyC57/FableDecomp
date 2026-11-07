@@ -1,0 +1,7 @@
+address	Class::Name	evidence
+009ee7b0	std::_List_base<CConsoleCommandLine>::clear	called on CConsole::CommandLineHistory (+0x4C) before HistoryPos = begin() in CConsole::Initialise 0x009ED190 (src/009ed190.cpp, RELOCATION_MATCH); STLport 4.6 _List_base::clear; current label _unattributed::clear_CRetailList_009ee7b0 is a placeholder
+006bb2f0	CGameTimeManager::SetAsUsingVillageTime	LoadRegion 0x00500876 / 0x005009C6 calls it on World.GetGameTimeManager() ([CWorld+0x1C]) with CRegionDef::UseVillageTime / false; Ego_r.pdb ?SetAsUsingVillageTime@CGameTimeManager@@QAEX_N@Z; current label CXMVPlaybackInfo::CXMVPlaybackInfo is wrong (the body `mov byte [ecx+18h],0 ; ret 4` ignores its argument: check for an identical-COMDAT fold before renaming)
+009964e0	CDataInputStream::CopyTo	Ego_r.pdb ?CopyTo@CDataInputStream@@QAEXAAVCDataOutputStream@@K@Z; caller CParticleProgram::ReadFromFile 0x00AE3C30; manifest label ReadWithChunking is wrong
+00adf460	CParticleProgram::AllocateArrays	Ego_r.pdb ?AllocateArrays@CParticleProgram@@AAE_NKAAVCMovableResourceMemoryPool@@@Z; body writes CParticleProgram +0x13C/+0x138/+0xC0; manifest label CMovableResource::AllocateParticles is wrong
+009ed190	CConsole::Initialise	this chunk (RELOCATION_MATCH); Ego_r.pdb ?Initialise@CConsole@@QAEXDW4EInputKey@@PBVCFontBank@@@Z
+00ac5770	C3DMeshFileEngineMaterialChunk::ReadFromFile	this chunk (RELOCATION_MATCH); Ego_r.pdb, vtable 0x0129EFC8 slot 7

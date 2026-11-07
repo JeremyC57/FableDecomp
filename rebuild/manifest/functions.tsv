@@ -33338,7 +33338,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00995fb0	ReadCompressed	CDataInputStream	__thiscall	void	3	CDataInputStream *,void *,long	1	yes	accepted									
 00996230	ReadZlibCompressed	CDataInputStream	__thiscall	void	3	CDataInputStream *,void *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDataInputStream_ReadZlibCompressed_00996230.cpp
 00996390	ReadPresizedString	CDataInputStream	__thiscall	CCharString	1	CDataInputStream *	1	yes	accepted									
-009964e0	ReadWithChunking	CDataInputStream	unknown	undefined	0		0	yes	accepted									
+009964e0	CopyTo	CDataInputStream	unknown	undefined	0		0	yes	accepted									
 00996610	WriteCompressed	CDataOutputStream	unknown	undefined	0		0	yes	accepted									
 009967e0	WriteZlibCompressed	CDataOutputStream	__thiscall	void	4	CDataOutputStream *,void *,long,long	1	yes	accepted									
 00996970	pair_unsigned_long,class_CAnimationEntry_&_	_Cons_val_std::allocator_std::pair_unsigned_long,CAnimationEntry___,std::pair_unsigned_long,CAnimationEntry_,std	__fastcall	void	3	allocator<std::pair<unsigned_long,CAnimationEntry>_> *,pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *	1	yes	accepted									
@@ -35045,7 +35045,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009ee470	Increment	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 009ee500	CCountedPointer_Release_009ee500	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_009ee500.cpp
 009ee540	Reset	CCountedPointer_009edc50	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
-009ee7b0	clear_CRetailList_009ee7b0	_unattributed	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
+009ee7b0	clear	std::_List_base<CConsoleCommandLine>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 009ee8a0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
 009ee910	operator--	std::_Rb_tree_iterator<std::pair<char const, CCharString>, std::_Nonconst_traits<std::pair<char const, CCharString>>>	unknown	undefined	0		0	yes	accepted									
 009eea10	CConsoleCommandLine	CConsoleCommandLine	__thiscall	undefined	2	CConsoleCommandLine *,CCharString *	0	yes	accepted									
@@ -39517,7 +39517,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac53f0	C3DMeshFileEngineMaterialChunk	C3DMeshFileEngineMaterialChunk	__thiscall	undefined	2	C3DMeshFileEngineMaterialChunk *,C3DMeshFileMaterialChunk *	0	yes	accepted									
 00ac56f0	C3DMeshFileEngineMaterialChunk	C3DMeshFileEngineMaterialChunk	__thiscall	undefined	1	C3DMeshFileDummyObjectChunk *	0	yes	accepted									
 00ac5740	DiscardDeviceIndependentResources	CPrimitiveBlock_00ac5740	__thiscall	void	1	CAnimatedBlock *	1	yes	accepted									
-00ac5770	C3DMeshFileEngineMaterialChunk::ReadFromFile	C3DMeshFileEngineMaterialChunk	__thiscall	void	4	C3DMeshFileEngineMaterialChunk *,CDataInputStream &,ulong,CChunkedFileLoader &	1	yes	accepted									
+00ac5770	ReadFromFile	C3DMeshFileEngineMaterialChunk	__thiscall	void	4	C3DMeshFileEngineMaterialChunk *,CDataInputStream &,ulong,CChunkedFileLoader &	1	yes	accepted									
 00ac6180	CreateNewInstance	C3DMeshFileEngineMaterialChunk	__thiscall	CChunkedFileChunk *	1	C3DMeshFileEngineMaterialChunk *	1	yes	accepted									
 00ac61f0	`scalar_deleting_destructor'	C3DMeshFileEngineMaterialChunk::CMapFilenames	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\CLandscapeBackgroundPatch_vectordeletingdestructor_00ac61f0.cpp
 00ac6210	~CMapFilenames	C3DMeshFileEngineMaterialChunk::CMapFilenames	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
@@ -39913,7 +39913,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00adf1e0	Clear	CParticleSimulation	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ad\CLandscapeBackgroundPatch_ClearTextures_00adf1e0.cpp
 00adf2a0	AllocateArrays	CParticleSimulation	__thiscall	bool	2	CParticleSimulation *,CMovableResourceMemoryPool *	1	yes	accepted									
 00adf300	ApplyDragging	CParticleSimulation	__thiscall	void	2	CParticleSimulation *,CParticleContext *	1	yes	accepted									
-00adf460	AllocateParticles	CMovableResource	unknown	undefined	0		0	yes	accepted									
+00adf460	AllocateArrays	CParticleProgram	unknown	undefined	0		0	yes	accepted									
 00adf5b0	SavePositions	CParticleSimulationUser_00adf5b0	__thiscall	COpinionPersonalityDef *	2	COpinionPersonalityDef *,COpinionPersonalityDef *	1	yes	accepted									
 00adf610	CopyFrom	CParticleSimulation	unknown	undefined	0		0	yes	accepted									
 00adf760	ApplyForces	CParticleSimulation	__thiscall	void	2	CParticleSimulation *,CParticleContext *	1	yes	accepted									
