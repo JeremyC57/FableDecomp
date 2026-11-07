@@ -385027,6 +385027,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 none'
         PassPattern = '00e0f8a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b5af80'
+        Module = 'CEngineScreenEffectColourFilter'
+        Source = '00/b5/CEngineScreenEffectColourFilter_RenderColorFilteredQuad_00b5af80.cpp'
+        TestSource = '00/b5/CEngineScreenEffectColourFilter_RenderColorFilteredQuad_00b5af80_test.cpp'
+        PassPattern = '00b5af80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

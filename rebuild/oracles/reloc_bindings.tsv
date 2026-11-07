@@ -37350,3 +37350,7 @@ _New_c35b10@8	00c35b10	00c275e0
 ?ProcessInput@CInputProcessInventoryBase@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	006894c0	0068bc70
 $notRedefined$4399	0068a01d	00689df0
 ?IsRedefinerListActive@CRedefinerList@NUISystem@@SI_NXZ	00556520	00689df0
+?D3DStencilFuncModeTable@CRenderStateManager@@0PAKA	01396e18	00b5af80
+?DrawAsIndexedTris@CRenderManagerCore@@QAEXPBXJJPAXJ@Z	00a0af40	00b5af80
+?QuadIndices@?1??RenderColorFilteredQuad@CEngineScreenEffectColourFilter@@QAEXMMABVC4DVector@@MMPAVCTexture@@@Z@4PAGA	0139a4ec	00b5af80
+?UpdateUVs@CEngineScreenEffectColourFilter@@AAEXXZ	00b5a160	00b5af80

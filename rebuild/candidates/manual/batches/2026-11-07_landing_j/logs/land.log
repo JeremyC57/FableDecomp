@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00b5af80   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b5af80   RELOCATION_MATCH PASS   RenderColorFilteredQuad
+
+WINS: 1
+  00b5af80 RELOCATION_MATCH CEngineScreenEffectColourFilter::?RenderColorFilteredQuad@CEngineScreenEffectColourFilter@@QAEXMMABVC4DVector@@MMPAVCTexture@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineScreenEffectColourFilter_RenderColorFilteredQuad_00b5af80
