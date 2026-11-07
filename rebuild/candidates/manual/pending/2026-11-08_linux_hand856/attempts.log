@@ -1,0 +1,929 @@
+20:03:25	00ef4b40	base	DIFFER(1252v1268)	md=41	bytes=853	0s	baseline
+20:03:25	00d33730	base	DIFFER(3292v3292)	md=90	bytes=1	0s	baseline
+20:03:26	00ddae40	base	DIFFER(1180v1180)	md=58	bytes=9	0s	baseline
+20:03:26	00ec4a00	base	DIFFER(1524v1540)	md=59	bytes=1050	0s	baseline
+20:03:26	005253f0	base	DIFFER(2263v2263)	md=69	bytes=116	0s	baseline
+20:03:26	0050a650	base	DIFFER(2233v2233)	md=6	bytes=4	0s	baseline
+20:03:27	00aad650	base	DIFFER(1575v1840)	md=195	bytes=273	0s	baseline
+20:03:27	00e799f0	base	DIFFER(2580v2580)	md=84	bytes=100	0s	baseline
+20:03:27	00e72630	base	DIFFER(2236v2252)	md=74	bytes=1696	0s	baseline
+20:03:28	00d3a4a0	base	DIFFER(1140v1140)	md=35	bytes=50	0s	baseline
+20:03:49	00ef4b40	base	DIFFER(1252v1268)	md=13	bytes=853	0s	baseline
+20:03:49	00d33730	base	DIFFER(3292v3292)	md=0	bytes=1	0s	baseline
+20:03:49	00ddae40	base	DIFFER(1180v1180)	md=2	bytes=9	0s	baseline
+20:03:49	00ec4a00	base	DIFFER(1524v1540)	md=15	bytes=1050	0s	baseline
+20:03:50	005253f0	base	DIFFER(2263v2263)	md=21	bytes=116	0s	baseline
+20:03:50	0050a650	base	DIFFER(2233v2233)	md=6	bytes=4	0s	baseline
+20:03:50	00aad650	base	DIFFER(1575v1840)	md=171	bytes=273	0s	baseline
+20:03:51	00e799f0	base	DIFFER(2580v2580)	md=8	bytes=100	0s	baseline
+20:03:51	00e72630	base	DIFFER(2236v2252)	md=22	bytes=1696	0s	baseline
+20:03:51	00d3a4a0	base	DIFFER(1140v1140)	md=13	bytes=50	0s	baseline
+20:05:00	00d33730	v1	DIFFER(3292v3292)	md=0	bytes=1	0s	AsideTimer <= 0 via plain inline operator<= over forceinline GetTime
+20:05:00	00d33730	v2	DIFFER(3292v3292)	md=0	bytes=1	0s	forceinline operator<=
+20:05:06	00d33730	sanity	DIFFER(3267v3292)	md=200	bytes=1927	0s	sanity diag
+20:05:25	00d33730	v3	DIFFER(3293v3292)	md=4	bytes=1186	0s	v3
+20:05:26	00d33730	v4	DIFFER(3292v3292)	md=0	bytes=1	0s	v4
+20:05:26	00d33730	v5	DIFFER(3292v3292)	md=0	bytes=1	0s	v5
+20:05:27	00d33730	v6	DIFFER(3292v3292)	md=2	bytes=18	0s	v6
+20:05:28	00d33730	v7	DIFFER(3273v3292)	md=5	bytes=79	0s	v7
+20:05:28	00d33730	v8	DIFFER(3292v3292)	md=0	bytes=1	0s	v8
+20:05:58	00d33730	diagd2inlS8	DIFFER(3292v3292)	md=0	bytes=1	0s	DIAG /d2inlS8
+20:05:59	00d33730	diagd2inlS10	DIFFER(3283v3292)	md=12	bytes=71	0s	DIAG /d2inlS10
+20:06:00	00d33730	diagd2inlS12	DIFFER(3283v3292)	md=12	bytes=71	0s	DIAG /d2inlS12
+20:06:00	00d33730	diagd2inlS13	DIFFER(3283v3292)	md=12	bytes=71	0s	DIAG /d2inlS13
+20:06:01	00d33730	diagd2inlS14	DIFFER(3283v3292)	md=12	bytes=71	0s	DIAG /d2inlS14
+20:06:02	00d33730	diagd2inlS15	DIFFER(3283v3292)	md=12	bytes=71	0s	DIAG /d2inlS15
+20:06:02	00d33730	diagd2inlS20	DIFFER(3331v3292)	md=117	bytes=1959	0s	DIAG /d2inlS20
+20:06:03	00d33730	diagd2inlT50	DIFFER(3317v3292)	md=253	bytes=2237	0s	DIAG /d2inlT50
+20:06:04	00d33730	diagd2inlT72	DIFFER(3292v3292)	md=0	bytes=1	0s	DIAG /d2inlT72
+20:06:04	00d33730	diagd2inlT100	DIFFER(3372v3292)	md=426	bytes=2432	0s	DIAG /d2inlT100
+20:06:24	00d33730	v9	DIFFER(3292v3292)	md=0	bytes=1	0s	v9 break variants
+20:06:25	00d33730	v10	DIFFER(3292v3292)	md=0	bytes=1	0s	v10 break variants
+20:06:25	00d33730	v11	DIFFER(3292v3292)	md=0	bytes=1	0s	v11 break variants
+20:06:59	00d33730	v12	DIFFER(3306v3292)	md=21	bytes=71	0s	v12 loop forms
+20:07:00	00d33730	v13	DIFFER(3341v3292)	md=107	bytes=1310	0s	v13 loop forms
+20:07:01	00d33730	v14	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v14 loop forms
+20:07:38	00d33730	p1	DIFFER(3263v3292)	md=8	bytes=1450	0s	DIAG probe p1
+20:07:39	00d33730	p2	DIFFER(3062v3292)	md=722	bytes=2326	0s	DIAG probe p2
+20:07:40	00d33730	p3	DIFFER(3371v3292)	md=519	bytes=1982	0s	DIAG probe p3
+20:08:44	00d33730	v15	DIFFER(3305v3292)	md=247	bytes=1800	0s	v15 else-wait loop forms
+20:08:45	00d33730	v16	DIFFER(3305v3292)	md=247	bytes=1800	0s	v16 else-wait loop forms
+20:08:46	00d33730	v17	DIFFER(3305v3292)	md=247	bytes=1800	0s	v17 else-wait loop forms
+20:09:05	00d33730	diagd2inlS0	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG /d2inlS0
+20:09:06	00d33730	diagd2inlS2	DIFFER(3256v3292)	md=497	bytes=1638	0s	DIAG /d2inlS2
+20:09:07	00d33730	diagd2inlS4	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG /d2inlS4
+20:09:07	00d33730	diagd2inlS6	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG /d2inlS6
+20:09:08	00d33730	diagd2inlS9	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG /d2inlS9
+20:09:08	00d33730	diagd2inlS16	DIFFER(3331v3292)	md=117	bytes=1959	0s	DIAG /d2inlS16
+20:09:09	00d33730	diagd2inlS18	DIFFER(3331v3292)	md=117	bytes=1959	0s	DIAG /d2inlS18
+20:09:10	00d33730	diagd2inlT60	DIFFER(3208v3292)	md=149	bytes=1865	0s	DIAG /d2inlT60
+20:09:11	00d33730	diagd2inlT65	DIFFER(3208v3292)	md=149	bytes=1865	0s	DIAG /d2inlT65
+20:09:11	00d33730	diagd2inlT70	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG /d2inlT70
+20:09:12	00d33730	diagd2inlT71	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG /d2inlT71
+20:09:13	00d33730	diagd2inlT73	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG /d2inlT73
+20:09:13	00d33730	diagd2inlT75	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG /d2inlT75
+20:09:14	00d33730	diagd2inlT80	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG /d2inlT80
+20:09:39	00d33730	p4	DIFFER(2996v3292)	md=493	bytes=2469	0s	DIAG probe p4 (p2 + talk wait loop removed)
+20:09:47	00d33730	p5	DIFFER(2201v3292)	md=471	bytes=2708	0s	DIAG probe p5 (p5: no talk block; p6: no hit block)
+20:09:48	00d33730	p6	DIFFER(2310v3292)	md=641	bytes=2643	0s	DIAG probe p6 (p5: no talk block; p6: no hit block)
+20:10:11	00d33730	v18	DIFFER(3268v3292)	md=401	bytes=1563	0s	v18 drop forceinline ctor opt-in
+20:10:12	00d33730	v19	DIFFER(3190v3292)	md=171	bytes=1866	0s	v19 drop forceinline ctor opt-in
+20:10:22	00d33730	v20	DIFFER(3264v3292)	md=18	bytes=1488	0s	v20 plain inline CTimer members
+20:10:23	00d33730	v21	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v21 plain inline CTimer members
+20:10:23	00d33730	v22	DIFFER(3264v3292)	md=18	bytes=1488	0s	v22 plain inline CTimer members
+20:10:37	00d33730	v23	DIFFER(3283v3292)	md=12	bytes=71	0s	v23 ~CTimer body spelling
+20:10:38	00d33730	v24	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v24 ~CTimer body spelling
+20:10:38	00d33730	v25	DIFFER(3283v3292)	md=12	bytes=71	0s	v25 ~CTimer body spelling
+20:10:39	00d33730	v26	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v26 ~CTimer body spelling
+20:10:53	00d33730	v27	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v27 ~CTimer body spelling
+20:10:54	00d33730	v28	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v28 ~CTimer body spelling
+20:10:54	00d33730	v29	DIFFER(3283v3292)	md=12	bytes=71	0s	v29 ~CTimer body spelling
+20:10:55	00d33730	v30	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v30 ~CTimer body spelling
+20:11:28	00d33730	v31	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v31 aside timer compare spelling
+20:11:28	00d33730	v32	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v32 aside timer compare spelling
+20:11:29	00d33730	v33	DIFFER(3292v3292)	md=6	bytes=218	0s	v33 aside timer compare spelling
+20:11:30	00d33730	v34	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v34 aside timer compare spelling
+20:11:30	00d33730	v35	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v35 aside timer compare spelling
+20:11:31	00d33730	v36	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v36 aside timer compare spelling
+20:11:40	00d33730	p7	DIFFER(3308v3292)	md=6	bytes=1418	0s	DIAG p7 leak probes
+20:11:41	00d33730	p8	DIFFER(3276v3292)	md=6	bytes=1415	0s	DIAG p8 leak probes
+20:11:42	00d33730	p9	DIFFER(3279v3292)	md=142	bytes=1652	0s	DIAG p9 leak probes
+20:12:19	00d33730	v37	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v37 forceinline CTimer member body spelling (budget)
+20:12:19	00d33730	v38	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v38 forceinline CTimer member body spelling (budget)
+20:12:20	00d33730	v39	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v39 forceinline CTimer member body spelling (budget)
+20:12:21	00d33730	v40	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v40 forceinline CTimer member body spelling (budget)
+20:12:38	00d33730	v41	DIFFER(3341v3292)	md=107	bytes=1310	0s	v41 loop body forms
+20:12:38	00d33730	v42	DIFFER(3306v3292)	md=21	bytes=71	0s	v42 loop body forms
+20:12:39	00d33730	v43	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	v43 loop body forms
+20:13:48	00ddae40	v1	DIFFER(1180v1180)	md=2	bytes=9	0s	v1 inline definition order
+20:13:49	00ddae40	v2	SRC_FAIL	md=-1	bytes=-1	0s	v2 inline definition order
+20:14:33	00ddae40	v3	DIFFER(1175v1180)	md=7	bytes=327	0s	v3 angle spelling
+20:14:34	00ddae40	v4	DIFFER(1180v1180)	md=2	bytes=9	0s	v4 angle spelling
+20:14:34	00ddae40	v5	DIFFER(1180v1180)	md=2	bytes=9	0s	v5 angle spelling
+20:14:35	00ddae40	v6	DIFFER(1180v1180)	md=2	bytes=9	0s	v6 angle spelling
+20:14:36	00ddae40	v7	DIFFER(1194v1180)	md=21	bytes=338	0s	v7 angle spelling
+20:14:36	00ddae40	v8	DIFFER(1180v1180)	md=2	bytes=9	0s	v8 angle spelling
+20:14:37	00ddae40	v9	DIFFER(1180v1180)	md=2	bytes=9	0s	v9 angle spelling
+20:16:42	0050a650	v1	DIFFER(2233v2233)	md=6	bytes=4	0s	v1 last loop spelling
+20:16:43	0050a650	v2	DIFFER(2233v2233)	md=10	bytes=6	0s	v2 last loop spelling
+20:16:44	0050a650	v3	DIFFER(2233v2233)	md=6	bytes=4	0s	v3 last loop spelling
+20:16:45	0050a650	v4	DIFFER(2233v2233)	md=6	bytes=4	0s	v4 last loop spelling
+20:17:35	0050a650	v5	DIFFER(2236v2233)	md=495	bytes=1448	0s	v5 last block scoping
+20:17:36	0050a650	v6	DIFFER(2233v2233)	md=6	bytes=4	0s	v6 last block scoping
+20:17:37	0050a650	v7	DIFFER(2233v2233)	md=6	bytes=4	0s	v7 last block scoping
+20:18:26	00e799f0	v1	DIFFER(2628v2580)	md=24	bytes=2060	0s	v1 forceinline predicate special members
+20:18:26	00e799f0	v2	DIFFER(2628v2580)	md=24	bytes=2060	0s	v2 forceinline predicate special members
+20:18:52	00e799f0	p1	RELOCATION_MATCH	md=0	bytes=0	0s	DIAG forbidden-device check p1 (inline_depth pragma)
+20:18:53	00e799f0	p2	DIFFER(2600v2580)	md=279	bytes=1951	0s	DIAG forbidden-device check p2 (inline_depth pragma)
+20:19:17	00e799f0	v3	DIFFER(2628v2580)	md=25	bytes=2063	0s	v3 (v3 implicit predicate dtor opt-in; v4 inline ~CScriptThing defined after Main)
+20:19:17	00e799f0	v4	DIFFER(2580v2580)	md=8	bytes=100	0s	v4 (v3 implicit predicate dtor opt-in; v4 inline ~CScriptThing defined after Main)
+20:19:36	00e799f0	v5	DIFFER(2580v2580)	md=8	bytes=100	0s	v5 predicate dtor spelling
+20:19:37	00e799f0	v6	DIFFER(2580v2580)	md=8	bytes=100	0s	v6 predicate dtor spelling
+20:19:37	00e799f0	v7	DIFFER(2580v2580)	md=8	bytes=100	0s	v7 predicate dtor spelling
+20:20:57	00d3a4a0	v1	DIFFER(1140v1140)	md=13	bytes=50	0s	v1 element/predicate spelling
+20:20:58	00d3a4a0	v2	DIFFER(1140v1140)	md=13	bytes=50	0s	v2 element/predicate spelling
+20:20:58	00d3a4a0	v3	DIFFER(1140v1140)	md=13	bytes=50	0s	v3 element/predicate spelling
+20:20:59	00d3a4a0	v4	DIFFER(1140v1140)	md=13	bytes=50	0s	v4 element/predicate spelling
+20:21:00	00d3a4a0	v5	DIFFER(1140v1140)	md=13	bytes=50	0s	v5 element/predicate spelling
+20:21:49	00ef4b40	v1	DIFFER(1241v1268)	md=113	bytes=936	0s	v1 implicit STB ctor (=tp2)
+20:21:50	00ef4b40	diagd2inlS2	DIFFER(1256v1268)	md=123	bytes=885	0s	DIAG /d2inlS2 on v1
+20:21:50	00ef4b40	diagd2inlS4	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlS4 on v1
+20:21:51	00ef4b40	diagd2inlS6	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlS6 on v1
+20:21:51	00ef4b40	diagd2inlS8	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlS8 on v1
+20:21:51	00ef4b40	diagd2inlS10	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlS10 on v1
+20:21:52	00ef4b40	diagd2inlS12	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlS12 on v1
+20:21:52	00ef4b40	diagd2inlS15	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlS15 on v1
+20:21:53	00ef4b40	diagd2inlS20	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlS20 on v1
+20:21:53	00ef4b40	diagd2inlT30	RELOCATION_MATCH	md=0	bytes=0	0s	DIAG /d2inlT30 on v1
+20:21:54	00ef4b40	diagd2inlT40	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlT40 on v1
+20:21:54	00ef4b40	diagd2inlT50	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlT50 on v1
+20:21:55	00ef4b40	diagd2inlT60	DIFFER(1241v1268)	md=113	bytes=936	0s	DIAG /d2inlT60 on v1
+20:22:12	00ef4b40	v2	DIFFER(1241v1268)	md=113	bytes=936	0s	v2 seh_hero spelling (implicit ctor)
+20:22:13	00ef4b40	v3	DIFFER(1241v1268)	md=113	bytes=936	0s	v3 seh_hero spelling (implicit ctor)
+20:22:13	00ef4b40	v4	DIFFER(1241v1268)	md=113	bytes=936	0s	v4 seh_hero spelling (implicit ctor)
+20:22:13	00ef4b40	v5	DIFFER(1241v1268)	md=113	bytes=936	0s	v5 seh_hero spelling (implicit ctor)
+20:22:45	00ec4a00	g	DIFFER(1588v1540)	md=141	bytes=1063	0s	g implicit copy (prior g)
+20:22:46	00ec4a00	diagd2inlS4	DIFFER(1588v1540)	md=141	bytes=1063	0s	DIAG /d2inlS4 on g
+20:22:47	00ec4a00	diagd2inlS8	DIFFER(1588v1540)	md=141	bytes=1063	0s	DIAG /d2inlS8 on g
+20:22:48	00ec4a00	diagd2inlS10	DIFFER(1588v1540)	md=141	bytes=1063	0s	DIAG /d2inlS10 on g
+20:22:48	00ec4a00	diagd2inlS15	DIFFER(1588v1540)	md=141	bytes=1063	0s	DIAG /d2inlS15 on g
+20:22:49	00ec4a00	diagd2inlT20	DIFFER(1460v1540)	md=94	bytes=1096	0s	DIAG /d2inlT20 on g
+20:22:50	00ec4a00	diagd2inlT30	DIFFER(1532v1540)	md=179	bytes=1085	0s	DIAG /d2inlT30 on g
+20:22:51	00ec4a00	diagd2inlT40	DIFFER(1540v1540)	md=168	bytes=917	0s	DIAG /d2inlT40 on g
+20:22:52	00ec4a00	diagd2inlT50	DIFFER(1540v1540)	md=168	bytes=917	0s	DIAG /d2inlT50 on g
+20:22:52	00ec4a00	diagd2inlT60	DIFFER(1516v1540)	md=154	bytes=1094	0s	DIAG /d2inlT60 on g
+20:22:53	00ec4a00	diagd2inlT72	DIFFER(1588v1540)	md=141	bytes=1063	0s	DIAG /d2inlT72 on g
+20:23:57	005253f0	v1	DIFFER(2263v2263)	md=21	bytes=125	0s	v1 text-loop spelling
+20:23:57	005253f0	v2	DIFFER(2263v2263)	md=21	bytes=116	0s	v2 text-loop spelling
+20:23:58	005253f0	v3	DIFFER(2263v2263)	md=21	bytes=116	0s	v3 text-loop spelling
+20:23:58	005253f0	v4	DIFFER(2263v2263)	md=23	bytes=117	0s	v4 text-loop spelling
+20:23:59	005253f0	v5	DIFFER(2315v2263)	md=183	bytes=651	0s	v5 text-loop spelling
+20:26:31	00d33730	p10	DIFFER(3260v3292)	md=9	bytes=1498	0s	DIAG p10 inline-count probes
+20:26:31	00d33730	p11	DIFFER(3280v3292)	md=8	bytes=1397	0s	DIAG p11 inline-count probes
+20:26:32	00d33730	p12	DIFFER(3265v3292)	md=7	bytes=1404	0s	DIAG p12 inline-count probes
+20:27:41	00ddae40	v10	DIFFER(1180v1180)	md=14	bytes=30	0s	v10 inline body spellings
+20:27:41	00ddae40	v11	DIFFER(1180v1180)	md=14	bytes=30	0s	v11 inline body spellings
+20:27:42	00ddae40	v12	DIFFER(1180v1180)	md=14	bytes=30	0s	v12 inline body spellings
+20:27:42	00ddae40	v13	DIFFER(1180v1180)	md=2	bytes=9	0s	v13 inline body spellings
+20:27:43	00ddae40	v14	DIFFER(1194v1180)	md=21	bytes=338	0s	v14 inline body spellings
+20:28:21	00ddae40	v15	DIFFER(1180v1180)	md=2	bytes=9	0s	v15 StartPos spellings
+20:28:21	00ddae40	v16	DIFFER(1180v1180)	md=2	bytes=9	0s	v16 StartPos spellings
+20:28:22	00ddae40	v17	DIFFER(1162v1180)	md=80	bytes=333	0s	v17 StartPos spellings
+20:28:22	00ddae40	v18	DIFFER(1180v1180)	md=2	bytes=9	0s	v18 StartPos spellings
+20:28:31	00ddae40	qfe	DIFFER(1180v1180)	md=2	bytes=9	0s	DIAG QFE-4035 compiler
+20:28:32	00d33730	qfe	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG QFE-4035 compiler
+20:28:33	0050a650	qfe	DIFFER(2233v2233)	md=6	bytes=4	0s	DIAG QFE-4035 compiler
+20:28:33	00d3a4a0	qfe	DIFFER(1140v1140)	md=13	bytes=50	0s	DIAG QFE-4035 compiler
+20:28:34	005253f0	qfe	DIFFER(2263v2263)	md=21	bytes=116	0s	DIAG QFE-4035 compiler
+20:28:34	00aad650	qfe	DIFFER(1575v1840)	md=171	bytes=273	0s	DIAG QFE-4035 compiler
+20:29:32	00e72630	v1	DIFFER(2236v2252)	md=22	bytes=1696	0s	v1 state placement
+20:29:32	00e72630	v2	DIFFER(2236v2252)	md=22	bytes=1696	0s	v2 state placement
+20:29:33	00e72630	v3	DIFFER(2236v2252)	md=22	bytes=1696	0s	v3 state placement
+20:29:33	00e72630	v4	DIFFER(2236v2252)	md=22	bytes=1696	0s	v4 state placement
+20:30:00	00d33730	w1	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	w1 pre-loop wait loop forms
+20:30:01	00d33730	w2	DIFFER(3308v3292)	md=45	bytes=1265	0s	w2 pre-loop wait loop forms
+20:30:01	00d33730	w3	DIFFER(3299v3292)	md=56	bytes=1906	0s	w3 pre-loop wait loop forms
+20:30:02	00d33730	w4	DIFFER(3395v3292)	md=416	bytes=2270	0s	w4 pre-loop wait loop forms
+20:30:17	00d33730	g1	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	g1 branch-probability spellings
+20:30:18	00d33730	g2	DIFFER(3276v3292)	md=9	bytes=1966	0s	g2 branch-probability spellings
+20:30:18	00d33730	g3	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	g3 branch-probability spellings
+20:30:19	00d33730	g4	DIFFER(3286v3292)	md=289	bytes=1838	0s	g4 branch-probability spellings
+20:31:05	00d3a4a0	v6	DIFFER(1140v1140)	md=13	bytes=50	0s	v6 element spellings
+20:31:06	00d3a4a0	v7	DIFFER(1140v1140)	md=13	bytes=50	0s	v7 element spellings
+20:31:07	00d3a4a0	v8	DIFFER(1140v1140)	md=13	bytes=50	0s	v8 element spellings
+20:31:07	00d3a4a0	v9	DIFFER(1140v1140)	md=13	bytes=50	0s	v9 element spellings
+20:31:48	00aad650	base2	DIFFER(1575v1575)	md=8	bytes=8	0s	baseline vs 1575-byte cut (DIAG recut)
+20:32:27	00ddae40	b1	DIFFER(1180v1180)	md=2	bytes=9	0s	teleport in do-while(0)
+20:32:27	00ddae40	b2	DIFFER(1180v1180)	md=2	bytes=9	0s	teleport in block
+20:32:27	00ddae40	b3	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY const float local
+20:32:27	00ddae40	b4	DIFFER(1180v1180)	md=2	bytes=9	0s	GetPos via pointer local
+20:32:28	00ddae40	b6	DIFFER(1180v1180)	md=2	bytes=9	0s	both via pointer local
+20:32:28	00ddae40	b5	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY via pointer local
+20:32:28	00ddae40	b7	DIFFER(1180v1180)	md=14	bytes=30	0s	GetAngleXY ternary via pointer
+20:32:28	00ddae40	b8	DIFFER(1194v1180)	md=21	bytes=338	0s	GetPos ternary pointer
+20:34:21	00aad650	l1	DIFFER(1556v1575)	md=42	bytes=944	0s	fields into locals then assign
+20:34:21	00aad650	l2	DIFFER(1575v1575)	md=8	bytes=8	0s	FormatTag/BlockAlign via ReadType<unsigned short>
+20:34:22	00aad650	l3	DIFFER(1575v1575)	md=8	bytes=8	0s	AvgBytesPerSec read discarded
+20:34:22	00aad650	l4	DIFFER(1575v1575)	md=8	bytes=8	0s	all via ReadType
+20:34:22	00aad650	l5	DIFFER(1530v1575)	md=350	bytes=1361	0s	fields via Read(&field,size)
+20:34:22	00aad650	l6	DIFFER(1575v1575)	md=8	bytes=8	0s	format declared via ctor parens
+20:34:22	00aad650	l7	DIFFER(1575v1575)	md=8	bytes=8	0s	fmt reads via reference to format
+20:35:07	00aad650	m2	DIFFER(1566v1575)	md=221	bytes=1368	0s	RIFF/WAVE via temporaries
+20:35:07	00aad650	m1	DIFFER(1575v1575)	md=12	bytes=182	0s	format declared at function top
+20:35:07	00aad650	m3	DIFFER(1575v1575)	md=8	bytes=8	0s	for loop
+20:35:07	00aad650	m4	DIFFER(1575v1575)	md=8	bytes=8	0s	chunkStart before chunkSize? no: chunkSize+chunkStart one expression end
+20:35:08	00aad650	m5	DIFFER(1575v1575)	md=8	bytes=8	0s	riffEnd as riffSize + GetPosition
+20:35:08	00aad650	m6	DIFFER(1575v1575)	md=10	bytes=44	0s	format declared in loop? no: before WAVE
+20:35:08	00aad650	m7	DIFFER(1582v1575)	md=141	bytes=1264	0s	tag reused for form
+20:35:08	00aad650	m8	DIFFER(1559v1575)	md=51	bytes=1064	0s	chunkId compare as if/if
+20:35:54	00aad650	n6	DIFFER(1575v1575)	md=8	bytes=8	1s	const chunkStart/chunkSize
+20:35:54	00aad650	n2	DIFFER(1575v1575)	md=8	bytes=8	1s	chunkId direct-init
+20:35:55	00aad650	n8	DIFFER(1575v1575)	md=8	bytes=8	0s	bitsPerSample unsigned long
+20:35:55	00aad650	n7	DIFFER(1575v1575)	md=8	bytes=8	0s	sampleCount inline in ctor arg? keep var; long bits as int
+20:35:55	00aad650	n9	DIFFER(1572v1575)	md=324	bytes=517	0s	switch on bitsPerSample
+20:35:55	00aad650	n10	DIFFER(1575v1575)	md=8	bytes=8	0s	riffEnd const
+20:35:56	00aad650	n11	DIFFER(1575v1575)	md=8	bytes=8	0s	riffSize/riffEnd one expression
+20:35:56	00aad650	n12	DIFFER(1575v1575)	md=8	bytes=8	0s	loop index shared outer
+20:36:12	00aad650	d1	DIFFER(1180v1575)	md=480	bytes=1391	0s	DIAG data branch body only throw-check+Reset
+20:36:12	00aad650	d2	DIFFER(1449v1575)	md=494	bytes=1188	0s	DIAG no 8-bit loop
+20:36:13	00aad650	d3	DIFFER(1454v1575)	md=213	bytes=480	0s	DIAG no 16-bit loop
+20:36:13	00aad650	d4	DIFFER(1399v1575)	md=201	bytes=820	0s	DIAG fmt only 4 reads
+20:37:32	00aad650	xB	DIFFER(1575v1575)	md=8	bytes=8	0s	DIAG Read positive range test
+20:37:32	00aad650	xA	DIFFER(1575v1575)	md=8	bytes=8	0s	DIAG Read IsValidPosition helper
+20:37:32	00aad650	xC	DIFFER(1575v1575)	md=8	bytes=8	0s	DIAG Read remaining>=size
+20:37:47	00aad650	xD	DIFFER(1303v1575)	md=618	bytes=1383	0s	DIAG Read no range check (sanity)
+20:38:42	00aad650	xE	DIFFER(1575v1575)	md=8	bytes=8	0s	DIAG Read newPosition spelling E
+20:38:42	00aad650	xF	DIFFER(1575v1575)	md=8	bytes=8	0s	DIAG Read newPosition spelling F
+20:38:42	00aad650	xG	DIFFER(1610v1575)	md=491	bytes=1430	0s	DIAG Read newPosition spelling G
+20:38:43	00aad650	xH	DIFFER(1575v1575)	md=8	bytes=8	0s	DIAG Read newPosition spelling H
+20:38:43	00aad650	xI	DIFFER(1575v1575)	md=8	bytes=8	0s	DIAG Read newPosition spelling I
+20:39:02	00aad650	fOa	DIFFER(1575v1575)	md=8	bytes=8	0s	flag /Oa
+20:39:02	00aad650	fGS	DIFFER(1575v1575)	md=8	bytes=8	0s	flag /GS
+20:39:02	00aad650	fOw	DIFFER(1575v1575)	md=8	bytes=8	0s	flag /Ow
+20:39:03	00aad650	fGr	DIFFER(1575v1575)	md=8	bytes=8	0s	flag /Gr
+20:39:03	00aad650	fOt	DIFFER(1575v1575)	md=8	bytes=8	0s	flag /Ot
+20:40:32	00aad650	t0a	DIFFER(1575v1575)	md=8	bytes=8	0s	chunkSize/chunkStart as unsigned int
+20:40:32	00aad650	t0b	DIFFER(1575v1575)	md=8	bytes=8	0s	riffSize/riffEnd as unsigned int
+20:40:32	00aad650	t0c	DIFFER(1575v1575)	md=8	bytes=8	0s	sampleCount as unsigned int
+20:40:32	00aad650	t1a	DIFFER(1575v1575)	md=16	bytes=54	0s	chunkSize/chunkStart as long
+20:40:33	00aad650	t1c	DIFFER(1575v1575)	md=8	bytes=8	0s	sampleCount as long
+20:40:33	00aad650	t1b	DIFFER(1575v1575)	md=8	bytes=8	0s	riffSize/riffEnd as long
+20:40:33	00aad650	t2b	DIFFER(1575v1575)	md=8	bytes=8	0s	riffSize/riffEnd as size_t
+20:40:33	00aad650	t2a	DIFFER(1575v1575)	md=8	bytes=8	0s	chunkSize/chunkStart as size_t
+20:40:34	00aad650	t2c	DIFFER(1575v1575)	md=8	bytes=8	0s	sampleCount as size_t
+20:40:34	00aad650	t3a	DIFFER(1575v1575)	md=16	bytes=54	0s	chunkSize/chunkStart as int
+20:40:34	00aad650	t3c	DIFFER(1575v1575)	md=8	bytes=8	0s	sampleCount as int
+20:40:34	00aad650	t3b	DIFFER(1575v1575)	md=8	bytes=8	0s	riffSize/riffEnd as int
+20:40:35	00aad650	s1	DIFFER(1575v1575)	md=8	bytes=8	0s	sampleCount parenthesised
+20:40:35	00aad650	s2	DIFFER(1575v1575)	md=8	bytes=8	0s	bits as (BlockAlign*8)/Channels unsigned cast
+20:40:35	00aad650	s3	DIFFER(1575v1575)	md=8	bytes=8	0s	bits via << 3
+20:40:35	00aad650	s4	DIFFER(1575v1575)	md=8	bytes=8	0s	chunkStart + chunkSize via local next
+20:42:16	00ddae40	c1	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY IsNull/->
+20:42:16	00ddae40	c2	DIFFER(1180v1180)	md=2	bytes=9	0s	GetPos IsNull/->
+20:42:16	00ddae40	c4	DIFFER(1180v1180)	md=2	bytes=9	0s	both Get()
+20:42:16	00ddae40	c3	DIFFER(1180v1180)	md=2	bytes=9	0s	both IsNull/->
+20:42:17	00ddae40	c6	DIFFER(1180v1180)	md=2	bytes=9	0s	GetPos Get()
+20:42:17	00ddae40	c5	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY Get()
+20:42:17	00ddae40	c7	DIFFER(1180v1180)	md=2	bytes=9	0s	both ==0 and ->
+20:42:17	00ddae40	c8	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY ==0/->
+20:42:41	00ddae40	fG7	DIFFER(1126v1180)	md=119	bytes=813	0s	DIAG flag /G7
+20:42:42	00ddae40	fG6	DIFFER(1180v1180)	md=2	bytes=9	0s	DIAG flag /G6
+20:42:42	00ddae40	fG5	DIFFER(1180v1180)	md=2	bytes=9	0s	DIAG flag /G5
+20:42:43	00ddae40	fGB	DIFFER(1180v1180)	md=2	bytes=9	0s	DIAG flag /GB
+20:42:43	00ddae40	fOp	DIFFER(1176v1180)	md=4	bytes=312	0s	DIAG flag /Op
+20:43:09	00ddae40	e3	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY *1.0f
+20:43:09	00ddae40	e2	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY (float) cast on call
+20:43:09	00ddae40	e6	DIFFER(1180v1180)	md=2	bytes=9	0s	call site *1.0f
+20:43:09	00ddae40	e7	DIFFER(1180v1180)	md=2	bytes=9	0s	call site (float)
+20:43:10	00ddae40	e8	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY null returns 0 int
+20:43:10	00ddae40	e9	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY null returns 0.0 double
+20:43:10	00ddae40	e10	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY via double local
+20:43:10	00ddae40	e11	DIFFER(1176v1180)	md=40	bytes=324	0s	call-site double local angle
+20:43:31	00ddae40	r1	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY r if/else
+20:43:31	00ddae40	r2	DIFFER(1175v1180)	md=7	bytes=327	0s	GetAngleXY r=0 if
+20:43:32	00ddae40	r3	DIFFER(1180v1180)	md=14	bytes=30	0s	GetAngleXY r if-else reversed
+20:43:32	00ddae40	r4	DIFFER(1180v1180)	md=2	bytes=9	0s	call-site angle local
+20:43:32	00ddae40	r5	DIFFER(1180v1180)	md=2	bytes=9	0s	r1 + angle local
+20:43:32	00ddae40	r6	DIFFER(1175v1180)	md=7	bytes=327	0s	r2 + angle local
+20:43:33	00ddae40	r8	DIFFER(1180v1180)	md=2	bytes=9	0s	r1 + angle+pos locals
+20:43:33	00ddae40	r7	DIFFER(1180v1180)	md=2	bytes=9	0s	angle+pos locals
+20:45:33	00e72630	k2	DIFFER(2236v2252)	md=22	bytes=1696	0s	filter block
+20:45:33	00e72630	k1	DIFFER(2236v2252)	md=22	bytes=1696	0s	plain returns
+20:45:34	00e72630	k3	DIFFER(2236v2252)	md=22	bytes=1696	0s	k1+k2
+20:45:34	00e72630	k4	DIFFER(2236v2252)	md=22	bytes=1696	0s	forceinline widescreen ctor
+20:45:34	00e72630	k5	DIFFER(2236v2252)	md=22	bytes=1696	0s	g_fZero
+20:45:34	00e72630	k6	DIFFER(2236v2252)	md=22	bytes=1696	0s	k1+k2+k4+k5
+20:45:35	00e72630	k7	DIFFER(2236v2252)	md=22	bytes=1696	0s	k2+k4
+20:45:35	00e72630	k8	DIFFER(2236v2252)	md=22	bytes=1696	0s	k1+k4
+20:46:09	00e72630	L1	DIFFER(2320v2252)	md=111	bytes=1782	0s	main loop as for(;!T;NSF)
+20:46:10	00e72630	L2	DIFFER(2236v2252)	md=22	bytes=1696	0s	main loop for(;;) T break
+20:46:10	00e72630	L3	DIFFER(2236v2252)	md=22	bytes=1696	0s	main loop for(;;) T return
+20:46:10	00e72630	L4	DIFFER(2236v2252)	md=22	bytes=1696	0s	main loop while(true) T break
+20:46:11	00e72630	L5	DIFFER(2244v2252)	md=52	bytes=1706	0s	acq loop for(;;) break
+20:46:11	00e72630	L6	DIFFER(2236v2252)	md=22	bytes=1696	0s	acq loop for(;!Start;)
+20:46:11	00e72630	L7	DIFFER(2272v2252)	md=430	bytes=1382	0s	main loop talked-to as continue
+20:47:19	00d33730	dw63	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L63
+20:47:19	00d33730	dw40	SRC_FAIL	md=-1	bytes=-1	0s	sweep do-while(0) round L40
+20:47:19	00d33730	dw65	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L65
+20:47:20	00d33730	eq66	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L66
+20:47:20	00d33730	eq68	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L68
+20:47:20	00d33730	dw69	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L69
+20:47:21	00d33730	dw70	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L70
+20:47:21	00d33730	dw71	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L71
+20:47:21	00d33730	dw72	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L72
+20:47:21	00d33730	dw73	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L73
+20:47:22	00d33730	dw74	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L74
+20:47:22	00d33730	dw75	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L75
+20:47:22	00d33730	dw76	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L76
+20:47:23	00d33730	dw77	DIFFER(3340v3292)	md=332	bytes=2216	0s	sweep do-while(0) round L77
+20:47:23	00d33730	dw78	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L78
+20:47:23	00d33730	dw81	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L81
+20:47:23	00d33730	eq82	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L82
+20:47:24	00d33730	eq84	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L84
+20:47:24	00d33730	eq86	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L86
+20:47:24	00d33730	dw90	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L90
+20:47:25	00d33730	dw92	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L92
+20:47:25	00d33730	eq93	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L93
+20:47:25	00d33730	eq95	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L95
+20:47:26	00d33730	dw100	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L100
+20:47:26	00d33730	dw101	DIFFER(3292v3292)	md=8	bytes=42	0s	sweep do-while(0) round L101
+20:47:26	00d33730	dw102	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L102
+20:47:26	00d33730	dw104	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L104
+20:47:27	00d33730	dw105	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L105
+20:47:27	00d33730	eq111	DIFFER(3292v3292)	md=8	bytes=7	0s	sweep T-check ==bool L111
+20:47:27	00d33730	eq113	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L113
+20:47:28	00d33730	dw115	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L115
+20:47:28	00d33730	dw116	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L116
+20:47:28	00d33730	eq120	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L120
+20:47:29	00d33730	dw123	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L123
+20:47:29	00d33730	dw125	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L125
+20:47:29	00d33730	eq126	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L126
+20:47:29	00d33730	eq128	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L128
+20:47:30	00d33730	eq131	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L131
+20:47:30	00d33730	eq135	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L135
+20:47:30	00d33730	dw143	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L143
+20:47:30	00d33730	dw144	DIFFER(3292v3292)	md=22	bytes=97	0s	sweep do-while(0) round L144
+20:47:31	00d33730	dw145	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L145
+20:47:31	00d33730	dw146	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L146
+20:47:31	00d33730	eq149	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L149
+20:47:31	00d33730	dw152	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L152
+20:47:32	00d33730	dw154	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L154
+20:47:32	00d33730	eq155	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L155
+20:47:33	00d33730	eq157	DIFFER(3292v3292)	md=4	bytes=4	0s	sweep T-check ==bool L157
+20:47:33	00d33730	dw164	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L164
+20:47:33	00d33730	dw165	DIFFER(3292v3292)	md=28	bytes=103	0s	sweep do-while(0) round L165
+20:47:33	00d33730	dw166	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L166
+20:47:34	00d33730	dw167	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L167
+20:47:34	00d33730	dw168	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	sweep do-while(0) round L168
+20:47:42	00aad650	di50	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep direct-init L50
+20:47:42	00aad650	dw52	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L52
+20:47:43	00aad650	di53	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep direct-init L53
+20:47:43	00aad650	bk52	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L52
+20:47:43	00aad650	di54	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep direct-init L54
+20:47:43	00aad650	cs53	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep const local L53
+20:47:44	00aad650	cs54	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep const local L54
+20:47:44	00aad650	di56	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep direct-init L56
+20:47:44	00aad650	dw58	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L58
+20:47:44	00aad650	bk58	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L58
+20:47:44	00aad650	di62	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep direct-init L62
+20:47:44	00aad650	di63	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep direct-init L63
+20:47:45	00aad650	cs63	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep const local L63
+20:47:45	00aad650	di64	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep direct-init L64
+20:47:45	00aad650	cs64	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep const local L64
+20:47:45	00aad650	dw74	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L74
+20:47:46	00aad650	bk74	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L74
+20:47:46	00aad650	di75	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep direct-init L75
+20:47:46	00aad650	cs75	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep const local L75
+20:47:46	00aad650	dw76	SRC_FAIL	md=-1	bytes=-1	0s	sweep do-while(0) round L76
+20:47:47	00aad650	bk76	SRC_FAIL	md=-1	bytes=-1	0s	sweep block round L76
+20:47:47	00aad650	di77	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep direct-init L77
+20:47:47	00aad650	cs77	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep const local L77
+20:47:47	00aad650	dw80	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L80
+20:47:47	00aad650	bk80	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L80
+20:47:47	00aad650	dw83	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L83
+20:47:48	00aad650	bk83	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L83
+20:47:48	00aad650	dw85	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L85
+20:47:48	00aad650	bk85	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L85
+20:47:48	00aad650	dw87	DIFFER(1635v1575)	md=167	bytes=1064	0s	sweep do-while(0) round L87
+20:47:48	00aad650	bk87	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L87
+20:47:48	00aad650	dw91	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L91
+20:47:49	00aad650	bk91	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L91
+20:47:49	00aad650	dw93	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L93
+20:47:49	00aad650	bk93	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L93
+20:48:03	00aad650	dw66	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L66
+20:48:03	00aad650	bk66	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L66
+20:48:03	00aad650	dw67	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L67
+20:48:03	00aad650	dw68	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L68
+20:48:04	00aad650	dw70	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L70
+20:48:04	00aad650	dw69	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L69
+20:48:04	00aad650	dw71	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep do-while(0) round L71
+20:48:04	00aad650	bk70	DIFFER(1575v1575)	md=8	bytes=8	0s	sweep block round L70
+20:48:28	00ddae40	bk54	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L54
+20:48:28	00ddae40	dw54	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L54
+20:48:29	00ddae40	dw55	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L55
+20:48:29	00ddae40	bk55	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L55
+20:48:29	00ddae40	dw56	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L56
+20:48:29	00ddae40	bk56	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L56
+20:48:30	00ddae40	dw57	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L57
+20:48:30	00ddae40	bk57	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L57
+20:48:30	00ddae40	dw58	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L58
+20:48:30	00ddae40	bk58	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L58
+20:48:31	00ddae40	dw59	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L59
+20:48:31	00ddae40	bk59	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L59
+20:48:31	00ddae40	bk60	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L60
+20:48:31	00ddae40	dw60	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L60
+20:48:32	00ddae40	dw61	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L61
+20:48:32	00ddae40	bk61	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L61
+20:48:32	00ddae40	di63	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep direct-init L63
+20:48:32	00ddae40	dw64	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L64
+20:48:33	00ddae40	bk64	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L64
+20:48:33	00ddae40	fw65	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep while->for L65
+20:48:33	00ddae40	dw66	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L66
+20:48:33	00ddae40	bk66	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L66
+20:48:34	00ddae40	eq67	DIFFER(1180v1180)	md=6	bytes=12	0s	sweep T-check ==bool L67
+20:48:34	00ddae40	eq70	DIFFER(1180v1180)	md=6	bytes=12	0s	sweep T-check ==bool L70
+20:48:34	00ddae40	dw72	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep do-while(0) round L72
+20:48:34	00ddae40	bk72	DIFFER(1180v1180)	md=2	bytes=9	0s	sweep block round L72
+20:48:35	0050a650	dw176	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L176
+20:48:35	0050a650	bk176	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L176
+20:48:36	0050a650	dw178	SRC_FAIL	md=-1	bytes=-1	1s	sweep do-while(0) round L178
+20:48:36	0050a650	bk178	SRC_FAIL	md=-1	bytes=-1	1s	sweep block round L178
+20:48:37	0050a650	bk179	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L179
+20:48:37	0050a650	dw179	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L179
+20:48:38	0050a650	bk180	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L180
+20:48:38	0050a650	dw180	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L180
+20:48:39	0050a650	di185	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep direct-init L185
+20:48:39	0050a650	cs185	SRC_FAIL	md=-1	bytes=-1	1s	sweep const local L185
+20:48:40	0050a650	dw186	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L186
+20:48:40	0050a650	bk186	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L186
+20:48:41	0050a650	dw187	SRC_FAIL	md=-1	bytes=-1	1s	sweep do-while(0) round L187
+20:48:42	0050a650	bk187	SRC_FAIL	md=-1	bytes=-1	1s	sweep block round L187
+20:48:42	0050a650	dw190	SRC_FAIL	md=-1	bytes=-1	1s	sweep do-while(0) round L190
+20:48:43	0050a650	bk190	SRC_FAIL	md=-1	bytes=-1	1s	sweep block round L190
+20:48:43	0050a650	dw193	DIFFER(2376v2233)	md=584	bytes=2077	0s	sweep do-while(0) round L193
+20:48:44	0050a650	bk193	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L193
+20:48:44	0050a650	dw199	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L199
+20:48:45	0050a650	bk199	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L199
+20:48:45	0050a650	dw202	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L202
+20:48:46	0050a650	bk202	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L202
+20:48:46	0050a650	dw204	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L204
+20:48:46	0050a650	bk204	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L204
+20:48:47	0050a650	dw205	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L205
+20:48:47	0050a650	bk205	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L205
+20:48:48	0050a650	dw208	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L208
+20:48:48	0050a650	bk208	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L208
+20:48:49	0050a650	dw212	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L212
+20:48:49	0050a650	bk212	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L212
+20:48:50	0050a650	dw215	SRC_FAIL	md=-1	bytes=-1	1s	sweep do-while(0) round L215
+20:48:51	0050a650	bk215	SRC_FAIL	md=-1	bytes=-1	1s	sweep block round L215
+20:48:51	0050a650	dw216	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L216
+20:48:52	0050a650	bk216	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L216
+20:48:52	0050a650	dw220	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L220
+20:48:52	0050a650	bk220	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L220
+20:48:53	0050a650	dw223	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L223
+20:48:53	0050a650	bk223	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L223
+20:48:54	0050a650	dw226	SRC_FAIL	md=-1	bytes=-1	1s	sweep do-while(0) round L226
+20:48:55	0050a650	bk226	SRC_FAIL	md=-1	bytes=-1	1s	sweep block round L226
+20:48:55	0050a650	dw228	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L228
+20:48:56	0050a650	bk228	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L228
+20:48:56	0050a650	dw231	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L231
+20:48:56	0050a650	bk231	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L231
+20:48:57	0050a650	dw235	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L235
+20:48:57	0050a650	bk235	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L235
+20:48:57	0050a650	dw238	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep do-while(0) round L238
+20:48:58	0050a650	bk238	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep block round L238
+20:48:59	00d3a4a0	dw67	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L67
+20:48:59	00d3a4a0	bk67	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L67
+20:48:59	00d3a4a0	dw68	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L68
+20:48:59	00d3a4a0	bk68	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L68
+20:49:00	00d3a4a0	eq69	DIFFER(1126v1140)	md=61	bytes=726	0s	sweep T-check ==bool L69
+20:49:00	00d3a4a0	dw74	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L74
+20:49:01	00d3a4a0	bk74	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L74
+20:49:01	00d3a4a0	fw76	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep while->for L76
+20:49:01	00d3a4a0	dw77	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L77
+20:49:01	00d3a4a0	bk77	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L77
+20:49:02	00d3a4a0	eq78	DIFFER(1126v1140)	md=61	bytes=729	0s	sweep T-check ==bool L78
+20:49:02	00d3a4a0	eq81	DIFFER(1126v1140)	md=61	bytes=729	0s	sweep T-check ==bool L81
+20:49:02	00d3a4a0	fw84	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep while->for L84
+20:49:02	00d3a4a0	dw85	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L85
+20:49:03	00d3a4a0	bk85	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L85
+20:49:03	00d3a4a0	eq86	DIFFER(1126v1140)	md=61	bytes=729	0s	sweep T-check ==bool L86
+20:49:03	00d3a4a0	eq89	DIFFER(1126v1140)	md=61	bytes=726	0s	sweep T-check ==bool L89
+20:49:03	00d3a4a0	dw91	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L91
+20:49:04	00d3a4a0	bk91	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L91
+20:49:04	00d3a4a0	eq94	DIFFER(1126v1140)	md=61	bytes=726	0s	sweep T-check ==bool L94
+20:49:04	00d3a4a0	dw97	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L97
+20:49:04	00d3a4a0	bk97	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L97
+20:49:05	00d3a4a0	fw98	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep while->for L98
+20:49:05	00d3a4a0	dw99	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L99
+20:49:05	00d3a4a0	bk99	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L99
+20:49:05	00d3a4a0	eq100	DIFFER(1140v1140)	md=17	bytes=53	0s	sweep T-check ==bool L100
+20:49:06	00d3a4a0	eq103	DIFFER(1140v1140)	md=17	bytes=53	0s	sweep T-check ==bool L103
+20:49:06	00d3a4a0	dw105	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L105
+20:49:07	00d3a4a0	bk105	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L105
+20:49:07	00d3a4a0	dw106	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L106
+20:49:07	00d3a4a0	bk106	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L106
+20:49:07	00d3a4a0	dw107	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L107
+20:49:08	00d3a4a0	bk107	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L107
+20:49:08	00d3a4a0	dw110	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L110
+20:49:08	00d3a4a0	bk110	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L110
+20:49:08	00d3a4a0	dw113	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L113
+20:49:09	00d3a4a0	bk113	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L113
+20:49:09	00d3a4a0	eq115	DIFFER(1140v1140)	md=17	bytes=53	0s	sweep T-check ==bool L115
+20:49:09	00d3a4a0	dw117	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L117
+20:49:09	00d3a4a0	bk117	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L117
+20:49:10	00d3a4a0	dw118	SRC_FAIL	md=-1	bytes=-1	0s	sweep do-while(0) round L118
+20:49:10	00d3a4a0	bk118	SRC_FAIL	md=-1	bytes=-1	0s	sweep block round L118
+20:49:11	00d3a4a0	dw119	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L119
+20:49:11	00d3a4a0	bk119	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L119
+20:49:11	00d3a4a0	dw120	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L120
+20:49:11	00d3a4a0	bk120	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L120
+20:49:12	00d3a4a0	dw123	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L123
+20:49:12	00d3a4a0	bk123	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L123
+20:49:13	00d3a4a0	dw126	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L126
+20:49:13	00d3a4a0	bk126	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L126
+20:49:13	00d3a4a0	eq128	DIFFER(1140v1140)	md=17	bytes=53	0s	sweep T-check ==bool L128
+20:49:13	00d3a4a0	dw130	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L130
+20:49:14	00d3a4a0	bk130	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L130
+20:49:14	00d3a4a0	eq133	DIFFER(1140v1140)	md=17	bytes=53	0s	sweep T-check ==bool L133
+20:49:14	00d3a4a0	dw136	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L136
+20:49:15	00d3a4a0	bk136	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L136
+20:49:15	00d3a4a0	dw137	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L137
+20:49:15	00d3a4a0	bk137	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L137
+20:49:15	00d3a4a0	dw138	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep do-while(0) round L138
+20:49:16	00d3a4a0	bk138	DIFFER(1140v1140)	md=13	bytes=50	0s	sweep block round L138
+20:49:16	005253f0	di56	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep direct-init L56
+20:49:17	005253f0	cs56	SRC_FAIL	md=-1	bytes=-1	0s	sweep const local L56
+20:49:17	005253f0	dw57	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep do-while(0) round L57
+20:49:17	005253f0	bk57	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep block round L57
+20:49:17	005253f0	dw59	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep do-while(0) round L59
+20:49:18	005253f0	bk59	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep block round L59
+20:49:18	005253f0	dw70	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep do-while(0) round L70
+20:49:18	005253f0	bk70	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep block round L70
+20:49:18	005253f0	dw72	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep do-while(0) round L72
+20:49:19	005253f0	bk72	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep block round L72
+20:49:19	005253f0	di78	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep direct-init L78
+20:49:19	005253f0	cs78	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep const local L78
+20:49:19	005253f0	di80	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep direct-init L80
+20:49:20	005253f0	di81	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep direct-init L81
+20:49:20	005253f0	di82	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep direct-init L82
+20:49:20	005253f0	di83	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep direct-init L83
+20:49:20	005253f0	dw90	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep do-while(0) round L90
+20:49:21	005253f0	bk90	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep block round L90
+20:49:21	005253f0	di91	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep direct-init L91
+20:49:21	005253f0	cs91	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep const local L91
+20:49:21	005253f0	dw94	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep do-while(0) round L94
+20:49:22	005253f0	bk94	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep block round L94
+20:49:22	005253f0	di95	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep direct-init L95
+20:49:22	005253f0	dw97	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep do-while(0) round L97
+20:49:22	005253f0	bk97	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep block round L97
+20:49:23	005253f0	dw102	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep do-while(0) round L102
+20:49:23	005253f0	bk102	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep block round L102
+20:49:23	005253f0	di103	DIFFER(2263v2263)	md=21	bytes=116	0s	sweep direct-init L103
+20:49:24	00e72630	dw40	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L40
+20:49:24	00e72630	bk40	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L40
+20:49:24	00e72630	fw43	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep while->for L43
+20:49:24	00e72630	eq41	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L41
+20:49:25	00e72630	bk44	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L44
+20:49:25	00e72630	dw44	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L44
+20:49:25	00e72630	eq45	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L45
+20:49:25	00e72630	eq47	DIFFER(2236v2252)	md=26	bytes=1699	0s	sweep T-check ==bool L47
+20:49:26	00e72630	dw48	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L48
+20:49:26	00e72630	bk48	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L48
+20:49:26	00e72630	dw49	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L49
+20:49:26	00e72630	bk49	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L49
+20:49:27	00e72630	dw50	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L50
+20:49:27	00e72630	bk50	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L50
+20:49:27	00e72630	dw51	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L51
+20:49:28	00e72630	bk51	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L51
+20:49:28	00e72630	di52	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep direct-init L52
+20:49:28	00e72630	dw53	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L53
+20:49:29	00e72630	bk53	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L53
+20:49:29	00e72630	di54	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep direct-init L54
+20:49:29	00e72630	fw55	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep while->for L55
+20:49:30	00e72630	cs54	SRC_FAIL	md=-1	bytes=-1	0s	sweep const local L54
+20:49:30	00e72630	eq57	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L57
+20:49:30	00e72630	dw59	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L59
+20:49:30	00e72630	bk59	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L59
+20:49:30	00e72630	dw64	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L64
+20:49:31	00e72630	bk64	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L64
+20:49:31	00e72630	fw65	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep while->for L65
+20:49:31	00e72630	dw66	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L66
+20:49:31	00e72630	bk66	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L66
+20:49:32	00e72630	eq67	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L67
+20:49:32	00e72630	eq69	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L69
+20:49:32	00e72630	eq74	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L74
+20:49:32	00e72630	dw76	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L76
+20:49:33	00e72630	bk76	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L76
+20:49:33	00e72630	fw77	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep while->for L77
+20:49:33	00e72630	dw78	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L78
+20:49:34	00e72630	bk78	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L78
+20:49:34	00e72630	eq79	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L79
+20:49:34	00e72630	eq81	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L81
+20:49:34	00e72630	eq85	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L85
+20:49:35	00e72630	dw87	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L87
+20:49:35	00e72630	bk87	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L87
+20:49:35	00e72630	fw88	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep while->for L88
+20:49:35	00e72630	dw89	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L89
+20:49:36	00e72630	bk89	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L89
+20:49:36	00e72630	eq90	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L90
+20:49:36	00e72630	eq92	DIFFER(2252v2252)	md=65	bytes=1683	0s	sweep T-check ==bool L92
+20:49:36	00e72630	eq98	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L98
+20:49:37	00e72630	dw100	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L100
+20:49:37	00e72630	bk100	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L100
+20:49:37	00e72630	fw101	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep while->for L101
+20:49:38	00e72630	dw102	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L102
+20:49:38	00e72630	bk102	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L102
+20:49:38	00e72630	eq103	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L103
+20:49:38	00e72630	eq105	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L105
+20:49:38	00e72630	eq109	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L109
+20:49:39	00e72630	dw111	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L111
+20:49:39	00e72630	bk111	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L111
+20:49:39	00e72630	fw112	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep while->for L112
+20:49:40	00e72630	dw113	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L113
+20:49:40	00e72630	bk113	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L113
+20:49:40	00e72630	eq114	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L114
+20:49:40	00e72630	eq116	DIFFER(2252v2252)	md=61	bytes=1683	0s	sweep T-check ==bool L116
+20:49:41	00e72630	eq122	DIFFER(2236v2252)	md=26	bytes=1696	0s	sweep T-check ==bool L122
+20:49:41	00e72630	dw124	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L124
+20:49:41	00e72630	bk124	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L124
+20:49:41	00e72630	fw125	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep while->for L125
+20:49:42	00e72630	dw126	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep do-while(0) round L126
+20:49:42	00e72630	bk126	DIFFER(2236v2252)	md=22	bytes=1696	0s	sweep block round L126
+20:49:43	00ec4a00	bk40	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L40
+20:49:43	00ec4a00	dw40	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L40
+20:49:44	00ec4a00	dw43	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L43
+20:49:44	00ec4a00	bk43	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L43
+20:49:44	00ec4a00	dw45	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L45
+20:49:44	00ec4a00	fw44	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep while->for L44
+20:49:45	00ec4a00	bk45	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L45
+20:49:45	00ec4a00	eq46	DIFFER(1524v1540)	md=19	bytes=1052	0s	sweep T-check ==bool L46
+20:49:46	00ec4a00	eq49	DIFFER(1524v1540)	md=19	bytes=1050	0s	sweep T-check ==bool L49
+20:49:46	00ec4a00	eq52	DIFFER(1524v1540)	md=19	bytes=1050	0s	sweep T-check ==bool L52
+20:49:47	00ec4a00	dw54	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L54
+20:49:47	00ec4a00	bk54	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L54
+20:49:48	00ec4a00	bk55	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L55
+20:49:48	00ec4a00	dw55	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L55
+20:49:48	00ec4a00	eq59	DIFFER(1524v1540)	md=19	bytes=1050	0s	sweep T-check ==bool L59
+20:49:49	00ec4a00	dw63	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L63
+20:49:49	00ec4a00	bk63	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L63
+20:49:49	00ec4a00	fw64	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep while->for L64
+20:49:50	00ec4a00	dw65	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L65
+20:49:50	00ec4a00	bk65	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L65
+20:49:51	00ec4a00	eq66	DIFFER(1524v1540)	md=19	bytes=1050	0s	sweep T-check ==bool L66
+20:49:51	00ec4a00	eq69	DIFFER(1524v1540)	md=19	bytes=1050	0s	sweep T-check ==bool L69
+20:49:52	00ec4a00	dw75	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L75
+20:49:52	00ec4a00	bk75	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L75
+20:49:52	00ec4a00	dw78	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L78
+20:49:53	00ec4a00	bk78	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L78
+20:49:53	00ec4a00	dw81	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L81
+20:49:53	00ec4a00	bk81	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L81
+20:49:54	00ec4a00	dw82	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L82
+20:49:54	00ec4a00	bk82	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L82
+20:49:55	00ec4a00	fw83	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep while->for L83
+20:49:55	00ec4a00	dw84	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L84
+20:49:56	00ec4a00	bk84	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L84
+20:49:56	00ec4a00	eq85	DIFFER(1524v1540)	md=19	bytes=1050	0s	sweep T-check ==bool L85
+20:49:56	00ec4a00	eq88	DIFFER(1524v1540)	md=19	bytes=1050	0s	sweep T-check ==bool L88
+20:49:57	00ec4a00	dw91	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L91
+20:49:57	00ec4a00	bk91	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L91
+20:49:57	00ec4a00	dw92	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L92
+20:49:58	00ec4a00	bk92	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L92
+20:49:58	00ec4a00	dw93	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L93
+20:49:59	00ec4a00	bk93	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L93
+20:49:59	00ec4a00	dw95	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep do-while(0) round L95
+20:50:00	00ec4a00	bk95	DIFFER(1524v1540)	md=15	bytes=1050	0s	sweep block round L95
+20:50:00	00ec4a00	eq96	DIFFER(1524v1540)	md=19	bytes=1050	0s	sweep T-check ==bool L96
+20:50:00	00ef4b40	dw44	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L44
+20:50:00	00ef4b40	bk44	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L44
+20:50:01	00ef4b40	eq45	DIFFER(1252v1268)	md=17	bytes=856	0s	sweep T-check ==bool L45
+20:50:01	00ef4b40	dw49	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L49
+20:50:01	00ef4b40	fw50	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep while->for L50
+20:50:01	00ef4b40	bk49	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L49
+20:50:02	00ef4b40	dw51	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L51
+20:50:02	00ef4b40	bk51	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L51
+20:50:02	00ef4b40	eq52	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L52
+20:50:02	00ef4b40	eq55	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L55
+20:50:02	00ef4b40	di57	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep direct-init L57
+20:50:02	00ef4b40	dw58	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L58
+20:50:03	00ef4b40	bk58	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L58
+20:50:03	00ef4b40	fw59	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep while->for L59
+20:50:03	00ef4b40	dw60	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L60
+20:50:03	00ef4b40	bk60	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L60
+20:50:04	00ef4b40	eq61	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L61
+20:50:04	00ef4b40	eq64	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L64
+20:50:04	00ef4b40	fw66	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep while->for L66
+20:50:04	00ef4b40	fw67	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep while->for L67
+20:50:04	00ef4b40	dw68	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L68
+20:50:05	00ef4b40	bk68	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L68
+20:50:05	00ef4b40	eq69	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L69
+20:50:05	00ef4b40	eq72	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L72
+20:50:05	00ef4b40	dw76	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L76
+20:50:06	00ef4b40	bk76	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L76
+20:50:06	00ef4b40	dw78	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L78
+20:50:06	00ef4b40	bk78	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L78
+20:50:06	00ef4b40	di80	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep direct-init L80
+20:50:06	00ef4b40	dw81	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L81
+20:50:07	00ef4b40	bk81	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L81
+20:50:07	00ef4b40	fw83	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep while->for L83
+20:50:07	00ef4b40	dw84	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L84
+20:50:07	00ef4b40	bk84	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L84
+20:50:07	00ef4b40	eq85	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L85
+20:50:08	00ef4b40	eq88	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L88
+20:50:08	00ef4b40	dw92	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L92
+20:50:08	00ef4b40	bk92	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L92
+20:50:08	00ef4b40	dw94	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L94
+20:50:09	00ef4b40	bk94	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L94
+20:50:09	00ef4b40	dw96	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L96
+20:50:09	00ef4b40	bk96	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L96
+20:50:09	00ef4b40	fw97	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep while->for L97
+20:50:09	00ef4b40	dw98	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L98
+20:50:10	00ef4b40	bk98	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L98
+20:50:10	00ef4b40	eq99	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L99
+20:50:10	00ef4b40	eq102	DIFFER(1252v1268)	md=17	bytes=853	0s	sweep T-check ==bool L102
+20:50:10	00ef4b40	dw106	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep do-while(0) round L106
+20:50:10	00ef4b40	bk106	DIFFER(1252v1268)	md=13	bytes=853	0s	sweep block round L106
+20:50:11	00e799f0	dw43	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L43
+20:50:11	00e799f0	bk43	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L43
+20:50:12	00e799f0	eq44	DIFFER(2580v2580)	md=12	bytes=100	0s	sweep T-check ==bool L44
+20:50:12	00e799f0	dw49	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L49
+20:50:12	00e799f0	bk49	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L49
+20:50:12	00e799f0	fw51	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep while->for L51
+20:50:13	00e799f0	dw52	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L52
+20:50:13	00e799f0	bk52	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L52
+20:50:13	00e799f0	eq53	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L53
+20:50:13	00e799f0	eq56	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L56
+20:50:14	00e799f0	fw60	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep while->for L60
+20:50:14	00e799f0	dw61	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L61
+20:50:14	00e799f0	bk61	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L61
+20:50:14	00e799f0	eq62	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L62
+20:50:15	00e799f0	eq65	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L65
+20:50:15	00e799f0	dw67	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L67
+20:50:15	00e799f0	bk67	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L67
+20:50:15	00e799f0	eq71	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L71
+20:50:16	00e799f0	eq74	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L74
+20:50:16	00e799f0	dw77	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L77
+20:50:16	00e799f0	bk77	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L77
+20:50:16	00e799f0	dw78	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L78
+20:50:17	00e799f0	bk78	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L78
+20:50:17	00e799f0	dw79	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L79
+20:50:17	00e799f0	bk79	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L79
+20:50:17	00e799f0	eq82	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L82
+20:50:18	00e799f0	dw85	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L85
+20:50:18	00e799f0	bk85	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L85
+20:50:18	00e799f0	eq88	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L88
+20:50:18	00e799f0	dw91	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L91
+20:50:19	00e799f0	bk91	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L91
+20:50:19	00e799f0	fw92	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep while->for L92
+20:50:19	00e799f0	dw93	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L93
+20:50:19	00e799f0	bk93	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L93
+20:50:20	00e799f0	eq94	DIFFER(2580v2580)	md=19	bytes=897	0s	sweep T-check ==bool L94
+20:50:20	00e799f0	eq97	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L97
+20:50:20	00e799f0	eq102	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L102
+20:50:21	00e799f0	dw105	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L105
+20:50:21	00e799f0	bk105	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L105
+20:50:21	00e799f0	fw106	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep while->for L106
+20:50:21	00e799f0	dw107	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L107
+20:50:21	00e799f0	bk107	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L107
+20:50:22	00e799f0	eq108	DIFFER(2580v2580)	md=19	bytes=894	0s	sweep T-check ==bool L108
+20:50:22	00e799f0	eq111	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L111
+20:50:22	00e799f0	eq119	DIFFER(2580v2580)	md=12	bytes=103	0s	sweep T-check ==bool L119
+20:50:22	00e799f0	dw122	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L122
+20:50:23	00e799f0	bk122	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L122
+20:50:23	00e799f0	dw125	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep do-while(0) round L125
+20:50:23	00e799f0	bk125	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep block round L125
+20:50:23	00e799f0	fw126	DIFFER(2580v2580)	md=8	bytes=100	0s	sweep while->for L126
+20:51:08	0050a650	a1	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop named CNavigationPosition
+20:51:08	0050a650	a2	DIFFER(2248v2233)	md=698	bytes=1898	0s	last loop layer local
+20:51:09	0050a650	a3	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop C2DVector local
+20:51:09	0050a650	a4	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop non-const iterator
+20:51:10	0050a650	a5	DIFFER(2233v2233)	md=14	bytes=182	0s	last loop seeds reference
+20:51:10	0050a650	a6	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop const CThing& thing
+20:51:10	0050a650	a7	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop pos reference
+20:51:10	0050a650	a8	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop iterator ++ postfix
+20:51:34	0050a650	nb0	DIFFER(2332v2233)	md=794	bytes=1991	0s	DIAG invalid brace pairing (loop brace dropped): drop block level 0
+20:51:34	0050a650	nb1	DIFFER(2364v2233)	md=518	bytes=2036	0s	DIAG invalid brace pairing (loop brace dropped): drop block level 1
+20:51:34	0050a650	nb2	DIFFER(2396v2233)	md=665	bytes=2074	0s	DIAG invalid brace pairing (loop brace dropped): drop block level 2
+20:51:34	0050a650	nb3	DIFFER(2428v2233)	md=845	bytes=2123	0s	DIAG invalid brace pairing (loop brace dropped): drop block level 3
+20:51:35	0050a650	nb4	DIFFER(2556v2233)	md=566	bytes=2271	0s	DIAG invalid brace pairing (loop brace dropped): drop block level 4
+20:51:36	0050a650	nbin2	DIFFER(2543v2233)	md=898	bytes=2248	0s	DIAG invalid brace pairing (loop brace dropped): drop the two innermost blocks
+20:54:28	0050a650	sb1	DIFFER(2233v2233)	md=22	bytes=12	0s	drop scope block level 1 (0 = outermost)
+20:54:28	0050a650	sb0	DIFFER(2233v2233)	md=6	bytes=4	0s	drop scope block level 0 (0 = outermost)
+20:54:28	0050a650	sb2	DIFFER(2233v2233)	md=14	bytes=8	0s	drop scope block level 2 (0 = outermost)
+20:54:28	0050a650	sb3	DIFFER(2233v2233)	md=6	bytes=4	0s	drop scope block level 3 (0 = outermost)
+20:54:29	0050a650	sb4	DIFFER(2236v2233)	md=495	bytes=1448	0s	drop scope block level 4 (0 = outermost)
+20:54:29	0050a650	sball	DIFFER(2236v2233)	md=495	bytes=1449	0s	drop all five scope blocks
+20:54:30	0050a650	sbin2	DIFFER(2236v2233)	md=495	bytes=1448	0s	drop the two innermost scope blocks
+20:54:30	0050a650	sbout2	DIFFER(2233v2233)	md=60	bytes=34	0s	drop the two outermost scope blocks
+20:54:51	00ddae40	xga1gp2	DIFFER(1180v1180)	md=2	bytes=9	0s	cross GetAngleXY ga1 x GetPos gp2
+20:54:51	00ddae40	xga1gp1	DIFFER(1180v1180)	md=2	bytes=9	0s	cross GetAngleXY ga1 x GetPos gp1
+20:54:52	00ddae40	xga1gp3	DIFFER(1194v1180)	md=21	bytes=338	0s	cross GetAngleXY ga1 x GetPos gp3
+20:54:52	00ddae40	xga1gp4	DIFFER(1175v1180)	md=7	bytes=320	0s	cross GetAngleXY ga1 x GetPos gp4
+20:54:52	00ddae40	xga2gp1	DIFFER(1180v1180)	md=2	bytes=9	0s	cross GetAngleXY ga2 x GetPos gp1
+20:54:52	00ddae40	xga2gp2	DIFFER(1180v1180)	md=2	bytes=9	0s	cross GetAngleXY ga2 x GetPos gp2
+20:54:52	00ddae40	xga2gp3	DIFFER(1194v1180)	md=21	bytes=338	0s	cross GetAngleXY ga2 x GetPos gp3
+20:54:52	00ddae40	xga2gp4	DIFFER(1175v1180)	md=7	bytes=320	0s	cross GetAngleXY ga2 x GetPos gp4
+20:54:53	00ddae40	xga3gp1	DIFFER(1180v1180)	md=14	bytes=30	0s	cross GetAngleXY ga3 x GetPos gp1
+20:54:53	00ddae40	xga3gp2	DIFFER(1180v1180)	md=14	bytes=30	0s	cross GetAngleXY ga3 x GetPos gp2
+20:54:53	00ddae40	xga3gp3	DIFFER(1175v1180)	md=23	bytes=328	0s	cross GetAngleXY ga3 x GetPos gp3
+20:54:53	00ddae40	xga3gp4	DIFFER(1175v1180)	md=13	bytes=327	0s	cross GetAngleXY ga3 x GetPos gp4
+20:54:54	00ddae40	xga4gp1	DIFFER(1180v1180)	md=2	bytes=9	0s	cross GetAngleXY ga4 x GetPos gp1
+20:54:54	00ddae40	xga4gp2	DIFFER(1180v1180)	md=2	bytes=9	0s	cross GetAngleXY ga4 x GetPos gp2
+20:54:54	00ddae40	xga4gp3	DIFFER(1194v1180)	md=21	bytes=338	0s	cross GetAngleXY ga4 x GetPos gp3
+20:54:55	00ddae40	xga4gp4	DIFFER(1175v1180)	md=7	bytes=320	0s	cross GetAngleXY ga4 x GetPos gp4
+20:54:55	00ddae40	xgp4	DIFFER(1175v1180)	md=7	bytes=320	0s	GetPos pointer-select spelling
+20:54:55	00ddae40	xga2	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY forceinline only
+20:54:55	00ddae40	xgp2	DIFFER(1180v1180)	md=2	bytes=9	0s	GetPos forceinline only
+20:54:55	00ddae40	xgp3	DIFFER(1194v1180)	md=21	bytes=338	0s	GetPos reversed only
+20:54:56	00ddae40	xga3	DIFFER(1180v1180)	md=14	bytes=30	0s	GetAngleXY reversed only
+20:54:56	00ddae40	xga4	DIFFER(1180v1180)	md=2	bytes=9	0s	GetAngleXY r if/else only
+20:55:27	00ddae40	y2	DIFFER(1183v1180)	md=69	bytes=211	0s	angle local declared before StartPos? no: hero local first
+20:55:27	00ddae40	y1	DIFFER(1159v1180)	md=50	bytes=268	0s	StartPos in own block with teleport
+20:55:28	00ddae40	y4	DIFFER(1182v1180)	md=36	bytes=292	0s	teleport via Game local pointer
+20:55:28	00ddae40	y3	DIFFER(1162v1180)	md=80	bytes=333	0s	StartPos copy from temporary reference
+20:55:28	00ddae40	y5	DIFFER(1193v1180)	md=51	bytes=328	0s	angle local after pos local
+20:55:47	005253f0	u1	DIFFER(2263v2263)	md=21	bytes=116	0s	text uid const
+20:55:47	005253f0	u2	DIFFER(2263v2263)	md=21	bytes=116	0s	text uid direct-init
+20:55:47	005253f0	u4	DIFFER(2263v2263)	md=21	bytes=116	0s	text uid declared at loop top
+20:55:47	005253f0	u3	SRC_FAIL	md=-1	bytes=-1	0s	text NPCNameMap entry reference before SetName
+20:55:48	005253f0	u5	DIFFER(2263v2263)	md=21	bytes=116	0s	text loop while form
+20:55:48	005253f0	u6	DIFFER(2263v2263)	md=21	bytes=116	0s	text count const
+20:55:48	005253f0	u7	DIFFER(2263v2263)	md=21	bytes=116	0s	text def_name copy-init
+20:55:48	005253f0	u8	DIFFER(2263v2263)	md=21	bytes=116	0s	text name direct-init
+20:55:48	005253f0	u9	DIFFER(2263v2263)	md=23	bytes=117	0s	text i as long
+20:55:49	005253f0	u10	DIFFER(2263v2263)	md=23	bytes=117	0s	text loop count down
+20:56:17	005253f0	w1	DIFFER(2263v2263)	md=21	bytes=123	0s	text map reference hoisted
+20:56:17	005253f0	w2	DIFFER(2292v2263)	md=232	bytes=699	0s	text uid low/high copy as key
+20:56:17	005253f0	w3	DIFFER(2263v2263)	md=21	bytes=116	0s	text SetNameForThing via this-> self pointer
+20:56:17	005253f0	w4	DIFFER(2282v2263)	md=219	bytes=669	0s	text uid from value copy (binary-path style)
+20:56:37	0050a650	ne181	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep !(a==b) loop test L181
+20:56:37	0050a650	po181	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep postfix increment L181
+20:56:37	0050a650	po200	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep postfix increment L200
+20:56:37	0050a650	ne200	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep !(a==b) loop test L200
+20:56:38	0050a650	po206	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep postfix increment L206
+20:56:38	0050a650	ne206	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep !(a==b) loop test L206
+20:56:39	0050a650	po213	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep postfix increment L213
+20:56:39	0050a650	ne213	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep !(a==b) loop test L213
+20:56:40	0050a650	po221	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep postfix increment L221
+20:56:40	0050a650	ne221	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep !(a==b) loop test L221
+20:56:41	0050a650	po229	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep postfix increment L229
+20:56:41	0050a650	ne229	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep !(a==b) loop test L229
+20:56:42	0050a650	po236	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep postfix increment L236
+20:56:42	0050a650	ne236	DIFFER(2233v2233)	md=6	bytes=4	0s	sweep !(a==b) loop test L236
+20:57:05	0050a650	g2	DIFFER(2233v2233)	md=6	bytes=4	0s	all seed loops: C2DVector named
+20:57:05	0050a650	g1	DIFFER(2233v2233)	md=6	bytes=4	0s	all seed loops: named CNavigationPosition
+20:57:06	0050a650	g4	DIFFER(2233v2233)	md=6	bytes=4	0s	all const_iterator -> iterator
+20:57:06	0050a650	g3	DIFFER(2233v2233)	md=6	bytes=4	0s	all seed loops: this-> GetNavigationLayerAt
+20:57:07	0050a650	g6	DIFFER(2233v2233)	md=6	bytes=4	0s	all seed loops postfix ++
+20:57:07	0050a650	g5	DIFFER(2233v2233)	md=6	bytes=4	0s	all loops postfix ++
+20:57:08	0050a650	g8	DIFFER(2233v2233)	md=6	bytes=4	0s	region_exits vector<CThing const*> spelling
+20:57:08	0050a650	g7	DIFFER(2233v2233)	md=16	bytes=9	0s	vector loops reversed != (all three)
+20:57:08	0050a650	g9	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop: iterator declared before for
+20:57:08	0050a650	g10	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop: while form with iterator
+20:57:09	0050a650	g11	DIFFER(2233v2233)	md=36	bytes=208	0s	last loop: p_thing via iterator deref in call
+20:57:09	0050a650	g12	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop: p_thing const pointer const
+20:57:10	0050a650	g13	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop: p_thing direct-init
+20:57:44	0050a650	xVB3	DIFFER(2185v2233)	md=443	bytes=1822	0s	DIAG sanity: empty vector-base dtor (overlay in effect?)
+20:57:49	0050a650	xVB2	DIFFER(2233v2233)	md=6	bytes=4	0s	DIAG vector-base dtor if(start) free(start)
+20:57:49	0050a650	xVB1	DIFFER(2233v2233)	md=6	bytes=4	0s	DIAG vector-base dtor single null test in deallocate (STLport 4.6 shape)
+20:58:19	00ec4a00	h2	DIFFER(1549v1540)	md=150	bytes=1037	0s	Killed: Me copied into a named local argument
+20:58:19	00ec4a00	h1	DIFFER(1524v1540)	md=69	bytes=1054	0s	Killed: CSpawnedFunc1 object built in a named pointer first
+20:58:20	00ec4a00	h4	DIFFER(1548v1540)	md=118	bytes=1056	0s	Hit: named local argument
+20:58:20	00ec4a00	h3	DIFFER(1524v1540)	md=15	bytes=1050	0s	Killed: argument as CScriptThing(Me) functional cast
+20:58:21	00ec4a00	h5	DIFFER(1524v1540)	md=15	bytes=1050	0s	Killed: argument via static_cast<CScriptThing>(Me)
+20:58:21	00ec4a00	h6	DIFFER(1524v1540)	md=15	bytes=1050	0s	Killed+Hit: argument via const reference local
+20:58:39	00aad650	o2	DIFFER(1575v1575)	md=8	bytes=8	0s	8-bit via int arithmetic
+20:58:39	00aad650	o1	DIFFER(1575v1575)	md=8	bytes=8	0s	16-bit via ReadType<short>
+20:58:39	00aad650	o3	DIFFER(1575v1575)	md=8	bytes=8	0s	8-bit via 128 and * 256
+20:58:39	00aad650	o4	DIFFER(1575v1575)	md=8	bytes=8	0s	8-bit via named byte local
+20:58:40	00aad650	o5	DIFFER(1575v1575)	md=8	bytes=8	0s	16-bit via named sample local
+20:58:40	00aad650	o6	DIFFER(1575v1575)	md=14	bytes=29	0s	result Channels/Frequency order swapped
+20:58:40	00aad650	o7	DIFFER(1570v1575)	md=43	bytes=206	0s	SampleLength from samples.size()
+20:58:40	00aad650	o8	DIFFER(1575v1575)	md=8	bytes=8	0s	new CWaveFile via named pointer
+20:58:41	00aad650	o9	DIFFER(1575v1575)	md=8	bytes=8	0s	FormatTag check as == 1 else throw
+20:58:41	00aad650	o10	DIFFER(1575v1575)	md=8	bytes=8	0s	bitsPerSample from BlockAlign*8 / Channels with unsigned
+20:58:41	00aad650	o12	DIFFER(1575v1575)	md=8	bytes=8	0s	8-bit via ReadType<unsigned char>
+20:58:41	00aad650	o13	DIFFER(1575v1575)	md=8	bytes=8	0s	16-bit loop as while
+20:58:41	00aad650	o15	DIFFER(1575v1575)	md=8	bytes=8	0s	sampleCount computed as chunkSize / (BlockAlign / Channels)? no: Channels first
+20:58:41	00aad650	o16	DIFFER(1575v1575)	md=8	bytes=8	0s	riff WAVE check before riffEnd computed? keep order; form via direct-init
+20:58:42	00aad650	o17	DIFFER(1575v1575)	md=8	bytes=8	0s	tag via direct-init
+20:58:58	005253f0	z1	DIFFER(2231v2263)	md=34	bytes=993	0s	text: line read via helper-free assignment chain? count line as separate CCharString
+20:58:58	005253f0	z2	DIFFER(2297v2263)	md=317	bytes=603	0s	text: UNATTACHED compare as != with else
+20:58:58	005253f0	z3	DIFFER(2263v2263)	md=157	bytes=210	0s	text: def_name built then UNATTACHED check on def_name
+20:58:58	005253f0	z4	DIFFER(2263v2263)	md=149	bytes=1028	0s	outer: nested IsSerialisingHeroState as && condition
+20:58:59	005253f0	z5	DIFFER(2260v2263)	md=315	bytes=350	0s	text: SetNameForThing with name temporary
+20:58:59	005253f0	z6	DIFFER(2263v2263)	md=21	bytes=116	0s	text: uid read before Replace? (order kept) -- uid via unsigned __int64 cast
+20:59:15	0050a650	q1	DIFFER(2233v2233)	md=6	bytes=4	0s	creature loop: thing via (*it)->GetParentThing()
+20:59:15	0050a650	q2	DIFFER(2233v2233)	md=6	bytes=4	0s	creature loop: thing pointer
+20:59:15	0050a650	q4	DIFFER(2233v2233)	md=6	bytes=4	0s	area_in_floating_point copy-init
+20:59:16	0050a650	q3	SRC_FAIL	md=-1	bytes=-1	1s	nthing_list.clear() as erase(begin,end)
+20:59:16	0050a650	q5	DIFFER(2233v2233)	md=6	bytes=4	0s	WorldArea assigned via operator= call spelling
+20:59:17	0050a650	q6	DIFFER(2233v2233)	md=6	bytes=4	0s	detail loop: p_thing via iterator
+20:59:17	0050a650	q7	DIFFER(2233v2233)	md=6	bytes=4	0s	village/creature loops: p_thing const const
+20:59:18	0050a650	q8	DIFFER(2233v2233)	md=6	bytes=4	0s	nav seed loop: p_thing const const
+20:59:18	0050a650	q9	DIFFER(2233v2233)	md=6	bytes=4	0s	entrance loop: p_thing const const
+20:59:18	0050a650	q10	DIFFER(2233v2233)	md=10	bytes=6	0s	all vector loops end() hoisted? no -- creature_generators loop reversed !=
+20:59:19	0050a650	q11	DIFFER(2233v2233)	md=8	bytes=5	0s	entrance loop reversed !=
+20:59:19	0050a650	q12	DIFFER(2233v2233)	md=10	bytes=6	0s	nav seed loop reversed !=
+20:59:20	0050a650	q13	DIFFER(2233v2233)	md=10	bytes=6	0s	exit loop reversed != with const const p_thing
+20:59:20	0050a650	q14	DIFFER(2233v2233)	md=6	bytes=4	0s	search_tools by pointer
+21:00:43	00ddae40	final	DIFFER(1180v1180)	md=2	bytes=9	0s	DIAG final differ check
+21:00:43	00d33730	final	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG final differ check
+21:00:44	00e799f0	final	DIFFER(2580v2580)	md=8	bytes=100	0s	DIAG final differ check
+21:00:44	0050a650	final	DIFFER(2233v2233)	md=6	bytes=4	0s	DIAG final differ check
+21:00:44	00d3a4a0	final	DIFFER(1140v1140)	md=13	bytes=50	0s	DIAG final differ check
+21:00:44	00ef4b40	final	DIFFER(1252v1268)	md=13	bytes=853	0s	DIAG final differ check
+21:00:45	005253f0	final	DIFFER(2263v2263)	md=21	bytes=116	0s	DIAG final differ check
+21:00:45	00ec4a00	final	DIFFER(1524v1540)	md=15	bytes=1050	0s	DIAG final differ check
+21:00:45	00aad650	final	DIFFER(1575v1575)	md=8	bytes=8	0s	DIAG final differ check
+21:00:46	00e72630	final	DIFFER(2236v2252)	md=22	bytes=1696	0s	DIAG final differ check
+21:02:17	00ddae40	final2	DIFFER(1180v1180)	md=2	bytes=9	0s	DIAG final check, minimal overlay
+21:02:17	00d33730	final2	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	DIAG final check, minimal overlay
+21:02:18	00e799f0	final2	DIFFER(2580v2580)	md=8	bytes=100	0s	DIAG final check, minimal overlay
+21:02:18	0050a650	final2	DIFFER(2233v2233)	md=6	bytes=4	0s	DIAG final check, minimal overlay
+21:02:18	00d3a4a0	final2	DIFFER(1140v1140)	md=13	bytes=50	0s	DIAG final check, minimal overlay
+21:02:18	00ef4b40	final2	DIFFER(1252v1268)	md=13	bytes=853	0s	DIAG final check, minimal overlay
+21:02:19	005253f0	final2	DIFFER(2263v2263)	md=21	bytes=116	0s	DIAG final check, minimal overlay
+21:02:19	00ec4a00	final2	DIFFER(1524v1540)	md=15	bytes=1050	0s	DIAG final check, minimal overlay
+21:02:19	00aad650	final2	DIFFER(1575v1575)	md=8	bytes=8	0s	DIAG final check, minimal overlay
+21:02:19	00e72630	final2	DIFFER(2236v2252)	md=22	bytes=1696	0s	DIAG final check, minimal overlay

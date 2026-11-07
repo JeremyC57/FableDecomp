@@ -45,6 +45,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     attempt budgets per row").** Running: chunk 855 (`$S/w22/agent855`: six never-attempted 0.9-2.1 KB rows + chunk 854's two WIP rows)
     and chunk 856 (`$S/w22/agent856`: expert retry of ten parked near misses, 2-22 lines, no expert had worked them), 50+ attempts per
     row. Briefs `$S/w22/agent85N/CHUNK_BRIEF.md` (copied into the pending dir at landing). Land each like landing_e (next letter `_f`).
+    Chunk 856 finished **0 of 10** (51-103 grades per row, no source beat the parked best; saved `pending/2026-11-08_linux_hand856/`,
+    nothing to land; it reports the 0x00AAD650 oracle extent mis-cut: 1574 + int3, not 1840). Its slot went to chunk 857
+    (`$S/w22/agent857`: eight never-attempted 1.6-3.5 KB engine / UI rows, several forge-autoname placeholders to prove).
   - (superseded) Authoring was STOPPED (the user, 2026-11-08: "No more authoring"). No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled
