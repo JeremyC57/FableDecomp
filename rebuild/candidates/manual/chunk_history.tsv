@@ -27540,3 +27540,9 @@ chunk	address	module	name	length
 817	00d52e90	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster	Main	11892
 817	00e07640	NScript::CQ_TraderEscortScript::CDarkwoodTrader	Main	11984
 817	00e87030	NScript::CV_FisticuffsClubScript::CTyler	Main	12551
+818	00e2c100	NScript::CV_AmbushScamScript::CAS_Trickster	Main	8945
+818	00d5ae70	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster	Main	11636
+818	00e4b5b0	NScript::CV_BanditTollScript::CTollBandit	Main	10594
+818	00eb9980	NScript::CV_MayorsInvitationScript::CLadyGrey	Main	12944
+818	00e20600	NScript::CQR_EscortTraderScript::CTraderToEscort	Main	14510
+818	00e64fb0	NScript::CV_ChickenKickingScript::CChickenMaster	Main	15210

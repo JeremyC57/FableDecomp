@@ -1,0 +1,26 @@
+address	source	grade_with_final_overlay	note
+0x00E2C100	differ/00e2c100.cpp	DIFFER(8945v8945) PASS	parked; uses no overlay header (landed engine/CV_AmbushScamScript.h unchanged)
+0x00D3E2E0	differ/00d3e2e0.cpp	DIFFER(9028v9440) PASS	parked; uses hdr/engine/CQ_GuildTrainingScript.h opt-in FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_SPEEDTEST (+ landed FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MAIN)
+0x00E58D40	differ/00e58d40.cpp	DIFFER(9620v9616) PASS	parked; uses new hdr/engine/CV_BeggarAndChildScript.h (chunk 813 draft + CLookoutPointBeggar, FABLE_RETAIL_NSCRIPT)
+0x00E3BB70	differ/00e3bb70.cpp	DIFFER(10069v10149) PASS	parked; uses no overlay header (landed engine/CV_BordelloScript.h unchanged)
+0x00E4B5B0	differ/00e4b5b0.cpp	DIFFER(10674v10594) PASS	parked; uses hdr/engine/CV_BanditTollScript.h opt-in FABLE_RETAIL_CV_BANDITTOLLSCRIPT_TOLLBANDIT
+0x00D5AE70	differ/00d5ae70.cpp	DIFFER(11636v11636) PASS	parked; uses new hdr/engine/CQ_GuildTrainingSkillScript.h (FABLE_RETAIL_NSCRIPT)
+0x00D3BC60	rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScript_Main_00d3bc60.cpp	unchanged (preprocessed text identical)	landed includer of CQ_GuildTrainingScript.h: g++ -E with and without the overlay identical (opt-in macro not defined)
+0x00D43450	rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillDummy_Main_00d43450.cpp	unchanged (preprocessed text identical)	landed includer of CQ_GuildTrainingScript.h
+0x00D41D00	rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCSkillTarget_Main_00d41d00.cpp	unchanged (preprocessed text identical)	landed includer of CQ_GuildTrainingScript.h
+0x00D43400	rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillDummy_GetParentScript_00d43400.cpp	unchanged (preprocessed text identical)	landed includer of CQ_GuildTrainingScript.h
+0x00D43420	rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillDummy_OnPredicateFail_00d43420.cpp	unchanged (preprocessed text identical)	landed includer of CQ_GuildTrainingScript.h
+0x00F29500	rebuild/src/compiled/00/f2/CScriptDef_GetSizeofClass_00f29500.cpp	unchanged (preprocessed text identical)	landed includer (indirect) of the overlay set
+0x00F2A240	rebuild/src/compiled/00/f2/CScriptDef_Copy_00f2a240.cpp	unchanged (preprocessed text identical)	landed includer (indirect) of the overlay set
+0x00E480D0	rebuild/src/compiled/00/e4/NScriptCVBanditTollScript_ResetToll_00e480d0.cpp	unchanged (preprocessed text identical)	landed includer of CV_BanditTollScript.h
+0x00E479B0	rebuild/src/compiled/00/e4/NScriptCVBanditTollScript_Main_00e479b0.cpp	unchanged (preprocessed text identical up to __LINE__ static-assert typedef names)	landed includer of CV_BanditTollScript.h; the only textual difference is fable_static_assert_169 -> _181 (line shift), no code
+0x00E498F0	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBlockingBandit_GetParentScript_00e498f0.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h
+0x00E49FB0	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCReluctantTrader_GetParentScript_00e49fb0.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h
+0x00E48E80	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCTauntingBandit_GetParentScript_00e48e80.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h
+0x00E48BE0	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCTollBandit_GetParentScript_00e48be0.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h
+0x00E4AFF0	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCGuildSealWarning_GetParentScript_00e4aff0.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h
+0x00E4A700	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMBanditLeader_GetParentScript_00e4a700.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h
+0x00E48DA0	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMTauntingBandit_GetParentScript_00e48da0.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h
+0x00E489F0	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMTollBandit_GetParentScript_00e489f0.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h
+0x00E4A230	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCSafeTrader_GetParentScript_00e4a230.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h
+0x00E4A930	rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBanditLeader_GetParentScript_00e4a930.cpp	unchanged (static-assert typedef names only)	landed includer of CV_BanditTollScript.h

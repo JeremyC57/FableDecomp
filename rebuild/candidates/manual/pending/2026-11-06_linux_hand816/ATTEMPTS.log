@@ -1,0 +1,27 @@
+00e4b5b0	a1	DIFFER(10674v10594)	1318	first full body
+00e4b5b0	a2	DIFFER(10658v10594)	2239	fi operator== + block from warn_distance: over-packs frame
+00e2c100	a1	DIFFER(8945v8945)	133	first full body
+00e2c100	a2	DIFFER(8945v8945)	109	for(;;){if(flag)break;...} still rotated
+00e2c100	a3	DIFFER(8945v8945)	56	`NSF; if (!T) continue; return;` stops the DoTricksterIntro loop rotation; only residue: exit stub e2e38e schedules `mov ecx,ebp; push 0` (ours push first)
+00d3e2e0	a1	DIFFER(9028v9440)	990	first full body (all copies/dtors called, movie out-of-line)
+00d3e2e0	a2	DIFFER(9972v9440)	2098	diagnostic: everything inline (IMPLICIT_COPY, inline ~CScriptThing, inline movie ctor/dtor): VC7.1 expands every site (no function-wide budget cut-off), retail expands only the state-0 sites + one exit path
+00d3e2e0	a3	DIFFER(9972v9440)	2098	a2 + TRetVoid _Fail_Val returns (815's matched-twin spelling): no change, still expands all sites
+00d5ae70	a1	DIFFER(11600v11636)	457	first full body (815 twin defines)
+00d5ae70	a2	DIFFER(11600v11636)	457	+ TRetVoid returns: identical to a1 (no effect)
+00e3bb70	a1	DIFFER(9805v10149)	887	first full body (Trickster defines, movie out-of-line, CTimer ctor inline)
+00e58d40	a1	DIFFER(9572v9616)	167	first full body from chunk 813's CBeggarBully twin (new header engine/CV_BeggarAndChildScript.h + CLookoutPointBeggar)
+00e58d40	a2	DIFFER(9620v9616)	134	a1 + IMPLICIT_COPY: the only residue is now the predicate copy (expanded in ours, called in retail)
+00e58d40	a3	DIFFER(9620v9616)	134	a2 + row-local inline ~CScriptThing (815's budget lever): identical
+00e3bb70	a2	DIFFER(10069v10149)	715	movie ctor/dtor inline-visible + declared-only ~CCountedPointer<MovieBase>: closer; per-site movie split (ctor called at EARN_SOME / chit-chat / intro / loop-2 sites) remains
+00e2c100	a4	DIFFER(8945v8945)	56	a3 + TRetVoid _Fail_Val returns: identical
+00e2c100	a5	DIFFER	-	pad-scheduling probe (block scope / else-if !T / named bool): no change (a6 worse 74)
+00e2c100	a6	DIFFER	-	pad-scheduling probe (block scope / else-if !T / named bool): no change (a6 worse 74)
+00e2c100	a7	DIFFER	-	pad-scheduling probe (block scope / else-if !T / named bool): no change (a6 worse 74)
+00d5ae70	a3	DIFFER(11636v11636)	275	a1 + the missing `if (T) return;` after the SkillRepeating loop: call sequence equal, size equal
+00d5ae70	a4-a14	DIFFER(11636v11636)	275-315	slot probes: tick declaration permutations (5), commentCount placement (3), fresh second tick set / ticksRemoved (2): none moves the 0x44/0x48/0x4c scalar colouring
+00e4b5b0	a3	DIFFER(10674v10594)	1229	a1 + __forceinline CScriptThing::operator== (without a2's block): operator== now expanded like retail
+00e4b5b0	a4-a9	DIFFER	1222-2215	frame probes: block around kill_distance/state 1 (1229, 0x11c), warn_distance block after warn_timer (1229), state-4 block (0x110 over-packed), call_timer..end block v1 (1222, 10658, 0x11c; state-1 temp now shares with warn_timer), + warn_distance..end inner block v2/v3 (0x110 over-packed)
+00e2c100	a8	DIFFER(8945v8945)	58	inverted MoralitySwitch test (evil arm first): only the jcc sense flips; pad 0x00E2E38E unchanged
+00e2c100	a9	DIFFER(8928v8945)	87	shared `if (T) return;` hoisted above the MoralitySwitch arms: worse (one check fewer)
+00e2c100	a10	DIFFER(8942v8945)	78	trailing `continue` after the last Release (skips NSF, wrong semantics anyway): worse; parked at a3
+00e4b5b0	a10	DIFFER(10674v10594)	1229	warn_timer declared before warn_distance: identical to a3; parked at a3
