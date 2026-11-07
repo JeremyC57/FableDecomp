@@ -27606,3 +27606,9 @@ chunk	address	module	name	length
 828	006c6040	CTCHeroOpinionDeedLog	InformRelevantThingsOfDeed	2377
 828	00e2c100	NScript::CV_AmbushScamScript::CAS_Trickster	Main	8945
 828	00974aa0	CAIStateGroup_JackOfBladesStage2	Update	3080
+829	00b5af80	CEngineScreenEffectColourFilter	RenderColorFilteredQuad	2865
+829	0068bc70	CInputProcessInventoryQuestsScreen	ProcessInput	2481
+829	0068cb90	CInputProcessControlFreeCamera	ProcessInput	2339
+829	00435530	CDisplayEngine	DoRender	2617
+829	00439070	CPlayerGui	DrawPreparePrimitivesForEngine	2613
+829	00678760	CPersistTraits<std::list<CReactionMatch*> >	TransferIn	3579

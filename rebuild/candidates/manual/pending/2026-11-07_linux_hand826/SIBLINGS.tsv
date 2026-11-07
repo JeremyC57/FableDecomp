@@ -1,0 +1,8 @@
+address	name	why
+0x00DAC760	(parked STB-dtor row, per hand809 notes)	same implicit seh_me (STB) dtor per-site split as 0x00E8EF80; only /d2inlT72 reproduces it
+0x0094BB20	CAIStateGroup_MinionHawkingFromStall::Update (landed)	its plain-bool shift-form TestTC keeps `mov ecx,[eax+30h] ; shr ecx,10h` at a bit-16 test; 0x00960120's const bool& presence narrows at the same bit
+0x0088F570	(pending hand140 differ)	calls CCharString::IsEmpty(); if retail tests it in place, the new FABLE_RETAIL_CCHARSTRING_FORCEINLINE_ISEMPTY opt-in applies
+0x00BA1140	(pending hand902 differ)	calls CCharString::IsEmpty(); see above
+0x00BD71B0	(pending hand902 differ)	calls CCharString::IsEmpty(); see above
+0x006E2C00	(pending hand211 differ)	calls CCharString::IsEmpty(); see above
+0x0088BF30	(pending hand277 differ)	calls CCharString::IsEmpty(); see above

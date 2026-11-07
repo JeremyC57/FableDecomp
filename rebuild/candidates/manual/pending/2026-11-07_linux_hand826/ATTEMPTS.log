@@ -1,0 +1,55 @@
+# chunk 826 attempts (md = masked diff lines, agent824 md.py)
+00850a80 r0 parked hand801 source unchanged: DIFFER(2684v2576) md 300
+00960120 r0 parked hand801 source unchanged: DIFFER(1576v1600) md 438
+00d7fe90 r0 parked hand789 source unchanged: DIFFER(2105v3148) md 398
+00e8ef80 r0 parked hand809 source unchanged: DIFFER(6038v5996) md 59
+00ed5f50 r0 parked hand803 source unchanged: DIFFER(4971v5024) md 381
+00951fb0 r0 parked hand796 source unchanged: DIFFER(2229v2272) md 394
+00e8ef80 e1 row-local ~CCountedPointer<STB> spec over ReleaseData (cost-only): DIFFER(6038v5996) md 59 identical (cost respelling is a no-op: inliner sees optimized callee)
+00e8ef80 e2 main loop while(!T){...;NSF;} with implicit dtor (never tried with implicit dtor before): DIFFER(6061v5996) md 1028 (worse)
+00850a80 b1 dig box as a call-argument temporary C2DBoxI(thing.GetPos().ToC2DCoordI(), radius) (plain-inline ToC2DCoordI, PDB ?ToC2DCoordI@C3DVector@@QBE?AVC2DCoordI@@XZ): DIFFER(2664v2576) md 572 (ToC2DCoordI called, box built inside the argument pushes; zero now kept in esi)
+00850a80 b2 named box from __forceinline ToC2DCoordI: DIFFER(2684v2576) md 300 (identical to r0)
+00850a80 b3 b2 + same-TU noinline C2DBoxI ctor body (landed 0x00434740) + stand-in GetAllThingsInRoughArea that reads filter/box members: DIFFER(2692v2576) md 321: X now converted first, filter 0xef store appears, frame 0x24 (too tight: coord shares with the vector)
+00850a80 b4 b3 with `std::vector<CThing*> spots;` declared before radius/box: frame 0x30 = retail, DIFFER(2692v2576) md 301
+00850a80 b5 b4 + same-TU body of TargetCreatureLikelyToReactToDeed 0x008508B0 (landed row) before the caller: DIFFER(2692v2576) md 301 (no change)
+00850a80 b6 b4 with every in-switch 'return false' -> break (one end return): DIFFER(2652v2576) md 310: false block now at the end as retail, but the true epilogues cross-jump (6 'mov al,1' copies v retail 12)
+00960120 c1 HasTC shift form (unsigned long word; (word >> bit) & 1, the landed 0x0094BB20 Hawking TestTC) + plain bool present in PeekTC/GetTC: DIFFER(1560v1600) md 457: presence no longer materialised at all (test byte [eax+2Ah],1); retail spills it because every callee-saved register is busy (ebx=&ThingReactingTo, esi=source)
+00960120 c2 r0 + attitude as one ternary: DIFFER(1576v1600) md 438 (identical to r0; VC still threads the !present edge straight to the else arm, so source is never materialised in esi)
+00d7fe90 d0 a12 form (plain inline ~vector, no declared-only specialisation): DIFFER(4460v3148) md 723 (every exit expands)
+00d7fe90 diag d0 + /d2inlT40 3420 md 747, /d2inlS10 4460 md 723 (S no effect), /d2inlT30 2538 md 720, /d2inlT20 2422 md 727: the split is the threshold side, but no T value reproduces retail's site pattern (md stays ~720): our per-site frequencies order the exits differently from retail
+00960120 c3 c1 + `const CThingAICreature& creature = GetCreature();` before the attitude if: DIFFER(1560v1600) md 460
+00960120 c4 r0 (const bool& present, mask HasTC) + creature reference before the attitude if: DIFFER(1560v1600) md 424 (best so far)
+00960120 c5 c4 + HasTC shift form (word local; (word>>bit)&1, the landed Hawking 0x0094BB20 spelling): DIFFER(1560v1600) md 417 (best): source now in esi, presence spilled to the shared bool slot, GetCreature loads hoisted into the test block as retail; residue = the bit-16 load narrowed to `mov cl,[eax+2Ah]` (retail `mov ecx,[eax+28h]; shr ecx,10h`) + frame slot offsets (+8 shift: source home [esp+20h] v [esp+28h], attitude [esp+10h] v [esp+18h], bool slot 17h v 13h)
+00960120 c6 c5 with PeekTC `bool present` + `return present;` (exact Hawking GetInterfaceT form): DIFFER(1560v1600) md 460 (presence folded into `test byte [eax+2Ah],1`, no store)
+00960120 c7 c6 + GetTC also returns plain present: DIFFER(1560v1600) md 460 (folded)
+00960120 c8 c5 with `const bool present` (value, not reference): DIFFER(1560v1600) md 460 (folded: only the reference form keeps the store)
+00960120 c9 c5 with HasTC (bool)((word>>bit)&1): DIFFER(1560v1600) md 417 (same narrowing)
+00960120 c10 c5 with HasTC ((word>>bit)&1)==1: DIFFER(1592v1600) md 431 (still narrows, adds dec cl)
+00960120 c11 c5 + layout fix: CThingCreatureBase pad starts at 0x94 (sizeof CThing = 0x94, the parked source put PCurrentAction at +0x104; retail +0x100): DIFFER(1560v1600) md 415
+00960120 c12 c11 + CDefPointer dtor __forceinline via Release() holding the pointee in a local (the shared engine/CDefPointer.h shape; parked source's plain inline dtor was called out of line at all three PeekPDeedEffectsDef temporaries, retail expands them): DIFFER(1596v1600) md 269
+00960120 c13 c12 + new opt-in FABLE_RETAIL_CCHARSTRING_FORCEINLINE_ISEMPTY (hdr/fable_string.h: __forceinline GetLength/IsEmpty; retail tests animation->IsEmpty() in place at 0x00960376, ours called it): DIFFER(1592v1600) md 185
+00960120 c14 c13 with HasTC back to the mask form (retail's standalone HasTC(0x0f) tests are `test ch,ch ; jns`, the mask form): DIFFER(1596v1600) md 161
+00960120 c15 c14 + __forceinline HasTC (it was called out of line at the two HasTC(0x0f) sites): DIFFER(1592v1600) md 185 (inline but as shr 0Fh/test cl,1; retail `mov ecx,[eax+20h] ; test ch,ch ; jns`; mini: only a non-bool mask or the if-return HasTC form gives test ch,ch)
+00960120 c16 c15 with HasTC as if-return (`if (word & mask) return true; return false;`): DIFFER(1564v1600) md 204 (standalone sites fixed but every PeekTC/GetTC presence becomes `test dword [eax+28h],10000h`, no store)
+00960120 c17 c16 (if-return HasTC for the standalone sites) + PeekTC/GetTC presence written as the mask expression in place (const bool& in PeekTC, bool in GetTC): DIFFER(1580v1600) md 135 (best): standalone HasTC(0x0f) now `test ch,ch ; jns` as retail; residue = 0x50 bit-16 load narrowing, frame slots +4 (key home [esp+18h] v [esp+14h], attitude [esp+14h] v [esp+18h]), GetSex call operand order, the while-loop 0x32 constant registerised in esi, the AIAction_LookAtThing CIntelligentPointer temporary built in place (retail ctor 0xA01B10 + vtable store + GetPItem + SetPItem)
+00960120 c18 c17 with the LookAtThing argument as the copy CIntelligentPointer<const CThing>(ThingReactingTo) and FABLE_RETAIL_CINTELLIGENTPOINTER_COPY (plain inline copy; retail inlines the copy body base ctor/vptr/GetPItem/SetPItem at this site and calls 0x00654D58 at the PerformAction site): DIFFER(1576v1600) md 138 (both sites call the copy out of line: budget-side)
+00960120 diag c18 + /d2inlS40: 1624v1600 md 247 (more inlining: the copy-ctor site is function-budget-limited; diagnostic only)
+00951fb0 f1 distance declared in the loop body (float distance = toEnemy.GetMagnitude();): DIFFER(2229v2272) md 394 (identical)
+00ed5f50 g1 AddSpawnedFunction region name as an explicit CCharString("") argument (the landed RegisterMain rows' spelling: VC7.1 builds it after the new-expression, destroyed first): DIFFER(4973v5024) md 365
+00ed5f50 g2 g1 + PlayLoopingAnimation names as explicit CCharString("..."): DIFFER(4932v5024) md 534 (explicit temps interleave with the pushes; retail calls rand, then the name ctor, then pushes everything)
+00ed5f50 g3 g2 + PlayAnimation names explicit too: DIFFER(4916v5024) md 584
+00ed5f50 g4 g1 + each rand() loop count computed into a local just before its PlayLoopingAnimation (retail calls rand, then builds the name temp, then pushes): DIFFER(4971v5024) md 22
+00ed5f50 g5 g4 + row-level inline CScriptThing::~CScriptThing() { } (header contract): DIFFER(5090v5024) md 228: the final-exit Sword dtor now expands as retail, but so does the by-value Par1 temporary's dtor inside the __forceinline CSpawnedFunc1 ctor (retail calls 0x004AA840 there), frame repacks
+00ed5f50 g6 g5 + new hdr opt-in making the CSpawnedFunc1 ctor plain inline: DIFFER(4976v5024) md 130 (the ctor itself is then called out of line, Par1 built on the outgoing stack; frame 0x130 v 0x13C) -- opt-in dropped
+00ed5f50 g7 g5 + Par1 as an explicit CScriptThing(Me) temporary: DIFFER(5090v5024) md 228 (same as g5)
+00951fb0 f2 the break test through a named bool (bool enemyAboveLanding = enemy Z > landed Z + 1.5f; if (enemyAboveLanding) break;) -- mini: a bool-local break condition stops VC7.1 sinking the toEnemy products/sqrt below the marker calls: DIFFER(2248v2272) md 357: xx/yy/sqrt now computed and spilled before the GetPItem calls as retail; frame still 0xC short
+00850a80 b7 b4 + local CDefPointer dtor as __forceinline Release() holding the pointee in a local + Object = 0 (engine/CDefPointer.h shape): DIFFER(2692v2576) md 301 (no change)
+00850a80 b8 b4 with case 7's def/gift as a positive nest (if (GetDef) { gift...; return } return false;): DIFFER(2692v2576) md 318 (worse)
+00850a80 b9 b4 with the entry test split (if (&thing == 0) return false; if (thing.Dead) return false;): DIFFER(2704v2576) md 291 (entry false path now its own early epilogue; zero register still not formed)
+00951fb0 f3 f2 with distance declared in the loop body: DIFFER(2248v2272) md 357 (identical to f2)
+00850a80 b10 b4 + targeting/followed initialised to 0 before PeekTC: DIFFER(2756v2576) md 864 (much worse)
+00951fb0 f4 f2 with the bool built straight from PEnemy.Get()/PLandedMarker.Get(): DIFFER(2248v2272) md 357 (identical)
+00951fb0 diag f2 + /d2inlS20: 2248v2272 md 357 (no change); f2 + /d2inlT40: 2177v2272 md 368 (diagnostic only; neither reproduces retail's one-expanded/two-called Forward/Left ctor split)
+00951fb0 f5 f2 with def declared before modes: DIFFER(2248v2272) md 357 (identical: slot order not from declaration order)
+00951fb0 f7 f2 + Left ctor declared-only (retail calls 0x00953780): DIFFER(2279v2272) md 394 (Forward still expanded at both its arms; layout worse)
+00951fb0 f8 f7 + Forward ctor declared-only too (all three arms call): DIFFER(2192v2272) md 324 (lower md, but retail expands Forward at the GoLeft/facing arm; kept f2 as the best shape)

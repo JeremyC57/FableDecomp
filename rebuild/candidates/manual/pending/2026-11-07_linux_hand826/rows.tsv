@@ -1,0 +1,7 @@
+address	module	name	length
+00850a80	CContextSensitiveItemDef	IsValidOverride	2576
+00d7fe90	NScript::CQ_HeroSoulsArenaScript	WatchForRoundsInArena	3148
+00e8ef80	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon	Main	5996
+00ed5f50	NScript::CV_SwordInTheStoneScript::CSwordCrowd	Main	5024
+00960120	CAIStateGroup_DeedReactionRoot	Update	1600
+00951fb0	CAIStateGroup_JackDragon	UpdateHover	2272
