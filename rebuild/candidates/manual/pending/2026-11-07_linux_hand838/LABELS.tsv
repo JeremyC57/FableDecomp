@@ -1,0 +1,3 @@
+address	name	evidence
+0x00D9DAF0	NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe::Main	landed row (RELOCATION_MATCH); Ego_r.pdb ?Main@CSpawnNewHobbe@CQ_HobbeToothContestScript@NScript@@EAEXXZ; slot 1 of the CSpawnNewHobbe vtable 0x012D6BB8 stored by the landed Alloc 0x00D9CE80 (label already correct)
+0x00EB7B00	NScript::CV_MayorsInvitationScript::CWiseVillager::Main	landed row (RELOCATION_MATCH); Ego_r.pdb ?Main@CWiseVillager@CV_MayorsInvitationScript@NScript@@EAEXXZ; slot 1 of the CWiseVillager vtable 0x012F0610 stored by the landed Alloc 0x00EB79F0 (label already correct)

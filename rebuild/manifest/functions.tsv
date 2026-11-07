@@ -53737,7 +53737,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ec4920	`scalar deleting destructor'	CSpawnedFunc<NScript::CV_RockTrollFirstEncounterScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ec\CLandscapeBackgroundPatch_vectordeletingdestructor_00ec4920.cpp
 00ec4940	`scalar deleting destructor'	CActiveEntityScript<NScript::CV_RockTrollFirstEncounterScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ec\CThingSwitch_vectordeletingdestructor_00ec4940.cpp
 00ec4970	OnPersist	NScript::CV_RockTrollFirstEncounterScript	unknown	undefined	0		0			discovered	gapscan							
-00ec4a00	CCreatureAction_TrollWhackGroundBase_Action	_global	unknown	undefined	0		0	yes	accepted									
+00ec4a00	Main	NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll	unknown	undefined	0		0	yes	accepted									
 00ec5010	WatchForRockTrollKilled	NScript::CV_RockTrollFirstEncounterScript	__thiscall	void	2	CV_RockTrollFirstEncounterScript *,CScriptThing	1	yes	accepted									
 00ec5140	WatchForRockTrollHit	NScript::CV_RockTrollFirstEncounterScript	__thiscall	void	2	CQ_AmbushTradersScript *,CScriptThing	1	yes	accepted									
 00ec52f0	Fire_CDispatcher_00ec52f0	_unattributed	unknown	undefined	0		0			discovered	gapscan							

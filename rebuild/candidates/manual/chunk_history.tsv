@@ -27698,3 +27698,9 @@ chunk	address	module	name	length
 841	00eeaef0	NScript::CExpression_PickpocketScript	Main	1906
 841	00ee4dd0	NScript::CV_TourGuideScript::CTourGuideFollower	Main	1946
 841	00ddd430	NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard	Main	2044
+842	00ec4a00	NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll	Main	1540
+842	00e5e5a0	NScript::CV_BodyGuardScript	MakeHenchmanPerformIdleComment	1580
+842	0092f310	CAIStateGroup_MinionReactToPlayerInteraction	GetGossipPhrase	1945
+842	00ef9280	NScript::Cjoss_test_scriptsScript	Main	3158
+842	00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan	Main	3265
+842	00d40cf0	NScript::CQ_GuildTrainingScript::CMeleeApprentice	Main	3380

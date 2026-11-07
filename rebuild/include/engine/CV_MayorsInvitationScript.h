@@ -91,6 +91,28 @@ private:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_MayorsInvitationScript::CLadyGrey) == 0x20);
 #endif
+#ifdef FABLE_RETAIL_CV_MAYORSINVITATIONSCRIPT_WISEVILLAGER
+// Retail opt-in (chunk 838): the nested entity script CWiseVillager (Ego_r.pdb, 32 bytes = the landed Alloc 0x00EB79F0's new size:
+// CEntityScriptBase (0x14), ParentClass +0x14, PMasterData +0x18, NumTimesHit +0x1c). Entity vtable 0x012F0610: slot 0 scalar deleting
+// dtor 0x00EB7AE0, 1 Main 0x00EB7B00 (Ego_r.pdb ?Main@CWiseVillager@CV_MayorsInvitationScript@NScript@@EAEXXZ), 2 Init 0x00EB7AA0,
+// 3 GetParentScript 0x00EB7A90. Main reads / increments NumTimesHit, reads ParentClass +0x4e / +0x4f / +0x58, writes +0x49, and reads
+// PMasterData +0xd5.
+namespace NScript {
+class CV_MayorsInvitationScript::CWiseVillager : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_MayorsInvitationScript&, CScriptDataBase*, const CScriptThing&); // 0x00EB79F0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00EB7A90
+protected:
+    CV_MayorsInvitationScript& ParentClass;                              // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    long NumTimesHit;                                                    // +0x1c
+    virtual void Init();                                                 // 0x00EB7AA0
+    virtual void Main();                                                 // 0x00EB7B00
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_MayorsInvitationScript::CWiseVillager) == 0x20);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_MAYORSINVITATIONSCRIPT_H

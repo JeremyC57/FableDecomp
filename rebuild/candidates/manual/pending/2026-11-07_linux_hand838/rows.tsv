@@ -1,0 +1,7 @@
+address	module	name	length
+00d9daf0	NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe	Main	1693
+00f0a960	NScript::CQ_AmbushTradersScript::CAT_BanditContact	Main	1985
+00d21b40	NScript::CQ_BreakSiegeScript::CBanditSiegeLeader	Main	2965
+00dee2e0	NScript::CQ_SecretPassageScript::CMotherTorture	Main	3102
+00d33730	NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster	Main	3292
+00eb7b00	NScript::CV_MayorsInvitationScript::CWiseVillager	Main	3334

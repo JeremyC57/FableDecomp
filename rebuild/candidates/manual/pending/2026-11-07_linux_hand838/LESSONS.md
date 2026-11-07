@@ -1,0 +1,11 @@
+# Chunk 838 lessons (GOTCHAS one-liners)
+
+- An idle-forever loop spelled `while (true) { NSF; if (T) return; }` is NOT the same as `for (;;) { ... }` to VC7.1: with `while (true)` the exit ~CScriptGameResourceObjectScriptedThingBase is expanded into the shared pad as retail, with `for (;;)` (or `do {NSF} while (!T)`) it is called (0x00EB7B00: md25 -> RELOCATION_MATCH; `bool forever = true; while (forever)` md68).
+- When retail calls the movie ctor 0x006E7B60 at every site, define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR (0x00EB7B00: md266 -> 25).
+- When retail expands every movie ctor and calls every movie dtor, use MOVIEBASE_FORCEINLINE_CTOR + MOVIEBASE_OUTOFLINE_DTOR together (0x00D33730: md712 -> 639).
+- In a long Main, `for (;; Game->NewScriptFrame()) { if (T) return ...; ... }` beat both `while (!T) {...; NSF;}` and `for (; !T; NSF)` (0x00D33730 md21 -> 1 byte, 0x00DEE2E0 319 -> 313, 0x00F0A960 217 -> 181).
+- No row-local `inline CScriptThing::~CScriptThing() {}` while `inline ~CIsThingAlive() {}` stays gives retail's one-level ~CIsThingAlive expansion (vtable restore from ebx, nested ~CScriptThing 0x004AA840 called) (0x00DEE2E0 prologue; agrees with chunks 781 / 799).
+- md.py masks jump / call targets, so md.py 0 lines can still be DIFFER: diff the reloc-masked bytes (agent838/bin/bcheck.py) to find a jcc that targets a different cleanup pad (0x00D33730: one byte, a T-return reaching the loop-exit expanded ~CTimer instead of the pad that calls ~CTimer 0x00CD4470).
+- A `__forceinline` CScriptThing::operator= (chunk 805) fixed if-chain `NewHobbe = CreateCreature(...)` assignments; a forceinline CCountedPointer op= body or a user `inline` operator= does not (0x00D9DAF0: md222 -> RELOCATION_MATCH).
+- Where retail expands the cast-map STB assignments as CBaseObject::operator= 0x0099A3B0 + CCountedPointer<STB>::operator= 0x008AB1E0 calls, use OUTOFLINE_ASSIGN with a row-local `__forceinline` STB::operator= over a declared-only PImp operator= (0x00D21B40: md220 -> 66; /d2inlS15/S20 do not do it, so it is not the inline budget).
+- Retail spilling a bool / a receiver to the stack where VC7.1 keeps it in bl / ebp is a frame-size symptom (one dword short), not a spelling of that bool: named bools do not move it (0x00DEE2E0).

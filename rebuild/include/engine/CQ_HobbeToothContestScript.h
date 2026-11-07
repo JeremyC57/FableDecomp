@@ -53,7 +53,28 @@ public:
     class CSpawnNewHobbe;                                                // Alloc 0x00D9CE80
     class CQ_HobbeToothWhisper;                                          // Alloc 0x00D9CF60
 };
+#ifdef FABLE_RETAIL_CQ_HOBBETOOTHCONTESTSCRIPT_CSPAWNNEWHOBBE
+// Retail opt-in (chunk 838): the nested entity script CSpawnNewHobbe (Ego_r.pdb, 0x1c: ParentClass +0x14, PMasterData +0x18,
+// struct_layouts_egor.tsv; the landed Alloc 0x00D9CE80 allocates 0x1c). Methods: Ego_r.pdb ?Main@CSpawnNewHobbe@...@EAEXXZ (private
+// virtual, vtable 0x012D6BB8 slot 1, 0x00D9DAF0), GetParentScript 0x00D9CF20 (slot 3), Alloc 0x00D9CE80.
+class CQ_HobbeToothContestScript::CSpawnNewHobbe : public CEntityScriptBase {
+public:
+    typedef CQ_HobbeToothContestScript TParentClass;
+    CSpawnNewHobbe(CQ_HobbeToothContestScript&, CScriptDataBase*, const CScriptThing&);
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_HobbeToothContestScript&, CScriptDataBase*, const CScriptThing&); // 0x00D9CE80
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D9CF20
+    CQ_SunnyvaleMasterData* GetMasterData();
+protected:
+    CQ_HobbeToothContestScript& ParentClass;                             // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    virtual void Main();                                                 // 0x00D9DAF0
+};
+#endif
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeToothContestScript) == 0x68);
+#ifdef FABLE_RETAIL_CQ_HOBBETOOTHCONTESTSCRIPT_CSPAWNNEWHOBBE
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe) == 0x1c);
+#endif
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CQ_HOBBETOOTHCONTESTSCRIPT_H

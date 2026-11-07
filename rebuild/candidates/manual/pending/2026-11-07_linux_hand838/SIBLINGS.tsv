@@ -1,0 +1,2 @@
+address	source	grade_with_final_overlay	note
+-	-	-	no default-path header change: all five overlay headers only add new #ifdef opt-in blocks whose macros (CSPAWNNEWHOBBE, BANDITCONTACT, CTHEREALGUILDMASTER, CMOTHERTORTURE, WISEVILLAGER) no landed source defines, so no landed includer can change; checked with diff against rebuild/include (only added lines) and grep -rlw over rebuild/src/compiled

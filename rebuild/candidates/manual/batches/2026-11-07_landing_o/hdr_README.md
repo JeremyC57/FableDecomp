@@ -1,0 +1,16 @@
+# Chunk 838 header overlay
+
+All five headers are fresh copies of rebuild/include/engine/<header> with one new `#ifdef FABLE_RETAIL_<...>` block added (plus a
+guarded size assert). Every new declaration sits inside its opt-in, no existing line is changed or reflowed, so the default path is
+textually unchanged. Re-diffed against rebuild/include just before hand-back: only added lines. No landed source defines any of the
+five macros (grep -rlw over rebuild/src and rebuild/include: 0 hits), so no landed includer needs a recheck (SIBLINGS.tsv).
+
+| header | change | opt-in macro | evidence | used by |
+|---|---|---|---|---|
+| engine/CQ_HobbeToothContestScript.h | nested `CSpawnNewHobbe : CEntityScriptBase` (ctor, Alloc 0x00D9CE80, GetParentScript 0x00D9CF20, GetMasterData; ParentClass +0x14, PMasterData +0x18; private virtual Main 0x00D9DAF0; sizeof 0x1c) | FABLE_RETAIL_CQ_HOBBETOOTHCONTESTSCRIPT_CSPAWNNEWHOBBE | Ego_r.pdb member set + struct_layouts_egor.tsv (0x1c); the landed Alloc allocates 0x1c and stores vtable 0x012D6BB8 (slot 1 Main) | src/00d9daf0.cpp (matched) |
+| engine/CQ_AmbushTradersScript.h | nested `CAT_BanditContact : CEntityScriptBase` (Alloc 0x00F057E0, GetParentScript; ParentClass +0x14, PMasterData +0x18; private virtual Main 0x00F0A960; sizeof 0x1c); needs `..._MAIN` too, like the existing CAT_* blocks | FABLE_RETAIL_CQ_AMBUSHTRADERSSCRIPT_BANDITCONTACT | Ego_r.pdb; Alloc 0x00F057E0 news 0x1c; vtable 0x012F7EA0 slot 1 | differ/00f0a960.cpp |
+| engine/CQ_EndGameBossBattleScript.h | nested `CTheRealGuildmaster : CEntityScriptBase` (ctor, Alloc 0x00D2FDC0, GetParentScript 0x00D2FE60, GetMasterData; ParentClass +0x14, PMasterData +0x18; private virtual Init 0x00D2FE70 / Main 0x00D33730; sizeof 0x1c). Placed after chunk 836's CEndGameSister block (now in the repo); independent of it | FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CTHEREALGUILDMASTER | Ego_r.pdb; struct_layouts_egor.tsv; Alloc 0x00D2FDC0 stores vtable 0x012CC708 (slot 1 Main, 2 Init, 3 GetParentScript) | differ/00d33730.cpp |
+| engine/NScript_CQ_SecretPassageScript.h | nested `CMotherTorture : CEntityScriptBase` (ctor, Alloc 0x00DEE1A0, GetParentScript 0x00DEE240, GetMasterData; ParentClass +0x14, PMasterData +0x18; private virtual Init 0x00DEE250 / OnPredicateFail 0x00DEE2B0 / Main 0x00DEE2E0; sizeof 0x1c). The block closes namespace NScript to include engine/CEntityScriptBase.h, then reopens it | FABLE_RETAIL_CQ_SECRETPASSAGESCRIPT_CMOTHERTORTURE | Ego_r.pdb; struct_layouts_egor.tsv; Alloc 0x00DEE1A0 stores vtable 0x012DDE6C (slots 1 Main, 2 Init, 3 GetParentScript, 5 OnPredicateFail) | differ/00dee2e0.cpp |
+| engine/CV_MayorsInvitationScript.h | nested `CWiseVillager : CEntityScriptBase` (Alloc 0x00EB79F0, GetParentScript 0x00EB7A90; ParentClass +0x14, PMasterData +0x18, private `long NumTimesHit` +0x1c; private virtual Init 0x00EB7AA0 / Main 0x00EB7B00; sizeof 0x20). Placed after the LADYGREY block | FABLE_RETAIL_CV_MAYORSINVITATIONSCRIPT_WISEVILLAGER | Ego_r.pdb member names; the landed Alloc 0x00EB79F0 news 0x20 and stores vtable 0x012F0610 (slot 0 sdd 0x00EB7AE0, 1 Main, 2 Init, 3 GetParentScript); Main reads / increments +0x1c | src/00eb7b00.cpp (matched) |
+
+No other running chunk's overlay (agent835 / agent837 / agent839-841) carries any of these five headers.

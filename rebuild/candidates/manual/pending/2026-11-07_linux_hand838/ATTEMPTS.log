@@ -1,0 +1,58 @@
+00f0a960 f0_a1 IMPLICIT_COPY + Codex-like model on repo headers + BANDITCONTACT opt-in: DIFFER(2130v1985) md217 -- CIsThingAlive Thing copy expanded (retail calls 0x4ABE90), 5th by-value copy expanded (retail calls), GetScriptThing temp dtor expanded (retail calls 0x4AA840), movie dtor pads expanded
+00f0a960 f0_a2 no IMPLICIT_COPY: DIFFER(2015v1985) md317 -- all by-value copies called (retail expands 4)
+00d21b40 d2_a1 Codex-corrected model (loop as while(!T){..NSF}, teleporter for(i<size) with inline text ==, STB ctor implicit, OUTOFLINE_DTOR, STLP_MAP): DIFFER(2901v2965) md220 -- all six cast-map STB operator= called (??4 0x008ABD10) where retail expands them (CBaseObject::operator= 0x0099A3B0 + CCountedPointer<STB>::operator= 0x008AB1E0 calls)
+00d21b40 d2_m15/m20 diagnostic /d2inlS15 md169, /d2inlS20 md332: STB op= still called -> not the budget meter
+00d21b40 d2_a2 declared-only CCountedPointer<STB>::operator= 0x008AB1E0: md220 (no change)
+00d21b40 d2_a3 + OUTOFLINE_ASSIGN declaration with a row-local __forceinline STB::operator= body (CBaseObject::operator= + PImp =) over the declared-only PImp op= (chunk 805 lever on the STB): DIFFER(3013v2965) md66 -- frame: map+flag spill at 0x40/0x4c vs retail movie 0x40 / map 0x50 / spill 0x5c; teleporter-loop T-return exit tail: ours expands the movie dtor at that pad and calls 0x006E7B80 at the shared pad, retail expands it once at the shared pad (d22242)
+00d21b40 d2_a4 named bool for the hit expression: md66 (same)
+00d21b40 d2_p1 diagnostic: drop the in-compare T return: md90, frame unchanged
+00d21b40 d2_a5 MovieBase ctor implicit (no FORCEINLINE_CTOR): md89; d2_a6 no WideScreen FORCEINLINE_CTOR: md421
+00d21b40 d2_a7 TRetVoid _Fail_Val returns: md66 (same bytes)
+de_a1 00dee2e0 DIFFER(3134v3102) md362: Codex body ported to Game->, hand811 MotherTorture define set (CTimer inline ctor/dtor, forceinline op=/GetTime, inline ~CScriptThing/~CIsThingAlive, declared-only Movie PImp dtor)
+gm_a1 00d33730 DIFFER(3368v3292) md712: first model from retail disasm (no Codex/Lua source); GuildTrainingMelee GM define set, CTimer ctor declared-only, inline dtor
+wv_a1 00eb7b00 DIFFER(3334v3334) md266: first model from retail disasm; LadyGrey-like defines minus OUTOFLINE_DTOR, movie ctor called, inline CIsThingAlive ctor
+wv_a2 DIFFER(3318v3334) md25: + MOVIEBASE_OUTOFLINE_CTOR (retail calls 0x6E7B60 at all 3 sites)
+wv_a3 DIFFER(3318v3334) md25: forever loop as do{NSF}while(!T); return -- same
+wv_a4 DIFFER(3350v3334) md6: while(!T || true) -- ~STB expanded at the loop exit (retail) but extra T call
+wv_a5 RELOCATION_MATCH: while (true) { NSF; if (T) return; } -- VC7.1 treats `while (true)` unlike `for (;;)` for the exit ~STB inline split
+wv_a6 DIFFER(3334v3334) md68: bool forever=true; while(forever)
+gm_a2 DIFFER(3393v3292) md708: +MOVIEBASE_FORCEINLINE_CTOR (retail expands the movie ctor at all 3 sites)
+gm_a3 DIFFER(3338v3292) md639: +MOVIEBASE_OUTOFLINE_DTOR (retail calls 0x6E7B80 at all 3 sites)
+gm_a4 DIFFER(3341v3292) md107: block from ChattedBefore/CTimer to the end (timer overlays the prologue CCharString temp slot 0x10)
+gm_a5 md107: KickOffQuestStartScreen inside the block -- same
+gm_a6 md179: block from the second PlayLoopingAnimation
+gm_a7 DIFFER(3306v3292) md21: main loop as for(; !T; NSF) (chunk 806 form)
+gm_a8 md21: plain returns instead of TRetVoid -- same
+gm_a9 md21: visible inline CTimer ctor -- ctor still called, same
+gm_a10 DIFFER(3283v3292) md12: __forceinline ~CTimer (pads now expand it; retail calls 0xCD4470 at the pads)
+gm_a11 DIFFER(3544v3292) md424: if(!T) for(;;){...; NSF; if(!T) continue; break;}
+de_a2 DIFFER(3134v3102) md319: no row-local inline ~CScriptThing (inline ~CIsThingAlive then expands one level: vtable restore from ebx + ~CScriptThing called = retail prologue)
+de_a3 md319: block from the CTimer to the end -- same (timer stays at 0x14; retail 0x18)
+de_a4 DIFFER(3028v3102) md476: + MOVIEBASE_OUTOFLINE_DTOR
+f0_a3 00f0a960 DIFFER(2130v1985) md217: CIsThingAlive ctor defined after Main (non-GOTCHAS lever for the nested-copy blocker) -- no change
+gm_a12 md21: gm_a7 without the row-local inline ~CScriptThing -- same
+gm_a13 DIFFER(3292v3292) md0: loop as for(;; NSF) { if (T) return; ...} -- one byte: the talk-branch first T-return jumps to the natural-exit expanded ~CTimer (0xD343B9) where retail jumps to the called ~CTimer pad (0xD343E6)
+gm_a14 md0 (1 byte): talk-branch first check as plain return -- same byte
+gm_a15 md0 (1 byte): loop-top check as plain return -- same
+gm_a16 md0 (1 byte): talk-branch first check in do{}while(0) -- same
+gm_a17 md0 (1 byte): aside-branch check in do{}while(0) -- same
+gm_a18 DIFFER(3341v3292) md107: while(true){if(T)return; ...; NSF;}
+gm_a19 md0 (1 byte): plain inline GetTime -- same
+gm_a20 DIFFER(3264v3292) md18: plain inline CTimer::operator=
+gm_a21 md0 (1 byte): talk branch body in an inner block -- same
+gm_p22 probe (talk first check removed): pads re-laid out, md62
+gm_a23 DIFFER(3288v3292) md288: talk condition '== true'
+gm_a24 md0 (1 byte): talk condition as a named bool -- same
+gm_a25 DIFFER(3319v3292) md48: talk body in do{}while(0)
+gm_a26 DIFFER(3399v3292) md546: if (talk) do {...} while (0)
+d2_a8 md66: main loop for(;; NSF){if(T) return; ...} -- same
+d2_a9 md66: main loop for(; !T; NSF) -- same
+d2_a10 DIFFER(2982v2965) md152: MOVIEBASE_FORCEINLINE (ctor+dtor)
+de_a6 DIFFER(3134v3102) md313: main loop for(;; NSF){if(T) return; ...}
+de_a7 md313: de_a6 + the CTimer block -- same
+f0_a4 DIFFER(2142v1985) md181: main loop for(;; NSF){if(T) return; ...}
+f0_a5 DIFFER(2145v1985) md199: main loop for(; !T; NSF)
+de_a5 DIFFER(3134v3102) md319: de_a2 + inline CTimer::operator==(long) for the timer test -- same
+de_a8 DIFFER(3134v3102) md313: de_a6 + the hero-hit expression as a named bool -- same
+de_a9 DIFFER(3134v3102) md313: de_a6 + the talk-branch GetHealth test as a named bool (retail spills that bool to [esp+0x13]; ours keeps it in bl) -- same
+de_a10 DIFFER(3408v3102) md563: de_a6 + the talk branch body in do{}while(0) (chunk 821 one-exit movie dtor lever) -- worse

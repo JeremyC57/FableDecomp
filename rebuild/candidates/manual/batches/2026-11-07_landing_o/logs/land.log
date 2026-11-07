@@ -1,0 +1,13 @@
+addr       parity           behav  name
+00d9daf0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d9daf0   RELOCATION_MATCH PASS   Main
+00eb7b00   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb7b00   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00d9daf0 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe::?Main@CSpawnNewHobbe@CQ_HobbeToothContestScript@NScript@@EAEXXZ
+  00eb7b00 RELOCATION_MATCH NScript::CV_MayorsInvitationScript::CWiseVillager::?Main@CWiseVillager@CV_MayorsInvitationScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHobbeToothContestScriptCSpawnNewHobbe_Main_00d9daf0
+  NScriptCVMayorsInvitationScriptCWiseVillager_Main_00eb7b00

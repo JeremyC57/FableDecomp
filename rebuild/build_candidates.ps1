@@ -385083,6 +385083,20 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVStatueMasterScript_Main_00ed3b30_test.cpp'
         PassPattern = '00ed3b30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d9daf0'
+        Module = 'NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe'
+        Source = '00/d9/NScriptCQHobbeToothContestScriptCSpawnNewHobbe_Main_00d9daf0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScriptCSpawnNewHobbe_Main_00d9daf0_test.cpp'
+        PassPattern = '00d9daf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb7b00'
+        Module = 'NScript::CV_MayorsInvitationScript::CWiseVillager'
+        Source = '00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Main_00eb7b00.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Main_00eb7b00_test.cpp'
+        PassPattern = '00eb7b00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
