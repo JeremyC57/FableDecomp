@@ -37377,3 +37377,6 @@ $notRedefined$4399	0068a01d	00689df0
 ?clear@CSymbolVectorMap@@QAEXXZ	009e79e0	009e5c90
 ?g_CurrentSymbolFile@@3VCWideString@@A	013caa34	009e5c90
 ?push_front@CModeList@@QAEXABUCModePointer@@@Z	007421c0	0073acc0
+??_7?$CEntityScriptBinding@VCV_BeggarAndChildScript@NScript@@@@6B@	012e68a8	00e57e60
+?Alloc@CBeggarBully@CV_BeggarAndChildScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e5b2d0	00e57e60
+?Alloc@CLookoutPointBeggar@CV_BeggarAndChildScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e58c60	00e57e60

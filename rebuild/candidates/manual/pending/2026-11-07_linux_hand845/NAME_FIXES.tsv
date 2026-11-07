@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00e55ce0	?AskForBook@CBS_Teacher@CV_BookCollectingScript@NScript@@AAE_NJVCCharString@@@Z	Ego_r.pdb / FableWin.pdb name sets (nested NScript::CV_BookCollectingScript::CBS_Teacher, private); called from CBS_Teacher::Main 0x00E54E90 with (LastBookRequested, "TEXT_QST_B16_BOOK_REFUSE_AGAIN")	?AskForBook@CBS_Teacher@@QAE_NJVCCharString@@@Z

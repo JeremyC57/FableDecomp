@@ -1,0 +1,7 @@
+address	module	name	length
+00d67890	NScript::CQ_GuildTrainingWoodsWillScript	Main	3426
+00e54e90	NScript::CV_BookCollectingScript::CBSTeacher	Main	3534
+00e57e60	NScript::CV_BeggarAndChildScript	Main	3567
+00d04ae0	NScript::CQ_BanditCampBossBattleScript::CAssassin1	Main	3623
+00e97070	NScript::CV_HeroDollsScript::CBSTeacher	Main	3619
+00ed8680	NScript::CV_TalentlessBardScript::CTBBard	Main	3652

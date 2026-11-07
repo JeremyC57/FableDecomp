@@ -385190,6 +385190,13 @@ $catalog = @(
         TestSource = '00/e4/NScriptCVBanditTollScript_CheckForLeaderDead_00e482f0_test.cpp'
         PassPattern = '00e482f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e57e60'
+        Module = 'NScript::CV_BeggarAndChildScript'
+        Source = '00/e5/NScriptCVBeggarAndChildScript_Main_00e57e60.cpp'
+        TestSource = '00/e5/NScriptCVBeggarAndChildScript_Main_00e57e60_test.cpp'
+        PassPattern = '00e57e60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

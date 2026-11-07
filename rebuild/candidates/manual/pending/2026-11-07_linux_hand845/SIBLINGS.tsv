@@ -1,0 +1,5 @@
+address	source	grade_with_final_overlay	note
+00d038e0	rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScript_Main_00d038e0.cpp	RELOCATION_MATCH	includer of engine/CQ_BanditCampBossBattleScript.h (edit is opt-in FABLE_RETAIL_CQ_BANDITCAMPBOSSBATTLESCRIPT_ASSASSIN1; default path textually unchanged)
+00d2aa40	rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScript_Main_00d2aa40.cpp	RELOCATION_MATCH	includes CQ_BanditCampBossBattleScript.h through engine/CQ_EndGameFocalSitesScript.h
+00ed9790	rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_WatchForAttack_00ed9790.cpp	RELOCATION_MATCH	includer of engine/CScriptBase.h (edit is opt-in FABLE_RETAIL_CSCRIPTBASE_ADDSPAWNEDFUNCTION_DEFAULT_REGION; default path textually unchanged; 1085 includers, sample rechecked)
+00ed7790	rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_RegisterMain_00ed7790.cpp	RELOCATION_MATCH	includer of engine/CScriptBase.h (sample)

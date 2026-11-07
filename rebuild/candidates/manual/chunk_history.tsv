@@ -27748,3 +27748,9 @@ chunk	address	module	name	length
 847	00760a70	NShape::CSubdivisionTriangle	GetUpDirection	332
 847	00986ed0	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	353
 847	0085c7d0	NCameraModes::CMoveOnCylinder	OnInit	332
+848	005253f0	CThingManager	LoadGameState	2263
+848	00dd4ad0	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice	Main	3467
+848	00b2d9f0	CEngineSurfaceCompositionManager	UpdateDiskCache	807
+848	009bc120	CPersistContext	TransferVectorOfSubComponentsLoadText	1639
+848	00d321c0	_global	CScriptGameResourceObject_LoadEndGameSister	1136
+848	00ea2720	_global	KnotHoleGates_OnScript	1334

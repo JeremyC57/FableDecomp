@@ -49022,7 +49022,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cdbeb0	~CRetailTree_erase00cd344a	CRetailTree_erase00cd344a	unknown	undefined	0		0	yes	accepted									
 00cdbf10	push_back	std::vector<CDataMarkerOutput::CElement, std::allocator<CDataMarkerOutput::CElement>>	unknown	undefined	0		0	yes	accepted									
 00cdbf70	map	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>	unknown	undefined	0		0	yes	accepted									
-00cdbfb0	~CRetailTree_erase00cd344a	CRetailTree_erase00cd344a	unknown	undefined	0		0	yes	accepted									
+00cdbfb0	~map	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>	unknown	undefined	0		0	yes	accepted									
 00cdc000	DestroyAux_SStringListRecord1C_00cdc000	_global	__fastcall	pair<unsigned_long,CDefString> *	4	pair<unsigned_long,class_CDefString> *,pair<unsigned_long,class_CDefString> *,pair<unsigned_long,class_CDefString> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00cdc070	OnPersist	NScript::CQ_SunnyvaleMasterData	unknown	undefined	0		0			discovered	gapscan							
 00cdca40	sub_00cdca40	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -52707,7 +52707,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e56d10	AdjustHeroReputation	NScript::CV_BookCollectingScript::CBS_Teacher	unknown	undefined	0		0	yes	accepted									
 00e57000	`scalar deleting destructor'	CSpawnedFunc1<NScript::CV_BookCollectingScript,long>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e5\CLandscapeBackgroundPatch_vectordeletingdestructor_00e57000.cpp
 00e57020	GetBookSpecificArgs	CBS_Teacher	__thiscall	void	3	CBS_Teacher *,long,map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *	1	yes	accepted									
-00e57530	LookForBook	CBS_Teacher	__thiscall	void	1	CBS_Teacher *	1	yes	accepted									
+00e57530	LookForBook	NScript::CV_BookCollectingScript::CBS_Teacher	__thiscall	void	1	CBS_Teacher *	1	yes	accepted									
 00e579e0	Transfer	CConversation	unknown	undefined	0		0			discovered	gapscan							
 00e57a50	Alloc	NScript::CV_BookCollectingScript	unknown	undefined	0		0			discovered	gapscan							
 00e57a80	`scalar deleting destructor'	NScript::CV_BookCollectingScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e5\CLandscapeBackgroundPatch_vectordeletingdestructor_00e57a80.cpp
@@ -53924,11 +53924,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ed83c0	Init	NScript::CV_TalentlessBardScript	unknown	undefined	0		0			discovered	gapscan							
 00ed85a0	OnPersist	NScript::CV_TalentlessBardScript	unknown	undefined	0		0			discovered	gapscan							
 00ed8680	Main	NScript::CV_TalentlessBardScript::CTB_Bard	unknown	undefined	0		0			discovered	gapscan							
-00ed94d0	WatchForResetWanderCentre	CV_TalentlessBardScript	__thiscall	void	2	CV_TalentlessBardScript *,CScriptThing	1	yes	accepted									
+00ed94d0	WatchForResetWanderCentre	NScript::CV_TalentlessBardScript	__thiscall	void	2	CV_TalentlessBardScript *,CScriptThing	1	yes	accepted									
 00ed9790	WatchForAttack	NScript::CV_TalentlessBardScript	__thiscall	void	2	CV_TalentlessBardScript *,CScriptThing	1	yes	accepted									
 00ed9960	Fire_CDispatcher_00ed9960	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00ed99a0	`scalar deleting destructor'	CSpawnedFunc1<NScript::CV_TalentlessBardScript,CScriptThing>	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ed\CEngineSubPrimitiveText_scalardeletingdestructor_00ed99a0.cpp
-00ed99d0	GetRandomSpeech	CTB_Bard	__thiscall	CCharString	1	CTB_Bard *	1	yes	accepted									
+00ed99d0	GetRandomSpeech	NScript::CV_TalentlessBardScript::CTB_Bard	__thiscall	CCharString	1	CTB_Bard *	1	yes	accepted									
 00ed9b40	ProcessSongsQuestComplete	NScript::CV_TalentlessBardScript	__thiscall	void	1	CV_TalentlessBardScript *	1	yes	accepted									
 00ed9bb0	ProcessSongsClothes	CV_TalentlessBardScript	__thiscall	void	1	CV_TalentlessBardScript *	1	yes	accepted									
 00ed9cf0	IsHeroDressedInArmour	NScript::CV_TalentlessBardScript	__thiscall	bool	1	CDF_ThreeSuits *	1	yes	accepted									
