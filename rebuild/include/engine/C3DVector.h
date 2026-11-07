@@ -80,11 +80,25 @@ public:
     // Chunk 739 (row 0x00B0CAD0): FableWin.pdb ?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z (static __fastcall, out of line at 0x00A145C0,
     // landed) and ?Normalise@C3DVector@@QAEAAV1@XZ (the fast normalise: GFFastOneOverSqrt of GetSquaredMagnitude, expanded in retail).
     static C3DVector __fastcall GetRandomUnitVector(unsigned long* seed);  // 0x00A145C0
+#ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_UNPAREN
+    // Retail opt-in (chunk 857, row 0x00AC8C80 COptimisedPrimitive::ComputeVertexCost): Normalise's sum written out unparenthesised
+    // and IsNonZero as X*X plus the Z/Y pair. There `if (normal.IsNonZero()) normal.Normalise();` shares the three products but
+    // sums them twice in the same (Y, Z) + X order (0x00AC8DCA `fld st(0); fadd st(2); fadd st(3)`, then 0x00AC8DE9 `fadd st(1)`,
+    // 0x00AC8DF0 `fadd st(2)`) and pops the two left-over products around the exponent shift (0x00AC8DFC / 0x00AC8E01); the default
+    // bodies give (Z, X) + Y and both pops together. Body only: no layout change, default path unchanged.
+    FABLE_VECTOR_INLINE C3DVector& Normalise(){float factor=GFFastOneOverSqrt(X*X+Z*Z+Y*Y);X*=factor;Y*=factor;Z*=factor;return *this;}
+#else
     FABLE_VECTOR_INLINE C3DVector& Normalise(){float factor=GFFastOneOverSqrt(GetSquaredMagnitude());X*=factor;Y*=factor;Z*=factor;return *this;}
+#endif
     // Chunk 732 (row 0x006AABE0): FableWin.pdb ?IsNonZero@C3DVector@@QBE_NXZ (debug copy 0x01B4F100; no Ego_r.pdb copy, expanded in
     // retail). Body from the row's bytes (0x006AAE00: X, Z, Y loaded in source order, then `> DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO`);
     // GetSquaredMagnitude's one-line sum cannot be reused (it loads Z, Y, X there, and 0x00AE0710 needs that one-line form).
+#ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE_UNPAREN
+    // (same opt-in, see Normalise above)
+    FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=X*X;squared+=Z*Z+Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#else
     FABLE_VECTOR_INLINE bool IsNonZero()const{float squared=X*X;squared+=Z*Z;squared+=Y*Y;return squared>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}
+#endif
 #endif
     C3DVector& AccurateNormalise();
     void Rotate(const C3DVector&,float);

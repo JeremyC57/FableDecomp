@@ -27836,3 +27836,9 @@ chunk	address	module	name	length
 859	00e76e90	NScript::CV_ExposeMayorScript	HeroFlashesLamp	1612
 859	00de8370	NScript::CQ_RansomVictimScript::CRansommer	Main	4894
 859	00b5a3f0	CEngineScreenEffectColourFilter	ApplyColourFilter	2916
+860	009d8cf0	CRenderManager2D	ClearRenderTarget	3385
+860	00a8b990	_global	C3DMesh2_AddSubMeshBoneVertices	1624
+860	005aecc0	CTCInventoryTrade	SellItemPC	2446
+860	0049a0b0	CProgressDisplay	InitialiseTextures	2920
+860	00a4efc0	_global	C3DKeyframe_InitialiseAsConstant	3491
+860	00bb30a0	CEngineClothRenderer	Render2DClothPrimitive	3538

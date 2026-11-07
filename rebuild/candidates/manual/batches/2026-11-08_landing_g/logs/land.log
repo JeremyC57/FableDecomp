@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00a1c010   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a1c010   RELOCATION_MATCH PASS   CullWayPoints
+00ac8c80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00ac8c80   WARN RELOC_NAME: ?MakeOrthogonal@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVC3DVector@@ABV3@0@Z -> 00ac7200 labelled 'Vector_ProjectOntoPlane'
+00ac8c80   RELOCATION_MATCH PASS   ComputeVertexCost
+
+WINS: 2
+  00a1c010 RELOCATION_MATCH CNavigatorAStar::?CullWayPoints@CNavigatorAStar@@AAEXJ@Z
+  00ac8c80 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::?ComputeVertexCost@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXAAVCOptimisedVertex@2@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CNavigatorAStar_CullWayPoints_00a1c010
+  QuadricOptimiserInternalsCOptimisedPrimitive_ComputeVertexCost_00ac8c80

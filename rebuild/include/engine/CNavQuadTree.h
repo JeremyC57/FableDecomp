@@ -67,6 +67,12 @@ public:
     std::list<CNavRegion> Regions;                                       // +0x74
     CVectorMap<long, CCountedPointer<CNavConnectorNode> > ConnectorNodes;   // +0x78
     static CNavBlockedQuadTreeNode BlockedNode;                          // 0x013D2D2C
+#ifdef FABLE_RETAIL_CNAVQUADTREE_SMALLESTNODESIZE
+    // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb ?GetSmallestNodeSize@CNavQuadTree@@SIMXZ,
+    // retail 0x00A76320 (static __fastcall, `fld 0.5 ; ret`; landed siblings 0x00A15140 / 0x00A472F0 bind the same spelling; called
+    // with no `this` at 0x00A1C1E9 / 0x00A1C58A).
+    static float __fastcall GetSmallestNodeSize();                       // 0x00A76320
+#endif
     virtual ~CNavQuadTree();                                             // slot 0
     const CANavQuadTreeNode* GetNodeAt(const C2DVector& pos, long layer) const;          // 0x00A770B0
     unsigned char GetPreferabilityCostForNode(const CANavQuadTreeNode* node) const;   // 0x00A76E00 (chunk 747; Ego_r QBEEPBV..)

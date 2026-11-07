@@ -19,6 +19,12 @@ public:
     // Ego_r.pdb / FableWin.pdb ?FrameUpdate@CNavigatorManager@@QAEXXZ, retail 0x00A14E20 (`mov [ecx+20h],320h ; ret`: resets
     // NumberOfNodeExaminationsLeftThisFrame +0x20 to 800; the catalog's CGameEventPackage::Clear label is propagated).
     void FrameUpdate();                                          // 0x00A14E20
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER_GETNODEAT
+    // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb / FableWin.pdb
+    // ?GetNodeAt@CNavigatorManager@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@E@Z, retail 0x00A14F70 (landed; `push <layer byte> ; push
+    // <position> ; mov ecx,[navigator+1Ch] ; call 0x00A14F70`, 0x00A1C098).
+    const class CANavQuadTreeNode* GetNodeAt(const class C2DVector& position, unsigned char layer) const;   // 0x00A14F70
+#endif
 #endif
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                       _pad_0x04[0xc];      // +0x04

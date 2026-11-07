@@ -58,7 +58,14 @@ public:
     // SaveToFile, ConvertIndexesToPointers) are not called through this model; not declared.
     // Ego_r ?GetSize@CANavQuadTreeNode@@QBEMXZ (out of line in Ego_r, inline in retail) and ?GetAreaCovering@CANavQuadTreeNode@@
     // QBE?AVC2DBoxF@@XZ (retail 0x00A763B0; CNavQuadTree::IsAreaClear 0x00A78E20 expands it: `fld size[level] ; fmul 0.5 ; fst`).
+#ifdef FABLE_RETAIL_CANAVQUADTREENODE_GETSIZE_OUTOFLINE
+    // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): that TU calls the out-of-line copy 0x00A75B30
+    // (?GetSize@CANavQuadTreeNode@@QBEMXZ, the landed row; `mov ecx,esi ; call 0x00A75B30 ; fimul [esp+24h]` at 0x00A1C4B5 and
+    // 0x00A1C4CD, as IsRouteClear 0x00A1A66C) where the inline body below would be expanded.
+    float GetSize() const;                                                               // 0x00A75B30
+#else
     float GetSize() const { return g_QuadTreeLevelSizes[QuadTreeLevel]; }
+#endif
 #ifdef FABLE_RETAIL_CANAVQUADTREENODE_AREA_OUTOFLINE
     // Nested opt-in (chunk 784, row 0x00A15890 CNavigatorManager::OutputWorld): that /O2 TU calls the out-of-line copy 0x00A763B0
     // at every site (seven calls: `push <box> ; mov ecx,<node> ; call 0x00A763B0`) where the inline body below would be expanded.

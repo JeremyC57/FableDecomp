@@ -1,0 +1,3 @@
+address	name	grade	behav	note
+00ac8c80	QuadricOptimiserInternals::COptimisedPrimitive::ComputeVertexCost	RELOCATION_MATCH	PASS	landed
+00a1c010	CNavigatorAStar::CullWayPoints	RELOCATION_MATCH	PASS	landed

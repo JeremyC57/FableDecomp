@@ -385427,6 +385427,20 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
         PassPattern = '00ca2bb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a1c010'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_CullWayPoints_00a1c010.cpp'
+        TestSource = '00/a1/CNavigatorAStar_CullWayPoints_00a1c010_test.cpp'
+        PassPattern = '00a1c010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac8c80'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_ComputeVertexCost_00ac8c80.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_ComputeVertexCost_00ac8c80_test.cpp'
+        PassPattern = '00ac8c80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

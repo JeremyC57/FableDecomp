@@ -43,7 +43,14 @@ public:
     float Dot(const C2DVector& vector) const { return X*vector.X+Y*vector.Y; }
     // FableWin ?GetSquaredMagnitude@C2DVector@@QBEMXZ (0x021ED350), inline in retail (0x00B3BE10 BuildAlphaStippleTexture
     // expands it; X*X+Y*Y, (X*X+Y*Y) and Y*Y+X*X give the same bytes there).
+#ifdef FABLE_RETAIL_C2DVECTOR_SQUAREDMAGNITUDE_YX
+    // Nested opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): the same sum with Y squared first and X added to it.
+    // That TU (and IsRouteClear 0x00A1A704) squares Y then X for both of the two distances it compares (`fld st(2) ; fmul st(3) ;
+    // fld st(4) ; fmul st(5) ; faddp`, 0x00A1C551); VC7.1 canonicalises the one-expression `X*X+Y*Y` / `Y*Y+X*X` to X first there.
+    float GetSquaredMagnitude() const { float squared=Y*Y; squared+=X*X; return squared; }
+#else
     float GetSquaredMagnitude() const { return X*X+Y*Y; }
+#endif
     // Ego_r.pdb / FableWin.pdb ?GetMagnitude@C2DVector@@QBEMXZ, inline in retail: CNavigatorAStar::UpdateGoal 0x00A1E030 squares
     // Y then X, adds, and runs fsqrt through the float overload (`fsqrt ; fstp st(2) ; fstp st(0)`, the dead difference
     // vector popped under the result), which `(float)sqrt(X*X+Y*Y)` does not give (it stores before popping).
@@ -58,6 +65,16 @@ public:
     {
         return fabs(X-vector.X)<=DELTA_NOTIONAL_ZERO && fabs(Y-vector.Y)<=DELTA_NOTIONAL_ZERO;
     }
+#ifdef FABLE_RETAIL_C2DVECTOR_NORMALISE
+    // Retail opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): Ego_r.pdb / FableWin.pdb ?Normalise@C2DVector@@QAEAAV1@XZ
+    // (out of line in retail, 0x00A14540, landed; `lea ecx,[esp+38h] ; call 0x00A14540` at 0x00A1C164) and FableWin
+    // ?IsNonZero@C2DVector@@QBE_NXZ (inline in retail: CullWayPoints / IsRouteClear 0x00A1A321 square Y then X, add, and compare with
+    // DELTA_NOTIONAL_ZERO squared: `fld [129BA3Ch] ; fmul [129BA3Ch] ; fcompp ; test ah,5 ; jp`).
+    C2DVector& Normalise();                                                  // 0x00A14540
+    // FableWin ??XC2DVector@@QAEABV0@M@Z (scale in place; CullWayPoints scales the perpendicular in its own slot, 0x00A1C1FC..0x00A1C208).
+    const C2DVector& operator*=(float scalar) { X*=scalar; Y*=scalar; return *this; }
+    bool IsNonZero() const { return GetSquaredMagnitude()>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO; }
+#endif
 };
 #pragma pack(pop)
 #ifdef FABLE_RETAIL_C2DVECTOR_FROM3D

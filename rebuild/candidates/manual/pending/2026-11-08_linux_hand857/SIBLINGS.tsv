@@ -1,0 +1,6 @@
+address	source	grade_with_final_overlay	note
+0x00AC8C80	src/00ac8c80.cpp	RELOCATION_MATCH	this chunk; overlay opt-ins STLP_VECTOR_RESERVE, C3DVECTOR_NORMALISE_UNPAREN
+0x00A1C010	src/00a1c010.cpp	RELOCATION_MATCH	this chunk; overlay opt-ins C2DVECTOR_NORMALISE / _SQUAREDMAGNITUDE_YX, CANAVQUADTREENODE_GETSIZE_OUTOFLINE, CNAVIGATORMANAGER_GETNODEAT, CNAVQUADTREE_SMALLESTNODESIZE, STLP_LIST_ERASE_RANGE
+0x009DA9F0	rebuild/src/compiled/00/9d/CRenderManager2D_Render2DDrawList_009da9f0.cpp	not rechecked (default path unchanged)	same TU as 0x009D8CF0; model for the scoped shader / capture block / constant layout spelling
+0x00A8DDC0	rebuild/src/compiled/00/a8/ (landed /Gr row)	not rechecked (default path unchanged)	same C3DMesh2 TU as 0x00A8B990; precedent for `// Flags: /Gr`
+0x005AEAEE	rebuild/src/compiled/00/5a/CTCInventoryTrade_RefreshSellDescriptionsPC_005aeaee.cpp	not rechecked (default path unchanged)	model for the /Os frame-pointer pragmas and the CTCInventoryTrade local layout used by 0x005AECC0

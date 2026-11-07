@@ -384,6 +384,27 @@ template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_insert_overflow(ite
     if(!atEnd) newFinish=(_Tp*)__copy_trivial(position,this->_M_finish,newFinish);
     _M_clear();_M_set(newStart,newFinish,newStart+len);
 }
+#ifdef FABLE_RETAIL_STLP_VECTOR_RESERVE
+// Retail opt-in (chunk 857, row 0x00AC8C80 COptimisedPrimitive::ComputeVertexCost): STLport 4.6 stl/_vector.c reserve, the body the
+// landed out-of-line copy 0x00920FF0 (vector<C3DVector>) reproduces, visible but kept out of line as in the retail TU (call at
+// 0x00AC8CCB). Seeing that reserve never captures the vector, VC7.1 keeps the local vector's _M_finish in a register across the
+// push_back loop (0x00AC8CE1 `mov ebx,[esp+7Ch]` ... 0x00AC8D45 `add ebx,0Ch`); declaration-only reloads it after every store.
+// Pair with FABLE_RETAIL_STLP_VECTOR (the in-class declaration).
+template<class _Tp,class _Alloc> __declspec(noinline) void vector<_Tp,_Alloc>::reserve(size_type n) {
+    if(size_type(this->_M_end_of_storage._M_data-this->_M_start)<n) {
+        const size_type old_size=size();
+        _Tp* tmp;
+        if(this->_M_start) {
+            tmp=this->_M_end_of_storage.allocate(n);
+            __uninitialized_copy((const _Tp*)this->_M_start,(const _Tp*)this->_M_finish,tmp,_IsPODType());
+            _M_clear();
+        } else {
+            tmp=this->_M_end_of_storage.allocate(n);
+        }
+        _M_set(tmp,tmp+old_size,tmp+n);
+    }
+}
+#endif
 #ifdef FABLE_RETAIL_STLP_VECTOR
 // Retail branch (pass 12 header wave): STLport 4.6 _vector.h includes _vector.c, so every retail TU that calls resize() /
 // insert(pos, n, x) saw _M_fill_insert's body (stl/_vector.c lines 61-86, reproduced here) and VC7.1 still kept the call out of
@@ -567,6 +588,15 @@ public:
         return iterator(next_node);
     }
     void pop_front() { erase(begin()); }
+#ifdef FABLE_RETAIL_STLP_LIST_ERASE_RANGE
+    // Retail opt-in (chunk 857, row 0x00A1C010 CNavigatorAStar::CullWayPoints): STLport 4.6 _list.h erase(first, last),
+    // `while (__first != __last) erase(__first++); return __last;`, expanded in retail (0x00A1C661: next / prev of the node, the
+    // iterator advanced, prev->next / next->prev relinked, free, until the CullBack node).
+    iterator erase(iterator first,iterator last) {
+        while(first!=last) erase(first++);
+        return last;
+    }
+#endif
 #ifdef FABLE_RETAIL_STLP_LIST_POPBACK
     // chunk 760 (row 0x00683B00 CTCCreatureOpinionOfHero::ClearPendingDeeds): STLport 4.6 _list.h pop_back():
     // `iterator __tmp = end(); erase(--__tmp);` (0x00683BA9: the head's _M_prev, its next/prev, prev->next first, then free).

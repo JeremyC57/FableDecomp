@@ -37548,3 +37548,6 @@ __imp__ShowCursor@4	01440350	00ab5d00
 ?seq@?1??floor1_encode@@9@9	0143ccec	00ca2bb0
 @render_line0@20	00ca2010	00ca2bb0
 @render_point@20	00ca1e00	00ca2bb0
+??E?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@std@@QAE?AU01@H@Z	00ad0a70	00ac8c80
+?GetFaceNormal@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVC3DVector@@ABVCOptimisedFace@2@@Z	00ac7cb0	00ac8c80
+?MakeOrthogonal@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVC3DVector@@ABV3@0@Z	00ac7200	00ac8c80

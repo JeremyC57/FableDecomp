@@ -4248,7 +4248,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00499ce0	CProgressDisplay	CProgressDisplay	__thiscall	CProgressDisplay *	1	CProgressDisplay *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CProgressDisplay_Constructor_00499ce0.cpp
 00499d90	StopProgress	CProgressDisplay	__thiscall	void	3	CProgressDisplay *,bool,bool	1	yes	accepted									
 00499fb0	~CProgressDisplay	CProgressDisplay	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
-0049a0b0	CProgressDisplay::InitialiseTextures	CProgressDisplay	__thiscall	void	3	CProgressDisplay *,bool,bool	1	yes	accepted									
+0049a0b0	InitialiseTextures	CProgressDisplay	__thiscall	void	3	CProgressDisplay *,bool,bool	1	yes	accepted									
 0049ac60	sub_0049ac60	_global	unknown	undefined	0		0			discovered	gapscan							
 0049ac80	sub_0049ac80	_global	unknown	undefined	0		0			discovered	gapscan							
 0049aca0	sub_0049aca0	_global	unknown	undefined	0		0			discovered	gapscan							
@@ -11340,7 +11340,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005ae9de	RefreshBuyDescriptionsPC	CTCInventoryTrade	unknown	undefined	0		0	yes	accepted									
 005aeaee	RefreshSellDescriptionsPC	CTCInventoryTrade	unknown	undefined	0		0	yes	accepted									
 005aebfe	ProcessTradeAction	CTCInventoryTrade	__thiscall	void	1	CTCInventoryTrade *	1	yes	accepted									
-005aecc0	CTCInventoryTrade::SellItemPC	CTCInventoryTrade	unknown	undefined	0		0	yes	accepted									
+005aecc0	SellItem	CTCInventoryTrade	unknown	undefined	0		0	yes	accepted									
 005af64e	BuyItem	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,long	1	yes	accepted									
 005b01fe	SellItemPC	CTCInventoryTrade	__thiscall	void	3	CTCInventoryTrade *,CComponent *,long	1	yes	accepted									
 005b0aac	CTCInventoryTrade::BuyItemPC	CTCInventoryTrade	unknown	undefined	0		0	yes	accepted									
@@ -36059,7 +36059,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a1be10	SmoothCorners	CNavigatorAStar	__thiscall	void	1	CNavigatorAStar *	1	yes	accepted									
 00a1bee0	UpdateLastPosition	CNavigatorAStar	__thiscall	void	2	CNavigatorAStar *,C3DVector const &	1	yes	accepted									
 00a1bfc0	CreateLineList	CNavigatorAStar	__thiscall	void	2	CNavigatorAStar *,std::vector<C3DVector,std::allocator<C3DVector> > &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a1\CNavigatorAStar_CreateLineList_00a1bfc0.cpp
-00a1c010	AStar_process_node_queue	_global	unknown	undefined	0		0	yes	accepted									
+00a1c010	CullWayPoints	CNavigatorAStar	unknown	undefined	0		0	yes	accepted									
 00a1c700	CSteeringAgent	CSteeringAgent	unknown	undefined	0		0	yes	accepted									
 00a1c950	~CSteeringAgent	CSteeringAgent	__thiscall	void	1	CSteeringAgent *	1	yes	accepted									
 00a1ca70	CNavigatorAStar	CNavigatorAStar	unknown	undefined	0		0	yes	accepted									
@@ -37141,7 +37141,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a4ee10	C3DAnimation2	C3DAnimation2	__thiscall	undefined	1	C3DAnimation2 *	0	yes	accepted									
 00a4eec0	~C3DAnimation2	C3DAnimation2	__thiscall	void	1	CEditWorld *	1	yes	accepted									
 00a4ef90	GetAllEventNames	C3DAnimationStats	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
-00a4efc0	C3DKeyframe_InitialiseAsConstant	_global	unknown	undefined	0		0	yes	accepted									
+00a4efc0	InitialiseFromFileData	C3DAnimationSequenceData	unknown	undefined	0		0	yes	accepted									
 00a4fd70	InitialiseAsConstant	C3DAnimationSequenceData	__thiscall	void	5	C3DAnimationSequenceData *,CMatrix3x4 *,ulong,float,CSimpleMemoryPool *	1	yes	accepted									
 00a4fe60	InitialiseSharedAnimation	C3DAnimation2	unknown	undefined	0		0	yes	accepted									
 00a50510	InitialiseAnimationSequences	C3DAnimation2	__thiscall	bool	5	C3DAnimation2 *,C3DAnimation2 *,C3DMesh2 *,bool,ulong *	1	yes	accepted									
@@ -38365,7 +38365,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a8b5f0	GetUsedBones	C3DMesh2	__thiscall	void	2	C3DMesh2 *,CArray<bool> *	1	yes	accepted									
 00a8b6c0	PackBoneNames	C3DMesh2	unknown	undefined	0		0	yes	accepted									
 00a8b820	RemapBoneIndices	C3DMesh2	__thiscall	void	2	C3DMesh2 *,map<unsigned_long,unsigned_long,std::less<unsigned_long>,std::allocator<std::pair<unsigned_long_const_,unsigned_long>_>_> *	1	yes	accepted									
-00a8b990	C3DMesh2_AddSubMeshBoneVertices	_global	unknown	undefined	0		0	yes	accepted									
+00a8b990	InitialiseBones	C3DMesh2	unknown	undefined	0		0	yes	accepted									
 00a8ca00	CanRelocateData	C3DMesh2	__thiscall	bool	2	C3DMesh2 *,long	1	yes	accepted									
 00a8cb70	FreeSelf_00a8cb70	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 00a8cd30	CCountedPointer_Release_00a8cd30	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a8\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a8cd30.cpp
@@ -39546,14 +39546,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac7030	IsZTargetable	CTCTargeted	__thiscall	bool	1	CTCTargeted *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\CTCTargeted_IsZTargetable_00ac7030.cpp
 00ac7050	Initialise	QuadricOptimiserInternals::CQuadric	__thiscall	void	4	CQuadric *,C3DVector *,C3DVector *,float	1	yes	accepted									
 00ac70f0	GetInverseMatrixPart	_global	__thiscall	CMatrix3x4	1	CQuadric *	1	yes	accepted									
-00ac7200	Vector_ProjectOntoPlane	_global	unknown	undefined	0		0	yes	accepted									
+00ac7200	MakeOrthogonal	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
 00ac7300	FindTextureTangent	COptimisedPrimitive	__thiscall	C3DVector	7	COptimisedPrimitive *,C3DVector *,C3DVector *,C3DVector *,float,float,float	1	yes	accepted									
 00ac7750	ComputeOptimalVertexPlacement	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	C3DVector	4	COptimisedPrimitive *,CQuadric *,C3DVector *,C3DVector *	1	yes	accepted									
 00ac7940	RemapIndex	CVertexPairContraction	__thiscall	void	3	CVertexPairContraction *,ulong,ulong	1	yes	accepted									
 00ac7990	Contains	CPairList_00ac7990	__thiscall	void	2	CList *,CComponent *	1	yes	accepted									
 00ac7a90	ContainsAllVertices	QuadricOptimiserInternals::CVertexPairContraction	unknown	undefined	0		0	yes	accepted									
 00ac7b00	CleanUp	QuadricOptimiserInternals::CVertexPairContraction	__thiscall	void	1	CVertexPairContraction *	1	yes	accepted									
-00ac7cb0	GetFaceNormal	COptimisedPrimitive	__thiscall	C3DVector	2	COptimisedPrimitive *,COptimisedFace *	1	yes	accepted									
+00ac7cb0	GetFaceNormal	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	C3DVector	2	COptimisedPrimitive *,COptimisedFace *	1	yes	accepted									
 00ac7e10	FindFaceTextureTangents	COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,COptimisedFace *	1	yes	accepted									
 00ac7eb0	ComputeSelfContraction	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,CVertexPairContraction *	1	yes	accepted									
 00ac7fc0	Contains	CResourceIndex_00ac7fc0	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted									
@@ -39569,7 +39569,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac8960	GetIntersection	QuadricOptimiserInternals::CIndexList	unknown	undefined	0		0	yes	accepted									
 00ac8a60	UpdateCost	QuadricOptimiserInternals::COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> *	1	yes	accepted									
 00ac8ae0	JoinAdjacentFaces	COptimisedPrimitive	__thiscall	bool	3	COptimisedPrimitive *,ulong,ulong	1	yes	accepted									
-00ac8c80	COptimisedPrimitive_ComputeBoundingBox	_global	unknown	undefined	0		0	yes	accepted									
+00ac8c80	ComputeVertexCost	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
 00ac92c0	ComputeContraction	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
 00ac96e0	UpdateContractions	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
 00ac97d0	RemapGroups	QuadricOptimiserInternals::COptimisedVertex	unknown	undefined	0		0	yes	accepted									
