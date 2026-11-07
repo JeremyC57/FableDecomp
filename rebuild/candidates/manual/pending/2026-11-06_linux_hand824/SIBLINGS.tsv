@@ -1,0 +1,3 @@
+address	source	grade_with_final_overlay	note
+00edd170	src/00edd170.cpp	RELOCATION_MATCH	this chunk's match (final hdr/ overlay); needs the chunk 811 opt-in FABLE_RETAIL_CV_TEMPLEOFLIGHTSCRIPT_ACOLYTEGOOD shipped in hdr/engine/CV_TempleOfLightScript.h
+00684610	differ/00684610.cpp	DIFFER(2823v2823)	parked, 4 lines; uses the new opt-in FABLE_RETAIL_COPINIONTRANSIENTOFFSET_BINARY (hdr/engine/CTCCreatureOpinionOfHero.h). All hdr/ edits are opt-in branches (default path textually unchanged), so no landed includer needs a recheck

@@ -52542,6 +52542,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e403d0	GetLHTSTag	CBordelloLady	__thiscall	CCharString	2	CBordelloLady *,CCharString *	1	yes	accepted									
 00e40420	Main	NScript::CV_BordelloScript::CBordelloGuard	unknown	undefined	0		0			discovered	gapscan							
 00e40e80	Main	NScript::CV_BordelloScript::CMagicman	unknown	undefined	0		0			discovered	gapscan							
+00e44980	WatchForHeroLeavingRegionWithBeer	NScript::CV_BordelloScript	unknown	undefined	0		0			discovered	boundary							
 00e44a40	IsHeroWearingBeard	CV_BordelloScript	__thiscall	bool	1	CV_BordelloScript *	1	yes	accepted									
 00e44cc0	IsHeroWearingTash	CV_BordelloScript	__thiscall	bool	1	CV_BordelloScript *	1	yes	accepted									
 00e44ea0	Main	NScript::CV_BordelloScript::CBordelloClient	unknown	undefined	0		0			discovered	gapscan							

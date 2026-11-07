@@ -1,0 +1,21 @@
+addr       parity           behav  name
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/wine/vc71rtm/bin/cl.exe obj /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/lvz/00/92/0092fab0/0092fab0.cpp
+0092fab0   WARN RELOC_NAME: ?GetGossipPhrase@CAIStateGroup_MinionReactToPlayerInteraction@@QAE_NAAK@Z -> 0092f310 labelled 'Interaction_EvaluateAndAct'
+0092fab0   WARN RELOC_NAME: ??$?0VCThingPlayerCreature@@@?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV?$CIntelligentPointer@VCThingPlayerCreature@@@@@Z -> 00930d20 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0092fab0   WARN RELOC_NAME: ?IsPerformingRegionLoad@CWorld@@QBE_NXZ -> 0048db13 labelled 'CWorld::Query_48db13'
+0092fab0   WARN RELOC_NAME: ?ResetLastOpinionReactionFrame@CTCCreatureOpinionOfHero@@QAEXXZ -> 006ceae0 labelled 'CTCHeroExperience::AddSuccessfulBlockParry'
+0092fab0   WARN RELOC_NAME: ?GetHint@CTCShopKeeper@@QAE?AVCCharString@@XZ -> 00798d30 labelled '_unattributed::GetShopKeeperGiveHintTextTag_00798d30'
+0092fab0   WARN RELOC_NAME: ?GetCostToBribe@CTCVillage@@QAEJXZ -> 006588cf labelled '_global::GetMember_dword0x94_deref0xf8_006588cf'
+0092fab0   RELOCATION_MATCH["t"] PASS   TestOrDoInteraction
+00e44980   RELOCATION_MATCH PASS   WatchForHeroLeavingRegionWithBeer
+00f0c140   RELOCATION_MATCH PASS   PhaseTwo
+
+WINS: 3
+  0092fab0 RELOCATION_MATCH["t"] CAIStateGroup_MinionReactToPlayerInteraction::?TestOrDoInteraction@CAIStateGroup_MinionReactToPlayerInteraction@@AAE_N_NPAVCThingPlayerCreature@@@Z
+  00e44980 RELOCATION_MATCH NScript::CV_BordelloScript::?WatchForHeroLeavingRegionWithBeer@CV_BordelloScript@NScript@@QAEXXZ
+  00f0c140 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?PhaseTwo@CQ_AmbushTradersScript@NScript@@QAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupMinionReactToPlayerInteraction_TestOrDoInteraction_0092fab0
+  NScriptCVBordelloScript_WatchForHeroLeavingRegionWithBeer_00e44980
+  NScriptCQAmbushTradersScript_PhaseTwo_00f0c140

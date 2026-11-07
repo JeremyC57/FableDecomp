@@ -1,0 +1,82 @@
+00edd170	r0_00edd170	DIFFER(6597v6594)	50	parked hand811 source regraded unchanged with fresh overlay (130 md2-style lines before; md counts masked lines)
+00edd170	tolA	DIFFER(6572v6594)	227	diagnostic: exit_point wait-loop T return removed (semantics): shared tail still after the first (exit_point) pad
+00edd170	tolB	DIFFER(6597v6594)	50	acolyte-loop T return wrapped in do{}while(0): identical to r0
+00edd170	tolC	DIFFER(6216v6594)	767	diagnostic: exit_point section removed: tail moves to the first movie pad (VC7.1 keeps the first pad's copy regardless)
+00e6bc50	r0_00e6bc50	DIFFER(7692v7655)	36	parked hand817 source regraded unchanged
+007a7d20	r0_007a7d20	DIFFER(2504v2520)	406	parked hand801 source regraded unchanged
+008e9b70	r0_008e9b70	DIFFER(1699v1705)	61	parked hand796 source regraded unchanged
+00684610	r0_00684610	DIFFER(2826v2823)	122	parked hand802 source regraded unchanged
+00d01630	r0_00d01630	DIFFER(5134v5178)	78	parked hand806 source regraded unchanged
+00e6bc50	coe2	DIFFER(7692v7655)	36	loop respell: coe2
+00e6bc50	coe3	DIFFER(7692v7655)	36	loop respell: coe3
+00e6bc50	coe4	DIFFER(7692v7655)	36	loop respell: coe4
+00e6bc50	coe5	DIFFER(7692v7655)	36	loop respell: coe5
+008e9b70	ms1	DIFFER(1706v1705)	263	named float amount = PullBackAmount (ms1: before SetFrame / own block / after a named last): fst to [esp+58] appears but amount loads before last (fxch) and this flips esi->edi globally
+008e9b70	ms2	DIFFER(1706v1705)	263	named float amount = PullBackAmount (ms2: before SetFrame / own block / after a named last): fst to [esp+58] appears but amount loads before last (fxch) and this flips esi->edi globally
+008e9b70	ms3	DIFFER(1706v1705)	263	named float amount = PullBackAmount (ms3: before SetFrame / own block / after a named last): fst to [esp+58] appears but amount loads before last (fxch) and this flips esi->edi globally
+008e9b70	ms4	DIFFER(1706v1705)	263	float amount; SetFrame(CAnimFrameInfo(amount = PullBackAmount, last)): amount still loaded first, esi/edi flip
+008e9b70	ms5	DIFFER(1706v1705)	345	named CAnimFrameInfo info(PBA, last); SetFractionComplete(info.Current): fst [esp+24], PBA first, worse
+008e9b70	ms6	DIFFER(1699v1705)	61	const float& amount = PullBackAmount reference: identical to r0 (reload)
+008e9b70	ms7	DIFFER(1706v1705)	263	named last first, then amount assigned inside the ctor arg: amount still loaded first, esi/edi flip
+008e9b70	ms8	DIFFER(1699v1705)	61	CAnimInit ctor with explicit : Frame() initializer: identical
+008e9b70	ms9	DIFFER(1700v1705)	263	GetTimeToBlendIn(*creature) at the SetMainAnim site: worse (creature local reload)
+008e9b70	ms10	DIFFER(1700v1705)	273	GetTimeToBlendIn(strafer): worse
+00d01630	g1	DIFFER(5151v5178)	79	do{}while(0) round the whole talked-to movie block (g1: g1 movie1, g2 movie2, g3 both): expands 1/2/3 of retail's 4 GROBase dtor sites, frame slots unchanged, size grows
+00d01630	g2	DIFFER(5193v5178)	84	do{}while(0) round the whole talked-to movie block (g2: g1 movie1, g2 movie2, g3 both): expands 1/2/3 of retail's 4 GROBase dtor sites, frame slots unchanged, size grows
+00d01630	g3	DIFFER(5209v5178)	86	do{}while(0) round the whole talked-to movie block (g3: g1 movie1, g2 movie2, g3 both): expands 1/2/3 of retail's 4 GROBase dtor sites, frame slots unchanged, size grows
+00d01630	gSd2inlS15	DIFFER(5247v5178)	281	DIAGNOSTIC /d2inlS15: frame slots match up to 0xd01968, but expands ~CTimer at pads and flips ebp/edi: caller-size overshoot
+00d01630	gSd2inlS16	DIFFER(5247v5178)	281	DIAGNOSTIC /d2inlS16: same as S15
+00d01630	gSd2inlT72	DIFFER(5134v5178)	78	DIAGNOSTIC /d2inlT72: identical to r0
+00d01630	g5	DIFFER(5177v5178)	87	chunk 821 SAY do{}while(0) round the ASIDE SAY block: 5177v5178, movie2 pads half expanded (one pad expands ~movie + ~CTimer)
+00d01630	g6	DIFFER(5177v5178)	87	g5 + SAY do-while round GATE_OPEN SAY: identical to g5
+00d01630	g7	DIFFER(5134v5178)	78	__forceinline on CIsThingAlive ctor/dtor (g7) / CTimer ctor (g8) / both (g9), to free inline budget before the movie sites: identical to r0
+00d01630	g8	DIFFER(5134v5178)	78	__forceinline on CIsThingAlive ctor/dtor (g7) / CTimer ctor (g8) / both (g9), to free inline budget before the movie sites: identical to r0
+00d01630	g9	DIFFER(5134v5178)	78	__forceinline on CIsThingAlive ctor/dtor (g7) / CTimer ctor (g8) / both (g9), to free inline budget before the movie sites: identical to r0
+00edd170	tolD	RELOCATION_MATCH		main loop as for(;;NSF){ if (T) return _Fail_Val.Return(); ...} (chunk 813 lever): RELOCATION_MATCH
+00e6bc50	coe1	DIFFER(7692v7655)	38	without the row-local ~CCountedPointer<STB> specialization (generic Data-first): natural-exit stores vptr/Info/Data reordered, 38
+00e6bc50	coe6	DIFFER(7692v7655)	36	TOL lever: for(;;NSF){ if (T) return; ...}: identical (36)
+00e6bc50	coe7	DIFFER(7676v7655)	39	without the row-local CScriptThing default ctor: victim ctor not expanded (worse)
+00e6bc50	coe8	DIFFER(7692v7655)	36	teleport direct-initialised: identical
+00e6bc50	coe9	DIFFER(7692v7655)	36	loop index as long / int (signed, compared against size()): identical
+00e6bc50	coe10	DIFFER(7692v7655)	36	loop index as long / int (signed, compared against size()): identical
+007a7d20	bc1	DIFFER(2504v2520)	406	dragon search (pos, centre, box, call) in its own block inside the DragonCliff2 if: identical (frame 0x140, md3 56)
+007a7d20	bc2	DIFFER(2504v2520)	408	first box declared first, centre math in a nested block, area.Initialise(x-r,..): md3 58
+007a7d20	bc3	DIFFER(2496v2520)	572	region in its own block with a bool: frame 0xe8, worse
+007a7d20	bc4	DIFFER(2504v2520)	406	first-search centre at function scope, box+call in the block: identical to r0 (centre in registers)
+007a7d20	bc5	DIFFER(2528v2520)	410	box at function scope assigned from a temporary inside the block: frame 0x150, worse
+00e6bc50	coe11	DIFFER(7636v7655)	77	coe11: named follower reference (worse 77) / named rand index (identical)
+00e6bc50	coe12	DIFFER(7692v7655)	36	coe12: named follower reference (worse 77) / named rand index (identical)
+00e6bc50	coeD1	DIFFER(7521v7655)	668	DIAGNOSTIC: talk_point removed: natural-exit seh_me stores still in reverse program order (vt, Info, Data)
+008e9b70	ms11	DIFFER(1699v1705)	61	creature as CThingCreatureBase& reference: identical to r0
+008e9b70	ms13	DIFFER(1699v1705)	61	carrying declared before primary/weapon/projectile: identical
+008e9b70	ms14	DIFFER(1699v1705)	63	weapon declared before primary: 63 (zero-store order swaps)
+008e9b70	ms15	DIFFER(1699v1705)	61	template PeekTC(&ptr) instead of PeekTC(id,&ptr) for carrying/weapon/abilities: identical
+008e9b70	ms16	DIFFER(1693v1705)	320	GetAnimDistanceAndIndexFromAnimName(*creature,...) dropping the strafer reference: 1693 bytes, 320 (creature reload)
+007a7d20	bc6	DIFFER(2504v2520)	406	first box from a C2DCoordI temporary (no named searchCentre): md3 56, identical
+007a7d20	bc7	DIFFER(2504v2520)	408	4-arg C2DBoxI ctor (FABLE_RETAIL_C2DBOXI_CTORS) from named x/y/r longs: md3 58
+007a7d20	bc8	DIFFER(2504v2520)	408	default box + Initialise from named x/y/r longs: md3 58
+007a7d20	bc9	DIFFER(2480v2520)	337	named first-search filter after the box: 2480 bytes, md3 63 (filter ctor folded differently)
+007a7d20	bc10	DIFFER(2504v2520)	414	float range declared at function top before things: md3 60
+007a7d20	bc11	DIFFER(2488v2520)	420	region as a temporary inside the DragonCliff2 test (no named CRegion): 2488 bytes, md3 78
+00684610	po1	DIFFER(2805v2823)	655	GetDefaultVal<COpinionTransientOffset> as named local + return (no NRVO): 2805 bytes, 655; VC7.1 hoists part of the local's stores into the loop preheader (retail hoists all six temp stores)
+00684610	po2	DIFFER(2826v2823)	192	save-path TransientOffsets name/count/loop in own block: 192
+00684610	po3	DIFFER(2826v2823)	204	save-path pending string in own block: 204
+00684610	po4	DIFFER(2826v2823)	122	save-path long i declared before the TransientOffsets name: identical (122)
+00684610	po5	DIFFER(2817v2823)	288	load-path pending + parser in own block: 2817 bytes, 288
+00684610	po6	DIFFER(2823v2823)	210	load-path TransientOffsets name/count/loop in own block: size matches 2823v2823 but 210 lines
+00684610	po7	DIFFER(2874v2823)	156	save-path known string in own block: 2874 bytes, 156
+00684610	po8	DIFFER(2826v2823)	90	save-path explicit 3-arg Transfer(name, *it, COpinionTransientOffset()): 90 (better)
+00684610	po9	DIFFER(2826v2823)	127	save-path ++i moved into the body: 127
+00684610	po10	DIFFER(2852v2823)	163	save-path known declared before pending: 2852, 163
+00684610	po11	DIFFER(2832v2823)	89	po8 + load-path explicit 3-arg default temp: 2832 bytes, 89
+00684610	po12	DIFFER(2826v2823)	90	po8 with a const named default local inside the loop body: identical to po8 (90)
+00684610	po13	DIFFER(2810v2823)	94	po8 with the item name as an unnamed temporary: 2810, 94
+00684610	po14	DIFFER(2810v2823)	83	po8 with a const named default declared before the save loop: 2810, 83 (lines down, size off)
+00684610	po15	DIFFER(2814v2823)	349	po8 + minimal same-TU bodies of Transfer<long>/<COpinionTransientOffset> under auto_inline(off): VC7.1 now HOISTS the default stores into the loop preheaders and homes strings in the dead arg slots like retail (349: slots shift, zero order still ctor order)
+00684610	po17	DIFFER(2823v2823)	4	orig (2-arg forms) + landed-shape same-TU bodies of Transfer<long> 0x00410BE0 and Transfer<COpinionTransientOffset> 0x00685F80 under auto_inline(off): 2823v2823, 4 lines
+00684610	po18	DIFFER(2884v2823)	125	po17 + GetDefaultVal<COTO> as named local + return: 2884, 125
+00684610	po19	DIFFER(2884v2823)	125	po17 + GetDefaultVal<COTO> returning a CPersistTraits local's DefaultVal: 2884, 125
+00684610	po20	DIFFER(2823v2823)	2	po17 + PROBE init-list (memory-order) COTO ctor: the hoisted default zeroes in memory order like retail, but the load-loop offset local then also goes memory order (retail: body order) -- 2 lines
+00684610	po21	DIFFER(2870v2823)	186	po17 + GetDefaultVal<COTO> memset local: 2870, 186
+00684610	po22	DIFFER(2884v2823)	125	po17 + GetDefaultVal<COTO> = CPersistTraits<COTO>().DefaultVal (value-init traits): 2884, 125
+008e9b70	ms17	DIFFER(1699v1705)	61	same-TU auto_inline(off) stand-in of GetAnimDistanceAndIndexFromAnimName 0x008E9080: identical (61)

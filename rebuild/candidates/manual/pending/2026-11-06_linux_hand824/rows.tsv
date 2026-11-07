@@ -1,0 +1,7 @@
+address	module	name	length
+007a7d20	CTCBattleCharge	CreateHitEffect	2520
+008e9b70	NCreatureMode::CModeStrafe	AnimUpdate	1705
+00684610	CTCCreatureOpinionOfHero	OnSerialise	2823
+00edd170	NScript::CV_TempleOfLightScript::CTOL_AcolyteGood	Main	6594
+00e6bc50	NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil	Main	7655
+00d01630	NScript::CQ_BanditCampScript::CGate1GuardOuter	Main	5178

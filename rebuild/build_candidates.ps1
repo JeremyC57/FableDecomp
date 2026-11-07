@@ -384925,6 +384925,34 @@ $catalog = @(
         TestSource = '00/eb/NScriptCVMayorsInvitationScript_MonitorParanoidQuest_00ebcb60_test.cpp'
         PassPattern = '00ebcb60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00edd170'
+        Module = 'NScript::CV_TempleOfLightScript::CTOL_AcolyteGood'
+        Source = '00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_Main_00edd170.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_Main_00edd170_test.cpp'
+        PassPattern = '00edd170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092fab0'
+        Module = 'CAIStateGroup_MinionReactToPlayerInteraction'
+        Source = '00/92/CAIStateGroupMinionReactToPlayerInteraction_TestOrDoInteraction_0092fab0.cpp'
+        TestSource = '00/92/CAIStateGroupMinionReactToPlayerInteraction_TestOrDoInteraction_0092fab0_test.cpp'
+        PassPattern = '0092fab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e44980'
+        Module = 'NScript::CV_BordelloScript'
+        Source = '00/e4/NScriptCVBordelloScript_WatchForHeroLeavingRegionWithBeer_00e44980.cpp'
+        TestSource = '00/e4/NScriptCVBordelloScript_WatchForHeroLeavingRegionWithBeer_00e44980_test.cpp'
+        PassPattern = '00e44980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f0c140'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/f0/NScriptCQAmbushTradersScript_PhaseTwo_00f0c140.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScript_PhaseTwo_00f0c140_test.cpp'
+        PassPattern = '00f0c140_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

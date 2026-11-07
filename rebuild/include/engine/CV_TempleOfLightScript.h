@@ -66,6 +66,32 @@ public:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_TempleOfLightScript) == 0x74);
+#ifdef FABLE_RETAIL_CV_TEMPLEOFLIGHTSCRIPT_ACOLYTEGOOD
+// Retail opt-in (chunk 811): the TOL_AcolyteGood entity script. Ego_r.pdb layout (struct_layouts_egor.tsv, entity offsets equal
+// retail's: CEntityScriptBase is 0x14 in both): CTOL_AcolyteGood 32 bytes (ParentClass +0x14, PMasterData +0x18,
+// AcolytePrayerTimer +0x1c); the landed Init 0x00EDC720 and Main 0x00EDD170 use these offsets. Entity vtable 0x012F3E94 (0 scalar
+// deleting dtor 0x00EDC2A0, 1 Main 0x00EDD170, 2 Init 0x00EDC720, 3 GetParentScript 0x00EDC270, 4 OnPersist 0x00EDC280,
+// 5 OnPredicateFail 0x00EDC290) that Alloc 0x00EDC1D0 stores; Main / Init / OnPersist / OnPredicateFail are private
+// (Ego_r.pdb and FableWin.pdb ?Main@CTOL_AcolyteGood@CV_TempleOfLightScript@NScript@@EAEXXZ and the other spellings).
+#include "engine/CTimer.h"
+namespace NScript {
+class CV_TempleOfLightScript::CTOL_AcolyteGood : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_TempleOfLightScript&, CScriptDataBase*, const CScriptThing&); // 0x00EDC1D0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00EDC270
+private:
+    virtual void Main();                                                 // 0x00EDD170
+    virtual void Init();                                                 // 0x00EDC720
+    virtual void OnPersist(CPersistContext&);                            // 0x00EDC280
+    virtual void OnPredicateFail();                                      // 0x00EDC290
+protected:
+    CV_TempleOfLightScript& ParentClass;                                 // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+    CTimer AcolytePrayerTimer;                                           // +0x1c
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_TempleOfLightScript::CTOL_AcolyteGood) == 0x20);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_TEMPLEOFLIGHTSCRIPT_H

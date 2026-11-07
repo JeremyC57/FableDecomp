@@ -1,0 +1,4 @@
+address	source	grade_with_final_overlay	note
+0x00E44980	src/00e44980.cpp	RELOCATION_MATCH	new row; no header changed (hdr/ empty), so no landed includer needs a recheck
+0x0092FAB0	src/0092fab0.cpp	RELOCATION_MATCH	retry row (chunk 795 parked)
+0x00F0C140	src/00f0c140.cpp	RELOCATION_MATCH	retry row (chunk 798 parked); siblings in the AT TU (DoQuest caller 0x00F0B691, swap 0x00F0CA30, TeleportData copy ctor 0x00F0CA60) unchanged

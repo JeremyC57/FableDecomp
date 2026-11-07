@@ -1,0 +1,2 @@
+address	name	evidence
+00e44980	NScript::CV_BordelloScript::WatchForHeroLeavingRegionWithBeer	landing 2026-11-06z (chunk 825): CMagicman::Main 0x00E40E80 stores 0x00E44980 as the CSpawnedFunc<CV_BordelloScript> member pointer (0x00E411E2 / 0x00E42B1D) beside the thread name "ParentClass." + "WatchForHeroLeavingRegionWithBeer" (0x012E48E0); Ego_r.pdb + FableWin.pdb ?WatchForHeroLeavingRegionWithBeer@CV_BordelloScript@NScript@@QAEXXZ; RELOCATION_MATCH

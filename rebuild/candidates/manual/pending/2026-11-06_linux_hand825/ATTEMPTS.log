@@ -1,0 +1,52 @@
+00e44980	a1	RELOCATION_MATCH	difflines=0	first try: CheckLampSlot 0x00E76CA0 loop shape on engine/CV_BordelloScript.h
+007c4430	base	DIFFER(1980v1952)	difflines=222	parked chunk 794 source regraded as-is
+0092fab0	base	DIFFER(2508v2508)	difflines=217	parked chunk 795 source regraded as-is
+00f0c140	base	DIFFER(2208v2285)	difflines=243	parked chunk 798 source regraded as-is
+00ee57b0	base	DIFFER(4356v4246)	difflines=271	parked chunk 807 source regraded as-is
+00dea3f0	base	DIFFER(3056v3076)	difflines=161	parked chunk 789 source regraded as-is
+0092fab0	a1	DIFFER(2496v2508)	difflines=82	SetText button strings as call temporaries (built no, yes, empty right to left)
+0092fab0	a2	DIFFER(2508v2508)	difflines=225	named strings at boast-if body level (a4 of chunk 795 re-run under current headers)
+00ee57b0	a1	DIFFER(4596v4246)	difflines=304	base + visible inline CTimer ctor (RegisterTimer) and dtor (DeregisterTimer)
+0092fab0	a3	DIFFER(2508v2508)	difflines=217	braces round every case body (sibling case scopes)
+00ee57b0	a2	DIFFER(4308v4246)	difflines=253	a1 + main loop for(;;NSF){if(T) return; ...} (chunk 813 natural-exit-as-return)
+00ee57b0	a3	DIFFER(4356v4246)	difflines=235	a2 + row-local inline ~CScriptThing (retail expands it at the natural exit)
+00dea3f0	a1	DIFFER(3118v3076)	difflines=172	__forceinline ~CIsThingAlive (retail expands the predicate temp dtor, vtable in ebx)
+00ee57b0	a4	DIFFER(4356v4246)	difflines=235	a3 + closing block: return written inside the FadeOut arm (no return after the if/else)
+00dea3f0	a2	DIFFER(2999v3076)	difflines=185	a1 (__forceinline ~CIsThingAlive) without the row-local inline ~CScriptThing
+00dea3f0	a3	DIFFER(2999v3076)	difflines=185	base (plain inline ~CIsThingAlive) without the row-local inline ~CScriptThing (probe: does the predicate dtor expand)
+00dea3f0	a4	DIFFER(3056v3076)	difflines=161	second loop as for(;;){...; NSF; if (T) return;}
+00dea3f0	a5	DIFFER(3266v3076)	difflines=298	second loop bottom NSF; if (!T) continue; return; (chunk 816 lever)
+00dea3f0	d1	DIFFER(3056v3076)	difflines=161	(not a grade: try.sh dropped the flag; identical to base) --flags /d2inlT60
+00dea3f0	d2	DIFFER(3056v3076)	difflines=161	(not a grade: try.sh dropped the flag; identical to base) --flags /d2inlT72
+00dea3f0	d1	DIFFER(2999v3076)	difflines=185	DIAGNOSTIC only: base under /d2inlT60 [--flags /d2inlT60]
+00dea3f0	d2	DIFFER(2999v3076)	difflines=185	DIAGNOSTIC only: a1 under /d2inlT60 [--flags /d2inlT60]
+00dea3f0	d3	DIFFER(3118v3076)	difflines=172	DIAGNOSTIC only: base under /d2inlT80 [--flags /d2inlT80]
+00f0c140	a1	DIFFER(2915v2285)	difflines=387	main loop while(!(QuestFinished||QuestFailed)) with bottom NSF; if (!T) continue; return; (chunk 816 lever)
+0092fab0	a4	DIFFER(2496v2508)	difflines=82	a1 (string temporaries) + nested if (test) if (!Waiting) for the shopkeeper block
+00f0c140	a2	DIFFER(2255v2285)	difflines=19	loop-top T return replaces the post-bandit T: for(;;){if(T) return; if(QF||QF) break; ...; NSF;}
+00f0c140	a3	DIFFER(2167v2285)	difflines=161	for(;;){if(QF||QF) break; ...; NSF; if(T) return;} with the post-bandit T kept
+00f0c140	a4	DIFFER(2557v2285)	difflines=421	a2 without the if (count > 0) guard on the follower loop
+00f0c140	a5	DIFFER(2255v2285)	difflines=17	a2 with long i = 0 hoisted before the if (count > 0) guard
+00f0c140	a6	RELOCATION_MATCH	difflines=	a5 + teleport count as TeleportInfo.end() - TeleportInfo.begin()
+007c4430	b1	DIFFER(1972v1952)	difflines=230	ThingsToHeal loop as it=begin; for(;;){if(it==end) break; ...; if(!=target){...} ++it;} (chunk 821 iterator-loop form)
+0092fab0	c1	DIFFER(2508v2508)	difflines=217	case 1 strings as const CWideString& bound to temporaries (no, yes, empty), named order kept
+007c4430	b2	DIFFER(1972v1952)	difflines=230	ThingsToHeal loop as while (it != end) { creature = *it; if (!= target) {...} ++it; }
+0092fab0	c2	DIFFER(2508v2508)	difflines=217	case 1 strings copy-initialised from explicit temporaries: CWideString no_text = CWideString(L"...")
+0092fab0	c4	DIFFER(2508v2508)	difflines=17	SetText button strings as implicit L"..." conversions (landed CTCTavernGame / CTCTrophy spelling)
+0092fab0	c3	DIFFER(2508v2508)	difflines=217	case 1 strings copy-initialised from literals: CWideString no_text = L"..."
+007c4430	b3	DIFFER(1980v1952)	difflines=222	ThingsToHeal loop as for(;;++it){if(it==end) break; ... continue form}
+0092fab0	d1	DIFFER(2512v2508)	difflines=19	c4 + case 0 phrase in its own block, success flag tested after it (fps temp outside phrase scope)
+0092fab0	d2	RELOCATION_MATCH	difflines=	d1 with the flag set inside if (AIAction(...) == SUCCESS) spoke = true;
+00dea3f0	e1	DIFFER(3056v3076)	difflines=161	predicate as a named block-scoped CIsThingAlive local passed to SetPredicate
+00ee57b0	f1	DIFFER(4356v4246)	difflines=235	a3 + Initialise StartScripting wait as for(;;){if(Start) break; NSF; if(T) return;}
+007c4430	b4	DIFFER(1980v1952)	difflines=222	loop iterator post-increment it++ (iterator temporary per step)
+007c4430	b5	DIFFER(1980v1952)	difflines=222	self-cast test spelled &thing == target
+00ee57b0	f2	DIFFER(4356v4246)	difflines=235	a3 + closing-time block as break out of the main loop into a post-loop tail
+007c4430	b9	DIFFER(1980v1952)	difflines=222	loop HealingEffects.push_back(0) as an implicit CIntelligentPointer conversion
+007c4430	b10	DIFFER(1980v1952)	difflines=222	b9 + the same implicit push_back(0) at the first site
+007c4430	b7	DIFFER(1980v1952)	difflines=222	loop float push_back(float()) value-initialised temporary
+007c4430	b12	DIFFER(1980v1952)	difflines=222	list end iterator declared before the for (begin in the for)
+007c4430	b13	DIFFER(1976v1952)	difflines=64	PROBE (not a candidate): a redundant if (!IS_THING_ALIVE(target)) continue; before the loop float push_back, to test whether a real retail condition sits there
+007c4430	b14	DIFFER(1952v1952)	difflines=264	PROBE: loop-top test creature.Get() == target || !target (target known non-null here)
+007c4430	b15	DIFFER(1952v1952)	difflines=254	PROBE: if (!target) continue; between the two loop push_backs
+007c4430	b16	DIFFER(1936v1952)	difflines=292	b15 + explicit CCharString("HERO_...") temporaries in the four switch cases

@@ -27588,3 +27588,15 @@ chunk	address	module	name	length
 825	00f0c140	NScript::CQ_AmbushTradersScript	PhaseTwo	2285
 825	00ee57b0	NScript::CV_TourGuideScript::CTourGuideGuide	Main	4246
 825	00dea3f0	NScript::CQ_RansomVictimScript::CVictimsBrother	Main	3076
+826	00850a80	CContextSensitiveItemDef	IsValidOverride	2576
+826	00d7fe90	NScript::CQ_HeroSoulsArenaScript	WatchForRoundsInArena	3148
+826	00e8ef80	NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon	Main	5996
+826	00ed5f50	NScript::CV_SwordInTheStoneScript::CSwordCrowd	Main	5024
+826	00960120	CAIStateGroup_DeedReactionRoot	Update	1600
+826	00951fb0	CAIStateGroup_JackDragon	UpdateHover	2272
+827	00684610	CTCCreatureOpinionOfHero	OnSerialise	2823
+827	007c4430	CTCHealLife	StartHealingEffect	1952
+827	00833c00	CThingAICreature	DrawPreparePrimitivesForRendering	2300
+827	0094ab00	CAIStateGroup_GoToPub	Update	2067
+827	0066cf00	CRegionMinimap	PopulateRegionMinimap	3248
+827	008e18d0	NCreatureMode::CModeThunderLightningStorm	UpdateLightningBeams	2073
