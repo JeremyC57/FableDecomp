@@ -10,6 +10,17 @@
 #include "engine/C3DVertex2.h"
 class C3DMeshFileVerticesChunk : public CChunkedFileChunk {
 public:
+#ifdef FABLE_RETAIL_C3DMESHFILEVERTICESCHUNK_CTOR
+    // Nested opt-in (chunk 851, row 0x00A9BBE0 C3DMeshFileLoader::C3DMeshFileLoader): the default constructor
+    // ??0C3DMeshFileVerticesChunk@@QAE@XZ 0x00ABC780 and the user destructor 0x00ABC7B0, both out of line (the ctor's temporary), and the five overrides (vtable 0x0129ECF8).
+    C3DMeshFileVerticesChunk();
+    virtual ~C3DMeshFileVerticesChunk();
+    virtual const CCharString GetChunkDescription() const;
+    virtual const CCharString GetChunkInfo() const;
+    virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);
+    virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const;
+    virtual CChunkedFileChunk* CreateNewInstance() const;
+#endif
     void AddVertex(const C3DVertex2& vertex);                    // 0x00ABCEB0
 private:
     CArray<C3DVertex2> VertexList;                               // +0x10

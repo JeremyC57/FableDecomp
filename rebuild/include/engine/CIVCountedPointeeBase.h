@@ -28,7 +28,14 @@ public:
     virtual ~CIVCountedPointeeBase() { }                                 // slot 0  0x004664E0 (scalar deleting; inline dtor)
     virtual void Delete() const;                                         // slot 1  0x0042D930
     void AddRef() const { ++IVRefCount; }                                // FableWin.pdb ?AddRef@CIVCountedPointeeBase@@QBEXXZ (inline)
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES
+    // Nested opt-in (chunk 851, row 0x00A9BBE0; the Codex pass 12 model, as its React / Factions rows): the release that deletes
+    // the pointee itself when the count reaches zero, the caller ignoring the result (0x00A9C4C7: count loaded, `this` copied
+    // to ecx, decrement stored, slot-1 Delete).
+    long Release() const { if (--IVRefCount == 0) { Delete(); return 0; } return IVRefCount; }
+#else
     long Release() const { return --IVRefCount; }                        // FableWin.pdb ?Release@CIVCountedPointeeBase@@QBEJXZ (inline)
+#endif
     long GetRefCount() const { return IVRefCount; }                      // FableWin.pdb ?GetRefCount@CIVCountedPointeeBase@@QBEJXZ (inline)
     mutable unsigned long IVRefCount;                                    // +0x04 (mutable: the const accessors count; see above)
 };

@@ -1,0 +1,79 @@
+CDefinitionManager.h(37) : error C2118: negative subscript
+CBankFileAsync.h(14) : error C2118: negative subscript
+NGameText_CDataBank.h(15) : error C2118: negative subscript
+CStreamingFontBank.h(26) : error C2146: syntax error : missing ';' before identifier 'GetStringExtents'
+CStreamingFontBank.h(26) : error C2433: 'CStreamingFontBank::C2DExtentsF' : 'virtual' not permitted on data declarations
+CStreamingFontBank.h(26) : error C2501: 'CStreamingFontBank::C2DExtentsF' : missing storage-class or type specifiers
+CStreamingFontBank.h(30) : error C2143: syntax error : missing ',' before '&'
+CStreamingFontBank.h(44) : error C2118: negative subscript
+CDisplayManager.h(81) : error C2146: syntax error : missing ';' before identifier 'D3DDeviceCaps'
+CDisplayManager.h(81) : error C2501: 'CDisplayManager::D3DCAPS9' : missing storage-class or type specifiers
+CDisplayManager.h(81) : error C2501: 'CDisplayManager::D3DDeviceCaps' : missing storage-class or type specifiers
+CDisplayManager.h(85) : error C2146: syntax error : missing ';' before identifier 'CurrentMode'
+CDisplayManager.h(85) : error C2501: 'CDisplayManager::D3DDISPLAYMODE' : missing storage-class or type specifiers
+CDisplayManager.h(85) : error C2501: 'CDisplayManager::CurrentMode' : missing storage-class or type specifiers
+CDisplayManager.h(87) : error C2146: syntax error : missing ';' before identifier 'D3DViewport'
+CDisplayManager.h(87) : error C2501: 'CDisplayManager::D3DVIEWPORT9' : missing storage-class or type specifiers
+CDisplayManager.h(87) : error C2501: 'CDisplayManager::D3DViewport' : missing storage-class or type specifiers
+CDisplayManager.h(88) : error C2146: syntax error : missing ';' before identifier 'PresentParams'
+CDisplayManager.h(88) : error C2501: 'CDisplayManager::D3DPRESENT_PARAMETERS' : missing storage-class or type specifiers
+CDisplayManager.h(88) : error C2501: 'CDisplayManager::PresentParams' : missing storage-class or type specifiers
+CDisplayManager.h(95) : error C2118: negative subscript
+x.cpp(79) : error C2143: syntax error : missing ';' before '*'
+x.cpp(79) : error C2501: 'PSoundManager' : missing storage-class or type specifiers
+x.cpp(89) : error C2664: 'CCharString::CCharString(const char *,long)' : cannot convert parameter 1 from 'CDiskFileWin32' to 'const char *'
+x.cpp(95) : error C2061: syntax error : identifier 'CASoundManager'
+x.cpp(98) : error C2039: 'GetGraphicBankManager' : is not a member of 'CSystemManager'
+x.cpp(100) : error C2039: 'IsTextureBitDepthSupported' : is not a member of 'CDisplayManager'
+x.cpp(101) : error C2039: 'IsTextureBitDepthSupported' : is not a member of 'CDisplayManager'
+x.cpp(102) : error C2039: 'IsTextureBitDepthSupported' : is not a member of 'CDisplayManager'
+x.cpp(103) : error C2039: 'IsTextureBitDepthSupported' : is not a member of 'CDisplayManager'
+x.cpp(104) : error C2039: 'GetMaxTextureWidth' : is not a member of 'CRenderManager'
+x.cpp(105) : error C2039: 'GetMaxTextureHeight' : is not a member of 'CRenderManager'
+x.cpp(107) : error C2039: 'GetRefreshRate' : is not a member of 'CDisplayManager'
+x.cpp(111) : error C2039: 'Release' : is not a member of 'CUserProfileManager'
+x.cpp(111) : error C3861: 'Release': identifier not found, even with argument-dependent lookup
+x.cpp(112) : error C2039: 'Uninitialise' : is not a member of 'CSystemManager'
+x.cpp(119) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(120) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(121) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(122) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(123) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(124) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(125) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(126) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(127) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(128) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(129) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(130) : error C2039: 'DisplayCriticalMessage' : is not a member of 'CSystemManager'
+x.cpp(138) : error C2039: 'SetErrorCallback' : is not a member of 'CAFile'
+x.cpp(138) : error C3861: 'SetErrorCallback': identifier not found, even with argument-dependent lookup
+x.cpp(139) : error C2039: 'SetHardDiskErrorCallback' : is not a member of 'CAFile'
+x.cpp(139) : error C3861: 'SetHardDiskErrorCallback': identifier not found, even with argument-dependent lookup
+x.cpp(140) : error C2039: 'SetCurrentPath' : is not a member of 'CAFile'
+x.cpp(140) : error C2039: 'GetProjectPath' : is not a member of 'CAFile'
+x.cpp(140) : error C3861: 'SetCurrentPath': identifier not found, even with argument-dependent lookup
+x.cpp(140) : error C3861: 'GetProjectPath': identifier not found, even with argument-dependent lookup
+x.cpp(144) : error C2039: 'SetCreatingCompiledDefs' : is not a member of 'CDefinitionManager'
+x.cpp(144) : error C3861: 'SetCreatingCompiledDefs': identifier not found, even with argument-dependent lookup
+x.cpp(145) : error C2039: 'SetCreateChecksums' : is not a member of 'CDefinitionManager'
+x.cpp(145) : error C3861: 'SetCreateChecksums': identifier not found, even with argument-dependent lookup
+x.cpp(201) : error C2039: 'SetCompiledDefDirectory' : is not a member of 'CDefinitionManager'
+x.cpp(201) : error C3861: 'SetCompiledDefDirectory': identifier not found, even with argument-dependent lookup
+x.cpp(202) : error C2065: 'GDefStringTable' : undeclared identifier
+x.cpp(202) : error C2228: left of '.SetTableFilename' must have class/struct/union type
+x.cpp(203) : error C2039: 'SetUsingCompiledDefs' : is not a member of 'CDefinitionManager'
+x.cpp(203) : error C3861: 'SetUsingCompiledDefs': identifier not found, even with argument-dependent lookup
+x.cpp(204) : error C2228: left of '.LoadTable' must have class/struct/union type
+x.cpp(204) : error C3861: 'GDefStringTable': identifier not found, even with argument-dependent lookup
+x.cpp(215) : error C2039: 'OpenReadOnly' : is not a member of 'NGameText::CDataBank'
+x.cpp(216) : error C2039: 'FindIndexBySymbolCRC' : is not a member of 'NGameText::CDataBank'
+x.cpp(219) : error C2039: 'FindIndexBySymbolCRC' : is not a member of 'NGameText::CDataBank'
+x.cpp(221) : error C2039: 'GetApplicationWinHandle' : is not a member of 'CSystemManager'
+x.cpp(244) : error C2039: 'SetUseFixedFunction' : is not a member of 'CStreamingFontBank'
+x.cpp(244) : error C3861: 'SetUseFixedFunction': identifier not found, even with argument-dependent lookup
+x.cpp(246) : error C2039: 'Initialise' : is not a member of 'CSystemManager'
+x.cpp(248) : error C2039: 'GetApplicationWinHandle' : is not a member of 'CSystemManager'
+x.cpp(250) : error C2039: 'GenerateMetFilesFromLugFiles' : is not a member of 'CMainGameComponent'
+x.cpp(250) : error C3861: 'GenerateMetFilesFromLugFiles': identifier not found, even with argument-dependent lookup
+x.cpp(253) : error C2039: 'SetProfileName' : is not a member of 'CUserProfileManager'

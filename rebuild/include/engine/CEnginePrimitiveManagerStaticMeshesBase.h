@@ -9,6 +9,12 @@
 #include "rebuild_abi.h"
 
 class CVertexShader;
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_DISPLAYMIRRORED
+class CTexture;
+class C3DPrimitive2;
+class CEngineSubPrimitiveStaticMesh;
+enum ERenderPassType;                                                    // MS forward enum (engine/CEnginePrimitiveManager.h)
+#endif
 
 #pragma pack(push, 1)
 struct CEnginePrimitiveManagerStaticMeshesBase {
@@ -61,6 +67,14 @@ struct CEnginePrimitiveManagerStaticMeshesBase {
     long           OverridePrimitive;                        // +0x30c
     long           RenderOnlyNMeshes;                        // +0x310
     long           StippleAlphaSolidFactor;                  // +0x314
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERSTATICMESHESBASE_DISPLAYMIRRORED
+    // Opt-in (chunk 851, row 0x00BA1B00): Ego_r.pdb / FableWin.pdb
+    // ?DisplayMirroredTextures@CEnginePrimitiveManagerStaticMeshesBase@@AAEXPAPBVCTexture@@KPAVC3DPrimitive2@@W4ERenderPassType@@AAVCEngineSubPrimitiveStaticMesh@@K@Z
+    // (private, `ret 18h`). Declaration only; the flattened layout above is unchanged.
+private:
+    void DisplayMirroredTextures(const CTexture** textures, unsigned long textureCount, C3DPrimitive2* primitive, ERenderPassType pass,
+                                 CEngineSubPrimitiveStaticMesh& subPrimitive, unsigned long renderFlags);   // 0x00BA1B00
+#endif
 };
 #pragma pack(pop)
 

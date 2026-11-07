@@ -385326,6 +385326,35 @@ $catalog = @(
         TestSource = '00/ac/C3DMeshFileEngineMaterialChunk_ReadFromFile_00ac5770_test.cpp'
         PassPattern = '00ac5770_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006001e0'
+        Module = 'CTCInventoryMap'
+        Source = '00/60/CTCInventoryMap_ConstructRegionDescriptionShops_006001e0.cpp'
+        TestSource = '00/60/CTCInventoryMap_ConstructRegionDescriptionShops_006001e0_test.cpp'
+        PassPattern = '006001e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075e4c0'
+        Module = 'CTCCameraPointScriptedSpline'
+        Source = '00/75/CTCCameraPointScriptedSpline_OnSerialseLeaf_0075e4c0.cpp'
+        TestSource = '00/75/CTCCameraPointScriptedSpline_OnSerialseLeaf_0075e4c0_test.cpp'
+        PassPattern = '0075e4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9bbe0'
+        Module = 'C3DMeshFileLoader'
+        Source = '00/a9/C3DMeshFileLoader_C3DMeshFileLoader_00a9bbe0.cpp'
+        TestSource = '00/a9/C3DMeshFileLoader_C3DMeshFileLoader_00a9bbe0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a9bbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba1b00'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_DisplayMirroredTextures_00ba1b00.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_DisplayMirroredTextures_00ba1b00_test.cpp'
+        PassPattern = '00ba1b00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

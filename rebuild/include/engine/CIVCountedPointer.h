@@ -48,6 +48,18 @@ public:
     bool IsNull() const { return Object == 0; }
     unsigned long GetRefCount() const { return Object ? Object->GetRefCount() : 0; }
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_RELEASE_MEMBER
+    // Nested opt-in (chunk 851, row 0x00A9BBE0 C3DMeshFileLoader ctor, the C3DMeshFileEngineMaterialChunk temporary's MapFilenames
+    // at 0x00A9C4BF): the pointee's own Release deletes it (FABLE_RETAIL_CIVCOUNTEDPOINTEEBASE_RELEASE_DELETES); retail loads the
+    // count before it copies the pointer into ecx (`mov edi,[eax+4] ; mov ecx,eax ; add eax,4 ; dec edi`), which the local-copy
+    // form with the Delete in the caller schedules the other way.
+    void Release() {
+        if (Object) {
+            Object->Release();
+            Object = 0;
+        }
+    }
+#else
     void Release() {
         CIVCountedPointeeBase* object = Object;
         if (object) {
@@ -55,6 +67,7 @@ public:
             Object = 0;
         }
     }
+#endif
 #else
     void Release() {
         CIVCountedPointeeBase* object = Object;

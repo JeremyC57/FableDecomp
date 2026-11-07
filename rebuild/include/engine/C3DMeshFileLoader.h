@@ -8,6 +8,9 @@
 #include "rebuild_abi.h"
 #include "engine/CChunkedFileLoader.h"
 #include "engine/CCountedPointer.h"
+#ifdef FABLE_RETAIL_C3DMESHFILELOADER_INLINE_REGISTER
+#include "engine/C3DMeshFileRootChunk.h"
+#endif
 class CChunkedFileChunk;
 class CChunkedFileSuperChunk;
 class C3DMeshFileRootChunk;
@@ -15,6 +18,21 @@ class C3DMeshFileLoader : public CChunkedFileLoader {
 public:
     C3DMeshFileLoader();
     virtual ~C3DMeshFileLoader();
+#ifdef FABLE_RETAIL_C3DMESHFILELOADER_INLINE_REGISTER
+    // Nested opt-in (chunk 851, row 0x00A9BBE0, the Codex pass 12 model): inside the constructor retail expands each
+    // Register*SubChunkType straight into AddChunkType 0x00A9AD00 with the parent's slot-6 GetAsSuperChunk() (0x00A9BCF2 ..);
+    // the out-of-line copies (0x00A9B840 ..) are what the other callers (C3DMeshFileXLoader 0x00AA5C80) bind.
+    CCountedPointer<CChunkedFileChunk> RegisterRootSubChunkType(const CChunkedFileChunk& chunk) { return AddChunkType(chunk,RootChunkType->GetAsSuperChunk()); }
+    CCountedPointer<CChunkedFileChunk> RegisterSubMeshSubChunkType(const CChunkedFileChunk& chunk) { return AddChunkType(chunk,SubMeshChunkType->GetAsSuperChunk()); }
+    CCountedPointer<CChunkedFileChunk> RegisterPrimitiveSubChunkType(const CChunkedFileChunk& chunk) { return AddChunkType(chunk,PrimitiveChunkType->GetAsSuperChunk()); }
+    CCountedPointer<CChunkedFileChunk> RegisterTrianglesSubChunkType(const CChunkedFileChunk& chunk) { return AddChunkType(chunk,TrianglesChunkType->GetAsSuperChunk()); }
+    CCountedPointer<CChunkedFileChunk> RegisterGroupSubChunkType(const CChunkedFileChunk& chunk) { return AddChunkType(chunk,GroupChunkType->GetAsSuperChunk()); }
+    CCountedPointer<CChunkedFileChunk> RegisterMaterialListSubChunkType(const CChunkedFileChunk& chunk) { return AddChunkType(chunk,MaterialListChunkType->GetAsSuperChunk()); }
+    CCountedPointer<CChunkedFileChunk> RegisterMaterialSubChunkType(const CChunkedFileChunk& chunk) { return AddChunkType(chunk,MaterialChunkType->GetAsSuperChunk()); }
+    CCountedPointer<CChunkedFileChunk> RegisterMapSubChunkType(const CChunkedFileChunk& chunk) { return AddChunkType(chunk,MapChunkType->GetAsSuperChunk()); }
+    CCountedPointer<CChunkedFileChunk> RegisterHelpersSubChunkType(const CChunkedFileChunk& chunk) { return AddChunkType(chunk,HelpersChunkType->GetAsSuperChunk()); }
+    void RegisterClothSubChunkType(const CChunkedFileChunk&);                                     // 0x00A9B930
+#else
     CCountedPointer<CChunkedFileChunk> RegisterRootSubChunkType(const CChunkedFileChunk&);        // 0x00A9B840
     CCountedPointer<CChunkedFileChunk> RegisterSubMeshSubChunkType(const CChunkedFileChunk&);     // 0x00A9B870
     CCountedPointer<CChunkedFileChunk> RegisterPrimitiveSubChunkType(const CChunkedFileChunk&);   // 0x00A9B8A0
@@ -25,6 +43,7 @@ public:
     CCountedPointer<CChunkedFileChunk> RegisterMapSubChunkType(const CChunkedFileChunk&);         // 0x00A9BA10
     CCountedPointer<CChunkedFileChunk> RegisterHelpersSubChunkType(const CChunkedFileChunk&);
     void RegisterClothSubChunkType(const CChunkedFileChunk&);
+#endif
 private:
     CCountedPointer<CChunkedFileChunk> AddChunkType(const CChunkedFileChunk&, CChunkedFileSuperChunk*);
     CCountedPointer<C3DMeshFileRootChunk> RootChunkType;          // +0x10

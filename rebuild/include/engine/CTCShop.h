@@ -53,6 +53,14 @@ public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SHOP; }
     CThingCreatureBase* GetShopKeeper() const { return PShopKeeper.Get(); }
 #endif
+#ifdef FABLE_RETAIL_CTCSHOP_SHOPTYPE
+    // Retail opt-in (chunk 851, row 0x006001E0): Ego_r.pdb + FableWin.pdb ?IsBarberShop@CTCShop@@QBE_NXZ (0x00772490),
+    // ?IsTattooShop@CTCShop@@QBE_NXZ (0x00772510) and ?IsTitleShop@CTCShop@@QBE_NXZ (0x00772590), out of line in retail
+    // (CTCInventoryMap::ConstructRegionDescriptionShops calls them in this order). Declarations only.
+    bool IsBarberShop() const;                                           // 0x00772490
+    bool IsTattooShop() const;                                           // 0x00772510
+    bool IsTitleShop() const;                                            // 0x00772590
+#endif
 private:
     CIntelligentPointer<CThingCreatureBase> PShopKeeper;
     std::vector<CIntelligentPointer<CThingCreatureBase> > Shoppers;

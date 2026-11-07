@@ -8,6 +8,10 @@
 #include "stlport/fable_containers.h"
 class CRegion;
 #include "engine/NHeroInformationScreens_CBase.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION
+class C3DVector;
+namespace NUISystem { class CComponent; }
+#endif
 // Layout: original TPI2aa6d and native constructor allocation258. The selected
 // serialiser independently addresses every used member at the offsets below.
 class CTCInventoryMap : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
@@ -55,6 +59,23 @@ private:
  long LastEventFrame;
  unsigned long RegionEventLife;
  void RemapUIDsForLoading(std::vector<unsigned __int64>&)const;
+#ifdef FABLE_RETAIL_CTCINVENTORYMAP_REGIONDESCRIPTION
+ // Retail opt-in (chunk 851, rows 0x006001E0 / 0x005FE840): Ego_r.pdb + FableWin.pdb
+ // ?ConstructRegionDescriptionShops@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@PAVCUIRegionInfo@1@_N3@Z (protected),
+ // ?ConstructRegionExitMarkers@CTCInventoryMap@@AAEXPAVCComponent@NUISystem@@AAVCRegion@@@Z (private) and
+ // ?GetRelativePosOnMiniMap@CTCInventoryMap@@IBEXAAVCRegion@@ABVC3DVector@@AAVC2DVector@@@Z (protected, out of line at 0x005FBAA0) and
+ // ?IsThingAsPosBeingDrawn@CTCInventoryMap@@IBE_NABVC3DVector@@@Z (protected, 0x005FABA0: the landed row's descriptive
+ // IsPositionInsideClipEdges; the only PDB CTCInventoryMap member of that signature, and Ego_r's order IsTeleportValid <
+ // GetMenuEntryFromCategory < IsThingAsPosBeingDrawn < GetMenuEntryFromCategoryPC is retail's 0x005FAA60 < 0x005FAA90 < 0x005FABA0 <
+ // 0x005FAC20).
+ // Declarations only, no layout change.
+protected:
+ void ConstructRegionDescriptionShops(NUISystem::CComponent*,CRegion&,CUIRegionInfo*,bool,bool);
+ void GetRelativePosOnMiniMap(CRegion&,const C3DVector&,C2DVector&)const;
+ bool IsThingAsPosBeingDrawn(const C3DVector&)const;
+private:
+ void ConstructRegionExitMarkers(NUISystem::CComponent*,CRegion&);
+#endif
 public:
  static void CheckRetailLayout() {
   FABLE_STATIC_ASSERT(offsetof(CTCInventoryMap,VisitedRegions)==0x134);

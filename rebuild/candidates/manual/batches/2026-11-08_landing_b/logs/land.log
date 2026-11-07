@@ -1,0 +1,24 @@
+addr       parity           behav  name
+006001e0   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_InMap@@@@AAV?$list@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@@Z -> 00617a90 labelled 'CThingSearchTools::GetAllLeafThings<CThingBuilding, std::list<CThingBuilding const *, std::allocator<CThingBuilding const *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>>'
+006001e0   RELOCATION_MATCH PASS   ConstructRegionDescriptionShops
+0075e4c0   WARN SHARED_HEADER_AVAILABLE CBankFile
+0075e4c0   WARN SHARED_HEADER_AVAILABLE CWorld
+0075e4c0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+0075e4c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+0075e4c0   RELOCATION_MATCH PASS   OnSerialseLeaf
+00a9bbe0   RELOCATION_MATCH PASS   C3DMeshFileLoader
+00ba1b00   WARN RELOC_NAME: ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ -> 0098a8e0 labelled 'CShaderRenderManager::UpdateBoneMatrices'
+00ba1b00   WARN RELOC_NAME: ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ -> 00989700 labelled 'CShaderRenderManager::UpdateAmbient'
+00ba1b00   RELOCATION_MATCH PASS   DisplayMirroredTextures
+
+WINS: 4
+  006001e0 RELOCATION_MATCH CTCInventoryMap::?ConstructRegionDescriptionShops@CTCInventoryMap@@IAEXPAVCComponent@NUISystem@@AAVCRegion@@PAVCUIRegionInfo@1@_N3@Z
+  0075e4c0 RELOCATION_MATCH CTCCameraPointScriptedSpline::?OnSerialseLeaf@CTCCameraPointScriptedSpline@@UAEXAAVCPersistContext@@@Z
+  00a9bbe0 RELOCATION_MATCH C3DMeshFileLoader::??0C3DMeshFileLoader@@QAE@XZ
+  00ba1b00 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?DisplayMirroredTextures@CEnginePrimitiveManagerStaticMeshesBase@@AAEXPAPBVCTexture@@KPAVC3DPrimitive2@@W4ERenderPassType@@AAVCEngineSubPrimitiveStaticMesh@@K@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryMap_ConstructRegionDescriptionShops_006001e0
+  CTCCameraPointScriptedSpline_OnSerialseLeaf_0075e4c0
+  C3DMeshFileLoader_C3DMeshFileLoader_00a9bbe0
+  CEnginePrimitiveManagerStaticMeshesBase_DisplayMirroredTextures_00ba1b00

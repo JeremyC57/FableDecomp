@@ -1,0 +1,18 @@
+address	source	grade_with_final_overlay	note
+0075e4c0	src/0075e4c0.cpp	RELOCATION_MATCH PASS	this chunk; vland RELOCATION_MATCH + VC7.1/g++ test PASS
+006001e0	src/006001e0.cpp	RELOCATION_MATCH PASS	this chunk
+00a9bbe0	src/00a9bbe0.cpp	RELOCATION_MATCH PASS	this chunk; regraded after re-copying CIVCountedPointer.h / CIVCountedPointeeBase.h (chunk 850 landing) and dropping my C3DMeshFileEngineMaterialChunk.h copy for the repo's chunk-850 retail branch
+00ba1b00	src/00ba1b00.cpp	RELOCATION_MATCH PASS	this chunk
+005fe840	differ/005fe840.cpp	DIFFER(2424v2379) md485	parked, inline-budget residue
+00402510	differ/00402510.cpp	SRC_FAIL (79 errors)	parked, header debt (CBankFile.h HOLD)
+00ba6dc0	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of CEnginePrimitiveManagerStaticMeshesBase.h; vland --recheck-landed with the final overlay
+00606300	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of CTCInventoryMap.h
+0047a9f0	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of CTCInventoryMap.h
+00775b40	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of CTCShop.h
+00b2d9f0	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of CIVCountedPointer.h
+00abf800	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of CIVCountedPointer.h
+00abd150	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of C3DMeshFileVerticesChunk.h
+00abbd70	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of C3DMeshFileVerticesChunk.h
+00ac4fe0	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of CMirroredTextureHighlightsChunk.h
+00ac5770	rebuild/src/compiled (landed, chunk 850)	RELOCATION_MATCH PASS	includer of C3DMeshFileEngineMaterialChunk.h / CIVCountedPointer.h / CIVCountedPointeeBase.h (RESET_ADOPT / CTOR opt-ins beside mine)
+008e7cf0	rebuild/src/compiled (landed)	RELOCATION_MATCH PASS	includer of CWorldMap.h

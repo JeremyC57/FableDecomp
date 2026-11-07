@@ -1,0 +1,7 @@
+address	module	name	length
+00ba1b00	CEnginePrimitiveManagerStaticMeshesBase	DisplayMirroredTextures	2113
+0075e4c0	CTCCameraPointScriptedSpline	vfunc_33	2316
+005fe840	CTCInventoryMap	ConstructRegionExitMarkers	2379
+006001e0	CTCInventoryMap	ConstructRegionDescriptionShops	2422
+00a9bbe0	C3DMeshFileLoader	C3DMeshFileLoader	3281
+00402510	_global	GFMain	3952
