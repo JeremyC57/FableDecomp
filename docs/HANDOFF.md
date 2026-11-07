@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-844 recorded; chunks 845 and 846 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-844 recorded; chunks 845, 846 and the Fable retry chunk 847 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -29,7 +29,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - **Fable-model agents (the user, 2026-11-07):** "dont relaunch the fable agents for now", then "start a fable retry agent on retrying even
     harder on the ones from 839 and 840 that didnt land": chunk 844 landed 4 of those 11 rows (`2026-11-07_landing_u/`); the 7 left
     (0x00C52BB0, 0x0058301A, 0x0047ED76: 2-4-line ties; 0x00E76E90; three documented blockers) are in `pending/2026-11-07_linux_hand844/`.
-    No Fable agent is running; start none unless the user asks.
+    Then the user asked for another Fable retry agent, "15 rows with at least 50 attempts each" (50+ by that agent itself): chunk 847
+    (`$S/w22/agent847`) retries fifteen 4-7-line near misses no expert had worked (0x00C75F80, 0x00A852B0, 0x005029A0, 0x0065B142,
+    0x0063E590, 0x00C71F80, 0x00A22E10, 0x00B92300, 0x00F36A30, 0x006AFE60, 0x006A9690, 0x0075E270, 0x00760A70, 0x00986ED0, 0x0085C7D0).
+    Start no other Fable agent unless the user asks.
   - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 846 (`$S/w22/agent846`: CDrawQuickAccessIconsPC slot 2 0x00657580 and CPhysicalPrimitiveCylinder slot 10
     0x00816410 (placeholders, probably Draw / GetClosestPointToPos2D), the Codex pass-12 matched CThingManager::LoadSingleThing 0x0051FD80 /
     LoadEntitiesFromScript 0x00520D00 to rebase onto our headers, CCROWDBANDITS::Main 0x00D0B3E0, CNOVI_BookTrader::Main 0x00DB3FA0;
