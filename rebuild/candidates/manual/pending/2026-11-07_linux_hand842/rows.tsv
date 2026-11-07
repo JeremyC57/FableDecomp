@@ -1,0 +1,7 @@
+address	module	name	length
+00ec4a00	NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll	Main	1540
+00e5e5a0	NScript::CV_BodyGuardScript	MakeHenchmanPerformIdleComment	1580
+0092f310	CAIStateGroup_MinionReactToPlayerInteraction	GetGossipPhrase	1945
+00ef9280	NScript::Cjoss_test_scriptsScript	Main	3158
+00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan	Main	3265
+00d40cf0	NScript::CQ_GuildTrainingScript::CMeleeApprentice	Main	3380

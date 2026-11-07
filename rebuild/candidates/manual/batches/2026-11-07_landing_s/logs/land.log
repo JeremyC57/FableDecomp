@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00d40cf0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00d40cf0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CMeleeApprentice::?Main@CMeleeApprentice@CQ_GuildTrainingScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQGuildTrainingScriptCMeleeApprentice_Main_00d40cf0

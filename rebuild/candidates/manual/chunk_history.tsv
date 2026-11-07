@@ -27721,3 +27721,9 @@ chunk	address	module	name	length
 844	00e482f0	NScript::CV_BanditTollScript	CheckForLeaderDead	1627
 844	00775350	CTCShop	UpdateStock	1988
 844	00d0ee70	NScript::CQ_BanditCampBossBattleScript	CheckForFirstAreaMassacre	1989
+845	00d67890	NScript::CQ_GuildTrainingWoodsWillScript	Main	3426
+845	00e54e90	NScript::CV_BookCollectingScript::CBSTeacher	Main	3534
+845	00e57e60	NScript::CV_BeggarAndChildScript	Main	3567
+845	00d04ae0	NScript::CQ_BanditCampBossBattleScript::CAssassin1	Main	3623
+845	00e97070	NScript::CV_HeroDollsScript::CBSTeacher	Main	3619
+845	00ed8680	NScript::CV_TalentlessBardScript::CTBBard	Main	3652

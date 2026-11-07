@@ -1,0 +1,19 @@
+# Chunk 842 header overlay
+
+Two new headers and four fresh copies of repo headers, each with one opt-in `#if`/`#ifdef` block added. Every new declaration
+sits inside its opt-in. No existing line is changed or reflowed, so the default path is textually unchanged. I re-diffed the copies
+against rebuild/include just before hand-back: only added lines. The 24 landed includers of the four edited repo headers were
+rechecked read-only with this overlay (`vland.py --recheck-landed`): all 24 MATCH / RELOCATION_MATCH + test PASS (SIBLINGS.tsv).
+No other running chunk's overlay (agent839 / 840 / 841) carries any of these headers.
+
+| header | change | opt-in | evidence | used by |
+|---|---|---|---|---|
+| engine/CQ_GuildTrainingScript.h | nested `CQ_GuildTrainingScript::CMeleeApprentice : CEntityScriptBase` (public static Alloc 0x00D40C10, GetParentScript 0x00D40CB0; private virtual Main 0x00D40CF0, Init 0x00D40CC0; protected ParentClass +0x14, PMasterData +0x18, WaitingForFight +0x1c, BadHit +0x20, WillWoodsChatDone +0x24; sizeof 0x28 static assert) | `FABLE_RETAIL_CQ_GUILDTRAININGSCRIPT_MELEEAPPRENTICE` (needs `..._MAIN` for the nested declaration) | Ego_r.pdb layout (struct_layouts_egor.tsv, entity offsets = retail) + `?Main@CMeleeApprentice@CQ_GuildTrainingScript@NScript@@EAEXXZ`; entity vtable 0x012CDF7C (0 scalar dtor 0x00D40CD0, 1 Main, 2 Init, 3 GetParentScript, 4-6 CEntityScriptBase defaults); the landed Alloc allocates 0x28; the Main's +0x18 / +0x24 reads and stores | src/00d40cf0.cpp (matched) |
+| engine/CTCTalk.h | `CCharString GetDialogueVoice() const { return DialogueVoice; }` | `FABLE_RETAIL_CTCTALK_DIALOGUEVOICE` | FableWin.pdb `?GetDialogueVoice@CTCTalk@@QBE?AVCCharString@@XZ`; retail's out-of-line COMDAT 0x004FAEE0 copies +0x38 (DialogueVoice); 0x0092F310 expands it at its first site | differ/0092f310.cpp |
+| fable_game_text_bank.h | `CDataBank::GetTextEntryFromGroup(unsigned long, const CCharString&, bool&, long*, bool) const` declaration | `FABLE_RETAIL_CDATABANK_TEXTENTRY` | FableWin.pdb `?GetTextEntryFromGroup@CDataBank@NGameText@@QBEPBVCTextEntry@2@KABVCCharString@@AA_NPAJ_N@Z`; out of line at 0x009C9280 (the landed 0x0066BA80 binds the same symbol) | differ/0092f310.cpp |
+| engine/CPredicate_And.h | the user-declared `virtual ~CPredicate_And();` wrapped: IMPLICIT_DTOR drops it (implicit virtual dtor), INCLASS_DTOR defines `{ }` in the class | `FABLE_RETAIL_CPREDICATE_AND_IMPLICIT_DTOR`, `FABLE_RETAIL_CPREDICATE_AND_INCLASS_DTOR` | probes for 0x00EF5FF0 (retail's nested temporary dtor shape); IMPLICIT gives retail's frame and registers (md 47), INCLASS is identical to the default (kept only as a recorded probe; the coordinator may drop it) | differ/00ef5ff0.cpp (IMPLICIT) |
+| engine/CV_RockTrollFirstEncounterScript.h (NEW) | NScript::CV_RockTrollFirstEncounterScript : CLevelScriptBase<CQ_SunnyvaleMasterData> (members +0x48..+0x55, sizeof 0x58) with nested CRTFE_RockTroll : CEntityScriptBase (ParentClass +0x14, PMasterData +0x18, sizeof 0x1c); CM_RTFERockTrollTrigger / CRTFE_Sparrow forward-declared | `FABLE_RETAIL_NSCRIPT` (the 41-header NScript convention) | Ego_r.pdb layout (PDB - 0x14) checked against the Main's +0x54 / +0x55 reads and stores and the landed Allocs (0x58 / 0x1c); vtable 0x012F16C4 slots; Ego_r method names (WatchForRockTrollKilled / Hit landed 0x00EC5010 / 0x00EC5140) | differ/00ec4a00.cpp |
+| engine/Cjoss_test_scriptsScript.h (NEW) | NScript::Cjoss_test_scriptsScript : CLevelScriptBase<Cjoss_test_scriptsData>, no members, sizeof 0x48 | `FABLE_RETAIL_NSCRIPT` | Ego_r.pdb (92 bytes = base only), the landed Alloc 0x00EF9EE0 `push 48h`, ctor 0x00EF9190, RegisterMain 0x00EF91C0 | differ/00ef9280.cpp |
+
+New headers have no landed includer. No landed source defines any of the new opt-in macros. I checked with `grep -rlw` over
+rebuild/src and found 0 hits.

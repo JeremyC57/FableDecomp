@@ -1,0 +1,53 @@
+address	tag	grade	md	change -> what VC7.1 emitted
+00ec4a00	a	DIFFER(1468v1540)	91	first model (OUTOFLINE STB dtor, movie ctor/dtor out of line, declared map ctor/dtor, OUTOFLINE_ASSIGN) -> copy of Me called at both spawns, seh_me loop-exit dtor called, no ebp zero register
+00ec4a00	b	DIFFER(1516v1540)	154	a + row-local inline CScriptThing copy ctor -> spawn1 param AND Par1 copies expanded, spawn2 param expanded (retail: only spawn1 param)
+00ec4a00	c	DIFFER(1588v1540)	141	b + implicit STB dtor -> as b, dtor sites expanded
+00ec4a00	d	DIFFER(1524v1540)	15	a + implicit STB dtor (drop OUTOFLINE_DTOR) -> only Blocker 1 left: spawn1 by-value Me copy called where retail expands it (Par1 copy called as retail)
+00ec4a00	e	DIFFER(1612v1540)	149	d + inline copy ctor with CBaseClass() init -> same 3 expansions as b
+00ec4a00	f	DIFFER(1588v1540)	141	e(b form) + explicit CScriptThing(Me) argument -> same 3 expansions
+00e5e5a0	a	DIFFER(1350v1580)	138	first model (inline CTimer/CCounter/copy/GetDataString, both text-eq opt-ins) -> default CScriptThing() called out of line, no temp dtor expanded
+00e5e5a0	b	DIFFER(1594v1580)	116	a + row-local inline CScriptThing() / ~CScriptThing() -> ctor sites match; EVERY ~CScriptThing site expanded (retail: BORED temp + GOOD exit only; QUESTION temp, EVIL exit, loop end call 0x004AA840); BORED/QUESTION tails cross-jumped
+00e5e5a0	c	DIFFER(1594v1580)	116	b + `else if` for the EVIL test -> identical bytes
+00e5e5a0	d	DIFFER(1594v1580)	116	b + nested `if (size>1) { if (rand()%4) ... }` -> identical bytes
+00e5e5a0	diag	-	-	diagnostic /d2inlT60 on b: dtor split exactly retail's, only CCounter::operator> then called (40 lines); T50 51, T66 81, S10/S12 116 (non-monotonic): inline-threshold residue
+00ef9280	a	DIFFER(3488v3158)	1006	first model (inline CScriptThing()/~, IsAlive, Msg* fwd) -> too much expanded
+00ef9280	b	DIFFER(3552v3158)	1063	a + inline operator= -> all assignments expanded (retail: fireh only)
+00ef9280	c	DIFFER(1972v3158)	795	b without inline ~CScriptThing -> all dtors called; retail expands at two exit pads
+00ef9280	d	DIFFER(1972v3158)	795	c + top-level unsigned long i -> identical
+00ef5ff0	a	DIFFER(3265v3265)	1174	first model (CCrate1 predicate model, row-local inline ~CPredicate_And template, inline ~CScriptThing, OUTOFLINE STB dtor, movie ctor/dtor) -> T5 temp dtor 1 level + call ~T4 (as retail), T4 temp dtor CALLED, T3/T2/T1 expanded to the leaves (retail: every temp 1 level + call nested); frame order shifted, &Me in ebx not ebp
+00ef5ff0	b	DIFFER(3409v3265)	47	hdr opt-in FABLE_RETAIL_CPREDICATE_AND_IMPLICIT_DTOR -> frame layout and registers = retail; every temp dtor expanded to the leaves with no derived vtable stores (only residue: dtor region + 2 padding lines)
+00ef5ff0	c	DIFFER(3265v3265)	1174	hdr opt-in in-class `virtual ~CPredicate_And() { }` -> identical to a
+00ef5ff0	d	DIFFER(3265v3265)	1174	a + explicit instantiations of ~T1..~T4 after Main -> identical to a
+00ef5ff0	e	DIFFER(3265v3265)	1174	a with the template dtor definition moved after Main -> identical to a (c2 still compiles the dtors bottom-up first)
+00ef5ff0	f	DIFFER(3265v3265)	1174	a + explicit instantiation of ~T5 before Main -> identical (obj order still ~T1 first)
+00ef5ff0	g	DIFFER(3422v3265)	1023	a + row-local inline ctor/operator()/Clone (PDB model) -> ctors partly expanded (retail calls all five)
+00ef5ff0	diag	-	-	/d2inlT40 2994 md701, T60 2914 md339, T80 = a: none gives retail's one-level-per-temp shape
+00d40cf0	a	DIFFER(3385v3380)	3	first model (hdr opt-in CMeleeApprentice; plain inline ~CScriptThing / GetPos; OUTOFLINE movie ctor/dtor; `while (!T) {...; NSF;}`) -> slot 66 SetAsUsable instead of 67; loop exit jumps to the called pad (expanded pad serves the first inner-wait return)
+00d40cf0	b	DIFFER(3385v3380)	1	a + SetFriendsWithEverythingFlag (slot 67) -> only the extra loop-exit jmp
+00d40cf0	c	DIFFER(3358v3380)	60	b with for (; !T; NSF) -> worse
+00d40cf0	d	DIFFER(3924v3380)	924	b + do{}while(0) round the loop -> everything expanded
+00d40cf0	e	DIFFER(3401v3380)	7	b + do{ if (T) break; }while(0) before the loop -> duplicated test
+00d40cf0	f	DIFFER(3585v3380)	77	b + do{}while(0) round the first inner wait -> worse
+00d40cf0	g	DIFFER(3564v3380)	81	b + do{}while(0) round the first if block -> worse
+00d40cf0	h	DIFFER(3924v3380)	924	b + do{}while(0) round the loop body -> everything expanded
+00d40cf0	i	DIFFER(3251v3380)	67	if (!T) for(;;){...; NSF; if (T) break;} -> no expanded pad at all
+00d40cf0	j	DIFFER(3251v3380)	67	if (!T) do {...; NSF;} while (!T) -> same as i
+00d40cf0	k	DIFFER(3369v3380)	39	for(;;){ do{ if(T) return; }while(0); ...; NSF; } -> close
+00d40cf0	l	DIFFER(3358v3380)	18	for (;; NSF) { T; ... } (gotcha 2376) -> pads = retail; only the two marker.GetPos sites called
+00d40cf0	m	RELOCATION_MATCH	0	l + __forceinline GetPos -> RELOCATION_MATCH, every relocation bound to retail's target, strings in order
+00ef9280	e	DIFFER(3488v3158)	994	a with `for (;; NSF) { T; ... }` -> still every dtor expanded
+00ef9280	f	DIFFER(1972v3158)	795	c with `for (;; NSF) { T; ... }` -> identical to c
+00ef9280	g	DIFFER(3409v3158)	1041	e without the row-local inline IsAlive -> IsAlive called everywhere, dtors still expanded everywhere
+00ef9280	h	DIFFER(3552v3158)	1053	e + inline operator= -> every assignment expanded
+0092f310	a	DIFFER(2041v1945)	354	first model (sibling TestOrDoInteraction header set; local CTCAIScratchpad statics with inline Get* bodies; hdr opt-ins CTCTalk::GetDialogueVoice, CDataBank::GetTextEntryFromGroup; inline GetCRC / GFRandom) -> GetPBaseDef() copies the CDefPointer (inc/dec)
+0092f310	b	DIFFER(2009v1945)	304	a with PeekBaseDef() -> def read in place; block order of the villages test differs, map end() kept in esi
+0092f310	c	DIFFER(2025v1945)	341	b + STLport std::find / __find<const CCharString*,CCharString> template -> tag temporaries in frame bytes (retail passes &phrase slot)
+0092f310	d	DIFFER(2025v1945)	341	c + __iterator_category(first) tag -> identical
+0092f310	e	DIFFER(2058v1945)	382	b with `end() == find(name)` in the five Get* -> `cmp [map],eax` (operands reversed), frame +4
+0092f310	f	DIFFER(2058v1945)	374	b with the landed 0x008AE970 named-iterator Get* form -> retail's `cmp eax,[map]` at every site, but frame +4 and GetGossipFactions now inlined
+0092f310	diag	DIFFER(2058v1945)	374	f under diagnostic /d2inlS15 and /d2inlS20 -> no change (not a caller-size budget effect)
+0092f310	g	DIFFER(1994v1945)	288	f + GetGossipFactions declaration-only (retail calls 0x008AE970 at its one site) -> frame back to 0x58, best; left: iterator slot 0x48 v 0x3c, categories._M_start kept in ebx (continue paths reload it, so the villages continue is not merged), both loop GetDialogueVoice sites expanded (retail calls 0x004FAEE0), empty tag pushed as 0 (retail passes the dead phrase slot [esp+0x6c], GOTCHAS chunk 149 lane gap)
+0092f310	h	DIFFER(2007v1945)	314	g with categories declared first -> worse
+0092f310	i	DIFFER(1994v1945)	288	g with a named size local -> identical to g
+00ec4a00	g	DIFFER(1588v1540)	141	d + FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY -> the same three copy expansions as b (spawn1, spawn2, Par1)
+0092f310	j	DIFFER(1994v1945)	288	g with the Gossip iterator declared before the loop -> identical to g

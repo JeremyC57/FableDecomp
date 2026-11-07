@@ -385153,6 +385153,13 @@ $catalog = @(
         TestSource = '00/e7/NScriptCVExposeMayorScript_PhaseFour_00e7ab50_test.cpp'
         PassPattern = '00e7ab50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d40cf0'
+        Module = 'NScript::CQ_GuildTrainingScript::CMeleeApprentice'
+        Source = '00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Main_00d40cf0.cpp'
+        TestSource = '00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Main_00d40cf0_test.cpp'
+        PassPattern = '00d40cf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

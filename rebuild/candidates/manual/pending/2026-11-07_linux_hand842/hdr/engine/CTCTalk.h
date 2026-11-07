@@ -1,0 +1,50 @@
+#ifndef FABLE_ENGINE_CTCTALK_H
+#define FABLE_ENGINE_CTCTALK_H
+#include "engine/CTCBase.h"
+class CASoundBank;
+#ifdef FABLE_RETAIL_CTCTALK
+namespace NSpeechGainManager { enum EDialogueLayer; }                    // MS forward enum (the row defines the enumerators it uses)
+#endif
+// TPI0x23414 full original fields and base; no container-width changes here.
+class CTCTalk : public CTCBase {
+private:
+    long SpeechSample,SampleStartedFrame,SampleDurationFrames;
+    unsigned char Attitude[4]; // EConversationAttitude.
+    float MimeStartTime,SampleLoadedTime;CASoundBank* PSpeechBank;
+    unsigned long SampleID;long LastTextIndex;CCharString LastNarrator;
+    bool IsPureAISpeaker,LipSynching,UseLipSynching;CCharString DialogueVoice;
+public:
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_TALK; }
+    bool IsTalking() const;
+#ifdef FABLE_RETAIL_CTCTALK_DIALOGUEVOICE
+    // Retail opt-in (chunk 842, row 0x0092F310 GetGossipPhrase): FableWin.pdb ?GetDialogueVoice@CTCTalk@@QBE?AVCCharString@@XZ, inline
+    // (retail keeps an out-of-line COMDAT at 0x004FAEE0 that some sites call and others expand as a copy of DialogueVoice +0x38).
+    CCharString GetDialogueVoice() const { return DialogueVoice; }
+#endif
+#ifdef FABLE_RETAIL_CTCTALK
+    // Retail opt-in (chunk 755, row 0x008AF500 CombatDialogueManager::AttemptToSpeak): Ego_r.pdb 0x0070E0C0
+    // ?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@K_NW4EDialogueLayer@NSpeechGainManager@@00@Z (retail 0x006E3B60). The
+    // nested result enum's enumerator names are descriptive (the landed callers' spellings): 0 started, 1 failed for good.
+    enum ESpeechPlaybackResult { SPEECH_PLAYBACK_STARTED, SPEECH_PLAYBACK_FAILED_FINAL, SPEECH_PLAYBACK_FAILED_RETRY };
+    ESpeechPlaybackResult PlayAISpeech(unsigned long textGroup, bool, NSpeechGainManager::EDialogueLayer layer, bool, bool);   // 0x006E3B60
+#ifdef FABLE_RETAIL_CTCTALK_AISPEECHTEXT
+    // Nested opt-in (chunk 802, row 0x00974AA0 CAIStateGroup_JackOfBladesStage2::Update): Ego_r.pdb
+    // ?PlayAISpeech@CTCTalk@@QAE?AW4ESpeechPlaybackResult@1@ABVCCharString@@_NW4EDialogueLayer@NSpeechGainManager@@11@Z, the text-symbol
+    // overload, out of line in retail at 0x006E3B30 (the caller pushes 1, 0, 0, 1 and the CCharString address). Declaration only.
+    ESpeechPlaybackResult PlayAISpeech(const CCharString& text, bool, NSpeechGainManager::EDialogueLayer layer, bool, bool);   // 0x006E3B30
+#endif
+#endif
+    void StopCurrentSpeech();
+#ifdef FABLE_RETAIL_CTCTALK
+    // Chunk 756 (row 0x008AF6E0): Ego_r.pdb ?DoesSpeechExist@CTCTalk@@QAE_NK@Z (0x006E2910).
+    bool DoesSpeechExist(unsigned long textGroup);
+#endif
+#ifdef FABLE_RETAIL_CTCTALK_ONCREATE
+    // Nested opt-in (chunk 760, row 0x006E2C00): the CTCBase slot-4 override ?OnCreate@CTCTalk@@UAEXXZ (CTCTalk vtable slot 4,
+    // retail 0x006E2C00). Declaration only (a vtable-emitting includer then names it).
+    virtual void OnCreate();                                             // 0x006E2C00
+#endif
+};
+FABLE_STATIC_ASSERT(sizeof(CTCTalk)==0x3c);
+
+#endif
