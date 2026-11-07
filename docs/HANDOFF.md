@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-836 recorded; chunks 837, 838 and the expert retry chunk 835 running)
+# Resume here (one page) — updated 2026-11-05 late (plan phase 7 and chunks 782-836 recorded; chunks 837, 838, the expert retry chunk 835 and the expert authoring chunk 839 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest fixes, the
 naming debt, the order of work). This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md` and the 2026-11-03 lines
@@ -29,7 +29,12 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
   - **Running (the user: "continue authoring chunks on another agent"; 2026-11-06: "you can have two chunk authors"):** chunk 837 (`$S/w22/agent837`: four level-script Mains + two entity Mains, 1.1-1.4 KB, no prior art: CQ_BowerstoneTownLifeIntroScript 0x00D23DC0,
     CFH_Prisoner 0x00D3A4A0, CQ_PrisonRaceScript 0x00DDAE40, CTestPerson 0x00EF4B40, Cbandit_level_cutsceneScript 0x00EFA4F0, CV_StatueMasterScript 0x00ED3B30)
     and chunk 838 (`$S/w22/agent838`: six 1.7-3.3 KB entity Mains with Codex pass-13 prior art: CSpawnNewHobbe 0x00D9DAF0, CAT_BanditContact 0x00F0A960,
-    CBanditSiegeLeader 0x00D21B40, CMotherTorture 0x00DEE2E0, CTheRealGuildmaster 0x00D33730, CWiseVillager 0x00EB7B00). Chunks 834 / 836 landed 2 of 6 each
+    CBanditSiegeLeader 0x00D21B40, CMotherTorture 0x00DEE2E0, CTheRealGuildmaster 0x00D33730, CWiseVillager 0x00EB7B00). Also (the user, 2026-11-07: "add one more expert ... chunk author", "make it a fable chunk author", "authoring never before tried
+    ones"): expert chunk 839 (`$S/w22/agent839`, Fable model, 25+ attempts per row) authors eight never-attempted rows: CQ_RansomVictimScript
+    PlayCutscene 0x00DE6730 (catalog label CV_ExposeMayorScript is wrong) / DisappearFollowers 0x00DE4710, CV_ExposeMayorScript PhaseFour 0x00E7AB50 /
+    PlayCutscene 0x00E78100 / HeroFlashesLamp 0x00E76E90, CV_BanditTollScript::CheckForLeaderDead 0x00E482F0, CTCShop::UpdateStock 0x00775350,
+    CQ_BanditCampBossBattleScript::CheckForFirstAreaMassacre 0x00D0EE70. Never-tried pool: `$S/w22/never_tried.txt` (294 unlanded rows with no
+    pending copy, STATUS line or chunk; many are vendor audio / FFT code or gap-scan stubs, so check each before cutting). Chunks 834 / 836 landed 2 of 6 each
     (`2026-11-07_landing_k/`, `_l/`). The remaining never-chunked unlanded Mains (about 20, mostly 3-4 KB Codex rows plus the 20-32 KB
     CHobbeTorrent / CCombatApprentice / CGameflowScript) come from `rebuild/manifest/functions.tsv` filtered by `rebuild/src/compiled/` files
     (the manifest's compiled_status column is not reliable for this) and `rebuild/candidates/manual/chunk_history.tsv`. Also running (the user, 2026-11-07: "add a fable agent who is an expert reverse engineer ... work on retries of parked rows and

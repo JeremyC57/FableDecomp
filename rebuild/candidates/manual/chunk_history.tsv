@@ -27674,3 +27674,11 @@ chunk	address	module	name	length
 838	00dee2e0	NScript::CQ_SecretPassageScript::CMotherTorture	Main	3102
 838	00d33730	NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster	Main	3292
 838	00eb7b00	NScript::CV_MayorsInvitationScript::CWiseVillager	Main	3334
+839	00de6730	NScript::CQ_RansomVictimScript	PlayCutscene	1252
+839	00e7ab50	NScript::CV_ExposeMayorScript	PhaseFour	1275
+839	00e78100	NScript::CV_ExposeMayorScript	PlayCutscene	1323
+839	00de4710	NScript::CQ_RansomVictimScript	DisappearFollowers	1428
+839	00e76e90	NScript::CV_ExposeMayorScript	HeroFlashesLamp	1612
+839	00e482f0	NScript::CV_BanditTollScript	CheckForLeaderDead	1627
+839	00775350	CTCShop	UpdateStock	1988
+839	00d0ee70	NScript::CQ_BanditCampBossBattleScript	CheckForFirstAreaMassacre	1989
