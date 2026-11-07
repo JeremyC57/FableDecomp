@@ -27704,3 +27704,9 @@ chunk	address	module	name	length
 842	00ef9280	NScript::Cjoss_test_scriptsScript	Main	3158
 842	00ef5ff0	NScript::CPersonalScript_EmptyScript::CCinemaMan	Main	3265
 842	00d40cf0	NScript::CQ_GuildTrainingScript::CMeleeApprentice	Main	3380
+843	00b2fd60	_global	CPlane_InitializeFromCorners	1812
+843	00a86110	CIPhysicsFacesSegmentBase	CalculateDividingPlane	1967
+843	005253f0	CThingManager	LoadGameState	2263
+843	00d22f30	NScript::CQ_BreakSiegeScript::CKG_Sheriff	Main	3399
+843	00de9690	NScript::CQ_RansomVictimScript::CRansomHelper	Main	3412
+843	00dd4ad0	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice	Main	3467

@@ -1,0 +1,8 @@
+address	source	grade_with_final_overlay	note
+00e71f10	src/00e71f10.cpp	RELOCATION_MATCH(1605v1605) PASS	vland read-only with FABLE_HDR_OVERLAY=hdr (tmp/vland.log before cleanup)
+00ee3140	differ/00ee3140.cpp	DIFFER(1350v1366) md115 PASS	parked, Blocker 1 copy case
+00da8bf0	differ/00da8bf0.cpp	DIFFER(1546v1447) md84 PASS	parked, ~vector<CScriptThing> per-exit split
+00ddd430	differ/00ddd430.cpp	DIFFER(2112v2044) md102 PASS	parked, ~CTimer per-exit split
+00ee4dd0	differ/00ee4dd0.cpp	DIFFER(1925v1946) md91 PASS	parked, ~CTimer per-exit split
+00eeaef0	differ/00eeaef0.cpp	DIFFER(1860v1906) md101 PASS	parked, Blocker 1 dtor variant (CIsThingConscious)
+-	(landed includers)	not rechecked	every hdr/ edit is additive inside a new opt-in #ifdef or a new file: the default path of each repo header is textually unchanged (diff shows only added lines), so no landed includer can change

@@ -1,0 +1,7 @@
+address	module	name	length
+00ee3140	NScript::CV_TravellingHeroesScript::CTH_Whisper	Main	1366
+00da8bf0	NScript::CQ_MinionClifftopChaseScript::CMinionSpawnAdv	Main	1447
+00e71f10	NScript::CV_DemonDoorsScript::CDF_DressAsBandit	Main	1605
+00eeaef0	NScript::CExpression_PickpocketScript	Main	1906
+00ee4dd0	NScript::CV_TourGuideScript::CTourGuideFollower	Main	1946
+00ddd430	NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard	Main	2044

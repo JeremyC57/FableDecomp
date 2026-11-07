@@ -1,0 +1,11 @@
+# Chunk 841 lessons (GOTCHAS one-liners)
+
+- CTimer: an out-of-line ~CTimer makes the timer escape, so VC7.1 spills TimerIndex to the frame and aligns the timer-loop head. With an inline ~CTimer, TimerIndex stays in ebp as in retail, even at the exits where the dtor is called. The cost is that DeregisterTimer then expands at hot in-loop exits (chunk 841, 0x00DDD430).
+- Operand order: VC7.1 evaluates the right operand first. To get retail's load order, write `pGlobalScriptDef->X * Game->GetConstantFPS()` with the def member on the left of a product. Put `rand() % 100` in its own `long` local so the compare comes out as `cmp edx,[def]` (chunk 841, 0x00EEAEF0).
+- x87 compare: retail's `fcomp; fnstsw; test ah,1; je` comes from `if (!(x >= 1.0f))`, not from `if (x < 1.0f)` (chunk 841, 0x00EEAEF0).
+- Loop frequency: writing loop 1 as `while (i < n) { ...; ++i; }` instead of `for` stops its body frequency leaking past the loop. That cools every later exit (they all call ~vector<CScriptThing>), which is the opposite failure of the for-loop residue (chunk 841, 0x00DA8BF0).
+- Natural exit: chunk 813's `for (;; Game->NewScriptFrame()) { if (T) return; ... }` main loop also gave the separate all-expanded natural-exit pad of an entity Main with a CTimer (md265 -> 178, chunk 841, 0x00EE4DD0).
+- STB copies: the do-while(0) lever from chunk 833 / 0x00E19D80 also expands both implicit STB operator= copies round two cast-map assignments in CPrisonRaceStartingGuard::Main (chunk 841, 0x00DDD430).
+- CIsThingConscious: with an inline ~CScriptThing, VC7.1 calls the whole ~CIsThingConscious out of line (0x00EF7AB0). `__forceinline ~CIsThingConscious` expands its nested ~CScriptThing as well, but retail expands the outer dtor and calls the nested one. This is the dtor variant of Blocker 1 (chunk 841, 0x00EEAEF0).
+- CDF_DressAsBandit RELOCATION_MATCH: `break;` (not `return;`) after the last call in an else-less arm of a talk loop kept the opening-SAY return pad as the fall-through of the post-wait check (chunk 841, 0x00E71F10).
+- FadeOutAndKillEntity(const CScriptThing&, bool, float, bool) and (…, float, bool, bool) give the same __fastcall bytes. Only the PDB spelling `M_N1` (float first) is right, and 13 landed rows declare the other (NAME_FIXES.tsv).

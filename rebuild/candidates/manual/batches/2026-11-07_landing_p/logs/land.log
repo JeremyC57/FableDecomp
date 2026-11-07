@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00e71f10   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e71f10 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_DressAsBandit::?Main@CDF_DressAsBandit@CV_DemonDoorsScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVDemonDoorsScriptCDFDressAsBandit_Main_00e71f10
