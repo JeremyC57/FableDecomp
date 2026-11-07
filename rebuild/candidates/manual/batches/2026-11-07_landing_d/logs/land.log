@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00da91a0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00da91a0   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00da91a0 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMapKeeper::?Main@CMapKeeper@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQMinionClifftopChaseScriptCMapKeeper_Main_00da91a0

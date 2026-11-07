@@ -384967,6 +384967,13 @@ $catalog = @(
         TestSource = '00/e2/NScriptCVAmbushScamScriptCASTrickster_Main_00e2c100_test.cpp'
         PassPattern = '00e2c100_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00da91a0'
+        Module = 'NScript::CQ_MinionClifftopChaseScript::CMapKeeper'
+        Source = '00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Main_00da91a0.cpp'
+        TestSource = '00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Main_00da91a0_test.cpp'
+        PassPattern = '00da91a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

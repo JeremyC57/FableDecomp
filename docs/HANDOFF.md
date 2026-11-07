@@ -36,7 +36,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     blocker. A retry that matches needs its pending header overlay copied in; a Main outside
     the manifest goes into `rebuild/manifest/boundary-starts.tsv` + `crawl/manifest_add_boundaries.py --write` first. Measure a cut
     by its first `ret` + int3 unless a jump table follows (jtext's maxbranch can sit in the next function: chunk 818). Land
-    each like 782-818 with the next free letter (`2026-11-07_landing_d`, `_e`; queue tags `land0711d`, ...),
+    each like 782-818 with the next free letter (`2026-11-07_landing_e`, `_f`; queue tags `land0711e`, ...),
     `pending/2026-11-05_linux_hand79N`, labels `2026-11-05<letter>` incl. the landed rows' own labels, queue tag
     `land0511<letter>`. Diff every overlay header against rebuild/include first and three-way merge any that would drop another
     chunk's lines (796's overlay predates the 794 / 795 landings). When a hand-back extends an existing
@@ -58,13 +58,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Owner question (chunk 804): the three CQ_ArenaHoldingScriptScript fan Mains (0x00CF18D0 / 0x00CF2B70 / 0x00CF3D20) match
     only under the undocumented VC7.1 flag `/d2inlS20` (the caller-size inline cap), and chunk 809's CNOVI_Guard / CGhostGrannySon
     Mains (0x00DAC760 / 0x00E8EF80) only under `/d2inlT72` (the inline threshold); they stay parked unless the owner rules on it.
-    Owner question (chunk 820): 0x00DA91A0 CMapKeeper::Main matches only through `reinterpret_cast<const CScriptThing&>(escort).IsAlive()`
-    on a by-value CScriptThing local (keeps the virtual call that VC7.1 otherwise devirtualises): the cast-only form of the I-44 view
-    device. Held unlanded (source in `pending/2026-11-06_linux_hand820/differ/`); if approved it could also replace the view struct in
-    the six landed CScriptThingView rows. Chunk 821: `/d2inlS15` (diagnostic) matches 0x00D2ED20 / 0x00D2D930. Naming open: 0x0129BA3C
+    Owner ruling (2026-11-07): a same-type cast that keeps behaviour identical and byte-matches is acceptable; 0x00DA91A0
+    CMapKeeper::Main landed on it (`2026-11-07_landing_d/`). The six landed CScriptThingView rows may move to the cast-only form later. Chunk 821: `/d2inlS15` (diagnostic) matches 0x00D2ED20 / 0x00D2D930. Naming open: 0x0129BA3C
     EPSILON v DELTA_NOTIONAL_ZERO; 0x004BFFC0 also bound as the placeholder ClearMeshEffect_004bffc0 (queued `land0611v`).
-    Review (chunk 827): parked 0x0094AB00 GoToPub::Update reached 246 lines (from 743) with row-local `__forceinline` list push_back /
-    LowerBound helpers at the two sites retail expands (the 0x008DDAD0 precedent): decide whether that counts as an invented local copy.
+    Owner ruling (2026-11-07) on chunk 827: no row-local `__forceinline` helper for a compiler-inlining residue (ASM_RULES order:
+    intrinsic, shared-header macro `__asm` + FABLE_PORTABLE twin, `__forceinline` helper, all only where retail used asm). 0x0094AB00 stays parked.
     Open decision: `pGlobalScriptDef` 0x0143E90C is spelled `CScriptDef*` in 148 landed rows and `CDefPointer<const CScriptDef>` in
     15 (queue lines `cg10`, `land0511x`).
   - The FSE Lua ports of the quest scripts are in the repo: `refs/script_recovery/seed_corpus/sources/<Quest>/FSE/`.
