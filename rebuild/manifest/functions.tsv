@@ -15051,7 +15051,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00677810	~CReactionFrequencyTraitsArray	CReactionFrequencyTraitsArray	__thiscall	void	1	CReactionFrequencyTraitsArray *	1	yes	accepted									
 00677840	TransferBinaryOut	CPersistTraits<CReactionFrequencyTraitsArray>	__thiscall	void	3	CPersistTraits<CReactionFrequencyTraitsArray> *,CDataOutputStream *,CReactionFrequencyTraitsArray *	1	yes	accepted									
 006778a0	TransferBinaryIn	CPersistTraits<CReactionFrequencyTraitsArray>	__thiscall	void	3	CPersistTraits<CReactionFrequencyTraitsArray> *,CMemoryDataInputStream *,CReactionFrequencyTraitsArray *	1	yes	accepted									
-00677970	TOpinionTransientOffsetList_TransferParsing	_global	unknown	undefined	0		0	yes	accepted									
+00677970	TransferIn	CPersistTraits<CReactionFrequencyTraitsArray>	unknown	undefined	0		0	yes	accepted									
 00678250	TransferBinaryOut	CPersistTraits<std::list<CReactionMatch*> >	__thiscall	void	3	CPersistTraits<std::list<CReactionMatch*,std::allocator<CReactionMatch*>_>_> *,CDataOutputStream *,list<CReactionMatch*,std::allocator<CReactionMatch*>_> *	1	yes	accepted									
 006782b0	TransferBinaryIn	CPersistTraits<list<CReactionMatch*>>	__thiscall	void	3	CPersistTraits<std::list<CReactionMatch*,std::allocator<CReactionMatch*>_>_> *,CMemoryDataInputStream *,list<CReactionMatch*,std::allocator<CReactionMatch*>_> *	1	yes	accepted									
 00678460	~COpinionReactionManagerDef	COpinionReactionManagerDef	unknown	undefined	0		0	yes	accepted									
@@ -49447,7 +49447,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d06760	Init	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster	unknown	undefined	0		0			discovered	gapscan							
 00d06770	OnPredicateFail	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster	unknown	undefined	0		0			discovered	gapscan							
 00d06780	`scalar deleting destructor'	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d0\CLandscapeBackgroundPatch_vectordeletingdestructor_00d06780.cpp
-00d067a0	Quest009_Gamesmaster_ResidentialBanditCamp_Setup	_global	unknown	undefined	0		0	yes	accepted									
+00d067a0	Main	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster	unknown	undefined	0		0	yes	accepted									
 00d071f0	Alloc	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00d07290	GetParentScript	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1	unknown	undefined	0		0			discovered	gapscan							
 00d072a0	`scalar deleting destructor'	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d0\CLandscapeBackgroundPatch_vectordeletingdestructor_00d072a0.cpp
@@ -49461,7 +49461,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d07dc0	GetParentScript	NScript::CQ_BanditCampBossBattleScript::CCampHostage	unknown	undefined	0		0			discovered	gapscan							
 00d07dd0	Init	NScript::CQ_BanditCampBossBattleScript::CCampHostage	unknown	undefined	0		0			discovered	gapscan							
 00d07e30	`scalar deleting destructor'	NScript::CQ_BanditCampBossBattleScript::CCampHostage	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d0\CLandscapeBackgroundPatch_vectordeletingdestructor_00d07e30.cpp
-00d07e50	Quest009_Gamesmaster_Hostage_Setup	_global	unknown	undefined	0		0	yes	accepted									
+00d07e50	Main	NScript::CQ_BanditCampBossBattleScript::CCampHostage	unknown	undefined	0		0	yes	accepted									
 00d08670	Alloc	NScript::CQ_BanditCampBossBattleScript::CCampHostage2	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00d08710	GetParentScript	NScript::CQ_BanditCampBossBattleScript::CCampHostage2	unknown	undefined	0		0			discovered	gapscan							
 00d08720	Init	NScript::CQ_BanditCampBossBattleScript::CCampHostage2	unknown	undefined	0		0			discovered	gapscan							

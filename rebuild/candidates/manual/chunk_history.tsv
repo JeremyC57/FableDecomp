@@ -27784,3 +27784,9 @@ chunk	address	module	name	length
 853	00ce6cf0	NScript::CGameflowScript	Init	2237
 853	0043a570	_global	NHeroInformationScreens_Destructor	2770
 853	00df5000	NScript::CQ_TentacleKrakenBossFightScript	PhaseOne	3071
+854	00ab58e0	CMouseDX	Update	1056
+854	0083efe0	LHNetworkLib::LHHttp2	ReceiveDocumentAsync	1074
+854	00501d30	CWorldMap	GetLevelFilesFromWorldFile	1086
+854	007602f0	_global	Math_PolygonAngleSumClosureCheck	1126
+854	00924c70	CAIStateGroup_KrakenAttack	Update	1152
+854	00507070	_global	RebuildStringPairTableFromTree	1432

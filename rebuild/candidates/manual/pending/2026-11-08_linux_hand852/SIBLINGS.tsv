@@ -1,0 +1,3 @@
+address	source	grade_with_final_overlay	note
+00d038e0	rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScript_Main_00d038e0.cpp	RELOCATION_MATCH	only landed includer of engine/CQ_BanditCampBossBattleScript.h; both new opt-ins off
+00980770	rebuild/src/compiled/00/98/CAIStateGroupBase_AIActionMoveToPossiblyBlockedObjectAndFace_00980770.cpp	RELOCATION_MATCH	C3DVector.h includer (3269 rows include it; the new branch is opt-in only)

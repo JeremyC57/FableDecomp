@@ -1,0 +1,7 @@
+address	module	name	length
+00d07e50	_global	Quest009_Gamesmaster_Hostage_Setup	2068
+00677970	_global	TOpinionTransientOffsetList_TransferParsing	2272
+00d067a0	_global	Quest009_Gamesmaster_ResidentialBanditCamp_Setup	2628
+00e01900	CQ_TraderEscortScript	MakeTraderComment	2697
+00981410	CAIStateGroupBase	AIAction_InteractWith	2703
+00bb2540	CEngineClothRenderer	RenderPolygons	2905

@@ -1,0 +1,5 @@
+- chunk 852: a CPersistTraits<float> temporary that retail never zeroes (its `this` homed in a dead argument slot) needs a user-declared empty ctor in the model; `CPersistTraits<float>()` on a POD value-initialises and adds a store (0x00677970, 2337 -> 2273 bytes).
+- chunk 852: a catalog name taken from a PersistError literal can be wrong: check `ret` size and what the body allocates (0x00677970 is CPersistTraits<CReactionFrequencyTraitsArray>, not the transient-offset list).
+- chunk 852: VC7.1 would not expand a plain-inline CScriptThing::operator= (nor CCountedPointer::operator=) at any site of 0x00E01900, even in a cut-down body; retail expands one site -- park, do not chase with forceinline (expands every site).
+- chunk 852: SetPredicate(CIsThingAlive(Me)) as a temporary calls the out-of-line ~CIsThingAlive; a named filter in its own block plus a row-local inline dtor gives retail's expansion (0x00D07E50, 73 -> 25).
+- chunk 852: CTCEntityEvents::GetEvent's second argument is a filter object (NEntityEvents::CIsEventOfType holding the event type), so the `mov [esp+x],19h` before the call is that temporary.
