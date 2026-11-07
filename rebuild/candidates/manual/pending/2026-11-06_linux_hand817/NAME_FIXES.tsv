@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00E0A510	?SetBrainState@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@AAEXJ@Z	Ego_r.pdb + FableWin.pdb; body stores the long arg at +0x20 (CDarkwoodTrader::BrainState); landed row rebuild/src/compiled/00/e0/CTraderScript_HandleTrader_00e0a510.cpp	CTraderScript::HandleTrader (landed leaf / manifest)
+0x00E83680	?CleanupAfterFight@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ	Ego_r.pdb + FableWin.pdb; landed row rebuild/src/compiled/00/e8/CTyler_CleanupAfterFight_00e83680.cpp binds the global-namespace spelling (reloc_bindings.tsv caller 00e83620)	?CleanupAfterFight@CTyler@@QAEXXZ

@@ -50092,6 +50092,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d52420	SuspendableProcess	CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
 00d52470	`scalar deleting destructor'	CActiveEntityScript<NScript::CQ_GuildTrainingPreMeleeScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d5\CThingSwitch_vectordeletingdestructor_00d52470.cpp
 00d524a0	Main	NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper	unknown	undefined	0		0			discovered	gapscan							
+00d52e90	Main	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster	unknown	undefined	0		0			discovered	boundary							
 00d55d10	Alloc	NScript::CQ_GuildTrainingPreMeleeScript	__thiscall	CActionEventBase *	4	CActionEventShot *,long,CThingCreatureBase *,CGameCameraManager *	1	yes	accepted									
 00d55d50	`scalar deleting destructor'	NScript::CQ_GuildTrainingPreMeleeScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d5\CLandscapeBackgroundPatch_vectordeletingdestructor_00d55d50.cpp
 00d55d70	CQ_GuildTrainingMeleeScript	NScript::CQ_GuildTrainingMeleeScript	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									

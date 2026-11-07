@@ -1,0 +1,8 @@
+address	source	grade_with_final_overlay	note
+0x00E07640	src/00e07640.cpp	RELOCATION_MATCH	matched; test PASS g++ + VC
+0x00E87030	src/00e87030.cpp	RELOCATION_MATCH	matched; test PASS g++ + VC
+0x00D52E90	src/00d52e90.cpp	RELOCATION_MATCH	matched (p.sh grade; vland skips it as OUTSIDE_MANIFEST: add the manifest start before landing); test PASS g++ + VC
+0x00DFE0F0	differ/00dfe0f0.cpp	DIFFER(9501v9501)	parked, 59 lines (B arm cross-jump)
+0x00E6BC50	differ/00e6bc50.cpp	DIFFER(7692v7655)	parked, 100 lines (loop register pair, vptr store order, pad tail)
+0x00D647F0	differ/00d647f0.cpp	DIFFER(7405v7389)	parked, 316 lines (phase-2 register eviction)
+(no landed includer)	-	-	no default header path changed, so no landed includer needed a recheck

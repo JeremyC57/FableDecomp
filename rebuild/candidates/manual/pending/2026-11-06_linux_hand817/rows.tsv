@@ -1,0 +1,7 @@
+address	module	name	length
+00d647f0	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze	Main	7389
+00dfe0f0	NScript::CQ_TraderConflictGoodScript::CTraderToRescue	Main	9501
+00e6bc50	NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil	Main	7655
+00d52e90	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster	Main	11892
+00e07640	NScript::CQ_TraderEscortScript::CDarkwoodTrader	Main	11984
+00e87030	NScript::CV_FisticuffsClubScript::CTyler	Main	12551

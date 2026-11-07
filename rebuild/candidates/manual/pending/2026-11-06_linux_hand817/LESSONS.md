@@ -1,0 +1,9 @@
+- Else-wait `if (T) return; for(;;){NSF; if (T) return;}` (written `T; for(;;){NSF; T;}`) lets VC7.1 tail-merge the loop test into the exit test; `while(!T) NSF; return;` and `do{T;NSF}while(1)` duplicate it (chunk 817, 0x00E07640).
+- Mixed expanded / called MovieBase PImp dtors (some sites expand around 0x006E7AB0, others call 0x006E7B80): declare `template<> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();` without a body before the movie header (chunk 817, 0x00E87030).
+- `CDefPointer<const CScriptDef> pGlobalScriptDef` (not a raw pointer) makes VC7.1 preload the def pointer into esi before the Game calls that read it (chunk 817, 0x00E87030).
+- A no-return arm written first (`if (!c) { ...for(;;) } else { ... }`) is moved out of line by VC7.1 with the other arm's exit pads after it; the reversed order keeps it inline (chunk 817, 0x00E87030).
+- Frame-slot residue in a phase-structured Main: give each phase's counter its own block (slot reused later as retail) and keep one function-scope variable that every phase assigns (chunk 817, 0x00D52E90).
+- CTimer `operator<(long)` (argument preloaded) and a single-expression x87 distance compare `me < hero` (hero evaluated second) fix order residue that two-statement spellings give (chunk 817, 0x00E07640).
+- SetEntityAsRegionFollowing takes (hero, follower, bool): the hero first (chunk 817, 0x00E07640).
+- Row-local `~CCountedPointer<STB>` specialization zeroing Info then Data reproduces a PImp zero-store order the generic dtor (Data then Info) does not (chunk 817, 0x00E6BC50).
+- An if / else-if arm that retail cross-jumps whole into its sibling (T-check included): any source-level join (forceinline `||` helper, goto) reproduces the branches but shifts the frame; retail's merge is VC7.1's late cross-jump, not a source join (chunk 817, 0x00DFE0F0).

@@ -37297,3 +37297,9 @@ _New_c35b10@8	00c35b10	00c275e0
 ??_7?$CSpawnedFunc1@VCV_LostTraderScript@NScript@@VCScriptThing@@@@6B@	012ee360	00ea59e0
 ?WatchForQuestFailureState@CV_LostTraderScript@NScript@@QAEXVCScriptThing@@@Z	00ea7460	00ea59e0
 ?AddLogbookTutorialEntryPC@@YIXABVCCharString@@@Z	00cbea81	00d58490
+?SetBrainState@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@AAEXJ@Z	00e0a510	00e07640
+?TurnToBalv@CQ_TraderEscortScript@NScript@@QAEXVCScriptThing@@@Z	00e0a820	00e07640
+??0?$CPredicate_And@VCIsThingAlive@NScript@@VCIsVariableFalse@2@@NScript@@QAE@ABVCIsThingAlive@1@ABVCIsVariableFalse@1@@Z	00e7e020	00e87030
+?BeenAttacked@CV_FisticuffsClubScript@NScript@@QAEXXZ	00e86e10	00e87030
+?CleanupAfterFight@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ	00e83680	00e87030
+?FightWarmupRounds@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ	00e8a2b0	00e87030

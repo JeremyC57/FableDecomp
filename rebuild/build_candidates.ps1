@@ -384855,6 +384855,27 @@ $catalog = @(
         TestSource = '00/d5/NScriptCQGuildTrainingMeleeScriptCTheRealGuildmaster_Main_00d58490_test.cpp'
         PassPattern = '00d58490_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d52e90'
+        Module = 'NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster'
+        Source = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCTheRealGuildmaster_Main_00d52e90.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingPreMeleeScriptCTheRealGuildmaster_Main_00d52e90_test.cpp'
+        PassPattern = '00d52e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e07640'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_Main_00e07640.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_Main_00e07640_test.cpp'
+        PassPattern = '00e07640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e87030'
+        Module = 'NScript::CV_FisticuffsClubScript::CTyler'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCTyler_Main_00e87030.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCTyler_Main_00e87030_test.cpp'
+        PassPattern = '00e87030_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -225,6 +225,9 @@ public:
         bool InSafeZone;
         CTimer RegulateFollowStateComment;
         CTimer RegulateBanterComment;
+#ifdef FABLE_RETAIL_CQ_TRADERESCORTSCRIPT_DARKWOODTRADER_SETBRAINSTATE
+        void SetBrainState(long);  // 0x00E0A510 ?SetBrainState@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@AAEXJ@Z (Ego_r.pdb + FableWin.pdb)
+#endif
         virtual void Init();
         virtual void OnPredicateFail();
         virtual void OnPersist(CPersistContext&);
