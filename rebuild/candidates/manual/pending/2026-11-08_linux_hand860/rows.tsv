@@ -1,0 +1,7 @@
+address	module	name	length
+009d8cf0	CRenderManager2D	ClearRenderTarget	3385
+00a8b990	_global	C3DMesh2_AddSubMeshBoneVertices	1624
+005aecc0	CTCInventoryTrade	SellItemPC	2446
+0049a0b0	CProgressDisplay	InitialiseTextures	2920
+00a4efc0	_global	C3DKeyframe_InitialiseAsConstant	3491
+00bb30a0	CEngineClothRenderer	Render2DClothPrimitive	3538

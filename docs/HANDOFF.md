@@ -62,6 +62,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     0x006A9690; landed `2026-11-08_landing_h/`, queue land0811h) after only 89 grades; sent back for round 2 (goal 10 of 20, 100+ grades per
     unmatched row; its matches will land as new rows only). Round 2 (2,283 grades in all): +1, CCombFilter::Allocate 0x00C75F80 plain MATCH
     (`2026-11-08_landing_i/`); 4 of 20 total, the other 16 parked after 100-254 grades each with no movement. Chunk 859 is finished.
+    Chunk 860 finished **0 of 6** after 1,160 grades (`pending/2026-11-08_linux_hand860/`; ClearRenderTarget md 32 -> 12, SellItem md 349 -> 76,
+    both still need the shared-header rebase / last register tie; name fixes queued land0811j). Running: chunk 858 and a Fable **research**
+    agent (`$S/w22/research861`, the user: research VC7.1's register / scheduling ties and remedies, full web access; deliverable
+    RESEARCH.md -> docs/pipeline/ at landing; test set = the 26 parked rows of chunks 856 + 859, oracle `$S/batch/chunk861_oracle.tsv`).
   - (superseded) Authoring was STOPPED (the user, 2026-11-08: "No more authoring"). No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled
