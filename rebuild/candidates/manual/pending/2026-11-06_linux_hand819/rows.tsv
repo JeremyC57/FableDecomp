@@ -1,0 +1,7 @@
+address	module	name	length
+00e84b80	NScript::CV_FisticuffsClubScript::CFisticuffsMember	Main	8836
+00d0d910	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1	Main	4752
+00d09010	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard	Main	5864
+00d5e0c0	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster	Main	15084
+00e40e80	NScript::CV_BordelloScript::CMagicman	Main	15104
+00f0fb70	NScript::CQ_ArenaScript	Main	18144

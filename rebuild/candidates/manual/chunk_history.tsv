@@ -27558,3 +27558,9 @@ chunk	address	module	name	length
 820	00e64210	NScript::CV_ChickenKickingScript::CKickedChicken	Main	2803
 820	00e64fb0	NScript::CV_ChickenKickingScript::CChickenMaster	Main	15210
 820	005e78f0	CTCQuestCompletionUI	GlobalUpdate	2340
+821	00d2ed20	NScript::CQ_EndGameFocalSitesScript::CEndGameScythe	Main	2248
+821	00d0a830	NScript::CQ_BanditCampBossBattleScript::CBanditKing	Main	2720
+821	00d2d930	NScript::CQ_EndGameFocalSitesScript::CEndGameJackOfBlades	Main	5094
+821	00cfe030	NScript::CQ_AwakeningTheOracleScript::COracleTablet	Main	3575
+821	00de8370	NScript::CQ_RansomVictimScript::CRansommer	Main	4894
+821	007d8e20	CTCTavernGameSpotTheAddition	FrameUpdate	1900
