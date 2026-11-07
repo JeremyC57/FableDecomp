@@ -27612,3 +27612,9 @@ chunk	address	module	name	length
 829	00435530	CDisplayEngine	DoRender	2617
 829	00439070	CPlayerGui	DrawPreparePrimitivesForEngine	2613
 829	00678760	CPersistTraits<std::list<CReactionMatch*> >	TransferIn	3579
+830	0090d030	CAIStateGroup_MinionGossip	Update	3269
+830	00931390	CAIStateGroup_MinionReactToCriminal	Update	3863
+830	0083e1f0	CThingScriptUIDReplacer	CThingScriptUIDReplacer	1973
+830	007c1000	NThingShot::CTCShotDefinitionBase	OnCollisionProper	4510
+830	00dd9a50	NScript::CQ_PrisonEscapeRescueMotherScript	ResetCells	4696
+830	007542b0	CTCLook	OnAppearanceDraw	2266

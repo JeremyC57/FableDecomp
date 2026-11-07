@@ -1,0 +1,2 @@
+address	source	grade_with_final_overlay	note
+00d58490	rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCTheRealGuildmaster_Main_00d58490.cpp	not rechecked	the only landed includer of engine/CQ_GuildTrainingMeleeScript.h; my edit is an opt-in block it does not define, so its preprocessed text is unchanged

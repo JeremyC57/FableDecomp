@@ -384960,6 +384960,13 @@ $catalog = @(
         TestSource = '00/68/CTCCreatureOpinionOfHero_OnSerialise_00684610_test.cpp'
         PassPattern = '00684610_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e2c100'
+        Module = 'NScript::CV_AmbushScamScript::CAS_Trickster'
+        Source = '00/e2/NScriptCVAmbushScamScriptCASTrickster_Main_00e2c100.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScriptCASTrickster_Main_00e2c100_test.cpp'
+        PassPattern = '00e2c100_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

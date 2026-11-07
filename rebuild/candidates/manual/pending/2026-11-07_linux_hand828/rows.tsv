@@ -1,0 +1,7 @@
+address	module	name	length
+00d56790	NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent	Main	6151
+00e9e420	NScript::CV_IntroductionToTrophiesScript::CBriarRose	Main	5915
+00d0c410	NScript::CQ_BanditCampBossBattleScript::CBanditForger	Main	5373
+006c6040	CTCHeroOpinionDeedLog	InformRelevantThingsOfDeed	2377
+00e2c100	NScript::CV_AmbushScamScript::CAS_Trickster	Main	8945
+00974aa0	CAIStateGroup_JackOfBladesStage2	Update	3080

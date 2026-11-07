@@ -37339,3 +37339,9 @@ _New_c35b10@8	00c35b10	00c275e0
 ??$Transfer@VCOpinionTransientOffset@@@CPersistContext@@QAEXPBDAAVCOpinionTransientOffset@@ABV1@@Z	00685f80	00684610
 ??$Transfer@W4EOpinionAttitudeType@@@CPersistContext@@QAEXPBDAAW4EOpinionAttitudeType@@ABW41@@Z	00685cc0	00684610
 ?SerialiseFlagMask@CTCCreatureOpinionOfHero@@AAEXAAVCPersistContext@@ABVCCharString@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z	00681ba0	00684610
+??_7?$CSpawnedFunc1@VCV_AmbushScamScript@NScript@@VCScriptThing@@@@6B@	012e2b00	00e2c100
+?GetRandomSpeech@CAS_Trickster@CV_AmbushScamScript@NScript@@AAE?AVCCharString@@XZ	00e2e440	00e2c100
+?IsFollowActionRunning@CScriptGameResourceObjectScriptedThingBase@@UBE_NABVCScriptThing@@@Z	007e7340	00e2c100
+?ResetRandomSpeechTime@CV_AmbushScamScript@NScript@@QAEXXZ	00e2e400	00e2c100
+?WatchForHeroAttack@CV_AmbushScamScript@NScript@@QAEXVCScriptThing@@@Z	00e2e520	00e2c100
+?WatchForTricksterKilledAfterBeingSpared@CV_AmbushScamScript@NScript@@QAEXVCScriptThing@@@Z	00e2e800	00e2c100

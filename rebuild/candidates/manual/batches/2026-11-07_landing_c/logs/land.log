@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00e2c100   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00e2c100   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e2c100 RELOCATION_MATCH NScript::CV_AmbushScamScript::CAS_Trickster::?Main@CAS_Trickster@CV_AmbushScamScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCVAmbushScamScriptCASTrickster_Main_00e2c100
