@@ -37296,3 +37296,4 @@ _New_c35b10@8	00c35b10	00c275e0
 ?Alloc@CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d2d730	00d2aa40
 ??_7?$CSpawnedFunc1@VCV_LostTraderScript@NScript@@VCScriptThing@@@@6B@	012ee360	00ea59e0
 ?WatchForQuestFailureState@CV_LostTraderScript@NScript@@QAEXVCScriptThing@@@Z	00ea7460	00ea59e0
+?AddLogbookTutorialEntryPC@@YIXABVCCharString@@@Z	00cbea81	00d58490

@@ -1,0 +1,3 @@
+manifest 00e36750 CV_ArcheryCompetitionScript::DoCountDown -> NScript::CV_ArcheryCompetitionScript::DoCountDown
+manifest 00e621f0 CBodyGuard::SetHenchmanAsHired -> NScript::CV_BodyGuardScript::CBodyGuard::SetHenchmanAsHired
+labels 8  catalog renamed 0  manifest renamed 2

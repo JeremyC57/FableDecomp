@@ -71,12 +71,12 @@ a worklist, not the intended end state.
 |---|---:|
 | Catalogued retail functions | **49,568** |
 | Landed byte-matching C++ (genuine) | **46,960 · 94.74%** |
-| Retail function bytes reproduced | **6,159,652 · 60.48%** |
+| Retail function bytes reproduced | **6,169,212 · 60.58%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
 Landed byte-matching C++ covers **94.74%** of the 49,567-function catalog by count
-and **60.48%** of retail function bytes: the functions still to do are the large ones.
+and **60.58%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,10 +93,10 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **54,625** |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **54,626** |
 | Reconstruction | Landed byte-matching genuine C++, original catalog | **46,960** (94.74%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,612 known functions | 54,624 (94.81%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 6,159,652 (60.48%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,612 known functions | 54,625 (94.82%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 6,169,212 (60.58%) |
 | Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 211 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 441 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |
@@ -111,7 +111,7 @@ parity, coverage, and naming reports:
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-11-06 canonical refresh: landing rows from
+Counts above are from the 2026-11-07 canonical refresh: landing rows from
 `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1` (`tools/landed_metrics.py`);
 analysis rows from `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json` and the
 naming-quality reports (rows marked 2026-09 snapshot are not refreshed by the Linux landing lane).

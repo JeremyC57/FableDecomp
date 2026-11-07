@@ -1,0 +1,13 @@
+address	source	grade_with_final_overlay	note
+0x00D8DD10	rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScript_Main_00d8dd10.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_HobbeCaveScript.h (opt-in edit only; default path unchanged)
+0x00DFA450	rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_Main_00dfa450.cpp	RELOCATION_MATCH PASS	includer of engine/CQ_TraderConflictGoodScript.h (opt-in edit only)
+0x00E32540	rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_Main_00e32540.cpp	RELOCATION_MATCH PASS	includer of engine/CV_ArcheryCompetitionScript.h (opt-in edit only)
+0x00E33650	rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACOwner_GetParentScript_00e33650.cpp	MATCH PASS	includer of engine/CV_ArcheryCompetitionScript.h
+0x00E338A0	rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCMACDummyStatic_GetParentScript_00e338a0.cpp	MATCH PASS	includer of engine/CV_ArcheryCompetitionScript.h
+0x00E33DD0	rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACDummyMoving_GetParentScript_00e33dd0.cpp	MATCH PASS	includer of engine/CV_ArcheryCompetitionScript.h
+0x00E33560	rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_GetParentScript_00e33560.cpp	MATCH PASS	includer of engine/CV_ArcheryCompetitionScript.h
+0x00E33590	rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_OnPredicateFail_00e33590.cpp	MATCH PASS	includer of engine/CV_ArcheryCompetitionScript.h
+0x00E33AC0	rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCMACDummyMoving_GetParentScript_00e33ac0.cpp	MATCH PASS	includer of engine/CV_ArcheryCompetitionScript.h
+0x00E36D50	rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACDummyMoving_Main_00e36d50.cpp	RELOCATION_MATCH PASS	includer of engine/CV_ArcheryCompetitionScript.h
+0x00E33C60	rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACDummyStatic_GetParentScript_00e33c60.cpp	MATCH PASS	includer of engine/CV_ArcheryCompetitionScript.h
+0x00E5EBD0	rebuild/src/compiled/00/e5/NScriptCVBodyGuardScript_MakeHenchmanComment_00e5ebd0.cpp	RELOCATION_MATCH PASS	includer of engine/CV_BodyGuardScript.h (opt-in edit only; WARN RELOC_ALIAS _rand import thunk, pre-existing)

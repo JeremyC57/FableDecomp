@@ -1,0 +1,7 @@
+address	module	name	length
+00d58490	NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster	Main	9560
+00e33ea0	NScript::CV_ArcheryCompetitionScript::CAC_Owner	Main	9228
+00e5fd40	NScript::CV_BodyGuardScript::CBodyGuard	Main	9381
+00dfe0f0	NScript::CQ_TraderConflictGoodScript::CTraderToRescue	Main	9501
+00d973d0	NScript::CQ_HobbeCaveScript::CBanditSacrifice	Main	9821
+00e50fd0	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan	Main	9885

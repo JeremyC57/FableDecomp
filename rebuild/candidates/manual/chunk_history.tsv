@@ -27534,3 +27534,9 @@ chunk	address	module	name	length
 816	00e3bb70	NScript::CV_BordelloScript::CMadame	Main	10149
 816	00e4b5b0	NScript::CV_BanditTollScript::CTollBandit	Main	10594
 816	00d5ae70	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster	Main	11636
+817	00d647f0	NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze	Main	7389
+817	00dfe0f0	NScript::CQ_TraderConflictGoodScript::CTraderToRescue	Main	9501
+817	00e6bc50	NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil	Main	7655
+817	00d52e90	NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster	Main	11892
+817	00e07640	NScript::CQ_TraderEscortScript::CDarkwoodTrader	Main	11984
+817	00e87030	NScript::CV_FisticuffsClubScript::CTyler	Main	12551

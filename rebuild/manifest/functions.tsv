@@ -52426,7 +52426,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e362b0	GetRandomSpeech	CAC_Owner	__thiscall	CCharString	1	CAC_Owner *	1	yes	accepted									
 00e36390	WatchForAttack	NScript::CV_ArcheryCompetitionScript	__thiscall	void	2	CV_ArcheryCompetitionScript *,CScriptThing	1	yes	accepted									
 00e36590	DoTimesUp	NScript::CV_ArcheryCompetitionScript	__thiscall	void	3	CV_ArcheryCompetitionScript *,CScriptThing *,CScriptGameResourceObjectScriptedThingBase *	1	yes	accepted									
-00e36750	DoCountDown	CV_ArcheryCompetitionScript	__thiscall	void	2	CV_ArcheryCompetitionScript *,long	1	yes	accepted									
+00e36750	DoCountDown	NScript::CV_ArcheryCompetitionScript	__thiscall	void	2	CV_ArcheryCompetitionScript *,long	1	yes	accepted									
 00e36970	SuspendableProcess	CSpawnedFunc1<NScript::CV_ArcheryCompetitionScript,CScriptThing>	unknown	undefined	0		0			discovered	gapscan							
 00e369b0	Main	NScript::CV_ArcheryCompetitionScript::CAC_DummyStatic	__thiscall	void	1	CAC_DummyStatic *	1	yes	accepted									
 00e36ca0	CalculateScoreForHit	NScript::CV_ArcheryCompetitionScript	__thiscall	void	3	CV_ArcheryCompetitionScript *,long,float	1	yes	accepted									
@@ -52775,7 +52775,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e5fce0	`scalar deleting destructor'	NScript::CV_BodyGuardScript::CHenchmanRegionEntranceComment	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e5\CEngineSubPrimitiveText_scalardeletingdestructor_00e5fce0.cpp
 00e5fd10	`scalar deleting destructor'	NScript::CV_BodyGuardScript::CHenchmanRegionExitComment	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e5\CEngineSubPrimitiveText_scalardeletingdestructor_00e5fd10.cpp
 00e5fd40	Main	NScript::CV_BodyGuardScript::CBodyGuard	unknown	undefined	0		0			discovered	gapscan							
-00e621f0	SetHenchmanAsHired	CBodyGuard	__thiscall	void	2	CBodyGuard *,bool	1	yes	accepted									
+00e621f0	SetHenchmanAsHired	NScript::CV_BodyGuardScript::CBodyGuard	__thiscall	void	2	CBodyGuard *,bool	1	yes	accepted									
 00e62760	`scalar deleting destructor'	NScript::CV_BodyGuardScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e6\CLandscapeBackgroundPatch_vectordeletingdestructor_00e62760.cpp
 00e62780	~CV_BodyGuardScript	NScript::CV_BodyGuardScript	unknown	undefined	0		0	yes	accepted									
 00e62830	CV_ChickenKickingScript	NScript::CV_ChickenKickingScript	__thiscall	undefined	3	CV_BanditCampPathScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
