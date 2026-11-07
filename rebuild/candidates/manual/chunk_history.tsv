@@ -27710,3 +27710,14 @@ chunk	address	module	name	length
 843	00d22f30	NScript::CQ_BreakSiegeScript::CKG_Sheriff	Main	3399
 843	00de9690	NScript::CQ_RansomVictimScript::CRansomHelper	Main	3412
 843	00dd4ad0	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice	Main	3467
+844	0070c4e0	CAnimateThing	GetFirstCombinationAnimFromType	81
+844	00c52bb0	CCpuInfo	GetAMDModelName	140
+844	0058301a	CTCInventory	CreateEditBoxActions	321
+844	0073acc0	CTCCreatureModeManager	AddMode	331
+844	0047ed76	CTCInGameMenu	SetToSave	366
+844	007534b0	CTCLook	IsPosInViewRange	384
+844	00de4710	NScript::CQ_RansomVictimScript	DisappearFollowers	1428
+844	00e76e90	NScript::CV_ExposeMayorScript	HeroFlashesLamp	1612
+844	00e482f0	NScript::CV_BanditTollScript	CheckForLeaderDead	1627
+844	00775350	CTCShop	UpdateStock	1988
+844	00d0ee70	NScript::CQ_BanditCampBossBattleScript	CheckForFirstAreaMassacre	1989
