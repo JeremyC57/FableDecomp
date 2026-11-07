@@ -27,6 +27,9 @@ class CMainGameComponent; class CPlayer;                        // chunk 732: Pe
 #ifdef FABLE_RETAIL_CTHING_MOREACCESS
 class CGameDefinitionManager; class CASoundBank; class CWorldMap;   // plan phase 7: FABLE_RETAIL_CTHING_MOREACCESS return types
 #endif
+#ifdef FABLE_RETAIL_CTHING_LOADSINGLE
+class CPersistContext; class CMemoryDataInputStream;            // chunk 846: the serialise virtuals' parameter types
+#endif
 #ifdef FABLE_RETAIL_CTHING_STATEACCESS
 class CScriptThing; class CDefString;                           // plan phase 6: GetScriptThing / GetDefName return types
 #endif
@@ -94,6 +97,44 @@ protected:
 private:
     unsigned char InitialisationStage : 3;
 public:
+#ifdef FABLE_RETAIL_CTHING_LOADSINGLE
+    // Retail opt-in (chunk 846, row 0x0051FD80 CThingManager::LoadSingleThing): the CThing virtuals of vtable 0x01239ABC slots 3..16 in
+    // retail slot order (catalog / rtti-vtables: 3 SerialiseGameState 0x004CD1A0, 4 ConstructFromLevelScript 0x004CAA00, 8 OnCreate
+    // 0x004C9560, 9 InitialActivate 0x004C9690, 10 OnInitialActivate 0x004C97B0, 11 OnDie 0x004C7D50, 12 OnKill 0x004C7CF0,
+    // 15 CreateFromDef 0x004CA930, 16 ConstructFromBinarySave 0x004CA390), spelled as the Ego_r.pdb name set (U = public virtual,
+    // M = protected virtual); LoadSingleThing calls slots 4 (+0x10), 8 (+0x20), 9 (+0x24), 10 (+0x28) and 16 (+0x40). The nested
+    // CSerialiseInfo (Ego_r.pdb, 16 bytes: UID +0, DefinitionType +8, Player +0xC; landed 0x004C81F0 reads those offsets), the two
+    // static __fastcall SerialiseThingInfo overloads (0x004C81F0 / 0x004C88E0, landed under these spellings) and the inline
+    // FableWin.pdb accessors ?IsToKillOnLevelUnload@CThing@@QBE_NXZ (`test byte ptr [ebp+93h],4`, bit 18 of the +0x91 run) and
+    // ?SetSerialisationSectionName@CThing@@QAEXABVCCharString@@@Z (`lea ecx,[ebp+58h] ; call CCharString::operator=`).
+    // Not to be combined with FABLE_RETAIL_CTHING_LEVELSCRIPT (which declares slot 4 alone). No layout change: CThing has its vptr.
+    class CSerialiseInfo {
+    public:
+        unsigned __int64 UID;                                    // +0x00
+        CCharString DefinitionType;                              // +0x08
+        signed char Player;                                      // +0x0c
+    };
+    virtual bool SerialiseGameState(CPersistContext&);           // slot 3
+    virtual bool ConstructFromLevelScript(const char*);          // slot 4  0x004CAA00
+    virtual bool ConstructAlreadyExistingThingFromLevelScript(const char*);   // slot 5
+    virtual bool ConstructFromGameStateScript(const char*);      // slot 6
+    virtual void CopyGameState(const CThing&);                   // slot 7
+    virtual bool OnCreate();                                     // slot 8  0x004C9560
+    virtual void InitialActivate();                              // slot 9  0x004C9690
+    virtual void OnInitialActivate();                            // slot 10 0x004C97B0
+protected:
+    virtual void OnDie();                                        // slot 11 0x004C7D50
+    virtual void OnKill();                                       // slot 12 0x004C7CF0
+    virtual bool PreOnKill();                                    // slot 13
+    virtual void OnSetInLimbo(bool);                             // slot 14
+    virtual void CreateFromDef(const CThingBaseDef&);            // slot 15 0x004CA930
+public:
+    virtual void ConstructFromBinarySave(CMemoryDataInputStream&,const CSerialiseInfo&);   // slot 16 0x004CA390
+    static void __fastcall SerialiseThingInfo(CPersistContext&,CSerialiseInfo&);           // 0x004C81F0
+    static void __fastcall SerialiseThingInfo(bool,CCharString&,CSerialiseInfo&);         // 0x004C88E0
+    bool IsToKillOnLevelUnload() const { return KillOnLevelUnload!=0; }
+    void SetSerialisationSectionName(const CCharString& name) { SerialisationSectionName=name; }
+#endif
     void Kill(bool); // Ego_r original public member; native004c9b80.
     CTCBase* AddTC(const CCharString&,bool,const CTCParamsBase*);
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }

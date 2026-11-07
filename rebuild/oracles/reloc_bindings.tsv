@@ -37380,3 +37380,8 @@ $notRedefined$4399	0068a01d	00689df0
 ??_7?$CEntityScriptBinding@VCV_BeggarAndChildScript@NScript@@@@6B@	012e68a8	00e57e60
 ?Alloc@CBeggarBully@CV_BeggarAndChildScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e5b2d0	00e57e60
 ?Alloc@CLookoutPointBeggar@CV_BeggarAndChildScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e58c60	00e57e60
+??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KPAVCThing@@@std@@@1@AB_K@Z	00527d80	0051fd80
+??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Select1st@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@1@AB_K@Z	00527d20	0051fd80
+?AllocateClass@CClassFactory@@QAEPAVCClass@@ABVCCharString@@@Z	00a371c0	0051fd80
+?CheckAndFixUID@CThingManager@@QAEXAA_K@Z	0051f340	0051fd80
+?LoadAllSectionName@CLevelLoader@@2VCCharString@@A	013bab08	00520d00

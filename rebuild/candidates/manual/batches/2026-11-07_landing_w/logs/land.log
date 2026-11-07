@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0051fd80   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+0051fd80   RELOCATION_MATCH PASS   LoadSingleThing
+00520d00   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00520d00   RELOCATION_MATCH PASS   LoadEntitiesFromScript
+
+WINS: 2
+  0051fd80 RELOCATION_MATCH CThingManager::?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z
+  00520d00 RELOCATION_MATCH CThingManager::?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CThingManager_LoadSingleThing_0051fd80
+  CThingManager_LoadEntitiesFromScript_00520d00

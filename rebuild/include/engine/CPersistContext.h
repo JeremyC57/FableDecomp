@@ -32,6 +32,11 @@ public:
     template<class T> void TransferVector(const char*,std::vector<T,std::allocator<T> >&);
     CPersistContext(CMemoryDataInputStream&,bool);
     CMemoryDataInputStream* GetPLoadStream() { return PLoadStream; }
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT_ISBINARY
+    // Retail opt-in (chunk 846, row 0x0051FD80 CThingManager::LoadSingleThing): Ego_r.pdb / FableWin.pdb ?IsBinary@CPersistContext@@QBE_NXZ,
+    // inline in retail (`mov eax,[ecx+18h] ; cmp eax,2 ; je ; cmp eax,3 ; jne` at 0x0051FDD0 and 0x00520186). Body only: no layout change.
+    bool IsBinary() const { return Mode==MODE_LOAD_BINARY||Mode==MODE_SAVE_BINARY; }
+#endif
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT
     CPersistContext() {}
     void Init(CStringParser&,void (__fastcall*)(const CCharString&),bool,const CDefinitionManager*,const CSymbolMap*,CCharString*);

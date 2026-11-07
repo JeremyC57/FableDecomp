@@ -385197,6 +385197,20 @@ $catalog = @(
         TestSource = '00/e5/NScriptCVBeggarAndChildScript_Main_00e57e60_test.cpp'
         PassPattern = '00e57e60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0051fd80'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_LoadSingleThing_0051fd80.cpp'
+        TestSource = '00/51/CThingManager_LoadSingleThing_0051fd80_test.cpp'
+        PassPattern = '0051fd80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00520d00'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_LoadEntitiesFromScript_00520d00.cpp'
+        TestSource = '00/52/CThingManager_LoadEntitiesFromScript_00520d00_test.cpp'
+        PassPattern = '00520d00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

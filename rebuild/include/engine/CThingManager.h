@@ -24,7 +24,25 @@ public:
     CThingManager(const CMainGameComponent&,const CGameDefinitionManager&,CWorld&,CPlayerManager&,CNavigatorManager&,unsigned long*,unsigned long,unsigned long,unsigned long);
     virtual ~CThingManager();
     void InitThingTypes();                                              // 0x00522A20 (Ego_r.pdb ?InitThingTypes@CThingManager@@QAEXXZ)
+#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADSINGLE
+    // Retail opt-in (chunk 846, row 0x0051FD80 LoadSingleThing): the same Ego_r.pdb member with its body. Retail keeps an out-of-line
+    // copy at 0x0051ED80 and expands it in LoadSingleThing (`lea esi,[ebx+58h] ; call 00527D80h` = the landed UIDToThingMap _M_find,
+    // `cmp eax,[esi] ; je ; mov ebp,[eax+18h]` with ebp = 0 before the call, 0x0051FFC6..0x0051FFE9).
+    CThing* GetPThingWithUID(unsigned __int64 uid) {
+        std::map<unsigned __int64,CThing*>::iterator it=UIDToThingMap.find(uid);
+        CThing* pthing=0;
+        if(it!=UIDToThingMap.end()) pthing=it->second;
+        return pthing;
+    }
+    // Ego_r.pdb / FableWin.pdb ?CheckAndFixUID@CThingManager@@QAEXAA_K@Z, out of line at 0x0051F340 (landed). Declaration only.
+    void CheckAndFixUID(unsigned __int64&);                             // 0x0051F340
+    // Ego_r.pdb ?PeekDefinitionManager@CThingManager@@QBEABVCGameDefinitionManager@@XZ (reads +0x20 in place, 0x0051FF3A) and
+    // ?GetLevelBeingLoaded@CThingManager@@QBEJXZ (+0xDC in place at 0x0051FFB0; retail also keeps an out-of-line copy at 0x0051E2C0).
+    const CGameDefinitionManager& PeekDefinitionManager() const { return DefinitionManager; }
+    long GetLevelBeingLoaded() const { return LevelBeingLoaded; }
+#else
     CThing* GetPThingWithUID(unsigned __int64);                         // Ego_r.pdb ?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z (0x00821010)
+#endif
     void LoadHeroStateBinary(CPersistContext&);
     // Ego_r + FableWin signatures (2026-11-03, row 0x00522720): the name set and thing vector are references.
     void LoadEntitiesFromScript(const CCharString&,long,long,const std::set<CCharString>&,CASuspendableProcess*,long,std::vector<CThing*>&); // 0x00520D00
@@ -77,6 +95,11 @@ private:
         ThingTypeInfo[init.TypeID].DefClassType=init.DefClassType;
     }
     CThing* LoadSingleThing(CPersistContext&,long);
+#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADSINGLE
+    // Ego_r.pdb / FableWin.pdb ?ActivateAfterLoading@CThingManager@@AAEXJ@Z (private, out of line at 0x0051E5A0, landed; the tail call
+    // of LoadEntitiesFromScript 0x00521204). Declaration only.
+    void ActivateAfterLoading(long);                                    // 0x0051E5A0
+#endif
     const CMainGameComponent& Component;
     const CGameDefinitionManager& DefinitionManager;
     CWorld& World;
@@ -90,7 +113,11 @@ private:
     bool NonScriptedEntitesPauseMode;
     bool AllEntitesPauseMode;
     bool FirstRenderOfFrame;
+#ifdef FABLE_RETAIL_CTHINGMANAGER_LOADSINGLE
+    std::map<unsigned __int64,CThing*> UIDToThingMap;                   // +58 (chunk 846: typed; STLport 12 bytes, same layout)
+#else
     unsigned long UIDToThingMap[3]; // std::map<unsigned __int64,CThing*> +58
+#endif
     unsigned __int64 CurrentUniqueID;
     unsigned __int64 CurrentLocalThingUniqueID;
     bool DrawCombatCollisionDebug;

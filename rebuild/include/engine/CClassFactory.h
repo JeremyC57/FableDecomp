@@ -8,6 +8,9 @@
 #include "engine/CClassTypeInfo.h"
 class CClassTypeInit;
 class CClass;
+#ifdef FABLE_RETAIL_CCLASSFACTORY_ALLOCATECLASS
+class CCharString;                                                      // chunk 846: AllocateClass's parameter
+#endif
 class CClassFactory : public CBaseClassNonCopyable {
 protected:
     CClassFactory(unsigned char);
@@ -15,6 +18,13 @@ protected:
     virtual void AddNewClassType(const CClassTypeInit&);
     virtual void OnCreateClass(CClass&);
     virtual void OnDeleteClass(CClass&);
+#ifdef FABLE_RETAIL_CCLASSFACTORY_ALLOCATECLASS
+public:
+    // Retail opt-in (chunk 846, row 0x0051FD80): Ego_r.pdb ?AllocateClass@CClassFactory@@QAEPAVCClass@@ABVCCharString@@@Z (public, out of
+    // line at 0x00A371C0, landed under that spelling; LoadSingleThing `push eax ; mov ecx,ebx ; call 0A371C0h`). Declaration only.
+    CClass* AllocateClass(const CCharString&);                          // 0x00A371C0
+protected:
+#endif
     std::vector<CClassTypeInfo> ClassTypeInfo;                          // +4 (header wave 2026-11-03: typed for row 0x00522A20, ClassTypeInfo.size())
     unsigned long MaxClassTypeID;
     unsigned long NoAllocatedClasses;

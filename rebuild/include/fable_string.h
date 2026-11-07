@@ -77,6 +77,11 @@ public:
 #else
     bool operator==(const T* text) const;
 #endif
+#ifdef FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+    // Retail opt-in (chunk 846, row 0x00520D00 via the set<CCharString> _M_find 0x004B9370): Ego_r.pdb ??M?$CBasicString@D@@QBE_NABV0@@Z,
+    // out of line at 0x00429950 (landed; _M_find calls it at 0x004B9395). Declaration only.
+    bool operator<(const CBasicString& other) const;                 // 0x00429950 (CBasicString<char>)
+#endif
 };
 class CCharStringData
 { public:
@@ -220,7 +225,19 @@ public:
     __forceinline
 #endif
     bool EqualsCaseInsensitive(const CCharString& other) const { return _stricmp(GetAsCharArray(), other.GetAsCharArray()) == 0; }
+#ifdef FABLE_RETAIL_CCHARSTRING_LESS_INLINE
+    // (same opt-in) Ego_r.pdb ??MCCharString@@QBE_NABV0@@Z is inline in retail: _M_find 0x004B9370 tests the two PStringData
+    // pointers (equal: false; this null: true; other null: false) and calls CBasicString<char>::operator< 0x00429950 on the Data
+    // members (the landed 0x004B9370 model).
+    bool operator<(const CCharString& other) const {
+        if(other.PStringData==PStringData) return false;
+        if(PStringData==0) return true;
+        if(other.PStringData==0) return false;
+        return PStringData->Data<other.PStringData->Data;
+    }
+#else
     bool operator<(const CCharString&) const;
+#endif
 #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
     // (same opt-in) retail expands CCharString::operator== in place around the CBasicString call even in the size-optimised
     // CTCVillage TU (0x0065B956..0x0065B97A), where plain inline is called out of line.

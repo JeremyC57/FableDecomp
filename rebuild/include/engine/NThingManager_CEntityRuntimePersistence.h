@@ -31,6 +31,12 @@ public:
     void ClearPersistenceDataForSection(const CCharString& section);   // 0x00520390
 #endif
     void LoadFromGameStateBinary(CPersistContext&);
+#ifdef FABLE_RETAIL_CENTITYRUNTIMEPERSISTENCE_DEAD
+    // Retail opt-in (chunk 846, row 0x0051FD80 CThingManager::LoadSingleThing): Ego_r.pdb / FableWin.pdb
+    // ?IsEntityPersistedAsDead@CEntityRuntimePersistence@NThingManager@@QBE_N_K@Z, inline in retail (`lea esi,[ebx+0B8h] ; call
+    // 00527D20h` = the landed map _M_find, then `cmp eax,[esi]` against the header node at 0x005200F9). Body only: no layout change.
+    bool IsEntityPersistedAsDead(unsigned __int64 uid) const { return PersistedDeadEntities.find(uid)!=PersistedDeadEntities.end(); }
+#endif
     bool GetGamePersistentSaveData(long,CArray<unsigned char>&) const; // 0x00522530 (Ego_r 0x005297A0, FableWin 0x01D437D0)
     void SetGamePersistentSaveData(long,const void*,unsigned long);   // PDB: QAEXJPBXK
     const CCharString* GetLevelPersistentScript(long level) const {   // PDB QBEPBVCCharString@@J (Ego_r + FableWin); inline in 0x00522720

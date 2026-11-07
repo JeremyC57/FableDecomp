@@ -198,6 +198,12 @@ private:
     unsigned char _pad_0x74[0xb4 - 0x74];                    // +0x74 Objectives .. PMostRecentValidUsedTargetName
 #endif
 public:
+#ifdef FABLE_RETAIL_CQUESTMANAGER_ONACTIVATEENTITY
+    // Retail opt-in (chunk 846, row 0x0051FD80 CThingManager::LoadSingleThing): Ego_r.pdb / FableWin.pdb
+    // ?OnActivateEntity@CQuestManager@@QAEXAAVCThing@@@Z, out of line at 0x004AFA60 (`mov ecx,[013B89FCh] ; push ebp ; call`; the
+    // catalog row's name). Declaration only: no layout change.
+    void OnActivateEntity(CThing&);                                      // 0x004AFA60
+#endif
     static void CheckRetailLayout() {
         FABLE_STATIC_ASSERT(offsetof(CQuestManager, ActiveQuestCards) == 0x5c);
 #ifdef FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK

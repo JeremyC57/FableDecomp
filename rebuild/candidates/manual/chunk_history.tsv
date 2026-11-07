@@ -27754,3 +27754,9 @@ chunk	address	module	name	length
 848	009bc120	CPersistContext	TransferVectorOfSubComponentsLoadText	1639
 848	00d321c0	_global	CScriptGameResourceObject_LoadEndGameSister	1136
 848	00ea2720	_global	KnotHoleGates_OnScript	1334
+849	00ae2e20	CParticleProgram	OptimiseSpringOrder	1293
+849	00501450	CWorldMap	GenerateRegionConnectivityGraph	1334
+849	0058e99f	CTCInventory	OpenInventoryShortcut	1498
+849	0041d21b	NUISystem::CManager	CreateComponent	1677
+849	009cf3a0	CBankFile	WriteSymbolHeaderFile	1991
+849	0057e2f1	CTCHeroStats	OnSerialise	2373

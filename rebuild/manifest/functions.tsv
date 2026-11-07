@@ -1792,7 +1792,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004458f0	GetMouseMovement	CGamePlayerInterface	__thiscall	C2DVector	2	CGamePlayerInterface *,CInputEvent *	1	yes	accepted									
 00445920	CdeclCall_DrawGetSeaLevel_00445920	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00445920.cpp
 00445940	GetConstantCount	CShaderPreParser	__thiscall	ulong	1	CShaderPreParser *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CShaderPreParser_GetConstantCount_00445940.cpp
-00445950	GetConstantCount	CShaderPreParser	__thiscall	ulong	1	CShaderPreParser *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CShaderPreParser_GetConstantCount_00445950.cpp
+00445950	GetNumberOfQuickAccessItemButtons	CGamePlayerInterface	__thiscall	ulong	1	CShaderPreParser *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CShaderPreParser_GetConstantCount_00445950.cpp
 00445960	GetConstantCount	CShaderPreParser	__thiscall	ulong	1	CShaderPreParser *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CShaderPreParser_GetConstantCount_00445960.cpp
 00445a60	SavePacketEvent	CGamePlayerInterface	__thiscall	void	2	CGamePlayerInterface *,CInputEvent *	1	yes	accepted									
 00445ae0	SaveInitialInfo	CGamePlayerInterface_Methods	__thiscall	void	1	CGamePlayerInterface *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CGamePlayerInterface_SaveInitialInfo_00445ae0.cpp
@@ -13906,7 +13906,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00651a7e	CDrawAbilityButtons	NPlayerGui::CDrawAbilityButtons	__thiscall	undefined	3	CDrawAbilityButtons *,CPlayerGui *,vector<NPlayerGui::CDrawBase*,std::allocator<NPlayerGui::CDrawBase*>_> *	0	yes	accepted									
 00651b04	Draw	CDrawAbilityButtons	__thiscall	void	2	CDrawAbilityButtons *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 00652f0a	CDrawQuickAccessIcons	NPlayerGui::CDrawQuickAccessIcons	__thiscall	undefined	3	CDrawQuickAccessIcons *,CPlayerGui *,vector<NPlayerGui::CDrawBase*,std::allocator<NPlayerGui::CDrawBase*>_> *	0	yes	accepted									
-00652fa4	Draw	CDrawQuickAccessIcons	__thiscall	void	2	CDrawQuickAccessIcons *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
+00652fa4	Draw	NPlayerGui::CDrawQuickAccessIcons	__thiscall	void	2	CDrawQuickAccessIcons *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 006541d1	Draw	NPlayerGui::CDraw2DText	__thiscall	void	2	CDraw2DText *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 00654258	CDrawMeleeActionButtonEffects	NPlayerGui::CDrawMeleeActionButtonEffects	__thiscall	undefined	3	CDrawMeleeActionButtonEffects *,CPlayerGui *,vector<NPlayerGui::CDrawBase*,std::allocator<NPlayerGui::CDrawBase*>_> *	0	yes	accepted									
 006542a4	CDrawHighlightingTargetingCursor	NPlayerGui::CDrawHighlightingTargetingCursor	__thiscall	undefined	3	CDrawHighlightingTargetingCursor *,CPlayerGui *,vector<NPlayerGui::CDrawBase*,std::allocator<NPlayerGui::CDrawBase*>_> *	0	yes	accepted									
@@ -14103,7 +14103,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006572a0	Draw	NPlayerGui::CDrawNPCName	__thiscall	void	2	CDrawNPCName *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 00657470	MoveCursor	NPlayerGui::CDrawMouseCursor	__thiscall	void	2	CDrawMouseCursor *,C2DVector *	1	yes	accepted									
 00657550	ClearPrimitivesIfNecessary	NPlayerGui::CDrawQuickAccessIconsPC	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00657580	NPlayerGui::CDrawQuickAccessIconsPC::vfunc_2	NPlayerGui::CDrawQuickAccessIconsPC	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00657580	Draw	NPlayerGui::CDrawQuickAccessIconsPC	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006579b0	CDrawAbilityButtonsPC	NPlayerGui::CDrawAbilityButtonsPC	__thiscall	undefined	3	CDrawAbilityButtonsPC *,CPlayerGui *,vector<NPlayerGui::CDrawBase*,std::allocator<NPlayerGui::CDrawBase*>_> *	0	yes	accepted									
 006579e0	GetAbilityPositionMapping	NPlayerGui::CDrawAbilityButtonsPC	unknown	undefined	0		0	yes	review-medium									
 00657ac0	GetAbilityButtonMapping	NPlayerGui::CDrawAbilityButtonsPC	unknown	undefined	0		0	yes	review-medium									
@@ -24077,7 +24077,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00816150	Init	NHitLocations::CPhysicalPrimitiveCylinder	__thiscall	bool	3	CPhysicalPrimitiveCylinder *,CPersistContext *,CCharString *	1	yes	accepted									
 008162f0	RegisterThingHandlers	_global	__thiscall	void	1	CScreenEffectPriorityStack *	1	yes	accepted									
 00816390	SetEnabled	CHitLocation	__thiscall	void	2	CHitLocation *,bool	1	yes	accepted									
-00816410	NHitLocations::CPhysicalPrimitiveCylinder::vfunc_10	NHitLocations::CPhysicalPrimitiveCylinder	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00816410	GetClosestPointToPos2D	NHitLocations::CPhysicalPrimitiveCylinder	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008168b0	GetPCombatFirstHitLocationIntersectionWithFiniteLine	CTCHitLocations	__thiscall	CHitLocation *	6	CTCHitLocations *,C3DVector *,C3DVector *,C3DVector *,C3DVector *,float	1	yes	accepted									
 008169b0	GetPCombatFirstHitLocationIntersectionWithTriangle	CTCHitLocations	__thiscall	CHitLocation *	5	CTCHitLocations *,vector<C3DVector,std::allocator<C3DVector>_> *,C3DVector *,C3DVector *,float	1	yes	accepted									
 00816aa0	TailJmp_GetPCombatFirstHitLocationIntersectionWi_00816aa0	_global	__thiscall	CHitLocation *	6	CTCHitLocations *,C3DVector *,C3DVector *,C3DVector *,C3DVector *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\81\CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_00816aa0.cpp
@@ -24113,7 +24113,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008182e0	sort_heap	std	__fastcall	void	3	THitLocationIntersectionElement *,THitLocationIntersectionElement *,THitLocationIntersectionElementPred	1	yes	accepted									
 008183e0	InsertionSort_008183e0	_global	__fastcall	CUIMiniMapMarker *	4	CUIMiniMapMarker *,CUIMiniMapMarker *,CUIMiniMapMarker *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00818450	__partial_sort	std	unknown	undefined	0		0	yes	accepted									
-008185b0	Geometry_PolygonClipping	_global	unknown	undefined	0		0	yes	accepted									
+008185b0	GetRootsNumerically<CVeryRandomFunctionToFindThePointOnAnElipseThatIsClosestToAPoint>	NMaths	unknown	undefined	0		0	yes	accepted									
 00818b00	__introsort_loop	std	unknown	undefined	0		0	yes	accepted									
 00818c20	Sort_SElement32_00818c20	_global	unknown	undefined	0		0	yes	accepted									
 00818ca0	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									

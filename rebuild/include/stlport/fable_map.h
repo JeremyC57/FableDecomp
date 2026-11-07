@@ -152,7 +152,14 @@ public:
         }
         return iterator(y);
     }
+#ifdef FABLE_RETAIL_STLP_TREE_CONSTFIND
+    // Retail opt-in (chunk 846, row 0x0051FD80 via CEntityRuntimePersistence::IsEntityPersistedAsDead): STLport 4.6 _tree.h
+    // `const_iterator find(const _KT& __k) const { return const_iterator(_M_find(__k)); }` -- the const twin calls the out-of-line
+    // _M_find (0x00527D20, landed) as the non-const one does. Body only: no layout change.
+    const_iterator find(const K& key) const { return const_iterator(_M_find(key)); }
+#else
     const_iterator find(const K&) const;
+#endif
     const_iterator end()const{return const_iterator(this->_M_header._M_data);}
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE
     // Retail opt-in (chunk 778, row 0x00ACCBF0 COptimisedPrimitive::PerformSubContraction): STLport 4.6 _tree.h erase(iterator)
@@ -267,6 +274,11 @@ public:
     iterator begin() const { return _M_t.begin(); }
     iterator end() const { return _M_t.end(); }
     size_t size() const { return _M_t.size(); }
+#endif
+#ifdef FABLE_RETAIL_STLP_TREE_CONSTFIND
+    // (same opt-in, chunk 846 row 0x00520D00) STLport 4.6 _set.h `iterator find(const key_type& __x) const { return _M_t.find(__x); }`:
+    // retail calls the set<CCharString> _M_find 0x004B9370 (landed) and compares with the header node.
+    iterator find(const K& x) const { return _M_t.find(x); }
 #endif
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE
     // chunk 778 (row 0x00ACCBF0): STLport 4.6 _set.h clear() (`_M_t.clear()`; retail 0x00AD3900 is its out-of-line copy there).

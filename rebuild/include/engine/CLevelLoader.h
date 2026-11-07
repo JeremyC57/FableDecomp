@@ -36,6 +36,15 @@ public:
         long                     RegionIndex;                           // +0x1c
     };
     bool IsBusy() const;                                                 // 0x006C20A0
+#ifdef FABLE_RETAIL_CLEVELLOADER_LOADALL
+    // Nested opt-in (chunk 846, row 0x00520D00 CThingManager::LoadEntitiesFromScript): the "load every section" selector. Both PDB
+    // name sets carry `dynamic initializer for 'CLevelLoader::LoadAllSectionName'` (a static CCharString member; "XXX_ALL" at
+    // 0x013BAB08) and Ego_r.pdb ?GetLoadAllSectionName@CLevelLoader@@SI?AVCCharString@@XZ, inline in retail (a by-value copy:
+    // `push 013BAB08h ; call CCharString(const CCharString&) 0x0099EC30` at 0x00520E43). Public static per the Codex pass 12 TPI
+    // extraction. Declarations only: no layout change.
+    static CCharString LoadAllSectionName;                               // 0x013BAB08
+    static CCharString __fastcall GetLoadAllSectionName() { return LoadAllSectionName; }
+#endif
     void Add(const CCountedPointer<CObject>& object);                    // 0x006C2120
 private:
     std::list<CCountedPointer<CObject> > ObjectList;                     // +0x14

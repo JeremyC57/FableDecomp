@@ -1,0 +1,7 @@
+address	module	name	length
+00657580	NPlayerGui::CDrawQuickAccessIconsPC	vfunc_2	1057
+00816410	NHitLocations::CPhysicalPrimitiveCylinder	vfunc_10	1174
+0051fd80	CThingManager	LoadSingleThing	1320
+00520d00	CThingManager	LoadEntitiesFromScript	1338
+00d0b3e0	NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS	Main	3802
+00db3fa0	NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader	Main	4042
