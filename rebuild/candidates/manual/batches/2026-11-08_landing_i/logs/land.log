@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00c75f80   MATCH            PASS   Allocate
+
+WINS: 1
+  00c75f80 MATCH CCombFilter::?Allocate@CCombFilter@@QAEXIPAPAMPAII@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CCombFilter_Allocate_00c75f80

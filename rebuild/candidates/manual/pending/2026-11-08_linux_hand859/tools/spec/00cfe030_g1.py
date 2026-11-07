@@ -1,0 +1,25 @@
+LOOP_HEAD = "            for (unsigned long i = 0; i < spawn_points.size(); ++i) {\n                if (IsActiveThreadTerminating()) return;"
+CMP_OLD = "                if (spawn_points[i].GetDataString() != \"NULL\" && spawn_points[i].GetDataString() != \"\") {"
+AXES = [
+ ("idx", [("", "", []),
+          ("pr", "point reference after the break test", [("                    break;\n                }\n                if (spawn_points[i].GetDataString()", "                    break;\n                }\n                CScriptThing& point = spawn_points[i];\n                if (point.GetDataString()"),
+                                                           ("&& spawn_points[i].GetDataString() != \"\") {", "&& point.GetDataString() != \"\") {"),
+                                                           ("                    Game->CreateCreature(spawn_points[i].GetDataString(), spawn_points[i].GetPos(),", "                    Game->CreateCreature(point.GetDataString(), point.GetPos(),"),
+                                                           ("                    Game->CreateCreature(\"CREATURE_MINION_DREADWINGS\", spawn_points[i].GetPos(),", "                    Game->CreateCreature(\"CREATURE_MINION_DREADWINGS\", point.GetPos(),")]),
+          ("pb", "point reference at the loop top", [(LOOP_HEAD, LOOP_HEAD + "\n                CScriptThing& point = spawn_points[i];"),
+                                                      (">spawn_points[i].", "point.")]),
+          ("pf", "front pointer indexing", [("            for (unsigned long i = 0; i < spawn_points.size(); ++i) {", "            CScriptThing* points = &spawn_points.front();\n            for (unsigned long i = 0; i < spawn_points.size(); ++i) {"),
+                                             (">spawn_points[i].", "points[i].")])]),
+ ("ctr", [("", "", []),
+          ("cl", "long counter", [("            for (unsigned long i = 0; i < spawn_points.size(); ++i) {", "            for (long i = 0; i < (long)spawn_points.size(); ++i) {")])]),
+ ("cmp", [("", "", []),
+          ("cn", "negated equality compares", [("?                if (spawn_points[i].GetDataString() != \"NULL\" && spawn_points[i].GetDataString() != \"\") {", "                if (!(spawn_points[i].GetDataString() == \"NULL\") && !(spawn_points[i].GetDataString() == \"\")) {"),
+                                                ("?                if (point.GetDataString() != \"NULL\" && point.GetDataString() != \"\") {", "                if (!(point.GetDataString() == \"NULL\") && !(point.GetDataString() == \"\")) {"),
+                                                ("?                if (points[i].GetDataString() != \"NULL\" && points[i].GetDataString() != \"\") {", "                if (!(points[i].GetDataString() == \"NULL\") && !(points[i].GetDataString() == \"\")) {")])]),
+ ("size", [("", "", []),
+           ("se", "!empty()", [("        if (spawn_points.size() != 0) {", "        if (!spawn_points.empty()) {")])]),
+ ("max", [("", "", []),
+          ("mx", "max spawned test through a local", [("                if (ParentClass.TotalSpawnedCreaturesAlive > pGlobalScriptDef->ATO_MaxSpawnedCreatures) {", "                long max_spawned = pGlobalScriptDef->ATO_MaxSpawnedCreatures;\n                if (ParentClass.TotalSpawnedCreaturesAlive > max_spawned) {")])]),
+ ("near", [("", "", []),
+           ("nn", "nearest name local", [("        Game->GetAllThingsWithScriptName(nearest.GetDataString(), spawn_points);", "        CCharString nearest_name = nearest.GetDataString();\n        Game->GetAllThingsWithScriptName(nearest_name, spawn_points);")])]),
+]

@@ -1,0 +1,16 @@
+AXES = [
+ ("rm", [("", "", []),
+         ("rp", "render manager pointer", [("    CRenderManagerCore& renderManager = displayManager->GetRenderManager();", "    CRenderManagerCore* renderManager = &displayManager->GetRenderManager();"), (">    renderManager.", "    renderManager->")])]),
+ ("dudv", [("", "", []),
+           ("dz", "du/dv zeroed in a final else", [("    float du = 0.0f;\n    float dv = 0.0f;\n    if (scaleHalf) {", "    float du;\n    float dv;\n    if (scaleHalf) {"), ("        dv = 0.5f / (float)height;\n    }", "        dv = 0.5f / (float)height;\n    } else {\n        du = 0.0f;\n        dv = 0.0f;\n    }")]),
+           ("dr", "du/dv as 1.0f / (0.5f * width)", [("        du = 1.0f / ((float)width * 0.5f);\n        dv = 1.0f / ((float)height * 0.5f);", "        du = 1.0f / (0.5f * (float)width);\n        dv = 1.0f / (0.5f * (float)height);")])]),
+ ("loop", [("", "", []),
+           ("lp", "pointer walk", [("    for (long i = 0; i < 4; ++i) {\n        verts[i].RHW = 1.0f;\n        verts[i].Z = 0.0f;\n        verts[i].U1 += du;\n        verts[i].V1 += dv;\n    }", "    for (CTVertexRHWColTex1* v = verts; v != verts + 4; ++v) {\n        v->RHW = 1.0f;\n        v->Z = 0.0f;\n        v->U1 += du;\n        v->V1 += dv;\n    }")]),
+           ("la", "assignment form", [("        verts[i].U1 += du;\n        verts[i].V1 += dv;", "        verts[i].U1 = verts[i].U1 + du;\n        verts[i].V1 = verts[i].V1 + dv;")])]),
+ ("restore", [("", "", []),
+              ("rn", "restore test as the negated first test", [("    if (fullRenderTarget || scaleHalf)\n        displayManager->SetViewport(oldViewport);", "    if (!(!fullRenderTarget && !scaleHalf))\n        displayManager->SetViewport(oldViewport);")])]),
+ ("tex", [("", "", []),
+          ("tt", "texture pointer array", [("    const CTexture* texture = this;\n", "    const CTexture* textures[1] = { this };\n"), ("(&texture, 1,", "(textures, 1,")])]),
+ ("dims", [("", "", []),
+           ("dd", "dims used directly", [("        C2DExtentsI dims = displayManager->GetRenderTargetDimensions();\n        width = dims.X;\n        height = dims.Y;\n        C2DBoxI viewport;\n        viewport.Initialise(0, 0, width, height);", "        C2DExtentsI dims = displayManager->GetRenderTargetDimensions();\n        width = dims.X;\n        height = dims.Y;\n        C2DBoxI viewport;\n        viewport.Initialise(0, 0, dims.X, dims.Y);")])]),
+]

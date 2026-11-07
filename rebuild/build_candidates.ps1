@@ -385462,6 +385462,13 @@ $catalog = @(
         TestSource = '00/a8/CVectorMap_Insert_00a852b0_test.cpp'
         PassPattern = '00a852b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c75f80'
+        Module = 'CCombFilter'
+        Source = '00/c7/CCombFilter_Allocate_00c75f80.cpp'
+        TestSource = '00/c7/CCombFilter_Allocate_00c75f80_test.cpp'
+        PassPattern = '00c75f80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

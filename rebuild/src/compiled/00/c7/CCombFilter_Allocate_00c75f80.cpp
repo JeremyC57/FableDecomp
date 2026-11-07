@@ -1,7 +1,5 @@
 // CCombFilter::Allocate(unsigned int length, float** pMemory, unsigned int* pBytes, unsigned int index) -- two-pass buffer setup of one delay tap: with memory, take `length` floats from the cursor, clear them and record the line index; always add the buffer's bytes to the running total
-// Grade: DIFFER(111v111) -- scheduling only: ours hoists the Clear() byte count (`mov ecx,esi; shl ecx,2; mov ebx,...`) above the m_pos store and the data load, retail forms it at the memset site; 4 masked lines, 71 attempts this pass (chunk 847) after 70 earlier; chunk 859: 11 more (158 total): a size reference / data reference / both references, the byte count as a member function, the ring pointer through `this`, a clear loop (90 B), the memset moved last / mid / after the clear (119-122 B) and a `clear(len)` helper (md37) -- the hoisted count stays md4 whenever the shape is retail's
-// Next idea: the count tie never moved over 52 body spellings and 18 flag sets; change the IR instead: keep a byte count beside the float count in the ring (Ego_r CRingBuffer/CCombFilter layout check) or clear inside a CRingBuffer::Setup(data,count) that reads m_size back from the member after the stores
-// Leaf: ?Allocate@CCombFilter
+// Leaf: ?Allocate@CCombFilter@@QAEXIPAPAMPAII@Z
 // Was: DIFFER(111v111) 4 lines (wave-2 sec6): renamed to the bound ?Allocate@CCombFilter@@QAEXIPAPAMPAII@Z
 //   (CRingBuffer ring, m_mode +0x10, chunk 598/landed 0x00C698A0); residue unchanged: retail stores m_pos and re-reads
 //   m_data before the memset count. Tried: memset by the length parameter (30 lines), data local inside Clear (same),
@@ -10,8 +8,12 @@
 //   The reverb's allocation pass 0x00C6A460 calls it for its four +0x1F8 taps (sizing pass: *pMemory == 0).
 // Layout (descriptive; libpk reverb module, no PDB/RTTI): CCombFilter (vtable 0x012B9588, ctor 0x00C69880, 0x14 bytes):
 //   CDspObject base, ring {float* data +4, unsigned size +8, unsigned pos +0xC}, line index +0x10.
-// Shape: the cursor is advanced before the member stores (`*pMemory = block + length` right after the read), the
-//   memset re-reads m_data, and the byte total is the shared tail of both arms.
+// Shape (chunk 859, MATCH): the cursor is advanced before the member stores, the three ring stores go through a
+//   `CRingBuffer* ring = &m_ring;` pointer while Clear() is called on the member itself. VC7.1 forwards a member store into a
+//   later load (and then CSEs `m_size * 4` with the cursor's `length * 4` scale, hoisting the byte count) only when the store and
+//   the load use the same base expression; with the stores through the derived pointer the count is formed at the memset site
+//   from the back end's register copy of length (`mov ecx,esi; shl ecx,2`) and m_data is re-read (`mov edi,[edx+4]`), as retail.
+//   The byte total is the shared tail of both arms.
 extern "C" void* __cdecl memset(void* dst, int value, unsigned int size);
 #pragma intrinsic(memset)
 
@@ -36,9 +38,10 @@ void CCombFilter::Allocate(unsigned int length, float** pMemory, unsigned int* p
     if (*pMemory) {
         float* block = *pMemory;
         *pMemory += length;
-        m_ring.m_data = block;
-        m_ring.m_size = length;
-        m_ring.m_pos = 0;
+        CRingBuffer* ring = &m_ring;
+        ring->m_data = block;
+        ring->m_size = length;
+        ring->m_pos = 0;
         m_ring.Clear();
         m_mode = index;
     }

@@ -1,21 +1,21 @@
 address	name	status	attempts	best	grade	difflines	file	notes
-006a9690	CThingPlayerCreature::ResolveRelativeMovementAcceleration	matched	8	RELOCATION_MATCH	RELOCATION_MATCH	0	src/006a9690.cpp	lea ecx (RotateXY this) one slot early; 0x00A14040 is RotateXY (NAME fix)
-0058301a	CTCInventory::CreateEditBoxActions	matched	5	RELOCATION_MATCH	RELOCATION_MATCH	0	src/0058301a.cpp	address-taken box home store slot
-0047ed76	CTCInGameMenu::SetToSave	parked	2	DIFFER	366v366	2	differ/0047ed76.cpp	push ecx before fsubp
-00a22e10	CRightHandedSet::MakePerpendicular	parked	1	DIFFER	358v358	2	differ/00a22e10.cpp	ParentThing load after push eax
-006afe60	CTCPhysicsBase::RespondToCollision	parked	2	DIFFER	145v145	2	differ/006afe60.cpp	velocity load after fld [ecx+0x2c]
-00d18df0	NScript::CQ_BountyHuntScript::CBH_GangDeputy2::Main	parked	1	DIFFER	3337v3321	2	differ/00d18df0.cpp	size diff 7
-005e78f0	CTCQuestCompletionUI::GlobalUpdate	parked	4	DIFFER	2340v2340	4	differ/005e78f0.cpp	x87 block scheduling (mov [esp+0x20],eax / mov eax,[esi+0x60])
-00c52bb0	CCpuInfo::GetAMDModelName	parked	1	DIFFER	140v140	4	differ/00c52bb0.cpp	cmp eax,4/jae vs cmp eax,3/ja
-00c75f80	CCombFilter::Allocate	parked	11	DIFFER	111v111	4	differ/00c75f80.cpp	memset count hoisted
-00a852b0	CVectorMap<unsigned __int64,std::list<C2DLineF>,CKeyPairCompareLess<...> >::Insert	matched	9	RELOCATION_MATCH	RELOCATION_MATCH	0	src/00a852b0.cpp	same-TU bodies of every address-taking callee; test PASS
-0065b142	CTCVillage::EnableVillagerDefTypes	parked	3	DIFFER	386v386	4	differ/0065b142.cpp	second mov esi,0x17c slot
-00b92300	CEngineSceneGridCell::CreateOcclusionGroup	parked	3	DIFFER	335v335	4	differ/00b92300.cpp	two extra vtable stores (inline budget)
-00f36a30	NFractal::CHeteroTerrainFractal::GetFractalHeight	parked	16	DIFFER	361v361	4	differ/00f36a30.cpp	counter reload after fmul [edi]
-009fa780	CTexture::BltToRenderTargetWithGPU	parked	1	DIFFER	2028v2028	4	differ/009fa780.cpp	edx/eax swap at vcall
-00986ed0	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby::CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	parked	1	DIFFER	353v353	8	differ/00986ed0.cpp	register swap ecx/edx (lane gap)
-0085c7d0	NCameraModes::CMoveOnCylinder::OnInit	parked	2	DIFFER	332v332	8	differ/0085c7d0.cpp	mov ebp,ecx / this spill order
-00cfe030	NScript::CQ_AwakeningTheOracleScript::COracleTablet::Main	parked	14	DIFFER	3575v3575	8	differ/00cfe030.cpp	[edi+ecx] vs lea at two GetPos sites
-00e76e90	NScript::CV_ExposeMayorScript::HeroFlashesLamp	parked	1	DIFFER	1613v1612	10	differ/00e76e90.cpp	~CTimer exit block order
-00de8370	NScript::CQ_RansomVictimScript::CRansommer::Main	parked	4	DIFFER	4894v4894	12	differ/00de8370.cpp	two rotated IsPerformingScriptTask tests
-00b5a3f0	CEngineScreenEffectColourFilter::ApplyColourFilter	parked	1	DIFFER	2923v2916	7	differ/00b5a3f0.cpp	fld/fmul operand order x2
+006a9690	CThingPlayerCreature::ResolveRelativeMovementAcceleration	matched	8	RELOCATION_MATCH	RELOCATION_MATCH	0	src/006a9690.cpp	RELOCATION_MATCH (round 1, landed): float& reference for the joined camera angle (push-then-lea); PeekWorld 0x004C7AB0 respelt
+0058301a	CTCInventory::CreateEditBoxActions	matched	5	RELOCATION_MATCH	RELOCATION_MATCH	0	src/0058301a.cpp	RELOCATION_MATCH (round 1, landed): same-TU noinline list::insert/push_back bodies, single editBox local
+0047ed76	CTCInGameMenu::SetToSave	parked	101	DIFFER	366v366	2	differ/0047ed76.cpp	`push ecx; fsubp` v retail `fsubp; push ecx` at the ChangePosition depth slot (stack-stack x87 tie, micro-probed); 101 grades this chunk
+00a22e10	CRightHandedSet::MakePerpendicular	parked	111	DIFFER	358v358	2	differ/00a22e10.cpp	second `mov esi,17Ch` one slot late in the second Normalise (scheduler tie); 111 grades
+006afe60	CTCPhysicsBase::RespondToCollision	parked	112	DIFFER	145v145	2	differ/006afe60.cpp	velocity parameter load one slot after `fld [ecx+2Ch]` (/Oa fixes it; alias-driven); 112 grades incl. the Ego_r reference/const signature
+00d18df0	NScript::CQ_BountyHuntScript::CBH_GangDeputy2::Main	parked	1	DIFFER	3337v3321	2	differ/00d18df0.cpp	two MovieBase dtor sites expand only under the diagnostic /d2inlS15 meter: documented inline-budget blocker, not regraded (1 grade)
+005e78f0	CTCQuestCompletionUI::GlobalUpdate	parked	126	DIFFER	2340v2340	4	differ/005e78f0.cpp	x87/int interleave in the digit-count block (TargetExperience spill / Gold load around fmul-fdivp); 126 grades
+00c52bb0	CCpuInfo::GetAMDModelName	parked	254	DIFFER	140v140	4	differ/00c52bb0.cpp	family-5 K5 test register/constant (`cmp eax,3; ja` v `cmp eax,4; jae`; eax only with constant 4, ecx otherwise); 254 grades
+00c75f80	CCombFilter::Allocate	matched	391	MATCH	MATCH	0	src/00c75f80.cpp	MATCH (round 2): ring stores through `CRingBuffer* ring = &m_ring;`, Clear() on the member -- blocks VC7.1 store forwarding / CSE of the memset count with the cursor scale; 391 grades this chunk
+00a852b0	CVectorMap<unsigned __int64,std::list<C2DLineF>,CKeyPairCompareLess<...> >::Insert	matched	9	RELOCATION_MATCH	RELOCATION_MATCH	0	src/00a852b0.cpp	RELOCATION_MATCH (round 1, landed): same-TU noinline bodies for every callee taking the temporary's address
+0065b142	CTCVillage::EnableVillagerDefTypes	parked	113	DIFFER	386v386	4	differ/0065b142.cpp	ParentThing load (`mov eax,[ebp-4]; mov ecx,[eax+4]`) after `push eax` v retail before `push 1`; 113 grades
+00b92300	CEngineSceneGridCell::CreateOcclusionGroup	parked	110	DIFFER	335v335	4	differ/00b92300.cpp	prologue `mov ebp,ecx` / this-spill `mov [esp+0Ch],ebp` slots; 110 grades
+00f36a30	NFractal::CHeteroTerrainFractal::GetFractalHeight	parked	126	DIFFER	361v361	4	differ/00f36a30.cpp	octave counter reload `mov ecx,[esp+0Ch]` after `fmul [edi]` v before; Ego_r NFractal spelling installed (same bytes); 126 grades
+009fa780	CTexture::BltToRenderTargetWithGPU	parked	111	DIFFER	2028v2028	4	differ/009fa780.cpp	SetRenderState bookmark test/or register pair ecx/edx swapped (lane gap GOTCHAS 2026-11-03); 111 grades
+00986ed0	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby::CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	parked	111	DIFFER	353v353	8	differ/00986ed0.cpp	two cross-product fmul operand orders (up.X pairs; not textual, micro-probed); 111 grades
+0085c7d0	NCameraModes::CMoveOnCylinder::OnInit	parked	112	DIFFER	332v332	8	differ/0085c7d0.cpp	GetFacingVector vptr/lea register pair eax/edx v edx/eax; 112 grades
+00cfe030	NScript::CQ_AwakeningTheOracleScript::COracleTablet::Main	parked	141	DIFFER	3575v3575	8	differ/00cfe030.cpp	create-site SIB order `[edi+ecx]` v `[ecx+edi]` (strength-reduced offset as base); 141 grades
+00e76e90	NScript::CV_ExposeMayorScript::HeroFlashesLamp	parked	111	DIFFER	1613v1612	10	differ/00e76e90.cpp	shared ~CTimer exit block laid out at the end of recursion copy 2 (1 byte: jmp rel32 v rel8); 111 grades
+00de8370	NScript::CQ_RansomVictimScript::CRansommer::Main	parked	114	DIFFER	4894v4894	12	differ/00de8370.cpp	two rotated IsPerformingScriptTask tests `mov eax; lea ecx,[eax+0ACh]` v `mov ecx; add ecx,0ACh`; 114 grades
+00b5a3f0	CEngineScreenEffectColourFilter::ApplyColourFilter	parked	111	DIFFER	2923v2916	7	differ/00b5a3f0.cpp	third SetPixelShaderConstant `UpdateFlags |= 2` as load/or/store with an interleaved load v retail RMW `or [eax+3D8h],ecx` (+ alignment nop); 111 grades
