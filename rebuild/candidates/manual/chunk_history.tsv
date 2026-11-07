@@ -27842,3 +27842,13 @@ chunk	address	module	name	length
 860	0049a0b0	CProgressDisplay	InitialiseTextures	2920
 860	00a4efc0	_global	C3DKeyframe_InitialiseAsConstant	3491
 860	00bb30a0	CEngineClothRenderer	Render2DClothPrimitive	3538
+858	00cb6e20	_gapscan	sub_00cb6e20	57
+858	00d3b3d0	_gapscan	sub_00d3b3d0	55
+858	00d7ae30	_gapscan	sub_00d7ae30	67
+858	00d8dcc0	_gapscan	sub_00d8dcc0	67
+858	00eb6980	_gapscan	sub_00eb6980	67
+858	0121ad80	_gapscan	sub_0121ad80	53
+858	00494900	CFrontendGameComponent	Output	3336
+858	009d9c80	CRenderManager2D	DrawBufferedPolys	3435
+858	00682810	CTCCreatureOpinionOfHero	InformOfDeed	3442
+858	00648820	CDrawMiniMap	Draw	3464
