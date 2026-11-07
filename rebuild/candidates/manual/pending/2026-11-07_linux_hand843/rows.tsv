@@ -1,0 +1,7 @@
+address	module	name	length
+00b2fd60	_global	CPlane_InitializeFromCorners	1812
+00a86110	CIPhysicsFacesSegmentBase	CalculateDividingPlane	1967
+005253f0	CThingManager	LoadGameState	2263
+00d22f30	NScript::CQ_BreakSiegeScript::CKG_Sheriff	Main	3399
+00de9690	NScript::CQ_RansomVictimScript::CRansomHelper	Main	3412
+00dd4ad0	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice	Main	3467

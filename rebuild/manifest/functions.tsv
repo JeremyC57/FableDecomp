@@ -41061,7 +41061,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b2fc00	SetGameWindow	CEngineCamera	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b2\AddExclusiveObserver_AddExclusiveObserver_00b2fc00.cpp
 00b2fc10	ConsoleRunDebugScript	CEngineCamera	__fastcall	void	2	CEngineCamera *,vector<CGenericVar,std::allocator<CGenericVar>_> *	1	yes	accepted									
 00b2fc50	RefreshD3DTransforms	_global	__thiscall	void	1	CEngineCamera *	1	yes	accepted									
-00b2fd60	CPlane_InitializeFromCorners	_global	unknown	undefined	0		0	yes	accepted									
+00b2fd60	SetupGamut	CEngineCamera	unknown	undefined	0		0	yes	accepted									
 00b30480	ClipSphere	CEngineCamera	__thiscall	bool	4	CEngineCamera *,C3DVector *,float,ulong *	1	yes	accepted									
 00b30610	ClipBox	CEngineCamera	__thiscall	bool	2	CEngineCamera *,CMatrix3x4 *	1	yes	accepted									
 00b308e0	ClipWorldSpaceBoundingBox	CEngineCamera	__thiscall	bool	4	CEngineCamera *,C3DBoundingBox *,float,bool *	1	yes	accepted									

@@ -1,0 +1,2 @@
+address	Class::Name	evidence
+00b2fd60	CEngineCamera::SetupGamut	catalog placeholder _global::CPlane_InitializeFromCorners; Ego_r.pdb ?SetupGamut@CEngineCamera@@AAEXXZ between RefreshD3DTransforms and ClipSphere (retail neighbours 0x00B2FC50 / 0x00B30480 in the same order); FableWin.pdb same name; sole caller CEngineCamera::SetCameraState 0x00B3110F; writes LookVector / FrustrumPlanes

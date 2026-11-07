@@ -1,0 +1,412 @@
+00d22f59 CALL 004abe90 ??0CScriptThingRetail@@QAE@ABU0@@Z
+00d22f68 CALL 00f35b10 ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+00d22f7b CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00d22f85 VCALL +0x1c slot7 NewScriptFrame
+00d22f8a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d22f8f test al, al
+00d22f91 jne 0xd23c6c
+00d22f9f VCALL +0x814 slot517 EntitySetAsKillable
+00d22fac VCALL +0x838 slot526 EntitySetAsToAddToComboMultiplierWhenHit
+00d22fb8 test cl, cl
+00d22fba jne 0xd22fe1
+00d22fc5 VCALL +0x1c slot7 NewScriptFrame
+00d22fca CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d22fcf test al, al
+00d22fd1 jne 0xd23c6c
+00d22fdd test cl, cl
+00d22fdf je 0xd22fc0
+00d22fe3 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d22fe8 test al, al
+00d22fea jne 0xd23c6c
+00d22ff4 CALL 0099a380 ??0CVillageTask@@QAE@XZ
+00d22ffd mov " u~"
+00d2300d CALL 00cd23b9 ?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d23012 test al, al
+00d23014 je 0xd2301f
+00d2301a CALL 00cd2770 ?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00d23024 push 4
+00d2302c VCALL +0x20 slot8 StartScriptingEntity
+00d2302f test al, al
+00d23031 jne 0xd2305e
+00d23038 VCALL +0x1c slot7 NewScriptFrame
+00d2303d CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23042 test al, al
+00d23044 jne 0xd23c63
+00d2304f push 4
+00d23057 VCALL +0x20 slot8 StartScriptingEntity
+00d2305a test al, al
+00d2305c je 0xd23033
+00d23060 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23065 test al, al
+00d23067 jne 0xd23c63
+00d23073 test cl, cl
+00d23075 jne 0xd23098
+00d2307c VCALL +0x1c slot7 NewScriptFrame
+00d23081 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23086 test al, al
+00d23088 jne 0xd23c63
+00d23094 test cl, cl
+00d23096 je 0xd23077
+00d2309a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d2309f test al, al
+00d230a1 jne 0xd23c63
+00d230ad test al, al
+00d230af jne 0xd230fa
+00d230b3 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d230b8 test al, al
+00d230ba jne 0xd23c63
+00d230c6 push 1
+00d230ca VCALL +0x5a0 slot360 SetThingHasInformation
+00d230d2 push "HUD_ORB_QUEST_OPTIONAL"
+00d230db CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d230eb VCALL +0x578 slot350 MiniMapAddMarker
+00d230f5 CALL 0099eae0 @dtorB@4
+00d23100 test cl, cl
+00d23102 jne 0xd23518
+00d2310d VCALL +0x1c slot7 NewScriptFrame
+00d23112 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23117 test al, al
+00d23119 jne 0xd23c63
+00d23121 push "SCRIPT_NAME_HERO"
+00d2312a CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d23138 VCALL +0x6c slot27 MsgOnQuestFailed
+00d23141 CALL 0099eae0 @dtorB@4
+00d23146 test bl, bl
+00d23148 je 0xd232d7
+00d23150 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23155 test al, al
+00d23157 jne 0xd23c63
+00d23161 CALL 0099a380 ??0CVillageTask@@QAE@XZ
+00d2316a push 0x122d70e
+00d23186 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d2319a VCALL +0x5c8 slot370 StartMovieSequence
+00d231a4 CALL 0099eae0 @dtorB@4
+00d231af push 1
+00d231b3 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d231bb push 0x122d70e
+00d231c7 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d231ce push "TEXT_OBJECT_HERO_ANSWER_NO"
+00d231da CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d231e1 push "TEXT_OBJECT_HERO_ANSWER_YES"
+00d231ed CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d231f4 push "TEXT_QST_018_GATEGUARD_QUESTION_OPEN_GATES"
+00d23200 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d2320a push 1
+00d2322c VCALL +0x1c8 slot114 GiveHeroYesNoQuestion
+00d23239 CALL 0099eae0 @dtorB@4
+00d23242 CALL 0099eae0 @dtorB@4
+00d2324e CALL 0099eae0 @dtorB@4
+00d2325a CALL 0099eae0 @dtorB@4
+00d23264 VCALL +0x9c slot39 MsgIsQuestionAnsweredYesOrNo
+00d2326c test ebx, ebx
+00d2326e jge 0xd23298
+00d23275 VCALL +0x1c slot7 NewScriptFrame
+00d2327a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d2327f test al, al
+00d23281 jne 0xd23789
+00d2328c VCALL +0x9c slot39 MsgIsQuestionAnsweredYesOrNo
+00d23294 test ebx, ebx
+00d23296 jl 0xd23270
+00d2329a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d2329f test al, al
+00d232a1 jne 0xd237c4
+00d232a7 cmp ebx, 1
+00d232aa je 0xd237d3
+00d232b3 push 0
+00d232b7 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d232c1 CALL 006e7ab0 ??1CMovieImpPointer@@QAE@XZ
+00d232d2 CALL 0099a430 ??1CMember_0099a430@@QAE@XZ
+00d232d9 push "SCRIPT_NAME_HERO"
+00d232e2 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d232fb VCALL +0x54 slot21 MsgIsRegionUnloaded
+00d232fe test al, al
+00d23300 jne 0xd2335f
+00d23304 push "SCRIPT_NAME_HERO"
+00d2330d CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d23322 VCALL +0xa8 slot42 MsgIsActionModeButtonPressed
+00d23328 test al, al
+00d2332a je 0xd23358
+00d2332e push "SCRIPT_NAME_HERO"
+00d23337 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d23346 push 0xe
+00d2334e VCALL +0xa4 slot41 MsgIsTutorialClickedPast
+00d23354 test al, al
+00d23356 je 0xd2335f
+00d2335d jmp 0xd23364
+00d23364 test bl, 4
+00d23367 je 0xd23379
+00d23374 CALL 0099eae0 @dtorB@4
+00d23379 test bl, 2
+00d2337c je 0xd2338e
+00d23389 CALL 0099eae0 @dtorB@4
+00d2338e test bl, 1
+00d23391 je 0xd233a3
+00d2339e CALL 0099eae0 @dtorB@4
+00d233a7 test al, al
+00d233a9 je 0xd2350a
+00d233b1 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d233b6 test al, al
+00d233b8 jne 0xd23c63
+00d233c2 CALL 0099a380 ??0CVillageTask@@QAE@XZ
+00d233cb push 0x122d70e
+00d233e4 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d233f8 VCALL +0x5c8 slot370 StartMovieSequence
+00d23402 CALL 0099eae0 @dtorB@4
+00d2340d push 1
+00d23411 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d23425 CALL 007e7490 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00d2342e VCALL +0x420 slot264 GetHealth
+00d2343c test ah, 0x41
+00d2343f jne 0xd23445
+00d23443 jmp 0xd23447
+00d2344b CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00d23450 test bl, bl
+00d23452 je 0xd234b6
+00d23459 push 0
+00d2345b push 1
+00d2345d push 0
+00d2345f push 0
+00d23461 push "TEXT_QST_018_SHERIFF_ON_HIT"
+00d23466 VCALL +0x118 slot70 GetHero
+00d23471 CALL 007e7390 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDJ_N22@Z
+00d2347a CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00d2347f test al, al
+00d23481 je 0xd234a7
+00d23488 VCALL +0x1c slot7 NewScriptFrame
+00d2348d CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23492 test al, al
+00d23494 jne 0xd2380a
+00d2349e CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00d234a3 test al, al
+00d234a5 jne 0xd23483
+00d234a9 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d234ae test al, al
+00d234b0 jne 0xd23819
+00d234bb push 0
+00d234bd push 0x461c4000
+00d234c3 VCALL +0x424 slot265 ModifyThingHealth
+00d234d2 VCALL +0x118 slot70 GetHero
+00d234dd VCALL +0x95c slot599 EntitySetThingAsAllyOfThing
+00d234e6 push 0
+00d234ea VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d234f4 CALL 006e7ab0 ??1CMovieImpPointer@@QAE@XZ
+00d23505 CALL 0099a430 ??1CMember_0099a430@@QAE@XZ
+00d23510 test al, al
+00d23512 je 0xd23108
+00d2351a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d2351f test al, al
+00d23521 jne 0xd23c63
+00d2352d test al, al
+00d2352f jne 0xd2399e
+00d23537 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d2353c test al, al
+00d2353e jne 0xd23c63
+00d2354a VCALL +0x5a4 slot361 ClearThingHasInformation
+00d23556 VCALL +0x580 slot352 MiniMapRemoveMarker
+00d23578 VCALL +0x118 slot70 GetHero
+00d23582 VCALL +0x39c slot231 GetFollowingEntityList
+00d2358f CALL 007e72a0 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+00d2359b CALL 007e72a0 ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ
+00d235a9 push 4
+00d235b3 VCALL +0x118 slot70 GetHero
+00d235bd VCALL +0x20 slot8 StartScriptingEntity
+00d235c2 push "BanditSiegeLeader"
+00d235cb CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d235d3 push 4
+00d235ed VCALL +0x120 slot72 GetThingWithScriptName
+00d235f7 VCALL +0x20 slot8 StartScriptingEntity
+00d235fe CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00d23607 CALL 0099eae0 @dtorB@4
+00d23610 CALL 00cdbf70 ?Construct@CCutsceneCastMap@@QAEXXZ
+00d23617 push "HERO"
+00d23620 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d2362e CALL 00cd3d2e ??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00d2363f CALL 0099a3b0 ?CopyBase@CScriptGameResourceObjectScriptedThingBase@Row00e80d60@@QAEXABU12@@Z
+00d2364f CALL 008ab1e0 ??4CCountedPointerWords@@QAEAAU0@ABU0@@Z
+00d23658 CALL 0099eae0 @dtorB@4
+00d2365f push "SHERIFF"
+00d23668 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d23676 CALL 00cd3d2e ??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00d23684 CALL 0099a3b0 ?CopyBase@CScriptGameResourceObjectScriptedThingBase@Row00e80d60@@QAEXABU12@@Z
+00d23691 CALL 008ab1e0 ??4CCountedPointerWords@@QAEAAU0@ABU0@@Z
+00d2369a CALL 0099eae0 @dtorB@4
+00d236a1 push "LEADER"
+00d236aa CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d236b8 CALL 00cd3d2e ??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z
+00d236c9 CALL 0099a3b0 ?CopyBase@CScriptGameResourceObjectScriptedThingBase@Row00e80d60@@QAEXABU12@@Z
+00d236d9 CALL 008ab1e0 ??4CCountedPointerWords@@QAEAAU0@ABU0@@Z
+00d236e2 CALL 0099eae0 @dtorB@4
+00d236eb CALL 0099a380 ??0CVillageTask@@QAE@XZ
+00d236f2 push 0x122d70e
+00d2370b CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d2371f VCALL +0x5c8 slot370 StartMovieSequence
+00d23729 CALL 0099eae0 @dtorB@4
+00d23733 push 1
+00d23737 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d23742 push 1
+00d23744 VCALL +0x5cc slot371 FixMovieSequenceCamera
+00d23766 je 0xd2385d
+00d2376c CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23771 test al, al
+00d23773 je 0xd23854
+00d2377e VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d23784 jmp 0xd23871
+00d23789 push 0
+00d23790 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d2379a CALL 006e7ab0 ??1CMovieImpPointer@@QAE@XZ
+00d237ab CALL 0099a430 ??1CMember_0099a430@@QAE@XZ
+00d237b4 CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00d237c3 ret
+00d237c7 push 0
+00d237cb VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d237d1 jmp 0xd23796
+00d237d5 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d237da test al, al
+00d237de push 0
+00d237e0 jne 0xd2378d
+00d237e5 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d237ef CALL 006e7ab0 ??1CMovieImpPointer@@QAE@XZ
+00d23800 CALL 0099a430 ??1CMember_0099a430@@QAE@XZ
+00d23805 jmp 0xd23518
+00d2380d push 0
+00d23811 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d23817 jmp 0xd23826
+00d2381c push 0
+00d23820 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d2382a CALL 006e7ab0 ??1CMovieImpPointer@@QAE@XZ
+00d2383b CALL 0099a430 ??1CMember_0099a430@@QAE@XZ
+00d23844 CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00d23853 ret
+00d23856 push "CS_BREAKSIEGE_GATESOPEN"
+00d2385b jmp 0xd238d0
+00d2385d CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23862 test al, al
+00d23864 je 0xd238c9
+00d2386b VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d23875 CALL 006e7ab0 ??1CMovieImpPointer@@QAE@XZ
+00d23886 CALL 0099a430 ??1CMember_0099a430@@QAE@XZ
+00d2388f CALL 00cdbfb0 ?Destroy@CCutsceneCastMap@@QAEXXZ
+00d2389b CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00d238a7 CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00d238b0 CALL 008ac970 ??1CVector_008ac970@@QAE@XZ
+00d238b9 CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00d238c8 ret
+00d238cb push "CS_BREAKSIEGE_GATESOPENNOMEN"
+00d238d4 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d238d9 push 1
+00d238e6 CALL 00cbfb7d ?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z
+00d238ef CALL 0099eae0 @dtorB@4
+00d238fa VCALL +0x5cc slot371 FixMovieSequenceCamera
+00d23902 push "Blockage"
+00d2390b CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d23915 push 1
+00d2392a VCALL +0x120 slot72 GetThingWithScriptName
+00d23938 VCALL +0x1b0 slot108 RemoveThing
+00d23940 CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00d23949 CALL 0099eae0 @dtorB@4
+00d23950 push 0
+00d23954 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00d2395e CALL 006e7ab0 ??1CMovieImpPointer@@QAE@XZ
+00d2396f CALL 0099a430 ??1CMember_0099a430@@QAE@XZ
+00d23978 CALL 00cdbfb0 ?Destroy@CCutsceneCastMap@@QAEXXZ
+00d23984 CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00d23990 CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00d23999 CALL 008ac970 ??1CVector_008ac970@@QAE@XZ
+00d239a4 test al, al
+00d239a6 jne 0xd23b23
+00d239ae CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d239b3 test al, al
+00d239b5 jne 0xd23c63
+00d239bd push "KnotholeGlade"
+00d239c6 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d239cd push "KnotholeGlade"
+00d239d6 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d239dd push "TEXT_QUEST_BREAK_SIEGE_OBJECTIVE_03"
+00d239e6 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d23a08 VCALL +0xa3c slot655 GetActiveQuestName
+00d23a12 VCALL +0x4a0 slot296 SetQuestCardObjective
+00d23a1c CALL 0099eae0 @dtorB@4
+00d23a25 CALL 0099eae0 @dtorB@4
+00d23a2e CALL 0099eae0 @dtorB@4
+00d23a37 CALL 0099eae0 @dtorB@4
+00d23a41 push 0
+00d23a43 VCALL +0x214 slot133 SetWeaponOutCrimeEnabled
+00d23a4e push 1
+00d23a50 push 1
+00d23a53 VCALL +0x814 slot517 EntitySetAsKillable
+00d23a5e push 1
+00d23a61 VCALL +0x838 slot526 EntitySetAsToAddToComboMultiplierWhenHit
+00d23a69 push "ImprisonedBanditLeader"
+00d23a72 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d23a86 VCALL +0x120 slot72 GetThingWithScriptName
+00d23a90 CALL 0099eae0 @dtorB@4
+00d23aa0 VCALL +0x95c slot599 EntitySetThingAsAllyOfThing
+00d23ab1 VCALL +0x95c slot599 EntitySetThingAsAllyOfThing
+00d23abe mov byte ptr [eax + 0x4d], 1
+00d23ac2 CALL 00cd23b9 ?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d23ac7 test al, al
+00d23ac9 je 0xd23ad4
+00d23acf CALL 00cd2770 ?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00d23ad9 push 3
+00d23ae1 VCALL +0x20 slot8 StartScriptingEntity
+00d23ae4 test al, al
+00d23ae6 jne 0xd23b0f
+00d23aed VCALL +0x1c slot7 NewScriptFrame
+00d23af2 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23af7 test al, al
+00d23af9 jne 0xd23b5e
+00d23b00 push 3
+00d23b08 VCALL +0x20 slot8 StartScriptingEntity
+00d23b0b test al, al
+00d23b0d je 0xd23ae8
+00d23b11 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23b16 test al, al
+00d23b1c jne 0xd23b62
+00d23b1e CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00d23b29 test cl, cl
+00d23b2b jne 0xd23c1d
+00d23b36 VCALL +0x1c slot7 NewScriptFrame
+00d23b3b CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23b40 test al, al
+00d23b42 jne 0xd23c63
+00d23b4e test cl, cl
+00d23b50 jne 0xd23b7b
+00d23b55 test cl, cl
+00d23b57 je 0xd23b31
+00d23b59 jmp 0xd23c1d
+00d23b62 CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00d23b6b CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00d23b7a ret
+00d23b7d CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23b82 test al, al
+00d23b84 jne 0xd23c63
+00d23b8f push 0x40000000
+00d23b94 VCALL +0x5e0 slot376 Pause
+00d23ba3 push 0
+00d23ba5 VCALL +0x118 slot70 GetHero
+00d23bb0 VCALL +0x76c slot475 EntitySetFacingAngleTowardsThing
+00d23bbb push 0
+00d23bbd push 0
+00d23bc0 VCALL +0x5b0 slot364 AddNewConversation
+00d23bd1 VCALL +0x118 slot70 GetHero
+00d23be4 push "TEXT_QST_018_SHERIFF_ESCAPE_1"
+00d23bed CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00d23bfb VCALL +0x118 slot70 GetHero
+00d23c06 push 0
+00d23c18 CALL 0099eae0 @dtorB@4
+00d23c21 CALL 00cd2770 ?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00d23c2c test al, al
+00d23c2e jne 0xd23c58
+00d23c35 VCALL +0x1c slot7 NewScriptFrame
+00d23c3a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23c3f test al, al
+00d23c41 jne 0xd23c63
+00d23c49 test cl, cl
+00d23c4b je 0xd23c30
+00d23c4d jmp 0xd23c58
+00d23c55 VCALL +0x1c slot7 NewScriptFrame
+00d23c5a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00d23c5f test al, al
+00d23c61 je 0xd23c50
+00d23c67 CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00d23c76 ret

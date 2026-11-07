@@ -1,0 +1,5 @@
+address	source	grade_with_final_overlay	note
+00b2fd60	differ/00b2fd60.cpp	DIFFER(1802v1812) md213	parked row; uses the GAMUT / TRANSFORMVECTOR_SUMS opt-ins
+00a86110	differ/00a86110.cpp	DIFFER(1967v1967) md26	parked row; uses SUBASSIGN and the new CPlane.h
+00d22f30	differ/00d22f30.cpp	DIFFER(3335v3399) md200	parked row (caller-size budget; RELOCATION_MATCH under diagnostic /d2inlS15); repo headers only, no overlay opt-in
+00de9690	differ/00de9690.cpp	DIFFER(3428v3412) md128	parked row (CIsThingAlive copy-inline); repo headers only, no overlay opt-in

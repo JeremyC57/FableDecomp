@@ -27727,3 +27727,9 @@ chunk	address	module	name	length
 845	00d04ae0	NScript::CQ_BanditCampBossBattleScript::CAssassin1	Main	3623
 845	00e97070	NScript::CV_HeroDollsScript::CBSTeacher	Main	3619
 845	00ed8680	NScript::CV_TalentlessBardScript::CTBBard	Main	3652
+846	00657580	NPlayerGui::CDrawQuickAccessIconsPC	vfunc_2	1057
+846	00816410	NHitLocations::CPhysicalPrimitiveCylinder	vfunc_10	1174
+846	0051fd80	CThingManager	LoadSingleThing	1320
+846	00520d00	CThingManager	LoadEntitiesFromScript	1338
+846	00d0b3e0	NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS	Main	3802
+846	00db3fa0	NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader	Main	4042

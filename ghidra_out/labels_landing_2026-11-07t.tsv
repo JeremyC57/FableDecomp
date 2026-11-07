@@ -1,0 +1,2 @@
+address	name	evidence
+0x00B2FD60	CEngineCamera::SetupGamut	Ego_r.pdb + FableWin.pdb ?SetupGamut@CEngineCamera@@AAEXXZ; Ego_r order RefreshD3DTransforms / SetupGamut / ClipSphere = retail 0x00B2FC50 / 0x00B2FD60 / 0x00B30480; sole caller CEngineCamera::SetCameraState 0x00B3110F (chunk 843)

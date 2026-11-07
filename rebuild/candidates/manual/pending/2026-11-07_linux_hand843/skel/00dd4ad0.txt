@@ -1,0 +1,473 @@
+00dd4af3 CALL 004abe90 ??0CScriptThingRetail@@QAE@ABU0@@Z
+00dd4aff CALL 00f35b10 ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+00dd4b0c CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00dd4b16 VCALL +0x1c slot7 NewScriptFrame
+00dd4b1b CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4b20 test al, al
+00dd4b22 jne 0xdd5850
+00dd4b2c CALL 0099a380 ??0CVillageTask@@QAE@XZ
+00dd4b37 mov " u~"
+00dd4b49 VCALL +0x15c slot87 RegisterTimer
+00dd4b52 mov byte ptr [ecx + 0x6a], 0
+00dd4b5e test al, al
+00dd4b64 jne 0xdd4b83
+00dd4b6b VCALL +0x1c slot7 NewScriptFrame
+00dd4b70 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4b75 test al, al
+00dd4b77 jne 0xdd4bb1
+00dd4b7f test al, al
+00dd4b81 je 0xdd4b66
+00dd4b85 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4b8a test al, al
+00dd4b8c je 0xdd4bd4
+00dd4b97 VCALL +0x160 slot88 DeregisterTimer
+00dd4ba1 CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00dd4bb0 ret
+00dd4bba VCALL +0x160 slot88 DeregisterTimer
+00dd4bc4 CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00dd4bd3 ret
+00dd4bd6 push "CellDoor"
+00dd4bdf CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd4bf4 VCALL +0x134 slot77 GetNearestWithScriptName
+00dd4bfe CALL 0099eae0 @dtorB@4
+00dd4c06 test al, al
+00dd4c08 je 0xdd4d51
+00dd4c10 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4c15 test al, al
+00dd4c17 jne 0xdd5835
+00dd4c21 CALL 00cd23b9 ?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00dd4c26 test al, al
+00dd4c28 je 0xdd4c33
+00dd4c2e CALL 00cd2770 ?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00dd4c38 push 1
+00dd4c3b VCALL +0x3ac slot235 EntitySetAsAllowedToFollowHero
+00dd4c46 push 1
+00dd4c48 push 0x40400000
+00dd4c4d VCALL +0x118 slot70 GetHero
+00dd4c58 VCALL +0x394 slot229 EntityFollowThing
+00dd4c63 push 1
+00dd4c66 VCALL +0x118 slot70 GetHero
+00dd4c70 VCALL +0x780 slot480 SetEntityAsRegionFollowing
+00dd4c7b push 1
+00dd4c7e VCALL +0x774 slot477 SetThingPersistent
+00dd4c86 push "FACTION_PRISONER"
+00dd4c8f CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd4c9f VCALL +0x964 slot601 EntitySetInFaction
+00dd4ca9 CALL 0099eae0 @dtorB@4
+00dd4cb0 push "PrisonCourtyard"
+00dd4cb9 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd4cc8 VCALL +0x30 slot12 IsRegionLoaded
+00dd4cd7 CALL 0099eae0 @dtorB@4
+00dd4cdc test bl, bl
+00dd4ce2 je 0xdd5620
+00dd4ced VCALL +0x1c slot7 NewScriptFrame
+00dd4cf2 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4cf7 test al, al
+00dd4cf9 jne 0xdd5835
+00dd4d08 VCALL +0x168 slot90 GetTimer
+00dd4d0e test eax, eax
+00dd4d10 jne 0xdd5466
+00dd4d18 push "COURTYARD"
+00dd4d21 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd4d36 CALL 00dd5860 CQ_PrisonEscapeRescueMotherScript::MakePrisonerComment
+00dd4d3b test al, al
+00dd4d3d je 0xdd546a
+00dd4d48 jmp 0xdd546f
+00dd4d56 VCALL +0x1c slot7 NewScriptFrame
+00dd4d5b CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4d60 test al, al
+00dd4d62 jne 0xdd5835
+00dd4d6e test cl, cl
+00dd4d70 jne 0xdd4d93
+00dd4d77 VCALL +0x1c slot7 NewScriptFrame
+00dd4d7c CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4d81 test al, al
+00dd4d83 jne 0xdd5385
+00dd4d8f test cl, cl
+00dd4d91 je 0xdd4d72
+00dd4d95 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4d9a test al, al
+00dd4d9c jne 0xdd5835
+00dd4da4 push "SCRIPT_NAME_HERO"
+00dd4dad CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd4dbb VCALL +0x6c slot27 MsgOnQuestFailed
+00dd4dc4 CALL 0099eae0 @dtorB@4
+00dd4dc9 test bl, bl
+00dd4dcb je 0xdd5297
+00dd4dd3 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4dd8 test al, al
+00dd4dda jne 0xdd5835
+00dd4de4 CALL 00cd23b9 ?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00dd4de9 test al, al
+00dd4deb je 0xdd4df6
+00dd4df1 CALL 00cd2770 ?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00dd4dfb push 4
+00dd4e03 VCALL +0x20 slot8 StartScriptingEntity
+00dd4e06 test al, al
+00dd4e08 jne 0xdd4e3b
+00dd4e15 VCALL +0x1c slot7 NewScriptFrame
+00dd4e1a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4e1f test al, al
+00dd4e21 jne 0xdd541b
+00dd4e2c push 4
+00dd4e34 VCALL +0x20 slot8 StartScriptingEntity
+00dd4e37 test al, al
+00dd4e39 je 0xdd4e10
+00dd4e3d CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4e42 test al, al
+00dd4e44 jne 0xdd5835
+00dd4e4e CALL 0099a380 ??0CVillageTask@@QAE@XZ
+00dd4e55 push 0x122d70e
+00dd4e6e CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd4e82 VCALL +0x5c8 slot370 StartMovieSequence
+00dd4e8c CALL 0099eae0 @dtorB@4
+00dd4e97 push 1
+00dd4e9b VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00dd4eaa test cl, cl
+00dd4eac je 0xdd4f85
+00dd4eb4 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4eb9 test al, al
+00dd4ebb jne 0xdd4f6a
+00dd4ed2 CALL 007e7490 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dd4edb VCALL +0x420 slot264 GetHealth
+00dd4ee9 test ah, 0x41
+00dd4eec jne 0xdd4ef2
+00dd4ef0 jmp 0xdd4ef4
+00dd4efb CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00dd4f00 test bl, bl
+00dd4f02 je 0xdd5258
+00dd4f0d push 0
+00dd4f0f push 1
+00dd4f11 push 0
+00dd4f13 push 0
+00dd4f15 push "TEXT_QST_055_PRISON_PRISONER_KEY"
+00dd4f1a VCALL +0x118 slot70 GetHero
+00dd4f25 CALL 007e7390 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDJ_N22@Z
+00dd4f2e CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd4f33 test al, al
+00dd4f35 je 0xdd4f5b
+00dd4f3c VCALL +0x1c slot7 NewScriptFrame
+00dd4f41 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4f46 test al, al
+00dd4f48 jne 0xdd544b
+00dd4f52 CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd4f57 test al, al
+00dd4f59 jne 0xdd4f37
+00dd4f5d CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4f62 test al, al
+00dd4f64 je 0xdd5258
+00dd4f6d push 0
+00dd4f71 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00dd4f7b CALL 006e7b80 ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ
+00dd4f80 jmp 0xdd5835
+00dd4f8b test cl, cl
+00dd4f8d je 0xdd5049
+00dd4f95 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd4f9a test al, al
+00dd4f9c jne 0xdd544b
+00dd4fb3 CALL 007e7490 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dd4fbc VCALL +0x420 slot264 GetHealth
+00dd4fca test ah, 0x41
+00dd4fcd jne 0xdd4fd3
+00dd4fd1 jmp 0xdd4fd5
+00dd4fdc CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00dd4fe1 test bl, bl
+00dd4fe3 je 0xdd5258
+00dd4fee push 0
+00dd4ff0 push 1
+00dd4ff2 push 0
+00dd4ff4 push 0
+00dd4ff6 push "TEXT_QST_055_PRISON_PRISONER_HINT2"
+00dd4ffb VCALL +0x118 slot70 GetHero
+00dd5006 CALL 007e7390 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDJ_N22@Z
+00dd500f CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd5014 test al, al
+00dd5016 je 0xdd5249
+00dd5025 VCALL +0x1c slot7 NewScriptFrame
+00dd502a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd502f test al, al
+00dd5031 jne 0xdd4f6a
+00dd503b CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd5040 test al, al
+00dd5042 jne 0xdd5020
+00dd5044 jmp 0xdd5249
+00dd5049 cmp dword ptr [eax + 0xe8], 1
+00dd5052 jle 0xdd510d
+00dd5058 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd505d test al, al
+00dd505f jne 0xdd4f6a
+00dd5073 CALL 007e7490 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dd507c VCALL +0x420 slot264 GetHealth
+00dd508a test ah, 0x41
+00dd508d jne 0xdd5093
+00dd5091 jmp 0xdd5095
+00dd5099 CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00dd509e test bl, bl
+00dd50a0 je 0xdd5258
+00dd50ab push 0
+00dd50ad push 1
+00dd50af push 0
+00dd50b1 push 0
+00dd50b3 push "TEXT_QST_055_PRISON_PRISONER_HINT3"
+00dd50b8 VCALL +0x118 slot70 GetHero
+00dd50c3 CALL 007e7390 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDJ_N22@Z
+00dd50cc CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd50d1 test al, al
+00dd50d3 je 0xdd50f9
+00dd50da VCALL +0x1c slot7 NewScriptFrame
+00dd50df CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd50e4 test al, al
+00dd50e6 jne 0xdd544b
+00dd50f0 CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd50f5 test al, al
+00dd50f7 jne 0xdd50d5
+00dd50fb CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd5100 test al, al
+00dd5102 jne 0xdd4f6a
+00dd5108 jmp 0xdd5258
+00dd510d CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd5112 test al, al
+00dd5114 jne 0xdd544b
+00dd5128 CALL 007e7490 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dd5131 VCALL +0x420 slot264 GetHealth
+00dd513f test ah, 0x41
+00dd5142 jne 0xdd5148
+00dd5146 jmp 0xdd514a
+00dd514e CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00dd5153 test bl, bl
+00dd5155 je 0xdd51b9
+00dd515c push 0
+00dd515e push 1
+00dd5160 push 0
+00dd5162 push 0
+00dd5164 push "TEXT_QST_055_PRISON_PRISONER_HINT4_01"
+00dd5169 VCALL +0x118 slot70 GetHero
+00dd5174 CALL 007e7390 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDJ_N22@Z
+00dd517d CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd5182 test al, al
+00dd5184 je 0xdd51aa
+00dd518b VCALL +0x1c slot7 NewScriptFrame
+00dd5190 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd5195 test al, al
+00dd5197 jne 0xdd4f6a
+00dd51a1 CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd51a6 test al, al
+00dd51a8 jne 0xdd5186
+00dd51ac CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd51b1 test al, al
+00dd51b3 jne 0xdd544b
+00dd51c7 CALL 007e7490 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00dd51d0 VCALL +0x420 slot264 GetHealth
+00dd51de test ah, 0x41
+00dd51e1 jne 0xdd51e7
+00dd51e5 jmp 0xdd51e9
+00dd51ed CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00dd51f2 test bl, bl
+00dd51f4 je 0xdd5258
+00dd51fb push 0
+00dd51fd push 1
+00dd51ff push 0
+00dd5201 push 0
+00dd5203 push "TEXT_QST_055_PRISON_PRISONER_HINT4_02"
+00dd5208 VCALL +0x118 slot70 GetHero
+00dd5213 CALL 007e7390 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDJ_N22@Z
+00dd521c CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd5221 test al, al
+00dd5223 je 0xdd5249
+00dd522a VCALL +0x1c slot7 NewScriptFrame
+00dd522f CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd5234 test al, al
+00dd5236 jne 0xdd4f6a
+00dd5240 CALL 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd5245 test al, al
+00dd5247 jne 0xdd5225
+00dd524b CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd5250 test al, al
+00dd5252 jne 0xdd544b
+00dd525c CALL 00cd23b9 ?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00dd5261 test al, al
+00dd5263 je 0xdd526e
+00dd5269 CALL 00cd2770 ?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00dd5271 push 0
+00dd5275 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00dd527f CALL 006e7ab0 ??1CMovieImpPointer@@QAE@XZ
+00dd5290 CALL 0099a430 ??1CMember_0099a430@@QAE@XZ
+00dd5299 push "SCRIPT_NAME_HERO"
+00dd52a2 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd52ab cmp ecx, ebp
+00dd52ad jne 0xdd52b3
+00dd52b1 jmp 0xdd52bf
+00dd52ba VCALL +0x50 slot20 MsgIsRegionLoaded
+00dd52c3 CALL 0099eae0 @dtorB@4
+00dd52c8 test bl, bl
+00dd52ca je 0xdd5375
+00dd52d2 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd52d7 test al, al
+00dd52d9 jne 0xdd5835
+00dd52e4 push 0
+00dd52e6 push 0
+00dd52e9 VCALL +0x5b0 slot364 AddNewConversation
+00dd5309 push "TEXT_QST_055_PRISON_PRISONER_KEY"
+00dd5312 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd5327 push 0
+00dd5339 CALL 0099eae0 @dtorB@4
+00dd5343 push 1
+00dd5346 VCALL +0x774 slot477 SetThingPersistent
+00dd5352 VCALL +0x5a4 slot361 ClearThingHasInformation
+00dd5369 VCALL +0x270 slot156 GiveHeroMorality
+00dd536f mov byte ptr [esi + 0x1c], 1
+00dd5378 test al, al
+00dd537a je 0xdd4d4d
+00dd5380 jmp 0xdd4c0e
+00dd5389 cmp eax, ebp
+00dd5393 je 0xdd53b2
+00dd5395 dec dword ptr [eax]
+00dd539b cmp dword ptr [eax], ebp
+00dd539d jne 0xdd53b2
+00dd53aa CALL 00bfe9bc ??3@YAXPAX@Z
+00dd53be CALL 0099a2e0 ?OnDie@CInventoryItemBase@@QAEXXZ
+00dd53cc VCALL +0x160 slot88 DeregisterTimer
+00dd53d6 cmp eax, ebp
+00dd53d8 je 0xdd53f7
+00dd53da dec dword ptr [eax]
+00dd53e0 cmp dword ptr [eax], ebp
+00dd53e2 jne 0xdd53f7
+00dd53ef CALL 00bfe9bc ??3@YAXPAX@Z
+00dd540b CALL 0099a430 ??1CMember_0099a430@@QAE@XZ
+00dd541a ret
+00dd541f CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00dd5431 VCALL +0x160 slot88 DeregisterTimer
+00dd543b CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00dd544a ret
+00dd544e push 0
+00dd5452 VCALL +0x5ec slot379 PauseAllNonScriptedEntities
+00dd545c CALL 006e7b80 ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ
+00dd5461 jmp 0xdd5835
+00dd546f test bl, 1
+00dd5472 je 0xdd5480
+00dd547b CALL 0099eae0 @dtorB@4
+00dd5484 test al, al
+00dd5486 je 0xdd54a8
+00dd548a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd548f test al, al
+00dd5491 jne 0xdd5835
+00dd549f push 0x1e
+00dd54a2 VCALL +0x164 slot89 SetTimer
+00dd54aa push "SCRIPT_NAME_HERO"
+00dd54b3 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd54c8 VCALL +0x54 slot21 MsgIsRegionUnloaded
+00dd54cb test al, al
+00dd54cd jne 0xdd552c
+00dd54d1 push "SCRIPT_NAME_HERO"
+00dd54da CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd54ef VCALL +0xa8 slot42 MsgIsActionModeButtonPressed
+00dd54f5 test al, al
+00dd54f7 je 0xdd5525
+00dd54fb push "SCRIPT_NAME_HERO"
+00dd5504 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd5513 push 0xe
+00dd551b VCALL +0xa4 slot41 MsgIsTutorialClickedPast
+00dd5521 test al, al
+00dd5523 je 0xdd552c
+00dd552a jmp 0xdd5531
+00dd5531 test bl, 8
+00dd5534 je 0xdd5546
+00dd5541 CALL 0099eae0 @dtorB@4
+00dd5546 test bl, 4
+00dd5549 je 0xdd555b
+00dd5556 CALL 0099eae0 @dtorB@4
+00dd555b test bl, 2
+00dd555e je 0xdd5570
+00dd556b CALL 0099eae0 @dtorB@4
+00dd5574 test al, al
+00dd5576 je 0xdd55ea
+00dd557a CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd557f test al, al
+00dd5581 jne 0xdd5835
+00dd558c push 0
+00dd558e push 0
+00dd5591 VCALL +0x5b0 slot364 AddNewConversation
+00dd55b1 push "TEXT_QST_055_PRISON_PRISONER_ON_HIT"
+00dd55ba CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd55cf push 0
+00dd55e1 CALL 0099eae0 @dtorB@4
+00dd55ec push "PrisonCourtyard"
+00dd55f5 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd5604 VCALL +0x30 slot12 IsRegionLoaded
+00dd5613 CALL 0099eae0 @dtorB@4
+00dd5618 test bl, bl
+00dd561a jne 0xdd4ce8
+00dd5622 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd5627 test al, al
+00dd5629 jne 0xdd5835
+00dd5634 push 0
+00dd5637 VCALL +0x118 slot70 GetHero
+00dd5641 VCALL +0x780 slot480 SetEntityAsRegionFollowing
+00dd5649 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd564e test al, al
+00dd5650 jne 0xdd5835
+00dd565f VCALL +0x168 slot90 GetTimer
+00dd5665 test eax, eax
+00dd5667 jne 0xdd5699
+00dd566b push "GUARDS"
+00dd5674 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd5689 CALL 00dd5860 CQ_PrisonEscapeRescueMotherScript::MakePrisonerComment
+00dd568e test al, al
+00dd5690 je 0xdd569d
+00dd5697 jmp 0xdd56a2
+00dd56a2 test bl, 0x10
+00dd56a5 je 0xdd56b3
+00dd56ae CALL 0099eae0 @dtorB@4
+00dd56b7 test al, al
+00dd56b9 je 0xdd56db
+00dd56bd CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd56c2 test al, al
+00dd56c4 jne 0xdd5835
+00dd56d2 push 0x1e
+00dd56d5 VCALL +0x164 slot89 SetTimer
+00dd56dd push "SCRIPT_NAME_HERO"
+00dd56e6 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd56fb VCALL +0x54 slot21 MsgIsRegionUnloaded
+00dd56fe test al, al
+00dd5700 jne 0xdd5762
+00dd5704 push "SCRIPT_NAME_HERO"
+00dd570d CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd5722 VCALL +0xa8 slot42 MsgIsActionModeButtonPressed
+00dd5728 test al, al
+00dd572a je 0xdd575b
+00dd572e push "SCRIPT_NAME_HERO"
+00dd5737 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd5749 push 0xe
+00dd5751 VCALL +0xa4 slot41 MsgIsTutorialClickedPast
+00dd5757 test al, al
+00dd5759 je 0xdd5762
+00dd5760 jmp 0xdd5767
+00dd5767 test bl, bl
+00dd5769 jns 0xdd577e
+00dd5779 CALL 0099eae0 @dtorB@4
+00dd577e test bl, 0x40
+00dd5781 je 0xdd5793
+00dd578e CALL 0099eae0 @dtorB@4
+00dd5793 test bl, 0x20
+00dd5796 je 0xdd57a8
+00dd57a3 CALL 0099eae0 @dtorB@4
+00dd57ac test al, al
+00dd57ae je 0xdd581e
+00dd57b2 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd57b7 test al, al
+00dd57b9 jne 0xdd5835
+00dd57c0 push 0
+00dd57c2 push 0
+00dd57c5 VCALL +0x5b0 slot364 AddNewConversation
+00dd57e5 push "TEXT_QST_055_PRISON_PRISONER_ON_HIT"
+00dd57ee CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00dd5803 push 0
+00dd5815 CALL 0099eae0 @dtorB@4
+00dd5823 VCALL +0x1c slot7 NewScriptFrame
+00dd5828 CALL 00f35b30 ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+00dd582d test al, al
+00dd582f je 0xdd5656
+00dd5839 CALL 004aa840 ??1ScriptMethods@@UAE@XZ
+00dd5842 CALL 00cd4470 ??1CMember_00cd4470@@QAE@XZ
+00dd584b CALL 007e74d0 ??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+00dd585a ret

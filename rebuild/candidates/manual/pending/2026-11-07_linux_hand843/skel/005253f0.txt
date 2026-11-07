@@ -1,0 +1,254 @@
+00525404 mov byte ptr [edi + 0x9b], al
+0052540a mov byte ptr [edi + 0x9a], al
+0052541b test cl, cl
+00525421 jne 0x52546c
+0052542d push "TNGGameStateVersion"
+00525440 CALL 00410be0 ?Inner@CPersistContext@@QAEXPADPAJ1@Z
+00525452 push "GlobalUIDCount"
+00525459 mov dword ptr [edi + 0xc4], eax
+00525467 CALL 0044bb00 ??$Transfer@_K@CPersistContext@@QAEXPBDAA_KAB_K@Z
+00525470 CALL 00485cd2 ??0CPersistContextReadSection@@QAE@XZ
+00525477 push "SAVED_ENTITIES"
+00525480 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525491 CALL 009bae70 ?ReadSection@CPersistContext@@QAE_NAAVCPersistContextReadSection@@ABVCCharString@@@Z
+0052549c CALL 0099eae0 @dtorB@4
+005254a1 test bl, bl
+005254a3 je 0x52550d
+005254ae test al, al
+005254b3 je 0x5254de
+005254b5 cmp eax, 2
+005254b8 je 0x5254bf
+005254ba cmp eax, 3
+005254bd jne 0x5254cd
+005254c6 CALL 00520670 CThingManager::LoadHeroStateBinary
+005254cb jmp 0x52550d
+005254d7 CALL 00520570 CThingManager::LoadHeroStateScript
+005254dc jmp 0x52550d
+005254de cmp eax, 2
+005254e1 je 0x5254e8
+005254e3 cmp eax, 3
+005254e6 jne 0x5254fa
+005254f3 CALL 00524ec0 _global::CDrawQuestInfo_LoadDeadCreatures
+005254f8 jmp 0x52550d
+00525508 CALL 005248b0 CEntityRuntimePersistence::LoadFromGameStateScript
+0052550f push "SAVED_NPC_NAMES"
+00525518 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525529 CALL 009bae70 ?ReadSection@CPersistContext@@QAE_NAAVCPersistContextReadSection@@ABVCCharString@@@Z
+00525534 CALL 0099eae0 @dtorB@4
+00525539 test bl, bl
+0052553b je 0x525c28
+0052554e test al, al
+00525550 jne 0x525c28
+00525559 cmp esi, 2
+0052555d je 0x525568
+0052555f cmp esi, 3
+00525562 jne 0x5256e4
+00525574 jl 0x5255cd
+00525576 jg 0x52557c
+00525578 test eax, eax
+0052557a jb 0x5255cd
+0052557c test ecx, ecx
+0052557e jg 0x5255cd
+00525580 jl 0x525589
+00525582 cmp eax, 0x7fffffff
+00525587 ja 0x5255cd
+00525595 cmp ecx, esi
+00525597 jl 0x5255bb
+005255b9 jmp 0x5255d1
+005255c8 CALL 00993ca0 ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z
+005255d1 test ecx, ecx
+005255d3 jbe 0x525c27
+005255fc jl 0x525674
+005255fe jg 0x525604
+00525600 test eax, eax
+00525602 jb 0x525674
+00525604 test ecx, ecx
+00525606 jg 0x525674
+00525608 jl 0x525611
+0052560a cmp eax, 0x7fffffff
+0052560f ja 0x525674
+0052561d cmp ecx, edx
+0052561f jl 0x525659
+00525657 jmp 0x525674
+00525659 push 8
+00525667 CALL 00993ca0 ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z
+00525688 CALL 00996390 ?ReadPresizedString@CDataInputStream@@QAE?AVCCharString@@XZ
+00525699 CALL 00994960 CMemoryDataInputStream::ReadNullTerminatedWString
+005256a9 CALL 00521a90 CThingManager::SetNameForThing
+005256ba CALL 0052b8b0 std::map<unsigned __int64, pair<CCharString, CWideString> >::operator[]
+005256c1 CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+005256ca CALL 0099b510 @dtorA_0099b510@4
+005256d3 CALL 0099eae0 @dtorB@4
+005256d9 jne 0x5255f0
+005256df jmp 0x525c27
+005256e8 CALL 0099e4b0 ??0CCharString@@QAE@XZ
+005256f9 CALL 009ba390 CStringParser::ReadLineAsString
+00525703 CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+0052570c CALL 0099eae0 @dtorB@4
+00525713 push 0x122d70e
+0052571c CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525723 push 0x12397f8
+0052572c CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525735 CALL 0099e4b0 ??0CCharString@@QAE@XZ
+0052573e test eax, eax
+00525745 je 0x525749
+0052574d test eax, eax
+00525754 je 0x525758
+0052575a CALL 00bfeb3a _strstr
+00525764 test esi, esi
+00525766 je 0x5257ba
+0052576a mov byte ptr [esi], 0
+00525773 test cl, cl
+00525775 jne 0x525770
+00525782 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+0052578c CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+00525795 CALL 0099eae0 @dtorB@4
+005257a3 CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+005257ac CALL 00bfeb3a _strstr
+005257b6 test esi, esi
+005257b8 jne 0x525768
+005257c1 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+005257cb CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+005257d4 CALL 0099eae0 @dtorB@4
+005257e2 CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+005257eb CALL 0099eae0 @dtorB@4
+005257f4 CALL 0099eae0 @dtorB@4
+005257fd CALL 0099eae0 @dtorB@4
+00525806 CALL 0099e7f0 ?GFCharStringToInt@@YIJABVCCharString@@@Z
+0052580b test eax, eax
+0052580d jbe 0x525c1e
+00525817 jmp 0x525820
+0052582c CALL 009ba390 CStringParser::ReadLineAsString
+00525836 CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+0052583f CALL 0099eae0 @dtorB@4
+00525846 push 0x122d70e
+0052584f CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525856 push 0x12397f8
+0052585f CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525868 CALL 0099e4b0 ??0CCharString@@QAE@XZ
+00525871 test eax, eax
+00525878 je 0x52587c
+00525880 test eax, eax
+00525887 je 0x52588b
+0052588d CALL 00bfeb3a _strstr
+00525897 test esi, esi
+00525899 je 0x5258f2
+0052589b jmp 0x5258a0
+005258a2 mov byte ptr [esi], 0
+005258ab test cl, cl
+005258ad jne 0x5258a8
+005258ba CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+005258c4 CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+005258cd CALL 0099eae0 @dtorB@4
+005258db CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+005258e4 CALL 00bfeb3a _strstr
+005258ee test esi, esi
+005258f0 jne 0x5258a0
+005258f9 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525903 CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+0052590c CALL 0099eae0 @dtorB@4
+0052591a CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+00525923 CALL 0099eae0 @dtorB@4
+0052592c CALL 0099eae0 @dtorB@4
+00525935 CALL 0099eae0 @dtorB@4
+0052593e CALL 0099e870 _global::GFCharStringToUHUGE
+00525959 CALL 009ba390 CStringParser::ReadLineAsString
+00525963 CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+0052596c CALL 0099eae0 @dtorB@4
+00525973 push 0x122d70e
+0052597c CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525983 push 0x12397f8
+0052598c CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525995 CALL 0099e4b0 ??0CCharString@@QAE@XZ
+0052599e test eax, eax
+005259a5 je 0x5259a9
+005259ad test eax, eax
+005259b4 je 0x5259b8
+005259ba CALL 00bfeb3a _strstr
+005259c4 test esi, esi
+005259c6 je 0x525a1a
+005259ca mov byte ptr [esi], 0
+005259d3 test cl, cl
+005259d5 jne 0x5259d0
+005259e2 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+005259ec CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+005259f5 CALL 0099eae0 @dtorB@4
+00525a03 CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+00525a0c CALL 00bfeb3a _strstr
+00525a16 test esi, esi
+00525a18 jne 0x5259c8
+00525a21 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525a2b CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+00525a34 CALL 0099eae0 @dtorB@4
+00525a42 CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+00525a4b CALL 0099eae0 @dtorB@4
+00525a54 CALL 0099eae0 @dtorB@4
+00525a5d CALL 0099eae0 @dtorB@4
+00525a66 test ecx, ecx
+00525a68 jne 0x525a81
+00525a6f mov "UNATTACHED"
+00525a7d je 0x525a8f
+00525a7f jmp 0x525a9d
+00525a81 push "UNATTACHED"
+00525a86 CALL 004115a0 ?Equals@StringDataMethods@@QBE_NPBD@Z
+00525a8b test al, al
+00525a8d je 0x525a9d
+00525a8f push 0x122d70e
+00525a98 CALL 0099efe0 ??4CCharString@@QAEABV0@PBD@Z
+00525aa6 CALL 0099ec30 ??0CCharString@@QAE@ABV0@@Z
+00525ab7 CALL 009ba390 CStringParser::ReadLineAsString
+00525ac1 CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+00525aca CALL 0099eae0 @dtorB@4
+00525ad1 push 0x122d70e
+00525ada CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525ae1 push 0x12397f8
+00525aea CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525af3 CALL 0099e4b0 ??0CCharString@@QAE@XZ
+00525afc test eax, eax
+00525b03 je 0x525b07
+00525b0b test eax, eax
+00525b12 je 0x525b16
+00525b18 CALL 00bfeb3a _strstr
+00525b22 test esi, esi
+00525b24 je 0x525b7a
+00525b28 mov byte ptr [esi], 0
+00525b33 test cl, cl
+00525b35 jne 0x525b30
+00525b42 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525b4c CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+00525b55 CALL 0099eae0 @dtorB@4
+00525b63 CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+00525b6c CALL 00bfeb3a _strstr
+00525b76 test esi, esi
+00525b78 jne 0x525b26
+00525b81 CALL 0099ebf0 ??0CCharString@@QAE@PBDJ@Z
+00525b8b CALL 0099f0a0 ??YCCharString@@QAEABV0@ABV0@@Z
+00525b94 CALL 0099eae0 @dtorB@4
+00525ba2 CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+00525bab CALL 0099eae0 @dtorB@4
+00525bb4 CALL 0099eae0 @dtorB@4
+00525bbd CALL 0099eae0 @dtorB@4
+00525bcb CALL 0099e480 ?ToWideString@CCharString@@QBE?AVCWideString@@XZ
+00525be1 CALL 00521a90 CThingManager::SetNameForThing
+00525bf6 CALL 0052b8b0 std::map<unsigned __int64, pair<CCharString, CWideString> >::operator[]
+00525bfd CALL 0099efb0 ??4SymbolString@@QAEAAU0@ABU0@@Z
+00525c06 CALL 0099b510 @dtorA_0099b510@4
+00525c0f CALL 0099eae0 @dtorB@4
+00525c18 jne 0x525820
+00525c22 CALL 0099eae0 @dtorB@4
+00525c33 mov byte ptr [eax + 0x9a], 0
+00525c3a mov byte ptr [eax + 0x9b], 0
+00525c41 CALL 0099eae0 @dtorB@4
+00525c4f cmp esi, eax
+00525c51 je 0x525c6b
+00525c58 CALL 00bfea14 _free
+00525c67 cmp esi, eax
+00525c69 jne 0x525c53
+00525c7f test eax, eax
+00525c83 je 0x525c8e
+00525c86 CALL 00bfea14 _free
+00525c95 CALL 0099eae0 @dtorB@4
+00525ca1 CALL 0099eae0 @dtorB@4
+00525cad CALL 0099a2e0 ?OnDie@CInventoryItemBase@@QAEXXZ
+00525cb9 CALL 00993b10 ??1CMemoryDataInputStream@@QAE@XZ
+00525cc4 ret 4
