@@ -1,0 +1,3 @@
+address	name	evidence
+0x0070C4E0	CAnimateThing::GetFirstCombinationAnimFromType	chunk 840 (parked): Ego_r + FableWin ?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z; was FindCombinationAnim
+0x00C52BB0	CCpuInfo::GetAMDModelName	chunk 840 (parked): Ego_r + FableWin ?GetAMDModelName@CCpuInfo@@QBEPBDXZ; was _global::CPU_GetAMDBrandName

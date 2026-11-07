@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00de6730   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00de6730   RELOCATION_MATCH PASS   PlayCutscene
+00e78100   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+00e78100   RELOCATION_MATCH PASS   PlayCutscene
+00e7ab50   RELOCATION_MATCH PASS   PhaseFour
+
+WINS: 3
+  00de6730 RELOCATION_MATCH NScript::CQ_RansomVictimScript::?PlayCutscene@CQ_RansomVictimScript@NScript@@QAEXVCCharString@@0@Z
+  00e78100 RELOCATION_MATCH NScript::CV_ExposeMayorScript::?PlayCutscene@CV_ExposeMayorScript@NScript@@QAEXVCCharString@@_N0@Z
+  00e7ab50 RELOCATION_MATCH NScript::CV_ExposeMayorScript::?PhaseFour@CV_ExposeMayorScript@NScript@@QAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NScriptCQRansomVictimScript_PlayCutscene_00de6730
+  NScriptCVExposeMayorScript_PlayCutscene_00e78100
+  NScriptCVExposeMayorScript_PhaseFour_00e7ab50

@@ -37364,3 +37364,15 @@ $notRedefined$4399	0068a01d	00689df0
 ?Alloc@CStatueMasterCellarDoors@CV_StatueMasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ed44c0	00ed3b30
 ?Alloc@CStatueMasterChest@CV_StatueMasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ed4770	00ed3b30
 ?Alloc@CStatueMasterStatue@CV_StatueMasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ed40c0	00ed3b30
+?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ	0041cf47	0052ea30
+?UnConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AVC2DVector@@V3@@Z	0052e530	0052ea30
+??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z	00436380	007bc8fc
+?GetCreatureFireAtPos@NThingShot@@YI?AVC3DVector@@ABVCThing@@@Z	007bedf0	007bc8fc
+?SetVelocity@CTCPhysicsBase@@QAEXABVC3DVector@@@Z	0066f9b0	007bc8fc
+??4CWideString@@QAEAAV0@PBG@Z	0099b800	009e5c90
+?DeallocateUnusedMemory@CSymbolVectorMap@@QAEXXZ	009e7c70	009e5c90
+?ParseBuffer@CSymbolMap@@QAE_NPAD@Z	009e5ad0	009e5c90
+?SortSymbols@@YIXPAUSSymbolEntry@@0UCSymbolCompare@@@Z	009e7e40	009e5c90
+?_M_erase@CNameSet@@QAEXPAUSNameNode@@@Z	004aba70	009e5c90
+?clear@CSymbolVectorMap@@QAEXXZ	009e79e0	009e5c90
+?g_CurrentSymbolFile@@3VCWideString@@A	013caa34	009e5c90

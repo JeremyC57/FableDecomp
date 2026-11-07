@@ -1,0 +1,30 @@
+addr       parity           behav  name
+0052ea30   RELOCATION_MATCH PASS   ChangePositionDelta
+00773950   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00773950   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00773950   WARN SHARED_HEADER_AVAILABLE CThing
+00773950   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00773950   RELOCATION_MATCH PASS   IsOpeningHours
+007bc8fc   WARN SHARED_HEADER_AVAILABLE C3DVector
+007bc8fc   WARN SHARED_HEADER_AVAILABLE CWorldMap
+007bc8fc   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007bc8fc   WARN SHARED_HEADER_AVAILABLE CThing
+007bc8fc   WARN RELOC_NAME: ?g_framesPerSecond@@3JA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+007bc8fc   RELOCATION_MATCH PASS   InitMovement
+009e5c90   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009e5c90   WARN SHARED_HEADER_AVAILABLE CSymbolMap
+009e5c90   WARN RELOC_NAME: ?clear@CSymbolVectorMap@@QAEXXZ -> 009e79e0 labelled 'CVectorMap::DeallocateMemory'
+009e5c90   WARN RELOC_NAME: ?SortSymbols@@YIXPAUSSymbolEntry@@0UCSymbolCompare@@@Z -> 009e7e40 labelled 'std::sort<std::pair<CCharString, CSymbolMap::CSymbolInfo> *, CCompareString<CSymbolMap::CSymbolInfo>>'
+009e5c90   RELOCATION_MATCH PASS   LoadFromFile
+
+WINS: 4
+  0052ea30 RELOCATION_MATCH NUISystem::CComponent::?ChangePositionDelta@CComponent@NUISystem@@UAEXABVC2DVector@@M_N@Z
+  00773950 RELOCATION_MATCH CTCShop::?IsOpeningHours@CTCShop@@QBE_NXZ
+  007bc8fc RELOCATION_MATCH NThingShot::CTCShotDefinitionTearInGround::?InitMovement@CTCShotDefinitionTearInGround@NThingShot@@UAEXXZ
+  009e5c90 RELOCATION_MATCH CSymbolMap::?LoadFromFile@CSymbolMap@@QAE_NABVCWideString@@@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  NUISystemCComponent_ChangePositionDelta_0052ea30
+  CTCShop_IsOpeningHours_00773950
+  NThingShotCTCShotDefinitionTearInGround_InitMovement_007bc8fc
+  CSymbolMap_LoadFromFile_009e5c90

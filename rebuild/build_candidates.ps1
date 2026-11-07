@@ -385104,6 +385104,55 @@ $catalog = @(
         TestSource = '00/e7/NScriptCVDemonDoorsScriptCDFDressAsBandit_Main_00e71f10_test.cpp'
         PassPattern = '00e71f10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0052ea30'
+        Module = 'NUISystem::CComponent'
+        Source = '00/52/NUISystemCComponent_ChangePositionDelta_0052ea30.cpp'
+        TestSource = '00/52/NUISystemCComponent_ChangePositionDelta_0052ea30_test.cpp'
+        PassPattern = '0052ea30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00773950'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_IsOpeningHours_00773950.cpp'
+        TestSource = '00/77/CTCShop_IsOpeningHours_00773950_test.cpp'
+        PassPattern = '00773950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007bc8fc'
+        Module = 'NThingShot::CTCShotDefinitionTearInGround'
+        Source = '00/7b/NThingShotCTCShotDefinitionTearInGround_InitMovement_007bc8fc.cpp'
+        TestSource = '00/7b/NThingShotCTCShotDefinitionTearInGround_InitMovement_007bc8fc_test.cpp'
+        PassPattern = '007bc8fc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e5c90'
+        Module = 'CSymbolMap'
+        Source = '00/9e/CSymbolMap_LoadFromFile_009e5c90.cpp'
+        TestSource = '00/9e/CSymbolMap_LoadFromFile_009e5c90_test.cpp'
+        PassPattern = '009e5c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00de6730'
+        Module = 'NScript::CQ_RansomVictimScript'
+        Source = '00/de/NScriptCQRansomVictimScript_PlayCutscene_00de6730.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScript_PlayCutscene_00de6730_test.cpp'
+        PassPattern = '00de6730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e78100'
+        Module = 'NScript::CV_ExposeMayorScript'
+        Source = '00/e7/NScriptCVExposeMayorScript_PlayCutscene_00e78100.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScript_PlayCutscene_00e78100_test.cpp'
+        PassPattern = '00e78100_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7ab50'
+        Module = 'NScript::CV_ExposeMayorScript'
+        Source = '00/e7/NScriptCVExposeMayorScript_PhaseFour_00e7ab50.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScript_PhaseFour_00e7ab50_test.cpp'
+        PassPattern = '00e7ab50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -9182,7 +9182,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052e990	SetRenderZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e9b0	vfunc_30	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e9c0	ChangePosition	NUISystem::CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
-0052ea30	ChangePositionDelta	_global	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
+0052ea30	ChangePositionDelta	NUISystem::CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
 0052eaf0	ChangePositionDelta	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
 0052ebb0	ChangeZoom	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052ec20	ChangeZoomDelta	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
@@ -18353,7 +18353,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0070c280	SetInternalAlpha	CAnimSet	__thiscall	void	4	CAnimSet *,long,float,bool	1	yes	accepted									
 0070c2c0	UpdateInternalAlphas	CAnimSet	__thiscall	void	1	CAnimSet *	1	yes	accepted									
 0070c330	UpdateTimePassed	CAnimSet	__thiscall	void	2	CAnimSet *,float	1	yes	accepted									
-0070c4e0	FindCombinationAnim	CAnimateThing	__thiscall	CAnimSet *	2	CAnimateThing *,long	1	yes	accepted									
+0070c4e0	GetFirstCombinationAnimFromType	CAnimateThing	__thiscall	CAnimSet *	2	CAnimateThing *,long	1	yes	accepted									
 0070c590	PreloadAnims	CAnimateThing	__thiscall	void	2	CAnimateThing *,CCompleteAnimation *	1	yes	accepted									
 0070c770	IsAnimStateBlendValid	`anonymous namespace'	unknown	undefined	0		0	yes	accepted									
 0070c800	GetInterpolatedTime	CAnimSet	__thiscall	float	3	CAnimSet *,float,long	1	yes	accepted									
@@ -22301,7 +22301,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007bc15a	UpdateMovement	CTCShotDefinitionMultiArrow	__thiscall	void	1	CTCShotDefinitionMultiArrow *	1	yes	accepted									
 007bc38a	CTCPhysicsRigidBody_ApplyForceToward	_global	unknown	undefined	0		0	yes	accepted									
 007bc6fa	InitMovement	CTCShotDefinitionProjectilePredictive	__thiscall	void	1	CTCShotDefinitionProjectilePredictive *	1	yes	accepted									
-007bc8fc	InitMovement	CTCShotDefinitionTearInGround	__thiscall	void	1	CTCShotDefinitionTearInGround *	1	yes	accepted									
+007bc8fc	InitMovement	NThingShot::CTCShotDefinitionTearInGround	__thiscall	void	1	CTCShotDefinitionTearInGround *	1	yes	accepted									
 007bca30	UpdateMovement	CTCShotDefinitionDrainLife	__thiscall	void	1	CTCShotDefinitionDrainLife *	1	yes	accepted									
 007bcc40	NThingShot::CTCShotDefinitionDragonFireball::vfunc_33	NThingShot::CTCShotDefinitionDragonFireball	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007bcf67	CTCShotDefinitionQueenHornetShot	NThingShot::CTCShotDefinitionQueenHornetShot	__thiscall	undefined	2	CEnginePrimitiveGroupManager *,CArray<CEngineScene*> *	0	yes	accepted									
@@ -34883,7 +34883,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009e5ad0	ParseBuffer	CSymbolMap	__thiscall	bool	2	CSymbolMap *,char *	1	yes	accepted									
 009e5c30	UpdateDirty	CSymbolMap	__thiscall	void	1	CTCInventoryQuests *	1	yes	accepted									
 009e5c60	UpdateDirtyQuick	CSymbolMap	__thiscall	void	1	CTCVillage *	1	yes	accepted									
-009e5c90	CSymbolMap::LoadFromFile	CSymbolMap	unknown	undefined	0		0	yes	accepted									
+009e5c90	LoadFromFile	CSymbolMap	unknown	undefined	0		0	yes	accepted									
 009e5f60	_Construct	std	__fastcall	void	3	allocator<CSymbolMap::CSymbolInfo> *,CSymbolInfo *,CSymbolInfo *	1	yes	accepted									
 009e5fa0	__uninitialized_copy<CSymbolMap::CSymbolInfo *, CSymbolMap::CSymbolInfo *>	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 009e5fe0	__uninitialized_fill_n	std	__thiscall	__uint64 *	4	vector<unsigned___int64,std::allocator<unsigned___int64>_> *,__uint64 *,uint,__uint64 *	1	yes	accepted									
@@ -46703,7 +46703,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c52a80	CPUAheadCounterCallback	CEngineDebug	__cdecl	void	1	ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c5\global_CPUAheadCounterCallback_00c52a80.cpp
 00c52aa0	IsCpuidSupported	_global	unknown	undefined	0		0	yes	accepted									
 00c52ad0	GetIntelModelName	CCpuInfo	unknown	undefined	0		0	yes	accepted									
-00c52bb0	CPU_GetAMDBrandName	_global	unknown	undefined	0		0	yes	accepted									
+00c52bb0	GetAMDModelName	CCpuInfo	unknown	undefined	0		0	yes	accepted									
 00c52c40	GetRenderLayerMask	CEngineInternalPrimitiveParticleGroup	__thiscall	ulong	1	CEngineInternalPrimitiveParticleGroup *	1	yes	accepted									
 00c52c90	GetCentaurModelName	CCpuInfo	__thiscall	EAppearanceModifierScalingType	1	CAppearanceModifierDef *	1	yes	accepted									
 00c52ce0	MeasureCpuFrequency	_global	unknown	undefined	0		0	yes	accepted									
@@ -51533,7 +51533,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00de46c0	OnPersist	NScript::CQ_RansomVictimScript::CNPCComment	unknown	undefined	0		0			discovered	gapscan							
 00de4710	DisappearFollowers	NScript::CQ_RansomVictimScript	unknown	undefined	0		0	yes	accepted									
 00de4cb0	Main	NScript::CQ_RansomVictimScript::CVictimsFather	unknown	undefined	0		0			discovered	gapscan							
-00de6730	PlayCutscene	CV_ExposeMayorScript	__thiscall	void	4	CV_ExposeMayorScript *,CCharString,bool,CCharString	1	yes	accepted									
+00de6730	PlayCutscene	NScript::CQ_RansomVictimScript	__thiscall	void	4	CV_ExposeMayorScript *,CCharString,bool,CCharString	1	yes	accepted									
 00de6c20	Main	NScript::CQ_RansomVictimScript::CVictim	unknown	undefined	0		0			discovered	gapscan							
 00de81b0	CheckVictimHit	NScript::CQ_RansomVictimScript	__thiscall	void	2	CQ_MinionCampScript *,CScriptThing	1	yes	accepted									
 00de8300	Fire_CDispatcher_00de8300	_unattributed	unknown	undefined	0		0			discovered	gapscan							
@@ -52986,7 +52986,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e77690	OnPersist	NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager	unknown	undefined	0		0			discovered	gapscan							
 00e776c0	OnPersist	NScript::CV_ExposeMayorScript::CEM_Sheriff	unknown	undefined	0		0			discovered	gapscan							
 00e776f0	Main	NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager	__thiscall	void	1	CEM_SuspiciousVillager *	1	yes	accepted									
-00e78100	PlayCutscene	CV_ExposeMayorScript	__thiscall	void	4	CV_ExposeMayorScript *,CCharString,bool,CCharString	1	yes	accepted									
+00e78100	PlayCutscene	NScript::CV_ExposeMayorScript	__thiscall	void	4	CV_ExposeMayorScript *,CCharString,bool,CCharString	1	yes	accepted									
 00e78630	Main	NScript::CV_ExposeMayorScript::CEM_Sheriff	unknown	undefined	0		0			discovered	gapscan							
 00e799f0	Main	NScript::CV_ExposeMayorScript::CEM_Rhodri	unknown	undefined	0		0			discovered	gapscan							
 00e7a410	DoMission	NScript::CV_ExposeMayorScript	unknown	undefined	0		0			discovered	gapscan							
@@ -52994,7 +52994,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e7a5c0	PhaseTwo	NScript::CV_ExposeMayorScript	__thiscall	void	1	CV_ExposeMayorScript *	1	yes	accepted									
 00e7a740	PhaseFive	NScript::CV_ExposeMayorScript	__thiscall	void	1	CV_ExposeMayorScript *	1	yes	accepted									
 00e7a9f0	PhaseThree	NScript::CV_ExposeMayorScript	__thiscall	void	1	CV_ExposeMayorScript *	1	yes	accepted									
-00e7ab50	PhaseFour	CV_ExposeMayorScript	__thiscall	void	1	CV_ExposeMayorScript *	1	yes	accepted									
+00e7ab50	PhaseFour	NScript::CV_ExposeMayorScript	__thiscall	void	1	CV_ExposeMayorScript *	1	yes	accepted									
 00e7b050	EndMission	NScript::CV_ExposeMayorScript	__thiscall	void	1	CV_ExposeMayorScript *	1	yes	accepted									
 00e7b2c0	`scalar deleting destructor'	NScript::CV_ExposeMayorScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e7\CLandscapeBackgroundPatch_vectordeletingdestructor_00e7b2c0.cpp
 00e7b2e0	~CV_ExposeMayorScript	NScript::CV_ExposeMayorScript	__thiscall	void	1	CV_ExposeMayorScript *	1	yes	accepted									

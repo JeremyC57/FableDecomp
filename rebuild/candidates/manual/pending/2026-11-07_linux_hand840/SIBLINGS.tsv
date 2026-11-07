@@ -1,0 +1,5 @@
+address	source	grade_with_final_overlay	note
+0x0041CF47	rebuild/src/compiled/00/41/NUISystemCManager_GetUIScale_0041cf47.cpp	RELOCATION_MATCH	the only landed includer of engine/NUISystem_CUIScreenUnitConverter.h; takes the header's default path (the chunk 840 edit is an opt-in #ifdef block), regraded read-only with FABLE_HDR_OVERLAY=$S/w22/agent840/hdr
+0x00837CE0	rebuild/src/compiled/00/83/CThingTrackNode_SerialiseGameState_00837ce0.cpp	RELOCATION_MATCH	read-only disassembly reference for the AddTC call shape (no header involved)
+0x00729F60	rebuild/src/compiled/00/72/CTCActionUseScriptedHook_OnInitialActivate_00729f60.cpp	RELOCATION_MATCH	read-only disassembly reference for ParentThing->AddTC (no header involved)
+0x0072AAA0	rebuild/src/compiled/00/72/CTCSpecialAbilities_SetupMultiArrow_0072aaa0.cpp	RELOCATION_MATCH	read-only disassembly reference for ParentThing->AddTC (no header involved)

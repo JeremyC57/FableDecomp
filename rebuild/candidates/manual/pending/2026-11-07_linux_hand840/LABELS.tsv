@@ -1,0 +1,6 @@
+address	Class::Name	evidence
+0x0052EA30	NUISystem::CComponent::ChangePositionDelta	Ego_r.pdb / FableWin.pdb ?ChangePositionDelta@CComponent@NUISystem@@UAEXABVC2DVector@@M_N@Z; CComponent vtable slot 32 (engine/NUISystem_CComponent.h); catalog had `_global::ChangePositionDelta`
+0x0070C4E0	CAnimateThing::GetFirstCombinationAnimFromType	Ego_r.pdb name set; the landed caller 0x008619C0 binds ?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z; catalog had `CAnimateThing::FindCombinationAnim`
+0x00C52BB0	CCpuInfo::GetAMDModelName	Ego_r.pdb name set (CCpuInfo); the AMD model-name strings; catalog had `_global::CPU_GetAMDBrandName`
+0x00436380	IS_THING_ALIVE<const CThing*>	Ego_r.pdb ??$IS_THING_ALIVE@PBVCThing@@@@YI_NABQBVCThing@@@Z; catalog has the placeholder `_global::IsThingAlive_ptr_00436380`
+0x0052E530	NUISystem::CUIScreenUnitConverter::UnConvertVector (static __fastcall, C2DVector(C2DVector))	FableWin.pdb name set; inverse of ConvertVector 0x0052E580; the manifest signature "float(float)" is wrong

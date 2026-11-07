@@ -1,0 +1,3 @@
+address	source	grade_with_final_overlay	note
+00e0a820	rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_TurnToBalv_00e0a820.cpp	RELOCATION_MATCH	the FABLE_RETAIL_STLP_MAP user: hdr/stlport/fable_map.h only adds the FABLE_RETAIL_STLP_TREE_ERASE_KEY opt-in (no landed source defines it; grep -rlw over rebuild/src/compiled is empty)
+0070d780	rebuild/src/compiled/00/70/CAnimateThing_AddCombinationAnim_0070d780.cpp	RELOCATION_MATCH	a stlport/fable_containers.h user: the overlay only adds the FABLE_RETAIL_STLP_BINARY_SEARCH / FABLE_RETAIL_STLP_RANDOM_SHUFFLE opt-ins (no landed source defines them); diff against rebuild/include shows only added lines inside the new #ifdef blocks

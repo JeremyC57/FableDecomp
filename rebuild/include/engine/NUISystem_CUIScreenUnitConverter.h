@@ -25,6 +25,17 @@ public:
     static float __fastcall GetBackBufferWidth();      // 0x0041CC14
     static float __fastcall GetBackBufferHeight();     // 0x0041CC2B
 #endif
+#ifdef FABLE_RETAIL_CUISCREENUNITCONVERTER_VECTOR
+    // Retail opt-in (chunk 840, row 0x0052EA30 CComponent::ChangePositionDelta): the two out-of-line vector converters, static
+    // __fastcall with a by-value C2DVector argument (user copy ctor, built in its stack slot) and a hidden C2DVector result in ecx.
+    // ConvertVector 0x0052E580 (Ego_r.pdb / FableWin.pdb ?ConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AVC2DVector@@V3@@Z,
+    // bound by the landed 0x0052EEC0): divides by the 640x480 screen size and multiplies by the back-buffer size (20 callers).
+    // UnConvertVector 0x0052E530 (FableWin.pdb ?UnConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AVC2DVector@@V3@@Z): the
+    // inverse (divides by the back-buffer size, multiplies by the screen size); callers 0x0052EA6B / 0x0052EB2B
+    // (ChangePositionDelta / ChangeTargetPositionDelta). The row includes engine/C2DVector.h before this header.
+    static C2DVector __fastcall ConvertVector(C2DVector v);        // 0x0052E580
+    static C2DVector __fastcall UnConvertVector(C2DVector v);      // 0x0052E530
+#endif
 };
 }
 #endif
