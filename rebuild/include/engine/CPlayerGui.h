@@ -4,6 +4,39 @@
 // Retail opt-in (Codex pass 11 consolidation 2): the retail CPlayerGui model (row 0x00667D30 CThingCreatureBase::OnHit); see below.
 #include "engine/CTBaseSingletonNoDefaultAlloc.h"
 #include "engine/CSubtitleRenderer.h"
+#ifdef FABLE_RETAIL_CPLAYERGUI_MEMBERS
+// Retail opt-in (chunk 853, row 0x0043A570 CPlayerGui::~CPlayerGui): the members PFont .. DisplayBottomHalfGUI with their Ego_r.pdb
+// types at the retail offsets (the generated layout below, STLport sizes), for the implicit member destruction the destructor emits.
+// Evidence (retail ~CPlayerGui 0x0043A570, two sources each: the generated Ego_r layout + the retail destructor's per-offset code):
+// PHeroInfoScreensManager +0x32C (boost::scoped_ptr: inline checked_delete of a non-polymorphic CManager), ScreenMessages +0x328 /
+// ScriptScreenText +0x324 (STLport list: _List_base::clear out of line 0x0043FE40 / 0x0043FDF0, then the head node freed),
+// DebugTGAPrimitiveHandle +0x31C (vtable 0x0122F598), SafeAreaPrimitiveHandles +0x310 / TextPrimitiveHandles +0x304 (vector of
+// handles destroyed through slot 0), PAutoPickups .. PMoney +0x2FC .. +0x2CC (CCountedPointer), Illustrators +0x2C0 (vector of
+// pointers), DebugTGATexture +0x2B4 (inline ~CTexture = Uninitialise 0x009F9F70), QuickAccessButtonsAlpha / AbilityButtonsAlpha /
+// AbilityButtons +0x26C / +0x260 / +0x254, PDrawNPCName .. PFont +0x24C .. +0x138 (CCountedPointer). Static PGuiDef 0x013B878C
+// (FableWin/Ego_r "dynamic atexit destructor for 'CPlayerGui::PGuiDef'"; CDefPointer<const CPlayerGuiDef>: the PDB name sets list
+// ??0?$CDefPointer@$$CBVCPlayerGuiDef@@@@QAE@W4ENullDef@@@Z and GetDef<CPlayerGuiDef>(.., CDefPointer<const CPlayerGuiDef>*)).
+#include "engine/CCountedPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/CEnginePrimitiveHandle.h"
+#include "engine/CTexture.h"
+#include "engine/C2DBoxF.h"
+#include "engine/NHeroInformationScreens_CManager.h"
+#include "stlport/fable_containers.h"
+#include "boost/scoped_ptr.h"
+class CFontBank; class CPlayerGuiDef;
+namespace NPlayerGui {
+class CDrawHealth; class CDrawStamina; class CDrawCombatMultiplier; class CDrawSpiritsHealth; class CDrawMiniMap; class CDrawScreenFade;
+class CDrawMoney; class CDrawRenown; class CDrawMorality; class CDrawExperience; class CDrawCrime; class CDrawReceivedItems;
+class CDrawFishingGame; class CDrawStatUpdates; class CDrawAutoPickups; class CDrawPerceivers; class CDrawDamage; class CDrawQuestInfo;
+class CDrawGuildSeal; class CDrawQuickAccessIcons; class CDrawScriptScreenText; class CDrawTargetInfo; class CDrawHighlightingTargetingCursor;
+class CDrawWorldTime; class CDrawAbilityButtons; class CDrawLetterBoxBlackBars; class CDrawBettingHUD; class CDrawProjectileTargetingCentre;
+class CDrawMeleeActionButtonEffects; class CDrawSpiritScores; class CDrawSpiritTargetingCursor; class CDraw2DText; class CDrawMouseCursor;
+class CDrawNPCName; class CDrawBase; class CStatBar; class CCrimeStatBar; class CMultiStatBar; class CAutoPickupBar;
+class CScriptScreenText; class CScreenMessage;
+}
+enum EPlayerGuiMode { };                                             // W4EPlayerGuiMode@@ (enumerators not needed here)
+#endif
 class CThing;class C3DVector;
 namespace NHeroInformationScreens { class CManager; }
 // TPI0xbf85 original singleton base; native437990 forwards through PDrawCombatMultiplier+150.
@@ -14,7 +47,91 @@ namespace NHeroInformationScreens { class CManager; }
 class CPlayerGui : public CTBaseSingletonNoDefaultAlloc<CPlayerGui> {
 private: unsigned char _pad_0x04[0x14];                              // +0x04 World .. Graphics
     CSubtitleRenderer SubtitleRenderer;                                  // +0x18
+#ifdef FABLE_RETAIL_CPLAYERGUI_MEMBERS
+    CCountedPointer<CFontBank> PFont;                                    // +0x138
+    CCountedPointer<NPlayerGui::CDrawHealth> PDrawHealth;                // +0x140
+    CCountedPointer<NPlayerGui::CDrawStamina> PDrawStamina;              // +0x148
+    CCountedPointer<NPlayerGui::CDrawCombatMultiplier> PDrawCombatMultiplier;   // +0x150
+    CCountedPointer<NPlayerGui::CDrawSpiritsHealth> PDrawSpiritsHealth;  // +0x158
+    CCountedPointer<NPlayerGui::CDrawMiniMap> PDrawMiniMap;              // +0x160
+    CCountedPointer<NPlayerGui::CDrawScreenFade> PDrawScreenFade;        // +0x168
+    CCountedPointer<NPlayerGui::CDrawMoney> PDrawMoney;                  // +0x170
+    CCountedPointer<NPlayerGui::CDrawRenown> PDrawRenown;                // +0x178
+    CCountedPointer<NPlayerGui::CDrawMorality> PDrawMorality;            // +0x180
+    CCountedPointer<NPlayerGui::CDrawExperience> PDrawExperience;        // +0x188
+    CCountedPointer<NPlayerGui::CDrawCrime> PDrawCrime;                  // +0x190
+    CCountedPointer<NPlayerGui::CDrawReceivedItems> PDrawReceivedItems;  // +0x198
+    CCountedPointer<NPlayerGui::CDrawFishingGame> PDrawFishingGame;      // +0x1a0
+    CCountedPointer<NPlayerGui::CDrawStatUpdates> PDrawStatUpdates;      // +0x1a8
+    CCountedPointer<NPlayerGui::CDrawAutoPickups> PDrawAutoPickups;      // +0x1b0
+    CCountedPointer<NPlayerGui::CDrawPerceivers> PDrawPerceivers;        // +0x1b8
+    CCountedPointer<NPlayerGui::CDrawDamage> PDrawDamage;                // +0x1c0
+    CCountedPointer<NPlayerGui::CDrawQuestInfo> PDrawQuestInfo;          // +0x1c8
+    CCountedPointer<NPlayerGui::CDrawGuildSeal> PDrawGuildSeal;          // +0x1d0
+    CCountedPointer<NPlayerGui::CDrawQuickAccessIcons> PDrawQuickAccessIcons;   // +0x1d8
+    CCountedPointer<NPlayerGui::CDrawScriptScreenText> PDrawScriptScreenText;   // +0x1e0
+    CCountedPointer<NPlayerGui::CDrawTargetInfo> PDrawTargetInfo;        // +0x1e8
+    CCountedPointer<NPlayerGui::CDrawHighlightingTargetingCursor> PDrawHighlightingTargetingCursor;   // +0x1f0
+    CCountedPointer<NPlayerGui::CDrawWorldTime> PDrawWorldTime;          // +0x1f8
+    CCountedPointer<NPlayerGui::CDrawAbilityButtons> PDrawAbilityButtons;   // +0x200
+    CCountedPointer<NPlayerGui::CDrawLetterBoxBlackBars> PDrawLetterBoxBlackBars;   // +0x208
+    CCountedPointer<NPlayerGui::CDrawBettingHUD> PDrawBettingHUD;        // +0x210
+    CCountedPointer<NPlayerGui::CDrawProjectileTargetingCentre> PDrawProjectileTargetingCentre;   // +0x218
+    CCountedPointer<NPlayerGui::CDrawMeleeActionButtonEffects> PDrawMeleeActionButtonEffects;     // +0x220
+    CCountedPointer<NPlayerGui::CDrawSpiritScores> PDrawSpiritScores;    // +0x228
+    CCountedPointer<NPlayerGui::CDrawSpiritTargetingCursor> PDrawSpiritTargetingCursor;   // +0x230
+    CCountedPointer<NPlayerGui::CDraw2DText> PDraw2DText;                // +0x238
+    CCountedPointer<NPlayerGui::CDrawMouseCursor> PDrawMouseCursor;      // +0x240
+    CCountedPointer<NPlayerGui::CDrawNPCName> PDrawNPCName;              // +0x248
+    bool ShowSpecialAbilityButtons;                                      // +0x250
+    bool ShowSpecialAbilityButtonsAbilities;                             // +0x251
+    bool SpecialSelected;                                                // +0x252
+    bool SpecialDeselected;                                              // +0x253
+    std::vector<long> AbilityButtons;                                    // +0x254
+    std::vector<float> AbilityButtonsAlpha;                              // +0x260
+    std::vector<float> QuickAccessButtonsAlpha;                          // +0x26c
+    float AbilityButtonScale;                                            // +0x278
+    bool NormalToSpecial;                                                // +0x27c
+    bool SpecialToNormal;                                                // +0x27d
+    C2DBoxF VWindow;                                                     // +0x280
+    bool DrawGui;                                                        // +0x290
+    bool OldDrawGui;                                                     // +0x291
+    EPlayerGuiMode GuiMode;                                              // +0x294
+    float FadeInTimer;                                                   // +0x298
+    bool ForcedClosed;                                                   // +0x29c
+    bool ShowTime;                                                       // +0x29d
+    bool ShowMoneyBag;                                                   // +0x29e
+    bool ShowStatBars;                                                   // +0x29f
+    float Alpha;                                                         // +0x2a0
+    unsigned __int64 HeroCentreUID;                                      // +0x2a8
+    bool DrawingSafeAreas;                                               // +0x2b0
+    bool DrawingDebugTGA;                                                // +0x2b1
+    CTexture DebugTGATexture;                                            // +0x2b4
+    bool ScreenMessagingEnabled;                                         // +0x2bc
+    bool ForceAllowSubtitleToRender;                                     // +0x2bd
+    bool LiveGuiMode;                                                    // +0x2be
+    std::vector<NPlayerGui::CDrawBase*> Illustrators;                    // +0x2c0
+    CCountedPointer<NPlayerGui::CStatBar> PMoney;                        // +0x2cc
+    CCountedPointer<NPlayerGui::CStatBar> PRenown;                       // +0x2d4
+    CCountedPointer<NPlayerGui::CStatBar> PMorality;                     // +0x2dc
+    CCountedPointer<NPlayerGui::CStatBar> PExperience;                   // +0x2e4
+    CCountedPointer<NPlayerGui::CCrimeStatBar> PCrime;                   // +0x2ec
+    CCountedPointer<NPlayerGui::CMultiStatBar> PStatUpdates;             // +0x2f4
+    CCountedPointer<NPlayerGui::CAutoPickupBar> PAutoPickups;            // +0x2fc
+    std::vector<CEnginePrimitiveHandle> TextPrimitiveHandles;            // +0x304
+    std::vector<CEnginePrimitiveHandle> SafeAreaPrimitiveHandles;        // +0x310
+    CEnginePrimitiveHandle DebugTGAPrimitiveHandle;                      // +0x31c
+    std::list<NPlayerGui::CScriptScreenText> ScriptScreenText;           // +0x324
+    std::list<NPlayerGui::CScreenMessage> ScreenMessages;                // +0x328
+    boost::scoped_ptr<NHeroInformationScreens::CManager> PHeroInfoScreensManager;   // +0x32c
+    bool DisplayBottomHalfGUI;                                           // +0x330
+public:
+    static CDefPointer<const CPlayerGuiDef> PGuiDef;                     // 0x013B878C
+    ~CPlayerGui();                                                       // 0x0043A570 (virtual through the singleton base)
+private:
+#else
     unsigned char _pad_0x138[0x200];                                     // +0x138 PFont .. DisplayBottomHalfGUI
+#endif
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CPlayerGui@@QAEX_N@Z (retail 0x0043A080,
     // landed) and ?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z (0x004378C0, the forward to PDrawMiniMap +0x160), both on Get().

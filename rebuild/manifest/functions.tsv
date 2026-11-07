@@ -1418,7 +1418,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0043a2a0	AddScriptScreenText	CPlayerGui	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x0043A2A0_global_ShowOnScreenMessage_FormatDisplay.cpp				
 0043a380	InitialActivate	CPlayerGui	__thiscall	void	1	CPlayerGui *	1	yes	accepted									
 0043a4d0	SetGuildSealLevelUpPos	CPlayerGui	__thiscall	void	2	CPlayerGui *,C2DVector *	1	yes	accepted									
-0043a570	NHeroInformationScreens_Destructor	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x0043A570_global_NHeroInformationScreens_Destructor.cpp				
+0043a570	~CPlayerGui	CPlayerGui	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\43\0x0043A570_global_NHeroInformationScreens_Destructor.cpp				
 0043b050	DrawDebugSafeAreas	CPlayerGui	__thiscall	void	2	CPlayerGui *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 0043b570	CPlayerGui	CPlayerGui	__thiscall	undefined	6	CPlayerGui *,CMainGameComponent *,CWorld *,CGamePlayerInterface *,CPlayerManager *,CGraphicDataBank *	0	yes	accepted									
 0043c3c0	Dtor_CCharStringBase_0043c3c0	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0043c3c0.cpp
@@ -1579,8 +1579,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0043fd40	StdList_Clear_0043fd40	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CGuiControlTreePane_SortTreeRecursively_0043fd40.cpp
 0043fd80	StdList_Clear_0043fd80	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CGuiControlTreePane_SortTreeRecursively_0043fd80.cpp
 0043fdc0	FreeBuffer	CBankFileAsyncData	__thiscall	void	1	CBankFileAsyncData *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CBankFileAsyncData_FreeBuffer_0043fdc0.cpp
-0043fdf0	FrameUpdate	CNavigatorQueueManager	__thiscall	void	1	CNavigatorQueueManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CNavigatorQueueManager_FrameUpdate_0043fdf0.cpp
-0043fe40	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CGuiControlTreePane_SortTreeRecursively_0043fe40.cpp
+0043fdf0	clear	std::_List_base<NPlayerGui::CScriptScreenText>	__thiscall	void	1	CNavigatorQueueManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CNavigatorQueueManager_FrameUpdate_0043fdf0.cpp
+0043fe40	clear	std::_List_base<NPlayerGui::CScreenMessage>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CGuiControlTreePane_SortTreeRecursively_0043fe40.cpp
 0043fe80	FreeBuffer	CBankFileAsyncData	__thiscall	void	1	CBankFileAsyncData *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CBankFileAsyncData_FreeBuffer_0043fe80.cpp
 0043feb0	GetDef<CGlobalDef>	CDefinitionManager	__thiscall	bool	4	CDefinitionManager *,CCharString *,long,CDefPointer<CSoundThemeDef_const_> *	1	yes	accepted									
 0043ff30	GetDef_0043ff30	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,CCharString *,CDefPointer<CHeroPostcardGeneratorDef_const_> *	1	yes	accepted									
@@ -14755,7 +14755,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0066b1d0	PlayAttachedSoundEvent	CTCSoundPlayer	__thiscall	ulong	5	CTCSoundPlayer *,CCharString *,bool,bool,bool	1	yes	accepted									
 0066b280	PlayAttachedSample	CTCSoundPlayer	unknown	undefined	0		0	yes	accepted									
 0066b300	PlayAttachedSample	CTCSoundPlayer	__thiscall	ulong	7	CTCSoundPlayer *,CASoundBank *,CSoundPair *,CSoundInit *,bool,bool,bool	1	yes	accepted									
-0066b370	sub_0066b370	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0066b370	PlayAllSoundEvents	CTCSoundPlayer	unknown	undefined	0		0			discovered	gapscan							
 0066ba80	PlayAttachedDialogue	CTCSoundPlayer	unknown	undefined	0		0	yes	accepted									
 0066bbf0	FrameUpdate	CTCSoundPlayer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0066bc10	GetPotentialCriteriaStrings	CTCSoundPlayer	unknown	undefined	0		0	yes	accepted									
@@ -17951,7 +17951,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006f8fa0	ScalarDeletingDtor_006f8fa0	_global	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6f\CLandscapeBackgroundPatch_vectordeletingdestructor_006f8fa0.cpp
 006f8fc0	Dtor_CCharStringBase_006f8fc0	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6f\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_006f8fc0.cpp
 006f90b0	GetGlobal_013babb4_006f90b0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6f\global_GFGetPreMainMemoryUsed_006f90b0.cpp
-006f90c0	GetGlobal_013babbc_006f90c0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6f\global_GFGetPreMainMemoryUsed_006f90c0.cpp
+006f90c0	GetSoundEventManager	NAnimationEvents	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6f\global_GFGetPreMainMemoryUsed_006f90c0.cpp
 006f90d0	AnimHasEmbeddedEvent	NAnimationEvents::CManager	__thiscall	bool	3	CManager *,ulong,CCharString *	1	yes	accepted									
 006f9130	GetEmbeddedEventTime	CManager	__thiscall	float	3	CManager *,ulong,CCharString *	1	yes	accepted									
 006f91e0	GetEmbeddedEventNames	CAnimationEventQuery_006f91e0	__thiscall	void	3	CManager *,ulong,vector<CCharString,std::allocator<CCharString>_> *	1	yes	accepted									
@@ -17965,7 +17965,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006f9720	AnimHasEvent	CAnimationEventQuery_006f9720	__thiscall	bool	3	CManager *,ulong,CCharString *	1	yes	accepted									
 006f9790	GetEventTimeInSeconds	NAnimationEvents::CManager	__thiscall	float	3	CManager *,ulong,CCharString *	1	yes	accepted									
 006f9820	GetEmbeddedEventsBetweenTimes	NAnimationEvents::CManager	__thiscall	bool	5	CManager *,ulong,CSmallVector<NAnimationEvents::CEvent,32> *,float,float	1	yes	accepted									
-006f99b0	GetAnimEventsBetweenTimes	_global	__thiscall	bool	5	CManager *,ulong,CSmallVector<NAnimationEvents::CEvent,32> *,float,float	1	yes	accepted									
+006f99b0	GetAnimEventsBetweenTimes	NAnimationEvents::CManager	__thiscall	bool	5	CManager *,ulong,CSmallVector<NAnimationEvents::CEvent,32> *,float,float	1	yes	accepted									
 006f9ac0	GetExtraEventNames	NAnimationEvents::CManager	unknown	undefined	0		0	yes	accepted									
 006f9b20	Render	CRenderHelper_006f9b20	__thiscall	void	3	CEnginePrimitiveManager2DAnimatedMeshes *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									
 006f9b50	GetExtraEvents	NAnimationEvents::CManager	unknown	undefined	0		0	yes	accepted									
@@ -18363,7 +18363,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0070ce10	UpdateDistanceMoved	CAnimSet	__thiscall	void	2	CAnimSet *,float	1	yes	accepted									
 0070d030	Update	CAnimSet	__thiscall	void	2	CAnimSet *,CAnimateThingUpdate *	1	yes	accepted									
 0070d0a0	GetAllCombinationAnimsFromType	CAnimateThing	unknown	undefined	0		0	yes	accepted									
-0070d100	ProcessLoading	CGraphicBankManager	__thiscall	void	3	CGraphicBankManager *,bool,double	1	yes	accepted									
+0070d100	GetAllCombinationAnims	CAnimateThing	__thiscall	void	3	CGraphicBankManager *,bool,double	1	yes	accepted									
 0070d1a0	Init	CAnimSet	__thiscall	void	4	CAnimSet *,CAnimateThing *,CAnimInit *,float	1	yes	accepted									
 0070d2f0	AddAnim	CAnimSet	unknown	undefined	0		0	yes	accepted									
 0070d390	UpdateCombinationAnimList	CAnimateThing	__thiscall	void	3	CAnimateThing *,list<CAnimSet,std::allocator<CAnimSet>_> *,CAnimateThingUpdate *	1	yes	accepted									
@@ -49228,6 +49228,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ce6c80	`scalar deleting destructor'	NScript::CHeroBoastsScript	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ce\CEngineSubPrimitiveText_scalardeletingdestructor_00ce6c80.cpp
 00ce6cb0	CGameflowScript	NScript::CGameflowScript	__thiscall	undefined	1	CAIStateGroup_HoverHornetQueen *	0	yes	accepted									
 00ce6cf0	Init	NScript::CGameflowScript	unknown	undefined	0		0			discovered	gapscan							
+00ce6d00	DeclareGossipCategories	NScript::CGameflowScript	unknown	undefined	0		0			discovered	boundary							
 00ce75b0	RegisterMain	NScript::CGameflowScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00ce7640	SuspendableProcess	CSpawnedFunc<NScript::CGameflowScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ce\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ce7640.cpp
 00ce7650	`scalar deleting destructor'	CSpawnedFunc<NScript::CGameflowScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ce\CLandscapeBackgroundPatch_vectordeletingdestructor_00ce7650.cpp

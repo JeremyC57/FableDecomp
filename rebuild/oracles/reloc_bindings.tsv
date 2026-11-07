@@ -37510,3 +37510,9 @@ $notRedefined$4399	0068a01d	00689df0
 ?UpdateObjectSpaceFogTransform@CShaderRenderManager@@AAEXXZ	00989540	00ba1b00
 ?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z	00989cb0	00ba1b00
 ?UpdateWorldSpaceTextureTransform@CShaderRenderManager@@AAEXXZ	009894b0	00ba1b00
+??_7?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@6B@	01231720	0043a570
+??_7CPlayerGui@@6B@	0123177c	0043a570
+?PGuiDef@CPlayerGui@@2V?$CDefPointer@$$CBVCPlayerGuiDef@@@@A	013b878c	0043a570
+?clear@?$_List_base@VCScreenMessage@NPlayerGui@@V?$allocator@VCScreenMessage@NPlayerGui@@@std@@@std@@QAEXXZ	0043fe40	0043a570
+?clear@?$_List_base@VCScriptScreenText@NPlayerGui@@V?$allocator@VCScriptScreenText@NPlayerGui@@@std@@@std@@QAEXXZ	0043fdf0	0043a570
+?DeclareGossipCategories@CGameflowScript@NScript@@QAEXXZ	00ce6d00	00ce6cf0

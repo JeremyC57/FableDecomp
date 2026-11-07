@@ -1,0 +1,9 @@
+- chunk 853: a shared-header inline ctor may still be emitted out of line under the row's macros (C2DBoxF corner ctor): check objdump -r for a call before chasing frame diffs; FABLE_RETAIL_C2DBOXF_CORNERS inlines it.
+- chunk 853: a PDB-authored copy ctor (FableWin lists ??0C2DBoxF@@QAE@ABV0@@Z) changes x87 copy codegen: member-wise copies let VC7.1 fstp straight into a by-value filter member (frame 0x80 -> 0x7c); the implicit copy goes through dword moves.
+- chunk 853: when retail reloads `*it` from the iterator slot at every use, write `(*it)->` with no element local; a hoisted `count` (and a begin pointer) is what lets VC7.1 unroll a small max-search loop x4 as retail.
+- chunk 853: `if (x & 0x80000000)` gives retail's `test; jns`, `(long)x < 0` gives `jge`.
+- chunk 853: a script counter loop `for (long r = 1; r <= 3; )` with `++r; threshold -= quarter;` at the bottom fixed the frame-slot order the while form got wrong.
+- chunk 853: the row-local inline ~CScriptThing lever helps a 2 KB script (SpawnBalverines md130 -> md59) but expands every site in a 3 KB one (PhaseOne 3039 -> 4025): park it there.
+- chunk 853: a static CDefPointer's release reads the count through a reference (`add eax,4 ... mov [eax],ebx`), the in-place form gives `dec [ecx+4]` (FABLE_RETAIL_CDEFPOINTER_RELEASE_COUNTREF).
+- chunk 853: a catalogue row whose first function ends in `jmp +0` into the next one covers two functions (0x00CE6CF0 Init 16 + DeclareGossipCategories 2221): grade each alone against Fable.exe bytes and hand back split/ for a recut.
+- chunk 853: an unclosed namespace brace hangs cl.exe under Wine like `#error`: check brace balance before grading.

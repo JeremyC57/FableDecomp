@@ -19,7 +19,14 @@ class CWideString;                                              // chunk 795
 #pragma pack(push, 1)
 class CSubtitleRenderer {
 public:
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_DTOR
+    // Retail opt-in (chunk 853, row 0x0043A570 ~CPlayerGui): the vptr as a real virtual destructor, Ego_r.pdb ??1CSubtitleRenderer@@UAE@XZ /
+    // ??_GCSubtitleRenderer@@UAEPAXI@Z, out of line at 0x00443E20 (~CPlayerGui destroys its SubtitleRenderer member there: `lea ecx,[esi+18h] ;
+    // call 0x00443E20`, 0x0043B023). Declaration only; same layout (the vptr stays at +0x00, sizeof 0x120).
+    virtual ~CSubtitleRenderer();                                        // 0x00443E20
+#else
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
+#endif
     float             VWindow_TLX;                           // +0x04 C2DBoxF::TLX
     float             VWindow_TLY;                           // +0x08 C2DBoxF::TLY
     float             VWindow_BRX;                           // +0x0c C2DBoxF::BRX
@@ -94,7 +101,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CSubtitleRenderer) == 0x120);
+#ifndef FABLE_RETAIL_CSUBTITLERENDERER_DTOR
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VWindow_TLX) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VWindow_TLY) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CSubtitleRenderer, VWindow_BRX) == 0xc);

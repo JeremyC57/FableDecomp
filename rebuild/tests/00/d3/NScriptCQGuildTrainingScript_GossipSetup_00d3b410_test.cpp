@@ -1,4 +1,4 @@
-// Behaviour test for CGameflowScript::DeclareGossipCategories (0x00D3B410): the registration sequence.
+// Behaviour test for NScript::CQ_GuildTrainingScript::GossipSetup (0x00D3B410): the registration sequence.
 #include <cstdio>
 #include <cstring>
 
@@ -21,11 +21,11 @@ class CGameScriptInterface { public:
     void AddGossipVillage(const CCharString& c, const CCharString& v) { Log("V", c.Text, v.Text); }
     void AddGossipFactionToCategory(const CCharString& c, const CCharString& f) { Log("F", c.Text, f.Text); }
 };
-struct CGameflowScript {
+struct CQ_GuildTrainingScript {
     CGameScriptInterface* GSI;
-    void DeclareGossipCategories();
+    void GossipSetup();
 };
-void CGameflowScript::DeclareGossipCategories()
+void CQ_GuildTrainingScript::GossipSetup()
 {
     GSI->AddRumourCategory("Sweet Kid");
     GSI->AddNewRumourToCategory("Sweet Kid", "TEXT_AI_GOSSIP_SWEET_KID");
@@ -59,10 +59,10 @@ void CGameflowScript::DeclareGossipCategories()
 int main()
 {
     CGameScriptInterface gsi;
-    CGameflowScript s;
+    CQ_GuildTrainingScript s;
     s.GSI = &gsi;
     g_log[0] = 0;
-    s.DeclareGossipCategories();
+    s.GossipSetup();
     if (g_count != 28
         || std::strncmp(g_log, "C(Sweet Kid);R(Sweet Kid,TEXT_AI_GOSSIP_SWEET_KID);V(Sweet Kid,VILLAGE_GUILD_COMPLEX_INSIDE);", 92) != 0
         || std::strstr(g_log, "F(Complete Will,FACTION_GUILD_APPRENTICES_GOOD);") == 0

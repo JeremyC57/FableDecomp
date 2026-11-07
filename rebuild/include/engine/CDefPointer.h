@@ -86,6 +86,23 @@ public:
 #else
     void Reset(T*);                                                      // unproven body (FableWin ?Reset@..QAEXPBV..@Z)
 #endif
+#ifdef FABLE_RETAIL_CDEFPOINTER_RELEASE_COUNTREF
+    // Nested opt-in (chunk 853, row 0x0043A570 ~CPlayerGui): the release of a CDefPointer held in a STATIC (CPlayerGui::PGuiDef
+    // 0x013B878C) reads the count through a reference on Object (`mov ebx,[eax+4]; mov ecx,eax; add eax,4; dec ebx; ...; mov [eax],ebx`,
+    // 0x0043A587; the landed atexit destructor of the same static 0x01228B70 has the identical shape). The in-place form above gives
+    // `dec dword ptr [ecx+4]` there. Same semantics.
+    FABLE_DEFPTR_INLINE void Release()
+    {
+        if (Object) {
+            CDefPointeeBase* object = Object;
+            const unsigned long& count = Object->IVRefCount;
+            --Object->IVRefCount;
+            if (count == 0)
+                object->Delete();
+            Object = 0;
+        }
+    }
+#else
     FABLE_DEFPTR_INLINE void Release()
     {
         if (Object) {
@@ -95,6 +112,7 @@ public:
             Object = 0;
         }
     }
+#endif
     CDefPointeeBase* Object;                                             // +0x00
 private:
     FABLE_DEFPTR_INLINE void Assign(CDefPointeeBase* object)                                 // the inline body of operator= / SetDynamicCast

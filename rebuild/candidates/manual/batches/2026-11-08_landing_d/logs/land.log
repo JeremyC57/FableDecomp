@@ -1,0 +1,19 @@
+addr       parity           behav  name
+0043a570   WARN RELOC_NAME: ?clear@?$_List_base@VCScreenMessage@NPlayerGui@@V?$allocator@VCScreenMessage@NPlayerGui@@@std@@@std@@QAEXXZ -> 0043fe40 labelled 'CGuiControlTreePane::SortTreeRecursively'
+0043a570   WARN RELOC_NAME: ?clear@?$_List_base@VCScriptScreenText@NPlayerGui@@V?$allocator@VCScriptScreenText@NPlayerGui@@@std@@@std@@QAEXXZ -> 0043fdf0 labelled 'CNavigatorQueueManager::FrameUpdate'
+0043a570   RELOCATION_MATCH PASS   ~CPlayerGui
+00ce6cf0   MATCH            PASS   Init
+00ce6d00   RELOCATION_MATCH PASS   DeclareGossipCategories
+00d3b410   RELOCATION_MATCH PASS   GossipSetup
+
+WINS: 4
+  0043a570 RELOCATION_MATCH CPlayerGui::??1CPlayerGui@@UAE@XZ
+  00ce6cf0 MATCH NScript::CGameflowScript::?Init@CGameflowScript@NScript@@UAEXXZ
+  00ce6d00 RELOCATION_MATCH NScript::CGameflowScript::?DeclareGossipCategories@CGameflowScript@NScript@@QAEXXZ
+  00d3b410 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::?GossipSetup@CQ_GuildTrainingScript@NScript@@QAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CPlayerGui_CPlayerGui_0043a570
+  NScriptCGameflowScript_Init_00ce6cf0
+  NScriptCGameflowScript_DeclareGossipCategories_00ce6d00
+  NScriptCQGuildTrainingScript_GossipSetup_00d3b410

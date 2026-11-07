@@ -12,11 +12,28 @@
 //   thiscall that stores its one argument at +0x28; the row passes INVENTORY_EXPERIENCE_SCREEN (2). The landed label
 //   "CObservable::AddExclusiveObserver" (propagated from a byte-identical setter) does not fit this class.
 #include "engine/NHeroInformationScreens_CBase.h"
+#ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_LAYOUT
+#include "stlport/fable_containers.h"
+class CWorld;
+#endif
 namespace NHeroInformationScreens {
 class CManager {
 public:
     const CBase* GetCurrentScreen();                    // 0x0066E7BD
     void SelectScreenOfType(EScreenType type);          // 0x0066E799
+#ifdef FABLE_RETAIL_NHEROINFORMATIONSCREENS_CMANAGER_LAYOUT
+    // Retail opt-in (chunk 853, row 0x0043A570 ~CPlayerGui): the inline ~CManager (Ego_r.pdb ??1CManager@NHeroInformationScreens@@QAE@XZ,
+    // non-virtual; boost::checked_delete then operator delete, no vtable store) frees three STLport vectors at +0x1C, +0x10, +0x04 in that
+    // order (0x0043A5AD..0x0043A5DD) and SelectScreenOfType stores at +0x28. Member names and element types are DESCRIPTIVE (neither PDB
+    // gives the layout; the PDB's GetAllRegisteredScreens fills a vector<const CBase*>); the destructor is element-type independent.
+    ~CManager() { }
+private:
+    CWorld* PWorld;                                     // +0x00 descriptive (ctor ??0CManager@..@QAE@AAVCWorld@@@Z)
+    std::vector<const CBase*> RegisteredScreens;        // +0x04 descriptive
+    std::vector<const CBase*> DisplayedScreens;         // +0x10 descriptive
+    std::vector<long> ScrollBarIndices;                 // +0x1c descriptive
+    long CurrentScreenIndex;                            // +0x28 descriptive (SelectScreenOfType's store)
+#endif
 };
 }
 #endif

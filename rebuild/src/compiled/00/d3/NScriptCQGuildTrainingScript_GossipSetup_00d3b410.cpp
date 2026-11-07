@@ -1,5 +1,8 @@
-// CGameflowScript::DeclareGossipCategories() -- register the gameflow's seven rumour categories (Sweet Kid, Young Apprentice, Young Annoyance, Wannabe Hero, Complete Melee/Skill/Will) with their rumour text, the Guild village and the factions that gossip about them
-// Leaf: DeclareGossipCategories
+// NScript::CQ_GuildTrainingScript::GossipSetup() -- register the guild-training quest's seven rumour categories (Sweet Kid, Young Apprentice, Young Annoyance, Wannabe Hero, Complete Melee/Skill/Will) with their rumour text, the Guild village and the factions that gossip about them
+// Leaf: ?GossipSetup@CQ_GuildTrainingScript@NScript@@QAEXXZ
+// Respelled 2026-11-08 (chunk 853 evidence): was CGameflowScript::DeclareGossipCategories, which is 0x00CE6D00; this body sits in the
+//   CQ_GuildTrainingScript block (ctor 0x00D3B390, RegisterMain 0x00D3BB50) and registers guild-training rumour categories; Ego_r.pdb /
+//   FableWin.pdb ?GossipSetup@CQ_GuildTrainingScript@NScript@@QAEXXZ. Bytes unchanged (name only).
 // Plan phase 5 (2026-11-05), CIntelligentPointer wave: the local CBaseIntelligentPointer / CIntelligentPointer stand-ins replaced by the shared engine/CIntelligentPointer.h, retail (byte-packed) branch FABLE_RETAIL_CINTELLIGENTPOINTER (Ego_r.pdb: vptr +0x0, PData +0x4; ctor 0x00A01B10, dtor 0x00A01C10, GetPItem 0x00A01B50, SetPItem 0x00A01B90).
 // Plan phase 5 (2026-11-05), CScriptThing wave: the local CScriptThing stand-in replaced by the shared engine/CScriptThing.h under FABLE_RETAIL_NSCRIPT (RTTI CScriptThing : CBaseClass, vtable 0x01238C8C, PImp +0x04; ~CScriptThing 0x004AA840 and the copy 0x004ABE90 declared out of line).
 // Plan phase 3 (2026-11-04), C3DVector wave: the local C3DVector stand-in replaced by the shared engine/C3DVector.h (PDB C3DVector TPI 0x2783: public X/Y/Z at 0/4/8, size 12).
@@ -39,12 +42,14 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
-struct CGameflowScript : CScriptBase {
+namespace NScript {
+class CQ_GuildTrainingScript : public CScriptBase { public:
     CGameScriptInterface* GSI;                          // +0x40
-    void DeclareGossipCategories();
+    void GossipSetup();
 };
+}
 
-void CGameflowScript::DeclareGossipCategories()
+void NScript::CQ_GuildTrainingScript::GossipSetup()
 {
     GSI->AddRumourCategory("Sweet Kid");
     GSI->AddNewRumourToCategory("Sweet Kid", "TEXT_AI_GOSSIP_SWEET_KID");

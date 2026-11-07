@@ -1,0 +1,7 @@
+address	module	name	length
+00ab58e0	CMouseDX	Update	1056
+0083efe0	LHNetworkLib::LHHttp2	ReceiveDocumentAsync	1074
+00501d30	CWorldMap	GetLevelFilesFromWorldFile	1086
+007602f0	_global	Math_PolygonAngleSumClosureCheck	1126
+00924c70	CAIStateGroup_KrakenAttack	Update	1152
+00507070	_global	RebuildStringPairTableFromTree	1432

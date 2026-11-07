@@ -1,0 +1,7 @@
+address	module	name	length
+0066b370	_gapscan	sub_0066b370	1808
+00e19560	NScript::CQ_WhiteBalverineWWScript	SpawnBalverines	2078
+0050a650	CWorldMap	GetMapNavigationAreaInit	2233
+00ce6cf0	NScript::CGameflowScript	Init	2237
+0043a570	_global	NHeroInformationScreens_Destructor	2770
+00df5000	NScript::CQ_TentacleKrakenBossFightScript	PhaseOne	3071

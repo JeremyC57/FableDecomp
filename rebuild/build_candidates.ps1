@@ -274217,13 +274217,6 @@ $catalog = @(
         PassPattern = '0089f4a0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00d3b410'
-        Module = 'CGameflowScript'
-        Source = '00/d3/CGameflowScript_DeclareGossipCategories_00d3b410.cpp'
-        TestSource = '00/d3/CGameflowScript_DeclareGossipCategories_00d3b410_test.cpp'
-        PassPattern = '00d3b410_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00d446d0'
         Module = 'NScript::CQ_GuildTrainingScript::CHeroBed'
         Source = '00/d4/NScriptCQGuildTrainingScriptCHeroBed_Main_00d446d0.cpp'
@@ -385354,6 +385347,34 @@ $catalog = @(
         Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_DisplayMirroredTextures_00ba1b00.cpp'
         TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_DisplayMirroredTextures_00ba1b00_test.cpp'
         PassPattern = '00ba1b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043a570'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_CPlayerGui_0043a570.cpp'
+        TestSource = '00/43/CPlayerGui_CPlayerGui_0043a570_test.cpp'
+        PassPattern = '0043a570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce6cf0'
+        Module = 'NScript::CGameflowScript'
+        Source = '00/ce/NScriptCGameflowScript_Init_00ce6cf0.cpp'
+        TestSource = '00/ce/NScriptCGameflowScript_Init_00ce6cf0_test.cpp'
+        PassPattern = '00ce6cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce6d00'
+        Module = 'NScript::CGameflowScript'
+        Source = '00/ce/NScriptCGameflowScript_DeclareGossipCategories_00ce6d00.cpp'
+        TestSource = '00/ce/NScriptCGameflowScript_DeclareGossipCategories_00ce6d00_test.cpp'
+        PassPattern = '00ce6d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3b410'
+        Module = 'NScript::CQ_GuildTrainingScript'
+        Source = '00/d3/NScriptCQGuildTrainingScript_GossipSetup_00d3b410.cpp'
+        TestSource = '00/d3/NScriptCQGuildTrainingScript_GossipSetup_00d3b410_test.cpp'
+        PassPattern = '00d3b410_TEST PASS'
     }
 )
 

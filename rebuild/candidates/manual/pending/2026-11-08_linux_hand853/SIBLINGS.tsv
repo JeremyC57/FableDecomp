@@ -1,0 +1,11 @@
+address	source	grade_with_final_overlay	note
+0x0066B120	rebuild/src/compiled/00/66/CTCSoundPlayer_InternalPlaySoundEvent_0066b120.cpp	RELOCATION_MATCH	class sibling (CTCSoundPlayer.h opt-in, default path)
+0x0066BBF0	rebuild/src/compiled/00/66/CTCSoundPlayer_FrameUpdate_0066bbf0.cpp	RELOCATION_MATCH	class sibling (CTCSoundPlayer.h opt-in, default path)
+0x0066B1D0	rebuild/src/compiled/00/66/CTCSoundPlayer_PlayAttachedSoundEvent_0066b1d0.cpp	RELOCATION_MATCH	class sibling (CTCSoundPlayer.h opt-in, default path)
+0x00DF4E00	rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScript_DoMission_00df4e00.cpp	RELOCATION_MATCH	class sibling (new CQ_TentacleKrakenBossFightScript.h is not included by landed rows; DoMission models the class locally)
+0x00437650	rebuild/src/compiled/00/43/CPlayerGui_AddMoralityChange_00437650.cpp	MATCH	class sibling (CPlayerGui.h opt-in default path; leaf WARN only, graded MATCH)
+0x0050AF10	rebuild/src/compiled/00/50/CWorldMap_ActivateNavMap_0050af10.cpp	RELOCATION_MATCH	class sibling CWorldMap
+0x00BE24D0	rebuild/src/compiled/00/be/C2DAlphaMaskInfo_Reset_00be24d0.cpp	MATCH	includer of C2DBoxF.h / C2DCoordI.h
+0x009E5350	rebuild/src/compiled/00/9e/CSymbolMap_DeallocateUnusedMemory_009e5350.cpp	RELOCATION_MATCH	includer of CSymbolMap.h
+0x00830CB0	rebuild/src/compiled/00/83/CThingAICreature_DrawGetThingDisplayInformation_00830cb0.cpp	RELOCATION_MATCH	includer of CDefPointer.h / CThingAICreature
+0x008C79B0	rebuild/src/compiled/00/8c/CDefClassBase_GetSubDefCAreaOfEffectAttackDef_008c79b0.cpp	RELOCATION_MATCH	includer of CDefPointer.h
