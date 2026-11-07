@@ -52360,7 +52360,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e2bf80	`scalar deleting destructor'	NScript::CV_AmbushScamScript::CAS_Buddy	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e2\CLandscapeBackgroundPatch_vectordeletingdestructor_00e2bf80.cpp
 00e2bfa0	Init	NScript::CV_AmbushScamScript::CAS_Buddy	__thiscall	void	1	CAS_Buddy *	1	yes	accepted									
 00e2c100	Main	NScript::CV_AmbushScamScript::CAS_Trickster	unknown	undefined	0		0			discovered	gapscan							
-00e2e400	ResetRandomSpeechTime	CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
+00e2e400	ResetRandomSpeechTime	NScript::CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
 00e2e440	GetRandomSpeech	CAC_Owner	__thiscall	CCharString	1	CAC_Owner *	1	yes	accepted									
 00e2e520	WatchForHeroAttack	NScript::CV_AmbushScamScript	__thiscall	void	2	CV_AmbushScamScript *,CScriptThing	1	yes	accepted									
 00e2e8c0	SuspendableProcess	CSpawnedFunc1<NScript::CV_AmbushScamScript,CScriptThing>	unknown	undefined	0		0			discovered	gapscan							
@@ -53603,6 +53603,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00eb98a0	OnPersist	NScript::CV_MayorsInvitationScript	unknown	undefined	0		0			discovered	gapscan							
 00eb9950	OnPersist	NScript::CV_MayorsInvitationScript::CMI_InfoKeeper	unknown	undefined	0		0			discovered	gapscan							
 00eb9980	Main	NScript::CV_MayorsInvitationScript::CLadyGrey	unknown	undefined	0		0			discovered	gapscan							
+00ebcb60	MonitorParanoidQuest	NScript::CV_MayorsInvitationScript	unknown	undefined	0		0			discovered	boundary							
 00ebcc10	Alloc	NScript::CV_MayorsInvitationScript	__fastcall	CScriptBase *	2	CScriptDataBase *,CGameScriptInterfaceBase *	1	yes	accepted									
 00ebcc70	`scalar deleting destructor'	NScript::CV_MayorsInvitationScript	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\eb\CEngineSubPrimitiveText_scalardeletingdestructor_00ebcc70.cpp
 00ebcca0	CV_OracleScript	NScript::CV_OracleScript	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									

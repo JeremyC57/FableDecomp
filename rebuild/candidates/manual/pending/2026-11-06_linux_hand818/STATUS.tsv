@@ -1,0 +1,82 @@
+address	name	status	attempts	best	grade	difflines	file	notes
+00e2c100	NScript::CV_AmbushScamScript::CAS_Trickster::Main	PARKED	12	t1	DIFFER(8945v8945)	2	probe/00e2c100_t1.cpp	r0 = 816 parked a3; only residue the 2-line push/mov swap in the pad 0x00E2E38E; 12 new attempts (t1-t12) none removed it
+00d5ae70	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::Main	PARKED	11	r0	DIFFER(11636v11636)	235	probe/00d5ae70_r0.cpp	r0 = 816 parked a3 (235 lines under the current grader); 10 new attempts g1-g10 none better; scalar/temporary slot colouring at esp+0x44/0x48/0x4c
+00e4b5b0	NScript::CV_BanditTollScript::CTollBandit::Main	PARKED	13	t1	DIFFER(10631v10594)	923	probe/00e4b5b0_t1.cpp	t1 = r0 + block A: frame 0x118 now matches (r0 1143 lines on this grader -> 923); 10 new attempts; conditional-dtor flag and temporary slot order still differ
+00eb9980	NScript::CV_MayorsInvitationScript::CLadyGrey::Main	MATCH	13	a13	RELOCATION_MATCH	0	src/00eb9980.cpp	name proven: vtable 0x012F05F4 slot1 (Alloc 0x00EB78B0) + both PDB sets; graded on 12753 bytes (to its ret 0x00EBCB50): 0x00EBCB60 is MonitorParanoidQuest, not part of Main
+00e20600	NScript::CQR_EscortTraderScript::CTraderToEscort::Main	PARKED	14	e9	DIFFER(14494v14510)	681	probe/00e20600_e9.cpp	name proven: vtable 0x012E151C slot1 (Alloc 0x00E1E7A0) + both PDB sets; CIsThingAlive copy-inline blocker + per-site inline splits; hdr opt-in FABLE_RETAIL_CQR_ESCORTTRADERSCRIPT_TRADERTOESCORT
+00e64fb0	NScript::CV_ChickenKickingScript::CChickenMaster::Main	PARKED	12	c3	DIFFER(15210v15210)	16	probe/00e64fb0_c3.cpp	name proven: vtable 0x012E747C slot1 (Alloc 0x00E634B0) + both PDB sets; register-only residue eax/edx at 0x00E6716A / 0x00E671E0; 10 attempts
+00e2c100	attempt t1	ATTEMPT	-	t1	DIFFER(8945v8945)	2	probe/00e2c100_t1.cpp	HELP_GOOD/EVIL TS_SAY expanded by hand; GOOD wait-loop return via TRetVoid _Fail_Val.Return()
+00e2c100	attempt t2	ATTEMPT	-	t2	DIFFER(8945v8945)	2	probe/00e2c100_t2.cpp	expanded arms; EVIL arm + pre-arm T all via _Fail_Val.Return()
+00e2c100	attempt t3	ATTEMPT	-	t3	DIFFER(8945v8945)	2	probe/00e2c100_t3.cpp	expanded arms; GOOD wait-loop T as do-while(0)
+00e2c100	attempt t4	ATTEMPT	-	t4	DIFFER(8945v8945)	2	probe/00e2c100_t4.cpp	expanded arms; EVIL post-wait T as do-while(0)
+00e2c100	attempt t5	ATTEMPT	-	t5	DIFFER(8945v8945)	2	probe/00e2c100_t5.cpp	expanded arms; pre-EVIL T as do-while(0)
+00e2c100	attempt t6	ATTEMPT	-	t6	DIFFER(8945v8945)	2	probe/00e2c100_t6.cpp	expanded arms; GOOD post-wait T do-while(0) + EVIL wait-loop T do-while(0)
+00e2c100	attempt t7	ATTEMPT	-	t7	DIFFER(8945v8945)	2	probe/00e2c100_t7.cpp	expanded arms; GOOD wait loop exits through goto label
+00e2c100	attempt t8	ATTEMPT	-	t8	DIFFER(8945v8945)	2	probe/00e2c100_t8.cpp	expanded arms; EVIL wait loop exits through goto label
+00e2c100	attempt t9	ATTEMPT	-	t9	DIFFER(8945v8945)	2	probe/00e2c100_t9.cpp	expanded arms; both wait loops through goto labels
+00eb9980	attempt a1	ATTEMPT	-	a1	DIFFER(12622v12753)	1422	probe/00eb9980_a1.cpp	first compile: whole body, 5 stages, own CLadyGrey opt-in in CV_MayorsInvitationScript.h
+00eb9980	attempt a2	ATTEMPT	-	a2	DIFFER(12600v12753)	681	probe/00eb9980_a2.cpp	final section in its own block (frame 0x130 -> 0x104)
+00eb9980	attempt a3	ATTEMPT	-	a3	DIFFER(12753v12753)	12	probe/00eb9980_a3.cpp	removed `if(c){while(c)}` wrappers: size-exact
+00eb9980	attempt a4	ATTEMPT	-	a4	DIFFER(12753v12753)	2	probe/00eb9980_a4.cpp	GIVE_ROSE answer-loop T as do-while(0): movie dtor pad split fixed; residue ebx flags reload placement
+00eb9980	attempt a5	ATTEMPT	-	a5	DIFFER(12753v12753)	2	probe/00eb9980_a5.cpp	`CCharString item = "";` copy-init: no change
+00eb9980	attempt a6	ATTEMPT	-	a6	DIFFER(12753v12753)	2	probe/00eb9980_a6.cpp	`QuestCardGiven==false`: no change
+00eb9980	attempt a7	ATTEMPT	-	a7	DIFFER(12753v12753)	2	probe/00eb9980_a7.cpp	extra block round the QuestCardGiven body: no change
+00eb9980	attempt a8	ATTEMPT	-	a8	DIFFER(12753v12753)	2	probe/00eb9980_a8.cpp	QuestCardGiven as empty-then/else: no change
+00eb9980	attempt a9	ATTEMPT	-	a9	DIFFER(12753v12753)	2	probe/00eb9980_a9.cpp	stage-0 talk wait in its own block: no change
+00eb9980	attempt a10	ATTEMPT	-	a10	DIFFER(12801v12753)	515	probe/00eb9980_a10.cpp	QuestCardGiven moved inside the WhichQuest==0 block: 515 lines (cut scene scope still open)
+00eb9980	attempt a11	ATTEMPT	-	a11	DIFFER(12817v12753)	23	probe/00eb9980_a11.cpp	a10 + intro cut scene in its own block: ebx reload fixed, one cast-map dtor now expanded at the GIVE_ROSE pad
+00eb9980	attempt a12	ATTEMPT	-	a12	RELOCATION_MATCH	-	probe/00eb9980_a12.cpp	a11 with the do-while(0) split removed (plain T): RELOCATION_MATCH
+00eb9980	attempt a13	ATTEMPT	-	a13	RELOCATION_MATCH	-	probe/00eb9980_a13.cpp	a12 minus the unused LG_ASK_SPLIT macro = src/00eb9980.cpp: RELOCATION_MATCH; relpair 135 strings ok, all bindings same
+00e64fb0	attempt c1	ATTEMPT	-	c1	PRECHECK	-	probe/00e64fb0_c1.cpp	first compile: PRECHECK #error (missing FABLE_RETAIL_DEF_CLASS_BASE / CDEFSTRINGTABLE), then SRC_FAIL, then the first real grade 15007v15210
+00e64fb0	attempt c1	ATTEMPT	-	c1	SRC_FAIL	-	probe/00e64fb0_c1.cpp	first compile: PRECHECK #error (missing FABLE_RETAIL_DEF_CLASS_BASE / CDEFSTRINGTABLE), then SRC_FAIL, then the first real grade 15007v15210
+00e64fb0	attempt c1	ATTEMPT	-	c1	DIFFER(15007v15210)	1581	probe/00e64fb0_c1.cpp	first compile: PRECHECK #error (missing FABLE_RETAIL_DEF_CLASS_BASE / CDEFSTRINGTABLE), then SRC_FAIL, then the first real grade 15007v15210
+00e64fb0	attempt c2	ATTEMPT	-	c2	DIFFER(15210v15210)	64	probe/00e64fb0_c2.cpp	c1 + STB FORCEINLINE_ASSIGN hdr opt-in + __forceinline GFIntToWideString: length match, 64 lines (prize branch order inverted)
+00e64fb0	attempt c3	ATTEMPT	-	c3	DIFFER(15210v15210)	16	probe/00e64fb0_c3.cpp	c2 with the 4 prize compares as `score<=Max {AGAIN} else {Max=score; AGAIN_HIGH}`: 16 lines, register-only (eax/edx swap 0x00E6716A FadeScreenOut, 0x00E671E0 spectator GetThingWithScriptName)
+00e20600	attempt e1	ATTEMPT	-	e1	DIFFER(14382v14510)	1567	probe/00e20600_e1.cpp	first draft from the decode: compiled first time, 14382v14510; predicate operands reversed, CScriptThing dtor out of line at the natural exit
+00e20600	attempt e2	ATTEMPT	-	e2	DIFFER(14547v14510)	1711	probe/00e20600_e2.cpp	e1 + operands swapped (Me && Hero) + inline ~CIsThingAlive + inline ~CScriptThing: natural exit matches; temporaries' ~CIsThingAlive now called (documented CIsThingAlive copy-inline case)
+00e20600	attempt e3	ATTEMPT	-	e3	DIFFER(14463v14510)	1283	probe/00e20600_e3.cpp	e2 without inline ~CScriptThing: ~CIsThingAlive expanded everywhere incl. CPredicate_And members (retail calls them): 1283
+00e20600	attempt e4	ATTEMPT	-	e4	DIFFER(14463v14510)	1283	probe/00e20600_e4.cpp	e3 + explicit ~CPredicate_And specialization defined before ~CIsThingAlive: no change (definition order irrelevant)
+00e20600	attempt e2	ATTEMPT	-	e2	DIFFER(14547v14510)	1711	probe/00e20600_e2.cpp	e1 + operands swapped (Me && Hero) + inline ~CIsThingAlive + inline ~CScriptThing: natural exit matches; temporaries' ~CIsThingAlive now called (documented CIsThingAlive copy-inline case)
+00e20600	attempt e5	ATTEMPT	-	e5	DIFFER(14590v14510)	1031	probe/00e20600_e5.cpp	e2 + T inside each success branch and `else { T; }` (retail hoists one T call into all five paths): tail after PERFECT as retail, 1031
+00e20600	attempt e6	ATTEMPT	-	e6	DIFFER(14624v14510)	2209	probe/00e20600_e6.cpp	e2 with the success chain as a switch: 2209 (worse)
+00e20600	attempt e5	ATTEMPT	-	e5	DIFFER(14590v14510)	1031	probe/00e20600_e5.cpp	e2 + T inside each success branch and `else { T; }` (retail hoists one T call into all five paths): tail after PERFECT as retail, 1031
+00e20600	attempt e7	ATTEMPT	-	e7	DIFFER(15050v14510)	1109	probe/00e20600_e7.cpp	e5 with while(!T){..NSF;} instead of for(;!T;NSF): more pads expanded, 1109 (for is colder)
+00e20600	attempt e5	ATTEMPT	-	e5	DIFFER(14590v14510)	1031	probe/00e20600_e5.cpp	e2 + T inside each success branch and `else { T; }` (retail hoists one T call into all five paths): tail after PERFECT as retail, 1031
+00e20600	attempt e8	ATTEMPT	-	e8	DIFFER(14510v14510)	689	probe/00e20600_e8.cpp	e5 without the inline GetPos: length match 14510v14510, 689 (TOTALLY_LOST GetPos now called; retail expands that one only)
+00e20600	attempt e9	ATTEMPT	-	e9	DIFFER(14494v14510)	681	probe/00e20600_e9.cpp	e8 without the RELEASE before START(3) after the success chain (START has its own): 681, best; residue = predicate temporaries, first pad placement, per-site inline splits (GetPos, IsOpenDoor, movie/CTimer pads)
+00e64fb0	attempt c4	ATTEMPT	-	c4	DIFFER(15210v15210)	16	probe/00e64fb0_c4.cpp	c3 + the third FadeScreenOut else-branch body wrapped in its own block: unchanged (16)
+00e64fb0	attempt c5	ATTEMPT	-	c5	DIFFER(15210v15210)	16	probe/00e64fb0_c5.cpp	c3 + `if (KnowGhostHasGone) if (!SpectatorsCreated)` nested instead of &&: unchanged (16)
+00e64fb0	attempt c6	ATTEMPT	-	c6	DIFFER(15210v15210)	16	probe/00e64fb0_c6.cpp	c3 + named CRGBColour black local for the third FadeScreenOut: unchanged (16)
+00e64fb0	attempt c7	ATTEMPT	-	c7	DIFFER(15210v15210)	16	probe/00e64fb0_c7.cpp	c3 + FadeScreenOut result kept in a bool: unchanged (16)
+00e64fb0	attempt c8	ATTEMPT	-	c8	DIFFER(15210v15210)	16	probe/00e64fb0_c8.cpp	c3 + the third-branch T as do { if (T) return; } while (0): unchanged (16)
+00e64fb0	attempt c9	ATTEMPT	-	c9	DIFFER(15210v15210)	16	probe/00e64fb0_c9.cpp	c3 + braced `if (T) { return; }`: unchanged (16)
+00e64fb0	attempt c10	ATTEMPT	-	c10	DIFFER(15210v15210)	16	probe/00e64fb0_c10.cpp	c3 + retail CRGBColour 3-argument ctor (FABLE_RETAIL_CRGBCOLOUR) at every FadeScreenOut: unchanged (16)
+00d5ae70	attempt g1	ATTEMPT	-	g1	DIFFER(11636v11636)	235	probe/00d5ae70_g1.cpp	r0 + commentCount as int instead of long: unchanged (235)
+00d5ae70	attempt g2	ATTEMPT	-	g2	DIFFER(11668v11636)	244	probe/00d5ae70_g2.cpp	r0 + named CCharString for the StartMovieSequence name: worse (11668 bytes)
+00d5ae70	attempt g3	ATTEMPT	-	g3	DIFFER(11636v11636)	235	probe/00d5ae70_g3.cpp	r0 + tick1/2/3 in one declaration: unchanged (235)
+00d5ae70	attempt g4	ATTEMPT	-	g4	DIFFER(11620v11636)	266	probe/00d5ae70_g4.cpp	r0 + conversation declared earlier (before lastScore block): worse (11620 bytes)
+00d5ae70	attempt g5	ATTEMPT	-	g5	DIFFER(11636v11636)	237	probe/00d5ae70_g5.cpp	r0 + ticksRemoved declared earlier: 237
+00d5ae70	attempt g6	ATTEMPT	-	g6	DIFFER(11636v11636)	257	probe/00d5ae70_g6.cpp	r0 + lastScore declared later: worse (257)
+00d5ae70	attempt g7	ATTEMPT	-	g7	DIFFER(11636v11636)	235	probe/00d5ae70_g7.cpp	r0 + switch on a declared `long which`: unchanged (235)
+00d5ae70	attempt g8	ATTEMPT	-	g8	DIFFER(11636v11636)	235	probe/00d5ae70_g8.cpp	r0 + const long conversation: unchanged (235)
+00d5ae70	attempt g9	ATTEMPT	-	g9	DIFFER(11636v11636)	235	probe/00d5ae70_g9.cpp	r0 + NOT_START speech scene in its own block with the trailing T inside: unchanged (235)
+00d5ae70	attempt g10	ATTEMPT	-	g10	DIFFER(11636v11636)	235	probe/00d5ae70_g10.cpp	r0 + comment conversation in its own block: unchanged (235)
+00d5ae70	attempt r0	ATTEMPT	-	r0	DIFFER(11636v11636)	235	probe/00d5ae70_r0.cpp	chunk 816 parked a3 source regraded unchanged under the current grader (235 lines), the base for g1-g10
+00e4b5b0	attempt r0	ATTEMPT	-	r0	DIFFER(10674v10594)	1143	probe/00e4b5b0_r0.cpp	chunk 816 parked a3 source regraded (1143 lines on this grader; 1229 in the 816 diff count), the base for t1
+00e4b5b0	attempt t1	ATTEMPT	-	t1	DIFFER(10631v10594)	923	probe/00e4b5b0_t1.cpp	r0 + block A `{ CTimer call_timer; ...state-2 loop...; if (T) return; }`: frame 0x118 now matches, 10631 bytes, 923 lines (best)
+00e4b5b0	attempt t2	ATTEMPT	-	t2	DIFFER(10615v10594)	949	probe/00e4b5b0_t2.cpp	t1 + warn_timer state-3 section in its own block: 10615 bytes, 949
+00e4b5b0	attempt t3	ATTEMPT	-	t3	DIFFER(10658v10594)	2179	probe/00e4b5b0_t3.cpp	block A moved to start at the warn section instead: much worse (2179)
+00e4b5b0	attempt t4	ATTEMPT	-	t4	DIFFER(10615v10594)	949	probe/00e4b5b0_t4.cpp	t1 + block from warn_timer through the end: 10615 bytes, 949
+00e4b5b0	attempt t5	ATTEMPT	-	t5	DIFFER(10631v10594)	923	probe/00e4b5b0_t5.cpp	t1 with the block-A trailing T outside the block: same as t1 (923)
+00e4b5b0	attempt t1	ATTEMPT	-	t1	DIFFER(10631v10594)	923	probe/00e4b5b0_t1.cpp	r0 + block A `{ CTimer call_timer; ...state-2 loop...; if (T) return; }`: frame 0x118 now matches, 10631 bytes, 923 lines (best)
+00e4b5b0	attempt t2	ATTEMPT	-	t2	DIFFER(10615v10594)	949	probe/00e4b5b0_t2.cpp	t1 + warn_timer state-3 section in its own block: 10615 bytes, 949
+00e4b5b0	attempt t6	ATTEMPT	-	t6	DIFFER(10631v10594)	923	probe/00e4b5b0_t6.cpp	t1 + kill_distance section in its own block: same as t1 (923)
+00e4b5b0	attempt t7	ATTEMPT	-	t7	DIFFER(10631v10594)	981	probe/00e4b5b0_t7.cpp	t1 + block from hero_left through the end: 981
+00e4b5b0	attempt t8	ATTEMPT	-	t8	DIFFER(10615v10594)	949	probe/00e4b5b0_t8.cpp	t1 + warn_distance inside a block through the end: 10615 bytes, 949
+00e4b5b0	attempt t9	ATTEMPT	-	t9	DIFFER(10615v10594)	949	probe/00e4b5b0_t9.cpp	t1 + t6 + t2 blocks combined: 10615 bytes, 949
+00e4b5b0	attempt t10	ATTEMPT	-	t10	DIFFER(10631v10594)	981	probe/00e4b5b0_t10.cpp	t1 + t6 + t7 blocks combined: 981
+00e2c100	attempt t10	ATTEMPT	-	t10	DIFFER(8945v8945)	2	probe/00e2c100_t10.cpp	r0 + seh_me.Release() duplicated into each MoralitySwitch arm: unchanged (same 2-line pad swap)
+00e2c100	attempt t11	ATTEMPT	-	t11	DIFFER(9126v8945)	263	probe/00e2c100_t11.cpp	r0 + the movie / PauseMyEntitiesPlease declared inside each MoralitySwitch arm: worse (9126 bytes, two pads)
+00e2c100	attempt t12	ATTEMPT	-	t12	DIFFER(8784v8945)	545	probe/00e2c100_t12.cpp	r0 + one TS_SAY on a ?: chosen text pointer instead of two arms: worse (8784 bytes)
+00e20600	attempt e10	ATTEMPT	-	e10	DIFFER(14494v14510)	681	probe/00e20600_e10.cpp	e9 + door-open wait as while(true){ if (door.IsOpenDoor()) break; ...}: unchanged (681)
+00e20600	attempt e11	ATTEMPT	-	e11	DIFFER(14494v14510)	681	probe/00e20600_e11.cpp	e9 + door-open wait as for(;;){ if (door.IsOpenDoor()) break; ...}: unchanged (681)

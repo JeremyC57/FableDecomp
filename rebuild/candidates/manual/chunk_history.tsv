@@ -27543,7 +27543,7 @@ chunk	address	module	name	length
 818	00e2c100	NScript::CV_AmbushScamScript::CAS_Trickster	Main	8945
 818	00d5ae70	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster	Main	11636
 818	00e4b5b0	NScript::CV_BanditTollScript::CTollBandit	Main	10594
-818	00eb9980	NScript::CV_MayorsInvitationScript::CLadyGrey	Main	12944
+818	00eb9980	NScript::CV_MayorsInvitationScript::CLadyGrey	Main	12753
 818	00e20600	NScript::CQR_EscortTraderScript::CTraderToEscort	Main	14510
 818	00e64fb0	NScript::CV_ChickenKickingScript::CChickenMaster	Main	15210
 819	00e84b80	NScript::CV_FisticuffsClubScript::CFisticuffsMember	Main	8836
@@ -27552,3 +27552,9 @@ chunk	address	module	name	length
 819	00d5e0c0	NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster	Main	15084
 819	00e40e80	NScript::CV_BordelloScript::CMagicman	Main	15104
 819	00f0fb70	NScript::CQ_ArenaScript	Main	18144
+820	00d7b510	NScript::CQ_HeroSoulsThunderScript::CHeroThunder	Main	3524
+820	00da91a0	NScript::CQ_MinionClifftopChaseScript::CMapKeeper	Main	2765
+820	00dd5a60	NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner	Main	2250
+820	00e64210	NScript::CV_ChickenKickingScript::CKickedChicken	Main	2803
+820	00e64fb0	NScript::CV_ChickenKickingScript::CChickenMaster	Main	15210
+820	005e78f0	CTCQuestCompletionUI	GlobalUpdate	2340

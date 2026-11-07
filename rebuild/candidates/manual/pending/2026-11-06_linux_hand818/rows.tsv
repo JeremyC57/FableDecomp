@@ -1,0 +1,7 @@
+address	module	name	length
+00e2c100	NScript::CV_AmbushScamScript::CAS_Trickster	Main	8945
+00d5ae70	NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster	Main	11636
+00e4b5b0	NScript::CV_BanditTollScript::CTollBandit	Main	10594
+00eb9980	NScript::CV_MayorsInvitationScript::CLadyGrey	Main	12753
+00e20600	NScript::CQR_EscortTraderScript::CTraderToEscort	Main	14510
+00e64fb0	NScript::CV_ChickenKickingScript::CChickenMaster	Main	15210

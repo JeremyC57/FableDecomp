@@ -67,6 +67,30 @@ public:
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_MayorsInvitationScript) == 0x6C);
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_MayorsInvitationScript::CMI_InfoKeeper) == 0x24);
+#ifdef FABLE_RETAIL_CV_MAYORSINVITATIONSCRIPT_LADYGREY
+// Retail opt-in (chunk 818): the nested entity script CLadyGrey (Ego_r.pdb / FableWin.pdb ??0CLadyGrey@CV_MayorsInvitationScript@NScript@@
+// QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z, ?Main / ?Init / ?OnPredicateFail@CLadyGrey@..@@EAEXXZ). Entity vtable 0x012F05F4 (stored
+// by the landed Alloc 0x00EB78B0 at 0x00EB78E6): slot 0 scalar deleting dtor 0x00EB79D0, 1 Main 0x00EB9980, 2 Init 0x00EB7960, 3
+// GetParentScript 0x00EB7950. Layout (32 bytes = the Alloc's new size): CEntityScriptBase (0x14), ParentClass +0x14, PMasterData +0x18,
+// HeroFollowed +0x1c (the landed Alloc / Init: Init clears +0x1c). Main reads ParentClass +0x48..+0x58 and PMasterData +0x63 / +0xd5.
+// Defined out of the class body so the default path keeps its forward declaration unchanged.
+namespace NScript {
+class CV_MayorsInvitationScript::CLadyGrey : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_MayorsInvitationScript&, CScriptDataBase*, const CScriptThing&); // 0x00EB78B0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00EB7950
+protected:
+    CV_MayorsInvitationScript& ParentClass;                              // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    bool HeroFollowed;                                                   // +0x1c
+    virtual void Init();                                                 // 0x00EB7960
+    virtual void OnPredicateFail();
+    virtual void Main();                                                 // 0x00EB9980
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_MayorsInvitationScript::CLadyGrey) == 0x20);
+#endif
 
 #endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CV_MAYORSINVITATIONSCRIPT_H

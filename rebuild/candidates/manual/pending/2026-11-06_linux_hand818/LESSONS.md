@@ -1,0 +1,9 @@
+# Chunk 818 lessons (GOTCHAS one-liners)
+
+- (chunk 818) Frame one dword too large because a later cut scene cannot overlay an earlier CTimer: wrap the earlier timer and its state loop in a sibling block `{ CTimer t; ...loop...; if (T) return; }`. VC7.1 then reuses the slots (CTollBandit 0x00E4B5B0: 0x11c -> 0x118, 1143 -> 923 lines). A block running to the end of the function does not do this.
+- (chunk 818) When retail hoists one thread check into every arm of an if / else-if chain (every path, including the fall-through, starts with T), write T at the top of each arm and add `else { if (T) return; }` (CTraderToEscort 0x00E20600).
+- (chunk 818) The per-site GetPos split (expanded at one exit marker, called at another) is not fixed by inline vs declared-only GetPos: inline expands both sites, declared-only calls both. Removing the inline also changes block layout elsewhere (e8 reached the exact length).
+- (chunk 818) An entity Main whose catalog extent runs past its `ret` and int3 padding into the next function (CLadyGrey 0x00EB9980 -> MonitorParanoidQuest 0x00EBCB60): grade on the trimmed extent and say so in NOTES. The oracle row needs the shorter length at landing.
+- (chunk 818) A landed helper named after another script (ResetRandomSpeechTime / GetRandomSpeech at 0x00E1FEB0 / 0x00E2E440) can be a propagated label from a byte-identical body. Check which script's address range it sits in, and which Main binds it with relpair, before reusing the landed spelling.
+- (chunk 818) Lane hygiene: never grade two probes of the SAME address in parallel; q.py's per-address work dir and tmp/<addr>.q collide. Parallelise only across addresses.
+- (chunk 818) Register-only eax/edx swaps at a vptr load (CChickenMaster FadeScreenOut, 0x00E6716A) did not move for block scope, nested ifs, a named colour temp, a kept result, a do-while(0) or braces. Park them early.

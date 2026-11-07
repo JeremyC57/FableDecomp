@@ -384876,6 +384876,13 @@ $catalog = @(
         TestSource = '00/e8/NScriptCVFisticuffsClubScriptCTyler_Main_00e87030_test.cpp'
         PassPattern = '00e87030_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00eb9980'
+        Module = 'NScript::CV_MayorsInvitationScript::CLadyGrey'
+        Source = '00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_Main_00eb9980.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_Main_00eb9980_test.cpp'
+        PassPattern = '00eb9980_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
