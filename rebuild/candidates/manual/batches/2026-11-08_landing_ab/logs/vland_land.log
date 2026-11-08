@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00c812f0   WARN RELOC_NAME: ??_2Is32vec4@@QAEAAV0@H@Z -> 00c7b8f0 labelled 'Is32vec4::operator>>=(int)'
+00c812f0   WARN RELOC_NAME: ??5Is32vec4@@QAE?AV0@H@Z -> 00c7b8b0 labelled 'Is32vec4::operator>>(int)'
+00c812f0   RELOCATION_MATCH PASS   ResampleStereoFIR
+00c843f0   WARN RELOC_NAME: ??_2Is32vec4@@QAEAAV0@H@Z -> 00c7b8f0 labelled 'Is32vec4::operator>>=(int)'
+00c843f0   WARN RELOC_NAME: ??5Is32vec4@@QAE?AV0@H@Z -> 00c7b8b0 labelled 'Is32vec4::operator>>(int)'
+00c843f0   WARN RELOC_NAME: ??0Is32vec4@@QAE@T__m128i@@@Z -> 00c7b840 labelled 'CVectorSSE_00c7b840::CVectorSSE_00c7b840'
+00c843f0   WARN RELOC_NAME: ??0Is16vec8@@QAE@T__m128i@@@Z -> 00c7b970 labelled 'CUnprovenSSEVector_00c7b970::CUnprovenSSEVector_00c7b970'
+00c843f0   WARN RELOC_NAME: ??0I32vec4@@QAE@T__m128i@@@Z -> 00c7b810 labelled 'CVectorSSE_00c7b810::CVectorSSE_00c7b810'
+00c843f0   RELOCATION_MATCH PASS   ResampleStereoRampFIR
+
+WINS: 2
+  00c812f0 RELOCATION_MATCH _global::?ResampleStereoFIR@@YAXPBFKKKPAJ1G@Z
+  00c843f0 RELOCATION_MATCH _global::?ResampleStereoRampFIR@@YAXPBFKKKPAJ1GFF@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  global_ResampleStereoFIR_00c812f0
+  global_ResampleStereoRampFIR_00c843f0

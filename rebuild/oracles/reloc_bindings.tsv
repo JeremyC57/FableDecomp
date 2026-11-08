@@ -37937,3 +37937,6 @@ _DSPROPSETID_EAX30_ListenerProperties	012b9418	00c51a20
 ?insert@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@U32@ABQAVCComponent@NUISystem@@@Z	0042ab8a	0058af10
 ?insert@?$list@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@U?$_Nonconst_traits@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@2@U32@ABU?$pair@PAVCComponent@NUISystem@@PAV12@@2@@Z	00593b1a	0058af10
 ?insert@?$list@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@VCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@VCCharString@@V1@@std@@@2@@2@U32@ABU?$pair@VCCharString@@V1@@2@@Z	00593ade	0058af10
+??0I32vec4@@QAE@T__m128i@@@Z	00c7b810	00c843f0
+??0Is16vec8@@QAE@T__m128i@@@Z	00c7b970	00c843f0
+??0Is32vec4@@QAE@T__m128i@@@Z	00c7b840	00c843f0

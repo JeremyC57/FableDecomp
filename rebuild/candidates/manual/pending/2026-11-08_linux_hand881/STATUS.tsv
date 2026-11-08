@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00c812f0	RELOCATION_MATCH	12532v12532	PASS	ResampleStereoFIR; true extent 12532 (catalog 12544 incl. 12 int3); wrap set W2 W3 W4 from a 128-way enumeration; 131 grades (128 automated)
+00c843f0	RELOCATION_MATCH	15328v15328	PASS	ResampleStereoRampFIR; extent 15328 (= catalog); case-7 decode + wrap placement search; ~1190 grades, almost all automated ~1 s enumerations

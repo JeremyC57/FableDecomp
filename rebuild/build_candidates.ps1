@@ -386409,6 +386409,22 @@ $catalog = @(
         TestSource = '00/58/CTCInventory_OpenPCOptionsMenu_0058af10_test.cpp'
         PassPattern = '0058af10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c812f0'
+        Module = '_global'
+        Source = '00/c8/global_ResampleStereoFIR_00c812f0.cpp'
+        TestSource = '00/c8/global_ResampleStereoFIR_00c812f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c812f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c843f0'
+        Module = '_global'
+        Source = '00/c8/global_ResampleStereoRampFIR_00c843f0.cpp'
+        TestSource = '00/c8/global_ResampleStereoRampFIR_00c843f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c843f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
