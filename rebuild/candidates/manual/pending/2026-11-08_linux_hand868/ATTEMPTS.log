@@ -1,0 +1,136 @@
+04:09:52	00c52bb0	base	DIFFER(140v140)	md=4	bytes=2	0s	baseline
+04:09:53	00b92300	base	DIFFER(335v335)	md=4	bytes=16	0s	baseline
+04:13:40	00c52bb0	v2	DIFFER(140v140)	md=12	bytes=6	0s	c52 v2
+04:13:40	00c52bb0	v1	DIFFER(140v140)	md=12	bytes=6	0s	c52 v1
+04:13:40	00c52bb0	v4	DIFFER(144v140)	md=50	bytes=79	0s	c52 v4
+04:13:40	00c52bb0	v3	DIFFER(140v140)	md=12	bytes=6	0s	c52 v3
+04:15:16	00c52bb0	r4	DIFFER(148v140)	md=4	bytes=107	0s	c52 r4 signed range
+04:15:16	00c52bb0	r1	DIFFER(148v140)	md=4	bytes=107	0s	c52 r1 signed range
+04:17:27	00c52bb0	v9	DIFFER(140v140)	md=12	bytes=6	0s	c52 v9
+04:17:27	00c52bb0	v12	DIFFER(140v140)	md=18	bytes=30	0s	c52 v12
+04:17:27	00c52bb0	v15	DIFFER(140v140)	md=12	bytes=6	0s	c52 v15
+04:17:27	00c52bb0	v16	DIFFER(140v140)	md=12	bytes=6	0s	c52 v16
+04:17:56	00d11930	i1	DIFFER(4048v4072)	md=46	bytes=835	0s	inline_depth(0) round ~CIsThingAlive definition (E799F0 device)
+04:19:21	00d11930	i2	DIFFER(4048v4072)	md=46	bytes=835	0s	i1 + final loop as do{NSF}while(!T) (return at depth 0)
+04:20:35	00d11930	l1	DIFFER(4048v4072)	md=46	bytes=835	0s	i1 + main loop as for(;;){if(..)break;}
+04:20:35	00d11930	l2	DIFFER(4044v4072)	md=397	bytes=1322	0s	i1 + main loop as for(;;){if(..)break;}
+04:20:50	00d11930	i1_S16	DIFFER(4128v4072)	md=825	bytes=2459	0s	i1 sweep /d2inlS16
+04:20:50	00d11930	i1_S10	DIFFER(4032v4072)	md=378	bytes=1382	0s	i1 sweep /d2inlS10
+04:20:50	00d11930	i1_S18	DIFFER(4128v4072)	md=825	bytes=2459	0s	i1 sweep /d2inlS18
+04:20:50	00d11930	i1_S12	DIFFER(4032v4072)	md=378	bytes=1382	0s	i1 sweep /d2inlS12
+04:20:51	00d11930	i1_S14	DIFFER(4032v4072)	md=378	bytes=1382	0s	i1 sweep /d2inlS14
+04:20:51	00d11930	i1_S20	DIFFER(4128v4072)	md=825	bytes=2459	0s	i1 sweep /d2inlS20
+04:20:51	00d11930	i1_T40	DIFFER(3524v4072)	md=1206	bytes=3004	0s	i1 sweep /d2inlT40
+04:20:51	00d11930	i1_S15	DIFFER(4048v4072)	md=375	bytes=1370	0s	i1 sweep /d2inlS15
+04:20:52	00d11930	i1_T50	DIFFER(3736v4072)	md=797	bytes=2792	0s	i1 sweep /d2inlT50
+04:20:52	00d11930	i1_T72	DIFFER(4048v4072)	md=46	bytes=835	0s	i1 sweep /d2inlT72
+04:20:52	00d11930	i1_T60	DIFFER(3592v4072)	md=868	bytes=2857	0s	i1 sweep /d2inlT60
+04:20:52	00d11930	i1_T80	DIFFER(3956v4072)	md=276	bytes=2960	0s	i1 sweep /d2inlT80
+04:20:53	00d11930	i1_T66	DIFFER(3592v4072)	md=868	bytes=2857	0s	i1 sweep /d2inlT66
+04:20:53	00d11930	i1_T90	DIFFER(3956v4072)	md=276	bytes=2960	0s	i1 sweep /d2inlT90
+04:20:54	00d11930	i1_T70	DIFFER(4032v4072)	md=454	bytes=2829	0s	i1 sweep /d2inlT70
+04:20:54	00d11930	i1_T100	DIFFER(3956v4072)	md=276	bytes=2960	0s	i1 sweep /d2inlT100
+04:21:06	00d11930	i3	DIFFER(4056v4072)	md=24	bytes=124	0s	i1 + inline_depth(0) round the final-loop return
+04:24:12	00d11930	x5	DIFFER(4056v4072)	md=24	bytes=124	0s	i3 + do-while(0) T checks (x5)
+04:24:12	00d11930	x4	DIFFER(4764v4072)	md=884	bytes=3985	0s	i3 + do-while(0) T checks (x4)
+04:24:12	00d11930	x1	DIFFER(4156v4072)	md=411	bytes=2373	0s	i3 + do-while(0) (x1)
+04:24:12	00d11930	x6	DIFFER(4056v4072)	md=24	bytes=124	0s	i3 + do-while(0) (x6)
+04:25:02	00d11930	i3_T75	DIFFER(4056v4072)	md=24	bytes=124	0s	i3 sweep /d2inlT75
+04:25:02	00d11930	i3_T78	DIFFER(4056v4072)	md=24	bytes=124	0s	i3 sweep /d2inlT78
+04:25:03	00d11930	i3_T76	DIFFER(4056v4072)	md=24	bytes=124	0s	i3 sweep /d2inlT76
+04:25:03	00d11930	i3_T79	DIFFER(4056v4072)	md=24	bytes=124	0s	i3 sweep /d2inlT79
+04:25:03	00d11930	i3_T77	DIFFER(4056v4072)	md=24	bytes=124	0s	i3 sweep /d2inlT77
+04:25:03	00d11930	i3_T73	DIFFER(4056v4072)	md=24	bytes=124	0s	i3 sweep /d2inlT73
+04:25:34	00d11930	j1	DIFFER(4096v4072)	md=72	bytes=2038	0s	i3 without the out-of-line CCountedPointer<Movie> dtor declaration
+04:26:16	00d11930	d4	DIFFER(3920v4072)	md=129	bytes=694	0s	DIAG d4
+04:26:16	00d11930	d1	DIFFER(3756v4072)	md=158	bytes=654	0s	DIAG d1
+04:26:17	00d11930	d2	DIFFER(3560v4072)	md=439	bytes=1317	0s	DIAG d2
+04:26:17	00d11930	d3	DIFFER(3980v4072)	md=172	bytes=265	0s	DIAG d3
+04:26:17	00d11930	d5	DIFFER(4056v4072)	md=64	bytes=600	0s	DIAG d5 movie first
+04:26:40	00d11930	e2	DIFFER(4040v4072)	md=165	bytes=832	0s	DIAG e2
+04:26:40	00d11930	e7	DIFFER(4044v4072)	md=749	bytes=2924	0s	DIAG e7
+04:26:41	00d11930	e6	DIFFER(4056v4072)	md=24	bytes=124	0s	DIAG e6
+04:27:44	00d11930	f1	DIFFER(3320v4072)	md=687	bytes=1399	0s	DIAG f1
+04:27:45	00d11930	f2	DIFFER(4072v4072)	md=36	bytes=214	0s	DIAG f2
+04:28:16	00d11930	g1	DIFFER(3824v4072)	md=612	bytes=3054	0s	DIAG g1
+04:28:17	00d11930	g4	DIFFER(3260v4072)	md=708	bytes=3155	0s	DIAG g4
+04:28:47	00d11930	h2	DIFFER(4152v4072)	md=270	bytes=1314	0s	DIAG h2
+04:28:47	00d11930	h3	DIFFER(4152v4072)	md=291	bytes=3027	0s	DIAG h3
+04:30:06	00d11930	m4	DIFFER(4056v4072)	md=24	bytes=124	0s	DIAG m4
+04:30:06	00d11930	m1	DIFFER(4056v4072)	md=24	bytes=124	0s	DIAG do-while(0) placement m1
+04:30:07	00d11930	m2	DIFFER(4056v4072)	md=24	bytes=124	0s	DIAG do-while(0) placement m2
+04:30:07	00d11930	k1	DIFFER(4120v4072)	md=256	bytes=2285	0s	DIAG k1
+04:30:08	00d11930	m3	DIFFER(4056v4072)	md=24	bytes=124	0s	DIAG do-while(0) placement m3
+04:30:49	00ecbdf0	base	DIFFER(2976v2928)	md=24	bytes=258	0s	baseline
+04:30:49	00ece7f0	base	DIFFER(4086v4086)	md=4	bytes=304	0s	baseline
+04:30:50	00dcfa60	base	DIFFER(2451v2412)	md=41	bytes=1121	0s	baseline
+04:30:50	00d45060	base	DIFFER(3402v3439)	md=375	bytes=2426	0s	baseline
+04:30:51	00d18df0	base	DIFFER(3287v3321)	md=6	bytes=313	0s	baseline
+04:35:39	00d18df0	s15	DIFFER(3321v3321)	md=0	bytes=2 at 0xd195d1,0xd195d2	0s	start source + Flags /d2inlS15 (hand865 r3 state)
+04:35:40	00d18df0	dw1	DIFFER(3300v3321)	md=11	bytes=109	0s	S15 + final loop as do{NSF}while(!T)
+04:39:27	00d11930	i3_S15	DIFFER(4072v4072)	md=364	bytes=1374	0s	i3 + S15
+04:41:11	00d11930	s0_S15	DIFFER(4040v4072)	md=540	bytes=2078	0s	start source + S15
+04:41:12	00d11930	i4_S15	DIFFER(4072v4072)	md=530	bytes=2007	0s	i3 minus predicate pragma + S15
+04:42:36	00ecbdf0	qfe	DIFFER(2976v2928)	md=24	bytes=258	0s	QFE 4035 toolset
+04:42:36	00ece7f0	qfe	DIFFER(4086v4086)	md=4	bytes=304	0s	QFE 4035 toolset
+04:43:20	00ecbdf0	ya	DIFFER(2940v2928)	md=151	bytes=1047	0s	inline_depth(0) round the hit speech-wait return only
+04:43:20	00ecbdf0	e1	DIFFER(2984v2928)	md=44	bytes=787	0s	hit condition as nested ifs
+04:43:21	00d18df0	brk	DIFFER(3300v3321)	md=11	bytes=109	0s	S15 + final loop break
+04:44:47	00dcfa60	p2	DIFFER(2373v2412)	md=237	bytes=1080	0s	inline_depth(0) round the region-wait loop return
+04:44:47	00dcfa60	p1	DIFFER(2373v2412)	md=237	bytes=1078	0s	inline_depth(0) round the post-wait return
+04:46:18	00dcfa60	w8	DIFFER(2451v2412)	md=41	bytes=1121	0s	post-wait return as do-while(0)
+04:46:18	00dcfa60	w7	DIFFER(2410v2412)	md=265	bytes=1562	0s	region wait as for(;;){if(loaded)break;...}
+04:48:02	00ecbdf0	yb	DIFFER(2984v2928)	md=156	bytes=1098	0s	inline_depth(0) round the hit post-wait return only
+04:48:02	00dcfa60	p5	DIFFER(2451v2412)	md=41	bytes=1121	0s	DIAG pragma leak: inline_depth(0) round the first HeroTeam return
+04:48:02	00d11930	n1	DIFFER(4056v4072)	md=24	bytes=124	0s	if(!Triggered){}else{cut scene}
+04:49:08	00dcfa60	p6	DIFFER(2451v2412)	md=41	bytes=1121	0s	inline_depth(0) round the distance-true return
+04:49:08	00d11930	dsingle	DIFFER(4024v4072)	md=35	bytes=2888	0s	DIAG loop condition dsingle
+04:49:09	00d11930	dattack	DIFFER(4032v4072)	md=1359	bytes=3170	0s	DIAG loop condition dattack
+04:54:07	00b92300	a1	DIFFER(335v335)	md=50	bytes=37	0s	first-access spelling a1
+04:54:07	00b92300	a2	DIFFER(335v335)	md=50	bytes=37	0s	first-access spelling a2
+04:54:08	00b92300	a3	DIFFER(335v335)	md=4	bytes=16	0s	first-access spelling a3
+04:54:08	00b92300	a4	DIFFER(348v335)	md=66	bytes=306	0s	first-access spelling a4
+04:54:08	00b92300	a5	DIFFER(335v335)	md=50	bytes=37	0s	first-access spelling a5
+04:54:08	00b92300	a6	DIFFER(335v335)	md=50	bytes=37	0s	first-access spelling a6
+04:58:41	00c52bb0	c1	DIFFER(143v140)	md=13	bytes=97	0s	K5 <=3 with c1
+04:58:41	00c52bb0	c2	DIFFER(140v140)	md=12	bytes=6	0s	K5 <=3 with c2
+04:58:42	00c52bb0	c6	DIFFER(140v140)	md=12	bytes=6	0s	K5 <=3 with c6
+04:58:42	00c52bb0	c7	DIFFER(147v140)	md=22	bytes=105	0s	K5 <=3 with c7
+04:58:42	00c52bb0	c8	DIFFER(140v140)	md=12	bytes=6	0s	K5 <=3 with c8
+05:00:26	00b92300	b5	DIFFER(335v335)	md=4	bytes=16	0s	entry-order spelling b5
+05:00:27	00b92300	b9	DIFFER(348v335)	md=66	bytes=306	0s	entry-order spelling b9
+05:00:27	00b92300	b10	DIFFER(335v335)	md=4	bytes=16	0s	entry-order spelling b10
+05:00:27	00b92300	b16	DIFFER(335v335)	md=4	bytes=16	0s	entry-order spelling b16
+05:00:27	00b92300	b18	DIFFER(345v335)	md=67	bytes=303	0s	entry-order spelling b18
+05:00:28	00b92300	b22	DIFFER(335v335)	md=4	bytes=16	0s	entry-order spelling b22
+05:04:57	00d18df0	r1	RELOCATION_MATCH	md=0	bytes=0	0s	follow loop with the T check at the loop top (inversion peels it) r1
+05:05:09	00d18df0	r1nf	DIFFER(3287v3321)	md=6	bytes=312	0s	r1 without /d2inlS15
+05:06:00	00d18df0	r1_S14	DIFFER(3287v3321)	md=6	bytes=312	0s	smallest-N sweep
+05:06:01	00d18df0	r1_S12	DIFFER(3287v3321)	md=6	bytes=312	0s	smallest-N sweep
+05:06:02	00d18df0	r1_S10	DIFFER(3287v3321)	md=6	bytes=312	0s	smallest-N sweep
+05:06:03	00d18df0	r1_S8	DIFFER(3287v3321)	md=6	bytes=312	0s	smallest-N sweep
+05:10:09	00ecbdf0	e6a	DIFFER(2972v2928)	md=25	bytes=194	0s	loop-head macro main loop, line-96 lever removed
+05:10:10	00ecbdf0	e6b	RELOCATION_MATCH	md=14	bytes=0	0s	loop-head macro main loop + line-96 lever
+05:11:00	00dcfa60	p7	DIFFER(2556v2412)	md=192	bytes=1544	0s	loop-head macro main loop (D99A30 shape)
+05:11:18	00dcfa60	p7b	DIFFER(2556v2412)	md=176	bytes=1545	0s	loop-head macro main loop (D99A30 shape), NSF at body end
+05:11:18	00d11930	w1	DIFFER(4056v4072)	md=24	bytes=124	0s	do-while(0) on the cut-scene block's T check
+05:11:19	00d11930	w2	DIFFER(4056v4072)	md=24	bytes=124	0s	w1 + the pre-killable T check wrapped
+05:12:39	00dcfa60	q1	DIFFER(2544v2412)	md=207	bytes=1250	0s	region wait as explicit guard + do-while
+05:12:39	00d11930	all1	DIFFER(4764v4072)	md=884	bytes=3985	0s	lever 2: every T check as do-while(0)
+05:12:39	00dcfa60	q2	DIFFER(2410v2412)	md=265	bytes=1562	0s	region wait as for(;;)+break
+05:16:30	00dcfa60	q7	DIFFER(2484v2412)	md=388	bytes=1476	0s	pre-check + do{...NSF}while(!T)
+05:16:30	00dcfa60	q8	DIFFER(2484v2412)	md=388	bytes=1476	0s	pre-check + for(;;){...NSF; if(T) return;}
+05:17:09	00dcfa60	q11	DIFFER(2451v2412)	md=41	bytes=1121	0s	do-while(0) on the post-wait T check
+05:17:09	00dcfa60	q10	DIFFER(2541v2412)	md=135	bytes=1219	0s	do-while(0) on the in-wait-loop T check
+05:20:03	00d11930	i3_S10	DIFFER(4056v4072)	md=367	bytes=1385	0s	S sweep on i3
+05:20:03	00d11930	i3_S12	DIFFER(4056v4072)	md=367	bytes=1385	0s	S sweep on i3
+05:20:04	00d11930	i3_S13	DIFFER(4056v4072)	md=367	bytes=1385	0s	S sweep on i3
+05:20:05	00d11930	i3_S14	DIFFER(4056v4072)	md=367	bytes=1385	0s	S sweep on i3
+05:26:58	007a1b20	r1	SRC_FAIL	md=-1	bytes=-1	1s	shared-header rebuild, first compile
+05:27:20	007a1b20	r1	SRC_FAIL	md=-1	bytes=-1	1s	shared-header rebuild, compile 2
+05:27:34	007a1b20	r1	DIFFER(2728v2840)	md=579	bytes=2169	0s	shared-header rebuild, compile 3
+05:28:00	007a1b20	r2	DIFFER(2728v2840)	md=579	bytes=2169	0s	CLightningBeam naturally aligned (no pack(1))
+05:28:25	007a1b20	r3	DIFFER(2712v2840)	md=490	bytes=2234	0s	time step before the frame count
+05:28:25	007a1b20	r4	DIFFER(2728v2840)	md=575	bytes=2162	0s	named frameTime local
+05:35:48	00d18df0	final	RELOCATION_MATCH	md=0	bytes=0	0s	final src re-grade
+05:35:49	00ecbdf0	final	RELOCATION_MATCH	md=14	bytes=0	0s	final src re-grade

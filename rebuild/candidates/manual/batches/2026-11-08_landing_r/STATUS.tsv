@@ -1,0 +1,3 @@
+address	grade	test	device
+0x00D18DF0	RELOCATION_MATCH	PASS	flag /d2inlS15 + loop-top terminate check (peel picks retail tail)
+0x00ECBDF0	RELOCATION_MATCH	PASS	plain C++: do{}while(0) terminate check at the main loop head (line-3 Inline-split note)

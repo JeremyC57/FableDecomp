@@ -1,0 +1,11 @@
+address	status	best	note
+00d18df0	MATCH	RELOCATION_MATCH(3321v3321)	follow loop with the terminate check at its top (inversion peels it); // Flags: /d2inlS15 with the Inline-budget line (S14 fails; plain = 3287, the movie dtor called at two sites)
+00ecbdf0	MATCH	RELOCATION_MATCH(2928v2928)	loop-head macro on the main loop (lever 4) + the existing talk-block do-while(0); plain C++
+00d11930	PARKED	DIFFER(4056v4072) md=24	one cold cut-scene MovieBase dtor site (inline budget); two inline_depth(0) devices from md 263
+00dcfa60	PARKED	DIFFER(2451v2412) md=41	post-wait return expands the spawn release (retail calls); every outer/inner loop form permutes the frame
+00b92300	PARKED	DIFFER(335v335) md=4	entry-block order of the layer load v the this-piece copy; allocation is retail
+00c52bb0	PARKED	DIFFER(140v140) md=4	colouring order this v K5 Model temp (const-4 record linking)
+00ece7f0	PARKED	DIFFER(4086v4086) md=4	`mov eax,esp ; push eax` v `push esp` (unique site in the exe)
+00d45060	PARKED	DIFFER md=375	not attempted this chunk (frame-slot order)
+007a1b20	PARKED	DIFFER(2712v2840) md=490	rebuilt on shared headers (new opt-ins in hdr/); x87 head fixed; constants/frame/per-state blocks remain
+00a2f740	PARKED	DIFFER(2613v3051) md=1333	not rebuilt (no shared finders / stats headers); draft unchanged

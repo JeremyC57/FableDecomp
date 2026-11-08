@@ -1,0 +1,8 @@
+address	name	source1	source2
+00d18df0	?Main@CBH_GangDeputy2@CQ_BountyHuntScript@NScript@@EAEXXZ	Ego_r.pdb / FableWin.pdb name set	Main slot of the CBH_GangDeputy2 entity vtable stored by the landed Alloc 0x00D161A0
+00ecbdf0	?Main@CTalkingTrader1@CV_SickChildScript@NScript@@EAEXXZ	Ego_r.pdb / FableWin.pdb name set	slot 1 of the entity vtable stored by the landed CTalkingTrader1::Alloc 0x00ECBC80
+007a1b20	?FrameUpdate@CLightningBeam@CTCWillLightning@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@PAK@Z	Ego_r.pdb / FableWin.pdb	self-recursive child update 0x007A25BC; callees are the landed beam members (Deactivate 0x0079FE90)
+007a0400	?StartLoopingSound@CTCWillLightning@@QAEXXZ	landed row CTCWillLightning_StartLoopingSound_007a0400.cpp	called by 0x007A1B20 on the home will-lightning component (GetTC TCI_WILL_LIGHTNING)
+0085f120	?IsUnderground@NCreatureMode@@YI_NABVCThing@@@Z	ghidra_out/labels_*.tsv NCreatureMode::IsUnderground	0x007A1B20 __fastcall query on the beam target
+0085faa0	?IsLightningable@NCreatureMode@@YI_NABVCThing@@@Z	ghidra_out/labels_*.tsv NCreatureMode::IsLightningable	0x007A1B20 __fastcall query on the beam target (twice)
+00811830	??0CEventHitBySpecialAbility@NEntityEvents@@QAE@ABVCHitParameters@@W4EHeroAbility@@@Z	ghidra_out/labels_*.tsv	0x007A1B20 `push 18h ; new ; push 0Bh ; lea hit ; call` before CTCEntityEvents::AddEvent 0x008113C0

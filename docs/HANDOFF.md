@@ -87,6 +87,7 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Chunk 865 (inline-budget parks): 11 of 20 landed (`2026-11-08_landing_o/`; nine by a per-row /d2inlS15 / T36 / T72 flag with the source
     untouched, two with a scoped device); 0x0083F650 landed after a shared-STL rewrite (`2026-11-08_landing_p/`, 443-byte extent).
     Chunk 866: 10 of 10 Ogg Vorbis rows landed (`2026-11-08_landing_q/`, real Xiph names).
+    Chunk 868: 2 of 10 landed (`2026-11-08_landing_r/`: CBH_GangDeputy2::Main, CTalkingTrader1::Main); its parks continue. Chunk 869 (17 Vorbis-range rows) running.
     Running (2026-11-08, 150 grades a row): chunk 866 (done) (ten never-attempted Ogg Vorbis / libpk rows, Xiph names), chunk 867 (ten
     never-attempted PC UI / inventory rows in packed TUs), chunk 868 (Fable retry of ten parks: chunk 863's seven + 0x00D18DF0,
     0x00C52BB0, 0x00B92300). Only 466 of the 2,875 unlanded functions are never-attempted (`$S/w22/never_attempted.json`).

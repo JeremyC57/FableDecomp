@@ -385760,6 +385760,21 @@ $catalog = @(
         TestSource = '00/c9/libvorbis_mdctbutterfly32_00c9c000_test.cpp'
         PassPattern = '00c9c000_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d18df0'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangDeputy2'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_Main_00d18df0.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_Main_00d18df0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d18df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ecbdf0'
+        Module = 'NScript::CV_SickChildScript::CTalkingTrader1'
+        Source = '00/ec/NScriptCVSickChildScriptCTalkingTrader1_Main_00ecbdf0.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScriptCTalkingTrader1_Main_00ecbdf0_test.cpp'
+        PassPattern = '00ecbdf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

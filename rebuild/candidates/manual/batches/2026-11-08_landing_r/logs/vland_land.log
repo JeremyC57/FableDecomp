@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00d18df0   WARN RELOC_NAME: ??0TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ -> 00d15140 labelled 'CMainGameComponentInit::CMainGameComponentInit'
+00d18df0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00d18df0   RELOCATION_MATCH PASS   Main
+00ecbdf0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00ecbdf0   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00d18df0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangDeputy2::?Main@CBH_GangDeputy2@CQ_BountyHuntScript@NScript@@EAEXXZ
+  00ecbdf0 RELOCATION_MATCH NScript::CV_SickChildScript::CTalkingTrader1::?Main@CTalkingTrader1@CV_SickChildScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NScriptCQBountyHuntScriptCBHGangDeputy2_Main_00d18df0
+  NScriptCVSickChildScriptCTalkingTrader1_Main_00ecbdf0
