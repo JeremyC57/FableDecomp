@@ -88,6 +88,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     untouched, two with a scoped device); 0x0083F650 landed after a shared-STL rewrite (`2026-11-08_landing_p/`, 443-byte extent).
     Chunk 866: 10 of 10 Ogg Vorbis rows landed (`2026-11-08_landing_q/`, real Xiph names).
     Chunk 868: 2 of 10 landed (`2026-11-08_landing_r/`: CBH_GangDeputy2::Main, CTalkingTrader1::Main); its parks continue. Chunk 869: 19 Vorbis functions landed (`2026-11-08_landing_s/`; 2 parked).
+    Chunk 870 running: zlib inflate 0x00C02470 + seventeen libpk rows 0x00C08D40..0x00C42850 (descriptive names to identify). The
+    0x00C0..0x00C4 gap-scan rows of `mov ecx,[ecx+4]; mov eax,[ecx]; jmp [eax+N]` forwarders (72-byte extents) are thunks, not chunk material.
     Running (2026-11-08, 150 grades a row): chunk 866 (done) (ten never-attempted Ogg Vorbis / libpk rows, Xiph names), chunk 867 (ten
     never-attempted PC UI / inventory rows in packed TUs), chunk 868 (Fable retry of ten parks: chunk 863's seven + 0x00D18DF0,
     0x00C52BB0, 0x00B92300). Only 466 of the 2,875 unlanded functions are never-attempted (`$S/w22/never_attempted.json`).
