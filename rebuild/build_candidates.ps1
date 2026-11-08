@@ -386432,6 +386432,13 @@ $catalog = @(
         TestSource = '00/4e/CTCBase_RegisterTCs_004ee23f_test.cpp'
         PassPattern = '004ee23f_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00551ea0'
+        Module = 'NUISystem::CTable'
+        Source = '00/55/NUISystemCTable_ConstructSpritesToDraw_00551ea0.cpp'
+        TestSource = '00/55/NUISystemCTable_ConstructSpritesToDraw_00551ea0_test.cpp'
+        PassPattern = '00551ea0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

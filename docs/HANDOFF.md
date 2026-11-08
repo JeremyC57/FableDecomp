@@ -99,6 +99,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     /d2inlS8 and S9 on our STLport/CCharString header costs -- a lane gap, `pending/2026-11-08_linux_hand876/`) ; row 885 (per-site inline devices on
     /d2inlS8) cleared every inline-site difference: DIFFER(74965v74778), 96.4% strict / 98.7% masked / 99.2% calls; left: register
     allocation (prologue name/-1/def roles), frame 0x18E4 v 0x18DC, cross-jump tails (`pending/2026-11-08_linux_hand885/`). Single-row 884: CTCBase::RegisterTCs 0x004EE23F (44,806 bytes) landed (`2026-11-08_landing_ac/`).
+    Chunk 890 (expert, instrumented): CTable::ConstructSpritesToDraw 0x00551EA0 landed (`2026-11-08_landing_ad/`); 0x0056AD40 (= CTCBoastUI::Activate)
+    and 0x00498490 DrawRetailDisplay parked undrafted (`pending/2026-11-08_linux_hand890/`). Running: chunk 889; an expert on Action (Codex merge) + RunCutsceneMacro (from Codex's checkpoint).
     Chunk 874 (libpk): 3 of 7 landed (`2026-11-08_landing_y/`, ivec resamplers). Chunk 875: 0 of 3 (decodes kept).
     Chunk 872 (libpk): 12 of 14 landed (`2026-11-08_landing_x/`, land0811x). Chunk 873 (game) running (Opus high); pass 1: 2 of 10 landed (`2026-11-08_landing_w/`), sent back for 8.
     Chunk 867 (PC UI): 4 of 10 landed (`2026-11-08_landing_v/`; 31 headers gain opt-ins, 12 new); tag land0811v.

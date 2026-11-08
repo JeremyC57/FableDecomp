@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00551ea0	RELOCATION_MATCH	3849v3849	PASS	NUISystem::CTable::ConstructSpritesToDraw; 12 grades; opt-ins FABLE_RETAIL_CTABLE_CONSTRUCT + FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE (D1); NAME_FIX 0x00553520
+0056ad40	SKIP	-v4284	-	really CTCBoastUI::Activate (FableWin/Ego_r ?Activate@CTCBoastUI@@QAEXXZ + landed caller 0x0056BE00); decoded (differ/), not drafted against headers, 0 grades: session budget
+00498490	SKIP	-v5101	-	CProgressDisplay::DrawRetailDisplay (PDB private, ret 0Ch); retail layout derived, first third decoded (differ/), 0 grades: session budget; NAME_FIX for the landed caller's DrawProgress spelling

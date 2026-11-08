@@ -17,6 +17,21 @@ public:
     CTable(const CTable&);
     virtual ~CTable();
     void GetDataFromDef();                                          // 0x00551340
+#ifdef FABLE_RETAIL_CTABLE_CONSTRUCT
+    // Retail opt-in (chunk 890, row 0x00551EA0 ConstructSpritesToDraw): the three virtuals CTable introduces after
+    // CChangingStateComponent's last slot (141), in vtable order (rtti-vtables.tsv 0x0124A224: slot 142 0x00551EA0,
+    // 143 0x005518E0, 144 0x00551BC0; the row calls 143 / 144 as `call [eax+23Ch]` / `call [eax+240h]`). Names, access and
+    // signatures: Ego_r.pdb and FableWin.pdb ?ConstructSpritesToDraw@CTable@NUISystem@@MAEXXZ,
+    // ?ConstructHorizontalLine@CTable@NUISystem@@MAEXV?$CCountedPointer@VCComponent@NUISystem@@@@0AAVC2DVector@@KK@Z and
+    // ?ConstructVerticalLine@...@@MAEXV?$CCountedPointer@VCComponent@NUISystem@@@@0AAVC2DVector@@KK@Z (protected virtual).
+    // Parameter names unknown (descriptive).
+protected:
+    virtual void ConstructSpritesToDraw();                                                   // slot 142  0x00551EA0
+    virtual void ConstructHorizontalLine(CCountedPointer<CComponent> sprite, CCountedPointer<CComponent> separation,
+                                         C2DVector& position, unsigned long count, unsigned long separationOffset);   // 143  0x005518E0
+    virtual void ConstructVerticalLine(CCountedPointer<CComponent> sprite, CCountedPointer<CComponent> separation,
+                                       C2DVector& position, unsigned long count, unsigned long separationOffset);     // 144  0x00551BC0
+#endif
 protected:
     std::map<ETableSprites, CCountedPointer<CComponent> > Sprites;  // +0x15c
     std::vector<unsigned long>* PHorizontalSeparations;             // +0x168

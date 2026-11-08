@@ -10320,7 +10320,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0056a980	BoastTaken	CTCBoastUI	__thiscall	void	2	CTCBoastUI *,CBoast *	1	yes	accepted									
 0056ac10	CTCBoastUI	CTCBoastUI	__thiscall	undefined	2	CMesh *,long	0	yes	accepted									
 0056ac80	~CTCBoastUI	CTCBoastUI	__thiscall	void	1	CTCBoastUI *	1	yes	accepted									
-0056ad40	CQuestManager::UpdateUI_QuestMenu	CQuestManager	unknown	undefined	0		0	yes	accepted									
+0056ad40	Activate	CTCBoastUI	__thiscall	void	1	CTCBoastUI *	1	yes	accepted									
 0056be00	GlobalUpdate	CTCBoastUI	__thiscall	void	2	CTCBoastUI *,bool	1	yes	accepted									
 0056c050	CCountedPointer_CopyCtor_0056c050	_global	__thiscall	undefined	2	CCountedPointer<CBankFileAsyncEntry> *,CCountedPointer<class_CBankFileAsyncEntry> *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\CCountedPointerCBankFileAsyncEntry_CCountedPointerCBankFileAsyncEntry_0056c050.cpp
 0056c0f0	sub_0056c0f0	_global	unknown	undefined	0		0			discovered	gapscan							

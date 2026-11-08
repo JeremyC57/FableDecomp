@@ -151,7 +151,15 @@ private:
         return y;
     }
 public:
+#ifdef FABLE_RETAIL_STLP_TREE_FIND_MEMBER_TEMPLATE
+    // Retail opt-in (chunk 890, row 0x00551EA0 NUISystem::CTable::ConstructSpritesToDraw): owner decision D1 (2026-11-03) for the
+    // non-const twin -- STLport 4.6.1 _tree.h 457-467 `template <class _KT> iterator find(const _KT& __k) { return iterator(_M_find(__k)); }`
+    // under _STLP_MEMBER_TEMPLATES. Retail calls the map<ETableSprites,CCountedPointer<CComponent> > instance out of line (0x00553520,
+    // `push &key ; push &result ; call`, hidden iterator result) at three sites and expands it at the others. Same body.
+    template<class KT> iterator find(const KT& key){return iterator(_M_find(key));}
+#else
     iterator find(const K& key){return iterator(_M_find(key));}
+#endif
     pair<iterator,bool> insert_unique(const V&);
     iterator insert_unique(iterator,const V&);
     Compare key_comp()const{return _M_key_compare;}
