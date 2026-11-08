@@ -1,0 +1,37 @@
+{
+  "scope": [
+    "0041e6d3",
+    "00cbfb7d"
+  ],
+  "whole_function_matches": 0,
+  "selected_sources_recompiled": true,
+  "selected_sections_identical_to_reviewed_candidates": true,
+  "behavior_tests": "NOT_WRITTEN_NOT_RUN",
+  "name_header_audit": "OUTSTANDING",
+  "attempt_status_counts": {
+    "0041e6d3": {
+      "PREPROCESS_FAIL": 1,
+      "DIFFER": 37,
+      "COMPILE_FAIL": 1
+    },
+    "00cbfb7d": {
+      "DIFFER": 31
+    }
+  },
+  "history_includes_setup_failures_and_regrades": true,
+  "compiler": "MSVC 7.1 RTM cl 13.10.3077",
+  "retail_sha1": "39fd416ba23a91a89713ec80c789f57ddb22e2c8",
+  "excluded": [
+    "compiler",
+    "Wine",
+    "game files",
+    "raw retail bytes",
+    "native objects",
+    "native disassemblies",
+    "git history"
+  ],
+  "source_files": {
+    "0041e6d3": "e1204889df42d85845ec7d0ebcedf87d530cf175962addda49df2660d41bbf71",
+    "00cbfb7d": "80ab46d57d681c1c18bbb827b13394839d29c68cb7b1bfade626dffc52c34dd6"
+  }
+}

@@ -1,0 +1,5 @@
+(--func from the row's // Leaf: line: ?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z)
+(--flags from the row's // Flags: line: /GS)
+/workspace/work/parked_large_20261108/rows/0041e6d3/0041e6d3.cpp  (0 function(s) traced, 33.95 s in gdb; cl rc 0)
+run directory kept: /workspace/work/parked_large_20261108/runtime/c2runs/49000fdd
+no function matched

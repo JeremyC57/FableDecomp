@@ -1,0 +1,8 @@
+{
+ "functions": [],
+ "error": null,
+ "seconds": 33.95,
+ "cl_rc": 0,
+ "cl_log": "0041e6d3.cpp\n\nProgram stopped.\n0x00007febf66592c0 in ?? () from /lib64/ld-linux-x86-64.so.2\n\nProgram received signal SIGINT, Interrupt.\n0x000000001070596f in ?? ()\n\nProgram terminated with signal SIGSEGV, Segmentation fault.\nThe program no longer exists.\n",
+ "obj": "/workspace/work/parked_large_20261108/runtime/c2runs/49000fdd/0041e6d3.obj"
+}

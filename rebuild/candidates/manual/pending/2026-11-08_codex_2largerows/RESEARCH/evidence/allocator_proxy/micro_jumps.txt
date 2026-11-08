@@ -1,0 +1,12 @@
+RTM diagnostic proxy pid=228 backend=Z:\workspace\work\pass8\wine\vc71rtm\bin\c2.dll
+BACKEND base=10700000 invoke=1070596f context_eip=184
+FUNCTION ?probe@@YAHHH@Z
+SORTED class=0
+CAND id=1 name=_a kind=5 prio=8 key=14 spill=2 refs=2 reg=0 ptr=00c10a28
+CAND id=2 name=_c kind=4 prio=8 key=10 spill=4 refs=2 reg=0 ptr=00c10a70
+CHOOSE id=1 name=_a kind=5 prio=8 key=14 spill=2 refs=2 reg=0 ptr=00c10a28
+ASSIGN id=1 name=_a kind=5 prio=8 key=14 spill=2 refs=2 reg=0 ptr=00c10a28
+CHOSEN id=1 reg=7 costs=1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,
+CHOOSE id=2 name=_c kind=4 prio=8 key=10 spill=4 refs=2 reg=0 ptr=00c10a70
+ASSIGN id=2 name=_c kind=4 prio=8 key=10 spill=4 refs=2 reg=0 ptr=00c10a70
+CHOSEN id=2 reg=8 costs=1:-1,2:0,3:0,4:0,5:0,6:0,7:0,8:0,

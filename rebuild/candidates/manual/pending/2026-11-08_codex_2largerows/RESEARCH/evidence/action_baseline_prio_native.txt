@@ -1,0 +1,18 @@
+(--func from the row's // Leaf: line: ?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z)
+(--flags from the row's // Flags: line: /GS)
+cl : Command line warning D4021 : no action performed
+
+Program stopped.
+0x00007fea146bb2c0 in ?? () from /lib64/ld-linux-x86-64.so.2
+[Inferior 1 (process 2689) exited normally]
+
+the trace failed:
+Traceback (most recent call last):
+  File "/workspace/work/parked_large_20261108/support/tools/decomp_pipeline/linux_lane/lane_tools/c2probe/c2prio.py", line 115, in tracer
+    _gdb, inf, cfg = c2dbg.gdb_setup()
+                     ~~~~~~~~~~~~~~~^^
+  File "/workspace/work/parked_large_20261108/support/tools/decomp_pipeline/linux_lane/lane_tools/c2probe/c2dbg.py", line 280, in gdb_setup
+    cur = bytes(inf.read_memory(entry, 2))
+                ~~~~~~~~~~~~~~~^^^^^^^^^^
+gdb.MemoryError: Cannot access memory at address 0x1070596f
+

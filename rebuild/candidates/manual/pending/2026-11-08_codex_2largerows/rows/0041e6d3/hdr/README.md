@@ -1,0 +1,50 @@
+# hdr/ overlay (chunk 886, row 0x0041E6D3 NUISystem::CManager::Action)
+Every change is behind a new FABLE_RETAIL_* opt-in; the default path of each header is unchanged.
+
+| header | opt-in | change | evidence |
+|---|---|---|---|
+| engine/NUISystem_CManager.h | FABLE_RETAIL_CMANAGER_ACTION (inside FABLE_RETAIL_CMANAGER) | `GetCorrectComponentInterface(CComponent*)` (0x0041CD93, out of line); `SetDescriptionScrollingOffset(float)` 0x0041CF33, `SetDescriptionScrollingToMax(bool)` 0x0041CF1F | Ego_r/FableWin `?GetCorrectComponentInterface@CManager@NUISystem@@QAEPAVCComponent@2@PAV32@@Z`; FableWin setters (LABELS.tsv) |
+| engine/CMainGameComponent.h | FABLE_RETAIL_CMAINGAMECOMPONENT_GETPLAYERMANAGER, _GETWORLD, _ADDGAMEEVENT | `CPlayerManager& GetPlayerManager()` / `CWorld& GetWorld()` (inline, read the scoped_ptr words +0x1C / +0x24 like PeekPlayerManager / PeekWorld); `void AddGameEvent(const CGameEvent&)` 0x0041649C (+ `class CGameEvent;` forward) | FableWin `?GetPlayerManager@CMainGameComponent@@QAEAAVCPlayerManager@@XZ` 0x0187F010, `?GetWorld@...@@QAEAAVCWorld@@XZ` 0x018A3A80; Ego_r/FableWin `?AddGameEvent@CMainGameComponent@@QAEXABVCGameEvent@@@Z` |
+| engine/NInventory_CTCInventoryBase.h | FABLE_RETAIL_CTCINVENTORYBASE_ISOPEN | `bool IsInventoryOpen() const { return InventoryOpen; }` (+0x58, inline in retail: BUY/SELL 0x0041F17F) | FableWin `?IsInventoryOpen@CTCInventoryBase@NInventory@@QBE_NXZ` |
+| engine/NUISystem_CActionParamString.h | (new header) | `NUISystem::CActionParamString : CActionParam { CWideString Value; /* +0x08 */ }`, 12 bytes | FableWin `??0CActionParamString@NUISystem@@QAE@AAVCWideString@@@Z`; Ego_r layout (12 bytes, Value +8); TAKE_BOAST / PLAY_MOVIE read Value at +8 |
+| engine/CUserProfileManager.h | FABLE_RETAIL_CUSERPROFILEMANAGER_SETTERS | the 25 out-of-line setters (SetGamma 0x40B2D0 .. SetCameraBowYZInverted 0x40D2F0), Save 0x40A740, Apply 0x40BC80, SetDefaultValuesGameplay 0x408360 / Audio 0x4083B0 / Video 0x4093E0, CaptureBackBufferForUIBackground 0x406CC0; inline SetNewProfileToUseWASD (byte +0x78) and WereVideoChangesAccepted (byte +0x13C) over the opaque layout | FableWin names; each address is the call target of the matching SET_* / RESTORE_DEFAULTS_* case |
+| engine/CGameEvent.h | FABLE_RETAIL_CGAMEEVENT_CTOR | `CGameEvent(long type)` 0x004159B0, `void AddUBYTE(unsigned char)` 0x004159E0 (no layout change) | FableWin `??0CGameEvent@@QAE@J@Z`, `?AddUBYTE@CGameEvent@@QAEXE@Z` |
+| engine/NUISystem_CSpellContainerList.h | FABLE_RETAIL_CSPELLCONTAINERLIST_VIRTUALS | the 5 virtuals after CChangingStateComponent's 142 slots: AddSpellSelectionChild 142, AddSpellIndicationChild 143, SetSpellToAssign 144, ShowSpellSelectionChild 145, HideSpellSelectionChild 146 | vtable 0x012475C4; FableWin names; landed labels for 142/143/145/146 |
+| stlport/fable_containers.h | FABLE_RETAIL_STLP_LIST_REVERSE | STLport 4.6 `reverse_iterator<_Iterator>` (operator* decrements a copy, operator++ decrements current), `list::rbegin/rend` (+ const), `_List_iterator::operator--(int)` | STLport 4.6 _iterator.h / _list.h; the home-slot shape (LESSONS.md) |
+| fable_string.h | FABLE_RETAIL_CWIDESTRING_TEXT_EQ_HELPER (session 2) | `inline bool FABLE_FASTCALL GFStringsAreEqual(const wchar_t*, const wchar_t*)` (wcscmp == 0, 0x00401490) before CWideString; under it `operator==(const wchar_t*)` returns `GFStringsAreEqual(text, L"")` on a null block | FableWin `?GFStringsAreEqual@@YI_NPB_W0@Z`; the call / inline copies in the 2000-series name compares |
+| engine/NUISystem_CMenuEntry.h | FABLE_RETAIL_CMENUENTRY_ACTION (session 2) | `bool IsMenuEntryAvailable() const` (inline, IsAvailable), inline `static void FABLE_FASTCALL GSetForceProcessing(bool)` (out-of-line copy 0x0041CAC8; retail stores the byte in place at 0x0041E7A6 / 0x00426571), `static bool GForceProcessing` (0x013B8AA8, data name descriptive) | FableWin `?IsMenuEntryAvailable@CMenuEntry@NUISystem@@QBE_NXZ`, `?GSetForceProcessing@CMenuEntry@NUISystem@@SIX_N@Z` |
+| engine/NUISystem_CClickable.h | FABLE_RETAIL_CCLICKABLE_SHARED_ACTION (session 2) | includes engine/NUISystem_CAction.h + NUISystem_CActionParamString.h and skips the header's own local CAction / CActionParamString definitions (they collide with the shared headers in one TU) | the shared headers carry the same PDB layouts |
+| engine/NUISystem_CAction.h | FABLE_RETAIL_CACTION_ISVALID (session 2) | `bool IsValid() { return Valid; }` | FableWin `?IsValid@CAction@NUISystem@@QAE_NXZ`; entry 0x0041E6EE `mov al,[eax+0Ch]; test al,al` (a direct member test is `cmp byte ptr`) |
+| engine/NInventory_CTCInventoryBase.h | FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA (session 2) | NInventory::CPerItemData (Ego_r members, native offsets: Augmentations +0 vector<long>, NumberOfKills +0xC, TimeWielded +0x10, BestTrophyWitnessesAheadToDate +0x14, QuestPersistent +0x18, QuestPersistentRefCount +0x1C, BestFishWeight +0x20) and `const CPerItemData* GetPerItemDataForItem(long) const` (0x005BE8D3) | Ego_r struct_layouts CPerItemData; FableWin `?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z` |
+| fable_definition_table.h | (unchanged copy, session 2) | needed so the overlay fable_string.h is the one included through it | -- |
+| fable_string.h, stlport/fable_string.h | (unchanged copies) | needed only so the overlay fable_containers.h is the one included (stlport/fable_string.h includes "fable_containers.h" from its own directory) | -- |
+| fable_string.h | FABLE_RETAIL_CWIDESTRING_FORCEINLINE_DATA_TEXT_EQ (with the existing FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ) | `FABLE_FORCEINLINE` on `CWideStringData::operator==(const unsigned short*)` | 0x00424F4A / 0x004262A0: the expanded CWideString text == also expands this body (`push literal ; push &Data ; call 0x00404280`) where the budget would call ??8CWideStringData |
+| engine/C2DVector.h (copy) | FABLE_RETAIL_C2DVECTOR_FORCEINLINE_CTOR | `FABLE_FORCEINLINE` on `C2DVector(float,float)` in both blocks | all four sites expanded in retail (0x00422EFE, 0x00422F18, 0x00426C27, 0x00426C5A); c2 cost 9..12 >= S in ours |
+| engine/C2DExtentsI.h (copy) | FABLE_RETAIL_C2DEXTENTSI_FORCEINLINE_CTOR | `FABLE_FORCEINLINE` on `C2DExtentsI(long,long)` (+ `#include "fable_compiler.h"`) | expanded at 0x004266EC (LOAD_PHOTO); cost 12 in ours |
+| engine/CSurface.h (copy) | FABLE_RETAIL_CSURFACE_FORCEINLINE_DTOR (inside FABLE_RETAIL_CSURFACE_COPYFROMMEMORY) | `FABLE_FORCEINLINE virtual ~CSurface()` (+ `#include "fable_compiler.h"`) | the GetSurfaceLevel temporary destroyed in place at 0x00426747 (vtable 0x0122F84C, Uninitialise 0x009F2E20); cost 13 in ours |
+| stlport/fable_map.h (copy) | FABLE_RETAIL_STLP_MAP_FORCEINLINE_BEGIN | `FABLE_FORCEINLINE` on `map::begin()` and `_Rb_tree::begin()` | PLAY_SOUND expands it at 0x00426AF8 (`mov eax,[edi] ; mov ecx,[eax+8]`); cost 10 in ours |
+| stlport/fable_containers.h | FABLE_RETAIL_STLP_LIST_NOINLINE_NE (and `_MSC_VER`) | `__declspec(noinline)` on `_List_iterator_base::operator!=` | all three list != sites of the function are called (0x0041EAA3, 0x0041EBD6, 0x00420CED -> 0x0041C7C0); end() in the same loop condition stays expanded, and an inline_depth region applies per full-expression (probe/mini/m2.cpp), so no region can split them |
+
+Note: rebuild/include/fable_string.h changed in the repo during this session; when resuming, re-copy fable_string.h and
+stlport/fable_string.h (and re-apply the FABLE_RETAIL_STLP_LIST_REVERSE block to a fresh stlport/fable_containers.h) so the
+overlay does not shadow newer repo text.
+
+Session 3: no header change. The row source no longer defines FABLE_RETAIL_CDELETION (repo header
+rebuild/include/engine/NUISystem_CDeletion.h, default path used): CDeletion's default and copy constructors must stay IMPLICIT for
+this row (retail 0x0042BED4 / 0x0042CD84 are the compiler-generated members; a user declaration makes every `CDeletion` local
+address-exposed and c2 then refuses to share their frame slot above its 10000-tuple limit). The opt-in's comment ("out of line
+in retail") is true of the bytes but the spelling is only safe in functions under that limit -- worth a note for its 3 landed
+users (0x005729D8, 0x00573792, 0x005AF64E), which are small and unaffected.
+
+
+Session 4 (2026-11-08): the six rows above are Inline-budget devices (EXTRA_RULES owner decision 2026-11-08, preference 3):
+per-TU opt-ins for callees that retail expands (or calls) at EVERY site of 0x0041E6D3, where c2's caller-size penalty
+decides the other way. Mixed callees (list::begin, vector::operator[], the setters, postfix --) use inline_depth regions
+in the source instead. A forceinline does not survive an inline_depth(0) region (probe/mini/m1.cpp).
+
+## Session 5 (2026-11-08)
+No header changes this session; the v23 source uses only the overlay opt-ins listed above.
+
+## Local continuation: real counted-pointer constructor visibility
+
+CCountedPointer.h adds FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR. It retains the existing real generic constructor body (Data, Info, CCPPointerInfo with refcount one and original DeleteData), marked out of line only under MSVC. The default header branch is unchanged. All 25 CComponent, 17 CAction and one CTexture constructor call symbols and counts remain unchanged. Evidence: the incoming v23 listing puts texture alone at -0x3c8 while retail reuses -0x268; visible body restores sharing, the exact 0x800 frame, and LOAD_PHOTO's ebx-held constant 8. No artificial read/write stand-in was introduced. See history/v23_counted_ctor_visible and v23_combined_visible_ctor. Full row remains DIFFER.

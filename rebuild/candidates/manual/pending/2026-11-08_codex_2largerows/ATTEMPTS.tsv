@@ -1,0 +1,71 @@
+address	tag	compiler_status	compiled_bytes	retail_bytes	source_sha256	note
+0041e6d3	baseline	PREPROCESS_FAIL			97d60152c689fa177f9c06e5932011bded722b75f555354beb0621819b36b490	Original baseline or initial tool-setup check; inspect status before counting as a compiled strategy.
+0041e6d3	baseline_02	DIFFER	35593	35651	97d60152c689fa177f9c06e5932011bded722b75f555354beb0621819b36b490	Reproduces supplied Action session-4 baseline after preprocessing setup was fixed.
+0041e6d3	action_pointer_after_frontend	COMPILE_FAIL			c934a6e2599bde7335422630fcc1e9f5eaa227979ffe3f01811877085e3c5e25	Replacement mistake: compilation failed. Not a completed source strategy.
+0041e6d3	action_pointer_after_frontend_02	DIFFER	35607	35651	c6728fd838021085c56c344ecc99e1cf98e8c5365eee81046f802f046897c0cd	Raw action pointer increases allocator priority and worsens residue; rejected.
+0041e6d3	validity_outer_guard	DIFFER	35593	35651	2e114f3b7b6c90faacd9ab3289ecfb863fbba5fc4d51c17387701e7e4b33751c	Outer validity guard: same selected bytes as baseline.
+0041e6d3	game_after_frontend	DIFFER	35592	35651	22214a2b01629662330106af114d99c593d411af03e21a46ccfd446b8ccf5e91	Move game initialization: no useful correction of entry register roles.
+0041e6d3	game_before_validity	DIFFER	35593	35651	116b594ec05f270fa316bf4defce4b152f095e39d0a40b12c380e597710f7a93	Earlier game initialization: no useful correction of entry register roles.
+0041e6d3	action_dereference	DIFFER	35593	35651	d3cd4ddefe0f7063ccbb0f155221fcea24c262b010f87f4d9a450efd96890be3	Reference spelling canonicalized; same selected bytes as baseline.
+0041e6d3	bulk_count_reference	DIFFER	35595	35651	5ddc22df850be63312fe4d611783ee9b0521bcefe73ff5001a98dd2f29abe1e1	Reference local gives add eax,8 / push [eax], unlike native push [eax+8].
+0041e6d3	profile_bool_reference	DIFFER	35659	35651	42f766c243fc1cc0ec2044b84d31082a28267af0910c7d20d21742ca2439c58f	Reference bool changes frame unfavorably; rejected.
+0041e6d3	profile_bool_value	DIFFER	35623	35651	f436b161ea4b57a61decc5011b30abebe6bc9b1483cb4619e6c3992ee8f15c05	Named bool restores six local setter argument shapes; later extended to thirteen.
+0041e6d3	profile_all_bool_values	DIFFER	35658	35651	3c2f1584d6fcac0269fac5e312d87a6c42ff83148a92965fcd2afaf13ff97196	Thirteen setter bool homes improved; already present in incoming v23, do not double-count.
+0041e6d3	bulk_whole_calls	DIFFER	35589	35651	f1d492b5063c8b3cc6d48e933b2b56cf63cbb5e0ab948122dbb9a41c611f4607	Whole-call branches give the wrong register push shape.
+0041e6d3	profile_bools_unsigned_guard	DIFFER	35658	35651	04612ee052d55104ee3e216c428c90a1ccee78281974bbf1d21af20b7ff8125e	Unsigned NumberAugmentations <=0 restores native unsigned branch.
+0041e6d3	bulk_count_object	DIFFER	35591	35651	d9f34ac05789f2545c0a44f419173c676acef3451d157706a895013bb2f8974e	CActionParamSLONG pointer restores native push [eax+8] for BUY_BULK/SELL_BULK.
+0041e6d3	combined_local_fixes_01	DIFFER	35656	35651	ae9f680d066aa9f10a4b656696ab1620d4339bfcc971ad5f6859cbf2ac20c61b	Old-baseline combination, superseded by incoming v23 plus subsequent fixes.
+0041e6d3	unload_whole_arms	DIFFER	35595	35651	631737d44a4524b29f2e291f4d94bf9d13751942170bd4c0ce50bbf7b6a6884d	Corrects one literal push but changes other slot allocation; not selected.
+0041e6d3	trade_receiver_local	DIFFER	35495	35651	dae922cae03a6b0cc6247c256e1c4c71b7069dca6e4db49a040eb1a8294ba808	Caches receiver BEFORE FindChild: load timing is wrong. Do not promote this shorter build.
+0041e6d3	combined_trade_cache	DIFFER	35558	35651	f39d8f06faa3633f7adaa11954b1c5c3535cac20c75f69e4aafaaf669323db8c	Old-baseline cache combination; too-early receiver loads, research only.
+0041e6d3	combined_trade_arms	DIFFER	35560	35651	b19ee751ae7dd4998a94a516bf26f58731997bdd1735a43d983a3b2836604933	Old-baseline branch combination; superseded by properly placed caches.
+0041e6d3	incoming_v23_baseline	DIFFER	35697	35651	24a375c90c8b11dbe5aa733414d63989cea09780c2f2a5b4d5d3540d50052c4d	Reproduces updated Claude session-5 source: 35697 bytes, frame 0x808.
+0041e6d3	v23_bulk_guard	DIFFER	35695	35651	6dbe41c00fc38fcf46e8d0e9a2c8b4f377627e236a89221f47c7fbebba4394d2	Combines proven count-object and unsigned-guard changes on v23.
+0041e6d3	v23_trade_branch_locals	DIFFER	35699	35651	5628e4426d1054ada4c2589dc54bbb3ceed03935a13b309ed8f2e1e5aa428051	Caches receiver AFTER successful FindChild in all four trade-menu arms.
+0041e6d3	v23_clan_direct	DIFFER	35683	35651	471783462c6e7019a2429f620ba0ceabdf8018486a5eee0789fa0c0057815458	Removes a begin() call native keeps; rejected.
+0041e6d3	v23_clan_assign_iterator	DIFFER	35707	35651	6273fd4deab07f35be0e742e7ea4a548262b818f8211ba5df5a0a6da63d201c6	Iterator assignment worsens frame/slots; rejected.
+0041e6d3	v23_clan_drop_alias	DIFFER	35705	35651	3b545c1fc421bcc75d24080757f5cf514072c297d61672768b573d6ad100f758	Removing clan alias does not resolve residue.
+0041e6d3	v23_photo_get	DIFFER	35697	35651	7720f73f6113e8fc997c594b039e1e8094bcb829e33c57e1b513ab771c6863d1	Alternative getter spelling, selected bytes unchanged from v23.
+0041e6d3	v23_photo_dereference	DIFFER	35697	35651	af262acbe79dcc7bb97f4ef0836e7e78881bd26146e074c37e7fe3976bebc4c3	Alternative dereference spelling, selected bytes unchanged from v23.
+0041e6d3	v23_photo_named_format	DIFFER	35700	35651	11dceee0d9660dd2e985fa5e5b24b609a1a0b2f1d506ed0600fcf6e62fda102e	Named pixel format does not give native push sequence.
+0041e6d3	v23_reverse_direct	DIFFER	35697	35651	7da7d685554a95930feb619fadeb54354e13c77471b6c0753dd63d3f57f6c5f1	Reverse iterator direct initialization canonicalized to v23 bytes.
+0041e6d3	v23_reverse_assignment	DIFFER	35697	35651	34ff537dbe8c8d92d3628a2140c4f521f0730b8d612d6a1ab950ebc153b4fe41	Reverse iterator assignment canonicalized to v23 bytes.
+0041e6d3	v23_reverse_postfix	DIFFER	35697	35651	a555d9cd73d9b937ec0087b311daaa0b006456eaf778c94ca5e9d0e9df8df23c	Reverse iterator postfix form canonicalized to v23 bytes.
+0041e6d3	v23_counted_ctor_visible	DIFFER	35694	35651	c0e307b49021d36978cecc0b8971744cb423fd82e29c5fef4d2ecd55e45bc895	Real visible CCountedPointer constructor, kept out of line: frame 0x808 -> 0x800; restores texture slot and ebx-held constant 8.
+0041e6d3	v23_combined_visible_ctor	DIFFER	35696	35651	44b4f01a0b1589dde3a3002edfb687bcbedb1d8dae925932616fcd80dabeae39	Combines frame fix, properly timed trade receivers, count-object and unsigned guard.
+0041e6d3	current_checkpoint_01	DIFFER	35696	35651	fa693ce5377d0e4ed266f2f1f2875c6164e91d31b5f1c71c27b6ef00b0fc06e6	Exact recompilation after source status-comment update; not a new independent strategy.
+0041e6d3	photo_caption_named_text	DIFFER	35702	35651	b9306b4bcf00cdc04c2886ff0ddad95044b7fd3ee09926f08dc3fb92b1143585	Named CWideString restores missing six-byte lea before OnCaptionEntered; selected.
+0041e6d3	wide_eq_nonnull_first	DIFFER	35702	35651	1367877abcf6ba688abf890fd9c5a2840547d8a834aba311d1b5693e2ff8f533	Header return-arm reversal flips local diamond but does not place native cold block after the case; not selected.
+0041e6d3	wide_eq_case_guard	DIFFER	35702	35651	e9139df7220807903edd688d2db5164486b987f91ad1560e6a210d3cef730fd2	Early break guard produces identical code; not selected.
+0041e6d3	current_checkpoint_02	DIFFER	35702	35651	e1204889df42d85845ec7d0ebcedf87d530cf175962addda49df2660d41bbf71	Final selected-source verification after comment updates; not a new independent strategy.
+00cbfb7d	baseline	DIFFER	74965	74778	29c2554c7d1adf7c859f2ae2a740afe958c7034c044ba8dc21ff29612746007e	Original baseline or initial tool-setup check; inspect status before counting as a compiled strategy.
+00cbfb7d	slide_named_values	DIFFER	74941	74778	f41de83ea3305ad315eb8fb36a407144fc83f021e2777b8774c8e03aa00fa7eb	Names fraction, offset, position and facing; saves bytes but still wrong x87 spill/order.
+00cbfb7d	slide_vector_sum_order	DIFFER	74965	74778	8f9e03a1dd71cd37767e7b65c76f2b0cd93c71eebf3047e360739cd19a0f54da	Commuted vector sum, no useful change.
+00cbfb7d	prefix_nested_guards	DIFFER	74911	74778	9adede9a4eff4f0e4671bdef1727e2f71abe35f7c9efea945f4331ae4cb99f22	Removes conditional-cleanup machinery native retains; rejected despite smaller output.
+00cbfb7d	prefix_named_condition	DIFFER	74965	74778	64d5bef93d9158fa085232c4ef5435cad5737106ceacd86556d03450afa78206	Named conjunction, same selected bytes as baseline.
+00cbfb7d	prefix_conditional_operator	DIFFER	74967	74778	71182ea61fb472d809e05149c76a0f5bea33134e195af8966e2b9054155ceefb	Conditional expression adds bytes; not selected.
+00cbfb7d	scale_stored	DIFFER	74965	74778	022d8bb50cac18e3e853636819b4c318435659d8004ae04a1edd4e91047f77ad	Operator* stored-result header shape does not reproduce native x87 allocation.
+00cbfb7d	prefix_continue_combined	DIFFER	74965	74778	4157b11345ce92bc2ea755cb1e9805036a3ac7b6160cc0adc2c8f9b1867c26be	Equivalent continue guard, no useful local correction.
+00cbfb7d	slide_single_factor	DIFFER	74933	74778	735c74c3479b8940e6ccb1ac44151a955aa9c7931fd2c68e3443ce8d2876c964	Named conversion removes duplicated x87 load but misses native Y spill; alternative only.
+00cbfb7d	slide_compound_vector	DIFFER	74965	74778	593e0a7418cfffe826074ae5cddcc89e12740790e0bae9c9cd21cbced1f687e8	Compound vector expression, no useful correction.
+00cbfb7d	prefix_equal_true	DIFFER	74965	74778	bbde50f7780755dfc4b097f7f48227572f2d2ebb3cfe69ecfa449df271166e70	Explicit ==true canonicalized; no improvement.
+00cbfb7d	prefix_positive_length	DIFFER	74965	74778	a2d6398f63d4941d03b50aca0c701a19c33aa4e23c9235f550901ee6ac9d92a6	Changes condition shape incorrectly; rejected.
+00cbfb7d	slide_scaled_reference	DIFFER	74969	74778	fd166d2003bacab6be3dc0cf06a165ec5d6982173980b391c166985a1ad595ca	Reference to scaled temporary worsens size; not selected.
+00cbfb7d	slide_scalar_components	DIFFER	74901	74778	c5fcf50890a912707563b8a8ddbfea75dc138685dccc606593e3898fc4bd93be	Smaller code but differs in intermediate rounding/spill shape; not selected.
+00cbfb7d	prefix_inline_named_bool	DIFFER	74965	74778	29c2554c7d1adf7c859f2ae2a740afe958c7034c044ba8dc21ff29612746007e	Named bool inside prefix helper canonicalized; no improvement.
+00cbfb7d	prefix_inline_returns	DIFFER	74965	74778	29c2554c7d1adf7c859f2ae2a740afe958c7034c044ba8dc21ff29612746007e	Return-chain helper shape canonicalized; no improvement.
+00cbfb7d	slide_factor_reference	DIFFER	74941	74778	edfa2dc1757654a72a7960e77a8f518e80c0361b323afb0c7db01c1afa9fc0a0	Factor reference still has wrong x87 spill/order.
+00cbfb7d	slide_named_offset_reference	DIFFER	74941	74778	90e6b4a5f98a226658e4502b4ceb83dfacbe08923a8080aef6492c9bbf958d23	Offset reference still has wrong x87 spill/order.
+00cbfb7d	crowd_split_loop_guard	DIFFER	74965	74778	37dbbbd75cee6d65d6dea43bd701052b5e1caba3348dd3a6b3322384b0dba5a0	Split wait-loop guard canonicalized; no correction.
+00cbfb7d	crowd_explicit_exits	DIFFER	74965	74778	53d31a0db33ff616d3c543d6354791dc6047035cba39d2b4b61606f63e102116	Explicit exits canonicalized; no correction.
+00cbfb7d	vector_ctor_body	DIFFER	74965	74778	84e4b905a56f3f43b908a97eff748edb6aef3b3d34484a56ba0e7482d707afc4	Constructor assignments in body yield identical caller code.
+00cbfb7d	vector_copy_body	DIFFER	74965	74778	84e4b905a56f3f43b908a97eff748edb6aef3b3d34484a56ba0e7482d707afc4	Copy-constructor assignments in body yield identical caller code.
+00cbfb7d	prefix_explicit_string	DIFFER	74957	74778	c3bda617a2a13fd97f6ee8cf28ed2abe25fd1ae2ebc5199419bb96d0148699f9	Named prefix removes/changes cleanup shape and perturbs slots; not selected.
+00cbfb7d	thing_alive_visible	DIFFER	74955	74778	4c62c6043f247d59eca43563948abee4d84b1e0550f61017341c1eae0e3e7885	Faithful same-TU pointer/dead-bit helper body recovers pThing slot sharing: frame 0x18e4 -> 0x18e0.
+00cbfb7d	current_checkpoint_01	DIFFER	74955	74778	1810ad3b2fa4044d43d34a4b4f817a4ccdb4bf780a9779206bdc7335877888b5	Exact recompilation after source status-comment update; not a new independent strategy.
+00cbfb7d	setflag_branch_assignment	DIFFER	74906	74778	0d5c693f02b8bb900393906a51515f8d1ee58c202481b16defb2fc37d8d5dbdc	Duplicate flag assignment in the real if/else arms restores native store timing and exact frame 0x18dc; selected.
+00cbfb7d	slide_named_offset_only	DIFFER	74906	74778	7565fa7ef8a0400eef878eb09c46124c5b254e0e6a067a74a0a19fcb627016d0	Names only scaled vector; byte-identical to setflag checkpoint.
+00cbfb7d	slide_copy_scale	DIFFER	74906	74778	1335b5dff11b8928387084aae60a0d51fe82ea7b3917f659f547e697736c68c2	Copy then operator*=; byte-identical to setflag checkpoint.
+00cbfb7d	slide_step_reference	DIFFER	74910	74778	52f376ffd563cb8b5ab716f167a67df07e555d143064cad12f47ef5e1a2730cc	Alias step by const reference: changes second interpolation site slightly, no full correction; not selected.
+00cbfb7d	slide_factor_compound	DIFFER	74882	74778	c1c303ad5852377bab8e0fc449377b1eed549f8dd4e5bff14b04482f8b5a799b	Latest alternate: named float fraction and copied position += step*fraction; 74882 bytes, still DIFFER. Compiler completed before wrap-up; local x87 residue not fully reviewed. Preserved as promising alternate, not selected.
+00cbfb7d	current_checkpoint_02	DIFFER	74906	74778	80ab46d57d681c1c18bbb827b13394839d29c68cb7b1bfade626dffc52c34dd6	Final selected-source verification after comment updates; not a new independent strategy.

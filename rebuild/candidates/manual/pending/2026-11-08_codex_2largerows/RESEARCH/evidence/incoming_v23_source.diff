@@ -1,0 +1,253 @@
+--- supplied_v17
++++ incoming_v23
+@@ -1,9 +1,10 @@
+ // NUISystem::CManager::Action(CCountedPointer<NUISystem::CAction>&) -- runs one UI action (the big action dispatcher)
+-// Grade: DIFFER(35593v35651) -- loose per-case 96.1% (t4/pc.py), calls 98.4%; every case written; frame 0x800 = retail; inline split
+-// handled (Inline-budget below) except as noted. Left: entry register roles (retail edi = CAction*, esi = game; ours swapped,
+-// first difference at instruction 6), cross-jump tail choice (CLOSE_MENU / OPEN_ABILITIES / CLOSE_ABILITIES keep their own
+-// AddCloseInventoryEvent tails), block placement of the expanded CWideString text == (2006/2013) and of GetTC(0x6F), GetTC 75 v 73
+-// expansions. WORKLOG.md Session 4.
++// Grade: DIFFER(35697v35651) -- difflib 92.7% of retail instructions (9277/10004), loose per-case 96.6% (t4/pc.py); every case
++// written; frame 0x808 v retail 0x800 (8 bytes of extra slots, cause open). Left: entry register roles (retail edi = CAction*, esi =
++// game; ours swapped, first difference at instruction 6: c2 colours CSE temp #1395 (prio 1015) before game (prio 571)), cross-jump
++// tail direction (retail keeps the CLOSE_TELEPORT_MENU copy of the GetTC + AddCloseInventoryEvent tail; ours keeps CLOSE_MENU /
++// OPEN_ABILITIES / CLOSE_ABILITIES copies), SCROLL_* shared ChangeTargetPositionDelta tail, LOAD_PHOTO / CHOOSE_CLAN [ebp+7Ch] homes.
++// Next: CHOOSE_CLAN as `*action->UIActionParams.begin()` (retail begin temp [-678h]); LOAD_PHOTO photoTexture home. WORKLOG Session 5.
+ // Leaf: ?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+ // Flags: /GS
+ // Inline-budget: scoped `#pragma inline_depth(0)` regions (one per statement retail calls out of line: list::begin 0x00429A85 x16 in
+@@ -815,26 +816,36 @@
+         CUserProfileManager::Get().SetMusicVolume(static_cast<CActionParamFloat*>(action->UIActionParams.back())->Value, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_HEADPHONES:
+-        CUserProfileManager::Get().SetUsingHeadPhones(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    case UI_ACTION_TYPE_SET_HEADPHONES: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetUsingHeadPhones(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_SUBTITLES:
+-        CUserProfileManager::Get().SetSubtitlingEnabled(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    }
++    case UI_ACTION_TYPE_SET_SUBTITLES: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetSubtitlingEnabled(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_VIBRATION:
+-        CUserProfileManager::Get().SetVibrationEnabled(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    }
++    case UI_ACTION_TYPE_SET_VIBRATION: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetVibrationEnabled(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_CAMERA_UP_DOWN:
+-        CUserProfileManager::Get().SetCameraYZInverted(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    }
++    case UI_ACTION_TYPE_SET_CAMERA_UP_DOWN: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetCameraYZInverted(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_CAMERA_ROTATION:
+-        CUserProfileManager::Get().SetCameraXYInverted(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    }
++    case UI_ACTION_TYPE_SET_CAMERA_ROTATION: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetCameraXYInverted(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
++    }
+     case UI_ACTION_TYPE_OPEN_MAP:
+         OPEN_INVENTORY(TCI_INVENTORY_MAP);
+         break;
+@@ -950,22 +961,30 @@
+         CUserProfileManager::Get().SetHUDAlpha(static_cast<CActionParamFloat*>(action->UIActionParams.back())->Value, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_TUTORIALS:
+-        CUserProfileManager::Get().SetTutorialSystemEnabled(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    case UI_ACTION_TYPE_SET_TUTORIALS: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetTutorialSystemEnabled(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_GUILD_MASTER:
+-        CUserProfileManager::Get().SetGuildMasterEnabled(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    }
++    case UI_ACTION_TYPE_SET_GUILD_MASTER: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetGuildMasterEnabled(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_HUD_TOOLTIPS:
+-        CUserProfileManager::Get().SetHUDTooltipEnabled(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    }
++    case UI_ACTION_TYPE_SET_HUD_TOOLTIPS: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetHUDTooltipEnabled(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_SHOW_BUDDY_NAMES:
+-        CUserProfileManager::Get().SetShowingBuddyNames(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    }
++    case UI_ACTION_TYPE_SET_SHOW_BUDDY_NAMES: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetShowingBuddyNames(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
++    }
+     case UI_ACTION_TYPE_ACCEPT_CHANGES:
+         if (CRedefinerList::CanAcceptChanges()) {
+             if (!CMainGameComponent::Get())
+@@ -1211,10 +1230,10 @@
+         CActionParamULONG* depth = static_cast<CActionParamULONG*>(*it);
+         CActionParamString* childName = static_cast<CActionParamString*>(*++it);
+         CActionParamULONG* state = static_cast<CActionParamULONG*>(*++it);
+-        std::list<CActionParam*>::iterator component = UIActionParams.end();
++        std::list<CActionParam*>::reverse_iterator component = UIActionParams.rbegin();
+         for (unsigned long i = depth->Value; i > 0; --i)
+-            --component;
+-        CComponent* child = static_cast<CComponent*>(*--component)->FindChild(childName->Value.ToCharString());
++            ++component;
++        CComponent* child = static_cast<CComponent*>(*component)->FindChild(childName->Value.ToCharString());
+         if (child)
+             child->ChangeState(state->Value);
+         break;
+@@ -1246,8 +1265,8 @@
+         SetEvent(UI_EVENT_LEFT);
+         break;
+     case UI_ACTION_TYPE_ASSIGN_SPELL: {
+-        std::list<CActionParam*>::iterator it = UIActionParams.end();
+-        --it; --it; --it;
++        std::list<CActionParam*>::reverse_iterator it = UIActionParams.rbegin();
++        ++it; ++it;
+         CActionParamULONG* ability = static_cast<CActionParamULONG*>(*it);
+         CActionParamULONG* slot = static_cast<CActionParamULONG*>(action->UIActionParams.back());
+         CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+@@ -1314,12 +1333,15 @@
+         CTCInventoryQuests* quests;
+         game->PeekPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_INVENTORY_QUESTS, &quests);
+         unsigned long state = quests->GetQuestPositionAndRemoveIt(action->ThingActionParams.front()) + 8;
+-        if (map->GetStates().find(state) != map->GetStates().end()) {
++        std::map<unsigned long, CUIState>::iterator it;
++        it = map->GetStates().find(state);
++        if (it != map->GetStates().end()) {
+             std::map<unsigned long, CUIState> states;
+             bool moved = false;
+-            for (std::map<unsigned long, CUIState>::iterator it = map->GetStates().begin(); it != map->GetStates().end(); ++it) {
++            for (it = map->GetStates().begin(); it != map->GetStates().end(); ++it) {
+                 if (it->first > state) {
+-                    states.insert(std::map<unsigned long, CUIState>::value_type(it->first - 1, it->second));
++                    std::map<unsigned long, CUIState>::value_type entry(it->first - 1, it->second);
++                    states.insert(entry);
+                     moved = true;
+                 }
+                 if (it->first < state)
+@@ -1462,10 +1484,12 @@
+         CUserProfileManager::Get().SetEffectsDetail(static_cast<CActionParamFloat*>(action->UIActionParams.back())->Value, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_VERTICAL_SYNC:
+-        CUserProfileManager::Get().SetVerticalSyncEnabled(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value != 0, false);
++    case UI_ACTION_TYPE_SET_VERTICAL_SYNC: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value != 0;
++        CUserProfileManager::Get().SetVerticalSyncEnabled(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
++    }
+     case UI_ACTION_TYPE_SET_ANTIALIASING:
+         CUserProfileManager::Get().SetAntialiasing(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value, false);
+         SILENCE_SOUND_GROUPS();
+@@ -1478,18 +1502,24 @@
+         CUserProfileManager::Get().SetCameraSensitivity(static_cast<CActionParamFloat*>(action->UIActionParams.back())->Value, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_CAMERA_RESETTING:
+-        CUserProfileManager::Get().SetCameraResetting(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    case UI_ACTION_TYPE_SET_CAMERA_RESETTING: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetCameraResetting(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_BOW_CAMERA:
+-        CUserProfileManager::Get().SetCameraBowYZInverted(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    }
++    case UI_ACTION_TYPE_SET_BOW_CAMERA: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetCameraBowYZInverted(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
+-    case UI_ACTION_TYPE_SET_SHOW_TARGETING_STATUS:
+-        CUserProfileManager::Get().SetShowTargetingStatus(static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0, false);
++    }
++    case UI_ACTION_TYPE_SET_SHOW_TARGETING_STATUS: {
++        bool enabled = static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value > 0;
++        CUserProfileManager::Get().SetShowTargetingStatus(enabled, false);
+         SILENCE_SOUND_GROUPS();
+         break;
++    }
+     case UI_ACTION_TYPE_SET_MESH_DETAIL:
+         CUserProfileManager::Get().SetMeshDetail(static_cast<CActionParamFloat*>(action->UIActionParams.back())->Value, false);
+         SILENCE_SOUND_GROUPS();
+@@ -1951,13 +1981,11 @@
+         break;
+     }
+     case UI_ACTION_TYPE_SCROLL_ACTIVE_LIST_UP: {
+-        C2DVector delta(0.0f, -25.0f);
+-        CList::GPreviousSelected.front()->ChangeTargetPositionDelta(delta, 0.0f, false);
++        CList::GPreviousSelected.front()->ChangeTargetPositionDelta(C2DVector(0.0f, -25.0f), 0.0f, false);
+         break;
+     }
+     case UI_ACTION_TYPE_SCROLL_ACTIVE_LIST_DOWN: {
+-        C2DVector delta(0.0f, 25.0f);
+-        CList::GPreviousSelected.front()->ChangeTargetPositionDelta(delta, 0.0f, false);
++        CList::GPreviousSelected.front()->ChangeTargetPositionDelta(C2DVector(0.0f, 25.0f), 0.0f, false);
+         break;
+     }
+     case UI_ACTION_TYPE_SCROLL_ACTIVE_LIST_UP_MAX:
+@@ -2616,7 +2644,11 @@
+             std::list<CActionParam*>::iterator first = params.begin();
+ #pragma inline_depth()
+             CComponent* parent = static_cast<CComponent*>(*first);
+-            CComponent* list = parent->FindChild(PInventoryTrade->InventoryTradeOpen ? "PC_LIST_SELL_ACTIONS" : "UI_LIST_SELL_ACTIONS");
++            CComponent* list;
++            if (PInventoryTrade->InventoryTradeOpen)
++                list = parent->FindChild("PC_LIST_SELL_ACTIONS");
++            else
++                list = parent->FindChild("UI_LIST_SELL_ACTIONS");
+             if (list) {
+                 CDeletion deletion;
+                 deletion.Method = CDeletion::UI_DELETE_THIS_INSTANCE;
+@@ -2732,7 +2764,11 @@
+             std::list<CActionParam*>::iterator first = params.begin();
+ #pragma inline_depth()
+             CComponent* parent = static_cast<CComponent*>(*first);
+-            CComponent* list = parent->FindChild(PInventoryTrade->InventoryTradeOpen ? "PC_LIST_BUY_ACTIONS" : "UI_LIST_BUY_ACTIONS");
++            CComponent* list;
++            if (PInventoryTrade->InventoryTradeOpen)
++                list = parent->FindChild("PC_LIST_BUY_ACTIONS");
++            else
++                list = parent->FindChild("UI_LIST_BUY_ACTIONS");
+             if (list) {
+                 CDeletion deletion;
+                 deletion.Method = CDeletion::UI_DELETE_THIS_INSTANCE;
+@@ -3047,14 +3083,12 @@
+     }
+     case UI_ACTION_TYPE_SCROLL_LIST_UP: {
+         CComponent* list = static_cast<CComponent*>(action->UIActionParams.back());
+-        C2DVector delta(0.0f, -25.0f);
+-        list->ChangeTargetPositionDelta(delta, 0.0f, false);
++        list->ChangeTargetPositionDelta(C2DVector(0.0f, -25.0f), 0.0f, false);
+         break;
+     }
+     case UI_ACTION_TYPE_SCROLL_LIST_DOWN: {
+         CComponent* list = static_cast<CComponent*>(action->UIActionParams.back());
+-        C2DVector delta(0.0f, 25.0f);
+-        list->ChangeTargetPositionDelta(delta, 0.0f, false);
++        list->ChangeTargetPositionDelta(C2DVector(0.0f, 25.0f), 0.0f, false);
+         break;
+     }
+     case UI_ACTION_TYPE_CHOOSE_CLAN: {

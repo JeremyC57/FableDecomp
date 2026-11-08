@@ -1,0 +1,3 @@
+RTM diagnostic proxy pid=232 backend=Z:\workspace\work\pass8\wine\vc71rtm\bin\c2.dll
+BACKEND base=10700000 invoke=1070596f context_eip=184
+VEH 00117870

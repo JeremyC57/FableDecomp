@@ -1,0 +1,74 @@
+{
+  "0041e6d3": {
+    "address": "0041e6d3",
+    "strategy": "current_checkpoint_02",
+    "leaf": "?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z",
+    "flags": [
+      "/GS"
+    ],
+    "source_sha256": "e1204889df42d85845ec7d0ebcedf87d530cf175962addda49df2660d41bbf71",
+    "started": 1794176938.244997,
+    "status": "DIFFER",
+    "compile_seconds": 6.696983814239502,
+    "object_size": 35702,
+    "retail_size": 35651,
+    "first_difference": 18,
+    "strict_instruction_ratio": 0.7929736511919699,
+    "strict_instruction_counts": [
+      9948,
+      9977
+    ],
+    "strict_hunks": 1137,
+    "loose_instruction_ratio": 0.9849937264742785,
+    "loose_instruction_counts": [
+      9948,
+      9977
+    ],
+    "loose_hunks": 107,
+    "finished": 1794176947.752634,
+    "assigned_name": "NUISystem::CManager::Action",
+    "selected_tag": "current_checkpoint_02",
+    "frame": "0x800",
+    "retail_frame": "0x800",
+    "delivery_status": "PARKED_PARTIAL_NOT_LANDABLE",
+    "behavior_tests": "NOT_WRITTEN_NOT_RUN",
+    "complete_name_and_header_audit": "OUTSTANDING",
+    "metric_note": "Instruction diagnostics are not byte-match percentages. Grade is DIFFER. Only the assigned Leaf is selected; same-TU helper bodies are not proposed for landing."
+  },
+  "00cbfb7d": {
+    "address": "00cbfb7d",
+    "strategy": "current_checkpoint_02",
+    "leaf": "?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z",
+    "flags": [
+      "/d2inlS8"
+    ],
+    "source_sha256": "80ab46d57d681c1c18bbb827b13394839d29c68cb7b1bfade626dffc52c34dd6",
+    "started": 1794176938.475853,
+    "status": "DIFFER",
+    "compile_seconds": 18.612168550491333,
+    "object_size": 74906,
+    "retail_size": 74778,
+    "first_difference": 21,
+    "strict_instruction_ratio": 0.8914154380302697,
+    "strict_instruction_counts": [
+      20435,
+      20464
+    ],
+    "strict_hunks": 1964,
+    "loose_instruction_ratio": 0.9853541651385119,
+    "loose_instruction_counts": [
+      20435,
+      20464
+    ],
+    "loose_hunks": 289,
+    "finished": 1794176978.1978924,
+    "assigned_name": "RunCutsceneMacro",
+    "selected_tag": "current_checkpoint_02",
+    "frame": "0x18dc",
+    "retail_frame": "0x18dc",
+    "delivery_status": "PARKED_PARTIAL_NOT_LANDABLE",
+    "behavior_tests": "NOT_WRITTEN_NOT_RUN",
+    "complete_name_and_header_audit": "OUTSTANDING",
+    "metric_note": "Instruction diagnostics are not byte-match percentages. Grade is DIFFER. Only the assigned Leaf is selected; same-TU helper bodies are not proposed for landing."
+  }
+}

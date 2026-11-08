@@ -1,0 +1,3 @@
+LIBRARY c2trace
+EXPORTS
+  DllGetObjHandler=_TraceGetObjHandler@12

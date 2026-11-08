@@ -1,0 +1,16 @@
+(--func from the row's // Leaf: line: ?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z)
+(--flags from the row's // Flags: line: /GS)
+Traceback (most recent call last):
+  File "/workspace/work/parked_large_20261108/support/tools/decomp_pipeline/linux_lane/lane_tools/c2probe/c2prio.py", line 831, in <module>
+    host_main()
+  File "/workspace/work/parked_large_20261108/support/tools/decomp_pipeline/linux_lane/lane_tools/c2probe/c2prio.py", line 475, in host_main
+    trace, log, run = c2dbg.probe(args.source, os.path.abspath(__file__), cfg, flags=args.flags.split(),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/parked_large_20261108/support/tools/decomp_pipeline/linux_lane/lane_tools/c2probe/c2dbg.py", line 184, in probe
+    cl = subprocess.Popen(["wine", str(exe), "/nologo", "/c", *BASE_FLAGS, *(flags or []),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1958, in _execute_child
+    raise child_exception_type(err_msg)
+subprocess.SubprocessError: Exception occurred in preexec_fn.

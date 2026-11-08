@@ -1,0 +1,28 @@
+{
+  "address": "00cbfb7d",
+  "strategy": "slide_factor_compound",
+  "leaf": "?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z",
+  "flags": [
+    "/d2inlS8"
+  ],
+  "source_sha256": "c1c303ad5852377bab8e0fc449377b1eed549f8dd4e5bff14b04482f8b5a799b",
+  "started": 1794176893.7434862,
+  "status": "DIFFER",
+  "compile_seconds": 12.353955268859863,
+  "object_size": 74882,
+  "retail_size": 74778,
+  "first_difference": 21,
+  "strict_instruction_ratio": 0.8989852060154053,
+  "strict_instruction_counts": [
+    20435,
+    20460
+  ],
+  "strict_hunks": 1845,
+  "loose_instruction_ratio": 0.9855483555446876,
+  "loose_instruction_counts": [
+    20435,
+    20460
+  ],
+  "loose_hunks": 286,
+  "finished": 1794176926.8328617
+}
