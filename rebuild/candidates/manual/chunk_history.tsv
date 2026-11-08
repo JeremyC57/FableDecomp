@@ -28051,3 +28051,6 @@ chunk	address	module	name	length
 888	00bbac60	CEnginePrimitiveManagerDecal	RenderLandscapeDecal	3743
 889	00bd5c90	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveToShadowBuffer	2935
 889	00bca950	CEnginePrimitiveManagerSpriteTrails	RenderSpriteTrail	3749
+890	00551ea0	NUISystem::CTable	NUISystem::CTable::ConstructSpritesToDraw	3849
+890	0056ad40	CQuestManager	CQuestManager::UpdateUI_QuestMenu	4284
+890	00498490	CProgressDisplay	DrawRetailDisplay	5101
