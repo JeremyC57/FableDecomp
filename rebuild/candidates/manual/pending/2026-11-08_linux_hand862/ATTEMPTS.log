@@ -1,0 +1,21 @@
+01:48:42 small rows: 7/7 RELOCATION_MATCH first grade
+00daadd0 a1 first model (engine/CQ_NewOakValeIntroScript.h, push_back literals): DIFFER(3406v3306) md=350; first 609 instr identical; ours inlines _Construct at all 42 push_back sites, retail at 22 then calls 0x0044B110 at 20
+00daadd0 a2 + // Flags: /Gr (TU is /Gr: _Construct 0x0044B110 is fastcall; EscortTrader Init sibling is /Gr): same md=350
+00daadd0 diag: /d2inlS1..60, T64..73, crmax1..1000, d1..60, ld3..60, ocsa1-4, fcsa, fcsw<=50, flcsw, nild, niln, nobr, nold, noln, userinl: all 42 inline (T<=63, fcsw500: push_back outlined everywhere; ld1: more inline). No knob gives a partial cut.
+00daadd0 diag: x1/x6 dummy push_back functions before Init (TU-wide budget): no effect; x3 126 sites: all inline; x4 if() round sites 23-42: all inline; x5 150 inline CTimer op= before: all inline; /Os /O1: push_back outlined; /Ob1 /Ot /EHsc: all inline
+00daadd0 b1 explicit CCharString("...") temporaries: 3070v3306 md=1844 (worse: different temp handling); b2 inline AddSpeech(v,s) wrapper: md=736, all inline
+00531ec0 u4/u5 inline ConvertVector (head_cv): 671 / 536; u6 if-chain with named do-not-delete locals: 500 (structural 252)
+00531ec0 u7 pe+ct+te: 451; u8 switch: 611; u9 component ctor form (pd): 449; u10 rv (ParentPosition + Position, Position + RelativeParentPosition) + ct + te: 414, first 538 instructions structurally identical
+00531ec0 u11 switch+rv: 550; u12 if order 0,1,2,3: 411; u13/u14 + inline CDeletion ctors opt-in: 414 / 550 (no change: implicit = inline user ctors)
+00531ec0 c1 inline ConvertVector + rv/ct/te: 540, ConvertVector called in loop 1 only (retail loops 1-2); c2 same with a non-inline same-TU body: identical
+00531ec0 diag /d2inlS5..40, crmax1/3: no change; /d2inlT40/52/56: retail's 8-call/4-inline ConvertVector split (T52 md 408), T44/48 all calls, T60 loop 1, T80/T100 none; no T value fixes the ~_List_base / CDeletion copy sites together
+00531ec0 d1/d3/d6/d10 dead float statements: no change; e1/e2 extra ConvertVector site at entry/exit: inlined, loop 1 still calls; f1 loop 1 removed -> loop 2 calls, loop 3 inlines; f2 deletion removed -> loops 2-3 inline; f3 extra simple loop first -> everything inlined; f4 extra loop last -> no change
+00531ec0 cb2..cb9 ConvertVector bodies: b5 (float locals + C2DVector(x,y)) and b9 (C2DVector(v.X/SW, v.Y/SH) then *=) give retail's split (478 / 502) but compile out of line to 101 / 110 bytes v 80 (bin/cvcheck.py); b3/b4/b6/b8 split unchanged
+00531ec0 kx1..kx3 x v1/v5/v6 (ConvertX/ConvertY PDB helpers, three bodies each) and m2/m4/m8: all RELOCATION_MATCH 0x0052E580 out of line, none moves the split (531..540)
+00531ec0 g1 goto for the ALL_INSTANCES -> PER_PARENT RemoveChild tail: 407 (structural 193; but the goto bypassed `it`'s initialisation); g2 bool remove flag: 415 (tail right, one x87 pair flips upstream); g3/g4 switch with fall-through: 549
+00531ec0 g5/g6 + inline ~CDeletion: no change; g7 _Destroy in clear: no change; g8 non-inline template clear (STLport _list.c form): no change; g9 b9 body + that: 495
+00531ec0 g10/g11 flag + per-loop x87 respell: 417 / 434; h1 inline ConvertVector + goto: 535, T52 404, T40 553, T56 404
+00531ec0 g12 = g1 without the CDeletion opt-in: 407; g13 iterator hoisted before the gotos: 415; g14 two legal gotos (inner block + next_child label): 407 -> differ/00531ec0.cpp
+00531ec0 probe: c2prio on g1: case-1 inlined ~_List_base cursor n (id 147) takes ebx at prio 548 and splits the deletion head (id 143) -- the register residue follows the inline decision, not a priority tie
+00daadd0 x7 three 40-push_back filler functions after Init: all 42 inline; y1 reference local per group 736; y2 named CCharString per site 350 (same code); y5 CCharString(lit,-1) 1844; y8 insert(end(),lit) 1118
+00daadd0 z4 __forceinline CTimer::operator= 350; z6 memset for WhichBadDeedsPerformed 1865; z7 this-> 350; p1..p4 overlay probes of _Construct / push_back cost (extra level, void* where, named result, local finish): split unchanged (p4 1255 structural)

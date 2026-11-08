@@ -1,0 +1,8 @@
+address	name	grade	behav	note
+0121ac70	$E_InventoryOrientationRHSet2 (RIGHT_FORTY_FIVE_DEGREES_ORIENTATION)	RELOCATION_MATCH	PASS	landed
+0121aca0	$E_InventoryOrientationRHSet3 (LEFT_...)	RELOCATION_MATCH	PASS	landed
+0121adc0	$E_InventoryOrientationRHSet10 (BACKWARDS_RIGHT_...)	RELOCATION_MATCH	PASS	landed
+0121adf0	$E_InventoryOrientationRHSet11 (BACKWARDS_LEFT_...)	RELOCATION_MATCH	PASS	landed
+0121f590	$E1 (hit_pos)	RELOCATION_MATCH	PASS	landed
+0121f5c0	$E1 (hit_dir)	RELOCATION_MATCH	PASS	landed
+01224ce0	$E1 (RelationSuffixes)	RELOCATION_MATCH	PASS	landed

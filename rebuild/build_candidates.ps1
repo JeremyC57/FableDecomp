@@ -385518,6 +385518,55 @@ $catalog = @(
         TestSource = '01/21/global_EInventoryOrientationRHSet9_0121ad80_test.cpp'
         PassPattern = '0121ad80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0121ac70'
+        Module = '_global'
+        Source = '01/21/global_EInventoryOrientationRHSet2_0121ac70.cpp'
+        TestSource = '01/21/global_EInventoryOrientationRHSet2_0121ac70_test.cpp'
+        PassPattern = '0121ac70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121aca0'
+        Module = '_global'
+        Source = '01/21/global_EInventoryOrientationRHSet3_0121aca0.cpp'
+        TestSource = '01/21/global_EInventoryOrientationRHSet3_0121aca0_test.cpp'
+        PassPattern = '0121aca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121adc0'
+        Module = '_global'
+        Source = '01/21/global_EInventoryOrientationRHSet10_0121adc0.cpp'
+        TestSource = '01/21/global_EInventoryOrientationRHSet10_0121adc0_test.cpp'
+        PassPattern = '0121adc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121adf0'
+        Module = '_global'
+        Source = '01/21/global_EInventoryOrientationRHSet11_0121adf0.cpp'
+        TestSource = '01/21/global_EInventoryOrientationRHSet11_0121adf0_test.cpp'
+        PassPattern = '0121adf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f590'
+        Module = '_global'
+        Source = '01/21/global_E1_0121f590.cpp'
+        TestSource = '01/21/global_E1_0121f590_test.cpp'
+        PassPattern = '0121f590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f5c0'
+        Module = '_global'
+        Source = '01/21/global_E1_0121f5c0.cpp'
+        TestSource = '01/21/global_E1_0121f5c0_test.cpp'
+        PassPattern = '0121f5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01224ce0'
+        Module = '_global'
+        Source = '01/22/global_E1_01224ce0.cpp'
+        TestSource = '01/22/global_E1_01224ce0_test.cpp'
+        PassPattern = '01224ce0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

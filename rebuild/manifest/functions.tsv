@@ -51009,7 +51009,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00daad70	SuspendableProcess	CSpawnedFunc<NScript::CQ_NewOakValeIntroScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\da\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00daad70.cpp
 00daad80	`scalar deleting destructor'	CSpawnedFunc<NScript::CQ_NewOakValeIntroScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\da\CLandscapeBackgroundPatch_vectordeletingdestructor_00daad80.cpp
 00daada0	OnPersist	NScript::CQ_NewOakValeIntroScript	unknown	undefined	0		0			discovered	gapscan							
-00daadd0	Script_Villager_Reputation_Dialog	_global	unknown	undefined	0		0	yes	accepted									
+00daadd0	Init	NScript::CQ_NewOakValeIntroScript	unknown	undefined	0		0	yes	accepted									
 00dabac0	Main	NScript::CQ_NewOakValeIntroScript	__thiscall	void	1	CPersonalScript_GlobalThingsScript *	1	yes	accepted									
 00dac2b0	GetEntityScriptName	CEntityScriptBinding<NScript::CQ_NewOakValeIntroScript>	unknown	undefined	0		0			discovered	gapscan							
 00dac2c0	Alloc	NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
@@ -56832,14 +56832,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121abeb	g_CCharString_013b8bc0	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ac08	`dynamic initializer for 'REACTION_MANAGER_DEF_INSTANTIATION_NAME'`	`anonymous namespace'	unknown	undefined	0		0			discovered	gapscan							
 0121ac30	`dynamic initializer for 'FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	unknown	undefined	0		0	yes	accepted									
-0121ac70	sub_0121ac70	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-0121aca0	sub_0121aca0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0121ac70	$E_InventoryOrientationRHSet2	_global	unknown	undefined	0		0			discovered	gapscan							
+0121aca0	$E_InventoryOrientationRHSet3	_global	unknown	undefined	0		0			discovered	gapscan							
 0121acd0	`dynamic initializer for 'UPSIDE_DOWN_FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	unknown	undefined	0		0	yes	accepted									
 0121ad20	`dynamic initializer for 'UPSIDE_DOWN_RIGHT_FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	__fastcall	void	0		1	yes	accepted									
 0121ad50	`dynamic initializer for 'UPSIDE_DOWN_LEFT_FORTY_FIVE_DEGREES_ORIENTATION''	`anonymous namespace'	__fastcall	void	0		1	yes	accepted									
 0121ad80	$E_InventoryOrientationRHSet9	_global	unknown	undefined	0		0			discovered	gapscan							
-0121adc0	sub_0121adc0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-0121adf0	sub_0121adf0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0121adc0	$E_InventoryOrientationRHSet10	_global	unknown	undefined	0		0			discovered	gapscan							
+0121adf0	$E_InventoryOrientationRHSet11	_global	unknown	undefined	0		0			discovered	gapscan							
 0121ae20	g_CStatic_01229030_01229030	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ae30	g_CStatic_01229060_01229060	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121ae40	g_tree_013b8c1c	_static_init	unknown	undefined	0		0			discovered	gapscan							
@@ -57000,8 +57000,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121f530	g_CWideString_013baf38	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121f550	g_CWideString_013baf3c	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121f570	g_CCharString_013baf40	_static_init	unknown	undefined	0		0			discovered	gapscan							
-0121f590	sub_0121f590	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-0121f5c0	sub_0121f5c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0121f590	$E1	_global	unknown	undefined	0		0			discovered	gapscan							
+0121f5c0	$E1	_global	unknown	undefined	0		0			discovered	gapscan							
 0121f5f0	g_CCharString_013baf58	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121f610	g_CCharString_013baf5c	_static_init	unknown	undefined	0		0			discovered	gapscan							
 0121f630	g_cos_013baf94	_static_init	unknown	undefined	0		0			discovered	gapscan							
@@ -57215,7 +57215,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 01224c99	g_CStatic_0122ae7e_0122ae7e	_static_init	unknown	undefined	0		0			discovered	gapscan							
 01224ca5	$E_GlobalConsoleCutsceneName	_global	unknown	undefined	0		0			discovered	gapscan							
 01224cd0	g_CStatic_0122aeb0_0122aeb0	_static_init	unknown	undefined	0		0			discovered	gapscan							
-01224ce0	sub_01224ce0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+01224ce0	$E1	_global	unknown	undefined	0		0			discovered	gapscan							
 012288b0	`dynamic atexit destructor for 'gIME'' (object symbol _$E2 of the 0x01219E90 TU)	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk012288b0_012288b0.cpp
 012288c0	AtexitDtor_CCharString_at_013b7d54_012288c0	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\01\22\global_GlobalMethodTailThunk012288c0_012288c0.cpp
 012288d0	Release_013b7d4c	_global	__fastcall	void	0		1	yes	accepted									

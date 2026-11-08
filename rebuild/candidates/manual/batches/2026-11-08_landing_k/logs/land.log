@@ -1,0 +1,32 @@
+addr       parity           behav  name
+0121ac70   RELOCATION_MATCH PASS   $E_InventoryOrientationRHSet2
+0121aca0   RELOCATION_MATCH PASS   $E_InventoryOrientationRHSet3
+0121adc0   RELOCATION_MATCH PASS   $E_InventoryOrientationRHSet10
+0121adf0   RELOCATION_MATCH PASS   $E_InventoryOrientationRHSet11
+0121f590   WARN RELOC_CONFLICT: _$E2 -> 01229fc0 here, 01228930 in landed 01219f00
+0121f590   WARN RELOC_NAME: _$E2 -> 01229fc0 labelled '`dynamic atexit destructor for 'hit_pos'''
+0121f590   RELOCATION_MATCH PASS   $E1
+0121f5c0   WARN RELOC_CONFLICT: _$E2 -> 0122a010 here, 01228930 in landed 01219f00
+0121f5c0   WARN RELOC_NAME: _$E2 -> 0122a010 labelled '`dynamic atexit destructor for 'hit_dir'''
+0121f5c0   RELOCATION_MATCH PASS   $E1
+01224ce0   WARN RELOC_CONFLICT: _$E2 -> 0122aef0 here, 01228930 in landed 01219f00
+01224ce0   WARN RELOC_NAME: _$E2 -> 0122aef0 labelled 'CFontBankStateBlock::CreateCRC'
+01224ce0   RELOCATION_MATCH PASS   $E1
+
+WINS: 7
+  0121ac70 RELOCATION_MATCH _global::_$E1
+  0121aca0 RELOCATION_MATCH _global::_$E1
+  0121adc0 RELOCATION_MATCH _global::_$E1
+  0121adf0 RELOCATION_MATCH _global::_$E1
+  0121f590 RELOCATION_MATCH _global::_$E1
+  0121f5c0 RELOCATION_MATCH _global::_$E1
+  01224ce0 RELOCATION_MATCH _global::_$E1
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  global_EInventoryOrientationRHSet2_0121ac70
+  global_EInventoryOrientationRHSet3_0121aca0
+  global_EInventoryOrientationRHSet10_0121adc0
+  global_EInventoryOrientationRHSet11_0121adf0
+  global_E1_0121f590
+  global_E1_0121f5c0
+  global_E1_01224ce0
