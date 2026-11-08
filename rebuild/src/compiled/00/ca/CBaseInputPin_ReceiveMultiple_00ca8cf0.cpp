@@ -1,4 +1,5 @@
 // CBaseInputPin::ReceiveMultiple(IMediaSample**, long, long*) -- DirectShow BaseClasses (amfilter.cpp): E_POINTER for a null array; otherwise Receive each sample in turn, counting them in *nSamplesProcessed, until one returns anything but S_OK; returns the last Receive result
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ReceiveMultiple@CBaseInputPin@@UAGJPAPAUIMediaSample@@JPAJ@Z -- 82 bytes verified against Fable.exe 0x00CA8CF0
 // Leaf: ?ReceiveMultiple@CBaseInputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8CF0, 82 bytes (+14 int3), STDMETHODIMP: `this` on the stack is the IMemInputPin subobject
 // (+0x98), `ret 10h`. Callee: IMemInputPin::Receive slot 6 (+0x18) through the same subobject.

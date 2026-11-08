@@ -101,8 +101,9 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     `// Vendor-proof:` line (bodies kept); dashboard splits game / Lionhead library / third-party / toolchain. Open: the four /Gr
     comparator TUs (floor1/lsp/psy/sharedbook) need a source patch, 37 unmanifested vendor functions. SDK audit (docs/pipeline/SDK_NEEDS.md):
     retail needs VS2003 Vc7/include + Vc7/lib, DX9.0c SDK Summer 2004 (BaseClasses, strmiids; 588/588 proven), DX SDK April 2005
-    (d3d9/d3dx9_25/dinput8 libs, dxguid, c_dfDI*), Feb 2003 PSDK import libs; the lane has only Vc7/lib. Next: strmbase vendor row,
-    SDK fetch script + env vars, catalog re-grade on Vc7/include.
+    (d3d9/d3dx9_25/dinput8 libs, dxguid, c_dfDI*), Feb 2003 PSDK import libs; the lane has only Vc7/lib. Strmbase vendor route done
+    (Summer 2004 installer, 8 stubs incl. TimeDiff, 348 Vendor-proof rows; fetch_sdks.py fetches all four era SDKs, env vars in
+    env.sh.template). Next: catalog re-grade on Vc7/include; 56 strmbase respellings queued (vend1108b).
     0x00C0..0x00C4 gap-scan rows of `mov ecx,[ecx+4]; mov eax,[ecx]; jmp [eax+N]` forwarders (72-byte extents) are thunks, not chunk material.
     Running (2026-11-08, 150 grades a row): chunk 866 (done) (ten never-attempted Ogg Vorbis / libpk rows, Xiph names), chunk 867 (ten
     never-attempted PC UI / inventory rows in packed TUs), chunk 868 (Fable retry of ten parks: chunk 863's seven + 0x00D18DF0,

@@ -1,4 +1,5 @@
 // CBaseInputPin::NotifyAllocator(IMemAllocator* pAllocator, BOOL bReadOnly) -- DirectShow amfilter.cpp IMemInputPin::NotifyAllocator: E_POINTER on a null allocator; under the pin lock AddRef the new allocator, store it, Release the old one, and record the read-only flag; S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?NotifyAllocator@CBaseInputPin@@UAGJPAUIMemAllocator@@H@Z -- 144 bytes verified against Fable.exe 0x00CA8AC0
 // Leaf: ?NotifyAllocator@CBaseInputPin@@UAGJPAUIMemAllocator@@H@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8AC0, 144 bytes, STDMETHODIMP `ret 0Ch`; `this` on the stack is the IMemInputPin subobject

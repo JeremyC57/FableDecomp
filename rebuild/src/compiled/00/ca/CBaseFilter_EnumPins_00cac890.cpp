@@ -1,4 +1,5 @@
 // CBaseFilter::EnumPins(IEnumPins**) -- DirectShow base class: hand out a new ref-counted pin enumerator
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?EnumPins@CBaseFilter@@UAGJPAPAUIEnumPins@@@Z -- 136 bytes verified against Fable.exe 0x00CAC890
 // Leaf: EnumPins
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAC890, 134 bytes (+10 int3). __stdcall (STDMETHODIMP, `ret 8`), /EHsc frame.

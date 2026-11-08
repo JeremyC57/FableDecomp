@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::get_DevSyncOffset(int* piResult) -- DirectShow BaseClasses IQualProp::get_DevSyncOffset: the standard deviation in ms of the per-frame sync offset since streaming started (GetStdDev over m_cFramesDrawn - 1 samples of m_iSumSqAcc / m_iTotAcc)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?get_DevSyncOffset@CBaseVideoRenderer@@UAGJPAH@Z -- 44 bytes verified against Fable.exe 0x00CA6020
 // Leaf: ?get_DevSyncOffset@CBaseVideoRenderer
 // Retail: Fable.exe @ 0x00CA6020, 44 bytes (+ int3 padding). IQualProp vtable 0x0129D008 slot 8 (and 0x012BF5xx).
 // Label: the manifest's "CTextureRenderer::vfunc_8".

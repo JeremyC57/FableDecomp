@@ -1,4 +1,5 @@
 // CMediaType::Set(const CMediaType&) -- DirectShow media-type copy: unless self, free this type's format block and IUnknown, then CopyMediaType; E_OUTOFMEMORY on failure
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?Set@CMediaType@@QAEJABU_AMMediaType@@@Z -- 91 bytes verified against Fable.exe 0x00CB1E50
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1E50, length 91 bytes (catalogued as the propagated label
 // "CTCObstacle::OnKill"; its callers @ 0x00CB1FE8 / 0x00CB2008 are the two `CMediaType::operator=` forwarders and
 // 0x00CB2020 is a jmp thunk to it). The layout is AM_MEDIA_TYPE: pUnk +0x3c, cbFormat +0x40, pbFormat +0x44.

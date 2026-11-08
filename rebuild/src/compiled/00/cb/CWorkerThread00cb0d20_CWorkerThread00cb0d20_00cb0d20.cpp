@@ -1,4 +1,5 @@
 // CWorkerThread_00cb0d20::~CWorkerThread_00cb0d20() -- take the thread handle at +0x14 with an interlocked exchange, wait for it and close it when there was one, delete the two critical sections at +0x30 and +0x18, then close the event handles at +8 and +4 (each when held)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ??1CAMThread@@UAE@XZ -- 83 bytes verified against Fable.exe 0x00CB0D20
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB0D20, length 83 bytes.
 // Callees: KERNEL32 InterlockedExchange (IAT 0x0143FF00, once), WaitForSingleObject (IAT 0x0143FEAC, once), CloseHandle (IAT 0x0143FE30, three times through ebx),
 // DeleteCriticalSection (IAT 0x0143FDE4, twice through edi). Shape: the imports used more than once are loaded into registers (`__declspec(dllimport)`), the

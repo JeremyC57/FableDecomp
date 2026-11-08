@@ -1,4 +1,5 @@
 // CDynamicOutputPin::DeliverEndFlush() -- DirectShow BaseClasses amfilter.cpp: reset the stop event (+0xd0), then CBaseOutputPin::DeliverEndFlush (inlined): VFW_E_NOT_CONNECTED without a connected pin (+0x18), else IPin::EndFlush
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?DeliverEndFlush@CDynamicOutputPin@@UAEJXZ -- 41 bytes verified against Fable.exe 0x00CA9B40
 // Leaf: ?DeliverEndFlush@CDynamicOutputPin@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9B40, thiscall (virtual: amfilter.h overrides of CBasePin / CBaseOutputPin virtuals).
 // Identity (vendor naming V2, proven): CDynamicOutputPin::DeliverEndFlush (amfilter.cpp: EXECUTE_ASSERT(ResetEvent(m_hStopEvent)); return CBaseOutputPin::DeliverEndFlush() = m_Connected ? m_Connected->EndFlush() : VFW_E_NOT_CONNECTED; IPin slot 16); V1 LABELS (strmbase vtable slot + amfilter.h declaration order) name 0x00CA9B40 the same.

@@ -1,4 +1,5 @@
 // CBasePin::QueryDirection(PIN_DIRECTION* pPinDir) -- DirectShow amfilter.cpp: report the pin direction (E_POINTER for a null out pointer)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?QueryDirection@CBasePin@@UAGJPAW4_PinDirection@@@Z -- 30 bytes verified against Fable.exe 0x00CA8490
 // Leaf: ?QueryDirection@CBasePin@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA8490, 30 bytes, __stdcall (STDMETHODIMP; this = the IPin sub-object
 //   +0x0C, so m_dir reads [this+0x10]), ret 8. No callees.

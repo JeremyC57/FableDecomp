@@ -1,4 +1,5 @@
 // CPosPassThru::GetPreroll(LONGLONG* pllPreroll) -- DirectShow ctlutil.cpp: GetSeekingLongLong(&IMediaSeeking::GetPreroll): forward the preroll query to the upstream peer's IMediaSeeking and release it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetPreroll@CPosPassThru@@UAGJPA_J@Z -- 50 bytes verified against Fable.exe 0x00CAF160
 // Leaf: ?GetPreroll@CPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAF160, 50 bytes, STDMETHODIMP (__stdcall) on the primary IMediaSeeking base, `ret 8`.
 //   Callees: CPosPassThru::GetPeerSeeking 0x00CAD460, the IMediaSeeking member-pointer vcall thunk {76} 0x00CAEF50

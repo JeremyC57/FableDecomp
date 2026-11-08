@@ -1,4 +1,5 @@
 // CCmdQueue::CheckTime(CRefTime, BOOL) -- DirectShow BaseClasses (ctlutil.h): TRUE when a deferred command's time has come on the queue's reference clock (stream times are offset by the run start; FALSE with no clock or while stopped)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?CheckTime@CCmdQueue@@QAEHVCRefTime@@H@Z -- 120 bytes verified against Fable.exe 0x00CAE170
 // Leaf: ?CheckTime@CCmdQueue
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAE170, 120 bytes, thiscall, `ret 0Ch` (CRefTime by value + BOOL).
 // Callees: IReferenceClock::GetTime (slot 3) on m_pClock (+0x60). Layout: m_bRunning +0x64, m_StreamTimeOffset +0x68.

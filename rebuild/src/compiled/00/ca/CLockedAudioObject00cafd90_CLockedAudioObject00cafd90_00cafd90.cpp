@@ -1,4 +1,5 @@
 // CLockedAudioObject00cafd90::~CLockedAudioObject00cafd90() -- delete the object's critical section, then run the destructor of its second base (at +4)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??1CRendererPosPassThru@@UAE@XZ -- 34 bytes verified against Fable.exe 0x00CAFD90
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAFD90, length 34 bytes. Callees: KERNEL32 DeleteCriticalSection through its
 // import slot 0x0143FDE4, the second base's destructor @ 0x00CAEFB0 (EH-framed: releases the COM-style interface at its +0x10
 // through `__stdcall` slot 2, then its own bases; manifest "CVolume::ReleaseVolume") as a tail jump.

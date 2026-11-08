@@ -1,4 +1,5 @@
 // CLockedUpdater_00caf820::Set(long first, long second) -- under the object's critical section (+8): store the two values (+0x68, +0x6c), raise the dirty flag (+0x64 = 1), run the update at 0x00CAF750; returns 0
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?Run@CCmdQueue@@UAEJ_J@Z -- 104 bytes verified against Fable.exe 0x00CAF820
 // Leaf: Set
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAF820, 104 bytes (`ret 8`, fs:[0] frame).

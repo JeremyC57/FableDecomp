@@ -1,4 +1,5 @@
 // IMediaSeeking::vcall{76}(IMediaSeeking* object) -- compiler-generated __stdcall vcall thunk `[thunk]: __stdcall 'vcall'{76,{flat}}' for the member pointer to GetPreroll (slot 19): read the stacked `this`, jump through its vtable slot
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??_9@$BEM@AG -- 9 bytes verified against Fable.exe 0x00CAEF50
 // Leaf: ??_9@$BEM@AG
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAEF50, 9 bytes: `mov eax,[esp+4] ; mov eax,[eax] ; jmp [eax+4Ch]`.

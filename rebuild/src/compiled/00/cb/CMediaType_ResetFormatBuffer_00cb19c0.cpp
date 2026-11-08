@@ -1,4 +1,5 @@
 // CMediaType::ResetFormatBuffer() -- DirectShow strmbase: free the format block (if any) with CoTaskMemFree and clear cbFormat / pbFormat
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?ResetFormatBuffer@CMediaType@@QAEXXZ -- 32 bytes verified against Fable.exe 0x00CB19C0
 // Leaf: ResetFormatBuffer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB19C0, 32 bytes.
 // Callee: ole32 CoTaskMemFree (IAT 0x01440630, `call dword ptr [__imp]`).  No direct caller is

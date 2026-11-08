@@ -1,4 +1,5 @@
 // CCmdQueue::CCmdQueue() -- DirectShow BaseClasses ctlutil.cpp: the deferred-command queue: its lock, the presentation-time and stream-time command lists, the manual-reset "due" event, no advise, no clock, not running, both CRefTimes zero
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??0CCmdQueue@@QAE@XZ -- 124 bytes verified against Fable.exe 0x00CAF500
 // Leaf: ??0CCmdQueue@@QAE@XZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAF500, 124 bytes (+ int3 padding), thiscall, plain `ret`, returns `this`; /EHsc frame:

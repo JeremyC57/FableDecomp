@@ -1,4 +1,5 @@
 // CDeferredCommand::Cancel() -- DirectShow BaseClasses ctlutil.cpp: VFW_E_ALREADY_CANCELLED once the command left its queue; otherwise ask the queue to remove it (CCmdQueue::Remove, virtual slot 3) and, on success, forget the queue
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?Cancel@CDeferredCommand@@UAGJXZ -- 47 bytes verified against Fable.exe 0x00CAEC80
 // Leaf: ?Cancel@CDeferredCommand@@UAGJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAEC80, __stdcall IDeferredCommand method (`this` = the IDeferredCommand subobject at +0x0C, pushed).
 // Identity (vendor naming V2, proven): ctlutil.cpp `STDMETHODIMP CDeferredCommand::Cancel() { if (m_pQueue == NULL) return

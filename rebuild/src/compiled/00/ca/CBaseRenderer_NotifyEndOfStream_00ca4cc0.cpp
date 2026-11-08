@@ -1,4 +1,5 @@
 // CBaseRenderer::NotifyEndOfStream() -- DirectShow BaseClasses renbase.cpp: under the renderer lock, unless the filter stopped streaming, disarm the EOS timer, tell the position pass-through (EOS), mark the end of stream delivered and send EC_COMPLETE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?NotifyEndOfStream@CBaseRenderer@@QAEJXZ -- 156 bytes verified against Fable.exe 0x00CA4CC0
 // Leaf: ?NotifyEndOfStream@CBaseRenderer@@QAEJXZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4CC0, 156 bytes. thiscall, plain `ret`; /EHsc frame (the CAutoLock is EH state 0); the

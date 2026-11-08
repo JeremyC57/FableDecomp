@@ -1,4 +1,5 @@
 // CBasePin::SetSink(IQualityControl* piqc) -- DirectShow amfilter.cpp: under the pin's object lock, set the sink that quality messages are passed to
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetSink@CBasePin@@UAGJPAUIQualityControl@@@Z -- 37 bytes verified against Fable.exe 0x00CA8560
 // Leaf: ?SetSink@CBasePin@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA8560, 37 bytes, __stdcall (STDMETHODIMP; this = the IQualityControl
 //   sub-object +0x10, so m_pLock reads [this+0x10] and m_pQSink [this+0x1C]), ret 8. Callees: EnterCriticalSection /

@@ -1,4 +1,5 @@
 // CBasePin::EnumMediaTypes(IEnumMediaTypes** ppEnum) -- DirectShow BaseClasses (amfilter.cpp): E_POINTER for a null out pointer, else *ppEnum = new CEnumMediaTypes(this, NULL) (position 0, the pin AddRef'd, ref count 1, the pin's media-type version) and E_OUTOFMEMORY when the allocation failed
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?EnumMediaTypes@CBasePin@@UAGJPAPAUIEnumMediaTypes@@@Z -- 171 bytes verified against Fable.exe 0x00CAC170
 // Leaf: ?EnumMediaTypes@CBasePin@@UAGJPAPAUIEnumMediaTypes@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAC170, 171 bytes, STDMETHODIMP `ret 8`, EH frame (new + inlined constructor);

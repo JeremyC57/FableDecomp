@@ -1,4 +1,5 @@
 // CBasePin::ConnectionMediaType(AM_MEDIA_TYPE* pmt) -- DirectShow amfilter.cpp IPin::ConnectionMediaType: E_POINTER on a null pointer; under the pin lock copy the connection media type out (S_OK) when connected, else reset *pmt with CMediaType::InitMediaType and return VFW_E_NOT_CONNECTED
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ConnectionMediaType@CBasePin@@UAGJPAU_AMMediaType@@@Z -- 168 bytes verified against Fable.exe 0x00CA8370
 // Leaf: ?ConnectionMediaType@CBasePin@@UAGJPAUAM_MEDIA_TYPE@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8370, 168 bytes, STDMETHODIMP `ret 8`; `this` on the stack is the IPin subobject (+0x0C),

@@ -1,3 +1,4 @@
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?GetRequest@CAMThread@@QAEKXZ -- 20 bytes verified against Fable.exe 0x00CB0E90
 #include "rebuild_abi.h"
 // CWorldMap::PrepareForLoad @ 0x00cb0e90
 // push esi;esi=ecx; eax=[esi+4]; push -1; push eax; call [import]; eax=[esi+0xc]; ret

@@ -1,4 +1,5 @@
 // CBaseInputPin::ReceiveCanBlock() -- DirectShow BaseClasses (amfilter.cpp, DX9-era body without the NULL-pin break): walk the owning filter's pins; for each connected output pin ask the downstream IMemInputPin whether Receive can block; S_OK as soon as one can (or speaks another transport), S_FALSE when output pins exist and none blocks, S_OK when there are none
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ReceiveCanBlock@CBaseInputPin@@UAGJXZ -- 182 bytes verified against Fable.exe 0x00CA8D50
 // Leaf: ?ReceiveCanBlock@CBaseInputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8D50, 182 bytes (+10 int3), STDMETHODIMP: `this` on the stack is the IMemInputPin subobject
 // (+0x98), so m_pFilter (+0x28) reads at -0x70; `ret 4`.

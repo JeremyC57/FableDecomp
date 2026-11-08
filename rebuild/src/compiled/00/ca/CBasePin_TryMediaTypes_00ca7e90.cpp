@@ -1,4 +1,5 @@
 // CBasePin::TryMediaTypes(IPin*, const CMediaType*, IEnumMediaTypes*) -- DirectShow BaseClasses (amfilter.cpp, DX9-era body): Reset the enumerator, then for each type it hands out (Next(1, ...)) that matches the partial type, AttemptConnection; remember the first specific failure code; free every type with DeleteMediaType; S_OK on the first success, else the remembered code or VFW_E_NO_ACCEPTABLE_TYPES
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?TryMediaTypes@CBasePin@@IAEJPAUIPin@@PBVCMediaType@@PAUIEnumMediaTypes@@@Z -- 219 bytes verified against Fable.exe 0x00CA7E90
 // Leaf: ?TryMediaTypes@CBasePin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7E90, 219 bytes (+5 int3), __fastcall `ret 0Ch`.
 // Callees: IEnumMediaTypes::Reset slot 5 (+0x14) / Next slot 3 (+0x0C); CMediaType::MatchesPartial 0x00CB1B20;

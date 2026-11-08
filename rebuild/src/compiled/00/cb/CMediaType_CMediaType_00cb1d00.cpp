@@ -1,4 +1,5 @@
 // CMediaType::CMediaType() -- DirectShow BaseClasses mtype.cpp: the default constructor, InitMediaType() inline: zero the AM_MEDIA_TYPE, lSampleSize = 1, bFixedSizeSamples = TRUE; returns this
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ??0CMediaType@@QAE@XZ -- 29 bytes verified against Fable.exe 0x00CB1D00
 // Leaf: ??0CMediaType@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB1D00, 29 bytes (+ int3 padding), thiscall, plain `ret`, `mov eax,edx` returns `this`.
 // Fix (sweep1, 2026-10-25; FINDINGS chunk 450 "0xCB1D00 = CMediaType() (comment says libpk)"): the landed row is filed as

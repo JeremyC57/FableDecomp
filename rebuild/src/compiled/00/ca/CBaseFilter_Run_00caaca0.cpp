@@ -1,4 +1,5 @@
 // CBaseFilter::Run(REFERENCE_TIME tStart) -- DirectShow BaseClasses (amfilter.cpp, DX9-era body without the NULL-pin break): under the filter lock (m_pLock +0x38) remember the stream time offset, Pause() a stopped filter first (a failure returned at once), then unless already running call Run(tStart) on every connected pin (a failure returned at once) and set State_Running
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Run@CBaseFilter@@UAGJ_J@Z -- 266 bytes verified against Fable.exe 0x00CAACA0
 // Leaf: ?Run@CBaseFilter@@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAACA0, 266 bytes (+6 int3), STDMETHODIMP: `this` on the stack is the IBaseFilter subobject

@@ -1,4 +1,5 @@
 // CScriptThing::func_00ca5540() -- sleep for the +0xf0 interval (100 ns units -> ms), or yield with Sleep(0)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?ThrottleWait@CBaseVideoRenderer@@QAEXXZ -- 44 bytes verified against Fable.exe 0x00CA5540
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA5540, length 44 bytes (48 with padding); no direct reference found.
 // Part of the catalogue row 00ca5510 (skipped ledger, chunk 901); the manifest class is propagated, so `this` is
 // modelled locally. Import: KERNEL32!Sleep (IAT 0x0143FE1C).

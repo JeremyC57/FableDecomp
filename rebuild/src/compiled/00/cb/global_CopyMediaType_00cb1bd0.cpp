@@ -1,4 +1,5 @@
 // CopyMediaType(AM_MEDIA_TYPE* pmtTarget, const AM_MEDIA_TYPE* pmtSource) -- DirectShow mtype.cpp: struct copy plus a CoTaskMemAlloc'd copy of the format block and an AddRef of pUnk
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?CopyMediaType@@YGJPAU_AMMediaType@@PBU1@@Z -- 103 bytes verified against Fable.exe 0x00CB1BD0
 // Leaf: ?CopyMediaType@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1BD0, 103 bytes. WINAPI (__stdcall, C++ linkage), `ret 8`.
 // Library: DirectShow base classes (strmbase mtype.cpp). The manifest label "COM_CopyVariant" is descriptive. It is

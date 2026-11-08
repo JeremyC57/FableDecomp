@@ -1,4 +1,5 @@
 // CDynamicOutputPin::Active() -- DirectShow BaseClasses amfilter.cpp: E_FAIL unless SetConfigInfo set the stop event (+0xd0) and the graph config (+0xd4); reset the stop event, then CBaseOutputPin::Active (inlined): VFW_E_NO_ALLOCATOR without an allocator, else IMemAllocator::Commit
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Active@CDynamicOutputPin@@UAEJXZ -- 68 bytes verified against Fable.exe 0x00CA9A90
 // Leaf: ?Active@CDynamicOutputPin@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9A90, thiscall (virtual: amfilter.h overrides of CBasePin / CBaseOutputPin virtuals).
 // Identity (vendor naming V2, proven): CDynamicOutputPin::Active (amfilter.cpp: the SetConfigInfo check, EXECUTE_ASSERT(ResetEvent(m_hStopEvent)), return CBaseOutputPin::Active() = m_pAllocator ? m_pAllocator->Commit() : VFW_E_NO_ALLOCATOR; IMemAllocator slot 5 Commit); V1 LABELS (strmbase vtable slot + amfilter.h declaration order) name 0x00CA9A90 the same.

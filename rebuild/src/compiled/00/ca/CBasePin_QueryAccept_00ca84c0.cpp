@@ -1,4 +1,5 @@
 // CBasePin::QueryAccept(const AM_MEDIA_TYPE* pmt) -- DirectShow amfilter.cpp: ask CheckMediaType whether the pin accepts a media type, mapping every failure to S_FALSE (E_POINTER for a null type)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?QueryAccept@CBasePin@@UAGJPBU_AMMediaType@@@Z -- 42 bytes verified against Fable.exe 0x00CA84C0
 // Leaf: ?QueryAccept@CBasePin@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA84C0, 42 bytes, __stdcall (STDMETHODIMP; this = the IPin sub-object
 //   +0x0C), ret 8. Callee: CheckMediaType, primary slot 8 (+0x20) on this-0x0C.

@@ -1,4 +1,5 @@
 // CMediaPosition::GetTypeInfo(UINT itinfo, LCID lcid, ITypeInfo** pptinfo) -- DirectShow ctlutil.cpp: IDispatch: delegate to the embedded CBaseDispatch (m_basedisp +0x10) for IID_IMediaPosition
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetTypeInfo@CMediaPosition@@UAGJIKPAPAUITypeInfo@@@Z -- 36 bytes verified against Fable.exe 0x00CAD2B0
 // Leaf: ?GetTypeInfo@CMediaPosition
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD2B0, 36 bytes, STDMETHODIMP (__stdcall) on IMediaPosition, `ret 10h`.
 //   Callee: the landed CBaseDispatch::GetTypeInfo 0x00CACD90 (STDMETHODIMP, non-virtual: `this` = &m_basedisp pushed);

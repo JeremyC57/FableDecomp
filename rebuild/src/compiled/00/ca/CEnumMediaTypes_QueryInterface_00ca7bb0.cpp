@@ -1,4 +1,5 @@
 // CEnumMediaTypes::QueryInterface(const IID& riid,void** ppv) -- Return the supported enumerator or unknown interface with an owned reference.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?QueryInterface@CEnumMediaTypes@@UAGJABU_GUID@@PAPAX@Z -- 89 bytes verified against Fable.exe 0x00CA7BB0
 // Leaf: ?QueryInterface@CEnumMediaTypes@@UAGJABU_GUID@@PAPAX@Z
 // Identity: proven. DirectShow amfilter CEnumMediaTypes::QueryInterface; own first GUID at012a9ae4 =89c31040-846b-11ce-97d3-00aa0055595a(IEnumMediaTypes), second012c06c4 exact IID_IUnknown. Own caller/table and established clone/ctor confirm enumeration interface. Correct GetInterface00cacbe0 adds reference and returns same primary interface.
 // Layout: original IUnknown/enum inheritance and full enumerator fields; CEnumPins carries real CGenericList/CBaseList cache24. No applicable engine header.

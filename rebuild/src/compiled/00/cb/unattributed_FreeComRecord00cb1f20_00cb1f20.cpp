@@ -1,4 +1,5 @@
 // FreeComRecord_00cb1f20(SComRecord*) -- release a CoTaskMem record: its payload, its interface, then itself
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?DeleteMediaType@@YGXPAU_AMMediaType@@@Z -- 71 bytes verified against Fable.exe 0x00CB1F20
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1F20, oracle length 69 bytes.
 // Callees: CoTaskMemFree (ole32, IAT 0x01440630, loaded once into ebx), IUnknown::Release (virtual slot 2, __stdcall with
 //          `this` on the stack).

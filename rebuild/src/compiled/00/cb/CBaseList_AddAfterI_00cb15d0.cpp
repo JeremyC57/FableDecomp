@@ -1,4 +1,5 @@
 // CBaseList::AddAfterI(POSITION pos, void* pObj) -- DirectShow wxlist.cpp: insert an object after pos (AddHeadI for NULL, AddTailI after the last node), splicing a cached/new node in
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?AddAfterI@CBaseList@@IAEPAU__POSITION@@PAU2@PAX@Z -- 124 bytes verified against Fable.exe 0x00CB15D0
 // Leaf: ?AddAfterI@CBaseList@@QAEPAU__POSITION@@PAU2@PAX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB15D0, 124 bytes, thiscall, `ret 8`.
 // Identity (proven by source): DirectShow base classes (strmbase wxlist.cpp) CBaseList::AddAfterI -- NULL pos goes to AddHeadI

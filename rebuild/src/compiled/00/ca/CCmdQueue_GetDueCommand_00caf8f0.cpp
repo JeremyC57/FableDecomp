@@ -1,4 +1,5 @@
 // CCmdQueue::GetDueCommand(CDeferredCommand**, long) -- DirectShow BaseClasses ctlutil.cpp: loop: under the lock pick the earliest command (presentation list head, or the stream list head offset by m_StreamTimeOffset while running), AddRef and return it when CheckTime says it is due, else wait on m_evDue (E_ABORT on timeout)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetDueCommand@CCmdQueue@@UAEJPAPAVCDeferredCommand@@J@Z -- 276 bytes verified against Fable.exe 0x00CAF8F0
 // Leaf: ?GetDueCommand@CCmdQueue@@UAEJPAPAVCDeferredCommand@@J@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAF8F0, 276 bytes (+ int3 padding), thiscall `ret 8`; /EHsc frame (the CAutoLock is EH state

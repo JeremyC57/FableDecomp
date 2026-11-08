@@ -1,4 +1,5 @@
 // CMediaGraphOwner_00ca5170::DetachTarget() -- ask the graph object at +0xD8 (virtual slot 35) to detach; on success release the interface at +0x9C (tail call), on failure return its error code
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?BreakConnect@CRendererInputPin@@UAEJXZ -- 31 bytes verified against Fable.exe 0x00CA5170
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA5170, length 31 bytes (+1 int3 padding).
 // Retail bytes:  push esi ; mov esi,ecx ; mov ecx,[esi+0D8h] ; mov eax,[ecx] ; call [eax+8Ch] ; test eax,eax ; jl F ;
 //                mov ecx,esi ; pop esi ; jmp ReleaseInterface ; F: pop esi ; ret

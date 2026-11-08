@@ -1,4 +1,5 @@
 // CDispParams::CDispParams(UINT nArgs, VARIANT* pArgs, HRESULT* phr) -- DirectShow strmbase ctlutil.cpp constructor (DX9 SDK text)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??0CDispParams@@QAE@IPAUtagVARIANT@@PAJ@Z -- 504 bytes verified against Fable.exe 0x00CAE9B0
 // Leaf: ??0CDispParams@@QAE@IPAUtagVARIANT@@PAJ@Z
 // Identity: ret 0Ch with ecx=this; stores cNamedArgs(+0xC)=0, rgdispidNamedArgs(+4)=0, cArgs(+8)=nArgs; new(nArgs<<4) via
 //   operator new 0xBFEA1A; E_OUTOFMEMORY 0x8007000E; vt-2 jump table of 16 (VT_I2..VT_UI1); BSTR length-word copy; AddRef

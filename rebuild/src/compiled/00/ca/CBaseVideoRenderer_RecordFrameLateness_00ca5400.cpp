@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::RecordFrameLateness(int, int) -- accumulate frame lateness and inter-frame statistics (clamped to +-1 s; the first frames ignored) (DirectShow BaseClasses)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?RecordFrameLateness@CBaseVideoRenderer@@UAEXHH@Z -- 262 bytes verified against Fable.exe 0x00CA5400
 // Leaf: ?RecordFrameLateness@CBaseVideoRenderer@@UAEXHH@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5400, 262 bytes, thiscall (__fastcall this=ecx).
 // Identity (vendor naming wave V1, proven): BaseClasses renbase.h: CBaseVideoRenderer overrides RecordFrameLateness (primary slot 45); retail CBaseVideoRenderer vtable 0x012BF5D8 slot 45 (its ??_G 0x00CA73D0) holds 0x00CA5400, CBaseRenderer vtable 0x012BF498 slot 45 holds -.

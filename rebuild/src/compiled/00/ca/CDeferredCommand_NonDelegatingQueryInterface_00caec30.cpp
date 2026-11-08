@@ -1,4 +1,5 @@
 // CDeferredCommand::NonDelegatingQueryInterface(const IID& riid, void** ppv) -- DirectShow ctlutil.cpp: expose IDeferredCommand (the sub-object at +0x0C), else defer to CUnknown
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?NonDelegatingQueryInterface@CDeferredCommand@@UAGJABU_GUID@@PAPAX@Z -- 76 bytes verified against Fable.exe 0x00CAEC30
 // Leaf: ?NonDelegatingQueryInterface@CDeferredCommand
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAEC30, 76 bytes, STDMETHODIMP (__stdcall) on the primary base, `ret 0Ch`.
 //   Callees: GetInterface 0x00CACBE0, CUnknown::NonDelegatingQueryInterface 0x00CACCB0 (tail jump); IID_IDeferredCommand

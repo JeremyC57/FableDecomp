@@ -1,4 +1,5 @@
 // CEnumPins::Release() -- DirectShow BaseClasses amfilter.cpp: drop one reference on the pin enumerator and destroy it (virtual deleting destructor) when the count reaches zero; returns the new count
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Release@CEnumPins@@UAGKXZ -- 42 bytes verified against Fable.exe 0x00CA7B00
 // Leaf: ?Release@CEnumPins@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7B00, 42 bytes (+6 int3). __stdcall (STDMETHODIMP_(ULONG), `ret 4`), IEnumPins
 //   vtable 0x012BF69C slot 2 (QueryInterface 0x00CA7A80, AddRef 0x00CA7AE0, Next 0x00CAAFC0, Skip 0x00CAB0E0, Reset 0x00CA7B30,

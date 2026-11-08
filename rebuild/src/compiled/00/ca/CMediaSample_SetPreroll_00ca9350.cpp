@@ -1,4 +1,5 @@
 // CMediaSample::SetPreroll(BOOL enabled) -- Set or clear the sample property and return success.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetPreroll@CMediaSample@@UAGJH@Z -- 37 bytes verified against Fable.exe 0x00CA9350
 // Leaf: ?SetPreroll@CMediaSample@@UAGJH@Z
 // Identity: original DirectShow IMediaSample2 implementation; own QueryInterface00ca9000 compares IID_IMediaSample56a8689a and IID_IMediaSample2 36b73884, actual table012bf6e0 slots8/16/10 and SDK flags1/4/2.
 // Layout: no engine owner header. Real IUnknown/IMediaSample/IMediaSample2 inheritance and original SDK CMediaSample fields; m_dwFlags+4 and completePCsize72 corroborated by own AddRef+44 and SetMediaType+3c.

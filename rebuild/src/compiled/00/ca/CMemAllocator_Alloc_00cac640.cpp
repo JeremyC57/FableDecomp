@@ -1,4 +1,5 @@
 // CMemAllocator::Alloc() -- DirectShow BaseClasses (amfilter.cpp, DX9 SDK era): under the allocator lock, check SetProperties was called (CBaseAllocator::Alloc: VFW_E_SIZENOTSET for a zero count, size or alignment; nothing to do while unchanged), free the old block (ReallyFree), round size + prefix up to the alignment, VirtualAlloc one committed block for all buffers (E_OUTOFMEMORY on failure), then carve it into m_lCount CMediaSample objects pushed on the free list, and clear m_bChanged
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Alloc@CMemAllocator@@MAEJXZ -- 414 bytes verified against Fable.exe 0x00CAC640
 // Leaf: ?Alloc@CMemAllocator@@MAEJXZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAC640, 414 bytes, thiscall plain `ret` (the protected virtual `HRESULT Alloc(void)`,

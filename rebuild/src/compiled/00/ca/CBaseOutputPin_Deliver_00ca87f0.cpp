@@ -1,4 +1,5 @@
 // CBaseOutputPin::Deliver(IMediaSample* pSample) -- DirectShow amfilter.cpp: pass a sample to the connected input pin's IMemInputPin::Receive, VFW_E_NOT_CONNECTED when unconnected
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Deliver@CBaseOutputPin@@UAEJPAUIMediaSample@@@Z -- 38 bytes verified against Fable.exe 0x00CA87F0
 // Leaf: ?Deliver@CBaseOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA87F0, 38 bytes, thiscall `ret 4`. Callee: IMemInputPin::Receive (slot 6, +0x18) on
 //   m_pInputPin (+0x9C).

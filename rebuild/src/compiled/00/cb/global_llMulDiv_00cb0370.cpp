@@ -1,4 +1,5 @@
 // llMulDiv(LONGLONG a, LONGLONG b, LONGLONG c, LONGLONG d) -- DirectShow BaseClasses wxutil.cpp: (a * b + d) / c in 128-bit intermediate precision with the sign tracked separately, saturating to the LONGLONG limits on overflow or c == 0
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?llMulDiv@@YG_J_J000@Z -- 779 bytes verified against Fable.exe 0x00CB0370
 // Leaf: ?llMulDiv@@YG_J_J000@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB0370, 779 bytes, WINAPI (`__stdcall`, `ret 20h`), 0x28-byte frame, no /GS cookie.
 // Identity: the DirectX 9 SDK BaseClasses source (strmbase compiled into the exe, GOTCHAS 0x00CA4xxx-0x00CA7xxx and chunk 594):

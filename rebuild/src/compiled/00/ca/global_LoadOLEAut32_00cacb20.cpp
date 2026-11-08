@@ -1,4 +1,5 @@
 // LoadOLEAut32() -- DirectShow BaseClasses (combase.cpp): load OleAut32.dll once (LoadLibrary(TEXT("OleAut32.dll")), UNICODE build) into hlibOLEAut32 (0x0143CCF0) and return the handle
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/combase.cpp) ?LoadOLEAut32@@YGPAUHINSTANCE__@@XZ -- 26 bytes verified against Fable.exe 0x00CACB20
 // Leaf: ?LoadOLEAut32@@YAPAUHINSTANCE__@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CACB20, 26 bytes, __cdecl, no arguments.
 // Callee: LoadLibraryW (IAT 0x0143FE38); the wide literal sits at 0x012BF854. Caller: CBaseDispatch::GetTypeInfo 0x00CACD90.

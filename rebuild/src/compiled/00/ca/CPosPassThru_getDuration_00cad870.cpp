@@ -1,4 +1,5 @@
 // CPosPassThru::get_Duration(double*) -- DirectShow BaseClasses (ctlutil.cpp): forwards IMediaPosition::get_Duration to the upstream peer's IMediaPosition and releases it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?get_Duration@CPosPassThru@@UAGJPAN@Z -- 53 bytes verified against Fable.exe 0x00CAD870
 // Leaf: ?get_Duration@CPosPassThru@@UAGJPAN@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD870, 53 bytes, STDMETHODIMP (__stdcall), `ret 8`.
 // Identity (proven): the DirectShow BaseClasses source (strmbase is in neither PDB): IMediaPosition slot 7 (+0x1C) of

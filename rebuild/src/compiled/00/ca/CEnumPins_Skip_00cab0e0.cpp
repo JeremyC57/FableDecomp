@@ -1,4 +1,5 @@
 // CEnumPins::Skip(ULONG) -- DirectShow BaseClasses (amfilter.cpp): VFW_E_ENUM_OUT_OF_SYNC when the filter's pin version (GetPinVersion) moved past m_Version (+0x10); S_FALSE when fewer than cPins pins remain (m_PinCount +8 - m_Position +4, unsigned); else advance m_Position, S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Skip@CEnumPins@@UAGJK@Z -- 63 bytes verified against Fable.exe 0x00CAB0E0
 // Leaf: ?Skip@CEnumPins
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAB0E0, 63 bytes (+1 int3), STDMETHODIMP: `this` on the stack, `ret 8`.
 // Callee: CBaseFilter::GetPinVersion primary slot 5 (+0x14) on m_pFilter (+0x0C).

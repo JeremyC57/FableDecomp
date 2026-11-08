@@ -1,4 +1,5 @@
 // CScopedSectionLock::~CScopedSectionLock() -- releases the handle at +0 through the one-argument `__stdcall` import @ 0x0143FE10
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??1CAutoLock@@QAE@XZ -- 10 bytes verified against Fable.exe 0x00CA48C0
 // Vendor naming wave V1 (one address, one name): 0x00CA48C0 ??1CScopedSectionLock@@QAE@XZ (was ??1CClass_00ca48c0@@QAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA48C0, oracle length 10 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK

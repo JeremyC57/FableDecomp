@@ -1,4 +1,5 @@
 // CBaseRenderer::Inactive() -- filter going inactive: reset the position pass-through's media times, then clear the pending sample (DirectShow BaseClasses)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?Inactive@CBaseRenderer@@UAEJXZ -- 26 bytes verified against Fable.exe 0x00CA49C0
 // Leaf: ?Inactive@CBaseRenderer@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA49C0, 26 bytes, thiscall (__fastcall this=ecx).
 // Identity (vendor naming wave V1, proven): BaseClasses renbase.h declaration order: CBaseRenderer::Inactive is primary-vtable slot 30; retail CBaseRenderer vtable 0x012BF498 slot 30 (its ??_G 0x00CA7340) and CTextureRenderer vtable 0x0129D08C (RTTI) slot 30 hold 0x00CA49C0.

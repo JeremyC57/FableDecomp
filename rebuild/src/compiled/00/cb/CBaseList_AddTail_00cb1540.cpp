@@ -1,4 +1,5 @@
 // CBaseList::AddTail(CBaseList* pList) -- DirectShow wxlist.cpp: append every object of another list with AddTailI; FALSE as soon as one add fails, else TRUE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?AddTail@CBaseList@@QAEHPAV1@@Z -- 55 bytes verified against Fable.exe 0x00CB1540
 // Leaf: ?AddTail@CBaseList@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1540, 53 bytes. __fastcall, `ret 4`.
 // Library: DirectShow base classes (strmbase wxlist.cpp). The manifest label "List_CopyAllNodes" is descriptive.

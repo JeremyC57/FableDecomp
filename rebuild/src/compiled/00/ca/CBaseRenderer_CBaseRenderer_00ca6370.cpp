@@ -1,4 +1,5 @@
 // CBaseRenderer::~CBaseRenderer() -- DirectShow strmbase renderer destructor: CBaseRenderer's three vtables, StopStreaming, ClearPendingSample, delete the position pass-through and the input pin, then the members and ~CBaseFilter
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ??1CBaseRenderer@@UAE@XZ -- 216 bytes verified against Fable.exe 0x00CA6370
 // Leaf: ??1CBaseRenderer@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6370, 216 bytes, thiscall; built under /EHsc (state 6 for the body, 2-0 for the CAMEvent members);
 //   seven unwind funclets 0x012169F0 .. 0x01216A32 (landed rows that include this source).

@@ -1,4 +1,5 @@
 // CAudioObjectBase00caefb0::~CAudioObjectBase00caefb0() -- EH-framed destructor of a strmbase-style COM object: release the +0x10 COM pointer (its smart-pointer member's destructor), then the CUnknown base at +4 (its CBaseObject destructor at +8)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??1CMediaPosition@@UAE@XZ -- 118 bytes verified against Fable.exe 0x00CAEFB0
 // Retry 10b: the COM pointer at +10h is a smart-pointer MEMBER whose inline destructor releases it (the destructor body is empty):
 // the release then dereferences the member's `this`, not the destructor's, so VC7.1 keeps the `test esi,esi` null check of
 // the base conversions; a release written in the destructor body dereferences `this` and the check is dropped.

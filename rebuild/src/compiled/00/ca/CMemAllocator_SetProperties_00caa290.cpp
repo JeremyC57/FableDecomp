@@ -1,4 +1,5 @@
 // CMemAllocator::SetProperties(ALLOCATOR_PROPERTIES* pRequest, ALLOCATOR_PROPERTIES* pActual) -- DirectShow BaseClasses (amfilter.cpp): under the allocator lock, zero pActual, check the requested alignment against the system allocation granularity, refuse while committed or with buffers outstanding, then round the buffer size up to the alignment (prefix included) and record and report the agreed count, size, alignment and prefix
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetProperties@CMemAllocator@@UAGJPAU_AllocatorProperties@@0@Z -- 281 bytes verified against Fable.exe 0x00CAA290
 // Leaf: ?SetProperties@CMemAllocator@@UAGJPAUALLOCATOR_PROPERTIES@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAA290, 281 bytes, STDMETHODIMP: `this` on the stack is the IMemAllocatorCallbackTemp
 //   subobject (+0x0C), `ret 0Ch`; the CCritSec base at +0x10 (`lea ebx,[esi+4]` behind the null test of the full object).

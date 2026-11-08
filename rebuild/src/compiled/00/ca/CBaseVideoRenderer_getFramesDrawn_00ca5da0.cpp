@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::get_FramesDrawn(int* pcFramesDrawn) -- DirectShow BaseClasses renbase.cpp IQualProp: under the interface lock, report the frames drawn since streaming started
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?get_FramesDrawn@CBaseVideoRenderer@@UAGJPAH@Z -- 54 bytes verified against Fable.exe 0x00CA5DA0
 // Leaf: ?get_FramesDrawn@CBaseVideoRenderer@@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5DA0, 54 bytes. __stdcall (STDMETHODIMP, `ret 8`); IQualProp slot 4, so `this` is the

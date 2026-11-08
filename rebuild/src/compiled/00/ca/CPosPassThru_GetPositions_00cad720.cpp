@@ -1,4 +1,5 @@
 // CPosPassThru::GetPositions(LONGLONG* pCurrent, LONGLONG* pStop) -- DirectShow ctlutil.cpp: forward IMediaSeeking::GetPositions to the upstream peer's IMediaSeeking and release it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetPositions@CPosPassThru@@UAGJPA_J0@Z -- 55 bytes verified against Fable.exe 0x00CAD720
 // Leaf: ?GetPositions@CPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD720, 55 bytes, STDMETHODIMP (__stdcall) on the IMediaSeeking sub-object, `ret 0Ch`.
 //   Callees: CPosPassThru::GetPeerSeeking 0x00CAD460 (thiscall), the peer's IMediaSeeking::GetPositions (slot 15), IUnknown::Release.

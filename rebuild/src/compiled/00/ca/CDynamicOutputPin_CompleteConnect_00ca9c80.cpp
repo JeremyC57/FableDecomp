@@ -1,4 +1,5 @@
 // CDynamicOutputPin::CompleteConnect(IPin*) -- DirectShow BaseClasses (amfilter.cpp): the inlined CBaseOutputPin::CompleteConnect (DecideAllocator(m_pInputPin +0x9C, &m_pAllocator +0x98)); on success, when the owning filter is not stopped (m_pFilter +0x28 -> m_State +0x14) and an allocator exists, Commit it; returns the last result
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?CompleteConnect@CDynamicOutputPin@@UAEJPAUIPin@@@Z -- 58 bytes verified against Fable.exe 0x00CA9C80
 // Leaf: ?CompleteConnect@CDynamicOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9C80, 58 bytes, __fastcall `ret 4` (primary vtable slot 12).
 // Callees: this->DecideAllocator slot 14 (+0x38); IMemAllocator::Commit slot 5 (+0x14).

@@ -1,4 +1,5 @@
 // SRecord_00cb12e0::SRecord_00cb12e0(long) -- zero a six-word record whose fourth word starts at 10; the argument is unused
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ??0CBaseList@@QAE@PAG@Z -- 28 bytes verified against Fable.exe 0x00CB12E0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB12E0, length 28 bytes. No callees.
 // Leaf: ??0SRecord_00cb12e0
 // The catalog label "CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo" is propagated (callers 0x00CAA688, 0x00CABE47,

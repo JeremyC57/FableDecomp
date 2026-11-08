@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::ScheduleSample(IMediaSample* pMediaSample) -- DirectShow BaseClasses: the base CBaseRenderer::ScheduleSample decides; a refused sample counts as a dropped frame (m_cFramesDropped)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?ScheduleSample@CBaseVideoRenderer@@UAEHPAUIMediaSample@@@Z -- 38 bytes verified against Fable.exe 0x00CA5CF0
 // Leaf: ?ScheduleSample@CBaseVideoRenderer
 // Retail: Fable.exe @ 0x00CA5CF0, 38 bytes. In two vtables (CTextureRenderer primary slot 21).
 // Label: the manifest's "CTextureRenderer::vfunc_21".

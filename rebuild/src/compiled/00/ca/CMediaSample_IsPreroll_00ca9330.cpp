@@ -1,4 +1,5 @@
 // CMediaSample::IsPreroll() -- DirectShow amfilter.cpp: S_OK when the Sample_Preroll flag is set, else S_FALSE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?IsPreroll@CMediaSample@@UAGJXZ -- 20 bytes verified against Fable.exe 0x00CA9330
 // Leaf: ?IsPreroll@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9330, 20 bytes, STDMETHODIMP (__stdcall, `this` on the stack), `ret 4`.
 // Identity: slot 9 (cell 0x012BF704) of CMediaSample's IMediaSample2 vtable 0x012BF6E0 (QueryInterface 0x00CA9000, the landed Release 0x00CA9080 and

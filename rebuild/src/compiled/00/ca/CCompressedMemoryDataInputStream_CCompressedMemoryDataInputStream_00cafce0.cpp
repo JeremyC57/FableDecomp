@@ -1,4 +1,5 @@
 // CCompressedMemoryDataInputStream::CCompressedMemoryDataInputStream(const char* name, IUnknown* outer, long* result, IPin* pin) -- (label propagated; really the DirectShow base-class CRendererPosPassThru constructor) build the CPosPassThru seeking pass-through and zero the renderer's media times
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??0CRendererPosPassThru@@QAE@PBGPAUIUnknown@@PAJPAUIPin@@@Z -- 124 bytes verified against Fable.exe 0x00CAFCE0
 // Leaf: ??0CRendererPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAFCE0, 124 bytes (128 with padding).
 // Callees: CUnknown::CUnknown(name, outer) 0x00CACC80 (InterlockedIncrement of the object count, then

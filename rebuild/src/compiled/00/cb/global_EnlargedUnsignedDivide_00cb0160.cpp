@@ -1,4 +1,5 @@
 // EnlargedUnsignedDivide(ULARGE_INTEGER Dividend, ULONG Divisor, ULONG* Remainder) -- DirectShow BaseClasses (wxutil.h): 64-by-32-bit unsigned divide returning the quotient and, when asked, the remainder
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?EnlargedUnsignedDivide@@YGKT_ULARGE_INTEGER@@KPAK@Z -- 34 bytes verified against Fable.exe 0x00CB0160
 // Leaf: ?EnlargedUnsignedDivide@@
 // Retail-asm: 0x00CB0164..0x00CB0176 `mov eax,[ebp+8] ; mov edx,[ebp+0Ch] ; mov ecx,[ebp+14h] ; div dword ptr [ebp+10h] ; or ecx,ecx ; jz ; mov [ecx],edx ; mov [ebp-4],eax` -- the published `#ifdef _X86_` inline-assembler block of the DirectX 9 SDK wxutil.h (spelt inline-asm here so the purity check sees it; the SDK writes `_asm`) (8 instructions, one jz: rasm1 family (h)); VC7.1 compiles a 64/32 `/` and `%` to the CRT __aulldiv/__aullrem helpers, never to one `div`. The `return ulResult` is C++.
 // Helper (2026-11-03 asm twins): the retail inline-asm block is the shared strmbase/EnlargedUnsignedDivide.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.

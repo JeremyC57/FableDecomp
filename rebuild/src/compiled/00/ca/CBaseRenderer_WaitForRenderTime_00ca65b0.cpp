@@ -1,4 +1,5 @@
 // CBaseRenderer::WaitForRenderTime() -- DirectShow BaseClasses renbase.cpp: wait (10 s slices) on {m_ThreadSignal, m_RenderEvent} until the sample's time arrives or the source thread is released; VFW_E_STATE_CHANGED when woken by the thread signal
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?WaitForRenderTime@CBaseRenderer@@UAEJXZ -- 99 bytes verified against Fable.exe 0x00CA65B0
 // Leaf: ?WaitForRenderTime@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA65B0, 99 bytes (+13 int3). __fastcall (primary slot 11), plain `ret`.
 // Callees: OnWaitStart / OnWaitEnd (primary slots 18 / 19, `call [edx+48h]` / `[edx+4Ch]`); WaitForMultipleObjects (KERNEL32

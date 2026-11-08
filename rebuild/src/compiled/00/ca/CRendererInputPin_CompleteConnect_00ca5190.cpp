@@ -1,4 +1,5 @@
 // CRendererInputPin::CompleteConnect(IPin* pReceivePin) -- DirectShow renbase.cpp: let the renderer complete the connection first, then the base pin (CBaseInputPin, i.e. CBasePin::CompleteConnect)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?CompleteConnect@CRendererInputPin@@UAEJPAUIPin@@@Z -- 40 bytes verified against Fable.exe 0x00CA5190
 // Leaf: ?CompleteConnect@CRendererInputPin@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA5190, 40 bytes, thiscall (primary virtual, slot 12), ret 4.
 //   Callees: CBaseRenderer::CompleteConnect (the renderer's slot 37, +0x94, landed 0x00CA6B80), CBasePin::CompleteConnect

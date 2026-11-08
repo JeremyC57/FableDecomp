@@ -1,4 +1,5 @@
 // CRendererInputPin::BeginFlush() -- DirectShow BaseClasses renbase.cpp: under the renderer's interface lock, and in a
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?BeginFlush@CRendererInputPin@@UAGJXZ -- 157 bytes verified against Fable.exe 0x00CA5030
 //   nested block under its sample lock, flag the pin as flushing (CBaseInputPin::BeginFlush) and let the renderer begin
 //   flushing; after the sample lock is left, return the renderer's ResetEndOfStream
 // Leaf: ?BeginFlush@CRendererInputPin@@

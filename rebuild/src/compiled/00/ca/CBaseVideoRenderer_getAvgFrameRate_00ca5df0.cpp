@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::get_AvgFrameRate(int* piAvgFrameRate) -- DirectShow BaseClasses renbase.cpp IQualProp: under the interface lock, frames per hundred seconds since streaming started (MulDiv(100000, drawn, elapsed ms)), 0 before any time has passed
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?get_AvgFrameRate@CBaseVideoRenderer@@UAGJPAH@Z -- 113 bytes verified against Fable.exe 0x00CA5DF0
 // Leaf: ?get_AvgFrameRate@CBaseVideoRenderer@@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5DF0, 113 bytes (+15 int3). __stdcall (STDMETHODIMP, `ret 8`); IQualProp slot 5, so

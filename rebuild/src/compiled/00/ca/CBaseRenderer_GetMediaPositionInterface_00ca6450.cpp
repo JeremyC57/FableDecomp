@@ -1,4 +1,5 @@
 // CBaseRenderer::GetMediaPositionInterface(REFIID riid, void** ppv) -- DirectShow BaseClasses renbase.cpp: under the object-creation lock hand the request to the existing position pass-through, else create the CRendererPosPassThru on input pin 0 (E_OUTOFMEMORY / E_NOINTERFACE on failure) and retry through the virtual
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?GetMediaPositionInterface@CBaseRenderer@@UAEJABU_GUID@@PAPAX@Z -- 298 bytes verified against Fable.exe 0x00CA6450
 // Leaf: ?GetMediaPositionInterface@CBaseRenderer@@UAEJABU_GUID@@PAPAX@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6450, 298 bytes, thiscall `ret 8`, C++ EH frame (push -1 / handler 0x01216A63) for

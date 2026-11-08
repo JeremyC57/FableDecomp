@@ -1,4 +1,5 @@
 // CMediaSample::IsDiscontinuity() -- DirectShow amfilter.cpp: S_OK when the Sample_Discontinuity flag is set, else S_FALSE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?IsDiscontinuity@CMediaSample@@UAGJXZ -- 21 bytes verified against Fable.exe 0x00CA92E0
 // Leaf: ?IsDiscontinuity@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA92E0, 21 bytes, STDMETHODIMP (__stdcall, `this` on the stack), `ret 4`.
 // Identity: slot 15 (cell 0x012BF71C) of CMediaSample's IMediaSample2 vtable 0x012BF6E0 (QueryInterface 0x00CA9000, the landed Release 0x00CA9080 and

@@ -1,4 +1,5 @@
 // AMGetWideString(const unsigned short* psz, unsigned short** ppszReturn) -- DirectShow wxutil.cpp: CoTaskMemAlloc a copy of a wide string (E_POINTER / E_OUTOFMEMORY / NOERROR)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) _AMGetWideString@8 -- 85 bytes verified against Fable.exe 0x00CB0940
 // Leaf: _AMGetWideString@8
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB0940, 83 bytes (+ int3 padding). STDAPI = extern "C" __stdcall, `ret 8`.
 // Library: the DirectShow base classes (strmbase, DX9 SDK wxutil.cpp) linked into Fable.exe next to the other

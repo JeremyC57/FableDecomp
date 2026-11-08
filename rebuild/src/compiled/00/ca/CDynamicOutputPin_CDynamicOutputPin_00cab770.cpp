@@ -1,4 +1,5 @@
 // CDynamicOutputPin::CDynamicOutputPin(const wchar_t* pObjectName, CBaseFilter* pFilter, CCritSec* pLock, HRESULT* phr, const wchar_t* pName) -- DirectShow amfilter.cpp dynamic output pin constructor (UNICODE object-name overload): CBaseOutputPin base (CBasePin PINDIR_OUTPUT, no allocator, no input pin), the block-state members cleared, the block-state lock built, then the inlined Initialize() creates the manual-reset, initially signalled unblock event (failure -> *phr = AmGetLastErrorToHResult()) and sets m_bCanReconnectWhenActive
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??0CDynamicOutputPin@@QAE@PAGPAVCBaseFilter@@PAVCCritSec@@PAJPBG@Z -- 241 bytes verified against Fable.exe 0x00CAB770
 // Leaf: ??0CDynamicOutputPin@@QAE@PBGPAUCBaseFilter@@PAUCCritSec@@PAJ0@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAB770, 241 bytes, `ret 14h`, EH frame (state 0 after the CBasePin base, 1 after

@@ -1,4 +1,5 @@
 // CPosPassThru::GetRate(double*) -- DirectShow BaseClasses (ctlutil.cpp): forwards IMediaSeeking::GetRate to the upstream peer's IMediaSeeking and releases it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetRate@CPosPassThru@@UAGJPAN@Z -- 50 bytes verified against Fable.exe 0x00CAD7D0
 // Leaf: ?GetRate@CPosPassThru@@UAGJPAN@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD7D0, 50 bytes (+ int3 padding), STDMETHODIMP (__stdcall), `ret 8`.
 // Identity: CPosPassThru::GetRate(double*) -- proven by the DirectShow BaseClasses source (strmbase names are in neither

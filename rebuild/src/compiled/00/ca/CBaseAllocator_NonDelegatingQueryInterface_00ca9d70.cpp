@@ -1,4 +1,5 @@
 // CBaseAllocator::NonDelegatingQueryInterface(const IID& riid, void** ppv) -- DirectShow amfilter.cpp: expose IMemAllocator, and IMemAllocatorCallbackTemp when release callbacks are enabled, else defer to CUnknown
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?NonDelegatingQueryInterface@CBaseAllocator@@UAGJABU_GUID@@PAPAX@Z -- 111 bytes verified against Fable.exe 0x00CA9D70
 // Leaf: ?NonDelegatingQueryInterface@CBaseAllocator
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9D70, 111 bytes, STDMETHODIMP (__stdcall) on the primary base, `ret 0Ch`.
 //   Callees: GetInterface 0x00CACBE0, CUnknown::NonDelegatingQueryInterface 0x00CACCB0 (tail jump); IID_IMemAllocator

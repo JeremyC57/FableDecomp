@@ -1,4 +1,5 @@
 // CBaseInputPin::Receive(IMediaSample* pSample) -- DirectShow BaseClasses (amfilter.cpp): E_POINTER for a null sample; fail unless streaming; snapshot the sample's properties into m_SampleProps (IMediaSample2::GetProperties, or field by field from IMediaSample); when the media type changed, check it and on refusal flag a run-time error, end the stream, notify EC_ERRORABORT / VFW_E_TYPE_NOT_ACCEPTED and return VFW_E_INVALIDMEDIATYPE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Receive@CBaseInputPin@@UAGJPAUIMediaSample@@@Z -- 339 bytes verified against Fable.exe 0x00CA8B90
 // Leaf: ?Receive@CBaseInputPin@@UAGJPAUIMediaSample@@@Z
 // Grades: 1 (RELOCATION_MATCH first grade)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8B90, 339 bytes, STDMETHODIMP: `this` on the stack is the IMemInputPin subobject

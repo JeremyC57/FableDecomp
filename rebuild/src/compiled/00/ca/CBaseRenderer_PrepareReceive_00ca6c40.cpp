@@ -1,4 +1,5 @@
 // CBaseRenderer::PrepareReceive(IMediaSample* pMediaSample) -- DirectShow BaseClasses (strmbase renbase.cpp): under the interface lock mark the filter as in Receive, run the pin's CBaseInputPin::Receive checks (E_FAIL on any refusal), apply a changed media type, then under the renderer lock refuse a second sample / end-of-stream / abort (E_UNEXPECTED after Ready()), register the media times, schedule the sample (VFW_E_SAMPLE_REJECTED when not scheduled), record its end time and keep an AddRef'd reference; repaint is re-enabled when not streaming
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?PrepareReceive@CBaseRenderer@@UAEJPAUIMediaSample@@@Z -- 460 bytes verified against Fable.exe 0x00CA6C40
 // Leaf: ?PrepareReceive@CBaseRenderer@@UAEJPAUIMediaSample@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6C40, 460 bytes, virtual (primary slot 38, called through +0x98 by the landed

@@ -1,3 +1,4 @@
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?ResetEndOfStreamTimer@CBaseRenderer@@QAEXXZ -- 32 bytes verified against Fable.exe 0x00CA4D60
 class CLandscapeBackgroundPatch { public:
     char pad[0xc0];
     void* tex;   // +0xc0

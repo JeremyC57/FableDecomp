@@ -1,4 +1,5 @@
 // CBaseFilter::FindPin(LPCWSTR, IPin**) -- DirectShow BaseClasses (amfilter.cpp, DX9-era body without the NULL-pin break): E_POINTER for a null out pointer; under the filter lock (m_pLock +0x38) compare each pin's name with Id (lstrcmpW) and hand out the first match AddRef'd; else *ppPin = NULL and VFW_E_NOT_FOUND
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?FindPin@CBaseFilter@@UAGJPBGPAPAUIPin@@@Z -- 234 bytes verified against Fable.exe 0x00CAADB0
 // Leaf: ?FindPin@CBaseFilter
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAADB0, 234 bytes (+6 int3), STDMETHODIMP: `this` on the stack is the IBaseFilter subobject

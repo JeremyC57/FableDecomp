@@ -1,4 +1,5 @@
 // CMediaSample::GetMediaType(AM_MEDIA_TYPE** ppMediaType) -- DirectShow amfilter.cpp: hand out a CreateMediaType copy of a changed media type (E_OUTOFMEMORY when the copy fails), NULL and S_FALSE when the type did not change
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetMediaType@CMediaSample@@UAGJPAPAU_AMMediaType@@@Z -- 62 bytes verified against Fable.exe 0x00CA93B0
 // Leaf: ?GetMediaType@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA93B0, 62 bytes, STDMETHODIMP (__stdcall, `this` on the stack), `ret 8`.
 // Identity: slot 13 (cell 0x012BF714) of CMediaSample's IMediaSample2 vtable 0x012BF6E0 (QueryInterface 0x00CA9000, the landed Release 0x00CA9080 and

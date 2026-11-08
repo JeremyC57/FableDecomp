@@ -1,4 +1,5 @@
 // CPosPassThru::get_CurrentPosition(double*) -- DirectShow BaseClasses (ctlutil.cpp): forwards IMediaPosition::get_CurrentPosition to the upstream peer's IMediaPosition and releases it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?get_CurrentPosition@CPosPassThru@@UAGJPAN@Z -- 53 bytes verified against Fable.exe 0x00CAD8B0
 // Leaf: ?get_CurrentPosition@CPosPassThru@@UAGJPAN@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD8B0, 53 bytes, STDMETHODIMP (__stdcall), `ret 8`.
 // Identity (proven): the DirectShow BaseClasses source (strmbase is in neither PDB): IMediaPosition slot 9 (+0x24) of

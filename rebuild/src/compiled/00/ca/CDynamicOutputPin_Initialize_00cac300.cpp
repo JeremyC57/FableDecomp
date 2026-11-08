@@ -1,4 +1,5 @@
 // CDynamicOutputPin constructor, not CEngineScreenEffectRenderer::Initialize.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??0CDynamicOutputPin@@QAE@PADPAVCBaseFilter@@PAVCCritSec@@PAJPBG@Z -- 241 bytes verified against Fable.exe 0x00CAC300
 // Native DirectShow ABI projection from Microsoft's amfilter.h/combase.h/wxutil.h.
 // Public reference copies and URL listing retained in scratch/probe/directshow_*.
 // Full SDK headers are absent from the repository; genuine interfaces below preserve

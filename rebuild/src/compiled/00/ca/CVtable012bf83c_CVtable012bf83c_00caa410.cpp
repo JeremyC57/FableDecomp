@@ -1,4 +1,5 @@
 // CVtable_012bf83c::~CVtable_012bf83c() -- EH-framed destructor: both vtables, the second interface's stop method on itself, the entry queue released, then the base destructor
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??1CMemAllocator@@UAE@XZ -- 96 bytes verified against Fable.exe 0x00CAA410
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAA410, length 96 bytes. Built under /EHsc.
 // Leaf: ??1CVtable_012bf83c
 // Vendor naming wave V1 (one address, one name): 0x00CA9D00 ??1CBaseAllocator@@UAE@XZ (was ??1CBase_00ca9d00@@UAE@XZ)

@@ -1,4 +1,5 @@
 // CBaseFilter::StreamTime(CRefTime& rtStream) -- DirectShow BaseClasses: VFW_E_NO_CLOCK without a reference clock; else the clock's current time minus the stream start m_tStart
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?StreamTime@CBaseFilter@@UAEJAAVCRefTime@@@Z -- 65 bytes verified against Fable.exe 0x00CA77A0
 // Leaf: ?StreamTime@CBaseFilter
 // Retail: Fable.exe @ 0x00CA77A0, 65 bytes (+ int3 padding). Primary vtable slot 4 of CTextureRenderer and two more filters.
 // Label: the manifest's "CTextureRenderer::vfunc_4".

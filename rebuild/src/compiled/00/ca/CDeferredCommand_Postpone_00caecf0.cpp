@@ -1,4 +1,5 @@
 // CDeferredCommand::Postpone(REFTIME newtime) -- DirectShow ctlutil.cpp: move a queued command to a new time: VFW_E_TIME_ALREADY_PASSED if that time is already due, else take it off the queue, set m_time and requeue it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?Postpone@CDeferredCommand@@UAGJN@Z -- 94 bytes verified against Fable.exe 0x00CAECF0
 // Leaf: ?Postpone@CDeferredCommand
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAECF0, 94 bytes, STDMETHODIMP (__stdcall) on the IDeferredCommand sub-object
 //   (+0x0C), `ret 0Ch`. Callees: _ftol2 0x00BFEA70 (COARefTime: newtime * 1e7, double 0x012BF8A8), the landed

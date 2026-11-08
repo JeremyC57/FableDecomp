@@ -1,3 +1,4 @@
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?AreWeOutOfSync@CEnumMediaTypes@@AAEHXZ -- 25 bytes verified against Fable.exe 0x00CA7F90
 enum EMode { EM_0 = 0, EM_1 = 1 };
 
 struct ICamProvider {

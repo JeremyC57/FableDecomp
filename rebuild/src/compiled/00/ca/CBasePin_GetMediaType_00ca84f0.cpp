@@ -1,4 +1,5 @@
 // CBasePin::GetMediaType(int iPosition, CMediaType* pMediaType) -- DirectShow BaseClasses amfilter.cpp: the base pin offers no preferred media types (E_UNEXPECTED)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetMediaType@CBasePin@@UAEJHPAVCMediaType@@@Z -- 8 bytes verified against Fable.exe 0x00CA84F0
 // Leaf: ?GetMediaType@CBasePin@@UAEJHPAVCMediaType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA84F0, thiscall: `mov eax,8000FFFFh ; ret 8`.
 // Identity (vendor naming V2, proven): amfilter.cpp `HRESULT CBasePin::GetMediaType(int iPosition, CMediaType *pMediaType)

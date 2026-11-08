@@ -1,4 +1,5 @@
 // CMediaSample::IsSyncPoint() -- DirectShow amfilter.cpp: S_OK when the Sample_SyncPoint flag is set, else S_FALSE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?IsSyncPoint@CMediaSample@@UAGJXZ -- 18 bytes verified against Fable.exe 0x00CA9290
 // Leaf: ?IsSyncPoint@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9290, 18 bytes, STDMETHODIMP (__stdcall, `this` on the stack), `ret 4`.
 // Identity: slot 7 (cell 0x012BF6FC) of CMediaSample's IMediaSample2 vtable 0x012BF6E0 (QueryInterface 0x00CA9000, the landed Release 0x00CA9080 and

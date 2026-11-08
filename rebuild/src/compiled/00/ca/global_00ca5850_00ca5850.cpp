@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::ShouldDrawSampleNow(IMediaSample*, REFERENCE_TIME*, REFERENCE_TIME*) -- schedule, delay or drop a video frame
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?ShouldDrawSampleNow@CBaseVideoRenderer@@UAEJPAUIMediaSample@@PA_J1@Z -- 1138 bytes verified against Fable.exe 0x00CA5850
 // Leaf: ?ShouldDrawSampleNow@CBaseVideoRenderer@@UAEJPAUIMediaSample@@PA_J1@Z
 #include "engine/CBaseVideoRenderer.h"
 typedef long HRESULT;

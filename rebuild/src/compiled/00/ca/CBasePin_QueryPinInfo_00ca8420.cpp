@@ -1,4 +1,5 @@
 // CBasePin::QueryPinInfo(PIN_INFO*) -- DirectShow BaseClasses (amfilter.cpp, DX9-era lstrcpynW body): E_POINTER for a null pInfo; hand out the owning filter's IBaseFilter (AddRef'd), copy the pin name (at most 128 WCHARs) or an empty name, and the pin direction
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?QueryPinInfo@CBasePin@@UAGJPAU_PinInfo@@@Z -- 111 bytes verified against Fable.exe 0x00CA8420
 // Leaf: ?QueryPinInfo@CBasePin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8420, 111 bytes (+1 int3), STDMETHODIMP: `this` on the stack is the IPin subobject (+0x0C),
 // so m_pName +0x14 / m_dir +0x1C / m_pFilter +0x28 read at +8 / +0x10 / +0x1C.

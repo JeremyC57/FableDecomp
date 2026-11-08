@@ -1,4 +1,5 @@
 // CMediaSample::GetPointer(BYTE** ppBuffer) -- DirectShow amfilter.cpp: return the sample's buffer pointer (m_pBuffer +0x0C)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetPointer@CMediaSample@@UAGJPAPAE@Z -- 18 bytes verified against Fable.exe 0x00CA9100
 // Leaf: ?GetPointer@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9100, 18 bytes, STDMETHODIMP (__stdcall, `this` on the stack), `ret 8`.
 // Identity: slot 3 (cell 0x012BF6EC) of CMediaSample's IMediaSample2 vtable 0x012BF6E0 (QueryInterface 0x00CA9000, the landed Release 0x00CA9080 and

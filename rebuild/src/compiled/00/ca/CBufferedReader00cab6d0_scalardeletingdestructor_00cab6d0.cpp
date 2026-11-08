@@ -1,4 +1,5 @@
 // CBufferedReader_00cab6d0::`scalar deleting destructor'(unsigned int) -- return the buffer at +0x3c when one is held, restore the vtable, optional delete
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??_GCMediaSample@@UAEPAXI@Z -- 44 bytes verified against Fable.exe 0x00CAB6D0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAB6D0, length 41 bytes.
 // Callees: FreeBuffer(void*) @ 0x00CB1F20 (on `this`; manifest "CBankFileAsyncData::FreeBuffer"), operator delete @ 0x00BFE9BC when bit 0 of the flag is set.
 // Vtable 0x012BF6E0 is not in rtti-vtables.tsv; the chunk label "CEngineComponent::`scalar_deleting_destructor'" is propagated. Shape: the buffer pointer is

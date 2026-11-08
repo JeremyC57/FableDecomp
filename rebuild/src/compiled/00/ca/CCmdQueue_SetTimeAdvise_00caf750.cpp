@@ -1,4 +1,5 @@
 // CCmdQueue::SetTimeAdvise() -- DirectShow BaseClasses (ctlutil.cpp, DX9 SDK): re-arms the reference-clock advise for the earliest queued command (presentation list, or the stream list offset by the run start)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?SetTimeAdvise@CCmdQueue@@IAEXXZ -- 199 bytes verified against Fable.exe 0x00CAF750
 // Leaf: ?SetTimeAdvise@CCmdQueue
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAF750, 199 bytes (+9 int3), thiscall, plain `ret`.
 // Callees: ResetEvent (IAT 0x0143FED4, the inline CAMEvent::Reset on m_evDue +0x50), CBaseList::GetI (0x00CB13A0),

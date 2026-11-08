@@ -1,4 +1,5 @@
 // CRendererInputPin::CheckMediaType(const CMediaType* pmt) -- DirectShow renbase.cpp: ask the owning renderer whether it accepts the media type (m_pRenderer->CheckMediaType(pmt))
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?CheckMediaType@CRendererInputPin@@UAEJPBVCMediaType@@@Z -- 14 bytes verified against Fable.exe 0x00CA5200
 // Leaf: ?CheckMediaType@CRendererInputPin@@UAEJPBVCMediaType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA5200, 14 bytes, thiscall (primary virtual, CBasePin slot 8), callee pops the
 //   argument: `mov ecx,[ecx+0D8h] ; mov eax,[ecx] ; jmp [eax+0B0h]` -- m_pRenderer (+0xD8) is loaded into ecx and its slot 44

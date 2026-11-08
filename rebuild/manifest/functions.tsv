@@ -47940,6 +47940,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca3f60	Newton_Raphson	_global	unknown	undefined	0		0	yes	accepted									
 00ca4160	vorbis_lpc_to_lsp	_global	unknown	undefined	0		0	yes	accepted									
 00ca4570	vorbis_lsp_to_curve	libvorbis	unknown	undefined	0		0	yes	accepted									
+00ca4700	TimeDiff	_global	unknown	undefined	0		0			discovered	boundary							
 00ca4780	NonDelegatingQueryInterface	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca47d0	WaitForReceiveToComplete	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca4860	operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	NScript	__fastcall	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	2	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\global_opand_00ca4860.cpp

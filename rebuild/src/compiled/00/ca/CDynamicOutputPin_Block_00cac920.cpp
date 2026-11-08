@@ -1,4 +1,5 @@
 // CDynamicOutputPin::Block(DWORD, HANDLE) -- DirectShow BaseClasses (amfilter.cpp, IPinFlowControl): E_INVALIDARG for unknown flags or an event with an unblock; reset a caller event first (a failure returns the last-error HRESULT); AM_PIN_FLOW_CONTROL_BLOCK blocks synchronously (no event) or asynchronously, no flags unblock; S_OK or the failure code
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Block@CDynamicOutputPin@@UAGJKPAX@Z -- 162 bytes verified against Fable.exe 0x00CAC920
 // Leaf: ?Block@CDynamicOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAC920, 162 bytes (+14 int3), STDMETHODIMP: `this` on the stack is the IPinFlowControl
 // subobject (+0xA0; `add ecx,-0A0h` to reach the pin), `ret 0Ch`.

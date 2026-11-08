@@ -1,4 +1,5 @@
 // CEnumMediaTypes::AddRef() -- DirectShow BaseClasses (amfilter.cpp): `return InterlockedIncrement(&m_cRef);` over the private count m_cRef (+0x10); returns the new count
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?AddRef@CEnumMediaTypes@@UAGKXZ -- 17 bytes verified against Fable.exe 0x00CA7C10
 // Leaf: ?AddRef@CEnumMediaTypes@@UAGKXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7C10, 17 bytes, STDMETHODIMP_(ULONG) (__stdcall, `this` on the stack): the address of
 //   m_cRef replaces `this` in the caller's argument slot and the import is tail-jumped (`jmp [0x0143FD34]`, KERNEL32

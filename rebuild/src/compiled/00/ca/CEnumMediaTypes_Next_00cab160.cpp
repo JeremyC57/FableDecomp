@@ -1,4 +1,5 @@
 // CEnumMediaTypes::Next(ULONG cMediaTypes, AM_MEDIA_TYPE** ppMediaTypes, ULONG* pcFetched) -- DirectShow BaseClasses (amfilter.cpp): E_POINTER for a null array; VFW_E_ENUM_OUT_OF_SYNC when the pin's media-type version moved; with no fetched-count pointer more than one type is E_INVALIDARG; else ask the pin for each type in turn into a local CMediaType, hand it over in a CoTaskMemAlloc'd AM_MEDIA_TYPE (the format block and pUnk moved, not copied), stop at the first failure; returns S_OK when all were fetched, else S_FALSE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Next@CEnumMediaTypes@@UAGJKPAPAU_AMMediaType@@PAK@Z -- 322 bytes verified against Fable.exe 0x00CAB160
 // Leaf: ?Next@CEnumMediaTypes
 // Flags: /EHsc /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAB160, 322 bytes, STDMETHODIMP: `this` on the stack, `ret 10h`; EH frame (handler

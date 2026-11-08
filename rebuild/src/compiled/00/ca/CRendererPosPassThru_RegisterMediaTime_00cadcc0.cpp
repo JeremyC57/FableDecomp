@@ -1,4 +1,5 @@
 // CRendererPosPassThru::RegisterMediaTime(LONGLONG, LONGLONG) -- DirectShow BaseClasses (ctlutil.cpp): under the position lock records the start/end media times the renderer will report and clears the reset flag
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?RegisterMediaTime@CRendererPosPassThru@@QAEJ_J0@Z -- 63 bytes verified against Fable.exe 0x00CADCC0
 // Leaf: ?RegisterMediaTime@CRendererPosPassThru@@QAEJ_J0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CADCC0, 63 bytes (+1 int3), thiscall, `ret 10h`.
 // Callees: Enter/LeaveCriticalSection (IAT 0x0143FE0C / 0x0143FE10) on m_PositionLock (+0x1C) via the inline CAutoLock.

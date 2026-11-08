@@ -1,4 +1,5 @@
 // CDynamicOutputPin::StopUsingOutputPin() -- DirectShow BaseClasses (amfilter.cpp): under m_BlockStateLock (+0xA4) drop the outstanding-user count (+0xCC); when it reaches zero with a block pending or active (m_BlockState +0xC4), block the pin now
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?StopUsingOutputPin@CDynamicOutputPin@@UAEXXZ -- 52 bytes verified against Fable.exe 0x00CA9A00
 // Leaf: ?StopUsingOutputPin@CDynamicOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9A00, 52 bytes (+12 int3), __fastcall, `ret` (primary vtable slot 24).
 // Callees: Enter/LeaveCriticalSection (IAT), CDynamicOutputPin::BlockOutputPin 0x00CA9820 (landed as

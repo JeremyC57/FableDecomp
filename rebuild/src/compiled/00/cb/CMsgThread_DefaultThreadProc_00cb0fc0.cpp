@@ -1,4 +1,5 @@
 // CMsgThread::DefaultThreadProc(void* pParam) -- DirectShow msgthrd.cpp worker thread entry: CoInitialize, OnThreadInit, then GetThreadMsg/ThreadMessageProc until a non-zero result, CoUninitialize
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?DefaultThreadProc@CMsgThread@@CGKPAX@Z -- 109 bytes verified against Fable.exe 0x00CB0FC0
 // Leaf: DefaultThreadProc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB0FC0, 109 bytes (+ int3 padding). WINAPI (__stdcall) static
 // member, `ret 4`; its address is taken once (0x00CB1125, CMsgThread::CreateThread's CreateThread argument).

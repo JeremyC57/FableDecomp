@@ -1,4 +1,5 @@
 // CBaseList::RemoveAll() -- DirectShow wxlist.cpp: delete every node of the list (the cache is left alone) and reset m_Count / m_pFirst / m_pLast
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?RemoveAll@CBaseList@@QAEXXZ -- 57 bytes verified against Fable.exe 0x00CB1340
 // Leaf: ?RemoveAll@CBaseList@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1340, 57 bytes (+ int3 padding). __fastcall, no arguments.
 // Library: DirectShow base classes (strmbase wxlist.cpp). The manifest label "LinkedList_DestroyAll" is descriptive.

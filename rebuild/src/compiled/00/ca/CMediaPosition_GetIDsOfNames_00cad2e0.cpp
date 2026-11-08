@@ -1,4 +1,5 @@
 // CMediaPosition::GetIDsOfNames(const IID& riid, LPOLESTR* rgszNames, UINT cNames, LCID lcid, DISPID* rgdispid) -- DirectShow ctlutil.cpp: IDispatch: delegate to the embedded CBaseDispatch (m_basedisp +0x10) for IID_IMediaPosition
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetIDsOfNames@CMediaPosition@@UAGJABU_GUID@@PAPAGIKPAJ@Z -- 24 bytes verified against Fable.exe 0x00CAD2E0
 // Leaf: ?GetIDsOfNames@CMediaPosition@@UAGJABU_GUID@@PAPAGIKPAJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD2E0, 24 bytes, STDMETHODIMP (__stdcall) on IMediaPosition: IID_IMediaPosition (0x012AA064,
 //   GUID 56a868b2-0ad4-11ce-b03a-0020af0ba770 read from the exe) overwrites the riid slot, `this` + 0x10 (&m_basedisp) the `this`

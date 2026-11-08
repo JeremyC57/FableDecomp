@@ -1,4 +1,5 @@
 // CBaseList::AddBeforeI(POSITION pos, void* pObj) -- DirectShow wxlist.cpp: insert an object before pos (AddTailI for NULL, AddHeadI before the first node), splicing a cached/new node in
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?AddBeforeI@CBaseList@@IAEPAU__POSITION@@PAU2@PAX@Z -- 122 bytes verified against Fable.exe 0x00CB16A0
 // Leaf: ?AddBeforeI@CBaseList@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB16A0, 122 bytes. __fastcall, `ret 8`.
 // Library: DirectShow base classes (strmbase wxlist.cpp). The manifest label "List_InsertBefore" is descriptive.

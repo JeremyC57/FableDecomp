@@ -1,4 +1,5 @@
 // CBasePin::CheckConnect(IPin* pPin) -- DirectShow amfilter.cpp: refuse a connection between two pins of the same direction (VFW_E_INVALID_DIRECTION), else NOERROR
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?CheckConnect@CBasePin@@UAEJPAUIPin@@@Z -- 42 bytes verified against Fable.exe 0x00CA80C0
 // Leaf: ?CheckConnect@CBasePin@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA80C0, 42 bytes, thiscall (primary virtual, slot 10), ret 4.
 //   Callee: the peer's IPin::QueryDirection (slot 9, +0x24).

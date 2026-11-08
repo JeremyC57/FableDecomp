@@ -19,7 +19,7 @@ Counts:
                           library object retail linked: they carry `// Library: <lib>(<member>) <symbol>`
   vendor_library          the toolchain_library rows whose stub carries `// Vendor-library:` (third-party code compiled
                           from unmodified vendor source, proven by libsig/lib_verify.py; LIBRARY_SIGNATURES.md)
-  vendor_source           genuine (hand-written) rows that also carry a `// Vendor-proof:` line: the vendor build of the
+  vendor_source           genuine or retail_asm (hand-written) rows that carry a `// Vendor-proof:` line: the vendor build of the
                           same function equals retail (kept as written, labelled as library: owner 2026-11-08)
   split                   the same coverage per code origin, from docs/pipeline/LIBRARY_MAP.tsv (`category` column):
                           game (Fable code, including the map's "Lionhead game code" rows and everything outside the
@@ -126,7 +126,7 @@ def main() -> int:
             library_source.add(a)
         if kinds[a] == "toolchain_library" and re.search(r"^//\s*Vendor-library:", text_a, re.M):
             vendor_library.add(a)
-        if kinds[a] == "genuine" and re.search(r"^//\s*Vendor-proof:", text_a, re.M):
+        if kinds[a] in ("genuine", "retail_asm") and re.search(r"^//\s*Vendor-proof:", text_a, re.M):
             vendor_source.add(a)
     genuine = {a for a, k in kinds.items() if purity.is_genuine_kind(k)}
     out = {

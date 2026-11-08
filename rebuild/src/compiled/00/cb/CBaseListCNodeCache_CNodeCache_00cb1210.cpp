@@ -1,4 +1,5 @@
 // CBaseList::CNodeCache::~CNodeCache() -- DirectShow BaseClasses wxlist.h: delete every cached spare node (m_pHead +0x08 of the cache, chained through CNode::m_pNext), reading each successor before its node is freed
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ??1CNodeCache@CBaseList@@QAE@XZ -- 28 bytes verified against Fable.exe 0x00CB1210
 // Leaf: ??1CNodeCache@CBaseList@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB1210, 28 bytes (+ int3 padding), thiscall, plain `ret`; operator delete 0x00BFE9BC.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 450 "0xCB1210 = CBaseList::CNodeCache::~CNodeCache"): its only reference is the

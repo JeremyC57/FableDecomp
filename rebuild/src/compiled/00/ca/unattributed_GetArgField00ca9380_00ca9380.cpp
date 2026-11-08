@@ -1,4 +1,5 @@
 // CClass_00ca9380::GetArgField_00ca9380(const CTarget*) -- returns the dword at +0x10 of the argument object
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetActualDataLength@CMediaSample@@UAGJXZ -- 10 bytes verified against Fable.exe 0x00CA9380
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA9380, oracle length 10 bytes.
 // Grade: candidate -- generated for a repeated body shape and graded in the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); the batch README records the lane verdict.

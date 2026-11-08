@@ -1,4 +1,5 @@
 // CMediaType::MatchesPartial(const CMediaType* ppartial) -- DirectShow mtype.cpp: does this type match every field the partial type specifies (major/sub/format type, format block)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?MatchesPartial@CMediaType@@QBEHPBV1@@Z -- 170 bytes verified against Fable.exe 0x00CB1B20
 // Leaf: ?MatchesPartial@CMediaType@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1B20, 170 bytes (+ int3 padding). __fastcall const, `ret 4`.
 // Library: DirectShow base classes (strmbase mtype.cpp). The manifest label "AudioBank_CompareTransactionKeys" is

@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::OnStartStreaming() -- DirectShow renbase.cpp: reset the quality-management statistics (ResetStreamingTimes) when streaming starts
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?OnStartStreaming@CBaseVideoRenderer@@UAEJXZ -- 11 bytes verified against Fable.exe 0x00CA5360
 // Leaf: ?OnStartStreaming@CBaseVideoRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA5360, 11 bytes, thiscall (primary virtual, slot 16), plain ret.
 //   Callee: ResetStreamingTimes, primary slot 47 (+0xBC; landed 0x00CA52A0).

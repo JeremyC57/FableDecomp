@@ -1,4 +1,5 @@
 // CBaseRenderer::Pause() -- DirectShow base class (strmbase renbase.cpp): under the interface lock remember the old state; an already paused filter, or an unconnected one (state set to paused), just completes the state change; else pause the base filter (a failure returned), flag a repaint, stop streaming, let the source thread wait, cancel the clock advise, kill the end-of-stream timer, commit the input pin's allocator, and coming out of stopped clear the abort flag and the pending sample; returns CompleteStateChange(old state)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?Pause@CBaseRenderer@@UAGJXZ -- 312 bytes verified against Fable.exe 0x00CA67B0
 // Leaf: ?Pause@CBaseRenderer@@UAGJXZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA67B0, 312 bytes, STDMETHODIMP (`this` on the stack is the IBaseFilter sub-object

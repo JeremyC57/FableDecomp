@@ -1,4 +1,5 @@
 // CMediaSample::SetMediaType(AM_MEDIA_TYPE*) -- DirectShow BaseClasses (amfilter.cpp): free the attached media type (m_pMediaType +0x3C); NULL clears Sample_TypeChanged (bit 3 of m_dwFlags +4); otherwise attach a CreateMediaType copy and set the flag, E_OUTOFMEMORY (flag cleared) when the copy fails
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetMediaType@CMediaSample@@UAGJPAU_AMMediaType@@@Z -- 86 bytes verified against Fable.exe 0x00CA93F0
 // Leaf: ?SetMediaType@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA93F0, 86 bytes (+10 int3), STDMETHODIMP: `this` on the stack, `ret 8` (IMediaSample slot 14).
 // Callees: DeleteMediaType 0x00CB1F20, CreateMediaType 0x00CB1F70 (mtype.cpp, WINAPI).

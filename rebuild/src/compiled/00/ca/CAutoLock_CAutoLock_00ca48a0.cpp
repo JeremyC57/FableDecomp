@@ -1,4 +1,5 @@
 // CAutoLock::CAutoLock(CCritSec* plock) -- DirectShow base classes (strmbase wxutil.h): remember the critical section and enter it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??0CAutoLock@@QAE@PAVCCritSec@@@Z -- 22 bytes verified against Fable.exe 0x00CA48A0
 // Leaf: ??0CAutoLock@@QAE@PAVCCritSec@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA48A0, 22 bytes (+10 int3), __fastcall, `ret 4`, returns `this`.
 // Identity: the body is strmbase's inline `CAutoLock(CCritSec* plock) { m_pLock = plock; m_pLock->Lock(); }` with

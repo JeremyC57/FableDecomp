@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::GetStdDev(int nSamples, int* piResult, LONGLONG llSumSq, LONGLONG iTot) -- DirectShow BaseClasses renbase.cpp: under the interface lock, the sample standard deviation sqrt((S - T*T/N) / (N-1)) in ms, 0 without a clock or with fewer than two samples
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?GetStdDev@CBaseVideoRenderer@@QAEJHPAH_J1@Z -- 196 bytes verified against Fable.exe 0x00CA5F50
 // Leaf: ?GetStdDev@CBaseVideoRenderer@@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5F50, 196 bytes (+12 int3). __fastcall on the primary base (`ret 18h`); called by

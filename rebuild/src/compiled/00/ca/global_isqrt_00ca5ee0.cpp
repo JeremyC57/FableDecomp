@@ -1,4 +1,5 @@
 // isqrt(int x) -- DirectShow BaseClasses renbase.cpp: cheap integer square root for the IQualProp statistics (doubling start guess, three Newton-Raphson steps)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?isqrt@@YGHH@Z -- 101 bytes verified against Fable.exe 0x00CA5EE0
 // Leaf: ?isqrt@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5EE0, 101 bytes (+11 int3). Callee-pops `ret 4`: renbase.cpp declares a plain
 //   `int isqrt(int x)`, and strmbase is built with the BaseClasses project's default __stdcall (/Gz), so the free function is

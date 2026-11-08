@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::OnDirectRender(IMediaSample* pMediaSample) -- DirectShow BaseClasses renbase.cpp: reset the render-time average (0) and last render time (5000000 = half a second), record the frame lateness through the virtual RecordFrameLateness(m_trLate, m_trFrame), then throttle (Sleep m_trThrottle ms, or Sleep(0))
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?OnDirectRender@CBaseVideoRenderer@@UAEXPAUIMediaSample@@@Z -- 100 bytes verified against Fable.exe 0x00CA5570
 // Leaf: ?OnDirectRender@CBaseVideoRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5570, 100 bytes. __fastcall virtual, `ret 4` (through the Sleep tail jump: its
 //   argument is written over the dead pMediaSample slot in both arms). Primary-vtable slot 46 of CTextureRenderer 0x0129D08C

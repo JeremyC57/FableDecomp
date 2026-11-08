@@ -1,4 +1,5 @@
 // CEngineLandscapePatch_00cb1890::~CEngineLandscapePatch_00cb1890() -- EH-framed destructor: an out-of-line release (@ 0x00CB1340), then the node list at +0x14 freed inline node by node through operator delete
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ??1CBaseList@@QAE@XZ -- 98 bytes verified against Fable.exe 0x00CB1890
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1890, oracle length 98 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov dword ptr [esp+10h],0 ; call Release ; mov esi,[esi+14h] ; test esi,esi ; mov dword ptr [esp+10h],-1 ; je done ; loop: mov eax,esi ; mov esi,[esi+4] ; push eax ; call operator delete ; add esp,4 ; test esi,esi ; jne loop ; done: mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
 // The body runs under EH state 0 (the list member is alive); the member's inline destructor then

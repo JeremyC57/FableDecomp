@@ -1,4 +1,5 @@
 // CBaseRenderer::ScheduleSample(IMediaSample* pMediaSample) -- DirectShow BaseClasses renbase.cpp: get the sample's times; render now (set m_RenderEvent) on S_OK, else ask the reference clock to signal m_RenderEvent at the sample's start time
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?ScheduleSample@CBaseRenderer@@UAEHPAUIMediaSample@@@Z -- 124 bytes verified against Fable.exe 0x00CA4AA0
 // Leaf: ?ScheduleSample@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4AA0, 124 bytes (+4 int3). __fastcall (primary slot 21), `ret 4`.
 // Callees: GetSampleTimes (primary slot 22, `call [edx+58h]`), SetEvent (KERNEL32 IAT 0x0143FDE0), IReferenceClock::AdviseTime

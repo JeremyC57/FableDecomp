@@ -1,4 +1,5 @@
 // CBaseFilter::QueryFilterInfo(FILTER_INFO* info) -- the DirectShow base-class IBaseFilter method linked into Fable for CTextureRenderer (its IBaseFilter vtable 0x0129D04C, slot 12): E_POINTER for a null info, else copy the filter name (lstrcpynW, 128 WCHARs, or an empty name), hand out the filter graph with an AddRef and return NOERROR
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?QueryFilterInfo@CBaseFilter@@UAGJPAU_FilterInfo@@@Z -- 81 bytes verified against Fable.exe 0x00CA77F0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA77F0, length 81 bytes.
 // Leaf: QueryFilterInfo
 // Callees: kernel32!lstrcpynW (`call [__imp]` @ 0x0143FF08), IFilterGraph::AddRef (COM slot 1, `this` pushed).

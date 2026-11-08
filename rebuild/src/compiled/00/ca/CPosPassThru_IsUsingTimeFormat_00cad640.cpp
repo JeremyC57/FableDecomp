@@ -1,4 +1,5 @@
 // CPosPassThru::IsUsingTimeFormat(const GUID*) -- DirectShow BaseClasses (ctlutil.cpp): forwards IMediaSeeking::IsUsingTimeFormat to the upstream peer's IMediaSeeking and releases it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?IsUsingTimeFormat@CPosPassThru@@UAGJPBU_GUID@@@Z -- 50 bytes verified against Fable.exe 0x00CAD640
 // Leaf: ?IsUsingTimeFormat@CPosPassThru@@UAGJPBU_GUID@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD640, 50 bytes (+ int3 padding), STDMETHODIMP (__stdcall), `ret 8`.
 // Identity: CPosPassThru::IsUsingTimeFormat(const GUID*) -- proven by the DirectShow BaseClasses source (strmbase names are in neither

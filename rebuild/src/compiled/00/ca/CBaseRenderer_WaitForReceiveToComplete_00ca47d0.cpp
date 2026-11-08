@@ -1,4 +1,5 @@
 // CBaseRenderer::WaitForReceiveToComplete() -- DirectShow BaseClasses renbase.cpp: poll (dispatching inter-thread sent messages, Sleep(1)) until Receive has finished, then re-arm QS_POSTMESSAGE with a dummy WM_NULL if PeekMessage cleared its change bit
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?WaitForReceiveToComplete@CBaseRenderer@@QAEXXZ -- 102 bytes verified against Fable.exe 0x00CA47D0
 // Leaf: ?WaitForReceiveToComplete@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA47D0, 102 bytes. __fastcall, no arguments; called by CBaseRenderer::Stop 0x00CA6785
 //   (landed) and BeginFlush 0x00CA6B6C.

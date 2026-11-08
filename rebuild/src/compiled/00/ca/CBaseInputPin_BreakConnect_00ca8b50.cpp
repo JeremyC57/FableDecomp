@@ -1,4 +1,5 @@
 // CBaseInputPin::BreakConnect() -- the DirectShow base-class pin method linked into Fable for CTextureRenderer's input pin: when an allocator is held (+0x9c), Decommit it (returning a failure code unchanged), then Release and clear it; S_OK otherwise
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?BreakConnect@CBaseInputPin@@UAEJXZ -- 49 bytes verified against Fable.exe 0x00CA8B50
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA8B50, length 49 bytes.
 // Leaf: BreakConnect
 // Callees: IMemAllocator::Decommit (COM slot 6, `call [ecx+18h]`) and Release (slot 2), `this` pushed.

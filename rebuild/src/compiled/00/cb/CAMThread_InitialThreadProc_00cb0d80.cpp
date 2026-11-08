@@ -1,4 +1,5 @@
 // CAMThread::InitialThreadProc(void* pv) -- DirectShow wxutil.cpp: the worker thread entry: CoInitializeEx through ole32's export (CoInitializeHelper), run the derived ThreadProc, CoUninitialize when the init succeeded, return ThreadProc's result
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?InitialThreadProc@CAMThread@@SGKPAX@Z -- 73 bytes verified against Fable.exe 0x00CB0D80
 // Leaf: ?InitialThreadProc@CAMThread@@SGKPAX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB0D80, 73 bytes, static `__stdcall` (WINAPI), `ret 4`.
 // Identity (proven by source and data): DirectShow base classes (strmbase wxutil.cpp). The body is the SDK's InitialThreadProc

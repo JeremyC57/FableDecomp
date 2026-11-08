@@ -1,4 +1,5 @@
 // CEnumMediaTypes::Clone(IEnumMediaTypes** ppEnum) -- Clone an enumerator while its owner version remains current.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Clone@CEnumMediaTypes@@UAGJPAPAUIEnumMediaTypes@@@Z -- 156 bytes verified against Fable.exe 0x00CABFD0
 // Leaf: ?Clone@CEnumMediaTypes@@UAGJPAPAUIEnumMediaTypes@@@Z
 // Flags: /EHsc
 // Identity: DirectShow amfilter CEnumMediaTypes::Clone, same own enumeration vtable/constructor as QueryInterface. Scalar allocation20 bytes via00bfea1a; ctor00cabf70; GetMediaTypeVersion primary slot4. Standard E_POINTER/VFW_E_ENUM_OUT_OF_SYNC/E_OUTOFMEMORY and owned cloned enumerator.

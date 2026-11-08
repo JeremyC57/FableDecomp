@@ -1,4 +1,5 @@
 // CRendererInputPin::EndFlush() -- DirectShow BaseClasses renbase.cpp: under the renderer's interface and sample locks,
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?EndFlush@CRendererInputPin@@UAGJXZ -- 147 bytes verified against Fable.exe 0x00CA50D0
 //   let the renderer end flushing and, when that succeeds, clear the pin's flushing state (CBaseInputPin::EndFlush)
 // Leaf: ?EndFlush@CRendererInputPin@@
 // Flags: /EHsc

@@ -1,4 +1,5 @@
 // CDispParams::~CDispParams() -- DirectShow BaseClasses (ctlutil.cpp): frees the copied deferred-command arguments (BSTR blocks by their length prefix, Release for IUnknown/IDispatch) and then the VARIANT array
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??1CDispParams@@QAE@XZ -- 104 bytes verified against Fable.exe 0x00CAEBB0
 // Leaf: ??1CDispParams
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAEBB0, 104 bytes, thiscall, plain `ret`.
 // Callees: operator delete (0x00BFE9BC) for each BSTR block (bstrVal - 1 OLECHAR) and for rgvarg; IUnknown::Release (slot 2).

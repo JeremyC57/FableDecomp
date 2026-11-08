@@ -1,4 +1,5 @@
 // CBaseOutputPin::BreakConnect() -- DirectShow BaseClasses amfilter.cpp: decommit and release the allocator (a Decommit failure is returned), release the downstream IMemInputPin, NOERROR
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?BreakConnect@CBaseOutputPin@@UAEJXZ -- 75 bytes verified against Fable.exe 0x00CA8660
 // Leaf: ?BreakConnect@CBaseOutputPin@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8660, 75 bytes (+ int3 padding), thiscall, plain `ret` (primary slot 11).
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 449 "likely 0xCA8660 = CBaseOutputPin::BreakConnect", verified): its only

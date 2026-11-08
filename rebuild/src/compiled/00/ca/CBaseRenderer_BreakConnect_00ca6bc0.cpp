@@ -1,4 +1,5 @@
 // CBaseRenderer::BreakConnect() -- DirectShow BaseClasses renbase.cpp: release the quality sink; refuse (S_FALSE) when not connected and VFW_E_NOT_STOPPED when active on a pin that cannot reconnect; else reset repaint/EOS/sample state and stop streaming if running
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?BreakConnect@CBaseRenderer@@UAEJXZ -- 117 bytes verified against Fable.exe 0x00CA6BC0
 // Leaf: ?BreakConnect@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6BC0, 117 bytes (+11 int3). __fastcall (primary slot 35), plain `ret`.
 // Callees: IQualityControl::Release (slot 2); CBaseRenderer::SetRepaintStatus 0x00CA4EA0; ResetEndOfStream (primary slot 25,

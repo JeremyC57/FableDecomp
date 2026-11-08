@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::ResetStreamingTimes() -- reset every quality-management statistic for a new streaming run (DirectShow BaseClasses)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?ResetStreamingTimes@CBaseVideoRenderer@@UAEJXZ -- 191 bytes verified against Fable.exe 0x00CA52A0
 // Leaf: ?ResetStreamingTimes@CBaseVideoRenderer@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA52A0, 191 bytes, thiscall (__fastcall this=ecx).
 // Identity (vendor naming wave V1, proven): BaseClasses renbase.h: CBaseVideoRenderer overrides ResetStreamingTimes (primary slot 47); retail CBaseVideoRenderer vtable 0x012BF5D8 slot 47 (its ??_G 0x00CA73D0) holds 0x00CA52A0, CBaseRenderer vtable 0x012BF498 slot 47 holds -.

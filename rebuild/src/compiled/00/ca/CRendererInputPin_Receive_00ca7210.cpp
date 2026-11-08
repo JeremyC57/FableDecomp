@@ -1,4 +1,5 @@
 // CRendererInputPin::Receive(IMediaSample* pSample) -- DirectShow renbase.cpp IMemInputPin::Receive: pass the sample to the renderer; on failure, under the renderer's interface lock and unless the filter is stopped, flushing, aborting or already in a run-time error, raise EC_ERRORABORT with the error, signal end of stream (under the renderer lock, when streaming and not yet delivered) and set m_bRunTimeError; return the renderer's result
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?Receive@CRendererInputPin@@UAGJPAUIMediaSample@@@Z -- 213 bytes verified against Fable.exe 0x00CA7210
 // Leaf: ?Receive@CRendererInputPin@@UAGJPAUIMediaSample@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7210, 213 bytes, STDMETHODIMP `ret 8`; `this` on the stack is the IMemInputPin subobject

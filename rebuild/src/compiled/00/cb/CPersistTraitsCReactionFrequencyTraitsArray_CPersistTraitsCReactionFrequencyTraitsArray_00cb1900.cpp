@@ -1,4 +1,5 @@
 // CPersistTraits<CReactionFrequencyTraitsArray>::~CPersistTraits
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?RemoveHeadI@CBaseList@@IAEPAXXZ -- 9 bytes verified against Fable.exe 0x00CB1900
 // retail 0x00cb1900:  mov eax,[ecx]; push eax; call 0xcb13f0; ret
 //
 // The destructor loads the object's first member (a pointer, field0),

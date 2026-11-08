@@ -1,4 +1,5 @@
 // CAMEvent::CAMEvent(BOOL fManualReset) -- DirectShow strmbase wxutil.cpp: create an unnamed, initially unsignalled Win32 event (CreateEventW @ IAT 0x0143FDC8) and keep its handle
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ??0CAMEvent@@QAE@H@Z -- 28 bytes verified against Fable.exe 0x00CB0190
 // Leaf: ??0CAMEvent@@QAE@H@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB0190, 32 bytes, thiscall, `ret 4`.
 // Identity: the DX9 SDK wxutil.cpp CAMEvent ctor (one BOOL argument in the DX9 SDK; UNICODE build: CreateEvent = CreateEventW); called

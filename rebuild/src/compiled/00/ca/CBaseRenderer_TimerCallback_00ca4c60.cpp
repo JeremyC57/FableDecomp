@@ -1,4 +1,5 @@
 // CBaseRenderer::TimerCallback() -- DirectShow BaseClasses renbase.cpp: the end-of-stream timer fired: under the renderer lock, when the timer is still armed clear it and deliver the end of stream (SendEndOfStream, primary slot 24)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?TimerCallback@CBaseRenderer@@QAEXXZ -- 96 bytes verified against Fable.exe 0x00CA4C60
 // Leaf: ?TimerCallback@CBaseRenderer@@QAEXXZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4C60, 96 bytes. thiscall, plain `ret`; /EHsc frame (the CAutoLock is EH state 0).

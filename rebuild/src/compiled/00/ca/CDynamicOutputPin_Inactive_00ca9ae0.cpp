@@ -1,4 +1,5 @@
 // CDynamicOutputPin::Inactive() -- DirectShow BaseClasses amfilter.cpp: signal the stop event (+0xd0), then CBaseOutputPin::Inactive (inlined): clear m_bRunTimeError, VFW_E_NO_ALLOCATOR without an allocator, else IMemAllocator::Decommit
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Inactive@CDynamicOutputPin@@UAEJXZ -- 45 bytes verified against Fable.exe 0x00CA9AE0
 // Leaf: ?Inactive@CDynamicOutputPin@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9AE0, thiscall (virtual: amfilter.h overrides of CBasePin / CBaseOutputPin virtuals).
 // Identity (vendor naming V2, proven): CDynamicOutputPin::Inactive (amfilter.cpp: EXECUTE_ASSERT(SetEvent(m_hStopEvent)); return CBaseOutputPin::Inactive() = m_bRunTimeError = FALSE, then Decommit; IMemAllocator slot 6); V1 LABELS (strmbase vtable slot + amfilter.h declaration order) name 0x00CA9AE0 the same.

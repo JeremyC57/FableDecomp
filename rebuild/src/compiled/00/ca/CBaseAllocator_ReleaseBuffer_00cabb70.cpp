@@ -1,4 +1,5 @@
 // CBaseAllocator::ReleaseBuffer(IMediaSample* pSample) -- DirectShow BaseClasses (amfilter.cpp): E_POINTER for a null sample; under the allocator lock push the sample on the free list, wake one waiter (NotifySample), and when a decommit is pending and every buffer is back, Free() them and clear the flag; outside the lock tell m_pNotify (NotifyRelease) and drop the GetBuffer reference with Release() when the buffers were freed
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ReleaseBuffer@CBaseAllocator@@UAGJPAUIMediaSample@@@Z -- 237 bytes verified against Fable.exe 0x00CABB70
 // Leaf: ?ReleaseBuffer@CBaseAllocator@@UAGJPAUIMediaSample@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CABB70, 237 bytes, STDMETHODIMP `ret 8`, EH frame (the CAutoLock dies on unwind

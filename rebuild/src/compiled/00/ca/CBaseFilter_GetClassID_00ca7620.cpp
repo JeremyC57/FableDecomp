@@ -1,4 +1,5 @@
 // CBaseFilter::GetClassID(CLSID* pClsID) -- DirectShow BaseClasses IPersist::GetClassID: E_POINTER for a null out-pointer, else copies the filter's m_clsid and returns NOERROR
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetClassID@CBaseFilter@@UAGJPAU_GUID@@@Z -- 50 bytes verified against Fable.exe 0x00CA7620
 // Leaf: ?GetClassID@CBaseFilter
 // Retail: Fable.exe @ 0x00CA7620, 50 bytes. IBaseFilter vtable 0x0129D04C slot 3 (and two more filter vtables).
 // Label: the manifest's "CTextureRenderer::vfunc_3". No callees.

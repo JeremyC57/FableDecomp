@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::get_FramesDroppedInRenderer(int* pcFramesDropped) -- DirectShow BaseClasses renbase.cpp IQualProp: under the interface lock, report the frames dropped in the renderer
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?get_FramesDroppedInRenderer@CBaseVideoRenderer@@UAGJPAH@Z -- 54 bytes verified against Fable.exe 0x00CA5D50
 // Leaf: ?get_FramesDroppedInRenderer@CBaseVideoRenderer@@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5D50, 54 bytes. __stdcall (STDMETHODIMP, `ret 8`); IQualProp slot 3, so `this` is the

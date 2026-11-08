@@ -1,4 +1,5 @@
 // CBaseRenderer::EndOfStream() -- DirectShow BaseClasses renbase.cpp: note the end of stream (ignored when stopped); with no sample pending, complete the state change and, when streaming, deliver EC_COMPLETE through SendEndOfStream
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?EndOfStream@CBaseRenderer@@UAEJXZ -- 52 bytes verified against Fable.exe 0x00CA6B00
 // Leaf: ?EndOfStream@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6B00, 52 bytes (+12 int3). __fastcall (primary slot 26), plain `ret`; called by
 //   CRendererInputPin::EndOfStream 0x00CA4F90 (`call [edx+68h]`).

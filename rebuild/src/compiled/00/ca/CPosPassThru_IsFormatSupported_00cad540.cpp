@@ -1,4 +1,5 @@
 // CPosPassThru::IsFormatSupported(const GUID*) -- DirectShow BaseClasses (ctlutil.cpp): forwards IMediaSeeking::IsFormatSupported to the upstream peer's IMediaSeeking and releases it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?IsFormatSupported@CPosPassThru@@UAGJPBU_GUID@@@Z -- 50 bytes verified against Fable.exe 0x00CAD540
 // Leaf: ?IsFormatSupported@CPosPassThru@@UAGJPBU_GUID@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD540, 50 bytes (+ int3 padding), STDMETHODIMP (__stdcall), `ret 8`.
 // Identity: CPosPassThru::IsFormatSupported(const GUID*) -- proven by the DirectShow BaseClasses source (strmbase names are in neither

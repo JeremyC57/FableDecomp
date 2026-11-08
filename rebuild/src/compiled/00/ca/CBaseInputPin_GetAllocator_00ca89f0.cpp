@@ -1,4 +1,5 @@
 // CBaseInputPin::GetAllocator(IMemAllocator** ppAllocator) -- DirectShow amfilter.cpp IMemInputPin::GetAllocator: E_POINTER on a null out pointer; under the pin lock create the default memory allocator on first use (the inlined CreateMemoryAllocator: CoCreateInstance(CLSID_MemoryAllocator, 0, CLSCTX_INPROC_SERVER, IID_IMemAllocator, &m_pAllocator); its failure is returned), then hand it out AddRef'd; S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetAllocator@CBaseInputPin@@UAGJPAPAUIMemAllocator@@@Z -- 195 bytes verified against Fable.exe 0x00CA89F0
 // Leaf: ?GetAllocator@CBaseInputPin@@UAGJPAPAUIMemAllocator@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA89F0, 195 bytes, STDMETHODIMP `ret 8`; `this` on the stack is the IMemInputPin subobject

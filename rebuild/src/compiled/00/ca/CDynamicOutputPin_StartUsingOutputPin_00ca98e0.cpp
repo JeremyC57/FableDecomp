@@ -1,4 +1,5 @@
 // CDynamicOutputPin::StartUsingOutputPin() -- DirectShow BaseClasses amfilter.cpp: under m_BlockStateLock, while the pin is BLOCKED drop the lock and wait for the unblock or the stop event (VFW_E_STATE_CHANGED on stop, AmGetLastErrorToHResult on WAIT_FAILED, E_UNEXPECTED otherwise); then count one more output-pin user
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?StartUsingOutputPin@CDynamicOutputPin@@UAEJXZ -- 282 bytes verified against Fable.exe 0x00CA98E0
 // Leaf: ?StartUsingOutputPin@CDynamicOutputPin@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA98E0, thiscall (virtual: amfilter.h overrides of CBasePin / CBaseOutputPin virtuals).
 // Identity (vendor naming V2, proven): CDynamicOutputPin::StartUsingOutputPin (amfilter.cpp body: CAutoLock on m_BlockStateLock, the BLOCKED wait loop on {m_hUnblockOutputPinEvent, m_hStopEvent}, m_dwNumOutstandingOutputPinUsers++); V1 LABELS (strmbase vtable slot + amfilter.h declaration order) name 0x00CA98E0 the same.

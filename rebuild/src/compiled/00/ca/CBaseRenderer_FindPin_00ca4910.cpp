@@ -1,4 +1,5 @@
 // CBaseRenderer::FindPin(LPCWSTR Id, IPin** ppPin) -- DirectShow BaseClasses renbase.cpp: the renderer's only pin is "In"; hand it out add-ref'ed, else NULL + VFW_E_NOT_FOUND
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?FindPin@CBaseRenderer@@UAGJPBGPAPAUIPin@@@Z -- 104 bytes verified against Fable.exe 0x00CA4910
 // Leaf: ?FindPin@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4910, 104 bytes. __stdcall (STDMETHODIMP, `ret 0Ch`); IBaseFilter::FindPin, so `this`
 //   is the IBaseFilter sub-object (+0x0C) and GetPin (primary slot 7, `call [edx+1Ch]`) runs on `this-0x0C`.

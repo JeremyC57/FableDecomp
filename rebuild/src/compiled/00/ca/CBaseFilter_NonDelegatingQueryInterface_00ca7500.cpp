@@ -1,4 +1,5 @@
 // CBaseFilter::NonDelegatingQueryInterface(REFIID riid, void** ppv) -- DirectShow BaseClasses amfilter.cpp: hand out IBaseFilter / IMediaFilter / IPersist (the +0x0C sub-object) and IAMovieSetup (+0x10), everything else to CUnknown
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?NonDelegatingQueryInterface@CBaseFilter@@UAGJABU_GUID@@PAPAX@Z -- 161 bytes verified against Fable.exe 0x00CA7500
 // Leaf: ?NonDelegatingQueryInterface@CBaseFilter@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7500, 161 bytes (the row ends with the tail `jmp`; 15 int3 follow it). __stdcall
 //   (STDMETHODIMP, `ret 0Ch`), `this` = the primary (INonDelegatingUnknown) base; CBaseRenderer's override 0x00CA4780

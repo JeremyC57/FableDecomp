@@ -1,4 +1,5 @@
 // CThreadMessage::TryReceive(unsigned long*) -- polls the request event without waiting; when a message is pending, copies it to the optional out-parameter and returns 1, else returns 0
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?CheckRequest@CAMThread@@QAEHPAK@Z -- 47 bytes verified against Fable.exe 0x00CB0EB0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB0EB0, length 47 bytes.
 // Callees: WaitForSingleObject (IAT 0x0143FEAC) with a zero timeout.
 // Layout (no PDB layout; read from this class's neighbours): +0x04 request event, +0x08 reply event,

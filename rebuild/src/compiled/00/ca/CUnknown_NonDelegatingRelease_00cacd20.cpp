@@ -1,4 +1,5 @@
 // CUnknown::NonDelegatingRelease() -- DirectShow BaseClasses: InterlockedDecrement of m_cRef; at zero the count is bumped back to 1 (re-entrancy guard) and the object deletes itself, else max(m_cRef, 1)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/combase.cpp) ?NonDelegatingRelease@CUnknown@@UAGKXZ -- 60 bytes verified against Fable.exe 0x00CACD20
 // Leaf: ?NonDelegatingRelease@CUnknown
 // Retail: Fable.exe @ 0x00CACD20, 60 bytes (+ int3 padding). Slot 2 of seven CUnknown-derived vtables (CTextureRenderer's
 // primary 0x0129D08C and six BaseClasses objects at 0x012BF4A0..0x012BF99C). Label: the manifest's "CTextureRenderer::vfunc_2".

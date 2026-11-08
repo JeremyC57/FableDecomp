@@ -1,4 +1,5 @@
 // CCmdQueue::~CCmdQueue() -- releases queued DirectShow commands, clears both lists, and tears down the clock/event/critical section
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??1CCmdQueue@@UAE@XZ -- 251 bytes verified against Fable.exe 0x00CAF580
 // Retail: 00CAF580, 251 bytes. Correct owner is Microsoft's DirectShow CCmdQueue, not the propagated CEngineLandscapePatch label.
 // Provenance: Microsoft DirectShow base classes ctlutil.cpp SHA256 8bb02b6f6940abbb29581992f5fe9c5fe7613eb5973fd6a39c2e8ff3da548b29, lines 2143-2171;
 // ctlutil.h SHA256 2f0188b624aeb02f839f54344252ab6a9cff521490335fdb1f63d3e5c15d125c, CCmdQueue declaration lines 768-902;

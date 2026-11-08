@@ -1,4 +1,5 @@
 // CDynamicOutputPin::ChangeMediaType(const CMediaType*) -- DirectShow BaseClasses amfilter.cpp: VFW_E_NOT_CONNECTED when unconnected; a downstream IPinConnection that accepts the type dynamically gets ChangeMediaTypeHelper (failure returned, else S_OK); otherwise DynamicReconnect (inlined: IGraphConfig::Reconnect with the stop event, E_FAIL without the graph config or event)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ChangeMediaType@CDynamicOutputPin@@QAEJPBVCMediaType@@@Z -- 305 bytes verified against Fable.exe 0x00CAB990
 // Leaf: ?ChangeMediaType@CDynamicOutputPin@@QAEJPBVCMediaType@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAB990, 305 bytes, thiscall `ret 4`; /EHsc frame: the QzCComPtr<IPinConnection> is EH state

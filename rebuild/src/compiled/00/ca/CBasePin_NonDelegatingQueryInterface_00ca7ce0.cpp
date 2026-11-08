@@ -1,4 +1,5 @@
 // CBasePin::NonDelegatingQueryInterface(const IID&, void**) -- DirectShow BaseClasses (amfilter.cpp): IID_IPin -> the IPin subobject (+0x0C), IID_IQualityControl -> the IQualityControl subobject (+0x10), both through GetInterface; anything else tail-jumps to CUnknown::NonDelegatingQueryInterface
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?NonDelegatingQueryInterface@CBasePin@@UAGJABU_GUID@@PAPAX@Z -- 125 bytes verified against Fable.exe 0x00CA7CE0
 // Leaf: ?NonDelegatingQueryInterface@CBasePin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7CE0, 125 bytes (+3 int3), STDMETHODIMP = __stdcall with `this` on the stack (`ret 0Ch`).
 // Callees: GetInterface 0x00CACBE0 (combase.cpp STDAPI), CUnknown::NonDelegatingQueryInterface 0x00CACCB0 (tail jump after the

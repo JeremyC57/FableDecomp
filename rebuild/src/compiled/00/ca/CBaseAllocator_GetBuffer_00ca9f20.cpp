@@ -1,4 +1,5 @@
 // CBaseAllocator::GetBuffer(IMediaSample** ppBuffer, REFERENCE_TIME* pStartTime, REFERENCE_TIME* pEndTime, DWORD dwFlags) -- DirectShow amfilter.cpp: clear *ppBuffer, then loop: under the allocator lock fail with VFW_E_NOT_COMMITTED when not committed, else pop the free list head (count the waiter when empty); with a sample stop, else return VFW_E_TIMEOUT for AM_GBF_NOWAIT or wait on m_hSem; the sample's ref count becomes 1 and it is returned
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetBuffer@CBaseAllocator@@UAGJPAPAUIMediaSample@@PA_J1K@Z -- 154 bytes verified against Fable.exe 0x00CA9F20
 // Leaf: ?GetBuffer@CBaseAllocator@@UAGJPAPAUIMediaSample@@PA_J1K@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9F20, 154 bytes, STDMETHODIMP `ret 14h`; `this` on the stack is the

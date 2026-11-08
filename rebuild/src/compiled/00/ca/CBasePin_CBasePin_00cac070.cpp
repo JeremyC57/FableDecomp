@@ -1,4 +1,5 @@
 // CBasePin::CBasePin(const char* pObjectName, CBaseFilter* pFilter, CCritSec* pLock, HRESULT* phr, const wchar_t* pName, PIN_DIRECTION dir) -- DirectShow base-classes pin constructor (ANSI object name): CUnknown base, no name/connection, the direction, lock and filter stored, run-time-error/reconnect/try-types flags clear, no quality sink, type version 1, an empty media type, tStart 0, tStop MAX_TIME, rate 1.0; the pin name is copied into a new wide-string buffer when given
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??0CBasePin@@QAE@PAGPAVCBaseFilter@@PAVCCritSec@@PAJPBGW4_PinDirection@@@Z -- 250 bytes verified against Fable.exe 0x00CAC070
 // Leaf: ??0CBasePin
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAC070, length 248 bytes (`ret 18h`, EH frame: state 0 after the CUnknown base,

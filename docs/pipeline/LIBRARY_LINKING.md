@@ -281,7 +281,12 @@ Three deviations from "unmodified", each to be recorded as a vendor patch file (
 Proof and landing as in A. Estimated closure of the 266 unlanded: **1**; converts ~280 hand-written
 C bodies into vendor stubs.
 
-#### D. DirectShow BaseClasses — needs headers + a version probe (410 rows, up to 16 unlanded)
+#### D. DirectShow BaseClasses — DONE 2026-11-08: DX9.0c SDK Summer 2004, 588/588 sections proven (8 stubs incl. TimeDiff, 348 Vendor-proof)
+
+Status: `SDK_NEEDS.md` pinned the revision (Summer 2004, not Feb 2005 Extras: retail QueryId 0x00CA51C0 calls lstrcpyW)
+and the flags; `vendor_libs.tsv` row `strmbase-dxsdk-sum2004`, details in `LIBRARY_SIGNATURES.md` "Vendor libraries". The
+9 identical-shape unlanded rows (0x00CA53C0, 0x00CA6170-90, 0x00CAA470, 0x00CAA720-40, 0x00CAF430) are reproduced by the
+build but the scan leaves them ambiguous; the 233 unmanifested sections need a boundary pass. The original plan:
 Blocked in this lane: there is no `dshow.h`/`strmif.h`/`uuids.h` under `$FABLE_VC71/include` (only
 `strsafe.h`), so `streams.h` cannot be compiled yet. Route:
 1. Get the period headers and sources together: `dxsdk_feb2005_extras.exe` (archive.org item of the
@@ -358,7 +363,9 @@ the reconstruction pipeline.
 Items 1-3 done 2026-11-08 (`libsig_scan.py --vendor`, `lib_verify.py` vendor claims, `toolchain_library` reused with a
 `// Vendor-library:` line; `LIBRARY_SIGNATURES.md` "Vendor libraries"). Item 4: the trees are under `FABLE_THIRDPARTY`
 and `vendor_lib.py --build` compiles them, but `build_candidates.ps1` does not yet compile/link the vendor objects for
-the Windows build. Item 5 is still open (blocks D and E).
+the Windows build. Item 5: `tools/decomp_pipeline/libsig/fetch_sdks.py` now fetches the era SDKs (VS 2003 `Vc7/include`, DX
+Summer 2004, DX April 2005, PSDK Feb 2003) into `$FABLE_SDK` (`docs/BUILDING.md`); D is done, E stays blocked (no public
+period ImeUi.cpp, `SDK_NEEDS.md` finding 5).
 1. `libsig_scan.py`: a `--vendor TAG=DIR` library class whose patterns are kept (today only the VS
    2003/DDK "linked" set survives step 3), with the object file name recorded as `member`.
 2. `lib_verify.py`: accept loose `.obj` directories as libraries (the COFF reader already does) and

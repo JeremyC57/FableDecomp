@@ -1,4 +1,5 @@
 // CBaseRenderer::NonDelegatingQueryInterface(REFIID riid, void** ppv) -- DirectShow BaseClasses renbase.cpp: hand IMediaPosition / IMediaSeeking requests to the lazily created position pass-through, everything else to CBaseFilter
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?NonDelegatingQueryInterface@CBaseRenderer@@UAGJABU_GUID@@PAPAX@Z -- 73 bytes verified against Fable.exe 0x00CA4780
 // Leaf: ?NonDelegatingQueryInterface@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4780, 73 bytes (+7 int3). __stdcall (STDMETHODIMP, `ret 0Ch`), `this` = the primary
 //   (INonDelegatingUnknown) base. Primary vtable slot 0 of the CBaseRenderer family (abs ref 0x012BF498); CBaseVideoRenderer's

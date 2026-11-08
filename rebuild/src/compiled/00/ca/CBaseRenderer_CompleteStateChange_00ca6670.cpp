@@ -1,4 +1,5 @@
 // CBaseRenderer::CompleteStateChange(FILTER_STATE OldState) -- DirectShow BaseClasses renbase.cpp: finish a pause/run transition (Ready, S_OK) when unconnected, at end of stream, or holding a sample from a non-stopped state; otherwise NotReady and S_FALSE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?CompleteStateChange@CBaseRenderer@@UAEJW4_FilterState@@@Z -- 93 bytes verified against Fable.exe 0x00CA6670
 // Leaf: ?CompleteStateChange@CBaseRenderer@@UAEJW4_FilterState@@@Z
 // Vendor naming V2 (plan phase 1, one address, one name): ?CompleteStateChange@CBaseRenderer@@UAEJW4_FilterState@@@Z (was
 //   ?CompleteStateChange@CBaseRenderer@@UAEJJ@Z): renbase.h `virtual HRESULT CompleteStateChange(FILTER_STATE OldState);` with

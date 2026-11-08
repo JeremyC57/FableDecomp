@@ -1,4 +1,5 @@
 // CBaseInputPin::BeginFlush() -- DirectShow BaseClasses (amfilter.cpp): under the filter lock (m_pLock +0x20) set
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?BeginFlush@CBaseInputPin@@UAGJXZ -- 37 bytes verified against Fable.exe 0x00CA8E10
 //   m_bFlushing (+0xA1) so that no further Receive succeeds; S_OK
 // Leaf: ?BeginFlush@CBaseInputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8E10, 37 bytes (+11 int3), STDMETHODIMP: `this` on the stack is the IPin subobject

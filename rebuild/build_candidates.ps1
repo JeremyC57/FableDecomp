@@ -386184,6 +386184,54 @@ $catalog = @(
         TestSource = '00/cd/NScriptCQAmbushTradersScriptTeleportData_TeleportData_00cdbc50_test.cpp'
         PassPattern = '00cdbc50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ca4700'
+        Module = '_global'
+        Source = '00/ca/global_TimeDiff_00ca4700.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00ca61a0'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_QueryInterfaceadjustor140_00ca61a0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00ca61b0'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_AddRefadjustor140_00ca61b0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00ca61c0'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_Releaseadjustor140_00ca61c0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00ca7d60'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_NonDelegatingAddRef_00ca7d60.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00caa750'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_QueryInterfaceadjustor148_00caa750.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00caa760'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_AddRefadjustor148_00caa760.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cafd60'
+        Module = 'CRendererPosPassThru'
+        Source = '00/ca/CRendererPosPassThru_vectordeletingdestructoradjustor8_00cafd60.cpp'
+        Grade = 'toolchain_library'
+    }
 )
 
 $requestedAddresses = @(

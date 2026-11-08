@@ -1,4 +1,5 @@
 // CBasePin::AgreeMediaType(IPin*, const CMediaType*) -- DirectShow BaseClasses (amfilter.cpp): a fully specified type goes straight to AttemptConnection; otherwise try the peer's and this pin's media-type enumerators (order by m_bTryMyTypesFirst +0x26) through TryMediaTypes, keeping the last specific failure code (default VFW_E_NO_ACCEPTABLE_TYPES)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?AgreeMediaType@CBasePin@@IAEJPAUIPin@@PBVCMediaType@@@Z -- 218 bytes verified against Fable.exe 0x00CA7FB0
 // Leaf: ?AgreeMediaType@CBasePin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7FB0, 218 bytes (+6 int3), __fastcall `ret 8`.
 // Callees: CMediaType::IsPartiallySpecified 0x00CB1AE0, CBasePin::AttemptConnection 0x00CA7DC0, CBasePin::TryMediaTypes

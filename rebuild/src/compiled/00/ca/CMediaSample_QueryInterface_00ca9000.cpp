@@ -1,4 +1,5 @@
 // CMediaSample::QueryInterface(const IID& riid, void** ppv) -- DirectShow amfilter.cpp: expose IMediaSample / IMediaSample2 / IUnknown (all the object itself), else E_NOINTERFACE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?QueryInterface@CMediaSample@@UAGJABU_GUID@@PAPAX@Z -- 90 bytes verified against Fable.exe 0x00CA9000
 // Leaf: ?QueryInterface@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9000, 90 bytes, STDMETHODIMP (__stdcall, `this` on the stack), `ret 0Ch`.
 // Identity: slot 0 (cell 0x012BF6E0) of CMediaSample's IMediaSample2 vtable 0x012BF6E0 (QueryInterface 0x00CA9000, the landed Release 0x00CA9080 and

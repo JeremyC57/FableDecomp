@@ -1,4 +1,5 @@
 // CDeferredCommand::Invoke() -- DirectShow ctlutil.cpp: run a deferred IDispatch-style command: VFW_E_ALREADY_CANCELLED once it left its queue; else fetch the control.tlb type info for the command's interface (CBaseDispatch::GetTypeInfo, inlined), QI the target for that interface, ITypeInfo::Invoke the method with the stored DISPPARAMS into m_hrResult, release both and take the command off its queue (returns Remove's result)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?Invoke@CDeferredCommand@@QAEJXZ -- 332 bytes verified against Fable.exe 0x00CAED50
 // Leaf: ?Invoke@CDeferredCommand@@QAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAED50, 332 bytes, __fastcall, no arguments, plain `ret` (four exits).
 // Identity: ctlutil.cpp CDeferredCommand::Invoke (DX9 SDK BaseClasses): the members match the landed CDeferredCommand model

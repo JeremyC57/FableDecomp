@@ -1,4 +1,5 @@
 // CDynamicOutputPin::StreamingThreadUsingOutputPin() -- DirectShow BaseClasses amfilter.cpp: under m_BlockStateLock, whether any streaming thread is using the output pin (m_dwNumOutstandingOutputPinUsers > 0)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?StreamingThreadUsingOutputPin@CDynamicOutputPin@@UAE_NXZ -- 42 bytes verified against Fable.exe 0x00CA9A40
 // Leaf: ?StreamingThreadUsingOutputPin@CDynamicOutputPin@@UAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9A40, thiscall (virtual: amfilter.h overrides of CBasePin / CBaseOutputPin virtuals).
 // Identity (vendor naming V2, proven): CDynamicOutputPin::StreamingThreadUsingOutputPin (amfilter.cpp: CAutoLock on m_BlockStateLock; return m_dwNumOutstandingOutputPinUsers > 0); V1 LABELS (strmbase vtable slot + amfilter.h declaration order) name 0x00CA9A40 the same.

@@ -1,4 +1,5 @@
 // CBaseAllocator::Decommit() -- DirectShow BaseClasses (amfilter.cpp): under the allocator lock, a no-op when neither committed nor decommitting; otherwise stop GetBuffer (m_bCommitted = FALSE), defer the decommit while buffers are outstanding, else Free() now and drop the commit reference afterwards; wake any waiters (the inlined NotifySample releases m_hSem by m_lWaiting); S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Decommit@CBaseAllocator@@UAGJXZ -- 188 bytes verified against Fable.exe 0x00CAA160
 // Leaf: ?Decommit@CBaseAllocator
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAA160, 188 bytes, STDMETHODIMP: `this` on the stack is the IMemAllocatorCallbackTemp subobject

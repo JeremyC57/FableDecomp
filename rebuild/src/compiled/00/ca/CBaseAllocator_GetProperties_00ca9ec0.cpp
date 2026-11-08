@@ -1,4 +1,5 @@
 // CBaseAllocator::GetProperties(ALLOCATOR_PROPERTIES*) -- DirectShow BaseClasses (amfilter.cpp): E_POINTER for a null pointer; under the allocator's own lock copy the agreed size, count, alignment and prefix; S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetProperties@CBaseAllocator@@UAGJPAU_AllocatorProperties@@@Z -- 83 bytes verified against Fable.exe 0x00CA9EC0
 // Leaf: ?GetProperties@CBaseAllocator
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9EC0, 83 bytes (+13 int3), STDMETHODIMP: `this` on the stack is the
 // IMemAllocatorCallbackTemp subobject (+0x0C), `ret 8`; CCritSec base at +0x10 (`lea ebx,[esi+4]` behind the null test of the full object).

@@ -1,4 +1,5 @@
 // CBaseDispatch::GetIDsOfNames(const IID& riid, OLECHAR** rgszNames, UINT cNames, LCID lcid, DISPID* rgdispid) -- DirectShow BaseClasses (ctlutil.cpp): get the type info for riid through the inlined GetTypeInfo (on first use load OleAut32, LoadRegTypeLib(LIBID_QuartzTypeLib 1.0) else LoadTypeLib(L"control.tlb"), GetTypeInfoOfGuid into m_pti, release the library; a missing module or entry point is the HRESULT of GetLastError), then ask it for the DISPIDs and release it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetIDsOfNames@CBaseDispatch@@QAGJABU_GUID@@PAPAGIKPAJ@Z -- 219 bytes verified against Fable.exe 0x00CACE70
 // Leaf: ?GetIDsOfNames@CBaseDispatch@@QAGJABU_GUID@@PAPAGIKPAJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CACE70, 219 bytes, STDMETHODIMP (non-virtual `__stdcall`, `this` on the stack),
 //   `ret 18h`.

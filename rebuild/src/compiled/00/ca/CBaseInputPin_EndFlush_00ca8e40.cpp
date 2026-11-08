@@ -1,4 +1,5 @@
 // CBaseInputPin::EndFlush() -- DirectShow BaseClasses (amfilter.cpp): under the filter lock (m_pLock +0x20) clear m_bFlushing (+0xA1) and m_bRunTimeError (+0x24); S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?EndFlush@CBaseInputPin@@UAGJXZ -- 41 bytes verified against Fable.exe 0x00CA8E40
 // Leaf: ?EndFlush@CBaseInputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8E40, 41 bytes (+7 int3), STDMETHODIMP: `this` on the stack is the IPin subobject (+0x0C),
 // so the members read at +0x14 / +0x95 / +0x18; `ret 4`.

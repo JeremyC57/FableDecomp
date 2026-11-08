@@ -1,4 +1,5 @@
 // CMemAllocator::ReallyFree() -- DirectShow strmbase (amfilter.cpp): delete every sample on the free list, zero the allocated count and release the VirtualAlloc'd buffer block
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ReallyFree@CMemAllocator@@IAEXXZ -- 69 bytes verified against Fable.exe 0x00CAA3C0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAA3C0, length 69 bytes.
 // Leaf: ?ReallyFree@CMemAllocator
 // Identity: vtables 0x012BF83C / 0x012BF810 are CMemAllocator's (the landed CMemAllocator::CreateInstance 0x00CAC9D0

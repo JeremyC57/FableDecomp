@@ -1,4 +1,5 @@
 // CBaseList::FindI(void* pObj) -- DirectShow wxlist.cpp: walk the list with INTERNALTRAVERSELIST and return the POSITION whose object is pObj, else NULL
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?FindI@CBaseList@@IBEPAU__POSITION@@PAX@Z -- 41 bytes verified against Fable.exe 0x00CB13C0
 // Leaf: ?FindI@CBaseList@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB13C0, 41 bytes (+ int3 padding). __fastcall const, `ret 4`.
 // Library: DirectShow base classes (strmbase wxlist.cpp). The manifest label "List_SearchByFieldValue" is descriptive.

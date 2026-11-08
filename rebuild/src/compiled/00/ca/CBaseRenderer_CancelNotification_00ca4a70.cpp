@@ -1,4 +1,5 @@
 // CBaseRenderer::CancelNotification() -- cancel any clock advise (Unadvise + SignalTimerFired), reset the render event; S_OK when an advise was live, else S_FALSE (DirectShow BaseClasses)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?CancelNotification@CBaseRenderer@@UAEJXZ -- 48 bytes verified against Fable.exe 0x00CA4A70
 // Leaf: ?CancelNotification@CBaseRenderer@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4A70, 48 bytes, thiscall (__fastcall this=ecx).
 // Identity (vendor naming wave V1, proven): BaseClasses renbase.h declaration order: CBaseRenderer::CancelNotification is primary-vtable slot 27; retail CBaseRenderer vtable 0x012BF498 slot 27 (its ??_G 0x00CA7340) and CTextureRenderer vtable 0x0129D08C (RTTI) slot 27 hold 0x00CA4A70.

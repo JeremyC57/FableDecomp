@@ -1,4 +1,5 @@
 // CEnumMediaTypes::Release() -- DirectShow BaseClasses (amfilter.cpp): InterlockedDecrement of m_cRef (+0x10); at zero `delete this` through the virtual destructor (slot 7, `push 1 ; call [edx+1Ch]`); returns the new count
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Release@CEnumMediaTypes@@UAGKXZ -- 42 bytes verified against Fable.exe 0x00CA7C30
 // Leaf: ?Release@CEnumMediaTypes
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7C30, 42 bytes (+6 int3), STDMETHODIMP_(ULONG) = __stdcall, `this` on the stack (`ret 4`).
 // Identification: slot 2 of the CEnumMediaTypes vtable 0x012BF6BC (QI 0x00CA7BB0, AddRef 0x00CA7C10, Release, Next 0x00CAB160,

@@ -1,4 +1,5 @@
 // CBaseAllocator::~CBaseAllocator() -- DirectShow strmbase allocator base destructor: close the free-list semaphore, release the notify callback, then destroy the CCritSec and CUnknown bases
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??1CBaseAllocator@@UAE@XZ -- 108 bytes verified against Fable.exe 0x00CA9D00
 // Leaf: ??1CBaseAllocator
 // Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2): 0x00CACAF0 ??1CMyBaseObject@@QAE@XZ (was ??1CBaseObject@N_00cacaf0@@QAE@XZ): Fable's strmbase renames combase.h CBaseObject to CMyBaseObject (RTTI of vtable 0x0129D08C), which keeps it apart from the engine's CBaseObject 0x0099A380 / 0x0099A430 without a namespace
 // Flags: /EHsc

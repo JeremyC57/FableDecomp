@@ -1,4 +1,5 @@
 // CPosPassThru::ConvertTimeFormat(LONGLONG* pTarget, const GUID* pTargetFormat, LONGLONG Source, const GUID* pSourceFormat) -- DirectShow ctlutil.cpp: forward IMediaSeeking::ConvertTimeFormat to the upstream peer's IMediaSeeking and release it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?ConvertTimeFormat@CPosPassThru@@UAGJPA_JPBU_GUID@@_J1@Z -- 70 bytes verified against Fable.exe 0x00CAD680
 // Leaf: ?ConvertTimeFormat@CPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD680, 70 bytes, STDMETHODIMP (__stdcall) on the IMediaSeeking sub-object, `ret 18h`.
 //   Callees: CPosPassThru::GetPeerSeeking 0x00CAD460 (thiscall), the peer's IMediaSeeking::ConvertTimeFormat (slot 13), IUnknown::Release.

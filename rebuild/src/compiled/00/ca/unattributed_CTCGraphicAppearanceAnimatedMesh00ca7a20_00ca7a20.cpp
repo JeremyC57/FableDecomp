@@ -1,4 +1,5 @@
 // CTCGraphicAppearanceAnimatedMesh_00ca7a20::~CTCGraphicAppearanceAnimatedMesh_00ca7a20() -- EH-framed destructor: own vtable (0x012BF69C), the COM-style interface embedded at +0xc of the owner at +0xc released (`__stdcall` slot 2 with `this` pushed), then the member at +0x18 destroyed out of line (@ 0x00CB1890)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??1CEnumPins@@UAE@XZ -- 88 bytes verified against Fable.exe 0x00CA7A20
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA7A20, oracle length 88 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov dword ptr [esi],offset vtable ; mov eax,[esi+0Ch] ; mov ecx,[eax+0Ch] ; add eax,0Ch ; push eax ; mov dword ptr [esp+14h],0 ; call [ecx+8] ; lea ecx,[esi+18h] ; mov dword ptr [esp+10h],-1 ; call ~CMember ; mov ecx,[esp+8] ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
 // The call loads the embedded interface's vtable into ecx and pushes the interface itself: a

@@ -1,4 +1,5 @@
 // WaitDispatchingMessages(HANDLE hObject, DWORD dwWait, HWND hwnd, UINT uMsg, HANDLE hNotifyEvent) -- DirectShow BaseClasses wxutil.cpp: wait for an object (and an optional notify event) while pumping the window's messages, trimming the wait as time passes; raises the thread priority while peeking and reposts a marker message afterwards
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?WaitDispatchingMessages@@YGKPAXKPAUHWND__@@I0@Z -- 520 bytes verified against Fable.exe 0x00CB09A0
 // Leaf: ?WaitDispatchingMessages@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB09A0, 520 bytes. `DWORD WINAPI` free function (`ret 14h`), strmbase wxutil.cpp (DX9 SDK era,
 //   UNICODE build: PeekMessageW / DispatchMessageW / RegisterWindowMessageW / PostThreadMessageW).

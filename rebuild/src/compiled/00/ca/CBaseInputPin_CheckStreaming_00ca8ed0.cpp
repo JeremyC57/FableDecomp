@@ -1,4 +1,5 @@
 // CBaseInputPin::CheckStreaming() -- DirectShow amfilter.cpp: may this pin process data? VFW_E_WRONG_STATE when the filter is stopped, S_FALSE while flushing, VFW_E_RUNTIME_ERROR after a run-time error, else S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?CheckStreaming@CBaseInputPin@@UAEJXZ -- 45 bytes verified against Fable.exe 0x00CA8ED0
 // Leaf: ?CheckStreaming@CBaseInputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8ED0, 45 bytes, thiscall `ret`. Reads m_pFilter (+0x28) -> m_State (+0x14),
 //   m_bFlushing (+0xA1), m_bRunTimeError (+0x24).

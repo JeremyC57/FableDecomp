@@ -1,4 +1,5 @@
 // CBaseRenderer::StartStreaming() -- start streaming under the renderer lock: timeBeginPeriod(1), OnStartStreaming, then deliver EOS or schedule the held sample (DirectShow BaseClasses)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?StartStreaming@CBaseRenderer@@UAEJXZ -- 166 bytes verified against Fable.exe 0x00CA4D80
 // Leaf: ?StartStreaming@CBaseRenderer@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4D80, 166 bytes, thiscall (__fastcall this=ecx).
 // Identity (vendor naming wave V1, proven): BaseClasses renbase.h declaration order: CBaseRenderer::StartStreaming is primary-vtable slot 31; retail CBaseRenderer vtable 0x012BF498 slot 31 (its ??_G 0x00CA7340) and CTextureRenderer vtable 0x0129D08C (RTTI) slot 31 hold 0x00CA4D80.

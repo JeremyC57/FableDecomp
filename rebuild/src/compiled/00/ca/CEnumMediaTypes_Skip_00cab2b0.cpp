@@ -1,4 +1,5 @@
 // CEnumMediaTypes::Skip(ULONG) -- DirectShow BaseClasses (amfilter.cpp): S_OK for a zero skip; VFW_E_ENUM_OUT_OF_SYNC when the pin's media-type version moved (m_pPin +8 -> GetMediaTypeVersion against m_Version +0x0C); else advance m_Position (+4) and ask the pin for the type at the new position minus one into a local CMediaType: S_OK if it exists, S_FALSE past the end
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Skip@CEnumMediaTypes@@UAGJK@Z -- 169 bytes verified against Fable.exe 0x00CAB2B0
 // Leaf: ?Skip@CEnumMediaTypes
 // Flags: /EHsc /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAB2B0, 169 bytes, STDMETHODIMP: `this` on the stack, `ret 8`; EH frame (the CMediaType

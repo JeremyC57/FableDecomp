@@ -1,4 +1,5 @@
 // CBaseInputPin::Notify(IBaseFilter* pSender, Quality q) -- DirectShow amfilter.cpp: a quality notification reaching an input pin is ignored; E_POINTER for a null sender, else NOERROR
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Notify@CBaseInputPin@@UAGJPAUIBaseFilter@@UtagQuality@@@Z -- 20 bytes verified against Fable.exe 0x00CA8E70
 // Leaf: ?Notify@CBaseInputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8E70, 20 bytes, STDMETHODIMP (__stdcall) on the IQualityControl sub-object,
 //   `ret 20h` (this + pSender + the 0x18-byte Quality by value).

@@ -1,4 +1,5 @@
 // CEnumPins::QueryInterface(const IID& riid,void** ppv) -- Return the supported enumerator or unknown interface with an owned reference.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?QueryInterface@CEnumPins@@UAGJABU_GUID@@PAPAX@Z -- 89 bytes verified against Fable.exe 0x00CA7A80
 // Leaf: ?QueryInterface@CEnumPins@@UAGJABU_GUID@@PAPAX@Z
 // Identity: proven. DirectShow amfilter CEnumPins::QueryInterface; own first GUID at012a9af4 =56a86892-0ad4-11ce-b03a-0020af0ba770(IEnumPins), second012c06c4 exact IID_IUnknown. Own caller/table and established clone/ctor confirm enumeration interface. Correct GetInterface00cacbe0 adds reference and returns same primary interface.
 // Layout: original IUnknown/enum inheritance and full enumerator fields; CEnumPins carries real CGenericList/CBaseList cache24. No applicable engine header.

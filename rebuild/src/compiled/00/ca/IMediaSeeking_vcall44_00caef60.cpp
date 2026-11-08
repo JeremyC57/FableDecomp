@@ -1,4 +1,5 @@
 // IMediaSeeking::vcall{44}(IMediaSeeking* object) -- compiler-generated __stdcall vcall thunk `[thunk]: __stdcall 'vcall'{44,{flat}}' for the member pointer to GetStopPosition (slot 11): read the stacked `this`, jump through its vtable slot
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??_9@$BCM@AG -- 9 bytes verified against Fable.exe 0x00CAEF60
 // Leaf: ??_9@$BCM@AG
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAEF60, 9 bytes: `mov eax,[esp+4] ; mov eax,[eax] ; jmp [eax+2Ch]`.

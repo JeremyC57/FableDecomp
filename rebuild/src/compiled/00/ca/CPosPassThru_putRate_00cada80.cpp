@@ -1,4 +1,5 @@
 // CPosPassThru::put_Rate(double dRate) -- DirectShow ctlutil.cpp: forward IMediaPosition::put_Rate to the upstream peer's IMediaPosition and release it (E_INVALIDARG for a zero rate)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?put_Rate@CPosPassThru@@UAGJN@Z -- 85 bytes verified against Fable.exe 0x00CADA80
 // Leaf: ?put_Rate@CPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CADA80, 85 bytes, STDMETHODIMP (__stdcall) on the IMediaPosition (the CMediaPosition base at +4) sub-object, `ret 0Ch`.
 //   Callees: CPosPassThru::GetPeer 0x00CAD400 (thiscall), the peer's IMediaPosition::put_Rate (slot 14), IUnknown::Release.

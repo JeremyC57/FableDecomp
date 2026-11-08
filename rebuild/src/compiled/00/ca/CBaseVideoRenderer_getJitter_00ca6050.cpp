@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::get_Jitter(int* piResult) -- DirectShow BaseClasses IQualProp::get_Jitter: the standard deviation in ms of the inter-frame time (GetStdDev over m_cFramesDrawn - 2 samples of m_iSumSqFrameTime / m_iSumFrameTime)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?get_Jitter@CBaseVideoRenderer@@UAGJPAH@Z -- 46 bytes verified against Fable.exe 0x00CA6050
 // Leaf: ?get_Jitter@CBaseVideoRenderer
 // Retail: Fable.exe @ 0x00CA6050, 46 bytes (+ int3 padding). IQualProp vtable 0x0129D008 slot 6 (and 0x012BF5xx).
 // Label: the manifest's "CTextureRenderer::vfunc_6".

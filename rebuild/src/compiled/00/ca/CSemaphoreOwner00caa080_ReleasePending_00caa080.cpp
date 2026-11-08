@@ -1,4 +1,5 @@
 // CSemaphoreOwner_00caa080::ReleasePending() -- when releases are pending, releases the semaphore by that count and clears the counter
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?NotifySample@CBaseAllocator@@QAEXXZ -- 32 bytes verified against Fable.exe 0x00CAA080
 // Leaf: ReleasePending
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAA080, length 32 bytes.
 // Callees: ReleaseSemaphore (import [0x0143FEB0], `__stdcall`: handle +0x30, count +0x34, null previous-count).

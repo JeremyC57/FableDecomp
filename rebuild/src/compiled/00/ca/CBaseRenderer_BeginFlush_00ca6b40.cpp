@@ -1,4 +1,5 @@
 // CBaseRenderer::BeginFlush() -- DirectShow BaseClasses renbase.cpp: report an intermediate state while paused, release the source thread, cancel the clock advise, drop the pending sample and wait for Receive to finish
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?BeginFlush@CBaseRenderer@@UAEJXZ -- 53 bytes verified against Fable.exe 0x00CA6B40
 // Leaf: ?BeginFlush@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6B40, 53 bytes (+11 int3). __fastcall (primary slot 33), plain `ret`.
 // Callees: ResetEvent (KERNEL32 IAT 0x0143FED4) through the inline NotReady() on m_evComplete (+0x5C); SourceThreadCanWait

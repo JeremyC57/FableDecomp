@@ -1,4 +1,5 @@
 // CMediaSample::SetProperties(DWORD cbProperties, const BYTE* pbProperties) -- DirectShow amfilter.cpp IMediaSample2::SetProperties: from an AM_SAMPLE2_PROPERTIES of at least 4 bytes (E_POINTER on null), validate the fields the size covers (E_INVALIDARG on bad flags, a time flag without a stop time, a foreign buffer/size, lActual over the size; E_OUTOFMEMORY when the type copy fails), then store stream id, flags, type flags, lActual, times and the copied media type and fix up Sample_TypeChanged; S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetProperties@CMediaSample@@UAGJKPBE@Z -- 362 bytes verified against Fable.exe 0x00CA9510
 // Leaf: ?SetProperties@CMediaSample@@UAGJKPBE@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9510, 362 bytes, STDMETHODIMP `ret 0Ch`, one dword frame local (pMediaType).
 // Identity (proven): IMediaSample2 slot 20 (SetProperties) of the CMediaSample table -- the only reference to 0x00CA9510 is

@@ -1,4 +1,5 @@
 // CVtable_012bf6bc::`scalar deleting destructor'(unsigned int flags) -- this class's vtable (0x012BF6BC, no RTTI), the owner's (+8) embedded interface at +0xc released through its COM-style virtual slot 2 (`__stdcall`, the interface pushed), then free for flag bit 0
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??_GCEnumMediaTypes@@UAEPAXI@Z -- 43 bytes verified against Fable.exe 0x00CAB120
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAB120, length 43 bytes.
 // Leaf: ??_GCVtable_012bf6bc@@UAEPAXI@Z
 // The chunk label is propagated; the vtable (0x012BF6BC) names the class. Shape: the vtable store, the members, `test byte ptr [esp+8],1`, `ret 4`.

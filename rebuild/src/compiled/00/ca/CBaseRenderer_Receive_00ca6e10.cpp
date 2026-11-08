@@ -1,4 +1,5 @@
 // CBaseRenderer::Receive(IMediaSample* sample) -- DirectShow base class (strmbase renbase.cpp): prepare the sample (a rejected one is not an error); while paused, render-prepare, then under both locks hand over the first sample and signal completion; wait for the render time, then under both locks render the pending sample, clear it, send end-of-stream and cancel the clock advise
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?Receive@CBaseRenderer@@UAEJPAUIMediaSample@@@Z -- 363 bytes verified against Fable.exe 0x00CA6E10
 // Leaf: Receive
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6E10, 363 bytes. Virtual (primary slot 39), `ret 4`, /EHsc frame (handler

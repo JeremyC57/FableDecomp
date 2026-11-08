@@ -1,4 +1,5 @@
 // CCmdQueue::GetCommandDueFor(REFERENCE_TIME, CDeferredCommand**) -- DirectShow BaseClasses ctlutil.cpp: under the lock return the first presentation-time command already due (AddRef'd), else the first stream-time command due by rtStream (AddRef'd), else while running a presentation command due by rtStream + m_StreamTimeOffset; VFW_E_NOT_FOUND otherwise
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetCommandDueFor@CCmdQueue@@UAEJ_JPAPAVCDeferredCommand@@@Z -- 395 bytes verified against Fable.exe 0x00CAFA10
 // Leaf: ?GetCommandDueFor@CCmdQueue@@UAEJ_JPAPAVCDeferredCommand@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAFA10, 395 bytes, thiscall `ret 0Ch`, /EHsc frame (the CAutoLock is EH state 0).

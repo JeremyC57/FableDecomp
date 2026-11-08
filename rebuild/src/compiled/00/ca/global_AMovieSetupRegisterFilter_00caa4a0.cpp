@@ -1,4 +1,5 @@
 // _global::AMovieSetupRegisterFilter(const AMOVIESETUP_FILTER* const psetupdata, IFilterMapper* pIFM, BOOL bRegister) -- DirectShow base-class (strmbase dllsetup.cpp) filter self-registration: unregister, then if asked register the filter, every pin and every pin media type through IFilterMapper
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) _AMovieSetupRegisterFilter@12 -- 477 bytes verified against Fable.exe 0x00CAA4A0
 // Leaf: _AMovieSetupRegisterFilter@12
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAA4A0, 477 bytes, STDAPI (`extern "C" HRESULT __stdcall`, `ret 0Ch`).

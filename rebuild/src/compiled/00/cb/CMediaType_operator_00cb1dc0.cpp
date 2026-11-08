@@ -1,4 +1,5 @@
 // CMediaType::operator==(const CMediaType& rt) const -- DirectShow mtype.cpp: two media types are equal when major type, subtype, format type, format size and format block match
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ??8CMediaType@@QBEHABV0@@Z -- 101 bytes verified against Fable.exe 0x00CB1DC0
 // Leaf: ??8CMediaType@@QBEHABV0@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB1DC0, 101 bytes, thiscall, `ret 4`, BOOL result.
 // Identity (proven by source): DirectShow base classes (strmbase mtype.cpp) CMediaType::operator== -- IsEqualGUID on majortype (+0),

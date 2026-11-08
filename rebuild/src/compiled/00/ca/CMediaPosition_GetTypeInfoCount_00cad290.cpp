@@ -1,4 +1,5 @@
 // CMediaPosition::GetTypeInfoCount(UINT* pctinfo) -- DirectShow ctlutil.cpp: IDispatch: the object has one type info (E_POINTER for a null out pointer)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetTypeInfoCount@CMediaPosition@@UAGJPAI@Z -- 27 bytes verified against Fable.exe 0x00CAD290
 // Leaf: ?GetTypeInfoCount@CMediaPosition
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD290, 27 bytes, STDMETHODIMP (__stdcall) on IMediaPosition (+0x04 of the pass-through), `ret 8`.
 // Identity: IDispatch slot 3 of the IMediaPosition table in both pass-through vtables (cells 0x012BF904 / 0x012BF9B4; the

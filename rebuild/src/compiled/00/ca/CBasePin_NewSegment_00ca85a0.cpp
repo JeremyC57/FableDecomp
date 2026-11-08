@@ -1,4 +1,5 @@
 // CBasePin::NewSegment(REFERENCE_TIME tStart, REFERENCE_TIME tStop, double dRate) -- DirectShow amfilter.cpp: remember the new segment's start, stop and rate on the pin
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?NewSegment@CBasePin@@UAGJ_J0N@Z -- 50 bytes verified against Fable.exe 0x00CA85A0
 // Leaf: ?NewSegment@CBasePin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA85A0, 50 bytes, STDMETHODIMP (__stdcall) on the IPin sub-object (+0x0C), so
 //   m_tStart +0x80 / m_tStop +0x88 / m_dRate +0x90 are written at [this+0x74] / [this+0x7C] / [this+0x84]; `ret 1Ch`.

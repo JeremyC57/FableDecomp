@@ -1,4 +1,5 @@
 // CMediaType::CMediaType(const AM_MEDIA_TYPE& rt, long* phr) -- DirectShow mtype.cpp: construct by CopyMediaType(this, &rt), storing a failure HRESULT through phr when given
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ??0CMediaType@@QAE@ABU_AMMediaType@@PAJ@Z -- 34 bytes verified against Fable.exe 0x00CB1D60
 // Leaf: ??0CMediaType@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1D60, 34 bytes. __fastcall constructor, `ret 8`, returns this.
 // Library: DirectShow base classes (strmbase mtype.cpp). The manifest label "COM_CopyVariantSafe" is descriptive.

@@ -1,4 +1,5 @@
 // CBasePin::QueryId(LPWSTR* Id) -- DirectShow amfilter.cpp: the pin id is its name, copied into a CoTaskMemAlloc'ed string by AMGetWideString
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?QueryId@CBasePin@@UAGJPAPAG@Z -- 16 bytes verified against Fable.exe 0x00CA84B0
 // Leaf: ?QueryId@CBasePin@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA84B0, 16 bytes, __stdcall (STDMETHODIMP; this = the IPin sub-object
 //   +0x0C, so m_pName reads [this+8]), tail jump with `this`'s slot overwritten by the name. Callee: AMGetWideString

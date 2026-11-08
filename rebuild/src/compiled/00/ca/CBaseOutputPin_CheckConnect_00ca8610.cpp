@@ -1,4 +1,5 @@
 // CBaseOutputPin::CheckConnect(IPin*) -- DirectShow BaseClasses (amfilter.cpp): the inlined CBasePin::CheckConnect (the peer's QueryDirection must differ from m_dir +0x1C, else VFW_E_INVALID_DIRECTION), then QueryInterface the peer for IID_IMemInputPin into m_pInputPin (+0x9C); S_OK or the failure code
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?CheckConnect@CBaseOutputPin@@UAEJPAUIPin@@@Z -- 70 bytes verified against Fable.exe 0x00CA8610
 // Leaf: ?CheckConnect@CBaseOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8610, 70 bytes (+10 int3), __fastcall `ret 4` (primary vtable slot 10).
 // Callees: IPin::QueryDirection slot 9 (+0x24), IUnknown::QueryInterface slot 0; IID 0x012A9A24 = IID_IMemInputPin.

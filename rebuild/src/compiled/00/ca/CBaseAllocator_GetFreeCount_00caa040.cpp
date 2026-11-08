@@ -1,4 +1,5 @@
 // CBaseAllocator::GetFreeCount(LONG*) -- DirectShow BaseClasses (amfilter.cpp, IMemAllocatorCallbackTemp): under the allocator lock report m_lCount - m_lAllocated + the free-list count; S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetFreeCount@CBaseAllocator@@UAGJPAJ@Z -- 60 bytes verified against Fable.exe 0x00CAA040
 // Leaf: ?GetFreeCount@CBaseAllocator
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAA040, 60 bytes (+4 int3), STDMETHODIMP: `this` on the stack is the IMemAllocatorCallbackTemp
 // subobject (+0x0C), `ret 8`; m_lFree.m_nOnList +0x2C, m_lCount +0x38, m_lAllocated +0x3C (object offsets).

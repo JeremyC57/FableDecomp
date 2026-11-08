@@ -2538,3 +2538,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - VC7.1 `strcmp(buf,"lit")` is the intrinsic `repe cmpsb` with edi/esi/ecx loaded in that order (memcmp loads ecx first); a rotating-temporary register one step off can come from an earlier `c ? a : b`: a two-return inline helper turns the value into a candidate and realigns the rotation (0x00C52E40).
 - `r < 0 ? r + 1 : r` keeps a value in a register where `if (r < 0) ++r;` homes it (0x00C76E90); a float `>=` conditional gives `test ah,1 ; je`, the swapped `<` form `test ah,5 ; jp` (0x00C770B0).
 
+- DirectShow base classes are DX9.0c SDK Summer 2004 (`strmbase-dxsdk-sum2004` in vendor_libs.tsv), built `/Gz /GS /EHsc /DWINVER=0x400 /DUNICODE` without `/Ob1`; `fetch_vendor_libs.py` unpacks the installer with 7z twice (`7z2:` spec) and windows.h comes from `$FABLE_WINDDK_INC`.
+- Two vland jobs grading the same addresses must not share `LANDVERIFY_WORK`: give each its own directory (the per-address object would be overwritten mid-grade).
+- The Platform SDK Feb 2003 cabs name files by MSI key (`User32_Lib.<GUID>`); `fetch_sdks.py` takes Include/Lib from `CoreSDK-common.2.*.cab` only (the 4.x cabs are samples with hundreds of clashing header names) and keeps i386 libraries.
+- 0x00CAC300 (strmbase `CDynamicOutputPin` narrow-name ctor, catalog name `CEngineScreenEffectRenderer::Initialize`) grades DIFFER(41v241) in a default recheck because its leaf `Initialize` picks another symbol: a pre-existing wrong leaf, listed in the strmbase NAME_FIXES.

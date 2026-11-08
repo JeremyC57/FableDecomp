@@ -1,4 +1,5 @@
 // CMemAllocator::CreateInstance -- allocate DirectShow memory allocator, initialize lock/free-list/semaphore and buffer; retail00cac9d0 212bytes. Propagated engine label rejected: CUnknown00cacc80, criticalsection import0143fee4, CreateSemaphoreW0143fe54, vtables012bf83c/012bf810 match allocator destructor00caa410. This is no-RTTI strmbase; CMemAllocator owner inferred from allocator methods and buffer+60. No shared class header exists.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?CreateInstance@CMemAllocator@@SGPAVCUnknown@@PAUIUnknown@@PAJ@Z -- 212 bytes verified against Fable.exe 0x00CAC9D0
 // Flags: /EHsc
 #ifdef _MSC_VER
 #else

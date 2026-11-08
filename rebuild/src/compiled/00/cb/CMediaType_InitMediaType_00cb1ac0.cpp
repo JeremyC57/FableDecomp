@@ -1,4 +1,5 @@
 // CMediaType::InitMediaType() -- DirectShow BaseClasses mtype.cpp: zero the whole AM_MEDIA_TYPE (0x48 bytes, `rep stosd`), then lSampleSize = 1 and bFixedSizeSamples = TRUE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?InitMediaType@CMediaType@@QAEXXZ -- 27 bytes verified against Fable.exe 0x00CB1AC0
 // Leaf: ?InitMediaType@CMediaType@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB1AC0, 27 bytes (+ int3 padding), thiscall, plain `ret` (no `this` return).
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 450 "0xCB1AC0 CCodecState::Reset = CMediaType::InitMediaType"): the stores are

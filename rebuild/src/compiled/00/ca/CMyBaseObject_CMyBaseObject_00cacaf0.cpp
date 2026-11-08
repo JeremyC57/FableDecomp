@@ -1,4 +1,5 @@
 // CMyBaseObject::~CMyBaseObject() -- DirectShow BaseClasses combase.cpp (Fable's strmbase renames CBaseObject to CMyBaseObject): decrement the live-object count CMyBaseObject::m_cObjects (0x0143CCF4); when the last object goes, free OleAut32.dll if LoadOLEAut32 loaded it (hlibOLEAut32 0x0143CCF0) and clear the handle
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/combase.cpp) ??1CBaseObject@@QAE@XZ -- 42 bytes verified against Fable.exe 0x00CACAF0
 // Leaf: ??1CMyBaseObject@@QAE@XZ
 // Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2, proven): ??1CMyBaseObject@@QAE@XZ (was ??1CBaseObject@@QAE@XZ,
 //   the engine class's destructor 0x0099A430); RTTI of vtable 0x0129D08C names CUnknown's base CMyBaseObject, as the shared

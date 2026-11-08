@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::OnRenderEnd(IMediaSample* pMediaSample) -- DirectShow BaseClasses renbase.cpp: fold the time spent drawing into the moving average (ignoring spikes), remember it, then throttle (Sleep m_trThrottle ms, or Sleep(0))
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?OnRenderEnd@CBaseVideoRenderer@@UAEXPAUIMediaSample@@@Z -- 127 bytes verified against Fable.exe 0x00CA5610
 // Leaf: ?OnRenderEnd@CBaseVideoRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5610, 127 bytes. __fastcall (primary slot 15), `ret 4`; the sample is unused.
 // Callees: timeGetTime (WINMM IAT 0x014404B4); Sleep (KERNEL32 IAT 0x0143FE1C) as a tail jump with its argument written over

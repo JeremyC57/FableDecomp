@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::SendQuality(REFERENCE_TIME trLate, REFERENCE_TIME trRealStream) -- DirectShow BaseClasses renbase.cpp: build the quality message (Famine/Flood from the frame vs render averages, proportion 1000 scaled down when late or up to 2000 when waiting a lot, lateness plus half the render time, the stream time) and send it to the quality sink, fetching the upstream pin's IQualityControl first; S_FALSE without a sink
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?SendQuality@CBaseVideoRenderer@@UAEJ_J0@Z -- 366 bytes verified against Fable.exe 0x00CA56E0
 // Leaf: ?SendQuality@CBaseVideoRenderer@@UAEJ_J0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA56E0, 366 bytes, thiscall `ret 10h`, 0x18-byte frame (the Quality type; the
 //   QueryInterface out pointer is homed in trLate's argument slot).

@@ -1,4 +1,5 @@
 // CBaseRenderer::Run(REFERENCE_TIME StartTime) -- DirectShow base class (strmbase renbase.cpp): under the interface lock remember the old state; an already running filter returns at once, an unconnected one signals EC_COMPLETE and is set running; else signal ready, run the base filter (a failure returned), let the source thread wait, clear the repaint flag, commit the input pin's allocator, and coming out of stopped clear the abort flag and the pending sample; returns StartStreaming()
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?Run@CBaseRenderer@@UAGJ_J@Z -- 313 bytes verified against Fable.exe 0x00CA68F0
 // Leaf: ?Run@CBaseRenderer@@UAGJ_J@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA68F0, 313 bytes, STDMETHODIMP (`this` on the stack is the IBaseFilter sub-object

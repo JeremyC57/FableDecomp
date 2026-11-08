@@ -1,4 +1,5 @@
 // CBaseOutputPin::DeliverEndOfStream() -- DirectShow amfilter.cpp: forward end-of-stream to the connected pin (IPin::EndOfStream), VFW_E_NOT_CONNECTED when unconnected
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?DeliverEndOfStream@CBaseOutputPin@@UAEJXZ -- 23 bytes verified against Fable.exe 0x00CA8820
 // Leaf: ?DeliverEndOfStream@CBaseOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8820, 23 bytes, thiscall `ret`. Callee: IPin::EndOfStream (slot 14, +0x38) on
 //   m_Connected (+0x18).

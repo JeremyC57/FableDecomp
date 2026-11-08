@@ -1,4 +1,5 @@
 // CBaseFilter::NotifyEvent(long eventCode, long eventParam1, long eventParam2) -- the DirectShow base-class helper linked into Fable for CTextureRenderer: forward the event to the graph's event sink (snapshot of m_pSink at +0x44), substituting the filter's IBaseFilter interface as the second parameter of EC_COMPLETE; E_NOTIMPL when no sink is set
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?NotifyEvent@CBaseFilter@@QAEJJJJ@Z -- 67 bytes verified against Fable.exe 0x00CA7930
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA7930, length 67 bytes.
 // Leaf: NotifyEvent
 // Callees: IMediaEventSink::Notify (COM slot 3, `call [esi+0Ch]`, `this` pushed).

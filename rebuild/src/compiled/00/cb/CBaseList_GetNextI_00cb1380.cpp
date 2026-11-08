@@ -1,4 +1,5 @@
 // CBaseList::GetNextI(POSITION&) -- DirectShow BaseClasses wxlist.cpp: return the object at the position and step the position to the next node (NULL, position unchanged, at the end)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?GetNextI@CBaseList@@IBEPAXAAPAU__POSITION@@@Z -- 24 bytes verified against Fable.exe 0x00CB1380
 // Leaf: ?GetNextI@CBaseList@@QBEPAXAAPAU__POSITION@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB1380, 24 bytes (+ int3 padding), thiscall `ret 4` (`this` unused).
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 450 "0xCB1380 CCharString_GetLength = CBaseList::GetNextI"): rp -> CNode, rp =

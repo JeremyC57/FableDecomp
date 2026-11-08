@@ -1,4 +1,5 @@
 // CBaseOutputPin::GetDeliveryBuffer(IMediaSample** ppSample, REFERENCE_TIME* pStartTime, REFERENCE_TIME* pEndTime, DWORD dwFlags) -- DirectShow amfilter.cpp: get a sample buffer from the agreed allocator, E_NOINTERFACE without one
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetDeliveryBuffer@CBaseOutputPin@@UAEJPAPAUIMediaSample@@PA_J1K@Z -- 47 bytes verified against Fable.exe 0x00CA87C0
 // Leaf: ?GetDeliveryBuffer@CBaseOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA87C0, 47 bytes, thiscall `ret 10h`. Callee: IMemAllocator::GetBuffer (slot 7, +0x1C)
 //   on m_pAllocator (+0x98).

@@ -1,4 +1,5 @@
 // CBaseRenderer::GetSampleTimes(IMediaSample* pMediaSample, REFERENCE_TIME* pStartTime, REFERENCE_TIME* pEndTime) -- DirectShow BaseClasses: reads the sample's time stamps; S_OK when it has none or there is no clock, VFW_E_START_TIME_AFTER_END when end < start, else ShouldDrawSampleNow
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?GetSampleTimes@CBaseRenderer@@UAEJPAUIMediaSample@@PA_J1@Z -- 92 bytes verified against Fable.exe 0x00CA49F0
 // Leaf: ?GetSampleTimes@CBaseRenderer
 // Retail: Fable.exe @ 0x00CA49F0, 92 bytes (+ int3 padding). In three vtables (CTextureRenderer primary slot 22 and two
 // more renderer vtables 0x012BF4F0 / 0x012BF630 area). Label: the manifest's "CTextureRenderer::vfunc_22".

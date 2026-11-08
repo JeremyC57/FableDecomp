@@ -1,4 +1,5 @@
 // CMediaType::AllocFormatBuffer(unsigned long length) -- DirectShow mtype.cpp: (re)allocate the format block with CoTaskMemAlloc, keeping the old block when the allocation fails but it is big enough
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?AllocFormatBuffer@CMediaType@@QAEPAEK@Z -- 87 bytes verified against Fable.exe 0x00CB19E0
 // Leaf: ?AllocFormatBuffer@CMediaType@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB19E0, 85 bytes (+ int3 padding). __fastcall, `ret 4`.
 // Library: DirectShow base classes (strmbase mtype.cpp). The manifest label "COM_AllocAndCacheBuffer" is descriptive.

@@ -1,4 +1,5 @@
 // CBaseRenderer::CompleteConnect(IPin* pReceivePin) -- DirectShow BaseClasses renbase.cpp: clear the abort flag; when connected while running, start streaming and disable EC_REPAINT, otherwise enable it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?CompleteConnect@CBaseRenderer@@UAEJPAUIPin@@@Z -- 53 bytes verified against Fable.exe 0x00CA6B80
 // Leaf: ?CompleteConnect@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6B80, 53 bytes (+11 int3). __fastcall (primary slot 37), `ret 4`; pReceivePin unused.
 // Callees: StartStreaming (primary slot 31, `call [eax+7Ch]`); CBaseRenderer::SetRepaintStatus 0x00CA4EA0 (called out of line

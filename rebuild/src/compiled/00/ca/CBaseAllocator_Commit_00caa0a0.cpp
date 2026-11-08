@@ -1,4 +1,5 @@
 // CBaseAllocator::Commit() -- DirectShow amfilter.cpp: under the allocator lock, S_OK when already committed; otherwise set m_bCommitted, cancel a pending decommit (S_OK), else Alloc() the samples (on failure clear m_bCommitted and return the error) and take the commit reference with AddRef(); S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Commit@CBaseAllocator@@UAGJXZ -- 177 bytes verified against Fable.exe 0x00CAA0A0
 // Leaf: ?Commit@CBaseAllocator@@UAGJXZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAA0A0, 177 bytes, STDMETHODIMP `ret 4`; `this` on the stack is the IMemAllocatorCallbackTemp

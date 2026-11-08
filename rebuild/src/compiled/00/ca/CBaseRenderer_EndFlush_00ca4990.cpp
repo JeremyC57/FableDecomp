@@ -1,4 +1,5 @@
 // CBaseRenderer::EndFlush() -- end of a flush: reset the position pass-through's media times and let the source thread wait again (DirectShow BaseClasses)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?EndFlush@CBaseRenderer@@UAEJXZ -- 28 bytes verified against Fable.exe 0x00CA4990
 // Leaf: ?EndFlush@CBaseRenderer@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4990, 28 bytes, thiscall (__fastcall this=ecx).
 // Identity (vendor naming wave V1, proven): BaseClasses renbase.h declaration order: CBaseRenderer::EndFlush is primary-vtable slot 34; retail CBaseRenderer vtable 0x012BF498 slot 34 (its ??_G 0x00CA7340) and CTextureRenderer vtable 0x0129D08C (RTTI) slot 34 hold 0x00CA4990.

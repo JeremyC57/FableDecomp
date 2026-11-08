@@ -1,4 +1,5 @@
 // CPosPassThru::SetRate(double dRate) -- DirectShow ctlutil.cpp: forward IMediaSeeking::SetRate to the upstream peer's IMediaSeeking and release it (E_INVALIDARG for a zero rate)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?SetRate@CPosPassThru@@UAGJN@Z -- 82 bytes verified against Fable.exe 0x00CAD810
 // Leaf: ?SetRate@CPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD810, 82 bytes, STDMETHODIMP (__stdcall) on the IMediaSeeking sub-object, `ret 0Ch`.
 //   Callees: CPosPassThru::GetPeerSeeking 0x00CAD460 (thiscall), the peer's IMediaSeeking::SetRate (slot 17), IUnknown::Release.

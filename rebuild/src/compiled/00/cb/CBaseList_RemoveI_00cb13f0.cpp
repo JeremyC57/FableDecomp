@@ -1,4 +1,5 @@
 // CBaseList::RemoveI(POSITION) -- DirectShow BaseClasses wxlist.cpp: unlink the node at a position from the doubly linked list, hand the node to the node cache (CNodeCache::AddToCache: kept while m_iUsed < m_iCacheSize, else deleted), decrement the count and return the node's object
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?RemoveI@CBaseList@@IAEPAXPAU__POSITION@@@Z -- 109 bytes verified against Fable.exe 0x00CB13F0
 // Leaf: ?RemoveI@CBaseList@@QAEPAXPAU__POSITION@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB13F0, 107 bytes (+ int3 padding), thiscall `ret 4`; operator delete 0x00BFE9BC.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 450 "0xCB13F0 = CBaseList::RemoveI"): callers are RemoveHeadI 0x00CB1900 (`push

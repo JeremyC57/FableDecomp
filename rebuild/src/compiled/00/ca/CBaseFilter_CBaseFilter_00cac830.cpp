@@ -1,4 +1,5 @@
 // CBaseFilter::CBaseFilter(const char* pName, IUnknown* pUnk, CCritSec* pLock, const GUID& clsid) -- DirectShow base-class filter constructor: CUnknown base, stopped state, no clock/graph/sink/name, the lock and CLSID stored, pin version 1
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??0CBaseFilter@@QAE@PBGPAUIUnknown@@PAVCCritSec@@ABU_GUID@@@Z -- 94 bytes verified against Fable.exe 0x00CAC830
 // Leaf: ??0CBaseFilter
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAC830, length 94 bytes.
 // Callees: CUnknown::CUnknown(const char*, IUnknown*) @ 0x00CACC80 (InterlockedIncrement of the object count, m_pUnknown = pUnk ? pUnk : this, m_cRef = 0).

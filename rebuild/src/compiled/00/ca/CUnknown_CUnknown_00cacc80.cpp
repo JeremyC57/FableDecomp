@@ -1,4 +1,5 @@
 // CUnknown::CUnknown(const WCHAR*, IUnknown*) -- DirectShow BaseClasses (combase.cpp): the inlined CBaseObject constructor counts the live object (InterlockedIncrement of CBaseObject::m_cObjects 0x0143CCF4; the release build keeps no name); owner = pUnk or this object's own non-delegating interface; reference count 0
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/combase.cpp) ??0CUnknown@@QAE@PBGPAUIUnknown@@@Z -- 40 bytes verified against Fable.exe 0x00CACC80
 // Leaf: ??0CUnknown
 // Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2): 0x0143CCF4 ?m_cObjects@CMyBaseObject@@0JA (was ?m_cObjects@CBaseObject@@0JA): Fable's strmbase renames combase.h CBaseObject to CMyBaseObject (RTTI of vtable 0x0129D08C), which keeps it apart from the engine's CBaseObject 0x0099A380 / 0x0099A430 without a namespace
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CACC80, 40 bytes (+8 int3), __fastcall `ret 8`, returns this; no vtable store (AM_NOVTABLE).

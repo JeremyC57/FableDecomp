@@ -1,4 +1,5 @@
 // CMediaSample::Release() -- DirectShow BaseClasses (amfilter.cpp): drop the private count m_cRef (+0x44; a count of 1 is cleared without the interlocked call); at zero clear a changed media type (SetMediaType(NULL) when Sample_TypeChanged), reset m_dwFlags / m_dwTypeSpecificFlags / m_dwStreamId and hand the sample back with m_pAllocator->ReleaseBuffer(this); returns the new count
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Release@CMediaSample@@UAGKXZ -- 91 bytes verified against Fable.exe 0x00CA9080
 // Leaf: ?Release@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9080, 91 bytes, STDMETHODIMP_(ULONG): `this` on the stack (IMediaSample2 at +0), `ret 4`.
 // Callees: InterlockedDecrement (IAT 0x0143FD38); IMediaSample::SetMediaType slot 14 (+0x38); the allocator's

@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::JoinFilterGraph(IFilterGraph* pGraph, LPCWSTR pName) -- DirectShow BaseClasses renbase.cpp: when leaving a graph, send EC_WINDOW_DESTROYED with our IBaseFilter first (so the resource manager drops us as a focus object), then CBaseFilter::JoinFilterGraph
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?JoinFilterGraph@CBaseVideoRenderer@@UAGJPAUIFilterGraph@@PBG@Z -- 80 bytes verified against Fable.exe 0x00CA6110
 // Leaf: ?JoinFilterGraph@CBaseVideoRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6110, 80 bytes. __stdcall (STDMETHODIMP, `ret 0Ch`); IBaseFilter slot 13
 //   (vtables 0x0129D04C+0x34 = 0x0129D080 CTextureRenderer, 0x012BF5CC), so `this` is the IBaseFilter sub-object (+0x0C):

@@ -1,4 +1,5 @@
 // CBaseRenderer::StopStreaming() -- DirectShow BaseClasses renbase.cpp: under the renderer lock, forget the delivered end of stream and, when streaming, stop: OnStopStreaming (primary slot 17) and timeEndPeriod(1); returns NOERROR
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?StopStreaming@CBaseRenderer@@UAEJXZ -- 104 bytes verified against Fable.exe 0x00CA4E30
 // Leaf: ?StopStreaming@CBaseRenderer@@UAEJXZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4E30, 104 bytes. thiscall (primary slot 32), plain `ret`; /EHsc frame (the CAutoLock is

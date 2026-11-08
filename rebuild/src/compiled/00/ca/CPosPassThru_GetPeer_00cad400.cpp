@@ -1,4 +1,5 @@
 // CPosPassThru::GetPeer(IMediaPosition**) -- DirectShow BaseClasses (ctlutil.cpp): asks the pin for its connected peer and returns the peer's IMediaPosition, E_NOTIMPL when unconnected or unsupported
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetPeer@CPosPassThru@@AAEJPAPAUIMediaPosition@@@Z -- 90 bytes verified against Fable.exe 0x00CAD400
 // Leaf: ?GetPeer@CPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD400, 90 bytes (+6 int3), thiscall, `ret 4`.
 // Callees: IPin::ConnectedTo (slot 6) on m_pPin (+0x18), IUnknown::QueryInterface / Release on the peer pin.

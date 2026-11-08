@@ -1,4 +1,5 @@
 // CEnumPins::Clone(IEnumPins** ppEnum) -- Clone an enumerator while its owner version remains current.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Clone@CEnumPins@@UAGJPAPAUIEnumPins@@@Z -- 156 bytes verified against Fable.exe 0x00CABED0
 // Leaf: ?Clone@CEnumPins@@UAGJPAPAUIEnumPins@@@Z
 // Flags: /EHsc
 // Identity: DirectShow amfilter CEnumPins::Clone, same own enumeration vtable/constructor as QueryInterface. Scalar allocation48 bytes via00bfea1a; ctor00cabe00; GetPinVersion primary slot5. Standard E_POINTER/VFW_E_ENUM_OUT_OF_SYNC/E_OUTOFMEMORY and owned cloned enumerator.

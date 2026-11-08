@@ -1,4 +1,5 @@
 // CBaseRenderer::Stop() -- DirectShow base class (strmbase renbase.cpp): under the interface lock, leave a stopped filter alone, stop an unconnected one by state only, else run CBaseFilter::Stop, decommit the input pin's allocator, flag a repaint, stop streaming, wake the source thread, reset end-of-stream and the clock advise, signal completion and clear the abort flag
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?Stop@CBaseRenderer@@UAGJXZ -- 219 bytes verified against Fable.exe 0x00CA66D0
 // Leaf: Stop
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA66D0, 219 bytes (+5 int3). __stdcall (STDMETHODIMP, `ret 4`), /EHsc frame

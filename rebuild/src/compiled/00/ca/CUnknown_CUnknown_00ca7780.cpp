@@ -1,4 +1,5 @@
 // CUnknown::~CUnknown() -- DirectShow BaseClasses (combase.h): the empty inline virtual destructor, out of line for the EH unwind funclets; only the CBaseObject base destructor remains
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??1CUnknown@@UAE@XZ -- 19 bytes verified against Fable.exe 0x00CA7780
 // Leaf: ??1CUnknown@@UAE@XZ
 // Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2): 0x00CACAF0 ??1CMyBaseObject@@QAE@XZ (was ??1CBaseObject@@QAE@XZ): Fable's strmbase renames combase.h CBaseObject to CMyBaseObject (RTTI of vtable 0x0129D08C), which keeps it apart from the engine's CBaseObject 0x0099A380 / 0x0099A430 without a namespace
 // Flags: none

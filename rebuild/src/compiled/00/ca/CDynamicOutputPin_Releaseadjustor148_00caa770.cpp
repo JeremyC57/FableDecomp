@@ -1,4 +1,5 @@
 // CDynamicOutputPin::Release`adjustor{148}'() -- compiler-generated `[thunk]` in CDynamicOutputPin's IPinFlowControl vtable: move `this` from the IPinFlowControl sub-object (+0xA0) to the IPin sub-object (+0x0C) and jump to the DECLARE_IUNKNOWN Release
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Release@CDynamicOutputPin@@WJE@AGKXZ -- 13 bytes verified against Fable.exe 0x00CAA770
 // Leaf: ?Release@CDynamicOutputPin@@WJE@AGKXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAA770, 13 bytes: `sub dword ptr [esp+4],94h ; jmp CDynamicOutputPin::Release (0x00CA9710)`.
 // Identity: IPinFlowControl slot 2 (cell 0x012BF740) of CDynamicOutputPin's IPinFlowControl table 0x012BF738 (slot 3 is the

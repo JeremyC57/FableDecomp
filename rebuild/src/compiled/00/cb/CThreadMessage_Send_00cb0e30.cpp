@@ -1,4 +1,5 @@
 // CThreadMessage::Send(unsigned long) -- under the message lock: fails with E_FAIL when no worker thread is running, else posts the message, signals the request event, blocks on the reply event and returns the reply the worker stored
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?CallWorker@CAMThread@@QAEKK@Z -- 84 bytes verified against Fable.exe 0x00CB0E30
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB0E30, length 84 bytes.
 // Callees: EnterCriticalSection (IAT 0x0143FE0C), LeaveCriticalSection (IAT 0x0143FE10, twice),
 // SetEvent (IAT 0x0143FDE0), WaitForSingleObject (IAT 0x0143FEAC).

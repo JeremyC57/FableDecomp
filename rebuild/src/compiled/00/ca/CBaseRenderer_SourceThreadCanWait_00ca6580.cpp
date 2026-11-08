@@ -1,4 +1,5 @@
 // CBaseRenderer::SourceThreadCanWait(BOOL bCanWait) -- DirectShow BaseClasses: lets the source thread block (reset m_ThreadSignal) or releases it (set m_ThreadSignal); NOERROR
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?SourceThreadCanWait@CBaseRenderer@@UAEJH@Z -- 37 bytes verified against Fable.exe 0x00CA6580
 // Leaf: ?SourceThreadCanWait@CBaseRenderer
 // Retail: Fable.exe @ 0x00CA6580, 37 bytes (+ int3 padding). In three vtables (CTextureRenderer primary slot 10).
 // Label: the manifest's "CTextureRenderer::vfunc_10".

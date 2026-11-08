@@ -1,4 +1,5 @@
 // CBaseOutputPin::InitAllocator(IMemAllocator** ppAlloc) -- DirectShow amfilter.cpp: create the default memory allocator (CreateMemoryAllocator -> CoCreateInstance(CLSID_MemoryAllocator))
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?InitAllocator@CBaseOutputPin@@UAEJPAPAUIMemAllocator@@@Z -- 28 bytes verified against Fable.exe 0x00CA86B0
 // Leaf: ?InitAllocator@CBaseOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA86B0, 28 bytes, thiscall `ret 4`. Callee: CoCreateInstance (IAT 0x01440640) with
 //   CLSID_MemoryAllocator 0x012AAC24 {1E651CC0-B199-11D0-8212-00C04FC32C45}, CLSCTX_INPROC_SERVER, IID_IMemAllocator 0x012A9A54

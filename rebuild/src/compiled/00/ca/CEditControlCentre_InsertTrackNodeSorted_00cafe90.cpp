@@ -1,4 +1,5 @@
 // CEditControlCentre::InsertTrackNodeSorted(CScheduledItem* item) -- under the object's lock, add-ref the item and insert it into the list chosen by its flag, before the first entry with a later 64-bit time (or at the tail), then refresh the schedule
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?Insert@CCmdQueue@@UAEJPAVCDeferredCommand@@@Z -- 216 bytes verified against Fable.exe 0x00CAFE90
 // Leaf: InsertTrackNodeSorted
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAFE90, length 216 bytes (+ int3 padding), `ret 4` (thiscall), /EHsc frame

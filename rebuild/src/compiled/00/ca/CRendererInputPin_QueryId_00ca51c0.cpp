@@ -1,4 +1,5 @@
 // CRendererInputPin::QueryId(LPWSTR* Id) -- DirectShow BaseClasses renbase.cpp: return the pin id L"In" in a CoTaskMemAlloc'ed buffer
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?QueryId@CRendererInputPin@@UAGJPAPAG@Z -- 59 bytes verified against Fable.exe 0x00CA51C0
 // Leaf: ?QueryId@CRendererInputPin@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA51C0, 59 bytes (+5 int3). __stdcall (STDMETHODIMP, `ret 8`); IPin::QueryId (`this`, the
 //   IPin sub-object, is not used).

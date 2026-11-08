@@ -1,4 +1,5 @@
 // CBaseOutputPin::DecideAllocator(IMemInputPin*, IMemAllocator**) -- DirectShow BaseClasses (amfilter.cpp): read the input pin's allocator requirements (cbAlign 0 -> 1), try the input pin's allocator (GetAllocator, DecideBufferSize, NotifyAllocator(FALSE)), else release it and try our own (InitAllocator) the same way; S_OK or the last failure code
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?DecideAllocator@CBaseOutputPin@@UAEJPAUIMemInputPin@@PAPAUIMemAllocator@@@Z -- 240 bytes verified against Fable.exe 0x00CA86D0
 // Leaf: ?DecideAllocator@CBaseOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA86D0, 240 bytes, __fastcall `ret 8` (primary vtable slot 14).
 // Callees: IMemInputPin GetAllocatorRequirements slot 5 (+0x14), GetAllocator 3 (+0x0C), NotifyAllocator 4 (+0x10);

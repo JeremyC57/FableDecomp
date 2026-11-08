@@ -1,4 +1,5 @@
 // CBaseAllocator::CBaseAllocator(CHAR* pName, IUnknown* pUnk, HRESULT* phr, BOOL bEvent, BOOL fEnableReleaseCallback) -- DirectShow BaseClasses (amfilter.cpp) allocator constructor, #ifdef UNICODE CHAR overload: CUnknown base, the CCritSec lock initialised, empty free list, every counter and flag 0, the release-callback flag stored; with bEvent a semaphore (0, 0x7FFFFFFF) is created and a failure reports E_OUTOFMEMORY
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??0CBaseAllocator@@QAE@PAGPAUIUnknown@@PAJHH@Z -- 130 bytes verified against Fable.exe 0x00CAC570
 // Leaf: ??0CBaseAllocator@@QAE@PADPAUIUnknown@@PAJHH@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAC570, 130 bytes, thiscall `ret 0x14`, returns this; no vtable store (AM_NOVTABLE).
 // Identity (proven): the body is amfilter.cpp's CBaseAllocator constructor member for member (the CSampleList pair at

@@ -1,4 +1,5 @@
 // CPosPassThru::CanSeekBackward(LONG* output) -- Forward the original DirectShow interface query to the connected pin.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?CanSeekBackward@CPosPassThru@@UAGJPAJ@Z -- 53 bytes verified against Fable.exe 0x00CADB50
 // Leaf: ?CanSeekBackward@CPosPassThru@@UAGJPAJ@Z
 // Identity: proven. Original DirectShow ctlutil CPosPassThru method in pass-through tables012bf8f8/012bf940 and derived renderer tables; exact COM interface slot and own GetPeer00cad400 or GetPeerSeeking00cad460 establish identity. Actual IMediaSeeking/CMediaPosition/CUnknown/INonDelegatingUnknown hierarchy explains secondary-this adjustment -4. Real noinline peer getter queries ConnectedTo and QueryInterface, releases connected pin, then forwards or returns E_NOTIMPL. Forwarded double or LONG output pointer and Release ordering exactly follow original interface.
 // Layout: original release-mode hierarchy, seeking0/media-position4/unknown8, pin24; no applicable engine header.

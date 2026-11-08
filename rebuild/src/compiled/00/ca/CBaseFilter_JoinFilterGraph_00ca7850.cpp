@@ -1,4 +1,5 @@
 // CBaseFilter::JoinFilterGraph(IFilterGraph* pGraph, LPCWSTR pName) -- DirectShow BaseClasses amfilter.cpp: under the filter lock, remember the graph (unreferenced), fetch its IMediaEventSink without keeping a reference, and replace the stored filter name with a copy of pName
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?JoinFilterGraph@CBaseFilter@@UAGJPAUIFilterGraph@@PBG@Z -- 205 bytes verified against Fable.exe 0x00CA7850
 // Leaf: ?JoinFilterGraph@CBaseFilter@@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7850, 205 bytes (+3 int3). __stdcall (STDMETHODIMP, IBaseFilter slot 13, `ret 0Ch`):

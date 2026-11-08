@@ -1,4 +1,5 @@
 // CMediaPosition::Invoke(DISPID dispidMember, const IID& riid, LCID lcid, WORD wFlags, DISPPARAMS* pdispparams, VARIANT* pvarResult, EXCEPINFO* pexcepinfo, UINT* puArgErr) -- DirectShow ctlutil.cpp: IDispatch: DISP_E_UNKNOWNINTERFACE unless riid is IID_NULL; otherwise invoke through our type info and release it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?Invoke@CMediaPosition@@UAGJJABU_GUID@@KGPAUtagDISPPARAMS@@PAUtagVARIANT@@PAUtagEXCEPINFO@@PAI@Z -- 118 bytes verified against Fable.exe 0x00CAD300
 // Leaf: ?Invoke@CMediaPosition
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD300, 118 bytes, STDMETHODIMP (__stdcall) on IMediaPosition, `ret 24h`.
 //   Callees: this->GetTypeInfo (IDispatch slot 4, +0x10), ITypeInfo::Invoke (slot 11, +0x2C), ITypeInfo::Release; GUID_NULL

@@ -1,4 +1,5 @@
 // CRendererPosPassThru::EOS() -- DirectShow BaseClasses (ctlutil.cpp): at end of stream snaps both registered media times to the stop position (E_FAIL while the times are reset)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?EOS@CRendererPosPassThru@@QAEJXZ -- 87 bytes verified against Fable.exe 0x00CADDF0
 // Leaf: ?EOS@CRendererPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CADDF0, 87 bytes, thiscall, plain `ret`.
 // Callees: IMediaSeeking::GetStopPosition (slot 11, +0x2C, virtual on the primary IMediaSeeking base), Enter/LeaveCriticalSection

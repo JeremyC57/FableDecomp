@@ -1,4 +1,5 @@
 // CEnginePrimitiveTypeInfoDerived_00ca4f40::CEnginePrimitiveTypeInfoDerived_00ca4f40(COwner*, long, long) -- forward to the type-info base, keep the owner, install four vtables
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ??0CRendererInputPin@@QAE@PAVCBaseRenderer@@PAJPBG@Z -- 75 bytes verified against Fable.exe 0x00CA4F40
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA4F40, length 75 bytes (+ int3 padding).
 // Callees: CEnginePrimitiveTypeInfo::CEnginePrimitiveTypeInfo(long, COwner*, void*, long, long)
 // @ 0x00CAC260 with (0, owner, &owner->+0x7c, b, c).

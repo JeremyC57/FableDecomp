@@ -1,4 +1,5 @@
 // CMediaType::IsPartiallySpecified() -- DirectShow mtype.cpp: TRUE when majortype or formattype is GUID_NULL
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?IsPartiallySpecified@CMediaType@@QBEHXZ -- 52 bytes verified against Fable.exe 0x00CB1AE0
 // Leaf: ?IsPartiallySpecified@CMediaType@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1AE0, 52 bytes (+ int3 padding). __fastcall const.
 // Library: DirectShow base classes (strmbase mtype.cpp). The manifest label "AudioBank_MatchesSignature" is

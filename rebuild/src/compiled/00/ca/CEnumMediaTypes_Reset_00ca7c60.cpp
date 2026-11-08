@@ -1,4 +1,5 @@
 // CEnumMediaTypes::Reset() -- DirectShow BaseClasses amfilter.cpp: rewind the media-type enumerator and resynchronise it with its pin's media-type version (CBasePin::GetMediaTypeVersion, primary slot 4); NOERROR
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Reset@CEnumMediaTypes@@UAGJXZ -- 29 bytes verified against Fable.exe 0x00CA7C60
 // Leaf: ?Reset@CEnumMediaTypes@@UAGJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7C60, 29 bytes (+ int3 padding), STDMETHODIMP: `this` on the stack, `ret 4`.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 449 "0xCA7C60 CTestPos_Init = CEnumMediaTypes::Reset"): its only reference is

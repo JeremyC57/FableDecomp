@@ -1,4 +1,5 @@
 // CUnknown::NonDelegatingAddRef() -- DirectShow strmbase CUnknown: InterlockedIncrement(&m_cRef), returns max((unsigned long)m_cRef, 1)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/combase.cpp) ?NonDelegatingAddRef@CUnknown@@UAGKXZ -- 31 bytes verified against Fable.exe 0x00CACD00
 // Leaf: NonDelegatingAddRef
 // Retail: Fable.exe @ 0x00CACD00, 31 bytes (`ret 4`: __stdcall with `this` pushed).
 // Callees: InterlockedIncrement (IAT 0x0143FD34).

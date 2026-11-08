@@ -1,4 +1,5 @@
 // CPosPassThru::put_StopTime(REFTIME llTime) -- DirectShow ctlutil.cpp: forward IMediaPosition::put_StopTime to the upstream peer's IMediaPosition and release it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?put_StopTime@CPosPassThru@@UAGJN@Z -- 58 bytes verified against Fable.exe 0x00CAD970
 // Leaf: ?put_StopTime@CPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD970, 58 bytes, STDMETHODIMP (__stdcall) on the IMediaPosition (the CMediaPosition base at +4) sub-object, `ret 0Ch`.
 //   Callees: CPosPassThru::GetPeer 0x00CAD400 (thiscall), the peer's IMediaPosition::put_StopTime (slot 11), IUnknown::Release.

@@ -1,4 +1,5 @@
 // CDynamicOutputPin::UnblockOutputPin() -- DirectShow BaseClasses (amfilter.cpp): under m_BlockStateLock (+0xA4) return S_FALSE when not blocked; otherwise signal m_hUnblockOutputPinEvent (+0xBC), signal and close a pending caller event (+0xC0), and reset m_BlockState (+0xC4) / m_dwBlockCallerThreadID (+0xC8) / the caller event; S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?UnblockOutputPin@CDynamicOutputPin@@IAEJXZ -- 127 bytes verified against Fable.exe 0x00CA9860
 // Leaf: ?UnblockOutputPin@CDynamicOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9860, 127 bytes (+1 int3), __fastcall, `ret`.
 // Callees: Enter/LeaveCriticalSection (IAT 0x0143FE0C/0x0143FE10), SetEvent (IAT 0x0143FDE0, used twice -> `mov edi,[__imp]`),

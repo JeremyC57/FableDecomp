@@ -1,4 +1,5 @@
 // CGameCameraManager::HasCameraMode  @ 00ca7f70
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?AreWeOutOfSync@CEnumPins@@AAEHXZ -- 25 bytes verified against Fable.exe 0x00CA7F70
 // __fastcall bool(CGameCameraManager*)   (retail ret is 0xC3 -> no stack param)
 
 struct ICameraProvider {

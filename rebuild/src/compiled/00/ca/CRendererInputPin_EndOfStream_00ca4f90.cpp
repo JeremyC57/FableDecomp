@@ -1,4 +1,5 @@
 // CRendererInputPin::EndOfStream() -- DirectShow BaseClasses renbase.cpp: under the renderer's interface and sample locks, check the pin is streaming, pass the end of stream to the renderer and then to CBaseInputPin
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?EndOfStream@CRendererInputPin@@UAGJXZ -- 159 bytes verified against Fable.exe 0x00CA4F90
 // Leaf: ?EndOfStream@CRendererInputPin@@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4F90, 159 bytes (+1 int3). __stdcall (STDMETHODIMP, `ret 4`); IPin::EndOfStream, so

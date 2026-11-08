@@ -1,4 +1,5 @@
 // CBasePin::ReceiveConnection(IPin* pConnector, const AM_MEDIA_TYPE* pmt) -- DirectShow BaseClasses (amfilter.cpp): E_POINTER for a null connector or media type; under the pin lock refuse when already connected (VFW_E_ALREADY_CONNECTED) or when the filter is running and the pin cannot reconnect while active (VFW_E_NOT_STOPPED); CheckConnect then CheckMediaType (a refusal breaks the connection and maps S_FALSE / E_FAIL / E_INVALIDARG to VFW_E_TYPE_NOT_ACCEPTED); keep an AddRef'd m_Connected, SetMediaType and CompleteConnect, undoing the connection on failure
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ReceiveConnection@CBasePin@@UAGJPAUIPin@@PBU_AMMediaType@@@Z -- 400 bytes verified against Fable.exe 0x00CA8120
 // Leaf: ?ReceiveConnection@CBasePin@@UAGJPAUIPin@@PBU_AMMediaType@@@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA8120, 400 bytes (extent: the last `ret 0Ch` ends at 0x00CA82B0, the next function

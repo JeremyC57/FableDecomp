@@ -1,4 +1,5 @@
 // CDeferredCommand::GetHResult(HRESULT* phrResult) -- DirectShow ctlutil.cpp: report the executed command's result; E_POINTER for a null out pointer, E_ABORT while the command is still queued
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetHResult@CDeferredCommand@@UAGJPAJ@Z -- 45 bytes verified against Fable.exe 0x00CAECC0
 // Leaf: ?GetHResult@CDeferredCommand
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAECC0, 45 bytes, STDMETHODIMP (__stdcall) on the IDeferredCommand sub-object
 //   (+0x0C), `ret 8`; m_pQueue +0x10 and m_hrResult +0x4C are read at [this+4] / [this+0x40].

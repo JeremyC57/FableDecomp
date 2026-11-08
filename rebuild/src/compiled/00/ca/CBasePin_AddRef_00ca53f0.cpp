@@ -1,4 +1,5 @@
 // CBasePin::AddRef() -- DirectShow DECLARE_IUNKNOWN delegation: forward IPin::AddRef to the owning object's IUnknown (GetOwner()->AddRef())
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?AddRef@CBaseVideoRenderer@@UAGKXZ -- 16 bytes verified against Fable.exe 0x00CA53F0
 // Leaf: ?AddRef@CBasePin@@UAGKXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA53F0, 16 bytes, __stdcall: `this` (the IPin sub-object) at [esp+4], the
 //   owner loaded from [this-8] (CUnknown::m_pUnknown) and written back over `this`, then `jmp [ecx+4]` (IUnknown slot 1).

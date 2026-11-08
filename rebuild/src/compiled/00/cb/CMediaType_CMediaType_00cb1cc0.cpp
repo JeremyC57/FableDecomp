@@ -1,4 +1,5 @@
 // CMediaType::~CMediaType() -- DirectShow BaseClasses mtype.cpp: FreeMediaType(*this) inline: free the format block (CoTaskMemFree(pbFormat), cbFormat / pbFormat cleared) when cbFormat is non-zero, then release and clear pUnk
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ??1CMediaType@@QAE@XZ -- 56 bytes verified against Fable.exe 0x00CB1CC0
 // Leaf: ??1CMediaType@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB1CC0, 56 bytes (+ int3 padding), thiscall, plain `ret`; CoTaskMemFree through the ole32
 //   IAT (0x01440630); pUnk Release is slot 2 with the interface pushed.

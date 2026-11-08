@@ -1,4 +1,5 @@
 // CPosPassThru::NonDelegatingQueryInterface(const IID& riid, void** ppv) -- DirectShow ctlutil.cpp: clear *ppv; expose IMediaSeeking (-8) and, through the inlined CMediaPosition::NonDelegatingQueryInterface, IMediaPosition (-4); else defer to CUnknown
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?NonDelegatingQueryInterface@CPosPassThru@@UAGJABU_GUID@@PAPAX@Z -- 121 bytes verified against Fable.exe 0x00CAD380
 // Leaf: ?NonDelegatingQueryInterface@CPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD380, 121 bytes, STDMETHODIMP (__stdcall) on the CUnknown base (+0x08), `ret 0Ch`.
 //   Callees: GetInterface 0x00CACBE0, CUnknown::NonDelegatingQueryInterface 0x00CACCB0 (tail jump); IID_IMediaSeeking

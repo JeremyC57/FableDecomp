@@ -1,4 +1,5 @@
 // CRendererPosPassThru::ResetMediaTime() -- under the critical section at +0x1c clear the four counters at +0x38..+0x44 and set the dirty word at +0x48 to 1; returns 0
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?ResetMediaTime@CRendererPosPassThru@@QAEJXZ -- 47 bytes verified against Fable.exe 0x00CADDC0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CADDC0, length 47 bytes (48 with padding).
 // Leaf: ResetMediaTime
 // Vendor naming wave V1 (one address, one name): 0x00CADDC0 ?ResetMediaTime@CRendererPosPassThru@@QAEJXZ (was ?Rebuild@CAppearance_00caddc0@@QAEJXZ)

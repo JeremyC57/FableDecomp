@@ -1,4 +1,5 @@
 // CBaseList::AddTailI(void* pObject) -- DirectShow wxlist.cpp: take a node from the cache (or new CNode), fill it and link it after m_pLast; returns its POSITION or NULL
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?AddTailI@CBaseList@@IAEPAU__POSITION@@PAX@Z -- 104 bytes verified against Fable.exe 0x00CB1460
 // Leaf: ?AddTailI@CBaseList@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1460, 104 bytes (+ int3 padding). __fastcall, `ret 4`.
 // Library: DirectShow base classes (strmbase wxlist.cpp). The manifest label "List_PushNode" is descriptive.

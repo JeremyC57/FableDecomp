@@ -1,4 +1,5 @@
 // CEnumMediaTypes::CEnumMediaTypes(CBasePin*, CEnumMediaTypes*) -- DirectShow BaseClasses (amfilter.cpp): position 0, owning pin, count 1; AddRef the pin; a fresh enumerator takes the pin's media-type version, a clone copies the source enumerator's position and version
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??0CEnumMediaTypes@@QAE@PAVCBasePin@@PAV0@@Z -- 82 bytes verified against Fable.exe 0x00CABF70
 // Leaf: ??0CEnumMediaTypes
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CABF70, 82 bytes (+14 int3), __fastcall `ret 8`, returns this; stores vtable 0x012BF6BC.
 // Callees: CBasePin::AddRef through its IPin subobject (+0x0C, slot 1, no null test: a member call); CBasePin::GetMediaTypeVersion

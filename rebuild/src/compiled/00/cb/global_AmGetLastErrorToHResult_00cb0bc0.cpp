@@ -1,4 +1,5 @@
 // AmGetLastErrorToHResult() -- DirectShow wxutil.cpp: HRESULT_FROM_WIN32(GetLastError()), or E_FAIL when no error is set
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?AmGetLastErrorToHResult@@YGJXZ -- 29 bytes verified against Fable.exe 0x00CB0BC0
 // Leaf: _AmGetLastErrorToHResult@0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB0BC0, 29 bytes. STDAPI = extern "C" __stdcall with no arguments.
 // Library: DirectShow base classes (strmbase wxutil.cpp). The manifest label "Win32ErrorToHRESULT" is descriptive.

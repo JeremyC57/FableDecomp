@@ -1,4 +1,5 @@
 // CBaseRenderer::SendEndOfStream() -- DirectShow BaseClasses renbase.cpp: once EOS is pending and not yet delivered, deliver EC_COMPLETE now (no clock, or under 50 ms to go) or arm a one-shot multimedia timer for the last sample's end time
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?SendEndOfStream@CBaseRenderer@@UAEJXZ -- 154 bytes verified against Fable.exe 0x00CA6F90
 // Leaf: ?SendEndOfStream@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6F90, 154 bytes (+6 int3). __fastcall (primary slot 24), plain `ret`.
 // Callees: IReferenceClock::GetTime (slot 3, `call [ecx+0Ch]`); _alldiv (CRT 0x00F3FC50) for the / 10000;

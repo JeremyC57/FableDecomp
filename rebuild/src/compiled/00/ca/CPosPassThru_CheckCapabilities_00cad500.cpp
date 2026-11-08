@@ -1,4 +1,5 @@
 // CPosPassThru::CheckCapabilities(DWORD*) -- DirectShow BaseClasses (ctlutil.cpp): forwards IMediaSeeking::CheckCapabilities to the upstream peer's IMediaSeeking and releases it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?CheckCapabilities@CPosPassThru@@UAGJPAK@Z -- 50 bytes verified against Fable.exe 0x00CAD500
 // Leaf: ?CheckCapabilities@CPosPassThru@@UAGJPAK@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAD500, 50 bytes (+ int3 padding), STDMETHODIMP (__stdcall), `ret 8`.
 // Identity: CPosPassThru::CheckCapabilities(DWORD*) -- proven by the DirectShow BaseClasses source (strmbase names are in neither

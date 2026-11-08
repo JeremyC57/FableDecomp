@@ -1,4 +1,5 @@
 // CMediaSample::SetActualDataLength(long lActual) -- DirectShow amfilter.cpp: set the length of valid data, VFW_E_BUFFER_OVERFLOW when it exceeds the buffer size (m_cbBuffer +0x14)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetActualDataLength@CMediaSample@@UAGJJ@Z -- 29 bytes verified against Fable.exe 0x00CA9390
 // Leaf: ?SetActualDataLength@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9390, 29 bytes, STDMETHODIMP (__stdcall, `this` on the stack), `ret 8`.
 // Identity: slot 12 (cell 0x012BF710) of CMediaSample's IMediaSample2 vtable 0x012BF6E0 (QueryInterface 0x00CA9000, the landed Release 0x00CA9080 and

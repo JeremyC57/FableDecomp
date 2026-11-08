@@ -1,4 +1,5 @@
 // CMediaSample::GetProperties(DWORD cbProperties, BYTE* pbProperties) -- DirectShow amfilter.cpp IMediaSample2::GetProperties: for a non-zero size, E_POINTER on a null buffer, else fill a local AM_SAMPLE2_PROPERTIES (cbData = min(size, 0x30), flags without Sample_MediaTimeValid, type-specific flags, buffer, sizes, times, stream id, the media type only when Sample_TypeChanged) and copy cbData bytes of it out; S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?GetProperties@CMediaSample@@UAGJKPAE@Z -- 182 bytes verified against Fable.exe 0x00CA9450
 // Leaf: ?GetProperties@CMediaSample@@UAGJKPAE@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9450, 182 bytes, STDMETHODIMP `ret 0Ch`, a 0x30-byte frame local and an intrinsic memcpy
 // (`rep movsd ; rep movsb`).

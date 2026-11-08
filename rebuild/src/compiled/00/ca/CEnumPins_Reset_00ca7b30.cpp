@@ -1,4 +1,5 @@
 // CEnumPins::Reset() -- DirectShow BaseClasses amfilter.cpp: resynchronise the pin enumerator with its filter (pin version and pin count re-read), rewind it and clear the cache of pins already enumerated; S_OK
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Reset@CEnumPins@@UAGJXZ -- 48 bytes verified against Fable.exe 0x00CA7B30
 // Leaf: ?Reset@CEnumPins@@UAGJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7B30, 48 bytes (+ int3 padding), STDMETHODIMP: `this` on the stack, `ret 4`.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 448 "0xCA7B30/0xCA7B60 'CStreamState Reset' = CEnumPins::Reset/Refresh"):

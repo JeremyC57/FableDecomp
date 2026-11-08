@@ -1,4 +1,5 @@
 // CMediaSample::SetMediaTime(LONGLONG* pTimeStart, LONGLONG* pTimeEnd) -- DirectShow amfilter.cpp: set (start, end-start) or clear the sample's media times and Sample_MediaTimeValid
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetMediaTime@CMediaSample@@UAGJPA_J0@Z -- 61 bytes verified against Fable.exe 0x00CA9250
 // Leaf: ?SetMediaTime@CMediaSample
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9250, 61 bytes, STDMETHODIMP (__stdcall, `this` on the stack), `ret 0Ch`.
 // Identity: slot 18 (cell 0x012BF728) of CMediaSample's IMediaSample2 vtable 0x012BF6E0 (QueryInterface 0x00CA9000, the landed Release 0x00CA9080 and

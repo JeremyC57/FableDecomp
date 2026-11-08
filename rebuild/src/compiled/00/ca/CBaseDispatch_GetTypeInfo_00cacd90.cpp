@@ -1,4 +1,5 @@
 // CBaseDispatch::GetTypeInfo(const IID&, UINT, LCID, ITypeInfo**) -- DirectShow BaseClasses (ctlutil.cpp): loads the quartz type library on first use (LoadRegTypeLib, else LoadTypeLib "control.tlb" via OleAut32.dll), caches the ITypeInfo for riid and returns it AddRef'd
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetTypeInfo@CBaseDispatch@@QAGJABU_GUID@@IKPAPAUITypeInfo@@@Z -- 221 bytes verified against Fable.exe 0x00CACD90
 // Leaf: ?GetTypeInfo@CBaseDispatch
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CACD90, 221 bytes (+3 int3), STDMETHODIMP (`this` on the stack), `ret 14h`.
 // Callees: LoadOLEAut32 (0x00CACB20), GetLastError (IAT 0x0143FD58; AmHresultFromWin32 = `or eax, 80070000h`),

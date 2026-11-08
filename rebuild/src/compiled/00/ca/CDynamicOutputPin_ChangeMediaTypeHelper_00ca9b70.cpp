@@ -1,4 +1,5 @@
 // CDynamicOutputPin::ChangeMediaTypeHelper(const CMediaType*) -- DirectShow BaseClasses (amfilter.cpp): the connected peer (m_Connected +0x18) must ReceiveConnection the new type and SetMediaType must take it; with a memory transport (m_pInputPin +0x9C) re-read the input pin's allocator requirements (cbAlign 0 -> 1), Decommit, DecideBufferSize, Commit and NotifyAllocator(m_pAllocator +0x98, m_bPinUsesReadOnlyAllocator +0xD8); S_OK or the first failure
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ChangeMediaTypeHelper@CDynamicOutputPin@@AAEJPBVCMediaType@@@Z -- 207 bytes verified against Fable.exe 0x00CA9B70
 // Leaf: ?ChangeMediaTypeHelper@CDynamicOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9B70, 207 bytes, __fastcall `ret 4`.
 // Callees: IPin::ReceiveConnection slot 4 (with this as IPin*: `lea ecx,[esi+0Ch]` behind a null test, the cast precedes any

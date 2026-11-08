@@ -1,4 +1,5 @@
 // CBaseRenderer::Render(struct IMediaSample*) -- render one sample: S_FALSE for no sample or when not streaming, else OnRenderStart / DoRenderSample / OnRenderEnd (DirectShow BaseClasses)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?Render@CBaseRenderer@@UAEJPAUIMediaSample@@@Z -- 63 bytes verified against Fable.exe 0x00CA4B20
 // Leaf: ?Render@CBaseRenderer@@UAEJPAUIMediaSample@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4B20, 63 bytes, thiscall (__fastcall this=ecx).
 // Identity (vendor naming wave V1, proven): BaseClasses renbase.h declaration order: CBaseRenderer::Render is primary-vtable slot 42; retail CBaseRenderer vtable 0x012BF498 slot 42 (its ??_G 0x00CA7340) and CTextureRenderer vtable 0x0129D08C (RTTI) slot 42 hold 0x00CA4B20.

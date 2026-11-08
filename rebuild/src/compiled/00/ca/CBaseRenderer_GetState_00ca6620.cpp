@@ -1,4 +1,5 @@
 // CBaseRenderer::GetState(DWORD dwMSecs, FILTER_STATE* State) -- DirectShow BaseClasses renbase.cpp: wait (dispatching messages) for the pending state transition; report VFW_S_STATE_INTERMEDIATE while a pause still waits for its first sample
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?GetState@CBaseRenderer@@UAGJKPAW4_FilterState@@@Z -- 77 bytes verified against Fable.exe 0x00CA6620
 // Leaf: ?GetState@CBaseRenderer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6620, 77 bytes (+3 int3). __stdcall (STDMETHODIMP, `ret 0Ch`); IMediaFilter::GetState,
 //   so `this` is the IBaseFilter sub-object (+0x0C): m_evComplete (+0x5C) reads [this+0x50], m_State (+0x14) [this+8].

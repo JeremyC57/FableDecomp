@@ -1,4 +1,5 @@
 // CPosPassThru::GetCurrentPosition(LONGLONG*) -- DirectShow BaseClasses (ctlutil.cpp): reports the media time this object holds, else forwards the query to the upstream peer's IMediaSeeking
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?GetCurrentPosition@CPosPassThru@@UAGJPA_J@Z -- 75 bytes verified against Fable.exe 0x00CAF090
 // Leaf: ?GetCurrentPosition@CPosPassThru
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAF090, 75 bytes (+5 int3), STDMETHODIMP on the primary IMediaSeeking base, `ret 8`.
 // Callees: CPosPassThru::GetMediaTime (new virtual, primary slot 20, +0x50, thiscall), CPosPassThru::GetPeerSeeking (0x00CAD460),

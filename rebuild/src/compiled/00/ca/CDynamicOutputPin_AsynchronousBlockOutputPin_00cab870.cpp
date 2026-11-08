@@ -1,4 +1,5 @@
 // CDynamicOutputPin::AsynchronousBlockOutputPin(HANDLE) -- DirectShow BaseClasses amfilter.cpp: under m_BlockStateLock refuse a second block (VFW_E_PIN_ALREADY_BLOCKED_ON_THIS_THREAD / _BLOCKED), duplicate the caller's event (EVENT_MODIFY_STATE), go PENDING with the caller's thread id and block at once unless the streaming thread is using the pin
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?AsynchronousBlockOutputPin@CDynamicOutputPin@@IAEJPAX@Z -- 281 bytes verified against Fable.exe 0x00CAB870
 // Leaf: ?AsynchronousBlockOutputPin@CDynamicOutputPin@@IAEJPAX@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAB870, 281 bytes, thiscall `ret 4`; /EHsc frame (the CAutoLock is EH state 0);

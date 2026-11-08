@@ -1,4 +1,5 @@
 // CBaseList::GetI(POSITION) -- DirectShow BaseClasses wxlist.cpp: the object at a position without stepping (NULL for a NULL position)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxlist.cpp) ?GetI@CBaseList@@IBEPAXPAU__POSITION@@@Z -- 17 bytes verified against Fable.exe 0x00CB13A0
 // Leaf: ?GetI@CBaseList@@QBEPAXPAU__POSITION@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB13A0, 16 bytes (+ int3 padding), thiscall `ret 4` (`this` unused).
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 450 "0xCB13A0 = CBaseList::GetI"): p -> CNode, result m_pObject (+8); called

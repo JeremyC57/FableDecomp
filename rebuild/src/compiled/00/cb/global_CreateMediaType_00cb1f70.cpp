@@ -1,4 +1,5 @@
 // CreateMediaType(const AM_MEDIA_TYPE* pSrc) -- DirectShow mtype.cpp: CoTaskMemAlloc a new AM_MEDIA_TYPE and CopyMediaType into it; NULL (block freed) on failure
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?CreateMediaType@@YGPAU_AMMediaType@@PBU1@@Z -- 49 bytes verified against Fable.exe 0x00CB1F70
 // Leaf: ?CreateMediaType@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1F70, 47 bytes. WINAPI (__stdcall, C++ linkage), `ret 4`.
 // Library: DirectShow base classes (strmbase mtype.cpp). The manifest label "ImmContext_Create" is descriptive.

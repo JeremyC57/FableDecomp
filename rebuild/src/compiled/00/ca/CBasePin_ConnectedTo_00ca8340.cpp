@@ -1,4 +1,5 @@
 // CBasePin::ConnectedTo(IPin** pPin) -- DirectShow amfilter.cpp: hand out the connected peer pin (AddRef'd), VFW_E_NOT_CONNECTED when unconnected, E_POINTER for a null out pointer
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ConnectedTo@CBasePin@@UAGJPAPAUIPin@@@Z -- 48 bytes verified against Fable.exe 0x00CA8340
 // Leaf: ?ConnectedTo@CBasePin@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA8340, 48 bytes, __stdcall (STDMETHODIMP; this = the IPin sub-object
 //   +0x0C, so m_Connected reads [this+0x0C]), ret 8. Callee: the peer's IUnknown::AddRef (slot 1).

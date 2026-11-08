@@ -1,4 +1,5 @@
 // CDynamicOutputPin::BlockOutputPin() -- DirectShow BaseClasses amfilter.cpp: block the output pin now: reset the unblock event, signal and close the Block() caller's duplicated event, state BLOCKED, forget the event
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?BlockOutputPin@CDynamicOutputPin@@IAEXXZ -- 64 bytes verified against Fable.exe 0x00CA9820
 // Leaf: ?BlockOutputPin@CDynamicOutputPin@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9820, 64 bytes, thiscall, plain `ret`; ResetEvent / SetEvent / CloseHandle through the
 //   KERNEL32 IAT (0x0143FED4 / 0x0143FDE0 / 0x0143FE30).

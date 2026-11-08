@@ -1,4 +1,5 @@
 // CMediaType::ReallocFormatBuffer(unsigned long length) -- DirectShow mtype.cpp: reallocate the format block, copying min(length, cbFormat) bytes of the old one before freeing it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?ReallocFormatBuffer@CMediaType@@QAEPAEK@Z -- 121 bytes verified against Fable.exe 0x00CB1A40
 // Leaf: ?ReallocFormatBuffer@CMediaType@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1A40, 119 bytes (+ int3 padding). __fastcall, `ret 4`.
 // Library: DirectShow base classes (strmbase mtype.cpp). The manifest label "COM_AllocAndCacheBuffer_WithCopy" is

@@ -1,4 +1,5 @@
 // CDynamicOutputPin::SynchronousBlockOutputPin() -- DirectShow BaseClasses amfilter.cpp: block with a private auto-reset event: AsynchronousBlockOutputPin on it, wait for it (WaitEvent, inlined: S_OK / last-error HRESULT on WAIT_FAILED / E_UNEXPECTED), close it, S_OK unless that failed
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SynchronousBlockOutputPin@CDynamicOutputPin@@IAEJXZ -- 149 bytes verified against Fable.exe 0x00CAC400
 // Leaf: ?SynchronousBlockOutputPin@CDynamicOutputPin@@IAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAC400, 149 bytes (+ int3 padding), thiscall, plain `ret`; CreateEventW / WaitForSingleObject /
 //   CloseHandle through the KERNEL32 IAT (0x0143FDC8 / 0x0143FEAC / 0x0143FE30); a NULL event tail-jumps to

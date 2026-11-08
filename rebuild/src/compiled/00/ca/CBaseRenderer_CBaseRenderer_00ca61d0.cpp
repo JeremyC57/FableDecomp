@@ -1,4 +1,5 @@
 // CBaseRenderer::CBaseRenderer(REFCLSID, LPCTSTR, LPUNKNOWN, HRESULT*) -- DirectShow strmbase renderer constructor: CBaseFilter on the interface lock, CBaseRenderer's three vtables, the init list, the three critical sections, then Ready()
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ??0CBaseRenderer@@QAE@ABU_GUID@@PAGPAUIUnknown@@PAJ@Z -- 248 bytes verified against Fable.exe 0x00CA61D0
 // Leaf: ??0CBaseRenderer@@QAE@ABU_GUID@@PBGPAUIUnknown@@PAJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA61D0, 248 bytes, thiscall, `ret 10h`; built under /EHsc (states 0-2 for the three CAMEvent members).
 // Identity (proven, chunk 704 suggestion): the DX9 SDK strmbase renbase.cpp constructor. (1) The proven CBaseVideoRenderer ctor 0x00CA7360

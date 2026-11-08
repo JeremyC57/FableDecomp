@@ -1,4 +1,5 @@
 // CMediaSample::AddRef() -- DirectShow BaseClasses (amfilter.cpp): `return InterlockedIncrement(&m_cRef);` over the private count m_cRef (+0x44); returns the new count
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?AddRef@CMediaSample@@UAGKXZ -- 17 bytes verified against Fable.exe 0x00CA9060
 // Leaf: ?AddRef@CMediaSample@@UAGKXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9060, 17 bytes, STDMETHODIMP_(ULONG) (__stdcall, `this` on the stack): the address of
 //   m_cRef replaces `this` in the caller's argument slot and the import is tail-jumped (`jmp [0x0143FD34]`, KERNEL32

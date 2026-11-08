@@ -1,4 +1,5 @@
 // IComObject_Retail::vcall{48}(IComObject_Retail* object) -- compiler-generated vcall thunk (`??_9@$BDA@AG`, `[thunk]: __stdcall 'vcall'{48,{flat}}`): the target of a pointer to a __stdcall virtual member in slot 12 (+0x30), forwarding the stack `this` to the object's vtable slot
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??_9@$BDA@AG -- 9 bytes verified against Fable.exe 0x00CAEF70
 // Leaf: ??_9@$BDA@AG
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CAEF70, length 9 bytes (16 with padding). Caller 0x00CAF0C7 (the DirectShow
 // base-class region). The catalogue row 00caef70 (51 bytes) held this body and three `return this` accessors at

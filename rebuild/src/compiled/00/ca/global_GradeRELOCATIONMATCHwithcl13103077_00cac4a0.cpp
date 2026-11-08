@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?ChangeOutputFormat@CDynamicOutputPin@@QAEJPBU_AMMediaType@@_J1N@Z -- 194 bytes verified against Fable.exe 0x00CAC4A0
 // CEngineScreenEffectRenderer::OnRenderEffect(const AM_MEDIA_TYPE*, long, long, long, long, double) -- copy the media type into a CMediaType local, apply it through the object's type setter and, when that succeeds, hand the remaining arguments to virtual slot 22; returns the first failing HRESULT, else S_OK
 // Leaf: OnRenderEffect
 // Flags: /EHsc /GS

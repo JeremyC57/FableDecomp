@@ -1,4 +1,5 @@
 // GetInterface(LPUNKNOWN pUnk, void** ppv) -- DirectShow BaseClasses combase.cpp: hand out an interface pointer with a reference: E_POINTER for a null ppv, else *ppv = pUnk, pUnk->AddRef(), NOERROR
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/combase.cpp) _GetInterface@8 -- 33 bytes verified against Fable.exe 0x00CACBE0
 // Leaf: _GetInterface@8
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CACBE0, 33 bytes (+ int3 padding). STDAPI = extern "C" __stdcall, `ret 8`.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 448 callee "0xCACBE0 'CanMoveResource' = combase GetInterface" and chunk 449

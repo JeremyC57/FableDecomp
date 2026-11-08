@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::NonDelegatingQueryInterface(REFIID, void**) -- DirectShow base class: hand out IQualProp / IQualityControl, else defer to CBaseRenderer
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?NonDelegatingQueryInterface@CBaseVideoRenderer@@UAGJABU_GUID@@PAPAX@Z -- 129 bytes verified against Fable.exe 0x00CA6080
 // Leaf: NonDelegatingQueryInterface
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA6080, 129 bytes. __stdcall (STDMETHODIMP, `ret 0Ch`).
 // Class: catalog "CTextureRenderer::vfunc_0" -- the body is the DirectShow strmbase (renbase.cpp)

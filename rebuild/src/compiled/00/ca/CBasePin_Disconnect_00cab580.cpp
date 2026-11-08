@@ -1,4 +1,5 @@
 // CBasePin::Disconnect() -- DirectShow amfilter.cpp IPin::Disconnect: under the pin lock, VFW_E_NOT_STOPPED unless the filter is stopped; then the inlined DisconnectInternal: when connected, BreakConnect() (its failure is returned), release and clear m_Connected (S_OK), else S_FALSE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Disconnect@CBasePin@@UAGJXZ -- 168 bytes verified against Fable.exe 0x00CAB580
 // Leaf: ?Disconnect@CBasePin@@UAGJXZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAB580, 168 bytes, STDMETHODIMP `ret 4`; `this` on the stack is the IPin subobject (+0x0C):

@@ -1,4 +1,5 @@
 // CEnumPins::Next(ULONG cPins, IPin** ppPins, ULONG* pcFetched) -- DirectShow BaseClasses amfilter.cpp: hand out up to cPins pins of the filter not yet in the enumerator's cache (AddRef'd), refreshing first when the filter's pin version moved; S_OK when all cPins were returned, else S_FALSE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Next@CEnumPins@@UAGJKPAPAUIPin@@PAK@Z -- 276 bytes verified against Fable.exe 0x00CAAFC0
 // Leaf: ?Next@CEnumPins@@UAGJKPAPAUIPin@@PAK@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAAFC0, 276 bytes, STDMETHODIMP (`this` on the stack, `ret 10h`); referenced only
 //   from slot 3 of the CEnumPins IEnumPins vtable 0x012BF69C (QueryInterface 0x00CA7A80, AddRef 0x00CA7AE0, Release

@@ -1,4 +1,5 @@
 // CUnknown::CUnknown(const char* pName, IUnknown* pUnk) -- DirectShow base-class constructor: counts the live object (CBaseObject), owner = pUnk or the object's own non-delegating interface, reference count 0
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/combase.cpp) ??0CUnknown@@QAE@PBDPAUIUnknown@@@Z -- 40 bytes verified against Fable.exe 0x00CACB80
 // Leaf: ??0CUnknown@@QAE@PBDPAUIUnknown@@@Z
 // Vendor naming V2 (plan phase 1, one address, one name; V1 decision D2): the CUnknown base is strmbase's CMyBaseObject (combase.h
 //   CBaseObject renamed; RTTI of vtable 0x0129D08C): its live-object count is ?m_cObjects@CMyBaseObject@@0JA 0x0143CCF4 (was ?m_cObjects@CBaseObject@@0JA)

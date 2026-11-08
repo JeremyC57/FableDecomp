@@ -1,4 +1,5 @@
 // CBaseFilter::Unregister() -- DirectShow base class: unregister the filter's setup data, treating "not registered" as success
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Unregister@CBaseFilter@@UAGJXZ -- 125 bytes verified against Fable.exe 0x00CAAF10
 // Leaf: ?Unregister@CBaseFilter
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAAF10, 123 bytes (+5 int3). __stdcall (STDMETHODIMP, `ret 4`).
 // Class: catalog "CTextureRenderer::vfunc_4" -- slot 4 of CTextureRenderer's IAMovieSetup vtable 0x0129D030; the body is

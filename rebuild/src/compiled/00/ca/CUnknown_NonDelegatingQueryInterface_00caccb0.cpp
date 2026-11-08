@@ -1,4 +1,5 @@
 // CUnknown::NonDelegatingQueryInterface(const IID&, void**) -- DirectShow BaseClasses (combase.cpp): E_POINTER for a null ppv; IID_IUnknown hands out this object's non-delegating interface AddRef'd (the inlined GetInterface); anything else clears *ppv and returns E_NOINTERFACE
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/combase.cpp) ?NonDelegatingQueryInterface@CUnknown@@UAGJABU_GUID@@PAPAX@Z -- 71 bytes verified against Fable.exe 0x00CACCB0
 // Leaf: ?NonDelegatingQueryInterface@CUnknown
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CACCB0, 71 bytes (+9 int3), STDMETHODIMP: `this` on the stack, `ret 0Ch`.
 // Callees: none out of line: GetInterface (0x00CACBE0) is defined in the same TU and inlined (its null test folds away);

@@ -1,4 +1,5 @@
 // CBaseFilter::Register() -- DirectShow base class: register the filter's setup data with the filter mapper
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?Register@CBaseFilter@@UAGJXZ -- 107 bytes verified against Fable.exe 0x00CAAEA0
 // Leaf: ?Register@CBaseFilter
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAAEA0, 107 bytes (+5 int3). __stdcall (STDMETHODIMP, `ret 4`).
 // Class: catalog "CTextureRenderer::vfunc_3" -- slot 3 of CTextureRenderer's IAMovieSetup vtable 0x0129D030; the body is

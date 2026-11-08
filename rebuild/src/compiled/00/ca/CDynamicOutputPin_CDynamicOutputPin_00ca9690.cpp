@@ -1,4 +1,5 @@
 // CDynamicOutputPin::~CDynamicOutputPin() -- DirectShow BaseClasses amfilter.cpp: close the unblock and the notify-caller events, then m_BlockStateLock's ~CCritSec (DeleteCriticalSection) and the CBasePin base destructor
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??1CDynamicOutputPin@@UAE@XZ -- 88 bytes verified against Fable.exe 0x00CA9690
 // Leaf: ??1CDynamicOutputPin@@UAE@XZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CA9690, 88 bytes, thiscall, tail `jmp ~CBasePin`; CloseHandle / DeleteCriticalSection

@@ -1,4 +1,5 @@
 // CMediaType::IsValid() -- DirectShow mtype.cpp: TRUE when majortype is not GUID_NULL
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/mtype.cpp) ?IsValid@CMediaType@@QBEHXZ -- 24 bytes verified against Fable.exe 0x00CB1920
 // Leaf: ?IsValid@CMediaType@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB1920, 24 bytes. __fastcall const, no arguments.
 // Library: DirectShow base classes (strmbase mtype.cpp). The manifest label "Std_MemCmp_Dwords" is descriptive.

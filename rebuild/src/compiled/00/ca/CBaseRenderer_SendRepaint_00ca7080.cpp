@@ -1,4 +1,5 @@
 // CBaseRenderer::SendRepaint() -- DirectShow BaseClasses renbase.cpp: under the renderer lock, unless playback was aborted, the input pin is unconnected or flushing, the stream has ended or a repaint is already out, send EC_REPAINT with the input pin and clear the repaint status
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?SendRepaint@CBaseRenderer@@QAEXXZ -- 150 bytes verified against Fable.exe 0x00CA7080
 // Leaf: ?SendRepaint@CBaseRenderer@@QAEXXZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7080, 150 bytes. thiscall, plain `ret`; /EHsc frame (the CAutoLock is EH state 0).

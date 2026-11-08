@@ -1,4 +1,5 @@
 // CBaseOutputPin::DeliverNewSegment(REFERENCE_TIME tStart, REFERENCE_TIME tStop, double dRate) -- DirectShow amfilter.cpp: forward a new segment to the connected pin (IPin::NewSegment), VFW_E_NOT_CONNECTED when unconnected
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?DeliverNewSegment@CBaseOutputPin@@UAEJ_J0N@Z -- 57 bytes verified against Fable.exe 0x00CA88F0
 // Leaf: ?DeliverNewSegment@CBaseOutputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA88F0, 57 bytes, thiscall `ret 18h`. Callee: IPin::NewSegment (slot 17, +0x44) on
 //   m_Connected (+0x18).

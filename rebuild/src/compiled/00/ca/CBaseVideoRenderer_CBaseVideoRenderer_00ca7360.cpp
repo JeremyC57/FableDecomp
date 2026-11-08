@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::CBaseVideoRenderer(REFCLSID, LPCTSTR, LPUNKNOWN, HRESULT*) -- DirectShow strmbase video renderer constructor: CBaseRenderer from the four arguments, this class's five vtables, the three counters cleared, then ResetStreamingTimes()
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ??0CBaseVideoRenderer@@QAE@ABU_GUID@@PAGPAUIUnknown@@PAJ@Z -- 103 bytes verified against Fable.exe 0x00CA7360
 // Leaf: ??0CBaseVideoRenderer@@QAE@ABU_GUID@@PBGPAUIUnknown@@PAJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7360, 103 bytes, thiscall, `ret 10h`; no EH frame (default flags).
 // Identity (proven): the DX9 SDK strmbase renbase.cpp constructor. (1) It stores the same five vtables as the chunk 704 ~CBaseVideoRenderer

@@ -1,4 +1,5 @@
 // CPosPassThru::QueryInterface(REFIID riid, void** ppv) -- DirectShow BaseClasses DECLARE_IUNKNOWN: delegate IUnknown::QueryInterface to the owning (outer) unknown, GetOwner()->QueryInterface(riid, ppv)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ?QueryInterface@CPosPassThru@@UAGJABU_GUID@@PAPAX@Z -- 15 bytes verified against Fable.exe 0x00CAFC40
 // Leaf: ?QueryInterface@CPosPassThru@@UAGJABU_GUID@@PAPAX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAFC40, 15 bytes (+1 int3), STDMETHODIMP (__stdcall) on the IMediaSeeking sub-object (+0x00),
 //   so m_pUnknown is [this+0x0C] (CMediaPosition at +4, its CUnknown at +8: m_pUnknown +4 within CUnknown); the call is a tail

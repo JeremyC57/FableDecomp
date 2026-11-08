@@ -1,4 +1,5 @@
 // memmoveInternal(void* dst, const void* src, unsigned int count) -- DirectShow wxutil.cpp overlap-safe memory move: forward dword+byte copy, or a backward byte copy when dst overlaps the tail of src
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) _memmoveInternal@12 -- 81 bytes verified against Fable.exe 0x00CB0310
 // Grade: RELOCATION_MATCH -- retail_asm through the shared helper strmbase/memmoveInternal.h (2026-11-05 asm migration, docs/pipeline/ASM_RULES.md); no inline asm in this row
 // Leaf: ?memmoveInternal@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB0310, 81 bytes (+ int3 padding). __stdcall (`ret 0Ch`) with an

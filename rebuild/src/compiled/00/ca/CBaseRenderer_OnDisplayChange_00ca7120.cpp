@@ -1,4 +1,5 @@
 // CBaseRenderer::OnDisplayChange() -- DirectShow BaseClasses renbase.cpp: under the renderer lock, when the input pin is connected, send EC_DISPLAY_CHANGED with the pin (held by AddRef/Release), abort playback and clear the pending sample; FALSE when unconnected
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?OnDisplayChange@CBaseRenderer@@QAEHXZ -- 178 bytes verified against Fable.exe 0x00CA7120
 // Leaf: ?OnDisplayChange@CBaseRenderer@@QAEHXZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7120, 178 bytes. thiscall, plain `ret`; /EHsc frame (the CAutoLock is EH state 0).

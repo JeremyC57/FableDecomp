@@ -1,4 +1,5 @@
 // CBaseAllocator::SetNotify(IMemAllocatorNotifyCallbackTemp* pNotify) -- DirectShow amfilter.cpp: under the allocator's own lock, AddRef the new release-callback sink, Release the old one and store it (m_pNotify +0x58)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetNotify@CBaseAllocator@@UAGJPAUIMemAllocatorNotifyCallbackTemp@@@Z -- 120 bytes verified against Fable.exe 0x00CA9FC0
 // Leaf: ?SetNotify@CBaseAllocator
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA9FC0, 120 bytes, STDMETHODIMP (__stdcall) on the IMemAllocatorCallbackTemp

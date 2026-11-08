@@ -1,4 +1,5 @@
 // IMediaSeeking::vcall{40}(IMediaSeeking* object) -- compiler-generated __stdcall vcall thunk `[thunk]: __stdcall 'vcall'{40,{flat}}' for the member pointer to GetDuration (slot 10): read the stacked `this`, jump through its vtable slot
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??_9@$BCI@AG -- 9 bytes verified against Fable.exe 0x00CAEF40
 // Leaf: ??_9@$BCI@AG
 // Flags: none
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CAEF40, 9 bytes: `mov eax,[esp+4] ; mov eax,[eax] ; jmp [eax+28h]`.

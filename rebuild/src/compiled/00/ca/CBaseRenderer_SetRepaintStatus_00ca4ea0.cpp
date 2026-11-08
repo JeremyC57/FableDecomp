@@ -1,4 +1,5 @@
 // CBaseRenderer::SetRepaintStatus(BOOL bRepaint) -- DirectShow BaseClasses renbase.cpp: under the renderer lock, record whether a repaint may be sent (m_bRepaintStatus)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?SetRepaintStatus@CBaseRenderer@@QAEXH@Z -- 39 bytes verified against Fable.exe 0x00CA4EA0
 // Leaf: ?SetRepaintStatus@CBaseRenderer@@QAEXH@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA4EA0, 37 bytes. thiscall `ret 4`; no EH frame (nothing can throw under the lock).
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 448 "0xCA4EA0 = SetRepaintStatus"): CBaseRenderer::SendRepaint 0x00CA7080 (renamed

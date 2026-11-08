@@ -82,10 +82,33 @@ def _cl():
     return (cl, Path(vc)) if cl and cl.is_file() else (None, None)
 
 
+# Absolute include directories named by environment variable in vendor_libs.tsv (`$VAR` or `$VAR/sub`), with the
+# lane default used when the variable is unset. FABLE_WINDDK_INC: the WinDDK 3790.1830 `inc/wnet` set (windows.h,
+# ks.h, mmreg.h ...) the DirectShow base classes were proven with (SDK_NEEDS.md section 0).
+ENV_INCLUDE_DEFAULTS = {
+    "FABLE_WINDDK_INC": lambda: Path(os.environ["S"]) / "wine" / "winddk" / "3790.1830" / "inc" / "wnet"
+    if os.environ.get("S") else None,
+}
+
+
+def env_dir(var):
+    v = os.environ.get(var)
+    if v:
+        return Path(v)
+    d = ENV_INCLUDE_DEFAULTS.get(var)
+    return d() if d else None
+
+
 def include_dirs(cfg, row, tree):
     out = []
     for inc in row["includes_list"]:
-        if inc.startswith("{"):
+        if inc.startswith("$"):
+            var, _, rest = inc[1:].partition("/")
+            base = env_dir(var)
+            if base is None or not (base / rest).is_dir():
+                raise FileNotFoundError(f"include {inc}: set {var} (now {base})")
+            out.append(base / rest if rest else base)
+        elif inc.startswith("{"):
             tag, rest = inc[1:].split("}", 1)
             other = tree_dir(cfg[tag]) if tag in cfg else None
             if other is None:
@@ -162,7 +185,7 @@ def build_tu(cfg, tag, member, rebuild=False):
     e["INCLUDE"] = _wpath(vc / "include")
     e.setdefault("WINEDEBUG", "-all")
     try:
-        r = subprocess.run(cmd, capture_output=True, text=True, errors="replace", env=e, timeout=600)
+        r = subprocess.run(cmd, capture_output=True, text=True, errors="replace", env=e, timeout=240)
     except Exception as ex:  # wine missing, timeout
         return None, f"cl not run ({type(ex).__name__})"
     if r.returncode or not obj.is_file():

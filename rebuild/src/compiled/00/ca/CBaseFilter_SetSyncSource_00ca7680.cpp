@@ -1,4 +1,5 @@
 // CBaseFilter::SetSyncSource(IReferenceClock*) -- DirectShow base class: under the filter lock, add-ref the new reference clock, release the old one, store it
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetSyncSource@CBaseFilter@@UAGJPAUIReferenceClock@@@Z -- 109 bytes verified against Fable.exe 0x00CA7680
 // Leaf: SetSyncSource
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7680, 109 bytes (+3 int3). __stdcall (STDMETHODIMP, `ret 8`), /EHsc frame.

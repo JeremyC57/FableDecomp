@@ -1,4 +1,5 @@
 // CBasePin::SetMediaType(const CMediaType*) -- DirectShow BaseClasses amfilter.cpp: copy the agreed media type into m_mt (CMediaType::Set 0x00CB2020; E_OUTOFMEMORY when the format block cannot be copied) and return NOERROR unless that failed
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?SetMediaType@CBasePin@@UAEJPBVCMediaType@@@Z -- 26 bytes verified against Fable.exe 0x00CA80A0
 // Leaf: ?SetMediaType@CBasePin@@UAEJPBVCMediaType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA80A0, 24 bytes, thiscall `ret 4`; VC7.1 folds `if (FAILED(hr)) return hr; return NOERROR;`
 //   into the branchless setge / dec / and.

@@ -1,4 +1,5 @@
 // CBaseInputPin::NonDelegatingQueryInterface(const IID& riid, void** ppv) -- DirectShow amfilter.cpp: expose IMemInputPin (the sub-object at +0x98), else defer to CBasePin
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?NonDelegatingQueryInterface@CBaseInputPin@@UAGJABU_GUID@@PAPAX@Z -- 78 bytes verified against Fable.exe 0x00CA89A0
 // Leaf: ?NonDelegatingQueryInterface@CBaseInputPin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA89A0, 78 bytes, STDMETHODIMP (__stdcall) on the primary base, `ret 0Ch`.
 //   Callees: GetInterface 0x00CACBE0 (STDAPI), CBasePin::NonDelegatingQueryInterface 0x00CA7CE0 (tail jump);

@@ -1,4 +1,5 @@
 // CDeferredCommand::CDeferredCommand(CCmdQueue* pQ, IUnknown* pUnk, HRESULT* phr, IUnknown* pUnkExecutor, REFTIME time, GUID* iid, long dispidMethod, short wFlags, long nArgs, VARIANT* pDispParams, VARIANT* pvarResult, short* puArgErr, BOOL bStream) -- DirectShow strmbase ctlutil.cpp constructor (DX9 SDK text)
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/ctlutil.cpp) ??0CDeferredCommand@@QAE@PAVCCmdQueue@@PAUIUnknown@@PAJ1NPAU_GUID@@JFJPAUtagVARIANT@@4PAFH@Z -- 501 bytes verified against Fable.exe 0x00CAF230
 // Leaf: ??0CDeferredCommand@@QAE@PAVCCmdQueue@@PAUIUnknown@@PAJ1NPAU_GUID@@JFJPAUtagVARIANT@@4PAFH@Z
 // Flags: /EHsc
 // Identity: ret 38h = 14 dword args (REFTIME double = 2); E_ABORT store into m_hrResult; wFlags==DISPATCH_PROPERTYPUT(4)

@@ -1,4 +1,5 @@
 // DirectShow CBasePin wide-object-name constructor, native CAB370.
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ??0CBasePin@@QAE@PADPAVCBaseFilter@@PAVCCritSec@@PAJPBGW4_PinDirection@@@Z -- 250 bytes verified against Fable.exe 0x00CAB370
 // SDK abstract novtable interfaces preserved; no production vtable emitted.
 // Genuine SDK CBaseObject is distinct from Fable engine CBaseObject.
 #include <stddef.h>

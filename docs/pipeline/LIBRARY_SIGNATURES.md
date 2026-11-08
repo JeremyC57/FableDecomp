@@ -270,12 +270,13 @@ the rows are proven byte for byte plus relocations against retail.
 | `lzo-1.08` | oberhumer.com tarball (sha256 `bcead46b...`) | `/O2 /Oy /W3 /MD /GS` | src/lzo1x_9x.c lzo1x_d1.c lzo1x_d2.c lzo_util.c (+ `lzo1x_f1.asm`, Toolchain-library claim above) | none |
 | `libogg-1.1.1` | gitlab.xiph.org tag archive `v1.1.1` (sha256 `78e192eb...`, tree `3a837b83...`) | `/O2 /Ob1 /Oy /W3 /MD /GS /TC /Gr` | src/framing.c bitwise.c | `oggpack_writecopy_helper` differs, so its two callers `oggpack(B)_writecopy` fail the relocation check (both outside the manifest) |
 | `libvorbis-1.0.1` | gitlab.xiph.org tag archive `v1.0.1` (sha256 `da0e38b2...`, tree `abc02221...`; includes `{libogg-1.1.1}/include`) | same | 16 TUs of lib/ (analysis bitrate block codebook envelope floor0 info lookup lpc mapping0 mdct registry res0 smallft synthesis window) | floor1.c lsp.c psy.c sharedbook.c: under `/Gr` their qsort comparators become `__fastcall` and cl stops with C2440 (floor1.c(220), lsp.c(446), psy.c(991), sharedbook.c(354)); retail's comparators are `__cdecl`, so Lionhead built a patched copy. vorbisfile.c is Lionhead's fork (reconstruction). vorbisenc.c is not linked |
+| `strmbase-dxsdk-sum2004` | DirectX 9.0c SDK Summer 2004 installer `dxsdk_sum2004.exe` (archive.org, SHA-1 `73d875b9...` = item metadata, sha256 `96cf9a2e...`; tree `5941d6f4...` = `BaseClasses/` + `Include/` of the inner `dxsdk.exe`; windows.h etc. from `$FABLE_WINDDK_INC` = WinDDK 3790.1830 `inc/wnet`) | `/O2 /W3 /MD /GS /EHsc /Gz /GF /Gy /DNDEBUG /D_MBCS /D_LIB /D_WIN32_DCOM /DWINVER=0x400 /DWIN32 /DUNICODE` | BaseClasses/amfilter.cpp combase.cpp ctlutil.cpp mtype.cpp renbase.cpp wxlist.cpp wxutil.cpp | none (`/Gz` and `/GS` are required, the SDK .vcproj `/Ob1` loses 55 sections; `WINVER=0x400` makes `CompatibleTimeSetEvent` a bare `jmp [__imp__timeSetEvent@20]`) |
 
 (downloads.xiph.org and ftp.osuosl.org refuse the lane proxy's TLS, so the Xiph trees come from the vendor's own GitLab
 tag archives; their .c/.h files equal the per-file `raw.githubusercontent.com/xiph/...` fetch of the probe.)
 
 ```
-python3 -I tools/decomp_pipeline/libsig/fetch_vendor_libs.py --dest $S/thirdparty     # 4 trees; export FABLE_THIRDPARTY=$S/thirdparty
+python3 -I tools/decomp_pipeline/libsig/fetch_vendor_libs.py --dest $S/thirdparty --dl $S/sdk/dl   # 5 trees (7z for the DX SDK); export FABLE_THIRDPARTY=$S/thirdparty
 python3 -I tools/decomp_pipeline/libsig/libsig_scan.py --vendor all --log $S/libsig/logs/vendor_scan   # -> rebuild/oracles/vendor_signatures.tsv
 python3 -I tools/decomp_pipeline/libsig/lib_verify.py $(awk -F'\t' 'NR>1{print $1}' rebuild/oracles/vendor_signatures.tsv)
 ```
@@ -328,6 +329,20 @@ Applied 2026-11-08:
 * Not landed: `vorbis_book_init_decode` 0x00C95580 (sharedbook.c, not provable from unmodified source; stays unlanded),
   the 37 rows outside the manifest (boundary-row work, as the CRT boundary pass did), and the landed hand-written rows
   of floor1.c / lsp.c / psy.c / sharedbook.c / vorbisfile.c (no vendor proof; they stay genuine reconstructions).
+* DirectShow base classes (second pass, 2026-11-08; `SDK_NEEDS.md`): the vendor row `strmbase-dxsdk-sum2004` is fetched
+  from Microsoft's installer (`fetch_vendor_libs.py`: a `7z2:` unpack spec opens the WEXTRACT exe, then only
+  `Samples/C++/DirectShow/BaseClasses` and `Include` of the inner `dxsdk.exe`; an include entry `$VAR[/sub]` names an
+  absolute directory by environment variable). The scan gives 588 rows (348 landed, 7 unlanded, 233 outside the manifest),
+  `lib_verify.py` 588/588 MATCH. Landed as `// Vendor-library:` stubs (8): 0x00CA61A0 / 0x00CA61B0 / 0x00CA61C0
+  `CBaseInputPin::QueryInterface/AddRef/Release` `adjustor{140}`, 0x00CA7D60 `CBasePin::NonDelegatingAddRef`, 0x00CAA750 /
+  0x00CAA760 `CDynamicOutputPin::QueryInterface/AddRef` `adjustor{148}`, 0x00CAFD60 `CRendererPosPassThru::`vector deleting
+  destructor'` `adjustor{8}`, and 0x00CA4700 `TimeDiff` (renbase.cpp; new boundary row in `boundary-starts.tsv` +
+  `manifest_add_boundaries.py --write`: strmbase starts at 0x00CA4700). 348 landed hand-written rows (345 genuine, 3
+  `retail_asm`) carry `// Vendor-proof:`. 0x00CB0C10 (landed as the winmm `timeSetEvent` thunk) is wxutil.cpp
+  `?CompatibleTimeSetEvent@@YGIIIP6GXIIKKK@ZKI@Z`: a Vendor-library claim for it proves MATCH (1/1 relocation, the
+  `__imp__timeSetEvent@20` slot) and so does its current Toolchain-library claim; its respelling is queued (sdk1108),
+  and the scan cannot emit it (only 2 unmasked bytes, below the 4-byte search anchor). 56 landed strmbase rows carry
+  a non-vendor name (`NAME_FIXES_strmbase.tsv` handed back).
 * Respellings handed back (`NAME_FIXES.tsv`, not applied): 0x00C9CB60 `@LACING_ADJUST@4` (landed as
   `Math_ComputeByteChunkCount`), 0x00C9EC20 `@ilog@4` (as `libvorbis::ilog2`), 0x00CA1000 `@res0_inverse@20` and
   0x00CA12B0 `@res1_inverse@20` (as `_gapscan::sub_*`).

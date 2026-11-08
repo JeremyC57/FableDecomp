@@ -1,4 +1,5 @@
 // CAMMsgEvent::WaitMsg(DWORD) -- DirectShow BaseClasses (wxutil.cpp): waits on the event while letting sent messages through (MsgWaitForMultipleObjects + PeekMessage), shrinking the timeout as time passes; TRUE when the event fired
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/wxutil.cpp) ?WaitMsg@CAMMsgEvent@@QAEHK@Z -- 118 bytes verified against Fable.exe 0x00CB01C0
 // Leaf: ?WaitMsg@CAMMsgEvent
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB01C0, 118 bytes, thiscall, `ret 4`.
 // Callees: WINMM timeGetTime (IAT 0x014404B4), USER32 MsgWaitForMultipleObjects (IAT 0x014403B4, held in ebp),

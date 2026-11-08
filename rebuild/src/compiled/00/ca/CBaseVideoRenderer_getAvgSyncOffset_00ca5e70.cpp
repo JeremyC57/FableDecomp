@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::get_AvgSyncOffset(int* piAvg) -- DirectShow BaseClasses renbase.cpp IQualProp: under the interface lock, the average sync offset in ms (m_iTotAcc / (frames drawn - 1)), 0 without a clock or with fewer than two frames
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ?get_AvgSyncOffset@CBaseVideoRenderer@@UAGJPAH@Z -- 107 bytes verified against Fable.exe 0x00CA5E70
 // Leaf: ?get_AvgSyncOffset@CBaseVideoRenderer@@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA5E70, 107 bytes (+5 int3). __stdcall (STDMETHODIMP, `ret 8`); IQualProp slot 7, so

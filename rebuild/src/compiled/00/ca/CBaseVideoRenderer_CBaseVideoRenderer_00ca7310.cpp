@@ -1,4 +1,5 @@
 // CBaseVideoRenderer::~CBaseVideoRenderer() -- DirectShow base-class video renderer destructor: the empty SDK body (its ASSERT compiles away) stores this class's five vtables, then the CBaseRenderer destructor runs
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/renbase.cpp) ??1CBaseVideoRenderer@@UAE@XZ -- 45 bytes verified against Fable.exe 0x00CA7310
 // Leaf: ??1CBaseVideoRenderer@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7310, 45 bytes, thiscall, tail jump to ~CBaseRenderer.
 // Identity (proven): the DirectShow strmbase renbase.cpp (DX9 SDK) CBaseVideoRenderer destructor. (1) The five vtables it stores

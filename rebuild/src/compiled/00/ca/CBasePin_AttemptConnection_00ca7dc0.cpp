@@ -1,4 +1,5 @@
 // CBasePin::AttemptConnection(IPin*, const CMediaType*) -- DirectShow BaseClasses (amfilter.cpp): CheckConnect, CheckMediaType, look connected (m_Connected +0x18 AddRef'd), SetMediaType, the peer's ReceiveConnection and CompleteConnect; a refused type maps S_FALSE/E_FAIL/E_INVALIDARG to VFW_E_TYPE_NOT_ACCEPTED; every failure runs BreakConnect and drops m_Connected
+// Vendor-proof: strmbase-dxsdk-sum2004(BaseClasses/amfilter.cpp) ?AttemptConnection@CBasePin@@IAEJPAUIPin@@PBVCMediaType@@@Z -- 174 bytes verified against Fable.exe 0x00CA7DC0
 // Leaf: ?AttemptConnection@CBasePin
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CA7DC0, 174 bytes, __fastcall `ret 8` (a protected non-virtual member).
 // Callees (primary vtable, `this` in ecx): CheckConnect slot 10 (+0x28), BreakConnect 11 (+0x2C), CheckMediaType 8 (+0x20),
