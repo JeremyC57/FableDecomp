@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+0x00BD5C90	DIFFER	2935v2935	-	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveToShadowBuffer; 140 grades; 86 diff lines (x87 term order, constant X/Y store order, slot residue); /d2inlS100
+0x00BCA950	DIFFER	3751v3749	-	CEnginePrimitiveManagerSpriteTrails::RenderSpriteTrail; 55 grades; register allocation (points/n vs trail_size for ebx) drives frame and slots

@@ -28054,3 +28054,6 @@ chunk	address	module	name	length
 890	00551ea0	NUISystem::CTable	NUISystem::CTable::ConstructSpritesToDraw	3849
 890	0056ad40	CQuestManager	CQuestManager::UpdateUI_QuestMenu	4284
 890	00498490	CProgressDisplay	DrawRetailDisplay	5101
+891	005a5b31	CTCInventoryTrade	ConstructActualWantedInventoryPC	3128
+891	005ac10e	CTCInventoryTrade	ConstructActualBuyInventoryPC	3532
+891	005a4cdd	CTCInventoryTrade	ConstructActualSellInventoryPC	3668
