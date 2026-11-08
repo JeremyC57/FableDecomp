@@ -28037,3 +28037,5 @@ chunk	address	module	name	length
 880	0058af10	CTCInventory	OpenPCOptionsMenu	13048
 881	00c812f0	_global	Audio_ConvolveFilter_LongComplex	12544
 881	00c843f0	_global	Audio_ConvolveFilter_LongFull	15328
+882	0061e6d0	CTCInventoryQuests	ConstructQuestListPC	12356
+883	006096e0	_global	ConstructLogbookScreen	12832
