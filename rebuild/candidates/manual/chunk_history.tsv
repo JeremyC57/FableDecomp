@@ -28039,3 +28039,4 @@ chunk	address	module	name	length
 881	00c843f0	_global	Audio_ConvolveFilter_LongFull	15328
 882	0061e6d0	CTCInventoryQuests	ConstructQuestListPC	12356
 883	006096e0	_global	ConstructLogbookScreen	12832
+884	004ee23f	_global	Init_RegisterGameComponents	44806

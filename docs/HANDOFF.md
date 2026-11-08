@@ -91,7 +91,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Chunk 878 (libpk): 2 of 3 landed (`2026-11-08_landing_z/`, SSE2 FIR resamplers on dvec.h; SetEAXProperty parked at 10 lines).
     Chunks 877 / 879: 0 landed (OnHit, PopulateRegionWithVillagers parked as full bodies; hand877 / hand879). Chunk 880: OpenPCOptionsMenu landed
     (`2026-11-08_landing_aa/`). Chunk 881: both stereo SSE2 FIR resamplers landed
-    (`2026-11-08_landing_ab/`). Running: chunk 882 (ConstructQuestListPC), chunk 883 (ConstructLogbookScreen), single-row worker on 0x00CBFB7D (74 KB cutscene-macro interpreter, Opus xhigh).
+    (`2026-11-08_landing_ab/`). Running: chunk 882 (ConstructQuestListPC), chunk 883 (ConstructLogbookScreen); single-row worker
+    parked 0x00CBFB7D RunCutsceneMacro at DIFFER(74879v74778) (95% exact, 99% call order; the caller-size inline cap falls between
+    /d2inlS8 and S9 on our STLport/CCharString header costs -- a lane gap, `pending/2026-11-08_linux_hand876/`) and moved on to
+    0x004EE23F (44,806-byte registration function, real name pending; Opus xhigh).
     Chunk 874 (libpk): 3 of 7 landed (`2026-11-08_landing_y/`, ivec resamplers). Chunk 875: 0 of 3 (decodes kept).
     Chunk 872 (libpk): 12 of 14 landed (`2026-11-08_landing_x/`, land0811x). Chunk 873 (game) running (Opus high); pass 1: 2 of 10 landed (`2026-11-08_landing_w/`), sent back for 8.
     Chunk 867 (PC UI): 4 of 10 landed (`2026-11-08_landing_v/`; 31 headers gain opt-ins, 12 new); tag land0811v.

@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00cbfb7d	DIFFER	74879v74778	-	RunCutsceneMacro parked (differ/00cbfb7d.cpp): strict 95.3%, register/frame-masked 97.8%, calls 99.0%; first diff ins 1 (frame 0x18E4 v 0x18DC); residue = VC7.1 caller-size inline cap (lane gap) then register roles / frame-slot order
