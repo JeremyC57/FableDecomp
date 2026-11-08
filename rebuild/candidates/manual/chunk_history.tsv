@@ -28049,3 +28049,5 @@ chunk	address	module	name	length
 888	00bafa00	CEnginePrimitiveManager2DSprites	RenderClockPrim	3946
 888	00bb0970	CEnginePrimitiveManager2DSprites	RenderSpritePrim	3202
 888	00bbac60	CEnginePrimitiveManagerDecal	RenderLandscapeDecal	3743
+889	00bd5c90	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase::RenderPrimitiveToShadowBuffer	2935
+889	00bca950	CEnginePrimitiveManagerSpriteTrails	RenderSpriteTrail	3749

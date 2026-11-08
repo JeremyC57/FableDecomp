@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+0x00BA6240	DIFFER	2935v2937	-	74 diff lines after 92 grades; frame-slot order + Dot order + Type hoist (differ/00ba6240.cpp)
+0x00BAFA00	DIFFER	3905v3946	-	1091 diff lines / 118 register+frame-blind after 10 grades; biased frame = retail, register colouring open (differ/00bafa00.cpp)
+0x00BB0970	DIFFER	3170v3202	-	313 diff lines / 108 blind after 31 grades; frame 0x80 v 0x74 (argument-home packing) (differ/00bb0970.cpp)
+0x00BBAC60	DIFFER	3823v3743	-	87 diff lines / 73 blind after 22 grades; BlendOp bookmark commutation + colour temporary (differ/00bbac60.cpp)
