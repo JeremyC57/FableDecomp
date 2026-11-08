@@ -38,3 +38,4 @@ address	name	symbol	source_1	source_2
 0059b6bc	CTCInventoryTrade::GetSellItemIconString	?GetSellItemIconString@CTCInventoryTrade@@SIABVCCharString@@XZ	FableWin.pdb name set	static "Sell_Item_Icon" key (0x013B8B88), 2007/2019
 0059b6c8	CTCInventoryTrade::GetBuyItemIconString	?GetBuyItemIconString@CTCInventoryTrade@@SIABVCCharString@@XZ	FableWin.pdb name set	static "Buy_Item_Icon" key (0x013B8B8C), 2009/2021
 0059b6da	CTCInventoryTrade::GetWantedItemDescriptionString	?GetWantedItemDescriptionString@CTCInventoryTrade@@SIABVCCharString@@XZ	FableWin.pdb name set	static key 0x013B8B84, LOAD/UNLOAD_WANTED_ITEM_DESC (0x00425CBD)
+005f694d	CTCInventoryAbilities::ResetAssignedAbilities	?ResetAssignedAbilities@CTCInventoryAbilities@@QAEXXZ	Ego_r.pdb 0x00585813	FableWin.pdb 0x01EC8A0B; called by RESET_ASSIGNED_SPELLS (case 211) at 0x00420B1D with ecx = the hero TCI_HERO_ABILITIES component

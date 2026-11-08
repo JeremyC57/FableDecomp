@@ -57,3 +57,23 @@ Session 3 (2026-11-08) -- corrects the session-2 packing lesson above:
   callee does not expose; a user-declared external or a non-inline same-TU function does.
 - /d2inlS is not monotonic here: S10/S13/S15 inline slightly more than the default S14 and S16 much more; none reproduces
   retail's late out-of-line begin() calls in a 35 KB caller.
+
+## Session 4 (2026-11-08)
+- Count the cases against the jump tables before polishing: a whole case (RESET_ASSIGNED_SPELLS, 211) was missing for three
+  sessions; 206 distinct jump-table targets / 207 labels is the check (t4/src_cases.txt v t2/order.txt).
+- Local class models drift: CTCBase is 0xC bytes, so a derived TC's first member is at +0x0C (CTCHero::WeaponsUsable,
+  CTCQuestCompletionUI::Active), not +0x10. Use the shared header (engine/CTCHero.h opt-in) instead of a local model.
+- VC7.1 c2 inline decision above the 10000-tuple limit (regime 1, path 0x107537A4; probe/inl/inl.py hooks it under gdb):
+  cost = sz - sav0 - sav1 + pen - 10 (leaf callee) - 7 (inline-declared) + 4 (site flag 2), inline iff cost < S (9);
+  pen = (sz/2) * N / 9000 once sz > S and N > 9000, N = the caller's IL tuples so far + inline growth (11998 at Action's entry,
+  ~28500 at its end). A large callee (sz 18) crosses the threshold at a LOWER N than a small one (sz 13), so retail's split
+  (begin rejected late, C2DVector ctor expanded late) has no uniform-N explanation: padding the entry by +6300..7000 tuples
+  reproduces the setters / vector[] / list != but over-calls begin and makes the expanded-in-retail sites worse.
+- `#pragma inline_depth(0)` is captured per FULL-EXPRESSION (at the statement's end): a region ending in the middle of
+  `it != l.end();` still outlines both calls, one starting there outlines neither (probe/mini/m2.cpp). So a loop condition
+  `it != c.end()` cannot be split; use a per-TU `__declspec(noinline)` (VC7.1 honours it; the body stays a COMDAT) when every
+  site of that callee in the function is called.
+- A `__forceinline` callee inside an inline_depth(0) region is still called (probe/mini/m1.cpp): forceinline twins cannot be
+  combined with a region in the same statement.
+- Once the inline split matched, the frame matched too (0x800): the "one extra unshared 4-byte slot" was an inlined callee's
+  temporary, not a declaration-order problem.

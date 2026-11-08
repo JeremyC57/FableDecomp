@@ -1,10 +1,17 @@
 // NUISystem::CManager::Action(CCountedPointer<NUISystem::CAction>&) -- runs one UI action (the big action dispatcher)
-// Grade: DIFFER(35224v35651) -- loose per-case 93.9%; every case written; frame 0x804 vs retail 0x800 (every CDeletion now at
-// retail's [ebp-248h]); the unpacked frame slots come out in a different order (ties of c2's density sort); retail calls
-// begin 0x429A85 (x16, cases 2005+), postfix -- 0x42899B (ADD_CHILD) and the CTCInventory setters out of line where ours
-// inlines (/d2inlS10..16 do not reproduce it); block placement of GetTC(0x6F); entry registers swapped. WORKLOG.md Session 3.
+// Grade: DIFFER(35593v35651) -- loose per-case 96.1% (t4/pc.py), calls 98.4%; every case written; frame 0x800 = retail; inline split
+// handled (Inline-budget below) except as noted. Left: entry register roles (retail edi = CAction*, esi = game; ours swapped,
+// first difference at instruction 6), cross-jump tail choice (CLOSE_MENU / OPEN_ABILITIES / CLOSE_ABILITIES keep their own
+// AddCloseInventoryEvent tails), block placement of the expanded CWideString text == (2006/2013) and of GetTC(0x6F), GetTC 75 v 73
+// expansions. WORKLOG.md Session 4.
 // Leaf: ?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
 // Flags: /GS
+// Inline-budget: scoped `#pragma inline_depth(0)` regions (one per statement retail calls out of line: list::begin 0x00429A85 x16 in
+// cases 2005..2014 / 2019..2023 / CHOOSE_CLAN, vector::operator[] 0x0040F220 x3 (2004) and 0x00429A79 (2014), the CTCInventory /
+// CTCInventoryAbilities setters 0x0041C965.. x9, postfix -- 0x0042899B x2) plus per-TU FABLE_RETAIL_*_FORCEINLINE_* / _NOINLINE_ opt-ins
+// for the callees retail treats the same way at every site of this function (CWideString text ==, C2DVector / C2DExtentsI
+// ctors, ~CSurface, map::begin expanded; list iterator != 0x0041C7C0 called) -- the function is past c2's 10000-tuple limit and its
+// caller-size penalty ((sz/2)*N/9000, N = tuples so far) gives no single N that splits retail's set (probe/inl traces, WORKLOG S4).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -33,6 +40,7 @@
 #define FABLE_RETAIL_CRESOURCELIST
 #define FABLE_RETAIL_CLIST
 #define FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCHERO_TITLE
 #define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
 #define FABLE_RETAIL_CTCINVENTORYBASE
 #define FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
@@ -44,6 +52,13 @@
 #define FABLE_RETAIL_CACTIONPARAMEBOOL
 #define FABLE_RETAIL_CWIDESTRING_TEXT_EQ
 #define FABLE_RETAIL_CWIDESTRING_TEXT_EQ_HELPER
+#define FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ
+#define FABLE_RETAIL_CWIDESTRING_FORCEINLINE_DATA_TEXT_EQ
+#define FABLE_RETAIL_STLP_LIST_NOINLINE_NE
+#define FABLE_RETAIL_STLP_MAP_FORCEINLINE_BEGIN
+#define FABLE_RETAIL_C2DVECTOR_FORCEINLINE_CTOR
+#define FABLE_RETAIL_C2DEXTENTSI_FORCEINLINE_CTOR
+#define FABLE_RETAIL_CSURFACE_FORCEINLINE_DTOR
 #define FABLE_RETAIL_CMENUENTRY_ACTION
 #define FABLE_RETAIL_CSPRITE_PUBLIC_TEXTURE
 #define FABLE_RETAIL_CTEXTURE
@@ -60,6 +75,7 @@
 #include "engine/ETCInterfaceType.h"
 #include "engine/CThing.h"
 #include "engine/CTCBase.h"
+#include "engine/CTCHero.h"
 #include "engine/NInventory_CTCInventoryBase.h"
 #include "engine/CGameEvent.h"
 #include "engine/CMainGameComponent.h"
@@ -229,12 +245,6 @@ class CThingPlayerCreature : public CThing { };
 // FableWin.pdb ?GetPPlayerCharacter@CPlayer@@QBEPAVCThingPlayerCreature@@XZ, inline in retail (engine/CThingPlayerCreature.h body).
 inline CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return PlayerCharacter.Get(); }
 
-class CTCHero : public CTCBase {
-public:
-    bool AreWeaponsUsable() const { return WeaponsUsable; }
-    unsigned char _pad_0x08[0x0c - 0x08];
-    bool WeaponsUsable;                                              // +0x0c
-};
 class CTCHeroStats {
 public:
     long GetMoralityMax() const;                                     // 0x0057A67E
@@ -352,6 +362,7 @@ public:
     void UnAssignAbility(unsigned long);                             // 0x005F11A9
     void AssignAbilityPC(EHeroAbility, unsigned long, NUISystem::CComponent*);    // 0x005F0DC5
     void UnAssignAbilityPC(unsigned long, NUISystem::CComponent*);                // 0x005F1320
+    void ResetAssignedAbilities();                                                // 0x005F694D
     void ResetAssignedAbilitiesPC();                                              // 0x005F6A6F
     NUISystem::CComponent* ConstructPCExpressionsList(NUISystem::CComponent*);    // 0x005F59C7
     NUISystem::CComponent* ConstructPCMagicList(NUISystem::CComponent*);          // 0x005F1B10
@@ -437,8 +448,7 @@ public:
     bool IsActive() const { return Active; }
     bool IsQuitting() const { return Quitting; }
     void Deactivate();                                               // 0x005E3DF0
-    unsigned char _pad_0x08[0x0c - 0x08];
-    bool Active;                                                     // +0x0c
+    bool Active;                                                     // +0x0c (CTCBase is 0xC bytes)
     unsigned char _pad_0x0d[0x1c - 0x0d];
     bool Quitting;                                                   // +0x1c
 };
@@ -611,7 +621,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 augmentation->SetDeletion(deletion);
                 keepAugmentation = false;
                 CTCHero* hero;
-                if (PPlayer->GetTC(TCI_HERO, &hero) && !hero->AreWeaponsUsable()) {
+                if (PPlayer->GetTC(TCI_HERO, &hero) && !hero->WeaponsUsable) {
                     std::list<CComponent*>& entries = PWeaponsInventory->AvailableWeaponsEntries;
                     for (std::list<CComponent*>::iterator it = entries.begin(); it != entries.end(); ++it) {
                         CComponent* arrow = (*it)->FindChildForward("PC_MENU_ENTRY_ARROW");
@@ -627,7 +637,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
             }
             if (NumberAugmentations > 0 && !keepAugmentation) {
                 CTCHero* hero;
-                if (PPlayer->GetTC(TCI_HERO, &hero) && !hero->AreWeaponsUsable()) {
+                if (PPlayer->GetTC(TCI_HERO, &hero) && !hero->WeaponsUsable) {
                     CComponent* entry = static_cast<CComponent*>(UIActionParams.back());
                     CComponent* arrow = entry->FindChildForward("PC_MENU_ENTRY_ARROW");
                     if (arrow) {
@@ -891,9 +901,13 @@ void CManager::Action(CCountedPointer<CAction>& action)
     case UI_ACTION_TYPE_ADD_CHILD:
         if (action->UIActionParams.size() > 1) {
             std::list<CActionParam*>::iterator it = action->UIActionParams.end();
+#pragma inline_depth(0) // inline budget: retail 0x0041F4D8 calls _List_iterator::operator--(int) out of line
             it--;
+#pragma inline_depth()
             CComponent* parent = GetCorrectComponentInterface(static_cast<CComponent*>(*it));
+#pragma inline_depth(0) // inline budget: retail 0x0041F504 calls _List_iterator::operator--(int) out of line
             it--;
+#pragma inline_depth()
             CCountedPointer<CComponent> child(GetCorrectComponentInterface(static_cast<CComponent*>(*it)));
             parent->AddChildDynamically(child);
         }
@@ -1248,6 +1262,13 @@ void CManager::Action(CCountedPointer<CAction>& action)
         CTCInventoryAbilities* abilities;
         if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities)
             abilities->UnAssignAbility(slot->Value);
+        break;
+    }
+    case UI_ACTION_TYPE_RESET_ASSIGNED_SPELLS: {
+        CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CTCInventoryAbilities* abilities;
+        if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities)
+            abilities->ResetAssignedAbilities();
         break;
     }
     case UI_ACTION_TYPE_GIVE_EXCLUSIVE_INPUT:
@@ -1719,8 +1740,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
             if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory) {
                 AssignmentItemsExpressionsSwapping = true;
                 inventory->SetThingToAssign(thing->Value);
+#pragma inline_depth(0) // inline budget: retail 0x004224B3 / 0x00422A7D calls SetThingSlotToSwap / SetComponentSlotToSwap out of line
                 inventory->SetThingSlotToSwap(slot->Value);
                 inventory->SetComponentSlotToSwap(entry);
+#pragma inline_depth()
             }
         }
         break;
@@ -1731,7 +1754,9 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CTCInventory* inventory;
             if (hero->GetTC(TCI_INVENTORY, &inventory) && inventory) {
                 AssignmentItemsExpressionsSwapping = false;
+#pragma inline_depth(0) // inline budget: retail 0x00422547 calls SetThingToAssign out of line
                 inventory->SetThingToAssign(thing->Value);
+#pragma inline_depth()
             }
         }
         break;
@@ -1763,38 +1788,38 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     }
     case UI_ACTION_TYPE_SEND_OWNED_EVENT:
-        if (UIActionParams.size() > 1) {
-            std::list<CActionParam*>::iterator it = UIActionParams.end();
+        if (action->UIActionParams.size() > 1) {
+            std::list<CActionParam*>::iterator it = action->UIActionParams.end();
             CComponent* owner = static_cast<CComponent*>(*--it);
             SetOwnedEvent(owner, (EEvent)static_cast<CActionParamULONG*>(*--it)->Value);
         }
         break;
     case UI_ACTION_TYPE_SEND_OWNED_EVENT_FORCE_OBSERVATION:
-        if (UIActionParams.size() > 1) {
-            std::list<CActionParam*>::iterator it = UIActionParams.end();
+        if (action->UIActionParams.size() > 1) {
+            std::list<CActionParam*>::iterator it = action->UIActionParams.end();
             CComponent* owner = static_cast<CComponent*>(*--it);
             owner->ProcessEvent((EEvent)static_cast<CActionParamULONG*>(*--it)->Value);
         }
         break;
     case UI_ACTION_TYPE_ADD_OBSERVER:
-        if (UIActionParams.size() > 0)
-            AddObserver(static_cast<CComponent*>(UIActionParams.back()));
+        if (action->UIActionParams.size() > 0)
+            AddObserver(static_cast<CComponent*>(action->UIActionParams.back()));
         break;
     case UI_ACTION_TYPE_REMOVE_OBSERVER:
-        if (UIActionParams.size() > 0)
-            RemoveObserver(static_cast<CComponent*>(UIActionParams.back()));
+        if (action->UIActionParams.size() > 0)
+            RemoveObserver(static_cast<CComponent*>(action->UIActionParams.back()));
         break;
     case UI_ACTION_TYPE_MOVE_COMPONENT:
-        if (UIActionParams.size() > 2) {
-            std::list<CActionParam*>::iterator it = UIActionParams.end();
+        if (action->UIActionParams.size() > 2) {
+            std::list<CActionParam*>::iterator it = action->UIActionParams.end();
             float time = static_cast<CActionParamFloat*>(*--it)->Value;
             CActionParam2DVector* delta = static_cast<CActionParam2DVector*>(*--it);
             static_cast<CComponent*>(*--it)->ChangePositionDelta(delta->Value, time, false);
         }
         break;
     case UI_ACTION_TYPE_SEND_EVENT:
-        if (UIActionParams.size() > 0)
-            SetEvent((EEvent)static_cast<CActionParamULONG*>(UIActionParams.back())->Value);
+        if (action->UIActionParams.size() > 0)
+            SetEvent((EEvent)static_cast<CActionParamULONG*>(action->UIActionParams.back())->Value);
         break;
     case UI_ACTION_TYPE_SCROLL_DESCRIPTION_DOWN:
         SetEvent(UI_EVENT_RIGHT_STICK_UP);
@@ -1822,9 +1847,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CTCInventoryAbilities* abilities;
             if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities) {
                 AssignmentSpellsSwapping = true;
+#pragma inline_depth(0) // inline budget: retail 0x00422928..0x00422945 calls the three setters out of line
                 abilities->SetSpellToAssign((EHeroAbility)spell->Value);
                 abilities->SetSpellSlotToSwap(slot->Value);
                 abilities->SetComponentSlotToSwap(entry);
+#pragma inline_depth()
             }
         }
         break;
@@ -1840,9 +1867,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature()->GetTC(TCI_INVENTORY, &inventory);
             if (abilities && inventory) {
                 AssignmentItemsExpressionsSwapping = true;
+#pragma inline_depth(0) // inline budget: retail 0x00422A62..0x00422A7F calls the three setters out of line
                 abilities->SetSpellToAssign((EHeroAbility)spell->Value);
                 inventory->SetThingSlotToSwap(slot->Value);
                 inventory->SetComponentSlotToSwap(entry);
+#pragma inline_depth()
             }
         }
         break;
@@ -1853,7 +1882,9 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CTCInventoryAbilities* abilities;
             if (hero->GetTC(TCI_HERO_ABILITIES, &abilities) && abilities) {
                 AssignmentSpellsSwapping = false;
+#pragma inline_depth(0) // inline budget: retail 0x00422B0D calls SetSpellToAssign out of line
                 abilities->SetSpellToAssign((EHeroAbility)spell->Value);
+#pragma inline_depth()
             }
         }
         break;
@@ -2275,9 +2306,12 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 if (static_cast<CMenuEntry*>(entry)->IsMenuEntryAvailable() && !usable->Value) {
                     if (GetNumberAugmentations() > 0) {
                         const std::vector<long>& slots = PWeaponsInventory->GetPerItemDataForItem(weaponIndex)->Augmentations;
-                        for (unsigned long i = 0; i < slots.size(); ++i)
+                        for (unsigned long i = 0; i < slots.size(); ++i) {
+#pragma inline_depth(0) // inline budget: retail 0x004242F5 calls vector::operator[] out of line
                             if (slots[i] <= 0)
                                 return;
+#pragma inline_depth()
+                        }
                     }
                     CComponent* arrow = entry->FindChild("PC_MENU_ENTRY_ARROW");
                     if (arrow) {
@@ -2364,9 +2398,13 @@ void CManager::Action(CCountedPointer<CAction>& action)
                     if (slotTemplate != "" && augmentationTemplate != "") {
                         CCountedPointer<CComponent> slot(CreateComponent(slotTemplate, false));
                         CCountedPointer<CComponent> augmentation;
+#pragma inline_depth(0) // inline budget: retail 0x0042488D calls vector::operator[] out of line
                         if (slots[i] > 0) {
+#pragma inline_depth()
                             CDefPointer<const CDefClassBase> augmentationDef;
+#pragma inline_depth(0) // inline budget: retail 0x004248A8 calls vector::operator[] out of line
                             if (CGameDefinitionManager::Get().GetDef(slots[i], &augmentationDef)) {
+#pragma inline_depth()
                                 CDefPointer<const CAugmentationDef> augmentationSubDef;
                                 if (augmentationDef->GetSubDef(&augmentationSubDef)) {
                                     augmentation.Reset(CreateComponent(augmentationTemplate, false));
@@ -2424,7 +2462,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_CLOTHING_MENU_ENTRY_NAME:
         if (action->UIActionParams.size() > 1) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00424CA0 calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamULONG* clothing = static_cast<CActionParamULONG*>(*it);
             CComponent* entry = static_cast<CComponent*>(*++it);
             CComponent* positionParent = 0;
@@ -2450,7 +2491,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_ITEM_MENU_ENTRY_NAME:
         if (action->UIActionParams.size() > 2) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00424E7B calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamULONG* item = static_cast<CActionParamULONG*>(*it);
             CComponent* entry = static_cast<CComponent*>(*++it);
             CActionParamSLONG* quantity = static_cast<CActionParamSLONG*>(*++it);
@@ -2468,7 +2512,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_SELL_ITEM_DESC:
         if (action->UIActionParams.size() > 2) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00424F75 calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamULONG* item = static_cast<CActionParamULONG*>(*it);
             CViewport* viewport = static_cast<CViewport*>(static_cast<CComponent*>(*++it));
             CComponent* parent = static_cast<CComponent*>(*++it);
@@ -2516,7 +2563,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_UNLOAD_SELL_ITEM_DESC:
         if (action->UIActionParams.size() > 0) {
-            CComponent* parent = static_cast<CComponent*>(action->UIActionParams.front());
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00425357 calls list::begin out of line
+            std::list<CActionParam*>::iterator first = params.begin();
+#pragma inline_depth()
+            CComponent* parent = static_cast<CComponent*>(*first);
             CComponent* description = parent->FindChild(CTCInventoryTrade::GetSellItemDescriptionString());
             if (description) {
                 CDeletion deletion;
@@ -2543,7 +2594,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_SELL_ACTION_MENU:
         if (action->UIActionParams.size() > 1) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x0042545A calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamULONG* item = static_cast<CActionParamULONG*>(*it);
             CComponent* parent = static_cast<CComponent*>(*++it);
             if (PInventoryTrade->InventoryTradeOpen) {
@@ -2557,7 +2611,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_UNLOAD_SELL_ACTION_MENU:
         if (action->UIActionParams.size() > 0) {
-            CComponent* parent = static_cast<CComponent*>(action->UIActionParams.front());
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x0042552C calls list::begin out of line
+            std::list<CActionParam*>::iterator first = params.begin();
+#pragma inline_depth()
+            CComponent* parent = static_cast<CComponent*>(*first);
             CComponent* list = parent->FindChild(PInventoryTrade->InventoryTradeOpen ? "PC_LIST_SELL_ACTIONS" : "UI_LIST_SELL_ACTIONS");
             if (list) {
                 CDeletion deletion;
@@ -2569,7 +2627,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_BUY_ITEM_DESC:
         if (action->UIActionParams.size() > 2) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x004255E0 calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamULONG* item = static_cast<CActionParamULONG*>(*it);
             CViewport* viewport = static_cast<CViewport*>(static_cast<CComponent*>(*++it));
             CComponent* parent = static_cast<CComponent*>(*++it);
@@ -2617,7 +2678,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_UNLOAD_BUY_ITEM_DESC:
         if (action->UIActionParams.size() > 0) {
-            CComponent* parent = static_cast<CComponent*>(action->UIActionParams.front());
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x004259C3 calls list::begin out of line
+            std::list<CActionParam*>::iterator first = params.begin();
+#pragma inline_depth()
+            CComponent* parent = static_cast<CComponent*>(*first);
             CComponent* description = parent->FindChild(CTCInventoryTrade::GetBuyItemDescriptionString());
             if (description) {
                 CDeletion deletion;
@@ -2644,7 +2709,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_BUY_ACTION_MENU:
         if (action->UIActionParams.size() > 1) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00425AC6 calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamULONG* item = static_cast<CActionParamULONG*>(*it);
             CComponent* parent = static_cast<CComponent*>(*++it);
             if (PInventoryTrade->InventoryTradeOpen) {
@@ -2659,7 +2727,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_UNLOAD_BUY_ACTION_MENU:
         if (action->UIActionParams.size() > 0) {
-            CComponent* parent = static_cast<CComponent*>(action->UIActionParams.front());
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00425B98 calls list::begin out of line
+            std::list<CActionParam*>::iterator first = params.begin();
+#pragma inline_depth()
+            CComponent* parent = static_cast<CComponent*>(*first);
             CComponent* list = parent->FindChild(PInventoryTrade->InventoryTradeOpen ? "PC_LIST_BUY_ACTIONS" : "UI_LIST_BUY_ACTIONS");
             if (list) {
                 CDeletion deletion;
@@ -2671,7 +2743,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_WANTED_ITEM_DESC:
         if (action->UIActionParams.size() > 2) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00425C4C calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamULONG* item = static_cast<CActionParamULONG*>(*it);
             CViewport* viewport = static_cast<CViewport*>(static_cast<CComponent*>(*++it));
             CComponent* parent = static_cast<CComponent*>(*++it);
@@ -2716,7 +2791,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_UNLOAD_WANTED_ITEM_DESC:
         if (action->UIActionParams.size() > 0) {
-            CComponent* parent = static_cast<CComponent*>(action->UIActionParams.front());
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00425FC1 calls list::begin out of line
+            std::list<CActionParam*>::iterator first = params.begin();
+#pragma inline_depth()
+            CComponent* parent = static_cast<CComponent*>(*first);
             CComponent* description = parent->FindChild(CTCInventoryTrade::GetWantedItemDescriptionString());
             if (description) {
                 CDeletion deletion;
@@ -2743,7 +2822,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_QUICK_MENU_EXPRESSIONS_ICON:
         if (action->UIActionParams.size() > 1) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00426116 calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamULONG* item = static_cast<CActionParamULONG*>(*it);
             CComponent* parent = static_cast<CComponent*>(*++it);
             if (!parent->FindChild("UI_ICON_ON_LEFT_MENU_ENTRY") && CTCInventoryItem::GetEngineGraphic(item->Value).BankIndex != 0) {
@@ -2756,7 +2838,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_FILE_DESC:
         if (action->UIActionParams.size() > 1) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00426228 calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamULONG* file = static_cast<CActionParamULONG*>(*it);
             CText* text = static_cast<CText*>(static_cast<CActionParamCCountedPointer<CComponent>*>(*++it)->Value.Get());
             if (text->GetValue() == L"INVALID FILE DESCRIPTION STRING") {
@@ -2770,7 +2855,10 @@ void CManager::Action(CCountedPointer<CAction>& action)
         break;
     case UI_ACTION_LOAD_FILE_SAVEGAME_MINIMAP:
         if (action->UIActionParams.size() > 2) {
-            std::list<CActionParam*>::iterator it = action->UIActionParams.begin();
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00426315 calls list::begin out of line
+            std::list<CActionParam*>::iterator it = params.begin();
+#pragma inline_depth()
             CActionParamEBOOL* valid = static_cast<CActionParamEBOOL*>(*it);
             CSprite* minimap = static_cast<CSprite*>(static_cast<CActionParamCCountedPointer<CComponent>*>(*++it)->Value.Get());
             CActionParamULONG* file = static_cast<CActionParamULONG*>(*++it);
@@ -2781,7 +2869,9 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 PPlayer->GetTC(TCI_IN_GAME_MENU, &menu);
                 if (valid->Value) {
                     const CPlayerGuiDef& guiDef = CPlayerGui::PeekGuiDef();
+#pragma inline_depth(0) // inline budget: retail 0x004263D2 calls vector::operator[] out of line
                     const CCharString& region = menu->FileRegionMiniMapNames[file->Value];
+#pragma inline_depth()
                     if (region != "") {
                         std::map<CCharString, long>::const_iterator found = guiDef.MiniMapGraphics.find(region);
                         if (found != guiDef.MiniMapGraphics.end()) {
@@ -2971,7 +3061,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
         CThing* hero = game->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         if (hero->GetTC(TCI_HERO_ONLINE_SCOREBOARD, &scoreboard)) {
-            CActionParamString* clan = static_cast<CActionParamString*>(*action->UIActionParams.begin());
+            std::list<CActionParam*>& params = action->UIActionParams;
+#pragma inline_depth(0) // inline budget: retail 0x00426CD4 calls list::begin out of line
+            std::list<CActionParam*>::iterator first = params.begin();
+#pragma inline_depth()
+            CActionParamString* clan = static_cast<CActionParamString*>(*first);
             CComponent* entry = static_cast<CComponent*>(action->UIActionParams.back());
             if (!entry->FindChild("PC_SUB_LIST"))
                 scoreboard->OnPlayerSelectedClan(clan->Value, entry);

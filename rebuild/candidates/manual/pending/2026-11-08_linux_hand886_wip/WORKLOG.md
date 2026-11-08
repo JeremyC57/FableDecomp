@@ -1,5 +1,64 @@
 # WORKLOG 0x0041E6D3 -- NUISystem::CManager::Action  (agent886, 2026-11-08)
 
+## Session 4 (2026-11-08) -- READ THIS FIRST (parked at v17 = src/ = differ/)
+- Working copy t4/w.cpp (src/ still v14). Fixes so far (no grade yet; objs from the c2 trace runs score loose 94.2%):
+  * MISSING CASE found: UI_ACTION_TYPE_RESET_ASSIGNED_SPELLS (211, retail 0x00420ACF): hero GetTC(TCI_HERO_ABILITIES) ->
+    CTCInventoryAbilities::ResetAssignedAbilities() 0x005F694D (Ego_r + FableWin ?ResetAssignedAbilities@CTCInventoryAbilities@@QAEXXZ).
+  * CTCHero: shared engine/CTCHero.h (FABLE_RETAIL_CTCHERO_TITLE) `hero->WeaponsUsable` (+0x0C; the local model put it at +0x10;
+    `AreWeaponsUsable` was an invented name, no PDB entry). CTCQuestCompletionUI Active +0x0C / Quitting +0x1C (were +0x10/+0x20).
+  * SEND_OWNED_EVENT, SEND_OWNED_EVENT_FORCE_OBSERVATION, ADD_OBSERVER, REMOVE_OBSERVER, MOVE_COMPONENT, SEND_EVENT read
+    action->UIActionParams (retail `lea esi,[edi+4]`, edi = CAction*), not this->UIActionParams (+0x60).
+- c2 inline decision instrumented (probe/inl/: inl.py gdb hooks, run.sh <src> <tag> [flags] -> <tag>.json/.obj, an2.py):
+  regime 1 (global optimizer off) takes 0x107537a4: cost = sz - sav0 - sav1 + pen - 10 (leaf callee) - 7 (user inline)
+  + 4 (site flag 2); accept iff cost < S (9). pen = (sz/2) * N / 9000 when sz > 9 and N > 9000, N = caller IL so far
+  ([0x10882b58], 11998 at Action entry, 28462 at its end) + a callee number. Tools: t4/c2dis.py, t4/c2xref.py.
+- v15 graded DIFFER(35312v35651), loose 94.2% (first diff instruction 2 = frame 0x804 v 0x800).
+- Inline split, what the trace shows (probe/inl/w3.json, an2.py; t4/ocalls.py <obj> [regex] counts our call targets):
+  * No uniform N explains retail. Retail rejects `_List_iterator_base::!=` in AUGMENT (2nd case, our N ~12700, cost 2 -- it
+    would need N >= 19000) yet inlines `_Rb_tree_base_iterator::!=` (same body, sz 18) in POP_MAP_STATE / 2014 / PLAY_SOUND
+    at N 19000..28000 (cost 9..18 in ours); rejects begin (sz 13, cost 4..6 in ours) from case 2005 on but inlines the
+    C2DVector(float,float) ctor (sz 18, cost 9..13 in ours) in SCROLL_ACTIVE_LIST_UP/DOWN and SCROLL_LIST_UP/DOWN, the
+    C2DExtentsI(long,long) ctor and ~CSurface in LOAD_PHOTO, map<CCharString,K>::begin in PLAY_SOUND, and
+    CWideString::operator==(const wchar_t*) (sz 42, cost 88: forceinline in retail, as in chunk 784).
+  * Padding probes (probe/inl/pad*.cpp, +6300..7000 IL tuples at entry) reproduce the setters / vector[] / != out-of-line set
+    but call begin at 23..27 sites (retail 16), list<CList*>::empty x2 and a pair ctor that retail inlines, and make the
+    expanded-in-retail sites worse. /Z7 changes nothing. So per-site devices (EXTRA_RULES owner decision 2026-11-08).
+  * Retail out-of-line sites: begin 0x429A85 in 2005..2014 (0x424CA0 0x424E7B 0x424F75 0x42545A 0x4255E0 0x425AC6 0x425C4C
+    0x426116 0x426228 0x426315), front()'s begin in 2019..2023 (0x425357 0x42552C 0x4259C3 0x425B98 0x425FC1), CHOOSE_CLAN
+    0x426CD4; vector<CCharString>[] 0x4263D2 (2014); vector<long>[] 0x4242F5 0x42488D 0x4248A8 (2004); setters 0x4224B3
+    0x422547 0x422928/38/45 0x422A62/72/7F 0x422B0D; list != 0x41EAA3 0x41EBD6 (AUGMENT) 0x420CED (CHANGE_ALPHA);
+    postfix -- 0x41F4D8 0x41F504 (ADD_CHILD). LOAD_ITEM_DESC / 2004 / UNLOAD_ITEM_DESC / LOAD_PHOTO / PLAY_SOUND begin inline.
+- v16 (t4/v16.cpp): `#pragma inline_depth(0)` ... `#pragma inline_depth()` around each of those statements except the three
+  list != (end() is in the same loop condition; needs another spelling), list reference hoisted (`params`) so
+  CCountedPointer::operator-> stays inline; front() -> `*params.begin()`; FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ.
+  v16 graded DIFFER(35551v35651), pc.py 95.7%; frame 0x808 (an expanded callee's temp still missing).
+- Correction: map `!=` is NOT expanded in retail -- it calls 0x0041C830 six times (0x420DBB 0x420E0B 0x420EAA 0x42641A
+  0x426B10 0x426B57) exactly like ours; only the LIST != (0x41C7C0) differed.
+- v17 (= src/ and differ/ now): per-TU opt-ins for callees retail treats the same way at every site of Action (hdr/README.md):
+  CWideStringData text == forceinline (with the existing CWideString one), C2DVector(float,float), C2DExtentsI(long,long),
+  ~CSurface, map/_Rb_tree::begin forceinline; _List_iterator_base::!= __declspec(noinline) (#ifdef _MSC_VER). An inline_depth
+  region is captured per full-expression, so `it != c.end()` cannot be split by a region (probe/mini/m2.cpp), and a
+  forceinline inside a region is still called (m1.cpp). Graded DIFFER(35593v35651): FRAME 0x800 = retail; first difference
+  at instruction 6 (entry registers); pc.py 96.1%; calls 98.4% (t4/calls.py --count).
+- Remaining (t4/pc.py, largest first): 2004 (27 touched; register/slot choices), POP_MAP_STATE (26), ASSIGN_SPELL_TO_ITEM_SLOT_PC
+  (25), the cross-jump tails CLOSE_TELEPORT_MENU / CLOSE_MENU / OPEN_ABILITIES / CLOSE_ABILITIES (~80: retail CLOSE_MENU jumps
+  into CLOSE_TELEPORT_MENU's AddCloseInventoryEvent tail 0x41F79F), 2006 / 2013 (expanded CWideString text ==: retail places
+  the non-null `std::operator==` block after the case and jumps back; ours keeps it in line), SCROLL_* (retail SCROLL_LIST_UP/
+  DOWN and SCROLL_ACTIVE_LIST_UP jump into SCROLL_ACTIVE_LIST_DOWN's call at 0x422F30/0x422F3A), LOAD_PHOTO (ebx = 8 kept for
+  the CPixelFormat pushes), GetTC expansions 75 v 73, SetStaticCast 10 v 9, GetDef 3 v 2, 0x40D2F0 2 v 1.
+- Next: (1) entry register roles: retail `push edi ; mov edi,[ebp+7Ch]` (edi = the CCountedPointer&, then CAction*), esi = game;
+  ours swaps them -- try declaring `game` before the IsValid test or reading `action` into a CAction* local; (2) the GetTC
+  surplus (find the two cases where retail calls GetTC fewer times: compare per case with t4/calls.py); (3) cross-jump tails.
+- v18 (game declared before the IsValid test): no change. The call-sequence diff of v18 (probe/calls18.txt, t4/calls.py
+  --ctx 0) shows every remaining call difference is TAIL MERGING (cross-jumping), not source: retail's OPEN_ABILITIES /
+  CLOSE_ABILITIES / CLOSE_MENU jump into one shared GetTC + AddCloseInventoryEvent tail (hence GetTC 73 v our 75),
+  EXIT_LIVE_GUI_IF_LEAF jumps to the ToggleLiveGui call at 0x41F849 (0x42161D), SCROLL_LIST_UP/DOWN / SCROLL_ACTIVE_LIST_UP
+  share SCROLL_ACTIVE_LIST_DOWN's ChangeTargetPositionDelta call, while ours merges ASSIGN_SPELL_TO_ITEM_SLOT_PC's
+  AssignThingPC / AssignThingSwappingPC calls (retail keeps them) and the PLAY_SOUND / 2013 tails differently. The tails differ
+  in their registers (esi/edi swapped from the entry on), so the entry register roles are the likely root of most of this.
+- Everything else matches in the call sequence except names the binding table does not know (GFStringsAreEqual = 0x401490,
+  std::operator== = 0x404280, CPixelFormat(JJJJ) = 0x41C850, ...).
+
 ## Session 3 (2026-11-08) -- READ THIS FIRST. State: **v14 DIFFER 35224v35651** (src/ = differ/ minus residue lines; t3/src_v12.cpp, t3/src_v13.cpp kept)
 - **c2 internals found (probe/c2/, gdb on a patched c2.dll copy via tools/.../c2probe/c2dbg.py; c2 = 13.10.3077, base 0x10700000):**
   * 0x1077bdd8 counts the function's IL tuples at global-optimizer entry; > 10000 (`cmp [esp+0Ch],2710h` at 0x1077be49)

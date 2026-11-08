@@ -33,3 +33,9 @@ Session 2 label corrections (LABELS.tsv / NAME_FIXES.tsv):
 t2/order.txt lists every case body by retail address with its EActionType (= source order). Six jump tables:
 0x426E0E (58), 0x426EF6 (34), 0x426F7E (12), 0x426FAE (107), 0x42715A (23), 0x4271B6 (24); the dispatch tree sits in the
 middle of the code (e.g. 0x42095C `sub eax,0C9h` and 0x420F02 `cmp eax,7D0h`).
+
+## Parked (session 4, 2026-11-08)
+- 0x0041E6D3 NUISystem::CManager::Action: DIFFER(35593v35651), loose per-case 96.1%, calls 98.4%, frame 0x800 = retail,
+  best source differ/0041e6d3.cpp (= src/0041e6d3.cpp + grade lines). Inline split done with Inline-budget devices (line 3..8 of the
+  source, hdr/README.md). Next: entry register roles (retail edi = CAction*, esi = game), cross-jump tails of CLOSE_MENU /
+  OPEN_ABILITIES / CLOSE_ABILITIES, block placement of the expanded CWideString text == (2006/2013) and GetTC(0x6F), GetTC 75 v 73.

@@ -18,6 +18,12 @@ Every change is behind a new FABLE_RETAIL_* opt-in; the default path of each hea
 | engine/NInventory_CTCInventoryBase.h | FABLE_RETAIL_CTCINVENTORYBASE_PERITEMDATA (session 2) | NInventory::CPerItemData (Ego_r members, native offsets: Augmentations +0 vector<long>, NumberOfKills +0xC, TimeWielded +0x10, BestTrophyWitnessesAheadToDate +0x14, QuestPersistent +0x18, QuestPersistentRefCount +0x1C, BestFishWeight +0x20) and `const CPerItemData* GetPerItemDataForItem(long) const` (0x005BE8D3) | Ego_r struct_layouts CPerItemData; FableWin `?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z` |
 | fable_definition_table.h | (unchanged copy, session 2) | needed so the overlay fable_string.h is the one included through it | -- |
 | fable_string.h, stlport/fable_string.h | (unchanged copies) | needed only so the overlay fable_containers.h is the one included (stlport/fable_string.h includes "fable_containers.h" from its own directory) | -- |
+| fable_string.h | FABLE_RETAIL_CWIDESTRING_FORCEINLINE_DATA_TEXT_EQ (with the existing FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ) | `FABLE_FORCEINLINE` on `CWideStringData::operator==(const unsigned short*)` | 0x00424F4A / 0x004262A0: the expanded CWideString text == also expands this body (`push literal ; push &Data ; call 0x00404280`) where the budget would call ??8CWideStringData |
+| engine/C2DVector.h (copy) | FABLE_RETAIL_C2DVECTOR_FORCEINLINE_CTOR | `FABLE_FORCEINLINE` on `C2DVector(float,float)` in both blocks | all four sites expanded in retail (0x00422EFE, 0x00422F18, 0x00426C27, 0x00426C5A); c2 cost 9..12 >= S in ours |
+| engine/C2DExtentsI.h (copy) | FABLE_RETAIL_C2DEXTENTSI_FORCEINLINE_CTOR | `FABLE_FORCEINLINE` on `C2DExtentsI(long,long)` (+ `#include "fable_compiler.h"`) | expanded at 0x004266EC (LOAD_PHOTO); cost 12 in ours |
+| engine/CSurface.h (copy) | FABLE_RETAIL_CSURFACE_FORCEINLINE_DTOR (inside FABLE_RETAIL_CSURFACE_COPYFROMMEMORY) | `FABLE_FORCEINLINE virtual ~CSurface()` (+ `#include "fable_compiler.h"`) | the GetSurfaceLevel temporary destroyed in place at 0x00426747 (vtable 0x0122F84C, Uninitialise 0x009F2E20); cost 13 in ours |
+| stlport/fable_map.h (copy) | FABLE_RETAIL_STLP_MAP_FORCEINLINE_BEGIN | `FABLE_FORCEINLINE` on `map::begin()` and `_Rb_tree::begin()` | PLAY_SOUND expands it at 0x00426AF8 (`mov eax,[edi] ; mov ecx,[eax+8]`); cost 10 in ours |
+| stlport/fable_containers.h | FABLE_RETAIL_STLP_LIST_NOINLINE_NE (and `_MSC_VER`) | `__declspec(noinline)` on `_List_iterator_base::operator!=` | all three list != sites of the function are called (0x0041EAA3, 0x0041EBD6, 0x00420CED -> 0x0041C7C0); end() in the same loop condition stays expanded, and an inline_depth region applies per full-expression (probe/mini/m2.cpp), so no region can split them |
 
 Note: rebuild/include/fable_string.h changed in the repo during this session; when resuming, re-copy fable_string.h and
 stlport/fable_string.h (and re-apply the FABLE_RETAIL_STLP_LIST_REVERSE block to a fresh stlport/fable_containers.h) so the
@@ -29,3 +35,9 @@ this row (retail 0x0042BED4 / 0x0042CD84 are the compiler-generated members; a u
 address-exposed and c2 then refuses to share their frame slot above its 10000-tuple limit). The opt-in's comment ("out of line
 in retail") is true of the bytes but the spelling is only safe in functions under that limit -- worth a note for its 3 landed
 users (0x005729D8, 0x00573792, 0x005AF64E), which are small and unaffected.
+
+
+Session 4 (2026-11-08): the six rows above are Inline-budget devices (EXTRA_RULES owner decision 2026-11-08, preference 3):
+per-TU opt-ins for callees that retail expands (or calls) at EVERY site of 0x0041E6D3, where c2's caller-size penalty
+decides the other way. Mixed callees (list::begin, vector::operator[], the setters, postfix --) use inline_depth regions
+in the source instead. A forceinline does not survive an inline_depth(0) region (probe/mini/m1.cpp).
