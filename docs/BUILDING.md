@@ -144,3 +144,32 @@ source-formulation questions, not compiler-build ones.
 ## Third-party source trees
 
 `bash tools/decomp_pipeline/libsig/fetch_lzo108.sh` (LZO 1.08, public) puts the vendor .asm that `lib_verify.py` proves 0x00C069D0 from under `$S/thirdparty/lzo/lzo-1.08`; `FABLE_THIRDPARTY` overrides the directory. `docs/pipeline/LIBRARY_SIGNATURES.md`.
+
+Every vendor tree the `// Vendor-library:` / `// Vendor-proof:` rows are proven from (zlib 1.2.1, LZO 1.08, libogg
+1.1.1, libvorbis 1.0.1, and the DirectShow base classes of the DirectX 9.0c SDK Summer 2004) is listed with its URL,
+sha256 and flags in `tools/decomp_pipeline/libsig/vendor_libs.tsv` and fetched by
+```
+python3 -I tools/decomp_pipeline/libsig/fetch_vendor_libs.py --dest $S/thirdparty --dl $S/sdk/dl   # needs 7z for the DX SDK installer
+export FABLE_THIRDPARTY=$S/thirdparty
+export FABLE_WINDDK_INC=$S/wine/winddk/3790.1830/inc/wnet   # windows.h set for strmbase (this is the default)
+```
+Objects are cached under `$FABLE_THIRDPARTY/obj` (`FABLE_VENDOR_OBJ`). Never commit a tree, an installer or an object.
+
+## Era SDKs (fetched, not yet the lane default)
+
+`docs/pipeline/SDK_NEEDS.md` identifies the SDKs retail was built against. `fetch_sdks.py` fetches Microsoft's own
+files from archive.org, checks every hash (SHA-1 per file for VS 2003 `Vc7/include`, `vs2003_include.sha1`; SHA-1 +
+SHA-256 for the DX SDK installers; the item SHA-1 for the 13 PSDK cabs) and unpacks them under `$FABLE_SDK`:
+```
+python3 -I tools/decomp_pipeline/libsig/fetch_sdks.py              # all four (~750 MB of downloads; needs 7z)
+python3 -I tools/decomp_pipeline/libsig/fetch_sdks.py --env        # the export lines below
+export FABLE_SDK=$S/sdk
+export FABLE_VS2003_INCLUDE=$FABLE_SDK/vs2003/include   # VS .NET 2003 RTM Vc7/include (Dinkumware 313, ivec/fvec/dvec, comdef)
+export FABLE_DXSDK_SUM2004=$FABLE_SDK/dxsdk_sum2004     # DX 9.0c Summer 2004: Include, Lib (strmiids.lib), DirectShow BaseClasses
+export FABLE_DXSDK_APR2005=$FABLE_SDK/dxsdk_apr2005     # DX April 2005: Include (d3d9/d3dx9/dinput/dsound), Lib/x86
+export FABLE_PSDK=$FABLE_SDK/psdk_feb2003               # Platform SDK Feb 2003: include/, lib/ (x86 import libraries)
+```
+Nothing reads these yet: `$FABLE_VC71/include` stays the WinDDK `inc/crt` set until a full landed-catalog re-grade
+under `FABLE_VS2003_INCLUDE` (a 50-row sample was grade-neutral) lets the coordinator switch it. The Platform SDK
+cabs store files under MSI keys (`User32_Lib.95CE7DF8_...`); the tool renames them by key stem and keeps i386
+libraries only (conflicts in `psdk_feb2003/RENAME_CONFLICTS.txt`).

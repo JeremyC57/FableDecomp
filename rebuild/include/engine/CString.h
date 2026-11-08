@@ -50,6 +50,12 @@ public:
     void AllocBuffer(int nLen);                              // 0x00C0BDA0
     void Init();
 #endif
+#if defined(FABLE_RETAIL_CSTRING_DEFAULT_CTOR) && !defined(FABLE_RETAIL_CSTRING_LEFT)
+    // Retail opt-in (chunk 871, row 0x00C4B640 PKCBufferedReader::CopyOutOfBuffers): MFC afx.inl's inline default constructor
+    // `CString::CString() { Init(); }` alone (retail: `mov eax,[0x0139C900] ; mov [local],eax` in every libpk trace message;
+    // FABLE_RETAIL_CSTRING_LEFT declares the same constructor). Needs FABLE_RETAIL_CSTRING_ALLOCCOPY (Init).
+    CString() { Init(); }
+#endif
 #ifdef FABLE_RETAIL_CSTRING_LEFT
     // Chunk 870 (row 0x00C0E1F0 CString::Left): MFC strcore.cpp `CString::Left(int nCount) const` (?Left@CString@@QBE?AV1@H@Z) and
     // the inline default constructor (afx.inl `CString::CString() { Init(); }`) the body's empty `dest` uses. Needs

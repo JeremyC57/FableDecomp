@@ -1,0 +1,19 @@
+address	status	best	note
+008383d0	matched	RELOCATION_MATCH	g5
+00cdbc50	matched	RELOCATION_MATCH	g3
+00c6cf40	matched	RELOCATION_MATCH	g1
+00c3e890	matched	RELOCATION_MATCH	g2
+00c4b640	matched	RELOCATION_MATCH	g4 (+360 perm sweep; CString overlay rebased)
+00c4d9b0	matched	RELOCATION_MATCH	g1
+00c55270	matched	RELOCATION_MATCH	g1
+00c58880	matched	MATCH	g1
+00c58ab0	matched	MATCH	g1
+00c58ce0	matched	MATCH	g3
+00c547d0	matched	MATCH	g1
+00c5dd70	matched	RELOCATION_MATCH	g5 (against the true 604-byte extent; row miscut at 728)
+00c5b480	matched	RELOCATION_MATCH	g3 (46 grades; relocations hand-checked)
+00c4e3c0	matched	RELOCATION_MATCH	g2 (4 grades; constants hand-checked)
+00c45f30	matched	RELOCATION_MATCH	g2 (8 grades)
+00c76e90	matched	RELOCATION_MATCH	g2 (10 grades; retail_asm through libpk/FtoL.h)
+00c770b0	matched	RELOCATION_MATCH	g2 (6 grades; true 857-byte extent, row miscut at 910; retail_asm through libpk/FtoL.h)
+00c52e40	matched	RELOCATION_MATCH	g2 (69 grades; /GS; retail_asm through libpk/IsCpuidSupported.h + the new libpk/CpuIdentify.h; jump table hand-checked)

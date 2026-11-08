@@ -1,0 +1,73 @@
+addr       parity           behav  name
+008383d0   RELOCATION_MATCH PASS   Create
+00c3e890   RELOCATION_MATCH PASS   RenderFrame
+00c45f30   RELOCATION_MATCH PASS   CAmbientCube
+00c4b640   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c4b640   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c4b640   WARN RELOC_NAME: ?Refill@PKCBufferedReader@@QAEXXZ -> 00c4a3b0 labelled 'PKCBufferedReader::PrimeBuffer'
+00c4b640   RELOCATION_MATCH PASS   CopyOutOfBuffers
+00c4d9b0   RELOCATION_MATCH PASS   Destroy
+00c4e3c0   WARN RELOC_NAME: ?SetBlock@CListenerState@@QAEXPBUSListenerBlock@@@Z -> 00c40830 labelled 'CProjectionOwner_00c40830::SetProjection'
+00c4e3c0   WARN RELOC_NAME: ?Refresh@CListenerState@@QAEXXZ -> 00c40d10 labelled 'NormalizeVectorPair'
+00c4e3c0   RELOCATION_MATCH PASS   ApplyListenerProperties
+00c52e40   WARN RELOC_NAME: ?GetAMDModelName@CCpuInfo@@QBEPBDXZ -> 00c52bb0 labelled 'CPU_GetAMDBrandName'
+00c52e40   WARN RELOC_CONFLICT: __aulldiv -> 00f3fc50 here, 00bfee00 in landed 00a3add0
+00c52e40   WARN RELOC_NAME: __aulldiv -> 00f3fc50 labelled '__alldiv'
+00c52e40   RELOCATION_MATCH PASS   DetectCpu
+00c547d0   MATCH            PASS   Process
+00c55270   WARN RELOC_NAME: ?DetectCpu@@YAXXZ -> 00c52e40 labelled 'InitCPUCapabilities'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8a8c@@QAE@XZ -> 00c550b0 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8a78@@QAE@XZ -> 00c55090 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8ac8@@QAE@XZ -> 00c55110 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   WARN RELOC_NAME: ??0CVtable_012b8ab4@@QAE@XZ -> 00c550f0 labelled 'C3DAnimationUtil::C3DAnimationUtil'
+00c55270   RELOCATION_MATCH PASS   CreateProcessor
+00c58880   MATCH            PASS   MixQuad16Ramped
+00c58ab0   MATCH            PASS   MixSurround16
+00c58ce0   MATCH            PASS   MixSurround16Ramped
+00c5b480   RELOCATION_MATCH PASS   ProcessSampleBlock
+00c5dd70   WARN RELOC_NAME: ?Attach@CRegistryKey@@QAEXPAUHKEY__@@@Z -> 00c73820 labelled '_global::SetMember_dword0x4_00c73820'
+00c5dd70   RELOCATION_MATCH PASS   GetAccelerationLevel
+00c6cf40   RELOCATION_MATCH PASS   RebuildGain
+00c76e90   RELOCATION_MATCH PASS   Process
+00c770b0   RELOCATION_MATCH PASS   Blend
+00cdbc50   RELOCATION_MATCH PASS   ~TeleportData
+
+WINS: 18
+  008383d0 RELOCATION_MATCH CThingTrackNode::?Create@CThingTrackNode@@SIPAV1@JABVC3DVector@@VCCharString@@@Z
+  00c3e890 RELOCATION_MATCH CAudioDevice_00c3e760::?RenderFrame@CAudioDevice_00c3e760@@QAEJXZ
+  00c45f30 RELOCATION_MATCH CAmbientCube::??0CAmbientCube@@QAE@M@Z
+  00c4b640 RELOCATION_MATCH PKCBufferedReader::?CopyOutOfBuffers@PKCBufferedReader@@QAEKPAXK@Z
+  00c4d9b0 RELOCATION_MATCH CAudioBuffer::?Destroy@CAudioBuffer@@QAEXXZ
+  00c4e3c0 RELOCATION_MATCH CEAXManager::?ApplyListenerProperties@CEAXManager@@QAEHPBU_EAXLISTENERPROPERTIES@@@Z
+  00c52e40 RELOCATION_MATCH _global::?DetectCpu@@YAXXZ
+  00c547d0 MATCH CStereoWidener::?Process@CStereoWidener@@QAEXPAJ0@Z
+  00c55270 RELOCATION_MATCH CAudioSource::?CreateProcessor@CAudioSource@@QAEPAVCVtable_012beda4@@K@Z
+  00c58880 MATCH CMixBuffer::?MixQuad16Ramped@CMixBuffer@@QAEXPBFPBG1@Z
+  00c58ab0 MATCH CMixBuffer::?MixSurround16@CMixBuffer@@QAEXPBFPBG@Z
+  00c58ce0 MATCH CMixBuffer::?MixSurround16Ramped@CMixBuffer@@QAEXPBFPBG1@Z
+  00c5b480 RELOCATION_MATCH CSoftwareVoice::?ProcessSampleBlock@CSoftwareVoice@@QAEKPAVCAudioObject@@_NK@Z
+  00c5dd70 RELOCATION_MATCH CDSoundAccelerationQuery::?GetAccelerationLevel@CDSoundAccelerationQuery@@QAEJPBU_GUID@@@Z
+  00c6cf40 RELOCATION_MATCH CVtable_012bed7c::?RebuildGain@CVtable_012bed7c@@QAEX_N@Z
+  00c76e90 RELOCATION_MATCH CReverbPreDelay::?Process@CReverbPreDelay@@QAEXPBUSReverbPreDelayParams@@PBMPAMI@Z
+  00c770b0 RELOCATION_MATCH CReverbPreDelay::?Blend@CReverbPreDelay@@QAEXPAUSReverbPreDelayParams@@PBU2@PBMPAMII@Z
+  00cdbc50 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::TeleportData::??1TeleportData@CQ_AmbushTradersScript@NScript@@QAE@XZ
+
+LANDED 18 wins into src/compiled + tests + catalog + oracle
+  CThingTrackNode_Create_008383d0
+  CAudioDevice00c3e760_RenderFrame_00c3e890
+  CAmbientCube_CAmbientCube_00c45f30
+  PKCBufferedReader_CopyOutOfBuffers_00c4b640
+  CAudioBuffer_Destroy_00c4d9b0
+  CEAXManager_ApplyListenerProperties_00c4e3c0
+  global_DetectCpu_00c52e40
+  CStereoWidener_Process_00c547d0
+  CAudioSource_CreateProcessor_00c55270
+  CMixBuffer_MixQuad16Ramped_00c58880
+  CMixBuffer_MixSurround16_00c58ab0
+  CMixBuffer_MixSurround16Ramped_00c58ce0
+  CSoftwareVoice_ProcessSampleBlock_00c5b480
+  CDSoundAccelerationQuery_GetAccelerationLevel_00c5dd70
+  CVtable012bed7c_RebuildGain_00c6cf40
+  CReverbPreDelay_Process_00c76e90
+  CReverbPreDelay_Blend_00c770b0
+  NScriptCQAmbushTradersScriptTeleportData_TeleportData_00cdbc50

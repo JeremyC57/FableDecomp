@@ -47021,6 +47021,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c5db40	FindDeviceInterface	CDSoundAccelerationQuery	unknown	undefined	0		0	yes	accepted									
 00c5dc60	OpenDeviceRegistryKey	CDSoundAccelerationQuery	unknown	undefined	0		0	yes	accepted									
 00c5dd70	Audio_InitializeDriver	_global	unknown	undefined	0		0	yes	accepted									
+00c5dfd0	sub_00c5dfd0	_gapscan	unknown	undefined	0		0			discovered	boundary							
+00c5dfe0	sub_00c5dfe0	_gapscan	unknown	undefined	0		0			discovered	boundary							
+00c5dff0	sub_00c5dff0	_gapscan	unknown	undefined	0		0			discovered	boundary							
+00c5e000	sub_00c5e000	_gapscan	unknown	undefined	0		0			discovered	boundary							
 00c5e050	SetProperty	CKsObject	__thiscall	void	5	CEngineDebug *,C3DBoundingSphere *,CMatrix3x4 *,CRGBColour *,bool	1	yes	accepted									
 00c5e0c0	Unwind@00fbe57b	_global	unknown	undefined	0		0	yes	accepted									
 00c5e130	void CloseHandle_00c5e130	CHandleOwner_00c5e130	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted									
@@ -47524,6 +47528,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c76dd0	CQ_GuildTrainingSkillScript_DeactivateSkillByIndex	_global	unknown	undefined	0		0	yes	accepted									
 00c76e90	FFT_ComputeRealTransform	_global	unknown	undefined	0		0	yes	accepted									
 00c770b0	FFT_ComputeComplexTransform	_global	unknown	undefined	0		0	yes	accepted									
+00c77410	sub_00c77410	_gapscan	unknown	undefined	0		0			discovered	boundary							
+00c77430	sub_00c77430	_gapscan	unknown	undefined	0		0			discovered	boundary							
 00c77440	CVtable_012bf0c8	CVtable_012bf0c8	__thiscall	undefined	1	CGameJoystickManager *	0	yes	accepted									
 00c77470	ReleaseBlock	CVtable_012bf0c8	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted									
 00c774a0	SetSettings	CVtable_012bf0c8	unknown	undefined	0		0			discovered	gapscan							

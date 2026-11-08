@@ -23,6 +23,11 @@ public: static CClass* __fastcall Alloc();
     // (their CThing base slots are not modelled in the shared chain yet). The layout above is the retail one (PDB 0x18 higher, landed 0x00836D00).
     // Needs the retail chain (FABLE_RETAIL_CTHING, _CTHINGPHYSICAL, _CTHINGGAMEOBJECT and their _LEVELSCRIPT opt-ins) for the virtual override.
 public:
+#ifdef FABLE_RETAIL_CTHINGTRACKNODE_CTOR
+    // Retail opt-in (chunk 871, row 0x008383D0 CThingTrackNode::Create): Ego_r.pdb ??0CThingTrackNode@@QAE@XZ, out of line in retail at
+    // 0x00837C70 (landed; it stores vtable 0x01272CE4) and called by Create through `new (false) CThingTrackNode`. A declaration only.
+    CThingTrackNode();                                                  // 0x00837C70
+#endif
     virtual bool ConstructFromLevelScript(const char* script);          // 0x00837E40
     static CThingTrackNode* __fastcall Create(long defIndex,const C3DVector& position,CCharString trackName);   // 0x008383D0
     void SetTrackName(const CCharString& trackName);                     // 0x00836EE0

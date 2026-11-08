@@ -1,0 +1,74 @@
+008383d0 g1 shared-header chain, CIdentityRightHandedSet
+008383d0 g2 +FABLE_RETAIL_C3DVECTOR
+008383d0 g3 +CTOR opt-in overlay
+008383d0 g4 named physics local
+00cdbc50 g1 shared header, user-declared empty dtor
+008383d0 g5 regrade (prior session source) RELOCATION_MATCH
+00cdbc50 g2 timeout (cl hang: missing NScript include chain)
+00cdbc50 g3 PhaseTwo include chain, empty user dtor: RELOCATION_MATCH
+00c6cf40 g1 twin-of-0x00C6DEA0 shape (inline SetTapGain front pair, out-of-line ComputeTapGain rear pair): RELOCATION_MATCH
+00c3e890 g1 switch in source order: case blocks reversed (md 67)
+00c3e890 g2 cases written 6,4,2,1 (retail block order): RELOCATION_MATCH, jump table case->label checked by hand
+00c4b640 g1 first model (CString default ctor opt-in, trace macro): md 41 (copy-address temps, store order)
+00c4b640 g2 named slot base + reordered stores: md 39
+00c4b640 v A-D,E,J-N,P-R address-expression spellings (pointer/void*/signed/inline helper): all md 39 (IR canonical)
+00c4b640 vT size before buffer: md 14
+00c4b640 perm sweep 360 statement orders (size before buffer): sokbpc RELOCATION_MATCH
+00c4b640 g3 sokbpc order adopted: RELOCATION_MATCH
+00c4d9b0 g1 sibling CAudioBuffer::Create model (CAudioContext inline wrappers): RELOCATION_MATCH
+00c55270 g1 two switches, in-class empty ctors for the 0x214 classes (expanded), declared ctors for the rest: RELOCATION_MATCH; call targets checked
+00c58880 g1 CMixBuffer sibling model, three arms: MATCH
+00c58ab0 g1 CMixBuffer 5.1 routing, four arms: MATCH
+00c58ce0 g1 ramped 5.1 (quad rear at full): md 36
+00c58ce0 g2 quad rear at half gain/step: md 4
+00c58ce0 g3 quad rear full gain, half step: MATCH
+00c547d0 g1 128-sample loop (VC unrolls x4), members re-read: MATCH
+00c5dd70 g1 if-chain 8 / 15, byte version local: md 186 (layout, slots)
+00c5dd70 g2 switch(8, 15) + long local: md 106
+00c5dd70 va..vd presence-block spellings: md 114/74/111/108 (vb: early `return 0` exits) -> vb equal over the whole body
+00c5dd70 g4/g5 vb adopted, graded against the true 604-byte extent (row bytes run 124 bytes into 0x00C5DFD0..0x00C5E047): RELOCATION_MATCH
+00c5b480 g1 first full model (members, step/phase locals, inline min tests): DIFFER md 183
+00c5b480 g2 hook out-param temp + single `most` + dst local before the clamp: md 136
+00c5b480 va/vb inline SourceFrames on the voice / ReadPointer local before `if (hook)`: md 139 / 143
+00c5b480 h1..h6 head orders (step/phase/resampling/needed): best h3 (`needed = frames; if (!playing) needed = m_carryFrames;`) md 104
+00c5b480 i1..i6 more head orders on h3: no gain (104..143); the m_step load stays CSE'd
+00c5b480 j1/j2 two-word resampler sub-object +0x1E8 with inline SourceFrames (j1): md 89 (head matches: retail reloads m_step/m_phase)
+00c5b480 k1/k2 inline CAudioRingBuffer::ReadPointer: md 91 (hook block nearer)
+00c5b480 l1..l6 hook-limit spellings: `limit` local (l4) md 59
+00c5b480 m1..m3 dst spellings: no change; n1/n2 queued captured in a local before the carry memcpy: md 50
+00c5b480 o1..o4,d1,d2 restore orders / clamp spellings: o2 (`m_phase = phase; m_step = step;`) md 30
+00c5b480 p1..p8 `most` spellings: p3 (the limit test repeated, no `most` local) RELOCATION_MATCH
+00c5b480 g3 p3 adopted: RELOCATION_MATCH; relocations checked by relchk.py (every ring field + call target)
+00c4e3c0 g1 expression clamp macro per member, early `return 0`: md ~ (ternary merges each store; 0-return block at the end)
+00c4e3c0 va statement clamp macro (each branch stores): md 17 (air absorption + result left)
+00c4e3c0 vb template ClampTo(T&, const T&...): 637v875, worse (not inlined the same way)
+00c4e3c0 g2 va + `(long)` on the in-range air absorption only + result word: RELOCATION_MATCH; constants / callees checked by relchk.py
+00c45f30 g1 apex ctor zeroing, inline CRampedParam ctor `m_bAngle(false) { SetImmediate(0) }`, free operator* by name: md 3 (flag store via ecx+0x30)
+00c45f30 va..vd CRampedParam ctor spellings (body assignment, bool / float parameters): md 4, no change
+00c45f30 ve/vf level set up in the CAmbientCube body (ve, direct) / through an inline Init (vf): ve RELOCATION_MATCH
+00c45f30 g2 ve adopted: RELOCATION_MATCH; callees checked by relchk.py
+00c76e90 g1 explicit three FtoL(delay - 0.5f) + `if (r < 0) ++r` blocks: md 1 (548v544: the third result homed in memory, stored in both arms)
+00c76e90 va..vd the third block as `whole = whole + 1` / int + implicit conversion / `whole += whole < 0` / a float local: md 1, 1, 151, 1
+00c76e90 ve inline RoundHalfDownToLong helper with the `if` body: md 1 (same)
+00c76e90 vf/vg/vh helper returning `result < 0 ? result + 1 : result` / early `return result + 1` / the ternary inline in the expression: all RELOCATION_MATCH
+00c76e90 g2 vf adopted: RELOCATION_MATCH; constants checked by relchk.py
+00c770b0 g1 Process model x2 reads, `if (position < offset) delay += size;`: md 100 (865v857; delay homed in memory, slots swapped)
+00c770b0 vs1 pos declared before data: no change
+00c770b0 vt1/vst `position < offset ? ... + size : ...` conditional expressions (+ the swap): md 8 / 10 (only `test ah,5 ; jp` vs `test ah,1 ; je`)
+00c770b0 vt2/g2 `position >= offset ? diff : diff + size`: RELOCATION_MATCH (true 857-byte extent, CUT; row miscut at 910); constants checked by relchk.py
+00c52e40 g1 first model (memcmp vendor tests, separate descriptor / vendor arrays): md 132 (memcmp sets ecx first; vendor and descriptor arrays share a frame slot, frame 0x4c vs 0x5c)
+00c52e40 va..vc vendor-test spellings over memcmp: md 130
+00c52e40 ve strcmp vendor tests (the intrinsic: `repe cmpsb` over strlen + 1, edi / esi / ecx order): md 28
+00c52e40 vm1/vm3/vm6, vl1..vl3, xOs/xOt/xOy- frame / flag probes: md 28..33 (xOs 995 bytes)
+00c52e40 vs1 vendor string and descriptors in one local struct (no slot sharing): md 20, 3 bytes: the L2 shift temporary edx, retail eax (0x00C52FF2)
+00c52e40 vl5/vl8..vl11, vs3/vs8..vs10, vn1..vn6, vp1..vp4 loop index / descriptor types, scopes, shift spellings and statement forms: md 20..26 (no change to the temporary)
+00c52e40 vw1..vw3, vq1/vq2 vendor-chain end forms; vz1 braced asm block: md 20..69
+00c52e40 probe --rotation: temporaries 87 eax, 89 edx (ecx busy), 91 eax, 93 edx, 93 eax -> pointer at ecx; the shift count holds ecx, so line 108 takes edx; retail needs one rotating temporary fewer before it
+00c52e40 vy1/vy2 no descriptor local (md 32), vr1/vr2 shift result into i / descriptor (md 20), vt4 inline L2 helper / vt6 cast (md 20), vu1 inline vendor helper (not inlined, 952 bytes), vu2 byte pointer (md 20)
+00c52e40 vk1/vk2 merged >= 0x40 arm (md 24), vm1/vm6 byte temp / int cast (md 20), vn1 full-ternary chain / vn2 `== 0` (md 20), vo1 bool local / vo2 `? 0 : 4` (md 20)
+00c52e40 vu3/vu4 __forceinline whole-chain vendor helper (diagnostic): the shift takes eax (return value = register candidate, `hint`), but the arms then share one store (md 23)
+00c52e40 va1..va3 arithmetic Centaur arms (`4 * !strcmp`, `<< 2`, `-x & 4`): md 25/26; vh1 IsVendor helper on all four (1052 bytes); vh2 single-return `? 4 : 0` helper (md 20); vi1/vi2 inline member SetVendor (952 / md 20); vh5 generic (vendor, id, code) helper (library strcmp, md 37)
+00c52e40 vh3/vh4 two-return inline helper for the last test only (`if (!strcmp(vendor, "CentaurHauls")) return 4; return 0;`): RELOCATION_MATCH (plain `inline` suffices)
+00c52e40 g2 vh3 adopted as GetCentaurVendorCode: RELOCATION_MATCH (69 grades); globals / strings / five callees / cookie checked by relchk.py, jump table 0x2D9/0x2ED/0x301/0x32B = retail 0x00C53119/2D/41/6B
+00c4b640 g4 CString overlay rebased on the current engine/CString.h (chunk 870 added FABLE_RETAIL_CSTRING_LEFT); DEFAULT_CTOR now `CString() { Init(); }` under ALLOCCOPY, guarded against LEFT: RELOCATION_MATCH
+00c52e40 g3 regrade after a comment edit: RELOCATION_MATCH
