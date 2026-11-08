@@ -28016,3 +28016,10 @@ chunk	address	module	name	length
 873	00488d10	CPlayer	InitInterfaces	4144
 873	00507c30	CWorldMap	LoadFromFile	7664
 873	005dd670	_global	StatRegisterClass	5328
+874	00c51f50	_global	CDrawGuildSeal_SetProperty	2288
+874	00c5b7c0	_gapscan	sub_00c5b7c0	1344
+874	00c4f600	_global	PropertySerializer_GetPropertyTypeCode	9248
+874	00c78a10	_global	Graphics_RenderTextWithConditionalEffects	2608
+874	00c79440	_global	Audio_ConvolveFilter_Aligned	2960
+874	00c79fd0	_global	Audio_ConvolveFilter_WithGain	2896
+874	00c7ab20	_global	Audio_ConvolveFilter_Complex_Variable	3248
