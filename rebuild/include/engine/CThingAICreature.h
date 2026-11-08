@@ -38,6 +38,13 @@ public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long, const CThingAICreatureInit& init);   // 0x00833800
     void AutoSetupSexuality(float probabilityOfHomosexuality);           // 0x008330D0
     void SetAsAllowedToFollowHero(bool allowed) { AllowedToFollowHero = allowed; }
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_INFORMATION
+    // Nested opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb
+    // ?GetHasInformation@CThingAICreature@@QBE_NXZ, out of line at 0x008300D0 (`mov al,[ecx+1C8h] ; shr al,2 ; and al,1`: bit 2 of
+    // +0x1C8 = HasInformation below, the bit the landed SetHasInformation 0x00830EB0 writes; the manifest's "CTCPhysicsStandard::
+    // CanCollideWithLandscape" there is a propagated label of a byte-identical getter). Declaration only.
+    bool GetHasInformation() const;                                      // 0x008300D0
+#endif
 #ifdef FABLE_RETAIL_CTHINGAICREATURE_IMMUNETOATTACK
     // Nested opt-in (chunk 854, row 0x00924C70 CAIStateGroup_KrakenAttack::Update): FableWin.pdb ?SetAsImmuneToAttack@CThingAICreature@@QAEX_N@Z
     // (Ego_r.pdb has the ?IsImmuneToAttack@..QBE_NXZ twin), inline in retail: `or cl,40h` on +0x1C8 = bit 6 ImmuneToAttack below.

@@ -6,6 +6,7 @@
 #ifdef FABLE_RETAIL_CTCINVENTORYSTATS
 #include "stlport/fable_containers.h"
 #include "engine/ETCInterfaceType.h"
+#include "engine/EHeroAbility.h"
 #endif
 class CTCHeroExperience;class CTCHeroStats;
 // Original complete storage; native inventory base130 plus information-screen base4.
@@ -39,6 +40,10 @@ public: virtual NUISystem::CComponent * ConstructExperienceListPC(NUISystem::CCo
 // (out of line at 0x005CDD86, landed).
 public: static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_STATS; }
 public: std::vector<NUISystem::CComponent*> CreateExperienceSliders(NUISystem::CComponent *,long,bool);
+// Chunk 867 (row 0x005D6748 ConstructExperienceList): Ego_r.pdb / FableWin.pdb ?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@
+// NUISystem@@W4EHeroAbility@@AAM@Z, out of line at 0x005D64DD (landed): one ability row on the stats screen, the row position by
+// reference (read for the slider's Y, then advanced).
+public: void AddHeroAbility(NUISystem::CComponent *,EHeroAbility,float &);
 #endif
 public: virtual NUISystem::CComponent * ConstructPersonalityListPC(NUISystem::CComponent *);
 private: std::map<unsigned long,long,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,long> > > CreaturesKilled;

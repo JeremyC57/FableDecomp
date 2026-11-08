@@ -27,6 +27,12 @@ public:
     void SellItem(long);
     float GetCurrentBasicPrice(long,long) const;
     long GetCurrentBuyPrice(long,long) const;
+#ifdef FABLE_RETAIL_CTCSHOP_SELLPRICE
+    // Retail opt-in (chunk 867, rows 0x005AF64E BuyItem / 0x005B01FE SellItemPC): Ego_r.pdb + FableWin.pdb
+    // ?GetCurrentSellPrice@CTCShop@@QBEJJJ@Z, out of line at 0x007743B0 (the price the shop sells `count` of an item for; the
+    // catalog's GetCurrentBuyPrice label for that address is propagated). Declaration only.
+    long GetCurrentSellPrice(long,long) const;                         // 0x007743B0
+#endif
     std::vector<GoodsPlace> GetFreeSaleItemPlaces(bool);
     void AddSaleItem(long,const GoodsPlace&);
 #ifdef FABLE_RETAIL_CTCSHOP
@@ -60,6 +66,11 @@ public:
     bool IsBarberShop() const;                                           // 0x00772490
     bool IsTattooShop() const;                                           // 0x00772510
     bool IsTitleShop() const;                                            // 0x00772590
+#endif
+#ifdef FABLE_RETAIL_CTCSHOP_NAME
+    // Retail opt-in (chunk 867, row 0x005A8C66 CTCInventoryTrade::ConstructActualSpecialInventoryPC): Ego_r.pdb ?GetName@CTCShop@@QBEKXZ,
+    // out of line in retail (0x00772610; the row tests it `> 0` unsigned and passes it to the text bank). Declaration only.
+    unsigned long GetName() const;                                       // 0x00772610
 #endif
 private:
     CIntelligentPointer<CThingCreatureBase> PShopKeeper;

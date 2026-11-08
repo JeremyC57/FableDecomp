@@ -31,7 +31,18 @@ public:
     // FableWin ??0?$CIntelligentPointer@VCThing@@@@QAE@XZ / QAE@PAVCThing@@@Z, ?Set@..QAEXPAVCThing@@@Z and the private
     // ?SetPointer@?$CIntelligentPointer@$$CBVCThing@@@@AAEXPBVCThing@@@Z.
     CIntelligentPointer() { }
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR_OUTOFLINE
+    // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the (T*) constructor called out of
+    // line (0x004A96F0 for CThing, FableWin ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z) for the temporary of
+    // `PTargetedThing = targeting->GetPTargetedThing();`. Declaration only.
+    CIntelligentPointer(T* pointer);
+#else
     CIntelligentPointer(T* pointer) { SetPointer(pointer); }
+#endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_ASSIGN_OUTOFLINE
+    // Same row: ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z called out of line (0x004A9760, the ASSIGN branch's body as a COMDAT).
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);
+#endif
     void Set(T* pointer) { SetPointer(pointer); }
     T* Get() const { return static_cast<T*>(GetPItem()); }             // FableWin ?Get@?$CIntelligentPointer@..@@QBEPAV..@XZ
     T* operator->() const { return Get(); }                             // FableWin ??C?$CIntelligentPointer@..@@QBEPAV..@XZ
@@ -67,6 +78,12 @@ private:
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_COMPARE
+// Retail opt-in (chunk 867, row 0x0064BFBA): the free comparison of a raw item with an intelligent pointer, FableWin.pdb
+// ??$?9VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z, out of line at 0x005CBDD2 (`mov ecx,<thing> ;
+// lea edx,<pointer> ; call`). Declaration only.
+template<class T> bool FABLE_FASTCALL operator!=(const CBaseObject* item, const CIntelligentPointer<T>& pointer);
+#endif
 #else
 // Ego_r TPI CBaseIntelligentPointer: independent polymorphic class, PData +4;
 // retail GetPItem 00a01b50 receives this+0 and reads PData +4.

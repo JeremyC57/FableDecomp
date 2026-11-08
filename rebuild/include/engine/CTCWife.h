@@ -63,6 +63,7 @@ public:
     bool IsCourtableAndNotBlockingIt() const;                // 0x006CF810 ?IsCourtableAndNotBlockingIt@CTCWife@@QBE_NXZ
     bool IsCourtingHero() const;                             // 0x006CF890 ?IsCourtingHero@CTCWife@@QBE_NXZ
     bool IsInLoveWithHero() const;                           // 0x006CF900 ?IsInLoveWithHero@CTCWife@@QBE_NXZ
+    bool IsOfferingSex() const;                              // 0x006CEEA0 ?IsOfferingSex@CTCWife@@QBE_NXZ (chunk 867, row 0x0064BFBA)
     void HaveSex();                                          // 0x006CF920 ?HaveSex@CTCWife@@QAEXXZ
     void OnHeroViolence();                                   // 0x006CFDA0 ?OnHeroViolence@CTCWife@@QAEXXZ
     void Divorce();                                          // 0x006D0180 ?Divorce@CTCWife@@QAEXXZ

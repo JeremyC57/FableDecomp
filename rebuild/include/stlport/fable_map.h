@@ -107,6 +107,13 @@ public:
 private:
     void _M_erase(_Rb_tree_node<V>*);
 public:
+#ifdef FABLE_RETAIL_STLP_TREE_CLEAR_OUTOFLINE
+    // Per-TU opt-in (chunk 867, row 0x005F59C7 CTCInventoryAbilities::ConstructPCExpressionsList; like
+    // FABLE_RETAIL_STLP_VECTOR_PUSHBACK_OUTOFLINE): STLport's clear is one inline body, which VC7.1 expanded in some TUs and
+    // called as a COMDAT in others; that TU calls the map<long,NUISystem::CComponent*> tree's clear 0x00593235 twice (the
+    // landed CTCInventory::CloseInventory 0x00589D30 calls the same body). Declaration only; the body below is retail's.
+    void clear();
+#else
     void clear() {
         if(_M_node_count!=0) {
             _M_erase(static_cast<_Rb_tree_node<V>*>(this->_M_header._M_data->_M_parent));
@@ -116,6 +123,7 @@ public:
             _M_node_count=0;
         }
     }
+#endif
 protected:
     typedef _Rb_tree_node<V>* _Link_type;
     _Link_type& _M_leftmost()const{return (_Link_type&)this->_M_header._M_data->_M_left;}
@@ -178,6 +186,37 @@ public:
     // (rebalance, destroy, deallocate; out of line in retail: 0x00AD4CA0 map<unsigned long,CContractionReference>, 0x00AD3C30
     // multimap<float,CCountedPointer<CVertexPairContraction> >). Declaration only.
     void erase(iterator position);
+#endif
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
+    // Retail opt-in (chunk 867, row 0x005B01FE CTCInventoryTrade::SellItemPC): STLport 4.6 _tree.h upper_bound / equal_range and
+    // _tree.c `size_type erase(const key_type&)` (equal_range, distance, erase(first, last); returns the number removed) and
+    // `void erase(iterator, iterator)` (clear() for the whole range, else erase(first++) until last). The bodies are visible, as in
+    // every retail TU that includes <map>, so VC7.1's mod/ref summary sees the key only read through its reference (the caller's
+    // dead parameter word can then be shared: 0x005B01FE keeps its GetTC keys and `found` flag in [ebp+8]); VC7.1 still calls
+    // erase(const K&) out of line: 0x005B2779 for map<NUISystem::CComponent*,std::pair<long,long> > (ItemsToSell), 0x005B27D6 for
+    // map<NUISystem::CComponent*,NUISystem::CList*> (SellListsByCategory). erase(iterator) itself is the FABLE_RETAIL_STLP_TREE_ERASE
+    // declaration (out of line in retail). map::erase(const K&) below forwards here as _map.h does.
+    iterator upper_bound(const K& key) {
+        _Link_type y=this->_M_header._M_data;
+        _Link_type x=_M_root();
+        while(x!=0) {
+            if(_M_key_compare(key,_S_key(x))) {y=x;x=_S_left(x);}
+            else x=_S_right(x);
+        }
+        return iterator(y);
+    }
+    pair<iterator,iterator> equal_range(const K& key) { return pair<iterator,iterator>(lower_bound(key),upper_bound(key)); }
+    void erase(iterator first,iterator last) {
+        if(first==begin()&&last==end()) clear();
+        else while(first!=last) erase(first++);
+    }
+    size_t erase(const K& key) {
+        pair<iterator,iterator> p=equal_range(key);
+        size_t n=0;
+        for(iterator i=p.first;i!=p.second;++i) ++n;
+        erase(p.first,p.second);
+        return n;
+    }
 #endif
 };
 template<class K,class V,class KeyOfValue,class Compare,class A>
@@ -258,6 +297,9 @@ public:
     const_iterator end()const{return _M_t.end();}
 #ifdef FABLE_RETAIL_STLP_TREE_ERASE
     void erase(iterator position){_M_t.erase(position);}
+#endif
+#ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
+    size_t erase(const K& key){return _M_t.erase(key);}
 #endif
 };
 // STLport 4.6.2 _function.h _Identity, _set.h set and _multimap.h multimap (Codex pass 11 consolidation 2, row 0x007355F0:

@@ -2542,3 +2542,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Two vland jobs grading the same addresses must not share `LANDVERIFY_WORK`: give each its own directory (the per-address object would be overwritten mid-grade).
 - The Platform SDK Feb 2003 cabs name files by MSI key (`User32_Lib.<GUID>`); `fetch_sdks.py` takes Include/Lib from `CoreSDK-common.2.*.cab` only (the 4.x cabs are samples with hundreds of clashing header names) and keeps i386 libraries.
 - 0x00CAC300 (strmbase `CDynamicOutputPin` narrow-name ctor, catalog name `CEngineScreenEffectRenderer::Initialize`) grades DIFFER(41v241) in a default recheck because its leaf `Initialize` picks another symbol: a pre-existing wrong leaf, listed in the strmbase NAME_FIXES.
+- cl 13.10 under Wine spins at 100% CPU on a `#error` and on a missing #include (not an error exit): wrap grades in `timeout 240` and bisect with preprocess-only runs (chunk 867, CDefString.h's #error without FABLE_RETAIL_CDEFSTRINGTABLE).
+- Behaviour tests compile under VC7.1 too (vland `/Od /W3`): no C++11 brace temporaries (`Colour{...}`), use a helper (landing 2026-11-08v, 0x005D6748 TCC_FAIL).
+- A payload `name` must be the bare C++ name: chunk 867's finish.py took a comment tail into it and vland landed it as the catalog name and file name (fixed by hand, landing 2026-11-08v).
+

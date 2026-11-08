@@ -1,0 +1,16 @@
+address	Class::Name	evidence
+00427216	NUISystem::CManager::CreateTickSlider	matched row (chunk 867, RELOCATION_MATCH v8): Ego_r + FableWin ?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z; label already correct
+005a8c66	CTCInventoryTrade::ConstructActualSpecialInventoryPC	matched row (chunk 867): Ego_r + FableWin ?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ; label already correct
+005af64e	CTCInventoryTrade::BuyItem	matched row (chunk 867): Ego_r + FableWin ?BuyItem@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@@Z; label already correct
+005d6748	CTCInventoryStats::ConstructExperienceList	matched row (chunk 867): Ego_r + FableWin ?ConstructExperienceList@CTCInventoryStats@@AAEPAVCComponent@NUISystem@@XZ; label already correct
+0064bfba	NPlayerGui::CDrawHighlightingTargetingCursor::Draw	parked row (chunk 867, slot-numbering differ): Ego_r + FableWin ?Draw@CDrawHighlightingTargetingCursor@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z; manifest module lacks the NPlayerGui namespace
+00655d28	CDefClassBase::GetSubDef<CDoorDef>	called by 0x0064BFBA (`lea eax,[doorDef] ; push eax ; mov ecx,baseDef ; call`); Ego_r ??$GetSubDef@VCDoorDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCDoorDef@@@@@Z; label already correct
+005cbdd2	operator!=<CThing>(const CBaseObject*, const CIntelligentPointer<CThing>&)	called by 0x0064BFBA with ecx = the targeting component's target, edx = &PTargetedThing; FableWin ??$?9VCThing@@@@YI_NPBVCBaseObject@@ABV?$CIntelligentPointer@VCThing@@@@@Z
+00643d5d	NPlayerGui::CDrawBase::ScaleAlpha	called by 0x0064BFBA for both border sprites' alpha (0xFF in); Ego_r + FableWin ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z; label already correct
+007f5a70	CTCTargetingBase::IsTargetedThingOfType	called by 0x0064BFBA with 1 (the action-use targeting type); FableWin ?IsTargetedThingOfType@CTCTargetingBase@@QBE_NW4ETargetingType@@@Z; label already correct
+007f59f0	NTargeting::IsThingVulnerableToMeleeStrikesFromThing	called by 0x0064BFBA (ecx = targeted thing, edx = hero); FableWin ?IsThingVulnerableToMeleeStrikesFromThing@NTargeting@@YI_NABVCThing@@0@Z
+004c04c0	NGraphicAppearance::CTCGraphicAppearance::SetAsHighlighted	called by 0x0064BFBA with the two widths, the colour, true, true, priority 3 and `this`; FableWin ?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z; label already correct
+00634160	CPlayer::HasMode	called by 0x0064BFBA with PLAYER_MODE_Z_TARGET (2) while the player is in the lightning mode; Ego_r + FableWin ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z; label already correct
+006ceea0	CTCWife::IsOfferingSex	called by 0x0064BFBA on a married wife; FableWin ?IsOfferingSex@CTCWife@@QBE_NXZ; label already correct
+005b3440	CDefString::operator==(const char*)	called by 0x0064BFBA twice on CThing::GetDefName() with the demon-door face literals 0x01259B50 / 0x01259B30; FableWin ??8CDefString@@QBE_NPBD@Z
+0099f830	GFIntToCharString	called by 0x00427216 for the level label (`push value ; lea ecx,[temp] ; call`, CCharString hidden result); FableWin ?GFIntToCharString@@YI?AVCCharString@@J@Z (__fastcall)

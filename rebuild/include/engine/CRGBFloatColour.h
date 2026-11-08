@@ -63,6 +63,20 @@ public:
         return CRGBColour((unsigned char)r, (unsigned char)g, (unsigned char)b, (unsigned char)a);
     }
 #endif
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_TO_CRGBCOLOUR
+    // Retail opt-in (chunk 867, row 0x00427216 NUISystem::CManager::CreateTickSlider): FableWin.pdb ??BCRGBFloatColour@@QBE?AVCRGBColour@@XZ,
+    // the implicit conversion to the byte colour, emitted by the debug build in CManager's own TU (0x01B0C550, 0x1761 bytes after
+    // CreateTickSlider 0x01B0ADEF). Inline in retail (no out-of-line copy is bound); CreateTickSlider expands it four times with the
+    // channels scaled by 255.0f (float pool 0x01230014) and converted through __ftol2 in member order R, G, B, A (0x00427745..0x00427789),
+    // where GetRGBColour's own COMDAT 0x00429880 converts A first. Same body as GetRGBColour; a separate function so the member order
+    // of the expansion is the compiler's (not a different spelling). __forceinline as GetRGBColour above: plain in-class inline is called
+    // out of line under /Os (chunk 867 grade v3: four calls to the operator's COMDAT, 2796 bytes against retail's 2995).
+    __forceinline operator CRGBColour() const
+    {
+        return CRGBColour((unsigned char)(R * 255.0f), (unsigned char)(G * 255.0f), (unsigned char)(B * 255.0f),
+                          (unsigned char)(A * 255.0f));
+    }
+#endif
 #ifdef FABLE_RETAIL_CRGBFLOATCOLOUR_CLAMP
     // Retail opt-in (chunk 855, row 0x0052F900 NUISystem::CComponent::UpdateColour): FableWin.pdb ?Clamp@CRGBFloatColour@@QAEXXZ, inline in
     // retail (no out-of-line copy is bound; __forceinline: with plain inline VC7.1 calls it out of line in UpdateColour). Clamp limits each channel

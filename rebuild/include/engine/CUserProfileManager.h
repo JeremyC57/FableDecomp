@@ -34,6 +34,18 @@ public:
     float MusicVolumeNewProfile;                                         // +0xe8
     float DialogueVolumeNewProfile;                                      // +0xec
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_TARGETINGSTATUS
+    // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the targeting-status pair the row
+    // selects by UseNewProfileValues (`cmp byte [eax+0Ch],0 ; mov al,[eax+134h] / [eax+6Ch]`): Ego_r.pdb ShowTargetingStatus (+0x74
+    // there, after two 16-byte vectors that are 12 in retail: +0x6C) and ShowTargetingStatusNewProfile (+0x138 there; retail +0x134,
+    // the VOLUME block's -4 rule for the new-profile members). Not combinable with the VOLUME layout block above (own pads).
+    unsigned char _pad_ts_0x00[0xc];                                     // vptr, CBaseClass, ProfileName
+    bool UseNewProfileValues;                                            // +0x0c
+    unsigned char _pad_ts_0x0d[0x6c - 0xd];                              // SubtitlingEnabled .. AssignedInputsAggressive
+    bool ShowTargetingStatus;                                            // +0x6c
+    unsigned char _pad_ts_0x6d[0x134 - 0x6d];                            // EffectsDetail .. CameraSensitivityNewProfile
+    bool ShowTargetingStatusNewProfile;                                  // +0x134
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_SCOREBOARD
     // Nested opt-in (chunk 777, row 0x0055F710 CTCHeroOnlineScoreboard::ResetAndOpenHTTPAndPrepareRequest): the scoreboard settings and
     // their FableWin.pdb accessors (?GetScoreboardUserName@CUserProfileManager@@QAE?AVCWideString@@XZ, ..ProxyIp.., ?GetScoreboardProxyPort

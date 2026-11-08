@@ -11,6 +11,11 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
+#include "engine/C2DVector.h"
+#include "engine/CRGBColour.h"
+#include "stlport/fable_containers.h"
+#endif
 #ifdef FABLE_RETAIL_CPLAYERGUIDEF_SCRIPTSPRITES
 // Retail opt-in (chunk 855, row 0x00490BE0 CSubtitleRenderer::GetGraphicFromEmbeddedTag): ScriptSprites typed as its Ego_r.pdb type
 // map<CCharString,long> (STLport 4.6, 0xC bytes) at retail +0x934. Evidence: the row looks the tag up at def+0x934 through the
@@ -508,11 +513,17 @@ public:
     long             ABXYTargetingCancelGraphic;             // +0x7c8
     float            ABXYButtonFadeDurationSeconds;          // +0x7cc
     long             TargetingBorderLeftGraphic;             // +0x7d0
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
+    C2DVector        TargetingBorderLeftPos;                 // +0x7d4 (the two C2DVector members as such: the row passes the right one by reference)
+    long             TargetingBorderRightGraphic;            // +0x7dc
+    C2DVector        TargetingBorderRightPos;                // +0x7e0
+#else
     float            TargetingBorderLeftPos_X;               // +0x7d4 C2DVector::X
     float            TargetingBorderLeftPos_Y;               // +0x7d8 C2DVector::Y
     long             TargetingBorderRightGraphic;            // +0x7dc
     float            TargetingBorderRightPos_X;              // +0x7e0 C2DVector::X
     float            TargetingBorderRightPos_Y;              // +0x7e4 C2DVector::Y
+#endif
     long             InteractButtonBorderGraphic;            // +0x7e8
     float            InteractButtonBorderOffset_X;           // +0x7ec C2DVector::X
     float            InteractButtonBorderOffset_Y;           // +0x7f0 C2DVector::Y
@@ -544,6 +555,17 @@ public:
     long             HeroSprintBarInnerGraphic;              // +0x860
     float            HeroSprintBarInnerGraphicOffset_X;      // +0x864 C2DVector::X
     float            HeroSprintBarInnerGraphicOffset_Y;      // +0x868 C2DVector::Y
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
+    // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): the seven highlight tables as the
+    // STLport vectors they are (12 bytes each, same offsets), indexed by the cursor type; the row reads _M_start[type] of each.
+    std::vector<CRGBColour> HighlightStartColour;            // +0x86c
+    std::vector<CRGBColour> HighlightEndColour;              // +0x878
+    std::vector<float>      HighlightStartWidthWorldSpace;   // +0x884
+    std::vector<float>      HighlightEndWidthWorldSpace;     // +0x890
+    std::vector<float>      HighlightStartWidthScreenSpace;  // +0x89c
+    std::vector<float>      HighlightEndWidthScreenSpace;    // +0x8a8
+    std::vector<long>       HighlightFadeSteps;              // +0x8b4
+#else
     unsigned char    HighlightStartColour[0xc];              // +0x86c vector<CRGBColour,std::allocator<CRGBColour>_>
     unsigned char    HighlightEndColour[0xc];                // +0x878 vector<CRGBColour,std::allocator<CRGBColour>_>
     unsigned char    HighlightStartWidthWorldSpace[0xc];     // +0x884 vector<float,std::allocator<float>_>
@@ -551,6 +573,7 @@ public:
     unsigned char    HighlightStartWidthScreenSpace[0xc];    // +0x89c vector<float,std::allocator<float>_>
     unsigned char    HighlightEndWidthScreenSpace[0xc];      // +0x8a8 vector<float,std::allocator<float>_>
     unsigned char    HighlightFadeSteps[0xc];                // +0x8b4 vector<long,std::allocator<long>_>
+#endif
     float            NumberOfSecondsForContainerItemToReachFullSize; // +0x8c0
     float            ContainerItemDisplayAreaTLPos_X;        // +0x8c4 C2DVector::X
     float            ContainerItemDisplayAreaTLPos_Y;        // +0x8c8 C2DVector::Y
@@ -1115,11 +1138,17 @@ FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYTargetingEnterGraphic) == 0x7c4)
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYTargetingCancelGraphic) == 0x7c8);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, ABXYButtonFadeDurationSeconds) == 0x7cc);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftGraphic) == 0x7d0);
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_TARGETING
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftPos) == 0x7d4);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightGraphic) == 0x7dc);
+FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightPos) == 0x7e0);
+#else
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftPos_X) == 0x7d4);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderLeftPos_Y) == 0x7d8);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightGraphic) == 0x7dc);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightPos_X) == 0x7e0);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, TargetingBorderRightPos_Y) == 0x7e4);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonBorderGraphic) == 0x7e8);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonBorderOffset_X) == 0x7ec);
 FABLE_STATIC_ASSERT(offsetof(CPlayerGuiDef, InteractButtonBorderOffset_Y) == 0x7f0);

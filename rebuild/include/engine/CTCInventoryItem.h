@@ -19,11 +19,51 @@
 #include "engine/ETCInterfaceType.h"
 class CDefPointeeBase;
 namespace NInventory { class CTCInventoryBase; }
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
+enum EUIInventoryCategory;                                   // MS forward enum: the PDBs keep no enumerator spellings
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_CARDDEFS
+class CHairCardDef; class CTattooDef;
+#endif
 #pragma pack(push, 1)
 class CTCInventoryItem : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_ITEM; }   // ?StatGetInterfaceType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@XZ
     void ReturnToInventory();                                 // 0x005D8E50
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_CATEGORY
+    // Nested opt-in (chunk 867, rows 0x005AF64E BuyItem / 0x005B01FE SellItemPC): the three static `__fastcall` CInventoryItemDef
+    // field accessors, each `GetDef<CInventoryItemDef>(defIndex)` + one field read (Ego_r.pdb layout: InventoryCategory +0x3c,
+    // InventoryType +0x50, UIInventoryCategory +0x6c), FableWin.pdb spellings:
+    //   ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z                              0x005D97B0 (the def index of the item's inventory category)
+    //   ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z             0x005D99D0 (the TC interface of the inventory component holding it)
+    //   ?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z  0x005D96F0 (the PC trade-menu tab)
+    // (the landed catalog called all three "GetInventoryCategory": NAME_FIXES in chunk 867).
+    static long __fastcall GetInventoryCategory(long defIndex);                      // 0x005D97B0
+    static ETCInterfaceType __fastcall GetInventoryType(long defIndex);              // 0x005D99D0
+    static EUIInventoryCategory __fastcall GetUIInventoryCategory(long defIndex);    // 0x005D96F0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_KINDS
+    // Nested opt-in (chunk 867, row 0x00590F0B CTCInventory::GetItemsListUIComponentPC): the two static `__fastcall` item-kind
+    // tests on a def index, FableWin.pdb / Ego_r.pdb ?IsBook@CTCInventoryItem@@SI_NJ@Z 0x005D9970 (a valid def with a book sub-def;
+    // its body tests 0x005D94B0 then GetSubDef 0x005DA3C0 and releases the handle) and ?IsExpression@CTCInventoryItem@@SI_NJ@Z
+    // 0x005D9830 (the landed CTCQuickAccessMenu::GetItemsListUI 0x006276F0 binds it the same way). Both out of line in retail.
+    static bool __fastcall IsBook(long defIndex);                                     // 0x005D9970
+    static bool __fastcall IsExpression(long defIndex);                               // 0x005D9830
+    // Row 0x005AF64E CTCInventoryTrade::BuyItem: ?IsWeapon@CTCInventoryItem@@SI_NJ@Z 0x005D97F0 (FableWin.pdb 0x01E029A0),
+    // ?IsBuyable@CTCInventoryItem@@SI_NJ@Z 0x005D9B30 (0x01E03CA0) and ?GetDescription@CTCInventoryItem@@SI?AVCWideString@@J@Z
+    // 0x005D95C0 (0x01E01CC0; the def's description text, hidden CWideString result, the index in edx). All out of line in retail.
+    static bool __fastcall IsWeapon(long defIndex);                                   // 0x005D97F0
+    static bool __fastcall IsBuyable(long defIndex);                                  // 0x005D9B30
+    static CWideString __fastcall GetDescription(long defIndex);                      // 0x005D95C0
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM_CARDDEFS
+    // Retail opt-in (chunk 867, row 0x005A8C66 CTCInventoryTrade::ConstructActualSpecialInventoryPC): the static card-def lookups,
+    // Ego_r.pdb ?GetHairCardDef@CTCInventoryItem@@SI?AV?$CDefPointer@$$CBVCHairCardDef@@@@J@Z (landed 0x005D9A10) and
+    // ?GetTattooCardDef@CTCInventoryItem@@SI?AV?$CDefPointer@$$CBVCTattooDef@@@@J@Z (landed 0x005D9AA0): static `__fastcall`, the
+    // CDefPointer result by hidden pointer. Needs engine/CDefPointer.h (FABLE_RETAIL_DEF_CLASS_BASE) before this header.
+    static CDefPointer<const CHairCardDef> __fastcall GetHairCardDef(long defIndex);       // 0x005D9A10
+    static CDefPointer<const CTattooDef> __fastcall GetTattooCardDef(long defIndex);       // 0x005D9AA0
+#endif
     CDefPointeeBase*  PDef_Object;                           // +0x0c CDefPointer<CInventoryItemDef_const_>::Object
     NInventory::CTCInventoryBase* PInventory;                // +0x10
     long              call;                                  // +0x14 retail-only long (previous header)

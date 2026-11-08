@@ -1,0 +1,9 @@
+addr       parity           behav  name
+005d6748   WARN RELOC_NAME: ?GetTrainableStatPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroTrainableStatType@@AAM@Z -> 006d6fa0 labelled 'Experience_GetLevelAndFraction'
+005d6748   RELOCATION_MATCH PASS   ConstructExperienceList
+
+WINS: 1
+  005d6748 RELOCATION_MATCH CTCInventoryStats::?ConstructExperienceList@CTCInventoryStats@@UAEPAVCComponent@NUISystem@@PAV23@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryStats_ConstructExperienceList_005d6748

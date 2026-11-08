@@ -63,6 +63,16 @@ public:
     // `mov ecx,[eax+114h] ; test ecx,ecx`), the generated default branch's offsets and Ego_r.pdb names.
     unsigned char _pad_after_base[0x3c - sizeof(CTCBase)];
     long Money;                                                          // +0x3c
+#ifdef FABLE_RETAIL_CTCHEROSTATS_GETMONEY
+    // Nested opt-in (chunk 867, row 0x005A8C66 CTCInventoryTrade::ConstructActualSpecialInventoryPC): Ego_r.pdb ?GetMoney@CTCHeroStats@@QBEJXZ,
+    // inline in retail (the row reads Money +0x3C in place after the hero's PeekTC: `mov edx,[eax+3Ch]`, 0x005A92E2).
+    long GetMoney() const { return Money; }
+#endif
+#ifdef FABLE_RETAIL_CTCHEROSTATS_ADDMONEY
+    // Nested opt-in (chunk 867, rows 0x005AF64E BuyItem / 0x005B01FE SellItemPC): the BOASTS branch's AddMoney for a TU that needs the
+    // BRIBE layout (Money +0x3C) as well -- Ego_r.pdb ?AddMoney@CTCHeroStats@@QAEXJ_N@Z, out of line at 0x0057B327. Declaration only.
+    void AddMoney(long amount, bool flag);                               // 0x0057B327
+#endif
     unsigned char _pad_0x40[0x114 - 0x40];
     long TrainingStatus;                                                 // +0x114 EHeroTrainingStatus
     unsigned char _pad_0x118[0x1dc - 0x118];

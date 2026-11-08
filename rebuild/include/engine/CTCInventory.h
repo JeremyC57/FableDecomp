@@ -13,9 +13,36 @@
 #include "rebuild_abi.h"
 #include "engine/NInventory_CTCInventoryBase.h"
 #include "engine/NHeroInformationScreens_CBase.h"
-namespace NUISystem { class CComponent; }
+#ifdef FABLE_RETAIL_CTCINVENTORY_QUICKACCESS
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#endif
+namespace NUISystem { class CComponent; class CList; }
+class CWideString; class CCharString;
 class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
+#ifdef FABLE_RETAIL_CTCINVENTORY_PCMENUS
+    // Nested opt-in (chunk 867, row 0x00590F0B GetItemsListUIComponentPC; needs FABLE_RETAIL_CTCINVENTORY_QUICKACCESS for the
+    // vector include): the PC inventory screen's items page and its per-category list builder, FableWin.pdb / Ego_r.pdb spellings
+    //   ?GetItemsListUIComponentPC@CTCInventory@@QAEPAVCComponent@NUISystem@@PAV23@@Z                              0x00590F0B
+    //   ?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@
+    //     V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4_N@Z                               0x005907AB
+    // (landed; its parameters: the category title, the page list, the category's (def index, count) pairs, the owning parent
+    // component, the ring-picture template name, the menu-guide text symbol and whether the entries check a usable target).
+    NUISystem::CComponent* GetItemsListUIComponentPC(NUISystem::CComponent* parent);                 // 0x00590F0B
+    void ConstructItemCategoryListPC(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long, long> >& items,
+                                     NUISystem::CComponent* owner, const CCharString& templateName,
+                                     const CCharString& descriptionSymbol, bool checkUsable);        // 0x005907AB
+#endif
+#ifdef FABLE_RETAIL_CTCINVENTORY_QUICKACCESS
+    // Nested opt-in (chunk 867, row 0x005F59C7 CTCInventoryAbilities::ConstructPCExpressionsList): the quick-access slots and the
+    // two PC menu maps as typed containers (Ego_r.pdb types; retail reads QuickAccessItems begin/end +0x148/+0x14c and clears the
+    // trees at +0x1fc / +0x208 through STLport's out-of-line _Rb_tree::clear 0x00593235), the interface id (ETCInterfaceType 17,
+    // the key GetTC looks up: `push 11h`) and ?GetQuickAccessItemGraphicIndex@CTCInventory@@QBEJJ@Z 0x00581FA4 (FableWin.pdb /
+    // Ego_r.pdb; out of line in retail).
+    static ETCInterfaceType StatGetInterfaceType() { return TCI_INVENTORY; }
+    long GetQuickAccessItemGraphicIndex(long slot) const;            // 0x00581FA4
+#endif
     void OpenInventoryShortcut(long screen);
     void DeleteMenuComponents();                                     // 0x00587A41
     void OpenPCInventoryMenu();                                      // 0x0058807D
@@ -27,7 +54,11 @@ public:
     NUISystem::CComponent* PComponentSlotToSwap;                      // +0x13c
     long          ScreenToShortcut;                          // +0x140
     unsigned char EditBoxes[0x4];                            // +0x144 list<NUISystem::CEditBox_*,std::allocator<NUISystem::CEditBox_*>_>
+#ifdef FABLE_RETAIL_CTCINVENTORY_QUICKACCESS
+    std::vector<long> QuickAccessItems;                      // +0x148
+#else
     unsigned char QuickAccessItems[0xc];                     // +0x148 vector<long,std::allocator<long>_>
+#endif
     unsigned char ContextSensitiveItems[0xc];                // +0x154 vector<long,std::allocator<long>_>
     unsigned char ContextSensitiveFadeTimes[0xc];            // +0x160 vector<CFadeInFadeOutBase,std::allocator<CFadeInFadeOutBase>_>
     unsigned char InventoryMainPrimitiveHandles[0xc];        // +0x16c vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
@@ -49,8 +80,13 @@ public:
     unsigned char NumberOfCSOpinionExpressions[0xc];         // +0x1d8 vector<long,std::allocator<long>_>
     unsigned char LastCSOpinionExpression[0xc];              // +0x1e4 vector<long,std::allocator<long>_>
     unsigned char LastButOneCSOpinionExpression[0xc];        // +0x1f0 vector<long,std::allocator<long>_>
+#ifdef FABLE_RETAIL_CTCINVENTORY_QUICKACCESS
+    std::map<long, NUISystem::CComponent*> ItemsMenuEntries; // +0x1fc
+    std::map<long, NUISystem::CComponent*> AssignedIcons;    // +0x208
+#else
     unsigned char ItemsMenuEntries[0xc];                     // +0x1fc map<long,NUISystem::CComponent_*,std::less<long>,std::allocator<std::pair<long_const_,NUISystem::CComponent_*>_>_>
     unsigned char AssignedIcons[0xc];                        // +0x208 map<long,NUISystem::CComponent_*,std::less<long>,std::allocator<std::pair<long_const_,NUISystem::CComponent_*>_>_>
+#endif
     NUISystem::CComponent* PMouse_Pointer;                            // +0x214
     NUISystem::CComponent* PTop_Level_List;                           // +0x218
     unsigned char CurrentOpenMenu[0x4];                      // +0x21c CURRENT_OPEN_MENU
@@ -59,6 +95,9 @@ public:
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventory) == 0x228);
 FABLE_STATIC_ASSERT(offsetof(CTCInventory, PTop_Level_List) == 0x218);
+FABLE_STATIC_ASSERT(offsetof(CTCInventory, QuickAccessItems) == 0x148);
+FABLE_STATIC_ASSERT(offsetof(CTCInventory, ItemsMenuEntries) == 0x1fc);
+FABLE_STATIC_ASSERT(offsetof(CTCInventory, AssignedIcons) == 0x208);
 #endif // FABLE_ENGINE_CTCINVENTORY_RETAIL_H
 #else // generated flattened default (unchanged)
 #ifndef FABLE_ENGINE_CTCINVENTORY_H

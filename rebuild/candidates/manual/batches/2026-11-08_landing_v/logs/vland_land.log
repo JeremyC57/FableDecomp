@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00427216   WARN STANDIN_LEAF ?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z (catalog NUISystem::CManager::CreateTickSlider @ 0x00427216 -- builds one "tick slider" bar of the PC inventory screens ; names another function)
+00427216   RELOCATION_MATCH PASS   CreateTickSlider @ 0x00427216 -- builds one "tick slider" bar of the PC inventory screens 
+005a8c66   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a8c66   RELOCATION_MATCH PASS   ConstructActualSpecialInventoryPC
+005af64e   WARN RELOC_CONFLICT: ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ -> 00449970 here, 00449960 in landed 007b0880
+005af64e   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@J@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005af64e   WARN RELOC_NAME: ?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z -> 005bf2ed labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+005af64e   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005af64e   WARN RELOC_NAME: ?GetBuildingThing@CTCInventoryBase@NInventory@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005af64e   WARN RELOC_NAME: ?RefreshBuyPossibility@CTCInventoryTrade@@AAEXXZ -> 005a9a87 labelled 'Inventory_PopulateBuyList'
+005af64e   RELOCATION_MATCH PASS   BuyItem
+005d6748   WARN RELOC_NAME: ?GetTrainableStatPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroTrainableStatType@@AAM@Z -> 006d6fa0 labelled 'Experience_GetLevelAndFraction'
+005d6748   RELOCATION_MATCH TCC_FAIL ConstructExperienceList
+
+WINS: 3
+  00427216 RELOCATION_MATCH NUISystem::CManager::?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z
+  005a8c66 RELOCATION_MATCH CTCInventoryTrade::?ConstructActualSpecialInventoryPC@CTCInventoryTrade@@AAEXXZ
+  005af64e RELOCATION_MATCH CTCInventoryTrade::?BuyItem@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@J@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NUISystemCManager_CreateTickSlider0x00427216buildsoneticksliderbar_00427216
+  CTCInventoryTrade_ConstructActualSpecialInventoryPC_005a8c66
+  CTCInventoryTrade_BuyItem_005af64e

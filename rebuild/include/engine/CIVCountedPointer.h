@@ -12,7 +12,24 @@ public:
     // implicit memberwise copy of the landed includers is unchanged.
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
 #endif
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER_DTOR_DIRECT
+    // Nested opt-in (chunk 867, row 0x005A8C66 CTCInventoryTrade::ConstructActualSpecialInventoryPC, a `#pragma optimize("s")` TU):
+    // the destructor spelled in one level, the pointee's release and conditional Delete written here instead of through
+    // Release(), so that VC7.1's size-mode inliner expands it in place as retail does for the CIVCountedPointer<const
+    // NGameText::CTextEntry> temporaries (0x005A8F05: `cmp eax,ebx ; je ; mov ecx,eax ; add eax,4 ; dec [eax] ; cmp [eax],ebx ;
+    // jne ; mov eax,[ecx] ; call [eax+4]`, no null store: a dying temporary). Through Release() the two-level body is emitted out of
+    // line (?Release@?$CIVCountedPointer@..@@QAEXXZ as a COMDAT, 0x005A8C66 graded 22 bytes short). The pointer local is declared
+    // inside the null test: declared before it (`object && object->Release() == 0`) the copy into ecx is scheduled above the `je`.
+    // Same semantics as the default destructor.
+    ~CIVCountedPointer() {
+        if (Object) {
+            CIVCountedPointeeBase* object = Object;
+            if (object->Release() == 0) object->Delete();
+        }
+    }
+#else
     ~CIVCountedPointer() { Release(); }
+#endif
 #ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
     // Chunk 737 (CPSCLight::PreparePrimitives 0x00B19C60, as the landed CPSCLight::Kill 0x00B19C20 / ~CPSCLight 0x00B1AEB0): FableWin.pdb
     // ?Reset@?$CIVCountedPointer@..@@QAEXPAV1@@Z and ?Release@?$CIVCountedPointer@..@@QAEXXZ, inline in retail. Release clears the

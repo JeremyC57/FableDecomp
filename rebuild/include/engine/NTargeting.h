@@ -7,6 +7,12 @@
 class CWorld;
 class CThing;
 namespace NTargeting {
+#ifdef FABLE_RETAIL_NTARGETING_MELEE
+    // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb
+    // ?IsThingVulnerableToMeleeStrikesFromThing@NTargeting@@YI_NABVCThing@@0@Z, out of line at 0x007F59F0 (`mov ecx,<thing> ;
+    // mov edx,<hero> ; call`). Declaration only.
+    bool __fastcall IsThingVulnerableToMeleeStrikesFromThing(const CThing& thing, const CThing& attacker);   // 0x007F59F0
+#endif
     C3DVector __fastcall GetTargetingPositionOnThing(const CWorld& world, const CThing& thing, float scale);   // 0x007EA2F0
 }
 #endif

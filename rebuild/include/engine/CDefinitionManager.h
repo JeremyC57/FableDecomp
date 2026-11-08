@@ -16,6 +16,14 @@ public:
     template<class T> bool GetDef(long,CDefPointer<const T>*) const;
     template<class T> bool GetDef(const CCharString&,long,CDefPointer<const T>*) const;   // ??$GetDef@VCSkyDef@@@..QBE_NABVCCharString@@JPAV..@Z (FableWin/Ego_r; chunk 727)
     template<class T> bool GetDef(const CCharString&,CDefPointer<const T>*) const;   // ??$GetDef@VCEngineVideoOptionsDef@@@..QBE_NABVCCharString@@PAV..@Z 0x00B28E40 (out of line in retail; chunk 731)
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_GETDEF_EXPRESSIONDEF
+    // Nested opt-in (chunk 867, row 0x005F59C7 CTCInventoryAbilities::ConstructPCExpressionsList): the non-template expression-def
+    // lookup ?GetDef@CDefinitionManager@@QAE_NJPAV?$CDefPointer@VCExpressionDef@@@@@Z 0x005F81BE (FableWin.pdb; the landed
+    // CTCExpression::OnCreate 0x007EEFE0 calls it too). The out handle is CDefPointer<CExpressionDef> (non-const T), so the
+    // template overloads above do not deduce for it. Declared const: the rows reach it through CTCBase::GetDefinitionManager()
+    // const (a const CGameDefinitionManager&); FableWin.pdb's spelling is the non-const QAE (noted in chunk 867's NOTES).
+    bool GetDef(long,CDefPointer<class CExpressionDef>*) const;   // 0x005F81BE
+#endif
     CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString&) const;   // 0x009ADA40 ?GetPDefFromInstantiationName@..QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z
     CDefPointer<const CDefClassBase> GetPDefFromClassIndex(const CCharString&,long) const;  // 0x009ADE10 ?GetPDefFromClassIndex@..QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z
     CDefString GetDefNameFromGlobalIndex(long) const;

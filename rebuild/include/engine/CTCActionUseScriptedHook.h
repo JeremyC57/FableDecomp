@@ -17,6 +17,12 @@ public:
     CThing* GetPEntranceConnectedTo() const { return PEntranceConnectedTo.Get(); }
     const CCharString& GetRegionEntranceName() const;                   // 0x00729C50
     const CCharString& GetRegionEntranceDisplayName() const;            // 0x00729CA0
+#ifdef FABLE_RETAIL_CTCACTIONUSESCRIPTEDHOOK_ISUSABLE
+    // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb
+    // ?IsUsable@CTCActionUseScriptedHook@@QBE_NXZ, inline in retail (`cmp byte [eax+0Ch],0`: the scripted hook that is not usable
+    // gets no "use" cursor). No layout change.
+    bool IsUsable() const { return Usable; }
+#endif
 private:
     bool             Usable;                                             // +0x0c
     bool             ForceConfirmation;                                  // +0x0d

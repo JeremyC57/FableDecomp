@@ -19,10 +19,24 @@
 #include "engine/CVectorMap.h"
 #include "engine/CDefPointer.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_EXPRESSIONS
+#include "fable_string.h"
+namespace NUISystem { class CComponent; class CList; class CUIMiscThingsDef; }
+#endif
 class CHeroAbilityDef;
 class CTCInventoryAbilities : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
 public:
     static ETCInterfaceType StatGetInterfaceType() { return (ETCInterfaceType)111; }
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_EXPRESSIONS
+    // Nested opt-in (chunk 867, row 0x005F59C7): the PC skills screen's expressions page. FableWin.pdb spellings, out of line in
+    // retail: ?ConstructPCExpressionsList@CTCInventoryAbilities@@QAEPAVCComponent@NUISystem@@PAV23@@Z 0x005F59C7 and
+    // ?ConstructPCExpressionCategoryList@CTCInventoryAbilities@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@
+    // V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@ABVCCharString@@4@Z 0x005F45B5 (title, list, the category's items,
+    // the parent component, the ring picture name, the menu-guide text symbol).
+    NUISystem::CComponent* ConstructPCExpressionsList(NUISystem::CComponent* parent);                           // 0x005F59C7
+    void ConstructPCExpressionCategoryList(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long, long> >& items,
+                                           NUISystem::CComponent* parent, const CCharString& ringPicture, const CCharString& guideSymbol);   // 0x005F45B5
+#endif
     long GetAbilityLevel(EHeroAbility) const;
     long GetAbilityMaximumLevel(EHeroAbility) const;
     // Chunk 735 (CTCInventoryExperience::AddAbilityToList(PC) 0x00570332 / 0x00571280): Ego_r.pdb spellings, out of line in
@@ -40,6 +54,11 @@ public:
     long GetAbilityMaximumLevelWithRenown(EHeroAbility);
 #endif
 private:
+#ifdef FABLE_RETAIL_CTCINVENTORYABILITIES_EXPRESSIONS
+    // Nested opt-in (chunk 867): ?GetMiscThingsDef@CTCInventoryAbilities@@ABE?BV?$CDefPointer@$$CBVCUIMiscThingsDef@NUISystem@@@@XZ
+    // 0x005EE3B3 (Ego_r.pdb + FableWin.pdb; out of line in retail, the def handle returned through a hidden pointer).
+    const CDefPointer<const NUISystem::CUIMiscThingsDef> GetMiscThingsDef() const;                                // 0x005EE3B3
+#endif
     EHeroAbility SpellToAssign;
     long SpellSlotToSwap;
     NUISystem::CComponent* PComponentSlotToSwap;

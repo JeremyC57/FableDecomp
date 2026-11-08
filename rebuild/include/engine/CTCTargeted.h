@@ -23,6 +23,12 @@ public:
     // retail: `mov byte ptr [ecx+10h],1` at 0x00729FDD) and ?AddTargetingFlag@CTCTargeted@@QAEXW4ETargetingType@@@Z (out of line, 0x007EA240).
     void SetTargetable(bool targetable) { Targetable = targetable; }
     void AddTargetingFlag(ETargetingType flag);                          // 0x007EA240
+#ifdef FABLE_RETAIL_CTCTARGETED_GLOW
+    // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb
+    // ?IsToUseTargetGlow@CTCTargeted@@QBE_NXZ, inline in retail (`cmp byte [eax+11h],0`: a target that declines the glow is not
+    // highlighted). No layout change.
+    bool IsToUseTargetGlow() const { return UseTargetGlow; }
+#endif
 private:
     unsigned long TargetingFlags;                            // +0x0c
     bool Targetable;                                         // +0x10

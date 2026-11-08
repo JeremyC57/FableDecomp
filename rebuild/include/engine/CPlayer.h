@@ -140,6 +140,8 @@ public:
     // ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z (Ego_r 0x00554BE0; retail 0x006345C0, `ret 8`). Both in both PDBs; the bound
     // ...QAEJXZ / ...QAEXJ_N@Z spellings are long-typed stand-ins.
     EPlayerMode GetCurrentMode() const;                          // 0x00633BE0
+    // Chunk 867 (row 0x0064BFBA): Ego_r.pdb / FableWin.pdb ?HasMode@CPlayer@@QBE_NW4EPlayerMode@@@Z, out of line at 0x00634160 (`push 2 ; call`).
+    bool HasMode(EPlayerMode mode) const;                        // 0x00634160
     void AddMode(EPlayerMode mode, bool);                        // 0x006345C0
     // Retail opt-in (chunk 718): the three character getters, out of line in Ego_r.pdb and retail, in donor order (Ego_r
     // 0x004933F0 / 0x00493650 / 0x00493660 = retail 0x00487B70 / 0x00487DC0 / 0x00487DD0, the neighbours SetPlayerCharacter

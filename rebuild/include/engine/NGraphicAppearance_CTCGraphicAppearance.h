@@ -27,9 +27,21 @@ namespace NGraphicAppearance {
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE
 class CAGraphicAppearanceComponent;
 #endif
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT
+enum EAppearanceMeshEffectPriority;                          // MS forward enum (chunk 867: the row passes the value 3)
+#endif
 class CTCGraphicAppearance : public CTCBase {
 public:
     C3DVector GetFocalPos(float time) const;                 // 0x004C1060
+#ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE_HIGHLIGHT
+    // Retail opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb
+    // ?SetAsHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXMMABVCRGBColour@@_N1W4EAppearanceMeshEffectPriority@2@PAX@Z (out of
+    // line at 0x004C04C0: the two widths, the colour by reference, two bools, the priority and the owner key pushed) and
+    // ?ClearMeshEffect@..@@QAEXPAX@Z (0x004BFFC0, the owner key). Declarations only; no layout change.
+    void SetAsHighlighted(float widthWorldSpace, float widthScreenSpace, const CRGBColour& colour, bool, bool,
+                          EAppearanceMeshEffectPriority priority, void* owner);   // 0x004C04C0
+    void ClearMeshEffect(void* owner);                        // 0x004BFFC0
+#endif
 #ifdef FABLE_RETAIL_CTCGRAPHICAPPEARANCE
     void UnregisterComponent(CAGraphicAppearanceComponent& component);   // 0x004C0000
 #endif

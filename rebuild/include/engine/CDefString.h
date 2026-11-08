@@ -49,6 +49,11 @@ public:
  // (0x00415D90: GetString through GDefStringTable, then CCharString::ToWideString 0x0099E480). Declaration only.
  CWideString ToWideString()const;
 #endif
+#ifdef FABLE_RETAIL_CDEFSTRING_EQUALS
+ // Opt-in (chunk 867, row 0x0064BFBA NPlayerGui::CDrawHighlightingTargetingCursor::Draw): FableWin.pdb ??8CDefString@@QBE_NPBD@Z, out of
+ // line in retail at 0x005B3440 (the def name returned by CThing::GetDefName compared with a literal). Declaration only.
+ bool operator==(const char* text) const;                               // 0x005B3440
+#endif
 #ifdef FABLE_RETAIL_CDEFSTRING_TRANSFER
  // Opt-in (chunk 765, row 0x005DBED0): Ego_r.pdb / FableWin.pdb ?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z, out of line
  // in retail at 0x0044FC00 (the only PDB spelling of the four bound to it). Declaration only.

@@ -7,6 +7,9 @@
 // (slot order unproven, so they are declared for the vptr only), ?IsDrawing@..QBE_NXZ, ?SetAsDrawing@..QAEX_N@Z.
 #include "rebuild_abi.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_HANDLES
+#include "engine/CEnginePrimitiveHandle.h"
+#endif
 class CPlayerGui; class CPlayerManager; class CWorld; class CMainGameComponent; class CGraphicDataBank; class CEnginePrimitiveHandle;
 namespace NPlayerGui {
 class CDrawBase {
@@ -21,6 +24,13 @@ public:
     virtual void ClearPrimitives();
     virtual void ClearPrimitivesIfNecessary();
     bool IsDrawing() const { return Drawing; }
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_HANDLES
+    // Retail opt-in (chunk 867, row 0x0064BFBA CDrawHighlightingTargetingCursor::Draw): Ego_r.pdb ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z
+    // (out of line at 0x00643D5D; the landed DrawIcon 0x00645292 calls it as the sprite alpha), declaration only; and PrimitiveHandles as
+    // the vector of CEnginePrimitiveHandle objects it is (8-byte elements: the row passes `&PrimitiveHandles[1]` as `[this+1Ch]+8` to
+    // CIEngine::SetPersistentPrimitive and for_each's Clear over begin()..end()).
+    unsigned char ScaleAlpha(unsigned char alpha) const;                 // 0x00643D5D
+#endif
 protected:
     CPlayerGui* PlayerGui;                                               // +0x04
     CPlayerManager* PlayerManager;                                       // +0x08
@@ -28,7 +38,11 @@ protected:
     CMainGameComponent* Component;                                       // +0x10
     CGraphicDataBank* Bank;                                              // +0x14
     bool Drawing;                                                        // +0x18
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_HANDLES
+    std::vector<CEnginePrimitiveHandle> PrimitiveHandles;                // +0x1c vector<CEnginePrimitiveHandle> (12 bytes, 8-byte elements)
+#else
     std::vector<CEnginePrimitiveHandle*> PrimitiveHandles;               // +0x1c vector<CEnginePrimitiveHandle> (12 bytes; element type opaque here)
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NPlayerGui::CDrawBase) == 0x28);

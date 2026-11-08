@@ -386232,6 +386232,34 @@ $catalog = @(
         Source = '00/ca/CRendererPosPassThru_vectordeletingdestructoradjustor8_00cafd60.cpp'
         Grade = 'toolchain_library'
     }
+    [pscustomobject]@{
+        Address = '00427216'
+        Module = 'NUISystem::CManager'
+        Source = '00/42/NUISystemCManager_CreateTickSlider_00427216.cpp'
+        TestSource = '00/42/NUISystemCManager_CreateTickSlider_00427216_test.cpp'
+        PassPattern = '00427216_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005a8c66'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_ConstructActualSpecialInventoryPC_005a8c66.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_ConstructActualSpecialInventoryPC_005a8c66_test.cpp'
+        PassPattern = '005a8c66_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005af64e'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_BuyItem_005af64e.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_BuyItem_005af64e_test.cpp'
+        PassPattern = '005af64e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d6748'
+        Module = 'CTCInventoryStats'
+        Source = '00/5d/CTCInventoryStats_ConstructExperienceList_005d6748.cpp'
+        TestSource = '00/5d/CTCInventoryStats_ConstructExperienceList_005d6748_test.cpp'
+        PassPattern = '005d6748_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

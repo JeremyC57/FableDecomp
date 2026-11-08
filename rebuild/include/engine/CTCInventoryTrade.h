@@ -1,3 +1,123 @@
+#ifdef FABLE_RETAIL_CTCINVENTORYTRADE
+#ifndef FABLE_ENGINE_CTCINVENTORYTRADE_RETAIL_H
+#define FABLE_ENGINE_CTCINVENTORYTRADE_RETAIL_H
+// Retail opt-in (chunk 867, 2026-11-08, rows 0x005A8C66 ConstructActualSpecialInventoryPC / 0x005AF64E BuyItem / 0x005B01FE SellItemPC):
+// the class with its two RTTI bases (.?AVCTCInventoryTrade@@: NInventory::CTCInventoryBase at +0, sizeof 0x130, and
+// NHeroInformationScreens::CBase at +0x130, as engine/CTCInventory.h's retail branch) and the Ego_r.pdb members typed at the retail
+// STLport 4.6 offsets (list 4, map 0xC; the landed constructor 0x0059EC48 / destructor model: TradeAnimPrimitiveHandles +0x134 ..
+// AccumFadeTime +0x228, sizeof 0x230, matching the generated layout below). Methods: Ego_r.pdb + FableWin.pdb spellings, all out of
+// line in retail unless noted.
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/NInventory_CTCInventoryBase.h"
+#include "engine/NHeroInformationScreens_CBase.h"
+#include "engine/CEnginePrimitiveHandle.h"
+namespace NUISystem { class CComponent; class CList; class CViewport; }
+class CHairCardDef;
+class CTCInventoryTrade : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
+public:
+    enum EInventoryCategoryIdentifier { INVENTORY_CATEGORY_UNKNOWN = 0 };   // W4EInventoryCategoryIdentifier@1@ (enumerators unproven)
+    // W4EItem_Menu_Type@1@ (GetTypeFromDefIndexPC / GetMenuBranchFromDefIndexPC): 0 clothes, 1 weapons, 2 items -- the switch arms of
+    // 0x005B01FE SellItemPC / 0x005AF64E BuyItem add to TotNumClothes.. / TotNumWeapons.. / TotNumItems.. in that order; the landed
+    // GetTypeFromDefIndexPC 0x0059C447 returns 1 for the weapon categories, 0 for the clothing ones, 2 otherwise. Enumerator spellings unproven.
+    enum EItem_Menu_Type { ITEM_MENU_TYPE_CLOTHES = 0, ITEM_MENU_TYPE_WEAPONS = 1, ITEM_MENU_TYPE_ITEMS = 2 };
+    void ResetTradeLists();                                                        // 0x0059D9AD ?ResetTradeLists@CTCInventoryTrade@@QAEXXZ
+    void InitialiseBuyableItems(std::vector<std::pair<long,long> >& items);        // 0x005A30A1
+    bool AddBuyItemToListPC(NUISystem::CComponent* frame, long defIndex, long count, NUISystem::CList* list,
+                            NUISystem::CViewport* viewport, bool a);               // 0x005A6CA1
+    void BuyItem(NUISystem::CComponent* entry, long count);                        // 0x005AF64E
+    void SellItemPC(NUISystem::CComponent* entry, long count);                     // 0x005B01FE
+    bool IsSpecialCase(long itemDefIndex);                                         // 0x0059C983 ?IsSpecialCase@CTCInventoryTrade@@QAE_NJ@Z
+    void RefreshNameAndTitlePC(NUISystem::CComponent* entry, long itemDefIndex, long count);   // 0x0059CA95
+    void RefreshNameAndTitle(NUISystem::CComponent* entry, long itemDefIndex, long count);     // 0x0059CFBD
+    void RefreshSellDescriptionsPC(NUISystem::CComponent* parent);                 // 0x005AEAEE
+    // Row 0x005AF64E BuyItem (the console buy path), FableWin.pdb / Ego_r.pdb spellings; all out of line in retail:
+    bool AddSellItemToList(long itemDefIndex, long count, NUISystem::CList* list, NUISystem::CViewport* viewport, bool a);   // 0x0059ED42 QAE_NJJPAVCList@NUISystem@@PAVCViewport@3@_N@Z
+    void ApplyHairCard(const CHairCardDef& hairCard);                              // 0x0059D9C2 QAEXABVCHairCardDef@@@Z
+    void ApplyTattooCard(long itemDefIndex);                                       // 0x005AD305 QAEXJ@Z
+    void RefreshDescriptions();                                                    // 0x005AE6AF QAEXXZ
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE_VTABLE
+    virtual void RemoveItemFromInventory(long itemDefIndex, long count);           // slot 79 0x0059C747 (UAEXJJ@Z override)
+#endif
+private:
+    void ConstructActualSpecialInventoryPC();                                      // 0x005A8C66 (private: AAEXXZ)
+    // The private PC helpers (Ego_r.pdb AAE..): the menu branch (category entry) an item def belongs to in the open trade menu, with
+    // its EItem_Menu_Type through the reference; the item's EItem_Menu_Type; the per-category subtitle refresh; the sell-actions list
+    // rebuild; the entry amounts / availabilities refresh (its pair<ulong,ulong> result is the (amount, available) totals).
+    NUISystem::CComponent* GetMenuBranchFromDefIndexPC(long itemDefIndex, NUISystem::CComponent* menu, EItem_Menu_Type& type);   // 0x0059C0C6
+    EItem_Menu_Type GetTypeFromDefIndexPC(long itemDefIndex);                      // 0x0059C447
+    void RefreshSubtitlesPC(NUISystem::CComponent* menu, std::map<NUISystem::CComponent*,std::pair<CWideString,long> >& subtitles);   // 0x0059E94D
+    void UpdateSellActionsList();                                                  // 0x0059DE76
+    // Row 0x005AF64E BuyItem, the private console-path helpers (Ego_r.pdb / FableWin.pdb AAE..): the menu branch of an item def in
+    // the console trading menu with its EItem_Menu_Type through the reference (0x0059B79A), whether a special item is already owned
+    // (0x0059FC17), the per-category subtitle refresh (0x0059E108), the buy-actions list rebuild (0x0059DE04), the entry amounts /
+    // availabilities refresh (0x0059DB82) and the buy-possibility refresh (0x005A9A87: neither PDB has its address; it is the only
+    // private void() method of the class without a retail address, and the manifest names 0x005A887D, its PC twin by the Ego_r
+    // donor order, "PC_PopulateBuyList" and this one "Inventory_PopulateBuyList").
+    NUISystem::CComponent* GetMenuBranchFromDefIndex(long itemDefIndex, NUISystem::CComponent* menu, EItem_Menu_Type& type);   // 0x0059B79A
+    bool AlreadyHaveSpecial(long itemDefIndex);                                    // 0x0059FC17
+    void RefreshSubtitles(NUISystem::CComponent* menu, std::map<NUISystem::CComponent*,std::pair<CWideString,long> >& subtitles);   // 0x0059E108
+    void UpdateBuyActionsList();                                                   // 0x0059DE04
+    std::pair<unsigned long,unsigned long> RefreshEntriesAmountsAndAvailabilities(NUISystem::CComponent* menu,
+                                            std::map<NUISystem::CComponent*,NUISystem::CList*>& lists);   // 0x0059DB82
+    void RefreshBuyPossibility();                                                  // 0x005A9A87
+    std::pair<unsigned long,unsigned long> RefreshEntriesAmountsAndAvailabilitiesPC(NUISystem::CComponent* menu,
+                                            std::map<NUISystem::CComponent*,NUISystem::CList*>& lists);   // 0x0059FAFE
+public:
+    std::vector<CEnginePrimitiveHandle> TradeAnimPrimitiveHandles;                 // +0x134
+    std::list<long> NotInStock;                                                    // +0x140
+    std::map<NUISystem::CComponent*,std::pair<long,long> > ItemsToBuy;             // +0x144
+    std::map<NUISystem::CComponent*,std::pair<long,long> > ItemsToSell;            // +0x150
+    bool IsShoppingValid;                                                          // +0x15c
+    long CategoryCount;                                                            // +0x160
+    long ItemSellCount;                                                            // +0x164
+    long ItemBuyCount;                                                             // +0x168
+    long ItemSellUniqueCount;                                                      // +0x16c
+    EInventoryCategoryIdentifier CategoryIdent;                                    // +0x170
+    NHeroInformationScreens::EScreenType PreviousScreenType;                       // +0x174
+    bool WarningNeeded;                                                            // +0x178
+    long TrophyUseNeeded;                                                          // +0x17c
+    std::map<NUISystem::CComponent*,NUISystem::CList*> SellListsByCategory;        // +0x180
+    std::map<NUISystem::CComponent*,NUISystem::CList*> BuyListsByCategory;         // +0x18c
+    std::map<NUISystem::CComponent*,NUISystem::CList*> WantedListsByCategory;      // +0x198
+    std::map<long,long> SpecialItemsToDelete;                                      // +0x1a4
+    std::map<NUISystem::CComponent*,std::pair<CWideString,long> > NumBuyableThings;    // +0x1b0
+    std::map<NUISystem::CComponent*,std::pair<CWideString,long> > NumSellableThings;   // +0x1bc
+    std::map<NUISystem::CComponent*,std::pair<CWideString,long> > NumWantedThings;     // +0x1c8
+    long TotNumClothesToSell;                                                      // +0x1d4
+    long TotNumWeaponsToSell;                                                      // +0x1d8
+    long TotNumItemsToSell;                                                        // +0x1dc
+    long TotNumClothesToBuy;                                                       // +0x1e0
+    long TotNumWeaponsToBuy;                                                       // +0x1e4
+    long TotNumItemsToBuy;                                                         // +0x1e8
+    long TotNumClothesWanted;                                                      // +0x1ec
+    long TotNumWeaponsWanted;                                                      // +0x1f0
+    long TotNumItemsWanted;                                                        // +0x1f4
+    long TotSpecialItemsToBuy;                                                     // +0x1f8
+    CWideString SpecialItemString;                                                 // +0x1fc
+    std::map<NUISystem::CComponent*,NUISystem::CComponent*> ItemBuyLists;          // +0x200
+    std::map<NUISystem::CComponent*,NUISystem::CComponent*> ItemSellLists;         // +0x20c
+    bool InventoryTradeOpen;                                                       // +0x218
+    bool InventoryTradeInitialised;                                                // +0x219
+    NUISystem::CComponent* PMouse_Pointer;                                         // +0x21c
+    NUISystem::CComponent* PTop_Level_List;                                        // +0x220
+    NUISystem::CComponent* PCurrentOpenTradeMenu;                                  // +0x224
+    float AccumFadeTime;                                                           // +0x228
+};
+FABLE_STATIC_ASSERT(sizeof(CTCInventoryTrade) == 0x230);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, NotInStock) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemsToBuy) == 0x144);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, BuyListsByCategory) == 0x18c);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, TotSpecialItemsToBuy) == 0x1f8);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, SpecialItemString) == 0x1fc);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, ItemBuyLists) == 0x200);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, PTop_Level_List) == 0x220);
+FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, PCurrentOpenTradeMenu) == 0x224);
+#endif // FABLE_ENGINE_CTCINVENTORYTRADE_RETAIL_H
+#else // generated flattened default (unchanged)
 #ifndef FABLE_ENGINE_CTCINVENTORYTRADE_H
 #define FABLE_ENGINE_CTCINVENTORYTRADE_H
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
@@ -175,3 +295,4 @@ FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, PCurrentOpenTradeMenu) == 0x224)
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryTrade, AccumFadeTime) == 0x228);
 
 #endif // FABLE_ENGINE_CTCINVENTORYTRADE_H
+#endif // FABLE_RETAIL_CTCINVENTORYTRADE
