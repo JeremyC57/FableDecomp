@@ -14,6 +14,7 @@ Candidates without an authoritative manifest function start are always rejected.
 flag removes already-landed outside-manifest rows from this specific authoring payload. The
 report mode strictly validates and prunes a saved mid-function-fragment audit."""
 import csv, json, re, subprocess, os, sys
+csv.field_size_limit(10**8)   # a 74 KB function (0x00CBFB7D) is a 150K-character oracle field, over csv's 128K default
 from pathlib import Path
 
 ROOT = Path(os.environ.get("FABLE_ROOT", r"D:\Documents\FableTLC"))
