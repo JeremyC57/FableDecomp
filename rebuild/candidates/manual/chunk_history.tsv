@@ -28029,3 +28029,6 @@ chunk	address	module	name	length
 876	00cbfb7d	_global	RunCutsceneMacro	74778
 877	00839940	CThingGameObject	OnHit	5195
 877	00804020	CTCTargetingPlayer	UpdateTargetList	5587
+878	00c4f600	CEAXManager	SetEAXProperty	9204
+878	00c7baf0	_global	Graphics_RenderTextConditional_ProcessRows	10544
+878	00c7e420	_global	Audio_ConvolveFilter_LongVariant	11984
