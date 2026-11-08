@@ -28041,3 +28041,4 @@ chunk	address	module	name	length
 883	006096e0	_global	ConstructLogbookScreen	12832
 884	004ee23f	_global	Init_RegisterGameComponents	44806
 885	00cbfb7d	_global	RunCutsceneMacro	74778
+886	0041e6d3	NUISystem::CManager	NUISystem::CManager::vfunc_14	35651
