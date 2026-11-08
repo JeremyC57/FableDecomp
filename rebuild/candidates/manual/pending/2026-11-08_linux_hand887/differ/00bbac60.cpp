@@ -1,0 +1,5 @@
+// CEnginePrimitiveManagerDecal::RenderLandscapeDecal(CEngineInternalPrimitiveDecal& decal) -- not drafted
+// Residue: no source graded (budget spent on 0x00BA6240 and the two 2D sprite rows); true length 3743 bytes, ends 0x00BBBAFF (`ret 4`, then 0xCC padding).
+// Next: draft from the callee map: resource manager 0x01436E98 -> 0x009CC190 and 0x009FF8D0 (frame fetch, CGraphicFrameData release inline: 0x009FCBA0 + counted-pointer delete 0x00BFE9BC); render state through the render manager 0x01436E18 (vtable +0x104, then 0x00987FE0 / 0x00988110 / 0x00988140 / 0x00988020 / 0x00988290 / 0x0098B930 / 0x00988A20 / 0x00989BF0 / 0x00989760 / 0x009897C0 / 0x0098A760 / 0x00989CB0 / 0x00988A50, 0x00A0AF40, 0x009880E0 / 0x00988190, 0x00A05840); 0x01436E14 manager; landscape 0x01436E9C -> 0x00B46B90, 0x00B44F20, 0x00B46C80; 0x00BB9FD0 (same TU), 0x00A8D750, 0x00BFEA70 and 0x00BFEA14 (CRT).
+// Leaf: ?RenderLandscapeDecal@CEnginePrimitiveManagerDecal@@IAEXAAVCEngineInternalPrimitiveDecal@@@Z
+// Ego_r.pdb / FableWin.pdb: ?RenderLandscapeDecal@CEnginePrimitiveManagerDecal@@IAEXAAVCEngineInternalPrimitiveDecal@@@Z (protected, __thiscall, ret 4).

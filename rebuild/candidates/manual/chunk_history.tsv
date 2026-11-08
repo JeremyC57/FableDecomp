@@ -28046,3 +28046,6 @@ chunk	address	module	name	length
 887	00bafa00	CEnginePrimitiveManager2DSprites	CEnginePrimitiveManager2DSprites::RenderClockPrim	3946
 887	00bb0970	CEnginePrimitiveManager2DSprites	?RenderSpritePrim@CEnginePrimitiveManager2DSprites@@MAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z	3202
 887	00bbac60	CEnginePrimitiveManagerDecal	RenderLandscapeDecal	3743
+888	00bafa00	CEnginePrimitiveManager2DSprites	RenderClockPrim	3946
+888	00bb0970	CEnginePrimitiveManager2DSprites	RenderSpritePrim	3202
+888	00bbac60	CEnginePrimitiveManagerDecal	RenderLandscapeDecal	3743

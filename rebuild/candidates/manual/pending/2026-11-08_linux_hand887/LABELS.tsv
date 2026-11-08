@@ -1,0 +1,8 @@
+address	pdb_name	source1	source2
+0x009DE140	CRenderManager2D::Draw2DBoxOutline	FableWin.pdb ?Draw2DBoxOutline@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z	landed row CRenderManager2D_Draw2DBoxOutline_009de140.cpp; RenderSpritePrim/RenderClockPrim debug box call (box, colour, 0)
+0x004372A0	CTexture::GetWidth	FableWin.pdb ?GetWidth@CTexture@@QBEKK@Z	landed row CTexture_GetWidth_004372a0.cpp (GetDimensions(level).X); called with ecx = texture at 0x00BB0DD9
+0x004372C0	CTexture::GetHeight	FableWin.pdb ?GetHeight@CTexture@@QBEKK@Z	landed row CTexture_GetHeight_004372c0.cpp (GetDimensions(level).Y); called at 0x00BB0E1A
+0x009F9D80	CTexture::GetPixelFormat	FableWin.pdb ?GetPixelFormat@CTexture@@QBE?AVCPixelFormat@@XZ	landed row CTexture_GetPixelFormat_009f9d80.cpp; result indexes GD3DFormats (IsLinear) at 0x00BB0DC1
+0x00BB1780	CEngineSubPrimitive2DClockSprite::CEngineSubPrimitive2DClockSprite	FableWin.pdb ??0CEngineSubPrimitive2DClockSprite@@QAE@PAVCEngineInternalPrimitive2DClockSprite@@@Z	size 0x13c (Ego_r.pdb layout) = the `mov ecx,13Ch` pool allocation at 0x00BB04EE; called with the clock primitive pushed (0x00BB053B), result fills Vertices[7] +0x18 / Indices +0xf8
+0x00BACE50	CEngineSubPrimitive2DSprite::CEngineSubPrimitive2DSprite	FableWin.pdb ??0CEngineSubPrimitive2DSprite@@QAE@PAVCEngineInternalPrimitive2DSprite@@@Z	size 0xa8 (Ego_r.pdb layout) = the pool allocation at 0x00BB1363 / 0x00BB14A7, sprite primitive pushed
+0x00BAFA00	CEnginePrimitiveManager2DSprites::RenderClockPrim	FableWin.pdb ?RenderClockPrim@CEnginePrimitiveManager2DSprites@@MAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z	chunk oracle name; body builds the CEngineSubPrimitive2DClockSprite (ctor 0x00BB1780), ret 0xC = three arguments

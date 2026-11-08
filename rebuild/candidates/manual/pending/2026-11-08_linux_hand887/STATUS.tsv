@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+0x00BA6240	parked	2937	none	DIFFER(2935v2937) 74 diff lines after 92 grades; frame-slot order + Dot order + Type hoist (differ/00ba6240.cpp)
+0x00BAFA00	parked	3946	none	DIFFER(3884v3946) 1373 diff lines, first draft only (4 grades); structure fully decoded, frame/roles open (differ/00bafa00.cpp)
+0x00BB0970	parked	3202	none	DIFFER(3269v3202) 359 diff lines / 182 frame-blind after 24 grades; flags packed into the dead argument home (differ/00bb0970.cpp)
+0x00BBAC60	not_started	3743	none	no source graded (budget); callee map in differ/00bbac60.cpp

@@ -1,0 +1,3 @@
+address	landed_spelling	correct_spelling	evidence
+0x004372C0	std::vector<bool,std::allocator<bool>_>::operator[] (ghidra_out labels)	CTexture::GetHeight	landed row CTexture_GetHeight_004372c0.cpp already says so; FableWin ?GetHeight@CTexture@@QBEKK@Z; labels_*.tsv still carries the vector<bool> catalog name
+(inline)	CGraphicDataBankFull::GetGraphicInfo (local model in CEnginePrimitiveManagerMeshBase_Get2DAlphaMaskTexture_00ba9a70.cpp)	CGraphicDataBank::PeekGraphic	FableWin ?PeekGraphic@CGraphicDataBank@@QBEPBVCGraphicInfo@@K@Z (index -> const CGraphicInfo*, bounds-checked); the frame form is ?PeekGraphicInfoFrame@CGraphicDataBank@@QBEPBVCGraphicInfoFrame@@KK@Z, whose two-call shape reproduces retail 0x00BB0A80..0x00BB0AE9 sbb/and select
