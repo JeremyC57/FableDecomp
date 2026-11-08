@@ -11,11 +11,19 @@
 #include "engine/CTCBase.h"
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENPC
+namespace NUISystem { class CComponent; }
+#endif
 class CTCInGameMenu : public CTCBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_IN_GAME_MENU; }
     bool IsOpen() const { return InGameMenuOpen; }
     bool VerifySignatureCached(const CWideString&);                  // 0x0047ED0A
+#ifdef FABLE_RETAIL_CTCINGAMEMENU_OPENPC
+    // Nested opt-in (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): ?OpenInGameMenuPC@CTCInGameMenu@@QAEXPAVCComponent@NUISystem@@0@Z
+    // (Ego_r.pdb / FableWin.pdb), out of line at 0x004804DE; the options screen passes the inventory's mouse pointer and its list.
+    void OpenInGameMenuPC(NUISystem::CComponent* mousePointer, NUISystem::CComponent* list);   // 0x004804DE
+#endif
 private:
     void AddRegionAndTimeInfo(const CWideString&);                   // 0x0047F58B
     bool          InGameMenuOpen;                                    // +0x0c

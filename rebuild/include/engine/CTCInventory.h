@@ -49,6 +49,14 @@ public:
     void OpenPCMapMenu();                                            // 0x00589A30
     void OpenPCSkillsMenu();                                         // 0x00587BFF
     void OpenPCStatusMenu();                                         // 0x0058A763
+#ifdef FABLE_RETAIL_CTCINVENTORY_OPTIONSMENU
+    // Nested opt-in (chunk 880, row 0x0058AF10): ?OpenPCOptionsMenu@CTCInventory@@QAEXXZ (Ego_r.pdb / FableWin.pdb, public), the PC
+    // options screen builder. The open-menu id is the PDB's nested enum CTCInventory::CURRENT_OPEN_MENU (pdb_class_keys.tsv W4,
+    // ?GetCurrentOpenMenu@CTCInventory@@QAE?AW4CURRENT_OPEN_MENU@1@XZ); its enumerator names are not in the name sets, so only the
+    // type is declared and the row stores its value (4, `mov dword ptr [ebx+21Ch],4`) by cast.
+    enum CURRENT_OPEN_MENU { };
+    void OpenPCOptionsMenu();
+#endif
     long          ThingToAssign;                             // +0x134
     long          ThingSlotToSwap;                           // +0x138
     NUISystem::CComponent* PComponentSlotToSwap;                      // +0x13c
@@ -89,12 +97,19 @@ public:
 #endif
     NUISystem::CComponent* PMouse_Pointer;                            // +0x214
     NUISystem::CComponent* PTop_Level_List;                           // +0x218
+#ifdef FABLE_RETAIL_CTCINVENTORY_OPTIONSMENU
+    CURRENT_OPEN_MENU CurrentOpenMenu;                                // +0x21c (typed, same 4 bytes)
+#else
     unsigned char CurrentOpenMenu[0x4];                      // +0x21c CURRENT_OPEN_MENU
+#endif
     float         AccumFadeTime;                             // +0x220
     unsigned char _pad_0x224[0x4];                           // +0x224
 };
 FABLE_STATIC_ASSERT(sizeof(CTCInventory) == 0x228);
 FABLE_STATIC_ASSERT(offsetof(CTCInventory, PTop_Level_List) == 0x218);
+#ifdef FABLE_RETAIL_CTCINVENTORY_OPTIONSMENU
+FABLE_STATIC_ASSERT(offsetof(CTCInventory, CurrentOpenMenu) == 0x21c);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CTCInventory, QuickAccessItems) == 0x148);
 FABLE_STATIC_ASSERT(offsetof(CTCInventory, ItemsMenuEntries) == 0x1fc);
 FABLE_STATIC_ASSERT(offsetof(CTCInventory, AssignedIcons) == 0x208);

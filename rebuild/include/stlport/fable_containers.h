@@ -444,6 +444,15 @@ template<class _T1,class _T2> struct pair {
     template<class U1,class U2> pair(const pair<U1,U2>& p):first(p.first),second(p.second){}
 };
 template<class _T1,class _T2> inline pair<_T1,_T2> __cdecl make_pair(const _T1& a,const _T2& b) { return pair<_T1,_T2>(a,b); }
+#ifdef FABLE_RETAIL_STLP_MAKE_PAIR_ARRAYS
+// Retail branch (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): STLport 4.6 _pair.h's string-literal make_pair
+// overloads (_STLP_FUNCTION_TMPL_PARTIAL_ORDER, defined for VC7.1): a literal decays to `const char*`, so
+// `make_pair("A", "B")` is a pair<const char*, const char*> that converts to a pair<CCharString, CCharString> through the
+// member-template constructor (out of line at 0x00592495).
+template<class _T1,class _T2,int _Sz> inline pair<_T1,_T2 const*> __cdecl make_pair(_T1 const& a,_T2 const (&b)[_Sz]) { return pair<_T1,_T2 const*>(a,static_cast<_T2 const*>(b)); }
+template<class _T1,class _T2,int _Sz> inline pair<_T1 const*,_T2> __cdecl make_pair(_T1 const (&a)[_Sz],_T2 const& b) { return pair<_T1 const*,_T2>(static_cast<_T1 const*>(a),b); }
+template<class _T1,class _T2,int _Sz1,int _Sz2> inline pair<_T1 const*,_T2 const*> __cdecl make_pair(_T1 const (&a)[_Sz1],_T2 const (&b)[_Sz2]) { return pair<_T1 const*,_T2 const*>(static_cast<_T1 const*>(a),static_cast<_T2 const*>(b)); }
+#endif
 // _list.h
 struct _List_node_base {
     _List_node_base* _M_next;

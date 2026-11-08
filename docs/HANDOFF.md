@@ -89,8 +89,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Chunk 866: 10 of 10 Ogg Vorbis rows landed (`2026-11-08_landing_q/`, real Xiph names).
     Chunk 868: 2 of 10 landed (`2026-11-08_landing_r/`: CBH_GangDeputy2::Main, CTalkingTrader1::Main); its parks continue. Chunk 869: 19 Vorbis functions landed (`2026-11-08_landing_s/`; 2 parked).
     Chunk 878 (libpk): 2 of 3 landed (`2026-11-08_landing_z/`, SSE2 FIR resamplers on dvec.h; SetEAXProperty parked at 10 lines).
-    Chunks 877 / 879: 0 landed (OnHit, PopulateRegionWithVillagers parked as full bodies; hand877 / hand879). Running: chunk 880
-    (OpenPCOptionsMenu alone, no grade cap), single-row worker on 0x00CBFB7D (74 KB cutscene-macro interpreter, Opus xhigh).
+    Chunks 877 / 879: 0 landed (OnHit, PopulateRegionWithVillagers parked as full bodies; hand877 / hand879). Chunk 880: OpenPCOptionsMenu landed
+    (`2026-11-08_landing_aa/`). Running: chunk 881 (stereo SSE2 FIR resamplers), single-row worker on 0x00CBFB7D (74 KB cutscene-macro interpreter, Opus xhigh).
     Chunk 874 (libpk): 3 of 7 landed (`2026-11-08_landing_y/`, ivec resamplers). Chunk 875: 0 of 3 (decodes kept).
     Chunk 872 (libpk): 12 of 14 landed (`2026-11-08_landing_x/`, land0811x). Chunk 873 (game) running (Opus high); pass 1: 2 of 10 landed (`2026-11-08_landing_w/`), sent back for 8.
     Chunk 867 (PC UI): 4 of 10 landed (`2026-11-08_landing_v/`; 31 headers gain opt-ins, 12 new); tag land0811v.

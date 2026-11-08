@@ -29,6 +29,11 @@ public:
  CDisplayManager(CSystemManager&);
  virtual ~CDisplayManager();
  bool GetBestAlphaTextureFormat(unsigned long,CPixelFormat&);
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER_ANTIALIASING
+ // Opt-in (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): Ego_r.pdb
+ // ?EnumerateAntiAliasingModes@CDisplayManager@@QAEXAAV?$CArray@W4ESurfaceMultisampleType@@@@@Z, landed at 0x009C05C0.
+ void EnumerateAntiAliasingModes(CArray<ESurfaceMultisampleType>& types);   // 0x009C05C0
+#endif
 #ifdef FABLE_RETAIL_CDISPLAYMANAGER
  // Retail opt-in (movie row 0x006286F0; needs FABLE_RETAIL_SCOPED_PTR for GetRenderManager). Spellings: Ego_r.pdb + FableWin.pdb.
  void ClearRenderTarget(const CRGBColour&,unsigned long);               // 0x009BE420 ?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z

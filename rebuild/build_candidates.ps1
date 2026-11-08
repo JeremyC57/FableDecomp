@@ -386402,6 +386402,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00c7e420_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0058af10'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OpenPCOptionsMenu_0058af10.cpp'
+        TestSource = '00/58/CTCInventory_OpenPCOptionsMenu_0058af10_test.cpp'
+        PassPattern = '0058af10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

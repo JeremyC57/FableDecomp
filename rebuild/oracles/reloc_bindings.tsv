@@ -37924,3 +37924,16 @@ _DSPROPSETID_EAX30_ListenerProperties	012b9418	00c51a20
 ??5Is32vec4@@QAE?AV0@H@Z	00c7b8b0	00c7baf0
 ??YIs32vec4@@QAEAAV0@ABVI32vec4@@@Z	00c7b870	00c7baf0
 ??_2Is32vec4@@QAEAAV0@H@Z	00c7b8f0	00c7e420
+??$?0PBDPBD@?$pair@VCCharString@@V1@@std@@QAE@ABU?$pair@PBDPBD@1@@Z	00592495	0058af10
+??0?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@1@@Z	00593288	0058af10
+??0?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VCCharString@@V1@@std@@@1@@Z	0059326d	0058af10
+??1?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@XZ	005932a3	0058af10
+??1?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@XZ	00593b03	0058af10
+??_7CActionParamEBOOL@NUISystem@@6B@	012366fc	0058af10
+?EnumerateAntiAliasingModes@CDisplayManager@@QAEXAAV?$CArray@W4ESurfaceMultisampleType@@@@@Z	009c05c0	0058af10
+?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ	00406880	0058af10
+?OpenInGameMenuPC@CTCInGameMenu@@QAEXPAVCComponent@NUISystem@@0@Z	004804de	0058af10
+?SetAcceptButton@CRedefinerList@NUISystem@@QAEXPAVCComponent@2@@Z	00556570	0058af10
+?insert@?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE?AU?$_List_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@2@U32@ABQAVCComponent@NUISystem@@@Z	0042ab8a	0058af10
+?insert@?$list@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@U?$_Nonconst_traits@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@2@U32@ABU?$pair@PAVCComponent@NUISystem@@PAV12@@2@@Z	00593b1a	0058af10
+?insert@?$list@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@VCCharString@@V1@@std@@U?$_Nonconst_traits@U?$pair@VCCharString@@V1@@std@@@2@@2@U32@ABU?$pair@VCCharString@@V1@@2@@Z	00593ade	0058af10

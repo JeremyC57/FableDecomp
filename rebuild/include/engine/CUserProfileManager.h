@@ -6,6 +6,10 @@
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VOLUME
 #include "fable_string.h"
 #endif
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYMODES
+#include "engine/CDisplayModeDesc.h"
+#include "stlport/fable_containers.h"
+#endif
 // CUserProfileManager (new, chunk 765): only the two methods row 0x006C9FD0 calls are modelled. Ego_r.pdb and FableWin.pdb
 // both spell the singleton accessor ?Get@CUserProfileManager@@SIAAV1@XZ (static __fastcall, returns a reference; retail
 // 0x0040D2A0 lazily news 0x140 bytes into 0x013B7D4C); ?ProcessPendingTutorials@CUserProfileManager@@QAEXXZ = retail 0x0040BB30.
@@ -14,6 +18,12 @@ class CUserProfileManager {
 public:
     static CUserProfileManager& __fastcall Get();                         // 0x0040D2A0
     void ProcessPendingTutorials();                                      // 0x0040BB30
+#ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_DISPLAYMODES
+    // Opt-in (chunk 880, row 0x0058AF10 CTCInventory::OpenPCOptionsMenu): Ego_r.pdb
+    // ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ, out of
+    // line in retail at 0x00406880 (`lea eax,[ecx+80h] ; ret`: DisplayModes, Ego_r.pdb +0x88 less two 4-byte-smaller STLport vectors).
+    const std::vector<CDisplayModeDesc>& GetDisplayModes() const;        // 0x00406880
+#endif
 #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_VOLUME
     // Retail opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate): the profile volumes and their Ego_r.pdb accessors
     // ?GetSoundVolume@CUserProfileManager@@QBEMXZ / ?GetDialogueVolume@CUserProfileManager@@QBEMXZ (out of line at 0x0047CFC2 /

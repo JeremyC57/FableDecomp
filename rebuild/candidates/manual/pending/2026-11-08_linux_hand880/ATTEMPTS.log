@@ -1,0 +1,23 @@
+1	v01	DIFFER(13154v13048)	first full draft, optimize(s)
+14:08	v02	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13147v13048) flags= []	
+14:13	v03	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13147v13048) flags= []	
+14:13	v04	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13042v13048) flags= []	
+14:14	v05	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13046v13048) flags= []	
+14:15	v06	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13049v13048) flags= []	
+14:15	v07	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13054v13048) flags= []	
+14:16	v08	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13051v13048) flags= []	
+14:19	v09	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13067v13048) flags= []	
+14:19	v10	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13051v13048) flags= []	
+14:19	v11	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13051v13048) flags= []	
+14:22	v12	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13051v13048) flags= []	
+14:22	v13	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13051v13048) flags= []	
+14:22	v14	0058af10 CTCInventory::OpenPCOptionsMenu RELOCATION_MATCH flags= []	
+14:23	v15	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13019v13048) flags= []	
+14:23	v16	0058af10 CTCInventory::OpenPCOptionsMenu RELOCATION_MATCH flags= []	
+14:23	v15	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13520v13048) flags= ['/d2inlS15']	--flags /d2inlS15
+14:23	v15	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13019v13048) flags= ['/d2inlT200']	--flags /d2inlT200
+14:24	v15	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13153v13048) flags= ['/d2inlS10']	--flags /d2inlS10
+14:24	v15	0058af10 CTCInventory::OpenPCOptionsMenu DIFFER(13514v13048) flags= ['/d2inlS12']	--flags /d2inlS12
+14:24	v17	0058af10 CTCInventory::OpenPCOptionsMenu RELOCATION_MATCH flags= []	
+14:27	src/0058af10.cpp (final, gall)	see above
+14:27	src/0058af10.cpp final (gall)	RELOCATION_MATCH

@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0058af10   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::list'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+0058af10   WARN RELOC_NAME: ?SetAcceptButton@CRedefinerList@NUISystem@@QAEXPAVCComponent@2@@Z -> 00556570 labelled '_global::SetMember_dword0x18c_00556570'
+0058af10   WARN RELOC_NAME: ??0?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@VCCharString@@V1@@std@@@1@@Z -> 0059326d labelled '_global::StdList_Ctor_0059326d'
+0058af10   WARN RELOC_NAME: ??$?0PBDPBD@?$pair@VCCharString@@V1@@std@@QAE@ABU?$pair@PBDPBD@1@@Z -> 00592495 labelled 'std::pair<const CCharString, CCharString>::pair'
+0058af10   WARN RELOC_NAME: ??0?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@1@@Z -> 00593288 labelled '_global::StdList_Ctor_00593288'
+0058af10   WARN RELOC_NAME: ?insert@?$list@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE?AU?$_List_iterator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@U?$_Nonconst_traits@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@2@U32@ABU?$pair@PAVCComponent@NUISystem@@PAV12@@2@@Z -> 00593b1a labelled 'ListNode_Create'
+0058af10   WARN RELOC_NAME: ?GetDisplayModes@CUserProfileManager@@QBEABV?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@XZ -> 00406880 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@V?$allocator@U?$pair@PAVCComponent@NUISystem@@PAV12@@std@@@2@@std@@QAE@XZ -> 005932a3 labelled 'std::list<T_005932a3>::~list'
+0058af10   WARN RELOC_NAME: ??1?$_List_base@U?$pair@VCCharString@@V1@@std@@V?$allocator@U?$pair@VCCharString@@V1@@std@@@2@@std@@QAE@XZ -> 00593b03 labelled 'std::list<T_00593b03>::~list'
+0058af10   RELOCATION_MATCH PASS   OpenPCOptionsMenu
+
+WINS: 1
+  0058af10 RELOCATION_MATCH CTCInventory::?OpenPCOptionsMenu@CTCInventory@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCInventory_OpenPCOptionsMenu_0058af10

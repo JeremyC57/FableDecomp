@@ -13,6 +13,11 @@ public:
     CRedefinerList(long);
     CRedefinerList(const CRedefinerList&);
     virtual ~CRedefinerList();
+#ifdef FABLE_RETAIL_CREDEFINERLIST_SETACCEPTBUTTON
+    // Opt-in (chunk 880, row 0x0058AF10): ?SetAcceptButton@CRedefinerList@NUISystem@@QAEXPAVCComponent@2@@Z (Ego_r.pdb, public,
+    // non-virtual), out of line in retail at 0x00556570 (`mov eax,[esp+4] ; mov [ecx+18Ch],eax ; ret 4`: PAcceptButton +0x18C).
+    void SetAcceptButton(CComponent* button);                       // 0x00556570
+#endif
 protected:
     bool IsActivated;                                               // +0x17c
     bool RefreshAfterFade;                                          // +0x17d

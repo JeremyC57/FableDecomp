@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+0058af10	RELOCATION_MATCH	13048v13048	PASS	CTCInventory::OpenPCOptionsMenu; vland RELOCATION_MATCH PASS (10 RELOC_NAME warnings = catalog labels, see NOTES); 17 grades; device: FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ (Inline-budget line 2)
