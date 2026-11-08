@@ -102,11 +102,32 @@ private:
     virtual void Main();                                                 // 0x00E78630
 };
 #endif
+#ifdef FABLE_RETAIL_CV_EXPOSEMAYORSCRIPT_CEM_RHODRI
+// Retail opt-in (chunk 836): the nested entity script CEM_Rhodri (Ego_r.pdb, 0x20: ParentClass +0x14, PMasterData +0x18,
+// ExplainedPlight +0x1c (bool), struct_layouts_egor.tsv; retail Main 0x00E799F0 reads [this+0x14] / [this+0x18] and writes
+// [this+0x1c]; the landed Init 0x00E766A0 models the same offsets). Methods: Ego_r.pdb ?Main@CEM_Rhodri@...@EAEXXZ (private
+// virtual, vtable slot 1, 0x00E799F0), ?Init@...@EAEXXZ (0x00E766A0), ?Alloc@...@SI... (0x00E765D0); GetParentScript 0x00E76670.
+class CV_ExposeMayorScript::CEM_Rhodri : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_ExposeMayorScript&, CScriptDataBase*, const CScriptThing&); // 0x00E765D0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00E76670
+protected:
+    CV_ExposeMayorScript& ParentClass;                                   // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    bool ExplainedPlight;                                                // +0x1c
+    virtual void Init();                                                 // 0x00E766A0
+    virtual void Main();                                                 // 0x00E799F0
+};
+#endif
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_ExposeMayorScript) == 0xA0);
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager) == 0x20);
 #ifdef FABLE_RETAIL_CV_EXPOSEMAYORSCRIPT_CEM_SHERIFF
 FABLE_STATIC_ASSERT(sizeof(NScript::CV_ExposeMayorScript::CEM_Sheriff) == 0x20);
+#endif
+#ifdef FABLE_RETAIL_CV_EXPOSEMAYORSCRIPT_CEM_RHODRI
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_ExposeMayorScript::CEM_Rhodri) == 0x20);
 #endif
 
 #endif // FABLE_RETAIL_NSCRIPT

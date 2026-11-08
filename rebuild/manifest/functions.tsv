@@ -24893,7 +24893,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0083f5c0	GetHost_0083f5c0	CHttpUrl_0083f420	__thiscall	undefined	4	CColourConverter *,CPixelFormat *,CPixelFormat *,bool	0	yes	accepted									
 0083f600	GetPath_0083f600	CHttpUrl_0083f420	__thiscall	undefined	4	CColourConverter *,CPixelFormat *,CPixelFormat *,bool	0	yes	accepted									
 0083f640	GetLocationPort	LHNetworkLib::LHHttpHeaderStatus	__thiscall	ushort	1	LHHttpHeaderStatus *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\83\LHHttpHeaderStatus_GetLocationPort_0083f640.cpp
-0083f650	ProcessTextWithRegex	_global	unknown	undefined	0		0	yes	accepted									
+0083f650	GetHeader	LHNetworkLib::LHHttpHeaders	unknown	undefined	0		0	yes	accepted									
 0083f870	SetProxySettings	LHNetworkLib::LHHttp2	unknown	undefined	0		0	yes	accepted									
 0083f8b0	SendRawData	LHNetworkLib::LHHttp2	unknown	undefined	0		0	yes	accepted									
 0083f980	ResetRequest	LHNetworkLib::LHHttp2	__thiscall	void	1	LHHttp2 *	1	yes	accepted									
@@ -51130,7 +51130,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00dc02d0	`scalar deleting destructor'	CActiveEntityScript<NScript::CQ_OakValeBanditRaidScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\dc\CThingSwitch_vectordeletingdestructor_00dc02d0.cpp
 00dc0300	PopulateLevel	NScript::CQ_OakValeBanditRaidScript	__thiscall	bool	1	CQ_OakValeBanditRaidScript *	1	yes	accepted									
 00dc0830	DepopulateLevel	NScript::CQ_OakValeBanditRaidScript	unknown	undefined	0		0	yes	accepted									
-00dc08c0	WatchForGateTimer	CQ_OakValeBanditRaidScript	__thiscall	void	1	CQ_OakValeBanditRaidScript *	1	yes	accepted									
+00dc08c0	WatchForGateTimer	NScript::CQ_OakValeBanditRaidScript	__thiscall	void	1	CQ_OakValeBanditRaidScript *	1	yes	accepted									
 00dc1770	Main	NScript::CQ_OakValeBanditRaidScript::COakValeBanditRaidBandit	unknown	undefined	0		0			discovered	gapscan							
 00dc2170	CanThingSeeAnythingInVector	NScript::CQ_OakValeBanditRaidScript	__thiscall	long	3	CQ_OakValeBanditRaidScript *,CScriptThing *,vector<CScriptThing,std::allocator<CScriptThing>_> *	1	yes	accepted									
 00dc21f0	Main	NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker	__thiscall	void	1	CM_RestartMarker *	1	yes	accepted									
@@ -52369,7 +52369,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e2ea10	SuspendableProcess	CActiveEntityScript<NScript::CV_AmbushScamScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
 00e2ea60	`scalar deleting destructor'	CSpawnedFunc1<NScript::CV_AmbushScamScript,CScriptThing>	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e2\CEngineSubPrimitiveText_scalardeletingdestructor_00e2ea60.cpp
 00e2ea90	`scalar deleting destructor'	CActiveEntityScript<NScript::CV_AmbushScamScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e2\CThingSwitch_vectordeletingdestructor_00e2ea90.cpp
-00e2eac0	TricksterApproach	CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
+00e2eac0	TricksterApproach	NScript::CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
 00e2ec30	GetTrickster	CV_AmbushScamScript	__thiscall	CScriptThing	1	CV_AmbushScamScript *	1	yes	accepted									
 00e2f170	SpringAmbush	CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
 00e2fc50	WatchForAllAmbushersDead	NScript::CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									

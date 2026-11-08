@@ -1,0 +1,44 @@
+addr       parity           behav  name
+00cf18d0   RELOCATION_MATCH PASS   Main
+00cf2b70   RELOCATION_MATCH PASS   Main
+00cf3d20   RELOCATION_MATCH PASS   Main
+00d067a0   RELOCATION_MATCH PASS   Main
+00d17f20   WARN RELOC_NAME: ??0TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ -> 00d15140 labelled 'CMainGameComponentInit::CMainGameComponentInit'
+00d17f20   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00d17f20   RELOCATION_MATCH PASS   Main
+00d19bd0   WARN RELOC_NAME: ??0TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ -> 00d15140 labelled 'CMainGameComponentInit::CMainGameComponentInit'
+00d19bd0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEAAV0@ABV0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00d19bd0   RELOCATION_MATCH PASS   Main
+00d22f30   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEAAV0@ABV0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00d22f30   RELOCATION_MATCH PASS   Main
+00dac760   RELOCATION_MATCH PASS   Main
+00e799f0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e799f0   RELOCATION_MATCH PASS   Main
+00e8ef80   RELOCATION_MATCH PASS   Main
+00ef4b40   RELOCATION_MATCH PASS   Main
+
+WINS: 11
+  00cf18d0 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::COakvaleFan::?Main@COakvaleFan@CQ_ArenaHoldingScriptScript@NScript@@EAEXXZ
+  00cf2b70 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan::?Main@CBowerstoneFan@CQ_ArenaHoldingScriptScript@NScript@@EAEXXZ
+  00cf3d20 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan::?Main@CHookCoastFan@CQ_ArenaHoldingScriptScript@NScript@@EAEXXZ
+  00d067a0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::?Main@CBCGameMaster@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d17f20 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangDeputy1::?Main@CBH_GangDeputy1@CQ_BountyHuntScript@NScript@@EAEXXZ
+  00d19bd0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_Hostage1::?Main@CBH_Hostage1@CQ_BountyHuntScript@NScript@@EAEXXZ
+  00d22f30 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CKG_Sheriff::?Main@CKG_Sheriff@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00dac760 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::?Main@CNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+  00e799f0 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CEM_Rhodri::?Main@CEM_Rhodri@CV_ExposeMayorScript@NScript@@EAEXXZ
+  00e8ef80 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon::?Main@CGhostGrannySon@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ
+  00ef4b40 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CTestPerson::?Main@CTestPerson@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  NScriptCQArenaHoldingScriptScriptCOakvaleFan_Main_00cf18d0
+  NScriptCQArenaHoldingScriptScriptCBowerstoneFan_Main_00cf2b70
+  NScriptCQArenaHoldingScriptScriptCHookCoastFan_Main_00cf3d20
+  NScriptCQBanditCampBossBattleScriptCBCGameMaster_Main_00d067a0
+  NScriptCQBountyHuntScriptCBHGangDeputy1_Main_00d17f20
+  NScriptCQBountyHuntScriptCBHHostage1_Main_00d19bd0
+  NScriptCQBreakSiegeScriptCKGSheriff_Main_00d22f30
+  NScriptCQNewOakValeIntroScriptCNOVIGuard_Main_00dac760
+  NScriptCVExposeMayorScriptCEMRhodri_Main_00e799f0
+  NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Main_00e8ef80
+  NScriptCPersonalScriptEmptyScriptCTestPerson_Main_00ef4b40

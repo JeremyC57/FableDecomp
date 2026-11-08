@@ -37654,3 +37654,10 @@ _BACKWARDS_LEFT_FORTY_FIVE_DEGREES_ORIENTATION	0137d034	0121adf0
 ?GetMapNavigationAreaUpdateInfo@CWorldMap@@QBEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaUpdate@@@Z	00509a20	0050a650
 ?_M_insert_overflow@?$vector@VC2DBoxF@@V?$allocator@VC2DBoxF@@@std@@@std@@IAEXPAVC2DBoxF@@ABV3@ABU__false_type@2@I_N@Z	00517cb0	0050a650
 ?_M_insert_overflow@?$vector@VCNavigationPosition@@V?$allocator@VCNavigationPosition@@@std@@@std@@IAEXPAVCNavigationPosition@@ABV3@ABU__false_type@2@I_N@Z	00517ba0	0050a650
+??0TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ	00d15140	00d17f20
+??1TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ	00cd4550	00d17f20
+?SpawnBanditGangGrunts@CQ_BountyHuntScript@NScript@@QAEXVCCharString@@@Z	00d17470	00d17f20
+?WatchForDeputy1GruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ	00d18b20	00d17f20
+?push_back@?$vector@UTeleportData@CQ_BountyHuntScript@NScript@@V?$allocator@UTeleportData@CQ_BountyHuntScript@NScript@@@std@@@std@@QAEXABUTeleportData@CQ_BountyHuntScript@NScript@@@Z	00d18c00	00d17f20
+?g_NOVIGuardArrestDistance@@3MA	013ac840	00dac760
+?g_NOVIGuardNoticeDistances@@3PAMA	013ac844	00dac760

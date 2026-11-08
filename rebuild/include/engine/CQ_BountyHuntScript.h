@@ -30,6 +30,16 @@ public:
     void WatchForDeputy2GruntsKilled();                                  // 0x00D19AF0
     class CBH_GangDeputy2;                                               // Alloc 0x00D161A0
 #endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY1
+    void WatchForDeputy1GruntsKilled();                                  // 0x00D18B20 (retail; Ego_r.pdb QAEXXZ)
+    class CBH_GangDeputy1;                                               // Alloc 0x00D15FC0
+#endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_HOSTAGE1
+    class CBH_Hostage1;                                                  // Alloc 0x00D160B0
+#endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_HOSTAGE2
+    class CBH_Hostage2;                                                  // Alloc 0x00D16290
+#endif
     bool QuestFailed;
     bool QuestSucceeded;
     bool QuestOver;
@@ -103,5 +113,72 @@ protected:
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_GangDeputy2) == 0x1c);
+#endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_GANGDEPUTY1
+// Retail opt-in (chunk 833): the CBH_GangDeputy1 entity script (Ego_r.pdb CBH_GangDeputy1, 28 bytes = the landed Alloc 0x00D15FC0's
+// new size: ParentClass +0x14, PMasterData +0x18) and WatchForDeputy1GruntsKilled (Ego_r.pdb ?WatchForDeputy1GruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ),
+// the thread its Main 0x00D17F20 spawns (member pointer 0x00D18B20 stored at CSpawnedFunc +0x34). Main is slot 1 of the entity vtable
+// 0x012CA554 the landed Alloc stores; GetParentScript 0x00D16060 / OnPersist 0x00D16070 / OnPredicateFail 0x00D16080 are landed.
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_BountyHuntScript::CBH_GangDeputy1 : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BountyHuntScript&, CScriptDataBase*, const CScriptThing&); // 0x00D15FC0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D16060
+private:
+    virtual void Main();                                                 // 0x00D17F20
+    virtual void Init();                                                 // 0x00D16460
+    virtual void OnPersist(CPersistContext&);                            // 0x00D16070
+    virtual void OnPredicateFail();                                      // 0x00D16080
+protected:
+    CQ_BountyHuntScript& ParentClass;                                    // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_GangDeputy1) == 0x1c);
+#endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_HOSTAGE1
+// Retail opt-in (chunk 833): the CBH_Hostage1 entity script (Ego_r.pdb CBH_Hostage1, 28 bytes = the landed Alloc 0x00D160B0's new size:
+// ParentClass +0x14, PMasterData +0x18). Entity vtable 0x012CA570 (stored by the Alloc): 0 scalar deleting dtor 0x00D16180, 1 Main 0x00D19BD0,
+// 2 Init 0x00D167C0, 3 GetParentScript 0x00D16150, 4 OnPersist 0x00D16160, 5 OnPredicateFail 0x00D16170 (read from retail .rdata).
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_BountyHuntScript::CBH_Hostage1 : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BountyHuntScript&, CScriptDataBase*, const CScriptThing&); // 0x00D160B0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D16150
+private:
+    virtual void Main();                                                 // 0x00D19BD0
+    virtual void Init();                                                 // 0x00D167C0
+    virtual void OnPersist(CPersistContext&);                            // 0x00D16160
+    virtual void OnPredicateFail();                                      // 0x00D16170
+protected:
+    CQ_BountyHuntScript& ParentClass;                                    // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_Hostage1) == 0x1c);
+#endif
+#ifdef FABLE_RETAIL_CQ_BOUNTYHUNTSCRIPT_HOSTAGE2
+// Retail opt-in (chunk 833): the CBH_Hostage2 entity script (Ego_r.pdb CBH_Hostage2, 28 bytes = the landed Alloc 0x00D16290's new size:
+// ParentClass +0x14, PMasterData +0x18). Entity vtable 0x012CA5A8 (stored by the Alloc): 0 scalar deleting dtor 0x00D16360, 1 Main 0x00D1A740,
+// 2 Init 0x00D16BB0, 3 GetParentScript 0x00D16330, 4 OnPersist 0x00D16340, 5 OnPredicateFail 0x00D16350 (read from retail .rdata).
+#include "engine/CEntityScriptBase.h"
+namespace NScript {
+class CQ_BountyHuntScript::CBH_Hostage2 : public CEntityScriptBase {
+public:
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_BountyHuntScript&, CScriptDataBase*, const CScriptThing&); // 0x00D16290
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D16330
+private:
+    virtual void Main();                                                 // 0x00D1A740
+    virtual void Init();                                                 // 0x00D16BB0
+    virtual void OnPersist(CPersistContext&);                            // 0x00D16340
+    virtual void OnPredicateFail();                                      // 0x00D16350
+protected:
+    CQ_BountyHuntScript& ParentClass;                                    // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_BountyHuntScript::CBH_Hostage2) == 0x1c);
 #endif
 #endif

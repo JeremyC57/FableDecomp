@@ -1,0 +1,5 @@
+address	name	evidence
+0x0083F650	LHNetworkLib::LHHttpHeaders::GetHeader	chunk 865: Ego_r.pdb ?GetHeader@LHHttpHeaders@LHNetworkLib@@QAE?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z; called by the landed LHHttp2::GetHeader 0x00840B60; was catalog "ProcessTextWithRegex"
+0x00DC08C0	NScript::CQ_OakValeBanditRaidScript::WatchForGateTimer	chunk 865: namespace NScript (Ego_r.pdb ?WatchForGateTimer@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ; pending/2026-10-23_linux_hand322)
+0x00E2EAC0	NScript::CV_AmbushScamScript::TricksterApproach	chunk 865: namespace NScript (Ego_r.pdb; pending/2026-10-21_linux_hand256)
+0x00CDDCB0	NScript::CPersonalScriptMainScript::Main	chunk 865: namespace NScript (Ego_r.pdb; pending/2026-10-23_linux_hand321)

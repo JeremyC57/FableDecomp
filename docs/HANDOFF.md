@@ -84,6 +84,8 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     (`2026-11-08_landing_l/`, the first row landed with an inline_depth region under the new rule); 0x0050A650 went back to its agent
     because its header opt-in holds stand-in template bodies that do not behave like retail's 0x00518340 / 0x005185F0 / 0x00518900.
     0x0050A650 landed after the redo (`2026-11-08_landing_n/`, header templates written from retail's logic). Queue tag land0811m holds the respells.
+    Chunk 865 (inline-budget parks): 11 of 20 landed (`2026-11-08_landing_o/`; nine by a per-row /d2inlS15 / T36 / T72 flag with the source
+    untouched, two with a scoped device); 0x0083F650 back with its agent for a shared-STL rewrite (and a 443-byte extent). 63.12% of retail bytes.
   - (superseded) Authoring was STOPPED (the user, 2026-11-08: "No more authoring"). No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled

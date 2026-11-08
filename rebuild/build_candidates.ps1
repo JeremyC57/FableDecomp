@@ -385588,6 +385588,93 @@ $catalog = @(
         TestSource = '00/50/CWorldMap_GetMapNavigationAreaInit_0050a650_test.cpp'
         PassPattern = '0050a650_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cf18d0'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::COakvaleFan'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCOakvaleFan_Main_00cf18d0.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCOakvaleFan_Main_00cf18d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00cf18d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf2b70'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCBowerstoneFan_Main_00cf2b70.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCBowerstoneFan_Main_00cf2b70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00cf2b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf3d20'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScriptCHookCoastFan_Main_00cf3d20.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScriptCHookCoastFan_Main_00cf3d20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00cf3d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d067a0'
+        Module = 'NScript::CQ_BanditCampBossBattleScript::CBCGameMaster'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_Main_00d067a0.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_Main_00d067a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d067a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d17f20'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_GangDeputy1'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_Main_00d17f20.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_Main_00d17f20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d17f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d19bd0'
+        Module = 'NScript::CQ_BountyHuntScript::CBH_Hostage1'
+        Source = '00/d1/NScriptCQBountyHuntScriptCBHHostage1_Main_00d19bd0.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScriptCBHHostage1_Main_00d19bd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d19bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d22f30'
+        Module = 'NScript::CQ_BreakSiegeScript::CKG_Sheriff'
+        Source = '00/d2/NScriptCQBreakSiegeScriptCKGSheriff_Main_00d22f30.cpp'
+        TestSource = '00/d2/NScriptCQBreakSiegeScriptCKGSheriff_Main_00d22f30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS15'
+        PassPattern = '00d22f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dac760'
+        Module = 'NScript::CQ_NewOakValeIntroScript::CNOVI_Guard'
+        Source = '00/da/NScriptCQNewOakValeIntroScriptCNOVIGuard_Main_00dac760.cpp'
+        TestSource = '00/da/NScriptCQNewOakValeIntroScriptCNOVIGuard_Main_00dac760_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT72'
+        PassPattern = '00dac760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e799f0'
+        Module = 'NScript::CV_ExposeMayorScript::CEM_Rhodri'
+        Source = '00/e7/NScriptCVExposeMayorScriptCEMRhodri_Main_00e799f0.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScriptCEMRhodri_Main_00e799f0_test.cpp'
+        PassPattern = '00e799f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8ef80'
+        Module = 'NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon'
+        Source = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Main_00e8ef80.cpp'
+        TestSource = '00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Main_00e8ef80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT72'
+        PassPattern = '00e8ef80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef4b40'
+        Module = 'NScript::CPersonalScript_EmptyScript::CTestPerson'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCTestPerson_Main_00ef4b40.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCTestPerson_Main_00ef4b40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlT36'
+        PassPattern = '00ef4b40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

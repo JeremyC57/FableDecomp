@@ -1,0 +1,9 @@
+address	catalog_name	pdb_name	evidence
+00daadd0	_global::Script_Villager_Reputation_Dialog	NScript::CQ_NewOakValeIntroScript::Init	slot 3 of vtable 0x012D7A28 (stored by the landed ctor 0x00DAAC00); Ego_r.pdb / FableWin.pdb ?Init@CQ_NewOakValeIntroScript@NScript@@UAEXXZ (chunk 862)
+00d067a0	_global::Quest009_Gamesmaster_ResidentialBanditCamp_Setup	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::Main	slot 1 of the CBCGameMaster entity vtable 0x012C8DE4 stored by Alloc 0x00D066B0; Ego_r.pdb ?Main@CBCGameMaster@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ (chunk 852)
+00531ec0	CGuiComponent::Update	NUISystem::CComponent::Update(float)	rtti NUISystem::CComponent vtable 0x0124608C slot 1; Ego_r.pdb 0x005AD350 / FableWin.pdb ?Update@CComponent@NUISystem@@UAEXM@Z (chunk 862)
+0083f650	_global::ProcessTextWithRegex	LHNetworkLib::LHHttpHeaders::GetHeader(const std::string&)	Ego_r.pdb ?GetHeader@LHHttpHeaders@LHNetworkLib@@QAE?AV?$basic_string@...@std@@ABV34@@Z (debug 0x0084E820); caller LHHttp2::GetHeader 0x00840B60 landed
+00e03f70	CMagicBarrier::Main	NScript::CQ_WaspQueenScript::CMagicBarrier::Main (unverified this chunk: parked, not regraded past flag probes)	see pending/2026-10-23_linux_hand319 for the identity evidence
+00dc08c0	CQ_OakValeBanditRaidScript::WatchForGateTimer	NScript::CQ_OakValeBanditRaidScript::WatchForGateTimer	pending/2026-10-23_linux_hand322 (NScript namespace missing in the catalog)
+00e2eac0	CV_AmbushScamScript::TricksterApproach	NScript::CV_AmbushScamScript::TricksterApproach	pending/2026-10-21_linux_hand256 (NScript namespace missing in the catalog)
+00cddcb0	CPersonalScriptMainScript::Main	NScript::CPersonalScriptMainScript::Main	pending/2026-10-23_linux_hand321 (NScript namespace missing in the catalog)
