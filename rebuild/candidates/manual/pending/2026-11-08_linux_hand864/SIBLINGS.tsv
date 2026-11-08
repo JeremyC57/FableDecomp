@@ -1,0 +1,8 @@
+row	sibling	relation	note
+0x0050A650	0x00518340 / 0x005185F0 / 0x00518900	callees (GetAllTCsInRoughArea / GetAllTCDsInRoughArea instances)	retail defines the templates in CThingSearchTools.h; a visible noinline body in the caller's TU is what frees the vector locals from address exposure (the landing lever)
+0x0050A650	0x005EBFA0, 0x00969E70	landed rows with the same lever (ALLTHINGSBODY / ROUGHAREABODY)	precedents for same-TU noinline search-tool bodies
+0x00D33730	0x00E03F70, 0x00E76E90	per-site ~CTimer expansion splits	the inline_depth(0) device at one return may port to other single-site ~CTimer splits (0x00E76E90 is a block-layout residue, it does not)
+0x0085C7D0	0x008732D0, 0x008735D0	CSACCombat::SetUpPhysics / CFirstPerson::OnInit (landed)	same AddSubComponent statement shape; 0x008735D0 has our edx/eax vptr form for the same call
+0x005253F0	0x009BC120, 0x009BB0D0	GETASCHARARRAY_SELECT users	the preset accessor form at every Replace site is retail's shape here too (M3)
+0x00DDAE40	0x00E03F70	same sunk fstp residue	solve either and port
+0x009D8CF0	0x009FA780	bookmark OR operand-order family	park together

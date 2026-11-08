@@ -1,0 +1,2 @@
+address	landed_spelling	retail_spelling	evidence	where
+0x0084E810	NCameraModes::CBase::SetPhysics(CCountedPointer<CPhysicsBase>, bool)	NCameraModes::CBase::AddSubComponent(CCountedPointer<CSubComponentBase>, bool)	FableWin.pdb ?AddSubComponent@CBase@NCameraModes@@QAEXV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@_N@Z; the landed CSACCombat::SetUpPhysics 0x008732D0 already calls it AddSubComponent; the manifest's "ScriptEventList::InsertEvent" is a propagated label	the parked 0x0085C7D0 sources of chunks 757-859 (differ/0085c7d0.cpp here is respelled)

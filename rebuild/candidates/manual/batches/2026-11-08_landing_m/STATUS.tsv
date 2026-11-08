@@ -1,0 +1,2 @@
+address	grade	test	note
+0x0043B570	RELOCATION_MATCH	PASS	one-argument resize(n); six opt-in header branches

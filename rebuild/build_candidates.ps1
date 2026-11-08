@@ -385567,6 +385567,20 @@ $catalog = @(
         TestSource = '01/22/global_E1_01224ce0_test.cpp'
         PassPattern = '01224ce0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d33730'
+        Module = 'NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster'
+        Source = '00/d3/NScriptCQEndGameBossBattleScriptCTheRealGuildmaster_Main_00d33730.cpp'
+        TestSource = '00/d3/NScriptCQEndGameBossBattleScriptCTheRealGuildmaster_Main_00d33730_test.cpp'
+        PassPattern = '00d33730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0043b570'
+        Module = 'CPlayerGui'
+        Source = '00/43/CPlayerGui_CPlayerGui_0043b570.cpp'
+        TestSource = '00/43/CPlayerGui_CPlayerGui_0043b570_test.cpp'
+        PassPattern = '0043b570_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

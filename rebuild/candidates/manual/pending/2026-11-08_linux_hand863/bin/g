@@ -1,0 +1,6 @@
+#!/bin/bash
+# g <addr> <src> [tag] [--note ..] : grade with the agent863 overlay (timeout 600)
+export S=/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad
+source $S/wine/env.sh >/dev/null 2>&1; export S=/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad; cd /home/user/FableDecomp
+export FABLE_HDR_OVERLAY=$S/w22/agent863/hdr
+timeout 900 python3 -u $S/w22/agent863/bin/gr.py "$@"

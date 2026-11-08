@@ -21799,7 +21799,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007a1380	Activate	CLightningBeam	__thiscall	void	1	CLightningBeam *	1	yes	accepted									
 007a16f0	InitialiseBeams	CTCWillLightning	__thiscall	void	1	CTCWillLightning *	1	yes	accepted									
 007a1870	MakeRandomBeam	CTCWillLightning	__thiscall	void	2	CTCWillLightning *,bool	1	yes	accepted									
-007a1b20	FrameUpdate	CLightningBeam	__thiscall	void	3	CLightningBeam *,CIntelligentPointer<CThingCreatureBase>,ulong *	1	yes	accepted									
+007a1b20	FrameUpdate	CTCWillLightning::CLightningBeam	__thiscall	void	3	CLightningBeam *,CIntelligentPointer<CThingCreatureBase>,ulong *	1	yes	accepted									
 007a2df0	CIVCountedPointer_Release_007a2df0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007a2df0.cpp
 007a2e80	CCountedPointer_Release_007a2e80	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_007a2e80.cpp
 007a2f90	operator()<CThing>	CThingCompare_NearestToPos	__thiscall	CThingAICreature *	3	CThingCompare_Nearest *,CThingAICreature *,CThingAICreature *	1	yes	accepted									
@@ -25233,7 +25233,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0084e390	AddPoint	C3DFrustrum	unknown	undefined	0		0	yes	accepted									
 0084e420	CBase	NCameraModes::CBase	unknown	undefined	0		0	yes	accepted									
 0084e590	UpdateTrackMeleeOpponents	CBase	__thiscall	void	3	CBase *,C3DVector *,C3DVector *	1	yes	accepted									
-0084e810	SetPhysics	CBase	unknown	undefined	0		0	yes	accepted									
+0084e810	AddSubComponent	NCameraModes::CBase	unknown	undefined	0		0	yes	accepted									
 0084e900	sub_0084e900	_global	unknown	undefined	0		0			discovered	gapscan							
 0084eaf0	GetRollingAverage<C3DVector>	CTools	__thiscall	C3DVector	4	CTools *,C3DVector *,C3DVector *,float	1	yes	accepted									
 0084eb90	_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>	std	__fastcall	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *	5	_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\84\UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_0084eb90.cpp
@@ -36456,7 +36456,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a2f210	C3DMeshStats	C3DMeshStats	__thiscall	undefined	1	C3DMeshStats *	0	yes	accepted									
 00a2f270	C3DMeshStats	C3DMeshStats	__thiscall	undefined	2	C3DMeshStats *,bool	0	yes	accepted									
 00a2f2d0	LoadBinary	C3DMeshStats	__thiscall	bool	2	C3DMeshStats *,CMemoryDataInputStream *	1	yes	accepted									
-00a2f740	sub_00a2f740	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00a2f740	InitialiseFromFileData	C3DMeshStats	unknown	undefined	0		0			discovered	gapscan							
 00a30a70	CCountedPointer_Release_00a30a70	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30a70.cpp
 00a30ad0	CCountedPointer_Release_00a30ad0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30ad0.cpp
 00a30b10	CCountedPointer_Release_00a30b10	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a30b10.cpp
@@ -51280,7 +51280,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00dcf8f0	`scalar deleting destructor'	CActiveEntityScript<NScript::CQ_OrchardFarmRaidScript>	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\dc\CThingSwitch_vectordeletingdestructor_00dcf8f0.cpp
 00dcf920	OnPredicateFail	NScript::CQ_OrchardFarmRaidScript::CArtefact	__thiscall	void	1	CArtefact *	1	yes	accepted									
 00dcfa10	Init	NScript::CQ_OrchardFarmRaidScript::CArtefact	unknown	undefined	0		0			discovered	gapscan							
-00dcfa60	sub_00dcfa60	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00dcfa60	DoCutsceneIfRequired	NScript::CQ_OrchardFarmRaidScript	unknown	undefined	0		0			discovered	gapscan							
 00dd0eb0	ReplaceQuestCards	NScript::CQ_OrchardFarmRaidScript	__thiscall	void	1	CQ_OrchardFarmRaidScript *	1	yes	accepted									
 00dd1ac0	Main	NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro	__thiscall	void	1	CM_WhisperFarmRaidIntro *	1	yes	accepted									
 00dd1af0	DoMultiplierCutscene	NScript::CQ_OrchardFarmRaidScript	__thiscall	void	1	CQ_OrchardFarmRaidScript *	1	yes	accepted									

@@ -38,6 +38,9 @@ class CScriptScreenText; class CScreenMessage;
 enum EPlayerGuiMode { };                                             // W4EPlayerGuiMode@@ (enumerators not needed here)
 #endif
 class CThing;class C3DVector;
+#ifdef FABLE_RETAIL_CPLAYERGUI_CTOR
+class CWorld; class CPlayerManager; class CGamePlayerInterface; class CMainGameComponent; class CGraphicDataBank;   // chunk 863
+#endif
 namespace NHeroInformationScreens { class CManager; }
 // TPI0xbf85 original singleton base; native437990 forwards through PDrawCombatMultiplier+150.
 // Complete original members World through DisplayBottomHalfGUI retained opaque, except SubtitleRenderer (2026-11-03, row 0x005EB9E0):
@@ -45,7 +48,25 @@ namespace NHeroInformationScreens { class CManager; }
 // bytes in retail; FableWin.pdb ?GetSubtitleRenderer@CPlayerGui@@QAEAAVCSubtitleRenderer@@XZ is inline in Ego_r.pdb and retail
 // (CTCTavernGame::FrameUpdate reads the singleton's byte +0xFD = +0x18 + DisplayingText +0xE5 in place, 0x005EBA74).
 class CPlayerGui : public CTBaseSingletonNoDefaultAlloc<CPlayerGui> {
+#ifdef FABLE_RETAIL_CPLAYERGUI_CTOR
+    // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): the first five members with their Ego_r.pdb names and
+    // types (struct_layouts_egor.tsv: World +4, PlayerManager +8, InputInterface +0xC, Component +0x10, Graphics +0x14) and the
+    // constructor Ego_r.pdb / FableWin.pdb ??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z
+    // (retail 0x0043B570, `ret 14h`: stores [esp+8] at +4, [esp+0x10] at +8, [esp+0xC] at +0xC, [esp+4] at +0x10, [esp+0x14] at +0x14).
+    // Same layout as the pad it replaces.
+private:
+    CWorld* World;                                                       // +0x04
+    CPlayerManager* PlayerManager;                                       // +0x08
+    CGamePlayerInterface* InputInterface;                                // +0x0c
+    const CMainGameComponent* Component;                                 // +0x10
+    const CGraphicDataBank* Graphics;                                    // +0x14
+public:
+    CPlayerGui(const CMainGameComponent& component, CWorld& world, CGamePlayerInterface& inputInterface, CPlayerManager& playerManager,
+               const CGraphicDataBank& graphics);                        // 0x0043B570
+private:
+#else
 private: unsigned char _pad_0x04[0x14];                              // +0x04 World .. Graphics
+#endif
     CSubtitleRenderer SubtitleRenderer;                                  // +0x18
 #ifdef FABLE_RETAIL_CPLAYERGUI_MEMBERS
     CCountedPointer<CFontBank> PFont;                                    // +0x138

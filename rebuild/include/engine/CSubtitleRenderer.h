@@ -22,6 +22,12 @@ class CWideString;                                              // chunk 855
 #pragma pack(push, 1)
 class CSubtitleRenderer {
 public:
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER_CTOR
+    // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): Ego_r.pdb / FableWin.pdb ??0CSubtitleRenderer@@QAE@ABVCGraphicDataBank@@@Z,
+    // out of line at 0x0049166E (the CPlayerGui ctor builds its SubtitleRenderer member there: `push [esp+20h] ; lea ecx,[esi+18h] ; call`).
+    // Declaration only.
+    CSubtitleRenderer(const CGraphicDataBank& graphics);                 // 0x0049166E
+#endif
 #ifdef FABLE_RETAIL_CSUBTITLERENDERER_DTOR
     // Retail opt-in (chunk 853, row 0x0043A570 ~CPlayerGui): the vptr as a real virtual destructor, Ego_r.pdb ??1CSubtitleRenderer@@UAE@XZ /
     // ??_GCSubtitleRenderer@@UAEPAXI@Z, out of line at 0x00443E20 (~CPlayerGui destroys its SubtitleRenderer member there: `lea ecx,[esi+18h] ;

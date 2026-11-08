@@ -1,0 +1,3 @@
+address	name	evidence
+0x00D33730	NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster::Main	chunk 864: vtable slot 1 of CTheRealGuildmaster (Alloc 0x00D2FDC0 stores the vtable 0x012CC708); ?Main@CTheRealGuildmaster@CQ_EndGameBossBattleScript@NScript@@EAEXXZ in Ego_r.pdb and FableWin.pdb
+0x0084E810	NCameraModes::CBase::AddSubComponent	chunk 864: ?AddSubComponent@CBase@NCameraModes@@QAEXV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@_N@Z in FableWin.pdb; the landed CSACCombat::SetUpPhysics 0x008732D0 calls it AddSubComponent; was the propagated label ScriptEventList::InsertEvent / SetPhysics

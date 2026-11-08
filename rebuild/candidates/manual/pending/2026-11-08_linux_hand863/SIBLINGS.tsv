@@ -1,0 +1,8 @@
+address	source	grade_with_final_overlay	note
+0x00ECCAD0	rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader2_Main_00eccad0.cpp	not rechecked (no header it includes changed default path)	twin of CTalkingTrader1::Main (same SAY / hit shape without the chats or CTimer); source of the talk / hit idioms
+0x00ECE7F0-family	CSickChildsMother::Main (landed, CV_SickChildScript)	not rechecked	pattern source for CWitch (SAY block, parent-reference seh release)
+0x00D6A360	rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_Main_00d6a360.cpp	not rechecked	expands ~CIsThingAlive because its TU keeps ~CScriptThing out of line; contrast for 0x00D11930
+0x00E57E60	rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_Main_00e57e60.cpp	not rechecked	natural `push -1; lea ecx; push lit` ctor interleave at 0x00E58B8B (the 0x00DCFA60 residue B shape)
+0x00DCC140	rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScript_Init_00dcc140.cpp	not rechecked	same interleave at 0x00DCC613 (second of two consecutive CCharString temporaries)
+CEndGameScythe	landed CEndGameScythe::Main (chunk 821)	not rechecked	SAY / hit pattern with a single SAY-level do-while(0) Inline-split
+CLightningBeam	landed CTCWillLightning::CLightningBeam::Deactivate / IsTargetValid, CTCElectrocuteOnTouch::OnHit	not rechecked	callee and member model sources for FrameUpdate 0x007A1B20

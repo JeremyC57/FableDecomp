@@ -19,6 +19,25 @@
 #include "fable_string.h"
 #include "stlport/fable_map.h"
 #endif
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_ABILITYBUTTONS
+// Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): AbilityButtons typed as its Ego_r.pdb type
+// vector<CAbilityButtonGuiDef> (STLport 4.6, 0xC bytes) at retail +0x7FC. Evidence: the CPlayerGui ctor sizes its three button vectors
+// with (def+0x800 - def+0x7FC) / 0x5C (`imul 0B21642C9h ; add ; sar 6`, 0x0043B95F); CAbilityButtonGuiDef is 96 bytes in Ego_r.pdb
+// (a 0x40-byte base, then ControllerType +0x40 .. Offset +0x58), 0x5C in retail (the base 4 bytes smaller: one STLport container).
+// Only the element size is needed here; the members are the PDB's at retail offsets (base opaque).
+#include "stlport/fable_containers.h"
+class CAbilityButtonGuiDef {
+public:
+    unsigned char _base[0x3c];                                           // +0x00 base (opaque)
+    long ControllerType;                                                 // +0x3c EControllerType
+    long ControllerButton;                                               // +0x40 EXboxControllerButton
+    long MouseButton;                                                    // +0x44 EMouseButtonControl
+    long ButtonGraphic;                                                  // +0x48
+    float Position_X, Position_Y;                                        // +0x4c C2DVector Position
+    float Offset_X, Offset_Y;                                            // +0x54 C2DVector Offset
+};
+FABLE_STATIC_ASSERT(sizeof(CAbilityButtonGuiDef) == 0x5c);
+#endif
 
 class CCharStringData;
 
@@ -499,7 +518,11 @@ public:
     float            InteractButtonBorderOffset_Y;           // +0x7f0 C2DVector::Y
     float            InteractButtonTooltipOffset_X;          // +0x7f4 C2DVector::X
     float            InteractButtonTooltipOffset_Y;          // +0x7f8 C2DVector::Y
+#ifdef FABLE_RETAIL_CPLAYERGUIDEF_ABILITYBUTTONS
+    std::vector<CAbilityButtonGuiDef> AbilityButtons;                  // +0x7fc (chunk 863 opt-in)
+#else
     unsigned char    AbilityButtons[0xc];                    // +0x7fc vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_>
+#endif
     unsigned char    SpecialAbilityButtons[0xc];             // +0x808 vector<CAbilityButtonGuiDef,std::allocator<CAbilityButtonGuiDef>_>
     float            DigitPos_X;                             // +0x814 C2DVector::X
     float            DigitPos_Y;                             // +0x818 C2DVector::Y

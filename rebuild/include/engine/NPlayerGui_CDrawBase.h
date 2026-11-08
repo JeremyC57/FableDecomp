@@ -11,6 +11,12 @@ class CPlayerGui; class CPlayerManager; class CWorld; class CMainGameComponent; 
 namespace NPlayerGui {
 class CDrawBase {
 public:
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CTOR
+    // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): Ego_r.pdb / FableWin.pdb
+    // ??0CDrawBase@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z,
+    // out of line at 0x0064CC65 (the inline CDrawNPCName ctor calls it: `push illustrators ; push gui ; call`). Declaration only.
+    CDrawBase(CPlayerGui& playerGui, std::vector<CDrawBase*>& illustrators);   // 0x0064CC65
+#endif
     ~CDrawBase();
     virtual void ClearPrimitives();
     virtual void ClearPrimitivesIfNecessary();

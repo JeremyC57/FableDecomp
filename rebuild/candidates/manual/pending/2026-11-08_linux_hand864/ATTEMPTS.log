@@ -1,0 +1,71 @@
+01:46:41	0047ed76	base	DIFFER(366v366)	md=2	bytes=3	0s	
+01:46:41	005253f0	base	DIFFER(2263v2263)	md=21	bytes=116	0s	
+01:46:41	0050a650	base	DIFFER(2233v2233)	md=6	bytes=4	0s	
+01:46:41	0065b142	base	DIFFER(386v386)	md=4	bytes=13	0s	
+01:46:42	006afe60	base	DIFFER(145v145)	md=2	bytes=6	0s	
+01:46:42	005e78f0	base	DIFFER(2340v2340)	md=4	bytes=11	0s	
+01:46:42	0085c7d0	base	DIFFER(332v332)	md=8	bytes=4	0s	
+01:46:43	009d8cf0	base	DIFFER(3385v3385)	md=12	bytes=6	0s	
+01:46:43	009d9c80	base	DIFFER(3451v3435)	md=17	bytes=799	0s	
+01:46:43	00a22e10	base	DIFFER(358v358)	md=2	bytes=7	0s	
+01:46:43	00a8b990	base	DIFFER(1608v1624)	md=317	bytes=1257	0s	
+01:46:44	00b92300	base	DIFFER(335v335)	md=4	bytes=16	0s	
+01:46:44	00c52bb0	base	DIFFER(140v140)	md=4	bytes=2	0s	
+01:46:44	00b5a3f0	base	DIFFER(2923v2916)	md=7	bytes=1942	0s	
+01:46:44	00cfe030	base	DIFFER(3575v3575)	md=8	bytes=4	0s	
+01:46:45	00d33730	base	DIFFER(3292v3292)	md=0	bytes=1 at 0xd33d4a	0s	
+01:46:45	00d3a4a0	base	DIFFER(1140v1140)	md=13	bytes=50	0s	
+01:46:45	00ddae40	base	DIFFER(1180v1180)	md=2	bytes=9	0s	
+01:46:45	00f36a30	base	DIFFER(361v361)	md=4	bytes=10	0s	
+01:46:46	00e76e90	base	DIFFER(1613v1612)	md=10	bytes=223	0s	
+01:53:41	0085c7d0	m1	DIFFER(332v332)	md=22	bytes=25	0s	shared CCountedPointer.h + AddSubComponent(*this,*CameraManager) as landed 0x008732D0
+01:54:05	0085c7d0	Ra	DIFFER(332v332)	md=8	bytes=4	0s	local models, leaf ctor by reference (*this,*CameraManager)
+01:54:06	0085c7d0	Rb	DIFFER(332v332)	md=22	bytes=25	0s	local models + shared CCountedPointer.h, pointer args
+01:54:06	0085c7d0	Rc	DIFFER(332v332)	md=22	bytes=25	0s	local models + shared CCountedPointer.h + reference args
+01:54:52	0085c7d0	V1	DIFFER(332v332)	md=22	bytes=30	0s	variant V1
+01:54:52	0085c7d0	VA	DIFFER(332v332)	md=8	bytes=4	0s	variant VA
+01:54:52	0085c7d0	VJ	DIFFER(320v332)	md=13	bytes=225	0s	variant VJ
+01:54:52	0085c7d0	VL	DIFFER(332v332)	md=8	bytes=4	0s	variant VL
+01:54:53	0085c7d0	V4	DIFFER(281v332)	md=32	bytes=263	0s	variant V4
+02:02:26	00c52bb0	D10	DIFFER(143v140)	md=13	bytes=97	0s	switch (Family-4) case 0/1/2 + Model<=3
+02:08:10	0050a650	it	DIFFER(2233v2233)	md=6	bytes=4	0s	last loop with a non-const iterator (no const_iterator conversion copy)
+02:10:28	0050a650	e5a	DIFFER(2233v2233)	md=6	bytes=4	0s	exits loop init/step spelling e5a
+02:10:29	0050a650	e5b	DIFFER(2233v2233)	md=6	bytes=4	0s	exits loop init/step spelling e5b
+02:10:30	0050a650	e5c	DIFFER(2233v2233)	md=6	bytes=4	0s	exits loop init/step spelling e5c
+02:11:54	005253f0	K2	DIFFER(2282v2263)	md=219	bytes=669	0s	text loop: const key copy of uid right after the conversion; map[key]
+02:13:11	005253f0	M1	DIFFER(2276v2263)	md=13	bytes=571	0s	FABLE_RETAIL_STLP_MAP visible operator[] body (mod/ref: key only read)
+02:13:12	005253f0	M2	DIFFER(2282v2263)	md=219	bytes=669	0s	STLP_MAP + text key copy
+02:14:43	005253f0	M3	DIFFER(2263v2263)	md=66	bytes=33	0s	STLP_MAP + GETASCHARARRAY_SELECT (preset-and-assign accessor)
+02:23:35	005253f0	E4	DIFFER(2276v2263)	md=13	bytes=571	0s	M1 + const uid
+02:23:48	005253f0	E7	DIFFER(2276v2263)	md=129	bytes=636	0s	M1 + explicit CCharString temporaries at the 2nd Replace
+02:23:49	005253f0	E8	DIFFER(2282v2263)	md=219	bytes=669	0s	M1 + binary-path style value/uid copy in the text loop
+02:27:42	0050a650	X1	DIFFER(2233v2233)	md=6	bytes=4	0s	exits loop guarded by !empty()
+02:27:43	0050a650	X7	DIFFER(2233v2233)	md=6	bytes=4	0s	exits loop as predeclared iterator + while
+02:35:47	00d3a4a0	N1	DIFFER(1145v1140)	md=14	bytes=788	0s	no seh_me local: element expression twice
+02:35:48	00d3a4a0	N6	DIFFER(1144v1140)	md=16	bytes=796	0s	vector held by reference, element twice
+02:38:21	0050a650	Y1	DIFFER(2233v2233)	md=6	bytes=4	0s	named CNavigationPosition local in the exits loop (kill theory)
+02:38:21	0050a650	Y2	DIFFER(2233v2233)	md=6	bytes=4	0s	named CNavigationPosition local in all six loops
+02:43:44	0050a650	W1	RELOCATION_MATCH	md=0	bytes=0	0s	visible noinline stand-in bodies for GetAllTCsInRoughArea/GetAllTCDsInRoughArea (vectors not exposed)
+02:45:42	00d3a4a0	N8	DIFFER(1140v1140)	md=13	bytes=50	0s	iterator local begin()+n, seh_me = *it
+02:45:42	00d3a4a0	N7	DIFFER(1140v1140)	md=13	bytes=50	0s	vector reference local + seh_me reference
+02:45:42	00d3a4a0	N9	DIFFER(1140v1140)	md=13	bytes=50	0s	index cast to unsigned long
+02:58:27	00b92300	Q2	DIFFER(348v335)	md=60	bytes=299	0s	mask computed before the handle test
+02:58:27	00b92300	Q1	SRC_FAIL	md=-1	bytes=-1	0s	DIAG index-first element spelling layer[GroupPrimitiveHandle]
+02:58:39	00b92300	Q1b	DIFFER(335v335)	md=4	bytes=16	0s	DIAG index-first element spelling ((unsigned long)layer)[GroupPrimitiveHandle]
+03:00:54	00d3a4a0	H1	DIFFER(1140v1140)	md=13	bytes=50	0s	DIAG element passed to a forceinline helper (IsValid/Release) instead of a named reference
+03:02:14	00d3a4a0	P2	DIFFER(1140v1140)	md=31	bytes=57	0s	pointer local with a second definition at the StartScriptingEntity argument
+03:02:14	00d3a4a0	P3	DIFFER(1140v1140)	md=13	bytes=50	0s	const reference local, Release through const_cast
+03:05:32	005253f0	M5	DIFFER(2276v2263)	md=124	bytes=775	0s	M1 + strstr(text,..) in the Replace loop
+03:05:32	005253f0	M4	DIFFER(2268v2263)	md=95	bytes=740	0s	M3 (STLP_MAP + GETASCHARARRAY_SELECT) + strstr(text,..) in the Replace loop
+03:06:19	00d33730	I1	RELOCATION_MATCH	md=0	bytes=0	0s	inline_depth(0) around the talk branch's first T-check return (owner 2026-11-08 inline control)
+03:08:06	00e76e90	fS2	DIFFER(1613v1612)	md=10	bytes=223	0s	DIAG per-row flag /d2inlS2
+03:08:06	00e76e90	fS6	DIFFER(1613v1612)	md=10	bytes=223	0s	DIAG per-row flag /d2inlS6
+03:08:06	00e76e90	fS12	DIFFER(1571v1612)	md=389	bytes=1103	0s	DIAG per-row flag /d2inlS12
+03:08:06	00e76e90	fT20	DIFFER(1548v1612)	md=462	bytes=1074	0s	DIAG per-row flag /d2inlT20
+03:08:07	00e76e90	fT80	DIFFER(1613v1612)	md=10	bytes=223	0s	DIAG per-row flag /d2inlT80
+03:08:07	00e76e90	fT40	DIFFER(1596v1612)	md=74	bytes=557	0s	DIAG per-row flag /d2inlT40
+03:08:07	00e76e90	ID2	DIFFER(1613v1612)	md=10	bytes=223	0s	inline_depth(2) round the function
+03:08:07	00e76e90	ID1	DIFFER(1478v1612)	md=400	bytes=904	0s	inline_depth(1) round the function
+03:08:08	00e76e90	ID4	DIFFER(1613v1612)	md=10	bytes=223	0s	inline_depth(4) round the function
+03:08:08	00e76e90	ID3	DIFFER(1613v1612)	md=10	bytes=223	0s	inline_depth(3) round the function
+03:14:24	0085c7d0	S0	DIFFER(332v332)	md=8	bytes=4	0s	start source with the callee respelled AddSubComponent (FableWin.pdb), differ candidate

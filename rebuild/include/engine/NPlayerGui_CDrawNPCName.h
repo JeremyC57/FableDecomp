@@ -10,6 +10,14 @@
 namespace NPlayerGui {
 class CDrawNPCName : public CDrawBase {
 public:
+#ifdef FABLE_RETAIL_NPLAYERGUI_CDRAWNPCNAME_CTOR
+    // Retail opt-in (chunk 863, row 0x0043B570 CPlayerGui::CPlayerGui): Ego_r.pdb / FableWin.pdb
+    // ??0CDrawNPCName@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z,
+    // inline in retail: the CPlayerGui ctor expands it (0x0043C32D..0x0043C340: CDrawBase ctor, vptr 0x01231770, CWideString() 0x0099AED0
+    // on Name +0x28, ScreenShotMessageCounter +0x2C = -1). Needs FABLE_RETAIL_NPLAYERGUI_CDRAWBASE_CTOR.
+    CDrawNPCName(CPlayerGui& playerGui, std::vector<CDrawBase*>& illustrators)
+        : CDrawBase(playerGui, illustrators), ScreenShotMessageCounter(-1) { }
+#endif
     void SetName(const CWideString& name);                               // 0x00657230
 protected:
     CWideString Name;                                                    // +0x28

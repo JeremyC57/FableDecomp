@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00d33730   WARN RELOC_NAME: ??0?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac2d0 labelled 'CUnprovenContainer_009ac2d0::CUnprovenContainer_009ac2d0'
+00d33730   WARN RELOC_NAME: ??1?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAE@XZ -> 009ac310 labelled 'CRetailTree_erase009aa830::~CRetailTree_erase009aa830'
+00d33730   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00d33730 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster::?Main@CTheRealGuildmaster@CQ_EndGameBossBattleScript@NScript@@EAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQEndGameBossBattleScriptCTheRealGuildmaster_Main_00d33730

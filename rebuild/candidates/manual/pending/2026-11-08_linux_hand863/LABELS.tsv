@@ -1,0 +1,9 @@
+address	name	evidence
+0x0043B570	CPlayerGui::CPlayerGui	Ego_r.pdb / FableWin.pdb ??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z; ret 14h; stores vtable 0x0123177C and builds the members ~CPlayerGui 0x0043A570 destroys
+0x00ECE7F0	NScript::CV_SickChildScript::CWitch::Main	entity vtable slot 1 (CWitch::Alloc); Ego_r.pdb / FableWin.pdb ?Main@CWitch@CV_SickChildScript@NScript@@EAEXXZ
+0x00ECBDF0	NScript::CV_SickChildScript::CTalkingTrader1::Main	slot 1 of the entity vtable CTalkingTrader1::Alloc 0x00ECBC80 stores; Ego_r.pdb / FableWin.pdb ?Main@CTalkingTrader1@CV_SickChildScript@NScript@@EAEXXZ; twin CTalkingTrader2::Main 0x00ECCAD0
+0x00DCFA60	NScript::CQ_OrchardFarmRaidScript::DoCutsceneIfRequired	spawned by CQ_OrchardFarmRaidScript::Main 0x00DCC770 under the literal "DoCutsceneIfRequired" (0x012DB1B8); Ego_r.pdb / FableWin.pdb ?DoCutsceneIfRequired@CQ_OrchardFarmRaidScript@NScript@@QAEXXZ
+0x00D11930	NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::Main	slot 1 of vtable 0x012C8B80 stored by CAssassinMarker::Alloc 0x00D048C0; Ego_r.pdb / FableWin.pdb ?Main@CAssassinMarker@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+0x00D45060	NScript::CQ_GuildTrainingScript::CheckFriendlyAttacks	spawned by CQ_GuildTrainingScript::Main 0x00D3BC60 under the literal "CheckFriendlyAttacks"; Ego_r.pdb / FableWin.pdb ?CheckFriendlyAttacks@CQ_GuildTrainingScript@NScript@@QAEXXZ
+0x007A1B20	CTCWillLightning::CLightningBeam::FrameUpdate	Ego_r.pdb / FableWin.pdb ?FrameUpdate@CLightningBeam@CTCWillLightning@@QAEXV?$CIntelligentPointer@VCThingCreatureBase@@@@PAK@Z; self-recursive over children (0x007A25BC)
+0x00A2F740	C3DMeshStats::InitialiseFromFileData	Ego_r.pdb / FableWin.pdb ?InitialiseFromFileData@C3DMeshStats@@QAE_NABVCCharString@@ABVC3DMeshFile@@_NPAVCMovableResourceMemoryPool@@@Z; calls the landed C3DMeshStats::PackNames 0x00A2EEF0 / AllocateBuffers 0x00A2E760

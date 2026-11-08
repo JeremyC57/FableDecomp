@@ -1,0 +1,10 @@
+addr       parity           behav  name
+0043b570   WARN RELOC_NAME: ?Reset@?$CCountedPointer@VCDrawHealth@NPlayerGui@@@@QAEXPAVCDrawHealth@NPlayerGui@@@Z -> 00444050 labelled '_global::CCountedPointer_Set_00444050'
+0043b570   WARN RELOC_NAME: ?Reset@?$CCountedPointer@VCDrawCombatMultiplier@NPlayerGui@@@@QAEXPAVCDrawCombatMultiplier@NPlayerGui@@@Z -> 00444130 labelled '_global::CCountedPointer_Set_00444130'
+0043b570   RELOCATION_MATCH PASS   CPlayerGui
+
+WINS: 1
+  0043b570 RELOCATION_MATCH CPlayerGui::??0CPlayerGui@@QAE@ABVCMainGameComponent@@AAVCWorld@@AAVCGamePlayerInterface@@AAVCPlayerManager@@ABVCGraphicDataBank@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CPlayerGui_CPlayerGui_0043b570

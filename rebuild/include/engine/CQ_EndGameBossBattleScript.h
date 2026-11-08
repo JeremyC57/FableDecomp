@@ -61,8 +61,30 @@ private:
     virtual void Main();                                                 // 0x00D328C0
 };
 #endif
+#ifdef FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CTHEREALGUILDMASTER
+// Retail opt-in (chunk 838): the nested entity script CTheRealGuildmaster (Ego_r.pdb, 0x1c: ParentClass +0x14, PMasterData +0x18,
+// struct_layouts_egor.tsv; Alloc 0x00D2FDC0 stores the vtable 0x012CC708). Methods: Ego_r.pdb ?Main@CTheRealGuildmaster@...@EAEXXZ
+// (private virtual, vtable slot 1, 0x00D33730), Init 0x00D2FE70 (slot 2), GetParentScript 0x00D2FE60 (slot 3), Alloc 0x00D2FDC0.
+class CQ_EndGameBossBattleScript::CTheRealGuildmaster : public CEntityScriptBase {
+public:
+    typedef CQ_EndGameBossBattleScript TParentClass;
+    CTheRealGuildmaster(CQ_EndGameBossBattleScript&, CScriptDataBase*, const CScriptThing&);
+    static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CQ_EndGameBossBattleScript&, CScriptDataBase*, const CScriptThing&); // 0x00D2FDC0
+    virtual CScriptBase* GetParentScript() const;                        // 0x00D2FE60
+    CQ_SunnyvaleMasterData* GetMasterData();
+protected:
+    CQ_EndGameBossBattleScript& ParentClass;                             // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;                                 // +0x18
+private:
+    virtual void Init();                                                 // 0x00D2FE70
+    virtual void Main();                                                 // 0x00D33730
+};
+#endif
 }
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameBossBattleScript) == 0x6c);
+#ifdef FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CTHEREALGUILDMASTER
+FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster) == 0x1c);
+#endif
 #ifdef FABLE_RETAIL_CQ_ENDGAMEBOSSBATTLESCRIPT_CENDGAMESISTER
 FABLE_STATIC_ASSERT(sizeof(NScript::CQ_EndGameBossBattleScript::CEndGameSister) == 0x1c);
 #endif
