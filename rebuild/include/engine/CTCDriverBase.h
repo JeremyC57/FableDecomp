@@ -6,6 +6,15 @@ class CTCDriverBase : public CTCBase {
 #ifdef FABLE_ONHIT_TEST_ACCESS
 public: CTCDriverBase(CThing&);
 #endif
+#ifdef FABLE_RETAIL_CTCDRIVERBASE_ISDRIVERTYPE
+    // Retail opt-in (chunk 864, row 0x0050A650 via the CThingSearchTools TCD rough-area body): the one virtual every driver adds
+    // after CTCBase's 28 slots (slot 28, +0x70). PDB name: `?IsDriverType@CTCD<X>@@UBE_NJ@Z` for every driver in
+    // ghidra_out/egor_pdb_names.tsv (CTCDRegionExit 0x00737480, CTCDNavigationSeed 0x004F1D73; J = long), so `bool (long) const`.
+    // Each driver compares the argument with its own driver type (retail CTCDRegionExit 0x00779940 `cmp ecx,19h ; sete al`,
+    // CTCDNavigationSeed 0x004D4222 `cmp [esp+4],15h ; sete al`); the rough-area TCD scans call it (0x00518900 `push 19h ; call [edx+70h]`).
+public:
+    virtual bool IsDriverType(long type) const;                          // slot 28 (+0x70)
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CTCDriverBase)==0xc);
 #endif

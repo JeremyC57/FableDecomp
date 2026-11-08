@@ -13,6 +13,12 @@ class CCharString;
 class CTCDRegionExit : public CTCDriverBase {
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_REGION_EXIT; }
+#ifdef FABLE_RETAIL_CTCD_STATGETDRIVERTYPE
+    // Retail opt-in (chunk 864, row 0x0050A650): the driver type this class registers with (CTCBase::StatGetDriverType 0x006869C0 is
+    // the non-driver default 0; drivers hide it): 25, the value its slot-28 virtual 0x00779940 compares with (`cmp ecx,19h`) and the
+    // rough-area TCD scan 0x00518900 pushes (`push 19h`). The static itself is inlined everywhere in retail.
+    static unsigned long __fastcall StatGetDriverType() { return 25; }
+#endif
     // ?GetNameOfRegionConnectingTo@CTCDRegionExit@@QBEABVCCharString@@XZ: two byte-identical retail copies, 0x007791F0 and
     // 0x007792D0 (both landed under this name); the row calls 0x007792D0.
     const CCharString& GetNameOfRegionConnectingTo() const;

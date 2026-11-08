@@ -97,6 +97,16 @@ protected:
 private:
     unsigned char InitialisationStage : 3;
 public:
+#ifdef FABLE_RETAIL_CTHING_TCDRIVER
+    // Retail opt-in (chunk 864, row 0x0050A650 via the CThingSearchTools TCD rough-area body; kept outside the FABLE_RETAIL_CTHING
+    // method block so the body opt-in does not need it): FableWin.pdb
+    // ?HasTCDriver@CThing@@QBE_NXZ (0x01CCC3F0), ?GetTCDriver@CThing@@QAEAAVCTCDriverBase@@XZ (0x01CCC420) and
+    // ?GetTCDriver@CThing@@QBEABVCTCDriverBase@@XZ (0x01CF9F90): the PTCDriver (+0x5C) null test and the driver reference,
+    // inline in retail (0x00518A54 `mov ecx,[edi+5Ch] ; test ecx,ecx` then the slot-28 virtual on it). No layout change.
+    bool HasTCDriver() const { return PTCDriver!=0; }
+    CTCDriverBase& GetTCDriver() { return *PTCDriver; }
+    const CTCDriverBase& GetTCDriver() const { return *PTCDriver; }
+#endif
 #ifdef FABLE_RETAIL_CTHING_LOADSINGLE
     // Retail opt-in (chunk 846, row 0x0051FD80 CThingManager::LoadSingleThing): the CThing virtuals of vtable 0x01239ABC slots 3..16 in
     // retail slot order (catalog / rtti-vtables: 3 SerialiseGameState 0x004CD1A0, 4 ConstructFromLevelScript 0x004CAA00, 8 OnCreate

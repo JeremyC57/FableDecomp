@@ -10,7 +10,7 @@ namespace NThingMap { class CThingMap;class CThingMapManager; }
 class CThingSearchTools {
 protected:
     const std::list<CClass*>& PeekTypeList(long)const;
-#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY)
+#if defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_CLIPAREA) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY) || defined(FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY)
     // Chunk 756 (row 0x0049C700): Ego_r.pdb ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z
     // (protected const, out of line in retail at 0x0049C700).
     C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(const NThingMap::CThingMap& map,const C2DBoxI& area)const;
@@ -134,6 +134,109 @@ public:
     // QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@...@@AAVCThingFindNavigationLayerAt@@@Z and the CFilter_Bind3<CThingFilter_IsNot, ...> twin
     // (out of line in retail: 0x0063F4B0 the Bind2, 0x0063F7C0 the Bind3 instantiation). Declaration only: no layout change.
     template<class T,class Filter,class Proc> bool ForEachInRoughArea(const C2DBoxI& area,const Filter& filter,Proc& proc) const;
+#endif
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA
+    // Nested opt-in (chunk 853, row 0x0050A650 CWorldMap::GetMapNavigationAreaInit): Ego_r.pdb ??$GetAllTCsInRoughArea@VCTCCreatureGenerator@@
+    // VCThingFilter_IsInQuestOrNullQuest@@V?$vector@PBVCTCCreatureGenerator@@...@std@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV..@AAV..@Z and
+    // ??$GetAllTCDsInRoughArea@VCTCDNavigationSeed@@ / @VCTCDRegionExit@@ (template order T, Filter, Container), out of line in retail
+    // (0x00518340, 0x005185F0 / 0x00518900). Declarations only: no layout change.
+#ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY
+    // Nested opt-in (chunk 864, row 0x0050A650 CWorldMap::GetMapNavigationAreaInit): the GetAllTCsInRoughArea / GetAllTCDsInRoughArea
+    // bodies, retail's own algorithm as the landed instances show it (0x005185F0 / 0x00518900 GetAllTCDsInRoughArea<CTCDNavigationSeed /
+    // CTCDRegionExit>, and 0x00518340 GetAllTCsInRoughArea<CTCCreatureGenerator>, all out of line in retail): the same rough-area cell
+    // walk as GetAllThingsInRoughArea above (maps under the area 0x0049C6F0, the search stamp bump, the local area 0x0049C700, per
+    // mapwho layer the area scaled by the layer's shift, every cell's node list, each component stamped once per search), then per
+    // thing: the TC scan takes the component of type T (CThing::GetTC<T>: the interface bit 0x00518 4A5 `test [edi+24h],20000000h`,
+    // then Components.Find) and pushes the component through the filter; the TCD scan tests `HasTCDriver()` (PTCDriver +0x5C), asks `GetTCDriver()`'s
+    // driver's slot-28 virtual for T's driver type (`push 19h ; call [edx+70h]`) and pushes the thing through the filter. Same-TU
+    // noinline bodies like GetAllLeafThings above (retail compiles them out of line next to the caller): the caller then knows its
+    // result vectors are not captured, so c2 keeps each vector's _M_start web as one promoted local that the allocator splits and
+    // the frees reload into eax as retail (with declarations only the vectors are address-exposed and the last free's reload
+    // coalesces with the loop iterator: the 0x0050A650 residue). Needs engine/CTCMapwho.h (FABLE_RETAIL_CTCMAPWHO +
+    // FABLE_RETAIL_CTCMAPWHO_SEARCHID), engine/NThingMap_CThingMap.h, FABLE_RETAIL_CTHING_TCDRIVER (engine/CThing.h: HasTCDriver / GetTCDriver),
+    // FABLE_RETAIL_CTCDRIVERBASE_ISDRIVERTYPE and the TCD classes' FABLE_RETAIL_CTCD_STATGETDRIVERTYPE at the point of instantiation.
+    template<class T,class Filter,class Container> __declspec(noinline) void GetAllTCsInRoughArea(const C2DBoxI& area,const Filter& filter,Container& result) const {
+        std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
+        GetAllThingMapsInArea(area,maps);
+        ++SearchCount_013b89a8;
+        SearchWork_013b89ac=0;
+        ++SearchID_013b89b0;
+        for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=maps.end();++it) {
+            const NThingMap::CThingMap& map=**it;
+            C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
+            for(long layer=0;layer<NThingMap::g_NoMapwhoLevels;++layer) {
+                long shift=LayerInfo_0137dad8[layer].ScaleShift;
+                C2DBoxI cells;
+                cells.TLX=local.TLX>>shift;
+                cells.TLY=local.TLY>>shift;
+                cells.BRX=((local.BRX-1)>>shift)+1;
+                cells.BRY=((local.BRY-1)>>shift)+1;
+                if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
+                    continue;
+                for(long y=cells.TLY;y<cells.BRY;++y) {
+                    const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+                    for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
+                        for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
+                            CTCMapwho* who=node->PMapwho;
+                            if(who->GetSearchID()<SearchID_013b89b0) {
+                                who->SetSearchID(SearchID_013b89b0);
+                                CThing& thing=who->GetParentThing();
+                                T* tc=0;
+                                if(thing.GetTC(&tc) && filter(thing))
+                                    result.push_back(tc);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        maps.clear();
+    }
+    template<class T,class Filter,class Container> __declspec(noinline) void GetAllTCDsInRoughArea(const C2DBoxI& area,const Filter& filter,Container& result) const {
+        std::vector<NThingMap::CThingMap*>& maps=const_cast<std::vector<NThingMap::CThingMap*>&>(AreaMaps);
+        GetAllThingMapsInArea(area,maps);
+        ++SearchCount_013b89a8;
+        SearchWork_013b89ac=0;
+        ++SearchID_013b89b0;
+        for(std::vector<NThingMap::CThingMap*>::iterator it=maps.begin();it!=maps.end();++it) {
+            const NThingMap::CThingMap& map=**it;
+            C2DBoxI local=ClipAndConvertWorldMapAreaToLocalArea(map,area);
+            for(long layer=0;layer<NThingMap::g_NoMapwhoLevels;++layer) {
+                long shift=LayerInfo_0137dad8[layer].ScaleShift;
+                C2DBoxI cells;
+                cells.TLX=local.TLX>>shift;
+                cells.TLY=local.TLY>>shift;
+                cells.BRX=((local.BRX-1)>>shift)+1;
+                cells.BRY=((local.BRY-1)>>shift)+1;
+                if(cells.BRX-cells.TLX==0 || cells.BRY-cells.TLY==0)
+                    continue;
+                for(long y=cells.TLY;y<cells.BRY;++y) {
+                    const NThingMap::CThingMapCell* cell=&map.Cells[layer][y*map.MapwhoLevelInfo[layer].Extents.X+cells.TLX];
+                    for(long x=cells.TLX;x<cells.BRX;++x,++cell) {
+                        for(NThingMap::CMapwhoNode* node=cell->PFirstNode;node;node=node->PNext) {
+                            CTCMapwho* who=node->PMapwho;
+                            if(who->GetSearchID()<SearchID_013b89b0) {
+                                who->SetSearchID(SearchID_013b89b0);
+                                CThing& thing=who->GetParentThing();
+                                if(thing.HasTCDriver() && thing.GetTCDriver().IsDriverType(T::StatGetDriverType()) && filter(thing))
+                                    result.push_back(&thing);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        maps.clear();
+    }
+#ifndef FABLE_RETAIL_CTHINGSEARCHTOOLS_ROUGHAREABODY
+protected:
+    void GetAllThingMapsInArea(const C2DBoxI& area,std::vector<NThingMap::CThingMap*>& maps) const;   // 0x0049C6F0 (Ego_r.pdb, protected const)
+public:
+#endif
+#else
+    template<class T,class Filter,class Container> void GetAllTCsInRoughArea(const C2DBoxI&,const Filter&,Container&) const;
+    template<class T,class Filter,class Container> void GetAllTCDsInRoughArea(const C2DBoxI&,const Filter&,Container&) const;
+#endif
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingSearchTools)==0x18);

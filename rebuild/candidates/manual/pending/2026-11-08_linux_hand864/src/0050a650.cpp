@@ -1,6 +1,6 @@
 // CWorldMap::GetMapNavigationAreaInit(long, const C2DBoxI*, const CCharString&, CNavigationAreaInit&) -- collect detailed areas and navigation seeds.
-// Grade: RELOCATION_MATCH (chunk 864, 14 grades after chunk 856's 100): the region_exits free reloaded _M_start into ebx because the vector was address-exposed (GetAllTCDsInRoughArea declared only) and c2 then coalesced the dtor reload with the loop iterator (c2prio: candidate #37 `local 235,239` took ebx through a -1 copy preference to exit_it); with same-TU noinline bodies for GetAllTCsInRoughArea / GetAllTCDsInRoughArea (FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY) the vectors are not exposed, their _M_start webs are promoted locals split by the allocator and the free reload takes eax as retail
-// Probe: c2prio diagnostics Dg/Dh showed that only a call receiving an exposed local's address kills an exposed vector's web (the loop body calls do not), so no in-loop spelling could split the web; the exposure itself was the lever (VC71_CODEGEN_RESEARCH 2.4)
+// Grade: RELOCATION_MATCH (chunk 864, 18 grades after chunk 856's 100): the region_exits free reloaded _M_start into ebx because the vector was address-exposed (GetAllTCDsInRoughArea declared only) and c2 then coalesced the dtor reload with the loop iterator (c2prio: candidate #37 `local 235,239` took ebx through a -1 copy preference to exit_it); with retail's own GetAllTCsInRoughArea / GetAllTCDsInRoughArea template bodies visible in this TU (FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY, the rough-area cell walk of landed 0x005185F0 / 0x00518900 as the PDB templates <T, Filter, Container>) the vectors are not exposed, their _M_start webs are promoted locals split by the allocator and the free reload takes eax as retail
+// Probe: c2prio diagnostics Dg/Dh showed that only a call receiving an exposed local's address kills an exposed vector's web (the loop body calls do not), so no in-loop spelling could split the web; the exposure itself was the lever (VC71_CODEGEN_RESEARCH 2.4). Body opt-ins: CTCMAPWHO + CTCMAPWHO_SEARCHID (stamp), CTHING_TCDRIVER (HasTCDriver / GetTCDriver), CTCDRIVERBASE_ISDRIVERTYPE (slot 28), CTCD_STATGETDRIVERTYPE (25 / 21). The three instances this TU emits are COMDATs (748 / 748 / 778 bytes against retail's 597 / 597 / 683 at 0x005185F0 / 0x00518900 / 0x00518340): the same algorithm, not byte-verified here (no retail bytes for those addresses in this lane); the landed rows' own TUs define those addresses.
 // Leaf: ?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0050A650, 2233 bytes, thiscall, `ret 10h`, frame 0x7c. Leaf from Ego_r.pdb (0x004DF950) and FableWin.pdb
 //   (0x01C905D0): protected const (IBE). Retry of chunk 850's SRC_FAIL; body = the Codex pass-13 attempt-8 body (pending/2026-11-02_codex_pass13).
@@ -42,6 +42,11 @@
 #define FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS_TCSINROUGHAREA_BODY
+#define FABLE_RETAIL_CTCMAPWHO
+#define FABLE_RETAIL_CTCMAPWHO_SEARCHID
+#define FABLE_RETAIL_CTHING_TCDRIVER
+#define FABLE_RETAIL_CTCDRIVERBASE_ISDRIVERTYPE
+#define FABLE_RETAIL_CTCD_STATGETDRIVERTYPE
 #define FABLE_RETAIL_CTHINGSEARCHTOOLS_LEAFBODY
 #define FABLE_RETAIL_CTHINGOBJECT_STATGETTYPE
 #define FABLE_RETAIL_CTHINGVILLAGE_STATGETTYPE
@@ -58,6 +63,11 @@
 #include "engine/CThingObject.h"
 #include "engine/CThingVillage.h"
 #include "engine/CThingAICreature.h"
+class CTCMapwho;
+#include "engine/CTCMapwho.h"
+#include "engine/NThingMap_CThingMap.h"
+#include "engine/CTCDRegionExit.h"
+#include "engine/CTCDNavigationSeed.h"
 #include "engine/CThingSearchTools.h"
 
 
@@ -169,7 +179,6 @@ public:
     virtual bool UseHighDetailQuadTree() const;   // slot 57 (Ego_r ?UseHighDetailQuadTree@CThingObject@@UBE_NXZ / CThingBuilding)
 };
 class CThingBuilding; class CThingObject; class CThingVillage; class CThingAICreature;
-class CTCDNavigationSeed; class CTCDRegionExit;
 void CWorldMap::GetMapNavigationAreaInit(long map_no,const C2DBoxI* pworld_box,const CCharString& section_name,CNavigationAreaInit& area_init) const
 {
     C2DBoxI box;

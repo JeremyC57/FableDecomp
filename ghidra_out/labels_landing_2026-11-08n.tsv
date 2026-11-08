@@ -1,0 +1,3 @@
+address	name	evidence
+0x0050A650	CWorldMap::GetMapNavigationAreaInit	chunk 864: ?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z in Ego_r.pdb and FableWin.pdb
+0x00518340	CThingSearchTools::GetAllTCsInRoughArea<CTCCreatureGenerator,CThingFilter_IsInQuestOrNullQuest,std::vector<CTCCreatureGenerator const *,std::allocator<CTCCreatureGenerator const *> > >	chunk 864: Ego_r.pdb ??$GetAllTCsInRoughArea@VCTCCreatureGenerator@@VCThingFilter_IsInQuestOrNullQuest@@V?$vector@PBVCTCCreatureGenerator@@...@CThingSearchTools@@QBEXABVC2DBoxI@@ABV..@AAV..@Z; called by the landed 0x0050A650 for the creature generators

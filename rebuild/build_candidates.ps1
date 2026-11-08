@@ -385581,6 +385581,13 @@ $catalog = @(
         TestSource = '00/43/CPlayerGui_CPlayerGui_0043b570_test.cpp'
         PassPattern = '0043b570_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0050a650'
+        Module = 'CWorldMap'
+        Source = '00/50/CWorldMap_GetMapNavigationAreaInit_0050a650.cpp'
+        TestSource = '00/50/CWorldMap_GetMapNavigationAreaInit_0050a650_test.cpp'
+        PassPattern = '0050a650_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

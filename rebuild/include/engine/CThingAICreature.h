@@ -26,6 +26,11 @@ class CThingAICreature : public CThingCreatureBase {
 public:
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingAICreature@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();
+#ifdef FABLE_RETAIL_CTHINGAICREATURE_STATGETTYPE
+    // Nested opt-in (chunk 853, row 0x0050A650): FableWin.pdb ?StatGetType@CThingAICreature@@SIJXZ (inline); retail
+    // GetAllLeafThings<CThingAICreature> 0x00516830 scans type list 1 (`push 1 ; call PeekTypeList`). No layout change.
+    static long __fastcall StatGetType() { return 1; }
+#endif
     // chunk 719 (row 0x004FF750): Ego_r.pdb ?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z (retail
     // 0x00833800), ?AutoSetupSexuality@CThingAICreature@@QAEXM@Z (0x008330D0) and FableWin's inline
     // ?SetAsAllowedToFollowHero@CThingAICreature@@QAEX_N@Z (emitted beside the CWorldMap TU's statics in FableWin; retail expands it:

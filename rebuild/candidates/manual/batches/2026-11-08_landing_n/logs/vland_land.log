@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0050a650   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z -> 005163b0 labelled 'CThingSearchTools::GetAllLeafThings<CThingBuilding, std::list<CThingPhysical const *, std::allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>'
+0050a650   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingObject@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z -> 00516530 labelled 'CThingSearchTools::GetAllLeafThings<CThingObject, std::list<CThingPhysical const *, std::allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>'
+0050a650   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingVillage@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z -> 005166b0 labelled 'CThingSearchTools::GetAllLeafThings<CThingVillage, std::list<CThingPhysical const *, std::allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>'
+0050a650   RELOCATION_MATCH PASS   GetMapNavigationAreaInit
+
+WINS: 1
+  0050a650 RELOCATION_MATCH CWorldMap::?GetMapNavigationAreaInit@CWorldMap@@IBEXJPBVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaInit@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_GetMapNavigationAreaInit_0050a650

@@ -26,3 +26,5 @@
 - (chunk 864, probe hygiene) In a trace, an inlined accessor's local can carry the same name as the caller's (`text`): rename it in a
   diagnostic overlay before attributing priorities. odis.py from/to are absolute addresses.
 - (chunk 864, lane) P.sh must not `rm -rf` the shared c2runs dir at exit: it kills a concurrent agent's probe run.
+- (chunk 864, 0x0050A650 redo) **A shared-header opt-in body must be retail's algorithm, never a stand-in**: a same-TU template body changes only mod/ref for the caller, but the TU also emits the instances as COMDATs, so a stand-in would ship non-retail code; translate the landed instance rows (0x005185F0 / 0x00518900) into the real `<T, Filter, Container>` templates instead -- the caller's bytes are the same either way (2233 / 2233).
+- (chunk 864) A helper declared behind one opt-in guard (`ClipAndConvertWorldMapAreaToLocalArea` under CLIPAREA / ROUGHAREABODY) must have every body opt-in that uses it added to the guard, or the body opt-in SRC_FAILs with C3861 from inside the header; reading the guard beats guessing the define name (two wasted grades).

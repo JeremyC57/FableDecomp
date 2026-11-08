@@ -1,0 +1,2 @@
+address	grade	test	note
+0x0050A650	RELOCATION_MATCH	PASS	shared-header GetAllTCs / GetAllTCDsInRoughArea templates written from retail logic (same-TU noinline bodies)
