@@ -22,3 +22,10 @@ Every change is behind a new FABLE_RETAIL_* opt-in; the default path of each hea
 Note: rebuild/include/fable_string.h changed in the repo during this session; when resuming, re-copy fable_string.h and
 stlport/fable_string.h (and re-apply the FABLE_RETAIL_STLP_LIST_REVERSE block to a fresh stlport/fable_containers.h) so the
 overlay does not shadow newer repo text.
+
+Session 3: no header change. The row source no longer defines FABLE_RETAIL_CDELETION (repo header
+rebuild/include/engine/NUISystem_CDeletion.h, default path used): CDeletion's default and copy constructors must stay IMPLICIT for
+this row (retail 0x0042BED4 / 0x0042CD84 are the compiler-generated members; a user declaration makes every `CDeletion` local
+address-exposed and c2 then refuses to share their frame slot above its 10000-tuple limit). The opt-in's comment ("out of line
+in retail") is true of the bytes but the spelling is only safe in functions under that limit -- worth a note for its 3 landed
+users (0x005729D8, 0x00573792, 0x005AF64E), which are small and unaffected.

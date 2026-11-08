@@ -33,3 +33,27 @@ Session 2 (2026-11-08):
   pushed and the caller copies it out (movsd x3 + movsw for 14 bytes).
 - An inline bool getter (`CAction::IsValid()`) compiles to `mov al,[eax+0Ch]; test al,al`; the same member tested directly is
   `cmp byte ptr [eax+0Ch],0`.
+Session 3 (2026-11-08) -- corrects the session-2 packing lesson above:
+- VC7.1 c2 (13.10.3077) turns its global optimizer OFF for a function whose IL exceeds 10000 tuples (count at 0x1077bdd8,
+  `cmp [esp+0Ch],2710h` at 0x1077be49; sets 0x10882b98). That is the "360 vs 380 cases" threshold. Above it ("regime 1") c2
+  still packs frame slots, but only for TRACKED symbols: scalars, and objects whose address never reaches an external call.
+  An object passed to an out-of-line, user-declared (external) ctor / copy ctor / by-ref param is address-exposed and gets its
+  own slot. Retail's 35 KB Action is regime 1 (cutting it under 10000 tuples changes the codegen: CSE, merged tails, 70% vs 94%).
+- The fix was the CLASS, not the source size: CDeletion's default and copy ctors are COMPILER-GENERATED in retail (0x42BED4 /
+  0x42CD84 are the implicit members, emitted as same-TU COMDATs and called out of line). Declaring them as user-declared
+  externals (the FABLE_RETAIL_CDELETION opt-in) gives the same call bytes but makes every `CDeletion deletion` address-exposed
+  -> 27 slots and frame 0x8DC. Leaving them implicit -> c2 tracks the objects, packs them all at retail's [ebp-248h] and
+  cross-jumps the shared `SetDeletion(copy)/~list` tail like retail (frame 0x804 v 0x800). Probe: probe/s4/gv.py HDR=impl
+  (450-case regime-1 switch: implicit = 1 slot; user-declared, same-TU-defined, force-inlined helper, by-ref param = 450 slots).
+  RULE: when retail calls a ctor/copy-ctor/dtor that the PDB lists but that is the compiler's implicit member, keep it implicit;
+  never model it with a user declaration "because it is out of line".
+- Regime-1 frame order: unpacked locals are laid out by reference density (refs / size) ascending from the bottom of the frame
+  (rarely used big temporaries deepest, the dense shared scalar slots and the dead-parameter home [ebp+7Ch] nearest ebp);
+  equal-density symbols come out in a scrambled (sort-unstable) order, so the exact slot order needs the exact symbol set.
+- Measure c2 internals with probe/c2/nl.sh (tuple count, packing, frame) before spending a grade; probe/c2/work/regime.py
+  scores any obj against retail (loose/strict) to tell which optimizer regime retail was built in.
+- Exposure is about the callee's KIND, not out-of-line-ness: retail keeps ADD_CHILD's list iterator in the dead parameter
+  home [ebp+7Ch] while passing `&it` to the out-of-line (not expanded) postfix `--` 0x42899B -- an inline (header-defined)
+  callee does not expose; a user-declared external or a non-inline same-TU function does.
+- /d2inlS is not monotonic here: S10/S13/S15 inline slightly more than the default S14 and S16 much more; none reproduces
+  retail's late out-of-line begin() calls in a 35 KB caller.

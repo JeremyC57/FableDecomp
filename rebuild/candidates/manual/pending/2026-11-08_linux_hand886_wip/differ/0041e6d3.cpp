@@ -1,6 +1,8 @@
 // NUISystem::CManager::Action(CCountedPointer<NUISystem::CAction>&) -- runs one UI action (the big action dispatcher)
-// Residue: DIFFER(35762v35651), loose per-case 93.5%; every case written; frame 0x8DC vs retail 0x800 because VC7.1 frame-slot
-// packing of object locals is off in ours (too many frame symbols; WORKLOG.md Session 2), then begin 0x429A85 called late, ?: arms.
+// Grade: DIFFER(35224v35651) -- loose per-case 93.9%; every case written; frame 0x804 vs retail 0x800 (every CDeletion now at
+// retail's [ebp-248h]); the unpacked frame slots come out in a different order (ties of c2's density sort); retail calls
+// begin 0x429A85 (x16, cases 2005+), postfix -- 0x42899B (ADD_CHILD) and the CTCInventory setters out of line where ours
+// inlines (/d2inlS10..16 do not reproduce it); block placement of GetTC(0x6F); entry registers swapped. WORKLOG.md Session 3.
 // Leaf: ?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
 // Flags: /GS
 #pragma optimize("s", on)
@@ -21,7 +23,6 @@
 #define FABLE_RETAIL_CPLAYERMANAGER
 #define FABLE_RETAIL_PLAYER
 #define FABLE_RETAIL_CINTELLIGENTPOINTER
-#define FABLE_RETAIL_CDELETION
 #define FABLE_RETAIL_CACTIONPARAMULONG
 #define FABLE_RETAIL_CACTIONPARAMSLONG
 #define FABLE_RETAIL_CACTIONPARAMFLOAT
@@ -2522,7 +2523,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 deletion.Method = CDeletion::UI_DELETE_THIS_INSTANCE;
                 description->SetDeletion(deletion);
             }
-            CComponent* title = parent->FindChild(PInventoryTrade->InventoryTradeOpen ? "PC_SUBTITLE_INDEPENDANT" : "UI_TEXT_TRADE_NAME_TEMPLATE_NEW");
+            CComponent* title;
+            if (PInventoryTrade->InventoryTradeOpen)
+                title = parent->FindChild("PC_SUBTITLE_INDEPENDANT");
+            else
+                title = parent->FindChild("UI_TEXT_TRADE_NAME_TEMPLATE_NEW");
             if (title) {
                 CDeletion deletion;
                 deletion.Method = CDeletion::UI_DELETE_THIS_INSTANCE;
@@ -2619,7 +2624,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 deletion.Method = CDeletion::UI_DELETE_THIS_INSTANCE;
                 description->SetDeletion(deletion);
             }
-            CComponent* title = parent->FindChild(PInventoryTrade->InventoryTradeOpen ? "PC_SUBTITLE_INDEPENDANT" : "UI_TEXT_TRADE_NAME_TEMPLATE_NEW");
+            CComponent* title;
+            if (PInventoryTrade->InventoryTradeOpen)
+                title = parent->FindChild("PC_SUBTITLE_INDEPENDANT");
+            else
+                title = parent->FindChild("UI_TEXT_TRADE_NAME_TEMPLATE_NEW");
             if (title) {
                 CDeletion deletion;
                 deletion.Method = CDeletion::UI_DELETE_THIS_INSTANCE;
@@ -2714,7 +2723,11 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 deletion.Method = CDeletion::UI_DELETE_THIS_INSTANCE;
                 description->SetDeletion(deletion);
             }
-            CComponent* title = parent->FindChild(PInventoryTrade->InventoryTradeOpen ? "PC_SUBTITLE_INDEPENDANT" : "UI_TEXT_TRADE_NAME_TEMPLATE_NEW");
+            CComponent* title;
+            if (PInventoryTrade->InventoryTradeOpen)
+                title = parent->FindChild("PC_SUBTITLE_INDEPENDANT");
+            else
+                title = parent->FindChild("UI_TEXT_TRADE_NAME_TEMPLATE_NEW");
             if (title) {
                 CDeletion deletion;
                 deletion.Method = CDeletion::UI_DELETE_THIS_INSTANCE;

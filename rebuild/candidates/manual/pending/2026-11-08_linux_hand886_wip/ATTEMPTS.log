@@ -18,3 +18,5 @@ v9   DIFFER    36635v35651 /GS  (session 2: all 213 cases written: 2000-2023 + 3
 v10  DIFFER    35964v35651 /GS  (drop optimize("y",off): biased lea ebp,[esp-74h] frame now; frame 0x904 vs 0x800)
 v11  DIFFER    35760v35651 /GS  (CEngineGraphic PDB ctors -> non-POD: hidden ptr in ecx, temporaries read in place; GetPerItemDataForItem respell)
 v12  DIFFER    35762v35651 /GS  (CAction::IsValid overlay opt-in -> mov al/test al at entry; game loaded before null test; frame 0x8dc)
+v13  DIFFER    35221v35651 /GS  (session 3: drop FABLE_RETAIL_CDELETION -> CDeletion ctor/copy-ctor IMPLICIT (same-TU COMDATs, as retail): c2 then tracks the deletions in regime 1 and packs them at [ebp-248h] like retail; frame 0x804 v 0x800; tails now cross-jump; loose 93.8%)
+v14  DIFFER    35224v35651 /GS  (FindChild(c ? "PC_SUBTITLE_INDEPENDANT" : "UI_TEXT_...") -> if/else with a call per arm (GOTCHAS 762): retail's push per arm reproduced in 2019/2021/2023; loose 93.9%)
