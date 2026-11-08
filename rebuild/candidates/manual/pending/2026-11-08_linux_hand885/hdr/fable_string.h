@@ -1,4 +1,5 @@
 #pragma once
+#include "fable_compiler.h"
 
 #include <stddef.h>
 
@@ -63,7 +64,7 @@ public:
 #else
 #ifdef FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQ
     // (chunk 795 opt-in, see CCharString::operator== below)
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     bool operator==(const CBasicString& other) const { if(StringLength!=other.StringLength)return false; return !Compare(PData,other.PData); }
 #endif
@@ -160,7 +161,7 @@ public:
     // Per-TU inline opt-in (chunk 784, row 0x00491AD2; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ): the size-optimised
     // CSubtitleRenderer TU expands both operator== bodies in place (0x00491CF6..0x00491D1B, 0x0049227C..0x004922A7) where the plain
     // inline operators are called out of line.
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     bool operator==(const CWideString& other) const            // inline in retail (FableWin ??8CWideString@@QBE_NABV0@@Z)
     {
@@ -173,7 +174,7 @@ public:
     // Retail opt-in (chunk 784, row 0x00491AD2): FableWin.pdb ??8CWideString@@QBE_NPBG@Z, inline in retail (0x0049227C..0x004922A7:
     // a null string compares the literal with "" through wcscmp 0x00BFE94C, else the STLport text operator== 0x00404280).
 #ifdef FABLE_RETAIL_CWIDESTRING_FORCEINLINE_EQ
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     bool operator==(const wchar_t* text) const { if(!PStringData) { if(wcscmp(text,L"")==0) return true; return false; } return *PStringData==text; }
 #endif
@@ -245,7 +246,7 @@ public:
     // Per-TU inline opt-in (chunk 779, row 0x00837E40 CThingTrackNode::ConstructFromLevelScript; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ):
     // that TU expands all four EqualsCaseInsensitive uses in place (0x00838195..0x008381C9: both GetAsCharArray ternaries, `call _stricmp`,
     // `neg ; sbb ; inc`) where the plain inline body is called out of line once the eight inlined key compares have used the budget.
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     bool EqualsCaseInsensitive(const CCharString& other) const { return _stricmp(GetAsCharArray(), other.GetAsCharArray()) == 0; }
 #ifdef FABLE_RETAIL_CCHARSTRING_LESS_INLINE
@@ -264,13 +265,13 @@ public:
 #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
     // (same opt-in) retail expands CCharString::operator== in place around the CBasicString call even in the size-optimised
     // CTCVillage TU (0x0065B956..0x0065B97A), where plain inline is called out of line.
-    __forceinline
+    FABLE_FORCEINLINE
 #elif defined(FABLE_RETAIL_CCHARSTRING_FORCEINLINE_EQ)
     // Per-TU inline opt-in (chunk 795, row 0x005E78F0 CTCQuestCompletionUI::GlobalUpdate; like FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ):
     // that TU expands CCharString::operator==(const CCharString&) and the CBasicString<char> length-then-Compare body in place
     // (0x005E7CC2..0x005E7CF7: data pointers equal, either null, StringLength +4, `call Compare 0x00411570 ; neg ; sbb ; inc`)
     // where the plain inline body is called out of line once the function's inline budget is spent.
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     bool operator==(const CCharString& other) const {
         if(PStringData==other.PStringData)return true;
@@ -317,7 +318,7 @@ public:
     // Retail opt-in (chunk 784, row 0x00491AD2): Ego_r.pdb ?StartsWith@CCharString@@QBE_NABV1@@Z, inline in retail (0x004920BE..0x004920F6:
     // the prefix's data / length from one null test, strncmp 0x00BFEAF8 on this string's GetAsCharArray, `neg ; sbb ; inc`).
     // __forceinline: the size-optimised CSubtitleRenderer TU expands it in place where a plain inline body is called out of line.
-    __forceinline bool StartsWith(const CCharString& prefix) const { return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
+    FABLE_FORCEINLINE bool StartsWith(const CCharString& prefix) const { return strncmp(GetAsCharArray(),prefix.GetAsCharArray(),prefix.GetLength())==0; }
 #endif
     // Ego_r 0x004037B0 / FableWin 0x0186C770 ?GetAsCharArray@CCharString@@QBEPBDXZ and FableWin 0x01899D30
     // ??8CCharString@@QBE_NPBD@Z, both inline in retail (0x00AE8D50 expands GetAsCharArray: `test; jne; mov eax,offset NullChar; jmp; mov eax,[eax]`;
@@ -335,12 +336,12 @@ public:
     // Retail opt-in (chunk 788, row 0x00E693F0 NScript::CV_ChapelOfEvilScript::Main): FableWin.pdb ?Contains@CCharString@@QBE_NABV1@@Z
     // (FableWin 0x018D7370; no Ego_r out-of-line copy is bound), inline in retail: 0x00E695B8..0x00E695E8 takes the pattern's text from one null test
     // (`mov ecx,offset NullChar`), then this string's, and tests strstr 0x00BFEB3A != 0 (`setne`).
-    __forceinline bool Contains(const CCharString& other) const { return strstr(GetAsCharArray(),other.GetAsCharArray())!=0; }
+    FABLE_FORCEINLINE bool Contains(const CCharString& other) const { return strstr(GetAsCharArray(),other.GetAsCharArray())!=0; }
 #endif
 #ifdef FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
     // Per-TU inline opt-in (Codex pass 13, row 0x00E36D50; like FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE): that TU expands both
     // null / non-null arms in place where the plain inline operator is called out of line.
-    __forceinline
+    FABLE_FORCEINLINE
 #endif
     bool operator==(const char* text) const { if(!PStringData) { if(strcmp(text,"")==0) return true; return false; } return PStringData->Data==text; }
 #ifdef FABLE_RETAIL_CCHARSTRING_CHAR_EQ
@@ -349,7 +350,7 @@ public:
     // Inline in retail: a null string is never equal; else {character, 0} is built on the stack and compared with the strcmp
     // intrinsic (0x006162B4: `mov byte ptr [esp+4Ch],2Ch ; mov byte ptr [esp+4Dh],0`, bytewise loop, `sbb ; sbb ; sete`).
     // __forceinline: the landed 0x0099E520 / 0x00997DA0 / 0x00997E90 local models found plain inline called out of line.
-    __forceinline bool operator==(char character) const { if(PStringData!=0) { char text[2]; text[0]=character; text[1]=0; return strcmp(PStringData->Data.PeekData(),text)==0 ? true : false; } return false; }
+    FABLE_FORCEINLINE bool operator==(char character) const { if(PStringData!=0) { char text[2]; text[0]=character; text[1]=0; return strcmp(PStringData->Data.PeekData(),text)==0 ? true : false; } return false; }
 #endif
 #ifdef FABLE_RETAIL_CCHARSTRING_WHITESPACE
     // Nested opt-in (chunk 775, row 0x009A8170): Ego_r.pdb ?RemoveWhiteSpaceBeginEnd@CCharString@@QAEXXZ (0x0099F560), out of line.
@@ -383,7 +384,7 @@ public:
     // public, void (const CCharString&, const CCharString&)), inline in retail: LoadGameState expands it four times (0x0052573A..0x005257FD:
     // a default-constructed result, strstr 0x00BFEB3A over the text, the match cut with `mov byte ptr [esi],0`, the search length by the
     // inline strlen loop, `+=` 0x0099F0A0 of the cut piece and of the replacement, the tail appended, then operator= 0x0099EFB0).
-    __forceinline void Replace(const CCharString& search, const CCharString& replacement)
+    FABLE_FORCEINLINE void Replace(const CCharString& search, const CCharString& replacement)
     {
         CCharString result;
         char* text = (char*)GetAsCharArray();

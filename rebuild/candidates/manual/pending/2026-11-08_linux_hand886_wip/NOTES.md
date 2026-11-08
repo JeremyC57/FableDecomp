@@ -45,3 +45,10 @@ middle of the code (e.g. 0x42095C `sub eax,0C9h` and 0x420F02 `cmp eax,7D0h`).
   v 0x800. Best source differ/0041e6d3.cpp (= src/0041e6d3.cpp + 6 grade lines). Next: entry register roles (c2 colours the
   action.Ptr CSE temp #1395 before game; WORKLOG Session 5 has the cost-function reading), cross-jump tail direction
   (CLOSE_TELEPORT_MENU keeps the shared tail in retail), CHOOSE_CLAN `*action->UIActionParams.begin()`, LOAD_PHOTO homes, frame +8.
+
+## Parked (session 7, 2026-11-08)
+- 0x0041E6D3 NUISystem::CManager::Action DIFFER(35702v35651): v23 + Codex's fixes a..e merged one grade each (code identical to
+  Codex's checkpoint); frame 0x800 = retail; t7/m3.py exact 79.3% / regs-masked 83.6% / regs+frame-masked 98.6% | tried: a visible
+  noinline CCountedPointer(T*) ctor (frame), trade receiver locals, CActionParamSLONG* count, unsigned `<= 0`, named CWideString |
+  next: entry register roles (c2 colours the action.Ptr CSE temp before game, esi by table order), regime-1 slot tie order,
+  cross-jump tail direction.

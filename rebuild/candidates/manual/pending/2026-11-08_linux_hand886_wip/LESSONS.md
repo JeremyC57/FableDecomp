@@ -91,3 +91,14 @@ Session 3 (2026-11-08) -- corrects the session-2 packing lesson above:
   neighbours with one register left; the cheapest allowed register in eax,ecx,edx,esi,edi,ebx,ebp order wins.
 - Byte totals mislead: adding retail's own memory homes raised ours from 35632 to 35697 (retail 35651) while the instruction
   match rose 92.5% -> 92.7%. Grade by difflib share and per-case counts, not by the size gap.
+
+## Session 7 (2026-11-08)
+- A same-TU COMDAT ctor that retail calls at every site: spell it as the real in-class body + `__declspec(noinline)` under
+  `#ifdef _MSC_VER` (inline-budget device), not as a declaration only. Above c2's 10000-tuple limit the declaration-only ctor
+  exposes the object's address, so it never shares a frame slot (0x0041E6D3 LOAD_PHOTO texture: -3C8h alone v retail -268h;
+  frame 0x808 v 0x800); the visible, non-expanded body keeps the object tracked and the frame drops to retail's 0x800.
+- In a regime-1 function every added/removed frame symbol reshuffles the density-sorted slot layout: raw instruction share can
+  FALL while the code improves (0x0041E6D3: frame fixed, exact 87.0 -> 72.7, regs+frame-masked unchanged 98.4). Grade shape
+  fixes with a frame-masked share and track the slot pairing separately (t7/m3.py, t7/fmap.py).
+- `count->Value` read at the call (`CActionParamSLONG* count`) gives `push dword [eax+8]`; a `long count = ...->Value` local
+  gives `mov eax,[eax+8]; push eax` (0x0041F5D8). An unsigned member tested `<= 0` gives `ja` where `== 0` gives `jne`.

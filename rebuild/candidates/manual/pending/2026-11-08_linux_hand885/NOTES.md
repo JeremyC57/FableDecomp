@@ -33,3 +33,9 @@
   "CSmallVector<CANavQuadTreeNode_const*,8>::operator[]" is a pointer-vector operator[] body (4-byte stride: the vector of
   CCharString). One address serves several template instantiations after /OPT:ICF, so these are not relabels; they only
   matter when reading the listing.
+
+## Parked (session 5, 2026-11-08)
+- 0x00CBFB7D RunCutsceneMacro DIFFER(74882v74778): Codex checkpoint + Codex's SlideTeleport alternate; frame 0x18DC = retail;
+  t5/m3.py exact 89.8% / regs-masked 92.0% / regs+frame-masked 98.5%; calls 99.2% | tried: CrowdKill for(;;) (identical code),
+  the alternate (kept) | next: prologue register roles (name / -1 / def), split constant pieces, frame tie order, SlideTeleport Y
+  spill, prefix 0x00CC0418.

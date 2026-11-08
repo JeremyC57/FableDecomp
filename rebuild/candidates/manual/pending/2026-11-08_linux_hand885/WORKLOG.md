@@ -4,6 +4,36 @@ Row: 0x00CBFB7D, 74,778 bytes, catalog `_global::RunCutsceneMacro`. PDB name `Ru
 two sources: reloc_bindings `?RunCutsceneMacro@@YIX...` stand-in with CCutsceneCastMap + catalog name; the cutscene
 helpers CSFindThing 0xCBF9DE / CSExtractParameterList 0xCBFACA landed alongside with the same PDB naming family).
 
+## Session 5 (2026-11-08) -- READ THIS FIRST (resumed from Codex's checkpoint; src/ = differ/ minus 2 grade lines)
+State: **DIFFER(74882v74778), frame 0x18DC = retail**, /d2inlS8. src/ = Codex checkpoint (t5/codex_ckpt.cpp, DIFFER(74906v74778))
++ Codex's SlideTeleport alternate (codex/alt_slide_factor_compound, graded here and kept). Metrics (t5/m3.py, code to `ret 10h`):
+exact 89.8% / regs-masked 92.0% / regs+frame-masked 98.5% (checkpoint 89.0/91.2/98.5; our v41 49.5/52.4/98.5); gv.sh strict 96.5%,
+loose 98.7%, calls 99.2% (4034/4068). t5/fmap.py: 651 of 1051 frame slots at retail's offset (checkpoint 591).
+Line 1 restored to the signature comment (Codex's `// 00cbfb7d RunCutsceneMacro` broke finish.py's name parse); the line-3
+Inline-budget note now also names Codex's IS_THING_ALIVE device (0x0040DCE0, visible read-only body, noinline under _MSC_VER).
+Every step with tool + evidence: TRACE.md. Grades: ATTEMPTS.log `s5` lines.
+What was measured and what it pointed at:
+- calls.py --counts: every inline site agrees with retail; the call-diff hunks are cross-jump tails (FRAME / ~CScriptThing groups)
+  plus 0xCCDAE3 (CrowdTeleportRipple: ours duplicates the `marker.IsAlive()` loop test at the loop entry because the
+  count piece #2201 sits in edi and needs a back-edge reload; retail keeps count in memory [ebp+8]) -- register-downstream.
+- First difference ins 8: prologue roles (retail name ebx, const -1 esi; ours esi / ebx). c2prio (t5/prio_base.trace; pass
+  `--func RunCutsceneMacro`, the default Leaf match finds nothing): `name` #39 prio 38 is chosen with esi = ebx = 0 cost ->
+  esi by table order; const -1 is ONE split candidate (prio -2397) whose prologue piece is coloured in the split pass, i.e.
+  after name, so nothing can make esi expensive for name in our candidate set. Retail must differ in name's candidate (not in
+  the main pass) or in the const -1 piece -- unresolved.
+- WalkUpToThing moveType (#888, prio 2, 3 refs) -> split, memory; at FollowNavRoute the same `moveType = 1` gives `inc esi`
+  when it has a register, so retail's `xor edi,edi ... inc edi` (0x00CC2443) needs only the register, not a `++` spelling.
+- Frame: a contiguous run -0xC18..-0x8A8 is 4 bytes high v retail; at its top boundary 2-ref 4-byte slots (equal density)
+  are permuted -- regime-1 density sort with ties scrambled: needs the exact symbol set.
+- Dead ends this session (do not repeat): CrowdKill wait loop as `for (;;) { if (!(timer < delay) || IsCutsceneSkipped())
+  break; ...}` -- code identical to the `while` (the full function rotates it too); with session-3 minis and Codex crowd_* that
+  is three families. Prefix 0x00CC0418: not retried (Codex: 10 spellings).
+Left, in order: (1) register roles -- the prologue (name / -1 / def) and the split constant pieces (0, -1, 1, "HERO") drive most
+of the 2.2% register hunks and the cross-jump tail choices; only a candidate-set change moves them (c2prio --trace, 5.5 min);
+(2) frame-slot tie order (7% of exact share; follows the exact symbol set); (3) SlideTeleport: retail spills the Y product and
+multiplies `fld step.c; fmul st(k)` without duplicating fi (alternate still dups fi for Y/Z); (4) prefix 0x00CC0418;
+(5) CrowdKill top-tested loop; (6) C++03 behaviour test + finish.py once it matches.
+
 ## Session 1 (2026-11-08)
 - Decoded the prologue, locals, setup, follower handling, sound parse, main parse loop, cleanup (see src comments).
 - src/00cbfb7d.cpp v1 compiles: DIFFER(4374v74778), first diff ins 1 (frame size: ours small `sub esp`, retail

@@ -41,3 +41,16 @@ Session 4 (2026-11-08): the six rows above are Inline-budget devices (EXTRA_RULE
 per-TU opt-ins for callees that retail expands (or calls) at EVERY site of 0x0041E6D3, where c2's caller-size penalty
 decides the other way. Mixed callees (list::begin, vector::operator[], the setters, postfix --) use inline_depth regions
 in the source instead. A forceinline does not survive an inline_depth(0) region (probe/mini/m1.cpp).
+
+## Session 5 (2026-11-08)
+No header changes this session; the v23 source uses only the overlay opt-ins listed above.
+
+## engine/CCountedPointer.h -- FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR (session 7, merged from Codex's checkpoint)
+Copy of rebuild/include/engine/CCountedPointer.h plus one additive opt-in (default path byte-identical: without the new macro the
+`#if` reduces to the repo's `#ifdef FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR`). With it, the CCountedPointer(T*) ctor keeps its
+real in-class body (retail 0x0041C030: `test eax,eax; mov [esi],eax; je` then `new CCPPointerInfo(1, DeleteData, Data)`) and is
+marked `__declspec(noinline)` under `#ifdef _MSC_VER` (other compilers: plain inline). Retail CALLS the same-TU COMDATs at every
+site of 0x0041E6D3 (CComponent 0x00429C15 x25, CAction 0x0042AA29 x17, CTexture 0x0041C030 x1). Inline-budget device: the
+declaration-only spelling gives the same calls but exposes each object's address above c2's 10000-tuple limit, so LOAD_PHOTO's
+texture got its own slot (-3C8h) instead of retail's shared -268h and the frame was 0x808; the visible, non-expanded body keeps the
+object tracked: frame 0x800 = retail, ebx = 8 in LOAD_PHOTO as retail (ATTEMPTS v24).

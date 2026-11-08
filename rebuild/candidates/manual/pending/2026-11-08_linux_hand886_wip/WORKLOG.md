@@ -1,5 +1,27 @@
 # WORKLOG 0x0041E6D3 -- NUISystem::CManager::Action  (agent886, 2026-11-08)
 
+## Session 7 (2026-11-08) -- READ THIS FIRST: Codex's fixes merged one at a time (src/ = v28; v23 kept in t7/v23_src_backup.cpp)
+State: **v28 DIFFER(35702v35651), frame 0x800 = retail**; code byte-identical to Codex's checkpoint (t7/odiff.py v28 v.
+cmp2/codex_action.obj: no hunk). Metrics (t7/m3.py, code to `ret 4`): exact 79.3% / regs-masked 83.6% / regs+frame-masked 98.6%
+(v23: 87.0 / 91.5 / 98.4); cmp.py difflib (frame masked) 93.0% (v23 92.7); t5/swap.py noframe 91.5% (v23 91.3).
+Each fix graded alone on top of the previous (ATTEMPTS v24..v28, TRACE.md has tool + evidence per step):
+- a (v24) FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR (hdr/engine/CCountedPointer.h overlay, hdr/README.md): frame 0x808 ->
+  0x800, LOAD_PHOTO texture now shares retail's -268h and holds 8 in ebx (= Codex's "f": no separate source change).
+  Exact share fell 87.0 -> 72.7 while regs+frame stayed 98.4: the regime-1 frame ORDER (density sort, ties scrambled) reshuffled;
+  the bottom region -78Ch..-6A4h became identical to retail (v23 was +8 there). Kept: frame size is retail's, shapes unchanged.
+- b (v25) `CTCInventoryTrade* inventory = PInventoryTrade;` inside the 4 successful-FindChild arms (2008/2010; retail
+  `mov ebx,[ebx+54h]` once per arm 0x004254A9): +12 instructions.
+- c (v26) `CActionParamSLONG* count` (BUY_BULK / SELL_BULK): `push dword [eax+8]` as retail (0x0041F5D8), 2 sites.
+- d (v27) `NumberAugmentations <= 0` (unsigned): `ja` as retail instead of `jne`.
+- e (v28) PHOTO_CAPTION `CWideString text = caption->GetText(); OnCaptionEntered(text);`: retail's `lea eax,[text]` re-lea
+  (0x00426809); the extra named symbol reshuffled 334 frame offsets and exact rose 72.8 -> 79.3.
+None hurt the v23 per-case shapes (regs+frame-masked share rose monotonically 98.4 -> 98.6).
+Frame-slot order is now the biggest exact-share lever (exact 79.3 v regs-masked 83.6 v r+f 98.6): t7/fmap.py <obj> pairs our
+[ebp+X] with retail's from the masked-equal blocks: 47 of 284 slots identical (v23: 101). Retail's order follows the exact
+symbol set (session 3: refs/size ascending from the bottom, ties scrambled), so every added/removed named object moves it.
+Tools (t7/): m3.py <obj> (three shares + frame), fmap.py <obj> (slot pairing + summary), odiff.py <a.obj> <b.obj> (our-v-our
+instruction diff; swap.py --show missed the BUY_BULK change, odiff did not).
+
 ## Session 5 (2026-11-08) -- READ THIS FIRST (parked at v23 = src/ = differ/ minus the 6 Grade lines; t5/v18.cpp, t5/v22.cpp kept)
 State: **v23 DIFFER(35697v35651)**, difflib 92.7% of retail instructions (9277/10004; v17/v18 were 92.0%), loose per-case
 96.6% (t4/pc.py), frame 0x808 v retail 0x800. Byte count is now ABOVE retail because the 13 bool-setter memory homes (+5 bytes

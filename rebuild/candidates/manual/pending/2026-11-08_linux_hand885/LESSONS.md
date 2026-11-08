@@ -46,3 +46,13 @@ Review at landing:
   only if a later attempt lands the row; nothing else uses them yet.
 - The top-tested CrowdKill wait loop (0x00CCF7BE) is not reproduced by any `while`, `for (;;)`, `while (true) {if..else
   break;}` or `bool more` spelling in a probe TU. VC7.1 rotates all of them, and `bool more` keeps a flag register.
+
+Session 5 (2026-11-08):
+- c2prio.py's default `--func` (from the `// Leaf:` line) matches nothing for RunCutsceneMacro's very long mangled name ("0
+  function(s) traced" after 125 s): pass `--func RunCutsceneMacro`.
+- In the 74 KB function a `for (;;) { if (!(c) || f()) break; ... }` loop compiles byte-identically to `while (c && !f())`:
+  the rotation is not a front-end artefact of `while` (0x00CCF7BE stays top-tested only in retail).
+- Same `moveType = 1` gives `inc reg` when the value has a register holding 0 (FollowNavRoute) and `mov [mem],1` when it
+  does not (WalkUpToThing 0x00CC2443): retail's `inc edi` is an allocation result, not a `++` spelling.
+- A frame of equal-density 4-byte slots (regime-1 layout) shows a block of slots shifted by 4 with a permuted boundary when one
+  tie symbol differs; measure with a slot pairing (t5/fmap.py) and grade shapes with a frame-masked share, not the raw one.

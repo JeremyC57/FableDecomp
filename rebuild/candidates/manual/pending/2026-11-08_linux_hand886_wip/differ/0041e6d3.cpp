@@ -1,10 +1,9 @@
 // NUISystem::CManager::Action(CCountedPointer<NUISystem::CAction>&) -- runs one UI action (the big action dispatcher)
-// Grade: DIFFER(35697v35651) -- difflib 92.7% of retail instructions (9277/10004), loose per-case 96.6% (t4/pc.py); every case
-// written; frame 0x808 v retail 0x800 (8 bytes of extra slots, cause open). Left: entry register roles (retail edi = CAction*, esi =
-// game; ours swapped, first difference at instruction 6: c2 colours CSE temp #1395 (prio 1015) before game (prio 571)), cross-jump
-// tail direction (retail keeps the CLOSE_TELEPORT_MENU copy of the GetTC + AddCloseInventoryEvent tail; ours keeps CLOSE_MENU /
-// OPEN_ABILITIES / CLOSE_ABILITIES copies), SCROLL_* shared ChangeTargetPositionDelta tail, LOAD_PHOTO / CHOOSE_CLAN [ebp+7Ch] homes.
-// Next: CHOOSE_CLAN as `*action->UIActionParams.begin()` (retail begin temp [-678h]); LOAD_PHOTO photoTexture home. WORKLOG Session 5.
+// Grade: DIFFER(35702v35651) -- session 7 = v23 + Codex fixes a..e (code identical to Codex's checkpoint): FRAME 0x800 = retail;
+// t7/m3.py exact 79.3% / regs-masked 83.6% / regs+frame-masked 98.6% of retail code instructions; cmp difflib 93.0%. Left: entry
+// register roles (retail edi = CAction* temp, esi = game; c2 colours CSE temp of action.Ptr before game and picks esi by table
+// order), the regime-1 frame-slot ORDER (density sort; 47 of 284 slots at retail's offset), cross-jump tail direction
+// (CLOSE_TELEPORT_MENU / CLOSE_MENU / OPEN_ABILITIES / CLOSE_ABILITIES; SCROLL_*; EXIT_LIVE_GUI_IF_LEAF). WORKLOG Session 7.
 // Leaf: ?Action@CManager@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
 // Flags: /GS
 // Inline-budget: scoped `#pragma inline_depth(0)` regions (one per statement retail calls out of line: list::begin 0x00429A85 x16 in
@@ -12,7 +11,9 @@
 // CTCInventoryAbilities setters 0x0041C965.. x9, postfix -- 0x0042899B x2) plus per-TU FABLE_RETAIL_*_FORCEINLINE_* / _NOINLINE_ opt-ins
 // for the callees retail treats the same way at every site of this function (CWideString text ==, C2DVector / C2DExtentsI
 // ctors, ~CSurface, map::begin expanded; list iterator != 0x0041C7C0 called) -- the function is past c2's 10000-tuple limit and its
-// caller-size penalty ((sz/2)*N/9000, N = tuples so far) gives no single N that splits retail's set (probe/inl traces, WORKLOG S4).
+// caller-size penalty ((sz/2)*N/9000, N = tuples so far) gives no single N that splits retail's set (probe/inl traces, WORKLOG S4);
+// and FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR: the CCountedPointer(T*) body visible but __declspec(noinline) (retail calls
+// 0x00429C15 / 0x0042AA29 / 0x0041C030 at every site; a declaration-only ctor exposes the object, frame 0x808 v 0x800).
 #pragma optimize("s", on)
 #define FABLE_RETAIL_CCHARSTRING
 #define FABLE_RETAIL_CWIDESTRING
@@ -35,6 +36,7 @@
 #define FABLE_RETAIL_CACTIONPARAMSLONG
 #define FABLE_RETAIL_CACTIONPARAMFLOAT
 #define FABLE_RETAIL_CCOUNTEDPOINTER_CALLED_CTOR
+#define FABLE_RETAIL_CCOUNTEDPOINTER_VISIBLE_CALLED_CTOR
 #define FABLE_RETAIL_DEF_CLASS_BASE
 #define FABLE_RETAIL_CDEFINITIONMANAGER
 #define FABLE_RETAIL_CGAMEDEFINITIONMANAGER
@@ -615,7 +617,7 @@ void CManager::Action(CCountedPointer<CAction>& action)
                 augmentation->SetDeletion(deletion);
                 keepAugmentation = false;
             }
-            if (NumberAugmentations == 0) {
+            if (NumberAugmentations <= 0) {
                 CComponent* augmentation = GetCorrectComponentInterface(static_cast<CComponent*>(action->UIActionParams.back()));
                 CDeletion deletion;
                 deletion.Method = CDeletion::UI_DELETE_ALL_INSTANCES;
@@ -936,21 +938,21 @@ void CManager::Action(CCountedPointer<CAction>& action)
     case UI_ACTION_TYPE_BUY_BULK:
         if (UIActionParams.size() > 0 && action->UIActionParams.size() > 0) {
             CComponent* entry = static_cast<CComponent*>(UIActionParams.back());
-            long count = static_cast<CActionParamSLONG*>(action->UIActionParams.back())->Value;
+            CActionParamSLONG* count = static_cast<CActionParamSLONG*>(action->UIActionParams.back());
             if (PInventoryTrade->IsInventoryOpen())
-                PInventoryTrade->BuyItemPC(entry, count);
+                PInventoryTrade->BuyItemPC(entry, count->Value);
             else
-                PInventoryTrade->BuyItem(entry, count);
+                PInventoryTrade->BuyItem(entry, count->Value);
         }
         break;
     case UI_ACTION_TYPE_SELL_BULK:
         if (UIActionParams.size() > 0 && action->UIActionParams.size() > 0) {
             CComponent* entry = static_cast<CComponent*>(UIActionParams.back());
-            long count = static_cast<CActionParamSLONG*>(action->UIActionParams.back())->Value;
+            CActionParamSLONG* count = static_cast<CActionParamSLONG*>(action->UIActionParams.back());
             if (PInventoryTrade->IsInventoryOpen())
-                PInventoryTrade->SellItemPC(entry, count);
+                PInventoryTrade->SellItemPC(entry, count->Value);
             else
-                PInventoryTrade->SellItem(entry, count);
+                PInventoryTrade->SellItem(entry, count->Value);
         }
         break;
     case UI_ACTION_TYPE_SET_DIALOGUE:
@@ -2629,11 +2631,15 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CActionParamULONG* item = static_cast<CActionParamULONG*>(*it);
             CComponent* parent = static_cast<CComponent*>(*++it);
             if (PInventoryTrade->InventoryTradeOpen) {
-                if (!parent->FindChild("PC_LIST_SELL_ACTIONS"))
-                    PInventoryTrade->ConstructSellActionsListPC(parent, item->Value, PInventoryTrade->GetNumberOfSellItems(parent), true);
+                if (!parent->FindChild("PC_LIST_SELL_ACTIONS")) {
+                    CTCInventoryTrade* inventory = PInventoryTrade;
+                    inventory->ConstructSellActionsListPC(parent, item->Value, inventory->GetNumberOfSellItems(parent), true);
+                }
             } else {
-                if (!parent->FindChild("UI_LIST_SELL_ACTIONS"))
-                    PInventoryTrade->ConstructSellActionsList(parent, item->Value, PInventoryTrade->GetNumberOfSellItems(parent), true);
+                if (!parent->FindChild("UI_LIST_SELL_ACTIONS")) {
+                    CTCInventoryTrade* inventory = PInventoryTrade;
+                    inventory->ConstructSellActionsList(parent, item->Value, inventory->GetNumberOfSellItems(parent), true);
+                }
             }
         }
         break;
@@ -2748,12 +2754,16 @@ void CManager::Action(CCountedPointer<CAction>& action)
             CActionParamULONG* item = static_cast<CActionParamULONG*>(*it);
             CComponent* parent = static_cast<CComponent*>(*++it);
             if (PInventoryTrade->InventoryTradeOpen) {
-                if (!parent->FindChild("PC_LIST_BUY_ACTIONS"))
-                    PInventoryTrade->ConstructBuyActionsListPC(parent, item->Value, PInventoryTrade->GetNumberOfBuyItems(parent), true);
+                if (!parent->FindChild("PC_LIST_BUY_ACTIONS")) {
+                    CTCInventoryTrade* inventory = PInventoryTrade;
+                    inventory->ConstructBuyActionsListPC(parent, item->Value, inventory->GetNumberOfBuyItems(parent), true);
+                }
             } else {
                 // Retail looks the console list up under the sell list's name here.
-                if (!parent->FindChild("UI_LIST_SELL_ACTIONS"))
-                    PInventoryTrade->ConstructBuyActionsList(parent, item->Value, PInventoryTrade->GetNumberOfBuyItems(parent), true);
+                if (!parent->FindChild("UI_LIST_SELL_ACTIONS")) {
+                    CTCInventoryTrade* inventory = PInventoryTrade;
+                    inventory->ConstructBuyActionsList(parent, item->Value, inventory->GetNumberOfBuyItems(parent), true);
+                }
             }
         }
         break;
@@ -3000,7 +3010,8 @@ void CManager::Action(CCountedPointer<CAction>& action)
         CTCPhotojournalCapture* capture;
         if (hero->GetTC(TCI_PHOTOJOURNAL_CAPTURE, &capture)) {
             CEditBox* caption = static_cast<CEditBox*>(static_cast<CComponent*>(action->UIActionParams.back()));
-            capture->OnCaptionEntered(caption->GetText());
+            CWideString text = caption->GetText();
+            capture->OnCaptionEntered(text);
         }
         break;
     }
