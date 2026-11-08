@@ -28040,3 +28040,4 @@ chunk	address	module	name	length
 882	0061e6d0	CTCInventoryQuests	ConstructQuestListPC	12356
 883	006096e0	_global	ConstructLogbookScreen	12832
 884	004ee23f	_global	Init_RegisterGameComponents	44806
+885	00cbfb7d	_global	RunCutsceneMacro	74778
