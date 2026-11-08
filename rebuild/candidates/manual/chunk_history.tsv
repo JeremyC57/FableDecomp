@@ -28027,3 +28027,5 @@ chunk	address	module	name	length
 875	00804020	CTCTargetingPlayer	UpdateTargetList	5587
 875	00a1e5c0	CNavigatorAStar	CalculateAndMoveToPosProximity	5437
 876	00cbfb7d	_global	RunCutsceneMacro	74778
+877	00839940	CThingGameObject	OnHit	5195
+877	00804020	CTCTargetingPlayer	UpdateTargetList	5587
