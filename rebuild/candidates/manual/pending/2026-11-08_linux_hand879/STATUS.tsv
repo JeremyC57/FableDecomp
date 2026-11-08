@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00502e90	DIFFER	13821v13622	-	best v21 (md 2902 / mdf 1434, 54 grades): two inline-budget sites (P9 CreateRelevantPersonAndUpdateStats inline in ours, P11 female vector push_back out of line) + c2prio colouring / frame 0x19C v 0x194; differ/00502e90.cpp
+0058af10	SKIP	-v13048	-	not drafted (0 grades): session budget went to 0x00502E90; resume notes in NOTES.md / WORKLOG.md, retail skeleton tmp/skel_58af10.txt

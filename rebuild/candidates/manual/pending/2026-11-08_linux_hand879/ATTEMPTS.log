@@ -1,0 +1,60 @@
+13:13:24	00502e90	v1	SRC_FAIL	len=0v13622	md=-1	mdf=-1	bytes=-1	flags=	1s	
+13:13:38	00502e90	v1	SRC_FAIL	len=0v13622	md=-1	mdf=-1	bytes=-1	flags=	1s	
+13:15:22	00502e90	v1	DIFFER(13948v13622)	len=13948v13622	md=4202	mdf=3230	bytes=11114	flags=	1s	
+13:17:06	00502e90	v2	DIFFER(13966v13622)	len=13966v13622	md=4201	mdf=3179	bytes=11178	flags=	1s	nest body in if(GetSubDef)
+13:19:51	00502e90	v3	DIFFER(14093v13622)	len=14093v13622	md=3882	mdf=2828	bytes=11344	flags=	1s	phase1 retail order, inline Get*Building
+13:22:32	00502e90	v3S8	DIFFER(14093v13622)	len=14093v13622	md=3882	mdf=2828	bytes=11344	flags=/d2inlS8	1s	flag sweep
+13:22:34	00502e90	v3S12	DIFFER(14093v13622)	len=14093v13622	md=3882	mdf=2828	bytes=11344	flags=/d2inlS12	1s	flag sweep
+13:22:36	00502e90	v3S15	DIFFER(14093v13622)	len=14093v13622	md=3882	mdf=2828	bytes=11344	flags=/d2inlS15	1s	flag sweep
+13:22:38	00502e90	v3T60	DIFFER(13640v13622)	len=13640v13622	md=4517	mdf=3109	bytes=10836	flags=/d2inlT60	1s	flag sweep
+13:22:39	00502e90	v3T70	DIFFER(13577v13622)	len=13577v13622	md=6018	mdf=3008	bytes=10866	flags=/d2inlT70	1s	flag sweep
+13:22:41	00502e90	v3T80	DIFFER(14685v13622)	len=14685v13622	md=3724	mdf=2902	bytes=11812	flags=/d2inlT80	1s	flag sweep
+13:22:43	00502e90	v3T90	DIFFER(13735v13622)	len=13735v13622	md=4408	mdf=3382	bytes=10830	flags=/d2inlT90	1s	flag sweep
+13:22:58	00502e90	v3	DIFFER(14093v13622)	len=14093v13622	md=3882	mdf=2828	bytes=11344	flags=	1s	regrade baseline
+13:24:02	00502e90	v3T72	DIFFER(13777v13622)	len=13777v13622	md=3885	mdf=3365	bytes=11022	flags=/d2inlT72	1s	flag sweep
+13:24:04	00502e90	v3T68	DIFFER(13529v13622)	len=13529v13622	md=6086	mdf=3460	bytes=10909	flags=/d2inlT68	1s	flag sweep
+13:24:07	00502e90	v3T65	DIFFER(13640v13622)	len=13640v13622	md=4514	mdf=3084	bytes=10837	flags=/d2inlT65	1s	flag sweep
+13:24:09	00502e90	v3T62	DIFFER(13640v13622)	len=13640v13622	md=4497	mdf=3087	bytes=10831	flags=/d2inlT62	1s	flag sweep
+13:25:10	00502e90	v4	DIFFER(14368v13622)	len=14368v13622	md=4135	mdf=3261	bytes=11540	flags=	1s	pragma inline_depth(0) probes P1/P2/P9/P10/P12
+13:25:39	00502e90	v3_Os	DIFFER(9239v13622)	len=9239v13622	md=4955	mdf=4955	bytes=11429	flags=/Os	1s	flag probe
+13:25:41	00502e90	v3_Ob1	DIFFER(13876v13622)	len=13876v13622	md=4035	mdf=2653	bytes=10956	flags=/Ob1	1s	flag probe
+13:29:54	00502e90	v5	DIFFER(13869v13622)	len=13869v13622	md=3703	mdf=2115	bytes=10915	flags=	1s	P1 loop: ++it at body end (P2 sites now out of line as retail)
+13:31:14	00502e90	v6	DIFFER(13805v13622)	len=13805v13622	md=3569	mdf=2311	bytes=10805	flags=	1s	named total weight; school declared before P2
+13:33:24	00502e90	v7	DIFFER(13837v13622)	len=13837v13622	md=4098	mdf=1812	bytes=10647	flags=	1s	pragma inline_depth(0) on the P9 call
+13:35:12	00502e90	v6	DIFFER(13805v13622)	len=13805v13622	md=3569	mdf=2311	bytes=10805	flags=	1s	regrade for ph
+13:36:08	00502e90	v8	DIFFER(13824v13622)	len=13824v13622	md=3570	mdf=2302	bytes=10833	flags=	1s	P13 sim def as a temporary in the size compare
+13:36:58	00502e90	v9	DIFFER(13805v13622)	len=13805v13622	md=3550	mdf=2290	bytes=10805	flags=	1s	P13 scoped sim def + a = erase(a)
+13:37:15	00502e90	v10	DIFFER(13805v13622)	len=13805v13622	md=3554	mdf=2292	bytes=10806	flags=	2s	P15 named defs pointer per call
+13:37:25	00502e90	v9	DIFFER(13805v13622)	len=13805v13622	md=3550	mdf=2290	bytes=10805	flags=	1s	regrade (ph base)
+13:38:20	00502e90	b01	DIFFER(13805v13622)	len=13805v13622	md=3550	mdf=2290	bytes=10805	flags=	1s	P1 villager direct-init
+13:38:22	00502e90	b02	DIFFER(14082v13622)	len=14082v13622	md=3602	mdf=2358	bytes=11300	flags=	1s	P1 no discarded GetHomeBuilding evaluations
+13:38:23	00502e90	b03	DIFFER(13805v13622)	len=13805v13622	md=3550	mdf=2290	bytes=10805	flags=	1s	P2 positive nesting for building/residency
+13:38:25	00502e90	b04	DIFFER(13805v13622)	len=13805v13622	md=3550	mdf=2290	bytes=10805	flags=	1s	P2 sim def null test via operator!
+13:38:27	00502e90	b05	DIFFER(13789v13622)	len=13789v13622	md=3520	mdf=2266	bytes=10800	flags=	1s	P11 loop as while(remaining--)
+13:38:29	00502e90	b06	DIFFER(13885v13622)	len=13885v13622	md=3580	mdf=2528	bytes=10923	flags=	1s	P14 freeSpaces from a named sim def
+13:38:31	00502e90	b07	DIFFER(13805v13622)	len=13805v13622	md=3550	mdf=2290	bytes=10805	flags=	1s	P17 guard loop as for n<noGuards
+13:38:33	00502e90	b09	DIFFER(13805v13622)	len=13805v13622	md=3567	mdf=2317	bytes=10964	flags=	1s	P0 villageTC GetTC result unused-bool form
+13:38:35	00502e90	b10	DIFFER(13805v13622)	len=13805v13622	md=3548	mdf=2288	bytes=10801	flags=	1s	P12 gay candidate: talk voice compared on the copy
+13:38:53	00502e90	v11	DIFFER(13789v13622)	len=13789v13622	md=3522	mdf=2270	bytes=10797	flags=	1s	v9 + while(remaining--) + voice compare reversed
+13:38:55	00502e90	c01	DIFFER(13789v13622)	len=13789v13622	md=3522	mdf=2270	bytes=10797	flags=	1s	P18 LiveSpaces loop as while(n--)
+13:38:57	00502e90	c02	DIFFER(13789v13622)	len=13789v13622	md=3522	mdf=2270	bytes=10797	flags=	1s	P17 guard/ghost loops as while(n--)
+13:38:59	00502e90	c03	DIFFER(13789v13622)	len=13789v13622	md=3524	mdf=2272	bytes=10797	flags=	1s	P14 while (freeSpaces > 0 && ...)
+13:39:01	00502e90	c04	DIFFER(13821v13622)	len=13821v13622	md=3692	mdf=2308	bytes=10859	flags=	1s	P14 empty() tests
+13:39:25	00502e90	v13	DIFFER(14048v13622)	len=14048v13622	md=3704	mdf=1880	bytes=11200	flags=	1s	scoped inline_depth(0) on P9+P10 CreateRelevant calls, P9 def indexes hoisted
+13:40:44	00502e90	v14	DIFFER(13821v13622)	len=13821v13622	md=5743	mdf=2727	bytes=11026	flags=	1s	b05 + overlay erase(key) forceinline with equal_range/erase(range) out of line
+13:40:53	00502e90	v14b	DIFFER(13885v13622)	len=13885v13622	md=3902	mdf=1842	bytes=11113	flags=	1s	v14 + map::erase(key) forceinline too
+13:41:05	00502e90	v15	DIFFER(13879v13622)	len=13879v13622	md=4070	mdf=1902	bytes=11037	flags=	1s	v13 (P9/P10 pragma) + erase(key) overlay
+13:41:24	00502e90	v16	DIFFER(13821v13622)	len=13821v13622	md=2928	mdf=1618	bytes=11081	flags=	1s	P1 push_back scoped inline_depth(0), hoisted creature/building
+13:41:27	00502e90	v17	DIFFER(14144v13622)	len=14144v13622	md=4182	mdf=2448	bytes=11268	flags=	1s	P1 push_back scoped inline_depth(0), hoisted creature/building
+13:42:28	00502e90	v18	DIFFER(13792v13622)	len=13792v13622	md=3056	mdf=1702	bytes=10817	flags=	1s	v17 + scoped inline_depth(0) on the five P11 init constructions
+13:42:49	00502e90	v20	DIFFER(13760v13622)	len=13760v13622	md=3039	mdf=1725	bytes=10759	flags=	1s	v18 + P12 vector copy and P14 first SetHomeBuilding scoped out of line
+13:43:08	00502e90	d1	DIFFER(13821v13622)	len=13821v13622	md=2930	mdf=1622	bytes=11078	flags=	1s	v16 + gay-voice compare reversed
+13:43:10	00502e90	d2	DIFFER(13821v13622)	len=13821v13622	md=2928	mdf=1618	bytes=11081	flags=	1s	v16 + P1 hoisted locals declared before the if
+13:43:12	00502e90	d3	DIFFER(13821v13622)	len=13821v13622	md=2902	mdf=1434	bytes=11079	flags=	1s	v16 + noGhosts/noGuards before the counters
+13:43:14	00502e90	d4	DIFFER(13821v13622)	len=13821v13622	md=2928	mdf=1618	bytes=11081	flags=	1s	v16 + P12 talk pointer initialised
+13:43:16	00502e90	d6	DIFFER(14077v13622)	len=14077v13622	md=3666	mdf=1904	bytes=11332	flags=	1s	v16 + P1 PeekPSimDefinition discarded through the hoisted work building
+13:43:30	00502e90	e1	DIFFER(13917v13622)	len=13917v13622	md=3973	mdf=2637	bytes=11099	flags=	1s	v21 + school declared with the counters
+13:43:32	00502e90	e2	DIFFER(13821v13622)	len=13821v13622	md=2928	mdf=1624	bytes=11081	flags=	1s	v21 with ghosts/guards before the vectors
+13:43:34	00502e90	e3	DIFFER(13821v13622)	len=13821v13622	md=2902	mdf=1434	bytes=11080	flags=	1s	v21 with guards read before ghosts
+13:43:36	00502e90	e4	DIFFER(13821v13622)	len=13821v13622	md=2928	mdf=1626	bytes=11082	flags=	1s	v21 with ghosts/guards before the weights
+13:47:58	00502e90	final	DIFFER(13821v13622)	len=13821v13622	md=2902	mdf=1434	bytes=11079	flags=	1s	DIAG final differ check

@@ -28034,3 +28034,4 @@ chunk	address	module	name	length
 878	00c7e420	_global	Audio_ConvolveFilter_LongVariant	11984
 879	00502e90	CWorldMap	PopulateRegionWithVillagers	13622
 879	0058af10	CTCInventory	OpenPCOptionsMenu	13048
+880	0058af10	CTCInventory	OpenPCOptionsMenu	13048
