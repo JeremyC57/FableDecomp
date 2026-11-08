@@ -89,8 +89,10 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     Chunk 866: 10 of 10 Ogg Vorbis rows landed (`2026-11-08_landing_q/`, real Xiph names).
     Chunk 868: 2 of 10 landed (`2026-11-08_landing_r/`: CBH_GangDeputy2::Main, CTalkingTrader1::Main); its parks continue. Chunk 869: 19 Vorbis functions landed (`2026-11-08_landing_s/`; 2 parked).
     Chunk 868 round 2: 0 new (0x00A2F740 rebuilt on new shared mesh headers, 720 lines from 1333; all eight parks re-graded, `pending/2026-11-08_linux_hand868/`).
-    Chunk 871 running: sixteen never-attempted libpk rows 0x00C3E890..0x00C770B0 + CThingTrackNode::Create + ~TeleportData.
-    Chunk 870 running: zlib inflate 0x00C02470 + seventeen libpk rows 0x00C08D40..0x00C42850 (descriptive names to identify). The
+    Library direction (owner, 2026-11-08; EXTRA_RULES "Owner direction, 2026-11-08: third-party library code ..."): library bytes are
+    isolated, identified and linked as original or rebuilt objects, not hand-written. Chunks 870 (zlib + libpk) and 871 (libpk) were
+    stopped. Landed hand-written library rows stay and get labelled as library; libpk / GameCODA (statically linked, no DLL in retail)
+    are being researched for a legitimate source/SDK. Chunks take game code only.
     0x00C0..0x00C4 gap-scan rows of `mov ecx,[ecx+4]; mov eax,[ecx]; jmp [eax+N]` forwarders (72-byte extents) are thunks, not chunk material.
     Running (2026-11-08, 150 grades a row): chunk 866 (done) (ten never-attempted Ogg Vorbis / libpk rows, Xiph names), chunk 867 (ten
     never-attempted PC UI / inventory rows in packed TUs), chunk 868 (Fable retry of ten parks: chunk 863's seven + 0x00D18DF0,

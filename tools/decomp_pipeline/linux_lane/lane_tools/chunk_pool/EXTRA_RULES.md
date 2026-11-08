@@ -102,7 +102,7 @@ member names, and script names (NScript quest scripts: check work/aeon_lua_ports
   (thousands of use sites, all expanded), and plain `inline` leaves a call under VC7.1's budget. Keep `__forceinline` there;
   no re-author pass. Where an out-of-line copy DOES exist (HasTC: one in each PDB; GetInterface: one retail instance), prefer
   plain `inline` when the bytes hold and record which form the row needed. STLport members stay `inline` (their source is known).
-- **libpk / GameCODA / Vorbis rows are ordinary C++ reconstruction.** The Rich header puts every compiled object on cl 3077, there
+- **(Superseded 2026-11-08 by the owner's library rule below.)** ~~libpk / GameCODA / Vorbis rows are ordinary C++ reconstruction.~~ The Rich header puts every compiled object on cl 3077, there
   is no vendor `.lib` to prove `toolchain_library`, and no PDB: author them as C++ under their own header names from the trace
   strings (GOTCHAS 0xC1xxxx..0xC9xxxx lines), Dinkumware STL for libpk.
 - **Data-symbol spellings (VIRTUAL_SCREEN_WIDTH / HEIGHT, PMainGameComponent) stay as established** until a PDB data-symbol dump
@@ -110,6 +110,23 @@ member names, and script names (NScript quest scripts: check work/aeon_lua_ports
   established spelling in new rows.
 - **Parked pairs land together.** 0x00626E40 ConstructItemCategoryList is reconstructed first (same retail TU, before
   0x006276F0 GetItemsListUI); 0x00935E40 PutOutFire with its identical sibling 0x009363D0. Cut as one "pairs" chunk.
+
+## Owner direction, 2026-11-08: third-party library code is isolated, identified and linked, not hand-written
+Owner, verbatim: "if the audio code is a library, then we can typically skip it in a byte matching decompilation. The core strategy is
+to isolate, identify, and link original or rebuilt library object files rather than rewriting them by hand."
+- No chunk hand-authors third-party library code any more: libpk / GameCODA (Sensaura) / the OpenAL back end, Xiph libogg / libvorbis,
+  zlib, LZO, DirectShow BaseClasses (strmbase), the VC7.1 CRT. Chunks take Fable game code only.
+- The route for library bytes is the one `toolchain_library` already uses (docs/pipeline/LIBRARY_SIGNATURES.md): identify the library and
+  version, build the original or a rebuilt object (vendor source compiled unmodified with VC7.1 at the matching flags, or the vendor's
+  shipped object / .asm), prove it against retail with a signature scan, and link it.
+- Chunks 870 and 871 (zlib + libpk) were stopped on this direction.
+- Already-landed hand-written library rows (owner answer, 2026-11-08: "Keep, label as library"): they stay landed and keep their
+  grades; they are labelled as library code and reported apart from game code. When a vendor-built object is proven for the same
+  range, the linked object becomes the row's provenance and the hand-written body stays as a readable reference.
+- Libraries with no public source (libpk, GameCODA): owner, verbatim: "look into if they are included in the retail files and look
+  carefully online to see if they can be found on reputable sites". Retail ships no DLL for either (statically linked; libpk paths
+  `d:\dev\audio\ver_fable_1.5_b\libpk\PK*.h` and GameCODA strings are in Fable.exe). Research is in progress; until it reports, no
+  chunk takes them. Never use leaked or pirated source.
 
 ## Owner decision, 2026-11-08: inline-budget residues may use an inline control (overrides the 2026-11-02 / 2026-11-03 bans)
 Owner, verbatim: "as long as it does not affect portability, matches retail bytes, behaves the same as retail, and is clean c++.
