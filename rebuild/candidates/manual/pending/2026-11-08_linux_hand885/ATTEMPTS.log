@@ -1,0 +1,38 @@
+2026-11-08	v1 (4 verbs)	DIFFER(4374v74778)	first diff ins1 frame
+2026-11-08	v2 (+verbs to ModifyHealth)	DIFFER(10954v74778)	first diff ins1 frame; difflib 8.0%
+2026-11-08	v3 (+verbs to .Release)	DIFFER(19966v74778)	difflib 12.1%
+00cbfb7d _global::RunCutsceneMacro DIFFER(26531v74778) flags= []
+2026-11-08	v5 first chain complete	00cbfb7d _global::RunCutsceneMacro DIFFER(31616v74778) flags= []
+2026-11-08	v6 chain2 + chain3 to PutUpYourSwords	00cbfb7d _global::RunCutsceneMacro DIFFER(41500v74778) flags= []
+2026-11-08 v14 (to PutInHeroHands): DIFFER(68130v74778) 18469 ins, difflib 55.6%
+2026-11-08 v15 (all verbs): DIFFER(74942v74778) 20238 ins, difflib 64.4%
+2026-11-08 v16 drop optimize(y,off): DIFFER(73914v74778) 20175 ins, 63.9%, biased frame now 0x68 like retail (size 0x194c v 0x18dc)
+2026-11-08 v17 +FABLE_RETAIL_STLP_MAP (map() default ctor): DIFFER(73847v74778) 20148 ins, 63.8%, frame 0x1948 v 0x18dc
+2026-11-08 v18 +VECTOR_ASSIGN, FORCEINLINE_EQUALSCI, C3DVector ctor forceinline (overlay), stop check expanded: DIFFER(74473v74778) 20467 ins, 80.5%, frame 0x18e4 v 0x18dc
+2026-11-08 flag probes: /d2inlT5 /d2inlT40 no effect; /d2inlS5 GetLength exact but size()/vector ctor out of line; /d2inlS7,S8: GetLength + vector<CScriptThing>::operator[] counts exact, calls 97.5%
+2026-11-08 v19 +CRGBColour ctor / C3DVector copy forceinline (overlay): DIFFER(74645v74778), GetLength still 499 at S9
+2026-11-08 v20 // Flags: /d2inlS8: DIFFER(74553v74778), calls 97.5%
+2026-11-08 v21 SummonerAttack/DoBossFight as nested if (StartsWith alone, then actor && P0): DIFFER(74555v74778) difflib 88.4% loose 93.8%, calls 97.6%
+2026-11-08 v22 +FORCEINLINE_TEXT_EQ, CRGBColour copy ctor forceinline (overlay): DIFFER(75069v74778) difflib 92.9% loose 96.3%
+2026-11-08 v23 +GETDEF_BYNAME_BODY (overlay CDefinitionManager.h: template body in TU -> def unexposed): DIFFER(74996v74778) difflib 93.6% loose 96.3%
+2026-11-08 v24 conversation + WalkTo/RunTo/SneakTo tails as if (IsTrue||wait) {loop} else {FRAME}: DIFFER(75000v74778) difflib 93.6%, calls 98.4%
+2026-11-08 v25 size() > 0 spellings (5) + main loop line < commands.size() unsigned compare: DIFFER(74986v74778) 93.6%
+2026-11-08 v26 iterator locals declared then assigned from find (retail copies the returned temp): DIFFER(74955v74778) 94.1%
+2026-11-08 v27 GetAllCreaturesInArea radius/centre locals + CBASICSTRING_TEXT_EQ_BODY (Compare/operator== bodies visible): DIFFER(74944v74778) 94.3%
+2026-11-08 v28 crowdSizes find sites as a block-local iterator assigned from find then compared (retail copies the find temp to the local and evaluates find before end()): DIFFER(75010v74778) difflib 94.6% loose 97.2%
+2026-11-08 v29 PlayLoopingAnim loops / ModifyHealth amount locals (retail calls GFCharStringToInt/Float before the argument pushes) + SlideTeleport dx kept, dy CSE'd into the step/angle: DIFFER(75010v74778) difflib 94.8%
+2026-11-08 v30 Create verb: (existing = actors.find()) != end; PauseThing as if/else calls; body after GetDef wrapped in if (GetDef) {...} (retail je's straight into the shared cleanup 0x00CD1ECE): DIFFER(74903v74778) difflib 94.9% loose 97.4%, frame 0x18e8
+2026-11-08 v31 arg calls hoisted to locals (LookToCamera thing, SetAlpha alpha, GiveHeroMorality, CameraPath time, CreateNear radius, CameraEffect c, CameraShake magnitude) + RemoveAll/MuteSounds/NoDialogCam as if/else calls: DIFFER(74861v74778) difflib 95.1% loose 97.6%
+2026-11-08 v32 PutInHeroHands named empty CCharString; UseCamera fov as if/else calls (retail branches with two fld loads, no CSE of -1.0f): DIFFER(74870v74778) difflib 95.2%
+2026-11-08 v33 CrowdLookTo SetLookForFiniteTime if/else; SetTime (duration = GF()) > 0 in the && (one SetTimeOfDay block): DIFFER(74872v74778) difflib 95.2%
+v34 SetAlpha: thing local after alpha (args with calls hoisted) -> DIFFER(74879v74778) strict 95.3% loose 97.8% calls 99.0% (SetAlpha hunks 5953/5964 gone from call diff)
+2026-11-08 v34 final cleanup (WIP comment, anchor, FSE source line, Inline-budget marker; fable_map.h overlay dropped: unused opt-in): DIFFER(74879v74778) unchanged -> differ/00cbfb7d.cpp (parked)
+2026-11-08 s4 v35a: 00cbfb7d _global::RunCutsceneMacro DIFFER(75046v74778) flags= ['/d2inlS8'] | difflib matched 19608/20435 retail ins = 96.0% (ours 20483) | loose difflib matched 20095/20435 retail ins = 98.3% (ours 20483) | calls retail 4068 ours 4078 matched 4026 (99.0%) | sites: 0 bad
+2026-11-08 s4 v35b: 00cbfb7d _global::RunCutsceneMacro DIFFER(74879v74778) flags= ['/d2inlS8'] | difflib matched 19469/20435 retail ins = 95.3% (ours 20458) | loose difflib matched 19988/20435 retail ins = 97.8% (ours 20458) | calls retail 4068 ours 4068 matched 4026 (99.0%) | sites: 0 bad
+2026-11-08 s4 t4: 00cbfb7d _global::RunCutsceneMacro DIFFER(74990v74778) flags= ['/d2inlS8'] | difflib matched 19605/20435 retail ins = 95.9% (ours 20469) | loose difflib matched 20099/20435 retail ins = 98.4% (ours 20469) | calls retail 4068 ours 4071 matched 4033 (99.1%) | sites: 0 bad
+2026-11-08 s4 v36: 00cbfb7d _global::RunCutsceneMacro DIFFER(74993v74778) flags= ['/d2inlS8'] | difflib matched 19670/20435 retail ins = 96.3% (ours 20470) | loose difflib matched 20161/20435 retail ins = 98.7% (ours 20470) | calls retail 4068 ours 4071 matched 4034 (99.2%) | sites: 0 bad
+2026-11-08 s4 v37: 00cbfb7d _global::RunCutsceneMacro DIFFER(74963v74778) flags= ['/d2inlS8'] | difflib matched 19687/20435 retail ins = 96.3% (ours 20464) | loose difflib matched 20169/20435 retail ins = 98.7% (ours 20464) | calls retail 4068 ours 4071 matched 4034 (99.2%) | sites: 0 bad
+2026-11-08 s4 v38: 00cbfb7d _global::RunCutsceneMacro DIFFER(74965v74778) flags= ['/d2inlS8'] | difflib matched 19697/20435 retail ins = 96.4% (ours 20464) | loose difflib matched 20171/20435 retail ins = 98.7% (ours 20464) | calls retail 4068 ours 4071 matched 4034 (99.2%) | sites: 0 bad
+2026-11-08 s4 v39: 00cbfb7d _global::RunCutsceneMacro DIFFER(74965v74778) flags= ['/d2inlS8'] | difflib matched 19697/20435 retail ins = 96.4% (ours 20464) | loose difflib matched 20171/20435 retail ins = 98.7% (ours 20464) | calls retail 4068 ours 4071 matched 4034 (99.2%) | sites: 0 bad
+2026-11-08 s4 v40: 00cbfb7d _global::RunCutsceneMacro DIFFER(74965v74778) flags= ['/d2inlS8'] | difflib matched 19697/20435 retail ins = 96.4% (ours 20464) | loose difflib matched 20171/20435 retail ins = 98.7% (ours 20464) | calls retail 4068 ours 4071 matched 4034 (99.2%) | sites: 0 bad
+2026-11-08 s4 v41: 00cbfb7d _global::RunCutsceneMacro DIFFER(74965v74778) flags= ['/d2inlS8'] | difflib matched 19697/20435 retail ins = 96.4% (ours 20464) | loose difflib matched 20171/20435 retail ins = 98.7% (ours 20464) | calls retail 4068 ours 4071 matched 4034 (99.2%) | sites: 0 bad

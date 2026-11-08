@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00cbfb7d	DIFFER	74965v74778	-	RunCutsceneMacro parked (differ/00cbfb7d.cpp, session 4): strict 96.4%, register/frame-masked 98.7%, calls 99.2%; every inline site agrees with retail (/d2inlS8 + per-site devices); residue = register allocation (split constant pieces, prologue roles), frame 0x18E4 v 0x18DC, cross-jump tails
