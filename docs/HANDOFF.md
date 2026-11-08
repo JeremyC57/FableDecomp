@@ -71,6 +71,11 @@ of `docs/journal/FINDINGS_LOG.md`. Solved problems: the 2026-11-0x lines at the 
     (ranked remedies in section 6; put them in every new chunk brief; highest-value follow-up: a winedbg probe of c2.dll's
     `color.c` allocator priorities, section 7). That probe is now built: `docs/pipeline/C2_ALLOCATOR_PROBE.md`,
     tool `tools/decomp_pipeline/linux_lane/lane_tools/c2probe/c2prio.py` (diagnoses 0x0085C7D0 / 0x0050A650 / 0x005253F0 in its section 6).
+    Running (the user: "launch new agents with the research rules as well as a fable retry agent with the new research rules"):
+    chunk 862 (seven tiny `$E` / atexit initializers + Script_Villager_Reputation_Dialog 0x00DAADD0 + CGuiComponent::Update 0x00531EC0),
+    chunk 863 (eight never-attempted 2.4-4.1 KB rows: four script functions, CPlayerGui ctor, CLightningBeam::FrameUpdate, two unnamed) and
+    chunk 864 (Fable retry of twenty parked near misses, research rules + probe, goal 10 of 20). Briefs `$S/w22/agent86N/CHUNK_BRIEF.md`
+    carry the shared block `$S/w22/RESEARCH_RULES.md`.
   - (superseded) Authoring was STOPPED (the user, 2026-11-08: "No more authoring"). No agent is running; do not cut or launch chunks until the
     user asks again. Last state: chunk 853 landed `2026-11-08_landing_d/` (~CPlayerGui 0x0043A570; row 0x00CE6CF0 recut into
     CGameflowScript::Init 16 B + DeclareGossipCategories 0x00CE6D00 2221 B, both landed; landed 0x00D3B410 respelled
