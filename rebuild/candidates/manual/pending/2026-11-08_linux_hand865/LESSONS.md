@@ -31,3 +31,8 @@
   as inline-budget.
 - q.py (and g.sh / gall.sh) share one work dir per address: never grade the same address twice at once through them (the two builds
   overwrite each other and both report the first object); gr.py's tag-named dirs are safe.
+- Header overlay copies: a copied header that includes a sibling by bare name (`#include "fable_containers.h"`,
+  `#include "LHNetworkTypes.h"`) needs that sibling copied UNCHANGED into the overlay too, because MSVC resolves a quoted include
+  relative to the including file's directory before the /I paths (C1083 otherwise). List such copies as unchanged in hdr/README.md.
+- "Shared header or local text" is checkable by preprocessing: `cl /EP` of `#include "<hdr>"` with and without FABLE_HDR_OVERLAY must
+  differ only by the blank lines the opt-in blocks leave when their macro is undefined.

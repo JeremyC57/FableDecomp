@@ -35,6 +35,11 @@ public:
     void AddHeader(const std::string& line) { HdrDocumentHeader.push_back(line); }
     void AddHeader(const std::string& name,const std::string& value);
     std::string GetHeaderString();
+#ifdef FABLE_RETAIL_LHHTTP2_GETHEADER
+    // Nested opt-in (chunk 865, row 0x0083F650): Ego_r.pdb ?GetHeader@LHHttpHeaders@LHNetworkLib@@QAE?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z
+    // (the value of the first header line starting with name), called by LHHttp2::GetHeader 0x00840B60 (landed).
+    std::string GetHeader(const std::string& name);                       // 0x0083F650
+#endif
 };
 class LHHttp2 {
     LSocket* Host;
@@ -75,6 +80,10 @@ public:
 #endif
     LH_HTTP_STATUS PrepareRequest(HTTP_REQUEST_TYPE,const std::string&,LHHttpHeaders*,const std::string&,unsigned long);
     LH_HTTP_STATUS ReceiveHeaderAsync();
+#ifdef FABLE_RETAIL_LHHTTP2_GETHEADER
+    // Nested opt-in (chunk 865): Ego_r.pdb ?GetHeader@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@AAULHHttpHeaderStatus@2@@Z (landed 0x00840B60).
+    LH_HTTP_STATUS GetHeader(struct LHHttpHeaderStatus& status);        // 0x00840B60
+#endif
 #ifdef FABLE_RETAIL_LHHTTP2_RECEIVEDOCUMENT
     // Nested opt-in (chunk 854, row 0x0083EFE0): Ego_r.pdb + FableWin.pdb spellings; the three callees out of line in retail and landed.
     LH_HTTP_STATUS ReceiveDocumentAsync();

@@ -65,3 +65,30 @@ inside a band is byte-identical.
 
 ## Grades
 167 logged grade lines in ATTEMPTS.log (a few are duplicates of the same probe); per row in STATUS.tsv. No address was graded twice at once through q.py after the one race noted in LESSONS.
+
+## Follow-up (coordinator, 2026-11-08): 0x0083F650 rewritten on the shared headers
+- src/0083f650.cpp now carries NO local STL or class model: `#define FABLE_RETAIL_LHHTTP2 / FABLE_RETAIL_LHHTTP2_GETHEADER /
+  FABLE_RETAIL_STLP_STRING_FIND / FABLE_RETAIL_STLP_STRING_THROW_INLINE`, `#include "engine/LHHttp2.h"` (which pulls
+  stlport/fable_string.h + fable_containers.h) and `#include "engine/LHStringFunctions_bodies.h"` (StartsWith/toLowerCase bodies, as the
+  landed LHHttp2 rows do). Body unchanged. RELOCATION_MATCH against the 443-byte extent with the same /d2inlS11 flag; the band was
+  re-measured on the shared-header source from a Flags-less copy (S10 and default DIFFER 561v443, S15 and T60 RELOCATION_MATCH).
+- Overlay additions (hdr/README.md has the full list; all additive, 0 lines removed, default path textually unchanged up to blank lines):
+  engine/LHHttp2.h +GETHEADER nested opt-in (the two GetHeader declarations, PDB spellings); stlport/fable_string.h +FIND opt-in
+  (char_traits::eq, _Eq_traits, _Eq_char_bound, `search` declaration 0x00567120, the __find_if 0x00841900 BODY under auto_inline(off),
+  find_if, _Not_within_traits, basic_string::find x2 / find_first_not_of x2) and +THROW_INLINE opt-in (_M_throw_length_error /
+  _M_throw_out_of_range defined in class: retail expands the length error inline here, so stlport/fable_string_bodies.h -- which
+  defines them out of line -- is NOT included). fable_containers.h and LHNetworkTypes.h are unchanged copies needed only because the
+  overlay copies include them by bare name (MSVC resolves quoted includes relative to the includer first).
+- Why the __find_if body is in the header rather than row-local: it is the only way the shared header expresses retail's tag-slot
+  sharing (the landed 0x00840B60 and 0x0083FCE0 models hold the same body locally); a declaration alone gives the one-`lea` residue.
+  Nothing in the row needed local text.
+- Could the shared-header version carry the landed 0x00840B60 LHHttp2::GetHeader (not changed)? Nearly, not yet. One diagnostic grade of
+  probe/840b60_shared.cpp (the landed body on engine/LHHttp2.h + the same four opt-ins, LHHttpHeaderStatus typed row-locally because
+  engine/LHHttpHeaderStatus.h is the opaque generated layout): DIFFER(1000v1000), all 345 instructions identical in order and
+  relocation shape except ONE extra 4-byte frame slot (`sub esp,0x48` -> `0x4c`, every esp offset +4). Candidate: the shared
+  vector::push_back passes `_IsPODType()` with vector::_M_insert_overflow's BODY visible (fable_containers.h line 370) where the landed
+  TU declares _M_insert_overflow only (0x00569E30) -- a tag-temporary home decision like the one fixed here. Carrying it would need a
+  typed LHHttpHeaderStatus opt-in (hsServerCode +0, hsDocumentHeader +4, hsLocation +0x1c, hsDocumentSize +0x28) and that slot chased;
+  not pursued (1 grade, follow-up budget).
+- Follow-up grades: 13 of the 40 allowed (ATTEMPTS.log). payload.json / oracle.tsv now hold only 0x0083F650 (443-byte row); the 11
+  landed sources moved to landed_src/ so finish.py emits one entry.

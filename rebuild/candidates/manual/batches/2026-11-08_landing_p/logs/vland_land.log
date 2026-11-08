@@ -1,0 +1,10 @@
+addr       parity           behav  name
+0083f650   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+0083f650   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+0083f650   RELOCATION_MATCH PASS   GetHeader
+
+WINS: 1
+  0083f650 RELOCATION_MATCH LHNetworkLib::LHHttpHeaders::?GetHeader@LHHttpHeaders@LHNetworkLib@@QAE?AV?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV34@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  LHNetworkLibLHHttpHeaders_GetHeader_0083f650

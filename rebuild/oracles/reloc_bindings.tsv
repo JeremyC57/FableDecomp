@@ -37661,3 +37661,4 @@ _BACKWARDS_LEFT_FORTY_FIVE_DEGREES_ORIENTATION	0137d034	0121adf0
 ?push_back@?$vector@UTeleportData@CQ_BountyHuntScript@NScript@@V?$allocator@UTeleportData@CQ_BountyHuntScript@NScript@@@std@@@std@@QAEXABUTeleportData@CQ_BountyHuntScript@NScript@@@Z	00d18c00	00d17f20
 ?g_NOVIGuardArrestDistance@@3MA	013ac840	00dac760
 ?g_NOVIGuardNoticeDistances@@3PAMA	013ac844	00dac760
+??$__find_if@PBDU?$_Not_within_traits@V?$char_traits@D@std@@@std@@@std@@YIPBDPBD0U?$_Not_within_traits@V?$char_traits@D@std@@@0@ABUrandom_access_iterator_tag@0@@Z	00841900	0083f650

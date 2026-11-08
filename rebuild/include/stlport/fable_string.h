@@ -25,10 +25,78 @@ public:
     static size_t length(const char* p) { return strlen(p); }
     static int compare(const char* a,const char* b,size_t n) { return memcmp(a,b,n); }
     static char* copy(char* a,const char* b,size_t n) { return (char*)memmove(a,b,n); }
+#ifdef FABLE_RETAIL_STLP_STRING_FIND
+    // Opt-in (chunk 865, row 0x0083F650 LHHttpHeaders::GetHeader): STLport 4.6.2 char_traits.h eq(), used by the find predicates below.
+    static bool eq(const char& a,const char& b) { return a==b; }
+#endif
 };
 inline char* uninitialized_copy(const char* first,const char* last,char* result) {
     return (char*)__copy_trivial(first,last,result);
 }
+#ifdef FABLE_RETAIL_STLP_STRING_FIND
+// Opt-in (chunk 865, row 0x0083F650 LHHttpHeaders::GetHeader): STLport 4.6.2 _function_base.h / _string.h / _algo.h pieces behind
+// basic_string::find and find_first_not_of. search<const char*,const char*,_Eq_traits> is out of line in retail (0x00567120, declared);
+// __find_if<const char*,_Not_within_traits> is out of line too (0x00841900, landed as std_findif_00841900.cpp) but its body is in the
+// TU as in STLport, so c2's mod/ref summary knows it never writes through its tag reference (the row's two dispatch-tag temporaries
+// then share one argument slot as in retail); auto_inline(off) keeps it a call.
+template<class _Traits> struct _Eq_traits                            // binary_function: fable_containers.h
+    : public binary_function<typename _Traits::char_type,typename _Traits::char_type,bool> {
+    typedef typename _Traits::char_type char_type;
+    bool operator()(const char_type& x,const char_type& y) const { return _Traits::eq(x,y); }
+};
+template<class _Traits> struct _Eq_char_bound {
+    typedef typename _Traits::char_type char_type;
+    char_type __val;
+    _Eq_char_bound(char_type c) : __val(c) { }
+    bool operator()(const char_type& c) const { return _Traits::eq(c,__val); }
+};
+template<class _ForwardIter1,class _ForwardIter2,class _BinaryPred>
+_ForwardIter1 __fastcall search(_ForwardIter1 first1,_ForwardIter1 last1,_ForwardIter2 first2,_ForwardIter2 last2,
+                                _BinaryPred predicate);                                               // 0x00567120
+#pragma auto_inline(off)
+template<class _RandomAccessIter,class _Predicate>
+_RandomAccessIter __fastcall __find_if(_RandomAccessIter first,_RandomAccessIter last,_Predicate pred,
+                                       const random_access_iterator_tag&) {                           // 0x00841900 (landed)
+    int tripCount=(last-first)>>2;
+    for(;tripCount>0;--tripCount) {
+        if(pred(*first)) return first;
+        ++first;
+        if(pred(*first)) return first;
+        ++first;
+        if(pred(*first)) return first;
+        ++first;
+        if(pred(*first)) return first;
+        ++first;
+    }
+    switch(last-first) {
+    case 3:
+        if(pred(*first)) return first;
+        ++first;
+    case 2:
+        if(pred(*first)) return first;
+        ++first;
+    case 1:
+        if(pred(*first)) return first;
+    case 0:
+    default:
+        return last;
+    }
+}
+#pragma auto_inline(on)
+template<class _InputIter,class _Predicate>
+inline _InputIter find_if(_InputIter first,_InputIter last,_Predicate pred) {
+    return __find_if(first,last,pred,random_access_iterator_tag());
+}
+template<class _Traits> struct _Not_within_traits {
+    typedef const typename _Traits::char_type* _Pointer;
+    const _Pointer _M_first;
+    const _Pointer _M_last;
+    _Not_within_traits(_Pointer f,_Pointer l) : _M_first(f),_M_last(l) { }
+    bool operator()(const typename _Traits::char_type& x) const {
+        return find_if((_Pointer)_M_first,(_Pointer)_M_last,_Eq_char_bound<_Traits>(x))==(_Pointer)_M_last;
+    }
+};
+#endif
 template<class T,class A> class _String_base {
 public:
     typedef A allocator_type;
@@ -36,8 +104,16 @@ public:
     T* _M_finish;
     _STLP_alloc_proxy<T*,T,A> _M_end_of_storage;
     size_t max_size() const { return size_t(-1)/sizeof(T)-1; }
+#ifdef FABLE_RETAIL_STLP_STRING_THROW_INLINE
+    // Opt-in (chunk 865, row 0x0083F650): STLport _string.c's helpers are plain members (fable_string_bodies.h keeps them out of line,
+    // 0x00565A30 / 0x00565360); in the LHHttpHeaders::GetHeader TU VC7.1 expanded the length error in place (`push "basic_string";
+    // call puts; call abort` at 0x0083F7F8). In-class bodies here; do not include fable_string_bodies.h with this opt-in.
+    void _M_throw_length_error() const { puts("basic_string");abort(); }
+    void _M_throw_out_of_range() const { puts("basic_string");abort(); }
+#else
     void _M_throw_length_error() const;
     void _M_throw_out_of_range() const;
+#endif
     void _M_allocate_block(size_t n) {
         if(n<=max_size()+1 && n>0) {
             _M_start=_M_end_of_storage.allocate(n);_M_finish=_M_start;_M_end_of_storage._M_data=_M_start+n;
@@ -90,6 +166,21 @@ public:
     _Self& operator+=(const _Self& s) { return append(s); }
     _Self& operator+=(const C* s) { return append(s); }
     _Self& operator+=(C c) { push_back(c);return *this; }
+#ifdef FABLE_RETAIL_STLP_STRING_FIND
+    // Opt-in (chunk 865): STLport 4.6.2 _string.h find(const C*, pos) / find_first_not_of(const C*, pos) and their _string.c bodies.
+    size_type find(const C* s,size_type pos=0) const { return find(s,pos,Traits::length(s)); }
+    size_type find(const C* s,size_type pos,size_type n) const {
+        if(pos+n>size()) return npos;
+        const C* result=search((const C*)this->_M_start+pos,(const C*)this->_M_finish,s,s+n,_Eq_traits<Traits>());
+        return result!=this->_M_finish?result-this->_M_start:npos;
+    }
+    size_type find_first_not_of(const C* s,size_type pos=0) const { return find_first_not_of(s,pos,Traits::length(s)); }
+    size_type find_first_not_of(const C* s,size_type pos,size_type n) const {
+        if(pos>size()) return npos;
+        const C* result=find_if((const C*)this->_M_start+pos,(const C*)this->_M_finish,_Not_within_traits<Traits>((const C*)s,(const C*)s+n));
+        return result!=this->_M_finish?result-this->_M_start:npos;
+    }
+#endif
     _Self substr(size_type pos=0,size_type n=npos) const {
         if(pos>size()) this->_M_throw_out_of_range();
         return _Self(this->_M_start+pos,this->_M_start+pos+(min)(n,size()-pos));

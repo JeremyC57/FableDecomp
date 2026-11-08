@@ -385675,6 +385675,14 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /d2inlT36'
         PassPattern = '00ef4b40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0083f650'
+        Module = 'LHNetworkLib::LHHttpHeaders'
+        Source = '00/83/LHNetworkLibLHHttpHeaders_GetHeader_0083f650.cpp'
+        TestSource = '00/83/LHNetworkLibLHHttpHeaders_GetHeader_0083f650_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /d2inlS11'
+        PassPattern = '0083f650_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
