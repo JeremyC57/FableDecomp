@@ -38,6 +38,10 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 #include "engine/CBaseClassNonCopyable.h"
+#ifdef FABLE_RETAIL_CTCBASE_REGISTRY
+#include "fable_string.h"
+#include "engine/CVectorMap.h"
+#endif
 class CCharString;
 class CEnginePrimitivePrepareInfo;
 #ifdef FABLE_RETAIL_CTCBASE_COMPONENT
@@ -92,6 +96,31 @@ public:
     virtual void GlobalUpdate(bool);                                     // 26 0x006869A0
     virtual void HandleMessage(const NTCMessages::CMessageBase&);        // 27 0x006869B0
     void RemoveFromGlobalTCs();                                          // 0x00686DF0 ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ (chunk 712)
+#ifdef FABLE_RETAIL_CTCBASE_REGISTRY
+    // Nested opt-in (row 0x004EE23F CTCBase::RegisterTCs): the thing-component class registry.
+    // - CRegisteredTCInfo: Ego_r.pdb CTCBase::CRegisteredTCInfo (12 bytes: AllocFunc +0, DriverType +4, Name +8); its constructor
+    //   ??0CRegisteredTCInfo@CTCBase@@QAE@P6IPAV1@AAVCThing@@@ZKABVCCharString@@@Z (Ego_r.pdb) is out of line in retail at 0x004D2EF0
+    //   (landed; every one of RegisterTCs' 340 registrations calls it). The allocators are the classes' static
+    //   `CTCBase* __fastcall Alloc(CThing&)` (Ego_r / FableWin ?Alloc@CTCHeroMorph@@SIPAVCTCBase@@AAVCThing@@@Z ...).
+    // - StatGetDriverType: Ego_r.pdb / FableWin.pdb ?StatGetDriverType@CTCBase@@SIKXZ, 0x006869C0 (landed: returns 0); driver
+    //   components hide it with their own inline constant.
+    // - RegisterTCs: Ego_r.pdb / FableWin.pdb ?RegisterTCs@CTCBase@@SIXXZ, 0x004EE23F (called once by CMainGameComponent::Init 0x00418585).
+    // - RegisteredTCs: the static map at 0x013BA89C (Ego_r.pdb "dynamic initializer for 'CTCBase::RegisteredTCs'"; FableWin.pdb the same);
+    //   CVectorMap<CCharString, CRegisteredTCInfo> (vector words 0x013BA89C..A4, Compare 0x013BA8A8, Dirty 0x013BA8A9). Its access is not
+    //   recorded in the name sets (no data-symbol dump): private here, the public static accessors (GetPTCInfo 0x00686F60) read it.
+    class CRegisteredTCInfo {
+    public:
+        CRegisteredTCInfo(CTCBase* (__fastcall* allocFunc)(CThing&), unsigned long driverType, const CCharString& name);   // 0x004D2EF0
+        CTCBase*      (__fastcall* AllocFunc)(CThing&);                // +0x00
+        unsigned long DriverType;                                      // +0x04
+        CCharString   Name;                                            // +0x08
+    };
+    static unsigned long __fastcall StatGetDriverType();                // 0x006869C0
+    static void __fastcall RegisterTCs();                               // 0x004EE23F
+private:
+    static CVectorMap<CCharString, CRegisteredTCInfo> RegisteredTCs;    // 0x013BA89C
+public:
+#endif
 #ifdef FABLE_RETAIL_CTCBASE_SERIALISELEVELSTATE
     // Nested opt-in (chunk 779, row 0x00837E40 CThingTrackNode::ConstructFromLevelScript): Ego_r.pdb ?SerialiseLevelState@CTCBase@@QAEX_NAAVCCharString@@0@Z
     // (public, retail 0x00686E10, landed: (bool saving, CCharString& data, bool)), out of line. Declaration only.

@@ -386425,6 +386425,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00c843f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ee23f'
+        Module = 'CTCBase'
+        Source = '00/4e/CTCBase_RegisterTCs_004ee23f.cpp'
+        TestSource = '00/4e/CTCBase_RegisterTCs_004ee23f_test.cpp'
+        PassPattern = '004ee23f_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

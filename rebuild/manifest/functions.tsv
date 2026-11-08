@@ -8157,7 +8157,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004edfdc	_M_fill_insert	std::vector<CMultiStaticMeshEntryDef>	unknown	undefined	0		0	yes	accepted									
 004ee137	Vector_ReallocateAndCopy	_global	unknown	undefined	0		0	yes	accepted									
 004ee219	UninitFillN_CElement56_004eb864_004ee219	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
-004ee23f	Init_RegisterGameComponents	_global	unknown	undefined	0		0	yes	accepted									
+004ee23f	RegisterTCs	CTCBase	unknown	undefined	0		0	yes	accepted									
 004f9145	Copy	CHeroExperienceDef	__thiscall	void	2	CHeroExperienceDef *,CDefClassBase const *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4f\CHeroExperienceDef_Copy_004f9145.cpp
 004f914a	operator=	CHeroExperienceDef	unknown	undefined	0		0	yes	accepted									
 004f9207	operator=	CRetailTree_004f927a	unknown	undefined	0		0	yes	accepted									
@@ -19391,7 +19391,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0073b0d0	ResetModes	CTCCreatureModeManager	__thiscall	void	2	CMapsAndRegionsDialog *,bool	1	yes	accepted									
 0073b110	OnCreate	CTCCreatureModeManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0073b120	InitialActivate	CTCCreatureModeManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0073b130	Init_RegisterGameComponents	_global	unknown	undefined	0		0	yes	accepted									
+0073b130	RegisterModes	CTCCreatureModeManager	unknown	undefined	0		0	yes	accepted									
 0073cc90	FreeSelf_0073cc90	_unattributed	unknown	undefined	0		0			discovered	gapscan							
 0073ce20	CCountedPointer_Release_0073ce20	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073ce20.cpp
 0073cef0	CCountedPointer_Release_0073cef0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_0073cef0.cpp

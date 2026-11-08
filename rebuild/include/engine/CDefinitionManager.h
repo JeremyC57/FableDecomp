@@ -11,6 +11,11 @@ class CDefString;
 class CDefinitionManager : public CResourceList {
     friend class CDefClassBase;
 public:
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_ADDDEFCLASS
+    // Retail opt-in (row 0x004EE23F CTCBase::RegisterTCs): Ego_r.pdb / FableWin.pdb ?AddDefClass@CDefinitionManager@@QAEXABVCDefClassInit@@@Z,
+    // out of line in retail at 0x009B0AC0 (landed); called 111 times by RegisterTCs on CGameDefinitionManager::Get(). Declaration only.
+    void AddDefClass(const class CDefClassInit& init);                 // 0x009B0AC0
+#endif
     virtual ~CDefinitionManager();
     long GetGlobalIndexFromClassIndex(const CCharString&,long) const;
     template<class T> bool GetDef(long,CDefPointer<const T>*) const;
@@ -62,6 +67,11 @@ struct _func___cdecl_void_CCharString_ptr;
 #pragma pack(push, 1)
 class CDefinitionManager {
 public:
+#ifdef FABLE_RETAIL_CDEFINITIONMANAGER_ADDDEFCLASS
+    // Retail opt-in (row 0x004EE23F CTCBase::RegisterTCs): Ego_r.pdb / FableWin.pdb ?AddDefClass@CDefinitionManager@@QAEXABVCDefClassInit@@@Z,
+    // out of line in retail at 0x009B0AC0 (landed); called 111 times by RegisterTCs on CGameDefinitionManager::Get(). Declaration only.
+    void AddDefClass(const class CDefClassInit& init);                 // 0x009B0AC0
+#endif
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                       _pad_0x04[0x4];      // +0x04
     unsigned char                       _pad_0x08[0x4];      // +0x08

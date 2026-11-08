@@ -82,7 +82,29 @@ public:
 #else
     inline
 #endif
+#ifdef FABLE_RETAIL_CVECTORMAP_INSERT_VALUE_TYPE
+    // Nested opt-in (row 0x004EE23F CTCBase::RegisterTCs): the pair is built as a value_type temporary, not through make_pair.
+    // Retail pushes the pair constructor's own return value (0x004EE2C6 `call pair::pair ; push eax ; mov ecx,esi ; call push_back`,
+    // all 340 sites), which only a direct temporary gives; an inlined make_pair re-materialises the temporary's address
+    // (`lea eax,[pair]`). FableWin.pdb (unoptimised, 61 out-of-line Insert instances) holds no make_pair for any CVectorMap key/value
+    // pair (not <CCharString, CTCBase::CRegisteredTCInfo>, not <EAnimComponent, CIVCountedPointer<CAnimComponentBase> >), which
+    // also points to a direct construction. Row 0x005DD670 keeps the make_pair body below (its 17/26 push_back split depends on it).
+    void Insert(const K& key,const V& value) { this->push_back(value_type(key,value)); Dirty=true; }
+#else
     void Insert(const K& key,const V& value) { this->push_back(std::make_pair(key,value)); Dirty=true; }
+#endif
+#endif
+#ifdef FABLE_RETAIL_CVECTORMAP_SORT
+    // Retail opt-in (row 0x004EE23F CTCBase::RegisterTCs): Ego_r.pdb ?Sort@?$CVectorMap@..@@QAEXXZ (the CCharString /
+    // CTCBase::CRegisteredTCInfo instance at Ego_r 0x00507625; 58 FableWin.pdb instances) and FableWin.pdb ?Update@?$CVectorMap@..@@QAEXXZ.
+    // Update is expanded in the caller (`cmp byte ptr [Dirty],0 ; je ; mov ecx,esi ; call Sort`, 0x004F912E). Sort is an inline body
+    // (std::sort over [begin, end) with the stored Compare, then Dirty cleared) that RegisterTCs, past VC7.1's inline budget, calls out of
+    // line (0x004EBACE, `push Compare ; call std::sort ; mov byte ptr [esi+0Dh],0`); row 0x005DD670 has the same pair expanded in place
+    // (FABLE_RETAIL_CVECTORMAP_INSERT's Update). Needs FABLE_RETAIL_STLP_SORT_FASTCALL (std::sort is __fastcall in retail).
+    void Sort() { std::sort(this->begin(),this->end(),Compare); Dirty=false; }   // 0x004EBACE (CCharString / CRegisteredTCInfo instance)
+#ifndef FABLE_RETAIL_CVECTORMAP_INSERT   // that opt-in's Update is the same body with Sort written out
+    void Update() { if(Dirty) Sort(); }
+#endif
 #endif
 private:
     CompareType Compare;

@@ -1,0 +1,4 @@
+2026-11-08	full1 (generated: 340 REGISTER_TC + 111 REGISTER_DEF_CLASS, optimize("s"), Insert via make_pair)	DIFFER(46123v44806)	frame 0x2FB4 exact; make_pair temp reloaded (`lea eax,[pair]`) where retail pushes the pair ctor's eax
+2026-11-08	full2 (Insert builds value_type(key, value) directly)	RELOCATION_MATCH(44806v44806)	10236/10236 ins
+2026-11-08	v3 polished generated source (one-line class declarations, Sort inline body in the overlay)	RELOCATION_MATCH(44806v44806)	relcheck: 926 symbols, one address each
+2026-11-08	v4 CHitLocation from engine/NHitLocations_CHitLocation.h (+StatRegisterClass opt-in), CTCCameraPointDefinitionBase : CTCBase, comments	RELOCATION_MATCH(44806v44806)

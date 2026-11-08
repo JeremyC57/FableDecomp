@@ -1,0 +1,78 @@
+addr       parity           behav  name
+004ee23f   WARN SHARED_HEADER_AVAILABLE CHighlightItemDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CTimeAppearanceFadeDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CCreatureNavigationDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CInventoryItemDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CLookDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CReadableDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CVillageMemberDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CBuyHouseDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CDoorDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CLightDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CSpotLightDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CHeroDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CPerceivedThingDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CStealthDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CTrophyDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CChestDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CExplodingObjectDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CCarryableDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CEnemyDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CStockItemDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CHeroCentreDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CTCVolumeContainmentTrackerDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CThingDrainLifeShotDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CFireballSpellLevelDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CExpressionSubDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CWillResponseDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CAIScratchpadDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE COccupiableDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CGuardDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CInterestingToVillagersDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CActivateQuestDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CCrateStackDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE COverheadDisplayDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CTavernTableDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CTavernDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CGoldDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CAICreatureWillPowerIndicatorDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CKickableDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CTavernGameDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CTavernGameCardBaseDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CTavernGameCoinBaseDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CTavernGameCoinGolfDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CDecapitationDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CFishDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CExplosionDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CResurrectionItemDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CKrakenTentacleDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CHeroSpecialMovementDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CCarriedReadableDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CShipDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CShopItemDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CNymphDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CSummonDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CCameraCollisionDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CBettingDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE COracleMinigameDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CFireheartMinigameDef
+004ee23f   WARN SHARED_HEADER_AVAILABLE CHasNameDef
+004ee23f   WARN RELOC_NAME: __chkstk -> 00bfea30 labelled '__chkstk'
+004ee23f   WARN RELOC_NAME: ?RegisteredTCs@CTCBase@@0V?$CVectorMap@VCCharString@@VCRegisteredTCInfo@CTCBase@@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@@A -> 013ba89c labelled 'CTCBase::RegisteredTCs (CVectorMap<CCharString, CTCBase::CRegisteredTCInfo, CKeyPairCompareLess<...>>)'
+004ee23f   WARN RELOC_NAME: ?StatRegisterClass@CTCCreatureGenerator@@SIXXZ -> 00749d60 labelled '_global::Nop_ret0_00749d60'
+004ee23f   WARN RELOC_NAME: ?StatRegisterClass@CTCCombat@@SIXXZ -> 007330f0 labelled '_global::Nop_ret0_007330f0'
+004ee23f   WARN RELOC_NAME: ?StatRegisterClass@CTCHeroRangedAttacks@@SIXXZ -> 007899c0 labelled '_global::ResetUnprovenFloat_007899c0'
+004ee23f   WARN RELOC_NAME: ?StatRegisterClass@CTCHaste@@SIXXZ -> 007fffa0 labelled '_global::ResetActionSpeedMultiplierOverride_007fffa0'
+004ee23f   WARN RELOC_NAME: ?StatRegisterClass@CTCCreatureNavigation@@SIXXZ -> 006cba00 labelled '_global::Nop_ret0_006cba00'
+004ee23f   WARN RELOC_NAME: ?StatRegisterClass@CTCCameraPointDefinitionBase@@SIXXZ -> 0075c0e0 labelled 'CameraState::ResetCameraPointEnable'
+004ee23f   WARN RELOC_NAME: ?StatRegisterClass@CHitLocation@NHitLocations@@SIXXZ -> 008162f0 labelled '_global::RegisterThingHandlers'
+004ee23f   WARN RELOC_NAME: ?StatRegisterClass@CTCTargetingPlayer@@SIXXZ -> 00802370 labelled '_global::InitTargetingPlayerFlags_00802370'
+004ee23f   WARN RELOC_NAME: ??1?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@QAE@XZ -> 004d6902 labelled '_global::Dtor_CCharStringBase_004d6902'
+004ee23f   WARN RELOC_NAME: ?RegisterModes@CTCCreatureModeManager@@SIXXZ -> 0073b130 labelled 'Init_RegisterGameComponents'
+004ee23f   RELOCATION_MATCH PASS   RegisterTCs
+
+WINS: 1
+  004ee23f RELOCATION_MATCH CTCBase::?RegisterTCs@CTCBase@@SIXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCBase_RegisterTCs_004ee23f

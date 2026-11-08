@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+004ee23f	RELOCATION_MATCH	44806v44806	PASS	CTCBase::RegisterTCs (?RegisterTCs@CTCBase@@SIXXZ; Ego_r 0x0050C7CD + FableWin 0x01B846AD); 4 grades (match at grade 2); generated from the retail statement list; optimize("s") TU + CVectorMap::Insert value_type opt-in; needs FABLE_HDR_OVERLAY=hdr/ (5 headers)

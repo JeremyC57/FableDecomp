@@ -13,6 +13,12 @@ public:
     EActionRegisteredType GetHitResponseActionType() const;
     EActionRegisteredType GetHitKnockdownActionType() const;
     EActionRegisteredType GetHitKnockdownDeathActionType() const;
+#ifdef FABLE_RETAIL_CHITLOCATION_STATREGISTERCLASS
+    // Retail opt-in (row 0x004EE23F CTCBase::RegisterTCs): Ego_r.pdb / FableWin.pdb ?StatRegisterClass@CHitLocation@NHitLocations@@SIXXZ
+    // (public static __fastcall), retail 0x008162F0 (between the NHitLocations primitives and CHitLocation::SetEnabled 0x00816390, as Ego_r
+    // 0x0080ED20 follows CTCTargetingPlayer::StatRegisterClass); RegisterTCs calls it with the other classes' static setup. Declaration only.
+    static void __fastcall StatRegisterClass();                          // 0x008162F0
+#endif
 };
 }
 FABLE_STATIC_ASSERT(sizeof(NHitLocations::CHitLocation)==0x18);

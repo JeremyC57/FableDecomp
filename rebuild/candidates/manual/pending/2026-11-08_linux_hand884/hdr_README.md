@@ -1,0 +1,19 @@
+# hdr/ overlay -- chunk 884 (row 0x004EE23F CTCBase::RegisterTCs, matched)
+
+Every change is additive: a new `#ifdef FABLE_RETAIL_*` block in a copy of the shared header, or a new header. Without the macro the
+default path is byte-for-byte the shared header in rebuild/include (`diff` shows only the added blocks). Only src/004ee23f.cpp defines
+these macros. Row 0x005DD670 (CAnimationEntry::StatRegisterClass, landed) still grades RELOCATION_MATCH through this overlay.
+
+| Header | Opt-in | What it adds | Retail evidence |
+|---|---|---|---|
+| engine/CTCBase.h | FABLE_RETAIL_CTCBASE_REGISTRY (inside FABLE_RETAIL_CTCBASE) | Nested `class CRegisteredTCInfo` (AllocFunc +0, DriverType +4, Name +8; the out-of-line ctor declared), `static unsigned long __fastcall StatGetDriverType()`, `static void __fastcall RegisterTCs()`, private `static CVectorMap<CCharString, CRegisteredTCInfo> RegisteredTCs`; includes fable_string.h and engine/CVectorMap.h | Ego_r.pdb CTCBase::CRegisteredTCInfo (12 bytes) and ??0CRegisteredTCInfo@CTCBase@@QAE@P6IPAV1@AAVCThing@@@ZKABVCCharString@@@Z (0x004D2EF0, called at all 340 sites); ?StatGetDriverType@CTCBase@@SIKXZ 0x006869C0; ?RegisterTCs@CTCBase@@SIXXZ 0x004EE23F (Ego_r + FableWin); "dynamic initializer for 'CTCBase::RegisteredTCs'" (Ego_r + FableWin), the map at 0x013BA89C. The member's access is not in the name sets (private chosen, see NOTES) |
+| engine/CVectorMap.h | FABLE_RETAIL_CVECTORMAP_INSERT_VALUE_TYPE (nested in _INSERT_KEYVALUE) | `Insert(key, value)` builds `value_type(key, value)` instead of `std::make_pair(key, value)` | 0x004EE2C6 `call pair::pair ; push eax ; mov ecx,esi ; call push_back` at all 340 sites: the pair constructor's own return value is pushed, which only a direct temporary gives (make_pair re-loads `lea eax,[pair]`). FableWin.pdb has no make_pair for any CVectorMap key/value pair |
+| engine/CVectorMap.h | FABLE_RETAIL_CVECTORMAP_SORT | `void Sort() { std::sort(begin(), end(), Compare); Dirty = false; }` and `void Update() { if (Dirty) Sort(); }` (Update only when _INSERT is not defined: its Update is the same body with Sort written out) | Ego_r.pdb ?Sort@?$CVectorMap@VCCharString@@VCRegisteredTCInfo@CTCBase@@..@@QAEXXZ (0x00507625) + 58 FableWin instances, FableWin ?Update@..@@QAEXXZ; retail 0x004EBACE (Sort, out of line past the inline budget) called from the expanded Update at 0x004F912E. Needs FABLE_RETAIL_STLP_SORT_FASTCALL |
+| engine/CDefinitionManager.h | FABLE_RETAIL_CDEFINITIONMANAGER_ADDDEFCLASS (both branches) | Declaration `void AddDefClass(const class CDefClassInit&)` | ?AddDefClass@CDefinitionManager@@QAEXABVCDefClassInit@@@Z (Ego_r + FableWin), 0x009B0AC0 landed, called 111 times |
+| engine/CDefClassInit.h | (new header) | `class CDefClassInit { CCharString Name; TAllocFunc AllocFunc; }` with the inline (const CCharString&, CDefClassBase* (__fastcall*)()) ctor | Ego_r.pdb CDefClassInit (8 bytes: Name +0, AllocFunc +4); FableWin.pdb ??0CDefClassInit@@QAE@ABVCCharString@@P6IPAVCDefClassBase@@XZ@Z; expanded at RegisterTCs' first 8 uses (0x004EE321), out of line 0x0042DAE0 after |
+| engine/NHitLocations_CHitLocation.h | FABLE_RETAIL_CHITLOCATION_STATREGISTERCLASS | Declaration `static void __fastcall StatRegisterClass()` | ?StatRegisterClass@CHitLocation@NHitLocations@@SIXXZ (Ego_r 0x0080ED20 + FableWin 0x024E5C50); retail 0x008162F0 sits among the NHitLocations functions (CHitLocation::SetEnabled 0x00816390) |
+
+Folding into rebuild/include: all blocks are safe to add as they are (no landed source defines these macros). The Insert body is a
+review item: the PDB evidence favours `value_type(key, value)` for every instantiation; 0x005DD670 currently matches only with
+make_pair (its 17/26 push_back inline split depends on the extra make_pair layer), so the two bodies stay side by side until that row
+is re-derived on the value_type form.
