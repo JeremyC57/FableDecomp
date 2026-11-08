@@ -1,0 +1,4 @@
+- libpk MMX resamplers (0x00C78A10..0x00C7AB20) are ivec.h class code, not inline asm: write `mul_add(in[k], c[n])` with the window as `const Is16vec4*` (unnamed quads) -- named window locals change VC7.1's spill-slot packing.
+- ivec gain vectors: `__declspec(align(16)) Is16vec4 g((short)a, (short)b, ...)` through a lane constructor that stores four words gives retail's word stores + movq reload; `_mm_set_pi16` does not; `short` parameters give retail's lea operand order.
+- A big ivec function that calls an Is32vec2 operator out of line in its last switch case has hit the inline budget: spell one helper chain (e.g. the zero-extend widen) with the raw `_m_*` intrinsic -- plain C++, same instructions.
+- VC7.1 (3077 and QFE 4035) narrows every `test mem32, imm<0x100` to `test byte ptr` at /O1, /O2, /Ox, /Os, /G5-/G7, even through `const volatile`: a retail `test dword ptr [r+N], 0Fh` is not reachable from C++ at /O2 (only /Od or /Og- keep a dword, as and+cmp).

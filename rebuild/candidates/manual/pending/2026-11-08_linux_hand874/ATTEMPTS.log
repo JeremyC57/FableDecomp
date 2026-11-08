@@ -1,0 +1,217 @@
+00c51f50 c51f50_a.cpp DIFFER(2280v2288) a: first draft
+00c51f50 c51f50_b.cpp DIFFER(2352v2288) b: uchar changed, case NONE
+00c51f50 c51f50_c.cpp DIFFER(2356v2288) c: case NONE changed=true
+00c51f50 c51f50_d.cpp DIFFER(2388v2288) d: if(changed) return apply; return 0
+00c51f50 c51f50_e.cpp DIFFER(2388v2288) e: index data directly in loops
+00c51f50 c51f50_f.cpp DIFFER(2388v2288) f: value = data local for the simple cases
+00c51f50 x1.cpp DIFFER(2276v2288) x1 experiment: no cases 2-4
+00c51f50 x3.cpp DIFFER(2384v2288) x3 experiment: tail without data
+00c78a10 m1.cpp DIFFER(648v2596) m1 probe
+00c78a10 m2.cpp DIFFER(2596v2596) m2 4 cases
+00c78a10 m3.cpp DIFFER(2596v2596) m3 function-scope w/s
+00c78a10 m3q.cpp DIFFER(2596v2596) m3q rename w->q
+00c78a10 m4.cpp DIFFER(2596v2596) m4 desc decl
+00c78a10 e1.cpp DIFFER(677v2596) e1 only case1
+00c78a10 e2.cpp DIFFER(1319v2596) e2 case1,0
+00c78a10 v1.cpp DIFFER(2892v2596) v1 ivec classes
+00c78a10 v2.cpp DIFFER(2596v2596) v2 ivec, in is __m64*
+00c78a10 v3.cpp DIFFER(2596v2596) v3 ivec sums, __m64 w
+00c78a10 v4.cpp DIFFER(2560v2596) v4 ivec, out[0]/out[1]
+00c78a10 v2.cpp DIFFER(2596v2596) v2 regrade for analysis
+00c79440 r1.cpp DIFFER(2880v2948) r1 mono ramp ivec, set_pi16 gains
+00c79440 r2.cpp DIFFER(2864v2948) r2 short ctor gains
+00c79440 r3.cpp DIFFER(2948v2948) r3 align16 gains, step+start
+00c79440 r4.cpp DIFFER(2948v2948) r4 step declared first
+00c79440 r5a.cpp DIFFER(2948v2948) r5a gain arg spelling
+00c79440 r5b.cpp DIFFER(2948v2948) r5b gain arg spelling
+00c79440 r5c.cpp DIFFER(2948v2948) r5c gain arg spelling
+00c79440 r6.cpp DIFFER(2948v2948) r6 short gain params
+00c79fd0 s1.cpp DIFFER(2844v2884) s1 stereo ivec
+00c79fd0 s1B.cpp DIFFER(2864v2884) s1B stereo out-stage variant
+00c79fd0 s1C.cpp SRC_FAIL s1C stereo out-stage variant
+00c79fd0 s1D.cpp DIFFER(2844v2884) s1D stereo out-stage variant
+00c79fd0 s1C.cpp DIFFER(2844v2884) s1C stereo a>>=1
+00c79fd0 s1.cpp DIFFER(2844v2884) s1 regrade
+00c79fd0 s2m.cpp SRC_FAIL s2m sums as __m64
+00c79fd0 s2I.cpp SRC_FAIL s2I sums as I32vec2
+00c5b7c0 b1.cpp DIFFER(1296v1330) b1 first draft
+00c5b7c0 b2.cpp DIFFER(1363v1330) b2 explicit tails, bitfield stereo, %16
+00c5b7c0 b3.cpp DIFFER(1312v1330) b3 b1 + bitfield stereo + explicit filter1
+00c5b7c0 b4.cpp DIFFER(1320v1330) b4 ApplyFilter body visible
+00c5b7c0 b5.cpp DIFFER(1320v1330) b5 hook before channels
+00c5b7c0 b6a.cpp DIFFER(1340v1330) b6a loop tail split playing/not
+00c5b7c0 b6b.cpp DIFFER(1343v1330) b6b loop tail split playing/not
+00c5b7c0 b6a.cpp DIFFER(1340v1330) b6a regrade for view
+00c5b7c0 b7.cpp DIFFER(1320v1330) b7 separate mixed=true per path
+00c5b7c0 b8.cpp DIFFER(1325v1330) b8 bit5 accessor; align test spelling
+00c5b7c0 b8a.cpp DIFFER(1325v1330) b8a bit5 accessor; align test spelling
+00c5b7c0 b8b.cpp DIFFER(1325v1330) b8b bit5 accessor; align test spelling
+00c5b7c0 b8c.cpp DIFFER(1325v1330) b8c bit5 accessor; align test spelling
+00c5b7c0 b8.cpp DIFFER(1325v1330) b8 regrade
+00c5b7c0 b9.cpp DIFFER(1325v1330) b9 IsStopped inline accessor
+00c5b7c0 b10a.cpp DIFFER(1328v1330) b10a loop head spelling
+00c5b7c0 b10b.cpp DIFFER(1325v1330) b10b loop head spelling
+00c5b7c0 b10c.cpp DIFFER(1325v1330) b10c loop head spelling
+00c5b7c0 b10a.cpp DIFFER(1328v1330) b10a regrade
+00c5b7c0 b11a.cpp DIFFER(1328v1330) b11a EAX caps spelling
+00c5b7c0 b11b.cpp DIFFER(1328v1330) b11b EAX caps spelling
+00c5b7c0 b11c.cpp DIFFER(1328v1330) b11c EAX caps spelling
+00c5b7c0 b11a.cpp DIFFER(1328v1330) b11a regrade
+00c5b7c0 b12a.cpp DIFFER(1328v1330) b12a loop form
+00c5b7c0 b12b.cpp DIFFER(1328v1330) b12b loop form
+00c5b7c0 b12c.cpp DIFFER(1328v1330) b12c loop form
+00c5b7c0 b11a.cpp DIFFER(1328v1330) b11a regrade2
+00c5b7c0 b13a.cpp DIFFER(1357v1330) b13a for-loop done
+00c5b7c0 b13b.cpp SRC_FAIL b13b for-loop done
+00c5b7c0 b14.cpp DIFFER(1328v1330) b14 NeedsConversion inline helper
+00c5b7c0 b14a.cpp DIFFER(1328v1330) b14a NeedsConversion inline helper
+00c78a10 v2.cpp DIFFER(2596v2596) v2 regrade for slot map
+00c78a10 sw_mono1_1.cpp DIFFER(2596v2596) sweep mono1 1: winit=eq wdecl=desc loop=for inc=end scope=block
+00c78a10 sw_mono1_2.cpp DIFFER(2596v2596) sweep mono1 2: winit=eq wdecl=desc loop=for inc=end scope=func
+00c78a10 sw_mono1_3.cpp DIFFER(2596v2596) sweep mono1 3: winit=eq wdecl=desc loop=for inc=for scope=block
+00c78a10 sw_mono1_4.cpp DIFFER(2596v2596) sweep mono1 4: winit=eq wdecl=desc loop=for inc=for scope=func
+00c78a10 sw_mono1_5.cpp DIFFER(2596v2596) sweep mono1 5: winit=eq wdecl=desc loop=forn inc=end scope=block
+00c78a10 sw_mono1_6.cpp DIFFER(2596v2596) sweep mono1 6: winit=eq wdecl=desc loop=forn inc=end scope=func
+00c78a10 sw_mono1_7.cpp DIFFER(2596v2596) sweep mono1 7: winit=eq wdecl=asc loop=for inc=end scope=block
+00c78a10 sw_mono1_8.cpp DIFFER(2596v2596) sweep mono1 8: winit=eq wdecl=asc loop=for inc=end scope=func
+00c78a10 sw_mono1_9.cpp DIFFER(2596v2596) sweep mono1 9: winit=eq wdecl=asc loop=for inc=for scope=block
+00c78a10 sw_mono1_10.cpp DIFFER(2596v2596) sweep mono1 10: winit=eq wdecl=asc loop=for inc=for scope=func
+00c78a10 sw_mono1_11.cpp DIFFER(2596v2596) sweep mono1 11: winit=eq wdecl=asc loop=forn inc=end scope=block
+00c78a10 sw_mono1_12.cpp DIFFER(2596v2596) sweep mono1 12: winit=eq wdecl=asc loop=forn inc=end scope=func
+00c78a10 sw_mono1_13.cpp DIFFER(2596v2596) sweep mono1 13: winit=ctor wdecl=desc loop=for inc=end scope=block
+00c78a10 sw_mono1_14.cpp DIFFER(2596v2596) sweep mono1 14: winit=ctor wdecl=desc loop=for inc=end scope=func
+00c78a10 sw_mono1_15.cpp DIFFER(2596v2596) sweep mono1 15: winit=ctor wdecl=desc loop=for inc=for scope=block
+00c78a10 sw_mono1_16.cpp DIFFER(2596v2596) sweep mono1 16: winit=ctor wdecl=desc loop=for inc=for scope=func
+00c78a10 sw_mono1_17.cpp DIFFER(2596v2596) sweep mono1 17: winit=ctor wdecl=desc loop=forn inc=end scope=block
+00c51f50 c51f50_d.cpp DIFFER(2388v2288) d regrade
+00c78a10 sw_mono1_18.cpp DIFFER(2596v2596) sweep mono1 18: winit=ctor wdecl=desc loop=forn inc=end scope=func
+00c78a10 sw_mono1_19.cpp DIFFER(2596v2596) sweep mono1 19: winit=ctor wdecl=asc loop=for inc=end scope=block
+00c78a10 sw_mono1_20.cpp DIFFER(2596v2596) sweep mono1 20: winit=ctor wdecl=asc loop=for inc=end scope=func
+00c78a10 sw_mono1_21.cpp DIFFER(2596v2596) sweep mono1 21: winit=ctor wdecl=asc loop=for inc=for scope=block
+00c78a10 sw_mono1_22.cpp DIFFER(2596v2596) sweep mono1 22: winit=ctor wdecl=asc loop=for inc=for scope=func
+00c78a10 sw_mono1_23.cpp DIFFER(2596v2596) sweep mono1 23: winit=ctor wdecl=asc loop=forn inc=end scope=block
+00c78a10 sw_mono1_24.cpp DIFFER(2596v2596) sweep mono1 24: winit=ctor wdecl=asc loop=forn inc=end scope=func
+00c78a10 sw_mono1_25.cpp DIFFER(2596v2596) sweep mono1 25: winit=cast wdecl=desc loop=for inc=end scope=block
+00c78a10 sw_mono1_26.cpp DIFFER(2596v2596) sweep mono1 26: winit=cast wdecl=desc loop=for inc=end scope=func
+00c78a10 sw_mono1_27.cpp DIFFER(2596v2596) sweep mono1 27: winit=cast wdecl=desc loop=for inc=for scope=block
+00c78a10 sw_mono1_28.cpp DIFFER(2596v2596) sweep mono1 28: winit=cast wdecl=desc loop=for inc=for scope=func
+00c78a10 sw_mono1_29.cpp DIFFER(2596v2596) sweep mono1 29: winit=cast wdecl=desc loop=forn inc=end scope=block
+00c78a10 sw_mono1_30.cpp DIFFER(2596v2596) sweep mono1 30: winit=cast wdecl=desc loop=forn inc=end scope=func
+00c78a10 sw_mono1_31.cpp DIFFER(2596v2596) sweep mono1 31: winit=cast wdecl=asc loop=for inc=end scope=block
+00c78a10 sw_mono1_32.cpp DIFFER(2596v2596) sweep mono1 32: winit=cast wdecl=asc loop=for inc=end scope=func
+00c78a10 sw_mono1_33.cpp DIFFER(2596v2596) sweep mono1 33: winit=cast wdecl=asc loop=for inc=for scope=block
+00c78a10 sw_mono1_34.cpp DIFFER(2596v2596) sweep mono1 34: winit=cast wdecl=asc loop=for inc=for scope=func
+00c78a10 sw_mono1_35.cpp DIFFER(2596v2596) sweep mono1 35: winit=cast wdecl=asc loop=forn inc=end scope=block
+00c78a10 sw_mono1_36.cpp DIFFER(2596v2596) sweep mono1 36: winit=cast wdecl=asc loop=forn inc=end scope=func
+00c51f50 c51f50_g.cpp DIFFER(2388v2288) g: value copy of data for simple cases
+00c78a10 v6.cpp RELOCATION_MATCH v6 no named window (CSE temps)
+00c78a10 v7.cpp RELOCATION_MATCH v7 no named window (CSE temps)
+00c79440 r8.cpp RELOCATION_MATCH r8 unnamed window
+00c79fd0 s3.cpp DIFFER(2884v2884) s3 unnamed window
+00c7ab20 t2.cpp DIFFER(3280v3236) t2 stereo ramp unnamed window
+00c7ab20 t3pgo.cpp DIFFER(3280v3236) t3 pre order pgo
+00c7ab20 t3ogp.cpp DIFFER(3280v3236) t3 pre order ogp
+00c7ab20 t3opg.cpp DIFFER(3312v3236) t3 pre order opg
+00c7ab20 t2.cpp DIFFER(3280v3236) t2 regrade
+00c7ab20 sw_sr1_1.cpp DIFFER(3280v3236) sweep sr1 1: mode=stereoramp+now=2+pre=gspo
+00c7ab20 sw_sr1_2.cpp DIFFER(3280v3236) sweep sr1 2: mode=stereoramp+now=2+pre=gsop
+00c7ab20 sw_sr1_3.cpp DIFFER(3280v3236) sweep sr1 3: mode=stereoramp+now=2+pre=gpso
+00c7ab20 sw_sr1_4.cpp DIFFER(3280v3236) sweep sr1 4: mode=stereoramp+now=2+pre=gpos
+00c7ab20 sw_sr1_5.cpp DIFFER(3280v3236) sweep sr1 5: mode=stereoramp+now=2+pre=gosp
+00c7ab20 sw_sr1_6.cpp DIFFER(3312v3236) sweep sr1 6: mode=stereoramp+now=2+pre=gops
+00c7ab20 sw_sr1_7.cpp DIFFER(3296v3236) sweep sr1 7: mode=stereoramp+now=2+pre=sgpo
+00c7ab20 sw_sr1_8.cpp DIFFER(3296v3236) sweep sr1 8: mode=stereoramp+now=2+pre=sgop
+00c7ab20 sw_sr1_9.cpp DIFFER(3296v3236) sweep sr1 9: mode=stereoramp+now=2+pre=spgo
+00c7ab20 sw_sr1_10.cpp DIFFER(3312v3236) sweep sr1 10: mode=stereoramp+now=2+pre=spog
+00c7ab20 sw_sr1_11.cpp DIFFER(3296v3236) sweep sr1 11: mode=stereoramp+now=2+pre=sogp
+00c7ab20 sw_sr1_12.cpp DIFFER(3312v3236) sweep sr1 12: mode=stereoramp+now=2+pre=sopg
+00c7ab20 sw_sr1_13.cpp DIFFER(3280v3236) sweep sr1 13: mode=stereoramp+now=2+pre=pgso
+00c7ab20 sw_sr1_14.cpp DIFFER(3280v3236) sweep sr1 14: mode=stereoramp+now=2+pre=pgos
+00c7ab20 sw_sr1_15.cpp DIFFER(3296v3236) sweep sr1 15: mode=stereoramp+now=2+pre=psgo
+00c7ab20 sw_sr1_16.cpp DIFFER(3312v3236) sweep sr1 16: mode=stereoramp+now=2+pre=psog
+00c7ab20 sw_sr1_17.cpp DIFFER(3312v3236) sweep sr1 17: mode=stereoramp+now=2+pre=pogs
+00c7ab20 sw_sr1_18.cpp DIFFER(3312v3236) sweep sr1 18: mode=stereoramp+now=2+pre=posg
+00c7ab20 sw_sr1_19.cpp DIFFER(3280v3236) sweep sr1 19: mode=stereoramp+now=2+pre=ogsp
+00c7ab20 sw_sr1_20.cpp DIFFER(3312v3236) sweep sr1 20: mode=stereoramp+now=2+pre=ogps
+00c7ab20 sw_sr1_21.cpp DIFFER(3296v3236) sweep sr1 21: mode=stereoramp+now=2+pre=osgp
+00c7ab20 sw_sr1_22.cpp DIFFER(3312v3236) sweep sr1 22: mode=stereoramp+now=2+pre=ospg
+00c7ab20 sw_sr1_23.cpp DIFFER(3312v3236) sweep sr1 23: mode=stereoramp+now=2+pre=opgs
+00c7ab20 sw_sr1_24.cpp DIFFER(3312v3236) sweep sr1 24: mode=stereoramp+now=2+pre=opsg
+00c79440 00c79440.cpp RELOCATION_MATCH src final
+00c78a10 00c78a10.cpp RELOCATION_MATCH src final
+00c79fd0 sA_panconst.cpp DIFFER(2884v2884) sA panconst
+00c79fd0 sA_panlast.cpp DIFFER(2884v2884) sA panlast
+00c79fd0 sA_panswap.cpp DIFFER(2888v2884) sA panswap
+00c79fd0 sA_idx.cpp DIFFER(2876v2884) sA idx
+00c79fd0 sA_pancopy.cpp DIFFER(2844v2884) sA pancopy
+00c79fd0 sA_panshort.cpp DIFFER(2884v2884) sA panshort
+00c79fd0 sA_half.cpp DIFFER(2884v2884) sA half
+00c79fd0 sA_sec.cpp DIFFER(2884v2884) sA sec
+00c79fd0 sA_outsfirst.cpp DIFFER(2884v2884) sA outsfirst
+00c79fd0 sA_inc_in_for.cpp DIFFER(2884v2884) sA inc_in_for
+00c79fd0 sA_i16.cpp DIFFER(2884v2884) sA i16
+00c79fd0 sA_abfirst.cpp DIFFER(2892v2884) sA abfirst
+00c7ab20 t2.cpp DIFFER(3280v3236) t2 regrade for diff
+00c79fd0 sB_1.cpp DIFFER(2844v2884) sB 1: mode=stereo+now=2+scope=func
+00c79fd0 sB_2.cpp DIFFER(2884v2884) sB 2: mode=stereo+now=2+scope=loop
+00c79fd0 sB_3.cpp DIFFER(2884v2884) sB 3: mode=stereo+now=2+scope=loop3
+00c79fd0 sB_4.cpp DIFFER(2884v2884) sB 4: mode=stereo+now=2+scope=func3
+00c7ab20 rA_rawunpack.cpp RELOCATION_MATCH rA rawunpack
+00c7ab20 rA_rawhalf.cpp RELOCATION_MATCH rA rawhalf
+00c7ab20 rA_rawpan.cpp RELOCATION_MATCH rA rawpan
+00c7ab20 rA_rawr.cpp RELOCATION_MATCH rA rawr
+00c7ab20 rA_rawgain.cpp DIFFER(3280v3236) rA rawgain
+00c7ab20 rA_rawfold.cpp RELOCATION_MATCH rA rawfold
+00c7ab20 rA_rawunpack-rawhalf.cpp RELOCATION_MATCH rA rawunpack,rawhalf
+00c7ab20 rA_rawunpack-rawr-rawgain.cpp RELOCATION_MATCH rA rawunpack,rawr,rawgain
+00c79fd0 sC_rawhalf.cpp DIFFER(2884v2884) sC rawhalf
+00c79fd0 sC_rawpan.cpp DIFFER(2884v2884) sC rawpan
+00c79fd0 sC_rawfold14.cpp DIFFER(2884v2884) sC rawfold14
+00c79fd0 sC_rawadd14.cpp DIFFER(2884v2884) sC rawadd14
+00c79fd0 sC_rawsec.cpp DIFFER(2884v2884) sC rawsec
+00c79fd0 sC_rawmadd.cpp DIFFER(2884v2884) sC rawmadd
+00c79fd0 sC_rawstore.cpp DIFFER(2864v2884) sC rawstore
+00c79fd0 sC_rawhalf-rawfold14.cpp DIFFER(2884v2884) sC rawhalf,rawfold14
+00c7ab20 00c7ab20.cpp RELOCATION_MATCH src final
+00c79fd0 sD_more1.cpp DIFFER(2884v2884) sD more1
+00c79fd0 sD_more2.cpp DIFFER(2884v2884) sD more2
+00c79fd0 sD_more3.cpp DIFFER(2884v2884) sD more3
+00c79fd0 sD_more4.cpp DIFFER(2884v2884) sD more4
+00c79fd0 sD_plus.cpp DIFFER(2864v2884) sD plus
+00c79fd0 sD_ainit.cpp DIFFER(2884v2884) sD ainit
+00c5b7c0 b11a.cpp DIFFER(1328v1330) b11a regrade for diff
+00c79fd0 s3.cpp DIFFER(2884v2884) s3 regrade for diff
+00c79fd0 sE_acc3.cpp DIFFER(2884v2884) sE acc3
+00c79fd0 sE_acc.cpp DIFFER(2884v2884) sE acc
+00c79fd0 sE_acc13.cpp DIFFER(2884v2884) sE acc13
+00c79fd0 sE_s3m64.cpp DIFFER(2884v2884) sE s3m64
+00c79fd0 sE_s3I.cpp DIFFER(2884v2884) sE s3I
+00c79fd0 s3.cpp DIFFER(2884v2884) s3 regrade for slots
+00c79fd0 sF_1.cpp DIFFER(2884v2884) sF 1: mode=stereo+now=2+loop=forn
+00c79fd0 sF_2.cpp DIFFER(2884v2884) sF 2: mode=stereo+now=2+inc=for
+00c79fd0 sF_3.cpp SRC_FAIL sF 3: mode=stereo+now=2+ct=const__m64*
+00c79fd0 sF_4.cpp SRC_FAIL sF 4: mode=stereo+now=2+int=const__m64*
+00c51f50 c51f50_d.cpp DIFFER(2388v2288) d regrade for diff
+00c51f50 c51f50_h.cpp DIFFER(2388v2288) h: data copy local variants
+00c51f50 c51f50_i.cpp DIFFER(2388v2288) i: data copy local variants
+00c51f50 c51f50_j.cpp DIFFER(2388v2288) j: data copy local variants
+00c51f50 c51f50_m.cpp DIFFER(2372v2288) m: case value/changed type variants
+00c51f50 c51f50_n.cpp DIFFER(2136v2288) n: case value/changed type variants
+00c51f50 c51f50_o.cpp DIFFER(2284v2288) o: case value/changed type variants
+00c51f50 c51f50_p.cpp DIFFER(2380v2288) p: case value/changed type variants
+00c79fd0 fl_d2inlS15.cpp DIFFER(2884v2884) sG fl_d2inlS15.cpp flag probe
+00c79fd0 fl_d2inlS5.cpp DIFFER(2884v2884) sG fl_d2inlS5.cpp flag probe
+00c79fd0 fl_d2inlT120.cpp DIFFER(2884v2884) sG fl_d2inlT120.cpp flag probe
+00c79fd0 fl_d2inlT40.cpp DIFFER(3724v2884) sG fl_d2inlT40.cpp flag probe
+00c51f50 cA_ptr.cpp DIFFER(2388v2288) cA ptr
+00c51f50 cA_nosrc.cpp DIFFER(2388v2288) cA nosrc
+00c51f50 cA_ternary.cpp DIFFER(2388v2288) cA ternary
+00c51f50 cA_ifnot.cpp DIFFER(2356v2288) cA ifnot
+00c51f50 cA_cdata.cpp DIFFER(2388v2288) cA cdata
+00c51f50 cA_chfalse.cpp DIFFER(2308v2288) cA chfalse
+00c51f50 cA_chlate.cpp DIFFER(2388v2288) cA chlate
+00c51f50 cA_srclate.cpp DIFFER(2388v2288) cA srclate
+00c51f50 cA_uid.cpp DIFFER(2388v2288) cA uid
+00c51f50 cA_ptr-ifnot.cpp DIFFER(2356v2288) cA ptr,ifnot
+00c51f50 cA_nosrc-ifnot.cpp DIFFER(2356v2288) cA nosrc,ifnot
+00c51f50 cA_uid-ifnot.cpp DIFFER(2356v2288) cA uid,ifnot

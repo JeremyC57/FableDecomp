@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00c78a10   RELOCATION_MATCH PASS   ResampleMonoMMX
+00c79440   RELOCATION_MATCH PASS   ResampleMonoRampMMX
+00c7ab20   RELOCATION_MATCH PASS   ResampleStereoRampMMX
+
+WINS: 3
+  00c78a10 RELOCATION_MATCH _global::?ResampleMonoMMX@@YAXPBFKKKPAJ@Z
+  00c79440 RELOCATION_MATCH _global::?ResampleMonoRampMMX@@YAXPBFKKKPAJFF@Z
+  00c7ab20 RELOCATION_MATCH _global::?ResampleStereoRampMMX@@YAXPBFKKKPAJ1GFF@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  global_ResampleMonoMMX_00c78a10
+  global_ResampleMonoRampMMX_00c79440
+  global_ResampleStereoRampMMX_00c7ab20

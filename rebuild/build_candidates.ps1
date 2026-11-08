@@ -386362,6 +386362,30 @@ $catalog = @(
         TestSource = '00/c8/CAudioSource_ApplyHardware_00c880a0_test.cpp'
         PassPattern = '00c880a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c78a10'
+        Module = '_global'
+        Source = '00/c7/global_ResampleMonoMMX_00c78a10.cpp'
+        TestSource = '00/c7/global_ResampleMonoMMX_00c78a10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c78a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c79440'
+        Module = '_global'
+        Source = '00/c7/global_ResampleMonoRampMMX_00c79440.cpp'
+        TestSource = '00/c7/global_ResampleMonoRampMMX_00c79440_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c79440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c7ab20'
+        Module = '_global'
+        Source = '00/c7/global_ResampleStereoRampMMX_00c7ab20.cpp'
+        TestSource = '00/c7/global_ResampleStereoRampMMX_00c7ab20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c7ab20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

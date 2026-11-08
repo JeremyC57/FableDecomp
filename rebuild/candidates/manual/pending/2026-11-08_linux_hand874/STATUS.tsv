@@ -1,0 +1,8 @@
+addr	status	grades	file	device / residue
+00c78a10	RELOCATION_MATCH	52	src/00c78a10.cpp	plain C++: ivec.h model, window quads unnamed (mul_add(in[k], c[n]))
+00c79440	RELOCATION_MATCH	10	src/00c79440.cpp	plain C++: short gain params, align(16) gain/step built by the ivec short ctor
+00c7ab20	RELOCATION_MATCH	39	src/00c7ab20.cpp	Inline-budget, plain C++: raw _m_punpcklwd/_m_punpckhwd widen keeps case 3 inlined
+00c79fd0	PARKED	54	differ/00c79fd0.cpp	MMX colouring: s3 copy forwarded (mm2) vs retail chain-temp copy (mm1); same length/slots
+00c5b7c0	PARKED	32	differ/00c5b7c0.cpp	c2 test-narrowing peephole (test dword [eax+18h],0Fh unreachable at /O2) + done-add register
+00c51f50	PARKED	30	differ/00c51f50.cpp	data param prio -179 split per case (eax/ecx) vs retail edi piece over the dispatch
+00c4f600	NOT_AUTHORED	0	differ/00c4f600.cpp	analysis only (true extent, extra start 0x00C51A00, GUID ladder, two switches)
