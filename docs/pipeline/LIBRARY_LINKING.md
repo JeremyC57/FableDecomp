@@ -25,6 +25,12 @@ Region map: `LIBRARY_MAP.tsv` (this directory). Rule text for chunks: `EXTRA_RUL
   `LIBRARY_SIGNATURES.md`, "Vendor libraries". Coverage by code origin (game / Lionhead library / third-party /
   toolchain) is on the dashboard (`rebuild/COVERAGE.md`).
 
+SDK audit (2026-11-08, `SDK_NEEDS.md`): the BaseClasses are the DirectX 9.0c SDK **Summer 2004** copy (retail QueryId calls
+`lstrcpyW`), proven 588/588 with lib_verify; the D3D9 / D3DX9_25 / DInput8 import libs, dxguid and the dinput data formats are the
+DirectX SDK **April 2005**; the VS .NET 2003 `Vc7/include` (Dinkumware 313) is the retail CRT/C++ header set; most system import
+libs are the **Feb 2003 Platform SDK** (USER32 / IMM32 / SHELL32 still unmatched). ImeUi.cpp (2004/05 revision) and the Xbox XDK
+CImaAdpcmCodec have no legitimate public source and stay reconstruction.
+
 ## Availability
 Verified 2026-11-08 from the Linux lane. "Verified" means the URL answered HTTP 200 to curl through the
 session proxy in this session (hosts that the proxy would not resolve are marked). Nothing third-party
