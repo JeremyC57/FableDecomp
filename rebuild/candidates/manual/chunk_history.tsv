@@ -28023,3 +28023,6 @@ chunk	address	module	name	length
 874	00c79440	_global	Audio_ConvolveFilter_Aligned	2960
 874	00c79fd0	_global	Audio_ConvolveFilter_WithGain	2896
 874	00c7ab20	_global	Audio_ConvolveFilter_Complex_Variable	3248
+875	00839940	CThingGameObject	OnHit	5195
+875	00804020	CTCTargetingPlayer	UpdateTargetList	5587
+875	00a1e5c0	CNavigatorAStar	CalculateAndMoveToPosProximity	5437
